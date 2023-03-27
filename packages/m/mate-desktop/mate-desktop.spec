@@ -1,7 +1,7 @@
 #
 # spec file for package mate-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %define sover   17
 %define typelib typelib-1_0-MateDesktop-2_0
 %define _version 1.26
-
 Name:           mate-desktop
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -33,6 +32,7 @@ Source1:        user-dirs-update-mate.desktop
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
+BuildRequires:  rsvg-convert
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dconf) >= 0.13.4
 BuildRequires:  pkgconfig(glib-2.0)
@@ -43,13 +43,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(xrandr) >= 1.3
 Requires:       xdg-user-dirs
-Recommends:     %{name}-lang
 Recommends:     mate-user-guide
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
 
 %description
 This package contains the library with common API for various
@@ -106,8 +100,8 @@ MATE Desktop GSchemas.
 
 %package devel
 Summary:        MATE module API library development files
-Group:          Development/Libraries/X11
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
+Group:          Development/Libraries/X11
 Requires:       %{soname}-%{sover} = %{version}
 
 %description devel
