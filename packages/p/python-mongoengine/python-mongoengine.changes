@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:10:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.0:
+  * Update uuidRepresentation warnings with "unspecified" as the
+    future default (instead of 'standard' previously advertised)
+    #2739
+  * Added `mongo_client_class` optional parameter to connect() to
+    allow to use an alternative mongo client than
+    pymongo.MongoClient.
+  * Fix DictField that always gets marked as changed #2606
+  * fix for Queryset.none() that has no effect on
+    update/aggregate / first #2669
+  * Changes in 0.26.0
+  * BREAKING CHANGE: Improved the performance of
+    :meth:`~mongoengine.Document.save()`
+    by removing the call to
+    :meth:`~mongoengine.Document.ensure_indexes` unless
+    ``meta['auto_create_index_on_save']`` is set to True. With
+    the default settings, Document indexes will still be created
+    on the fly, during the first usage of the collection
+    (query, insert, etc), they will just not be re-created
+    whenever .save() is called.
+  * BREAKING CHANGE: remove deprecated method ``ensure_index``
+    (replaced by ``create_index`` long time ago).
+  * Addition of Decimal128Field:
+    :class:`~mongoengine.fields.Decimal128Field` for accurate
+    representation of Decimals (much better than the legacy field
+    DecimalField).
+  * BREAKING CHANGE: When using ListField(EnumField) or
+    DictField(EnumField), the values weren't always cast into the
+    Enum
+  * BREAKING CHANGE (bugfix) Querying ObjectIdField or
+    ComplexDateTimeField with None no longer raise a
+    ValidationError
+  * Allow updating a field that has an operator name e.g. "type"
+    with .update(set__type="foo"). It was raising an error
+    previously. #2595
+
+-------------------------------------------------------------------
 Wed Jan  4 19:57:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.0:

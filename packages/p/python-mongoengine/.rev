@@ -85,4 +85,41 @@
   * Bug fix regarding uuidRepresentation that was case sensitive #2650</comment>
     <requestid>1055990</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce40602fbed779b321b36739239175fa</srcmd5>
+    <version>0.27.0</version>
+    <time>1679933766</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.27.0:
+  * Update uuidRepresentation warnings with &quot;unspecified&quot; as the
+    future default (instead of 'standard' previously advertised)
+    #2739
+  * Added `mongo_client_class` optional parameter to connect() to
+    allow to use an alternative mongo client than
+    pymongo.MongoClient.
+  * Fix DictField that always gets marked as changed #2606
+  * fix for Queryset.none() that has no effect on
+    update/aggregate / first #2669
+  * Changes in 0.26.0
+  * BREAKING CHANGE: Improved the performance of
+    :meth:`~mongoengine.Document.save()`
+    by removing the call to
+    :meth:`~mongoengine.Document.ensure_indexes` unless
+    ``meta['auto_create_index_on_save']`` is set to True. With
+    the default settings, Document indexes will still be created
+    on the fly, during the first usage of the collection
+    (query, insert, etc), they will just not be re-created
+    whenever .save() is called.
+  * BREAKING CHANGE: remove deprecated method ``ensure_index``
+    (replaced by ``create_index`` long time ago).
+  * Addition of Decimal128Field:
+    :class:`~mongoengine.fields.Decimal128Field` for accurate
+    representation of Decimals (much better than the legacy field
+    DecimalField).
+  * BREAKING CHANGE: When using ListField(EnumField) or
+    DictField(EnumField), the values weren't always cast into the
+    Enum
+  * BREAKING CHANGE (bugfix) Querying ObjectIdField or</comment>
+    <requestid>1074497</requestid>
+  </revision>
 </revisionlist>

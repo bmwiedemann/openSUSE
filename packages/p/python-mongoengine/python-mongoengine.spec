@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-mongoengine
-Version:        0.25.0
+Version:        0.27.0
 Release:        0
 Summary:        Python Object-Document Mapper for working with MongoDB
 License:        MIT
