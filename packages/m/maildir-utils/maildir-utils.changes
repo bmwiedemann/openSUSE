@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Mar 27 06:22:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.0:
+  mu:
+  * a new command-line parser, which allows (hopefully!) for a better user
+    interaction; better error checking and more
+  * Invalid e-mail addresses are no longer added to the contacts-cache.
+  * The cfind command gained --format=json, which makes it easy to further
+    process contact information, e.g. using jq. See the manpage for more details.
+  * The init command learned --reinit to reinitialize the database
+    with the setings of an exisitng one
+  * The script command is gone, and integrated with mu directly, i.e. the
+    scripts (when enabled) are directly visible in the mu output. Also see
+    the Guile section.
+  * The extract command gained the --uncooked option to tell it to not replace
+    spaces with dashes in extracted filenames (and a few other things).
+  * Revamped manpages which are now generated from org descriptions
+  * Standardize on PCRE-flavored regular expressions throughout mu.
+  * Experimental: as bit of a hack, html message bodies are processed as if
+    they were plain text, similar how “old mu” would do it (1.6.x and earlier).
+    A nicer solution would be to convert to text, but this something for the future.
+  * the MSYS2 (Windows) builds is experimental now; some things may not work;
+    see e.g. https://github.com/djcb/mu/issues?q=is%3Aissue+label%3Amsys, but
+    we welcome efforts to fix those things.
+  mu4e:
+  * emacs 26.3 or higher is now required for mu4e
+  * mu4e-view-mode-hook now fires before the message is rendered. If you have
+    hook-functions that depend on the message contents, you should use the new mu4e-view-rendered-hook.
+  * mu4e window management has been completely reworked and cleaned up, affecting
+    the message loading as well as the window-layout. As a user-visible feature, there’s
+    now the z binding (mu4e-view-detach), to ‘detach’ view and alllow for keeping multiple
+    views around; see the manual entry for further details.
+  * As a result of that, mu4e-split-view can no longer be a function; the new way is to
+    use display-buffer-alist as explained in the manual
+  * mu4e now keeps track of ‘baseline’ query results and shows the difference from that
+    in the main view and modeline (you’ll might see something like 1(+1)/2 for your bookmarks
+    or in the modeline; that means that there is one more unread message since baseline;
+    see the manual entry for details. The idea is that you get a quick overview of where
+    changes happened while you were doing something else. This is a somewhat experimental
+    feature which is under active development
+  * Related to that, you can now crown one of your bookmarks in mu4e-bookmarks with :favorite t,
+    causing it to be highlighted in the main view and used in the mode-line. See the new modeline
+    entry in the manual; this uses the new mu4e-modeline-mode minor-mode.
+  * Expanding on that further, you can also get desktop notifications for new mail (on systems
+    with DBus for now; see Desktop notifications in the manual.
+  * If your search query matches some bookmark, the modeline now shows the bookmark’s name
+    rather than the query; this can be controlled through mu4e-modeline-prefer-bookmark-name (default: t).
+  * You can now tell mu4e to use emacs’ completion system rather than the mu4e built-in one;
+    see the variables mu4e-read-option-use-builtin and mu4e-completing-read-function; e.g. to
+    always emacs completion (which may have been enhanced by various completion frameworks), use:
+    (setq mu4e-read-option-use-builtin nil mu4e-completing-read-function 'completing-read)
+    when moving messages (which includes changing flags), file-flags changes are propagated to
+    duplicates of the messages; that is, e.g. the Seen or Replied status is propagated to all
+    duplicates (earlier, this was only done when marking a message as read). Note, Draft, Flagged
+    and Trashed flags are deliberately not propagated.
+  * Teach mu4e-copy-thing-at-point about shr links
+  * The mu4e-headers-toggle-setting has been renamed mu4e-headers-toggle-property and has the new
+    default binding P, which works in both the headers-view and message-view. The older functions
+    mu4e-headers-toggle-threading, mu4e-headers-toggle-threading, mu4e-headers-toggle-full-search
+    mu4e-headers-toggle-include-related, full-search~skip-duplicates have been removed (with their
+    keybindings) in favor of mu4e-headers-toggle-property.
+  * There’s also a new property mu4e-headers-hide-enabled, which controls wheter mu4e-headers-hide-predicate
+    is applied (when non-~nil~). This can be used to temporarily turn the predicate off/on.
+  * You can now jump to previous / next threads in headers-view, message view. Default binding is
+    { and }, respectively.
+  * When searching, the number of hidden messages is now shown in the message footer along with the
+    number of Found messages
+  * The eldoc support in header-mode is now optional and disabled by default; set mu4e-eldoc-support
+    to non-nil to enable it.
+  * In the main view, the keybindings shown are a representation of the actual keybindings, rather than
+    just the defaults. This is for the benefit for people who want to use different keybindings.
+  * As a side-effect of that, mu4e-main-mode and mu4e-main-mode-hook functions are now invoked before
+    the rendering takes place; if you’re customizations depend on happening after rendering is completed,
+    use the new mu4e-main-rendered-hook instead.
+  * mu4e-cache-maildir-list has been promoted to be a defcustom, enabled by default. This caches the list
+    of “other” maildirs (i.e., without a shortcut).
+  * For testing, a new command mu4e-server-repl to start a mu server just as mu4e does it. Note that
+    this cannot run at the same time when mu4e runs.
+  * all the obsolete function and variable aliases have been moved to mu4e-obsolete.el so we can
+    unclutter the non-obsolete code a bit.
+  internals:
+  * As usual, there have been a number of internal updates in the mu codebase:
+    + reworked the internal s-expression parser
+    + new command-line argument parser (based on CLI11)
+    + message-move flag propagation moved from the mu4e-server to mu-store
+    + more mu4e~ internals have been renamed/reworked in to mu4e--.
+
+-------------------------------------------------------------------
 Sun Jan 29 11:27:41 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.14:

@@ -551,4 +551,41 @@
   * mu-query-match-decider: add 'Related' to flags (rather than replace)</comment>
     <requestid>1061865</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a902ec59bf65acf90a1bfa97361ecef2</srcmd5>
+    <version>1.10.0</version>
+    <time>1679933798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.0:
+  mu:
+  * a new command-line parser, which allows (hopefully!) for a better user
+    interaction; better error checking and more
+  * Invalid e-mail addresses are no longer added to the contacts-cache.
+  * The cfind command gained --format=json, which makes it easy to further
+    process contact information, e.g. using jq. See the manpage for more details.
+  * The init command learned --reinit to reinitialize the database
+    with the setings of an exisitng one
+  * The script command is gone, and integrated with mu directly, i.e. the
+    scripts (when enabled) are directly visible in the mu output. Also see
+    the Guile section.
+  * The extract command gained the --uncooked option to tell it to not replace
+    spaces with dashes in extracted filenames (and a few other things).
+  * Revamped manpages which are now generated from org descriptions
+  * Standardize on PCRE-flavored regular expressions throughout mu.
+  * Experimental: as bit of a hack, html message bodies are processed as if
+    they were plain text, similar how “old mu” would do it (1.6.x and earlier).
+    A nicer solution would be to convert to text, but this something for the future.
+  * the MSYS2 (Windows) builds is experimental now; some things may not work;
+    see e.g. https://github.com/djcb/mu/issues?q=is%3Aissue+label%3Amsys, but
+    we welcome efforts to fix those things.
+  mu4e:
+  * emacs 26.3 or higher is now required for mu4e
+  * mu4e-view-mode-hook now fires before the message is rendered. If you have
+    hook-functions that depend on the message contents, you should use the new mu4e-view-rendered-hook.
+  * mu4e window management has been completely reworked and cleaned up, affecting
+    the message loading as well as the window-layout. As a user-visible feature, there’s
+    now the z binding (mu4e-view-detach), to ‘detach’ view and alllow for keeping multiple
+    views around; see the manual entry for further details.</comment>
+    <requestid>1074565</requestid>
+  </revision>
 </revisionlist>

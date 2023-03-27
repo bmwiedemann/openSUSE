@@ -17,16 +17,15 @@
 
 
 Name:           maildir-utils
-Version:        1.8.14
+Version:        1.10.0
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.djcbsoftware.nl/code/mu/
 Source:         https://github.com/djcb/mu/releases/download/v%{version}/mu-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake >= 1.14
-BuildRequires:  emacs-nox >= 24.4
+BuildRequires:  emacs-nox >= 26.3
+BuildRequires:  meson
 # Optional: for outputting of messages in json
 BuildRequires:  json-glib-devel
 BuildRequires:  libtool
@@ -34,6 +33,7 @@ BuildRequires:  libxapian-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmime-3.0) >= 3.0
+BuildRequires:  pkgconfig(guile-3.0)
 
 %description
 Set of utilities to index and search Maildirs. Upstream name is mu.
@@ -53,15 +53,11 @@ mu4e is an emacs-based e-mail client. It is based on the mu e-mail indexer/searc
 %setup -q -n mu-%{version}
 
 %build
-autoreconf -i
-%configure
-
-#bsc#1111950: build individually for now. to have reproducible.
-%make_build -C lib
-%make_build
+%meson -Dguile=disabled
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %post -n mu4e
 %install_info --info-dir=%{_infodir} %{_infodir}/mu4e.info.gz
