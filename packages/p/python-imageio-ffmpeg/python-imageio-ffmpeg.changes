@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:53:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.8:
+  * get_ffmpeg_exe always checks env var 
+  * Fix pix_format parser to capture formats that have commas 
+    within strings
+  * Avoid warning about invalid escape sequence in regex
+
+-------------------------------------------------------------------
 Thu Sep 29 02:35:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - v0.4.6 Latest

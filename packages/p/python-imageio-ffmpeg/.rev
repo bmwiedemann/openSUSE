@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1006879</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a57f7abe7f677affe81e9e4cc9c83469</srcmd5>
+    <version>0.4.8</version>
+    <time>1679933775</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.8:
+  * get_ffmpeg_exe always checks env var 
+  * Fix pix_format parser to capture formats that have commas 
+    within strings
+  * Avoid warning about invalid escape sequence in regex</comment>
+    <requestid>1074510</requestid>
+  </revision>
 </revisionlist>
