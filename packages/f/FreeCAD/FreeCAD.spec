@@ -50,6 +50,8 @@ Patch5:         0001-FEM-add-missing-include.patch
 Patch6:         0001-Revert-unused-parameter-warning-change.patch
 # PATCH-FIX-UPSTREAM
 Patch7:         0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
+# PATCH-FIX-OPENSUSE submitted upstream here: https://github.com/FreeCAD/FreeCAD/pull/9077
+Patch8:         0001-Fix-build-with-gcc13.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

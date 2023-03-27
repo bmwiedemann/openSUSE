@@ -414,4 +414,13 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
     <comment></comment>
     <requestid>1061091</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>873be5a8661cb25b53c336413efe4d0e</srcmd5>
+    <version>0.20.2</version>
+    <time>1679933851</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc 13
+  0001-Fix-build-with-gcc13.patch</comment>
+    <requestid>1074633</requestid>
+  </revision>
 </revisionlist>

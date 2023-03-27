@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:49:49 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- Fix build with gcc 13
+  0001-Fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
 Thu Jan 26 00:01:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build after numpy 1.24 API changes, add

@@ -1,0 +1,10 @@
+--- a/src/3rdParty/libE57Format/include/E57Format.h
++++ b/src/3rdParty/libE57Format/include/E57Format.h	2023-03-27 09:59:08.143013765 +0200
+@@ -33,6 +33,7 @@
+ 
+ #include <cfloat>
+ #include <memory>
++#include <cstdint>
+ #include <vector>
+ 
+ #include "E57Exception.h"
