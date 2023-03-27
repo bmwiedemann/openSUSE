@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:16:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.82.0:
+  * **analyticsadmin:** Update the api
+  * **androiddeviceprovisioning:** Update the api
+  * **assuredworkloads:** Update the api
+  * **calendar:** Update the api
+  * **chromepolicy:** Update the api
+  * **clouddeploy:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **dataform:** Update the api
+  * **datamigration:** Update the api
+  * **discoveryengine:** Update the api
+  * **drivelabels:** Update the api
+  * **firestore:** Update the api
+  * **metastore:** Update the api
+  * **networkservices:** Update the api
+  * **ondemandscanning:** Update the api
+  * **orgpolicy:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **prod_tt_sasportal:** Update the api
+  * **retail:** Update the api
+  * **storage:** Update the api
+  * **webrisk:** Update the api
+
+-------------------------------------------------------------------
 Fri Mar  3 14:58:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.80.0
