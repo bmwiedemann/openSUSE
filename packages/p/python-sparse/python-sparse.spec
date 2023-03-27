@@ -1,7 +1,7 @@
 #
 # spec file for package python-sparse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%define         skip_python2 1
+# no python311-numba yet
+%define skip_python311 1
 Name:           python-sparse
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-32bit-archs.patch gh#pydata/sparse#490 mcepl@suse.com
-# Skip some tests on 32bit architecture
-Patch0:         skip-32bit-archs.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module numba >= 0.49}
@@ -58,14 +59,17 @@ intended for somewhat general use.
 %autosetup -p1 -n sparse-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# 32bit fails in half of the test suite because the tests try to convert to 64bit types
+if [ $(getconf LONG_BIT) -eq 64 ]; then
 %pytest
+fi
 
 %files %{python_files}
 %doc README.rst docs/*.rst

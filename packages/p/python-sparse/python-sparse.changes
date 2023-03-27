@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 25 12:05:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.0
+  * sparse.einsum support (PR #564 thanks @jcmgray)
+  * Some bug-fixes (PR #524, PR #527, PR #555 thanks @hameerabbasi,
+    PR #569, thanks @jamestwebber, PR #534, thanks
+    @sarveshbhatnagar)
+  * Some performance improvements (PR #570, thanks @jamestwebber,
+    PR #540, thanks @smldub).
+- Skip python311 build: no numba yet
+- Drop skip-32bit-archs.patch, disable 32bit test suite: too many
+  tests involve 64bit types
+
+-------------------------------------------------------------------
 Fri Oct 21 08:39:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add skip-32bit-archs.patch skiping a failing test on 32bit arch
