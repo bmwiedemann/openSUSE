@@ -1,10 +1,11 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/jacksonliam/mjpg-streamer.git</param>
     <param name="scm">git</param>
-    <param name="versionprefix">1.0~pre</param>
+    <param name="revision">v1.0.0</param>
+    <param name="version">1.0.0</param>
   </service>
-  <service mode="disabled" name="set_version" />
+  <service mode="manual" name="set_version" />
 
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">

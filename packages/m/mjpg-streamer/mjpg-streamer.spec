@@ -1,7 +1,7 @@
 #
 # spec file for package mjpg-streamer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mjpg-streamer
-Version:        1.0~pre.1540449284.ddb69b7
+Version:        1.0.0
 Release:        0
 Summary:        Program for streaming webcam video to HTTP
 License:        GPL-2.0-only
@@ -31,12 +31,12 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  pkgconfig(opencv)
 BuildRequires:  protobuf-c
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-opencv
 BuildRequires:  zeromq-devel
+BuildRequires:  pkgconfig(opencv)
 
 %description
 MJPG-streamer takes JPGs from Linux-UVC compatible webcams, from
