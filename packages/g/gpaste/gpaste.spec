@@ -17,7 +17,7 @@
 #
 
 
-%global __requires_exclude typelib\\(Clutter\\)
+%global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
 Version:        43.2+6
