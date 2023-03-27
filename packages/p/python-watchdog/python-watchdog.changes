@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 20 12:17:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Drop support for Python 3.6.
+  * ``watchdog`` is now PEP 561 compatible, and tested with
+    ``mypy``
+  * Fix missing ``>`` in ``FileSystemEvent.__repr__()``
+  * [ci] Lots of improvements
+  * [inotify] Return from ``InotifyEmitter.queue_events()`` if
+    not launched when thread is inactive
+  * [tests] Stability improvements
+  * [utils] Remove handling of ``threading.Event.isSet`` spelling
+  * [watchmedo] Fixed tricks YAML generation
+
+-------------------------------------------------------------------
 Tue Feb 28 20:02:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:
