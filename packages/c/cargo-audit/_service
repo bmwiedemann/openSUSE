@@ -3,7 +3,7 @@
     <param name="url">https://github.com/RustSec/rustsec.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">cargo-audit/v0.17.4</param>
+    <param name="revision">cargo-audit/v0.17.5</param>
     <param name="match-tag">cargo-audit*</param>
     <param name="versionrewrite-pattern">.*v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -14,11 +14,11 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">rustsec</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
