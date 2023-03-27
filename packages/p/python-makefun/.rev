@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1039664</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e3b617d994158488f8e7186314d78d68</srcmd5>
+    <version>1.15.1</version>
+    <time>1679933765</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.1:
+  * Fixed `ValueError: Invalid co_name` happening on python 2
+    when the name of a function to create starts or ends with
+    `_` or contains a double `__`</comment>
+    <requestid>1074493</requestid>
+  </revision>
 </revisionlist>

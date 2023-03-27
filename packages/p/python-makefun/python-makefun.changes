@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 26 18:45:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * Fixed `ValueError: Invalid co_name` happening on python 2
+    when the name of a function to create starts or ends with
+    `_` or contains a double `__` 
+
+-------------------------------------------------------------------
 Fri Dec  2 20:29:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.15.0
