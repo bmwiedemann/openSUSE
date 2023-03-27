@@ -1114,4 +1114,14 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1074186</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>b0d140be2c473e61b6fe3c041a0f4a13</srcmd5>
+    <version>0.8.3</version>
+    <time>1679933864</time>
+    <user>dimstar_suse</user>
+    <comment>- Add snprintf-buf-ovrflw-FORTIFY-3.patch to fix
+  gh#neovim/neovim#22779 in the released 0.8
+</comment>
+    <requestid>1074680</requestid>
+  </revision>
 </revisionlist>

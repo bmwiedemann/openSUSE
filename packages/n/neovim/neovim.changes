@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 27 11:42:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add snprintf-buf-ovrflw-FORTIFY-3.patch to fix
+  gh#neovim/neovim#22779 in the released 0.8
+
+-------------------------------------------------------------------
 Fri Mar 24 13:08:52 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Adjust SUSE spec file template to updated format

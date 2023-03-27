@@ -40,6 +40,9 @@ Source3:        suse-spec-template
 # we need /usr/bin/luajit. Fake it.
 Source10:       lj-busted.sh
 Source99:       neovim-rpmlintrc
+# PATCH-FIX-UPSTREAM snprintf-buf-ovrflw-FORTIFY-3.patch gh#neovim/neovim#22779 mcepl@suse.com
+# fix snprintf buffer overflow (crash on :he)
+Patch0:         snprintf-buf-ovrflw-FORTIFY-3.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
