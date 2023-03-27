@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray-einstats
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,33 @@
 #
 
 
+# no python38-xarray
+%define skip_python38 1
 Name:           python-xarray-einstats
-Version:        0.3.0
+Version:        0.5.1
 Release:        0
 Summary:        Stats, linear algebra and einops for xarray
 License:        Apache-2.0
 URL:            https://github.com/arviz-devs/xarray-einstats
-Source:         https://files.pythonhosted.org/packages/source/x/xarray-einstats/xarray-einstats-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pip}
+Source:         https://github.com/arviz-devs/xarray-einstats/archive/refs/tags/v%{version}.tar.gz#/xarray-einstats-%{version}-gh.tar.gz
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module numpy >= 1.19}
-BuildRequires:  %{python_module scipy >= 1.5}
-BuildRequires:  %{python_module xarray >= 0.16}
-# Test requires
+BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module scipy >= 1.6}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module xarray >= 2022.9.0}
+BuildRequires:  python-rpm-macros
+# SECTION Test requires
+BuildRequires:  %{python_module numba if %python-base < 3.11}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module numba}
+# /SECTION
 BuildRequires:  fdupes
 BuildArch:      noarch
+Requires:       python-numpy >= 1.20
+Requires:       python-scipy >= 1.6
+Requires:       python-xarray >= 2022.9.0
 %python_subpackages
 
 %description
@@ -42,8 +50,6 @@ Stats, linear algebra and einops for xarray
 
 %prep
 %autosetup -p1 -n xarray-einstats-%{version}
-# python-einops is not available for Tumbleweed yet
-rm -rf src/xarray_einstats/tests/test_einops.py
 
 %build
 %pyproject_wheel
@@ -51,10 +57,13 @@ rm -rf src/xarray_einstats/tests/test_einops.py
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/xarray_einstats/tests
 
 %check
-%pytest src/xarray_einstats/tests
+# no python-einops in TW
+ignoretests="--ignore tests/test_einops.py"
+# no python311-numba yet
+python311_ignoretests="--ignore tests/test_numba.py"
+%pytest $ignoretests ${$python_ignoretests}
 
 %files %{python_files}
 %license LICENSE

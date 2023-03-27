@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 24 20:37:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.1
+  * Fix lower cap on xarray version dependency #45
+- Release v0.5.0
+  * Added {func}.empty_ref, {func}.ones_ref and {func}.zeros_ref
+    DataArray creation helpers #37
+  * Added {func}.linalg.diagonal wrapper #37
+  * Added {func}.stats.logsumexp wrapper #40
+  * Added {func}.searchsorted and {func}.ecdf in
+    {mod}~xarray_einstats.numba module #40
+  * Added {func}~xarray_einstats.sort wrapper for vectorized sort
+    along specific dimension using values #40
+  * Fix issue in linalg.svd for non-square matrices #37
+  * Fix evaluation of distribution methods (e.g. .pdf) on scalars
+    #38 and #39
+  * Ensure support on inputs with stacked dimensions #40
+- Release v0.4.0
+  * Add multivariate_normal distribution class #23
+  * Update pyproject.toml to support building the package with both
+    flit and setuptools #26
+  * Update python and dependency versions #33
+
+-------------------------------------------------------------------
 Thu Nov 24 13:41:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add LICENSE
