@@ -17,14 +17,13 @@
       <arch id="i686" name="dummy" fallback="i586"/>
       <arch id="noarch" name="dummy"/>
       <arch id="x86_64" name="dummy" fallback="i686"/>
-      <requiredarch ref="i586"/>
       <requiredarch ref="x86_64"/>
     </architectures>
     <productoptions>
       <productvar name="DISTNAME">openSUSE</productvar>
       <productvar name="FLAVOR">ftp</productvar>
       <productvar name="MAKE_LISTINGS">true</productvar>
-      <productvar name="MEDIUM_NAME">openSUSE-20230326-i586-x86_64</productvar>
+      <productvar name="MEDIUM_NAME">openSUSE-20230326-x86_64</productvar>
       <productvar name="MULTIPLE_MEDIA">true</productvar>
       <productvar name="PRODUCT_DIR">/</productvar>
       <productvar name="PRODUCT_NAME">$DISTNAME-$FLAVOR</productvar>
@@ -40,7 +39,7 @@
       <productinfo name="CONTENTSTYLE">11</productinfo>
       <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230326,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230326/i586 obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230326/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230326/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="DEBUGMEDIUM">2</productoption>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -52,9 +51,9 @@
       <source path="obsrepositories:/"/>
     </instrepo>
     <metadata>
-      <repopackage name="skelcd-installer-openSUSE" medium="0" removearch="src,nosrc" onlyarch="i586,x86_64"/>
-      <repopackage name="instlux" medium="0" removearch="src,nosrc" onlyarch="i586,x86_64"/>
-      <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="i586,x86_64"/>
+      <repopackage name="skelcd-installer-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
+      <repopackage name="instlux" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
+      <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
     </metadata>
     <repopackages>
       <repopackage name="*"/>
@@ -198,8 +197,6 @@
       <repopackage name="gimp-branding-SLED" onlyarch="skipit"/>
       <repopackage name="glib2-branding-SLED" onlyarch="skipit"/>
       <repopackage name="glib2-branding-SLES" onlyarch="skipit"/>
-      <repopackage name="glibc" addarch="i586,i686" arch="i586,i686"/>
-      <repopackage name="glibc-devel" addarch="i586,i686" arch="i586,i686"/>
       <repopackage name="gnome-menus-branding-SLED" onlyarch="skipit"/>
       <repopackage name="gnome-panel-branding-SLED" onlyarch="skipit"/>
       <repopackage name="gpars-bootstrap" onlyarch="skipit"/>
@@ -229,12 +226,6 @@
       <repopackage name="jaxen-bootstrap" onlyarch="skipit"/>
       <repopackage name="jflex-bootstrap" onlyarch="skipit"/>
       <repopackage name="jgit-bootstrap" onlyarch="skipit"/>
-      <repopackage name="kernel-debug" arch="i586" onlyarch="x86_64,i686"/>
-      <repopackage name="kernel-debug-devel" arch="i586" onlyarch="x86_64,i686"/>
-      <repopackage name="kernel-pae" arch="i586,i686" onlyarch="i686"/>
-      <repopackage name="kernel-pae-devel" arch="i586,i686" onlyarch="i686"/>
-      <repopackage name="kernel-vanilla" arch="i586" onlyarch="x86_64,i686"/>
-      <repopackage name="kernel-vanilla-devel" arch="i586" onlyarch="x86_64,i686"/>
       <repopackage name="kiwi-image-livecd-gnome" onlyarch="skipit"/>
       <repopackage name="kiwi-image-livecd-gnome-original" onlyarch="skipit"/>
       <repopackage name="kiwi-image-livecd-gnome-promo" onlyarch="skipit"/>
@@ -509,8 +500,8 @@
       <repopackage name="yast2-trans-my" onlyarch="skipit"/>
       <repopackage name="yast2-trans-tk" onlyarch="skipit"/>
       <repopackage name="yast2-wagon-control-SLE" onlyarch="skipit"/>
-      <repopackage name="openSUSE-release" addarch="i586,x86_64"/>
-      <repopackage name="openSUSE-release-ftp" addarch="i586,x86_64"/>
+      <repopackage name="openSUSE-release" addarch="x86_64"/>
+      <repopackage name="openSUSE-release-ftp" addarch="x86_64"/>
     </repopackages>
   </instsource>
 </image>
