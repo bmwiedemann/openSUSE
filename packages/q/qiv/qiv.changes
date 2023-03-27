@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:12:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.3:
+  * qiv-command example: added more
+    interesting tags in exiftool.tags.for.qiv-command
+  * qiv-command example: added gps2url and gimp
+  * allow --help and --version without DISPLAY variable set
+  * scale fonts according to highDPIfactor
+  * fix some deprecation warnings
+  * fix small bug with --highDPIfactor
+    and --scale_down and images smaller than screen size
+    before enlarging but bigger than screensaver after
+    enlarging
+  * new cmdline option --highDPIfactor:
+    zoom factor to compensate for high (or also low) DPI screens
+  * statusline+window title: move not so
+    interesting loading time to the end
+  * fix removing artist/comment text in fullscreen mode
+  * add ability (and options and toggles) to display EXIF artist
+    name
+  * add heif image support via gdk- pixbuf loader
+  * add example in qiv-command on how to
+    run programs without blocking qiv
+  * add webp support via imlib loader
+  * fix wrong man path, fix clang-10 compiler warning, include
+    debian #969338
+  * zoom in faster (+50% instead of +10%) if above 100%
+  * redefined GDK_SCROLL events to move image in fullscreen
+  * replace deprecated gdk_draw functions with cairo functions
+  * fix: don't ignore maxaspect and scale down options when
+    reloading image due to watch option on. (Issue #8)
+
+-------------------------------------------------------------------
 Sat Mar  3 00:39:07 UTC 2018 - jengelh@inai.de
 
 - Ensure neutrality of description. Trim manual from description.

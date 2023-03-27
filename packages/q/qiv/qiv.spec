@@ -1,7 +1,7 @@
 #
 # spec file for package qiv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           qiv
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        A gdk/imlib based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-Url:            https://spiegl.de/qiv/
+URL:            https://spiegl.de/qiv/
 Source0:        https://spiegl.de/qiv/download/qiv-%{version}.tgz
 BuildRequires:  file-devel
 BuildRequires:  gtk2-devel
@@ -53,7 +53,7 @@ sed -i 's/-O2/$(RPM_OPT_FLAGS)/' Makefile
 chmod -x contrib/*
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -Dpm 755 qiv %{buildroot}%{_bindir}/qiv
@@ -63,9 +63,10 @@ install -Dpm 0644 qiv.desktop %{buildroot}%{_datadir}/applications/qiv.desktop
 %suse_update_desktop_file qiv
 
 %files
-%doc README README.COPYING README.TODO contrib
+%license README.COPYING
+%doc README README.TODO contrib
 %{_bindir}/qiv
-%{_mandir}/man1/qiv.1%{ext_man}
+%{_mandir}/man1/qiv.1%{?ext_man}
 %{_datadir}/pixmaps/qiv.png
 %{_datadir}/applications/qiv.desktop
 
