@@ -1,0 +1,80 @@
+From 10b995f0196c8243132c3f435d4e11b3c9700e35 Mon Sep 17 00:00:00 2001
+From: Robin Jarry <robin@jarry.cc>
+Date: Wed, 4 Jan 2023 23:44:35 +0100
+Subject: [PATCH] doc: fix English typos
+
+Reported by Lintian (Debian).
+
+Signed-off-by: Robin Jarry <robin@jarry.cc>
+Acked-by: Moritz Poldrack <moritz@poldrack.dev>
+---
+ commands/account/import-mbox.go | 2 +-
+ doc/aerc-config.5.scd           | 4 ++--
+ doc/aerc-search.1.scd           | 2 +-
+ widgets/compose.go              | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/commands/account/import-mbox.go b/commands/account/import-mbox.go
+index b03d8d7..c1ee593 100644
+--- a/commands/account/import-mbox.go
++++ b/commands/account/import-mbox.go
+@@ -122,7 +122,7 @@ func (ImportMbox) Execute(aerc *widgets.Aerc, args []string) error {
+ 				}
+ 			}
+ 		}
+-		infoStr := fmt.Sprintf("%s: imported %d of %d sucessfully.", args[0], appended, len(messages))
++		infoStr := fmt.Sprintf("%s: imported %d of %d successfully.", args[0], appended, len(messages))
+ 		log.Debugf(infoStr)
+ 		aerc.SetStatus(infoStr)
+ 	}
+diff --git a/doc/aerc-config.5.scd b/doc/aerc-config.5.scd
+index 7e189a4..474c005 100644
+--- a/doc/aerc-config.5.scd
++++ b/doc/aerc-config.5.scd
+@@ -529,7 +529,7 @@ These options are configured in the *[compose]* section of _aerc.conf_.
+ 		*address-book-cmd* = _khard email --remove-first-line --parsable %s_
+ 
+ *file-picker-cmd* = _<command>_
+-	Specifies the command to be used to select attachments. Any occurence of
++	Specifies the command to be used to select attachments. Any occurrence of
+ 	_%s_ in the *file-picker-cmd* will be replaced with the argument _<arg>_
+ 	to *:attach -m* _<arg>_.
+ 
+@@ -560,7 +560,7 @@ These options are configured in the *[compose]* section of _aerc.conf_.
+ 
+ # MULTIPART CONVERTERS
+ 
+-Converters allow to generate _multipart/alternative_ messages by converting the
++Converters allow generating _multipart/alternative_ messages by converting the
+ main _text/plain_ body into any other text MIME type with the *:multipart*
+ command. Only exact MIME types are accepted. The commands are invoked with
+ _sh -c_ and are expected to output valid UTF-8 text.
+diff --git a/doc/aerc-search.1.scd b/doc/aerc-search.1.scd
+index 8349874..9b375d5 100644
+--- a/doc/aerc-search.1.scd
++++ b/doc/aerc-search.1.scd
+@@ -57,7 +57,7 @@ aerc-search - search and filter patterns and options for *aerc*(1)
+ 
+ 		_<N>_ *(y[ear]|m[onth]|w[eek]|d[ay])*
+ 			_<N>_ is a positive integer that represents the number
+-			of the time units in the past. Mutiple relative terms
++			of the time units in the past. Multiple relative terms
+ 			can will be accumulated. The units can also be
+ 			abbreviated by a single letter such that yesterday would
+ 			correspond to _1d_ (equivalent to _1 day_ or _1_day_)
+diff --git a/widgets/compose.go b/widgets/compose.go
+index 578c761..1a59bd3 100644
+--- a/widgets/compose.go
++++ b/widgets/compose.go
+@@ -141,7 +141,7 @@ func (c *Composer) SwitchAccount(newAcct *AccountView) error {
+ 		editor.loadValue()
+ 	}
+ 	c.Invalidate()
+-	log.Debugf("account sucessfully switched")
++	log.Debugf("account successfully switched")
+ 	return nil
+ }
+ 
+-- 
+2.34.5
+

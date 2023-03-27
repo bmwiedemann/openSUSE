@@ -1,0 +1,10 @@
+diff --git a/filters/show-ics-details.py b/filters/show-ics-details.py
+index 18b2b76..d2b4b5d 100755
+--- a/filters/show-ics-details.py
++++ b/filters/show-ics-details.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ """Parse a vcard file given via stdin and output some details.
+ Currently the following details are displayed if present:

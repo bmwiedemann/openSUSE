@@ -1,0 +1,186 @@
+From 04303172d4f96b284e0c915ce4a7b87e1439bb87 Mon Sep 17 00:00:00 2001
+From: Robin Jarry <robin@jarry.cc>
+Date: Sun, 8 Jan 2023 20:44:22 +0100
+Subject: [PATCH] filters: install them in $PREFIX/libexec/aerc/filters
+
+The filesystem hierarchy standard describes /usr/share as
+"Architecture-independent data". This folder is not intended for
+executable scripts and especially not for arch specific binary files
+(such as the wrap filter).
+
+Lintian reports an error with aerc 0.14.0:
+
+  arch-dependent-file-in-usr-share [usr/share/aerc/filters/wrap]
+
+Which I had to fix by moving the filter into /usr/libexec.
+
+Install all filters into $PREFIX/libexec/aerc/filters and update the
+default SearchDirs to look them up in here as well.
+
+Link: https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s11.html
+Link: https://salsa.debian.org/go-team/packages/aerc/-/commit/a0ca00260ffd
+Signed-off-by: Robin Jarry <robin@jarry.cc>
+Acked-by: Moritz Poldrack <moritz@poldrack.dev>
+---
+ Makefile                 | 21 ++++++++++++---------
+ config/config.go         | 12 +++++++++++-
+ doc/aerc-config.5.scd    |  7 +++++--
+ doc/aerc-templates.7.scd |  4 ++--
+ 4 files changed, 30 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 49cc571..b475405 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,7 @@ VPATH=doc
+ PREFIX?=/usr/local
+ BINDIR?=$(PREFIX)/bin
+ SHAREDIR?=$(PREFIX)/share/aerc
++LIBEXECDIR?=$(PREFIX)/libexec/aerc
+ MANDIR?=$(PREFIX)/share/man
+ GO?=go
+ GOFLAGS?=
+@@ -17,6 +18,7 @@ GO_LDFLAGS:=
+ GO_LDFLAGS+=-X main.Version=$(VERSION)
+ GO_LDFLAGS+=-X main.Flags=$(flags)
+ GO_LDFLAGS+=-X git.sr.ht/~rjarry/aerc/config.shareDir=$(SHAREDIR)
++GO_LDFLAGS+=-X git.sr.ht/~rjarry/aerc/config.libexecDir=$(LIBEXECDIR)
+ GO_LDFLAGS+=$(GO_EXTRA_LDFLAGS)
+ 
+ GOSRC!=find * -name '*.go' | grep -v filters/wrap.go
+@@ -112,7 +114,7 @@ clean:
+ install: $(DOCS) aerc wrap
+ 	mkdir -m755 -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1 $(DESTDIR)$(MANDIR)/man5 $(DESTDIR)$(MANDIR)/man7 \
+ 		$(DESTDIR)$(SHAREDIR) $(DESTDIR)$(SHAREDIR)/filters $(DESTDIR)$(SHAREDIR)/templates $(DESTDIR)$(SHAREDIR)/stylesets \
+-		$(DESTDIR)$(PREFIX)/share/applications
++		$(DESTDIR)$(PREFIX)/share/applications $(DESTDIR)$(LIBEXECDIR)/filters
+ 	install -m755 aerc $(DESTDIR)$(BINDIR)/aerc
+ 	install -m644 aerc.1 $(DESTDIR)$(MANDIR)/man1/aerc.1
+ 	install -m644 aerc-search.1 $(DESTDIR)$(MANDIR)/man1/aerc-search.1
+@@ -130,14 +132,14 @@ install: $(DOCS) aerc wrap
+ 	install -m644 config/accounts.conf $(DESTDIR)$(SHAREDIR)/accounts.conf
+ 	install -m644 config/aerc.conf $(DESTDIR)$(SHAREDIR)/aerc.conf
+ 	install -m644 config/binds.conf $(DESTDIR)$(SHAREDIR)/binds.conf
+-	install -m755 filters/calendar $(DESTDIR)$(SHAREDIR)/filters/calendar
+-	install -m755 filters/colorize $(DESTDIR)$(SHAREDIR)/filters/colorize
+-	install -m755 filters/hldiff $(DESTDIR)$(SHAREDIR)/filters/hldiff
+-	install -m755 filters/html $(DESTDIR)$(SHAREDIR)/filters/html
+-	install -m755 filters/html-unsafe $(DESTDIR)$(SHAREDIR)/filters/html-unsafe
+-	install -m755 filters/plaintext $(DESTDIR)$(SHAREDIR)/filters/plaintext
+-	install -m755 filters/show-ics-details.py $(DESTDIR)$(SHAREDIR)/filters/show-ics-details.py
+-	install -m755 wrap $(DESTDIR)$(SHAREDIR)/filters/wrap
++	install -m755 filters/calendar $(DESTDIR)$(LIBEXECDIR)/filters/calendar
++	install -m755 filters/colorize $(DESTDIR)$(LIBEXECDIR)/filters/colorize
++	install -m755 filters/hldiff $(DESTDIR)$(LIBEXECDIR)/filters/hldiff
++	install -m755 filters/html $(DESTDIR)$(LIBEXECDIR)/filters/html
++	install -m755 filters/html-unsafe $(DESTDIR)$(LIBEXECDIR)/filters/html-unsafe
++	install -m755 filters/plaintext $(DESTDIR)$(LIBEXECDIR)/filters/plaintext
++	install -m755 filters/show-ics-details.py $(DESTDIR)$(LIBEXECDIR)/filters/show-ics-details.py
++	install -m755 wrap $(DESTDIR)$(LIBEXECDIR)/filters/wrap
+ 	install -m644 templates/new_message $(DESTDIR)$(SHAREDIR)/templates/new_message
+ 	install -m644 templates/quoted_reply $(DESTDIR)$(SHAREDIR)/templates/quoted_reply
+ 	install -m644 templates/forward_as_body $(DESTDIR)$(SHAREDIR)/templates/forward_as_body
+@@ -180,6 +182,7 @@ uninstall:
+ 	$(RM) $(DESTDIR)$(MANDIR)/man7/aerc-templates.7
+ 	$(RM) $(DESTDIR)$(MANDIR)/man7/aerc-stylesets.7
+ 	$(RM) -r $(DESTDIR)$(SHAREDIR)
++	$(RM) -r $(DESTDIR)$(LIBEXECDIR)
+ 	${RMDIR_IF_EMPTY} $(DESTDIR)$(BINDIR)
+ 	$(RMDIR_IF_EMPTY) $(DESTDIR)$(MANDIR)/man1
+ 	$(RMDIR_IF_EMPTY) $(DESTDIR)$(MANDIR)/man5
+diff --git a/config/config.go b/config/config.go
+index 09fb5ef..12da665 100644
+--- a/config/config.go
++++ b/config/config.go
+@@ -31,12 +31,14 @@ func mapName(raw string) string {
+ 
+ // Set at build time
+ var shareDir string
++var libexecDir string
+ 
+ func buildDefaultDirs() []string {
+ 	var defaultDirs []string
+ 
+ 	prefixes := []string{
+ 		xdg.ConfigHome(),
++		"~/.local/libexec",
+ 		xdg.DataHome(),
+ 	}
+ 
+@@ -51,7 +53,13 @@ func buildDefaultDirs() []string {
+ 		}
+ 	}
+ 
+-	// Add custom buildtime shareDir
++	// Add custom buildtime dirs
++	if libexecDir != "" && libexecDir != "/usr/local/libexec/aerc" {
++		libexecDir, err := homedir.Expand(libexecDir)
++		if err == nil {
++			defaultDirs = append(defaultDirs, libexecDir)
++		}
++	}
+ 	if shareDir != "" && shareDir != "/usr/local/share/aerc" {
+ 		shareDir, err := homedir.Expand(shareDir)
+ 		if err == nil {
+@@ -60,7 +68,9 @@ func buildDefaultDirs() []string {
+ 	}
+ 
+ 	// Add fixed fallback locations
++	defaultDirs = append(defaultDirs, "/usr/local/libexec/aerc")
+ 	defaultDirs = append(defaultDirs, "/usr/local/share/aerc")
++	defaultDirs = append(defaultDirs, "/usr/libexec/aerc")
+ 	defaultDirs = append(defaultDirs, "/usr/share/aerc")
+ 
+ 	return defaultDirs
+diff --git a/doc/aerc-config.5.scd b/doc/aerc-config.5.scd
+index 474c005..410b40a 100644
+--- a/doc/aerc-config.5.scd
++++ b/doc/aerc-config.5.scd
+@@ -606,8 +606,8 @@ filters need to be able to read from standard input. Many programs support
+ reading from stdin by putting _-_ instead of a path to a file. You can also
+ chain together multiple filters by piping with _|_.
+ 
+-aerc ships with some default filters installed in the share directory (usually
+-_/usr/share/aerc/filters_). Note that these may have additional dependencies
++aerc ships with some default filters installed in the libexec directory (usually
++_/usr/libexec/aerc/filters_). Note that these may have additional dependencies
+ that aerc does not have alone.
+ 
+ The filter commands are invoked with _sh -c command_. The following folders are
+@@ -615,8 +615,11 @@ appended to the system *$PATH* to allow referencing filters from their name only
+ 
+ ```
+ ${XDG_CONFIG_HOME:-~/.config}/aerc/filters
++~/.local/libexec/aerc/filters
+ ${XDG_DATA_HOME:-~/.local/share}/aerc/filters
++$PREFIX/libexec/aerc/filters
+ $PREFIX/share/aerc/filters
++/usr/libexec/aerc/filters
+ /usr/share/aerc/filters
+ ```
+ 
+diff --git a/doc/aerc-templates.7.scd b/doc/aerc-templates.7.scd
+index 67d5c11..8e61618 100644
+--- a/doc/aerc-templates.7.scd
++++ b/doc/aerc-templates.7.scd
+@@ -111,7 +111,7 @@ aerc provides the following additional functions:
+ 	Execute external command, provide the second argument to its stdin.
+ 
+ 	```
+-	{{exec `/usr/local/share/aerc/filters/html` .OriginalText}}
++	{{exec `/usr/libexec/aerc/filters/html` .OriginalText}}
+ 	```
+ 
+ *toLocal*
+@@ -142,7 +142,7 @@ aerc provides the following additional functions:
+ 	Example: Automatic HTML parsing for text/html mime type messages
+ 	```
+ 	{{if eq .OriginalMIMEType "text/html"}}
+-	{{exec `/usr/local/share/aerc/filters/html` .OriginalText | wrap 72 | quote}}
++	{{exec `/usr/libexec/aerc/filters/html` .OriginalText | wrap 72 | quote}}
+ 	{{else}}
+ 	{{wrap 72 .OriginalText | quote}}
+ 	{{end}}
+-- 
+2.34.5
+
