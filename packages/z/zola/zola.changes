@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 20 00:40:40 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.17.2:
+  * Implement Default for LanguageOptions (#2145)
+  * Fix tests
+  * Update changelog
+  * Revert "Allow external links to start with "www.*" (#2100)"
+  * Fix index errors (#2129)
+  * Fix a page missing from e2e test
+  * Update links to tmtheme editor
+  * fix: add "slug" where it was forgotten (#2132)
+  * installing-and-using-themes.md: Change placeholder format for git repo URL (#2128)
+  * installation.md: add Nix installation instructions (#2126)
+  * Update Metainfo (#2125)
+  * Use default search engine output
+
+-------------------------------------------------------------------
 Mon Feb 27 09:58:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Increase memory size to fix "Out of memory error" during builds
