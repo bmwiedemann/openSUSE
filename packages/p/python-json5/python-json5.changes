@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:22:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.13:
+  * Remove a field from one of the JSON benchmark files to
+    reduce confusion in Chromium.
+  * No code changes. 
+
+-------------------------------------------------------------------
 Wed Jan  4 19:58:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.12:

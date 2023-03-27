@@ -25,7 +25,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-json5
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        A Python implementation of the JSON5 data format
 License:        Apache-2.0
