@@ -80,4 +80,12 @@
     <comment>- Update to version 3.42.0.</comment>
     <requestid>933298</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>792db760816b467d0eb9a98566b96721</srcmd5>
+    <version>3.46.1</version>
+    <time>1679933879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 3.46.1.</comment>
+    <requestid>1074710</requestid>
+  </revision>
 </revisionlist>

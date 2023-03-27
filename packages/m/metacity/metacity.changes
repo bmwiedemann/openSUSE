@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:08:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update version to 3.46.1 (changes since 3.42.0):
+  * Fix crash minimising parent window.
+  * Fix fullscreen for Wine windows.
+  * Improve switching between windows of same application.
+  * Fix crash when background pixmap has non-default depth.
+  * Unminimise child window together with main window.
+  * Updated translations.
+- Drop metacity-glib-2.62.patch: no supported distribution uses it.
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.42.0:

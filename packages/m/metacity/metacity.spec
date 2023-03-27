@@ -1,7 +1,7 @@
 #
 # spec file for package metacity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %define soname  libmetacity
 %define sover   3
-%define _version 3.42
+%define _version 3.46
 Name:           metacity
-Version:        3.42.0
+Version:        3.46.1
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://wiki.gnome.org/Projects/Metacity
 Source:         https://download.gnome.org/sources/metacity/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE metacity-glib-2.62.patch -- Restore GLib 2.62 support.
-Patch0:         %{name}-glib-2.62.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -46,6 +44,7 @@ BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(pango) >= 1.2.0
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite) >= 0.2
 BuildRequires:  pkgconfig(xcursor)
@@ -61,9 +60,6 @@ Requires:       zenity
 Recommends:     %{name}-lang
 Provides:       windowmanager
 %glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
-BuildRequires:  pkgconfig(vulkan)
-%endif
 
 %description
 Metacity is a window manager using GTK to do everything.
@@ -110,7 +106,7 @@ needed to develop applications that require libmetacity.
 
 %build
 autoreconf -fi
-%configure\
+%configure \
   --disable-static
 %make_build
 
@@ -121,6 +117,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
+
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
