@@ -1,11 +1,16 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/wez/libssh-rs.git"]
+[source."git+https://github.com/image-rs/image.git?rev=fe069785ae245a2c510fd724ef96da283b05a236"]
+git = "https://github.com/image-rs/image.git"
+rev = "fe069785ae245a2c510fd724ef96da283b05a236"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/wez/libssh-rs.git"]
 git = "https://github.com/wez/libssh-rs.git"
 replace-with = "vendored-sources"
 
-[source."https://github.com/wez/xcb-imdkit-rs.git"]
+[source."git+https://github.com/wez/xcb-imdkit-rs.git?branch=hangfix"]
 git = "https://github.com/wez/xcb-imdkit-rs.git"
 branch = "hangfix"
 replace-with = "vendored-sources"

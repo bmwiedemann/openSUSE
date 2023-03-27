@@ -212,4 +212,202 @@
     <comment></comment>
     <requestid>1065634</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b4552ee96c1f8017e2346230f4410e23</srcmd5>
+    <version>20230326.111934.3666303c</version>
+    <time>1679933781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230326.111934.3666303c:
+  * docs: show the return values of the new pane:move_to_xxx methods
+  * mux: add lua api equivalent to move-pane-to-new-tab
+  * mux: forward move-pane-to-new-tab requests to hosting mux
+  * ci: automate making PR for flathub at release time
+  * hyperlink_rules.md: add link supported regex syntax
+  * mux: move-pane-to-new-tab didn't resync structure
+  * tidy up some debug logging
+  * mux: fix some dpi and pixel size issues
+  * images: improve logging when things are weird
+  * When a modal is active, it gets first dibs on key processing
+  * palette: exclude copy mode actions unless copy mode is active
+  * macos: invalidate window when dispatching from menubar
+  * Add new-tab-button-click event
+  * palette: prioritize platform-appropriate shortcuts
+  * palette: refactor slightly
+  * palette: add config for how ui key caps render
+  * update tests for updated JetBrainsMono
+  * update bundled JetBrainsMono to 2.304
+  * palette: show key assignment alongside entries
+  * ci: Use nextest (#3342)
+  * palette: show the label from the command in the palette
+  * docs: changelog for https://github.com/wez/wezterm/pull/3344
+  * refactor(config &amp; macos/windows): rename window_background_blur to macos_window_background_blur
+  * feat(config &amp; window): use CGSSetWindowBackgroundBlurRadius to set background blur on macos
+  * docs: clarify the default for allow_square_glyphs_to_overflow_width
+  * more entitlements on macos
+  * re-run black ci/generate-workflows.py
+  * ci: Use rust-cache instead of the general cache action (#3341)
+  * fix(ci): Use install action instead of manually calling `cargo-install`
+  * fixup for running the tests
+  * add wezterm cli activate-pane, wezterm cli activate-tab
+  * Add: wezterm cli kill-pane
+  * mux: notify clients when the size/structure of a tab changes
+  * mux: propagate pane focus change events to clients
+  * reformat generate-workflows.py with black
+  * update terminfo to 0.8
+  * chore: Regenerate workflows
+  * fix(ci): Wrong path to tag-name.sh
+  * fixup images with the multiplexer
+  * macos: be precised about matching cocoa BOOL
+  * macos: don't treat command line args as .command scripts
+  * docs: changelog for #3339
+  * Fix leak of Pane struct
+  * wezterm-ssh: fix occasional segv on libssh shutdown
+  * wezterm-ssh: tidy up test output
+  * docs: note about sigmask change
+  * fix: disable mouse reporting for RIS/ResetTerminal sequence
+  * pty: unix: empty signal mask in the spawned child
+  * Update shell-integration.md
+  * factor window border sizes when computing window sizes
+  * docs: changelog for #3323 #2879 #3303
+  * fix: wezterm cli activate-pane-direction now repaints (#3303)
+  * docs: add --help output from various wezterm cli subcommands
+  * term: adjust logical line wrapping behavior
+  * fix lua string escaping in wezterm show-keys
+  * docs: updated window_decorations
+  * docs: changelog for #3330
+  * cargo update
+  * Fix transparent title bar on macOS with `window_decorations = &quot;RESIZE|MACOS_FORCE_DISABLE_SHADOW&quot;` (#3330)
+  * allow json encoding wezterm.GLOBAL entries
+  * fix delegation of --skip-config to wezterm-gui
+  * Fix some documentation pages (#3321)
+  * docs: changelog for #3227
+  * Apply suggestions from code review
+  * Changed config option name to mouse_wheel_scrolls_tabs, made it default to true (matching current behavior)
+  * Cargo formatted
+  * Add docs for new scroll_tabs config option
+  * Add config option for scrolling the tab bar
+  * add __len and __pairs metamethods to wezterm.GLOBALS
+  * ci: persuade zypper to install deps in get-deps
+  * get-deps: set -e
+  * docs: add --help output pages to the CLI reference
+  * minor update to zsh completion
+  * docs: improve color scheme page titles
+  * docs: simplify scheme aliases a bit more
+  * docs: fix handling of color scheme aliases
+  * docs: boost font page in search index
+  * docs: allow search to find 'changelog'
+  * docs: use strict mode to hopefully catch invalid links
+  * docs: simplify templating of install pages
+  * keys: avoid scrolling to bottom when CapsLock is pressed
+  * linuxbrew: 20 rather than 22
+  * wezterm-ssh: fix parsing of proxycommand
+  * Update wezterm-linuxbrew.rb.template
+  * docs: update a bunch of since lines to new macro
+  * docs: update nightly features -&gt; current release
+  * docs: fix fedora37 stable download link
+  * docs: update linux releases
+  * Docs: update changelog for 20230320-124340-559cb7b0 release
+  * schemes: we now allow using any of the alias names, so refine docs
+  * sync from https://github.com/folke/tokyonight.nvim
+  * sync color schemes
+  * sync-color-schemes: handle renamed schemes slightly better
+  * sync-color-schemes: update for recent gogh schema changes
+  * minor optimization for single-frame animated formats
+  * fix potential deadlock when using wezterm cli split-pane
+  * deps: update predicates for wezterm-ssh tests
+  * ci: remove some builds
+  * build(deps): bump rstest from 0.16.0 to 0.17.0
+  * docs: fix typo in changelog
+  * docs: use snippets to make since: nightly more informative
+  * docs: allow using GH issue syntax shorthands
+  * build(deps): bump actions/deploy-pages from 1 to 2
+  * docs: more config.something style adjustments
+  * docs: shift from return {} style to config.something style
+  * remove open dependency
+  * add own open_url crate
+  * time: call_after accepts fractional seconds
+  * fix split size after unzooming, when the window size is unchanged
+  * fix hover state for retro tab bar
+  * fix(clippy): Remove closures where possible
+  * fix(clippy): Use `faster` methods on Iterators
+  * Convert admonition blocks to markdown equivalent
+  * fix time.call_after when used inside an event callback
+  * mouse: don't over invalidate when hovering tabs
+  * fix non-serde termwiz build
+  * clean up blob storage on shutdown
+  * use blob leases for decoded animation frames
+  * ImageDataType::File -&gt; EncodedLease
+  * add wezterm-blob-leases crate
+  * docs: fix video link on features page
+  * fix kitty image protocol handling
+  * handle unsupported images better
+  * fix: rewrite `.` when fetching path in lua plugin crate
+  * docs: restore foo.html rather than foo/index.html style URLs
+  * Image decoding is now done in a bg thread
+  * move animation decoding from term layer to gui layer
+  * Use mkdocs admonish for note about mux color schemes
+  * term: avoid breaking animated webp images when resizing
+  * term: improve readability of error message for oversized image
+  * fix iterm2 image cursor position
+  * pages: run only one at a time, allow them to queue up
+  * improve default hyperlink_rules. add default_hyperlink_rules()
+  * fix DisableDefaultAssignment not working for CTRL|SHIFT P
+  * apply reloaded config to all panes, regardless of zoom state
+  * Set minimum animation frame duration to match max_fps
+  * Update Homebrew section
+  * docs: Correct to new URL
+  * fix(clippy): Remove unnecessary clone/to_string calls
+  * fix trigger paths!
+  * ci: adjust wezterm-ssh triggers
+  * revise verify-pages triggers and workflow
+  * ci: adjust termwiz workflow path triggers
+  * docs: changelog for https://github.com/wez/wezterm/pull/3146
+  * Improve XDG configuration searching
+  * fix: typo about parameter
+  * docs: make them build on macos again
+  * add log_unknown_escape_sequences config option
+  * docs: don't build now-unused mdbook bits
+  * ci: workflow should run when its file is changed
+  * docs: disable instant page nav
+  * ci: adjust path triggers
+  * docs: some adjustments for mkdocs
+  * docs: switch doc build to Material for MkDocs
+  * improve handling of animated webp images
+  * fix(clippy): Derive Default where possible
+  * Apply suggestions from code review
+  * Update docs/shell-integration.md
+  * Add function for users powershell + starship
+  * build(pty): don't use `std::os::fd::RawFd` symbol directly
+  * deps: open -&gt; 4.0
+  * wezterm-ssh: fix leaky tests, as described in https://nexte.st/book/leaky-tests.html
+  * docs: fix pane:split direction top/bottom -&gt; up/down
+  * include ssh config map in debug logging when running wezterm ssh -v
+  * Add comment
+  * Filter figterm from stateful check
+  * gdi.rs: Avoid non-idiomatic iterations over Option, they cause warnings
+  * ssh: support %l and %L in config files
+  * deps: socket2 -&gt; 0.5
+  * docs: add mdbook-admonish
+  * ci: docs: deploy directly, rather than via gh_pages branch
+  * docs: fixup get_pane_direction docs
+  * Fix typo in &quot;Terminal Emulators and PTYs&quot; section
+  * add docs
+  * simplify direction conversion to lua
+  * add lua methods to access position and pane in the direction
+  * ci: try harder for app image build
+  * docs: shell-integration: document Xonsh support
+  * ci: maybe fix appimage build
+  * ci: generate appimage from ubuntu20
+  * termwiz: bump version ready for publish
+  * fix(input): support alt-left-bracket
+  * maybe fix win32 build
+  * ssh: detect exit-signal state for channels
+  * wsl: default_cwd is now ~
+  * ls-fonts: emulate the effect of normalize_output_to_unicode_nfc
+  * Allow negative number for cli get-text line
+  * make command palette font a little larger
+  * docs: command palette font size/color
+</comment>
+    <requestid>1074526</requestid>
+  </revision>
 </revisionlist>
