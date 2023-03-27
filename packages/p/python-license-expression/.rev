@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>1005442</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aad26f15105ce99bcd096d89c411fb9f</srcmd5>
+    <version>30.1.0</version>
+    <time>1679933774</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 30.1.0
+  * This is a minor release without API changes
+  * Use latest skeleton (and updated configure script)
+  * Update license list to latest ScanCode and SPDX 3.19
+  * Use correct syntax for python_require
+  * Drop using Travis and Appveyor
+  * Drop support for Python 3.7 and add Python 3.11</comment>
+    <requestid>1074505</requestid>
+  </revision>
 </revisionlist>

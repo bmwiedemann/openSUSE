@@ -1,7 +1,7 @@
 #
 # spec file for package python-license-expression
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-license-expression
-Version:        30.0.0
+Version:        30.1.0
 Release:        0
 Summary:        Library to parse, compare, simplify and normalize license expressions
 License:        Apache-2.0

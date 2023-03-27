@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:48:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 30.1.0
+  * This is a minor release without API changes
+  * Use latest skeleton (and updated configure script)
+  * Update license list to latest ScanCode and SPDX 3.19
+  * Use correct syntax for python_require
+  * Drop using Travis and Appveyor
+  * Drop support for Python 3.7 and add Python 3.11
+
+-------------------------------------------------------------------
 Thu Sep 22 11:33:49 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Requires boolean.py 4.0 or newer
