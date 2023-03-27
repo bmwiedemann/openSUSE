@@ -188,4 +188,25 @@
     <comment></comment>
     <requestid>1042887</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>70ba2269de04ea89d76d0a8913f90b06</srcmd5>
+    <version>1.13.0</version>
+    <time>1679933776</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * This release includes a new `Bytes` *Parameter* and a few
+    important bug fixes. This release is also marked by the
+    adoption of a formal project governance, ensuring Param's
+    future as a healthy open-source project. Many thanks to
+    @ovidner and @droumis for their first contributions! And to
+    @maximlt, @Hoxbro, @jlstevens, @philippjfr and @jbednar for
+    their continuing support to fixing and improving Param.
+  * Fix copying when having watchers on e.g. bounds on inherited
+    Parameter types (#675)
+  * Allow JSON serialization to work with `json.dumps` (#655)
+  * `ListSelector` restricted to `list` type objects (#531)
+  * Fix `depends` async wrapper (#684)
+  * Allow named colors to be any case (#711)</comment>
+    <requestid>1074514</requestid>
+  </revision>
 </revisionlist>
