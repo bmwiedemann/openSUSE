@@ -67,4 +67,15 @@
     <comment>(CVE-2022-45155, bsc#1201138, bsc#1201140). (forwarded request 1068711 from eeich)</comment>
     <requestid>1068974</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>652a0833ee8a7fb30921755054d3fbd4</srcmd5>
+    <version>0.6.2</version>
+    <time>1679933847</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2:
+  * Better skipping of non-compressed archive extensions (like .tar.gz.asc)
+  * Adjust flake8 settings to match what black is doing
+  * fix flake8 errors and add flake8 Github Action (#28)</comment>
+    <requestid>1074630</requestid>
+  </revision>
 </revisionlist>

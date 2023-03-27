@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:39:15 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.6.2:
+  * Better skipping of non-compressed archive extensions (like .tar.gz.asc)
+  * Adjust flake8 settings to match what black is doing
+  * fix flake8 errors and add flake8 Github Action (#28)
+
+-------------------------------------------------------------------
 Thu Mar 02 09:51:35 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.6.1:
