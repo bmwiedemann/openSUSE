@@ -1809,4 +1809,18 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>1041676</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>5f9299842ae93e209198e86e2a6f784b</srcmd5>
+    <version>7.10.0</version>
+    <time>1680018667</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-fix-compile-DNG-SDK-with-GCC13.patch
+
+- Update to 7.10.0:
+  * https://www.digikam.org/news/2023-03-13-7.10.0_release_announcement/
+- Drop patch, no longer needed:
+  * 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch</comment>
+    <requestid>1074923</requestid>
+  </revision>
 </revisionlist>

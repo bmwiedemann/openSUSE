@@ -16,45 +16,36 @@
 #
 
 
-%define soversion 7_9_0
+%define soversion 7_10_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.9.0
+Version:        7.10.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://www.digikam.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
-# PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
-Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-fix-compile-DNG-SDK-with-GCC13.patch
 # QtWebEngine is not available on ppc and zSystems
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lensfun
-BuildRequires:  lensfun-devel
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libeigen3-devel
-BuildRequires:  libexiv2-devel >= 0.26
-BuildRequires:  libexpat-devel
-BuildRequires:  libjasper-devel
-BuildRequires:  libjpeg8-devel
-BuildRequires:  liblcms2-devel
+BuildRequires:  libexiv2-devel >= 0.27.1
 BuildRequires:  liblqr-devel
-BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  opencv-devel >= 3.4.0
+BuildRequires:  opencv-devel >= 3.3.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 %if %{with apidocs}
@@ -65,6 +56,7 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5I18n)
@@ -75,15 +67,16 @@ BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Sane)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5ThreadWeaver) >= 5.5.0
+BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.9.0
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
@@ -94,21 +87,30 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
 BuildRequires:  cmake(libheif)
 BuildRequires:  pkgconfig(Magick++)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(lensfun)
+BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(zlib)
 %if 0%{suse_version} >= 1550
 BuildRequires:  ffmpeg-4-libavcodec-devel
 BuildRequires:  ffmpeg-4-libavdevice-devel
 BuildRequires:  ffmpeg-4-libavfilter-devel
 BuildRequires:  ffmpeg-4-libavformat-devel
 BuildRequires:  ffmpeg-4-libavutil-devel
+BuildRequires:  ffmpeg-4-libswscale-devel
 %else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-%endif
-BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libswscale)
+%endif
 Requires:       %{name}-plugins
 Requires:       libQt5Sql5-sqlite
 Recommends:     marble
@@ -139,7 +141,6 @@ delete your images, is provided.
 
 %package plugins
 Summary:        DigiKam plugins
-Group:          Productivity/Graphics/Viewers
 Recommends:     enblend-enfuse
 Recommends:     hugin
 
@@ -148,7 +149,6 @@ Additional plugins for digiKam.
 
 %package devel
 Summary:        DigiKam development files
-Group:          Development/Libraries/KDE
 Requires:       libdigikamcore%{soversion} = %{version}
 
 %description devel
@@ -156,7 +156,6 @@ Development headers and libraries for digiKam.
 
 %package -n showfoto
 Summary:        DigiKam: Showfoto
-Group:          Productivity/Graphics/Viewers
 Supplements:    %{name}
 
 %description -n showfoto
@@ -164,7 +163,6 @@ Additional program to browse and view photos
 
 %package -n libdigikamcore%{soversion}
 Summary:        The main digikam libraries
-Group:          Development/Libraries/KDE
 Recommends:     %{name}-plugins
 
 %description -n libdigikamcore%{soversion}
@@ -173,10 +171,11 @@ The main digikam libraries that are being shared between showfoto and digikam
 %lang_package
 
 %prep
-%setup -q
-%if 0%{?suse_version} <= 1500
-# Leap 15 only has exiv2 0.26
-%patch0 -p1
+%autosetup -p1
+
+%if %{pkg_vcmp cmake(KF5AkonadiContact) >= 23.03.80}
+# Digikam doesn't look explicitly for akonadi-server but relies on AkonadiContact dependencies
+sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addressbook/CMakeLists.txt
 %endif
 
 %build
@@ -195,14 +194,11 @@ The main digikam libraries that are being shared between showfoto and digikam
 %suse_update_desktop_file -r org.kde.showfoto Qt KDE Graphics Photography
 %endif
 
-%if %{with released}
 %find_lang %{name} --without-kde
-%endif
 
 %fdupes %{buildroot}
 
-%post -n libdigikamcore%{soversion} -p /sbin/ldconfig
-%postun -n libdigikamcore%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdigikamcore%{soversion}
 
 %files
 %{_kf5_bindir}/digikam
@@ -248,12 +244,10 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %files -n libdigikamcore%{soversion}
 %license COPYING*
-%{_kf5_libdir}/libdigikamcore.so.7.9.0
-%{_kf5_libdir}/libdigikamdatabase.so.7.9.0
-%{_kf5_libdir}/libdigikamgui.so.7.9.0
+%{_kf5_libdir}/libdigikamcore.so.7.10.0
+%{_kf5_libdir}/libdigikamdatabase.so.7.10.0
+%{_kf5_libdir}/libdigikamgui.so.7.10.0
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

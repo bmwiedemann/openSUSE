@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 28 08:43:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-fix-compile-DNG-SDK-with-GCC13.patch
+
+-------------------------------------------------------------------
+Mon Mar 20 15:39:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.10.0:
+  * https://www.digikam.org/news/2023-03-13-7.10.0_release_announcement/
+- Drop patch, no longer needed:
+  * 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+
+-------------------------------------------------------------------
 Thu Dec  8 11:18:22 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 7.9.0:
