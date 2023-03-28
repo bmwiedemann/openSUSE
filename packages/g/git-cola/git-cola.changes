@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Mar 27 19:35:28 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.2.0
+- Usability, bells and whistles
+* The Diff Editor can now send diffs to your favorite editor before the diffs are applied.
+  The right-click "Edit Diff ..." menu actions and the `Ctrl + Shift + S` /
+  `Ctrl + Shift + U` hotkeys send the current diff hunk, or the selected diff, to your
+  editor before they are applied to the worktree / staging area.
+  https://github.com/git-cola/git-cola/pull/1290
+  https://github.com/git-cola/git-cola/issues/794
+* The Diff Editor and DAG viewer can now search within their diffs using
+  `Ctrl + F` and `Ctrl + G` hotkeys.
+  https://github.com/git-cola/git-cola/issues/1116
+* A new *Diff Mode* can be used to diff and unstage edits relative to any commit.
+  https://github.com/git-cola/git-cola/issues/816
+* The Commit Message Editor can now spell-check the summary field. Previously only the
+  "Extended Description..." field supported spell checking.
+  https://github.com/git-cola/git-cola/issues/633
+  https://github.com/git-cola/git-cola/issues/1070
+* Repositories in your "Recents" and "Favorites" can now be searched using the new
+  "Search" tool button. Quickly switch between these repositories using the `Alt + P`
+  hotkey and "Quick Open..." File menu action.
+  https://github.com/git-cola/git-cola/pull/1282
+* "Favorites", "Recents" and the startup dialog now display a case-insensitively
+  sorted list of repositories.
+  https://github.com/git-cola/git-cola/issues/1047
+* The startup dialog now has a right-click context menu that allows you to prune
+  stale entries and other actions that were not previously accessible from
+  the startup dialog.
+  https://github.com/git-cola/git-cola/issues/1199
+  https://github.com/git-cola/git-cola/pull/1280
+* The "Copy Leading Paths" action in the Status tool's right-click "Copy" sub-menu
+  can now strip off an arbitrary number of leading paths.
+  https://github.com/git-cola/git-cola/issues/784
+* The "Cherry-Pick" action now reports errors when "git cherry-pick" fails.
+  A new "Abort Cherry-Pick" action has been added for aborting a failed cherry-pick.
+  https://github.com/git-cola/git-cola/issues/1062
+* The diff text can now be quickly zoomed using `Ctrl + Mouse wheel` scroll.
+  This will quickly change the text size within the current session only.
+  https://github.com/git-cola/git-cola/issues/1029
+* The Console and Diff widgets learned to open URLs. Right-click on a line
+  that contains http URLs and context-menu actions for opening each URL
+  using your default web browser will be displayed.
+  https://github.com/git-cola/git-cola/issues/1139
+* Drag-and-drop has been improved when dragging filenames from the Status tool.
+  Dragging multiple files requires special handling to improve usability.
+  Some terminals (such as `kitty`) consume multiple file URLs by separating paths with
+  newlines. This is useful when you'd like to capture raw filenames but is less
+  convenient when dropping  filenames onto a command-line. Drag with the `Alt`-modifier
+  held down to drag-and-drop filenames for command-line use. Using the `Alt` modifier
+  omits URLs so that the drag-and-drop payload includes only space-delimited,
+  shell-quoted paths.
+  https://github.com/git-cola/git-cola/issues/719
+* The DAG viewer now displays the diff between the start and end commits when
+  multiple commits are selected. The diffs are displayed in the DAG's diff viewer.
+  https://github.com/git-cola/git-cola/issues/552
+* The DAG viewer learned to checkout branches and initiate rebases from its right-click menu.
+  https://github.com/git-cola/git-cola/issues/1113
+* The DAG diff viewer learned to word-wrap the diff text.
+  https://github.com/git-cola/git-cola/issues/1242
+* The spelling dictionaries are now discovered dynamically at runtime.
+  `dict/words` and `dict/propernames` are now discovered via `$XDG_DATA_DIRS`
+  by the spell checker. This allows a spelling dictionary to be placed in eg.
+  `~/.local/share/dict/words` to override the default `/usr/share/dict/words`.
+  https://github.com/git-cola/git-cola/issues/873
+* The File menu now has a "Patches" sub-menu with a full set of "git am" Patch actions.
+* The Diff Editor and various Diff widgets now have a "Copy Diff" action with an
+  `Alt + Shift + C` hotkey that copies the selected diff text to the clipboard with the
+  `+`, `-` and `<Space>` diff prefix characters removed.
+  https://github.com/git-cola/git-cola/issues/1288
+* The "Revert" action for reverting commits from the DAG tool now displays error
+  messages when ``git revert`` fails.
+  https://github.com/git-cola/git-cola/issues/885
+* The Diff Editor now uses an easier-to-see *block cursor* by default.
+  Disable `cola.blockcursor <https://git-cola.readthedocs.io/en/latest/git-cola.html#cola-blockcursor>`_
+  to continue using original *line cursor* by running
+  ``git config --global cola.blockcursor false``, or by editing the settings in the menu.
+* The "Unmerged" header item in the Status tool now displays a summary list of unmerged files.
+* The hotkeys documentation has been updated to clarify that the "Copy Commit ID"
+  action is available in several tools.
+  https://github.com/git-cola/git-cola/issues/779
+* Saving files when using "Browse Other Branch" now displays errors from
+  ``git show`` when saving files from arbitrary commits.
+  https://github.com/git-cola/git-cola/issues/1065
+* The Apply Patches dialog now reports errors when patches fail to apply.
+  https://github.com/git-cola/git-cola/issues/673
+* The "Status" tool now disables "Copy" actions in its context menu when no
+  files have been selected.
+  https://github.com/git-cola/git-cola/issues/697
+* The "Unstage" menu item in the Status tool now uses a "Remove" icon.
+  https://github.com/git-cola/git-cola/pull/1289
+- Development
+* The vendored `qtpy` module was modified to sever its dependency on the
+  `packaging.version` module. This mostly affects users that want to run
+  Git Cola directly from the the source tree outside of any virtualenv.
+  https://github.com/git-cola/git-cola/issues/1286
+
+-------------------------------------------------------------------
 Wed Feb 15 06:57:08 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Added python3-qt5 to requires.
