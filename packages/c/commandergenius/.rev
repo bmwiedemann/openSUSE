@@ -274,4 +274,12 @@
   * Fixed some ledge grabbing issues. (forwarded request 1042029 from mnhauke)</comment>
     <requestid>1042082</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d53062f5f6c574f37ad8b95d3a2cae65</srcmd5>
+    <version>3.2.0</version>
+    <time>1680018684</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-resolve-compile-error-with-gcc-13.patch</comment>
+    <requestid>1074937</requestid>
+  </revision>
 </revisionlist>

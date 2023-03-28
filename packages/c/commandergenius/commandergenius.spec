@@ -1,7 +1,7 @@
 #
 # spec file for package commandergenius
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@ Group:          Amusements/Games/Action/Arcade
 URL:            http://clonekeenplus.sf.net/
 #Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius
 Source:         https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v%version/Commander-Genius-v%version.tar.bz2
-Patch0:         fix-icons.patch
+Patch1:         fix-icons.patch
+Patch2:         0001-build-resolve-compile-error-with-gcc-13.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
