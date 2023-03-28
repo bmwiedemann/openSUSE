@@ -126,4 +126,13 @@
 - Update to 1.11.1.1189:</comment>
     <requestid>1073539</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5c775ef6762d9e5268aa294c463f8463</srcmd5>
+    <version>1.11.1.1262</version>
+    <time>1680018649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1.1262:
+  * Switch to tools.deps 0.18.1317</comment>
+    <requestid>1074880</requestid>
+  </revision>
 </revisionlist>
