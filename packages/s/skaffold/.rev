@@ -143,4 +143,12 @@
     <comment></comment>
     <requestid>1069822</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>18ea879be9a1a0ee2b3bd30ab24aa4a0</srcmd5>
+    <version>2.2.0</version>
+    <time>1680018691</time>
+    <user>dimstar_suse</user>
+    <comment>add subpackages for shell completions</comment>
+    <requestid>1074976</requestid>
+  </revision>
 </revisionlist>

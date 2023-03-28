@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/GoogleContainerTools/skaffold</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
@@ -11,11 +11,11 @@
   <service name="set_version" mode="disabled">
     <param name="basename">skaffold</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">skaffold-2.2.0.tar.gz</param>
   </service>
 </services>
