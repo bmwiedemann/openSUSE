@@ -1,7 +1,7 @@
 #
 # spec file for package rdiff-backup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 Name:           rdiff-backup
-Version:        2.2.0
+Version:        2.2.4
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:20:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.4:
+  * Only very small code and documentation fixes, hopefully
+    really the last fix release of the stable branch 2.2, before
+    the development effort for v2.4 starts.
+
+-------------------------------------------------------------------
+Fri Feb 10 13:09:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Only small code and documentation fixes and additions,
+    probably the last fix release of the stable branch 2.2,
+    before the development effort for v2.4 starts.
+  * That's embarrassing but the last version still had a glitch
+    and the sdist package `rdiff-backup-2.2.2.tar.gz` didn't
+    contain the pre-rendered man-pages which some packagers
+    requested.
+
+-------------------------------------------------------------------
 Tue Dec 20 10:11:18 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Happy Holidays release v2.2.0
