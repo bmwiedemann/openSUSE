@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-schema-validator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,14 +33,12 @@ BuildRequires:  python-rpm-macros
 Requires:       python-isodate
 Requires:       python-jsonschema
 Requires:       python-setuptools
-Requires:       python-six
 Requires:       python-strict-rfc3339
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module strict-rfc3339}
 # /SECTION
 %python_subpackages
