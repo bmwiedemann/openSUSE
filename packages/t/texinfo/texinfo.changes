@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:52:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- texinfo 7.0.3:
+  * texi2any: fix performance regression when Perl binary
+    extension (XS) modules are not being used (e.g. with 
+    TEXINFO_XS=omit)
+  * info: further fix of recoding of UTF-8 files to ASCII to avoid
+    text disappearing from nodes
+  * info: avoid possible freeze at start of a file with 
+    `-v nodeline=pointers'
+
+-------------------------------------------------------------------
 Sat Feb  4 21:00:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - texinfo 7.0.2:
