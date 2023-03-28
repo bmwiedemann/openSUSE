@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 26 16:26:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.0.10.post2
+  * Minor release to fix failing functions with updated versions of
+    pillow, and a minor bug fix to reshaping circumstance where
+    there is only one position in a spectral dataset.
+- Add pyUSID-pr84-np1.24.patch gh#pycroscopy/pyUSID#84
+- Fix requirements
+
+-------------------------------------------------------------------
 Thu Oct 20 12:20:20 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required
