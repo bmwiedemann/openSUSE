@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 08:25:34 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Fix build failure with gcc13, add build_gcc13.patch.
+
+-------------------------------------------------------------------
 Mon Sep  5 08:55:51 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - update to 1.1.2

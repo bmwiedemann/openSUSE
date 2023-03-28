@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
 Patch0:         usbguard-pthread.patch
+Patch1:         build_gcc13.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
@@ -96,6 +97,7 @@ software framework.
 %prep
 %setup -q -n usbguard-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %if 0%{?suse_version} == 1500
