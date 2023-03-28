@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-containerservice
-Version:        21.2.0
+Version:        22.0.0
 Release:        0
 Summary:        Microsoft Azure Container Service Management Client Library
 License:        MIT
@@ -41,7 +41,8 @@ Requires:       python-azure-mgmt-core < 2.0.0
 Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.7.1
+Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 

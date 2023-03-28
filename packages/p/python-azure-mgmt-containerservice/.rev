@@ -371,4 +371,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1066785 from glaubitz)</comment>
     <requestid>1066802</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>efcc995c58d1061d2da94a2bd88a3037</srcmd5>
+    <version>22.0.0</version>
+    <time>1680018711</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 22.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1074909 from glaubitz)</comment>
+    <requestid>1074980</requestid>
+  </revision>
 </revisionlist>
