@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 24 13:45:04 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.2.0:
+   - xfs_repair: fix incorrect dabtree hashval comparison
+   - mkfs: protofile can now create directories with spaces in their names
+   - mkfs: check dirent names when reading protofile
+   - xfs_io: fix bmap command not detecting realtime files with xattrs
+   - xfs_io: set fs_path when opening files on foreign filesystems
+   - xfs_scrub: fix broken realtime free blocks unit conversions
+   - xfs_spaceman: fix broken -g behavior in freesp command
+   - xfs_admin: correctly parse IO_OPTS parameters
+   - Fix autoconf during debian package builds
+   - xfs_admin: fsuuid cmd can now retrive UUID of mounted filesystems
+
+-------------------------------------------------------------------
 Wed Jan 18 12:46:06 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.1.1:
