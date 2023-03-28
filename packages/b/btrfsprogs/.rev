@@ -1235,4 +1235,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1209136</comment>
   </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>df8faf8f851a66c6327919e318af82cf</srcmd5>
+    <version>6.1.3</version>
+    <time>1680018519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074485</requestid>
+  </revision>
 </revisionlist>

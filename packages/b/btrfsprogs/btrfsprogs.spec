@@ -192,6 +192,20 @@ BuildRequires:  pkgconfig(python3)
 This package contains the python bindings to build applications to interface
 with Btrfs using libbtrfsutil.
 
+%package bash-completion
+Summary:        Bash completion for btrfsprogs
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+%if 0%{?suse_version} >= 1500
+Supplements:    (%{name} and bash-completion)
+%else
+Supplements:    packageand(%{name}:bash-completion)
+%endif
+
+%description bash-completion
+bash command line completion support for btrfsprogs.
+
 %prep
 %setup -q -n btrfs-progs-v%{version}
 %patch1 -p1
@@ -357,9 +371,6 @@ done
 %{_mandir}/man8/btrfs-send.8%{?ext_man}
 %{_mandir}/man8/btrfs-subvolume.8%{?ext_man}
 %{_mandir}/man8/btrfs-select-super.8%{?ext_man}
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/btrfs
 
 %if 0%{?for_debugging:1}
 /sbin/btrfs-find-root
@@ -414,5 +425,11 @@ done
 
 %files -n python-btrfsutil
 %{python3_sitearch}/*
+
+%files bash-completion
+%defattr(-,root,root)
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/btrfs
 
 %changelog
