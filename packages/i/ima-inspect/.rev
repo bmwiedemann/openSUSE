@@ -46,4 +46,13 @@
   digest algorithms.</comment>
     <requestid>863073</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d2b9c64e66da2bcc91573c3e4e2962d</srcmd5>
+    <version>0.15</version>
+    <time>1680018687</time>
+    <user>dimstar_suse</user>
+    <comment>- version bump to 0.15 which fixes a compilation error on newer GCC / glibc
+  versions.</comment>
+    <requestid>1074947</requestid>
+  </revision>
 </revisionlist>

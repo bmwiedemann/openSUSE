@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:35:49 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- version bump to 0.15 which fixes a compilation error on newer GCC / glibc
+  versions.
+
+-------------------------------------------------------------------
 Thu Jan 14 12:02:58 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update to upstream minor release version 0.14 which supports additional

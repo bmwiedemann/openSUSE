@@ -1,7 +1,7 @@
 #
 # spec file for package ima-inspect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ima-inspect
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Output IMA/EVM extended attributes in a human readable format
 License:        LGPL-2.1-or-later
