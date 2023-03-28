@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 27 19:32:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.33.1:
+  * Added read-only TOML support! #1364. Thanks @pelletier for
+    making your API available in your toml lib :)
+  * Added warning when auto detect by file type is outputs JSON
+
+-------------------------------------------------------------------
+Mon Mar 20 09:00:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.32.2:
+  * Fixes parsing terraform tfstate files results in "unknown"
+    format
+  * Added divide and modulo operators (#1593)
+  * Add support for decoding base64 strings without padding
+  * Add filter operation (#1588) - thanks @rbren!
+  * Detect input format based on file name extension (#1582)
+  * Auto output format when input format is automatically
+    detected
+  * Fixed npe in log #1596
+  * Improved binary file size!
+  * Bumped dependency versions
+
+-------------------------------------------------------------------
 Thu Mar  2 08:03:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.31.2:
