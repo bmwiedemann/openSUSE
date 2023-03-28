@@ -220,4 +220,16 @@
 - Update Requires from setup.py (forwarded request 1043816 from glaubitz)</comment>
     <requestid>1043898</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f9d4755ba549a53d9f4a320d75fe374</srcmd5>
+    <version>23.0.0</version>
+    <time>1680018719</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 23.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1074936 from glaubitz)</comment>
+    <requestid>1074991</requestid>
+  </revision>
 </revisionlist>
