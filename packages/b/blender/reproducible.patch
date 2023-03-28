@@ -15,11 +15,11 @@ Date:   Sat Sep 7 06:19:50 2019 +0200
     
     Differential Revision: https://developer.blender.org/D5858
 
-Index: blender-3.0.0/source/blender/datatoc/datatoc_icon.c
+Index: b/source/blender/datatoc/datatoc_icon.c
 ===================================================================
---- blender-3.0.0.orig/source/blender/datatoc/datatoc_icon.c
-+++ blender-3.0.0/source/blender/datatoc/datatoc_icon.c
-@@ -402,7 +402,8 @@ static bool icon_merge(struct IconMergeC
+--- a/source/blender/datatoc/datatoc_icon.c
++++ b/source/blender/datatoc/datatoc_icon.c
+@@ -387,7 +387,8 @@ static bool icon_merge(struct IconMergeC
  static bool icondir_to_png(const char *path_src, const char *file_dst)
  {
    /* Takes a path full of 'dat' files and writes out */
@@ -29,7 +29,7 @@ Index: blender-3.0.0/source/blender/datatoc/datatoc_icon.c
    const struct dirent *fname;
    char filepath[1024];
    char *filename;
-@@ -417,8 +418,8 @@ static bool icondir_to_png(const char *p
+@@ -402,8 +403,8 @@ static bool icondir_to_png(const char *p
    icon_merge_context_init(&context);
  
    errno = 0;
@@ -40,7 +40,7 @@ Index: blender-3.0.0/source/blender/datatoc/datatoc_icon.c
      printf(
          "%s: failed to dir '%s', (%s)\n", __func__, path_src, errno ? strerror(errno) : "unknown");
      return false;
-@@ -428,7 +429,8 @@ static bool icondir_to_png(const char *p
+@@ -413,7 +414,8 @@ static bool icondir_to_png(const char *p
    path_str_len = path_ensure_slash(filepath);
    filename = &filepath[path_str_len];
  
@@ -50,7 +50,7 @@ Index: blender-3.0.0/source/blender/datatoc/datatoc_icon.c
      if (path_test_extension(fname->d_name, ".dat")) {
  
        strcpy(filename, fname->d_name);
-@@ -440,11 +442,12 @@ static bool icondir_to_png(const char *p
+@@ -425,11 +427,12 @@ static bool icondir_to_png(const char *p
          fail++;
        }
      }
@@ -64,11 +64,11 @@ Index: blender-3.0.0/source/blender/datatoc/datatoc_icon.c
  
    if (found == 0) {
      printf("%s: dir '%s' has no icons\n", __func__, path_src);
-Index: blender-3.0.0/source/blender/datatoc/datatoc_icon.py
+Index: b/source/blender/datatoc/datatoc_icon.py
 ===================================================================
---- blender-3.0.0.orig/source/blender/datatoc/datatoc_icon.py
-+++ blender-3.0.0/source/blender/datatoc/datatoc_icon.py
-@@ -113,7 +113,7 @@ def icondir_to_png(path_src, file_dst):
+--- a/source/blender/datatoc/datatoc_icon.py
++++ b/source/blender/datatoc/datatoc_icon.py
+@@ -95,7 +95,7 @@ def icondir_to_png(path_src, file_dst):
      import os
      import array
  

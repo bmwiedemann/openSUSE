@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 26 10:30:52 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove the explicit zstd lib definition
+
+-------------------------------------------------------------------
+Sat Mar 25 14:19:25 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix GCC 13 fallout with Add_missing_system_error_handler.patch 
+- Explicitly specify zstd lib
+  Don't understand, why it isn't found automatically anymore
+- while at it, rebase reproducible.patch
+
+-------------------------------------------------------------------
 Sat Feb 11 11:13:46 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Adjust audaspace dependencies to audaspace-{file,device}plugin

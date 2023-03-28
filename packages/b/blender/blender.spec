@@ -99,6 +99,8 @@ Source99:       series
 Patch0:         reproducible.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         https://github.com/blender/blender/commit/79837c5ed4b5.patch#/Add_missing_iostream_header.patch
+# PATCH-FIX-OPENSUSE - fix gcc 13 fallout
+Patch2:         Add_missing_system_error_handler.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
