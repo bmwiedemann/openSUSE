@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 18 19:25:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/16.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/lld/docs/ReleaseNotes.html
+- Let python3-clang also obsolete older versions.
+
+-------------------------------------------------------------------
 Sat Jan 14 14:06:38 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 15.0.7.

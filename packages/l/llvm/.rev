@@ -2177,4 +2177,20 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1059864</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>6e267d1972b99504253c5b7ff4a26d0d</srcmd5>
+    <version>16.0.0</version>
+    <time>1680018524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/16.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/lld/docs/ReleaseNotes.html
+- Let python3-clang also obsolete older versions.
+</comment>
+    <requestid>1073327</requestid>
+  </revision>
 </revisionlist>

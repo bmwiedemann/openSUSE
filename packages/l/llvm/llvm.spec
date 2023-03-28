@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 15
+%define _sonum 16
 %ifarch x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -33,12 +33,13 @@ Obsoletes:      %{1}11%{?2:-%{2}} \
 Obsoletes:      %{1}12%{?2:-%{2}} \
 Obsoletes:      %{1}13%{?2:-%{2}} \
 Obsoletes:      %{1}14%{?2:-%{2}} \
+Obsoletes:      %{1}15%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        15.0.7
+Version:        16.0.0
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -240,6 +241,7 @@ don't require a specific LLDB version should depend on this.
 Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
 Requires:       python3-clang%{_sonum}
+%obsolete_llvm_versioned python3-clang
 BuildArch:      noarch
 
 %description -n python3-clang
