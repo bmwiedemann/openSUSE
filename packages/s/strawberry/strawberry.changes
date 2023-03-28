@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 27 20:49:17 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.16
+ + Bugfixes:
+   + Fixed lyrics from Musixmatch.
+   + Fixed possible file corruption when saving both tags and embedded cover using the tag editor (#1158).
+   + Fixed compile without GStreamer.
+   + Fixed context and playing now album art rendering on High DPI displays (#1161).
+   + Fixed setting source properties (device, user-agent, ssl-strict) with GStreamer 1.22 (playbin3) and higher (#1148).
+   + Fixed rescan songs feature not ignoring mtime.
+   + Search lyrics by artist instead of album artist by default.
+
+ + Code improvements:
+   + Replace use of deprecated QSqlDatabase::exec().
+
+ + Added features:
+   + Added backend setting for strict SSL mode.
+   + Read AcoustID and MusicBrainz tags.
+   + Submit MusicBrainz tags with ListenBrainz.
+
+- Remove Qt 5 dependencies
+- Remove VLC support
+- Update list of lyric providers in features
+
+-------------------------------------------------------------------
 Sat Mar  4 15:59:18 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.15

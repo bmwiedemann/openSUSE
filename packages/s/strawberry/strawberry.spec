@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.0.15
+Version:        1.0.16
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -42,7 +42,6 @@ BuildRequires:  libboost_headers-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -52,18 +51,6 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
-%else
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -85,16 +72,11 @@ BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudf)
-BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 Requires:       qt6-sql-sqlite
-%else
-Requires:       libQt5Sql5-sqlite
-%endif
 
 %description
 Strawberry is a music player and music collection organizer.
@@ -111,7 +93,7 @@ Features:
   - Edit tags on music files
   - Fetch tags from MusicBrainz
   - Album cover art from Last.fm, Musicbrainz, Discogs, Musixmatch, Deezer, Tidal, Qobuz and Spotify
-  - Song lyrics from AudD, Genius, Musixmatch, ChartLyrics, lyrics.ovh and lololyrics.com
+  - Song lyrics from Lyrics.com, AudD, Genius, Musixmatch, ChartLyrics, lyrics.ovh and lololyrics.com
   - Support for multiple backends
   - Audio analyzer
   - Equalizer
@@ -130,11 +112,7 @@ export CXX="g++-11"
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
 %cmake -DBUILD_WERROR=OFF \
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
        -DQT_MAJOR_VERSION=6
-%else
-       -DQT_MAJOR_VERSION=5
-%endif
 %cmake_build
 
 %install
