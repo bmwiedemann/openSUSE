@@ -1,0 +1,10 @@
+<package name="fuc" project="openSUSE:Factory">
+  <title>Modern unix commands focused on performance</title>
+  <description>The FUC-ing project provides modern unix commands focused on performance.
+This package provides the commands &quot;rmz&quot; and &quot;cpz&quot;, with a CLI interface
+compatible with &quot;rm&quot; and &quot;cp&quot;, respectively, in a &quot;zippy&quot; faster version.
+
+</description>
+  <devel project="utilities" package="fuc"/>
+  <url>https://github.com/SUPERCILEX/fuc</url>
+</package>
