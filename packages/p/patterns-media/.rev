@@ -347,4 +347,14 @@
     <comment></comment>
     <requestid>1063417</requestid>
   </revision>
+  <revision rev="42" vrev="42">
+    <srcmd5>dab54784dd041527c38e9a1655c54484</srcmd5>
+    <version>20170319</version>
+    <time>1680018521</time>
+    <user>dimstar_suse</user>
+    <comment>- limit last change to x86_64 arch builds. 
+
+- rest_core_dvd: Add the x86_64_v3 pattern</comment>
+    <requestid>1074784</requestid>
+  </revision>
 </revisionlist>

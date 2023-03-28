@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 27 21:42:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- limit last change to x86_64 arch builds. 
+
+-------------------------------------------------------------------
+Thu Mar 23 15:17:35 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- rest_core_dvd: Add the x86_64_v3 pattern
+
+-------------------------------------------------------------------
 Mon Feb  6 13:23:12 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - rest_core_dvd: added recommends to packages for nVidia's openGPU

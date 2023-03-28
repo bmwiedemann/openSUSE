@@ -40,8 +40,8 @@ such as DVD's
 
 
 
-################################################################################
 
+################################################################################
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -420,6 +420,9 @@ Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = sw_management
 Requires:       pattern() = x11
+%ifarch x86_64
+Requires:       pattern() = x86_64_v3
+%endif
 Requires:       pattern() = yast2_basis
 Requires:       pattern() = yast2_install_wf
 Recommends:     pattern() = x11_yast
