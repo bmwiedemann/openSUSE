@@ -1,7 +1,7 @@
 #
 # spec file for package python-MechanicalSoup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-MechanicalSoup
 Version:        1.2.0
 Release:        0
@@ -34,13 +33,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4 >= 4.4
 Requires:       python-lxml
 Requires:       python-requests >= 2.0
-Requires:       python-six >= 1.4
 Recommends:     python-httpbin
 Recommends:     python-jsonschema >= 2.5.1
 BuildArch:      noarch
@@ -76,6 +73,7 @@ sed -i -e '/addopts/d' setup.cfg
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/MechanicalSoup*
+%{python_sitelib}/mechanicalsoup*
 
 %changelog
