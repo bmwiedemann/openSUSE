@@ -1,0 +1,81 @@
+Revert "Add support for toolchain compilation with LLVM_LINK_LLVM_DYLIB option (#1543)"
+
+It seems this change isn't adding support but in fact removing it, as it
+requires targets that are not guaranteed to exist and also forces a
+static library which we don't want in openSUSE.
+
+This reverts commit 40fd74170c4f7c1bece0e028d7662d8351ac66ff.
+---
+ lib/SPIRV/CMakeLists.txt | 50 +++++++++++-----------------------------
+ 1 file changed, 14 insertions(+), 36 deletions(-)
+
+diff --git a/lib/SPIRV/CMakeLists.txt b/lib/SPIRV/CMakeLists.txt
+index bbef0052..0195dac2 100644
+--- a/lib/SPIRV/CMakeLists.txt
++++ b/lib/SPIRV/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-set(SRC_LIST
++add_llvm_library(LLVMSPIRVLib
+   LLVMSPIRVOpts.cpp
+   LLVMToSPIRVDbgTran.cpp
+   Mangler/FunctionDescriptor.cpp
+@@ -37,43 +37,21 @@ set(SRC_LIST
+   libSPIRV/SPIRVStream.cpp
+   libSPIRV/SPIRVType.cpp
+   libSPIRV/SPIRVValue.cpp
+-)
+-if(LLVM_LINK_LLVM_DYLIB)
+-  add_llvm_library(LLVMSPIRVLib STATIC DISABLE_LLVM_LINK_LLVM_DYLIB
+-    ${SRC_LIST}
+-    DEPENDS
+-      intrinsics_gen
+-      LLVMAnalysis
+-      LLVMBitWriter
+-      LLVMCodeGen
+-      LLVMCore
+-      LLVMDemangle
+-      LLVMIRReader
+-      LLVMLinker
+-      LLVMPasses
+-      LLVMSupport
+-      LLVMTargetParser
+-      LLVMTransformUtils
+-  )
+-else()
+-  add_llvm_library(LLVMSPIRVLib
+-    ${SRC_LIST}
+-    LINK_COMPONENTS
+-      Analysis
+-      BitWriter
+-      CodeGen
+-      Core
+-      Demangle
+-      IRReader
+-      Linker
+-      Passes
+-      Support
+-      TargetParser
+-      TransformUtils
++  LINK_COMPONENTS
++    Analysis
++    BitWriter
++    CodeGen
++    Core
++    Demangle
++    IRReader
++    Linker
++    Passes
++    Support
++    LLVMTargetParser
++    TransformUtils
+   DEPENDS
+     intrinsics_gen
+-  )
+-endif()
++)
+ 
+ target_include_directories(LLVMSPIRVLib
+   PRIVATE
+-- 
+2.40.0
+

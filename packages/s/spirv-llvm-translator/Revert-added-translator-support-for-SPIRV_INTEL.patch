@@ -1,0 +1,246 @@
+Revert "added translator support for SPIRV_INTEL_argument_interfaces capability (#1632)"
+
+The corresponding change KhronosGroup/SPIRV-Headers#291 is not contained
+in any released version yet, so we'll have to go without this.
+
+This reverts commit 3bc3d69c2816eda8048d835b979343013272923a.
+---
+ include/LLVMSPIRVExtensions.inc               |  1 -
+ lib/SPIRV/SPIRVReader.cpp                     |  6 --
+ lib/SPIRV/SPIRVWriter.cpp                     | 24 -------
+ lib/SPIRV/libSPIRV/SPIRVDecorate.h            | 10 ---
+ lib/SPIRV/libSPIRV/SPIRVEnum.h                | 18 -----
+ lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h         | 14 ----
+ spirv-headers-tag.conf                        |  2 +-
+ .../sycl-kernel-arg-annotation.ll             | 69 -------------------
+ 8 files changed, 1 insertion(+), 143 deletions(-)
+ delete mode 100644 test/extensions/INTEL/SPV_INTEL_fpga_argument_interfaces/sycl-kernel-arg-annotation.ll
+
+diff --git a/include/LLVMSPIRVExtensions.inc b/include/LLVMSPIRVExtensions.inc
+index 7ff10f52..aba67696 100644
+--- a/include/LLVMSPIRVExtensions.inc
++++ b/include/LLVMSPIRVExtensions.inc
+@@ -56,4 +56,3 @@ EXT(SPV_INTEL_split_barrier)
+ EXT(SPV_INTEL_masked_gather_scatter)
+ EXT(SPV_INTEL_tensor_float32_conversion)
+ EXT(SPV_EXT_relaxed_printf_string_address_space)
+-EXT(SPV_INTEL_fpga_argument_interfaces)
+diff --git a/lib/SPIRV/SPIRVReader.cpp b/lib/SPIRV/SPIRVReader.cpp
+index b4c6211f..ab7dc664 100644
+--- a/lib/SPIRV/SPIRVReader.cpp
++++ b/lib/SPIRV/SPIRVReader.cpp
+@@ -4123,12 +4123,6 @@ bool SPIRVToLLVM::transOCLMetadata(SPIRVFunction *BF) {
+     return ConstantAsMetadata::get(
+         ConstantInt::get(Type::getInt1Ty(*Context), Literals[0]));
+   });
+-  // Generate metadata for spirv.ParameterDecorations
+-  addKernelArgumentMetadata(Context, SPIRV_MD_PARAMETER_DECORATIONS, BF, F,
+-                            [=](SPIRVFunctionParameter *Arg) {
+-                              return transDecorationsToMetadataList(
+-                                  Context, Arg->getDecorations());
+-                            });
+   return true;
+ }
+ 
+diff --git a/lib/SPIRV/SPIRVWriter.cpp b/lib/SPIRV/SPIRVWriter.cpp
+index 3286731e..f9429352 100644
+--- a/lib/SPIRV/SPIRVWriter.cpp
++++ b/lib/SPIRV/SPIRVWriter.cpp
+@@ -2433,30 +2433,6 @@ static void transMetadataDecorations(Metadata *MD, SPIRVEntry *Target) {
+       TWO_INT_DECORATION_CASE(FuseLoopsInFunctionINTEL, spv, SPIRVWord,
+                               SPIRVWord);
+       TWO_INT_DECORATION_CASE(MathOpDSPModeINTEL, spv, SPIRVWord, SPIRVWord);
+-
+-    case DecorationConduitKernelArgumentINTEL:
+-    case DecorationRegisterMapKernelArgumentINTEL:
+-    case DecorationStableKernelArgumentINTEL:
+-    case DecorationRestrict: {
+-      Target->addDecorate(new SPIRVDecorate(DecoKind, Target));
+-      break;
+-    }
+-    case DecorationBufferLocationINTEL:
+-    case DecorationMMHostInterfaceReadWriteModeINTEL:
+-    case DecorationMMHostInterfaceAddressWidthINTEL:
+-    case DecorationMMHostInterfaceDataWidthINTEL:
+-    case DecorationMMHostInterfaceLatencyINTEL:
+-    case DecorationMMHostInterfaceMaxBurstINTEL:
+-    case DecorationMMHostInterfaceWaitRequestINTEL: {
+-      ErrLog.checkError(NumOperands == 2, SPIRVEC_InvalidLlvmModule,
+-                        "MMHost Kernel Argument Annotation requires exactly 2 "
+-                        "extra operands");
+-      auto *DecoValEO1 =
+-          mdconst::dyn_extract<ConstantInt>(DecoMD->getOperand(1));
+-      Target->addDecorate(
+-          new SPIRVDecorate(DecoKind, Target, DecoValEO1->getZExtValue()));
+-      break;
+-    }
+     case DecorationStallEnableINTEL: {
+       Target->addDecorate(new SPIRVDecorateStallEnableINTEL(Target));
+       break;
+diff --git a/lib/SPIRV/libSPIRV/SPIRVDecorate.h b/lib/SPIRV/libSPIRV/SPIRVDecorate.h
+index 3f50f615..f286f6fe 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVDecorate.h
++++ b/lib/SPIRV/libSPIRV/SPIRVDecorate.h
+@@ -178,16 +178,6 @@ public:
+     case internal::DecorationInitModeINTEL:
+     case internal::DecorationImplementInCSRINTEL:
+       return ExtensionID::SPV_INTEL_global_variable_decorations;
+-    case DecorationConduitKernelArgumentINTEL:
+-    case DecorationRegisterMapKernelArgumentINTEL:
+-    case DecorationStableKernelArgumentINTEL:
+-    case DecorationMMHostInterfaceReadWriteModeINTEL:
+-    case DecorationMMHostInterfaceAddressWidthINTEL:
+-    case DecorationMMHostInterfaceDataWidthINTEL:
+-    case DecorationMMHostInterfaceLatencyINTEL:
+-    case DecorationMMHostInterfaceMaxBurstINTEL:
+-    case DecorationMMHostInterfaceWaitRequestINTEL:
+-      return ExtensionID::SPV_INTEL_fpga_argument_interfaces;
+     default:
+       return {};
+     }
+diff --git a/lib/SPIRV/libSPIRV/SPIRVEnum.h b/lib/SPIRV/libSPIRV/SPIRVEnum.h
+index 3b6bd153..d41b8a86 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVEnum.h
+@@ -451,24 +451,6 @@ template <> inline void SPIRVMap<Decoration, SPIRVCapVec>::init() {
+                {internal::CapabilityGlobalVariableDecorationsINTEL});
+   ADD_VEC_INIT(internal::DecorationArgumentAttributeINTEL,
+                {CapabilityFunctionPointersINTEL});
+-  ADD_VEC_INIT(DecorationConduitKernelArgumentINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationRegisterMapKernelArgumentINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationMMHostInterfaceAddressWidthINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationMMHostInterfaceDataWidthINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationMMHostInterfaceLatencyINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationMMHostInterfaceReadWriteModeINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationMMHostInterfaceMaxBurstINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationMMHostInterfaceWaitRequestINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+-  ADD_VEC_INIT(DecorationStableKernelArgumentINTEL,
+-               {CapabilityFPGAArgumentInterfacesINTEL});
+ }
+ 
+ template <> inline void SPIRVMap<BuiltIn, SPIRVCapVec>::init() {
+diff --git a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+index 2a34e0b6..f09a8922 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+@@ -183,19 +183,6 @@ template <> inline void SPIRVMap<Decoration, std::string>::init() {
+   add(DecorationInitiationIntervalINTEL, "InitiationIntervalINTEL");
+   add(DecorationMaxConcurrencyINTEL, "MaxConcurrencyINTEL");
+   add(DecorationPipelineEnableINTEL, "PipelineEnableINTEL");
+-  add(DecorationConduitKernelArgumentINTEL, "ConduitKernelArgumentINTEL");
+-  add(DecorationRegisterMapKernelArgumentINTEL,
+-      "RegisterMapKernelArgumentINTEL");
+-  add(DecorationMMHostInterfaceAddressWidthINTEL,
+-      "MMHostInterfaceAddressWidthINTEL");
+-  add(DecorationMMHostInterfaceDataWidthINTEL, "MMHostInterfaceDataWidthINTEL");
+-  add(DecorationMMHostInterfaceLatencyINTEL, "MMHostInterfaceLatencyINTEL");
+-  add(DecorationMMHostInterfaceReadWriteModeINTEL,
+-      "MMHostInterfaceReadWriteModeINTEL");
+-  add(DecorationMMHostInterfaceMaxBurstINTEL, "MMHostInterfaceMaxBurstINTEL");
+-  add(DecorationMMHostInterfaceWaitRequestINTEL,
+-      "MMHostInterfaceWaitRequestINTEL");
+-  add(DecorationStableKernelArgumentINTEL, "StableKernelArgumentINTEL");
+ 
+   // From spirv_internal.hpp
+   add(internal::DecorationCallableFunctionINTEL, "CallableFunctionINTEL");
+@@ -615,7 +602,6 @@ template <> inline void SPIRVMap<Capability, std::string>::init() {
+       "FPGAInvocationPipeliningAttributesINTEL");
+   add(CapabilityRuntimeAlignedAttributeINTEL, "RuntimeAlignedAttributeINTEL");
+   add(CapabilityMax, "Max");
+-  add(CapabilityFPGAArgumentInterfacesINTEL, "FPGAArgumentInterfacesINTEL");
+ 
+   // From spirv_internal.hpp
+   add(internal::CapabilityFastCompositeINTEL, "FastCompositeINTEL");
+diff --git a/spirv-headers-tag.conf b/spirv-headers-tag.conf
+index 49e09ea4..be6002ca 100644
+--- a/spirv-headers-tag.conf
++++ b/spirv-headers-tag.conf
+@@ -1 +1 @@
+-36c7694279dfb3ea7e6e086e368bb8bee076792a
++70ff9d939cd7fd0c758756ac57ab0c7c6d6c64d6
+diff --git a/test/extensions/INTEL/SPV_INTEL_fpga_argument_interfaces/sycl-kernel-arg-annotation.ll b/test/extensions/INTEL/SPV_INTEL_fpga_argument_interfaces/sycl-kernel-arg-annotation.ll
+deleted file mode 100644
+index a8751a53..00000000
+--- a/test/extensions/INTEL/SPV_INTEL_fpga_argument_interfaces/sycl-kernel-arg-annotation.ll
++++ /dev/null
+@@ -1,69 +0,0 @@
+-; RUN: llvm-as %s -o %t.bc
+-; RUN: llvm-spirv %t.bc -spirv-ext=-all,+SPV_INTEL_fpga_argument_interfaces,+SPV_INTEL_fpga_buffer_location -o %t.spv
+-; RUN: llvm-spirv %t.spv -to-text -o - | FileCheck %s --check-prefix=CHECK-SPIRV
+-; RUN: llvm-spirv -r %t.spv -o %t.rev.bc
+-; RUN: llvm-dis < %t.rev.bc | FileCheck %s --check-prefix=CHECK-LLVM
+-
+-target datalayout = "e-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024-n8:16:32:64"
+-target triple = "spir64-unknown-unknown"
+-
+-$_ZTS4MyIP = comdat any
+-
+-; Function Attrs: convergent mustprogress norecurse
+-define weak_odr dso_local spir_kernel void @_ZTS4MyIP(i32 addrspace(4)* noundef %_arg_p) #0 comdat !kernel_arg_buffer_location !1587 !spirv.ParameterDecorations !1588
+-; CHECK-LLVM-DAG:  !spirv.ParameterDecorations ![[PARMDECOR:[0-9]+]]
+-{
+-entry:
+-		ret void
+-}
+-
+-!1587 = !{i32 -1}
+-!1588 = !{!1589}
+-!1589 = !{!1590, !1591, !1592, !1593, !1594, !1595, !1596, !1597, !1598, !1599, !1600, !1601}
+-!1590 = !{i32 44, i32 4}
+-!1591 = !{i32 6177, i32 32}
+-!1592 = !{i32 5921, i32 10}
+-!1593 = !{i32 6175, i32 1}
+-!1594 = !{i32 6178, i32 64}
+-!1595 = !{i32 6179, i32 1}
+-!1596 = !{i32 6181, i32 3}
+-!1597 = !{i32 6180, i32 2}
+-!1598 = !{i32 6176, i32 1}
+-!1599 = !{i32 6183, i32 1}
+-!1600 = !{i32 19, i32 1}
+-!1601 = !{i32 6182, i32 5}
+-
+-; CHECK-LLVM-DAG: ![[PARMDECOR]] = !{![[ARG:[0-9]+]]}
+-; CHECK-LLVM-DAG: ![[ARG]] = !{![[ALIGN:[0-9]+]], ![[AWIDTH:[0-9]+]], ![[BL:[0-9]+]], ![[CONDUIT:[0-9]+]], ![[DWIDTH:[0-9]+]], ![[LATENCY:[0-9]+]], ![[MAXBURST:[0-9]+]], ![[RWMODE:[0-9]+]], ![[REGMAP:[0-9]+]], ![[STABLE:[0-9]+]], ![[STRICT:[0-9]+]], ![[WAITREQ:[0-9]+]]}
+-
+-; CHECK: ![[ALIGN]]   = !{i32 44, i32 4}
+-; CHECK: ![[AWIDTH]]  = !{i32 6177, i32 32}
+-; CHECK: ![[BL]]      = !{i32 5921, i32 10}
+-; CHECK: ![[CONDUIT]] = !{i32 6175, i32 1}
+-; CHECK: ![[DWIDTH]]  = !{i32 6178, i32 64}
+-; CHECK: ![[LATENCY]] = !{i32 6179, i32 1}
+-; CHECK: ![[MAXBURST]] = !{i32 6181, i32 3}
+-; CHECK: ![[RWMODE]]  = !{i32 6180, i32 2}
+-; CHECK: ![[REGMAP]]  = !{i32 6176, i32 1}
+-; CHECK: ![[STABLE]]  = !{i32 6183, i32 1}
+-; CHECK: ![[STRICT]]  = !{i32 19, i32 1}
+-; CHECK: ![[WAITREQ]] = !{i32 6182, i32 5}
+-
+-; CHECK-SPIRV: Capability FPGABufferLocationINTEL
+-; CHECK-SPIRV: Capability FPGAArgumentInterfacesINTEL
+-; CHECK-SPIRV: Extension "SPV_INTEL_fpga_argument_interfaces"
+-; CHECK-SPIRV: Extension "SPV_INTEL_fpga_buffer_location"
+-; CHECK-SPIRV-DAG:  Name [[IDS:[0-9]+]] "_arg_p"
+-; CHECK-SPIRV-DAG:  Name [[ID:[0-9]+]] "_arg_p"
+-; CHECK-SPIRV:  Decorate [[ID]] Alignment 4
+-; CHECK-SPIRV:  Decorate [[ID]] MMHostInterfaceAddressWidthINTEL 32
+-; CHECK-SPIRV:  Decorate [[ID]] BufferLocationINTEL 10
+-; CHECK-SPIRV:  Decorate [[ID]] ConduitKernelArgumentINTEL
+-; CHECK-SPIRV:  Decorate [[ID]] MMHostInterfaceDataWidthINTEL 64
+-; CHECK-SPIRV:  Decorate [[ID]] MMHostInterfaceLatencyINTEL 1
+-; CHECK-SPIRV:  Decorate [[ID]] MMHostInterfaceMaxBurstINTEL 3
+-; CHECK-SPIRV:  Decorate [[ID]] MMHostInterfaceReadWriteModeINTEL 2
+-; CHECK-SPIRV:  Decorate [[ID]] RegisterMapKernelArgumentINTEL
+-; CHECK-SPIRV:  Decorate [[ID]] StableKernelArgumentINTEL
+-; CHECK-SPIRV:  Decorate [[ID]] Restrict
+-; CHECK-SPIRV:  Decorate [[ID]] MMHostInterfaceWaitRequestINTEL 5
+-- 
+2.40.0
+

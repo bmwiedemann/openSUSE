@@ -1,6 +1,7 @@
 #
 # spec file for package spirv-llvm-translator
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,18 +16,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover   15
+
+%define sover   16
 Name:           spirv-llvm-translator
-Version:        15.0.0
+Version:        16.0.0
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
+Patch1:         Revert-Add-support-for-LLVM_LINK_LLVM_DYLIB.patch
+Patch2:         Revert-added-translator-support-for-SPIRV_INTEL.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-devel >= 15.0
+BuildRequires:  llvm%{sover}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  spirv-headers
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -58,6 +62,8 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %prep
 %setup -q -n SPIRV-LLVM-Translator-%{version}
+%patch1 -p1
+%patch2 -p1
 
 %build
 %cmake \
