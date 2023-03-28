@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:55:24 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable jwt-svid-authenticator (SPIFFE) until fixed upstream
+  with gcc13 - https://github.com/parallaxsecond/parsec/issues/672
+
+-------------------------------------------------------------------
+Thu Mar 23 09:01:01 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.2.0-rc1
+- Drop upstream patch:
+  * 664.patch
+
+-------------------------------------------------------------------
 Wed Mar 15 07:27:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on Tumbleweed (update tss-esapi to 7.2.0):

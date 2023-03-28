@@ -17,11 +17,11 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-%define archive_version 1.1.0
+%define archive_version 1.2.0-rc1
 
 %{?systemd_ordering}
 Name:           parsec
-Version:        1.1.0
+Version:        1.2.0~rc1
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -34,8 +34,6 @@ Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
 Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-389b506.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/parallaxsecond/parsec/pull/664
-Patch1:         664.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -71,16 +69,19 @@ enabling cloud-native delivery flows within the data center and at the edge.
 
 %prep
 %setup -q -a1 -a10 -n parsec-%{archive_version}
-%patch1 -p1
 rmdir trusted-services-vendor
 mv trusted-services-389b506 trusted-services-vendor
 rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Enable all providers
 sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
-# Features available in 1.0.0:
+# Features available in 1.2.0-rc1:
 # all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "trusted-service-provider"]
 # all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"]
+%if 0%{?suse_version} > 1550
+# But disable "jwt-svid-authenticator"/SPIFFE with gcc13 until build fixed upstream - https://github.com/parallaxsecond/parsec/issues/672
+sed -i -e 's#all-authenticators = \["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"\]#all-authenticators = \["direct-authenticator", "unix-peer-credentials-authenticator"\]#' Cargo.toml
+%endif
 # But disable "trusted-service-provider" until we have a trusted-services package
 echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "all-authenticators"]' >> Cargo.toml
 
