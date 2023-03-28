@@ -24,6 +24,8 @@ Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
 URL:            https://github.com/vkmark/vkmark
 Source0:        %{name}-%{version}.tar.xz
+#PATCH-FIX-UPSTREAM vkmark-cstdint-include.patch gh#vkmark/vkmark#51 malcolmlewis@opensuse.org Add missing cstdint include in scene.h.
+Patch0:         vkmark-cstdint-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  meson >= 0.45
@@ -41,7 +43,7 @@ ExcludeArch:    %{arm} %{ix86}
 An extensible Vulkan benchmarking suite with targeted, configurable scenes.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson

@@ -1,0 +1,11 @@
+diff -Naur a/src/scene.h b/src/scene.h
+--- a/src/scene.h	2022-09-09 06:29:28.000000000 -0500
++++ b/src/scene.h	2023-03-27 19:37:12.627735253 -0500
+@@ -25,6 +25,7 @@
+ #include <string>
+ #include <vector>
+ #include <unordered_map>
++#include <cstdint>
+ 
+ class SceneOption
+ {

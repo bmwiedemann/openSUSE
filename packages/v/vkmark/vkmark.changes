@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 00:53:01 UTC 2023 - malcolmlewis@opensuse.org
+
+- Add vkmark-cstdint-include.patch: Add missing cstdint include in
+  scene.h, (gh#vkmark/vkmark#51).
+
+-------------------------------------------------------------------
 Thu Feb  2 01:32:52 UTC 2023 - malcolmlewis@opensuse.org
 
 - Drop build requires on deprecated Mesa-libVulkan-devel.
