@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/Julian/rpds.py</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v0.7.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">rpds.py</param>
+    <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">rpds.py</param>
+  </service>
+</services>
