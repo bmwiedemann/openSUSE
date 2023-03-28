@@ -17,7 +17,6 @@
 
 
 %define packagename sidpy
-%define skip_python2 1
 Name:           python-sidpy
 Version:        0.11.2
 Release:        0
@@ -25,18 +24,19 @@ Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT
 URL:            https://pycroscopy.github.io/sidpy/
 Source:         https://github.com/pycroscopy/sidpy/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+Source99:       python-sidpy.rpmlintrc
 BuildRequires:  %{python_module ase}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
 BuildRequires:  %{python_module dask-array >= 0.10}
 BuildRequires:  %{python_module distributed >= 2}
 BuildRequires:  %{python_module h5py >= 2.6.0}
-BuildRequires:  %{python_module ipyfilechooser >= 0.0.6}
 BuildRequires:  %{python_module ipywidgets >= 5.2.2}
 BuildRequires:  %{python_module joblib >= 0.11.0}
 BuildRequires:  %{python_module matplotlib >= 2.0.0}
 BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module numpy >= 1.10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
@@ -44,6 +44,7 @@ BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ase
@@ -52,17 +53,17 @@ Requires:       python-dask >= 0.10
 Requires:       python-dask-array >= 0.10
 Requires:       python-distributed >= 2
 Requires:       python-h5py >= 2.6.0
-Requires:       python-ipyfilechooser >= 0.0.6
+Requires:       python-ipython >= 6
 Requires:       python-ipywidgets >= 5.2.2
 Requires:       python-joblib >= 0.11.0
 Requires:       python-matplotlib >= 2.0.0
-Requires:       python-mpi4py
 Requires:       python-numpy >= 1.10
 Requires:       python-psutil
-Requires:       python-qt5
 Requires:       python-scikit-learn
 Requires:       python-scipy
 Requires:       python-toolz
+Recommends:     python-mpi4py
+Recommends:     python-qt5
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,13 +73,13 @@ Python utilities for storing, visualizing, and processing Spectroscopic and Imag
 %prep
 %setup -q -n %{packagename}-%{version}
 # https://github.com/pycroscopy/sidpy/issues/142
-sed -i 's:pytest-runner:pytest:' setup.py
+sed -i -e /pytest-runner/d -e /six/d setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

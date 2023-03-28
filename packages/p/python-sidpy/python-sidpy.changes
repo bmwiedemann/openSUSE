@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 27 17:22:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Reenable python311 with dask
+- Fix requirements
+- PEP517
+
+-------------------------------------------------------------------
+Mon Mar 27 16:09:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable python3.11 build, python-dask dependency doesn't support
+  python3.11 yet.
+
+-------------------------------------------------------------------
 Wed Feb  8 12:27:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.11.2
