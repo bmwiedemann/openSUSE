@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar 28 10:03:07 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.7.6+git0.4dadaaafb:
+  * [RELEASE] Released version 2.7.6
+  * BUG/MINOR: quic: Missing STREAM frame type updated
+  * BUG/MINOR: applet/new: fix sedesc freeing logic
+  * BUG/MEDIUM: mux-h1: Wakeup H1C on shutw if there is no I/O subscription
+  * DOC: config: set-var() dconv rendering issues
+  * BUG/MEDIUM: stats: Consume the request except when parsing the POST payload
+  * MINOR: mux-quic: close on frame alloc failure
+  * MINOR: mux-quic: close on qcs allocation failure
+  * MINOR: mux-quic: ensure CONNECTION_CLOSE is scheduled once per conn
+  * MINOR: mux-quic: interrupt qcc_recv*() operations if CC scheduled
+  * BUG/MINOR: mux-quic: prevent CC status to be erased by shutdown
+  * BUG/MINOR: h3: properly handle incomplete remote uni stream type
+  * MINOR: mux-quic: add flow-control info to minimal trace level
+  * MINOR: mux-quic: adjust trace level for MAX_DATA/MAX_STREAM_DATA recv
+  * MINOR: mux-quic: complete traces for qcs emission
+  * BUG/MEDIUM: mux-quic: release data from conn flow-control on qcs reset
+  * BUG/MINOR: trace: fix hardcoded level for TRACE_PRINTF
+  * BUG/MINOR: quic: ignore congestion window on probing for MUX wakeup
+  * BUG/MINOR: quic: wake up MUX on probing only for 01RTT
+  * BUG/MEDIUM: applet: only set appctx->sedesc on successful allocation
+  * BUG/MEDIUM: mux-h1: properly destroy a partially allocated h1s
+  * BUG/MINOR: stconn: fix sedesc memory leak on stream allocation failure
+  * BUG/MEDIUM: stconn: don't set the type before allocation succeeds
+  * BUG/MEDIUM: mux-h2: erase h2c->wait_event.tasklet on error path
+  * BUG/MEDIUM: mux-h2: do not try to free an unallocated h2s->sd
+  * BUG/MEDIUM: stream: do not try to free a failed stream-conn
+  * BUG/MINOR: quic: Dysfunctional 01RTT packet number space probing
+  * MINOR: quic: Stop stressing the acknowledgments process (RX ACK frames)
+  * MINOR: proto_ux: ability to dump ABNS names in error messages
+  * MEDIUM: proto_ux: properly suspend named UNIX listeners
+  * BUG/MEDIUM: listener/proxy: fix listeners notify for proxy resume
+  * MINOR: listener: pause_listener() becomes suspend_listener()
+  * BUG/MEDIUM: resume from LI_ASSIGNED in default_resume_listener()
+  * BUG/MINOR: listener: fix resume_listener() resume return value handling
+  * BUG/MEDIUM: listener: fix pause_listener() suspend return value handling
+  * MINOR: listener: make sure we don't pause/resume bypassed listeners
+  * MINOR: listener: workaround for closing a tiny race between resume_listener() and stopping
+  * MINOR: listener: add relax_listener() function
+  * MINOR: listener/api: add lli hint to listener functions
+  * MINOR: proto_uxst: add resume method
+
+-------------------------------------------------------------------
 Fri Mar 17 16:42:07 UTC 2023 - mrueckert@suse.de
 
 - Update to version 2.7.5+git0.8d230219e:

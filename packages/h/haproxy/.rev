@@ -1314,4 +1314,12 @@
   * BUG/MEDIUM: mux-pt: Set EOS on error on sending path if read0 was received</comment>
     <requestid>1072696</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>4cb319547e1801c73ee668e7371ce78b</srcmd5>
+    <version>2.7.6+git0.4dadaaafb</version>
+    <time>1680018688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.6+git0.4dadaaafb:</comment>
+    <requestid>1074952</requestid>
+  </revision>
 </revisionlist>
