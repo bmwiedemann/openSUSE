@@ -30,6 +30,10 @@ URL:            https://github.com/helm/chart-testing
 Source:         chart-testing-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.16
+Requires:       git-core
+Requires:       helm
+Requires:       python3-yamale
+Requires:       python3-yamllint
 
 %description
 ct is the the tool for testing Helm charts. It is meant to be used for linting and testing pull requests. It automatically detects charts changed against the target branch.

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 27 12:31:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add requirements, see README.md
+  https://github.com/helm/chart-testing/#readme
+  * Require python3-yamale
+  * Require python3-yamllint
+  * Require git-core
+  * Require helm
+
+-------------------------------------------------------------------
 Fri Mar 24 18:28:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.8.0:
