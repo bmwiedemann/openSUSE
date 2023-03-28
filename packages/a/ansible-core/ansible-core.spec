@@ -31,7 +31,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.14.3
+Version:        2.14.4
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -56,14 +56,16 @@ BuildRequires:  %{ansible_python}-curses
 BuildRequires:  %{ansible_python}-packaging
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-pytz
-BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 and %{ansible_python}-resolvelib < 0.9.0)
+# https://github.com/ansible/ansible/blob/devel/requirements.txt
+BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 0.10.0)
 # /SECTION
 Requires:       %{ansible_python}-Jinja2 >= 3.0.0
 Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
 Requires:       %{ansible_python}-packaging
-Requires:       %{ansible_python}-resolvelib < 0.9.0
-Requires:       (%{ansible_python}-resolvelib >= 0.5.3 and %{ansible_python}-resolvelib < 0.9.0)
+# https://github.com/ansible/ansible/blob/devel/requirements.txt
+Requires:       %{ansible_python}-resolvelib < 0.10.0
+Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 0.10.0)
 
 %description
 Ansible is a radically simple IT automation system. It handles
