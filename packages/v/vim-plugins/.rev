@@ -419,4 +419,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1073494</requestid>
   </revision>
+  <revision rev="48" vrev="55">
+    <srcmd5>56f9ad75f6557c0b8379c10f050385f4</srcmd5>
+    <version>unknown</version>
+    <time>1680018657</time>
+    <user>dimstar_suse</user>
+    <comment>- add vim table mode 4.7.6.1 (forwarded request 1074885 from lnussel)</comment>
+    <requestid>1074890</requestid>
+  </revision>
 </revisionlist>

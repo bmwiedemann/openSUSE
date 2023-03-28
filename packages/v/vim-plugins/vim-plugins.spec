@@ -51,6 +51,7 @@
 %define showmarks_version	2.3
 %define snipmate_version	0.83
 %define supertab_version	2.1
+%define table_mode_version	4.7.6.1
 %define taglist_version		4.6
 %define tlib_version		1.28
 %define tregisters_version	0.2
@@ -103,6 +104,7 @@ Source34:       https://github.com/editorconfig/editorconfig-vim/archive/refs/ta
 Source35:       https://github.com/tpope/vim-fugitive/archive/refs/tags/v%{fugitive_version}.tar.gz#/vimplugin-fugitive-%{fugitive_version}.tar.gz
 Source36:       https://github.com/vim-airline/vim-airline/archive/refs/tags/v%{airline_version}.tar.gz#/vimplugin-airline-%{airline_version}.tar.gz
 Source37:       https://github.com/dense-analysis/ale/archive/refs/tags/v%{ale_version}.tar.gz#/vimplugin-ale-%{ale_version}.tar.gz
+Source38:       https://github.com/dhruvasagar/vim-table-mode/archive/refs/tags/v%{table_mode_version}.tar.gz#/vimplugin-table-mode-%{table_mode_version}.tar.gz
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-markdown-%{markdown_version}.tar.xz
@@ -588,6 +590,18 @@ Requires:       vim
 %description -n vim-plugin-supertab
 This script allows you to use the tab key to do all your insert completion.
 
+%package -n vim-plugin-table-mode
+Version:        %table_mode_version
+Release:        0
+Summary:        VIM Table Mode for instant table creation.
+License:        MIT
+Group:          Productivity/Text/Editors
+Requires:       vim
+
+%description -n vim-plugin-table-mode
+An awesome automatic table creator & formatter allowing one to
+create neat tables as you type.
+
 %package -n vim-plugin-taglist
 Version:        %taglist_version
 Release:        0
@@ -696,7 +710,7 @@ Usage:
      Press <c-w>o again: the previous set of windows is restored
 
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a100 -a101 -a102 -a103 -a104
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a100 -a101 -a102 -a103 -a104
 pushd salt-vim-%{salt_version}
 %patch0 -p1
 popd
@@ -737,6 +751,18 @@ EOF
 cat > salt-vim-%{salt_version}/.rsync-filter <<EOF
 - /salt-vim.spec
 EOF
+
+cat > vim-table-mode-%{table_mode_version}/.rsync-filter <<EOF
+- /.github
+- /t
+- /.travis.yml
+- /CHANGELOG.md
+- /Gemfile*
+- /Rakefile
+- /VimFlavor.lock
+- /youtube.png
+EOF
+# END EXCLUDES
 
 cat > tlib_vim-%{tlib_version}/.rsync-filter <<EOF
 - /addon-info.json
@@ -826,6 +852,7 @@ fi \
 %vim_doc_post -n vim-plugin-rails
 %vim_doc_post -n vim-plugin-snipmate
 %vim_doc_post -n vim-plugin-supertab
+%vim_doc_post -n vim-plugin-table-mode
 %vim_doc_post -n vim-plugin-taglist
 %vim_doc_post -n vim-plugin-tlib
 %vim_doc_post -n vim-plugin-tselectbuffer
@@ -1084,6 +1111,15 @@ fi \
 %defattr(-,root,root,0755)
 %vimplugin_dir/plugin/supertab.vim
 %vimplugin_dir/doc/supertab.txt
+
+%files -n vim-plugin-table-mode
+%defattr(-,root,root,0755)
+%doc vim-table-mode-%{table_mode_version}/README.md
+%vimplugin_dir/autoload/tablemode*
+%vimplugin_dir/plugin/table-mode.vim
+%vimplugin_dir/doc/table-mode.txt
+%vimplugin_dir/ftplugin/markdown_tablemode.vim
+%vimplugin_dir/ftplugin/rst_tablemode.vim
 
 %files -n vim-plugin-taglist
 %defattr(-,root,root,0755)
