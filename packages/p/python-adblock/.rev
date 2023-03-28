@@ -68,4 +68,15 @@ Breaks
   * Minimum Python version is now 3.7.</comment>
     <requestid>990893</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fa18510c1a02007e5378c2010bf695bc</srcmd5>
+    <version>0.6.0</version>
+    <time>1680018668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendor tarball
+- Add python-adblock-maturin-0-14-compat.patch
+  Allow building with newer maturin, which is pedantic about
+  PEP 621</comment>
+    <requestid>1074916</requestid>
+  </revision>
 </revisionlist>

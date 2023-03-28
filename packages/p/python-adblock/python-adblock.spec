@@ -1,7 +1,7 @@
 #
 # spec file for package python-adblock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adblock
 Version:        0.6.0
 Release:        0
@@ -26,6 +25,9 @@ License:        Apache-2.0 OR MIT
 URL:            https://pypi.org/project/adblock/
 Source:         https://github.com/ArniDagur/python-adblock/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
+# PATCH-FIX-OPENSUSE allow building with newer maturin, which is pedantic about PEP 621
+Patch0:         python-adblock-maturin-0-14-compat.patch
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -41,11 +43,11 @@ ExclusiveArch:  %{rust_arches}
 Python wrapper for Brave's adblocking library.
 
 %prep
-%setup -q
+%autosetup -a1 -p1
 # build flavor-specific versions -- otherwise wheels will not work
 sed -i 's/"abi3-py37", //' Cargo.toml
-
-tar xf %{SOURCE1}
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
 %pyproject_wheel
