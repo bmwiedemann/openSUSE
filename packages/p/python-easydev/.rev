@@ -66,4 +66,12 @@
   * Fix a ipython warning</comment>
     <requestid>1064216</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4c5c74c4b9203bba529089b3367d027f</srcmd5>
+    <version>0.12.1</version>
+    <time>1680018652</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on line_profiler.</comment>
+    <requestid>1074878</requestid>
+  </revision>
 </revisionlist>

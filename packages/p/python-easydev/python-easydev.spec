@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-easydev
 Version:        0.12.1
 Release:        0
@@ -40,7 +39,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module colorlog}
-BuildRequires:  %{python_module line_profiler}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
