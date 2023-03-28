@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 25 22:00:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23
+  * This version has a new pointer acceleration profile: the
+    "custom" profile. This profile allows users to tweak the
+    exact response of their device based on their input speed.
+
+-------------------------------------------------------------------
 Thu Jan 19 12:06:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to release 1.22.1:

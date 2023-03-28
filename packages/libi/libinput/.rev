@@ -995,4 +995,12 @@ Peter Hutterer (3):
     <comment>New upstream release (forwarded request 1059574 from iznogood)</comment>
     <requestid>1059636</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>0c3283aa3120be68d0dfbcaaff32f082</srcmd5>
+    <version>1.23.0</version>
+    <time>1680018512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.23</comment>
+    <requestid>1074360</requestid>
+  </revision>
 </revisionlist>
