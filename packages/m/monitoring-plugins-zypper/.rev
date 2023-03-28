@@ -180,4 +180,12 @@ Package might get out as maintenance update for 13.2 (see bnc#904170) after acce
   + Add user icinga to the sudo configuration (PR#1 thanks to mhauke)</comment>
     <requestid>887824</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8e00709fe4155cd3a50eb691fed465dd</srcmd5>
+    <version>1.98.9</version>
+    <time>1680018605</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.98.9 - let's remove outdated distributions and update the changes entry to contain a missing entry. </comment>
+    <requestid>1074985</requestid>
+  </revision>
 </revisionlist>

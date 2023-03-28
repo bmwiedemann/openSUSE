@@ -1,7 +1,7 @@
 <services>
    <service name="tar_scm" mode="localonly">
-     <param name="revision">v1.98.7</param>
-     <param name="version">1.98.7</param>
+     <param name="revision">v1.98.9</param>
+     <param name="version">1.98.9</param>
      <param name="scm">git</param>
      <param name="url">https://github.com/lrupp/monitoring-plugins-zypper.git</param>
      <param name="filename">monitoring-plugins-zypper</param>
