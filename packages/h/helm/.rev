@@ -487,4 +487,16 @@ See changelog in:
     <comment></comment>
     <requestid>1070342</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>bf35aec3f5a126ea7ea3ed39660f5103</srcmd5>
+    <version>3.11.2</version>
+    <time>1680018536</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-plugin-32bit.patch
+
+- build against go 1.19 (bsc#1209670)
+- include K8s tags
+- run tests</comment>
+    <requestid>1075020</requestid>
+  </revision>
 </revisionlist>

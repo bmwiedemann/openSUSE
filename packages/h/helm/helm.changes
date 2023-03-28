@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 28 13:18:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add fix-plugin-32bit.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 17:12:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build against go 1.19 (bsc#1209670)
+- include K8s tags
+- run tests 
+
+-------------------------------------------------------------------
 Thu Mar 09 05:49:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.11.2:

@@ -28,8 +28,10 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
 Source0:        https://github.com/helm/helm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# PATCH submitted upstream https://github.com/helm/helm/pull/11949
+Patch1:         fix-plugin-32bit.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.19
 %{go_provides}
 
 %description
@@ -66,15 +68,25 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%setup -qa1
+%autosetup -p1 -a1
 
 %build
 %goprep %{goipath}
-# Avoid gold dependency on ARM64
+export K8S_MINOR=$(grep k8s.io/client-go go.mod | cut -d. -f3)
+export GO111MODULE=on
 export CGO_ENABLED=0
-%gobuild -mod vendor -buildmode pie -ldflags "-X %{goipath}/internal/version.version=v%{version} -X %{goipath}/internal/version.gitCommit=%{git_commit} -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
+%gobuild -trimpath -tags '' -mod vendor -buildmode pie -ldflags \
+    "-X %{goipath}/internal/version.version=v%{version} \
+     -X %{goipath}/internal/version.gitCommit=%{git_commit} \
+     -X %{goipath}/pkg/lint/rules.k8sVersionMajor=1 \
+     -X %{goipath}/pkg/lint/rules.k8sVersionMinor=$K8S_MINOR \
+     -X %{goipath}/pkg/chartutil.k8sVersionMajor=1 \
+     -X %{goipath}/pkg/chartutil.k8sVersionMinor=$K8S_MINOR \
+     -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
 
 %install
+export GO111MODULE=on
+export CGO_ENABLED=0
 %goinstall
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
@@ -83,23 +95,26 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/helm completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
+%check
+# requires network
+rm -v pkg/plugin/installer/*installer_test.go
+rm -v pkg/engine/engine_test.go
+GO111MODULE=on go test ./...
+
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/helm
 
 %files bash-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/zsh_completion.d/_%{name}
 
 %files fish-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/fish
 %dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
