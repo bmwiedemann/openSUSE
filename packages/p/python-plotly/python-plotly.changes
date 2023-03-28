@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Mar 26 13:47:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.13.1
+  * Updated Plotly.js to from version 2.18.0 to version 2.18.2. See
+    the plotly.js CHANGELOG for more information. These changes are
+    reflected in the auto-generated plotly.graph_objects module.
+  * Updated distutils.Version to packaging.Version #3897] and
+    #4055]
+- Release 5.13.0
+  * Updated Plotly.js to from version 2.17.1 to version 2.18.0. See
+    the plotly.js CHANGELOG for more information. Notable changes
+    include:
+  * Add sync tickmode option [#6356, #6443], with thanks to
+    @filipesantiagoAM and @VictorBezak for the contribution!
+  * Build process now uses Node 18.x and version 2 lockfile (should
+    be an invisible change for users) [#4034]
+  * write_html() now explicitly encodes output as UTF-8 because
+    Plotly.js' bundle contains such characters [#4021] and [#4022]
+  * fixed iframe renderer regression from 5.12 and also fixed error
+    when this renderer was used in the very first cell in a
+    notebook [#4036]
+- Release 5.12.0
+  * Support for ipywidgets 8 [#3930]
+  * Updated Plotly.js to from version 2.16.1 to version 2.17.1. See
+    the plotly.js CHANGELOG for more information. Notable changes
+    include:
+  * Add shift and autoshift to cartesian y axes to help avoid
+    overlapping of multiple axes [#6334], with thanks to Gamma
+    Technologies for sponsoring the related development!
+  * Introduce group attributes for scatter trace i.e.
+    alignmentgroup, offsetgroup, scattermode and scattergap
+    [#6381], this feature was anonymously sponsored: thank you to
+    our sponsor!
+  * Add marker.cornerradius attribute to treemap trace [#6351]
+  * Fixed the usage of some deprecated NumPy types which were
+    removed in NumPy 1.24 [#3997]
+  * Fixed bug for trendlines with datetime axes [#3683]
+  * marker.angle attribute now accepts iterables where appropriate
+    [#4013]
+  * selector=0 now correctly returns the first trace in
+    .select_traces() and related methods [#3817]
+- Drop patches merged upstream
+  * plotly-fix-sources-np1.24.patch
+  * plotly-fix-tests-np1.24.patch
+
+-------------------------------------------------------------------
 Sat Dec 24 12:18:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.11.0

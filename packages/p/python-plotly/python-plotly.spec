@@ -1,7 +1,7 @@
 #
 # spec file for package python-plotly
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define         skip_python2 1
 Name:           python-plotly
-Version:        5.11.0
+Version:        5.13.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -28,9 +27,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/plotly/plotly-%
 # Additionally use the GitHub archive for the test suite
 Source1:        https://github.com/plotly/plotly.py/archive/refs/tags/v%{version}.tar.gz#/plotly.py-%{version}-gh.tar.gz
 Source100:      python-plotly-rpmlintrc
-# PATCH-FIX-UPSTREAM plotly-fix-tests-np1.24.patch and plotly-fix-sources-np1.24.patch gh#plotly/plotly.py#3997
-Patch1:         plotly-fix-sources-np1.24.patch
-Patch2:         plotly-fix-tests-np1.24.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module notebook >= 5.3}
@@ -65,7 +61,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module statsmodels}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.9}
 # /SECTION
 %python_subpackages
 
@@ -116,16 +112,10 @@ Jupyterlab and Notebook integration and widgets.
 
 %prep
 %setup -q -n plotly-%{version} -b 1
-%patch1 -p4
 # remove script interpreter line in non-executable script
 sed -i '1{/env python/ d}' _plotly_utils/png.py
 # homogenize mtime of all __init__.py files for deduplicated compile cache consistency
 find . -name __init__.py -exec touch -m -r plotly/__init__.py '{}' ';'
-# patch the sources and tests in the github archive too
-pushd ../plotly.py-%{version}
-%patch1 -p1
-%patch2 -p1
-popd
 
 %build
 %pyproject_wheel
@@ -139,14 +129,18 @@ popd
 # No test suite in the PyPI package, which is required for the bundled JS files, we are using the GitHub repo tree now.
 # Important: make sure you patched the sources the same as the github repo
 pushd ../plotly.py-%{version}/packages/python/plotly
-%pytest plotly/tests/test_core
+# API parameter mismatch
+donttest="test_described_subscript_error_on_type_error"
+%pytest plotly/tests/test_core -k "not ($donttest)"
 # not available
 donttest="test_kaleido"
 # API parameter mismatches and precision errors
 donttest+=" or test_matplotlylib"
 # flaky timing error
 donttest+=" or test_fast_track_finite_arrays"
-%pytest plotly/tests/test_optional -k "not ($donttest)"
+# no xarray for python38
+python38_ignore="--ignore plotly/tests/test_optional/test_px/test_imshow.py"
+%pytest plotly/tests/test_optional -k "not ($donttest)" ${$python_ignore}
 popd
 
 %files %{python_files}
