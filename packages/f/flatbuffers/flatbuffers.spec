@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define _lto_cflags %{nil}
-
-%define   sonum 2
+%define   sonum 23_3_3
 Name:           flatbuffers
-Version:        2.0.6
+Version:        23.3.3
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://google.github.io/flatbuffers/
 Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.8
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -67,12 +65,6 @@ and tools.
 
 %build
 chmod -x readme.md docs/source/*.md docs/footer.html docs/source/doxyfile
-# Fixup CMake/FlatbuffersConfigVersion.cmake.in - Upstream releases tarballs
-# that make no sense. They exect git describe to find correct information about
-# the version in use - and replace that into the cmake file in the end. Obviously
-# the tarball has no .git directory and thus does not carry that inormation
-# We just inject %%version there. Easiest fix.
-sed -i 's/@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@/%{version}/' CMake/FlatbuffersConfigVersion.cmake.in
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DFLATBUFFERS_BUILD_SHAREDLIB=ON \
        -DFLATBUFFERS_BUILD_FLATLIB=OFF \
@@ -93,7 +85,7 @@ install -Dm0644 CMake/*FlatBuffers.cmake %{buildroot}%{_datadir}/cmake/Modules/
 %postun -n libflatbuffers%{sonum} -p /sbin/ldconfig
 
 %files -n libflatbuffers%{sonum}
-%license LICENSE.txt
+%license LICENSE
 %{_libdir}/libflatbuffers.so.*
 
 %files devel

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Mar 27 19:52:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.3.3:
+  * Major release! Just kidding, we are continuing the versioning
+    scheme of using a date to signify releases. This results in the
+    first release of the new year to
+    bump the tradition major version field.
+  * Refactoring of flatc generators to use an interface (#7797).
+  * Removed legacy cmake support and set min to 3.8 (#7801).
+  * Reworked entry points for Typescript/Javascript and compatibility
+    for single file build (#7510)
+  * Removed go.mod files after some versioning issues were being
+    report (#7780).
+  * Go minimum version is now 1.19 (#7720) with the addition of Go
+    modules.
+  * Added CI support for Big Endian regression testing (#7707).
+  * Fixed getFullyQualifiedName in typescript to return name
+    delimited by '.' instead of '_' (#7730).
+  * Fixed the versioning scheme to not include leading zeros which
+    are not consistently handled by every package manager. Only the
+    last release (12.12.06)
+    should have suffered from this.
+  * 20 Major releases in a row? Nope, we switched to a new versioning
+    scheme that is based on date.
+  * Python supports fixed size arrays now (#7529).
+  * Behavior change in how C++ object API uses UnPackTo. The original
+    intent of this was to reduce allocations by reusing an existing
+    object to pack data into.
+    At some point, this logic started to merge the states of the two
+    objects instead of clearing the state of the packee. This change
+    goes back to the original intention, the packed object is cleared
+    when getting data packed into it (#7527).
+  * Fixed a bug in C++ alignment that was using sizeof() instead of
+    the intended AlignOf() for structs (#7520).
+
+-------------------------------------------------------------------
 Thu May 12 12:02:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.0.6
