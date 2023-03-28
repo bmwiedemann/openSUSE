@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 21 11:38:06 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to version 2.5.5
+  * Fixed basic auth failures resulting in infinite retry loop (#11320)
+  * Fixed GitHub rate limit reporting (#11366)
+  * Fixed InstalledVersions error in Composer 1 compatibility edge case (#11304)
+  * Fixed issue displaying solver problems with branch names containing `%` signs (#11359)
+  * Fixed race condition in cache validity detection when running Composer highly concurrently (#11375)
+  * Fixed various minor config command issues (#11353, #11302)
+
+-------------------------------------------------------------------
 Wed Feb 15 15:09:27 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 2.5.4
