@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 12:28:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 9fc0e4ff6186e3aee3d3350e9f1b062aa6e161fe.patch: Fix:
+  disable-deprecated by default for end users (needed due to new
+  deprecation in gtkmm).
+
+-------------------------------------------------------------------
 Thu Mar 16 07:00:14 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.0.2:
