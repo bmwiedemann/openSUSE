@@ -46,4 +46,12 @@
     <comment>- Modernize specfile.</comment>
     <requestid>833994</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c7e4fe00244a633ab1f488cbd29d19ca</srcmd5>
+    <version>1.6.9</version>
+    <time>1680018620</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-resolve-missing-includes-showing-on-gcc-13.patch</comment>
+    <requestid>1074789</requestid>
+  </revision>
 </revisionlist>

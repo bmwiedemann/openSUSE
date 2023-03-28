@@ -1,7 +1,7 @@
 #
 # spec file for package 4ti2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,11 @@ URL:            https://4ti2.github.io/
 
 Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_9/4ti2-1.6.9.tar.gz
 Patch1:         4ti2-docdir.diff
+Patch2:         4ti2-handle-prefix.patch
+Patch3:         0001-build-resolve-missing-includes-showing-on-gcc-13.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.3
 BuildRequires:  glpk-devel >= 4.52
 BuildRequires:  gmp-devel >= 4.1.4
@@ -73,7 +76,7 @@ developing against 4ti2's libraries.
 autoreconf -fi
 %configure --enable-shared --disable-static \
 	--includedir="%_includedir/%name" --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -85,6 +88,7 @@ pushd "$b/%_libexecdir/%name"
 for i in *; do
 	ln -s "%_libexecdir/%name/$i" "$b/%_bindir/4ti2_$i"
 done
+%fdupes -s %buildroot/%_prefix
 
 %post   -n lib4ti2-0 -p /sbin/ldconfig
 %postun -n lib4ti2-0 -p /sbin/ldconfig
