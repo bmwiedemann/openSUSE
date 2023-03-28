@@ -26,6 +26,8 @@ URL:            https://gitlab.freedesktop.org/mesa/adriconf
 Source0:        https://gitlab.freedesktop.org/mesa/adriconf/-/archive/v%{version}/adriconf-v%{version}.tar.bz2
 Source1:        adriconf.desktop
 Source2:        driconf-icon.png
+# PATCH-FIX-UPSTREAM fix-missing-include.patch -- Add missing include exposed by gcc 13
+Patch0:         fix-missing-include.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -53,7 +55,7 @@ the standard drirc file used by the Mesa drivers.
 %lang_package
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version} -p1
 
 %build
 %cmake \

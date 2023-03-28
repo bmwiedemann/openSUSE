@@ -1,0 +1,22 @@
+diff -Nur adriconf-v2.6.0-orig/adriconf/Utils/PCIDatabaseQuery.h adriconf-v2.6.0/adriconf/Utils/PCIDatabaseQuery.h
+--- adriconf-v2.6.0-orig/adriconf/Utils/PCIDatabaseQuery.h	2023-03-28 11:58:00.433964215 +0200
++++ adriconf-v2.6.0/adriconf/Utils/PCIDatabaseQuery.h	2023-03-28 11:59:12.830851304 +0200
+@@ -3,6 +3,7 @@
+ 
+ #include <glibmm/ustring.h>
+ #include "PCIDatabaseQueryInterface.h"
++#include <cstdint>
+ 
+ extern "C" {
+ #include <pci/pci.h>
+diff -Nur adriconf-v2.6.0-orig/adriconf/Utils/PCIDatabaseQueryInterface.h adriconf-v2.6.0/adriconf/Utils/PCIDatabaseQueryInterface.h
+--- adriconf-v2.6.0-orig/adriconf/Utils/PCIDatabaseQueryInterface.h	2023-03-28 11:58:13.394123341 +0200
++++ adriconf-v2.6.0/adriconf/Utils/PCIDatabaseQueryInterface.h	2023-03-28 11:59:27.811034337 +0200
+@@ -2,6 +2,7 @@
+ #define ADRICONF_PCIDATABASEQUERYINTERFACE_H
+ 
+ #include <glibmm/ustring.h>
++#include <cstdint>
+ 
+ class PCIDatabaseQueryInterface {
+ public:

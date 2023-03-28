@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:26:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-missing-include.patch: Add missing include exposed by
+  gcc13.
+
+-------------------------------------------------------------------
 Wed Mar 15 15:37:10 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.6.0:
