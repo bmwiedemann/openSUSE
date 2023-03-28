@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 21 04:37:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable tests. Failing for editorconfig.
+
+-------------------------------------------------------------------
+Tue Mar 21 02:16:32 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove editorconfig requirement.
+- Fix tests.
+
+-------------------------------------------------------------------
+Tue Mar 21 00:31:00 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix tests.
+- Add editorconfig as build requirement.
+
+-------------------------------------------------------------------
+Sat Mar 18 11:40:33 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.17.0:
+  * Sort requires
+  * Add default editorconfig feature
+  * extension: Pass cwd as workspace folder for version check
+  * Add Dockerfile
+
+-------------------------------------------------------------------
 Fri Feb 17 10:33:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.16.1:
