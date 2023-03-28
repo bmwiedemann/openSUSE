@@ -1,0 +1,71 @@
+diff --git a/dask/dataframe/io/parquet/core.py b/dask/dataframe/io/parquet/core.py
+index 07fa3a0e8f6..cc9ecaddb20 100644
+--- a/dask/dataframe/io/parquet/core.py
++++ b/dask/dataframe/io/parquet/core.py
+@@ -1375,14 +1375,20 @@ def apply_conjunction(parts, statistics, conjunction):
+                     out_statistics.append(stats)
+                 else:
+                     if (
+-                        operator != "is not"
+-                        and min is None
+-                        and max is None
+-                        and null_count
++                        # Must allow row-groups with "missing" stats
++                        (min is None and max is None and not null_count)
++                        # Check "is" and "is not" fiters first
+                         or operator == "is"
+                         and null_count
+                         or operator == "is not"
+                         and (not pd.isna(min) or not pd.isna(max))
++                        # Allow all-null row-groups if not fitering out nulls
++                        or operator != "is not"
++                        and min is None
++                        and max is None
++                        and null_count
++                        # Start conventional (non-null) fitering
++                        # (main/max cannot be None for remaining checks)
+                         or operator in ("==", "=")
+                         and min <= value <= max
+                         or operator == "!="
+diff --git a/dask/dataframe/io/tests/test_parquet.py b/dask/dataframe/io/tests/test_parquet.py
+index f2403106eb9..f9c10d573dc 100644
+--- a/dask/dataframe/io/tests/test_parquet.py
++++ b/dask/dataframe/io/tests/test_parquet.py
+@@ -4718,10 +4718,28 @@ def test_fsspec_to_parquet_filesystem_option(tmp_path):
+ def test_select_filtered_column(tmp_path, engine):
+     df = pd.DataFrame({"a": range(10), "b": ["cat"] * 10})
+     path = tmp_path / "test_select_filtered_column.parquet"
+-    df.to_parquet(path, index=False)
++    stats = {"write_statistics" if engine == "pyarrow" else "stats": True}
++    df.to_parquet(path, engine=engine, index=False, **stats)
+ 
+     with pytest.warns(UserWarning, match="Sorted columns detected"):
+         ddf = dd.read_parquet(path, engine=engine, filters=[("b", "==", "cat")])
++        assert_eq(df, ddf)
++
++    with pytest.warns(UserWarning, match="Sorted columns detected"):
++        ddf = dd.read_parquet(path, engine=engine, filters=[("b", "is not", None)])
++        assert_eq(df, ddf)
++
++
++def test_select_filtered_column_no_stats(tmp_path, engine):
++    df = pd.DataFrame({"a": range(10), "b": ["cat"] * 10})
++    path = tmp_path / "test_select_filtered_column_no_stats.parquet"
++    stats = {"write_statistics" if engine == "pyarrow" else "stats": False}
++    df.to_parquet(path, engine=engine, **stats)
++
++    ddf = dd.read_parquet(path, engine=engine, filters=[("b", "==", "cat")])
++    assert_eq(df, ddf)
++
++    ddf = dd.read_parquet(path, engine=engine, filters=[("b", "is not", None)])
+     assert_eq(df, ddf)
+ 
+ 
+@@ -4793,6 +4811,7 @@ def test_read_parquet_convert_string_nullable_mapper(tmp_path, engine):
+     assert_eq(ddf, expected)
+ 
+ 
++@PYARROW_MARK  # We get an error instead of a warning without pyarrow
+ @FASTPARQUET_MARK
+ @pytest.mark.skipif(
+     not PANDAS_GT_200, reason="dataframe.convert_string requires pandas>=2.0"

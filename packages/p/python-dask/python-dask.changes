@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Mar 27 16:40:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.2
+  ## Enhancements
+  * Deprecate observed=False for groupby with categoricals
+    (GH#10095) Irina Truong
+  * Deprecate axis= for some groupby operations (GH#10094) James
+    Bourbeau
+  * The axis keyword in DataFrame.rolling/Series.rolling is
+    deprecated (GH#10110) Irina Truong
+  * DataFrame._data deprecation in pandas (GH#10081) Irina Truong
+  * Use importlib_metadata backport to avoid CLI UserWarning
+    (GH#10070) Thomas Grainger
+  * Port option parsing logic from dask.dataframe.read_parquet to
+    to_parquet (GH#9981) Anton Loukianov
+  ## Bug Fixes
+  * Avoid using dd.shuffle in groupby-apply (GH#10043) Richard
+    (Rick) Zamora
+  * Enable null hive partitions with pyarrow parquet engine
+    (GH#10007) Richard (Rick) Zamora
+  * Support unknown shapes in *_like functions (GH#10064) Doug
+    Davis
+  ## Maintenance
+  * Restore Entrypoints compatibility (GH#10113) Jacob Tomlinson
+  * Allow pyarrow build to continue on failures (GH#10097) James
+    Bourbeau
+  * Fix test_set_index_on_empty with pyarrow strings active
+    (GH#10054) Irina Truong
+  * Temporarily skip pyarrow_compat tests with pandas 2.0
+    (GH#10063) James Bourbeau
+
+-------------------------------------------------------------------
+Sun Mar 26 17:13:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add dask-pr10042-parquetstats.patch gh#dask/dask#10042
+- Enable python311 build: numba is not a strict requirement
+
+-------------------------------------------------------------------
 Sat Mar 11 22:53:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2023.3.1

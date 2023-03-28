@@ -49,18 +49,18 @@
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
-# Numba is not ready for python 3.11 yet gh#numba/numba#8304
-%define skip_python311 1
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.3.1
+Version:        2023.3.2
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 # SourceRepository: https://github.com/dask/dask
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dask-pr10042-parquetstats.patch gh#dask/dask#10042
+Patch0:         dask-pr10042-parquetstats.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
@@ -72,6 +72,7 @@ Requires:       python-PyYAML >= 5.3.1
 Requires:       python-click >= 7
 Requires:       python-cloudpickle >= 1.1.1
 Requires:       python-fsspec >= 0.6.0
+Requires:       python-importlib-metadata >= 4.13.0
 Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 1.2.0
 Requires:       python-toolz >= 0.8.2
@@ -116,13 +117,13 @@ BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
-BuildRequires:  %{python_module numba}
+BuildRequires:  %{python_module numba if %python-base < 3.11}
 # snappy required for using fastparquet
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module sparse}
+BuildRequires:  %{python_module sparse if %python-base < 3.11}
 BuildRequires:  %{python_module tables}
 BuildRequires:  %{python_module xarray if %python-base >= 3.9}
 BuildRequires:  %{python_module zarr}
@@ -153,9 +154,9 @@ Requires:       %{name}-delayed = %{version}
 Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       %{name}-dot = %{version}
+Requires:       python-lz4 >= 4.3.2
 # Added to the [complete] extra in 2023.3.1, not available for TW yet
 #Requires:       python-pyarrow >= 7
-Requires:       python-lz4 >= 4.3.2
 Provides:       %{name}-all = %{version}-%{release}
 Obsoletes:      %{name}-all < %{version}-%{release}
 
@@ -375,9 +376,6 @@ mv dask dask.moved
 donttest="(test_datasets and test_deterministic)"
 # upstreams test if their ci is up to date, irrelevant for obs
 donttest+=" or test_development_guidelines_matches_ci"
-# requires otherwise optional pyarrow (not available on TW) --  https://github.com/dask/dask/issues/10042
-donttest+=" or (test_select_filtered_column and fastparquet)"
-donttest+=" or test_read_parquet_convert_string_fastparquet_warns"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # https://github.com/dask/dask/issues/8620
   donttest+=" or test_query_with_meta"
