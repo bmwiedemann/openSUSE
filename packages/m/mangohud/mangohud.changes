@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 03:20:41 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Fix building with GCC 13
+
+-------------------------------------------------------------------
 Sat Nov 26 14:30:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build by extracting the imgui to the versioned directory,

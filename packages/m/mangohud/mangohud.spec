@@ -1,7 +1,7 @@
 #
 # spec file for package mangohud
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,12 @@ sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
 mv imgui-%{imgui_ver} subprojects/
 sed -i 's/0.60.0/0.59/g' meson.build
+
+# Fix building with GCC 13 -- Workaround until the next release where the fix will be included
+sed -i -e '1i#include <cstdint>' src/control.cpp
+sed -i -e '1i#include <cstdint>' src/font.cpp
+sed -i -e '1i#include <cstdint>' src/keybinds.cpp
+sed -i -e '1i#include <cstdint>' src/overlay_params.cpp
 
 %build
 %meson \
