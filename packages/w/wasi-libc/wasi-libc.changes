@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 22 22:23:36 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)19.
+- Rebase workaround-broken-makefile.patch.
+- Add undefine-gcc-macros.patch: ignore new macros for now to fix
+  build with Clang 16.
+- Declare the package as noarch: the binaries are for WebAssembly,
+  not the host architecture.
+
+-------------------------------------------------------------------
 Fri Jul 29 00:34:36 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update services to comply with OBS

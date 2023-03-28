@@ -7,4 +7,12 @@
     <comment>Add wasi-libc for building rust1.62 with wasi support</comment>
     <requestid>991620</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5612c1edacdb84334ff48f64008d128f</srcmd5>
+    <version>19</version>
+    <time>1680018528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074704</requestid>
+  </revision>
 </revisionlist>

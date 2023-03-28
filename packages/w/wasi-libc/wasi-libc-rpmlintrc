@@ -5,6 +5,7 @@ addFilter("static-library-without-debuginfo .*")
 addFilter("readelf-failed .*")
 addFilter("zero-length .*")
 addFilter("arch-dependent-file-in-usr-share .*")
+addFilter("arch-independent-package-contains-binary-or-object .*")
 # There are empty dummy-files in the sysroot
 addFilter('lto-no-text-in-archive .*')
 addFilter('devel-file-in-non-devel-package .*')

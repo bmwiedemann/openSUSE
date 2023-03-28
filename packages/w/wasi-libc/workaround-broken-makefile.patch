@@ -1,14 +1,14 @@
 # Workaround as per https://github.com/WebAssembly/wasi-libc/issues/156
 diff --git a/Makefile b/Makefile
-index b9f3c00..cd044b0 100644
+index 46229f9..563f59f 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -565,7 +565,7 @@ check-symbols: startup_files libc
+@@ -706,7 +706,7 @@ check-symbols: startup_files libc
  	# This ignores whitespace because on Windows the output has CRLF line endings.
- 	diff -wur "$(CURDIR)/expected/$(MULTIARCH_TRIPLE)" "$(SYSROOT_SHARE)"
+ 	diff -wur "$(CURDIR)/expected/$(TARGET_TRIPLE)" "$(SYSROOT_SHARE)"
  
 -install: finish
-+install: 
++install:
  	mkdir -p "$(INSTALL_DIR)"
  	cp -r "$(SYSROOT)/lib" "$(SYSROOT)/share" "$(SYSROOT)/include" "$(INSTALL_DIR)"
  

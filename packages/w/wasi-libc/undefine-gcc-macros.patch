@@ -1,0 +1,16 @@
+Undefine some macros because the build isn't happy about them.
+diff --git a/Makefile b/Makefile
+index 563f59f..6d478e9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -688,6 +688,10 @@ check-symbols: startup_files libc
+ 	    -U__clang_wide_literal_encoding__ \
+ 	    -U__wasm_mutable_globals__ \
+ 	    -U__wasm_sign_ext__ \
++	    -U__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 \
++	    -U__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 \
++	    -U__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 \
++	    -U__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 \
+ 	    -U__GNUC__ \
+ 	    -U__GNUC_MINOR__ \
+ 	    -U__GNUC_PATCHLEVEL__ \

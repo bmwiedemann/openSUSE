@@ -1,7 +1,7 @@
 #
 # spec file for package wasi-libc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 Name:           wasi-libc
-Version:        0.1.1652147647.9886d3d
+Version:        19
 Release:        0
-Summary:        WASI libc implementation for WebAssembly 
+Summary:        WASI libc implementation for WebAssembly
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        MIT
 URL:            https://github.com/WebAssembly/wasi-libc
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/WebAssembly/wasi-libc/archive/refs/tags/wasi-sdk-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        wasi-libc-rpmlintrc
 Patch1:         workaround-broken-makefile.patch
+Patch2:         undefine-gcc-macros.patch
 BuildRequires:  clang > 10
 BuildRequires:  llvm > 10
+BuildArch:      noarch
 
 %description
 WASI libc allows cross platform binaries to be created and executed on a variety of platforms
 
 %prep
-%setup -q
+%setup -q -n wasi-libc-wasi-sdk-%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CC=clang
@@ -46,7 +49,7 @@ export NM=llvm-nm
 export CC=clang
 export AR=llvm-ar
 export NM=llvm-nm
-# The makefile is stupid and compiles everything again if we do `make install`, so we 
+# The makefile is stupid and compiles everything again if we do `make install`, so we
 # do it only once
 %make_install INSTALL_DIR="%{buildroot}/%{_datadir}/wasi-sysroot"
 # brp-15-strip-debug and -ar call system-strip and ar, which are not wasm-aware, so they will break wasm-files
