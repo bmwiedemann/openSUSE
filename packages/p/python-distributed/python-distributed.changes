@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 27 16:41:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.2
+  ## Enhancements
+  * Enhanced thread-safety in zict.File (GH#7691) crusaderky
+  * Future deserialization without available client (GH#7580)
+    Florian Jetter
+  * Support adjusting GIL monitoring interval (GH#7650) Miles
+  * Gracefully stop GIL monitoring if running (GH#7652) Miles
+  * Fine performance metrics for execute, gather_dep, etc.
+    (GH#7586) crusaderky
+  * Add GIL metric to dashboard (GH#7646) Miles
+  * Expose scheduler idle via RPC and HTTP API (GH#7642) Jacob
+    Tomlinson
+  * Add full dashboard link in scheduler logs (GH#7631) Miles
+  ## Bug Fixes
+  * Tell workers when their peers have left (so they don’t hang
+    fetching data from them) (GH#7574) Thomas Grainger
+  * Fix regression in dashboard after (GH#7586) (GH#7683)
+    crusaderky
+  * Fix OverflowError in Cluster._sync_cluster_info() (GH#7648)
+    Hendrik Makait
+  * Ensure that serialized data is measured correctly (GH#7593)
+    Florian Jetter
+  ## Maintenance
+  * Avoid bool object has no attribute close in @gen_cluster
+    (GH#7657) Thomas Grainger
+  * Fix failing test_server_close_stops_gil_monitoring (GH#7659)
+    James Bourbeau
+  * Remove weakref finalizer for Offload Executor (GH#7644) Florian
+    Jetter
+- Enable python311 build and test: numba not a strict requirement
+  of dask
+
+-------------------------------------------------------------------
 Tue Mar 14 03:42:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip more flaky tests

@@ -49,14 +49,12 @@
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
-# Numba is not ready for python 3.11 yet gh#numba/numba#8304
-%define skip_python311 1
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.3.1
+Version:        2023.3.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -104,7 +102,7 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sparse}
+BuildRequires:  %{python_module sparse if %python-base < 3.11}
 %if %{with paralleltests}
 BuildRequires:  %{python_module pytest-xdist}
 %endif
