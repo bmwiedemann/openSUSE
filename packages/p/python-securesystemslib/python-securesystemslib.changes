@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 27 05:47:20 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use_python3_interpreter_in_tests.diff:
+  * Call python3, not python.
+- Actually run the testsuite. 
+- Fix the Summary, and run fdupes to fix the most egregious rpmlint issues.
+- Stop using %{python_sitelib}/*.
+
+-------------------------------------------------------------------
 Fri Dec 10 12:14:29 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - initial package of version 0.21.0

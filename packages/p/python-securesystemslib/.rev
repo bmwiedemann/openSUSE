@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>943734</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4392789d1fd4d5b967a85481e7b4ad8f</srcmd5>
+    <version>0.21.0</version>
+    <time>1680018641</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use_python3_interpreter_in_tests.diff:
+  * Call python3, not python.
+- Actually run the testsuite. 
+- Fix the Summary, and run fdupes to fix the most egregious rpmlint issues.
+- Stop using %{python_sitelib}/*.
+</comment>
+    <requestid>1074829</requestid>
+  </revision>
 </revisionlist>

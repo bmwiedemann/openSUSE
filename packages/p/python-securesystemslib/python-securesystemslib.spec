@@ -1,7 +1,7 @@
 #
-# spec file for package python-wakeonlan
+# spec file for package python-securesystemslib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-securesystemslib
 Version:        0.21.0
 Release:        0
 License:        MIT
-Summary:        Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU
-Group:          Development/Languages/Python
-Url:            https://github.com/secure-systems-lab/securesystemslib
+Summary:        Cryptographic and general routines for Secure Systems Lab
+URL:            https://github.com/secure-systems-lab/securesystemslib
 Source:         securesystemslib-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM Contained in debian/patches directory
+Patch0:         use_python3_interpreter_in_tests.diff
+BuildRequires:  %{python_module PyNaCl}
+BuildRequires:  %{python_module asn1crypto}
+BuildRequires:  %{python_module cryptography >= 3.3.2}
+BuildRequires:  %{python_module ed25519}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
-Requires: python-cryptography >= 3.3.2
-Requires: python-PyNaCl
-Requires: python-colorama
+Requires:       python-PyNaCl
+Requires:       python-asn1crypto
+Requires:       python-colorama
+Requires:       python-cryptography >= 3.3.2
 
 BuildArch:      noarch
 %python_subpackages
@@ -41,15 +47,20 @@ BuildArch:      noarch
 Cryptographic and general-purpose routines for Secure Systems Lab projects at NYU
 
 %prep
-%setup -q -n securesystemslib-%version
+%autosetup -p1 -n securesystemslib-%version
 
 %build
-export CFLAGS="%{optflags}"
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest -k 'not (test_ed25519_kat or test_checkparams)'
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/securesystemslib
+%{python_sitelib}/securesystemslib-%{version}*info
 
+%changelog
