@@ -45,6 +45,8 @@ BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
 %requires_ge    python-PyQt6
 Provides:       python-qt3d-qt6 = %{version}-%{release}
+# qt6-3d-devel for i586 is projected to be reenabled when 6.5.0 is released
+ExcludeArch:    %{ix86}
 %python_subpackages
 
 %description

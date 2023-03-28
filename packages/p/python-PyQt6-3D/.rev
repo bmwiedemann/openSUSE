@@ -50,4 +50,13 @@
     <comment></comment>
     <requestid>1072206</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ef5369f6036593a80371e2e3a0d4b09f</srcmd5>
+    <version>6.4.0</version>
+    <time>1680018680</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ix86 build: qt6-3d has disabled it temporarily
+</comment>
+    <requestid>1074932</requestid>
+  </revision>
 </revisionlist>

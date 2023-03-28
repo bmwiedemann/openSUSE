@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:19:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Disable ix86 build: qt6-3d has disabled it temporarily
+
+-------------------------------------------------------------------
 Wed Mar 15 16:01:14 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not require python 3.7 when 3.6 is good enough, which allows
