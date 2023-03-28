@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:08:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update version to 22.10.0:
+  * Correct typo "Macro" -> "Marco" in man pages.
+  * Ignore case for Firefox.
+- Switch to python-rpm-macros.
+
+-------------------------------------------------------------------
 Thu Sep  8 12:37:19 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix filelist

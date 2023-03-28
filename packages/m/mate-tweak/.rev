@@ -239,4 +239,12 @@
     <comment>- Fix filelist (forwarded request 1001910 from hillwood)</comment>
     <requestid>1001911</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1258a3cab571db5207e1844e104ce184</srcmd5>
+    <version>22.10.0</version>
+    <time>1680018530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 22.10.0.</comment>
+    <requestid>1074804</requestid>
+  </revision>
 </revisionlist>

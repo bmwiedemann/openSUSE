@@ -1,7 +1,7 @@
 #
 # spec file for package mate-tweak
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   mate_tweak
 Name:           mate-tweak
-Version:        22.04.8
+Version:        22.10.0
 Release:        0
 Summary:        MATE desktop tweak tool
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ Requires:       python3-psutil
 Requires:       python3-setproctitle
 # For privilege granting.
 Requires:       xdg-utils
-Recommends:     %{name}-lang
 Recommends:     mate-applet-indicator
 Suggests:       mate-hud
 BuildArch:      noarch
@@ -69,24 +68,22 @@ Settings that can be handled via MATE Tweak:
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # Make world a bit simpler.
 sed -i "s/'pkexec', '/'xdg-su', '-c /g" %{name}
 sed -i '/polkit/d' setup.py
 
 %build
-# Nothing to build.
+%py3_build
 
 %install
-python3 setup.py install \
-  --root=%{buildroot}    \
-  --prefix=%{_prefix}
+%py3_install
 
 # Give gi-find-deps.sh a bait.
 ln -s %{_bindir}/%{name} %{buildroot}%{_prefix}/lib/%{name}/%{name}.py
 
-rm -rf %{buildroot}%{_prefix}/lib/python3.10/site-packages/setup.py
+rm %{buildroot}%{python3_sitelib}/setup.py
+%py3_compile %{buildroot}%{python3_sitelib}/
 
 %fdupes %{buildroot}%{python3_sitelib}/
 %find_lang %{name}
@@ -98,7 +95,7 @@ rm -rf %{buildroot}%{_prefix}/lib/python3.10/site-packages/setup.py
 %{_bindir}/marco-*
 %{_prefix}/lib/%{name}/
 %{python3_sitelib}/%{_name}-*
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python3_sitelib}/__pycache__
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/marco-*.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
