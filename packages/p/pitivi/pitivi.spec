@@ -17,13 +17,13 @@
 
 
 Name:           pitivi
-Version:        2022.06
+Version:        2023.03
 Release:        0
 Summary:        Video editing software
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.pitivi.org/
-Source0:        https://download.gnome.org/sources/pitivi/2022/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pitivi/2023/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gnome-doc-utils-devel >= 0.18.0
 BuildRequires:  gobject-introspection >= 1.31.1

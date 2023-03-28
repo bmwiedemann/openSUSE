@@ -377,4 +377,12 @@
     <comment>Add missing python3-librosa and python3-opencv run-time dependencies  for beat detection.</comment>
     <requestid>1062143</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3cc8eba4a4cbc7d644d229051ee53d32</srcmd5>
+    <version>2023.03</version>
+    <time>1680018534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074746</requestid>
+  </revision>
 </revisionlist>
