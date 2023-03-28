@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kubernetes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,6 @@ Requires:       flannel-k8s-yaml
 Requires:       health-checker-plugins-kubic
 Requires:       hello-kubic-k8s-yaml
 Requires:       helm
-Requires:       kube-prometheus-k8s-yaml
 Requires:       kuberlr
 Requires:       kubernetes-client
 Requires:       kubernetes-kubeadm

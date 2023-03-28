@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>982844</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff5a439c238fae6187872e45e3edde16</srcmd5>
+    <version>5.1</version>
+    <time>1680018656</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove kube-prometheus-k8s-yaml, outdated</comment>
+    <requestid>1074896</requestid>
+  </revision>
 </revisionlist>
