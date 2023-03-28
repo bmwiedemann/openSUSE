@@ -155,6 +155,8 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
 #
+Patch32:        stringop-overflow.patch
+#
 # OpenJDK specific patches
 #
 Patch302:       disable-doclint-by-default.patch
@@ -415,6 +417,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
 
 %patch302 -p1
 %patch303 -p1
