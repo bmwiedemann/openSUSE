@@ -109,7 +109,6 @@
 %ifnarch %ix86 x86_64
 %define _lto_cflags %{nil}
 %endif
-%define _lto_cflags %{nil}
 
 %define generic_qemu_description \
 QEMU provides full machine emulation and cross architecture usage. It closely\

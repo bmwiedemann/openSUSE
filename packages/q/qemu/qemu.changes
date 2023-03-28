@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 25 13:53:58 UTC 2023 - Martin Li_ka <mliska@suse.cz>
+
+- Enable again LTO for x86_64 target (boo#1133281). 
+
+-------------------------------------------------------------------
 Wed Mar 22 09:29:52 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
 
 - Further fixes for bsc#1209546
@@ -215,6 +220,7 @@ Fri Oct  7 12:35:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 * Patches added:
   block-io_uring-revert-Use-io_uring_regis.patch
 
+-------------------------------------------------------------------
 Wed Oct  5 15:57:27 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Due to change in where some documentation files are, if
@@ -525,7 +531,7 @@ Thu Jul 21 06:14:03 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
   intc-exynos4210_gic-replace-snprintf-wit.patch
   Revert-8dcb404bff6d9147765d7dd3e9c849337.patch
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Jul 20 02:07:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix bsc#1197084
