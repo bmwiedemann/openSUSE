@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:19:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 879af6341974c3778077d8212d78f093b2d77a4f.patch
+  b260860988469ef8ad74f2d4225839c2fa91d590.patch: better
+  compatibility with newer billiard
+
+-------------------------------------------------------------------
 Mon May  2 10:19:23 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 5.2.7

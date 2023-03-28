@@ -416,4 +416,14 @@
     <comment></comment>
     <requestid>989562</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c6313a21a60e8ab5987e26fc200c8872</srcmd5>
+    <version>5.2.7</version>
+    <time>1680018682</time>
+    <user>dimstar_suse</user>
+    <comment>- add 879af6341974c3778077d8212d78f093b2d77a4f.patch
+  b260860988469ef8ad74f2d4225839c2fa91d590.patch: better
+  compatibility with newer billiard</comment>
+    <requestid>1074931</requestid>
+  </revision>
 </revisionlist>
