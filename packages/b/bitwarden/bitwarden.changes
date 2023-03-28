@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 04:57:18 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2023.3.1
+  * Fix Vault Items with null Folder Value not Handled Correctly
+
+-------------------------------------------------------------------
 Wed Mar 22 19:34:04 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 2023.3.0
   * Restyle generator panel to be panel-like and avoid overflowing
