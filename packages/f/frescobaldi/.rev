@@ -196,4 +196,25 @@
     <comment>for this version the new package python-qpageview is required</comment>
     <requestid>976262</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f9e090f274fe67ce4d8dfbd556368953</srcmd5>
+    <version>3.3.0</version>
+    <time>1680018721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * New features:
+    - Score Wizard improvements: the MIDI instrument is now
+      user-selectable for several keyboard and guitar part types;
+      new part types for steelpan and dulcimer; new special
+      &quot;Structure&quot; type for laying out breaks, bar lines, etc.
+      separately from musical content. (#1375)
+    - Add option to format on save (#1473)
+    - Make all layout control options compatible with LilyPond 2.24
+      (#1489)
+    - Default URLs to browse the documentation of LilyPond stable
+      and unstable (#1538)
+  * Updated translations: French, Italian and Japanese
+  * Several bugfixes, among which some wayland ones</comment>
+    <requestid>1075000</requestid>
+  </revision>
 </revisionlist>

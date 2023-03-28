@@ -1,7 +1,7 @@
 #
 # spec file for package frescobaldi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        3.2
+Version:        3.3.0
 Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -74,7 +74,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
 %defattr (-,root,root)
-%doc README.md THANKS ChangeLog
+%doc README.md THANKS CHANGELOG.md
 %license COPYING
 %doc %{_mandir}/man1/frescobaldi*
 %{_bindir}/frescobaldi
