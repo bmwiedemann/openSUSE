@@ -343,4 +343,12 @@
   * Build with GTK3</comment>
     <requestid>1056086</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8997d6357ff04d948d80132f5a6384fe</srcmd5>
+    <version>2.53.2</version>
+    <time>1680018651</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074873</requestid>
+  </revision>
 </revisionlist>

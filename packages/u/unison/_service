@@ -59,7 +59,7 @@
     <param name="exclude">tests</param>
     <param name="exclude">unicode_utils</param>
     <param name="filename">unison</param>
-    <param name="revision">f3f7972bdab2770ea3085fad06c7939c2233ff7c</param>
+    <param name="revision">43b9875f247e91be3c0366e3b8cb951f4b17ee67</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/bcpierce00/unison.git</param>
