@@ -169,4 +169,13 @@
 </comment>
     <requestid>1070098</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>34fbf7df2a1097bcf8f2f1528f32923d</srcmd5>
+    <version>5.2.30</version>
+    <time>1680018655</time>
+    <user>dimstar_suse</user>
+    <comment>- Add add-cstdint.patch.
+</comment>
+    <requestid>1074874</requestid>
+  </revision>
 </revisionlist>

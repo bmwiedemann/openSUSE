@@ -1,0 +1,23 @@
+diff -ru orig/src/lime_double_ratchet.cpp mod/src/lime_double_ratchet.cpp
+--- orig/src/lime_double_ratchet.cpp	2022-11-09 23:33:57.000000000 +0100
++++ mod/src/lime_double_ratchet.cpp	2023-03-28 08:12:25.447825643 +0200
+@@ -25,6 +25,7 @@
+ #include "bctoolbox/exception.hh"
+ 
+ #include <algorithm> //copy_n
++#include <cstdint>
+ 
+ 
+ using namespace::std;
+diff -ru orig/src/lime_settings.hpp mod/src/lime_settings.hpp
+--- orig/src/lime_settings.hpp	2022-11-09 23:33:57.000000000 +0100
++++ mod/src/lime_settings.hpp	2023-03-28 08:11:58.683669300 +0200
+@@ -20,6 +20,8 @@
+ #ifndef lime_settings_hpp
+ #define lime_settings_hpp
+ 
++#include <cstdint>
++
+ namespace lime {
+ /** @brief Hold constants definition used as settings in all components of the lime library
+  *

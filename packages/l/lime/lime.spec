@@ -26,6 +26,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://linphone.org/technical-corner/lime/
 Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Patch0:         add-cstdint.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -90,7 +91,7 @@ development tools necessary for compiling and linking applications
 which will use lime.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
