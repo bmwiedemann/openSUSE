@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 03:56:09 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add dependency python-jose
+
+-------------------------------------------------------------------
 Wed Apr 20 10:53:40 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
