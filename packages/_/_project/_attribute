@@ -408,8 +408,8 @@ products:
   - virt-exportserver-container:
     - x86_64
   ftp:
-  - 000product:openSUSE-ftp-ftp-i586_x86_64
-  - 000product:openSUSE-Addon-NonOss-ftp-ftp-i586_x86_64
+  - 000product:openSUSE-ftp-ftp-x86_64
+  - 000product:openSUSE-Addon-NonOss-ftp-ftp-x86_64
   images:
   - kiwi-images-vagrant:libvirt:
     - x86_64
@@ -485,9 +485,9 @@ products:
     - i586
     - x86_64
   main:
-  - 000product:openSUSE-dvd5-dvd-i586
+#  - 000product:openSUSE-dvd5-dvd-i586
   - 000product:openSUSE-dvd5-dvd-x86_64
-  - 000product:openSUSE-cd-mini-i586
+#  - 000product:openSUSE-cd-mini-i586
   - 000product:openSUSE-cd-mini-x86_64
   - 000product:MicroOS-dvd5-dvd-x86_64
 test_subproject: ToTest
@@ -497,7 +497,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20230326'
 publishing: '20230326'
-testing: '20230326'
+testing: '20230327'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
