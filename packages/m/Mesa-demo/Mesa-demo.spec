@@ -27,13 +27,16 @@ Source0:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}
 Source1:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch0:         n_install-more-egl-binaries.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
@@ -96,85 +99,87 @@ This package contains some common EGL-based demos.
 
 %prep
 %setup -q -n mesa-demos-%{version} -b0
+%patch0 -p1
 
 %build
-autoreconf -fi
-%configure --bindir=%{_libdir}/mesa-demos/bin \
-           --enable-gles1 \
-           --enable-gles2 --enable-autotools
-make %{?_smp_mflags}
+%{meson} \
+  -Dgles1=enabled \
+  -Dgles2=enabled \
+  -Dosmesa=disabled \
+  -Dlibdrm=disabled \
+  -Dwayland=disabled \
+  %{nil}
+%{meson_build}
 
 %install
-mkdir -p %{buildroot}%{_libdir}
-cp -r src %{buildroot}%{_libdir}/mesa-demos
-find %{buildroot}%{_libdir}/mesa-demos -depth \( -name Makefile\* -o -name .\?\?\* -o -name \*.\[acho] \) -exec rm -rf \{\} +
-find %{buildroot}%{_libdir}/mesa-demos -depth -type d -exec rmdir --ignore-fail-on-non-empty \{\} +
-find %{buildroot}%{_libdir}/mesa-demos -name \*.py -exec chmod 755 \{\} +
-chmod -R go=rX %{buildroot}/usr
-mkdir -p %{buildroot}/%{_bindir}
-ln -s %{_libdir}/mesa-demos/xdemos/glxgears %{buildroot}/%{_bindir}/glxgears
-ln -s %{_libdir}/mesa-demos/xdemos/glxinfo %{buildroot}/%{_bindir}/glxinfo
-ln -s %{_libdir}/mesa-demos/xdemos/pbinfo %{buildroot}/%{_bindir}/pbinfo
-ln -s %{_libdir}/mesa-demos/egl/opengles2/es2_info %{buildroot}/%{_bindir}/es2_info
-ln -s %{_libdir}/mesa-demos/egl/opengles2/es2gears_x11 %{buildroot}/%{_bindir}/es2gears_x11
-ln -s %{_libdir}/mesa-demos/egl/opengles2/es2tri %{buildroot}/%{_bindir}/es2tri
-ln -s %{_libdir}/mesa-demos/egl/opengl/eglgears_x11 %{buildroot}/%{_bindir}/eglgears_x11
-ln -s %{_libdir}/mesa-demos/egl/opengl/eglinfo %{buildroot}/%{_bindir}/eglinfo
-ln -s %{_libdir}/mesa-demos/egl/opengl/egltri_x11 %{buildroot}/%{_bindir}/egltri_x11
-ln -s %{_libdir}/mesa-demos/egl/opengl/peglgears %{buildroot}/%{_bindir}/peglgears
-ln -s %{_libdir}/mesa-demos/egl/opengl/xeglgears %{buildroot}/%{_bindir}/xeglgears
-ln -s %{_libdir}/mesa-demos/egl/opengl/xeglthreads %{buildroot}/%{_bindir}/xeglthreads
+%{meson_install}
+%ifarch %ix86
+mkdir -p %{buildroot}%{_libdir}/mesa-demos/egl/{opengl,opengles2} \
+         %{buildroot}%{_libdir}/mesa-demos/xdemos
+cp -a %{buildroot}%{_bindir}/{eglgears_x11,eglinfo,egltri_x11,peglgears,xeglgears,xeglthreads} \
+      %{buildroot}%{_libdir}/mesa-demos/egl/opengl
+cp -a %{buildroot}%{_bindir}/{es2_info,es2gears_x11,es2tri} \
+      %{buildroot}%{_libdir}/mesa-demos/egl/opengles2
+cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
+      %{buildroot}%{_libdir}/mesa-demos/xdemos
+%endif
 
 %files
 %defattr(-,root,root)
-%{_libdir}/mesa-demos
-%exclude %{_libdir}/mesa-demos/xdemos/glxgears
-%exclude %{_libdir}/mesa-demos/xdemos/glxinfo
-%exclude %{_libdir}/mesa-demos/xdemos/pbinfo
-%exclude %{_libdir}/mesa-demos/egl/opengles2/es2_info
-%exclude %{_libdir}/mesa-demos/egl/opengles2/es2gears_x11
-%exclude %{_libdir}/mesa-demos/egl/opengles2/es2tri
-%exclude %{_libdir}/mesa-demos/egl/opengl/eglgears_x11
-%exclude %{_libdir}/mesa-demos/egl/opengl/eglinfo
-%exclude %{_libdir}/mesa-demos/egl/opengl/egltri_x11
-%exclude %{_libdir}/mesa-demos/egl/opengl/peglgears
-%exclude %{_libdir}/mesa-demos/egl/opengl/xeglgears
-%exclude %{_libdir}/mesa-demos/egl/opengl/xeglthreads
+%{_bindir}/*
+%dir %{_datadir}/mesa-demos
+%{_datadir}/mesa-demos/*
+%exclude %{_bindir}/glxgears
+%exclude %{_bindir}/glxinfo
+%exclude %{_bindir}/pbinfo
+%exclude %{_bindir}/es2_info
+%exclude %{_bindir}/es2gears_x11
+%exclude %{_bindir}/es2tri
+%exclude %{_bindir}/eglgears_x11
+%exclude %{_bindir}/eglinfo
+%exclude %{_bindir}/egltri_x11
+%exclude %{_bindir}/peglgears
+%exclude %{_bindir}/xeglgears
+%exclude %{_bindir}/xeglthreads
+# conflict with line of util-linux
+%exclude %{_bindir}/line
 
 %files x
 %defattr(-,root,root)
-%dir %{_libdir}/mesa-demos/xdemos/
-%{_libdir}/mesa-demos/xdemos/glxgears
-%{_libdir}/mesa-demos/xdemos/glxinfo
-%{_libdir}/mesa-demos/xdemos/pbinfo
 %{_bindir}/glxgears
 %{_bindir}/glxinfo
 %{_bindir}/pbinfo
+%ifarch %ix86
+%dir %{_libdir}/mesa-demos
+%dir %{_libdir}/mesa-demos/xdemos
+%{_libdir}/mesa-demos/xdemos/*
+%endif
 
 %files es
 %defattr(-,root,root)
-%dir %{_libdir}/mesa-demos/egl/opengles2/
-%{_libdir}/mesa-demos/egl/opengles2/es2_info
-%{_libdir}/mesa-demos/egl/opengles2/es2gears_x11
-%{_libdir}/mesa-demos/egl/opengles2/es2tri
 %{_bindir}/es2_info
 %{_bindir}/es2gears_x11
 %{_bindir}/es2tri
+%ifarch %ix86
+%dir %{_libdir}/mesa-demos/
+%dir %{_libdir}/mesa-demos/egl
+%dir %{_libdir}/mesa-demos/egl/opengles2
+%{_libdir}/mesa-demos/egl/opengles2/*
+%endif
 
 %files egl
 %defattr(-,root,root)
-%dir %{_libdir}/mesa-demos/egl/opengl/
-%{_libdir}/mesa-demos/egl/opengl/eglgears_x11
-%{_libdir}/mesa-demos/egl/opengl/eglinfo
-%{_libdir}/mesa-demos/egl/opengl/egltri_x11
-%{_libdir}/mesa-demos/egl/opengl/peglgears
-%{_libdir}/mesa-demos/egl/opengl/xeglgears
-%{_libdir}/mesa-demos/egl/opengl/xeglthreads
 %{_bindir}/eglgears_x11
 %{_bindir}/eglinfo
 %{_bindir}/egltri_x11
 %{_bindir}/peglgears
 %{_bindir}/xeglgears
 %{_bindir}/xeglthreads
+%ifarch %ix86
+%dir %{_libdir}/mesa-demos
+%dir %{_libdir}/mesa-demos/egl
+%dir %{_libdir}/mesa-demos/egl/opengl
+%{_libdir}/mesa-demos/egl/opengl/*
+%endif
 
 %changelog

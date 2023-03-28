@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 25 16:20:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't package "line" sample (conflict with /usr/bin/line of
+  util-linux)
+
+-------------------------------------------------------------------
+Fri Mar 24 13:55:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- readded -32bit packages 
+
+-------------------------------------------------------------------
+Fri Mar 24 13:26:05 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- switched to meson build 
+- needs n_install-more-egl-binaries.patch, so all binaries are
+  installed we had before ...
+
+-------------------------------------------------------------------
 Mon Feb 13 12:12:02 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - added baselibs.conf as source to specfile 

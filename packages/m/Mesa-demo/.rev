@@ -232,4 +232,19 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
   OpenGL environments are separate and need separate diagnostic programs.</comment>
     <requestid>1065608</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>fa15cf1c5a7504323d359b8d4bb3da94</srcmd5>
+    <version>8.5.0</version>
+    <time>1680018511</time>
+    <user>dimstar_suse</user>
+    <comment>- don't package &quot;line&quot; sample (conflict with /usr/bin/line of
+  util-linux)
+
+- readded -32bit packages 
+
+- switched to meson build 
+- needs n_install-more-egl-binaries.patch, so all binaries are
+  installed we had before ...</comment>
+    <requestid>1074339</requestid>
+  </revision>
 </revisionlist>
