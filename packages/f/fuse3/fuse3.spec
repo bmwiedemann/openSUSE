@@ -17,7 +17,7 @@
 
 
 Name:           fuse3
-Version:        3.14.0
+Version:        3.14.1
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -94,7 +94,7 @@ systems.
 find "%buildroot" -type f -name "*.la" -delete -print
 
 # Remove unneeded stuff
-rm -rfv %buildroot/%_prefix/lib/udev %buildroot/%_initddir
+rm -Rfv "%buildroot/%_prefix/lib/udev" "%buildroot/%_initddir"
 %fdupes -s doc
 
 %post

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 26 13:17:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.14.1
+  * The extended attribute name passed to the setxattr() handler
+    is no longer truncated at the beginning.
+  * The additional setattr() flags introduced in 3.14 are no
+    longer available for now. They will hopefully be reintroduced
+    in the next release.
+
+-------------------------------------------------------------------
 Fri Feb 17 10:14:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.14
