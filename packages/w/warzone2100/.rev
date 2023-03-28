@@ -193,4 +193,72 @@
     <comment></comment>
     <requestid>1056106</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e3324cfb24e776082673c11acd2e3aba</srcmd5>
+    <version>4.3.4</version>
+    <time>1680018538</time>
+    <user>dimstar_suse</user>
+    <comment>* Add BuildRequires pkgconfig(fribidi)
+- update to 4.3.4:
+  * General:
+    * Add: A separate Ban/Kick activity, allow removing from ban
+      list while running game, and fixes for spectator mute
+    * Fix: Various potential crashes
+    * Fix: Let some older maps show up again in the map lists
+    * Fix: Always cancel research when starting it in another lab
+    * Fix: Persist Snap config data by using SNAP_USER_COMMON
+  * Graphics:
+    * Fix: Fix missing sections on Tank Killer super cyborg
+  * Campaign:
+    * Change: Gamma 4: Remove middle tank traps guarding team
+      Alpha and remove the repair units to account for new repair
+      micro-AI
+    * Change: Always blow up walls and tank traps during Nexus
+      transfers in campaign
+    * Change: Improve difficulty differences on Gamma 9
+    * Change: Make Alpha 1-3 missions flow a bit more smoothly;
+      Increase player flamer ranges
+    * Change: Make Gamma 1 easier by activating factories
+      depending on what part of the valley you exit
+  * Multiplayer:
+    * Add: Add lobby command: makeplayer
+    * Add: Add a join message 
+    * Fix: Do not truncate spectator labels
+    * Fix: Stop Mission Time and store it when the results screen
+      pops up
+    * Fix: Preserve player identity on rename
+  * Balance MP:
+    * Add: Add new Heavy Rocket Array weapon which depends on MRA
+      and HEAT Rocket Warhead Mk2
+    * Change: Reduce effectiveness of artillery modifier on bunkers
+      40% to 20%, Reduce effectiveness of artillery modifiers
+      against Tracked 40% to 30% 
+    * Change: Make Heavy Repair Turret and Repair Facility appear
+      at same time, improve facility repair speed by 10, and make
+      light repair turret cost less and build faster
+    * Change: Buff Plasmite Flamer HP to 125 to match the HP
+      on Twin Assault Gun
+    * Change: Move Pulse Laser to around Seraph Missile and drop
+      Sensor Upgrade Mk3 requirement
+    * Change: Increase costs on later MG research and on
+      (Twin) Assault Gun
+    * Change: Pull some Rocket damages in earlier, Reduce Tank
+      Killer reload time to that of Lancer, Improve Rocket Pod
+      long range accuracy to 50% from 45%
+    * Change: Needle reload time matches the latest cannon weapons,
+      nerf Super Rail gunner damages and range, nerf VTOL
+      Needle/Rail radius and radius damage and increase weights
+    * Change: Pull Mortar into Advanced Bases by removing factory
+      module requirement
+    * Change: Reduce time and cost for Command Turret research
+      by 50%
+    * Change: Reduce research topic time and cost for most
+      defenses by 50%
+    * Change: Increase reward for some engineering upgrades to 30%
+  * Other:
+    * Add: Add autohost and autorating documentation
+    * Fix: Fix building with GCC 13
+</comment>
+    <requestid>1074739</requestid>
+  </revision>
 </revisionlist>
