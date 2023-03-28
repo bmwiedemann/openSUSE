@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 14 14:50:34 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add allow_build_without_deprecated_method.patch
+  Backport upstream fix for Qt 6.4 build failure
+
+-------------------------------------------------------------------
 Mon Feb  6 09:51:08 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.9.1

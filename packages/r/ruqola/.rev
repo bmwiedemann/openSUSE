@@ -104,4 +104,13 @@
     <comment></comment>
     <requestid>1063777</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1a4d9c203a5e182a31dd3b029edbce2f</srcmd5>
+    <version>1.9.1</version>
+    <time>1680018552</time>
+    <user>dimstar_suse</user>
+    <comment>- Add allow_build_without_deprecated_method.patch
+  Backport upstream fix for Qt 6.4 build failure (forwarded request 1071801 from tux93)</comment>
+    <requestid>1074774</requestid>
+  </revision>
 </revisionlist>

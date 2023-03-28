@@ -1,0 +1,27 @@
+From 47d9c358003d587f2fb049df9124c6aa04a5673e Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Mon, 30 Jan 2023 13:17:45 +0100
+Subject: [PATCH] Allow to build without deprecated method (Qt 6.4)
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 837a167a2..7d6f7f856 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -155,8 +155,8 @@ set_package_properties(KF5NetworkManager
+ 
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+-ecm_set_disabled_deprecation_versions(QT 5.15.2
+-    KF 6.0.0
++ecm_set_disabled_deprecation_versions(QT 6.4
++    KF 5.102.0
+     )
+ if (OPTION_BUILD_PYTHON_BINDINGS)
+    remove_definitions(-DQT_STRICT_ITERATORS)
+-- 
+GitLab
+

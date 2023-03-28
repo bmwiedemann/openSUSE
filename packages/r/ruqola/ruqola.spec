@@ -29,6 +29,8 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
+# PATCH-FIX-UPSTREAM: Fix build error with Qt 6.4
+Patch0:         allow_build_without_deprecated_method.patch
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CoreAddons)
