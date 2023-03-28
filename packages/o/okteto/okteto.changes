@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 28 04:59:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.0:
+  * fix: remote deploy with name multiple words (#3465) (#3466)
+  * add global push (#3439)
+  * Jlopezbar/fix e2e tests (#3454)
+  * Jlopezbar/fix e2e tests (#3449)
+  * Ignore OKTETO_TOKEN warning if OKTETO_TOKEN is the one in the
+    current context (#3438)
+  * interface defaults to localhost (#3447)
+  * fix destroy image envsub (#3432)
+  * refactor registry package (#3435)
+  * fix(down): avoid panic when removing a deployment that does not
+    exist (#3436)
+  * Remove weaver CRD dependency from Okteto CLI (#3423)
+  * feat: add env vars on external resources (#3430)
+  * fix(cli): broken docs urls (#3418)
+  * e2e: fix naming convention (#3427)
+  * Jlopezbarb/add remote deploy unit test (#3421)
+  * fixes remote feature (#3412)
+  * fix issues from manual testing and remote deploy (#3411)
+  * remove context from success log (#3380)
+  * build(deps): Bump github.com/containerd/containerd from 1.5.16
+    to 1.5.18 (#3389)
+
+-------------------------------------------------------------------
 Wed Mar 01 11:37:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.13.0:
