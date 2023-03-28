@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 22:45:12 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to 3.26.1
+  * Fixes for C++ module support
+  * FindPython: ensure Stable ABI is correctly handled
+
+-------------------------------------------------------------------
 Tue Mar 14 20:15:20 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - update to 3.26.0

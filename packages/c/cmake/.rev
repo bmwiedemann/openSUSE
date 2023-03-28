@@ -2030,4 +2030,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     field to “sources” objects.</comment>
     <requestid>1073364</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>abfa7cd6feca0948996a9547b082ea74</srcmd5>
+    <version>3.26.1</version>
+    <time>1680018515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074470</requestid>
+  </revision>
 </revisionlist>
