@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 25 11:06:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- The new default compiler gcc13 on Tumbleweed is too new for
+  compiling tg_owt-master.zip; e.g. "uint8_t" is now defined in
+  <cstdint> which almost all source files don't include. Stick
+  with gcc12 on Tumbleweed for now and wait for an update of
+  tg_owt-master.zip
+
+-------------------------------------------------------------------
+Fri Mar 17 09:57:44 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- compiler_upgrade is also needed on Leap 15.5
+
+-------------------------------------------------------------------
 Tue Feb 28 07:18:52 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - appstream-util is too old on Leap 15.4 - don't call it at the end

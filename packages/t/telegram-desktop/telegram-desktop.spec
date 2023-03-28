@@ -24,10 +24,15 @@
 %define __builder ninja
 
 # gcc10 or higher is required
-%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150400 ) )
+%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150500 ) )
 %bcond_without  compiler_upgrade
 %else
+%if 0%{?suse_version} > 01500
+# gcc13 is too new on Tumbleweed
+%bcond_without  compiler_downgrade
+%else
 %bcond_with     compiler_upgrade
+%endif
 %endif
 
 %define _dwz_low_mem_die_limit  40000000
@@ -75,9 +80,15 @@ BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
 BuildRequires:  freetype-devel
 %if %{with compiler_upgrade}
+BuildRequires:  gcc10
 BuildRequires:  gcc10-c++
 %else
+%if %{with compiler_downgrade}
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 %endif
 BuildRequires:  glibc-devel
 BuildRequires:  libjpeg-devel
@@ -227,6 +238,11 @@ mv tg_owt-master Libraries/tg_owt
 %if %{with compiler_upgrade}
 export CC=gcc-10
 export CXX=g++-10
+%else
+%if %{with compiler_downgrade}
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %endif
 
 # Fix build failures due to not finding installed headers for xkbcommon and wayland-client
