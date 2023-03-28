@@ -446,6 +446,7 @@ unsorted:
   - aelfred 
   - aelfred-javadoc 
   - aer-inject 
+  - aerc 
   - aespipe 
   - afl 
   - afterburn 
@@ -3169,6 +3170,7 @@ unsorted:
   - docker-client-java-javadoc 
   - docker-compose 
   - docker-compose-switch 
+  - docker-credential-secretservice 
   - docker-fish-completion 
   - docker-lock 
   - docker-machine-driver-kvm2 
@@ -8746,6 +8748,7 @@ unsorted:
   - kopete 
   - kopete-devel 
   - kopete-lang 
+  - kora-icon-theme 
   - kosmindoormap 
   - kosmindoormap-devel 
   - kosmindoormap-lang 
@@ -15302,6 +15305,9 @@ unsorted:
   - libvmmalloc-devel 
   - libvmmalloc1 
   - libvmtools-devel 
+  - libvo-amrwbenc-devel 
+  - libvo-amrwbenc0 
+  - libvo-amrwbenc0-32bit 
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
@@ -22320,7 +22326,6 @@ unsorted:
   - python3-bandit 
   - python3-barbicanclient 
   - python3-bcc 
-  - python3-bindep 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_81_0 
   - python3-botan 
@@ -23308,6 +23313,7 @@ unsorted:
   - python310-billiard 
   - python310-binary 
   - python310-binaryornot 
+  - python310-bindep 
   - python310-biopython 
   - python310-biplist 
   - python310-bitarray 
@@ -26601,6 +26607,7 @@ unsorted:
   - python311-billiard 
   - python311-binary 
   - python311-binaryornot 
+  - python311-bindep 
   - python311-biopython 
   - python311-biplist 
   - python311-bitarray 
@@ -28873,7 +28880,6 @@ unsorted:
   - python311-svneverever 
   - python311-swagger-spec-validator 
   - python311-swapper 
-  - python311-swifter 
   - python311-sybil 
   - python311-sympy 
   - python311-synr 
@@ -29138,6 +29144,7 @@ unsorted:
   - python311-xapian-haystack 
   - python311-xapp 
   - python311-xarray 
+  - python311-xarray-einstats 
   - python311-xattr 
   - python311-xcffib 
   - python311-xdg 
@@ -29965,6 +29972,7 @@ unsorted:
   - python38-billiard 
   - python38-binary 
   - python38-binaryornot 
+  - python38-bindep 
   - python38-biopython 
   - python38-biplist 
   - python38-bitarray 
@@ -32562,7 +32570,6 @@ unsorted:
   - python38-xapian 
   - python38-xapian-haystack 
   - python38-xapp 
-  - python38-xarray-einstats 
   - python38-xattr 
   - python38-xcffib 
   - python38-xdg 
@@ -33392,6 +33399,7 @@ unsorted:
   - python39-billiard 
   - python39-binary 
   - python39-binaryornot 
+  - python39-bindep 
   - python39-biopython 
   - python39-biplist 
   - python39-bitarray 
