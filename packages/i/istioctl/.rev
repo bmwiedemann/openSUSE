@@ -7,4 +7,12 @@
     <comment>new package istioctl: CLI for the istio service mesh for Kubernetes</comment>
     <requestid>1071222</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9473d41a5a778bda39ab7ea7495c3672</srcmd5>
+    <version>1.17.1</version>
+    <time>1680018709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074982</requestid>
+  </revision>
 </revisionlist>
