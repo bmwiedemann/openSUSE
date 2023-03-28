@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 04:53:45 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add gcc-13-include-cstdint-for-int-_t.patch
+
+-------------------------------------------------------------------
 Mon Jan  9 07:36:02 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.53.1

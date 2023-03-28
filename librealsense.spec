@@ -28,6 +28,7 @@ URL:            https://github.com/IntelRealSense/librealsense
 Source:         https://github.com/IntelRealSense/librealsense/archive/v%{version}.tar.gz
 Patch0:         presets_path.patch
 Patch1:         disable-pedantic.patch
+Patch2:         gcc-13-include-cstdint-for-int-_t.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
