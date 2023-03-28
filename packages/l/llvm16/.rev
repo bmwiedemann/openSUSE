@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5261f164ff6b03d5396563a437b63ad</srcmd5>
+    <version>16.0.0</version>
+    <time>1680018523</time>
+    <user>dimstar_suse</user>
+    <comment>- New major release version 16.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/16.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/16.0.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools:
+    - llvm-debuginfo-analyzer: Print a logical representation of
+      low-level debug information.
+    - llvm-remarkutil: Remark file utilities.
+  * The test tool split-file is no longer installed.
+  * New Clang tools:
+    - amdgpu-arch and nvptx-arch: Tools used to detect locally
+      available GPUs by the Clang OpenMP driver.
+    - clang-include-cleaner: Standalone tool to determine which
+      headers are used, using existing functionality in clangd.
+    - clang-tblgen: Table Generation for Clang.
+  * Removed Clang tools: clang-{nvlink,offload}-wrapper.
+- Rebase patches:
+  * assume-opensuse.patch
+  * check-no-llvm-exegesis.patch
+  * link-clang-shared.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-suse-implicit-gnu.patch
+  * llvm-workaround-superfluous-branches.patch
+  * openmp-drop-rpath.patch
+- Drop patches that have landed upstream:
+  * clang-test-xfail-gnuless-triple.patch
+  * CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
+  * libcxxabi-fix-armv7-test.patch
+  * llvm-armv7-fix-vector-compare-with-zero-lowering.patch
+  * llvm-link-atomic.patch
+- Remove llvm-better-detect-64bit-atomics-support.patch that should
+  not be required anymore.
+- Add PGP signatures and keyring for source verification.</comment>
+    <requestid>1073326</requestid>
+  </revision>
+</revisionlist>

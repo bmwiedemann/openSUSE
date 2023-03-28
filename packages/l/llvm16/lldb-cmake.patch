@@ -1,0 +1,13 @@
+Index: lldb-10.0.0rc1.src/source/Host/CMakeLists.txt
+===================================================================
+--- lldb-10.0.0rc1.src.orig/source/Host/CMakeLists.txt
++++ lldb-10.0.0rc1.src/source/Host/CMakeLists.txt
+@@ -143,6 +143,8 @@ endif()
+ set(EXTRA_LIBS)
+ if (CMAKE_SYSTEM_NAME MATCHES "NetBSD")
+   list(APPEND EXTRA_LIBS kvm)
++elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
++  list(APPEND EXTRA_LIBS dl pthread)
+ endif()
+ if (LLDB_ENABLE_LIBXML2)
+   list(APPEND EXTRA_LIBS LibXml2::LibXml2)

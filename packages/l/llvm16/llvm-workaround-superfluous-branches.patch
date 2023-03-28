@@ -1,0 +1,14 @@
+diff --git a/llvm/include/llvm/Support/Casting.h b/llvm/include/llvm/Support/Casting.h
+index 4ff5865..19623f6 100644
+--- a/llvm/include/llvm/Support/Casting.h
++++ b/llvm/include/llvm/Support/Casting.h
+@@ -661,6 +661,9 @@ template <typename To, typename From>
+ template <typename To, typename From>
+ [[nodiscard]] inline decltype(auto) dyn_cast(From *Val) {
+   assert(detail::isPresent(Val) && "dyn_cast on a non-existent value");
++#if defined(__clang__) && defined(NDEBUG)
++  __builtin_assume(Val);
++#endif
+   return CastInfo<To, From *>::doCastIfPossible(Val);
+ }
+ 

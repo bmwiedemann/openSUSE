@@ -1,0 +1,34 @@
+Index: clang-12.0.0rc1.src/lib/Driver/Distro.cpp
+===================================================================
+--- clang-12.0.0rc1.src.orig/lib/Driver/Distro.cpp
++++ clang-12.0.0rc1.src/lib/Driver/Distro.cpp
+@@ -93,6 +93,8 @@ static Distro::DistroType DetectLsbRelease...
+ }
+ 
+ static Distro::DistroType DetectDistro(llvm::vfs::FileSystem &VFS) {
++    return Distro::OpenSUSE;
++/*
+   Distro::DistroType Version = Distro::UnknownDistro;
+
+   // Newer freedesktop.org's compilant systemd-based systems
+@@ -200,7 +202,7 @@ static Distro::DistroType DetectDistro(l
+   if (VFS.exists("/etc/gentoo-release"))
+     return Distro::Gentoo;
+ 
+-  return Distro::UnknownDistro;
++  return Distro::UnknownDistro;*/
+ }
+ 
+ static Distro::DistroType GetDistro(llvm::vfs::FileSystem &VFS,
+Index: clang-16.0.0rc1.src/unittests/Driver/CMakeLists.txt
+===================================================================
+--- clang-16.0.0rc1.src.orig/unittests/Driver/CMakeLists.txt
++++ clang-16.0.0rc1.src/unittests/Driver/CMakeLists.txt
+@@ -6,7 +6,6 @@ set(LLVM_LINK_COMPONENTS
+   )
+ 
+ add_clang_unittest(ClangDriverTests
+-  DistroTest.cpp
+   DXCModeTest.cpp
+   ToolChainTest.cpp
+   ModuleCacheTest.cpp

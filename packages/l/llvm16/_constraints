@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">35</size>
+    </disk>
+    <memory>
+      <size unit="M">4096</size>
+    </memory>
+  </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
+  <overwrite>
+    <!-- 
+      We have disabled debuginfo on 32 bit architecture because they simply can no address enough memory to link llvm libraries with it.
+      Without debuginfo the disk and memory requirements are much lower.
+    -->
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+      <arch>i586</arch>
+      <arch>ppc</arch>
+      <arch>s390</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">10</size>
+      </disk>
+      <memory>
+        <size unit="M">2048</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">14000</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>
