@@ -1,0 +1,20 @@
+diff -urEbwB openj9-openjdk-jdk17.orig/omr/compiler/optimizer/OMRSimplifierHandlers.cpp openj9-openjdk-jdk17/omr/compiler/optimizer/OMRSimplifierHandlers.cpp
+--- openj9-openjdk-jdk17.orig/omr/compiler/optimizer/OMRSimplifierHandlers.cpp	2023-03-28 09:18:57.979474249 +0200
++++ openj9-openjdk-jdk17/omr/compiler/optimizer/OMRSimplifierHandlers.cpp	2023-03-28 09:49:47.316000333 +0200
+@@ -22,6 +22,9 @@
+ #ifndef OMR_SIMPLIFIERHANDLERS_INCL
+ #define OMR_SIMPLIFIERHANDLERS_INCL
+ 
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-overflow"
++
+ #include "optimizer/OMRSimplifierHelpers.hpp"
+ #include "optimizer/OMRSimplifierHandlers.hpp"
+ 
+@@ -17404,5 +17407,6 @@
+    return node;
+    }
+ 
++#pragma GCC diagnostic pop
+ 
+ #endif

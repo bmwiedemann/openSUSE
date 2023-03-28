@@ -114,6 +114,8 @@ Patch3:         disable-doclint-by-default.patch
 Patch4:         libdwarf-fix.patch
 # Fix narrowing conversion error
 Patch5:         openj9-no-narrowing.patch
+# Fix build with gcc 13
+Patch32:        stringop-overflow.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -359,6 +361,8 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+
+%patch32 -p1
 
 %patch300 -p1
 

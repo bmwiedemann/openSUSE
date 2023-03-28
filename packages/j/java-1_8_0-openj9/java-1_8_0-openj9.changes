@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 28 10:02:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * stringop-overflow.patch
+    + disable -Wstringop-overflow and fix build in Factory
+
+-------------------------------------------------------------------
 Mon Mar  6 09:04:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u362 build 09 with OpenJ9 0.36.0 virtual
