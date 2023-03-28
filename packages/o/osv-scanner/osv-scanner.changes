@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Mar 28 04:59:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.3.0:
+  * Update changelog and version for v1.3.0 (#316)
+  * chore(deps): update workflows (#314)
+  * fix(deps): update osv-scanner minor (#313)
+  * Update workflows to compositing, so that goreleaser workflow
+    can run them. (#315)
+  * Fix workflow (#311)
+  * Fix some issues with the model. (#312)
+  * Improve the OSV models to allow for 3rd party use of the
+    library. (#310)
+  * Adds concurrency to hydration requests (#304)
+  * Make `IgnoredVulns` also ignore aliases (#300)
+  * fix(deps): update osv-scanner minor (#306)
+  * chore(deps): update actions/setup-go action to v4 (#308)
+  * chore(deps): update workflows (#307)
+  * Run tests before release (#301)
+  * chore(deps): bump activesupport from 7.0.4.2 to 7.0.4.3 in
+    /docs (#302)
+  * Pin lint action (#299)
+  * fix(deps): update osv-scanner minor (#288)
+  * fix: support Pipenv develop packages without versions. (#297)
+  * Set version in source code (#295)
+  * Prevent `.gitignore` files from interfering with tests (#292)
+  * fix: trim leading zeros off when comparing numerical components
+    in Maven versions (better) (#285)
+  * fix: avoid infinite loops parsing Maven poms with syntax errors
+    (#294)
+  * Check if PURL is valid before adding it to queries (#291)
+  * Renovate bot ignore vulns package (#289)
+  * chore(deps): update workflows (#287)
+  * fix: trim leading zeros off when comparing numerical components
+    in Maven versions (#279)
+  * Adding call graph info back in (#284)
+  * Update Colors for Accessibility (#278)
+  * Removed call graph analysis for now. (#282)
+  * Remove "working doc" concept (#275)
+  * feat: improved error message when pom dependency version not
+    found (#253)
+  * Add tags and point people to slsa-verifier (#265)
+  * ci: harden permissions (#269)
+  * Run on merge queue (#272)
+  * fix: properly handle comparing zero versions in Maven (#267)
+  * chore: add `.editorconfig` file (#266)
+  * fix(deps): update osv-scanner minor (#270)
+  * Renovate bot use ignorePaths instead for fixtures (#264)
+  * test: update case with new advisory (#268)
+  * fix: deduplicate packages that appear multiple times in
+    `Pipenv.lock` files (#261)
+  * feat: support `-r` flag in `requirements.txt` files (#260)
+  * chore(deps): update workflows (#242)
+  * fix: avoid panic when parsing `file:` dependencies in `pnpm`
+    lockfiles (#259)
+  * More specific cyclone dx parsing (#258)
+  * Parse nested CycloneDX components correctly (#251)
+  * fix: support yarn locks with quoted properties (#250)
+  * Update renovate.json (#248)
+  * fix(deps): update golang.org/x/exp digest to c95f2b4 (#241)
+  * govulncheck integration (#198)
+  * Create draft release first in goreleaser (#236)
+  * Adding additional installation instructions (#235)
+
+-------------------------------------------------------------------
 Thu Feb 23 10:38:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.2.0:
