@@ -47,4 +47,12 @@
     <comment>January 2023 CPU</comment>
     <requestid>1069554</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c3cc001c4627507289050d90d4961471</srcmd5>
+    <version>17.0.6.0</version>
+    <time>1680018672</time>
+    <user>dimstar_suse</user>
+    <comment>Fix factory build</comment>
+    <requestid>1074953</requestid>
+  </revision>
 </revisionlist>
