@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 28 06:50:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.6:
+  * Remove println() added for debugging.
+
+-------------------------------------------------------------------
+Tue Mar 28 06:50:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.5:
+  * Don't use CNAME of xmpp server domain for SRV lookups
+    (via xmppsrv UNRELEASED).
+
+-------------------------------------------------------------------
 Fri Oct 28 13:35:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.4:

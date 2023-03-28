@@ -48,4 +48,17 @@
   * Add from attribute for server-to-server connection test.</comment>
     <requestid>1031969</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0997f2193bceb63bdbc5ed7961bcb1fb</srcmd5>
+    <version>0.3.6</version>
+    <time>1680018653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.6:
+  * Remove println() added for debugging.
+
+- Update to 0.3.5:
+  * Don't use CNAME of xmpp server domain for SRV lookups
+    (via xmppsrv UNRELEASED).</comment>
+    <requestid>1074883</requestid>
+  </revision>
 </revisionlist>
