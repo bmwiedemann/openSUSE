@@ -103,4 +103,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035472</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6f98be79b903fc31213dab2570a8220</srcmd5>
+    <version>1.9.0</version>
+    <time>1680018627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0:
+  - Added:
+    * Add support for startup notifications via xdg activation.
+    * Convert tabs to spaces when rendering.
+    * --dmenu0 command line option. Like --dmenu, but input is NUL separated instead of newline separated.
+    * Support for localized strings. If you want the old behavior, run fuzzel with LC_MESSAGES=C.
+    * Export FUZZEL_DESKTOP_FILE_ID environment variable when setting the --launch-prefix in order to pass the Desktop File ID to the launch prefix.
+    * New key bindings: [key-bindings].first and [key-bindings].last, bound to Control+Home and Control+End by default.
+    * New key binding: [key-bindings].insert-selected, bound to Control+Tab by default. It replaces the current prompt with the selected item.
+  - Changed:
+    * Better verification of color values specified on the command line.
+    * When determining initial font size, do FontConfig config substitution if the user-provided font pattern has no {pixel}size option.
+  - Fixed:
+    * Update nanosvg to f0a3e10. Fixes rendering of certain SVG icons.
+    * Not being able to input numbers using the keypad.
+    * Absolute path PNG icons not being loaded.
+</comment>
+    <requestid>1074809</requestid>
+  </revision>
 </revisionlist>

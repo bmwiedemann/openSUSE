@@ -1,7 +1,7 @@
 #
 # spec file for package fuzzel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           fuzzel
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://codeberg.org/dnkl/fuzzel
-Source:         https://codeberg.org/dnkl/fuzzel/archive/%{version}.tar.gz
+Source:         https://codeberg.org/dnkl/fuzzel/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
