@@ -71,4 +71,12 @@
     <comment>- Update to 4.2.0</comment>
     <requestid>940462</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>637d3dc0e653390deeb9483a59c3abe8</srcmd5>
+    <version>4.2.0</version>
+    <time>1680018713</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Add-missing-include-cstdint-for-u-int64_t.patch</comment>
+    <requestid>1074921</requestid>
+  </revision>
 </revisionlist>

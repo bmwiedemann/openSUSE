@@ -1,7 +1,7 @@
 #
 # spec file for package givaro
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://casys.gricad-pages.univ-grenoble-alpes.fr/givaro/
 #Git-Clone:	https://github.com/linbox-team/givaro
 Source:         https://github.com/linbox-team/givaro/releases/download/v%version/%name-%version.tar.gz
 Patch1:         givaro-doc-no-build-time.patch
+Patch2:         0001-Add-missing-include-cstdint-for-u-int64_t.patch
 # Old doxygen does not properly handle symlink recursion
 BuildRequires:  doxygen >= 1.5.7.1
 BuildRequires:  fdupes

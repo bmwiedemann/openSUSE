@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 08:47:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Add-missing-include-cstdint-for-u-int64_t.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 10:39:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 4.2.0
