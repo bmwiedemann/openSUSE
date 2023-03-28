@@ -92,4 +92,12 @@ D435.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1058622</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d689d61e7fa77a7ad8f246944a200948</srcmd5>
+    <version>2.53.1</version>
+    <time>1680018629</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc-13-include-cstdint-for-int-_t.patch</comment>
+    <requestid>1074819</requestid>
+  </revision>
 </revisionlist>
