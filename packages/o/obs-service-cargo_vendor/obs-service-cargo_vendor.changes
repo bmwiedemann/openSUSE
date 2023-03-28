@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 02:01:36 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.4.5~0:
+  * Fix parsing of the description (#26)
+
+-------------------------------------------------------------------
 Fri Feb 24 12:51:03 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.4.4~2:
