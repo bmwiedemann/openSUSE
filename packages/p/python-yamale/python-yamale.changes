@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Mar 28 05:30:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Mon Mar 27 11:26:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package yamale, used by Helm's chart-testing package
