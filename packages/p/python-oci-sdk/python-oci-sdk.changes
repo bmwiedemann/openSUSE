@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:51:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.96.0
+  * Support for backup automation integration with the Database Recovery
+    service in the Database service
+  * Support for changing the disaster recovery configuration of an autonomous database
+    in remote regions of its disaster recovery association in the Database service
+  * Support for creating a remote disaster recovery association
+    clone of an autonomous database in the Database service
+  * Support for managed build stages to be configured to use
+    custom shape build runners in the DevOps service
+  * Support for listing pre-built functions and creating functions
+    from pre-built functions in the Functions service
+  * Support for connections types for database resources of type Amazon S3, HDFS, SQL Server,
+    Java Messaging service, Mongo DB, Oracle NoSQL, and Snowflake in the GoldenGate service
+  * The constant value `MODEL_TYPE_LAKE_HOUSE_CONNECTION` was renamed to `MODEL_TYPE_LAKE_CONNECTION`
+    in the Connection, ConnectionDetails, ConnectionSummary, CreateConnectionDetails and
+    UpdateConnectionDetails models in the Data Integration Service
+  * The constant value `MODEL_TYPE_LAKE_HOUSE_DATA_ASSET` was renamed to `MODEL_TYPE_LAKE_DATA_ASSET`
+    in the enum ModelTypeEnum in the DataAsset, CreateDataAssetDetails, DataAssetSummary, and
+    UpdateDataAssetDetails models in the Data Integration Service
+  * Model `UpdateConnectionFromLakehouse` was renamed to
+    `UpdateConnectionFromLake` in the Data Integration Service
+  * The constant values for `lifecycle_state` property of model
+    `FunctionSummary` are removed in the Functions Service
+- from version 2.95.0
+  * Support for the Identity Domains service
+  * Support for long-term backups for autonomous databases on
+    Exadata Cloud at Customer in the Database service
+  * Support for database OS patching in the Database service
+  * Support for managing enhanced clusters, cluster add-ons, and serverless
+    virtual node pools in the Container Engine for Kubernetes service
+  * Support for templates and copy object requests in the Data Integration service
+  * Support for maintenance features in the GoldenGate service
+  * Support for AMD_MILAN_BM_GPU configuration type on instances in the Compute service
+  * Support for host storage metrics and network metrics as part
+    of host capacity planning in the Operations Insights service
+  * `UNKNOWN_ENUM_VALUE` will be returned for unknown enum values, instead of raising
+    `ValueError`, for property `protocol` in model `IdentityProvider` in the
+    Identity Data Plane service
+  * `UNKNOWN_ENUM_VALUE` will be returned for unknown enum values, instead of raising
+    `ValueError`, for property `lifecycle_state` in model `TemplateSummary` in the
+    Identity Data Plane service
+  * The upper bound for `cryptography` dependency has changed to versions less than `40.0.0`
+    to address security vulnerability CVE-2023-23931.
+    For more discussion please see https://github.com/oracle/oci-python-sdk/issues/515
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Mon Mar 13 10:59:13 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.94.0

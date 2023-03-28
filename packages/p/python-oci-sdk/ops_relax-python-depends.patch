@@ -1,15 +1,15 @@
-diff -Nru oci-python-sdk-2.90.1.orig/requirements.txt oci-python-sdk-2.90.1/requirements.txt
---- oci-python-sdk-2.90.1.orig/requirements.txt	2023-01-10 18:07:08.000000000 +0000
-+++ oci-python-sdk-2.90.1/requirements.txt	2023-01-11 15:13:10.410431175 +0000
-@@ -1,22 +1,21 @@
+diff -Nru oci-python-sdk-2.96.0.orig/requirements.txt oci-python-sdk-2.96.0/requirements.txt
+--- oci-python-sdk-2.96.0.orig/requirements.txt	2023-03-21 17:08:58.000000000 +0100
++++ oci-python-sdk-2.96.0/requirements.txt	2023-03-27 09:50:52.227020214 +0200
+@@ -1,22 +1,22 @@
 -autodocsumm==0.1.11
 +autodocsumm>=0.1.11
  certifi
 -coverage==4.5.2
--cryptography>=3.2.1,<39.0.0
+-cryptography>=3.2.1,<40.0.0
 -flake8>=3.6.0,<6
 -mock==2.0.0
--pyOpenSSL>=17.5.0,<=22.1.0
+-pyOpenSSL>=17.5.0,<24.0.0
 -pytest==4.1.0
 -pytest-cov==2.6.1
 -attrs==19.1.0
@@ -41,17 +41,17 @@ diff -Nru oci-python-sdk-2.90.1.orig/requirements.txt oci-python-sdk-2.90.1/requ
 +wheel>=0.38.1 ; python_version >= '3.7'
 +circuitbreaker>=1.3.1
  docutils<0.18
--Jinja2<3.1
-diff -Nru oci-python-sdk-2.90.1.orig/setup.py oci-python-sdk-2.90.1/setup.py
---- oci-python-sdk-2.90.1.orig/setup.py	2023-01-10 18:07:08.000000000 +0000
-+++ oci-python-sdk-2.90.1/setup.py	2023-01-11 15:16:19.211227900 +0000
+ Jinja2<3.1
+diff -Nru oci-python-sdk-2.96.0.orig/setup.py oci-python-sdk-2.96.0/setup.py
+--- oci-python-sdk-2.96.0.orig/setup.py	2023-03-21 17:08:58.000000000 +0100
++++ oci-python-sdk-2.96.0/setup.py	2023-03-27 09:34:08.433392215 +0200
 @@ -31,12 +31,12 @@
  
  requires = [
      "certifi",
 -    "configparser==4.0.2 ; python_version < '3'",
--    "cryptography>=3.2.1,<39.0.0",
--    "pyOpenSSL>=17.5.0,<=22.1.0",
+-    "cryptography>=3.2.1,<40.0.0",
+-    "pyOpenSSL>=17.5.0,<24.0.0",
 -    "python-dateutil>=2.5.3,<3.0.0",
 +    "configparser>=4.0.2 ; python_version < '3'",
 +    "cryptography>=3.2.1",
