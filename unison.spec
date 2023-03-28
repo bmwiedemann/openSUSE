@@ -17,7 +17,7 @@
 
 
 Name:           unison
-Version:        2.53.0
+Version:        2.53.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool

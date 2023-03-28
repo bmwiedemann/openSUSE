@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 19 19:19:19 UTC 2023 - ohering@suse.de
+
+- Update to version 2.53.2
+  * Repeat mode is more fault tolerant, recovering after temporary
+    errors.
+  * Preferences "force", "prefer" and related no longer require
+    specifying the full root.
+  * Improve stopping of update propagation.
+  * Add graceful stop in repeat mode - SIGUSR2.
+  * Add watch+seconds to 'repeat' preference.
+
+-------------------------------------------------------------------
 Sun Jan  1 01:01:01 UTC 2023 - olaf@aepfle.de
 
 - Update to version 2.53.0
