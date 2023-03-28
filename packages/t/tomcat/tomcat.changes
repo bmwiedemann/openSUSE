@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 23 08:06:31 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2023-28708: tomcat: not including the secure attribute
+    causes information disclosure (bsc#1209622)
+- Added patches:
+  * tomcat-9.0.43-CVE-2023-28708.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 11:14:24 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Fixed CVEs:
