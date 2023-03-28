@@ -205,8 +205,10 @@ done
 %build
 # Generate the configure script
 autoreconf -fvi
-# Build for everything except python3
 export INSTALLDIRS=perl
+# any python will do, this is only for the non-python part of the package
+PYTHON=$(find %_bindir -name 'python3*[0-9]' -print -quit)
+export PYTHON
 %configure \
   --enable-shared \
   --disable-static

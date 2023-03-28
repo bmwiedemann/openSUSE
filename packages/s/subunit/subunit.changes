@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 06:07:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- set PYTHON environment variable in %build step, to allow
+  builds even if /usr/bin/python3 does not exist
+
+-------------------------------------------------------------------
 Mon Feb 20 08:56:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 1.4.2:
