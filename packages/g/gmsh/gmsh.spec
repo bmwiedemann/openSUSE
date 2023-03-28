@@ -1,7 +1,7 @@
 #
 # spec file for package gmsh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz
 Patch0:         link_dynamic_gl2ps.patch
 Patch1:         gmsh-2.10.1-implicit.patch
 Patch2:         gmsh-3.0.5-add-shebang-to-onelab.patch
+# PATCH-FIX-UPSTREAM - see https://gitlab.onelab.info/gmsh/gmsh/-/issues/2416
+Patch3:         0001-Add-missing-cstdint-header.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel >= 3.4.0
 BuildRequires:  cmake >= 2.8

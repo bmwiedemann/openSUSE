@@ -1,0 +1,37 @@
+From a3eb73d082bfdda73b73180f77c4202eff951cb7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 28 Mar 2023 11:03:33 +0200
+Subject: [PATCH] Add missing cstdint header
+
+---
+ contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h | 1 +
+ src/mesh/meshGFacePack.cpp                             | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h b/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h
+index d4f5e81..19fd32b 100644
+--- a/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h
++++ b/contrib/QuadMeshingTools/qmtMeshGeometryOptimization.h
+@@ -8,6 +8,7 @@
+ #pragma once
+ 
+ #include <float.h>
++#include <cstdint>
+ #include "qmtMeshUtils.h"
+ 
+ class SurfaceProjector;
+diff --git a/src/mesh/meshGFacePack.cpp b/src/mesh/meshGFacePack.cpp
+index 623af74..c35af12 100644
+--- a/src/mesh/meshGFacePack.cpp
++++ b/src/mesh/meshGFacePack.cpp
+@@ -8,6 +8,7 @@
+ #include <queue>
+ #include <map>
+ #include <vector>
++#include <cstdint>
+ #include "gmsh.h"
+ #include "SPoint2.h"
+ #include "SVector3.h"
+-- 
+2.40.0
+
