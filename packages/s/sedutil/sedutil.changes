@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 03:25:34 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix GCC 13 build error
+  * Fix-build-with-GCC-13.patch
+
+-------------------------------------------------------------------
 Sun Dec  4 12:16:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.0:

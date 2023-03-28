@@ -1,7 +1,7 @@
 #
 # spec file for package sedutil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source1:        module-setup.sh
 Source2:        linuxpba.sh
 Source3:        sedutil-pba.pl
 Patch0:         kernel_nvme_header.patch
+Patch1:         Fix-build-with-GCC-13.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -47,6 +48,7 @@ the PBA image itself.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fi
