@@ -19,11 +19,6 @@
 %ifnarch ppc
 %define sandbox_seccomp 1
 %endif
-%if 0%{?suse_version} >= 1500
-%bcond_without tirpc
-%else
-%bcond_with tirpc
-%endif
 %define _fwdir      %{_sysconfdir}/sysconfig/SuSEfirewall2.d
 %define _fwdefdir   %{_fwdir}/services
 %define _appdefdir  %( grep "configdirspec=" $( which xmkmf ) | sed -r 's,^[^=]+=.*-I(.*)/config.*$,\\1/app-defaults,' )
@@ -127,9 +122,6 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Requires:       %{name}-clients = %{version}-%{release}
 Requires:       %{name}-server = %{version}-%{release}
-%if %{with tirpc}
-BuildRequires:  libtirpc-devel
-%endif
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(krb5)
 %else

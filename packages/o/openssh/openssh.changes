@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Feb 15 10:35:43 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove BuildRequires for libtirpc, we don't use it
+
+-------------------------------------------------------------------
+Tue Feb 14 13:46:14 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove pam_lastlog from sshd PAM config. sshd is doing the same,
+  too, which leads to e.g. duplicate entries in wtmp [bsc#1208243]
+
+-------------------------------------------------------------------
 Mon Dec 19 15:41:26 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Adapt OpenSSH to build with OpenSSL 3, use new KDF API (bsc#1205042)
