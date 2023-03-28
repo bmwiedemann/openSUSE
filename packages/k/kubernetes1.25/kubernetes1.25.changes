@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 21 08:00:04 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.25.8:
+  * Release commit for Kubernetes v1.25.8
+  * One lock among PodNominator and SchedulingQueue
+  * releng/go: Update images, dependencies and version to Go 1.19.7
+  * Fix for windows kube-proxy: 'externalTrafficPolicy: Local' results in no clusterIP entry in windows node.
+  * Re-enable label selector
+  * Add integration test for diff --prune --selector
+  * Use label selector for filtering out resources when pruning. Matches same behavior as for kubectl apply
+  * scheduler/framework/plugins/volumebinding: fix inaccurate log for when a volume is bound to a claim
+  * Remove check for CSI driver running on node for CSI migration attach operations
+  * Simplify construction of /metrics request
+  * test: remove flaky pod update test in CSIInlineVolumes e2e
+  * Move CSI json file saving to SetUpAt()
+  * Fix for issue with Loadbalancer policy creation for IPV6 endpoints in Dualstack mode.
+  * Invoke gimme from kube::golang::verify_go_version
+  * Defer builds to test-cmd and test-integration targets
+  * Carefully compute request path for metrics
+
+-------------------------------------------------------------------
 Fri Mar  3 04:56:17 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.25.7:
