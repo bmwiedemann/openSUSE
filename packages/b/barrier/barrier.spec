@@ -1,7 +1,7 @@
 #
 # spec file for package barrier
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Christian Mauderer <oss@c-mauderer.de>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,8 @@ Source2:        barriers.socket
 Source3:        barriers.service
 # https://github.com/debauchee/barrier/issues/1366
 Patch0:         fix-build.patch
+# Required for gcc-13
+Patch1:         fix-build2.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core

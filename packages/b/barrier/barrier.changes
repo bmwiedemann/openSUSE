@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 27 23:53:22 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Fix gcc13 build with fix-build2.patch
+
+-------------------------------------------------------------------
 Tue Nov 16 23:44:25 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Updated to version 2.4.0:
