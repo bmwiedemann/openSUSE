@@ -81,4 +81,27 @@
     <comment></comment>
     <requestid>1068702</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fefb3ccf337566549678d710c89cef0f</srcmd5>
+    <version>1.8.3</version>
+    <time>1680018706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * update: initialize the rt limits only on cgroup v1.
+  * lua bindings for libcrun.
+  * wasmedge: add current directory to preopen paths.
+  * linux: inherit parent mount flags when making a path masked.
+  * libcrun: custom annotation to set the scheduler for the
+    container process.
+  * cgroup: fallback to blkio.bfq files if blkio is not available
+    on cgroup v1.
+  * cgroup: initialize rt limits when using systemd.
+  * tty: chown the tty to the exec user instead of the user
+    specified to create the container.
+  * cgroup: fallback to create cgroupfs as sibling of the current
+    cgroup if there is none specified and it cannot be created in
+    the root cgroup.
+- add keyring for GPG validation</comment>
+    <requestid>1074967</requestid>
+  </revision>
 </revisionlist>

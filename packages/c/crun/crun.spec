@@ -16,14 +16,15 @@
 #
 
 
+Name:           crun
+Version:        1.8.3
+Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
-Name:           crun
-Version:        1.8.1
-Release:        0
+URL:            https://github.com/containers/crun
 Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
-URL:            https://github.com/containers/crun
+Source2:        crun.keyring
 # We always run autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -40,7 +41,7 @@ BuildRequires:  make
 BuildRequires:  python3
 BuildRequires:  python3-libmount
 BuildRequires:  systemd-devel
-%ifnarch %ix86
+%ifnarch %{ix86}
 BuildRequires:  criu-devel >= 3.15
 %endif
 %ifarch x86_64 aarch64
@@ -59,7 +60,7 @@ crun is a runtime for running OCI containers. It is built with libkrun support
 export LIBKRUN="--with-libkrun"
 %endif
 ./autogen.sh
-%configure --disable-silent-rules $LIBKRUN CFLAGS='-I /usr/include/libseccomp'
+%configure --disable-silent-rules $LIBKRUN CFLAGS='-I %{_includedir}/libseccomp'
 %make_build
 
 # TODO:
@@ -78,7 +79,6 @@ ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
 %endif
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc README.md
 %doc SECURITY.md
