@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 10:19:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patches to hopefully fix racy tests:
+  + 2c413bbd8b9afc41648f21ad173f0caf81a5f98b.patch
+  + bbe36b279e247cd8ec4ab00bcdf02178af8a99af.patch
+
+-------------------------------------------------------------------
 Fri Mar  3 09:06:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fa1546614190942ab266832e7470a6debf8c32cb.patch: test: Port to

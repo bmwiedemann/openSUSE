@@ -283,4 +283,12 @@
   g_inet_address_new_loopback. (forwarded request 1073093 from iznogood)</comment>
     <requestid>1073228</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>55d7489460c74c13d74dc335dcd8f9ab</srcmd5>
+    <version>1.2.0</version>
+    <time>1680125198</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1074264 from iznogood)</comment>
+    <requestid>1074645</requestid>
+  </revision>
 </revisionlist>
