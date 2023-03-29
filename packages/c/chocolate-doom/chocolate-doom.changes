@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 16:33:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch from packageand() to modern rpm conditionals
+- Avoid conflict with crispy-doom manpages
+
+-------------------------------------------------------------------
 Sat Jun 26 09:13:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-use-python3-exclusively.patch so we can build

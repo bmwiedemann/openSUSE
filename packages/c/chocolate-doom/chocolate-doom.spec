@@ -1,7 +1,7 @@
 #
 # spec file for package chocolate-doom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ the initial open-sourcing of the Doom engine.
 Summary:        Chocolate Doom command line completion support for bash
 Group:          System/Shells
 BuildArch:      noarch
-Supplements:    packageand(chocolate-doom:bash-completion)
+Supplements:    (%name and bash-completion)
 
 %description bash-completion
 Additions for bash-completion to support chocolate-doom.
@@ -80,6 +80,10 @@ b="%buildroot"
 mkdir -p "$b/%_bindir"
 rm -f "$b/%_docdir/%name/INSTALL"
 rm -f "$b/%_datadir/applications/chocolate-setup.desktop" # has wrong paths
+pushd "$b/%_mandir/man5"
+for i in default heretic hexen strife; do
+	mv "$i.cfg.5" "chocolate-doom-$i.cfg.5"
+done
 %fdupes %buildroot/%_prefix
 
 %post
