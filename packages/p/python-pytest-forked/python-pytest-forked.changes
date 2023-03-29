@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:30:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Relaxed dependency requirements (`#77
+    <https://github.com/pytest-dev/pytest-forked/issues/77>`__).
+  * Dropped support for Python 3.6.
+  * Added official support for Python 3.11.
+
+-------------------------------------------------------------------
 Wed Nov 30 08:45:20 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

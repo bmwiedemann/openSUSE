@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-forked
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-forked
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        Run each test in a forked subprocess
 License:        MIT

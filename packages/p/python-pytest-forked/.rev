@@ -68,4 +68,16 @@
 </comment>
     <requestid>1039064</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f6ff54b627b12899978d191cb35a7ce</srcmd5>
+    <version>1.6.0</version>
+    <time>1680125182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Relaxed dependency requirements (`#77
+    &lt;https://github.com/pytest-dev/pytest-forked/issues/77&gt;`__).
+  * Dropped support for Python 3.6.
+  * Added official support for Python 3.11.</comment>
+    <requestid>1074588</requestid>
+  </revision>
 </revisionlist>
