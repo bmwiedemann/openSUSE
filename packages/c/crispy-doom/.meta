@@ -1,0 +1,5 @@
+<package name="crispy-doom" project="openSUSE:Factory">
+  <title>Chocolate Doom</title>
+  <description>Conservative DOOM/Heretic/Hexen/Strife source port</description>
+  <devel project="games" package="crispy-doom"/>
+</package>

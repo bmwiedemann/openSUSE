@@ -1,0 +1,29 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2013-05-02 09:45:54.544886176 +0200
+Upstream: maybe - this patch is quite specific to openSUSE
+
+Make sure we always scan /usr paths for IWADs too, even if
+XDG_DATA_DIRS is set.
+
+prboom-plus and doomsday (in openSUSE) look in /usr/share/doom for
+IWADs, and so should chocolate-doom.
+
+---
+ src/d_iwad.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: crispy-doom-crispy-doom-5.12.0/src/d_iwad.c
+===================================================================
+--- crispy-doom-crispy-doom-5.12.0.orig/src/d_iwad.c
++++ crispy-doom-crispy-doom-5.12.0/src/d_iwad.c
+@@ -691,6 +691,10 @@ static void AddXdgDirs(void)
+     // Edition into this directory, under which includes the Doom
+     // Classic WADs.
+     AddIWADPath(env, "/games/doom3bfg/base/wads");
++
++    env = "/usr/local/share:/usr/share";
++    AddIWADPath(env, "/games/doom");
++    AddIWADPath(env, "/doom");
+ }
+ 
+ #ifndef __MACOSX__

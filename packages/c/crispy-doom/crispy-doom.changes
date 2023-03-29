@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Mar 29 16:33:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch from packageand() to modern rpm conditionals
+- Avoid conflict with chocolate-doom manpages
+
+-------------------------------------------------------------------
+Mon Mar 27 14:20:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 5.12.0) for build.opensuse.org
