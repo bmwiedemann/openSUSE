@@ -1,7 +1,7 @@
 #
 # spec file for package bubblewrap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bubblewrap
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
