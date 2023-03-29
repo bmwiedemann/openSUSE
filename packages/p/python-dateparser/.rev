@@ -196,4 +196,20 @@
   * Improved date parsing for Indonesian</comment>
     <requestid>1066042</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2cfb557863fe2cfbab8bd86bb2c924ae</srcmd5>
+    <version>1.1.8</version>
+    <time>1680125172</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.8:
+  * Improved date parsing for Chinese
+  * Improved date parsing for Czech
+  * Reorder language by popularity
+  * Fix leak of memory in cache
+  * Add support for &quot;\d units later&quot;
+  * Move modification in CLDR data to yaml
+  * Add support to use timezone via settings to get
+    PREFER_DATES_FROM result</comment>
+    <requestid>1074513</requestid>
+  </revision>
 </revisionlist>
