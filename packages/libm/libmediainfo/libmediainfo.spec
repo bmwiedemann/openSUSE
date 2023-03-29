@@ -1,7 +1,7 @@
 #
 # spec file for package libmediainfo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover	0
 Name:           libmediainfo
-Version:        22.12
+Version:        23.03
 Release:        0
 Summary:        Library for supplying technical and tag information about a video or audio file
 License:        BSD-2-Clause
