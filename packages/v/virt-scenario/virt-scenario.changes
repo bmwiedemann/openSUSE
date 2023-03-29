@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 29 12:18:45 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.6:
+   * fix (bsc#1209862): virt-scenario-launch can't stop or get status
+     on virtual machine
+   * fix wrong way to call print_error
+
+-------------------------------------------------------------------
+Wed Mar 29 09:37:45 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0.5:
+  * force_sev now can be disabled (bsc#1209865)
+  * check /dev/tpm0 exist before using it (bsc#1209863)
+  * switch usage of print_title and print_summary
+  * simplify function show_how_to_use()
+  * avoid redefining bytes
+  * pylint fixes
+
+-------------------------------------------------------------------
 Fri Mar 24 14:04:35 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 1.0.4:

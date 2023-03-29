@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virt-scenario
-Version:        1.0.4
+Version:        1.0.6
 Release:        0
 Summary:        Create XML guest configuration and prepare the host for a scenario
 License:        GPL-3.0-or-later
