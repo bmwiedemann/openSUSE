@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 29 19:39:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.243.0
+  * Add C API option for enabling row-major workaround.
+  * Add tests for loops compiled with debug semantics.
+  * GLSL/HLSL: Add legacy handling for int vertex attributes
+  * GLSL: Support GL_NV_shader_noperspective_interpolation in GLES
+  * GLSL: Multiplying matrix with scalar shouldn't force transpose
+  * GLSL: Add various additional extension checks.
+  * GLSL: Allow sample inputs in desktop < 400 with
+    GL_ARB_sample_shading
+  * GLSL: Add support for modf, isnan and isinf in legacy GLSL
+  * GLSL/HLSL: Add emulated fallbacks for
+    sinh/cosh/tanh/asinh/acosh/atanh
+  * GLSL: Legacy matrix inverse/determinant polyfills,
+    outerProduct()
+
+-------------------------------------------------------------------
 Tue Jan  3 18:34:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.236.0
