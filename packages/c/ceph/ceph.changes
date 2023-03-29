@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 28 06:26:33 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.11-65-g8b7e6fc0182:
+  + (bsc#1201088) test/librados: fix FTBFS on gcc 13
+  + (bsc#1208820) mgr/dashboard: allow to pass controls on iscsi disk create
+
+-------------------------------------------------------------------
 Fri Mar 10 05:08:15 UTC 2023 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.11-62-gce6291a3463:
