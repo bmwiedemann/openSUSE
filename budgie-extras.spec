@@ -17,7 +17,7 @@
 
 
 Name:           budgie-extras
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later
@@ -444,9 +444,15 @@ chmod 0644 LICENSE
 %{_libdir}/budgie-desktop/plugins/budgie-fuzzyclock
 
 %files -n budgie-hotcorners-applet
+%{_libexecdir}/budgie-hotcorners
+%{_datadir}/budgie-hotcorners
+%{_distconfdir}/xdg/autostart/org.ubuntubudgie.budgie-extras.HotCorners-autostart.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.ubuntubudgie.budgie-extras.hotcorners.svg
+%{_datadir}/applications/org.ubuntubudgie.budgie-extras.HotCorners.desktop
 %{_datadir}/pixmaps/budgie-hotcorners-symbolic.svg
+%{_datadir}/pixmaps/budgie-hotcgui*.svg
 %{_libdir}/budgie-desktop/plugins/budgie-hotcorners
-%{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-hotcorners.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.ubuntubudgie.budgie-extras.HotCorners.gschema.xml
 
 %files -n budgie-kangaroo-applet
 %{_datadir}/pixmaps/budgie-foldertrack-symbolic.svg
@@ -532,11 +538,13 @@ chmod 0644 LICENSE
 %{_datadir}/icons/hicolor/scalable/apps/org.ubuntubudgie.shuffler-control.svg
 %{_datadir}/metainfo/org.ubuntubudgie.shufflercontrol.metainfo.xml
 %{_datadir}/pixmaps/shuffler*.svg
+%{_datadir}/pixmaps/dragsnapimg*.svg
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.windowshuffler.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-shufflerapplet.gschema.xml
 %{_distconfdir}/xdg/autostart/shufflerdaemon-autostart.desktop
 %{_distconfdir}/xdg/autostart/shufflergui-autostart.desktop
 %{_distconfdir}/xdg/autostart/layoutspopup-autostart.desktop
+%{_distconfdir}/xdg/autostart/dragsnap-autostart.desktop
 
 %files -n budgie-workspace-stopwatch-applet
 %{_datadir}/pixmaps/budgie-wstopwatch-symbolic.svg

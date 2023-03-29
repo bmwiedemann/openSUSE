@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Mar 29 13:07:28 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Budgie Extras 1.6.0 "Snap Fantastic"
+  * Shuffler
+    Better place windows in rows and columns across multi-monitors
+    DragSnap - quarter, half tiling with previews when dragging
+    to edges
+    DragSnap - Revamped Window Shuffler Control window with new
+    DragSnap options and descriptions
+    DragSnap - tiling snap also takes into account Control and
+    Alt keys to tile 2/5 and 3/5 of the screen
+  * Hotcorners
+    Integration with Shuffler to ensure dragging windows work
+    correctly when hotcorners is enabled
+    Hotcorner settings is now a separate application accessible
+    from the applet settings as well as the menu.
+    Hotcorners similar to DragSnap can now be executed by both
+    corners and center edge
+  * WeatherShow
+    brand new icons to work with both light and dark themes
+    city search now matches locale characters to make it easier
+    finding towns & cities e.g. so ç matches searches with c
+
+-------------------------------------------------------------------
 Thu Feb  9 15:31:28 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Budgie Extras 1.5.0 "Breathing Space"
