@@ -1,0 +1,19 @@
+From: Adam Mizerski <adam@mizerski.pl>
+Date: 2023-03-28 21:20:44 +0200
+Subject: fix building with gcc-13
+References: https://github.com/nixcloud/ip2unix/issues/31
+Upstream: submitted
+
+Index: ip2unix-2.1.4/src/sockaddr.hh
+===================================================================
+--- ip2unix-2.1.4.orig/src/sockaddr.hh
++++ ip2unix-2.1.4/src/sockaddr.hh
+@@ -1,6 +1,8 @@
+ // SPDX-License-Identifier: LGPL-3.0-only
+ #ifndef IP2UNIX_SOCKETADDR_HH
+ #define IP2UNIX_SOCKETADDR_HH
++#include <optional>
++#include <string>
+ #include <variant>
+ 
+ #include <netinet/in.h>

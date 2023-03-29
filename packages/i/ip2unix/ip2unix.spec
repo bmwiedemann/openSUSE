@@ -24,6 +24,7 @@ License:        LGPL-3.0-only
 URL:            https://github.com/nixcloud/ip2unix/
 Source0:        https://github.com/nixcloud/ip2unix/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         gcc-12.patch
+Patch1:         gcc-13.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.46.0

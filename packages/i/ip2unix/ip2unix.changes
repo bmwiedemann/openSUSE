@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 19:22:38 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- added patch gcc-13.patch
+
+-------------------------------------------------------------------
 Tue Jan 24 12:55:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildREquire pkgconfig(systemd) instead of systemd: allow OBS
