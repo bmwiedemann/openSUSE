@@ -21,15 +21,13 @@
 %define skip_python38 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pyproj
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-Patch0:         0001-TST-Update-test_transform_bounds__ignore_inf-for-PRO.patch
-Patch1:         0002-TST-Update-transformer-test_repr__conditional-1241.patch
 BuildRequires:  %{python_module Cython >= 0.28.4}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:36:09 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.5.0
+  * WHL: PROJ 9.2 in wheels in #1243
+  * DEP: Minimum PROJ version 9.0 by @snowman2 in #1244
+  * ENH: Add inplace kwarg to Geod.fwd and Geod.inv by @greglucas
+    in #1201
+  * ENH: Add return_back_azimuth kwarg to fwd, inv,
+    fwd_intermediate, inv_intermediate by @idanmiara in #1165
+  * ENH: Added only_best kwarg to Transformer.from_crs by
+    @snowman2 in #1236
+  * PERF: Optimize point transformations by @greglucas &
+    @snowman2 in #1204, #1209, #1205
+  * PERF: Optimize for single point in Geod fwd/inv functions by
+    @greglucas in #1206
+  * REF: Raise error when CRS.to_wkt, CRS.to_json, or
+    CRS.to_proj4 returns None by @snowman2 in #1218
+  * CLN: Remove AzumuthalEquidistantConversion &
+    LambertAzumuthalEqualAreaConversion by @snowman2 in #1220
+  * BUG: Fix Derived Projected CRS support by @snowman2 in #1222
+  * BUG: Add horizontal_datum_name for geographic CRS in
+    CRS.to_cf by @snowman2 in #1255
+- Drop upstream patch:
+  * 0001-TST-Update-test_transform_bounds__ignore_inf-for-PRO.patch
+  * 0002-TST-Update-transformer-test_repr__conditional-1241.patch
+
+-------------------------------------------------------------------
 Tue Mar 21 13:30:23 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
 
 - Fix failing tests after Proj update to 9.2.0 (upstream #1224, #1241)
