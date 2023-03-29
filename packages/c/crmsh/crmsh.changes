@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 29 13:58:52 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230329.6d95249b:
+  * Dev: behave: save stderr when running command on remote
+
+-------------------------------------------------------------------
+Wed Mar 29 10:08:43 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230329.0b20d25b:
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: bootstrap: Generate the public key on the remote if it does not exist
+  * Dev: behave: Add functional test for missing public key case
+
+-------------------------------------------------------------------
+Wed Mar 29 07:35:40 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230329.34448a8c:
+  * Dev: unittest: Adjust unit test for previous change
+  * Dev: bootstrap: Remove /var/lib/crm and ~/.config/crm/crm.conf when removing node
+
+-------------------------------------------------------------------
+Mon Mar 27 15:36:13 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230327.9a683c11:
+  * Dev: behave: Add more test cases for bug 1209193
+
+-------------------------------------------------------------------
 Mon Mar 27 14:44:52 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230327.c76ad5d5:

@@ -36,7 +36,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        4.5.0+20230327.c76ad5d5
+Version:        4.5.0+20230329.6d95249b
 Release:        0
 URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
