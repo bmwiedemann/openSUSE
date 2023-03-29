@@ -23,4 +23,26 @@
     <comment></comment>
     <requestid>874304</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c8c7f1a347c485f09767e0c815e6dbe</srcmd5>
+    <version>1.5.0</version>
+    <time>1680125284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pmemkv-fix-gcc13-support.patch for GCC13 support
+
+- update to 1.5.0:
+  - New features:
+  * Introduce (optional) caching layer in radix engine. It can be enabled
+    via config parameters
+  * Add new config's flag - 'create_if_missing' to address the missing
+    functionality.
+  * If set, pmemkv tries to open the pool and creates it if missing.
+    It's mutually exclusive with 'create_or_error_if_exists' flag
+  - Bug fixes:
+  * Return correct status for wrong parameters in pmemkv_config_from_json
+  * Fix iterator::key() implementation to return the whole key, not only
+    the part up to the first null-terminator
+  * Return correct status from memkind-based engines on open failure</comment>
+    <requestid>1075202</requestid>
+  </revision>
 </revisionlist>

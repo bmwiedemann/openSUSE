@@ -1,7 +1,7 @@
 #
 # spec file for package pmemkv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           pmemkv
-Version:        1.3
+Version:        1.5.0
 Release:        0
 Summary:        Key/Value Datastore for Persistent Memory
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://pmem.io/pmdk/
 Source:         https://github.com/pmem/pmemkv/archive/%{version}.tar.gz
+Patch1:         pmemkv-fix-gcc13-support.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -71,6 +72,7 @@ This package contains the header files for libpmemkv and libpmemkv_json_config
 
 %prep
 %setup -q
+%patch1
 
 %build
 # ENGINE_VCMAP needs package-config(tbb) which is currently not available

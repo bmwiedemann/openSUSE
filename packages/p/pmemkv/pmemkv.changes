@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 29 10:40:35 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add pmemkv-fix-gcc13-support.patch for GCC13 support
+
+-------------------------------------------------------------------
+Tue Dec  6 11:17:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  - New features:
+  * Introduce (optional) caching layer in radix engine. It can be enabled
+    via config parameters
+  * Add new config's flag - 'create_if_missing' to address the missing
+    functionality.
+  * If set, pmemkv tries to open the pool and creates it if missing.
+    It's mutually exclusive with 'create_or_error_if_exists' flag
+  - Bug fixes:
+  * Return correct status for wrong parameters in pmemkv_config_from_json
+  * Fix iterator::key() implementation to return the whole key, not only
+    the part up to the first null-terminator
+  * Return correct status from memkind-based engines on open failure
+
+-------------------------------------------------------------------
 Mon Feb 22 10:10:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64
