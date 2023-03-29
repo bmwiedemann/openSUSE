@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 28 19:14:45 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.7
+  - Fixed window contents getting frozen after Reset Zoom when zoom level is
+    already at 100%.
+  - Fixed key modifiers not being recognized before a text field has been
+    activated. (Affects some versions of SDL.)
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Thu Mar 23 08:13:46 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.15.6
