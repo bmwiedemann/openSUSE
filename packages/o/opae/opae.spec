@@ -1,7 +1,7 @@
 #
 # spec file for package opae
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ Patch3:         opae-libs-fix-macro-indentation.patch
 Patch4:         opae-libs-xfpga-fix-strnlen-argument.patch
 Patch5:         opae-fix-support-with-newer-spdlog.patch
 Patch6:         opae-disable-FORTIFY_SOURCE.patch
+Patch7:         Gcc-13-2858.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  boost-devel
 BuildRequires:  cli11-devel
@@ -153,6 +154,7 @@ Libraries for the Open Programmable Acceleration Engine Libraries tools.
 %patch4
 %patch5
 %patch6
+%patch7
 
 %build
 export RPM_OPT_FLAGS
