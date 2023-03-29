@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:54:06 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Require wall utility from util-linux-tty-tools - fixes build in Factory
+- Use autosetup
+
+-------------------------------------------------------------------
 Tue Feb 22 11:09:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Conditionally disable build for gcapmon for Tumbleweed and newer

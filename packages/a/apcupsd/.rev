@@ -555,4 +555,12 @@ http://lists.opensuse.org/opensuse-factory/2012-05/msg00752.html (forwarded requ
     <comment></comment>
     <requestid>965010</requestid>
   </revision>
+  <revision rev="73" vrev="15">
+    <srcmd5>df9f697d0f1f9e87e3d4192667cc7ac1</srcmd5>
+    <version>3.14.14</version>
+    <time>1680125219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074971</requestid>
+  </revision>
 </revisionlist>

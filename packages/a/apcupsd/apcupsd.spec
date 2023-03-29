@@ -1,7 +1,7 @@
 #
 # spec file for package apcupsd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,16 @@ BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(gdlib)
+Requires:       mailx
+Requires(post): %fillup_prereq
+Requires(post): grep
+Requires(post): sed
+Recommends:     logrotate
+%{?systemd_requires}
+%if 0%{?suse_version} > 1500
+BuildRequires:  util-linux-tty-tools
+Requires:       util-linux-tty-tools
+%endif
 %if %{with gapcmon}
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gconf-2.0)
@@ -68,12 +78,6 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(x11)
 %endif
-Requires:       mailx
-Requires(post): %fillup_prereq
-Requires(post): grep
-Requires(post): sed
-Recommends:     logrotate
-%{?systemd_requires}
 
 %description
 Controls and monitors the status of an APC UPS under Linux. Allows your
@@ -109,19 +113,15 @@ http://www.apc.com/tools/download/.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 cp -a %{SOURCE2} %{SOURCE4} .
-%patch0
-%patch2
-%patch11 -p1
-%patch13 -p1
 
 %build
 %configure \
 	--sysconfdir=%{_sysconfdir}/%{name} \
 	--with-libwrap \
 	--with-lock-dir=%{_localstatedir}/lock \
-	SHUTDOWN=/usr/sbin/shutdown \
+	SHUTDOWN=%{_sbindir}/shutdown \
 %if %{with gapcmon}
 	--enable-gapcmon \
 %else
@@ -135,7 +135,7 @@ cp -a %{SOURCE2} %{SOURCE4} .
 %if 0%{?suse_version}
 	--with-distname=suse \
 %endif
-        %nil
+        %{nil}
 make %{?_smp_mflags}
 
 %install

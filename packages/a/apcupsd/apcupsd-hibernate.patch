@@ -1,5 +1,5 @@
---- platforms/apccontrol.in
-+++ platforms/apccontrol.in
+--- a/platforms/apccontrol.in
++++ b/platforms/apccontrol.in
 @@ -20,6 +20,7 @@
  
  APCPID=@PIDDIR@/apcupsd.pid

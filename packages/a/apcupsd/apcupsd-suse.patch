@@ -1,5 +1,5 @@
---- platforms/suse/Makefile
-+++ platforms/suse/Makefile
+--- a/platforms/suse/Makefile
++++ b/platforms/suse/Makefile
 @@ -11,14 +11,8 @@
     # unlink old rc script (if not doing a DESTDIR install)
  	$(call CHKCFG,del,/etc/rc.d/apcupsd)
