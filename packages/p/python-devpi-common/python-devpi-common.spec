@@ -24,9 +24,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-%{version}.tar.gz
+Patch1:         unpin-versions.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
 Requires:       python-py >= 1.4.20
 Requires:       python-requests >= 2.3.0
 BuildArch:      noarch
@@ -42,7 +44,7 @@ BuildRequires:  %{python_module requests >= 2.3.0}
 Utilities jointly used by devpi-server and devpi-client.
 
 %prep
-%setup -q -n devpi-common-%{version}
+%autosetup -p1 -n devpi-common-%{version}
 rm tox.ini
 
 %build

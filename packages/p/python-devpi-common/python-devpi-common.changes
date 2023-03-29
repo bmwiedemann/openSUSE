@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 22 09:32:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add unpin-versions.patch to reduce the packaging version conflict
+
+-------------------------------------------------------------------
 Mon Mar  6 17:21:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests with new packaging module because invalid
