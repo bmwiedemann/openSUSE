@@ -25,7 +25,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -39,7 +39,6 @@ Source4:        SLE.def
 Source5:        leap.def
 Source8:        %{name}-rpmlintrc
 Source9:        vendor.tar.gz
-Patch1:         simpler-sif-building.patch
 %if "%{?squashfuse_version}" != ""
 Source10:       https://github.com/vasi/squashfuse/archive/%{squashfuse_version}/squashfuse-%{squashfuse_version}.tar.gz
 Patch10:        https://github.com/vasi/squashfuse/pull/70.patch
@@ -63,7 +62,8 @@ BuildRequires:  automake
 BuildRequires:  fuse3-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liblzma)
 %endif
 Requires:       squashfs
 Recommends:     fuse2fs
@@ -88,7 +88,6 @@ containers that can be used across host environments.
 %patch -P 10 -p1
 %endif
 %setup -q -n %{name}-%{version}
-%patch1 -p 1
 cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
 
 %build
