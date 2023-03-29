@@ -260,4 +260,16 @@
     as expected</comment>
     <requestid>1064241</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3351748c49064a199034576070b7a4ef</srcmd5>
+    <version>2.2.2</version>
+    <time>1680125186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.2:
+  * Fix mixed content extension with empty content (issue #337)
+  * Fix lru_cache() usage on global maps caching
+  * Fix mixed content extension without explicit mixed attribute
+    (issue #334)</comment>
+    <requestid>1074605</requestid>
+  </revision>
 </revisionlist>

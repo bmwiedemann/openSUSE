@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 27 08:24:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Fix mixed content extension with empty content (issue #337)
+  * Fix lru_cache() usage on global maps caching
+  * Fix mixed content extension without explicit mixed attribute
+    (issue #334)
+
+-------------------------------------------------------------------
 Fri Feb 10 12:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
