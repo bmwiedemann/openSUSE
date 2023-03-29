@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-makefun
 Version:        1.15.1
 Release:        0
@@ -28,13 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/m/makefun/makefun
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-six
 Suggests:       python-funcsigs
 BuildArch:      noarch
 
@@ -60,6 +57,6 @@ sed -i '/pytest-runner/d' setup.cfg
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/makefun*
 
 %changelog

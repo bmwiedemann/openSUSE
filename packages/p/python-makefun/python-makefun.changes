@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:39:24 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Sun Mar 26 18:45:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.1:
