@@ -2103,6 +2103,8 @@ unsorted:
   - clang14-doc 
   - clang15-devel 
   - clang15-doc 
+  - clang16-devel 
+  - clang16-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -4226,6 +4228,7 @@ unsorted:
   - ftvalid 
   - ftview 
   - ftwnn 
+  - fuc 
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
@@ -9485,8 +9488,9 @@ unsorted:
   - libLLVM14 
   - libLLVM14-32bit 
   - libLLVM15-32bit 
+  - libLLVM16-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib15 
+  - libLLVMSPIRVLib16 
   - libLTO11 
   - libLTO11-32bit 
   - libLTO12 
@@ -9494,6 +9498,7 @@ unsorted:
   - libLTO13 
   - libLTO14 
   - libLTO15 
+  - libLTO16 
   - libLibreGraphAPI1 
   - libLimeSuite22_09-1 
   - libMagick++-7_Q16HDRI5 
@@ -10765,6 +10770,7 @@ unsorted:
   - libclang-cpp14 
   - libclang-cpp14-32bit 
   - libclang-cpp15-32bit 
+  - libclang-cpp16-32bit 
   - libclang11 
   - libclang11-32bit 
   - libclang12 
@@ -11057,7 +11063,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore7_9_0 
+  - libdigikamcore7_10_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -11388,7 +11394,7 @@ unsorted:
   - libfl2 
   - libfl2-32bit 
   - libflann1_9 
-  - libflatbuffers2 
+  - libflatbuffers23_3_3 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit 
@@ -12619,6 +12625,7 @@ unsorted:
   - liblldb13 
   - liblldb14 
   - liblldb15 
+  - liblldb16 
   - liblldpctl4 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
@@ -13292,6 +13299,7 @@ unsorted:
   - libomp13-devel 
   - libomp14-devel 
   - libomp15-devel 
+  - libomp16-devel 
   - libonnx 
   - libonnx_proto 
   - libonnxifi_dummy 
@@ -15939,6 +15947,7 @@ unsorted:
   - lld13 
   - lld14 
   - lld15 
+  - lld16 
   - lldb 
   - lldb-devel 
   - lldb11 
@@ -15951,6 +15960,8 @@ unsorted:
   - lldb14-devel 
   - lldb15 
   - lldb15-devel 
+  - lldb16 
+  - lldb16-devel 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -16013,10 +16024,22 @@ unsorted:
   - llvm15 
   - llvm15-devel 
   - llvm15-doc 
+  - llvm15-libc++-devel 
+  - llvm15-libc++1 
+  - llvm15-libc++abi-devel 
+  - llvm15-libc++abi1 
+  - llvm15-libclang13 
   - llvm15-opt-viewer 
   - llvm15-polly 
   - llvm15-polly-devel 
   - llvm15-vim-plugins 
+  - llvm16 
+  - llvm16-devel 
+  - llvm16-doc 
+  - llvm16-opt-viewer 
+  - llvm16-polly 
+  - llvm16-polly-devel 
+  - llvm16-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -22344,6 +22367,7 @@ unsorted:
   - python3-clang13 
   - python3-clang14 
   - python3-clang15 
+  - python3-clang16 
   - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
@@ -22452,6 +22476,7 @@ unsorted:
   - python3-lldb13 
   - python3-lldb14 
   - python3-lldb15 
+  - python3-lldb16 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -23185,6 +23210,7 @@ unsorted:
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
   - python310-azure-mgmt-networkfunction 
+  - python310-azure-mgmt-newrelicobservability 
   - python310-azure-mgmt-nginx 
   - python310-azure-mgmt-notificationhubs 
   - python310-azure-mgmt-nspkg 
@@ -25300,6 +25326,7 @@ unsorted:
   - python310-roman 
   - python310-rope 
   - python310-rpcq 
+  - python310-rpds-py 
   - python310-rply 
   - python310-rpmfile 
   - python310-rpmlb 
@@ -25720,6 +25747,7 @@ unsorted:
   - python310-virtkey 
   - python310-virtualenv 
   - python310-virtualenv-clone 
+  - python310-virtue 
   - python310-visitor 
   - python310-vispy 
   - python310-vistir 
@@ -25818,6 +25846,7 @@ unsorted:
   - python310-y-py 
   - python310-yacron 
   - python310-yafe 
+  - python310-yamale 
   - python310-yamldoc 
   - python310-yamllint 
   - python310-yamlloader 
@@ -26477,6 +26506,7 @@ unsorted:
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
   - python311-azure-mgmt-networkfunction 
+  - python311-azure-mgmt-newrelicobservability 
   - python311-azure-mgmt-nginx 
   - python311-azure-mgmt-notificationhubs 
   - python311-azure-mgmt-nspkg 
@@ -26678,6 +26708,7 @@ unsorted:
   - python311-casttube 
   - python311-catkin-pkg 
   - python311-cattrs 
+  - python311-cauldron-notebook 
   - python311-cbor 
   - python311-cbor2 
   - python311-cchardet 
@@ -26822,6 +26853,7 @@ unsorted:
   - python311-csv23 
   - python311-csvkit 
   - python311-cu2qu 
+  - python311-cufflinks 
   - python311-curio 
   - python311-curlylint 
   - python311-curses 
@@ -26834,10 +26866,21 @@ unsorted:
   - python311-daemonize 
   - python311-daiquiri 
   - python311-dasbus 
+  - python311-dash 
   - python311-dash-core-components 
   - python311-dash-html-components 
   - python311-dash-renderer 
   - python311-dash-table 
+  - python311-dask 
+  - python311-dask-array 
+  - python311-dask-bag 
+  - python311-dask-complete 
+  - python311-dask-dataframe 
+  - python311-dask-delayed 
+  - python311-dask-diagnostics 
+  - python311-dask-distributed 
+  - python311-dask-dot 
+  - python311-dask-test 
   - python311-databases 
   - python311-datadiff 
   - python311-dateparser 
@@ -26887,6 +26930,7 @@ unsorted:
   - python311-distlib 
   - python311-distob 
   - python311-distorm3 
+  - python311-distributed 
   - python311-distro 
   - python311-distroinfo 
   - python311-distutils-extra 
@@ -27985,6 +28029,7 @@ unsorted:
   - python311-photutils 
   - python311-phply 
   - python311-phue 
+  - python311-physt 
   - python311-pick 
   - python311-pickleshare 
   - python311-pifpaf 
@@ -28013,6 +28058,8 @@ unsorted:
   - python311-platformdirs 
   - python311-platformio 
   - python311-plette 
+  - python311-plotly 
+  - python311-plotly-jupyter 
   - python311-pluggy 
   - python311-pluginbase 
   - python311-plumbum 
@@ -28109,6 +28156,7 @@ unsorted:
   - python311-pyRFC3339 
   - python311-pyRXP 
   - python311-pyScss 
+  - python311-pyUSID 
   - python311-pyVows 
   - python311-pyacoustid 
   - python311-pyaes 
@@ -28646,6 +28694,7 @@ unsorted:
   - python311-roman 
   - python311-rope 
   - python311-rpcq 
+  - python311-rpds-py 
   - python311-rply 
   - python311-rpm 
   - python311-rpmfile 
@@ -28741,6 +28790,7 @@ unsorted:
   - python311-shortuuid 
   - python311-show-in-file-manager 
   - python311-sidecar 
+  - python311-sidpy 
   - python311-sievelib 
   - python311-sigal 
   - python311-signedjson 
@@ -29075,6 +29125,7 @@ unsorted:
   - python311-virtkey 
   - python311-virtualenv 
   - python311-virtualenv-clone 
+  - python311-virtue 
   - python311-visitor 
   - python311-vispy 
   - python311-vistir 
@@ -29173,6 +29224,7 @@ unsorted:
   - python311-y-py 
   - python311-yacron 
   - python311-yafe 
+  - python311-yamale 
   - python311-yamldoc 
   - python311-yamllint 
   - python311-yamlloader 
@@ -29842,6 +29894,7 @@ unsorted:
   - python38-azure-mgmt-netapp 
   - python38-azure-mgmt-network 
   - python38-azure-mgmt-networkfunction 
+  - python38-azure-mgmt-newrelicobservability 
   - python38-azure-mgmt-nginx 
   - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
@@ -32065,6 +32118,7 @@ unsorted:
   - python38-roman 
   - python38-rope 
   - python38-rpcq 
+  - python38-rpds-py 
   - python38-rply 
   - python38-rpm 
   - python38-rpmfile 
@@ -32502,6 +32556,7 @@ unsorted:
   - python38-virtkey 
   - python38-virtualenv 
   - python38-virtualenv-clone 
+  - python38-virtue 
   - python38-visitor 
   - python38-vispy 
   - python38-vistir 
@@ -32600,6 +32655,7 @@ unsorted:
   - python38-y-py 
   - python38-yacron 
   - python38-yafe 
+  - python38-yamale 
   - python38-yamldoc 
   - python38-yamllint 
   - python38-yamlloader 
@@ -33270,6 +33326,7 @@ unsorted:
   - python39-azure-mgmt-netapp 
   - python39-azure-mgmt-network 
   - python39-azure-mgmt-networkfunction 
+  - python39-azure-mgmt-newrelicobservability 
   - python39-azure-mgmt-nginx 
   - python39-azure-mgmt-notificationhubs 
   - python39-azure-mgmt-nspkg 
@@ -35494,6 +35551,7 @@ unsorted:
   - python39-roman 
   - python39-rope 
   - python39-rpcq 
+  - python39-rpds-py 
   - python39-rply 
   - python39-rpm 
   - python39-rpmfile 
@@ -35932,6 +35990,7 @@ unsorted:
   - python39-virtkey 
   - python39-virtualenv 
   - python39-virtualenv-clone 
+  - python39-virtue 
   - python39-visitor 
   - python39-vispy 
   - python39-vistir 
@@ -36031,6 +36090,7 @@ unsorted:
   - python39-y-py 
   - python39-yacron 
   - python39-yafe 
+  - python39-yamale 
   - python39-yamldoc 
   - python39-yamllint 
   - python39-yamlloader 
@@ -37991,6 +38051,9 @@ unsorted:
   - sisu-plexus 
   - sitar 
   - skaffold 
+  - skaffold-bash-completion 
+  - skaffold-fish-completion 
+  - skaffold-zsh-completion 
   - skanpage 
   - skanpage-lang 
   - skelcd-control-MicroOS 
@@ -48277,6 +48340,7 @@ unsorted:
   - vim-plugin-showmarks 
   - vim-plugin-snipmate 
   - vim-plugin-supertab 
+  - vim-plugin-table-mode 
   - vim-plugin-taglist 
   - vim-plugin-tlib 
   - vim-plugin-tregisters 
