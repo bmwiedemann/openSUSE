@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 13:05:24 UTC 2023 - dmueller@suse.com
+
+- Update to version 84.87+git20230324.8680ce4:
+  * Remove __patchable_function_entries from .a objects
+
+-------------------------------------------------------------------
 Tue Nov 15 11:34:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 84.87+git20221115.2f7add6:

@@ -665,4 +665,13 @@ Lets break everything :)
   * Fix /etc/alternatives being white listed</comment>
     <requestid>1035828</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>ce8252551e850c47f6a8c54cc1e3302f</srcmd5>
+    <version>84.87+git20230324.8680ce4</version>
+    <time>1680125149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20230324.8680ce4:
+  * Remove __patchable_function_entries from .a objects</comment>
+    <requestid>1074175</requestid>
+  </revision>
 </revisionlist>
