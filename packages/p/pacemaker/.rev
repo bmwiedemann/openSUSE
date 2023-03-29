@@ -2106,4 +2106,19 @@
 - daemons: Add a -l argument to pacemaker-attrd. (forwarded request 1073529 from yan_gao)</comment>
     <requestid>1073530</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>006528f68888c1cb3620fcbe993050ab</srcmd5>
+    <version>2.1.5+20230320.22590c566</version>
+    <time>1680125165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.5+20230320.22590c566:
+- libcrmcommon: allow crm_attribute to try OCF_RESOURCE_INSTANCE environment variable if -p is specified with an empty string (bsc#1209586)
+- libcrmcommon, libpe_status: New enabled meta attr for alerts
+- scheduler: message now applies to all nodes
+- libcrmcommon: avoid libqb assertion
+- tools: Formatted output in crm_shadow
+- schemas: New diff and any-element schemas
+- schemas: New crm_shadow and instruction schemas (forwarded request 1074949 from yan_gao)</comment>
+    <requestid>1074950</requestid>
+  </revision>
 </revisionlist>

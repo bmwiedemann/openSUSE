@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 22 16:11:09 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230320.22590c566:
+- libcrmcommon: allow crm_attribute to try OCF_RESOURCE_INSTANCE environment variable if -p is specified with an empty string (bsc#1209586)
+- libcrmcommon, libpe_status: New enabled meta attr for alerts
+- scheduler: message now applies to all nodes
+- libcrmcommon: avoid libqb assertion
+- tools: Formatted output in crm_shadow
+- schemas: New diff and any-element schemas
+- schemas: New crm_shadow and instruction schemas
+
+-------------------------------------------------------------------
+Tue Mar 21 15:13:46 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230314.692147cd3:
+- tools: Don't teardown on unsuccessful crm_shadow --delete
+- tools: Don't print teardown message for crm_shadow --commit
+- libcib: Don't unset env var in cib_new_no_shadow()
+- scheduler: avoid displaying failed operations as pending (bsc#1206263)
+- Revert "Fix: libpacemaker: ensure any pending recurring monitor gets updated if it fails" (bsc#1206263)
+- cts-regression: reflect any test failures again with the return code
+- alerts: make alert_snmp.sh.sample compatible with SNMPv3
+- tool: update crm_mon synopsis (bsc#1208868)
+
+-------------------------------------------------------------------
 Tue Mar 14 10:25:29 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.5+20230309.a4b0ea1b5:
