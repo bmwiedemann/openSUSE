@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 14:59:04 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as the GCC issue is fixed with gcc13 (boo#1133278).
+
+-------------------------------------------------------------------
 Thu Jan 26 15:20:09 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move dbus-1 system.d file to /usr (bsc#1207584)

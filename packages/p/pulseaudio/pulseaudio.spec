@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifarch armv7 armv7hl
+# Tumbleweed compiler works fine on all platforms
+%if 0%{?suse_version} < 1599
 %define _lto_cflags %{nil}
 %endif
 
