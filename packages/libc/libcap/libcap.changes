@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 24 10:16:26 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO and add missing -ffat-lto-objects for the provided
+  static libs.
+
+-------------------------------------------------------------------
+Fri Mar 24 09:38:17 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Revert LTO again; it still breaks builds
+
+-------------------------------------------------------------------
+Thu Mar 23 15:43:17 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it works fine.
+
+-------------------------------------------------------------------
 Sat Feb  4 18:39:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.67:

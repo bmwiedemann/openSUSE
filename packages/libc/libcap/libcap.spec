@@ -94,7 +94,7 @@ libcap.
 %autopatch -p1
 
 %build
-%global _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %global buildvariables RAISE_SETFCAP=no prefix=%{_prefix} lib=%{_lib} SHARED=yes LIBDIR=%{_libdir} SBINDIR=%{_sbindir} PKGCONFIGDIR=%{_libdir}/pkgconfig/ INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes COPTS="%{optflags}"
 
 %make_build %{buildvariables}
