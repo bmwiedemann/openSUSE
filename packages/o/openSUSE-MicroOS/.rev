@@ -557,4 +557,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1071805</requestid>
   </revision>
+  <revision rev="59" vrev="59">
+    <srcmd5>9aca451ba02cf13e78debc05017ec77e</srcmd5>
+    <version>16.0.0</version>
+    <time>1680125158</time>
+    <user>dimstar_suse</user>
+    <comment>- config.sh: No longer use the btrfs storage driver, was changed in
+  libcontainers-common</comment>
+    <requestid>1074879</requestid>
+  </revision>
 </revisionlist>
