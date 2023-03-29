@@ -68,4 +68,14 @@
     <comment></comment>
     <requestid>1043216</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d77f22a3656e8f089583c0cbf2a96f00</srcmd5>
+    <version>0.23.2</version>
+    <time>1680125249</time>
+    <user>dimstar_suse</user>
+    <comment>- add 001-cstdint.patch to fix TW build (gcc13)
+- remove tarball from package sources (generated at buildtime)
+</comment>
+    <requestid>1075136</requestid>
+  </revision>
 </revisionlist>

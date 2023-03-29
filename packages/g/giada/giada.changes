@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 07:11:15 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- add 001-cstdint.patch to fix TW build (gcc13)
+- remove tarball from package sources (generated at buildtime)
+
+-------------------------------------------------------------------
 Thu Dec 15 13:16:54 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
 
 - update to version 0.23.2

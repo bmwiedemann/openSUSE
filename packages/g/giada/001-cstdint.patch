@@ -1,0 +1,11 @@
+diff -up giada-0.23.2/src/gui/elems/midiIO/midiLearner.h.orig giada-0.23.2/src/gui/elems/midiIO/midiLearner.h
+--- giada-0.23.2/src/gui/elems/midiIO/midiLearner.h.orig	2023-03-29 08:40:51.529134534 +0200
++++ giada-0.23.2/src/gui/elems/midiIO/midiLearner.h	2023-03-29 08:37:16.215877150 +0200
+@@ -30,6 +30,7 @@
+ #include "gui/elems/basics/flex.h"
+ #include <functional>
+ #include <string>
++#include <cstdint>
+ 
+ namespace giada::v
+ {

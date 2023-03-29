@@ -1,7 +1,7 @@
 #
 # spec file for package giada
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Packman Team <packman@links2linux.de>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -26,6 +26,7 @@ License:        GPL-3.0-or-later
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         003-cmake-exclude-juce-from-all.patch
+Patch1:         001-cstdint.patch
 BuildRequires:  cmake
 BuildRequires:  fltk-devel
 %if 0%{?suse_version} < 1550
