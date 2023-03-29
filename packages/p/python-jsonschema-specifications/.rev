@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9704b30d5979ae1fb5f48d8107cf7895</srcmd5>
+    <version>2023.3.6</version>
+    <time>1680125215</time>
+    <user>dimstar_suse</user>
+    <comment>new package, required by jsonschema 0.18.x</comment>
+    <requestid>1074962</requestid>
+  </revision>
+</revisionlist>
