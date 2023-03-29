@@ -151,4 +151,12 @@
     <comment>add subpackages for shell completions</comment>
     <requestid>1074976</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>666b8350b1f83ed3cf44d65ceb7f22c8</srcmd5>
+    <version>2.3.0</version>
+    <time>1680125241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075094</requestid>
+  </revision>
 </revisionlist>

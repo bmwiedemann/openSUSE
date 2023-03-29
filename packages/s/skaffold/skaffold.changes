@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Mar 29 05:16:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.0:
+  * release: v2.3.0 (#8593)
+  * Revert "chore: firelog exporter  (#8555)" (#8598)
+  * feat: add 'skaffold inspect jobManifestPath' and 'skaffold
+    transform-schema jobManifestPath' commands (#8575)
+  * Revert "chore: upgrade docker version in skaffold image
+    (#8583)" (#8590)
+  * chore: change verify schema from v1.Container to subset of
+    direct primitive types (#8577)
+  * chore: upgrade docker version in skaffold image (#8583)
+  * chore: fix transformer share configmap issues (#8582)
+  * fix: correctly rewrite /deploy/kubectl/manifests in patch
+    upgrades (#8585)
+  * chore: enhance vuln monitor (#8570)
+  * chore: firelog exporter  (#8555)
+  * fix: improve verify command s.t. os envs not passed through to
+    container envs and instead add a flag for this purpose (#8557)
+  * chore: update cloudbuild config to publish distroless-skaffold
+    image to artifact registry for vulns scanning (#8524)
+  * chore: bump actions/setup-go from 3 to 4 (#8554)
+  * chore: bump rack in /integration/examples/ruby/backend (#8552)
+  * chore: bump rack from 2.1.4.3 to 2.2.6.4 in
+    /examples/ruby/backend (#8553)
+  * Revert "fix: `kubectl create` with `dry-run` shouldn't pass the
+    namespace flag (#8543)" (#8551)
+  * fix: make it so tolerateFailuresUntilDeadline also handles
+    kubectl failures (vs. just parsing kubectl resource status
+    values). (#8549)
+  * chore: upgrade go version in skaffold image (#8540)
+  * fix: `kubectl create` with `dry-run` shouldn't pass the
+    namespace flag (#8543)
+  * chore: Add output flag for diagnose (#8546)
+  * fix: move verify schema changes to v4beta4 and remove it from
+    already released v4beta3 (#8514)
+  * chore: bump snakeyaml from 1.32 to 2.0 in /examples/jib (#8513)
+  * chore: bump snakeyaml in
+    /integration/examples/dev-journey-buildpacks (#8526)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /examples/jib-multimodule (#8531)
+  * chore: bump snakeyaml in /examples/dev-journey-buildpacks
+    (#8532)
+  * chore: bump snakeyaml from 1.32 to 2.0 in /examples/jib-sync
+    (#8528)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /examples/buildpacks-java (#8530)
+  * chore: bump snakeyaml in /integration/examples/buildpacks-java
+    (#8529)
+  * chore: bump snakeyaml in /integration/examples/jib-multimodule
+    (#8527)
+  * chore: bump rack in /integration/examples/ruby/backend (#8505)
+  * chore: bump rack from 2.1.4.2 to 2.1.4.3 in
+    /examples/ruby/backend (#8506)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /integration/examples/jib-sync (#8500)
+  * fix: can't use ctrl-c to terminate building with kaniko at
+    uploading build context stage (#8516)
+  * chore: bump github.com/rjeczalik/notify to get rid of
+    deprecation on darwin (#8502)
+  * chore: bump schema version to v4beta4. Also some misc fixes
+    (#8507)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /integration/examples/jib (#8511)
+  * chore: bump examples to latest released version v4beta3 (#8508)
+  * feat: Whitelist strimzi.io CRDs (#8491)
+  * docs: add tooltip with yaml path in Skaffold yaml reference
+    page (#8477)
+  * feat: add k8s Job support to verify and status check (#8415)
+  * dep: replace dockerignore.ReadAll with github.com/...
+    .../moby/buildkit/frontend/dockerfile/dockerignore.ReadAll
+    (#8488)
+  * fix: add upgrade logic to inject a kubectl deployer when an old
+    kustomize deployer is detected (#8457)
+  * chore: bump golang.org/x/net (#8498)
+  * chore: bump golang.org/x/net from 0.1.0 to 0.7.0 in /hack/tools
+    (#8497)
+
+-------------------------------------------------------------------
 Tue Mar 28 06:12:57 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add subpackages for shell completions
