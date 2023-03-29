@@ -113,4 +113,32 @@
     <comment></comment>
     <requestid>1064044</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd5dccedce92ebe3e00635986860d3fb</srcmd5>
+    <version>1.6.0</version>
+    <time>1680125301</time>
+    <user>dimstar_suse</user>
+    <comment>- Budgie Extras 1.6.0 &quot;Snap Fantastic&quot;
+  * Shuffler
+    Better place windows in rows and columns across multi-monitors
+    DragSnap - quarter, half tiling with previews when dragging
+    to edges
+    DragSnap - Revamped Window Shuffler Control window with new
+    DragSnap options and descriptions
+    DragSnap - tiling snap also takes into account Control and
+    Alt keys to tile 2/5 and 3/5 of the screen
+  * Hotcorners
+    Integration with Shuffler to ensure dragging windows work
+    correctly when hotcorners is enabled
+    Hotcorner settings is now a separate application accessible
+    from the applet settings as well as the menu.
+    Hotcorners similar to DragSnap can now be executed by both
+    corners and center edge
+  * WeatherShow
+    brand new icons to work with both light and dark themes
+    city search now matches locale characters to make it easier
+    finding towns &amp; cities e.g. so ç matches searches with c
+</comment>
+    <requestid>1075234</requestid>
+  </revision>
 </revisionlist>
