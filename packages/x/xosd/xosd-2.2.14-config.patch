@@ -1,0 +1,13 @@
+Index: xosd-2.2.14/script/xosd-config.in
+===================================================================
+--- xosd-2.2.14.orig/script/xosd-config.in
++++ xosd-2.2.14/script/xosd-config.in
+@@ -213,7 +213,7 @@ includes="-I@includedir@"
+ libs="-L@libdir@"
+ 
+ af_cflags="$af_cflags $includes"
+-af_libs="$libs -l$LIB_NAME $af_libs"
++af_libs="$libs -l$LIB_NAME"
+ 
+ print_result
+ 

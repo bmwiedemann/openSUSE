@@ -1,0 +1,13 @@
+Index: xosd-2.2.14/libxosd.m4
+===================================================================
+--- xosd-2.2.14.orig/libxosd.m4
++++ xosd-2.2.14/libxosd.m4
+@@ -6,7 +6,7 @@
+ dnl AM_PATH_LIBXOSD([ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]])
+ dnl Test to see if libxosd is installed, and define LIBXOSD_CFLAGS, LIBXOSDLIBS
+ dnl
+-AC_DEFUN(AM_PATH_LIBXOSD,
++AC_DEFUN([AM_PATH_LIBXOSD],
+ [dnl
+ dnl Get the cflags and libraries from the xosd-config script
+ dnl
