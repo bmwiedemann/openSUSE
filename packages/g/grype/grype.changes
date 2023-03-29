@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 29 05:15:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.60.0:
+  * Implement support for Chainguard Linux (#1198)
+  * chore(deps): update bootstrap tools to latest versions (#1194)
+  * chore(deps): bump github/codeql-action from 2.2.8 to 2.2.9
+    (#1197)
+  * chore(deps): bump github.com/gookit/color from 1.5.2 to 1.5.3
+    (#1192)
+  * chore(deps): bump github/codeql-action from 2.2.7 to 2.2.8
+    (#1193)
+  * chore(deps): update bootstrap tools to latest versions (#1191)
+  * chore: tweak some workflow text (#1190)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.0 to
+    1.7.1 (#1181)
+  * chore(deps): bump peter-evans/create-pull-request from 4.2.3 to
+    4.2.4 (#1184)
+  * chore(deps): bump anchore/sbom-action from 0.13.3 to 0.13.4
+    (#1189)
+  * chore: Update grype bootstrap tools to latest versions. (#1187)
+  * fix: by-cpe pivot by vuln metadata rather than vulnerability
+    record (#1188)
+  * Update grype bootstrap tools to latest versions. (#1173)
+  * chore(deps): bump actions/setup-go from 3.5.0 to 4.0.0 (#1182)
+  * chore(deps): bump github/codeql-action from 2.2.5 to 2.2.7
+    (#1183)
+  * feat: disable CPE-based matching by default for javascript
+    (#1180)
+  * Update Syft to v0.75.0 (#1177)
+  * chore: bump vuln match quality dataset (#1174)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.1
+    to 1.4.2 (#1166)
+
+-------------------------------------------------------------------
 Thu Mar 09 15:31:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.59.1:
