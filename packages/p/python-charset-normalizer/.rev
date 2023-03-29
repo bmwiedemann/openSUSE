@@ -241,4 +241,16 @@
     <comment></comment>
     <requestid>1039740</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>323a605df03c1369f760364e0261af91</srcmd5>
+    <version>3.1.0</version>
+    <time>1680125175</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Argument `should_rename_legacy` for legacy function `detect`
+    and disregard any new arguments without errors (PR #262)
+  * Removed Support for Python 3.6 (PR #260)
+  * Optional speedup provided by mypy/c 1.0.1</comment>
+    <requestid>1074517</requestid>
+  </revision>
 </revisionlist>
