@@ -1,6 +1,0 @@
-<servicedata>
-  <service name="tar_scm">
-    <param name="url">git://github.com/coreos/kube-prometheus.git</param>
-    <param name="changesrevision">f0955e054003eadbe487089f29e46b00325d685a</param>
- </service>
-</servicedata>
