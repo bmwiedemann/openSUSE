@@ -1,0 +1,24 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Use -DALIGNMENT_WORKAROUND on arm as well
+
+The arm build log shows a lot warnings about casts increasing the
+required alignment of target type. This suggests that this
+architecture needs to use the slower byte access which is enabled by
+-DALIGNMENT_WORKAROUND.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ config.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- dmidecode.orig/config.h
++++ dmidecode/config.h
+@@ -22,7 +22,7 @@
+ #endif
+ 
+ /* Use memory alignment workaround or not */
+-#ifdef __ia64__
++#if defined(__ia64__) || defined(__arm__)
+ #define ALIGNMENT_WORKAROUND
+ #endif
+ 

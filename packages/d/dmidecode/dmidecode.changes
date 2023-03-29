@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 20 10:27:24 UTC 2023 - Jean Delvare <jdelvare@suse.com>
+
+- arm-use-alignment-workaround.patch: Fix the massive build
+  warnings on armv7l.
+
+-------------------------------------------------------------------
+Thu Mar 16 12:26:11 UTC 2023 - Jean Delvare <jdelvare@suse.de>
+
+- Update to upstream version 3.5:
+  * Decode HPE OEM records 216, 224, 230, 238 and 242.
+  * Fortify entry point length checks.
+  * Add a --no-quirks option.
+  * Drop the CPUID exception list.
+  * Do not let --dump-bin overwrite an existing file.
+  * Ensure /dev/mem is a character device file.
+  * Obsoletes news-fix-typo.patch and
+    dmioem-fix-segmentation-fault-in-dmi_hp_240_attr.patch.
+
+-------------------------------------------------------------------
 Fri Sep  9 10:00:42 UTC 2022 - Jean Delvare <jdelvare@suse.de>
 
 2 recommended fixes from upstream:

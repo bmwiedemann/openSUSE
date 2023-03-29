@@ -1,7 +1,7 @@
 #
 # spec file for package dmidecode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dmidecode
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        DMI table decoder
 License:        GPL-2.0-or-later
@@ -27,8 +27,7 @@ Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz.sig
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
 Source2:        %{name}.keyring
-Patch1:         news-fix-typo.patch
-Patch2:         dmioem-fix-segmentation-fault-in-dmi_hp_240_attr.patch
+Patch1:         arm-use-alignment-workaround.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -52,7 +51,6 @@ the BIOS told it to.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags}
