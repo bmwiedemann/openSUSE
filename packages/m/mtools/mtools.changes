@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 24 20:19:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.43:
+  * Fix root directory test in mattrib
+  * -b BiosDisk flag for mformat to allow setting physdrive to
+    a user-specified value
+  * Clearer error message in mformat when trying to mformat a
+    disk whose total size is not known
+  * Make recursive copy more consistent
+  * Trailing slash now always implies target should be a directory
+
+-------------------------------------------------------------------
 Sat Oct 22 19:28:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.42:

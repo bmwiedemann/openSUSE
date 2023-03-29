@@ -1,7 +1,7 @@
 #
 # spec file for package mtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mtools
-Version:        4.0.42
+Version:        4.0.43
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
