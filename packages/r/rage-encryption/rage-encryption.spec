@@ -20,7 +20,7 @@
 
 Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
-Version:        0.9.0+0
+Version:        0.9.1+0
 Release:        0
 Summary:        Simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.
@@ -42,6 +42,7 @@ BuildRequires:  vendored_licenses_packager
 # for feature mount
 BuildRequires:  fuse-devel
 Recommends:     pinentry
+BuildRequires:  zstd
 Conflicts:      rage
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -60,6 +61,26 @@ Conflicts:      rage
 
 %description bash-completion
 Bash command line completion support for %{name}
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          Productivity/Security
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          Productivity/Security
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
 
 %prep
 %setup -q -a 0 -n rage-%{version}
@@ -89,6 +110,9 @@ install -m 0755 %{_builddir}/rage-%{version}/target/release/rage-keygen %{buildr
 for i in "" -keygen -mount; do
   install -D -p -m 644 target/manpages/rage$i.1.gz %{buildroot}/%{_mandir}/man1/rage$i.1%{?ext_man}
   install -D -p -m 644 target/completions/rage$i.bash %{buildroot}%{_datadir}/bash-completion/completions/rage$i
+  install -D -p -m 644 target/completions/rage$i.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_rage$i
+  install -D -p -m 644 target/completions/rage$i.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/rage$i.fish
+
 done
 %vendored_licenses_packager_install
 
@@ -105,5 +129,17 @@ done
 %files bash-completion
 %license LICENSE-APACHE LICENSE-MIT
 %{_datadir}/bash-completion/completions/rage*
+
+%files fish-completion
+%license LICENSE-APACHE LICENSE-MIT
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/rage*.fish
+
+%files zsh-completion
+%license LICENSE-APACHE LICENSE-MIT
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_rage*
 
 %changelog

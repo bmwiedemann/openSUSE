@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 26 07:04:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.9.1+0:
+  * ssh: Fix parsing of OpenSSH private key format
+  * ssh: Support `aes256-gcm@openssh.com` ciphers for encrypted keys
+  * ssh: Add `aes256-gcm@openssh.com` cipher to test cases
+  * ssh: Extract common key material derivation logic for encrypted keys
+  * ssh: Use associated constants for key and IV sizes
+  * ssh: Add test cases for encrypted keys
+- Add shell completions for fish and zsh.
+
+-------------------------------------------------------------------
 Fri Jan 13 03:23:28 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1207039 - CVE-2023-22895 - update bzip2 crate
