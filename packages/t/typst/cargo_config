@@ -1,0 +1,13 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."https://github.com/reknih/iai"]
+git = "https://github.com/reknih/iai"
+replace-with = "vendored-sources"
+
+[source."https://github.com/reknih/lipsum"]
+git = "https://github.com/reknih/lipsum"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

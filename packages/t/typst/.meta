@@ -1,0 +1,5 @@
+<package name="typst" project="openSUSE:Factory">
+  <title>typst</title>
+  <description>A new markup-based typesetting system that is powerful and easy to learn. </description>
+  <devel project="Publishing" package="typst"/>
+</package>
