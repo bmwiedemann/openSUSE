@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tweaks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Luis Medinas, Lisbon, Portugal.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gnome-tweaks
-Version:        42.beta
+Version:        42.beta+60
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
-Source0:        https://download.gnome.org/sources/gnome-tweaks/42/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires

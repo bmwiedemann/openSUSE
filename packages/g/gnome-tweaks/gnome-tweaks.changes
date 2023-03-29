@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 22 21:44:59 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 42.beta+60:
+  + Removed libsoup mention.
+  + data: Remove extension mentions.
+  + appdata: Remove GNOME 3 mention.
+  + Remove deprecated option for separate Lock screen wallpaper.
+  + Updated translations.
+- Switch to git checkout via source service, explicit commit id.
+
+-------------------------------------------------------------------
 Sat Mar  5 13:04:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.beta:
