@@ -73,6 +73,7 @@ Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too
 Conflicts:      tracker < 1.99
 Obsoletes:      tracker-miner-rss <= 2.2.2
+Requires:       tracker >= %{version}
 %requires_ge    tracker-data-files
 
 %description
@@ -139,15 +140,15 @@ This package contains a miner to index files and applications.
 %{_libexecdir}/tracker3/
 %{_libexecdir}/tracker-extract-3
 %{_libexecdir}/tracker-writeback-3
-%{_mandir}/man1/tracker3-daemon.1.gz
-%{_mandir}/man1/tracker3-extract.1.gz
-%{_mandir}/man1/tracker3-index.1.gz
-%{_mandir}/man1/tracker3-info.1.gz
-%{_mandir}/man1/tracker3-reset.1.gz
-%{_mandir}/man1/tracker3-search.1.gz
-%{_mandir}/man1/tracker3-status.1.gz
-%{_mandir}/man1/tracker3-tag.1.gz
-%{_mandir}/man1/tracker-writeback-3.1.gz
+%{_mandir}/man1/tracker3-daemon.1%{?ext_man}
+%{_mandir}/man1/tracker3-extract.1%{?ext_man}
+%{_mandir}/man1/tracker3-index.1%{?ext_man}
+%{_mandir}/man1/tracker3-info.1%{?ext_man}
+%{_mandir}/man1/tracker3-reset.1%{?ext_man}
+%{_mandir}/man1/tracker3-search.1%{?ext_man}
+%{_mandir}/man1/tracker3-status.1%{?ext_man}
+%{_mandir}/man1/tracker3-tag.1%{?ext_man}
+%{_mandir}/man1/tracker-writeback-3.1%{?ext_man}
 %{_userunitdir}/tracker-extract-3.service
 %{_userunitdir}/tracker-writeback-3.service
 
@@ -159,7 +160,7 @@ This package contains a miner to index files and applications.
 %{_datadir}/glib-2.0/schemas/org.freedesktop.TrackerMiners3.enums.xml
 %{_libexecdir}/tracker-miner-fs-3
 %{_libexecdir}/tracker-miner-fs-control-3
-%{_mandir}/man1/tracker-miner-fs-3.1%{ext_man}
+%{_mandir}/man1/tracker-miner-fs-3.1%{?ext_man}
 %{_sysconfdir}/xdg/autostart/tracker-miner-fs-3.desktop
 %{_userunitdir}/tracker-miner-fs-3.service
 %{_userunitdir}/tracker-miner-fs-control-3.service

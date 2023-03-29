@@ -385,4 +385,12 @@
     <comment>New stable release (forwarded request 1073079 from iznogood)</comment>
     <requestid>1073219</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>0287a66da99c95ba0f4f74d226303330</srcmd5>
+    <version>3.5.0</version>
+    <time>1680125206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074715</requestid>
+  </revision>
 </revisionlist>
