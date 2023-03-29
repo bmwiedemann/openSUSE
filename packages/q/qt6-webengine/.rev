@@ -129,4 +129,13 @@
     <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
     <requestid>1072426</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>584bf8334eacc6704cca97f4577c72f8</srcmd5>
+    <version>6.4.3</version>
+    <time>1680125264</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * qtwebengine-gcc13.patch</comment>
+    <requestid>1075160</requestid>
+  </revision>
 </revisionlist>
