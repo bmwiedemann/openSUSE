@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 29 08:41:11 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add issue-3373882-Fix-compilation-issue-for-gcc-13.0.1.patch for GCC13 support
+
+-------------------------------------------------------------------
 Fri Sep 30 13:13:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v9.7.0 (jsc#PED-913)

@@ -1,7 +1,7 @@
 #
 # spec file for package libvma
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Version:        9.7.0
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
+Patch1:         issue-3373882-Fix-compilation-issue-for-gcc-13.0.1.patch
 Patch3:         harden_vma.service.patch
 URL:            https://github.com/Mellanox/libvma
 BuildRequires:  autoconf
@@ -71,6 +72,7 @@ Headers and symbolink link required to compile and link with the Libvma library.
 
 %prep
 %setup -q -n  %{name}-%{version}%{git_ver}
+%patch1
 %patch3 -p1
 
 %build
