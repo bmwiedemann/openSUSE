@@ -1,7 +1,7 @@
 #
 # spec file for package python-cx_Freeze
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        6.0
+Version:        6.14.7
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/anthony-tuininga/cx_Freeze
 Source:         https://github.com/anthony-tuininga/cx_Freeze/archive/%{version}.tar.gz
-Patch0:         remove-nose.patch
-BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module openpyxl}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  chrpath
 BuildRequires:  fdupes
+BuildRequires:  patchelf
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -54,25 +55,24 @@ before being able to run "cx-frozen" executables that were created by
 other systems.
 
 %prep
-%setup -q -n cx_Freeze-%{version}
-%autopatch -p1
-sed -i -e '/^#!\//, 1d' cx_Freeze/samples/*/*.py
+%autosetup -p1 -n cx_Freeze-%{version}
+sed -i -e '/^#!\//, 1d' samples/*/*.py
 chmod a-x cx_Freeze/initscripts/*.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cxfreeze-quickstart
 %python_clone -a %{buildroot}%{_bindir}/cxfreeze
-%python_expand chrpath -d %{buildroot}%{$python_sitearch}/cx_Freeze/bases/Console*
+%python_expand chrpath -d %{buildroot}%{$python_sitearch}/cx_Freeze/bases/console*
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# test_FindModule_from_zip - needs testpkg1.egg which is not present
-%pytest_arch -k 'not test_FindModule_from_zip'
+# bdist_rpm is not long for this world, and it always execs the default Python
+%pytest_arch -k 'not test_bdist_rpm'
 
 %post
 %python_install_alternative cxfreeze-quickstart
@@ -87,6 +87,7 @@ export CFLAGS="%{optflags}"
 %license doc/src/license.rst
 %python_alternative %{_bindir}/cxfreeze
 %python_alternative %{_bindir}/cxfreeze-quickstart
-%{python_sitearch}/*
+%{python_sitearch}/cx_Freeze
+%{python_sitearch}/cx_Freeze-%{version}*info
 
 %changelog

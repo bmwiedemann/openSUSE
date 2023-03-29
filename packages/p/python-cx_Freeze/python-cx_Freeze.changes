@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Mar 29 07:27:19 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.14.7:
+  * Support to build musllinux wheels
+  * project: Improve patchelf dependency specification
+  * Include copy of cx_Freeze license with frozen applications
+  * Support Python 3.11 and set it as default in CI
+  * Drop python 3.6
+  * build: setuptools has 'build' command since v62.4.0
+  * finder: extend include_file_as_module to include submodule
+  * bases and initscripts: lowercase to remove pylint invalid-name
+  * freezer: copy package data using _copy_files to correctly parse dependencies
+  * Cleanup to support/test with python 3.11b3
+  * feezer: use internal _create_directory (create the parents, verbose)
+  * Set the path to search for modules, and fix the path for built-in modules
+  * Compile base executables with generic names depending on SOABI
+  * Get rid of some calls to deprecated module distutils
+  * Support for using embedded manylinux static libraries
+  * Fix incorrect default bin path includes
+  * Use a self made requirements sync instead of piptools
+  * Add cached_property (and a compatible function) for planned use
+  * The built-in modules are determined based on the cx_Freeze build
+  * finder: use pep8 names (and enable pylint for it)
+  * Declare the new subpackage cx_Freeze.command
+  * Using a trick to get around a dependency on distutils.
+  * Implements Parser interface to create an abstraction to parse binary
+  * files
+  * Implements basic PEParser interface
+  * Helper to create and return a Path-like temporary directory
+  * Add a basic pyproject.toml for build and tools
+  * importlib.metadata is no longer provisional in Python 3.10
+  * Prioritize importlib_metadata in versions lower than 3.10
+  * Avoid error when cx_Freeze.util is not build yet
+  * Use helper TemporaryPath in module
+  * Implements ELFParser interface merging patchelf
+  * Extend Module.in_file_system to support an optimized mode
+  * Convert existing tests to pytest + increase coverage
+  * Fix relative path in dependencies, detected in miniconda linux
+  * Use pathlib everywhere
+  * Create permanent cx_Freeze/bases
+  * Enable python -m cx_Freeze syntax
+  * Starts freezing in a clean directory
+  * Improve metadata using importlib.metadata
+  * Improve copy dependent files relative to source module file
+  * Added support for Python 3.8.
+- Drop patch remove-nose.patch, upstream moved to pytest.
+
+-------------------------------------------------------------------
 Fri Sep 17 02:53:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add remove-nose.patch:

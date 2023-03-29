@@ -69,4 +69,41 @@
   * Use pytest rather than nose in one test case.</comment>
     <requestid>919614</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>223ce1b74d24375b874228181dbeb758</srcmd5>
+    <version>6.14.7</version>
+    <time>1680125260</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.14.7:
+  * Support to build musllinux wheels
+  * project: Improve patchelf dependency specification
+  * Include copy of cx_Freeze license with frozen applications
+  * Support Python 3.11 and set it as default in CI
+  * Drop python 3.6
+  * build: setuptools has 'build' command since v62.4.0
+  * finder: extend include_file_as_module to include submodule
+  * bases and initscripts: lowercase to remove pylint invalid-name
+  * freezer: copy package data using _copy_files to correctly parse dependencies
+  * Cleanup to support/test with python 3.11b3
+  * feezer: use internal _create_directory (create the parents, verbose)
+  * Set the path to search for modules, and fix the path for built-in modules
+  * Compile base executables with generic names depending on SOABI
+  * Get rid of some calls to deprecated module distutils
+  * Support for using embedded manylinux static libraries
+  * Fix incorrect default bin path includes
+  * Use a self made requirements sync instead of piptools
+  * Add cached_property (and a compatible function) for planned use
+  * The built-in modules are determined based on the cx_Freeze build
+  * finder: use pep8 names (and enable pylint for it)
+  * Declare the new subpackage cx_Freeze.command
+  * Using a trick to get around a dependency on distutils.
+  * Implements Parser interface to create an abstraction to parse binary
+  * files
+  * Implements basic PEParser interface
+  * Helper to create and return a Path-like temporary directory
+  * Add a basic pyproject.toml for build and tools
+  * importlib.metadata is no longer provisional in Python 3.10
+  * Prioritize importlib_metadata in versions lower than 3.10</comment>
+    <requestid>1075144</requestid>
+  </revision>
 </revisionlist>
