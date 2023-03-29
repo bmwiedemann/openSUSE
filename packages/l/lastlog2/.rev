@@ -9,4 +9,16 @@
 There should be a rpmlint which whitelists this PAM module.</comment>
     <requestid>1073996</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4588ee131bea1f55d43255e049a3e4b4</srcmd5>
+    <version>0.6.2</version>
+    <time>1680125295</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.6.2
+  - Add more test cases
+  - Add --version option for lastlog2
+  - Fix a Y2038 problem on 32bit architectures
+</comment>
+    <requestid>1075214</requestid>
+  </revision>
 </revisionlist>

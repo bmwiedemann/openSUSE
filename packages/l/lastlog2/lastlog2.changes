@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 29 12:19:00 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 0.6.2
+  - Add more test cases
+  - Add --version option for lastlog2
+  - Fix a Y2038 problem on 32bit architectures
+
+-------------------------------------------------------------------
 Thu Mar 23 13:43:39 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Version 0.6.1
