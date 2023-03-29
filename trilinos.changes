@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 28 19:46:26 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Update to version 14.0.0
+  For information on changes consult the release notes of
+  its sub-packages.
+  * Remove obsolete:
+    Fix-control-reaches-end-of-non-void-function-error.patch
+    Make-include-and-library-path-configurable-using-Cmake-variables.patch
+- Add Make-sure-standard-types-are-defined-in-c.patch:
+  Not app Trilinos package include the type definition they
+  require by rely on 'coinidential' inclusion. This can lead
+  to errors.
+
+-------------------------------------------------------------------
 Sat Oct  8 07:54:44 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Adjust disk constraints for riscv64

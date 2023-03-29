@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@
 
 # Base package name
 %define pname trilinos
-%define ver 13.2.0
-%define ver_exp 13-2-0
-%define so_ver 13
+%define ver 14.0.0
+%define ver_exp 14-0-0
+%define so_ver 14
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 %define _ver %(echo %{ver} | tr . _)
 %define min_openblas_vers 0.3.6
@@ -38,7 +38,7 @@ ExcludeArch:    i586 s390 s390x ppc armv7l
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150200
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %endif
 %if 0%{?sle_version:1} && 0%{?sle_version} < 150300
@@ -356,7 +356,7 @@ ExclusiveArch:  do_not_build
  %endif
 %endif
 
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
+%if 0%{?sle_version} && !0%{?with_hpc:1}
 ExclusiveArch:  do_not_build
 %endif
 
@@ -412,10 +412,9 @@ License:        LGPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            http://trilinos.sandia.gov/index.html
 Source0:        https://github.com/trilinos/Trilinos/archive/trilinos-release-%{ver_exp}.tar.gz
-Patch0:         Fix-control-reaches-end-of-non-void-function-error.patch
 Patch1:         Convert-python2-isms-to-python3.patch
 Patch2:         Not-a-shell-script.patch
-Patch3:         Make-include-and-library-path-configurable-using-Cmake-variables.patch
+Patch3:         Make-sure-standard-types-are-defined-in-c.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel
@@ -446,6 +445,8 @@ BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_ext}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 # Fix this once boost is available as a HPC version
 BuildRequires:  boost-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
 #BuildRequires:  boost-%%{compiler_family}-hpc-devel
 BuildRequires:  hdf5-%{compiler_family}-%{mpi_family}%{?mpi_ext}-hpc-devel
 BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{min_openblas_vers}
@@ -459,6 +460,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  glpk-devel
 BuildRequires:  lapack-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libmatio-devel
 BuildRequires:  mumps-devel
 BuildRequires:  openblas-devel
@@ -689,7 +692,6 @@ HDF5_LIB=%{p_libdir}
         -DBoost_INCLUDE_DIRS:PATH="${BOOST_INC}"                        \
         -DBoost_LIBRARY_DIRS:PATH="${BOOST_LIB}"                        \
 %endif
-        -DBoost_LIBRARY_NAMES:STRING="boost"                            \
         -DTPL_ENABLE_Pthread:BOOL=ON                                    \
         -DTPL_ENABLE_CppUnit:BOOL=OFF                                   \
         -DTPL_ENABLE_Zlib:BOOL=ON                                       \
@@ -728,10 +730,6 @@ cd ..
 %{?with_hpc:%hpc_setup_mpi}
 %cmake_install
 mkdir -p %{buildroot}%p_python_sitelib/%pname
-# Python2 is history
-rm -f %{buildroot}%{p_prefix}/lib/*2.py
-mv %{buildroot}%{p_prefix}/lib/*.py %{buildroot}%{p_python_sitelib}/%pname
-chmod a-x %{buildroot}%{p_python_sitelib}/%pname/*.py
 
 %if %{with hpc}
 %hpc_shebang_sanitize_scripts %{buildroot}%{p_libdir}/cmake
@@ -788,6 +786,14 @@ find %{buildroot}%{p_prefix} -name .gitignore -delete
 %{?with_hpc:%{hpc_shebang_sanitize_scripts %{buildroot}/%{p_libdir}/cmake}}
 %{?with_hpc:%{hpc_shebang_sanitize_scripts %{buildroot}/%{p_bindir}}}
 %{?with_hpc:%{hpc_shebang_sanitize_scripts doc/}}
+%if !0%{?with_hpc:1}
+for file in "%{buildroot}/%{p_bindir}/hpcbind" $(find  %{buildroot}/%{p_bindir} %{buildroot}/%{p_libdir}/cmake -name "*.py" -type f); do
+    case $(head -1 $file) in
+       \#\!*bin/env\ *python*) sed -i "1s,^.*,#! /usr/bin/python3," $file ;;
+       \#\!*bin/env\ *bash*) sed -i "1s,^.*,#! /usr/bin/bash," $file ;;
+    esac
+done
+%endif
 for i in $(find %{buildroot}/%{p_libdir}/cmake -name "*.sh" -o -name "*.py"); do
     head -1 $i | grep -qE "#! */" && chmod 0755 $i
 done
@@ -818,6 +824,7 @@ done
 %files devel
 %{p_includedir}
 %{p_libdir}/cmake
+%{p_libdir}/external_packages
 %{p_libdir}/*.so
 %{p_bindir}%{!?hpc:/*}
 %{?with_hpc:%dir %{p_python_sitelib}}

@@ -278,4 +278,21 @@
     <comment></comment>
     <requestid>1010195</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8ca72b67c783f439537b44af1d5a4735</srcmd5>
+    <version>14.0.0</version>
+    <time>1680125312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.0.0
+  For information on changes consult the release notes of
+  its sub-packages.
+  * Remove obsolete:
+    Fix-control-reaches-end-of-non-void-function-error.patch
+    Make-include-and-library-path-configurable-using-Cmake-variables.patch
+- Add Make-sure-standard-types-are-defined-in-c.patch:
+  Not app Trilinos package include the type definition they
+  require by rely on 'coinidential' inclusion. This can lead
+  to errors. (forwarded request 1075212 from eeich)</comment>
+    <requestid>1075325</requestid>
+  </revision>
 </revisionlist>
