@@ -221,4 +221,27 @@
 </comment>
     <requestid>1039058</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>db2b0231e4d67784a4f4228e8b99ae4b</srcmd5>
+    <version>3.2.1</version>
+    <time>1680125180</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Fixed hang in ``worksteal`` scheduler.
+  * Improved Documentation
+  * Document limitations for debugging due
+    to standard I/O of workers not being forwarded. Also, mention
+    remote debugging as a possible workaround.
+  Features:
+  * Users can now configure ``load``
+    scheduling precision using ``--maxschedchunk`` command
+    line option.
+  * New ``worksteal`` scheduler, based on
+    the idea of `work stealing
+    It's similar
+    to ``load`` scheduler, but it should handle tests with
+    significantly differing duration better, and, at the same
+    time, it should provide similar or better reuse of fixtures.</comment>
+    <requestid>1074586</requestid>
+  </revision>
 </revisionlist>

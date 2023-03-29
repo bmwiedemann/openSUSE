@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:25:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Fixed hang in ``worksteal`` scheduler.
+  * Improved Documentation
+  * Document limitations for debugging due
+    to standard I/O of workers not being forwarded. Also, mention
+    remote debugging as a possible workaround.
+  Features:
+  * Users can now configure ``load``
+    scheduling precision using ``--maxschedchunk`` command
+    line option.
+  * New ``worksteal`` scheduler, based on
+    the idea of `work stealing
+    It's similar
+    to ``load`` scheduler, but it should handle tests with
+    significantly differing duration better, and, at the same
+    time, it should provide similar or better reuse of fixtures.
+
+-------------------------------------------------------------------
 Wed Nov 30 08:01:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
