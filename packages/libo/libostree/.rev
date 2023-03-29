@@ -339,4 +339,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>libostree 2023.1 (forwarded request 1072965 from AndreasStieger)</comment>
     <requestid>1073207</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>42f7825c94098ae146b94acdf8b1ff3b</srcmd5>
+    <version>2023.2</version>
+    <time>1680125199</time>
+    <user>dimstar_suse</user>
+    <comment>libostree 2023.2 (forwarded request 1074487 from AndreasStieger)</comment>
+    <requestid>1074647</requestid>
+  </revision>
 </revisionlist>

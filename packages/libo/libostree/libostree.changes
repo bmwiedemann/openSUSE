@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 26 16:47:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2023.2:
+  + Fixes for recent GLibs introducing warnings around unset
+    standard::size
+
+-------------------------------------------------------------------
 Sun Mar 19 20:15:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2023.1:
