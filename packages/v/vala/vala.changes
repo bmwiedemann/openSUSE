@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Mar 26 09:30:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.5:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Consistently handle GLib.Error as boxed type
+      . Add cast to accessor calls for generic property
+        implementations
+      . Use g_object_class_override_property to implement generic
+        interface properties
+      . Add declaration for register call of dynamic DBus
+        interfaces
+    - vala:
+      . Correctly handle pre/post-increment expression as index of
+        element access
+      . Set proper value-type of unary ref/out expression in
+        initializers
+      . Allow assignment of namespace fields with inline allocated
+        arrays
+    - gtkmodule: Improve error messages
+  + Bindings:
+    - gtk4: Update to 4.10.1~40b154bf from 0.58
+    - gtk4: Add sealed to all the final types
+    - gtk+-3.0: Fix ToolPalette.icon_size get-accessor type
+    - webkitgtk-6.0: Update to 2.39.90
+
+-------------------------------------------------------------------
 Sun Feb 12 12:05:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.4:

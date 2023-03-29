@@ -1188,4 +1188,12 @@
     <comment></comment>
     <requestid>1065577</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>15a59596b011a6ef2183afb06c15d8b1</srcmd5>
+    <version>0.56.5</version>
+    <time>1680125198</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1074386 from iznogood)</comment>
+    <requestid>1074646</requestid>
+  </revision>
 </revisionlist>
