@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Mar 29 07:50:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.3
+  * enhancement: LET-bound anonymous closures declared dynamic extent can now
+    be stack allocated, just like closures bound with FLET or
+    LABELS. Otherwise-inaccessible closure subparts of objects declared
+    dynamic extent can now also be stack allocated
+  * optimization: many standard CL functions which take functional arguments
+    will automatically stack allocate any downward funarg closures.
+  * optimization: better arithmetic between signed and unsigned words on arm64.
+  * optimization: reduce consing when doing arithmetic resulting in small (3
+    words or fewer) bignums.
+  * bug fix: miscompilation of some additions of signed and unsigned words on
+    x86-64.  (lp#2008673)
+  * bug fix: loading the SB-SIMPLE-STREAMS contrib no longer incompatibly
+    overwrites CL:OPEN's function type.  (lp#2008811)
+  * bug fix: implement the special-case automatic function definition for
+    PCL's slot accessor functions in the SB-EVAL interpreter.  (lp#2008922,
+    reported by Jonathan Braud)
+  * bug fix: allow the build to succeed under SBCLs older than 2.0.0 in the
+    event that the host emits STYLE-WARNINGs while compiling the
+    cross-compiler.  (lp#2009493, reported by Kirill)
+  * bug fix: restore compilation on ARM64 with OpenBSD.  (lp#2009585, reported
+    by okflo)
+  * bug fix: compiling a HANDLER-BIND with an function undefined at
+    compile-time produces a compile-time STYLE-WARNING.  (lp2010176)
+  * bug fix: support files bigger than 4GB on ARM64/Linux, *BSD. (lp#2011453,
+    reported by Yan)
+  * bug fix: it is now possible to run sb-simd tests on systems without AVX2.
+    (lp#2011923, thanks to Sergio Durigan Junior)
+  * bug fix: miscompilation of some conditional moves.  (lp#2012312, reported
+    by Patrick Poitras)
+  * bug fix: SB-GMP no longer signals a TYPE-ERROR when raising a ratio base
+    to a negative integer exponent.  (lp#2012577, thanks to Ari Projansky)
+  * bug fix: warn the user when they have declared a structure or
+    standard-object slot of :TYPE NIL.
+- Refresh patches for new version
+  + strip-arm-CFLAGS.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 12:43:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.3.2

@@ -1,11 +1,11 @@
-diff -Nru sbcl-2.0.10.orig/src/runtime/Config.arm-linux sbcl-2.0.10/src/runtime/Config.arm-linux
---- sbcl-2.0.10.orig/src/runtime/Config.arm-linux	2020-10-27 14:44:50.000000000 +0100
-+++ sbcl-2.0.10/src/runtime/Config.arm-linux	2020-10-29 12:42:20.394163187 +0100
+diff -Nru sbcl-2.3.3.orig/src/runtime/Config.arm-linux sbcl-2.3.3/src/runtime/Config.arm-linux
+--- sbcl-2.3.3.orig/src/runtime/Config.arm-linux	2023-03-28 19:42:53.000000000 +0000
++++ sbcl-2.3.3/src/runtime/Config.arm-linux	2023-03-29 07:49:28.043914391 +0000
 @@ -9,7 +9,7 @@
  # provided with absolutely no warranty. See the COPYING and CREDITS
  # files for more information.
  
--CFLAGS += -marm -march=armv5
+-CFLAGS += -marm -march=armv5t
 +CFLAGS += -marm
  
  ASSEM_SRC = arm-assem.S
