@@ -288,4 +288,16 @@
     <comment></comment>
     <requestid>1066748</requestid>
   </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>13154681b817434407e0de8d02ff9e92</srcmd5>
+    <version>1.0.2u</version>
+    <time>1680125208</time>
+    <user>dimstar_suse</user>
+    <comment>- Security Fix: [CVE-2023-0464, bsc#1209624]
+  * Excessive Resource Usage Verifying X.509 Policy Constraints
+  * Add openssl-CVE-2023-0464.patch
+
+- Pass over with spec-cleaner</comment>
+    <requestid>1074723</requestid>
+  </revision>
 </revisionlist>

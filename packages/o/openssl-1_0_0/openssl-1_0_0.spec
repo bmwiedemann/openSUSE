@@ -120,6 +120,8 @@ Patch95:        openssl-CVE-2023-0215-4of4.patch
 Patch96:        openssl-CVE-2023-0286.patch
 # PATCH-FIX-SUSE bsc#1202062 FIPS: Fix DH key generation in FIPS mode
 Patch97:        openssl-fips_fix_DH_key_generation.patch
+# PATCH-FIX-UPSTREAM: bsc#1209624, CVE-2023-0464 Excessive Resource Usage Verifying X.509 Policy Constraints
+Patch98:        openssl-CVE-2023-0464.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -184,9 +186,9 @@ This subpackage is providing special patched edition for steam
 Summary:        Development files for OpenSSL
 License:        OpenSSL
 Group:          Development/Libraries/C and C++
-Recommends:     %{name} = %{version}
 Requires:       libopenssl1_0_0 = %{version}
 Requires:       pkgconfig(zlib)
+Recommends:     %{name} = %{version}
 # we need to have around only the exact version we are able to operate with
 Conflicts:      libopenssl-devel < %{version}
 Conflicts:      libopenssl-devel > %{version}
@@ -295,6 +297,7 @@ testing framework and utilities.
 %patch95 -p1
 %patch96 -p1
 %patch97 -p1
+%patch98 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
@@ -358,15 +361,15 @@ pushd $i
     -Wall
 
 # Record mtime of changes file instead of build time to make build-compare work
-make -j1 PERL=perl -C crypto buildinf.h
+%make_build -j1 PERL=perl -C crypto buildinf.h
 CHANGES=`stat --format="%%y" %{SOURCE1}`
 cat crypto/buildinf.h
 sed -i -e "s|#define DATE .*|#define DATE \"built on: $CHANGES\"|" crypto/buildinf.h
 cat crypto/buildinf.h
 
 # Build the library
-make depend -j1
-make -j1
+%make_build depend -j1
+%make_build -j1
 LD_LIBRARY_PATH=`pwd` make rehash -j1
 popd > /dev/null
 done

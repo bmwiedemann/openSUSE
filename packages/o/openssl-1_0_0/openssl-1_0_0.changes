@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 27 11:58:44 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-0464, bsc#1209624]
+  * Excessive Resource Usage Verifying X.509 Policy Constraints
+  * Add openssl-CVE-2023-0464.patch
+
+-------------------------------------------------------------------
+Wed Mar 15 14:52:48 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Pass over with spec-cleaner
+
+-------------------------------------------------------------------
 Fri Feb 17 14:05:07 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Fix DH key generation in FIPS mode, add support for constant BN for
