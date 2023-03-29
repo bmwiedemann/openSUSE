@@ -441,4 +441,12 @@
     <comment></comment>
     <requestid>1064037</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>52158170516f2fb4ccc754e694027b4c</srcmd5>
+    <version>10.7.1+20</version>
+    <time>1680125296</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 44</comment>
+    <requestid>1075224</requestid>
+  </revision>
 </revisionlist>

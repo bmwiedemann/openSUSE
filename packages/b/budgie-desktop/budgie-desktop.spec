@@ -22,7 +22,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-desktop
-Version:        10.7+0
+Version:        10.7.1+20
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
-BuildRequires:  (pkgconfig(libmutter-10) or pkgconfig(libmutter-11))
+BuildRequires:  (pkgconfig(libmutter-12) or pkgconfig(libmutter-11) or pkgconfig(libmutter-10))
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -187,7 +187,7 @@ Shared library for budgie raven plugins to link against.
 %autosetup
 
 %build
-export CFLAGS="$CFLAGS -Wno-pedantic"
+export CFLAGS="%{optflags} -Wno-pedantic"
 %meson -Dc_std=none -Dxdg-appdir=%{_sysconfdir}/xdg/autostart
 %meson_build
 

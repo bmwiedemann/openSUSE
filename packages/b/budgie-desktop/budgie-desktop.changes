@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 29 12:46:07 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 10.7.1+20:
+  * Fix screenshot for libmutter-12
+  * Update tray plugin description
+  * Add timeout to watcher init in tray applet
+  * budgie-menu: Change the selection policy from NONE to SINGLE
+  * Fix panel growing memory consumption over increasing numbers
+    of notifications
+  * Use correct C header for meta_keybindings_set_custom_handler
+  * Added code to manage max_notifications_per_group
+  * Introduce mutter-12 support (bsc#1209895)
+
+-------------------------------------------------------------------
 Sun Feb 05 15:26:49 UTC 2023 - gmbr3@opensuse.org
 
 - Budgie Desktop 10.7 "Superhero Raven"
