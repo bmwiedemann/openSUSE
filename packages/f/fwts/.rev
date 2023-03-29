@@ -958,4 +958,33 @@
   * acpi: s3: fix the issue for determining time to resume</comment>
     <requestid>1058839</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2325025fd7b79aec601c1a4c6f5676b0</srcmd5>
+    <version>23.03.00</version>
+    <time>1680125276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.03.00:
+  * lib: fwts_version.h - update to V23.03.00
+  * debian: update changelog
+  * auto-packager: mkpackage: add build depend dh-dkms for lunar
+  * dmicheck: fix the print format
+  * dmicheck: update for supporting DMI version to 3.6
+  * dmicheck: update the device type field for type 41
+  * dmicheck: update the interface field for type 21
+  * dmicheck: add some bit 0 reserved checks for type 17
+  * dmicheck: modify the memory type range check for type 17
+  * dmicheck: add bit 0 reserved check of the processor characteristics for type 4
+  * dmicheck: add status check for type 4
+  * dmicheck: add processor family check for type 4
+  * dmicheck: fix the extended bios ROM size bit check of type 0
+  * dmicheck: fix the wrong slot height value range
+  * dmicheck: fix the length check error for type 9
+  * debian: update copyright
+  * acpi: method: NIH method output buffer should be 4 bytes
+  * ebbr: add some tests to ebbr option
+  * sbbr: add esrt and uefibootpath tests to sbbr option
+  * Add support for 64 bit LoongArch compilation
+  * libfwtsiasl: fix undefined symbols in shared library</comment>
+    <requestid>1075161</requestid>
+  </revision>
 </revisionlist>
