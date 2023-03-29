@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs-gtk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ to help move they standard user directories to the correct names.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-export CFLAGS='-Wno-error=deprecated-declarations'
+export CFLAGS='%{optflags} -Wno-error=deprecated-declarations -Wno-error=cast-align'
 %configure
 %make_build
 
