@@ -443,4 +443,15 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment></comment>
     <requestid>1034614</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>e86209a73524ef28a8ebcd642c0997c6</srcmd5>
+    <version>0.22.0</version>
+    <time>1680125173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.0:
+  * https: disable_ssl_certificate_validation caused
+    ValueError: Cannot set verify_mode to CERT_NONE when
+    check_hostname is enabled</comment>
+    <requestid>1074515</requestid>
+  </revision>
 </revisionlist>

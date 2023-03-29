@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 26 20:02:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * https: disable_ssl_certificate_validation caused
+    ValueError: Cannot set verify_mode to CERT_NONE when
+    check_hostname is enabled
+
+-------------------------------------------------------------------
 Tue Nov  8 17:10:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.21.0: 
