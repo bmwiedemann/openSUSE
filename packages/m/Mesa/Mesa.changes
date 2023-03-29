@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 26 20:58:34 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 23.0.1
+  * bug fix release which fixes bugs found since Mesa 23.0.0
+- supersedes U_glx-fix-indirect-initialization-crash.patch
+
+-------------------------------------------------------------------
 Tue Mar 14 11:53:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_glx-Remove-pointless-GLX_INTEL_swap_event-paranoia.patch
