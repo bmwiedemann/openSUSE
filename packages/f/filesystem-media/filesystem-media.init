@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ "$3" = 1 ]; then
-	chmod 755 /run/media
-	chmod 750 "$2"
-	setfacl -m "u:$4:rx" -m "g::-" "$2"
-	mount --make-rshared /media
-fi
