@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:00:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.7:
+  * Fix creating schema from model using `ConstrainedStr` with
+    `regex` as dict key
+  * Address bug in mypy plugin caused by
+    explicit_package_bases=True
+  * Add implicit defaults in the mypy plugin for Field with no
+    default argument
+  * Fix schema generated for Enum values used as Literals in
+    discriminated unions
+  * Fix mypy failures caused by the pydantic mypy plugin when
+    users define `from_orm` in their own classes
+  * Fix `InitVar` usage with pydantic dataclasses, mypy version
+    `1.1.1` and the custom mypy plugin
+  * Implement logic to support creating validators from non
+    standard callables by using defaults to identify them and
+    unwrapping `functools.partial` and `functools.partialmethod`
+    when checking the signature
+  * Fix mypy plugin for v1.1.1, and fix `dataclass_transform`
+    decorator for pydantic dataclasses
+  * Raise `ValidationError`, not `ConfigError`, when a
+    discriminator value is unhashable
+  * Fix broken parametrized bases handling with `GenericModel`s
+    with complex sets of models
+  * Invalidate mypy cache if plugin config changes
+  * Fix `RecursionError` when deep-copying dataclass types
+    wrapped by pydantic
+  * Fix `X | Y` union syntax breaking `GenericModel`
+
+-------------------------------------------------------------------
 Thu Mar 16 07:18:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable DeprecationWarning in tests to avoid error with the latest

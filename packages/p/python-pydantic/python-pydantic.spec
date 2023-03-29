@@ -19,7 +19,7 @@
 
 %define skip_python2 1
 Name:           python-pydantic
-Version:        1.10.4
+Version:        1.10.7
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
