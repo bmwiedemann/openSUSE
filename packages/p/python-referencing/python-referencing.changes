@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Mar 28 09:12:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Split package into multibuild to avoid a build cycle.
+
+-------------------------------------------------------------------
+Tue Mar 28 05:05:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.4:
+  * One more example of non-public API
+  * Add a note on spec-incorrect behavior.
+
+-------------------------------------------------------------------
+Tue Mar 28 05:02:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.3:
+  * First pass at an explicit list of (non-)public API
+
+-------------------------------------------------------------------
+Tue Mar 28 04:58:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.2:
+  * Also suggest a correct pointer for #/.
+  * Fix the double wording in the InvalidAnchor exception message.
+
+-------------------------------------------------------------------
+Mon Mar 27 05:04:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.1:
+  * Update the changelog.
+
+-------------------------------------------------------------------
+Mon Mar 27 05:03:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.0:
+  * Try to be more helpful when someone forgets a slash in JSON
+    pointers.
+  * Exclude bots from release notes.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Fri Mar 24 12:43:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-referencing required by
+  python-jsonschema-specifications
