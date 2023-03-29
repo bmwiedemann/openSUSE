@@ -30,7 +30,7 @@ common_locks:
   - libLLVM13: [locked]
   - libLLVM14: [locked]
   - gnome-backgrounds: [locked]
-  - gcc13: [locked]
+  - gcc12: [locked]
 
 dvd:
   # We add the kernel-firmware-* packages
@@ -70,36 +70,36 @@ dvd:
   - patterns-kde-kde_internet: [required]
   - patterns-kde-kde_multimedia: [required]
   - patterns-kde-kde_office: [required]
-  - patterns-kde-kde_plasma: [suggested]
+  - patterns-kde-kde_plasma
   - patterns-kde-kde_utilities: [required]
   - patterns-kde-kde_yast: [required]
   - patterns-base-apparmor: [required]
   - patterns-base-base: [required]
   - patterns-base-console: [required]
-  - patterns-server-dhcp_dns_server: [required,suggested]
+  - patterns-server-dhcp_dns_server: [required]
   - patterns-server-directory_server: [required]
-  - patterns-base-enhanced_base: [required,suggested]
-  - patterns-server-file_server: [required,suggested]
+  - patterns-base-enhanced_base: [required]
+  - patterns-server-file_server: [required]
   - patterns-fonts-fonts: [required]
-  - patterns-server-lamp_server: [required,suggested]
-  - patterns-server-mail_server: [required,suggested]
+  - patterns-server-lamp_server: [required]
+  - patterns-server-mail_server: [required]
   - patterns-desktop-multimedia: [required]
-  - patterns-office-office: [required,suggested]
-  - patterns-server-printing: [required,suggested]
+  - patterns-office-office: [required]
+  - patterns-server-printing: [required]
   - patterns-media-rest_cd_core: [required]
-  - patterns-base-sw_management: [required,suggested]
+  - patterns-base-sw_management: [required]
   - patterns-gnome-sw_management_gnome: [required]
-  - patterns-base-basic_desktop: [required,suggested]
-  - patterns-base-selinux: [required,suggested]
+  - patterns-base-basic_desktop: [required]
+  - patterns-base-selinux: [required]
   - patterns-base-transactional_base: [required,suggested]
   - patterns-base-x11: [required,suggested]
-  - patterns-xfce-xfce: [suggested]
-  - patterns-xfce-xfce_basis: [suggested]
-  - patterns-xfce-xfce_laptop: [suggested]
-  - patterns-xfce-xfce_office: [suggested]
+  - patterns-xfce-xfce
+  - patterns-xfce-xfcea_basis
+  - patterns-xfce-xfce_laptop
+  - patterns-xfce-xfce_office
   - patterns-yast-yast2_basis: [required,suggested]
-  - patterns-yast-yast2_install_wf: [required,suggested]
-  - patterns-yast-yast2_server: [required,suggested]
+  - patterns-yast-yast2_install_wf: [required]
+  - patterns-yast-yast2_server: [required]
   - arabic-fonts
   - arphic-uming-fonts
   - cracklib-dict-full

@@ -1647,4 +1647,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Also no i586 on NonOss</comment>
   </revision>
+  <revision rev="231" vrev="229">
+    <srcmd5>a8db7aa55c256df0de30602a1f0f4935</srcmd5>
+    <version>unknown</version>
+    <time>1680117191</time>
+    <user>dimstar_suse</user>
+    <comment>Less suggested things - hopefully saving 25MB</comment>
+  </revision>
 </revisionlist>
