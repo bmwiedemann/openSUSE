@@ -449,4 +449,13 @@
   * fixes to documentation formatting</comment>
     <requestid>1069839</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1658fff74147384068e001017acd9616</srcmd5>
+    <version>2023.2</version>
+    <time>1680125183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.2:
+  * Update to IANA 2023b</comment>
+    <requestid>1074590</requestid>
+  </revision>
 </revisionlist>
