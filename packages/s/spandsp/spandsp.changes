@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 05:17:02 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it builds with now (boo#1136056).
+
+-------------------------------------------------------------------
 Mon Apr 18 07:38:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add no-sse.diff
