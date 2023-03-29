@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 28 04:36:49 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 4.4.4:
+  * Bump to v4.4.4
+  * Release notes for v4.4.4
+  * libpod: always use direct mapping
+  * macos pkginstaller: do not fail when podman-mac-helper fails
+  * podman-mac-helper: install: do not error if already installed
+  * Bump to v4.4.4-dev
+
+- spec: Bump required version for libcontainers-common (bsc#1209495)
+
+-------------------------------------------------------------------
 Fri Mar 24 04:56:25 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 4.4.3:

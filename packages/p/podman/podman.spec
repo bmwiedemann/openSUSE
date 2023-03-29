@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -53,7 +53,7 @@ Requires:       cni-plugins
 Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
-Requires:       libcontainers-common >= 20210626
+Requires:       libcontainers-common >= 20230214
 Requires:       runc >= 1.0.1
 Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
