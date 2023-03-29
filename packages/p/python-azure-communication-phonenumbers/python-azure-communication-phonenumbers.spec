@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-communication-phonenumbers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-phonenumbers
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Communication Phone Numbers Client Library for Python
 License:        MIT
@@ -37,9 +37,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.11.0
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.0
+Requires:       python-msrest >= 0.7.1
 Requires:       python-six >= 1.11.0
 BuildArch:      noarch
 %python_subpackages

@@ -8,4 +8,16 @@
   + Version 1.0.1</comment>
     <requestid>905212</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf3bfe9af93ad9b58143a9b3218e6920</srcmd5>
+    <version>1.1.0</version>
+    <time>1680125297</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1075120 from glaubitz)</comment>
+    <requestid>1075220</requestid>
+  </revision>
 </revisionlist>
