@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:49:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Fix regression where the ``MACOSX_DEPLOYMENT_TARGET``
+    environment variable was accidentally renamed to 
+    ``MACOS_DEPLOYMENT_TARGET``
+
+-------------------------------------------------------------------
 Fri Jan 13 14:35:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.0

@@ -42,4 +42,15 @@
     <comment></comment>
     <requestid>1058761</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8668089f96d5ace46063c27d529beb08</srcmd5>
+    <version>0.12.1</version>
+    <time>1680125169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * Fix regression where the ``MACOSX_DEPLOYMENT_TARGET``
+    environment variable was accidentally renamed to 
+    ``MACOS_DEPLOYMENT_TARGET``</comment>
+    <requestid>1074506</requestid>
+  </revision>
 </revisionlist>

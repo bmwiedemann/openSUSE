@@ -17,7 +17,7 @@
 
 
 Name:           python-meson-python
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
