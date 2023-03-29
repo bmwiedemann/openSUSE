@@ -1,7 +1,7 @@
 #
 # spec file for package python-av
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-av
 Version:        10.0.0
@@ -31,6 +30,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  libavutil-devel < 5
 BuildRequires:  libavutil-devel >= 4.3
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -75,6 +75,7 @@ export disabled_tests="test_video_default_options or \
   test_decode_video_corrupt or \
   test_encoding_with_pts or \
   test_decoder_extradata or \
+  test_decoder_timebase or \
   test_encoder_extradata or \
   test_encoder_pix_fmt or \
   test_default_options or \

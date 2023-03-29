@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 04:51:43 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Require FFmpeg < 5 for now since tests are failing with recent
+  versions
+
+-------------------------------------------------------------------
 Wed Nov 30 13:43:36 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 10.0.0:
