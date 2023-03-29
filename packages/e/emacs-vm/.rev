@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75595d838f879bde39c81530442aa626</srcmd5>
+    <version>8.2.0b.1538</version>
+    <time>1680125275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest launchpad trunk version.
+  Delete obsolete patches:
+  * U_rev-1313.patch
+  * U_Require-vm-reply.el-from-vm-compose-mail.patch
+- Fix vcard parser to handle broken vcards better
+  vcard-Make-vcard-parser-more-robust-to-invalid-vcards.patch
+- Limit %install_info and %install_info_delete macros to Leap/SLE.</comment>
+    <requestid>1075269</requestid>
+  </revision>
+</revisionlist>

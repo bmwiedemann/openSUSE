@@ -1,0 +1,55 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Mar 29 06:54:49 2023 +0200
+Subject: vcard: Make vcard parser more robust to invalid vcards
+Patch-mainline: Not yet
+Git-commit: b072046a2098da9d81af39aa5fa29768dbdd46b8
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ vm/trunk/lisp/vcard.el | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+diff --git a/vm/trunk/lisp/vcard.el b/vm/trunk/lisp/vcard.el
+index fe58cf1..5084e60 100644
+--- a/vm/trunk/lisp/vcard.el
++++ b/vm/trunk/lisp/vcard.el
+@@ -235,22 +235,22 @@ Note: this function modifies the buffer!"
+           (delete-char 1))
+ 
+         (goto-char (point-min))
+-        (re-search-forward "^begin:[ \t]*vcard[ \t]*\n")
+-        (set-marker pos (point))
+-        (while (and (not (looking-at "^end[ \t]*:[ \t]*vcard[ \t]*$"))
+-                    (re-search-forward ":[ \t]*" nil t))
+-          (set-marker newpos (match-end 0))
+-          (setq properties
+-                (vcard-parse-region-properties pos (match-beginning 0)))
+-          (set-marker pos (marker-position newpos))
+-          (re-search-forward "[ \t]*\n")
+-          (set-marker newpos (match-end 0))
+-          (setq value
+-                (vcard-parse-region-value properties pos (match-beginning 0)))
+-          (set-marker pos (marker-position newpos))
+-          (goto-char pos)
+-          (funcall filter properties value)
+-          (setq vcard-data (cons (cons properties value) vcard-data)))))
++        (if (re-search-forward "^begin:[ \t]*vcard[ \t]*\n" nil t)
++            (set-marker pos (point))
++          (while (and (not (looking-at "^end[ \t]*:[ \t]*vcard[ \t]*$"))
++                      (re-search-forward ":[ \t]*" nil t))
++            (set-marker newpos (match-end 0))
++            (setq properties
++                  (vcard-parse-region-properties pos (match-beginning 0)))
++            (set-marker pos (marker-position newpos))
++            (re-search-forward "[ \t]*\n")
++            (set-marker newpos (match-end 0))
++            (setq value
++                  (vcard-parse-region-value properties pos (match-beginning 0)))
++            (set-marker pos (marker-position newpos))
++            (goto-char pos)
++            (funcall filter properties value)
++            (setq vcard-data (cons (cons properties value) vcard-data))))))
+     (nreverse vcard-data)))
+ 
+ (defun vcard-parse-region-properties (beg end)
