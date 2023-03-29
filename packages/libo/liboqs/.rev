@@ -43,4 +43,13 @@
 - Compact descriptions. (forwarded request 1035901 from jengelh)</comment>
     <requestid>1036160</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ea8b3c988cd0008333384c8e24a6d3c2</srcmd5>
+    <version>0.7.1</version>
+    <time>1680125293</time>
+    <user>dimstar_suse</user>
+    <comment>- liboqs-fix-prototypemismatch.patch: fixed uint8_t* vs unsigned char* mismatch
+- disable -Werror for now. (forwarded request 1075196 from msmeissn)</comment>
+    <requestid>1075197</requestid>
+  </revision>
 </revisionlist>

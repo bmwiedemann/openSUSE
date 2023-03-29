@@ -1,7 +1,7 @@
 #
 # spec file for package liboqs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch0:         liboqs-fix-build.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Add-support-for-powerpc64.-1160.patch
 Patch2:         0002-Mark-stack-non-executable-when-compiling-with-clang-.patch
+Patch3:         liboqs-fix-prototypemismatch.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libopenssl-devel
