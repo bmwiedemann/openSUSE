@@ -170,4 +170,14 @@
     <comment></comment>
     <requestid>1035247</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c5bff176368515e46a49442336e9827</srcmd5>
+    <version>2023.3.23</version>
+    <time>1680125185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.3.23:
+  * Backtracking failure matching regex
+  * Limit running time for failing fullmatch</comment>
+    <requestid>1074592</requestid>
+  </revision>
 </revisionlist>
