@@ -1,7 +1,7 @@
 #
 # spec file for package switch_sles_sle-hpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+ExclusiveArch:  x86_64 aarch64 noarch
 Name:           switch_sles_sle-hpc
 Version:        0.2
 Release:        0
 Summary:        Utility to switch between SLES and SLE-HPC on SLE-12
 License:        MIT
 Group:          System/Management
-Url:            http://www.suse.com
+URL:            http://www.suse.com
 Source0:        switch
 Source1:        LICENSE
 Source2:        README.SUSE

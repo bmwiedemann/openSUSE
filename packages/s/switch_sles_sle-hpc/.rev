@@ -59,4 +59,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>706074</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>30791e0ee22eefb1e694399140beab6a</srcmd5>
+    <version>0.2</version>
+    <time>1680125247</time>
+    <user>dimstar_suse</user>
+    <comment>- Limit build to x86_64 and aarch64.</comment>
+    <requestid>1075127</requestid>
+  </revision>
 </revisionlist>
