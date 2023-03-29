@@ -824,4 +824,41 @@
     ``SMIME`` encoding.</comment>
     <requestid>1069840</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>2d3aa53f4d3d3a72c169606421d3dfda</srcmd5>
+    <version>40.0.1</version>
+    <time>1680125171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 40.0.1:
+  * Support for Python 3.6 is deprecated and will be removed in
+    the next release.
+  * Deprecated the current minimum supported Rust version (MSRV)
+    of 1.48.0. In the next release we will raise MSRV to 1.56.0.
+    Users with the latest ``pip`` will typically get a wheel
+    and not need Rust installed
+  * Deprecated support for OpenSSL less than 1.1.1d. The next
+    release of ``cryptography`` will drop support for older versions.
+  * Deprecated support for DSA keys in
+    :func:`~cryptography.hazmat.primitives.serialization.load_s
+    sh_public_key`
+    and
+    :func:`~cryptography.hazmat.primitives.serialization.load_s
+    sh_private_key`.
+  * Deprecated support for OpenSSH serialization in
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAP
+    ublicKey`
+    and
+    :class:`~cryptography.hazmat.primitives.asymmetric.dsa.DSAP
+    rivateKey`.
+  * Added support for parsing SSH certificates in addition to
+    public keys with
+    :func:`~cryptography.hazmat.primitives.serialization.load_s
+    sh_public_identity`.
+    :func:`~cryptography.hazmat.primitives.serialization.load_s
+    sh_public_key` continues to support only public keys.
+  * Added support for generating SSH certificates with
+    :class:`~cryptography.hazmat.primitives.serialization.SSHCe
+    rtificateBuilder`.</comment>
+    <requestid>1074512</requestid>
+  </revision>
 </revisionlist>
