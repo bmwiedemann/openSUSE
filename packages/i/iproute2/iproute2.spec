@@ -36,7 +36,6 @@ Source9:        %name.keyring
 Patch1:         adjust-installation-directories-for-openSUSE-SLE.patch
 Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
 Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
-Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
 BuildRequires:  bison
 BuildRequires:  db-devel

@@ -1094,4 +1094,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 6.2</comment>
     <requestid>1069956</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>33bdb58aaaeee67b923c73c12fa4b2a1</srcmd5>
+    <version>6.2</version>
+    <time>1680125155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074785</requestid>
+  </revision>
 </revisionlist>
