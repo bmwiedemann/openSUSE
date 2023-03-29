@@ -28,14 +28,17 @@
 %define sbat_distro_url mailto:security@suse.de
 %endif
 Name:           fwupd-efi
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Firmware update EFI binaries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/fwupd/fwupd-efi
 # Do not use upstream tarball, we are using source service!
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         binutils-2.38-arm-objcopy.patch
+Patch1:         binutils-2.38-arm-system-crt0.patch
+Patch2:         ARM-fixes.patch
 
 BuildRequires:  gnu-efi
 BuildRequires:  meson >= 0.47.0
@@ -76,7 +79,7 @@ export BRP_PESIGN_FILES='%{_libexecdir}/fwupd/efi/fwupd*.efi'
 FWUPD_EFI=`basename %{buildroot}/%{_libexecdir}/fwupd/efi/fwupd*.efi`
 ln -s %{_libexecdir}/fwupd/efi/$FWUPD_EFI %{buildroot}/%{_libexecdir}/fwupd/efi/$FWUPD_EFI.signed
 
-# do not need pc file yet 
+# do not need pc file yet
 rm $RPM_BUILD_ROOT%{_libdir}/pkgconfig/fwupd-efi.pc
 
 %postun

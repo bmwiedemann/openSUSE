@@ -1,0 +1,40 @@
+From 8aff27ddefa9abbc0f5e221d7eaab5ef36a9c662 Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Wed, 5 Oct 2022 09:57:41 -0500
+Subject: [PATCH] Use objcopy to build arm/aarch64 binaries if binutils 2.38 or
+ newer Fixes: #24
+
+---
+ efi/meson.build | 6 +++---
+ meson.build     | 1 +
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/efi/meson.build b/efi/meson.build
+index 936ba3c..e2446f3 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -150,9 +150,9 @@ efi_ldflags = ['-T',
+                '-L', efi_crtdir,
+                '-L', efi_libdir,
+                join_paths(efi_crtdir, arch_crt)]
+-if host_cpu == 'aarch64' or host_cpu == 'arm'
+-  # Aarch64 and ARM32 don't have an EFI capable objcopy. Use 'binary'
+-  # instead, and add required symbols manually.
++if objcopy_version.version_compare ('< 2.38') and (host_cpu == 'aarch64' or host_cpu == 'arm')
++  # older objcopy for Aarch64 and ARM32 are not EFI capable.
++  # Use 'binary' instead, and add required symbols manually.
+   efi_ldflags += ['--defsym=EFI_SUBSYSTEM=0xa']
+   efi_format = ['-O', 'binary']
+ else
+diff --git a/meson.build b/meson.build
+index e6968a1..8b0f5e9 100644
+--- a/meson.build
++++ b/meson.build
+@@ -10,6 +10,7 @@ conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+ 
+ cc = meson.get_compiler('c')
+ objcopy = find_program('objcopy')
++objcopy_version = run_command(objcopy, '--version').stdout().split('\n')[0].split(' ')[-1]
+ 
+ prefix = get_option('prefix')
+ libdir = join_paths(prefix, get_option('libdir'))

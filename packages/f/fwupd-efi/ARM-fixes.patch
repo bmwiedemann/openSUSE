@@ -1,0 +1,294 @@
+From ee8860bb75b6df50332858a199a20ac08795b5a7 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Wed, 14 Dec 2022 18:06:50 +0000
+Subject: [PATCH 1/5] Use cflags in generate_sbat.py
+
+This fixes a wchar length difference in fwup-sbat.o seen on ARM32
+---
+ efi/generate_sbat.py | 3 ++-
+ efi/meson.build      | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/efi/generate_sbat.py b/efi/generate_sbat.py
+index c04918a..f445e13 100755
+--- a/efi/generate_sbat.py
++++ b/efi/generate_sbat.py
+@@ -18,8 +18,9 @@ def _generate_sbat(args):
+     FWUPD_SUMMARY = "Firmware update daemon"
+     FWUPD_URL = "https://github.com/fwupd/fwupd-efi"
+ 
++    cflags = args.cflags.split(" ")
+     subprocess.run(
+-        [args.cc, "-x", "c", "-c", "-o", args.outfile, "/dev/null"], check=True
++        [args.cc, "-x", "c", "-c", "-o", args.outfile, "/dev/null"] + cflags, check=True
+     )
+ 
+     # not specified
+@@ -82,6 +82,7 @@ def _generate_sbat(args):
+     parser.add_argument(
+         "--cc", default="gcc", help="Compiler to use for generating sbat object"
+     )
++    parser.add_argument("--cflags", help="C compiler flags to be used by CC")
+     parser.add_argument(
+         "--objcopy", default="objcopy", help="Binary file to use for objcopy"
+     )
+diff --git a/efi/meson.build b/efi/meson.build
+index 8a5804c..0e29244 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -184,6 +184,7 @@ o_file5 = custom_target('fwup-sbat.o',
+                           generate_sbat,
+                           '@OUTPUT@',
+                           '--cc', efi_cc,
++                          '--cflags', ' '.join(compile_args),
+                           '--objcopy', objcopy,
+                           '--project-name', meson.project_name(),
+                           '--project-version', meson.project_version(),
+
+From 136c7e5774a50be56282ef8e3ecc489e140c6e8b Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Sun, 1 Jan 2023 20:44:22 +0000
+Subject: [PATCH 2/5] Passthrough whether manual symbol mode is being used on
+ ARM
+
+---
+ efi/generate_binary.py | 11 ++++++++---
+ efi/meson.build        |  3 +++
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/efi/generate_binary.py b/efi/generate_binary.py
+index 2979b7a..b1336a0 100755
+--- a/efi/generate_binary.py
++++ b/efi/generate_binary.py
+@@ -36,9 +36,9 @@ def _run_objcopy(args):
+         args.outfile,
+     ]
+ 
+-    # aarch64 and arm32 don't have an EFI capable objcopy
+-    # Use 'binary' instead, and add required symbols manually
+-    if args.arch in ["aarch64", "arm"]:
++    # older objcopy for Aarch64 and ARM32 are not EFI capable.
++    # Use "binary" instead, and add required symbols manually.
++    if args.objcopy_manualsymbols:
+         argv.extend(["-O", "binary"])
+     elif args.os == "freebsd":
+         # `--target` option is missing and --input-target doesn't recognize
+@@ -75,6 +75,11 @@ def _run_genpeimg(args):
+     parser.add_argument("--genpeimg", help="Binary file to use for genpeimg")
+     parser.add_argument("--arch", default="x86_64", help="EFI architecture")
+     parser.add_argument("--os", help="OS type")
++    parser.add_argument(
++        "--objcopy-manualsymbols",
++        type=int,
++        help="whether adding symbols direct to binary",
++    )
+     parser.add_argument("infile", help="Input file")
+     parser.add_argument("outfile", help="Output file")
+     _args = parser.parse_args()
+diff --git a/efi/meson.build b/efi/meson.build
+index 0e29244..72bea6d 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -145,9 +145,11 @@ efi_ldflags = ['-T',
+                '-L', efi_crtdir,
+                '-L', efi_libdir,
+                join_paths(efi_crtdir, arch_crt)]
++objcopy_manualsymbols = '0'
+ if objcopy_version.version_compare ('< 2.38') and (host_cpu == 'aarch64' or host_cpu == 'arm')
+   # older objcopy for Aarch64 and ARM32 are not EFI capable.
+   # Use 'binary' instead, and add required symbols manually.
++  objcopy_manualsymbols = '1'
+   efi_ldflags += ['--defsym=EFI_SUBSYSTEM=0xa']
+   efi_format = ['-O', 'binary']
+ else
+@@ -222,6 +224,7 @@ app = custom_target(efi_name,
+                       '--arch', gnu_efi_arch,
+                       '--os', host_machine.system(),
+                       '--objcopy', objcopy,
++                      '--objcopy-manualsymbols', objcopy_manualsymbols,
+                       '--genpeimg', genpeimg.found() ? genpeimg : ''
+                     ],
+                     install : true,
+
+From 44f12870f1253d47e64d551b6ebd1d5826e7d5f3 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Mon, 2 Jan 2023 14:10:00 +0000
+Subject: [PATCH 3/5] Use manual symbols mode on ARM32 again
+
+Most of the code for this is in binutils but
+efi-app-arm target still doesn't exist
+
+Partial revert of 8aff27ddefa9abbc0f5e221d7eaab5ef36a9c662
+---
+ efi/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/efi/meson.build b/efi/meson.build
+index 72bea6d..b434179 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -76,7 +76,7 @@ if get_option('efi_sbat_distro_id') != ''
+ endif
+ 
+ # is the system crt0 for arm and aarch64 new enough to know about SBAT?
+-if objcopy_version.version_compare ('< 2.38') and (host_cpu == 'aarch64' or host_cpu == 'arm')
++if host_cpu == 'arm' or (objcopy_version.version_compare ('< 2.38') and host_cpu == 'aarch64')
+   if get_option('efi_sbat_distro_id') != ''
+     arch_crt_source = 'crt0-efi-@0@.S'.format(gnu_efi_path_arch)
+     cmd = run_command('grep', '-q', 'sbat', join_paths(efi_crtdir, arch_crt))
+@@ -146,7 +146,7 @@ efi_ldflags = ['-T',
+                '-L', efi_libdir,
+                join_paths(efi_crtdir, arch_crt)]
+ objcopy_manualsymbols = '0'
+-if objcopy_version.version_compare ('< 2.38') and (host_cpu == 'aarch64' or host_cpu == 'arm')
++if host_cpu == 'arm' or (objcopy_version.version_compare ('< 2.38') and host_cpu == 'aarch64')
+   # older objcopy for Aarch64 and ARM32 are not EFI capable.
+   # Use 'binary' instead, and add required symbols manually.
+   objcopy_manualsymbols = '1'
+
+From 6f2d3602f73e1bd71bb734902191a74a3c2ff132 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Fri, 6 Jan 2023 15:29:34 +0000
+Subject: [PATCH 4/5] Rework objcopy-manualsymbols argument to generate-binary
+
+Use store_true action instead of an integer value
+---
+ efi/generate_binary.py |  2 +-
+ efi/generate_sbat.py   |  6 +++++-
+ efi/meson.build        | 21 +++++++++++++++------
+ 3 files changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/efi/generate_binary.py b/efi/generate_binary.py
+index b1336a0..042b7d3 100755
+--- a/efi/generate_binary.py
++++ b/efi/generate_binary.py
+@@ -77,7 +77,7 @@ def _run_genpeimg(args):
+     parser.add_argument("--os", help="OS type")
+     parser.add_argument(
+         "--objcopy-manualsymbols",
+-        type=int,
++        action="store_true",
+         help="whether adding symbols direct to binary",
+     )
+     parser.add_argument("infile", help="Input file")
+diff --git a/efi/meson.build b/efi/meson.build
+index b434179..0311f8a 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -34,6 +34,16 @@ if host_cpu == 'x86_64' and host_machine.system() == 'freebsd'
+   lds_os = '_fbsd'
+ endif
+ 
++# older objcopy for Aarch64 and ARM32 are not EFI capable.
++# Use 'binary' instead, and add required symbols manually.
++if host_cpu == 'arm' or (objcopy_version.version_compare ('< 2.38') and host_cpu == 'aarch64')
++  objcopy_manualsymbols = true
++  generate_binary_extra = ['--objcopy-manualsymbols']
++else
++  objcopy_manualsymbols = false
++  generate_binary_extra = []
++endif
++
+ arch_lds = 'efi.lds'
+ arch_crt = 'crt0.o'
+ if efi_ldsdir == ''
+@@ -76,7 +86,7 @@ if get_option('efi_sbat_distro_id') != ''
+ endif
+ 
+ # is the system crt0 for arm and aarch64 new enough to know about SBAT?
+-if host_cpu == 'arm' or (objcopy_version.version_compare ('< 2.38') and host_cpu == 'aarch64')
++if objcopy_manualsymbols
+   if get_option('efi_sbat_distro_id') != ''
+     arch_crt_source = 'crt0-efi-@0@.S'.format(gnu_efi_path_arch)
+     cmd = run_command('grep', '-q', 'sbat', join_paths(efi_crtdir, arch_crt))
+@@ -145,11 +155,10 @@ efi_ldflags = ['-T',
+                '-L', efi_crtdir,
+                '-L', efi_libdir,
+                join_paths(efi_crtdir, arch_crt)]
+-objcopy_manualsymbols = '0'
+-if host_cpu == 'arm' or (objcopy_version.version_compare ('< 2.38') and host_cpu == 'aarch64')
++
++if objcopy_manualsymbols
+   # older objcopy for Aarch64 and ARM32 are not EFI capable.
+   # Use 'binary' instead, and add required symbols manually.
+-  objcopy_manualsymbols = '1'
+   efi_ldflags += ['--defsym=EFI_SUBSYSTEM=0xa']
+   efi_format = ['-O', 'binary']
+ else
+@@ -224,9 +233,9 @@ app = custom_target(efi_name,
+                       '--arch', gnu_efi_arch,
+                       '--os', host_machine.system(),
+                       '--objcopy', objcopy,
+-                      '--objcopy-manualsymbols', objcopy_manualsymbols,
+                       '--genpeimg', genpeimg.found() ? genpeimg : ''
+-                    ],
++                    ]
++                    + generate_binary_extra,
+                     install : true,
+                     install_dir : efi_app_location)
+ 
+
+From 9d6409827576a94ce780bf2bb450831821cd3765 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Mon, 23 Jan 2023 15:35:41 +0000
+Subject: [PATCH 5/5] Add additional checks for incompatible CRT0
+
+Add check for incompatible gnu-efi crt0 containing the header section
+which gets added by objcopy and if used results in duplicate header
+and subsequently a broken binary
+
+Signed-off-by: Callum Farmer <gmbr3@opensuse.org>
+---
+ efi/meson.build | 29 ++++++++++++++++++-----------
+ 1 file changed, 18 insertions(+), 11 deletions(-)
+
+diff --git a/efi/meson.build b/efi/meson.build
+index 0311f8a..60e7aa6 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -34,16 +34,6 @@ if host_cpu == 'x86_64' and host_machine.system() == 'freebsd'
+   lds_os = '_fbsd'
+ endif
+ 
+-# older objcopy for Aarch64 and ARM32 are not EFI capable.
+-# Use 'binary' instead, and add required symbols manually.
+-if host_cpu == 'arm' or (objcopy_version.version_compare ('< 2.38') and host_cpu == 'aarch64')
+-  objcopy_manualsymbols = true
+-  generate_binary_extra = ['--objcopy-manualsymbols']
+-else
+-  objcopy_manualsymbols = false
+-  generate_binary_extra = []
+-endif
+-
+ arch_lds = 'efi.lds'
+ arch_crt = 'crt0.o'
+ if efi_ldsdir == ''
+@@ -73,10 +63,27 @@ else
+     error('Cannot find @0@'.format(arch_lds))
+   endif
+ endif
++efi_crtdir = efi_ldsdir
++
++# If using objcopy, crt0 must not include the PE/COFF header
++if run_command('grep', '-q', 'coff_header', join_paths(efi_crtdir, arch_crt), check: false).returncode() == 0
++        coff_header_in_crt0 = true
++else
++        coff_header_in_crt0 = false
++endif
++
++# older objcopy for Aarch64 and ARM32 are not EFI capable.
++# Use 'binary' instead, and add required symbols manually.
++if host_cpu == 'arm' or (host_cpu == 'aarch64' and (objcopy_version.version_compare ('< 2.38') or coff_header_in_crt0))
++  objcopy_manualsymbols = true
++  generate_binary_extra = ['--objcopy-manualsymbols']
++else
++  objcopy_manualsymbols = false
++  generate_binary_extra = []
++endif
+ 
+ # is the system linker script new enough to know about SBAT?
+ # i.e. gnu-efi with https://github.com/vathpela/gnu-efi/pull/14 has been installed
+-efi_crtdir = efi_ldsdir
+ if get_option('efi_sbat_distro_id') != ''
+   cmd = run_command('grep', '-q', 'sbat', join_paths(efi_ldsdir, arch_lds))
+   if cmd.returncode() != 0
