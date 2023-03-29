@@ -580,22 +580,23 @@ Requires:       kgamma5
 Requires:       kwrited5
 Requires:       phonon4qt5-backend-gstreamer
 Requires:       plasma-nm5
+
 # Manually pull in baloo5-file to better support desktop search functions/desktop integration
 Requires:       baloo5-file
+
 # For NetworkManager support of openVPN Connections
 Requires:       NetworkManager-openvpn
 Requires:       openvpn-auth-pam-plugin
 Requires:       plasma-nm5-openconnect
 Requires:       plasma-nm5-openvpn
+
+Requires:       kio-extras5
+Requires:       kwalletmanager5
+Requires:       pinentry-qt5
 Requires:       plasma5-addons
 Requires:       plasma5-pa
 Requires:       plasma5-session-wayland
 Requires:       sddm
-# Not useful with excludedocs...
-#Requires:       khelpcenter5
-Requires:       kio-extras5
-Requires:       kwalletmanager5
-Requires:       pinentry-qt5
 
 # Additional Fonts to cover Unicode Symbols not provided by the fonts pulled in by kde_plasma Pattern
 Requires:       noto-sans-math-fonts
@@ -611,8 +612,9 @@ Requires:       plasma5-defaults-openSUSE
 Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
-Requires:       xdg-desktop-portal-gnome
+Requires:       xdg-desktop-portal-gtk
 Requires:       xdg-desktop-portal-kde
+
 # Recommended by powerdevil5, but allow tlp as alternative
 Requires:       (power-profiles-daemon or tlp)
 Suggests:       power-profiles-daemon
@@ -623,19 +625,19 @@ Requires:       discover-notifier
 # Spectacle to be able to take screenshots out of the box
 Requires:       spectacle
 
-# Default Plasma app to quickly use emojis (because people are using too much emoji nowadays)
+# Default Plasma app to quickly use emojis
 Requires:       plasma5-desktop-emojier
 Requires:       google-noto-coloremoji-fonts
 
-# Breeze GTK2, GTK3 and GTK4 (commented out until Plasma 5.27)
-#Requires:       (gtk4-metatheme-breeze if gtk4)
+# Breeze GTK2, GTK3 and GTK4
+Requires:       (gtk4-metatheme-breeze if gtk4)
 Requires:       (gtk2-metatheme-breeze if gtk2)
 Requires:       (gtk3-metatheme-breeze if gtk3)
 
 # Default Plasma/Oxygen sounds for applications
 Requires:       oxygen5-sounds
 
-# Plasma system monitor (because is a good app to have, as gnome-usage)
+# Plasma system monitor
 Requires:       plasma5-systemmonitor
 
 # For seeing thumbnails in Dolphin

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 08:14:31 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Change xdg-desktop-portal-gnome to xdg-desktop-portal-gtk: it's meant for GNOME DE
+- Add Requires gtk4-metatheme-breeze
+- Clean specfile 
+
+-------------------------------------------------------------------
 Mon Mar 13 17:08:50 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add openconnect VPN support to both Gnome and Plasma

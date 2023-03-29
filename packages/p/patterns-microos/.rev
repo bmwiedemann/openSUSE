@@ -628,4 +628,14 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1072555</requestid>
   </revision>
+  <revision rev="65" vrev="65">
+    <srcmd5>66c8999a9c6aea8844e4e9e483407db6</srcmd5>
+    <version>5.0</version>
+    <time>1680125167</time>
+    <user>dimstar_suse</user>
+    <comment>- Change xdg-desktop-portal-gnome to xdg-desktop-portal-gtk: it's meant for GNOME DE
+- Add Requires gtk4-metatheme-breeze
+- Clean specfile</comment>
+    <requestid>1075201</requestid>
+  </revision>
 </revisionlist>
