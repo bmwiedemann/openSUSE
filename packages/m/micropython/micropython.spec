@@ -1,7 +1,7 @@
 #
 # spec file for package micropython
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://micropython.org/
 Source:         https://micropython.org/resources/source/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM: fix build with gcc 13
+Patch1:         https://github.com/micropython/micropython/commit/32572439984e5640c6af46fbe7c27400c30112ce.patch
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3

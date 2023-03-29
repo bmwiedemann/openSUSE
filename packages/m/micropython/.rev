@@ -62,4 +62,12 @@
     <comment></comment>
     <requestid>1010201</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5e1c71180e52e4c0a920b636971e2ff2</srcmd5>
+    <version>1.19.1</version>
+    <time>1680125221</time>
+    <user>dimstar_suse</user>
+    <comment>- add 32572439984e5640c6af46fbe7c27400c30112ce.patch</comment>
+    <requestid>1075027</requestid>
+  </revision>
 </revisionlist>
