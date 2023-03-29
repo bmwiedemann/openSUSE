@@ -49,4 +49,18 @@
     <comment></comment>
     <requestid>1064434</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28f6b6efbe9eb3766e3a6b51f814ad62</srcmd5>
+    <version>0.7.0</version>
+    <time>1680125157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Improve handling of non-normalized .dist-info folders (#168)
+  * Explicitly use policy=compat32 (#163)
+  * Normalize RECORD file paths when parsing (#152)
+  * Search wheels for .dist-info directories (#137)
+  * Separate validation of RECORD (#147, #167) 
+- Only build the wheel once.</comment>
+    <requestid>1074810</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-installer%{pkg_suffix}
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        A library for installing Python wheels
 License:        MIT
@@ -50,7 +50,7 @@ A library for installing Python wheels.
 
 %if !%{with test}
 %build
-%python_expand $python -m flit_core.wheel
+python3 -m flit_core.wheel
 %endif
 
 %if !%{with test}
