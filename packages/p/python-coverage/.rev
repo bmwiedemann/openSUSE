@@ -565,4 +565,22 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
   * Added a ``py.typed`` file to announce our type-hintedness.</comment>
     <requestid>1071881</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ab21f5c9551489e811ca9ad4a04e293c</srcmd5>
+    <version>7.2.2</version>
+    <time>1680125168</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.2.2:
+  * Fix: if a virtualenv was created inside a source directory,
+    and a sourced package was installed inside the virtualenv,
+    then all of the third-party packages inside the virtualenv
+    would be measured.  This was incorrect, but
+    has now been fixed: only the specified packages will be
+    measured.
+  * Fix: the ``coverage lcov`` command could create a .lcov file
+    with incorrect LF (lines found) and LH (lines hit) totals
+  * Fix: the ``coverage xml`` command on Windows could create a
+    .xml file with duplicate ``&lt;package&gt;`` elements.</comment>
+    <requestid>1074499</requestid>
+  </revision>
 </revisionlist>

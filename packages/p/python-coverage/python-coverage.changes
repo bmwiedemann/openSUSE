@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:13:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.2:
+  * Fix: if a virtualenv was created inside a source directory,
+    and a sourced package was installed inside the virtualenv,
+    then all of the third-party packages inside the virtualenv
+    would be measured.  This was incorrect, but
+    has now been fixed: only the specified packages will be
+    measured.
+  * Fix: the ``coverage lcov`` command could create a .lcov file
+    with incorrect LF (lines found) and LH (lines hit) totals
+  * Fix: the ``coverage xml`` command on Windows could create a
+    .xml file with duplicate ``<package>`` elements.
+
+-------------------------------------------------------------------
 Tue Mar 14 22:26:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.1:

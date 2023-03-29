@@ -17,7 +17,7 @@
 
 
 Name:           python-coverage
-Version:        7.2.1
+Version:        7.2.2
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
