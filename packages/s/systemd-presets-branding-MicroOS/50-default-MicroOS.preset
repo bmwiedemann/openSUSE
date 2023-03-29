@@ -3,7 +3,6 @@ enable create-dirs-from-rpmdb.service
 enable rebootmgr.service
 enable issue-add-ssh-keys.service
 enable sshd.service
-enable tallow.service
 enable cloud-config.service
 enable cloud-final.service
 enable cloud-init-local.service
@@ -13,5 +12,5 @@ enable kubelet.service
 enable container-image-prune.timer
 disable purge-kernels.service
 # optional packages
+enable lastlog2-import.service
 enable man-db-create.service
-

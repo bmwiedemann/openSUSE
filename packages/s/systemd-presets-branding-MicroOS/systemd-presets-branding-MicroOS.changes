@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 07:57:46 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove tallow (package got dropped long ago)
+- Enable lastlog2-import
+
+-------------------------------------------------------------------
 Tue Feb 14 12:23:23 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Correct spelling of transactional-update-notifier.service in

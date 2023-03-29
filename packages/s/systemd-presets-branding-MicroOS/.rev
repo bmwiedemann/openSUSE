@@ -64,4 +64,13 @@
 - 20230214</comment>
     <requestid>1065741</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a5f5899fa792b6eccf0a7133c68594c1</srcmd5>
+    <version>20230214</version>
+    <time>1680125163</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove tallow (package got dropped long ago)
+- Enable lastlog2-import</comment>
+    <requestid>1074910</requestid>
+  </revision>
 </revisionlist>
