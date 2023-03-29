@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 29 08:14:47 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.1.7 with following changes:
+  * removed simpler-sif-building.patch as this was incoperated upstream
+  * Allow gpu options such as --nv to be nested by always inheriting all
+    libraries bound in to a parent container's /.singularity.d/libs.
+  * Map the user's home directory to the root home directory by default in the
+    non-subuid fakeroot mode like it was in the subuid fakeroot mode, for both
+    action commands and building containers from definition files.
+  * Make the error message more helpful in another place where a remote is
+    found to have no library client.
+  * Avoid incorrect error when requesting fakeroot network.
+  * Pass computed LD_LIBRARY_PATH to wrapped unsquashfs. Fixes issues where
+    unsquashfs on host uses libraries in non-default paths.
+
+
+-------------------------------------------------------------------
 Fri Feb 24 13:22:57 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - added simple sif building for SLE systems via suseconnect-container
