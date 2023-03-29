@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 20:01:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.44.1:
+  + Fix tests with glib 2.76.x
+
+-------------------------------------------------------------------
 Sun Mar 19 09:09:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.0:
