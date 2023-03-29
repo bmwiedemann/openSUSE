@@ -104,4 +104,14 @@
     <comment></comment>
     <requestid>1032522</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d2cdf509222428405b6bc05142de3d7e</srcmd5>
+    <version>3.6.0</version>
+    <time>1680125174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0:
+  * #21: Renamed ``call_aside`` to ``invoke``, deprecating
+    ``call_aside``.</comment>
+    <requestid>1074516</requestid>
+  </revision>
 </revisionlist>

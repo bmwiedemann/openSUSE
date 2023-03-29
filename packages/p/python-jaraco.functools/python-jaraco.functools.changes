@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 26 20:03:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * #21: Renamed ``call_aside`` to ``invoke``, deprecating
+    ``call_aside``.
+
+-------------------------------------------------------------------
 Fri Oct 28 17:48:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.5.2 
