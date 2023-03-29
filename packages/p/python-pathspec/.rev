@@ -105,4 +105,21 @@
     <comment></comment>
     <requestid>1042885</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cb27af5416e17c4a2323261f4d0d4547</srcmd5>
+    <version>0.11.1</version>
+    <time>1680125170</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  * `Issue #74`_: Include directory should override exclude file.
+  * `Pull #75`_: Fix partially unknown PathLike type.
+  * Convert `os.PathLike` to a string properly using `os.fspath`.
+  * Major changes:
+  * Changed build backend to `flit_core.buildapi`_ from
+    `setuptools.build_meta`_. Building with `setuptools` through
+    `setup.py` is still supported for distributions that need it.
+  * `Issue #72`_/`Pull #73`_: Please consider switching the
+    build-system to flit_core to ease setuptools bootstrap.</comment>
+    <requestid>1074507</requestid>
+  </revision>
 </revisionlist>
