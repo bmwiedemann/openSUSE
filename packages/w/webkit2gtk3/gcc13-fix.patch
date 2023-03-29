@@ -1,0 +1,19 @@
+diff --git a/Source/WebCore/platform/graphics/SourceBrush.cpp b/Source/WebCore/platform/graphics/SourceBrush.cpp
+index d7ff7292..48ae0e61 100644
+--- a/Source/WebCore/platform/graphics/SourceBrush.cpp
++++ b/Source/WebCore/platform/graphics/SourceBrush.cpp
+@@ -65,12 +65,12 @@ Pattern* SourceBrush::pattern() const
+ 
+ void SourceBrush::setGradient(Ref<Gradient>&& gradient, const AffineTransform& spaceTransform)
+ {
+-    m_brush = { Brush::LogicalGradient { WTFMove(gradient), spaceTransform } };
++    m_brush = Brush { Brush::LogicalGradient { WTFMove(gradient), spaceTransform } };
+ }
+ 
+ void SourceBrush::setPattern(Ref<Pattern>&& pattern)
+ {
+-    m_brush = { WTFMove(pattern) };
++    m_brush = Brush { WTFMove(pattern) };
+ }
+ 
+ WTF::TextStream& operator<<(TextStream& ts, const SourceBrush& brush)

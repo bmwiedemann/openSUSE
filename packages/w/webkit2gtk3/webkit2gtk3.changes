@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 24 09:14:45 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add gcc13-fix.patch fix that handles invalid code as reported here:
+  https://github.com/WebKit/WebKit/pull/11910.
+
+-------------------------------------------------------------------
 Tue Mar 21 08:17:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix provides of libwebkit2gtk-4.[01]: Provide WebKitGTK-4.x. This

@@ -85,6 +85,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-UPSTREAM regression-fix.patch -- [GLib] Broke WebKitUserContentManager::script-message-received
 Patch0:         regression-fix.patch
+# PATCH-FIX-UPSTREAM Fix rejected code by GCC 13: https://github.com/WebKit/WebKit/pull/11910
+Patch1:         gcc13-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
