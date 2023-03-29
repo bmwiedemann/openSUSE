@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-subtests
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Python unittest subTest() support and subtests fixture
 License:        MIT
