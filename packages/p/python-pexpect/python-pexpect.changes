@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 27 08:12:48 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Skip test_interrupt, test_multiple_interrupts, test_existing_spawn when
+  running in QEmu linux-user emulation
+
+-------------------------------------------------------------------
 Fri Mar 24 08:08:57 UTC 2023 - pgajdos@suse.com
 
 - disable some tests [bsc#1209560]

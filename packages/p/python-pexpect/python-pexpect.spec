@@ -73,7 +73,9 @@ export LANG=en_US.UTF-8
 # test_spawn_uses_env - seen failed on s390x
 # test_forced_terminate - seen failed on armv7l
 # test_interact_escape_None - seen failed on s390x
-%pytest -k "not (test_bash or test_large_stdout_stream or test_pager_as_cat or test_spawn_uses_env or test_forced_terminate or test_interact_escape_None)"
+# test_interrupt, test_multiple_interrupts - hangs under linux-user emulation
+# test_existing_spawn - fails under linux-user emulation
+%pytest -k "not (test_bash or test_large_stdout_stream or test_pager_as_cat or test_spawn_uses_env or test_forced_terminate or test_interact_escape_None %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts or test_existing_spawn})"
 
 %files %{python_files}
 %license LICENSE
