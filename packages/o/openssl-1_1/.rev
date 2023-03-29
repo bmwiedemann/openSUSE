@@ -375,4 +375,14 @@
     then a use-after-free will occur. This will most likely result in a crash.</comment>
     <requestid>1063743</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>37873440adbfe2b92ac597cb8061ab43</srcmd5>
+    <version>1.1.1t</version>
+    <time>1680125207</time>
+    <user>dimstar_suse</user>
+    <comment>- Security Fix: [CVE-2023-0464, bsc#1209624]
+  * Excessive Resource Usage Verifying X.509 Policy Constraints
+  * Add openssl-CVE-2023-0464.patch</comment>
+    <requestid>1074722</requestid>
+  </revision>
 </revisionlist>

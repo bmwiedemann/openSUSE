@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 24 15:53:47 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-0464, bsc#1209624]
+  * Excessive Resource Usage Verifying X.509 Policy Constraints
+  * Add openssl-CVE-2023-0464.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 15:59:21 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.1.1t:

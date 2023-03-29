@@ -132,6 +132,8 @@ Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes
 Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
 #PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
 Patch80:        openssl-1_1-openssl-config.patch
+# PATCH-FIX-UPSTREAM: bsc#1209624, CVE-2023-0464 Excessive Resource Usage Verifying X.509 Policy Constraints
+Patch81:        openssl-CVE-2023-0464.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl1_1 = %{version}-%{release}
