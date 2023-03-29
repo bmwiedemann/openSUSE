@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 23 10:23:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.1
+  * Add explicit CMake option to control Qt major version
+  * Return if we can't handle the transaction role
+  * Transaction: Implement all methods
+  * Read the Sender transaction property
+  * Apply stricter compiler flags when building the library
+- Rebase 0001-Fix-PackageKit-not-emitting-network-state-changed-si.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 08:09:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.1.0:

@@ -211,4 +211,12 @@ Comment: something is rotten with the license. I don't believe it's
     <comment></comment>
     <requestid>1068443</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dac1d0998fdf8dc0ff6652338c8aaaf5</srcmd5>
+    <version>1.1.1</version>
+    <time>1680125193</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1.1 (forwarded request 1073945 from krop)</comment>
+    <requestid>1074641</requestid>
+  </revision>
 </revisionlist>

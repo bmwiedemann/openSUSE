@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define major 1
 Name:           PackageKit%{?pkg_suffix}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
@@ -102,7 +102,7 @@ suck less.
 %endif
 
 %if 0%{?qt6}
-%cmake_qt6
+%cmake_qt6 -DBUILD_WITH_QT6:BOOL=ON
 %{qt6_build}
 %endif
 

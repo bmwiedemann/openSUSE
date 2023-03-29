@@ -18,6 +18,7 @@ networkStateChanged signal, so we can react to a network state change
 even when PackageKit is stopped. In this case, we update all properties,
 which triggers PK to run and emits the appropiate PK signals as
 expected.
+
 ---
  src/CMakeLists.txt            |  1 +
  src/daemon.h                  |  1 +
@@ -30,16 +31,16 @@ expected.
  create mode 100644 src/networkmanagermonitor.h
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 096ebd7..c559dc3 100644
+index dac2104..2ed020d 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -24,6 +24,7 @@ set(packagekitqt_SRC
+@@ -22,6 +22,7 @@ set(packagekitqt_SRC
      transactionprivate.cpp
      details.cpp
      offline.cpp
 +    networkmanagermonitor.cpp
  )
- 
+
  find_path(PK_INTERFACES_DIR org.freedesktop.PackageKit.xml
 diff --git a/src/daemon.h b/src/daemon.h
 index 449cf17..51a818f 100644
@@ -54,12 +55,12 @@ index 449cf17..51a818f 100644
      static Daemon *m_global;
  };
 diff --git a/src/daemonprivate.cpp b/src/daemonprivate.cpp
-index e423916..04cdc60 100644
+index 829ba22..2c6bdfc 100644
 --- a/src/daemonprivate.cpp
 +++ b/src/daemonprivate.cpp
 @@ -70,6 +70,20 @@ DaemonPrivate::DaemonPrivate(Daemon* parent)
      });
- 
+
      getAllProperties();
 +
 +    // If PackageKit is not running, we are not getting a signal when
@@ -76,32 +77,32 @@ index e423916..04cdc60 100644
 +    if (!running)
 +        getAllProperties();
  }
- 
+
  void DaemonPrivate::getAllProperties()
 diff --git a/src/daemonprivate.h b/src/daemonprivate.h
-index 9bf794c..6ddd1b0 100644
+index 729e3ec..0fa645b 100644
 --- a/src/daemonprivate.h
 +++ b/src/daemonprivate.h
 @@ -27,6 +27,7 @@
- 
+
  #include "daemon.h"
  #include "offline.h"
 +#include "networkmanagermonitor.h"
- 
- Q_DECLARE_LOGGING_CATEGORY(PACKAGEKITQT_TRANSACTION)
+
  Q_DECLARE_LOGGING_CATEGORY(PACKAGEKITQT_DAEMON)
+ Q_DECLARE_LOGGING_CATEGORY(PACKAGEKITQT_OFFLINE)
 @@ -72,10 +73,12 @@ protected:
      uint versionMinor = 0;
      bool locked = false;
      bool running = false;
 +    NetworkManagerMonitor networkManagerMonitor;
- 
+
  protected Q_SLOTS:
      void propertiesChanged(const QString &interface, const QVariantMap &properties, const QStringList &invalidatedProperties);
      void updateProperties(const QVariantMap &properties);
 +    void getAllPropertiesIfPackageKitNotRunning();
  };
- 
+
  } // End namespace PackageKit
 diff --git a/src/networkmanagermonitor.cpp b/src/networkmanagermonitor.cpp
 new file mode 100644
@@ -236,6 +237,6 @@ index 0000000..16eb25c
 +};
 +
 +#endif
--- 
-2.21.0
+--
+2.40.0
 
