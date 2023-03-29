@@ -52,4 +52,12 @@
     <comment></comment>
     <requestid>985516</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>0c5e92976558a9eda72d1054e40fe416</srcmd5>
+    <version>0.4.1</version>
+    <time>1680125233</time>
+    <user>dimstar_suse</user>
+    <comment>- python-six is not required</comment>
+    <requestid>1075072</requestid>
+  </revision>
 </revisionlist>

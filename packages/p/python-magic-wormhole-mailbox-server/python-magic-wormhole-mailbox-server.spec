@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole-mailbox-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-magic-wormhole-mailbox-server
 Version:        0.4.1
@@ -34,7 +33,6 @@ BuildRequires:  %{python_module autobahn >= 0.14.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module treq}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -42,7 +40,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Twisted-tls >= 17.5.0
 Requires:       python-attrs >= 16.3.0
 Requires:       python-autobahn >= 0.14.1
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,6 +51,8 @@ a transit-relay.
 
 %prep
 %autosetup -p1 -n magic-wormhole-mailbox-server-%{version}
+# https://github.com/magic-wormhole/magic-wormhole-mailbox-server/issues/35
+sed '/six/d' setup.py src/magic_wormhole_mailbox_server.egg-info/requires.txt
 
 %build
 %pyproject_wheel
