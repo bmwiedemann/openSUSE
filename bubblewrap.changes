@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 27 16:39:05 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to v0.8.0:
+  * Add --disable-userns option to prevent the sandbox from
+    creating its own nested user namespace
+  * Add --assert-userns-disabled option to check that an existing
+    userns was created with --disable-userns
+  * Give a clearer error message if the kernel doesn't have
+    CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER
+
+-------------------------------------------------------------------
 Wed Dec  7 21:50:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.7.0:
