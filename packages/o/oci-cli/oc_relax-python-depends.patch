@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.23.3.orig/requirements.txt oci-cli-3.23.3/requirements.txt
---- oci-cli-3.23.3.orig/requirements.txt	2023-03-07 20:43:28.000000000 +0100
-+++ oci-cli-3.23.3/requirements.txt	2023-03-14 11:33:38.405379694 +0100
+diff -Nru oci-cli-3.24.0.orig/requirements.txt oci-cli-3.24.0/requirements.txt
+--- oci-cli-3.24.0.orig/requirements.txt	2023-03-22 01:50:57.000000000 +0100
++++ oci-cli-3.24.0/requirements.txt	2023-03-27 10:40:05.172962035 +0200
 @@ -2,44 +2,44 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -12,18 +12,18 @@ diff -Nru oci-cli-3.23.3.orig/requirements.txt oci-cli-3.23.3/requirements.txt
  cffi>=1.9.1
 -click==8.0.4
 -coverage==4.5.2
--cryptography>=3.2.1,<39.0.0
+-cryptography>=3.2.1,<40.0.0
 -httpsig-cffi==15.0.0
 -Jinja2==3.0.3
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.94.0
+-oci==2.96.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
 -pyasn1==0.2.3
--pyOpenSSL>=17.5.0,<=22.1.0
+-pyOpenSSL>=17.5.0,<24.0.0
 -pycparser==2.20
 -pyparsing==2.2.0
 -pytest==4.6.10; python_version <= '3.9'
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.23.3.orig/requirements.txt oci-cli-3.23.3/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.94.0
++oci>=2.96.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -82,19 +82,19 @@ diff -Nru oci-cli-3.23.3.orig/requirements.txt oci-cli-3.23.3/requirements.txt
 -setuptools==59.6.0; python_version == '3.6'
 \ No newline at end of file
 +setuptools>=59.6.0; python_version >= '3.6'
-diff -Nru oci-cli-3.23.3.orig/setup.py oci-cli-3.23.3/setup.py
---- oci-cli-3.23.3.orig/setup.py	2023-03-07 20:43:28.000000000 +0100
-+++ oci-cli-3.23.3/setup.py	2023-03-14 11:32:41.764918764 +0100
+diff -Nru oci-cli-3.24.0.orig/setup.py oci-cli-3.24.0/setup.py
+--- oci-cli-3.24.0.orig/setup.py	2023-03-22 01:50:57.000000000 +0100
++++ oci-cli-3.24.0/setup.py	2023-03-27 10:38:43.311514082 +0200
 @@ -29,23 +29,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.94.0',
-+    'oci>=2.94.0',
+-    'oci==2.96.0',
++    'oci>=2.96.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
--    'cryptography>=3.2.1,<39.0.0',
+-    'cryptography>=3.2.1,<40.0.0',
 -    'jmespath==0.10.0',
 -    'python-dateutil>=2.5.3,<3.0.0',
 +    'click>=8.0.4',
@@ -104,7 +104,7 @@ diff -Nru oci-cli-3.23.3.orig/setup.py oci-cli-3.23.3/setup.py
      'pytz>=2016.10',
      'six>=1.15.0',
 -    'terminaltables==3.1.0',
--    'pyOpenSSL>=17.5.0,<=22.1.0',
+-    'pyOpenSSL>=17.5.0,<24.0.0',
 -    'PyYAML>=5.4,<6',
 -    'prompt-toolkit==3.0.29'
 +    'terminaltables>=3.1.0',
