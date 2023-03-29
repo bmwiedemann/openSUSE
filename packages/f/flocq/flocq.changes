@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 18:55:13 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 4.1.1.
+  * Ensured compatibility from Coq 8.12 to 8.17.
+
+-------------------------------------------------------------------
 Thu Jan 26 22:02:12 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
 
 - Build with ocaml-rpm-macros to get proper Requires and Provides

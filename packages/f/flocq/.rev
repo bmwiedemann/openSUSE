@@ -40,4 +40,14 @@
 </comment>
     <requestid>1061435</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>369cc18110aeba69a95a687fe602375a</srcmd5>
+    <version>4.1.1</version>
+    <time>1680125316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1.
+  * Ensured compatibility from Coq 8.12 to 8.17.
+</comment>
+    <requestid>1075337</requestid>
+  </revision>
 </revisionlist>
