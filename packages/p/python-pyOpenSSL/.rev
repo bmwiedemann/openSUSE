@@ -483,4 +483,22 @@
 - drop pyOpenSSL-pr1158-conditional-__all__.patch (upstream)</comment>
     <requestid>1046269</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>769668a52b158a6d1edca6c3ebd4b723</srcmd5>
+    <version>23.1.1</version>
+    <time>1680125211</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.1.1:
+  * Worked around an issue in OpenSSL 3.1.0 which caused
+    `X509Extension.get_short_name` to raise an exception when no
+    short name was known to OpenSSL.
+
+- update to 23.1.0:
+  * ``cryptography`` maximum version has been increased to
+    40.0.x.
+  * Add ``OpenSSL.SSL.Connection.DTLSv1_get_timeout`` and
+    ``OpenSSL.SSL.Connection.DTLSv1_handle_timeout``
+    to support DTLS timeouts `#1180</comment>
+    <requestid>1075038</requestid>
+  </revision>
 </revisionlist>

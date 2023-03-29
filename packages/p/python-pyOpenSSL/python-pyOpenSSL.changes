@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 28 15:40:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1.1:
+  * Worked around an issue in OpenSSL 3.1.0 which caused
+    `X509Extension.get_short_name` to raise an exception when no
+    short name was known to OpenSSL.
+
+-------------------------------------------------------------------
+Mon Mar 27 07:54:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1.0:
+  * ``cryptography`` maximum version has been increased to
+    40.0.x.
+  * Add ``OpenSSL.SSL.Connection.DTLSv1_get_timeout`` and
+    ``OpenSSL.SSL.Connection.DTLSv1_handle_timeout``
+    to support DTLS timeouts `#1180
+
+-------------------------------------------------------------------
 Mon Jan  2 18:47:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.0.0:
