@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 29 12:28:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.34:
+  * Use the latest version of cert-manager
+  * Update the multiline annotation and use helmify.Values to add
+    the options in the values.yaml
+  * Add an option cert-manager-as-subchart to install the
+    cert-manager as subchart
+
+-------------------------------------------------------------------
 Fri Mar 24 05:41:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.3.33:

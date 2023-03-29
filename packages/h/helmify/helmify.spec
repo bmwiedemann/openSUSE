@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           helmify
-Version:        0.3.33
+Version:        0.3.34
 Release:        0
 Summary:        Creates Helm chart from Kubernetes yaml
 License:        MIT
