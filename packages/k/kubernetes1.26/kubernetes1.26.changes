@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Mar 22 08:35:51 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Add "BuildRequires: go>=1.19.7" in spec file  
+
+-------------------------------------------------------------------
+Tue Mar 21 08:16:15 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.26.3:
+  * Release commit for Kubernetes v1.26.3
+  * Avoid metric lookup in Parallelizer.Util on every work piece
+  * One lock among PodNominator and SchedulingQueue
+  * Removes old discovery hack ignoring 403 and 404
+  * Plumb stale GroupVersions through aggregated discovery
+  * releng/go: Update images, dependencies and version to Go 1.19.7
+  * Tolerate empty discovery response in memcache client
+  * Fix for windows kube-proxy: 'externalTrafficPolicy: Local' results in no clusterIP entry in windows node.
+  * Deflake tests in staging/src/k8s.io/kube-aggregator/pkg/apiserver
+  * Fix a data race in TestDirty
+  * ut: fix TestLegacyFallbackNoCache versions order
+  * Fix legacy fallback stale for aggregated discovery
+  * Re-enable label selector
+  * Add integration test for diff --prune --selector
+  * Use label selector for filtering out resources when pruning. Matches same behavior as for kubectl apply
+  * svc: Support pods with same address
+  * api: generated files
+  * api: drop Resources.Claims from PVC and PVC template
+  * scheduler/framework/plugins/volumebinding: fix inaccurate log for when a volume is bound to a claim
+  * Fix validation.go to validate without StatefulSetStartOrdinal feature gate check. Adds test case to validate regression fix of validation failing when spec.ordinals set and feature gate disabled
+  * Remove global framework variable
+  * fix race in aggregated discovery handler
+  * Remove check for CSI driver running on node for CSI migration attach operations
+  * Disable multiple pv mount tests for vsphere intree driver
+  * Simplify construction of /metrics request
+  * Fix for issue with Loadbalancer policy creation for IPV6 endpoints in Dualstack mode.
+  * Bump konnectivity-client to v0.0.36
+  * make GetSubnetPrefix IP family agnostic
+  * Invoke gimme from kube::golang::verify_go_version
+  * Defer builds to test-cmd and test-integration targets
+  * Set node_stage whenever available
+  * Carefully compute request path for metrics
+
+-------------------------------------------------------------------
 Thu Mar  9 13:34:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.26.2:

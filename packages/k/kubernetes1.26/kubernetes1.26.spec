@@ -22,7 +22,7 @@
 %define baseversionminus1 1.25
 
 Name:           kubernetes%{baseversion}
-Version:        1.26.2
+Version:        1.26.3
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -58,6 +58,7 @@ BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) = 1.19
 BuildRequires:  golang(github.com/jteeuwen/go-bindata)
+BuildRequires:  go >= 1.19.7
 ExcludeArch:    %{ix86} s390 ppc64
 
 %description

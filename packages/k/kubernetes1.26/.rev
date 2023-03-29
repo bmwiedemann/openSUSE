@@ -7,4 +7,12 @@
     <comment>New k8s</comment>
     <requestid>1070752</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba3b1de90c357c94a7af2499f18aabcd</srcmd5>
+    <version>1.26.3</version>
+    <time>1680125283</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1075173</requestid>
+  </revision>
 </revisionlist>
