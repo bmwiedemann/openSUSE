@@ -1585,7 +1585,7 @@ Macros:
 %postgresql_default_ver 15
 
 # define which llvm package builds the system libraries
-%product_libs_llvm_ver 15
+%product_libs_llvm_ver 16
 
 # define which gcc package builds the system libraries
 %product_libs_gcc_ver 13
