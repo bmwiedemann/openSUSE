@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:03:27 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop explicit BuildRequires on go1.14, no longer needed.
+
+-------------------------------------------------------------------
 Tue Apr  6 11:13:10 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to umoci v0.4.7. CVE-2021-29136 bsc#1184147

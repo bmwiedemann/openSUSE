@@ -1,7 +1,7 @@
 #
 # spec file for package umoci
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,8 @@ Source2:        https://umo.ci/%{name}.keyring
 # OPENSUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/umoci/pull/369>.
 Patch1:         0001-makefile-fix-bad-build-flags.patch
 BuildRequires:  fdupes
+BuildRequires:  go
 BuildRequires:  go-go-md2man
-# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.13' here, so just require 1.13 exactly. bsc#1172608
-BuildRequires:  go1.14
 ExcludeArch:    s390
 
 %description
