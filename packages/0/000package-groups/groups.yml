@@ -29,6 +29,7 @@ common_locks:
   - kernel-debug: [locked]
   - libLLVM13: [locked]
   - libLLVM14: [locked]
+  - libLLVM15: [locked]
   - gnome-backgrounds: [locked]
   - gcc12: [locked]
 
