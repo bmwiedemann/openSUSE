@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgpack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msgpack
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        MessagePack (de)serializer
 License:        Apache-2.0

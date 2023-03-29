@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 26 20:05:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Fallback to compiler defines when __BYTE_ORDER is not
+    available
+  * Fix build error caused by ntohs, ntohl
+  * Add python 3.11 wheels
+  * fallback: Fix packing multidim memoryview
+  * minor type in exception message
+
+-------------------------------------------------------------------
 Sun Jun 19 18:30:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:

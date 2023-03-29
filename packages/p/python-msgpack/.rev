@@ -121,4 +121,18 @@
   * ci: Update action versions.</comment>
     <requestid>983773</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>970f2cfb418406e9718402dbf4925e34</srcmd5>
+    <version>1.0.5</version>
+    <time>1680125176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * Fallback to compiler defines when __BYTE_ORDER is not
+    available
+  * Fix build error caused by ntohs, ntohl
+  * Add python 3.11 wheels
+  * fallback: Fix packing multidim memoryview
+  * minor type in exception message</comment>
+    <requestid>1074518</requestid>
+  </revision>
 </revisionlist>
