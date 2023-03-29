@@ -1207,4 +1207,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1074782</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ba23ced3fb9afdd3d17789dbba78325d</srcmd5>
+    <version>1.0.17</version>
+    <time>1680125311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.17
+   + Fixed over-sized context album cover with device pixel ratio higher than 1.0 (#1166).
+   + Fixed playing widget fading from a blurry previous cover with device pixel ratio higher than 1.0.
+   + Made playlist source icon, album cover manager and OSD pretty cover respect device pixel ratio.
+</comment>
+    <requestid>1075321</requestid>
+  </revision>
 </revisionlist>

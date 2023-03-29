@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 29 17:02:31 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.17
+
+   + Fixed over-sized context album cover with device pixel ratio higher than 1.0 (#1166).
+   + Fixed playing widget fading from a blurry previous cover with device pixel ratio higher than 1.0.
+   + Made playlist source icon, album cover manager and OSD pretty cover respect device pixel ratio.
+
+-------------------------------------------------------------------
 Mon Mar 27 20:49:17 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.16
