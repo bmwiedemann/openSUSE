@@ -1,7 +1,7 @@
 #
 # spec file for package snapper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,9 @@
 %define pam_security_dir /%{_lib}/security
 %endif
 
+# Optionally build without SELinux support
+%bcond_without selinux
+
 # Optionally build with test coverage reporting
 %bcond_with coverage
 
@@ -41,16 +44,16 @@ URL:            http://snapper.io/
 Source:         snapper-%{version}.tar.bz2
 %if 0%{?suse_version}
 BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_test-devel
+BuildRequires:  libboost_thread-devel
 %else
 BuildRequires:  boost-devel
 %endif
+BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
 BuildRequires:  libbtrfs-devel
@@ -68,9 +71,9 @@ BuildRequires:  systemd
 BuildRequires:  pkg-config
 %endif
 %if 0%{?fedora_version} || 0%{?centos_version}
-BuildRequires:	glibc-langpack-de
-BuildRequires:	glibc-langpack-fr
-BuildRequires:	glibc-langpack-en
+BuildRequires:  glibc-langpack-de
+BuildRequires:  glibc-langpack-en
+BuildRequires:  glibc-langpack-fr
 %else
 BuildRequires:  glibc-locale
 %endif
@@ -95,9 +98,11 @@ BuildRequires:  libzypp(plugin:commit)
 BuildRequires:  pam-devel
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
 BuildRequires:  json-c-devel
-BuildRequires:  libselinux-devel
 %else
 BuildRequires:  libjson-c-devel
+%endif
+%if %{with selinux}
+BuildRequires:  libselinux-devel
 %endif
 BuildRequires:  zlib-devel
 %if %{with coverage}
@@ -107,7 +112,8 @@ Requires:       diffutils
 Requires:       libsnapper6 = %version
 Requires:       systemd
 %if 0%{?suse_version}
-Recommends:     logrotate snapper-zypp-plugin
+Recommends:     logrotate
+Recommends:     snapper-zypp-plugin
 Supplements:    btrfsprogs
 %endif
 
@@ -131,17 +137,13 @@ export CXXFLAGS="%{optflags} -DNDEBUG"
 autoreconf -fvi
 %configure \
 	--docdir="%{_defaultdocdir}/snapper"					\
-%if %{with coverage}
-	--enable-coverage \
-%endif
+	%{?with_coverage:--enable-coverage}					\
 	--with-pam-security="%{pam_security_dir}"				\
 %if ! 0%{?suse_version}
 	--disable-rollback							\
 	--disable-btrfs-quota							\
 %endif
-%if 0%{?fedora_version} || 0%{?rhel_version}
-	--enable-selinux							\
-%endif
+	%{?with_selinux:--enable-selinux}					\
 	--disable-silent-rules --disable-ext4
 make %{?_smp_mflags}
 
@@ -295,7 +297,7 @@ Requires:       libboost_headers-devel
 Requires:       boost-devel
 %endif
 Requires:       gcc-c++
-Requires:	    libacl-devel
+Requires:       libacl-devel
 Requires:       libsnapper6 = %version
 Requires:       libstdc++-devel
 Requires:       libxml2-devel
@@ -317,8 +319,8 @@ libsnapper.
 %{_includedir}/snapper
 
 %package -n snapper-zypp-plugin
-Requires:       libzypp(plugin:commit) = 1
 Requires:       snapper = %version
+Requires:       libzypp(plugin:commit) = 1
 Summary:        A zypp commit plugin for calling snapper
 Group:          System/Packages
 
