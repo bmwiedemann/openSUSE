@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Mon Mar 27 16:37:07 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#639
+- modernized mount-rootfs-and-do-chroot script
+- advertise mount-rootfs-and-do-chroot in motd
+- add motd to rescue system
+- 17.81
+
+--------------------------------------------------------------------
+Mon Mar 27 14:28:37 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#638
+- etc: update module.config to match 6.3
+- 17.80
+
+--------------------------------------------------------------------
+Mon Mar 27 14:24:40 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#637
+- Drop aaa_base prein execution
+- 17.79
+
+--------------------------------------------------------------------
 Wed Mar 8 11:29:05 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#636
