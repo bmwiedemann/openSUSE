@@ -1,0 +1,32 @@
+From bbe36b279e247cd8ec4ab00bcdf02178af8a99af Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Thu, 13 Jan 2022 07:42:31 +0100
+Subject: [PATCH] Remove obsolete host_path in test
+
+gupnp_root_device_new will do this automatically, actually does for
+quite some time now (pre 1.0)
+---
+ tests/gtest/gupnp-simple-igd.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/tests/gtest/gupnp-simple-igd.c b/tests/gtest/gupnp-simple-igd.c
+index 4e689ef..593c46e 100644
+--- a/tests/gtest/gupnp-simple-igd.c
++++ b/tests/gtest/gupnp-simple-igd.c
+@@ -302,13 +302,6 @@ run_gupnp_simple_igd_test (GMainContext *mainctx, GUPnPSimpleIgd *igd,
+   if (g_getenv ("XML_PATH"))
+     xml_path = g_getenv ("XML_PATH");
+ 
+-  gupnp_context_host_path (context, xml_path, "");
+-
+-  /*
+-  gupnp_context_host_path (context, "InternetGatewayDevice.xml", "/InternetGatewayDevice.xml");
+-  gupnp_context_host_path (context, "WANIPConnection.xml", "/WANIPConnection.xml");
+-  gupnp_context_host_path (context, "WANPPPConnection.xml", "/WANPPPConnection.xml");
+-  */
+ 
+   dev = gupnp_root_device_new (context, "InternetGatewayDevice.xml", xml_path, &error);
+   g_assert (dev);
+-- 
+GitLab
+

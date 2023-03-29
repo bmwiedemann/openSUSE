@@ -29,6 +29,10 @@ Source1:        baselibs.conf
 Patch0:         79a1e4cf8c256132978a1d8ab718c8ad132386de.patch
 # PATCH-FIX-UPSTREAM fa1546614190942ab266832e7470a6debf8c32cb.patch -- test: Port to g_inet_address_new_loopback
 Patch1:         fa1546614190942ab266832e7470a6debf8c32cb.patch
+# PATCH-FIX-UPSTREAM 2c413bbd8b9afc41648f21ad173f0caf81a5f98b.patch -- Test: Interact with service in its context
+Patch2:         2c413bbd8b9afc41648f21ad173f0caf81a5f98b.patch
+# PATCH-FIX-UPSTREAM bbe36b279e247cd8ec4ab00bcdf02178af8a99af.patch -- Remove obsolete host_path in test
+Patch3:         bbe36b279e247cd8ec4ab00bcdf02178af8a99af.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
