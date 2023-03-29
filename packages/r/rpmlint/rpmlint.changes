@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 27 15:02:22 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230327.f239521:
+  * stringToVersion: make epoch always an integer
+  * pytest: use tmp_path mock instead of tmpdir
+  * pytest: disable legacypath
+  * Replace one more usage of tmpdir in a test.
+  * Pytest documentation recommends refactoring "tmpdir" to "tmp_path"
+
+-------------------------------------------------------------------
 Fri Mar 24 14:27:31 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230324.96c1ac0:

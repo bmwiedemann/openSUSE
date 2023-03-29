@@ -1,10 +1,10 @@
 diff --git a/setup.cfg b/setup.cfg
-index 098f636..0ccb9dc 100644
+index f9d99831..3ef7694a 100644
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -10,4 +10,4 @@ import-order-style = google
+@@ -12,4 +12,4 @@ import-order-style = google
  application-import-names = Testing
  
  [tool:pytest]
--addopts = -vv --cov=rpmlint -n auto
-+addopts = -vv -n auto
+-addopts = -vv --cov=rpmlint -n auto -p no:legacypath
++addopts = -vv -n auto -p no:legacypath

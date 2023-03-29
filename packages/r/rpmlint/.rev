@@ -4377,4 +4377,17 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add new check: patchable-function-entry-in-archive.</comment>
     <requestid>1074204</requestid>
   </revision>
+  <revision rev="442" vrev="1">
+    <srcmd5>9e665dbb2fed973860a15c41d1493832</srcmd5>
+    <version>2.4.0+git20230327.f239521</version>
+    <time>1680125151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230327.f239521:
+  * stringToVersion: make epoch always an integer
+  * pytest: use tmp_path mock instead of tmpdir
+  * pytest: disable legacypath
+  * Replace one more usage of tmpdir in a test.
+  * Pytest documentation recommends refactoring &quot;tmpdir&quot; to &quot;tmp_path&quot;</comment>
+    <requestid>1074729</requestid>
+  </revision>
 </revisionlist>
