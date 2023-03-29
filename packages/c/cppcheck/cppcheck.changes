@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 29 12:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch on Tumbleweed temporarily to gcc 12 to avoid
+  "allocator_traits<A>::rebind_alloc<A::value_type> must be A"
+  (as mentioned on https://gcc.gnu.org/gcc-13/porting_to.html)
+
+-------------------------------------------------------------------
 Wed Mar 15 20:23:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.3:

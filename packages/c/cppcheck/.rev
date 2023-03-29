@@ -342,4 +342,14 @@
     <comment></comment>
     <requestid>1072201</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6e41d4339d34ca782fdf0abf3dd25b15</srcmd5>
+    <version>2.10.3</version>
+    <time>1680125298</time>
+    <user>dimstar_suse</user>
+    <comment>- switch on Tumbleweed temporarily to gcc 12 to avoid
+  &quot;allocator_traits&lt;A&gt;::rebind_alloc&lt;A::value_type&gt; must be A&quot;
+  (as mentioned on https://gcc.gnu.org/gcc-13/porting_to.html)</comment>
+    <requestid>1075209</requestid>
+  </revision>
 </revisionlist>

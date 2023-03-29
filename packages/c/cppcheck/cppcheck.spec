@@ -26,7 +26,11 @@ Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
+%if 0%{?suse_version} > 1500
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -77,6 +81,9 @@ doesn't see.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} > 1500
+export CXX=/usr/bin/g++-12
+%endif
 %cmake \
   -DCMAKE_CXX_FLAGS="-DNDEBUG %{optflags}" \
   -DFILESDIR="%{_datadir}/%{name}" \
