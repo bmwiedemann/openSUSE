@@ -20,8 +20,13 @@
 
 %bcond_without ide
 
+%global dune_packages coq,coq-core,coq-stdlib
+%if %{with ide}
+%global dune_packages %{dune_packages},coqide,coqide-server
+%endif
+
 Name:           coq
-Version:        8.16.1
+Version:        8.17.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -38,7 +43,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.09.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
-BuildRequires:  ocaml-dune >= 2.5.1
+BuildRequires:  ocaml-dune >= 2.9
 BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(zarith)
@@ -87,7 +92,6 @@ HTML reference manual for Coq and full documentation of the standard library.
 
 %build
 export CFLAGS='%{optflags}'
-# TODO: Add -with-doc yes
 ./configure                \
    -prefix %{_prefix}      \
    -libdir %{_libdir}/coq  \
@@ -95,24 +99,18 @@ export CFLAGS='%{optflags}'
    -datadir %{_datadir}/%{name} \
    -docdir %{_docdir}/%{name} \
    -configdir %{_sysconfdir}/xdg/%{name} \
-%if %{with ide}
-   -coqide opt \
-%else
-   -coqide no \
-%endif
    -native-compiler yes \
    -natdynlink yes \
    -browser "xdg-open %s"
+make %{?_smp_mflags} dunestrap
 
-make %{?_smp_mflags} world
+dune_release_pkgs='%{dune_packages}'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-make DESTDIR=%{buildroot} install
-
-# For some reason, some of the files are installed into /usr/lib.
-%if "%{_libdir}" != "%{_prefix}/lib"
-mv %{buildroot}%{_prefix}/lib/* %{buildroot}%{_libdir}
-%endif
+%global ocaml_standard_library %{_libdir}
+%ocaml_dune_install
 
 %if %{with ide}
 %suse_update_desktop_file -i %{SOURCE1}
@@ -121,8 +119,6 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/metainfo/fr.inria.coq.coqid
 install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/mime/packages/coq.xml
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 ln -s %{_datadir}/coq/coq.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/coq.png
-%else
-rm %{buildroot}%{_bindir}/coqidetop{.byte,.opt}
 %endif
 
 # Sometimes we get identical x and x.opt files, replace by symlink x -> x.opt.
@@ -140,9 +136,6 @@ done
 chmod -x %{buildroot}%{_libdir}/coq-core/tools/TimeFileMaker.py
 sed -i '1s|^#!/usr/bin/env *|#!/usr/bin/|;1s|^#!/usr/bin/python$|#!/usr/bin/python3|' \
     %{buildroot}%{_libdir}/coq-core/tools/make-{one-time-file,both-{time,single-timing}-files}.py
-
-# Remove installed LICENSE, we put it elsewhere.
-rm %{buildroot}%{_docdir}/%{name}/coq{-core,ide,ide-server}/LICENSE
 
 # Remove superfluous man page.
 rm %{buildroot}%{_mandir}/man1/coqtop.byte.1
@@ -208,13 +201,11 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_bindir}/coqdoc
 %{_bindir}/coqnative
 %{_bindir}/coqpp
-%{_bindir}/coqproofworker.opt
-%{_bindir}/coqqueryworker.opt
-%{_bindir}/coqtacticworker.opt
 %{_bindir}/coqtop
 %{_bindir}/coqtop.byte
 %{_bindir}/coqtop.opt
 %{_bindir}/coqwc
+%{_bindir}/coqworker.opt
 %{_bindir}/coqworkmgr
 %{_bindir}/csdpcert
 %{_bindir}/ocamllibdep
@@ -240,9 +231,6 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %dir %{_datadir}/texmf/tex/latex/misc
 %{_datadir}/texmf/tex/latex/misc/coqdoc.sty
 
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/coq-core
-
 %if %{with ide}
 %files ide
 %{_bindir}/coqide
@@ -254,14 +242,11 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_datadir}/icons/hicolor/256x256/apps/coq.png
 %{_datadir}/metainfo/fr.inria.coq.coqide.metainfo.xml
 %{_datadir}/mime/packages/coq.xml
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/coqide
-%{_docdir}/%{name}/coqide-server
 %endif
 
 %files devel -f dir.list -f devel.list
 %{_libdir}/coq-core/revision
-%{_libdir}/{coq,coq-core,coq-stdlib,coqide,coqide-server}/{META,dune-package,opam}
+%{_libdir}/{%{dune_packages}}/{META,dune-package,opam}
 %{_libdir}/coq-core/tools/CoqMakefile.in
 
 %files doc

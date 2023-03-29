@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 28 21:18:57 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.17.0.
+  * Fixed a logical inconsistency due to `vm_compute` in presence
+    of side-effects in the enviroment (e.g. using Back or Fail).
+  * It is now possible to dynamically enable or disable notations.
+  * Support multiple scopes in `Arguments` and `Bind Scope`.
+  * The tactics chapter of the manual has many improvements in
+    presentation and wording. The documented grammar is semi-
+    automatically checked for consistency with the implementation.
+  * Fixes to the `auto` and `eauto` tactics, to respect hint
+    priorities and the documented use of simple apply. This is a
+    potentially breaking change.
+  * New Ltac2 APIs, deep pattern-matching with `as` clauses and
+    handling of literals, support for record types and preterms.
+  * Move from :> to :: syntax for declaring typeclass fields as
+    instances, fixing a confusion with declaration of coercions.
+  * Standard library improvements.
+
+-------------------------------------------------------------------
 Thu Jan 26 22:02:12 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
 
 - Build with ocaml-rpm-macros to get proper Requires and Provides
