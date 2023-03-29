@@ -17,7 +17,7 @@
 
 
 Name:           python-maturin
-Version:        0.14.15
+Version:        0.14.16
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/PyO3/maturin
 Source:         https://files.pythonhosted.org/packages/source/m/maturin/maturin-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch:          vendor-update-ahash-dependency.patch
+Patch0:         vendor-update-ahash-dependency.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust >= 1.4.0}

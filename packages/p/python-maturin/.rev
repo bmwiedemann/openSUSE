@@ -776,4 +776,15 @@
     dependencies</comment>
     <requestid>1072766</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>576c9d2b615f00376d5776f0d7461dd6</srcmd5>
+    <version>0.14.16</version>
+    <time>1680125236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.16:
+  * Deprecate package.metadata.maturin.name in favor of
+    tool.maturin.module-name in pyproject.toml
+    gh#PyO3/maturin#1531</comment>
+    <requestid>1075083</requestid>
+  </revision>
 </revisionlist>

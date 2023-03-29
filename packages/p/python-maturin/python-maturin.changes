@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 29 02:18:48 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.16:
+  * Deprecate package.metadata.maturin.name in favor of
+    tool.maturin.module-name in pyproject.toml
+    gh#PyO3/maturin#1531
+
+-------------------------------------------------------------------
 Fri Mar 17 22:53:30 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.14.15:
