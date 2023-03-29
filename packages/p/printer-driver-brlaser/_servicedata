@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git://github.com/pdewacht/brlaser.git</param>
-              <param name="changesrevision">9d7ddda8383bfc4d205b5e1b49de2b8bcd9137f1</param></service></servicedata>
+              <param name="changesrevision">9d7ddda8383bfc4d205b5e1b49de2b8bcd9137f1</param></service><service name="tar_scm">
+                <param name="url">https://github.com/pdewacht/brlaser.git</param>
+              <param name="changesrevision">2a49e3287c70c254e7e3ac9dabe9d6a07218c3fa</param></service></servicedata>

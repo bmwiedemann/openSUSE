@@ -1,7 +1,7 @@
 #
 # spec file for package printer-driver-brlaser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Xu Zhao (i@xuzhao.net)
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           printer-driver-brlaser
-Version:        6+git20200420.9d7ddda
+Version:        6+git20230220.2a49e32
 Release:        0
 Summary:        Driver for (some) Brother laster printers
 License:        GPL-2.0-or-later

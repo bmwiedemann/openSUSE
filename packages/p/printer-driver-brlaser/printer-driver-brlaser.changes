@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 28 07:11:03 UTC 2023 - lnussel@suse.de
+
+- Update to version 6+git20230220.2a49e32:
+  * Fix build with GCC 13
+  * Fix MFC-7460DN PPD file name
+
+-------------------------------------------------------------------
 Wed Aug 19 10:42:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

@@ -1,14 +1,14 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="versionformat">6+git%cd.%h</param>
-    <param name="url">git://github.com/pdewacht/brlaser.git</param>
+    <param name="url">https://github.com/pdewacht/brlaser.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

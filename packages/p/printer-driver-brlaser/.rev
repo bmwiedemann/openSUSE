@@ -97,4 +97,14 @@
     <comment></comment>
     <requestid>827877</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c61073509ba81dc488e1071f69c69fb</srcmd5>
+    <version>6+git20230220.2a49e32</version>
+    <time>1680125263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6+git20230220.2a49e32:
+  * Fix build with GCC 13
+  * Fix MFC-7460DN PPD file name (forwarded request 1074892 from lnussel)</comment>
+    <requestid>1075149</requestid>
+  </revision>
 </revisionlist>
