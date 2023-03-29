@@ -17,9 +17,10 @@
 
 
 Name:           element-web
-Version:        1.11.23
+Version:        1.11.26
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
+Group:          Productivity/Networking/Talk/Clients
 License:        Apache-2.0
 URL:            https://github.com/vector-im/element-web
 Source0:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
@@ -27,7 +28,6 @@ Source1:        npm-packages-offline-cache.tar.gz
 Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
 Patch0:         fix-webpack-oom.patch
-Patch1:         webpack-fix-openssl3.patch
 BuildRequires:  yarn
 BuildRequires:  nodejs-packaging
 BuildRequires:  fdupes
