@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 22 13:48:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_xserver-composite-Fix-use-after-free-of-the-COW.patch
+  * overlay window use-after-free (CVE-2023-1393, ZDI-CAN-19866,
+    bsc#1209543)
+
+-------------------------------------------------------------------
 Tue Feb  7 14:35:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version xorg-server-21.1.7:
