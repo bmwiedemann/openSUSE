@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 15:49:09 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it works fine now (use FAT lto objects for static libs).
+
+-------------------------------------------------------------------
 Wed Mar 15 07:33:43 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Configure with --enable-appliance-format-auto to allow

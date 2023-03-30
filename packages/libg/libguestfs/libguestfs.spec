@@ -92,8 +92,7 @@ schemes, qcow, qcow2, vmdk.
 sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
 
 %build
-%define _lto_cflags %{nil}
-
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # use 'env LIBGUESTFS_HV=/path/to/kvm libguestfs-test-tool' to verify
 %define kvm_binary /bin/false
 %ifarch aarch64
