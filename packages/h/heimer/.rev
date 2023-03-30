@@ -174,4 +174,32 @@
     + Rename index =&gt; i, index0 =&gt; i0, index1 =&gt; i1</comment>
     <requestid>1070826</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4d9a51e13ae085d30482d7c04b46c8cb</srcmd5>
+    <version>4.1.0</version>
+    <time>1680209590</time>
+    <user>dimstar_suse</user>
+    <comment>- Add heimer-4.1.0-remove-range.patch:
+  Fix build for Tumbleweed with gcc13 by removing range dep
+  See gh/juzzlin/Heimer#242
+
+- Update to 4.1.0:
+  New features:
+  * Add setting for shadow effect optimization
+  * Layout optimization
+    + Allow bigger aspect ratio
+    + Allow longer edges
+  * Darker default outline for nodes
+  * Add subtle outline for edge labels
+  * Fix GitHub Issue #238: Shadow effects introduce performance issues
+  * Fix GitHub Issue #239: Cannot drag if the drag position is
+    inside the virtual rectangle spanned by an edge
+  * Update Italian translations
+  * Update Dutch translations
+  Performance:
+  * Don't update scene rect when adding edges
+  * Remove shadow effects from edges as long edges can make dragging
+    stutter</comment>
+    <requestid>1075679</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Mar 30 19:18:30 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add heimer-4.1.0-remove-range.patch:
+  Fix build for Tumbleweed with gcc13 by removing range dep
+  See gh/juzzlin/Heimer#242
+
+-------------------------------------------------------------------
+Mon Mar 20 09:06:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  New features:
+  * Add setting for shadow effect optimization
+  * Layout optimization
+    + Allow bigger aspect ratio
+    + Allow longer edges
+  * Darker default outline for nodes
+  * Add subtle outline for edge labels
+  * Fix GitHub Issue #238: Shadow effects introduce performance issues
+  * Fix GitHub Issue #239: Cannot drag if the drag position is
+    inside the virtual rectangle spanned by an edge
+  * Update Italian translations
+  * Update Dutch translations
+  Performance:
+  * Don't update scene rect when adding edges
+  * Remove shadow effects from edges as long edges can make dragging
+    stutter
+
+-------------------------------------------------------------------
 Sat Mar 11 06:03:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.0:
