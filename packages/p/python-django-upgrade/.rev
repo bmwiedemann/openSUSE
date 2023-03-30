@@ -44,4 +44,27 @@
     comparisons on ``request.META``.</comment>
     <requestid>1059955</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac2f9d79cd83116ffb24697333c3d46c</srcmd5>
+    <version>1.13.0</version>
+    <time>1680209487</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * Add Django 4.2+ fixer to combine deprecated
+    ``DEFAULT_FILE_STORAGE`` and ``STATICFILES_STORAGE`` settings
+    into the new ``STORAGES`` setting.
+  * Add Django 4.2+ fixer to rewrite HTTP headers passed to test
+    ``Client`` and ``RequestFactory``.
+  * Add Django 4.2+ fixer to rewrite test case methods
+    ``assertFormsetError()`` and ``assertQuerysetEqual()`` into
+    the new spellings with capitalized “Set”.
+  * Add Django 4.0 fixer to rewrite
+    ``django.contrib.admin.utils.lookup_needs_distinct`` -&gt;
+    ``lookup_spawns_duplicates``.
+  * Rewrite ``request.META`` -&gt; ``request.headers`` on the *right
+    hand side* of assignments.
+  * Group some compatibility import replacements into a single
+    “fixer”, optimizing runtime by about 3%.</comment>
+    <requestid>1075479</requestid>
+  </revision>
 </revisionlist>

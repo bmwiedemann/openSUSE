@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:50:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Add Django 4.2+ fixer to combine deprecated
+    ``DEFAULT_FILE_STORAGE`` and ``STATICFILES_STORAGE`` settings
+    into the new ``STORAGES`` setting.
+  * Add Django 4.2+ fixer to rewrite HTTP headers passed to test
+    ``Client`` and ``RequestFactory``.
+  * Add Django 4.2+ fixer to rewrite test case methods
+    ``assertFormsetError()`` and ``assertQuerysetEqual()`` into
+    the new spellings with capitalized “Set”.
+  * Add Django 4.0 fixer to rewrite
+    ``django.contrib.admin.utils.lookup_needs_distinct`` ->
+    ``lookup_spawns_duplicates``.
+  * Rewrite ``request.META`` -> ``request.headers`` on the *right
+    hand side* of assignments.
+  * Group some compatibility import replacements into a single
+    “fixer”, optimizing runtime by about 3%.
+
+-------------------------------------------------------------------
 Fri Jan 20 12:11:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.0:
