@@ -31,6 +31,8 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Compile-with-discount-3.patch
 %if 0
 # PATCH-FEATURE-OPENSUSE
 # PATCH-NEEDS-REBASE DISABLED as of 2021-04-10: needs rework (underlying code changed)

@@ -1275,4 +1275,13 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068939</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>25772729a636038b5e27b9ba65f2a9eb</srcmd5>
+    <version>22.12.3</version>
+    <time>1680209438</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Discount 3 compatibility patch:
+  * 0001-Compile-with-discount-3.patch</comment>
+    <requestid>1075077</requestid>
+  </revision>
 </revisionlist>

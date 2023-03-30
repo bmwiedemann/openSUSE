@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 28 22:24:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add Discount 3 compatibility patch:
+  * 0001-Compile-with-discount-3.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:46:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3
