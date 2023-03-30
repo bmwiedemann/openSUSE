@@ -38,8 +38,8 @@ BuildRequires:  cfitsio-devel
 %else
 BuildRequires:  libcfitsio-devel
 %endif
-BuildRequires:  libnova-devel
 BuildRequires:  libev-devel
+BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
@@ -67,10 +67,10 @@ Summary:        Development files for libindi
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libindiAlignmentDriver%{so_ver} = %{version}
-Requires:       libindidriver%{so_ver} = %{version}
-Requires:       libindilx200-%{so_ver} = %{version}
 Requires:       libindiclient%{so_ver} = %{version}
 Requires:       libindiclientqt%{so_ver} = %{version}
+Requires:       libindidriver%{so_ver} = %{version}
+Requires:       libindilx200-%{so_ver} = %{version}
 
 %description devel
 This package contains development files for libindi.
@@ -146,7 +146,7 @@ completely dynamic GUI based on the services provided by the device.
 %autosetup -p1 -n indi-%{version}
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 export CFLAGS="%(echo %{optflags}) -Wno-stringop-truncation"
 export CXXFLAGS="$CFLAGS"
