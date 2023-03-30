@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Mar 28 09:53:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20230322:
+  - Features
+    * Use DT_SLIST for charset variables
+    * Support viewing html with embedded images
+    * Account command, see the feature page
+    * Check that sendmail and inews don't contain shell meta characters
+    * Browser: add mailbox_folder_format config variable
+    * Enter: add function kill-whole-line
+    * Account command: add macOS keychain sample provider
+    * Account command: add GPG+JSON sample provider
+    * Expose italics attribute for colour scheme
+    * Allow source in hooks to point to relative paths
+    * Resolve alternates when subscribing/unsubscribing
+    * Notmuch: allow specifying configuration file
+    * Notmuch: allow usage of notmuch profiles
+    * Add GNU SASL support for authentication (--gsasl configure option)
+    * Extend colour objects to support patterns
+    * Detect and fixup maildirs with missing "new" and "tmp" directories
+    * Generate standard MIME types as application/pkcs7-* instead of legacy application/x-pkcs7-*
+    * Compose: add Smime: pseudo header
+    * Handle more X-Mutt pseudo-headers with edit_headers
+    * Use socket_timeout to time out read/write operations
+    * Allow %[fmt] in $folder_format
+    * Respect attribution_locale in indent_string and post_indent_string
+    * Pattern: add ~K to search Bcc, include Bcc in ~C, %C, ~L, and ~p
+    * Colour postponed emails list
+    * Allow querying user-defined variables ($my_var) with -Q
+    * Dump user-defined variables ($my_var) with -D
+    * Generate purely random Message-ID headers
+    * Allow an empty sidebar_divider_char
+    * Fix handling and display of group addresses
+  - Bug Fixes
+    * Fix status_on_top to work on complex windows, e.g., attach
+    * Imap: fix off-by-one error causing bogus "Progress message 10/9" message
+    * Attach: fix segfault when viewing HTML attachment in compose mode
+    * Allow for longer expansions in e.g., index_format
+    * Accept unpadded base64-encoded data, as some mailers produce
+    * Fix hangup when trying to add email address from help screens
+    * Handle corrupted header caches
+    * Fix slowdown when changing folders
+    * Improve error detection for invalid color regexes
+    * Distinguish between old/new with mark_old unset
+    * Parse mboxes with unconventional From lines
+    * Fix hostname detection for hostname ending with a "."
+    * Fix truncated SMTP lines in case of very long lines
+    * Use smime_sign_as instead of pgp_sign_as when signing S/MIME messages
+    * Set smime_sign_as instead of smime_default_key when signing
+    * Fix wrong message being marked as read with $pager_read_delay = 1
+    * Fix negative new-mail count on maildir
+    * Skip zero width non-joiner character in the pager
+    * Handle text/vcard as not being an attachment, same as for text/x-vcard
+    * Fix hdr_order not sorting last header correctly
+    * Make exiting via SIGINT more graceful
+    * Fix unhook index-format-hook
+    * Send: delete signature when sending fails
+    * SMTP: try all available methods even if SASL is not compiled in
+    * Fix decryption issue when postponing S/MIME encrypted mails
+    * Avoid unnecessary refreshes
+    * Fixed a number of memory leaks and crashes
+  - Changed Config
+    * New
+      * $account_command - Shell command to retrieve account credentials
+      * $mailbox_folder_format - printf-like format string for the browser's display of mailbox folders
+      * $nm_config_file - Configuration file for notmuch. Use 'auto' to detect configuration.
+      * $nm_config_profile - Configuration profile for notmuch.
+    * Renamed for consistency (old names still work)
+      * $ask_follow_up -> $ask_followup_to
+      * $attribution -> $attribution_intro
+      * $connect_timeout -> $socket_timeout
+      * $implicit_autoview -> $implicit_auto_view
+      * $message_cachedir -> $message_cache_dir
+      * $post_indent_string -> $attribution_trailer
+      * $tmpdir -> $tmp_dir
+      * sidebar_whitelist -> sidebar_pin
+      * unsidebar_whitelist -> sidebar_unpin
+    * Changed default
+      * attach_format = "%u%D%I %t%4n %T%d %> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+      * More space for the attachment filename
+      * sidebar_divider_char = "|"
+      * Allow an empty divider char
+    * Deprecated
+      * $vfolder_format use $folder_format
+  - Translations
+    * 100% czech_republic Czech
+    * 100% de German
+    * 100% hungary Hungarian
+    * 100% lithuania Lithuanian
+    * 100% brazil Portuguese (Brazil)
+    * 100% serbia Serbian
+    * 100% slovakia Slovak
+    * 100% tr Turkish
+    * 99% es Spanish
+    * 99% ukraine Ukrainian
+    * 94% poland Polish
+    * 72% Catalan
+
+-------------------------------------------------------------------
 Tue Jun 14 13:41:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix build for older dists 

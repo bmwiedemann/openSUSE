@@ -1,7 +1,7 @@
 #
 # spec file for package neomutt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20220429
+Version:        20230322
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
@@ -56,6 +56,18 @@ Recommends:     neomutt-lang
 %description
 NeoMutt is a command line mail reader based on Mutt, brings together many
 new features. Can be installed in parallel with mutt.
+
+%package contrib
+Summary:        Contrib scripts for Neomutt
+Group:          Productivity/Networking/Email/Clients
+Requires:       %{name} = %{version}
+Recommends:     perl
+Recommends:     python3
+BuildArch:      noarch
+
+%description contrib
+Examples, scripts and helpers that are distributed with Neomutt but are not
+maintained by the Neomutt authors.
 
 %package doc
 Summary:        Additional documentation for neomutt
@@ -117,41 +129,41 @@ make %{?_smp_mflags}
 # this file is used from the default /etc/neomuttrc and moved from neomutt-doc
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/manual.txt
+# helper scripts and instructions
+%dir %{_datadir}/%{name}/
+%dir %{_datadir}/%{name}/account-command/
+%dir %{_datadir}/%{name}/account-command/gpg-json/
+%dir %{_datadir}/%{name}/account-command/macos-keychain/
+%doc %{_datadir}/%{name}/account-command/README.md
+%{_datadir}/%{name}/account-command/gpg-json/credentials.sh
+%doc %{_datadir}/%{name}/account-command/gpg-json/README.md
+%{_datadir}/%{name}/account-command/macos-keychain/keychain.py
+%doc %{_datadir}/%{name}/account-command/macos-keychain/README.md
+
+%files contrib
+%dir %{_datadir}/%{name}/oauth2/
+%dir %{_datadir}/%{name}/vim-keys/
+%{_datadir}/%{name}/oauth2/mutt_oauth2.py
+%doc %{_datadir}/%{name}/oauth2/mutt_oauth2.py.README
+%doc %{_datadir}/%{name}/vim-keys/vim-keys.rc
+%doc %{_datadir}/%{name}/vim-keys/README.md
 
 %files doc
 %dir %{_docdir}/%{name}/
-%dir %doc %{_docdir}/%{name}/colorschemes/
-%dir %doc %{_docdir}/%{name}/hcache-bench/
-%dir %doc %{_docdir}/%{name}/keybase/
-%dir %doc %{_docdir}/%{name}/logo/
-%dir %doc %{_docdir}/%{name}/lua/
-%dir %doc %{_docdir}/%{name}/samples/
-%dir %doc %{_docdir}/%{name}/vim-keys/
+%dir %doc %{_datadir}/%{name}/colorschemes/
+%dir %doc %{_datadir}/%{name}/logo/
 %doc %{_docdir}/%{name}/AUTHORS.md
 %doc %{_docdir}/%{name}/ChangeLog.md
 %doc %{_docdir}/%{name}/CODE_OF_CONDUCT.md
-%doc %{_docdir}/%{name}/colorschemes/*.neomuttrc
+%doc %{_datadir}/%{name}/colorschemes/*.neomuttrc
 %doc %{_docdir}/%{name}/CONTRIBUTING.md
-%doc %{_docdir}/%{name}/hcache-bench/neomutt-hcache-bench.sh
-%doc %{_docdir}/%{name}/hcache-bench/neomuttrc
-%doc %{_docdir}/%{name}/hcache-bench/README.md
 %doc %{_docdir}/%{name}/*.html
 %doc %{_docdir}/%{name}/INSTALL.md
-%doc %{_docdir}/%{name}/keybase/*
-%doc %{_docdir}/%{name}/logo/neomutt*
-%doc %{_docdir}/%{name}/lua/test_lua-api_runner.neomuttrc
-%doc %{_docdir}/%{name}/lua/test_lua-api_spec.lua
-%doc %{_docdir}/%{name}/mime.types
-%doc %{_docdir}/%{name}/oauth2
+%doc %{_datadir}/%{name}/logo/neomutt*
+%doc %{_datadir}/%{name}/mime.types
 %doc %{_docdir}/%{name}/README*
-%doc %{_docdir}/%{name}/samples/colors.*
-%doc %{_docdir}/%{name}/samples/*.pl
-%doc %{_docdir}/%{name}/samples/*.py
-%doc %{_docdir}/%{name}/samples/*.rc
-%doc %{_docdir}/%{name}/samples/sample.*
 %doc %{_docdir}/%{name}/SECURITY.md
 %doc %{_docdir}/%{name}/smime-notes.txt
-%doc %{_docdir}/%{name}/vim-keys/*
 
 %files lang -f %{name}.lang
 
