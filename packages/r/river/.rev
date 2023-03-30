@@ -67,4 +67,22 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1074332</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb2872b5f4cea5c34e9ca867bed0b4ac</srcmd5>
+    <version>0.2.4+g109</version>
+    <time>1680209488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.4+g109:
+  * command/send-to-output: add -current-tags flag
+  * Server: remove debug leftover
+  * session-lock: fix assertion failures and clean up
+  * LayerSurface: fix surfaces on multiple outputs at once
+  * LayerSurface: handle focus when switching outputs
+  * build: work around zig 0.10.0 bug to fix CI
+  * Cursor: apply x/y change during resize on commit
+  * Cursor: lock to current geometry during move/resize
+  * XdgToplevel: ensure view dimensions match geometry
+</comment>
+    <requestid>1075500</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 27 14:14:50 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g109:
+  * command/send-to-output: add -current-tags flag
+  * Server: remove debug leftover
+  * session-lock: fix assertion failures and clean up
+  * LayerSurface: fix surfaces on multiple outputs at once
+  * LayerSurface: handle focus when switching outputs
+  * build: work around zig 0.10.0 bug to fix CI
+  * Cursor: apply x/y change during resize on commit
+  * Cursor: lock to current geometry during move/resize
+  * XdgToplevel: ensure view dimensions match geometry
+
+-------------------------------------------------------------------
 Sat Mar 18 13:32:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.2.4+g106:
