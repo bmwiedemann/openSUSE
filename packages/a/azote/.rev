@@ -176,4 +176,16 @@
   * Added &quot;Close&quot; button to unify this matter as well.</comment>
     <requestid>1070332</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e8a4565456c41cb9eb990656cef8c7aa</srcmd5>
+    <version>1.11.0</version>
+    <time>1680209484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:
+  * Increase awk compatibility
+  * Add Hyprland-specific displays detection
+  * Fix imports
+  * Fix example wallpaper</comment>
+    <requestid>1075404</requestid>
+  </revision>
 </revisionlist>
