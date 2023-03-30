@@ -451,4 +451,17 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1071349</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>08cc36ca1742ab18ea1351d7824c6b96</srcmd5>
+    <version>1.6.19</version>
+    <time>1680209451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to containerd v1.6.19 for Docker v23.0.2-ce. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.6.19&gt;
+
+  Includes fixes for:
+   - CVE-2023-25153 bsc#1208423
+   - CVE-2023-25173 bsc#1208426</comment>
+    <requestid>1075229</requestid>
+  </revision>
 </revisionlist>
