@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-reservations
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Microsoft Azure Reservations Client Library
 License:        MIT
