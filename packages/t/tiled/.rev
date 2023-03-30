@@ -802,4 +802,12 @@
   * Scripting: Fixed painting issues after changing TileLayer size (#3481)</comment>
     <requestid>1072096</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ceb7f06e05274965b402cf4e863b3678</srcmd5>
+    <version>1.10.0</version>
+    <time>1680209480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075354</requestid>
+  </revision>
 </revisionlist>

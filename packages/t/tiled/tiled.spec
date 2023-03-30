@@ -71,7 +71,7 @@ rm -rf src/zlib
 
 %build
 # see gh/mapeditor/tiled#3613 why no --detect
-qbs setup-toolchains --type gcc %{_bindir}/g++-12 gcc
+qbs setup-toolchains --type gcc %{_bindir}/g++-13 gcc
 qbs setup-qt %{_bindir}/qmake6 defprof
 qbs config defaultProfile defprof
 qbs qbs.installPrefix:"%{_prefix}" projects.Tiled.useRPaths:false

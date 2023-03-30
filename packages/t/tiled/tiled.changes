@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 16:57:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Bump qbs setup-toolchains call to gcc++-13 now that we are using
+  gcc13 as default compiler. Fixes build in Tumbleweed.
+
+-------------------------------------------------------------------
 Wed Mar 15 12:01:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Add tiled-1.10.0-lib.patch:
