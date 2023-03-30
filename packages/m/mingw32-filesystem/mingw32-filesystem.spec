@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20230309
+Version:        20230401
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -49,13 +49,9 @@ Source8:        mingw32-install-post.sh
 Source9:        mingw32-find-lang.sh
 Source10:       languages
 Source11:       languages.man
-Source12:       mingw32-cmake.prov
-Source13:       mingw32_cmake.attr
-Source14:       macros.mingw32-cmake
 Source15:       mingw32-filesystem-rpmlintrc
 Source16:       mingw-objdump-srcfiles
 Source17:       mingw32_binaries.attr
-Source18:       mingw32_cmake.attr
 Source19:       mingw32_config.attr
 Source20:       mingw32_libs.attr
 Source21:       mingw32_pkgconfig.attr
@@ -119,7 +115,7 @@ install -m 755 %{SOURCE6} %{buildroot}%{_libexecdir}/mingw32-scripts
 # but including macros.mingw32 results into an unknown failure
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-for i in mingw32-configure mingw32-make mingw32-cmake mingw32-gdb; do
+for i in mingw32-configure mingw32-make mingw32-gdb; do
   ln -s %{_libexecdir}/mingw32-scripts $i
 done
 popd
@@ -129,7 +125,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/profile.d/
 
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.mingw32
-install -m 644 %{SOURCE14} %{buildroot}%{_rpmmacrodir}/$(basename %{SOURCE14})
 
 mkdir -p %{buildroot}%_rpmlintdir
 # tumbleweed
@@ -187,13 +182,9 @@ install -m 0755 %{SOURCE4} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE5} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE8} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE9} %{buildroot}%{_rpmconfigdir}
-# cmake support
-install -m 0755 %{SOURCE12} %{buildroot}%{_rpmconfigdir}
-mkdir -p %{buildroot}%{_fileattrsdir}
-install -m 0644 %{SOURCE13} %{buildroot}%{_fileattrsdir}
 # dependency generator support
+mkdir -p %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE17} %{buildroot}%{_fileattrsdir}
-install -m 0644 %{SOURCE18} %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE19} %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE20} %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE21} %{buildroot}%{_fileattrsdir}
@@ -216,7 +207,6 @@ install -m 0755 %{SOURCE16} %{buildroot}%{_bindir}/i686-w64-mingw32-objdump-srcf
 %files
 %license COPYING
 %{_rpmmacrodir}/macros.mingw32
-%{_rpmmacrodir}/macros.mingw32-cmake
 %if %{undefined _distconfdir}
 %config %{_sysconfdir}/profile.d/mingw32.sh
 %else
@@ -228,7 +218,6 @@ install -m 0755 %{SOURCE16} %{buildroot}%{_bindir}/i686-w64-mingw32-objdump-srcf
 %_rpmlintdir/mingw32-rpmlint.config
 %endif
 
-%{_rpmconfigdir}/mingw32-*.prov
 %{_fileattrsdir}/mingw32*.attr
 %{_bindir}/mingw32-*
 %{_bindir}/i686-w64-mingw32-*

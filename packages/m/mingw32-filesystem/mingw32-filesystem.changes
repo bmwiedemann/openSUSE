@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 28 04:05:34 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20230401
+  * Drop cmake support files as they are now located in the
+    mingw32-cross-cmake (boo#1209611)
+
+-------------------------------------------------------------------
 Fri Mar 17 08:54:56 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - In cmake macros, avoid changing the current directory
