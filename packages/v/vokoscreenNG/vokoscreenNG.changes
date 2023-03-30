@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 11:58:58 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.6.0
+  * Qt6 compatibility
+  * Snapshot: Area wait before record
+  * Log: Add Button open folder
+  * Pulseaudio: Add audioresample
+  * WASAPI: Record more as one devices
+  * Magnifier: Rectangle as default
+  * Translation updates
+
+-------------------------------------------------------------------
 Tue Jan  3 20:01:53 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 3.5.0
