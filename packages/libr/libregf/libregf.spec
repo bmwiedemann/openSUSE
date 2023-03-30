@@ -18,14 +18,14 @@
 
 %define lname	libregf1
 Name:           libregf
-Version:        20221026
+Version:        20230319
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libregf
 Source:         https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz
-Source2:        https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz.asc
+#Source2:        https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       Windows_NT_Registry_File_REGF_format.pdf
 BuildRequires:  %{python_module devel}
@@ -34,7 +34,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
 BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
 BuildRequires:  pkgconfig(libclocale) >= 20220107
@@ -42,12 +42,12 @@ BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libfdata) >= 20230319
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfwnt) >= 20220922
-BuildRequires:  pkgconfig(libfwsi) >= 20220927
+BuildRequires:  pkgconfig(libfwsi) >= 20230114
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
