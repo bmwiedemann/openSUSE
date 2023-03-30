@@ -522,6 +522,8 @@ unsorted:
   - alsa-plugins-maemo 
   - alsa-plugins-maemo-32bit 
   - alsa-plugins-oss 
+  - alsa-plugins-pulse 
+  - alsa-plugins-pulse-32bit 
   - alsa-plugins-samplerate 
   - alsa-plugins-samplerate-32bit 
   - alsa-plugins-speex 
@@ -825,6 +827,9 @@ unsorted:
   - arphic-gkai00mp-fonts 
   - arping2 
   - arprec-devel 
+  - arptables 
+  - arpwatch 
+  - arpwatch-ethercodes 
   - arpwatch-ethercodes-build 
   - artha 
   - artifacts 
@@ -1800,6 +1805,7 @@ unsorted:
   - calamares-branding-upstream 
   - calamares-lang 
   - calamares-webview 
+  - calamaris 
   - calc 
   - calc-devel 
   - calcium-devel 
@@ -1852,8 +1858,6 @@ unsorted:
   - cargo-auditable 
   - cargo-c 
   - cargo-packaging 
-  - cargo1.62 
-  - cargo1.65 
   - cargo1.66 
   - cargo1.67 
   - cargo1.68 
@@ -2906,6 +2910,7 @@ unsorted:
   - ddccontrol-doc 
   - ddccontrol-gtk 
   - ddccontrol-lang 
+  - ddclient 
   - ddcutil 
   - ddgr 
   - ddnet 
@@ -3413,6 +3418,7 @@ unsorted:
   - editorconfig 
   - editres 
   - ee4j 
+  - eekboard 
   - eekboard-devel 
   - eeyek-fonts 
   - efitools 
@@ -3671,6 +3677,7 @@ unsorted:
   - exfatprogs 
   - exif 
   - exiftran 
+  - exim 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -3870,6 +3877,8 @@ unsorted:
   - fence-sanlock 
   - festival 
   - festival-devel 
+  - fetchmail 
+  - fetchmailconf 
   - fetchmsttfonts 
   - ffado 
   - ffado-mixer 
@@ -5900,6 +5909,7 @@ unsorted:
   - ghex-devel 
   - ghex-lang 
   - ghostscript-devel 
+  - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -6000,6 +6010,7 @@ unsorted:
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
+  - git-svn 
   - git-sync 
   - git-test 
   - gitg 
@@ -6147,6 +6158,7 @@ unsorted:
   - glpk-devel 
   - glpk-doc 
   - glslang-devel 
+  - glslang-nonstd-devel 
   - glu-devel 
   - glu-devel-32bit 
   - glucat-devel 
@@ -7329,6 +7341,8 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
+  - hylafax+ 
+  - hylafax+-client 
   - hyper-v-enhanced-session 
   - hyperfine 
   - hyperfine-bash-completion 
@@ -7482,6 +7496,7 @@ unsorted:
   - idzebra 
   - idzebra-devel 
   - idzebra-doc 
+  - iftop 
   - ifuse 
   - iga 
   - igerman98-doc 
@@ -8215,7 +8230,6 @@ unsorted:
   - json4s-scalap 
   - json4s-xml 
   - jsoncpp-devel 
-  - jsonnet 
   - jsonp 
   - jsonp-javadoc 
   - jsonrpc-glib-devel 
@@ -8665,6 +8679,7 @@ unsorted:
   - kitinerary-devel 
   - kitty 
   - kiwi-man-pages 
+  - kiwi-pxeboot 
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
   - kiwi-systemdeps-containers 
@@ -8937,6 +8952,7 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes1.20-apiserver 
   - kubernetes1.20-client 
+  - kubernetes1.20-client-bash-completion 
   - kubernetes1.20-client-common 
   - kubernetes1.20-controller-manager 
   - kubernetes1.20-kubeadm 
@@ -8946,6 +8962,7 @@ unsorted:
   - kubernetes1.20-scheduler 
   - kubernetes1.21-apiserver 
   - kubernetes1.21-client 
+  - kubernetes1.21-client-bash-completion 
   - kubernetes1.21-client-common 
   - kubernetes1.21-controller-manager 
   - kubernetes1.21-kubeadm 
@@ -8955,6 +8972,7 @@ unsorted:
   - kubernetes1.21-scheduler 
   - kubernetes1.22-apiserver 
   - kubernetes1.22-client 
+  - kubernetes1.22-client-bash-completion 
   - kubernetes1.22-client-common 
   - kubernetes1.22-controller-manager 
   - kubernetes1.22-kubeadm 
@@ -8964,7 +8982,9 @@ unsorted:
   - kubernetes1.22-scheduler 
   - kubernetes1.23-apiserver 
   - kubernetes1.23-client 
+  - kubernetes1.23-client-bash-completion 
   - kubernetes1.23-client-common 
+  - kubernetes1.23-client-fish-completion 
   - kubernetes1.23-controller-manager 
   - kubernetes1.23-kubeadm 
   - kubernetes1.23-kubelet 
@@ -8973,7 +8993,9 @@ unsorted:
   - kubernetes1.23-scheduler 
   - kubernetes1.24-apiserver 
   - kubernetes1.24-client 
+  - kubernetes1.24-client-bash-completion 
   - kubernetes1.24-client-common 
+  - kubernetes1.24-client-fish-completion 
   - kubernetes1.24-controller-manager 
   - kubernetes1.24-kubeadm 
   - kubernetes1.24-kubelet 
@@ -8982,7 +9004,9 @@ unsorted:
   - kubernetes1.24-scheduler 
   - kubernetes1.25-apiserver 
   - kubernetes1.25-client 
+  - kubernetes1.25-client-bash-completion 
   - kubernetes1.25-client-common 
+  - kubernetes1.25-client-fish-completion 
   - kubernetes1.25-controller-manager 
   - kubernetes1.25-kubeadm 
   - kubernetes1.25-kubelet 
@@ -8991,7 +9015,9 @@ unsorted:
   - kubernetes1.25-scheduler 
   - kubernetes1.26-apiserver 
   - kubernetes1.26-client 
+  - kubernetes1.26-client-bash-completion 
   - kubernetes1.26-client-common 
+  - kubernetes1.26-client-fish-completion 
   - kubernetes1.26-controller-manager 
   - kubernetes1.26-kubeadm 
   - kubernetes1.26-kubelet 
@@ -9183,6 +9209,7 @@ unsorted:
   - ldc-runtime-devel 
   - ldirectord 
   - ldmtool 
+  - ldns 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -9450,6 +9477,7 @@ unsorted:
   - libHepMC4 
   - libICE-devel 
   - libICE-devel-32bit 
+  - libICE6-32bit 
   - libIDL-2-0 
   - libIDL-2-0-32bit 
   - libIL1 
@@ -9886,6 +9914,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel 
   - libSM-devel-32bit 
+  - libSM6-32bit 
   - libSPIRV-Tools-2023_1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
@@ -9894,7 +9923,7 @@ unsorted:
   - libSciTokens0 
   - libShowMySky-Qt6-14 
   - libShowMySky-Qt6-14-devel 
-  - libSimGearCore-2020_3_17 
+  - libSimGearCore-2020_3_18 
   - libSingular-4_3_1 
   - libSingular-devel 
   - libSoQt20 
@@ -10014,6 +10043,7 @@ unsorted:
   - libXres-devel-32bit 
   - libXss-devel 
   - libXss-devel-32bit 
+  - libXss1-32bit 
   - libXt-devel 
   - libXt-devel-32bit 
   - libXt6-32bit 
@@ -10022,6 +10052,7 @@ unsorted:
   - libXtst6-32bit 
   - libXv-devel 
   - libXv-devel-32bit 
+  - libXv1-32bit 
   - libXvMC-devel 
   - libXvMC-devel-32bit 
   - libXvMC1-32bit 
@@ -10910,6 +10941,7 @@ unsorted:
   - libcriterion3-devel 
   - libcriu2 
   - libcroco 
+  - libcroco-0_6-3 
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
@@ -11327,6 +11359,7 @@ unsorted:
   - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
+  - libfaxutil7_0_7 
   - libfcache-devel 
   - libfcache1 
   - libfcft4 
@@ -11890,6 +11923,7 @@ unsorted:
   - libgstwayland-1_0-0-32bit 
   - libgstwebrtc-1_0-0-32bit 
   - libgstwebrtcnice-1_0-0-32bit 
+  - libgthread-2_0-0-32bit 
   - libgtk-3-0-32bit 
   - libgtk-layer-shell0 
   - libgtkd-3-0 
@@ -11979,6 +12013,7 @@ unsorted:
   - libhamlib4 
   - libhandy-devel 
   - libhangul-devel 
+  - libhangul1 
   - libhangul1-32bit 
   - libharfbuzz-cairo0 
   - libharfbuzz-gobject0-32bit 
@@ -12391,6 +12426,7 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit 
   - libjcat-devel 
+  - libjd0 
   - libjim0_81 
   - libjpeg62 
   - libjpeg62-32bit 
@@ -12593,6 +12629,7 @@ unsorted:
   - libldl2 
   - libldm-1_0-0 
   - libldm-1_0-0-devel 
+  - libldns3 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
   - libleechcraft-util-models-qt5-0_6_75_1 
@@ -12823,6 +12860,7 @@ unsorted:
   - libmdmp-devel 
   - libmdmp-tools 
   - libmdmp1 
+  - libmeanwhile1 
   - libmed-devel 
   - libmed-python 
   - libmed11 
@@ -13748,6 +13786,7 @@ unsorted:
   - libpnetcdf_1_12_3-gnu-openmpi3-hpc 
   - libpnetcdf_1_12_3-gnu-openmpi4-hpc 
   - libpng12-0 
+  - libpng12-0-32bit 
   - libpng12-compat-devel 
   - libpng12-compat-devel-32bit 
   - libpng12-devel 
@@ -13896,6 +13935,7 @@ unsorted:
   - libpurple-devel 
   - libpurple-plugin-gnome-keyring 
   - libpurple-plugin-pack-extras 
+  - libpurple-plugin-sametime 
   - libpwquality-devel 
   - libpystring0_0 
   - libpythia8 
@@ -14527,6 +14567,7 @@ unsorted:
   - libsepol-utils 
   - libsepol2-32bit 
   - libserd-0-0-32bit 
+  - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
   - libserializer-javadoc 
@@ -14602,7 +14643,9 @@ unsorted:
   - libsmdev-devel 
   - libsmdev-tools 
   - libsmdev1 
+  - libsmi 
   - libsmi-devel 
+  - libsmi2 
   - libsmooth-0_9-0 
   - libsmpeg-0_4-0 
   - libsmpp34-1 
@@ -14672,6 +14715,7 @@ unsorted:
   - libspeechd2-32bit 
   - libspeex1-32bit 
   - libspeexdsp1-32bit 
+  - libspf2-2 
   - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
@@ -14862,6 +14906,8 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
+  - libsvn_auth_gnome_keyring-1-0 
+  - libsvn_auth_kwallet-1-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit 
   - libswresample4-32bit 
@@ -15206,6 +15252,7 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit 
+  - libutf8proc2 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -17073,14 +17120,17 @@ unsorted:
   - mingw32-cpp 
   - mingw32-cross-binutils 
   - mingw32-cross-binutils-utils 
+  - mingw32-cross-cmake 
   - mingw32-cross-cpp 
   - mingw32-cross-cpp-bootstrap 
+  - mingw32-cross-ctest 
   - mingw32-cross-gcc 
   - mingw32-cross-gcc-bootstrap 
   - mingw32-cross-gcc-c++ 
   - mingw32-cross-gcc-fortran 
   - mingw32-cross-gcc-objc 
   - mingw32-cross-pkgconf 
+  - mingw32-cross-wine 
   - mingw32-filesystem 
   - mingw32-gcc 
   - mingw32-gcc-c++ 
@@ -17224,8 +17274,11 @@ unsorted:
   - mkvtoolnix-gui 
   - mkvtoolnix-tools 
   - mlterm 
+  - mlterm-ibus 
   - mlterm-m17n 
+  - mlterm-scim 
   - mlterm-uim 
+  - mlterm-wnn 
   - mm-common 
   - mm-common-docs 
   - mmc-utils 
@@ -17269,13 +17322,18 @@ unsorted:
   - monero-utils 
   - monerod 
   - mongolian-fonts 
+  - monitoring-plugins 
   - monitoring-plugins-all 
   - monitoring-plugins-apcupsd 
   - monitoring-plugins-bind 
   - monitoring-plugins-bind9 
   - monitoring-plugins-bl 
   - monitoring-plugins-bonding 
+  - monitoring-plugins-breeze 
+  - monitoring-plugins-by_ssh 
   - monitoring-plugins-clamav 
+  - monitoring-plugins-cluster 
+  - monitoring-plugins-common 
   - monitoring-plugins-contentage 
   - monitoring-plugins-count_file 
   - monitoring-plugins-cups 
@@ -17283,40 +17341,78 @@ unsorted:
   - monitoring-plugins-dbi-mysql 
   - monitoring-plugins-dbi-pgsql 
   - monitoring-plugins-dbi-sqlite3 
+  - monitoring-plugins-dhcp 
+  - monitoring-plugins-dig 
+  - monitoring-plugins-disk 
+  - monitoring-plugins-disk_smb 
+  - monitoring-plugins-dns 
   - monitoring-plugins-dns.pl 
   - monitoring-plugins-drbd9 
+  - monitoring-plugins-dummy 
   - monitoring-plugins-extras 
   - monitoring-plugins-fail2ban 
+  - monitoring-plugins-file_age 
+  - monitoring-plugins-flexlm 
   - monitoring-plugins-fping 
   - monitoring-plugins-haproxy 
   - monitoring-plugins-hpjd 
+  - monitoring-plugins-http 
+  - monitoring-plugins-icmp 
+  - monitoring-plugins-ide_smart 
+  - monitoring-plugins-ifoperstatus 
+  - monitoring-plugins-ifstatus 
   - monitoring-plugins-ipmi-sensor1 
+  - monitoring-plugins-ircd 
   - monitoring-plugins-keepalived 
   - monitoring-plugins-ldap 
+  - monitoring-plugins-load 
+  - monitoring-plugins-log 
+  - monitoring-plugins-mailq 
   - monitoring-plugins-mailstat 
   - monitoring-plugins-mem 
   - monitoring-plugins-metadata 
+  - monitoring-plugins-mrtg 
+  - monitoring-plugins-mrtgtraf 
   - monitoring-plugins-mysql 
   - monitoring-plugins-mysql_health 
   - monitoring-plugins-nagios 
   - monitoring-plugins-nis 
   - monitoring-plugins-nrpe 
+  - monitoring-plugins-nt 
+  - monitoring-plugins-ntp_peer 
+  - monitoring-plugins-ntp_time 
   - monitoring-plugins-nwc_health 
+  - monitoring-plugins-nwstat 
   - monitoring-plugins-openvpn 
+  - monitoring-plugins-oracle 
+  - monitoring-plugins-overcr 
   - monitoring-plugins-pgsql 
+  - monitoring-plugins-ping 
   - monitoring-plugins-postgres 
+  - monitoring-plugins-procs 
   - monitoring-plugins-qlogic_sanbox 
   - monitoring-plugins-radius 
+  - monitoring-plugins-real 
   - monitoring-plugins-repomd 
+  - monitoring-plugins-rpc 
   - monitoring-plugins-rsync 
   - monitoring-plugins-sar-perf 
+  - monitoring-plugins-sensors 
   - monitoring-plugins-sentry3 
   - monitoring-plugins-sip 
   - monitoring-plugins-smart 
+  - monitoring-plugins-smtp 
   - monitoring-plugins-snmp 
+  - monitoring-plugins-ssh 
+  - monitoring-plugins-swap 
+  - monitoring-plugins-tcp 
   - monitoring-plugins-tftp 
+  - monitoring-plugins-time 
   - monitoring-plugins-traffic_limit 
+  - monitoring-plugins-ups 
   - monitoring-plugins-uptime 
+  - monitoring-plugins-users 
+  - monitoring-plugins-wave 
   - monitoring-plugins-zypper 
   - mono-addins 
   - mono-addins-devel 
@@ -17562,6 +17658,7 @@ unsorted:
   - mtpaint 
   - mtpaint-handbook 
   - mtpaint-lang 
+  - mtr 
   - mtr-gtk 
   - mtree 
   - mtx 
@@ -17906,11 +18003,13 @@ unsorted:
   - mytop 
   - myxer 
   - naev 
+  - nagios 
   - nagios-contrib 
   - nagios-devel 
   - nagios-rpm-macros 
   - nagios-theme-exfoliation 
   - nagios-theme-switcher 
+  - nagios-www 
   - nagios-www-dch 
   - nailgun 
   - nailgun-javadoc 
@@ -17947,6 +18046,7 @@ unsorted:
   - nautilus-terminal 
   - nauty 
   - nauty-devel 
+  - nbd 
   - nbdfuse 
   - nbdkit-bash-completion 
   - nbdkit-devel 
@@ -18018,6 +18118,7 @@ unsorted:
   - neochat-lang 
   - neofetch 
   - neomutt 
+  - neomutt-contrib 
   - neomutt-doc 
   - neomutt-lang 
   - neovim 
@@ -18190,6 +18291,7 @@ unsorted:
   - nlopt-devel 
   - nm-tray 
   - nm-tray-lang 
+  - nmap 
   - nmap-parse-output 
   - nmap-parse-output-bash-completion 
   - nmcli-dmenu 
@@ -19230,6 +19332,7 @@ unsorted:
   - openslide-doc 
   - openslide-tools 
   - openslp-devel 
+  - openslp-server 
   - opensm 
   - opensm-devel 
   - opensm-devel-32bit 
@@ -19505,6 +19608,7 @@ unsorted:
   - pam_csync-32bit 
   - pam_dbus 
   - pam_krb5 
+  - pam_krb5-32bit 
   - pam_mktemp 
   - pam_mktemp-32bit 
   - pam_oath 
@@ -19646,6 +19750,8 @@ unsorted:
   - patterns-deepin-deepin_office 
   - patterns-deepin-deepin_office_opt 
   - patterns-deepin-deepin_utilities 
+  - patterns-desktop-books 
+  - patterns-desktop-mobile 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -19696,15 +19802,14 @@ unsorted:
   - patterns-mate-mate_office 
   - patterns-mate-mate_office_opt 
   - patterns-mate-mate_utilities 
-  - patterns-media-rest_cd_gnome 
-  - patterns-media-rest_cd_kde 
-  - patterns-media-rest_cd_x11 
-  - patterns-media-rest_core_dvd 
+  - patterns-media-rest_dvd 
+  - patterns-network-network_admin 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
   - patterns-server-directory_server-32bit 
   - patterns-server-file_server-32bit 
+  - patterns-server-gateway_server 
   - patterns-server-gateway_server-32bit 
   - patterns-server-lamp_server-32bit 
   - patterns-server-mail_server-32bit 
@@ -20076,6 +20181,7 @@ unsorted:
   - perl-Cookie-Baker 
   - perl-Crypt-Blowfish 
   - perl-Crypt-CBC 
+  - perl-Crypt-DES 
   - perl-Crypt-DH-GMP 
   - perl-Crypt-Eksblowfish 
   - perl-Crypt-JWT 
@@ -20084,6 +20190,7 @@ unsorted:
   - perl-Crypt-PBKDF2 
   - perl-Crypt-PasswdMD5 
   - perl-Crypt-RC4 
+  - perl-Crypt-Rijndael 
   - perl-Crypt-Rot13 
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
@@ -20679,6 +20786,7 @@ unsorted:
   - perl-Net-OpenStack-Compute 
   - perl-Net-Oping 
   - perl-Net-Pcap 
+  - perl-Net-SNMP 
   - perl-Net-SSH2 
   - perl-Net-SSLGlue 
   - perl-Net-TFTP 
@@ -22132,12 +22240,21 @@ unsorted:
   - ptscotch_6_1_0-gnu-openmpi4-hpc-devel 
   - ptscotch_6_1_0-gnu-openmpi4-hpc-devel-static 
   - pugixml-devel 
+  - pulseaudio 
+  - pulseaudio-bash-completion 
   - pulseaudio-equalizer 
+  - pulseaudio-gdm-hooks 
+  - pulseaudio-lang 
+  - pulseaudio-module-bluetooth 
+  - pulseaudio-module-gsettings 
   - pulseaudio-module-jack 
   - pulseaudio-module-lirc 
+  - pulseaudio-module-x11 
+  - pulseaudio-module-zeroconf 
   - pulseaudio-qt-devel 
   - pulseaudio-system-wide 
   - pulseaudio-utils-32bit 
+  - pulseaudio-zsh-completion 
   - pulseeffects 
   - pulseeffects-lang 
   - pulseview 
@@ -23316,6 +23433,7 @@ unsorted:
   - python310-azure-purview-catalog 
   - python310-azure-purview-nspkg 
   - python310-azure-purview-scanning 
+  - python310-azure-purview-sharing 
   - python310-azure-schemaregistry 
   - python310-azure-schemaregistry-avroencoder 
   - python310-azure-schemaregistry-avroserializer 
@@ -23953,6 +24071,7 @@ unsorted:
   - python310-furl 
   - python310-fuse 
   - python310-fusepy 
+  - python310-future 
   - python310-fuzzywuzzy 
   - python310-fvs 
   - python310-gTTS 
@@ -25652,6 +25771,7 @@ unsorted:
   - python310-tinyrecord 
   - python310-tinyrpc 
   - python310-titlecase 
+  - python310-tk 
   - python310-tkreadonly 
   - python310-tld 
   - python310-tldextract 
@@ -26615,6 +26735,7 @@ unsorted:
   - python311-azure-purview-catalog 
   - python311-azure-purview-nspkg 
   - python311-azure-purview-scanning 
+  - python311-azure-purview-sharing 
   - python311-azure-schemaregistry 
   - python311-azure-schemaregistry-avroencoder 
   - python311-azure-schemaregistry-avroserializer 
@@ -30006,6 +30127,7 @@ unsorted:
   - python38-azure-purview-catalog 
   - python38-azure-purview-nspkg 
   - python38-azure-purview-scanning 
+  - python38-azure-purview-sharing 
   - python38-azure-schemaregistry 
   - python38-azure-schemaregistry-avroencoder 
   - python38-azure-schemaregistry-avroserializer 
@@ -33440,6 +33562,7 @@ unsorted:
   - python39-azure-purview-catalog 
   - python39-azure-purview-nspkg 
   - python39-azure-purview-scanning 
+  - python39-azure-purview-sharing 
   - python39-azure-schemaregistry 
   - python39-azure-schemaregistry-avroencoder 
   - python39-azure-schemaregistry-avroserializer 
@@ -36238,6 +36361,7 @@ unsorted:
   - qemu-extra 
   - qemu-hw-s390x-virtio-gpu-ccw 
   - qemu-ivshmem-tools 
+  - qemu-kvm 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug 
   - qemu-ppc 
@@ -36826,6 +36950,7 @@ unsorted:
   - radeontop 
   - radeontop-lang 
   - rados-objclass-devel 
+  - radvd 
   - raft-devel 
   - rage 
   - rage-encryption 
@@ -36889,6 +37014,7 @@ unsorted:
   - rclone-zsh-completion 
   - rcm 
   - rcs 
+  - rdesktop 
   - rdiff 
   - rdiff-backup 
   - rdma-core-devel 
@@ -37657,8 +37783,6 @@ unsorted:
   - rust-cbindgen 
   - rust-packaging 
   - rust-srpm-macros 
-  - rust1.62 
-  - rust1.65 
   - rust1.66 
   - rust1.67 
   - rust1.68 
@@ -37861,12 +37985,18 @@ unsorted:
   - scidavis 
   - scidavis-lang 
   - scikit-hep-testdata-files 
+  - scim 
   - scim-32bit 
   - scim-anthy 
   - scim-chewing 
   - scim-devel 
+  - scim-gtk 
+  - scim-gtk-32bit 
+  - scim-gtk3 
   - scim-gtk3-32bit 
+  - scim-hangul 
   - scim-input-pad 
+  - scim-lang 
   - scim-m17n 
   - scim-pinyin 
   - scim-skk 
@@ -38038,6 +38168,7 @@ unsorted:
   - sidplayfp 
   - siege 
   - sierra-gtk-theme 
+  - siga 
   - sigil 
   - signify 
   - signing-party 
@@ -38387,6 +38518,8 @@ unsorted:
   - sqliteodbc-doc 
   - sqlmap 
   - sqtop 
+  - squashfs 
+  - squid 
   - squidGuard 
   - squidGuard-doc 
   - squidview 
@@ -38514,10 +38647,15 @@ unsorted:
   - subunit-devel 
   - subunit-filters 
   - subunit-shell 
+  - subversion 
+  - subversion-bash-completion 
   - subversion-devel 
   - subversion-doc 
+  - subversion-perl 
   - subversion-python 
   - subversion-ruby 
+  - subversion-server 
+  - subversion-tools 
   - suck 
   - sudo-devel 
   - sudo-test 
@@ -38771,6 +38909,7 @@ unsorted:
   - tcmu-runner-handler-zbc 
   - tcpd 
   - tcpd-devel 
+  - tcpdump 
   - tcpflow 
   - tcping 
   - tcpreplay 
@@ -47455,6 +47594,7 @@ unsorted:
   - tidy 
   - tidy-doc 
   - tidyp 
+  - tiff 
   - tig 
   - tig-bash-completion 
   - tig-zsh-completion 
@@ -47517,6 +47657,8 @@ unsorted:
   - tktable 
   - tkxcd 
   - tllist-devel 
+  - tlp 
+  - tlp-rdw 
   - tls 
   - tlswrap 
   - tmate 
@@ -48031,6 +48173,7 @@ unsorted:
   - udev-extra-rules 
   - udev-mini 
   - udev-persistent-ifnames 
+  - udftools 
   - udhcp 
   - udica 
   - udiskie 
@@ -48086,6 +48229,7 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
+  - unbound 
   - unbound-devel 
   - unbound-munin 
   - unclutter 
@@ -48102,6 +48246,7 @@ unsorted:
   - unifraktur-fonts 
   - unionfs-fuse 
   - unique-factory-devel 
+  - unison 
   - unison-text 
   - unit-api 
   - unit-api-javadoc 
@@ -48620,6 +48765,8 @@ unsorted:
   - whfc 
   - whipper 
   - whohas 
+  - whois 
+  - whois-bash-completion 
   - wicked-nbft 
   - widelands 
   - widelands-data 
@@ -48634,6 +48781,8 @@ unsorted:
   - wimtools 
   - wine 
   - wine-32bit 
+  - wine-binfmt 
+  - wine-binfmt-standalone 
   - wine-devel 
   - wine-devel-32bit 
   - wine-gecko 
@@ -48678,6 +48827,7 @@ unsorted:
   - wofi-devel 
   - wofi-pass 
   - wol-udev-rules 
+  - wondershaper 
   - woodstox-core 
   - woodstox-core-javadoc 
   - wordcut 
@@ -49190,6 +49340,7 @@ unsorted:
   - xstream-benchmark 
   - xstream-javadoc 
   - xstream-parent 
+  - xstroke 
   - xsv 
   - xsv-bash-completion 
   - xsynth-dssi 
@@ -49286,8 +49437,10 @@ unsorted:
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
+  - yast2-instserver 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
+  - yast2-isns 
   - yast2-online-update-configuration 
   - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
@@ -49298,6 +49451,7 @@ unsorted:
   - yast2-schema-collection 
   - yast2-schema-micro 
   - yast2-slide-show 
+  - yast2-slp-server 
   - yast2-support 
   - yast2-testsuite 
   - yast2-theme-oxygen 
@@ -49320,10 +49474,13 @@ unsorted:
   - yast2-trans-ne 
   - yast2-trans-nn 
   - yast2-trans-ps 
+  - yast2-trans-sl 
   - yast2-trans-sq 
   - yast2-trans-sr-latin 
   - yast2-trans-sw 
+  - yast2-trans-ta 
   - yast2-trans-tg 
+  - yast2-trans-th 
   - yast2-trans-tk 
   - yast2-update-FACTORY 
   - yast2-usbauth 
