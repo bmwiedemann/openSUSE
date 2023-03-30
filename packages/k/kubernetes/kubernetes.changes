@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 28 10:12:18 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (baseversion) - 1.26
+  * kubernetes (baseversionminus1) - 1.25
+  * kubernetes (Version) - 1.26.3
+  * kubernetes (versionminus1) - 1.25.8
+  * coredns (corednsversion) - 1.9.3
+  * coredns (corednsversionminus1) - 1.9.3
+
+-------------------------------------------------------------------
 Tue Mar 14 08:54:40 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Bump meta package versions:
