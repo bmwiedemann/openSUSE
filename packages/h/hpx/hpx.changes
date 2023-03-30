@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 29 10:48:35 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add Add-missing-header-for-std-intmax_t.patch for GCC13 support
+
+-------------------------------------------------------------------
 Thu Sep 15 09:08:00 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.8.1

@@ -1,7 +1,7 @@
 #
 # spec file for package hpx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 URL:            https://stellar.cct.lsu.edu/tag/hpx/
 Source0:        https://github.com/STEllAR-GROUP/hpx/archive/%{version}.tar.gz#/%{name}_%{version}.tar.gz
+Patch1:         Add-missing-header-for-std-intmax_t.patch
 BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -72,6 +73,7 @@ This package contains libraries for the hpx package.
 %prep
 %define _lto_cflags %{nil}
 %setup -q
+%patch1
 
 %build
 %ifarch aarch64 %{arm}
