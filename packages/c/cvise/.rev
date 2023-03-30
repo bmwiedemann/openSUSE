@@ -1017,4 +1017,14 @@
   * Use -Wno-error=maybe-uninitialized conditionally.</comment>
     <requestid>1073778</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>07a476aa3f953805c0dc48e045a6d807</srcmd5>
+    <version>2.7.0+git.20230330.8b25bd7</version>
+    <time>1680209499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git.20230330.8b25bd7:
+  * Add max-transforms for passes.
+  * Add CI tester for LLVM 16.</comment>
+    <requestid>1075526</requestid>
+  </revision>
 </revisionlist>
