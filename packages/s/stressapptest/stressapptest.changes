@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 13:52:51 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build in Factory stressapptest-cstdint.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 14:09:24 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

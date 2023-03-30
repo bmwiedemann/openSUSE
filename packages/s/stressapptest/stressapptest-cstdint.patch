@@ -1,0 +1,12 @@
+Index: stressapptest-1.0.9/src/os.h
+===================================================================
+--- stressapptest-1.0.9.orig/src/os.h
++++ stressapptest-1.0.9/src/os.h
+@@ -20,6 +20,7 @@
+ #include <unistd.h>
+ #include <sys/syscall.h>
+ 
++#include <cstdint>
+ #include <string>
+ #include <list>
+ #include <map>

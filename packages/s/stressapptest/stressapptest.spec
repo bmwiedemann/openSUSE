@@ -1,7 +1,7 @@
 #
 # spec file for package stressapptest
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Benchmark
 URL:            https://github.com/stressapptest/stressapptest
 Source:         https://github.com/stressapptest/stressapptest/archive/v%{version}.tar.gz
 Patch0:         reproducible.patch
+Patch1:         stressapptest-cstdint.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -36,8 +37,7 @@ creating a realistic high load situation in order to test the existing
 hardware devices in a computer.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
