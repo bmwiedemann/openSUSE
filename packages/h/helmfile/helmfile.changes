@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar 30 10:07:21 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.152.0:
+  What's Changed:
+  * build(deps): bump golang.org/x/net from 0.5.0 to 0.7.0 by
+    @dependabot in #704
+  * optimize logger code by @yxxhero in #706
+  * Use Masterminds/semver/v3 instead of hashicorp/go-version by
+    @johejo in #712
+  * fix cobra issue by @yxxhero in #715
+  * issue with in process label will never be considered stale by
+    @yxxhero in #716
+  * fix: update file help message by @yxxhero in #714
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2 by @dependabot in #717
+  * build(deps): bump k8s.io/apimachinery from 0.26.1 to 0.26.2 by
+    @dependabot in #720
+  * fix build-in objects docs by @yxxhero in #719
+  * fix get template func by @yxxhero in #721
+  * v1: Fix --state-values-set to override values of environments
+    colocated with releases by @yxxhero in #705
+  * build(deps): bump golang.org/x/term from 0.5.0 to 0.6.0 by
+    @dependabot in #728
+  * fix: improve set and values flags help message by @yxxhero in
+    #724
+  * build(deps): bump go.uber.org/multierr from 1.9.0 to 1.10.0 by
+    @dependabot in #731
+  * bump helm to 3.11.2 by @yxxhero in #733
+  * build(deps): bump github.com/helmfile/vals from 0.22.0 to
+    0.23.0 by @dependabot in #735
+  * clean: helm v2 logic code by @yxxhero in #736
+  * clean: optimize postrenderer code by @yxxhero in #738
+  * fix concurrency issue by @yxxhero in #742
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.0 to
+    1.7.1 by @dependabot in #745
+  * bump mergo to 0.3.14 by @yxxhero in #751
+  * chore(ci): use docker/metadata-action by @rmoreas in #756
+  * build(deps): bump k8s.io/apimachinery from 0.26.2 to 0.26.3 by
+    @dependabot in #758
+  * bump chartify to v0.14.0 by @yxxhero in #759
+  * feat: use new helm version parse function by @yxxhero in #760
+  * build(deps): bump github.com/imdario/mergo from 0.3.14 to 0.3.15
+    by @dependabot in #762
+  * chore(release): add latest tag only on release tags by @rmoreas
+    in #766
+  * fix: formatting of YAML samples in 1.0 proposal doc by @smlx in
+    #767
+  * feat: use offical goccy/go-yaml by @yxxhero in #769
+  * fix: goccy/go-yaml tests by @yxxhero in #770
+  * remove unnecessary remote.Locate() by @itscaro in #565
+
+-------------------------------------------------------------------
 Mon Feb 20 09:59:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.151.0:
