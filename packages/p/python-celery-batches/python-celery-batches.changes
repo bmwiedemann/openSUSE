@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar 30 08:18:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7:
+  * Support passing multiple or keyword arguments by disabling
+    Celery's ``typing``  feature for ``Batches`` tasks.
+  * Support |using a custom Request class|_ for ``Batches``
+    tasks.
+  * Support calling tasks with an ``eta`` or ``countdown``
+    specified.
+  * Handle "hybrid" messages that have moved between Celery
+    versions.
+  * Fix task ETA issues when timezone is defined in
+    configuration.
+  * Simplify tests.
+  * Improve PyPI metadata.
+  * Update README badges to include PyPI and GitHub Actions
+  * Update copyright information.
+  * Document use-cases and include more examples.
+  * Run the unit tests against RabbitMQ & Redis brokers/backends.
+  * Run `black <https://black.readthedocs.io/>`_, `isort
+    <https://pycqa.github.io/isort/>`_,
+  * `flake8 <https://flake8.pycqa.org>`_, `pyupgrade
+    <https://github.com/asottile/pyupgrade>`_,
+  * Fix a bug when passing a ``request`` to ``mark_as_done`` with
+    Celery 5.1.0.
+  * Clean-up and re-organize code.
+  * Support Celery 5.2.
+  * Drop support for Python 3.6.
+  * Support Python 3.10.
+
+-------------------------------------------------------------------
 Tue Jan 26 13:07:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.4

@@ -1,7 +1,7 @@
 #
-# spec file for package python-celery-batches
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _pkgname celery-batches
 Name:           python-%{_pkgname}
-Version:        0.4
+Version:        0.7
 Release:        0
 Summary:        Django module to process multiple Celery task requests together
 License:        BSD-3-Clause
@@ -28,11 +28,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/percipient/celery-batches
 Source:         https://github.com/percipient/%{_pkgname}/archive/v%{version}.tar.gz#/%{_pkgname}-%{version}.tar.gz
 Patch0:         celery-fixtures.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module celery >= 4.4}
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-celery >= 4.4
@@ -47,18 +49,13 @@ the standard way of doing things in Django, so that it still works
 with any other form application.
 
 %prep
-%setup -q -n %{_pkgname}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{_pkgname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Remove test suite
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/t/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%pyproject_install
 
 %check
 %pytest t/

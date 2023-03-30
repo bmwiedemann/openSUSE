@@ -1,13 +1,18 @@
-Index: celery-batches-0.4/t/integration/test_batches.py
+Index: celery-batches-0.7/t/integration/test_batches.py
 ===================================================================
---- celery-batches-0.4.orig/t/integration/test_batches.py
-+++ celery-batches-0.4/t/integration/test_batches.py
-@@ -7,6 +7,8 @@ from celery import signals
+--- celery-batches-0.7.orig/t/integration/test_batches.py
++++ celery-batches-0.7/t/integration/test_batches.py
+@@ -6,11 +6,13 @@ from celery_batches import Batches, Simp
+ 
+ from celery import Celery, signals, states
  from celery.app.task import Task
- from celery.result import allow_join_result
- from celery.contrib.testing.tasks import ping
-+# some fixtures
 +from celery.contrib.pytest import *
+ from celery.contrib.testing.tasks import ping
+ from celery.contrib.testing.worker import TestWorkController
+ from celery.result import allow_join_result
+ from celery.worker.request import Request
  
- from .tasks import add, cumadd, Results
++
+ import pytest
  
+ from .tasks import add, cumadd
