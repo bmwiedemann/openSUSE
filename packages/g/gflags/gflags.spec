@@ -1,7 +1,7 @@
 #
-# spec file for package gflags
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,34 @@
 #
 
 
-Name:           gflags
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%global pname gflags
+
+%if "%{flavor}" == "static"
+%define psuffix -%{flavor}
+%bcond_with    build_shared
+%bcond_without build_static
+%else
+%define psuffix %{nil}
+%bcond_without build_shared
+%bcond_with    build_static
+%endif
+
+%define soversion 2_2
+
+Name:           gflags%{psuffix}
 Version:        2.2.2
 Release:        0
 Summary:        Library for commandline flag processing
 License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/gflags/gflags
-Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/%{pname}/%{pname}/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-Requires:       libgflags2_2 = %{version}
+Requires:       libgflags%{soversion} = %{version}
 
 %description
 The gflags package contains a library that implements commandline
@@ -35,11 +52,11 @@ increased flexibility, including built-in support for C++ types like
 string, and the ability to define flags in the source file in which
 they're used.
 
-%package -n libgflags2_2
+%package -n libgflags%{soversion}
 Summary:        Library for commandline flag processing
 Conflicts:      libgflags2
 
-%description -n libgflags2_2
+%description -n libgflags%{soversion}
 The gflags package contains a library that implements commandline
 flags processing. As such, it is a replacement for getopt(). It has
 increased flexibility, including built-in support for C++ types like
@@ -47,67 +64,83 @@ string, and the ability to define flags in the source file in which
 they're used.
 
 %package devel
-Summary:        Development files for gflags library
-Requires:       libgflags2_2 = %{version}
+Summary:        Development files for the dynamic gflags library
+Requires:       libgflags%{soversion} = %{version}
 
 %description devel
-This package contains headers and build system meta files.
+This package contains all necessary include files and the dynamic libraries
+needed for developing applications.
 
-%package devel-static
-Summary:        Statically linked development libraries for gflags
-Requires:       %{name}-devel = %{version}
+%package -n gflags-devel-static
+Summary:        Development files for the static gflags library
+# CMake config for static and shared differ, but use the same export file name
+Conflicts:      %{pname}-devel
 
-%description devel-static
-This package contains the static libraries for gflags.
+%description -n gflags-devel-static
+This package contains all necessary include files and the static libraries
+needed for developing applications.
 
 %prep
-%autosetup
+%autosetup -n gflags-%{version}
+# Fix prefix duplication, _libdir is absolute
+sed -i -e 's@libdir=.*@libdir=%{_libdir}@' cmake/package.pc.in
 
 %build
+%if %{with build_static}
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-CFLAGS="%{optflags} -pthread"
-CXXFLAGS="%{optflags} -pthread"
-export CFLAGS CXXFLAGS
-
+%endif
 %cmake \
-	-DBUILD_STATIC_LIBS:BOOL=ON \
-	-DBUILD_TESTING:BOOL=ON \
-	-DCMAKE_BUILD_TYPE=Release
+    -DBUILD_STATIC_LIBS:BOOL=%{?with_build_static:ON}%{!?with_build_static:OFF} \
+    -DBUILD_SHARED_LIBS:BOOL=%{?with_build_shared:ON}%{!?with_build_shared:OFF} \
+    -DBUILD_TESTING:BOOL=ON \
+    %{nil}
 
-%make_build
+%cmake_build
 
 %install
 %cmake_install
+
+%if "%{flavor}" == "static"
+rm %{buildroot}%{_bindir}/%{pname}_completions.sh
+mv %{buildroot}%{_libdir}/pkgconfig/%{pname}{,_static}.pc
+%endif
 
 # Installs a file on $HOME, remove it
 rm -rf %{buildroot}/home/
 
 %check
-export LD_LIBRARY_PATH=`pwd`/build/lib
+export LD_LIBRARY_PATH=`pwd`/%{__builddir}/lib
 %ctest
 
-%post -n libgflags2_2 -p /sbin/ldconfig
-%postun -n libgflags2_2 -p /sbin/ldconfig
+%post -n libgflags%{soversion} -p /sbin/ldconfig
+%postun -n libgflags%{soversion} -p /sbin/ldconfig
 
+%if "%{flavor}" == ""
 %files
 %license COPYING.txt
 %doc AUTHORS.txt ChangeLog.txt README.md
-%{_bindir}/%{name}_completions.sh
+%{_bindir}/%{pname}_completions.sh
 
-%files -n libgflags2_2
+%files -n libgflags%{soversion}
 %license COPYING.txt
 %{_libdir}/libgflags.so.*
 %{_libdir}/libgflags_nothreads.so.*
 
 %files devel
-%{_includedir}/%{name}/
+%{_includedir}/%{pname}/
 %{_libdir}/libgflags.so
 %{_libdir}/libgflags_nothreads.so
-%{_libdir}/cmake/%{name}/
-%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/%{pname}/
+%{_libdir}/pkgconfig/%{pname}.pc
+%endif
 
-%files devel-static
+%if "%{flavor}" == "static"
+%files -n gflags-devel-static
+%{_includedir}/%{pname}/
+%{_libdir}/cmake/%{pname}/
+%{_libdir}/pkgconfig/%{pname}_static.pc
 %{_libdir}/libgflags.a
 %{_libdir}/libgflags_nothreads.a
+%endif
 
 %changelog

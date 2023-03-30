@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 28 19:42:22 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix (uncritical) libdir error in pkgconfig file.
+- Use default RelWithDebInfo build type.
+- Use separate _multibuilds for static and dynamic libraries,
+  otherwise CMake config depends on the static library.
+
+-------------------------------------------------------------------
 Wed Apr 27 09:04:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libgflags2.x86_64: E:
