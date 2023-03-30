@@ -217,4 +217,20 @@
   * Implement closed property on fileio.py classes (#907)</comment>
     <requestid>1056981</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62d05134404f9ac137907483fc4adde9</srcmd5>
+    <version>2.8.0</version>
+    <time>1680209549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0
+  * Add multiprocessing and chunked downloading to transfer manager (#1002)
+  * Add trove classifier for python 3.11 (#971)
+  * Remove use of deprecated cgi module (#1006)
+  * Add clarifications to read timeout (#873)
+  * Fix c.g.c structure (#982)
+  * Update c.g.c docs and guides  (#994)
+- Refresh patches for new upstream version
+  * demock.patch (forwarded request 1075534 from glaubitz)</comment>
+    <requestid>1075541</requestid>
+  </revision>
 </revisionlist>

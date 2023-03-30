@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 30 10:04:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.8.0
+  * Add multiprocessing and chunked downloading to transfer manager (#1002)
+  * Add trove classifier for python 3.11 (#971)
+  * Remove use of deprecated cgi module (#1006)
+  * Add clarifications to read timeout (#873)
+  * Fix c.g.c structure (#982)
+  * Update c.g.c docs and guides  (#994)
+- Refresh patches for new upstream version
+  * demock.patch
+
+-------------------------------------------------------------------
 Fri Jan  6 10:59:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.0
