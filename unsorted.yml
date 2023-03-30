@@ -2099,6 +2099,7 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
+  - clang-tools 
   - clang11 
   - clang11-devel 
   - clang11-devel-32bit 
@@ -2113,8 +2114,10 @@ unsorted:
   - clang14 
   - clang14-devel 
   - clang14-doc 
+  - clang15 
   - clang15-devel 
   - clang15-doc 
+  - clang16 
   - clang16-devel 
   - clang16-doc 
   - clanlib 
@@ -2130,6 +2133,7 @@ unsorted:
   - claws-mail 
   - claws-mail-devel 
   - claws-mail-lang 
+  - clazy 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -2465,6 +2469,7 @@ unsorted:
   - cpp11 
   - cpp12 
   - cpp7 
+  - cppcheck 
   - cppcheck-gui 
   - cpphs 
   - cppi 
@@ -2515,6 +2520,8 @@ unsorted:
   - cri-o 
   - cri-o-kubeadm-criconfig 
   - cri-tools 
+  - crispy-doom 
+  - crispy-doom-bash-completion 
   - criterion 
   - criterion-lang 
   - criu-devel 
@@ -3486,6 +3493,7 @@ unsorted:
   - emacs-poke 
   - emacs-scheme48 
   - emacs-semi 
+  - emacs-vm 
   - emacs-w3m 
   - embree-devel 
   - emf2svg-conv 
@@ -3970,7 +3978,6 @@ unsorted:
   - filebench 
   - filelight 
   - filelight-lang 
-  - filesystem-media 
   - filezilla 
   - filezilla-devel 
   - filezilla-lang 
@@ -4329,6 +4336,7 @@ unsorted:
   - gcad3d 
   - gcal 
   - gcal-lang 
+  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -7172,7 +7180,10 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic 
   - health-checker-testing 
+  - heaptrack 
   - heaptrack-devel 
+  - heaptrack-gui 
+  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -8498,6 +8509,8 @@ unsorted:
   - kdesignerplugin-lang 
   - kdesu-devel 
   - kdesvn 
+  - kdevelop5 
+  - kdevelop5-lang 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
@@ -8932,8 +8945,6 @@ unsorted:
   - kturtle 
   - kturtle-lang 
   - kube-no-trouble 
-  - kube-prometheus-k8s-yaml 
-  - kube-prometheus-sources 
   - kubeconform 
   - kubectl-explore 
   - kubectl-foreach 
@@ -9493,6 +9504,7 @@ unsorted:
   - libIlmThread-3_1-30-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
+  - libKChart2 
   - libKDb3-4 
   - libKF5Emoticons5 
   - libKF5JsEmbed5 
@@ -9518,6 +9530,7 @@ unsorted:
   - libKPublicTransport1 
   - libKReport3-4 
   - libKSeExpr4 
+  - libKasten4 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_3 
@@ -9529,6 +9542,7 @@ unsorted:
   - libLLVM13-32bit 
   - libLLVM14 
   - libLLVM14-32bit 
+  - libLLVM15 
   - libLLVM15-32bit 
   - libLLVM16-32bit 
   - libLLVMSPIRVLib-devel 
@@ -9581,6 +9595,7 @@ unsorted:
   - libOgreTerrain13_5 
   - libOgreVolume-devel 
   - libOgreVolume13_5 
+  - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenCOLLADABaseUtils0_3 
@@ -9699,6 +9714,7 @@ unsorted:
   - libQt5Gui-devel-32bit 
   - libQt5Gui-private-headers-devel 
   - libQt5Gui5-32bit 
+  - libQt5Help5 
   - libQt5Help5-32bit 
   - libQt5HunspellInputMethod-private-headers-devel 
   - libQt5KmsSupport-devel-static 
@@ -10590,6 +10606,7 @@ unsorted:
   - libboost_numpy-py3-1_81_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
+  - libboost_program_options1_81_0 
   - libboost_program_options1_81_0-32bit 
   - libboost_program_options1_81_0-devel 
   - libboost_program_options1_81_0-x86-64-v3 
@@ -10864,12 +10881,15 @@ unsorted:
   - libclang-cpp13-32bit 
   - libclang-cpp14 
   - libclang-cpp14-32bit 
+  - libclang-cpp15 
   - libclang-cpp15-32bit 
+  - libclang-cpp16 
   - libclang-cpp16-32bit 
   - libclang11 
   - libclang11-32bit 
   - libclang12 
   - libclang12-32bit 
+  - libclang13 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12515,6 +12535,7 @@ unsorted:
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
+  - libkasten-lang 
   - libkate-devel 
   - libkate-tools 
   - libkate1-32bit 
@@ -12522,6 +12543,7 @@ unsorted:
   - libkcapi-tools 
   - libkcapi1 
   - libkcddb-devel 
+  - libkchart-lang 
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
@@ -13390,6 +13412,7 @@ unsorted:
   - liboil-0_3-0-32bit 
   - liboil-devel 
   - liboil-doc 
+  - libokteta-lang 
   - liboldX-devel 
   - liboldX-devel-32bit 
   - liboldX6 
@@ -14848,11 +14871,13 @@ unsorted:
   - libstatgrab-devel-32bit 
   - libstatgrab10 
   - libstatgrab10-32bit 
+  - libstdc++-devel 
   - libstdc++-devel-32bit 
   - libstdc++6-devel-gcc11 
   - libstdc++6-devel-gcc11-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
+  - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
@@ -15165,14 +15190,14 @@ unsorted:
   - libtrilinos-gnu-openmpi2-hpc 
   - libtrilinos-gnu-openmpi3-hpc 
   - libtrilinos-gnu-openmpi4-hpc 
-  - libtrilinos13 
-  - libtrilinos13-openmpi2 
-  - libtrilinos13-openmpi4 
-  - libtrilinos_13_2_0-gnu-mpich-hpc 
-  - libtrilinos_13_2_0-gnu-mvapich2-hpc 
-  - libtrilinos_13_2_0-gnu-openmpi2-hpc 
-  - libtrilinos_13_2_0-gnu-openmpi3-hpc 
-  - libtrilinos_13_2_0-gnu-openmpi4-hpc 
+  - libtrilinos14 
+  - libtrilinos14-openmpi2 
+  - libtrilinos14-openmpi4 
+  - libtrilinos_14_0_0-gnu-mpich-hpc 
+  - libtrilinos_14_0_0-gnu-mvapich2-hpc 
+  - libtrilinos_14_0_0-gnu-openmpi2-hpc 
+  - libtrilinos_14_0_0-gnu-openmpi3-hpc 
+  - libtrilinos_14_0_0-gnu-openmpi4-hpc 
   - libtrng4-24 
   - libts0-32bit 
   - libtsan0 
@@ -15862,6 +15887,7 @@ unsorted:
   - libxmltooling10 
   - libxmp-devel 
   - libxmp4 
+  - libxosd2 
   - libxplayer-plparser-mini18 
   - libxplayer-plparser-mini18-32bit 
   - libxplayer-plparser18 
@@ -16172,6 +16198,7 @@ unsorted:
   - llvm15 
   - llvm15-devel 
   - llvm15-doc 
+  - llvm15-gold 
   - llvm15-libc++-devel 
   - llvm15-libc++1 
   - llvm15-libc++abi-devel 
@@ -16184,6 +16211,7 @@ unsorted:
   - llvm16 
   - llvm16-devel 
   - llvm16-doc 
+  - llvm16-gold 
   - llvm16-opt-viewer 
   - llvm16-polly 
   - llvm16-polly-devel 
@@ -18780,8 +18808,6 @@ unsorted:
   - ocaml-hivex-devel 
   - ocaml-integers 
   - ocaml-integers-devel 
-  - ocaml-jsonm 
-  - ocaml-jsonm-devel 
   - ocaml-lablgtk3 
   - ocaml-lablgtk3-devel 
   - ocaml-libguestfs 
@@ -19013,6 +19039,7 @@ unsorted:
   - ohcount 
   - oidentd 
   - okteta 
+  - okteta-data 
   - okteta-devel 
   - okteta-lang 
   - okteta-part 
@@ -21869,6 +21896,7 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
+  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -21979,6 +22007,7 @@ unsorted:
   - postgresql15-devel 
   - postgresql15-devel-mini 
   - postgresql15-docs 
+  - postgresql15-llvmjit 
   - postgresql15-llvmjit-devel 
   - postgresql15-orafce 
   - postgresql15-plperl 
@@ -24378,6 +24407,7 @@ unsorted:
   - python310-jsonschema-format 
   - python310-jsonschema-format-nongpl 
   - python310-jsonschema-spec 
+  - python310-jsonschema-specifications 
   - python310-jsonslicer 
   - python310-jsonxs 
   - python310-junit-xml 
@@ -25461,6 +25491,7 @@ unsorted:
   - python310-redbaron 
   - python310-redfish 
   - python310-reedsolo 
+  - python310-referencing 
   - python310-regex 
   - python310-relatorio 
   - python310-releases 
@@ -26479,6 +26510,7 @@ unsorted:
   - python311-autopep8 
   - python311-autoray 
   - python311-autoupgrade-ng 
+  - python311-av 
   - python311-avahi 
   - python311-avro 
   - python311-awkward 
@@ -27050,6 +27082,7 @@ unsorted:
   - python311-curses 
   - python311-curtsies 
   - python311-cwcwidth 
+  - python311-cx_Freeze 
   - python311-cymruwhois 
   - python311-cytoolz 
   - python311-czifile 
@@ -27708,6 +27741,7 @@ unsorted:
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-spec 
+  - python311-jsonschema-specifications 
   - python311-jsonslicer 
   - python311-jsonxs 
   - python311-junit-xml 
@@ -28826,6 +28860,7 @@ unsorted:
   - python311-redfish 
   - python311-redis 
   - python311-reedsolo 
+  - python311-referencing 
   - python311-regex 
   - python311-relatorio 
   - python311-releases 
@@ -31120,6 +31155,7 @@ unsorted:
   - python38-jsonschema-format 
   - python38-jsonschema-format-nongpl 
   - python38-jsonschema-spec 
+  - python38-jsonschema-specifications 
   - python38-jsonslicer 
   - python38-jsonxs 
   - python38-junit-xml 
@@ -32249,6 +32285,7 @@ unsorted:
   - python38-redfish 
   - python38-redis 
   - python38-reedsolo 
+  - python38-referencing 
   - python38-regex 
   - python38-relatorio 
   - python38-releases 
@@ -34552,6 +34589,7 @@ unsorted:
   - python39-jsonschema-format 
   - python39-jsonschema-format-nongpl 
   - python39-jsonschema-spec 
+  - python39-jsonschema-specifications 
   - python39-jsonslicer 
   - python39-jsonxs 
   - python39-junit-xml 
@@ -35682,6 +35720,7 @@ unsorted:
   - python39-redfish 
   - python39-redis 
   - python39-reedsolo 
+  - python39-referencing 
   - python39-regex 
   - python39-relatorio 
   - python39-releases 
@@ -36990,6 +37029,8 @@ unsorted:
   - rage 
   - rage-encryption 
   - rage-encryption-bash-completion 
+  - rage-encryption-fish-completion 
+  - rage-encryption-zsh-completion 
   - ragel 
   - rainbow 
   - rainbow-bash-completion 
@@ -47826,12 +47867,12 @@ unsorted:
   - trilinos-hpc-doc 
   - trilinos-openmpi2-devel 
   - trilinos-openmpi4-devel 
-  - trilinos_13_2_0-gnu-mpich-hpc-devel 
-  - trilinos_13_2_0-gnu-mvapich2-hpc-devel 
-  - trilinos_13_2_0-gnu-openmpi2-hpc-devel 
-  - trilinos_13_2_0-gnu-openmpi3-hpc-devel 
-  - trilinos_13_2_0-gnu-openmpi4-hpc-devel 
-  - trilinos_13_2_0-hpc-doc 
+  - trilinos_14_0_0-gnu-mpich-hpc-devel 
+  - trilinos_14_0_0-gnu-mvapich2-hpc-devel 
+  - trilinos_14_0_0-gnu-openmpi2-hpc-devel 
+  - trilinos_14_0_0-gnu-openmpi3-hpc-devel 
+  - trilinos_14_0_0-gnu-openmpi4-hpc-devel 
+  - trilinos_14_0_0-hpc-doc 
   - trinity 
   - tripwire 
   - trivy 
@@ -48171,6 +48212,7 @@ unsorted:
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
   - typescript 
+  - typst 
   - tzdb 
   - u-boot-tools 
   - u3-tool 
@@ -49283,6 +49325,8 @@ unsorted:
   - xorgxrdp 
   - xorriso-tcltk 
   - xortool 
+  - xosd 
+  - xosd-devel 
   - xosview 
   - xournalpp 
   - xournalpp-lang 

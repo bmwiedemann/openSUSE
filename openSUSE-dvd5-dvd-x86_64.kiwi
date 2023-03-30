@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230328" schemaversion="4.1">
+<image name="OBS__openSUSE___20230329" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230328</productvar>
+      <productvar name="VERSION">20230329</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230328,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230329,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230328/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230329/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -276,10 +276,6 @@
       <repopackage name="chrony-pool-openSUSE"/>
       <repopackage name="cifs-utils"/>
       <repopackage name="clamav"/>
-      <repopackage name="clang-tools"/>
-      <repopackage name="clang15"/>
-      <repopackage name="clang16"/>
-      <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
       <repopackage name="clutter-lang"/>
@@ -297,7 +293,6 @@
       <repopackage name="cpio-mt"/>
       <repopackage name="cpp"/>
       <repopackage name="cpp13"/>
-      <repopackage name="cppcheck"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-bash-completion"/>
       <repopackage name="cpupower-lang"/>
@@ -504,7 +499,6 @@
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
       <repopackage name="gcab-lang"/>
-      <repopackage name="gcc"/>
       <repopackage name="gcc13"/>
       <repopackage name="gcc13-locale"/>
       <repopackage name="gcin"/>
@@ -827,9 +821,6 @@
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
-      <repopackage name="heaptrack"/>
-      <repopackage name="heaptrack-gui"/>
-      <repopackage name="heaptrack-lang"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
       <repopackage name="hostname"/>
@@ -998,8 +989,6 @@
       <repopackage name="kdepim-addons-lang"/>
       <repopackage name="kdepim-runtime"/>
       <repopackage name="kdepim-runtime-lang"/>
-      <repopackage name="kdevelop5"/>
-      <repopackage name="kdevelop5-lang"/>
       <repopackage name="kdevplatform"/>
       <repopackage name="kdevplatform-lang"/>
       <repopackage name="kdialog"/>
@@ -1297,7 +1286,6 @@
       <repopackage name="libboost_filesystem1_81_0"/>
       <repopackage name="libboost_iostreams1_81_0"/>
       <repopackage name="libboost_locale1_81_0"/>
-      <repopackage name="libboost_program_options1_81_0"/>
       <repopackage name="libboost_python-py3-1_81_0"/>
       <repopackage name="libboost_thread1_81_0"/>
       <repopackage name="libbox2d2"/>
@@ -1367,9 +1355,6 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang-cpp15"/>
-      <repopackage name="libclang-cpp16"/>
-      <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -1827,13 +1812,9 @@
       <repopackage name="libJudy1"/>
       <repopackage name="libjxl0_8"/>
       <repopackage name="libkaccounts2"/>
-      <repopackage name="libkasten-lang"/>
-      <repopackage name="libKasten4"/>
       <repopackage name="libkate1"/>
       <repopackage name="libkcddb"/>
       <repopackage name="libkcddb-lang"/>
-      <repopackage name="libkchart-lang"/>
-      <repopackage name="libKChart2"/>
       <repopackage name="libkColorPicker0"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libkdecorations2-5"/>
@@ -2075,7 +2056,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia107"/>
-      <repopackage name="libLLVM15"/>
       <repopackage name="libLLVM16"/>
       <repopackage name="liblmdb-0_9_30"/>
       <repopackage name="libloader"/>
@@ -2211,8 +2191,6 @@
       <repopackage name="libogg0"/>
       <repopackage name="libogg0-32bit"/>
       <repopackage name="liboggkate1"/>
-      <repopackage name="libokteta-lang"/>
-      <repopackage name="libOkteta3"/>
       <repopackage name="libopenal1"/>
       <repopackage name="libopenblas_openmp0"/>
       <repopackage name="libopenblas_pthreads0"/>
@@ -2366,7 +2344,6 @@
       <repopackage name="libQt5Core5"/>
       <repopackage name="libQt5DBus5"/>
       <repopackage name="libQt5Gui5"/>
-      <repopackage name="libQt5Help5"/>
       <repopackage name="libQt5HunspellInputMethod5"/>
       <repopackage name="libqt5keychain1"/>
       <repopackage name="libqt5keychain1-lang"/>
@@ -2543,10 +2520,8 @@
       <repopackage name="libsss_nss_idmap0"/>
       <repopackage name="libstaroffice-0_0-0"/>
       <repopackage name="libstartup-notification-1-0"/>
-      <repopackage name="libstdc++-devel"/>
       <repopackage name="libstdc++6"/>
       <repopackage name="libstdc++6-32bit"/>
-      <repopackage name="libstdc++6-devel-gcc13"/>
       <repopackage name="libstdc++6-locale"/>
       <repopackage name="libstdc++6-pp"/>
       <repopackage name="libstdc++6-pp-32bit"/>
@@ -2873,8 +2848,6 @@
       <repopackage name="lightsoff-lang"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
-      <repopackage name="llvm15-gold"/>
-      <repopackage name="llvm16-gold"/>
       <repopackage name="lockdev"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
@@ -3127,7 +3100,6 @@
       <repopackage name="nvme-cli-zsh-completion"/>
       <repopackage name="obex-data-server"/>
       <repopackage name="ofl"/>
-      <repopackage name="okteta-data"/>
       <repopackage name="okular"/>
       <repopackage name="okular-lang"/>
       <repopackage name="open-iscsi"/>
@@ -3480,11 +3452,9 @@
       <repopackage name="postfix"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql15"/>
       <repopackage name="postgresql15-contrib"/>
-      <repopackage name="postgresql15-llvmjit"/>
       <repopackage name="postgresql15-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="power-profiles-daemon"/>
