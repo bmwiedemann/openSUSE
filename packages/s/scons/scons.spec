@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           scons
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        Replacement for Make
 License:        MIT

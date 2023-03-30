@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 28 17:02:58 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.5.2
+  * Fix a problem in 4.5.0/4.5.1 where ParseConfig could cause an
+    exception in MergeFlags when the result would be to add
+    preprocessor defines to existing CPPDEFINES
+
+-------------------------------------------------------------------
 Wed Mar  8 10:32:28 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - SCons 4.5.1
