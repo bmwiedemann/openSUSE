@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 30 09:34:39 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Avoid running run-find-external.sh twice during installation/
+  update.
+- Stop accidental inclusion of %%pre/post/triggerin/un scripts
+  in doc packages.
+- Adpot new info file installation sceme for Factory.
+
+-------------------------------------------------------------------
 Thu Mar 23 09:59:40 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - run-find-external.sh: Extend the range of versions of MPI

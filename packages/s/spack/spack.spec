@@ -28,7 +28,7 @@ ExclusiveArch:  do_not_build
 %define spack_dir  %_prefix/lib/spack/
 %define spack_group spack
 
-# These packages are found and can be used by spack, /etc/spack/packages-yaml
+# These packages are found and can be used by spack, %{_sysconfdir}/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
 # Distinguish between packages we recommend and packages which
 %define spack_trigger_recommended_packages autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex git-lfs make m4 ncurses-devel libtool openssl-devel perl-base pkgconf pkg-config python3-base tar info xz xz-devel
@@ -151,6 +151,10 @@ This package contains the man page.
 %package info
 Summary:        Info Page for Spack - Package manager for HPC systems
 Requires:       info
+%if 0%{?suse_version} <= 1500
+Requires(post): %{install_info_prereq}
+Requires(pre):  %{install_info_prereq}
+%endif
 
 %description info
 Spack is a configurable Python-based HPC package manager, automating
@@ -278,10 +282,6 @@ rm -f share/spack/setup-tutorial-env.sh
 rm -f lib/spack/external/macholib/macho_*.py
 ## Remove non linux stuff
 rm -f bin/spack.bat bin/spack_cmd.bat bin/spack_pwsh.ps1
-## Fix shebangs
-#sed -i 's@#!/bin/env sh@#!/bin/bash@' var/spack/repos/builtin/packages/beast-tracer/tracer
-#sed -i 's@#! /usr/bin/env bash@ #!/bin/bash@' share/spack/docker/entrypoint.bash
-#sed -i 's@#!/usr/bin/env bash@#!/bin/bash@' share/spack/docker/package-index/split.sh
 
 mkdir -p %{buildroot}%{spack_dir}
 mkdir -p %{buildroot}%{spack_dir}/opt
@@ -331,7 +331,7 @@ EOF
 # make shell scripts executeable
 find %{buildroot}%{_localstatedir}/lib/spack/ -type f -name \*.sh  -exec chmod 755 {} \;
 
-# Create /etc/spack/compilers.yaml
+# Create %{_sysconfdir}/spack/compilers.yaml
 mkdir -p %{buildroot}%{spack_dir}/etc/spack/
 cat >  %{buildroot}%{spack_dir}/etc/spack/compilers.yaml <<EOF
 compilers:
@@ -351,7 +351,7 @@ compilers:
     extra_rpaths: []
 EOF
 
-# Create /etc/profile.d/spack.sh
+# Create %{_sysconfdir}/profile.d/spack.sh
 # This file properly sets MODULEPATH so lua-lmod can find the modules created by spack
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
 cat > %{buildroot}/%{_sysconfdir}/profile.d/spack.sh <<EOF
@@ -440,16 +440,15 @@ cp -r texinfo/Spack.info.gz %{buildroot}%{_infodir}
 [ -d texinfo/Spack-figures ] && cp -r texinfo/Spack-figures %{buildroot}%{_infodir}
 %endif
 
+%if %{without doc}
+# for sysusers
 %pre -f %{name}.pre
 
 %post
-# Replace /etc/spack/compilers.yaml
+# Replace %{_sysconfdir}/spack/compilers.yaml
 export GCC_VERSION=`gcc -dumpversion`
 export GCC_FULL_VERSION=`gcc -dumpfullversion`
-
-sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
 #sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/modules.yaml
-sed -i "s@GCC_VERSION@$GCC_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
 if [ -e /etc/os-release ] ;  then
   source /etc/os-release
   if [ "${ID}" = "opensuse-tumbleweed" ] ; then
@@ -458,11 +457,11 @@ if [ -e /etc/os-release ] ;  then
     export SPACK_NAME="${ID/-/_}${VERSION_ID/.*/}"
   fi
   sed -i "s@SUSE_VERSION@$SPACK_NAME@" %{spack_dir}/etc/spack/compilers.yaml
-  sed -i "s@SUSE_VERSION@$SPACK_NAME@g" /etc/profile.d/spack.sh
+  sed -i "s@SUSE_VERSION@$SPACK_NAME@g" %{_sysconfdir}/profile.d/spack.sh
 fi
+sed -i "s@GCC_FULL_VERSION@$GCC_FULL_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
+sed -i "s@GCC_VERSION@$GCC_VERSION@" %{spack_dir}/etc/spack/compilers.yaml
 sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
-# find installed programms
- /usr/lib/spack/run-find-external.sh
 mkdir -p /opt/spack
 chgrp spack /opt/spack
 chmod 0775 /opt/spack
@@ -479,7 +478,6 @@ chmod 0775 /opt/spack
 %triggerpostun -- %{?spack_trigger_recommended_compilers} %{?spack_trigger_compilers}
 /usr/lib/spack/run-find-external.sh compilers
 
-%if %{without doc}
 %files
 %license COPYRIGHT LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md NOTICE README.md README.SUSE
@@ -489,6 +487,7 @@ chmod 0775 /opt/spack
 %dir %{_prefix}/etc
 %endif
 %{_prefix}/etc/spack
+%ghost %config %{_sysconfdir}/spack/compilers.yaml
 %attr(0775, root, spack) %{_localstatedir}/lib/spack/junit-report
 %attr(0775, root, spack) %{spack_dir}/opt
 %attr(0775, root, spack) %{_localstatedir}/cache/spack
@@ -512,13 +511,16 @@ chmod 0775 /opt/spack
 %doc CHANGELOG.md NOTICE README.md
 %{_datarootdir}/spack/repos
 
+#%{without doc}
 %else
 
+%if 0%{?suse_version} <= 1500
 %post info
 %install_info --info-dir=%{_infodir} --info-file="%{_infodir}/Spack.info.gz"
 
 %preun info
 %install_info_delete --info-dir=%{_infodir} --info-file="%{_infodir}/Spack.info.gz"
+%endif
 
 %files man
 %{_mandir}/man1/*
