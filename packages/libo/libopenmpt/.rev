@@ -753,4 +753,22 @@ Changes in 0.5.3:
     <comment></comment>
     <requestid>1063428</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>357310ed8a83bdfb14b1aae90d4a0674</srcmd5>
+    <version>0.6.9</version>
+    <time>1680209440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.9
+  * [Bug] An exception could be thrown during rendering when trying
+    to access the release node of an empty envelope.
+  * The fix for the OPL cutoff bug introduced in libopenmpt 0.6.7
+    was incomplete.
+  * ULT: Offset commands exceeding 65535 samples were sometimes not
+    imported correctly even if there was room for them.
+  * After seeking with seek.sync_samples=1, the filter settings of
+    playing notes were not updated since libopenmpt 0.6.7.
+  * Loading of and seeking inside (malformed) modules with
+    thousands of short sub-songs has been sped up.</comment>
+    <requestid>1075084</requestid>
+  </revision>
 </revisionlist>
