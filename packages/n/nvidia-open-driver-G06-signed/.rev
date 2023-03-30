@@ -74,4 +74,12 @@
   for sle15/Leap15 (boo#1207520)</comment>
     <requestid>1064248</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9949d9096836ba66baf6fa9ca96afc3c</srcmd5>
+    <version>525.105.17</version>
+    <time>1680209589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 525.105.17</comment>
+    <requestid>1075670</requestid>
+  </revision>
 </revisionlist>

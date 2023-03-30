@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 12:16:17 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 525.105.17
+
+-------------------------------------------------------------------
 Fri Feb 10 12:49:44 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer use %hardcode_pci_list macro on sle15/Leap15, since the
