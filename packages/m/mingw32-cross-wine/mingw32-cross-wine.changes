@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Jul 28 10:50:06 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Do not create wine prefix when running on aarch64 and ppc64le cpu host
+  as wine support on this architectures is currently not working
+
+-------------------------------------------------------------------
+Fri Apr  1 10:47:03 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- updated to 1.3.2
+  * fix bug using different wine prefixes
+  * move all wine related processing into wine.sh to have a clean
+    separation
+
+-------------------------------------------------------------------
+Mon Mar 28 11:46:46 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- updated to 1.3.1
+  * Use 'winetricks set_userpath' to set wine paths
+  * Fix winetricks warnings by adding wget and env vars
+
+-------------------------------------------------------------------
+Sun Jan  9 17:09:04 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add winetricks and use to disable crash dialog and winedbg
+
+-------------------------------------------------------------------
+Sat Oct 17 18:38:14 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- 1.3.0
+  * Add shell wrapper mingw32-cross-wine-init, mingw32-cross-wine-run
+    and mingw32-cross-wine-start-session
+  * Use a custom wine prefix to preserve existing ones
+  * Remove generated temporary file
+
+-------------------------------------------------------------------
+Thu Aug 27 15:44:05 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- 1.2.0:
+  * Add rpm macro _mingw32_cross_wine_start_session
+  * Remove obsolete file mingw32-cross-wine.rpmlintrc
+    as mingw32-filesystem already provides the same filter
+
+-------------------------------------------------------------------
+Sun Jun 21 15:24:42 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- 1.1.0:
+  * Add wine.sh and user-path.reg.in
+
+-------------------------------------------------------------------
+Mon Feb 16 11:32:03 UTC 2015 - ralf.habacker@freenet.de
+
+- place cross wine setup into rpm macro
+

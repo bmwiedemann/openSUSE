@@ -1,0 +1,48 @@
+# Cross wine specific macro definitions.
+# TODO: setup DNS
+
+#
+# Initialize wine home dir and add optional custom path to Windows PATH environment variable 
+#
+# syntax:
+#   %_mingw32_cross_wine_init [<path-add-to-PATH-env-var>]
+#
+%_mingw32_cross_wine_init \
+    RPM_CONFIG_DIR=/usr/lib/rpm \
+    RPM_FILE_PREFIX=mingw32-cross-wine- \
+    export WINEPREFIX="$HOME/.mingw32-cross-wine" \
+    export WINEARCH=win32 \
+    export WINEDLLPATH=/usr/lib/wine/ \
+    export WINETRICKS_LATEST_VERSION_CHECK=disabled \
+    export WINETRICKS_DOWNLOADER=wget \
+    test "%{_host_cpu}" != "aarch64" && test "%{_host_cpu}" != "ppc64le" && \
+      ci_host=%{_mingw32_target} . $RPM_CONFIG_DIR/${RPM_FILE_PREFIX}wine.sh
+
+#
+# Enable dns support on obs (experimental)
+#
+# syntax:
+#   %_mingw32_cross_wine_enable_dns
+#
+%_mingw32_cross_wine_enable_dns() \
+    dnsmasq & \
+    %nil
+
+#
+# Run windows executables with graphical display
+#
+# syntax:
+#   %_mingw32_cross_wine_run <command-to-run>
+#
+%_mingw32_cross_wine_run WINEPREFIX="$HOME/.mingw32-cross-wine" xvfb-run -a
+
+#
+# Start windows session with graphical display
+#
+# syntax:
+#   %_mingw32_cross_wine_start_session
+#
+%_mingw32_cross_wine_start_session \
+    %_mingw32_cross_wine_run -n 99 /bin/sh  & \
+    export DISPLAY=:99 \
+    %nil
