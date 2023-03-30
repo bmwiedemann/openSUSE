@@ -18,20 +18,21 @@
 
 %define modname accessible-pygments
 Name:           python-accessible-pygments
-Version:        0.0.3
+Version:        0.0.4
 Release:        0
 Summary:        A collection of accessible pygments styles
 License:        BSD-3-Clause
 URL:            https://github.com/Quansight-Labs/accessible-pygments
-Source:         https://files.pythonhosted.org/packages/source/a/accessible-pygments/accessible-pygments-%{version}.tar.gz
+Source:         https://github.com/Quansight-Labs/accessible-pygments/archive/refs/tags/v%{version}.tar.gz#/accessible-pygments-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pygments >= 1.5
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pygments >= 1.5}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-pygments >= 1.5
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -46,8 +47,11 @@ A collection of accessible pygments styles
 %install
 %python_install
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/test
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export PYTHONPATH=$PWD
+%python_exec test/run_tests.py
 
 %files %{python_files}
 %doc README.md
