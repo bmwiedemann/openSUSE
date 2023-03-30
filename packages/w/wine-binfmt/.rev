@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6da8b02367c53ec710b53fdceabadbe7</srcmd5>
+    <version>1.2.1</version>
+    <time>1680209462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  * Fix uninstalling script as mentioned at
+     https://build.opensuse.org/request/show/1075518
+   * Drop obsolete Buildroot: tag</comment>
+    <requestid>1075548</requestid>
+  </revision>
+</revisionlist>
