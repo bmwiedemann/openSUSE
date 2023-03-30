@@ -18,19 +18,9 @@
 #
 
 
-%if %{suse_version} >= 1550
-%bcond_without test
-%else
-# we can't use and test the broken pyproj 3.0 together with libproj in Application:Geo, but
-# a live install on 15.3 with pyproj 2.X from the main repo should work.
-%bcond_with test
-%endif
-%{?!python_module:%define python_module() python3-%{**}}
 %define         oldpython python
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-OWSLib
-Version:        0.25.0
+Version:        0.28.1
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
@@ -38,29 +28,30 @@ Group:          Productivity/Scientific/Other
 URL:            http://geopython.github.io/OWSLib/
 # get the test suite form Github
 Source:         https://github.com/geopython/OWSLib/archive/refs/tags/%{version}.tar.gz#/OWSLib-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-%if %{suse_version >= 1550}
-Requires:       python-pyproj >= 2
-%else
-# see comment above
-Requires:       (python-pyproj >= 2 with python-pyproj < 3)
+%if %python_version_nodots < 37
+Requires:       python-dataclasses
 %endif
+Requires:       python-PyYAML
+Requires:       python-lxml
 Requires:       python-python-dateutil >= 1.5
 Requires:       python-pytz
 Requires:       python-requests >= 1.0
 Provides:       python-owslib = %{version}
 Obsoletes:      python-owslib < %{version}
-%if %{with test}
+# SECTION test
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module pyproj >= 2}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 1.5}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 1.0}
-%endif
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,7 +70,6 @@ related content models.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
 # override tox.ini: no doctest no cov, register own mark
 echo '[pytest]
@@ -87,12 +77,7 @@ markers =
     online
 ' > pytest.ini
 # don't be too picky about failing tests. Upstreams CI is failing too.
-# wfs: pyproj complaints about no db context
-donttest+="test_ows_interfaces_wfs"
-donttest+=" or (TestOffline  and test_wfs_100_noremotemd_parse_all)"
-donttest+=" or (TestOffline  and test_wfs_100_noremotemd_parse_single)"
-donttest+=" or (TestOffline  and test_wfs_100_noremotemd_parse_none)"
-donttest+=" or (TestOffline  and test_wfs_110_remotemd_parse_all)"
+donttest="(TestOffline  and test_wfs_110_remotemd_parse_all)"
 donttest+=" or (TestOffline  and test_wfs_110_remotemd_parse_single)"
 donttest+=" or (TestOffline  and test_wfs_200_remotemd_parse_all)"
 donttest+=" or (TestOffline  and test_wfs_200_remotemd_parse_single)"
@@ -101,7 +86,6 @@ donttest+=" or (TestOffline  and test_wms_130_remotemd_parse_single)"
 # online but not marked
 donttest+=" or test_wmts_example_informatievlaanderen"
 %pytest -s -m "not online" -k "not ($donttest)"
-%endif
 
 %files %python_files
 %doc AUTHORS.rst CHANGES.rst README.rst

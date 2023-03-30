@@ -57,4 +57,12 @@ new request since download source check failed the first time</comment>
     <comment></comment>
     <requestid>1069778</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8bbc80daf8f2ad6eccfb6d2f9e220dcd</srcmd5>
+    <version>0.28.1</version>
+    <time>1680209566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075593</requestid>
+  </revision>
 </revisionlist>

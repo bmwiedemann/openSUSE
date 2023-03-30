@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Mar 30 16:06:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.28.1
+  * use only lxml for XML parsing and disable entity resolution in
+    XML payload
+- Release 0.28.0
+  * OGC API: add support for OGC API - Features - Part 4:
+    transactions
+  * OGC API: add support for OGC API - Maps
+  * OGC API: fix OGC API - Processes process list filtering
+  * fix WMTS resolution (@dvbmgr)
+  * WFS: fix filter parsing (@huard)
+  * OGC API: use yaml.safe_load for YAML parsing for OpenAPI
+    handling (@sebastic)
+  * FGDC: fix contact parsing (@pvgenuchten)
+- Release 0.27.1
+  * remove pyproj as core dependency
+- Release 0.27.0
+  * core: update pyproj
+  * OGC API: add support for OGC API - Processes
+- Release 0.26.0
+  * ISO: extend MD_Keywords for gmx:Anchor (#765)
+  * WPS: forward timeout/language parameters (#793)
+  * WPS: use 'maximumMegabytes' if available (#796)
+  * OGC API: safeguard links
+  * OGC API: add support for OGC API - Features - Part 3: CQL
+    (#798)
+  * OGC API: rename rangeSubset to properties for coverage queries
+    (#806)
+  * OGC API: fix subsets parameterization (#819)
+  * CSW: pass headers to HTTP POST requests (#805)
+  * WCS: pass timeout to constructors (#812)
+  * CSW: fix byte/string handling for XML payloads (#816)
+  * ISO: fix gmd:edition parsing (#821)
+
+-------------------------------------------------------------------
 Mon Mar  6 15:57:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use fdupes -s, it hurts.
