@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 30 16:14:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.0:
+  * Fix windows can not recognize the tag version when publishing #91
+  * Fix the problem that test actions cannot upload windows binary files,
+    add the function of custom form to set tag version. #94
+  * Reduce default thread count #99
+  * option for plain text disk usage reporting #102
+  * Prune bug #103
+  * dirs-only #104
+  * Feature/file count #105
+
+-------------------------------------------------------------------
 Mon Mar 20 11:31:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.0:
