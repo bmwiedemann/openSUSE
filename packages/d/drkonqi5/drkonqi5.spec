@@ -125,7 +125,7 @@ install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
 
 %postun
 %{systemd_user_postun drkonqi-coredump-cleanup.service drkonqi-coredump-cleanup.timer drkonqi-coredump-launcher.socket}
-%service_del_postun -n drkonqi-coredump-processor@.service
+%service_del_postun_without_restart drkonqi-coredump-processor@.service
 
 %files
 %license LICENSES/*

@@ -823,4 +823,12 @@
     <comment>Plasma 5.27.3 (forwarded request 1071929 from Vogtinator)</comment>
     <requestid>1071978</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>08aa37260fc14331edf0ff168da2b36b</srcmd5>
+    <version>5.27.3</version>
+    <time>1680209444</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace '%service_del_postun -n' with '%service_del_postun_without_restart' (forwarded request 1075184 from fbui)</comment>
+    <requestid>1075199</requestid>
+  </revision>
 </revisionlist>
