@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Mar 29 20:26:19 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.7.0+git20230328.dc14420f:
+  * Bump github/codeql-action from 2.2.8 to 2.2.9 (#1250)
+  * Fix issue links in README-dev.md (#1248)
+  * `index` DSL function [WIP] (#1247)
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 (#1243)
+  * Bump golang.org/x/term from 0.0.0-20210927222741-03fcf44c2211 to 0.6.0 (#1222)
+  * Bump minimum compiler version from Go 1.15 to 1.18 (#1246)
+  * Bump actions/checkout from 3.4.0 to 3.5.0 (#1245)
+  * Add optional second base argument to `int` DSL function (#1244)
+  * Bump github/codeql-action from 2.2.7 to 2.2.8 (#1242)
+  * Bump actions/checkout from 3.3.0 to 3.4.0 (#1234)
+  * Bump actions/setup-go from 3.5.0 to 4.0.0 (#1233)
+  * Bump github/codeql-action from 2.2.6 to 2.2.7 (#1232)
+  * Bump actions/cache from 3.2.6 to 3.3.1 (#1229)
+  * Bump github/codeql-action from 2.2.5 to 2.2.6 (#1230)
+  * Add `mlr step -a rprod` for running products (#1228)
+  * Label head docs as "Miller Dev Documentation"
+  * doc note for #1218
+  * Run go mod tidy (#1220)
+  * Include tools in the release tarball (#1221)
+  * Add new `upcase` and `downcase` verbs (#1217)
+  * Docs re `tail -f` and `--records-per-batch 1` (#1218)
+  * typofix
+  * Fix bug on DSL comment with no final newline (#1216)
+  * release docs
+  * build artifacts
+  * miller 6.7.0-dev
+  * miller 6.7.0
+  * Support more backslashed special characters in DSL strings (#1212)
+  * unit-test files
+  * fix build error
+  * Unit-test updates
+  * tools/build-dsl artifacts
+  * Update DSL-build instructions
+  * go.mod go.sum
+  * BNF mod for `\^` `\$` et al.
+  * --ofmte, --ofmtf, --ofmtg (#1206)
+  * Bump github/codeql-action from 2.2.4 to 2.2.5 (#1207)
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (#1208)
+  * New `leftpad` and `rightpad` DSL functions (#1205)
+  * Bump golang.org/x/sys in /cmd/experiments/cli_parser (#1203)
+  * Bump actions/cache from 3.2.5 to 3.2.6 (#1196)
+  * Bump github/codeql-action from 2.2.3 to 2.2.4 (#1193)
+  * Bump github/codeql-action from 2.2.1 to 2.2.3 (#1191)
+  * Bump actions/cache from 3.2.4 to 3.2.5 (#1192)
+  * Bump actions/cache from 3.2.3 to 3.2.4 (#1186)
+  * Bump goreleaser/goreleaser-action from 4.1.1 to 4.2.0 (#1187)
+  * Bump goreleaser/goreleaser-action from 4.1.0 to 4.1.1 (#1185)
+  * Complete #1181 (#1184)
+  * Bump github/codeql-action from 2.1.39 to 2.2.1 (#1183)
+  * Fixed missing double quote in documentation sample (#1181)
+  * Bump github/codeql-action from 2.1.38 to 2.1.39 (#1179)
+  * Bump github/codeql-action from 2.1.37 to 2.1.38 (#1176)
+  * Bump actions/upload-artifact from 3.1.1 to 3.1.2 (#1175)
+  * Bump actions/cache from 3.2.2 to 3.2.3 (#1174)
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (#1173)
+  * Bump codespell-project/actions-codespell (#1172)
+  * Add Go LICENSE file (#1171)
+
+-------------------------------------------------------------------
 Mon Jan 02 04:44:33 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.6.0+git20230101.7495a8845:

@@ -1,7 +1,7 @@
 #
 # spec file for package miller
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        6.6.0+git20230101.7495a8845
+Version:        6.7.0+git20230328.dc14420f
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
