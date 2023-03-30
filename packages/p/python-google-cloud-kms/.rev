@@ -109,4 +109,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1070202</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c383451d8b1f4aa9fd202a37557459b</srcmd5>
+    <version>2.16.1</version>
+    <time>1680209548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.1
+  * Publish the API comment changes related to supporting different hash
+    functions/values for ECDSA signing (#386)
+- from version 2.16.0
+  * Add support for Coordinated External Keys (#382)
+  * Fix formatting of request arg in docstring (#385) (forwarded request 1075539 from glaubitz)</comment>
+    <requestid>1075540</requestid>
+  </revision>
 </revisionlist>

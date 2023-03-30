@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 30 10:37:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.16.1
+  * Publish the API comment changes related to supporting different hash
+    functions/values for ECDSA signing (#386)
+- from version 2.16.0
+  * Add support for Coordinated External Keys (#382)
+  * Fix formatting of request arg in docstring (#385)
+
+-------------------------------------------------------------------
 Wed Mar  1 14:18:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15.0
