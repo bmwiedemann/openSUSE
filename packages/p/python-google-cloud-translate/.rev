@@ -80,4 +80,33 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1012048 from glaubitz)</comment>
     <requestid>1012097</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b3a07c984b914ede3fafe3dd4695530</srcmd5>
+    <version>3.11.0</version>
+    <time>1680209554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11.0
+  * Add supported fields in document translation request and refresh translation
+    v3 GA service proto documentation (cb63888)
+  * Enable &quot;rest&quot; transport in Python for services supporting numeric enums (cb63888)
+- from version 3.10.1
+  * Add context manager return types (e20fa00)
+  * Add documentation for enums (e20fa00)
+- from version 3.10.0
+  * Add support for python 3.11 (#474)
+- from version 3.9.0
+  * Add typing to proto.Message based class attributes (60573e6)
+  * Add dict typing for client_options (60573e6)
+  * **deps:** Require google-api-core &amp;gt;=1.34.0, &gt;=2.11.0  (60573e6)
+  * Drop usage of pkg_resources (60573e6)
+  * Fix timeout default values (60573e6)
+  * **samples:** Snippetgen handling of repeated enum field (60573e6)
+  * **samples:** Snippetgen should call await on the operation coroutine
+    before calling result (60573e6)
+- Drop handling of fixup scripts in spec file
+  * fixup_translate_v3_keywords.py
+  * fixup_translate_v3beta1_keywords.py
+- Update BuildRequires and Requires from setup.py (forwarded request 1075525 from glaubitz)</comment>
+    <requestid>1075552</requestid>
+  </revision>
 </revisionlist>
