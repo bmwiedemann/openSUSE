@@ -262,4 +262,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1073103 from glaubitz)</comment>
     <requestid>1073133</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1d813fee2a681db4b5db68a1a88acac6</srcmd5>
+    <version>23.0.0</version>
+    <time>1680209497</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 23.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1075439 from glaubitz)</comment>
+    <requestid>1075511</requestid>
+  </revision>
 </revisionlist>
