@@ -1,13 +1,14 @@
 ---
- CMakeLists.txt            |    7 -------
- libshaderc/CMakeLists.txt |    2 ++
- 2 files changed, 2 insertions(+), 7 deletions(-)
+ CMakeLists.txt                |    3 +--
+ libshaderc/CMakeLists.txt     |    2 ++
+ utils/update_build_version.sh |    1 +
+ 3 files changed, 4 insertions(+), 2 deletions(-)
 
-Index: shaderc-2020.5/CMakeLists.txt
+Index: shaderc-2023.2/CMakeLists.txt
 ===================================================================
---- shaderc-2020.5.orig/CMakeLists.txt
-+++ shaderc-2020.5/CMakeLists.txt
-@@ -112,7 +112,6 @@ endif(MSVC)
+--- shaderc-2023.2.orig/CMakeLists.txt
++++ shaderc-2023.2/CMakeLists.txt
+@@ -130,7 +130,6 @@ endif(MSVC)
  
  # Configure subdirectories.
  # We depend on these for later projects, so they should come first.
@@ -15,24 +16,20 @@ Index: shaderc-2020.5/CMakeLists.txt
  
  add_subdirectory(libshaderc_util)
  add_subdirectory(libshaderc)
-@@ -121,12 +120,6 @@ if(${SHADERC_ENABLE_EXAMPLES})
-     add_subdirectory(examples)
- endif()
+@@ -141,7 +140,7 @@ endif()
  
--add_custom_target(build-version
--  ${PYTHON_EXECUTABLE}
+ add_custom_target(build-version
+   ${PYTHON_EXECUTABLE}
 -  ${CMAKE_CURRENT_SOURCE_DIR}/utils/update_build_version.py
--  ${shaderc_SOURCE_DIR} ${spirv-tools_SOURCE_DIR} ${glslang_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/build-version.inc
--  COMMENT "Update build-version.inc in the Shaderc build directory (if necessary).")
--
- function(define_pkg_config_file NAME LIBS)
-   add_custom_target(${NAME}-pkg-config ALL
-     COMMAND ${CMAKE_COMMAND}
-Index: shaderc-2020.5/libshaderc/CMakeLists.txt
++  ${CMAKE_CURRENT_SOURCE_DIR}/utils/update_build_version.sh
+   ${shaderc_SOURCE_DIR} ${spirv-tools_SOURCE_DIR} ${glslang_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/build-version.inc
+   COMMENT "Update build-version.inc in the Shaderc build directory (if necessary).")
+ 
+Index: shaderc-2023.2/libshaderc/CMakeLists.txt
 ===================================================================
---- shaderc-2020.5.orig/libshaderc/CMakeLists.txt
-+++ shaderc-2020.5/libshaderc/CMakeLists.txt
-@@ -66,6 +66,8 @@ set(SHADERC_LIBS
+--- shaderc-2023.2.orig/libshaderc/CMakeLists.txt
++++ shaderc-2023.2/libshaderc/CMakeLists.txt
+@@ -67,6 +67,8 @@ set(SHADERC_LIBS
    shaderc_util
    SPIRV # from glslang
    SPIRV-Tools
@@ -41,3 +38,9 @@ Index: shaderc-2020.5/libshaderc/CMakeLists.txt
  )
  
  target_link_libraries(shaderc PRIVATE ${SHADERC_LIBS})
+Index: shaderc-2023.2/utils/update_build_version.sh
+===================================================================
+--- /dev/null
++++ shaderc-2023.2/utils/update_build_version.sh
+@@ -0,0 +1 @@
++#!/bin/true

@@ -1,7 +1,7 @@
 #
 # spec file for package shaderc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
 Name:           shaderc
-Version:        2022.4
+Version:        2023.2
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -31,13 +31,10 @@ Source99:       baselibs.conf
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.12
-# "DEPS" file recommends: glslang 11.12.0-24-g728c6895
-# DEPS file: spirv-headers sdk-1.3.231.0-14-gc214f6f
-# DEPS file: spirv-tools v2022.4-28-gd9446130
-# Slightly lower should work too
-BuildRequires:  glslang-devel >= 11.12.0
-BuildRequires:  spirv-headers >= 1.6.1~sdk231
-BuildRequires:  spirv-tools-devel >= 2022.4
+BuildRequires:  glslang-devel >= 12
+BuildRequires:  glslang-nonstd-devel
+BuildRequires:  spirv-headers >= 1.6.1~sdk239
+BuildRequires:  spirv-tools-devel >= 2023.1
 
 %description
 A collection of tools, libraries and tests for shader compilation.
@@ -69,6 +66,7 @@ Shaderc wraps around core functionality in glslang and SPIRV-Tools
 
 %prep
 %autosetup -p1
+chmod a+x utils/update_build_version.sh
 echo "\"%version\"" >glslc/src/build-version.inc
 
 %build
