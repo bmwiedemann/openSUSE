@@ -256,4 +256,16 @@
   * Guard against non-finite distances in Buffer/OffsetCurve (GH-661, Paul Ramsey)</comment>
     <requestid>1072559</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>30bf730f99637898cc39718cd90cb555</srcmd5>
+    <version>3.11.2</version>
+    <time>1680209479</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testuite on i586
+
+- Add geos-add-missing-include.patch: Add missing #include &lt;cstdint&gt;
+
+   OffsetCurve</comment>
+    <requestid>1075604</requestid>
+  </revision>
 </revisionlist>
