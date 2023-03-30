@@ -1349,4 +1349,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     on older distributions</comment>
     <requestid>1060362</requestid>
   </revision>
+  <revision rev="142" vrev="3">
+    <srcmd5>cdab62b507658b3b2c1c0f490d6f5c2f</srcmd5>
+    <version>3.20.0</version>
+    <time>1680209443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075172</requestid>
+  </revision>
 </revisionlist>

@@ -153,6 +153,8 @@ but it has been successfully used to optimize several KDE applications.
 
 %build
 %define _lto_cflags %{nil}
+# The preloaded libs for intercepting rely on lazy binding (bsc#1208407)
+export SUSE_ZNOW=0
 export FLAGS="%{optflags}"
 # not a good idea to build valgrind with fortify, as it does not link glibc
 FLAGS="${FLAGS/-D_FORTIFY_SOURCE=2/}"
