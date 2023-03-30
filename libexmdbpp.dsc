@@ -1,7 +1,7 @@
 Format: 1.0
 Source: libexmdbpp
 Architecture: any
-Version: 1.10.0.3a4d93b
+Version: 1.10.4.b7a36f2
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Grommunio <null@grommunio.com>
 Homepage: https://grommunio.com
