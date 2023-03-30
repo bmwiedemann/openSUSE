@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:24:52 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Stronger conflicts for completion packages 
+
+-------------------------------------------------------------------
+Mon Mar 27 08:55:16 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Add proper obsoletes for completion packages 
+
+-------------------------------------------------------------------
+Tue Mar 21 07:46:49 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.24.12:
+  * Release commit for Kubernetes v1.24.12
+  * One lock among PodNominator and SchedulingQueue
+  * releng/go: Update images, dependencies and version to Go 1.19.7
+  * Fix for windows kube-proxy: 'externalTrafficPolicy: Local' results in no clusterIP entry in windows node.
+  * Re-enable label selector
+  * Add integration test for diff --prune --selector
+  * Use label selector for filtering out resources when pruning. Matches same behavior as for kubectl apply
+  * scheduler/framework/plugins/volumebinding: fix inaccurate log for when a volume is bound to a claim
+  * Remove check for CSI driver running on node for CSI migration attach operations
+  * Simplify construction of /metrics request
+  * Move CSI json file saving to SetUpAt()
+  * Fix for issue with Loadbalancer policy creation for IPV6 endpoints in Dualstack mode.
+  * Invoke gimme from kube::golang::verify_go_version
+  * Defer builds to test-cmd and test-integration targets
+  * Carefully compute request path for metrics
+
+-------------------------------------------------------------------
+Wed Mar 15 16:35:21 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+-  Split individual completions into separate packages
+
+-------------------------------------------------------------------
+Thu Mar  9 10:15:46 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Use upstream fish completions and obsolete external package 
+
+-------------------------------------------------------------------
 Thu Mar  2 13:14:29 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update patch files to reflect upstream registry changes from k8s.gcr.io to registry.k8s.io
