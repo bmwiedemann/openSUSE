@@ -1661,4 +1661,10 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Lock libLLVM15 from the DVD</comment>
   </revision>
+  <revision rev="233" vrev="231">
+    <srcmd5>f33a884e592304390e234a4c8f3777b5</srcmd5>
+    <version>unknown</version>
+    <time>1680154957</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
