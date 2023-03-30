@@ -18,7 +18,7 @@
 
 %define lname libexmdbpp0
 Name:           libexmdbpp
-Version:        1.10.0.3a4d93b
+Version:        1.10.4.b7a36f2
 Release:        0
 Summary:        A C++ implementation of the exmdb wire protocol
 License:        AGPL-3.0-or-later
