@@ -1,8 +1,8 @@
-Index: discount-2.2.6/configure.inc
+Index: discount-3.0.0a/configure.inc
 ===================================================================
---- discount-2.2.6.orig/configure.inc
-+++ discount-2.2.6/configure.inc
-@@ -1455,7 +1455,6 @@ __AC_ELF_LIBRARIAN() {
+--- discount-3.0.0a.orig/configure.inc
++++ discount-3.0.0a/configure.inc
+@@ -1456,7 +1456,6 @@ __AC_ELF_LIBRARIAN() {
      if $AC_CC $_VFLAGS -o ngc$$.so ngc$$.c; then
  	USE_SONAME=T
      fi

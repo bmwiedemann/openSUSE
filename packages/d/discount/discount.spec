@@ -16,20 +16,22 @@
 #
 
 
-%define sover 2
+%define sover 3
 %bcond_with fenced_code
 Name:           discount
-Version:        2.2.7b
+Version:        3.0.0a
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
 Group:          Productivity/Text/Convertors
 URL:            https://www.pell.portland.or.us/~orc/Code/discount/
-Source:         https://www.pell.portland.or.us/~orc/Code/discount/discount-%{version}.tar.bz2
+Source:         https://github.com/Orc/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         discount-disable_ldconfig.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 Provides:       markdown
+Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 
 %description
 Discount is an implementation of John Gruber’s Markdown text to HTML language
@@ -73,6 +75,9 @@ CFLAGS="%{optflags}" ./configure.sh \
   --pkg-config \
   --enable-all-features
 %make_build
+
+%check
+make test
 
 %install
 make DESTDIR=%{buildroot} install.everything

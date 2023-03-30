@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 23 16:24:30 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.0.0a:
+  * add a new testcase to verify that -> ... <- works properly
+  * have all of the extensions code guarded by checking against MKD_STRICT
+  * rework the tag handler
+
+- enabled test suite during build
+
+-------------------------------------------------------------------
 Thu Jan  5 15:27:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.7b:
