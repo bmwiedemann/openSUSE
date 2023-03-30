@@ -1,0 +1,24 @@
+diff --git a/src/core/const.h b/src/core/const.h
+index 71d757c..ede93fe 100644
+--- a/src/core/const.h
++++ b/src/core/const.h
+@@ -29,6 +29,7 @@
+ 
+ #include "deps/rtaudio/RtAudio.h"
+ #include <RtMidi.h>
++#include <cstdint>
+ 
+ /* -- environment ----------------------------------------------------------- */
+ #if defined(_WIN32)
+diff --git a/src/gui/elems/midiIO/midiLearner.h b/src/gui/elems/midiIO/midiLearner.h
+index 831868c..80e6663 100644
+--- a/src/gui/elems/midiIO/midiLearner.h
++++ b/src/gui/elems/midiIO/midiLearner.h
+@@ -30,6 +30,7 @@
+ #include "gui/elems/basics/flex.h"
+ #include <functional>
+ #include <string>
++#include <cstdint>
+ 
+ namespace giada::v
+ {

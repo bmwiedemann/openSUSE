@@ -19,14 +19,15 @@
 
 
 Name:           giada
-Version:        0.23.2
+Version:        0.24.0
 Release:        0
 Summary:        Sampler Audio Tool
 License:        GPL-3.0-or-later
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         003-cmake-exclude-juce-from-all.patch
-Patch1:         001-cstdint.patch
+Patch1:         001-Fix-build-with-fmt-9-GCC-12.patch
+Patch2:         002-fix-include-cstdint.patch
+Patch3:         003-cmake-exclude-juce-from-all.patch
 BuildRequires:  cmake
 BuildRequires:  fltk-devel
 %if 0%{?suse_version} < 1550
@@ -41,7 +42,7 @@ BuildRequires:  portaudio-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fmt)
-BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(jansson) >= 2.7
 BuildRequires:  pkgconfig(libpulse)

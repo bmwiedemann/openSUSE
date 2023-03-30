@@ -1,14 +1,14 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/monocasual/giada.git</param>
+    <param name="revision">v0.24.0</param>
     <param name="submodules">enable</param>
-    <param name="versionformat">0.23.2</param>
+    <param name="version">0.24.0</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="recompress" mode="disabled">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="buildtime"/>
+  <service name="set_version" mode="disabled"/>
 </services>

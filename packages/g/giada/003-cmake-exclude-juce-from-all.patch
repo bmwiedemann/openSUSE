@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3a909989..ac1cffeb 100644
+index 7c0968e..a1d6c91 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -544,7 +544,7 @@ endif()
+@@ -553,7 +553,7 @@ endif()
  # Extra parameters for audio plug-ins support.
  # ------------------------------------------------------------------------------
  

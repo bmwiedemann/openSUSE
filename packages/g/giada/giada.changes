@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:12:31 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update patchset:
+  * 001-Fix-build-with-fmt-9-GCC-12.patch
+  * rename 001-cstdint.patch to 002-fix-include-cstdint.patch
+- Switch to tar_scm with disabled mode
+- Update to 0.24.0
+
+  * Revamped MIDI sync Clock support
+  * MIDI engine refactoring, featuring multi-threading support
+  * UI: Resizable vu-meters
+  * UI: New global MIDI activity leds
+  * More core classes and functions refactoring
+  * More robust persistence mechanism for project and configuration files
+  * Add new tests suites for MidiEvent and ChannelFactory
+  * Set C++ version to C++20
+  * Update FLTK to latest commit available
+
+-------------------------------------------------------------------
 Wed Mar 29 07:11:15 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - add 001-cstdint.patch to fix TW build (gcc13)
