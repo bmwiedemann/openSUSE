@@ -71,6 +71,8 @@ for management and discovery.
 
 
 
+
+
 # packages to build containerized control plane
 
 %package apiserver
@@ -174,7 +176,20 @@ Requires:       kubernetes%{baseversion}-client
 Provides:       kubernetes-client-common = %{version}
 Conflicts:      kubernetes-client-common
 Obsoletes:      kubernetes%{baseversionminus1}-client-common
-Recommends:     bash-completion
+
+%package client-bash-completion
+Summary:        Bash Completion for %{name}-client
+Group:          System/Shells
+Requires:       bash-completion
+Requires:       kubernetes%{baseversion}-client = %{version}
+Supplements:    (kubernetes%{baseversion}-client and bash-completion)
+BuildArch:      noarch
+Obsoletes:      kubernetes%{baseversionminus1}-client-bash-completion
+Provides:       kubernetes-client-bash-completion = %{version}
+Conflicts:      kubernetes-client-bash-completion
+
+%description client-bash-completion
+Bash command line completion support for %{name}-client
 
 %description client-common
 Kubernetes client tools common files
@@ -403,6 +418,8 @@ fi
 %license LICENSE
 %{_mandir}/man1/kubectl.1%{?ext_man}
 %{_mandir}/man1/kubectl-*
+
+%files client-bash-completion
 %{_datadir}/bash-completion/completions/kubectl
 
 %changelog
