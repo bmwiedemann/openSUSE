@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 29 07:05:52 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.5. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.1.5>.
+
+  Includes fixes for the following CVEs:
+   - CVE-2023-25809 bsc#1209884
+   - CVE-2023-27561 bsc#1208962
+   - CVE-2023-28642 bsc#1209888
+
+  * Fix the inability to use `/dev/null` when inside a container.
+  * Fix changing the ownership of host's `/dev/null` caused by fd redirection
+    (a regression in 1.1.1). bsc#1168481
+  * Fix rare runc exec/enter unshare error on older kernels.
+  * nsexec: Check for errors in `write_log()`.
+
+- Drop version-specific Go requirement.
+
+-------------------------------------------------------------------
 Wed Aug 31 13:00:31 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to runc v1.1.4. Upstream changelog is available from

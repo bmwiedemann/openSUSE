@@ -1,7 +1,7 @@
 #
 # spec file for package runc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,24 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version a916309fff0f838eb94e928713dbc3c0d0ac7aa4
-%define git_short   a916309fff0f
+%define git_version f19387a6bec4944c770f7668ab51c4348d9c2f38
+%define git_short   f19387a6bec4
 
-# Package-wide golang version
-%define go_version 1.18
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.1.4
-%define _version 1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/opencontainers/runc
-Source0:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz#/runc-%{version}.tar.xz
-Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
+Source0:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz#/runc-%{version}.tar.xz
+Source1:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
 Source2:        runc.keyring
 BuildRequires:  fdupes
+BuildRequires:  go
 BuildRequires:  go-go-md2man
-# Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.x' here, so just require 1.x exactly. bsc#1172608
-BuildRequires:  go%{go_version}
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
 Recommends:     criu
@@ -58,7 +53,7 @@ Obsoletes:      docker-runc_50a19c6
 ExcludeArch:    s390
 
 # Construct "git describe --dirty --long --always".
-%define git_describe v%{_version}-0-g%{git_short}
+%define git_describe v%{version}-0-g%{git_short}
 
 %description
 runc is a CLI tool for spawning and running containers according to the OCI
@@ -67,7 +62,7 @@ of Docker. It was originally designed to be a replacement for LXC within Docker,
 and has grown to become a separate project entirely.
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{version}
 
 %build
 # build runc

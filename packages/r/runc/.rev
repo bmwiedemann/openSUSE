@@ -444,4 +444,26 @@ provides).</comment>
     <comment></comment>
     <requestid>1005074</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9fe68e92c5558f97a793b8ebdd93122d</srcmd5>
+    <version>1.1.5</version>
+    <time>1680209449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to runc v1.1.5. Upstream changelog is available from
+  &lt;https://github.com/opencontainers/runc/releases/tag/v1.1.5&gt;.
+
+  Includes fixes for the following CVEs:
+   - CVE-2023-25809 bsc#1209884
+   - CVE-2023-27561 bsc#1208962
+   - CVE-2023-28642 bsc#1209888
+
+  * Fix the inability to use `/dev/null` when inside a container.
+  * Fix changing the ownership of host's `/dev/null` caused by fd redirection
+    (a regression in 1.1.1). bsc#1168481
+  * Fix rare runc exec/enter unshare error on older kernels.
+  * nsexec: Check for errors in `write_log()`.
+
+- Drop version-specific Go requirement.</comment>
+    <requestid>1075228</requestid>
+  </revision>
 </revisionlist>
