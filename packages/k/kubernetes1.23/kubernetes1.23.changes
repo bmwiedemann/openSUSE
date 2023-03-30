@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 27 09:24:52 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Stronger conflicts for completion packages 
+
+-------------------------------------------------------------------
+Mon Mar 27 08:53:20 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Split individual completions into separate packages
+
+-------------------------------------------------------------------
 Thu Mar  2 12:48:04 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update patch files to reflect upstream registry changes from k8s.gcr.io to registry.k8s.io

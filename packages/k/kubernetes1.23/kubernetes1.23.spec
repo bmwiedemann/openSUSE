@@ -49,7 +49,6 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
-BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
@@ -66,6 +65,8 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
+
 
 
 
@@ -178,6 +179,35 @@ Recommends:     bash-completion
 %description client-common
 Kubernetes client tools common files
 
+%package client-bash-completion
+Summary:        Bash Completion for %{name}-client
+Group:          System/Shells
+BuildRequires:  bash-completion
+Requires:       bash-completion
+Requires:       kubernetes%{baseversion}-client = %{version}
+Supplements:    (kubernetes%{baseversion}-client and bash-completion)
+BuildArch:      noarch
+Obsoletes:      kubernetes%{baseversionminus1}-client-bash-completion
+Provides:       kubernetes-client-bash-completion = %{version}
+Conflicts:      kubernetes-client-bash-completion
+
+%description client-bash-completion
+Bash command line completion support for %{name}-client
+
+%package client-fish-completion
+Summary:        Fish Completion for %{name}-client
+Group:          System/Shells
+BuildRequires:  fish
+Requires:       kubernetes%{baseversion}-client = %{version}
+Supplements:    (kubernetes%{baseversion}-client and fish)
+BuildArch:      noarch
+Obsoletes:      kubernetes%{baseversionminus1}-client-fish-completion
+Provides:       kubernetes-client-fish-completion = %{version}
+Conflicts:      kubernetes-client-fish-completion
+
+%description client-fish-completion
+Fish command line completion support for %{name}-client.
+
 %prep
 %setup -q -n kubernetes-%{version}
 %patch2 -p1
@@ -249,6 +279,10 @@ install -D -m 0644 %{SOURCE22} %{buildroot}%{_fillupdir}/sysconfig.kubelet-kuber
 # install the bash completion
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions/
 %{buildroot}%{_bindir}/kubectl%{baseversion} completion bash > %{buildroot}%{_datadir}/bash-completion/completions/kubectl
+
+# install the fish completion
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+%{buildroot}%{_bindir}/kubectl%{baseversion} completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/kubectl.fish
 
 # move CHANGELOG-%{baseversion}.md to old location
 mv CHANGELOG/CHANGELOG-%{baseversion}.md .
@@ -403,6 +437,11 @@ fi
 %license LICENSE
 %{_mandir}/man1/kubectl.1%{?ext_man}
 %{_mandir}/man1/kubectl-*
+
+%files client-bash-completion
 %{_datadir}/bash-completion/completions/kubectl
+
+%files client-fish-completion
+%{_datadir}/fish/vendor_completions.d/kubectl.fish
 
 %changelog
