@@ -30,12 +30,11 @@ Patch1:         zlib-1.2.5-tml.patch
 Patch2:         0001-cmake-Fix-pkgconfig-support-on-Windows.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  cmake
+BuildRequires:  mingw32-cross-cmake
 BuildRequires:  libtool
 BuildRequires:  mingw32-cross-binutils
+BuildRequires:  mingw32-cross-cmake
 BuildRequires:  mingw32-cross-gcc
-BuildRequires:  mingw32-cross-pkg-config
-BuildRequires:  mingw32-filesystem
 BuildRequires:  xz
 %_mingw32_package_header_debug
 BuildArch:      noarch
@@ -109,10 +108,11 @@ developing applications which use minizip.
 %autosetup -p1 -n zlib-%{version}
 
 %build
+P=$(pwd)
 %_mingw32_cmake . -DINSTALL_PKGCONFIG_DIR=%{_mingw32_libdir}/pkgconfig
 %_mingw32_cmake_build CFLAGS=-shared LDFLAGS=-no-undefined
 
-cd contrib/minizip
+cd $P/contrib/minizip
 autoreconf -fi
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw32_cache}
 %{_mingw32_configure}
