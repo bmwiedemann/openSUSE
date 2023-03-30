@@ -357,4 +357,12 @@
 - rest_core_dvd: Add the x86_64_v3 pattern</comment>
     <requestid>1074784</requestid>
   </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>ae5fa46571069613cfcdbe79a39e9de8</srcmd5>
+    <version>20170319</version>
+    <time>1680209442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075159</requestid>
+  </revision>
 </revisionlist>

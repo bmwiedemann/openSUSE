@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 29 06:38:07 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- rest_dvd: Add breeze5-wallpapers (boo#1209838)
+- Remove rest_core_dvd, it's unused. Some deps were added to it by
+  accident, move them to rest_dvd.
+- Remove rest_cd_{gnome,kde,x11}, unused.
+
+-------------------------------------------------------------------
 Mon Mar 27 21:42:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - limit last change to x86_64 arch builds. 

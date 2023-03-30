@@ -35,13 +35,6 @@ not make sense.
 This particular package contains patterns that determine the contents of media
 such as DVD's
 
-
-
-
-
-
-
-################################################################################
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -227,265 +220,6 @@ Packages that are on CD but not in other patterns.
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/rest_cd_core.txt
 
-################################################################################
-
-%package rest_cd_gnome
-%pattern_desktopfunctions
-Summary:        Remaining Software
-Group:          Metapackages
-Provides:       patterns-openSUSE-rest_cd_gnome = %{version}
-Provides:       pattern() = rest_cd_gnome
-Provides:       pattern-icon() = pattern-generic
-Provides:       pattern-order() = 1940
-Obsoletes:      patterns-openSUSE-rest_cd_gnome < %{version}
-Requires:       pattern() = apparmor
-Requires:       pattern() = games
-Requires:       pattern() = gnome
-Requires:       pattern() = gnome_basis
-Requires:       pattern() = gnome_imaging
-Requires:       pattern() = gnome_internet
-Requires:       pattern() = gnome_multimedia
-Requires:       pattern() = gnome_office
-Requires:       pattern() = gnome_utilities
-Requires:       pattern() = gnome_yast
-Requires:       pattern() = imaging
-Requires:       pattern() = multimedia
-Requires:       pattern() = office
-Requires:       pattern() = rest_cd_core
-Requires:       pattern() = sw_management_gnome
-Requires:       pattern() = yast2_basis
-Requires:       pattern() = yast2_install_wf
-Recommends:     bundle-lang-gnome-en
-# Individual games instead of gnome_games pattern
-Recommends:     gnome-mines
-Recommends:     gnome-shell-browser-plugin
-Recommends:     gnome-sudoku
-Recommends:     quadrapassel
-Recommends:     swellfoop
-
-%description rest_cd_gnome
-Packages that are on CD but not in other patterns.
-
-%files rest_cd_gnome
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/rest_cd_gnome.txt
-
-################################################################################
-
-%package rest_cd_kde
-%pattern_desktopfunctions
-Summary:        Remaining Software
-Group:          Metapackages
-Provides:       patterns-openSUSE-rest_cd_kde = %{version}
-Provides:       patterns-openSUSE-rest_cd_kde4 = %{version}
-Provides:       pattern() = rest_cd_kde
-Provides:       pattern-icon() = pattern-generic
-Provides:       pattern-order() = 1960
-Obsoletes:      patterns-openSUSE-rest_cd_kde < %{version}
-Obsoletes:      patterns-openSUSE-rest_cd_kde4 < %{version}
-Requires:       pattern() = apparmor
-Requires:       pattern() = games
-Requires:       pattern() = imaging
-Requires:       pattern() = kde
-Requires:       pattern() = kde_games
-Requires:       pattern() = kde_imaging
-Requires:       pattern() = kde_internet
-Requires:       pattern() = kde_multimedia
-Requires:       pattern() = kde_office
-Requires:       pattern() = kde_plasma
-Requires:       pattern() = kde_utilities
-Requires:       pattern() = kde_yast
-Requires:       pattern() = multimedia
-Requires:       pattern() = office
-Requires:       pattern() = rest_cd_core
-Requires:       pattern() = yast2_basis
-Requires:       pattern() = yast2_install_wf
-Recommends:     bundle-lang-kde-en
-
-%description rest_cd_kde
-Packages that are on CD but not in other patterns.
-
-%files rest_cd_kde
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/rest_cd_kde.txt
-
-################################################################################
-
-%package rest_cd_x11
-%pattern_desktopfunctions
-Summary:        Remaining Software
-#
-# Additional applications for rescue CD
-#
-Group:          Metapackages
-Provides:       patterns-openSUSE-rest_cd_x11 = %{version}
-Provides:       pattern() = rest_cd_x11
-Provides:       pattern-icon() = pattern-generic
-Provides:       pattern-order() = 1961
-Obsoletes:      patterns-openSUSE-rest_cd_x11 < %{version}
-Requires:       evince
-Requires:       evince-plugin-pdfdocument
-Requires:       file-roller
-Requires:       gparted
-Requires:       hexchat
-Requires:       leafpad
-Requires:       lightdm
-Requires:       lightdm-gtk-greeter
-Requires:       pattern() = rest_cd_core
-# This defines a bare minimum Xfce desktop used, for example, as
-# base for the openSUSE Rescue CD
-Requires:       patterns-xfce-xfce_basis
-Requires:       photorec
-Requires:       ristretto
-Requires:       thunar
-Requires:       thunar-volman
-Requires:       xfce4-appfinder
-Requires:       xfce4-notifyd
-Requires:       xfce4-panel
-Requires:       xfce4-power-manager
-Requires:       xfce4-session
-Requires:       xfce4-settings
-Requires:       xfconf
-Requires:       xfdesktop
-Requires:       xfwm4
-Recommends:     NetworkManager
-Recommends:     NetworkManager-applet
-Recommends:     xfce4-pulseaudio-plugin
-#
-# low level functionality
-#
-Recommends:     avahi
-Recommends:     dbus-1-x11
-Recommends:     desktop-file-utils
-# use gnomesu as su wrapper
-Recommends:     libgnomesu
-Recommends:     libxfce4ui-tools
-#
-# core desktop functionality
-#
-Recommends:     libyui-qt-pkg
-# bnc#440285
-Recommends:     pinentry-gtk2
-Recommends:     shared-mime-info
-Recommends:     xdg-user-dirs-gtk
-# bnc#540627
-Recommends:     xdg-utils
-Recommends:     xfce4-panel-plugin-xkb
-Recommends:     xfce4-terminal
-# For screenlocking to work in xfce
-Recommends:     xscreensaver
-Recommends:     yast2-control-center-qt
-Suggests:       desktop-branding
-#
-# branding
-#
-Suggests:       exo-branding-openSUSE
-Suggests:       gconf2-branding-openSUSE
-Suggests:       libgarcon-branding-openSUSE
-Suggests:       libxfce4ui-branding-openSUSE
-Suggests:       lightdm-gtk-greeter-branding-openSUSE
-Suggests:       midori-branding-openSUSE
-Suggests:       thunar-volman-branding-openSUSE
-Suggests:       wallpaper-branding-openSUSE
-Suggests:       xfce4-notifyd-branding-openSUSE
-Suggests:       xfce4-panel-branding-openSUSE
-Suggests:       xfce4-session-branding-openSUSE
-Suggests:       xfce4-settings-branding-openSUSE
-Suggests:       xfce4-splash-branding-openSUSE
-Suggests:       xfdesktop-branding-openSUSE
-Suggests:       xfwm4-branding-openSUSE
-
-%description rest_cd_x11
-Packages that are on CD but not in other patterns.
-
-%files rest_cd_x11
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/rest_cd_x11.txt
-
-################################################################################
-
-%package rest_core_dvd
-%pattern_desktopfunctions
-Summary:        Remaining Software
-Group:          Metapackages
-Provides:       patterns-openSUSE-rest_core_dvd = %{version}
-Provides:       pattern() = rest_core_dvd
-Provides:       pattern-icon() = pattern-generic
-Provides:       pattern-order() = 1982
-Obsoletes:      patterns-openSUSE-rest_core_dvd < %{version}
-Requires:       kernel-default
-Requires:       kernel-firmware
-Requires:       pattern() = base
-Requires:       pattern() = enhanced_base
-Requires:       pattern() = fonts
-Requires:       pattern() = sw_management
-Requires:       pattern() = x11
-%ifarch x86_64
-Requires:       pattern() = x86_64_v3
-%endif
-Requires:       pattern() = yast2_basis
-Requires:       pattern() = yast2_install_wf
-Recommends:     pattern() = x11_yast
-# filesystem(btrfs)
-Recommends:     btrfsprogs
-# prefer the full version for installation
-Recommends:     cracklib-dict-full
-# crypto partitions
-Recommends:     cryptsetup
-# filesystem(vfat)
-Recommends:     dosfstools
-# filesystem(ext2)
-Recommends:     e2fsprogs
-# from voip
-Recommends:     ekiga
-# filesystem(jfs)
-Recommends:     jfsutils
-#lvm2 support (#301382)
-Recommends:     lvm2
-# notification-daemon for dbus(org.freedesktop.Notifications) - the others are expensive
-Recommends:     notification-daemon
-# filesystem(ntfs-3g)
-Recommends:     ntfs-3g
-# We need to ensure that systemd-32bit ends up on the DVD
-Recommends:     systemd-32bit
-Recommends:     systemd-coredump
-# filesystem(minix)
-Recommends:     util-linux
-Recommends:     xf86-video-ati
-Recommends:     xf86-video-cirrus
-Recommends:     xf86-video-fbdev
-Recommends:     xf86-video-intel
-Recommends:     xf86-video-neomagic
-Recommends:     xf86-video-nouveau
-Recommends:     xf86-video-nv
-Recommends:     xf86-video-qxl
-Recommends:     xf86-video-v4l
-Recommends:     xf86-video-vesa
-Recommends:     xf86-video-vmware
-# filesystem(xfs)
-Recommends:     xfsprogs
-Suggests:       kiax
-Suggests:       linphone
-Suggests:       mangler
-Suggests:       twinkle
-%ifarch x86_64
-Recommends:     efibootmgr
-%endif
-# NVIDIA's openGPU driver
-%ifarch x86_64 aarch64
-Recommends:     kernel-firmware-nvidia-gsp-G06
-Recommends:     nvidia-open-driver-G06-signed-kmp-default
-%endif
-
-%description rest_core_dvd
-Packages that are on CD but not in other patterns.
-
-%files rest_core_dvd
-%dir %{_docdir}/patterns
-%{_docdir}/patterns/rest_core_dvd.txt
-
-################################################################################
-
 %package rest_dvd
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -520,6 +254,9 @@ Requires:       pattern() = kde_yast
 %endif
 Requires:       arabic-fonts
 Requires:       arphic-uming-fonts
+# Only recommended by the Plasma pattern, but we want it on the DVD so that it
+# really gets installed by default (boo#1209838)
+Requires:       breeze5-wallpapers
 Requires:       cracklib-dict-full
 Requires:       indic-fonts
 Requires:       ipa-gothic-fonts
@@ -550,6 +287,9 @@ Requires:       pattern() = sw_management
 Requires:       pattern() = sw_management_gnome
 Requires:       pattern() = transactional_base
 Requires:       pattern() = x11
+%ifarch x86_64
+Requires:       pattern() = x86_64_v3
+%endif
 Recommends:     pattern() = xfce
 Recommends:     pattern() = xfce_basis
 Recommends:     pattern() = xfce_laptop
@@ -814,6 +554,11 @@ Recommends:     gtk2-32bit
 # Ensure we have Pulseaudio on the DVD (for upgrade scenarios)
 Recommends:     pulseaudio
 Recommends:     pulseaudio-module-x11
+# NVIDIA's openGPU driver
+%ifarch x86_64 aarch64
+Recommends:     kernel-firmware-nvidia-gsp-G06
+Recommends:     nvidia-open-driver-G06-signed-kmp-default
+%endif
 
 %description rest_dvd
 Packages that are on CD but not in other patterns.
@@ -830,7 +575,7 @@ Packages that are on CD but not in other patterns.
 
 %install
 mkdir -p "%{buildroot}%{_docdir}/patterns"
-for i in rest_cd_core rest_cd_gnome rest_cd_kde rest_cd_x11 rest_core_dvd rest_dvd; do
+for i in rest_cd_core rest_dvd; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}%{_docdir}/patterns/$i.txt"
 done
