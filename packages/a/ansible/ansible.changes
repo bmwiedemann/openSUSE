@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 29 16:02:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.4.0:
+  Ansible 7.4.0 will include ansible-core 2.14.4 as well as a
+  curated set of Ansible collections to provide a vast number of
+  modules and plugins.
+  Collections which have opted-in to being a part of the Ansible 7
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
 Tue Feb 28 16:03:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 7.3.0:
