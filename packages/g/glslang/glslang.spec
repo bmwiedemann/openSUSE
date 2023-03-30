@@ -18,7 +18,7 @@
 
 %define lname libglslang12
 Name:           glslang
-Version:        12.0.0
+Version:        12.1.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -27,9 +27,8 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Source3:        baselibs.conf
-Patch1:         0001-build-set-SOVERSION-on-all-libraries.patch
 BuildRequires:  bison
-BuildRequires:  cmake >= 2.8
+BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base
@@ -66,6 +65,20 @@ range (IDs are not as tightly packed around zero), but will compress
 better when multiple modules are compressed together, since
 compressor's dictionary can find better cross module commonality.
 
+%package nonstd-devel
+Summary:        Secondary set of header files for glslang
+Group:          Development/Libraries/C and C++
+Requires:       %lname = %version
+BuildArch:      noarch
+
+%description nonstd-devel
+glslang is a compiler front end for the OpenGL ES and OpenGL shading
+languages. It implements a strict interpretation of the
+specifications for these languages.
+
+This package contains additional headers that are not officially installed,
+but which some downstream packages rely on.
+
 %prep
 %autosetup -p1
 
@@ -78,14 +91,30 @@ echo "V_%version { global: *; };" >/tmp/z.sym
 
 %install
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
+od="$PWD"
 %cmake_install
+
 b="%buildroot"
+pushd "$b"
+(
+	find usr/include -mindepth 1 -type d -printf "%%%%dir /%p\n"
+	find usr/include "(" -type f -o -type l ")" -printf "/%p\n"
+) | sort >"$od/devel.files"
+popd
+
 mkdir -p "$b/%_includedir"
 cp -a SPIRV glslang "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
 ln -s SPIRV/spirv.hpp "$b/%_includedir/"
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"
-cp build/StandAlone/libglslang-default-resource-limits.so "$b/%_libdir/"
+
+pushd "$b"
+(
+	find usr/include -mindepth 1 -type d -printf "%%%%dir /%p\n"
+	find usr/include "(" -type f -o -type l ")" -printf "/%p\n"
+) | sort >"$od/devel_full.files"
+popd
+comm -13 "$od/devel.files" "$od/devel_full.files" >"$od/devel2.files"
 
 # 3rd party programs use -lOGLCompiler (because pristine glslang shipped .a files),
 # so satisfy them under our shared build.
@@ -102,7 +131,7 @@ done
 %files -n %lname
 %_libdir/*.so.12*
 
-%files devel
+%files devel -f devel.files
 %_bindir/gls*
 %_bindir/spirv*
 %_libdir/cmake/
@@ -115,6 +144,7 @@ done
 %_libdir/libSPIRV.so
 %_libdir/libSPVRemapper.so
 %_libdir/libglslang.so
-%_includedir/*
+
+%files nonstd-devel -f devel2.files
 
 %changelog
