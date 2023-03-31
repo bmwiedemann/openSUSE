@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://chromium.googlesource.com/codecs/libgav1</param>
+		<param name="revision">v0.18.0</param>
+		<param name="versionformat">0.18.0</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

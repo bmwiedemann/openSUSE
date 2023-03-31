@@ -1,0 +1,5 @@
+<package name="libgav1" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="libgav1"/>
+</package>
