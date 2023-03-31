@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 31 02:51:40 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230331.10398d83:
+  * Dev: testcase: update history testcase
+  * Dev: log_patterns: update patterns for pacemaker version 2.0+
+
+-------------------------------------------------------------------
+Thu Mar 30 08:41:42 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230330.fd21b87d:
+  * Dev: behave: Add functional test for previous changes
+  * Dev: unittest: Add unit test for previous changes
+  * Dev: bootstrap: Support replacing sbd device via sbd stage
+
+-------------------------------------------------------------------
+Thu Mar 30 03:30:44 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230330.c59dceee:
+  * Dev: utils: add auto_convert_role flag for handle_role_for_ocf_1_1 function
+
+-------------------------------------------------------------------
+Thu Mar 30 02:32:29 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230330.60bfb162:
+  * Dev: ChangeLog: update ChangeLog for release 4.5.0
+
+-------------------------------------------------------------------
 Wed Mar 29 13:58:52 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230329.6d95249b:
