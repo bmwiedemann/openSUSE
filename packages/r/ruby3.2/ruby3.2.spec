@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %ifarch x86_64 aarch64
 %bcond_with    yjit
@@ -35,7 +36,7 @@
 
 %global patch_level p0
 Name:           ruby3.2%{psuffix}
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -61,7 +62,6 @@ Release:        0
 %global rb_extdocdir                      %{_libdir}/ruby/gems/%{rb_ver}/doc/extensions
 %global rb_extarchdocdir                  %{_libdir}/ruby/gems/%{rb_ver}/doc/extensions/%{rb_arch_short}
 %global rb_include_dir                    %{_includedir}/ruby-%{api_version}
-
 
 %if "%{rb_default_ruby_suffix}" == "%{rb_soname}"
 %global is_default_ruby 1
