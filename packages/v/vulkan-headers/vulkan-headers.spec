@@ -21,7 +21,7 @@
 # Consider only updating the sources in lockstep.
 #
 Name:           vulkan-headers
-Version:        1.3.239.0
+Version:        1.3.243.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
@@ -58,7 +58,7 @@ to make use of Vulkan.
 %install
 %cmake_install
 # Fixed upstream (#336) for next rel
-find "%buildroot" -name genvk.py -type f -exec chmod a+x {} +
+#find "%buildroot" -name genvk.py -type f -exec chmod a+x {} +
 
 %files
 %license LICENSE.txt
