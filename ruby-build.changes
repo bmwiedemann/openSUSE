@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 30 19:50:45 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230330.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230330
+  * Add definitions for Ruby 2.7.8, 3.0.6, 3.1.4, 3.2.2 by @jas14 in #2174
+  * Upgrade from OpenSSL 3.0 to OpenSSL 3.1 by @mislav in #2175
+  * Avoid shellcheck CI job commenting on every PR by @mislav in #2176
+  * Remove AWS access key ID from version control by @mislav in #2163
+
+-------------------------------------------------------------------
 Sat Mar 11 16:21:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Change summary and description of dependency packages to shut up rpmlint.
