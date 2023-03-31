@@ -26,14 +26,12 @@
 # Version of SELinux we were using
 %define selinux_policyver %(rpm -q selinux-policy --qf '%%{version}')
 Name:           container-selinux
-Version:        2.198.0
+Version:        2.206.0
 Release:        0
 Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only
 URL:            https://github.com/containers/container-selinux
 Source0:        https://github.com/containers/container-selinux/archive/refs/tags/v%{version}.tar.gz
-# https://github.com/containers/container-selinux/pull/199, can be dropped after this is included
-Patch0:         spc.patch
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-devel
 Requires:       selinux-policy >= %(rpm -q selinux-policy --qf '%%{version}-%%{release}')
@@ -49,7 +47,6 @@ SELinux policy modules for use with container runtimes.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %make_build

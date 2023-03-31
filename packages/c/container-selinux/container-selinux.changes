@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 29 13:04:36 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.206.0:
+  * Allow unconfined domains to transition to container_runtime_t 
+  * Allow container domains to transition to install_t  
+  * Allow avirt_sandbox_domain to manage container_file_t types 
+  * Allow containers to watch sysfs_t directories 
+  * Allow spc_t to transption to rpm_script_t 
+  * Add support to new user_namespace access check 
+  * Smaller permission changes for container_init_t
+- Drop spc.patch, is now included
+
+-------------------------------------------------------------------
 Mon Jan 16 12:47:34 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 2.198.0:
