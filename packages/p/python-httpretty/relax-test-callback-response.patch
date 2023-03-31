@@ -1,0 +1,13 @@
+Index: httpretty-1.1.4/tests/functional/test_requests.py
+===================================================================
+--- httpretty-1.1.4.orig/tests/functional/test_requests.py
++++ httpretty-1.1.4/tests/functional/test_requests.py
+@@ -456,7 +456,7 @@ def test_multipart():
+ 
+ 
+ @httprettified
+-@within(two=miliseconds)
++@within(three=miliseconds)
+ def test_callback_response(now):
+     ("HTTPretty should call a callback function and set its return value as the body of the response"
+      " requests")

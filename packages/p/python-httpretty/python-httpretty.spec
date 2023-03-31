@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpretty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-httpretty
 Version:        1.1.4
 Release:        0
@@ -34,6 +32,8 @@ Patch1:         453-fix-tests-pytest.patch
 Patch2:         double-slash-paths.patch
 #PATCH-FIX-UPSTREAM 460-fix-tests-two-miliseconds
 Patch3:         460-miliseconds_tests.patch
+# PATCH-FIX-OPENSUSE Relax the time for one test case from 2ms to 3ms.
+Patch4:         relax-test-callback-response.patch
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}

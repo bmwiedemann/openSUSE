@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 04:21:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch relax-test-callback-response.patch:
+  * Relax timeout for test_callback_response (bsc#1209571) 
+
+-------------------------------------------------------------------
 Thu Oct 27 16:52:32 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Add patch 460-miliseconds_tests.patch (gh#gabrielfalcao/HTTPretty#460):

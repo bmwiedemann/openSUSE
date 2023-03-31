@@ -189,4 +189,13 @@
     <comment></comment>
     <requestid>1031602</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>663c287732eb881b8df3e50767fdd828</srcmd5>
+    <version>1.1.4</version>
+    <time>1680290049</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch relax-test-callback-response.patch:
+  * Relax timeout for test_callback_response (bsc#1209571)</comment>
+    <requestid>1075359</requestid>
+  </revision>
 </revisionlist>
