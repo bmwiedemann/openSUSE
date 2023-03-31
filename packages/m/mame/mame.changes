@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 30 18:15:32 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.252
+  * Refreshed spec-file via spec-cleaner and manual optimizations.
+  * Changed file use_thin_archives.patch.
+  * Added files: mame-fortify.patch and mame-bgfx.patch.
+  * Disabled LTO for all.
+  * https://mametesters.org/changelog_page.php
+
+-------------------------------------------------------------------
 Sat Oct  1 10:09:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.248
@@ -733,4 +743,3 @@ Thu Oct 25 2007 - uli@suse.de
 
 - update -> 0.120a
 - fix version number
-

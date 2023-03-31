@@ -1,5 +1,5 @@
---- 3rdparty/genie/src/tools/gcc.lua_orig	2019-10-31 01:14:26.826612937 +0100
-+++ 3rdparty/genie/src/tools/gcc.lua	2019-10-31 02:06:13.625516286 +0100
+--- a/3rdparty/genie/src/tools/gcc.lua	2019-10-31 01:14:26.826612937 +0100
++++ b/3rdparty/genie/src/tools/gcc.lua	2019-10-31 02:06:13.625516286 +0100
 @@ -277,7 +277,7 @@
  				if premake.gcc.llvm then
  					table.insert(result, 'rcs')

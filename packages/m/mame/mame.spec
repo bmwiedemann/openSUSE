@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,50 +17,20 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
-# disable lto for some archs
-%ifarch aarch64 %arm ppc64 ppc64le %ix86
-%define _lto_cflags %{nil}
-%endif
-
 %if %{__isa_bits} == 64
 %ifnarch aarch64
 %define is_64bit 1
 %endif
 %endif
-
-%if "%{flavor}" == ""
-ExclusiveArch:  do_not_build
-%endif
-
 %if "%{flavor}" == "mame" || "%{flavor}" == ""
 %define pkgsuffix %{nil}
 %else
 %define pkgsuffix -%{flavor}
 %endif
-
-%define fver    248
-
-# Build mame-mess by default
-# ASIO: https://github.com/mamedev/mame/issues/5721
-%if 0%{?suse_version} >= 1550 || ( 0%{?sle_version} >= 150300 && 0%{?is_opensuse} )
-%bcond_with     system_asio
-%else
-%bcond_without  system_asio
-%endif
-
+%define fver    252
 Name:           mame%{?pkgsuffix}
-Version:        0.%fver
+Version:        0.%{fver}
 Release:        0
-%if "%{flavor}" != "mess"
-Summary:        Multiple Arcade Machine Emulator
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Emulators/Other
-%else
-Summary:        Multi Emulator Super System
-License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Emulators/Other
-%endif
 URL:            https://mamedev.org/
 Source0:        https://github.com/mamedev/mame/archive/mame0%{fver}.tar.gz#/mame-mame0%{fver}.tar.gz
 Source1:        https://github.com/mamedev/mame/releases/download/mame0%{fver}/whatsnew_0%{fver}.txt
@@ -76,62 +46,54 @@ Patch0:         use_thin_archives.patch
 Patch1:         fix-922619.patch
 # PATCH-FIX-OPENSUSE fix_lua_misspelling.patch -- introduced in mame 0.238
 Patch2:         fix_lua_misspelling.patch
+Patch3:         mame-fortify.patch
+Patch4:         mame-bgfx.patch
 BuildRequires:  binutils-gold
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  python3-xml
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(asio)
+BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(glm)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libutf8proc)
+BuildRequires:  pkgconfig(lua5.3)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(portmidi)
+BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
-Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
-BuildRequires:  gcc-c++
-BuildRequires:  libexpat-devel
-BuildRequires:  libjpeg8-devel
-BuildRequires:  lua53-devel
-BuildRequires:  portmidi-devel
-BuildRequires:  utf8proc-devel
-BuildRequires:  pkgconfig(RapidJSON)
-BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(glm)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(portaudio-2.0)
-BuildRequires:  pkgconfig(pugixml)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
-%if %{with system_asio}
-BuildRequires:  asio-devel
-%endif
 Requires:       mame-data = %{version}
+Requires(post): desktop-file-utils
+Requires(postun): desktop-file-utils
 Suggests:       mame-tools = %{version}
-
-%if "%{flavor}" == "mame"
-# sdlmame was last used at version 0.142
-Provides:       sdlmame = %{version}
-Obsoletes:      sdlmame < %{version}
-# ume was last used at version 0.159
-Provides:       ume = %{version}
-Obsoletes:      ume < %{version}
+%if "%{flavor}" == ""
+ExclusiveArch:  do_not_build
 %endif
-
-%if "%{flavor}" == "mess"
-# sdlmess was last used at version 0.142
-Provides:       sdlmess = %{version}
-Obsoletes:      sdlmess < %{version}
-# mess was last used at version 0.159
-Provides:       mess = %{version}
-Obsoletes:      mess < %{version}
+%if "%{flavor}" != "mess"
+Summary:        Multiple Arcade Machine Emulator
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Emulators/Other
+%else
+Summary:        Multi Emulator Super System
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Emulators/Other
 %endif
-
 %if "%{flavor}" != "mess"
 %description
 MAME is an emulator designed to recreate the hardware of arcade game
@@ -140,7 +102,6 @@ MAME serves as this hardware documentation. The fact that the
 software is usable serves primarily to validate the accuracy of the
 documentation.
 %else
-
 %description
 This is the MESS only build of MAME; it has been compiled without Arcade built in.
 
@@ -151,7 +112,6 @@ gaming systems, computer platforms, and calculators.
 
 %package -n mame-tools
 Summary:        MAME Tools
-# mess-tools was last used at version 0.159
 Group:          System/Emulators/Other
 Provides:       mess-tools = %{version}
 Obsoletes:      mess-tools < %{version}
@@ -172,10 +132,27 @@ This package contains all data files needed by the MAME binaries:
  * languages
 
 %prep
-%setup -q -n mame-mame0%{fver}
-%patch0
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n mame-mame0%{fver}
+
+rm -r \
+    3rdparty/asio \
+    3rdparty/compat \
+    3rdparty/dxsdk \
+    3rdparty/expat \
+    3rdparty/glm \
+    3rdparty/libflac \
+    3rdparty/libjpeg \
+    3rdparty/portaudio \
+    3rdparty/portmidi \
+    3rdparty/pugixml \
+    3rdparty/rapidjson \
+    3rdparty/SDL2 \
+    3rdparty/SDL2-override \
+    3rdparty/sqlite3 \
+    3rdparty/tap-windows6 \
+    3rdparty/utf8proc \
+    3rdparty/zlib \
+    docs/themes
 
 cp %{SOURCE1} whatsnew-%{version}.txt
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
@@ -197,6 +174,8 @@ sed -i "s@-Wall -Wextra -Os@%{myoptflags}@" 3rdparty/genie/build/gmake.linux/gen
 sed -i "s@\. -s@\. %{myoptflags}@" 3rdparty/genie/build/gmake.linux/genie.make
 
 %build
+# https://github.com/mamedev/mame/issues/7046
+%define _lto_cflags %{nil}
 # Limit build to avoid oom
 %ifarch ppc64 ppc64le
 %define limitbuild 5000
@@ -222,6 +201,7 @@ COMMON_FLAGS="\
     OPTIMIZE=3 \
     PYTHON=python3 \
     PYTHON_EXECUTABLE=python3 \
+    USE_SYSTEM_LIB_ASIO=1 \
     USE_SYSTEM_LIB_EXPAT=1 \
     USE_SYSTEM_LIB_ZLIB=1 \
     USE_SYSTEM_LIB_JPEG=1 \
@@ -234,9 +214,6 @@ COMMON_FLAGS="\
     USE_SYSTEM_LIB_GLM=1 \
     USE_SYSTEM_LIB_RAPIDJSON=1 \
     USE_SYSTEM_LIB_PUGIXML=1 \
-    %if %{with system_asio}
-    USE_SYSTEM_LIB_ASIO=1 \
-    %endif
     "
 # Bootstrap genie, scripts file has been patched
 %make_build OPT_FLAGS="%{myoptflags}" $COMMON_FLAGS genie
@@ -258,62 +235,59 @@ COMMON_FLAGS="\
 %install
 %if "%{flavor}" == "mame"
 # Install emulator binaries and manpages
-install -Dpm 0755 mamearcade %{buildroot}%{_bindir}/mame
-install -Dpm 0644 docs/man/mame.6 %{buildroot}%{_mandir}/man6/mame.6
-install -Dpm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/mame.png
+install -Dpm0755 mamearcade %{buildroot}%{_bindir}/mame
+install -Dpm0644 docs/man/mame.6 %{buildroot}%{_mandir}/man6/mame.6
+install -Dpm0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/mame.png
 
 # Install config file
 mkdir -p %{buildroot}%{_sysconfdir}/skel/.mame
-install -Dpm 0644 mame.ini %{buildroot}%{_sysconfdir}/skel/.mame/mame.ini
+install -Dpm0644 mame.ini %{buildroot}%{_sysconfdir}/skel/.mame/mame.ini
 
 %suse_update_desktop_file -c mame 'MAME' 'Multiple Arcade Machine Emulator' mame mame Game Emulator
-install -Dpm 0644 %{SOURCE102}  %{buildroot}%{_datadir}/metainfo/mame.appdata.xml
+install -Dpm0644 %{SOURCE102}  %{buildroot}%{_datadir}/metainfo/mame.appdata.xml
 %endif
 
 %if "%{flavor}" == "mess"
 # Install emulator binaries and manpages
-install -Dpm 0755 mamemess %{buildroot}%{_bindir}/mame-mess
-install -Dpm 0644 %{SOURCE3}  %{buildroot}%{_datadir}/pixmaps/mame-mess.png
+install -Dpm0755 mamemess %{buildroot}%{_bindir}/mame-mess
+install -Dpm0644 %{SOURCE3}  %{buildroot}%{_datadir}/pixmaps/mame-mess.png
 
 # Install config file
 mkdir -p %{buildroot}%{_sysconfdir}/skel/.mess
-install -Dpm 0644 mame.ini   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
+install -Dpm0644 mame.ini   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
 sed -i -- 's/.mame;/.mess;/g'   %{buildroot}%{_sysconfdir}/skel/.mess/mess.ini
 
 %suse_update_desktop_file -c mame-mess 'MESS' 'Multi Emulator Super System' mame-mess mame-mess Game Emulator
-install -Dpm 0644 %{SOURCE104}  %{buildroot}%{_datadir}/metainfo/mame-mess.appdata.xml
+install -Dpm0644 %{SOURCE104}  %{buildroot}%{_datadir}/metainfo/mame-mess.appdata.xml
 %endif
 
 # Tool binaries and manpages
 %if "%{flavor}" == "tools-data"
-install -dm 0755 %{buildroot}%{_bindir}
-install -pm 0755 castool chdman floptool imgtool jedutil ldresample \
-                 ldverify romcmp unidasm %{buildroot}%{_bindir}/
+install -dm0755 %{buildroot}%{_bindir}
+install -pm0755 castool chdman floptool imgtool jedutil ldresample ldverify romcmp unidasm %{buildroot}%{_bindir}/
 for mame_tool in nltool nlwav pngcmp regrep split srcclean
 do
-  install -pm 0755 $mame_tool %{buildroot}%{_bindir}/mame-${mame_tool}
+  install -pm0755 $mame_tool %{buildroot}%{_bindir}/mame-${mame_tool}
 done
 
-install -dm 0755 %{buildroot}%{_mandir}/man1
+install -dm0755 %{buildroot}%{_mandir}/man1
 pushd docs/man/
-install -pm 0644 castool.1 chdman.1 floptool.1 imgtool.1 jedutil.1 \
-                 ldresample.1 ldverify.1 romcmp.1 %{buildroot}%{_mandir}/man1/
+install -pm0644 castool.1 chdman.1 floptool.1 imgtool.1 jedutil.1 ldresample.1 ldverify.1 romcmp.1 %{buildroot}%{_mandir}/man1/
 popd
 
 # Install data required by mame
 %define emu_data_dir %{buildroot}%{_datadir}/mame
-for dir in artwork chds bgfx cheats crosshair ctrlr fonts hash \
-           keymaps language plugins roms samples opengl_shaders
+for dir in artwork chds bgfx cheats crosshair ctrlr fonts hash keymaps language plugins roms samples opengl_shaders
 do
-  install -dm 0755 %{emu_data_dir}/${dir}
+  install -dpm0755 %{emu_data_dir}/${dir}
 done
-install -dm 0755 %{emu_data_dir}/bgfx/shaders
-install -dm 0755 %{buildroot}%{_datadir}/pixmaps
+install -dpm0755 %{emu_data_dir}/bgfx/shaders
+install -dpm0755 %{buildroot}%{_datadir}/pixmaps
 
-install -pm 0644 hash/*      %{emu_data_dir}/hash/
-install -pm 0644 uismall.bdf %{emu_data_dir}/uismall.bdf
-install -pm 0644 keymaps/README.md    %{emu_data_dir}/keymaps/
-install -pm 0644 keymaps/*LINUX.map   %{emu_data_dir}/keymaps/
+install -pm0644 hash/*      %{emu_data_dir}/hash/
+install -pm0644 uismall.bdf %{emu_data_dir}/uismall.bdf
+install -pm0644 keymaps/README.md    %{emu_data_dir}/keymaps/
+install -pm0644 keymaps/*LINUX.map   %{emu_data_dir}/keymaps/
 cp -ar language %{emu_data_dir}/
 find %{emu_data_dir}/language/ -name "*.po" -delete
 cp -ar artwork              %{emu_data_dir}/
@@ -322,7 +296,7 @@ cp -ar samples              %{emu_data_dir}/
 cp -ar bgfx/chains          %{emu_data_dir}/bgfx/
 cp -ar bgfx/effects         %{emu_data_dir}/bgfx/
 cp -ar bgfx/shaders/glsl    %{emu_data_dir}/bgfx/shaders/
-install -pm 0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/opengl_shaders/
+install -pm0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/opengl_shaders/
 
 %fdupes -s %{buildroot}/%{_datadir}/mame/bgfx
 %endif

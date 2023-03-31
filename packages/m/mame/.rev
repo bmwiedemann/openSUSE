@@ -16,4 +16,17 @@
   * see https://mametesters.org/changelog_page.php for notes</comment>
     <requestid>1007452</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>647da21a399bfbbe642f0b001f6f7028</srcmd5>
+    <version>0.252</version>
+    <time>1680290120</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.252
+  * Refreshed spec-file via spec-cleaner and manual optimizations.
+  * Changed file use_thin_archives.patch.
+  * Added files: mame-fortify.patch and mame-bgfx.patch.
+  * Disabled LTO for all.
+  * https://mametesters.org/changelog_page.php</comment>
+    <requestid>1075623</requestid>
+  </revision>
 </revisionlist>
