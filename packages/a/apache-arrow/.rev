@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f619c52eaf342d1c09be88840b10139e</srcmd5>
+    <version>11.0.0</version>
+    <time>1680290118</time>
+    <user>dimstar_suse</user>
+    <comment>second try: now without jemalloc and without gflags-static
+
+apache-arrow is being used more and more by python numeric packages like pandas 2.0 (through pyarrow)</comment>
+    <requestid>1075538</requestid>
+  </revision>
+</revisionlist>

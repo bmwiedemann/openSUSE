@@ -1,0 +1,208 @@
+-------------------------------------------------------------------
+Wed Mar 29 13:13:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove gflags-static. It was only needed due to a packaging error
+  with gflags which is about to be fixed in Tumbleweed
+- Disable build of the jemalloc memory pool backend
+  * It requires every consuming application to LD_PRELOAD
+    libjemalloc.so.2, even when it is not set as the default memory
+    pool, due to static TLS block allocation errors
+  * Usage of the bundled jemalloc as a workaround is not desired
+    (gh#apache/arrow#13739)
+  * jemalloc does not seem to have a clear advantage over the
+    system glibc allocator:
+    https://ursalabs.org/blog/2021-r-benchmarks-part-1
+  * This overrides the default behavior documented in
+    https://arrow.apache.org/docs/cpp/memory.html#default-memory-pool
+
+-------------------------------------------------------------------
+Sun Mar 12 04:28:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v11.0.0
+  * ARROW-4709 - [C++] Optimize for ordered JSON fields (#14100)
+  * ARROW-11776 - [C++][Java] Support parquet write from ArrowReader
+    to file (#14151)
+  * ARROW-13938 - [C++] Date and datetime types should autocast from
+    strings
+  * ARROW-14161 - [C++][Docs] Improve Parquet C++ docs (#14018)
+  * ARROW-14999 - [C++] Optional field name equality checks for map
+    and list type (#14847)
+  * ARROW-15538 - [C++] Expanding coverage of math functions from
+    Substrait to Acero (#14434)
+  * ARROW-15592 - [C++] Add support for custom output field names in
+    a substrait::PlanRel (#14292)
+  * ARROW-15732 - [C++] Do not use any CPU threads in execution plan
+    when use_threads is false (#15104)
+  * ARROW-16782 - [Format] Add REE definitions to FlatBuffers
+    (#14176)
+  * ARROW-17144 - [C++][Gandiva] Add sqrt function (#13656)
+  * ARROW-17301 - [C++] Implement compute function "binary_slice"
+    (#14550)
+  * ARROW-17509 - [C++] Simplify async scheduler by removing the
+    need to call End (#14524)
+  * ARROW-17520 - [C++] Implement SubStrait SetRel (UnionAll)
+    (#14186)
+  * ARROW-17610 - [C++] Support additional source types in
+    SourceNode (#14207)
+  * ARROW-17613 - [C++] Add function execution API for a
+    preconfigured kernel (#14043)
+  * ARROW-17640 - [C++] Add File Handling Test cases for GlobFile
+    handling in Substrait Read (#14132)
+  * ARROW-17798 - [C++][Parquet] Add DELTA_BINARY_PACKED encoder to
+    Parquet writer (#14191)
+  * ARROW-17825 - [C++] Allow the possibility to write several
+    tables in ORCFileWriter (#14219)
+  * ARROW-17836 - [C++] Allow specifying alignment of buffers
+    (#14225)
+  * ARROW-17837 - [C++][Acero] Create ExecPlan-owned QueryContext
+    that will store a plan's shared data structures (#14227)
+  * ARROW-17859 - [C++] Use self-pipe in signal-receiving StopSource
+    (#14250)
+  * ARROW-17867 - [C++][FlightRPC] Expose bulk parameter binding in
+    Flight SQL (#14266)
+  * ARROW-17932 - [C++] Implement streaming RecordBatchReader for
+    JSON (#14355)
+  * ARROW-17960 - [C++][Python] Implement list_slice kernel (#14395)
+  * ARROW-17966 - [C++] Adjust to new format for Substrait optional
+    arguments (#14415)
+  * ARROW-17975 - [C++] Create at-fork facility (#14594)
+  * ARROW-17980 - [C++] As-of-Join Substrait extension (#14485)
+  * ARROW-17989 - [C++][Python] Enable struct_field kernel to accept
+    string field names (#14495)
+  * ARROW-18008 - [Python][C++] Add use_threads to
+    run_substrait_query
+  * ARROW-18051 - [C++] Enable tests skipped by ARROW-16392 (#14425)
+  * ARROW-18095 - [CI][C++][MinGW] All tests exited with 0xc0000139
+  * ARROW-18113 - [C++] Add RandomAccessFile::ReadManyAsync (#14723)
+  * ARROW-18135 - [C++] Avoid warnings that ExecBatch::length may be
+    uninitialized (#14480)
+  * ARROW-18144 - [C++] Improve JSONTypeError error message in
+    testing (#14486)
+  * ARROW-18184 - [C++] Improve JSON parser benchmarks (#14552)
+  * ARROW-18206 - [C++][CI] Add a nightly build for C++20
+    compilation (#14571)
+  * ARROW-18235 - [C++][Gandiva] Fix the like function
+    implementation for escape chars (#14579)
+  * ARROW-18249 - [C++] Update vcpkg port to arrow 10.0.0
+  * ARROW-18253 - [C++][Parquet] Add additional bounds safety checks
+    (#14592)
+  * ARROW-18259 - [C++][CMake] Add support for system Thrift CMake
+    package (#14597)
+  * ARROW-18280 - [C++][Python] Support slicing to end in list_slice
+    kernel (#14749)
+  * ARROW-18282 - [C++][Python] Support step >= 1 in list_slice
+    kernel (#14696)
+  * ARROW-18287 - [C++][CMake] Add support for Brotli/utf8proc
+    provided by vcpkg (#14609)
+  * ARROW-18342 - [C++] AsofJoinNode support for Boolean data field
+    (#14658)
+  * ARROW-18350 - [C++] Use std::to_chars instead of std::to_string
+    (#14666)
+  * ARROW-18367 - [C++] Enable the creation of named table relations
+    (#14681)
+  * ARROW-18373 - Fix component drop-down, add license text (#14688)
+  * ARROW-18377 - MIGRATION: Automate component labels from issue
+    form content (#15245)
+  * ARROW-18395 - [C++] Move select-k implementation into separate
+    module
+  * ARROW-18402 - [C++] Expose DeclarationInfo (#14765)
+  * ARROW-18406 - [C++] Can't build Arrow with Substrait on Ubuntu
+    20.04 (#14735)
+  * ARROW-18409 - [GLib][Plasma] Suppress deprecated warning in
+    building plasma-glib (#14739)
+  * ARROW-18413 - [C++][Parquet] Expose page index info from
+    ColumnChunkMetaData (#14742)
+  * ARROW-18419 - [C++] Update vendored fast_float (#14817)
+  * ARROW-18420 - [C++][Parquet] Introduce ColumnIndex & OffsetIndex
+    (#14803)
+  * ARROW-18421 - [C++][ORC] Add accessor for stripe information in
+    reader (#14806)
+  * ARROW-18427 - [C++] Support negative tolerance in AsofJoinNode
+    (#14934)
+  * ARROW-18435 - [C++][Java] Update ORC to 1.8.1 (#14942)
+  * GH-14869 - [C++] Add Cflags.private defining _STATIC to .pc.in.
+    (#14900)
+  * GH-14920 - [C++][CMake] Add missing -latomic to Arrow CMake
+    package (#15251)
+  * GH-14937 - [C++] Add rank kernel benchmarks (#14938)
+  * GH-14951 - [C++][Parquet] Add benchmarks for DELTA_BINARY_PACKED
+    encoding (#15140)
+  * GH-15072 - [C++] Move the round functionality into a separate
+    module (#15073)
+  * GH-15074 - [Parquet][C++] change 16-bit page_ordinal to 32-bit
+    (#15182)
+  * GH-15096 - [C++] Substrait ProjectRel Emit Optimization (#15097)
+  * GH-15100 - [C++][Parquet] Add benchmark for reading strings from
+    Parquet (#15101)
+  * GH-15151 - [C++] Adding RecordBatchReaderSource to solve an
+    issue in R API (#15183)
+  * GH-15185 - [C++][Parquet] Improve documentation for Parquet
+    Reader column_indices (#15184)
+  * GH-15199 - [C++][Substrait] Allow
+    AGGREGATION_INVOCATION_UNSPECIFIED as valid invocation (#15198)
+  * GH-15200 - [C++] Created benchmarks for round kernels. (#15201)
+  * GH-15216 - [C++][Parquet] Parquet writer accepts RecordBatch
+    (#15240)
+  * GH-15226 - [C++] Add DurationType to hash kernels (#33685)
+  * GH-15237 - [C++] Add ::arrow::Unreachable() using
+    std::string_view (#15238)
+  * GH-15239 - [C++][Parquet] Parquet writer writes decimal as
+    int32/64 (#15244)
+  * GH-15290 - [C++][Compute] Optimize IfElse kernel AAS/ASA case
+    when the scalar is null (#15291)
+  * GH-33607 - [C++] Support optional additional arguments for
+    inline visit functions (#33608)
+  * GH-33657 - [C++] arrow-dataset.pc doesn't depend on parquet.pc
+    without ARROW_PARQUET=ON (#33665)
+  * PARQUET-2179 - [C++][Parquet] Add a test for skipping repeated
+    fields (#14366)
+  * PARQUET-2188 - [parquet-cpp] Add SkipRecords API to RecordReader
+    (#14142)
+  * PARQUET-2204 - [parquet-cpp] TypedColumnReaderImpl::Skip should
+    reuse scratch space (#14509)
+  * PARQUET-2206 - [parquet-cpp] Microbenchmark for ColumnReader
+    ReadBatch and Skip (#14523)
+  * PARQUET-2209 - [parquet-cpp] Optimize skip for the case that
+    number of values to skip equals page size (#14545)
+  * PARQUET-2210 - [C++][Parquet] Skip pages based on header
+    metadata using a callback (#14603)
+  * PARQUET-2211 - [C++] Print ColumnMetaData.encoding_stats field
+    (#14556)
+- Remove unused python3-arrow package declaration
+  * Add options as recommended for python support
+- Provide test data for unittests
+- Don't use system jemalloc but bundle it in order to avoid
+  static TLS errors in consuming packages like python-pyarrow
+  * gh#apache/arrow#13739
+
+-------------------------------------------------------------------
+Sun Aug 28 19:30:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Revert ccache change, using ccache in a pristine buildroot
+  just slows down OBS builds (use --ccache for local builds).
+- Remove unused gflags-static-devel dependency.
+
+-------------------------------------------------------------------
+Mon Aug 22 06:22:43 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Speed up builds with ccache
+
+-------------------------------------------------------------------
+Sat Aug  6 01:59:08 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to v9.0.0
+  No (current) changelog provided
+- Spec file cleanup:
+  * Remove lots of duplicate, unused, or wrong build dependencies
+  * Do not package outdated Readmes and Changelogs
+- Enable tests, disable ones requiring external test data
+
+-------------------------------------------------------------------
+Sat Nov 14 09:07:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.0.0
+
+-------------------------------------------------------------------
+Wed Nov 13 21:14:00 UTC 2019 - TheBlackCat <toddrme2178@gmail.com>
+
+- Initial spec for v0.12.0
