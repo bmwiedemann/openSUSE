@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 29 13:37:25 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Change permissions for rules folders (bsc#1209282)
+
+-------------------------------------------------------------------
 Wed Nov 09 07:39:53 CET 2022 - aschnell@suse.com
 
 - read actions also from /etc/polkit-1/actions (jsc#PED-1405)

@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -264,11 +264,11 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_datadir}/polkit-1/policyconfig-1.dtd
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
-%attr(0700,polkitd,root) %dir %{_polkit_rulesdir}
-%attr(0600,polkitd,root) %{_polkit_rulesdir}/50-default.rules
+%attr(0750,root,polkitd) %dir %{_polkit_rulesdir}
+%attr(0640,root,polkitd) %{_polkit_rulesdir}/50-default.rules
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
-%attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
+%attr(0750,root,polkitd) %dir %{_sysconfdir}/polkit-1/rules.d
 %dir %{_sysconfdir}/polkit-1/actions
 %{_bindir}/pkaction
 %{_bindir}/pkcheck
