@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:25:53 UTC 2023 - containers@suse.com
+
+- Update to version 1680160876.6dcaef0:
+  * Bump version: 0.0.6 → 0.0.7
+  * Fix default value for empty or missing version
+  * Bump flake8 from 5.0.1 to 5.0.4
+
+-------------------------------------------------------------------
 Thu Nov 10 14:26:46 UTC 2022 - containers@suse.com
 
 - Update to version 1668090256.71deb28:

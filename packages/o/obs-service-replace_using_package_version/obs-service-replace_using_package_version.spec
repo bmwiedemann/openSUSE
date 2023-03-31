@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define service replace_using_package_version
 
 Name:           obs-service-%{service}
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        An OBS service: Replaces a regex  with the version value of a package
 License:        GPL-3.0-or-later

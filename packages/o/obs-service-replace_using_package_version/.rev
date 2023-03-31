@@ -37,4 +37,16 @@ of another package.</comment>
     <comment></comment>
     <requestid>1035098</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>43cff47061de80587411907afb49e4e1</srcmd5>
+    <version>0.0.7</version>
+    <time>1680290048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1680160876.6dcaef0:
+  * Bump version: 0.0.6 → 0.0.7
+  * Fix default value for empty or missing version
+  * Bump flake8 from 5.0.1 to 5.0.4
+</comment>
+    <requestid>1075472</requestid>
+  </revision>
 </revisionlist>
