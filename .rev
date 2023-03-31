@@ -280,4 +280,12 @@
     <comment>- Update to release 1.14.15</comment>
     <requestid>1036748</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>56e716b2bd833a550ccafeb8e7737b59</srcmd5>
+    <version>1.14.16</version>
+    <time>1680290110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.14.16</comment>
+    <requestid>1075563</requestid>
+  </revision>
 </revisionlist>
