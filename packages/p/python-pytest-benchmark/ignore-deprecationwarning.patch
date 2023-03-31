@@ -1,0 +1,12 @@
+Index: pytest-benchmark-4.0.0/pytest.ini
+===================================================================
+--- pytest-benchmark-4.0.0.orig/pytest.ini
++++ pytest-benchmark-4.0.0/pytest.ini
+@@ -32,6 +32,7 @@ testpaths =
+ # Idea from: https://til.simonwillison.net/pytest/treat-warnings-as-errors
+ filterwarnings =
+     error
++    ignore::DeprecationWarning
+ # You can add exclusions, some examples:
+ #    ignore:'pytest_benchmark' defines default_app_config:PendingDeprecationWarning::
+ #    ignore:The {{% if:::

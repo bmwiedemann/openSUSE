@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 20 05:13:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add ptch ignore-deprecationwarning.patch:
+  * Ignore DeprecationWarning, some of our dependancies use pkg_resources.
+
+-------------------------------------------------------------------
 Tue Jan 17 13:03:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Modify the py311.patch to fix the test_abort_broken test, instead of

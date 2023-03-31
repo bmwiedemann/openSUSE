@@ -123,4 +123,13 @@
 </comment>
     <requestid>1059005</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>035326e52b5a3c7beaca95b18e34fb88</srcmd5>
+    <version>4.0.0</version>
+    <time>1680290043</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ptch ignore-deprecationwarning.patch:
+  * Ignore DeprecationWarning, some of our dependancies use pkg_resources.</comment>
+    <requestid>1072990</requestid>
+  </revision>
 </revisionlist>

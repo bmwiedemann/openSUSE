@@ -27,6 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-benchmar
 Patch0:         fix-test-fast.patch
 # PATCH-FIX-OPENSUSE py311.patch gh#ionelmc/pytest-benchmark#232
 Patch1:         py311.patch
+# PATCH-FIX-OPENSUSE Ignore DeprecationWarning, some of our dependancies use
+# pkg_resources.
+Patch2:         ignore-deprecationwarning.patch
 BuildRequires:  %{python_module aspectlib}
 BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module freezegun}
