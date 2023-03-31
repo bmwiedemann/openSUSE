@@ -1,0 +1,13 @@
+diff --git a/src/org.gnome.Weather.BackgroundService.in b/src/org.gnome.Weather.BackgroundService.in
+index 53c9cccfc257307b2535242670e5668d5eac349b..339c23da020e70a2dafc3661c3813aac7e2cea83 100755
+--- a/src/org.gnome.Weather.BackgroundService.in
++++ b/src/org.gnome.Weather.BackgroundService.in
+@@ -4,7 +4,7 @@ imports.package.init({ name: "@APP_ID@",
+                         prefix: "@prefix@",
+                         libdir: "@libdir@" });
+ 
+-import('resource:///org/gnome/Weather/js/service/main.js').then(({ main }) => {
++import('resource:///org/gnome/Weather/BackgroundService/js/service/main.js').then(({ main }) => {
+     main([imports.system.programInvocationName, ...imports.system.programArgs]);
+ }).catch(error => {
+     console.error(error);

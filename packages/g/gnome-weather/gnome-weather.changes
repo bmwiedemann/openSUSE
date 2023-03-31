@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 31 01:56:25 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-weather-BackgroundService-service-fails-to-start.patch:
+  org.gnome.Weather.BackgroundService fails to start
+  (bsc#1209391 glgo#GNOME/gnome-weather!132).
+
+-------------------------------------------------------------------
 Sun Mar 19 17:38:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

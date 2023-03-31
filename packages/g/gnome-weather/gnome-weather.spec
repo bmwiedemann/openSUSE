@@ -26,6 +26,9 @@ Group:          Productivity/Other
 URL:            https://apps.gnome.org/app/org.gnome.Weather
 Source0:        https://download.gnome.org/sources/gnome-weather/44/%{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM gnome-weather-BackgroundService-service-fails-to-start.patch bsc#1209391 glgo#GNOME/gnome-weather!132 xwang@suse.com -- org.gnome.Weather.BackgroundService fails to start
+Patch0:         gnome-weather-BackgroundService-service-fails-to-start.patch
+
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.26
