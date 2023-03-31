@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="filename">nginx-module-zstd</param>
+		<param name="scm">git</param>
+		<param name="url">https://github.com/tokers/zstd-nginx-module</param>
+		<param name="revision">1e0fa0bfb995e72f8f7e4c0153025c3306f1a5cc</param>
+		<param name="parent-tag">069c7efdd9d5b6bb9110ad15abd358893423dfc6</param>
+		<param name="versionformat">0~g@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
