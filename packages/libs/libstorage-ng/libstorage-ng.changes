@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Thu Mar 30 15:53:17 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#922
+- add PCIe as disk transport
+- 4.5.91
+
+--------------------------------------------------------------------
+Thu Mar 30 09:49:34 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#921
+- fixed setting sysfs-name for partitions on nvme disks
+- 4.5.90
+
+--------------------------------------------------------------------
+Thu Mar 30 04:56:07 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Georgian) (bsc#1149754)
+- 4.5.89
+
+--------------------------------------------------------------------
 Sun Mar 26 19:48:54 UTC 2023 - aschnell@suse.com
 
 - Translated using Weblate (Polish) (bsc#1149754)
