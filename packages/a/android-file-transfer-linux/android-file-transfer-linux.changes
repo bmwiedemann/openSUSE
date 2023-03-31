@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Mar 31 07:53:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-missing-include.patch: Fix missing include exposed by gcc
+  13.
+- Switch service to explicit git commit instead of master, and
+  switch to obs_scm and manual run, tar_scm and disabledrun
+  are deprecated.
+
+-------------------------------------------------------------------
+Mon Mar 13 19:42:42 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Initial package at 4.3.0~git.20221105T214638.9967dec

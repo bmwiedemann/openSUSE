@@ -1,0 +1,11 @@
+diff -Nur android-file-transfer-linux-4.3.0~git.20221105T214638.9967dec/mtp/types.h android-file-transfer-linux-4.3.0~git.20221105T214638.9967dec-patched/mtp/types.h
+--- android-file-transfer-linux-4.3.0~git.20221105T214638.9967dec/mtp/types.h	2022-11-05 22:46:38.000000000 +0100
++++ android-file-transfer-linux-4.3.0~git.20221105T214638.9967dec-patched/mtp/types.h	2023-03-31 09:51:33.497839760 +0200
+@@ -28,6 +28,7 @@
+ #include <mutex>
+ #include <exception>
+ #include <string>
++#include <stdexcept>
+ 
+ namespace mtp
+ {

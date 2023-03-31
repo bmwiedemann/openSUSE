@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/whoozle/android-file-transfer-linux</param>
+    <param name="revision">9967dec8ad76e8385eb9a06aeb2e4bef5fead4db</param>
+    <param name="versionprefix">4.3.0~git</param>
+    <param name="versionformat">%ci.%h</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
