@@ -1,7 +1,7 @@
 #
 # spec file for package aravis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 %define devname lib%{name}-%{sorel}-devel
 %define typelibname typelib-1_0-Aravis-%{api}
 Name:           aravis
-Version:        0.8.22
+Version:        0.8.26
 Release:        0
 Summary:        Glib/gobject based library implementing a Genicam interface
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/AravisProject/aravis
-Source0:        https://github.com/AravisProject/%{name}/releases/download/%{version}/aravis-%{version}.tar.xz
+Source:         https://github.com/AravisProject/%{name}/releases/download/%{version}/aravis-%{version}.tar.xz
 BuildRequires:  %{python_module gobject}
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -126,6 +126,8 @@ This package contains the development files for %{name}
 %{_bindir}/arv-test-%{api}
 %{_bindir}/arv-tool-%{api}
 %{_mandir}/man1/arv-tool-*
+%{_mandir}/man1/arv-camera-test-*
+%{_mandir}/man1/arv-test-*
 
 %files viewer -f %{name}-%{api}.lang
 %{_bindir}/arv-viewer-%{api}

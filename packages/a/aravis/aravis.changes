@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 27 19:22:47 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.26:
+  * viewer: fix pixel format selection #765
+
+- Changes for 0.8.25:
+  * viewer: add component selection support
+  * buffer: add component id getter
+  * buffer: fix multipart informations
+
+- Changes for 0.8.24:
+  * gv: fix multipart data accessor
+  * gv: improve error handling of network API
+
+-------------------------------------------------------------------
 Sun Nov 27 19:12:08 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update license to LGPL-2.1
