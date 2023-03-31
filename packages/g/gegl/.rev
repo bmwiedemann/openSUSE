@@ -592,4 +592,17 @@
 </comment>
     <requestid>1068662</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>93395a1499b5eed7b5e97fc49943d87f</srcmd5>
+    <version>0.4.44</version>
+    <time>1680290112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.44:
+  + This release fixes a crashing bug what is umasked by GLib
+    2.75.3 and newer. Never-allocated data were being passed to
+    g_slice_free, in GeglBuffer’s handling of copy-on-write tiles.
+  + ctx: Updated vendored library from upstream.
+</comment>
+    <requestid>1075578</requestid>
+  </revision>
 </revisionlist>

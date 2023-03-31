@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 30 14:09:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.4.44:
+  + This release fixes a crashing bug what is umasked by GLib
+    2.75.3 and newer. Never-allocated data were being passed to
+    g_slice_free, in GeglBuffer’s handling of copy-on-write tiles.
+  + ctx: Updated vendored library from upstream.
+
+-------------------------------------------------------------------
 Thu Mar  2 08:27:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.42:
