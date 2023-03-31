@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 30 21:52:42 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Backport upstream patch llvm16-optional-deprecation.patch to fix
+  build with LLVM 16.
+- Relax runtime requirements with Clang 16 and newer: the resource
+  directory doesn't depend on the patch-level version anymore.
+- Relax build requirements.
+
+-------------------------------------------------------------------
 Sat Jul 30 11:25:52 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.20220729.

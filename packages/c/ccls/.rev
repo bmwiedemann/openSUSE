@@ -128,4 +128,17 @@
     <comment></comment>
     <requestid>991817</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8908a8b9034a171df8df2cdc2856a63d</srcmd5>
+    <version>0.20220729</version>
+    <time>1680290136</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport upstream patch llvm16-optional-deprecation.patch to fix
+  build with LLVM 16.
+- Relax runtime requirements with Clang 16 and newer: the resource
+  directory doesn't depend on the patch-level version anymore.
+- Relax build requirements.
+</comment>
+    <requestid>1075714</requestid>
+  </revision>
 </revisionlist>

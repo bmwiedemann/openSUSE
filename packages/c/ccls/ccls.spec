@@ -1,7 +1,7 @@
 #
 # spec file for package ccls
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        Apache-2.0 AND CC0-1.0 AND BSL-1.0
 Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         %{URL}/commit/6dc564f2a8608fff778a7d7e8ed0d5acd8d61e6b.patch#/llvm16-optional-deprecation.patch
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 7.0
@@ -37,7 +38,14 @@ Provides:       bundled(macro_map)
 Provides:       bundled(siphash)
 # ccls hardcodes the paths to clang's resource dir and we thus must ensure that
 # it is always shipped with the same clang version that was used to build it
-%{requires_eq clang}
+%if %{pkg_vcmp clang-devel >= 16.0.0}
+# With Clang 16, the resource directory depends on the major version only and
+# doesn't change with patch-level updates.
+Requires:       libclang-cpp%{_llvm_sonum}
+%else
+# Previously the full version was used, so we need to require that same version.
+%{requires_eq libclang-cpp%{_llvm_sonum}}
+%endif
 # gcc > 7.0 is called gcc7- in Leap 15.2 and 15.3
 %if 0%{?sle_version} >= 150200
 BuildRequires:  gcc7-c++ >= 7.2
@@ -73,7 +81,6 @@ rm -rf third_party/rapidjson
 %else
     -DCLANG_LINK_CLANG_DYLIB=OFF
 %endif
-# ccls currently consumes ~1GB of memory during compilation per thread
 %cmake_build
 
 %install
