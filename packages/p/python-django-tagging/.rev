@@ -27,4 +27,13 @@
 </comment>
     <requestid>957599</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d0735cef8cd00b5bf0d287e7a6629593</srcmd5>
+    <version>0.5.0</version>
+    <time>1680290140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update django4.patch to also support Python 3.11 regular expression
+  changes.</comment>
+    <requestid>1075719</requestid>
+  </revision>
 </revisionlist>

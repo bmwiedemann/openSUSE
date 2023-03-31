@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 31 02:18:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update django4.patch to also support Python 3.11 regular expression
+  changes. 
+
+-------------------------------------------------------------------
 Fri Feb 25 13:32:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add django4.patch to allow compatibility with Django 4
