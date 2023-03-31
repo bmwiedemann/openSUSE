@@ -109,7 +109,7 @@ Prefer: kiwi-systemdeps-filesystems
 Prefer: kiwi-systemdeps-disk-images
 Prefer: kiwi-systemdeps-iso-media
 
-Substitute: obs:cli_debug_packages gdb vim strace less rzsz
+Substitute: obs:cli_debug_packages gdb vim strace less
 
 # Migration to product builder; using the Tumbleweed plugin since 2020-04-28
 Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
