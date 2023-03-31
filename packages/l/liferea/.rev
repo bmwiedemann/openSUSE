@@ -145,4 +145,12 @@
     <comment>Update to 1.14.1 point release.</comment>
     <requestid>1071305</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6a076733fd228b629345290a78ee0aea</srcmd5>
+    <version>1.14.3</version>
+    <time>1680290164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076442</requestid>
+  </revision>
 </revisionlist>

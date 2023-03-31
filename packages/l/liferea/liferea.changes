@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 29 13:35:08 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.14.3:
+  * fix crash when refreshing feeds (gh#lwindolf/liferea#1212)
+  * fix memory leak when reloading CSS
+  * fix crash in conf_get_bool_value_from_schema
+    (gh#lwindolf/liferea#1214)
+  * fix failing build in launchpad PPA due to auto_test
+    permission issue (gh#lwindolf/liferea#1215)
+
+-------------------------------------------------------------------
 Mon Mar 13 09:37:27 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.14.1:
