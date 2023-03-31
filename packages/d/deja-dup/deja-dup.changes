@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 31 07:04:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 44.1:
+  + Refuse to back up to a destination that doesn't have enough
+    space, and suggest how much more space is needed.
+  + Fix Trash location when run as a flatpak.
+  + Don't try to back up when the network is behind a wifi
+    captive portal.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Dec  5 12:00:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 44.0:

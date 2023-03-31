@@ -661,4 +661,19 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>1040677</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ce9552e97e75496372a0cfad409e0563</srcmd5>
+    <version>44.1</version>
+    <time>1680290152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.1:
+  + Refuse to back up to a destination that doesn't have enough
+    space, and suggest how much more space is needed.
+  + Fix Trash location when run as a flatpak.
+  + Don't try to back up when the network is behind a wifi
+    captive portal.
+  + Updated translations.
+</comment>
+    <requestid>1076409</requestid>
+  </revision>
 </revisionlist>
