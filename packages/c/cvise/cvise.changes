@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 31 14:05:13 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230331.62a7391:
+  * Fix one -Wdangling-reference and disable -Werror for it.
+
+-------------------------------------------------------------------
 Thu Mar 30 09:46:42 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.7.0+git.20230330.8b25bd7:

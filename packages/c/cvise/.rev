@@ -1027,4 +1027,13 @@
   * Add CI tester for LLVM 16.</comment>
     <requestid>1075526</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c0d8b1252017109122a1d41de1030c40</srcmd5>
+    <version>2.7.0+git.20230331.62a7391</version>
+    <time>1680290178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git.20230331.62a7391:
+  * Fix one -Wdangling-reference and disable -Werror for it.</comment>
+    <requestid>1076474</requestid>
+  </revision>
 </revisionlist>
