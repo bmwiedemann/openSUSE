@@ -17,6 +17,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# upstream default is clang (to use gcc for large parts set to 0)
+%define clang_build    0
+
 Name:           seamonkey
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
@@ -61,11 +64,17 @@ BuildRequires:  rust >= 1.47
 BuildRequires:  rust-cbindgen
 BuildRequires:  git
 BuildRequires:  nasm >= 2.13
+#BuildRequires:  llvm-devel
+%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
+BuildRequires:  clang6-devel
+%else
+BuildRequires:  clang-devel >= 5
+%endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.15
+Version:        2.53.16
 Release:        0
-%define releasedate 20230120000000
+%define releasedate 20230331000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -80,11 +89,9 @@ Source7:        seamonkey-rpmlintrc
 Source11:       seamonkey-appdata.tar.bz2
 Source12:       seamonkey-GNUmakefile
 Patch1:         mozilla-nongnome-proxies.patch
-Patch2:         mozilla-language.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         seamonkey-lto.patch
 Patch5:         seamonkey-man-page.patch
-Patch6:         seamonkey-spellcheck.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -213,14 +220,9 @@ cd mozilla
 cp %{SOURCE12} GNUmakefile
 
 %patch1 -p2
-%patch2 -p2
 %patch3 -p2
 %patch4 -p1
 %patch5 -p0
-
-if [ $(gcc -dumpversion | awk -F. '{print $1}') -ge 12 ]; then
-%patch6 -p1
-fi
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
@@ -276,7 +278,6 @@ ac_add_options --with-system-icu
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --enable-startup-notification
-ac_add_options --enable-system-hunspell
 ac_add_options --enable-alsa
 %if %has_system_cairo
 ac_add_options --enable-system-cairo
@@ -317,7 +318,16 @@ export SUSE_ASNEEDED=0
 export MOZ_BUILD_DATE=%{releasedate}
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
+
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+%if 0%{?clang_build} == 0
+export CC=gcc
+export CXX=g++
+%if 0%{?gcc_version:%{gcc_version}} >= 12
+export CFLAGS="$CFLAGS -fimplicit-constexpr"
+%endif
+%endif
+
 if [ $(gcc -dumpversion | awk -F. '{print $1}') -ge 6 ]; then
 export CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 fi
@@ -329,7 +339,9 @@ export CFLAGS="${CFLAGS/-g / }"
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif
 %ifarch ppc64 ppc64le
+%if 0%{?clang_build} == 0
 export CFLAGS="$CFLAGS -mminimal-toc"
+%endif
 %endif
 export CXXFLAGS="$CFLAGS"
 

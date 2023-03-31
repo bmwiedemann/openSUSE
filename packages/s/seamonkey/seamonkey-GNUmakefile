@@ -143,37 +143,27 @@ stage := $(OBJDIR)/dist/xpi-stage/locale
 $(stage)-%:
 	$(MAKE) -C $(OBJDIR)/comm/suite/locales langpack-$*
 
-#  Combine extensions data with the main localization stuff and leave only one manifest file
-	for manifest in `find $@/extensions -name "*.manifest" -print` ; \
-	do \
-	    while read keyword name lang path rest ; \
-	    do \
-	        [ "$$keyword" = locale ] || continue ; \
-	        [ "$$lang" = "$*" ] || continue ; \
-	        [ "$${path%/*/}/$$name/" = "$$path" ] || continue ; \
-	        tar -C $${manifest%/*}/$${path%/*/} -chf - $$name | tar -C $@/chrome/$*/locale/$* -xf - ; \
-	        echo "locale $$name $* $*/locale/$*/$$name/$${rest:+ $$rest}" >> $@/chrome/$*.manifest ; \
-	    done < $$manifest ; \
-	done
+#  Cleanup of old manifest files
+	find $@ -name "*.manifest" -print | xargs rm -f
 
-	sed 's,$*/locale/$*,chrome/&,' $@/chrome/$*.manifest | sort > $@/chrome.manifest
-	rm -f $@/chrome/$*.manifest
+	find $@ -name ".mkdir.done" -print | xargs rm -f
+	find $@/extensions -name "defaults" -type d -print | xargs rm -rf
 
 #  Spanish locales other than es-ES are from Latam, where the es-AR langpack is most preferred
-	[ $* = es-AR ] && sed -i '/^locale/ s/ es-AR / es /' $@/chrome.manifest || :
+	[ $* = es-AR ] && sed -i '/"es-AR": {/ s/es-AR/es/' $@/manifest.json || :
 
 
 locale-%: REL_NAME = extensions/langpack-$*@seamonkey.mozilla.org.xpi
 locale-%: DEST_NAME = $(OBJDIR)/dist/bin/$(REL_NAME)
 locale-%: manifest_entry = @RESPATH@/$(REL_NAME)
 
-#  To avoid performance issues in multi-locale installs, put the manifest files
+#  To avoid performance issues in multi-locale installs, put manifest.json file
 #  into the beginning of the archive, and do not compress them.
 
 locale-%: $(stage)-%  $(PACKAGE_MANIFEST)
 	rm -f $(DEST_NAME)
-	cd $<; zip -0 -D -X $(DEST_NAME) chrome.manifest install.rdf
-	cd $<; zip -g -r -9 -D -X $(DEST_NAME) chrome/$*
+	cd $<; zip -0 -D -X $(DEST_NAME) manifest.json
+	cd $<; zip -g -r -9 -D -X $(DEST_NAME) chrome extensions
 	fgrep $(manifest_entry) $(PACKAGE_MANIFEST) || echo $(manifest_entry) >>$(PACKAGE_MANIFEST)
 
 

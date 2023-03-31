@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Mar 31 07:22:42 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.16
+  * No throbber in plaintext editor bug 85498.
+  * Remove unused gridlines class from EdAdvancedEdit bug 1806632.
+  * Remove ESR 91 links from debugQA bug 1804534.
+  * Rename devtools/shim to devtools/startup bug 1812367.
+  * Remove unused seltype=text|cell css bug 1806653.
+  * Implement new shared tree styling bug 1807802.
+  * Use `win.focus()` in macWindowMenu.js bug 1807817.
+  * Remove WCAP provider bug 1579020.
+  * Remove ftp/file tree view support bug 1239239.
+  * Change calendar list tree to a list bug 1561530.
+  * Various other updates to the calendar code.
+  * Continue the switch from Python 2 to Python 3 in the build system.
+  * Verified compatibility with Rust 1.66.1.
+  * SeaMonkey 2.53.16 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.16 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 102.9
+    and Thunderbird 102.9 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- update seamonkey-GNUmakefile patch per
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1692516#c11 to reflect
+  changes in the new way of packing langpacks
+- remove obsolete patch mozilla-language.patch
+- remove obsolete patch seamonkey-spellcheck.patch
+- remove --enable-system-hunspell from .mozconfig per
+  https://bugzilla.mozilla.org/show_bug.cgi?id=1820413
+- add build dependency on clang
+- request inclusion in Leap 15.4:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1209994
+
+-------------------------------------------------------------------
 Fri Jan 20 10:12:30 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.15
@@ -61,7 +99,7 @@ Fri Jan 20 10:12:30 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
   obsolete stuff and fix handling of Latam Spanish
 - remove build dependency on obsolete rust-std-static
 - request inclusion in Leap 15.4:
-  https://bugzilla.opensuse.org/show_bug.cgi?id=
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1207332
 
 -------------------------------------------------------------------
 Thu Sep 29 12:14:18 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
