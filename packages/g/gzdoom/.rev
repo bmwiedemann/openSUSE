@@ -247,4 +247,12 @@ and that one is GPL3.</comment>
     <comment>- Update gzdoom-vulkan.patch for glslang 12</comment>
     <requestid>1063679</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>be689f957c0301ed74d9acd735259a7a</srcmd5>
+    <version>4.10.0</version>
+    <time>1680290128</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc13.diff</comment>
+    <requestid>1075701</requestid>
+  </revision>
 </revisionlist>

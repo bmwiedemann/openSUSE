@@ -1,0 +1,19 @@
+From: Jan Engelhardt
+Date: 2023-03-30 23:52:45.534338531 +0200
+Upstream: https://github.com/ZDoom/gzdoom/pull/2040
+
+This is the g4.10.0 version of the change.
+
+diff --git a/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h b/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h
+index fd4472286..db0b94f4e 100644
+--- a/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h
++++ b/src/common/rendering/vulkan/thirdparty/vk_mem_alloc/vk_mem_alloc.h
+@@ -104,6 +104,8 @@ Documentation of all members: vk_mem_alloc.h
+ - [Source repository on GitHub](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)
+ */
+ 
++#include <stdio.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

@@ -32,6 +32,7 @@ Patch5:         gzdoom-vulkan.patch
 Patch6:         gzdoom-discord.patch
 Patch8:         0001-removed-some-32bit-only-CMake-code.patch
 Patch9:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
+Patch10:        gcc13.diff
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
