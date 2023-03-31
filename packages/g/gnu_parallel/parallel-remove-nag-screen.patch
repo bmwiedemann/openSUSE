@@ -12,41 +12,41 @@ https://en.opensuse.org/openSUSE:Packaging_guidelines#Donation_requests
  src/sem      |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: parallel-20221122/src/parallel
+Index: parallel-20230322/src/parallel
 ===================================================================
---- parallel-20221122.orig/src/parallel
-+++ parallel-20221122/src/parallel
-@@ -2508,6 +2508,7 @@ sub parse_options(@) {
- 	}
-     }
- 
-+if (0) {
-     # Funding a free software project is hard. GNU Parallel is no
-     # exception. On top of that it seems the less visible a project
-     # is, the harder it is to get funding. And the nature of GNU
-@@ -2581,6 +2582,7 @@ sub parse_options(@) {
-     # line.  This is because _YOU_ actively make it harder to justify
-     # spending time developing GNU Parallel.
+--- parallel-20230322.orig/src/parallel
++++ parallel-20230322/src/parallel
+@@ -2575,6 +2575,7 @@ sub parse_options(@) {
+     # out, and if it works, you should post it on the email
+     # list. Ideas that will cost work and which have not been tested
+     # are, however, unlikely to be prioritized.
++    if (0) {
+     #
+     # Please note that GPL version 3 gives you the right to fork GNU
+     # Parallel under a new name, but it does not give you the right to
+@@ -2614,6 +2615,7 @@ sub parse_options(@) {
+     # accept to be added to a public hall of shame by removing the
+     # line. That includes you, Andreas and George.
  
 +}
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-Index: parallel-20221122/src/sem
+Index: parallel-20230322/src/sem
 ===================================================================
---- parallel-20221122.orig/src/sem
-+++ parallel-20221122/src/sem
-@@ -2508,6 +2508,7 @@ sub parse_options(@) {
- 	}
-     }
- 
-+if (0) {
-     # Funding a free software project is hard. GNU Parallel is no
-     # exception. On top of that it seems the less visible a project
-     # is, the harder it is to get funding. And the nature of GNU
-@@ -2581,6 +2582,7 @@ sub parse_options(@) {
-     # line.  This is because _YOU_ actively make it harder to justify
-     # spending time developing GNU Parallel.
+--- parallel-20230322.orig/src/sem
++++ parallel-20230322/src/sem
+@@ -2600,6 +2600,7 @@ sub parse_options(@) {
+     # runs. If that is too much trouble for you, why not use one of
+     # the alternatives instead?
+     # See a list in: 'man parallel_alternatives'
++    if (0) {
+     #
+     # If you want GNU Parallel to be maintained in the future you
+     # should keep this line.
+@@ -2614,6 +2615,7 @@ sub parse_options(@) {
+     # accept to be added to a public hall of shame by removing the
+     # line. That includes you, Andreas and George.
  
 +}
      parse_halt();

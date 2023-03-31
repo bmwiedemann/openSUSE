@@ -695,4 +695,12 @@
     <comment></comment>
     <requestid>1062465</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>44ae117509aa5de4b8a4c23d3c7cd837</srcmd5>
+    <version>20230322</version>
+    <time>1680290138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230322</comment>
+    <requestid>1075710</requestid>
+  </revision>
 </revisionlist>

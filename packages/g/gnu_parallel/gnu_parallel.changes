@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 30 22:51:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230322
+  * Better support for wide characters in --latest-line
+  * Support for rsync 3.2.7
+  * parallel: --files0 is --files but \0 separated
+
+-------------------------------------------------------------------
 Sat Jan 28 20:30:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230122:
