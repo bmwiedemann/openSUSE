@@ -30,7 +30,7 @@ BuildRequires:  gcc-c++ >= 5.4.0
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  yasm >= 1.2.0
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
