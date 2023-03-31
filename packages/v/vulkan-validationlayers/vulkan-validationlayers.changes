@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 29 18:35:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.243.0
+  * layers: Add texelBufferAlignment support in 1.3
+  * bp: Add DescriptorTypeNotInPool support
+  * gpu: Add state tracking for EXT mesh_shader
+  * layers: Add dynamic VK_EXT_line_rasterization
+  * layers: Check correct pNext for VK_EXT_sample_locations
+  * layers: Add conservativeRasterizationPostDepthCoverage
+  * layers: Add validation for VkImageViewSlicedCreateInfoEXT
+  * layers: Add validation for XCB surface creation
+
+-------------------------------------------------------------------
 Thu Feb 16 18:27:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Rework xxhash.diff, remove ver.diff,
