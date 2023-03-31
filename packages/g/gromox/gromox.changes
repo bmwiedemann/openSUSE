@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 24 01:13:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.7
+  * exmdb_provider: default to mbox_contention_reject=0
+  * zcore: make mapi_message_imtoinet operate on message instances,
+    not messages
+  * oxcmail: do not fail exporting DSNs with unresolvable addresses
+  * oxcical: do not fail exporting calendar objects with
+    unresolvable addresses
+- Delete 0001-build-resolve-compile-error-with-gcc-13.patch,
+  0001-snapshot-safer-parsing-of-snapshot.cfg.patch (merged)
+
+-------------------------------------------------------------------
 Mon Mar 20 21:24:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-resolve-compile-error-with-gcc-13.patch
