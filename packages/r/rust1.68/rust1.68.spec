@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.68
-%global version_current 1.68.0
+%global version_current 1.68.2
 %global version_previous 1.67.1
 # This has to be kept lock step to the rust version.
 %global llvm_version 15
