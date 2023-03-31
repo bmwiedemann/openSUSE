@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 # Ensure default sections are filled with content
-Recommends:     noto-coloremoji-fonts
+Recommends:     google-noto-coloremoji-fonts
 
 %description
 A simple utility application to find and insert unusual characters.

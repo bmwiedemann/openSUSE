@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 31 05:40:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace noto-coloremoji-fonts  with google-noto-coloremoji-fonts
+  Recommends, font package was renamed.
+
+-------------------------------------------------------------------
 Sun Mar 19 17:40:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
