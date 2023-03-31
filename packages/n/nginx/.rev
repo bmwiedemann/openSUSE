@@ -968,4 +968,20 @@
     connections to backends were used.</comment>
     <requestid>1043486</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>084b54d4b09a1991fcfe691f68c889c2</srcmd5>
+    <version>1.23.4</version>
+    <time>1680290034</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.23.4
+  * https://nginx.org/en/CHANGES
+  * Enabled TLSv1.3 protocol by default.
+  * Supported byte ranges support in the ngx_http_gzip_static_module.
+  * Fixed port ranges in the &quot;listen&quot; directive did not work.
+  * Fixed incorrect location might be chosen to process a request if a
+    prefix location longer than 255 characters.
+  * Fixed a socket leak might occur when using HTTP/2 and the
+    &quot;error_page&quot; directive to redirect errors with code 400.</comment>
+    <requestid>1075335</requestid>
+  </revision>
 </revisionlist>
