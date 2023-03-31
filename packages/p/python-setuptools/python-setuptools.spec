@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        65.6.3
+Version:        67.6.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -88,14 +88,6 @@ especially ones that have dependencies on other packages.
 
 %prep
 %autosetup -p1 -n setuptools-%{version}
-
-# strip shebangs to fix rpmlint warnings
-# "explain the sed":
-# 1 = first line only
-# s@...@...@ = same as s/.../.../ except with @ instead of /
-# ^ = start; #!/ = shebang leading characters; .* = rest of line; $ = end
-# replace with nothing
-sed -r -i '1s@^#!/.*$@@' pkg_resources/_vendor/appdirs.py
 
 %build
 %if ! %{with wheel}

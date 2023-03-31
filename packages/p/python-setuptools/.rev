@@ -1029,4 +1029,41 @@
 </comment>
     <requestid>1037861</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>e40a77db1d36ff94408da1f0df296b5c</srcmd5>
+    <version>67.6.0</version>
+    <time>1680290042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 67.6.0:
+  * Deprecations
+    + #3434: Added deprecation warning for pkg_resources.declare_namespace.
+  * Breaking Changes
+    + #3741: Removed patching of distutils._msvccompiler.gen_lib_options for
+      compatibility with Numpy &lt; 1.11.2 -- by :user:`mgorny`
+    + #2497: Support for PEP 440 non-conforming versions has been removed.
+  * Changes
+    + #3804: Added caching for supported wheel tags.
+    + #3846: Added pruning heuristics to PackageFinder based on exclude.
+    + #3843: Although pkg_resources has been discouraged for use, some
+      projects still consider pkg_resources viable for usage. This change
+      makes it clear that pkg_resources should not be used, emitting a
+      DeprecationWarning when imported.
+    + #3809: Merge with distutils@8c3c3d29, including fix for
+      sysconfig.get_python_inc() (pypa/distutils#178), fix for segfault on
+      MinGW (pypa/distutils#196), and better has_function
+      support (pypa/distutils#195, #3648).
+    + #3795: Ensured that __file__ is an absolute path when executing setup.py
+      as part of setuptools.build_meta.
+    + #3685: Fix improper usage of deprecated/removed pkgutil APIs in
+      Python 3.12+.
+    + #3769: Replace 'appdirs' with 'platformdirs'.
+  * Misc
+    + #3838: Improved error messages for pyproject.toml validations.
+    + #3839: Fixed pkg_resources errors caused when parsing metadata of
+      packages that are already installed but do not conform with PEP 440.
+    + #3823: Fixes egg_info code path triggered during integration with pip.
+    + #3782: Fixed problem with file directive in tool.setuptools.dynamic
+     when value is a simple string instead of list.</comment>
+    <requestid>1070290</requestid>
+  </revision>
 </revisionlist>
