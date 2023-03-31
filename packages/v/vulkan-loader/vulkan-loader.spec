@@ -19,7 +19,7 @@
 # Prefer to go with just /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.3.239.0
+Version:        1.3.243.0
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
@@ -73,7 +73,9 @@ to make use of Vulkan.
 %cmake \
 	-DVulkanHeaders_INCLUDE_DIR:PATH="%_includedir" \
 	-DVulkanRegistry_DIR:PATH="%_datadir/vulkan/registry" \
-	-DLIB_SUFFIX:STRING=""
+	-DLIB_SUFFIX:STRING="" \
+	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags -U_FORTIFY_SOURCE -O0 -ggdb3" \
+	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="%optflags -U_FORTIFY_SOURCE -O0 -ggdb3"
 
 %cmake_build
 

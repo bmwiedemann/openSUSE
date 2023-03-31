@@ -365,4 +365,12 @@
     <comment>- Update to release SDK-1.3.239.0</comment>
     <requestid>1061879</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3c8b81e40cab09ca45f05212144da43b</srcmd5>
+    <version>1.3.243.0</version>
+    <time>1680290036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.3.243.0</comment>
+    <requestid>1075342</requestid>
+  </revision>
 </revisionlist>
