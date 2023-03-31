@@ -41,4 +41,14 @@
   * Feature/file count #105</comment>
     <requestid>1075592</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c855e70d0ec814c102b22ff272aae2ad</srcmd5>
+    <version>1.7.1~0</version>
+    <time>1680290148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Fix issue where not-existent directory as cli arg causes
+    infinite loop #107</comment>
+    <requestid>1075745</requestid>
+  </revision>
 </revisionlist>
