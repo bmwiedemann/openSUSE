@@ -32,6 +32,8 @@ Patch1:         0001-add-opensuse-customizations.patch
 Patch2:         0001-fix-mono-playback.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-fix-broken-yt-dlp.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-fix-overlay-focus.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold

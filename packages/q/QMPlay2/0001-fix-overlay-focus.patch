@@ -1,0 +1,39 @@
+From c2aabe13bcf6c9f67f8bce3496dfd0cffb4d794e Thu Mar 30 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <spaz16@wp.pl>
+Date: Thu, 30 Mar 2023 21:24:18 +0200
+Subject: [PATCH] Apply always on top to settings window
+
+Amends: c2aabe13bcf6c9f67f8bce3496dfd0cffb4d794e
+
+---
+ src/gui/MainWidget.cpp     | 3 +++
+ src/gui/SettingsWidget.cpp | 1 -
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/gui/MainWidget.cpp b/src/gui/MainWidget.cpp
+index b61316b7..b5831cd9 100644
+--- a/src/gui/MainWidget.cpp
++++ b/src/gui/MainWidget.cpp
+@@ -1330,6 +1330,9 @@ void MainWidget::showSettings(const QString &moduleName)
+             page = 0;
+ 
+         settingsW = new SettingsWidget(page, moduleName, QMPlay2GUI.videoAdjustment);
++        if (windowFlags() & Qt::WindowStaysOnTopHint)
++            settingsW->setWindowFlag(Qt::WindowStaysOnTopHint);
++        settingsW->show();
+         connect(settingsW, SIGNAL(settingsChanged(int, bool, bool)), &playC, SLOT(settingsChanged(int, bool, bool)));
+         connect(settingsW, SIGNAL(setWheelStep(int)), seekS, SLOT(setWheelStep(int)));
+         connect(settingsW, SIGNAL(setVolMax(int)), volW, SLOT(setMaximumVolume(int)));
+diff --git a/src/gui/SettingsWidget.cpp b/src/gui/SettingsWidget.cpp
+index cdbba84c..410a7969 100644
+--- a/src/gui/SettingsWidget.cpp
++++ b/src/gui/SettingsWidget.cpp
+@@ -711,8 +711,6 @@ SettingsWidget::SettingsWidget(int page, const QString &moduleName, QWidget *vid
+ 
+     connect(tabW, SIGNAL(currentChanged(int)), this, SLOT(tabCh(int)));
+     tabW->setCurrentIndex(page);
+-
+-    show();
+ }
+ SettingsWidget::~SettingsWidget()
+ {

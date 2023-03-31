@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 30 19:24:18 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-overlay-focus.patch to ensure the correct
+  QMPlay2 window is always focussed
+
+-------------------------------------------------------------------
 Tue Mar 21 22:26:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Switch from GCC compiler to clang/llvm compiler to better
