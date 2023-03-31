@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 13:29:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.16
+  * Fix memory leak and ActionExAsync
+
+-------------------------------------------------------------------
 Sat Nov 19 02:42:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.15
