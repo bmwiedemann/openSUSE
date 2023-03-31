@@ -263,4 +263,14 @@
     <comment>- Update to 0.4.7 (bsc#1207242, CVE-2021-32837):</comment>
     <requestid>1059484</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>a507ccd3135e64cbbda04a9b198ea124</srcmd5>
+    <version>0.4.8</version>
+    <time>1680290157</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-311.patch:
+  * http.cookiejar changed behaviour from Python 3.11 onwards, support
+    both.</comment>
+    <requestid>1076397</requestid>
+  </revision>
 </revisionlist>

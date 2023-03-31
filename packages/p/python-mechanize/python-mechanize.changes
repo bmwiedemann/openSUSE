@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 31 07:05:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-311.patch:
+  * http.cookiejar changed behaviour from Python 3.11 onwards, support
+    both. 
+
+-------------------------------------------------------------------
 Tue Oct 11 02:02:03 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python. 

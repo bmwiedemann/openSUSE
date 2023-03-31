@@ -17,7 +17,6 @@
 
 
 %define modname mechanize
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mechanize
 Version:        0.4.8
 Release:        0
@@ -26,7 +25,10 @@ License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)
 URL:            https://github.com/python-mechanize/mechanize
 Source:         https://files.pythonhosted.org/packages/source/m/mechanize/%{modname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-mechanize-setup.cfg.patch gh#python-mechanize/mechanize#73 -- setup.cfg: Move packages def to options section
-Patch1:         %{name}-setup.cfg.patch
+Patch0:         %{name}-setup.cfg.patch
+# PATCH-FIX-OPENSUSE Python 3.11 no longer sorts cookies by key when iterating
+# Re: gh#python/cpython#22745
+Patch1:         support-python-311.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module setuptools}
@@ -43,8 +45,7 @@ programmatically with HTML form filling and clicking
 of links.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%patch1 -p1
+%autosetup -p1 -n %{modname}-%{version}
 sed -i -e '1{/^#!\/usr\/bin\/env python/d}' %{modname}/{_entities,_equiv,_form_controls,polyglot}.py
 sed -i -e '1{/^#!/d}' examples/forms/{echo.cgi,example.py,simple.py}
 chmod -x examples/forms/{echo.cgi,example.py,simple.py}
