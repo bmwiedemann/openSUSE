@@ -1,0 +1,12 @@
+Index: numpy-1.24.2/pytest.ini
+===================================================================
+--- numpy-1.24.2.orig/pytest.ini
++++ numpy-1.24.2/pytest.ini
+@@ -25,5 +25,7 @@ filterwarnings =
+ # Ignore DeprecationWarnings from distutils
+     ignore::DeprecationWarning:.*distutils
+     ignore:\n\n  `numpy.distutils`:DeprecationWarning
++# Ignore DeprecationWarning from pkg_resources
++    ignore:pkg_resources:DeprecationWarning
+ # Ignore mypy >= 0.971 DeprecationWarnings
+     ignore:path is deprecated\. Use files\(\) instead:DeprecationWarning:mypy

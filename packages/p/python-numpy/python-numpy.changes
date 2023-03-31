@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 24 07:02:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch ignore-pkg_resources-deprecation.patch:
+  * Ignore DeprecationWarning from pkg_resources. 
+
+-------------------------------------------------------------------
+Wed Mar 22 13:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.2:
+  just bugfixes, see
+  https://github.com/numpy/numpy/releases/tag/v1.24.2
+  for details
+
+-------------------------------------------------------------------
 Fri Mar 10 08:50:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Skip test_ppc64_ibm_double_double128 test on ppc64*

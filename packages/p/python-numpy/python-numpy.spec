@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.24.1
-%define _ver 1_24_1
+%define ver 1.24.2
+%define _ver 1_24_2
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -85,6 +85,8 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
+# PATCH-FIX-OPENSUSE Ignore DeprecationWarnings when importing pkg_resources
+Patch2:         ignore-pkg_resources-deprecation.patch
 BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
