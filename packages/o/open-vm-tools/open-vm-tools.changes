@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 28 23:16:47 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Update to 12.2.0 (build 21223074) (boo#1209128)
+  - There are no new features in the open-vm-tools 12.2.0 release. This is
+    primarily a maintenance release that addresses a few critical problems,
+    including:
+    - Linux quiesced snapshots have been updated to avoid intermittent hangs of
+      the vmtoolsd process.
+    - Updated the guestOps to handle some edge cases when File_GetSize() fails
+      or returns -1.
+    - A number of Coverity reported issues have been addressed.
+    - Detect the proto files for the containerd grpc client in alternate
+      locations.  Pull request #626
+    - FreeBSD: Support newer releases and code clean-up for earlier versions.
+      Pull request #584
+  - Please refer to the release notes at
+    https://github.com/vmware/open-vm-tools/blob/stable-12.2.0/ReleaseNotes.md
+  - The granular changes that have gone into the 12.2.0 release are in the
+    ChangeLog at https://github.com/vmware/open-vm-tools/blob/stable-12.2.0/
+      open-vm-tools/ChangeLog
+- Update detect-suse-location.patch to remove upstream accepted portion of the
+  patch (jsc-PED-1344).
+
+-------------------------------------------------------------------
 Wed Dec 28 08:18:43 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

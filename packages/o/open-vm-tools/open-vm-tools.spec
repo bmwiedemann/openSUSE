@@ -1,7 +1,7 @@
 #
 # spec file for package open-vm-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,7 +38,7 @@
 %define with_X 1
 
 Name:           open-vm-tools
-Version:        12.1.5
+Version:        12.2.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
