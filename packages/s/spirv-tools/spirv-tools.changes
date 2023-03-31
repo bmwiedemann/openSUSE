@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:42:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.2
+  * spirv-val: Initial SPV_EXT_mesh_shader builtins
+  * Add C interface for Optimizer
+
+-------------------------------------------------------------------
+Wed Mar 29 18:42:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update buildrequires to match published dependency list
+
+-------------------------------------------------------------------
 Wed Jan 18 22:23:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.1

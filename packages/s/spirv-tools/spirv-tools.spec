@@ -17,10 +17,10 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2023_1
+%define lname libSPIRV-Tools-2023_2
 
 Name:           spirv-tools
-Version:        2023.1
+Version:        2023.2
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -31,12 +31,12 @@ Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v%
 Source9:        baselibs.conf
 Patch1:         ver.diff
 BuildRequires:  bison
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.17.2
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.1+sdk236+git7
+BuildRequires:  spirv-headers >= 1.6.1+sdk243
 
 %description
 The package includes an assembler, binary module parser,
@@ -64,10 +64,9 @@ validator, and is used in the standalone tools whilst also enabling
 integration into other code bases directly.
 
 %prep
-%define slibv 2023.1
 %autosetup -p1 -n SPIRV-Tools-%version
 find . -type f -name CMakeLists.txt -exec \
-	perl -i -pe 's{\@PACKAGE_VERSION\@}{%slibv}' CMakeLists.txt {} +
+	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
 %build
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
@@ -78,7 +77,7 @@ find . -type f -name CMakeLists.txt -exec \
 %cmake_install
 perl -i -lpe 's{^#!/usr/bin/env sh$}{#!/bin/sh}' "%buildroot/%_bindir/spirv-lesspipe.sh"
 for i in "" "-diff" "-link" "-lint" "-opt" "-reduce" "-shared"; do
-	ln -s "libSPIRV-Tools$i-%slibv.so" "%buildroot/%_libdir/libSPIRV-Tools$i.so"
+	ln -s "libSPIRV-Tools$i-%version.so" "%buildroot/%_libdir/libSPIRV-Tools$i.so"
 done
 
 %post   -n %lname -p /sbin/ldconfig
