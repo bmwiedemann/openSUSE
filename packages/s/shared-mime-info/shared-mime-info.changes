@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 29 16:09:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Filter out dependency on /usr/bin/pkg-config: this package is
+  installed on basically all systems, but it also contains a .pc
+  file. Splitting this into a -devel package seems not reasonable.
+
+-------------------------------------------------------------------
 Mon Mar 28 08:35:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package shared-mime-info
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global __requires_exclude ^/usr/bin/pkg-config$
 Name:           shared-mime-info
 Version:        2.2
 Release:        0
