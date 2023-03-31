@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 24 17:07:05 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.4.3: bug-fix release
+  * Restore console script (#1327).
+- additional changes from version 3.4.2: bug-fix release
+  * Improve standalone * and _ parsing (#1300).
+  * Consider <html> HTML tag a block-level element (#1309).
+  * Officially support Python 3.11.
+  * Switch from setup.py to pyproject.toml.
+- drop macros in spec file: already provided by python-rpm-macros
+
+-------------------------------------------------------------------
 Sun Jul 17 17:53:17 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.4.1: bug-fix release
