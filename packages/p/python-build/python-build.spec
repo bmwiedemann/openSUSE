@@ -24,35 +24,30 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# wheeldir of name build does not work well with this packagename gh#openSUSE/python-rpm-macros#157
+%define _pyproject_wheeldir distwheel
 
-%define skip_python2 1
 Name:           python-build%{psuffix}
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/build
 Source0:        https://github.com/pypa/build/archive/%{version}.tar.gz#/build-%{version}.tar.gz
-# Needs the wheels for wheel, flit-core (<3), pytoml, and tomli for testing
+# Needs the wheels for wheel, flit-core, pytoml, and tomli for testing
 Source10:       https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-0.37.1-py2.py3-none-any.whl
-Source11:       https://files.pythonhosted.org/packages/py2.py3/f/flit-core/flit_core-2.3.0-py2.py3-none-any.whl
-Source12:       https://files.pythonhosted.org/packages/py2.py3/p/pytoml/pytoml-0.1.21-py2.py3-none-any.whl
-Source13:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
-# PATCH-FIX-UPSTREAM build-pr550-packaging22.patch gh#pypa/build#550
-Patch1:         https://github.com/pypa/build/pull/550.patch#/build-pr550-packaging22.patch
-BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module importlib-metadata >= 0.22 if %python-base < 3.8}
-BuildRequires:  %{python_module packaging >= 19.0}
-BuildRequires:  %{python_module pep517 >= 0.9.1}
-BuildRequires:  %{python_module setuptools >= 42}
-BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
+Source11:       https://files.pythonhosted.org/packages/py3/f/flit-core/flit_core-3.8.0-py3-none-any.whl
+Source12:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core >= 3.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 0.19.0
-Requires:       python-pep517 >= 0.9.1
+Requires:       python-pyproject-hooks
 Requires:       (python-importlib-metadata >= 0.22 if python-base < 3.8)
-Requires:       (python-tomli if python-base < 3.11)
+Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Recommends:     python-virtualenv >= 20.0.35
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -64,6 +59,8 @@ BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-mock >= 2}
 BuildRequires:  %{python_module pytest-rerunfailures >= 9.1}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
+BuildRequires:  %{python_module setuptools >= 42 if %python-base < 3.10}
+BuildRequires:  %{python_module setuptools >= 56 if %python-base >= 3.11}
 BuildRequires:  %{python_module toml >= 0.10.0}
 BuildRequires:  %{python_module wheel >= 0.36}
 BuildRequires:  python3-setuptools-wheel
@@ -79,10 +76,10 @@ It is a simple build tool and does not perform any dependency management.
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyproject-build
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -90,9 +87,11 @@ It is a simple build tool and does not perform any dependency management.
 %if %{with test}
 %check
 mkdir -p wheels
-cp %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} wheels/
+cp %{SOURCE10} %{SOURCE11} %{SOURCE12} wheels/
 export PIP_FIND_LINKS="%{python3_sitelib}/../wheels $PWD/wheels"
-%pytest tests -n auto
+pushd tests
+%pytest -n auto -x
+popd
 %endif
 
 %if !%{with test}

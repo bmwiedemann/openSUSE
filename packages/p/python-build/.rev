@@ -47,4 +47,21 @@
     <comment></comment>
     <requestid>1046084</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b522e5e4bee223957668419feb36eb4f</srcmd5>
+    <version>0.10.0</version>
+    <time>1680290044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0
+  * Replace pep517 dependency with pyproject_hooks, into which
+    pep517 has been renamed (PR #539, Fixes #529)
+  * Change build backend from setuptools to flit (PR #470, Fixes
+    #394)
+  * Dropped support for Python 3.6 (PR #532)
+- Avoid namespace clashes with build/ directory
+  * gh#openSUSE/python-rpm-macros#157
+- Drop build-pr550-packaging22.patch
+</comment>
+    <requestid>1073633</requestid>
+  </revision>
 </revisionlist>

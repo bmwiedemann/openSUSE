@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 21 19:16:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0
+  * Replace pep517 dependency with pyproject_hooks, into which
+    pep517 has been renamed (PR #539, Fixes #529)
+  * Change build backend from setuptools to flit (PR #470, Fixes
+    #394)
+  * Dropped support for Python 3.6 (PR #532)
+- Avoid namespace clashes with build/ directory
+  * gh#openSUSE/python-rpm-macros#157
+- Drop build-pr550-packaging22.patch
+
+-------------------------------------------------------------------
 Sun Jan  1 18:26:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add build-pr550-packaging22.patch
