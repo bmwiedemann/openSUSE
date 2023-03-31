@@ -17,7 +17,7 @@
 
 
 Name:           irssi
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Modular IRC Client
 License:        GPL-2.0-or-later

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 31 04:43:43 UTC 2023 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.4.4
+  * Expose location of signals.txt via pkg-config (codeberg!1,
+    #1439, #1446, #1447). By Andrej Kacian
+  + Levels can now be inverted using `^' prefix in the /WINDOW
+    (HIDE)LEVEL commands (#1428)
+  + Support receiving monospace (#1370, #1442). By Linus
+    Heckemann
+  - Fix config broken by /WINDOW LOGFILE without parameter
+    (#1392, #1432)
+  - Fix broken /LASTLOG -window switch (#1418, #1424, regression
+    introduced in #1398)
+  - Fix logic in how actions are printed for other protocols
+    (codeberg!3, #1454). By Andrej Kacian
+  - Fix stale special collector use after free (#1456). Reported
+    by ednash
+  - Help and message fixes (#1421, #1429, #1431, #1434, #1438,
+    #1452, #1453, #1455). Includes work by Jimmie Tyrrell and
+    Sven Grewe
+
+-------------------------------------------------------------------
 Mon Oct 31 07:38:51 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - update to 1.4.3
