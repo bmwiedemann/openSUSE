@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-avatar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           python-django-avatar
-Version:        5.0.0
+Version:        7.1.1
 Release:        0
 Summary:        Django-avatar package
 License:        BSD-3-Clause
 URL:            https://github.com/grantmcconnaughey/django-avatar/
-Source:         https://files.pythonhosted.org/packages/source/d/django-avatar/django-avatar-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#grantmcconnaughey/django-avatar#201
-Patch0:         support-django-40.patch
-BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module Pillow >= 2.0}
-BuildRequires:  %{python_module django-appconf >= 0.6}
+Source:         https://github.com/jazzband/django-avatar/archive/refs/tags/v%{version}.tar.gz#/django-avatar-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 4.0}
+BuildRequires:  %{python_module Pillow >= 8.4}
+BuildRequires:  %{python_module django-appconf >= 1.0.5}
+BuildRequires:  %{python_module dnspython >= 2.3.0}
+BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
-Requires:       python-Pillow >= 2.0
-Requires:       python-django-appconf >= 0.6
+Requires:       python-Django >= 4.0
+Requires:       python-Pillow >= 8.4
+Requires:       python-django-appconf >= 1.0.5
+Requires:       python-dnspython >= 2.3.0
 BuildArch:      noarch
 %python_subpackages
 

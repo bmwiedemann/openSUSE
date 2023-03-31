@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Mar 31 03:43:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.1:
+  * Switch to setuptools for building
+  * Add LibRavatar support
+  * Faster admin when many users are present
+  * Check for corrupted image during upload
+  * Switch Pillow Resize method from Image.ANTIALIAS to Image.LANCZOS
+  * Removed Python 3.6 testing
+  * Added Python 3.11 support
+  * Remove height requirement for providers (broke 6 to 7 upgrades)
+  * Allowed for rectangular avatars. Custom avatar tag templates now require
+    the specification of both a width and height attribute instead of size.
+  * Made True the default value of AVATAR_CLEANUP_DELETED.
+  * Fix invalidate_cache for on-the-fly created thumbnails.
+  * New setting AVATAR_ALLOWED_MIMETYPES. If enabled, it checks mimetypes of
+    uploaded files using python-magic. Default is None.
+  * Fix thumbnail transposing for Safari.
+  * Added Django 3.2, 4.0 and 4.1 support.
+  * Removed Django 1.9, 1.10, 1.11, 2.0, 2.1, 2.2 and 3.0 support.
+  * Added Python 3.9 and 3.10 support.
+  * Removed Python 2.7, 3.4 and 3.5 support.
+  * Made "PNG" the default value for AVATAR_THUMB_FORMAT.
+  * Made False the default value for AVATAR_EXPOSE_USERNAMES.
+  * Don't leak usernames through image alt-tags when AVATAR_EXPOSE_USERNAMES
+    is False.
+  * Use original image as thumbnail if thumbnail creation failed but image
+    saving succeeds. 
+- Remove patch support-django-40.patch, no longer required.
+
+-------------------------------------------------------------------
 Thu Feb  3 02:04:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-django-40.patch:
