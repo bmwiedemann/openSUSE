@@ -247,4 +247,17 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
   installed we had before ...</comment>
     <requestid>1074339</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b346d58941b596de59b6684e1d9a3b3b</srcmd5>
+    <version>9.0.0</version>
+    <time>1680290115</time>
+    <user>dimstar_suse</user>
+    <comment>- enabled osmesa and libdrm support
+
+- enabled vulkan support (first Vulkan demo: vkgears!)
+
+- Update to version 9.0.0
+- supersedes n_install-more-egl-binaries.patch</comment>
+    <requestid>1075695</requestid>
+  </revision>
 </revisionlist>

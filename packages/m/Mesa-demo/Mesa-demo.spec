@@ -17,34 +17,40 @@
 
 
 Name:           Mesa-demo
-Version:        8.5.0
+Version:        9.0.0
 Release:        0
 Summary:        Mesa demo programs for the OpenGL stack
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://www.mesa3d.org
-Source0:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2
-Source1:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2.sig
+Source0:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.xz
+Source1:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         n_install-more-egl-binaries.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
+BuildRequires:  glslang-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(osmesa)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
 Requires:       Mesa-demo-egl = %{version}
 Requires:       Mesa-demo-es = %{version}
 Requires:       Mesa-demo-x = %{version}
@@ -99,15 +105,15 @@ This package contains some common EGL-based demos.
 
 %prep
 %setup -q -n mesa-demos-%{version} -b0
-%patch0 -p1
 
 %build
 %{meson} \
   -Dgles1=enabled \
   -Dgles2=enabled \
-  -Dosmesa=disabled \
-  -Dlibdrm=disabled \
+  -Dosmesa=enabled \
+  -Dlibdrm=enabled \
   -Dwayland=disabled \
+  -Dvulkan=enabled \
   %{nil}
 %{meson_build}
 
