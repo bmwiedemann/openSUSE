@@ -273,4 +273,12 @@
     <comment>- Update to release 1.6.1/SDK-1.3.239.0</comment>
     <requestid>1061876</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a7ccc15ae51e0eee24e7f07a01eaf46b</srcmd5>
+    <version>1.6.1+sdk243</version>
+    <time>1680290038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.1/SDK-1.3.243.0</comment>
+    <requestid>1075345</requestid>
+  </revision>
 </revisionlist>
