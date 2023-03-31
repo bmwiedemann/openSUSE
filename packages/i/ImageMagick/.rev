@@ -3567,4 +3567,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1073564</requestid>
   </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>09f2d49e70ca072ae95ca207b5c469ee</srcmd5>
+    <version>7.1.1.5</version>
+    <time>1680290107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.1.5:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-5---2023-03-26 (forwarded request 1075481 from dirkmueller)</comment>
+    <requestid>1075483</requestid>
+  </revision>
 </revisionlist>
