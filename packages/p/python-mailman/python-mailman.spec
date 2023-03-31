@@ -148,6 +148,7 @@ popd
 sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 %endif
 %python_build
+./generate_mo.sh
 
 %install
 %if !%{with test}

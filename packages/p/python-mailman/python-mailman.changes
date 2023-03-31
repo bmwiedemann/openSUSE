@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 19:40:53 UTC 2023 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Compile and include .mo files, used by _() strings
+
+-------------------------------------------------------------------
 Mon Feb  6 05:02:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.3.8:
