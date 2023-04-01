@@ -145,4 +145,16 @@
   * Detect invalid private key (forwarded request 1060840 from glaubitz)</comment>
     <requestid>1060937</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d989384cd08651aac98532fb96160f26</srcmd5>
+    <version>1.35.0</version>
+    <time>1680370334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.35.0
+  * Add parameters to allow mount fo pod impersonation feature in EFS CSI Driver
+  * Updated the README with support of Oracle8 distribution
+  * Readme troubleshooting section + table of contents
+  * Add efs-utils Support for MacOS Ventura EC2 instances (forwarded request 1076427 from glaubitz)</comment>
+    <requestid>1076546</requestid>
+  </revision>
 </revisionlist>

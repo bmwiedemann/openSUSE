@@ -17,7 +17,7 @@
 
 
 Name:           aws-efs-utils
-Version:        1.34.5
+Version:        1.35.0
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
