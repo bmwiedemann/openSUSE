@@ -112,7 +112,10 @@ a uniform, machine readable format.
 %meson_build
 
 %check
+# Needed due to https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/458
+%ifarch %ix86 x86_64
 %meson_test
+%endif
 
 %install
 %meson_install

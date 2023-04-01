@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 30 09:31:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Run meson_test only on x86(_64) arches until upstream issue is
+  fixed.
+  https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/458
+
+-------------------------------------------------------------------
 Wed Mar 22 23:00:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.76.1:
