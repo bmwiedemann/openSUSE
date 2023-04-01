@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 28 18:13:46 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.3
+  * launcher: Show action menu also when there are several items
+  * Fix memory management of vala generated plugins
+  * panel: Rephrase "Don't reserve space on borders" (V2)
+  * panel: Make property migration generic
+  * launcher: Avoid "no trigger event" warning when showing the menu
+  * launcher: Guard access to the plugin menu GdkWindow
+  * libxfce4panel: Unregister menu also on GtkWidget::hide
+  * panel: Do not reset output name if a monitor does not have a model name
+  * libxfce4panel: Fix memory management of source for menu positioning
+  * panel: Delay removal of ExternalPlugin to prevent use-after-free
+  * systray: Cancel any async D-Bus operation in finalize()
+  * tasklist: Do not try to resolve /proc/pid/exe to launch new instance
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Feb 10 00:24:10 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Ensure statusnotifier plugin is fully usable with appindicators

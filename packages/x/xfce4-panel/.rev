@@ -740,4 +740,25 @@
     <comment></comment>
     <requestid>1064193</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>821c08b831f626e4b18739202a3bd8a3</srcmd5>
+    <version>4.18.3</version>
+    <time>1680370349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.3
+  * launcher: Show action menu also when there are several items
+  * Fix memory management of vala generated plugins
+  * panel: Rephrase &quot;Don't reserve space on borders&quot; (V2)
+  * panel: Make property migration generic
+  * launcher: Avoid &quot;no trigger event&quot; warning when showing the menu
+  * launcher: Guard access to the plugin menu GdkWindow
+  * libxfce4panel: Unregister menu also on GtkWidget::hide
+  * panel: Do not reset output name if a monitor does not have a model name
+  * libxfce4panel: Fix memory management of source for menu positioning
+  * panel: Delay removal of ExternalPlugin to prevent use-after-free
+  * systray: Cancel any async D-Bus operation in finalize()
+  * tasklist: Do not try to resolve /proc/pid/exe to launch new instance
+  * Translation Updates (forwarded request 1075061 from manfred-h)</comment>
+    <requestid>1076637</requestid>
+  </revision>
 </revisionlist>
