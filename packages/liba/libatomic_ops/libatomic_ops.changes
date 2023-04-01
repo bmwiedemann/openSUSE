@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 28 08:09:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.8.0
+  * Do not expose AO_REAL_HEAD/NEXT_PTR implementation in header
+    by default
+  * Hide AO_free_list symbol
+  * New AO_stack_is_lock_free API function
+  * Use GCC atomic intrinsics for SPARC
+
+-------------------------------------------------------------------
 Thu Aug 25 21:50:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.6.14

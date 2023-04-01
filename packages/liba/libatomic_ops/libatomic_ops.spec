@@ -1,7 +1,7 @@
 #
 # spec file for package libatomic_ops
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libatomic_ops
-Version:        7.6.14
+Version:        7.8.0
 Release:        0
 Summary:        A portable library for atomic memory operations
 License:        GPL-2.0-or-later AND MIT
