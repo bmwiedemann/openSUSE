@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:26:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add wxsvg-fix-missing-include.patch: Add a missing include.
+- Modernize spec, use make_build and ldconfig_scriptlets macros.
+
+-------------------------------------------------------------------
 Mon Aug  1 09:10:41 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Build with wxGTK3-3_2 to match DVDStyler's needs

@@ -1,7 +1,7 @@
 #
 # spec file for package wxsvg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012-2019 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Stefan Seyfried <seife+obs@b1-systems.com>
 #
@@ -27,6 +27,7 @@ License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1
 URL:            http://wxsvg.sourceforge.net/
 Source:         https://prdownloads.sourceforge.net/wxsvg/%{name}-%{version}.tar.bz2
 Patch:          ffmpeg5.patch
+Patch1:         wxsvg-fix-missing-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  wxGTK3-3_2-devel
@@ -61,19 +62,17 @@ Requires:       pkgconfig(libart-2.0)
 Include files for developing programs based on %{name}.
 
 %prep
-%setup -q
-%patch -p1
+%autosetup -p1
 
 %build
 %configure --disable-static
-make  %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files
 %doc AUTHORS ChangeLog TODO
