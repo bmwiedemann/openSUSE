@@ -1,0 +1,87 @@
+# Commit d329b37d12132164c3894d0b6284be72576ef950
+# Date 2022-12-19 11:23:34 +0100
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/vmx: introduce helper to set VMX_INTR_SHADOW_NMI
+
+Introduce a small helper to OR VMX_INTR_SHADOW_NMI in
+GUEST_INTERRUPTIBILITY_INFO in order to help dealing with the NMI
+unblocked by IRET case.  Replace the existing usage in handling
+EXIT_REASON_EXCEPTION_NMI and also add such handling to EPT violations
+and page-modification log-full events.
+
+Reported-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+
+--- a/xen/arch/x86/hvm/vmx/vmx.c
++++ b/xen/arch/x86/hvm/vmx/vmx.c
+@@ -3964,6 +3964,15 @@ static int vmx_handle_apic_write(void)
+     return vlapic_apicv_write(current, exit_qualification & 0xfff);
+ }
+ 
++static void undo_nmis_unblocked_by_iret(void)
++{
++    unsigned long guest_info;
++
++    __vmread(GUEST_INTERRUPTIBILITY_INFO, &guest_info);
++    __vmwrite(GUEST_INTERRUPTIBILITY_INFO,
++              guest_info | VMX_INTR_SHADOW_NMI);
++}
++
+ void vmx_vmexit_handler(struct cpu_user_regs *regs)
+ {
+     unsigned long exit_qualification, exit_reason, idtv_info, intr_info = 0;
+@@ -4164,13 +4173,7 @@ void vmx_vmexit_handler(struct cpu_user_
+         if ( unlikely(intr_info & INTR_INFO_NMI_UNBLOCKED_BY_IRET) &&
+              !(idtv_info & INTR_INFO_VALID_MASK) &&
+              (vector != TRAP_double_fault) )
+-        {
+-            unsigned long guest_info;
+-
+-            __vmread(GUEST_INTERRUPTIBILITY_INFO, &guest_info);
+-            __vmwrite(GUEST_INTERRUPTIBILITY_INFO,
+-                      guest_info | VMX_INTR_SHADOW_NMI);
+-        }
++            undo_nmis_unblocked_by_iret();
+ 
+         perfc_incra(cause_vector, vector);
+ 
+@@ -4536,6 +4539,11 @@ void vmx_vmexit_handler(struct cpu_user_
+ 
+         __vmread(GUEST_PHYSICAL_ADDRESS, &gpa);
+         __vmread(EXIT_QUALIFICATION, &exit_qualification);
++
++        if ( unlikely(exit_qualification & INTR_INFO_NMI_UNBLOCKED_BY_IRET) &&
++             !(idtv_info & INTR_INFO_VALID_MASK) )
++            undo_nmis_unblocked_by_iret();
++
+         ept_handle_violation(exit_qualification, gpa);
+         break;
+     }
+@@ -4580,6 +4588,12 @@ void vmx_vmexit_handler(struct cpu_user_
+         break;
+ 
+     case EXIT_REASON_PML_FULL:
++        __vmread(EXIT_QUALIFICATION, &exit_qualification);
++
++        if ( unlikely(exit_qualification & INTR_INFO_NMI_UNBLOCKED_BY_IRET) &&
++             !(idtv_info & INTR_INFO_VALID_MASK) )
++            undo_nmis_unblocked_by_iret();
++
+         vmx_vcpu_flush_pml_buffer(v);
+         break;
+ 
+--- a/xen/arch/x86/include/asm/hvm/vmx/vmx.h
++++ b/xen/arch/x86/include/asm/hvm/vmx/vmx.h
+@@ -225,6 +225,9 @@ static inline void pi_clear_sn(struct pi
+ 
+ /*
+  * Interruption-information format
++ *
++ * Note INTR_INFO_NMI_UNBLOCKED_BY_IRET is also used with Exit Qualification
++ * field for EPT violations, PML full and SPP-related event vmexits.
+  */
+ #define INTR_INFO_VECTOR_MASK           0xff            /* 7:0 */
+ #define INTR_INFO_INTR_TYPE_MASK        0x700           /* 10:8 */

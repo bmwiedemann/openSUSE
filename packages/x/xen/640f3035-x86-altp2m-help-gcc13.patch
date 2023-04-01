@@ -1,14 +1,19 @@
+# Commit be62b1fc2aa7375d553603fca07299da765a89fe
+# Date 2023-03-13 15:16:21 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
 x86/altp2m: help gcc13 to avoid it emitting a warning
 
 Switches of altp2m-s always expect a valid altp2m to be in place (and
 indeed altp2m_vcpu_initialise() sets the active one to be at index 0).
 The compiler, however, cannot know that, and hence it cannot eliminate
 p2m_get_altp2m()'s case of returnin (literal) NULL. If then the compiler
-decides to special case that code path, the dereference in instances of
+decides to special case that code path in the caller, the dereference in
+instances of
 
     atomic_dec(&p2m_get_altp2m(v)->active_vcpus);
 
-will, to the code generator, appear to be NULL dereferences, leading to
+can, to the code generator, appear to be NULL dereferences, leading to
 
 In function 'atomic_dec',
     inlined from '...' at ...:
@@ -27,10 +32,11 @@ BUG_ON(idx >= MAX_ALTP2M) in two of the three cases).
 
 Reported-by: Charles Arnold <carnold@suse.com>
 Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Acked-by: Andrew Cooper <andrew.cooper3@citrix.com>
 
 --- a/xen/arch/x86/hvm/vmx/vmx.c
 +++ b/xen/arch/x86/hvm/vmx/vmx.c
-@@ -4063,13 +4063,7 @@ void vmx_vmexit_handler(struct cpu_user_
+@@ -4072,13 +4072,7 @@ void vmx_vmexit_handler(struct cpu_user_
              }
          }
  

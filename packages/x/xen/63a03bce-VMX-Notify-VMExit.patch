@@ -1,0 +1,215 @@
+# Commit 573279cde1c4e752d4df34bc65ffafa17573148e
+# Date 2022-12-19 11:24:14 +0100
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/vmx: implement Notify VM Exit
+
+Under certain conditions guests can get the CPU stuck in an unbounded
+loop without the possibility of an interrupt window to occur on
+instruction boundary.  This was the case with the scenarios described
+in XSA-156.
+
+Make use of the Notify VM Exit mechanism, that will trigger a VM Exit
+if no interrupt window occurs for a specified amount of time.  Note
+that using the Notify VM Exit avoids having to trap #AC and #DB
+exceptions, as Xen is guaranteed to get a VM Exit even if the guest
+puts the CPU in a loop without an interrupt window, as such disable
+the intercepts if the feature is available and enabled.
+
+Setting the notify VM exit window to 0 is safe because there's a
+threshold added by the hardware in order to have a sane window value.
+
+Note the handling of EXIT_REASON_NOTIFY in the nested virtualization
+case is passed to L0, and hence a nested guest being able to trigger a
+notify VM exit with an invalid context would be able to crash the L1
+hypervisor (by L0 destroying the domain).  Since we don't expose VM
+Notify support to L1 it should already enable the required
+protections in order to prevent VM Notify from triggering in the first
+place.
+
+Suggested-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+
+# Commit 5f08bc9404c7cfa8131e262c7dbcb4d96c752686
+# Date 2023-01-20 19:39:32 +0000
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/vmx: Partially revert "x86/vmx: implement Notify VM Exit"
+
+The original patch tried to do two things - implement VMNotify, and
+re-optimise VT-x to not intercept #DB/#AC by default.
+
+The second part is buggy in multiple ways.  Both GDBSX and Introspection need
+to conditionally intercept #DB, which was not accounted for.  Also, #DB
+interception has nothing at all to do with cpu_has_monitor_trap_flag.
+
+Revert the second half, leaving #DB/#AC intercepted unilaterally, but with
+VMNotify active by default when available.
+
+Fixes: 573279cde1c4 ("x86/vmx: implement Notify VM Exit")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+
+--- a/docs/misc/xen-command-line.pandoc
++++ b/docs/misc/xen-command-line.pandoc
+@@ -2624,6 +2624,17 @@ guest will notify Xen that it has failed
+ <major>, <minor> and <build> must be integers. The values will be
+ encoded in guest CPUID 0x40000002 if viridian enlightenments are enabled.
+ 
++### vm-notify-window (Intel)
++> `= <integer>`
++
++> Default: `0`
++
++Specify the value of the VM Notify window used to detect locked VMs. Set to -1
++to disable the feature.  Value is in units of crystal clock cycles.
++
++Note the hardware might add a threshold to the provided value in order to make
++it safe, and hence using 0 is fine.
++
+ ### vpid (Intel)
+ > `= <boolean>`
+ 
+--- a/xen/arch/x86/hvm/vmx/vmcs.c
++++ b/xen/arch/x86/hvm/vmx/vmcs.c
+@@ -67,6 +67,9 @@ integer_param("ple_gap", ple_gap);
+ static unsigned int __read_mostly ple_window = 4096;
+ integer_param("ple_window", ple_window);
+ 
++static unsigned int __ro_after_init vm_notify_window;
++integer_param("vm-notify-window", vm_notify_window);
++
+ static bool __read_mostly opt_ept_pml = true;
+ static s8 __read_mostly opt_ept_ad = -1;
+ int8_t __read_mostly opt_ept_exec_sp = -1;
+@@ -210,6 +213,7 @@ static void __init vmx_display_features(
+     P(cpu_has_vmx_pml, "Page Modification Logging");
+     P(cpu_has_vmx_tsc_scaling, "TSC Scaling");
+     P(cpu_has_vmx_bus_lock_detection, "Bus Lock Detection");
++    P(cpu_has_vmx_notify_vm_exiting, "Notify VM Exit");
+ #undef P
+ 
+     if ( !printed )
+@@ -329,6 +333,8 @@ static int vmx_init_vmcs_config(bool bsp
+             opt |= SECONDARY_EXEC_UNRESTRICTED_GUEST;
+         if ( opt_ept_pml )
+             opt |= SECONDARY_EXEC_ENABLE_PML;
++        if ( vm_notify_window != ~0u )
++            opt |= SECONDARY_EXEC_NOTIFY_VM_EXITING;
+ 
+         /*
+          * "APIC Register Virtualization" and "Virtual Interrupt Delivery"
+@@ -1290,6 +1296,10 @@ static int construct_vmcs(struct vcpu *v
+     v->arch.hvm.vmx.exception_bitmap = HVM_TRAP_MASK
+               | (paging_mode_hap(d) ? 0 : (1U << TRAP_page_fault))
+               | (v->arch.fully_eager_fpu ? 0 : (1U << TRAP_no_device));
++
++    if ( cpu_has_vmx_notify_vm_exiting )
++        __vmwrite(NOTIFY_WINDOW, vm_notify_window);
++
+     vmx_update_exception_bitmap(v);
+ 
+     v->arch.hvm.guest_cr[0] = X86_CR0_PE | X86_CR0_ET;
+--- a/xen/arch/x86/hvm/vmx/vmx.c
++++ b/xen/arch/x86/hvm/vmx/vmx.c
+@@ -4619,6 +4619,22 @@ void vmx_vmexit_handler(struct cpu_user_
+          */
+         break;
+ 
++    case EXIT_REASON_NOTIFY:
++        __vmread(EXIT_QUALIFICATION, &exit_qualification);
++
++        if ( unlikely(exit_qualification & NOTIFY_VM_CONTEXT_INVALID) )
++        {
++            perfc_incr(vmnotify_crash);
++            gprintk(XENLOG_ERR, "invalid VM context after notify vmexit\n");
++            domain_crash(v->domain);
++            break;
++        }
++
++        if ( unlikely(exit_qualification & INTR_INFO_NMI_UNBLOCKED_BY_IRET) )
++            undo_nmis_unblocked_by_iret();
++
++        break;
++
+     case EXIT_REASON_VMX_PREEMPTION_TIMER_EXPIRED:
+     case EXIT_REASON_INVPCID:
+     /* fall through */
+--- a/xen/arch/x86/hvm/vmx/vvmx.c
++++ b/xen/arch/x86/hvm/vmx/vvmx.c
+@@ -2487,6 +2487,7 @@ int nvmx_n2_vmexit_handler(struct cpu_us
+     case EXIT_REASON_EPT_MISCONFIG:
+     case EXIT_REASON_EXTERNAL_INTERRUPT:
+     case EXIT_REASON_BUS_LOCK:
++    case EXIT_REASON_NOTIFY:
+         /* pass to L0 handler */
+         break;
+     case VMX_EXIT_REASONS_FAILED_VMENTRY:
+--- a/xen/arch/x86/include/asm/hvm/vmx/vmcs.h
++++ b/xen/arch/x86/include/asm/hvm/vmx/vmcs.h
+@@ -268,6 +268,7 @@ extern u32 vmx_vmentry_control;
+ #define SECONDARY_EXEC_XSAVES                   0x00100000
+ #define SECONDARY_EXEC_TSC_SCALING              0x02000000
+ #define SECONDARY_EXEC_BUS_LOCK_DETECTION       0x40000000
++#define SECONDARY_EXEC_NOTIFY_VM_EXITING        0x80000000
+ extern u32 vmx_secondary_exec_control;
+ 
+ #define VMX_EPT_EXEC_ONLY_SUPPORTED                         0x00000001
+@@ -349,6 +350,8 @@ extern u64 vmx_ept_vpid_cap;
+     (vmx_secondary_exec_control & SECONDARY_EXEC_TSC_SCALING)
+ #define cpu_has_vmx_bus_lock_detection \
+     (vmx_secondary_exec_control & SECONDARY_EXEC_BUS_LOCK_DETECTION)
++#define cpu_has_vmx_notify_vm_exiting \
++    (vmx_secondary_exec_control & SECONDARY_EXEC_NOTIFY_VM_EXITING)
+ 
+ #define VMCS_RID_TYPE_MASK              0x80000000
+ 
+@@ -456,6 +459,7 @@ enum vmcs_field {
+     SECONDARY_VM_EXEC_CONTROL       = 0x0000401e,
+     PLE_GAP                         = 0x00004020,
+     PLE_WINDOW                      = 0x00004022,
++    NOTIFY_WINDOW                   = 0x00004024,
+     VM_INSTRUCTION_ERROR            = 0x00004400,
+     VM_EXIT_REASON                  = 0x00004402,
+     VM_EXIT_INTR_INFO               = 0x00004404,
+--- a/xen/arch/x86/include/asm/hvm/vmx/vmx.h
++++ b/xen/arch/x86/include/asm/hvm/vmx/vmx.h
+@@ -221,6 +221,7 @@ static inline void pi_clear_sn(struct pi
+ #define EXIT_REASON_XSAVES              63
+ #define EXIT_REASON_XRSTORS             64
+ #define EXIT_REASON_BUS_LOCK            74
++#define EXIT_REASON_NOTIFY              75
+ /* Remember to also update VMX_PERF_EXIT_REASON_SIZE! */
+ 
+ /*
+@@ -237,6 +238,11 @@ static inline void pi_clear_sn(struct pi
+ #define INTR_INFO_RESVD_BITS_MASK       0x7ffff000
+ 
+ /*
++ * Exit Qualifications for NOTIFY VM EXIT
++ */
++#define NOTIFY_VM_CONTEXT_INVALID       1u
++
++/*
+  * Exit Qualifications for MOV for Control Register Access
+  */
+ enum {
+--- a/xen/arch/x86/include/asm/perfc_defn.h
++++ b/xen/arch/x86/include/asm/perfc_defn.h
+@@ -6,7 +6,7 @@ PERFCOUNTER_ARRAY(exceptions,
+ 
+ #ifdef CONFIG_HVM
+ 
+-#define VMX_PERF_EXIT_REASON_SIZE 75
++#define VMX_PERF_EXIT_REASON_SIZE 76
+ #define VMEXIT_NPF_PERFC 143
+ #define SVM_PERF_EXIT_REASON_SIZE (VMEXIT_NPF_PERFC + 1)
+ PERFCOUNTER_ARRAY(vmexits,              "vmexits",
+@@ -129,5 +129,6 @@ PERFCOUNTER(iommu_pt_shatters,    "IOMMU
+ PERFCOUNTER(iommu_pt_coalesces,   "IOMMU page table coalesces")
+ 
+ PERFCOUNTER(buslock, "Bus Locks Detected")
++PERFCOUNTER(vmnotify_crash, "domain crashes by Notify VM Exit")
+ 
+ /*#endif*/ /* __XEN_PERFC_DEFN_H__ */

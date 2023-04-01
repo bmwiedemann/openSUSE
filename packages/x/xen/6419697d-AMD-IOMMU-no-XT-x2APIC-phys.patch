@@ -1,0 +1,32 @@
+# Commit 0d2686f6b66b4b1b3c72c3525083b0ce02830054
+# Date 2023-03-21 09:23:25 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+AMD/IOMMU: without XT, x2APIC needs to be forced into physical mode
+
+An earlier change with the same title (commit 1ba66a870eba) altered only
+the path where x2apic_phys was already set to false (perhaps from the
+command line). The same of course needs applying when the variable
+wasn't modified yet from its initial value.
+
+Reported-by: Elliott Mitchell <ehem+xen@m5p.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/genapic/x2apic.c
++++ b/xen/arch/x86/genapic/x2apic.c
+@@ -236,11 +236,11 @@ const struct genapic *__init apic_x2apic
+     if ( x2apic_phys < 0 )
+     {
+         /*
+-         * Force physical mode if there's no interrupt remapping support: The
+-         * ID in clustered mode requires a 32 bit destination field due to
++         * Force physical mode if there's no (full) interrupt remapping support:
++         * The ID in clustered mode requires a 32 bit destination field due to
+          * the usage of the high 16 bits to hold the cluster ID.
+          */
+-        x2apic_phys = !iommu_intremap ||
++        x2apic_phys = iommu_intremap != iommu_intremap_full ||
+                       (acpi_gbl_FADT.flags & ACPI_FADT_APIC_PHYSICAL) ||
+                       (IS_ENABLED(CONFIG_X2APIC_PHYSICAL) &&
+                        !(acpi_gbl_FADT.flags & ACPI_FADT_APIC_CLUSTER));

@@ -2814,4 +2814,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1070523</requestid>
   </revision>
+  <revision rev="330" vrev="1">
+    <srcmd5>bfadaa722ca78042251d7971c9d5deeb</srcmd5>
+    <version>4.17.0_06</version>
+    <time>1680384414</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance Update for Xen</comment>
+    <requestid>1075603</requestid>
+  </revision>
 </revisionlist>

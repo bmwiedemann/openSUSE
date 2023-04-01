@@ -9,11 +9,9 @@ Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
 Reviewed-by: Jan Beulich <jbeulich@suse.com>
 (cherry picked from commit 63305e5392ec2d17b85e7996a97462744425db80)
 
-diff --git a/docs/misc/xen-command-line.pandoc b/docs/misc/xen-command-line.pandoc
-index 424b12cfb2..e7fe8b0cc9 100644
 --- a/docs/misc/xen-command-line.pandoc
 +++ b/docs/misc/xen-command-line.pandoc
-@@ -2343,7 +2343,7 @@ guests to use.
+@@ -2348,7 +2348,7 @@ guests to use.
    on entry and exit.  These blocks are necessary to virtualise support for
    guests and if disabled, guests will be unable to use IBRS/STIBP/SSBD/etc.
  * `rsb=` offers control over whether to overwrite the Return Stack Buffer /
@@ -22,11 +20,9 @@ index 424b12cfb2..e7fe8b0cc9 100644
  * `md-clear=` offers control over whether to use VERW to flush
    microarchitectural buffers on idle and exit from Xen.  *Note: For
    compatibility with development versions of this fix, `mds=` is also accepted
-diff --git a/xen/arch/x86/include/asm/cpufeatures.h b/xen/arch/x86/include/asm/cpufeatures.h
-index 865f110986..da0593de85 100644
 --- a/xen/arch/x86/include/asm/cpufeatures.h
 +++ b/xen/arch/x86/include/asm/cpufeatures.h
-@@ -35,7 +35,8 @@ XEN_CPUFEATURE(SC_RSB_HVM,        X86_SYNTH(19)) /* RSB overwrite needed for HVM
+@@ -35,7 +35,8 @@ XEN_CPUFEATURE(SC_RSB_HVM,        X86_SY
  XEN_CPUFEATURE(XEN_SELFSNOOP,     X86_SYNTH(20)) /* SELFSNOOP gets used by Xen itself */
  XEN_CPUFEATURE(SC_MSR_IDLE,       X86_SYNTH(21)) /* Clear MSR_SPEC_CTRL on idle */
  XEN_CPUFEATURE(XEN_LBR,           X86_SYNTH(22)) /* Xen uses MSR_DEBUGCTL.LBR */
@@ -36,11 +32,9 @@ index 865f110986..da0593de85 100644
  XEN_CPUFEATURE(SC_VERW_IDLE,      X86_SYNTH(25)) /* VERW used by Xen for idle */
  XEN_CPUFEATURE(XEN_SHSTK,         X86_SYNTH(26)) /* Xen uses CET Shadow Stacks */
  XEN_CPUFEATURE(XEN_IBT,           X86_SYNTH(27)) /* Xen uses CET Indirect Branch Tracking */
-diff --git a/xen/arch/x86/include/asm/spec_ctrl.h b/xen/arch/x86/include/asm/spec_ctrl.h
-index 6a77c39378..391973ef6a 100644
 --- a/xen/arch/x86/include/asm/spec_ctrl.h
 +++ b/xen/arch/x86/include/asm/spec_ctrl.h
-@@ -159,6 +159,21 @@ static always_inline void spec_ctrl_enter_idle(struct cpu_info *info)
+@@ -159,6 +159,21 @@ static always_inline void spec_ctrl_ente
       */
      alternative_input("", "verw %[sel]", X86_FEATURE_SC_VERW_IDLE,
                        [sel] "m" (info->verw_sel));
@@ -62,11 +56,9 @@ index 6a77c39378..391973ef6a 100644
  }
  
  /* WARNING! `ret`, `call *`, `jmp *` not safe before this call. */
-diff --git a/xen/arch/x86/spec_ctrl.c b/xen/arch/x86/spec_ctrl.c
-index a320b81947..e80e2a5ed1 100644
 --- a/xen/arch/x86/spec_ctrl.c
 +++ b/xen/arch/x86/spec_ctrl.c
-@@ -1327,13 +1327,38 @@ void __init init_speculation_mitigations(void)
+@@ -1327,13 +1327,38 @@ void __init init_speculation_mitigations
       * 3) Some CPUs have RSBs which are not full width, which allow the
       *    attacker's entries to alias Xen addresses.
       *

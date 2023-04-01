@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Mar 23 08:10:00 CET 2023 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  63a03b73-VMX-VMExit-based-BusLock-detection.patch
+  63a03ba6-VMX-INTR_SHADOW_NMI-helper.patch
+  63a03bce-VMX-Notify-VMExit.patch
+  63e53ac9-x86-CPUID-leaves-7-1-ecx-edx.patch
+  63e53ac9-x86-disable-CET-SS-when-fractured-updates.patch
+  63f4d045-x86-ucode-AMD-apply-early-on-all-threads.patch
+  63fe06e0-x86-ucode-AMD-apply-late-on-all-threads.patch
+  641041e8-VT-d-constrain-IGD-check.patch
+  6419697d-AMD-IOMMU-no-XT-x2APIC-phys.patch
+- Use "proper" upstream backports:
+  640f3035-x86-altp2m-help-gcc13.patch
+  64104238-bunzip-gcc13.patch
+  64199e0c-x86-shadow-account-for-log-dirty-mode.patch
+  64199e0d-x86-HVM-bound-number-of-pca-regions.patch
+  64199e0e-x86-HVM-serialize-pca-list-manipulation.patch
+  64199e0f-x86-spec-ctrl-defer-CR4_PV32_RESTORE-for-CSTAR.patch
+- ... in place of:
+  bunzip-gcc13.patch
+  altp2m-gcc13.patch
+  xsa427.patch
+  xsa428-1.patch
+  xsa428-2.patch
+  xsa429.patch
+
+-------------------------------------------------------------------
+Thu Mar 16 08:08:08 UTC 2023 - ohering@suse.de
+
+- bsc#1209245 - fix host-assisted kexec/kdump for HVM domUs
+  libxl.fix-guest-kexec-skip-cpuid-policy.patch
+
+-------------------------------------------------------------------
+Tue Mar  7 10:44:12 MST 2023 - carnold@suse.com
+
+- bsc#1209017 - VUL-0: CVE-2022-42332: xen: x86 shadow plus
+  log-dirty mode use-after-free (XSA-427)
+  xsa427.patch
+- bsc#1209018 - VUL-0: CVE-2022-42333,CVE-2022-42334: xen: x86/HVM
+  pinned cache attributes mis-handling (XSA-428)
+  xsa428-1.patch
+  xsa428-2.patch
+- bsc#1209019 - VUL-0: CVE-2022-42331: xen: x86: speculative
+  vulnerability in 32bit SYSCALL path (XSA-429)
+  xsa429.patch
+
+-------------------------------------------------------------------
 Thu Mar  2 10:33:46 MST 2023 - carnold@suse.com
 
 - bsc#1208736 - GCC 13: xen package fails

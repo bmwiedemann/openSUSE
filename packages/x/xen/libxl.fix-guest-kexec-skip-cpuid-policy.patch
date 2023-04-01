@@ -1,0 +1,62 @@
+From: Jason Andryuk <jandryuk@gmail.com>
+Date: Thu, 26 Jan 2023 10:58:23 +0100
+Subject: libxl: fix guest kexec - skip cpuid policy
+Git-commit: 1e454c2b5b1172e0fc7457e411ebaba61db8fc87
+References: bsc#1209245
+
+When a domain performs a kexec (soft reset), libxl__build_pre() is
+called with the existing domid.  Calling libxl__cpuid_legacy() on the
+existing domain fails since the cpuid policy has already been set, and
+the guest isn't rebuilt and doesn't kexec.
+
+xc: error: Failed to set d1's policy (err leaf 0xffffffff, subleaf 0xffffffff, msr 0xffffffff) (17 = File exists): Internal error
+libxl: error: libxl_cpuid.c:494:libxl__cpuid_legacy: Domain 1:Failed to apply CPUID policy: File exists
+libxl: error: libxl_create.c:1641:domcreate_rebuild_done: Domain 1:cannot (re-)build domain: -3
+libxl: error: libxl_xshelp.c:201:libxl__xs_read_mandatory: xenstore read failed: `/libxl/1/type': No such file or directory
+libxl: warning: libxl_dom.c:49:libxl__domain_type: unable to get domain type for domid=1, assuming HVM
+
+During a soft_reset, skip calling libxl__cpuid_legacy() to avoid the
+issue.  Before commit 34990446ca91, the libxl__cpuid_legacy() failure
+would have been ignored, so kexec would continue.
+
+Fixes: 34990446ca91 ("libxl: don't ignore the return value from xc_cpuid_apply_policy")
+Signed-off-by: Jason Andryuk <jandryuk@gmail.com>
+Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+---
+ tools/libs/light/libxl_create.c   | 2 ++
+ tools/libs/light/libxl_dom.c      | 2 +-
+ tools/libs/light/libxl_internal.h | 1 +
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+--- a/tools/libs/light/libxl_create.c
++++ b/tools/libs/light/libxl_create.c
+@@ -2207,6 +2207,8 @@ static int do_domain_soft_reset(libxl_ctx *ctx,
+                               aop_console_how);
+     cdcs->domid_out = &domid_out;
+ 
++    state->soft_reset = true;
++
+     dom_path = libxl__xs_get_dompath(gc, domid);
+     if (!dom_path) {
+         LOGD(ERROR, domid, "failed to read domain path");
+--- a/tools/libs/light/libxl_dom.c
++++ b/tools/libs/light/libxl_dom.c
+@@ -382,7 +382,7 @@ int libxl__build_pre(libxl__gc *gc, uint32_t domid,
+     /* Construct a CPUID policy, but only for brand new domains.  Domains
+      * being migrated-in/restored have CPUID handled during the
+      * static_data_done() callback. */
+-    if (!state->restore)
++    if (!state->restore && !state->soft_reset)
+         rc = libxl__cpuid_legacy(ctx, domid, false, info);
+ 
+ out:
+--- a/tools/libs/light/libxl_internal.h
++++ b/tools/libs/light/libxl_internal.h
+@@ -1411,6 +1411,7 @@ typedef struct {
+     /* Whether this domain is being migrated/restored, or booting fresh.  Only
+      * applicable to the primary domain, not support domains (e.g. stub QEMU). */
+     bool restore;
++    bool soft_reset;
+ } libxl__domain_build_state;
+ 
+ _hidden void libxl__domain_build_state_init(libxl__domain_build_state *s);
