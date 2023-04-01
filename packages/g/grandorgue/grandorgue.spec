@@ -25,6 +25,8 @@ Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
 URL:            https://github.com/GrandOrgue/grandorgue
 Source:         https://github.com/GrandOrgue/grandorgue/archive/%{version}-%{version_suffix}.tar.gz#/%{name}-%{version}-%{version_suffix}.tar.gz
+# Upstream patch for GCC13 compatibility.
+Patch0:         gcc13_fix.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
@@ -62,6 +64,7 @@ This package contains the demo sampleset for GrandOrgue.
 
 %prep
 %setup -qn %{name}-%{version}-%{version_suffix}
+%patch0 -p1
 
 %build
 %cmake -DDOC_INSTALL_DIR=%{_docdir} \

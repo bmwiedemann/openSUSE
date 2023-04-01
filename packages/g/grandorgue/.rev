@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1070534</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b727248773261396dbf6e231811b1ab3</srcmd5>
+    <version>3.10.1</version>
+    <time>1680370226</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc13_fix.patch from upstream to fix GCC13 build errors.
+</comment>
+    <requestid>1076462</requestid>
+  </revision>
 </revisionlist>

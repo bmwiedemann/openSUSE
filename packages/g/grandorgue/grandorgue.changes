@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 27 23:29:28 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Add gcc13_fix.patch from upstream to fix GCC13 build errors.
+
+-------------------------------------------------------------------
 Thu Mar  9 17:44:00 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.10.1-1.
