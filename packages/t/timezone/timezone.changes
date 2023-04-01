@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 29 06:03:39 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2023c:
+  * Reverts changes for 2023 Lebanon DST change to 2023a data
+
+-------------------------------------------------------------------
 Fri Mar 24 07:23:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - timezone update 2023b:
-  * In 2032 Lebanon springs forward April 20/21 not March 25/26
+  * In 2023 Lebanon springs forward April 20/21 not March 25/26
 
 -------------------------------------------------------------------
 Thu Mar 23 10:28:18 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
