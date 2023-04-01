@@ -6234,4 +6234,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2.8 &amp; 6.2.7 &amp; drop traces of mkinitrd</comment>
     <requestid>1073850</requestid>
   </revision>
+  <revision rev="685" vrev="1">
+    <srcmd5>8f8b80a5ffd3515b81cad0883013bb94</srcmd5>
+    <version>6.2.9</version>
+    <time>1680370214</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.9 &amp; s390 fix &amp; LSM changed</comment>
+    <requestid>1075544</requestid>
+  </revision>
 </revisionlist>
