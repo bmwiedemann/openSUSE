@@ -46,8 +46,6 @@ Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
-BuildRequires:  keyutils
-BuildRequires:  keyutils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(com_err)
 BuildRequires:  pkgconfig(libselinux)
@@ -73,7 +71,6 @@ dependencies
 %package devel
 Summary:        Development files for MIT Kerberos5 (openSUSE mini variant)
 Requires:       %{name} = %{version}
-Requires:       keyutils-devel
 Requires:       pkgconfig(com_err)
 Requires:       pkgconfig(libverto)
 Requires:       pkgconfig(ss)
