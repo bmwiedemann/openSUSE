@@ -973,4 +973,12 @@ undo bootstrap workaround</comment>
     <comment></comment>
     <requestid>1062937</requestid>
   </revision>
+  <revision rev="117" vrev="10">
+    <srcmd5>dff7c21570a886a4c0221ce01f290607</srcmd5>
+    <version>MACRO</version>
+    <time>1680370211</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on python-magic Python package.</comment>
+    <requestid>1075477</requestid>
+  </revision>
 </revisionlist>

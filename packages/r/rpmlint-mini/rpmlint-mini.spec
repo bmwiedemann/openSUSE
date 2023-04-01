@@ -35,9 +35,9 @@ Source3:        rpmlint-mini.rpmlintrc
 BuildRequires:  checkbashisms
 # the main package rpmlint's python3 runtime requirements do not necessarily match our target flavor
 BuildRequires:  %{python_flavor}-base
-BuildRequires:  %{python_flavor}-magic
 BuildRequires:  %{python_flavor}-pybeam
 BuildRequires:  %{python_flavor}-pyenchant
+BuildRequires:  %{python_flavor}-python-magic
 BuildRequires:  %{python_flavor}-pyxdg
 BuildRequires:  %{python_flavor}-rpm
 BuildRequires:  %{python_flavor}-tomli

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 29 10:43:27 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Depend on python-magic Python package.
+
+-------------------------------------------------------------------
 Thu Feb  2 14:50:24 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Don't include copy of libc
