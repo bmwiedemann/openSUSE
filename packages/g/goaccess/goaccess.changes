@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  1 07:11:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.2:
+  * Added a color-coding scheme to HTTP status codes.
+  * Added '--external-assets' command line option to output external
+    JS+CSS files. Great when used with Content Security Policy (CSP).
+  * Ensure there's a fallback for 'Windows' if it appears on the user-agent.
+  * Ensure we construct the WebSocket URL in a way that supports multiple
+    use cases when used along '--ws-url' and '--port'.
+  * Fixed a segfault due to a null pointer exception on FreeBSD.
+  * Fixed build with '--disable-nls'.
+  * Fixed invalid read (heap-buffer-overflow) when parsing an XFF spec via JSON.
+  * Fixed segfault when parsing a specific XFF specifier.
+
+-------------------------------------------------------------------
 Wed Mar  1 08:21:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:

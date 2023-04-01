@@ -739,4 +739,22 @@
     process them as such.</comment>
     <requestid>1068373</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b95dcf4476e4dee66c52c0f9b99db66b</srcmd5>
+    <version>1.7.2</version>
+    <time>1680370362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.2:
+  * Added a color-coding scheme to HTTP status codes.
+  * Added '--external-assets' command line option to output external
+    JS+CSS files. Great when used with Content Security Policy (CSP).
+  * Ensure there's a fallback for 'Windows' if it appears on the user-agent.
+  * Ensure we construct the WebSocket URL in a way that supports multiple
+    use cases when used along '--ws-url' and '--port'.
+  * Fixed a segfault due to a null pointer exception on FreeBSD.
+  * Fixed build with '--disable-nls'.
+  * Fixed invalid read (heap-buffer-overflow) when parsing an XFF spec via JSON.
+  * Fixed segfault when parsing a specific XFF specifier.</comment>
+    <requestid>1076592</requestid>
+  </revision>
 </revisionlist>
