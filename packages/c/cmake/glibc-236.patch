@@ -1,7 +1,9 @@
 investigated under https://gitlab.kitware.com/cmake/cmake/-/issues/23881
 
---- cmake-3.24.1/Modules/GetPrerequisites.cmake
-+++ cmake-3.24.1/Modules/GetPrerequisites.cmake
+Index: cmake-3.26.2/Modules/GetPrerequisites.cmake
+===================================================================
+--- cmake-3.26.2.orig/Modules/GetPrerequisites.cmake
++++ cmake-3.26.2/Modules/GetPrerequisites.cmake
 @@ -730,9 +730,9 @@ function(get_prerequisites target prereq
  
    if(gp_tool MATCHES "ldd$")

@@ -1,7 +1,7 @@
-Index: cmake-3.24.1/Modules/FindPNG.cmake
+Index: cmake-3.26.2/Modules/FindPNG.cmake
 ===================================================================
---- cmake-3.24.1.orig/Modules/FindPNG.cmake
-+++ cmake-3.24.1/Modules/FindPNG.cmake
+--- cmake-3.26.2.orig/Modules/FindPNG.cmake
++++ cmake-3.26.2/Modules/FindPNG.cmake
 @@ -54,12 +54,16 @@ endif()
  find_package(ZLIB ${_FIND_ZLIB_ARG})
  

@@ -1,8 +1,8 @@
-Index: cmake-3.10.1/Modules/FindPythonInterp.cmake
+Index: cmake-3.26.2/Modules/FindPythonInterp.cmake
 ===================================================================
---- cmake-3.10.1.orig/Modules/FindPythonInterp.cmake
-+++ cmake-3.10.1/Modules/FindPythonInterp.cmake
-@@ -83,8 +83,9 @@ if(DEFINED PYTHONLIBS_VERSION_STRING)
+--- cmake-3.26.2.orig/Modules/FindPythonInterp.cmake
++++ cmake-3.26.2/Modules/FindPythonInterp.cmake
+@@ -92,8 +92,9 @@ if(DEFINED PYTHONLIBS_VERSION_STRING)
    list(GET _PYTHONLIBS_VERSION 1 _PYTHONLIBS_VERSION_MINOR)
    list(APPEND _Python_VERSIONS ${_PYTHONLIBS_VERSION_MAJOR}.${_PYTHONLIBS_VERSION_MINOR})
  endif()
