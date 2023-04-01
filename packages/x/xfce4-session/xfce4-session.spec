@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
