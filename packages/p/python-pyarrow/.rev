@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c56560bfe9e9ee0ff00af577dc24a0f</srcmd5>
+    <version>11.0.0</version>
+    <time>1680370216</time>
+    <user>dimstar_suse</user>
+    <comment>used by some python numeric packages, like pandas 2.0
+
+https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i</comment>
+    <requestid>1075676</requestid>
+  </revision>
+</revisionlist>

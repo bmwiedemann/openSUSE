@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Wed Mar 29 13:25:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix tests expecting the jemalloc backend which was disabled in
+  the apache-arrow package
+
+-------------------------------------------------------------------
+Sun Mar 12 05:31:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v11.0.0
+  * [Python][Doc] Add five more numpydoc checks to CI (#15214)
+  * [Python][CI][Doc] Enable numpydoc check PR03 (#13983)
+  * [Python] Expose flag to enable/disable storing Arrow schema in Parquet metadata (#13000)
+  * [Python] Add support for reading record batch custom metadata API (#13041)
+  * [Python] Add lazy Dataset.filter() method (#13409)
+  * [Python] ParquetDataset to still take legacy code path when old filesystem is passed (#15269)
+  * [Python] Switch default and deprecate use_legacy_dataset=True in ParquetDataset (#14052)
+  * [Python] Support lazy Dataset.filter
+  * [Python] Order of columns in pyarrow.feather.read_table (#14528)
+  * [Python] Construct MapArray from sequence of dicts (instead of list of tuples) (#14547)
+  * [Python] Unify CMakeLists.txt in python/ (#14925)
+  * [C++][Python] Implement list_slice kernel (#14395)
+  * [C++][Python] Enable struct_field kernel to accept string field names (#14495)
+  * [Python][C++] Add use\_threads to run\_substrait\_query
+  * [Python][Docs] adding info about TableGroupBy.aggregation with empty list (#14482)
+  * [Python] DataFrame Interchange Protocol for pyarrow Table
+  * [Python] Drop older versions of Pandas (<1.0) (#14631)
+  * [Python] Pass Cmake args to Python CPP 
+  * [Docs][Python] Improve docs for S3FileSystem (#14599)
+  * [Python] Add missing value accessor to temporal types (#14746)
+  * [Python] Expose time32/time64 scalar values (#14637)
+  * [Python] Remove gcc 4.9 compatibility code (#14602)
+  * [C++][Python] Support slicing to end in list_slice kernel (#14749)
+  * [C++][Python] Support step >= 1 in list_slice kernel (#14696)
+  * [Release][Python] Upload .wheel/.tar.gz for release not RC (#14708)
+  * [Python] Expose Scalar.validate() (#15149)
+  * [Python] PyArrow C++ header files no longer always included in installed pyarrow (#14656)
+  * [Doc][Python] Update note about bundling Arrow C++ on Windows (#14660)
+  * [Python] Reduce warnings during tests (#14729)
+  * [Python] Expose reading a schema from an IPC message (#14831)
+  * [Python] Expose QuotingStyle to Python (#14722)
+  * [Python] Add (Chunked)Array sort() method (#14781)
+  * [Python] Dataset.sort_by (#14976)
+  * [Python] Avoid dependency on exec plan in Table.sort_by to fix minimal tests (#15268)
+  * [Python] Remove auto generated pyarrow_api.h and pyarrow_lib.h (#15219)
+  * [Python] Error if datetime.timedelta to pyarrow.duration conversion overflows (#13718)
+  * [Python] to_pandas fails with FixedOffset timezones when timestamp_as_object is used (#14448)
+  * [Python] Pass **kwargs in read_feather to to_pandas() (#14492)
+  * [Python] Add python test for decimals to csv (#14525)
+  * [Python] Test that reading of timedelta is stable (read_feather/to_pandas) (#14531)
+  * [C++][Python] Improve s3fs error message when wrong region (#14601)
+  * [Python][C++] Adding support for IpcWriteOptions to the dataset ipc file writer (#14414)
+  * [Python] Support passing create_dir thru pq.write_to_dataset (#14459)
+  * [CI][Python] Fix pandas master/nightly build failure related to timedelta (#14460)
+  * [Python] Fix writing files with multi-byte characters in file name (#14764)
+  * [Python] Handle pytest 8 deprecations about pytest.warns(None) 
+  * [Python] Remove ARROW_BUILD_DIR in building pyarrow C++ (#14498)
+  * [Python] Honor default memory pool in Dataset scanning (#14516)
+  * [Python] Fully support filesystem in parquet.write_metadata (#14574)
+  * [Python] Check schema argument type in RecordBatchReader.from_batches (#14583)
+  * [Python][Docs] PyArrow table join docstring typos for left and right suffix arguments (#14591)
+  * [Python] pass back time types with correct type class (#14633)
+  * [Python] Support filesystem parameter in ParquetFile (#14717)
+  * [Python][Docs] Add missing CMAKE_PREFIX_PATH to allow setup.py CMake invocations to find Arrow CMake package (#14586)
+  * [Python][CI] Add DYLD_LIBRARY_PATH to avoid requiring PYARROW_BUNDLE_ARROW_CPP on macOS job (#14643)
+  * [Python] Don't crash when schema=None in FlightClient.do_put (#14698)
+  * [Python] Change warnings to _warnings in _plasma_store_entry_point (#14695)
+  * [CI][Python] Update nightly test-conda-python-3.7-pandas-0.24 to pandas >= 1.0 (#14714)
+  * [CI][Python] Update spark test modules to match spark master (#14715)
+  * [Python] Fix test_s3fs_wrong_region; set anonymous=True (#14716)
+  * [Python][CI] Fix nightly job using pandas dev (temporarily skip tests) (#15048)
+  * [Python] Quadratic memory usage of Table.to\_pandas with nested data
+  * [Python] Fix pyarrow.get_libraries() order (#14944)
+  * [Python] Fix segfault for dataset ORC write (#15049)
+  * [Python][Docs] Update docstring for pyarrow.decompress (#15061)
+  * [Python][CI] Dask nightly tests are failing due to fsspec bug (#15065)
+  * [C++][Python][FlightRPC] Make DoAction truly streaming (#15118)
+  * [Benchmarking][Python] Set ARROW_INSTALL_NAME_RPATH=ON for benchmark builds (#15123)
+  * [Python][macOS] Use `@rpath` for libarrow_python.dylib (#15143)
+  * [Python] Docstring test failure (#15186)
+  * [Python] Don't use target_include_directories() for imported target (#33606)
+  * [Python] Make CSV cancellation test more robust
+  * [Python][CI] Python sdist installation fails with latest setuptools 58.5
+  * [Python] Missing bindings for existing\_data\_behavior makes it impossible to maintain old behavior
+  * [Python] update trove classifiers to include Python 3.10
+  * [Release][Python] Use python -m pytest
+  * [Python][C++] Non-deterministic segfault in "AMD64 MacOS 10.15 Python 3.7" build
+  * [Python][Doc] Clarify what should be expected if read_table is passed an empty list of columns
+  * [Python][Packaging] Set deployment target to 10.13 for universal2 wheels
+  * [Python] Fix crash in take/filter of empty ExtensionArray
+  * [Python] Move marks from fixtures to individual tests/params
+  * [Python][CI] Requiring s3fs >= 2021.8
+  * [Python] Allow writing datasets using a partitioning that only specifies field_names
+  * [Python] Table.from_arrays should raise an error when array is empty but names is not
+  * [Python][Packaging] Pin minimum setuptools version for the macos wheels
+  * [Python][Doc] Document nullable dtypes handling and usage of types_mapper in to_pandas conversion
+  * [C++][Python] Fix unique/value_counts on empty dictionary arrays
+  * [Python][CI] Fix tests using OrcFileFormat for Python 3.6 + orc not built
+  * [Python] Fix FlightClient.do_action
+  * [Python][Docs] Fix usage of sync scanner in dataset writing docs
+  * [Packaging][Python] Python 3.9 installation fails in macOS wheel build
+  * [CI][Python] Fix Spark integration failures
+  * [Python] Fix version constraints in pyproject.toml
+  * [Packaging][Python] Disable windows wheel testing for python 3.6
+  * [Python][C++] Segfault with read\_json when a field is missing
+  * [Python] Support for set/list columns when converting from Pandas
+  * [Python] Support converting nested sets when converting to arrow
+  * [Python] Make filesystems compatible with fsspec
+  * [C++][Python][R] Consolidate coalesce/fill_null
+  * [Python][Doc] Document the fsspec wrapper for pyarrow.fs filesystems
+  * [Python] Support core-site.xml default filesystem.
+  * [Python] Improve HadoopFileSystem docstring
+  * [Python][Doc] Document missing pandas to arrow conversions
+  * [Python] Make SubTreeFileSystem print method more informative
+  * [Doc][Python] Improve documentation regarding dealing with memory mapped files
+  * [C++][Python] Implement a new scalar function: list_element
+  * [Python] Allow creating RecordBatch from Python dict
+  * [Python] Update HadoopFileSystem docs to clarify setting CLASSPATH env variable is required
+  * [Python] Improve documentation on what 'use_threads' does in 'read_feather'
+  * [C++][Python] Improve consistency of explicit C++ types in PyArrow files
+  * [Doc][Python] Improve PyArrow documentation for new users
+  * [C++][Python] Add CSV convert option to change decimal point
+  * [Python][Packaging] Build M1 wheels for python 3.8
+  * [Release][Python] Verify python 3.8 macOS arm64 wheel
+  * [Doc][Python] Switch ipc/io doc to use context managers
+  * [Python] Mention alternative deprecation message for ParquetDataset.partitions
+  * [C++][Python] Implement ExtensionScalar
+  * [Packaging][Python] Skip test_cancellation test case on M1
+  * [Python][FlightRPC] pyarrow client do_put close method after write_table did not throw flight error
+  * [Packaging][Python] Define --with-lg-page for jemalloc in the arm manylinux builds
+  * [Python] Fix docstrings
+  * [Python] Expose copy_files in pyarrow.fs
+  * [Doc][Python] Add a recipe on how to save partitioned datasets to the Cookbook
+  * [Python] Update deprecated pytest yield_fixture functions
+  * [Python] Support for MapType with Fields
+  * [Python][Docs] Improve filesystem documentation
+  * [Python] Add dataset mark to test_parquet_dataset_deprecated_properties
+  * . [Python] Preview data when printing tables
+  * [C++][Python] Column projection pushdown for ORC dataset reading + use liborc for column selection
+  * [C++][Python] Add support for new MonthDayNano Interval Type
+  * [Doc][Python] Add documentation for unify_schemas
+  * [C++][Python] Implement C data interface support for extension types
+  * [Python] Allow more than numpy.array as masks when creating arrays
+  * [Python] Correct TimestampScalar.as_py() and DurationScalar.as_py() docstrings
+  * [Python] Migrate Python ORC bindings to use new Result-based APIs
+  * [Python] Support tuples in unify_schemas
+  * [C++][Python] Not providing a sort_key in the "select_k_unstable" kernel crashes
+  * [C++][Python] Support cast of naive timestamps to strings
+  * [Python] Update kernel categories in compute doc to match C++
+  * [C++][Python][R] Implement count distinct kernel
+  * [Python] Allow unsigned integer index type in dictionary() type factory function
+  * [Python] Missing Python tests for compute kernels
+  * [Python][CI] Add support for python 3.10
+  * [C++][Python] Improve error message when trying use SyncScanner when requiring async
+  * [Python] Extend CompressedInputStream to work with paths, strings and files
+  * [Packaging][Python] Enable NEON SIMD optimization for M1 wheels
+  * [C++][Python] Use std::move() explicitly for g++ 4.8.5
+  * [Python][Packaging] Use numpy 1.21.3 to build python 3.10 wheels for macOS and windows
+- Build via PEP517
+
+-------------------------------------------------------------------
+Mon Aug 22 07:06:44 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v9.0.0
+
+-------------------------------------------------------------------
+Mon Jan 21 03:51:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version for v0.13.0
