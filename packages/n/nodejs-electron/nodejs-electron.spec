@@ -177,6 +177,13 @@ BuildArch:      i686
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %if %{without clang}
 %bcond_without system_abseil
+
+%if 0%{?fedora} >= 38
+%bcond_without abseil_2023
+%else
+%bcond_with abseil_2023
+%endif
+
 %else
 # Clang has several problems with std::optional used by system abseil
 %bcond_with system_abseil
@@ -201,7 +208,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        22.3.4
+Version:        22.3.5
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -504,6 +511,9 @@ BuildRequires:  pkgconfig(absl_time)
 BuildRequires:  pkgconfig(absl_type_traits)
 BuildRequires:  pkgconfig(absl_utility)
 BuildRequires:  pkgconfig(absl_variant)
+%if %{with abseil_2023}
+BuildRequires:  pkgconfig(absl_core_headers) >= 20230000
+%endif
 %endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo) >= 1.6
@@ -698,6 +708,10 @@ test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') =
 %if %{without system_abseil}
 patch -R -p1 < %PATCH1054
 patch -R -p1 < %PATCH1076
+%endif
+
+%if %{with system_abseil} && %{with abseil_2023}
+patch -R -p1 < %PATCH1054
 %endif
 
 %if %{without ffmpeg_5}

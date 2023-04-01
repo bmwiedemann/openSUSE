@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 30 12:51:54 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.5
+  * Fixed an issue where calling port.postMessage in MessagePortMain with some invalid parameters could cause a crash.
+  * Fixed canceling of bluetooth requests when no devices are returned.
+  * webcodecs: Fix VP9 p2 encoding of NV12 frames
+  * Fix crash in AnnotationAgentImpl
+  * v8: Fix map transition chain following w/ dictionary maps (CVE-2023-1214)
+  * Shutdown RtpContributingSourceCache in Dispose() (CVE-2023-1218)
+  * Prevent potential integer overflow in PersistentMemoryAllocator (CVE-2023-1219)
+  * hid: Handle empty input reports (CVE-2023-1529)
+  * Improve checks for VideoFrame layouts (CVE-2023-1532)
+  * Disable glShaderBinary in the passthrough cmd decoder (CVE-2023-1534)
+- Fix build error with absl_core_headers 2023xxxx.
+
+-------------------------------------------------------------------
 Fri Mar 24 13:42:44 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.4
   * Improved error messages on session.cookies.set failure.
