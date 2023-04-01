@@ -1,0 +1,14 @@
+--- msr_entry.c	2023-02-01 04:45:13.000000000 +0800
++++ new-msr_entry.c	2023-03-30 22:44:24.000000000 +0800
+@@ -257,7 +257,11 @@
+ #if LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,39)
+ static char *msr_devnode(struct device *dev, mode_t *mode)
+ #else
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,2,0)
+ static char *msr_devnode(struct device *dev, umode_t *mode)
++#else
++static char *msr_devnode(const struct device *dev, umode_t *mode)
++#endif
+ #endif
+ {
+     return kasprintf(GFP_KERNEL, "cpu/%u/msr_safe", MINOR(dev->devt));

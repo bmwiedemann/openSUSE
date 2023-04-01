@@ -1,7 +1,7 @@
 #
 # spec file for package msr-safe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,28 +15,34 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:             msr-safe
-Version:          1.4.0
-Release:          0
-Summary:          Kernel module and utility to control MSR access
-License:          GPL-3.0-or-later
-URL:              https://github.com/LLNL/msr-safe
-Source0:          https://github.com/LLNL/msr-safe/archive/v%{version}.tar.gz
-Group:            System/Fhs
-Source1:          msr-safe.service
-Source2:          msr-safe.sysconfig
-Source3:          10-msr-safe.rules
-Source4:          msr-safe.sh
-Source5:          system-user-msr.conf
-BuildRoot:        %{_tmppath}/%{name}-%{version}-build
-BuildRequires:    %kernel_module_package_buildreqs 
-BuildRequires:    systemd-rpm-macros
-BuildRequires:    sysuser-tools
-BuildRequires:    kernel-default-devel
+
+Name:           msr-safe
+Version:        1.7.0
+Release:        0
+Summary:        Kernel module and utility to control MSR access
+License:        GPL-3.0-or-later
+Group:          System/Fhs
+URL:            https://github.com/LLNL/msr-safe
+Source0:        https://github.com/LLNL/msr-safe/archive/v%{version}.tar.gz
+Source1:        msr-safe.service
+Source2:        msr-safe.sysconfig
+Source3:        10-msr-safe.rules
+Source4:        msr-safe.sh
+Source5:        system-user-msr.conf
+Patch0:         0000-msr_allowlist-diff.patch
+Patch1:         0001-msr_batch-diff.patch
+Patch2:         0002-msr_entry-diff.patch
+Patch3:         0003-msr_version-diff.patch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %kernel_module_package_buildreqs
+BuildRequires:  kernel-default-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 Requires(post):   fillup
 Requires(post):   udev
 Requires(postun): udev
-%kernel_module_package
+
+%kernel_module_package 
 
 # Only supported on intel architectures
 ExclusiveArch:  %{ix86} x86_64
@@ -52,7 +58,7 @@ Group:          System/Kernel
 
 %description KMP
 A kernel module which provides new /dev nodes for accessing Model
-Speicific Registers in CPUs, and which offers a whitelist to control
+Speicific Registers in CPUs, and which offers an allowlist to control
 which exact MSRs may be read.
 
 %package -n system-user-msr
@@ -80,8 +86,8 @@ done
 mkdir -p %{buildroot}%{_sysusersdir}
 mkdir -p %{buildroot}%{_sysconfdir}/msr
 make install DESTDIR=%{buildroot} prefix=%{_prefix} sbindir=%{_sbindir} mandir=%{_mandir}
-install -d %{buildroot}/%{_datadir}/msr-safe/whitelists
-install -m 0644 whitelists/* %{buildroot}%{_datadir}/msr-safe/whitelists/
+install -d %{buildroot}/%{_datadir}/msr-safe/allowlists
+install -m 0644 allowlists/* %{buildroot}%{_datadir}/msr-safe/allowlists/
 install -Dm 0644 %{SOURCE1} %{buildroot}%{_unitdir}/msr-safe.service
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.msr-safe
 install -Dm 0644 %{SOURCE3} %{buildroot}%{_udevrulesdir}/10-msr-safe.rules
@@ -118,8 +124,8 @@ done
 
 %{_fillupdir}/sysconfig.msr-safe
 %dir %{_datadir}/msr-safe
-%dir %{_datadir}/msr-safe/whitelists
-%{_datadir}/msr-safe/whitelists/*
+%dir %{_datadir}/msr-safe/allowlists
+%{_datadir}/msr-safe/allowlists/*
 %{_unitdir}/msr-safe.service
 %{_udevrulesdir}/10-msr-safe.rules
 %{_sbindir}/msrsave

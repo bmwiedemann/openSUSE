@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  1 03:37:38 UTC 2023 - Jeffrey Cheung <jcheung@suse.com>
+
+- Update to v1.7.0
+- Fix the layout changes after linux 6
+
+  New patch: 0000-msr_allowlist-diff.patch
+  New patch: 0001-msr_batch-diff.patch
+  New patch: 0002-msr_entry-diff.patch
+  New patch: 0003-msr_version-diff.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 23:57:41 UTC 2022 - Alejandro Vilches <alejandro.vilches@intel.com>
+
+- Update to v1.6.0
+
+-------------------------------------------------------------------
 Tue Jul  7 07:44:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add better descriptions, use noun phrase.

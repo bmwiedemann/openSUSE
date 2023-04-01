@@ -1,0 +1,14 @@
+--- msr_allowlist.c	2023-02-01 04:45:13.000000000 +0800
++++ new-msr_allowlist.c	2023-03-30 22:40:14.000000000 +0800
+@@ -362,7 +362,11 @@
+ #if LINUX_VERSION_CODE <= KERNEL_VERSION(2,6,39)
+ static char *msr_allowlist_nodename(struct device *dev, mode_t *mode)
+ #else
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,2,0)
+ static char *msr_allowlist_nodename(struct device *dev, umode_t *mode)
++#else
++static char *msr_allowlist_nodename(const struct device *dev, umode_t *mode)
++#endif
+ #endif
+ {
+     return kasprintf(GFP_KERNEL, "cpu/msr_allowlist");
