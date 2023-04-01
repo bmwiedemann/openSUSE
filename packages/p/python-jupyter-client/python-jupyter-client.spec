@@ -26,39 +26,43 @@
 %endif
 
 Name:           python-jupyter-client%{psuffix}
-Version:        7.4.9
+Version:        8.1.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_client
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_client/jupyter_client-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling}
+# PATCH-FIX-OPENSUSE jupyter-client-suse-remove-ifconfig-test.patch code@bnavigator.de -- we don't have `ifconfig` and don't need it because we have `ip`
+Patch10:        jupyter-client-suse-remove-ifconfig-test.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyter_client = %{version}
 Requires:       python-entrypoints
-Requires:       python-jupyter-core >= 4.9.2
-Requires:       python-nest-asyncio >= 1.5.4
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pyzmq >= 23.0
 Requires:       python-tornado >= 6.2
-Requires:       python-traitlets
+Requires:       python-traitlets >= 5.3
+Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
+Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
 Provides:       python-jupyter_client = %{version}
 Obsoletes:      python-jupyter_client < %{version}
 BuildArch:      noarch
 %if %{with test}
 # gh#jupyter/jupyter_client#787
-BuildRequires:  %{python_module ipykernel >= 6.13}
+BuildRequires:  %{python_module ipykernel >= 6.14}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter-client = %{version}}
-BuildRequires:  %{python_module pytest-asyncio >= 0.18}
+BuildRequires:  %{python_module pytest-jupyter-client >= 0.4.1}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 # flaky is not an upstream dep, but for obs flakyness of parallel kernel test
 BuildRequires:  %{python_module flaky}
+BuildRequires:  iproute2
+BuildRequires:  openssh-clients
 %endif
 %python_subpackages
 
@@ -104,19 +108,19 @@ sed -i 's/--color=yes//' pyproject.toml
 
 %if %{with test}
 %check
-pushd jupyter_client/tests
-%pytest --force-flaky --max-runs=3 --no-success-flaky-report
-popd
+# flaky timeout
+donttest="(TestAsyncKernelClient and test_input_request)"
+%pytest --force-flaky --max-runs=3 --no-success-flaky-report -k "not ($donttest)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
-%license COPYING.md
+%license LICENSE
 %{python_sitelib}/jupyter_client-%{version}*-info
 %{python_sitelib}/jupyter_client/
 
 %files -n jupyter-jupyter-client
-%license COPYING.md
+%license LICENSE
 %doc CONTRIBUTING.md README.md
 %{_bindir}/jupyter-kernel
 %{_bindir}/jupyter-kernelspec

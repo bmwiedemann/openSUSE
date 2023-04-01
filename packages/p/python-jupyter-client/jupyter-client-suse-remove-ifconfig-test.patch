@@ -1,0 +1,9 @@
+Index: jupyter_client-8.0.2/tests/test_localinterfaces.py
+===================================================================
+--- jupyter_client-8.0.2.orig/tests/test_localinterfaces.py
++++ jupyter_client-8.0.2/tests/test_localinterfaces.py
+@@ -26,4 +26,3 @@ def test_load_ips():
+ 
+     if sys.platform == 'linux':
+         localinterfaces._load_ips_ip()
+-        localinterfaces._load_ips_ifconfig()

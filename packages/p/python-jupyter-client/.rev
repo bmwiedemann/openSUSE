@@ -270,4 +270,50 @@ Update to 5.3.4</comment>
 - Drop py310-ignore-deprecation.patch</comment>
     <requestid>1058573</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>45d5577da6511320f10acbcce28f2ef2</srcmd5>
+    <version>8.1.0</version>
+    <time>1680370356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.0
+  * ThreadedZMQStream: close stream before socket #936 (@minrk)
+- Update to 8.0.3
+  * Fix kernelspec print output #933 (@minrk)
+  * Don't emit a trailng newline in base64-encoded data like
+    'image/png' #931 (@xl0)
+  * Improving jsonutil tests #929 (@andrehora)
+- Update to 8.0.2
+  * Add papermill downstream check and fix kernel client replies
+    #925 (@blink1073)
+- Release 8.0.1
+  * Fix json_output in kernelspec app #921 (@blink1073)
+- Release 8.0.0
+  * This release is primarily focused on improving asyncio support,
+    while aiming to have minimal API changes.
+  ## Enhancements made
+  * Remove nest-asyncio dependency #835 (@blink1073)
+  ## Bugs fixed
+  * Allow interrupt during restart of pending kernels #898
+    (@blink1073)
+  * Fix connection reconciliation to handle restarts #882
+    (@kevin-bates)
+  * Reconcile connection information #879 (@kevin-bates)
+  * Workaround for launch bug #861 (@blink1073)
+  * Defer creation of ready future #858 (@blink1073)
+  * Fix handling of initial ready promise #854 (@blink1073)
+  * Revert &quot;Fix pending kernels again&quot; #853 (@blink1073)
+  * Fix pending kernels again #845 (@blink1073)
+  * Use pytest_asyncio fixture #826 (@davidbrochart)
+  ## Maintenance and upkeep improvements
+  * Fix jupyter_core pinning #896 (@ophie200)
+  * Use pytest-jupyter #891 (@blink1073)
+  * Import ensure_async and run_sync from jupyter_core #889
+    (@davidbrochart)
+  * Support Python 3.8-3.11 #866 (@blink1073)
+  * Move tests to top level #834 (@blink1073)
+  * Fix nbconvert downstream test #827 (@blink1073)
+- Add jupyter-client-suse-remove-ifconfig-test.patch
+</comment>
+    <requestid>1075692</requestid>
+  </revision>
 </revisionlist>
