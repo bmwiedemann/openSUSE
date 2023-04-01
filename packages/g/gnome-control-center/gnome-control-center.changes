@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 31 08:18:27 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+20:
+  + datetime: Fix NTP switch getting out of sync.
+  + shell/style: Add workaround to make disabled pictures are
+    painted as such.
+  + illustrated-row, split-row: Add widget name and css class.
+  + region: Fix label of formats for the login screen.
+  + keyboard: Fix cancel button issue.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 22 14:57:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0+7:
