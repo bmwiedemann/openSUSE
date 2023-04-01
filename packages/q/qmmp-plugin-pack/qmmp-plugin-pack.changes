@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 31 10:11:20 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.1.1:
+  * Add FFmpeg 5.1 support in the ffvideo plugin.
+  * Fix hang-up in the ytb plugin.
+
+-------------------------------------------------------------------
 Thu Nov  3 18:55:45 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Remove unused buildrequire on yasm. 

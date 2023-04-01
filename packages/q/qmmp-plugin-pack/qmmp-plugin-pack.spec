@@ -1,7 +1,7 @@
 #
 # spec file for package qmmp-plugin-pack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Dmitry Misharov <quarckster@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define qmmp_ver_max 2.1.99
 %define mver    2.1
 Name:           qmmp-plugin-pack
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
