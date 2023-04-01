@@ -234,4 +234,55 @@
     <comment>- Add upstream gcc13-fix.patch fix. (forwarded request 1069627 from marxin)</comment>
     <requestid>1069629</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>36facd4df4b11fd2cc848b0672988a3f</srcmd5>
+    <version>1.14.0</version>
+    <time>1680384411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.14.0
+  - UCP
+    - Added API for querying transport and device names on endpoint
+    - Added API for querying datatype object
+    - Added API for exporting and importing memory keys (no implementation yet)
+    - Added support for non-persistent active message header
+    - Added infrastructure to print protocols v2 performance
+    - Multiple performance improvements for protocols v2
+    - Added support for non-contiguous datatypes for rendezvous protocols v2
+    - Added support for reset and abort request in protocols v2
+    - Added support for user memory handles in RMA API
+    - Added multi-rail support for RMA API in protocols v2
+    - Added support for up to 16 different lanes per endpoint
+    - Added support for dmabuf memory registration in protocols v2
+    - Added strong fence mode for ucp_worker_fence() API
+  - UCT
+    - Added new uct_md_mem_attach() API to support exported memory handles
+    - Added remote completion mode for endpoint flush (via new flag)
+    - Added support for dmabuf registration
+    - Added new uct_ep_connect_to_ep_v2() API
+    - Added new uct_mem_reg_v2() API
+    - Added new uct_md_query_v2() API
+    - Added support for IPv6 loopback address in TCP transport
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added ECE (enhanced connection establishment) support for RC and DC transports
+    - Added support for hardware DCS in DC transport
+    - Added UD interface and endpoint resource information to VFS
+    - Added CQ creation via DEVX API
+    - Removed support for accelerated IB transports over legacy experimental verbs
+  - UCS
+    - Added support for auto-correction of user environment variables
+  - UCM
+    - Implemented CUDA bistro hooks for aarch64 (to enable memory cache on this platform)
+    - Added support for CUDA virtual/stream-ordered memory with cudaMallocAsync
+  - Documentation
+    - Added FAQ for using pkg-config tool to build applications with UCX
+  - Tools
+    - Added runtime library version to the 'ucx_info -v' output
+    - Added support for memory types in ucx_info
+  - Many bugfixes. See NEWS.
+- Drop patch merged upstream:
+  - UCS-DEBUG-replace-PTR-with-void.patch
+  - gcc13-fix.patch
+- Refresh openucx-s390x-support.patch</comment>
+    <requestid>1075600</requestid>
+  </revision>
 </revisionlist>

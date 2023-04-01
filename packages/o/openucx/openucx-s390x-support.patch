@@ -1,13 +1,13 @@
-commit d85339a86c0902ca36f4306f8d971cf46ae87eaf
-Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
-Date:   Tue Sep 27 17:47:15 2022 +0200
+commit 909e453ce7ee166c98274096720a6c9345fdc3ae
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Mon Feb 13 17:04:14 2023 +0100
 
     openucx s390x support
     
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git config/m4/ucm.m4 config/m4/ucm.m4
-index 8d7a9e40ec06..df7508e1e71a 100644
+index abf02c06f430..84aa3e214d5a 100644
 --- config/m4/ucm.m4
 +++ config/m4/ucm.m4
 @@ -80,9 +80,20 @@ AC_CHECK_DECLS([SYS_ipc],
@@ -33,7 +33,7 @@ index 8d7a9e40ec06..df7508e1e71a 100644
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
 diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
-index 5316b1c4336e..e910bc53572d 100644
+index f41155ca3d9d..edeaaf5df529 100644
 --- src/tools/info/sys_info.c
 +++ src/tools/info/sys_info.c
 @@ -46,7 +46,8 @@ static const char* cpu_vendor_names[] = {
@@ -47,7 +47,7 @@ index 5316b1c4336e..e910bc53572d 100644
  
  static double measure_memcpy_bandwidth(size_t size)
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
-index 5140b5acf5bf..8805124befee 100644
+index 48b82bf89cbe..582f83d1ea82 100644
 --- src/ucm/Makefile.am
 +++ src/ucm/Makefile.am
 @@ -31,7 +31,8 @@ noinst_HEADERS = \
@@ -61,7 +61,7 @@ index 5140b5acf5bf..8805124befee 100644
  libucm_la_SOURCES = \
  	event/event.c \
 diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
-index 101000455e66..0ae947429796 100644
+index b622e3c14fbb..4acd9e9cdb83 100644
 --- src/ucm/bistro/bistro.h
 +++ src/ucm/bistro/bistro.h
 @@ -20,6 +20,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
@@ -98,7 +98,7 @@ index 000000000000..c0f427f4984a
 +
 +#endif
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index 77680021d725..29f31aabd958 100644
+index 9e0bd2ffb1cc..97021c205d5c 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
 @@ -22,6 +22,7 @@ libucs_la_LIBADD   = $(LIBM) $(top_builddir)/src/ucm/libucm.la $(BFD_LIBS)
@@ -109,7 +109,7 @@ index 77680021d725..29f31aabd958 100644
  	arch/x86_64/bitops.h \
  	arch/bitops.h \
  	algorithm/crc.h \
-@@ -81,12 +82,14 @@ nobase_dist_libucs_la_HEADERS = \
+@@ -82,12 +83,14 @@ nobase_dist_libucs_la_HEADERS = \
  	arch/aarch64/global_opts.h \
  	arch/generic/atomic.h \
  	arch/ppc64/global_opts.h \
@@ -124,8 +124,8 @@ index 77680021d725..29f31aabd958 100644
  	arch/x86_64/cpu.h \
  	arch/cpu.h \
  	config/ucm_opts.h \
-@@ -134,6 +137,7 @@ libucs_la_SOURCES = \
- 	algorithm/qsort_r.c \
+@@ -138,6 +141,7 @@ libucs_la_SOURCES = \
+ 	algorithm/string_distance.c \
  	arch/aarch64/cpu.c \
  	arch/aarch64/global_opts.c \
 +	arch/s390x/global_opts.c \
@@ -133,7 +133,7 @@ index 77680021d725..29f31aabd958 100644
  	arch/ppc64/global_opts.c \
  	arch/x86_64/cpu.c \
 diff --git src/ucs/arch/atomic.h src/ucs/arch/atomic.h
-index 6a8551f592e1..e3a9f4641383 100644
+index 52be711c1d0a..8f1d62a28dc9 100644
 --- src/ucs/arch/atomic.h
 +++ src/ucs/arch/atomic.h
 @@ -15,6 +15,8 @@
@@ -146,7 +146,7 @@ index 6a8551f592e1..e3a9f4641383 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index 77e00571e04f..bbdea0ceb210 100644
+index e89a37d0b673..dd2b9d5b6bcb 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
 @@ -20,6 +20,8 @@ BEGIN_C_DECLS
@@ -159,7 +159,7 @@ index 77e00571e04f..bbdea0ceb210 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
-index 9e6fab0904eb..c912e991586c 100644
+index ac8e268a1502..16c308bae94c 100644
 --- src/ucs/arch/cpu.c
 +++ src/ucs/arch/cpu.c
 @@ -61,6 +61,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
@@ -178,11 +178,11 @@ index 9e6fab0904eb..c912e991586c 100644
      [UCS_CPU_VENDOR_GENERIC_ARM] = 5800 * UCS_MBYTE,
      [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE,
 +    [UCS_CPU_VENDOR_GENERIC_IBM] = 5800 * UCS_MBYTE,
-     [UCS_CPU_VENDOR_FUJITSU_ARM] = 12000 * UCS_MBYTE
+     [UCS_CPU_VENDOR_FUJITSU_ARM] = 12000 * UCS_MBYTE,
+     [UCS_CPU_VENDOR_ZHAOXIN]     = 5800 * UCS_MBYTE
  };
- 
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index 719913fb0b8c..04d69ca01533 100644
+index a59561c041fa..dc95f3f56231 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
 @@ -63,6 +63,7 @@ typedef enum ucs_cpu_vendor {
@@ -203,7 +203,7 @@ index 719913fb0b8c..04d69ca01533 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/global_opts.h src/ucs/arch/global_opts.h
-index 8786f130290a..0d251fb91868 100644
+index 75d086177a7f..96c670cb60d3 100644
 --- src/ucs/arch/global_opts.h
 +++ src/ucs/arch/global_opts.h
 @@ -15,6 +15,8 @@
@@ -244,7 +244,7 @@ index 000000000000..ce48ff1ff451
 +{
 +	if (!n)
 +		return 0;
-+	return 63 - __builtin_clzl(n);
++	return 63 - __builtin_clz(n);
 +}
 +
 +static UCS_F_ALWAYS_INLINE unsigned ucs_ffs32(uint32_t n)
@@ -410,10 +410,10 @@ index 000000000000..225e4e5e896a
 +#endif
 +
 diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
-index 88f4a147315e..0b6d186265a8 100644
+index 57160c061986..be6b20812c39 100644
 --- src/ucs/sys/sys.c
 +++ src/ucs/sys/sys.c
-@@ -1224,8 +1224,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
+@@ -1256,8 +1256,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
      if (old_ptr == NULL) {
          /* Note: Must pass the 0 offset as "long", otherwise it will be
           * partially undefined when converted to syscall arguments */

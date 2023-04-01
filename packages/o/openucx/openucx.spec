@@ -16,8 +16,11 @@
 #
 
 
+# Use for pulling RC versions
+%define version_suf %{nil}
+
 Name:           openucx
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -26,11 +29,9 @@ URL:            http://openucx.org/
 
 #Git-Clone:	git://github.com/openucx/ucx
 #Git-Web:	https://github.com/openucx/ucx
-Source:         https://github.com/openucx/ucx/releases/download/v%version/ucx-%version.tar.gz
+Source:         https://github.com/openucx/ucx/releases/download/v%version%{?version_suf}/ucx-%version.tar.gz
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
-Patch3:         UCS-DEBUG-replace-PTR-with-void.patch
-Patch4:         gcc13-fix.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -139,8 +140,6 @@ hardware.
 %patch1
 %endif
 %patch2
-%patch3
-%patch4 -p1
 
 %build
 autoreconf -fi
@@ -193,7 +192,8 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_libdir/pkgconfig/ucx.pc
 %dir %_libdir/cmake/
 %_libdir/cmake/ucx/
-%doc LICENSE NEWS
+%license LICENSE
+%doc NEWS
 
 %files -n libucm0
 %defattr(-,root,root)
