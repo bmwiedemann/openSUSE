@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 15:28:03 UTC 2023 - Noel Power <nopower@suse.com>
+
+- CVE-2023-0614: Access controlled AD LDAP attributes can be
+    discovered  (bso#15270); (bsc#1209485).
+
+-------------------------------------------------------------------
 Fri Mar 17 08:05:30 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 2.7.1
@@ -10,6 +16,19 @@ Fri Mar 17 08:05:30 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
   * Don't call comparison() directly in LDB_TYPESAFE_QSORT
   * Use ldb_ascii_toupper() for case folding to support
     tr_TR.UTF-8 and other dotless i locales (bso#15248)
+
+-------------------------------------------------------------------
+Mon Mar 13 10:25:56 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to version 2.7.1
+  - Build fix for Solaris, after removal of tevent ports
+    backend (bso#15298).
+- Update to version 2.7.0
+  - Support python 3.12
+    * Have python functions operating on DNs raise LdbError
+    * don't call comparison() directly in LDB_TYPESAFE_QSORT
+    * Use ldb_ascii_toupper() for case folding to support
+      tr_TR.UTF-8 and other dotless i locales; (bso#15248).
 
 -------------------------------------------------------------------
 Thu Sep 22 15:55:29 UTC 2022 - Noel Power <nopower@suse.com>

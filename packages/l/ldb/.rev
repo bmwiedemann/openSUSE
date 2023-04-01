@@ -641,4 +641,12 @@ x86-64 when building with python 3.5.</comment>
     tr_TR.UTF-8 and other dotless i locales (bso#15248)</comment>
     <requestid>1074015</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>499b71d3b25e376412dd023655c0a632</srcmd5>
+    <version>2.7.2</version>
+    <time>1680384412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075602</requestid>
+  </revision>
 </revisionlist>
