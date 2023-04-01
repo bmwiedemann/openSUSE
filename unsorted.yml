@@ -555,6 +555,7 @@ unsorted:
   - analitza-devel 
   - ancient 
   - ancient-devel 
+  - android-file-transfer-linux 
   - android-tools 
   - android-tools-bash-completion 
   - android-tools-mkbootimg 
@@ -634,6 +635,10 @@ unsorted:
   - aop 
   - aopalliance 
   - aopalliance-javadoc 
+  - apache-arrow 
+  - apache-arrow-dataset-devel-static 
+  - apache-arrow-devel 
+  - apache-arrow-devel-static 
   - apache-chainsaw 
   - apache-chainsaw-javadoc 
   - apache-commons-beanutils 
@@ -713,8 +718,14 @@ unsorted:
   - apache-log4j-extras-javadoc 
   - apache-logging-parent 
   - apache-parent 
+  - apache-parquet-devel 
+  - apache-parquet-devel-static 
+  - apache-parquet-utils 
   - apache-pdfbox 
   - apache-pdfbox-javadoc 
+  - apache-plasma-devel 
+  - apache-plasma-devel-static 
+  - apache-plasma-server 
   - apache-portlet-1_0-api 
   - apache-portlet-1_0-api-javadoc 
   - apache-resource-bundles 
@@ -3069,7 +3080,6 @@ unsorted:
   - dh-autoreconf 
   - dh-make 
   - dhall-json 
-  - dhall-yaml 
   - dhcp-devel 
   - dhcp-doc 
   - dhcpd-pools 
@@ -4622,8 +4632,6 @@ unsorted:
   - ghc 
   - ghc-Cabal 
   - ghc-Cabal-devel 
-  - ghc-Cabal-syntax 
-  - ghc-Cabal-syntax-devel 
   - ghc-DAV 
   - ghc-DAV-devel 
   - ghc-Decimal 
@@ -4708,8 +4716,6 @@ unsorted:
   - ghc-appar-devel 
   - ghc-array 
   - ghc-array-devel 
-  - ghc-ascii-progress 
-  - ghc-ascii-progress-devel 
   - ghc-asn1-encoding 
   - ghc-asn1-encoding-devel 
   - ghc-asn1-parse 
@@ -4720,8 +4726,6 @@ unsorted:
   - ghc-assoc-devel 
   - ghc-async 
   - ghc-async-devel 
-  - ghc-async-timer 
-  - ghc-async-timer-devel 
   - ghc-atomic-primops 
   - ghc-atomic-primops-devel 
   - ghc-atomic-write 
@@ -4744,12 +4748,8 @@ unsorted:
   - ghc-base-compat-batteries-devel 
   - ghc-base-compat-devel 
   - ghc-base-devel 
-  - ghc-base-noprelude 
-  - ghc-base-noprelude-devel 
   - ghc-base-orphans 
   - ghc-base-orphans-devel 
-  - ghc-base-prelude 
-  - ghc-base-prelude-devel 
   - ghc-base16-bytestring 
   - ghc-base16-bytestring-devel 
   - ghc-base58-bytestring 
@@ -4757,15 +4757,11 @@ unsorted:
   - ghc-base64 
   - ghc-base64-bytestring 
   - ghc-base64-bytestring-devel 
-  - ghc-base64-bytestring-type 
-  - ghc-base64-bytestring-type-devel 
   - ghc-base64-devel 
   - ghc-basement 
   - ghc-basement-devel 
   - ghc-bech32 
   - ghc-bech32-devel 
-  - ghc-bech32-th 
-  - ghc-bech32-th-devel 
   - ghc-bencode 
   - ghc-bencode-devel 
   - ghc-bifunctors 
@@ -4778,12 +4774,6 @@ unsorted:
   - ghc-binary-orphans-devel 
   - ghc-bindings-DSL 
   - ghc-bindings-DSL-devel 
-  - ghc-bindings-uname 
-  - ghc-bindings-uname-devel 
-  - ghc-bitarray 
-  - ghc-bitarray-devel 
-  - ghc-bitmap 
-  - ghc-bitmap-devel 
   - ghc-bitvec 
   - ghc-bitvec-devel 
   - ghc-blaze-builder 
@@ -4798,10 +4788,6 @@ unsorted:
   - ghc-bootstrap-helpers 
   - ghc-boring 
   - ghc-boring-devel 
-  - ghc-boxes 
-  - ghc-boxes-devel 
-  - ghc-breakpoint 
-  - ghc-breakpoint-devel 
   - ghc-brick 
   - ghc-brick-devel 
   - ghc-bsb-http-chunked 
@@ -4826,12 +4812,8 @@ unsorted:
   - ghc-cairo-devel 
   - ghc-call-stack 
   - ghc-call-stack-devel 
-  - ghc-canonical-json 
-  - ghc-canonical-json-devel 
   - ghc-case-insensitive 
   - ghc-case-insensitive-devel 
-  - ghc-casing 
-  - ghc-casing-devel 
   - ghc-cassava 
   - ghc-cassava-devel 
   - ghc-cassava-megaparsec 
@@ -4848,14 +4830,10 @@ unsorted:
   - ghc-cipher-aes-devel 
   - ghc-citeproc 
   - ghc-citeproc-devel 
-  - ghc-clay 
-  - ghc-clay-devel 
   - ghc-clientsession 
   - ghc-clientsession-devel 
   - ghc-clock 
   - ghc-clock-devel 
-  - ghc-cmark-gfm 
-  - ghc-cmark-gfm-devel 
   - ghc-cmdargs 
   - ghc-cmdargs-devel 
   - ghc-code-page 
@@ -4871,8 +4849,6 @@ unsorted:
   - ghc-comonad 
   - ghc-comonad-devel 
   - ghc-compiler 
-  - ghc-concurrency 
-  - ghc-concurrency-devel 
   - ghc-concurrent-output 
   - ghc-concurrent-output-devel 
   - ghc-conduit 
@@ -4914,8 +4890,6 @@ unsorted:
   - ghc-crypto-random 
   - ghc-crypto-random-devel 
   - ghc-cryptohash 
-  - ghc-cryptohash-conduit 
-  - ghc-cryptohash-conduit-devel 
   - ghc-cryptohash-devel 
   - ghc-cryptohash-md5 
   - ghc-cryptohash-md5-devel 
@@ -4931,8 +4905,6 @@ unsorted:
   - ghc-css-text-devel 
   - ghc-csv 
   - ghc-csv-devel 
-  - ghc-data-array-byte 
-  - ghc-data-array-byte-devel 
   - ghc-data-clist 
   - ghc-data-clist-devel 
   - ghc-data-default 
@@ -4961,22 +4933,16 @@ unsorted:
   - ghc-dhall-devel 
   - ghc-dhall-json 
   - ghc-dhall-json-devel 
-  - ghc-dhall-yaml 
-  - ghc-dhall-yaml-devel 
   - ghc-digest 
   - ghc-digest-devel 
   - ghc-directory 
   - ghc-directory-devel 
   - ghc-disk-free-space 
   - ghc-disk-free-space-devel 
-  - ghc-distribution-opensuse 
-  - ghc-distribution-opensuse-devel 
   - ghc-distributive 
   - ghc-distributive-devel 
   - ghc-dlist 
   - ghc-dlist-devel 
-  - ghc-dns 
-  - ghc-dns-devel 
   - ghc-doclayout 
   - ghc-doclayout-devel 
   - ghc-doctemplates 
@@ -4995,10 +4961,8 @@ unsorted:
   - ghc-edit-distance-devel 
   - ghc-either 
   - ghc-either-devel 
-  - ghc-ekg 
   - ghc-ekg-core 
   - ghc-ekg-core-devel 
-  - ghc-ekg-devel 
   - ghc-ekg-json 
   - ghc-ekg-json-devel 
   - ghc-email-validate 
@@ -5011,16 +4975,12 @@ unsorted:
   - ghc-entropy-devel 
   - ghc-erf 
   - ghc-erf-devel 
-  - ghc-errors 
-  - ghc-errors-devel 
   - ghc-exceptions 
   - ghc-exceptions-devel 
   - ghc-extensible-exceptions 
   - ghc-extensible-exceptions-devel 
   - ghc-extra 
   - ghc-extra-devel 
-  - ghc-fail 
-  - ghc-fail-devel 
   - ghc-fast-logger 
   - ghc-fast-logger-devel 
   - ghc-fdo-notify 
@@ -5031,8 +4991,6 @@ unsorted:
   - ghc-fgl-devel 
   - ghc-file-embed 
   - ghc-file-embed-devel 
-  - ghc-filelock 
-  - ghc-filelock-devel 
   - ghc-filemanip 
   - ghc-filemanip-devel 
   - ghc-filepath 
@@ -5047,30 +5005,20 @@ unsorted:
   - ghc-fingertree-devel 
   - ghc-fmlist 
   - ghc-fmlist-devel 
-  - ghc-fmt 
-  - ghc-fmt-devel 
   - ghc-foldl 
   - ghc-foldl-devel 
   - ghc-formatting 
   - ghc-formatting-devel 
-  - ghc-foundation 
-  - ghc-foundation-devel 
   - ghc-free 
   - ghc-free-devel 
   - ghc-fsnotify 
   - ghc-fsnotify-devel 
-  - ghc-generic-data 
-  - ghc-generic-data-devel 
   - ghc-generic-deriving 
   - ghc-generic-deriving-devel 
   - ghc-generic-lens 
   - ghc-generic-lens-core 
   - ghc-generic-lens-core-devel 
   - ghc-generic-lens-devel 
-  - ghc-generic-monoid 
-  - ghc-generic-monoid-devel 
-  - ghc-generic-random 
-  - ghc-generic-random-devel 
   - ghc-generically 
   - ghc-generically-devel 
   - ghc-ghc 
@@ -5078,8 +5026,6 @@ unsorted:
   - ghc-ghc-boot-devel 
   - ghc-ghc-boot-th 
   - ghc-ghc-boot-th-devel 
-  - ghc-ghc-byteorder 
-  - ghc-ghc-byteorder-devel 
   - ghc-ghc-compact 
   - ghc-ghc-compact-devel 
   - ghc-ghc-devel 
@@ -5087,8 +5033,6 @@ unsorted:
   - ghc-ghc-heap-devel 
   - ghc-ghc-lib-parser-ex 
   - ghc-ghc-lib-parser-ex-devel 
-  - ghc-ghc-paths 
-  - ghc-ghc-paths-devel 
   - ghc-ghci 
   - ghc-ghci-devel 
   - ghc-ghcid 
@@ -5105,8 +5049,6 @@ unsorted:
   - ghc-gray-code-devel 
   - ghc-gridtables 
   - ghc-gridtables-devel 
-  - ghc-groups 
-  - ghc-groups-devel 
   - ghc-gtk2hs-buildtools 
   - ghc-gtk2hs-buildtools-devel 
   - ghc-hackage-security 
@@ -6967,7 +6909,6 @@ unsorted:
   - gude-mouseclock-udev 
   - gudev-sharp 
   - gudev-sharp-devel 
-  - guess-changelog 
   - guestfs-tools-bash-completion 
   - guestfs-tools-man-pages-ja 
   - guestfs-tools-man-pages-uk 
@@ -9558,7 +9499,6 @@ unsorted:
   - libOIS1_5_0 
   - libOSMesa-devel 
   - libOSMesa-devel-32bit 
-  - libOSMesa8 
   - libOSMesa8-32bit 
   - libOgreBites-devel 
   - libOgreBites13_5 
@@ -9915,7 +9855,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2023_1-32bit 
+  - libSPIRV-Tools-2023_2-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -10231,6 +10171,8 @@ unsorted:
   - libarpack2 
   - libarpack2-32bit 
   - libarprec0 
+  - libarrow1100 
+  - libarrow_dataset1100 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -11551,6 +11493,7 @@ unsorted:
   - libfsrefs-devel 
   - libfsrefs-tools 
   - libfsrefs1 
+  - libfst25 
   - libfstrcmp0 
   - libfstrm0 
   - libfsxfs-devel 
@@ -11604,6 +11547,8 @@ unsorted:
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
+  - libgav1-1 
+  - libgav1-devel 
   - libgavl-devel 
   - libgbm-devel 
   - libgbm-devel-32bit 
@@ -13644,6 +13589,7 @@ unsorted:
   - libparpack2-openmpi3-32bit 
   - libparpack2-openmpi4 
   - libparpack2-openmpi4-32bit 
+  - libparquet1100 
   - libparserutils-devel 
   - libparserutils0 
   - libparted-fs-resize0-32bit 
@@ -13737,6 +13683,7 @@ unsorted:
   - libplacebo264-32bit 
   - libplanarity0 
   - libplank1 
+  - libplasma1100 
   - libplayerctl2 
   - libplib0 
   - libplist++-2_0-3 
@@ -18269,6 +18216,7 @@ unsorted:
   - nginx-macros 
   - nginx-module-brotli 
   - nginx-module-vts 
+  - nginx-module-zstd 
   - nginx-source 
   - ngrep 
   - ngspice 
@@ -19169,6 +19117,8 @@ unsorted:
   - openexr-devel 
   - openexr-doc 
   - openfortivpn 
+  - openfst 
+  - openfst-devel 
   - opengl-games-utils 
   - opengost-otf-fonts 
   - opengost-ttf-fonts 
@@ -24709,8 +24659,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_24_1-gnu-hpc 
-  - python310-numpy_1_24_1-gnu-hpc-devel 
+  - python310-numpy_1_24_2-gnu-hpc 
+  - python310-numpy_1_24_2-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -27173,6 +27123,7 @@ unsorted:
   - python311-django-sortedm2m 
   - python311-django-storages 
   - python311-django-tables2 
+  - python311-django-tagging 
   - python311-django-taggit 
   - python311-django-tagulous 
   - python311-django-tastypie 
@@ -27902,6 +27853,7 @@ unsorted:
   - python311-md2workflow-plugins-redmine 
   - python311-mdit-py-plugins 
   - python311-mdurl 
+  - python311-mechanize 
   - python311-mediafile 
   - python311-meld3 
   - python311-memory_profiler 
@@ -28044,8 +27996,8 @@ unsorted:
   - python311-numpy-devel 
   - python311-numpy-gnu-hpc 
   - python311-numpy-gnu-hpc-devel 
-  - python311-numpy_1_24_1-gnu-hpc 
-  - python311-numpy_1_24_1-gnu-hpc-devel 
+  - python311-numpy_1_24_2-gnu-hpc 
+  - python311-numpy_1_24_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
   - python311-nxapi-plumbing 
@@ -31465,8 +31417,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_24_1-gnu-hpc 
-  - python38-numpy_1_24_1-gnu-hpc-devel 
+  - python38-numpy_1_24_2-gnu-hpc 
+  - python38-numpy_1_24_2-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -34901,8 +34853,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_24_1-gnu-hpc 
-  - python39-numpy_1_24_1-gnu-hpc-devel 
+  - python39-numpy_1_24_2-gnu-hpc 
+  - python39-numpy_1_24_2-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
