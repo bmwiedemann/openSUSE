@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 08:10:15 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- login.pamd, remote.pamd: include postlogin-* rules
+- runuser.pamd, su.pamd: Include common-session-nonlogin instead
+  of common-session
+
+-------------------------------------------------------------------
 Mon Mar 13 12:40:13 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Redistribute file entries to make sure that the files goes to the

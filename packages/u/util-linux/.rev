@@ -2442,4 +2442,14 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
   (bsc#1207023)</comment>
     <requestid>1071484</requestid>
   </revision>
+  <revision rev="268" vrev="11">
+    <srcmd5>a8ced00f2627dd8f5e27b39267add051</srcmd5>
+    <version>2.38.1</version>
+    <time>1680376398</time>
+    <user>dimstar_suse</user>
+    <comment>- login.pamd, remote.pamd: include postlogin-* rules
+- runuser.pamd, su.pamd: Include common-session-nonlogin instead
+  of common-session</comment>
+    <requestid>1074913</requestid>
+  </revision>
 </revisionlist>
