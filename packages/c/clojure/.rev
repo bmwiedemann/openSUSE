@@ -135,4 +135,13 @@
   * Switch to tools.deps 0.18.1317</comment>
     <requestid>1074880</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c4ec4807484a988f9286765ac38401a</srcmd5>
+    <version>1.11.1.1267</version>
+    <time>1680370353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1.1267:
+  * Switch to tools.deps 0.18.1331</comment>
+    <requestid>1076593</requestid>
+  </revision>
 </revisionlist>
