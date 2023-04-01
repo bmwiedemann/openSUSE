@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>1074709</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1dbb24501b52cca61e03f0fcc251924</srcmd5>
+    <version>23.05.25593.11</version>
+    <time>1680376400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.05.25593.11
+- Now builds against level-zero 
+- New fixes for building with gcc13
+- supersedes 0001-Include-memory-in-generate_cpp_array.cpp.patch</comment>
+    <requestid>1075700</requestid>
+  </revision>
 </revisionlist>
