@@ -6,7 +6,7 @@ Index: doc/coreutils.texi
 ===================================================================
 --- doc/coreutils.texi.orig
 +++ doc/coreutils.texi
-@@ -74,7 +74,6 @@
+@@ -76,7 +76,6 @@
  * id: (coreutils)id invocation.                 Print user identity.
  * install: (coreutils)install invocation.       Copy files and set attributes.
  * join: (coreutils)join invocation.             Join lines on a common field.
@@ -14,7 +14,7 @@ Index: doc/coreutils.texi
  * link: (coreutils)link invocation.             Make hard links between files.
  * ln: (coreutils)ln invocation.                 Make links between files.
  * logname: (coreutils)logname invocation.       Print current login name.
-@@ -205,7 +204,6 @@ Free Documentation License''.
+@@ -207,7 +206,6 @@ Free Documentation License''.
  * System context::               date arch nproc uname hostid uptime
  * SELinux context::              chcon runcon
  * Modified command invocation::  chroot env nice nohup stdbuf timeout
@@ -22,7 +22,7 @@ Index: doc/coreutils.texi
  * Delaying::                     sleep
  * Numeric operations::           factor numfmt seq
  * File permissions::             Access modes
-@@ -453,10 +451,6 @@ Modified command invocation
+@@ -455,10 +453,6 @@ Modified command invocation
  * stdbuf invocation::            Run a command with modified I/O buffering
  * timeout invocation::           Run a command with a time limit
  
@@ -33,7 +33,7 @@ Index: doc/coreutils.texi
  Delaying
  
  * sleep invocation::             Delay for a specified time
-@@ -18310,90 +18304,6 @@ timeout -s INT 5s env --ignore-signal=IN
+@@ -18604,90 +18598,6 @@ timeout -s INT 5s env --ignore-signal=IN
  timeout -s INT -k 3s 5s env --ignore-signal=INT sleep 20
  @end example
  

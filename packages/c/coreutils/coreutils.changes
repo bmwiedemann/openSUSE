@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Mar 21 20:58:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.2:
+  * cksum now accepts the --base64 (-b) option to print
+    base64-encoded checksums.  It also accepts/checks such
+    checksums.
+  * cksum now accepts the --raw option to output a raw binary
+    checksum.  No file name or other information is output in
+    this mode.
+  * cp, mv, and install now accept the --debug option to
+    print details on how a file is being copied.
+  * factor now accepts the --exponents (-h) option to print
+    factors in the form p^e, rather than repeating the prime p, e
+    times.
+  * ls now supports the --time=modification option, to explicitly
+    select the default mtime timestamp for display and sorting.
+  * mv now supports the --no-copy option, which causes it to fail
+    when asked to move a file to a different file system.
+  * split now accepts options like '-n SIZE' that exceed machine
+    integer range, when they can be implemented as if they were
+    infinity.
+  * split -n now accepts piped input even when not in round-robin
+    mode, by first copying input to a temporary file to determine its
+    size.
+  * wc now accepts the --total={auto,never,always,only} option
+    to give explicit control over when the total is output.
+  * 'cp --reflink=always A B' no longer leaves behind a newly
+    created empty file B merely because copy-on-write clones are not
+    supported.
+  * 'cp -n' and 'mv -n' now exit with nonzero status if they skip
+    their action because the destination exists, and likewise for 'cp
+    -i', 'ln -i', and 'mv -i' when the user declines.  (POSIX
+    specifies this for 'cp -i' and 'mv -i'.)
+  * cp, mv, and install again read in multiples of the reported
+    block size, to support unusual devices that may have this
+    constraint.
+  * du --apparent now counts apparent sizes only of regular files
+    and symbolic links.  POSIX does not specify the meaning of
+    apparent sizes (i.e., st_size) for other file types, and
+    counting those sizes could cause confusing and unwanted size
+    mismatches.
+  * 'ls -v' and 'sort -V' go back to sorting ".0" before ".A",
+    reverting to the behavior in coreutils-9.0 and earlier.
+    This behavior is now documented.
+  * ls --color now matches a file extension case sensitively
+    if there are different sequences defined for separate cases.
+  * printf unicode \uNNNN, \UNNNNNNNN syntax, now supports all
+    valid unicode code points.  Previously is was restricted to
+    the C universal character subset, which restricted most points <=
+    0x9F.
+  * runcon now exits with status 125 for internal errors.
+    Previously upon internal errors it would exit with status 1,
+    which was less distinguishable
+    from errors from the invoked command.
+  * 'split -n N' now splits more evenly when the input size is
+    not a multiple of N, by creating N output files whose sizes
+    differ by at most 1 byte.  Formerly, it did this only when
+    the input size was less than N.
+  * 'stat -c %s' now prints sizes as unsigned, consistent with
+    'ls'.
+  * a long list of bugfixes, see included NEWS file for details
+
+- drop gnulib-simple-backup-fix.patch (upstream)
+- drop coreutils-tests-workaround-make-fdleak.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Sep 26 20:29:11 UTC 2022 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-tests-workaround-make-fdleak.patch: Add patch to work around

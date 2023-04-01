@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.1
+Version:        9.2
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -62,8 +62,6 @@ Patch501:       coreutils-test_without_valgrind.patch
 # Downstream patch to skip a test failing on OBS.
 # tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
-# Upstream patch - remove with version >9.1:
-Patch850:       gnulib-simple-backup-fix.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -159,7 +157,6 @@ This package contains the documentation for the GNU Core Utilities.
 %patch501
 
 %patch810
-%patch850
 %patch900
 
 # ================================================
@@ -196,7 +193,7 @@ ln -v lib/parse-datetime.{c,y} .
   chmod a+x tests/misc/sort-mb-tests.sh
   # Avoid parallel make, because otherwise some timeout based tests like
   # rm/ext3-perf may fail due to high CPU or IO load.
-  %make_build check-very-expensive VERBOSE=yes \
+  %make_build -j1 check-very-expensive VERBOSE=yes \
     && install -d -m 755 %{buildroot}%{_docdir}/%{name} \
     && xz -c tests/test-suite.log \
          > %{buildroot}%{_docdir}/%{name}/test-suite.log.xz

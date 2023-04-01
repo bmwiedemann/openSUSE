@@ -16,7 +16,7 @@ Index: tests/local.mk
 ===================================================================
 --- tests/local.mk.orig
 +++ tests/local.mk
-@@ -736,14 +736,9 @@ all_tests =					\
+@@ -743,14 +743,9 @@ all_tests =					\
  # See tests/factor/create-test.sh.
  tf = tests/factor
  factor_tests = \

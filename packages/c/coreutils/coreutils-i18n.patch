@@ -44,11 +44,11 @@ Subject: [PATCH] coreutils-i18n.patch
  create mode 100755 tests/misc/sort-mb-tests.sh
  create mode 100755 tests/unexpand/mb.sh
 
-diff --git a/bootstrap.conf b/bootstrap.conf
-index c1399e3..60b39cf 100644
---- a/bootstrap.conf
-+++ b/bootstrap.conf
-@@ -162,6 +162,7 @@ gnulib_modules="
+Index: coreutils-9.2/bootstrap.conf
+===================================================================
+--- coreutils-9.2.orig/bootstrap.conf
++++ coreutils-9.2/bootstrap.conf
+@@ -165,6 +165,7 @@ gnulib_modules="
    maintainer-makefile
    malloc-gnu
    manywarnings
@@ -56,11 +56,11 @@ index c1399e3..60b39cf 100644
    mbrlen
    mbrtowc
    mbsalign
-diff --git a/configure.ac b/configure.ac
-index 7e4afc9..4656a35 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -476,6 +476,8 @@ fi
+Index: coreutils-9.2/configure.ac
+===================================================================
+--- coreutils-9.2.orig/configure.ac
++++ coreutils-9.2/configure.ac
+@@ -477,6 +477,8 @@ fi
  # I'm leaving it here for now.  This whole thing needs to be modernized...
  gl_WINSIZE_IN_PTEM
  
@@ -69,10 +69,10 @@ index 7e4afc9..4656a35 100644
  gl_HEADER_TIOCGWINSZ_IN_TERMIOS_H
  
  if test $gl_cv_sys_tiocgwinsz_needs_termios_h = no && \
-diff --git a/lib/linebuffer.h b/lib/linebuffer.h
-index 07d45ca..af62e6c 100644
---- a/lib/linebuffer.h
-+++ b/lib/linebuffer.h
+Index: coreutils-9.2/lib/linebuffer.h
+===================================================================
+--- coreutils-9.2.orig/lib/linebuffer.h
++++ coreutils-9.2/lib/linebuffer.h
 @@ -22,6 +22,11 @@
  # include "idx.h"
  # include <stdio.h>
@@ -95,20 +95,18 @@ index 07d45ca..af62e6c 100644
  };
  
  /* Initialize linebuffer LINEBUFFER for use. */
-diff --git a/lib/mbfile.c b/lib/mbfile.c
-new file mode 100644
-index 0000000..b0a468e
+Index: coreutils-9.2/lib/mbfile.c
+===================================================================
 --- /dev/null
-+++ b/lib/mbfile.c
++++ coreutils-9.2/lib/mbfile.c
 @@ -0,0 +1,3 @@
 +#include <config.h>
 +#define MBFILE_INLINE _GL_EXTERN_INLINE
 +#include "mbfile.h"
-diff --git a/lib/mbfile.h b/lib/mbfile.h
-new file mode 100644
-index 0000000..11f1b12
+Index: coreutils-9.2/lib/mbfile.h
+===================================================================
 --- /dev/null
-+++ b/lib/mbfile.h
++++ coreutils-9.2/lib/mbfile.h
 @@ -0,0 +1,255 @@
 +/* Multibyte character I/O: macros for multi-byte encodings.
 +   Copyright (C) 2001, 2005, 2009-2015 Free Software Foundation, Inc.
@@ -365,11 +363,10 @@ index 0000000..11f1b12
 +_GL_INLINE_HEADER_BEGIN
 +
 +#endif /* _MBFILE_H */
-diff --git a/m4/mbfile.m4 b/m4/mbfile.m4
-new file mode 100644
-index 0000000..8589902
+Index: coreutils-9.2/m4/mbfile.m4
+===================================================================
 --- /dev/null
-+++ b/m4/mbfile.m4
++++ coreutils-9.2/m4/mbfile.m4
 @@ -0,0 +1,14 @@
 +# mbfile.m4 serial 7
 +dnl Copyright (C) 2005, 2008-2015 Free Software Foundation, Inc.
@@ -385,10 +382,10 @@ index 0000000..8589902
 +  AC_REQUIRE([AC_TYPE_MBSTATE_T])
 +  :
 +])
-diff --git a/src/cut.c b/src/cut.c
-index 6fd8978..faef877 100644
---- a/src/cut.c
-+++ b/src/cut.c
+Index: coreutils-9.2/src/cut.c
+===================================================================
+--- coreutils-9.2.orig/src/cut.c
++++ coreutils-9.2/src/cut.c
 @@ -28,6 +28,11 @@
  #include <assert.h>
  #include <getopt.h>
@@ -401,7 +398,7 @@ index 6fd8978..faef877 100644
  #include "system.h"
  
  #include "error.h"
-@@ -37,6 +42,18 @@
+@@ -36,6 +41,18 @@
  
  #include "set-fields.h"
  
@@ -420,7 +417,7 @@ index 6fd8978..faef877 100644
  /* The official name of this program (e.g., no 'g' prefix).  */
  #define PROGRAM_NAME "cut"
  
-@@ -53,6 +70,52 @@
+@@ -52,6 +69,52 @@
      }									\
    while (0)
  
@@ -473,7 +470,7 @@ index 6fd8978..faef877 100644
  
  /* Pointer inside RP.  When checking if a byte or field is selected
     by a finite range, we check if it is between CURRENT_RP.LO
-@@ -60,6 +123,9 @@
+@@ -59,6 +122,9 @@
     CURRENT_RP.HI then we make CURRENT_RP to point to the next range pair. */
  static struct field_range_pair *current_rp;
  
@@ -483,7 +480,7 @@ index 6fd8978..faef877 100644
  /* This buffer is used to support the semantics of the -s option
     (or lack of same) when the specified field list includes (does
     not include) the first field.  In both of those cases, the entire
-@@ -72,6 +138,29 @@ static char *field_1_buffer;
+@@ -71,6 +137,29 @@ static char *field_1_buffer;
  /* The number of bytes allocated for FIELD_1_BUFFER.  */
  static size_t field_1_bufsize;
  
@@ -513,7 +510,7 @@ index 6fd8978..faef877 100644
  /* If true do not output lines containing no delimiter characters.
     Otherwise, all such lines are printed.  This option is valid only
     with field mode.  */
-@@ -83,10 +172,16 @@ static bool complement;
+@@ -82,10 +171,16 @@ static bool complement;
  
  /* The delimiter character for field mode. */
  static unsigned char delim;
@@ -530,7 +527,7 @@ index 6fd8978..faef877 100644
  /* The length of output_delimiter_string.  */
  static size_t output_delimiter_length;
  
-@@ -94,9 +189,6 @@ static size_t output_delimiter_length;
+@@ -93,9 +188,6 @@ static size_t output_delimiter_length;
     string consisting of the input delimiter.  */
  static char *output_delimiter_string;
  
@@ -540,7 +537,7 @@ index 6fd8978..faef877 100644
  /* True if we have ever read standard input. */
  static bool have_read_stdin;
  
-@@ -150,7 +242,7 @@ Print selected parts of lines from each FILE to standard output.\n\
+@@ -149,7 +241,7 @@ Print selected parts of lines from each
    -f, --fields=LIST       select only these fields;  also print any line\n\
                              that contains no delimiter character, unless\n\
                              the -s option is specified\n\
@@ -549,7 +546,7 @@ index 6fd8978..faef877 100644
  "), stdout);
        fputs (_("\
        --complement        complement the set of selected bytes, characters\n\
-@@ -250,7 +342,7 @@ cut_bytes (FILE *stream)
+@@ -249,7 +341,7 @@ cut_bytes (FILE *stream)
            next_item (&byte_idx);
            if (print_kth (byte_idx))
              {
@@ -558,7 +555,7 @@ index 6fd8978..faef877 100644
                  {
                    if (print_delimiter && is_range_start_index (byte_idx))
                      {
-@@ -266,6 +358,82 @@ cut_bytes (FILE *stream)
+@@ -265,6 +357,82 @@ cut_bytes (FILE *stream)
      }
  }
  
@@ -641,7 +638,7 @@ index 6fd8978..faef877 100644
  /* Read from stream STREAM, printing to standard output any selected fields.  */
  
  static void
-@@ -411,11 +579,218 @@ cut_fields (FILE *stream)
+@@ -410,11 +578,218 @@ cut_fields (FILE *stream)
      }
  }
  
@@ -862,7 +859,7 @@ index 6fd8978..faef877 100644
  {
    FILE *stream;
  
-@@ -459,8 +834,8 @@ main (int argc, char **argv)
+@@ -458,8 +833,8 @@ main (int argc, char **argv)
    int optc;
    bool ok;
    bool delim_specified = false;
@@ -873,7 +870,7 @@ index 6fd8978..faef877 100644
  
    initialize_main (&argc, &argv);
    set_program_name (argv[0]);
-@@ -470,6 +845,8 @@ main (int argc, char **argv)
+@@ -469,6 +844,8 @@ main (int argc, char **argv)
  
    atexit (close_stdout);
  
@@ -882,7 +879,7 @@ index 6fd8978..faef877 100644
    /* By default, all non-delimited lines are printed.  */
    suppress_non_delimited = false;
  
-@@ -481,35 +858,77 @@ main (int argc, char **argv)
+@@ -480,35 +857,77 @@ main (int argc, char **argv)
        switch (optc)
          {
          case 'b':
@@ -970,7 +967,7 @@ index 6fd8978..faef877 100644
            break;
  
          case 's':
-@@ -533,40 +952,57 @@ main (int argc, char **argv)
+@@ -532,40 +951,57 @@ main (int argc, char **argv)
          }
      }
  
@@ -1045,10 +1042,10 @@ index 6fd8978..faef877 100644
  
  
    if (have_read_stdin && fclose (stdin) == EOF)
-diff --git a/src/expand-common.c b/src/expand-common.c
-index deec1bd..b39f740 100644
---- a/src/expand-common.c
-+++ b/src/expand-common.c
+Index: coreutils-9.2/src/expand-common.c
+===================================================================
+--- coreutils-9.2.orig/src/expand-common.c
++++ coreutils-9.2/src/expand-common.c
 @@ -19,6 +19,7 @@
  #include <assert.h>
  #include <stdio.h>
@@ -1177,10 +1174,10 @@ index deec1bd..b39f740 100644
  /* Add the comma or blank separated list of tab stops STOPS
     to the list of tab stops.  */
  extern void
-diff --git a/src/expand-common.h b/src/expand-common.h
-index 5f59a0e..835b9d5 100644
---- a/src/expand-common.h
-+++ b/src/expand-common.h
+Index: coreutils-9.2/src/expand-common.h
+===================================================================
+--- coreutils-9.2.orig/src/expand-common.h
++++ coreutils-9.2/src/expand-common.h
 @@ -25,6 +25,18 @@ extern size_t max_column_width;
  /* The desired exit status.  */
  extern int exit_status;
@@ -1200,10 +1197,10 @@ index 5f59a0e..835b9d5 100644
  /* Add tab stop TABVAL to the end of 'tab_list'.  */
  extern void
  add_tab_stop (uintmax_t tabval);
-diff --git a/src/expand.c b/src/expand.c
-index ed78ca8..a4cefa1 100644
---- a/src/expand.c
-+++ b/src/expand.c
+Index: coreutils-9.2/src/expand.c
+===================================================================
+--- coreutils-9.2.orig/src/expand.c
++++ coreutils-9.2/src/expand.c
 @@ -37,6 +37,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -1245,12 +1242,12 @@ index ed78ca8..a4cefa1 100644
 +    }
 +  }
 +
-+
+ 
 +  if (found_bom == true)
 +  {
 +    print_bom();
 +  }
- 
++
 +  while (true)
 +    {
        /* If true, perform translations.  */
@@ -1356,10 +1353,10 @@ index ed78ca8..a4cefa1 100644
      }
  }
  
-diff --git a/src/fold.c b/src/fold.c
-index f07a90b..d32dbfd 100644
---- a/src/fold.c
-+++ b/src/fold.c
+Index: coreutils-9.2/src/fold.c
+===================================================================
+--- coreutils-9.2.orig/src/fold.c
++++ coreutils-9.2/src/fold.c
 @@ -22,12 +22,34 @@
  #include <getopt.h>
  #include <sys/types.h>
@@ -1441,7 +1438,7 @@ index f07a90b..d32dbfd 100644
    {"spaces", no_argument, NULL, 's'},
    {"width", required_argument, NULL, 'w'},
    {GETOPT_HELP_OPTION_DECL},
-@@ -76,6 +119,7 @@ Wrap input lines in each FILE, writing to standard output.\n\
+@@ -76,6 +119,7 @@ Wrap input lines in each FILE, writing t
  
        fputs (_("\
    -b, --bytes         count bytes rather than columns\n\
@@ -1449,7 +1446,7 @@ index f07a90b..d32dbfd 100644
    -s, --spaces        break at spaces\n\
    -w, --width=WIDTH   use WIDTH columns instead of 80\n\
  "), stdout);
-@@ -93,7 +137,7 @@ Wrap input lines in each FILE, writing to standard output.\n\
+@@ -93,7 +137,7 @@ Wrap input lines in each FILE, writing t
  static size_t
  adjust_column (size_t column, char c)
  {
@@ -1491,7 +1488,7 @@ index f07a90b..d32dbfd 100644
  
    fadvise (istream, FADVISE_SEQUENTIAL);
  
-@@ -169,6 +197,15 @@ fold_file (char const *filename, size_t width)
+@@ -169,6 +197,15 @@ fold_file (char const *filename, size_t
                bool found_blank = false;
                size_t logical_end = offset_out;
  
@@ -1507,7 +1504,7 @@ index f07a90b..d32dbfd 100644
                /* Look for the last blank. */
                while (logical_end)
                  {
-@@ -215,13 +252,225 @@ fold_file (char const *filename, size_t width)
+@@ -215,13 +252,225 @@ fold_file (char const *filename, size_t
        line_out[offset_out++] = c;
      }
  
@@ -1762,10 +1759,10 @@ index f07a90b..d32dbfd 100644
            break;
  
          case 's':		/* Break at word boundaries. */
-diff --git a/src/join.c b/src/join.c
-index f2fd172..6c7d1ed 100644
---- a/src/join.c
-+++ b/src/join.c
+Index: coreutils-9.2/src/join.c
+===================================================================
+--- coreutils-9.2.orig/src/join.c
++++ coreutils-9.2/src/join.c
 @@ -22,19 +22,33 @@
  #include <sys/types.h>
  #include <getopt.h>
@@ -1984,164 +1981,7 @@ index f2fd172..6c7d1ed 100644
  static void
  freeline (struct line *line)
  {
-@@ -331,56 +489,133 @@ keycmp (struct line const *line1, struct line const *line2,
-         size_t jf_1, size_t jf_2)
- {
-   /* Start of field to compare in each file.  */
--  char *beg1;
--  char *beg2;
--
--  size_t len1;
--  size_t len2;		/* Length of fields to compare.  */
-+  char *beg[2];
-+  char *copy[2];
-+  size_t len[2]; 	/* Length of fields to compare.  */
-   int diff;
-+  int i, j;
-+  int mallocd = 0;
- 
-   if (jf_1 < line1->nfields)
-     {
--      beg1 = line1->fields[jf_1].beg;
--      len1 = line1->fields[jf_1].len;
-+      beg[0] = line1->fields[jf_1].beg;
-+      len[0] = line1->fields[jf_1].len;
-     }
-   else
-     {
--      beg1 = NULL;
--      len1 = 0;
-+      beg[0] = NULL;
-+      len[0] = 0;
-     }
- 
-   if (jf_2 < line2->nfields)
-     {
--      beg2 = line2->fields[jf_2].beg;
--      len2 = line2->fields[jf_2].len;
-+      beg[1] = line2->fields[jf_2].beg;
-+      len[1] = line2->fields[jf_2].len;
-     }
-   else
-     {
--      beg2 = NULL;
--      len2 = 0;
-+      beg[1] = NULL;
-+      len[1] = 0;
-     }
- 
--  if (len1 == 0)
--    return len2 == 0 ? 0 : -1;
--  if (len2 == 0)
-+  if (len[0] == 0)
-+    return len[1] == 0 ? 0 : -1;
-+  if (len[1] == 0)
-     return 1;
- 
-   if (ignore_case)
-     {
--      /* FIXME: ignore_case does not work with NLS (in particular,
--         with multibyte chars).  */
--      diff = memcasecmp (beg1, beg2, MIN (len1, len2));
-+#ifdef HAVE_MBRTOWC
-+      if (MB_CUR_MAX > 1)
-+      {
-+        size_t mblength;
-+        wchar_t wc, uwc;
-+        mbstate_t state, state_bak;
-+
-+        memset (&state, '\0', sizeof (mbstate_t));
-+
-+        for (i = 0; i < 2; i++)
-+          {
-+            mallocd = 1;
-+            copy[i] = xmalloc (len[i] + 1);
-+            memset (copy[i], '\0',len[i] + 1);
-+
-+            for (j = 0; j < MIN (len[0], len[1]);)
-+              {
-+                state_bak = state;
-+                mblength = mbrtowc (&wc, beg[i] + j, len[i] - j, &state);
-+
-+                switch (mblength)
-+                  {
-+                  case (size_t) -1:
-+                  case (size_t) -2:
-+                    state = state_bak;
-+                    /* Fall through */
-+                  case 0:
-+                    mblength = 1;
-+                    break;
-+
-+                  default:
-+                    uwc = towupper (wc);
-+
-+                    if (uwc != wc)
-+                      {
-+                        mbstate_t state_wc;
-+                        size_t mblen;
-+
-+                        memset (&state_wc, '\0', sizeof (mbstate_t));
-+                        mblen = wcrtomb (copy[i] + j, uwc, &state_wc);
-+                        assert (mblen != (size_t)-1);
-+                      }
-+                    else
-+                      memcpy (copy[i] + j, beg[i] + j, mblength);
-+                  }
-+                j += mblength;
-+              }
-+            copy[i][j] = '\0';
-+          }
-+      }
-+      else
-+#endif
-+      {
-+        for (i = 0; i < 2; i++)
-+          {
-+            mallocd = 1;
-+            copy[i] = xmalloc (len[i] + 1);
-+
-+            for (j = 0; j < MIN (len[0], len[1]); j++)
-+              copy[i][j] = toupper (beg[i][j]);
-+
-+            copy[i][j] = '\0';
-+          }
-+      }
-     }
-   else
-     {
--      if (hard_LC_COLLATE)
--        return xmemcoll (beg1, len1, beg2, len2);
--      diff = memcmp (beg1, beg2, MIN (len1, len2));
-+      copy[0] = beg[0];
-+      copy[1] = beg[1];
-     }
- 
-+  if (hard_LC_COLLATE)
-+    {
-+      diff = xmemcoll ((char *) copy[0], len[0], (char *) copy[1], len[1]);
-+
-+      if (mallocd)
-+        for (i = 0; i < 2; i++)
-+          free (copy[i]);
-+
-+      return diff;
-+    }
-+  diff = memcmp (copy[0], copy[1], MIN (len[0], len[1]));
-+
-+  if (mallocd)
-+    for (i = 0; i < 2; i++)
-+      free (copy[i]);
-+
-+
-   if (diff)
-     return diff;
--  return len1 < len2 ? -1 : len1 != len2;
-+  return len[0] - len[1];
- }
- 
- /* Check that successive input lines PREV and CURRENT from input file
-@@ -472,6 +707,11 @@ get_line (FILE *fp, struct line **linep, int which)
+@@ -472,6 +630,11 @@ get_line (FILE *fp, struct line **linep,
      }
    ++line_no[which - 1];
  
@@ -2153,7 +1993,7 @@ index f2fd172..6c7d1ed 100644
    xfields (line);
  
    if (prevline[which - 1])
-@@ -567,21 +807,28 @@ prfield (size_t n, struct line const *line)
+@@ -567,21 +730,28 @@ prfield (size_t n, struct line const *li
  
  /* Output all the fields in line, other than the join field.  */
  
@@ -2185,7 +2025,7 @@ index f2fd172..6c7d1ed 100644
        prfield (i, line);
      }
  }
-@@ -592,7 +839,6 @@ static void
+@@ -592,7 +762,6 @@ static void
  prjoin (struct line const *line1, struct line const *line2)
  {
    const struct outlist *outlist;
@@ -2193,7 +2033,7 @@ index f2fd172..6c7d1ed 100644
    size_t field;
    struct line const *line;
  
-@@ -626,7 +872,7 @@ prjoin (struct line const *line1, struct line const *line2)
+@@ -626,7 +795,7 @@ prjoin (struct line const *line1, struct
            o = o->next;
            if (o == NULL)
              break;
@@ -2202,7 +2042,7 @@ index f2fd172..6c7d1ed 100644
          }
        putchar (eolchar);
      }
-@@ -1102,20 +1348,43 @@ main (int argc, char **argv)
+@@ -1102,20 +1271,43 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -2255,11 +2095,11 @@ index f2fd172..6c7d1ed 100644
            }
            break;
  
-diff --git a/src/local.mk b/src/local.mk
-index e1d15ce..1a5ffaa 100644
---- a/src/local.mk
-+++ b/src/local.mk
-@@ -434,8 +434,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(AM_CPPFLAGS)
+Index: coreutils-9.2/src/local.mk
+===================================================================
+--- coreutils-9.2.orig/src/local.mk
++++ coreutils-9.2/src/local.mk
+@@ -438,8 +438,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
  src_basenc_SOURCES = src/basenc.c
  src_basenc_CPPFLAGS = -DBASE_TYPE=42 $(AM_CPPFLAGS)
  
@@ -2270,10 +2110,10 @@ index e1d15ce..1a5ffaa 100644
  
  src_wc_SOURCES = src/wc.c
  if USE_AVX2_WC_LINECOUNT
-diff --git a/src/pr.c b/src/pr.c
-index 4c17c00..b4fab1c 100644
---- a/src/pr.c
-+++ b/src/pr.c
+Index: coreutils-9.2/src/pr.c
+===================================================================
+--- coreutils-9.2.orig/src/pr.c
++++ coreutils-9.2/src/pr.c
 @@ -311,6 +311,24 @@
  
  #include <getopt.h>
@@ -2494,7 +2334,7 @@ index 4c17c00..b4fab1c 100644
            use_col_separator = true;
            if (optarg)
              separator_string (optarg);
-@@ -1166,10 +1250,45 @@ getoptnum (char const *n_str, int min, int *num, char const *err)
+@@ -1166,10 +1250,45 @@ getoptnum (char const *n_str, int min, i
     a number. */
  
  static void
@@ -2542,7 +2382,7 @@ index 4c17c00..b4fab1c 100644
    if (*arg)
      {
        long int tmp_long;
-@@ -1191,6 +1310,11 @@ static void
+@@ -1198,6 +1317,11 @@ static void
  init_parameters (int number_of_files)
  {
    int chars_used_by_number = 0;
@@ -2554,7 +2394,7 @@ index 4c17c00..b4fab1c 100644
  
    lines_per_body = lines_per_page - lines_per_header - lines_per_footer;
    if (lines_per_body <= 0)
-@@ -1228,7 +1352,7 @@ init_parameters (int number_of_files)
+@@ -1235,7 +1359,7 @@ init_parameters (int number_of_files)
            else
              col_sep_string = column_separator;
  
@@ -2563,7 +2403,7 @@ index 4c17c00..b4fab1c 100644
            use_col_separator = true;
          }
        /* It's rather pointless to define a TAB separator with column
-@@ -1260,11 +1384,11 @@ init_parameters (int number_of_files)
+@@ -1267,11 +1391,11 @@ init_parameters (int number_of_files)
               + TAB_WIDTH (chars_per_input_tab, chars_per_number);   */
  
        /* Estimate chars_per_text without any margin and keep it constant. */
@@ -2577,7 +2417,7 @@ index 4c17c00..b4fab1c 100644
  
        /* The number is part of the column width unless we are
           printing files in parallel. */
-@@ -1273,7 +1397,7 @@ init_parameters (int number_of_files)
+@@ -1280,7 +1404,7 @@ init_parameters (int number_of_files)
      }
  
    int sep_chars, useful_chars;
@@ -2586,7 +2426,7 @@ index 4c17c00..b4fab1c 100644
      sep_chars = INT_MAX;
    if (INT_SUBTRACT_WRAPV (chars_per_line - chars_used_by_number, sep_chars,
                            &useful_chars))
-@@ -1296,7 +1420,7 @@ init_parameters (int number_of_files)
+@@ -1303,7 +1427,7 @@ init_parameters (int number_of_files)
       We've to use 8 as the lower limit, if we use chars_per_default_tab = 8
       to expand a tab which is not an input_tab-char. */
    free (clump_buff);
@@ -2595,7 +2435,7 @@ index 4c17c00..b4fab1c 100644
  }
  
  /* Open the necessary files,
-@@ -1402,7 +1526,7 @@ init_funcs (void)
+@@ -1409,7 +1533,7 @@ init_funcs (void)
  
    /* Enlarge p->start_position of first column to use the same form of
       padding_not_printed with all columns. */
@@ -2604,7 +2444,7 @@ index 4c17c00..b4fab1c 100644
  
    /* This loop takes care of all but the rightmost column. */
  
-@@ -1436,7 +1560,7 @@ init_funcs (void)
+@@ -1443,7 +1567,7 @@ init_funcs (void)
          }
        else
          {
@@ -2613,7 +2453,7 @@ index 4c17c00..b4fab1c 100644
            h_next = h + chars_per_column;
          }
      }
-@@ -1733,9 +1857,9 @@ static void
+@@ -1740,9 +1864,9 @@ static void
  align_column (COLUMN *p)
  {
    padding_not_printed = p->start_position;
@@ -2625,7 +2465,7 @@ index 4c17c00..b4fab1c 100644
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2010,13 +2134,13 @@ store_char (char c)
+@@ -2017,13 +2141,13 @@ store_char (char c)
        /* May be too generous. */
        buff = X2REALLOC (buff, &buff_allocated);
      }
@@ -2641,7 +2481,7 @@ index 4c17c00..b4fab1c 100644
    char *s;
    int num_width;
  
-@@ -2033,22 +2157,24 @@ add_line_number (COLUMN *p)
+@@ -2040,22 +2164,24 @@ add_line_number (COLUMN *p)
        /* Tabification is assumed for multiple columns, also for n-separators,
           but 'default n-separator = TAB' hasn't been given priority over
           equal column_width also specified by POSIX. */
@@ -2670,7 +2510,7 @@ index 4c17c00..b4fab1c 100644
          output_position = POS_AFTER_TAB (chars_per_output_tab,
                            output_position);
      }
-@@ -2207,7 +2333,7 @@ print_white_space (void)
+@@ -2214,7 +2340,7 @@ print_white_space (void)
    while (goal - h_old > 1
           && (h_new = POS_AFTER_TAB (chars_per_output_tab, h_old)) <= goal)
      {
@@ -2679,7 +2519,7 @@ index 4c17c00..b4fab1c 100644
        h_old = h_new;
      }
    while (++h_old <= goal)
-@@ -2227,6 +2353,7 @@ print_sep_string (void)
+@@ -2234,6 +2360,7 @@ print_sep_string (void)
  {
    char const *s = col_sep_string;
    int l = col_sep_length;
@@ -2687,7 +2527,7 @@ index 4c17c00..b4fab1c 100644
  
    if (separators_not_printed <= 0)
      {
-@@ -2238,6 +2365,7 @@ print_sep_string (void)
+@@ -2245,6 +2372,7 @@ print_sep_string (void)
      {
        for (; separators_not_printed > 0; --separators_not_printed)
          {
@@ -2695,7 +2535,7 @@ index 4c17c00..b4fab1c 100644
            while (l-- > 0)
              {
                /* 3 types of sep_strings: spaces only, spaces and chars,
-@@ -2251,12 +2379,15 @@ print_sep_string (void)
+@@ -2258,12 +2386,15 @@ print_sep_string (void)
                  }
                else
                  {
@@ -2712,7 +2552,7 @@ index 4c17c00..b4fab1c 100644
            /* sep_string ends with some spaces */
            if (spaces_not_printed > 0)
              print_white_space ();
-@@ -2284,7 +2415,7 @@ print_clump (COLUMN *p, int n, char *clump)
+@@ -2291,7 +2422,7 @@ print_clump (COLUMN *p, int n, char *clu
     required number of tabs and spaces. */
  
  static void
@@ -2721,7 +2561,7 @@ index 4c17c00..b4fab1c 100644
  {
    if (tabify_output)
      {
-@@ -2308,6 +2439,74 @@ print_char (char c)
+@@ -2315,6 +2446,74 @@ print_char (char c)
    putchar (c);
  }
  
@@ -2796,7 +2636,7 @@ index 4c17c00..b4fab1c 100644
  /* Skip to page PAGE before printing.
     PAGE may be larger than total number of pages. */
  
-@@ -2485,9 +2684,9 @@ read_line (COLUMN *p)
+@@ -2492,9 +2691,9 @@ read_line (COLUMN *p)
            align_empty_cols = false;
          }
  
@@ -2808,7 +2648,7 @@ index 4c17c00..b4fab1c 100644
            padding_not_printed = ANYWHERE;
          }
  
-@@ -2556,7 +2755,7 @@ print_stored (COLUMN *p)
+@@ -2563,7 +2762,7 @@ print_stored (COLUMN *p)
    COLUMN *q;
  
    int line = p->current_line++;
@@ -2817,7 +2657,7 @@ index 4c17c00..b4fab1c 100644
    /* FIXME
       UMR: Uninitialized memory read:
       * This is occurring while in:
-@@ -2568,7 +2767,7 @@ print_stored (COLUMN *p)
+@@ -2575,7 +2774,7 @@ print_stored (COLUMN *p)
       xmalloc        [xmalloc.c:94]
       init_store_cols [pr.c:1648]
       */
@@ -2826,7 +2666,7 @@ index 4c17c00..b4fab1c 100644
  
    pad_vertically = true;
  
-@@ -2588,9 +2787,9 @@ print_stored (COLUMN *p)
+@@ -2595,9 +2794,9 @@ print_stored (COLUMN *p)
          }
      }
  
@@ -2838,7 +2678,7 @@ index 4c17c00..b4fab1c 100644
        padding_not_printed = ANYWHERE;
      }
  
-@@ -2603,8 +2802,8 @@ print_stored (COLUMN *p)
+@@ -2610,8 +2809,8 @@ print_stored (COLUMN *p)
    if (spaces_not_printed == 0)
      {
        output_position = p->start_position + end_vector[line];
@@ -2849,7 +2689,7 @@ index 4c17c00..b4fab1c 100644
      }
  
    return true;
-@@ -2623,7 +2822,7 @@ print_stored (COLUMN *p)
+@@ -2630,7 +2829,7 @@ print_stored (COLUMN *p)
     number of characters is 1.) */
  
  static int
@@ -2858,7 +2698,7 @@ index 4c17c00..b4fab1c 100644
  {
    unsigned char uc = c;
    char *s = clump_buff;
-@@ -2633,10 +2832,10 @@ char_to_clump (char c)
+@@ -2640,10 +2839,10 @@ char_to_clump (char c)
    int chars;
    int chars_per_c = 8;
  
@@ -2871,7 +2711,7 @@ index 4c17c00..b4fab1c 100644
      {
        width = TAB_WIDTH (chars_per_c, input_position);
  
-@@ -2717,6 +2916,164 @@ char_to_clump (char c)
+@@ -2724,6 +2923,164 @@ char_to_clump (char c)
    return chars;
  }
  
@@ -3036,10 +2876,10 @@ index 4c17c00..b4fab1c 100644
  /* We've just printed some files and need to clean up things before
     looking for more options and printing the next batch of files.
  
-diff --git a/src/sort.c b/src/sort.c
-index 3b775d6..a0ba243 100644
---- a/src/sort.c
-+++ b/src/sort.c
+Index: coreutils-9.2/src/sort.c
+===================================================================
+--- coreutils-9.2.orig/src/sort.c
++++ coreutils-9.2/src/sort.c
 @@ -29,6 +29,14 @@
  #include <sys/wait.h>
  #include <signal.h>
@@ -3169,7 +3009,7 @@ index 3b775d6..a0ba243 100644
  
  static int
  struct_month_cmp (void const *m1, void const *m2)
-@@ -1287,7 +1358,7 @@ struct_month_cmp (void const *m1, void const *m2)
+@@ -1287,7 +1358,7 @@ struct_month_cmp (void const *m1, void c
  /* Initialize the character class tables. */
  
  static void
@@ -3187,7 +3027,7 @@ index 3b775d6..a0ba243 100644
    /* If we're not in the "C" locale, read different names for months.  */
    if (hard_LC_TIME)
      {
-@@ -1381,6 +1452,84 @@ specify_nmerge (int oi, char c, char const *s)
+@@ -1381,6 +1452,84 @@ specify_nmerge (int oi, char c, char con
      xstrtol_fatal (e, oi, c, long_options, s);
  }
  
@@ -3272,7 +3112,7 @@ index 3b775d6..a0ba243 100644
  /* Specify the amount of main memory to use when sorting.  */
  static void
  specify_sort_size (int oi, char c, char const *s)
-@@ -1612,7 +1761,7 @@ buffer_linelim (struct buffer const *buf)
+@@ -1612,7 +1761,7 @@ buffer_linelim (struct buffer const *buf
     by KEY in LINE. */
  
  static char *
@@ -3281,7 +3121,7 @@ index 3b775d6..a0ba243 100644
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t sword = key->sword;
-@@ -1621,10 +1770,10 @@ begfield (struct line const *line, struct keyfield const *key)
+@@ -1621,10 +1770,10 @@ begfield (struct line const *line, struc
    /* The leading field separator itself is included in a field when -t
       is absent.  */
  
@@ -3294,7 +3134,7 @@ index 3b775d6..a0ba243 100644
            ++ptr;
          if (ptr < lim)
            ++ptr;
-@@ -1650,12 +1799,71 @@ begfield (struct line const *line, struct keyfield const *key)
+@@ -1650,12 +1799,71 @@ begfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3367,7 +3207,7 @@ index 3b775d6..a0ba243 100644
  {
    char *ptr = line->text, *lim = ptr + line->length - 1;
    size_t eword = key->eword, echar = key->echar;
-@@ -1670,10 +1878,10 @@ limfield (struct line const *line, struct keyfield const *key)
+@@ -1670,10 +1878,10 @@ limfield (struct line const *line, struc
       'beginning' is the first character following the delimiting TAB.
       Otherwise, leave PTR pointing at the first 'blank' character after
       the preceding field.  */
@@ -3380,7 +3220,7 @@ index 3b775d6..a0ba243 100644
            ++ptr;
          if (ptr < lim && (eword || echar))
            ++ptr;
-@@ -1719,10 +1927,10 @@ limfield (struct line const *line, struct keyfield const *key)
+@@ -1719,10 +1927,10 @@ limfield (struct line const *line, struc
       */
  
    /* Make LIM point to the end of (one byte past) the current field.  */
@@ -3393,7 +3233,7 @@ index 3b775d6..a0ba243 100644
        if (newlim)
          lim = newlim;
      }
-@@ -1753,6 +1961,130 @@ limfield (struct line const *line, struct keyfield const *key)
+@@ -1753,6 +1961,130 @@ limfield (struct line const *line, struc
    return ptr;
  }
  
@@ -3524,7 +3364,7 @@ index 3b775d6..a0ba243 100644
  /* Fill BUF reading from FP, moving buf->left bytes from the end
     of buf->buf to the beginning first.  If EOF is reached and the
     file wasn't terminated by a newline, supply one.  Set up BUF's line
-@@ -1839,8 +2171,22 @@ fillbuf (struct buffer *buf, FILE *fp, char const *file)
+@@ -1839,8 +2171,22 @@ fillbuf (struct buffer *buf, FILE *fp, c
                    else
                      {
                        if (key->skipsblanks)
@@ -3549,7 +3389,7 @@ index 3b775d6..a0ba243 100644
                        line->keybeg = line_start;
                      }
                  }
-@@ -1976,12 +2322,10 @@ find_unit_order (char const *number)
+@@ -1978,24 +2324,42 @@ find_unit_order (char const *number)
  
  ATTRIBUTE_PURE
  static int
@@ -3565,20 +3405,10 @@ index 3b775d6..a0ba243 100644
  
    int diff = find_unit_order (a) - find_unit_order (b);
    return (diff ? diff : strnumcmp (a, b, decimal_point, thousands_sep));
-@@ -1993,7 +2337,7 @@ human_numcompare (char const *a, char const *b)
- 
- ATTRIBUTE_PURE
- static int
--numcompare (char const *a, char const *b)
-+numcompare_uni (const char *a, const char *b)
- {
-   while (blanks[to_uchar (*a)])
-     a++;
-@@ -2003,6 +2347,25 @@ numcompare (char const *a, char const *b)
-   return strnumcmp (a, b, decimal_point, thousands_sep);
  }
  
 +#if HAVE_MBRTOWC
++ATTRIBUTE_PURE
 +static int
 +numcompare_mb (const char *a, const char *b)
 +{
@@ -3597,10 +3427,18 @@ index 3b775d6..a0ba243 100644
 +}
 +#endif /* HAV_EMBRTOWC */
 +
- /* Work around a problem whereby the long double value returned by glibc's
-    strtold ("NaN", ...) contains uninitialized bits: clear all bytes of
-    A and B before calling strtold.  FIXME: remove this function if
-@@ -2053,7 +2416,7 @@ general_numcompare (char const *sa, char const *sb)
+ /* Compare strings A and B as numbers without explicitly converting them to
+    machine numbers.  Comparatively slow for short strings, but asymptotically
+    hideously fast. */
+ 
+ ATTRIBUTE_PURE
+ static int
+-numcompare (char const *a, char const *b)
++numcompare_uni (const char *a, const char *b)
+ {
+   while (blanks[to_uchar (*a)])
+     a++;
+@@ -2046,7 +2410,7 @@ general_numcompare (char const *sa, char
     Return 0 if the name in S is not recognized.  */
  
  static int
@@ -3609,7 +3447,7 @@ index 3b775d6..a0ba243 100644
  {
    size_t lo = 0;
    size_t hi = MONTHS_PER_YEAR;
-@@ -2329,15 +2692,14 @@ debug_key (struct line const *line, struct keyfield const *key)
+@@ -2322,15 +2686,14 @@ debug_key (struct line const *line, stru
            char saved = *lim;
            *lim = '\0';
  
@@ -3627,7 +3465,7 @@ index 3b775d6..a0ba243 100644
            else if (key->general_numeric)
              ignore_value (strtold (beg, &tighter_lim));
            else if (key->numeric || key->human_numeric)
-@@ -2483,7 +2845,7 @@ key_warnings (struct keyfield const *gkey, bool gkey_only)
+@@ -2476,7 +2839,7 @@ key_warnings (struct keyfield const *gke
        /* Warn about significant leading blanks.  */
        bool implicit_skip = key_numeric (key) || key->month;
        bool line_offset = key->eword == 0 && key->echar != 0; /* -k1.x,1.y  */
@@ -3636,7 +3474,7 @@ index 3b775d6..a0ba243 100644
            && ((!key->skipsblanks && !implicit_skip)
                || (!key->skipsblanks && key->schar)
                || (!key->skipeblanks && key->echar)))
-@@ -2531,9 +2893,9 @@ key_warnings (struct keyfield const *gkey, bool gkey_only)
+@@ -2524,9 +2887,9 @@ key_warnings (struct keyfield const *gke
    bool number_locale_warned = false;
    if (basic_numeric_field_span)
      {
@@ -3649,7 +3487,7 @@ index 3b775d6..a0ba243 100644
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2544,9 +2906,9 @@ key_warnings (struct keyfield const *gkey, bool gkey_only)
+@@ -2537,9 +2900,9 @@ key_warnings (struct keyfield const *gke
      }
    if (basic_numeric_field_span || general_numeric_field_span)
      {
@@ -3662,7 +3500,7 @@ index 3b775d6..a0ba243 100644
          {
            error (0, 0,
                   _("field separator %s is treated as a "
-@@ -2554,19 +2916,19 @@ key_warnings (struct keyfield const *gkey, bool gkey_only)
+@@ -2547,19 +2910,19 @@ key_warnings (struct keyfield const *gke
                   quote (((char []) {decimal_point, 0})));
            number_locale_warned = true;
          }
@@ -3686,7 +3524,7 @@ index 3b775d6..a0ba243 100644
          }
      }
  
-@@ -2577,7 +2939,7 @@ key_warnings (struct keyfield const *gkey, bool gkey_only)
+@@ -2570,7 +2933,7 @@ key_warnings (struct keyfield const *gke
      {
        error (0, 0,
               _("%snumbers use %s as a decimal point in this locale"),
@@ -3695,8 +3533,8 @@ index 3b775d6..a0ba243 100644
               quote (((char []) {decimal_point, 0})));
  
      }
-@@ -2610,11 +2972,87 @@ key_warnings (struct keyfield const *gkey, bool gkey_only)
-     error (0, 0, _("option '-r' only applies to last-resort comparison"));
+@@ -2612,11 +2975,87 @@ diff_reversed (int diff, bool reversed)
+   return reversed ? (diff < 0) - (diff > 0) : diff;
  }
  
 +#if HAVE_MBRTOWC
@@ -3784,7 +3622,7 @@ index 3b775d6..a0ba243 100644
  {
    struct keyfield *key = keylist;
  
-@@ -2699,7 +3137,7 @@ keycompare (struct line const *a, struct line const *b)
+@@ -2697,7 +3136,7 @@ keycompare (struct line const *a, struct
            else if (key->human_numeric)
              diff = human_numcompare (ta, tb);
            else if (key->month)
@@ -3793,8 +3631,8 @@ index 3b775d6..a0ba243 100644
            else if (key->random)
              diff = compare_random (ta, tlena, tb, tlenb);
            else if (key->version)
-@@ -2815,6 +3253,211 @@ keycompare (struct line const *a, struct line const *b)
-   return key->reverse ? -diff : diff;
+@@ -2807,6 +3246,211 @@ keycompare (struct line const *a, struct
+   return diff_reversed (diff, key->reverse);
  }
  
 +#if HAVE_MBRTOWC
@@ -4005,7 +3843,7 @@ index 3b775d6..a0ba243 100644
  /* Compare two lines A and B, returning negative, zero, or positive
     depending on whether A compares less than, equal to, or greater than B. */
  
-@@ -2842,7 +3485,7 @@ compare (struct line const *a, struct line const *b)
+@@ -2834,7 +3478,7 @@ compare (struct line const *a, struct li
      diff = - NONZERO (blen);
    else if (blen == 0)
      diff = 1;
@@ -4014,7 +3852,7 @@ index 3b775d6..a0ba243 100644
      {
        /* xmemcoll0 is a performance enhancement as
           it will not unconditionally write '\0' after the
-@@ -4226,6 +4869,7 @@ set_ordering (char const *s, struct keyfield *key, enum blanktype blanktype)
+@@ -4222,6 +4866,7 @@ set_ordering (char const *s, struct keyf
            break;
          case 'f':
            key->translate = fold_toupper;
@@ -4022,7 +3860,7 @@ index 3b775d6..a0ba243 100644
            break;
          case 'g':
            key->general_numeric = true;
-@@ -4305,7 +4949,7 @@ main (int argc, char **argv)
+@@ -4301,7 +4946,7 @@ main (int argc, char **argv)
    initialize_exit_failure (SORT_FAILURE);
  
    hard_LC_COLLATE = hard_locale (LC_COLLATE);
@@ -4031,7 +3869,7 @@ index 3b775d6..a0ba243 100644
    hard_LC_TIME = hard_locale (LC_TIME);
  #endif
  
-@@ -4328,6 +4972,29 @@ main (int argc, char **argv)
+@@ -4324,6 +4969,29 @@ main (int argc, char **argv)
        thousands_sep = NON_CHAR;
    }
  
@@ -4061,7 +3899,7 @@ index 3b775d6..a0ba243 100644
    have_read_stdin = false;
    inittables ();
  
-@@ -4602,13 +5269,34 @@ main (int argc, char **argv)
+@@ -4598,13 +5266,34 @@ main (int argc, char **argv)
  
          case 't':
            {
@@ -4100,7 +3938,7 @@ index 3b775d6..a0ba243 100644
                  else
                    {
                      /* Provoke with 'sort -txx'.  Complain about
-@@ -4619,9 +5307,11 @@ main (int argc, char **argv)
+@@ -4615,9 +5304,11 @@ main (int argc, char **argv)
                           quote (optarg));
                    }
                }
@@ -4114,10 +3952,10 @@ index 3b775d6..a0ba243 100644
            }
            break;
  
-diff --git a/src/unexpand.c b/src/unexpand.c
-index 7d6100f..04cd646 100644
---- a/src/unexpand.c
-+++ b/src/unexpand.c
+Index: coreutils-9.2/src/unexpand.c
+===================================================================
+--- coreutils-9.2.orig/src/unexpand.c
++++ coreutils-9.2/src/unexpand.c
 @@ -38,6 +38,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -4150,11 +3988,11 @@ index 7d6100f..04cd646 100644
      return;
 +  mbf_init (mbf, fp);
 +  found_bom=check_bom(fp,&mbf);
-+
+ 
 +  if (using_utf_locale == false && found_bom == true)
 +  {
 +    /*try using some predefined locale */
- 
++
 +    if (set_utf_locale () != 0)
 +    {
 +      error (EXIT_FAILURE, errno, _("cannot set UTF-8 locale"));
@@ -4319,10 +4157,10 @@ index 7d6100f..04cd646 100644
      }
  }
  
-diff --git a/src/uniq.c b/src/uniq.c
-index e5996f0..871d47c 100644
---- a/src/uniq.c
-+++ b/src/uniq.c
+Index: coreutils-9.2/src/uniq.c
+===================================================================
+--- coreutils-9.2.orig/src/uniq.c
++++ coreutils-9.2/src/uniq.c
 @@ -21,6 +21,17 @@
  #include <getopt.h>
  #include <sys/types.h>
@@ -4371,7 +4209,7 @@ index e5996f0..871d47c 100644
  static struct option const longopts[] =
  {
    {"count", no_argument, NULL, 'c'},
-@@ -254,7 +281,7 @@ size_opt (char const *opt, char const *msgid)
+@@ -254,7 +281,7 @@ size_opt (char const *opt, char const *m
  
  ATTRIBUTE_PURE
  static char *
@@ -4380,7 +4218,7 @@ index e5996f0..871d47c 100644
  {
    size_t count;
    char const *lp = line->buffer;
-@@ -274,6 +301,83 @@ find_field (struct linebuffer const *line)
+@@ -274,6 +301,83 @@ find_field (struct linebuffer const *lin
    return line->buffer + i;
  }
  
@@ -4484,10 +4322,10 @@ index e5996f0..871d47c 100644
    skip_chars = 0;
    skip_fields = 0;
    check_chars = SIZE_MAX;
-diff --git a/tests/Coreutils.pm b/tests/Coreutils.pm
-index fad7ab9..c9021a6 100644
---- a/tests/Coreutils.pm
-+++ b/tests/Coreutils.pm
+Index: coreutils-9.2/tests/Coreutils.pm
+===================================================================
+--- coreutils-9.2.orig/tests/Coreutils.pm
++++ coreutils-9.2/tests/Coreutils.pm
 @@ -269,6 +269,9 @@ sub run_tests ($$$$$)
        # Yes, this is an arbitrary limit.  If it causes trouble,
        # consider removing it.
@@ -4498,11 +4336,10 @@ index fad7ab9..c9021a6 100644
        if ($max < length $test_name)
          {
            warn "$program_name: $test_name: test name is too long (> $max)\n";
-diff --git a/tests/expand/mb.sh b/tests/expand/mb.sh
-new file mode 100755
-index 0000000..dd6007c
+Index: coreutils-9.2/tests/expand/mb.sh
+===================================================================
 --- /dev/null
-+++ b/tests/expand/mb.sh
++++ coreutils-9.2/tests/expand/mb.sh
 @@ -0,0 +1,183 @@
 +#!/bin/sh
 +
@@ -4687,11 +4524,10 @@ index 0000000..dd6007c
 +compare exp out > /dev/null 2>&1 || fail=1
 +
 +exit $fail
-diff --git a/tests/i18n/sort.sh b/tests/i18n/sort.sh
-new file mode 100755
-index 0000000..26c95de
+Index: coreutils-9.2/tests/i18n/sort.sh
+===================================================================
 --- /dev/null
-+++ b/tests/i18n/sort.sh
++++ coreutils-9.2/tests/i18n/sort.sh
 @@ -0,0 +1,29 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4722,11 +4558,11 @@ index 0000000..26c95de
 +
 +
 +Exit $fail
-diff --git a/tests/local.mk b/tests/local.mk
-index 0f77786..dbe1843 100644
---- a/tests/local.mk
-+++ b/tests/local.mk
-@@ -377,6 +377,8 @@ all_tests =					\
+Index: coreutils-9.2/tests/local.mk
+===================================================================
+--- coreutils-9.2.orig/tests/local.mk
++++ coreutils-9.2/tests/local.mk
+@@ -381,6 +381,8 @@ all_tests =					\
    tests/misc/sort-discrim.sh			\
    tests/misc/sort-files0-from.pl		\
    tests/misc/sort-float.sh			\
@@ -4735,7 +4571,7 @@ index 0f77786..dbe1843 100644
    tests/misc/sort-h-thousands-sep.sh		\
    tests/misc/sort-merge.pl			\
    tests/misc/sort-merge-fdlimit.sh		\
-@@ -576,6 +578,7 @@ all_tests =					\
+@@ -582,6 +584,7 @@ all_tests =					\
    tests/du/threshold.sh				\
    tests/du/trailing-slash.sh			\
    tests/du/two-args.sh				\
@@ -4743,7 +4579,7 @@ index 0f77786..dbe1843 100644
    tests/id/gnu-zero-uids.sh			\
    tests/id/no-context.sh			\
    tests/id/context.sh				\
-@@ -727,6 +730,7 @@ all_tests =					\
+@@ -734,6 +737,7 @@ all_tests =					\
    tests/touch/read-only.sh			\
    tests/touch/relative.sh			\
    tests/touch/trailing-slash.sh			\
@@ -4751,10 +4587,10 @@ index 0f77786..dbe1843 100644
    $(all_root_tests)
  
  # See tests/factor/create-test.sh.
-diff --git a/tests/misc/expand.pl b/tests/misc/expand.pl
-index 7a77e6f..27f6652 100755
---- a/tests/misc/expand.pl
-+++ b/tests/misc/expand.pl
+Index: coreutils-9.2/tests/misc/expand.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/expand.pl
++++ coreutils-9.2/tests/misc/expand.pl
 @@ -27,6 +27,15 @@ my $prog = 'expand';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4818,10 +4654,10 @@ index 7a77e6f..27f6652 100755
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-diff --git a/tests/misc/fold.pl b/tests/misc/fold.pl
-index 2834f92..bc1616a 100755
---- a/tests/misc/fold.pl
-+++ b/tests/misc/fold.pl
+Index: coreutils-9.2/tests/misc/fold.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/fold.pl
++++ coreutils-9.2/tests/misc/fold.pl
 @@ -20,9 +20,18 @@ use strict;
  
  (my $program_name = $0) =~ s|.*/||;
@@ -4891,10 +4727,10 @@ index 2834f92..bc1616a 100755
 -my $prog = 'fold';
  my $fail = run_tests ($program_name, $prog, \@Tests, $save_temps, $verbose);
  exit $fail;
-diff --git a/tests/misc/join.pl b/tests/misc/join.pl
-index 06ad777..be40204 100755
---- a/tests/misc/join.pl
-+++ b/tests/misc/join.pl
+Index: coreutils-9.2/tests/misc/join.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/join.pl
++++ coreutils-9.2/tests/misc/join.pl
 @@ -25,6 +25,15 @@ my $limits = getlimits ();
  
  my $prog = 'join';
@@ -4961,11 +4797,10 @@ index 06ad777..be40204 100755
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-diff --git a/tests/misc/sort-mb-tests.sh b/tests/misc/sort-mb-tests.sh
-new file mode 100755
-index 0000000..11836ba
+Index: coreutils-9.2/tests/misc/sort-mb-tests.sh
+===================================================================
 --- /dev/null
-+++ b/tests/misc/sort-mb-tests.sh
++++ coreutils-9.2/tests/misc/sort-mb-tests.sh
 @@ -0,0 +1,45 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -5012,10 +4847,10 @@ index 0000000..11836ba
 +compare exp out || { fail=1; cat out; }
 +
 +Exit $fail
-diff --git a/tests/misc/sort-merge.pl b/tests/misc/sort-merge.pl
-index 7eb4574..eda884c 100755
---- a/tests/misc/sort-merge.pl
-+++ b/tests/misc/sort-merge.pl
+Index: coreutils-9.2/tests/misc/sort-merge.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/sort-merge.pl
++++ coreutils-9.2/tests/misc/sort-merge.pl
 @@ -26,6 +26,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -5072,10 +4907,10 @@ index 7eb4574..eda884c 100755
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-diff --git a/tests/misc/sort.pl b/tests/misc/sort.pl
-index 0b0adca..fd27821 100755
---- a/tests/misc/sort.pl
-+++ b/tests/misc/sort.pl
+Index: coreutils-9.2/tests/misc/sort.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/sort.pl
++++ coreutils-9.2/tests/misc/sort.pl
 @@ -24,10 +24,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -5140,10 +4975,10 @@ index 0b0adca..fd27821 100755
  
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
-diff --git a/tests/misc/unexpand.pl b/tests/misc/unexpand.pl
-index 2e1906f..fe66012 100755
---- a/tests/misc/unexpand.pl
-+++ b/tests/misc/unexpand.pl
+Index: coreutils-9.2/tests/misc/unexpand.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/unexpand.pl
++++ coreutils-9.2/tests/misc/unexpand.pl
 @@ -27,6 +27,14 @@ my $limits = getlimits ();
  
  my $prog = 'unexpand';
@@ -5197,10 +5032,10 @@ index 2e1906f..fe66012 100755
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-diff --git a/tests/misc/uniq.pl b/tests/misc/uniq.pl
-index aa163cd..91d617d 100755
---- a/tests/misc/uniq.pl
-+++ b/tests/misc/uniq.pl
+Index: coreutils-9.2/tests/misc/uniq.pl
+===================================================================
+--- coreutils-9.2.orig/tests/misc/uniq.pl
++++ coreutils-9.2/tests/misc/uniq.pl
 @@ -23,9 +23,17 @@ my $limits = getlimits ();
  my $prog = 'uniq';
  my $try = "Try '$prog --help' for more information.\n";
@@ -5273,10 +5108,10 @@ index aa163cd..91d617d 100755
  @Tests = add_z_variants \@Tests;
  @Tests = triple_test \@Tests;
  
-diff --git a/tests/pr/pr-tests.pl b/tests/pr/pr-tests.pl
-index 7ac6d4c..ae6cc35 100755
---- a/tests/pr/pr-tests.pl
-+++ b/tests/pr/pr-tests.pl
+Index: coreutils-9.2/tests/pr/pr-tests.pl
+===================================================================
+--- coreutils-9.2.orig/tests/pr/pr-tests.pl
++++ coreutils-9.2/tests/pr/pr-tests.pl
 @@ -24,6 +24,15 @@ use strict;
  my $prog = 'pr';
  my $normalize_strerror = "s/': .*/'/";
@@ -5342,11 +5177,10 @@ index 7ac6d4c..ae6cc35 100755
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-diff --git a/tests/unexpand/mb.sh b/tests/unexpand/mb.sh
-new file mode 100755
-index 0000000..8a82d74
+Index: coreutils-9.2/tests/unexpand/mb.sh
+===================================================================
 --- /dev/null
-+++ b/tests/unexpand/mb.sh
++++ coreutils-9.2/tests/unexpand/mb.sh
 @@ -0,0 +1,172 @@
 +#!/bin/sh
 +
@@ -5520,6 +5354,3 @@ index 0000000..8a82d74
 +
 +LC_ALL=C unexpand in in > out || fail=1
 +compare exp out > /dev/null 2>&1 || fail=1
--- 
-2.34.1
-

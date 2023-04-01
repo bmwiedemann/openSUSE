@@ -6,18 +6,18 @@ Index: gnulib-tests/gnulib.mk
 ===================================================================
 --- gnulib-tests/gnulib.mk.orig
 +++ gnulib-tests/gnulib.mk
-@@ -1073,10 +1073,10 @@ EXTRA_DIST += test-getloadavg.c signatur
+@@ -1115,10 +1115,10 @@ EXTRA_DIST += test-getloadavg.c signatur
  
  ## begin gnulib module getlogin-tests
  
 -TESTS += test-getlogin
 -check_PROGRAMS += test-getlogin
--test_getlogin_LDADD = $(LDADD) $(LIB_GETLOGIN)
+-test_getlogin_LDADD = $(LDADD) $(GETLOGIN_LIB)
 -EXTRA_DIST += test-getlogin.c test-getlogin.h signature.h macros.h
-+#TESTS += test-getlogin
-+#check_PROGRAMS += test-getlogin
-+#test_getlogin_LDADD = $(LDADD) $(LIB_GETLOGIN)
-+#EXTRA_DIST += test-getlogin.c test-getlogin.h signature.h macros.h
++# TESTS += test-getlogin
++# check_PROGRAMS += test-getlogin
++# test_getlogin_LDADD = $(LDADD) $(GETLOGIN_LIB)
++# EXTRA_DIST += test-getlogin.c test-getlogin.h signature.h macros.h
  
  ## end   gnulib module getlogin-tests
  

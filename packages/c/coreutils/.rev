@@ -1259,4 +1259,41 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment></comment>
     <requestid>1031469</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>301ea533861387f6242b280073df739a</srcmd5>
+    <version>9.2</version>
+    <time>1680370207</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.2:
+  * cksum now accepts the --base64 (-b) option to print
+    base64-encoded checksums.  It also accepts/checks such
+    checksums.
+  * cksum now accepts the --raw option to output a raw binary
+    checksum.  No file name or other information is output in
+    this mode.
+  * cp, mv, and install now accept the --debug option to
+    print details on how a file is being copied.
+  * factor now accepts the --exponents (-h) option to print
+    factors in the form p^e, rather than repeating the prime p, e
+    times.
+  * ls now supports the --time=modification option, to explicitly
+    select the default mtime timestamp for display and sorting.
+  * mv now supports the --no-copy option, which causes it to fail
+    when asked to move a file to a different file system.
+  * split now accepts options like '-n SIZE' that exceed machine
+    integer range, when they can be implemented as if they were
+    infinity.
+  * split -n now accepts piped input even when not in round-robin
+    mode, by first copying input to a temporary file to determine its
+    size.
+  * wc now accepts the --total={auto,never,always,only} option
+    to give explicit control over when the total is output.
+  * 'cp --reflink=always A B' no longer leaves behind a newly
+    created empty file B merely because copy-on-write clones are not
+    supported.
+  * 'cp -n' and 'mv -n' now exit with nonzero status if they skip
+    their action because the destination exists, and likewise for 'cp
+    -i', 'ln -i', and 'mv -i' when the user declines.  (POSIX</comment>
+    <requestid>1075026</requestid>
+  </revision>
 </revisionlist>
