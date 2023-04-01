@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  1 13:26:20 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.14.4:
+  * Fix endless recursion in 1.14.3
+    (gh#lwindolf/liferea#1217, gh#lwindolf/liferea#1224)
+  * Additional fix for crash in conf_get_bool_value_from_schema
+    (gh#lwindolf/liferea#1214)
+  * Fixes a g_object_unref warning on shutdown
+  * Drops a debug output in the plugin installer
+
+-------------------------------------------------------------------
 Wed Mar 29 13:35:08 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.14.3:
