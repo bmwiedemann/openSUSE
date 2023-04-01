@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 30 18:46:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.15.2
+  * Fixes an incompatibility with AOM v3.6.0.
+  * A couple of smaller fixes.
+
+-------------------------------------------------------------------
 Thu Feb 28 15:21:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Remove no longer existing files avif.xml and heif.xml from the
