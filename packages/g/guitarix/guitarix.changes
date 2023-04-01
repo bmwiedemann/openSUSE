@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 31 11:51:22 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Added patches from fedora one of which fixes Factory build
+  without ladspa plugins. Disabled ladspa plugin build until a fix
+  is found.
+- Patches added: guitarix-cstdint-include.patch,
+  guitarix-mismatched-delete.patch and
+  guitarix-python-3.11-ftbfs.patch.
+
+-------------------------------------------------------------------
 Mon May  2 23:06:18 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update .spec

@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define _lto_cflags %{nil}
-%bcond_without ladspa
+%bcond_with ladspa
 
 Name:           guitarix
 Version:        0.44.1
@@ -27,6 +27,12 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://guitarix.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/guitarix/guitarix/guitarix2-%{version}.tar.xz
+
+# Patches from Fedora
+Patch0:         guitarix-cstdint-include.patch
+Patch1:         guitarix-mismatched-delete.patch
+Patch2:         guitarix-python-3.11-ftbfs.patch
+
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
@@ -146,6 +152,7 @@ Bestplugins Mega Pack 1+3 contains dozens of guitar sounds from famous bands.
 
 %prep
 %setup -q -n guitarix-%{version}
+%autopatch -p 1
 
 %build
 #todo: add faust package to openSUSE
