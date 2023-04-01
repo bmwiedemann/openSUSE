@@ -113,4 +113,14 @@
     + WhatsApp Web: Pass [ALT] key as [CMD] #280</comment>
     <requestid>1067719</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>36aca60fd70f8b4ca14b11830e77c0ba</srcmd5>
+    <version>1.6.2</version>
+    <time>1680370361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Workaround for audio messages #91
+  * Add french #281</comment>
+    <requestid>1076622</requestid>
+  </revision>
 </revisionlist>
