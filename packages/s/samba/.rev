@@ -3631,4 +3631,12 @@ list of changes.</comment>
   * Azure AD / Office365 synchronization improvements</comment>
     <requestid>1074016</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>f12821cfff72b2b0b1da54782c0bfbef</srcmd5>
+    <version>4.18.1+git.298.4ccf830b2a4</version>
+    <time>1680384429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076438</requestid>
+  </revision>
 </revisionlist>

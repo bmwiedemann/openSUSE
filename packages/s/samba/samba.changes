@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 29 15:10:50 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.18.1
+  * CVE-2023-0225: AD DC "dnsHostname" attribute can be
+    deleted by unprivileged authenticated users.
+    (bso#15276);(bsc#1209483).
+  * CVE-2023-0614: Access controlled AD LDAP attributes can be
+    discovered  (bso#15270); (bsc#1209485).
+  * CVE-2023-0922: Samba AD DC admin tool samba-tool sends
+    passwords in cleartext(bso#15315);(bsc#1209481).
+  * ldb wildcard matching makes excessive allocations;
+    (bso#15331).
+  * large_ldap test is inefficient; (bso#15332).
+
+-------------------------------------------------------------------
 Fri Mar 17 08:09:32 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.18.0
