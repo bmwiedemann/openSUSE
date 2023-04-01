@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 31 10:11:20 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.1.3:
+  * Fix latest cURL API support.
+  * Fix crash in the ladspa plugin (Linearithmik).
+  * Fix memory leak in the wavpack plugin.
+  * Fix ADTS header detection in the aac plugin.
+  * Fix error handling in the ffmpeg plugin.
+  * Fix text scroller geometry in the skinned plugin.
+  * Hide empty plugin categories.
+  * Update translations.
+
+-------------------------------------------------------------------
 Mon Sep 26 17:48:07 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.1.2:

@@ -898,4 +898,12 @@
     <comment>- Update to version 2.1.2.</comment>
     <requestid>1006284</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>1d98d61016e0c1461ea979c87b9231b8</srcmd5>
+    <version>2.1.3</version>
+    <time>1680370228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.3.</comment>
+    <requestid>1076478</requestid>
+  </revision>
 </revisionlist>
