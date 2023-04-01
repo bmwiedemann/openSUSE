@@ -237,3 +237,17 @@ MOUNTD_OPTIONS=""
 # Fully Qualified Domain Names when mounting NFS Shares.
 #
 NFS_GSSD_AVOID_DNS="no"
+
+## Path:                Network/File systems/NFS server
+## Description:         Set v4.1+ scope reported by server
+## Type:                string
+## Default:             ""
+## ServiceRestart:      nfs-server
+#
+# Set the scope reported by the NFS server.  When nothing
+# is given the kernel uses the configured hostname as
+# a default.  When NFS is used in a fail-over configuration
+# it is important that all hosts which server the same resource
+# report the same scope.
+#
+NFSD_SCOPE=""

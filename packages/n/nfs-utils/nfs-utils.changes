@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 28 22:37:58 UTC 2023 - Neil Brown <nfbrown@suse.com>
+
+- Add 0007-mount.nfs-always-include-mountpoint-or-spec-if-error.patch
+  boo#1157881
+- Add 0008-nfsd.man-fix-typo-in-section-on-scope.patch
+  bsc#1209859
+- Allow scope to be sed in sysconfig: NFSD_SCOPE
+
+-------------------------------------------------------------------
+Mon Mar 27 10:16:10 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(libkeyutils) BuildRequires: nfs-utils
+  requires this for nfsv4 and we should not rely on the devel
+  package being brought in by other deps.
+
+-------------------------------------------------------------------
 Mon Feb  6 00:23:05 UTC 2023 - Neil Brown <nfbrown@suse.com>
 
 - Rename all drop-in options.conf files as 10-options.conf

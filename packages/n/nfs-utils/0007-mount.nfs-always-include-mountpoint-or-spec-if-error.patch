@@ -1,0 +1,88 @@
+From e6dc15cbe1e0171055765f329d2f2b6a65ea9635 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Tue, 28 Mar 2023 13:49:57 +1100
+Subject: [PATCH] mount.nfs: always include mountpoint or spec if error
+ messages.
+
+If you try to mount from a server that is inaccessible you might get an
+error like:
+    mount.nfs: No route to host
+
+This is OK when running "mount" interactively, but hardly useful when
+found in system logs.
+
+This patch changes mount_error() to always included at least one of
+mount_point and spec in any error message.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ utils/mount/error.c |   31 ++++++++++++++++---------------
+ 1 file changed, 16 insertions(+), 15 deletions(-)
+
+--- a/utils/mount/error.c
++++ b/utils/mount/error.c
+@@ -207,16 +207,17 @@ void mount_error(const char *spec, const
+ 				progname, spec);
+ 		break;
+ 	case EINVAL:
+-		nfs_error(_("%s: an incorrect mount option was specified"), progname);
++		nfs_error(_("%s: an incorrect mount option was specified for %s"),
++				progname, mount_point);
+ 		break;
+ 	case EOPNOTSUPP:
+-		nfs_error(_("%s: requested NFS version or transport protocol is not supported"),
+-				progname);
++		nfs_error(_("%s: requested NFS version or transport protocol is not supported for %s"),
++				progname, mount_point);
+ 		break;
+ 	case ENOTDIR:
+ 		if (spec)
+-			nfs_error(_("%s: mount spec %s or point %s is not a "
+-				  "directory"),	progname, spec, mount_point);
++			nfs_error(_("%s: mount spec %s or point %s is not a directory"),
++				  progname, spec, mount_point);
+ 		else
+ 			nfs_error(_("%s: mount point %s is not a directory"),
+ 				  progname, mount_point);
+@@ -227,31 +228,31 @@ void mount_error(const char *spec, const
+ 		break;
+ 	case ENOENT:
+ 		if (spec)
+-			nfs_error(_("%s: mounting %s failed, "
+-				"reason given by server: %s"),
+-				progname, spec, strerror(error));
++			nfs_error(_("%s: mounting %s failed, reason given by server: %s"),
++				  progname, spec, strerror(error));
+ 		else
+ 			nfs_error(_("%s: mount point %s does not exist"),
+-				progname, mount_point);
++				  progname, mount_point);
+ 		break;
+ 	case ESPIPE:
+ 		rpc_mount_errors((char *)spec, 0, 0);
+ 		break;
+ 	case EIO:
+-		nfs_error(_("%s: mount system call failed"), progname);
++		nfs_error(_("%s: mount system call failed for %s"),
++			  progname, mount_point);
+ 		break;
+ 	case EFAULT:
+-		nfs_error(_("%s: encountered unexpected error condition."),
+-				progname);
++		nfs_error(_("%s: encountered unexpected error condition for %s."),
++			  progname, mount_point);
+ 		nfs_error(_("%s: please report the error to" PACKAGE_BUGREPORT),
+-				progname);
++			  progname);
+ 		break;
+ 	case EALREADY:
+ 		/* Error message has already been provided */
+ 		break;
+ 	default:
+-		nfs_error(_("%s: %s"),
+-			progname, strerror(error));
++		nfs_error(_("%s: %s for %s on %s"),
++			  progname, strerror(error), spec, mount_point);
+ 	}
+ }
+ 

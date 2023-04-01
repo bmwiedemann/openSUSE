@@ -44,6 +44,8 @@ Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
 Patch5:         0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch
 Patch6:         0006-nfsd-allow-server-scope-to-be-set-with-config-or-com.patch
+Patch7:         0007-mount.nfs-always-include-mountpoint-or-spec-if-error.patch
+Patch8:         0008-nfsd.man-fix-typo-in-section-on-scope.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -55,6 +57,7 @@ BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(sqlite3)
