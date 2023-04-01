@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  1 08:38:56 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.1
+  * Fix use-after-free crash in "tap_provider_child_watch_destroy"
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use generic package icon name in dialog header
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue May 10 19:55:03 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.0

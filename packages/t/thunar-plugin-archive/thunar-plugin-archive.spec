@@ -1,7 +1,7 @@
 #
 # spec file for package thunar-plugin-archive
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define plugin_name thunar-archive-plugin
 
 Name:           thunar-plugin-archive
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 URL:            https://docs.xfce.org/xfce/thunar/archive
 Source0:        https://archive.xfce.org/src/thunar-plugins/%{plugin_name}/0.5/%{plugin_name}-%{version}.tar.bz2
@@ -28,8 +28,10 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(exo-2) >= 0.10.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
-BuildRequires:  pkgconfig(thunarx-3)
+BuildRequires:  pkgconfig(thunarx-3) >= 0.4.0
 Requires:       thunar >= 1.7.0
 Recommends:     %{name}-lang = %{version}
 Provides:       %{plugin_name} = %{version}

@@ -135,4 +135,17 @@
     <comment></comment>
     <requestid>977336</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>17b600d23ecea29cdf9eb3e51f43ac8b</srcmd5>
+    <version>0.5.1</version>
+    <time>1680370350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1
+  * Fix use-after-free crash in &quot;tap_provider_child_watch_destroy&quot;
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use generic package icon name in dialog header
+  * Translation Updates (forwarded request 1076598 from manfred-h)</comment>
+    <requestid>1076640</requestid>
+  </revision>
 </revisionlist>
