@@ -138,6 +138,7 @@ BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl) >= 7.35.0
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.0.0
+BuildRequires:  pkgconfig(libdca)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libopenmpt)
@@ -170,6 +171,7 @@ BuildRequires:  pkgconfig(sndfile) >= 1.0.16
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(spandsp) >= 0.0.6
 BuildRequires:  pkgconfig(srt)
+BuildRequires:  pkgconfig(vo-amrwbenc) >= 0.1.0
 # FIXME we do not have pkgconfig(storage_client) in openSUSE yet -- remove -Dgs=disabled
 # BuildRequires:  pkgconfig(storage_client)
 BuildRequires:  pkgconfig(vulkan)
@@ -215,7 +217,6 @@ BuildRequires:  pkgconfig(libmfx)
 %endif
 
 %if 0%{?BUILD_ORIG}
-BuildRequires:  libdca-devel
 BuildRequires:  pkgconfig(dvdnav) >= 4.1.2
 BuildRequires:  pkgconfig(dvdread) >= 4.1.2
 BuildRequires:  pkgconfig(libde265) >= 0.9
@@ -226,7 +227,6 @@ BuildRequires:  pkgconfig(librtmp)
 BuildRequires:  pkgconfig(openh264) >= 1.3.0
 %endif
 BuildRequires:  pkgconfig(vo-aacenc) >= 0.1.0
-BuildRequires:  pkgconfig(vo-amrwbenc) >= 0.1.0
 BuildRequires:  pkgconfig(x265)
 %if %{with faac}
 BuildRequires:  faac-devel
@@ -739,14 +739,12 @@ export PYTHON=%{_bindir}/python3
 	-Dpackage-name='openSUSE GStreamer-plugins-bad package' \
 	-Dpackage-origin='http://download.opensuse.org' \
 	-Ddecklink=disabled \
-	-Ddts=disabled \
 	-Dlibde265=disabled \
 	-Dmodplug=disabled \
 	-Dopenh264=disabled \
 	-Dresindvd=disabled \
 	-Drtmp=disabled \
 	-Dsiren=disabled \
-	-Dvoamrwbenc=disabled \
 	-Dvoaacenc=disabled \
 	-Dx265=disabled \
 	-Dopenaptx=disabled \
@@ -873,6 +871,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %dir %{_datadir}/gstreamer-%{gst_branch}/presets/
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstFreeverb.prs
+%{_datadir}/gstreamer-%{gst_branch}/presets/GstVoAmrwbEnc.prs
 %{_datadir}/appdata/gstreamer-plugins-bad.appdata.xml
 %{_libdir}/gstreamer-%{gst_branch}/libgstaccurip.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstadpcmdec.so
@@ -904,6 +903,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdc1394.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdebugutilsbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtls.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdtsdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvb.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvbsubenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvbsuboverlay.so
@@ -989,6 +989,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideoparsersbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideosignal.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvmnc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvulkan.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlv2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenal.so
@@ -1171,11 +1172,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if 0%{?BUILD_ORIG_ADDON}
 %files orig-addon
 %endif
-%{_datadir}/gstreamer-%{gst_branch}/presets/GstVoAmrwbEnc.prs
-%{_libdir}/gstreamer-%{gst_branch}/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoaacenc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdecklink.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstdtsdec.so
 %if %{with faac}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaac.so
 %endif

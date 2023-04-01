@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 25 14:48:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move conditional pkgconfig(vo-amrwbenc) BuildRequires to main
+  part of spec, now available in distro. Stop passing
+  voamrwbenc=disabled to meson.
+
+-------------------------------------------------------------------
 Tue Mar 21 08:31:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libgsttranscoder-1_0-0 to baselibs.conf
+
+-------------------------------------------------------------------
+Mon Mar 20 20:16:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libdca) and drop conditional libdca-devel
+  BuildRequires, and stop passing dts=disabled to meson.
 
 -------------------------------------------------------------------
 Thu Mar  9 18:03:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>

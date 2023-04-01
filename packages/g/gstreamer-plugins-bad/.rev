@@ -1254,4 +1254,12 @@
 Please add to Staging:G</comment>
     <requestid>1073500</requestid>
   </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>dde0f2dd25f17a024298974c77fe1c2e</srcmd5>
+    <version>1.22.1</version>
+    <time>1680384430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076441</requestid>
+  </revision>
 </revisionlist>
