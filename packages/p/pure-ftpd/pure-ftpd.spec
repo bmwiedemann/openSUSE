@@ -1,7 +1,7 @@
 #
 # spec file for package pure-ftpd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,10 +115,16 @@ CFLAGS="%{optflags} -I%{_includedir}/mysql"
 %make_install
 
 install -dD -m 0755 \
-    %{buildroot}%{_sysconfdir}/{%{name},%{name}/vhosts,pam.d,openldap/schema}
+    %{buildroot}%{_sysconfdir}/{%{name},%{name}/vhosts,openldap/schema}
 install -m 0644 pure-ftpd.conf  %{buildroot}%{_sysconfdir}/%{name}
 
+%if 0%{?suse_version} > 1500
+install -dD -m 0755 %{buildroot}%{_pam_vendordir}
+install -m 0644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/pure-ftpd
+%else
+install -dD -m 0755 %{buildroot}%{_sysconfdir}/pam.d
 install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/pure-ftpd
+%endif
 
 install -m 0644 pureftpd.schema %{buildroot}%{_sysconfdir}/openldap/schema/
 
@@ -133,6 +139,18 @@ rm %{buildroot}/%{_docdir}/%{name}/pure-ftpd.conf
 
 %pre
 %service_add_pre %{name}.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/lib; save any old .rpmsave
+for i in pam.d/pure-ftpd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/lib, restore just created .rpmsave
+for i in pam.d/pure-ftpd ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %preun
 %service_del_preun %{name}.service
@@ -164,7 +182,11 @@ fi
 %dir %{_sysconfdir}/apparmor/profiles
 %dir %{_sysconfdir}/apparmor/profiles/extras
 %config %{_sysconfdir}/openldap/schema/pureftpd.schema
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/pure-ftpd
+%else
 %config %{_sysconfdir}/pam.d/pure-ftpd
+%endif
 %config(noreplace) %{_sysconfdir}/%{name}/pure-ftpd.conf
 %config(noreplace) %{_sysconfdir}/apparmor/profiles/extras/usr.sbin.pure-ftpd
 
