@@ -98,10 +98,7 @@ is highly discouraged.
 %autosetup -p 1
 
 %build
-# Disable LTO due to symbol versioning (boo#1138833):
-# (https://en.opensuse.org/openSUSE:LTO#Symbol_versioning).
-%define _lto_cflags %{nil}
-
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
 %configure			\
   --disable-silent-rules	\
   --enable-shared		\

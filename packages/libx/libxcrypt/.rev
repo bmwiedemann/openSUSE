@@ -196,4 +196,12 @@
     <comment>- Enable livepatching support on x86_64.</comment>
     <requestid>1071514</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d2ac989878600e3459399f84c2226f26</srcmd5>
+    <version>4.4.33</version>
+    <time>1680370204</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable LTO now (boo#1138833) and use FAT LTO objects for static libs. (forwarded request 1074612 from marxin)</comment>
+    <requestid>1074716</requestid>
+  </revision>
 </revisionlist>

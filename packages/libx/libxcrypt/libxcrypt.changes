@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 12:58:47 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO now (boo#1138833) and use FAT LTO objects for static libs.
+
+-------------------------------------------------------------------
 Fri Mar 10 20:29:48 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Enable livepatching support on x86_64.
