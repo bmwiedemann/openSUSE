@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Apr  1 07:40:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update ot 3.8.0
+  - desktop#5161 Resize WebView widget once the loginpage rendered
+  - desktop#5327 Feature/secure file drop
+  - desktop#5351 Check German translation for wrong wording
+  - desktop#5378 L10n: Correct word
+  - desktop#5379 Fix displaying of file details button for local syncfileitem activities
+  - desktop#5384 Improve config upgrade warning dialog
+  - desktop#5385 Only accept folder setup page if overrideLocalDir is set
+  - desktop#5389 Update CHANGELOG.
+  - desktop#5391 Prevent ShareModel crash from accessing bad pointers
+  - desktop#5393 Bugfix/init value for pointers
+  - desktop#5410 Log to stdout when built in Debug config
+  - desktop#5416 Clean up account creation and deletion code
+  - desktop#5427 L10n: Added dot to end of sentence
+  - desktop#5430 L10n: Fixed grammar
+  - desktop#5435 Fix "Create new folder" menu entries in settings not working correctly on macOS
+  - desktop#5436 Ci/clang tidy checks init variables
+  - desktop#5442 Fix share dialog infinite loading
+  - desktop#5444 Fix edit locally job not finding the user account: wrong user id
+  - desktop#5448 Skip e2e encrypted files with empty filename in metadata
+  - desktop#5451 Use new connect syntax
+  - desktop#5453 Fix avatars not showing up in settings dialog account actions until clicked on
+  - desktop#5459 Always discover blacklisted folders to avoid data loss when modifying selectivesync list.
+  - desktop#5472 Fix infinite loading in the share dialog when public link shares are disabled on the server
+  - desktop#5474 With cfapi when dehydrating files add missing flag
+  - desktop#5478 Fix text labels in Sync Status component
+  - desktop#5485 Display 'Search globally' as the last sharees list element
+  - desktop#5486 Fix display of 2FA notification.
+  - desktop#5498 Bugfix/do not restore virtual files
+  - desktop#5513 Show server name in tray main window
+  - desktop#5520 Add Ubuntu Lunar
+  - desktop#5521 Debian build classification 'beta' cannot override 'release'.
+  - desktop#5525 Update changelog
+  - desktop#5530 Follow shouldNotify flag to hide notifications when needed
+  - desktop#5532 Bugfix/stop after creating config file
+  - desktop#5534 E2EE cut extra zeroes from derypted byte array.
+  - desktop#5546 When local sync folder is overriden, respect this choice
+  - desktop#5560 Feature/e2ee fixes
+
+-------------------------------------------------------------------
 Thu Mar  9 17:29:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.7.4
