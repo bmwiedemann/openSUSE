@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 25 00:30:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 13.0.1:
+  * Enable RUST_BACKTRACE for docker builds
+  * Revert "Re-enable arm docker builds"
+  * Fix editURL for docs
+  * Fix link to self-hosting
+  * [docs] fix some links between config and commands
+  * Disable 2 tests that shouldn't run in release mode
+  * fix registration
+
+-------------------------------------------------------------------
 Mon Feb 27 11:14:23 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Disable update check by default since updates are handled in OBS

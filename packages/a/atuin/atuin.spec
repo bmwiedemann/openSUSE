@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        13.0.0
+Version:        13.0.1
 Release:        0
 Summary:        Magical shell history
 License:        MIT
