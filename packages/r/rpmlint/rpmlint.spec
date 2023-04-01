@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.4.0+git20230327.f239521
+Version:        2.4.0+git20230331.bc7b966
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
@@ -42,11 +42,11 @@ BuildRequires:  dash
 BuildRequires:  desktop-file-utils
 BuildRequires:  myspell-cs_CZ
 BuildRequires:  myspell-en_US
-BuildRequires:  python3-magic
 BuildRequires:  python3-pybeam
 BuildRequires:  python3-pyenchant
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-xdist
+BuildRequires:  python3-python-magic
 BuildRequires:  python3-pyxdg
 BuildRequires:  python3-rpm
 %if 0%{?python3_version_nodots < 311}
@@ -70,9 +70,9 @@ Requires:       desktop-file-utils
 Requires:       file
 Requires:       findutils
 Requires:       myspell-en_US
-Requires:       python3-magic
 Requires:       python3-pybeam
 Requires:       python3-pyenchant
+Requires:       python3-python-magic
 Requires:       python3-pyxdg
 Requires:       python3-rpm
 %if 0%{?python3_version_nodots < 311}

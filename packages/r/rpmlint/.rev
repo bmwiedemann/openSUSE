@@ -4390,4 +4390,22 @@ oddjob-gpupdate isn't blocked)</comment>
   * Pytest documentation recommends refactoring &quot;tmpdir&quot; to &quot;tmp_path&quot;</comment>
     <requestid>1074729</requestid>
   </revision>
+  <revision rev="443" vrev="1">
+    <srcmd5>0a5e71151d84acb58dae62c2c133a927</srcmd5>
+    <version>2.4.0+git20230331.bc7b966</version>
+    <time>1680370212</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230331.bc7b966:
+  * dbus-services: add libproxy whitelisting (bsc#1209376)
+
+- Update to version 2.4.0+git20230331.8f6e31e:
+  * PythonCheck: Handle complex dependency declaration gracefully
+
+- Update to version 2.4.0+git20230329.3cd1bcf:
+  * packit: use python-magic python pages for openSUSE CI
+  * openSUSE: Start using python-magic package in CI.
+
+- Depend on python-magic Python package.</comment>
+    <requestid>1076468</requestid>
+  </revision>
 </revisionlist>
