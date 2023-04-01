@@ -47,4 +47,21 @@
     <comment>- Update to version 0.27 (forwarded request 1072867 from jfkw)</comment>
     <requestid>1072868</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb75e103be807e66acd170d212dafef7</srcmd5>
+    <version>1.0.1</version>
+    <time>1680370355</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1
+* Upgrade to gopenqa 0.7.1 and align version number
+- Update to version 1.0.0
+* Switch to single request for multiple jobs (openqa-mon and openqa-revtui)
+* Improve review templates
+* Consider the parallel_failed status (openqa-revtui)
+* Add progress when loading jobs (openqa-revtui)
+* Introduce colors in status field (openqa-revtui)
+* Rate limit continuous refresh on OSD and O3
+* Show job progress in Refresh line (openqa-revtui) (forwarded request 1075831 from ph03nix)</comment>
+    <requestid>1076567</requestid>
+  </revision>
 </revisionlist>

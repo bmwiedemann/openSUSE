@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 30 13:47:25 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 1.0.1
+* Upgrade to gopenqa 0.7.1 and align version number
+
+-------------------------------------------------------------------
+Thu Mar 30 13:04:00 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 1.0.0
+* Switch to single request for multiple jobs (openqa-mon and openqa-revtui)
+* Improve review templates
+* Consider the parallel_failed status (openqa-revtui)
+* Add progress when loading jobs (openqa-revtui)
+* Introduce colors in status field (openqa-revtui)
+* Rate limit continuous refresh on OSD and O3
+* Show job progress in Refresh line (openqa-revtui)
+
+-------------------------------------------------------------------
 Sat Mar 18 22:38:42 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - _service obs_scm revision change branch to main from master which
