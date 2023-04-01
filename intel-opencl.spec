@@ -17,19 +17,19 @@
 
 
 Name:           intel-opencl
-Version:        21.43.21438
+Version:        23.05.25593.11
 Release:        1%{?dist}
 Summary:        Intel(R) Graphics Compute Runtime for OpenCL(TM)
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
-Patch0:         0001-Include-memory-in-generate_cpp_array.cpp.patch
-Patch1:         0001-include-cstdint-needed-when-compiling-with-gcc13.patch
+Patch0:         0001-include-cstdint-needed-when-compiling-with-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  level-zero-devel
 BuildRequires:  libigc-devel
-BuildRequires:  libigdgmm-devel >= 21.2.2
+BuildRequires:  libigdgmm-devel >= 22.3.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(igc-opencl)
@@ -79,6 +79,8 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %files
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
+%{_libdir}/libze_intel_gpu.so.1
+%{_libdir}/libze_intel_gpu.so.1.3.25593
 %{_bindir}/ocloc
 %{_libdir}/intel-opencl
 %if 0%{?suse_version} > 1500

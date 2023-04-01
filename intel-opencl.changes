@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 28 13:20:16 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 23.05.25593.11
+- Now builds against level-zero 
+- New fixes for building with gcc13
+- supersedes 0001-Include-memory-in-generate_cpp_array.cpp.patch
+
+-------------------------------------------------------------------
 Mon Mar 27 12:09:02 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Fix build issues for missing include of cstdio with gcc13
