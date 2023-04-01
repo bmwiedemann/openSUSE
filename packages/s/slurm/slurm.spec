@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 39
-%define ver 23.02.0
+%define ver 23.02.1
 %define _ver _23_02
 #%%define rc_v 0rc1
 %define dl_ver %{ver}
@@ -141,7 +141,6 @@ Source20:       test_setup.tar.gz
 Source21:       README_Testsuite.md
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
-Patch3:         right-pmix-path.patch
 Patch10:        Fix-test-21.41.patch
 Patch11:        Fix-test-38.11.patch
 Patch12:        Fix-test-32.8.patch
@@ -647,7 +646,6 @@ Do not run test suite and file bug reports for each failed test!
 %setup -q -n %{pname}-%{dl_ver}
 %patch0 -p1
 %patch2 -p1
-%patch3 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
