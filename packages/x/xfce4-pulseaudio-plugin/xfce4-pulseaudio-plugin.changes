@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Apr  1 13:21:17 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.4.6
+  * Fix changing default sink and source devices
+  * Fix flickering mic icon when recording application is connected
+  * Avoid critical from xfce4-notifyd if gauge_value > 100
+  * Display maximum volume of all channels instead of volume of
+    left channel
+  * Add recording base volume indicator
+  * Control mic volume/mute when mouse cursor is over the mic icon
+  * Lower warning level
+  * Improve volume notifications settings
+  * Show volume notifications from hotkeys according to comment
+  * Don't set negative volume from hotkeys
+  * Use correct variable for "volume-mic-changed" signal ID
+  * Don't force set the default device
+  * Set recording icon according to recording volume level
+  * Show source monitor if it is a default source
+  * Check for recording state on context ready
+  * Allow volume step configuration in dialog
+    (gxo#panel-plugins/xfce4-pulseaudio-plugin#28)
+  * wnck: Add missing LIBS/CFLAGS in Makefile
+  * wnck: Use Libxfce4windowing when available
+  * wnck: Guard X11 code path to prevent crash on Wayland
+  * wnck: Improve RaiseWnck a bit
+  * Fix memory leak
+  * cleanup: Fix formatting
+  * Fix blurry media player icon from file when UI scale > 1
+  * Fix blurry icons in prefs dialog when UI scale factor > 1
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * Do not override fatal log level
+  * build: Bump GLib minimum required to 2.44
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Sep 16 07:42:11 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.4.5

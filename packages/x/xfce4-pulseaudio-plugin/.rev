@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1004667</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8c792a221d6c84286b32ed8bc5be7233</srcmd5>
+    <version>0.4.6</version>
+    <time>1680370352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.6 (forwarded request 1076633 from tux93)</comment>
+    <requestid>1076642</requestid>
+  </revision>
 </revisionlist>
