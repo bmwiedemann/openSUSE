@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 31 06:45:44 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+18:
+  + backends: Use meta_gamma_lut_new_sized() in a few more places
+  + compositor:
+    - Drop anchor_window_pos field from MetaWindowDrag
+    - Use relative anchor coordinates for window drags
+    - Avoid use of variable during resize
+  + onscreen/native: Avoid freezing the frame clock on failed
+    cursor commits
+  + window-actor-x11: Check array bounds before accessing array
+  + build: Don't disable checks in release builds
+  + tests: Use a more interoperable path to bash
+  + backend/nested: Ignore setting pointer constraint
+  + Updated translations.
+- Clean up spec, drop old disabled and unneeded pkgconfig(gtk+-3.0)
+  BuildRequires and move disabled patches to SLE.
+
+-------------------------------------------------------------------
 Tue Mar 21 18:42:11 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.0+8:

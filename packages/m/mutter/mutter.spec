@@ -22,18 +22,14 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        44.0+8
+Version:        44.0+18
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-# Source url disabled, using git checkout via source service
-#Source0:        https://download.gnome.org/sources/mutter/42/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
 
-# PATCH-NEEDS-REBASE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144 WAS PATCH-FIX-OPENSUSE
-Patch0:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
 Patch1:         mutter-disable-cvt-s390x.patch
 # PATCH-FIX-OPENSUSE mutter-window-actor-Special-case-shaped-Java-windows.patch -- window-actor: Special-case shaped Java windows
@@ -48,6 +44,8 @@ Patch1000:      mutter-SLE-bell.patch
 Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
 # PATCH-FIX-SLE mutter-SLE-bsc984738-grab-display.patch bsc#984738 bgo#769387 hpj@suse.com -- Revert a upstream commit to avoid X11 race condition that results in wrong dialog sizes.
 Patch1002:      mutter-SLE-bsc984738-grab-display.patch
+# PATCH-NEEDS-REBASE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144 WAS
+Patch1003:      mutter-Lower-HIDPI_LIMIT-to-144.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -66,13 +64,11 @@ BuildRequires:  pkgconfig(gbm) >= 17.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.69.0
-#BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(graphene-gobject-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.8
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
@@ -146,7 +142,6 @@ applications that want to make use of the mutter library.
 
 %prep
 %setup -q
-#patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -156,6 +151,7 @@ applications that want to make use of the mutter library.
 %patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
+#patch1003 -p1
 %endif
 
 %build
@@ -174,9 +170,6 @@ applications that want to make use of the mutter library.
 %endif
 	%{nil}
 %meson_build
-
-#%%check
-#%%meson_test
 
 %install
 %meson_install
