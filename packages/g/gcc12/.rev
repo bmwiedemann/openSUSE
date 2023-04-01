@@ -138,4 +138,12 @@ to release my review on the gcc package now.
 - avoid trailing backslashes at the end of post install scripts</comment>
     <requestid>1060657</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>68ed74b3768ef33f09bc69b120f52929</srcmd5>
+    <version>12.2.1+git749</version>
+    <time>1680384423</time>
+    <user>dimstar_suse</user>
+    <comment>- Speed up builds with --enable-link-serialization. (forwarded request 1075289 from marxin)</comment>
+    <requestid>1076406</requestid>
+  </revision>
 </revisionlist>

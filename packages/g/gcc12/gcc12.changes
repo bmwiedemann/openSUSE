@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 29 14:27:43 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Speed up builds with --enable-link-serialization.
+
+-------------------------------------------------------------------
 Tue Jan 24 11:03:08 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-12 branch head, 193f7e62815b4089dfaed4c2bd3, git749

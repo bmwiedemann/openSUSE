@@ -694,11 +694,8 @@ amdgcn-amdhsa,\
 %endif
 %if %{use_lto_bootstrap} && !0%{?building_testsuite:1}
 	--with-build-config=bootstrap-lto-lean \
-	--enable-link-mutex \
 %endif
-%ifarch riscv64
-	--enable-link-mutex \
-%endif
+	--enable-link-serialization \
 	$CONFARGS \
 	--build=%{GCCDIST} \
 	--host=%{GCCDIST} || \
