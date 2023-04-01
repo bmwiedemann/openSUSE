@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 31 06:37:32 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch makes it
+  possible to build without using git repos. 
+
+-------------------------------------------------------------------
+Tue Mar 28 11:11:37 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update opencl_clang to fd68f64b33e67d58f6c36b9e25c31c1178a1962a
+- Update spirv-llvm-translator to 4ef524240833abfeee1c5b9fff6b1bd53f4806b3
+- Don't compile with -Wno-dev. It breaks builds on Leap 15.4. 
+
+-------------------------------------------------------------------
+Mon Mar 27 13:34:07 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13230.7
+  * Compile against prebuilt spirv-tools and spirv-headers 
+  * 0001-Preinstalled-SPIRV-Tools-CMakeFile-target-fix.patch fixes cmake
+    build issue with prebuild spirv-tools 
+
+-------------------------------------------------------------------
 Mon Mar 27 11:00:31 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Fix build issues for missing include of cstdio with gcc13

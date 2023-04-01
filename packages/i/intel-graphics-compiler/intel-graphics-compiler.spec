@@ -17,11 +17,11 @@
 
 
 %global llvm_commit llvmorg-11.1.0
-%global opencl_clang_commit fd68f64b33e67d58f6c36b9e25c31c1178a1962a
-%global spirv_llvm_translator_commit c67e6f26a7285aa753598ef792593ac4a545adf9
-%global vc_intrinsics_commit e5ad7e02aa4aa21a3cd7b3e5d1f3ec9b95f58872
+%global opencl_clang_commit 363a5262d8c7cff3fb28f3bdb5d85c8d7e91c1bb
+%global spirv_llvm_translator_commit 4ef524240833abfeee1c5b9fff6b1bd53f4806b3
+%global vc_intrinsics_commit v0.11.0
 Name:           intel-graphics-compiler
-Version:        1.0.8744
+Version:        1.0.13230.7
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -34,6 +34,8 @@ Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
 Patch0:         0001-llvm-needs-to-include-cstdio-for-gcc13.patch
 Patch1:         0001-libspriv-needs-to-include-cstdint-for-gcc13.patch
+Patch2:         0001-Preinstalled-SPIRV-Tools-CMakeFile-target-fix.patch
+Patch3:         0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -41,8 +43,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  make
 BuildRequires:  memory-constraints
+BuildRequires:  patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  spirv-headers
+BuildRequires:  spirv-tools-devel
 BuildRequires:  unzip
 ExclusiveArch:  x86_64
 
@@ -108,7 +113,6 @@ A wrapper library around clang.
 %prep
 mkdir llvm-project
 tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
-mv llvm-project/clang llvm-project/llvm/tools/
 pushd llvm-project
 %patch0 -p1
 popd
@@ -119,6 +123,9 @@ mv vc-intrinsics* vc-intrinsics
 pushd llvm-project/llvm/projects
 mkdir opencl-clang llvm-spirv
 tar -xzf %{_sourcedir}/intel-opencl-clang.tar.gz -C opencl-clang --strip-components=1
+pushd opencl-clang
+%patch3 -p1
+popd
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 popd
 
@@ -126,6 +133,7 @@ mkdir igc
 tar -xzf %{_sourcedir}/igc-%{version}.tar.gz -C igc --strip-components=1
 pushd igc
 %patch1 -p1
+%patch2 -p1
 popd
 
 %build
@@ -135,12 +143,14 @@ mkdir build
 pushd build
 
 # FIXME: you should use %%cmake macros
-export CXXFLAGS="-Wno-nonnull -Wno-dev -fPIE"
+export CXXFLAGS="-Wno-nonnull -fPIE"
 export LDFLAGS="-pie"
 cmake ../igc \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  -DINSTALL_SPIRVDLL=0
+  -DINSTALL_SPIRVDLL=0 \
+  -DIGC_OPTION__SPIRV_TOOLS_MODE=Prebuilds \
+  -DIGC_OPTION__USE_PREINSTALLED_SPRIV_HEADERS=ON
 
 %make_build
 popd
