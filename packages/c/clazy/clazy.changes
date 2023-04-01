@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 31 17:02:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix build with clang 16:
+  * 0001-Adapt-to-API-changes-in-clang-llvm-16.patch
+
+-------------------------------------------------------------------
 Tue Sep 20 19:36:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes:

@@ -31,6 +31,7 @@ Patch0:         0001-Limit-the-clang-AST-crash-workaround-to-clang-7.0.patch
 Patch1:         0001-Fix-crash-when-Q_PROPERTY-contents-is-empty.patch
 Patch2:         0001-Allow-passing-no-check-in-plugin-arg-clazy-commandli.patch
 Patch3:         0001-Build-fixes-for-LLVM-Clang-15.0.0.patch
+Patch4:         0001-Adapt-to-API-changes-in-clang-llvm-16.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 8.0
 BuildRequires:  cmake >= 3.7
