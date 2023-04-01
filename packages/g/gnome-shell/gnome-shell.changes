@@ -1,9 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 30 11:21:55 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+42:
+  + appFavorite:
+    - Add missing .desktop extension for simplescan
+    - Rename simple-scan.desktop
+  + style: Light variant fixes and accommodations
+  + extensionDownloader: Check schemadir existence and type
+  + status/network: Fix a11y names for VPN connection menu items
+  + quickSettings: Fix icon-name construct property in menu toggles
+  + screenshot: Fix broken GLib.Error.matches call
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 22 13:33:02 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.0+28:
-  * status/network: Generalize code to hide subtitle
-  * screenshot: Get cursor texture from window
+  + status/network: Generalize code to hide subtitle
+  + screenshot: Get cursor texture from window
   + st/icon-theme: Disconnect from settings signals on disposal
   + workspacesView: Update visibility after updating workspaces
   + screenshot: Use meta_window_has_pointer () for pointer check

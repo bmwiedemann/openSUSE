@@ -21,7 +21,7 @@
 %define mutter_req 44.beta
 
 Name:           gnome-shell
-Version:        44.0+28
+Version:        44.0+42
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
