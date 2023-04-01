@@ -324,4 +324,21 @@
     <comment></comment>
     <requestid>1045186</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>5a2dae9a7faa484402948f6907c85af2</srcmd5>
+    <version>4.18.1</version>
+    <time>1680370349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.1
+  * garcon-gtk: Add missing lock when filling the GtkMenu
+  * Wait for any async operation to finish before releasing locks
+  * Use GIcons for menu icons instead of loading surfaces
+  * Revert &quot;garcon-gtk: Fix menu icon blurriness when UI scale
+    factor != 1&quot;
+  * Revert &quot;Load icons using icon theme scaling functions correctly&quot;
+  * garcon-gtk: Properly update GtkMenu is_populated state
+  * Load icons using icon theme scaling functions correctly
+  * Translation Updates (forwarded request 1075062 from manfred-h)</comment>
+    <requestid>1076638</requestid>
+  </revision>
 </revisionlist>
