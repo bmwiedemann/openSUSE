@@ -150,4 +150,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>1067091</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fb7cb994fee4d86d5db114522ba5d3df</srcmd5>
+    <version>4.39.3</version>
+    <time>1680384425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076413</requestid>
+  </revision>
 </revisionlist>
