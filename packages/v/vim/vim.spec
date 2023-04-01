@@ -17,26 +17,24 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 1392
+%define patchlevel 1430
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
 %define make make VIMRCLOC=%{_sysconfdir} VIMRUNTIMEDIR=%{_datadir}/vim/current MAKE="make -e" %{?_smp_mflags}
-%bcond_without python2
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
+%bcond_without python2
 Name:           vim
 Version:        %{pkg_version}.%{patchlevel_compact}
 Release:        0
 Summary:        Vi IMproved
 License:        Vim
 Group:          Productivity/Text/Editors
-URL:            http://www.vim.org/
+URL:            https://www.vim.org/
 Source:         https://github.com/vim/vim/archive/v%{pkg_version}.%{patchlevel}.tar.gz#/vim-%{pkg_version}.%{patchlevel}.tar.gz
 Source3:        suse.vimrc
 Source4:        vimrc_example1
@@ -83,25 +81,31 @@ BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gpm-devel
-BuildRequires:  libacl-devel
 BuildRequires:  libtool
-BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(tinfo)
 BuildRequires:  pkgconfig(xt)
 Requires:       vim-data-common = %{version}-%{release}
-%if %{with libalternatives}
-Requires:       alts
-%else
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-%endif
+Requires:       xxd = %{version}-%{release}
 Recommends:     vim-data = %{version}-%{release}
 Conflicts:      vim-base < 8.2
 Provides:       vi
@@ -113,6 +117,12 @@ Obsoletes:      vim-enhanced < %{version}-%{release}
 Obsoletes:      vim-python < %{version}-%{release}
 Provides:       vim_client
 %{?libperl_requires}
+%if %{with libalternatives}
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 %if %{with python2}
 BuildRequires:  python2-devel
 %endif
@@ -134,7 +144,6 @@ Provides:       vim-plugin-matchit = 1.13.2
 # conflicts with nginx own plugin
 Obsoletes:      vim-plugin-nginx < %{version}
 Provides:       vim-plugin-nginx = %{version}
-
 BuildArch:      noarch
 
 %description data
@@ -153,13 +162,7 @@ Summary:        A GUI for Vi
 Group:          Productivity/Text/Editors
 Requires:       gvim_client
 Requires:       vim-data = %{version}-%{release}
-%if %{with libalternatives}
-BuildRequires:  alts
-Requires:       alts
-%else
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-%endif
+Requires:       xxd = %{version}-%{release}
 Conflicts:      gvim < 8.2
 Provides:       gvim-base = %{version}-%{release}
 Provides:       gvim-enhanced = %{version}-%{release}
@@ -168,6 +171,13 @@ Obsoletes:      gvim-enhanced < %{version}-%{release}
 Provides:       gvim_client
 Provides:       vi
 Provides:       vim_client
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 
 %description -n gvim
 Package gvim contains the largest set of features of vim, which is
@@ -178,6 +188,9 @@ want less features, you might want to install vim instead.
 %package small
 Summary:        Vim with reduced features
 Group:          Productivity/Text/Editors
+Requires:       vim-data-common = %{version}-%{release}
+Provides:       vi
+Provides:       vim_client
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -185,13 +198,17 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-Provides:       vi
-Provides:       vim_client
-Requires:       vim-data-common = %{version}-%{release}
 
 %description small
 Vim compiled with reduced feature set such as no script
 interpreters built in
+
+%package -n xxd
+Summary:        A hex dump utility
+
+%description -n xxd
+xxd creates a hex dump of a given file or standard input.  It can also convert
+a hex dump back to its original binary form.
 
 %prep
 %setup -q -n %{name}-%{pkg_version}.%{patchlevel}
@@ -291,21 +308,21 @@ popd
 # build smaller vim
 %configure ${SMALL_OPTIONS} ${NOGUI_OPTIONS}
 sed -i -e 's|define HAVE_DATE_TIME 1|undef HAVE_DATE_TIME|' src/auto/config.h
-make %{?_smp_mflags}
+%make_build
 cp src/vim vim-small
 
 # build normal vim
-make -j1 distclean
+%make_build -j1 distclean
 %configure ${HUGE_OPTIONS} ${NOGUI_OPTIONS}
 sed -i -e 's|define HAVE_DATE_TIME 1|undef HAVE_DATE_TIME|' src/auto/config.h
-make %{?_smp_mflags}
+%make_build
 cp src/vim vim-nox11
 
 # build gvim
-make -j1 distclean
+%make_build -j1 distclean
 %configure ${HUGE_OPTIONS} ${GUI_OPTIONS}
 sed -i -e 's|define HAVE_DATE_TIME 1|undef HAVE_DATE_TIME|' src/auto/config.h
-make %{?_smp_mflags}
+%make_build
 
 #
 # build vitmp
@@ -470,6 +487,7 @@ sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VI
 sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/doc/vim2html.pl
 
 %check
+%ifnarch %{ix86}
 # vim does quite an extensive test relying on a full fledged terminal
 # inside OBS, stdio is redirected to a serial console (where the build log
 # is being recorded/extracted. Systemd set non-local tty by default to vt220
@@ -478,6 +496,7 @@ export TERM=xterm
 # Reset the terminal scrolling region left behind by the testsuite
 trap "printf '\e[r'" EXIT
 TEST_IGNORE_FLAKY=1 LC_ALL=en_US.UTF-8 make -j1 test
+%endif
 
 %if %{with libalternatives}
 # with libalternatives
@@ -587,33 +606,48 @@ fi
 %{_bindir}/vitmp
 %{_bindir}/vimtutor
 %{_bindir}/gvimtutor
-%{_bindir}/xxd
 # man pages
-%{_mandir}/man1/*
+%{_mandir}/man1/eview.1%{?ext_man}
+%{_mandir}/man1/evim.1%{?ext_man}
+%{_mandir}/man1/ex.1%{?ext_man}
+%{_mandir}/man1/gview.1%{?ext_man}
+%{_mandir}/man1/gvim.1%{?ext_man}
+%{_mandir}/man1/gvimdiff.1%{?ext_man}
+%{_mandir}/man1/rgview.1%{?ext_man}
+%{_mandir}/man1/rgvim.1%{?ext_man}
+%{_mandir}/man1/rview.1%{?ext_man}
+%{_mandir}/man1/rvim.1%{?ext_man}
+%{_mandir}/man1/vi.1%{?ext_man}
+%{_mandir}/man1/view.1%{?ext_man}
+%{_mandir}/man1/vim.1%{?ext_man}
+%{_mandir}/man1/vimdiff.1%{?ext_man}
+%{_mandir}/man1/vimtutor.1%{?ext_man}
+%{_mandir}/man1/vitmp.1%{?ext_man}
 %dir %{_mandir}/da
 %dir %{_mandir}/da/man1/
-%{_mandir}/da/man1/*
+%{_mandir}/da/man1/*.1%{?ext_man}
 %dir %{_mandir}/de
 %dir %{_mandir}/de/man1/
-%{_mandir}/de/man1/*
+%{_mandir}/de/man1/*.1%{?ext_man}
 %dir %{_mandir}/fr
 %dir %{_mandir}/fr/man1/
-%{_mandir}/fr/man1/*
+%{_mandir}/fr/man1/*.1%{?ext_man}
 %dir %{_mandir}/it
 %dir %{_mandir}/it/man1/
-%{_mandir}/it/man1/*
+%{_mandir}/it/man1/*.1%{?ext_man}
 %dir %{_mandir}/ru
 %dir %{_mandir}/ru/man1/
-%{_mandir}/ru/man1/*
+%{_mandir}/ru/man1/*.1%{?ext_man}
 %dir %{_mandir}/pl
 %dir %{_mandir}/pl/man1/
-%{_mandir}/pl/man1/*
+%{_mandir}/pl/man1/*.1%{?ext_man}
 %dir %{_mandir}/ja
 %dir %{_mandir}/ja/man1/
-%{_mandir}/ja/man1/*
+%{_mandir}/ja/man1/*.1%{?ext_man}
 %dir %{_mandir}/tr
 %dir %{_mandir}/tr/man1/
-%{_mandir}/tr/man1/*
+%{_mandir}/tr/man1/*.1%{?ext_man}
+
 # docs and data file
 %license LICENSE
 %doc %{_docdir}/vim
@@ -781,5 +815,10 @@ fi
 %{_bindir}/vi
 %{_bindir}/vim
 %{_bindir}/vim-small
+
+%files -n xxd
+%license LICENSE
+%{_bindir}/xxd
+%{_mandir}/man1/xxd.1%{?ext_man}
 
 %changelog

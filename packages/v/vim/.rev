@@ -6952,4 +6952,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1071507</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>3738293f1b45f53d70793ef6e7ec2e44</srcmd5>
+    <version>9.0.1430</version>
+    <time>1680384416</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1430, fixes the following problems
+  * The included xdiff code is a bit outdated.
+  * Lean files are not recognized.
+  * Build failure because SIZE_MAX is not defined.
+  * Nu files are not recognized.
+  * Sage files are not recognized.
+  * WebAssembly Interface Type files are not recognized.
+  * Unused macros are defined.
+  * &quot;wat&quot; and &quot;wast&quot; files are one filetype.
+  * Indent wrong after &quot;export namespace&quot; in C++.
+  * Warning for uninitialized variable. (Tony Mechelynck)
+  * Cursor in wrong position when leaving insert mode.
+  * Invalid memory access when ending insert mode.
+  * Livebook files are not recognized.
+
+- Create a standalone package for xxd
+  * This is used by non-vim tools too
+
+- Updated to version 9.0.1418, fixes the following problems
+- fixes CVE-2023-1355
+  * Using NULL pointer with nested :open command.
+  * Cairo files are not recognized.
+  * Unx Tal files are not recognized.
+  * Odin files are not recognized.
+  * sort(list, 'N') does not work in Vim9 script context.
+  * Highlight for popupmenu kind and extra cannot be set.
+  * Profile test repeats the headers many times.
+  * Highlight test script has a few problems.
+  * find_file_in_path() is not reentrant.
+  * Condition is always true.</comment>
+    <requestid>1075605</requestid>
+  </revision>
 </revisionlist>

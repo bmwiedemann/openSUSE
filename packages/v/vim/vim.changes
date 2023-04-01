@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Mar 30 16:24:53 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1430, fixes the following problems
+  * The included xdiff code is a bit outdated.
+  * Lean files are not recognized.
+  * Build failure because SIZE_MAX is not defined.
+  * Nu files are not recognized.
+  * Sage files are not recognized.
+  * WebAssembly Interface Type files are not recognized.
+  * Unused macros are defined.
+  * "wat" and "wast" files are one filetype.
+  * Indent wrong after "export namespace" in C++.
+  * Warning for uninitialized variable. (Tony Mechelynck)
+  * Cursor in wrong position when leaving insert mode.
+  * Invalid memory access when ending insert mode.
+  * Livebook files are not recognized.
+
+-------------------------------------------------------------------
+Tue Mar 28 08:48:31 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a standalone package for xxd
+  * This is used by non-vim tools too
+
+-------------------------------------------------------------------
+Tue Mar 21 11:38:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1418, fixes the following problems
+- fixes CVE-2023-1355
+  * Using NULL pointer with nested :open command.
+  * Cairo files are not recognized.
+  * Unx Tal files are not recognized.
+  * Odin files are not recognized.
+  * sort(list, 'N') does not work in Vim9 script context.
+  * Highlight for popupmenu kind and extra cannot be set.
+  * Profile test repeats the headers many times.
+  * Highlight test script has a few problems.
+  * find_file_in_path() is not reentrant.
+  * Condition is always true.
+  * Crash when using null_class.
+  * Unused variables and functions.
+  * Compilation error with some compilers.
+  * Missing check for out-of-memory.
+  * ILE RPG files are not recognized.
+  * TableGen files are not recognized.
+  * QMLdir files are not recognized.
+  * Racket files are recognized as scheme.
+  * Accuracy of profiling is not optimal.
+  * Pony files are not recognized.
+  * Compiler warning for unused variable.
+  * <M-S-x> in Kitty does not use the Shift modifier.
+  * Crystal files are not recognized.
+  * Crash when collection is modified when using filter().
+  * ESDL files are not recognized.
+  * The included xdiff code is a bit outdated.
+
+-------------------------------------------------------------------
 Mon Mar 13 15:15:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update spec.skeleton to use autosetup in place of setup macro.
