@@ -215,4 +215,19 @@ Rebase patches:
 - Use the correct soname for libclang. (forwarded request 1069421 from aaronpuchert)</comment>
     <requestid>1069470</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>adac6c3fa20f6b206d1bf2f72f8dedac</srcmd5>
+    <version>2023.03.0+386</version>
+    <time>1680455926</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 2023.03.0+386.
+- Replace 0007-use-system-node.patch by remove-panmirror.patch.
+  Building panmirror seems to have gotten more complicated, and I
+  can't figure out how to make it work. So let's remove it for now.
+- Remove obsolete patches:
+  * 0009-Fix-false-quarto-warning.patch
+  * missing-include.patch
+- Make 0006-Fix-libclang-usage.patch work with Clang 16. (forwarded request 1076732 from aaronpuchert)</comment>
+    <requestid>1076735</requestid>
+  </revision>
 </revisionlist>

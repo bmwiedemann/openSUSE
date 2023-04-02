@@ -83,9 +83,6 @@
 %global bundled_elemental2_version    1.0.0
 # - junit                                    => bundled in ./src/gwt/lib/junit-4.9b3.jar, version 3.9b3, license is Eclipse Public License 1.0 (EPL-1.0), but used for testing only
 
-# the new (with 1.4) bundled markdown editor
-%global rstudio_visual_editor       panmirror-0.1.0
-
 # missing from NOTICE:
 # - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0
 
@@ -96,12 +93,12 @@
 %endif
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
-%global rstudio_version_major 2022
-%global rstudio_version_minor 12
+%global rstudio_version_major 2023
+%global rstudio_version_minor 03
 %global rstudio_version_patch 0
-%global rstudio_version_suffix 353
+%global rstudio_version_suffix 386
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 7d165dcfc1b6d300eb247738db2c7076234f6ef0
+%global rstudio_git_revision_hash 3c53477afb13ab959aeb5b34df1f10c237b256c3
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}+%{rstudio_version_suffix}
 Release:        0
@@ -128,9 +125,6 @@ Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # Upstream claims that the only licenses are:
 # GPL 2.0, LGPL 2.1 (or later), MPL 1.1 and Apache 2.0
 Source1:        https://s3.amazonaws.com/%{name}-dictionaries/core-dictionaries.zip
-# Node dependencies to build visual editor (use ./nodejs-bundler.sh rstudio-%%{version}/src/gwt/panmirror/src/editor/)
-Source2:        %{rstudio_visual_editor}-nm.tgz
-Source3:        %{rstudio_visual_editor}-bundled-licenses.txt
 Source4:        %{name}-server-user.conf
 Source99:       %{name}-rpmlintrc
 Source100:      nodejs-bundler.sh
@@ -143,15 +137,12 @@ Patch3:         0004-Add-additional-includes-for-aarch64.patch
 Patch4:         0005-Use-system-hunspell.patch
 # Make sure we find the right libclang.so and builtin headers, make compatible with newer versions.
 Patch5:         0006-Fix-libclang-usage.patch
-# taken from:
-# https://src.fedoraproject.org/rpms/rstudio/raw/d6d10b5bfade9014c156761a38b1d7a2db5f28f8/f/0004-use-system-node.patch
-Patch6:         0007-use-system-node.patch
+# Remove panmirror until someone figures out how to include it again.
+Patch6:         remove-panmirror.patch
 # Leap 15.2 only patch
 Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
-Patch8:         0009-Fix-false-quarto-warning.patch
 Patch9:         unbundle-fmt.patch
 Patch100:       old-boost.patch
-Patch101:       missing-include.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
@@ -181,7 +172,6 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
-BuildRequires:  nodejs-common
 BuildRequires:  pam-devel
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
@@ -306,17 +296,9 @@ on a server has a number of benefits, including:
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch8 -p1
 %patch9 -p1
 %patch100 -p1
-%patch101 -p1
 %endif
-
-tar -xf %{SOURCE2}
-mkdir src/gwt/panmirror/src/editor/node_modules
-cp -r node_modules_prod/* src/gwt/panmirror/src/editor/node_modules
-cp -r node_modules_dev/* src/gwt/panmirror/src/editor/node_modules
-cp %{SOURCE3} .
 
 # use system libraries when available
 rm -r \
@@ -361,6 +343,7 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
     -DRSTUDIO_USE_SYSTEM_YAML_CPP=TRUE                                              \
     -DBOOST_ROOT=%{_prefix} -DBOOST_LIBRARYDIR=%{_lib}                              \
     %{?rstudio_boost_requested_version:-DRSTUDIO_BOOST_REQUESTED_VERSION=%{rstudio_boost_requested_version}} \
+    -DQUARTO_ENABLED:BOOL=FALSE \
     -DQT_QMAKE_EXECUTABLE=%{_bindir}/qmake-qt5
 
 %make_build
@@ -447,7 +430,7 @@ done
 %service_del_postun %{rserver_service}
 
 %files
-%license COPYING NOTICE %{rstudio_visual_editor}-bundled-licenses.txt
+%license COPYING NOTICE
 %doc README.md
 %{_libexecdir}/rstudio
 %exclude %{_libexecdir}/rstudio/bin/rserver

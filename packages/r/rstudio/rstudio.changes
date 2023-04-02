@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  2 12:19:26 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- New upstream release 2023.03.0+386.
+- Replace 0007-use-system-node.patch by remove-panmirror.patch.
+  Building panmirror seems to have gotten more complicated, and I
+  can't figure out how to make it work. So let's remove it for now.
+- Remove obsolete patches:
+  * 0009-Fix-false-quarto-warning.patch
+  * missing-include.patch
+- Make 0006-Fix-libclang-usage.patch work with Clang 16.
+
+-------------------------------------------------------------------
 Sat Mar  4 20:15:56 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - New upstream release 2022.12.0+353.
