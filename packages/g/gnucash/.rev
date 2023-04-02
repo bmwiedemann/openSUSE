@@ -985,4 +985,54 @@
     <comment></comment>
     <requestid>1071016</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>276adcec56c594b75780226c8f58cbf1</srcmd5>
+    <version>4.14</version>
+    <time>1680455923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14
+  + Bugfixes
+    o Bug 797477 - Manual foreign transaction from APAR to 
+      another doesn't trigger price input
+    o Bug 797725 - Untranslatable string &quot;For Period Covering 
+      ~a to ~a&quot;
+    o Bug 797903 - Transaction window: The 'blue line' is always 
+      (erroneously) topmost when t. sorting order is inverted.
+    o Bug 798570 - Totals for the income, expenses and remaining to 
+      budget incorrect for one specific date.
+    o Bug 798625 - &quot;Last up through report date&quot; changed in 4.12
+      Don't adjust report dates with time64CanonicalDayTime. They're 
+      set to 23:59:59 local which is always &gt;= neutral time at which 
+      prices and transactions are timestamped. Local noon is before 
+      neutral time for all time zones east of UTC+2.
+    o Bug 798679 - Unicode normalization should be used for 
+      comparison but not stored.
+      Change to NFC normalization for all comparisons because the 
+      Unicode meaning of compatible might collide with the user's 
+      intent.
+    o Bug 798702 - Crash in gnc_plugin_page_focus_idle_destroy() 
+      closing a report before it completes.
+    o Bug 798705 - ] New: UI string mismatch: OK vs. Next
+    o Bug 798712 - Regional Decimal Point not recognized in budgets
+    o Bug 798717 - Reports &gt; Business &gt; Fancy Invoice duplicates 
+      company details
+    o Bug 798732 - : Type of balance carry forward accounts for 
+      German skr49 account template fixed
+    o Bug 798734 - Aging Reports don't handle mixed currency payments 
+      and invoices without Trading Accounts
+    o Bug 798734 - Aging Reports don't handle mixed currency payments 
+      and invoices without Trading Accounts
+    o Bug 798737 - Minor grammatical error - 'for' missing in 'You 
+      will be asked a conversion rate for each.'
+    o Bug 798740 - Build fails with gcc 13
+    o Bug 798747 - Crash in Investment Portfolio report
+    o Bug 798748 - Transaction Notes field's value does not appear in 
+      reverse transaction.
+    o Bug 798754 - Build fails with gcc 13 and glib &gt; 2.76
+    o Bug 798759 - Register widths for 'with sub-account' not saved
+    o Bug 798765 - Increase the limit for Maximum Slices in the Expense 
+      Piechart
+</comment>
+    <requestid>1076738</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Apr  2 13:34:56 UTC 2023 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 4.14
+  + Bugfixes
+    o Bug 797477 - Manual foreign transaction from APAR to 
+      another doesn't trigger price input
+    o Bug 797725 - Untranslatable string "For Period Covering 
+      ~a to ~a"
+    o Bug 797903 - Transaction window: The 'blue line' is always 
+      (erroneously) topmost when t. sorting order is inverted.
+    o Bug 798570 - Totals for the income, expenses and remaining to 
+      budget incorrect for one specific date.
+    o Bug 798625 - "Last up through report date" changed in 4.12
+      Don't adjust report dates with time64CanonicalDayTime. They're 
+      set to 23:59:59 local which is always >= neutral time at which 
+      prices and transactions are timestamped. Local noon is before 
+      neutral time for all time zones east of UTC+2.
+    o Bug 798679 - Unicode normalization should be used for 
+      comparison but not stored.
+      Change to NFC normalization for all comparisons because the 
+      Unicode meaning of compatible might collide with the user's 
+      intent.
+    o Bug 798702 - Crash in gnc_plugin_page_focus_idle_destroy() 
+      closing a report before it completes.
+    o Bug 798705 - ] New: UI string mismatch: OK vs. Next
+    o Bug 798712 - Regional Decimal Point not recognized in budgets
+    o Bug 798717 - Reports > Business > Fancy Invoice duplicates 
+      company details
+    o Bug 798732 - : Type of balance carry forward accounts for 
+      German skr49 account template fixed
+    o Bug 798734 - Aging Reports don't handle mixed currency payments 
+      and invoices without Trading Accounts
+    o Bug 798734 - Aging Reports don't handle mixed currency payments 
+      and invoices without Trading Accounts
+    o Bug 798737 - Minor grammatical error - 'for' missing in 'You 
+      will be asked a conversion rate for each.'
+    o Bug 798740 - Build fails with gcc 13
+    o Bug 798747 - Crash in Investment Portfolio report
+    o Bug 798748 - Transaction Notes field's value does not appear in 
+      reverse transaction.
+    o Bug 798754 - Build fails with gcc 13 and glib > 2.76
+    o Bug 798759 - Register widths for 'with sub-account' not saved
+    o Bug 798765 - Increase the limit for Maximum Slices in the Expense 
+      Piechart
+
+-------------------------------------------------------------------
 Sun Mar 12 15:13:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
