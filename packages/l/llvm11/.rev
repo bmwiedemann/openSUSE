@@ -150,4 +150,18 @@
 </comment>
     <requestid>1032342</requestid>
   </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>c7d1c580da5ad3df08395435b6da2c5e</srcmd5>
+    <version>11.0.1</version>
+    <time>1680455901</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-D88922-nostdlib.patch
+  * Fix alloc include error in compiler-rt sanitizer build
+  * https://reviews.llvm.org/D88922
+  * https://reviews.llvm.org/D84205
+- Add llvm-gcc13-issue55711.patch
+  * Fix gh#llvm/llvm-project#55711
+</comment>
+    <requestid>1076731</requestid>
+  </revision>
 </revisionlist>

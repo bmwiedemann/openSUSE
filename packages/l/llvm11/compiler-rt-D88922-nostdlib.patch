@@ -1,0 +1,131 @@
+diff -ur compiler-rt-11.0.1.src.orig/CMakeLists.txt compiler-rt-11.0.1.src/CMakeLists.txt
+--- compiler-rt-11.0.1.src.orig/CMakeLists.txt	2023-04-01 19:59:58.484402956 +0200
++++ compiler-rt-11.0.1.src/CMakeLists.txt	2023-04-01 20:07:17.504254514 +0200
+@@ -197,7 +197,11 @@
+ pythonize_bool(SANITIZER_CAN_USE_CXXABI)
+ 
+ macro(handle_default_cxx_lib var)
+-  if (${var} STREQUAL "default")
++  # Specifying -stdlib= in CMAKE_CXX_FLAGS overrides the defaults.
++  if (CMAKE_CXX_FLAGS MATCHES "-stdlib=([a-zA-Z+]*)")
++    set(${var}_LIBNAME "${CMAKE_MATCH_1}")
++    set(${var}_SYSTEM 1)
++  elseif (${var} STREQUAL "default")
+     if (APPLE OR CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+       set(${var}_LIBNAME "libc++")
+       set(${var}_SYSTEM 1)
+@@ -451,6 +455,25 @@
+   list(APPEND SANITIZER_COMMON_LINK_LIBS zircon)
+ endif()
+ 
++# TODO: COMPILER_RT_COMMON_CFLAGS and COMPILER_RT_COMMON_LINK_FLAGS are
++# intended for use in non-sanitizer runtimes such as libFuzzer, profile or XRay,
++# move these higher to include common flags, then derive SANITIZER_COMMON_CFLAGS
++# and SANITIZER_COMMON_LINK_FLAGS from those and append sanitizer-specific flags.
++set(COMPILER_RT_COMMON_CFLAGS ${SANITIZER_COMMON_CFLAGS})
++set(COMPILER_RT_COMMON_LINK_FLAGS ${SANITIZER_COMMON_LINK_FLAGS})
++
++# We don't use the C++ standard library, so avoid including it by mistake.
++append_list_if(COMPILER_RT_HAS_NOSTDINCXX_FLAG -nostdinc++ SANITIZER_COMMON_CFLAGS)
++append_list_if(COMPILER_RT_HAS_NOSTDLIBXX_FLAG -nostdlib++ SANITIZER_COMMON_LINK_FLAGS)
++
++# Remove -stdlib= which is unused when passing -nostdinc++...
++string(REGEX MATCHALL "-stdlib=[a-zA-Z+]*" stdlib_flag ${CMAKE_CXX_FLAGS})
++string(REGEX REPLACE "-stdlib=[a-zA-Z+]*" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
++
++# ...we need it to build some runtimes and tests so readd it where appropriate.
++list(APPEND COMPILER_RT_COMMON_CFLAGS ${stdlib_flag})
++list(APPEND COMPILER_RT_COMMON_LINK_FLAGS ${stdlib_flag})
++
+ macro(append_libcxx_libs var)
+   if (${var}_INTREE)
+     if (SANITIZER_USE_STATIC_LLVM_UNWINDER AND (TARGET unwind_static OR HAVE_LIBUNWIND))
+@@ -483,6 +506,12 @@
+   append_list_if(COMPILER_RT_HAS_LIBSTDCXX stdc++ SANITIZER_TEST_CXX_LIBRARIES)
+ endif()
+ 
++# TODO: There's a lot of duplication across lib/*/tests/CMakeLists.txt files,
++# move some of the common flags to COMPILER_RT_UNITTEST_CFLAGS.
++
++# Unittests need access to C++ standard library.
++string(APPEND COMPILER_RT_TEST_COMPILER_CFLAGS " ${stdlib_flag}")
++
+ # Warnings to turn off for all libraries, not just sanitizers.
+ append_string_if(COMPILER_RT_HAS_WUNUSED_PARAMETER_FLAG -Wno-unused-parameter CMAKE_C_FLAGS CMAKE_CXX_FLAGS)
+ 
+diff -ur compiler-rt-11.0.1.src.orig/lib/fuzzer/CMakeLists.txt compiler-rt-11.0.1.src/lib/fuzzer/CMakeLists.txt
+--- compiler-rt-11.0.1.src.orig/lib/fuzzer/CMakeLists.txt	2023-04-01 19:59:58.552404786 +0200
++++ compiler-rt-11.0.1.src/lib/fuzzer/CMakeLists.txt	2023-04-01 20:04:46.860181641 +0200
+@@ -53,14 +53,13 @@
+   }
+   " HAS_THREAD_LOCAL)
+ 
+-set(LIBFUZZER_CFLAGS ${SANITIZER_COMMON_CFLAGS})
++set(LIBFUZZER_CFLAGS ${COMPILER_RT_COMMON_CFLAGS})
+ 
+ if(OS_NAME MATCHES "Linux|Fuchsia" AND
+    COMPILER_RT_LIBCXX_PATH AND
+    COMPILER_RT_LIBCXXABI_PATH)
+-  list(APPEND LIBFUZZER_CFLAGS -nostdinc++ -D_LIBCPP_ABI_VERSION=Fuzzer)
+-  # Remove -stdlib= which is unused when passing -nostdinc++.
+-  string(REGEX REPLACE "-stdlib=[a-zA-Z+]*" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
++  list(APPEND LIBFUZZER_CFLAGS -D_LIBCPP_ABI_VERSION=Fuzzer)
++  append_list_if(COMPILER_RT_HAS_NOSTDINCXX_FLAG -nostdinc++ LIBFUZZER_CFLAGS)
+ elseif(TARGET cxx-headers OR HAVE_LIBCXX)
+   set(LIBFUZZER_DEPS cxx-headers)
+ endif()
+Nur in compiler-rt-11.0.1.src/lib/fuzzer: CMakeLists.txt.orig.
+diff -ur compiler-rt-11.0.1.src.orig/lib/sanitizer_common/tests/CMakeLists.txt compiler-rt-11.0.1.src/lib/sanitizer_common/tests/CMakeLists.txt
+--- compiler-rt-11.0.1.src.orig/lib/sanitizer_common/tests/CMakeLists.txt	2023-04-01 19:59:58.576405432 +0200
++++ compiler-rt-11.0.1.src/lib/sanitizer_common/tests/CMakeLists.txt	2023-04-01 20:04:46.860181641 +0200
+@@ -210,9 +210,7 @@
+       $<TARGET_OBJECTS:RTSanitizerCommon.${arch}>
+       $<TARGET_OBJECTS:RTSanitizerCommonLibc.${arch}>
+       $<TARGET_OBJECTS:RTSanitizerCommonSymbolizer.${arch}>)
+-    set_target_compile_flags(SanitizerTest
+-      ${SANITIZER_COMMON_CFLAGS}
+-      ${SANITIZER_TEST_CFLAGS_COMMON})
++    set_target_compile_flags(SanitizerTest ${SANITIZER_TEST_CFLAGS_COMMON})
+     # Setup correct output directory and link flags.
+     set_target_properties(SanitizerTest PROPERTIES
+       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+diff -ur compiler-rt-11.0.1.src.orig/lib/xray/CMakeLists.txt compiler-rt-11.0.1.src/lib/xray/CMakeLists.txt
+--- compiler-rt-11.0.1.src.orig/lib/xray/CMakeLists.txt	2023-04-01 19:59:58.596405971 +0200
++++ compiler-rt-11.0.1.src/lib/xray/CMakeLists.txt	2023-04-01 20:04:46.860181641 +0200
+@@ -132,7 +132,7 @@
+ include_directories(..)
+ include_directories(../../include)
+ 
+-set(XRAY_CFLAGS ${SANITIZER_COMMON_CFLAGS})
++set(XRAY_CFLAGS ${COMPILER_RT_COMMON_CFLAGS})
+ set(XRAY_COMMON_DEFINITIONS XRAY_HAS_EXCEPTIONS=1)
+ 
+ # We don't need RTTI in XRay, so turn that off.
+diff --git a/compiler-rt/cmake/config-ix.cmake b/compiler-rt/cmake/config-ix.cmake
+index e713f3c6b7c77..d1e01d956a7f2 100644
+--- compiler-rt.orig/cmake/config-ix.cmake
++++ compiler-rt/cmake/config-ix.cmake
+@@ -122,7 +122,8 @@ check_cxx_compiler_flag(/wd4800 COMPILER_RT_HAS_WD4800_FLAG)
+ check_symbol_exists(__func__ "" COMPILER_RT_HAS_FUNC_SYMBOL)
+ 
+ # Includes.
+-check_include_files("sys/auxv.h" COMPILER_RT_HAS_AUXV)
++check_cxx_compiler_flag(-nostdinc++ COMPILER_RT_HAS_NOSTDINCXX_FLAG)
++check_include_files("sys/auxv.h"    COMPILER_RT_HAS_AUXV)
+ 
+ # Libraries.
+ check_library_exists(dl dlopen "" COMPILER_RT_HAS_LIBDL)
+diff --git a/compiler-rt/lib/profile/CMakeLists.txt b/compiler-rt/lib/profile/CMakeLists.txt
+index 63532b72ff82e..5ff0e10182b4d 100644
+--- compiler-rt.orig/lib/profile/CMakeLists.txt
++++ compiler-rt/lib/profile/CMakeLists.txt
+@@ -111,6 +111,9 @@ if(COMPILER_RT_TARGET_HAS_UNAME)
+      -DCOMPILER_RT_HAS_UNAME=1)
+ endif()
+ 
++# We don't use the C++ Standard Library here, so avoid including it by mistake.
++append_list_if(COMPILER_RT_HAS_NOSTDINCXX_FLAG -nostdinc++ EXTRA_FLAGS)
++
+ # This appears to be a C-only warning banning the use of locals in aggregate
+ # initializers. All other compilers accept this, though.
+ # nonstandard extension used : 'identifier' : cannot be initialized using address of automatic variable

@@ -1,7 +1,7 @@
 #
 # spec file for package llvm11
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,8 +116,12 @@ Patch13:        llvm-normally-versioned-libllvm.patch
 Patch14:        llvm-do-not-install-static-libraries.patch
 # PATCH-FIX-UPSTREAM tablegen-test-link-static.patch -- https://reviews.llvm.org/D74588
 Patch15:        tablegen-test-link-static.patch
+# PATCH-FIX-UPSTREAM llvm-gcc13 https://github.com/llvm/llvm-project/issues/55711
+Patch16:        llvm-gcc13-issue55711.patch
 # Cherry pick patch from LLVM 15: https://github.com/llvm/llvm-project/issues/56421
 Patch17:        llvm-glibc-2-36.patch
+# PATCH-FIX-UPSTREAM compiler-rt-D88922-nostdlib.patch https://reviews.llvm.org/D88922 + https://reviews.llvm.org/D84205
+Patch18:        compiler-rt-D88922-nostdlib.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -562,6 +566,7 @@ This package contains the development files for Polly.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p2
+%patch16 -p2
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
@@ -596,6 +601,7 @@ popd
 
 pushd compiler-rt-%{_version}.src
 %patch17 -p2
+%patch18 -p1
 %patch34 -p2
 popd
 

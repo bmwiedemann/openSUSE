@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  1 16:22:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add compiler-rt-D88922-nostdlib.patch
+  * Fix alloc include error in compiler-rt sanitizer build
+  * https://reviews.llvm.org/D88922
+  * https://reviews.llvm.org/D84205
+
+-------------------------------------------------------------------
+Fri Mar 24 21:24:07 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add llvm-gcc13-issue55711.patch
+  * Fix gh#llvm/llvm-project#55711
+
+-------------------------------------------------------------------
 Sun Oct 30 14:09:39 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
