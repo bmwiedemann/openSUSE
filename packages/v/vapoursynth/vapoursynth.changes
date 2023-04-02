@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 31 06:54:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 62:
+  * updated the supported python versions to 3.11 and 3.8
+  * now up to 500 log messages are cached when no log handler is attached
+  * improvements to repr, audio channel handling and other python fixes
+  * added a class Local for environment-local values
+- Refresh vapoursynth-version.patch
+- Remove plugins. All plugins now available at https://vsdb.top/
+
+-------------------------------------------------------------------
 Mon Aug 16 07:13:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 54:

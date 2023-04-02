@@ -187,4 +187,12 @@
 - Remove vapoursynth-include.patch: upstreamed</comment>
     <requestid>912352</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4fd3421f97d34d81e6974b84c32b0ecb</srcmd5>
+    <version>62</version>
+    <time>1680455908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076723</requestid>
+  </revision>
 </revisionlist>

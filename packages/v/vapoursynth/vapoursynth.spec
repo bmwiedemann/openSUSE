@@ -1,7 +1,7 @@
 #
 # spec file for package vapoursynth
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vapoursynth
-Version:        54
+Version:        62
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only
@@ -42,6 +42,15 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(zimg) >= 2.9.2
+Obsoletes:      plugin-eedi3
+Obsoletes:      plugin-imwri
+Obsoletes:      plugin-miscfilters
+Obsoletes:      plugin-morpho
+Obsoletes:      plugin-ocr
+Obsoletes:      plugin-removegrain
+Obsoletes:      plugin-subtext
+Obsoletes:      plugin-vinverse
+Obsoletes:      plugin-vivtc
 
 %description
 VapourSynth is a library for video manipulation. It has a core
@@ -89,92 +98,6 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 This package contains the vspipe tool for interfacing with
 VapourSynth.
 
-%package plugin-eedi3
-Summary:        EEDI3 plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-eedi3
-eedi3 is a very slow edge directed interpolation filter.
-
-eedi3 works by finding the best non-decreasing (non-crossing) warping
-between two lines by minimizing a cost functional. The cost is based
-on neighborhood similarity (favor connecting regions that look similar),
-the vertical difference created by the interpolated values (favor
-small differences), the interpolation directions (favor short connections
-vs long), and the change in interpolation direction from pixel to pixel
-(favor small changes).
-
-%package plugin-morpho
-Summary:        Morpho plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-morpho
-Morpho plugin for VapourSynth.
-
-%package plugin-removegrain
-Summary:        RGVS plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-removegrain
-RemoveGrain is a spatial denoising filter.
-
-Modes 0-24 are implemented. Different modes can be specified for
-each plane. If there are fewer modes than planes, the last mode
-specified will be used for the remaining planes.
-
-%package plugin-vinverse
-Summary:        Vinverse plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-vinverse
-Vinverse is a simple filter to remove residual combing, based
-on an AviSynth script by Didée.
-
-%package plugin-vivtc
-Summary:        VIVTC plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-vivtc
-VIVTC is a set of filters that can be used for inverse telecine.
-It is a rewrite of some of tritical’s TIVTC filters.
-
-%package plugin-miscfilters
-Summary:        Miscelaneous plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-miscfilters
-Set of miscelaneous filters for VapourSynth.
-
-%package plugin-imwri
-Summary:        Image writer plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-imwri
-Image writer plugin for VapourSynth.
-
-%package plugin-ocr
-Summary:        OCR plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-ocr
-Tesseract OCR framwerork support for VapourSynth.
-
-%package plugin-subtext
-Summary:        Subtitles plugin for VapourSynth
-Group:          Productivity/Multimedia/Video/Editors and Convertors
-Requires:       libvapoursynth-%{version}
-
-%description plugin-subtext
-Plugin with subtitles support for VapourSynth.
-
 %prep
 %setup -q -n %{name}-R%{version}
 %patch0 -p1
@@ -197,7 +120,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libvapoursynth-%{version}
 %license COPYING.LESSER
 %doc ChangeLog
-%dir %{_libdir}/vapoursynth
 %{_libdir}/libvapoursynth-%{version}.so
 
 %files -n libvapoursynth-script0
@@ -215,32 +137,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files tools
 %{_bindir}/vspipe
-
-%files plugin-eedi3
-%{_libdir}/vapoursynth/libeedi3.so
-
-%files plugin-morpho
-%{_libdir}/vapoursynth/libmorpho.so
-
-%files plugin-removegrain
-%{_libdir}/vapoursynth/libremovegrain.so
-
-%files plugin-vinverse
-%{_libdir}/vapoursynth/libvinverse.so
-
-%files plugin-vivtc
-%{_libdir}/vapoursynth/libvivtc.so
-
-%files plugin-miscfilters
-%{_libdir}/vapoursynth/libmiscfilters.so
-
-%files plugin-imwri
-%{_libdir}/vapoursynth/libimwri.so
-
-%files plugin-ocr
-%{_libdir}/vapoursynth/libocr.so
-
-%files plugin-subtext
-%{_libdir}/vapoursynth/libsubtext.so
 
 %changelog
