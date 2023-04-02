@@ -29,9 +29,10 @@ ExclusiveArch:  do-not-build
 %define php_extdir  %(%{__php_config} --extension-dir)
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %endif
+%define php74 %(%{__php} -r "echo version_compare('%{php_version}', '7.4.0');")
 
 Name:           %{php_name}-%{pkg_name}
-%if "%{flavor}" == "php8"
+%if "%{flavor}" == "php8" || (0%{php74} >= 0)
 Version:        1.10.1
 %else
 Version:        1.7.0
@@ -41,8 +42,8 @@ Summary:        PHP framework delivered as C extension
 License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
 URL:            http://www.iceframework.org/
-Source0:        https://pecl.php.net/get/%{pkg_name}-1.7.0.tgz
-Source1:        https://pecl.php.net/get/%{pkg_name}-1.10.1.tgz
+Source0:        https://pecl.php.net/get/%{pkg_name}-1.10.1.tgz
+Source1:        https://pecl.php.net/get/%{pkg_name}-1.7.0.tgz
 Source2:        php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel
@@ -61,15 +62,15 @@ Requires:       %{php_name}-json
 %endif
 
 %description
-ICE is a PHP framework delivered as C extension. You don't need
+ICE is a PHP framework delivered as C extension. You do not need
 learn or use the C language, since the functionality is exposed as
 PHP classes.
 
 %prep
-%if "%{flavor}" == "php8"
-%setup -q -n %{pkg_name}-%{version} -T -b 1
-%else
+%if "%{flavor}" == "php8" || (0%{php74} >= 0)
 %setup -q -n %{pkg_name}-%{version}
+%else
+%setup -q -n %{pkg_name}-%{version} -T -b 1
 %endif
 
 %build
