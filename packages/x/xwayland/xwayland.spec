@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        23.1.0
+Version:        23.1.1
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -65,7 +65,7 @@ BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
 BuildRequires:  pkgconfig(videoproto)
-BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
 BuildRequires:  pkgconfig(wayland-protocols)
 %if 0%{?have_wayland_eglstream} == 1
 BuildRequires:  pkgconfig(wayland-eglstream-protocols)

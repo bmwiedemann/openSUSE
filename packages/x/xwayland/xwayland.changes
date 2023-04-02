@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr  1 11:35:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 23.1.1 (CVE-2023-1393):
+  + This release contains the fix for CVE-2023-1393.
+  + xkbUtils: use existing symbol names instead of deleted
+    deprecated ones
+  + glamor: Don't glFlush/ctx switch unless any work has been
+    performed
+  + xwayland:
+    - Refactor xwl_present_for_each_frame_callback helper
+    - Prevent nested xwl_present_for_each_frame_callback calls
+  + composite: Fix use-after-free of the COW
+- Drop U_xserver-composite-Fix-use-after-free-of-the-COW.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Mar 23 12:32:18 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_xserver-composite-Fix-use-after-free-of-the-COW.patch
+  * overlay window use-after-free (CVE-2023-1393, ZDI-CAN-19866,
+    bsc#1209543)
+
+-------------------------------------------------------------------
 Wed Mar 22 17:57:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 23.1.0:
