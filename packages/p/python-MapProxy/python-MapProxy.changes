@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  1 20:34:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.1
+  * WMS Dimension caching (#449)
+  * Add a mechanism to define plugins (#578)
+  * Support of non-EPSG SRS authorities (#572)
+  * Support for python 3.10 (#582)
+
+-------------------------------------------------------------------
 Sat Jun 18 19:28:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip another flaky test

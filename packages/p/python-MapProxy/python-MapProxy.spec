@@ -1,7 +1,7 @@
 #
 # spec file for package python-MapProxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,25 @@
 
 
 %bcond_without test
-
-%{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
 Name:           python-MapProxy
-Version:        1.14.0
+Version:        1.15.1
 Release:        0
 Summary:        Proxy for geospatial data
 License:        Apache-2.0
 URL:            http://mapproxy.org/
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/M/MapProxy/MapProxy-%{version}.tar.gz
-# test file missing in the sdist
+# test files missing in the sdist
 Source1:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/system/fixture/cache.gpkg
+Source2:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/unit/polygons/polygons.geojson
 Source99:       python-MapProxy-rpmlintrc
 BuildRequires:  %{python_module GDAL}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -59,20 +60,6 @@ Requires:       libgeos_c1
 Requires:       proj
 Requires:       python-Pillow
 Requires:       python-PyYAML
-Requires:       python-Shapely
-Requires:       python-gdal
-Requires:       python-lxml
-Requires:       (python3-pyproj if proj > 5)
-Recommends:     python-Paste
-Recommends:     python-Werkzeug
-Recommends:     python-boto3
-Recommends:     python-botocore
-Recommends:     python-eventlet
-Recommends:     python-greenlet
-Recommends:     python-lxml
-Recommends:     python-redis
-Recommends:     python-requests
-Recommends:     python-riak
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -85,16 +72,20 @@ serves any desktop or web GIS client.
 
 %prep
 %setup -q -n MapProxy-%{version}
-cp %SOURCE1 mapproxy/test/system/fixture/
+# Source1 required twice
+cp %{SOURCE1} mapproxy/test/system/fixture/
+mkdir -p mapproxy/test/unit/fixture/
+cp %{SOURCE1} mapproxy/test/unit/fixture/
+cp %{SOURCE2} mapproxy/test/unit/polygons
 # fix wrong interpreter in test scripts
-sed -i 's/env python/python3/' mapproxy/test/unit/test_client_cgi.py mapproxy/test/system/fixture/minimal_cgi.py
+sed -i 's/env python.*$/python3/' mapproxy/test/unit/test_client_cgi.py mapproxy/test/system/fixture/minimal_cgi.py
 chmod +x mapproxy/test/system/fixture/minimal_cgi.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/mapproxy-seed
@@ -109,13 +100,12 @@ export BOTO_CONFIG=/doesnotexist
 donttest="TestCouchDBCache"
 donttest="$donttest or TestRedisCache"
 donttest="$donttest or test_https_"
-# off by one error capturing the execptions
-donttest="$donttest or test_bad_config_geopackage_"
-# https://github.com/mapproxy/mapproxy/issues/564
-donttest="$donttest or test_output_formats_greyscale_png"
-donttest="$donttest or test_output_formats_png8"
 # flaky
 donttest="$donttest or (TestWMS130 and test_get_map)"
+# unexcpected mime type
+donttest="$donttest or TestMapServerCGI"
+# can't write temporary minimal script (?)
+donttest="$donttest or TestCGIClient"
 %pytest mapproxy -ra -k "not ($donttest)"
 
 %post

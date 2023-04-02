@@ -47,4 +47,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>985075</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b115b86e17bdf02d03efc4b1393a8cb3</srcmd5>
+    <version>1.15.1</version>
+    <time>1680473179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.1
+  * WMS Dimension caching (#449)
+  * Add a mechanism to define plugins (#578)
+  * Support of non-EPSG SRS authorities (#572)
+  * Support for python 3.10 (#582)
+</comment>
+    <requestid>1076758</requestid>
+  </revision>
 </revisionlist>
