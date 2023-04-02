@@ -588,4 +588,18 @@
     views around; see the manual entry for further details.</comment>
     <requestid>1074565</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>17fcac49553c2edbddebd66993e18d21</srcmd5>
+    <version>1.10.1</version>
+    <time>1680475919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * defcustom typing updates
+  * re-enable json output for mu-find
+  * restore emacs27 compatibility (buffer-local-boundp)
+  * avoid tramp cornercase for mu4e version check
+  * handle function-type bookmarks again
+  * restore terminal colors after error</comment>
+    <requestid>1076762</requestid>
+  </revision>
 </revisionlist>

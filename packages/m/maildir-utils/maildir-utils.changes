@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  2 18:13:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.1:
+  * defcustom typing updates
+  * re-enable json output for mu-find
+  * restore emacs27 compatibility (buffer-local-boundp)
+  * avoid tramp cornercase for mu4e version check
+  * handle function-type bookmarks again
+  * restore terminal colors after error
+
+-------------------------------------------------------------------
 Mon Mar 27 06:22:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.0:
