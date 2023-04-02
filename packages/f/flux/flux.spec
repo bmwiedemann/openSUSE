@@ -1,7 +1,7 @@
 #
 # spec file for package flux
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define libflux_suffix %(echo %{version} | tr . _)
 
 Name:           flux
-Version:        0.171.0
+Version:        0.193.0
 Release:        0
 Summary:        Influx data language
 License:        MIT
@@ -30,7 +30,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Patch1:         disable-static-library.patch
-Patch2:         0001-fix-compile-error-with-Rust-1.64-5273.patch
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.45
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -66,7 +65,6 @@ tar -Jxf %{SOURCE1}
 install -D %{SOURCE2} .cargo/config
 
 patch -p2 < %{PATCH1}
-patch -p2 < %{PATCH2}
 patch -p2 <<EOF
 --- a/libflux/flux/build.rs
 +++ b/libflux/flux/build.rs
@@ -84,7 +82,6 @@ popd
 %build
 pushd libflux
 RUSTFLAGS=%{rustflags} cargo build --release
-RUSTFLAGS=%{rustflags} cargo build --release --bin fluxc
 RUSTFLAGS=%{rustflags} cargo build --features=doc --release --bin fluxdoc
 popd
 
@@ -109,7 +106,6 @@ EOF
 
 install -D -m 644 flux.pc %{buildroot}%{_libdir}/pkgconfig/flux.pc
 
-install -D -m 755 libflux/target/release/fluxc %{buildroot}%{_bindir}/fluxc
 install -D -m 755 libflux/target/release/fluxdoc %{buildroot}%{_bindir}/fluxdoc
 
 %check
@@ -127,7 +123,6 @@ popd
 %defattr(-,root,root)
 %license LICENSE
 %doc README.md
-%{_bindir}/fluxc
 %{_bindir}/fluxdoc
 %{_libdir}/libflux.so
 %{_libdir}/pkgconfig/flux.pc

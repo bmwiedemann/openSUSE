@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 29 18:16:21 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.193.0, see:
+  https://github.com/influxdata/flux/releases/
+- Drop 0001-fix-compile-error-with-Rust-1.64-5273.patch: upstreamed
+- fluxc removed upstream
+
+-------------------------------------------------------------------
 Wed Oct 19 13:39:14 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add 0001-fix-compile-error-with-Rust-1.64-5273.patch:
