@@ -1,7 +1,7 @@
 #
 # spec file for package parzip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Parallel pkzip implementation
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/jpakkane/parzip
-Source0:        https://github.com/jpakkane/parzip/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM parzip-fix-missing-includes.patch
+Patch0:         parzip-fix-missing-includes.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -49,7 +51,7 @@ Does not support
     archives split to multiple files
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

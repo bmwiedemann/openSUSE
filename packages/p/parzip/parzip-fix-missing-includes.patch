@@ -1,0 +1,24 @@
+Index: parzip-1.3.0/src/decompress.cpp
+===================================================================
+--- parzip-1.3.0.orig/src/decompress.cpp
++++ parzip-1.3.0/src/decompress.cpp
+@@ -53,6 +53,7 @@
+ #include <cstring>
+ 
+ #include <memory>
++#include <stdexcept>
+ 
+ #define CHUNK 1024 * 1024
+ 
+Index: parzip-1.3.0/src/file.h
+===================================================================
+--- parzip-1.3.0.orig/src/file.h
++++ parzip-1.3.0/src/file.h
+@@ -19,6 +19,7 @@
+ 
+ #include <cstdio>
+ #include <string>
++#include <cstdint>
+ 
+ class MMapper;
+ 
