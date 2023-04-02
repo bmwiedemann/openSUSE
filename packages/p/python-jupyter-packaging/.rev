@@ -103,4 +103,14 @@
 </comment>
     <requestid>1002376</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ba74c9bdc723cd4fbefe049a1ebe04e1</srcmd5>
+    <version>0.12.3</version>
+    <time>1680455900</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jupyter-packaging-pr178-ignoredeprecations.patch
+  * gh#jupyter/jupyter-packaging#178
+  * Fixes deprecation warnings through new setuptools</comment>
+    <requestid>1076679</requestid>
+  </revision>
 </revisionlist>

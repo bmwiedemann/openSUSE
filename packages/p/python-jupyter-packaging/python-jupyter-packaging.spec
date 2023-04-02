@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-packaging
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter-packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_packaging/jupyter_packaging-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM jupyter-packaging-pr178-ignoredeprecations.patch gh#jupyter/jupyter-packaging#178
+Patch0:         https://github.com/jupyter/jupyter-packaging/pull/178.patch#/jupyter-packaging-pr178-ignoredeprecations.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module hatchling}
@@ -54,7 +56,7 @@ This package contains utilities for making Python packages
 with and without accompanying JavaScript packages
 
 %prep
-%setup -q -n jupyter_packaging-%{version}
+%autosetup -p1 -n jupyter_packaging-%{version}
 sed -i 's/\r$//' README.md
 sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
 

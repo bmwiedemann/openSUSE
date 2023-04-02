@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  1 20:23:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter-packaging-pr178-ignoredeprecations.patch
+  * gh#jupyter/jupyter-packaging#178
+  * Fixes deprecation warnings through new setuptools
+
+-------------------------------------------------------------------
 Thu Sep  8 14:55:19 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.12.3
