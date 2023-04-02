@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 29 19:30:56 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.11.0.
+  * Many bugfixes: https://dl.influxdata.com/platform/nightlies/master-1.x/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Jan 13 14:41:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Replace pwdutils with shadow (pwdutils was dropped ages ago)

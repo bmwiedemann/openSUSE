@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.gz
@@ -39,10 +39,10 @@ Patch0:         harden_influxdb.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.19
 BuildRequires:  golang-packaging >= 15.0.8
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(flux) >= 0.170.1
+BuildRequires:  pkgconfig(flux) >= 0.188.0
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
@@ -156,6 +156,7 @@ getent passwd influxdb >/dev/null || useradd -r -g influxdb \
 %{_unitdir}/influxdb.service
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/influxdb.conf
+%ghost %attr(0755, influxdb, influxdb) %dir %{_rundir}/influxdb
 %else
 /etc/init.d/influxdb
 %attr(0755, influxdb, influxdb) %dir %{_rundir}/influxdb
