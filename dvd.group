@@ -1775,6 +1775,7 @@
     <package name="libdbusmenu-gtk3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libdbusmenu-qt5-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdc1394-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdconf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdebuginfod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdeflate0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2820,6 +2821,7 @@
     <package name="libvmtools0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvncclient1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libvncserver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libvo-amrwbenc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvorbis0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbis0-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libvorbisenc2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4681,6 +4683,7 @@
     <package name="xterm-resize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xtermset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xwayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
