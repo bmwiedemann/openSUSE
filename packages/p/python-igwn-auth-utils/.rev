@@ -20,4 +20,16 @@
 - Remove and obsolete -requests meta subpackage</comment>
     <requestid>1004516</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b3d09b7fe561205ce29373ac43af31e</srcmd5>
+    <version>0.4.0</version>
+    <time>1680455910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.4.0
+  * [!48] Add igwn_auth_utils.scitokens.token_audience function.
+  * [!49] Add support for all HTTP methods
+  * [!51] Fix error reporting in scitokens tests
+- Ignore setuptools deprecation API</comment>
+    <requestid>1076680</requestid>
+  </revision>
 </revisionlist>
