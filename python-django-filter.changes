@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 26 19:07:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1:
+  * Declared support for Django 4.2.
+  * Various updated and new translations. Thanks to all who
+    contributed, and Weblate for hosting.
+  * Fixed QueryArrayWidget.value_from_datadict() to not mutate
+    input data.
+
+-------------------------------------------------------------------
 Thu Aug 25 02:26:12 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Trim package description
