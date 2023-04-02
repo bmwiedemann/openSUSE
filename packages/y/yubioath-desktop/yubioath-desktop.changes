@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 13:26:55 UTC 2023 - Torsten Gruner <t.gruner@katodev.de>
+
+- Use gcc11 to build the package for Tumbleweed
+
+-------------------------------------------------------------------
 Thu Dec  2 18:58:26 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
 
 - Update to version 5.1.0

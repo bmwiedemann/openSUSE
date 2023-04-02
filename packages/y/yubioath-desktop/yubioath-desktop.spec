@@ -1,7 +1,7 @@
 #
 # spec file for package yubioath-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           yubioath-desktop
 Version:        5.1.0
 Release:        0
 Summary:        Graphical interface for displaying OATH codes with a Yubikey
-License:        GPL-3.0-or-later and Apache-2.0
+License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://developers.yubico.com/yubioath-desktop/
 Source0:        https://developers.yubico.com/yubioath-desktop/Releases/%{name}-%{version}.tar.gz
@@ -35,6 +35,13 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(python3)
+%if 0%{?suse_version} > 1540
+BuildRequires:  gcc11-c++ >= 8
+%define cxx g++-11
+%else
+BuildRequires:  gcc-c++
+%define cxx g++
+%endif
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Requires:       pyotherside
@@ -53,7 +60,7 @@ sed -i 's|yubikey-manager==|yubikey-manager>=|' requirements.txt
 sed -i 's|target.path = $$PREFIX/lib|target.path = $$PREFIX/bin|' QZXing/QZXing-components.pri
 
 %build
-%qmake5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true"
+%qmake5 QMAKE_CXX=%{cxx} QMAKE_LINK=%{cxx} QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags} -fPIE" QMAKE_LFLAGS+="-pie" QMAKE_STRIP="/bin/true"
 %make_build
 
 %install
