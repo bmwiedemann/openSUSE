@@ -1,7 +1,7 @@
 #
 # spec file for package touchegg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           touchegg
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        A multitouch gesture recogniser for GNU/Linux
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Hardware/Other
 URL:            https://github.com/JoseExposito/touchegg
-Source:         https://github.com/JoseExposito/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_touchegg.service.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

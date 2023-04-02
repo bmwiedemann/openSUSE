@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  2 10:51:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 2.0.16:
+  * Do not use abstract socket on BSD
+  * Fix compilation error on GCC 13
+
+-------------------------------------------------------------------
 Sun Nov 27 19:54:32 UTC 2022 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.0.15:
