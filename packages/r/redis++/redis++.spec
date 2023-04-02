@@ -24,6 +24,7 @@ Summary:        C++ client for Redis
 License:        Apache-2.0
 URL:            https://github.com/sewenew/redis-plus-plus
 Source0:        https://github.com/sewenew/redis-plus-plus/archive/%{version}.tar.gz
+Patch0:         fix-missing-include.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -53,7 +54,7 @@ The %{name}-devel package contains the header files and
 libraries for redis-plus-plus.
 
 %prep
-%autosetup -n redis-plus-plus-%{version}
+%autosetup -n redis-plus-plus-%{version} -p1
 
 %build
 sed -i -e '/DESTINATION.*/s/lib/%{_lib}/' CMakeLists.txt
