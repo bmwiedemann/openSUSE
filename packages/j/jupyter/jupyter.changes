@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 19:03:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- remove explicit jupyter-client dep in order ot avoid resolver
+  conflicts with python-notebook
+
+-------------------------------------------------------------------
 Fri Jan  7 21:33:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip python2: There is no python2-qtconsole

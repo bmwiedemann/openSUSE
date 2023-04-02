@@ -30,7 +30,7 @@ Source1:        https://buildmedia.readthedocs.org/media/pdf/jupyter/latest/jupy
 Source2:        https://buildmedia.readthedocs.org/media/htmlzip/jupyter/latest/jupyter.zip
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter-client}
+#BuildRequires:  %%{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module jupyter_console}
 BuildRequires:  %{python_module nbconvert}
@@ -42,7 +42,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-ipykernel
 Requires:       python-ipywidgets
-Requires:       python-jupyter-client
+# current notebook 6.5 requires jupyter-client < 8
+#Requires:       python-jupyter-client
 Requires:       python-jupyter-core
 Requires:       python-jupyter_console
 Requires:       python-nbconvert
