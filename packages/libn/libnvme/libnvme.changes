@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
+
+- Update to version 1.4:
+  * fabrics: Filter out invalid UUIDs from DMI
+  * fabrics: Add define for DMI sysinfo
+  * Print out correct TREQ strings for discovery
+  * tree: fix generic device open failure
+  * fabrics: add configuration option 'tls_key'
+  * fabrics: add configuration option 'keyring'
+  * linux: add key helper functions
+  * nvme: add 'nvme_insert_tls_key()' function
+  * linux: add nvme_lookup_keyring()
+  * python: Change python option from combo to feature
+  * types: add opcode field to error log page (TP4113)
+  * python: Add setter property for controller DHCHAP Key
+  * python: Remove redundant host.set_key() method
+  * build, meson: Print option summary
+  * Python: Add support for setting/getting Host DHCHAP key
+  * Python: Add hostnqn_from_file() and hostid_from_file()
+  * types: Update position of elbatm in struct nvme_copy_range{_f1}
+  * doc: fix kernel-doc-check warning
+  * python, meson: Assert that deps are present for -Dpython=true
+  * python: Reformat SWIG input file
+  * python test: Check there is no SIGSEGV during garbage collection
+  * python: Return PyObject* from __str__() instead of a static char[]
+  * python: Fix segmentation fault during garbage collection
+  * build: Enable test in muon minimal build
+  * build: Streamline workflows with nvme-cli
+  * mi: Add nvme_mi_admin_get_log_page
+  * ioctl: Set file descriptor in nvme_get_log_page()
+  * fix endians
+  * fabrics: Do not ignore one char whitespace when string sanitizing
+
+-------------------------------------------------------------------
 Mon Jan 30 13:51:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.3:

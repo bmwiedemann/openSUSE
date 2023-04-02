@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
@@ -28,6 +28,7 @@ Source0:        libnvme-%{version}.tar.gz
 BuildRequires:  dbus-1-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  keyutils-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  make
