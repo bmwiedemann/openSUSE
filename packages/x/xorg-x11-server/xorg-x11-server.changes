@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  1 13:42:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 21.1.8 (CVE-2023-1393):
+  * This release contains the fix for CVE-2023-1393
+  * composite: Fix use-after-free of the COW
+  * xkbUtils: use existing symbol names instead of deleted
+    deprecated ones
+- Drop U_xserver-composite-Fix-use-after-free-of-the-COW.patch:
+  Fixed upstream
+- Switch back to tarball release, drop source service, add keyring
+  and sig files.
+
+-------------------------------------------------------------------
 Wed Mar 22 13:48:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_xserver-composite-Fix-use-after-free-of-the-COW.patch

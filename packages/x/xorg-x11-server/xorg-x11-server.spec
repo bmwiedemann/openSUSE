@@ -36,14 +36,15 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.7
+Version:        21.1.8
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
-# Source URL: http://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        xorg-server-%{version}.tar.xz
+Source0:        https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.xz
+Source10:       https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-%{version}.tar.xz.sig
+Source11:       xorg-x11-server.keyring
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
 Source3:        xorgcfg.tar.bz2
@@ -242,8 +243,6 @@ Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
 
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
-Patch1209543:   U_xserver-composite-Fix-use-after-free-of-the-COW.patch
-
 %description
 This package contains the X.Org Server.
 
@@ -401,8 +400,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1930 -p1
 %patch1940 -p1
 %patch1960 -p1
-
-%patch1209543 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
