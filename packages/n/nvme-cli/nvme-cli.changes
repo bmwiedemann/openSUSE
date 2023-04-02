@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.4:
+  * plugins/ocp: Add SMART cloud log to solidigm plugin
+  * nvme-print: Unify number base format for nsid
+  * nvme-(discover,connect,connect-all): enable options '--keyring' and '--tls_key'
+  * nvme-connect: enable option '--tls'
+  * nvme-check-tls-key: add options to derive a 'retained' TLS key
+  * nvme-gen-tls-key: add options to derive a TLS key
+  * plugins/ocp: Move SMART cloud log methods to separate file for reusability
+  * nvme: validate storage tag size correctly
+  * nvme-print-json: Add json output status function
+  * util: Cleanup argconfig parse function
+  * nvme: Fix format command function indentation errors
+  * util: Use argconfig commandline options pointer directly
+  * nvme-print: Fix nvme show status function indentation errors
+  * nvme: Check fw-commit command support MUD
+  * print: print csi and opcode in error log (TP4113)
+  * plugins/inspur: Cast vendor specific smart log value
+  * nvme: Use correct ABORT type for self abort test
+  * plugins/solidigm: Do not overwrite previously initialized variable
+  * nvme-print: sanitize supported-log-pages output
+  * nvme: Enforce length to a multiple of 4 in get_log_page
+  * nvme: fix block count and data size logic
+  * util: Introduce argconfig simple helper to check seen condition
+  * plugins/ocp: Add set feature EOL/PLP failure mode no-uuid option
+  * plugins/ocp: Refactor to clear feature identifier C1h and C3h
+  * plugins/ocp: Add support for clear PCIe correctable error counters feature
+  * nvme-doc: update man page for supported-log-pages
+  * plugins/ocp: OCP 2.0 field updates for SMART cloud log
+  * nvme: Fix parameter limit range
+  * fdp: Fix wrong Reclaim Unit Handle Status size
+  * plugins/ocp: Add support for EOL/PLP failure mode feature
+  * nvme-print: Fix printing of u32 values
+  * nvme: Fix invalid memory access in show_registers
+  * util: Add argconfig seen flag parameter to check if feature NSID set
+  * nvme-print: fix segfault in supported-log-pages json output
+  * fabrics: Fix ordering for auto connect services
+  * nvme.c: Check Firmware Update Granularity in fwdl
+  * log: high latency timestamp issue
+  * nvme: Align get feature data buffer length by page size to allocate
+  * nvme: Continue get feature on invalid NS error to get multiple feature ids
+  * plugins/ocp: SMART cloud log bug fixes.
+  * Made temperature readouts in line with the SI.
+  * Changed 'Kelvin' to 'kelvin', as recommended by the BIPM.
+  * plugins/ocp: Fix whitespace and style issues
+  * util: Revert JSON output to plain numbers
+  * nvme: Add rae argument to telemetry-log command
+  * nvme: Refactor get telemetry log page helper
+  * nvme: Factor out parse telemetry log da element
+  * nvme: Fix type in error message
+  * unit: Add test-argconfig-parse
+  * nvme: Use chunked read in get_log()
+  * nvme: Use fprintf for error message logging in get_log()
+  * nvme: fix /dev/spkd/ typo
+  * doc: --storage-tag-check doesn't take any arguments
+  * fabrics: Ensure host-traddr/iface consistency for "connect-all"
+  * nvme-print: print the nvme generic name in json output as well
+  * plugins/innogrit: modify command opcode for eventlog and cdump
+  * completion: fix typo, add missing args
+  * plugins/wdc: Fix data Formatting for Latency Monitor Log Page
+  * nvme: Make json-c optional again
+  * nvme-print: Move JSON printing function into a new file
+  * plugins/solidigm: Use json_create_object wrapper
+  * plugins/solidigm: Use struct json_object instead of typedef
+  * fabrics: No need to sanitize trsvcid and traddr
+  * docs: Fixed typos and missing options
+  * util: Numbers without any suffix are also valid
+  * util: Update suffix_binary_parse API
+  * util: Reimplement suffix_si_parse
+  * nvme: Filter out status flags for get feature command
+  * util: Add crc32 implementation
+  * nvme-print: Use attrs_info as key for Zone Attributes Information
+  * nvme: Support effects-log for fabrics ctrl
+  * plugins/solidigm: Add uuid index resolution
+  * plugins/ocp: Use network byte order for OCP UUID value
+
+-------------------------------------------------------------------
 Mon Jan 30 13:55:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.3:
