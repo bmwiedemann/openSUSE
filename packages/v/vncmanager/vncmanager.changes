@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  1 19:42:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- u_Fix-missing-include.patch
+  * Fix missing #include <cstdint> exposed by gcc 13.
+- Rebase n_disable_mit_shm.patch with quilt.
+
+-------------------------------------------------------------------
 Wed Feb  9 13:57:51 UTC 2022 - Joan Torres <joan.torres@suse.com>
 
 -  u_Fix-Tight-Encoding-not-processing-pixel-format-prope.patch

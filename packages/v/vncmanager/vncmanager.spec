@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,7 @@ Patch8:         u_Fix-PixelFormat-ntoh-and-PixelFormat-hton.patch
 Patch9:         u_Fix-TightCompressionControl-definition-for-big-endian.patch
 Patch10:        n_UsrEtc.patch
 Patch11:        u_Fix-Tight-Encoding-not-processing-pixel-format-prope.patch
+Patch12:        u_Fix-missing-include.patch
 
 %description
 Session manager for VNC. It listens on VNC port and spawns Xvnc processes for incoming clients.
@@ -90,6 +91,7 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
