@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  1 16:27:43 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.7:
+  - Support for many more HLSL features and intrinsics.
+  - Much improved support for the Direct3D shader model 1/2/3 HLSL profiles.
+  - Public vkd3d-shader API for parsing and serialising DXBC blobs.
+  - Miscellaneous bug fixes.
+
+-------------------------------------------------------------------
 Mon Dec 12 21:52:23 UTC 2022 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to version 1.6:

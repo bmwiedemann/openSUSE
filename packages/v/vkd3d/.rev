@@ -75,4 +75,16 @@
   - Miscellaneous bug fixes. (forwarded request 1042502 from tobijk)</comment>
     <requestid>1042562</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>81d6029ca3bfd3609c6c9d68f49fad54</srcmd5>
+    <version>1.7</version>
+    <time>1680455892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7:
+  - Support for many more HLSL features and intrinsics.
+  - Much improved support for the Direct3D shader model 1/2/3 HLSL profiles.
+  - Public vkd3d-shader API for parsing and serialising DXBC blobs.
+  - Miscellaneous bug fixes. (forwarded request 1076657 from tobijk)</comment>
+    <requestid>1076661</requestid>
+  </revision>
 </revisionlist>
