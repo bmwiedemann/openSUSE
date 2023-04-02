@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  2 18:28:20 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.11.1:
+  * Smarter interactive navigation in the TUI when option --tree is
+    used with option -l or -c
+
+-------------------------------------------------------------------
 Sun Mar 19 07:50:55 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.11.0:
