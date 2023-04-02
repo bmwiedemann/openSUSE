@@ -25,6 +25,7 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://zynaddsubfx.sourceforge.io/
 Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         zynaddsubfx-buildflags.patch
+Patch1:         fix-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  dssi
 BuildRequires:  fltk-devel

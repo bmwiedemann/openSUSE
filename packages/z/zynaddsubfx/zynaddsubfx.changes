@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:09:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-missing-include.patch: Add missing #include <cstdint>
+  exposed by gcc 13.
+
+-------------------------------------------------------------------
 Sun Mar 12 10:56:08 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Compensate for fltk's lack of pkgconfig file.Fixes Leap:15.5 build
