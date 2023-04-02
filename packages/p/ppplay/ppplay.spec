@@ -1,6 +1,7 @@
 #
 # spec file for package ppplay
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ppplay
 Version:        0.1.3+git20190918
 Release:        0
@@ -26,6 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         ppplay-modern-boost.patch
 Patch1:         ppplay-cmake.patch
 Patch2:         ppplay-sdl.patch
+Patch3:         ppplay-fix-missing-include.patch
 BuildRequires:  ImageMagick
 BuildRequires:  boost-devel
 BuildRequires:  cmake
@@ -39,8 +42,8 @@ BuildRequires:  libboost_test-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libmp3lame)
-BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vorbis)
 #### Bundled libs
 ##./src/adplug/
 #Provides:       bundled(adplug)
@@ -62,6 +65,7 @@ Features
 %if 0%{?suse_version} <= 1550
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 %cmake \
