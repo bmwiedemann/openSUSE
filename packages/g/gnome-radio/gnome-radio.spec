@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-radio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           gnome-radio
-Version:        46.0
+Version:        64.0
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 URL:            http://www.gnomeradio.org
-Source:         https://download.gnome.org/sources/gnome-radio/46/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-radio/64/%{name}-%{version}.tar.xz
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
