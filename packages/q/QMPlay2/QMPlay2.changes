@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  2 19:49:35 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Optimize 0001-fix-overlay-focus.patch to also fix focus for the
+  about window
+
+-------------------------------------------------------------------
 Tue Mar 30 19:24:18 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add 0001-fix-overlay-focus.patch to ensure the correct
