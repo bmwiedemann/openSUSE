@@ -1,7 +1,7 @@
 #
 # spec file for package artifacts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # security:forensics is now only supporting python 3.7 or newer
 BuildRequires:  python3-setuptools > 3.7
+BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-packaging > 3.7
-BuildRequires:  %{python_module base >= 3.7}
 BuildArch:      noarch
 
 %description

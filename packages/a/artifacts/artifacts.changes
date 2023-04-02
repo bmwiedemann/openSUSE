@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 27 08:50:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require all python versions to build: primary python is
+  sufficient.
+
+-------------------------------------------------------------------
 Fri Dec 16 17:15:35 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Portions of the libyal family of forensic modules now require python 3.7 or newer. Update spec file as follows
