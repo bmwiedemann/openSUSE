@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  2 14:25:42 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.4.2:
+  * Soft incremental bounds constraints now imposed to all new and
+    old nodes positioning.
+  * Attempt to auto-start minimised to system-tray icon, if
+    enabled, when restoring a desktop session (eg. after logout,
+    shutdown or restart).
+
+-------------------------------------------------------------------
 Fri Mar  3 19:11:39 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.4.1 (changes since 0.3.9):
