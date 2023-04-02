@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           libxfce4ui
-Version:        4.18.2
+Version:        4.18.3
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
@@ -132,6 +132,7 @@ This package provides the upstream look and feel for libxfce4ui.
 
 
 # this should be replaced by %%lang_package once bnc#513786 is resolved
+
 %package lang
 Summary:        Languages for package %{name}
 License:        LGPL-2.1-or-later

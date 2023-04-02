@@ -382,4 +382,20 @@
     <comment></comment>
     <requestid>1064101</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7f87ca6533dbfecf05988316a0d3d489</srcmd5>
+    <version>4.18.3</version>
+    <time>1680455813</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.3
+  * Add comment about the need for gtk_widget_destroy()
+  * Fix memory management in Vala generated code
+  * Add annotation &quot;(nullable)&quot; where appropriate
+  * Replace deprecated annotation: &quot;(allow-none)&quot;
+  * Harden xfce_gtk_handle_tab_accels (thunar#1067)
+  * screensaver: Avoid Xfconf warning
+  * shortcuts-grabber: Ignore keyboard layout change
+  * screensaver: Fix Xfconf memory management (forwarded request 1075059 from manfred-h)</comment>
+    <requestid>1076635</requestid>
+  </revision>
 </revisionlist>
