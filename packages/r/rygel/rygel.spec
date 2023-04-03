@@ -21,7 +21,7 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.42.1
+Version:        0.42.2
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
