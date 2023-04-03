@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:05:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.16.0:
+  * Update documentation from template (#459)
+  * Suppress footer flag using --no-footer (#467)
+
+-------------------------------------------------------------------
 Thu Feb 23 10:39:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.15.1:
