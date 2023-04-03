@@ -1,7 +1,7 @@
 #
 # spec file for package geary
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,11 @@ Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
 # Source service, tracking git stable tags.
 Source0:        %{name}-%{version}.tar.xz
+
+# PATCH-FEATURE-OPENSUSE Support-GNOME-42-dark-theme-preference.patch -- Support GNOME 42 dark theme preference
+Patch0:         Support-GNOME-42-dark-theme-preference.patch
+# PATCH-FEATURE-OPENSUSE Support-dark-theme-webview.patch -- Support dark mode for email bodies
+Patch1:         Support-dark-theme-webview.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool

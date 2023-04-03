@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 16 11:24:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Support-GNOME-42-dark-theme-preference.patch: Support GNOME
+  42 dark theme preference, patch taken from debian (also subbed
+  upstream, but not yet merged.
+- Add Support-dark-theme-webview.patch: Support dark mode in email
+  bodies, patch from upstream git, not yet merged.
+
+-------------------------------------------------------------------
 Fri Sep 30 08:52:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

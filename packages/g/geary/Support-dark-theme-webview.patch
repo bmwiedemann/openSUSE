@@ -1,0 +1,145 @@
+From 39d975d0f49b38f313442184710a14c56fec2b18 Mon Sep 17 00:00:00 2001
+From: mooff <mooff@together.beer>
+Date: Mon, 23 Aug 2021 20:26:18 +0100
+Subject: [PATCH 1/4] ui: Simplify style rules for body.plain in the composer
+
+Setting these rules on `body.plain *` is not needed: they will cascade
+quite happily on their own, with easier maintenance and readability for
+humans
+
+Also applies to rules whose values are unchanged from those on `body` -
+better to keep these DRY
+---
+ ui/composer-web-view.css | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+Index: geary-43.0/ui/composer-web-view.css
+===================================================================
+--- geary-43.0.orig/ui/composer-web-view.css
++++ geary-43.0/ui/composer-web-view.css
+@@ -12,12 +12,8 @@ body {
+   font-size: medium !important;
+ }
+ 
+-body.plain, body.plain * {
+-  font-family: monospace !important;
+-  font-weight: normal;
+-  font-style: normal;
+-  font-size: medium !important;
+-  color: black !important;
++body.plain {
++  font-family: monospace;
+   text-decoration: none;
+ }
+ 
+@@ -25,6 +21,17 @@ body.plain a {
+   cursor: text;
+ }
+ 
++@media (prefers-color-scheme: dark) {
++  body {
++    color: #eeeeee;
++    background-color: #353535;
++  }
++
++  a {
++    color: #3484e4;
++  }
++}
++
+ body > *.geary-no-display {
+   display: none !important;
+ }
+@@ -47,6 +54,12 @@ body > div:focus-within {
+   background-color: white;
+ }
+ 
++@media (prefers-color-scheme: dark) {
++  body > div:focus-within {
++    background-color: #393a3a;
++  }
++}
++
+ body > div#geary-signature:focus-within,
+ body > div#geary-quote:focus-within {
+   outline: 1px dashed #ccc !important;
+Index: geary-43.0/src/client/accounts/accounts-signature-web-view.vala
+===================================================================
+--- geary-43.0.orig/src/client/accounts/accounts-signature-web-view.vala
++++ geary-43.0/src/client/accounts/accounts-signature-web-view.vala
+@@ -12,18 +12,23 @@ public class Accounts.SignatureWebView :
+ 
+ 
+     private static WebKit.UserScript? app_script = null;
++    private static WebKit.UserStyleSheet? app_stylesheet = null;
+ 
+     public static new void load_resources()
+         throws GLib.Error {
+         SignatureWebView.app_script = Components.WebView.load_app_script(
+             "signature-web-view.js"
+         );
++        SignatureWebView.app_stylesheet = Components.WebView.load_app_stylesheet(
++            "signature-web-view.css"
++        );
+     }
+ 
+ 
+     public SignatureWebView(Application.Configuration config) {
+         base(config);
+         this.user_content_manager.add_script(SignatureWebView.app_script);
++        this.user_content_manager.add_style_sheet(SignatureWebView.app_stylesheet);
+     }
+ 
+ }
+Index: geary-43.0/ui/org.gnome.Geary.gresource.xml
+===================================================================
+--- geary-43.0.orig/ui/org.gnome.Geary.gresource.xml
++++ geary-43.0/ui/org.gnome.Geary.gresource.xml
+@@ -47,6 +47,7 @@
+     <file compressed="true" preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+     <file compressed="true" preprocess="xml-stripblanks">password-dialog.glade</file>
+     <file compressed="true" preprocess="xml-stripblanks">problem-details-dialog.ui</file>
++    <file compressed="true">signature-web-view.css</file>
+     <file compressed="true">signature-web-view.js</file>
+     <file compressed="true">geary.css</file>
+     <file compressed="true">single-key-shortcuts.css</file>
+Index: geary-43.0/ui/signature-web-view.css
+===================================================================
+--- /dev/null
++++ geary-43.0/ui/signature-web-view.css
+@@ -0,0 +1,6 @@
++@media (prefers-color-scheme: dark) {
++  body {
++    color: #eeeeee;
++    background-color: #353535;
++  }
++}
+Index: geary-43.0/ui/conversation-web-view.css
+===================================================================
+--- geary-43.0.orig/ui/conversation-web-view.css
++++ geary-43.0/ui/conversation-web-view.css
+@@ -52,6 +52,24 @@ body {
+   height: auto !important;
+ }
+ 
++@media (prefers-color-scheme: dark) {
++  :root, body {
++    color: #eeeeee;
++    background-color: #353535;
++  }
++
++  /* Using :root here gives the selector enough specificity to
++     override the normal rule below without using !important */
++  :root .geary-quote-container {
++    color: #eeeeee;
++    background-color: #393c3c;
++  }
++
++  a {
++    color: #3484e4;
++  }
++}
++
+ table {
+   /* By default, tables reset the font properties to "normal" */
+   font-size: inherit;
