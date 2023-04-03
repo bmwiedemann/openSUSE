@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-email
-Version:        1.0.0b2
+Version:        1.0.0.0
 Release:        0
 Summary:        Azure Communication Email client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-email/azure-communication-email-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-email/azure-communication-email-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -55,10 +57,10 @@ The Azure Communication Email package is used to do following:
  * Query the status of a sent email message
 
 %prep
-%setup -q -n azure-communication-email-%{version}
+%setup -q -n azure-communication-email-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-email-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-communication-email-%{realversion}
 %python_build
 
 %install
