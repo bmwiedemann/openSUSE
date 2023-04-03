@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Mon Apr 03 12:43:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.2:
+  * Fix goreleaser cosign flags, add NEWS for melange 0.3.2
+  * add NEWS for melange 0.3.1
+  * package: allow any library which has a SONAME to be a provider
+  * Add darwin goreleaser target (macOS)
+  * update NEWS for melange 0.3.0.
+  * update to apko 0.7.3 release
+  * pipelines: fetch: use wget quiet mode
+  * build: check for signing key existence before using it
+  * build: package: do not add interpreter dependency when
+    no-depends option is enabled
+  * docs: fix baseurl for melange reference in generated docs
+  * directly parse configuration for query
+  * add query and package-version commands
+  * build: use realpath to determine cache dir bindmount source
+  * refresh docs for --cache-source
+  * cli: add --cache-source option
+  * build: use CacheSource to define the bucket to pull cached
+    sources from
+  * build: change default cache directory to ./melange-cache
+  * build: add CacheSource option to context
+  * Hookup user and accounts in the environment.
+  * build(deps): bump cloud.google.com/go/storage from 1.30.0 to
+    1.30.1
+  * build(deps): bump google.golang.org/api from 0.113.0 to 0.114.0
+  * build(deps): bump actions/checkout from 3.3.0 to 3.5.0
+  * refresh docs
+  * cli: build: add --debug flag
+  * build: pipeline: if Context.Debug is enabled, add set -x to all
+    pipelines
+  * build: add Debug option to Context
+  * build: use cond.Subst instead of replacers
+  * cond: subst: variable names can have dashes
+  * cond: subst: add goparsify-based variable substitution
+    implementation
+  * cond: parser: test: add variable lookup with whitespace test
+  * parser: use newer fork of goparsify
+  * add codeowners
+  * add Update struct for identifying how a melange package can be
+    updated
+  * add `var-transforms` for manipulation of variables using
+    regular expressions
+  * pipelines: git-checkout: use tempdir for doing the initial
+    clone
+  * pipelines: git-checkout: mark clone directory as a safe
+    directory for git
+  * update ruby pipelines with usability features
+  * add an optional flag to generate a packages.log containing list
+    of packages + subpackages that were actuall built by `melange
+    build`
+  * Try to fix a strange index generation bug.
+  * build(deps): bump actions/setup-go from 3.5.0 to 4.0.0
+  * container: fixes to handle /sbin/ldconfig not being present,
+    e.g. on musl
+  * container: run ldconfig when bringing up a build environment
+  * update to latest apko git
+  * build(deps): bump google.golang.org/api from 0.111.0 to 0.113.0
+  * build(deps): bump cloud.google.com/go/storage from 1.29.0 to
+    1.30.0
+  * update apko to latest git
+  * pipeline: only run mkdir -p if absolutely needed
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.6.0 to
+    5.6.1
+  * update docs
+  * run go mod tidy
+  * pkg: convert: fix tests to use upstream ImageContents type
+  * build: package: use internal readlinkFS, old apko fs package
+    was deprecated
+  * build: add minimal internal readlinkfs implementation
+  * convert: use upstream ImageContents type, added in apko 0.7.0
+  * build: use normal os.DirFS for filesystem walking
+  * upgrade to apko 0.7.2 git
+  * build: remove --use-proot option
+  * lint
+  * move convert related packages under convert as subpackages
+  * container: bubblewrap runner: use --new-session to mitigate
+    CVE-2017-5226
+  * autoconf: always define the GNU host and build triplets in
+    configure step
+  * update docs
+  * add more context for the experimental commands
+  * add shell completion and move common flags to top level
+  * move wolfios to its own package
+  * add same convert options to higher leve
+  * fix lint and tests
+  * fix tests
+  * add convert subcommand
+  * docs: ensure docs are up to date in CI
+  * add melange docs
+  * change --out-dir to not depend on cwd
+  * accept dependabot's GPG key for commit signing CI check
+  * package: only use base soname when generating runtime
+    dependencies across symlinks
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2
+  * add omitempty to some fields
+  * build(deps): bump google.golang.org/api from 0.110.0 to 0.111.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.5.2 to
+    5.6.0
+  * build(deps): bump sigstore/cosign-installer from 2.8.1 to 3.0.1
+  * remove self-provided dependencies from the runtime dependency
+    set
+  * build(deps): bump github.com/openvex/go-vex
+  * build: package: dereference symlinks across packages and read
+    the real DT_SONAME instead of guessing
+  * build: configuration: add support for variable substitution in
+    more places
+  * apply refactoring suggestions from go linter
+  * build: also apply if-conditionals when generating the package
+    index
+  * build: also apply subpkg if-conditionals when emitting packages
+    and SBOMs
+  * examples: add example outlining the new option-related features
+  * build: implement if-conditionals for subpackages
+  * build: pipeline: add option enabled variables
+  * build: build option: patch the variables and environment
+    configuration
+  * build: use BuildOption.Apply to apply configuration patches
+    from build options
+  * build: build_option: add Apply stub
+  * cli: build: add --build-option to configure the enabled build
+    options
+  * build: add WithEnabledBuildOptions context option
+  * build: add BuildOptions map to Configuration
+  * build: add BuildOption types
+  * package: ensure we are operating only on a basename when
+    generating symlink deps
+  * package: detect shared library dependencies for .so symlinks
+  * build(deps): bump golang.org/x/net from 0.6.0 to 0.7.0
+  * build(deps): bump google.golang.org/api from 0.109.0 to 0.110.0
+  * Add ruby pipelines for gem install, build and clean
+  * build: package: add support for defining "replaces"
+    relationships
+  * package: findInterpreter: chop trailing nul from interpBuf
+  * package: deal with musl interpreter being a symlink back to
+    itself
+  * package: ensure PT_INTERP is always added as an explicit
+    dependency
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/joho/godotenv from 1.4.0 to 1.5.1
+  * build(deps): bump google.golang.org/api from 0.108.0 to 0.109.0
+  * build(deps): bump github.com/docker/docker
+  * git-checkout: fix tags
+  * use merge option to speed up apkindex generation when build
+  * just warn if no branch or tag specified
+  * build(deps): bump goreleaser/goreleaser-action from 4.1.0 to
+    4.2.0
+  * build(deps): bump github.com/google/go-containerregistry
+  * Revert "Generate build environment SBOM"
+  * add expected-commit to git-checkout
+  * Update README to mention wolfi.
+  * cli: add --vars-file option to support loading build variables
+    from an external source
+  * build: add WithVarsFile and WithVarsFileForParsing options
+  * examples: add variable substitution example
+  * pipeline: handle ${{vars}} block as expected
+  * build: add variables block to build configuration struct
+  * build(deps): bump cloud.google.com/go/storage from 1.28.1 to
+    1.29.0
+  * examples: add working-directory example
+  * pipeline: ensure the working-directory is created before using
+    it
+  * pipeline: propagate WorkDir to subpipelines
+  * pipeline: set working directory when evaluating pipeline "runs"
+    entries
+  * build: add Pipeline.WorkDir definition
+  * build(deps): bump google.golang.org/api from 0.107.0 to 0.108.0
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump golangci/golangci-lint-action from 3.3.1 to
+    3.4.0
+  * go mod tidy to drop chainguard/vex
+  * Switch VEX dependency to openvex
+  * allow provider priority to be configured
+  * build(deps): bump google.golang.org/api from 0.106.0 to 0.107.0
+  * Wire logger from SBOM generator to impl
+  * Escape invalid identifier chars
+  * Fix build sbom name in subpackages
+  * Fix bug where package verification was wrong
+  * build sbom: Add relationships to produced SBOMs
+  * Update protobom to support dl location
+  * Build SBOM: Generate package with apks
+  * Trigger build SBOM generation, reuse write
+  * Passs guest directory to sbom spec
+  * Refactor SBOM spec for reuse
+  * Add ReadPackageIndex to gen implementation
+  * Add GenerateBuildEnvSBOM fn to SBOM generator
+  * Update Lima link
+  * update apko dependency to latest
+  * bump apko dependency
+  * pipelines: autoconf/configure: fix sysconfdir
+  * upgrade apko dependency to latest git
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.5.1 to
+    5.5.2
+  * build(deps): bump google.golang.org/api from 0.105.0 to 0.106.0
+  * build(deps): bump actions/checkout from 3.2.0 to 3.3.0
+  * bump apko to latest git again for keyring fix
+  * fix typo
+  * index gen: Add loop throttle, mutex
+  * close lingering file descriptor
+  * sbom: handle spdxPkg.VerificationCode being a pointer in apko
+    git
+  * chase PublishImageFromLayer API change in apko
+  * update apko dependency to latest git for armv6/armv7 triplet
+    fixes
+  * go/install: also require git (#239)
+  * use lima to use melange on mac
+  * Advisories: Require pkg version for fixed status (#237)
+  * Parallel processing of packages.
+  * Make packageurl-go import direct
+  * add --namespace option to build subcommand
+  * SBOM: Generate purls for built packages
+  * Add namespace and arch fields to SBOM spec
+  * Drop distro qualifier from purls
+  * Add Go pipelines documentation
+  * Revamp go examples to use both pipleines
+  * New go/install pipeline
+  * go/build: Support changing module root
+  * Bump vex (#231)
+  * Remove extra field
+  * Add advisories and purls
+  * Export functionality for config parsing (#229)
+  * Apko devenv README
+  * Melange development environment
+
+-------------------------------------------------------------------
+Sun Mar 19 14:09:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package melange: Build APKs from source code
