@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 31 16:40:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Fix current-memory not being set on VM creation
+  + Fix issues with decompressing disk files
+  + Fix 3D acceleration not sticking at startup
+  + Always enable boot menu option
+  + Don't launch Preferences dialog along with troubleshooting logs
+- Drop gnome-boxes-fix-stream-read.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar 22 02:29:57 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gnome-boxes-fix-stream-read.patch: Fix argument of

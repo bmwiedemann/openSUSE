@@ -20,15 +20,13 @@
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
 Source0:        https://download.gnome.org/sources/gnome-boxes/44/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-boxes-fix-stream-read.patch bsc#1207732, glgo#GNOME/gnome-boxes!589 alynx.zhou@suse.com -- Fix argument of FileStream.read
-Patch0:         gnome-boxes-fix-stream-read.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
