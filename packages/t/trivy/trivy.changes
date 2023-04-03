@@ -1,18 +1,76 @@
 -------------------------------------------------------------------
+Mon Apr 03 08:36:44 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.39.0:
+  * docs(cli): added makefile and go file to create docs (#3930)
+  * chore: Revert "ci: add gpg signing for RPM packages (#3612)" (#3946)
+  * chore: ignore gpg key (#3943)
+  * feat(cyclonedx): support dependency graph (#3177)
+  * chore(deps): Bump defsec to v0.85.0 (#3940)
+  * feat(rust): remove dev deps and find direct deps for Cargo.lock (#3919)
+  * feat(server): redis with public TLS certs support (#3783)
+  * feat(flag): Add glob support to `--skip-dirs` and `--skip-files`  (#3866)
+  * chore: replace make with mage (#3932)
+  * fix(sbom): add checksum to files (#3888)
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to 1.1.5 (#3928)
+  * chore: remove unused mount volumes (#3927)
+  * feat: add auth support for downloading OCI artifacts (#3915)
+  * refactor(purl): use epoch in qualifier (#3913)
+  * chore(deps): bump github.com/in-toto/in-toto-golang from 0.5.0 to 0.7.0 (#3727)
+  * feat(image): add registry options (#3906)
+  * feat(rust): dependency tree and line numbers support for cargo lock file (#3746)
+  * chore(deps): bump google.golang.org/protobuf from 1.29.0 to 1.29.1 (#3905)
+  * feat(php): add support for location, licenses and graph for composer.lock files (#3873)
+  * chore(deps): updates wazero to 1.0.0 (#3904)
+  * feat(image): discover SBOM in OCI referrers (#3768)
+  * docs: change cache-dir key in config file (#3897)
+  * fix(sbom): use release and epoch for SPDX package version (#3896)
+  * ci: add gpg signing for RPM packages (#3612)
+  * docs: Update incorrect comment for skip-update flag (#3878)
+  * refactor(misconf): simplify policy filesystem (#3875)
+  * feat(nodejs): parse package.json alongside yarn.lock (#3757)
+  * fix(spdx): add PkgDownloadLocation field (#3879)
+  * fix(report): try to guess direct deps for dependency tree (#3852)
+  * chore(amazon): update EOL (#3876)
+  * fix(nodejs): improvement logic for package-lock.json v2-v3 (#3877)
+  * feat(amazon): add al2023 support (#3854)
+  * chore(deps): bump github.com/cheggaaa/pb/v3 from 3.1.0 to 3.1.2 (#3736)
+  * docs(misconf): Add information about selectors (#3703)
+  * docs(cli): update CLI docs with cobra (#3815)
+  * feat: k8s parallel processing (#3693)
+  * docs: add DefectDojo in the Security Management section (#3871)
+  * chore(deps): updates wazero to 1.0.0-rc.2 (#3853)
+  * refactor: add pipeline (#3868)
+  * feat(cli): add javadb metadata to version info (#3835)
+  * chore(deps): Move compliance types to defsec (#3842)
+  * feat(sbom): add support for CycloneDX JSON Attestation of the correct specification (#3849)
+  * feat: add node toleration option (#3823)
+  * fix: allow mapfs to open dirs (#3867)
+  * fix(report): update uri only for os class targets (#3846)
+  * feat(nodejs): Add v3 npm lock file support (#3826)
+  * feat(nodejs): parse package.json files alongside package-lock.json (#2916)
+  * docs(misconf): Fix links to built in policies (#3841)
+
+-------------------------------------------------------------------
 Tue Mar 14 09:56:08 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.38.3:
-  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.86.1 to 1.89.1 (#3827)
-  * fix(java): skip empty files for jar post analyzer (#3832)
-  * fix(docker): build healthcheck command for line without /bin/sh prefix (#3831)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/ec2
+    from 1.86.1 to 1.89.1
+  * fix(java): skip empty files for jar post analyzer
+  * fix(docker): build healthcheck command for line without
+    /bin/sh prefix
   * refactor(license): use goyacc for license parser (#3824)
-  * chore(deps): bump github.com/docker/docker from 23.0.0-rc.1+incompatible to 23.0.1+incompatible (#3586)
-  * fix: populate timeout context to node-collector (#3766)
+  * chore(deps): bump github.com/docker/docker from
+    23.0.0-rc.1+incompatible to 23.0.1+incompatible
+  * fix: populate timeout context to node-collector
   * fix: exclude node collector scanning (#3771)
-  * fix: display correct flag in error message when skipping java db update #3808
+  * fix: display correct flag in error message when skipping
+    java db update #3808
   * fix: disable jar analyzer for scanners other than vuln (#3810)
   * fix(sbom): fix incompliant license format for spdx (#3335)
-  * fix(java): the project props take precedence over the parent's props (#3320)
+  * fix(java): the project props take precedence over the
+    parent's props (#3320)
   * docs: add canary build info to README.md (#3799)
   * docs: adding link to gh token generation (#3784)
   * docs: changing docs in accordance with #3460 (#3787)

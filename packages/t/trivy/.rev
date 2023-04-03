@@ -794,4 +794,41 @@
   * docs: changing docs in accordance with #3460 (#3787)</comment>
     <requestid>1071463</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c6495cf720c74612cef1e2460499d4bf</srcmd5>
+    <version>0.39.0</version>
+    <time>1680538273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.39.0:
+  * docs(cli): added makefile and go file to create docs (#3930)
+  * chore: Revert &quot;ci: add gpg signing for RPM packages (#3612)&quot; (#3946)
+  * chore: ignore gpg key (#3943)
+  * feat(cyclonedx): support dependency graph (#3177)
+  * chore(deps): Bump defsec to v0.85.0 (#3940)
+  * feat(rust): remove dev deps and find direct deps for Cargo.lock (#3919)
+  * feat(server): redis with public TLS certs support (#3783)
+  * feat(flag): Add glob support to `--skip-dirs` and `--skip-files`  (#3866)
+  * chore: replace make with mage (#3932)
+  * fix(sbom): add checksum to files (#3888)
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to 1.1.5 (#3928)
+  * chore: remove unused mount volumes (#3927)
+  * feat: add auth support for downloading OCI artifacts (#3915)
+  * refactor(purl): use epoch in qualifier (#3913)
+  * chore(deps): bump github.com/in-toto/in-toto-golang from 0.5.0 to 0.7.0 (#3727)
+  * feat(image): add registry options (#3906)
+  * feat(rust): dependency tree and line numbers support for cargo lock file (#3746)
+  * chore(deps): bump google.golang.org/protobuf from 1.29.0 to 1.29.1 (#3905)
+  * feat(php): add support for location, licenses and graph for composer.lock files (#3873)
+  * chore(deps): updates wazero to 1.0.0 (#3904)
+  * feat(image): discover SBOM in OCI referrers (#3768)
+  * docs: change cache-dir key in config file (#3897)
+  * fix(sbom): use release and epoch for SPDX package version (#3896)
+  * ci: add gpg signing for RPM packages (#3612)
+  * docs: Update incorrect comment for skip-update flag (#3878)
+  * refactor(misconf): simplify policy filesystem (#3875)
+  * feat(nodejs): parse package.json alongside yarn.lock (#3757)
+  * fix(spdx): add PkgDownloadLocation field (#3879)
+  * fix(report): try to guess direct deps for dependency tree (#3852)</comment>
+    <requestid>1077009</requestid>
+  </revision>
 </revisionlist>
