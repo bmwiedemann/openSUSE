@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
 Name:           python-fsspec%{psuffix}
 Version:        2023.3.0
 Release:        0
@@ -33,7 +34,9 @@ URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         https://github.com/fsspec/filesystem_spec/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  fuse
 BuildRequires:  python-rpm-macros
@@ -54,8 +57,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
-# no numba and distributed for py311 yet
-BuildRequires:  %{python_module distributed if %python-base < 3.11}
+BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module gcsfs}
@@ -64,6 +66,7 @@ BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module panel}
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -86,11 +89,11 @@ A specification for pythonic filesystems.
 %autosetup -p1 -n filesystem_spec-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %if ! %{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
