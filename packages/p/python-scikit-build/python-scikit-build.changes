@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  3 18:09:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.7
+  * Added SKBUILD_GNU_SKIP_LOCAL_SYMBOL_EXPORT_OVERRIDE to disable
+    script in #848, thanks to @aaron-bray and @vyasr.
+  * Address a new warning from setuptools in our test suite in
+    #859.
+  * Move to using Ruff, update to Black 23, and use Flynt to move
+    more code to f-strings.
+
+-------------------------------------------------------------------
 Sat Jan 21 17:22:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.16.6

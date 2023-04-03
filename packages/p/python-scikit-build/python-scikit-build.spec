@@ -25,9 +25,8 @@
 %define psuffix %{nil}
 %endif
 
-%define skip_python2 1
 Name:           python-scikit-build%{psuffix}
-Version:        0.16.6
+Version:        0.16.7
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
@@ -91,6 +90,7 @@ cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup
 %endif
 # remove toml entries not relevant for us and failing old py3.6 pip in 15.X
 sed -i '/tool.pylint/,/^$/ d' pyproject.toml
+sed -i '/tool.ruff/,/^$/ d' pyproject.toml
 
 %if !%{with test}
 %build

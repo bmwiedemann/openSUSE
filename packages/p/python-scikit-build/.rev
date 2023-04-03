@@ -155,4 +155,18 @@
     in #837. (forwarded request 1060177 from bnavigator)</comment>
     <requestid>1060178</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6979ccc60129e1c8decd4880bf0777ee</srcmd5>
+    <version>0.16.7</version>
+    <time>1680551362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.7
+  * Added SKBUILD_GNU_SKIP_LOCAL_SYMBOL_EXPORT_OVERRIDE to disable
+    script in #848, thanks to @aaron-bray and @vyasr.
+  * Address a new warning from setuptools in our test suite in
+    #859.
+  * Move to using Ruff, update to Black 23, and use Flynt to move
+    more code to f-strings. (forwarded request 1077046 from bnavigator)</comment>
+    <requestid>1077047</requestid>
+  </revision>
 </revisionlist>
