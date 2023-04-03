@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  3 03:08:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.2.0
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v3.2.0	  2023-04-03
+      - Sort the output of all_pl_files() and all_pm_files()
+
+  v3.1.1	  2023-03-28
+      - Proof read and correct the POD
+      - Be more consistent about where we search for files (by default)
+      - Update copyright (2023)
+
+-------------------------------------------------------------------
 Fri Jun  3 03:07:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.1.0
