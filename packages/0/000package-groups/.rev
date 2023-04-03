@@ -1667,4 +1667,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <time>1680154957</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="234" vrev="232">
+    <srcmd5>d0f557417c328c8cda54124273ec4072</srcmd5>
+    <version>unknown</version>
+    <time>1680528498</time>
+    <user>dimstar_suse</user>
+    <comment>i686 migrations only happen on i586 arch distros now</comment>
+  </revision>
 </revisionlist>
