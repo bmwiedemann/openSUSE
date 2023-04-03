@@ -86,7 +86,7 @@ Macros:
 
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:LegacyX86"
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
-Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict skope umoci
+Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict skopeo umoci
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict skopeo umoci
 %else
 # That ignore seems not to make sense - we only inject -strict based on specific projects already
@@ -608,6 +608,8 @@ Prefer: -libomp15-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python311-jupyterlab -python38-jupyterlab -python39-jupyterlab
+Prefer: -python310-jupyter-client7 -python311-jupyter-client7 -python39-jupyter-client7 -python38-jupyter-client7
+Prefer: -jupyter-jupyter-client7
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
@@ -1720,6 +1722,7 @@ BuildFlags: onlybuild:libXcomposite
 BuildFlags: onlybuild:libXcursor
 BuildFlags: onlybuild:libXdamage
 BuildFlags: onlybuild:libXdmcp
+BuildFlags: onlybuild:cabextract
 BuildFlags: onlybuild:python-future
 BuildFlags: onlybuild:python-pefile
 BuildFlags: onlybuild:libXevie
@@ -1915,6 +1918,7 @@ BuildFlags: onlybuild:libraw1394
 BuildFlags: onlybuild:libreplaygain
 BuildFlags: onlybuild:librest
 BuildFlags: onlybuild:librist
+BuildFlags: onlybuild:libmetalink
 BuildFlags: onlybuild:librsvg
 BuildFlags: onlybuild:librubberband
 BuildFlags: onlybuild:libsamplerate
@@ -1980,6 +1984,7 @@ BuildFlags: onlybuild:libxshmfence
 BuildFlags: onlybuild:libxslt
 BuildFlags: onlybuild:libyaml
 BuildFlags: onlybuild:libyuv
+BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:libzio
 BuildFlags: onlybuild:libzip
 BuildFlags: onlybuild:libzypp
@@ -2801,6 +2806,8 @@ BuildFlags: onlybuild:python-zope.event
 BuildFlags: onlybuild:python-zope.hookable
 BuildFlags: onlybuild:python-zope.interface
 BuildFlags: onlybuild:python-zstandard
+BuildFlags: onlybuild:winetricks
+BuildFlags: onlybuild:wine-binfmt
 BuildFlags: onlybuild:python310
 BuildFlags: onlybuild:python310:base
 BuildFlags: onlybuild:python311
