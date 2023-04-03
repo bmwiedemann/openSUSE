@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git://github.com/osandov/blktests</param>
-              <param name="changesrevision">e10add032819db8f3abf0a9d53f160b7b10cfed8</param></service></servicedata>
+              <param name="changesrevision">e10add032819db8f3abf0a9d53f160b7b10cfed8</param></service><service name="tar_scm">
+                <param name="url">https://github.com/osandov/blktests.git</param>
+              <param name="changesrevision">676d42c9f932f4b6ca3f25439c2fc09d595ceefd</param></service></servicedata>

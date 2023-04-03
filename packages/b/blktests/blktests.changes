@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 02 17:08:00 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0+20230302.676d42c:
+  * src/Makefile: fix number sign handling in macro
+  * block/033: add test to cover gendisk leak
+  * src: add mini ublk source code
+  * nvme/046: add test for unprivileged passthrough
+  * check, common/rc: support normal user privilege
+  * block/032: add test to cover umount one deleted disk
+  * Update tests for discovery log page changes
+  * tests/block/007: Rework I/O polling
+- Use explicit commit id. Also exclude .gitignore files.
+
+-------------------------------------------------------------------
 Wed Dec 02 13:23:00 UTC 2020 - pcervinka@suse.com
 
 - Update to version 0+20201022.e10add0:
