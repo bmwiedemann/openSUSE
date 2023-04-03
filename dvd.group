@@ -3264,6 +3264,7 @@
     <package name="perl-Net-HTTP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-Ident" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-LibIDN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Net-LibIDN2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-Patricia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-SMTP-SSL" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="perl-Net-SSLeay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

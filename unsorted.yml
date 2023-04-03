@@ -4224,6 +4224,7 @@ unsorted:
   - ftvalid 
   - ftview 
   - ftwnn 
+  - ftxui-devel 
   - fuc 
   - fuse-devel 
   - fuse-devel-static 
@@ -4922,8 +4923,6 @@ unsorted:
   - ghc-hackage-security-devel 
   - ghc-haddock-library 
   - ghc-haddock-library-devel 
-  - ghc-half 
-  - ghc-half-devel 
   - ghc-hashable 
   - ghc-hashable-devel 
   - ghc-hashtables 
@@ -4932,8 +4931,6 @@ unsorted:
   - ghc-haskeline-devel 
   - ghc-haskell-lexer 
   - ghc-haskell-lexer-devel 
-  - ghc-haskell-src-exts 
-  - ghc-haskell-src-exts-devel 
   - ghc-hinotify 
   - ghc-hinotify-devel 
   - ghc-hjsmin 
@@ -4944,8 +4941,6 @@ unsorted:
   - ghc-hledger-lib-devel 
   - ghc-hlint 
   - ghc-hlint-devel 
-  - ghc-hostname 
-  - ghc-hostname-devel 
   - ghc-hourglass 
   - ghc-hourglass-devel 
   - ghc-hpc 
@@ -4978,8 +4973,6 @@ unsorted:
   - ghc-hslua-objectorientation-devel 
   - ghc-hslua-packaging 
   - ghc-hslua-packaging-devel 
-  - ghc-hspec-expectations 
-  - ghc-hspec-expectations-devel 
   - ghc-html 
   - ghc-html-devel 
   - ghc-http-api-data 
@@ -5010,10 +5003,6 @@ unsorted:
   - ghc-integer-logarithms-devel 
   - ghc-invariant 
   - ghc-invariant-devel 
-  - ghc-io-streams 
-  - ghc-io-streams-devel 
-  - ghc-io-streams-haproxy 
-  - ghc-io-streams-haproxy-devel 
   - ghc-iproute 
   - ghc-iproute-devel 
   - ghc-ipynb 
@@ -5165,8 +5154,6 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-random 
   - ghc-random-devel 
-  - ghc-readable 
-  - ghc-readable-devel 
   - ghc-recv 
   - ghc-recv-devel 
   - ghc-refact 
@@ -5235,8 +5222,6 @@ unsorted:
   - ghc-skylighting-format-context-devel 
   - ghc-skylighting-format-latex 
   - ghc-skylighting-format-latex-devel 
-  - ghc-snap-core 
-  - ghc-snap-core-devel 
   - ghc-socks 
   - ghc-socks-devel 
   - ghc-some 
@@ -5299,14 +5284,10 @@ unsorted:
   - ghc-th-abstraction-devel 
   - ghc-th-compat 
   - ghc-th-compat-devel 
-  - ghc-th-expand-syns 
-  - ghc-th-expand-syns-devel 
   - ghc-th-lift 
   - ghc-th-lift-devel 
   - ghc-th-lift-instances 
   - ghc-th-lift-instances-devel 
-  - ghc-th-reify-many 
-  - ghc-th-reify-many-devel 
   - ghc-these 
   - ghc-these-devel 
   - ghc-time 
@@ -6872,7 +6853,6 @@ unsorted:
   - hxtools-profile 
   - hxtools-scripts 
   - hydrogen 
-  - hyena 
   - hylafax+ 
   - hylafax+-client 
   - hyper-v-enhanced-session 
@@ -7809,6 +7789,7 @@ unsorted:
   - jupyter-ipyvuetify-nbextension 
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
+  - jupyter-jupyter-client7 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_highlight_selected_word 
@@ -10995,6 +10976,7 @@ unsorted:
   - libftxf1 
   - libftxr-devel 
   - libftxr1 
+  - libftxui4_0_0 
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit 
@@ -16188,6 +16170,10 @@ unsorted:
   - megaglest 
   - megaglest-data 
   - megatools 
+  - melange 
+  - melange-bash-completion 
+  - melange-fish-completion 
+  - melange-zsh-completion 
   - meld 
   - meld-lang 
   - melody 
@@ -23504,6 +23490,7 @@ unsorted:
   - python310-junos-eznc 
   - python310-jupyter 
   - python310-jupyter-client 
+  - python310-jupyter-client7 
   - python310-jupyter-collaboration 
   - python310-jupyter-core 
   - python310-jupyter-events 
@@ -23573,6 +23560,7 @@ unsorted:
   - python310-lazr.delegates 
   - python310-lazr.uri 
   - python310-lazy 
+  - python310-lazy-loader 
   - python310-lazy-object-proxy 
   - python310-lazyarray 
   - python310-ldap3 
@@ -24767,6 +24755,7 @@ unsorted:
   - python310-sounddevice 
   - python310-soupsieve 
   - python310-sox 
+  - python310-soxr 
   - python310-spake2 
   - python310-spark_parser 
   - python310-sparse 
@@ -26443,6 +26432,7 @@ unsorted:
   - python311-extras 
   - python311-extratools 
   - python311-ez_setup 
+  - python311-ezdxf 
   - python311-fabio 
   - python311-factory_boy 
   - python311-fake-useragent 
@@ -26558,6 +26548,7 @@ unsorted:
   - python311-geojson 
   - python311-geolib 
   - python311-geolinks 
+  - python311-geomdl 
   - python311-geomet 
   - python311-geopandas 
   - python311-geopy 
@@ -26836,6 +26827,7 @@ unsorted:
   - python311-junos-eznc 
   - python311-jupyter 
   - python311-jupyter-client 
+  - python311-jupyter-client7 
   - python311-jupyter-collaboration 
   - python311-jupyter-core 
   - python311-jupyter-events 
@@ -26906,6 +26898,7 @@ unsorted:
   - python311-lazr.delegates 
   - python311-lazr.uri 
   - python311-lazy 
+  - python311-lazy-loader 
   - python311-lazy-object-proxy 
   - python311-lazyarray 
   - python311-ldap 
@@ -28150,6 +28143,7 @@ unsorted:
   - python311-sounddevice 
   - python311-soupsieve 
   - python311-sox 
+  - python311-soxr 
   - python311-spake2 
   - python311-spark_parser 
   - python311-speaklater 
@@ -30254,6 +30248,7 @@ unsorted:
   - python38-junos-eznc 
   - python38-jupyter 
   - python38-jupyter-client 
+  - python38-jupyter-client7 
   - python38-jupyter-collaboration 
   - python38-jupyter-core 
   - python38-jupyter-events 
@@ -30325,6 +30320,7 @@ unsorted:
   - python38-lazr.delegates 
   - python38-lazr.uri 
   - python38-lazy 
+  - python38-lazy-loader 
   - python38-lazy-object-proxy 
   - python38-lazyarray 
   - python38-ldap 
@@ -31584,6 +31580,7 @@ unsorted:
   - python38-sounddevice 
   - python38-soupsieve 
   - python38-sox 
+  - python38-soxr 
   - python38-spake2 
   - python38-spark_parser 
   - python38-sparse 
@@ -33691,6 +33688,7 @@ unsorted:
   - python39-junos-eznc 
   - python39-jupyter 
   - python39-jupyter-client 
+  - python39-jupyter-client7 
   - python39-jupyter-collaboration 
   - python39-jupyter-core 
   - python39-jupyter-events 
@@ -33762,6 +33760,7 @@ unsorted:
   - python39-lazr.delegates 
   - python39-lazr.uri 
   - python39-lazy 
+  - python39-lazy-loader 
   - python39-lazy-object-proxy 
   - python39-lazyarray 
   - python39-ldap 
@@ -35022,6 +35021,7 @@ unsorted:
   - python39-sounddevice 
   - python39-soupsieve 
   - python39-sox 
+  - python39-soxr 
   - python39-spake2 
   - python39-spark_parser 
   - python39-sparse 
@@ -37472,34 +37472,6 @@ unsorted:
   - smproxy 
   - smssend 
   - smtpping 
-  - smuxi 
-  - smuxi-engine 
-  - smuxi-engine-campfire 
-  - smuxi-engine-campfire-lang 
-  - smuxi-engine-irc 
-  - smuxi-engine-irc-lang 
-  - smuxi-engine-jabbr 
-  - smuxi-engine-jabbr-lang 
-  - smuxi-engine-lang 
-  - smuxi-engine-twitter 
-  - smuxi-engine-twitter-lang 
-  - smuxi-engine-xmpp 
-  - smuxi-engine-xmpp-lang 
-  - smuxi-frontend 
-  - smuxi-frontend-gnome 
-  - smuxi-frontend-gnome-irc 
-  - smuxi-frontend-gnome-irc-lang 
-  - smuxi-frontend-gnome-lang 
-  - smuxi-frontend-gnome-twitter 
-  - smuxi-frontend-gnome-twitter-lang 
-  - smuxi-frontend-gnome-xmpp 
-  - smuxi-frontend-gnome-xmpp-lang 
-  - smuxi-frontend-lang 
-  - smuxi-frontend-stfl 
-  - smuxi-message-buffer 
-  - smuxi-message-buffer-lang 
-  - smuxi-server 
-  - smuxi-server-lang 
   - snack 
   - snakeyaml 
   - snakeyaml-javadoc 
@@ -37597,7 +37569,6 @@ unsorted:
   - spandsp-doc 
   - sparse 
   - sparse-inspect 
-  - sparse-llvm 
   - sparsehash-devel 
   - spatialindex-devel 
   - spawn-fcgi 
