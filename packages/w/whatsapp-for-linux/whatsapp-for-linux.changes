@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  2 05:32:12 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use gcc11-c++ for openSUSE Leap 15.5, fix "whatsapp-for-linux"
+  requires the language dialect "CXX20"
+
+-------------------------------------------------------------------
 Sat Apr  1 12:00:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.2:

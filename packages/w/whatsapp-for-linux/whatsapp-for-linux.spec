@@ -25,13 +25,18 @@ URL:            https://github.com/eneshecan/whatsapp-for-linux
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.34
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+
 
 %description
 An unofficial WhatsApp desktop application written in C++.
@@ -42,6 +47,10 @@ An unofficial WhatsApp desktop application written in C++.
 %setup -q
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CXX="g++-11"
+%endif
+
 %cmake
 %cmake_build
 
