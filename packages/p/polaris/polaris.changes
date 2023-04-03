@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:05:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 7.4.1:
+  * Update documentation from template (#935)
+  * Update documentation from template (#934)
+
+-------------------------------------------------------------------
+Mon Apr 03 12:03:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 7.4.0:
+  * Update documentation from template (#926)
+  * chore(ci): Upgrade Github CI/CD to non-deprecated actions
+    (#933)
+  * Update package-lock.json (#923)
+  * Bump golang.org/x/net from 0.6.0 to 0.7.0 (#922)
+  * Skip https certificate verification (#920)
+
+-------------------------------------------------------------------
 Fri Feb 10 06:15:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 7.3.2:
