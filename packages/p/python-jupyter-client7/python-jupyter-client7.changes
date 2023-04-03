@@ -1,0 +1,582 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:52:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Copy to python-jupyter-client7 package: Required by
+  python-notebook 6.5
+
+-------------------------------------------------------------------
+Sun Jan 15 21:12:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.9
+  * Make Qtconsole work with PyZMQ 25 #914 (@ccordoba12)
+  * [7.x] Remove deprecated zmq imports #916 (@blink1073)
+- Drop py310-ignore-deprecation.patch
+
+-------------------------------------------------------------------
+Wed Dec 14 21:10:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.8
+  * Make sure loop is marked with nest_asyncio #893 (@impact27)
+- Release 7.4.7
+  * Fix connection reconciliation to handle restarts #882
+    (@kevin-bates)
+- Release 7.4.6
+  * Reconcile connection information #879 (@kevin-bates)
+- Release 7.4.5
+  * [7.x] Handle Jupyter Core Warning #875 (@blink1073)
+- Release 7.4.4
+  * Workaround for launch bug #861 (@blink1073)
+- Release 7.4.3
+  * Defer creation of ready future #858 (@blink1073)
+- Release 7.4.2
+  * Fix ready promise and session send #852 (@blink1073)
+  * Fix pending kernels backported and reverted: #848 #851
+- Release 7.3.5
+  * add AsyncKernelClient to doc/api/client.rst #819 (@helioz11)
+  * Use tornado 6.2's PeriodicCallback in restarter #822 (@vidartf)
+  * Make _stdin_hook_default async #814 (@davidbrochart)
+- Replace py3109-compat.patch by py310-ignore-deprecation.patch
+  gh#jupyter/jupyter_client#713
+
+-------------------------------------------------------------------
+Mon Dec 12 16:30:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update py3109-compat.patch to work with python 3.10.8 and lower.
+
+-------------------------------------------------------------------
+Mon Dec 12 12:34:49 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add py3109-compat.patch to make it work with python 3.10.9. 
+
+-------------------------------------------------------------------
+Tue Jun 28 18:51:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 7.3.4
+  * Revert latest changes to ThreadedZMQSocketChannel because they
+    break Qtconsole #803 (@ccordoba12)
+  * Add local-provisioner entry point to pyproject.toml Fixes #800
+    #801 (@utkonos)
+  * Correct Any type annotations. #791 (@joouha)
+  * Use hatch backend #789 (@blink1073)
+- Remove jupyter-client-fix787-kernelwarningsfilter.patch, we
+  updated the ipykernel instead.
+
+-------------------------------------------------------------------
+Wed May 25 23:15:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter-client-fix787-kernelwarningsfilter.patch
+  * gh#jupyter/jupyter_client#787 
+
+-------------------------------------------------------------------
+Wed May 25 15:01:01 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Disable pytest for signalkernel.py and problemkernel.py because
+  issue with newer ipykernel.
+  https://github.com/jupyter/jupyter_client/issues/787
+- Update to version 7.3.1.
+  * Bugs fixed
+    * Check that channels exist before asking if they are alive
+      #785 (@ccordoba12)
+    * Unicode error correction using Error Handler #779 (@hxawax)
+  * Maintenance and upkeep improvements
+    * Allow bot PRs to be automatically labeled #784 (@blink1073)
+- Update for version 7.3.0
+  * Bugs fixed
+    * Fix shutdown and cleanup behavior #772 (@blink1073)
+  * Maintenance and upkeep improvements
+    * Improve mypy config #769 (@blink1073)
+- Update for version 7.2.2
+  * Maintenance and upkeep improvements
+    * Include py.typed file #766 (@blink1073)
+    * More Cleanup #764 (@blink1073)
+- Update for version 7.2.1
+  * Maintenance and upkeep improvements
+    * Handle Warnings #760 (@blink1073)
+- Update for version 7.2.0
+  * Enhancements made
+    * Update consoleapp.py #733 (@you-n-g)
+  * Bugs fixed
+    * Json packer: handle TypeError and fallback to old json_clean
+      #752 (@martinRenou)
+    * Prefer sending signals to kernel process group #743
+      (@kevin-bates)
+  * Maintenance and upkeep improvements
+    * Mock is not needed #758 (@hroncok)
+    * Add pytest opts and clean up workflows #757 (@blink1073)
+    * Clean up dependency handling #750 (@blink1073)
+    * Use built in run cancellation #742 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Mar 13 06:53:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.2
+  * Await kernel.ready in _async_shutdown_kernel #740 (@jtpio)
+
+-------------------------------------------------------------------
+Sat Jan 15 20:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.1
+  * Further improvements to pending kernels managment #732
+    (@Zsailer)
+  * Test against all kernels in jupyter kernel test and clean up CI
+    #731 (@blink1073)
+  * Add support for pending kernels #712 (@blink1073)
+  * Improve restarter logic #717 (@vidartf)
+  * Set sticky bit only on the directory #711 (@ci4ic4)
+
+-------------------------------------------------------------------
+Sun Oct 17 18:33:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.6
+  * Fallback to the old ipykernel "json_clean" if we are not able
+    to serialize a JSON message #708 (@martinRenou)
+  * Add test for serializing bytes #707 (@martinRenou)
+- Release 7.0.5
+  * avoid use of deprecated zmq.utils.jsonapi #703 (@minrk)
+  * Use logger.warning instead of deprecated warn method #700
+    (@kevin-bates)
+- Release 7.0.4
+  * Fix json_default so that it's closer to what ipykernel had
+    before #698 (@martinRenou)
+  * Clean up the pending task #697 (@shingo78)
+  * fix kernel can only restart once issue #695 (@mofanke)
+  * Prevent failure if kernel is not found when shutting it down
+    #694 (@martinRenou)
+- Release 7.0.3
+  * Address missing local-provisioner scenario #692 (@kevin-bates)
+  * use load_connection_info(info) when constructing a blocking
+    client #688 (@minrk)
+- Release 7.0.2
+  * Don't set event loop policy on Windows at import time #686
+    (@minrk)
+  * Improve migration guide #685 (@davidbrochart)
+- Release 7.0.1
+  * Use formal method names when called internally #683
+    (@kevin-bates)
+- Release 7.0.0
+  * The 7.0 release brings a major feature in Kernel Provisioners,
+    which enable the ability for third parties to manage the
+    lifecycle of a kernel's runtime environment.
+  * Being a major release, there are some backward incompatible
+    changes. Please see the migration guide for further details.
+  * Enhancements made:
+  * Kernel Provisioning - initial implementation #612
+    (@kevin-bates)
+  * Fix up some async method aliases in KernelManager #670
+    (@kevin-bates)
+  * Support answer_yes when removing kernel specs #659
+    (@davidbrochart)
+  * Include process ID in message ID #655 (@takluyver)
+  * Fix qtconsole issues #638 (@davidbrochart)
+  * Added debugger key in kernel_info_reply #486 (@JohanMabille)
+  * Prepare for use with Jupyter Releaser #676 (@afshin)
+  * Force install jupyter_client master #675 (@davidbrochart)
+  * Fix project name #674 (@vidartf)
+  * Rename trait to allowed_kernelspecs #672 (@blink1073)
+  * Remove block parameter from get_msg() #671 (@davidbrochart)
+  * Only import nest_asyncio locally #665 (@SylvainCorlay)
+  * Use a default serializer that is not only for date types #664
+    (@martinRenou)
+  * Updated debug_info_response #657 (@JohanMabille)
+  * Do not block on exit #651 (@impact27)
+  * Update test kernel with native coroutine, remove
+    async_generator dependency #646 (@kevin-bates)
+  * setup.py and CI improvements #645 (@dolfinus)
+  * Test downstream projects #644 (@davidbrochart)
+  * Remove deprecations in kernel manager #643 (@kevin-bates)
+  * Add block=True back to get_msg() #641 (@davidbrochart)
+  * Pin python>=3.6.1 #636 (@davidbrochart)
+  * Use pre-commit #631 (@davidbrochart)
+  * Attempt CI with ipykernel 6.0 prerelease #629 (@SylvainCorlay)
+  * Make KernelManager subclass tests DRY #628 (@davidbrochart)
+  * Add tests to ensure MultiKernelManager subclass methods are
+    called #627 (@kevin-bates)
+  * Add type annotations, refactor sync/async #623 (@davidbrochart)
+  * Create migration guide #681 (@blink1073)
+  * Update changelog for 7.0.0rc0 #673 (@blink1073)
+  * Added documentation for richInspectVariables request #654
+    (@JohanMabille)
+  * Change to edit_magic payload #652 (@yitzchak)
+  * Added missing documentation for the inspectVariables request
+    and resp… #649 (@JohanMabille)
+  * Add status field to other replies in documentation #648
+    (@yitzchak)
+- Drop jupyter_client-pr646-remove-async_generator.patch
+
+-------------------------------------------------------------------
+Thu Aug 12 10:13:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- remove the ringdisabled conditional: ipykernel5 will be in Ring1
+
+-------------------------------------------------------------------
+Wed Aug 11 09:38:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable testing the kernelmanager in the python36 flavor in
+  lettered staging so that we don't need python-ipykernel5 in Ring1
+- Work around conflict for jupyter-ipykernel due to dangling
+  python36-ipykernel package until it gets removed from Factory
+
+-------------------------------------------------------------------
+Mon Jun 28 10:11:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.1.12
+  * Shutdown request sequence has been modified to be more
+    graceful, it now is preceded by interrupt, and will also send
+    a SIGTERM before forcibly killing the kernel
+  * Removal of ipython_genutils as a dependency. It was implicit
+    before; but required by at least traitlets thus avoiding
+    issues. We are working on completely removing it from all
+    jupyter dependencies; as it might lead to issues packaging for
+    Python 3.10, and was mostly used for compatibility with python
+    2.
+  * Address a race condition between shutdown_kernel and restarter.
+- Release 6.1.11
+  * Move jedi pinning to test requirements
+- Release 6.1.10
+  * Add change parameter needed for observer method of
+    kernel_spec_manager trait
+- Release 6.1.9
+  * Pin jedi<=0.17.2
+- Release 6.1.8
+  * Doc updates
+  * Fix path to the connection file
+  * Code cleanup
+  * Silence kill_kernel when no process is present
+  * Remove extra_env and corresponding test
+  * Add documentation dependencies to setup.py
+  * Fix for Windows localhost IP addresses
+  * Drop Travis CI, add GitHub Actions
+  * Adapt KernelManager._kernel_spec_manager_changed to observe
+  * Allow use ~/ in the kernel's command or its arguments
+  * Change wait_for_ready logic
+  * Fix test_session with msgpack v1
+- Add jupyter_client-pr646-remove-async_generator.patch
+  * gh#jupyter/jupyter_client#646
+  * fixes the current staging:F failure, same as
+    gh#jupyter/jupyter_client#661
+- Use flaky plugin for unreliable parallel kernel tests
+
+-------------------------------------------------------------------
+Sat Sep  5 16:42:02 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required packages for tests according to setup.py
+
+- update to version 6.1.7
+  * Fixed launching non python kernels from a windows store installed
+    jupyter
+  * Silenced kill_kernel when kernel is already terminated
+  * Removed a number of python 2 code paths (thanks @rahulporuri)
+  * Documentation improvements around debug request/reply patterns
+
+- changes from version 6.1.6:
+  * Removed warnings in more cases for KernelManagers that use new
+    cleanup method (:ghpull:`560`)
+  * Some improved tests with a conversion to pytest pattern
+    (:ghpull:`561`)
+
+- changes from version 6.1.5:
+  * Gracefully Close ZMQ Context upon kernel shutdown to fix memory
+    leak (:ghpull:`548`)
+  * Fix for chained exceptions to preserve stacks (:ghpull:`552`,
+    :ghpull:`554`)
+  * Fix start_kernel error when passing kernel_id (:ghpull:`547`)
+  * Update to releasing docs (:ghpull:`543`)
+
+- changes from version 6.1.4:
+  * (Deleted release with incorrect local files)
+
+-------------------------------------------------------------------
+Sat Apr 25 17:16:52 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- Update to version 6.1.3:
+  * Add AsyncKernelClient client_class to AsyncKernelManager
+    (:ghpull:`542`)
+  * Doc fix for xeus hyperlinks (:ghpull:`540`)
+  * Doc typo fix (:ghpull:`539`)
+
+- changes from version 6.1.2:
+  * Fixed a bug causing clients to sometimes hang after a stop call
+    was made (:ghpull:`536`)
+
+- changes from version 6.1.1:
+  * Subprocess kill action fix for async execution (:ghpull:`535`)
+  * Doc fix for xeus kernel list (:ghpull:`534`)
+
+- changes from version 6.1.0:
+  * This release includes support for asyncio patterns! Downstream
+    tools should soon have releases to additionally support async
+    patterns.
+  * AsyncKernelManager and AsyncMultiKernelManager are now available
+    for async jupyter_client interactions (:ghpull:`528`,
+    :ghpull:`529`)
+  * Removed unused sphinx dependency (:ghpull:`518`, :ghpull:`518`).
+  * Added install instructions for pip to documentation
+    (:ghpull:`521`)
+  * Improved docs around version protocol and messaging
+    (:ghpull:`522`, :ghpull:`526`)
+
+-------------------------------------------------------------------
+Mon Feb 24 15:15:04 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 6.0.0
+  + New Features:
+    * Added async API
+  + Changes:
+    * Python 3.8 testing and support added
+    * Session.msg_id optimization
+    * Only cache ports if the cache_ports flag is set to True
+    * Removed direct dependency on pywin32 as this is now in jupyter core
+  + Fixes:
+    * Prevent two kernels to have the same ports
+  + Docs:
+    * Document the handling of error in do_execute
+  + Breaking changes:
+    * Dropped support for Python 2.7!
+- Implement tests via multibuild
+- Drop doc subpackage.  This was only around to resolve dependency
+  cycles in testing, which the multibuild now does.  Keeping up
+  with rapid changes in readthedocs was becoming difficult.
+
+-------------------------------------------------------------------
+Tue Nov 12 15:39:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 5.3.4
+  * Updated for latest core release
+  * Changed requirement to min version needed to run
+  * Changed secure write to load from core
+- Update to version 5.3.3
+  * Fix get admin group SID
+- Update to version 5.3.2
+  * Attempt to fix for python 2
+  * Added support for secure windows file writes
+  * Added test and chmod catch for secure_write
+  * Secure write for connection file
+- Rename to python-jupyter-client to reflect upstream rename.
+
+-------------------------------------------------------------------
+Sat Jul 27 23:06:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.3.1
+  * Fix bug with control channel socket introduced in 5.3.0
+- Update to 5.3.0
+  + New Features:
+    * Multiprocessing and Threading support
+    * Setup package long_description
+  + Changes:
+    * Control channel now in the public API
+    * Closing Jupyter Client is now faster
+    * Pip support improvements
+  + Breaking changes:
+    * Dropped support for Python 3.3 and 3.4 (upstream packages dropped support already)
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Split jupyter components into own subpackage.
+- Rename doc package to match jupyter name.
+
+-------------------------------------------------------------------
+Sat Dec 22 07:00:02 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.2.4
+  * Prevent creating new console windows on Windows (:ghpull:`346`)
+  * Fix interrupts on Python 3.7 on Windows (:ghpull:`408`)
+
+-------------------------------------------------------------------
+Thu Apr 12 20:47:13 UTC 2018 - arun@gmx.de
+
+- specfile:
+  - remove fix_COPY_THRESHOLD.patch, included upstream
+
+- update to version 5.2.3:
+  * Fix hang on close in :class:`.ThreadedKernelClient` (used in
+    QtConsole) when using tornado with asyncio (default behavior of
+    tornado 5, see :ghpull:`352`).
+  * Fix errors when using deprecated :attr:`.KernelManager.kernel_cmd`
+    (:ghpull:`343`, :ghpull:`344`).
+
+-------------------------------------------------------------------
+Tue Feb 13 04:21:49 UTC 2018 - toddrme2178@gmail.com
+
+- Update dependencies.
+- Add fix_COPY_THRESHOLD.patch
+  Fixes tests for pyzmq < 17
+  See: https://github.com/jupyter/jupyter_client/pull/349
+
+-------------------------------------------------------------------
+Sat Feb 10 17:57:17 UTC 2018 - arun@gmx.de
+
+- update to version 5.2.2:
+  * Fix :meth:`.KernelSpecManager.get_all_specs` method in subclasses
+    that only override :meth:`.KernelSpecManager.find_kernel_specs`
+    and :meth:`.KernelSpecManager.get_kernel_spec`. See :ghissue:`338`
+    and :ghpull:`339`.
+  * Eliminate occasional error messages during process exit
+    (:ghpull:`336`).
+  * Improve error message when attempting to bind on invalid address
+    (:ghpull:`330`).
+  * Add missing direct dependency on tornado (:ghpull:`323`).
+
+-------------------------------------------------------------------
+Thu Jan  4 17:16:22 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 5.2.1:
+  * Add parenthesis to conditional pytest requirement to work around a
+    bug in the wheel package, that generate a .whl which otherwise
+    always depends on pytest see :ghissue:`324` and :ghpull:`325`
+
+-------------------------------------------------------------------
+Thu Dec 21 18:46:10 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * add binary for python3 jupyter-{kernel, kernelspec, run}
+
+- update to version 5.2.0:
+  * Define Jupyter protocol version 5.3:
+    + Kernels can now opt to be interrupted by a message sent on the
+      control channel instead of a system signal. See
+      :ref:`kernelspecs` and :ref:`msging_interrupt` (:ghpull:`294`).
+  * New jupyter kernel command to launch an installed kernel by name
+    (:ghpull:`240`).
+  * Kernelspecs where the command starts with e.g. python3 or
+    python3.6—matching the version jupyter_client is running on—are
+    now launched with the same Python executable as the launching
+    process (:ghpull:`306`). This extends the special handling of
+    python added in 5.0.
+  * Command line arguments specified by a kernelspec can now include
+    {resource_dir}, which will be substituted with the kernelspec
+    resource directory path when the kernel is launched
+    (:ghpull:`289`).
+  * Kernelspecs now have an optional metadata field to hold arbitrary
+    metadata about kernels—see :ref:`kernelspecs` (:ghpull:`274`).
+  * Make the KernelRestarter class used by a KernelManager
+    configurable (:ghpull:`290`).
+  * When killing a kernel on Unix, kill its process group
+    (:ghpull:`314`).
+  * If a kernel dies soon after starting, reassign random ports before
+    restarting it, in case one of the previously chosen ports has been
+    bound by another process (:ghpull:`279`).
+  * Avoid unnecessary filesystem operations when finding a kernelspec
+    with :meth:`.KernelSpecManager.get_kernel_spec` (:ghpull:`311`).
+  * :meth:`.KernelSpecManager.get_all_specs` will no longer raise an
+    exception on encountering an invalid kernel.json file. It will
+    raise a warning and continue (:ghpull:`310`).
+  * Check for non-contiguous buffers before trying to send them
+    through ZMQ (:ghpull:`258`).
+  * Compatibility with upcoming Tornado version 5.0 (:ghpull:`304`).
+  * Simplify setup code by always using setuptools (:ghpull:`284`).
+  * Soften warnings when setting the sticky bit on runtime files fails
+    (:ghpull:`286`).
+  * Various corrections and improvements to documentation.
+
+-------------------------------------------------------------------
+Tue Sep 19 19:45:32 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 5.1
+  * Define Jupyter protocol version 5.2,
+    resolving ambiguity of ``cursor_pos`` field in the presence
+    of unicode surrogate pairs.
+  * Add :meth:`Session.clone` for making a copy of a Session object
+    without sharing the digest history.
+    Reusing a single Session object to connect multiple sockets
+    to the same IOPub peer can cause digest collisions.
+  * Avoid global references preventing garbage collection of background threads.
+
+-------------------------------------------------------------------
+Wed Apr 26 18:38:46 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Apr  7 18:56:07 UTC 2017 - toddrme2178@gmail.com
+
+- Clean up alternatives usage.
+
+-------------------------------------------------------------------
+Fri Apr  7 03:06:54 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 5.0.1
+  * Update internal protocol version number to 5.1,
+    which should have been done in 5.0.0.
+
+-------------------------------------------------------------------
+Thu Mar 30 19:12:38 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 5.0.0
+  + New features:
+    * Introduce :command:`jupyter run` command for running scripts with a kernel, for instance::
+        jupyter run --kernel python3 myscript.py
+    * New method :meth:`.BlockingKernelClient.execute_interactive`
+      for running code and capturing or redisplaying its output.
+    * New ``KernelManager.shutdown_wait_time`` configurable for adjusting the time
+      for a kernel manager to wait after politely requesting shutdown
+      before it resorts to forceful termination.
+  + Fixes:
+    * Set sticky bit on connection-file directory to avoid getting cleaned up.
+    * :func:`jupyter_client.launcher.launch_kernel` passes through additional options to the underlying Popen,
+      matching :meth:`KernelManager.start_kernel`.
+    * Check types of ``buffers`` argument in :meth:`.Session.send`,
+      so that TypeErrors are raised immediately,
+      rather than in the eventloop.
+  + Changes:
+    * In kernelspecs, if the executable is the string ``python`` (as opposed to an absolute path),
+      ``sys.executable`` will be used rather than resolving ``python`` on PATH.
+      This should enable Python-based kernels to install kernelspecs as part of wheels.
+    * kernelspec names are now validated.
+      They should only include ascii letters and numbers, plus period, hyphen, and underscore.
+  + Backward-incompatible changes:
+    * :py:class:`.datetime` objects returned in parsed messages are now always timezone-aware.
+      Timestamps in messages without timezone info are interpreted as the local timezone,
+      as this was the behavior in earlier versions.
+- Update to 4.4.0
+  * Add :meth:`.KernelClient.load_connection_info` on KernelClient, etc. for loading connection info
+    directly from a dict, not just from files.
+  * Include parent headers when adapting messages from older protocol implementations
+    (treats parent headers the same as headers).
+  * Compatibility fixes in tests for recent changes in ipykernel.
+- Update to 4.3.0
+  * Adds ``--sys-prefix`` argument to :command:`jupyter kernelspec install`,
+    for better symmetry with :command:`jupyter nbextension install`, etc.
+- Update to 4.2.2
+  * Another fix for the :func:`start_new_kernel` issue in 4.2.1 affecting slow-starting kernels.
+- Update to 4.2.1
+  * Fix regression in 4.2 causing :func:`start_new_kernel`
+    to fail while waiting for kernels to become available.
+- Update to 4.2.0
+  * added :command:`jupyter kernelspec remove` for removing kernelspecs
+  * allow specifying the environment for kernel processes via the ``env`` argument
+  * added ``name`` field to connection files identifying the kernelspec name,
+    so that consumers of connection files (alternate frontends) can identify the kernelspec in use
+  * added :meth:`KernelSpecManager.get_all_specs` for getting all kernelspecs more efficiently
+  * various improvements to error messages and documentation
+- Split documentation into own subpackage
+
+-------------------------------------------------------------------
+Mon Oct 12 13:44:23 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 4.1.1:
+  * Setuptools fixes for jupyter kernelspec
+  * jupyter kernelspec list includes paths
+  * add :meth:`KernelManager.blocking_client`
+  * provisional implementation of comm_info requests from upcoming 5.1
+    release of the protocol
+    
+-------------------------------------------------------------------
+Thu Oct  1 12:04:25 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Fri Aug 14 07:03:18 UTC 2015 - toddrme2178@gmail.com
+
+- Fix update-alternatives usage
+
+-------------------------------------------------------------------
+Tue Jul 21 14:28:11 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+
