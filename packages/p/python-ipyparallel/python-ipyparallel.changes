@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 18:56:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.5.1
+  * Fix error preventing creation of new profiles via the lab
+    extension
+- Release 8.5.0
+  * Updates dependencies in jupyterlab extension to jupyterlab 3.6
+  * fix ResourceWarnings about closed clusters
+  * Avoid some deprecated APIs in jupyter-client and pyzmq
+- Drop ipyparallel-pr729+pr753-deprecationfilters.patch
+
+-------------------------------------------------------------------
 Sat Dec 31 15:49:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add deprecation warnings filters

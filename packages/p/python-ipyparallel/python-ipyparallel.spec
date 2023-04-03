@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyparallel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-ipyparallel
-Version:        8.4.1
+Version:        8.5.1
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -25,12 +25,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipyparallel
 Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-%{version}.tar.gz
 Source99:       python-ipyparallel-rpmlintrc
-# PATCH-FIX-UPSTREAM ipyparallel-pr729+pr753-deprecationfilters.patch gh#ipython/ipyparallel#729, gh#ipython/ipyparallel#753
-Patch1:         ipyparallel-pr729+pr753-deprecationfilters.patch
 # SECTION build-system requirements
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jupyterlab >= 3}
+BuildRequires:  %{python_module jupyterlab >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
@@ -41,7 +39,8 @@ BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module ipykernel >= 4.4}
 BuildRequires:  %{python_module ipython >= 4}
-BuildRequires:  %{python_module jupyter-client}
+# jupyterlab: notebook <7: jupyter-client < 8
+BuildRequires:  %{python_module jupyter-client < 8}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module pyzmq >= 18}
@@ -52,7 +51,7 @@ Requires:       python-decorator
 Requires:       python-entrypoints
 Requires:       python-ipykernel >= 4.4
 Requires:       python-ipython >= 4
-Requires:       python-jupyter-client
+Requires:       python-jupyter-client < 8
 Requires:       python-psutil
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-pyzmq >= 18
@@ -83,7 +82,7 @@ Summary:        Interactive parallel computing library for IPython
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyter-core
 Requires:       jupyter-jupyter-server
-Requires:       jupyter-jupyterlab >= 3
+Requires:       jupyter-jupyterlab >= 3.6
 Requires:       jupyter-notebook
 Requires:       python3-ipyparallel = %{version}
 Provides:       jupyter-ipyparallel-l = %{version}-%{release}
