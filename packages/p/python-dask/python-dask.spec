@@ -155,8 +155,7 @@ Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       %{name}-dot = %{version}
 Requires:       python-lz4 >= 4.3.2
-# Added to the [complete] extra in 2023.3.1, not available for TW yet
-#Requires:       python-pyarrow >= 7
+Requires:       python-pyarrow >= 7
 Provides:       %{name}-all = %{version}-%{release}
 Obsoletes:      %{name}-all < %{version}-%{release}
 
