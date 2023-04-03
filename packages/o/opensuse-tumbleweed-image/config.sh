@@ -61,7 +61,7 @@ if [[ "$kiwi_profiles" == *"docker"* ]]; then
 	# Hack! The go container management tools can't handle sparse files:
 	# https://github.com/golang/go/issues/13548
 	# When lastlog doesn't exist, useradd doesn't attempt to reserve space.
-	rm /var/log/lastlog
+	rm -f /var/log/lastlog
 fi
 
 if [[ "$kiwi_profiles" == *"networkd"* ]]; then

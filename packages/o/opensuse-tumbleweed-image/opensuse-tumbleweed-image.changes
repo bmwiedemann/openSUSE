@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 07:38:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- config.sh: attempt to force delete /var/log/lastlog; don't fail
+  in case it already does not exist.
+
+-------------------------------------------------------------------
 Thu Feb 23 15:36:39 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add tar and gzip for simpler use in GitHub actions and similar
