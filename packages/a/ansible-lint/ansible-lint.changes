@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  3 11:03:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.4:
+  * Bugfixes
+    - Document that no-changed-when also applies to handlers
+      (#3237) @ssbarnea
+    - Update navigator schema (#3236) @ssbarnea
+    - Update no-handler rule to accept 'not changed' (#3230)
+      @jpopelka
+    - Fix link for usage.md (Linting playbooks and roles) (#3224)
+      @ziegenberg
+    - Skip PATH checking when pyenv virtualenv is present (#3219)
+      @ajinkyau
+    - Require yamllint 1.30.3 or newer (#3220) @ssbarnea
+
+-------------------------------------------------------------------
 Sat Mar 25 06:41:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.14.3:
