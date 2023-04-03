@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr  1 09:09:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.1:
+  * test: Restore support for CMake <= 3.25 in test suite
+- Changes from version 0.6.0:
+  * Output:
+    - Generate functions with rvalue-references in signatures.
+    - Generate RValueReferenceType elements in castxml output
+      format.
+    - Add AutoType element for "auto" types that have not been
+      deduced.
+    - Add ElaboratedType elements with "qualifier=" attribute.
+    - Add a "keyword=" attribute to ElaboratedType elements.
+    - Forward complete output requests through ElaboratedType.
+    - Explicitly guard empty struct name.
+    - Avoid generating "init=" attribute for float128
+      compatibility type.
+    - Factor out helper to check for float128 compatibility decl.
+  * RunClang: Detect -std=c++20 from --castxml-cc-{gnu,msvc} test:
+    - Add case with Elaborated type due to qualified name.
+    - Update assume_aligned case to suppress -Wundefined-inline
+      warning.
+    - Tolerate '-internal-*' flags after '-isystem' flags.
+
+-------------------------------------------------------------------
 Wed Dec 14 17:53:30 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.5.1:
