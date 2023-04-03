@@ -33,7 +33,7 @@
 
 %if %{with atf_optee}
 %define use_optee 1
-%if "%{platform}" == "" || "%{platform}" == "tegra186" || "%{platform}" == "tegra210" || "%{platform}" == "rk3328" || "%{platform}" == "rk3368" || "%{platform}" == "rk3399" || "%{platform}" == "rpi4"
+%if "%{platform}" == "" || "%{platform}" == "fvp" || "%{platform}" == "tegra186" || "%{platform}" == "tegra210" || "%{platform}" == "rk3328" || "%{platform}" == "rk3368" || "%{platform}" == "rk3399" || "%{platform}" == "rpi4"
 # OP-TEE not available
 %define use_optee 0
 %endif
@@ -87,6 +87,10 @@ BuildRequires:  cross-arm-none-gcc%{gcc_version}
 %endif
 %if "%{platform}" == "a80x0_mcbin" && 0
 BuildRequires:  edk2-Armada80x0McBin
+%endif
+%if "%{platform}" == "fvp"
+BuildRequires:  dtc
+BuildRequires:  edk2-ArmVExpress-FVP-AArch64
 %endif
 %if "%{platform}" == "hikey"
 BuildRequires:  edk2-hikey
@@ -350,6 +354,10 @@ mv build build.${variant}
 done
 %endif
 %else
+%if "%{platform}" == "fvp"
+     BL33=/boot/FVP_AARCH64_EFI.fd \
+     all fip
+%else
 %if "%{platform}" == "hikey"
      SCP_BL2=/boot/mcuimage.bin \
      BL33=/boot/u-boot.bin \
@@ -388,6 +396,7 @@ done
      all fip
 %else
      all
+%endif
 %endif
 %endif
 %endif
@@ -457,7 +466,7 @@ install -D -m 0644 %{outdir}/bl31/bl31.elf %{buildroot}%{_datadir}/%{name}/bl31.
 install -D -m 0644 %{outdir}/bl31.bin %{buildroot}%{_datadir}/%{name}/bl31.bin
 %endif
 
-%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "qemu" || "%{platform}" == "qemu_sbsa" || "%{platform}" == "rpi3"
+%if "%{platform}" == "a80x0_mcbin" || "%{platform}" == "fvp" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "qemu" || "%{platform}" == "qemu_sbsa" || "%{platform}" == "rpi3"
 install -D -m 0644 %{outdir}/bl1.bin %{buildroot}%{_datadir}/%{name}/bl1.bin
 install -D -m 0644 %{outdir}/fip.bin %{buildroot}%{_datadir}/%{name}/fip.bin
 %endif
