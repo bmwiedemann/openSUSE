@@ -66,20 +66,6 @@ OrderWithRequires(postun): systemd \
 Suggests: systemd \
 %{nil}
 
-%_restart_on_update_force() /usr/bin/systemctl try-restart %{*} || : %{nil}
-%_restart_on_update_never() : # Restart of %{*} skipped %{nil}
-
-%_restart_on_update() 									\
-	if [ -e /etc/sysconfig/services ]; then						\
-		DISABLE_RESTART_ON_UPDATE=						\
-		. /etc/sysconfig/services						\
-		case "$DISABLE_RESTART_ON_UPDATE" in					\
-		yes|1)	;;								\
-		*)	/usr/bin/systemctl try-restart %{*} || :			\
-		esac									\
-	fi										\
-%{nil}
-
 # Figure out when presets need to be applied. This information is only
 # recorded during %pre and is actually applied during %post.
 #
@@ -148,20 +134,23 @@ if [ -x /usr/bin/systemctl ]; then							\
 fi											\
 %{nil}
 
-# On uninstall, tell systemd to reload its unit files
+# On uninstall, tell systemd to reload its unit files.
+# On update, tell systemd to reload and restart service unless
+# DISABLE_RESTART_ON_UPDATE from /etc/sysconfig/services says otherwise
 #
-# Deprecated options, please do not use in new code:
-#  -f : force restart on update (replaced by %service_del_postun_with_restart)
-#  -n : don't restart on update (replaced by %service_del_postun_without_restart)
-#
-# The default is to read DISABLE_RESTART_ON_UPDATE from /etc/sysconfig/services
-#
-%service_del_postun(fn)									\
+
+%service_del_postun()									\
 if [ -x /usr/bin/systemctl ]; then							\
 	/usr/bin/systemctl daemon-reload || :						\
 	if [ $1 -ge 1 ]; then								\
 		# Package upgrade, not uninstall					\
-		%{expand:%%_restart_on_update%{-f:_force}%{!-f:%{-n:_never}} %{?*}}	\
+		DISABLE_RESTART_ON_UPDATE=no						\
+		[ -e /etc/sysconfig/services ] && . /etc/sysconfig/services || :	\
+											\
+		case "$DISABLE_RESTART_ON_UPDATE" in					\
+		yes|1)	;;								\
+		*)	/usr/bin/systemctl try-restart %{*} || :			\
+		esac									\
 	fi										\
 fi											\
 %{nil}
@@ -174,7 +163,7 @@ fi											\
 %systemd_post() %{expand::%%service_add_post %{?**}}
 %systemd_preun() %{expand::%%service_del_preun %{?**}}
 %systemd_postun() %{expand::%%service_del_postun_without_restart %{?**}}
-%systemd_postun_with_restart() %{expand::%%service_del_postun %{?**}}
+%systemd_postun_with_restart() %{expand::%%service_del_postun_with_restart %{?**}}
 
 %systemd_user_pre()									\
 if [ -x /usr/bin/systemctl ]; then							\

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 29 11:38:07 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Bump to version 20
+
+-------------------------------------------------------------------
+Wed Mar 29 11:33:44 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- %service_del_postun: make sure to restart services if /etc/sysconfig/service
+  is not present.
+
+-------------------------------------------------------------------
+Wed Mar 29 10:40:14 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop support for -n/-f options in %service_del_postun
+
+  These options have been deprecated since a long time and the last package
+  relying on them (drkonqi5) in the Factory repository has been updated.
+
+-------------------------------------------------------------------
 Thu Jan 26 14:12:28 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Bump to version 19

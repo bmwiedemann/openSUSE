@@ -654,4 +654,19 @@
 - `udevadm hwdb` is deprecated, use `systemd-hwdb` instead.</comment>
     <requestid>1061222</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>253978f0e98b100df868699677811aff</srcmd5>
+    <version>20</version>
+    <time>1680536718</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 20
+
+- %service_del_postun: make sure to restart services if /etc/sysconfig/service
+  is not present.
+
+- Drop support for -n/-f options in %service_del_postun
+  These options have been deprecated since a long time and the last package
+  relying on them (drkonqi5) in the Factory repository has been updated.</comment>
+    <requestid>1075207</requestid>
+  </revision>
 </revisionlist>
