@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:30:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.6:
+  * delete BUILD_AND_TEST_LOCAL_KUBESCAPE_CLI input for
+    b-binary-build-and-e2e-tests wf
+  * Add new meeting location
+  * test: fix test with new function argument
+  * feat: add progress bar during cloud resources download
+  * clean code
+  * load account details
+  * update host scanner image tag
+  * updated createTenant path (#1166)
+  * refact(hostsensorutils): unexported fields that don't need to
+    be exposed
+  * fix shellcheck warning and info
+  * test(utils): introduced internal/testutils package to factorize
+    testing utilities
+  * addressed review from David: reverted on unconditional loop
+    exit
+  * refact(host-sensor): refactors the host sensor
+  * perf(opaprocessor): run OPA rule compilation and evaluation in
+    parallel
+  * refact(getter): refactor the KS Cloud client
+  * Revert "added validation for if ORIGIN_TAG=null"
+  * added validation for if ORIGIN_TAG=null
+  * check KUBESCAPE_EXEC is not empty before deletion
+  * change concurrency in 00-pr-scanner
+  * remove merge action
+  * core(logs): Enhance logs (#1158)
+  * change trigger for wf
+  * changed ks_branch to release
+  * moved the output TEST_NAMES to wf-preparation job (was
+    check-secret job) and added step export_tests..
+  * fixed syntax error
+  * fixed syntax error
+  * added input to make the binary build and test dynamic
+  * added CHECKOUT_REPO input parameter
+  * update host scanner image tag
+  * change failed to submit message
+  * Signed-off-by: David Wertenteil <dwertent@armosec.io>
+  * fix references to kubectl in completion help
+  * Set scanning event
+  * replace error by warning
+  * Added context to HandleResults
+  * add dependencies to httphandler
+  * upgrade opa-utils and armo api
+  * Add prompt for removing old way of installation
+  * Clean uninstall of old installation
+  * Change installation path to ~/.kubescape/bin
+  * bump go-logger (#1144)
+  * Update CONTRIBUTING.md
+  * feat: integrate support to retrieve eks policies
+  * Revert add '.exe' to Win release binary
+  * ci(release): fix publishing krew plugin; add .exe suffix to Win
+    binary
+
+-------------------------------------------------------------------
 Mon Mar 13 09:51:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.2.5:
