@@ -35,7 +35,6 @@ Source2:        cgal-rpmlintrc
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.14
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 10.2.1
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
@@ -46,6 +45,12 @@ BuildRequires:  mpfr-devel
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires:       libcgal-devel = %{version}
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+
 
 %description
 CGAL provides geometric algorithms in a C++ library.
@@ -101,6 +106,10 @@ This package provides the documentation for CGAL algorithms.
 %setup -q -n CGAL-%{version} -a1
 
 %build
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CXX="g++-11"
+%endif
+
 %cmake -DCGAL_INSTALL_LIB_DIR=%{_lib}
 
 %make_build
