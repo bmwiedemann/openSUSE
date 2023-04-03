@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:04:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.76.0:
+  * feat: Add config option to allow user to select the default
+    image source location
+  * chore(deps): bump github.com/docker/docker (#1699)
+  * chore(deps): update bootstrap tools to latest versions (#1697)
+  * chore(deps): update stereoscope to
+    d7551b7f46f53179922d6229709d3d1602881080 (#1693)
+  * 1577 spdxlicense generate (#1691)
+  * chore(deps): bump github.com/vbatts/go-mtree from 0.5.2 to
+    0.5.3 (#1692)
+  * feat: scan local go mod cache for licenses of golang packages
+    (#1645)
+  * chore: fix flaky license sorting (#1690)
+  * chore(deps): bump github.com/gookit/color from 1.5.2 to 1.5.3
+    (#1689)
+  * fix: shell completion by adding missing usage message required
+    by spf13/cobra (#1688)
+  * chore(deps): update bootstrap tools to latest versions (#1686)
+  * chore: tweak some workflow text (#1685)
+  * Remove more side effects from application config testing
+    (#1684)
+  * Deprecate config.yaml as valid config source; Add unit
+    regression for correct config paths (#1640)
+  * chore: Update syft bootstrap tools to latest versions. (#1682)
+  * Update documentation: (#1680)
+  * chore: Update Stereoscope to
+    7928713c391e20abaede6a029f4ce37b628a4c8b (#1681)
+  * fix: reduce logging for bad dpkg lines (#1675)
+  * fix ruby classifier (#1678)
+  * feat: add shared dir for easier cleanup (#1676)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1672)
+  * chore(deps): bump actions/setup-go from 3 to 4 (#1671)
+  * fix: move defer after error to protect panic case (#1670)
+  * feat: add argocd, helm, kustomize and kubectl binary
+    classifiers (#1663)
+  * defer closing file (#1668)
+  * fix: remove author contributing to javascript CPEs (#1669)
+
+-------------------------------------------------------------------
 Mon Mar 13 19:15:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.75.0:
