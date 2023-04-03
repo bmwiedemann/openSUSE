@@ -67,7 +67,8 @@ these events.
 
 %prep
 %autosetup -p1 -n jupyter_events-%{version}
-sed -i 's/--color=yes//' pyproject.toml
+# gh#pypa/hatch#801, gh#rpm-software-management/rpmlint#1043, gh#jupyter/jupyter_events#70
+sed -i -e 's/--color=yes//' -e '/jsonschema/ s/\[.*\]//' pyproject.toml
 
 %build
 %pyproject_wheel

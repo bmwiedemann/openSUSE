@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 30 19:48:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Work around gh#rpm-software-management/rpmlint#1043
+  * This produces false positives for python-missing-require and
+    python-lefover-require but at least it does not crash rpmlint
+  * See also gh#pypa/hatch#801, gh#jupyter/jupyter_events#70
+
+-------------------------------------------------------------------
 Sun Jan 15 21:04:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.3

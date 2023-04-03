@@ -29,4 +29,15 @@
 ---------------------------------------------------------</comment>
     <requestid>1058572</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cf563e01f19b630b20cf1b3bdf73e102</srcmd5>
+    <version>0.6.3</version>
+    <time>1680536724</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around gh#rpm-software-management/rpmlint#1043
+  * This produces false positives for python-missing-require and
+    python-lefover-require but at least it does not crash rpmlint
+  * See also gh#pypa/hatch#801, gh#jupyter/jupyter_events#70 (forwarded request 1075682 from bnavigator)</comment>
+    <requestid>1075683</requestid>
+  </revision>
 </revisionlist>
