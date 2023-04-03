@@ -17,13 +17,13 @@
 
 
 Name:           gtkmm-documentation
-Version:        4.0.3
+Version:        4.10.0
 Release:        0
 Summary:        C++ Bindings for GTK+ -- Documentation
 License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Documentation/Other
 URL:            https://gtkmm.org
-Source0:        https://download.gnome.org/sources/gtkmm-documentation/4.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtkmm-documentation/4.10/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  c++_compiler
@@ -32,7 +32,7 @@ BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.68.0
-BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.0.0
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.10.0
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr  1 23:58:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.0:
+  + There are no releases between 4.0.x and 4.10.0. This release is
+    called 4.10.0 because the tutorial describes the new API in
+    gtkmm 4.10.0 and some of the example programs use this new API.
+    Other example programs use API which is now deprecated. It's
+    not possible to build all examples with warnings=fatal.
+  + Add the "Deprecations in gtkmm 4.10" section
+  + Update the Dialogs chapter
+  + Add "The DropDown Widget" chapter
+  + Add the "ListView, GridView, ColumnView" chapter
+  + String fixes
+  + Build:
+    - Require gtkmm-4.0 >= 4.10.0
+    - Set warnings=max when testing a dist tarball
+
+-------------------------------------------------------------------
 Tue Mar  7 12:28:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.0.3:
