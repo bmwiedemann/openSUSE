@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 02 16:49:57 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1680454188.7ce59f8:
+  * ci: Prevent module clash in code coverage
+  * ci: Fix fully covered codecov paths
+  * Turn around default of script_run, see #1807
+  * Don't require selected console for wait_serial
+  * testapi.pm: Move function prototype to the top
+
+-------------------------------------------------------------------
 Tue Mar 21 17:23:18 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1679419381.956c72b:
