@@ -704,4 +704,20 @@ https://github.com/git-cola/git-cola/issues/991
     <comment>- Update to 4.2.0</comment>
     <requestid>1074770</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4cd4f62795dc9307923dd5b447d89d95</srcmd5>
+    <version>4.2.1</version>
+    <time>1680536849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.1
+- Fixes
+* Diffs for repositories with a single commit have been fixed.
+  https://github.com/git-cola/git-cola/issues/1306
+* The toolbars follow the Qt toolbar style, as they did prior to `v4.2.0`.
+  https://github.com/git-cola/git-cola/issues/1307
+* The &quot;Checkout Branch&quot; dialog was fixed to display all completions when first shown.
+  https://github.com/git-cola/git-cola/issues/1308
+</comment>
+    <requestid>1077005</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  3 13:38:36 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.2.1
+- Fixes
+* Diffs for repositories with a single commit have been fixed.
+  https://github.com/git-cola/git-cola/issues/1306
+* The toolbars follow the Qt toolbar style, as they did prior to `v4.2.0`.
+  https://github.com/git-cola/git-cola/issues/1307
+* The "Checkout Branch" dialog was fixed to display all completions when first shown.
+  https://github.com/git-cola/git-cola/issues/1308
+
+-------------------------------------------------------------------
 Mon Mar 27 19:35:28 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.2.0
