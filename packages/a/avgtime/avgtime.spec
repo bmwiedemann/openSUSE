@@ -1,7 +1,7 @@
 #
-# spec file for package avgtime
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,11 +27,12 @@
 %endif
 
 # DMD is available only on x86*. Use LDC with dub otherwise.
-%ifarch %{ix86} x86_64
-%bcond_without dcompiler_dmd
-%else
-%bcond_with dcompiler_dmd
-%endif
+# hrauch: no longer true, there'd gdmd nowadays
+#%ifarch %{ix86} x86_64
+#%bcond_without dcompiler_dmd
+#%else
+#%bcond_with dcompiler_dmd
+#%endif
 
 %define         short_name avgtime
 Name:           %{short_name}%{?name_ext}
@@ -40,19 +41,19 @@ Release:        0
 Summary:        Utility similar to "time", but with repetitions and more statistics
 License:        BSL-1.0
 Group:          Productivity/Scientific/Math
-Url:            https://github.com/jmcabo/%{short_name}
+URL:            https://github.com/jmcabo/%{short_name}
 Source0:        %{short_name}-%{version}.tar.xz
 %if 0%{?_test}
 BuildRequires:  %{short_name}
 %else
-%if %{with dcompiler_dmd}
-BuildRequires:  dmd
-BuildRequires:  phobos-devel
-%else
-BuildRequires:  dub
-BuildRequires:  ldc
-BuildRequires:  ldc-phobos-devel
-%endif
+#%if %{with dcompiler_dmd}
+BuildRequires:  gdmd
+BuildRequires:  libgphobos4
+#%else
+#BuildRequires:  dub
+#BuildRequires:  ldc
+#BuildRequires:  ldc-phobos-devel
+#%endif
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #ExcludeArch:    i586
@@ -82,12 +83,12 @@ avgtime --help
 # https://forum.rejectedsoftware.com/groups/rejectedsoftware.dub/thread/920/
 # okurz: I did not find a way to pass the "defaultlib" path through dub but
 # avgtime is so simple we can simply use dmd directly
-%if %{with dcompiler_dmd}
-dmd -defaultlib=:libphobos2.so avgtime.d
-%else
+#%if %{with dcompiler_dmd}
+gdmd avgtime.d
+#%else
 # dub works fine with LDC
-dub build --build=release
-%endif
+#dub build --build=release
+#%endif
 %endif
 
 %install

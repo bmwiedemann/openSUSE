@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 11:28:33 UTC 2023 - Holger B. A. Rauch <holger.rauch@posteo.de>
+
+- Use gdmd (DMD as part of the GCC (GNU Compiler Collection)). This approach
+  is most likely sane for all architectures and a recent enough GCC (version 13)
+
+-------------------------------------------------------------------
 Thu Aug 30 14:21:12 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use LDC compiler when DMD is not available
