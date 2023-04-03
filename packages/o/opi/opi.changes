@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  3 12:49:44 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.17.0
+- Codecs: Don't force ffmpeg>=5 on leap 15.5
+- Use new checkout version in ci.yaml
+
+-------------------------------------------------------------------
+Mon Apr  3 10:24:05 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.16.0
+- dotnet: Install dotnet-sdk-7.0 (#124)
+- Add jami p2p messenger plugin (#121)
+
+-------------------------------------------------------------------
 Sat Feb 18 22:42:42 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.15.0
