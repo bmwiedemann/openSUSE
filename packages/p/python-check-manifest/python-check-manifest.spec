@@ -39,7 +39,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-build
-Requires:       python-pep517
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives
@@ -53,7 +52,6 @@ Suggests:       subversion
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
