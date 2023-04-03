@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  1 03:07:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999838
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999838 2023-03-30
+
+   * Fix CPAN RT #146411 regarding infinite recursion in bitwise operations. This
+     happened when arguments were upgraded and downgraded and upgraded again ad
+     infinitum. Add tests to verify the fix.
+
+-------------------------------------------------------------------
 Sun Jul  3 03:06:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999837
