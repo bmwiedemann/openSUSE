@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-google-auth-oauthlib
 Version:        1.0.0
 Release:        0
@@ -32,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 2.14.0
 Requires:       python-requests-oauthlib >= 0.7.0
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-click
@@ -42,14 +39,7 @@ BuildRequires:  %{python_module click >= 6.0.0}
 BuildRequires:  %{python_module google-auth >= 1.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}
-BuildRequires:  %{python_module six}
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
 # /SECTION
-%ifpython2
-Requires:       python-futures
-%endif
 %python_subpackages
 
 %description
@@ -82,6 +72,6 @@ rm -rf tests/*.pyc
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/google-oauthlib-tool
-%{python_sitelib}/*
+%{python_sitelib}/google_auth_oauthlib*
 
 %changelog
