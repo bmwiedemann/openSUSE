@@ -56,4 +56,12 @@
   * Replace implicit optional typedefs</comment>
     <requestid>1042826</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f28871e571e1b01bb827ea815df192d5</srcmd5>
+    <version>2.4.0</version>
+    <time>1680536799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076891</requestid>
+  </revision>
 </revisionlist>

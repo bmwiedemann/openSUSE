@@ -1,7 +1,7 @@
 #
 # spec file for package python-git-pw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  %{python_module pyaml >= 5.1}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module requests > 2.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.12}
 BuildRequires:  %{python_module tabulate >= 0.8}
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -43,7 +42,6 @@ Requires:       python-arrow >= 0.10
 Requires:       python-click >= 6.0
 Requires:       python-pyaml >= 5.1
 Requires:       python-requests > 2.0
-Requires:       python-six >= 1.12
 Requires:       python-tabulate >= 0.8
 Provides:       %{modname} = %{version}
 Obsoletes:      %{modname} < %{version}
@@ -56,7 +54,7 @@ git-pw is a tool for integrating Git with Patchwork, the web-based patch
 tracking system.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
