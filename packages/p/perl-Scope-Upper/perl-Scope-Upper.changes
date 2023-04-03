@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 27 03:07:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Scope-Upper/Changes
+
+  0.34    2023-03-26 16:00 UTC
+          + Add : Contributing guidelines are now listed in the new
+                  CONTRIBUTING file.
+          + Fix : [RT #146897] Scope::Upper does not know about RCPV
+                  cop_warnings, and does not know that given is deprecated.
+                  "given" related warnings were silenced, and the new RCPV
+                  interface is now used.
+                  Thanks Yves Orton for reporting and contributing a fix.
+          + Fix : Assertion failures triggering on perl version 5.37.10 and
+                  higher with DEBUGGING enabled.
+          + Fix : t/64-uplevel-caller.t has been taught about the new call frame
+                  numbering convention.
+
+-------------------------------------------------------------------
 Tue Dec 21 03:08:45 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.33
