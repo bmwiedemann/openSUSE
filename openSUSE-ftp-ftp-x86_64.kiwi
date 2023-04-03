@@ -61,7 +61,6 @@
       <repopackage name="antlr-bootstrap" onlyarch="skipit"/>
       <repopackage name="antlr-bootstrap" onlyarch="skipit"/>
       <repopackage name="antlr3-bootstrap-tool" onlyarch="skipit"/>
-      <repopackage name="bitwarden" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="bonnie-ctcs2-glue" onlyarch="skipit"/>
       <repopackage name="bootdisk" onlyarch="skipit"/>
       <repopackage name="bootpmac" onlyarch="skipit"/>
@@ -348,8 +347,6 @@
       <repopackage name="libgomp46" onlyarch="skipit"/>
       <repopackage name="libgomp46-32bit" onlyarch="skipit"/>
       <repopackage name="libmicro-ctcs-glue" onlyarch="skipit"/>
-      <repopackage name="libmozjs-102-0" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="libmozjs-78-0" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="libmudflap41" onlyarch="skipit"/>
       <repopackage name="libmudflap41-32bit" onlyarch="skipit"/>
       <repopackage name="libmudflap45" onlyarch="skipit"/>
@@ -406,20 +403,7 @@
       <repopackage name="maven-resources-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="maven-surefire-plugin-bootstrap" onlyarch="skipit"/>
       <repopackage name="maven-surefire-report-plugin-bootstrap" onlyarch="skipit"/>
-      <repopackage name="MozillaFirefox" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaFirefox-branding-SLED" onlyarch="skipit"/>
-      <repopackage name="MozillaFirefox-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaFirefox-translations-common" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaFirefox-translations-other" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaThunderbird" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaThunderbird-translations-common" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="MozillaThunderbird-translations-other" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="mozjs102" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="mozjs102-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="mozjs78" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="mozjs78-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="nodejs-electron" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="nodejs-electron-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="OpenOffice_org-branding-SLED" onlyarch="skipit"/>
       <repopackage name="openSUSE-Addon-Lang-release" onlyarch="skipit"/>
       <repopackage name="openSUSE-Addon-Lang-release-cd" onlyarch="skipit"/>
