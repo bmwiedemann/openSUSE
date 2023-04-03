@@ -27,11 +27,13 @@ URL:            https://rclone.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc-10
-%endif
 BuildRequires:  go >= 1.20
 BuildRequires:  golang-packaging
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+%else
+BuildRequires:  gcc
+%endif
 
 %{go_nostrip}
 
@@ -65,6 +67,9 @@ Zsh command line completion support for %{name}.
 %setup -q -D -T -a 1
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-11"
+%endif
 %ifarch ppc64
 # pie not supported
 go build -o %{name} -mod=vendor

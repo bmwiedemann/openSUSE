@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  2 05:44:04 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use gcc11 for openSUSE Leap 15.5, fix building
+
+-------------------------------------------------------------------
 Tue Mar 21 08:14:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.62.2:
