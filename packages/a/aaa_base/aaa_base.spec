@@ -1,7 +1,7 @@
 #
 # spec file for package aaa_base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20220822.6b9f7a3%{git_version}
+Version:        84.87+git20230329.b39efbc%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -52,9 +52,9 @@ Requires:       /usr/bin/tput
 Requires:       /usr/bin/xz
 Requires:       distribution-release
 Requires:       filesystem
-Requires(pre):  /usr/bin/rm
-Requires(pre):  (glibc >= 2.30 if glibc)
-Requires(post): fillup /usr/bin/chmod /usr/bin/chown
+# required for nsswitch.conf usrfiles fixes in post script
+Requires(post): (glibc >= 2.30 if glibc)
+Requires(post): fillup
 Recommends:     aaa_base-extras
 Recommends:     iproute2
 Recommends:     iputils
@@ -148,8 +148,6 @@ mkdir -p %{buildroot}%{_fillupdir}
   rm -vrf %{buildroot}/usr/share/fillup-templates
 %endif
 
-%pre -f aaa_base.pre
-
 %post -f aaa_base.post
 
 %pre extras
@@ -167,15 +165,20 @@ mkdir -p %{buildroot}%{_fillupdir}
 
 %files
 %license COPYING
-%config(noreplace) /etc/DIR_COLORS
-%config(noreplace) /etc/sysctl.conf
+%ghost %config(noreplace) /etc/sysctl.conf
 %config /etc/bash.bashrc
 %config /etc/csh.cshrc
 %config /etc/csh.login
 %config /etc/inputrc
-%config /etc/inputrc.keys
 %config /etc/mime.types
 %config /etc/profile
+/usr/etc/DIR_COLORS
+/usr/etc/csh.cshrc
+/usr/etc/csh.login
+/usr/etc/bash.bashrc
+/usr/etc/profile
+/usr/etc/inputrc
+/usr/etc/inputrc.keys
 /usr/etc/profile.d/alljava.csh
 /usr/etc/profile.d/alljava.sh
 /usr/etc/profile.d/lang.csh

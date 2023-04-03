@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/openSUSE/aaa_base.git</param>
-              <param name="changesrevision">166d5ae84c4d401a4432883e6eec6d00a9c1b369</param></service><service name="tar_scm">
+              <param name="changesrevision">b39efbc009fa82640ec066d714949ba2909a228f</param></service><service name="tar_scm">
                 <param name="url">https://github.com/lnussel/aaa_base.git</param>
               <param name="changesrevision">0f8eaba2cf2e69db15cce8a4dcf005b6e88f61e6</param></service></servicedata>

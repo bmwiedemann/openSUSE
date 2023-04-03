@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 29 08:17:25 UTC 2023 - lnussel@suse.de
+
+- Update to version 84.87+git20230329.b39efbc:
+  * Fix glibc requirement
+
+-------------------------------------------------------------------
+Thu Mar 09 14:47:56 UTC 2023 - lnussel@suse.de
+
+- Update to version 84.87+git20230309.04eae92:
+  * Add conditional glibc requirement back
+  * Keep owning /etc/sysctl.conf to avoid rpmsave
+
+-------------------------------------------------------------------
+Mon Feb 20 17:07:58 UTC 2023 - lnussel@suse.de
+
+- Update to version 84.87+git20230220.2991cfd:
+  * Add instructions to build in place
+  * Remove pre scriptlet
+  * Don't create mtab symlink
+  * Don't create /root/.bash_history
+  * Don't enable lastlog by default
+  * Fix #91: do not accidental unset shell functions
+  * Prepare more /etc cleanup
+
+-------------------------------------------------------------------
 Tue Sep 06 07:10:57 UTC 2022 - lnussel@suse.de
 
 - Update to version 84.87+git20220822.6b9f7a3:

@@ -4046,4 +4046,26 @@
   * Simplify XDG_CONFIG_DIRS (boo#1201802)</comment>
     <requestid>1001371</requestid>
   </revision>
+  <revision rev="492" vrev="1">
+    <srcmd5>1d50b59b2b5b7cb6d5cbd16c5218ea24</srcmd5>
+    <version>84.87+git20230329.b39efbc</version>
+    <time>1680536716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20230329.b39efbc:
+  * Fix glibc requirement
+
+- Update to version 84.87+git20230309.04eae92:
+  * Add conditional glibc requirement back
+  * Keep owning /etc/sysctl.conf to avoid rpmsave
+
+- Update to version 84.87+git20230220.2991cfd:
+  * Add instructions to build in place
+  * Remove pre scriptlet
+  * Don't create mtab symlink
+  * Don't create /root/.bash_history
+  * Don't enable lastlog by default
+  * Fix #91: do not accidental unset shell functions
+  * Prepare more /etc cleanup</comment>
+    <requestid>1075154</requestid>
+  </revision>
 </revisionlist>
