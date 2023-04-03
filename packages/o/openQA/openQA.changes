@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 02 09:20:11 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1680231128.78c4788:
+  * Dependency cron 2023-03-31
+  * Add a --name option to openqa-cli
+  * Make it easier to identify openqa-cli in logs
+  * Require and document use of time-sync
+  * Update test for cache->_exceeds_limit
+  * Fix enabling live stream/log when the backend is not up yet
+  * Mention the keyword DSL in the docs
+  * Avoid live view getting stuck in a certain case
+  * Correct formula in _exceeds_limit when CACHE_MIN_FREE_PERCENTAGE is set
+  * Add documentation for running openQA jobs as CI checks
+  * Add test for case of correct key and wrong secret
+  * Fix logging reason of auth errors
+
+-------------------------------------------------------------------
 Mon Mar 27 10:10:33 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1679910590.9fc2aa0:
