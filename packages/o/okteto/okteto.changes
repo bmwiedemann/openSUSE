@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:08:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.1:
+  * fix: remote deploy/destroy with no pull access image (#3526)
+    (#3527)
+  * fix: deploy with invalid image on remote (#3525)
+  * fix: destroy with multiple words (#3523) (#3524)
+  * infer dev name before create remote image (#3513) (#3522)
+  * fix: e2e test for cmd output (#3518) (#3519)
+  * fix: extra step internal server error on remote (#3507) (#3517)
+  * fix: e2e test (#3514) (#3516)
+  * fix external resource deploy without belonging to an env
+    (#3496) (#3512)
+  * fix: add remote build image building (#3493) (#3509)
+  * chore(destroy): better error message when image not accessible
+    (#3494) (#3505)
+  * fix: destroy command should expand env vars (#3477) (#3500)
+  * solve conflicts (#3511)
+  * inject OKTETO_ACTION_NAME in remote (#3489) (#3499)
+  * don't initialize okteto client if not using okteto cloud
+    (#3475) (#3498)
+
+-------------------------------------------------------------------
 Tue Mar 28 04:59:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.0:
