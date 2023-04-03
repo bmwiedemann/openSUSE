@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  3 09:53:57 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20221218
+  * Cinnamon theme:
+    * Update for Cinnamon 5.4
+  * GNOME Shell theme:
+    * Update for GNOME Shell 43
+    * Various fixes and updates for GNOME Shell 42
+  * GTK 3 and GTK4 themes:
+    * Fix "dark style" preference with Arc-Dark variant
+    * Add borders to solid-csd decorations, fixing some borderless windows
+  * GTK 3 theme:
+    * Fix switches in xfce4-panel menus
+    * Fix offset titlebar decorations in some cases
+      (e.g. Cinnamon 5.4 and Electron applications in GNOME)
+    * Various Fixes and improvements
+
+-------------------------------------------------------------------
 Sat Apr 30 10:04:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20220405

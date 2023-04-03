@@ -1,7 +1,7 @@
 #
 # spec file for package arc-gtk-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _theme  Arc
 %define _name   arc
 Name:           arc-gtk-theme
-Version:        20220405
+Version:        20221218
 Release:        0
 Summary:        Arc GTK theme
 License:        GPL-3.0-or-later
