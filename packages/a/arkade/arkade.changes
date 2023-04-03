@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:26:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.7:
+  * Sort apps by name in --print-table
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Apr 03 12:24:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.6:
+  * Add cmctl to README
+  * Add cmctl
+  * Update README
+  * Add actions-usage CLI
+  * Add fstail, remove cnpg
+
+-------------------------------------------------------------------
+Mon Apr 03 12:18:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.5:
+  * Add tool: actuated-cli
+  * Update test-tool.sh
+  * Bump actions/setup-go from 3 to 4
+  * Bump github.com/google/go-containerregistry from 0.13.0 to
+    0.14.0
+  * Remove url from output of arkade get -o table|list
+  * Adding cnpg to README and quick links to catalogs
+  * chore: add cnpg plugin for kubectl
+  * Bump golang.org/x/crypto from 0.6.0 to 0.7.0
+
+-------------------------------------------------------------------
+Mon Apr 03 12:10:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.4:
+  * Fix issue with kubeseal releases
+  * Fix #866
+
+-------------------------------------------------------------------
 Sun Mar 05 20:35:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.3:
