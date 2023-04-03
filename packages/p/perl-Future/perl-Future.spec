@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Future
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Future
 Name:           perl-Future
-Version:        0.49
+Version:        0.50
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Represent an operation awaiting completion
@@ -30,10 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.25
 BuildRequires:  perl(Module::Build) >= 0.400400
-BuildRequires:  perl(Test::Fatal)
-BuildRequires:  perl(Test::Identity)
-BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Test::Refcount)
+BuildRequires:  perl(Test2::V0) >= 0.000148
 Requires:       perl(Carp) >= 1.25
 %{perl_requires}
 
