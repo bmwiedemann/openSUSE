@@ -1,0 +1,24 @@
+Index: noson-2.10.2/noson/src/audioformat.h
+===================================================================
+--- noson-2.10.2.orig/noson/src/audioformat.h
++++ noson-2.10.2/noson/src/audioformat.h
+@@ -22,6 +22,7 @@
+ #include "local_config.h"
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace NSROOT
+ {
+Index: noson-2.10.2/noson/src/filepicreader.h
+===================================================================
+--- noson-2.10.2.orig/noson/src/filepicreader.h
++++ noson-2.10.2/noson/src/filepicreader.h
+@@ -27,6 +27,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #define FILEPICREADER_PARAM_PATH  "path"
+ #define FILEPICREADER_PARAM_TYPE  "type"

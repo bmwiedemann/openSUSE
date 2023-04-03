@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  1 19:21:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.2:
+  * Fix portability to GNU Hurd.
+- Add noson-fix-missing-include.patch: Add missing include
+  <cstdint> exposed by gcc 13.
+- Rebase noson-include-time.h.patch with quilt.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Mon Feb 13 10:57:51 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.10.1. No changelog.
