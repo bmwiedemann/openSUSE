@@ -9,4 +9,12 @@
 apache-arrow is being used more and more by python numeric packages like pandas 2.0 (through pyarrow)</comment>
     <requestid>1075538</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b72e645a02c73ea442a985293509f05e</srcmd5>
+    <version>11.0.0</version>
+    <time>1680536822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076956</requestid>
+  </revision>
 </revisionlist>

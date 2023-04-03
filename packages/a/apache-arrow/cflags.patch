@@ -1,0 +1,15 @@
+Index: arrow-apache-arrow-11.0.0/cpp/cmake_modules/SetupCxxFlags.cmake
+===================================================================
+--- arrow-apache-arrow-11.0.0.orig/cpp/cmake_modules/SetupCxxFlags.cmake
++++ arrow-apache-arrow-11.0.0/cpp/cmake_modules/SetupCxxFlags.cmake
+@@ -638,8 +638,8 @@ if(NOT MSVC)
+   string(APPEND CMAKE_CXX_FLAGS_RELEASE "${CXX_RELEASE_FLAGS}")
+   string(APPEND CMAKE_C_FLAGS_DEBUG "${DEBUG_FLAGS}")
+   string(APPEND CMAKE_CXX_FLAGS_DEBUG "${DEBUG_FLAGS}")
+-  string(APPEND CMAKE_C_FLAGS_RELWITHDEBINFO "${C_RELEASE_FLAGS} ${DEBUG_FLAGS}")
+-  string(APPEND CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CXX_RELEASE_FLAGS} ${DEBUG_FLAGS}")
++  string(APPEND CMAKE_C_FLAGS_RELWITHDEBINFO "${DEBUG_FLAGS} ${C_RELEASE_FLAGS}")
++  string(APPEND CMAKE_CXX_FLAGS_RELWITHDEBINFO "${DEBUG_FLAGS} ${CXX_RELEASE_FLAGS}")
+ endif()
+ 
+ message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")

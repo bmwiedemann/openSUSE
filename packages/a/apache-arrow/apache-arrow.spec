@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without tests
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
@@ -34,12 +35,9 @@ URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
+Patch0:         cflags.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.2
-BuildRequires:  cmake(absl)
-BuildRequires:  cmake(double-conversion) >= 3.1.5
-BuildRequires:  cmake(re2)
-BuildRequires:  cmake(Snappy) >= 1.1.7
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -49,6 +47,10 @@ BuildRequires:  llvm-devel >= 7
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
+BuildRequires:  cmake(Snappy) >= 1.1.7
+BuildRequires:  cmake(absl)
+BuildRequires:  cmake(double-conversion) >= 3.1.5
+BuildRequires:  cmake(re2)
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(bzip2) >= 1.0.8
 BuildRequires:  pkgconfig(gflags) >= 2.2.0
@@ -71,7 +73,6 @@ BuildRequires:  timezone
 BuildRequires:  pkgconfig(gmock) >= 1.10
 BuildRequires:  pkgconfig(gtest) >= 1.10
 %endif
-
 
 %description
 Apache Arrow is a cross-language development platform for in-memory
@@ -217,7 +218,6 @@ communication.
 
 This package provides the static library for Dataset API support
 
-
 %package     -n apache-parquet-devel-static
 Summary:        Development platform for in-memory data - development files
 Group:          Development/Libraries/C and C++
@@ -278,6 +278,7 @@ This package provides utilities for working with the Parquet format.
 
 %prep
 %setup -q -n arrow-apache-arrow-%{version} -a1 -a2
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -ffat-lto-objects"

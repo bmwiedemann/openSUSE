@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 11:09:06 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- cflags.patch: fix option order to compile with optimisation
+- Adjust constraints
+
+-------------------------------------------------------------------
 Wed Mar 29 13:13:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove gflags-static. It was only needed due to a packaging error
