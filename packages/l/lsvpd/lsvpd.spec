@@ -26,6 +26,7 @@ URL:            https://github.com/power-ras/lsvpd
 Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         lsvpd-Add-NVME-f1h-log-page-VPD-information-parsing-.patch
 Patch2:         lsvpd-Update-nvme_template-with-logpage-format-for-0.patch
+Patch3:         lsvpd-Update-nvme_templates-with-logpage-format-for-.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel

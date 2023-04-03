@@ -1,0 +1,82 @@
+From 8b5d2cfb7d1a6731e72198e7c71fa5bfad1ff0ec Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Wed, 29 Mar 2023 12:10:36 +0530
+Subject: [PATCH] lsvpd: Update nvme_templates with logpage format for 0005 and
+ 0006 versions
+
+To collect nvme vpd data and set vpd fields accordingly, we interpret nvme
+f1h logpage. Currently, there is support to interpret NVMe logpage versions
+till 0004. NVMe devices with Alterable ROM Level REV.SN66 have f1h logpage
+versions of 0005 and above. Since there is no support for 0005 and above
+versions of nvme f1h logpage in the code yet, code returns without
+interpreting logpage information, and hence nvme vpd data for such devices
+are not being set and displayed completely. To address this issue, add nvme
+template for f1h logpage versions 0005 and 0006.
+
+Starting with Version 0005, a new value was added to Encryption field
+(2 = BootROM support). And, starting with Version 0006, two new fields
+(Reserved for Future DS8K Usage and DLFEAT PI Deviation Support) were added
+to f1h logpage.
+
+Before this patch:
+$ lscfg -vl 05ed:70:00.0
+  05ed:70:00.0 nvme0 pci1014,6bc U50EE.001.WZS005P-P3-C13
+                                 1.6TB NVMe Gen4 II U.2 SSD (1014a825)
+        Manufacturer Name.........IBM
+        Machine Type-Model........NVMe SSD Controller PM173Xa
+        Alterable ROM Level.......REV.SN66
+        Device Specific.(YC)......0
+        Location Code.(YL)........U50EE.001.WZS005P-P3-C13
+
+After this patch:
+$ lscfg -vl 05ed:70:00.0
+  05ed:70:00.0 nvme0 pci1014,6bc U50EE.001.WZS005P-P3-C13
+                                 1.6TB NVMe Gen4 II U.2 SSD (1014a825)
+        Manufacturer Name.........IBM
+        Machine Type-Model........NVMe SSD Controller PM173Xa
+        Engineering Change Level..P65460
+        Field Replaceable Unit Number
+        ..........................02YC725
+        Manufacturer ID...........S6RUNE0T901384
+        Part Number of assembly...01CM549
+        Serial Number.............ANYH60HA
+        Alterable ROM Level.......REV.SN66
+        Device Specific.(ID)......1.6TB NVMe Gen4 U.2 SSD III
+        Final Assembly PN.(AN)....02YC721
+        Customer Card ID Number.(CC)
+        ..........................5B52
+        Device Specific.(Z0)......101406BC
+        Device Specific.(Z1)......3.0
+        Device Specific.(Z2)......1600
+        Device Specific.(Z3)......8.76
+        Device Specific.(Z4)......2
+        Device Specific.(Z5)......02
+        Device Specific.(Z6)......A1800114
+        Device Specific.(Z7)......0YA
+        Device Specific.(Z8)......2901
+        Device Specific.(Z9)......08
+        Device Specific.(ZA)......0008
+        Device Specific.(ZB)......0040
+        Device Specific.(ZC)......00
+        Device Specific.(YC)......0
+        Location Code.(YL)........U50EE.001.WZS005P-P3-C13
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Signed-off-by: Mahesh Salgaonkar <mahesh@linux.ibm.com>
+---
+ nvme_templates.conf | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/nvme_templates.conf b/nvme_templates.conf
+index 269c0af..473734d 100644
+--- a/nvme_templates.conf
++++ b/nvme_templates.conf
+@@ -2,3 +2,5 @@
+ "0002", "_:4,ID:40,PN:12,EC:10,FN:12,AN:12,FC:4,CC:4,SN:8,Z0:8,Z1:4,Z2:10,Z3:12,Z4:1,Z5:2,Z6:8,Z7:3,Z8:5,Z9:2,ZA:4,ZB:4,ZC:2,MN:20,RM:8"
+ "0003", "_:4,ID:40,PN:12,EC:10,FN:12,AN:12,FC:4,CC:4,SN:8,Z0:8,Z1:4,Z2:10,Z3:12,Z4:1,Z5:2,Z6:8,Z7:3,Z8:5,Z9:2,ZA:4,ZB:4,ZC:2,MN:20,RM:8"
+ "0004", "_:4,ID:40,PN:12,EC:10,FN:12,AN:12,FC:4,CC:4,SN:8,Z0:8,Z1:4,Z2:10,Z3:12,Z4:1,Z5:2,Z6:8,Z7:3,Z8:5,Z9:2,ZA:4,ZB:4,ZC:2,MN:20,RM:8"
++"0005", "_:4,ID:40,PN:12,EC:10,FN:12,AN:12,FC:4,CC:4,SN:8,Z0:8,Z1:4,Z2:10,Z3:12,Z4:1,Z5:2,Z6:8,Z7:3,Z8:5,Z9:2,ZA:4,ZB:4,ZC:2,MN:20,RM:8"
++"0006", "_:4,ID:40,PN:12,EC:10,FN:12,AN:12,FC:4,CC:4,SN:8,Z0:8,Z1:4,Z2:10,Z3:12,Z4:1,Z5:2,Z6:8,Z7:3,Z8:5,Z9:2,ZA:4,ZB:4,ZC:2,MN:20,RM:8"
+-- 
+2.40.0
+

@@ -488,4 +488,13 @@
     <comment></comment>
     <requestid>1066217</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>4923c0a7afbefcf9dbbb1ec06956aed9</srcmd5>
+    <version>1.7.14</version>
+    <time>1680551360</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix NVMe information parsing with newer firmware (bsc#1208122 ltc#200118)
+  + lsvpd-Update-nvme_templates-with-logpage-format-for-.patch</comment>
+    <requestid>1077038</requestid>
+  </revision>
 </revisionlist>
