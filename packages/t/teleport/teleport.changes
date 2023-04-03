@@ -1,4 +1,264 @@
 -------------------------------------------------------------------
+Mon Apr 03 13:17:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.1.5:
+  * Release 12.1.5 (#23945)
+  * Reduce DefaultIdleTimeout to 30s (#23950)
+  * [v12] Update e ref. (#23939)
+  * Backport #22817 to branch/v12 (#23881)
+  * split and notate new vs existing mysql user (#23930)
+
+-------------------------------------------------------------------
+Mon Apr 03 13:06:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.1.4:
+  * Release 12.1.4 (#23929)
+  * [v12] feat: Operator support for Login Rules (#23885)
+  * Backport #23405 to branch/v12 (#23883)
+  * [v12] Prevent unknown ssh requests from terminating sessions
+    (#23904)
+  * Allow a tsh aws to proxy any command (#19941) (#23835)
+  * Return exit code from SFTP subsystem (#23729)
+  * [v12] Allow Okta service reverse tunnel access. (#23853)
+  * chore: Bump Buf from 1.15.1 to 1.16.0 (#23870)
+  * [v12] Add gRPC service definition for Plugin resources (#21750)
+    (#23780)
+  * Added 03/30 Upcoming Releases Update (#23868)
+  * Expose process.OnHeartbeat. (#23852)
+  * Add Copy to AccessRequest. (#23638) (#23712)
+  * Update e ref (#23845)
+  * [v12] Remove `push` workflow for jobs that already run on PR
+    and merge (#23862)
+  * Machine ID FIPS support (#23563) (#23850)
+
+-------------------------------------------------------------------
+Mon Apr 03 13:03:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.1.3:
+  * Release 12.1.3 (#23847)
+  * update makefile (#23818)
+  * support readable enum values in database tls mode (#23601)
+    (#23808)
+  * [v12] Fix the navigation only ever linking to the root cluster
+    (#23708)
+  * [v12] Improve fluentd exported by configuring buffer (#23841)
+  * [v12] docs: Add Uninstall Instructions for Teleport Connect
+    (#23822)
+  * [v12] Reduce time spent setting ssh session envs (#23834)
+  * docs: modify teleport binary reference to non-path specific in
+    ec2 discovery (#23812)
+  * Allow app server origin of Okta if added by Okta built in role.
+    (#23794)
+  * Add cluster flag to `tsh kube sessions` (#23825)
+  * ALPN handshake test improvements (#23348) (#23798)
+  * docs: Remove Open Source from Try out Teleport on a linux
+    server (#23744)
+  * docs: label enterprise prereq as Teleport Enterprise, not just
+    Teleport (#23792)
+  * [v12] docs: use commercial pre-req for enterprise only windows
+    only users (#23803)
+  * [v12] Use stable/cloud when Automatic Upgrades is on (#23395)
+    (#23752)
+  * Add Okta import rules, Okta assignments, and user groups to
+    CLI. (#23722)
+  * Clarify wording of Connect's Telemetry FAQ (#23413) (#23739)
+  * Expose SingleProcessModeResolver and GetRotation. (#23772)
+  * helm: Clarify port requirement for publicAddr (#23743)
+  * Add new status to OktaAssignment, supporting service methods.
+    (#23714)
+  * Fix multiple profile handling for kube credentials (#23716)
+  * [v12] Create an OktaAssignment watcher. (#23721)
+  * Prevent races creating web api session context (#23691)
+    (#23733)
+  * Correct linux download name of Teleport Connect (#23604)
+    (#23737)
+  * [docs] Change scrollback_length to scrollback_lines (#23725)
+  * reorder prehog credential events (#23254) (#23640)
+  * [v12] Add SFTP subsystem fails note to server access FAQ
+    (#23362)
+  * Fix H1 Issues in Docs (#23328) (#23690)
+  * Docs: Overhaul Okta SAML guide. (#23053) (#23673)
+  * Docs: fix saml role addition partial. (#23186) (#23701)
+  * feat(aws/config): Support configuring
+    auth_service.proxy_listener_mode (#23678)
+  * docs: Mention lack of signing with Homebrew (#23681)
+  * Improve performance of `ListResources` (#23534) (#23596)
+  * [v12] usagereporter: resource heartbeats (#23632)
+  * [docs] Change ui_config to ui (#23672)
+  * Cherry pick from v11 Backport of dependabot CVE updates
+    (#23580) (#23582)
+  * docs: configure windows service to listen on all interfaces
+    (#23664)
+  * Ignore unused-parameter on revive/golangci-lint (#23656)
+    (#23661)
+  * Bump cloud version to 12.1.2 (#23410)
+  * [v12] fix: close all proxy listeners (#23647)
+  * update github.com/pelletier/go-toml to v1.9.5 (#23658)
+  * docs: point to release 12.1.1 for exe download for windows
+    local users (#23629)
+  * [v12] Increase DialTimeout when testing SSH Connection
+    Diagnostics (#23635)
+  * [v12] Remove the Houston enforcer (#23633)
+  * Use RUNNER_TEMP to download teleport bins
+  * Revert resty to a version to match teleport-plugins
+  * Rename 'operator' pipeline file to 'integrations'
+  * [v12] Vendor slack plugin and supporting libraries (#23045)
+  * Add integrations/
+  * Fixed profiling documentation.
+  * Updated Application Access documentation.
+  * Added docs for Auth/Proxy LB configuration
+  * Updated Cloud FAQ for IP allowlists.
+  * Updated Cloud FAQ
+  * [v12] Spell fix (#23594)
+  * [v12] Allow for resource limits and requests for pre-deployment
+    jobs (#23126)
+  * docs: Remove note about not supporting Win Server 2022 (#23584)
+  * [v12] Refactor UserGroups local service to use generic service.
+    (#23579)
+  * Fix agent pool test flakiness (#23572)
+  * Attempt to build the docs in "Lint (Docs)" (#23530)
+  * [v12] Add application RW permissions to the Okta role. (#23566)
+  * allow users to specify separate API URL for github connectors
+    (#23568)
+  * Fix JSON reference in Azure Command (#23562)
+  * [v12] Fetch kubernetes git version with disabled service
+    account (#23559)
+  * Update generated protos (#23545)
+  * chore: Bump protoc-gen-go and protoc-gen-grpc-go (#23326)
+  * Refactor data dir config params for `tbot` to support memory
+    (#23447) (#23495)
+  * Add missing GetPriority function to Okta import rules. (#23501)
+  * minor refactor to replace localProxyOpts with
+    alpnproxy.LocalProxyConfigOpt (#23302) (#23468)
+  * [v12] support postgres cancel request (#23467)
+  * Add Azure join method docs (#23526)
+  * GHA: Cache tweaks (#23540)
+  * Added Teleport Usage Script (#23543)
+  * Validate proxy peer identity (#23506)
+  * Enable minimal web handler when proxy protocol is enabled
+    (#22753) (#23487)
+  * Add hardware key support guide to access control guide list.
+    (#23488)
+  * improve aws utils and database validation (#23157) (#23482)
+  * Plugins service no longer accepts getBackend(). (#23520)
+  * [v12] Spell fix IAM docs (#23521)
+  * docs: indicate which role options are enterprise only (#23298)
+  * Add Teleport 12 features to comparison matrix (#23484)
+  * Add proxy peering metrics to docs (#23015) (#23393)
+  * [v12] Spell fix API comments (#23499)
+  * Use GitHub camelcase for UI, examples and Messages (#23490)
+  * [v12] Fix ProvisionToken incompatibility with
+    BootstrapResources (#23474)
+  * Handle getBackend() or backend argument for plugins. (#23438)
+  * [v12] Add the Okta origin constant. (#23456)
+  * docs: clarify directory sharing audit events (#23295)
+  * add webui page with active session section (#23398)
+  * Include teleport-msteams start in plugin docs (#23459)
+  * [v12] update tsh proxy db cert and key file flags (#23466)
+  * [v12] Add the Okta access point for the Okta service. (#23463)
+  * Introduce Okta objects into the cache. (#23377)
+  * Add `srv.ConnectionMonitor` to unify connection monitoring
+    logic (#23465)
+  * [v12] Add EKS guide to install agents using IAM joining
+    (#23451)
+  * docs: clarify app access debug app (#23297)
+  * Add Okta client import for Okta service. (#23437)
+  * [v12] Set serviceStarted if enterprise services are enabled.
+    (#23402)
+  * [v12] Docs: Update Terraform reference (#23439)
+  * [v12] Filter out internal teleport defined logins (#23411)
+  * [v12] Fix incorrect report of active sessions (#23444)
+  * Do not log errors if metadata extraction fails (#23424)
+  * Add user group read/write access to the Okta role. (#23370)
+  * [v12] - Deprecate `site` param in `auth/export` HTTP endpoint
+    (#23309)
+  * [v12] Machine ID trusted cluster enhancements (#23390)
+  * Fix links with long redirect chains (#22503)
+  * Support Azure delegated joining for Machine ID (#23112)
+    (#23391)
+  * App Agent adjust connection noise logs (#23365)
+  * Expose process ID for enterprise services. (#23383)
+  * [v12] [Docs] Fix documentation for the `roles` field in the
+    Moderated Sessions join policy reference (#23313)
+  * Update e reference. (#23381)
+  * Disable application launch in minimal handler (#22816) (#23332)
+  * Fix docs mentioning connectors updates without secrets (#23344)
+  * Include year in tctl status dates (#23371)
+  * Fix tsh kube credentials fails on remove cluster for the first
+    time (#23252) (#23354)
+  * Add Headless SSO note to upcoming releases (#23339)
+  * [v12] Use Helm DynamoDB policy in Backends reference (#23183)
+  * Remove unused Expires column for tsh database list in verbose
+    (#23318)
+  * [v12] Fix DB Query always return success false in audit log
+    (#23274)
+  * App access: rewrite redirects to public app address from leaf
+    cluster. (#21067) (#23220)
+  * Fix docs link in changelog (#22452)
+  * Export additional functions for enterprise use. (#23245)
+  * Remove older-versions from docs (#23246)
+  * Remove extraneous subheading in DB guides page (#23208)
+  * Add Okta service configuration. (#23236)
+  * fix link for troubleshooting (#23241)
+  * [v12] build.assets Dockerfiles: Remove unnecessary ENV
+    NODE_URL, pass fsSL to curl (#23188)
+  * [v12] doc: add troubleshooting for RDS maximum policy size
+    exceeded errors (#23231)
+  * [v12] Access Mgmt Login Rule and IDP doc updates (#23217)
+  * [v12] Notification improvements (#23223)
+  * Fix navigation redirecting to the wrong page on category change
+    (#23213)
+  * Improve error message to label Enterprise version as FIPS for
+    fips error (#23214)
+  * [v12] Connect: Allow config customization (#23197)
+  * GitLab Delegated Joining (#22705) (#23191)
+  * adding video to k8s doc (#23171)
+  * Allow webauthn to be passed when issuing certs for web-based
+    scp (#22864) (#23195)
+  * fix heartbeatv2 test (#23203)
+  * Add anonymized device ID to tp.user.login event (#23055)
+  * Decouple SkipLocalAuth, UseKeyPrincipal, and static auth
+    methods. (#21182) (#23198)
+  * Establish the Okta service role. (#23173)
+  * [v12] Make Desktop Acess setup script idempotent (#23176)
+  * Updated config to include HA guide (#23155)
+  * [v12] tsh: Silent webauthnwin warning on app init (#23161)
+  * [v12] Support App access behind load balancer (#23054)
+  * [v12] Backport of `crypto` update (#23150)
+  * [v12] Bump Cloud to 12.1.1 (#23129)
+  * Use serverUID for web scp target (#23124) (#23152)
+  * Add `app_server` support to tctl get/rm commands (#23136)
+  * [v12] docs: Add instructions on uninstalling Teleport (#23135)
+  * Added 03/15 Upcoming Releases Update (#23127)
+  * Remove ossfuzz from CI (#23113)
+  * Update Rust to 1.68.0 (#23101)
+  * [v12] Introduce the Okta service. (#23071)
+  * [v12] Backport Access Request plugin guide (#23085)
+  * [v12] Backport #23024 and #23079 (#23080)
+  * Changed Upcoming Releases format. (#23020)
+  * Update docs version (#23083)
+  * add bypasses for lint go and lint docs (#23078)
+  * [v12] Document that GitHub username is added to internal.logins
+    (#23060)
+  * [v12] Backport #23008 and #23006 (#23021)
+  * Introduce Okta gRPC and client interfaces. (#22733) (#23057)
+  * [v12] chore: Bump Go to 1.20.2 (#22997)
+  * [v12] Update the docs style guide (#23001)
+  * Provide more context in the docs intro page (#23003)
+  * [v12] usagereporter: Use the batched event ingest RPC (#23027)
+  * Update Electron to 22.3.2 (#23048)
+  * Add a getter for the backend in `auth.GRPCServer`. (#23043)
+  * Log Connect version on startup (#23036)
+  * [v12] Fix uncaught exception handling in Connect's shared
+    process (#22986)
+  * [v12] Backport Distroless OCI builds (#22814)
+  * [v12] Fix unresponsive terminal in Connect on Windows Server
+    2019 (#22996)
+  * Fixed enterprise and fips OS packages not uploading to OS
+    package repositories when promoting in the context of private
+    git repos (#21163) (#23012)
+
+-------------------------------------------------------------------
 Tue Mar 21 08:51:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.19
