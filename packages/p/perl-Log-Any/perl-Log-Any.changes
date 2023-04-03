@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 21 03:07:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.714
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.714     2023-03-20 11:48:30-05:00 America/Chicago
+    [Fixed]
+    - Fixed Syslog adaptor losing ident and facility information if
+      another library wrongly calls Sys::Syslog::closelog(). This is not
+      a perfect solution, but a perfect solution can only ever be to fix
+      the close that's calling closelog() :P
+      Thanks to Tom Christiansen and @GrantStreetGroup for reporting this
+      issue and providing the fix.
+
+-------------------------------------------------------------------
 Mon Dec 12 20:20:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.713
