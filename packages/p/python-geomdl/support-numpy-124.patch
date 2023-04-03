@@ -1,0 +1,141 @@
+From 71923eeb8e8ec8e057b253a744c89d7dfa1cf89d Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Sat, 4 Mar 2023 13:37:41 -0500
+Subject: [PATCH] Stop using deprecated/removed np.float/np.int
+
+See: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+---
+ geomdl/visualization/VisMPL.py    |  2 +-
+ geomdl/visualization/VisPlotly.py |  2 +-
+ geomdl/visualization/VisVTK.py    | 26 +++++++++++++-------------
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/geomdl/visualization/VisMPL.py b/geomdl/visualization/VisMPL.py
+index a23dbba7..2dba037c 100644
+--- a/geomdl/visualization/VisMPL.py
++++ b/geomdl/visualization/VisMPL.py
+@@ -68,7 +68,7 @@ class VisConfig(vis.VisConfigAbstract):
+ 
+     def __init__(self, **kwargs):
+         super(VisConfig, self).__init__(**kwargs)
+-        self.dtype = np.float
++        self.dtype = np.float64
+         self.display_ctrlpts = kwargs.get('ctrlpts', True)
+         self.display_evalpts = kwargs.get('evalpts', True)
+         self.display_bbox = kwargs.get('bbox', False)
+diff --git a/geomdl/visualization/VisPlotly.py b/geomdl/visualization/VisPlotly.py
+index 8dfce642..c5073410 100644
+--- a/geomdl/visualization/VisPlotly.py
++++ b/geomdl/visualization/VisPlotly.py
+@@ -58,7 +58,7 @@ class VisConfig(vis.VisConfigAbstract):
+     """
+     def __init__(self, **kwargs):
+         super(VisConfig, self).__init__(**kwargs)
+-        self.dtype = np.float
++        self.dtype = np.float64
+         # Set Plotly custom variables
+         self.figure_image_filename = "temp-plot.html"
+         self.use_renderer = kwargs.get("use_renderer", False)
+diff --git a/geomdl/visualization/VisVTK.py b/geomdl/visualization/VisVTK.py
+index 9d75ec99..ae44163d 100644
+--- a/geomdl/visualization/VisVTK.py
++++ b/geomdl/visualization/VisVTK.py
+@@ -132,10 +132,10 @@ def render(self, **kwargs):
+             # Plot control points
+             if plot['type'] == 'ctrlpts' and self.vconf.display_ctrlpts:
+                 # Points as spheres
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=np.float64)
+                 # Handle 2-dimensional data
+                 if pts.shape[1] == 2:
+-                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=np.float)]
++                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=np.float64)]
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 actor1 = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -148,10 +148,10 @@ def render(self, **kwargs):
+ 
+             # Plot evaluated points
+             if plot['type'] == 'evalpts' and self.vconf.display_evalpts:
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=np.float64)
+                 # Handle 2-dimensional data
+                 if pts.shape[1] == 2:
+-                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=np.float)]
++                    pts = np.c_[pts, np.zeros(pts.shape[0], dtype=np.float64)]
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 actor1 = vtkh.create_actor_polygon(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -200,14 +200,14 @@ def render(self, **kwargs):
+                 vertices = [v.data for v in plot['ptsarr'][0]]
+                 faces = [q.data for q in plot['ptsarr'][1]]
+                 # Points as spheres
+-                pts = np.array(vertices, dtype=np.float)
++                pts = np.array(vertices, dtype=np.float64)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 actor1 = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+                                                name=plot['name'], index=plot['idx'])
+                 vtk_actors.append(actor1)
+                 # Quad mesh
+-                lines = np.array(faces, dtype=np.int)
++                lines = np.array(faces, dtype=int)
+                 actor2 = vtkh.create_actor_mesh(pts=vtkpts, lines=lines, color=vtkh.create_color(plot['color']),
+                                                 name=plot['name'], index=plot['idx'], size=self.vconf.line_width)
+                 vtk_actors.append(actor2)
+@@ -218,7 +218,7 @@ def render(self, **kwargs):
+                 vtkpts = numpy_to_vtk(vertices, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 faces = [t.data for t in plot['ptsarr'][1]]
+-                tris = np.array(faces, dtype=np.int)
++                tris = np.array(faces, dtype=int)
+                 actor1 = vtkh.create_actor_tri(pts=vtkpts, tris=tris, color=vtkh.create_color(plot['color']),
+                                                name=plot['name'], index=plot['idx'])
+                 vtk_actors.append(actor1)
+@@ -226,7 +226,7 @@ def render(self, **kwargs):
+             # Plot trim curves
+             if self.vconf.display_trims:
+                 if plot['type'] == 'trimcurve':
+-                    pts = np.array(plot['ptsarr'], dtype=np.float)
++                    pts = np.array(plot['ptsarr'], dtype=np.float64)
+                     vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                     vtkpts.SetName(plot['name'])
+                     actor1 = vtkh.create_actor_polygon(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -269,7 +269,7 @@ def render(self, **kwargs):
+             # Plot control points
+             if plot['type'] == 'ctrlpts' and self.vconf.display_ctrlpts:
+                 # Points as spheres
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=np.float64)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 temp_actor = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -278,7 +278,7 @@ def render(self, **kwargs):
+ 
+             # Plot evaluated points
+             if plot['type'] == 'evalpts' and self.vconf.display_evalpts:
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=np.float64)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 temp_actor = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -321,7 +321,7 @@ def render(self, **kwargs):
+             # Plot control points
+             if plot['type'] == 'ctrlpts' and self.vconf.display_ctrlpts:
+                 # Points as spheres
+-                pts = np.array(plot['ptsarr'], dtype=np.float)
++                pts = np.array(plot['ptsarr'], dtype=np.float64)
+                 vtkpts = numpy_to_vtk(pts, deep=False, array_type=VTK_FLOAT)
+                 vtkpts.SetName(plot['name'])
+                 temp_actor = vtkh.create_actor_pts(pts=vtkpts, color=vtkh.create_color(plot['color']),
+@@ -330,8 +330,8 @@ def render(self, **kwargs):
+ 
+             # Plot evaluated points
+             if plot['type'] == 'evalpts' and self.vconf.display_evalpts:
+-                faces = np.array(plot['ptsarr'][1], dtype=np.float)
+-                filled = np.array(plot['ptsarr'][2], dtype=np.int)
++                faces = np.array(plot['ptsarr'][1], dtype=np.float64)
++                filled = np.array(plot['ptsarr'][2], dtype=int)
+                 grid_filled = faces[filled == 1]
+                 temp_actor = vtkh.create_actor_hexahedron(grid=grid_filled, color=vtkh.create_color(plot['color']),
+                                                           name=plot['name'], index=plot['idx'])

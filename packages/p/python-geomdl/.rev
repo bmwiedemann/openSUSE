@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>874317</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b512edcaab57b4673b049d0bff851b00</srcmd5>
+    <version>5.3.1</version>
+    <time>1680536752</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop skipping Python 3.6.
+- Add patch support-numpy-124.patch:
+  * Support numpy &gt;= 1.24</comment>
+    <requestid>1076823</requestid>
+  </revision>
 </revisionlist>

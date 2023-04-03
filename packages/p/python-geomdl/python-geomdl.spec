@@ -1,7 +1,7 @@
 #
 # spec file for package python-geomdl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 %define archivename NURBS-Python
 %define packagename geomdl
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geomdl
 Version:        5.3.1
 Release:        0
@@ -27,6 +25,8 @@ Summary:        Object-oriented B-Spline and NURBS evaluation library
 License:        MIT
 URL:            https://github.com/orbingol/NURBS-Python
 Source:         https://github.com/orbingol/NURBS-Python/archive/v%{version}.tar.gz#/%{archivename}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#orbingol/NURBS-Python#163
+Patch0:         support-numpy-124.patch
 BuildRequires:  %{python_module matplotlib >= 2.2.3}
 BuildRequires:  %{python_module numpy >= 1.15.4}
 BuildRequires:  %{python_module plotly}
@@ -45,7 +45,7 @@ NURBS-Python (geomdl) is a pure Python, self-contained, object-oriented
 B-Spline and NURBS spline library.
 
 %prep
-%setup -q -n %{archivename}-%{version}
+%autosetup -p1 -n %{archivename}-%{version}
 
 %build
 %python_build

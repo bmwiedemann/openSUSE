@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  3 05:59:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop skipping Python 3.6.
+- Add patch support-numpy-124.patch:
+  * Support numpy >= 1.24 
+
+-------------------------------------------------------------------
 Sun Feb 21 18:19:09 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Skip python36.
