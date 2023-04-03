@@ -952,4 +952,13 @@ Marcus
   * delete-x86_64-subarches: don't search in RPMS dir if not present</comment>
     <requestid>1069032</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>79b3902b4078223298ef817e98c01926</srcmd5>
+    <version>84.87+git20230328.de7e9df</version>
+    <time>1680536720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20230328.de7e9df:
+  * Light shell cleanups (fixes #57)</comment>
+    <requestid>1075291</requestid>
+  </revision>
 </revisionlist>
