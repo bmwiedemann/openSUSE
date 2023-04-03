@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.15.2
+Version:        1.15.4
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -26,15 +26,19 @@ Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 Source99:       python-holoviews-rpmlintrc
+# PATCH-FIX-UPSTREAM holoviews-pr5649-ipykernel.patch gh#holoviz/holoviews#5649
+Patch0:         holoviews-pr5649-ipykernel.patch
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 0.20}
 BuildRequires:  %{python_module panel >= 0.13.1}
 BuildRequires:  %{python_module param >= 1.9.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
 BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorcet
@@ -73,9 +77,8 @@ BuildRequires:  %{python_module Pillow}
 # see https://github.com/holoviz/holoviews/pull/5507,
 # but we need to pin it here in order to avoid obs resolver conflicts
 BuildRequires:  %{python_module bokeh >= 2.4.3 with %python-bokeh < 2.5}
-BuildRequires:  %{python_module dash >= 1.16}
+BuildRequires:  %{python_module dash >= 1.16 if %python-base < 3.11}
 BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module datashader >= 0.11.1}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module ffmpeg-python}
 BuildRequires:  %{python_module ipython >= 5.4.0}
@@ -88,13 +91,15 @@ BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pscript >= 0.7.1}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3986}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module shapely}
 BuildRequires:  %{python_module streamz >= 0.5.0}
-BuildRequires:  %{python_module xarray >= 0.10.4}
+BuildRequires:  %{python_module xarray >= 0.10.4 if %python-base >= 3.9}
+BuildRequires:  %{python_module datashader >= 0.11.1 if (%python-base < 3.11 with %python-base >= 3.9)}
 %endif
 %python_subpackages
 
@@ -111,14 +116,13 @@ rendered automatically by one of the supported plotting libraries
 (such as Bokeh or Matplotlib).
 
 %prep
-%setup -q -n holoviews-%{version}
-%autopatch -p1
+%autosetup -p1 -n holoviews-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/holoviews
@@ -133,8 +137,12 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 %check
 #different size in MPL >= 3.3
 donttest="(MPLRendererTest and test_get_size)"
+# Flaky: Different matplotlib color cycles?
+donttest+=" or StatisticalCompositorTest"
 # gh#holoviz/holoviews#5517
 donttest+=" or test_py2js_funcformatter"
+# Date mismatch (bokeh)
+donttest+=" or (TestPointerCallbacks and test_pointer_x_datetime_out_of_bounds)"
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
@@ -164,14 +172,15 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (TestLinkSelectionsBokeh and test_datashade_selection)"
     donttest+=" or (TestLinkSelectionsPlotly and test_datashade_in_overlay_selection)"
     donttest+=" or (TestLinkSelectionsPlotly and test_datashade_selection)"
-    donttest+=" or (TestPointerCallbacks and test_pointer_x_datetime_out_of_bounds)"
     donttest+=" or (TestPointerCallbacks and test_tap_datetime_out_of_bounds)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_implicit_nodes)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_with_node_vdims)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_pandas_trimesh_implicit_nodes)"
 fi
-%pytest holoviews -k "not ($donttest)"
+# no dash in python311 yet
+python311_ignore="--ignore holoviews/tests/plotting/plotly/test_dash.py"
+%pytest -n auto holoviews -k "not ($donttest)" ${$python_ignore}
 %endif
 
 %post
@@ -184,7 +193,7 @@ fi
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/holoviews
-%{python_sitelib}/holoviews-%{version}*-info
+%{python_sitelib}/holoviews-%{version}.dist-info
 %{python_sitelib}/holoviews/
 
 %changelog

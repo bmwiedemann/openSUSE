@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 26 16:03:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Don't test xarray on python38: dropped support
+- Don't test dash on python311: no support yet
+- Don't test datashader on python38, python311: both of the above
+- Add holoviews-pr5649-ipykernel.patch gh#holoviz/holoviews#5649
+- Add disk constraint: big installation
+
+-------------------------------------------------------------------
+Wed Feb  8 11:39:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.4
+  * Make lasso select mask values using a Dask-compatible method
+    (#5568)
+  * Make plotly legend group unique (#5570)
+  * Set pan and wheel_zoom as the default Bokeh active tools
+    (#5480)
+  * Enable rendering colorbars on bokeh GraphPlots (#5585)
+  * Add Plotly Scatter3d documentation and fix colorbar title
+    (#5418)
+  * Only trigger range-update once in callbacks (#5558)
+  * Ensure dynamically created subplots can be updated (#5555)
+  * Fix start of stack-level in deprecations (#5569)
+  * When sorting colormap records, replace None with an empty
+    string (#5539)
+  * Fix annotator in Geoviews by adding deserialization of
+    non-deserialized base64 data (#5587)
+  * Fix hv.Empty not working in AdjointLayout plot (#5584)
+  * Check for categorical data to histogram (#5540)
+  * Fix clim_percentile (#5495)
+  * Compatibility with Shapely 2.0 (#5561)
+  * Compatibility with Numpy 1.24 (#5581)
+  * Compatibility with Ibis 4.0 (#5588)
+- Release to 1.15.3
+  * Fix for empty opts warning and incorrect clearing semantics
+    (#5496)
+  * Fix potential race condition in the Options system (#5535)
+  * Add support to Python 3.11 (#5513)
+  * Cleanup the top __init__ module (#5516)
+- PEP517 build
+
+-------------------------------------------------------------------
 Tue Nov 22 17:56:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.15.2

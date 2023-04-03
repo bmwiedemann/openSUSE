@@ -1,0 +1,76 @@
+From 82df53e25144a76d8f4e16876433e6de6270f85c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Simon=20H=C3=B8xbro=20Hansen?= <simon.hansen@me.com>
+Date: Wed, 8 Mar 2023 14:05:51 +0100
+Subject: [PATCH 1/4] Handle asyncio warnings
+
+---
+ holoviews/tests/conftest.py | 12 ++++++++++++
+ pyproject.toml              |  2 ++
+ 2 files changed, 14 insertions(+)
+
+Index: holoviews-1.15.4/holoviews/tests/conftest.py
+===================================================================
+--- holoviews-1.15.4.orig/holoviews/tests/conftest.py
++++ holoviews-1.15.4/holoviews/tests/conftest.py
+@@ -1,7 +1,19 @@
++import asyncio
++
+ import pytest
+ 
+ from panel.io import state
+ 
++# Tornado 6.2 has deprecated the use of IOLoop.current,
++# when no asyncio event loop is running.
++# This will start an event loop.
++try:
++    asyncio.get_running_loop()
++except RuntimeError:
++    # Create a new asyncio event loop for this thread.
++    loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(loop)
++
+ 
+ @pytest.fixture(autouse=True)
+ def server_cleanup():
+Index: holoviews-1.15.4/pyproject.toml
+===================================================================
+--- holoviews-1.15.4.orig/pyproject.toml
++++ holoviews-1.15.4/pyproject.toml
+@@ -24,4 +24,8 @@ filterwarnings = [
+     "ignore:`.+?` is a deprecated alias for `.+?`.:DeprecationWarning:skimage.util.dtype",  # https://github.com/scikit-image/scikit-image/pull/6637
+     # 2023-01: Sqlalchemy 2.0 warning:
+     "ignore: Deprecated API features detected:DeprecationWarning:ibis.backends.base.sql.alchemy",  # https://github.com/ibis-project/ibis/issues/5048
++    # 2023-03: https://github.com/tornadoweb/tornado/issues/3216
++    "ignore: make_current is deprecated:DeprecationWarning",
++    # 2023-03: Already handling the nested sequence
++    "ignore:Creating an ndarray from ragged nested sequences:numpy.VisibleDeprecationWarning:holoviews.core.data.spatialpandas"
+ ]
+Index: holoviews-1.15.4/holoviews/tests/plotting/test_comms.py
+===================================================================
+--- holoviews-1.15.4.orig/holoviews/tests/plotting/test_comms.py
++++ holoviews-1.15.4/holoviews/tests/plotting/test_comms.py
+@@ -54,11 +54,3 @@ class TestJupyterComm(ComparisonTestCase
+         msg = {'content': {'data': 'Test'}}
+         decoded = JupyterComm.decode(msg)
+         self.assertEqual(decoded, 'Test')
+-
+-    def test_on_msg(self):
+-        def raise_error(msg):
+-            if msg == 'Error':
+-                raise Exception()
+-        comm = JupyterComm(id='Test', on_msg=raise_error)
+-        with self.assertRaises(Exception):
+-            comm._handle_msg({'content': {'data': 'Error'}})
+Index: holoviews-1.15.4/setup.py
+===================================================================
+--- holoviews-1.15.4.orig/setup.py
++++ holoviews-1.15.4/setup.py
+@@ -40,8 +40,6 @@ extras_require['tests_core'] = [
+     'dash >=1.16',
+     'codecov',
+     'ipython >=5.4.0',
+-    # Issues with comm (see https://github.com/ipython/ipykernel/issues/1026)
+-    'ipykernel <6.18.0',
+ ]
+ 
+ # Optional tests dependencies, i.e. one should be able

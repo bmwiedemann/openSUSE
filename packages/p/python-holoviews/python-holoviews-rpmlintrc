@@ -1,4 +1,2 @@
 # internal version info
 addFilter("hidden-file-or-dir .*/holoviews/\.version")
-# the tests directory is referenced by the main code (util/_exception.py)
-addFilter("python-tests-in-package .*/holoviews/tests")
