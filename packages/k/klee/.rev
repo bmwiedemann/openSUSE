@@ -1314,4 +1314,12 @@ build with uclibc</comment>
   * 0002-llvm14-TargetRegistry.h-was-moved-from-Support-to-MC.patch</comment>
     <requestid>1073721</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6acd50c638dff8440e308a2b69df77bf</srcmd5>
+    <version>2.3+20230326</version>
+    <time>1680536805</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1076898</requestid>
+  </revision>
 </revisionlist>

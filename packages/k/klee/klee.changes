@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 27 10:31:57 UTC 2023 - jslaby@suse.cz
+
+- Update to version 2.3+20230326:
+  * tests: add some missing headers
+  * fix unused variables warning
+  * Remove model_version from the POSIX runtime, as we have never used it.
+  * tests: add some
+  * stats: add some
+  * remove obsolete header
+  * Run KDAlloc/rusage unittest a few times to allow for swapfile interference
+  * Added more test cases for --entry-point. EntryPointMissing is currently expected to fail.
+  * STP: add option to switch SAT solver: --stp-sat-solver and set default to CryptoMinisat
+  * Change `llvm_map_components_to_libnames` to `llvm_config` CMake function
+  * use C++17
+  * Require minimal version of CMake 3.16 for KLEE
+  * Remove hard to understand and debug pcregrep test
+  * klee-stats: improve error message for missing tabulate package
+  * Handle fail of KLEE gracefully
+  * Explicitly check if 32bit support is enabled for testing
+- remove
+  * 0001-cmake-implement-USE_MAP-to-support-single-LLVM-libra.patch
+    It's in upstream in a different form.
+
+-------------------------------------------------------------------
 Wed Mar 22 08:17:59 UTC 2023 - jslaby@suse.cz
 
 - Update to version 2.3+20230320:
