@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  2 16:36:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Fix crash restoring session with view-source URI without host
+    component.
+  + Fix criticals when running search provider.
+  + Increase file descriptor soft limit.
+
+-------------------------------------------------------------------
 Fri Mar 17 16:39:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
