@@ -1,7 +1,7 @@
 #
 # spec file for package bleachbit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 8/2011 by open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2010 - 7/2011 by Sascha Manns <saigkill@opensuse.org>
 #
@@ -19,7 +19,6 @@
 
 
 %define         _desktopname       org.bleachbit.BleachBit
-
 Name:           bleachbit
 Version:        4.4.2
 Release:        0
@@ -28,13 +27,26 @@ License:        GPL-3.0-only
 Group:          Productivity/File utilities
 URL:            https://www.bleachbit.org/
 Source:         https://github.com/bleachbit/bleachbit/archive/v%{version}.tar.gz
+BuildRequires:  dbus-1
+BuildRequires:  e2fsprogs
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  kf5-filesystem
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
+BuildRequires:  libxml2-tools
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-chardet
+BuildRequires:  python3-gobject
+BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-psutil
+BuildRequires:  python3-requests
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-xml
+BuildRequires:  typelib(Notify)
+BuildRequires:  update-desktop-files
+BuildRequires:  util-linux
+BuildRequires:  xvfb-run
 Requires:       python3
 Requires:       python3-chardet
 Requires:       python3-gobject
@@ -57,8 +69,21 @@ VIM, XChat, and more.
 sed -i -e 's|%{_bindir}/env python.*|%{_bindir}/python3|g' \
         bleachbit/{CLI.py,GUI.py} bleachbit.py
 
+# Remove test dependency on python3-mock
+sed -i 's/^import mock/import unittest.mock as mock/' tests/*.py
+
+# These two use network
+sed -Ei 's/(test_download_url_to_fn|test_Chaff)/_\1/g' tests/TestChaff.py
+# These two use network
+sed -Ei 's/(test_update_url|test_update_winapp2)/_\1/g' tests/TestUpdate.py
+# Test fails
+sed -Ei 's/(test_notify)/_\1/g' tests/TestGUI.py
+
+# Test is very slow
+sed -Ei 's/(test_wipe_path)/_\1/g' tests/TestFileUtilities.py
+
 %build
-make -C po local %{?_smp_mflags}
+%make_build -C po local
 python3 setup.py build
 
 %install
@@ -80,6 +105,12 @@ sed -i -e 's/^Exec=bleachbit$/Exec=xdg-su -c bleachbit/g' \
 # Fix non-executable-script
 chmod +x %{buildroot}%{_datadir}/%{name}/CLI.py
 chmod +x %{buildroot}%{_datadir}/%{name}/GUI.py
+
+%check
+export PATH=$PATH:/sbin
+export ALLTESTS=1
+touch ~/.profile
+xvfb-run make tests
 
 %files
 %doc README.md doc/*
