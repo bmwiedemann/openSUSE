@@ -78,4 +78,27 @@
   * fix flake8 errors and add flake8 Github Action (#28)</comment>
     <requestid>1074630</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0931effd5b8170755419a6c57af8503d</srcmd5>
+    <version>0.6.3</version>
+    <time>1680536838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.3:
+  * Rename new argument vendorfilename to vendorname
+  * Fix default vendorfilename
+  * make vendor tarball name configurable (#27)
+  * Fix autodetection for zst/zstd confusion
+  * README.md: hint on avoiding errors if local git clone already exists
+  * README.md: add example for use of archive parameter
+  * Format source with python black refs #29
+  * Revert wrap of long lines flake8 recommends but black accepts refs #29
+  * flake8 config black compat extend-ignore E501 line too long refs #29
+  * Add GitHub CI action to run Black formatter on file go_modules
+  * Flake8 A002 argument &quot;dir&quot; is shadowing a python builtin
+  * Flake8 C413 Unnecessary reversed(sorted()) use sorted(reverse=True)
+  * Flake8 C413 fix extraneous closing perentheses in sorted()
+  * Flake8 C413 Unnecessary reversed(sorted()) use sorted(reverse=True)
+  * Fix flake8 CI action YAML indent plugins: under with: key</comment>
+    <requestid>1077010</requestid>
+  </revision>
 </revisionlist>
