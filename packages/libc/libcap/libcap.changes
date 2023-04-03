@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:55:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.68:
+  * Force libcap internal functions to be hidden outside the library
+  * Expanded the list of man page (links) to all of the supported API
+    functions.
+  * fixed some formatting issues with the libpsx(3) manpage.
+  * Add support for a markdown preamble and postscript when generating
+    .md versions of the man pages (Bug 217007)
+  * psx package clean up
+  * fix some copy-paste errors with TestShared()
+  * added a more complete psx testing into this test as well
+  * cap package clean up
+  * drop an unnecessary use of ", _" in the sources
+  * cleaned up cap.NamedCount documentation
+  * Converted goapps/web/README to .md format and fixed the
+    instructions to indicate go mod tidy is needed.
+  * cap_compare test binary now cleans up after itself (Bug 217018)
+  * Figured out how to cross compile Go programs for arm (i.e. RPi) that
+    use C code, don't use cgo but do use the psx package
+  * Eliminate use of vendor directory
+
+-------------------------------------------------------------------
 Fri Mar 24 10:16:26 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO and add missing -ffat-lto-objects for the provided

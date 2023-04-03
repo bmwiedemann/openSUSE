@@ -513,4 +513,30 @@
     <comment></comment>
     <requestid>1074160</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>fd599bf3f555c61c7d8750384138d9f5</srcmd5>
+    <version>2.68</version>
+    <time>1680536721</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.68:
+  * Force libcap internal functions to be hidden outside the library
+  * Expanded the list of man page (links) to all of the supported API
+    functions.
+  * fixed some formatting issues with the libpsx(3) manpage.
+  * Add support for a markdown preamble and postscript when generating
+    .md versions of the man pages (Bug 217007)
+  * psx package clean up
+  * fix some copy-paste errors with TestShared()
+  * added a more complete psx testing into this test as well
+  * cap package clean up
+  * drop an unnecessary use of &quot;, _&quot; in the sources
+  * cleaned up cap.NamedCount documentation
+  * Converted goapps/web/README to .md format and fixed the
+    instructions to indicate go mod tidy is needed.
+  * cap_compare test binary now cleans up after itself (Bug 217018)
+  * Figured out how to cross compile Go programs for arm (i.e. RPi) that
+    use C code, don't use cgo but do use the psx package
+  * Eliminate use of vendor directory</comment>
+    <requestid>1075562</requestid>
+  </revision>
 </revisionlist>
