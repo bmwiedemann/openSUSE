@@ -16,9 +16,13 @@
 #
 
 
+%if "x%{?rust_tier1_arches}" == "x"
+%global rust_tier1_arches x86_64
+%endif
+
 %bcond_with     test
 Name:           zellij
-Version:        0.35.1
+Version:        0.35.2
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -27,6 +31,7 @@ Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{versio
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        README.suse-maint.md
+Patch0:         zellij-fix-theme-dir.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
 BuildRequires:  zstd
@@ -78,7 +83,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 # Remove prebuilt binaries
@@ -124,6 +129,10 @@ install -Dm644 -T ./target/zellij.1 %{buildroot}%{_mandir}/man1/zellij.1
 %endif
 
 %{cargo_install} --features unstable
+
+install -d -m 0755 %{buildroot}%{_datadir}/%{name}
+cp -av example/themes %{buildroot}%{_datadir}/%{name}
+
 %if %{with test}
 %check
 %{cargo_test}
@@ -131,6 +140,8 @@ install -Dm644 -T ./target/zellij.1 %{buildroot}%{_mandir}/man1/zellij.1
 
 %files
 %{_bindir}/zellij
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/themes
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
 

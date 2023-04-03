@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">zellij-0.35.1.tar.gz</param>
+     <param name="srctar">zellij-0.35.2.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
