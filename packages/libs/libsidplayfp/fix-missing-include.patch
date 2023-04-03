@@ -1,0 +1,12 @@
+Index: libsidplayfp-2.4.2/src/builders/residfp-builder/residfp/resample/SincResampler.cpp
+===================================================================
+--- libsidplayfp-2.4.2.orig/src/builders/residfp-builder/residfp/resample/SincResampler.cpp
++++ libsidplayfp-2.4.2/src/builders/residfp-builder/residfp/resample/SincResampler.cpp
+@@ -27,6 +27,7 @@
+ #include <cmath>
+ #include <iostream>
+ #include <sstream>
++#include <cstdint>
+ 
+ #include "siddefs-fp.h"
+ 

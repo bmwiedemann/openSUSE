@@ -27,6 +27,7 @@ Group:          System/Libraries
 #Git-Clone:     https://github.com/libsidplayfp/libsidplayfp.git
 URL:            https://sourceforge.net/projects/sidplay-residfp/
 Source0:        https://sourceforge.net/projects/sidplay-residfp/files/libsidplayfp/2.4/libsidplayfp-%{version}.tar.gz
+Patch0:         fix-missing-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
@@ -68,7 +69,7 @@ This package contains headers and libraries required to build applications that
 use libstilview.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch x86_64
@@ -85,10 +86,8 @@ EXTRA="--with-simd=neon"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libsidplayfp%{soname} -p /sbin/ldconfig
-%postun -n libsidplayfp%{soname} -p /sbin/ldconfig
-%post -n libstilview%{stilview_soname} -p /sbin/ldconfig
-%postun -n libstilview%{stilview_soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsidplayfp%{soname}
+%ldconfig_scriptlets -n libstilview%{stilview_soname}
 
 %files -n libsidplayfp%{soname}
 %license COPYING

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  1 21:08:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-missing-include.patch: Add missing include exposed by gcc
+  13.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Tue Feb 14 12:24:22 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.2
