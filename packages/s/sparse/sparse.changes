@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  3 11:03:49 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- don't build llvm parts. It requires llvm < 16.
+
+-------------------------------------------------------------------
 Fri Dec 09 07:55:17 UTC 2022 - jslaby@suse.cz
 
 - As per previous entry, switch to _service

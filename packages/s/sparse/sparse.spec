@@ -1,7 +1,7 @@
 #
 # spec file for package sparse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%bcond_with llvm
 
 Name:           sparse
 Version:        0.6.4+20220627
@@ -31,10 +33,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
-%if 0%{?suse_version} > 1320 || 0%{?is_opensuse}
+%if %{with llvm}
 %ifarch         x86_64
 BuildRequires:  clang
-BuildRequires:  llvm-devel
+BuildRequires:  llvm-devel < 16
 %endif
 %endif
 
@@ -62,12 +64,14 @@ Group:          Development/Libraries/C and C++
 %description inspect
 test-inspect is a gtk frontend for sparse.
 
+%if %{with llvm}
 %package llvm
 Summary:        LLVM backed sparse
 Group:          Development/Libraries/C and C++
 
 %description llvm
 LLVM backend for sparse, including sparsec
+%endif
 
 %prep
 %autosetup -p1
@@ -75,22 +79,13 @@ LLVM backend for sparse, including sparsec
 %build
 %make_build \
   PREFIX=%{_prefix} \
-  LIBDIR=%{_libdir} \
-  MANDIR=%{_mandir} \
-  PKGCONFIGDIR=%{_libdir}/pkgconfig \
   CFLAGS="%{optflags}" \
   LDFLAGS="%{optflags}" \
   V=1
 
 %install
-make \
-  %{?_smp_mflags} \
-  DESTDIR=%{buildroot} \
-  PREFIX=%{_prefix} \
-  LIBDIR=%{_libdir} \
-  MANDIR=%{_mandir} \
-  PKGCONFIGDIR=%{_libdir}/pkgconfig \
-  install
+%make_install \
+  PREFIX=%{_prefix}
 
 %files
 %license LICENSE
@@ -103,7 +98,7 @@ make \
 %{_mandir}/man1/semind.1%{?ext_man}
 %{_mandir}/man1/sparse.1%{?ext_man}
 
-%if 0%{?suse_version} > 1320 || 0%{?is_opensuse}
+%if %{with llvm}
 %ifarch x86_64
 %files llvm
 %{_bindir}/sparsec

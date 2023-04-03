@@ -489,4 +489,12 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
     * fix &quot;unreplaced&quot; warnings caused by using typeof() on inline functions</comment>
     <requestid>1041805</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>1dfaaef17821f762819c582d597e917a</srcmd5>
+    <version>0.6.4+20220627</version>
+    <time>1680536807</time>
+    <user>dimstar_suse</user>
+    <comment>- don't build llvm parts. It requires llvm &lt; 16.</comment>
+    <requestid>1076899</requestid>
+  </revision>
 </revisionlist>
