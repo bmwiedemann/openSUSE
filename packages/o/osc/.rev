@@ -1661,4 +1661,12 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     - Set Content-Type of POST requests without data to 'application/x-www-form-urlencoded'</comment>
     <requestid>1072666</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>3aea136d88affe3f9aa1f0373232eba9</srcmd5>
+    <version>1.1.0</version>
+    <time>1680551363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077044</requestid>
+  </revision>
 </revisionlist>
