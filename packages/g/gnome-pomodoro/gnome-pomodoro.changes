@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 31 15:34:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.1:
+  * Fixed invalid appdata file
+
+-------------------------------------------------------------------
+Wed Mar 29 10:51:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Validate appdata during check. (We already had the needed
+  dependency in place).
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
+Mon Mar 27 06:52:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+
+- Update to 0.23.0:
+  * Marked extension as compatible with GNOME Shell 44
+  * Added skip button
+  * Lock-screen widget
+  * Fixed annoucement notification getting dismiss
+- Drop e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch
+- Update Source to new home.
+
+-------------------------------------------------------------------
 Thu Mar 23 10:50:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Correct the dependency on gnome-shell to allow gnome-shell 44.

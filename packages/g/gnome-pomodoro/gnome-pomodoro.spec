@@ -18,18 +18,14 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.22.1
+Version:        0.23.1
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://gnomepomodoro.org
-Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
+Source:         https://github.com/gnome-pomodoro/gnome-pomodoro/archive/refs/tags/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
-
-# PATCH-FIX-UPSTREAM e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch -- Mark extension as compatible with GNOME Shell 44
-Patch:          https://github.com/gnome-pomodoro/gnome-pomodoro/commit/e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch
-
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
@@ -82,10 +78,10 @@ desktop-file-edit %{buildroot}/%{_datadir}/applications/*.desktop \
 %find_lang %{name}
 
 %check
-desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.Pomodoro.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Pomodoro.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Pomodoro.appdata.xml
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %posttrans
 gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
