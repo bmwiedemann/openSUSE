@@ -45,7 +45,9 @@ Source100:      python-notebook-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging >= 0.9}
 BuildRequires:  %{python_module nbclassic >= 0.4.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-notebook = %{version}
 Requires:       python-Jinja2
@@ -53,11 +55,13 @@ Requires:       python-Send2Trash
 Requires:       python-argon2-cffi
 Requires:       python-ipykernel
 Requires:       python-ipython_genutils
-Requires:       python-jupyter-client >= 5.3.4
+# https://github.com/jupyter/notebook/issues/6748
+Requires:       (python-jupyter-client >= 5.3.4 with python-jupyter-client < 8)
 Requires:       python-jupyter-core >= 4.6.1
 Requires:       python-nbclassic >= 0.4.7
 Requires:       python-nbconvert >= 5
 Requires:       python-nbformat
+Requires:       python-nest-asyncio >= 1.5
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
@@ -167,12 +171,12 @@ This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 # We don't want to run selenium tests
 rm -rf notebook/tests/selenium
 
+%if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Install icons
@@ -244,7 +248,7 @@ fi
 %files %{python_files} -f %{python_prefix}-notebook.lang-exclude
 %doc README.md
 %license LICENSE
-%{python_sitelib}/notebook-*-py*.egg-info
+%{python_sitelib}/notebook-%{version}.dist-info
 %{python_sitelib}/notebook/
 %python_alternative %{_bindir}/jupyter-bundlerextension
 %python_alternative %{_bindir}/jupyter-nbextension

@@ -235,4 +235,12 @@
     handle hidden files properly) #6660 (@yacchin1205)</comment>
     <requestid>1072950</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b758376280b5c694b244cdf238c3f294</srcmd5>
+    <version>6.5.3</version>
+    <time>1680549200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075689</requestid>
+  </revision>
 </revisionlist>
