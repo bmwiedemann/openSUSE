@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr  1 11:53:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.1
+  * Fixes a bug in the library discover on Linux, if no system
+    library and no packaged library could be found.
+- Release 0.12.0
+  * Updated libsndfile to v1.2.0
+  * Improves precompiled library location, especially with py2app
+    or cx-freeze.
+  * Now provide binary wheels for Linux x86_64
+  * Now prefers packaged libsndfile over system-installed
+    libsndfile
+- Release 0.11.0
+  * MP3 support
+  * Updates libsndfile to v1.1.0
+  * Adds get_strings method for retrieving all metadata at once
+  * Improves documentation, error messages and tests
+  * Displays length of very short files in samples
+  * Supports the file system path protocol (pathlib et al)
+
+-------------------------------------------------------------------
 Fri Feb 19 17:24:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't install and test optional numpy on python36 flavor,
