@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  3 09:34:27 UTC 2023 - pgajdos@suse.com
+
+- version update to 6.0
+  - Drop support for Python 2.7, 3.5, 3.6.
+  - Drop support for deprecated ``python setup.py test``.
+  - Add support for Python 3.11.
+  - Do not break in ``mechRepr`` when using ``<input type="date">``.
+- deleted patches
+  - zope.testbrowser-remove-bad-test.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Sep 16 19:36:33 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 5.6.1 

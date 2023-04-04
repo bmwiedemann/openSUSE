@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,13 +25,12 @@
 %bcond_with test
 %endif
 Name:           python-zope.testbrowser%{psuffix}
-Version:        5.6.1
+Version:        6.0
 Release:        0
 Summary:        Programmable browser for functional black-box tests
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.testbrowser
 Source:         https://files.pythonhosted.org/packages/source/z/zope.testbrowser/zope.testbrowser-%{version}.tar.gz
-Patch0:         zope.testbrowser-remove-bad-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +39,6 @@ Requires:       python-WebTest >= 2.0.30
 Requires:       python-beautifulsoup4
 Requires:       python-pytz > dev
 Requires:       python-setuptools
-Requires:       python-six
 Requires:       python-soupsieve >= 1.9.0
 Requires:       python-zope.cachedescriptors
 Requires:       python-zope.interface
@@ -56,7 +53,6 @@ BuildRequires:  %{python_module WebTest >= 2.0.30}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytz > dev}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module soupsieve >= 1.9.0}
 BuildRequires:  %{python_module zope.cachedescriptors}
 BuildRequires:  %{python_module zope.interface}
@@ -74,12 +70,10 @@ specific.  It can be used to test or otherwise interact with any web
 site.
 
 %prep
-%setup -q -n zope.testbrowser-%{version}
-%patch0 -p1
+%autosetup -p1 -n zope.testbrowser-%{version}
 
 %build
 %if !%{with test}
-sed -i 's:import mock:import unittest.mock as mock:' src/zope/testbrowser/tests/test_wsgi.py
 %python_build
 %endif
 
@@ -100,7 +94,7 @@ cd src
 %if !%{with test}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/zope*
 %endif
 
 %changelog
