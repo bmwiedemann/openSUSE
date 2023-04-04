@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:42:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.7 with jupyterlab-manager 5.0.7
+  ## release notes from ipywidgets 8.0.6
+  * Fix: revert removing ipykernel dependency #3749
+  * Fix: structuredClone broke default serializer that depended on
+    JSON/toJSON #3738
+  * Fix: comm/ipykernel/manager runtime issues: #3740, #3737
+  * Fix: propertly typed Comm interface #3722
+  * Fix: support the comm package #3533
+  * Fix: use of structuredClone allows for binary traits out of the
+    box #3689
+  * Fix: combobox update issue #3681
+  * Fix: add grey as valid color #3671
+  * Fix: deprecation warning when using interact #3669
+
+-------------------------------------------------------------------
 Wed Oct  5 15:48:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Bump up also jupver macro.

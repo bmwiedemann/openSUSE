@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-widgets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pyver 3.0.3
-%define jupver 5.0.3
+%define pyver 3.0.7
+%define jupver 5.0.7
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
 Release:        0
@@ -28,6 +27,7 @@ URL:            https://github.com/jupyter-widgets/ipywidgets
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_widgets/jupyterlab_widgets-%{pyver}.tar.gz
 Source99:       python-jupyterlab-widgets-rpmlintrc
 BuildRequires:  %{python_module jupyter_packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
@@ -54,10 +54,10 @@ A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyterlab-manager JS f
 %autosetup -p1 -n jupyterlab_widgets-%{pyver}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
