@@ -17,15 +17,14 @@
 
 
 Name:           minikube
-Version:        1.29.0
+Version:        1.30.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
 Source0:        https://github.com/kubernetes/minikube/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# go mod vendor
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.zst
 Source2:        %{name}-rpmlintrc
 BuildRequires:  git-core
 BuildRequires:  golang-github-jteeuwen-go-bindata
@@ -34,7 +33,8 @@ BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  wget
-BuildRequires:  golang(API) = 1.19
+BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.20
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt

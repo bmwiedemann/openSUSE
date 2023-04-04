@@ -582,4 +582,30 @@
   * Addons: Update headlamp from 0.13.0 to 0.14.1 #15401 #15515</comment>
     <requestid>1062044</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c182fb45435dafd0e23d65e6e6d048aa</srcmd5>
+    <version>1.30.0</version>
+    <time>1680636410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.30.0:
+  * Ensure only one minikube tunnel instance runs at a time
+  * Infer HyperKit HostIP as Gateway rather than hardcode to 192.168.64.1 
+  * multi-node: Add support for volumes using CSI addon
+  * QEMU: Rename user network to builtin and update documentation
+  * none driver: Look for cri-dockerd instead of hardcoding
+  * Replace instances of k8s.gcr.io with registry.k8s.io
+  * Handle CRI config of NetworkPlugin and PauseImage
+  * Remove deprecated container-runtime flag from Kubernetes v1.24+
+  * none driver: Require crictl to be installed for Kubernetes v1.24+
+  * Add cri-dockerd logs to minikube logs output
+  * Add ingress logs to minikube logs output
+  * Add default cni logs to minikbue logs output
+  * Add JSON output option to miniikube service list
+  * Add kicbase download process to JSON output
+  * Implement --docs for minikube addons list -o json
+  * Implement --skip-audit flag and skip adding profile commands to audit log
+  * Implement --last-start-only flag to minikube logs to only show last start log
+* see https://github.com/kubernetes/minikube/releases/tag/v1.30.0</comment>
+    <requestid>1077183</requestid>
+  </revision>
 </revisionlist>
