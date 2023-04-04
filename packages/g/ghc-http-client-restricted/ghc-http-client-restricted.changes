@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Wed Feb  9 15:25:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update http-client-restricted to version 0.0.5.
