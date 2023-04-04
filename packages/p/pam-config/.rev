@@ -741,4 +741,16 @@
   - Add support for pam_wtmpdb</comment>
     <requestid>1074222</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>7ef496d80ca169794e1eb19925bbe71c</srcmd5>
+    <version>2.4</version>
+    <time>1680635860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4
+  - Read postlogin files, too
+
+- Update to version 2.3
+  - Add silent_if option for pam_lastlog2</comment>
+    <requestid>1077079</requestid>
+  </revision>
 </revisionlist>

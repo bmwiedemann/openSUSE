@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  3 20:33:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.4
+  - Read postlogin files, too
+
+-------------------------------------------------------------------
+Mon Apr  3 12:37:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.3
+  - Add silent_if option for pam_lastlog2
+
+-------------------------------------------------------------------
 Fri Mar 24 15:41:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.2
