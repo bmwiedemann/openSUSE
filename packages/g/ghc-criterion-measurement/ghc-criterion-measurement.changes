@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Feb 17 00:55:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update criterion-measurement to version 0.2.1.0.
+  0.2.1.0
+
+  * Make the behavior of the benchmarking functions independent of the
+    `-fspec-const-count` limit.
+
+-------------------------------------------------------------------
 Thu Aug 11 23:00:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update criterion-measurement to version 0.2.0.0.
