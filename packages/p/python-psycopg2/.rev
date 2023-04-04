@@ -373,4 +373,15 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment></comment>
     <requestid>1032498</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>83384a2a0796eead0f20e75a07318b40</srcmd5>
+    <version>2.9.6</version>
+    <time>1680636360</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.6:
+  * Package manylinux 2014 for aarch64 and ppc64le platforms, in
+    order to include libpq 15 in the binary package (:ticket:`#1396`).
+  * Wheel package compiled against OpenSSL 1.1.1t.</comment>
+    <requestid>1077060</requestid>
+  </revision>
 </revisionlist>
