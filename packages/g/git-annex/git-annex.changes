@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:14 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 29 20:09:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20230329.
+  * sync: Fix parsing of gcrypt::rsync:// urls that use a relative path.
+  * Avoid failure to update adjusted branch --unlock-present after git-annex
+    drop when annex.adjustedbranchrefresh=1
+  * Avoid leaving repo with a detached head when there is a failure
+    checking out an updated adjusted branch.
+  * view: Support annex.maxextensionlength when generating filenames for
+    the view branch.
+  * Windows: Support urls like "file:///c:/path"
+  * addurl, importfeed: Fix failure when annex.securehashesonly is set.
+  * Copy with a reflink when exporting a tree to a directory special remote.
+  * Fix bug that caused broken protocol to be used with external remotes
+    that use exporttree=yes. In some cases this could result in the wrong
+    content being exported to, or retrieved from the remote.
+  * Support VERSION 2 in the external special remote protocol, which is
+    identical to VERSION 1, but avoids external remote programs neededing
+    to work around the above bug. External remote program that support
+    exporttree=yes are recommended to be updated to send VERSION 2.
+  * Using git-annex view in an adjusted branch, or git-annex adjust in a
+    view branch, will enter an adjusted view branch.
+  * sync: Fix a reversion that prevented sending files to exporttree=yes
+    remotes when annex-tracking-branch was configured to branch:subdir
+    (Introduced in version 10.20230214)
+  * status: This command is deprecated because it was only needed in direct
+    mode; git status --short is very similar.
+  * Windows: Support long filenames in more (possibly all) of the code.
+  * Added arm64 build for ancient kernels, needed to support Android phones
+    whose kernels are too old to support kernels used by the current arm64
+    build.
+  * importfeed: Display feed title.
+  * init: Support being ran in a repository that has a newline in its path.
+  * copy: When --from and --to are combined and the content is already
+    present on the destination remote, update location tracking as
+    necessary.
+  * Fixed spelling of some messages and added a .codespellrc
+    Thanks, Yaroslav Halchenko
+  * Fix more breakage caused by git's fix for CVE-2022-24765, this time
+    involving a remote that is a local bare repository not owned by the
+    current user.
+  * info: Fix reversion in last release involving handling of unsupported
+    input by continuing to handle any other inputs, before exiting nonzero
+    at the end.
+  * git-annex.cabal: Move webapp build deps under the Assistant build flag
+    so git-annex can be built again without yesod etc installed.
+  * Improve error message when unable to read a sqlite database due to
+    permissions problem.
+  * sync: Fix a bug that caused files to be removed from an 
+    importtree=yes exporttree=yes special remote when the remote's
+    annex-tracking-branch was not the currently checked out branch.
+  * S3: Support a region= configuration useful for some non-Amazon S3
+    implementations. This feature needs git-annex to be built with aws-0.24.
+  * view: New field?=glob and ?tag syntax that includes a directory "_"
+    in the view for files that do not have the specified metadata set.
+  * Added annex.viewunsetdirectory git config to change the name of the
+    "_" directory in a view.
+  * Changed the name of view branches to include the parent branch.
+    Existing view branches checked out using an old name will still work.
+  * sync: Avoid pushing view branches to remotes.
+  * sync: When run in a view branch, refresh the view branch to reflect any
+    changes that have been made to the parent branch or metadata.
+  * sync: When run in a view branch, avoid updating synced/ branches,
+    or trying to merge anything from remotes.
+  * Support http urls that contain ":" that is not followed by a port
+    number, the same as git does.
+  * sync: Warn when the adjusted basis ref cannot be found, as happens eg when
+    the user has renamed branches.
+  * Sped up view branch construction by 50%.
+  * info, enableremotemote, renameremote: Avoid a confusing message when more
+    than one repository matches the user provided name.
+  * info: Exit nonzero when the input is not supported.
+
+- Apply "0001-persistent-2.12.0.1-include-the-code-from-persistent.patch"
+  to avoid depending on the obsolete persistent-templates package.
+
+-------------------------------------------------------------------
 Thu Jan 26 19:34:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20230126.
