@@ -156,4 +156,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>update haskell stack in openSUS</comment>
     <requestid>857328</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9bcbb5f5bbeca4c876d50bcf2d8b57e4</srcmd5>
+    <version>1.0</version>
+    <time>1680635987</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075858</requestid>
+  </revision>
 </revisionlist>
