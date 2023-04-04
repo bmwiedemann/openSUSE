@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Aug  2 09:23:01 UTC 2021 - psimons@suse.com
 
 - Update transformers-base to version 0.4.6.
