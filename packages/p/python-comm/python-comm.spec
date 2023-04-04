@@ -1,7 +1,7 @@
 #
 # spec file for package python-comm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define skip_python2 1
 Name:           python-comm
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Jupyter Python Comm implementation
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/comm
-Source:         https://github.com/ipython/comm/archive/refs/tags/%{version}.tar.gz#/comm-%{version}-gh.tar.gz
+Source:         https://github.com/ipython/comm/archive/refs/tags/v%{version}.tar.gz#/comm-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatchling >= 1.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 5.3}
