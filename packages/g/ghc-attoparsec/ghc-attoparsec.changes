@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Feb 18 17:09:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update attoparsec to version 0.14.4 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Aug 10 22:09:34 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update attoparsec to version 0.14.4 revision 2.

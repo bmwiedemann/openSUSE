@@ -235,4 +235,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1008432</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>e03014b2f0eb319bc40a637ff3629c32</srcmd5>
+    <version>0.14.4</version>
+    <time>1680635909</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075769</requestid>
+  </revision>
 </revisionlist>
