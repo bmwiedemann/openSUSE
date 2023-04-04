@@ -1,7 +1,7 @@
 #
 # spec file for package amavisd-new
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define logmsg         logger -t %{name}/rpm
 
 Name:           amavisd-new
-Version:        2.12.2
+Version:        2.13.0
 Release:        0
 Summary:        High-Performance E-Mail Virus Scanner
 License:        GPL-2.0-or-later
@@ -32,20 +32,14 @@ Source0:        https://gitlab.com/amavis/amavis/-/archive/v%{version}/amavis-v%
 Source1:        sysconfig.amavis
 Source3:        amavisd-new-rpmlintrc
 Source5:        amavis.service
-%if 0%{?suse_version} <= 1500
-Source10:       system-user-vscan.conf
-%endif
-Patch1:         activate_virus_scanner.diff
 # PATCH-FIX-UPSTREAM -- detect myhostname via Net::Domain::hostfqdn()
-Patch2:         amavisd-new-2.10.1-myhostname.patch
+Patch2:         amavisd-new-2.3.0-myhostname.patch
 # PATCH-FIX-OPENSUSE -- amavisd-new-no-berkeleydb.patch
 Patch3:         amavisd-new-no-berkeleydb.patch
-%if 0%{?suse_version} > 1500
+BuildRequires:  perl-App-cpanminus
+BuildRequires:  perl-Dist-Zilla
 BuildRequires:  group(vscan)
 BuildRequires:  user(vscan)
-%else
-BuildRequires:  sysuser-tools
-%endif
 Requires:       file
 Requires:       smtp_daemon
 Requires:       perl(Archive::Zip) >= 1.14
@@ -60,18 +54,14 @@ Requires:       perl(MIME::Parser)
 Requires:       perl(Mail::DKIM) >= 0.31
 Requires:       perl(Mail::Internet) >= 1.58
 Requires:       perl(Net::Domain)
-Requires:       perl(Net::LibIDN)
+Requires:       perl(Net::LibIDN2)
 Requires:       perl(Net::Server) >= 2.0
 Requires:       perl(Time::HiRes) >= 1.49
 Requires:       perl(Unix::Syslog)
 Requires(post): %fillup_prereq
 Requires(post): %{_bindir}/newaliases
-%if 0%{?suse_version} > 1500
 Requires(pre):  group(vscan)
 Requires(pre):  user(vscan)
-%else
-Requires(pre):  system-user-vscan
-%endif
 Recommends:     %{name}-docs = %{version}
 Recommends:     arc
 Recommends:     arj
@@ -117,16 +107,6 @@ via (E)SMTP, LMTP.
 
 This package contains the documentation and Release-Notes.
 
-%if 0%{?suse_version} <= 1500
-%package -n system-user-vscan
-Summary:        System user and group vscan
-Group:          Productivity/Networking/Security
-%sysusers_requires
-
-%description -n system-user-vscan
-This package provides the system user 'vscan'.
-%endif
-
 %prep
 %autosetup -n amavis-v%{version} -p1
 for i in $(find -maxdepth 1 -name "amavisd*" | sed s#./##); do
@@ -143,19 +123,23 @@ done
 # ---------------------------------------------------------------------------
 
 %build
-%if 0%{?suse_version} <= 1500
-# Create vscan user
-%sysusers_generate_pre %{SOURCE10} vscan
-%endif
+dzil build --no-tgz --in Amavis
+cd Amavis
+perl Makefile.PL
 
 # ---------------------------------------------------------------------------
 
 %install
-%if 0%{?suse_version} <= 1500
-mkdir -p %{buildroot}%{_sysusersdir}
-mkdir -p %{buildroot}%{avspool}
-install -m 644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-vscan.conf
-%endif
+cd Amavis
+make install INSTALLDIRS=vendor \
+             INSTALLBIN=/usr/sbin \
+             INSTALLSITEBIN=/usr/sbin \
+             INSTALLVENDORBIN=/usr/sbin \
+             INSTALLSCRIPT=/usr/sbin \
+             INSTALLSITESCRIPT=/usr/sbin \
+             INSTALLVENDORSCRIPT=/usr/sbin \
+             DESTDIR=%{buildroot}
+
 mkdir -p %{buildroot}%{avquarantine}
 mkdir -p %{buildroot}%{avspool}/{tmp,var}
 mkdir -p %{buildroot}%{avdb}
@@ -163,22 +147,15 @@ mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_sysconfdir}/openldap/schema
 mkdir -p %{buildroot}%{perl_vendorlib}
+install -m 644 conf/amavisd.conf %{buildroot}%{_sysconfdir}/amavisd.conf
 install -m 644 $RPM_SOURCE_DIR/sysconfig.amavis %{buildroot}%{_fillupdir}
-install -m 755 amavisd %{buildroot}/%{_sbindir}/amavisd
-install -m 755 amavisd-agent %{buildroot}/%{_sbindir}/amavisd-agent
-install -m 755 amavisd-nanny %{buildroot}/%{_sbindir}/amavisd-nanny
-install -m 755 amavisd-release %{buildroot}/%{_sbindir}/amavisd-release
-install -m 755 p0f-analyzer.pl %{buildroot}/%{_sbindir}/p0f-analyzer.pl
-install -m 644 amavisd.conf %{buildroot}%{_sysconfdir}/amavisd.conf
-install -m 644 LDAP.schema %{buildroot}%{_sysconfdir}/openldap/schema/amavisd-new.schema
-install -m 644 JpegTester.pm %{buildroot}/%{perl_vendorlib}/JpegTester.pm
 mkdir -p %{buildroot}%{_unitdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_unitdir}
+install -m 644 contrib/LDAP.schema %{buildroot}%{_sysconfdir}/openldap/schema/amavisd-new.schema
+install -m 644 contrib/JpegTester.pm %{buildroot}/%{perl_vendorlib}/JpegTester.pm
 ln -s service %{buildroot}/%{_sbindir}/rcamavis
-
-%if 0%{?suse_version} <= 1500
-%pre -n system-user-vscan -f vscan.pre
-%endif
+rm -rf %{buildroot}/%{perl_archlib}/
+rm -rf %{buildroot}/%{perl_vendorarch}/
 
 %pre
 %service_add_pre amavis.service
@@ -206,7 +183,6 @@ fi
 %files
 %license LICENSE
 %doc AAAREADME.first
-%doc LDAP.ldif
 %dir %{_sysconfdir}/openldap
 %dir %{_sysconfdir}/openldap/schema
 %config(noreplace) %{_sysconfdir}/amavisd.conf
@@ -214,7 +190,13 @@ fi
 %{_fillupdir}/sysconfig.amavis
 %{_sbindir}/*
 %{perl_vendorlib}/JpegTester.pm
+%{perl_vendorlib}/Amavis.pm
+%{perl_vendorlib}/Amavis
+%{perl_vendorlib}/Mail/SpamAssassin/Logger/Amavislog.pm
 %{_unitdir}/amavis.service
+%dir %{perl_vendorlib}/Mail
+%dir %{perl_vendorlib}/Mail/SpamAssassin
+%dir %{perl_vendorlib}/Mail/SpamAssassin/Logger
 %defattr(0750,vscan,vscan,0750)
 %dir %{avspool}/tmp
 %dir %{avspool}/db
@@ -223,17 +205,9 @@ fi
 
 %files docs
 %defattr(0644,root,root,0755)
-%doc RELEASE_NOTES
-%doc README_FILES
-%doc test-messages
-%doc amavisd.conf-*
-%doc MANIFEST TODO
-%doc test-messages
-
-%if 0%{?suse_version} <= 1500
-%files -n system-user-vscan
-%dir %attr(0750,vscan,vscan) %{avspool}
-%{_sysusersdir}/system-user-vscan.conf
-%endif
+%doc RELEASE_NOTES README_FILES TODO
+%doc conf/amavisd-custom.conf conf/amavisd.conf-default conf/amavisd-docker.conf
+%doc contrib/LDAP.ldif
+/usr/share/man/man3/Amavis::SpamControl::RspamdClient.3pm.gz
 
 %changelog
