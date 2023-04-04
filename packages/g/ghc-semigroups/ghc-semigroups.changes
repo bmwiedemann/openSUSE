@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:11 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Nov 16 19:50:37 UTC 2021 - psimons@suse.com
 
 - Update semigroups to version 0.20.
