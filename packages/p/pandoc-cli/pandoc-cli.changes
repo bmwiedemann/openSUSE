@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:09:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 27 23:56:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 0.1.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Wed Jan 18 21:22:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add pandoc-cli at version 0.1.
+
