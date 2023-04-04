@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Feb  9 06:24:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yesod-form to version 1.7.4.
+  ## 1.7.4
+
+  * Added a `Monad AForm` instance only when `transformers` >= 0.6 [#1795](https://github.com/yesodweb/yesod/pull/1795)
+
+-------------------------------------------------------------------
 Thu Oct  6 03:36:55 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yesod-form to version 1.7.3.
