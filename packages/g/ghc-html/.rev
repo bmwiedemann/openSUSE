@@ -23,4 +23,12 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857403</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>694278975447ee3f09db6aeeead8b7da</srcmd5>
+    <version>1.0.1.2</version>
+    <time>1680636040</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075913</requestid>
+  </revision>
 </revisionlist>
