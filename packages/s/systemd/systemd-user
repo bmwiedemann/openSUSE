@@ -21,4 +21,5 @@ account  include  common-account
 session  required pam_selinux.so close
 session  required pam_selinux.so nottys open
 session  required pam_loginuid.so
+session  optional pam_keyinit.so force revoke
 session  include  common-session

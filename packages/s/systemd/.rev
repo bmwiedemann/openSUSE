@@ -6449,4 +6449,39 @@ handle manual pages that consist only of a .so directive such as
   ukify tool.</comment>
     <requestid>1073914</requestid>
   </revision>
+  <revision rev="386" vrev="1">
+    <srcmd5>ecfb8a65ddc80292b714a04a788d65c4</srcmd5>
+    <version>253.2</version>
+    <time>1680635835</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 03cfbe767327d01d5a71131d91bf06fdc0047ca1
+  03cfbe7673 test: use setpriv instead of su for user switch from root
+  857843834c test: wrap mkfs.*/mksquashfs/mkswap binaries when running w/ ASan
+  be7388f8c5 test: do not remove state directory on failure
+  1b2885bd16 test: fix regexp in testsuite-74.mount.sh
+  41142f8013 test: drop extraneous bracket in testsuite-74.mount.sh
+
+- systemd.spec: add files.coredump
+
+- Import commit b63f58661b08037d8cb04ed97b5e39d9bf415fdc (merge of v253.2)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8b01686dd20124efc300d21ef38d85c1f75c372f...b63f58661b08037d8cb04ed97b5e39d9bf415fdc
+- Move systemd-fsck stuff to udev sub-package.
+
+- Include pam_keyinit.so in our systemd-user PAM service (bsc#1209741)
+  That way &quot;systemd --user&quot; instances get their own session keyring instead of
+  the user default session keyring. For some reasons cifscreds refuses to work
+  with the latter. That's what is expected for every PAM session anyway.
+
+- Import commit 8b01686dd20124efc300d21ef38d85c1f75c372f
+  8b01686dd2 test: don't export $TOOLS_DIR
+  7a56b1b2f0 test: clean up $STATEDIR too
+  324bb19eb8 test: $STATEDIR should not point to /usr/lib/systemd/tests when NO_BUILD=1
+  2251735482 test: install symlinks with valid targets on SUSE and Debian
+  c30905a269 test: on openSUSE install the collection of unit test binaries in the target only for TEST-02-UNITTESTS
+  797ced15d8 meson: make sure the unit test scripts find testdata/ even if they are not installed in the same directory
+  04dc5b44b7 meson: define testdata_dir globally
+  69643c6c96 test: install unit tests in a dedicated subdirectory below '$testsdir'</comment>
+    <requestid>1076955</requestid>
+  </revision>
 </revisionlist>

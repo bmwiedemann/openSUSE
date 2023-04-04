@@ -54,8 +54,13 @@
 %{_mandir}/man8/systemd-cryptsetup-generator.8.gz
 %{_mandir}/man8/systemd-cryptsetup.8.gz
 %{_mandir}/man8/systemd-cryptsetup@.service.8.gz
+%{_mandir}/man8/systemd-fsck-root.service.8.gz
+%{_mandir}/man8/systemd-fsck-usr.service.8.gz
+%{_mandir}/man8/systemd-fsck.8.gz
+%{_mandir}/man8/systemd-fsck@.service.8.gz
 %{_mandir}/man8/systemd-fstab-generator.8.gz
 %{_mandir}/man8/systemd-gpt-auto-generator.8.gz
+%{_mandir}/man8/systemd-growfs-root.service.8.gz
 %{_mandir}/man8/systemd-growfs.8.gz
 %{_mandir}/man8/systemd-growfs@.service.8.gz
 %{_mandir}/man8/systemd-hwdb.8.gz
@@ -101,6 +106,7 @@
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-cryptsetup
 %endif
+%{_systemd_util_dir}/systemd-fsck
 %{_systemd_util_dir}/systemd-growfs
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-integritysetup
@@ -224,6 +230,9 @@
 %{_unitdir}/system-systemd\x2dcryptsetup.slice
 %endif
 %{_unitdir}/systemd-backlight@.service
+%{_unitdir}/systemd-firstboot.service
+%{_unitdir}/systemd-fsck-root.service
+%{_unitdir}/systemd-fsck@.service
 %{_unitdir}/systemd-growfs-root.service
 %{_unitdir}/systemd-growfs@.service
 %{_unitdir}/systemd-hwdb-update.service

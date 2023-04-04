@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Apr  3 09:36:03 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 03cfbe767327d01d5a71131d91bf06fdc0047ca1
+
+  03cfbe7673 test: use setpriv instead of su for user switch from root
+  857843834c test: wrap mkfs.*/mksquashfs/mkswap binaries when running w/ ASan
+  be7388f8c5 test: do not remove state directory on failure
+  1b2885bd16 test: fix regexp in testsuite-74.mount.sh
+  41142f8013 test: drop extraneous bracket in testsuite-74.mount.sh
+
+-------------------------------------------------------------------
+Mon Apr  3 09:20:59 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: add files.coredump
+
+-------------------------------------------------------------------
+Fri Mar 31 14:41:49 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit b63f58661b08037d8cb04ed97b5e39d9bf415fdc (merge of v253.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8b01686dd20124efc300d21ef38d85c1f75c372f...b63f58661b08037d8cb04ed97b5e39d9bf415fdc
+
+- Move systemd-fsck stuff to udev sub-package.
+
+-------------------------------------------------------------------
+Fri Mar 31 12:55:21 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Include pam_keyinit.so in our systemd-user PAM service (bsc#1209741)
+
+  That way "systemd --user" instances get their own session keyring instead of
+  the user default session keyring. For some reasons cifscreds refuses to work
+  with the latter. That's what is expected for every PAM session anyway.
+
+-------------------------------------------------------------------
+Tue Mar 28 16:01:58 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 8b01686dd20124efc300d21ef38d85c1f75c372f
+
+  8b01686dd2 test: don't export $TOOLS_DIR
+  7a56b1b2f0 test: clean up $STATEDIR too
+  324bb19eb8 test: $STATEDIR should not point to /usr/lib/systemd/tests when NO_BUILD=1
+  2251735482 test: install symlinks with valid targets on SUSE and Debian
+  c30905a269 test: on openSUSE install the collection of unit test binaries in the target only for TEST-02-UNITTESTS
+  797ced15d8 meson: make sure the unit test scripts find testdata/ even if they are not installed in the same directory
+  04dc5b44b7 meson: define testdata_dir globally
+  69643c6c96 test: install unit tests in a dedicated subdirectory below '$testsdir'
+
+-------------------------------------------------------------------
 Thu Mar 23 07:07:34 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit d914e29c33c0248226a01112a3e03181ef17b06b

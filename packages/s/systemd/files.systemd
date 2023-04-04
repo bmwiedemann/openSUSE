@@ -363,9 +363,6 @@
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
 %{_mandir}/man8/systemd-debug-generator.8.gz
 %{_mandir}/man8/systemd-environment-d-generator.8.gz
-%{_mandir}/man8/systemd-fsck-root.service.8.gz
-%{_mandir}/man8/systemd-fsck.8.gz
-%{_mandir}/man8/systemd-fsck@.service.8.gz
 %{_mandir}/man8/systemd-getty-generator.8.gz
 %{_mandir}/man8/systemd-halt.service.8.gz
 %{_mandir}/man8/systemd-hibernate-resume-generator.8.gz
@@ -450,7 +447,6 @@
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
 %{_systemd_util_dir}/systemd-cgroups-agent
-%{_systemd_util_dir}/systemd-fsck
 %{_systemd_util_dir}/systemd-hibernate-resume
 %{_systemd_util_dir}/systemd-hostnamed
 %{_systemd_util_dir}/systemd-journald
@@ -633,9 +629,6 @@
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
 %{_unitdir}/systemd-exit.service
-%{_unitdir}/systemd-firstboot.service
-%{_unitdir}/systemd-fsck-root.service
-%{_unitdir}/systemd-fsck@.service
 %{_unitdir}/systemd-halt.service
 %{_unitdir}/systemd-hibernate-resume@.service
 %{_unitdir}/systemd-hibernate.service

@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.6.gd914e29c33
+%define archive_version +suse.20.g03cfbe7673
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.1
+Version:        253.2
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -187,6 +187,7 @@ Source204:      files.devel
 Source205:      files.sysvcompat
 Source206:      files.uefi-boot
 Source207:      files.experimental
+Source208:      files.coredump
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -381,7 +382,7 @@ Provides:       systemd:%{_bindir}/coredumpctl
 %description coredump
 Systemd tools to store and manage coredumps.
 
-This package contains systemd-coredump, coredumpctl.
+Visit https://systemd.io/COREDUMP for more details.
 %endif
 
 %package container
@@ -1188,7 +1189,7 @@ fi
 %systemd_post systemd-journal-remote.socket systemd-journal-remote.service
 %systemd_post systemd-journal-upload.service
 
-%preun  journal-remote
+%preun journal-remote
 %systemd_preun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
 %systemd_preun systemd-journal-remote.socket systemd-journal-remote.service
 %systemd_preun systemd-journal-upload.service
@@ -1329,21 +1330,7 @@ fi
 %if %{with coredump}
 %files coredump
 %defattr(-,root,root)
-%{_bindir}/coredumpctl
-%{_prefix}/lib/systemd/systemd-coredump
-%{_unitdir}/systemd-coredump*
-%{_unitdir}/sockets.target.wants/systemd-coredump.socket
-%{_sysctldir}/50-coredump.conf
-%{_sysusersdir}/systemd-coredump.conf
-%config(noreplace) %{_sysconfdir}/systemd/coredump.conf
-%dir %{_localstatedir}/lib/systemd/coredump
-%if %{without bootstrap}
-%{_datadir}/bash-completion/completions/coredumpctl
-%{_datadir}/zsh/site-functions/_coredumpctl
-%{_mandir}/man1/coredumpctl*
-%{_mandir}/man5/coredump.conf*
-%{_mandir}/man8/systemd-coredump*
-%endif
+%include %{SOURCE208}
 %endif
 
 %if %{without bootstrap}
