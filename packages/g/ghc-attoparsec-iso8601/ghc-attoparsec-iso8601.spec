@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-attoparsec-iso8601
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name attoparsec-iso8601
+%global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
 Version:        1.1.0.0
 Release:        0
@@ -26,11 +27,18 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-attoparsec-devel
+BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-compat-batteries-devel
+BuildRequires:  ghc-base-compat-batteries-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-compat-devel
+BuildRequires:  ghc-time-compat-prof
 BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
 
 %description
@@ -46,6 +54,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development
 files.
+
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
@@ -67,5 +91,10 @@ files.
 
 %files devel -f %{name}-devel.files
 %doc README.md changelog.md
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
