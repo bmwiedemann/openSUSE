@@ -191,4 +191,15 @@
     <comment></comment>
     <requestid>1072800</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>148155f52eb0baf659d24ef9457ae4fc</srcmd5>
+    <version>20230401</version>
+    <time>1680636371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230401
+  * Drop cmake support files as they are now located in the
+    mingw64-cross-cmake (boo#1209611)
+</comment>
+    <requestid>1077092</requestid>
+  </revision>
 </revisionlist>
