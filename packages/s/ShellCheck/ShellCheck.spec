@@ -1,7 +1,7 @@
 #
 # spec file for package ShellCheck
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name ShellCheck
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
 Version:        0.9.0
@@ -25,25 +26,43 @@ Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
+BuildRequires:  ghc-Diff-prof
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-fgl-devel
+BuildRequires:  ghc-fgl-prof
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-parsec-devel
+BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-tdfa-devel
+BuildRequires:  ghc-regex-tdfa-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  pandoc
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  pandoc-cli
 ExcludeArch:    %{ix86}
 
 %description
@@ -74,8 +93,25 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
@@ -106,5 +142,10 @@ install -Dpm 0644 shellcheck.1 %{buildroot}%{_mandir}/man1/shellcheck.1
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc CHANGELOG.md README.md
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
