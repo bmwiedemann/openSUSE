@@ -1,0 +1,24 @@
+From 290186ec99dedf00477447d53b2c0c01c764eaa5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Mar 2023 12:06:36 +0200
+Subject: [PATCH 4/5] oscap-remediate is located in bindir
+
+---
+ oscap-remediate.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/oscap-remediate.service.in b/oscap-remediate.service.in
+index 2b48398..b6d07b7 100644
+--- a/oscap-remediate.service.in
++++ b/oscap-remediate.service.in
+@@ -8,6 +8,6 @@ Before=shutdown.target system-update.target
+ 
+ [Service]
+ Type=oneshot
+-ExecStart=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBEXECDIR@/oscap-remediate
++ExecStart=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/oscap-remediate
+ 
+ FailureAction=reboot
+-- 
+2.40.0
+

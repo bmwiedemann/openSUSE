@@ -1,7 +1,17 @@
-Index: openscap-1.3.6/cpe/openscap-cpe-dict.xml
-===================================================================
---- openscap-1.3.6.orig/cpe/openscap-cpe-dict.xml
-+++ openscap-1.3.6/cpe/openscap-cpe-dict.xml
+From 48685f390b865f6edd7df8dba955c03dff6045e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Mar 2023 12:02:43 +0200
+Subject: [PATCH 1/5] Add openSUSE cpe links
+
+---
+ cpe/openscap-cpe-dict.xml |  24 +++++++
+ cpe/openscap-cpe-oval.xml | 127 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 151 insertions(+)
+
+diff --git a/cpe/openscap-cpe-dict.xml b/cpe/openscap-cpe-dict.xml
+index 02d5361..cf52bee 100644
+--- a/cpe/openscap-cpe-dict.xml
++++ b/cpe/openscap-cpe-dict.xml
 @@ -53,4 +53,28 @@
              <title xml:lang="en-us">Fedora 35</title>
              <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.fedora:def:35</check>
@@ -31,10 +41,10 @@ Index: openscap-1.3.6/cpe/openscap-cpe-dict.xml
 +            <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.opensuse:def:9999</check>
 +      </cpe-item>
  </cpe-list>
-Index: openscap-1.3.6/cpe/openscap-cpe-oval.xml
-===================================================================
---- openscap-1.3.6.orig/cpe/openscap-cpe-oval.xml
-+++ openscap-1.3.6/cpe/openscap-cpe-oval.xml
+diff --git a/cpe/openscap-cpe-oval.xml b/cpe/openscap-cpe-oval.xml
+index 6409940..a402c7f 100644
+--- a/cpe/openscap-cpe-oval.xml
++++ b/cpe/openscap-cpe-oval.xml
 @@ -690,6 +690,84 @@
                          <criterion comment="openSUSE Leap 15.0 is installed" test_ref="oval:org.open-scap.cpe.opensuse:tst:150"/>
                    </criteria>
@@ -183,3 +193,6 @@ Index: openscap-1.3.6/cpe/openscap-cpe-oval.xml
              <textfilecontent54_state
                              id="oval:org.open-scap.cpe.wrlinux-release:ste:8"
                              comment="Check the /etc/wrlinux-release file for VERSION 8 specification."
+-- 
+2.40.0
+

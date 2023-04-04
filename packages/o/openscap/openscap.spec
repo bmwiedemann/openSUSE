@@ -23,13 +23,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openscap
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        A Set of Libraries for Integration with SCAP
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://www.open-scap.org/
-Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz
+Source:         https://github.com/OpenSCAP/openscap/archive/%{version}.tar.gz#/%name-%version.tar.gz
 Source1:        openscap-rpmlintrc
 Source2:        sysconfig.oscap-scan
 # SUSE specific profile, based on yast2-security checks.
@@ -38,13 +38,14 @@ Source3:        scap-yast2sec-xccdf.xml
 Source4:        scap-yast2sec-oval.xml
 Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
-Patch1:         openscap-opensuse-cpe.patch
-Patch2:         openscap-suse-cpe.patch
-Patch3:         openscap-docker-add-suse.patch
+Patch1:         0001-Add-openSUSE-cpe-links.patch
+Patch2:         0002-Add-SUSE-cpe-links.patch
+Patch3:         0003-Use-openSUSE-SUSE-cpe-links.patch
 %if 0%{?suse_version} != 1599
-Patch4:         oscap-remediate.service.in.patch
+Patch4:         0004-oscap-remediate-is-located-in-bindir.patch
 %endif
-Patch5:         0001-Use-correct-includes.patch
+Patch5:         0005-rename-requires-reqs-for-C-20-compatibility.patch
+
 BuildRequires:  asciidoc
 # Use package name cause of "have choice for perl(XML::Parser): brp-check-suse perl-XML-Parser"
 BuildRequires:  cmake

@@ -1,17 +1,17 @@
-From 9a434c4e613224b25b4dc56e38de32eb4cbdcd0c Mon Sep 17 00:00:00 2001
-From: Marcus Meissner <meissner@suse.de>
-Date: Tue, 7 Dec 2021 11:57:21 +0100
-Subject: [PATCH] added suse support
+From 815356039b16d5abba9cdebc07c23aa967947ef3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Mar 2023 12:05:37 +0200
+Subject: [PATCH 3/5] Use openSUSE/SUSE cpe links
 
 ---
- utils/oscap_docker_python/get_cve_input.py    | 20 +++++++++----
- .../oscap_docker_common.py                    | 30 ++++++++++++++++++-
- 2 files changed, 44 insertions(+), 6 deletions(-)
+ utils/oscap_docker_python/get_cve_input.py    | 21 ++++++++++---
+ .../oscap_docker_common.py                    | 31 ++++++++++++++++++-
+ 2 files changed, 46 insertions(+), 6 deletions(-)
 
-Index: openscap-1.3.5/utils/oscap_docker_python/get_cve_input.py
-===================================================================
---- openscap-1.3.5.orig/utils/oscap_docker_python/get_cve_input.py
-+++ openscap-1.3.5/utils/oscap_docker_python/get_cve_input.py
+diff --git a/utils/oscap_docker_python/get_cve_input.py b/utils/oscap_docker_python/get_cve_input.py
+index 6d77bdb..bb38e77 100644
+--- a/utils/oscap_docker_python/get_cve_input.py
++++ b/utils/oscap_docker_python/get_cve_input.py
 @@ -31,9 +31,12 @@ class getInputCVE(object):
  
      hdr = {'User-agent': 'Mozilla/5.0'}
@@ -49,11 +49,11 @@ Index: openscap-1.3.5/utils/oscap_docker_python/get_cve_input.py
          if self._is_cache_same(dest_file, dist_url):
              return dest_file
  
-Index: openscap-1.3.5/utils/oscap_docker_python/oscap_docker_common.py
-===================================================================
---- openscap-1.3.5.orig/utils/oscap_docker_python/oscap_docker_common.py
-+++ openscap-1.3.5/utils/oscap_docker_python/oscap_docker_common.py
-@@ -55,7 +55,7 @@ def get_dist(mountpoint, oscap_binary, l
+diff --git a/utils/oscap_docker_python/oscap_docker_common.py b/utils/oscap_docker_python/oscap_docker_common.py
+index c9afd6b..30289fd 100644
+--- a/utils/oscap_docker_python/oscap_docker_common.py
++++ b/utils/oscap_docker_python/oscap_docker_common.py
+@@ -55,7 +55,7 @@ def get_dist(mountpoint, oscap_binary, local_env):
  
      '''
      Test the chroot and determine what RHEL dist it is; returns
@@ -62,7 +62,7 @@ Index: openscap-1.3.5/utils/oscap_docker_python/oscap_docker_common.py
      '''
  
      cpe_dict = '/usr/share/openscap/cpe/openscap-cpe-oval.xml'
-@@ -77,3 +77,32 @@ def get_dist(mountpoint, oscap_binary, l
+@@ -77,3 +77,32 @@ def get_dist(mountpoint, oscap_binary, local_env):
          if "{0}{1}: true".format(CPE_RHEL, dist) in result.stdout:
              print("This system seems based on RHEL{0}.".format(dist))
              return dist
@@ -95,3 +95,6 @@ Index: openscap-1.3.5/utils/oscap_docker_python/oscap_docker_common.py
 +            print("This system seems based on SLES {0}.".format(dist))
 +            return dist
 +    print("System version not detected.")
+-- 
+2.40.0
+
