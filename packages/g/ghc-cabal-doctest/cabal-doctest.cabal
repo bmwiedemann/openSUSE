@@ -1,6 +1,6 @@
 name:               cabal-doctest
 version:            1.0.9
-x-revision:         2
+x-revision:         3
 synopsis:           A Setup.hs helper for running doctests
 description:
   As of now (end of 2021), there isn't @cabal doctest@
@@ -21,8 +21,9 @@ extra-source-files:
   README.md
 
 tested-with:
-  GHC == 9.4.1
-  GHC == 9.2.4
+  GHC == 9.6.0
+  GHC == 9.4.4
+  GHC == 9.2.6
   GHC == 9.0.2
   GHC == 8.10.7
   GHC == 8.8.4
@@ -47,7 +48,7 @@ library
   other-extensions:
   build-depends:
       base       >=4.3  && <5
-    , Cabal      >=1.10 && <3.10
+    , Cabal      >=1.10 && <3.12
     , directory
     , filepath
 
