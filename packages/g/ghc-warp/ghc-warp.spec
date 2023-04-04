@@ -17,49 +17,81 @@
 
 
 %global pkg_name warp
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3.23
+Version:        3.3.25
 Release:        0
 Summary:        A fast, light-weight web server for WAI applications
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-auto-update-devel
+BuildRequires:  ghc-auto-update-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bsb-http-chunked-devel
+BuildRequires:  ghc-bsb-http-chunked-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-case-insensitive-devel
+BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-http-date-devel
+BuildRequires:  ghc-http-date-prof
 BuildRequires:  ghc-http-types-devel
+BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-http2-devel
+BuildRequires:  ghc-http2-prof
 BuildRequires:  ghc-iproute-devel
+BuildRequires:  ghc-iproute-prof
 BuildRequires:  ghc-network-devel
+BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-recv-devel
+BuildRequires:  ghc-recv-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-simple-sendfile-devel
+BuildRequires:  ghc-simple-sendfile-prof
 BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-streaming-commons-devel
+BuildRequires:  ghc-streaming-commons-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-manager-devel
+BuildRequires:  ghc-time-manager-prof
 BuildRequires:  ghc-unix-compat-devel
+BuildRequires:  ghc-unix-compat-prof
 BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-unliftio-devel
+BuildRequires:  ghc-unliftio-prof
 BuildRequires:  ghc-vault-devel
+BuildRequires:  ghc-vault-prof
 BuildRequires:  ghc-wai-devel
+BuildRequires:  ghc-wai-prof
 BuildRequires:  ghc-word8-devel
+BuildRequires:  ghc-word8-prof
 BuildRequires:  ghc-x509-devel
+BuildRequires:  ghc-x509-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-http-client-devel
+BuildRequires:  ghc-http-client-prof
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 %endif
 
 %description
@@ -77,9 +109,24 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -101,5 +148,10 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md README.md
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
