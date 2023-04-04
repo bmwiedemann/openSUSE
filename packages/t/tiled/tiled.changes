@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  4 12:56:27 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.1:
+  * Make panning with Space require pressing a mouse button as well (#3626)
+  * Scripting: Added read-only access to Project properties (by dogboydog, #3622)
+  * Scripting: Fixed behavior of Dialog.SameWidgetRows (#3607)
+  * Fixed object labels to adjust to application font changes
+  * Fixed grid rendering for odd Hex Side Length values (#3623)
+  * Fixed tile stamp getting messed up on staggered maps in some cases (#3431)
+  * JSON plugin: Fixed loading of empty tilesets created by script (#3542)
+  * Godot 4 plugin: Removed depth limit for .godot project file (#3612)
+  * Improved Terrain Brush for Hexagonal (Staggered) maps with side length 0 (#3617)
+  * Removed "Add Folder to Project" button from the startup page
+  * Qt 6: Increased the image allocation limit from 128 MB to 1 GB (#3616)
+  * Qt 6 / Linux: Fixed long startup time for some icon themes
+  * snap: Updated from core20 to core22 (now uses Qt 5.15)
+  * Qbs: Added projects.Tiled.libDir option (#3613)
+- Remove tiled-1.10.0-lib.patch
+
+-------------------------------------------------------------------
 Wed Mar 29 16:57:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Bump qbs setup-toolchains call to gcc++-13 now that we are using

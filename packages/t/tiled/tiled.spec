@@ -17,14 +17,12 @@
 
 
 Name:           tiled
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        A tilemap editor
 License:        GPL-2.0-or-later
 URL:            https://www.mapeditor.org
 Source:         https://github.com/mapeditor/tiled/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mvetter@suse.com tiled-1.10.0-lib.patch -- gh/mapeditor/tiled#3613
-Patch0:         tiled-1.10.0-lib.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -63,9 +61,6 @@ and tmxrasterizer which is also a command line tool.
 
 %prep
 %setup -q
-%if "%{_lib}" == "lib64"
-%patch0 -p1
-%endif
 # Remove copy of zlib
 rm -rf src/zlib
 
@@ -74,7 +69,7 @@ rm -rf src/zlib
 qbs setup-toolchains --type gcc %{_bindir}/g++-13 gcc
 qbs setup-qt %{_bindir}/qmake6 defprof
 qbs config defaultProfile defprof
-qbs qbs.installPrefix:"%{_prefix}" projects.Tiled.useRPaths:false
+qbs qbs.installPrefix:"%{_prefix}" projects.Tiled.useRPaths:false projects.Tiled.libDir:%{_lib}
 
 %install
 qbs install --install-root %{buildroot}
