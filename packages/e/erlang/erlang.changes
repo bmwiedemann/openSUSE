@@ -1,4 +1,361 @@
 -------------------------------------------------------------------
+Sat Mar 25 10:06:34 UTC 2023 - matwey.kornilov@gmail.com
+
+- Changes for 25.3:
+  * reltool: Fixed a bug that would cause analysis to crash.
+  * stdlib: Fixed a bug that would cause analysis to crash.
+  * stdlib: Fixed a crash when formatting stack traces for error
+    reports.
+  * stdlib: Instead of crashing, the list_to_integer/1 and
+    list_to_integer/2 BIFs now raise the system_limit exception for
+    overlong lists that can't be converted to integers. Similarly,
+    the string:to_integer/1 BIF now returns {error,system_limit}
+    for overlong lists.
+  * stdlib: Removal of non-necessary undefined types added to the
+    state's supervisor record.
+  * compiler: Fixed a bug that would cause the compiler to hang.
+  * compiler: Fixed a crash when compiling code that contained
+    maybe expressions.
+  * compiler: Constructing a binary with an explicit size of all
+    for a binary segment would crash the compiler.
+  * compiler: The compiler would generate incorrect code for the
+    following type of expression: Pattern = BoundVar1 = . . . =
+    BoundVarN = Expression An exception should be raised if any of
+    the bound variables have different values than Expression. The
+    compiler would generate code that would cause the bound
+    variables to be bound to the value of Expressionwhether the
+    value matched or not.
+  * xmerl: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * megaco: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * debugger: Fixed a bug that would cause analysis to crash.
+  * erts: Fixed a bug on Windows where file:read_file_info/1 would
+    fail for files with corrupt metadata.
+  * erts: Fix process_info(_, binary) to again include "writable
+    binaries" which were lost in OTP-25.0. Writable binaries are an
+    optimization used when binaries are appended upon in a loop.
+  * erts: Fix rare race when receiving fragmented messages on a
+    terminating connection. Could potentially cause memory leaks as
+    well as double free crashes. Bug exists since OTP 22.0.
+  * erts: Fixed bug that could maybe cause problems when a file
+    descriptor number is closed by a linked in driver and then
+    opened (reused) and passed to enif_select by a NIF. No actual
+    symptoms seen, only failed internal assertions in debug build.
+  * erts: The runtime system could crash when tracing a process
+    executing on a dirty scheduler.
+  * erts: In the binary syntax, attempting to match out integers
+    with size exceeding 2 GiB could crash the runtime system.
+  * erts: Fixed edge case in floating-point negation where A = 0.0,
+    B = -A did not produce B = -0.0 on x86_64 JIT.
+  * erts: Fixed an issue in the JIT that could crash the emulator
+    on some platforms.
+  * erts: Added meta data to the windows installer.
+  * erts: Fixed ETS insertion order into bag and duplicate_bag of
+    tuples with identical keys when passed in a list to
+    ets:insert/2. The insert order has been head-to-tail but was
+    accidentally changed in OTP 23.0. For bag it was reverted
+    (tail-to-head), while for duplicate_bag it was sometimes
+    reverted depending on the length of the list and number of
+    "reductions" left for the calling process. This fix changes the
+    insert order of ets:insert/2 back to always be head-to-tail of
+    the list argument.
+  * erts: With the JIT for AArch64 (AMD64), calling bxor in with
+    non-integer arguments in a guard would crash the runtime
+    system.
+  * erts: Fix bug regarding process flag max_heap_size. Could cause
+    strange behavior when a process was killed due to exceeding the
+    limit.
+  * erts: Fixed binary comprehensions to be similar to other
+    creation of binary data with respect to its contribution of
+    triggering garbage collection.
+  * erts: In rare circumstances, when a process exceeded its
+    allowed heap size set by option max_heap_size, it would not be
+    killed as it should be, but instead enter a kind of zombie
+    state it would never get out of.
+  * erts: Instead of crashing, the list_to_integer/1 and
+    list_to_integer/2 BIFs now raise the system_limit exception for
+    overlong lists that can't be converted to integers. Similarly,
+    the string:to_integer/1 BIF now returns {error,system_limit}
+    for overlong lists.
+  * erts: Active process aliases of a process at its termination
+    leaked memory.
+  * erts: Support for fully asynchronous distributed signaling
+    where send operations never block. This functionality is by
+    default disabled and can be enabled per process. For more
+    information see the documentation of process_flag(async_dist,
+    Bool).
+  * erts: Added the +JPperf no_fp option to explicitly disable
+    Erlang frame pointers otherwise added when using the +JPperf
+    map option.
+  * erl_interface: Accept connection setup from OTP 23 and 24 nodes
+    that are not using epmd.
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * syntax_tools: erl_syntax_lib:annotate_bindings/1,2 will now
+    properly annotate named functions and their arguments.
+  * kernel: Fixed a bug on Windows where file:read_file_info/1
+    would fail for files with corrupt metadata.
+  * kernel: Accept connection setup from OTP 23 and 24 nodes that
+    are not using epmd.
+  * public_key: As different solutions of verifying certificate
+    revocation exists move the decode of 'CRLDistributionPoints' so
+    that it will only be decode. When it is actually used in the
+    verification process. This would enable interoperability with
+    systems that use certificates with an invalid empty
+    CRLDistributionPoints extension that they want to ignore and
+    make verification by other means.
+  * public_key: public_key:pkix_path_validation validates
+    certificates expiring after 2050
+  * public_key: Do not leave exit message in message queue after
+    calling cacerts_load() on MacOS.
+  * public_key: Replace size/1 with either tuple_size/1 or
+    byte_size/1 The size/1 BIF is not optimized by the JIT, and its
+    use can result in worse types for Dialyzer. When one knows that
+    the value being tested must be a tuple, tuple_size/1 should
+    always be preferred. When one knows that the value being tested
+    must be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * ssl: Fixed that new dtls connections from the same client ip
+    port combination works. If there is a process waiting for
+    accept the new connection will connect to that, otherwise it
+    will try to re-connect to the old server connection.
+  * ssl: When shutting down a node that uses SSL distribution
+    (-proto_dist inet_tls), a confusing error message about an
+    unexpected process exit was printed. This particular message is
+    no longer generated.
+  * ssl: fixes the type spec for ssl:format_error/1
+  * ssl: Replace size/1 with either tuple_size/1 or byte_size/1 The
+    size/1 BIF is not optimized by the JIT, and its use can result
+    in worse types for Dialyzer. When one knows that the value
+    being tested must be a tuple, tuple_size/1 should always be
+    preferred. When one knows that the value being tested must be a
+    binary, byte_size/1 should be preferred. However, byte_size/1
+    also accepts a bitstring (rounding up size to a whole number of
+    bytes), so one must make sure that the call to byte_size/ is
+    preceded by a call to is_binary/1 to ensure that bitstrings are
+    rejected. Note that the compiler removes redundant calls to
+    is_binary/1, so if one is not sure whether previous code had
+    made sure that the argument is a binary, it does not harm to
+    add an is_binary/1 test immediately before the call to
+    byte_size/1.
+  * jinterface: Accept connection setup from OTP 23 and 24 nodes
+    that are not using epmd.
+  * os_mon: The port programs used by cpu_sup and memsup are now
+    gracefully shut down when cpu_sup and memsup are shut down.
+  * eunit: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * crypto: A user defined runtime library path configured using
+    --with-ssl-rpath=<PATHS> could fail to be enabled.
+  * crypto: Ensure that configure fails if a user defined runtime
+    library path has been passed by the user, but cannot set.
+  * mnesia: Improved consistency for dirty writes when a table was
+    added with add_table_copy/3. Fixed a problem with sticky write,
+    which could lead to inconsistent data.
+  * mnesia: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * common_test: Renamed undocumented macro CT_PEER/3 to
+    CT_PEER_REL/3.
+  * ssh: With this change, PKCS8 formatted private key file is
+    properly decoded and SSH daemon with such key can be started.
+  * ssh: Replace size/1 with either tuple_size/1 or byte_size/1 The
+    size/1 BIF is not optimized by the JIT, and its use can result
+    in worse types for Dialyzer. When one knows that the value
+    being tested must be a tuple, tuple_size/1 should always be
+    preferred. When one knows that the value being tested must be a
+    binary, byte_size/1 should be preferred. However, byte_size/1
+    also accepts a bitstring (rounding up size to a whole number of
+    bytes), so one must make sure that the call to byte_size/ is
+    preceded by a call to is_binary/1 to ensure that bitstrings are
+    rejected. Note that the compiler removes redundant calls to
+    is_binary/1, so if one is not sure whether previous code had
+    made sure that the argument is a binary, it does not harm to
+    add an is_binary/1 test immediately before the call to
+    byte_size/1.
+  * inets: With this change, handling of URI to a folder, with
+    missing trailing / and a query component present is fixed.
+  * inets: Adds more type information to the inets app, thus
+    improving the errors that static analysis tools can detect. The
+    addition of type information to records and the updates to
+    function heads help static analysis tools to understand that
+    some values in the records cannot be 'undefined', thus making
+    static tools to type check correctly more modules in the inets
+    app
+  * inets: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * snmp: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * ftp: Replace size/1 with either tuple_size/1 or byte_size/1 The
+    size/1 BIF is not optimized by the JIT, and its use can result
+    in worse types for Dialyzer. When one knows that the value
+    being tested must be a tuple, tuple_size/1 should always be
+    preferred. When one knows that the value being tested must be a
+    binary, byte_size/1 should be preferred. However, byte_size/1
+    also accepts a bitstring (rounding up size to a whole number of
+    bytes), so one must make sure that the call to byte_size/ is
+    preceded by a call to is_binary/1 to ensure that bitstrings are
+    rejected. Note that the compiler removes redundant calls to
+    is_binary/1, so if one is not sure whether previous code had
+    made sure that the argument is a binary, it does not harm to
+    add an is_binary/1 test immediately before the call to
+    byte_size/1.
+  * dialyzer: Fixed a bug that would cause analysis to crash.
+  * dialyzer: Replace size/1 with either tuple_size/1 or
+    byte_size/1 The size/1 BIF is not optimized by the JIT, and its
+    use can result in worse types for Dialyzer. When one knows that
+    the value being tested must be a tuple, tuple_size/1 should
+    always be preferred. When one knows that the value being tested
+    must be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+  * tftp: Replace size/1 with either tuple_size/1 or byte_size/1
+    The size/1 BIF is not optimized by the JIT, and its use can
+    result in worse types for Dialyzer. When one knows that the
+    value being tested must be a tuple, tuple_size/1 should always
+    be preferred. When one knows that the value being tested must
+    be a binary, byte_size/1 should be preferred. However,
+    byte_size/1 also accepts a bitstring (rounding up size to a
+    whole number of bytes), so one must make sure that the call to
+    byte_size/ is preceded by a call to is_binary/1 to ensure that
+    bitstrings are rejected. Note that the compiler removes
+    redundant calls to is_binary/1, so if one is not sure whether
+    previous code had made sure that the argument is a binary, it
+    does not harm to add an is_binary/1 test immediately before the
+    call to byte_size/1.
+- Changes for 25.2.3:
+  * erts: Comparisons between small numbers and pids or ports would
+    in some edge cases say that the number was greater than the pid
+    or port, violating the term order.
+  * erts: process_info(Pid, status) when Pid /= self() could return
+    an erroneous result.
+  * ssl: Maximize compatibility by ignoring change_cipher_spec
+    during handshake even if middle_box_mode is not negotiated
+    (mandated by client)
+  * ssl: Move assert of middlebox message after an
+    hello_retry_request to maximize interoperability. Does not
+    changes semantics of the protocol only allows unexpected
+    message delay from server.
+  * ssh: With this change, ssh application does not crash when
+    formatting some of info reports for unsuccessful connections.
+  * ssh: With this change, ssh does not log extensively long
+    messages.
+  * inets: Ensure graceful shutdown
+  * inets: Return type of the type specification for function
+    httpc:cookie_header/{1,2,3} has been fixed from -spec
+    cookie_header(url()) -> [{ field(), value() }] | {error,
+    Reason} to -spec cookie_header(url()) -> { field(), value() } |
+    {error, Reason}
+- Changes for 25.2.2:
+  * ftp: Fixes calls to ftp:nlist/2 returning {error, epath} when
+    the file / folder exists
+- Changes for 25.2.1:
+  * compiler: Fixed a bug that could cause legal code to fail
+    validation.
+  * compiler: Eliminated a rare crash in the beam_types module.
+  * erts: Fixed a bug in selective receive optimization that could
+    crash 32-bit emulators.
+  * erts: A race condition which was very rarely triggered could
+    cause the signal queue of a process to become inconsistent
+    causing the runtime system to crash.
+  * kernel: The tcp connect option 'bind_to_device' could not be
+    used with inet_backend = 'socket'. 'inet' requires value type
+    binarry() and 'socket' requires value type 'string()'.
+  * kernel: Minor issue processing options when calling
+    gen_tcp:connect with a sockaddr() and inet_backend = socket.
+  * common_test: Change timeout to infinity for gen_server calls in
+    cth_log_redirect
+  * inets: fixes a missing case of the type specification for
+    httpd:info/2/3/4
+  * snmp: Single threaded agent crash when vacm table not properly
+    initiated.
+
+-------------------------------------------------------------------
 Sun Dec 18 08:45:06 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 25.2:
