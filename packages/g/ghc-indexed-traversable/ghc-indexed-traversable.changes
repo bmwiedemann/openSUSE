@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 12 10:33:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update indexed-traversable to version 0.1.2.1.
+  # 0.1.2.1 [2022-12-28]
+
+  - TraversableWithIndex [] doesn't use `zip [0..]` idiom anymore.
+    https://gitlab.haskell.org/ghc/ghc/-/issues/22673
+
+-------------------------------------------------------------------
 Wed Aug 10 20:01:57 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update indexed-traversable to version 0.1.2 revision 2.
