@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  2 18:35:16 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use absolute path to change into minizp source dir to be independent
+  from the current path used by mingw64-cross-cmake provided 
+  macros
+- Drop obsolete build dependencies (boo#1201119)
+
+-------------------------------------------------------------------
 Fri Mar 17 08:59:44 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix not finding zconf.h and libz.dll.a with autotools submodule build
