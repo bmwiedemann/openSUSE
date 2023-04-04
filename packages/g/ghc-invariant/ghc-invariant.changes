@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Feb 27 12:52:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6.1.
+  # 0.6.1 [2023.02.27]
+  * Support `th-abstraction-0.5.*`.
+
+-------------------------------------------------------------------
 Sat Jul 23 18:37:39 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update invariant to version 0.6 revision 1.
