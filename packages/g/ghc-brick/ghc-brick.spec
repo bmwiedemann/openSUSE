@@ -17,6 +17,7 @@
 
 
 %global pkg_name brick
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
 Version:        1.6
@@ -26,32 +27,57 @@ License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bimap-devel
+BuildRequires:  ghc-bimap-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-config-ini-devel
+BuildRequires:  ghc-config-ini-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-contravariant-devel
+BuildRequires:  ghc-contravariant-prof
 BuildRequires:  ghc-data-clist-devel
+BuildRequires:  ghc-data-clist-prof
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-mtl-devel
+BuildRequires:  ghc-microlens-mtl-prof
+BuildRequires:  ghc-microlens-prof
 BuildRequires:  ghc-microlens-th-devel
+BuildRequires:  ghc-microlens-th-prof
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-text-zipper-devel
+BuildRequires:  ghc-text-zipper-prof
 BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vector-prof
 BuildRequires:  ghc-vty-devel
+BuildRequires:  ghc-vty-prof
 BuildRequires:  ghc-word-wrap-devel
+BuildRequires:  ghc-word-wrap-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-QuickCheck-prof
 %endif
 
 %description
@@ -82,6 +108,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
 %autosetup -n %{pkg_name}-%{version}
 
@@ -105,5 +147,10 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md README.md docs
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
