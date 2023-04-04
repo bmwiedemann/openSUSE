@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:19 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 13 16:43:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update jira-wiki-markup to version 1.5.1.
+  1.5.1
+  -----
+
+  Released 2023-03-13.
+
+  * Parser: Disallow image paths that start with a space.
+
+-------------------------------------------------------------------
+Wed Jan 11 13:22:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update jira-wiki-markup to version 1.5.0.
+  1.5.0
+  -----
+
+  Released 2023-01-11.
+
+  * Relaxed upper bounds for mtl, allow mtl 2.3.
+
+  * Fixed handling of character sequences that would be interpreted
+    as icons if they weren't followed by an alphanumeric character.
+    See also [pandoc issue #8511][].
+
+  [pandoc issue #8511]: https://github.com/jgm/pandoc/issues/8511
+
+-------------------------------------------------------------------
 Fri Jun  3 07:23:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update jira-wiki-markup to version 1.4.0 revision 1.
