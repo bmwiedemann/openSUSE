@@ -300,4 +300,17 @@
 - Pass over with spec-cleaner</comment>
     <requestid>1074723</requestid>
   </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>82509b5e685a87cf0937efd2d9cbaa74</srcmd5>
+    <version>1.0.2u</version>
+    <time>1680636443</time>
+    <user>dimstar_suse</user>
+    <comment>- Security Fix: [CVE-2023-0465, bsc#1209878]
+  * Invalid certificate policies in leaf certificates are silently ignored
+  * Add openssl-CVE-2023-0465.patch
+- Security Fix: [CVE-2023-0466, bsc#1209873]
+  * Certificate policy check not enabled
+  * Add openssl-CVE-2023-0466.patch</comment>
+    <requestid>1077222</requestid>
+  </revision>
 </revisionlist>

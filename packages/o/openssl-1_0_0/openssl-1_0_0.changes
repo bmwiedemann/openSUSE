@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  3 13:49:34 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-0465, bsc#1209878]
+  * Invalid certificate policies in leaf certificates are silently ignored
+  * Add openssl-CVE-2023-0465.patch
+- Security Fix: [CVE-2023-0466, bsc#1209873]
+  * Certificate policy check not enabled
+  * Add openssl-CVE-2023-0466.patch
+
+-------------------------------------------------------------------
 Mon Mar 27 11:58:44 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security Fix: [CVE-2023-0464, bsc#1209624]

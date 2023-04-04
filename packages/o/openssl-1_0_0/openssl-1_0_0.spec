@@ -122,8 +122,12 @@ Patch96:        openssl-CVE-2023-0286.patch
 Patch97:        openssl-fips_fix_DH_key_generation.patch
 # PATCH-FIX-UPSTREAM: bsc#1209624, CVE-2023-0464 Excessive Resource Usage Verifying X.509 Policy Constraints
 Patch98:        openssl-CVE-2023-0464.patch
+# PATCH-FIX-UPSTREAM: bsc#1209878, CVE-2023-0465 Invalid certificate policies in leaf certificates are silently ignored
+Patch99:        openssl-CVE-2023-0465.patch
+# PATCH-FIX-UPSTREAM: bsc#1209873, CVE-2023-0466 Certificate policy check not enabled
+Patch100:       openssl-CVE-2023-0466.patch
 # steam patches
-Patch100:       openssl-fix-cpuid_setup.patch
+Patch150:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
 Patch200:       openssl-1.0.2e-rpmbuild.patch
 BuildRequires:  bc
@@ -298,6 +302,8 @@ testing framework and utilities.
 %patch96 -p1
 %patch97 -p1
 %patch98 -p1
+%patch99 -p1
+%patch100 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
@@ -311,7 +317,7 @@ cp -aR * ../steam/
 
 # apply steam patches
 pushd ../steam > /dev/null
-%patch100 -p1
+%patch150 -p1
 popd > /dev/null
 
 # create copy to build compat .so.10 library
