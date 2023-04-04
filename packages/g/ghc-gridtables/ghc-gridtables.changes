@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Sep 30 16:29:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update gridtables to version 0.1.0.0.
+  ## gridtables-0.1.0.0
+
+  Release pending.
+
+  -   Added support for table foots.
+
+-------------------------------------------------------------------
 Wed Aug 31 11:28:11 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update gridtables to version 0.0.3.0 revision 1.
