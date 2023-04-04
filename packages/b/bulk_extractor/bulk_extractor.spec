@@ -1,7 +1,7 @@
 #
 # spec file for package bulk_extractor
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %ifarch aarch64 %{arm}
 # Workaround until fixed upstream - https://github.com/simsong/bulk_extractor/issues/360
@@ -24,10 +25,11 @@ Name:           bulk_extractor
 Version:        2.0.0
 Release:        0
 Summary:        Bulk Email and URL extraction tool
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/simsong/bulk_extractor/wiki/Introducing-bulk_extractor
+URL:            https://github.com/simsong/bulk_extractor/wiki/Introducing-bulk_extractor
 Source:         https://github.com/simsong/bulk_extractor/releases/download/v2.0.0/bulk_extractor-2.0.0.tar.gz
+Patch1:         gcc13.diff
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
@@ -48,19 +50,18 @@ tools. bulk_extractor also created a histograms of features that it finds,
 as features that are more common tend to be more important.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 install -dm 0755 "%{buildroot}/%{_datadir}/%{name}"
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog README COPYING 
+%doc ChangeLog README COPYING
 %doc doc
 %{_mandir}/man1/bulk_extractor.1.gz
 %{_bindir}/bulk_extractor

@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>982889</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c72ab4cb0d263a314d6a14b6908a955</srcmd5>
+    <version>2.0.0</version>
+    <time>1680636364</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc13.diff</comment>
+    <requestid>1077103</requestid>
+  </revision>
 </revisionlist>

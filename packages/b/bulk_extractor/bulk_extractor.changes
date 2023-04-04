@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  3 22:32:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gcc13.diff
+
+-------------------------------------------------------------------
 Mon Jun 13 11:51:17 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on aarch64 and %arm until fixed upstream
