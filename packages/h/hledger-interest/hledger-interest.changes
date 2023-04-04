@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Mar 14 07:36:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jan 16 11:44:38 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hledger-interest to version 1.6.5.
