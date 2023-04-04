@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+- Apply "dont-depend-on-obsolete-persistent-template.patch" to avoid
+  depending on the obsolete persistent-templates package.
+
+-------------------------------------------------------------------
 Fri Apr 15 17:21:58 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yesod-persistent to version 1.6.0.8.
@@ -24,9 +32,9 @@ Wed Mar 31 14:28:43 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Sat Nov  7 15:35:56 UTC 2020 - psimons@suse.com
 
@@ -49,4 +57,3 @@ Tue Aug 18 10:46:47 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun  9 09:26:14 UTC 2020 - psimons@suse.com
 
 - Add yesod-persistent at version 1.6.0.4.
-
