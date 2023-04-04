@@ -194,4 +194,12 @@ languages.</comment>
     <comment>version update</comment>
     <requestid>1059068</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bc3e4cd469db79211064b79c158220f3</srcmd5>
+    <version>5.1.10</version>
+    <time>1680636004</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075878</requestid>
+  </revision>
 </revisionlist>
