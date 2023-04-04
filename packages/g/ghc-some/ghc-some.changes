@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 15 09:33:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update some to version 1.0.5.
+  # 1.0.5
+
+  - Add EqP and OrdP classes.
+    These are strong versions of Eq1 and Ord1, and on the other hand
+    weaker versions of `GEq` and `GCompare`.
+    They are exactly what's needed for `Eq` and `Ord` instances of `Some`.
+
+    The naming is unfortunate: `GShow` would be better named `ShowP`,
+    as it's similar version of `Show1`.
+
+    Note: we could add `ReadP` with `readsPrecP :: Int -> ReadS (t a)` method,
+    but it will barely have any instances.
+    `GRead` is different, as it can reify the type index for many types,
+    e.g. for the singletons.
+
+    In some future there will be major version of `some` with following
+    breaking changes:
+    - `EqP` and `OrdP` will become superclasses of `GEq` and `GCompare`
+    - `Eq (Some t)` will require `EqP t`, similarly for `Ord` and `OrdP`.
+    - `GShow` will get `forall a. Show (f a)` superclass. (This will cause removal of `Product` and `Sum` instances for `base <4.18`).
+
+    To ease future transition you may
+    - Define `EqP` and `OrdP` instances for your types.
+      The `defaultEq` and `defaultCompare` methods can be used to define
+      `eqp` and `comparep` from `GEq` and `GCompare` instances respectively.
+    - Move to use `GHC.Generics.:*:` and `:+:` instead of `Data.Functor.Product` and `Sum`, as these have better `Eq` and `Ord` instances.
+
+-------------------------------------------------------------------
 Wed Oct  5 08:34:30 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update some to version 1.0.4.1.
