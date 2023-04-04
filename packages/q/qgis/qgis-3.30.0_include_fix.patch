@@ -1,0 +1,32 @@
+diff -ur qgis-3.30.0/external/lazperf/Extractor.hpp qgis-3.30.0_fix/external/lazperf/Extractor.hpp
+--- qgis-3.30.0/external/lazperf/Extractor.hpp	2023-03-03 20:25:40.000000000 +0100
++++ qgis-3.30.0_fix/external/lazperf/Extractor.hpp	2023-04-04 09:00:06.127250079 +0200
+@@ -34,6 +34,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <cstring>
+ #include <vector>
+ 
+diff -ur qgis-3.30.0/external/untwine/api/QgisUntwine.hpp qgis-3.30.0_fix/external/untwine/api/QgisUntwine.hpp
+--- qgis-3.30.0/external/untwine/api/QgisUntwine.hpp	2023-03-03 20:25:40.000000000 +0100
++++ qgis-3.30.0_fix/external/untwine/api/QgisUntwine.hpp	2023-04-04 09:40:57.344786266 +0200
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
+diff -ur qgis-3.30.0/external/untwine/untwine/VoxelKey.hpp qgis-3.30.0_fix/external/untwine/untwine/VoxelKey.hpp
+--- qgis-3.30.0/external/untwine/untwine/VoxelKey.hpp	2023-03-03 20:25:40.000000000 +0100
++++ qgis-3.30.0_fix/external/untwine/untwine/VoxelKey.hpp	2023-04-04 08:48:07.969689579 +0200
+@@ -10,6 +10,7 @@
+  *                                                                           *
+  ****************************************************************************/
+ 
++#include <cstdint>
+ #include <string>
+ #include <algorithm>
+ 

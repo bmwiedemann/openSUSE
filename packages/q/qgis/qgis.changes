@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 08:48:38 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add qgis-3.30.0_include_fix.patch to fix missing include files
+
+-------------------------------------------------------------------
 Thu Mar  9 11:17:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.30.0:

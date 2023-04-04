@@ -34,9 +34,12 @@ Source:         https://qgis.org/downloads/qgis-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
+# PATCH-FIX-OPENSUSE - adapt include path of fastcgi
 Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch2:         qgis-fix-cmake-findpdal.patch
+# PATCH-FIX-UPSTREAM - add missing include file https://github.com/qgis/QGIS/issues/52526
+Patch3:         qgis-3.30.0_include_fix.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
