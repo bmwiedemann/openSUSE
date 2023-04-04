@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Jun 21 05:22:57 UTC 2021 - psimons@suse.com
 
 - Update network-bsd to version 2.8.1.0 revision 4.
