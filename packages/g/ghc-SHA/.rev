@@ -86,4 +86,12 @@ dep of pandoc</comment>
     <comment>update haskell stack in openSUS</comment>
     <requestid>857206</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>75e4a0d66d7b28662c0dd28d910a2d81</srcmd5>
+    <version>1.6.4.4</version>
+    <time>1680636187</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076036</requestid>
+  </revision>
 </revisionlist>
