@@ -132,9 +132,13 @@ for i in xdm-config Xservers; do
 	cp usr%{_sysconfdir}/X11/xdm/$i etc/X11/xdm/$i
 done
 mkdir -p ./%{_pam_vendordir}
+rm etc/pam.d/{xdm,xdm-np}.sle15
 mv etc/pam.d/* ./%{_pam_vendordir}/
 %else
 patch -p0 < %{PATCH4}
+rm etc/pam.d/{xdm,xdm-np}
+mv etc/pam.d/{xdm.sle15,xdm}
+mv etc/pam.d/{xdm-np.sle15,xdm-np}
 %endif
 %if "%{_fillupdir}" != "%{_localstatedir}/adm/fillup-templates"
   mkdir -p %{buildroot}$(dirname %{_fillupdir})

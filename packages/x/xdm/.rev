@@ -1032,4 +1032,15 @@
   if KEYMAP_TOGGLE has been set (boo#1209594)</comment>
     <requestid>1073959</requestid>
   </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>1da92012e349a6245c4482f0a9dae7b5</srcmd5>
+    <version>1.1.14</version>
+    <time>1680635828</time>
+    <user>dimstar_suse</user>
+    <comment>- Create two set of pam configuration files:
+  + *.sle15 are for SLES15 and older
+  + add postlogin-* includes to the others as required by new 
+    openSUSE's PAM config policy</comment>
+    <requestid>1076914</requestid>
+  </revision>
 </revisionlist>

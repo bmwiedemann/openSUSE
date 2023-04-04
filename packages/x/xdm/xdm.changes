@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  3 11:24:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Create two set of pam configuration files:
+  + *.sle15 are for SLES15 and older
+  + add postlogin-* includes to the others as required by new 
+    openSUSE's PAM config policy 
+
+-------------------------------------------------------------------
 Thu Mar 23 12:12:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - No longer run "localectl set-x11-keymap ..." and only run 
