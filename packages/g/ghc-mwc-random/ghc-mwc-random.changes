@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Nov 15 06:57:18 UTC 2021 - psimons@suse.com
 
 - Update mwc-random to version 0.15.0.2 revision 1.
