@@ -1,7 +1,7 @@
 #
 # spec file for package python-platformdirs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-platformdirs
-Version:        2.5.2
+Version:        3.2.0
 Release:        0
 Summary:        Module for determining appropriate platform-specific dirs
 License:        MIT
@@ -52,8 +52,8 @@ A small Python module for determining appropriate platform-specific dirs, e.g. a
 %pytest
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
-%license LICENSE.txt
+%doc README.rst
+%license LICENSE
 %{python_sitelib}/platformdirs
 %{python_sitelib}/platformdirs-%{version}*-info
 
