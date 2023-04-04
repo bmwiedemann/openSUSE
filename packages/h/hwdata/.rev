@@ -614,4 +614,12 @@
   * Update pci, usb and vendor ids</comment>
     <requestid>1069850</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>6f9c820fc6129ccb93b6c986d3ce3f44</srcmd5>
+    <version>0.369</version>
+    <time>1680635841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077014</requestid>
+  </revision>
 </revisionlist>
