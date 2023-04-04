@@ -243,4 +243,14 @@
     <comment></comment>
     <requestid>1075689</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>24e588792ff3efcb4a8a4b5fdfc672d2</srcmd5>
+    <version>6.5.3</version>
+    <time>1680636435</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix debugsources error by having and %install section in :test
+  flavor
+</comment>
+    <requestid>1077226</requestid>
+  </revision>
 </revisionlist>

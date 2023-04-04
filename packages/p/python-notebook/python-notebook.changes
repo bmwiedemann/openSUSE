@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  4 14:51:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix debugsources error by having and %install section in :test
+  flavor
+
+-------------------------------------------------------------------
 Thu Mar 30 17:50:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Pin to jupyter-client < 8

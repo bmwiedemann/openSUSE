@@ -171,11 +171,13 @@ This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 # We don't want to run selenium tests
 rm -rf notebook/tests/selenium
 
-%if !%{with test}
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
