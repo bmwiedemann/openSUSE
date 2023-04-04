@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Mar 17 00:23:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Feb 22 18:24:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Nov 19 20:56:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.3.
+  0.6.2.3
+  -------
+
+  * Bump base for GHC 9.4 comp
+  * Fix code to *really* support mtl-2.3
+
+  0.6.2.2
+  -------
+
+  * Fix broken compilation of test-suite with Cabal-syntax-3.8.1.0 on Hackage
+  * Huge README updates
+
+  0.6.2.1
+  -------
+
+  * Allow GHC-9.0 (base-4.15) (#265)
+  * Fix running `cabal repl hackage-security` (#263)
+
+  0.6.2.0
+  -------
+
+  * Safely prepare for when cabal factors out Cabal-syntax
+
+-------------------------------------------------------------------
 Mon Jan 17 11:19:09 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hackage-security to version 0.6.1.0.
