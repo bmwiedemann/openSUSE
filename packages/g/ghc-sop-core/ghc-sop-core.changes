@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Aug 22 18:17:21 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update sop-core to version 0.5.0.2 revision 1.
