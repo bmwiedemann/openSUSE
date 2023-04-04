@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Jan  8 14:38:02 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update deriving-aeson to version 0.2.9.
