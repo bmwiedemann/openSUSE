@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Nov 21 18:35:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update doctemplates to version 0.11.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Sat Aug 13 17:48:02 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update doctemplates to version 0.10.0.2 revision 1.
