@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 07:59:03 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgraded openssl-ibmca to version 2.4.0(bsc#1210058 and bsc#1210059) 
+
+-------------------------------------------------------------------
 Tue Mar 14 11:35:44 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated .spec file removed '#' from the line containing
