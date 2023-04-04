@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Wed May 25 21:25:21 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update regex-compat to version 0.95.2.1 revision 2.
