@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-statistics
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name statistics
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
 Version:        0.16.1.2
@@ -27,30 +28,54 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-async-devel
+BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-binary-devel
+BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-data-default-class-devel
+BuildRequires:  ghc-data-default-class-prof
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-dense-linear-algebra-devel
+BuildRequires:  ghc-dense-linear-algebra-prof
 BuildRequires:  ghc-math-functions-devel
+BuildRequires:  ghc-math-functions-prof
 BuildRequires:  ghc-mwc-random-devel
+BuildRequires:  ghc-mwc-random-prof
 BuildRequires:  ghc-parallel-devel
+BuildRequires:  ghc-parallel-prof
 BuildRequires:  ghc-primitive-devel
+BuildRequires:  ghc-primitive-prof
 BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-vector-algorithms-devel
+BuildRequires:  ghc-vector-algorithms-prof
 BuildRequires:  ghc-vector-binary-instances-devel
+BuildRequires:  ghc-vector-binary-instances-prof
 BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vector-prof
 BuildRequires:  ghc-vector-th-unbox-devel
+BuildRequires:  ghc-vector-th-unbox-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-erf-devel
+BuildRequires:  ghc-erf-prof
 BuildRequires:  ghc-ieee754-devel
+BuildRequires:  ghc-ieee754-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-expected-failure-devel
+BuildRequires:  ghc-tasty-expected-failure-prof
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
+BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description
@@ -82,6 +107,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
 %autosetup -n %{pkg_name}-%{version}
 find . -type f -exec chmod -x {} +
@@ -106,5 +147,10 @@ find . -type f -exec chmod -x {} +
 
 %files devel -f %{name}-devel.files
 %doc README.markdown changelog.md examples
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
