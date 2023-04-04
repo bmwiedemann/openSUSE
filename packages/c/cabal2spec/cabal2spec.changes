@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Mar 30 08:23:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cabal2spec to version 2.7.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Feb  2 11:27:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cabal2spec to version 2.6.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - disable %{ix86} build
