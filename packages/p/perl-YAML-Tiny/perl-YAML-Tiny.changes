@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 24 03:08:42 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.74
+   see /usr/share/doc/packages/perl-YAML-Tiny/Changes
+
+  1.74    2023-03-23 03:19:08Z
+
+          [FIXED]
+
+          - a few documentation tweaks (thanks, Giovanni Los and Richlv!)
+
+-------------------------------------------------------------------
 Thu Feb 22 07:17:25 UTC 2018 - coolo@suse.com
 
 - updated to 1.73
