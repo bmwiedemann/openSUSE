@@ -18,7 +18,7 @@
 
 %define lname   liblastlog2-0
 Name:           lastlog2
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Reports most recent login of users
 License:        BSD-2-Clause
@@ -29,7 +29,8 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(sqlite3)
-PreReq:         pam-config
+Requires(pre):  pam-config >= 2.4
+Requires(post): pam-config >= 2.4
 
 %description
 pam_lastlog2 and lastlog2 are Y2038 safe versions of the old lastlog utility. pam_lastlog2 collects all data in a sqlite3 database and lastlog2 formats and prints the contents. The username, port, and last login time will be printed.
@@ -70,7 +71,7 @@ to develop applications that needs to read, write or modify the lastlog2 databas
 %post
 %tmpfiles_create lastlog2.conf
 %service_add_post lastlog2-import.service
-pam-config -a --lastlog2
+pam-config -a --lastlog2 --lastlog2-silent_if=gdm,gdm-password,lxdm,lightdm,mdm,sddm
 
 %postun
 if [ "$1" -eq 0 ]; then

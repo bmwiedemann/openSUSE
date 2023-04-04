@@ -21,4 +21,12 @@ There should be a rpmlint which whitelists this PAM module.</comment>
 </comment>
     <requestid>1075214</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>400ec0aeb4b05f06ec6d2cd2e4b349d7</srcmd5>
+    <version>0.7.0</version>
+    <time>1680635876</time>
+    <user>dimstar_suse</user>
+    <comment>- Require pam-config 2.4 or newer (postlogin read fix) (forwarded request 1077080 from kukuk)</comment>
+    <requestid>1077081</requestid>
+  </revision>
 </revisionlist>

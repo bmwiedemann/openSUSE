@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  3 20:34:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require pam-config 2.4 or newer (postlogin read fix)
+
+-------------------------------------------------------------------
+Mon Apr  3 12:51:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require current enough pam-config for silent_if= option
+- Don't print lastlog messages with display manager
+
+-------------------------------------------------------------------
+Mon Apr  3 10:01:03 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 0.7.0
+  - pam_lastlog2: add silent_if= option
+  - pam_lastlog2: try PAM_XDISPLAY if PAM_RHOST is not set
+
+-------------------------------------------------------------------
 Wed Mar 29 12:19:00 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Version 0.6.2
