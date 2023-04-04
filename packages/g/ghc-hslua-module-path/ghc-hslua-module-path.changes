@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Fri Aug 19 11:09:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-path to version 1.0.3.
