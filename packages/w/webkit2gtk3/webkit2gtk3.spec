@@ -87,6 +87,10 @@ Source99:       webkit2gtk3.keyring
 Patch0:         regression-fix.patch
 # PATCH-FIX-UPSTREAM Fix rejected code by GCC 13: https://github.com/WebKit/WebKit/pull/11910
 Patch1:         gcc13-fix.patch
+# PATCH-FIX-UPSTREAM fix-gst-crash.patch -- Fix crash in webkit_media_stream_src_class_init()
+Patch2:         fix-gst-crash.patch
+# PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
+Patch3:         reproducibility.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel

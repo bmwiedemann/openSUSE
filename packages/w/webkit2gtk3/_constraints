@@ -1,12 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <constraints>
   <hardware>
+  <jobs>4</jobs>
     <disk>
-      <size unit="G">20</size>
+      <size unit="G">26</size>
     </disk>
     <physicalmemory>
-      <size unit="M">8000</size>
+      <size unit="G">15</size>
     </physicalmemory>
   </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
   <overwrite>
     <conditions>
       <arch>aarch64</arch>

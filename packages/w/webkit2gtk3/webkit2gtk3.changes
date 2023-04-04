@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 28 08:22:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-gst-crash.patch: Fix crash in
+  webkit_media_stream_src_class_init().
+  https://bugs.webkit.org/show_bug.cgi?id=254025
+- Add reproducibility.patch: Make build more reproducible. Still
+  not there yet though. Inject fixed year in file.
+
+-------------------------------------------------------------------
+Fri Mar 24 19:23:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Tweak constraints.
+
+-------------------------------------------------------------------
 Fri Mar 24 09:14:45 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add gcc13-fix.patch fix that handles invalid code as reported here:

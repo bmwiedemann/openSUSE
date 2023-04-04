@@ -1,0 +1,11 @@
+--- webkitgtk-2.40.0-orig/Source/JavaScriptCore/generator/GeneratedFile.rb	2023-02-20 10:22:05.321689800 +0100
++++ webkitgtk-2.40.0/Source/JavaScriptCore/generator/GeneratedFile.rb	2023-03-28 10:29:49.754813443 +0200
+@@ -25,7 +25,7 @@
+ require 'digest'
+ 
+ $LICENSE = <<-EOF
+-Copyright (C) #{Date.today.year} Apple Inc. All rights reserved.
++Copyright (C) 2023 Apple Inc. All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
