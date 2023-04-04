@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Sep 23 10:21:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cabal-plan to version 0.7.2.3.
+  ## 0.7.2.3
+
+  * Fix issue in previous release (license generation didn't work at all)
+
+  ## 0.7.2.2
+
+  * Use Cabal-syntax-3.8.1.0
+
+-------------------------------------------------------------------
 Wed Jan  5 16:52:17 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update cabal-plan to version 0.7.2.1 revision 1.
