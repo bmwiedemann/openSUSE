@@ -439,4 +439,12 @@ Partial support for SMBIOS 3.3.0:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1074666</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>a3a166bd8c646c99366e0e8f4a408377</srcmd5>
+    <version>3.5</version>
+    <time>1680635826</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the decoding of the last field of HPE OEM record type 237 (DIMM Vendor Information).</comment>
+    <requestid>1076890</requestid>
+  </revision>
 </revisionlist>

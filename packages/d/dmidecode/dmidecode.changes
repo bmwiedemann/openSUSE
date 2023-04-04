@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
-Mon Mar 20 10:27:24 UTC 2023 - Jean Delvare <jdelvare@suse.com>
+Mon Apr  3 10:04:57 UTC 2023 - Jean Delvare <jdelvare@suse.de>
+
+- dmioem-hpe-oem-record-237-firmware-change.patch: Fix the decoding
+  of the last field of HPE OEM record type 237 (DIMM Vendor
+  Information).
+
+-------------------------------------------------------------------
+Mon Mar 20 10:27:24 UTC 2023 - Jean Delvare <jdelvare@suse.de>
 
 - arm-use-alignment-workaround.patch: Fix the massive build
   warnings on armv7l.

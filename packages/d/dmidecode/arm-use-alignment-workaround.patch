@@ -1,5 +1,6 @@
 From: Jean Delvare <jdelvare@suse.de>
 Subject: Use -DALIGNMENT_WORKAROUND on arm as well
+Git-commit: a85ed8540993f4cba831e1d1d0224ba6640d9c4b
 
 The arm build log shows a lot warnings about casts increasing the
 required alignment of target type. This suggests that this
@@ -11,8 +12,8 @@ Signed-off-by: Jean Delvare <jdelvare@suse.de>
  config.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- dmidecode.orig/config.h
-+++ dmidecode/config.h
+--- dmidecode-3.5.orig/config.h
++++ dmidecode-3.5/config.h
 @@ -22,7 +22,7 @@
  #endif
  

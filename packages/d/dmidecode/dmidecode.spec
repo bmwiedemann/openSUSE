@@ -28,6 +28,7 @@ Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
 Source2:        %{name}.keyring
 Patch1:         arm-use-alignment-workaround.patch
+Patch2:         dmioem-hpe-oem-record-237-firmware-change.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -51,6 +52,7 @@ the BIOS told it to.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags}
