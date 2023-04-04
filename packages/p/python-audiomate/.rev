@@ -47,4 +47,13 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>895857</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7be85ca43d2d39971a2ee3677cf8c32b</srcmd5>
+    <version>6.0.0</version>
+    <time>1680636415</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python311, python-numba doesn't support python 3.11 yet.
+</comment>
+    <requestid>1077180</requestid>
+  </revision>
 </revisionlist>

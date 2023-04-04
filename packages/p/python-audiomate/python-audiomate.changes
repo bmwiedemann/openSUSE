@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 10:01:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip python311, python-numba doesn't support python 3.11 yet.
+
+-------------------------------------------------------------------
 Fri May 28 02:48:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy.
