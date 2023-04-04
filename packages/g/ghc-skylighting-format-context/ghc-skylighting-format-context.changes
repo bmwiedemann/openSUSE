@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Feb 14 17:54:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update skylighting-format-context to version 0.1.0.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 22 17:47:56 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add skylighting-format-context at version 0.1.0.1.
