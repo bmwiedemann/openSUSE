@@ -1,0 +1,41 @@
+cabal-version:      1.12
+name:               generically
+version:            0.1.1
+x-revision:         1
+synopsis:           Generically newtype to use with DerivingVia
+description:
+  This is a compatibility package as @Generically@ and @Generically1@ newtypes
+  are available since @base-4.17@ in 'GHC.Generics'.
+
+bug-reports:        https://github.com/haskell-compat/generically/issues
+author:             Oleg Grenrus
+maintainer:         Oleg Grenrus <oleg.grenrus@iki.fi>
+copyright:          2022 Oleg Grenrus
+license:            BSD3
+license-file:       LICENSE
+category:           Generics
+build-type:         Simple
+extra-source-files: CHANGELOG.md
+tested-with:
+  GHC ==8.0.2
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.5
+   || ==8.8.4
+   || ==8.10.7
+   || ==9.0.2
+   || ==9.2.7
+   || ==9.4.4
+   || ==9.6.1
+
+source-repository head
+  type:     git
+  location: https://github.com/haskell-compat/generically.git
+
+library
+  default-language: Haskell2010
+  build-depends:    base >=4.9 && <4.19
+  if impl(ghc >= 9.4) && !impl(ghc >= 9.6)
+    build-depends:  base-orphans >=0.8.8 && <0.10
+  hs-source-dirs:   src
+  exposed-modules:  GHC.Generics.Generically

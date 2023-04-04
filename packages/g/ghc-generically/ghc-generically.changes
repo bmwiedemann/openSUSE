@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 15 09:15:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update generically to version 0.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Mar 10 12:05:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update generically to version 0.1.1.
+  # 0.1.1 -- 2023-03-10
+
+  * Backport `Eq` and `Ord` instances for `Generically1`, which were introduced
+    in `base-4.18.0.0`. To ensure that these instances are in scope when building
+    with `base-4.17.0.0` (in which `Generically1` is defined in `base`, not this
+    library), we also add a dependency on `base-orphans`.
+
+-------------------------------------------------------------------
 Wed Jun 15 12:10:55 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add generically at version 0.1.
