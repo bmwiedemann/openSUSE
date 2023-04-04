@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-constraints
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name constraints
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
 Version:        0.13.4
@@ -26,17 +27,27 @@ License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-binary-devel
+BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-compat-devel
+BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-type-equality-devel
+BuildRequires:  ghc-type-equality-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
 %endif
 
 %description
@@ -54,6 +65,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
+
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
@@ -78,5 +105,10 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.markdown README.markdown
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
