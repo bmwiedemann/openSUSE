@@ -1,6 +1,5 @@
 ## Path:        System/File systems/Mdadm
 ## Description: Additional options for the mdadm daemon (see man mdadm(8)).
-## ServiceRestart:      mdadm
 ##
 ## Type:        integer
 ## Default:     60

@@ -1469,4 +1469,13 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>1055863</requestid>
   </revision>
+  <revision rev="141" vrev="6">
+    <srcmd5>1a5043e91ff76a918be43ff6a9bc3cd6</srcmd5>
+    <version>4.2</version>
+    <time>1680635814</time>
+    <user>dimstar_suse</user>
+    <comment>- sysconfig.mdadm: Remove ServiceRestart line to mdadm since there
+  is not such systemd service. (bsc#1203491) (forwarded request 1076652 from colyli)</comment>
+    <requestid>1076783</requestid>
+  </revision>
 </revisionlist>

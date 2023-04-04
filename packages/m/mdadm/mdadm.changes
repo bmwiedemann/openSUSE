@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  1 15:17:58 UTC 2023 - Coly Li <colyli@suse.de>
+
+- sysconfig.mdadm: Remove ServiceRestart line to mdadm since there
+  is not such systemd service. (bsc#1203491)
+
+-------------------------------------------------------------------
 Mon Dec 26 05:01:33 UTC 2022 - Coly Li <colyli@suse.com>
 
 - mdadm.spec: create the following symbolic link in /sbin for
