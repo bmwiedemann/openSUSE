@@ -17,6 +17,7 @@
 
 
 %global pkg_name xmobar
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
 Version:        0.46
@@ -28,48 +29,87 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
+BuildRequires:  ghc-X11-prof
 BuildRequires:  ghc-X11-xft-devel
+BuildRequires:  ghc-X11-xft-prof
 BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-alsa-core-devel
+BuildRequires:  ghc-alsa-core-prof
 BuildRequires:  ghc-alsa-mixer-devel
+BuildRequires:  ghc-alsa-mixer-prof
 BuildRequires:  ghc-async-devel
+BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cairo-devel
+BuildRequires:  ghc-cairo-prof
 BuildRequires:  ghc-cereal-devel
+BuildRequires:  ghc-cereal-prof
 BuildRequires:  ghc-colour-devel
+BuildRequires:  ghc-colour-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-dbus-devel
+BuildRequires:  ghc-dbus-prof
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-extensible-exceptions-devel
+BuildRequires:  ghc-extensible-exceptions-prof
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hinotify-devel
+BuildRequires:  ghc-hinotify-prof
 BuildRequires:  ghc-http-client-tls-devel
+BuildRequires:  ghc-http-client-tls-prof
 BuildRequires:  ghc-http-conduit-devel
+BuildRequires:  ghc-http-conduit-prof
 BuildRequires:  ghc-http-types-devel
+BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-libmpd-devel
+BuildRequires:  ghc-libmpd-prof
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-netlink-devel
+BuildRequires:  ghc-netlink-prof
 BuildRequires:  ghc-old-locale-devel
+BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-pango-devel
+BuildRequires:  ghc-pango-prof
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-numbers-devel
+BuildRequires:  ghc-parsec-numbers-prof
+BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-compat-devel
+BuildRequires:  ghc-regex-compat-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-timezone-olson-devel
+BuildRequires:  ghc-timezone-olson-prof
 BuildRequires:  ghc-timezone-series-devel
+BuildRequires:  ghc-timezone-series-prof
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-utf8-string-devel
+BuildRequires:  ghc-utf8-string-prof
 BuildRequires:  libXpm-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libXrender-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-temporary-prof
 %endif
 
 %description
@@ -96,6 +136,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
+
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
@@ -127,5 +183,10 @@ This package provides the Haskell %{name} library development files.
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc changelog.md doc readme.org
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license license
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
