@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 9.0.2
-%define short_version 9.0
+%define real_version 10.0.0
+%define short_version 10.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -45,7 +45,7 @@ ExclusiveArch:  do_not_build
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
 Name:           %{pkgname_prefix}-creator
-Version:        9.0.2
+Version:        10.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -238,7 +238,6 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_datadir}/qtcreator/modeleditor/
 %{_datadir}/qtcreator/package-manager/
 %{_datadir}/qtcreator/qml-type-descriptions/
-%{_datadir}/qtcreator/qml/
 %{_datadir}/qtcreator/qmldesigner/
 %{_datadir}/qtcreator/qmlicons/
 %{_datadir}/qtcreator/schemes/
@@ -253,7 +252,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_libexecdir}/qtcreator/cpaster
 %{_libexecdir}/qtcreator/perf2text
 %{_libexecdir}/qtcreator/perfparser
-%{_libexecdir}/qtcreator/qml2puppet
+%{_libexecdir}/qtcreator/qml2puppet-%{version}
 %{_libexecdir}/qtcreator/qtc-askpass
 %{_libexecdir}/qtcreator/qtcreator_process_stub
 %{_libexecdir}/qtcreator/qtcreator_processlauncher
