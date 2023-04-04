@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Feb 28 09:14:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unliftio to version 0.2.24.0.
+  ## 0.2.24.0
+
+  * Add `UnliftIO.STM.writeTMVar`
+  * Add `UnliftIO.STM.stateTVar`
+
+-------------------------------------------------------------------
 Thu Oct 27 15:19:36 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unliftio to version 0.2.23.0.
