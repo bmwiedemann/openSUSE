@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 # Upstream also supports shimming python2.7, but we assume Python >= 3.6 here (if 15.3 were resolvable for the python3 flavor)
 %global skip_python2 1
 %define modname pytz-deprecation-shim
@@ -25,12 +24,10 @@ Version:        0.1.0.post0
 Release:        0
 Summary:        Shims to make deprecation of pytz easier
 License:        Apache-2.0
-Group:          Development/Libraries/Python
 URL:            https://github.com/pganssle/pytz-deprecation-shim
 Source:         https://files.pythonhosted.org/packages/source/p/pytz_deprecation_shim/pytz_deprecation_shim-%{version}.tar.gz
 BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pep517 >= 0.9.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}

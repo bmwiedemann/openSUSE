@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>984291</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>131d5d43404dab4bd695dd50e1f908cc</srcmd5>
+    <version>0.1.0.post0</version>
+    <time>1680635819</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on pep517.</comment>
+    <requestid>1076795</requestid>
+  </revision>
 </revisionlist>
