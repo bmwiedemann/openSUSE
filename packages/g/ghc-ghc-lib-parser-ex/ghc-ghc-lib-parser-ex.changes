@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Aug  8 00:15:34 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ghc-lib-parser-ex to version 9.4.0.0.
+  ## 9.4.0.0  released
+  - Update to `ghc-lib-parser-9.4.1.20220807`
+
+  ## 0.20220801 released
+  - Update to `ghc-lib-parser-0.20220801`
+
+  ## 9.2.1.1 released
+  - Update to `ghc-lib-parser-9.2.4.20220527`
+
+  ## 0.20220701 released
+  - Update to `ghc-lib-parser-0.20220701`
+
+  ## 9.2.1.0 released
+  - The Cabal flag `auto` now defaults to `False`:
+    - When `auto` has the value `False`:
+      - `ghc-lib-parser-ex` depends on `ghc-lib-parser`
+    - When `auto` has the value `True`:
+      - When the build compiler is >=9.2.2 && <9.3.0
+        - `ghc-lib-parser-ex` depends on the compiler libs
+      - Otherwise, `ghc-lib-parser-ex` depends on `ghc-lib-parser`
+  - Deprecated modues removed:
+    - `Language.Haskell.GhclibParserEx.Config`
+    - `Language.Haskell.GhclibParserEx.Parse`
+    - `Language.Haskell.GhclibParserEx.Outputable`
+
+  ## 0.20220601 released
+  - Update to `ghc-lib-parser-0.20220601`
+  - `fakeLlvmConfig` removed for `GHCLIB_API_HEAD`
+
+  ## 9.2.0.4 released
+  - Update to `ghc-lib-parser-9.2.3.20220527`
+  - Add support for ghc-9.4 series: `GHCLIB_API_904`
+
+  ## 0.20220501 released
+  - Update to `ghc-lib-parser-0.20220501`
+
+  ## 0.20220401 released
+  - Update to `ghc-lib-parser-0.20220401`
+
+  ## 9.2.0.3 released
+  - Fix ghc bounds in auto mode to use ghc-lib not ghc if build compiler ghc-9.2.1 (see [issue](https://github.com/ndmitchell/hlint/issues/1314))
+
+  ## 9.2.0.2 released
+  - Update to `ghc-lib-parser-9.2.2.20220307`
+
+  ## 0.20220301 released
+  - Update to `ghc-lib-parser-0.20220301`
+
+  ## 8.10.0.24 released
+  - Update to `ghc-lib-parser-8.10.7.20220219`
+
+  ## 0.20220201 released
+  - Update to `ghc-lib-parser-0.20220201`
+
+  ## 0.20220103 released
+  - New function `isOverLabel`
+  - Update to `ghc-lib-parser-0.20220103`
+
+  ## 9.0.0.6 released 2021-12-26
+  - Add back `isQuasiQuote` for backwards compatibility
+
+  ## 9.0.0.5 released 2021-12-25
+  - Bugfix to `isFieldPunUpdate`
+  - New module `Language.Haskell.GHC.Hs.Type.hs` to replace `Language.Haskell.GHC.Hs.Types.hs` (which remains for now but deprecated and will be removed in a future release)
+    - New function `isKindTyApp`
+  - Rename `isQuasiQuote` to `isQuasiQuoteExpr`
+  - Add new function `isQuasiQuoteSplice`
+  - Update to `ghc-lib-parser-9.0.2.20211226`
+
+  ## 9.2.0.1 released 2021-11-01
+  - Update to `ghc-lib-parser-9.2.1.20211101`
+
+  ## 0.20211101 released 2021-11-01
+  - Update to `ghc-lib-parser-0.20211101`
+
+  ## 9.2.0.0 released 2021-10-30
+  - Update to `ghc-lib-parser-9.2.1.20211030`
+
+  ## 0.20211001 released 2021-10-01
+  - Add `isSplicePat` to `Language.Haskell.GhclibParserEx.GHC.Hs.Pat`
+  - Use `genericPlatform` on `GHCLIB_API_HEAD` in `GhclibParserEx.GHC.Settings.Config.hs`
+  - Update to `ghc-lib-parser-0.20211001`
+
+  ## 0.20210901 released 2021-09-01
+  - Update to `ghc-lib-parser-0.20210901`
+
+  ## 8.10.0.23 released 2021-08-28
+  - Update to `ghc-lib-parser-8.10.7.20210828`
+
+  ## 8.10.0.22 released 2021-08-14
+  - Update to `ghc-lib-parser-0.20210814`
+  - Added to `GhclibParserEx.GHC.Hs.Expr`:
+    - `isMonadComp`
+    - `isListComp`
+
+  ## 0.20210701 released 2021-07-01
+  - Update to `ghc-lib-0.20210701`
+
+  ## 8.10.0.21 released 2021-06-07
+  - Bugfix cabal files
+
+  ## 8.10.0.20 released 2021-06-06
+  - Update to `ghc-lib-8.10.5.20210606`
+
+  ## 0.20210601 released 2021-06-01
+  - Update to `ghc-lib-parser-0.20210601`
+  - Update types in `GHC.Types.Name.Reader` for ghc-9.2.1, `Located` becomes `LocatedN`
+
+  ## 0.20210501 released 2021-05-01
+  - Update to `ghc-lib-0.20210501`
+
+  ## 0.20210331 released 2021-02-31
+  - Update to `ghc-lib-0.20210331`
+  - Update to `ghc-lib-parser-9.0.1.20210324`
+
+  ## 9.0.0.4 released 2021-03-11
+  - Bugfix for `GHC.Hs.Dump`
+
+  ## 0.20210228 released 2021-02-28
+  - Update to `ghc-lib-0.20210228`
+
+  ## 9.0.0.3 released 2021-02-08
+  - Cabal bugfix
+
+  ## 9.0.0.2 released 2021-02-08
+  - Cabal bugfix
+
+  ## 8.10.0.19 released 2021-02-08
+  - Cabal bugfix
+
+-------------------------------------------------------------------
 Mon Feb  8 05:05:21 UTC 2021 - psimons@suse.com
 
 - Update ghc-lib-parser-ex to version 8.10.0.19.

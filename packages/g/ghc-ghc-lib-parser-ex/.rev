@@ -47,4 +47,12 @@
     <comment>update haskell stack in factory</comment>
     <requestid>870863</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f23845bfb8405a9d02e4370beb4c887e</srcmd5>
+    <version>9.4.0.0</version>
+    <time>1680636008</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075882</requestid>
+  </revision>
 </revisionlist>
