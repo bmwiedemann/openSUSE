@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Jun  6 02:45:15 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update tls to version 1.6.0.
