@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Wed Jan 27 19:36:27 UTC 2021 - psimons@suse.com
 
 - Update libmpd to version 0.10.0.0.
