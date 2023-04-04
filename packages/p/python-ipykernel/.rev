@@ -414,4 +414,21 @@
 </comment>
     <requestid>1063284</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>be5212d8255e705e64e099834b0325c1</srcmd5>
+    <version>6.22.0</version>
+    <time>1680636449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.22.0
+  * Deprecate Comm class + Fix incompatibility with ipywidgets
+    #1097 (@martinRenou)
+
+- Update to 6.21.3
+  * Fix interrupt reply #1101 (@garlandz-db)
+- Release 6.21.2
+  * Un-expose __file__ and expose __session__ instead. #1095
+    (@Carreau)
+  * Remove test_enter_eventloop #1084 (@davidbrochart)</comment>
+    <requestid>1077234</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  4 14:58:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.22.0
+  * Deprecate Comm class + Fix incompatibility with ipywidgets
+    #1097 (@martinRenou)
+
+-------------------------------------------------------------------
+Sun Mar 19 16:23:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.21.3
+  * Fix interrupt reply #1101 (@garlandz-db)
+- Release 6.21.2
+  * Un-expose __file__ and expose __session__ instead. #1095
+    (@Carreau)
+  * Remove test_enter_eventloop #1084 (@davidbrochart)
+
+-------------------------------------------------------------------
 Sun Feb  5 15:09:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.21.1

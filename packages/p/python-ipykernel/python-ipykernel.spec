@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.21.1
+Version:        6.22.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -51,7 +51,7 @@ BuildRequires:  %{python_module matplotlib-inline >= 0.1}
 BuildRequires:  %{python_module nest-asyncio}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module pyzmq >= 20}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 5.1.0}
 BuildRequires:  %{python_module jupyter-core >= 5.1 or (%python-jupyter-core >= 4.12 with %python-jupyter-core < 5.0)}
@@ -63,7 +63,7 @@ Requires:       python-matplotlib-inline >= 0.1
 Requires:       python-nest-asyncio
 Requires:       python-packaging
 Requires:       python-psutil
-Requires:       python-pyzmq >= 17
+Requires:       python-pyzmq >= 20
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 5.4.0
 Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
@@ -123,7 +123,7 @@ donttest="$donttest or test_do_apply"
 
 %files %{python_files}
 %doc README.md
-%license COPYING.md
+%license LICENSE
 %{python_sitelib}/ipykernel
 %{python_sitelib}/ipykernel_launcher.py
 %{python_sitelib}/ipykernel-%{version}*-info
