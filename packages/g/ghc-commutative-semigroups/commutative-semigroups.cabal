@@ -1,0 +1,31 @@
+cabal-version:       2.4
+name:                commutative-semigroups
+version:             0.1.0.0
+x-revision: 3
+synopsis:            Commutative semigroups
+description:
+  A commutative semigroup is a semigroup where the order of arguments to mappend does not matter.
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Nathan "Taneb" van Doorn
+maintainer:          maintainer@obsidian.systems
+copyright:           Copyright (C) 2013 Nathan van Doorn, 2021–2022 Obsidian Systems LLC
+category:            Algebra, Data, Math
+build-type:          Simple
+bug-reports:         https://github.com/ObsidianSystems/commutative-semigroups/issues
+extra-source-files:
+  ChangeLog.md
+  ReadMe.md
+
+source-repository head
+  type:     git
+  location: https://github.com/ObsidianSystems/commutative-semigroups.git
+
+library
+  exposed-modules:     Data.Semigroup.Commutative
+                       Numeric.Product.Commutative
+  -- other-modules:
+  build-depends:       base >= 4.6 && < 4.18,
+                       containers >= 0.4 && < 0.7
+  hs-source-dirs:      src
+  default-language:    Haskell2010
