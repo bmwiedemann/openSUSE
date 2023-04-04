@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Aug  9 18:33:38 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update cereal to version 0.5.8.3.
