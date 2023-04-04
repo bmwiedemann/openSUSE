@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  3 15:55:28 UTC 2023 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Updated to version 3.2.1
+ * Fixed bug #2144: Xdebug 3.2.0 ignores xdebug.mode and enables all features
+ * Fixed bug #2145: Xdebug 3.2.0 crash PHP on Windows if xdebug.mode = off
+ * Fixed bug #2146: apache2 segfaulting with version 3.2.0 on PHP 8.0
+ * Fixed bug #2148: Icon for link to docs in xdebug_info() HTML output does not always render correctly 
+
+-------------------------------------------------------------------
 Sun Dec 11 10:03:51 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Restore php7 build for targets that still have it
