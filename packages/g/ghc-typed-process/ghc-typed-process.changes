@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Feb 26 16:04:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typed-process to version 0.2.11.0.
+  ## 0.2.11.0
+
+  * Expose `System.Process.Typed.Internal`
+
+-------------------------------------------------------------------
 Fri Jun  3 10:42:56 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update typed-process to version 0.2.10.1.
