@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:30 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Dec 18 21:32:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.4.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/tasty-1.4.3/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat May  7 21:32:12 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update tasty to version 1.3.1 revision 1.
