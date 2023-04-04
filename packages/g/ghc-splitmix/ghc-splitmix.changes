@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Jan 15 19:14:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update splitmix to version 0.1.0.4 revision 2.
