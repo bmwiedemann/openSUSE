@@ -7,4 +7,12 @@
     <comment>initial submission, please add to openSUSE:Factory:Staging:adi:31</comment>
     <requestid>1009683</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>345f988317e41ff222315f7baaac5c61</srcmd5>
+    <version>0.1.1</version>
+    <time>1680636197</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076045</requestid>
+  </revision>
 </revisionlist>
