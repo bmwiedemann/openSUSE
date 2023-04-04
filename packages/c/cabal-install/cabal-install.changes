@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:38 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Feb 26 17:40:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cabal-install to version 3.8.1.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Oct 20 17:27:43 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cabal-install to version 3.8.1.0 revision 2.
+  3.8.1.0 Mikolaj Konarski <mikolaj@well-typed.com> August 2022
+  	* See https://github.com/haskell/cabal/blob/master/release-notes/cabal-install-3.8.1.0.md
+
+  3.6.2.0 Emily Pillmore <emilypi@cohomolo.gy> October 2021
+  	* See https://github.com/haskell/cabal/blob/master/release-notes/cabal-install-3.6.2.0.md
+
+  3.6.0.0 Emily Pillmore <emilypi@cohomolo.gy> August 2021
+  	* See https://github.com/haskell/cabal/blob/master/release-notes/cabal-install-3.6.0.0.md
+
+  3.4.1.0 Emily Pillmore <emilypi@cohomolo.gy> October 2021
+  	* See https://github.com/haskell/cabal/blob/master/release-notes/cabal-install-3.4.1.0.md
+
+  3.4.0.0 Oleg Grenrus <oleg.grenrus@iki.fi> February 2021
+  	* See https://github.com/haskell/cabal/blob/master/release-notes/cabal-install-3.4.0.0.md
+
+- Remove obsolete "ghc-8.10-support-for-3.2.patch".
+
+- Remove obsolete "base16-bytestring.patch".
+
+-------------------------------------------------------------------
 Wed Jan  5 22:43:50 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update cabal-install to version 3.2.0.0 revision 1.
@@ -12,13 +46,13 @@ Wed Oct 13 14:26:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Tue Aug 17 22:08:16 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- relax dependency on random 
+- relax dependency on random
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Thu Dec 10 20:10:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
