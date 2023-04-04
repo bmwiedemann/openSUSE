@@ -59,10 +59,10 @@ BuildRequires:  %{python_module pyquil >= 3.2.0}
 # SECTION cirq-core[contrib]
 BuildRequires:  %{python_module autoray}
 BuildRequires:  %{python_module PyLaTeX >= 1.3.0}
-BuildRequires:  %{python_module numba >= 0.53}
+BuildRequires:  %{python_module numba >= 0.53 if %python-base < 3.11}
 BuildRequires:  %{python_module opt-einsum}
 BuildRequires:  %{python_module ply >= 3.6}
-BuildRequires:  %{python_module quimb}
+BuildRequires:  %{python_module quimb if %python-base < 3.11}
 # /SECTION
 # SECTION test
 BuildRequires:  %{python_module flynt >= 0.60}
@@ -206,9 +206,13 @@ done
 # tests assume testfiles and import path to be the same, but we test BUILDROOT
 donttest="test_json_test_data_coverage"
 donttest="$donttest or test_json_and_repr_data"
+# no cirq-core[contrib] extra for python311 yet
+python311_donttest=" or test_immutable or test_gate_family_immutable"
+python311_donttest="$python311_donttest or (classical_data_test and test_repr)"
+python311_ignore="--ignore cirq/contrib"
 for p in %cirqmodules; do
   pushd cirq-$p
-  %pytest -v -k "not ($donttest)" -n auto
+  %pytest -v -k "not ($donttest ${$python_donttest})" ${$python_ignore} -n auto
   popd
 done
 
@@ -223,9 +227,11 @@ done
 %{python_sitelib}/cirq
 %{python_sitelib}/cirq_core-%{version}*-info
 
+%if %{python_version_nodots} < 311
 %files %{python_files core-contrib}
 %doc cirq-core/README.rst
 %license cirq-core/LICENSE
+%endif
 
 %files %{python_files aqt}
 %doc cirq-aqt/README.rst
