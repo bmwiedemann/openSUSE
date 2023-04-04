@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Oct 23 07:27:02 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update streaming-commons to version 0.2.2.5.
