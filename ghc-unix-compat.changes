@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Thu Sep 29 23:12:17 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unix-compat to version 0.6 revision 1.
