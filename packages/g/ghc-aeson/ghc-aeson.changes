@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:43:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.1.2.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Mar 15 14:37:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.1.2.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Mar  1 11:15:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.1.2.1 revision 1.
+  ### 2.1.2.1
+
+  * Support `th-abstraction-0.5`
+
+  ### 2.1.2.0
+
+  * Add `throwDecode :: (MonadThrow m, FromJSON a) => ByteString -> m a`
+    and variants.
+  * Add `Data.Aeson.Decoding` which uses new underlying tokenizer / parser.
+    This parser seems to be faster, and the intermediate `Tokens` streams
+    allow to differentiate more than `Value` if needed.
+    If no critical issues is found, this parser will become the default
+    in next major `aeson` version.
+  * Support deriving for empty datatypes (such as `Void` and `V1`)
+    in `FromJSON` and `ToJSON`.
+  * Add `To/FromJSONKey Void` instances
+  * Fix `FromJSONKey Double` handling of infinities
+
+-------------------------------------------------------------------
+Wed Sep 21 15:17:01 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update aeson to version 2.1.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/aeson-2.1.1.0/src/changelog.md
+
+-------------------------------------------------------------------
 Sat Dec 11 17:27:48 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update aeson to version 1.5.6.0 revision 5.
