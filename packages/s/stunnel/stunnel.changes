@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  3 20:05:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.69:
+  * Improved logging performance with the "output" option.
+  * Improved file read performance on the WIN32 platform.
+  * DH and kDHEPSK ciphersuites removed from FIPS defaults.
+  * Set the LimitNOFILE ulimit in stunnel.service to allow
+  * for up to 10,000 concurrent clients.
+  * Fixed the "CApath" option on the WIN32 platform by
+  * applying https://github.com/openssl/openssl/pull/20312.
+  * Fixed stunnel.spec used for building rpm packages.
+  * Fixed tests on some OSes and architectures by merging
+
+-------------------------------------------------------------------
 Fri Feb 24 09:09:03 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.68:

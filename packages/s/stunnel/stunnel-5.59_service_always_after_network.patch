@@ -1,6 +1,7 @@
-diff -ur stunnel-5.59/tools/stunnel.service.in stunnel-5.59_fix/tools/stunnel.service.in
---- stunnel-5.59/tools/stunnel.service.in	2020-10-11 18:18:00.000000000 +0200
-+++ stunnel-5.59_fix/tools/stunnel.service.in	2021-04-13 16:34:16.354160390 +0200
+Index: stunnel-5.69/tools/stunnel.service.in
+===================================================================
+--- stunnel-5.69.orig/tools/stunnel.service.in
++++ stunnel-5.69/tools/stunnel.service.in
 @@ -1,6 +1,7 @@
  [Unit]
  Description=TLS tunnel for network daemons
@@ -8,4 +9,4 @@ diff -ur stunnel-5.59/tools/stunnel.service.in stunnel-5.59_fix/tools/stunnel.se
 +Wants=syslog.target network-online.target
  
  [Service]
- ExecStart=@bindir@/stunnel
+ LimitNOFILE=20480

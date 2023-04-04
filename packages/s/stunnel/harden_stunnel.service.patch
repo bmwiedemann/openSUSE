@@ -1,7 +1,7 @@
-Index: stunnel-5.62/tools/stunnel.service.in
+Index: stunnel-5.69/tools/stunnel.service.in
 ===================================================================
---- stunnel-5.62.orig/tools/stunnel.service.in
-+++ stunnel-5.62/tools/stunnel.service.in
+--- stunnel-5.69.orig/tools/stunnel.service.in
++++ stunnel-5.69/tools/stunnel.service.in
 @@ -4,6 +4,19 @@ After=syslog.target network-online.targe
  Wants=syslog.target network-online.target
  
@@ -18,7 +18,7 @@ Index: stunnel-5.62/tools/stunnel.service.in
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
+ LimitNOFILE=20480
  ExecStart=@bindir@/stunnel
  ExecReload=/bin/kill -HUP $MAINPID
- Type=forking
