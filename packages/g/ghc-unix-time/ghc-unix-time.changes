@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 15 01:34:46 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unix-time to version 0.4.9.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Tue Sep  6 01:25:31 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unix-time to version 0.4.8.
