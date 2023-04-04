@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tls-session-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name tls-session-manager
+%global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
 Version:        0.0.4
 Release:        0
@@ -26,13 +27,22 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-auto-update-devel
+BuildRequires:  ghc-auto-update-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-basement-devel
+BuildRequires:  ghc-basement-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-clock-devel
+BuildRequires:  ghc-clock-prof
 BuildRequires:  ghc-memory-devel
+BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-psqueues-devel
+BuildRequires:  ghc-psqueues-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tls-devel
+BuildRequires:  ghc-tls-prof
 ExcludeArch:    %{ix86}
 
 %description
@@ -49,6 +59,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development
 files.
+
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
@@ -70,5 +96,10 @@ files.
 
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
