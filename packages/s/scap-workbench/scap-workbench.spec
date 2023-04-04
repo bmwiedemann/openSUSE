@@ -1,7 +1,7 @@
 #
 # spec file for package scap-workbench
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           scap-workbench
-Version:        1.2.1+git20210604.1fc6def
+Version:        1.2.1+git20221219.10c1929
 Release:        0
 Summary:        A SCAP scanner and SCAP content editor
 License:        GPL-3.0-only
 Group:          Productivity/Security
-URL:            https://github.com/OpenSCAP/scap-workbench
-#Source:         https://github.com/OpenSCAP/scap-workbench/releases/download/%{version}/scap-workbench-%{version}.tar.bz2
-Source:         scap-workbench-%{version}.tar.gz
+URL:            https://github.com/OpenSCAP/%{name}
+Source:         %{version}/%{name}-%{version}.tar.gz
 Patch0:         0001-pkexec-avoid-potential-local-root-exploit-by-using-P.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 2.6
-BuildRequires:  openscap-devel
+BuildRequires:  openscap-devel >= 1.3.7
 # buildtime and runtime requires for remote scan detection
 BuildRequires:  openssh
 Recommends:     openssh
@@ -68,7 +67,7 @@ Group:          Documentation/HTML
 This package provides HTML documentation for scap-workbench.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 %patch0 -p1
 
 %build
@@ -94,23 +93,25 @@ popd
 %install
 pushd build
 %make_install
+rm -rf %{buildroot}%{_docdir}/%{name}/COPYING
 popd
 
 %if 0%{?suse_version}
-%suse_update_desktop_file -i -u %{name} Utility DesktopUtility
+%suse_update_desktop_file -i -u org.open_scap.scap_workbench Utility DesktopUtility
 %endif
 
 %files
 %defattr(-,root,root,0755)
-%doc README.md COPYING
+%doc README.md
+%license COPYING
 %{_bindir}/%{name}
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/*.appdata.xml
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*.png
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/README
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/%{name}*
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
@@ -119,6 +120,10 @@ popd
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/*sh
 %exclude %{_docdir}/%{name}/*.html
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 %files doc
 %defattr(-,root,root,0755)
