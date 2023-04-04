@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Feb 14 16:16:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-system to version 1.0.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-module-system-1.0.3/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Feb 19 14:38:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-system to version 1.0.2.
