@@ -1,7 +1,7 @@
 #
 # spec file for package python-resampy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
+# No numba for python311 yet
+%define         skip_python311 1
 Name:           python-resampy
 Version:        0.4.2
 Release:        0
@@ -34,7 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.53
 Requires:       python-numpy >= 1.17
-Requires:       python-scipy >= 1.0
 Suggests:       python-numpydoc
 Suggests:       python-sphinx
 BuildArch:      noarch
@@ -74,6 +73,7 @@ sed -i -e '/^#!\//, 1d' */*.py
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/resampy*
+%{python_sitelib}/resampy
+%{python_sitelib}/resampy-%{version}.dist-info
 
 %changelog
