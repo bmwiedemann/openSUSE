@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:01 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Feb  8 04:35:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update recv to version 0.1.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon Aug 22 00:08:51 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add recv at version 0.0.0.
