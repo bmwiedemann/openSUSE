@@ -18,7 +18,7 @@
 
 %define jupver 8.0.5
 Name:           python-widgetsnbextension
-Version:        4.0.5
+Version:        4.0.7
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause AND MIT
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-widgetsnbextension = %{version}
-Requires:       python-notebook >= 4.4.1
 Provides:       python-jupyter_widgetsnbextension = %{version}-%{release}
 Obsoletes:      python-jupyter_widgetsnbextension < %{version}-%{release}
 BuildArch:      noarch
