@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 27 16:04:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.19.3:
+  * vignette: update the on-screen center widget when the crop changes
+  * thumbnail: do not try to load from cache after the first failure
+  * added raw crop for Fujifilm X-T5
+  * updated camera matrices and wb presets
+  * spot removal: added button to bypass heavy tools when editing spot
+  * smoothing: fixed bug with mask application in lens/motion blur modes
+  * improved formatting of exiftool makernotes
+  * metadata: added option to show makernotes with exiftool
+  * improve spot removal performance in preview window
+  * improve description of system monitor profile detected
+  * dcrop: avoid recomputing transform when not needed
+  * limit scale for output sharpening in preview to 1.0
+  * lens blur: apply inpainting to the unaffected areas to better simulate a "large aperture background separation" effect
+
+-------------------------------------------------------------------
 Mon Jan 30 10:00:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.18.1:
