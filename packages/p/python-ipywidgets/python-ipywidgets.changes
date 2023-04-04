@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:32:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.0.6
+  * Fix: revert removing ipykernel dependency #3749
+  * Fix: structuredClone broke default serializer that depended on
+    JSON/toJSON #3738
+  * Fix: comm/ipykernel/manager runtime issues: #3740, #3737
+- Release 8.0.5
+  * Fix: propertly typed Comm interface #3722
+  * Fix: support the comm package #3533
+  * Fix: use of structuredClone allows for binary traits out of the
+    box #3689
+  * Fix: combobox update issue #3681
+  * Fix: add grey as valid color #3671
+  * Fix: deprecation warning when using interact #3669
+
+-------------------------------------------------------------------
 Sun Dec 25 19:30:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.0.4

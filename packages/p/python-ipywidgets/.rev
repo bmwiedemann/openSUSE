@@ -139,4 +139,24 @@ The failing packages have been resolved</comment>
     set_state #3642</comment>
     <requestid>1045321</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a63aac6111327d0e618cda4cbd1ca268</srcmd5>
+    <version>8.0.6</version>
+    <time>1680636453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.6
+  * Fix: revert removing ipykernel dependency #3749
+  * Fix: structuredClone broke default serializer that depended on
+    JSON/toJSON #3738
+  * Fix: comm/ipykernel/manager runtime issues: #3740, #3737
+- Release 8.0.5
+  * Fix: propertly typed Comm interface #3722
+  * Fix: support the comm package #3533
+  * Fix: use of structuredClone allows for binary traits out of the
+    box #3689
+  * Fix: combobox update issue #3681
+  * Fix: add grey as valid color #3671
+  * Fix: deprecation warning when using interact #3669</comment>
+    <requestid>1077249</requestid>
+  </revision>
 </revisionlist>
