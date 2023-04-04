@@ -234,6 +234,7 @@ autoreconf -fiv
     --with-libpam \
     --enable-pbrd \
     --enable-pimd \
+    --enable-pim6d \
     --enable-protobuf \
     --enable-ripd \
     --enable-ripngd \
@@ -424,6 +425,7 @@ done
 %{frr_daemondir}/pathd
 %{frr_daemondir}/pbrd
 %{frr_daemondir}/pimd
+%{frr_daemondir}/pim6d
 %{frr_daemondir}/ripd
 %{frr_daemondir}/ripngd
 %{frr_daemondir}/sharpd
