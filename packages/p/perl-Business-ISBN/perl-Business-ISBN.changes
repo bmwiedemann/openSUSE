@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 24 03:06:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.008
+   see /usr/share/doc/packages/perl-Business-ISBN/Changes
+
+  3.008 2023-03-23T19:56:57Z
+  	* Fix test for GitHub #24. An ISBN that was invalid is now valid.
+
+-------------------------------------------------------------------
 Mon Jan 10 03:06:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.007
