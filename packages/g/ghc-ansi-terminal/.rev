@@ -186,4 +186,12 @@ supported as a compiler.</comment>
     <comment>version update</comment>
     <requestid>1059050</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>92a1b1c91b4d47c3de98dc3fe60e4edf</srcmd5>
+    <version>0.11.5</version>
+    <time>1680635901</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075759</requestid>
+  </revision>
 </revisionlist>

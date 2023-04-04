@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:33:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.5.
+  Version 0.11.5
+  --------------
+
+  * Module `System.Console.ANSI.Types` spun out to new dependency package
+    `ansi-terminal-types-0.11.5`.
+  * Drop support for GHC versions before GHC 7.10.1 (released March 2015).
+  * Improvements to Haddock documentation.
+
+-------------------------------------------------------------------
 Mon Nov 21 23:22:40 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update ansi-terminal to version 0.11.4.
