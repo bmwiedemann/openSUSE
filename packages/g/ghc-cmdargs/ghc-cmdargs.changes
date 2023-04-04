@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 13 11:19:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cmdargs to version 0.10.22.
+  0.10.22, released 2023-03-13
+      #68, support GHC 9.6
+
+-------------------------------------------------------------------
 Sun Feb 14 14:44:57 UTC 2021 - psimons@suse.com
 
 - Update cmdargs to version 0.10.21.
