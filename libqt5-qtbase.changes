@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 03 10:48:53 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.8+kde185:
+  * QFSFileEngine: fix overflow bug when using lseek64
+  * Add QImage null check when QOpenGLTexture converts
+- Add patch to fix return key handling in QGroupBox on GNOME (bsc#1209364):
+  * 0001-Revert-QGnomeTheme-Allow-Space-Return-Enter-and-Sele.patch
+- Add patch to fix XInput2 events in big-endian X11 clients (bsc#1204883, QTBUG-105157):
+  * big-endian-scroll.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 08:04:12 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.8+kde183:
