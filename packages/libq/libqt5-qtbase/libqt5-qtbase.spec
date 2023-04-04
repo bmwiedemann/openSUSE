@@ -29,7 +29,7 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.8+kde183
+Version:        5.15.8+kde185
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
@@ -47,6 +47,8 @@ Source3:        baselibs.conf
 Source4:        qtlogging.ini
 Source99:       libqt5-qtbase-rpmlintrc
 # patches 0-999 are openSUSE and/or non-upstream(able) patches #
+Patch1:         0001-Revert-QGnomeTheme-Allow-Space-Return-Enter-and-Sele.patch
+Patch2:         big-endian-scroll.patch
 Patch3:         0001-Revert-QMenu-hide-when-a-QWidgetAction-fires-the-tri.patch
 # Proposed: https://bugreports.qt.io/browse/QTBUG-88491
 Patch4:         0001-Avoid-SIGABRT-on-platform-plugin-initialization-fail.patch

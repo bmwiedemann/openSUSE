@@ -2511,4 +2511,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
     <requestid>1072577</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>2149d2301a184bff59a617a3bbbb845b</srcmd5>
+    <version>5.15.8+kde185</version>
+    <time>1680635859</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix XInput2 events in big-endian X11 clients (bsc#1204883, QTBUG-105157):
+  * big-endian-scroll.patch (forwarded request 1077015 from favogt)</comment>
+    <requestid>1077032</requestid>
+  </revision>
 </revisionlist>
