@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  3 19:23:55 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.0
+  * rename album fields to match MusicBrainz internal names
+    gh#hoyon/mpv-mpris#81
+  * Fix string leaks in property change handler
+    gh#hoyon/mpv-mpris#84
+  * Makefile: Allow to append CFLAGS / LDFLAGS from environment.
+    gh#hoyon/mpv-mpris#87
+  * Do not use the default GMainContext
+    gh#hoyon/mpv-mpris#88
+
+-------------------------------------------------------------------
 Thu Sep 29 19:32:58 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.9

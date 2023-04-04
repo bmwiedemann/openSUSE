@@ -47,4 +47,20 @@
     gh#hoyon/mpv-mpris#80</comment>
     <requestid>1007097</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee2549ea117a03690fb4a6e73fcd7b8f</srcmd5>
+    <version>1.0</version>
+    <time>1680636363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0
+  * rename album fields to match MusicBrainz internal names
+    gh#hoyon/mpv-mpris#81
+  * Fix string leaks in property change handler
+    gh#hoyon/mpv-mpris#84
+  * Makefile: Allow to append CFLAGS / LDFLAGS from environment.
+    gh#hoyon/mpv-mpris#87
+  * Do not use the default GMainContext
+    gh#hoyon/mpv-mpris#88</comment>
+    <requestid>1077054</requestid>
+  </revision>
 </revisionlist>
