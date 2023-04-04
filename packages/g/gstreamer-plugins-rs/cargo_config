@@ -1,26 +1,26 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/gtk-rs/gtk-rs-core"]
+[source."git+https://github.com/gtk-rs/gtk-rs-core?branch=0.17"]
 git = "https://github.com/gtk-rs/gtk-rs-core"
 branch = "0.17"
 replace-with = "vendored-sources"
 
-[source."https://github.com/gtk-rs/gtk4-rs"]
+[source."git+https://github.com/gtk-rs/gtk4-rs?branch=0.6"]
 git = "https://github.com/gtk-rs/gtk4-rs"
 branch = "0.6"
 replace-with = "vendored-sources"
 
-[source."https://github.com/rust-av/ffv1.git"]
+[source."git+https://github.com/rust-av/ffv1.git?rev=2afb025a327173ce891954c052e804d0f880368a"]
 git = "https://github.com/rust-av/ffv1.git"
 rev = "2afb025a327173ce891954c052e804d0f880368a"
 replace-with = "vendored-sources"
 
-[source."https://github.com/rust-av/flavors"]
+[source."git+https://github.com/rust-av/flavors"]
 git = "https://github.com/rust-av/flavors"
 replace-with = "vendored-sources"
 
-[source."https://gitlab.freedesktop.org/gstreamer/gstreamer-rs"]
+[source."git+https://gitlab.freedesktop.org/gstreamer/gstreamer-rs?branch=0.20"]
 git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs"
 branch = "0.20"
 replace-with = "vendored-sources"

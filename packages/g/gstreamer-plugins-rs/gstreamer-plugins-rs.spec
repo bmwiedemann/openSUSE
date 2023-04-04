@@ -16,7 +16,7 @@
 #
 
 
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %define _name gstreamer-plugins-rs
 %define gst_branch 1.0
@@ -31,7 +31,7 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.10.4
+Version:        0.10.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later

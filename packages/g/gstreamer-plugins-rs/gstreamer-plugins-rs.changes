@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 31 20:55:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.5:
+  + gtk4: Fix build with OpenGL support on macOS.
+  + threadshare: Fix symbol conflicts when statically linking the
+    plugin.
+- Enable LTO as it works fine now (use FAT lto objects).
+
+-------------------------------------------------------------------
 Thu Mar 16 08:50:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.4:
