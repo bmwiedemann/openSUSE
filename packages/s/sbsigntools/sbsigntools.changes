@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 02 14:29:25 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.9.5:
+  * Fix openssl-3.0 issue involving ASN1 xxx_it
+  * Add support for openssl-3
+  * sbsigntool: add support for RISC-V 64-bit PE/COFF images
+  * sbvarsign: do not include PKCS#7 attributes
+  * sbkeysync: Don't ignore errors from insert_new_keys()
+- Drop OpenSSL3.patch: Fixed upstream.
+- Drop -Wno-error=deprecated-declarations, no longer needed.
+- Add -Wno-error=maybe-uninitialized, needed when compiling with
+  GCC 13.
+- Use modern macros, list files explicitly, ensure we do not lose
+  any.
+
+-------------------------------------------------------------------
 Sat Feb  4 09:48:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - add -Wno-error=deprecated-declarations for openssl-3

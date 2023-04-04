@@ -19,11 +19,10 @@
 Name:           sbsigntools
 Summary:        Canonical EFI binary signing tools
 License:        GPL-3.0-only
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 URL:            http://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
 Source:         %{name}-%{version}.tar.gz
-Patch0:         OpenSSL3.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  openssl-devel
@@ -43,24 +42,33 @@ This package installs tools which can cryptographically sign EFI
 binaries and drivers.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-CFLAGS="%optflags -Wno-error=deprecated-declarations"
+CFLAGS="%optflags -Wno-error=maybe-uninitialized"
 %configure
-make %{?jobs:-j%jobs}
+%make_build
 
 %check
-make check
+%make_build check
 
 %install
 %make_install
 
 %files
 %license COPYING
-%{_bindir}/*
-%{_mandir}/man1/*
+%{_bindir}/sbattach
+%{_bindir}/sbkeysync
+%{_bindir}/sbsiglist
+%{_bindir}/sbsign
+%{_bindir}/sbvarsign
+%{_bindir}/sbverify
+%{_mandir}/man1/sbattach.1%{?ext_man}
+%{_mandir}/man1/sbkeysync.1%{?ext_man}
+%{_mandir}/man1/sbsiglist.1%{?ext_man}
+%{_mandir}/man1/sbsign.1%{?ext_man}
+%{_mandir}/man1/sbvarsign.1%{?ext_man}
+%{_mandir}/man1/sbverify.1%{?ext_man}
 
 %changelog

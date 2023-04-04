@@ -2,8 +2,8 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">git://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git</param>
-    <param name="revision">refs/tags/v0.9.4</param>
-    <param name="version">0.9.4</param>
+    <param name="revision">refs/tags/v0.9.5</param>
+    <param name="version">0.9.5</param>
     <param name="submodules">enable</param>
     <param name="changesgenerate">enable</param>
   </service>
