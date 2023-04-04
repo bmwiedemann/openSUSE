@@ -833,4 +833,12 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>1062004</requestid>
   </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>6570b0fc62fe03a47bc08c8aba9bcf1e</srcmd5>
+    <version>4.96</version>
+    <time>1680636445</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1077219</requestid>
+  </revision>
 </revisionlist>

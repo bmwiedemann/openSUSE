@@ -75,7 +75,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.96
-Release:        0
+Release:        1
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -292,6 +292,8 @@ cat <<-EOF > Local/Makefile
 	EXPERIMENTAL_CERTNAMES=yes
 	EXPERIMENTAL_DSN=yes
 	SYSTEM_ALIASES_FILE=/etc/aliases
+    # enable SRS
+    SUPPORT_SRS=yes
 %if %{with dane}
     SUPPORT_DANE=yes
 %endif

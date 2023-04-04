@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 28 13:46:34 UTC 2023 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- enable sender rewriting support (SUPPORT_SRS)
+
+-------------------------------------------------------------------
 Wed Jan 25 12:56:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't build the NIS module anymore, libnsl/NIS are deprecated
