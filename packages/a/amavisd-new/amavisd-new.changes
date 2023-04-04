@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Mar 27 20:27:29 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- update to version 2.13.0
+  NEW FEATURES
+  o Add support for new decoder Zstandard
+  o Switch from Net::LibIDN to Net::LibIDN2.
+    As Net::LibIDN (based on GNU libidn) supports only IDNA 2003 (and its
+    upstream declares libidn2 as successor), the newer Net::LibIDN2 (based
+    on GNU libidn2) supporting IDNA 2008 and TR46 is being used preferred,
+    if available.
+  o Recognize 7-Zip.org's command line utility 7zz
+  o Recognize 'ACE archive' file type.
+  o Add file(1) short type mapping for MS Office CDF format.
+  o Add attachment file name information to structured report.
+  o Introduce option to add an extra header containing the Amavis category.
+  o Introduce $ip_repu_score_limit option to define an upper limit
+    for the redis ip reputation score feature.
+  o Make sanity limit inside macro_tests configurable.
+  o Add support for SpamAssassin subjprefix keyword.
+    SpamAssassin 3.4.3 introduced a subjprefix keyword and a
+    _SUBJPREFIX_ template tag which may be used in SpamAssassin
+    rules. The template tag is now also injected into Amavis for
+    usage inside subject_tag related confvars.
+  o Deprecate $daemon_group confvar by @daemon_groups, which allows
+    joining multiple supplementary groups when dropping privileges.
+    The first element of @daemon_groups determines the EGID.
+    If $daemon_group is defined it will be put ahead implicitly.
+    If @daemon_groups are empty, they default to the system-provided
+    groups of $daemon_user.
+  BUG FIXES
+  o Ignore [$@]daemon_group(s) settings during config test
+    when amavis is running unprivileged already.
+  o Resolve "can't obtain a tainted string" warning.
+  o Resolve start_SSL fail to set SSL_verifycn_name.
+    Additionally provide an explicit choice of common names
+    via %smtp_tls_client_verifycn_name_maps.
+  OTHER
+  o Add support for Sophos Protection for Linux on @av_scanners_backup.
+  o Declare Sanesecurity.Foxhole.Mail_tar infection as false positive.
+  o Factor out various Amavis packages into own module files.
+  o Introduce tests via Gitlab CI.
+  o Convert source to CPAN module file structure.
+  o Update example scanners and documentation.
+  o Add IKARUS scan.server configuration example.
+  o Add contribution guideline.
+  o Remove IO::Stringy dependency.
+  o Add a docker-compose testing environment.
+  o Add support for F-Secure Linux Security 64 on @av_scanners.
+- Rebase and rename patch: 
+    amavisd-new-2.10.1-myhostname.patch -> amavisd-new-2.3.0-myhostname.patch
+- Remove patch. ClamAV is in new version already avtivated
+    activate_virus_scanner.diff
+- Remove deprecated stuff from spec file.
+- Use build method provided by amavis
+
+-------------------------------------------------------------------
 Fri May 27 05:21:35 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 
 - amavis fails to start (bsc#1199755)

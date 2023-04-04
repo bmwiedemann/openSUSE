@@ -656,4 +656,12 @@ Please forward to Factory and 13.1
 - Remove server:mail/amavisd-new/amavis.service since it results Assignment outside of section warning</comment>
     <requestid>979415</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>de16f12a2dcd9433c7b377779b3bfbcc</srcmd5>
+    <version>2.13.0</version>
+    <time>1680636418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077191</requestid>
+  </revision>
 </revisionlist>

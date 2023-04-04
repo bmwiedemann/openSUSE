@@ -1,0 +1,20 @@
+--- amavis-v2.13.0/lib/Amavis/Conf.pm.orig	2023-03-27 12:13:46.358912246 +0200
++++ amavis-v2.13.0/lib/Amavis/Conf.pm	2023-03-27 12:15:04.675519360 +0200
+@@ -3,6 +3,7 @@
+ package Amavis::Conf;
+ use strict;
+ use re 'taint';
++use Net::Domain;
+ 
+ # constants;  intentionally leave value -1 unassigned for compatibility
+ use constant D_TEMPFAIL => -4;
+@@ -748,7 +749,8 @@
+ 
+   # $myhostname is used by SMTP server module in the initial SMTP welcome line,
+   # in inserted Received: lines, Message-ID in notifications, log entries, ...
+-  $myhostname = (POSIX::uname)[1];  # should be a FQDN !
++  $ENV{'PATH'} = "";
++  $myhostname = Net::Domain::hostfqdn();  # should be a FQDN !
+ 
+   $snmp_contact  = '';  # a value of sysContact OID
+   $snmp_location = '';  # a value of sysLocation OID
