@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Mar 14 22:18:56 UTC 2021 - psimons@suse.com
 
 - Update Decimal to version 0.5.2.
