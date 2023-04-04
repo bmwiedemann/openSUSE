@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 21 21:01:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8:
+  * https://blog.weechat.org/post/2023/01/08/Version-3.8
+  * new Commands: /allbuf, /hotlist
+  * add option weechat.look.chat_space_right
+- drop weechat-ruby3.2.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Mar  6 08:50:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add weechat-ruby3.2.patch: Fix build against Ruby 3.2.
