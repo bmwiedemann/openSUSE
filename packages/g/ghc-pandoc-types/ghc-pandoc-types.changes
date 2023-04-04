@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Jan 18 16:31:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.
+  [1.23]
+
+    * Remove Null constructor from Block (#91) [API change].
+
+    * ToJSONFilter: Add instance for MonadIO (#105, Willem Van Onsem)
+      [API change].
+
+    * Add `Figure` block constructor (Albert Krewinkel, Aner Lucero,
+      and Christian Despres) [API change]. The new Figure block represents
+      a figure with attributes, caption, and arbitrary block content.
+
+-------------------------------------------------------------------
 Sat Aug 13 18:36:11 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-types to version 1.22.2.1.
