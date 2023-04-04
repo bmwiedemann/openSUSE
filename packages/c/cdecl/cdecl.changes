@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  4 14:25:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.1
+  * Blocks, lambda captures, and reference functions now
+    correctly print alternative tokens when the option
+    "alternative tokens"is enabled.
+  * Now allowing C-style casting without a name:
+    ``cast to pointer to char`` produces ``(char*)``
+
+-------------------------------------------------------------------
 Thu Feb 23 00:04:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.0
