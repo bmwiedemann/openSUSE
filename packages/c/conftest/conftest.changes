@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 03 12:19:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.41.0:
+  * bump-up(docker): update parser to the latest to be able to
+    parse all keywords (#805)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.50.2
+    to 0.51.0 (#808)
+  * fix: detect regardless of port and loopback (#806)
+  * docs: fix verify docs/example code (#801)
+
+-------------------------------------------------------------------
 Fri Mar 24 05:42:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.40.0:
