@@ -470,4 +470,12 @@ texmath changes:
     <comment>version update</comment>
     <requestid>1061645</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>de344285f1c7389f08295f45dda26989</srcmd5>
+    <version>0.12.7</version>
+    <time>1680636324</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076160</requestid>
+  </revision>
 </revisionlist>

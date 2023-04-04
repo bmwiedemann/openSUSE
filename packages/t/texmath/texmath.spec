@@ -17,9 +17,10 @@
 
 
 %global pkg_name texmath
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.12.5.5
+Version:        0.12.7
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
@@ -28,35 +29,55 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-uri-devel
+BuildRequires:  ghc-network-uri-prof
 BuildRequires:  ghc-pandoc-types-devel
+BuildRequires:  ghc-pandoc-types-prof
 BuildRequires:  ghc-parsec-devel
+BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-pretty-show-devel
+BuildRequires:  ghc-pretty-show-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-split-devel
+BuildRequires:  ghc-split-prof
 BuildRequires:  ghc-syb-devel
+BuildRequires:  ghc-syb-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-xml-devel
+BuildRequires:  ghc-xml-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-tagged-devel
+BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
+BuildRequires:  ghc-tasty-golden-prof
+BuildRequires:  ghc-tasty-prof
 %endif
 
 %description
 The texmath library provides functions to read and write TeX math, presentation
 MathML, and OMML (Office Math Markup Language, used in Microsoft Office).
-Support is also included for converting math formats to Gnu eqn and to pandoc's
-native format (allowing conversion, via pandoc, to a variety of different
-markup formats). The TeX reader supports basic LaTeX and AMS extensions, and it
-can parse and apply LaTeX macros. (See <https://johnmacfarlane.net/texmath
-here> for a live demo of bidirectional conversion between LaTeX and MathML.)
+Support is also included for converting math formats to Gnu eqn, typst, and
+pandoc's native format (allowing conversion, via pandoc, to a variety of
+different markup formats). The TeX reader supports basic LaTeX and AMS
+extensions, and it can parse and apply LaTeX macros. (See
+<https://johnmacfarlane.net/texmath here> for a live demo of bidirectional
+conversion between LaTeX and MathML.)
 
 The package also includes several utility modules which may be useful for
 anyone looking to manipulate either TeX math or MathML. For example, a copy of
@@ -84,6 +105,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
+
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
@@ -115,5 +152,10 @@ This package provides the Haskell %{name} library development files.
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc README.markdown changelog
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
