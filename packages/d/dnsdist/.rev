@@ -29,4 +29,13 @@
   downstream DNS resolver configuration should be chosen by the admin</comment>
     <requestid>1073801</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>35e68a886fafe7c7d13c8c645e56dbbf</srcmd5>
+    <version>1.8.0</version>
+    <time>1680636409</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0
+  https://dnsdist.org/changelog.html#change-1.8.0</comment>
+    <requestid>1077173</requestid>
+  </revision>
 </revisionlist>

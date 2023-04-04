@@ -35,17 +35,15 @@
 %bcond_with     dnsdist_re2
 %endif
 
-%define file_version 1.8.0-rc3
-
 Name:           dnsdist
-Version:        1.8.0~rc3
+Version:        1.8.0
 Release:        0
 License:        GPL-2.0-only
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 URL:            http://www.powerdns.com/
 Group:          Productivity/Networking/DNS/Servers
-Source0:        https://downloads.powerdns.com/releases/dnsdist-%{file_version}.tar.bz2
-Source1:        https://downloads.powerdns.com/releases/dnsdist-%{file_version}.tar.bz2.sig
+Source0:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.bz2
+Source1:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.bz2.sig
 Source2:        https://dnsdist.org/_static/dnsdist-keyblock.asc#/dnsdist.keyring
 Source10:       dnsdist.user
 Source11:       dnsdist.lua
@@ -91,7 +89,7 @@ dnsdist is dynamic, in the sense that its configuration can be changed at
 runtime, and that its statistics can be queried from a console-like interface.
 
 %prep
-%autosetup -p1 -n %name-%file_version
+%autosetup -p1 -n %name-%version
 
 %build
 export CFLAGS="%{optflags} -Wno-error=deprecated-declarations"
