@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Nov 27 23:34:53 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update vector-binary-instances to version 0.2.5.2 revision 3.
