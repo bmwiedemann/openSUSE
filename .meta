@@ -1,0 +1,5 @@
+<package name="hadolint" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="hadolint"/>
+</package>

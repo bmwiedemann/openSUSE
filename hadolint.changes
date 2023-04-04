@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:09:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Nov  9 17:50:03 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Add hadolint at version 2.12.0.
+
