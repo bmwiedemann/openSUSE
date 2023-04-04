@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:47 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Oct 22 13:07:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update filepath-bytestring to version 1.4.2.1.12.
+  filepath-bytestring (1.4.2.1.12) unstable; urgency=medium
+
+    * Relax bounds to allow base 4.17 (ghc 9.4).
+
+   -- Joey Hess <id@joeyh.name>  Thu, 20 Oct 2022 13:25:40 -0400
+
+  filepath-bytestring (1.4.2.1.11) unstable; urgency=medium
+
+    * Deprecated this library, since filepath has added OsPath that
+      is based on a bytestring.
+
+   -- Joey Hess <id@joeyh.name>  Sat, 23 Jul 2022 12:41:53 -0400
+
+  filepath-bytestring (1.4.2.1.10) unstable; urgency=medium
+
+    * Depend on bytestring-0.11.2.0, and use it to implement encodeFilePath
+      and decodeFilePath, whose code was previously copied from it.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 08 Dec 2021 18:55:24 -0400
+
+-------------------------------------------------------------------
 Fri Dec  3 15:52:06 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update filepath-bytestring to version 1.4.2.1.9.
