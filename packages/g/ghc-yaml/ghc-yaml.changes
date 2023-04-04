@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Feb 24 05:17:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yaml to version 0.11.11.0.
+  ## 0.11.11.0
+
+  * Fix ambiguous occurrence `AesonException`
+
+-------------------------------------------------------------------
+Tue Feb  7 04:04:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yaml to version 0.11.10.0.
+  ## 0.11.10.0
+
+  * Undo previous change (breakage with aeson 2)
+
+  ## 0.11.9.0
+
+  * Data.Yaml.Pretty: provide key-sorting function with path to parent object [#206](https://github.com/snoyberg/yaml/pull/206)
+
+-------------------------------------------------------------------
 Mon Oct 24 11:27:18 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yaml to version 0.11.8.0 revision 2.
