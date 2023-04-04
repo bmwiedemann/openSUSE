@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  3 10:29:26 UTC 2023 - pgajdos@suse.com
+
+- version update to 5.4.0
+  * Reimplement and streamline the asyncio part of the ClientStorage implementation.
+  * Remove support for interoperability with ZEO4 server.
+  * If the zeopack script cannot connect to a server it sets exit status 1 See #214.
+  * Remove asyncio/mtacceptor module. 
+  * Add support for Python 3.10, 3.11.
+  * Add ConflictError to the list of unlogged server exceptions.
+- do not require six
+- modified patches
+  % python-ZEO-no-mock.patch (refreshed)
+- added patches
+  fix https://github.com/zopefoundation/ZEO/commit/d0f0709ac617a1e3d1251f396682a3bb79e22211
+  + python-ZEO-no-six.patch
+
+-------------------------------------------------------------------
 Mon Aug 29 14:52:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 5.3.0 

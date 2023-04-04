@@ -1,0 +1,536 @@
+Index: ZEO-5.4.0/src/ZEO/asyncio/futures.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/asyncio/futures.py
++++ ZEO-5.4.0/src/ZEO/asyncio/futures.py
+@@ -9,7 +9,6 @@ This module defines variants which run c
+ 
+ from .compat import asyncio
+ import functools
+-import six
+ CancelledError = asyncio.CancelledError
+ InvalidStateError = asyncio.InvalidStateError
+ get_event_loop = asyncio.get_event_loop
+@@ -99,29 +98,18 @@ class Future(object):
+         return rv
+ 
+     def call_callbacks(self):
+-        exc_stop = None
+         for cb in self.callbacks:  # allows ``callbacks`` to grow
+             try:
+                 cb(self)
+             except (SystemExit, KeyboardInterrupt):
+                 raise
+             except BaseException as exc:
+-                if six.PY2:
+-                    # trollius stops the loop by raising _StopError
+-                    # we delay loop stopping till after all callbacks are invoked
+-                    # this goes in line with py3 behaviour
+-                    if isinstance(exc, asyncio.base_events._StopError):
+-                        exc_stop = exc
+-                        continue
+-
+                 self._loop.call_exception_handler({
+                         'message': 'Exception in callback %s' % (cb,),
+                         'exception': exc,
+                     })
+ 
+         del self.callbacks[:]
+-        if exc_stop is not None:
+-            raise exc_stop
+ 
+     def set_result(self, result):
+         if self.state:
+@@ -139,28 +127,18 @@ class Future(object):
+         self._result = exc
+         self.call_callbacks()
+ 
+-    # trollius and py3 access ._exception directly
++    # py3 < py3.7 access ._exception directly
+     @property
+     def _exception(self):
+         if self.state != 2:  # EXCEPTION
+             return None
+         return self._result
+ 
+-    if six.PY3:
+-        # return from generator raises SyntaxError on py2
+-        exec('''if 1:
+-        def __await__(self):
+-            if not self.state:
+-                self._asyncio_future_blocking = True
+-                yield self
+-            return self.result()
+-        ''')
+-    else:
+-        def __await__(self):
+-            if not self.state:
+-                self._asyncio_future_blocking = True
+-                yield self
+-            raise asyncio.Return(self.result())
++    def __await__(self):
++        if not self.state:
++            self._asyncio_future_blocking = True
++            yield self
++        return self.result()
+ 
+     __iter__ = __await__
+ 
+@@ -172,25 +150,13 @@ class Future(object):
+                 self.callbacks]
+         return " ".join(str(x) for x in info)
+ 
+-    if six.PY3:  # py3-only because cyclic garbage with __del__ is not collected on py2
+-        def __del__(self):
+-            if self.state == 2  and  not self._result_retrieved:  # EXCEPTION
+-                self._loop.call_exception_handler({
+-                    'message': "%s exception was never retrieved" % self.__class__.__name__,
+-                    'exception': self._result,
+-                    'future': self,
+-                })
+-
+-# py3: asyncio.isfuture checks ._asyncio_future_blocking
+-# py2: trollius does isinstace(_FUTURE_CLASSES)
+-# -> register our Future so that it is recognized as such by trollius
+-if six.PY2:
+-    _ = asyncio.futures._FUTURE_CLASSES
+-    if not isinstance(_, tuple):
+-        _ = (_,)
+-    _ += (Future,)
+-    asyncio.futures._FUTURE_CLASSES = _
+-    del _
++    def __del__(self):
++        if self.state == 2  and  not self._result_retrieved:  # EXCEPTION
++            self._loop.call_exception_handler({
++                'message': "%s exception was never retrieved" % self.__class__.__name__,
++                'exception': self._result,
++                'future': self,
++            })
+ 
+ 
+ class ConcurrentFuture(Future):
+@@ -270,13 +236,7 @@ class CoroutineExecutor:
+             task = self.task
+             self.task = None  # break reference cycle
+             if isinstance(e, (StopIteration, _GenReturn)):
+-                if six.PY2:
+-                    v = getattr(e, 'value', None)  # e.g. no .value on plain return
+-                    if hasattr(e, 'raised'):  # coroutines implemented inside trollius raise Return
+-                        e.raised = True       # which checks it has been caught and complains if not
+-                else:
+-                    v = e.value
+-                task.set_result(v)
++                task.set_result(e.value)
+             elif isinstance(e, CancelledError):
+                 if len(e.args) == 0:
+                     msg = getattr(awaiting, '_cancel_message', None)  # see _cancel_future
+@@ -296,8 +256,6 @@ class CoroutineExecutor:
+             if blocking is not None:
+                 result._asyncio_future_blocking = False
+                 await_next = result
+-            elif six.PY2 and isinstance(result, asyncio.Future):
+-                await_next = result  # trollius predates ._asyncio_future_blocking
+ 
+             # `yield coro` - handle as if it was `yield from coro`
+             elif _iscoroutine(result):
+@@ -365,7 +323,7 @@ def _cancel_future(fut, msg):
+     try:
+         return fut.cancel(msg)
+     except TypeError:
+-        # on trollius and py3 < 3.9 Future.cancel does not accept msg
++        # on py3 < 3.9 Future.cancel does not accept msg
+         _ = fut.cancel()
+         fut._cancel_message = msg
+         return _
+Index: ZEO-5.4.0/src/ZEO/_forker.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/_forker.py
++++ ZEO-5.4.0/src/ZEO/_forker.py
+@@ -21,8 +21,7 @@ import multiprocessing
+ import logging
+ import tempfile
+ 
+-from six.moves.queue import Empty
+-import six
++from queue import Empty
+ 
+ from ZEO._compat import StringIO
+ 
+@@ -42,7 +41,7 @@ class ZEOConfig(object):
+             else:
+                 self.logpath = 'server.log'
+ 
+-        if not isinstance(addr, six.string_types):
++        if not isinstance(addr, str):
+             addr = '%s:%s' % addr
+ 
+         self.log = log
+@@ -228,20 +227,14 @@ def start_zeo_server(storage_conf=None,
+ 
+     if threaded:
+         from threading import Thread
+-        from six.moves.queue import Queue
++        from queue import Queue
+     else:
+         # Experimental to see whether server logging problems under MacOS
+         # have to do with its default `spawn` method
+         # from multiprocessing import Process as Thread
+         process_type = os.environ.get("ZEO_PROCESS_TYPE", "")
+-        if six.PY2:
+-            from multiprocessing import Process as Thread
+-            if process_type:
+-                raise NotImplementedError(
+-                        "$ZEO_PROCESS_TYPE is not supported on py2")
+-        else:
+-            from multiprocessing import context
+-            Thread = getattr(context, process_type.capitalize() + "Process")
++        from multiprocessing import context
++        Thread = getattr(context, process_type.capitalize() + "Process")
+         Queue = ThreadlessQueue
+ 
+     logger.info("using thread type %r", Thread)
+Index: ZEO-5.4.0/src/ZEO/StorageServer.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/StorageServer.py
++++ ZEO-5.4.0/src/ZEO/StorageServer.py
+@@ -33,9 +33,8 @@ import ZODB.event
+ import ZODB.serialize
+ import ZODB.TimeStamp
+ import zope.interface
+-import six
+ 
+-from ZEO._compat import Pickler, Unpickler, PY3
++from ZEO._compat import Pickler, Unpickler
+ from ZEO.monitor import StorageStats
+ from ZEO.asyncio.server import Delay, MTDelay, Result, Acceptor
+ from ZODB.Connection import TransactionMetaData
+@@ -938,7 +937,7 @@ class StorageServer(object):
+                 except Exception:
+                     logger.exception("closing connection %r", zs)
+ 
+-        for name, storage in six.iteritems(self.storages):
++        for name, storage in self.storages.items():
+             logger.info("closing storage %r", name)
+             storage.close()
+ 
+@@ -964,9 +963,8 @@ class StorageServer(object):
+         status['timeout-thread-is-alive'] = lock_manager.timeout.is_alive()
+         last_transaction = self.storages[storage_id].lastTransaction()
+         last_transaction_hex = codecs.encode(last_transaction, 'hex_codec')
+-        if PY3:
+-            # doctests and maybe clients expect a str, not bytes
+-            last_transaction_hex = str(last_transaction_hex, 'ascii')
++        # doctests and maybe clients expect a str, not bytes
++        last_transaction_hex = str(last_transaction_hex, 'ascii')
+         status['last-transaction'] = last_transaction_hex
+         return status
+ 
+@@ -1083,9 +1081,9 @@ class SlowMethodThread(threading.Thread)
+ 
+ 
+ def _addr_label(addr):
+-    if isinstance(addr, six.binary_type):
++    if isinstance(addr, bytes):
+         return addr.decode('ascii')
+-    if isinstance(addr, six.string_types):
++    if isinstance(addr, str):
+         return addr
+     else:
+         host, port = addr
+Index: ZEO-5.4.0/setup.py
+===================================================================
+--- ZEO-5.4.0.orig/setup.py
++++ ZEO-5.4.0/setup.py
+@@ -18,7 +18,6 @@ version = '5.4.0'
+ 
+ install_requires = [
+     'ZODB >= 5.1.1',
+-    'six',
+     'transaction >= 2.0.3',
+     'persistent >= 4.1.0',
+     'zc.lockfile',
+Index: ZEO-5.4.0/src/ZEO/ClientStorage.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/ClientStorage.py
++++ ZEO-5.4.0/src/ZEO/ClientStorage.py
+@@ -37,7 +37,6 @@ import ZODB.BaseStorage
+ import ZODB.ConflictResolution
+ import ZODB.interfaces
+ import zope.interface
+-import six
+ 
+ from persistent.TimeStamp import TimeStamp
+ from ZEO._compat import get_ident
+@@ -262,12 +261,12 @@ class ClientStorage(ZODB.ConflictResolut
+ 
+         self.__name__ = name or str(addr)  # Standard convention for storages
+ 
+-        if isinstance(addr, six.string_types):
++        if isinstance(addr, str):
+             if WIN:
+                 raise ValueError("Unix sockets are not available on Windows")
+             addr = [addr]
+         elif (isinstance(addr, tuple) and len(addr) == 2 and
+-              isinstance(addr[0], six.string_types) and
++              isinstance(addr[0], str) and
+               isinstance(addr[1], int)):
+             addr = [addr]
+ 
+Index: ZEO-5.4.0/src/ZEO/cache.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/cache.py
++++ ZEO-5.4.0/src/ZEO/cache.py
+@@ -34,7 +34,6 @@ import time
+ import ZODB.fsIndex
+ import zc.lockfile
+ from ZODB.utils import p64, u64, z64, RLock
+-import six
+ from ._compat import PYPY
+ 
+ logger = logging.getLogger("ZEO.cache")
+@@ -746,7 +745,7 @@ class ClientCache(object):
+         # depends on whether the caller may change the cache.
+         seek = self.f.seek
+         read = self.f.read
+-        for oid, ofs in six.iteritems(self.current):
++        for oid, ofs in self.current.items():
+             seek(ofs)
+             status = read(1)
+             assert status == b'a', (ofs, self.f.tell(), oid)
+Index: ZEO-5.4.0/src/ZEO/runzeo.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/runzeo.py
++++ ZEO-5.4.0/src/ZEO/runzeo.py
+@@ -38,8 +38,6 @@ import signal
+ import socket
+ import logging
+ 
+-import six
+-
+ import ZConfig.datatypes
+ from zdaemon.zdoptions import ZDOptions
+ 
+@@ -200,7 +198,7 @@ class ZEOServer(object):
+             return 1
+ 
+     def clear_socket(self):
+-        if isinstance(self.options.address, six.string_types):
++        if isinstance(self.options.address, str):
+             try:
+                 os.unlink(self.options.address)
+             except os.error:
+Index: ZEO-5.4.0/src/ZEO/scripts/cache_simul.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/scripts/cache_simul.py
++++ ZEO-5.4.0/src/ZEO/scripts/cache_simul.py
+@@ -40,7 +40,6 @@ from .cache_stats import add_tracefile_a
+ 
+ # we assign ctime locally to facilitate test replacement!
+ from time import ctime
+-import six
+ 
+ 
+ def main(args=None):
+@@ -502,7 +501,7 @@ class CircularCacheSimulation(Simulation
+     def report(self):
+         self.check()
+         free = used = total = 0
+-        for size, e in six.itervalues(self.filemap):
++        for size, e in self.filemap.values():
+             total += size
+             if e:
+                 used += size
+Index: ZEO-5.4.0/src/ZEO/scripts/cache_stats.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/scripts/cache_stats.py
++++ ZEO-5.4.0/src/ZEO/scripts/cache_stats.py
+@@ -53,7 +53,6 @@ import gzip
+ 
+ # we assign ctime locally to facilitate test replacement!
+ from time import ctime
+-import six
+ 
+ 
+ def add_interval_argument(parser):
+@@ -297,7 +296,7 @@ def dumpbysize(bysize, how, how2):
+     sizes = sorted(bysize.keys())
+     for size in sizes:
+         loads = 0
+-        for n in six.itervalues(bysize[size]):
++        for n in bysize[size].values():
+             loads += n
+         print("%10s %6d %6d" % (addcommas(size),
+                                 len(bysize.get(size, "")),
+@@ -344,7 +343,7 @@ def hitrate(bycode):
+ 
+ def histogram(d):
+     bins = {}
+-    for v in six.itervalues(d):
++    for v in d.values():
+         bins[v] = bins.get(v, 0) + 1
+     L = sorted(bins.items())
+     return L
+@@ -355,7 +354,7 @@ def U64(s):
+ 
+ 
+ def oid_repr(oid):
+-    if isinstance(oid, six.binary_type) and len(oid) == 8:
++    if isinstance(oid, bytes) and len(oid) == 8:
+         return '%16x' % U64(oid)
+     else:
+         return repr(oid)
+Index: ZEO-5.4.0/src/ZEO/scripts/zeopack.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/scripts/zeopack.py
++++ ZEO-5.4.0/src/ZEO/scripts/zeopack.py
+@@ -6,7 +6,6 @@ import sys
+ import time
+ import traceback
+ import ZEO.ClientStorage
+-from six.moves import map
+ 
+ usage = """Usage: %prog [options] [servers]
+ 
+Index: ZEO-5.4.0/src/ZEO/scripts/zeoserverlog.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/scripts/zeoserverlog.py
++++ ZEO-5.4.0/src/ZEO/scripts/zeoserverlog.py
+@@ -172,7 +172,6 @@ import datetime
+ import os
+ import re
+ import sys
+-from six.moves import map
+ 
+ 
+ def time(line):
+Index: ZEO-5.4.0/src/ZEO/tests/IterationTests.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/tests/IterationTests.py
++++ ZEO-5.4.0/src/ZEO/tests/IterationTests.py
+@@ -14,7 +14,6 @@
+ """ZEO iterator protocol tests."""
+ 
+ import transaction
+-import six
+ import gc
+ 
+ from ZODB.Connection import TransactionMetaData
+@@ -80,7 +79,7 @@ class IterationTests(object):
+ 
+         # At this point, a wrapping iterator might not have called the CS
+         # iterator yet. We'll consume one item to make sure this happens.
+-        six.advance_iterator(iterator)
++        next(iterator)
+         self.assertEqual(1, len(self._storage._iterator_ids))
+         iid = list(self._storage._iterator_ids)[0]
+         self.assertEqual([], list(iterator))
+@@ -110,7 +109,7 @@ class IterationTests(object):
+         # We need to actually do some iteration to get the iterator created.
+         # We do a store to make sure the iterator isn't exhausted right away.
+         self._dostore()
+-        six.advance_iterator(self._storage.iterator())
++        next(self._storage.iterator())
+ 
+         self.assertEqual(1, len(self._storage._iterator_ids))
+         iid = list(self._storage._iterator_ids)[0]
+@@ -128,7 +127,7 @@ class IterationTests(object):
+         # We need to actually do some iteration to get the iterator created.
+         # We do a store to make sure the iterator isn't exhausted right away.
+         self._dostore()
+-        six.advance_iterator(self._storage.iterator())
++        next(self._storage.iterator())
+ 
+         iid = list(self._storage._iterator_ids)[0]
+ 
+@@ -146,7 +145,7 @@ class IterationTests(object):
+         # We need to actually do some iteration to get the iterator created.
+         # We do a store to make sure the iterator isn't exhausted right away.
+         self._dostore()
+-        six.advance_iterator(self._storage.iterator())
++        next(self._storage.iterator())
+ 
+         t = TransactionMetaData()
+         self._storage.tpc_begin(t)
+@@ -163,11 +162,11 @@ class IterationTests(object):
+         self._dostore()
+         iter1 = self._storage.iterator()
+         iter2 = self._storage.iterator()
+-        txn_info1 = six.advance_iterator(iter1)
+-        txn_info2 = six.advance_iterator(iter2)
++        txn_info1 = next(iter1)
++        txn_info2 = next(iter2)
+         self.assertEqual(txn_info1.tid, txn_info2.tid)
+-        txn_info1 = six.advance_iterator(iter1)
+-        txn_info2 = six.advance_iterator(iter2)
++        txn_info1 = next(iter1)
++        txn_info2 = next(iter2)
+         self.assertEqual(txn_info1.tid, txn_info2.tid)
+         self.assertRaises(StopIteration, next, iter1)
+         self.assertRaises(StopIteration, next, iter2)
+Index: ZEO-5.4.0/src/ZEO/tests/TestThread.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/tests/TestThread.py
++++ ZEO-5.4.0/src/ZEO/tests/TestThread.py
+@@ -14,7 +14,6 @@
+ """A Thread base class for use with unittest."""
+ import threading
+ import sys
+-import six
+ 
+ 
+ class TestThread(threading.Thread):
+@@ -53,8 +52,9 @@ class TestThread(threading.Thread):
+     def cleanup(self, timeout=15):
+         self.join(timeout)
+         if self._exc_info:
+-            six.reraise(self._exc_info[0],
+-                        self._exc_info[1],
+-                        self._exc_info[2])
++            et, ev, etb = self._exc_info
++            if ev is None:
++                ev = et()
++            raise ev.with_traceback(etb)
+         if self.is_alive():
+             self._testcase.fail("Thread did not finish: %s" % self)
+Index: ZEO-5.4.0/src/ZEO/tests/forker.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/tests/forker.py
++++ ZEO-5.4.0/src/ZEO/tests/forker.py
+@@ -23,8 +23,6 @@ import socket
+ 
+ import logging
+ 
+-import six
+-
+ import ZODB.tests.util
+ import zope.testing.setupstack
+ 
+@@ -168,7 +166,7 @@ def wait_until(label=None, func=None, ti
+     if label is None:
+         if func is not None:
+             label = func.__name__
+-    elif not isinstance(label, six.string_types) and func is None:
++    elif not isinstance(label, str) and func is None:
+         func = label
+         label = func.__name__
+ 
+Index: ZEO-5.4.0/src/ZEO/tests/testZEO.py
+===================================================================
+--- ZEO-5.4.0.orig/src/ZEO/tests/testZEO.py
++++ ZEO-5.4.0/src/ZEO/tests/testZEO.py
+@@ -21,7 +21,6 @@ from ZEO.tests import forker, Cache, Com
+ from ZEO.tests import IterationTests
+ from ZEO._compat import PY3
+ from ZEO._compat import WIN
+-import six
+ 
+ from ZODB.Connection import TransactionMetaData
+ from ZODB.tests import StorageTestBase, BasicStorage,  \
+@@ -366,7 +365,7 @@ class GenericTests(
+         thread.start()
+         thread.join(voted and .1 or 9)
+         if self.exception is not None:
+-            six.reraise(type(self.exception), self.exception)
++            raise self.exception.with_traceback(self.exception.__traceback__)
+         return thread
+ 
+ 

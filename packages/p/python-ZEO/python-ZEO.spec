@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ZEO
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
@@ -28,13 +27,14 @@ URL:            https://github.com/zopefoundation/ZEO
 Source:         https://files.pythonhosted.org/packages/source/Z/ZEO/ZEO-%{version}.tar.gz
 # https://github.com/zopefoundation/ZEO/issues/184
 Patch0:         python-ZEO-no-mock.patch
+# https://github.com/zopefoundation/ZEO/commit/d0f0709ac617a1e3d1251f396682a3bb79e22211
+Patch1:         python-ZEO-no-six.patch
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module ZODB >= 5.5.1}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module transaction >= 2.0.3}
 BuildRequires:  %{python_module zc.lockfile}
 BuildRequires:  %{python_module zdaemon}
@@ -47,7 +47,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-ZConfig
 Requires:       python-ZODB >= 5.5.1
 Requires:       python-persistent >= 4.1.0
-Requires:       python-six
 Requires:       python-transaction >= 2.0.3
 Requires:       python-zc.lockfile
 Requires:       python-zdaemon
