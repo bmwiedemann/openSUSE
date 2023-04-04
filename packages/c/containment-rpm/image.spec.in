@@ -1,0 +1,38 @@
+# needsrootforbuild
+
+Url:            http://www.suse.com/
+Name:           __NAME__
+Summary:        Package with __SUSE_PRODUCT_NAME__ __SUSE_VERSION__ docker image
+Version:        __VERSION__
+Release:        __RELEASE__
+Group:          System/Management
+License:        SUSE-EULA
+Source0:        __SOURCE0__
+Source1:        __SOURCE1__
+Source2:        __SOURCE2__
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Obsoletes:      __OLD_NAME__
+
+%description
+This package contains the official __SUSE_PRODUCT_NAME__ __SUSE_VERSION__
+image for Docker.
+
+%prep
+
+%build
+
+%install
+install -d -m 755 $RPM_BUILD_ROOT%{_datadir}/suse-docker-images/native
+install -p -D -m 644 %{SOURCE0} $RPM_BUILD_ROOT%{_datadir}/suse-docker-images/native/
+install -p -D -m 644 %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/suse-docker-images/native/
+install -p -D -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/suse-docker-images/native/
+ln -s ./$(basename %{SOURCE0}) $RPM_BUILD_ROOT%{_datadir}/suse-docker-images/native/__PKG_NAME__
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-, root, root)
+%{_datadir}/suse-docker-images/native
+
+%changelog

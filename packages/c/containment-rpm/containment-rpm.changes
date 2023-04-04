@@ -1,0 +1,340 @@
+-------------------------------------------------------------------
+Tue Apr  4 17:36:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * to Use uname -m for ARCH and also pass to rpmbuild
+  * Fix plural on sentence by
+  * adapt kiwi hook to new obs-build one and expand for docker build
+
+-------------------------------------------------------------------
+Tue Jun 12 16:52:30 UTC 2018 - containers-builds@suse.de
+
+- Commit 4532982 by Sergio Lindo Mansilla SLindoMansilla@suse.com
+ Fix plural on sentence
+
+
+-------------------------------------------------------------------
+Thu Jun  7 15:07:16 UTC 2018 - containers-builds@suse.de
+
+- Commit 97bf8fc by Fabian Vogt fvogt@suse.com
+ Use uname -m for ARCH and also pass to rpmbuild
+ 
+ Otherwise we get into a mess where i386/i586/i686 are used in place of each
+ other.
+ 
+ Fixes #35
+
+
+-------------------------------------------------------------------
+Mon May 14 08:39:59 UTC 2018 - containers-bugowner@suse.de
+
+- Commit fec546a by Jordi Massaguer Pla jmassaguerpla@suse.de
+ recommend changelog generator data instead of requiring it
+ 
+ Using the changelog generator data is not a hard requirement. You can build
+ rpms containing containers without creating the changelogs.
+ 
+ This way, it will create the changelogs only if the changelog-generator-data
+ package is available
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Wed Mar 28 09:03:30 UTC 2018 - containers-bugowner@suse.de
+
+- Commit c2e30cc by David Cassany dcassany@suse.com
+ Make local builds possible
+ 
+ This commit makes local OBS builds of images wrapped in RPMs possible.
+
+
+-------------------------------------------------------------------
+Mon Mar  5 13:41:32 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 229b3d2 by Fabian Vogt fvogt@suse.com
+ Abort build if changelog found but changelog-generator not available
+ 
+ Commit 8af17f6 by Fabian Vogt fabian@ritter-vogt.de
+ Make changelog-generator optional for openSUSE
+ 
+ Fixes #31
+
+ feature#openSUSE_Kubic
+
+
+-------------------------------------------------------------------
+Fri Feb  2 09:36:51 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 1956b4f by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Add conflicts with other packages that provide the same hook
+ /usr/lib/build/kiwi_post_run
+ 
+ Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Mon Jan 15 18:18:50 UTC 2018 - containers-bugowner@suse.de
+
+- Commit 56cf72d by David Cassany dcassany@suse.com
+ Exit if no tag defined
+ 
+ This commit exits the kiwi_post_run hook script in case the config.xml file
+ does not include any tag specification.
+
+
+-------------------------------------------------------------------
+Wed Nov  8 15:23:17 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c3c1362 by Flavio Castelli fcastelli@suse.com
+ Obsolete packages with older naming scheme [bsc#1066653]
+ 
+ Ensure the packages that followed the older naming scheme get replaced by the
+ new ones.
+ 
+ Signed-off-by: Flavio Castelli <fcastelli@suse.com>
+
+
+-------------------------------------------------------------------
+Wed Sep  6 13:56:34 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 66d6869 by David Cassany dcassany@suse.com
+ This commit removed the word 'docker' from the package name
+
+
+-------------------------------------------------------------------
+Fri Sep  1 18:09:33 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 055de6e by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Use IBS build number to distinguish releases
+ 
+ This solves a number of problems around updating images within IBS, and
+ delivering those as updates.
+ 
+ This is a rebase from https://github.com/SUSE/containment-rpm-docker/pull/24
+ 
+ Which Kiall started
+
+
+-------------------------------------------------------------------
+Mon Aug 28 16:18:27 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 055de6e by Jordi Massaguer Pla jmassaguerpla@suse.de
+ Use IBS build number to distinguish releases
+ 
+ This solves a number of problems around updating images within IBS, and
+ delivering those as updates.
+ 
+ This is a rebase from https://github.com/SUSE/containment-rpm-docker/pull/24
+ 
+ Which Kiall started
+
+
+-------------------------------------------------------------------
+Wed Aug 23 17:10:03 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 1a6b95f by Kiall Mac Innes kiall@macinnes.ie
+ Add a tagfile, a mechanism to determine the latest image
+ 
+ Sometimes, using a ":latest" tag is not enough, for example, when you need to
+ inform Kubernetes that it should perform a rolling upgrade to the new tag.
+ 
+ By adding a file which contains the most specific tag for a given image, we
+ can have downstream tools use this to determine the tag that matches the
+ currently installed RPM.
+
+
+-------------------------------------------------------------------
+Mon Aug  7 05:57:04 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 01528cd by David Cassany dcassany@suse.com
+ Add DISTURL in RPM metadata, fixes bsc#1052030
+ 
+ With this commit kiwi_post_run script reads the '/.build/build.data' file
+ from the build service environment in order to get the $DISTURL environment
+ variable and set the DISTURL value in the rpm.
+
+
+-------------------------------------------------------------------
+Fri Jul 28 12:40:54 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 593eaf5 by Maximilian Meister mmeister@suse.de
+ make branch safe by transforming slashes to dashes
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+ 
+ Commit 2ba6987 by Maximilian Meister mmeister@suse.de
+ packaging: make branch configurable
+ 
+ Signed-off-by: Maximilian Meister <mmeister@suse.de>
+
+
+-------------------------------------------------------------------
+Fri Jun 30 09:05:29 UTC 2017 - containers-bugowner@suse.de
+
+- Commit d0c508a by David Cassany dcassany@suse.com
+ Remove tag from the package name
+ 
+ Now the image tag can be updated without creating a different rpm package for
+ each update.
+ 
+ This commit fixes bsc#1046378.
+
+
+-------------------------------------------------------------------
+Tue Jun 13 08:52:54 UTC 2017 - containers-bugowner@suse.de
+
+- Commit b094d74 by Jordi Massaguer Pla jmassaguerpla@suse.de
+ add make_spec.sh script to create the spec file
+ 
+ otherwise, we had to update the version in the containment-rpm-docker and,
+ since this can be forgotten, we could end up with packages version 1.3.4 but
+ having master code in it which contains extra commits
+
+
+-------------------------------------------------------------------
+Mon Jun 12 11:51:44 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 145d37c by Jordi Massaguer Pla jmassaguerpla@suse.de
+  review filenames
+ 
+  use old.[packages|changes].$PKG_NAME.$ARCH instead, because this is all start
+  with old. This is just cosmetic but it is how we are doing it in the kubik
+  project.
+ 
+  Also fix the "if" clauses which were checking for the file existance which
+  were looking in the wrong path
+
+
+-------------------------------------------------------------------
+Wed May 31 10:12:48 UTC 2017 - containers-bugowner@suse.de
+
+- Commit db142fc by David Cassany dcassany@suse.com
+  Include symlink to the image with a simplified name
+ 
+  This commit includes in the resulting docker image RPM a symlink to the image
+  tarball that does not include any version number, arch and extension. The
+  symlink is named as it is in the `name` attribute of the `image` tag within
+  the kiwi description file. This way the base image version can be updated
+  without having to also update base image reference inside the derived image
+  kiwi description file.
+ 
+  Related to bsc#1038192
+
+
+-------------------------------------------------------------------
+Fri May 26 14:45:01 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 53d931e by Jordi Massaguer Pla jmassaguerpla@suse.de
+  remove sle2docker recommendation. fixes bsc#1032663
+
+
+-------------------------------------------------------------------
+Thu May 25 13:58:23 UTC 2017 - containers-bugowner@suse.de
+
+- Commit c36be37 by Jordi Massaguer Pla jmassaguerpla@suse.de
+  fix typo in filename
+  
+  Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Thu May 25 13:38:12 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 74c13c4 by Jordi Massaguer Pla jmassaguerpla@suse.de
+- check if old.changes and old.packages exist and otherwise create an empty
+- images.changes
+
+
+-------------------------------------------------------------------
+Thu May 25 08:18:33 UTC 2017 - containers-bugowner@suse.de
+
+- Commit 2aa7744 by Jordi Massaguer Pla jmassaguerpla@suse.de
+  multi packages in one repo
+ 
+  add the package name as a prefix in the old.packages and old.changelog:
+ 
+  $PKG_NAME.old.packages.$ARCH
+  $PKG_NAME.old.changelog.$ARCH
+ 
+  this way, if we have more than one docker image in the same obs repo, this
+  script will only take the old files for the right package.
+ 
+  Signed-off-by: Jordi Massaguer Pla <jmassaguerpla@suse.de>
+
+
+-------------------------------------------------------------------
+Tue Mar 21 09:02:37 UTC 2017 - containers-bugowner@suse.de
+
+- packaging: fix path within archive
+
+
+-------------------------------------------------------------------
+Tue Mar 21 08:53:25 UTC 2017 - containers-bugowner@suse.de
+
+- change compression format to gzip
+
+
+-------------------------------------------------------------------
+Tue Mar 21 08:45:26 UTC 2017 - containers-bugowner@suse.de
+
+- change compression format to gzip
+
+
+-------------------------------------------------------------------
+Mon Mar 20 07:50:19 UTC 2017 - mmeister@suse.com
+
+- synchronize specfile with git versioned specfile from
+  https://github.com/SUSE/containment-rpm-docker
+
+-------------------------------------------------------------------
+Thu Mar 16 09:18:41 UTC 2017 - mjura@suse.com
+
+- Updated to version 1.3.4
+  - change installation path for images
+  - generate metadata file with Docker image information
+
+-------------------------------------------------------------------
+Fri Mar 10 08:47:58 UTC 2017 - mjura@suse.com
+
+- Update to version 1.3.3
+  - rename KIWI image files before building the package
+  - add libxml2-tools package to runtime requirements
+  - parse KIWI config.xml and fetch containers metadata
+  - added openSUSE as possible image name
+
+-------------------------------------------------------------------
+Thu Nov 12 09:32:39 UTC 2015 - fcastelli@suse.com
+
+- Update to version 1.2.0:
+  - change the OBS script to look for changelong and old packages files
+    according to the target architecture
+
+-------------------------------------------------------------------
+Tue Jul 14 14:24:30 UTC 2015 - fcastelli@suse.com
+
+- Fix rubygem-changelog-generator requirement according to the OS
+  version
+
+-------------------------------------------------------------------
+Wed Apr 22 11:41:37 CEST 2015 - ro@suse.de
+
+- require changelog-generator-data 
+
+-------------------------------------------------------------------
+Wed Apr 22 11:38:34 CEST 2015 - ro@suse.de
+
+- require rubygem-changelog_generator 
+
+-------------------------------------------------------------------
+Wed Apr  1 09:12:33 UTC 2015 - fcastelli@suse.com
+
+- Version 1.1.0:
+  * automatic generation of the changelog
+  * recommend the installation of sle2docker
+
+-------------------------------------------------------------------
+Thu Mar 19 11:03:15 UTC 2015 - fcastelli@suse.com
+
+- Created initial version
+
