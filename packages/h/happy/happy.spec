@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,31 @@
 
 %bcond_with tests
 Name:           happy
-Version:        1.20.0
+Version:        1.20.1.1
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  autoconf
 BuildRequires:  docbook-dtd
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  libxml2
 BuildRequires:  libxslt
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 %endif
 
 %description
@@ -47,7 +52,6 @@ to the 'yacc' tool for C.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 find . -type f -exec chmod -x {} +
 
 %build
@@ -70,7 +74,7 @@ install -D --mode=444 doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %license LICENSE
-%doc CHANGES README.md TODO doc examples
+%doc ChangeLog.md doc examples
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %{_mandir}/man1/*

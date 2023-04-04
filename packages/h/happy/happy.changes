@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Feb  7 23:08:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update happy to version 1.20.1.1.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Mon Feb  6 22:21:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update happy to version 1.20.1 revision 1.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Sun May  8 00:28:51 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update happy to version 1.20.0 revision 1.
