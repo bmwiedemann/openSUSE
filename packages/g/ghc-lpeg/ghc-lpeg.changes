@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 13 12:06:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lpeg to version 1.0.4.
+  ## lpeg-1.0.4
+
+  Released 2023-03-13.
+
+  -   Allow lua-2.3.
+
+  -   Cease support for GHC 8.2 and older; require base 4.11 or
+      later.
+
+-------------------------------------------------------------------
 Sat Feb 19 14:38:07 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update lpeg to version 1.0.3.
