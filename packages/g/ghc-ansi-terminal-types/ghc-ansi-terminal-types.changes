@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:05:46 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Mar 18 11:30:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add ansi-terminal-types at version 0.11.5 revision 1.
+
