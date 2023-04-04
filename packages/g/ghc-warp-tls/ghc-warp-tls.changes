@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:01 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Mar 23 07:25:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.3.6.
+  ## 3.3.6
+
+  * Setting FD_CLOEXEC on the listening socket.
+    [#923](https://github.com/yesodweb/wai/pull/923)
+
+-------------------------------------------------------------------
+Wed Feb  8 05:38:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.3.5.
+  ## 3.3.5
+
+  * Switching the version of the "recv" package from 0.0.x to 0.1.x.
+
+-------------------------------------------------------------------
 Wed Sep 28 00:41:23 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update warp-tls to version 3.3.4.
