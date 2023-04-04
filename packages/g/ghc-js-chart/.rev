@@ -7,4 +7,12 @@
     <comment>new haskell package</comment>
     <requestid>890684</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9fca1c2f3a4a490a76dfad548cacbadc</srcmd5>
+    <version>2.9.4.1</version>
+    <time>1680636062</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075936</requestid>
+  </revision>
 </revisionlist>
