@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Oct 15 22:17:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pretty-simple to version 4.1.2.0.
+  ## 4.1.2.0
+
+  *   Fix a problem with the `pHPrint` function incorrectly
+      outputting a trailing newline to stdout, instead of the
+      handle you pass it.
+      [#118](https://github.com/cdepillabout/pretty-simple/pull/118)
+  *   Add a [web app](https://cdepillabout.github.io/pretty-simple/) where you
+      can play around with `pretty-simple` in your browser.
+      [#116](https://github.com/cdepillabout/pretty-simple/pull/116).
+      This took a lot of hard work by [@georgefst](https://github.com/georgefst)!
+
+  ## 4.1.1.0
+
+  *   Make the pretty-printed output with `outputOptionsCompact` enabled a little
+      more compact.
+      [#110](https://github.com/cdepillabout/pretty-simple/pull/110).
+      Thanks [@juhp](https://github.com/juhp)!
+  *   Add a `--compact` / `-C` flag to the `pretty-simple` executable that enables
+      `outputOptionsCompact`.
+      [#111](https://github.com/cdepillabout/pretty-simple/pull/111).
+      Thanks again @juhp!
+  *   Add `pTraceWith` and `pTraceShowWith` to `Debug.Pretty.Simple`.
+      [#104](https://github.com/cdepillabout/pretty-simple/pull/104).
+      Thanks [@LeviButcher](https://github.com/LeviButcher)!
+
+  ## 4.1.0.0
+
+  *   Fix a regression which arose in 4.0, whereby excess spaces would be inserted for unusual strings like dates and IP addresses.
+      [#105](https://github.com/cdepillabout/pretty-simple/pull/105)
+  *   Attach warnings to debugging functions, so that they're easy to find and remove.
+      [#103](https://github.com/cdepillabout/pretty-simple/pull/103)
+  *   Some minor improvements to the CLI tool:
+      *   Add a `--version`/`-v` flag.
+          [#83](https://github.com/cdepillabout/pretty-simple/pull/83)
+      *   Add a trailing newline.
+          [#87](https://github.com/cdepillabout/pretty-simple/pull/87)
+      *   Install by default, without requiring a flag.
+          [#94](https://github.com/cdepillabout/pretty-simple/pull/94)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
