@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Wed Jan 20 08:38:24 UTC 2021 - psimons@suse.com
 
 - Update HUnit to version 1.6.2.0.
