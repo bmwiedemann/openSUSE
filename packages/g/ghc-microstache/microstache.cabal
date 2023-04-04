@@ -1,0 +1,132 @@
+name:               microstache
+version:            1.0.2.3
+x-revision:         1
+cabal-version:      >=1.10
+license:            BSD3
+license-file:       LICENSE
+author:
+  Mark Karpov <markkarpov@openmailbox.org>, Oleg Grenrus <oleg.grenrus@iki.fi>
+
+maintainer:         Oleg Grenrus<oleg.grenrus@iki.fi>
+homepage:           https://github.com/haskellari/microstache
+bug-reports:        https://github.com/haskellari/microstache/issues
+category:           Text
+synopsis:           Mustache templates for Haskell
+build-type:         Simple
+description:
+  Mustache templates for Haskell.
+  .
+  Based on @stache@ library, which uses @megaparsec@.
+  This library uses @parsec@, thus the name: @microstache@.
+
+extra-source-files:
+  CHANGELOG.md
+  README.md
+  specification/comments.json
+  specification/delimiters.json
+  specification/interpolation.json
+  specification/inverted.json
+  specification/partials.json
+  specification/sections.json
+
+tested-with:
+  GHC ==7.4.2
+   || ==7.6.3
+   || ==7.8.4
+   || ==7.10.3
+   || ==8.0.2
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.5
+   || ==8.8.4
+   || ==8.10.7
+   || ==9.0.2
+   || ==9.2.7
+   || ==9.4.4
+   || ==9.6.1
+
+source-repository head
+  type:     git
+  location: https://github.com/haskellari/microstache.git
+
+library
+  build-depends:
+      aeson                 >=0.11    && <1.6 || >=2.0.0.0 && <2.2
+    , base                  >=4.5     && <4.19
+    , containers            >=0.4.2.1 && <0.7
+    , deepseq               >=1.3.0.0 && <1.5
+    , directory             >=1.1.0.2 && <1.4
+    , filepath              >=1.3.0.0 && <1.5
+    , parsec                >=3.1.11  && <3.2
+    , text                  >=1.2.3.0 && <1.3 || >=2.0 && <2.1
+    , transformers          >=0.3.0.0 && <0.7
+    , unordered-containers  >=0.2.5   && <0.3
+    , vector                >=0.11    && <0.14
+
+  if impl(ghc <=7.6)
+    build-depends: ghc-prim
+
+  if !impl(ghc >=8.0)
+    build-depends: semigroups >=0.18 && <0.21
+
+  exposed-modules:
+    Text.Microstache
+    Text.Microstache.Compile
+    Text.Microstache.Parser
+    Text.Microstache.Render
+    Text.Microstache.Type
+
+  hs-source-dirs:   src
+  ghc-options:      -Wall
+  default-language: Haskell2010
+
+test-suite spec
+  main-is:          Spec.hs
+  hs-source-dirs:   tests tasty-as-hspec
+  type:             exitcode-stdio-1.0
+  build-depends:
+      aeson
+    , base
+    , containers
+    , microstache
+    , parsec
+    , text
+
+  -- tasty-as-hspec
+  build-depends:
+      base-orphans  >=0.8.7    && <0.9
+    , tasty         >=1.4.0.1  && <1.5
+    , tasty-hunit   >=0.10.0.3 && <0.11
+
+  if !impl(ghc >=8.0)
+    build-depends: semigroups
+
+  other-modules:
+    Test.Hspec
+    Text.Microstache.ParserSpec
+    Text.Microstache.RenderSpec
+    Text.Microstache.TypeSpec
+
+  default-language: Haskell2010
+
+test-suite mustache-spec
+  main-is:          Spec.hs
+  hs-source-dirs:   mustache-spec tasty-as-hspec
+  type:             exitcode-stdio-1.0
+  build-depends:
+      aeson
+    , base
+    , bytestring
+    , containers
+    , microstache
+    , parsec
+    , text
+
+  -- tasty-as-hspec
+  build-depends:
+      base-orphans  >=0.8.7    && <0.9
+    , tasty         >=1.4.0.1  && <1.5
+    , tasty-hunit   >=0.10.0.3 && <0.11
+
+  other-modules:    Test.Hspec
+  default-language: Haskell2010
