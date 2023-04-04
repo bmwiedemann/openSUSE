@@ -1,7 +1,7 @@
 cabal-version:       2.0
 name:                cryptohash-sha256
 version:             0.11.102.1
-x-revision:          1
+x-revision:          2
 
 synopsis:            Fast, pure and practical SHA-256 implementation
 description: {
@@ -49,20 +49,22 @@ homepage:            https://github.com/hvr/cryptohash-sha256
 bug-reports:         https://github.com/hvr/cryptohash-sha256/issues
 category:            Data, Cryptography
 build-type:          Simple
-tested-with:         GHC == 7.4.2
-                   , GHC == 7.6.3
-                   , GHC == 7.8.4
-                   , GHC == 7.10.3
-                   , GHC == 8.0.2
-                   , GHC == 8.2.2
-                   , GHC == 8.4.4
-                   , GHC == 8.6.5
-                   , GHC == 8.8.4
-                   , GHC == 8.10.4
-                   , GHC == 9.0.2
-                   , GHC == 9.2.4
-                   , GHC == 9.4.1
 
+tested-with:
+  GHC == 9.6.1
+  GHC == 9.4.4
+  GHC == 9.2.7
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+  GHC == 7.10.3
+  GHC == 7.8.4
+  GHC == 7.6.3
+  GHC == 7.4.2
 
 extra-source-files:  cbits/hs_sha256.h
                      changelog.md
@@ -86,7 +88,7 @@ library
 
   ghc-options:       -Wall
 
-  build-depends:     base              >= 4.5 && < 4.18
+  build-depends:     base              >= 4.5 && < 4.19
 
   exposed-modules:   Crypto.Hash.SHA256
 
