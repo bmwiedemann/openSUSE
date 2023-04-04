@@ -1,7 +1,7 @@
 #
 # spec file for package vkbasalt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define __builder ninja
 Name:           vkbasalt
-Version:        0.3.2.8
+Version:        0.3.2.9
 Release:        0
 Summary:        Vulkan post processing layer
 License:        Zlib
 URL:            https://github.com/DadSchoorse/vkBasalt
 Source0:        https://github.com/DadSchoorse/vkBasalt/archive/v%{version}.tar.gz#/vkBasalt-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  gcc-c++ >= 9
 BuildRequires:  glslang-devel
 BuildRequires:  libX11-devel
 BuildRequires:  meson
@@ -33,6 +32,13 @@ BuildRequires:  ninja
 BuildRequires:  spirv-headers
 BuildRequires:  spirv-tools
 BuildRequires:  vulkan-headers
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 vkBasalt is a Vulkan post processing layer to enhance the visual graphics of games.
@@ -41,6 +47,13 @@ vkBasalt is a Vulkan post processing layer to enhance the visual graphics of gam
 %setup -q -n vkBasalt-%{version}
 
 %build
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-11"
+export CXX="g++-11"
+%else
+export CC="gcc-12"
+export CXX="g++-12"
+%endif
 %meson
 %meson_build
 

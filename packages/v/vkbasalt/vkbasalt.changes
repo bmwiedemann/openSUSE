@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  2 06:21:13 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to v0.3.2.9:
+  * fixed build with latest Vulkan-Headers
+  * fixed crash when destroying VK_NULL_HANDLE instances, devices
+    and swapchains (affected mpv)
+- Use gcc11-c++ for openSUSE Leap, otherwise temporarily gcc12-c++,
+  because build fails with gcc13-c++
+
+-------------------------------------------------------------------
 Wed Dec 28 12:40:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.3.2.8:
