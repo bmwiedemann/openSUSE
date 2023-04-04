@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>987068</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>797ac72bb56147e7658be359af1fc9d2</srcmd5>
+    <version>0.4.1</version>
+    <time>1680636107</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075980</requestid>
+  </revision>
 </revisionlist>
