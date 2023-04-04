@@ -1,5 +1,6 @@
 <multibuild>
   <flavor>Armada80x0McBin</flavor>
+  <flavor>ArmVExpress-FVP-AArch64</flavor>
   <flavor>hikey</flavor>
   <flavor>hikey960</flavor>
   <flavor>Overdrive1000Board</flavor>

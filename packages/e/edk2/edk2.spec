@@ -104,6 +104,9 @@ export PACKAGES_PATH=$PWD:$PWD/edk2-platforms:$PWD/edk2-platforms/Drivers:$PWD/e
 %else
 export PACKAGES_PATH=$PWD:$PWD/edk2-platforms:$PWD/edk2-platforms/Drivers
 %endif
+%if "%{platform}" == "ArmVExpress-FVP-AArch64"
+DSC_PATH="edk2-platforms/Platform/ARM/VExpressPkg/ArmVExpress-FVP-AArch64.dsc"
+%endif
 %if "%{platform}" == "hikey"
 DSC_PATH="edk2-platforms/Platform/Hisilicon/HiKey/HiKey.dsc"
 %endif
@@ -149,6 +152,9 @@ install -D -m 0644 edk2-non-osi/Platform/Hisilicon/HiKey960/lpm3.img %{buildroot
 %endif
 %define outdir Build/HiKey960/%{build_mode}_GCC5
 %define fd_file BL33_AP_UEFI.fd
+%endif
+%if "%{platform}" == "ArmVExpress-FVP-AArch64"
+%define fd_file FVP_AARCH64_EFI.fd
 %endif
 %if "%{platform}" == "Armada80x0McBin"
 %define outdir Build/Armada80x0McBin-AARCH64/%{build_mode}_GCC5
