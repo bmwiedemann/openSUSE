@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 23 14:04:54 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Stop mangling the value of "Create as Btrfs Subvolume" for new
+  users when clicking on "Edit -> Details" (bsc#1209377).
+- 4.6.1
+
+-------------------------------------------------------------------
+Thu Mar 23 14:00:00 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- AutoYaST: Fix creation of home for system users (bsc#1202974).
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
