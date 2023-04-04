@@ -210,4 +210,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     in python/typeshed#9620.</comment>
     <requestid>1072924</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c194bab67397cf050028130dcb11e2a5</srcmd5>
+    <version>6.1.0</version>
+    <time>1680635816</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on pep517.</comment>
+    <requestid>1076787</requestid>
+  </revision>
 </revisionlist>

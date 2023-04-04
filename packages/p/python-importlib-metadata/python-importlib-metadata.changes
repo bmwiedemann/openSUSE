@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  3 01:27:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on pep517. 
+
+-------------------------------------------------------------------
 Sun Mar 19 10:22:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

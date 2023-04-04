@@ -51,7 +51,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module importlib_resources >= 1.3 if %python-base < 3.9}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
