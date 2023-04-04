@@ -19,7 +19,7 @@
 
 %global sover 2
 Name:           libyang
-Version:        2.1.30
+Version:        2.1.55
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  4 13:42:28 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- update to v2.1.55:
+  * type compilation fixes
+  * multi-error validation support
+  * JSON parser fixes
+  * portability improvements
+  * schema-mount support improvements
+  * minor optimizations
+  * other minor fixes
+- fixed bsc#1210072, CVE-2023-26916
+
+-------------------------------------------------------------------
 Thu Jan 19 07:30:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.1.30:
