@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Nov  1 23:47:27 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update wai-extra to version 3.1.13.0 revision 1.
