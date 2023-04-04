@@ -219,4 +219,109 @@
 </comment>
     <requestid>1043978</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0e09ef68c12c2f7c73aa4d78c14c610f</srcmd5>
+    <version>2.4.9</version>
+    <time>1680636413</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-installer version limit in requires
+- Disable broken tests
+- Update to 2.4.9:
+  * Fix a bug of synchronization of not considering the revision of
+    VCS requirement in comparison. #1762
+  * Improve the error message when parsing an invalid requirement
+    string. #1765
+  * Fix a bug that pdm export output doesn't include the extras of the
+    dependencies. #1767
+- Release v2.4.8 (2023-03-09)
+  * Fix the resolution order to prefer the packages causing the
+    conflict. This can make the resolution reach a solution faster.
+    #1752
+  * Fix a bug that embedded credentials in URL are not respected for
+    the default source. #1757
+- Release v2.4.7 (2023-03-02)
+  * Abort if lockfile isn't generated when executing pdm export. #1730
+  * Ignore venv.prompt configuration when using conda as the backend.
+    #1734
+  * Fix a bug of finding local packages in the parent folder when it
+    exists in the current folder. #1736
+  * Ensure UTF-8 encoding when generating README.md. #1739
+  * Fix a bug of show command not showing metadata of the current
+    project. #1740
+  * Replace . with - when normalizing package name. #1745
+  * Support using pdm venv activate without specifying env_name to
+    activate in project venv created by conda #1735
+- Release v2.4.6 (2023-02-20)
+  * Fix a resolution failure when the project has cascading relative
+    path dependencies. #1702
+  * Don't crash when trying to update the shebang in a binary script.
+    #1709
+  * Handle the legacy specifiers that is unable to parse with
+    packaging&gt;22.0. #1719
+  * Fix the setup.py parser to ignore the expressions unable to parse
+    as a string. This is safe for initializing a requirement. #1720
+  * Fix a bug converting from flit metadata when the source file can't
+    be found. #1726
+  * Add config example for Emacs using eglot + pyright #1721
+  * Use ruff as the linter. #1715
+  * Document installation via asdf. #1725
+- Release v2.4.5 (2023-02-10)
+  * Fix a bug that built wheels are prioritized over source
+    distributions with higher version number. #1698
+- Release v2.4.4 (2023-02-10)
+  * Add more intuitive error message when the requires-python doesn't
+    work for all dependencies. #1690
+  * Prefer built distributions when finding packages for metadata
+    extraction. #1535
+- Release v2.4.3 (2023-02-06)
+  * Allow creating venv in project forcely if it already exists. #1666
+  * Always ignore remembered selection in pdm init. #1672
+  * Fix the fallback build backend to pdm-pep517 instead of
+    setuptools. #1658
+  * Eliminate the deprecation warnings from importlib.resources. #1660
+  * Don't crash when failed to get the latest version of PDM for
+    checking update. #1663
+  * Fix the priorities of importable formats to make sure the correct
+    format is used. #1669
+  * Import editable requirements into dev dependencies. #1674
+- Release v2.4.2 (2023-01-31)
+  * Skip some tests on packaging &lt; 22. #1649
+  * Fix a bug that sources from the project config are not loaded. #1651
+  * Set VIRTUAL_ENV in pdm run. #1652
+- Release v2.4.1 (2023-01-28)
+  * Add proper display for the extra pypi sources in pdm config. #1622
+  * Support running python scripts without prefixing with python. #1626
+  * Ignore the python requirement for overriden packages. #1575
+  * Fix the wildcards in requirement specifiers to make it pass the
+    new parser of packaging&gt;=22. #1619
+  * Add the missing subdirectory attribute to the lockfile entry.
+    #1630
+  * Fix a bug that VCS locks don't update when the rev part changes.
+    #1640
+  * Redirect the spinner output to stderr. #1646
+  * Ensure the destination directory exists before building the
+    packages. #1647
+- Release v2.4.0 (2023-01-12)
+  * Support multiple PyPI indexes in the configuration. They will be
+    tried after the sources in pyproject.toml. #1310
+  * Accept yanked versions when the requirement version is pinned.
+    #1575
+  * Expose PDM fixtures as a pytest plugin pdm.pytest for plugin
+    developers. #1594
+  * Show message in the status when fetching package hashes. Fetch
+    hashes from the JSON API response as well. #1609
+  * Mark pdm.lock with an @generated comment. #1611
+  * Exclude site-packages for symlinks of the python interpreter as
+    well. #1598
+  * Fix a bug that error output can't be decoded correctly on Windows.
+    #1602
+- Release v2.3.4 (2022-12-27)
+  * Detect PDM inside a zipapp and disable some functions. #1578
+  * Don't write sitecustomize to the home directory if it exists in
+    the filesystem(not packed in a zipapp). #1572
+  * Fix a bug that a directory is incorrectly marked as to be deleted
+    when it contains symlinks. #1580
+</comment>
+    <requestid>1077179</requestid>
+  </revision>
 </revisionlist>

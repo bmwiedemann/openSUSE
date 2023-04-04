@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pdm%{psuffix}
-Version:        2.3.3
+Version:        2.4.9
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -41,6 +41,7 @@ Requires:       python-blinker
 Requires:       python-cachecontrol >= 0.12.11
 Requires:       python-certifi
 Requires:       python-findpython >= 0.2.2
+Requires:       python-installer
 Requires:       python-packaging >= 20.9
 Requires:       python-pep517 >= 0.11.0
 Requires:       python-platformdirs
@@ -51,7 +52,6 @@ Requires:       python-rich >= 12.3.0
 Requires:       python-shellingham >= 1.3.2
 Requires:       python-unearth >= 0.6.3
 Requires:       python-virtualenv >= 20
-Requires:       (python-installer >= 0.6 with python-installer < 0.7)
 Requires:       (python-resolvelib >= 0.8 with python-resolvelib < 0.9)
 Requires:       (python-tomlkit >= 0.8.0 with python-tomlkit < 1)
 # from python-cachecontrol[filecache]
@@ -105,7 +105,14 @@ donttest="network"
 # mock testing finds the wrong python versions in our multiflavor setup
 donttest="$donttest or test_project_packages_path or test_conda_backend_create"
 donttest="$donttest or test_init_non_interactive"
-%pytest -k "not ($donttest)"
+
+# Broken test trying to find a resolution to a git repository
+donttest="$donttest or test_add_editable_package or test_non_editable_override_editable"
+# Broken test unable to find a resolution for wheel
+donttest="$donttest or test_list_dependency_graph_include_exclude or test_list_csv_include_exclude_valid"
+# Unable to find a resolution for setuptools
+donttest="$donttest or test_list_csv_include_exclude or test_remove_editable_packages_while_keeping_normal or test_project_backend"
+%pytest -v -k "not ($donttest)"
 %endif
 
 %post
