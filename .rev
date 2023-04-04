@@ -959,4 +959,15 @@
     <comment></comment>
     <requestid>1073100</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>fdcc959419fa92facefe5d81373a1d49</srcmd5>
+    <version>1.13.1</version>
+    <time>1680635822</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for bsc#1209283
+  * Drop chown vnc:vnc calls in with-vnc-key.sh
+  * Add TLSNone to -securitytypes to increase security in xvnc@.service
+</comment>
+    <requestid>1076858</requestid>
+  </revision>
 </revisionlist>

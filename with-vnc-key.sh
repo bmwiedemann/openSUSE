@@ -19,7 +19,6 @@ fi
     # If the key file doesn't exist or has zero size (because it doubles as lock), generate it.
     if ! test -s $TLSKEY ; then
         (umask 077 && openssl genrsa -out $TLSKEY 2048) >&200
-        chown vnc:vnc $TLSKEY
     fi
 
     # If the cert file doesn't exist, generate it.
@@ -28,7 +27,6 @@ fi
         CN="`hostname`"
         CN=${CN:0:64}
         openssl req -new -x509 -extensions usr_cert -key $TLSKEY -out $TLSCERT -days 7305 -subj "/CN=$CN/"
-        chown vnc:vnc $TLSCERT
     fi
 
 ) 200>>$TLSKEY 2>/dev/null

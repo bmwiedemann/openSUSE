@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  3 08:57:25 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Fixes for bsc#1209283
+  * Drop chown vnc:vnc calls in with-vnc-key.sh
+  * Add TLSNone to -securitytypes to increase security in xvnc@.service
+
+-------------------------------------------------------------------
 Sun Mar 19 09:33:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.1:
