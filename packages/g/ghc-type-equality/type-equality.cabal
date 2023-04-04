@@ -1,6 +1,6 @@
 name:               type-equality
 version:            1
-x-revision:         4
+x-revision:         5
 stability:          provisional
 cabal-version:      >=1.10
 build-type:         Simple
@@ -40,10 +40,11 @@ tested-with:
    || ==8.4.4
    || ==8.6.5
    || ==8.8.4
-   || ==8.10.4
+   || ==8.10.7
    || ==9.0.2
-   || ==9.2.4
-   || ==9.4.1
+   || ==9.2.7
+   || ==9.4.4
+   || ==9.6.1
 
 source-repository head
   type:     git
@@ -51,7 +52,7 @@ source-repository head
 
 library
   default-language: Haskell2010
-  build-depends:    base >=4.3 && <4.18
+  build-depends:    base >=4.3 && <4.19
 
   if !impl(ghc >=7.8)
     hs-source-dirs:  src-old
