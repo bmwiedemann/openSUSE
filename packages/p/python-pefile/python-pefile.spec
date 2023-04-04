@@ -1,7 +1,7 @@
 #
 # spec file for package python-pefile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           python-pefile
-Version:        2022.5.30
+Version:        2023.2.7
 Release:        0
 Summary:        A python module to work with PE (pertable executable) files
 License:        BSD-3-Clause
@@ -30,10 +30,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pefile/pefile-%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future
-# SECTION test requirements
-BuildRequires:  %{python_module future}
-# /SECTION
 BuildArch:      noarch
 
 %python_subpackages
