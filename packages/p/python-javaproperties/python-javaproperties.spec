@@ -1,7 +1,7 @@
 #
 # spec file for package python-javaproperties
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-javaproperties
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        Read & Write Java Properties Files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jwodder/javaproperties
 Source:         https://files.pythonhosted.org/packages/source/j/javaproperties/javaproperties-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock >= 2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six < 2.0}
-BuildRequires:  %{python_module six >= 1.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six < 2.0
-Requires:       python-six >= 1.4
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,13 +39,13 @@ BuildArch:      noarch
 Read & write Java .properties files.
 
 %prep
-%setup -q -n javaproperties-%{version}
+%autosetup -p1 -n javaproperties-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +57,6 @@ export TZ=EST5EDT,M3.2.0,M11.1.0
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/javaproperties*
 
 %changelog

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr  3 09:02:47 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.8.1
+  v0.8.1 (2021-10-05)
+  -------------------
+  - Fix a typing issue in Python 3.9
+  - Support Python 3.10
+  
+  v0.8.0 (2020-11-28)
+  -------------------
+  - Drop support for Python 2.7, 3.4, and 3.5
+  - Support Python 3.9
+  - `ensure_ascii` parameter added to `PropertiesFile.dump()` and
+    `PropertiesFile.dumps()`
+  - **Bugfix**: When parsing XML input, empty `<entry>` tags now produce an empty
+    string as a value, not `None`
+  - Added type annotations
+  - `Properties` and `PropertiesFile` no longer raise `TypeError` when given a
+    non-string key or value, as type correctness is now expected to be enforced
+    through static type checking
+  - The `PropertiesElement` classes returned by `parse()` are no longer
+    subclasses of `namedtuple`, but they can still be iterated over to retrieve
+    their fields like a tuple
+- python-six is not required
+
+-------------------------------------------------------------------
 Thu Apr 16 12:19:12 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.7.0
