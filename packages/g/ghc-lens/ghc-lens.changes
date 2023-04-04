@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Mar 18 16:40:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.2.
+  5.2.2 [2023.03.18]
+  ------------------
+  * Fix a bug in which calling `ix i` (where `i` is a negative number) on `Text`
+    or `ByteString` would return the `Just` the first character instead of
+    returning `Nothing`.
+
+-------------------------------------------------------------------
+Wed Mar 15 16:36:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Mar 12 19:45:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Feb 28 02:17:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.1.
+  5.2.1 [2023.02.27]
+  ------------------
+  * Allow building with GHC 9.6.
+  * Allow building with GHC backends where `HTYPE_SIG_ATOMIC_T` is not defined,
+    such as the WASM backend.
+  * Support building with `th-abstraction-0.5.*`.
+  * Define `_TypeDataD` in `Language.Haskell.TH.Lens` when building with
+    `template-haskell-2.20.0.0` (GHC 9.6) or later.
+
+-------------------------------------------------------------------
+Thu Aug 11 23:16:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.
+  5.2 [2022.08.11]
+  ----------------
+  * Allow building with GHC 9.4.
+  * The type of `universeOf` has changed:
+
+    ```diff
+    -universeOf :: Getting       [a]  a a -> a -> [a]
+    +universeOf :: Getting (Endo [a]) a a -> a -> [a]
+    ```
+
+    In many cases, using `Endo [a]` over `[a]` improves performance. Most call
+    sites to `universeOf` will not be affected by this change, although you may
+    need to update your code if you define your own combinators in terms of
+    `universeOf`.
+  * Allow `makeWrapped` to accept the names of data constructors. This way,
+    `makeWrapped` can be used with data family instances, much like other
+    functions in `Control.Lens.TH`.
+  * Define `_OpaqueP`, `_DefaultD`, `_LamCasesE`, `_PromotedInfixT`, and
+    `_PromotedUInfixT` in `Language.Haskell.TH.Lens` when building with
+    `template-haskell-2.19.0.0` (GHC 9.4) or later.
+
+-------------------------------------------------------------------
 Tue Jun 21 10:42:49 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.1.1 revision 1.
