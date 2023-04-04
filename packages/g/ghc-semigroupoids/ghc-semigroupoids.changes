@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:11 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Feb  2 15:17:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update semigroupoids to version 5.3.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jan 10 00:07:09 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update semigroupoids to version 5.3.7.
