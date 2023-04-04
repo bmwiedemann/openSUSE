@@ -17,6 +17,7 @@
 
 
 %global pkg_name postgresql-libpq
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
 Version:        0.9.5.0
@@ -25,10 +26,16 @@ Summary:        Low-level binding to libpq
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-Cabal-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unix-prof
 BuildRequires:  postgresql-server-devel
 ExcludeArch:    %{ix86}
 
@@ -50,8 +57,25 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development
 files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -73,5 +97,10 @@ files.
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog

@@ -1,0 +1,114 @@
+cabal-version:      2.4
+name:               postgresql-libpq
+version:            0.9.5.0
+x-revision:         1
+synopsis:           low-level binding to libpq
+description:
+  This is a binding to libpq: the C application
+  programmer's interface to PostgreSQL. libpq is a
+  set of library functions that allow client
+  programs to pass queries to the PostgreSQL
+  backend server and to receive the results of
+  these queries.
+
+homepage:           https://github.com/haskellari/postgresql-libpq
+bug-reports:        https://github.com/haskellari/postgresql-libpq/issues
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Grant Monroe, Leon P Smith, Joey Adams
+maintainer:         Oleg Grenrus <oleg.grenrus@iki.fi>
+copyright:
+  (c) 2010 Grant Monroe
+  (c) 2011 Leon P Smith
+
+category:           Database
+build-type:         Custom
+extra-source-files: cbits/hs-libpq.h
+tested-with:
+  GHC ==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.7 || ==9.4.4 || ==9.6.1
+
+extra-source-files: CHANGELOG.md
+
+custom-setup
+  setup-depends:
+    , base   >=4.12.0.0 && <5
+    , Cabal  >=2.4      && <3.11
+
+-- If true,  use pkg-config,  otherwise use the pg_config based build
+-- configuration
+flag use-pkg-config
+  default: False
+  manual:  True
+
+library
+  default-language:   Haskell2010
+  hs-source-dirs:     src
+  c-sources:          cbits/noticehandlers.c
+  include-dirs:       cbits
+  ghc-options:        -Wall
+  other-extensions:
+    BangPatterns
+    CApiFFI
+    DerivingStrategies
+    EmptyDataDecls
+    GeneralizedNewtypeDeriving
+    OverloadedStrings
+    ScopedTypeVariables
+
+  exposed-modules:
+    Database.PostgreSQL.LibPQ
+    Database.PostgreSQL.LibPQ.Internal
+
+  other-modules:
+    Database.PostgreSQL.LibPQ.Compat
+    Database.PostgreSQL.LibPQ.Enums
+    Database.PostgreSQL.LibPQ.FFI
+    Database.PostgreSQL.LibPQ.Marshal
+    Database.PostgreSQL.LibPQ.Notify
+    Database.PostgreSQL.LibPQ.Oid
+
+  build-depends:
+    , base        >=4.12.0.0 && <4.19
+    , bytestring  >=0.10.8.2 && <0.12
+
+  if !os(windows)
+    build-depends: unix >=2.7.2.2 && <2.9
+
+  if os(windows)
+    build-depends: Win32 >=2.2.0.2 && <2.14
+
+  if flag(use-pkg-config)
+    pkgconfig-depends: libpq >=10.22
+
+  else
+    if os(windows)
+      -- Due to https://sourceware.org/bugzilla/show_bug.cgi?id=22948,
+      -- if we specify pq instead of libpq, then ld might link against
+      -- libpq.dll directly, which can lead to segfaults. As a temporary hack,
+      -- we force ld to link against the libpq.lib import library directly
+      -- by specifying libpq here.
+      extra-libraries: libpq
+
+    else
+      extra-libraries: pq
+
+      if os(openbsd)
+        extra-libraries:
+          crypto
+          ssl
+
+  build-tool-depends: hsc2hs:hsc2hs >=0.68.5
+
+test-suite smoke
+  default-language: Haskell2010
+  type:             exitcode-stdio-1.0
+  main-is:          Smoke.hs
+  hs-source-dirs:   test
+  build-depends:
+    , base
+    , bytestring
+    , postgresql-libpq
+
+source-repository head
+  type:     git
+  location: https://github.com/haskellari/postgresql-libpq

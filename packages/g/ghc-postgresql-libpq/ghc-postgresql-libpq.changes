@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 29 17:22:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-libpq to version 0.9.5.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jan  5 14:39:02 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-libpq to version 0.9.5.0.
