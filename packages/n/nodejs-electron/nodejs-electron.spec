@@ -383,6 +383,10 @@ Patch3118:      gpu_feature_info-missing-uint32_t.patch
 Patch3119:      blink-gcc13-missing-headers.patch
 Patch3120:      effect_paint_property_node-Wchanges-meaning.patch
 Patch3121:      services-network-optional-explicit-constructor.patch
+# PATCH-FIX-UPSTREAM - https://swiftshader-review.googlesource.com/c/SwiftShader/+/70528
+Patch3200:      d0aa9ad.patch
+# PATCH-FIX-UPSTREAM - https://swiftshader-review.googlesource.com/c/SwiftShader/+/70328
+Patch3201:      647d3d2.patch
 
 %if %{with clang}
 BuildRequires:  clang

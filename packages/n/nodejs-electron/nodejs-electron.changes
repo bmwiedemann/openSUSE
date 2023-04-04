@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  3 15:36:21 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patches to fix build on aarch64:
+  * d0aa9ad.patch
+  * 647d3d2.patch
+
+-------------------------------------------------------------------
 Thu Mar 30 12:51:54 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.5
   * Fixed an issue where calling port.postMessage in MessagePortMain with some invalid parameters could cause a crash.

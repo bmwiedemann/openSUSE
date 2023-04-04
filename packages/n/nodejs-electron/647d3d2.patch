@@ -1,0 +1,31 @@
+From 647d3d24c935c2adb4e7bc5f1ecfe14ab12725d2 Mon Sep 17 00:00:00 2001
+From: Alexis Hetu <sugoi@google.com>
+Date: Mon, 12 Dec 2022 18:15:10 -0500
+Subject: [PATCH] Fix LLVM update from google3
+
+This CL imports a google3 fix for LLVM:
+https://critique.corp.google.com/cl/494101670/depot/google3/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
+
+Bug: b/191050320
+Change-Id: I1250459354dd8e783352f9acfaf59821be2a84f0
+Reviewed-on: https://swiftshader-review.googlesource.com/c/SwiftShader/+/70328
+Presubmit-Ready: Alexis Hétu <sugoi@google.com>
+Kokoro-Result: kokoro <noreply+kokoro@google.com>
+Commit-Queue: Alexis Hétu <sugoi@google.com>
+Reviewed-by: Shahbaz Youssefi <syoussefi@google.com>
+Tested-by: Alexis Hétu <sugoi@google.com>
+---
+
+diff --git src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
+index d3dbdb9..fad747a 100644
+--- src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
++++ src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
+@@ -922,7 +922,7 @@
+ 
+ 	if(optimizationLevel > 0)
+ 	{
+-		fpm.addPass(llvm::SROAPass());
++		fpm.addPass(llvm::SROAPass(llvm::SROAOptions::PreserveCFG));
+ 		fpm.addPass(llvm::InstCombinePass());
+ 	}
+ 

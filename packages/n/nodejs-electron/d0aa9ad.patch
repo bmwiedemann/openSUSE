@@ -1,0 +1,30 @@
+From d0aa9ad9447025a42f17df1b93bd71183e9b2d1f Mon Sep 17 00:00:00 2001
+From: Nicolas Capens <nicolas.capens@gmail.com>
+Date: Thu, 22 Dec 2022 01:46:20 -0500
+Subject: [PATCH] Support LLVM 16+ API change
+
+Bug: b/165000222
+Change-Id: I4a77e7740d0af3b72627db1bec7d3094c2e69d21
+Reviewed-on: https://swiftshader-review.googlesource.com/c/SwiftShader/+/70528
+Tested-by: Nicolas Capens <nicolascapens@google.com>
+Reviewed-by: Alexis Hétu <sugoi@google.com>
+Kokoro-Result: kokoro <noreply+kokoro@google.com>
+Commit-Queue: Alexis Hétu <sugoi@google.com>
+---
+
+diff --git src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp
+index 9a2cb0b..6f7e503 100644
+--- src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp
++++ src/third_party/swiftshader/src/Reactor/LLVMReactor.cpp
+@@ -621,7 +621,11 @@
+ 		declaration = new llvm::AllocaInst(T(type), 0, (llvm::Value *)nullptr, align);
+ 	}
+ 
++#if LLVM_VERSION_MAJOR >= 16
++	declaration->insertInto(&entryBlock, entryBlock.begin());
++#else
+ 	entryBlock.getInstList().push_front(declaration);
++#endif
+ 
+ 	if(getPragmaState(InitializeLocalVariables))
+ 	{
