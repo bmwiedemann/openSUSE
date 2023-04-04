@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 09:01:17 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: export thin LVM volumes when cloning (bsc#1209725)
+- 4.6.4
+
+-------------------------------------------------------------------
 Fri Mar 31 11:21:44 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the translation of widgets titles in the dialog to select
