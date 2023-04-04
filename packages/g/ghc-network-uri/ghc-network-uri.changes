@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Dec 27 01:43:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update network-uri to version 2.6.4.2.
