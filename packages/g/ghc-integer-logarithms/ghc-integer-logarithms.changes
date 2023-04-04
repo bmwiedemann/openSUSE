@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Jan 15 17:05:35 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update integer-logarithms to version 1.0.3.1 revision 4.
