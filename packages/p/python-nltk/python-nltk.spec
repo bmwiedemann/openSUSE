@@ -39,7 +39,6 @@ Patch0:         skip-networked-test.patch
 Patch1:         port-2to3.patch
 BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -66,7 +65,6 @@ BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module twython}
 #
 Requires:       python-regex
-Requires:       python-six
 Recommends:     python-gensim
 Recommends:     python-matplotlib
 Recommends:     python-numpy
