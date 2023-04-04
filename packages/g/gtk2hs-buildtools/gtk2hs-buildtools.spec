@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2hs-buildtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name gtk2hs-buildtools
+%global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
 Version:        0.13.8.3
 Release:        0
@@ -24,17 +25,29 @@ Summary:        Tools to build the Gtk2Hs suite of User Interface libraries
 License:        GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Patch1:         fix-ghc-9.4.x-build.patch
 BuildRequires:  alex
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hashtables-devel
+BuildRequires:  ghc-hashtables-prof
 BuildRequires:  ghc-pretty-devel
+BuildRequires:  ghc-pretty-prof
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  happy
 ExcludeArch:    %{ix86}
@@ -64,8 +77,24 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ghc_lib_build
@@ -96,5 +125,10 @@ This package provides the Haskell %{name} library development files.
 %license COPYING
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license COPYING
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
