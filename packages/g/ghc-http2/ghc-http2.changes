@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Jan 25 03:13:40 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update http2 to version 3.0.3.
