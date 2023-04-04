@@ -1,0 +1,19 @@
+--- bees-0.9.3/include/crucible/cache.h
++++ bees-0.9.3/include/crucible/cache.h
+@@ -181,14 +181,8 @@ namespace crucible {
+ 	void
+ 	LRUCache<Return, Arguments...>::clear()
+ 	{
+-		// Move the map and list onto the stack, then destroy it after we've released the lock
+-		// so that we don't block other threads if the list's destructors are expensive
+-		decltype(m_list) new_list;
+-		decltype(m_map) new_map;
+-		unique_lock<mutex> lock(m_mutex);
+-		m_list.swap(new_list);
+-		m_map.swap(new_map);
+-		lock.unlock();
++		m_list.clear();
++		m_map.clear();
+ 	}
+ 
+ 	template <class Return, class... Arguments>

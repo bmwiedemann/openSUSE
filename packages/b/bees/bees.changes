@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  4 06:59:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.3:
+  * roots: don't share a RootFetcher between threads
+  * seeker: fix the test for ILP32 platforms
+  * reduce memory usage with long-running work items
+  * allow BtrfsIoctlLogicalInoArgs to be reused, remove virtual methods
+  * create a Pool of BtrfsIoctlLogicalInoArgs objects 
+- add avoid-swap.patch to fix build with gcc 13
+
+-------------------------------------------------------------------
 Sun Mar 12 23:52:54 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Removed patch: fix-Makefile-version.diff, replaced with make parameter.

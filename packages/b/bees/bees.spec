@@ -17,13 +17,14 @@
 
 
 Name:           bees
-Version:        0.9.1
+Version:        0.9.3
 Release:        0
 Summary:        Best-Effort Extent-Same, a btrfs deduplication agent
 License:        GPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/Zygo/bees
 Source:         https://github.com/Zygo/bees/archive/refs/tags/v%{version}.tar.gz
+Patch1:         avoid-swap.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libuuid-devel
@@ -47,7 +48,7 @@ Hilights:
 * Automatic self-throttling based on system load
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 cat >localconf <<-EOF
