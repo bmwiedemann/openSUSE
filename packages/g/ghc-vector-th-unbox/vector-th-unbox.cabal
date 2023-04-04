@@ -1,6 +1,6 @@
 name:           vector-th-unbox
 version:        0.2.2
-x-revision: 3
+x-revision:     4
 synopsis:       Deriver for Data.Vector.Unboxed using Template Haskell
 description:
     A Template Haskell deriver for unboxed vectors, given a pair of coercion
@@ -17,11 +17,19 @@ maintainer:     Fumiaki Kinoshita <fumiexcel@gmail.com>
 category:       Data
 build-type:     Simple
 cabal-version:  >= 1.10
+
 tested-with:
-  GHC == 8.0.2,
-  GHC == 8.2.2,
-  GHC == 8.4.4,
-  GHC == 8.6.5, GHC == 8.8.3, GHC == 8.10.1, GHC == 9.0.1, GHC ==9.2.1
+  GHC == 9.6.1
+  GHC == 9.4.4
+  GHC == 9.2.7
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+
 extra-source-files:
   CHANGELOG.md
   README.md
@@ -36,8 +44,8 @@ library
         Data.Vector.Unboxed.Deriving
 
     build-depends:
-        base >= 4.9 && < 4.18,
-        template-haskell >= 2.5 && <2.20,
+        base >= 4.9 && < 4.19,
+        template-haskell >= 2.5 && <2.21,
         vector >= 0.7.1 && <0.14
 
 test-suite sanity
@@ -53,4 +61,3 @@ test-suite sanity
     ghc-options: -Wall
 
 -- vim: et sw=4 ts=4 sts=4:
-
