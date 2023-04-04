@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Mar 17 11:09:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- build with hadrian
+- reintroduced profiling packages
+- added man pages: ghc-pkg.man haddock.man runghc.man
+- added 9_2_3-bootstrap-sources.tar.gz as hadrian deps
+- refreshed patches:
+    * fix_extlinks.patch
+    * Disable-unboxed-arrays.patch
+    * ghc-8.0.2-Cabal-dynlibdir.patch
+    * ghc-pie.patch
+- removed patches:
+    * ghc-armv7-VFPv3D16--NEON.patch
+    * buildpath-abi-stability.patch
+- added patches:
+    * ghc-gen_contents_index-haddock-path.patch
+    * ghc-Cabal-install-PATH-warning.patch
+    * execstack.patch
+    * libatomic.patch
+    * riscv-tntc.patch
+    * ghc-hadrian-s390x-rts--qg.patch
+
+-------------------------------------------------------------------
+Tue Jan 31 09:37:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update to GHC version 9.4.4.
+
+ * %{buildroot}%{ghclibdir}/include is apparently no longer used by
+   the RTS package. Those files now live in /usr/lib64/ghc-9.4.4/rts/include.
+
+ * find %{buildroot}%{ghc_html_libraries_dir} -name LICENSE -exec rm '{}' ';'
+   no longer works because the directory doesn't exist at the time
+   that command is run.
+
+ * The user manual and Haddock documentation is installed into a
+   different location. For now, we just list the catchall
+   %{_docdir}/packages/ghc to accept anything.
+
+ * The LICENSE file for Cabal-syntax lives at libraries/Cabal/Cabal-syntax
+   instead of the expected place libraries/Cabal-syntax.
+
+ * The package system-cxx-std-lib has no LICENSE file. It's not
+   even a proper package, it's just a configuration file that lists
+   some compiler and linker flags. To work around the build error
+   that causes, we just copy some random LICENSE file into the
+   place where our build would expect it.
+
+-------------------------------------------------------------------
 Thu Jan 19 12:39:27 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not require unversionned llvm since ghc needs a specific
@@ -13,6 +61,11 @@ Tue Jan 17 11:45:32 UTC 2023 - Peter Simons <psimons@suse.com>
   https://gitlab.haskell.org/ghc/ghc/-/issues/22766. Upstream's
   https://github.com/sphinx-doc/sphinx/issues/11094 has further
   details. [boo#1207214]
+
+-------------------------------------------------------------------
+Fri Jul  8 11:48:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- execstack.patch: add missing stack note
 
 -------------------------------------------------------------------
 Mon Jun 27 17:04:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -30,6 +83,11 @@ Fri Apr 29 13:49:29 UTC 2022 - Martin Liška <mliska@suse.cz>
 Tue Mar  8 22:35:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add ghc-armv7-VFPv3D16--NEON.patch to use vfpv3-d16 on armv7hl
+
+-------------------------------------------------------------------
+Wed Feb  9 13:50:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- add environ.patch to fix build errors with recent gcc
 
 -------------------------------------------------------------------
 Fri Sep  3 20:57:29 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -71,12 +129,12 @@ Fri Sep  3 20:57:29 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
  * Fix a bug where typechecker plugins could be run with
     an inconsistent typechecker environment
  * Fix a simplifier bug which lead to an exponential
-    blow up and excessive memory usage in certain cases 
+    blow up and excessive memory usage in certain cases
 
 -------------------------------------------------------------------
 Fri Jun 25 10:02:25 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add 4134.patch to fix build with Sphinx4 
+- add 4134.patch to fix build with Sphinx4
 
 -------------------------------------------------------------------
 Mon Mar 15 20:33:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -104,13 +162,13 @@ Sun Dec 20 00:29:27 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Wed Oct 14 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- force multiversion for subpackages 
+- force multiversion for subpackages
 
 -------------------------------------------------------------------
 Sat Oct  3 15:58:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -138,7 +196,7 @@ Sun May 31 18:47:18 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - cleanup specfile from Leap 42 and older remrants
 - drop fix-unregisterised-v8.4-8.6.patch
-- drop fix-build-using-unregisterized-v8.4.patch 
+- drop fix-build-using-unregisterized-v8.4.patch
 
 -------------------------------------------------------------------
 Thu May  7 07:44:47 UTC 2020 - Peter Simons <psimons@suse.com>

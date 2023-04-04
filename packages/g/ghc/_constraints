@@ -1,7 +1,7 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">12</size>
+      <size unit="G">16</size>
     </disk> 
     <physicalmemory>
       <size unit="G">4</size>
@@ -24,7 +24,7 @@
     </conditions>
     <hardware>
       <physicalmemory>
-        <size unit="G">20</size>
+        <size unit="G">32</size>
       </physicalmemory>
     </hardware>
   </overwrite>

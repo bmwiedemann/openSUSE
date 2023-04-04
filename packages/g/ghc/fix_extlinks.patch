@@ -1,7 +1,7 @@
-Index: ghc-8.10.7/docs/users_guide/ghc_config.py.in
+Index: ghc-9.4.4/docs/users_guide/ghc_config.py.in
 ===================================================================
---- ghc-8.10.7.orig/docs/users_guide/ghc_config.py.in
-+++ ghc-8.10.7/docs/users_guide/ghc_config.py.in
+--- ghc-9.4.4.orig/docs/users_guide/ghc_config.py.in	2022-12-23 16:19:02.000000000 +0000
++++ ghc-9.4.4/docs/users_guide/ghc_config.py.in	2023-01-30 21:30:24.105048683 +0000
 @@ -1,6 +1,6 @@
  extlinks = {
 -    'ghc-ticket': ('https://gitlab.haskell.org/ghc/ghc/issues/%s', '#'),
@@ -11,21 +11,21 @@ Index: ghc-8.10.7/docs/users_guide/ghc_config.py.in
  }
  
  libs_base_uri = '../libraries'
-Index: ghc-8.10.7/libraries/Cabal/Cabal/doc/conf.py
+Index: ghc-9.4.4/libraries/Cabal/doc/conf.py
 ===================================================================
---- ghc-8.10.7.orig/libraries/Cabal/Cabal/doc/conf.py
-+++ ghc-8.10.7/libraries/Cabal/Cabal/doc/conf.py
-@@ -24,12 +24,12 @@ master_doc = 'index'
+--- ghc-9.4.4.orig/libraries/Cabal/doc/conf.py	2022-12-23 16:19:53.000000000 +0000
++++ ghc-9.4.4/libraries/Cabal/doc/conf.py	2023-01-30 21:30:53.908929483 +0000
+@@ -28,12 +28,12 @@ master_doc = 'index'
  
  # extlinks -- see http://www.sphinx-doc.org/en/stable/ext/extlinks.html
  extlinks = {
 -    'issue': ('https://github.com/haskell/cabal/issues/%s', '#'),
 +    'issue': ('https://github.com/haskell/cabal/issues/%s', '#%s'),
  
--    'ghc-wiki': ('http://ghc.haskell.org/trac/ghc/wiki/%s', ''),
--    'ghc-ticket': ('http://ghc.haskell.org/trac/ghc/ticket/%s', 'GHC #'),
-+    'ghc-wiki': ('http://ghc.haskell.org/trac/ghc/wiki/%s', None),
-+    'ghc-ticket': ('http://ghc.haskell.org/trac/ghc/ticket/%s', 'GHC #%s'),
+-    'ghc-wiki': ('https://gitlab.haskell.org/ghc/ghc/-/wikis/%s', ''),
+-    'ghc-ticket': ('https://gitlab.haskell.org/ghc/ghc/-/issues/%s', 'GHC #'),
++    'ghc-wiki': ('https://gitlab.haskell.org/ghc/ghc/-/wikis/%s', None),
++    'ghc-ticket': ('https://gitlab.haskell.org/ghc/ghc/-/issues/%s', 'GHC #%s'),
  
 -    'hackage-pkg': ('http://hackage.haskell.org/package/%s', ''),
 +    'hackage-pkg': ('http://hackage.haskell.org/package/%s', None),

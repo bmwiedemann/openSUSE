@@ -1,11 +1,11 @@
-Index: ghc-8.10.7/compiler/main/DynFlags.hs
+Index: ghc-9.4.4/compiler/GHC/Driver/Session.hs
 ===================================================================
---- ghc-8.10.7.orig/compiler/main/DynFlags.hs
-+++ ghc-8.10.7/compiler/main/DynFlags.hs
-@@ -4659,6 +4659,7 @@ default_PIC platform =
+--- ghc-9.4.4.orig/compiler/GHC/Driver/Session.hs
++++ ghc-9.4.4/compiler/GHC/Driver/Session.hs
+@@ -3870,6 +3870,7 @@ default_PIC platform =
+     -- This requires PIC on AArch64, and ExternalDynamicRefs on Linux as on top
      -- of that.  Subsequently we expect all code on aarch64/linux (and macOS) to
      -- be built with -fPIC.
-     -- See #15275, #18892
 +    (OSLinux,   ArchX86_64)  -> [Opt_PIC]
      (OSDarwin,  ArchAArch64) -> [Opt_PIC]
      (OSLinux,   ArchAArch64) -> [Opt_PIC, Opt_ExternalDynamicRefs]

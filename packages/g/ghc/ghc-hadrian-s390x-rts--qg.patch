@@ -1,0 +1,13 @@
+Index: ghc-9.4.4/hadrian/hadrian.cabal
+===================================================================
+--- ghc-9.4.4.orig/hadrian/hadrian.cabal
++++ ghc-9.4.4/hadrian/hadrian.cabal
+@@ -173,7 +173,7 @@ executable hadrian
+                        --        waiting for external processes
+                        -- * -qg: Don't use parallel GC as the synchronization
+                        --        time tends to eat any benefit.
+-                       "-with-rtsopts=-I0 -qg"
++                       "-with-rtsopts=-I0"
+                        -threaded
+ 
+     if flag(selftest)
