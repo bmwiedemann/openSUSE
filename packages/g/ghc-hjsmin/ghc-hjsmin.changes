@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Jan 11 02:35:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hjsmin to version 0.2.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Wed Mar 23 10:50:51 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hjsmin to version 0.2.0.4 revision 2.
