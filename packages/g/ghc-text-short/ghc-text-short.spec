@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-text-short
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name text-short
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
 Version:        0.1.5
@@ -25,20 +26,31 @@ Summary:        Memory-efficient representation of Unicode text strings
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-binary-devel
+BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
+BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description
@@ -46,11 +58,11 @@ This package provides the 'ShortText' type which is suitable for keeping many
 short strings in memory. This is similiar to how 'ShortByteString' relates to
 'ByteString'.
 
-The main difference between 'Text' and 'ShortText' is that 'ShortText' uses
-UTF-8 instead of UTF-16 internally and also doesn't support zero-copy slicing
-(thereby saving 2 words). Consequently, the memory footprint of a (boxed)
-'ShortText' value is 4 words (2 words when unboxed) plus the length of the
-UTF-8 encoded payload.
+The main difference between 'Text' and 'ShortText' is that 'ShortText' doesn't
+support zero-copy slicing (thereby saving 2 words), and, compared to text-1.*,
+that it uses UTF-8 instead of UTF-16 internally. Consequently, the memory
+footprint of a (boxed) 'ShortText' value is 4 words (2 words when unboxed) plus
+the length of the UTF-8 encoded payload.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -61,6 +73,22 @@ Requires(postun): ghc-compiler = %{ghc_version}
 
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
+
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
@@ -86,5 +114,10 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
