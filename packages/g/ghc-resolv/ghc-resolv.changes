@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Mar 17 10:37:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update resolv to version 0.1.2.0 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Aug 12 12:01:04 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update resolv to version 0.1.2.0 revision 5.
