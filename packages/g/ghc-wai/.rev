@@ -31,4 +31,12 @@
     <comment>Automatic update of haskell stack in oSUSE:Factory</comment>
     <requestid>864465</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>62c7afed2b8bca4cee05b2c4b0b4092b</srcmd5>
+    <version>3.2.3</version>
+    <time>1680636276</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076117</requestid>
+  </revision>
 </revisionlist>
