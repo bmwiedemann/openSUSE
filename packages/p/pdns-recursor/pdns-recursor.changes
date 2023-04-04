@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  4 09:04:14 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.8.4
+  * Deterred spoofing attempts can lead to authoritative servers
+    being marked unavailable (bsc#1209897, CVE-2023-26437)
+
+-------------------------------------------------------------------
 Tue Mar  7 10:13:47 UTC 2023 - Adam Majer <adam.majer@suse.de> 4.8.3
 
 - update to 4.8.3

@@ -747,4 +747,14 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
   * Properly encode json string containing binary data</comment>
     <requestid>1069900</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>660e9a5ff7eba2a94052630e04247a1d</srcmd5>
+    <version>4.8.4</version>
+    <time>1680636407</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.4
+  * Deterred spoofing attempts can lead to authoritative servers
+    being marked unavailable (bsc#1209897, CVE-2023-26437)</comment>
+    <requestid>1077167</requestid>
+  </revision>
 </revisionlist>
