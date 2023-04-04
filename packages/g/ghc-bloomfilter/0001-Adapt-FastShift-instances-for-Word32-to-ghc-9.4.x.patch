@@ -1,0 +1,29 @@
+From 8f62d424f52cda226f5b7102f2de45e92b72b552 Mon Sep 17 00:00:00 2001
+From: Peter Simons <simons@cryp.to>
+Date: Wed, 1 Feb 2023 16:03:29 +0100
+Subject: [PATCH] Adapt FastShift instances for Word32 to ghc-9.4.x.
+
+---
+ Data/BloomFilter/Util.hs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Data/BloomFilter/Util.hs b/Data/BloomFilter/Util.hs
+index 7f695dc..6868209 100644
+--- a/Data/BloomFilter/Util.hs
++++ b/Data/BloomFilter/Util.hs
+@@ -40,10 +40,10 @@ class FastShift a where
+ 
+ instance FastShift Word32 where
+     {-# INLINE shiftL #-}
+-    shiftL (W32# x#) (I# i#) = W32# (x# `uncheckedShiftL#` i#)
++    shiftL (W32# x#) (I# i#) = W32# (x# `uncheckedShiftLWord32#` i#)
+ 
+     {-# INLINE shiftR #-}
+-    shiftR (W32# x#) (I# i#) = W32# (x# `uncheckedShiftRL#` i#)
++    shiftR (W32# x#) (I# i#) = W32# (x# `uncheckedShiftRLWord32#` i#)
+ 
+ instance FastShift Word64 where
+     {-# INLINE shiftL #-}
+-- 
+2.38.1
+

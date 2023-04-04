@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+- Add "0001-Adapt-FastShift-instances-for-Word32-to-ghc-9.4.x.patch"
+  to fix the build with ghc-9.4.4.
+
+-------------------------------------------------------------------
 Mon May  2 18:30:49 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update bloomfilter to version 2.0.1.0 revision 2.
@@ -12,9 +20,9 @@ Mon Nov 15 06:59:43 UTC 2021 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Tue Aug 18 10:44:11 UTC 2020 - Peter Simons <psimons@suse.com>
 
@@ -24,4 +32,3 @@ Tue Aug 18 10:44:11 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
 
 - Add bloomfilter at version 2.0.1.0.
-
