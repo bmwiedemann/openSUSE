@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jul 17 19:36:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update JuicyPixels to version 3.3.8.
+  v3.3.7 July 2022
+  ----------------
+
+   * Dependence fidling
+   * Jpg: do not call "error" in the parser, use fail instead.
+
+-------------------------------------------------------------------
 Wed Mar  9 22:42:21 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update JuicyPixels to version 3.3.7.
