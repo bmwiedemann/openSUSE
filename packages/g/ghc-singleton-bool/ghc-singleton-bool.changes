@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Aug 21 12:09:00 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update singleton-bool to version 0.1.6 revision 2.
