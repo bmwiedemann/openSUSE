@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,48 +15,38 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Keep in sync with ghc.spec
-%if 0%{suse_version} > 1550
+
+%if 0%{?suse_version} > 1550
 %global llvm_major 12
 %else
 %global llvm_major 9
 %endif
-
-%ifarch ppc
-%define longarch powerpc
-%endif
 %ifarch ppc64
 %define longarch powerpc64
+%define arch ppc64
 %endif
 %ifarch ppc64le
 %define longarch powerpc64le
-%endif
-%ifarch s390
-%define longarch s390
+# something weird on ghc arch detection
+%define arch ppc64
 %endif
 %ifarch s390x
 %define longarch s390x
+%define sysname ibm
+%define arch s390x
 %endif
 %ifarch aarch64
 %define longarch aarch64
-%endif
-%ifarch %{arm}
-%define longarch arm
+%define arch aarch64
 %endif
 %ifarch x86_64
 %define longarch x86_64
+%define sysname unknown
+%define arch x86_64
 %endif
 %ifarch riscv64
 %define longarch riscv64
-%endif
-%ifarch s390 s390x
-%define sysname ibm
-%endif
-%ifarch x86_64
-%define sysname unknown
-%endif
-%ifarch %{ix86}
-%define sysname unknown
+%define arch riscv64
 %endif
 %ifarch ppc64 ppc64le %{arm} aarch64 riscv64
 %define sysname unknown
@@ -67,41 +57,43 @@ License:        BSD-3-Clause
 URL:            https://build.opensuse.org/package/view_file/devel:languages:haskell:bootstrap
 Source1:        README.openSUSE
 Source2:        LICENSE
-Source12:       ghc-8.10.1-powerpc64-unknown-linux.tar.xz
-Source13:       ghc-8.10.1-powerpc64le-unknown-linux.tar.xz
-Source14:       ghc-8.10.1-x86_64-unknown-linux.tar.xz
-Source16:       ghc-8.10.2-s390x-ibm-linux.tar.xz
-Source17:       ghc-8.10.1-aarch64-unknown-linux.tar.xz
-Source18:       ghc-8.10.1-arm-unknown-linux.tar.xz
-Source19:       ghc-8.10.1-riscv64-unknown-linux.tar.xz
+Source12:       ghc-9.2.3-powerpc64-unknown-linux.tar.xz
+Source13:       ghc-9.2.3-powerpc64le-unknown-linux.tar.xz
+Source14:       ghc-9.2.3-x86_64-unknown-linux.tar.xz
+Source16:       ghc-9.2.3-s390x-ibm-linux.tar.xz
+Source17:       ghc-9.2.3-aarch64-unknown-linux.tar.xz
+Source19:       ghc-8.10.4-riscv64-unknown-linux.tar.xz
+BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
-BuildRequires:  libncurses5
-BuildRequires:  pkgconfig(libffi)
 BuildRequires:  libffi8 >= 3.4.4
+BuildRequires:  libncurses5
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libffi)
 Requires:       gmp-devel
-Requires:       libncurses5
-Requires:       pkgconfig(libffi)
 Requires:       libffi8 >= 3.4.4
+Requires:       libncurses5
+Conflicts:      ghc-base
 # This package is not meant to be used outside OBS
 Requires:       this-is-only-for-build-envs
+Requires:       pkgconfig(libffi)
 Provides:       ghc-bootstrap-devel
-ExclusiveArch:  ppc64 ppc64le x86_64 s390x aarch64 %{arm} riscv64
+ExclusiveArch:  ppc64 ppc64le x86_64 s390x aarch64 riscv64
 AutoReq:        off
-%ifnarch s390 s390x
-Version:        8.10.1
+%ifarch riscv64
+Version:        8.10.4
 Release:        0
 %else
-Version:        8.10.2
+Version:        9.2.3
 Release:        0
 %endif
-%ifnarch %{arm} s390x
+%ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif
-%ifarch aarch64 %{arm}
+%ifarch s390x riscv64
 Requires:       llvm%{llvm_major}
 %endif
-%ifnarch %{arm} s390x
+%ifnarch s390x
 Requires:       libffi-devel
 Requires:       libnuma-devel
 %endif
@@ -121,26 +113,50 @@ cp %{SOURCE13} .
 cp %{SOURCE14} .
 cp %{SOURCE16} .
 cp %{SOURCE17} .
-cp %{SOURCE18} .
 cp %{SOURCE19} .
 
 %build
 tar Jxf ghc-%{version}-%{longarch}-%{sysname}-linux.tar.xz
+%ifarch riscv64
 cd ghc-%{version}
+%else
+cd ghc-%{version}-%{longarch}-%{sysname}-linux
+%endif
 # FIXME: you should use the %%configure macro
-./configure --prefix=/opt
 
 %install
+%ifarch riscv64
 cd ghc-%{version}
+%else
+cd ghc-%{version}-%{longarch}-%{sysname}-linux
+%endif
+
+./configure --prefix=/opt
+mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
+echo "/opt/lib/ghc-%{version}/lib/%{arch}-linux-ghc-%{version}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/ghc.conf
 %make_install
 %fdupes -s %{buildroot}
+for i in $(find %{buildroot} -type f -executable -exec sh -c "file {} | grep -q 'dynamically linked'" \; -print); do
+    chrpath -d $i
+done
+
+rm %{buildroot}/opt/lib/ghc-%{version}/lib/package.conf.d/.stamp
+(cd %{buildroot}/opt/lib/ghc-%{version}/lib/package.conf.d/
+for i in *.conf; do
+    mv $i.copy $i
+done
+)
 
 %post
+/sbin/ldconfig
 /opt/bin/ghc-pkg recache
+
+%postun -p /sbin/ldconfig
 
 %files
 %doc README.openSUSE
 %license LICENSE
 /opt/*
+%config %{_sysconfdir}/ld.so.conf.d/ghc.conf
 
 %changelog

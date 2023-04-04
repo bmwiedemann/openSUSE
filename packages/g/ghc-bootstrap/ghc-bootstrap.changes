@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  3 09:13:52 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update bootstrap compiler to 9.2.3 using hadrian build 
+
+-------------------------------------------------------------------
+Thu Feb  2 14:27:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update bootstrap compiler to ghc-8.10.7.
+
+-------------------------------------------------------------------
 Thu Jan 19 12:39:27 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not require unversionned llvm since ghc needs a specific

@@ -257,4 +257,14 @@ Add support for ppc64le.</comment>
     <comment></comment>
     <requestid>1060396</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3b16c038513e91bb6c63d473e382a2f3</srcmd5>
+    <version>9.2.3</version>
+    <time>1680636333</time>
+    <user>dimstar_suse</user>
+    <comment>- update bootstrap compiler to 9.2.3 using hadrian build 
+
+- Update bootstrap compiler to ghc-8.10.7.</comment>
+    <requestid>1076859</requestid>
+  </revision>
 </revisionlist>
