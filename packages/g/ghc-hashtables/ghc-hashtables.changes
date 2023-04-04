@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Oct  2 08:15:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hashtables to version 1.3.1.
+  ## 1.3.1
+
+  Fix Noncanonical mappend definition warning.
+  Support more recent compilers.
+
+  ## 1.3
+
+  Support Hashable 1.4. This new version of Hashable drops the Eq constraint, so the Eq constraint
+  needs to be dropped in the SPECIALIZE statements in Hashtables.
+
+  ## 1.2.4.2
+
+  Cabal file: add missing other-modules
+  Silence import warnings. Know that we require ghc >= 7.8.
+  Fix build with GHC 9.2
+
+-------------------------------------------------------------------
 Wed Nov  3 15:52:50 UTC 2021 - psimons@suse.com
 
 - Update hashtables to version 1.2.4.2.
