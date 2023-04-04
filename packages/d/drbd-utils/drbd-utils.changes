@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 15:16:52 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
+
+- crm-fence-peer incompatible with Pacemaker 2.1 and needs backports (bsc#1209783)
+  * 0001-crm-fence-peer-fix-timeout-with-Pacemaker-2.1-milli-.patch
+  * 0002-crm-fence-peer-fix-timeout-with-Pacemaker-2.0.5-mill.patch
+
+-------------------------------------------------------------------
 Thu Mar 23 06:22:17 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
 
 - bsc#1208922: fails to replace directory /lib/drbd with symlink

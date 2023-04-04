@@ -48,6 +48,8 @@ Patch3:         fence-after-pacemaker-down.patch
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
 Patch6:         pie-fix.patch
+Patch7:         0001-crm-fence-peer-fix-timeout-with-Pacemaker-2.1-milli-.patch
+Patch8:         0002-crm-fence-peer-fix-timeout-with-Pacemaker-2.0.5-mill.patch
 Patch99:        rpmlint-build-error.patch
 
 Provides:       drbd-bash-completion = %{version}
@@ -99,6 +101,8 @@ raid 1. It is a building block for setting up clusters.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
 %patch99 -p1
 
 %build

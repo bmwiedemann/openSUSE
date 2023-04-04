@@ -1,0 +1,138 @@
+From 8a28be74bc6efa93931c957e54c01abb18b984fe Mon Sep 17 00:00:00 2001
+From: Lars Ellenberg <lars.ellenberg@linbit.com>
+Date: Wed, 12 Jan 2022 13:50:35 +0100
+Subject: [PATCH] crm-fence-peer: fix timeout with Pacemaker 2.1: milli seconds
+ vs seconds
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+crmadmin timeout was in milli seconds for <= 2.0.x,
+but became a TIMESPEC with default seconds in >= 2.1.
+
+Up to 2.0.4, atoi() was used, which effectively ignores "trailing garbage",
+so we could get away with always appending "ms".
+But with 2.0.5, it became g_option_context_parse G_OPTION_ARG_INT, which
+"Cannot parse integer value “200ms” for --timeout" :-|
+
+So grep the help message for "timeout.*milliseconds",
+and if not present, append an explicit "ms" unit.
+
+Also tolerate both ": ok" (2.1) and " (ok)" (older)
+when matching the output string of crmadmin -S.
+---
+ scripts/crm-fence-peer.9.sh | 24 +++++++++++++++++++++---
+ scripts/crm-fence-peer.sh   | 24 +++++++++++++++++++++---
+ 2 files changed, 42 insertions(+), 6 deletions(-)
+
+diff --git a/scripts/crm-fence-peer.9.sh b/scripts/crm-fence-peer.9.sh
+index 36590bd8..c943bf9f 100755
+--- a/scripts/crm-fence-peer.9.sh
++++ b/scripts/crm-fence-peer.9.sh
+@@ -392,6 +392,20 @@ check_cluster_properties()
+ 	crm_is_not_false ${stonith_enabled:-} && stonith_enabled=true || stonith_enabled=false
+ }
+ 
++setup_crm_timeout_unit_ms()
++{
++	# crmadmin timeout was in ms for <= 2.0.x,
++	# but became a TIMESPEC in >= 2.1.
++	# Up to 2.0.4, atoi() was used, which effectively ignores "trailing
++	# garbage", so we could get away with always appending "ms", but with
++	# 2.0.5, it became g_option_context_parse G_OPTION_ARG_INT, which
++	# "Cannot parse integer value “200ms” for --timeout" :-|
++	if crmadmin --help 2>&1 | grep -q -e "--timeout=.*in milliseconds"; then
++		crm_timeout_unit_ms=""
++	else
++		crm_timeout_unit_ms="ms"
++	fi
++}
+ 
+ #
+ # In case this is a two-node cluster (still common with
+@@ -737,6 +751,7 @@ drbd_peer_fencing()
+ 
+ 		local startup_fencing stonith_enabled
+ 		check_cluster_properties
++		setup_crm_timeout_unit_ms
+ 
+ 		if ! $had_constraint_on_entry ; then
+ 
+@@ -1075,14 +1090,17 @@ _check_peer_node_reachable()
+ 		# it is obviously reachable.
+ 		#
+ 		# Do this only after we have been able to reach a DC above.
+-		# Note: crmadmin timeout is in milli-seconds, and defaults to 30000 (30 seconds).
++		# Note: crmadmin timeout defaults to 30 seconds.
++		#
+ 		# Our variable $cibtimeout should be in deci-seconds (see above)
+ 		# (unless you use a very old version of pacemaker, so don't do that).
+ 		# Convert deci-seconds to milli-seconds, and double it.
++		# See also setup_crm_timeout_unit_ms() above.
++		#
+ 		if [[ $crmd = "online" ]] ; then
+ 			local out
+-			if out=$( crmadmin -t $(( cibtimeout * 200 )) -S $DRBD_PEER ) \
+-			&& [[ $out = *"(ok)" ]]; then
++			if out=$( crmadmin -t $(( cibtimeout * 200 ))$crm_timeout_unit_ms -S $DRBD_PEER ) \
++			&& [[ $out = *@(": ok"|" (ok)") ]]; then
+ 				peer_state="reachable"
+ 				return
+ 			fi
+diff --git a/scripts/crm-fence-peer.sh b/scripts/crm-fence-peer.sh
+index cb5deded..96786734 100755
+--- a/scripts/crm-fence-peer.sh
++++ b/scripts/crm-fence-peer.sh
+@@ -244,6 +244,20 @@ check_cluster_properties()
+ 	crm_is_not_false $stonith_enabled && stonith_enabled=true || stonith_enabled=false
+ }
+ 
++setup_crm_timeout_unit_ms()
++{
++	# crmadmin timeout was in ms for <= 2.0.x,
++	# but became a TIMESPEC in >= 2.1.
++	# Up to 2.0.4, atoi() was used, which effectively ignores "trailing
++	# garbage", so we could get away with always appending "ms", but with
++	# 2.0.5, it became g_option_context_parse G_OPTION_ARG_INT, which
++	# "Cannot parse integer value “200ms” for --timeout" :-|
++	if crmadmin --help 2>&1 | grep -q -e "--timeout=.*in milliseconds"; then
++		crm_timeout_unit_ms=""
++	else
++		crm_timeout_unit_ms="ms"
++	fi
++}
+ 
+ #
+ # In case this is a two-node cluster (still common with
+@@ -426,6 +440,7 @@ drbd_peer_fencing()
+ 
+ 		local startup_fencing stonith_enabled
+ 		check_cluster_properties
++		setup_crm_timeout_unit_ms
+ 
+ 		if [[ -z $have_constraint ]] ; then
+ 			# try to place it.
+@@ -718,14 +733,17 @@ check_peer_node_reachable()
+ 		# it is obviously reachable.
+ 		#
+ 		# Do this only after we have been able to reach a DC above.
+-		# Note: crmadmin timeout is in milli-seconds, and defaults to 30000 (30 seconds).
++		# Note: crmadmin timeout defaults to 30 seconds.
++		#
+ 		# Our variable $cibtimeout should be in deci-seconds (see above)
+ 		# (unless you use a very old version of pacemaker, so don't do that).
+ 		# Convert deci-seconds to milli-seconds, and double it.
++		# See also setup_crm_timeout_unit_ms() above.
++		#
+ 		if [[ $crmd = "online" ]] ; then
+ 			local out
+-			if out=$( crmadmin -t $(( cibtimeout * 200 )) -S $DRBD_PEER ) \
+-			&& [[ $out = *"(ok)" ]]; then
++			if out=$( crmadmin -t $(( cibtimeout * 200 ))$crm_timeout_unit_ms -S $DRBD_PEER ) \
++			&& [[ $out = *@(": ok"|" (ok)") ]]; then
+ 				peer_state="reachable"
+ 				return
+ 			fi
+-- 
+2.40.0
+

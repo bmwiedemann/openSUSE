@@ -431,4 +431,15 @@
     <comment></comment>
     <requestid>1073917</requestid>
   </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>743b3162c11290af827d7f76549f2326</srcmd5>
+    <version>9.19.0</version>
+    <time>1680636420</time>
+    <user>dimstar_suse</user>
+    <comment>- crm-fence-peer incompatible with Pacemaker 2.1 and needs backports (bsc#1209783)
+  * 0001-crm-fence-peer-fix-timeout-with-Pacemaker-2.1-milli-.patch
+  * 0002-crm-fence-peer-fix-timeout-with-Pacemaker-2.0.5-mill.patch
+</comment>
+    <requestid>1077195</requestid>
+  </revision>
 </revisionlist>
