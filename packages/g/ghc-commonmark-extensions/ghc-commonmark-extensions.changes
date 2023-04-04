@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Mar  4 18:21:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.4.
+  ## 0.2.3.4
+
+    - Require whitespace after definition list marker (#104).
+      Otherwise we can inadvertently clobber strikeout or subscript.
+
+-------------------------------------------------------------------
 Thu Sep 29 04:40:58 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-extensions to version 0.2.3.3.
