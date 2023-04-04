@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  4 08:26:21 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.23.3
+  * Bugfixes:
+    #5408: Selection of time in versions GUI not possible without editing the string inside the textfield
+    #8277: Mutual encrypted sharing doesn't work (both sides with password)
+    #8556: Increased file size when sharing between encrypted devices
+    #8599: Key generation at connect time is slow for encrypted connections
+  * Enhancements:
+    #7859: Allow sub-second watcher delay (use case: remote development)
+  * Other issues:
+    #8828: cmd/stdiscosrv: TestDatabaseGetSet flake
+
+-------------------------------------------------------------------
 Fri Mar 10 11:54:51 UTC 2023 - Jakob Lorenz <proprietaer1@mailbox.org>
 
 - Adding a desktop file for the Web UI

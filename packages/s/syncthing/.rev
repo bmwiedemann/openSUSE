@@ -1252,4 +1252,22 @@
     <comment></comment>
     <requestid>1070708</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>af88ce43fc58d9fb62337b17237c1e2d</srcmd5>
+    <version>1.23.3</version>
+    <time>1680636385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.3
+  * Bugfixes:
+    #5408: Selection of time in versions GUI not possible without editing the string inside the textfield
+    #8277: Mutual encrypted sharing doesn't work (both sides with password)
+    #8556: Increased file size when sharing between encrypted devices
+    #8599: Key generation at connect time is slow for encrypted connections
+  * Enhancements:
+    #7859: Allow sub-second watcher delay (use case: remote development)
+  * Other issues:
+    #8828: cmd/stdiscosrv: TestDatabaseGetSet flake
+</comment>
+    <requestid>1077156</requestid>
+  </revision>
 </revisionlist>
