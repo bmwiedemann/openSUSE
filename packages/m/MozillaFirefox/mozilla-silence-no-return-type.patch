@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  2ac470c477a4897e48ca399b50614af79fececc4
+# Parent  c9ee7d75ce3f624221f3ba8ef7c821f501c9a028
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2367,18 +2367,16 @@ name = "glsl-to-cxx"
+@@ -2370,18 +2370,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,9 +26,9 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -155,16 +155,17 @@ chardetng_c = { git = "https://github.co
+@@ -158,16 +158,17 @@ chardetng_c = { git = "https://github.co
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
- fog = { path = "toolkit/components/glean/api" }
+ firefox-on-glean = { path = "toolkit/components/glean/api" }
  libudev-sys = { path = "dom/webauthn/libudev-sys" }
  packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/packed_simd", rev="412f9a0aa556611de021bde89dee8fefe6e0fbbd" }
  midir = { git = "https://github.com/mozilla/midir.git", rev = "519e651241e867af3391db08f9ae6400bc023e18" }
@@ -37,13 +37,13 @@ diff --git a/Cargo.toml b/Cargo.toml
  warp = { git = "https://github.com/glandium/warp", rev = "4af45fae95bc98b0eba1ef0db17e1dac471bb23d" }
 +glslopt = { path = "third_party/rust/glslopt/" }
  
+ cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "d3670a89bae26ba3a8db4758eb7976616113987d" }
+ 
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
- sync15 = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
- tabs = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
- viaduct = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
- webext-storage = { git = "https://github.com/mozilla/application-services", rev = "51b984ecb21ba00694c3eee33364123a064a7cbb" }
+ interrupt-support = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
+ sql-support = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
+ sync15 = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
+ tabs = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -2140,27 +2140,6 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    // Adapt twice if the first adaptation did not decrease resolution.
    auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
    if (!absl::holds_alternative<RestrictionsWithCounters>(first_step)) {
-diff --git a/third_party/libwebrtc/call/simulated_network.cc b/third_party/libwebrtc/call/simulated_network.cc
---- a/third_party/libwebrtc/call/simulated_network.cc
-+++ b/third_party/libwebrtc/call/simulated_network.cc
-@@ -73,16 +73,17 @@ bool CoDelSimulation::DropDequeuedPacket
-           state_ = kPending;
-         last_drop_at_ = next_drop_at;
-         ++drop_count_;
-         return true;
-       }
-       return false;
-   }
-   RTC_CHECK_NOTREACHED();
-+  return false;
- }
- 
- SimulatedNetwork::SimulatedNetwork(Config config, uint64_t random_seed)
-     : random_(random_seed), bursting_(false) {
-   SetConfig(config);
- }
- 
- SimulatedNetwork::~SimulatedNetwork() = default;
 diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
 --- a/third_party/libwebrtc/call/video_send_stream.cc
 +++ b/third_party/libwebrtc/call/video_send_stream.cc
@@ -2241,7 +2220,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -1956,16 +1957,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1980,16 +1981,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:

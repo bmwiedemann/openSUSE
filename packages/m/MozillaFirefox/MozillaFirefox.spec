@@ -27,10 +27,10 @@
 # orig_version 70.0
 # orig_suffix b3
 # major 69
-# mainver %major.99
-%define major          110
+# mainver %%major.99
+%define major          111
 %define mainver        %major.0.1
-%define orig_version   110.0.1
+%define orig_version   111.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -93,7 +93,7 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
 BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
@@ -108,8 +108,8 @@ BuildRequires:  rust >= 1.65
 # minimal requirement:
 BuildRequires:  rust+cargo >= 1.65
 # actually used upstream:
-BuildRequires:  cargo1.66
-BuildRequires:  rust1.66
+BuildRequires:  cargo1.67
+BuildRequires:  rust1.67
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -120,7 +120,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.87
+BuildRequires:  mozilla-nss-devel >= 3.88.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -193,7 +193,7 @@ Source9:        firefox.js
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/7335408da3073ec6b582fc364010cf09665765b3/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/9b77cf0/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 Source17:       firefox-search-provider.ini
@@ -228,8 +228,7 @@ Patch23:        mozilla-bmo531915.patch
 Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
 Patch27:        mozilla-buildfixes.patch
-Patch28:        mozilla-bmo1810584.patch
-Patch29:        gcc13-fix.patch
+Patch28:        mozilla-bmo1807652.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -248,11 +247,7 @@ Obsoletes:      tracker-miner-firefox < 0.15
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
-# libproxy's mozjs pacrunner crashes FF (bnc#759123)
-%if 0%{?suse_version} < 1220
-Obsoletes:      libproxy1-pacrunner-mozjs <= 0.4.7
-%endif
-ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le
+ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le %ix86
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -267,6 +262,7 @@ Provides:       firefox-devel = %{version}-%{release}
 Requires:       %{name} = %{version}
 Requires:       perl(Archive::Zip)
 Requires:       perl(XML::Simple)
+BuildArch:      noarch
 
 %description devel
 Development files for %{appname} to make packaging of addons easier.
@@ -377,7 +373,7 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
 export CC=gcc-11
 %else
 %if 0%{?clang_build} == 0
@@ -406,7 +402,7 @@ EOF
 # Done with env-variables.
 source ./.obsenv.sh
 
-%ifarch aarch64 %arm ppc64 ppc64le riscv64
+%ifarch aarch64 %arm ppc64 ppc64le riscv64 %ix86
 %limit_build -m 2500
 %endif
 
@@ -435,11 +431,11 @@ ac_add_options --enable-debug-symbols=-g1
 %endif
 ac_add_options --disable-install-strip
 # building with elf-hack started to fail everywhere with FF73
-#%if 0%{?suse_version} > 1549
+#%%if 0%%{?suse_version} > 1549
 %ifarch %arm %ix86 x86_64
 ac_add_options --disable-elf-hack
 %endif
-#%endif
+#%%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %if 0%{useccache} != 0
@@ -458,7 +454,7 @@ ac_add_options --disable-debug
 ac_add_options --enable-update-channel=%{update_channel}
 ac_add_options --with-mozilla-api-keyfile=%{SOURCE18}
 # Google-service currently not available for free anymore
-#ac_add_options --with-google-location-service-api-keyfile=%{SOURCE19}
+#ac_add_options --with-google-location-service-api-keyfile=%%{SOURCE19}
 ac_add_options --with-google-safebrowsing-api-keyfile=%{SOURCE19}
 ac_add_options --with-unsigned-addon-scopes=app
 ac_add_options --allow-addon-sideload
@@ -669,7 +665,7 @@ install -m 755 %SOURCE12 %{buildroot}%{_bindir}
 # inspired by mandriva
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cat <<'FIN' >%{buildroot}%{_rpmmacrodir}/macros.%{progname}
-# Macros from %{name} package
+# Macros from %%{name} package
 %%firefox_major              %{major}
 %%firefox_version            %{version}
 %%firefox_mainver            %{mainver}

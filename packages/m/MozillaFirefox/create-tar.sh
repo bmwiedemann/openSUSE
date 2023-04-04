@@ -71,7 +71,9 @@ function set_internal_variables() {
   else
     FF_LOCALE_FILE="thunderbird-$VERSION/browser/locales/l10n-changesets.json"
     TB_LOCALE_FILE="thunderbird-$VERSION/comm/mail/locales/l10n-changesets.json"
-    L10N_STRING_PATTERNS="thunderbird-$VERSION/python/l10n/tbxchannel/l10n_merge.py"
+    FF_PREV_LOCALE_FILE="thunderbird-$PREV_VERSION/browser/locales/l10n-changesets.json"
+    TB_PREV_LOCALE_FILE="thunderbird-$PREV_VERSION/comm/mail/locales/l10n-changesets.json"
+    L10N_STRING_PATTERNS="thunderbird-$VERSION/comm/python/l10n/tbxchannel/l10n_merge.py"
   fi
 
   SOURCE_TARBALL="$PRODUCT-$VERSION$VERSION_SUFFIX.source.tar.xz"
@@ -100,7 +102,7 @@ function check_tarball_source () {
       local CANDIDATE_TARBALL_LOCATION=""
       CANDIDATE_TARBALL_LOCATION="$(printf "%s/%s/source/%s" "$(get_ftp_candidates_url "$PRODUCT" "$VERSION$VERSION_SUFFIX")" "$BUILD_ID" "$TARBALL" )"
       if wget --spider "$CANDIDATE_TARBALL_LOCATION" 2> /dev/null; then
-          echo "Download UNRELEASED candidate"
+          echo "Download UNRELEASED candidate ($BUILD_ID)"
       else
           echo "Mercurial checkout"
       fi
@@ -313,8 +315,23 @@ function check_what_to_do_with_locales_tarballs() {
     if [ "$PRODUCT" = "firefox" ]; then
       locales_unchanged "$PRODUCT" "$BUILD_ID"
     else
-      FF_BUILD_ID=$(get_build_number "firefox" "$VERSION$VERSION_SUFFIX")
-      locales_unchanged "$PRODUCT" "$BUILD_ID" && locales_unchanged "firefox" "$FF_BUILD_ID"
+      # Currently, upstream 'forgets' which Firefox-locales get used for which Thunderbird-release upon release
+      # so, instead of parsing upstream JSON-files, we rely on the previous tarball being there and comparing
+      # the lang-files directly
+      # FF_BUILD_ID=$(get_build_number "firefox" "$VERSION$VERSION_SUFFIX")
+      # locales_unchanged "$PRODUCT" "$BUILD_ID" && locales_unchanged "firefox" "$FF_BUILD_ID"
+      if [ -e "$PREV_SOURCE_TARBALL" ]; then 
+        echo "extract previous locale changesets"
+        tar -xf "$PREV_SOURCE_TARBALL" "$FF_PREV_LOCALE_FILE" "$TB_PREV_LOCALE_FILE"
+
+        curr_ff_content=$(locales_parse_file "$FF_LOCALE_FILE") || exit 1
+        prev_ff_content=$(locales_parse_file "$FF_PREV_LOCALE_FILE") || exit 1
+        curr_tb_content=$(locales_parse_file "$TB_LOCALE_FILE") || exit 1
+        prev_tb_content=$(locales_parse_file "$TB_PREV_LOCALE_FILE") || exit 1
+
+        diff -y --suppress-common-lines -d <(echo "$prev_ff_content") <(echo "$curr_ff_content") ||
+        diff -y --suppress-common-lines -d <(echo "$prev_tb_content") <(echo "$curr_tb_content")
+      fi
     fi
     LOCALES_CHANGED=$?
   fi
@@ -420,7 +437,7 @@ function clone_and_repackage_sources() {
   echo "RELEASE_TIMESTAMP=$TIMESTAMP" >> "$TAR_STAMP"
 
   echo "creating archive..."
-  tar "$compression" -cf "$PRODUCT-$VERSION$VERSION_SUFFIX.source.tar.xz" --exclude=.hgtags --exclude=.hgignore --exclude=.hg --exclude=CVS "$PRODUCT-$VERSION"
+  tar "$compression" -cf "$PRODUCT-$VERSION$VERSION_SUFFIX.source.tar.xz" --exclude-vcs "$PRODUCT-$VERSION"
   ALREADY_EXTRACTED_LOCALES_FILE=1
 }
 
@@ -501,13 +518,11 @@ function clone_and_repackage_locales() {
       esac
     done
   echo "creating l10n archive..."
+  local TAR_FLAGS="--exclude-vcs"
   if [ "$PRODUCT" = "thunderbird" ]; then
-    TB_TAR_FLAGS="--exclude=suite"
+    TAR_FLAGS="$TAR_FLAGS --exclude=suite"
   fi
-  tar "$compression" -cf "l10n-$VERSION$VERSION_SUFFIX.tar.xz" \
-  --exclude=.hgtags --exclude=.hgignore --exclude=.hg \
-  "$TB_TAR_FLAGS" \
-  "$FINAL_L10N_BASE"
+  tar "$compression" -cf "l10n-$VERSION$VERSION_SUFFIX.tar.xz" $TAR_FLAGS "$FINAL_L10N_BASE"
 }
 
 function clean_up_old_tarballs() {

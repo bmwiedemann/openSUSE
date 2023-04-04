@@ -3,7 +3,7 @@
 # Date 1559300151 -7200
 #      Fri May 31 12:55:51 2019 +0200
 # Node ID 54d41b0033b8d649d842a1f862c6fed8b9874dec
-# Parent  95d798f72d832c953086aa27675498fdf84177f0
+# Parent  340817025937e2c69bb1643930d7dfdf63656a7b
 How to apply this patch:
 1. Import and apply it
 2. cp browser/base/content/browser.xul browser/base/content/browser-kde.xul
@@ -33,12 +33,12 @@ diff --git a/browser/components/preferences/main.js b/browser/components/prefere
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-     let performanceSettingsLink = document.getElementById(
-       "performanceSettingsLearnMore"
+     this.updateDefaultPerformanceSettingsPref();
+ 
+     let defaultPerformancePref = Preferences.get(
+       "browser.preferences.defaultPerformanceSettings.enabled"
      );
-     let performanceSettingsUrl =
-       Services.urlFormatter.formatURLPref("app.support.baseURL") +
-@@ -1333,16 +1340,27 @@ var gMainPane = {
+@@ -1298,16 +1305,27 @@ var gMainPane = {
        this._backoffIndex = 0;
  
        let shellSvc = getShellService();

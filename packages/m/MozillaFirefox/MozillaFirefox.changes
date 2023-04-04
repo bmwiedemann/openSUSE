@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Mar 27 15:17:17 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 111.0.1 (boo#1209688)
+  * Fixed a crash on macOS while pinch-zooming under some circumstances
+    (bmo#1658986)
+  * Fixed a bug causing Firefox to freeze on startup for some
+    Windows users (bmo#1823159)
+- fix build on Tumbleweed (mozilla-bmo1807652.patch)
+- exclude i586/i686 once again because it fails to link libxul due
+  to its size
+
+-------------------------------------------------------------------
+Tue Mar 14 14:29:09 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 111.0
+  * https://www.mozilla.org/en-US/firefox/111.0/releasenotes
+  MFSA 2023-09 (bsc#1209173)
+  * CVE-2023-28159 (bmo#1783561)
+    Fullscreen Notification could have been hidden by download
+    popups on Android
+  * CVE-2023-25748 (bmo#1798798)
+    Fullscreen Notification could have been hidden by window
+    prompts on Android
+  * CVE-2023-25749 (bmo#1810705)
+    Firefox for Android may have opened third-party apps without
+    a prompt
+  * CVE-2023-25750 (bmo#1814733)
+    Potential ServiceWorker cache leak during private browsing mode
+  * CVE-2023-25751 (bmo#1814899)
+    Incorrect code generation during JIT compilation
+  * CVE-2023-28160 (bmo#1802385)
+    Redirect to Web Extension files may have leaked local path
+  * CVE-2023-28164 (bmo#1809122)
+    URL being dragged from a removed cross-origin iframe into the
+    same tab triggered navigation
+  * CVE-2023-28161 (bmo#1811181)
+    One-time permissions granted to a local file were extended to
+    other local files loaded in the same tab
+  * CVE-2023-28162 (bmo#1811327)
+    Invalid downcast in Worklets
+  * CVE-2023-25752 (bmo#1811627)
+    Potential out-of-bounds when accessing throttled streams
+  * CVE-2023-28163 (bmo#1817768)
+    Windows Save As dialog resolved environment variables
+  * CVE-2023-28176 (bmo#1808352, bmo#1811637, bmo#1815904, bmo#1817442,
+    bmo#1818674)
+    Memory safety bugs fixed in Firefox 111 and Firefox ESR 102.9
+  * CVE-2023-28177 (bmo#1803109, bmo#1808832, bmo#1809542, bmo#1817336)
+    Memory safety bugs fixed in Firefox 111
+- ensure gcc11-c++ gets used on Leap 15.5
+- requires NSS >= 3.88.1
+- removed obsolete patches
+  gcc13-fix.patch
+  mozilla-bmo1810584.patch
+- rebased patches
+- update create-tar.sh
+
+-------------------------------------------------------------------
 Tue Mar  7 09:40:11 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Cherry-pick upstream changes for GCC 13 in gcc13-fix.patch.
