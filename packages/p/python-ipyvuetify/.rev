@@ -7,4 +7,13 @@
     <comment>required by ipyvolume 0.6</comment>
     <requestid>1063036</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96af56b0a29330474c77b7c2157c9fbc</srcmd5>
+    <version>1.8.7</version>
+    <time>1680636449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.7
+  * no upstreeam changelog provided (gh#widgetti/ipyvuetify#247)</comment>
+    <requestid>1077240</requestid>
+  </revision>
 </revisionlist>

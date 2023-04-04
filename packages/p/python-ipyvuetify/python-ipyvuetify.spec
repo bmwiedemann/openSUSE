@@ -19,7 +19,7 @@
 %define anypython3dist python3dist
 %define untaggedversioncommit 1aaafbcce5a58e59a14311ac36594038893da4e1
 Name:           python-ipyvuetify
-Version:        1.8.4
+Version:        1.8.7
 Release:        0
 Summary:        Jupyter widgets based on vuetify UI components
 License:        MIT
@@ -48,8 +48,8 @@ Jupyter widgets based on vuetify UI components
 
 %package     -n jupyter-ipyvuetify-nbextension
 Summary:        Jupyter widgets based on vuetify UI components - nbextension
-Requires:       %{anypython3dist}(ipyvuetify) = %{version}
 Requires:       jupyter-notebook
+Requires:       %{anypython3dist}(ipyvuetify) = %{version}
 
 %description -n jupyter-ipyvuetify-nbextension
 Jupyter widgets based on vuetify UI components
@@ -58,8 +58,8 @@ This package provides the jupyter notebook extension.
 
 %package     -n jupyter-jupyterlab-ipyvuetify
 Summary:        Jupyter widgets based on vuetify UI components - labextension
-Requires:       %{anypython3dist}(ipyvuetify) = %{version}
 Requires:       jupyter-jupyterlab
+Requires:       %{anypython3dist}(ipyvuetify) = %{version}
 
 %description -n jupyter-jupyterlab-ipyvuetify
 Jupyter widgets based on vuetify UI components
@@ -76,9 +76,12 @@ chmod -x ipyvuetify/labextension/package.json README.md
 %install
 %pyproject_install
 %jupyter_move_config
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand # https://github.com/widgetti/ipyvuetify/issues/251
+rm -r %{buildroot}%{$python_sitelib}/generate_source
+sed -i '/^generate_source/d' %{buildroot}%{$python_sitelib}/ipyvuetify-%{version}.dist-info/RECORD
+%fdupes %{buildroot}%{$python_sitelib}
+}
 %fdupes %{buildroot}%{_jupyter_prefix}
-
 
 %check
 %pytest --nbval-lax %{SOURCE1}
