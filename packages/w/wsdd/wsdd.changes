@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  3 15:09:07 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Force the use of python 3.10 for openSUSE Leap
+
+-------------------------------------------------------------------
+Mon Apr  3 10:14:25 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.7.1
+  * GitHub workflow for static analyses added (syntax, format, and type checks are performed).
+  * Added EnvironmentFile and according example for systemd-based distros.
+  * Make wsdd work (again) on MacOS (#139). Thanks to Eugene Gershnik.
+  * Application profile for UFW has been added (#169)
+  * Use of implicitly present async I/O loop instead created one for API servers. Fixes regression due
+    to changed API in Python 3.10 (see #162)
+  * Source code is spiced with type hints now.
+  * man page moved to section 8.
+
+-------------------------------------------------------------------
 Wed Jun 29 20:07:14 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Include ws-discovey-udp service from firewalld 1.0 as part of wsdd.xml

@@ -1,7 +1,7 @@
 #
 # spec file for package wsdd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wsdd
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A Web Service Discovery host daemon
 License:        MIT
@@ -34,7 +34,6 @@ Source7:        ws-discovery-udp.xml
 %endif
 Patch1:         %{name}-shebang.patch
 BuildRequires:  firewall-macros
-BuildRequires:  python3
 BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Supplements:    samba
@@ -56,10 +55,13 @@ for devices running Samba, like NAS or file sharing servers on your local networ
 
 %build
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}-user.conf
+%if 0%{suse_version} <= 1599
+sed -i '1s/python3/python3.10/' src/wsdd.py
+%endif
 
 %install
 install -m 755 -D src/wsdd.py %{buildroot}%{_sbindir}/%{name}
-install -m 644 -D man/wsdd.1 %{buildroot}/%{_mandir}/man1/wsdd.1
+install -m 644 -D man/wsdd.8 %{buildroot}/%{_mandir}/man8/wsdd.8
 install -m 755 -D %{SOURCE1} %{buildroot}%{_libexecdir}/wsdd-init.sh
 mkdir -p %{buildroot}%{_unitdir}
 sed 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE2} >%{buildroot}%{_unitdir}/wsdd.service
@@ -96,7 +98,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %license LICENSE
 %doc README.md
 %{_sbindir}/%{name}
-%{_mandir}/man1/wsdd.1%{?ext_man}
+%{_mandir}/man8/wsdd.8%{?ext_man}
 %{_sbindir}/rc%{name}
 %{_unitdir}/wsdd.service
 %{_libexecdir}/wsdd-init.sh
