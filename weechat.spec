@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        3.7.1
+Version:        3.8
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source1:        weechat.desktop
 Source2:        https://weechat.org/files/src/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        %{name}.changes
-Patch0:         weechat-ruby3.2.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  curl-devel
