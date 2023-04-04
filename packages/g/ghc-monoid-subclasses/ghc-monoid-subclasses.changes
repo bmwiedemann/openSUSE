@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:07:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar  5 14:10:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add monoid-subclasses at version 1.2.2.
+
