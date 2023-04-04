@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Feb 18 14:37:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tagged to version 0.8.7.
+  0.8.7 [2023.02.18]
+  ------------------
+  * Define `Foldable1` and `Bifoldable1` instances for `Tagged`. These instances
+    were originally defined in the `semigroupoids` library, and they have now
+    been migrated to `tagged` as a side effect of adapting to
+    [this Core Libraries Proposal](https://github.com/haskell/core-libraries-committee/issues/9),
+    which adds `Foldable1` and `Bifoldable1` to `base`.
+
+-------------------------------------------------------------------
 Sat Jul 23 17:28:49 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update tagged to version 0.8.6.1 revision 3.
