@@ -1,5 +1,0 @@
-<package name="pound" project="openSUSE:Factory">
-  <title>Reverse-Proxy and Load-Balancer</title>
-  <description>The Pound program is a reverse proxy, load balancer and HTTPS front-end for Web server(s). Pound was developed to enable distributing the load among several Web-servers and to allow for a convenient SSL wrapper for those Web servers that do not offer it natively.</description>
-  <devel project="network" package="pound"/>
-</package>
