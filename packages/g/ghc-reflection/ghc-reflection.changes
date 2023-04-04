@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Feb 28 12:10:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update reflection to version 2.1.7.
+  # 2.1.7 [2023.02.28]
+  * When building with `base-4.18` (GHC 9.6) or later, implement `reifyNat` and
+    `reifySymbol` using the API provided by `GHC.TypeLits` instead of resorting
+    to `unsafeCoerce`.
+
+-------------------------------------------------------------------
 Tue Feb 15 08:02:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update copyright header in the spec file.
