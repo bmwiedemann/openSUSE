@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sat Nov 20 19:17:46 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update tasty-quickcheck to version 0.10.2.
