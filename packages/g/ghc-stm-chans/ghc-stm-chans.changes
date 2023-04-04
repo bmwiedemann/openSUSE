@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 19 22:35:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update stm-chans to version 3.0.0.9.
+  3.0.0.9 (2023-03-19):
+      - Added `Tested-With: GHC == 9.6.1` (didn't actually need to
+        nudge the upper bound on 'base', because it's already lenient)
+  3.0.0.8 (2022-08-28):
+      - Added `Tested-With: GHC == 9.4.1` (didn't actually need to
+        nudge the upper bound on 'base', because it's already lenient)
+  3.0.0.7 (2021-11-22):
+      - Added `Tested-With: GHC == 9.2.1` (didn't actually need to
+        nudge the upper bound on 'base', because it's already lenient)
+
+-------------------------------------------------------------------
 Tue Oct 19 07:22:20 UTC 2021 - psimons@suse.com
 
 - Update stm-chans to version 3.0.0.6.
