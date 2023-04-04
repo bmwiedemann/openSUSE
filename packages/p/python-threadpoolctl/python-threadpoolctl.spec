@@ -1,7 +1,7 @@
 #
 # spec file for package python-threadpoolctl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-threadpoolctl
 Version:        3.1.0
 Release:        0
@@ -28,7 +26,7 @@ URL:            https://github.com/joblib/threadpoolctl
 Source:         https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module pep517}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -58,6 +56,8 @@ and OpenMP implementations).
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/threadpoolctl.py
+%pycache_only %{python_sitelib}/__pycache__/threadpoolctl.*.py*
+%{python_sitelib}/threadpoolctl-%{version}*info
 
 %changelog

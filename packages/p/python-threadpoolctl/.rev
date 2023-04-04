@@ -64,4 +64,14 @@
     OpenMP threading layer.</comment>
     <requestid>990867</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>62099a4dca6a64bea9b9aacc06e5dddd</srcmd5>
+    <version>3.1.0</version>
+    <time>1680635818</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on numpy.
+- Remove unneeded BuildRequires on pep517.
+- Stop using python_sitelib/*.</comment>
+    <requestid>1076794</requestid>
+  </revision>
 </revisionlist>
