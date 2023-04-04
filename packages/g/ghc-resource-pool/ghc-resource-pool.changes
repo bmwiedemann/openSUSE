@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Jan 16 13:43:16 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update resource-pool to version 0.4.0.0.
