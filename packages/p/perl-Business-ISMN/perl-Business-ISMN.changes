@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 17 03:06:46 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.203
+   see /usr/share/doc/packages/perl-Business-ISMN/Changes
+
+  1.203 2023-03-16T11:10:05Z
+  	* Fix ean_to_ismn, which was not adding the M to the start.
+
+-------------------------------------------------------------------
 Wed Feb 17 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.202
