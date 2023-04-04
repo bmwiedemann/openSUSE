@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  3 12:04:23 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- yupdate - improved Live ISO detection, added "--force" option
+  (related to bsc#1206927)
+- 4.6.2
+
+-------------------------------------------------------------------
 Mon Mar 13 08:49:20 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Removed unnecessary executable flag from file security_proposal.rb
