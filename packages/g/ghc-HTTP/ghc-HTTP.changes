@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Mar 16 23:12:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update HTTP to version 4000.4.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Aug 14 21:34:43 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update HTTP to version 4000.4.1 revision 1.
+  Version 4000.4.0: release 2022-02-22
+   * Restrict to GHC >=7.6 and associated cleanups (Andreas Abel)
+   * Drop deprecated instance Error (Andreas Abel)
+   * Preparation for mtl-2.3 (Andreas Abel)
+   * General tidying (Andreas Abel)
+   * Support GHC 9.2 (Bodigrim)
+
+-------------------------------------------------------------------
 Tue Oct 12 11:34:09 UTC 2021 - psimons@suse.com
 
 - Update HTTP to version 4000.3.16 revision 1.
