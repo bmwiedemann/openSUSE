@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  4 16:09:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter-rpm-macros to BuildRequires
+- Add note about end of maintenance to rpm post install phase
+
+-------------------------------------------------------------------
 Tue Jan  3 18:11:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove invalid version requirement from python metadata

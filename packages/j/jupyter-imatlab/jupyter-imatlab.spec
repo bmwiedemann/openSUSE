@@ -31,6 +31,7 @@ Source1:        https://raw.githubusercontent.com/imatlab/imatlab/master/test_im
 BuildRequires:  fdupes
 BuildRequires:  jupyter-ipykernel >= 4.1
 BuildRequires:  jupyter-ipython >= 6
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  jupyter-widgetsnbextension >= 1.0
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
@@ -40,21 +41,20 @@ BuildRequires:  unzip
 BuildRequires:  python3-curses
 BuildRequires:  python3-jupyter-kernel-test
 %endif
-Requires:       jupyter-ipykernel >= 4.1
-Requires:       jupyter-ipython >= 6
-Requires:       jupyter-widgetsnbextension >= 1.0
-Requires:       python3-plotly
+Requires:       python3-ipykernel >= 4.1
+Requires:       python3-nbconvert >= 4.2
+Requires:       python3-plotly >= 1.13.0
+Requires:       python3-widgetsnbextension >= 1.0
 Provides:       python3-jupyter_imatlab_kernel = %{version}
 Obsoletes:      python3-jupyter_imatlab_kernel < %{version}
-Provides:       python3-imatlab = %{version}
+Provides:       python3-imatlab = %{version}-%{release}
 BuildArch:      noarch
 
 %description
 A Jupyter kernel for MATLAB.
 
 This kernel requires Jupyter with Python 3.5+,
-and the MATLAB engine for Python (this release
-provides a much better completion API), which
+and the MATLAB engine for Python, which
 needs to be installed first.
 
 %prep
@@ -81,6 +81,10 @@ sed -i '/Requires-Dist: matlabengineforpython.*R/d' \
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
 %pyunittest -v test_imatlab.py
 %endif
+
+%post
+echo "Note: imatlab is no longer actively maintained."
+echo "Consider using the official MATLAB integration for Jupyter instead."
 
 %files
 %license LICENSE.txt

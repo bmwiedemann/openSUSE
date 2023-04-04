@@ -60,4 +60,13 @@
   * gh#imatlab/imatlab#65</comment>
     <requestid>1046628</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>3bbd83d9721c485f7253a055c2ad2033</srcmd5>
+    <version>0.4</version>
+    <time>1680636458</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jupyter-rpm-macros to BuildRequires
+- Add note about end of maintenance to rpm post install phase</comment>
+    <requestid>1077250</requestid>
+  </revision>
 </revisionlist>
