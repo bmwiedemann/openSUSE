@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Jan 17 13:34:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update primitive to version 0.7.4.0 revision 1.
+  ## Changes in version 0.7.4.0
+
+    * Add Lift instances (#332)
+
+    * Expose `copyPtrToMutablePrimArray`
+
+    * Improve definitions for stimes (#326)
+
+    * Support GHC 9.4. Note: GHC 9.4 is not released at the time of
+      primitive-0.7.4.0's release, so this support might be reverted by
+      a hackage metadata revision if things change.
+
+    * Drop support for GHC 7.10
+
+-------------------------------------------------------------------
 Fri May 20 11:34:33 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update primitive to version 0.7.3.0 revision 2.
