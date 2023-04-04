@@ -410,4 +410,12 @@ Fix macros to generate file permissions</comment>
     <comment>- fix build, remove white space</comment>
     <requestid>928503</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8f381315e20682c0064531e3dca2c484</srcmd5>
+    <version>2.5.2</version>
+    <time>1680636171</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076021</requestid>
+  </revision>
 </revisionlist>

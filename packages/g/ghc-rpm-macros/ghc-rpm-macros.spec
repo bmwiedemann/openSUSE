@@ -18,7 +18,7 @@
 
 %global without_hscolour 1
 Name:           ghc-rpm-macros
-Version:        1.9.95
+Version:        2.5.2
 Release:        0
 Summary:        RPM Macros for building packages for GHC
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ URL:            https://fedoraproject.org/wiki/Haskell_SIG
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  xz
 Requires:       rpm
+Requires:       chrpath
 BuildArch:      noarch
 %if %{undefined without_hscolour}
 Requires:       hscolour
@@ -47,14 +48,6 @@ Requires:       %{name} = %{version}-%{release}
 Extra macros used for subpackaging of Haskell libraries,
 for example in ghc and haskell-platform.
 
-%package -n ghc-srpm-macros
-Summary:        RPM macros for building Haskell source packages
-Group:          Development/Libraries/Other
-BuildArch:      noarch
-
-%description -n ghc-srpm-macros
-Macros used when generating source Haskell rpm packages.
-
 %prep
 %setup -q
 
@@ -69,9 +62,9 @@ install -p -D -m 0755 ghc-deps.sh %{buildroot}/%{_prefix}/lib/rpm/ghc-deps.sh
 install -p -D -m 0755 cabal-tweak-dep-ver %{buildroot}/%{_bindir}/cabal-tweak-dep-ver
 install -p -D -m 0755 cabal-tweak-drop-dep %{buildroot}/%{_bindir}/cabal-tweak-drop-dep
 install -p -D -m 0755 cabal-tweak-flag %{buildroot}/%{_bindir}/cabal-tweak-flag
+install -p -D -m 0755 cabal-tweak-remove-upperbound %{buildroot}/%{_bindir}/cabal-tweak-remove-upperbound
 install -p -D -m 0755 ghc-pkg-wrapper %{buildroot}/%{_prefix}/lib/rpm/ghc-pkg-wrapper
 install -p -D -m 0644 ghc.attr %{buildroot}/%{_prefix}/lib/rpm/fileattrs/ghc.attr
-install -p -D -m 0755 ghc-dirs.sh %{buildroot}/%{_prefix}/lib/rpm/ghc-dirs.sh
 install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
 
 %files
@@ -83,9 +76,9 @@ install -p -D -m 0644 Setup.hs %{buildroot}/%{_datadir}/%{name}/Setup.hs
 %{_bindir}/cabal-tweak-dep-ver
 %{_bindir}/cabal-tweak-flag
 %{_bindir}/cabal-tweak-drop-dep
+%{_bindir}/cabal-tweak-remove-upperbound
 %{_prefix}/lib/rpm/ghc-pkg-wrapper
 %{_prefix}/lib/rpm/fileattrs/ghc.attr
-%{_prefix}/lib/rpm/ghc-dirs.sh
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/Setup.hs
 

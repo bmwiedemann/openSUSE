@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 18 18:33:27 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.5.2
+ * fix ghc-pkg-wrapper in ghc build env
+ * ghc_merge_filelist macro
+
+-------------------------------------------------------------------
+Thu Mar 16 18:26:11 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.5.0
+ * sync with fedora
+ * enable -prof packages
+ * support for hadrian
+
+-------------------------------------------------------------------
 Mon Nov  1 05:59:41 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix build, remove white space 
