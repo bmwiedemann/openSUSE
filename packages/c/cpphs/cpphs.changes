@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Wed Nov  3 15:45:50 UTC 2021 - psimons@suse.com
 
 - Update cpphs to version 1.20.9.1 revision 1.
