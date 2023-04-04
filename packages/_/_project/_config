@@ -1554,6 +1554,7 @@ BuildFlags: onlybuild:gettext-runtime-mini
 BuildFlags: onlybuild:ghostscript
 BuildFlags: onlybuild:ghostscript-fonts
 BuildFlags: onlybuild:ghostscript:mini
+BuildFlags: onlybuild:rpmlint-mini-AGGR
 BuildFlags: onlybuild:giflib
 BuildFlags: onlybuild:git
 BuildFlags: onlybuild:gjs
