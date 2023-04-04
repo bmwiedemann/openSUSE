@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jan 29 19:42:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.18 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed May  4 00:46:57 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update tasty-rerun to version 1.1.18 revision 3.
