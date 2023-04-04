@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:11 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Thu Sep  8 11:36:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yesod to version 1.6.2.1.
