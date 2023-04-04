@@ -126,4 +126,12 @@ This fixes gh-4.</comment>
     <comment>automated update of haskell stack</comment>
     <requestid>912742</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3b6c3f9f0ef6c78ba0390b5bfe352594</srcmd5>
+    <version>1.2.1.0</version>
+    <time>1680635915</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075775</requestid>
+  </revision>
 </revisionlist>
