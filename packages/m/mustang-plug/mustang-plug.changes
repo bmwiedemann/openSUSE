@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  4 09:06:02 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GCC 13, add add_missing_cstdint.patch
+
+-------------------------------------------------------------------
+Mon Jul 18 20:53:14 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix failing builds of tests on Leap 15.x,
+  add 0001-Add-missing-UsbDeviceMock-for-MustangTest.patch,
+  update 0001-Build-helper-libraries-as-OBJECT-libraries.patch
+
+-------------------------------------------------------------------
 Mon Jul 18 16:00:19 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (1.4.3)

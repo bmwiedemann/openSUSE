@@ -1,13 +1,14 @@
-From b1981342d58c9da1b71100f34967a90378f75cb2 Mon Sep 17 00:00:00 2001
+From 94c1f8fa0764aab7eaee1a56160565e098073e08 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Mon, 18 Jul 2022 18:23:37 +0200
 Subject: [PATCH] Build helper libraries as OBJECT libraries
 
 ---
- cmake/Template.cmake   |  2 +-
- src/com/CMakeLists.txt | 10 +++++-----
- src/ui/CMakeLists.txt  |  3 ++-
- 3 files changed, 8 insertions(+), 7 deletions(-)
+ cmake/Template.cmake      |  2 +-
+ src/com/CMakeLists.txt    | 10 +++++-----
+ src/ui/CMakeLists.txt     |  3 ++-
+ test/mocks/CMakeLists.txt |  4 ++--
+ 4 files changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/cmake/Template.cmake b/cmake/Template.cmake
 index e7cfc25..6d04608 100644
@@ -60,6 +61,21 @@ index 5baab0c..1680247 100644
                      amplifier.cpp
                      defaulteffects.cpp
                      effect.cpp
+diff --git a/test/mocks/CMakeLists.txt b/test/mocks/CMakeLists.txt
+index fd87c49..d7877d7 100644
+--- a/test/mocks/CMakeLists.txt
++++ b/test/mocks/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-add_library(LibUsbMocks LibUsbMocks.cpp)
++add_library(LibUsbMocks OBJECT LibUsbMocks.cpp)
+ target_link_libraries(LibUsbMocks PRIVATE TestLibs)
+ target_include_directories(LibUsbMocks PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
+ 
+-add_library(UsbDeviceMock UsbDeviceMock.cpp)
++add_library(UsbDeviceMock OBJECT UsbDeviceMock.cpp)
+ target_link_libraries(UsbDeviceMock PRIVATE TestLibs)
+ 
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 -- 
 2.37.0
 

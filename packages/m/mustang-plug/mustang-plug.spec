@@ -26,6 +26,8 @@ Source0:        https://github.com/offa/plug/archive/refs/tags/v%{version}.tar.g
 Source1:        mustang-plug.svg
 Patch0:         0001-Build-helper-libraries-as-OBJECT-libraries.patch
 Patch1:         0001-Improve-udev-rules-add-uaccess-support.patch
+Patch2:         0001-Add-missing-UsbDeviceMock-for-MustangTest.patch
+Patch3:         https://github.com/offa/plug/commit/79bdcbc2ed12.patch#/add_missing_cstdint.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt5Core)
