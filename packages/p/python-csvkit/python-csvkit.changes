@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 28 10:43:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * feat: :doc:`/scripts/csvstack` handles files with columns in
+    different orders or with different names.
+
+-------------------------------------------------------------------
 Mon Jan 16 20:54:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

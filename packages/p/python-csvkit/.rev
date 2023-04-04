@@ -147,4 +147,12 @@
   * Drop Python 2.7 support (end-of-life was January 1, 2020).</comment>
     <requestid>1058765</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9a36021b727d7075adf13d787c4c8389</srcmd5>
+    <version>1.1.1</version>
+    <time>1680636416</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1077189</requestid>
+  </revision>
 </revisionlist>

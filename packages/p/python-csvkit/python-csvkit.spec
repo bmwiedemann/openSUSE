@@ -21,7 +21,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-csvkit
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT
