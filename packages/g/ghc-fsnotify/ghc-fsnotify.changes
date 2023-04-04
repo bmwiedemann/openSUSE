@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Mon Oct 17 02:03:57 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update fsnotify to version 0.4.1.0.
