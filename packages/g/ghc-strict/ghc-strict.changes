@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:27 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sat Jan  1 00:53:29 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update strict to version 0.4.0.1 revision 4.
