@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Fri Jun 17 19:09:13 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update aeson-pretty to version 0.8.9 revision 2.
