@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:38 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 26 04:36:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update doclayout to version 0.4.0.1.
+  ## 0.4.0.1
+
+    * Add clause for Empty to renderList (#22).
+    * Remove upper bound for criterion
+
+-------------------------------------------------------------------
 Sat Aug 13 17:42:11 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update doclayout to version 0.4 revision 1.
