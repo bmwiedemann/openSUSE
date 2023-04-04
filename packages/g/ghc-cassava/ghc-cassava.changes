@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Feb  4 21:13:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cassava to version 0.5.3.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Jul 10 17:49:48 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update cassava to version 0.5.3.0.
