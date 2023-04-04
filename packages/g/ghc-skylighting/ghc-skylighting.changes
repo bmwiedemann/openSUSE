@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Feb  8 23:11:47 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update skylighting to version 0.13.2.1.
+  ## 0.13.2.1
+
+    * Update tango style for new token types (#164). The original
+      tango style didn't have colors defined for many token types
+      that have been added since it was added.  This commit
+      updates the style to support them. Thanks to @danbraswell
+      for providing the values needed.
+
+-------------------------------------------------------------------
 Sun Dec 18 02:14:49 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update skylighting to version 0.13.2.
