@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Sun Apr  3 12:35:11 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add hslua-module-doclayout at version 1.0.4.
