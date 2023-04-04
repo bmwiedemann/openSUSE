@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-postgresql-simple
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global pkg_name postgresql-simple
+%global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
 Version:        0.6.5
@@ -25,34 +26,59 @@ Summary:        Mid-Level PostgreSQL client library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch0:         https://github.com/haskellari/postgresql-simple/pull/110.patch#/dont-depend-on-obsolete-bytestring-builder.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Only-devel
+BuildRequires:  ghc-Only-prof
 BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-bytestring-builder-devel
+BuildRequires:  ghc-attoparsec-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-case-insensitive-devel
+BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-postgresql-libpq-devel
+BuildRequires:  ghc-postgresql-libpq-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
+BuildRequires:  ghc-scientific-prof
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-compat-devel
+BuildRequires:  ghc-time-compat-prof
 BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-uuid-types-devel
+BuildRequires:  ghc-uuid-types-prof
 BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
+BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-base16-bytestring-devel
+BuildRequires:  ghc-base16-bytestring-prof
 BuildRequires:  ghc-cryptohash-md5-devel
+BuildRequires:  ghc-cryptohash-md5-prof
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-inspection-testing-devel
+BuildRequires:  ghc-inspection-testing-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
+BuildRequires:  ghc-tasty-golden-prof
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
 %endif
 
 %description
@@ -69,8 +95,24 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development
 files.
 
+%package -n ghc-%{pkg_name}-doc
+Summary:        Haskell %{pkg_name} library documentation
+Requires:       ghc-filesystem
+BuildArch:      noarch
+
+%description -n ghc-%{pkg_name}-doc
+This package provides the Haskell %{pkg_name} library documentation.
+
+%package -n ghc-%{pkg_name}-prof
+Summary:        Haskell %{pkg_name} profiling library
+Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
+Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+
+%description -n ghc-%{pkg_name}-prof
+This package provides the Haskell %{pkg_name} profiling library.
+
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
@@ -92,5 +134,10 @@ files.
 
 %files devel -f %{name}-devel.files
 %doc CHANGES.md CONTRIBUTORS
+
+%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%license LICENSE
+
+%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
 
 %changelog
