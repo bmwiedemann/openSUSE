@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Feb 27 12:10:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update th-lift to version 0.8.3.
+  ## [0.8.3] - 2023.02.27
+
+  * Support building with `th-abstraction-0.5.*`.
+  * Require `th-abstraction-0.3.0.0` or later.
+
+-------------------------------------------------------------------
 Sat Jul 23 17:55:52 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update th-lift to version 0.8.2 revision 2.
