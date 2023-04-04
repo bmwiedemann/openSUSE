@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:06:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Jan 10 19:40:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update concurrent-output to version 1.10.17.
