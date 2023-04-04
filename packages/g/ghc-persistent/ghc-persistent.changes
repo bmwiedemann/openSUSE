@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sat Mar  4 19:05:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.5.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/persistent-2.14.5.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Thu Jan  5 16:07:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.14.4.4.
