@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:09:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Tue Nov 29 05:34:18 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xss-sanitize to version 0.3.7.1.
