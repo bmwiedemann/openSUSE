@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:07:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 15 20:49:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.2.
+  ## 0.2.2
+
+  Released 2023-03-15.
+
+  -   Add `__tostring` metamethods to *Blocks* and *Inlines*.
+
+-------------------------------------------------------------------
+Mon Mar 13 12:18:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.1.1.
+  ## 0.2.1.1
+
+  Released 2023-03-13.
+
+  -   The version constraints for hslua packages have been relaxed;
+      other changes in hslua 2.3.\* do not affect this package.
+
+-------------------------------------------------------------------
+Sat Feb 11 16:10:47 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/pandoc-lua-marshal-0.2.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Wed Jan 18 17:01:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.2.0.
+  ## 0.2.0
+
+  Release pending.
+
+  -   Depend on pandoc-types 1.23: the `Null` Block constructor has
+      been removed, and a `Figure` constructor has been added.
+
+  -   Support for Lua 5.3 has been dropped; the package now requires
+      hslua 2.2 or later.
+
+  -   The implementation for `List` has been moved to the separate
+      `hslua-list` module. This module no longer contains C code.
+
+-------------------------------------------------------------------
 Sat Jul 16 13:29:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.1.7.
