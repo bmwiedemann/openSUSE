@@ -7,4 +7,12 @@
     <comment>initial version</comment>
     <requestid>1009695</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f199105330372cec13de367902eb77a</srcmd5>
+    <version>1.1.4.0</version>
+    <time>1680635925</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075785</requestid>
+  </revision>
 </revisionlist>
