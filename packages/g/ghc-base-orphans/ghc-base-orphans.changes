@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:05:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar  8 00:26:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base-orphans to version 0.8.8.2.
+  ## Changes in 0.8.8.2 [2023.03.07]
+   - Fix GHC 9.2.1 build error that was accidentally introduced in
+     `base-orphans-0.8.8`.
+
+-------------------------------------------------------------------
+Sun Mar  5 22:49:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base-orphans to version 0.8.8.1.
+  ## Changes in 0.8.8.1 [2023.03.05]
+   - Fix GHC 9.4 build error that was accidentally introduced in
+     `base-orphans-0.8.8`.
+
+  ## Changes in 0.8.8 [2023.03.05]
+   - Backport new instances from GHC 9.6.1/`base-4.18.0.0`:
+     * `Functor` instances for the `(,,,,) a b c d`, `(,,,,,) a b c d e`, and
+       `(,,,,,) a b c d e f` tuple types.
+     * `Eq` and `Ord` instances for `Generically`
+
+-------------------------------------------------------------------
 Thu Aug 11 12:05:49 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update base-orphans to version 0.8.7.
