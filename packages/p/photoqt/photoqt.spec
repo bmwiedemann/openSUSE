@@ -17,13 +17,13 @@
 
 
 Name:           photoqt
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        A Qt-based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://photoqt.org/
-Source0:        https://photoqt.org/pkgs/%{name}-%{version}.tar.gz
+Source0:        https://gitlab.com/lspies/photoqt/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freeimage-devel
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(pugixml)
 PhotoQt is a configurable image viewer.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %cmake -DCRYPTKEY:STRING=4242 \
