@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 27 06:38:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rebase patch remove_python_3_6_deprecation_warning.patch
+
+-------------------------------------------------------------------
 Sun Mar 26 19:56:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 40.0.1:

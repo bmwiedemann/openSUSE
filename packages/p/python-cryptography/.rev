@@ -861,4 +861,12 @@
     rtificateBuilder`.</comment>
     <requestid>1074512</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>ec329cd79154da8b37521f00ee55990f</srcmd5>
+    <version>40.0.1</version>
+    <time>1680635861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1076828</requestid>
+  </revision>
 </revisionlist>
