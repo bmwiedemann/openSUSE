@@ -9,6 +9,6 @@ powerful journal database reader, we aim to do a clear split between
 reuseable library and application logic.
 
 </description>
-  <devel project="KDE:Extra" package="kjournald"/>
+  <devel project="KDE:Applications" package="kjournald"/>
   <url>https://invent.kde.org/system/kjournald</url>
 </package>

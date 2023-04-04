@@ -4,6 +4,6 @@
 messaging.
 
 </description>
-  <devel project="KDE:Extra" package="neochat"/>
+  <devel project="KDE:Applications" package="neochat"/>
   <url>https://www.kde.org</url>
 </package>

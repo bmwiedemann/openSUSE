@@ -1,5 +1,5 @@
 <package name="python-podman" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-podman"/>
+  <devel project="devel:microos" package="python-podman"/>
 </package>
