@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-referencing%{psuffix}
-Version:        0.26.4
+Version:        0.27.0
 Release:        0
 Summary:        JSON Referencing + Python
 License:        MIT

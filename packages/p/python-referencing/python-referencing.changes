@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 04 06:16:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.0:
+  * Fix looking up anchors from non-canonical URIs.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Tue Mar 28 09:12:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Split package into multibuild to avoid a build cycle.

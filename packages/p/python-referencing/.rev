@@ -7,4 +7,12 @@
     <comment>new package python-referencing required by python-jsonschema-specifications</comment>
     <requestid>1074961</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f09eacb523a26d1eaebeb52bd5a48c2c</srcmd5>
+    <version>0.27.0</version>
+    <time>1680636374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077133</requestid>
+  </revision>
 </revisionlist>
