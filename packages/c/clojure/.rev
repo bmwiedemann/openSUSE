@@ -144,4 +144,14 @@
   * Switch to tools.deps 0.18.1331</comment>
     <requestid>1076593</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>10412392a23b1b170da1332024f86c2f</srcmd5>
+    <version>1.11.1.1273</version>
+    <time>1680636354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1.1273:
+  * Change help text to point to -X:deps mvn-pom instead of -Spom
+  * Switch to tools.deps 0.18.1335</comment>
+    <requestid>1077100</requestid>
+  </revision>
 </revisionlist>
