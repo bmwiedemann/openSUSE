@@ -1,7 +1,7 @@
 #
 # spec file for package alex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,12 +32,18 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  autoconf
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-devel
+BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-process-prof
 %endif
 
 %description
