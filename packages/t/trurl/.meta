@@ -1,0 +1,9 @@
+<package name="trurl" project="openSUSE:Factory">
+  <title>Command line tool for URL parsing and manipulation</title>
+  <description>A CLI tool that parses and manipulates URLs, designed to help
+shell script authors everywhere.
+
+</description>
+  <devel project="network:utilities" package="trurl"/>
+  <url>https://daniel.haxx.se/blog/2023/04/03/introducing-trurl/</url>
+</package>
