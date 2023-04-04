@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 30 17:08:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 22 09:50:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unliftio-core to version 0.2.1.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Feb  8 14:48:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unliftio-core to version 0.2.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Feb  6 17:06:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update unliftio-core to version 0.2.1.0.
+  ## 0.2.1.0
+
+  * Added `Control.Monad.IO.Unlift.liftIOOp`
+
+  ## 0.2.0.2
+
+  * Widen `base` upperbound to `< 4.17` to support ghc-9.2.
+
+-------------------------------------------------------------------
 Wed Aug  4 08:17:04 UTC 2021 - psimons@suse.com
 
 - Update unliftio-core to version 0.2.0.1 revision 2.
