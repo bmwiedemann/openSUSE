@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-3d
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,15 +27,13 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-3d-rpmlintrc
-# TODO: Reenable build when 6.5.0 is released
-ExcludeArch:    %{ix86}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -43,17 +41,19 @@ BuildRequires:  qt6-opengl-private-devel
 BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-shadertools-private-devel
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
 # Doesn't build yet
 # BuildRequires: cmake(Qt6Gamepad)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Multimedia)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6ShaderTools)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
+BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  cmake(assimp) >= 5
 BuildRequires:  pkgconfig(zlib)
 %if "%{qt6_flavor}" == "docs"
@@ -118,7 +118,7 @@ Summary:        Development files for the Qt 6 3DAnimation library
 Requires:       libQt63DAnimation6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-3danimation-devel
 Development files for the Qt 6 3DAnimation library.
@@ -140,9 +140,9 @@ The Qt 6 3DCore library.
 %package -n qt6-3dcore-devel
 Summary:        Development files for the Qt 6 3DCore library
 Requires:       libQt63DCore6 = %{version}
-Requires:       cmake(Qt6Concurrent)
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Concurrent) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description -n qt6-3dcore-devel
 Development files for the Qt 6 3DCore library.
@@ -234,8 +234,8 @@ The Qt 6 3DQuick library.
 Summary:        Development files for the Qt 6 3DQuick library
 Requires:       libQt63DQuick6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-3dquick-devel
 Development files for the Qt 6 3DQuick library.
@@ -261,8 +261,8 @@ Requires:       cmake(Qt63DAnimation) = %{real_version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DQuick) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-3dquickanimation-devel
 Development files for the Qt 6 3DQuickAnimation library.
@@ -289,8 +289,8 @@ Requires:       cmake(Qt63DExtras) = %{real_version}
 Requires:       cmake(Qt63DInput) = %{real_version}
 Requires:       cmake(Qt63DQuick) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-3dquickextras-devel
 Development files for the Qt 6 3DQuickExtras library.
@@ -315,8 +315,8 @@ Requires:       libQt63DQuickInput6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DInput) = %{real_version}
 Requires:       cmake(Qt63DQuick) = %{real_version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-3dquickinput-devel
 Development files for the Qt 6 3DQuickInput library.
@@ -341,8 +341,8 @@ Requires:       libQt63DQuickRender6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DQuick) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-3dquickrender-devel
 Development files for the Qt 6 3DQuickRender library.
@@ -367,8 +367,8 @@ Requires:       libQt63DQuickScene2D6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DQuick) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-3dquickscene2d-devel
 Development files for the Qt 6 3DQuickScene2D library.
@@ -391,8 +391,8 @@ The Qt 6 3DRender library.
 Summary:        Development files for the Qt 6 3DRender library
 Requires:       libQt63DRender6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
-Requires:       cmake(Qt6Concurrent)
-Requires:       cmake(Qt6OpenGL)
+Requires:       cmake(Qt6Concurrent) = %{real_version}
+Requires:       cmake(Qt6OpenGL) = %{real_version}
 
 %description -n qt6-3drender-devel
 Development files for the Qt 6 3DRender library.
@@ -647,7 +647,6 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 %files -n libQt63DQuickScene2D6
 %{_qt6_libdir}/libQt63DQuickScene2D.so.*
-# TODO move plugins elsewhere?
 %{_qt6_pluginsdir}/renderplugins/
 
 %files -n qt6-3dquickscene2d-devel
@@ -667,7 +666,6 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 %files -n libQt63DRender6
 %{_qt6_libdir}/libQt63DRender.so.*
-# TODO move plugins elsewhere?
 %{_qt6_pluginsdir}/geometryloaders/
 %{_qt6_pluginsdir}/sceneparsers/
 %{_qt6_pluginsdir}/renderers/
