@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.46.0
+Version:        2.47.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -54,7 +54,6 @@ Requires:       azure-cli-core = %{version}
 Requires:       azure-cli-nspkg >= 3.0.3
 Requires:       python3-Fabric >= 2.4
 Requires:       python3-PyGithub >= 1.38
-Requires:       python3-PyMySQL >= 1.0.2
 Requires:       python3-PyNaCl >= 1.5.0
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-antlr4-python3-runtime >= 4.9.3
@@ -70,7 +69,8 @@ Requires:       python3-azure-keyvault-keys >= 4.8.0~b2
 Requires:       python3-azure-loganalytics >= 0.1.0
 Requires:       python3-azure-mgmt-advisor >= 9.0.0
 Requires:       python3-azure-mgmt-apimanagement >= 3.0.0
-Requires:       python3-azure-mgmt-appconfiguration >= 2.2.0
+Requires:       python3-azure-mgmt-appconfiguration >= 3.0.0
+Requires:       python3-azure-mgmt-appcontainers >= 2.0.0
 Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       python3-azure-mgmt-authorization >= 3.0.0
 Requires:       python3-azure-mgmt-batch >= 17.0.0
@@ -83,7 +83,7 @@ Requires:       python3-azure-mgmt-compute >= 29.1.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 10.1.0~b1
 Requires:       python3-azure-mgmt-containerregistry >= 10.1.0
-Requires:       python3-azure-mgmt-containerservice >= 21.2.0
+Requires:       python3-azure-mgmt-containerservice >= 22.0.0
 Requires:       python3-azure-mgmt-cosmosdb >= 9.0.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -99,7 +99,7 @@ Requires:       python3-azure-mgmt-imagebuilder >= 1.1.0
 Requires:       python3-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       python3-azure-mgmt-iothub >= 2.3.0
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 1.1.0
-Requires:       python3-azure-mgmt-keyvault >= 10.1.0
+Requires:       python3-azure-mgmt-keyvault >= 10.2.0
 Requires:       python3-azure-mgmt-kusto >= 0.3.0
 Requires:       python3-azure-mgmt-loganalytics >= 13.0.0
 Requires:       python3-azure-mgmt-managedservices >= 1.0
@@ -110,7 +110,6 @@ Requires:       python3-azure-mgmt-media >= 9.0
 Requires:       python3-azure-mgmt-monitor >= 5.0.0
 Requires:       python3-azure-mgmt-msi >= 7.0.0
 Requires:       python3-azure-mgmt-netapp >= 9.0.1
-Requires:       python3-azure-mgmt-network >= 21.0.1
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 10.2.0b6
@@ -120,8 +119,8 @@ Requires:       python3-azure-mgmt-redhatopenshift >= 1.2.0
 Requires:       python3-azure-mgmt-redis >= 14.1.0
 Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations >= 2.0.0
-Requires:       python3-azure-mgmt-resource >= 21.1.0
-Requires:       python3-azure-mgmt-search >= 8.0
+Requires:       python3-azure-mgmt-resource >= 22.0.0
+Requires:       python3-azure-mgmt-search >= 9.0
 Requires:       python3-azure-mgmt-security >= 3.0.0
 Requires:       python3-azure-mgmt-servicebus >= 8.2.0
 Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
