@@ -1,8 +1,90 @@
 -------------------------------------------------------------------
+Wed Apr  5 06:25:51 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.26.1
+  https://github.com/cli/cli/releases/tag/v2.26.1
+
+  What's Changed
+  * extend secure storage default to auth refresh by @vilmibm in #7278
+
+- Update to 2.26.1-pre0
+  https://github.com/cli/cli/releases/tag/v2.26.1-pre0
+
+  What's Changed
+  * extend secure storage default to auth refresh by @vilmibm in #7278
+
+- Update to 2.26.0
+  https://github.com/cli/cli/releases/tag/v2.26.0
+
+  Important: credentials now stored securely by default
+    When running gh auth login, your credentials will now be stored in your operating system's
+    credential storage instead of directly on disk. In other words, --secure-storage is now default
+    behavior. We've added a new flag, --insecure-storage, to opt into the old insecure behavior in
+    case you need to debug an issue with credential storage.
+
+    As before, to take advantage of credential storage, please re-run gh auth login.
+    For more context, you can read the v2.24.0 release notes
+    Ref: secure storage by default by @vilmibm in #7276
+
+  Other new features
+  * Allow filtering workflow runs by status by @alex-petrov-vt in #7249
+  * Gist rename by @wingkwong in #7212
+  * Add a --fail-fast option to pr checks --watch by @benjlevesque in #7203
+  * Add --template for issue and PR by @guerinoni in #7185
+  * gh run view --attempt by @wingkwong in #7232
+  * utocomplete branch flags by @bchadwic in #6031
+
+  Bugfixes
+  * Make number arg, commit arg, and flags mutually exclusive by @kkocha in #7268
+  * Check SSH key existence before uploading by @vaindil in #7246
+  * Throw error for non-existing org / repo with non-zero status in repo list by @wingkwong in #7240
+
+  Docs and development changes
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 by @dependabot in #7217
+  * Properly handle closing files that have been writen to by @samcoe in #7199
+  * Added apt update command to linux install docs. by @srgk26 in #7186
+  * Revise GH_CONFIG_DIR content in help_topic.go by @wingkwong in #7230
+  * Refine the Makefile file so that it can do the basic work by @cubxxw in #7228
+  * Clearer message with actionable hint for repo sync by @macmacbr in #7110
+  * Fix typo in README.md by @SonicGDX in #7244
+  * Retry fetching repo from template by @heaths in #7080
+  * Repo list: add test for invalid owner error by @mislav in #7241
+  * Improve Amazon Linux install instructions by @mislav in #7252
+  * Add commit SHA arg to gh browse help by @kkocha in #7267
+  * Additional help doc and example for auth setup-git by @kkocha in #7243
+
+- Update to 2.26.0-pre0
+  https://github.com/cli/cli/releases/tag/v2.26.0-pre0
+
+  What's Changed
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 by @dependabot in #7217
+  * Properly handle closing files that have been writen to by @samcoe in #7199
+  * feat: gist rename by @wingkwong in #7212
+  * Added apt update command to linux install docs. by @srgk26 in #7186
+  * docs: revise GH_CONFIG_DIR content in help_topic.go by @wingkwong in #7230
+  * add a --fail-fast option to pr checks --watch by @benjlevesque in #7203
+  * Add --template for issue and PR by @guerinoni in #7185
+  * Feature(Fixes #7229) : Refine the Makefile file so that it can do the basic work by @cubxxw in #7228
+  * feat: gh run view --attempt by @wingkwong in #7232
+  * fix: throw error for non-existing org / repo with non-zero status in repo list by @wingkwong in #7240
+  * issue-6910 clearer message with actionable hint for repo sync by @macmacbr in #7110
+  * Autocomplete branch flags by @bchadwic in #6031
+  * Fix typo in README.md by @SonicGDX in #7244
+  * Retry fetching repo from template by @heaths in #7080
+  * repo list: add test for invalid owner error by @mislav in #7241
+  * feat: allow filtering workflow runs by status by @alex-petrov-vt in #7249
+  * Improve Amazon Linux install instructions by @mislav in #7252
+  * Check SSH key existence before uploading by @vaindil in #7246
+  * docs: add commit SHA arg to gh browse help by @kkocha in #7267
+  * Additional help doc and example for auth setup-git by @kkocha in #7243
+  * fix: make number arg, commit arg, and flags mutually exclusive by @kkocha in #7268
+  * secure storage by default by @vilmibm in #7276
+
+-------------------------------------------------------------------
 Wed Mar 22 16:00:30 UTC 2023 - Pavel Dostál <pdostal@suse.com>
 
 - Update to 2.25.1
-  https://github.com/cli/cli/releases/tag/v2.25.0
+  https://github.com/cli/cli/releases/tag/v2.25.1
 
   What's Changed
   * variable list: fix api path by @rsteube in #7207

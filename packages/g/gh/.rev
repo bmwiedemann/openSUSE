@@ -303,4 +303,12 @@ Switched to tar_scm to pass auto review.</comment>
     <comment></comment>
     <requestid>1073853</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>63a87f69f93ea30290a7fe158f309b00</srcmd5>
+    <version>2.26.1</version>
+    <time>1680722907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077459</requestid>
+  </revision>
 </revisionlist>
