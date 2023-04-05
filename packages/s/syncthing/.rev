@@ -1270,4 +1270,15 @@
 </comment>
     <requestid>1077156</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>45653ecd0b23f1c0c8b15f7ea51604c8</srcmd5>
+    <version>1.23.4</version>
+    <time>1680722936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.23.4
+  - Bugfixes:
+    #8851: &quot;Running global migration to fix encryption file sizes&quot; on every start
+</comment>
+    <requestid>1077570</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  5 16:07:00 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.23.4
+  - Bugfixes:
+    #8851: "Running global migration to fix encryption file sizes" on every start
+
+-------------------------------------------------------------------
 Tue Apr  4 08:26:21 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.23.3
