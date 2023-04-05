@@ -1,0 +1,123 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Tue, 04 Apr 2023 20:38:05 +0000
+Subject: [PATCH] use system libpng
+Upstream: no
+
+Previously in spec file:
+
+sed -i -e 's|png17|png16|g' CMakeLists.txt
+find ./ \
+-type f \( -name "*.cpp" -o -name "*.h" \) -exec \
+sed -i \
+-e 's|^#include [\"<]libpng1[0-9]/png.h[\">]|#include <png.h>|g' \
+{} \;
+
+Index: ppsspp-1.14.4/CMakeLists.txt
+===================================================================
+--- ppsspp-1.14.4.orig/CMakeLists.txt
++++ ppsspp-1.14.4/CMakeLists.txt
+@@ -319,7 +319,7 @@ foreach (LANGUAGE C CXX)
+ endforeach()
+ 
+ if(NOT MSVC)
+-	# NEON optimizations in libpng17 seem to cause PNG load errors, see #14485.
++	# NEON optimizations in libpng16 seem to cause PNG load errors, see #14485.
+ 	add_definitions(-DPNG_ARM_NEON_OPT=0)
+ 
+ 	if(ANDROID)
+@@ -1036,7 +1036,7 @@ else()
+ 	set(LIBZIP_LIBRARY libzip)
+ endif()
+ 
+-# Arm platforms require at least libpng17.
++# Arm platforms require at least libpng16.
+ if(ANDROID OR ARMV7 OR ARM64 OR ARM OR IOS)
+ 	set(PNG_REQUIRED_VERSION 1.7)
+ else()
+@@ -1051,43 +1051,43 @@ if(PNG_FOUND)
+ else()
+ 	if(ARM)
+ 		set(PNG_ARM_INCLUDES
+-			ext/libpng17/arm/arm_init.c
+-			ext/libpng17/arm/filter_neon.S
+-			ext/libpng17/arm/filter_neon_intrinsics.c
++			ext/libpng16/arm/arm_init.c
++			ext/libpng16/arm/filter_neon.S
++			ext/libpng16/arm/filter_neon_intrinsics.c
+ 		)
+ 	elseif(ARM64)
+ 		set(PNG_ARM_INCLUDES
+-			ext/libpng17/arm/arm_init.c
+-			ext/libpng17/arm/filter_neon_intrinsics.c
++			ext/libpng16/arm/arm_init.c
++			ext/libpng16/arm/filter_neon_intrinsics.c
+ 		)
+ 	endif()
+-	add_library(png17 STATIC
+-		ext/libpng17/pngconf.h
+-		ext/libpng17/pngdebug.h
+-		ext/libpng17/png.c
+-		ext/libpng17/png.h
+-		ext/libpng17/pngerror.c
+-		ext/libpng17/pngget.c
+-		ext/libpng17/pnginfo.h
+-		ext/libpng17/pnglibconf.h
+-		ext/libpng17/pngmem.c
+-		ext/libpng17/pngpread.c
+-		ext/libpng17/pngpriv.h
+-		ext/libpng17/pngread.c
+-		ext/libpng17/pngrio.c
+-		ext/libpng17/pngrtran.c
+-		ext/libpng17/pngrutil.c
+-		ext/libpng17/pngset.c
+-		ext/libpng17/pngstruct.h
+-		ext/libpng17/pngtrans.c
+-		ext/libpng17/pngwio.c
+-		ext/libpng17/pngwrite.c
+-		ext/libpng17/pngwtran.c
+-		ext/libpng17/pngwutil.c
++	add_library(png16 STATIC
++		ext/libpng16/pngconf.h
++		ext/libpng16/pngdebug.h
++		ext/libpng16/png.c
++		ext/libpng16/png.h
++		ext/libpng16/pngerror.c
++		ext/libpng16/pngget.c
++		ext/libpng16/pnginfo.h
++		ext/libpng16/pnglibconf.h
++		ext/libpng16/pngmem.c
++		ext/libpng16/pngpread.c
++		ext/libpng16/pngpriv.h
++		ext/libpng16/pngread.c
++		ext/libpng16/pngrio.c
++		ext/libpng16/pngrtran.c
++		ext/libpng16/pngrutil.c
++		ext/libpng16/pngset.c
++		ext/libpng16/pngstruct.h
++		ext/libpng16/pngtrans.c
++		ext/libpng16/pngwio.c
++		ext/libpng16/pngwrite.c
++		ext/libpng16/pngwtran.c
++		ext/libpng16/pngwutil.c
+ 		${PNG_ARM_INCLUDES}
+ 	)
+-	set(PNG_LIBRARIES png17)
+-	include_directories(ext/libpng17)
++	set(PNG_LIBRARIES png16)
++	include_directories(ext/libpng16)
+ endif()
+ 
+ set(nativeExtra)
+Index: ppsspp-1.14.4/ext/native/tools/atlastool.cpp
+===================================================================
+--- ppsspp-1.14.4.orig/ext/native/tools/atlastool.cpp
++++ ppsspp-1.14.4/ext/native/tools/atlastool.cpp
+@@ -19,7 +19,7 @@
+ // dist-per-pixel
+ 
+ #include <assert.h>
+-#include <libpng17/png.h>
++#include <png.h>
+ #include <ft2build.h>
+ #include <freetype/ftbitmap.h>
+ #include <set>

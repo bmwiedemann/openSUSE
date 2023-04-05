@@ -1,7 +1,7 @@
 #
 # spec file for package ppsspp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://www.ppsspp.org
 Source:         https://github.com/hrydgard/ppsspp/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:         ppsspp-1.14.4-system-png.patch
+Patch1:         ppsspp-1.14.4-gcc13.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
@@ -94,17 +96,6 @@ Required assets for PPSSPP GUI and assorted configuration files
 
 %prep
 %autosetup -p1
-
-sed -i \
--e 's|png17|png16|g' \
-CMakeLists.txt
-
-#Use system libpng
-find ./ \
--type f \( -name "*.cpp" -o -name "*.h" \) -exec \
-sed -i \
--e 's|^#include [\"<]libpng1[0-9]/png.h[\">]|#include <png.h>|g' \
-{} \;
 
 echo "// This is a generated file.
 

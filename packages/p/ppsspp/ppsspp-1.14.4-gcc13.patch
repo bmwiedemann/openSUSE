@@ -1,0 +1,76 @@
+From 822592c6b1441f7110e1cb15dcc5cd2ea1de8099 Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Wed, 5 Apr 2023 00:20:14 +0200
+Subject: [PATCH] Fix build with GCC13: various standard includes
+
+https://github.com/hrydgard/ppsspp/pull/17234
+https://github.com/hrydgard/ppsspp/commit/9874737087e8d24ea72b3f08b4975031b54a80a5
+
+---
+ Common/Data/Format/IniFile.h   | 1 +
+ Common/GPU/OpenGL/GLFeatures.h | 1 +
+ Common/Net/NetBuffer.h         | 2 ++
+ Core/Reporting.h               | 1 +
+ ext/vma/vk_mem_alloc.h         | 1 +
+ 5 files changed, 6 insertions(+)
+
+diff --git a/Common/Data/Format/IniFile.h b/Common/Data/Format/IniFile.h
+index 1008fff5df94..cbe73f185542 100644
+--- a/Common/Data/Format/IniFile.h
++++ b/Common/Data/Format/IniFile.h
+@@ -8,6 +8,7 @@
+ #include <map>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "Common/File/Path.h"
+ 
+diff --git a/Common/GPU/OpenGL/GLFeatures.h b/Common/GPU/OpenGL/GLFeatures.h
+index 04df20f87f5a..f2aa3380568d 100644
+--- a/Common/GPU/OpenGL/GLFeatures.h
++++ b/Common/GPU/OpenGL/GLFeatures.h
+@@ -5,6 +5,7 @@
+ #pragma once
+ 
+ #include <string>
++#include <cstdint>
+ 
+ // TODO: Replace with thin3d's vendor enum.
+ enum {
+diff --git a/Common/Net/NetBuffer.h b/Common/Net/NetBuffer.h
+index 6247aca98555..12a4ba37c8c4 100644
+--- a/Common/Net/NetBuffer.h
++++ b/Common/Net/NetBuffer.h
+@@ -1,5 +1,7 @@
+ ﻿#pragma once
+ 
++#include <cstdint>
++
+ #include "Common/Buffer.h"
+ 
+ namespace net {
+diff --git a/Core/Reporting.h b/Core/Reporting.h
+index 211267c8f77c..1d254256f75a 100644
+--- a/Core/Reporting.h
++++ b/Core/Reporting.h
+@@ -19,6 +19,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "Common/CommonTypes.h"
+ #include "Common/File/Path.h"
+diff --git a/ext/vma/vk_mem_alloc.h b/ext/vma/vk_mem_alloc.h
+index f52dceeaf416..90719c161516 100644
+--- a/ext/vma/vk_mem_alloc.h
++++ b/ext/vma/vk_mem_alloc.h
+@@ -2624,6 +2624,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeStatsString(
+ #include <cstring>
+ #include <utility>
+ #include <type_traits>
++#include <cstdio>
+ 
+ #ifdef _MSC_VER
+     #include <intrin.h> // For functions like __popcnt, _BitScanForward etc.

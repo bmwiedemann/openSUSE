@@ -143,4 +143,12 @@
     <comment>ppsspp 1.14.4</comment>
     <requestid>1060193</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ab17e9b65a197df8f1f7b5280fe9b2ed</srcmd5>
+    <version>1.14.4</version>
+    <time>1680722838</time>
+    <user>dimstar_suse</user>
+    <comment>gcc13 fixes for TW</comment>
+    <requestid>1077376</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  4 20:44:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Address GCC13 build failures, add ppsspp-1.14.4-gcc13.patch
+- Convert spec file construct to patch,
+  add ppsspp-1.14.4-system-png.patch
+
+-------------------------------------------------------------------
 Sat Jan 21 21:11:41 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ppsspp 1.14.4:
