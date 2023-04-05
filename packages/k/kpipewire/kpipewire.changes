@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:35 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * source: Handle BGRA buffers gracefully
+  * record: Only create the sws_context when necessary
+  * record: Use a good amount of threads as recommended by QThread
+  * record: Make sure we process all the frames before leaving
+  * record: Improve packet fetching
+  * Use a different API call to make importing DmaBufs work on Nvidia (kde#448839)
+  * options to disable motion estimation and in-loop filtering
+  * record: Refactor thread distribution
+  * record: Allocate SwsContext only when necessary
+  * recording: Allocate frames when we render
+  * recording: Extend the encoders API
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
