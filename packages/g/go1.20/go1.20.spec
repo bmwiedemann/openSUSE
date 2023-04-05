@@ -134,7 +134,7 @@
 %endif
 
 Name:           go1.20
-Version:        1.20.2
+Version:        1.20.3
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -163,7 +163,10 @@ BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
 Suggests:       %{name}-libstd = %{version}
+%endif
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
 BuildRequires:  gcc-c++
@@ -214,6 +217,8 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %endif
 
 %if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
 %package libstd
 Summary:        Go compiled shared library libstd.so
 Group:          Development/Languages/Go
@@ -221,6 +226,7 @@ Provides:       go-libstd = %{version}
 
 %description libstd
 Go standard library compiled to a dynamically loadable shared object libstd.so
+%endif
 %endif
 
 %prep
@@ -295,6 +301,8 @@ bin/go install -race std
 %endif
 
 %if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
 # Compile Go standard library as a dynamically loaded shared object libstd.so
 # for inclusion in a subpackage which can be installed standalone.
 # Upstream Go binary releases do not ship a compiled libstd.so.
@@ -311,6 +319,7 @@ bin/go install -race std
 #    build code that will be linked against shared libraries previously
 #    created with -buildmode=shared.
 bin/go install -buildmode=shared std
+%endif
 %endif
 
 %check
@@ -452,8 +461,11 @@ fi
 
 # We don't include libstd.so in the main Go package.
 %if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
 # ./go/1.20/pkg/linux_amd64_dynlink/libstd.so
 %exclude %{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
+%endif
 %endif
 
 %files doc
@@ -465,8 +477,11 @@ fi
 %endif
 
 %if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
 %files libstd
 %{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
+%endif
 %endif
 
 %changelog

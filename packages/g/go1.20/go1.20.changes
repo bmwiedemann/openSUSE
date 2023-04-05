@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr  4 20:42:31 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.3 (released 2023-04-04) includes security fixes to the
+  go/parser, html/template, mime/multipart, net/http, and
+  net/textproto packages, as well as bug fixes to the compiler, the
+  linker, the runtime, and the time package.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-24534 CVE-2023-24536 CVE-2023-24537 CVE-2023-24538
+  * go#59268 go#58975 boo#1210127 security: net/http, net/textproto: denial of service from excessive memory allocation ​(CVE-2023-24534)
+  * go#59270 go#59153 boo#1210128 security: net/http, net/textproto, mime/multipart: denial of service from excessive resource consumption (CVE-2023-24536)
+  * go#59274 go#59180 boo#1210129 security: go/parser: infinite loop in parsing (CVE-2023-24537)
+  * go#59272 go#59234 boo#1210130 security: html/template: backticks not treated as string delimiters (CVE-2023-24538)
+  * go#58920 x/text: building as a plugin failure on darwin/arm64
+  * go#58938 cmd/go: timeout on darwin-amd64-race builder
+  * go#58942 internal/testpty: fails on some Linux machines due to incorrect error handling
+  * go#58954 cmd/link: Incorrect symbol linked in darwin/arm64
+  * go#59051 cmd/link: linker fails on linux/amd64 when gcc's lto options are used
+  * go#59059 cmd/link/internal/arm: off-by-one error in trampoline phase call reachability calculation
+  * go#59075 time: time zone lookup using extend string makes wrong start time for non-DST zones
+  * go#59220 runtime: crash on linux-ppc64le
+  * go#59236 cmd/compile: crypto/elliptic build error under -linkshared mode
+  * go#59296 cmd/compile: unsafe.SliceData incoherent resuilt with nil argument
+
+-------------------------------------------------------------------
+Tue Apr  4 16:59:57 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Build subpackage go1.20-libstd compiled shared object libstd.so
+  only on Tumbleweed at this time.
+  Refs jsc#PED-1962
+
+-------------------------------------------------------------------
 Thu Mar  9 20:39:23 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Add subpackage go1.x-libstd for compiled shared object libstd.so.
