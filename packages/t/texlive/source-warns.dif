@@ -1,6 +1,5 @@
 ---
  libs/gmp/Makefile.in                       |    2 +-
- libs/icu/icu-src/source/i18n/decNumber.h   |   22 +++++++++++++---------
  libs/lua53/Makefile.in                     |    4 ++--
  libs/mpfr/Makefile.in                      |    2 +-
  libs/teckit/TECkit-src/source/Compiler.cpp |   12 +++++++-----
@@ -8,7 +7,7 @@
  texk/makeindexk/mkind.h                    |   20 +++++++++++++++++---
  texk/makeindexk/scanid.h                   |   16 +++++++++++++++-
  texk/makeindexk/scanst.h                   |   16 +++++++++++++++-
- 9 files changed, 86 insertions(+), 24 deletions(-)
+ 8 files changed, 73 insertions(+), 15 deletions(-)
 
 --- libs/gmp/Makefile.in
 +++ libs/gmp/Makefile.in	2016-06-07 13:29:33.925651292 +0000
@@ -21,48 +20,6 @@
  AM_V_CC = $(am__v_CC_@AM_V@)
  am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
  am__v_CC_0 = @echo "  CC      " $@;
---- libs/icu/icu-src/source/i18n/decNumber.h
-+++ libs/icu/icu-src/source/i18n/decNumber.h	2016-06-07 13:29:33.925651292 +0000
-@@ -56,26 +56,30 @@
-   /* For ICU, use one digit per byte, to make it easier to emulate the
-    * old DigitList interface on top of a decNumber
-    */
--  #define DECDPUN 1           /* DECimal Digits Per UNit [must be >0  */
-+  #define DECDPUN 3           /* DECimal Digits Per UNit [must be >0  */
-                               /* and <10; 3 or powers of 2 are best]. */
- 
--  /* DECNUMDIGITS is the default number of digits that can be held in */
--  /* the structure.  If undefined, 1 is assumed and it is assumed     */
--  /* that the structure will be immediately followed by extra space,  */
--  /* as required.  DECNUMDIGITS is always >0.                         */
--  #if !defined(DECNUMDIGITS)
--    #define DECNUMDIGITS 1
--  #endif
--
-   /* The size (integer data type) of each unit is determined by the   */
-   /* number of digits it will hold.                                   */
-   #if   DECDPUN<=2
-     #define decNumberUnit uint8_t
-+    #define DECNUMDIGITS 3
-   #elif DECDPUN<=4
-     #define decNumberUnit uint16_t
-+    #define DECNUMDIGITS 2
-   #else
-     #define decNumberUnit uint32_t
-+    #define DECNUMDIGITS 1
-   #endif
-+
-+  /* DECNUMDIGITS is the default number of digits that can be held in */
-+  /* the structure.  If undefined, 1 is assumed and it is assumed     */
-+  /* that the structure will be immediately followed by extra space,  */
-+  /* as required.  DECNUMDIGITS is always >0.                         */
-+  #if !defined(DECNUMDIGITS)
-+    #define DECNUMDIGITS 1
-+  #endif
-+
-   /* The number of units needed is ceil(DECNUMDIGITS/DECDPUN)         */
-   #define DECNUMUNITS ((DECNUMDIGITS+DECDPUN-1)/DECDPUN)
- 
 --- libs/lua53/Makefile.in
 +++ libs/lua53/Makefile.in	2016-06-07 13:29:33.925651292 +0000
 @@ -238,11 +238,11 @@ am__depfiles_remade = ./$(DEPDIR)/luates

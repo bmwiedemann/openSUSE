@@ -1,7 +1,46 @@
 -------------------------------------------------------------------
+Wed Apr  5 08:24:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Support mkiv as well as lmtx ConTeXt formats 
+
+-------------------------------------------------------------------
+Fri Mar 31 12:21:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Enlarge main memory of xmltex to get a format 
+
+-------------------------------------------------------------------
+Tue Mar 28 08:54:27 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch source-warns.dif
+  * Remove change for decNumber.h from icu library source
+    as it is incompatible with icu 72 ans above
+- Add patch source-decNumber.dif
+  * make libmp and libcu using the same decNumber scheme to
+    get e.g. bibtex8 working on all architectures
+- Add patch luametatex.dif
+  * Also use the same decNumber scheme here
+- Add patch biblatex-ms-missing.dif
+  * Allow two biber binbaries with different perl includes
+- Add patch biblatex-ms-encoding.dif
+  * Make it work
+- Delete patch biber-missing-semicolon.patch now upstream
+
+-------------------------------------------------------------------
+Mon Mar 20 08:38:07 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to final TeXLive 2023
+- Do not touch libs/icu/icu-src/source/i18n/decNumber.h in
+  source-warns.dif as otherwise libicu does not compile
+
+-------------------------------------------------------------------
+Thu Mar  9 13:45:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to pretest TeXLive 2023
+
+-------------------------------------------------------------------
 Fri Oct 28 09:55:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
-- Make it build even ol ppc64le 
+- Make it build even on ppc64le 
 
 -------------------------------------------------------------------
 Mon Jul 25 10:43:31 UTC 2022 - Dirk Müller <dmueller@suse.com>

@@ -1019,4 +1019,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034285</requestid>
   </revision>
+  <revision rev="84" vrev="87">
+    <srcmd5>18ee93c8e95907b691b6946017c01bd1</srcmd5>
+    <version>unknown</version>
+    <time>1680722725</time>
+    <user>dimstar_suse</user>
+    <comment>- Support mkiv as well as lmtx ConTeXt formats 
+
+- Enlarge main memory of xmltex to get a format 
+
+- Modify patch source-warns.dif
+  * Remove change for decNumber.h from icu library source
+    as it is incompatible with icu 72 ans above
+- Add patch source-decNumber.dif
+  * make libmp and libcu using the same decNumber scheme to
+    get e.g. bibtex8 working on all architectures
+- Add patch luametatex.dif
+  * Also use the same decNumber scheme here
+- Add patch biblatex-ms-missing.dif
+  * Allow two biber binbaries with different perl includes
+- Add patch biblatex-ms-encoding.dif
+  * Make it work
+- Delete patch biber-missing-semicolon.patch now upstream
+
+- Update to final TeXLive 2023
+- Do not touch libs/icu/icu-src/source/i18n/decNumber.h in
+  source-warns.dif as otherwise libicu does not compile
+
+- Update to pretest TeXLive 2023
+
+- Make it build even on ppc64le</comment>
+    <requestid>1077462</requestid>
+  </revision>
 </revisionlist>

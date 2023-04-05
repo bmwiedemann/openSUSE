@@ -191,11 +191,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2022/texmf-var
+-TEXMFVAR = ~/.texlive2023/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2022/texmf-config
+-TEXMFCONFIG = ~/.texlive2023/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -304,7 +304,7 @@
  
  % Similarly for the GF format, which only remains in existence because
  % Metafont outputs it (and MF isn't going to change).
-@@ -442,8 +442,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
+@@ -446,8 +446,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
  % For xdvi to find mime.types and .mailcap, if they do not exist in
  % ~.  These are single directories, not paths.
  % (But the default mime.types, at least, may well suffice.)
@@ -315,7 +315,7 @@
  
  % Default settings for the fontconfig library as used by the Windows
  % versions of xetex/xdvipdfmx.  Not used by xetex on Unixish systems.
-@@ -467,10 +467,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
+@@ -471,10 +471,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
  CWEBINPUTS = $TEXMFDOTDIR;$TEXMF/cweb//
  
  % Omega-related fonts and other files.
@@ -330,7 +330,7 @@
  OTPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/otp//
  OCPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/ocp//
  
-@@ -566,32 +566,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
+@@ -570,32 +570,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
  % explicitly list every directory.  Arguably more understandable anyway.
  %
  TEXMFCNF = {\
@@ -394,13 +394,13 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -909,3 +915,33 @@ guess_input_kanji_encoding = 1
+@@ -921,3 +927,33 @@ guess_input_kanji_encoding = 1
  % command_line_encoding = none
  % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
  command_line_encoding = utf-8
 +
 +% These are xmltex specific
-+main_memory.xmltex = 1500000
++main_memory.xmltex = 2500000
 +param_size.xmltex = 1500
 +stack_size.xmltex = 1500
 +hash_extra.xmltex = 50000
@@ -540,7 +540,7 @@
      }
    }
    # set up destination directory
-@@ -717,6 +724,7 @@ sub rebuild_one_format {
+@@ -726,6 +733,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -548,7 +548,7 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -776,11 +784,15 @@ sub rebuild_one_format {
+@@ -785,11 +793,15 @@ sub rebuild_one_format {
          ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
@@ -574,7 +574,7 @@
  exec updmap --sys ${1+"$@"}
 --- texk/web2c/Makefile.in
 +++ texk/web2c/Makefile.in	2021-04-07 10:14:44.210880832 +0000
-@@ -5699,7 +5699,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
+@@ -5597,7 +5597,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
  md5main_CPPFLAGS = -I$(srcdir)/libmd5
  md5main_SOURCES = libmd5/md5main.c
  md5main_LDADD = libmd5.a
@@ -583,7 +583,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) all-recursive
  
  .SUFFIXES:
-@@ -5746,6 +5746,11 @@ w2c/c-auto.h: w2c/stamp-h1
+@@ -5644,6 +5644,11 @@ w2c/c-auto.h: w2c/stamp-h1
  w2c/stamp-h1: $(srcdir)/c-auto.in $(top_builddir)/config.status
  	@rm -f w2c/stamp-h1
  	cd $(top_builddir) && $(SHELL) ./config.status w2c/c-auto.h

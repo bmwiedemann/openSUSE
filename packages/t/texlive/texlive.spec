@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define texlive_version  2022
-%define texlive_previous 2021
-%define texlive_release  20220321
-%define texlive_noarch   196
-%define texlive_source   texlive-20220321-source
-%define biber_version    2.17
+%define texlive_version  2023
+%define texlive_previous 2022
+%define texlive_release  20230311
+%define texlive_noarch   201
+%define texlive_source   texlive-20230311-source
+%define biber_version    2.18
 
 %define __perl_requires		%{nil}
 %define __os_install_post	/usr/lib/rpm/brp-compress \\\
@@ -59,6 +59,11 @@
 # lcdf-typetools -- is also available as the package lcdf-typetools
 #	    and therefore we may only require this external package
 %bcond_without	lcdf_typetools
+
+#
+#
+#
+%bcond_without	luametatex
 
 Name:           texlive
 Version:        %{texlive_version}.%{texlive_release}
@@ -123,16 +128,14 @@ BuildRequires:  ghostscript-library
 BuildRequires:  glibc-devel
 BuildRequires:  graphite2-devel
 BuildRequires:  gsl-devel
-%if 0%{?suse_version} >= 1550
-BuildRequires:  harfbuzz-devel >= 2.6
-%else
-%if 0%{?sle_version} >= 150200
-BuildRequires:  harfbuzz-devel >= 2.6
-%endif
+%if 0%{?suse_version} > 1550
+BuildRequires:  harfbuzz-devel >= 7.1
 %endif
 BuildRequires:  jpeg
 BuildRequires:  libOSMesa-devel
-BuildRequires:  libicu-devel
+%if 0%{?suse_version} > 1550
+BuildRequires:  libicu-devel >= 72.1
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libpaper-devel
@@ -141,6 +144,7 @@ BuildRequires:  libsigsegv-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
+BuildRequires:  makeinfo
 BuildRequires:  mpfr-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  netpbm
@@ -234,7 +238,11 @@ BuildRequires:  perl(XML::Writer::String)
 %endif
 # Download at ftp://tug.org/texlive/historic/%{texlive_version}/
 Source0:        %{texlive_source}.tar.xz
-Source3:        https://github.com/plk/biber/archive/refs/tags/v%{biber_version}.tar.gz#/biber-%{biber_version}.tar.gz
+Source1:        https://github.com/plk/biber/archive/refs/tags/v%{biber_version}.tar.gz#/biber-%{biber_version}.tar.gz
+Source2:        biblatex-biber-ms.tar.gz
+%if %{with luametatex}
+Source3:        luametatex-230310.tar.xz
+%endif
 Source4:        cnf-to-paths.awk
 Source30:       texlive-rpmlintrc
 Source50:       public.c
@@ -243,6 +251,7 @@ Patch0:         source.dif
 Patch1:         source-configure.dif
 Patch2:         source-xdvizilla.dif
 Patch3:         source-arraysubs.dif
+Patch4:         source-decNumber.dif
 Patch5:         source-texdoc.dif
 Patch6:         source-dviutils.dif
 Patch8:         source-psutils.dif
@@ -255,16 +264,17 @@ Patch19:        source-dvipng.dif
 Patch21:        source-ppc64.dif
 # PATCH-FIX-SUSE Make biber work with our perl
 Patch42:        biblatex-encoding.dif
+Patch43:        biblatex-ms-encoding.dif
 # PATCH-FIX-SUSE Old problem back: we do not use internal Certs!
 Patch44:        biber-certs.dif
-# PATCH-FIX-UPSTREAM: from 5.18, fixes syntax error discovered by newer perl
-Patch45:        biber-missing-semicolon.patch
+Patch45:        biblatex-ms-missing.dif
 # PATCH-FIX-SUSE Make biber work with perl 5.18.2
 Patch47:        biber-perl-5.18.2.dif
+#
+Patch50:        luametatex.dif
 # PATCH-FIX-SUSE Let it build even without ls-R files around
 Patch62:        source-psutils-kpathsea.dif
-# PATCH-FIX-SUSE Support luajit on ppc64/ppc64le
-#  Missed luajit fix for ppc/ppc64/ppc64le and riscv64
+# Missed luajit fix for ppc/ppc64/ppc64le and riscv64
 # PATCH-FIX-SUSE Support luajit fix for arm64
 Patch106:       0006-Fix-register-allocation-bug-in-arm64.patch
 Prefix:         %{_bindir}
@@ -378,7 +388,7 @@ Prefix:         %{_bindir}
 Binary files of adhocfilelist
 
 %package afm2pl-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of afm2pl
@@ -406,7 +416,7 @@ Prefix:         %{_bindir}
 Binary files of albatross
 
 %package aleph-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn66084
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of aleph
@@ -451,7 +461,7 @@ Prefix:         %{_bindir}
 Binary files of arara
 
 %package asymptote-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62582
+Version:        %{texlive_version}.%{texlive_release}.svn66003
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of asymptote
@@ -536,8 +546,48 @@ Prefix:         %{_bindir}
 %description bib2gls-bin
 Binary files of bib2gls
 
+%package bibcop-bin
+Version:        %{texlive_version}.%{texlive_release}.svn65257
+Release:        0
+License:        LPPL-1.0
+Summary:        Binary files of bibcop
+Group:          Productivity/Publishing/TeX/Utilities
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-bibcop >= %{texlive_version}
+#!BuildIgnore:  texlive-bibcop
+Prefix:         %{_bindir}
+
+%description bibcop-bin
+Binary files of bibcop
+
+%package biber-ms-bin
+Version:        %{texlive_version}.%{texlive_release}.svn66478
+Release:        0
+License:        LPPL-1.0
+Summary:        Binary files of biber-ms
+Group:          Productivity/Publishing/TeX/Utilities
+URL:            https://www.tug.org/texlive/
+%if %{with buildbiber}
+Requires:       perl = %{perl_version}
+Recommends:     ca-certificates
+Recommends:     ca-certificates-mozilla
+%if 0%{?suse_version} > 1230
+Requires:       perl(Biber) == %{biber_version}
+%endif
+Requires:       perl(LWP::UserAgent)
+Requires:       perl(Text::BibTeX)
+Requires:       perl(Text::Roman)
+%endif
+BuildArch:      noarch
+Requires(pre):  texlive-biber-ms >= %{texlive_version}
+#!BuildIgnore:  texlive-biber-ms
+Prefix:         %{_bindir}
+
+%description biber-ms-bin
+Binary files of biber-ms
+
 %package biber-bin
-Version:        %{texlive_version}.%{texlive_release}.svn61867
+Version:        %{texlive_version}.%{texlive_release}.svn66402
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of biber
@@ -577,7 +627,7 @@ Prefix:         %{_bindir}
 Binary files of bibexport
 
 %package bibtex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibtex
@@ -594,7 +644,7 @@ Prefix:         %{_bindir}
 Binary files of bibtex
 
 %package bibtex8-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibtex8
@@ -611,7 +661,7 @@ Prefix:         %{_bindir}
 Binary files of bibtex8
 
 %package bibtexu-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of bibtexu
@@ -698,7 +748,7 @@ Prefix:         %{_bindir}
 Binary files of chklref
 
 %package chktex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of chktex
@@ -715,7 +765,7 @@ Prefix:         %{_bindir}
 Binary files of chktex
 
 %package citation-style-language-bin
-Version:        %{texlive_version}.%{texlive_release}.svn61687
+Version:        %{texlive_version}.%{texlive_release}.svn64151
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of citation-style-language
@@ -743,7 +793,7 @@ Prefix:         %{_bindir}
 Binary files of cjk-gs-integrate
 
 %package cjkutils-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cjkutils
@@ -789,7 +839,7 @@ Prefix:         %{_bindir}
 Binary files of cluttex
 
 %package context-bin
-Version:        %{texlive_version}.%{texlive_release}.svn34112
+Version:        %{texlive_version}.%{texlive_release}.svn66562
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of context
@@ -921,7 +971,7 @@ Prefix:         %{_bindir}
 Binary files of ctanupload
 
 %package ctie-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ctie
@@ -935,7 +985,7 @@ Prefix:         %{_bindir}
 Binary files of ctie
 
 %package cweb-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62610
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of cweb
@@ -977,7 +1027,7 @@ Prefix:         %{_bindir}
 Binary files of de-macro
 
 %package detex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of detex
@@ -1008,6 +1058,20 @@ Prefix:         %{_bindir}
 %description diadia-bin
 Binary files of diadia
 
+%package digestif-bin
+Version:        %{texlive_version}.%{texlive_release}.svn65210
+Release:        0
+License:        LPPL-1.0
+Summary:        Binary files of digestif
+Group:          Productivity/Publishing/TeX/Utilities
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-digestif >= %{texlive_version}
+#!BuildIgnore:  texlive-digestif
+Prefix:         %{_bindir}
+
+%description digestif-bin
+Binary files of digestif
+
 %package dosepsbin-bin
 Version:        %{texlive_version}.%{texlive_release}.svn24759
 Release:        0
@@ -1023,7 +1087,7 @@ Prefix:         %{_bindir}
 Binary files of dosepsbin
 
 %package dtl-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dtl
@@ -1065,7 +1129,7 @@ Prefix:         %{_bindir}
 Binary files of dviasm
 
 %package dvicopy-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvicopy
@@ -1079,7 +1143,7 @@ Prefix:         %{_bindir}
 Binary files of dvicopy
 
 %package dvidvi-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvidvi
@@ -1107,7 +1171,7 @@ Prefix:         %{_bindir}
 Binary files of dviinfox
 
 %package dviljk-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dviljk
@@ -1123,7 +1187,7 @@ Prefix:         %{_bindir}
 Binary files of dviljk
 
 %package dviout-util-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dviout-util
@@ -1137,7 +1201,7 @@ Prefix:         %{_bindir}
 Binary files of dviout-util
 
 %package dvipdfmx-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvipdfmx
@@ -1155,7 +1219,7 @@ Prefix:         %{_bindir}
 Binary files of dvipdfmx
 
 %package dvipng-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvipng
@@ -1183,7 +1247,7 @@ Prefix:         %{_bindir}
 Binary files of dvipos
 
 %package dvips-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62610
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvips
@@ -1197,7 +1261,7 @@ Prefix:         %{_bindir}
 Binary files of dvips
 
 %package dvisvgm-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62330
+Version:        %{texlive_version}.%{texlive_release}.svn66547
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of dvisvgm
@@ -1329,7 +1393,7 @@ Prefix:         %{_bindir}
 Binary files of fontools
 
 %package fontware-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of fontware
@@ -1402,7 +1466,7 @@ Prefix:         %{_bindir}
 Binary files of glossaries
 
 %package gregoriotex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of gregoriotex
@@ -1419,7 +1483,7 @@ Prefix:         %{_bindir}
 Binary files of gregoriotex
 
 %package gsftopk-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of gsftopk
@@ -1433,7 +1497,7 @@ Prefix:         %{_bindir}
 Binary files of gsftopk
 
 %package hitex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62610
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of hitex
@@ -1527,7 +1591,7 @@ Prefix:         %{_bindir}
 Binary files of kotex-utils
 
 %package kpathsea-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of kpathsea
@@ -1564,7 +1628,7 @@ Prefix:         %{_bindir}
 Binary files of l3build
 
 %package lacheck-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of lacheck
@@ -1899,7 +1963,7 @@ Prefix:         %{_bindir}
 Binary files of luafindfont
 
 %package luahbtex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62668
+Version:        %{texlive_version}.%{texlive_release}.svn66511
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luahbtex
@@ -1916,7 +1980,7 @@ Prefix:         %{_bindir}
 Binary files of luahbtex
 
 %package luajittex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62668
+Version:        %{texlive_version}.%{texlive_release}.svn66511
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luajittex
@@ -1947,7 +2011,7 @@ Prefix:         %{_bindir}
 Binary files of luaotfload
 
 %package luatex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62668
+Version:        %{texlive_version}.%{texlive_release}.svn66511
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of luatex
@@ -1978,7 +2042,7 @@ Prefix:         %{_bindir}
 Binary files of lwarp
 
 %package m-tx-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of m-tx
@@ -2020,7 +2084,7 @@ Prefix:         %{_bindir}
 Binary files of makedtx
 
 %package makeindex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of makeindex
@@ -2062,7 +2126,7 @@ Prefix:         %{_bindir}
 Binary files of mathspic
 
 %package metafont-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of metafont
@@ -2076,7 +2140,7 @@ Prefix:         %{_bindir}
 Binary files of metafont
 
 %package metapost-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of metapost
@@ -2119,7 +2183,7 @@ Prefix:         %{_bindir}
 Binary files of mf2pt1
 
 %package mflua-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mflua
@@ -2133,7 +2197,7 @@ Prefix:         %{_bindir}
 Binary files of mflua
 
 %package mfware-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of mfware
@@ -2271,7 +2335,7 @@ Prefix:         %{_bindir}
 Binary files of musixtnt
 
 %package omegaware-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of omegaware
@@ -2323,8 +2387,22 @@ Prefix:         %{_bindir}
 %description optexcount-bin
 Binary files of optexcount
 
+%package pagelayout-bin
+Version:        %{texlive_version}.%{texlive_release}.svn65625
+Release:        0
+License:        LPPL-1.0
+Summary:        Binary files of pagelayout
+Group:          Productivity/Publishing/TeX/Utilities
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-pagelayout >= %{texlive_version}
+#!BuildIgnore:  texlive-pagelayout
+Prefix:         %{_bindir}
+
+%description pagelayout-bin
+Binary files of pagelayout
+
 %package patgen-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of patgen
@@ -2428,7 +2506,7 @@ Prefix:         %{_bindir}
 Binary files of pdftex-quiet
 
 %package pdftex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn66084
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdftex
@@ -2445,7 +2523,7 @@ Prefix:         %{_bindir}
 Binary files of pdftex
 
 %package pdftosrc-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pdftosrc
@@ -2562,7 +2640,7 @@ Prefix:         %{_bindir}
 Binary files of pkfix
 
 %package platex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn52800
+Version:        %{texlive_version}.%{texlive_release}.svn66079
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of platex
@@ -2579,7 +2657,7 @@ Prefix:         %{_bindir}
 Binary files of platex
 
 %package pmx-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of pmx
@@ -2624,7 +2702,7 @@ Prefix:         %{_bindir}
 Binary files of ps2eps
 
 %package ps2pk-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ps2pk
@@ -2684,7 +2762,7 @@ Prefix:         %{_bindir}
 Binary files of ptex-fontmaps
 
 %package ptex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn66084
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ptex
@@ -2780,7 +2858,7 @@ Prefix:         %{_bindir}
 Binary files of rubik
 
 %package seetexk-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of seetexk
@@ -2867,7 +2945,7 @@ Prefix:         %{_bindir}
 Binary files of svn-multi
 
 %package synctex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn66084
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of synctex
@@ -2884,7 +2962,7 @@ Prefix:         %{_bindir}
 Binary files of synctex
 
 %package tex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tex
@@ -2935,6 +3013,23 @@ Prefix:         %{_bindir}
 
 %description tex4ht-bin
 Binary files of tex4ht
+
+%package texaccents-bin
+Version:        %{texlive_version}.%{texlive_release}.svn64447
+Release:        0
+License:        LPPL-1.0
+Summary:        Binary files of texaccents
+Group:          Productivity/Publishing/TeX/Utilities
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-texaccents >= %{texlive_version}
+#!BuildIgnore:  texlive-texaccents
+Recommends:     texlive-collection-basic >= %{texlive_version}
+Recommends:     texlive-collection-fontsrecommended >= %{texlive_version}
+Recommends:     texlive-collection-genericrecommended >= %{texlive_version}
+Prefix:         %{_bindir}
+
+%description texaccents-bin
+Binary files of texaccents
 
 %package texcount-bin
 Version:        %{texlive_version}.%{texlive_release}.svn13013
@@ -3088,7 +3183,7 @@ Prefix:         %{_bindir}
 Binary files of texlive-scripts-extra
 
 %package -n texlive-scripts-bin
-Version:        %{texlive_version}.%{texlive_release}.svn55172
+Version:        %{texlive_version}.%{texlive_release}.svn64356
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texlive-scripts
@@ -3226,7 +3321,7 @@ Prefix:         %{_bindir}
 Binary files of texsis
 
 %package texware-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of texware
@@ -3257,7 +3352,7 @@ Prefix:         %{_bindir}
 Binary files of thumbpdf
 
 %package tie-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of tie
@@ -3302,7 +3397,7 @@ Prefix:         %{_bindir}
 Binary files of tpic2pdftex
 
 %package ttfutils-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of ttfutils
@@ -3360,8 +3455,22 @@ Prefix:         %{_bindir}
 %description uplatex-bin
 Binary files of uplatex
 
+%package upmendex-bin
+Version:        %{texlive_version}.%{texlive_release}.svn66511
+Release:        0
+License:        LPPL-1.0
+Summary:        Binary files of upmendex
+Group:          Productivity/Publishing/TeX/Utilities
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-upmendex >= %{texlive_version}
+#!BuildIgnore:  texlive-upmendex
+Prefix:         %{_bindir}
+
+%description upmendex-bin
+Binary files of upmendex
+
 %package uptex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn66382
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of uptex
@@ -3434,7 +3543,7 @@ Prefix:         %{_bindir}
 Binary files of vpe
 
 %package web-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62389
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of web
@@ -3476,7 +3585,7 @@ Prefix:         %{_bindir}
 Binary files of wordcount
 
 %package xdvi-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62210
+Version:        %{texlive_version}.%{texlive_release}.svn65877
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xdvi
@@ -3507,7 +3616,7 @@ Prefix:         %{_bindir}
 Binary files of xelatex-dev
 
 %package xetex-bin
-Version:        %{texlive_version}.%{texlive_release}.svn62534
+Version:        %{texlive_version}.%{texlive_release}.svn66084
 Release:        0
 License:        LPPL-1.0
 Summary:        Binary files of xetex
@@ -3600,7 +3709,7 @@ Prefix:         %{_bindir}
 Binary files of yplan
 
 %package -n libkpathsea6
-Version:        6.3.4
+Version:        6.3.5
 Release:        0
 Summary:        Path searching library for TeX-related files
 License:        LGPL-2.1-or-later
@@ -3617,13 +3726,13 @@ separately, but rather is released and maintained as part of
 the TeX-live sources.
 
 %package -n %{name}-kpathsea-devel
-Version:        6.3.4
+Version:        6.3.5
 Release:        0
 Summary:        Path searching library for TeX-related files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.tug.org/texlive/
-Requires:       libkpathsea6 = 6.3.4
+Requires:       libkpathsea6 = 6.3.5
 
 %description -n %{name}-kpathsea-devel
 Kpathsea is a library and utility programs which provide path
@@ -3634,7 +3743,7 @@ separately, but rather is released and maintained as part of
 the TeX-live sources.
 
 %package -n libptexenc1
-Version:        1.4.0
+Version:        1.4.3
 Release:        0
 Summary:        Libraries of Kanji code convert library for pTeX
 License:        BSD-3-Clause
@@ -3648,13 +3757,13 @@ The ptexenc is a useful library for Japanese pTeX
 TeX by ASCII Co.) and its surrounding tools.
 
 %package -n %{name}-ptexenc-devel
-Version:        1.4.0
+Version:        1.4.3
 Release:        0
 Summary:        Libraries of Kanji code convert library for pTeX
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.tug.org/texlive/
-Requires:       libptexenc1 = 1.4.0
+Requires:       libptexenc1 = 1.4.3
 
 %description -n %{name}-ptexenc-devel
 This package includes the ptexenc development files.
@@ -3754,8 +3863,8 @@ Summary:        Basic development packages for TeXLive
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-TeX
 Group:          Development/Languages/Other
 URL:            https://www.tug.org/texlive/
-Requires:       libkpathsea6 = 6.3.4
-Requires:       libptexenc1 = 1.4.0
+Requires:       libkpathsea6 = 6.3.5
+Requires:       libptexenc1 = 1.4.3
 Requires:       libsynctex2 = 1.21
 Requires:       libtexlua53-5 = 5.3.6
 %if %{with LuaJIT}
@@ -3897,6 +4006,10 @@ This package is required by the package texlive-biber-bin.
     cflags -Wl,--hash-size=8599		XLDFLAGS
     cflags -Wl,-warn-common		XLDFLAGS
     cflags -Wl,-Bsymbolic-functions	XLDFLAGS
+    # Unicode
+    cflags -DDECDPUN=1			XCFLAGS
+    cflags -DDECNUMDIGITS=3		XCFLAGS
+    #
     XCXXFLAGS="${XCXXFLAGS/-Wno-unprototyped-calls/}"
     HOST=%{_target_cpu}-suse-%{_host_os}
     BUILD=%{_target_cpu}-suse-%{_build_os}
@@ -3930,8 +4043,14 @@ This package is required by the package texlive-biber-bin.
 
     # Use a well defined multi byte locale
     echo unset ${!LC_*}
-    echo LANG=POSIX
-    echo LC_CTYPE=en_US.UTF-8
+    if test -d /usr/lib/locale/C.utf8
+    then
+        echo LANG=C.UTF-8
+        echo LC_CTYPE=C.UTF-8
+    else
+        echo LANG=POSIX
+        echo LC_CTYPE=en_US.UTF-8
+    fi
     echo export LANG LC_CTYPE
 
     # Environment for configuration
@@ -3943,7 +4062,7 @@ This package is required by the package texlive-biber-bin.
     echo LDFLAGS=\"-Wl,-warn-common $XLDFLAGS\"
     echo VENDOR=\"${VENDOR}\"
     echo ARCH_LIB=%{_lib}
-    echo export CC CXX CFLAGS CXXFLAGS LDFLAGS VENDOR PATH CONFIG_SHELL ARCH_LIB LANG
+    echo export CC CXX CFLAGS CXXFLAGS LDFLAGS VENDOR PATH CONFIG_SHELL ARCH_LIB
 
     # Do not run TeX engine in fmtutil with batchmode
     echo batchmode=no
@@ -3961,13 +4080,22 @@ This package is required by the package texlive-biber-bin.
     tar --strip-components=1 -xf %{SOURCE0}
 %if %{with buildbiber}
     pushd ../
-	tar xf %{SOURCE3}
+	tar xf %{SOURCE1}
+    popd
+    pushd ../
+	tar xf %{SOURCE2}
+    popd
+%endif
+%if %{with luametatex}
+    pushd ../
+       tar -xf %{SOURCE3}
     popd
 %endif
 
 %patch1  -p0 -b .configure
 %patch2  -p0 -b .xdvizilla
 %patch3  -p0 -b .arraysubs
+%patch4  -p0 -b .unicode
 %patch5  -p0 -b .texdoc
 %patch6  -p0 -b .dviutils
 %patch8  -p0 -b .psutils
@@ -3979,16 +4107,31 @@ This package is required by the package texlive-biber-bin.
 %patch19 -p0 -b .dvipng
 %patch21 -p0 -b .ppcelf
 pushd libs/luajit/LuaJIT-src/
-#XXX -p1 -b .ppc64le
+#Missed patch ppc and risc
 %patch106 -p1 -b .arm64
 popd
 %patch0  -p0 -b .p0
+%if %{with luametatex}
+pushd ../luametatex*
+%patch50 -p0 -b .unicode
+popd
+%endif
 %if %{with buildbiber}
-pushd ../*biber-*/
+pushd ../biber-*/
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
 %patch42 -p0 -b .en
 %patch44 -p0 -b .noica
-%patch45 -p1 -b .perlfix
+%if 0%{perl_versnum} < 5200
+%patch47 -p0 -b .518
+%endif
+rm -vf bin/biber.noica
+rm -vf t/*.fastsort
+popd
+pushd ../biblatex-biber-*/
+/usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
+%patch43 -p0 -b .en
+%patch44 -p0 -b .noica
+%patch45 -p0 -b .missing
 %if 0%{perl_versnum} < 5200
 %patch47 -p0 -b .518
 %endif
@@ -4013,22 +4156,22 @@ popd
     # Read the options file
     . %{options}
 
-    # Sanity check for system icu libraries and headers
-    # Remark: official libicu is _not_ compatible with libicu of XeTeX
-    if test -s /usr/include/layout/GlyphPositioningTables.h -a \
-	-s /usr/include/layout/Features.h -a \
-	-s /usr/include/common/cmemory.h \
-	&& false
+    if test -d /usr/include/unicode -a -d /usr/include/harfbuzz && \
+        grep -qrs UBLOCK_LATIN_EXTENDED_F /usr/include/unicode
     then
 	icu[0]='--with-system-icu'
-	icu[1]='--with-icu-include=/usr/include/unicode -I/usr/include/layout -I/usr/include/common'
+	icu[1]='--with-system-harfbuzz'
     else
-	icu[0]=""
+	icu[0]='--without-system-icu'
+	icu[1]='--without-system-harfbuzz'
     fi
     # Wrong version string
     sed -ri '/m4_define.*tex_live_version/{s@[0-9]+/dev@%{texlive_version}@}' version.ac
     for rp in $(find -name configure) ; do
 	sed -ri '/(Web2C|STRING|VERSION)/{s@[0-9]+/dev@%{texlive_version}@}' $rp
+    done
+    for rp in $(find -name configure.ac) ; do
+	sed -ri 's/KPSE_WIN32_CALL/KPSE_COND_WIN32/' $rp
     done
 
     # Avoid -rpath as libtool is not configurable at this point
@@ -4136,18 +4279,10 @@ popd
 	    --with-system-zziplib		\
 	    --with-system-libgs			\
 	    --with-system-freetype2		\
-	    --with-freetype2-includes=/usr/include/freetype2 \
+	    --with-freetype2-includes=%{_includedir}/freetype2 \
 	    --with-system-cairo			\
-	    --with-system-includes=/usr/include/cairo \
+	    --with-system-includes=%{_includedir}/cairo \
 	    --with-system-mpfr			\
-%if 0%{?suse_version} >= 1550
-	    --with-system-harfbuzz		\
-%else
-%if 0%{?sle_version} >= 150200
-	    --with-system-harfbuzz		\
-%endif
-%endif
-	    --with-system-icu			\
 	    --with-system-graphite2		\
 	    --with-system-potrace		\
 	    --with-system-libpaper		\
@@ -4248,9 +4383,36 @@ popd
     install -m 0644 texk/tests/TeXLive/TLConfig.pm ${prefix}/share/texmf/tlpkg/TeXLive/
     install -m 0644 texk/tests/TeXLive/TLUtils.pm  ${prefix}/share/texmf/tlpkg/TeXLive/
 
+%if %{with luametatex}
+    pushd ../luametatex*
+        %cmake \
+        -DVERBOSE=ON \
+        -DCMAKE_C_COMPILER=gcc \
+        -DCMAKE_STRIP:FILEPATH=/bin/true \
+        -DCMAKE_CXX_COMPILER=g++
+        cmake --build . --parallel %{?_smp_mflags}
+    popd
+%endif
 %if %{with buildbiber}
     # dump a biber executable
-    pushd ../*biber-*/
+    pushd ../biber-*/
+	find -name '*.ca' | xargs -r rm -vf
+
+	if test "$(getconf LONG_BIT)" -lt 64 ; then
+	    sed -ri '/eq_or_diff.*(17000002|era[1234]|range[12])/{s@.*@eq_or_diff("dummy", "dummy", "skipped on 32bit");@}' t/dateformats.t
+	fi
+
+	LANG=en_US.UTF-8 %{__perl} ./Build.PL installdirs=vendor optimize="$RPM_OPT_FLAGS"
+	LANG=en_US.UTF-8 ./Build build flags=%{?_smp_mflags}
+
+	# There is no network here
+	rm t/remote-files.t
+
+	LANG=en_US.UTF-8 \
+	BIBER_DEV_TESTS=1 \
+	./Build test
+    popd
+    pushd ../biblatex-biber-*/
 	find -name '*.ca' | xargs -r rm -vf
 
 	if test "$(getconf LONG_BIT)" -lt 64 ; then
@@ -4344,11 +4506,50 @@ popd
     popd
     pushd ${prefix}/share/man/
     popd
+%if %{with luametatex}
+    pushd ../luametatex*
+        %cmake_install
+        for exe in context mtxrun
+        do
+            ln -sf luametatex %{buildroot}%{_bindir}/${exe}
+            ln -sf %{_texmfdistdir}/scripts/context/lua/${exe}.lua %{buildroot}%{_bindir}/${exe}.lua
+        done
+        ln -sf %{_texmfdistdir}/scripts/context/lua/mtx-context.lua %{buildroot}%{_bindir}/mtx-context.lua
+    popd
+%endif
     #
     # Biber support
     #
 %if %{with buildbiber}
-    pushd ../*biber-*/
+    pushd ../biblatex-biber-*/
+	./Build install destdir=%{buildroot}
+	sed -rn '\@^#![[:space:]]*/usr/bin/env[[:space:]]+perl@{s@(/usr/bin/)env[[:space:]]+(perl)@\1\2@p}' \
+		      %{buildroot}%{_bindir}/biber
+	chmod    0755 %{buildroot}%{_bindir}/biber
+	rm -vf        %{buildroot}%{_mandir}/man1/biber.1*
+	chmod    0644 %{buildroot}%{perl_vendorlib}/Biber.pm
+	chmod -R u+rw %{buildroot}%{perl_vendorlib}/Biber
+	mkdir %{buildroot}%{perl_vendorlib}/biber-ms
+	mv %{buildroot}%{perl_vendorlib}/Biber.pm %{buildroot}%{perl_vendorlib}/biber-ms/Biber.pm
+	mv %{buildroot}%{perl_vendorlib}/Biber    %{buildroot}%{perl_vendorlib}/biber-ms/Biber
+	mv %{buildroot}%{_bindir}/biber           %{buildroot}%{_bindir}/biber-ms
+	if test -d %{buildroot}%{perl_vendorlib}/Unicode/Collate
+	then
+	    chmod -R u+rw %{buildroot}%{perl_vendorlib}/Unicode/Collate/*
+	fi
+	rm -vrf %{buildroot}%{perl_vendorarch}/auto
+	rm -vrf %{buildroot}%{_mandir}/man3
+	%perl_process_packlist
+	%perl_gen_filelist
+	pushd blib
+	    install -m 0644 bindoc/biber.1 %{buildroot}%{_mandir}/man1/biber-ms.1
+	    gzip -n %{buildroot}%{_mandir}/man1/biber-ms.1
+	popd
+	sed -ri "/^use warnings;/a\use lib %{perl_vendorlib}/biber-ms;" %{buildroot}%{_bindir}/biber-ms
+	sed -ri '\@/usr/(share|bin)/.*@d' texlive.files
+    popd
+    mv ../biblatex-biber-*/texlive.files perl-biber-ms.files
+    pushd ../biber-*/
 	./Build install destdir=%{buildroot}
 	sed -rn '\@^#![[:space:]]*/usr/bin/env[[:space:]]+perl@{s@(/usr/bin/)env[[:space:]]+(perl)@\1\2@p}' \
 		      %{buildroot}%{_bindir}/biber
@@ -4370,7 +4571,7 @@ popd
 	popd
 	sed -ri '\@/usr/(share|bin)/.*@d' texlive.files
     popd
-    mv ../*biber-*/texlive.files perl-biber.files
+    mv ../biber-*/texlive.files perl-biber.files
 %else
     (cat > %{buildroot}%{_bindir}/biber)<<-'EOF'
 	#!/bin/sh
@@ -4625,6 +4826,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %postun -n libtexluajit2 -p /sbin/ldconfig
 %endif
 
+%if %{with luametatex}
+%post context-bin
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-fmtutil.context
+
+%postun context-bin
+if test $1 = 1; then
+    mkdir -p /var/run/texlive
+    > /var/run/texlive/run-fmtutil.context
+fi
+%endif
+
 %files
 %defattr(-,root,root,755)
 # is part of texlive-texlive.infra
@@ -4704,6 +4917,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_bindir}/bib2gls
 %{_bindir}/convertgls2bib
 
+%files bibcop-bin
+%defattr(-,root,root,755)
+%{_bindir}/bibcop
+
+%files biber-ms-bin
+%defattr(-,root,root,755)
+%{_bindir}/biber-ms
+%if %{with buildbiber}
+%{_mandir}/man1/biber-ms.1%{ext_man}
+%endif
+
 %files biber-bin
 %defattr(-,root,root,755)
 %{_bindir}/biber
@@ -4756,7 +4980,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files citation-style-language-bin
 %defattr(-,root,root,755)
-%{_bindir}/citeproc
+%{_bindir}/citeproc-lua
 
 %files cjk-gs-integrate-bin
 %defattr(-,root,root,755)
@@ -4799,13 +5023,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files context-bin
 %defattr(-,root,root,755)
 %{_bindir}/context
-%{_bindir}/contextjit
-%{_bindir}/luatools
+%{_bindir}/context.lua
+%{_bindir}/luametatex
 %{_bindir}/mtxrun
 %{_bindir}/rlxtools
-%{_bindir}/mtxrunjit
-%{_bindir}/texexec
-%{_bindir}/texmfstart
+%{_bindir}/mtxrun.lua
+%{_bindir}/mtx-context.lua
 
 %files convbkmk-bin
 %defattr(-,root,root,755)
@@ -4876,6 +5099,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files diadia-bin
 %defattr(-,root,root,755)
 %{_bindir}/diadia
+
+%files digestif-bin
+%defattr(-,root,root,755)
+%{_bindir}/digestif
 
 %files dosepsbin-bin
 %defattr(-,root,root,755)
@@ -5320,6 +5547,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_bindir}/optexcount
 
+%files pagelayout-bin
+%defattr(-,root,root,755)
+%{_bindir}/pagelayoutapi
+%{_bindir}/textestvis
+
 %files patgen-bin
 %defattr(-,root,root,755)
 %{_bindir}/patgen
@@ -5523,6 +5755,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_bindir}/tex4ht
 %{_bindir}/xhlatex
 
+%files texaccents-bin
+%defattr(-,root,root,755)
+%{_bindir}/texaccents
+
 %files texcount-bin
 %defattr(-,root,root,755)
 %{_bindir}/texcount
@@ -5659,6 +5895,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_bindir}/uplatex
 %{_bindir}/uplatex-dev
 
+%files upmendex-bin
+%defattr(-,root,root,755)
+%{_bindir}/upmendex
+
 %files uptex-bin
 %defattr(-,root,root,755)
 %{_bindir}/euptex
@@ -5666,7 +5906,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_bindir}/upbibtex
 %{_bindir}/updvitomp
 %{_bindir}/updvitype
-%{_bindir}/upmendex
 %{_bindir}/upmpost
 %{_bindir}/uppltotf
 %{_bindir}/uptex
