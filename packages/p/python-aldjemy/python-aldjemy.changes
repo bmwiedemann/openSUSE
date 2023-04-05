@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 09:10:59 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add test dependency python-six
+
+-------------------------------------------------------------------
 Mon Dec 13 13:51:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop python 3.6 support since python-django-extensions dropped it

@@ -35,6 +35,7 @@ Requires:       python-SQLAlchemy >= 1.3.20
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.20}
 BuildRequires:  %{python_module django-extensions}
 # /SECTION
@@ -65,6 +66,6 @@ $python manage.py test --no-input
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/*aldjemy*/
 
 %changelog
