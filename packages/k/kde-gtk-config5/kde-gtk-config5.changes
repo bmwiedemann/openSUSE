@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * kded: provide `org.gtk.Settings` when `GTK_USE_PORTAL` is not set on Wayland (kde#421745)
+  * gtkconfig: set `color-scheme` when current color scheme changes
+  * gsettings: check param exists before setting value
+  * Beside monitor scaling factors, a user may specify a preferred text DPI size from the system configuration utility (KCM fonts) That setting is stored inside the kcmfonts configuration file; one entry is kept for Plasma/X11 sessions, "forceFontDPI", and another for Plasma/Wayland sessions, "forceFontDPIWayland". (kde#466463,kde#461106)
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
