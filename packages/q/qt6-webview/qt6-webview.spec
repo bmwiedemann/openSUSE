@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtwebview-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webview%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 WebView library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -38,13 +38,13 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-webenginecore-private-devel
 BuildRequires:  qt6-webenginequick-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6WebEngineCore)
-BuildRequires:  cmake(Qt6WebEngineQuick)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6WebEngineCore) = %{real_version}
+BuildRequires:  cmake(Qt6WebEngineQuick) = %{real_version}
 # Only available where qtwebengine is
 ExclusiveArch:  aarch64 x86_64 riscv64
 %if "%{qt6_flavor}" == "docs"
@@ -76,7 +76,7 @@ appropriate.
 %package devel
 Summary:        Qt 6 WebView library - Development files
 Requires:       libQt6WebView6 = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description devel
 Development files for the Qt 6 WebView library
@@ -100,9 +100,9 @@ The Qt6 WebViewQuick library.
 Summary:        Qt 6 WebViewQuick library - Development files
 Requires:       libQt6WebViewQuick6 = %{version}
 Requires:       qt6-webview-private-devel = %{version}
-Requires:       cmake(Qt6OpenGL)
-Requires:       cmake(Qt6QmlModels)
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6OpenGL) = %{real_version}
+Requires:       cmake(Qt6QmlModels) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-webviewquick-devel
 Development files for the Qt 6 WebViewQuick library.
