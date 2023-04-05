@@ -1,0 +1,9 @@
+<package name="qt6-quickeffectmaker" project="openSUSE:Factory">
+  <title>Tool for creating shader effects for Qt Quick</title>
+  <description>Qt Quick Effect Maker is a hybrid editor for creating shader effects for Qt
+Quick applications and offers both a node editor and a code editor.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-quickeffectmaker"/>
+  <url>https://www.qt.io</url>
+</package>
