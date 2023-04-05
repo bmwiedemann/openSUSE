@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  4 20:02:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix buildtags
+- build against a maintained golang version (upstream uses go1.20) 
+
+-------------------------------------------------------------------
 Mon Feb 27 12:31:33 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - update to 2.0.0 (jsc#SLE-23879)

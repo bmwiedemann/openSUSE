@@ -379,4 +379,13 @@
   * feat: support keyless verification for verify-blob-attestation (#2525) (forwarded request 1067997 from msmeissn)</comment>
     <requestid>1067999</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8041638a2b7dff157515f90e0d033dd0</srcmd5>
+    <version>2.0.0</version>
+    <time>1680722880</time>
+    <user>dimstar_suse</user>
+    <comment>- fix buildtags
+- build against a maintained golang version (upstream uses go1.20) (forwarded request 1077363 from dirkmueller)</comment>
+    <requestid>1077439</requestid>
+  </revision>
 </revisionlist>
