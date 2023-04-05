@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-languageserver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        LGPL-3.0-only OR GPL-2.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
 
 %description
 Qt Language Server implements the Language Server Protocol specification and
@@ -66,7 +66,7 @@ JsonRpc 2.0 protocol implementation for Qt6.
 %package -n qt6-jsonrpc-private-devel
 Summary:        Qt 6 JsonRpc library - Development files
 Requires:       libQt6JsonRpc6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description -n qt6-jsonrpc-private-devel
 Development files for the Qt 6 JsonRpc library.
