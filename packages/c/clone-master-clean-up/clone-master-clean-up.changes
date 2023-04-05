@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Feb  7 12:26:43 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Bump version to 1.11
+- clone-master-clean-up fails when /etc/iscsi/initiatorname.iscsi doesn't exist
+  The entire section is wrapped in a test for the existence of this file.
+  (bsc#1207993)
+
+-------------------------------------------------------------------
+Fri Oct 28 11:41:37 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Bump version to 1.10
+- clone-master-clean-up fails if postfix is not installed (bsc#1204835)
+  Check if the directory does exists.
+
+-------------------------------------------------------------------
+Fri Sep 23 14:49:49 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Bump version to 1.9
+- [clone-master-clean-up] Cleannup initiatorname.iscsi
+  Remove all no comment files
+  (bsc#1203024)
+
+-------------------------------------------------------------------
+Thu Sep 22 09:08:16 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Bump version to 1.8
+- clone-master-clean-up fails to remove btrfs snapshots
+  (bsc#1203651)
+
+-------------------------------------------------------------------
+Tue Aug 30 15:02:45 UTC 2022 - abriel@suse.com
+
+- Bump version to 1.7
+- CVE-2021-32000: fix some potentially dangerous file system
+  operations
+  (bsc#1181050)
+
+-------------------------------------------------------------------
 Wed Aug 12 15:44:30 UTC 2020 - abriel@suse.com
 
 - Bump version to 1.6

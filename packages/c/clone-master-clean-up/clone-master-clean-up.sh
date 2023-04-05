@@ -4,6 +4,7 @@
 # Author: Howard Guo <hguo@suse.com>
 
 set -e
+shopt -s nullglob
 # bsc#1092378
 DROP_IN_FILE=/etc/clone-master-clean-up/custom_remove
 SYSCONF_FILE=/etc/sysconfig/clone-master-clean-up
@@ -16,9 +17,20 @@ trap 'err_exit $LINENO' ERR
 
 [ "$UID" != "0" ] && echo 'Please run this program as root user.' && exit 1
 
-echo 'The script will delete all SSH keys, log data, and more. Type YES and enter to proceed.'
+echo -e 'The script will delete root SSH keys, log data, and more.\n' \
+     'WARNING: This should only be used on a pristine system\n' \
+     'WARNING: with no populated /home directories!\n' \
+     'Type YES and enter to proceed.'
 read -r answer
 [ "$answer" != "YES" ] && exit 1
+
+if [ -n "$(echo /home/*/.ssh/* /home/*/.*_history)" ]; then
+    echo -e 'There seem to be populated /home directories on this system\n' \
+         'Cloning such systems is not recommended.\n' \
+         'Type YES if you still would like to proceed.'
+    read answer
+    [ "$answer" != "YES" ] && exit 1
+fi
 
 # source config file
 if [ -r "$SYSCONF_FILE" ]; then
@@ -45,22 +57,33 @@ find /etc/zypp \( -iname 'suse*' -o -iname 'scc*' \) -delete
 echo "Removing zypper anonymous ID"
 rm -rf /var/lib/zypp/AnonymousUniqueId
 
-echo 'Removing SSH host keys, user SSH keys, authorized keys, and shell history'
-rm -rf /etc/ssh/ssh_host*key* /root/.ssh/* /home/*/.ssh/* /home/*/.*_history &> /dev/null
+echo 'Removing SSH host keys, root user SSH keys, authorized keys, and shell history'
+rm -rf /etc/ssh/ssh_host*key* /root/.ssh/*  &> /dev/null
 
 echo 'Removing all mails and cron-jobs'
 rm -rf /var/spool/mail/*
 rm -rf /var/spool/cron/{lastrun,tabs}/*
 
 echo "Clean up postfix"
-rm -rf /var/spool/postfix/{active,corrupt,deferred,hold,maildrop,saved,bounce,defer,flush,incoming,trace}/*
+for i in /var/spool/postfix/{active,corrupt,deferred,hold,maildrop,saved,bounce,defer,flush,incoming,trace}; do
+    if [ -d "$i" ]; then
+        # descend following symlink and check if it was symlink, if not, recursively delete entries in this directory. 'rm -rf' doesn't follow symlinks.
+        cd -P "$i"
+        [ "$i" != "$PWD" ] && continue
+        info=( $(stat --printf="%u %g" ".") )
+        owner=${info[0]}
+        group=${info[1]}
+        setpriv --clear-groups --reuid "$owner" --regid "$group" rm -rf ./*
+    fi
+done
 
 echo 'Removing all temporary files'
 rm -rf /tmp/* /tmp/.* /var/tmp/* /var/tmp/.* &> /dev/null || true
 
-echo 'Clearing log files and removing log archives'
-find /var/log -type f -exec truncate -s 0 {} \;
+echo 'Removing log archives'
 find /var/log \( -iname '*.old' -o -iname '*.xz' -o -iname '*.gz' \) -delete
+echo 'Clearing log files'
+find /var/log -type f -exec truncate -s 0 {} \;
 
 echo 'Clearing HANA firewall script'
 rm -rf /etc/hana-firewall.d/generated_hana_firewall_script
@@ -119,55 +142,51 @@ echo 'Enabling YaST Firstboot if necessary'
 
 
 if [ "$CMCU_RSNAP" = "yes" ]; then
-SNAPPER_CMD="snapper delete"
-    if [ -d /.snapshots ]; then
-	echo "Removing all pre/post btrfs snapshots from /.snapshot"
-	snapshots=$(dbus-send --type=method_call --system --print-reply \
-			      --dest=org.opensuse.Snapper \
-			      /org/opensuse/Snapper \
-			      org.opensuse.Snapper.ListSnapshots string:root \
-			      2>/dev/null | awk -- "
+  if [ -d /.snapshots ]; then
+    echo "Removing all pre/post btrfs snapshots from /.snapshot"
+    presnapshots=$(dbus-send --type=method_call --system --print-reply \
+                             --dest=org.opensuse.Snapper \
+                             /org/opensuse/Snapper \
+                             org.opensuse.Snapper.ListSnapshots string:root \
+                             2>/dev/null | awk -- "
 BEGIN {arr=0; cnt=0; u2=0; u4=0; del=0}
 /array \[/ {arr++}
 /struct {/ {if (arr==1) cnt++}
-/}/ {if(arr==1&&--cnt==0){if(del==1) print id \"|\" lst;del=0;u4=0;u2=0}}
+/}/ {if(arr==1&&--cnt==0){if(del==1) print id ;del=0;u4=0;u2=0}}
 /\]/ {arr--}
 # Don't delete current snapshot
 /string "current"/ {if (arr==1 && cnt==1) del=0}
 # ID: 1st uint32 value of each top struct in top array
 /uint32/ {if (arr==1 && cnt==1) if (++u4==1)id=\$2; else if (u4==2)lst=\$2}
 # Type: 1st uint16 value of each top struct in top array
-/uint16/ {if (arr==1 && cnt==1){if (++u2==1) {if (\$2==1 || \$2==2){del=1}}}}
+/uint16/ {if (arr==1 && cnt==1){if (++u2==1) {if (\$2==1 ){del=1}}}}
 ")
-
-	# Create chains
-	OFS=$IFS
-	IFS=" "
-	while read line; do
-	    [[ $line =~ ([^\|]+)\|(.*) ]]
-	    last[${BASH_REMATCH[1]}]=${BASH_REMATCH[2]};
-	    [ -z "${next[${BASH_REMATCH[1]}]}" ] && next[${BASH_REMATCH[1]}]=0
-	    next[${BASH_REMATCH[2]}]=${BASH_REMATCH[1]}
-	done <<< $snapshots
-	IFS=$OFS
-	# Find end of each chain and work backwards
-	for i in ${!next[@]}; do
-	    [ -n "${next[$i]}" ] || continue # unpopulated
-	    a=${next[$i]}; unset next[$i]; b=$i
-	    while true; do
-		if [ $a -eq 0 ]
-		then
-		    while true; do
-			unset next[$b]; $SNAPPER_CMD $b
-			b=${last[$b]}
-			[ $b -eq 0 ] && break 2
-		    done
-		else
-		    b=$a; a=${next[$a]}; unset next[$b]
-		fi
-	    done
-	done
-    fi
+    for i in $presnapshots
+    do
+       /usr/bin/snapper delete --sync $i
+    done
+    postsnapshots=$(dbus-send --type=method_call --system --print-reply \
+                             --dest=org.opensuse.Snapper \
+                             /org/opensuse/Snapper \
+                             org.opensuse.Snapper.ListSnapshots string:root \
+                             2>/dev/null | awk -- "
+BEGIN {arr=0; cnt=0; u2=0; u4=0; del=0}
+/array \[/ {arr++}
+/struct {/ {if (arr==1) cnt++}
+/}/ {if(arr==1&&--cnt==0){if(del==1) print id ;del=0;u4=0;u2=0}}
+/\]/ {arr--}
+# Don't delete current snapshot
+/string "current"/ {if (arr==1 && cnt==1) del=0}
+# ID: 1st uint32 value of each top struct in top array
+/uint32/ {if (arr==1 && cnt==1) if (++u4==1)id=\$2; else if (u4==2)lst=\$2}
+# Type: 1st uint16 value of each top struct in top array
+/uint16/ {if (arr==1 && cnt==1){if (++u2==1) {if (\$2==2 ){del=1}}}}
+")
+    for i in $postsnapshots
+    do
+       /usr/bin/snapper delete --sync $i
+    done
+  fi
 fi
 
 if [ "$CMCU_ZYPP_REPOS" = "yes" ]; then
@@ -234,7 +253,7 @@ fi
 rm -rf /tmp/fstab.tmp
 
 echo "Clean up network files (except interfaces using dhcp boot protocol)"
-# additional files like bondig interfaces or vlans can be found in 
+# additional files like bondig interfaces or vlans can be found in
 # /usr/share/clone-master-clean-up/custom_remove.template
 for intf in /etc/sysconfig/network/ifcfg-eth*; do
     bprot=$(grep "^BOOTPROTO=" "$intf" | sed "s/^BOOTPROTO=//")
@@ -269,6 +288,11 @@ if [ -r "$DROP_IN_FILE" ]; then
             echo "Error: '$line' has wrong format. At the moment only files or directories are supported."
         fi
     done < $DROP_IN_FILE
+fi
+
+if [ -e /etc/iscsi/initiatorname.iscsi ]; then
+    echo 'Clean up initiatorname.iscsi'
+    sed -i '/^[^#]/d' /etc/iscsi/initiatorname.iscsi
 fi
 
 echo 'Finished. The system is now sparkling clean. Feel free to shut it down and image it.'
