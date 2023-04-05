@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-positioning
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtpositioning-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-positioning%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Positioning plugins and libraries
 License:        GPL-3.0-or-later
@@ -37,16 +37,16 @@ Source99:       qt6-positioning-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-quick-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6SerialPort)
-BuildRequires:  cmake(Qt6Test)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6DBus) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
+BuildRequires:  cmake(Qt6SerialPort) = %{real_version}
+BuildRequires:  cmake(Qt6Test) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %else
@@ -107,7 +107,7 @@ The Qt 6 Positioning library.
 %package -n qt6-positioning-devel
 Summary:        Qt 6 Positioning library - Development files
 Requires:       libQt6Positioning6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description -n qt6-positioning-devel
 Development files for the Qt 6 Positioning library.
@@ -129,8 +129,8 @@ The Qt 6 PositioningQuick library.
 %package -n qt6-positioningquick-devel
 Summary:        Qt 6 PositioningQuick library - Development files
 Requires:       libQt6PositioningQuick6 = %{version}
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-positioningquick-devel
 Development files for the Qt 6 PositioningQuick library.
