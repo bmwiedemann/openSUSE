@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-csv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apache-commons-csv
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        A library to read and write files in variations of the Comma Separated Value (CSV) format
 License:        Apache-2.0
