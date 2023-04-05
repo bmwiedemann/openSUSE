@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 10:38:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add the qt6-grpc and qt6-location devel packages to the Qt6
+  pattern.
+
+-------------------------------------------------------------------
 Wed Mar  8 13:54:00 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Recommend pam_kwallet in kde_plasma (boo#1208684)

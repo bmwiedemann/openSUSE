@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-kde
-Version:        20221001
+Version:        20230403
 Release:        0
 Summary:        Patterns for Installation (kde devel)
 License:        MIT
@@ -254,6 +254,7 @@ Recommends:     qt6-datavisualization-devel
 Recommends:     qt6-datavisualizationqml-devel
 Recommends:     qt6-declarative-devel
 Recommends:     qt6-designer-devel
+Recommends:     qt6-grpc-devel
 Recommends:     qt6-help-devel
 Recommends:     qt6-httpserver-devel
 Recommends:     qt6-imageformats-devel
@@ -264,6 +265,7 @@ Recommends:     qt6-labssettings-devel
 Recommends:     qt6-labssharedimage-devel
 Recommends:     qt6-labswavefrontmesh-devel
 Recommends:     qt6-linguist-devel
+Recommends:     qt6-location-devel
 Recommends:     qt6-multimedia-devel
 Recommends:     qt6-multimediawidgets-devel
 Recommends:     qt6-networkauth-devel
@@ -273,6 +275,7 @@ Recommends:     qt6-pdfquick-devel
 Recommends:     qt6-pdfwidgets-devel
 Recommends:     qt6-positioning-devel
 Recommends:     qt6-positioningquick-devel
+Recommends:     qt6-protobuf-devel
 Recommends:     qt6-qmlxmllistmodel-devel
 Recommends:     qt6-qt5compat-devel
 Recommends:     qt6-quick3d-devel
