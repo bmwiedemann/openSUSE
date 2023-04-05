@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-connectivity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -37,12 +37,13 @@ Source99:       qt6-connectivity-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-network-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6DBus) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(libpcsclite)
 %if "%{qt6_flavor}" == "docs"
@@ -67,15 +68,14 @@ Summary:        Qt 6 NFC library
 %description -n libQt6Nfc6
 Provides access to NFC hardware.
 
-# TODO: split
 %package devel
 Summary:        Qt 6 connectivity libraries - Development files
 Requires:       libQt6Bluetooth6 = %{version}
 Requires:       libQt6Nfc6 = %{version}
 # sdoscanner in required by Qt6BluetoothToolsTargets.cmake
 Requires:       qt6-connectivity = %{version}
-Requires:       cmake(Qt6DBus)
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6DBus) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description devel
 Development files for the Qt6 connectivity libraries.
@@ -125,7 +125,7 @@ The packages that build against these have to require the exact Qt version.
 
 %files devel
 %{_qt6_cmakedir}/Qt6/FindBlueZ.cmake
-%{_qt6_cmakedir}/Qt6/FindPCSCLite.cmake
+%{_qt6_cmakedir}/Qt6/FindPCSCLITE.cmake
 %{_qt6_cmakedir}/Qt6Bluetooth/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtConnectivityTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Nfc/
