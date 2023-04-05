@@ -1,7 +1,7 @@
 #
 # spec file for package python-black
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-black
-Version:        22.8.0
+Version:        23.3.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -28,18 +26,22 @@ Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{v
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
 BuildRequires:  %{python_module aiohttp_cors}
 BuildRequires:  %{python_module attrs >= 18.1.0}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module click >= 8.0.0}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling >= 1.8.0}
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pathspec >= 0.9.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
 BuildRequires:  %{python_module typed-ast >= 1.4.2 if %python-base < 3.8}
 BuildRequires:  %{python_module typing_extensions >= 3.10.0.0 if %python-base < 3.10}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.3.2
@@ -47,6 +49,7 @@ Requires:       python-aiohttp_cors
 Requires:       python-attrs >= 18.1.0
 Requires:       python-click >= 8.0.0
 Requires:       python-mypy_extensions >= 0.4.3
+Requires:       python-packaging
 Requires:       python-pathspec >= 0.9.0
 Requires:       python-platformdirs >= 2
 Requires:       python-tomli >= 1.1.0
@@ -79,10 +82,10 @@ also recognizes YAPF's block comments to the same effect.
 %autosetup -p1 -n black-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/black
 %python_clone -a %{buildroot}%{_bindir}/blackd
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
