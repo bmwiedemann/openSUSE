@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  5 11:38:18 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Use gcc12 to build until upstream has caught up with gcc13
+- Update to 3.2.5
+  This is a hotfix release. It fixes the following bug:
+  #4373 Fixes authorization flow for the audio.com sharing service
+
+-------------------------------------------------------------------
 Fri Feb  3 16:24:02 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to 3.2.3:

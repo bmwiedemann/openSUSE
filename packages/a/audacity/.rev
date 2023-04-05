@@ -1015,4 +1015,12 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>1063077</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>d64d4e7a520f1cd87d7b6a3c9820beef</srcmd5>
+    <version>3.2.5</version>
+    <time>1680722930</time>
+    <user>dimstar_suse</user>
+    <comment>Use gcc12 to build until upstream has caught up with gcc13 and Update to 3.2.5</comment>
+    <requestid>1077567</requestid>
+  </revision>
 </revisionlist>

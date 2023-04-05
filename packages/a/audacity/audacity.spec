@@ -16,8 +16,15 @@
 #
 
 
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+# Disable VST3 for Leap 15.3 due an old cmake
+%bcond_with vst
+%else
+%bcond_without vst
+%endif
+
 Name:           audacity
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -35,7 +42,10 @@ Patch2:         mod-script-pipe-disable-rpath.patch
 Patch3:         no-more-strip.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
-BuildRequires:  gcc-c++
+# Build with gcc12 until upstream catches up with gcc13
+#BuildRequires:  gcc-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
@@ -114,8 +124,7 @@ rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg,lame}/
 #Included in src/AboutDialog.cpp but not supplied
 touch include/RevisionIdent.h
 
-# Disable VST3 for Leap 15.3 due an old cmake
-%if 0%{?sle_version} != 150300 && 0%{?is_opensuse}
+%if %{with vst}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
 %endif
 
@@ -126,6 +135,8 @@ export PKG_CONFIG_PATH="`echo $PWD`:%{_libdir}/pkgconfig"
 fi
 export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
 export CXXFLAGS="$CFLAGS -std=gnu++17"
+export CC="/usr/bin/gcc-12"
+export CXX="/usr/bin/g++-12"
 
 %cmake  \
        -DAUDACITY_REV_TIME=$(date -u -d "@${SOURCE_DATE_EPOCH}" "+%Y-%m-%dT%H:%M:%SZ") \
@@ -137,7 +148,7 @@ export CXXFLAGS="$CFLAGS -std=gnu++17"
        -Daudacity_has_networking:BOOL=Off \
        -Daudacity_lib_preference:STRING=system \
        -Duse_lame:STRING=system \
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+%if %{without vst}
        -Daudacity_has_vst3=off \
 %endif
        -Daudacity_use_ffmpeg:STRING=loaded
