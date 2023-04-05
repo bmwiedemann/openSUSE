@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Apr 05 04:41:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.17.2:
+  * [release-1.17] Update deps 1.17 (#106)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44133)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44102)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44079)
+  * Add endpointslices to bug-report dump (#44054)
+  * Automator: update common-files@release-1.17 in
+    istio/istio@release-1.17 (#44055)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44061)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#44058)
+  * vm: fix assigning label from metadata (#44021)
+  * [release-1.17] tracing: Update proxyConfig.Tracing merge logic
+    (#42518) (#44019)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44049)
+  * Update BASE_VERSION to 1.17-2023-03-21T19-02-32 (#44039)
+  * add retry to default service account patch command (#43915)
+  * Fix gateway injection when istio.io/rev=<tag> (#43668)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#43973)
+  * [release-1.17] Fix x wait when
+    PILOT_ENABLE_CONFIG_DISTRIBUTION_TRACKING is not true (#43980)
+  * Automator: update common-files@release-1.17 in
+    istio/istio@release-1.17 (#43971)
+  * Use ReadHeaderTimeout instead of ReadTimeout when gRPC is
+    multiplexed (#43885)
+  * Break system namespace and ingressgateway assumptions  (#43809)
+    (#43866)
+  * [release-1.17] Run update_deps.sh (#43869)
+  * [release-1.17] ServiceEntry IP allocation: Stable IP when used
+    in multiple namespaces (#43879)
+  * Bump Helm to 3.11.1 (#43860)
+  * Bump x/net to 0.7.0 (#43851)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#43855)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#43856)
+  * Automator: update common-files@release-1.17 in
+    istio/istio@release-1.17 (#43854)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#43834)
+  * [release-1.17] Fix name resolution in istioctl command (#43819)
+  * Update BASE_VERSION to 1.17-2023-03-07T19-01-20 (#43812)
+  * [release-1.17] rbac: honor useAuthenticated (#43808)
+  * [release-1.17] Include trustDomains from CaCertificates in SAN
+    Validation (#43795)
+  * AccessLogging: fix the issue where disable accesslogging does
+    not take effect. (#43798)
+  * Update BASE_VERSION to 1.17-2023-03-03T19-02-38 (#43757)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#43734)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#43718)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#43707)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#43695)
+  * [release-1.17] Fix analyzing not caught some messages in
+    default namespace (#43678)
+  * Update BASE_VERSION to 1.17-2023-02-28T19-03-02 (#43666)
+  * [release-1.17] fix unexpected behavior of multi accesslogging
+    filters (#43591)
+  * [release-1.17] validate: improve ValidateHTTPHeaderValue
+    (#43391)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#43573)
+  * [release-1.17] cluster: clone Push.Mesh.ConnectTimeout to avoid
+    unintended mutation by EnvoyFilter (#43557)
+  * [release-1.17] Fix large direct response (#43550)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#43530)
+
+-------------------------------------------------------------------
 Tue Mar 28 10:50:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - bash-completion subpackage now Requires bash-completion
