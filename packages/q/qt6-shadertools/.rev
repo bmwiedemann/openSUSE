@@ -162,4 +162,12 @@
     <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
     <requestid>1072418</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d43a00613fbdbe60a04301bef9326b8b</srcmd5>
+    <version>6.5.0</version>
+    <time>1680723129</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
+    <requestid>1077344</requestid>
+  </revision>
 </revisionlist>
