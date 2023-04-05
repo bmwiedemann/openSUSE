@@ -243,4 +243,41 @@
 - updated to rekor 1.0.0 (jsc#SLE-23476): (forwarded request 1038886 from msmeissn)</comment>
     <requestid>1040165</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f3d30477a252288ef18e0ef4e45f20b2</srcmd5>
+    <version>1.1.0</version>
+    <time>1680722913</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.1.0 (jsc#SLE-23476):
+  Functional Enhancements
+  - improve validation on intoto v0.0.2 type (#1351)
+  - add feature to limit HTTP request body length to process (#1334)
+  - add information about the file size limit (#1313)
+  - Add script to backfill Redis from Rekor (#1163)
+  - Feature: add search support for sha512 (#1142)
+  Quality Enhancements
+  - various fuzzing fixes
+  Bug Fixes
+  - remove goroutine usage from SearchLogQuery (#1407)
+  - drop log messages regarding attestation storage to debug (#1408)
+  - fix validation for proposed vs committed log entries for intoto v0.0.1 (#1309)
+  - fix: fix regex for multi-digit counts (#1321)
+  - return NotFound if treesize is 0 rather than calling trillian (#1311)
+  - enumerate slice to get sugared logs (#1312)
+  - put a reasonable size limit on ssh key reader (#1288)
+  - CLIENT: Fix Custom Host and Path Issue (#1306)
+  - do not persist local state if log is empty; fail consistency proofs from 0 size (#1290)
+  - correctly handle invalid or missing pki format (#1281)
+  - Add Verifier to get public key/cert and identities for entry type (#1210)
+  - fix goroutine leak in client; add insecure TLS option (#1238)
+  - Fix - Remove the force-recreate flag (#1179)
+  - trim whitespace around public keys before parsing (#1175)
+  - stop inserting envelope hash for intoto:0.0.2 types into index (#1171)
+  - Revert &quot;remove double encoding of payload and signature fields for intoto (#1150)&quot; (#1158)
+  - remove double encoding of payload and signature fields for intoto (#1150)
+  - fix SearchLogQuery behavior to conform to openapi spec (#1145)
+  - Remove pem-certificate-chain from client (#1138)
+  - fix flag type for operator in search (#1136) (forwarded request 1077454 from msmeissn)</comment>
+    <requestid>1077494</requestid>
+  </revision>
 </revisionlist>

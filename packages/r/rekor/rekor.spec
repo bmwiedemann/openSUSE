@@ -1,7 +1,7 @@
 #
 # spec file for package rekor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
-%define revision d3162350e96098ca8a24adfdbee42057e43b5de6
+%define revision 4a6592612dc015f24d0700b6d274b3663d128ad8
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
 URL:            https://github.com/sigstore/rekor
