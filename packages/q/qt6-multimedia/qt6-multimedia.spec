@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-multimedia
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
@@ -42,18 +42,17 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-quick3d-private-devel
 BuildRequires:  qt6-widgets-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Quick3D)
-BuildRequires:  cmake(Qt6QuickControls2)
-BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6ShaderTools)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
+BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
+BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
+BuildRequires:  cmake(Qt6Svg) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
@@ -96,8 +95,8 @@ The Qt 6 Multimedia library.
 %package devel
 Summary:        Qt 6 Multimedia library - Development files
 Requires:       libQt6Multimedia6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Multimedia library.
@@ -120,7 +119,7 @@ The Qt 6 MultimediaWidgets library.
 Summary:        Qt 6 MultimediaWidgets library - Development files
 Requires:       libQt6MultimediaWidgets6 = %{version}
 Requires:       cmake(Qt6Multimedia) = %{real_version}
-Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Widgets) = %{real_version}
 
 %description -n qt6-multimediawidgets-devel
 Development files for the Qt 6 MultimediaWidgets library.
@@ -143,8 +142,8 @@ The Qt 6 SpatialAudio library.
 %package -n qt6-spatialaudio-devel
 Summary:        Qt 6 SpatialAudio library - Development files
 Requires:       libQt6SpatialAudio6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description -n qt6-spatialaudio-devel
 Development files for the Qt 6 SpatialAudio library.
@@ -170,7 +169,7 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 MultimediaQuick library - Development files
 Requires:       libQt6MultimediaQuick6 = %{version}
 Requires:       qt6-multimedia-private-devel = %{version}
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-multimediaquick-private-devel
 Development files for the Qt 6 Multimedia private library.
@@ -187,7 +186,7 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 Quick3DSpatialAudio library - Development files
 Requires:       libQt6Quick3DSpatialAudio6 = %{version}
 Requires:       qt6-multimedia-private-devel = %{version}
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-quick3dspatialaudio-private-devel
 Development files for the Qt 6 Quick3DSpatialAudio private library.
@@ -211,7 +210,8 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %cmake_qt6 \
   -DINPUT_gstreamer:BOOL=ON \
   -DINPUT_ffmpeg:BOOL=ON
@@ -288,8 +288,6 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %files -n qt6-multimediawidgets-private-devel
 %{_qt6_includedir}/QtMultimediaWidgets/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_multimediawidgets_private.pri
-
-
 
 %files -n libQt6SpatialAudio6
 %{_qt6_libdir}/libQt6SpatialAudio.so.*
