@@ -95,4 +95,12 @@
     <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
     <requestid>1072416</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c01cff0006dc3b156ea16edc6254c7a1</srcmd5>
+    <version>6.5.0</version>
+    <time>1680723127</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
+    <requestid>1077342</requestid>
+  </revision>
 </revisionlist>

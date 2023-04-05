@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-serialbus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtserialbus-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialbus
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 SerialBus library
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -37,11 +37,11 @@ Source99:       qt6-serialbus-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6SerialPort)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6SerialPort) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -64,8 +64,8 @@ and others.
 Summary:        Qt 6 SerialBus library - Development files
 Requires:       %{name} = %{version}
 Requires:       libQt6SerialBus6 = %{version}
-Requires:       cmake(Qt6Network)
-Requires:       cmake(Qt6SerialPort)
+Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6SerialPort) = %{real_version}
 
 %description devel
 Development files for the Qt 6 SerialBus library.
