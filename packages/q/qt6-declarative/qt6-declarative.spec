@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-declarative
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -41,17 +41,17 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-opengl-private-devel
 BuildRequires:  qt6-test-private-devel
 BuildRequires:  qt6-widgets-private-devel
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6LanguageServerPrivate)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6ShaderTools)
-BuildRequires:  cmake(Qt6Sql)
-BuildRequires:  cmake(Qt6Test)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6LanguageServerPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
+BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
+BuildRequires:  cmake(Qt6Sql) = %{real_version}
+BuildRequires:  cmake(Qt6Test) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %endif
@@ -244,8 +244,8 @@ The Qt 6 LabsSettings library.
 Summary:        Qt 6 LabsSettings library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6LabsSettings6 = %{version}
-Requires:       cmake(Qt6Core)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Core) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-labssettings-devel
 Development files for the Qt 6 LabsSettings library.
@@ -325,8 +325,8 @@ Summary:        Qt 6 Qml library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6Qml6 = %{version}
 # Executables are required
-Requires:       qt6-declarative-tools
-Requires:       cmake(Qt6Network)
+Requires:       qt6-declarative-tools = %{version}
+Requires:       cmake(Qt6Network) = %{real_version}
 # qmldevtools is gone in 6.3
 Provides:       qt6-qmldevtools-devel-static = 6.3
 Obsoletes:      qt6-qmldevtools-devel-static < 6.3
@@ -382,7 +382,7 @@ Summary:        Qt 6 QmlLocalStorage library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6QmlLocalStorage6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
-Requires:       cmake(Qt6Sql)
+Requires:       cmake(Qt6Sql) = %{real_version}
 %requires_eq    qt6-core-private-devel
 
 %description -n qt6-qmllocalstorage-devel
@@ -410,7 +410,7 @@ The Qt 6 QmlModels library.
 Summary:        Qt 6 QmlModels library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6QmlModels6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-qmlmodels-devel
@@ -438,7 +438,7 @@ The Qt 6 QmlModels library.
 Summary:        Qt 6 QmlModels library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6QmlWorkerScript6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-qmlworkerscript-devel
@@ -491,10 +491,10 @@ The Qt 6 Quick library.
 Summary:        Qt 6 Quick library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6Quick6 = %{version}
-Requires:       cmake(Qt6Core)
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Network)
-Requires:       cmake(Qt6OpenGL)
+Requires:       cmake(Qt6Core) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
 
@@ -549,7 +549,7 @@ Summary:        Qt6 QuickControls2Impl library - Development files
 Requires:       libQt6QuickControls2Impl6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quicktemplates2-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-quickcontrols2impl-devel
 Development files for the Qt 6 QuickControls2Impl library.
@@ -575,7 +575,7 @@ Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quickcontrols2impl-devel = %{version}
 Requires:       qt6-quickdialogs2quickimpl-private-devel = %{version}
 Requires:       qt6-quickdialogs2utils-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-quickdialogs2-devel
 Development files for the Qt 6 QuickDialogs2 library.
@@ -602,7 +602,7 @@ Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quickcontrols2impl-private-devel = %{version}
 Requires:       qt6-quickdialogs2utils-private-devel = %{version}
 Requires:       qt6-quicktemplates2-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-quickdialogs2quickimpl-devel
 Development files for the Qt 6 QuickDialogs2Impl library.
@@ -675,7 +675,7 @@ The Qt 6 QuickTemplates2 library.
 Summary:        Qt6 QuickTemplates2 library - Development files
 Requires:       libQt6QuickTemplates2-6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
 
 %description -n qt6-quicktemplates2-devel
@@ -703,9 +703,9 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6QuickTest6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quick-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
-Requires:       cmake(Qt6Test)
+Requires:       cmake(Qt6Test) = %{real_version}
 
 %description -n qt6-quicktest-devel
 Development files for the Qt 6 QuickTest library.
@@ -731,10 +731,10 @@ The Qt 6 QuickWidgets library.
 Summary:        Qt 6 QuickWidgets library - Development files
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       libQt6QuickWidgets6 = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
-Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Widgets) = %{real_version}
 %requires_eq    qt6-opengl-private-devel
 
 %description -n qt6-quickwidgets-devel
@@ -775,6 +775,26 @@ Obsoletes:      qt6-qmlcompiler-devel-static < 6.4.0
 
 %description -n qt6-qmlcompiler-private-devel
 Development files for the Qt 6 QmlCompiler library.
+This library does not have any ABI or API guarantees.
+
+%package -n libQt6QuickEffects6
+Summary:        Qt 6 QuickEffects library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+
+%description -n libQt6QuickEffects6
+The Qt 6 QuickEffects library.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-quickeffects-private-devel
+Summary:        Qt 6 QuickEffects library - Development files
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+Requires:       libQt6QuickEffects6 = %{version}
+Requires:       qt6-qml-private-devel = %{version}
+Requires:       qt6-quick-private-devel = %{version}
+%requires_eq    qt6-gui-private-devel
+
+%description -n qt6-quickeffects-private-devel
+Development files for the Qt 6 QuickEffects library.
 This library does not have any ABI or API guarantees.
 
 %package -n libQt6QuickParticles6
@@ -866,6 +886,13 @@ The goal of the Dom library is to provide a nicer to use basis for the
 Qml Code model, to be used by the various QML tools, the designer and
 the new compiler.
 
+%package -n qt6-qmltyperegistrar-devel-static
+Summary:        Qt6 QmlTypeRegistrar static library
+
+%description -n qt6-qmltyperegistrar-devel-static
+The Qt6 QmlTypeRegistrar static library.
+This library does not have any ABI or API guarantees.
+
 %package -n qt6-quickcontrolstestutils-devel-static
 Summary:        Qt6 QuickControlsTestUtils static library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -875,7 +902,7 @@ Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6QuickControls2) = %{real_version}
 Requires:       cmake(Qt6QuickTemplates2) = %{real_version}
 Requires:       cmake(Qt6QuickTestUtilsPrivate) = %{real_version}
-Requires:       cmake(Qt6Test)
+Requires:       cmake(Qt6Test) = %{real_version}
 
 %description -n qt6-quickcontrolstestutils-devel-static
 The Qt6 QuickControlsTestUtils static library.
@@ -886,7 +913,7 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Requires:       qt6-quick-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6QuickTest) = %{real_version}
-Requires:       cmake(Qt6Test)
+Requires:       cmake(Qt6Test) = %{real_version}
 
 %description -n qt6-quicktestutils-devel-static
 The Qt6 QuickTestUtils static library.
@@ -967,6 +994,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_qmldir}/QtQml/
 %{_qt6_qmldir}/QtQuick/
 %{_qt6_qmldir}/QtTest/
+%{_qt6_qmldir}/QmlTime/
 %{_qt6_qmldir}/builtins.qmltypes
 %{_qt6_qmldir}/jsroot.qmltypes
 
@@ -1360,6 +1388,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 %files -n qt6-quicklayouts-private-devel
 %{_qt6_includedir}/QtQuickLayouts/%{real_version}/
+%{_qt6_libdir}/libQt6QuickLayouts.so
 %{_qt6_mkspecsdir}/modules/qt_lib_quicklayouts_private.pri
 
 %files -n libQt6QuickTemplates2-6
@@ -1430,6 +1459,18 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_metatypesdir}/qt6qmlcompilerprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmlcompiler_private.pri
 
+%files -n libQt6QuickEffects6
+%{_qt6_libdir}/libQt6QuickEffects.so.*
+
+%files -n qt6-quickeffects-private-devel
+%{_qt6_cmakedir}/Qt6QuickEffectsPrivate/
+%{_qt6_descriptionsdir}/QuickEffectsPrivate.json
+%{_qt6_includedir}/QtQuickEffects/
+%{_qt6_libdir}/libQt6QuickEffects.prl
+%{_qt6_libdir}/libQt6QuickEffects.so
+%{_qt6_metatypesdir}/qt6quickeffectsprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quickeffects_private.pri
+
 %files -n libQt6QuickParticles6
 %{_qt6_libdir}/libQt6QuickParticles.so.*
 
@@ -1482,6 +1523,15 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlDom.prl
 %{_qt6_metatypesdir}/qt6qmldomprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmldom_private.pri
+
+%files -n qt6-qmltyperegistrar-devel-static
+%{_qt6_cmakedir}/Qt6QmlTypeRegistrarPrivate/
+%{_qt6_descriptionsdir}/QmlTypeRegistrarPrivate.json
+%{_qt6_includedir}/QtQmlTypeRegistrar/
+%{_qt6_libdir}/libQt6QmlTypeRegistrar.a
+%{_qt6_libdir}/libQt6QmlTypeRegistrar.prl
+%{_qt6_metatypesdir}/qt6qmltyperegistrarprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmltyperegistrar_private.pri
 
 %files -n qt6-quickcontrolstestutils-devel-static
 %{_qt6_cmakedir}/Qt6QuickControlsTestUtilsPrivate/
