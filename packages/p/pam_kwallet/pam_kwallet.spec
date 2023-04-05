@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           pam_kwallet
-Version:        5.27.3
+Version:        5.27.4
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -31,9 +31,6 @@ Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/kwallet-pam/-/merge_requests/12
-Patch1:         0001-Verify-that-XDG_RUNTIME_DIR-is-usable.patch
-Patch2:         0002-Don-t-do-anything-if-the-password-is-empty.patch
-Patch3:         0003-Exit-early-if-the-target-user-is-root.patch
 Patch4:         0004-Don-t-call-pam_sm_open_session-within-pam_sm_authent.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem

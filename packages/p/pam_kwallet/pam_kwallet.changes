@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * Exit early if the target user is root
+  * Don't do anything if the password is empty
+  * Verify that XDG_RUNTIME_DIR is usable
+- Drop patches, now upstream:
+  * 0001-Verify-that-XDG_RUNTIME_DIR-is-usable.patch
+  * 0002-Don-t-do-anything-if-the-password-is-empty.patch
+  * 0003-Exit-early-if-the-target-user-is-root.patch
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:58 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
