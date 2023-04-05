@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-scxml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -39,13 +39,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -74,7 +74,7 @@ Summary:        Qt 6 Scxml library - Development files
 # ScxmlTools requires the scxmlc executable
 Requires:       %{name} = %{version}
 Requires:       libQt6Scxml6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Scxml library.
@@ -97,7 +97,7 @@ The Qt6 ScxmlQml library.
 %package -n qt6-scxmlqml-devel
 Summary:        Qt 6 ScxmlQml library - Development files
 Requires:       libQt6ScxmlQml6 = %{version}
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Scxml) = %{real_version}
 
 %description -n qt6-scxmlqml-devel
@@ -120,7 +120,7 @@ The Qt 6 StateMachine library.
 %package -n qt6-statemachine-devel
 Summary:        Qt 6 StateMachine library - Development files
 Requires:       libQt6StateMachine6 = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-statemachine-devel
 Development files for the Qt 6 StateMachine library.
@@ -144,8 +144,8 @@ The Qt 6 StateMachineQml library.
 %package -n qt6-statemachineqml-devel
 Summary:        Qt 6 StateMachineQml library - Development files
 Requires:       libQt6StateMachineQml6 = %{version}
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6StateMachine)
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6StateMachine) = %{real_version}
 
 %description -n qt6-statemachineqml-devel
 Development files for the Qt 6 StateMachineQml library.
