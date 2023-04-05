@@ -608,4 +608,15 @@
 * see https://github.com/kubernetes/minikube/releases/tag/v1.30.0</comment>
     <requestid>1077183</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b71ac739e2a98678ccabe8565d39f26e</srcmd5>
+    <version>1.30.1</version>
+    <time>1680722890</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.30.1:
+  * Docker driver: Fix incorrectly stating `Image was not built
+    for the current minikube` #16226
+  * Mark VMware driver as unsupported  #16233</comment>
+    <requestid>1077453</requestid>
+  </revision>
 </revisionlist>
