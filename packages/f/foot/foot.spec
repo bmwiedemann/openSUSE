@@ -1,7 +1,7 @@
 #
 # spec file for package foot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           foot
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Requires:       terminfo
+Requires:       utempter
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
+BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(fcft) < 4.0.0
 BuildRequires:  pkgconfig(fcft) >= 3.0.1
 BuildRequires:  pkgconfig(fontconfig)
@@ -92,9 +94,9 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %doc README.md CHANGELOG.md
 %{_bindir}/foot
 %{_bindir}/footclient
-%{_datadir}/applications/foot.desktop
-%{_datadir}/applications/footclient.desktop
-%{_datadir}/applications/foot-server.desktop
+%{_datadir}/applications/org.codeberg.dnkl.foot.desktop
+%{_datadir}/applications/org.codeberg.dnkl.footclient.desktop
+%{_datadir}/applications/org.codeberg.dnkl.foot-server.desktop
 %{_datadir}/bash-completion/
 %{_datadir}/fish/
 %{_datadir}/zsh/

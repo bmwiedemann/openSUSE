@@ -310,4 +310,30 @@
   * Fix separate URLs being connected in URL mode if they have the same ID.</comment>
     <requestid>1000508</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>542a9e78e4315541e39413776b5fa3aa</srcmd5>
+    <version>1.14.0</version>
+    <time>1680722942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.14.0:
+  * foot.ini options:
+    * Added font-size-adjustment option to set the font size change increment
+      when zooming in or out.
+    * Added underline-thickness option to set underline height.
+    * Changed default colors to correspond to the solarized-dark-normal-brights
+      theme.
+    * Added main.utempter option to set path to utempter binary, used to
+      create utmp records. Defaults to the path of that binary at build time.
+    * Changed default grapheme-width-method option to double-width.
+    * Changed default pad option to 0x0.
+    * String values can now be quoted with double quotes (&quot;&quot;), which can be
+      used to set an option to an empty string value. For environment variables
+      setting them to the empty string unsets them.
+  * Added various terminfo capabilities to work better with vim, etc.
+  * Fixed various crashes.
+  * Added new themes - deus, material-amber, modus, moonfly, nightfly, onedark,
+    rose-pine, zenburn.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.14.0 for more details.</comment>
+    <requestid>1077579</requestid>
+  </revision>
 </revisionlist>

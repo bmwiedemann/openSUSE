@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr  5 17:45:07 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Add dependency on utempter explicitly since it's not picked up automatically.
+
+-------------------------------------------------------------------
+Wed Apr  5 16:55:38 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.14.0:
+  * foot.ini options:
+    * Added font-size-adjustment option to set the font size change increment
+      when zooming in or out.
+    * Added underline-thickness option to set underline height.
+    * Changed default colors to correspond to the solarized-dark-normal-brights
+      theme.
+    * Added main.utempter option to set path to utempter binary, used to
+      create utmp records. Defaults to the path of that binary at build time.
+    * Changed default grapheme-width-method option to double-width.
+    * Changed default pad option to 0x0.
+    * String values can now be quoted with double quotes (""), which can be
+      used to set an option to an empty string value. For environment variables
+      setting them to the empty string unsets them.
+  * Added various terminfo capabilities to work better with vim, etc.
+  * Fixed various crashes.
+  * Added new themes - deus, material-amber, modus, moonfly, nightfly, onedark,
+    rose-pine, zenburn.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.14.0 for more details.
+
+-------------------------------------------------------------------
 Wed Aug 31 17:38:33 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.13.1:
