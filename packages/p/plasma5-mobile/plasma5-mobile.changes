@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * actiondrawer: Smoothen the brightness slider so that it doesn't jump when sending events
+
+-------------------------------------------------------------------
 Tue Mar 14 15:06:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
