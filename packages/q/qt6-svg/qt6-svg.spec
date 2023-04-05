@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-svg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -38,9 +38,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-widgets-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(zlib)
 # Ignored: only used for building tests
 # BuildRequires:  cmake(Qt6Xml)
@@ -67,13 +67,12 @@ Summary:        Qt 6 SVGWidgets library
 %description -n libQt6SvgWidgets6
 The Qt 6 SvgWidgets library.
 
-# TODO split?
 %package devel
 Summary:        Qt 6 SVG libraries - Development files
 Requires:       libQt6Svg6 = %{version}
 Requires:       libQt6SvgWidgets6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Widgets) = %{real_version}
 
 %description devel
 Development files for the Qt 6 SVG libraries.
