@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  5 07:07:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.1.19 Bugfix release:
+  * Issue #122 and #124. Replaced use of deprecated ``numpy.asscalar``
+    functions with the ``numpy.ndarray.item`` method.
+  * Issue #123. Forced the use of English month and day of the week names
+    in the HDF5 header for MATLAB compatibility.
+  * Issue #125. Fixed accidental collection of
+    ``pkg_resources.parse_version`` from setuptools as a Marshaller now
+    that it is a class. 
+
+-------------------------------------------------------------------
 Sat Jan 29 08:31:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update 0.1.18 (performance improving release):
