@@ -460,4 +460,12 @@ Reflect all of the licenses of the various components in the spec file license (
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034305</requestid>
   </revision>
+  <revision rev="49" vrev="52">
+    <srcmd5>f3a2d5324752830c7c3b4c1e4e523205</srcmd5>
+    <version>unknown</version>
+    <time>1680722761</time>
+    <user>dimstar_suse</user>
+    <comment>Support mkiv as well as lmtx ConTeXt formats; Correct supplements tags of texlive packages to use the new texlive-alldocuments meta package</comment>
+    <requestid>1077486</requestid>
+  </revision>
 </revisionlist>
