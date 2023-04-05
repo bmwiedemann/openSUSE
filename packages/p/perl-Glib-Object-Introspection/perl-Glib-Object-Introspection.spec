@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Glib-Object-Introspection
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
+%define cpan_name Glib-Object-Introspection
 Name:           perl-Glib-Object-Introspection
-Version:        0.049
+Version:        0.050
 Release:        0
 #Upstream:  This library is free software; you can redistribute it and/or modify it under the terms of the Lesser General Public License (LGPL). For more information, see http://www.fsf.org/licenses/lgpl.txt
-%define cpan_name Glib-Object-Introspection
-Summary:        Dynamically create Perl language bindings
 License:        LGPL-2.1-only
-Group:          Development/Libraries/Perl
+Summary:        Dynamically create Perl language bindings
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::Depends) >= 0.3
@@ -46,11 +44,11 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Dynamically create Perl language bindings
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -61,8 +59,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc NEWS perl-Glib-Object-Introspection.doap README
+%doc NEWS perl-glib-object-introspection.doap README.md
 %license LICENSE
 
 %changelog
