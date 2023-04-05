@@ -1,2 +1,4 @@
 # Required for version info checked by other packages
 addFilter(".*hidden-file-or-dir.*/site-packages/panel/.version")
+# rpmlint's PythonCheck does not understand the boolean dependency
+addFilter("python-missing-require bokeh")

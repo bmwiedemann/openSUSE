@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-panel%{psuffix}
-Version:        0.14.2
+Version:        0.14.4
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -113,6 +113,7 @@ sed -i '/def _build_paneljs/ a \    return' setup.py
 # fix python call in test, upstream expects them to be run inside tox or venv
 sed -i -e '/import ast/ a import sys' -e 's/"python",/sys.executable,/' panel/tests/test_docs.py
 echo "# Empty module" >> panel/tests/io/reload_module.py
+echo "# Empty module" >> examples/apps/django/sliders/models.py
 
 %if ! %{with test}
 %build
@@ -122,8 +123,12 @@ echo "# Empty module" >> panel/tests/io/reload_module.py
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/panel
 %{python_expand #
-rm %{buildroot}%{$python_sitelib}/panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.prettierignore
-rm %{buildroot}%{$python_sitelib}/panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.eslintignore
+pushd  %{buildroot}%{$python_sitelib}
+rm panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.prettierignore
+rm panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.eslintignore
+sed -i '1{s|^#!/usr/bin/env python.*|#!%{__$python}|}' panel/examples/apps/django*/manage.py
+$python -m py_compile panel/examples/apps/django*/manage.py
+popd
 %fdupes %{buildroot}%{$python_sitelib}
 }
 %endif
