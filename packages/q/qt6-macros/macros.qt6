@@ -167,7 +167,7 @@
 
 # Variables only used for packaging
 %_qt6_cmakedir        %{_qt6_libdir}/cmake
-%_qt6_metatypesdir    %{_qt6_libdir}/metatypes
+%_qt6_metatypesdir    %{_qt6_archdatadir}/metatypes
 %_qt6_pkgconfigdir    %{_qt6_libdir}/pkgconfig
 
 #--------------------------------------------------------------

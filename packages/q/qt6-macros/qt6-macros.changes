@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 30 10:45:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the %_qt6_metatypesdir location to match upstream changes
+
+-------------------------------------------------------------------
 Tue Mar 29 16:42:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Set CMAKE_MESSAGE_LOG_LEVEL in %cmake_qt6.
