@@ -138,4 +138,12 @@
   * qtwebengine-gcc13.patch</comment>
     <requestid>1075160</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>258c426ee2e3f3ab4d895c12e0b819b7</srcmd5>
+    <version>6.5.0</version>
+    <time>1680723137</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
+    <requestid>1077352</requestid>
+  </revision>
 </revisionlist>
