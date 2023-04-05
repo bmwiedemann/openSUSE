@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-asm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           objectweb-asm
-Version:        9.3
+Version:        9.5
 Release:        0
 Summary:        Java bytecode manipulation framework
 License:        BSD-3-Clause
@@ -103,7 +103,7 @@ for i in asm asm-analysis asm-commons asm-tree asm-util asm-all; do
 done
 
 %build
-%ant \
+%ant -Dproject.version=%{version} \
     package javadoc
 
 %install

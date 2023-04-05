@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr  2 18:13:50 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.5
+  * new Opcodes.V21 constant for Java 21
+  * new readBytecodeInstructionOffset hook in ClassReader
+  * more detailed exception messages
+  * Javadoc improvements and fixes
+  * bug fixes
+    + 317989: Silent removal of zero-valued entries from the
+      line-number table
+
+-------------------------------------------------------------------
+Sun Jan 29 01:33:32 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.4
+  * new Opcodes.V20 constant for Java 20
+  * more checks in CheckClassAdapter
+  * Javadoc improvements and fixes
+  * module-info classes can be built without Gradle and Bnd
+  * parent POM updated to org.ow2:ow2:1.5.1
+  * bug fixes
+    + 317977: CheckClassAdapter is no longer transparent for MAXLOCALS
+    + 317981: Add public getDelegate method to all visitor classes
+    + Analyzer does not compute optimal maxLocals for static methods
+    + Fix SignatureWriter when a generic type has a depth over 30
+    + Skip remap inner class name if not changed in Remapper
+
+-------------------------------------------------------------------
 Wed Apr 20 07:35:37 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Upgrade to version 9.3
