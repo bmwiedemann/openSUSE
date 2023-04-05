@@ -2385,6 +2385,7 @@ unsorted:
   - containerized-data-importer-operator 
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
+  - containment-rpm 
   - contractor 
   - converseen 
   - converseen-lang 
@@ -2877,7 +2878,6 @@ unsorted:
   - dbus-sharp2 
   - dbus-sharp2-devel 
   - dbview 
-  - dbxtool 
   - dc3dd 
   - dc3dd-lang 
   - dcatools 
@@ -4598,844 +4598,1751 @@ unsorted:
   - ghc 
   - ghc-Cabal 
   - ghc-Cabal-devel 
+  - ghc-Cabal-doc 
+  - ghc-Cabal-prof 
+  - ghc-Cabal-syntax 
+  - ghc-Cabal-syntax-devel 
+  - ghc-Cabal-syntax-doc 
+  - ghc-Cabal-syntax-prof 
   - ghc-DAV 
   - ghc-DAV-devel 
+  - ghc-DAV-doc 
+  - ghc-DAV-prof 
   - ghc-Decimal 
   - ghc-Decimal-devel 
+  - ghc-Decimal-doc 
+  - ghc-Decimal-prof 
   - ghc-Diff 
   - ghc-Diff-devel 
+  - ghc-Diff-doc 
+  - ghc-Diff-prof 
   - ghc-Glob 
   - ghc-Glob-devel 
+  - ghc-Glob-doc 
+  - ghc-Glob-prof 
   - ghc-HTTP 
   - ghc-HTTP-devel 
+  - ghc-HTTP-doc 
+  - ghc-HTTP-prof 
   - ghc-HUnit 
   - ghc-HUnit-devel 
+  - ghc-HUnit-doc 
+  - ghc-HUnit-prof 
   - ghc-HsYAML 
   - ghc-HsYAML-devel 
+  - ghc-HsYAML-doc 
+  - ghc-HsYAML-prof 
   - ghc-IfElse 
   - ghc-IfElse-devel 
+  - ghc-IfElse-doc 
+  - ghc-IfElse-prof 
   - ghc-JuicyPixels 
   - ghc-JuicyPixels-devel 
+  - ghc-JuicyPixels-doc 
+  - ghc-JuicyPixels-prof 
   - ghc-OneTuple 
   - ghc-OneTuple-devel 
+  - ghc-OneTuple-doc 
+  - ghc-OneTuple-prof 
   - ghc-Only 
   - ghc-Only-devel 
+  - ghc-Only-doc 
+  - ghc-Only-prof 
   - ghc-QuickCheck 
   - ghc-QuickCheck-devel 
+  - ghc-QuickCheck-doc 
+  - ghc-QuickCheck-prof 
   - ghc-SHA 
   - ghc-SHA-devel 
+  - ghc-SHA-doc 
+  - ghc-SHA-prof 
   - ghc-SafeSemaphore 
   - ghc-SafeSemaphore-devel 
+  - ghc-SafeSemaphore-doc 
+  - ghc-SafeSemaphore-prof 
   - ghc-ShellCheck 
   - ghc-ShellCheck-devel 
+  - ghc-ShellCheck-doc 
+  - ghc-ShellCheck-prof 
   - ghc-StateVar 
   - ghc-StateVar-devel 
+  - ghc-StateVar-doc 
+  - ghc-StateVar-prof 
   - ghc-X11 
   - ghc-X11-devel 
+  - ghc-X11-doc 
+  - ghc-X11-prof 
   - ghc-X11-xft 
   - ghc-X11-xft-devel 
+  - ghc-X11-xft-doc 
+  - ghc-X11-xft-prof 
   - ghc-adjunctions 
   - ghc-adjunctions-devel 
+  - ghc-adjunctions-doc 
+  - ghc-adjunctions-prof 
   - ghc-aeson 
   - ghc-aeson-devel 
+  - ghc-aeson-doc 
   - ghc-aeson-pretty 
   - ghc-aeson-pretty-devel 
+  - ghc-aeson-pretty-doc 
+  - ghc-aeson-pretty-prof 
+  - ghc-aeson-prof 
   - ghc-alsa-core 
   - ghc-alsa-core-devel 
+  - ghc-alsa-core-doc 
+  - ghc-alsa-core-prof 
   - ghc-alsa-mixer 
   - ghc-alsa-mixer-devel 
+  - ghc-alsa-mixer-doc 
+  - ghc-alsa-mixer-prof 
   - ghc-ansi-terminal 
   - ghc-ansi-terminal-devel 
+  - ghc-ansi-terminal-doc 
+  - ghc-ansi-terminal-prof 
+  - ghc-ansi-terminal-types 
+  - ghc-ansi-terminal-types-devel 
+  - ghc-ansi-terminal-types-doc 
+  - ghc-ansi-terminal-types-prof 
   - ghc-ansi-wl-pprint 
   - ghc-ansi-wl-pprint-devel 
+  - ghc-ansi-wl-pprint-doc 
+  - ghc-ansi-wl-pprint-prof 
   - ghc-appar 
   - ghc-appar-devel 
+  - ghc-appar-doc 
+  - ghc-appar-prof 
   - ghc-array 
   - ghc-array-devel 
+  - ghc-array-doc 
+  - ghc-array-prof 
   - ghc-asn1-encoding 
   - ghc-asn1-encoding-devel 
+  - ghc-asn1-encoding-doc 
+  - ghc-asn1-encoding-prof 
   - ghc-asn1-parse 
   - ghc-asn1-parse-devel 
+  - ghc-asn1-parse-doc 
+  - ghc-asn1-parse-prof 
   - ghc-asn1-types 
   - ghc-asn1-types-devel 
+  - ghc-asn1-types-doc 
+  - ghc-asn1-types-prof 
   - ghc-assoc 
   - ghc-assoc-devel 
+  - ghc-assoc-doc 
+  - ghc-assoc-prof 
   - ghc-async 
   - ghc-async-devel 
+  - ghc-async-doc 
+  - ghc-async-prof 
   - ghc-attoparsec 
   - ghc-attoparsec-devel 
+  - ghc-attoparsec-doc 
   - ghc-attoparsec-iso8601 
   - ghc-attoparsec-iso8601-devel 
+  - ghc-attoparsec-iso8601-doc 
+  - ghc-attoparsec-iso8601-prof 
+  - ghc-attoparsec-prof 
   - ghc-auto-update 
   - ghc-auto-update-devel 
+  - ghc-auto-update-doc 
+  - ghc-auto-update-prof 
   - ghc-aws 
   - ghc-aws-devel 
+  - ghc-aws-doc 
+  - ghc-aws-prof 
   - ghc-base 
   - ghc-base-compat 
   - ghc-base-compat-batteries 
   - ghc-base-compat-batteries-devel 
+  - ghc-base-compat-batteries-doc 
+  - ghc-base-compat-batteries-prof 
   - ghc-base-compat-devel 
+  - ghc-base-compat-doc 
+  - ghc-base-compat-prof 
   - ghc-base-devel 
+  - ghc-base-doc 
   - ghc-base-orphans 
   - ghc-base-orphans-devel 
+  - ghc-base-orphans-doc 
+  - ghc-base-orphans-prof 
+  - ghc-base-prof 
+  - ghc-base-unicode-symbols 
+  - ghc-base-unicode-symbols-devel 
+  - ghc-base-unicode-symbols-doc 
+  - ghc-base-unicode-symbols-prof 
   - ghc-base16-bytestring 
   - ghc-base16-bytestring-devel 
+  - ghc-base16-bytestring-doc 
+  - ghc-base16-bytestring-prof 
   - ghc-base64 
   - ghc-base64-bytestring 
   - ghc-base64-bytestring-devel 
+  - ghc-base64-bytestring-doc 
+  - ghc-base64-bytestring-prof 
   - ghc-base64-devel 
+  - ghc-base64-doc 
+  - ghc-base64-prof 
   - ghc-basement 
   - ghc-basement-devel 
+  - ghc-basement-doc 
+  - ghc-basement-prof 
   - ghc-bencode 
   - ghc-bencode-devel 
+  - ghc-bencode-doc 
+  - ghc-bencode-prof 
   - ghc-bifunctors 
   - ghc-bifunctors-devel 
+  - ghc-bifunctors-doc 
+  - ghc-bifunctors-prof 
   - ghc-bimap 
   - ghc-bimap-devel 
+  - ghc-bimap-doc 
+  - ghc-bimap-prof 
   - ghc-binary 
   - ghc-binary-devel 
+  - ghc-binary-doc 
   - ghc-binary-orphans 
   - ghc-binary-orphans-devel 
+  - ghc-binary-orphans-doc 
+  - ghc-binary-orphans-prof 
+  - ghc-binary-prof 
   - ghc-bitvec 
   - ghc-bitvec-devel 
+  - ghc-bitvec-doc 
+  - ghc-bitvec-prof 
   - ghc-blaze-builder 
   - ghc-blaze-builder-devel 
+  - ghc-blaze-builder-doc 
+  - ghc-blaze-builder-prof 
   - ghc-blaze-html 
   - ghc-blaze-html-devel 
+  - ghc-blaze-html-doc 
+  - ghc-blaze-html-prof 
   - ghc-blaze-markup 
   - ghc-blaze-markup-devel 
+  - ghc-blaze-markup-doc 
+  - ghc-blaze-markup-prof 
   - ghc-bloomfilter 
   - ghc-bloomfilter-devel 
+  - ghc-bloomfilter-doc 
+  - ghc-bloomfilter-prof 
   - ghc-bootstrap 
   - ghc-bootstrap-helpers 
   - ghc-boring 
   - ghc-boring-devel 
+  - ghc-boring-doc 
+  - ghc-boring-prof 
   - ghc-brick 
   - ghc-brick-devel 
+  - ghc-brick-doc 
+  - ghc-brick-prof 
   - ghc-bsb-http-chunked 
   - ghc-bsb-http-chunked-devel 
+  - ghc-bsb-http-chunked-doc 
+  - ghc-bsb-http-chunked-prof 
   - ghc-byteable 
   - ghc-byteable-devel 
+  - ghc-byteable-doc 
+  - ghc-byteable-prof 
   - ghc-byteorder 
   - ghc-byteorder-devel 
+  - ghc-byteorder-doc 
+  - ghc-byteorder-prof 
   - ghc-bytestring 
   - ghc-bytestring-builder 
   - ghc-bytestring-builder-devel 
   - ghc-bytestring-devel 
+  - ghc-bytestring-doc 
+  - ghc-bytestring-prof 
   - ghc-cabal-doctest 
   - ghc-cabal-doctest-devel 
+  - ghc-cabal-doctest-doc 
+  - ghc-cabal-doctest-prof 
+  - ghc-cabal-install 
+  - ghc-cabal-install-devel 
+  - ghc-cabal-install-doc 
+  - ghc-cabal-install-prof 
+  - ghc-cabal-install-solver 
+  - ghc-cabal-install-solver-devel 
+  - ghc-cabal-install-solver-doc 
+  - ghc-cabal-install-solver-prof 
   - ghc-cabal-plan 
   - ghc-cabal-plan-devel 
+  - ghc-cabal-plan-doc 
+  - ghc-cabal-plan-prof 
   - ghc-cabal2spec 
   - ghc-cabal2spec-devel 
+  - ghc-cabal2spec-doc 
+  - ghc-cabal2spec-prof 
   - ghc-cairo 
   - ghc-cairo-devel 
+  - ghc-cairo-doc 
+  - ghc-cairo-prof 
   - ghc-call-stack 
   - ghc-call-stack-devel 
+  - ghc-call-stack-doc 
+  - ghc-call-stack-prof 
   - ghc-case-insensitive 
   - ghc-case-insensitive-devel 
+  - ghc-case-insensitive-doc 
+  - ghc-case-insensitive-prof 
   - ghc-cassava 
   - ghc-cassava-devel 
+  - ghc-cassava-doc 
   - ghc-cassava-megaparsec 
   - ghc-cassava-megaparsec-devel 
+  - ghc-cassava-megaparsec-doc 
+  - ghc-cassava-megaparsec-prof 
+  - ghc-cassava-prof 
   - ghc-cereal 
   - ghc-cereal-devel 
+  - ghc-cereal-doc 
+  - ghc-cereal-prof 
   - ghc-cipher-aes 
   - ghc-cipher-aes-devel 
+  - ghc-cipher-aes-doc 
+  - ghc-cipher-aes-prof 
   - ghc-citeproc 
   - ghc-citeproc-devel 
+  - ghc-citeproc-doc 
+  - ghc-citeproc-prof 
   - ghc-clientsession 
   - ghc-clientsession-devel 
+  - ghc-clientsession-doc 
+  - ghc-clientsession-prof 
   - ghc-clock 
   - ghc-clock-devel 
+  - ghc-clock-doc 
+  - ghc-clock-prof 
   - ghc-cmdargs 
   - ghc-cmdargs-devel 
+  - ghc-cmdargs-doc 
+  - ghc-cmdargs-prof 
   - ghc-code-page 
   - ghc-code-page-devel 
+  - ghc-code-page-doc 
+  - ghc-code-page-prof 
   - ghc-colour 
   - ghc-colour-devel 
+  - ghc-colour-doc 
+  - ghc-colour-prof 
+  - ghc-colourista 
+  - ghc-colourista-devel 
+  - ghc-colourista-doc 
+  - ghc-colourista-prof 
   - ghc-commonmark 
   - ghc-commonmark-devel 
+  - ghc-commonmark-doc 
   - ghc-commonmark-extensions 
   - ghc-commonmark-extensions-devel 
+  - ghc-commonmark-extensions-doc 
+  - ghc-commonmark-extensions-prof 
   - ghc-commonmark-pandoc 
   - ghc-commonmark-pandoc-devel 
+  - ghc-commonmark-pandoc-doc 
+  - ghc-commonmark-pandoc-prof 
+  - ghc-commonmark-prof 
+  - ghc-commutative-semigroups 
+  - ghc-commutative-semigroups-devel 
+  - ghc-commutative-semigroups-doc 
+  - ghc-commutative-semigroups-prof 
   - ghc-comonad 
   - ghc-comonad-devel 
+  - ghc-comonad-doc 
+  - ghc-comonad-prof 
   - ghc-compiler 
   - ghc-concurrent-output 
   - ghc-concurrent-output-devel 
+  - ghc-concurrent-output-doc 
+  - ghc-concurrent-output-prof 
   - ghc-conduit 
   - ghc-conduit-devel 
+  - ghc-conduit-doc 
   - ghc-conduit-extra 
   - ghc-conduit-extra-devel 
+  - ghc-conduit-extra-doc 
+  - ghc-conduit-extra-prof 
+  - ghc-conduit-prof 
   - ghc-config-ini 
   - ghc-config-ini-devel 
+  - ghc-config-ini-doc 
+  - ghc-config-ini-prof 
   - ghc-connection 
   - ghc-connection-devel 
+  - ghc-connection-doc 
+  - ghc-connection-prof 
   - ghc-constraints 
   - ghc-constraints-devel 
+  - ghc-constraints-doc 
+  - ghc-constraints-prof 
   - ghc-containers 
   - ghc-containers-devel 
+  - ghc-containers-doc 
+  - ghc-containers-prof 
   - ghc-contravariant 
   - ghc-contravariant-devel 
+  - ghc-contravariant-doc 
+  - ghc-contravariant-prof 
   - ghc-control-monad-free 
   - ghc-control-monad-free-devel 
+  - ghc-control-monad-free-doc 
+  - ghc-control-monad-free-prof 
   - ghc-cookie 
   - ghc-cookie-devel 
+  - ghc-cookie-doc 
+  - ghc-cookie-prof 
   - ghc-cpphs 
   - ghc-cpphs-devel 
+  - ghc-cpphs-doc 
+  - ghc-cpphs-prof 
   - ghc-cprng-aes 
   - ghc-cprng-aes-devel 
+  - ghc-cprng-aes-doc 
+  - ghc-cprng-aes-prof 
   - ghc-criterion 
   - ghc-criterion-devel 
+  - ghc-criterion-doc 
   - ghc-criterion-measurement 
   - ghc-criterion-measurement-devel 
+  - ghc-criterion-measurement-doc 
+  - ghc-criterion-measurement-prof 
+  - ghc-criterion-prof 
   - ghc-crypto-api 
   - ghc-crypto-api-devel 
+  - ghc-crypto-api-doc 
+  - ghc-crypto-api-prof 
   - ghc-crypto-cipher-types 
   - ghc-crypto-cipher-types-devel 
+  - ghc-crypto-cipher-types-doc 
+  - ghc-crypto-cipher-types-prof 
   - ghc-crypto-random 
   - ghc-crypto-random-devel 
+  - ghc-crypto-random-doc 
+  - ghc-crypto-random-prof 
   - ghc-cryptohash-md5 
   - ghc-cryptohash-md5-devel 
+  - ghc-cryptohash-md5-doc 
+  - ghc-cryptohash-md5-prof 
   - ghc-cryptohash-sha1 
   - ghc-cryptohash-sha1-devel 
+  - ghc-cryptohash-sha1-doc 
+  - ghc-cryptohash-sha1-prof 
   - ghc-cryptohash-sha256 
   - ghc-cryptohash-sha256-devel 
+  - ghc-cryptohash-sha256-doc 
+  - ghc-cryptohash-sha256-prof 
   - ghc-cryptonite 
   - ghc-cryptonite-conduit 
   - ghc-cryptonite-conduit-devel 
+  - ghc-cryptonite-conduit-doc 
+  - ghc-cryptonite-conduit-prof 
   - ghc-cryptonite-devel 
+  - ghc-cryptonite-doc 
+  - ghc-cryptonite-prof 
   - ghc-css-text 
   - ghc-css-text-devel 
+  - ghc-css-text-doc 
+  - ghc-css-text-prof 
   - ghc-csv 
   - ghc-csv-devel 
+  - ghc-csv-doc 
+  - ghc-csv-prof 
   - ghc-data-clist 
   - ghc-data-clist-devel 
+  - ghc-data-clist-doc 
+  - ghc-data-clist-prof 
   - ghc-data-default 
   - ghc-data-default-class 
   - ghc-data-default-class-devel 
+  - ghc-data-default-class-doc 
+  - ghc-data-default-class-prof 
   - ghc-data-default-devel 
+  - ghc-data-default-doc 
   - ghc-data-default-instances-containers 
   - ghc-data-default-instances-containers-devel 
+  - ghc-data-default-instances-containers-doc 
+  - ghc-data-default-instances-containers-prof 
   - ghc-data-default-instances-dlist 
   - ghc-data-default-instances-dlist-devel 
+  - ghc-data-default-instances-dlist-doc 
+  - ghc-data-default-instances-dlist-prof 
   - ghc-data-default-instances-old-locale 
   - ghc-data-default-instances-old-locale-devel 
+  - ghc-data-default-instances-old-locale-doc 
+  - ghc-data-default-instances-old-locale-prof 
+  - ghc-data-default-prof 
   - ghc-data-fix 
   - ghc-data-fix-devel 
+  - ghc-data-fix-doc 
+  - ghc-data-fix-prof 
   - ghc-dbus 
   - ghc-dbus-devel 
+  - ghc-dbus-doc 
+  - ghc-dbus-prof 
   - ghc-dec 
   - ghc-dec-devel 
+  - ghc-dec-doc 
+  - ghc-dec-prof 
   - ghc-deepseq 
   - ghc-deepseq-devel 
+  - ghc-deepseq-doc 
+  - ghc-deepseq-prof 
   - ghc-dense-linear-algebra 
   - ghc-dense-linear-algebra-devel 
+  - ghc-dense-linear-algebra-doc 
+  - ghc-dense-linear-algebra-prof 
   - ghc-deriving-aeson 
   - ghc-deriving-aeson-devel 
+  - ghc-deriving-aeson-doc 
+  - ghc-deriving-aeson-prof 
+  - ghc-devel 
   - ghc-digest 
   - ghc-digest-devel 
+  - ghc-digest-doc 
+  - ghc-digest-prof 
   - ghc-directory 
   - ghc-directory-devel 
+  - ghc-directory-doc 
+  - ghc-directory-prof 
   - ghc-disk-free-space 
   - ghc-disk-free-space-devel 
+  - ghc-disk-free-space-doc 
+  - ghc-disk-free-space-prof 
   - ghc-distributive 
   - ghc-distributive-devel 
+  - ghc-distributive-doc 
+  - ghc-distributive-prof 
   - ghc-dlist 
   - ghc-dlist-devel 
+  - ghc-dlist-doc 
+  - ghc-dlist-prof 
+  - ghc-doc 
+  - ghc-doc-index 
   - ghc-doclayout 
   - ghc-doclayout-devel 
+  - ghc-doclayout-doc 
+  - ghc-doclayout-prof 
   - ghc-doctemplates 
   - ghc-doctemplates-devel 
+  - ghc-doctemplates-doc 
+  - ghc-doctemplates-prof 
   - ghc-easy-file 
   - ghc-easy-file-devel 
+  - ghc-easy-file-doc 
+  - ghc-easy-file-prof 
   - ghc-echo 
   - ghc-echo-devel 
+  - ghc-echo-doc 
+  - ghc-echo-prof 
   - ghc-ed25519 
   - ghc-ed25519-devel 
+  - ghc-ed25519-doc 
+  - ghc-ed25519-prof 
   - ghc-edit-distance 
   - ghc-edit-distance-devel 
+  - ghc-edit-distance-doc 
+  - ghc-edit-distance-prof 
   - ghc-email-validate 
   - ghc-email-validate-devel 
+  - ghc-email-validate-doc 
+  - ghc-email-validate-prof 
   - ghc-emojis 
   - ghc-emojis-devel 
+  - ghc-emojis-doc 
+  - ghc-emojis-prof 
   - ghc-entropy 
   - ghc-entropy-devel 
+  - ghc-entropy-doc 
+  - ghc-entropy-prof 
   - ghc-exceptions 
   - ghc-exceptions-devel 
+  - ghc-exceptions-doc 
+  - ghc-exceptions-prof 
   - ghc-extensible-exceptions 
   - ghc-extensible-exceptions-devel 
+  - ghc-extensible-exceptions-doc 
+  - ghc-extensible-exceptions-prof 
   - ghc-extra 
   - ghc-extra-devel 
+  - ghc-extra-doc 
+  - ghc-extra-prof 
   - ghc-fast-logger 
   - ghc-fast-logger-devel 
+  - ghc-fast-logger-doc 
+  - ghc-fast-logger-prof 
   - ghc-fdo-notify 
   - ghc-fdo-notify-devel 
+  - ghc-fdo-notify-doc 
+  - ghc-fdo-notify-prof 
   - ghc-feed 
   - ghc-feed-devel 
+  - ghc-feed-doc 
+  - ghc-feed-prof 
   - ghc-fgl 
   - ghc-fgl-devel 
+  - ghc-fgl-doc 
+  - ghc-fgl-prof 
   - ghc-file-embed 
   - ghc-file-embed-devel 
+  - ghc-file-embed-doc 
+  - ghc-file-embed-prof 
   - ghc-filepath 
   - ghc-filepath-bytestring 
   - ghc-filepath-bytestring-devel 
+  - ghc-filepath-bytestring-doc 
+  - ghc-filepath-bytestring-prof 
   - ghc-filepath-devel 
+  - ghc-filepath-doc 
+  - ghc-filepath-prof 
   - ghc-filepattern 
   - ghc-filepattern-devel 
+  - ghc-filepattern-doc 
+  - ghc-filepattern-prof 
+  - ghc-filesystem 
   - ghc-foldl 
   - ghc-foldl-devel 
+  - ghc-foldl-doc 
+  - ghc-foldl-prof 
   - ghc-free 
   - ghc-free-devel 
+  - ghc-free-doc 
+  - ghc-free-prof 
   - ghc-fsnotify 
   - ghc-fsnotify-devel 
+  - ghc-fsnotify-doc 
+  - ghc-fsnotify-prof 
   - ghc-generically 
   - ghc-generically-devel 
+  - ghc-generically-doc 
+  - ghc-generically-prof 
   - ghc-ghc 
   - ghc-ghc-boot 
   - ghc-ghc-boot-devel 
+  - ghc-ghc-boot-doc 
+  - ghc-ghc-boot-prof 
   - ghc-ghc-boot-th 
   - ghc-ghc-boot-th-devel 
+  - ghc-ghc-boot-th-doc 
+  - ghc-ghc-boot-th-prof 
   - ghc-ghc-compact 
   - ghc-ghc-compact-devel 
+  - ghc-ghc-compact-doc 
+  - ghc-ghc-compact-prof 
   - ghc-ghc-devel 
+  - ghc-ghc-doc 
   - ghc-ghc-heap 
   - ghc-ghc-heap-devel 
+  - ghc-ghc-heap-doc 
+  - ghc-ghc-heap-prof 
+  - ghc-ghc-lib-parser 
+  - ghc-ghc-lib-parser-devel 
+  - ghc-ghc-lib-parser-doc 
   - ghc-ghc-lib-parser-ex 
   - ghc-ghc-lib-parser-ex-devel 
+  - ghc-ghc-lib-parser-ex-doc 
+  - ghc-ghc-lib-parser-ex-prof 
+  - ghc-ghc-lib-parser-prof 
+  - ghc-ghc-prof 
   - ghc-ghci 
   - ghc-ghci-devel 
+  - ghc-ghci-doc 
+  - ghc-ghci-prof 
   - ghc-git-lfs 
   - ghc-git-lfs-devel 
   - ghc-githash 
   - ghc-githash-devel 
+  - ghc-githash-doc 
+  - ghc-githash-prof 
   - ghc-gitrev 
   - ghc-gitrev-devel 
+  - ghc-gitrev-doc 
+  - ghc-gitrev-prof 
   - ghc-glib 
   - ghc-glib-devel 
+  - ghc-glib-doc 
+  - ghc-glib-prof 
   - ghc-gridtables 
   - ghc-gridtables-devel 
+  - ghc-gridtables-doc 
+  - ghc-gridtables-prof 
   - ghc-gtk2hs-buildtools 
   - ghc-gtk2hs-buildtools-devel 
+  - ghc-gtk2hs-buildtools-doc 
+  - ghc-gtk2hs-buildtools-prof 
   - ghc-hackage-security 
   - ghc-hackage-security-devel 
+  - ghc-hackage-security-doc 
+  - ghc-hackage-security-prof 
   - ghc-haddock-library 
   - ghc-haddock-library-devel 
+  - ghc-haddock-library-doc 
+  - ghc-haddock-library-prof 
+  - ghc-hadolint 
+  - ghc-hadolint-devel 
+  - ghc-hadolint-doc 
+  - ghc-hadolint-prof 
   - ghc-hashable 
   - ghc-hashable-devel 
+  - ghc-hashable-doc 
+  - ghc-hashable-prof 
   - ghc-hashtables 
   - ghc-hashtables-devel 
+  - ghc-hashtables-doc 
+  - ghc-hashtables-prof 
   - ghc-haskeline 
   - ghc-haskeline-devel 
+  - ghc-haskeline-doc 
+  - ghc-haskeline-prof 
   - ghc-haskell-lexer 
   - ghc-haskell-lexer-devel 
+  - ghc-haskell-lexer-doc 
+  - ghc-haskell-lexer-prof 
   - ghc-hinotify 
   - ghc-hinotify-devel 
+  - ghc-hinotify-doc 
+  - ghc-hinotify-prof 
   - ghc-hjsmin 
   - ghc-hjsmin-devel 
+  - ghc-hjsmin-doc 
+  - ghc-hjsmin-prof 
   - ghc-hledger 
   - ghc-hledger-devel 
+  - ghc-hledger-doc 
   - ghc-hledger-lib 
   - ghc-hledger-lib-devel 
+  - ghc-hledger-lib-doc 
+  - ghc-hledger-lib-prof 
+  - ghc-hledger-prof 
   - ghc-hlint 
   - ghc-hlint-devel 
+  - ghc-hlint-doc 
+  - ghc-hlint-prof 
   - ghc-hourglass 
   - ghc-hourglass-devel 
+  - ghc-hourglass-doc 
+  - ghc-hourglass-prof 
   - ghc-hpc 
   - ghc-hpc-devel 
+  - ghc-hpc-doc 
+  - ghc-hpc-prof 
   - ghc-hscolour 
   - ghc-hscolour-devel 
+  - ghc-hscolour-doc 
+  - ghc-hscolour-prof 
   - ghc-hslua 
   - ghc-hslua-aeson 
   - ghc-hslua-aeson-devel 
+  - ghc-hslua-aeson-doc 
+  - ghc-hslua-aeson-prof 
   - ghc-hslua-classes 
   - ghc-hslua-classes-devel 
+  - ghc-hslua-classes-doc 
+  - ghc-hslua-classes-prof 
+  - ghc-hslua-cli 
+  - ghc-hslua-cli-devel 
+  - ghc-hslua-cli-doc 
+  - ghc-hslua-cli-prof 
   - ghc-hslua-core 
   - ghc-hslua-core-devel 
+  - ghc-hslua-core-doc 
+  - ghc-hslua-core-prof 
   - ghc-hslua-devel 
+  - ghc-hslua-doc 
   - ghc-hslua-list 
   - ghc-hslua-list-devel 
+  - ghc-hslua-list-doc 
+  - ghc-hslua-list-prof 
   - ghc-hslua-marshalling 
   - ghc-hslua-marshalling-devel 
+  - ghc-hslua-marshalling-doc 
+  - ghc-hslua-marshalling-prof 
   - ghc-hslua-module-doclayout 
   - ghc-hslua-module-doclayout-devel 
+  - ghc-hslua-module-doclayout-doc 
+  - ghc-hslua-module-doclayout-prof 
   - ghc-hslua-module-path 
   - ghc-hslua-module-path-devel 
+  - ghc-hslua-module-path-doc 
+  - ghc-hslua-module-path-prof 
   - ghc-hslua-module-system 
   - ghc-hslua-module-system-devel 
+  - ghc-hslua-module-system-doc 
+  - ghc-hslua-module-system-prof 
   - ghc-hslua-module-text 
   - ghc-hslua-module-text-devel 
+  - ghc-hslua-module-text-doc 
+  - ghc-hslua-module-text-prof 
   - ghc-hslua-module-version 
   - ghc-hslua-module-version-devel 
+  - ghc-hslua-module-version-doc 
+  - ghc-hslua-module-version-prof 
+  - ghc-hslua-module-zip 
+  - ghc-hslua-module-zip-devel 
+  - ghc-hslua-module-zip-doc 
+  - ghc-hslua-module-zip-prof 
   - ghc-hslua-objectorientation 
   - ghc-hslua-objectorientation-devel 
+  - ghc-hslua-objectorientation-doc 
+  - ghc-hslua-objectorientation-prof 
   - ghc-hslua-packaging 
   - ghc-hslua-packaging-devel 
+  - ghc-hslua-packaging-doc 
+  - ghc-hslua-packaging-prof 
+  - ghc-hslua-prof 
   - ghc-html 
   - ghc-html-devel 
+  - ghc-html-doc 
+  - ghc-html-prof 
   - ghc-http-api-data 
   - ghc-http-api-data-devel 
+  - ghc-http-api-data-doc 
+  - ghc-http-api-data-prof 
   - ghc-http-client 
   - ghc-http-client-devel 
+  - ghc-http-client-doc 
+  - ghc-http-client-prof 
   - ghc-http-client-restricted 
   - ghc-http-client-restricted-devel 
+  - ghc-http-client-restricted-doc 
+  - ghc-http-client-restricted-prof 
   - ghc-http-client-tls 
   - ghc-http-client-tls-devel 
+  - ghc-http-client-tls-doc 
+  - ghc-http-client-tls-prof 
   - ghc-http-conduit 
   - ghc-http-conduit-devel 
+  - ghc-http-conduit-doc 
+  - ghc-http-conduit-prof 
   - ghc-http-date 
   - ghc-http-date-devel 
+  - ghc-http-date-doc 
+  - ghc-http-date-prof 
   - ghc-http-media 
   - ghc-http-media-devel 
+  - ghc-http-media-doc 
+  - ghc-http-media-prof 
   - ghc-http-types 
   - ghc-http-types-devel 
+  - ghc-http-types-doc 
+  - ghc-http-types-prof 
   - ghc-http2 
   - ghc-http2-devel 
+  - ghc-http2-doc 
+  - ghc-http2-prof 
+  - ghc-ilist 
+  - ghc-ilist-devel 
+  - ghc-ilist-doc 
+  - ghc-ilist-prof 
   - ghc-indexed-profunctors 
   - ghc-indexed-profunctors-devel 
+  - ghc-indexed-profunctors-doc 
+  - ghc-indexed-profunctors-prof 
   - ghc-indexed-traversable 
   - ghc-indexed-traversable-devel 
+  - ghc-indexed-traversable-doc 
   - ghc-indexed-traversable-instances 
   - ghc-indexed-traversable-instances-devel 
+  - ghc-indexed-traversable-instances-doc 
+  - ghc-indexed-traversable-instances-prof 
+  - ghc-indexed-traversable-prof 
   - ghc-integer-logarithms 
   - ghc-integer-logarithms-devel 
+  - ghc-integer-logarithms-doc 
+  - ghc-integer-logarithms-prof 
   - ghc-invariant 
   - ghc-invariant-devel 
+  - ghc-invariant-doc 
+  - ghc-invariant-prof 
   - ghc-iproute 
   - ghc-iproute-devel 
+  - ghc-iproute-doc 
+  - ghc-iproute-prof 
   - ghc-ipynb 
   - ghc-ipynb-devel 
+  - ghc-ipynb-doc 
+  - ghc-ipynb-prof 
   - ghc-iwlib 
   - ghc-iwlib-devel 
+  - ghc-iwlib-doc 
+  - ghc-iwlib-prof 
   - ghc-jira-wiki-markup 
   - ghc-jira-wiki-markup-devel 
+  - ghc-jira-wiki-markup-doc 
+  - ghc-jira-wiki-markup-prof 
   - ghc-js-chart 
   - ghc-js-chart-devel 
+  - ghc-js-chart-doc 
+  - ghc-js-chart-prof 
   - ghc-kan-extensions 
   - ghc-kan-extensions-devel 
+  - ghc-kan-extensions-doc 
+  - ghc-kan-extensions-prof 
   - ghc-language-c 
   - ghc-language-c-devel 
+  - ghc-language-docker 
+  - ghc-language-docker-devel 
+  - ghc-language-docker-doc 
+  - ghc-language-docker-prof 
   - ghc-language-javascript 
   - ghc-language-javascript-devel 
+  - ghc-language-javascript-doc 
+  - ghc-language-javascript-prof 
   - ghc-lens 
   - ghc-lens-devel 
+  - ghc-lens-doc 
+  - ghc-lens-prof 
   - ghc-libiserv 
   - ghc-libiserv-devel 
+  - ghc-libiserv-doc 
+  - ghc-libiserv-prof 
   - ghc-libmpd 
   - ghc-libmpd-devel 
-  - ghc-libraries 
+  - ghc-libmpd-doc 
+  - ghc-libmpd-prof 
   - ghc-libyaml 
   - ghc-libyaml-devel 
+  - ghc-libyaml-doc 
+  - ghc-libyaml-prof 
   - ghc-lift-type 
   - ghc-lift-type-devel 
+  - ghc-lift-type-doc 
+  - ghc-lift-type-prof 
   - ghc-lifted-base 
   - ghc-lifted-base-devel 
+  - ghc-lifted-base-doc 
+  - ghc-lifted-base-prof 
   - ghc-lpeg 
   - ghc-lpeg-devel 
+  - ghc-lpeg-doc 
+  - ghc-lpeg-prof 
   - ghc-lua 
   - ghc-lua-devel 
+  - ghc-lua-doc 
+  - ghc-lua-prof 
   - ghc-lucid 
   - ghc-lucid-devel 
+  - ghc-lucid-doc 
+  - ghc-lucid-prof 
   - ghc-lukko 
   - ghc-lukko-devel 
+  - ghc-lukko-doc 
+  - ghc-lukko-prof 
   - ghc-magic 
   - ghc-magic-devel 
+  - ghc-magic-doc 
+  - ghc-magic-prof 
+  - ghc-manual 
   - ghc-math-functions 
   - ghc-math-functions-devel 
+  - ghc-math-functions-doc 
+  - ghc-math-functions-prof 
   - ghc-megaparsec 
   - ghc-megaparsec-devel 
+  - ghc-megaparsec-doc 
+  - ghc-megaparsec-prof 
   - ghc-memory 
   - ghc-memory-devel 
+  - ghc-memory-doc 
+  - ghc-memory-prof 
   - ghc-microlens 
   - ghc-microlens-devel 
+  - ghc-microlens-doc 
   - ghc-microlens-ghc 
   - ghc-microlens-ghc-devel 
+  - ghc-microlens-ghc-doc 
+  - ghc-microlens-ghc-prof 
   - ghc-microlens-mtl 
   - ghc-microlens-mtl-devel 
+  - ghc-microlens-mtl-doc 
+  - ghc-microlens-mtl-prof 
   - ghc-microlens-platform 
   - ghc-microlens-platform-devel 
+  - ghc-microlens-platform-doc 
+  - ghc-microlens-platform-prof 
+  - ghc-microlens-prof 
   - ghc-microlens-th 
   - ghc-microlens-th-devel 
+  - ghc-microlens-th-doc 
+  - ghc-microlens-th-prof 
   - ghc-microstache 
   - ghc-microstache-devel 
+  - ghc-microstache-doc 
+  - ghc-microstache-prof 
   - ghc-mime-types 
   - ghc-mime-types-devel 
+  - ghc-mime-types-doc 
+  - ghc-mime-types-prof 
   - ghc-mmorph 
   - ghc-mmorph-devel 
+  - ghc-mmorph-doc 
+  - ghc-mmorph-prof 
   - ghc-monad-control 
   - ghc-monad-control-devel 
+  - ghc-monad-control-doc 
+  - ghc-monad-control-prof 
   - ghc-monad-logger 
   - ghc-monad-logger-devel 
+  - ghc-monad-logger-doc 
+  - ghc-monad-logger-prof 
   - ghc-monad-loops 
   - ghc-monad-loops-devel 
+  - ghc-monad-loops-doc 
+  - ghc-monad-loops-prof 
   - ghc-mono-traversable 
   - ghc-mono-traversable-devel 
+  - ghc-mono-traversable-doc 
+  - ghc-mono-traversable-prof 
+  - ghc-monoid-subclasses 
+  - ghc-monoid-subclasses-devel 
+  - ghc-monoid-subclasses-doc 
+  - ghc-monoid-subclasses-prof 
   - ghc-mountpoints 
   - ghc-mountpoints-devel 
+  - ghc-mountpoints-doc 
+  - ghc-mountpoints-prof 
   - ghc-mtl 
   - ghc-mtl-devel 
+  - ghc-mtl-doc 
+  - ghc-mtl-prof 
   - ghc-mwc-random 
   - ghc-mwc-random-devel 
+  - ghc-mwc-random-doc 
+  - ghc-mwc-random-prof 
   - ghc-netlink 
   - ghc-netlink-devel 
+  - ghc-netlink-doc 
+  - ghc-netlink-prof 
   - ghc-network 
   - ghc-network-bsd 
   - ghc-network-bsd-devel 
+  - ghc-network-bsd-doc 
+  - ghc-network-bsd-prof 
   - ghc-network-byte-order 
   - ghc-network-byte-order-devel 
+  - ghc-network-byte-order-doc 
+  - ghc-network-byte-order-prof 
   - ghc-network-devel 
+  - ghc-network-doc 
   - ghc-network-info 
   - ghc-network-info-devel 
+  - ghc-network-info-doc 
+  - ghc-network-info-prof 
   - ghc-network-multicast 
   - ghc-network-multicast-devel 
+  - ghc-network-multicast-doc 
+  - ghc-network-multicast-prof 
+  - ghc-network-prof 
   - ghc-network-uri 
   - ghc-network-uri-devel 
+  - ghc-network-uri-doc 
+  - ghc-network-uri-prof 
   - ghc-old-locale 
   - ghc-old-locale-devel 
+  - ghc-old-locale-doc 
+  - ghc-old-locale-prof 
   - ghc-old-time 
   - ghc-old-time-devel 
+  - ghc-old-time-doc 
+  - ghc-old-time-prof 
   - ghc-optics-core 
   - ghc-optics-core-devel 
+  - ghc-optics-core-doc 
+  - ghc-optics-core-prof 
   - ghc-optparse-applicative 
   - ghc-optparse-applicative-devel 
+  - ghc-optparse-applicative-doc 
+  - ghc-optparse-applicative-prof 
   - ghc-pandoc 
   - ghc-pandoc-devel 
+  - ghc-pandoc-doc 
+  - ghc-pandoc-lua-engine 
+  - ghc-pandoc-lua-engine-devel 
+  - ghc-pandoc-lua-engine-doc 
+  - ghc-pandoc-lua-engine-prof 
   - ghc-pandoc-lua-marshal 
   - ghc-pandoc-lua-marshal-devel 
+  - ghc-pandoc-lua-marshal-doc 
+  - ghc-pandoc-lua-marshal-prof 
+  - ghc-pandoc-prof 
+  - ghc-pandoc-server 
+  - ghc-pandoc-server-devel 
+  - ghc-pandoc-server-doc 
+  - ghc-pandoc-server-prof 
   - ghc-pandoc-types 
   - ghc-pandoc-types-devel 
+  - ghc-pandoc-types-doc 
+  - ghc-pandoc-types-prof 
   - ghc-pango 
   - ghc-pango-devel 
+  - ghc-pango-doc 
+  - ghc-pango-prof 
   - ghc-parallel 
   - ghc-parallel-devel 
+  - ghc-parallel-doc 
+  - ghc-parallel-prof 
   - ghc-parsec 
   - ghc-parsec-devel 
+  - ghc-parsec-doc 
   - ghc-parsec-numbers 
   - ghc-parsec-numbers-devel 
+  - ghc-parsec-numbers-doc 
+  - ghc-parsec-numbers-prof 
+  - ghc-parsec-prof 
   - ghc-parser-combinators 
   - ghc-parser-combinators-devel 
+  - ghc-parser-combinators-doc 
+  - ghc-parser-combinators-prof 
   - ghc-path-pieces 
   - ghc-path-pieces-devel 
+  - ghc-path-pieces-doc 
+  - ghc-path-pieces-prof 
   - ghc-pem 
   - ghc-pem-devel 
+  - ghc-pem-doc 
+  - ghc-pem-prof 
   - ghc-persistent 
   - ghc-persistent-devel 
+  - ghc-persistent-doc 
+  - ghc-persistent-prof 
   - ghc-persistent-sqlite 
   - ghc-persistent-sqlite-devel 
+  - ghc-persistent-sqlite-doc 
+  - ghc-persistent-sqlite-prof 
   - ghc-persistent-template 
   - ghc-persistent-template-devel 
   - ghc-polyparse 
   - ghc-polyparse-devel 
+  - ghc-polyparse-doc 
+  - ghc-polyparse-prof 
   - ghc-postgresql-libpq 
   - ghc-postgresql-libpq-devel 
+  - ghc-postgresql-libpq-doc 
+  - ghc-postgresql-libpq-prof 
   - ghc-postgresql-simple 
   - ghc-postgresql-simple-devel 
+  - ghc-postgresql-simple-doc 
+  - ghc-postgresql-simple-prof 
   - ghc-pretty 
   - ghc-pretty-devel 
+  - ghc-pretty-doc 
   - ghc-pretty-hex 
   - ghc-pretty-hex-devel 
+  - ghc-pretty-hex-doc 
+  - ghc-pretty-hex-prof 
+  - ghc-pretty-prof 
   - ghc-pretty-show 
   - ghc-pretty-show-devel 
+  - ghc-pretty-show-doc 
+  - ghc-pretty-show-prof 
   - ghc-pretty-simple 
   - ghc-pretty-simple-devel 
+  - ghc-pretty-simple-doc 
+  - ghc-pretty-simple-prof 
   - ghc-prettyprinter 
   - ghc-prettyprinter-ansi-terminal 
   - ghc-prettyprinter-ansi-terminal-devel 
+  - ghc-prettyprinter-ansi-terminal-doc 
+  - ghc-prettyprinter-ansi-terminal-prof 
   - ghc-prettyprinter-devel 
+  - ghc-prettyprinter-doc 
+  - ghc-prettyprinter-prof 
+  - ghc-primes 
+  - ghc-primes-devel 
+  - ghc-primes-doc 
+  - ghc-primes-prof 
   - ghc-primitive 
   - ghc-primitive-devel 
+  - ghc-primitive-doc 
+  - ghc-primitive-prof 
   - ghc-process 
   - ghc-process-devel 
+  - ghc-process-doc 
+  - ghc-process-prof 
+  - ghc-prof 
   - ghc-profunctors 
   - ghc-profunctors-devel 
+  - ghc-profunctors-doc 
+  - ghc-profunctors-prof 
   - ghc-psqueues 
   - ghc-psqueues-devel 
+  - ghc-psqueues-doc 
+  - ghc-psqueues-prof 
   - ghc-random 
   - ghc-random-devel 
+  - ghc-random-doc 
+  - ghc-random-prof 
   - ghc-recv 
   - ghc-recv-devel 
+  - ghc-recv-doc 
+  - ghc-recv-prof 
   - ghc-refact 
   - ghc-refact-devel 
+  - ghc-refact-doc 
+  - ghc-refact-prof 
   - ghc-reflection 
   - ghc-reflection-devel 
+  - ghc-reflection-doc 
+  - ghc-reflection-prof 
   - ghc-regex-base 
   - ghc-regex-base-devel 
+  - ghc-regex-base-doc 
+  - ghc-regex-base-prof 
   - ghc-regex-compat 
   - ghc-regex-compat-devel 
+  - ghc-regex-compat-doc 
+  - ghc-regex-compat-prof 
   - ghc-regex-posix 
   - ghc-regex-posix-devel 
+  - ghc-regex-posix-doc 
+  - ghc-regex-posix-prof 
   - ghc-regex-tdfa 
   - ghc-regex-tdfa-devel 
+  - ghc-regex-tdfa-doc 
+  - ghc-regex-tdfa-prof 
   - ghc-resolv 
   - ghc-resolv-devel 
+  - ghc-resolv-doc 
+  - ghc-resolv-prof 
   - ghc-resource-pool 
   - ghc-resource-pool-devel 
+  - ghc-resource-pool-doc 
+  - ghc-resource-pool-prof 
   - ghc-resourcet 
   - ghc-resourcet-devel 
+  - ghc-resourcet-doc 
+  - ghc-resourcet-prof 
   - ghc-rpm-macros 
   - ghc-rpm-macros-extra 
   - ghc-safe 
   - ghc-safe-devel 
+  - ghc-safe-doc 
   - ghc-safe-exceptions 
   - ghc-safe-exceptions-devel 
+  - ghc-safe-exceptions-doc 
+  - ghc-safe-exceptions-prof 
+  - ghc-safe-prof 
   - ghc-sandi 
   - ghc-sandi-devel 
+  - ghc-sandi-doc 
+  - ghc-sandi-prof 
   - ghc-scientific 
   - ghc-scientific-devel 
+  - ghc-scientific-doc 
+  - ghc-scientific-prof 
   - ghc-securemem 
   - ghc-securemem-devel 
+  - ghc-securemem-doc 
+  - ghc-securemem-prof 
   - ghc-semialign 
   - ghc-semialign-devel 
+  - ghc-semialign-doc 
+  - ghc-semialign-prof 
   - ghc-semigroupoids 
   - ghc-semigroupoids-devel 
+  - ghc-semigroupoids-doc 
+  - ghc-semigroupoids-prof 
   - ghc-semigroups 
   - ghc-semigroups-devel 
+  - ghc-semigroups-doc 
+  - ghc-semigroups-prof 
+  - ghc-semver 
+  - ghc-semver-devel 
+  - ghc-semver-doc 
+  - ghc-semver-prof 
   - ghc-servant 
   - ghc-servant-devel 
+  - ghc-servant-doc 
+  - ghc-servant-prof 
   - ghc-servant-server 
   - ghc-servant-server-devel 
+  - ghc-servant-server-doc 
+  - ghc-servant-server-prof 
   - ghc-setenv 
   - ghc-setenv-devel 
+  - ghc-setenv-doc 
+  - ghc-setenv-prof 
   - ghc-setlocale 
   - ghc-setlocale-devel 
+  - ghc-setlocale-doc 
+  - ghc-setlocale-prof 
   - ghc-shakespeare 
   - ghc-shakespeare-devel 
+  - ghc-shakespeare-doc 
+  - ghc-shakespeare-prof 
   - ghc-silently 
   - ghc-silently-devel 
+  - ghc-silently-doc 
+  - ghc-silently-prof 
   - ghc-simple-sendfile 
   - ghc-simple-sendfile-devel 
+  - ghc-simple-sendfile-doc 
+  - ghc-simple-sendfile-prof 
   - ghc-singleton-bool 
   - ghc-singleton-bool-devel 
+  - ghc-singleton-bool-doc 
+  - ghc-singleton-bool-prof 
   - ghc-skein 
   - ghc-skein-devel 
+  - ghc-skein-doc 
+  - ghc-skein-prof 
   - ghc-skylighting 
   - ghc-skylighting-core 
   - ghc-skylighting-core-devel 
+  - ghc-skylighting-core-doc 
+  - ghc-skylighting-core-prof 
   - ghc-skylighting-devel 
+  - ghc-skylighting-doc 
   - ghc-skylighting-format-ansi 
   - ghc-skylighting-format-ansi-devel 
+  - ghc-skylighting-format-ansi-doc 
+  - ghc-skylighting-format-ansi-prof 
   - ghc-skylighting-format-blaze-html 
   - ghc-skylighting-format-blaze-html-devel 
+  - ghc-skylighting-format-blaze-html-doc 
+  - ghc-skylighting-format-blaze-html-prof 
   - ghc-skylighting-format-context 
   - ghc-skylighting-format-context-devel 
+  - ghc-skylighting-format-context-doc 
+  - ghc-skylighting-format-context-prof 
   - ghc-skylighting-format-latex 
   - ghc-skylighting-format-latex-devel 
+  - ghc-skylighting-format-latex-doc 
+  - ghc-skylighting-format-latex-prof 
+  - ghc-skylighting-prof 
   - ghc-socks 
   - ghc-socks-devel 
+  - ghc-socks-doc 
+  - ghc-socks-prof 
   - ghc-some 
   - ghc-some-devel 
+  - ghc-some-doc 
+  - ghc-some-prof 
   - ghc-sop-core 
   - ghc-sop-core-devel 
+  - ghc-sop-core-doc 
+  - ghc-sop-core-prof 
+  - ghc-spdx 
+  - ghc-spdx-devel 
+  - ghc-spdx-doc 
+  - ghc-spdx-prof 
   - ghc-split 
   - ghc-split-devel 
+  - ghc-split-doc 
+  - ghc-split-prof 
   - ghc-splitmix 
   - ghc-splitmix-devel 
+  - ghc-splitmix-doc 
+  - ghc-splitmix-prof 
   - ghc-statistics 
   - ghc-statistics-devel 
+  - ghc-statistics-doc 
+  - ghc-statistics-prof 
   - ghc-stm 
   - ghc-stm-chans 
   - ghc-stm-chans-devel 
+  - ghc-stm-chans-doc 
+  - ghc-stm-chans-prof 
   - ghc-stm-devel 
+  - ghc-stm-doc 
+  - ghc-stm-prof 
   - ghc-streaming-commons 
   - ghc-streaming-commons-devel 
+  - ghc-streaming-commons-doc 
+  - ghc-streaming-commons-prof 
   - ghc-strict 
   - ghc-strict-devel 
+  - ghc-strict-doc 
+  - ghc-strict-prof 
   - ghc-string-conversions 
   - ghc-string-conversions-devel 
+  - ghc-string-conversions-doc 
+  - ghc-string-conversions-prof 
   - ghc-syb 
   - ghc-syb-devel 
+  - ghc-syb-doc 
+  - ghc-syb-prof 
   - ghc-tabular 
   - ghc-tabular-devel 
+  - ghc-tabular-doc 
+  - ghc-tabular-prof 
   - ghc-tagged 
   - ghc-tagged-devel 
+  - ghc-tagged-doc 
+  - ghc-tagged-prof 
   - ghc-tagsoup 
   - ghc-tagsoup-devel 
+  - ghc-tagsoup-doc 
+  - ghc-tagsoup-prof 
   - ghc-tar 
   - ghc-tar-devel 
+  - ghc-tar-doc 
+  - ghc-tar-prof 
   - ghc-tasty 
   - ghc-tasty-devel 
+  - ghc-tasty-doc 
   - ghc-tasty-hunit 
   - ghc-tasty-hunit-devel 
+  - ghc-tasty-hunit-doc 
+  - ghc-tasty-hunit-prof 
+  - ghc-tasty-prof 
   - ghc-tasty-quickcheck 
   - ghc-tasty-quickcheck-devel 
+  - ghc-tasty-quickcheck-doc 
+  - ghc-tasty-quickcheck-prof 
   - ghc-tasty-rerun 
   - ghc-tasty-rerun-devel 
+  - ghc-tasty-rerun-doc 
+  - ghc-tasty-rerun-prof 
   - ghc-template-haskell 
   - ghc-template-haskell-devel 
+  - ghc-template-haskell-doc 
+  - ghc-template-haskell-prof 
   - ghc-temporary 
   - ghc-temporary-devel 
+  - ghc-temporary-doc 
+  - ghc-temporary-prof 
   - ghc-terminal-size 
   - ghc-terminal-size-devel 
+  - ghc-terminal-size-doc 
+  - ghc-terminal-size-prof 
   - ghc-terminfo 
   - ghc-terminfo-devel 
+  - ghc-terminfo-doc 
+  - ghc-terminfo-prof 
   - ghc-texmath 
   - ghc-texmath-devel 
+  - ghc-texmath-doc 
+  - ghc-texmath-prof 
   - ghc-text 
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
+  - ghc-text-conversions-doc 
+  - ghc-text-conversions-prof 
   - ghc-text-devel 
+  - ghc-text-doc 
+  - ghc-text-prof 
   - ghc-text-short 
   - ghc-text-short-devel 
+  - ghc-text-short-doc 
+  - ghc-text-short-prof 
   - ghc-text-zipper 
   - ghc-text-zipper-devel 
+  - ghc-text-zipper-doc 
+  - ghc-text-zipper-prof 
   - ghc-th-abstraction 
   - ghc-th-abstraction-devel 
+  - ghc-th-abstraction-doc 
+  - ghc-th-abstraction-prof 
   - ghc-th-compat 
   - ghc-th-compat-devel 
+  - ghc-th-compat-doc 
+  - ghc-th-compat-prof 
   - ghc-th-lift 
   - ghc-th-lift-devel 
+  - ghc-th-lift-doc 
   - ghc-th-lift-instances 
   - ghc-th-lift-instances-devel 
+  - ghc-th-lift-instances-doc 
+  - ghc-th-lift-instances-prof 
+  - ghc-th-lift-prof 
   - ghc-these 
   - ghc-these-devel 
+  - ghc-these-doc 
+  - ghc-these-prof 
   - ghc-time 
   - ghc-time-compat 
   - ghc-time-compat-devel 
+  - ghc-time-compat-doc 
+  - ghc-time-compat-prof 
   - ghc-time-devel 
+  - ghc-time-doc 
   - ghc-time-locale-compat 
   - ghc-time-locale-compat-devel 
+  - ghc-time-locale-compat-doc 
+  - ghc-time-locale-compat-prof 
   - ghc-time-manager 
   - ghc-time-manager-devel 
+  - ghc-time-manager-doc 
+  - ghc-time-manager-prof 
+  - ghc-time-prof 
   - ghc-timeit 
   - ghc-timeit-devel 
+  - ghc-timeit-doc 
+  - ghc-timeit-prof 
+  - ghc-timerep 
+  - ghc-timerep-devel 
+  - ghc-timerep-doc 
+  - ghc-timerep-prof 
   - ghc-timezone-olson 
   - ghc-timezone-olson-devel 
+  - ghc-timezone-olson-doc 
+  - ghc-timezone-olson-prof 
   - ghc-timezone-series 
   - ghc-timezone-series-devel 
+  - ghc-timezone-series-doc 
+  - ghc-timezone-series-prof 
   - ghc-tls 
   - ghc-tls-devel 
+  - ghc-tls-doc 
+  - ghc-tls-prof 
   - ghc-tls-session-manager 
   - ghc-tls-session-manager-devel 
+  - ghc-tls-session-manager-doc 
+  - ghc-tls-session-manager-prof 
   - ghc-topograph 
   - ghc-topograph-devel 
+  - ghc-topograph-doc 
+  - ghc-topograph-prof 
   - ghc-torrent 
   - ghc-torrent-devel 
+  - ghc-torrent-doc 
+  - ghc-torrent-prof 
   - ghc-transformers 
   - ghc-transformers-base 
   - ghc-transformers-base-devel 
+  - ghc-transformers-base-doc 
+  - ghc-transformers-base-prof 
   - ghc-transformers-compat 
   - ghc-transformers-compat-devel 
+  - ghc-transformers-compat-doc 
+  - ghc-transformers-compat-prof 
   - ghc-transformers-devel 
+  - ghc-transformers-doc 
+  - ghc-transformers-prof 
   - ghc-type-equality 
   - ghc-type-equality-devel 
+  - ghc-type-equality-doc 
+  - ghc-type-equality-prof 
   - ghc-typed-process 
   - ghc-typed-process-devel 
+  - ghc-typed-process-doc 
+  - ghc-typed-process-prof 
   - ghc-uglymemo 
   - ghc-uglymemo-devel 
+  - ghc-uglymemo-doc 
+  - ghc-uglymemo-prof 
   - ghc-unbounded-delays 
   - ghc-unbounded-delays-devel 
   - ghc-unicode-collation 
   - ghc-unicode-collation-devel 
+  - ghc-unicode-collation-doc 
+  - ghc-unicode-collation-prof 
   - ghc-unicode-data 
   - ghc-unicode-data-devel 
+  - ghc-unicode-data-doc 
+  - ghc-unicode-data-prof 
   - ghc-unicode-transforms 
   - ghc-unicode-transforms-devel 
+  - ghc-unicode-transforms-doc 
+  - ghc-unicode-transforms-prof 
   - ghc-uniplate 
   - ghc-uniplate-devel 
+  - ghc-uniplate-doc 
+  - ghc-uniplate-prof 
   - ghc-unix 
   - ghc-unix-compat 
   - ghc-unix-compat-devel 
+  - ghc-unix-compat-doc 
+  - ghc-unix-compat-prof 
   - ghc-unix-devel 
+  - ghc-unix-doc 
+  - ghc-unix-prof 
   - ghc-unix-time 
   - ghc-unix-time-devel 
+  - ghc-unix-time-doc 
+  - ghc-unix-time-prof 
   - ghc-unliftio 
   - ghc-unliftio-core 
   - ghc-unliftio-core-devel 
+  - ghc-unliftio-core-doc 
+  - ghc-unliftio-core-prof 
   - ghc-unliftio-devel 
+  - ghc-unliftio-doc 
+  - ghc-unliftio-prof 
   - ghc-unordered-containers 
   - ghc-unordered-containers-devel 
+  - ghc-unordered-containers-doc 
+  - ghc-unordered-containers-prof 
   - ghc-utf8-string 
   - ghc-utf8-string-devel 
+  - ghc-utf8-string-doc 
+  - ghc-utf8-string-prof 
   - ghc-utility-ht 
   - ghc-utility-ht-devel 
+  - ghc-utility-ht-doc 
+  - ghc-utility-ht-prof 
   - ghc-uuid 
   - ghc-uuid-devel 
+  - ghc-uuid-doc 
+  - ghc-uuid-prof 
   - ghc-uuid-types 
   - ghc-uuid-types-devel 
+  - ghc-uuid-types-doc 
+  - ghc-uuid-types-prof 
   - ghc-vault 
   - ghc-vault-devel 
+  - ghc-vault-doc 
+  - ghc-vault-prof 
   - ghc-vector 
   - ghc-vector-algorithms 
   - ghc-vector-algorithms-devel 
+  - ghc-vector-algorithms-doc 
+  - ghc-vector-algorithms-prof 
   - ghc-vector-binary-instances 
   - ghc-vector-binary-instances-devel 
+  - ghc-vector-binary-instances-doc 
+  - ghc-vector-binary-instances-prof 
   - ghc-vector-devel 
+  - ghc-vector-doc 
+  - ghc-vector-prof 
   - ghc-vector-stream 
   - ghc-vector-stream-devel 
+  - ghc-vector-stream-doc 
+  - ghc-vector-stream-prof 
   - ghc-vector-th-unbox 
   - ghc-vector-th-unbox-devel 
+  - ghc-vector-th-unbox-doc 
+  - ghc-vector-th-unbox-prof 
   - ghc-void 
   - ghc-void-devel 
+  - ghc-void-doc 
+  - ghc-void-prof 
   - ghc-vty 
   - ghc-vty-devel 
+  - ghc-vty-doc 
+  - ghc-vty-prof 
   - ghc-wai 
   - ghc-wai-app-static 
   - ghc-wai-app-static-devel 
+  - ghc-wai-app-static-doc 
+  - ghc-wai-app-static-prof 
+  - ghc-wai-cors 
+  - ghc-wai-cors-devel 
+  - ghc-wai-cors-doc 
+  - ghc-wai-cors-prof 
   - ghc-wai-devel 
+  - ghc-wai-doc 
   - ghc-wai-extra 
   - ghc-wai-extra-devel 
+  - ghc-wai-extra-doc 
+  - ghc-wai-extra-prof 
   - ghc-wai-logger 
   - ghc-wai-logger-devel 
+  - ghc-wai-logger-doc 
+  - ghc-wai-logger-prof 
+  - ghc-wai-prof 
   - ghc-warp 
   - ghc-warp-devel 
+  - ghc-warp-doc 
+  - ghc-warp-prof 
   - ghc-warp-tls 
   - ghc-warp-tls-devel 
+  - ghc-warp-tls-doc 
+  - ghc-warp-tls-prof 
   - ghc-wcwidth 
   - ghc-wcwidth-devel 
   - ghc-witherable 
   - ghc-witherable-devel 
+  - ghc-witherable-doc 
+  - ghc-witherable-prof 
   - ghc-wizards 
   - ghc-wizards-devel 
+  - ghc-wizards-doc 
+  - ghc-wizards-prof 
   - ghc-word-wrap 
   - ghc-word-wrap-devel 
+  - ghc-word-wrap-doc 
+  - ghc-word-wrap-prof 
   - ghc-word8 
   - ghc-word8-devel 
+  - ghc-word8-doc 
+  - ghc-word8-prof 
   - ghc-x509 
   - ghc-x509-devel 
+  - ghc-x509-doc 
+  - ghc-x509-prof 
   - ghc-x509-store 
   - ghc-x509-store-devel 
+  - ghc-x509-store-doc 
+  - ghc-x509-store-prof 
   - ghc-x509-system 
   - ghc-x509-system-devel 
+  - ghc-x509-system-doc 
+  - ghc-x509-system-prof 
   - ghc-x509-validation 
   - ghc-x509-validation-devel 
+  - ghc-x509-validation-doc 
+  - ghc-x509-validation-prof 
   - ghc-xhtml 
   - ghc-xhtml-devel 
+  - ghc-xhtml-doc 
+  - ghc-xhtml-prof 
   - ghc-xml 
   - ghc-xml-conduit 
   - ghc-xml-conduit-devel 
+  - ghc-xml-conduit-doc 
+  - ghc-xml-conduit-prof 
   - ghc-xml-devel 
+  - ghc-xml-doc 
   - ghc-xml-hamlet 
   - ghc-xml-hamlet-devel 
+  - ghc-xml-hamlet-doc 
+  - ghc-xml-hamlet-prof 
+  - ghc-xml-prof 
   - ghc-xml-types 
   - ghc-xml-types-devel 
+  - ghc-xml-types-doc 
+  - ghc-xml-types-prof 
   - ghc-xmobar 
   - ghc-xmobar-devel 
+  - ghc-xmobar-doc 
+  - ghc-xmobar-prof 
   - ghc-xmonad 
   - ghc-xmonad-contrib 
   - ghc-xmonad-contrib-devel 
+  - ghc-xmonad-contrib-doc 
+  - ghc-xmonad-contrib-prof 
   - ghc-xmonad-devel 
+  - ghc-xmonad-doc 
+  - ghc-xmonad-prof 
   - ghc-xss-sanitize 
   - ghc-xss-sanitize-devel 
+  - ghc-xss-sanitize-doc 
+  - ghc-xss-sanitize-prof 
   - ghc-yaml 
   - ghc-yaml-devel 
+  - ghc-yaml-doc 
+  - ghc-yaml-prof 
   - ghc-yesod 
   - ghc-yesod-core 
   - ghc-yesod-core-devel 
+  - ghc-yesod-core-doc 
+  - ghc-yesod-core-prof 
   - ghc-yesod-devel 
+  - ghc-yesod-doc 
   - ghc-yesod-form 
   - ghc-yesod-form-devel 
+  - ghc-yesod-form-doc 
+  - ghc-yesod-form-prof 
   - ghc-yesod-persistent 
   - ghc-yesod-persistent-devel 
+  - ghc-yesod-persistent-doc 
+  - ghc-yesod-persistent-prof 
+  - ghc-yesod-prof 
   - ghc-yesod-static 
   - ghc-yesod-static-devel 
+  - ghc-yesod-static-doc 
+  - ghc-yesod-static-prof 
   - ghc-zip-archive 
   - ghc-zip-archive-devel 
+  - ghc-zip-archive-doc 
+  - ghc-zip-archive-prof 
   - ghc-zlib 
-  - ghc-zlib-bindings 
-  - ghc-zlib-bindings-devel 
   - ghc-zlib-devel 
+  - ghc-zlib-doc 
+  - ghc-zlib-prof 
   - ghex 
   - ghex-devel 
   - ghex-lang 
@@ -6558,6 +7465,7 @@ unsorted:
   - hackrf-firmware 
   - hackrf-udev 
   - hactool 
+  - hadolint 
   - haguichi 
   - haguichi-lang 
   - hamcrest 
@@ -16342,8 +17250,10 @@ unsorted:
   - mingw64-cpp 
   - mingw64-cross-binutils 
   - mingw64-cross-binutils-utils 
+  - mingw64-cross-cmake 
   - mingw64-cross-cpp 
   - mingw64-cross-cpp-bootstrap 
+  - mingw64-cross-ctest 
   - mingw64-cross-gcc 
   - mingw64-cross-gcc-bootstrap 
   - mingw64-cross-gcc-c++ 
@@ -16843,8 +17753,6 @@ unsorted:
   - multiverse-javadoc 
   - multus 
   - multus-k8s-yaml 
-  - mumble 
-  - mumble-server 
   - mumps-devel 
   - mumps-devel-static 
   - mumps-doc 
@@ -17868,6 +18776,8 @@ unsorted:
   - ocaml-bigarray-compat-devel 
   - ocaml-bisect_ppx 
   - ocaml-bisect_ppx-devel 
+  - ocaml-bos 
+  - ocaml-bos-devel 
   - ocaml-brlapi 
   - ocaml-cairo 
   - ocaml-cairo-devel 
@@ -17972,6 +18882,8 @@ unsorted:
   - ocaml-rope 
   - ocaml-rope-devel 
   - ocaml-rpm-macros 
+  - ocaml-rresult 
+  - ocaml-rresult-devel 
   - ocaml-runtime 
   - ocaml-sedlex 
   - ocaml-sedlex-devel 
@@ -18783,6 +19695,7 @@ unsorted:
   - pan 
   - pan-lang 
   - pandoc 
+  - pandoc-cli 
   - pango-devel 
   - pango-devel-32bit 
   - pango-tools 
@@ -21096,8 +22009,6 @@ unsorted:
   - postsrsd 
   - potrace 
   - potrace-devel 
-  - pound 
-  - pound-doc 
   - povray 
   - povray-doc 
   - power-profiles-daemon-doc 
@@ -23813,6 +24724,7 @@ unsorted:
   - python310-ncclient 
   - python310-ndg-httpsclient 
   - python310-ndjson 
+  - python310-ndtiff 
   - python310-neovim 
   - python310-nest-asyncio 
   - python310-nested-lookup 
@@ -25571,7 +26483,6 @@ unsorted:
   - python311-aubio 
   - python311-audio-degrader 
   - python311-audiogrep 
-  - python311-audiomate 
   - python311-audioread 
   - python311-augeas 
   - python311-authheaders 
@@ -26046,6 +26957,14 @@ unsorted:
   - python311-cheroot 
   - python311-chest 
   - python311-circuitbreaker 
+  - python311-cirq 
+  - python311-cirq-aqt 
+  - python311-cirq-core 
+  - python311-cirq-google 
+  - python311-cirq-ionq 
+  - python311-cirq-pasqal 
+  - python311-cirq-rigetti 
+  - python311-cirq-web 
   - python311-ciscoconfparse 
   - python311-cl 
   - python311-cleo 
@@ -27157,6 +28076,7 @@ unsorted:
   - python311-ncclient 
   - python311-ndg-httpsclient 
   - python311-ndjson 
+  - python311-ndtiff 
   - python311-neovim 
   - python311-nest-asyncio 
   - python311-nested-lookup 
@@ -28591,243 +29511,86 @@ unsorted:
   - python311-zypp-plugin 
   - python38 
   - python38-32bit 
-  - python38-APScheduler 
   - python38-AnyQt 
   - python38-Arpeggio 
-  - python38-Authlib 
-  - python38-Automat 
-  - python38-BTrees 
-  - python38-BTrees-devel 
-  - python38-Babel 
-  - python38-Beaker 
   - python38-BitVector 
-  - python38-Bottleneck 
   - python38-Brotli 
   - python38-CCColUtils 
-  - python38-CacheControl 
-  - python38-CairoSVG 
   - python38-Cerberus 
-  - python38-Chameleon 
   - python38-Cheetah3 
-  - python38-CherryPy 
   - python38-CommonMark 
-  - python38-ConfigArgParse 
   - python38-ConfigUpdater 
-  - python38-Cycler 
-  - python38-Cython 
   - python38-Cython3 
-  - python38-DataProperty 
-  - python38-DataShape 
-  - python38-DateTime 
-  - python38-Delorean 
-  - python38-Deprecated 
-  - python38-Django 
   - python38-Dumper 
   - python38-Durus 
   - python38-EasyProcess 
   - python38-EditorConfig 
   - python38-ExifRead 
-  - python38-Fabric 
-  - python38-Faker 
-  - python38-Fiona 
-  - python38-Flask 
-  - python38-Flask-Admin 
-  - python38-Flask-Babel 
-  - python38-Flask-BabelEx 
-  - python38-Flask-Bootstrap 
-  - python38-Flask-Caching 
-  - python38-Flask-Compress 
-  - python38-Flask-Cors 
-  - python38-Flask-Gravatar 
-  - python38-Flask-HTMLmin 
-  - python38-Flask-HTTPAuth 
-  - python38-Flask-Login 
-  - python38-Flask-Mail 
-  - python38-Flask-Mailman 
-  - python38-Flask-Migrate 
-  - python38-Flask-Paranoid 
-  - python38-Flask-Principal 
-  - python38-Flask-RESTful 
-  - python38-Flask-RSTPages 
-  - python38-Flask-SQLAlchemy 
   - python38-Flask-Security-Too 
-  - python38-Flask-SocketIO 
-  - python38-Flask-Testing 
-  - python38-Flask-WTF 
-  - python38-Flask-doc 
-  - python38-FontTools 
-  - python38-FormEncode 
-  - python38-Genshi 
-  - python38-GitPython 
-  - python38-Glances 
-  - python38-Gloo 
-  - python38-Glymur 
   - python38-GooCalendar 
-  - python38-GooseMPL 
-  - python38-GridDataFormats 
-  - python38-HTTPolice 
   - python38-HeapDict 
   - python38-HepMC 
   - python38-IMAPClient 
-  - python38-IMDbPY 
   - python38-JPype1 
-  - python38-Jinja2 
-  - python38-Js2Py 
   - python38-JsonWeb 
   - python38-Kajiki 
-  - python38-Kivy 
-  - python38-Kivy-devel 
   - python38-LHAPDF 
-  - python38-LTTL 
-  - python38-Lektor 
   - python38-Levenshtein 
   - python38-Logbook 
   - python38-M2Crypto 
-  - python38-Mako 
-  - python38-Markdown 
   - python38-MarkupPy 
-  - python38-MarkupSafe 
-  - python38-Markups 
-  - python38-Mathics 
-  - python38-Mathics-Scanner 
-  - python38-MechanicalSoup 
   - python38-MiniMock 
   - python38-Morfessor 
-  - python38-MouseInfo 
-  - python38-MulticoreTSNE 
-  - python38-Nuitka 
-  - python38-OSMPythonTools 
-  - python38-OWSLib 
-  - python38-PGet 
   - python38-PTable 
-  - python38-Pallets-Sphinx-Themes 
   - python38-Parsley 
-  - python38-Paste 
-  - python38-PasteDeploy 
-  - python38-PeakUtils 
   - python38-Pebble 
-  - python38-Pillow 
-  - python38-Pillow-tk 
-  - python38-Pint 
-  - python38-Protego 
-  - python38-PsyLab 
   - python38-PubChemPy 
-  - python38-Pweave 
   - python38-PyAudio 
-  - python38-PyAutoGUI 
   - python38-PyBindGen 
-  - python38-PyBrowserID 
-  - python38-PyCBC 
   - python38-PyChart 
-  - python38-PyChromecast 
   - python38-PyCondor 
   - python38-PyDispatcher 
   - python38-PyECLib 
-  - python38-PyFxA 
-  - python38-PyGithub 
-  - python38-PyHamcrest 
   - python38-PyICU 
-  - python38-PyInstaller 
-  - python38-PyJWT 
-  - python38-PyKMIP 
   - python38-PyLaTeX 
   - python38-PyMeeus 
   - python38-PyMeta3 
   - python38-PyMsgBox 
   - python38-PyMuPDF 
-  - python38-PyMySQL 
-  - python38-PyNaCl 
-  - python38-PyNamecheap 
   - python38-PyOgg 
   - python38-PyOpenAL 
   - python38-PyPDF2 
-  - python38-PyPDF3 
-  - python38-PyPrind 
   - python38-PyQRCode 
-  - python38-PyQt6 
-  - python38-PyQt6-3D 
-  - python38-PyQt6-3D-devel 
-  - python38-PyQt6-Charts 
-  - python38-PyQt6-Charts-devel 
-  - python38-PyQt6-DataVisualization 
-  - python38-PyQt6-DataVisualization-devel 
-  - python38-PyQt6-NetworkAuth 
-  - python38-PyQt6-NetworkAuth-devel 
-  - python38-PyQt6-QScintilla 
-  - python38-PyQt6-WebEngine 
-  - python38-PyQt6-WebEngine-devel 
-  - python38-PyQt6-devel 
-  - python38-PyQt6-doc 
   - python38-PyQt6-sip 
   - python38-PyRIC 
   - python38-PyRSS2Gen 
   - python38-PyRect 
   - python38-PySDL2 
-  - python38-PyScreeze 
   - python38-PySocks 
-  - python38-PyTrie 
   - python38-PyTweening 
   - python38-PyVirtualDisplay 
-  - python38-PyWavelets 
-  - python38-PyWebDAV3 
   - python38-PyWebDAV3-GNUHealth 
   - python38-PyX 
-  - python38-PyYAML 
-  - python38-Pygments 
   - python38-Pympler 
   - python38-Pyphen 
   - python38-Pyro4 
   - python38-Pyro5 
-  - python38-QDarkStyle 
   - python38-QR-Code-generator 
-  - python38-QtAwesome 
-  - python38-QtPy 
-  - python38-QtPy-test 
-  - python38-RegexOrder 
-  - python38-Routes 
   - python38-Rtree 
-  - python38-SPARQLWrapper 
-  - python38-SQLAlchemy 
-  - python38-SQLAlchemy-Utils 
-  - python38-Scrapy 
-  - python38-SecretStorage 
   - python38-Send2Trash 
   - python38-Shapely 
   - python38-SimpleWebSocketServer 
-  - python38-SoundCard 
-  - python38-SoundFile 
-  - python38-SpeechRecognition 
-  - python38-Sphinx 
-  - python38-Sphinx-latex 
   - python38-TagStats 
-  - python38-Telethon 
   - python38-Tempita 
-  - python38-TermRecord 
-  - python38-Theano 
-  - python38-Transplant 
   - python38-Trolly 
   - python38-Trololio 
-  - python38-Twisted 
-  - python38-Twisted-all_non_platform 
-  - python38-Twisted-conch 
-  - python38-Twisted-conch_nacl 
-  - python38-Twisted-contextvars 
-  - python38-Twisted-http2 
-  - python38-Twisted-serial 
-  - python38-Twisted-tls 
-  - python38-TxSNI 
   - python38-URLObject 
   - python38-UkPostcodeParser 
   - python38-Unidecode 
   - python38-VyattaConfParser 
-  - python38-WSGIProxy2 
-  - python38-WSME 
-  - python38-WTForms 
-  - python38-WTForms-lang 
   - python38-Wand 
   - python38-WebOb 
   - python38-WebTest 
-  - python38-Werkzeug 
   - python38-Whoosh 
   - python38-XStatic 
   - python38-XStatic-Angular-Schema-Form 
@@ -28838,1513 +29601,432 @@ unsorted:
   - python38-XStatic-tv4 
   - python38-XlsxWriter 
   - python38-Yapsy 
-  - python38-ZConfig 
-  - python38-ZConfig-doc 
-  - python38-ZEO 
-  - python38-ZODB 
-  - python38-abimap 
-  - python38-abimap-doc 
   - python38-abseil 
-  - python38-accessible-pygments 
-  - python38-acefile 
-  - python38-acitoolkit 
-  - python38-acme 
   - python38-acoular 
-  - python38-actdiag 
-  - python38-adal 
   - python38-adapt-parser 
   - python38-adblock 
   - python38-addict 
   - python38-aeidon 
   - python38-aenum 
   - python38-aexpect 
-  - python38-afdko 
   - python38-affine 
-  - python38-agate 
-  - python38-agate-dbf 
-  - python38-agate-excel 
-  - python38-agate-lookup 
-  - python38-agate-remote 
-  - python38-agate-sql 
-  - python38-agate-stats 
-  - python38-aina 
   - python38-aiodataloader 
-  - python38-aiodns 
-  - python38-aioeventlet 
   - python38-aiofiles 
-  - python38-aioftp 
-  - python38-aiohttp 
-  - python38-aiohttp-jinja2 
-  - python38-aiohttp-socks 
   - python38-aiohttp-theme 
-  - python38-aiohttp_cors 
-  - python38-aioitertools 
-  - python38-aioquic 
-  - python38-aioresponses 
-  - python38-aiorpcX 
-  - python38-aiosignal 
-  - python38-aiosmtpd 
   - python38-aiosmtplib 
   - python38-aiosqlite 
-  - python38-aiostream 
-  - python38-aiounittest 
   - python38-ajsonrpc 
-  - python38-akismet 
-  - python38-alabaster 
   - python38-aldjemy 
-  - python38-alembic 
   - python38-allpairspy 
   - python38-alsa 
-  - python38-altair 
-  - python38-altair-widgets 
   - python38-altgraph 
   - python38-amqp 
-  - python38-amqpstorm 
-  - python38-ana 
   - python38-aniso8601 
   - python38-annoy 
   - python38-ansel 
-  - python38-ansi2html 
   - python38-ansicolor 
   - python38-ansicolors 
   - python38-ansiwrap 
   - python38-antlr4-python3-runtime 
   - python38-anyascii 
-  - python38-anyio 
   - python38-anyjson 
   - python38-anymarkup-core 
-  - python38-apache-libcloud 
   - python38-apfel 
-  - python38-apipkg 
-  - python38-apiron 
-  - python38-apns2 
-  - python38-appdirs 
   - python38-application 
   - python38-applicationinsights 
-  - python38-apptools 
   - python38-apsw 
-  - python38-arabic-reshaper 
   - python38-archmage 
-  - python38-arf 
   - python38-argcomplete 
   - python38-argh 
-  - python38-argon2-cffi 
-  - python38-argon2-cffi-bindings 
-  - python38-argparse-manpage 
   - python38-args 
-  - python38-arrow 
-  - python38-asciimatics 
   - python38-asciitree 
-  - python38-asdf 
-  - python38-asdf-astropy 
-  - python38-asdf-coordinates-schemas 
-  - python38-asdf-standard 
-  - python38-asdf-transform-schemas 
-  - python38-asdf-wcs-schemas 
-  - python38-ase 
-  - python38-asgiref 
   - python38-asn1crypto 
-  - python38-aspectlib 
-  - python38-aspy.yaml 
   - python38-ast-decompiler 
   - python38-asteval 
-  - python38-astor 
-  - python38-astral 
-  - python38-astroid 
-  - python38-astropy 
-  - python38-astropy-healpix 
-  - python38-asttokens 
-  - python38-astunparse 
-  - python38-asv 
-  - python38-async_generator 
-  - python38-async_timeout 
-  - python38-asyncclick 
   - python38-asyncpg 
-  - python38-asyncssh 
-  - python38-atlassian-python-api 
   - python38-atom 
   - python38-atomicwrites 
   - python38-atpublic 
-  - python38-atspi 
   - python38-attr 
-  - python38-attrs 
-  - python38-aubio 
-  - python38-audio-degrader 
   - python38-audiogrep 
-  - python38-audiomate 
   - python38-audioread 
   - python38-augeas 
-  - python38-authheaders 
   - python38-authres 
-  - python38-autobahn 
   - python38-autocommand 
-  - python38-autodocsumm 
-  - python38-autoflake 
   - python38-autopage 
-  - python38-autopep8 
   - python38-autoray 
-  - python38-autoupgrade-ng 
-  - python38-av 
-  - python38-avahi 
-  - python38-avro 
-  - python38-awkward 
-  - python38-awkward-cpp 
   - python38-awpa 
-  - python38-aws-sam-translator 
-  - python38-aws-xray-sdk 
-  - python38-aws-xray-sdk-Django 
-  - python38-aws-xray-sdk-Flask-SQLAlchemy 
-  - python38-aws-xray-sdk-SQLAlchemy 
-  - python38-aws-xray-sdk-aiohttp 
-  - python38-aws-xray-sdk-all 
-  - python38-aws-xray-sdk-bottle 
-  - python38-aws-xray-sdk-mysql-connector 
-  - python38-aws-xray-sdk-psycopg2 
-  - python38-aws-xray-sdk-pymongo 
-  - python38-aws-xray-sdk-pynamodb 
-  - python38-aws-xray-sdk-requests 
   - python38-awscrt 
-  - python38-axolotl 
   - python38-axolotl-curve25519 
-  - python38-azure-agrifood-farming 
   - python38-azure-agrifood-nspkg 
-  - python38-azure-ai-anomalydetector 
-  - python38-azure-ai-formrecognizer 
-  - python38-azure-ai-language-conversations 
   - python38-azure-ai-language-nspkg 
-  - python38-azure-ai-language-questionanswering 
-  - python38-azure-ai-metricsadvisor 
-  - python38-azure-ai-ml 
   - python38-azure-ai-nspkg 
-  - python38-azure-ai-textanalytics 
-  - python38-azure-ai-translation-document 
   - python38-azure-ai-translation-nspkg 
-  - python38-azure-appconfiguration 
-  - python38-azure-applicationinsights 
-  - python38-azure-batch 
-  - python38-azure-cognitiveservices-anomalydetector 
-  - python38-azure-cognitiveservices-formrecognizer 
-  - python38-azure-cognitiveservices-inkrecognizer 
   - python38-azure-cognitiveservices-knowledge-nspkg 
-  - python38-azure-cognitiveservices-knowledge-qnamaker 
-  - python38-azure-cognitiveservices-language-luis 
   - python38-azure-cognitiveservices-language-nspkg 
-  - python38-azure-cognitiveservices-language-spellcheck 
-  - python38-azure-cognitiveservices-language-textanalytics 
   - python38-azure-cognitiveservices-nspkg 
-  - python38-azure-cognitiveservices-personalizer 
-  - python38-azure-cognitiveservices-search-autosuggest 
-  - python38-azure-cognitiveservices-search-customimagesearch 
-  - python38-azure-cognitiveservices-search-customsearch 
-  - python38-azure-cognitiveservices-search-entitysearch 
-  - python38-azure-cognitiveservices-search-imagesearch 
-  - python38-azure-cognitiveservices-search-newssearch 
   - python38-azure-cognitiveservices-search-nspkg 
-  - python38-azure-cognitiveservices-search-videosearch 
-  - python38-azure-cognitiveservices-search-visualsearch 
-  - python38-azure-cognitiveservices-search-websearch 
-  - python38-azure-cognitiveservices-vision-computervision 
-  - python38-azure-cognitiveservices-vision-contentmoderator 
-  - python38-azure-cognitiveservices-vision-customvision 
-  - python38-azure-cognitiveservices-vision-face 
   - python38-azure-cognitiveservices-vision-nspkg 
   - python38-azure-common 
-  - python38-azure-communication-administration 
-  - python38-azure-communication-chat 
-  - python38-azure-communication-email 
-  - python38-azure-communication-identity 
-  - python38-azure-communication-networktraversal 
   - python38-azure-communication-nspkg 
-  - python38-azure-communication-phonenumbers 
-  - python38-azure-communication-sms 
-  - python38-azure-confidentialledger 
-  - python38-azure-containerregistry 
-  - python38-azure-core 
-  - python38-azure-core-tracing-opencensus 
-  - python38-azure-core-tracing-opentelemetry 
-  - python38-azure-cosmos 
   - python38-azure-data-nspkg 
-  - python38-azure-data-tables 
-  - python38-azure-datalake-store 
-  - python38-azure-developer-loadtesting 
-  - python38-azure-digitaltwins-core 
   - python38-azure-digitaltwins-nspkg 
-  - python38-azure-eventgrid 
-  - python38-azure-eventhub 
-  - python38-azure-eventhub-checkpointstoreblob 
-  - python38-azure-eventhub-checkpointstoreblob-aio 
-  - python38-azure-functions-devops-build 
-  - python38-azure-graphrbac 
-  - python38-azure-identity 
-  - python38-azure-iot-deviceupdate 
   - python38-azure-iot-nspkg 
-  - python38-azure-keyvault 
-  - python38-azure-keyvault-administration 
-  - python38-azure-keyvault-certificates 
-  - python38-azure-keyvault-keys 
   - python38-azure-keyvault-nspkg 
-  - python38-azure-keyvault-secrets 
-  - python38-azure-loganalytics 
-  - python38-azure-maps-route 
   - python38-azure-media-nspkg 
-  - python38-azure-media-videoanalyzer-edge 
   - python38-azure-messaging-nspkg 
-  - python38-azure-messaging-webpubsubservice 
-  - python38-azure-mgmt 
-  - python38-azure-mgmt-advisor 
-  - python38-azure-mgmt-agfood 
-  - python38-azure-mgmt-agrifood 
-  - python38-azure-mgmt-alertsmanagement 
-  - python38-azure-mgmt-apimanagement 
-  - python38-azure-mgmt-app 
-  - python38-azure-mgmt-appcomplianceautomation 
-  - python38-azure-mgmt-appconfiguration 
-  - python38-azure-mgmt-appcontainers 
-  - python38-azure-mgmt-applicationinsights 
-  - python38-azure-mgmt-appplatform 
-  - python38-azure-mgmt-attestation 
-  - python38-azure-mgmt-authorization 
-  - python38-azure-mgmt-automanage 
-  - python38-azure-mgmt-automation 
-  - python38-azure-mgmt-avs 
-  - python38-azure-mgmt-azureadb2c 
-  - python38-azure-mgmt-azurearcdata 
-  - python38-azure-mgmt-azurestack 
-  - python38-azure-mgmt-azurestackhci 
-  - python38-azure-mgmt-baremetalinfrastructure 
-  - python38-azure-mgmt-batch 
-  - python38-azure-mgmt-batchai 
-  - python38-azure-mgmt-billing 
-  - python38-azure-mgmt-botservice 
-  - python38-azure-mgmt-cdn 
-  - python38-azure-mgmt-chaos 
-  - python38-azure-mgmt-cognitiveservices 
-  - python38-azure-mgmt-commerce 
-  - python38-azure-mgmt-communication 
-  - python38-azure-mgmt-compute 
-  - python38-azure-mgmt-confidentialledger 
-  - python38-azure-mgmt-confluent 
-  - python38-azure-mgmt-connectedvmware 
-  - python38-azure-mgmt-consumption 
-  - python38-azure-mgmt-containerinstance 
-  - python38-azure-mgmt-containerregistry 
-  - python38-azure-mgmt-containerservice 
-  - python38-azure-mgmt-core 
-  - python38-azure-mgmt-cosmosdb 
-  - python38-azure-mgmt-costmanagement 
-  - python38-azure-mgmt-customproviders 
-  - python38-azure-mgmt-dashboard 
-  - python38-azure-mgmt-databox 
-  - python38-azure-mgmt-databoxedge 
-  - python38-azure-mgmt-databricks 
-  - python38-azure-mgmt-datadog 
-  - python38-azure-mgmt-datafactory 
-  - python38-azure-mgmt-datalake-analytics 
   - python38-azure-mgmt-datalake-nspkg 
-  - python38-azure-mgmt-datalake-store 
-  - python38-azure-mgmt-datamigration 
-  - python38-azure-mgmt-dataprotection 
-  - python38-azure-mgmt-datashare 
-  - python38-azure-mgmt-defendereasm 
-  - python38-azure-mgmt-deploymentmanager 
-  - python38-azure-mgmt-desktopvirtualization 
-  - python38-azure-mgmt-devcenter 
-  - python38-azure-mgmt-deviceupdate 
-  - python38-azure-mgmt-devspaces 
-  - python38-azure-mgmt-devtestlabs 
-  - python38-azure-mgmt-digitaltwins 
-  - python38-azure-mgmt-dns 
-  - python38-azure-mgmt-dnsresolver 
-  - python38-azure-mgmt-documentdb 
-  - python38-azure-mgmt-dynatrace 
-  - python38-azure-mgmt-edgegateway 
-  - python38-azure-mgmt-edgeorder 
-  - python38-azure-mgmt-education 
-  - python38-azure-mgmt-elastic 
-  - python38-azure-mgmt-elasticsan 
-  - python38-azure-mgmt-eventgrid 
-  - python38-azure-mgmt-eventhub 
-  - python38-azure-mgmt-extendedlocation 
-  - python38-azure-mgmt-fluidrelay 
-  - python38-azure-mgmt-frontdoor 
-  - python38-azure-mgmt-graphservices 
-  - python38-azure-mgmt-guestconfig 
-  - python38-azure-mgmt-hanaonazure 
-  - python38-azure-mgmt-hdinsight 
-  - python38-azure-mgmt-healthcareapis 
-  - python38-azure-mgmt-hybridcompute 
-  - python38-azure-mgmt-hybridkubernetes 
-  - python38-azure-mgmt-hybridnetwork 
-  - python38-azure-mgmt-imagebuilder 
-  - python38-azure-mgmt-iotcentral 
-  - python38-azure-mgmt-iothub 
-  - python38-azure-mgmt-iothubprovisioningservices 
-  - python38-azure-mgmt-keyvault 
-  - python38-azure-mgmt-kubernetesconfiguration 
-  - python38-azure-mgmt-kusto 
-  - python38-azure-mgmt-labservices 
-  - python38-azure-mgmt-loadtesting 
-  - python38-azure-mgmt-loadtestservice 
-  - python38-azure-mgmt-loganalytics 
-  - python38-azure-mgmt-logic 
-  - python38-azure-mgmt-logz 
-  - python38-azure-mgmt-machinelearningcompute 
-  - python38-azure-mgmt-machinelearningservices 
-  - python38-azure-mgmt-maintenance 
-  - python38-azure-mgmt-managedservices 
-  - python38-azure-mgmt-managementgroups 
-  - python38-azure-mgmt-managementpartner 
-  - python38-azure-mgmt-maps 
-  - python38-azure-mgmt-marketplaceordering 
-  - python38-azure-mgmt-media 
-  - python38-azure-mgmt-mixedreality 
-  - python38-azure-mgmt-mobilenetwork 
-  - python38-azure-mgmt-monitor 
-  - python38-azure-mgmt-msi 
-  - python38-azure-mgmt-netapp 
-  - python38-azure-mgmt-network 
-  - python38-azure-mgmt-networkfunction 
-  - python38-azure-mgmt-newrelicobservability 
-  - python38-azure-mgmt-nginx 
-  - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
-  - python38-azure-mgmt-oep 
-  - python38-azure-mgmt-orbital 
-  - python38-azure-mgmt-peering 
-  - python38-azure-mgmt-policyinsights 
-  - python38-azure-mgmt-portal 
-  - python38-azure-mgmt-powerbidedicated 
-  - python38-azure-mgmt-powerbiembedded 
-  - python38-azure-mgmt-privatedns 
-  - python38-azure-mgmt-purview 
-  - python38-azure-mgmt-quantum 
-  - python38-azure-mgmt-quota 
-  - python38-azure-mgmt-rdbms 
-  - python38-azure-mgmt-recoveryservices 
-  - python38-azure-mgmt-recoveryservicesbackup 
-  - python38-azure-mgmt-recoveryservicessiterecovery 
-  - python38-azure-mgmt-redhatopenshift 
-  - python38-azure-mgmt-redis 
-  - python38-azure-mgmt-redisenterprise 
-  - python38-azure-mgmt-regionmove 
-  - python38-azure-mgmt-relay 
-  - python38-azure-mgmt-reservations 
-  - python38-azure-mgmt-resource 
-  - python38-azure-mgmt-resourceconnector 
-  - python38-azure-mgmt-resourcegraph 
-  - python38-azure-mgmt-resourcehealth 
-  - python38-azure-mgmt-resourcemover 
-  - python38-azure-mgmt-scheduler 
-  - python38-azure-mgmt-scvmm 
-  - python38-azure-mgmt-search 
-  - python38-azure-mgmt-security 
-  - python38-azure-mgmt-securitydevops 
-  - python38-azure-mgmt-securityinsight 
-  - python38-azure-mgmt-serialconsole 
-  - python38-azure-mgmt-servermanager 
-  - python38-azure-mgmt-servicebus 
-  - python38-azure-mgmt-servicefabric 
-  - python38-azure-mgmt-servicefabricmanagedclusters 
-  - python38-azure-mgmt-servicelinker 
-  - python38-azure-mgmt-servicenetworking 
-  - python38-azure-mgmt-signalr 
-  - python38-azure-mgmt-sql 
-  - python38-azure-mgmt-sqlvirtualmachine 
-  - python38-azure-mgmt-storage 
-  - python38-azure-mgmt-storagecache 
-  - python38-azure-mgmt-storageimportexport 
-  - python38-azure-mgmt-storagemover 
-  - python38-azure-mgmt-storagepool 
-  - python38-azure-mgmt-storagesync 
-  - python38-azure-mgmt-streamanalytics 
-  - python38-azure-mgmt-subscription 
-  - python38-azure-mgmt-support 
-  - python38-azure-mgmt-synapse 
-  - python38-azure-mgmt-testbase 
-  - python38-azure-mgmt-timeseriesinsights 
-  - python38-azure-mgmt-trafficmanager 
-  - python38-azure-mgmt-videoanalyzer 
-  - python38-azure-mgmt-vmwarecloudsimple 
-  - python38-azure-mgmt-voiceservices 
-  - python38-azure-mgmt-web 
-  - python38-azure-mgmt-webpubsub 
-  - python38-azure-mgmt-workloadmonitor 
-  - python38-azure-mgmt-workloads 
-  - python38-azure-mixedreality-authentication 
   - python38-azure-mixedreality-nspkg 
-  - python38-azure-monitor 
-  - python38-azure-monitor-ingestion 
   - python38-azure-monitor-nspkg 
-  - python38-azure-monitor-query 
-  - python38-azure-multiapi-storage 
   - python38-azure-nspkg 
-  - python38-azure-purview-account 
-  - python38-azure-purview-administration 
-  - python38-azure-purview-catalog 
   - python38-azure-purview-nspkg 
-  - python38-azure-purview-scanning 
-  - python38-azure-purview-sharing 
-  - python38-azure-schemaregistry 
-  - python38-azure-schemaregistry-avroencoder 
-  - python38-azure-schemaregistry-avroserializer 
-  - python38-azure-sdk 
-  - python38-azure-search-documents 
   - python38-azure-search-nspkg 
-  - python38-azure-security-attestation 
   - python38-azure-security-nspkg 
-  - python38-azure-servicebus 
-  - python38-azure-servicefabric 
-  - python38-azure-servicemanagement-legacy 
-  - python38-azure-storage 
-  - python38-azure-storage-blob 
-  - python38-azure-storage-common 
-  - python38-azure-storage-file 
-  - python38-azure-storage-file-datalake 
-  - python38-azure-storage-file-share 
   - python38-azure-storage-nspkg 
-  - python38-azure-storage-queue 
-  - python38-azure-synapse-accesscontrol 
-  - python38-azure-synapse-artifacts 
-  - python38-azure-synapse-managedprivateendpoints 
-  - python38-azure-synapse-monitoring 
   - python38-azure-synapse-nspkg 
-  - python38-azure-synapse-spark 
-  - python38-azure-template 
   - python38-babelfish 
   - python38-backcall 
   - python38-backoff 
-  - python38-backports.entry_points_selectable 
-  - python38-backports.zoneinfo 
-  - python38-baron 
   - python38-base 
   - python38-base-32bit 
   - python38-base58 
-  - python38-bashate 
-  - python38-basictracer 
-  - python38-bcrypt 
   - python38-beartype 
   - python38-beautifulsoup4 
   - python38-before-after 
-  - python38-behave 
   - python38-bencode 
-  - python38-beniget 
-  - python38-beren 
-  - python38-betamax 
-  - python38-betamax-matchers 
-  - python38-bibtexparser 
   - python38-bidict 
   - python38-billiard 
   - python38-binary 
-  - python38-binaryornot 
-  - python38-bindep 
-  - python38-biopython 
   - python38-biplist 
   - python38-bitarray 
   - python38-bitstring 
   - python38-bitstruct 
   - python38-bjoern 
-  - python38-black 
-  - python38-bleach 
-  - python38-blessed 
-  - python38-blessings 
   - python38-blinker 
-  - python38-blockdiag 
   - python38-blosc 
   - python38-blosc2 
-  - python38-bloscpack 
-  - python38-blue 
   - python38-blurb 
   - python38-bmap-tools 
-  - python38-bobo 
-  - python38-bobodoctestumentation 
-  - python38-bokcolmaps 
-  - python38-bokeh 
-  - python38-bokeh2 
   - python38-boltons 
   - python38-boolean.py 
-  - python38-booleanOperations 
-  - python38-boost-histogram 
-  - python38-boto3 
-  - python38-botocore 
   - python38-bottle 
-  - python38-bowler 
-  - python38-bpython 
-  - python38-bqplot 
   - python38-bracex 
-  - python38-branca 
-  - python38-breathe 
   - python38-brewer2mpl 
-  - python38-brotlicffi 
-  - python38-brotlipy 
   - python38-bsddb3 
   - python38-bsddb3-devel 
-  - python38-bson 
-  - python38-bugzilla 
   - python38-bugzillatools 
-  - python38-build 
   - python38-buttplug 
-  - python38-bytecode 
   - python38-cPyparsing 
   - python38-cached-property 
   - python38-cachelib 
   - python38-cachetools 
   - python38-cachey 
   - python38-cachy 
-  - python38-cairocffi 
-  - python38-cairocffi-pixbuf 
-  - python38-caldav 
-  - python38-calmjs 
-  - python38-calmjs.parse 
-  - python38-calmjs.types 
   - python38-calver 
-  - python38-calysto 
   - python38-cangjie 
-  - python38-canonicaljson 
   - python38-capturer 
-  - python38-case 
-  - python38-cassandra-driver 
   - python38-cassowary 
   - python38-casttube 
-  - python38-catkin-pkg 
-  - python38-cattrs 
-  - python38-cauldron-notebook 
   - python38-cbor 
   - python38-cbor2 
   - python38-cchardet 
-  - python38-cdflib 
-  - python38-celery 
-  - python38-celery-batches 
-  - python38-cepa 
   - python38-cerealizer 
-  - python38-certbot 
-  - python38-certbot-apache 
-  - python38-certbot-dns-cloudflare 
-  - python38-certbot-dns-cloudxns 
-  - python38-certbot-dns-digitalocean 
-  - python38-certbot-dns-dnsimple 
-  - python38-certbot-dns-dnsmadeeasy 
-  - python38-certbot-dns-google 
-  - python38-certbot-dns-linode 
-  - python38-certbot-dns-luadns 
-  - python38-certbot-dns-nsone 
-  - python38-certbot-dns-rfc2136 
-  - python38-certbot-dns-route53 
-  - python38-certbot-nginx 
-  - python38-certifi 
-  - python38-certipy 
   - python38-certstream 
-  - python38-cffi 
-  - python38-cfgdiff 
   - python38-cfgv 
-  - python38-cfn-lint 
-  - python38-cfscrape 
-  - python38-cftime 
   - python38-chai 
-  - python38-chardet 
-  - python38-charset-normalizer 
   - python38-chart-studio 
-  - python38-chartify 
-  - python38-check-manifest 
-  - python38-checkdmarc 
-  - python38-cheroot 
   - python38-chest 
   - python38-circuitbreaker 
-  - python38-cirq 
-  - python38-cirq-aqt 
-  - python38-cirq-core 
-  - python38-cirq-core-contrib 
-  - python38-cirq-google 
-  - python38-cirq-ionq 
-  - python38-cirq-pasqal 
-  - python38-cirq-rigetti 
-  - python38-cirq-web 
-  - python38-ciscoconfparse 
   - python38-cl 
   - python38-cleo 
-  - python38-cli-helpers 
-  - python38-click 
-  - python38-click-aliases 
-  - python38-click-completion 
-  - python38-click-default-group 
-  - python38-click-didyoumean 
-  - python38-click-help-colors 
-  - python38-click-log 
-  - python38-click-man 
-  - python38-click-plugins 
-  - python38-click-repl 
-  - python38-click-spinner 
-  - python38-click-threading 
-  - python38-cligj 
   - python38-clikit 
   - python38-clint 
   - python38-cloud-init-seed 
   - python38-cloud-sptheme 
-  - python38-cloudflare 
   - python38-cloudpickle 
-  - python38-cloudscraper 
-  - python38-cloup 
-  - python38-cluster 
-  - python38-cma 
-  - python38-cmapfile 
-  - python38-cmarkgfm 
-  - python38-cmd2 
-  - python38-cmdln 
   - python38-coards 
-  - python38-codecov 
   - python38-cogapp 
-  - python38-colander 
-  - python38-colorama 
-  - python38-colorcet 
   - python38-colorclass 
   - python38-coloredlogs 
   - python38-colorful 
   - python38-colorlog 
   - python38-colorlover 
-  - python38-colormap 
-  - python38-colorspacious 
   - python38-colour 
   - python38-columnize 
-  - python38-comm 
-  - python38-commentjson 
-  - python38-compat-patcher-core 
   - python38-compileall2 
   - python38-compizconfig 
   - python38-compressed_rtf 
   - python38-concurrentloghandler 
-  - python38-configobj 
-  - python38-configshell-fb 
   - python38-confluent-kafka 
   - python38-confpy 
-  - python38-confusable-homoglyphs 
-  - python38-confuse 
-  - python38-constantly 
-  - python38-construct 
   - python38-contexter 
-  - python38-contextvars 
-  - python38-contourpy 
-  - python38-control 
-  - python38-conu 
-  - python38-convertdate 
-  - python38-cookiecutter 
   - python38-cookies 
-  - python38-cooldict 
-  - python38-copr 
-  - python38-copr-cli 
-  - python38-coreapi 
-  - python38-coreapi-cli 
-  - python38-coreschema 
-  - python38-cornice 
-  - python38-cov-core 
-  - python38-covdefaults 
-  - python38-coverage 
-  - python38-coveralls-check 
   - python38-cppclean 
   - python38-cpplint 
-  - python38-cppy 
   - python38-cracklib 
   - python38-cramjam 
   - python38-crashtest 
-  - python38-crayons 
   - python38-crcmod 
-  - python38-crochet 
   - python38-cron-descriptor 
-  - python38-croniter 
-  - python38-crontab 
   - python38-crumbs 
-  - python38-cryptography 
   - python38-cryptography-vectors 
   - python38-css-html-js-minify 
-  - python38-css-parser 
   - python38-csscompressor 
   - python38-cssmin 
-  - python38-cssselect 
-  - python38-cssselect2 
   - python38-cssutils 
   - python38-cstruct 
   - python38-csv23 
-  - python38-csvkit 
-  - python38-cu2qu 
-  - python38-cufflinks 
-  - python38-curio 
-  - python38-curlylint 
   - python38-curses 
-  - python38-curtsies 
   - python38-cwcwidth 
   - python38-cx_Freeze 
   - python38-cymruwhois 
   - python38-cytoolz 
-  - python38-czifile 
   - python38-d2to1 
   - python38-daemonize 
-  - python38-daiquiri 
-  - python38-dasbus 
-  - python38-dash 
   - python38-dash-core-components 
   - python38-dash-html-components 
   - python38-dash-renderer 
   - python38-dash-table 
-  - python38-dask 
-  - python38-dask-array 
-  - python38-dask-bag 
-  - python38-dask-complete 
-  - python38-dask-dataframe 
-  - python38-dask-delayed 
-  - python38-dask-diagnostics 
-  - python38-dask-distributed 
-  - python38-dask-dot 
-  - python38-dask-test 
-  - python38-databases 
   - python38-datadiff 
-  - python38-dateparser 
-  - python38-dateutils 
   - python38-datrie 
-  - python38-dbf 
   - python38-dbfread 
   - python38-dbm 
-  - python38-dbus-deviation 
-  - python38-dbus-python 
-  - python38-dbus-python-devel 
   - python38-dbus_next 
-  - python38-ddg3 
-  - python38-ddt 
   - python38-deap 
   - python38-debugpy 
-  - python38-decorator 
   - python38-deepdiff 
   - python38-deepmerge 
-  - python38-defcon 
-  - python38-defusedxml 
   - python38-delegator 
-  - python38-delegator.py 
-  - python38-dennis 
   - python38-deprecation 
-  - python38-derpconf 
   - python38-devel 
   - python38-devpi-client 
-  - python38-devpi-common 
   - python38-devpi-server 
-  - python38-dfVFS 
   - python38-dfdatetime 
   - python38-dfwinreg 
   - python38-dialite 
   - python38-dictdiffer 
   - python38-dictknife 
-  - python38-dictpath 
   - python38-dicttoxml 
   - python38-diff-match-patch 
-  - python38-diffimg 
-  - python38-digitalocean 
   - python38-dill 
-  - python38-dirty-equals 
   - python38-dirtyjson 
   - python38-discid 
-  - python38-discogs-client 
   - python38-diskcache 
   - python38-dist 
-  - python38-distlib 
-  - python38-distob 
   - python38-distorm3 
-  - python38-distributed 
-  - python38-distro 
-  - python38-distroinfo 
   - python38-distutils-extra 
-  - python38-dj-database-url 
-  - python38-django-allauth 
-  - python38-django-appconf 
-  - python38-django-assets 
-  - python38-django-attachments 
-  - python38-django-auth-ldap 
-  - python38-django-avatar 
-  - python38-django-axes 
-  - python38-django-bootstrap3 
-  - python38-django-bootstrap4 
-  - python38-django-braces 
-  - python38-django-cacheops 
-  - python38-django-ckeditor 
-  - python38-django-classy-tags 
-  - python38-django-codemod 
-  - python38-django-collectd-rest 
-  - python38-django-compressor 
-  - python38-django-contrib-comments 
-  - python38-django-cors-headers 
-  - python38-django-countries 
-  - python38-django-coverage-plugin 
-  - python38-django-crispy-forms 
-  - python38-django-debreach 
-  - python38-django-debug-toolbar 
-  - python38-django-dj-inmemorystorage 
-  - python38-django-environ 
-  - python38-django-eremaea2 
-  - python38-django-extensions 
-  - python38-django-extra-views 
-  - python38-django-filter 
-  - python38-django-formtools 
-  - python38-django-geoposition 
-  - python38-django-grappelli 
   - python38-django-gravatar2 
-  - python38-django-guardian 
-  - python38-django-haystack 
-  - python38-django-health-check 
-  - python38-django-import-export 
-  - python38-django-invitations 
-  - python38-django-ipware 
-  - python38-django-jinja 
-  - python38-django-js-asset 
-  - python38-django-json-widget 
-  - python38-django-jsonfield 
-  - python38-django-localflavor 
-  - python38-django-mailer 
-  - python38-django-mailman3 
-  - python38-django-mathfilters 
-  - python38-django-minio-storage 
-  - python38-django-model-utils 
-  - python38-django-money 
-  - python38-django-mptt 
-  - python38-django-nine 
-  - python38-django-oauth-toolkit 
-  - python38-django-oidc-provider 
-  - python38-django-opentracing 
   - python38-django-oscar 
-  - python38-django-pandas 
-  - python38-django-parler 
-  - python38-django-perf-rec 
-  - python38-django-pglocks 
-  - python38-django-phonenumber-field 
-  - python38-django-picklefield 
-  - python38-django-pipeline 
-  - python38-django-polymorphic 
-  - python38-django-push-notifications 
-  - python38-django-q 
-  - python38-django-qsessions 
-  - python38-django-redis 
-  - python38-django-registration 
   - python38-django-request 
   - python38-django-requests-debug-toolbar 
-  - python38-django-rest-framework-braces 
-  - python38-django-rest-framework-client 
-  - python38-django-rest-framework-social-oauth2 
-  - python38-django-rest-invitations 
-  - python38-django-rest-knox 
-  - python38-django-reversion 
-  - python38-django-rosetta 
-  - python38-django-rq 
-  - python38-django-seed 
-  - python38-django-sekizai 
-  - python38-django-settings-toml 
-  - python38-django-silk 
-  - python38-django-sortedm2m 
-  - python38-django-storages 
-  - python38-django-tables2 
-  - python38-django-tagging 
-  - python38-django-taggit 
-  - python38-django-tagulous 
-  - python38-django-tastypie 
-  - python38-django-timezone-field 
-  - python38-django-treebeard 
   - python38-django-upgrade 
-  - python38-django-user-agents 
-  - python38-django-utils-six 
-  - python38-django-webpack-loader 
-  - python38-django-webtest 
-  - python38-django-widget-tweaks 
-  - python38-djangorestframework 
-  - python38-djangorestframework-camel-case 
-  - python38-djangorestframework-simplejwt 
-  - python38-djet 
   - python38-djvulibre 
-  - python38-dkimpy 
-  - python38-dmidecode 
-  - python38-dns-lexicon 
   - python38-dnslib 
-  - python38-dnspython 
   - python38-doc 
   - python38-doc-devhelp 
-  - python38-docformatter 
-  - python38-docker 
-  - python38-docker-compose 
-  - python38-docker-pycreds 
-  - python38-dockerpty 
   - python38-docopt 
-  - python38-docrepr 
   - python38-docstring-to-markdown 
-  - python38-docutils 
-  - python38-docutils-ast-writer 
   - python38-dogslow 
   - python38-dominate 
   - python38-dotmap 
-  - python38-dparse 
   - python38-dpcontracts 
   - python38-dpkt 
-  - python38-dqsegdb 
   - python38-dqsegdb2 
   - python38-dragonmapper 
   - python38-drgn 
-  - python38-drms 
-  - python38-dropbox 
   - python38-dtaidistance 
   - python38-dtfabric 
   - python38-duckduckgo2 
-  - python38-duet 
   - python38-dukpy 
   - python38-dukpy-kovidgoyal 
-  - python38-dulwich 
-  - python38-dynaconf 
   - python38-e-antic 
-  - python38-easy-thumbnails 
-  - python38-easydev 
   - python38-easygui 
-  - python38-easypysmb 
-  - python38-easywatch 
   - python38-ebcdic 
-  - python38-ecdsa 
   - python38-ed25519 
-  - python38-edgegrid-python 
-  - python38-editables 
   - python38-editdistance 
   - python38-editdistance-devel 
-  - python38-edk2toolext 
   - python38-edk2toollib 
   - python38-efl 
-  - python38-elastic-transport 
-  - python38-elasticsearch 
-  - python38-elasticsearch-dsl 
   - python38-elementpath 
   - python38-eliot 
   - python38-email-reply-parser 
-  - python38-email-validator 
-  - python38-emcee 
   - python38-emoji 
   - python38-empy 
-  - python38-enaml 
   - python38-encore 
-  - python38-enrich 
-  - python38-entrypoint2 
   - python38-entrypoints 
-  - python38-environ-config 
   - python38-environmental-override 
   - python38-envisage 
   - python38-enzyme 
   - python38-ephem 
   - python38-ephemeral-port-reserve 
-  - python38-epubmerge 
   - python38-eradicate 
   - python38-espeak 
-  - python38-esptool 
-  - python38-et_xmlfile 
-  - python38-etcd 
   - python38-ethtool 
   - python38-evdev 
-  - python38-eventlet 
-  - python38-evilunit 
-  - python38-evtx 
   - python38-exam 
-  - python38-exceptiongroup 
-  - python38-execnet 
   - python38-executing 
   - python38-exiv2 
   - python38-expects 
   - python38-expiringdict 
-  - python38-exrex 
-  - python38-extension-helpers 
-  - python38-extras 
-  - python38-extratools 
   - python38-ez_setup 
-  - python38-ezdxf 
-  - python38-fabio 
-  - python38-factory_boy 
-  - python38-fake-useragent 
-  - python38-fakeredis 
   - python38-falcon 
-  - python38-fanficfare 
   - python38-fann2 
-  - python38-fastapi 
   - python38-fastbencode 
-  - python38-fastcluster 
-  - python38-fasteners 
   - python38-fastimport 
   - python38-fastjsonschema 
   - python38-fastnumbers 
-  - python38-fastparquet 
-  - python38-fastremap 
-  - python38-fasttext 
   - python38-fb-re2 
-  - python38-fedora-messaging 
-  - python38-feedgen 
-  - python38-feedgenerator 
   - python38-feedparser 
-  - python38-ffmpeg-python 
-  - python38-fido2 
-  - python38-fields 
-  - python38-filelock 
   - python38-filetype 
-  - python38-finance_enums 
-  - python38-findpython 
-  - python38-fire 
   - python38-first 
-  - python38-fissix 
-  - python38-fixtures 
-  - python38-flake8 
   - python38-flake8-blind-except 
-  - python38-flake8-bugbear 
-  - python38-flake8-builtins 
-  - python38-flake8-class-newline 
-  - python38-flake8-comprehensions 
   - python38-flake8-debugger 
-  - python38-flake8-deprecated 
-  - python38-flake8-docstrings 
-  - python38-flake8-import-order 
   - python38-flake8-imports 
-  - python38-flake8-isort 
-  - python38-flake8-pep3101 
-  - python38-flake8-polyfill 
-  - python38-flake8-pyi 
-  - python38-flake8-quotes 
-  - python38-flaky 
-  - python38-flasgger 
-  - python38-flask-jwt-extended 
-  - python38-flask-oidc 
-  - python38-flask-peewee 
-  - python38-flask-restx 
   - python38-flatbuffers 
   - python38-flatdict 
-  - python38-fleming 
-  - python38-flex 
   - python38-flexmock 
-  - python38-flexx 
-  - python38-flickrapi 
-  - python38-flit 
-  - python38-flit-core 
-  - python38-flit-scm 
-  - python38-flower 
   - python38-fluent 
-  - python38-flufl.bounce 
   - python38-flufl.i18n 
-  - python38-flufl.lock 
   - python38-flufl.testing 
-  - python38-fluidity-sm 
   - python38-flup 
-  - python38-flynt 
-  - python38-folium 
-  - python38-fontMath 
-  - python38-fontParts 
-  - python38-fontPens 
   - python38-forbiddenfruit 
   - python38-formats 
-  - python38-fqdn 
   - python38-framel 
-  - python38-freeipa 
   - python38-freetype-py 
-  - python38-freezegun 
   - python38-frozendict 
-  - python38-frozenlist 
-  - python38-fs 
   - python38-fsspec 
-  - python38-ftfy 
   - python38-ftputil 
-  - python38-fudge 
   - python38-funcparserlib 
   - python38-funcy 
-  - python38-furl 
   - python38-fuse 
   - python38-fusepy 
-  - python38-future 
   - python38-fuzzywuzzy 
-  - python38-gTTS 
-  - python38-gTTS-token 
-  - python38-gast 
-  - python38-gcsfs 
-  - python38-gcsfs-fuse 
-  - python38-gear 
   - python38-ged4py 
-  - python38-genfire 
   - python38-genson 
-  - python38-genty 
   - python38-geographiclib 
-  - python38-geoip2 
   - python38-geojson 
-  - python38-geolib 
   - python38-geolinks 
-  - python38-geomdl 
-  - python38-geomet 
-  - python38-geopandas 
   - python38-geopy 
   - python38-getmac 
-  - python38-gevent 
-  - python38-gevent-websocket 
-  - python38-geventhttpclient 
-  - python38-ggplot 
-  - python38-ghp-import 
-  - python38-girder-client 
-  - python38-git-pw 
-  - python38-git-url-parse 
-  - python38-gitdb 
-  - python38-github3.py 
-  - python38-glad2 
   - python38-glean 
-  - python38-glean-parser 
   - python38-glfw 
   - python38-glob2 
   - python38-glucat 
   - python38-gmpy2 
-  - python38-gns3fy 
-  - python38-gobject 
-  - python38-gobject-Gdk 
-  - python38-gobject-cairo 
-  - python38-gobject-devel 
-  - python38-google-api-core 
-  - python38-google-api-python-client 
-  - python38-google-auth 
-  - python38-google-auth-httplib2 
   - python38-google-auth-oauthlib 
-  - python38-google-cloud-core 
-  - python38-google-cloud-kms 
-  - python38-google-cloud-speech 
-  - python38-google-cloud-storage 
-  - python38-google-cloud-translate 
   - python38-google-crc32c 
   - python38-google-resumable-media 
-  - python38-googleapis-common-protos 
-  - python38-googlemaps 
   - python38-gpg 
   - python38-gphoto2 
   - python38-gprof2dot 
   - python38-gps3 
-  - python38-gpstime 
   - python38-gpxpy 
-  - python38-grab 
-  - python38-graphene 
-  - python38-graphene-django 
   - python38-graphql-core 
-  - python38-graphql-relay 
-  - python38-graphviz 
-  - python38-greenlet 
-  - python38-greenlet-devel 
-  - python38-grpc-google-iam-v1 
-  - python38-grpcio 
-  - python38-grpcio-gcp 
-  - python38-grpcio-status 
-  - python38-grpcio-tools 
   - python38-gscholar 
-  - python38-gsm0338 
-  - python38-gspread 
-  - python38-gssapi 
   - python38-gst 
-  - python38-gsw 
-  - python38-guessit 
-  - python38-gunicorn 
-  - python38-guzzle_sphinx_theme 
-  - python38-gvm-tools 
-  - python38-gwcs 
   - python38-gwdatafind 
-  - python38-gwosc 
   - python38-gwpy 
-  - python38-gwyfile 
-  - python38-gyp 
-  - python38-h11 
-  - python38-h2 
-  - python38-h5netcdf 
-  - python38-h5py 
-  - python38-h5py-openmpi1 
-  - python38-h5py-openmpi2 
-  - python38-h5py-openmpi3 
-  - python38-h5py-openmpi4 
-  - python38-habanero 
-  - python38-hammett 
-  - python38-hankel 
   - python38-hanzidentifier 
-  - python38-happybase 
   - python38-haproxyctl 
   - python38-hashids 
-  - python38-hatch 
-  - python38-hatch-fancy-pypi-readme 
-  - python38-hatch-jupyter-builder 
-  - python38-hatch_nodejs_version 
-  - python38-hatch_vcs 
-  - python38-hatchling 
   - python38-hawkauthlib 
-  - python38-hcloud 
   - python38-hdf5storage 
-  - python38-healpy 
-  - python38-helpdev 
   - python38-hepunits 
   - python38-hetzner 
-  - python38-hetznercloud 
   - python38-hexdump 
   - python38-hid-parser 
   - python38-hijri-converter 
   - python38-hiredis 
   - python38-hkdf 
   - python38-hl7apy 
-  - python38-holidays 
   - python38-holoviews 
-  - python38-hotdoc 
-  - python38-hpack 
   - python38-hsluv 
   - python38-hstspreload 
   - python38-html2text 
   - python38-html5-parser 
-  - python38-html5lib 
-  - python38-htmlmin 
-  - python38-httmock 
-  - python38-http-ece 
-  - python38-http-parser 
-  - python38-httpbin 
-  - python38-httpcore 
-  - python38-httplib2 
-  - python38-httpretty 
-  - python38-httpsig_cffi 
-  - python38-httptools 
-  - python38-httpx 
   - python38-humanfriendly 
   - python38-humanhash3 
   - python38-humanize 
-  - python38-humanreadable 
   - python38-hunter 
-  - python38-hupper 
   - python38-husl 
-  - python38-hvac 
   - python38-hvplot 
-  - python38-hyperframe 
-  - python38-hyperlink 
-  - python38-hypothesis 
-  - python38-hypothesis-fspaths 
-  - python38-hypothesmith 
   - python38-i3ipc 
-  - python38-icalendar 
-  - python38-icoextract 
-  - python38-identify 
   - python38-idle 
-  - python38-idna 
-  - python38-idna_ssl 
   - python38-ifaddr 
   - python38-ifconfig-parser 
-  - python38-igwn-auth-utils 
   - python38-ijson 
-  - python38-imagecodecs 
-  - python38-imageio 
   - python38-imageio-ffmpeg 
-  - python38-imagesize 
-  - python38-imbox 
-  - python38-img2pdf 
-  - python38-iminuit 
-  - python38-immutables 
-  - python38-impacket 
-  - python38-importlab 
-  - python38-importlib-metadata 
-  - python38-importlib-resources 
-  - python38-imread 
-  - python38-imreg 
-  - python38-incremental 
   - python38-infinity 
   - python38-inflate64 
-  - python38-inflect 
   - python38-inflection 
-  - python38-influxdb 
-  - python38-ini2toml 
-  - python38-ini2toml-all 
-  - python38-ini2toml-full 
-  - python38-ini2toml-lite 
-  - python38-iniconfig 
   - python38-inifile 
   - python38-iniparse 
-  - python38-injector 
   - python38-installer 
   - python38-intake 
-  - python38-interrogate 
   - python38-intervals 
-  - python38-intervaltree 
-  - python38-invocations 
-  - python38-invoke 
   - python38-iocapture 
   - python38-ipaddr 
-  - python38-ipdb 
   - python38-iptables 
   - python38-ipy 
-  - python38-ipydatawidgets 
-  - python38-ipyevents 
-  - python38-ipyfilechooser 
-  - python38-ipykernel 
-  - python38-ipyleaflet 
   - python38-ipympl 
-  - python38-ipyparallel 
   - python38-ipyscales 
-  - python38-ipysheet 
-  - python38-ipython 
-  - python38-ipython_genutils 
   - python38-ipyvolume 
-  - python38-ipyvue 
-  - python38-ipyvuetify 
-  - python38-ipywebrtc 
-  - python38-ipywidgets 
-  - python38-irc 
   - python38-isbnlib 
   - python38-isc_dhcp_leases 
   - python38-iso3166 
-  - python38-iso8601 
-  - python38-isodate 
-  - python38-isoduration 
   - python38-isort 
   - python38-itemadapter 
-  - python38-itemloaders 
-  - python38-itsdangerous 
   - python38-itypes 
-  - python38-iwlib 
-  - python38-j2gen 
-  - python38-jaraco.classes 
-  - python38-jaraco.collections 
   - python38-jaraco.context 
-  - python38-jaraco.envs 
-  - python38-jaraco.functools 
-  - python38-jaraco.itertools 
-  - python38-jaraco.logging 
-  - python38-jaraco.packaging 
   - python38-jaraco.path 
-  - python38-jaraco.stream 
-  - python38-jaraco.text 
-  - python38-jaraco.tidelift 
-  - python38-javapackages 
-  - python38-javaproperties 
   - python38-jdatetime 
   - python38-jdcal 
   - python38-jedi 
   - python38-jedihttp 
-  - python38-jeepney 
   - python38-jellyfish 
-  - python38-jenkinsapi 
   - python38-jfscripts 
-  - python38-jinja2-fsloader 
-  - python38-jinja2-pluralize 
-  - python38-jinja2-time 
-  - python38-jira 
-  - python38-jirafs 
-  - python38-jmespath 
   - python38-joblib 
-  - python38-josepy 
-  - python38-jplephem 
-  - python38-jsbeautifier 
-  - python38-jschema-to-python 
   - python38-jsmin 
   - python38-json-rpc 
-  - python38-json5 
   - python38-json_tricks 
-  - python38-jsondiff 
   - python38-jsonlines 
-  - python38-jsonpatch 
-  - python38-jsonpath-ng 
-  - python38-jsonpath-rw 
   - python38-jsonpickle 
-  - python38-jsonpointer 
   - python38-jsonref 
   - python38-jsonrpclib-pelix 
-  - python38-jsonschema 
-  - python38-jsonschema-format 
-  - python38-jsonschema-format-nongpl 
-  - python38-jsonschema-spec 
-  - python38-jsonschema-specifications 
   - python38-jsonslicer 
   - python38-jsonxs 
-  - python38-junit-xml 
-  - python38-junitxml 
-  - python38-junos-eznc 
-  - python38-jupyter 
-  - python38-jupyter-client 
-  - python38-jupyter-client7 
-  - python38-jupyter-collaboration 
-  - python38-jupyter-core 
-  - python38-jupyter-events 
-  - python38-jupyter-kernel-test 
-  - python38-jupyter-packaging 
-  - python38-jupyter-server 
-  - python38-jupyter-server-fileid 
-  - python38-jupyter-server-mathjax 
-  - python38-jupyter-server-terminals 
-  - python38-jupyter-server-test 
-  - python38-jupyter-sphinx 
-  - python38-jupyter-telemetry 
-  - python38-jupyter-ydoc 
-  - python38-jupyter_console 
-  - python38-jupyter_contrib_core 
-  - python38-jupyter_highlight_selected_word 
-  - python38-jupyter_latex_envs 
-  - python38-jupyter_nbextensions_configurator 
-  - python38-jupyterlab 
-  - python38-jupyterlab-pygments 
-  - python38-jupyterlab-server 
-  - python38-jupyterlab-server-openapi 
-  - python38-jupyterlab-server-test 
-  - python38-jupyterlab-templates 
-  - python38-jupyterlab-widgets 
-  - python38-jwcrypto 
-  - python38-k5test 
   - python38-kafka-python 
   - python38-kaitaistruct 
-  - python38-kasa 
-  - python38-kazoo 
   - python38-kerberos 
-  - python38-keylime 
-  - python38-keyring 
   - python38-keyring-keyutils 
-  - python38-keyring-pass 
   - python38-keyrings.alt 
-  - python38-khal 
-  - python38-kismet-rest 
-  - python38-kismetdb 
   - python38-kiss-headers 
   - python38-kitchen 
-  - python38-kiwisolver 
   - python38-kmatch 
   - python38-kmod 
-  - python38-knack 
   - python38-kombu 
   - python38-korean-lunar-calendar 
-  - python38-kubernetes 
-  - python38-kwant 
   - python38-l20n 
-  - python38-labels 
-  - python38-lal 
-  - python38-lalapps 
-  - python38-lalburst 
-  - python38-lalframe 
-  - python38-lalinference 
-  - python38-lalinspiral 
-  - python38-lalmetaio 
   - python38-lalpulsar 
   - python38-lalsimulation 
   - python38-lancet-ioam 
-  - python38-langdetect 
   - python38-langtable 
   - python38-language-check 
-  - python38-lark 
   - python38-latexcodec 
-  - python38-lazr.config 
-  - python38-lazr.delegates 
   - python38-lazr.uri 
   - python38-lazy 
   - python38-lazy-loader 
   - python38-lazy-object-proxy 
-  - python38-lazyarray 
-  - python38-ldap 
-  - python38-ldap3 
-  - python38-ldapdomaindump 
-  - python38-ldappool 
-  - python38-ldaptor 
   - python38-ldas-tools-al-swig 
-  - python38-leather 
-  - python38-leglight 
-  - python38-lesscpy 
   - python38-leveldb 
-  - python38-lexicon 
-  - python38-lfdfiles 
   - python38-lhafile 
-  - python38-lib3to6 
   - python38-libarchive 
   - python38-libarchive-c 
   - python38-libbde 
   - python38-libcaes 
   - python38-libcreg 
-  - python38-libcst 
   - python38-libesedb 
-  - python38-libevdev 
   - python38-libevt 
   - python38-libevtx 
   - python38-libewf 
@@ -30361,8 +30043,6 @@ unsorted:
   - python38-libfwps 
   - python38-libfwsi 
   - python38-libkdumpfile 
-  - python38-liblarch 
-  - python38-liblarch-gtk 
   - python38-liblnk 
   - python38-libluksde 
   - python38-libmodi 
@@ -30378,7 +30058,6 @@ unsorted:
   - python38-libregf 
   - python38-librosa 
   - python38-librouteros 
-  - python38-libsass 
   - python38-libscca 
   - python38-libsigscan 
   - python38-libsmdev 
@@ -30393,31 +30072,18 @@ unsorted:
   - python38-libvslvm 
   - python38-libvsmbr 
   - python38-libwrc 
-  - python38-libxml2 
   - python38-license-expression 
-  - python38-ligo-lw 
-  - python38-ligo-segments 
   - python38-ligotimegps 
   - python38-limnoria 
-  - python38-line_profiler 
-  - python38-linecache2 
   - python38-linetable 
-  - python38-lineup-widget 
   - python38-link-traits 
   - python38-linkify-it-py 
-  - python38-linode-cli 
-  - python38-linstor 
-  - python38-linstor-client 
-  - python38-linux-procfs 
   - python38-lit 
   - python38-littleutils 
-  - python38-livereload 
   - python38-llfuse 
   - python38-llvmlite 
   - python38-lmdb 
-  - python38-lmfit 
   - python38-lml 
-  - python38-localzone 
   - python38-locket 
   - python38-lockfile 
   - python38-logilab-common 
@@ -30425,573 +30091,201 @@ unsorted:
   - python38-logutils 
   - python38-logzero 
   - python38-looseversion 
-  - python38-lscsoft-glue 
-  - python38-lupa 
   - python38-lws 
-  - python38-lxml 
-  - python38-lxml-devel 
   - python38-lz4 
-  - python38-macholib 
-  - python38-magic 
-  - python38-magic-wormhole 
-  - python38-magic-wormhole-mailbox-server 
-  - python38-magic-wormhole-transit-relay 
   - python38-magicalimport 
   - python38-mailman3-fedmsg-plugin 
-  - python38-mailmanclient 
-  - python38-main-wrapper 
   - python38-makefun 
   - python38-managesieve 
-  - python38-mando 
   - python38-manuel 
   - python38-manuel-doc 
-  - python38-marathon 
   - python38-markdown-it-py 
-  - python38-markdown-math 
   - python38-markdown2 
   - python38-marshmallow 
   - python38-marshmallow-enum 
   - python38-material-color-utilities-python 
-  - python38-mathgl 
-  - python38-mathics-pygments 
-  - python38-matplotlib 
-  - python38-matplotlib-cairo 
-  - python38-matplotlib-gtk-common 
-  - python38-matplotlib-gtk3 
-  - python38-matplotlib-gtk4 
   - python38-matplotlib-inline 
-  - python38-matplotlib-latex 
-  - python38-matplotlib-qt5 
-  - python38-matplotlib-testdata 
-  - python38-matplotlib-tk 
-  - python38-matplotlib-web 
-  - python38-matplotlib-wx 
-  - python38-matrix-nio 
-  - python38-matrix_common 
-  - python38-maturin 
-  - python38-mautrix 
-  - python38-maxminddb 
-  - python38-mbstrdecoder 
-  - python38-mccabe 
-  - python38-md2workflow 
-  - python38-md2workflow-plugins-jira 
-  - python38-md2workflow-plugins-redmine 
   - python38-mdit-py-plugins 
   - python38-mdurl 
-  - python38-mechanize 
-  - python38-mediafile 
   - python38-meld3 
-  - python38-memory_profiler 
-  - python38-mercantile 
   - python38-merge3 
   - python38-mergedeep 
-  - python38-meson-python 
-  - python38-metaextract 
-  - python38-metakernel 
   - python38-metamagic.json 
-  - python38-methodtools 
-  - python38-micropipenv 
   - python38-mimesis 
   - python38-minidb 
-  - python38-minio 
   - python38-miniupnpc 
-  - python38-misaka 
   - python38-mistune 
   - python38-mitmproxy-wireguard 
-  - python38-mizani 
-  - python38-mkdocs 
-  - python38-mkdocs-bootstrap 
-  - python38-moban 
-  - python38-moban-ansible 
   - python38-mobi 
   - python38-mock-open 
-  - python38-mocket 
   - python38-mockito 
-  - python38-model-bakery 
-  - python38-modernize 
-  - python38-mohawk 
   - python38-mongoengine 
   - python38-monotonic 
-  - python38-more-itertools 
-  - python38-moreorless 
-  - python38-moto 
-  - python38-moto-all 
-  - python38-moto-server 
   - python38-mpi4py 
   - python38-mpi4py-devel 
-  - python38-mpl-animators 
-  - python38-mplcursors 
-  - python38-mpld3 
   - python38-mpmath 
-  - python38-mrcz 
-  - python38-msal 
-  - python38-msal-extensions 
   - python38-msgpack 
-  - python38-msgpack-numpy 
-  - python38-msk 
-  - python38-msm 
-  - python38-msoffcrypto-tool 
-  - python38-msrest 
-  - python38-msrestazure 
   - python38-mss 
   - python38-mujson 
   - python38-mulpyplexer 
   - python38-multi_key_dict 
-  - python38-multidict 
-  - python38-multipledispatch 
   - python38-multivolumefile 
-  - python38-munch 
   - python38-munkres 
   - python38-musicbrainzngs 
-  - python38-mutagen 
-  - python38-mutatorMath 
-  - python38-mutmut 
-  - python38-mutt-ics 
-  - python38-mwclient 
-  - python38-mycli 
-  - python38-mygpoclient 
   - python38-mypy 
-  - python38-mypy-protobuf 
-  - python38-mypy_extensions 
-  - python38-mysql-connector-python 
-  - python38-mysql-to-sqlite3 
   - python38-mysqlclient 
-  - python38-myst-parser 
-  - python38-nagiosplugin 
-  - python38-napalm 
-  - python38-napalm-arubaos-switch 
-  - python38-napalm-asa 
-  - python38-napalm-digineo-procurve 
-  - python38-napalm-procurve 
-  - python38-natsort 
-  - python38-nautilus 
-  - python38-nautilus-devel 
-  - python38-nbclassic 
-  - python38-nbclient 
-  - python38-nbconvert 
-  - python38-nbdime 
-  - python38-nbdime-git 
-  - python38-nbdime-hg 
-  - python38-nbformat 
-  - python38-nbsmoke 
-  - python38-nbsphinx 
-  - python38-nbval 
-  - python38-ncclient 
-  - python38-ndg-httpsclient 
   - python38-ndjson 
-  - python38-neovim 
   - python38-nest-asyncio 
-  - python38-nested-lookup 
   - python38-net-snmp 
-  - python38-netCDF4 
-  - python38-netaddr 
   - python38-netifaces 
-  - python38-netmiko 
-  - python38-netpbmfile 
   - python38-netutils 
-  - python38-networkx 
-  - python38-nibabel 
   - python38-nilearn 
   - python38-nine 
-  - python38-nlopt 
-  - python38-nltk 
-  - python38-nocasedict 
-  - python38-nocaselist 
   - python38-node-semver 
-  - python38-nodeenv 
-  - python38-nornir 
-  - python38-nose2 
-  - python38-notebook 
-  - python38-notebook-lang 
-  - python38-notebook-shim 
-  - python38-notify2 
-  - python38-nox 
-  - python38-npTDMS 
-  - python38-nptyping 
   - python38-nss 
-  - python38-ntc-templates 
-  - python38-ntfy 
   - python38-ntlm-auth 
   - python38-ntplib 
   - python38-num2words 
-  - python38-numba 
-  - python38-numba-devel 
-  - python38-numcodecs 
   - python38-numericalunits 
-  - python38-numexpr 
-  - python38-numpy 
-  - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
   - python38-numpy_1_24_2-gnu-hpc 
   - python38-numpy_1_24_2-gnu-hpc-devel 
-  - python38-numpydoc 
-  - python38-nwdiag 
-  - python38-nxapi-plumbing 
-  - python38-o2sclpy 
-  - python38-oauth2 
-  - python38-oauthlib 
-  - python38-objgraph 
-  - python38-oci-sdk 
   - python38-oct2py 
-  - python38-octave-kernel 
-  - python38-odfpy 
-  - python38-odorik 
-  - python38-ogr 
-  - python38-oic 
-  - python38-oiffile 
-  - python38-oktaloginwrapper 
-  - python38-olefile 
-  - python38-oletools 
-  - python38-olm 
-  - python38-onnx 
-  - python38-onnxconverter-common 
   - python38-opcodes 
-  - python38-openTSNE 
-  - python38-openai 
-  - python38-openapi-codec 
-  - python38-openapi-core 
-  - python38-openapi-schema-validator 
-  - python38-openapi-spec-validator 
-  - python38-opencensus 
   - python38-opencensus-context 
-  - python38-opencensus-ext-azure 
-  - python38-opencensus-ext-threading 
   - python38-opengl 
   - python38-opengl-accelerate 
-  - python38-openidc-client 
-  - python38-openmesh 
-  - python38-openpyxl 
-  - python38-openqa_client 
-  - python38-opentelemetry-api 
   - python38-opentracing 
-  - python38-openwrt-luci-rpc 
-  - python38-opt-einsum 
-  - python38-orange-canvas-core 
-  - python38-orange-widget-base 
   - python38-orangebox 
   - python38-ordered-namespace 
   - python38-ordered-set 
-  - python38-orderedmultidict 
   - python38-orjson 
-  - python38-osc-tiny 
   - python38-oscrypto 
-  - python38-osmviz 
   - python38-ospd-openvas 
-  - python38-outcome 
-  - python38-ovirt-engine-sdk 
-  - python38-ovs 
-  - python38-pa-ringbuffer 
-  - python38-packaging 
   - python38-padaos 
-  - python38-padatious 
   - python38-paho-mqtt 
-  - python38-pako 
   - python38-palettable 
   - python38-pamela 
   - python38-pamqp 
   - python38-pan-python 
-  - python38-pandas 
-  - python38-pandas-datareader 
   - python38-pandocfilters 
-  - python38-panel 
-  - python38-panflute 
-  - python38-papermill 
   - python38-parallax 
   - python38-param 
-  - python38-parameterized 
-  - python38-paramiko 
-  - python38-paramiko-expect 
-  - python38-parfive 
   - python38-parse 
-  - python38-parse_type 
   - python38-parsedatetime 
-  - python38-parsel 
-  - python38-parsimonious 
   - python38-parso 
   - python38-parsy 
   - python38-partd 
   - python38-parted 
-  - python38-particle 
   - python38-parver 
-  - python38-pass-git-helper 
-  - python38-passivetotal 
   - python38-passlib 
   - python38-pastel 
-  - python38-pastream 
   - python38-patatt 
-  - python38-patchy 
-  - python38-path 
   - python38-pathable 
-  - python38-pathspec 
   - python38-pathtools 
-  - python38-pathvalidate 
   - python38-patiencediff 
-  - python38-patsy 
   - python38-pbkdf2 
-  - python38-pbr 
-  - python38-pcodedmp 
-  - python38-pdd 
-  - python38-pdfminer.six 
   - python38-pdfrw 
-  - python38-pdm 
   - python38-pdm-pep517 
-  - python38-pecan 
   - python38-peewee 
-  - python38-pefile 
-  - python38-pegasus-wms.api 
-  - python38-pegasus-wms.common 
   - python38-pegen 
-  - python38-pelican 
   - python38-pem 
-  - python38-pendulum 
   - python38-pep440 
-  - python38-pep517 
-  - python38-pep8-naming 
   - python38-peppercorn 
-  - python38-percy 
   - python38-perky 
-  - python38-persistent 
-  - python38-persistent-devel 
-  - python38-petact 
-  - python38-pexpect 
   - python38-pgmagick 
-  - python38-phabricator 
   - python38-phonenumbers 
-  - python38-photutils 
-  - python38-phply 
   - python38-phue 
-  - python38-physt 
   - python38-pick 
   - python38-pickleshare 
-  - python38-pifpaf 
   - python38-pika 
   - python38-pika-pool 
-  - python38-pikepdf 
   - python38-pilkit 
-  - python38-pingparsing 
-  - python38-pip 
-  - python38-pip-api 
   - python38-pip-licenses 
-  - python38-pip-run 
-  - python38-pip-shims 
-  - python38-pip-test 
-  - python38-pip-tools 
-  - python38-pip-wheel 
-  - python38-pipdeptree 
-  - python38-pipreqs 
-  - python38-pipx 
   - python38-pivy 
   - python38-pkgconfig 
-  - python38-pkginfo 
-  - python38-pkgutil-resolve-name 
   - python38-plaster 
-  - python38-plaster-pastedeploy 
-  - python38-platformdirs 
-  - python38-platformio 
-  - python38-plette 
-  - python38-plotly 
-  - python38-plotly-jupyter 
-  - python38-pluggy 
   - python38-pluginbase 
   - python38-plumbum 
-  - python38-ply 
   - python38-plyvel 
   - python38-pmw 
   - python38-pname 
   - python38-podcastparser 
-  - python38-podman 
-  - python38-podman-compose 
-  - python38-poetry 
-  - python38-poetry-core 
-  - python38-poetry-plugin-export 
   - python38-polib 
-  - python38-pomegranate 
-  - python38-pomegranate-devel 
   - python38-pony 
-  - python38-pooch 
-  - python38-pook 
-  - python38-poppler-qt5 
-  - python38-poppler-qt5-devel 
   - python38-port-for 
   - python38-portalocker 
-  - python38-portend 
   - python38-portpicker 
   - python38-power 
   - python38-poyo 
   - python38-pprintpp 
   - python38-pproxy 
   - python38-praatio 
-  - python38-pre-commit 
   - python38-precis-i18n 
   - python38-precise-runner 
-  - python38-preggy 
-  - python38-premailer 
   - python38-prestring 
-  - python38-pretend 
-  - python38-prettytable 
-  - python38-priority 
-  - python38-process-tests 
-  - python38-proglog 
   - python38-progress 
   - python38-progressbar 
   - python38-progressbar2 
   - python38-prometheus-client 
-  - python38-promise 
-  - python38-prompt_toolkit 
-  - python38-prompt_toolkit1 
-  - python38-proselint 
-  - python38-proto-plus 
-  - python38-protobuf 
-  - python38-proton-client 
-  - python38-protonvpn-nm-lib 
   - python38-proxmoxer 
-  - python38-proxy.py 
-  - python38-psautohint 
   - python38-pscript 
-  - python38-psutil 
   - python38-psychtoolbox 
-  - python38-psycopg2 
-  - python38-psycopg2cffi 
-  - python38-ptpython 
-  - python38-ptpython-ptipython 
   - python38-ptr 
-  - python38-ptyprocess 
   - python38-publicsuffix 
   - python38-publicsuffix2 
   - python38-publicsuffixlist 
-  - python38-pudb 
-  - python38-pulsectl 
   - python38-pure-eval 
   - python38-pure-sasl 
-  - python38-purl 
-  - python38-py 
-  - python38-py-cpuinfo 
   - python38-py-espeak-ng 
-  - python38-py-moneyed 
   - python38-py-multihash 
   - python38-py-radix 
   - python38-py-ubjson 
-  - python38-py-vapid 
-  - python38-py2pack 
-  - python38-py3c 
   - python38-py3dns 
-  - python38-py3status 
-  - python38-py7zr 
-  - python38-pyDOE2 
-  - python38-pyFFTW 
   - python38-pyLibravatar 
   - python38-pyModis 
   - python38-pyOCD 
-  - python38-pyOpenSSL 
-  - python38-pyPEG2 
-  - python38-pyRFC3339 
   - python38-pyRXP 
-  - python38-pyScss 
-  - python38-pyUSID 
-  - python38-pyVows 
-  - python38-pyacoustid 
   - python38-pyaes 
   - python38-pyahocorasick 
   - python38-pyalsaaudio 
-  - python38-pyaml 
-  - python38-pyannotate 
-  - python38-pyarrow 
-  - python38-pyarrow-devel 
-  - python38-pyasn1 
-  - python38-pyasn1-modules 
   - python38-pybars3 
   - python38-pybcj 
-  - python38-pybeam 
-  - python38-pybind11 
-  - python38-pybind11-devel 
   - python38-pybind11-stubgen 
   - python38-pybluez 
-  - python38-pybtex 
   - python38-pybugz 
-  - python38-pycairo 
-  - python38-pycairo-devel 
   - python38-pycapnp 
-  - python38-pycares 
   - python38-pycdio 
   - python38-pycdlib 
-  - python38-pycha 
   - python38-pychm 
   - python38-pyclipper 
-  - python38-pycocotools 
-  - python38-pycodestyle 
-  - python38-pycountry 
-  - python38-pycparser 
   - python38-pycryptodome 
   - python38-pycryptodomex 
-  - python38-pycsw 
-  - python38-pyct 
-  - python38-pycups 
-  - python38-pycurl 
   - python38-pycxx 
   - python38-pycxx-devel 
-  - python38-pydantic 
   - python38-pydash 
-  - python38-pydata-google-auth 
-  - python38-pydata-sphinx-theme 
-  - python38-pydbus 
-  - python38-pydenticon 
   - python38-pydicom 
   - python38-pydicom-data 
   - python38-pydle 
-  - python38-pydocstyle 
-  - python38-pydocumentdb 
-  - python38-pydot 
-  - python38-pydot3 
-  - python38-pydotplus 
-  - python38-pydrive2 
   - python38-pydub 
   - python38-pydyf 
-  - python38-pyeapi 
   - python38-pyee 
   - python38-pyelftools 
-  - python38-pyemd 
-  - python38-pyenchant 
-  - python38-pyerfa 
-  - python38-pyface 
   - python38-pyfakefs 
   - python38-pyfeyn 
   - python38-pyfiglet 
-  - python38-pyflakes 
-  - python38-pyftpdlib 
-  - python38-pyfuse3 
-  - python38-pygal 
-  - python38-pygaljs 
-  - python38-pygame 
-  - python38-pygame-devel 
-  - python38-pygeos 
-  - python38-pygerrit2 
-  - python38-pygit2 
-  - python38-pyglet 
-  - python38-pygments-ansi-color 
-  - python38-pygments-pytest 
-  - python38-pygments-style-railscasts 
   - python38-pygn 
-  - python38-pygraphviz 
   - python38-pyhcl 
   - python38-pyheif 
-  - python38-pyhibp 
   - python38-pyicumessageformat 
   - python38-pyinotify 
   - python38-pyinstaller-hooks-contrib 
-  - python38-pyipp 
   - python38-pyjavaproperties 
   - python38-pyjnius 
   - python38-pyjokes 
-  - python38-pyjsparser 
-  - python38-pyjwkest 
-  - python38-pykafka 
-  - python38-pykeepass 
   - python38-pykerberos 
-  - python38-pykickstart 
   - python38-pykka 
-  - python38-pykwalify 
-  - python38-pylama 
   - python38-pylast 
   - python38-pyleri 
   - python38-pylev 
@@ -31001,240 +30295,53 @@ unsorted:
   - python38-pyliblo-doc 
   - python38-pylibmc 
   - python38-pylineclip 
-  - python38-pylint 
-  - python38-pylint-ignore 
   - python38-pylint-venv 
-  - python38-pylons-sphinx-themes 
   - python38-pylru 
-  - python38-pyls-spyder 
-  - python38-pylsp-rope 
   - python38-pylsqpack 
   - python38-pylzma 
-  - python38-pymacaroons 
-  - python38-pymacaroons-pynacl 
   - python38-pymad 
   - python38-pymarc 
-  - python38-pymavlink 
   - python38-pymediainfo 
   - python38-pymemcache 
   - python38-pymetar 
   - python38-pymilter 
-  - python38-pymisp 
-  - python38-pymol 
   - python38-pymongo 
   - python38-pymssql 
-  - python38-pynamodb 
-  - python38-pynetbox 
   - python38-pyngus 
-  - python38-pynxos 
   - python38-pyo 
-  - python38-pyocr 
   - python38-pyodbc 
-  - python38-pyosf 
   - python38-pyotp 
-  - python38-pyowm 
-  - python38-pyp 
-  - python38-pypandoc 
   - python38-pyparallel 
-  - python38-pyparsing 
   - python38-pyperclip 
   - python38-pyperf 
-  - python38-pypet 
-  - python38-pypi-search 
-  - python38-pypiserver 
   - python38-pypng 
   - python38-pyppmd 
-  - python38-pyprel 
   - python38-pyprimes 
-  - python38-pyproject-hooks 
-  - python38-pyproject-metadata 
-  - python38-pypsexec 
   - python38-pypubsub 
-  - python38-pypuppetdb 
-  - python38-pyqt-builder 
-  - python38-pyqtgraph 
-  - python38-pyquery 
-  - python38-pyquil 
-  - python38-pyrad 
-  - python38-pyramid 
-  - python38-pyramid-chameleon 
-  - python38-pyramid-debugtoolbar 
-  - python38-pyramid-mako 
-  - python38-pyreadstat 
-  - python38-pyroma 
-  - python38-pyroomacoustics 
   - python38-pyroute2 
-  - python38-pyrsistent 
-  - python38-pysaml2 
   - python38-pyscard 
-  - python38-pyscreenshot 
-  - python38-pysendfile 
-  - python38-pyserial 
   - python38-pysha3 
-  - python38-pyshark 
-  - python38-pyshould 
   - python38-pyshp 
-  - python38-pysmb 
   - python38-pysmbc 
-  - python38-pysmi 
-  - python38-pysndfile 
-  - python38-pysnmp 
-  - python38-pysofaconventions 
-  - python38-pysolr 
-  - python38-pyspnego 
-  - python38-pysrt 
-  - python38-pyssim 
   - python38-pystache 
   - python38-pysvn 
-  - python38-pytaglib 
-  - python38-pyte 
-  - python38-pytesseract 
-  - python38-pytest 
-  - python38-pytest-aiohttp 
-  - python38-pytest-arraydiff 
-  - python38-pytest-astropy 
-  - python38-pytest-astropy-header 
-  - python38-pytest-asyncio 
-  - python38-pytest-attrib 
-  - python38-pytest-base-url 
-  - python38-pytest-bdd 
-  - python38-pytest-benchmark 
-  - python38-pytest-black 
-  - python38-pytest-check 
-  - python38-pytest-check-links 
-  - python38-pytest-click 
-  - python38-pytest-console-scripts 
-  - python38-pytest-cov 
-  - python38-pytest-curio 
-  - python38-pytest-datadir 
-  - python38-pytest-dependency 
-  - python38-pytest-describe 
-  - python38-pytest-django 
-  - python38-pytest-djangoapp 
-  - python38-pytest-doctestplus 
-  - python38-pytest-dotenv 
-  - python38-pytest-echo 
-  - python38-pytest-env 
-  - python38-pytest-error-for-skips 
-  - python38-pytest-expect 
-  - python38-pytest-filter-subpackage 
-  - python38-pytest-fixture-config 
-  - python38-pytest-flake8-path 
-  - python38-pytest-flake8dir 
-  - python38-pytest-flakes 
-  - python38-pytest-flask 
-  - python38-pytest-forked 
-  - python38-pytest-freezegun 
-  - python38-pytest-git 
-  - python38-pytest-helpers-namespace 
-  - python38-pytest-html 
-  - python38-pytest-httpbin 
-  - python38-pytest-httpserver 
-  - python38-pytest-httpx 
-  - python38-pytest-instafail 
-  - python38-pytest-isort 
-  - python38-pytest-json-report 
-  - python38-pytest-jupyter 
-  - python38-pytest-jupyter-client 
-  - python38-pytest-jupyter-server 
-  - python38-pytest-lazy-fixture 
-  - python38-pytest-listener 
-  - python38-pytest-localserver 
-  - python38-pytest-metadata 
-  - python38-pytest-mock 
-  - python38-pytest-mockito 
-  - python38-pytest-mpi 
-  - python38-pytest-mpl 
-  - python38-pytest-mypy 
-  - python38-pytest-openfiles 
-  - python38-pytest-order 
-  - python38-pytest-percent 
-  - python38-pytest-plus 
-  - python38-pytest-profiling 
-  - python38-pytest-pycodestyle 
-  - python38-pytest-pyramid-server 
-  - python38-pytest-qt 
-  - python38-pytest-random-order 
-  - python38-pytest-randomly 
-  - python38-pytest-regressions 
-  - python38-pytest-relaxed 
-  - python38-pytest-remotedata 
-  - python38-pytest-reorder 
-  - python38-pytest-repeat 
-  - python38-pytest-rerunfailures 
-  - python38-pytest-responsemock 
-  - python38-pytest-server-fixtures 
-  - python38-pytest-services 
-  - python38-pytest-shutil 
-  - python38-pytest-socket 
-  - python38-pytest-spec 
-  - python38-pytest-sphinx 
-  - python38-pytest-subprocess 
-  - python38-pytest-subtesthack 
-  - python38-pytest-subtests 
-  - python38-pytest-sugar 
-  - python38-pytest-super-check 
-  - python38-pytest-svn 
-  - python38-pytest-testconfig 
-  - python38-pytest-testinfra 
-  - python38-pytest-timeout 
-  - python38-pytest-tldr 
-  - python38-pytest-toolbox 
-  - python38-pytest-tornado 
-  - python38-pytest-tornasync 
-  - python38-pytest-translations 
-  - python38-pytest-trio 
-  - python38-pytest-twisted 
-  - python38-pytest-vcr 
-  - python38-pytest-verbose-parametrize 
-  - python38-pytest-virtualenv 
-  - python38-pytest-xdist 
-  - python38-pytest-xprocess 
-  - python38-pytest-xvfb 
   - python38-python-afl 
-  - python38-python-aiml 
-  - python38-python-akismet 
   - python38-python-args 
   - python38-python-barcode 
-  - python38-python-bidi 
-  - python38-python-binary-memcached 
-  - python38-python-box 
   - python38-python-cjson 
-  - python38-python-consul 
-  - python38-python-coveralls 
   - python38-python-crfsuite 
-  - python38-python-crontab 
   - python38-python-daemon 
   - python38-python-datamatrix 
-  - python38-python-dateutil 
-  - python38-python-dbusmock 
-  - python38-python-debian 
   - python38-python-docs-theme 
   - python38-python-doi 
-  - python38-python-dotenv 
   - python38-python-editor 
   - python38-python-engineio 
-  - python38-python-fedora 
-  - python38-python-for-android 
   - python38-python-gammu 
   - python38-python-gflags 
-  - python38-python-gitlab 
   - python38-python-gnupg 
-  - python38-python-gvm 
   - python38-python-jenkins 
-  - python38-python-jose 
-  - python38-python-jose-cryptography 
-  - python38-python-json-logger 
-  - python38-python-jsonschema-objects 
-  - python38-python-keycloak 
-  - python38-python-louvain 
-  - python38-python-lsp-black 
   - python38-python-lsp-jsonrpc 
-  - python38-python-lsp-server 
   - python38-python-lzo 
-  - python38-python-magic 
-  - python38-python-memcached 
-  - python38-python-mimeparse 
   - python38-python-mpd2 
   - python38-python-mpv 
   - python38-python-multipart 
@@ -31243,118 +30350,46 @@ unsorted:
   - python38-python-openid-teams 
   - python38-python-pam 
   - python38-python-poppler 
-  - python38-python-pptx 
   - python38-python-prctl 
   - python38-python-pseudorandom 
   - python38-python-ptrace 
-  - python38-python-qdatamatrix 
   - python38-python-qpid-proton 
-  - python38-python-qprogedit 
   - python38-python-rapidjson 
-  - python38-python-redis-lock 
-  - python38-python-redmine 
   - python38-python-rpm-spec 
   - python38-python-rtmidi 
   - python38-python-rtmidi-doc 
-  - python38-python-slugify 
   - python38-python-snappy 
   - python38-python-socketio 
   - python38-python-socks 
-  - python38-python-sofa 
   - python38-python-sql 
   - python38-python-stdnum 
-  - python38-python-subunit 
-  - python38-python-ternary 
-  - python38-python-twitter 
   - python38-python-utils 
   - python38-python-vlc 
-  - python38-python-whois 
-  - python38-python-xlib 
   - python38-python-yubico 
-  - python38-python3-openid 
-  - python38-python3-saml 
   - python38-pythondialog 
-  - python38-pythonfinder 
   - python38-pythonwhois 
-  - python38-pythran 
-  - python38-pythreejs 
   - python38-pytidylib 
   - python38-pytils 
   - python38-pytimeparse 
   - python38-pytlv 
   - python38-pytoml 
-  - python38-pytoolconfig 
-  - python38-pytoolconfig-global 
-  - python38-pytoolconfig-validation 
-  - python38-pytools 
   - python38-pytricia 
-  - python38-pytz 
-  - python38-pytz-deprecation-shim 
   - python38-pytzdata 
-  - python38-pyu2f 
   - python38-pyuca 
-  - python38-pyudev 
   - python38-pyupgrade 
   - python38-pyusb 
   - python38-pyuv 
   - python38-pyux 
   - python38-pyvdr 
-  - python38-pyvips 
   - python38-pyviz-comms 
-  - python38-pyvmomi 
   - python38-pywal 
   - python38-pywayland 
-  - python38-pywbem 
-  - python38-pywbemtools 
-  - python38-pywebpush 
-  - python38-pywinrm 
   - python38-pywlroots 
   - python38-pyxattr 
-  - python38-pyxdg 
-  - python38-pyyaml_env_tag 
-  - python38-pyzmq 
-  - python38-pyzmq-devel 
-  - python38-pyzo 
   - python38-pyzstd 
   - python38-q 
-  - python38-qcs-api-client 
-  - python38-qet_tb_generator 
-  - python38-qgrid 
-  - python38-qpageview 
-  - python38-qrcode 
-  - python38-qscintilla-qt5 
-  - python38-qstylizer 
-  - python38-qsymm 
-  - python38-qt3d-qt5 
-  - python38-qt3d-qt5-devel 
-  - python38-qt3d-qt5-doc 
-  - python38-qt5 
-  - python38-qt5-devel 
-  - python38-qt5-doc 
-  - python38-qt5-quick3d 
-  - python38-qt5-quick3d-devel 
-  - python38-qt5-remoteobjects 
-  - python38-qt5-remoteobjects-devel 
-  - python38-qt5-sip 
-  - python38-qtcharts-qt5 
-  - python38-qtcharts-qt5-api 
-  - python38-qtcharts-qt5-doc 
-  - python38-qtcharts-qt5-sip 
-  - python38-qtconsole 
-  - python38-qtdatavis3d-qt5 
-  - python38-qtdatavis3d-qt5-devel 
-  - python38-qtdatavis3d-qt5-doc 
-  - python38-qtnetworkauth-qt5 
-  - python38-qtnetworkauth-qt5-devel 
-  - python38-qtwebengine-qt5 
-  - python38-qtwebengine-qt5-devel 
-  - python38-quantities 
-  - python38-quantum-blackbird 
   - python38-queuelib 
   - python38-quicktions 
-  - python38-quimb 
-  - python38-radexreader 
-  - python38-radon 
   - python38-railroad-diagrams 
   - python38-random2 
   - python38-rapidfuzz 
@@ -31362,669 +30397,226 @@ unsorted:
   - python38-rarfile-doc 
   - python38-rawkit 
   - python38-rcssmin 
-  - python38-rdflib 
-  - python38-re-assert 
-  - python38-readme_renderer 
-  - python38-readthedocs-sphinx-ext 
   - python38-rebulk 
-  - python38-recommonmark 
-  - python38-reconfigure 
   - python38-recordclass 
-  - python38-redbaron 
-  - python38-redfish 
-  - python38-redis 
   - python38-reedsolo 
-  - python38-referencing 
-  - python38-regex 
-  - python38-relatorio 
-  - python38-releases 
-  - python38-remoto 
   - python38-rencode 
-  - python38-reportlab 
   - python38-repoze.lru 
-  - python38-repoze.sphinx.autointerface 
-  - python38-repoze.who 
-  - python38-reproject 
   - python38-requestbuilder 
-  - python38-requests 
-  - python38-requests-aws 
-  - python38-requests-cache 
-  - python38-requests-download 
-  - python38-requests-file 
-  - python38-requests-ftp 
-  - python38-requests-futures 
-  - python38-requests-gssapi 
-  - python38-requests-hawk 
-  - python38-requests-kerberos 
-  - python38-requests-mock 
-  - python38-requests-oauthlib 
-  - python38-requests-toolbelt 
-  - python38-requests-unixsocket 
-  - python38-requests-wsgi-adapter 
-  - python38-requests_ntlm 
   - python38-requestsexceptions 
-  - python38-requirements-detector 
   - python38-requirements-parser 
-  - python38-requre 
-  - python38-resampy 
   - python38-resolvelib 
-  - python38-responses 
   - python38-respx 
-  - python38-restructuredtext_lint 
-  - python38-restview 
-  - python38-resultsdb_api 
-  - python38-rethinkdb 
-  - python38-retry 
   - python38-retry_decorator 
-  - python38-retrying 
-  - python38-retryrequests 
-  - python38-rfc3339-validator 
-  - python38-rfc3986 
-  - python38-rfc3986-validator 
-  - python38-rfc3987 
   - python38-rfc6555 
-  - python38-rich 
-  - python38-rich-click 
   - python38-rjsmin 
-  - python38-rnc2rng 
-  - python38-rnginline 
-  - python38-robot-detection 
-  - python38-robotframework 
-  - python38-roifile 
-  - python38-rollbar 
   - python38-roman 
-  - python38-rope 
-  - python38-rpcq 
   - python38-rpds-py 
-  - python38-rply 
-  - python38-rpm 
   - python38-rpmfile 
-  - python38-rpmlb 
-  - python38-rpy2 
   - python38-rpyc 
-  - python38-rq 
-  - python38-rsa 
-  - python38-rss2email 
-  - python38-rst.linker 
-  - python38-rstcheck 
-  - python38-rt 
-  - python38-rtslib-fb 
   - python38-ruamel.base 
   - python38-ruamel.std.pathlib 
   - python38-ruamel.yaml 
   - python38-ruamel.yaml.clib 
-  - python38-ruamel.yaml.convert 
   - python38-ruffus 
   - python38-runthis-sphinxext 
-  - python38-s3transfer 
-  - python38-sadisplay 
   - python38-safe-netrc 
   - python38-sambacc 
-  - python38-samplerate 
   - python38-sane 
   - python38-sanlock 
   - python38-sarge 
-  - python38-sarif-om 
-  - python38-sas7bdat 
-  - python38-sasl 
-  - python38-sat-search 
-  - python38-sat-stac 
-  - python38-scales 
-  - python38-scandir 
   - python38-schedule 
   - python38-schema 
-  - python38-scikit-build 
   - python38-scikit-build-core 
   - python38-scikit-build-core-pyproject 
-  - python38-scikit-dsp-comm 
-  - python38-scikit-hep-testdata 
-  - python38-scikit-image 
-  - python38-scikit-learn 
-  - python38-scikit-sound 
-  - python38-scikit-sparse 
-  - python38-scikit-umfpack 
-  - python38-scipy 
   - python38-scipy-gnu-hpc 
   - python38-scipy_1_10_1-gnu-hpc 
-  - python38-scitokens 
-  - python38-scour 
-  - python38-scp 
   - python38-screeninfo 
-  - python38-screenplain 
   - python38-scripttest 
   - python38-scrypt 
   - python38-scspell3k 
   - python38-sdnotify 
-  - python38-seaborn 
   - python38-securesystemslib 
-  - python38-selection 
-  - python38-selenium 
-  - python38-semanage 
-  - python38-semantic_version 
   - python38-semver 
-  - python38-sentry-sdk 
-  - python38-seqdiag 
   - python38-serpent 
-  - python38-serpy 
-  - python38-serverfiles 
-  - python38-service_identity 
   - python38-setproctitle 
-  - python38-setuptools 
-  - python38-setuptools-declarative-requirements 
-  - python38-setuptools-gettext 
-  - python38-setuptools-git 
-  - python38-setuptools-git-versioning 
-  - python38-setuptools-rust 
-  - python38-setuptools-version-command 
   - python38-setuptools-wheel 
-  - python38-setuptools_scm 
-  - python38-setuptools_scm_git_archive 
-  - python38-sfs 
-  - python38-sge-pygame 
   - python38-sgmllib3k 
-  - python38-sgp4 
   - python38-sh 
   - python38-shaptools 
   - python38-shellingham 
-  - python38-sherpa 
-  - python38-shijian 
-  - python38-shinyutils 
-  - python38-shodan 
   - python38-shortuuid 
-  - python38-show-in-file-manager 
-  - python38-sidecar 
-  - python38-sidpy 
   - python38-sievelib 
-  - python38-sigal 
-  - python38-signedjson 
   - python38-simpleaudio 
   - python38-simplebayes 
   - python38-simpleeval 
   - python38-simplegeneric 
-  - python38-simplejson 
   - python38-simplekml 
-  - python38-single-version 
-  - python38-siosocks 
-  - python38-sip-devel 
   - python38-sip4 
   - python38-sip4-devel 
-  - python38-sip6-devel 
   - python38-siphashc 
-  - python38-six 
-  - python38-sklearn-pandas 
   - python38-skyfield 
   - python38-slack-sdk 
-  - python38-slimit 
-  - python38-slip 
-  - python38-slip-dbus 
-  - python38-slixmpp 
-  - python38-slycot 
-  - python38-smart-open 
-  - python38-smartypants 
-  - python38-smbprotocol 
-  - python38-smmap 
-  - python38-smpplib 
-  - python38-sniffio 
-  - python38-snimpy 
-  - python38-snowballstemmer 
-  - python38-snuggs 
-  - python38-social-auth-app-django 
-  - python38-social-auth-core 
   - python38-socketpool 
-  - python38-softlayer 
-  - python38-softlayer-zeep 
-  - python38-sorl-thumbnail 
-  - python38-sortedcollections 
-  - python38-sortedcontainers 
-  - python38-sortinghat 
-  - python38-sounddevice 
   - python38-soupsieve 
   - python38-sox 
-  - python38-soxr 
   - python38-spake2 
-  - python38-spark_parser 
-  - python38-sparse 
   - python38-speaklater 
   - python38-sphinx-argparse 
-  - python38-sphinx-autobuild 
-  - python38-sphinx-autodoc-typehints 
-  - python38-sphinx-book-theme 
-  - python38-sphinx-bootstrap-theme 
-  - python38-sphinx-click 
-  - python38-sphinx-feature-classification 
-  - python38-sphinx-inline-tabs 
-  - python38-sphinx-issues 
-  - python38-sphinx-jsonschema 
-  - python38-sphinx-qt-documentation 
-  - python38-sphinx-removed-in 
-  - python38-sphinx-tabs 
-  - python38-sphinx-theme-builder 
-  - python38-sphinx-version-warning 
   - python38-sphinx_mdinclude 
-  - python38-sphinx_press_theme 
-  - python38-sphinx_rtd_theme 
-  - python38-sphinxcontrib-apidoc 
-  - python38-sphinxcontrib-applehelp 
-  - python38-sphinxcontrib-asyncio 
-  - python38-sphinxcontrib-autoprogram 
-  - python38-sphinxcontrib-autoprogram-doc 
-  - python38-sphinxcontrib-blockdiag 
-  - python38-sphinxcontrib-copybutton 
-  - python38-sphinxcontrib-devhelp 
-  - python38-sphinxcontrib-documentedlist 
   - python38-sphinxcontrib-fulltoc 
-  - python38-sphinxcontrib-github-alt 
-  - python38-sphinxcontrib-htmlhelp 
-  - python38-sphinxcontrib-httpdomain 
-  - python38-sphinxcontrib-issuetracker 
-  - python38-sphinxcontrib-jsmath 
-  - python38-sphinxcontrib-newsfeed 
-  - python38-sphinxcontrib-nwdiag 
-  - python38-sphinxcontrib-pecanwsme 
-  - python38-sphinxcontrib-plantuml 
-  - python38-sphinxcontrib-programoutput 
-  - python38-sphinxcontrib-qthelp 
-  - python38-sphinxcontrib-seqdiag 
-  - python38-sphinxcontrib-serializinghtml 
-  - python38-sphinxcontrib-svg2pdfconverter 
-  - python38-sphinxcontrib-towncrier 
-  - python38-sphinxcontrib-trio 
-  - python38-sphinxcontrib-websupport 
   - python38-sphinxext-opengraph 
-  - python38-sphobjinv 
   - python38-spidev 
-  - python38-spotipy 
-  - python38-spur 
-  - python38-spyder-kernels 
-  - python38-sqlalchemy-migrate 
   - python38-sqlglot 
   - python38-sqlite-fts4 
-  - python38-sqlite-utils 
-  - python38-sqlite3-to-mysql 
   - python38-sqlitedict 
-  - python38-sqlparse 
   - python38-srcinfo 
-  - python38-ssdeep 
-  - python38-sshpubkeys 
-  - python38-sshtunnel 
-  - python38-stack-data 
-  - python38-starlette 
   - python38-statsd 
-  - python38-statsmodels 
-  - python38-stdeb 
-  - python38-stestr 
   - python38-stomp.py 
   - python38-stomper 
   - python38-straight-plugin 
-  - python38-streamz 
-  - python38-strict-rfc3339 
-  - python38-strictyaml 
-  - python38-stripe 
   - python38-structlog 
-  - python38-subgrab 
   - python38-subprocess-tee 
-  - python38-subprocrunner 
   - python38-subscene-api 
   - python38-subst 
   - python38-suds 
-  - python38-sunpy 
-  - python38-suntime 
-  - python38-sure 
   - python38-surer 
-  - python38-svglib 
-  - python38-svgpathtools 
-  - python38-svgwrite 
   - python38-svneverever 
-  - python38-swagger-spec-validator 
-  - python38-swapper 
-  - python38-swifter 
-  - python38-sybil 
-  - python38-sympy 
-  - python38-synr 
-  - python38-system-hotkey310 
-  - python38-system_hotkey 
   - python38-systemd 
-  - python38-tableauserverclient 
-  - python38-tableprint 
-  - python38-tables 
-  - python38-tablib 
-  - python38-tabpy 
-  - python38-tabulate 
-  - python38-tap.py 
-  - python38-targetcli-fb 
-  - python38-tasklib 
-  - python38-taskw 
   - python38-tbb 
-  - python38-tblib 
   - python38-tcolorpy 
-  - python38-technicolor 
-  - python38-telepot 
-  - python38-telethon-session-sqlalchemy 
   - python38-template-remover 
-  - python38-tempora 
   - python38-tenacity 
-  - python38-tensorpac 
   - python38-term-background 
   - python38-termcolor 
-  - python38-terminado 
-  - python38-terminaltables 
   - python38-termstyle 
   - python38-tesserocr 
-  - python38-testfixtures 
-  - python38-testflo 
-  - python38-testpath 
-  - python38-testrepository 
-  - python38-testresources 
-  - python38-testscenarios 
   - python38-testsuite 
-  - python38-testtools 
   - python38-text-unidecode 
-  - python38-textX 
   - python38-textdistance 
-  - python38-textfsm 
-  - python38-textile 
   - python38-texttable 
   - python38-textwrap3 
-  - python38-thLib 
   - python38-thespian 
   - python38-thewalrus 
-  - python38-threadpoolctl 
   - python38-three-merge 
   - python38-threevis 
-  - python38-thrift 
-  - python38-thriftpy2 
-  - python38-tifffile 
   - python38-time-machine 
   - python38-time-travel 
   - python38-timeout-decorator 
-  - python38-tinyarray 
-  - python38-tinycss2 
   - python38-tinydb 
   - python38-tinyrecord 
-  - python38-tinyrpc 
-  - python38-titlecase 
   - python38-tk 
-  - python38-tkreadonly 
-  - python38-tld 
-  - python38-tldextract 
-  - python38-tmx 
   - python38-tokenize-rt 
-  - python38-toml 
-  - python38-tomli 
-  - python38-tomli-w 
-  - python38-tomlkit 
   - python38-tools 
   - python38-toolz 
   - python38-toposort 
-  - python38-topy 
-  - python38-tornado 
-  - python38-tornado6 
-  - python38-tortilla 
-  - python38-towncrier 
-  - python38-tox 
-  - python38-tox-no-internet 
-  - python38-tox-wheel 
   - python38-tpfd 
-  - python38-tqdm 
-  - python38-traceback2 
   - python38-traitlets 
   - python38-traits 
-  - python38-traitsui 
   - python38-traittypes 
-  - python38-transaction 
-  - python38-transip 
-  - python38-transitions 
-  - python38-translate-toolkit 
-  - python38-translation-finder 
   - python38-translationstring 
   - python38-translitcodec 
-  - python38-treq 
   - python38-tri.declarative 
   - python38-tri.struct 
-  - python38-trio 
   - python38-trove-classifiers 
-  - python38-trustme 
   - python38-tsk 
   - python38-ttp 
   - python38-ttp-templates 
-  - python38-tvm 
-  - python38-tweepy 
-  - python38-twine 
-  - python38-twitter 
   - python38-twitter.common.finagle-thrift 
   - python38-twitter.common.lang 
   - python38-twitter.common.rpc 
-  - python38-twython 
   - python38-txWS 
-  - python38-txZMQ 
   - python38-txaio 
-  - python38-txt2tags 
-  - python38-txtorcon 
   - python38-typed-ast 
   - python38-typedload 
   - python38-typeguard 
-  - python38-typepy 
-  - python38-typer 
-  - python38-typing-inspect 
-  - python38-typing_extensions 
-  - python38-typogrify 
-  - python38-tzlocal 
-  - python38-u-msgpack-python 
   - python38-ua-parser 
-  - python38-uamqp 
   - python38-uc-micro-py 
-  - python38-ufoLib2 
-  - python38-ufoProcessor 
-  - python38-ufonormalizer 
   - python38-uhashring 
   - python38-ujson 
-  - python38-uncertainties 
-  - python38-unearth 
   - python38-unicodecsv 
   - python38-unicodedata2 
   - python38-unidiff 
-  - python38-unify 
   - python38-uniseg 
-  - python38-unittest-mixins 
   - python38-unittest-xml-reporting 
   - python38-unittest2pytest 
   - python38-unpaddedbase64 
   - python38-unsync 
   - python38-untokenize 
-  - python38-unyt 
-  - python38-uproot 
-  - python38-uri-template 
   - python38-uritemplate 
   - python38-uritools 
-  - python38-url-normalize 
-  - python38-urlextract 
-  - python38-urlgrabber 
-  - python38-urllib3 
   - python38-urwid 
   - python38-usbsdmux 
-  - python38-user-agents 
-  - python38-user_agent 
-  - python38-userpath 
   - python38-usfm2osis 
-  - python38-uvicorn 
-  - python38-uvloop 
   - python38-uwsgi-python3 
   - python38-validate-pyproject 
   - python38-validate_email 
-  - python38-validators 
   - python38-varint 
-  - python38-varlink 
-  - python38-vatnumber 
-  - python38-vcrpy 
-  - python38-vcver 
   - python38-vcversioner 
-  - python38-vdirsyncer 
-  - python38-vega 
-  - python38-vega_datasets 
   - python38-venusian 
   - python38-venusian-doc 
   - python38-verboselogs 
   - python38-versioneer 
-  - python38-versioningit 
   - python38-versiontag 
-  - python38-versiontools 
-  - python38-veusz 
-  - python38-vim-vint 
   - python38-vine 
   - python38-virtkey 
-  - python38-virtualenv 
-  - python38-virtualenv-clone 
-  - python38-virtue 
   - python38-visitor 
-  - python38-vispy 
-  - python38-vistir 
-  - python38-visvis 
-  - python38-vncdotool 
-  - python38-vobject 
   - python38-volatile 
   - python38-volatility3 
   - python38-voluptuous 
   - python38-voluptuous-serialize 
-  - python38-vsts 
-  - python38-vsts-cd-manager 
-  - python38-vulkan 
-  - python38-vulture 
   - python38-w3lib 
   - python38-wadllib 
-  - python38-wafw00f 
   - python38-waitress 
   - python38-waitress-doc 
   - python38-wakeonlan 
-  - python38-warlock 
-  - python38-watchdog 
-  - python38-watchdog-doc 
-  - python38-watchfiles 
-  - python38-watermark 
-  - python38-wcag-contrast-ratio 
   - python38-wcmatch 
-  - python38-wcwidth 
-  - python38-weasyprint 
-  - python38-web.py 
   - python38-web_cache 
-  - python38-webassets 
-  - python38-webcolors 
-  - python38-webencodings 
   - python38-weblate-language-data 
-  - python38-weblate-schemas 
-  - python38-weblib 
   - python38-webruntime 
   - python38-websocket-client 
   - python38-websockets 
-  - python38-websockify 
   - python38-wfuzz 
   - python38-whatever 
   - python38-whatthepatch 
-  - python38-wheel 
   - python38-wheezy.template 
   - python38-whichcraft 
   - python38-whitenoise 
-  - python38-whois_similarity_distance 
-  - python38-widgetsnbextension 
-  - python38-wikipedia 
-  - python38-wirerope 
-  - python38-wiring 
   - python38-wmctrl 
-  - python38-wolframalpha 
-  - python38-wptools 
-  - python38-wrapt 
   - python38-ws4py 
   - python38-wsaccel 
-  - python38-wsgi_intercept 
-  - python38-wsproto 
-  - python38-wstools 
-  - python38-wtf-peewee 
   - python38-wurlitzer 
-  - python38-wxPython 
   - python38-xapian 
-  - python38-xapian-haystack 
-  - python38-xapp 
-  - python38-xattr 
-  - python38-xcffib 
   - python38-xdg 
-  - python38-xdis 
-  - python38-xdoctest 
   - python38-xerox 
-  - python38-xhtml2pdf 
   - python38-xkbcommon 
   - python38-xkbgroup 
   - python38-xkcdpass 
   - python38-xlrd 
   - python38-xlwt 
-  - python38-xmldiff 
-  - python38-xmlschema 
-  - python38-xmlsec 
   - python38-xmltodict 
-  - python38-xpybutil 
   - python38-xrootd 
-  - python38-xsge_gui 
-  - python38-xsge_lighting 
-  - python38-xsge_particle 
-  - python38-xsge_path 
-  - python38-xsge_physics 
-  - python38-xsge_tiled 
   - python38-xvfbwrapper 
   - python38-xxhash 
   - python38-xyzservices 
   - python38-y-py 
-  - python38-yacron 
-  - python38-yafe 
   - python38-yamale 
-  - python38-yamldoc 
-  - python38-yamllint 
-  - python38-yamlloader 
-  - python38-yapf 
-  - python38-yappi 
   - python38-yara 
-  - python38-yarg 
-  - python38-yarl 
   - python38-yaspin 
   - python38-yaswfp 
-  - python38-yg.lockfile 
   - python38-youtube-dl 
   - python38-ypy-websocket 
-  - python38-yq 
   - python38-yt 
-  - python38-zake 
-  - python38-zarr 
-  - python38-zc.buildout 
   - python38-zc.customdoctests 
   - python38-zc.lockfile 
-  - python38-zdaemon 
-  - python38-zeep 
-  - python38-zeroconf 
   - python38-zhon 
   - python38-zict 
-  - python38-zignal 
-  - python38-zipp 
   - python38-zipstream 
   - python38-zodbpickle 
   - python38-zope.cachedescriptors 
-  - python38-zope.component 
-  - python38-zope.configuration 
-  - python38-zope.copy 
-  - python38-zope.deferredimport 
   - python38-zope.deprecation 
-  - python38-zope.event 
-  - python38-zope.exceptions 
-  - python38-zope.hookable 
-  - python38-zope.i18nmessageid 
-  - python38-zope.interface 
-  - python38-zope.location 
-  - python38-zope.proxy 
-  - python38-zope.proxy-devel 
-  - python38-zope.schema 
-  - python38-zope.security 
-  - python38-zope.testbrowser 
-  - python38-zope.testbrowser-test 
   - python38-zope.testing 
-  - python38-zope.testrunner 
   - python38-zopfli 
-  - python38-zstandard 
   - python38-zstd 
   - python38-zxcvbn 
   - python38-zypp-plugin 
@@ -34020,6 +32612,7 @@ unsorted:
   - python39-ncclient 
   - python39-ndg-httpsclient 
   - python39-ndjson 
+  - python39-ndtiff 
   - python39-neovim 
   - python39-nest-asyncio 
   - python39-nested-lookup 
@@ -37514,8 +36107,6 @@ unsorted:
   - sof-firmware 
   - sofia-sip 
   - sofia-sip-devel 
-  - softhsm 
-  - softhsm-devel 
   - solaar 
   - solaar-doc 
   - solaar-udev 
@@ -46940,6 +45531,7 @@ unsorted:
   - trojan 
   - trousers 
   - trousers-devel 
+  - trurl 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
   - truth 
