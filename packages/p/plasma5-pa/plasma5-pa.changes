@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * kcm: stop setting sourceSize in avatar
+  * kcm/DeviceListItem: Set width for comboboxes, with correctly sized popup
+  * applet: add missing function for "Show virtual devices" menu item (kde#465996)
+
+-------------------------------------------------------------------
 Tue Mar 14 15:06:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
