@@ -29,4 +29,13 @@ There should be a rpmlint which whitelists this PAM module.</comment>
     <comment>- Require pam-config 2.4 or newer (postlogin read fix) (forwarded request 1077080 from kukuk)</comment>
     <requestid>1077081</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00f687d9af986be23c16ca044442e4c3</srcmd5>
+    <version>1.0.1</version>
+    <time>1680722924</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.1
+  - liblastlog2: fix memory leak (forwarded request 1077557 from kukuk)</comment>
+    <requestid>1077558</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  5 14:23:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 1.0.1
+  - liblastlog2: fix memory leak
+
+-------------------------------------------------------------------
+Wed Apr  5 13:12:56 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 1.0.0
+  - Add PAM service name to database
+  - pam_lastlog2: Try XDG_VTNR if PAM_TTY is not a tty
+  - lastlog2: Fix header alignment
+
+-------------------------------------------------------------------
 Mon Apr  3 20:34:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require pam-config 2.4 or newer (postlogin read fix)

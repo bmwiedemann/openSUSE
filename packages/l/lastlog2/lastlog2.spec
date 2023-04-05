@@ -16,9 +16,9 @@
 #
 
 
-%define lname   liblastlog2-0
+%define lname   liblastlog2-1
 Name:           lastlog2
-Version:        0.7.0
+Version:        1.0.1
 Release:        0
 Summary:        Reports most recent login of users
 License:        BSD-2-Clause
