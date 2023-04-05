@@ -1,0 +1,11 @@
+<package name="python-pymdown-extensions" project="openSUSE:Factory">
+  <title></title>
+  <description>PyMdown Extensions is a collection of extensions for Python Markdown.
+
+They were originally written to make writing documentation more enjoyable.
+Covering a wide range of solutions, and while not every extension is needed
+by all people, there is usually at least one useful extension for anybody.
+</description>
+  <devel project="devel:languages:python" package="python-pymdown-extensions"/>
+  <url>https://github.com/facelessuser/pymdown-extensions</url>
+</package>
