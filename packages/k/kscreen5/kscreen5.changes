@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * OSD: Do not connect to member QObject's destroyed signal (kde#466914)
+  * Display connector name instead of type name when serial number is identical (kde#466046)
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
