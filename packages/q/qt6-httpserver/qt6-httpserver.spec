@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-httpserver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qthttpserver-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-httpserver%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt HTTP Server
 License:        GPL-3.0-only
@@ -37,10 +37,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-network-private-devel
 BuildRequires:  qt6-websockets-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6WebSockets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -60,9 +61,9 @@ QHttpServer is a simplified API for QAbstractHttpServer and QHttpServerRouter.
 %package -n qt6-httpserver-devel
 Summary:        Qt 6 HttpServer library - Development files
 Requires:       libQt6HttpServer6 = %{version}
-Requires:       cmake(Qt6Concurrent)
-Requires:       cmake(Qt6Network)
-Requires:       cmake(Qt6WebSockets)
+Requires:       cmake(Qt6Concurrent) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6WebSockets) = %{real_version}
 
 %description -n qt6-httpserver-devel
 Development files for the Qt 6 HttpServer library.
