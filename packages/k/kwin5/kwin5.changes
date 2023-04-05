@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * Revert "backends/libinput: don't multiply v120 value by scroll speed" (kde#464592)
+  * Improve Workspace::outputAt()
+  * workspace: prevent dangling pointers in output order list
+  * dpms: Make sure we are not calling the interface after the output is gone (kde#466346)
+  * backends/drm: restrict common mode generation to drivers that support scaling
+  * kcms/rules: Make Comboboxes bordered again
+  * backends/drm: consider color property changes as failed when the output is off
+  * wayland: Handle xdg_wm_base being destroyed before surface role
+  * Avoid accidental creation of backing stores for offscreen surfaces (kde#465790)
+  * inputmethod: Properly report that it's not visible
+  * wayland: Truncate strings sent via plasmawindowmanager interface (kde#465775)
+  * Simplify tile dismissal (kde#465740)
+  * Fix picking drag target
+  * Screencast: avoid using DMABufs exclusively to allow renegotiation
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
