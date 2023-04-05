@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * CheckBox,RadioButton: Fix RTL icon alignment
+  * CheckBox,RadioButton: Fix RTL focus frame positioning
+  * CheckBox,RadioButton: Extend focus line to cover an icon too (kde#467824)
+  * Fix RTL for SP_ToolBarHorizontalExtensionButton
+  * KStyle: make painted arrows more scalable, fix RTL delay menu arrows
+
+-------------------------------------------------------------------
 Thu Mar 16 20:52:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to make the window outline configurable (kde#465948):
