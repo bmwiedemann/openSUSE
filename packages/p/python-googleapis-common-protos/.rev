@@ -124,4 +124,19 @@
   * Add google/rpc/http.proto (41f1529) (forwarded request 1068692 from glaubitz)</comment>
     <requestid>1068699</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a29322082880a82616dffb56c13f0218</srcmd5>
+    <version>1.59.0</version>
+    <time>1680722943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.59.0
+  * Add overrides_by_request_protocol to BackendRule
+    in google/api/backend.proto (77376dd)
+  * Add proto_reference_documentation_uri to Publishing
+    in google/api/client.proto (77376dd)
+  * Add SERVICE_NOT_VISIBLE and GCP_SUSPENDED to ErrorReason
+    in google/api/error_reason.proto (77376dd)
+  * Use rst syntax in readme (77376dd) (forwarded request 1077529 from glaubitz)</comment>
+    <requestid>1077585</requestid>
+  </revision>
 </revisionlist>

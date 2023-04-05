@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  5 12:43:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.59.0
+  * Add overrides_by_request_protocol to BackendRule
+    in google/api/backend.proto (77376dd)
+  * Add proto_reference_documentation_uri to Publishing
+    in google/api/client.proto (77376dd)
+  * Add SERVICE_NOT_VISIBLE and GCP_SUSPENDED to ErrorReason
+    in google/api/error_reason.proto (77376dd)
+  * Use rst syntax in readme (77376dd)
+
+-------------------------------------------------------------------
 Thu Mar  2 12:50:41 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.58.0
