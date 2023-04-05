@@ -1,28 +1,12 @@
 ---
- texmf-dist/web2c/fmtutil.cnf |   17 ++---
+ texmf-dist/web2c/fmtutil.cnf |    8 +-
  texmf-dist/web2c/mktex.opt   |   39 +++++++++--
  texmf-dist/web2c/texmf.cnf   |  141 +++++++++++++++++++++++++++----------------
- 3 files changed, 128 insertions(+), 69 deletions(-)
+ 3 files changed, 123 insertions(+), 65 deletions(-)
 
 --- texmf-dist/web2c/fmtutil.cnf
 +++ texmf-dist/web2c/fmtutil.cnf	2020-04-20 16:19:39.729909034 +0000
-@@ -50,10 +50,11 @@ amstex pdftex - -translate-file=cp227.tc
- # from context:
- cont-en pdftex cont-usr.tex -8bit *cont-en.mkii
- cont-en xetex cont-usr.tex -8bit *cont-en.mkii
--#! cont-fr pdftex cont-usr.tex -8bit *cont-fr.mkii
--#! cont-it pdftex cont-usr.tex -8bit *cont-it.mkii
--#! cont-nl pdftex cont-usr.tex -8bit *cont-nl.mkii
--#! cont-ro pdftex cont-usr.tex -8bit *cont-ro.mkii
-+cont-de pdftex cont-usr.tex -8bit *cont-de.mkii
-+cont-fr pdftex cont-usr.tex -8bit *cont-fr.mkii
-+cont-it pdftex cont-usr.tex -8bit *cont-it.mkii
-+cont-nl pdftex cont-usr.tex -8bit *cont-nl.mkii
-+cont-ro pdftex cont-usr.tex -8bit *cont-ro.mkii
- #
- # from cslatex:
- cslatex pdftex - -etex cslatex.ini
-@@ -74,8 +75,8 @@ hilatex hitex language.dat -etex -ltx hi
+@@ -66,8 +66,8 @@ hilatex hitex language.dat -etex -ltx hi
  hitex hitex language.def -etex -ltx hitex.ini
  #
  # from jadetex:
@@ -33,7 +17,7 @@
  #
  # from latex-bin:
  dvilualatex luatex language.dat,language.dat.lua dvilualatex.ini
-@@ -159,5 +160,5 @@ xelatex xetex language.dat -etex xelatex
+@@ -151,5 +151,5 @@ xelatex xetex language.dat -etex xelatex
  xetex xetex language.def -etex xetex.ini
  #
  # from xmltex:
@@ -120,7 +104,7 @@
  # Cache values that may be useful for recursive calls.
  export MT_MKTEX_OPT MT_MKTEX_CNF 
 --- texmf-dist/web2c/texmf.cnf
-+++ texmf-dist/web2c/texmf.cnf	2021-04-09 13:24:27.282393814 +0000
++++ texmf-dist/web2c/texmf.cnf	2023-03-23 08:35:53.138983942 +0000
 @@ -62,20 +62,20 @@
  TEXMFROOT = $SELFAUTOPARENT
  
@@ -150,11 +134,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2022/texmf-var
+-TEXMFVAR = ~/.texlive2023/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2022/texmf-config
+-TEXMFCONFIG = ~/.texlive2023/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -263,7 +247,7 @@
  
  % Similarly for the GF format, which only remains in existence because
  % Metafont outputs it (and MF isn't going to change).
-@@ -442,8 +442,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
+@@ -446,8 +446,8 @@ MPSUPPORT = $TEXMFDOTDIR;$TEXMF/metapost
  % For xdvi to find mime.types and .mailcap, if they do not exist in
  % ~.  These are single directories, not paths.
  % (But the default mime.types, at least, may well suffice.)
@@ -274,7 +258,7 @@
  
  % Default settings for the fontconfig library as used by the Windows
  % versions of xetex/xdvipdfmx.  Not used by xetex on Unixish systems.
-@@ -467,10 +467,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
+@@ -471,10 +471,10 @@ WEBINPUTS = $TEXMFDOTDIR;$TEXMF/web//
  CWEBINPUTS = $TEXMFDOTDIR;$TEXMF/cweb//
  
  % Omega-related fonts and other files.
@@ -289,7 +273,7 @@
  OTPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/otp//
  OCPINPUTS = $TEXMFDOTDIR;$TEXMF/omega/ocp//
  
-@@ -566,32 +566,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
+@@ -570,32 +570,38 @@ RUBYINPUTS   = $TEXMFDOTDIR;$TEXMF/scrip
  % explicitly list every directory.  Arguably more understandable anyway.
  %
  TEXMFCNF = {\
@@ -353,13 +337,13 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -909,3 +915,34 @@ guess_input_kanji_encoding = 1
+@@ -921,3 +927,34 @@ guess_input_kanji_encoding.mendex = 1
  % command_line_encoding = none
  % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
  command_line_encoding = utf-8
 +
 +% These are xmltex specific
-+main_memory.xmltex = 1500000
++main_memory.xmltex = 2500000
 +param_size.xmltex = 1500
 +stack_size.xmltex = 1500
 +hash_extra.xmltex = 50000
