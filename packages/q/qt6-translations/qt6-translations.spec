@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-translations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qttranslations-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-translations
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6LinguistTools) >= %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6LinguistTools) = %{real_version}
 BuildArch:      noarch
 
 %description
