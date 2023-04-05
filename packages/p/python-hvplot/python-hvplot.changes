@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  1 19:45:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.3
+  * Allow .hvplot to execute the ibis backend (#990)
+  * Improve package name in error message (#1005)
+  * Let process_crs try a few approaches before raising error
+    (#1026)
+  * Fix label on unnamed data array (#1025)
+  * Only use xarray long_name metadata if it is a string (#1031)
+  * Replace deprecated Param methods (#1030)
+  * Ensure interactive pipeline is not re-executed needlessly
+    (#1029)
+  * Fixes subplots=True for geo=True and by (#761)
+  * Force column names to string (#1042)
+
+-------------------------------------------------------------------
 Tue Feb  7 09:05:39 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.8.2

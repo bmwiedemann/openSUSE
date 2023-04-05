@@ -17,7 +17,7 @@
 
 
 Name:           python-hvplot
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
@@ -39,6 +39,8 @@ Requires:       python-holoviews >= 1.11.0
 Requires:       python-numpy >= 1.15
 Requires:       python-packaging
 Requires:       python-pandas
+Requires:       python-panel >= 0.11.0
+Requires:       python-param >= 1.9
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
@@ -67,21 +69,23 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module bokeh >= 1.0.0 with %python-bokeh < 2.5}
 BuildRequires:  %{python_module colorcet >= 2}
 BuildRequires:  %{python_module dask}
-BuildRequires:  %{python_module datashader}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module param >= 1.6.1}
+BuildRequires:  %{python_module panel >= 0.11.0}
+BuildRequires:  %{python_module param >= 1.9.0}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pooch}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module streamz >= 0.3.0}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.9}
+BuildRequires:  %{python_module datashader if (%python-base >= 3.9 with %python-base < 3.11)}
 # /SECTION
 %python_subpackages
 
@@ -98,6 +102,8 @@ mkdir -p cache/xarray_tutorial_data
 pushd cache/xarray_tutorial_data
 tar -x -f %{SOURCE1} --strip-components=1
 popd
+sed -i "s/import xarray as xr/import pytest; xr = pytest.importorskip('xarray')/" hvplot/tests/test*.py
+sed -i "s/import hvplot.xarray/import pytest; xarray = pytest.importorskip('xarray')/" hvplot/tests/testinteractive.py
 
 %build
 %python_build
@@ -120,7 +126,7 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_xlim_affects_x_range"
   donttest+=" or test_plot_resolution_with_rasterize"
 fi
-%pytest hvplot/tests/test* -ra -k "not ($donttest)"
+%pytest hvplot/tests/test* -n auto -ra -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
