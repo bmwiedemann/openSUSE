@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-x
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define texlive_version  2022
-%define texlive_previous 2021
-%define texlive_release  20220321
-%define texlive_noarch   196
-%define biber_version    2.17
+%define texlive_version  2023
+%define texlive_previous 2022
+%define texlive_release  20230311
+%define texlive_noarch   201
+%define biber_version    2.18
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -56,17 +56,20 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-x
-Version:        2022
+Version:        2023
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+BuildRequires:  mkfontdir
+BuildRequires:  mkfontscale
 BuildRequires:  t1utils
 BuildRequires:  texlive-filesystem
+BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for x
-License:        Apache-1.0 and BSD-3-Clause and GPL-2.0-or-later and LPPL-1.0 and SUSE-Public-Domain and SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GFDL-1.2-only and GPL-2.0-or-later and LPPL-1.0 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-x-rpmlintrc
@@ -107,7 +110,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(pgfplots.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source1:        tikz-dimline.tar.xz
 Source2:        tikz-dimline.doc.tar.xz
 
@@ -123,6 +126,7 @@ Summary:        Documentation for texlive-tikz-dimline
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-dimline and texlive-alldocumentation)
 
 %description -n texlive-tikz-dimline-doc
 This package includes the documentation for texlive-tikz-dimline
@@ -156,6 +160,156 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-tikz-dimline
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/tikz-dimline/tikz-dimline.sty
+
+%package -n texlive-tikz-ext
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.2svn64920
+Release:        0
+License:        GFDL-1.2-only
+Summary:        A collection of libraries for PGF/TikZ
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tikz-ext-doc >= %{texlive_version}
+Provides:       tex(pgfcalendar-ext.code.tex)
+Provides:       tex(pgfcalendar-ext.sty)
+Provides:       tex(pgfcalendar-ext.tex)
+Provides:       tex(pgfkeyslibraryext.pgfkeys-plus.code.tex)
+Provides:       tex(pgflibraryext.pgfkeys-plus.code.tex)
+Provides:       tex(pgflibraryext.shapes.circlearrow.code.tex)
+Provides:       tex(pgflibraryext.shapes.circlecrosssplit.code.tex)
+Provides:       tex(pgflibraryext.shapes.heatmark.code.tex)
+Provides:       tex(pgflibraryext.shapes.rectangleroundedcorners.code.tex)
+Provides:       tex(pgflibraryext.shapes.superellipse.code.tex)
+Provides:       tex(pgflibraryext.shapes.uncenteredrectangle.code.tex)
+Provides:       tex(pgflibraryext.transformations.mirror.code.tex)
+Provides:       tex(tikzlibraryext.calendar-plus.code.tex)
+Provides:       tex(tikzlibraryext.misc.code.tex)
+Provides:       tex(tikzlibraryext.node-families.code.tex)
+Provides:       tex(tikzlibraryext.node-families.shapes.geometric.code.tex)
+Provides:       tex(tikzlibraryext.paths.arcto.code.tex)
+Provides:       tex(tikzlibraryext.paths.ortho.code.tex)
+Provides:       tex(tikzlibraryext.paths.timer.code.tex)
+Provides:       tex(tikzlibraryext.patterns.images.code.tex)
+Provides:       tex(tikzlibraryext.positioning-plus.code.tex)
+Provides:       tex(tikzlibraryext.scalepicture.code.tex)
+Provides:       tex(tikzlibraryext.topaths.arcthrough.code.tex)
+Provides:       tex(tikzlibraryext.transformations.mirror.code.tex)
+Requires:       tex(pgfcalendar.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source3:        tikz-ext.tar.xz
+Source4:        tikz-ext.doc.tar.xz
+
+%description -n texlive-tikz-ext
+This is a collection of libraries for PGF/TikZ. Currently these
+are transformations.mirror, paths.arcto, paths.ortho,
+paths.timer, patterns.images, topaths.arcthrough and misc. Most
+of these libraries were developed in response to questions on
+TeX.stackexchange.com.
+
+%package -n texlive-tikz-ext-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.2svn64920
+Release:        0
+Summary:        Documentation for texlive-tikz-ext
+License:        GFDL-1.2-only
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-ext and texlive-alldocumentation)
+
+%description -n texlive-tikz-ext-doc
+This package includes the documentation for texlive-tikz-ext
+
+%post -n texlive-tikz-ext
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tikz-ext
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tikz-ext
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tikz-ext-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tikz-ext/README.md
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-calendar.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-intro.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-calendar-plus.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-misc.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-node-families.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-paths.arcto.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-paths.ortho.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-paths.timer.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-patterns.images.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-positioning-plus.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-scalepicture.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-topaths.arcthrough.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-library-trans.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-main-body.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-main-preamble.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-shapes-circlearrow.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-shapes-circlecrosssplit.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-shapes-heatmark.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-shapes-rectround.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-shapes-superellipse.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-shapes-uncentered.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual-en-pgf-trans.tex
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual.bib
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual.pdf
+%{_texmfdistdir}/doc/latex/tikz-ext/tikz-ext-manual.tex
+
+%files -n texlive-tikz-ext
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/generic/tikz-ext/pgfcalendar-ext.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgfkeyslibraryext.pgfkeys-plus.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.pgfkeys-plus.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.shapes.circlearrow.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.shapes.circlecrosssplit.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.shapes.heatmark.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.shapes.rectangleroundedcorners.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.shapes.superellipse.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.shapes.uncenteredrectangle.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/pgflibraryext.transformations.mirror.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.calendar-plus.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.misc.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.node-families.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.node-families.shapes.geometric.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.paths.arcto.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.paths.ortho.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.paths.timer.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.patterns.images.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.positioning-plus.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.scalepicture.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.topaths.arcthrough.code.tex
+%{_texmfdistdir}/tex/generic/tikz-ext/tikzlibraryext.transformations.mirror.code.tex
+%{_texmfdistdir}/tex/latex/tikz-ext/pgfcalendar-ext.sty
+%{_texmfdistdir}/tex/plain/tikz-ext/pgfcalendar-ext.tex
 
 %package -n texlive-tikz-feynhand
 Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn51915
@@ -191,9 +345,9 @@ Provides:       tex(tikzlibraryfeynhand.code.tex)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source3:        tikz-feynhand.tar.xz
-Source4:        tikz-feynhand.doc.tar.xz
+# from 20230311
+Source5:        tikz-feynhand.tar.xz
+Source6:        tikz-feynhand.doc.tar.xz
 
 %description -n texlive-tikz-feynhand
 This package lets you draw Feynman diagrams using TikZ. It is a
@@ -216,6 +370,7 @@ Summary:        Documentation for texlive-tikz-feynhand
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-feynhand and texlive-alldocumentation)
 
 %description -n texlive-tikz-feynhand-doc
 This package includes the documentation for texlive-tikz-feynhand
@@ -290,9 +445,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source5:        tikz-feynman.tar.xz
-Source6:        tikz-feynman.doc.tar.xz
+# from 20230311
+Source7:        tikz-feynman.tar.xz
+Source8:        tikz-feynman.doc.tar.xz
 
 %description -n texlive-tikz-feynman
 This is a LaTeX package allowing Feynman diagrams to be easily
@@ -310,6 +465,7 @@ Summary:        Documentation for texlive-tikz-feynman
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-feynman and texlive-alldocumentation)
 
 %description -n texlive-tikz-feynman-doc
 This package includes the documentation for texlive-tikz-feynman
@@ -379,9 +535,9 @@ Provides:       tex(tikz-imagelabels.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source7:        tikz-imagelabels.tar.xz
-Source8:        tikz-imagelabels.doc.tar.xz
+# from 20230311
+Source9:        tikz-imagelabels.tar.xz
+Source10:       tikz-imagelabels.doc.tar.xz
 
 %description -n texlive-tikz-imagelabels
 This package allows to add label texts to an existing image
@@ -395,6 +551,7 @@ Summary:        Documentation for texlive-tikz-imagelabels
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-imagelabels and texlive-alldocumentation)
 
 %description -n texlive-tikz-imagelabels-doc
 This package includes the documentation for texlive-tikz-imagelabels
@@ -458,9 +615,9 @@ Provides:       tex(tikz-inet.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source9:        tikz-inet.tar.xz
-Source10:       tikz-inet.doc.tar.xz
+# from 20230311
+Source11:       tikz-inet.tar.xz
+Source12:       tikz-inet.doc.tar.xz
 
 %description -n texlive-tikz-inet
 The package extends TikZ with macros to draw interaction nets.
@@ -472,6 +629,7 @@ Summary:        Documentation for texlive-tikz-inet
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-inet and texlive-alldocumentation)
 
 %description -n texlive-tikz-inet-doc
 This package includes the documentation for texlive-tikz-inet
@@ -552,9 +710,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(translator.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source11:       tikz-kalender.tar.xz
-Source12:       tikz-kalender.doc.tar.xz
+# from 20230311
+Source13:       tikz-kalender.tar.xz
+Source14:       tikz-kalender.doc.tar.xz
 
 %description -n texlive-tikz-kalender
 For usage see the example files tikz-kalender-example1.tex,
@@ -571,6 +729,7 @@ Summary:        Documentation for texlive-tikz-kalender
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-kalender and texlive-alldocumentation)
 
 %description -n texlive-tikz-kalender-doc
 This package includes the documentation for texlive-tikz-kalender
@@ -640,9 +799,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-karnaugh-doc >= %{texlive_version}
 Provides:       tex(tikzlibrarykarnaugh.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source13:       tikz-karnaugh.tar.xz
-Source14:       tikz-karnaugh.doc.tar.xz
+# from 20230311
+Source15:       tikz-karnaugh.tar.xz
+Source16:       tikz-karnaugh.doc.tar.xz
 
 %description -n texlive-tikz-karnaugh
 The tikz-karnaugh package is a LaTeX package used to draw
@@ -674,6 +833,7 @@ Summary:        Documentation for texlive-tikz-karnaugh
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-karnaugh and texlive-alldocumentation)
 
 %description -n texlive-tikz-karnaugh-doc
 This package includes the documentation for texlive-tikz-karnaugh
@@ -706,7 +866,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikz-karnaugh/tikzlibrarykarnaugh.code.tex
 
 %package -n texlive-tikz-ladder
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn46555
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn62992
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw ladder diagrams using TikZ
@@ -735,9 +895,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-ladder-doc >= %{texlive_version}
 Provides:       tex(tikzlibrarycircuits.plc.ladder.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source15:       tikz-ladder.tar.xz
-Source16:       tikz-ladder.doc.tar.xz
+# from 20230311
+Source17:       tikz-ladder.tar.xz
+Source18:       tikz-ladder.doc.tar.xz
 
 %description -n texlive-tikz-ladder
 The tikz-ladder package contains a collection of symbols for
@@ -749,12 +909,13 @@ allows you to draw a ladder diagram in the same way as you
 would draw any other circuit.
 
 %package -n texlive-tikz-ladder-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn46555
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn62992
 Release:        0
 Summary:        Documentation for texlive-tikz-ladder
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-ladder and texlive-alldocumentation)
 
 %description -n texlive-tikz-ladder-doc
 This package includes the documentation for texlive-tikz-ladder
@@ -824,9 +985,9 @@ Requires:       tex(subfiles.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source17:       tikz-lake-fig.tar.xz
-Source18:       tikz-lake-fig.doc.tar.xz
+# from 20230311
+Source19:       tikz-lake-fig.tar.xz
+Source20:       tikz-lake-fig.doc.tar.xz
 
 %description -n texlive-tikz-lake-fig
 This package contains a collection of schematic diagrams of
@@ -841,6 +1002,7 @@ Summary:        Documentation for texlive-tikz-lake-fig
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-lake-fig and texlive-alldocumentation)
 
 %description -n texlive-tikz-lake-fig-doc
 This package includes the documentation for texlive-tikz-lake-fig
@@ -903,9 +1065,9 @@ Suggests:       texlive-tikz-layers-doc >= %{texlive_version}
 Provides:       tex(tikz-layers.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source19:       tikz-layers.tar.xz
-Source20:       tikz-layers.doc.tar.xz
+# from 20230311
+Source21:       tikz-layers.tar.xz
+Source22:       tikz-layers.doc.tar.xz
 
 %description -n texlive-tikz-layers
 TikZ-layers is a tiny package that provides, along side
@@ -921,6 +1083,7 @@ Summary:        Documentation for texlive-tikz-layers
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-layers and texlive-alldocumentation)
 
 %description -n texlive-tikz-layers-doc
 This package includes the documentation for texlive-tikz-layers
@@ -952,6 +1115,96 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/tikz-layers/tikz-layers.sty
 
+%package -n texlive-tikz-mirror-lens
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn65500
+Release:        0
+License:        LPPL-1.0
+Summary:        Spherical mirrors and lenses in TikZ
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tikz-mirror-lens-doc >= %{texlive_version}
+Provides:       tex(tikz-mirror-lens.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source23:       tikz-mirror-lens.tar.xz
+Source24:       tikz-mirror-lens.doc.tar.xz
+
+%description -n texlive-tikz-mirror-lens
+This package allows the automatic drawing of the image of
+objects in spherical mirrors and lenses from the data of the
+focus, from the position and height of the object. It
+calculates the position and height of the image, and also
+displays the notable rays.
+
+%package -n texlive-tikz-mirror-lens-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn65500
+Release:        0
+Summary:        Documentation for texlive-tikz-mirror-lens
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-mirror-lens and texlive-alldocumentation)
+Provides:       locale(texlive-tikz-mirror-lens-doc:pt_BR)
+
+%description -n texlive-tikz-mirror-lens-doc
+This package includes the documentation for texlive-tikz-mirror-lens
+
+%post -n texlive-tikz-mirror-lens
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tikz-mirror-lens
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tikz-mirror-lens
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tikz-mirror-lens-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/README.md
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/input_pacotes.tex
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/input_tab_configuracoes_espelhos.tex
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/input_tab_configuracoes_lentes.tex
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/input_tab_configuracoes_lentesL.tex
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/tikz-mirror-lens-PT.pdf
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/tikz-mirror-lens-PT.tex
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/tikz-mirror-lens.pdf
+%{_texmfdistdir}/doc/latex/tikz-mirror-lens/tikz-mirror-lens.tex
+
+%files -n texlive-tikz-mirror-lens
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tikz-mirror-lens/tikz-mirror-lens.cwl
+%{_texmfdistdir}/tex/latex/tikz-mirror-lens/tikz-mirror-lens.sty
+
 %package -n texlive-tikz-nef
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn55920
 Release:        0
@@ -982,9 +1235,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-nef-doc >= %{texlive_version}
 Provides:       tex(tikzlibrarynef.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source21:       tikz-nef.tar.xz
-Source22:       tikz-nef.doc.tar.xz
+# from 20230311
+Source25:       tikz-nef.tar.xz
+Source26:       tikz-nef.doc.tar.xz
 
 %description -n texlive-tikz-nef
 The nef TikZ library provides predefined styles and shapes to
@@ -1002,6 +1255,7 @@ Summary:        Documentation for texlive-tikz-nef
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-nef and texlive-alldocumentation)
 
 %description -n texlive-tikz-nef-doc
 This package includes the documentation for texlive-tikz-nef
@@ -1073,9 +1327,9 @@ Requires:       tex(trimspaces.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source23:       tikz-network.tar.xz
-Source24:       tikz-network.doc.tar.xz
+# from 20230311
+Source27:       tikz-network.tar.xz
+Source28:       tikz-network.doc.tar.xz
 
 %description -n texlive-tikz-network
 This package allows the creation of images of complex networks
@@ -1090,6 +1344,7 @@ Summary:        Documentation for texlive-tikz-network
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-network and texlive-alldocumentation)
 
 %description -n texlive-tikz-network-doc
 This package includes the documentation for texlive-tikz-network
@@ -1163,9 +1418,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(makeshape.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source25:       tikz-opm.tar.xz
-Source26:       tikz-opm.doc.tar.xz
+# from 20230311
+Source29:       tikz-opm.tar.xz
+Source30:       tikz-opm.doc.tar.xz
 
 %description -n texlive-tikz-opm
 Typeset OPM (Object-Process Methodology) diagrams using LaTeX
@@ -1178,6 +1433,7 @@ Summary:        Documentation for texlive-tikz-opm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-opm and texlive-alldocumentation)
 
 %description -n texlive-tikz-opm-doc
 This package includes the documentation for texlive-tikz-opm
@@ -1209,7 +1465,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikz-opm/tikz-opm.sty
 
 %package -n texlive-tikz-optics
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.3svn43466
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.3svn62977
 Release:        0
 License:        LPPL-1.0
 Summary:        A library for drawing optical setups with TikZ
@@ -1238,9 +1494,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-optics-doc >= %{texlive_version}
 Provides:       tex(tikzlibraryoptics.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source27:       tikz-optics.tar.xz
-Source28:       tikz-optics.doc.tar.xz
+# from 20230311
+Source31:       tikz-optics.tar.xz
+Source32:       tikz-optics.doc.tar.xz
 
 %description -n texlive-tikz-optics
 This package provides a new TikZ library designed to easily
@@ -1249,12 +1505,13 @@ mirror, etc. The geometrically (in)correct computation of light
 rays through the setup is left to the user.
 
 %package -n texlive-tikz-optics-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.3svn43466
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.3svn62977
 Release:        0
 Summary:        Documentation for texlive-tikz-optics
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-optics and texlive-alldocumentation)
 Provides:       locale(texlive-tikz-optics-doc:fr)
 
 %description -n texlive-tikz-optics-doc
@@ -1322,9 +1579,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source29:       tikz-page.tar.xz
-Source30:       tikz-page.doc.tar.xz
+# from 20230311
+Source33:       tikz-page.tar.xz
+Source34:       tikz-page.doc.tar.xz
 
 %description -n texlive-tikz-page
 The package provides a small macro to help building nice and
@@ -1337,6 +1594,7 @@ Summary:        Documentation for texlive-tikz-page
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-page and texlive-alldocumentation)
 
 %description -n texlive-tikz-page-doc
 This package includes the documentation for texlive-tikz-page
@@ -1406,9 +1664,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source31:       tikz-palattice.tar.xz
-Source32:       tikz-palattice.doc.tar.xz
+# from 20230311
+Source35:       tikz-palattice.tar.xz
+Source36:       tikz-palattice.doc.tar.xz
 
 %description -n texlive-tikz-palattice
 This package allows for drawing a map of a particle accelerator
@@ -1429,6 +1687,7 @@ Summary:        Documentation for texlive-tikz-palattice
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-palattice and texlive-alldocumentation)
 
 %description -n texlive-tikz-palattice-doc
 This package includes the documentation for texlive-tikz-palattice
@@ -1501,9 +1760,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source33:       tikz-planets.tar.xz
-Source34:       tikz-planets.doc.tar.xz
+# from 20230311
+Source37:       tikz-planets.tar.xz
+Source38:       tikz-planets.doc.tar.xz
 
 %description -n texlive-tikz-planets
 This TikZ-package makes it easy to illustrate celestial
@@ -1519,6 +1778,7 @@ Summary:        Documentation for texlive-tikz-planets
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-planets and texlive-alldocumentation)
 
 %description -n texlive-tikz-planets-doc
 This package includes the documentation for texlive-tikz-planets
@@ -1589,9 +1849,9 @@ Requires:       tex(pgf.sty)
 Requires:       tex(pgffor.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source35:       tikz-qtree.tar.xz
-Source36:       tikz-qtree.doc.tar.xz
+# from 20230311
+Source39:       tikz-qtree.tar.xz
+Source40:       tikz-qtree.doc.tar.xz
 
 %description -n texlive-tikz-qtree
 The package provides a macro for drawing trees with TikZ using
@@ -1609,6 +1869,7 @@ Summary:        Documentation for texlive-tikz-qtree
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-qtree and texlive-alldocumentation)
 
 %description -n texlive-tikz-qtree-doc
 This package includes the documentation for texlive-tikz-qtree
@@ -1647,7 +1908,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikz-qtree/tikz-qtree.tex
 
 %package -n texlive-tikz-relay
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn51355
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn64072
 Release:        0
 License:        LPPL-1.0
 Summary:        TikZ library for typesetting electrical diagrams
@@ -1676,9 +1937,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-relay-doc >= %{texlive_version}
 Provides:       tex(tikzlibrarycircuits.ee.IEC.relay.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source37:       tikz-relay.tar.xz
-Source38:       tikz-relay.doc.tar.xz
+# from 20230311
+Source41:       tikz-relay.tar.xz
+Source42:       tikz-relay.doc.tar.xz
 
 %description -n texlive-tikz-relay
 This package contains a collection of symbols for typesetting
@@ -1691,12 +1952,13 @@ symbols are also included mainly to be used in presentations,
 particularly with the beamer package.
 
 %package -n texlive-tikz-relay-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn51355
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn64072
 Release:        0
 Summary:        Documentation for texlive-tikz-relay
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-relay and texlive-alldocumentation)
 
 %description -n texlive-tikz-relay-doc
 This package includes the documentation for texlive-tikz-relay
@@ -1760,9 +2022,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-sfc-doc >= %{texlive_version}
 Provides:       tex(tikzlibrarycircuits.plc.sfc.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source39:       tikz-sfc.tar.xz
-Source40:       tikz-sfc.doc.tar.xz
+# from 20230311
+Source43:       tikz-sfc.tar.xz
+Source44:       tikz-sfc.doc.tar.xz
 
 %description -n texlive-tikz-sfc
 This package contains a collection of symbols for typesetting
@@ -1780,6 +2042,7 @@ Summary:        Documentation for texlive-tikz-sfc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-sfc and texlive-alldocumentation)
 
 %description -n texlive-tikz-sfc-doc
 This package includes the documentation for texlive-tikz-sfc
@@ -1843,9 +2106,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikz-swigs-doc >= %{texlive_version}
 Provides:       tex(tikzlibraryswigs.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source41:       tikz-swigs.tar.xz
-Source42:       tikz-swigs.doc.tar.xz
+# from 20230311
+Source45:       tikz-swigs.tar.xz
+Source46:       tikz-swigs.doc.tar.xz
 
 %description -n texlive-tikz-swigs
 This package provides horizontally and vertically split
@@ -1861,6 +2124,7 @@ Summary:        Documentation for texlive-tikz-swigs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-swigs and texlive-alldocumentation)
 
 %description -n texlive-tikz-swigs-doc
 This package includes the documentation for texlive-tikz-swigs
@@ -1894,7 +2158,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikz-swigs/tikzlibraryswigs.code.tex
 
 %package -n texlive-tikz-timing
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7fsvn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7fsvn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Easy generation of timing diagrams as TikZ pictures
@@ -1942,9 +2206,9 @@ Requires:       tex(environ.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source43:       tikz-timing.tar.xz
-Source44:       tikz-timing.doc.tar.xz
+# from 20230311
+Source47:       tikz-timing.tar.xz
+Source48:       tikz-timing.doc.tar.xz
 
 %description -n texlive-tikz-timing
 This package provides macros and an environment to generate
@@ -1955,12 +2219,13 @@ tikzpictures. A tabular-like environment is provided to produce
 larger timing diagrams.
 
 %package -n texlive-tikz-timing-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7fsvn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7fsvn64967
 Release:        0
 Summary:        Documentation for texlive-tikz-timing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-timing and texlive-alldocumentation)
 
 %description -n texlive-tikz-timing-doc
 This package includes the documentation for texlive-tikz-timing
@@ -2003,7 +2268,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikz-timing/tikz-timing.sty
 
 %package -n texlive-tikz-trackschematic
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.3svn62046
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.1svn63480
 Release:        0
 License:        LPPL-1.0
 Summary:        A TikZ library for creating track diagrams in railways
@@ -2043,9 +2308,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source45:       tikz-trackschematic.tar.xz
-Source46:       tikz-trackschematic.doc.tar.xz
+# from 20230311
+Source49:       tikz-trackschematic.tar.xz
+Source50:       tikz-trackschematic.doc.tar.xz
 
 %description -n texlive-tikz-trackschematic
 This TikZ library is a toolbox of symbols geared primarily
@@ -2057,12 +2322,13 @@ sublibraries: topology, trafficcontrol, vehicles,
 constructions, electrics, symbology, and measures.
 
 %package -n texlive-tikz-trackschematic-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.3svn62046
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.1svn63480
 Release:        0
 Summary:        Documentation for texlive-tikz-trackschematic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-trackschematic and texlive-alldocumentation)
 
 %description -n texlive-tikz-trackschematic-doc
 This package includes the documentation for texlive-tikz-trackschematic
@@ -2086,17 +2352,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-tikz-trackschematic-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/CHANGELOG.md
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/CITATION.cff
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/LICENSE
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/README.md
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-documentation.sty
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/minimal_working_example.pdf
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/minimal_working_example.png
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/minimal_working_example.tex
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/station_berg.pdf
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/station_berg.png
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/station_berg.tex
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/station_chamstadt.pdf
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/station_chamstadt.png
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-examples/station_chamstadt.tex
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets.pdf
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets.tex
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/balise_forward_with_signal.tikz
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/balise_switched.tikz
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/balises.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/bend_train.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/block_clearing_point_backward.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/block_clearing_point_forward.tikz
@@ -2139,12 +2413,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/friction_bufferstop_forward.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/hectometer.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/hump.tikz
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/individual_balises.tikz
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/individual_balises_mixed.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/interlocking.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/level_crossing_double.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/level_crossing_double_full_closure.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/level_crossing_single.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/level_crossing_without_barrier.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/loop_transmitter.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/main_line.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/main_track.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/measure_line.tikz
@@ -2188,6 +2463,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/track_marking.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/track_marking_with_turnout.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/track_number.tikz
+%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/trackloop.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/train_berth.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/train_berth_shape.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/train_berth_shape_bidirectional.tikz
@@ -2210,14 +2486,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/train_shunt_mode_forward.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/train_shunting_backward.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/train_shunting_forward.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_backward.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_bidirectional.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_forward.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_right.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_right_bidirectional.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_right_forward.tikz
-%{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/transmitter_right_with_signal.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/turnout_left_backward.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/turnout_left_backward_left_position.tikz
 %{_texmfdistdir}/doc/latex/tikz-trackschematic/tikz-trackschematic-snippets/turnout_left_backward_manually.tikz
@@ -2295,9 +2563,9 @@ Provides:       tex(tikz-truchet.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source47:       tikz-truchet.tar.xz
-Source48:       tikz-truchet.doc.tar.xz
+# from 20230311
+Source51:       tikz-truchet.tar.xz
+Source52:       tikz-truchet.doc.tar.xz
 
 %description -n texlive-tikz-truchet
 This is a package for LaTeX that draws Truchet tiles, as used
@@ -2311,6 +2579,7 @@ Summary:        Documentation for texlive-tikz-truchet
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikz-truchet and texlive-alldocumentation)
 
 %description -n texlive-tikz-truchet-doc
 This package includes the documentation for texlive-tikz-truchet
@@ -2342,7 +2611,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikz-truchet/tikz-truchet.sty
 
 %package -n texlive-tikzbricks
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn60234
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn63952
 Release:        0
 License:        LPPL-1.0
 Summary:        Drawing bricks with TikZ
@@ -2372,22 +2641,24 @@ Suggests:       texlive-tikzbricks-doc >= %{texlive_version}
 Provides:       tex(tikzbricks.sty)
 Requires:       tex(tikz-3dplot.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source49:       tikzbricks.tar.xz
-Source50:       tikzbricks.doc.tar.xz
+# from 20230311
+Source53:       tikzbricks.tar.xz
+Source54:       tikzbricks.doc.tar.xz
 
 %description -n texlive-tikzbricks
 A small LaTeX package to draw bricks with TikZ. The user can
 modify color, shape, and viewpoint.
 
 %package -n texlive-tikzbricks-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn60234
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn63952
 Release:        0
 Summary:        Documentation for texlive-tikzbricks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzbricks and texlive-alldocumentation)
 
 %description -n texlive-tikzbricks-doc
 This package includes the documentation for texlive-tikzbricks
@@ -2458,9 +2729,9 @@ Requires:       tex(translations.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source51:       tikzcodeblocks.tar.xz
-Source52:       tikzcodeblocks.doc.tar.xz
+# from 20230311
+Source55:       tikzcodeblocks.tar.xz
+Source56:       tikzcodeblocks.doc.tar.xz
 
 %description -n texlive-tikzcodeblocks
 tikzcodeblocks is a LaTeX package for typesetting blockwise
@@ -2473,6 +2744,7 @@ Summary:        Documentation for texlive-tikzcodeblocks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzcodeblocks and texlive-alldocumentation)
 Provides:       locale(texlive-tikzcodeblocks-doc:de)
 
 %description -n texlive-tikzcodeblocks-doc
@@ -2549,9 +2821,9 @@ Provides:       tex(tikzlibraryducks.code.tex)
 Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source53:       tikzducks.tar.xz
-Source54:       tikzducks.doc.tar.xz
+# from 20230311
+Source57:       tikzducks.tar.xz
+Source58:       tikzducks.doc.tar.xz
 
 %description -n texlive-tikzducks
 The package is a LaTeX package for ducks to be used in TikZ
@@ -2565,6 +2837,7 @@ Summary:        Documentation for texlive-tikzducks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzducks and texlive-alldocumentation)
 
 %description -n texlive-tikzducks-doc
 This package includes the documentation for texlive-tikzducks
@@ -2599,6 +2872,103 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/tikzducks/tikzducks.sty
 %{_texmfdistdir}/tex/generic/tikzducks/tikzlibraryducks.code.tex
 
+%package -n texlive-tikzfill
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn63947
+Release:        0
+License:        LPPL-1.0
+Summary:        TikZ libraries for filling with images and patterns
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tikzfill-doc >= %{texlive_version}
+Provides:       tex(tikzfill-common.sty)
+Provides:       tex(tikzfill.hexagon.sty)
+Provides:       tex(tikzfill.image.sty)
+Provides:       tex(tikzfill.rhombus.sty)
+Provides:       tex(tikzfill.sty)
+Provides:       tex(tikzlibraryfill.hexagon.code.tex)
+Provides:       tex(tikzlibraryfill.image.code.tex)
+Provides:       tex(tikzlibraryfill.rhombus.code.tex)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source59:       tikzfill.tar.xz
+Source60:       tikzfill.doc.tar.xz
+
+%description -n texlive-tikzfill
+This is a collection of TikZ libraries which add further
+options to fill TikZ paths with images and patterns. The
+libraries comprise fillings with images from files and from
+TikZ pictures. Also, patterns of hexagons and of rhombi are
+provided.
+
+%package -n texlive-tikzfill-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn63947
+Release:        0
+Summary:        Documentation for texlive-tikzfill
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzfill and texlive-alldocumentation)
+
+%description -n texlive-tikzfill-doc
+This package includes the documentation for texlive-tikzfill
+
+%post -n texlive-tikzfill
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tikzfill
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tikzfill
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tikzfill-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tikzfill/CHANGES.md
+%{_texmfdistdir}/doc/latex/tikzfill/README.md
+%{_texmfdistdir}/doc/latex/tikzfill/tikzfill-doc.sty
+%{_texmfdistdir}/doc/latex/tikzfill/tikzfill.pdf
+%{_texmfdistdir}/doc/latex/tikzfill/tikzfill.tex
+
+%files -n texlive-tikzfill
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tikzfill/tikzfill-common.sty
+%{_texmfdistdir}/tex/latex/tikzfill/tikzfill.hexagon.sty
+%{_texmfdistdir}/tex/latex/tikzfill/tikzfill.image.sty
+%{_texmfdistdir}/tex/latex/tikzfill/tikzfill.rhombus.sty
+%{_texmfdistdir}/tex/latex/tikzfill/tikzfill.sty
+%{_texmfdistdir}/tex/latex/tikzfill/tikzlibraryfill.hexagon.code.tex
+%{_texmfdistdir}/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+%{_texmfdistdir}/tex/latex/tikzfill/tikzlibraryfill.rhombus.code.tex
+
 %package -n texlive-tikzinclude
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn28715
 Release:        0
@@ -2632,9 +3002,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source55:       tikzinclude.tar.xz
-Source56:       tikzinclude.doc.tar.xz
+# from 20230311
+Source61:       tikzinclude.tar.xz
+Source62:       tikzinclude.doc.tar.xz
 
 %description -n texlive-tikzinclude
 The package addresses the problem of importing only one
@@ -2647,6 +3017,7 @@ Summary:        Documentation for texlive-tikzinclude
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzinclude and texlive-alldocumentation)
 
 %description -n texlive-tikzinclude-doc
 This package includes the documentation for texlive-tikzinclude
@@ -2678,7 +3049,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikzinclude/tikzinclude.sty
 
 %package -n texlive-tikzlings
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn60181
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn63628
 Release:        0
 License:        LPPL-1.0
 Summary:        A collection of cute little animals and similar creatures
@@ -2705,6 +3076,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikzlings-doc >= %{texlive_version}
+Provides:       tex(tikzlibrarytikzlings.code.tex)
 Provides:       tex(tikzlings-addons.sty)
 Provides:       tex(tikzlings-anteaters.sty)
 Provides:       tex(tikzlings-bats.sty)
@@ -2730,29 +3102,31 @@ Provides:       tex(tikzlings-sheep.sty)
 Provides:       tex(tikzlings-sloths.sty)
 Provides:       tex(tikzlings-snowmen.sty)
 Provides:       tex(tikzlings-squirrels.sty)
+Provides:       tex(tikzlings-wolves.sty)
 Provides:       tex(tikzlings.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source57:       tikzlings.tar.xz
-Source58:       tikzlings.doc.tar.xz
+# from 20230311
+Source63:       tikzlings.tar.xz
+Source64:       tikzlings.doc.tar.xz
 
 %description -n texlive-tikzlings
 A collection of LaTeX packages for drawing cute little animals
 and similar creatures using TikZ. Currently, the following
 TikZlings are included: anteater bat bear bee bug cat chicken
 coati elephant hippo koala marmot mole mouse owl panda penguin
-pig rhino sheep sloth snowman squirrel These little drawings
-can be customized in many ways.
+pig rhino sheep sloth snowman squirrel wolf These little
+drawings can be customized in many ways.
 
 %package -n texlive-tikzlings-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn60181
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn63628
 Release:        0
 Summary:        Documentation for texlive-tikzlings
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzlings and texlive-alldocumentation)
 
 %description -n texlive-tikzlings-doc
 This package includes the documentation for texlive-tikzlings
@@ -2782,6 +3156,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-tikzlings
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tikzlings/tikzlibrarytikzlings.code.tex
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings-addons.sty
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings-anteaters.sty
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings-bats.sty
@@ -2807,10 +3182,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings-sloths.sty
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings-snowmen.sty
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings-squirrels.sty
+%{_texmfdistdir}/tex/latex/tikzlings/tikzlings-wolves.sty
 %{_texmfdistdir}/tex/latex/tikzlings/tikzlings.sty
 
 %package -n texlive-tikzmark
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn57843
+Version:        %{texlive_version}.%{texlive_noarch}.1.15svn64819
 Release:        0
 License:        LPPL-1.0
 Summary:        Use TikZ's method of remembering a position on a page
@@ -2838,11 +3214,13 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikzmark-doc >= %{texlive_version}
 Provides:       tex(tikzlibrarytikzmark.code.tex)
+Provides:       tex(tikzmarklibraryams.code.tex)
+Provides:       tex(tikzmarklibraryhighlighting.code.tex)
 Provides:       tex(tikzmarklibrarylistings.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source59:       tikzmark.tar.xz
-Source60:       tikzmark.doc.tar.xz
+# from 20230311
+Source65:       tikzmark.tar.xz
+Source66:       tikzmark.doc.tar.xz
 
 %description -n texlive-tikzmark
 The tikzmark package defines a command to "remember" a position
@@ -2850,12 +3228,13 @@ on a page for later (or earlier) use, primarily (but not
 exclusively) with TikZ.
 
 %package -n texlive-tikzmark-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn57843
+Version:        %{texlive_version}.%{texlive_noarch}.1.15svn64819
 Release:        0
 Summary:        Documentation for texlive-tikzmark
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzmark and texlive-alldocumentation)
 
 %description -n texlive-tikzmark-doc
 This package includes the documentation for texlive-tikzmark
@@ -2886,6 +3265,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-tikzmark
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/tikzmark/tikzlibrarytikzmark.code.tex
+%{_texmfdistdir}/tex/latex/tikzmark/tikzmarklibraryams.code.tex
+%{_texmfdistdir}/tex/latex/tikzmark/tikzmarklibraryhighlighting.code.tex
 %{_texmfdistdir}/tex/latex/tikzmark/tikzmarklibrarylistings.code.tex
 
 %package -n texlive-tikzmarmots
@@ -2922,9 +3303,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source61:       tikzmarmots.tar.xz
-Source62:       tikzmarmots.doc.tar.xz
+# from 20230311
+Source67:       tikzmarmots.tar.xz
+Source68:       tikzmarmots.doc.tar.xz
 
 %description -n texlive-tikzmarmots
 This is a LaTeX package for marmots to be used in TikZ
@@ -2939,6 +3320,7 @@ Summary:        Documentation for texlive-tikzmarmots
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzmarmots and texlive-alldocumentation)
 
 %description -n texlive-tikzmarmots-doc
 This package includes the documentation for texlive-tikzmarmots
@@ -3004,9 +3386,9 @@ Provides:       tex(tikzorbital.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source63:       tikzorbital.tar.xz
-Source64:       tikzorbital.doc.tar.xz
+# from 20230311
+Source69:       tikzorbital.tar.xz
+Source70:       tikzorbital.doc.tar.xz
 
 %description -n texlive-tikzorbital
 Atomic s, p and d orbitals may be drawn, as well as molecular
@@ -3019,6 +3401,7 @@ Summary:        Documentation for texlive-tikzorbital
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzorbital and texlive-alldocumentation)
 
 %description -n texlive-tikzorbital-doc
 This package includes the documentation for texlive-tikzorbital
@@ -3084,9 +3467,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source65:       tikzpackets.tar.xz
-Source66:       tikzpackets.doc.tar.xz
+# from 20230311
+Source71:       tikzpackets.tar.xz
+Source72:       tikzpackets.doc.tar.xz
 
 %description -n texlive-tikzpackets
 This package allows you to easily display network packets
@@ -3099,6 +3482,7 @@ Summary:        Documentation for texlive-tikzpackets
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzpackets and texlive-alldocumentation)
 
 %description -n texlive-tikzpackets-doc
 This package includes the documentation for texlive-tikzpackets
@@ -3131,7 +3515,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tikzpackets/tikzPackets.sty
 
 %package -n texlive-tikzpagenodes
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        A single TikZ node for the whole page
@@ -3162,9 +3546,9 @@ Provides:       tex(tikzpagenodes.sty)
 Requires:       tex(ifoddpage.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source67:       tikzpagenodes.tar.xz
-Source68:       tikzpagenodes.doc.tar.xz
+# from 20230311
+Source73:       tikzpagenodes.tar.xz
+Source74:       tikzpagenodes.doc.tar.xz
 
 %description -n texlive-tikzpagenodes
 The package provides special PGF/TikZ nodes for the text,
@@ -3172,12 +3556,13 @@ marginpar, footer and header area of the current page. They are
 inspired by the 'current page' node defined by PGF/TikZ itself.
 
 %package -n texlive-tikzpagenodes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn64967
 Release:        0
 Summary:        Documentation for texlive-tikzpagenodes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzpagenodes and texlive-alldocumentation)
 
 %description -n texlive-tikzpagenodes-doc
 This package includes the documentation for texlive-tikzpagenodes
@@ -3273,9 +3658,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source69:       tikzpeople.tar.xz
-Source70:       tikzpeople.doc.tar.xz
+# from 20230311
+Source75:       tikzpeople.tar.xz
+Source76:       tikzpeople.doc.tar.xz
 
 %description -n texlive-tikzpeople
 This package provides people-shaped nodes in the style of
@@ -3293,6 +3678,7 @@ Summary:        Documentation for texlive-tikzpeople
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzpeople and texlive-alldocumentation)
 
 %description -n texlive-tikzpeople-doc
 This package includes the documentation for texlive-tikzpeople
@@ -3385,9 +3771,9 @@ Provides:       tex(tikzpfeile.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source71:       tikzpfeile.tar.xz
-Source72:       tikzpfeile.doc.tar.xz
+# from 20230311
+Source77:       tikzpfeile.tar.xz
+Source78:       tikzpfeile.doc.tar.xz
 
 %description -n texlive-tikzpfeile
 In a document with a lot of diagrams created with PGF/TikZ,
@@ -3403,6 +3789,7 @@ Summary:        Documentation for texlive-tikzpfeile
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzpfeile and texlive-alldocumentation)
 
 %description -n texlive-tikzpfeile-doc
 This package includes the documentation for texlive-tikzpfeile
@@ -3432,6 +3819,125 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-tikzpfeile
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/tikzpfeile/tikzpfeile.sty
+
+%package -n texlive-tikzpingus
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn64199
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        Penguins with TikZ
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tikzpingus-doc >= %{texlive_version}
+Provides:       tex(tikzpingus-christmas.lib.tex)
+Provides:       tex(tikzpingus-cloak.lib.tex)
+Provides:       tex(tikzpingus-devil.lib.tex)
+Provides:       tex(tikzpingus-emotions.lib.tex)
+Provides:       tex(tikzpingus-flags.lib.tex)
+Provides:       tex(tikzpingus-formal.lib.tex)
+Provides:       tex(tikzpingus-fun.lib.tex)
+Provides:       tex(tikzpingus-glasses.lib.tex)
+Provides:       tex(tikzpingus-hats.lib.tex)
+Provides:       tex(tikzpingus-horse.lib.tex)
+Provides:       tex(tikzpingus-magic.lib.tex)
+Provides:       tex(tikzpingus-medieval.lib.tex)
+Provides:       tex(tikzpingus-movement.lib.tex)
+Provides:       tex(tikzpingus-safe.lib.tex)
+Provides:       tex(tikzpingus-science-fiction.lib.tex)
+Provides:       tex(tikzpingus-shirts.lib.tex)
+Provides:       tex(tikzpingus-signs.lib.tex)
+Provides:       tex(tikzpingus-sport.lib.tex)
+Provides:       tex(tikzpingus-technology.lib.tex)
+Provides:       tex(tikzpingus.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source79:       tikzpingus.tar.xz
+Source80:       tikzpingus.doc.tar.xz
+
+%description -n texlive-tikzpingus
+tikzpingus is a package similar to tikzducks but with penguins
+and a vast set of gadgets and extras (capable of changing the
+wing-positions, body-types, and more).
+
+%package -n texlive-tikzpingus-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn64199
+Release:        0
+Summary:        Documentation for texlive-tikzpingus
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzpingus and texlive-alldocumentation)
+
+%description -n texlive-tikzpingus-doc
+This package includes the documentation for texlive-tikzpingus
+
+%post -n texlive-tikzpingus
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tikzpingus
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tikzpingus
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tikzpingus-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tikzpingus/README.md
+%{_texmfdistdir}/doc/latex/tikzpingus/tikzpingus-doc.pdf
+%{_texmfdistdir}/doc/latex/tikzpingus/tikzpingus-doc.tex
+
+%files -n texlive-tikzpingus
+%defattr(-,root,root,755)
+%{_texmfdistdir}/makeindex/tikzpingus/indexstyle.ist
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-christmas.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-cloak.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-devil.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-emotions.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-flags.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-formal.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-fun.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-glasses.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-hats.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-horse.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-magic.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-medieval.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-movement.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-safe.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-science-fiction.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-shirts.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-signs.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-sport.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus-technology.lib.tex
+%{_texmfdistdir}/tex/latex/tikzpingus/tikzpingus.sty
 
 %package -n texlive-tikzposter
 Version:        %{texlive_version}.%{texlive_noarch}.2.0svn32732
@@ -3481,9 +3987,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source73:       tikzposter.tar.xz
-Source74:       tikzposter.doc.tar.xz
+# from 20230311
+Source81:       tikzposter.tar.xz
+Source82:       tikzposter.doc.tar.xz
 
 %description -n texlive-tikzposter
 A document class provides a simple way of using TikZ for
@@ -3498,6 +4004,7 @@ Summary:        Documentation for texlive-tikzposter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzposter and texlive-alldocumentation)
 
 %description -n texlive-tikzposter-doc
 This package includes the documentation for texlive-tikzposter
@@ -3574,9 +4081,9 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source75:       tikzscale.tar.xz
-Source76:       tikzscale.doc.tar.xz
+# from 20230311
+Source83:       tikzscale.tar.xz
+Source84:       tikzscale.doc.tar.xz
 
 %description -n texlive-tikzscale
 The package extends the \includegraphics command to support
@@ -3590,6 +4097,7 @@ Summary:        Documentation for texlive-tikzscale
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzscale and texlive-alldocumentation)
 
 %description -n texlive-tikzscale-doc
 This package includes the documentation for texlive-tikzscale
@@ -3675,9 +4183,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source77:       tikzsymbols.tar.xz
-Source78:       tikzsymbols.doc.tar.xz
+# from 20230311
+Source85:       tikzsymbols.tar.xz
+Source86:       tikzsymbols.doc.tar.xz
 
 %description -n texlive-tikzsymbols
 The package provides various emoticons, cooking symbols and
@@ -3690,6 +4198,7 @@ Summary:        Documentation for texlive-tikzsymbols
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzsymbols and texlive-alldocumentation)
 
 %description -n texlive-tikzsymbols-doc
 This package includes the documentation for texlive-tikzsymbols
@@ -3751,9 +4260,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tikztosvg-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source79:       tikztosvg.tar.xz
-Source80:       tikztosvg.doc.tar.xz
+# from 20230311
+Source87:       tikztosvg.tar.xz
+Source88:       tikztosvg.doc.tar.xz
 
 %description -n texlive-tikztosvg
 This package provides a shell script that calls XeTeX and
@@ -3766,6 +4275,7 @@ Summary:        Documentation for texlive-tikztosvg
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikztosvg and texlive-alldocumentation)
 Provides:       man(tikztosvg.1)
 
 %description -n texlive-tikztosvg-doc
@@ -3804,6 +4314,99 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/tikztosvg/tikztosvg
 
+%package -n texlive-tikzviolinplots
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.1svn65687
+Release:        0
+License:        LPPL-1.0
+Summary:        Draws violin plots from data
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tikzviolinplots-doc >= %{texlive_version}
+Provides:       tex(tikzviolinplots.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(pgfkeys.sty)
+Requires:       tex(pgfplots.sty)
+Requires:       tex(pgfplotstable.sty)
+Requires:       tex(stringstrings.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source89:       tikzviolinplots.tar.xz
+Source90:       tikzviolinplots.doc.tar.xz
+
+%description -n texlive-tikzviolinplots
+This package enables the user to draw violin plots, calculating
+the kernel density estimation from the data and plotting the
+resulting curve inside a tikzpicture environment. It supports
+different kernels, and allows the user to either set the
+bandwidth value for each plot or use a default value.
+
+%package -n texlive-tikzviolinplots-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.1svn65687
+Release:        0
+Summary:        Documentation for texlive-tikzviolinplots
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tikzviolinplots and texlive-alldocumentation)
+
+%description -n texlive-tikzviolinplots-doc
+This package includes the documentation for texlive-tikzviolinplots
+
+%post -n texlive-tikzviolinplots
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tikzviolinplots
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tikzviolinplots
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tikzviolinplots-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tikzviolinplots/AFR.csv
+%{_texmfdistdir}/doc/latex/tikzviolinplots/AMR.csv
+%{_texmfdistdir}/doc/latex/tikzviolinplots/EMR.csv
+%{_texmfdistdir}/doc/latex/tikzviolinplots/EUR.csv
+%{_texmfdistdir}/doc/latex/tikzviolinplots/LICENSE
+%{_texmfdistdir}/doc/latex/tikzviolinplots/README
+%{_texmfdistdir}/doc/latex/tikzviolinplots/README.md
+%{_texmfdistdir}/doc/latex/tikzviolinplots/SEAR.csv
+%{_texmfdistdir}/doc/latex/tikzviolinplots/WPR.csv
+%{_texmfdistdir}/doc/latex/tikzviolinplots/tikzviolinplots.pdf
+%{_texmfdistdir}/doc/latex/tikzviolinplots/tikzviolinplots.tex
+
+%files -n texlive-tikzviolinplots
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tikzviolinplots/tikzviolinplots.sty
+
 %package -n texlive-tile-graphic
 Version:        %{texlive_version}.%{texlive_noarch}.svn55325
 Release:        0
@@ -3838,9 +4441,9 @@ Requires:       tex(multido.sty)
 Requires:       tex(shellesc.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source81:       tile-graphic.tar.xz
-Source82:       tile-graphic.doc.tar.xz
+# from 20230311
+Source91:       tile-graphic.tar.xz
+Source92:       tile-graphic.doc.tar.xz
 
 %description -n texlive-tile-graphic
 This package breaks a given graphical file into n rows and m
@@ -3855,6 +4458,7 @@ Summary:        Documentation for texlive-tile-graphic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tile-graphic and texlive-alldocumentation)
 
 %description -n texlive-tile-graphic-doc
 This package includes the documentation for texlive-tile-graphic
@@ -3925,9 +4529,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xwatermark.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source83:       timbreicmc.tar.xz
-Source84:       timbreicmc.doc.tar.xz
+# from 20230311
+Source93:       timbreicmc.tar.xz
+Source94:       timbreicmc.doc.tar.xz
 
 %description -n texlive-timbreicmc
 With this package you can typeset documents with ICMC/USP Sao
@@ -3942,6 +4546,7 @@ Summary:        Documentation for texlive-timbreicmc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-timbreicmc and texlive-alldocumentation)
 
 %description -n texlive-timbreicmc-doc
 This package includes the documentation for texlive-timbreicmc
@@ -4166,8 +4771,8 @@ Requires:       tex(psyr.tfm)
 Requires:       tex(pzcmi8r.tfm)
 Requires:       tex(rsfs10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source85:       times.tar.xz
+# from 20230311
+Source95:       times.tar.xz
 
 %description -n texlive-times
 A set of fonts for use as "drop-in" replacements for Adobe's
@@ -4191,9 +4796,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-times-fonts
 The  separated fonts package for texlive-times
@@ -4389,9 +4992,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-times
 %{_datadir}/fontconfig/conf.avail/58-texlive-times.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-times/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-times/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-times/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-times/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-times/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-times/fonts.scale
 %{_datadir}/fonts/texlive-times/utmb8a.pfb
 %{_datadir}/fonts/texlive-times/utmbi8a.pfb
 %{_datadir}/fonts/texlive-times/utmr8a.pfb
@@ -4426,8 +5029,8 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(timetable.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source86:       timetable.tar.xz
+# from 20230311
+Source96:       timetable.tar.xz
 
 %description -n texlive-timetable
 A highly-configurable package, with nice output and simple
@@ -4487,9 +5090,9 @@ Provides:       tex(timing-diagrams.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source87:       timing-diagrams.tar.xz
-Source88:       timing-diagrams.doc.tar.xz
+# from 20230311
+Source97:       timing-diagrams.tar.xz
+Source98:       timing-diagrams.doc.tar.xz
 
 %description -n texlive-timing-diagrams
 The package provides commands to draw and annotate various
@@ -4503,6 +5106,7 @@ Summary:        Documentation for texlive-timing-diagrams
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-timing-diagrams and texlive-alldocumentation)
 
 %description -n texlive-timing-diagrams-doc
 This package includes the documentation for texlive-timing-diagrams
@@ -4537,7 +5141,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/timing-diagrams/timing-diagrams.sty
 
 %package -n texlive-tinos
-Version:        %{texlive_version}.%{texlive_noarch}.svn42882
+Version:        %{texlive_version}.%{texlive_noarch}.svn64504
 Release:        0
 License:        Apache-1.0
 Summary:        Tinos fonts with LaTeX support
@@ -4626,9 +5230,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source89:       tinos.tar.xz
-Source90:       tinos.doc.tar.xz
+# from 20230311
+Source99:       tinos.tar.xz
+Source100:      tinos.doc.tar.xz
 
 %description -n texlive-tinos
 Tinos, designed by Steve Matteson, is an innovative, refreshing
@@ -4636,18 +5240,19 @@ serif design that is metrically compatible with Times New
 Roman.
 
 %package -n texlive-tinos-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn42882
+Version:        %{texlive_version}.%{texlive_noarch}.svn64504
 Release:        0
 Summary:        Documentation for texlive-tinos
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tinos and texlive-alldocumentation)
 
 %description -n texlive-tinos-doc
 This package includes the documentation for texlive-tinos
 
 %package -n texlive-tinos-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn42882
+Version:        %{texlive_version}.%{texlive_noarch}.svn64504
 Release:        0
 Summary:        Severed fonts for texlive-tinos
 License:        Apache-1.0
@@ -4656,9 +5261,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-tinos-fonts
 The  separated fonts package for texlive-tinos
@@ -4750,9 +5353,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-tinos.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-tinos.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-tinos.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-tinos/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-tinos/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-tinos/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-tinos/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-tinos/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-tinos/fonts.scale
 %{_datadir}/fonts/texlive-tinos/Tinos-Bold.ttf
 %{_datadir}/fonts/texlive-tinos/Tinos-BoldItalic.ttf
 %{_datadir}/fonts/texlive-tinos/Tinos-Italic.ttf
@@ -4898,9 +5501,9 @@ Provides:       tex(xipxsl10.tfm)
 Provides:       tex(xipxss10.tfm)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source91:       tipa.tar.xz
-Source92:       tipa.doc.tar.xz
+# from 20230311
+Source101:      tipa.tar.xz
+Source102:      tipa.doc.tar.xz
 
 %description -n texlive-tipa
 These fonts are considered the 'ultimate answer' to IPA
@@ -4916,6 +5519,7 @@ Summary:        Documentation for texlive-tipa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tipa and texlive-alldocumentation)
 Provides:       locale(texlive-tipa-doc:en)
 
 %description -n texlive-tipa-doc
@@ -4931,9 +5535,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-tipa-fonts
 The  separated fonts package for texlive-tipa
@@ -5240,9 +5842,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-tipa
 %{_datadir}/fontconfig/conf.avail/58-texlive-tipa.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-tipa/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-tipa/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-tipa/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-tipa/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-tipa/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-tipa/fonts.scale
 %{_datadir}/fonts/texlive-tipa/tipa10.pfb
 %{_datadir}/fonts/texlive-tipa/tipa12.pfb
 %{_datadir}/fonts/texlive-tipa/tipa17.pfb
@@ -5340,8 +5942,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source93:       tipa-de.doc.tar.xz
+# from 20230311
+Source103:      tipa-de.doc.tar.xz
 
 %description -n texlive-tipa-de
 This is a translation of Fukui Rei's tipaman from the tipa
@@ -5377,7 +5979,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/tipa-de/tipaman4-de.tex
 
 %package -n texlive-tipauni
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn62131
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7asvn65817
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Producing Unicode characters with TIPA commands
@@ -5411,9 +6013,9 @@ Requires:       tex(expkv-opt.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source94:       tipauni.tar.xz
-Source95:       tipauni.doc.tar.xz
+# from 20230311
+Source104:      tipauni.tar.xz
+Source105:      tipauni.doc.tar.xz
 
 %description -n texlive-tipauni
 Package TIPA uses the T3 encoding for producing IPA characters.
@@ -5427,17 +6029,18 @@ the font and many more. As this package needs the fontspec
 package for loading an IPA font, it needs to be compiled with
 XeLaTeX or LuaLaTeX. This package can also be viewed as an
 ASCII-based input method for producing IPA characters in
-Unicode. It needs the Charis SIL font for printing IPA
+Unicode. It needs the New Computer Modern font for printing IPA
 characters.
 
 %package -n texlive-tipauni-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn62131
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7asvn65817
 Release:        0
 Summary:        Documentation for texlive-tipauni
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-unitipa-doc < 2022
+Supplements:    (texlive-tipauni and texlive-alldocumentation)
 
 %description -n texlive-tipauni-doc
 This package includes the documentation for texlive-tipauni
@@ -5470,6 +6073,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-tipauni
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tipauni/tipauni-newcm-book.fontspec
+%{_texmfdistdir}/tex/latex/tipauni/tipauni-newcm-regular.fontspec
 %{_texmfdistdir}/tex/latex/tipauni/tipauni.sty
 
 %package -n texlive-tipfr
@@ -5510,9 +6115,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source96:       tipfr.tar.xz
-Source97:       tipfr.doc.tar.xz
+# from 20230311
+Source106:      tipfr.tar.xz
+Source107:      tipfr.doc.tar.xz
 
 %description -n texlive-tipfr
 The package provides commands to draw calculator keys with the
@@ -5526,6 +6131,7 @@ Summary:        Documentation for texlive-tipfr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tipfr and texlive-alldocumentation)
 Provides:       locale(texlive-tipfr-doc:fr)
 
 %description -n texlive-tipfr-doc
@@ -5597,9 +6203,9 @@ Requires:       tex(tipa.sty)
 Requires:       tex(wasysym.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source98:       tiscreen.tar.xz
-Source99:       tiscreen.doc.tar.xz
+# from 20230311
+Source108:      tiscreen.tar.xz
+Source109:      tiscreen.doc.tar.xz
 
 %description -n texlive-tiscreen
 This package mimics the screen of older Texas Instruments dot
@@ -5613,6 +6219,7 @@ Summary:        Documentation for texlive-tiscreen
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tiscreen and texlive-alldocumentation)
 
 %description -n texlive-tiscreen-doc
 This package includes the documentation for texlive-tiscreen
@@ -5645,7 +6252,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tiscreen/tiscreen.sty
 
 %package -n texlive-titlecaps
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn36170
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn63020
 Release:        0
 License:        LPPL-1.0
 Summary:        Setting rich-text input into Titling Caps
@@ -5676,9 +6283,9 @@ Provides:       tex(titlecaps.sty)
 Requires:       tex(ifnextok.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source100:      titlecaps.tar.xz
-Source101:      titlecaps.doc.tar.xz
+# from 20230311
+Source110:      titlecaps.tar.xz
+Source111:      titlecaps.doc.tar.xz
 
 %description -n texlive-titlecaps
 The package is intended for setting rich text into titling
@@ -5691,12 +6298,13 @@ as lower-cased, and also allows for titling exceptions of
 various sorts.
 
 %package -n texlive-titlecaps-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn36170
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn63020
 Release:        0
 Summary:        Documentation for texlive-titlecaps
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-titlecaps and texlive-alldocumentation)
 
 %description -n texlive-titlecaps-doc
 This package includes the documentation for texlive-titlecaps
@@ -5757,8 +6365,8 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(titlefoot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source102:      titlefoot.tar.xz
+# from 20230311
+Source112:      titlefoot.tar.xz
 
 %description -n texlive-titlefoot
 Provides the capability of adding keywords (with a \keywords
@@ -5816,8 +6424,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source103:      titlepages.doc.tar.xz
+# from 20230311
+Source113:      titlepages.doc.tar.xz
 
 %description -n texlive-titlepages
 The document provides examples of over two dozen title page
@@ -5877,9 +6485,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-titlepic-doc >= %{texlive_version}
 Provides:       tex(titlepic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source104:      titlepic.tar.xz
-Source105:      titlepic.doc.tar.xz
+# from 20230311
+Source114:      titlepic.tar.xz
+Source115:      titlepic.doc.tar.xz
 
 %description -n texlive-titlepic
 The package allows you to place a picture on the title page
@@ -5896,6 +6504,7 @@ Summary:        Documentation for texlive-titlepic
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-titlepic and texlive-alldocumentation)
 
 %description -n texlive-titlepic-doc
 This package includes the documentation for texlive-titlepic
@@ -5957,9 +6566,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-titleref-doc >= %{texlive_version}
 Provides:       tex(titleref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source106:      titleref.tar.xz
-Source107:      titleref.doc.tar.xz
+# from 20230311
+Source116:      titleref.tar.xz
+Source117:      titleref.doc.tar.xz
 
 %description -n texlive-titleref
 Defines a command \titleref that allows you to cross-reference
@@ -5974,6 +6583,7 @@ Summary:        Documentation for texlive-titleref
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-titleref and texlive-alldocumentation)
 
 %description -n texlive-titleref-doc
 This package includes the documentation for texlive-titleref
@@ -6039,9 +6649,9 @@ Provides:       tex(titletoc.sty)
 Requires:       tex(etex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source108:      titlesec.tar.xz
-Source109:      titlesec.doc.tar.xz
+# from 20230311
+Source118:      titlesec.tar.xz
+Source119:      titlesec.doc.tar.xz
 
 %description -n texlive-titlesec
 A package providing an interface to sectioning commands for
@@ -6058,6 +6668,7 @@ Summary:        Documentation for texlive-titlesec
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-titlesec and texlive-alldocumentation)
 
 %description -n texlive-titlesec-doc
 This package includes the documentation for texlive-titlesec
@@ -6124,9 +6735,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-titling-doc >= %{texlive_version}
 Provides:       tex(titling.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source110:      titling.tar.xz
-Source111:      titling.doc.tar.xz
+# from 20230311
+Source120:      titling.tar.xz
+Source121:      titling.doc.tar.xz
 
 %description -n texlive-titling
 The titling package provides control over the typesetting of
@@ -6143,6 +6754,7 @@ Summary:        Documentation for texlive-titling
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-titling and texlive-alldocumentation)
 
 %description -n texlive-titling-doc
 This package includes the documentation for texlive-titling
@@ -6174,7 +6786,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/titling/titling.sty
 
 %package -n texlive-tkz-base
-Version:        %{texlive_version}.%{texlive_noarch}.4.05bsvn61947
+Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn66115
 Release:        0
 License:        LPPL-1.0
 Summary:        Tools for drawing with a cartesian coordinate system
@@ -6224,9 +6836,9 @@ Requires:       tex(numprint.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source112:      tkz-base.tar.xz
-Source113:      tkz-base.doc.tar.xz
+# from 20230311
+Source122:      tkz-base.tar.xz
+Source123:      tkz-base.doc.tar.xz
 
 %description -n texlive-tkz-base
 The bundle is a set of packages, designed to give mathematics
@@ -6234,12 +6846,13 @@ teachers (and students) easy access to programming of drawings
 with TikZ.
 
 %package -n texlive-tkz-base-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.05bsvn61947
+Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn66115
 Release:        0
 Summary:        Documentation for texlive-tkz-base
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkz-base and texlive-alldocumentation)
 Provides:       locale(texlive-tkz-base-doc:fr)
 
 %description -n texlive-tkz-base-doc
@@ -6337,9 +6950,9 @@ Suggests:       texlive-tkz-berge-doc >= %{texlive_version}
 Provides:       tex(tkz-berge.sty)
 Requires:       tex(tkz-graph.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source114:      tkz-berge.tar.xz
-Source115:      tkz-berge.doc.tar.xz
+# from 20230311
+Source124:      tkz-berge.tar.xz
+Source125:      tkz-berge.doc.tar.xz
 
 %description -n texlive-tkz-berge
 The package provides a collection of useful macros for drawing
@@ -6354,6 +6967,7 @@ Summary:        Documentation for texlive-tkz-berge
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkz-berge and texlive-alldocumentation)
 
 %description -n texlive-tkz-berge-doc
 This package includes the documentation for texlive-tkz-berge
@@ -6549,7 +7163,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tkz-berge/tkz-berge.sty
 
 %package -n texlive-tkz-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.43csvn55265
+Version:        %{texlive_version}.%{texlive_noarch}.1.45csvn66115
 Release:        0
 License:        LPPL-1.0
 Summary:        Documentation macros for the TKZ series of packages
@@ -6576,8 +7190,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source116:      tkz-doc.doc.tar.xz
+# from 20230311
+Source126:      tkz-doc.doc.tar.xz
 
 %description -n texlive-tkz-doc
 This bundle offers a documentation class (tkz-doc) and a
@@ -6605,13 +7219,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-tkz-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/tkz-doc/README.md
-%{_texmfdistdir}/doc/latex/tkz-doc/latex/couverture.tex
+%{_texmfdistdir}/doc/latex/tkz-doc/doc/latex/tkz-doc.tex
+%{_texmfdistdir}/doc/latex/tkz-doc/doc/tkz-doc.pdf
 %{_texmfdistdir}/doc/latex/tkz-doc/latex/tkz-doc.cfg
 %{_texmfdistdir}/doc/latex/tkz-doc/latex/tkz-doc.cls
-%{_texmfdistdir}/doc/latex/tkz-doc/latex/tkzexample.sty
 
 %package -n texlive-tkz-euclide
-Version:        %{texlive_version}.%{texlive_noarch}.4.051bsvn62178
+Version:        %{texlive_version}.%{texlive_noarch}.5.02csvn65724
 Release:        0
 License:        LPPL-1.0
 Summary:        Tools for drawing Euclidean geometry
@@ -6638,6 +7252,15 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tkz-euclide-doc >= %{texlive_version}
+Provides:       tex(tkz-draw-eu-angles.tex)
+Provides:       tex(tkz-draw-eu-circles.tex)
+Provides:       tex(tkz-draw-eu-compass.tex)
+Provides:       tex(tkz-draw-eu-lines.tex)
+Provides:       tex(tkz-draw-eu-points.tex)
+Provides:       tex(tkz-draw-eu-polygons.tex)
+Provides:       tex(tkz-draw-eu-protractor.tex)
+Provides:       tex(tkz-draw-eu-sectors.tex)
+Provides:       tex(tkz-draw-eu-show.tex)
 Provides:       tex(tkz-euclide.cfg)
 Provides:       tex(tkz-euclide.sty)
 Provides:       tex(tkz-lib-eu-marks.tex)
@@ -6645,12 +7268,6 @@ Provides:       tex(tkz-lib-eu-shape.tex)
 Provides:       tex(tkz-obj-eu-axesmin.tex)
 Provides:       tex(tkz-obj-eu-circles-by.tex)
 Provides:       tex(tkz-obj-eu-circles.tex)
-Provides:       tex(tkz-obj-eu-compass.tex)
-Provides:       tex(tkz-obj-eu-draw-angles.tex)
-Provides:       tex(tkz-obj-eu-draw-circles.tex)
-Provides:       tex(tkz-obj-eu-draw-lines.tex)
-Provides:       tex(tkz-obj-eu-draw-polygons.tex)
-Provides:       tex(tkz-obj-eu-draw-triangles.tex)
 Provides:       tex(tkz-obj-eu-grids.tex)
 Provides:       tex(tkz-obj-eu-lines.tex)
 Provides:       tex(tkz-obj-eu-points-by.tex)
@@ -6659,10 +7276,12 @@ Provides:       tex(tkz-obj-eu-points-spc.tex)
 Provides:       tex(tkz-obj-eu-points-with.tex)
 Provides:       tex(tkz-obj-eu-points.tex)
 Provides:       tex(tkz-obj-eu-polygons.tex)
-Provides:       tex(tkz-obj-eu-protractor.tex)
-Provides:       tex(tkz-obj-eu-sectors.tex)
-Provides:       tex(tkz-obj-eu-show.tex)
 Provides:       tex(tkz-obj-eu-triangles.tex)
+Provides:       tex(tkz-obj-lua-circles.tex)
+Provides:       tex(tkz-obj-lua-points-by.tex)
+Provides:       tex(tkz-obj-lua-points-spc.tex)
+Provides:       tex(tkz-obj-lua-points-with.tex)
+Provides:       tex(tkz-obj-lua-points.tex)
 Provides:       tex(tkz-tools-eu-BB.tex)
 Provides:       tex(tkz-tools-eu-angles.tex)
 Provides:       tex(tkz-tools-eu-base.tex)
@@ -6672,12 +7291,18 @@ Provides:       tex(tkz-tools-eu-math.tex)
 Provides:       tex(tkz-tools-eu-modules.tex)
 Provides:       tex(tkz-tools-eu-text.tex)
 Provides:       tex(tkz-tools-eu-utilities.tex)
+Provides:       tex(tkz-tools-lua-angles.tex)
+Provides:       tex(tkz-tools-lua-base.tex)
+Provides:       tex(tkz-tools-lua-intersections.tex)
+Provides:       tex(tkz-tools-lua-math.tex)
+Requires:       tex(luacode.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xfp.sty)
+Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source117:      tkz-euclide.tar.xz
-Source118:      tkz-euclide.doc.tar.xz
+# from 20230311
+Source127:      tkz-euclide.tar.xz
+Source128:      tkz-euclide.doc.tar.xz
 
 %description -n texlive-tkz-euclide
 The tkz-euclide package is a set of files designed to give math
@@ -6685,13 +7310,13 @@ teachers and students easy access to the programming of
 Euclidean geometry with TikZ.
 
 %package -n texlive-tkz-euclide-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.051bsvn62178
+Version:        %{texlive_version}.%{texlive_noarch}.5.02csvn65724
 Release:        0
 Summary:        Documentation for texlive-tkz-euclide
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-tkz-euclide-doc:en)
+Supplements:    (texlive-tkz-euclide and texlive-alldocumentation)
 
 %description -n texlive-tkz-euclide-doc
 This package includes the documentation for texlive-tkz-euclide
@@ -6722,14 +7347,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-circles.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-clipping.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-compass.tex
+%{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-documentation.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-drawing.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-elements.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-examples.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-filling.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-installation.tex
-%{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-intersec.tex
+%{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-intersection.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-labelling.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-lines.tex
+%{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-lua.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-main.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-marking.tex
 %{_texmfdistdir}/doc/latex/tkz-euclide/TKZdoc-euclide-news.tex
@@ -6750,6 +7377,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-tkz-euclide
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-angles.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-circles.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-compass.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-lines.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-points.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-polygons.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-protractor.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-sectors.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-draw-eu-show.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-euclide.cfg
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-euclide.sty
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-lib-eu-marks.tex
@@ -6757,12 +7393,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-axesmin.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-circles-by.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-circles.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-compass.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-draw-angles.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-draw-circles.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-draw-lines.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-draw-polygons.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-draw-triangles.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-grids.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-lines.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-points-by.tex
@@ -6771,10 +7401,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-points-with.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-points.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-polygons.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-protractor.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-sectors.tex
-%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-show.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-eu-triangles.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-lua-circles.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-lua-points-by.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-lua-points-spc.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-lua-points-with.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-obj-lua-points.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-eu-BB.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-eu-angles.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-eu-base.tex
@@ -6784,6 +7416,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-eu-modules.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-eu-text.tex
 %{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-eu-utilities.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-lua-angles.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-lua-base.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-lua-intersections.tex
+%{_texmfdistdir}/tex/latex/tkz-euclide/tkz-tools-lua-math.tex
 
 %package -n texlive-tkz-fct
 Version:        %{texlive_version}.%{texlive_noarch}.1.7csvn61949
@@ -6817,9 +7453,9 @@ Provides:       tex(tkz-fct.sty)
 Requires:       tex(fp.sty)
 Requires:       tex(tkz-base.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source119:      tkz-fct.tar.xz
-Source120:      tkz-fct.doc.tar.xz
+# from 20230311
+Source129:      tkz-fct.tar.xz
+Source130:      tkz-fct.doc.tar.xz
 
 %description -n texlive-tkz-fct
 The tkz-fct package is designed to give math teachers (and
@@ -6833,6 +7469,7 @@ Summary:        Documentation for texlive-tkz-fct
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkz-fct and texlive-alldocumentation)
 Provides:       locale(texlive-tkz-fct-doc:fr)
 
 %description -n texlive-tkz-fct-doc
@@ -6919,9 +7556,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source121:      tkz-graph.tar.xz
-Source122:      tkz-graph.doc.tar.xz
+# from 20230311
+Source131:      tkz-graph.tar.xz
+Source132:      tkz-graph.doc.tar.xz
 
 %description -n texlive-tkz-graph
 The package is designed to create graph diagrams as simply as
@@ -6934,6 +7571,7 @@ Summary:        Documentation for texlive-tkz-graph
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkz-graph and texlive-alldocumentation)
 Provides:       locale(texlive-tkz-graph-doc:fr)
 
 %description -n texlive-tkz-graph-doc
@@ -7010,9 +7648,9 @@ Suggests:       texlive-tkz-orm-doc >= %{texlive_version}
 Provides:       tex(tkz-orm.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source123:      tkz-orm.tar.xz
-Source124:      tkz-orm.doc.tar.xz
+# from 20230311
+Source133:      tkz-orm.tar.xz
+Source134:      tkz-orm.doc.tar.xz
 
 %description -n texlive-tkz-orm
 The package provides styles for drawing Object-Role Model (ORM)
@@ -7025,6 +7663,7 @@ Summary:        Documentation for texlive-tkz-orm
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkz-orm and texlive-alldocumentation)
 
 %description -n texlive-tkz-orm-doc
 This package includes the documentation for texlive-tkz-orm
@@ -7061,7 +7700,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tkz-orm/tkz-orm.sty
 
 %package -n texlive-tkz-tab
-Version:        %{texlive_version}.%{texlive_noarch}.2.12csvn54940
+Version:        %{texlive_version}.%{texlive_noarch}.2.12csvn66115
 Release:        0
 License:        LPPL-1.0
 Summary:        Tables of signs and variations using PGF/TikZ
@@ -7093,9 +7732,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source125:      tkz-tab.tar.xz
-Source126:      tkz-tab.doc.tar.xz
+# from 20230311
+Source135:      tkz-tab.tar.xz
+Source136:      tkz-tab.doc.tar.xz
 
 %description -n texlive-tkz-tab
 The package provides comprehensive facilities for preparing
@@ -7105,12 +7744,13 @@ been taken temporarily out of circulation to give the author
 time to investigate some problems.
 
 %package -n texlive-tkz-tab-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.12csvn54940
+Version:        %{texlive_version}.%{texlive_noarch}.2.12csvn66115
 Release:        0
 Summary:        Documentation for texlive-tkz-tab
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkz-tab and texlive-alldocumentation)
 Provides:       locale(texlive-tkz-tab-doc:fr)
 
 %description -n texlive-tkz-tab-doc
@@ -7154,6 +7794,86 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-tkz-tab
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/tkz-tab/tkz-tab.sty
+
+%package -n texlive-tkzexample
+Version:        %{texlive_version}.%{texlive_noarch}.1.45csvn63908
+Release:        0
+License:        LPPL-1.0
+Summary:        Package for the documentation of all tkz-* packages
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tkzexample-doc >= %{texlive_version}
+Provides:       tex(tkzexample.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(fancyvrb.sty)
+Requires:       tex(mdframed.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source137:      tkzexample.tar.xz
+Source138:      tkzexample.doc.tar.xz
+
+%description -n texlive-tkzexample
+This package is needed to compile the documentation of all
+tkz-* packages (like tkz-euclide).
+
+%package -n texlive-tkzexample-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.45csvn63908
+Release:        0
+Summary:        Documentation for texlive-tkzexample
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tkzexample and texlive-alldocumentation)
+
+%description -n texlive-tkzexample-doc
+This package includes the documentation for texlive-tkzexample
+
+%post -n texlive-tkzexample
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tkzexample
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tkzexample
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tkzexample-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tkzexample/README.md
+%{_texmfdistdir}/doc/latex/tkzexample/tkzexample.pdf
+%{_texmfdistdir}/doc/latex/tkzexample/tkzexample.tex
+
+%files -n texlive-tkzexample
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tkzexample/tkzexample.sty
 
 %package -n texlive-tlc-article
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.17svn51431
@@ -7212,9 +7932,9 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(todonotes.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source127:      tlc-article.tar.xz
-Source128:      tlc-article.doc.tar.xz
+# from 20230311
+Source139:      tlc-article.tar.xz
+Source140:      tlc-article.doc.tar.xz
 
 %description -n texlive-tlc-article
 The package provides a LaTeX document class that orchestrates a
@@ -7233,6 +7953,7 @@ Summary:        Documentation for texlive-tlc-article
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tlc-article and texlive-alldocumentation)
 
 %description -n texlive-tlc-article-doc
 This package includes the documentation for texlive-tlc-article
@@ -7300,8 +8021,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source129:      tlc2.doc.tar.xz
+# from 20230311
+Source141:      tlc2.doc.tar.xz
 
 %description -n texlive-tlc2
 The source of the examples printed in the book, together with
@@ -8197,6 +8918,1623 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/tlc2/w.eps
 %{_texmfdistdir}/doc/latex/tlc2/w.ps
 
+%package -n texlive-tlc3-examples
+Version:        %{texlive_version}.%{texlive_noarch}.svn65496
+Release:        0
+License:        LPPL-1.0
+Summary:        All examples from "The LaTeX Companion", third edition
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source142:      tlc3-examples.doc.tar.xz
+
+%description -n texlive-tlc3-examples
+The PDFs (as used with spotcolor and trimming) and sources for
+all examples from the third edition (Parts I+II), together with
+necessary supporting files. The edition is published by
+Addison-Wesley, 2023, ISBN-13: 978-0-13-816648-9, ISBN-10:
+0-13-816648-X (bundle of Part I & II).
+
+%post -n texlive-tlc3-examples
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tlc3-examples
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tlc3-examples
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tlc3-examples
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tlc3-examples/README.TEXLIVE
+%{_texmfdistdir}/doc/latex/tlc3-examples/README.md
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/1-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/1-3-2.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/1-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/1-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/1-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/1-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-10-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-10-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-10-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-10-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-10-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-10-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-11-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-12-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-12-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-12-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-13-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-8-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-8-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-9-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-9-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-9-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/10-9-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-4-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-5-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-6-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-6-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-6-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-7-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/11-8-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-1-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-10-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-11-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-12-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-13-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-14-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-15-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-16-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-17-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-18-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-19-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-2-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-20-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-21-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-22-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-23-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-24-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-25-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-26-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-27-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-28-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-29-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-3-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-30-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-31-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-32-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-33-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-34-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-35-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-36-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-37-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-38-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-39-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-4-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-40-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-41-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-42-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-43-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-44-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-45-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-46-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-47-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-48-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-49-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-5-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-50-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-51-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-52-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-6-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-7-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-8-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/12-9-fig.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-12.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/13-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-6-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-100.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-101.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-102.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-103.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-104.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-105.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-106.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-107.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-108.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-109.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-110.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-111.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-112.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-113.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-114.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-115.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-116.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-117.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-118.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-119.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-120.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-121.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-122.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-123.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-124.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-125.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-126.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-127.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-128.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-129.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-130.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-131.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-132.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-133.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-134.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-135.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-136.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-137.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-138.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-139.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-140.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-141.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-43.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-44.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-45.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-46.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-47.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-48.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-49.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-50.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-51.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-52.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-53.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-54.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-55.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-56.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-57.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-58.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-59.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-60.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-61.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-62.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-63.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-64.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-65.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-66.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-67.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-68.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-69.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-70.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-71.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-72.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-73.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-74.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-75.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-76.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-77.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-78.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-79.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-80.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-81.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-82.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-83.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-84.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-85.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-86.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-87.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-88.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-89.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-90.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-91.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-92.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-93.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-94.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-95.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-96.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-97.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-98.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/15-7-99.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-4-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-24.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-25.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-26.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-29.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-43.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-44.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-45.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-46.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-47.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-48.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-49.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-50.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-51.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-52.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-53.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-54.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-5-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-6-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-30.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-7-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-1.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-4.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-5.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/16-8-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/17-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/17-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-17.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-1.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-12.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-4.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-5.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/2-4-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-1-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-43.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-44.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-45.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-46.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-47.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-4-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-13.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-14.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-24.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-25.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-26.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-30.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-31.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-33.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-42.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-43.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-44.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-45.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-46.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-47.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-48.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-8.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-5-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-13.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/3-6-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-43.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-44.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-45.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-46.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-47.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-48.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-49.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-50.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-51.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-52.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-53.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-54.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-55.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-1-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-37.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-38.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-39.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-40.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-41.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-42.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-43.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-44.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-45.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-46.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-47.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-48.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-49.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-50.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-51.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-52.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-53.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-54.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-55.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-56.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-57.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-58.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-59.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-60.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-61.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-30.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-31.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-32.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-33.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-34.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-35.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-36.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/4-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-2-9.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-3-1.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-3-2.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-3-3.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-3-4.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-10.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-11.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-12.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-14.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-15.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-16.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-4.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-5.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-8.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-4-9.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-5-1.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-5-2.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-1.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-2.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-3.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-4.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-5.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-8.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/5-6-9.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-1-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-1-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-1.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-2.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-3.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-5.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-4-8.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-6-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-7-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-8-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-8-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/6-9-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-4.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-17.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-4-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-6.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-8.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/7-5-9.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-1-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-15.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-22.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-29.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-4-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/8-5-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-4-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-5-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-22.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-23.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-24.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-25.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-26.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-27.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-28.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-6-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-7-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-7-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/9-7-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-1-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-2-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-10.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-11.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-12.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-13.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-14.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-15.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-16.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-17.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-18.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-19.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-20.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-21.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-7.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-3-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-4-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-4-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-4-5.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-4-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-3.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-4.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-5.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-6.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-7.ltx2
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-8.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/A-5-9.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/B-4-1.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/B-4-2.ltx
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/Escher.pdf
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/I.pdf
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/cat.pdf
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/elephant.pdf
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/latex-logo.pdf
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/layout-tlc3-special.sty
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/locale.bib
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/longlife-grayscale.jpg
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/longlife.jpg
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/partial.toc
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/phaip.bst
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/rosette.pdf
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/showhyphenation-tlc3-spotcolor.lua
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc-biblatex-special.bib
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc-ex.bib
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc-jura.bib
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc-tex.bib
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc.bib
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc3exa.cls
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc3examargin.cls
+%{_texmfdistdir}/doc/latex/tlc3-examples/example-sources/tlc3exareport.cls
+
 %package -n texlive-tlmgr-intro-zh-cn
 Version:        %{texlive_version}.%{texlive_noarch}.svn59100
 Release:        0
@@ -8225,8 +10563,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source130:      tlmgr-intro-zh-cn.doc.tar.xz
+# from 20230311
+Source143:      tlmgr-intro-zh-cn.doc.tar.xz
 
 %description -n texlive-tlmgr-intro-zh-cn
 This is a Chinese translation of the tlmgr documentation. It
@@ -8269,7 +10607,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/tlmgr-intro-zh-cn/tlmgr-intro-zh-cn.tex
 
 %package -n texlive-tlmgrbasics
-Version:        %{texlive_version}.%{texlive_noarch}.svn60588
+Version:        %{texlive_version}.%{texlive_noarch}.svn66271
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A simplified documentation for tlmgr
@@ -8296,8 +10634,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source131:      tlmgrbasics.doc.tar.xz
+# from 20230311
+Source144:      tlmgrbasics.doc.tar.xz
 
 %description -n texlive-tlmgrbasics
 This package provides simplified documentation for tlmgr, the
@@ -8328,7 +10666,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/tlmgrbasics/tlmgr.tex
 
 %package -n texlive-to-be-determined
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn60582
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn64882
 Release:        0
 License:        LPPL-1.0
 Summary:        Highlight text passages that need further work
@@ -8338,8 +10676,6 @@ Requires:       texlive-soul >= %{texlive_version}
 #!BuildIgnore: texlive-soul
 Requires:       texlive-xcolor >= %{texlive_version}
 #!BuildIgnore: texlive-xcolor
-Requires:       texlive-xkeyval >= %{texlive_version}
-#!BuildIgnore: texlive-xkeyval
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -8366,9 +10702,9 @@ Requires:       tex(soul.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source132:      to-be-determined.tar.xz
-Source133:      to-be-determined.doc.tar.xz
+# from 20230311
+Source145:      to-be-determined.tar.xz
+Source146:      to-be-determined.doc.tar.xz
 
 %description -n texlive-to-be-determined
 This package provides a single command \tbd which highlights
@@ -8377,12 +10713,13 @@ hide them all with a single package option hide, or just make
 them disappear entirely with the option off.
 
 %package -n texlive-to-be-determined-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn60582
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn64882
 Release:        0
 Summary:        Documentation for texlive-to-be-determined
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-to-be-determined and texlive-alldocumentation)
 
 %description -n texlive-to-be-determined-doc
 This package includes the documentation for texlive-to-be-determined
@@ -8407,9 +10744,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-to-be-determined-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/to-be-determined/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/to-be-determined/LICENSE.txt
 %{_texmfdistdir}/doc/latex/to-be-determined/README.md
 %{_texmfdistdir}/doc/latex/to-be-determined/to-be-determined.pdf
-%{_texmfdistdir}/doc/latex/to-be-determined/to-be-determined.tex
 
 %files -n texlive-to-be-determined
 %defattr(-,root,root,755)
@@ -8445,9 +10782,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tocbibind-doc >= %{texlive_version}
 Provides:       tex(tocbibind.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source134:      tocbibind.tar.xz
-Source135:      tocbibind.doc.tar.xz
+# from 20230311
+Source147:      tocbibind.tar.xz
+Source148:      tocbibind.doc.tar.xz
 
 %description -n texlive-tocbibind
 Automatically adds the bibliography and/or the index and/or the
@@ -8460,6 +10797,7 @@ Summary:        Documentation for texlive-tocbibind
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tocbibind and texlive-alldocumentation)
 
 %description -n texlive-tocbibind-doc
 This package includes the documentation for texlive-tocbibind
@@ -8491,7 +10829,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tocbibind/tocbibind.sty
 
 %package -n texlive-tocdata
-Version:        %{texlive_version}.%{texlive_noarch}.2.04svn55852
+Version:        %{texlive_version}.%{texlive_noarch}.2.05svn65451
 Release:        0
 License:        LPPL-1.0
 Summary:        Adds names to chapters, sections, figures in the TOC and LOF
@@ -8525,9 +10863,9 @@ Requires:       tex(tocloft.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source136:      tocdata.tar.xz
-Source137:      tocdata.doc.tar.xz
+# from 20230311
+Source149:      tocdata.tar.xz
+Source150:      tocdata.doc.tar.xz
 
 %description -n texlive-tocdata
 The tocdata package may be used to add a small amount of data
@@ -8546,12 +10884,13 @@ koma-script, and with titletoc, tocloft, tocbasic, and
 tocstyle.
 
 %package -n texlive-tocdata-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.04svn55852
+Version:        %{texlive_version}.%{texlive_noarch}.2.05svn65451
 Release:        0
 Summary:        Documentation for texlive-tocdata
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tocdata and texlive-alldocumentation)
 
 %description -n texlive-tocdata-doc
 This package includes the documentation for texlive-tocdata
@@ -8612,9 +10951,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tocloft-doc >= %{texlive_version}
 Provides:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source138:      tocloft.tar.xz
-Source139:      tocloft.doc.tar.xz
+# from 20230311
+Source151:      tocloft.tar.xz
+Source152:      tocloft.doc.tar.xz
 
 %description -n texlive-tocloft
 Provides control over the typography of the Table of Contents,
@@ -8628,6 +10967,7 @@ Summary:        Documentation for texlive-tocloft
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tocloft and texlive-alldocumentation)
 
 %description -n texlive-tocloft-doc
 This package includes the documentation for texlive-tocloft
@@ -8689,9 +11029,9 @@ Suggests:       texlive-tocvsec2-doc >= %{texlive_version}
 Provides:       tex(tocvsec2.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source140:      tocvsec2.tar.xz
-Source141:      tocvsec2.doc.tar.xz
+# from 20230311
+Source153:      tocvsec2.tar.xz
+Source154:      tocvsec2.doc.tar.xz
 
 %description -n texlive-tocvsec2
 Provides control over section numbering (without recourse to
@@ -8705,6 +11045,7 @@ Summary:        Documentation for texlive-tocvsec2
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tocvsec2 and texlive-alldocumentation)
 
 %description -n texlive-tocvsec2-doc
 This package includes the documentation for texlive-tocvsec2
@@ -8767,9 +11108,9 @@ Suggests:       texlive-todo-doc >= %{texlive_version}
 Provides:       tex(todo.sty)
 Requires:       tex(amssymb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source142:      todo.tar.xz
-Source143:      todo.doc.tar.xz
+# from 20230311
+Source155:      todo.tar.xz
+Source156:      todo.doc.tar.xz
 
 %description -n texlive-todo
 The package allows you to insert "to do" marks in your
@@ -8783,6 +11124,7 @@ Summary:        Documentation for texlive-todo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-todo and texlive-alldocumentation)
 
 %description -n texlive-todo-doc
 This package includes the documentation for texlive-todo
@@ -8816,7 +11158,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/todo/todo.sty
 
 %package -n texlive-todonotes
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.5svn59465
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.6svn65699
 Release:        0
 License:        LPPL-1.0
 Summary:        Marking things to do in a LaTeX document
@@ -8858,9 +11200,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source144:      todonotes.tar.xz
-Source145:      todonotes.doc.tar.xz
+# from 20230311
+Source157:      todonotes.tar.xz
+Source158:      todonotes.doc.tar.xz
 
 %description -n texlive-todonotes
 The package lets the user mark things to do later, in a simple
@@ -8868,12 +11210,13 @@ and visually appealing way. The package takes several options
 to enable customization/finetuning of the visual appearance.
 
 %package -n texlive-todonotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.5svn59465
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.6svn65699
 Release:        0
 Summary:        Documentation for texlive-todonotes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-todonotes and texlive-alldocumentation)
 
 %description -n texlive-todonotes-doc
 This package includes the documentation for texlive-todonotes
@@ -8904,6 +11247,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/todonotes/examples/externalize.tex
 %{_texmfdistdir}/doc/latex/todonotes/examples/saveColorByUsingLayers.pdf
 %{_texmfdistdir}/doc/latex/todonotes/examples/saveColorByUsingLayers.tex
+%{_texmfdistdir}/doc/latex/todonotes/img/AlteredAppearenceOfListOfTodos.png
 %{_texmfdistdir}/doc/latex/todonotes/todonotes.pdf
 
 %files -n texlive-todonotes
@@ -8941,9 +11285,9 @@ Suggests:       texlive-tokcycle-doc >= %{texlive_version}
 Provides:       tex(tokcycle.sty)
 Provides:       tex(tokcycle.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source146:      tokcycle.tar.xz
-Source147:      tokcycle.doc.tar.xz
+# from 20230311
+Source159:      tokcycle.tar.xz
+Source160:      tokcycle.doc.tar.xz
 
 %description -n texlive-tokcycle
 The tokcycle package helps one to build tools to process tokens
@@ -8966,6 +11310,7 @@ Summary:        Documentation for texlive-tokcycle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tokcycle and texlive-alldocumentation)
 
 %description -n texlive-tokcycle-doc
 This package includes the documentation for texlive-tokcycle
@@ -9031,9 +11376,9 @@ Suggests:       texlive-tokenizer-doc >= %{texlive_version}
 Provides:       tex(tokenizer.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source148:      tokenizer.tar.xz
-Source149:      tokenizer.doc.tar.xz
+# from 20230311
+Source161:      tokenizer.tar.xz
+Source162:      tokenizer.doc.tar.xz
 
 %description -n texlive-tokenizer
 A tokenizer for LaTeX. \GetTokens{Target1}{Target2}{Source}
@@ -9052,6 +11397,7 @@ Summary:        Documentation for texlive-tokenizer
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tokenizer and texlive-alldocumentation)
 
 %description -n texlive-tokenizer-doc
 This package includes the documentation for texlive-tokenizer
@@ -9119,9 +11465,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source150:      tonevalue.tar.xz
-Source151:      tonevalue.doc.tar.xz
+# from 20230311
+Source163:      tonevalue.tar.xz
+Source164:      tonevalue.doc.tar.xz
 
 %description -n texlive-tonevalue
 This package provides a TikZ-based solution to typeset
@@ -9135,6 +11481,7 @@ Summary:        Documentation for texlive-tonevalue
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tonevalue and texlive-alldocumentation)
 
 %description -n texlive-tonevalue-doc
 This package includes the documentation for texlive-tonevalue
@@ -9197,9 +11544,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-toolbox-doc >= %{texlive_version}
 Provides:       tex(toolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source152:      toolbox.tar.xz
-Source153:      toolbox.doc.tar.xz
+# from 20230311
+Source165:      toolbox.tar.xz
+Source166:      toolbox.doc.tar.xz
 
 %description -n texlive-toolbox
 A package for (La)TeX which provides some macros which are
@@ -9216,6 +11563,7 @@ Summary:        Documentation for texlive-toolbox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-toolbox and texlive-alldocumentation)
 
 %description -n texlive-toolbox-doc
 This package includes the documentation for texlive-toolbox
@@ -9249,7 +11597,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/toolbox/toolbox.sty
 
 %package -n texlive-tools
-Version:        %{texlive_version}.%{texlive_noarch}.svn61041
+Version:        %{texlive_version}.%{texlive_noarch}.svn64892
 Release:        0
 License:        LPPL-1.0
 Summary:        The LaTeX standard tools bundle
@@ -9297,12 +11645,14 @@ Provides:       tex(layout.sty)
 Provides:       tex(longtable-2020-01-07.sty)
 Provides:       tex(longtable.sty)
 Provides:       tex(multicol-2017-04-11.sty)
+Provides:       tex(multicol-2019-10-01.sty)
 Provides:       tex(multicol.sty)
 Provides:       tex(q.tex)
 Provides:       tex(r.tex)
 Provides:       tex(rawfonts.sty)
 Provides:       tex(s.tex)
 Provides:       tex(shellesc.sty)
+Provides:       tex(showkeys-2014-10-28.sty)
 Provides:       tex(showkeys.sty)
 Provides:       tex(somedefs.sty)
 Provides:       tex(tabularx.sty)
@@ -9323,9 +11673,9 @@ Provides:       tex(xr.sty)
 Provides:       tex(xspace.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source154:      tools.tar.xz
-Source155:      tools.doc.tar.xz
+# from 20230311
+Source167:      tools.tar.xz
+Source168:      tools.doc.tar.xz
 
 %description -n texlive-tools
 A collection of (variously) simple tools provided as part of
@@ -9336,12 +11686,13 @@ longtable, multicol, rawfonts, showkeys, somedefs, tabularx,
 theorem, trace, varioref, verbatim, xr, and xspace.
 
 %package -n texlive-tools-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn61041
+Version:        %{texlive_version}.%{texlive_noarch}.svn64892
 Release:        0
 Summary:        Documentation for texlive-tools
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tools and texlive-alldocumentation)
 
 %description -n texlive-tools-doc
 This package includes the documentation for texlive-tools
@@ -9420,12 +11771,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tools/longtable-2020-01-07.sty
 %{_texmfdistdir}/tex/latex/tools/longtable.sty
 %{_texmfdistdir}/tex/latex/tools/multicol-2017-04-11.sty
+%{_texmfdistdir}/tex/latex/tools/multicol-2019-10-01.sty
 %{_texmfdistdir}/tex/latex/tools/multicol.sty
 %{_texmfdistdir}/tex/latex/tools/q.tex
 %{_texmfdistdir}/tex/latex/tools/r.tex
 %{_texmfdistdir}/tex/latex/tools/rawfonts.sty
 %{_texmfdistdir}/tex/latex/tools/s.tex
 %{_texmfdistdir}/tex/latex/tools/shellesc.sty
+%{_texmfdistdir}/tex/latex/tools/showkeys-2014-10-28.sty
 %{_texmfdistdir}/tex/latex/tools/showkeys.sty
 %{_texmfdistdir}/tex/latex/tools/somedefs.sty
 %{_texmfdistdir}/tex/latex/tools/tabularx.sty
@@ -9475,9 +11828,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-topfloat-doc >= %{texlive_version}
 Provides:       tex(topfloat.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source156:      topfloat.tar.xz
-Source157:      topfloat.doc.tar.xz
+# from 20230311
+Source169:      topfloat.tar.xz
+Source170:      topfloat.doc.tar.xz
 
 %description -n texlive-topfloat
 The topfloat package
@@ -9489,6 +11842,7 @@ Summary:        Documentation for texlive-topfloat
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-topfloat and texlive-alldocumentation)
 Provides:       locale(texlive-topfloat-doc:it)
 
 %description -n texlive-topfloat-doc
@@ -9556,9 +11910,9 @@ Requires:       tex(multirow.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(zref-abspage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source158:      topiclongtable.tar.xz
-Source159:      topiclongtable.doc.tar.xz
+# from 20230311
+Source171:      topiclongtable.tar.xz
+Source172:      topiclongtable.doc.tar.xz
 
 %description -n texlive-topiclongtable
 This LaTeX package extends longtable implementing cells that:
@@ -9578,6 +11932,7 @@ Summary:        Documentation for texlive-topiclongtable
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-topiclongtable and texlive-alldocumentation)
 
 %description -n texlive-topiclongtable-doc
 This package includes the documentation for texlive-topiclongtable
@@ -9651,9 +12006,9 @@ Requires:       tex(iflang.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source160:      topletter.tar.xz
-Source161:      topletter.doc.tar.xz
+# from 20230311
+Source173:      topletter.tar.xz
+Source174:      topletter.doc.tar.xz
 
 %description -n texlive-topletter
 This package provides a LaTeX class for typesetting letters
@@ -9668,6 +12023,7 @@ Summary:        Documentation for texlive-topletter
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-topletter and texlive-alldocumentation)
 Provides:       locale(texlive-topletter-doc:it)
 
 %description -n texlive-topletter-doc
@@ -9780,9 +12136,9 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source162:      toptesi.tar.xz
-Source163:      toptesi.doc.tar.xz
+# from 20230311
+Source175:      toptesi.tar.xz
+Source176:      toptesi.doc.tar.xz
 
 %description -n texlive-toptesi
 This bundle contains everything needed for typesetting a
@@ -9805,6 +12161,7 @@ Summary:        Documentation for texlive-toptesi
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-toptesi and texlive-alldocumentation)
 Provides:       locale(texlive-toptesi-doc:en;it)
 
 %description -n texlive-toptesi-doc
@@ -9923,9 +12280,9 @@ Suggests:       texlive-totalcount-doc >= %{texlive_version}
 Provides:       tex(totalcount.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source164:      totalcount.tar.xz
-Source165:      totalcount.doc.tar.xz
+# from 20230311
+Source177:      totalcount.tar.xz
+Source178:      totalcount.doc.tar.xz
 
 %description -n texlive-totalcount
 This LaTeX package offers commands for typesetting total values
@@ -9938,6 +12295,7 @@ Summary:        Documentation for texlive-totalcount
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-totalcount and texlive-alldocumentation)
 
 %description -n texlive-totalcount-doc
 This package includes the documentation for texlive-totalcount
@@ -10001,9 +12359,9 @@ Suggests:       texlive-totcount-doc >= %{texlive_version}
 Provides:       tex(totcount.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source166:      totcount.tar.xz
-Source167:      totcount.doc.tar.xz
+# from 20230311
+Source179:      totcount.tar.xz
+Source180:      totcount.doc.tar.xz
 
 %description -n texlive-totcount
 The package records the value that was last set, for any
@@ -10018,6 +12376,7 @@ Summary:        Documentation for texlive-totcount
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-totcount and texlive-alldocumentation)
 
 %description -n texlive-totcount-doc
 This package includes the documentation for texlive-totcount
@@ -10081,9 +12440,9 @@ Provides:       tex(totpages.sty)
 Requires:       tex(everyshi.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source168:      totpages.tar.xz
-Source169:      totpages.doc.tar.xz
+# from 20230311
+Source181:      totpages.tar.xz
+Source182:      totpages.doc.tar.xz
 
 %description -n texlive-totpages
 The package counts the actual pages in the document (as opposed
@@ -10098,6 +12457,7 @@ Summary:        Documentation for texlive-totpages
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-totpages and texlive-alldocumentation)
 
 %description -n texlive-totpages-doc
 This package includes the documentation for texlive-totpages
@@ -10160,8 +12520,8 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(tpic2pdftex.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source170:      tpic2pdftex.doc.tar.xz
+# from 20230311
+Source183:      tpic2pdftex.doc.tar.xz
 
 %description -n texlive-tpic2pdftex
 The AWK script converts pic language, embedded inline
@@ -10232,9 +12592,9 @@ Requires:       tex(t1cmr.fd)
 Requires:       tex(t1cmss.fd)
 Requires:       tex(t1cmtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source171:      tpslifonts.tar.xz
-Source172:      tpslifonts.doc.tar.xz
+# from 20230311
+Source184:      tpslifonts.tar.xz
+Source185:      tpslifonts.doc.tar.xz
 
 %description -n texlive-tpslifonts
 This package aims to improve of font readability in
@@ -10259,6 +12619,7 @@ Summary:        Documentation for texlive-tpslifonts
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tpslifonts and texlive-alldocumentation)
 
 %description -n texlive-tpslifonts-doc
 This package includes the documentation for texlive-tpslifonts
@@ -10324,9 +12685,9 @@ Provides:       tex(tqft.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source173:      tqft.tar.xz
-Source174:      tqft.doc.tar.xz
+# from 20230311
+Source186:      tqft.tar.xz
+Source187:      tqft.doc.tar.xz
 
 %description -n texlive-tqft
 The package defines some node shapes useful for drawing TQFT
@@ -10341,6 +12702,7 @@ Summary:        Documentation for texlive-tqft
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tqft and texlive-alldocumentation)
 
 %description -n texlive-tqft-doc
 This package includes the documentation for texlive-tqft
@@ -10375,7 +12737,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tqft/tqft.sty
 
 %package -n texlive-tracklang
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn55707
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.1svn65263
 Release:        0
 License:        LPPL-1.0
 Summary:        Language and dialect tracker
@@ -10408,9 +12770,9 @@ Provides:       tex(tracklang-scripts.tex)
 Provides:       tex(tracklang.sty)
 Provides:       tex(tracklang.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source175:      tracklang.tar.xz
-Source176:      tracklang.doc.tar.xz
+# from 20230311
+Source188:      tracklang.tar.xz
+Source189:      tracklang.doc.tar.xz
 
 %description -n texlive-tracklang
 The tracklang package is provided for package developers who
@@ -10421,12 +12783,13 @@ simply to track which languages have been requested by the
 user. Generic TeX code is in tracklang.tex for non-LaTeX users.
 
 %package -n texlive-tracklang-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn55707
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.1svn65263
 Release:        0
 Summary:        Documentation for texlive-tracklang
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tracklang and texlive-alldocumentation)
 
 %description -n texlive-tracklang-doc
 This package includes the documentation for texlive-tracklang
@@ -10470,7 +12833,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals-de.tex
 %{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals-poly.pdf
 %{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals-poly.tex
-%{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals-sr-poly.pdf
 %{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals.pdf
 %{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals.tex
 %{_texmfdistdir}/doc/generic/tracklang/samples/animals/sample-animals2-de.pdf
@@ -10524,7 +12886,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/tracklang/samples/sample-tracklang5.tex
 %{_texmfdistdir}/doc/generic/tracklang/samples/sample-tracklang6.pdf
 %{_texmfdistdir}/doc/generic/tracklang/samples/sample-tracklang6.tex
-%{_texmfdistdir}/doc/generic/tracklang/tracklang.pdf
+%{_texmfdistdir}/doc/generic/tracklang/tracklang-code.pdf
+%{_texmfdistdir}/doc/generic/tracklang/tracklang-manual.html
+%{_texmfdistdir}/doc/generic/tracklang/tracklang-manual.pdf
+%{_texmfdistdir}/doc/generic/tracklang/tracklang-manual.tex
 
 %files -n texlive-tracklang
 %defattr(-,root,root,755)
@@ -10580,9 +12945,9 @@ Provides:       tex(trajan.sty)
 Provides:       tex(trjnr10.tfm)
 Provides:       tex(trjnsl10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source177:      trajan.tar.xz
-Source178:      trajan.doc.tar.xz
+# from 20230311
+Source190:      trajan.tar.xz
+Source191:      trajan.doc.tar.xz
 
 %description -n texlive-trajan
 Provides fonts (both as Metafont source and in Adobe Type 1
@@ -10599,6 +12964,7 @@ Summary:        Documentation for texlive-trajan
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-trajan and texlive-alldocumentation)
 
 %description -n texlive-trajan-doc
 This package includes the documentation for texlive-trajan
@@ -10613,9 +12979,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-trajan-fonts
 The  separated fonts package for texlive-trajan
@@ -10664,9 +13028,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-trajan
 %{_datadir}/fontconfig/conf.avail/58-texlive-trajan.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-trajan/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-trajan/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-trajan/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-trajan/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-trajan/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-trajan/fonts.scale
 %{_datadir}/fonts/texlive-trajan/trjnr10.pfb
 %{_datadir}/fonts/texlive-trajan/trjnsl10.pfb
 
@@ -10700,9 +13064,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tram-doc >= %{texlive_version}
 Provides:       tex(tram.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source179:      tram.tar.xz
-Source180:      tram.doc.tar.xz
+# from 20230311
+Source192:      tram.tar.xz
+Source193:      tram.doc.tar.xz
 
 %description -n texlive-tram
 Tram boxes are highlighted with patterns of dots; the package
@@ -10717,6 +13081,7 @@ Summary:        Documentation for texlive-tram
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tram and texlive-alldocumentation)
 
 %description -n texlive-tram-doc
 This package includes the documentation for texlive-tram
@@ -10749,6 +13114,84 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/public/tram/tram.mf
 %{_texmfdistdir}/tex/latex/tram/tram.sty
 
+%package -n texlive-tramlines
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn65692
+Release:        0
+License:        LPPL-1.0
+Summary:        A package for creating tramlines (lines above and below a title used by lawyers in the UK)
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tramlines-doc >= %{texlive_version}
+Provides:       tex(tramlines.sty)
+Requires:       tex(booktabs.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source194:      tramlines.tar.xz
+Source195:      tramlines.doc.tar.xz
+
+%description -n texlive-tramlines
+This package automatically creates tramlines (lines above and
+below a title used by lawyers in the UK and the Commonwealth).
+
+%package -n texlive-tramlines-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn65692
+Release:        0
+Summary:        Documentation for texlive-tramlines
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tramlines and texlive-alldocumentation)
+
+%description -n texlive-tramlines-doc
+This package includes the documentation for texlive-tramlines
+
+%post -n texlive-tramlines
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tramlines
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tramlines
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tramlines-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/tramlines/README
+%{_texmfdistdir}/doc/latex/tramlines/tramlines-documentation.pdf
+%{_texmfdistdir}/doc/latex/tramlines/tramlines-documentation.tex
+
+%files -n texlive-tramlines
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/tramlines/tramlines.sty
+
 %package -n texlive-translation-array-fr
 Version:        %{texlive_version}.%{texlive_noarch}.svn24344
 Release:        0
@@ -10777,8 +13220,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source181:      translation-array-fr.doc.tar.xz
+# from 20230311
+Source196:      translation-array-fr.doc.tar.xz
 
 %description -n texlive-translation-array-fr
 A French translation of the documentation of array.
@@ -10836,8 +13279,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source182:      translation-arsclassica-de.doc.tar.xz
+# from 20230311
+Source197:      translation-arsclassica-de.doc.tar.xz
 
 %description -n texlive-translation-arsclassica-de
 This is a "translation" of the arsclassica documentation.
@@ -10892,8 +13335,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source183:      translation-biblatex-de.doc.tar.xz
+# from 20230311
+Source198:      translation-biblatex-de.doc.tar.xz
 
 %description -n texlive-translation-biblatex-de
 A German translation of the User Guide for BibLaTeX.
@@ -10949,8 +13392,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source184:      translation-chemsym-de.doc.tar.xz
+# from 20230311
+Source199:      translation-chemsym-de.doc.tar.xz
 
 %description -n texlive-translation-chemsym-de
 This is a "translation" of the chemsym documentation.
@@ -11006,8 +13449,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source185:      translation-dcolumn-fr.doc.tar.xz
+# from 20230311
+Source200:      translation-dcolumn-fr.doc.tar.xz
 
 %description -n texlive-translation-dcolumn-fr
 A French translation of the documentation of dcolumn.
@@ -11064,8 +13507,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source186:      translation-ecv-de.doc.tar.xz
+# from 20230311
+Source201:      translation-ecv-de.doc.tar.xz
 
 %description -n texlive-translation-ecv-de
 This is a "translation" of the ecv documentation.
@@ -11120,8 +13563,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source187:      translation-enumitem-de.doc.tar.xz
+# from 20230311
+Source202:      translation-enumitem-de.doc.tar.xz
 
 %description -n texlive-translation-enumitem-de
 This is a translation of the manual for enumitem.
@@ -11176,8 +13619,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source188:      translation-europecv-de.doc.tar.xz
+# from 20230311
+Source203:      translation-europecv-de.doc.tar.xz
 
 %description -n texlive-translation-europecv-de
 This is a "translation" of the europecv documentation.
@@ -11250,8 +13693,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source189:      translation-filecontents-de.doc.tar.xz
+# from 20230311
+Source204:      translation-filecontents-de.doc.tar.xz
 
 %description -n texlive-translation-filecontents-de
 This is a "translation" of the filecontents documentation.
@@ -11307,8 +13750,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source190:      translation-moreverb-de.doc.tar.xz
+# from 20230311
+Source205:      translation-moreverb-de.doc.tar.xz
 
 %description -n texlive-translation-moreverb-de
 This is a "translation" of the moreverb documentation.
@@ -11364,8 +13807,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source191:      translation-natbib-fr.doc.tar.xz
+# from 20230311
+Source206:      translation-natbib-fr.doc.tar.xz
 
 %description -n texlive-translation-natbib-fr
 A French translation of the documentation of natbib.
@@ -11420,8 +13863,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source192:      translation-tabbing-fr.doc.tar.xz
+# from 20230311
+Source207:      translation-tabbing-fr.doc.tar.xz
 
 %description -n texlive-translation-tabbing-fr
 A translation to French (by the author) of the documentation of
@@ -11482,9 +13925,9 @@ Provides:       tex(translations.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source193:      translations.tar.xz
-Source194:      translations.doc.tar.xz
+# from 20230311
+Source208:      translations.tar.xz
+Source209:      translations.doc.tar.xz
 
 %description -n texlive-translations
 This package (once part of the exsheets package), provides a
@@ -11504,6 +13947,7 @@ Summary:        Documentation for texlive-translations
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-translations and texlive-alldocumentation)
 Provides:       locale(texlive-translations-doc:en)
 
 %description -n texlive-translations-doc
@@ -11575,9 +14019,9 @@ Suggests:       texlive-translator-doc >= %{texlive_version}
 Provides:       tex(translator.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source195:      translator.tar.xz
-Source196:      translator.doc.tar.xz
+# from 20230311
+Source210:      translator.tar.xz
+Source211:      translator.doc.tar.xz
 
 %description -n texlive-translator
 This LaTeX package provides a flexible mechanism for
@@ -11597,6 +14041,7 @@ Summary:        Documentation for texlive-translator
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-translator and texlive-alldocumentation)
 
 %description -n texlive-translator-doc
 This package includes the documentation for texlive-translator
@@ -11744,7 +14189,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/translator/translator.sty
 
 %package -n texlive-transparent
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn52981
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn64852
 Release:        0
 License:        LPPL-1.0
 Summary:        Using a color stack for transparency with pdfTeX
@@ -11771,26 +14216,31 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-transparent-doc >= %{texlive_version}
+Provides:       tex(transparent-nometadata.sty)
 Provides:       tex(transparent.sty)
 Requires:       tex(auxhook.sty)
 Requires:       tex(iftex.sty)
+Requires:       tex(l3opacity.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source197:      transparent.tar.xz
-Source198:      transparent.doc.tar.xz
+# from 20230311
+Source212:      transparent.tar.xz
+Source213:      transparent.doc.tar.xz
 
 %description -n texlive-transparent
-Since version 1.40 pdfTeX supports several color stacks; the
-package uses a separate colour stack for control of
-transparency (which is not, of course, a colour).
+pdfTeX and LuaTeX support several color stacks. This package
+shows how a separate color stack can be used for transparency,
+a property besides color that works across page breaks. If the
+PDF management is used it can also be used with other engines,
+but without support for page breaks.
 
 %package -n texlive-transparent-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn52981
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn64852
 Release:        0
 Summary:        Documentation for texlive-transparent
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-transparent and texlive-alldocumentation)
 
 %description -n texlive-transparent-doc
 This package includes the documentation for texlive-transparent
@@ -11820,7 +14270,96 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-transparent
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/transparent/transparent-nometadata.sty
 %{_texmfdistdir}/tex/latex/transparent/transparent.sty
+
+%package -n texlive-transparent-io
+Version:        %{texlive_version}.%{texlive_noarch}.svn64113
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        Show for approval the filenames used in \input, \openin, or \openout
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source214:      transparent-io.doc.tar.xz
+
+%description -n texlive-transparent-io
+This package provides macros to make the file I/O in plain TeX
+more transparent. That is, every \input, \openin, and \openout
+operation by TeX is presented to the user who must check
+carefully if the file name of the source is acceptable. The
+user must sometimes enter additional text and has to specify
+the file name that the TeX operation should use. The macros
+require a complex installation procedure; the package contains
+sed and bash scripts to do this on a UNIX-like operating
+system. Every installation is different from any other as
+password-protected macro names and private messages have to be
+chosen by the installer. Therefore, the files in the package
+cannot be used directly. The files carry the extension .org,
+and only after the user has performed an individual
+customization for a private installation the changed files are
+renamed and have the extension .tex. For details see the
+manual.
+
+%post -n texlive-transparent-io
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-transparent-io
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-transparent-io
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-transparent-io
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/plain/transparent-io/README
+%{_texmfdistdir}/doc/plain/transparent-io/TrIO.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOauto.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOextract.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOinput.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOinstall.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOlineno.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOmacros.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOopen.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOopenin.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOopenout.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOprivate.org
+%{_texmfdistdir}/doc/plain/transparent-io/TrIOsupport.org
+%{_texmfdistdir}/doc/plain/transparent-io/Transparent-IO-TUGboat-danger.tex
+%{_texmfdistdir}/doc/plain/transparent-io/Transparent-IO-doc.pdf
+%{_texmfdistdir}/doc/plain/transparent-io/Transparent-IO-doc.tex
+%{_texmfdistdir}/doc/plain/transparent-io/Transparent-IO-eccentric.tex
+%{_texmfdistdir}/doc/plain/transparent-io/Transparent-IO-example.tex
+%{_texmfdistdir}/doc/plain/transparent-io/Transparent-IO-hello.tex
 
 %package -n texlive-tree-dvips
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.91svn21751
@@ -11853,9 +14392,9 @@ Suggests:       texlive-tree-dvips-doc >= %{texlive_version}
 Provides:       tex(lingmacros.sty)
 Provides:       tex(tree-dvips.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source199:      tree-dvips.tar.xz
-Source200:      tree-dvips.doc.tar.xz
+# from 20230311
+Source215:      tree-dvips.tar.xz
+Source216:      tree-dvips.doc.tar.xz
 
 %description -n texlive-tree-dvips
 The package defines a mechanism for specifying connected trees
@@ -11873,6 +14412,7 @@ Summary:        Documentation for texlive-tree-dvips
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tree-dvips and texlive-alldocumentation)
 
 %description -n texlive-tree-dvips-doc
 This package includes the documentation for texlive-tree-dvips
@@ -11943,9 +14483,9 @@ Provides:       tex(classes.tex)
 Provides:       tex(l_pic.tex)
 Provides:       tex(treetex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source201:      treetex.tar.xz
-Source202:      treetex.doc.tar.xz
+# from 20230311
+Source217:      treetex.tar.xz
+Source218:      treetex.doc.tar.xz
 
 %description -n texlive-treetex
 Macros to draw trees, within TeX (or LaTeX). The algorithm used
@@ -11959,6 +14499,7 @@ Summary:        Documentation for texlive-treetex
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-treetex and texlive-alldocumentation)
 
 %description -n texlive-treetex-doc
 This package includes the documentation for texlive-treetex
@@ -12022,9 +14563,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-trfsigns-doc >= %{texlive_version}
 Provides:       tex(trfsigns.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source203:      trfsigns.tar.xz
-Source204:      trfsigns.doc.tar.xz
+# from 20230311
+Source219:      trfsigns.tar.xz
+Source220:      trfsigns.doc.tar.xz
 
 %description -n texlive-trfsigns
 A package for typesetting various transformation signs for
@@ -12037,6 +14578,7 @@ Summary:        Documentation for texlive-trfsigns
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-trfsigns and texlive-alldocumentation)
 Provides:       locale(texlive-trfsigns-doc:de)
 
 %description -n texlive-trfsigns-doc
@@ -12100,9 +14642,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-trigonometry-doc >= %{texlive_version}
 Provides:       tex(trigonometry.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source205:      trigonometry.tar.xz
-Source206:      trigonometry.doc.tar.xz
+# from 20230311
+Source221:      trigonometry.tar.xz
+Source222:      trigonometry.doc.tar.xz
 
 %description -n texlive-trigonometry
 A document that both provides macros that are usable elsewhere,
@@ -12117,6 +14659,7 @@ Summary:        Documentation for texlive-trigonometry
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-trigonometry and texlive-alldocumentation)
 
 %description -n texlive-trigonometry-doc
 This package includes the documentation for texlive-trigonometry
@@ -12176,9 +14719,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-trimspaces-doc >= %{texlive_version}
 Provides:       tex(trimspaces.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source207:      trimspaces.tar.xz
-Source208:      trimspaces.doc.tar.xz
+# from 20230311
+Source223:      trimspaces.tar.xz
+Source224:      trimspaces.doc.tar.xz
 
 %description -n texlive-trimspaces
 A very short package that allows you to expandably remove
@@ -12194,6 +14737,7 @@ Summary:        Documentation for texlive-trimspaces
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-trimspaces and texlive-alldocumentation)
 
 %description -n texlive-trimspaces-doc
 This package includes the documentation for texlive-trimspaces
@@ -12256,9 +14800,9 @@ Provides:       tex(trivfloat.sty)
 Requires:       tex(float.sty)
 Requires:       tex(floatrow.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source209:      trivfloat.tar.xz
-Source210:      trivfloat.doc.tar.xz
+# from 20230311
+Source225:      trivfloat.tar.xz
+Source226:      trivfloat.doc.tar.xz
 
 %description -n texlive-trivfloat
 The trivfloat package provides a quick method for defining new
@@ -12274,6 +14818,7 @@ Summary:        Documentation for texlive-trivfloat
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-trivfloat and texlive-alldocumentation)
 
 %description -n texlive-trivfloat-doc
 This package includes the documentation for texlive-trivfloat
@@ -12337,9 +14882,9 @@ Provides:       tex(trsy12.tfm)
 Provides:       tex(trsym.sty)
 Provides:       tex(utrsy.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source211:      trsym.tar.xz
-Source212:      trsym.doc.tar.xz
+# from 20230311
+Source227:      trsym.tar.xz
+Source228:      trsym.doc.tar.xz
 
 %description -n texlive-trsym
 The bundle provides Metafont source for a small font used for
@@ -12354,6 +14899,7 @@ Summary:        Documentation for texlive-trsym
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-trsym and texlive-alldocumentation)
 
 %description -n texlive-trsym-doc
 This package includes the documentation for texlive-trsym
@@ -12421,9 +14967,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-truncate-doc >= %{texlive_version}
 Provides:       tex(truncate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source213:      truncate.tar.xz
-Source214:      truncate.doc.tar.xz
+# from 20230311
+Source229:      truncate.tar.xz
+Source230:      truncate.doc.tar.xz
 
 %description -n texlive-truncate
 The package will by default break at word boundaries, but
@@ -12436,6 +14982,7 @@ Summary:        Documentation for texlive-truncate
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-truncate and texlive-alldocumentation)
 
 %description -n texlive-truncate-doc
 This package includes the documentation for texlive-truncate
@@ -12498,9 +15045,9 @@ Suggests:       texlive-truthtable-doc >= %{texlive_version}
 Provides:       tex(truthtable.sty)
 Requires:       tex(luacode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source215:      truthtable.tar.xz
-Source216:      truthtable.doc.tar.xz
+# from 20230311
+Source231:      truthtable.tar.xz
+Source232:      truthtable.doc.tar.xz
 
 %description -n texlive-truthtable
 This LuaLaTeX package permits to automatically generate truth
@@ -12515,6 +15062,7 @@ Summary:        Documentation for texlive-truthtable
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-truthtable and texlive-alldocumentation)
 
 %description -n texlive-truthtable-doc
 This package includes the documentation for texlive-truthtable
@@ -12577,8 +15125,8 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(tsemlines.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source217:      tsemlines.tar.xz
+# from 20230311
+Source233:      tsemlines.tar.xz
 
 %description -n texlive-tsemlines
 Occasional Documents appear, that use graphics generated by
@@ -12608,8 +15156,90 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/tsemlines/tsemlines.sty
 
+%package -n texlive-tsvtemplate
+Version:        %{texlive_version}.%{texlive_noarch}.2022_1.0svn65333
+Release:        0
+License:        LPPL-1.0
+Summary:        Apply a template to a tsv file
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tsvtemplate-doc >= %{texlive_version}
+Provides:       tex(tsvtemplate.sty)
+Provides:       tex(tsvtemplate.tex)
+Requires:       tex(environ.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source234:      tsvtemplate.tar.xz
+Source235:      tsvtemplate.doc.tar.xz
+
+%description -n texlive-tsvtemplate
+This is a simple tsv (tab-separated values) reader for LuaLaTeX
+and plain LuaTeX. It also supports (non-quoted) comma-separated
+values, or indeed values separated by any character.
+
+%package -n texlive-tsvtemplate-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2022_1.0svn65333
+Release:        0
+Summary:        Documentation for texlive-tsvtemplate
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tsvtemplate and texlive-alldocumentation)
+
+%description -n texlive-tsvtemplate-doc
+This package includes the documentation for texlive-tsvtemplate
+
+%post -n texlive-tsvtemplate
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tsvtemplate
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tsvtemplate
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tsvtemplate-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/luatex/tsvtemplate/LICENSE
+%{_texmfdistdir}/doc/luatex/tsvtemplate/README
+%{_texmfdistdir}/doc/luatex/tsvtemplate/tsvtemplate.doc
+%{_texmfdistdir}/doc/luatex/tsvtemplate/tsvtemplate.pdf
+
+%files -n texlive-tsvtemplate
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/luatex/tsvtemplate/tsvtemplate.sty
+%{_texmfdistdir}/tex/luatex/tsvtemplate/tsvtemplate.tex
+
 %package -n texlive-ttfutils
-Version:        %{texlive_version}.%{texlive_noarch}.svn62517
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 License:        LPPL-1.0
 Summary:        Convert TrueType to TFM and PK fonts
@@ -12641,21 +15271,22 @@ Suggests:       texlive-ttfutils-doc >= %{texlive_version}
 Provides:       tex(T1-WGL4.enc)
 Provides:       tex(ttf2pk.cfg)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source218:      ttfutils.tar.xz
-Source219:      ttfutils.doc.tar.xz
+# from 20230311
+Source236:      ttfutils.tar.xz
+Source237:      ttfutils.doc.tar.xz
 
 %description -n texlive-ttfutils
 Utilities: ttf2afm ttf2pk ttf2tfm ttfdump. FreeType is the
 underlying library.
 
 %package -n texlive-ttfutils-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn62517
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 Summary:        Documentation for texlive-ttfutils
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ttfutils and texlive-alldocumentation)
 Provides:       man(ttf2afm.1)
 Provides:       man(ttf2pk.1)
 Provides:       man(ttf2tfm.1)
@@ -12745,9 +15376,9 @@ Requires:       tex(color.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source220:      tucv.tar.xz
-Source221:      tucv.doc.tar.xz
+# from 20230311
+Source238:      tucv.tar.xz
+Source239:      tucv.doc.tar.xz
 
 %description -n texlive-tucv
 The package provides commands for typesetting a CV or resume.
@@ -12767,6 +15398,7 @@ Summary:        Documentation for texlive-tucv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tucv and texlive-alldocumentation)
 
 %description -n texlive-tucv-doc
 This package includes the documentation for texlive-tucv
@@ -12800,7 +15432,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tucv/tucv.sty
 
 %package -n texlive-tuda-ci
-Version:        %{texlive_version}.%{texlive_noarch}.3.22svn61958
+Version:        %{texlive_version}.%{texlive_noarch}.3.29svn65254
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX templates of Technische Universitat Darmstadt
@@ -12893,9 +15525,9 @@ Requires:       tex(trimclip.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source222:      tuda-ci.tar.xz
-Source223:      tuda-ci.doc.tar.xz
+# from 20230311
+Source240:      tuda-ci.tar.xz
+Source241:      tuda-ci.doc.tar.xz
 
 %description -n texlive-tuda-ci
 The TUDa-CI-Bundle provides a possibility to use the Corporate
@@ -12905,12 +15537,13 @@ some templates for user documentation, which currently are only
 available in German.
 
 %package -n texlive-tuda-ci-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.22svn61958
+Version:        %{texlive_version}.%{texlive_noarch}.3.29svn65254
 Release:        0
 Summary:        Documentation for texlive-tuda-ci
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tuda-ci and texlive-alldocumentation)
 Provides:       locale(texlive-tuda-ci-doc:de)
 
 %description -n texlive-tuda-ci-doc
@@ -12993,7 +15626,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tuda-ci/tudathesis.cfg
 
 %package -n texlive-tudscr
-Version:        %{texlive_version}.%{texlive_noarch}.2.06nsvn59942
+Version:        %{texlive_version}.%{texlive_noarch}.2.06osvn64085
 Release:        0
 License:        LPPL-1.0
 Summary:        Corporate Design of Technische Universitat Dresden
@@ -13052,35 +15685,31 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tudscr-doc >= %{texlive_version}
 Provides:       tex(fix-tudscrfonts.sty)
 Provides:       tex(mathswap.sty)
+Provides:       tex(tudscr-gitinfo.sty)
 Provides:       tex(tudscrartcl.cls)
 Provides:       tex(tudscrbase.sty)
 Provides:       tex(tudscrbook.cls)
 Provides:       tex(tudscrcolor.sty)
-Provides:       tex(tudscrcomp-book.sty)
-Provides:       tex(tudscrcomp-poster.sty)
 Provides:       tex(tudscrcomp.sty)
 Provides:       tex(tudscrdoc.cls)
 Provides:       tex(tudscrfonts.sty)
 Provides:       tex(tudscrmanual.cls)
+Provides:       tex(tudscrmanual.sty)
 Provides:       tex(tudscrposter.cls)
 Provides:       tex(tudscrreprt.cls)
 Provides:       tex(tudscrsupervisor.sty)
-Provides:       tex(tudscrtutorial.sty)
 Provides:       tex(twocolfix.sty)
-Requires:       tex(amsfonts.sty)
-Requires:       tex(amsmath.sty)
 Requires:       tex(auto-pst-pdf.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(bm.sty)
+Requires:       tex(bookmark.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(csquotes.sty)
-Requires:       tex(dox.sty)
 Requires:       tex(ellipsis.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(environ.sty)
-Requires:       tex(etexcmds.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(filemod.sty)
 Requires:       tex(floatrow.sty)
@@ -13089,7 +15718,6 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hologo.sty)
-Requires:       tex(hyperref.sty)
 Requires:       tex(hyphsubst.sty)
 Requires:       tex(ifplatform.sty)
 Requires:       tex(iftex.sty)
@@ -13101,7 +15729,6 @@ Requires:       tex(listings.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(marginnote.sty)
 Requires:       tex(mathastext.sty)
-Requires:       tex(microtype.sty)
 Requires:       tex(newunicodechar.sty)
 Requires:       tex(omliwona.fd)
 Requires:       tex(omsiwona.fd)
@@ -13113,11 +15740,11 @@ Requires:       tex(scrbase.sty)
 Requires:       tex(scrextend.sty)
 Requires:       tex(scrhack.sty)
 Requires:       tex(scrlayer-scrpage.sty)
+Requires:       tex(scrlfile.sty)
 Requires:       tex(scrwfile.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(shellesc.sty)
 Requires:       tex(tabularx.sty)
-Requires:       tex(textcase.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(todonotes.sty)
@@ -13126,13 +15753,12 @@ Requires:       tex(units.sty)
 Requires:       tex(url.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
-Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source224:      tudscr.tar.xz
-Source225:      tudscr.doc.tar.xz
+# from 20230311
+Source242:      tudscr.tar.xz
+Source243:      tudscr.doc.tar.xz
 
 %description -n texlive-tudscr
 The TUD-Script bundle provides both classes and packages in
@@ -13160,12 +15786,13 @@ twocolumn layout, and a comprehensive user documentation as
 well as several tutorials.
 
 %package -n texlive-tudscr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.06nsvn59942
+Version:        %{texlive_version}.%{texlive_noarch}.2.06osvn64085
 Release:        0
 Summary:        Documentation for texlive-tudscr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tudscr and texlive-alldocumentation)
 Provides:       locale(texlive-tudscr-doc:de)
 
 %description -n texlive-tudscr-doc
@@ -13233,20 +15860,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tudscr/logo/TUD-white.eps
 %{_texmfdistdir}/tex/latex/tudscr/logo/TUD-white.pdf
 %{_texmfdistdir}/tex/latex/tudscr/mathswap.sty
+%{_texmfdistdir}/tex/latex/tudscr/tudscr-gitinfo.sty
 %{_texmfdistdir}/tex/latex/tudscr/tudscrartcl.cls
 %{_texmfdistdir}/tex/latex/tudscr/tudscrbase.sty
 %{_texmfdistdir}/tex/latex/tudscr/tudscrbook.cls
 %{_texmfdistdir}/tex/latex/tudscr/tudscrcolor.sty
-%{_texmfdistdir}/tex/latex/tudscr/tudscrcomp-book.sty
-%{_texmfdistdir}/tex/latex/tudscr/tudscrcomp-poster.sty
 %{_texmfdistdir}/tex/latex/tudscr/tudscrcomp.sty
 %{_texmfdistdir}/tex/latex/tudscr/tudscrdoc.cls
 %{_texmfdistdir}/tex/latex/tudscr/tudscrfonts.sty
 %{_texmfdistdir}/tex/latex/tudscr/tudscrmanual.cls
+%{_texmfdistdir}/tex/latex/tudscr/tudscrmanual.sty
 %{_texmfdistdir}/tex/latex/tudscr/tudscrposter.cls
 %{_texmfdistdir}/tex/latex/tudscr/tudscrreprt.cls
 %{_texmfdistdir}/tex/latex/tudscr/tudscrsupervisor.sty
-%{_texmfdistdir}/tex/latex/tudscr/tudscrtutorial.sty
 %{_texmfdistdir}/tex/latex/tudscr/twocolfix.sty
 
 %package -n texlive-tufte-latex
@@ -13326,9 +15952,9 @@ Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xltxtra.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source226:      tufte-latex.tar.xz
-Source227:      tufte-latex.doc.tar.xz
+# from 20230311
+Source244:      tufte-latex.tar.xz
+Source245:      tufte-latex.doc.tar.xz
 
 %description -n texlive-tufte-latex
 Provided are two classes inspired, respectively, by handouts
@@ -13341,6 +15967,7 @@ Summary:        Documentation for texlive-tufte-latex
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tufte-latex and texlive-alldocumentation)
 
 %description -n texlive-tufte-latex-doc
 This package includes the documentation for texlive-tufte-latex
@@ -13396,7 +16023,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tufte-latex/tufte-handout.cls
 
 %package -n texlive-tugboat
-Version:        %{texlive_version}.%{texlive_noarch}.2.26svn60755
+Version:        %{texlive_version}.%{texlive_noarch}.2.29svn66513
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX macros for TUGboat articles
@@ -13431,9 +16058,9 @@ Provides:       tex(ltugproc.sty)
 Requires:       tex(article.cls)
 Requires:       tex(mflogo.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source228:      tugboat.tar.xz
-Source229:      tugboat.doc.tar.xz
+# from 20230311
+Source246:      tugboat.tar.xz
+Source247:      tugboat.doc.tar.xz
 
 %description -n texlive-tugboat
 Provides ltugboat.cls for both regular and proceedings issues
@@ -13441,12 +16068,13 @@ of the TUGboat journal. Also provides a BibTeX style,
 tugboat.bst.
 
 %package -n texlive-tugboat-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.26svn60755
+Version:        %{texlive_version}.%{texlive_noarch}.2.29svn66513
 Release:        0
 Summary:        Documentation for texlive-tugboat
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tugboat and texlive-alldocumentation)
 Provides:       locale(texlive-tugboat-doc:en)
 
 %description -n texlive-tugboat-doc
@@ -13489,7 +16117,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tugboat/ltugproc.sty
 
 %package -n texlive-tugboat-plain
-Version:        %{texlive_version}.%{texlive_noarch}.1.26svn62688
+Version:        %{texlive_version}.%{texlive_noarch}.1.27svn63386
 Release:        0
 License:        LPPL-1.0
 Summary:        Plain TeX macros for TUGboat
@@ -13519,9 +16147,9 @@ Suggests:       texlive-tugboat-plain-doc >= %{texlive_version}
 Provides:       tex(tugboat.sty)
 Provides:       tex(tugproc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source230:      tugboat-plain.tar.xz
-Source231:      tugboat-plain.doc.tar.xz
+# from 20230311
+Source248:      tugboat-plain.tar.xz
+Source249:      tugboat-plain.doc.tar.xz
 
 %description -n texlive-tugboat-plain
 The macros defined in this directory (in files tugboat.sty and
@@ -13529,12 +16157,13 @@ tugboat.cmn) are used in papers written in Plain TeX for
 publication in TUGboat.
 
 %package -n texlive-tugboat-plain-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.26svn62688
+Version:        %{texlive_version}.%{texlive_noarch}.1.27svn63386
 Release:        0
 Summary:        Documentation for texlive-tugboat-plain
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tugboat-plain and texlive-alldocumentation)
 
 %description -n texlive-tugboat-plain-doc
 This package includes the documentation for texlive-tugboat-plain
@@ -13615,9 +16244,9 @@ Requires:       tex(mathptmx.sty)
 Requires:       tex(memoir.cls)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source232:      tui.tar.xz
-Source233:      tui.doc.tar.xz
+# from 20230311
+Source250:      tui.tar.xz
+Source251:      tui.doc.tar.xz
 
 %description -n texlive-tui
 Doctoral Dissertations from the Faculty of Engineering at the
@@ -13632,6 +16261,7 @@ Summary:        Documentation for texlive-tui
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tui and texlive-alldocumentation)
 Provides:       locale(texlive-tui-doc:en;es)
 
 %description -n texlive-tui-doc
@@ -13742,9 +16372,9 @@ Requires:       tex(times.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source234:      turabian.tar.xz
-Source235:      turabian.doc.tar.xz
+# from 20230311
+Source252:      turabian.tar.xz
+Source253:      turabian.doc.tar.xz
 
 %description -n texlive-turabian
 The bundle provides a class file and a template for creating
@@ -13758,6 +16388,7 @@ Summary:        Documentation for texlive-turabian
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-turabian and texlive-alldocumentation)
 
 %description -n texlive-turabian-doc
 This package includes the documentation for texlive-turabian
@@ -13828,9 +16459,9 @@ Requires:       tex(footmisc.sty)
 Requires:       tex(nowidow.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source236:      turabian-formatting.tar.xz
-Source237:      turabian-formatting.doc.tar.xz
+# from 20230311
+Source254:      turabian-formatting.tar.xz
+Source255:      turabian-formatting.doc.tar.xz
 
 %description -n texlive-turabian-formatting
 The turabian-formatting package provides Chicago-style
@@ -13845,6 +16476,7 @@ Summary:        Documentation for texlive-turabian-formatting
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-turabian-formatting and texlive-alldocumentation)
 
 %description -n texlive-turabian-formatting-doc
 This package includes the documentation for texlive-turabian-formatting
@@ -13908,9 +16540,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-turkmen-doc >= %{texlive_version}
 Provides:       tex(turkmen.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source238:      turkmen.tar.xz
-Source239:      turkmen.doc.tar.xz
+# from 20230311
+Source256:      turkmen.tar.xz
+Source257:      turkmen.doc.tar.xz
 
 %description -n texlive-turkmen
 The package provides support for Turkmen in babel, but
@@ -13923,6 +16555,7 @@ Summary:        Documentation for texlive-turkmen
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-turkmen and texlive-alldocumentation)
 
 %description -n texlive-turkmen-doc
 This package includes the documentation for texlive-turkmen
@@ -13954,7 +16587,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/turkmen/turkmen.ldf
 
 %package -n texlive-turnstile
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset the (logic) turnstile notation
@@ -13984,9 +16617,9 @@ Suggests:       texlive-turnstile-doc >= %{texlive_version}
 Provides:       tex(turnstile.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source240:      turnstile.tar.xz
-Source241:      turnstile.doc.tar.xz
+# from 20230311
+Source258:      turnstile.tar.xz
+Source259:      turnstile.doc.tar.xz
 
 %description -n texlive-turnstile
 Among other uses, the turnstile sign is used by logicians for
@@ -13994,12 +16627,13 @@ denoting a consequence relation, related to a given logic,
 between a collection of formulas and a derived formula.
 
 %package -n texlive-turnstile-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn64967
 Release:        0
 Summary:        Documentation for texlive-turnstile
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-turnstile and texlive-alldocumentation)
 Provides:       locale(texlive-turnstile-doc:pt)
 
 %description -n texlive-turnstile-doc
@@ -14076,9 +16710,9 @@ Requires:       tex(picture.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-lastpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source242:      turnthepage.tar.xz
-Source243:      turnthepage.doc.tar.xz
+# from 20230311
+Source260:      turnthepage.tar.xz
+Source261:      turnthepage.doc.tar.xz
 
 %description -n texlive-turnthepage
 The package prints a 'turn' instruction at the bottom of
@@ -14092,6 +16726,7 @@ Summary:        Documentation for texlive-turnthepage
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-turnthepage and texlive-alldocumentation)
 
 %description -n texlive-turnthepage-doc
 This package includes the documentation for texlive-turnthepage
@@ -14129,7 +16764,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/turnthepage/turnthepage.sty
 
 %package -n texlive-twemoji-colr
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn59957
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.0svn64854
 Release:        0
 License:        LPPL-1.0
 Summary:        Twemoji font in COLR/CPAL layered format
@@ -14158,27 +16793,28 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-twemoji-colr-fonts >= %{texlive_version}
 Suggests:       texlive-twemoji-colr-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source244:      twemoji-colr.tar.xz
-Source245:      twemoji-colr.doc.tar.xz
+# from 20230311
+Source262:      twemoji-colr.tar.xz
+Source263:      twemoji-colr.doc.tar.xz
 
 %description -n texlive-twemoji-colr
 This is a COLR/CPAL-based color OpenType font from the Twemoji
 collection of emoji images.
 
 %package -n texlive-twemoji-colr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn59957
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.0svn64854
 Release:        0
 Summary:        Documentation for texlive-twemoji-colr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-twemoji-colr and texlive-alldocumentation)
 
 %description -n texlive-twemoji-colr-doc
 This package includes the documentation for texlive-twemoji-colr
 
 %package -n texlive-twemoji-colr-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn59957
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.0svn64854
 Release:        0
 Summary:        Severed fonts for texlive-twemoji-colr
 License:        LPPL-1.0
@@ -14187,9 +16823,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-twemoji-colr-fonts
 The  separated fonts package for texlive-twemoji-colr
@@ -14225,10 +16859,91 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-twemoji-colr
 %{_datadir}/fontconfig/conf.avail/58-texlive-twemoji-colr.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-twemoji-colr/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-twemoji-colr/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-twemoji-colr/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-twemoji-colr/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-twemoji-colr/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-twemoji-colr/fonts.scale
 %{_datadir}/fonts/texlive-twemoji-colr/TwemojiMozilla.ttf
+
+%package -n texlive-twemojis
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.1_twemoji_v14.0.1svn62930
+Release:        0
+License:        LPPL-1.0
+Summary:        Use Twitter's open source emojis through LaTeX commands
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-twemojis-doc >= %{texlive_version}
+Provides:       tex(twemojis.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source264:      twemojis.tar.xz
+Source265:      twemojis.doc.tar.xz
+
+%description -n texlive-twemojis
+This package provides a simple wrapper which allows to use
+Twitter's open source emojis through LaTeX commands. This
+relies on images, so no fancy unicode-font stuff is needed and
+it should work on every installation.
+
+%package -n texlive-twemojis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.1_twemoji_v14.0.1svn62930
+Release:        0
+Summary:        Documentation for texlive-twemojis
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-twemojis and texlive-alldocumentation)
+
+%description -n texlive-twemojis-doc
+This package includes the documentation for texlive-twemojis
+
+%post -n texlive-twemojis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-twemojis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-twemojis
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-twemojis-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/twemojis/README.md
+%{_texmfdistdir}/doc/latex/twemojis/twemojis.pdf
+
+%files -n texlive-twemojis
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/twemojis/all-twemojis.pdf
+%{_texmfdistdir}/tex/latex/twemojis/twemojis.sty
 
 %package -n texlive-twoinone
 Version:        %{texlive_version}.%{texlive_noarch}.svn17024
@@ -14260,9 +16975,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-twoinone-doc >= %{texlive_version}
 Provides:       tex(2in1.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source246:      twoinone.tar.xz
-Source247:      twoinone.doc.tar.xz
+# from 20230311
+Source266:      twoinone.tar.xz
+Source267:      twoinone.doc.tar.xz
 
 %description -n texlive-twoinone
 The package is for printing two pages on a single (landscape)
@@ -14276,6 +16991,7 @@ Summary:        Documentation for texlive-twoinone
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-twoinone and texlive-alldocumentation)
 
 %description -n texlive-twoinone-doc
 This package includes the documentation for texlive-twoinone
@@ -14336,9 +17052,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-twoup-doc >= %{texlive_version}
 Provides:       tex(twoup.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source248:      twoup.tar.xz
-Source249:      twoup.doc.tar.xz
+# from 20230311
+Source268:      twoup.tar.xz
+Source269:      twoup.doc.tar.xz
 
 %description -n texlive-twoup
 MiKTeX and many other TeX implementations include tools for
@@ -14356,6 +17072,7 @@ Summary:        Documentation for texlive-twoup
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-twoup and texlive-alldocumentation)
 
 %description -n texlive-twoup-doc
 This package includes the documentation for texlive-twoup
@@ -14649,9 +17366,9 @@ Provides:       tex(utxsyb.fd)
 Provides:       tex(utxsyc.fd)
 Provides:       tex(utxtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source250:      txfonts.tar.xz
-Source251:      txfonts.doc.tar.xz
+# from 20230311
+Source270:      txfonts.tar.xz
+Source271:      txfonts.doc.tar.xz
 
 %description -n texlive-txfonts
 Txfonts supplies virtual text roman fonts using Adobe Times (or
@@ -14673,6 +17390,7 @@ Summary:        Documentation for texlive-txfonts
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-txfonts and texlive-alldocumentation)
 
 %description -n texlive-txfonts-doc
 This package includes the documentation for texlive-txfonts
@@ -14687,9 +17405,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-txfonts-fonts
 The  separated fonts package for texlive-txfonts
@@ -15039,9 +17755,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-txfonts
 %{_datadir}/fontconfig/conf.avail/58-texlive-txfonts.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfonts/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfonts/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfonts/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfonts/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfonts/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfonts/fonts.scale
 %{_datadir}/fonts/texlive-txfonts/rtcxb.pfb
 %{_datadir}/fonts/texlive-txfonts/rtcxbi.pfb
 %{_datadir}/fonts/texlive-txfonts/rtcxbss.pfb
@@ -15179,9 +17895,9 @@ Provides:       tex(timessco6r.tfm)
 Provides:       tex(txfontsb.sty)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source252:      txfontsb.tar.xz
-Source253:      txfontsb.doc.tar.xz
+# from 20230311
+Source272:      txfontsb.tar.xz
+Source273:      txfontsb.doc.tar.xz
 
 %description -n texlive-txfontsb
 A set of fonts that extend the txfonts bundle with small caps
@@ -15195,6 +17911,7 @@ Summary:        Documentation for texlive-txfontsb
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-txfontsb and texlive-alldocumentation)
 
 %description -n texlive-txfontsb-doc
 This package includes the documentation for texlive-txfontsb
@@ -15209,9 +17926,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-txfontsb-fonts
 The  separated fonts package for texlive-txfontsb
@@ -15322,9 +18037,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-txfontsb.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-txfontsb.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-txfontsb.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfontsb/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfontsb/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfontsb/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfontsb/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfontsb/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txfontsb/fonts.scale
 %{_datadir}/fonts/texlive-txfontsb/FreeSerifb-SmallCaps.otf
 %{_datadir}/fonts/texlive-txfontsb/FreeSerifb-SmallCapsAlt.otf
 %{_datadir}/fonts/texlive-txfontsb/FreeSerifb.otf
@@ -15369,9 +18084,9 @@ Suggests:       texlive-txgreeks-doc >= %{texlive_version}
 Provides:       tex(txgreeks.sty)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source254:      txgreeks.tar.xz
-Source255:      txgreeks.doc.tar.xz
+# from 20230311
+Source274:      txgreeks.tar.xz
+Source275:      txgreeks.doc.tar.xz
 
 %description -n texlive-txgreeks
 The package allows LaTeX users who use the TX fonts to select
@@ -15389,6 +18104,7 @@ Summary:        Documentation for texlive-txgreeks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-txgreeks and texlive-alldocumentation)
 
 %description -n texlive-txgreeks-doc
 This package includes the documentation for texlive-txgreeks
@@ -15466,9 +18182,9 @@ Provides:       tex(txuprcal.sty)
 Provides:       tex(utxuprcal.fd)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source256:      txuprcal.tar.xz
-Source257:      txuprcal.doc.tar.xz
+# from 20230311
+Source276:      txuprcal.tar.xz
+Source277:      txuprcal.doc.tar.xz
 
 %description -n texlive-txuprcal
 This small package provides a means of loading as \mathcal an
@@ -15483,6 +18199,7 @@ Summary:        Documentation for texlive-txuprcal
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-txuprcal and texlive-alldocumentation)
 
 %description -n texlive-txuprcal-doc
 This package includes the documentation for texlive-txuprcal
@@ -15497,9 +18214,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-txuprcal-fonts
 The  separated fonts package for texlive-txuprcal
@@ -15545,9 +18260,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-txuprcal
 %{_datadir}/fontconfig/conf.avail/58-texlive-txuprcal.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txuprcal/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txuprcal/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-txuprcal/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txuprcal/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txuprcal/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-txuprcal/fonts.scale
 %{_datadir}/fonts/texlive-txuprcal/txuprcal-bold.pfb
 %{_datadir}/fonts/texlive-txuprcal/txuprcal-reg.pfb
 
@@ -15581,9 +18296,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-type1cm-doc >= %{texlive_version}
 Provides:       tex(type1cm.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source258:      type1cm.tar.xz
-Source259:      type1cm.doc.tar.xz
+# from 20230311
+Source278:      type1cm.tar.xz
+Source279:      type1cm.doc.tar.xz
 
 %description -n texlive-type1cm
 LaTeX, by default, restricts the sizes at which you can use its
@@ -15606,6 +18321,7 @@ Summary:        Documentation for texlive-type1cm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-type1cm and texlive-alldocumentation)
 
 %description -n texlive-type1cm-doc
 This package includes the documentation for texlive-type1cm
@@ -15638,7 +18354,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/type1cm/type1cm.sty
 
 %package -n texlive-typed-checklist
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn49731
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn63445
 Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting tasks, goals, milestones, artifacts, and more in LaTeX
@@ -15670,17 +18386,15 @@ Requires:       tex(array.sty)
 Requires:       tex(asciilist.sty)
 Requires:       tex(bbding.sty)
 Requires:       tex(etoolbox.sty)
-Requires:       tex(longtable.sty)
 Requires:       tex(marginnote.sty)
-Requires:       tex(tabu.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xltabular.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source260:      typed-checklist.tar.xz
-Source261:      typed-checklist.doc.tar.xz
+# from 20230311
+Source280:      typed-checklist.tar.xz
+Source281:      typed-checklist.doc.tar.xz
 
 %description -n texlive-typed-checklist
 The main goal of this package is to provide means for
@@ -15694,12 +18408,13 @@ in the long run, help with training to distinguish entries of
 different types.
 
 %package -n texlive-typed-checklist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn49731
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn63445
 Release:        0
 Summary:        Documentation for texlive-typed-checklist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typed-checklist and texlive-alldocumentation)
 
 %description -n texlive-typed-checklist-doc
 This package includes the documentation for texlive-typed-checklist
@@ -15777,9 +18492,9 @@ Requires:       tex(scalefnt.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source262:      typeface.tar.xz
-Source263:      typeface.doc.tar.xz
+# from 20230311
+Source282:      typeface.tar.xz
+Source283:      typeface.doc.tar.xz
 
 %description -n texlive-typeface
 The package provides the means of establishing a consistent set
@@ -15802,6 +18517,7 @@ Summary:        Documentation for texlive-typeface
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typeface and texlive-alldocumentation)
 
 %description -n texlive-typeface-doc
 This package includes the documentation for texlive-typeface
@@ -15867,9 +18583,9 @@ Suggests:       texlive-typehtml-doc >= %{texlive_version}
 Provides:       tex(typehtml.sty)
 Requires:       tex(exscale.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source264:      typehtml.tar.xz
-Source265:      typehtml.doc.tar.xz
+# from 20230311
+Source284:      typehtml.tar.xz
+Source285:      typehtml.doc.tar.xz
 
 %description -n texlive-typehtml
 Can handle almost all of HTML2, and most of the math fragment
@@ -15882,6 +18598,7 @@ Summary:        Documentation for texlive-typehtml
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typehtml and texlive-alldocumentation)
 
 %description -n texlive-typehtml-doc
 This package includes the documentation for texlive-typehtml
@@ -15943,9 +18660,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-typeoutfileinfo-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source266:      typeoutfileinfo.tar.xz
-Source267:      typeoutfileinfo.doc.tar.xz
+# from 20230311
+Source286:      typeoutfileinfo.tar.xz
+Source287:      typeoutfileinfo.doc.tar.xz
 
 %description -n texlive-typeoutfileinfo
 The package provides a minimalist shell script, for Unix
@@ -15961,6 +18678,7 @@ Summary:        Documentation for texlive-typeoutfileinfo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typeoutfileinfo and texlive-alldocumentation)
 
 %description -n texlive-typeoutfileinfo-doc
 This package includes the documentation for texlive-typeoutfileinfo
@@ -16021,9 +18739,9 @@ Suggests:       texlive-typewriter-doc >= %{texlive_version}
 Provides:       tex(typewriter.sty)
 Requires:       tex(luaotfload.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source268:      typewriter.tar.xz
-Source269:      typewriter.doc.tar.xz
+# from 20230311
+Source288:      typewriter.tar.xz
+Source289:      typewriter.doc.tar.xz
 
 %description -n texlive-typewriter
 The typewriter package uses the OpenType Computer Modern
@@ -16039,6 +18757,7 @@ Summary:        Documentation for texlive-typewriter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typewriter and texlive-alldocumentation)
 
 %description -n texlive-typewriter-doc
 This package includes the documentation for texlive-typewriter
@@ -16102,9 +18821,9 @@ Suggests:       texlive-typicons-doc >= %{texlive_version}
 Provides:       tex(typicons.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source270:      typicons.tar.xz
-Source271:      typicons.doc.tar.xz
+# from 20230311
+Source290:      typicons.tar.xz
+Source291:      typicons.doc.tar.xz
 
 %description -n texlive-typicons
 This package grants access to 336 web-related icons provided by
@@ -16126,6 +18845,7 @@ Summary:        Documentation for texlive-typicons
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typicons and texlive-alldocumentation)
 
 %description -n texlive-typicons-doc
 This package includes the documentation for texlive-typicons
@@ -16140,9 +18860,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-typicons-fonts
 The  separated fonts package for texlive-typicons
@@ -16181,9 +18899,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-typicons
 %{_datadir}/fontconfig/conf.avail/58-texlive-typicons.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-typicons/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-typicons/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-typicons/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-typicons/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-typicons/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-typicons/fonts.scale
 %{_datadir}/fonts/texlive-typicons/typicons.ttf
 
 %package -n texlive-typoaid
@@ -16220,9 +18938,9 @@ Requires:       tex(booktabs.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(siunitx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source272:      typoaid.tar.xz
-Source273:      typoaid.doc.tar.xz
+# from 20230311
+Source292:      typoaid.tar.xz
+Source293:      typoaid.doc.tar.xz
 
 %description -n texlive-typoaid
 This package provides macros for measuring alphabet lengths
@@ -16243,6 +18961,7 @@ Summary:        Documentation for texlive-typoaid
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typoaid and texlive-alldocumentation)
 
 %description -n texlive-typoaid-doc
 This package includes the documentation for texlive-typoaid
@@ -16307,9 +19026,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(eso-pic.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source274:      typogrid.tar.xz
-Source275:      typogrid.doc.tar.xz
+# from 20230311
+Source294:      typogrid.tar.xz
+Source295:      typogrid.doc.tar.xz
 
 %description -n texlive-typogrid
 Draws a grid on every page of the document; the grid divides
@@ -16323,6 +19042,7 @@ Summary:        Documentation for texlive-typogrid
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-typogrid and texlive-alldocumentation)
 
 %description -n texlive-typogrid-doc
 This package includes the documentation for texlive-typogrid
@@ -16358,7 +19078,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/typogrid/typogrid.sty
 
 %package -n texlive-tzplot
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn62288
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn64537
 Release:        0
 License:        LPPL-1.0
 Summary:        Plot graphs with TikZ abbreviations
@@ -16390,9 +19110,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source276:      tzplot.tar.xz
-Source277:      tzplot.doc.tar.xz
+# from 20230311
+Source296:      tzplot.tar.xz
+Source297:      tzplot.doc.tar.xz
 
 %description -n texlive-tzplot
 This is a LaTeX package that provides TikZ-based macros to make
@@ -16404,12 +19124,13 @@ developed with an emphasis on drawing graphs in economics. The
 package depends on TikZ, xparse, and expl3.
 
 %package -n texlive-tzplot-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn62288
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn64537
 Release:        0
 Summary:        Documentation for texlive-tzplot
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tzplot and texlive-alldocumentation)
 
 %description -n texlive-tzplot-doc
 This package includes the documentation for texlive-tzplot
@@ -16434,13 +19155,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-tzplot-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/tzplot/README.txt
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-A-v2.0.tex
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-B-v2.0.tex
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-C-v2.0.tex
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-C1-v2.0.tex
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-C2-v2.0.tex
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-D-v2.0.tex
-%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-E-v2.0.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-A-v2.1.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-B-v2.1.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-C-v2.1.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-C1-v2.1.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-C2-v2.1.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-D-v2.1.tex
+%{_texmfdistdir}/doc/latex/tzplot/tzplot-doc-E-v2.1.tex
 %{_texmfdistdir}/doc/latex/tzplot/tzplot-doc.pdf
 %{_texmfdistdir}/doc/latex/tzplot/tzplot-doc.tex
 %{_texmfdistdir}/doc/latex/tzplot/tzplot-oblivoirpartstyle.tex
@@ -16488,9 +19209,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source278:      uaclasses.tar.xz
-Source279:      uaclasses.doc.tar.xz
+# from 20230311
+Source298:      uaclasses.tar.xz
+Source299:      uaclasses.doc.tar.xz
 
 %description -n texlive-uaclasses
 This package provides a LaTeX2e document class named
@@ -16508,6 +19229,7 @@ Summary:        Documentation for texlive-uaclasses
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-uaclasses and texlive-alldocumentation)
 
 %description -n texlive-uaclasses-doc
 This package includes the documentation for texlive-uaclasses
@@ -16573,9 +19295,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-uafthesis-doc >= %{texlive_version}
 Provides:       tex(uafthesis.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source280:      uafthesis.tar.xz
-Source281:      uafthesis.doc.tar.xz
+# from 20230311
+Source300:      uafthesis.tar.xz
+Source301:      uafthesis.doc.tar.xz
 
 %description -n texlive-uafthesis
 This is an "unofficial" official class.
@@ -16587,6 +19309,7 @@ Summary:        Documentation for texlive-uafthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-uafthesis and texlive-alldocumentation)
 
 %description -n texlive-uafthesis-doc
 This package includes the documentation for texlive-uafthesis
@@ -16634,7 +19357,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/uafthesis/uafthesis.cls
 
 %package -n texlive-uantwerpendocs
-Version:        %{texlive_version}.%{texlive_noarch}.4.3svn61030
+Version:        %{texlive_version}.%{texlive_noarch}.4.4svn64165
 Release:        0
 License:        LPPL-1.0
 Summary:        Course texts, master theses, and exams in University of Antwerp style
@@ -16699,9 +19422,9 @@ Requires:       tex(ulem.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source282:      uantwerpendocs.tar.xz
-Source283:      uantwerpendocs.doc.tar.xz
+# from 20230311
+Source302:      uantwerpendocs.tar.xz
+Source303:      uantwerpendocs.doc.tar.xz
 
 %description -n texlive-uantwerpendocs
 These class files implement the house style of the University
@@ -16712,12 +19435,13 @@ future versions of the house style of the University of
 Antwerp.
 
 %package -n texlive-uantwerpendocs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.3svn61030
+Version:        %{texlive_version}.%{texlive_noarch}.4.4svn64165
 Release:        0
 Summary:        Documentation for texlive-uantwerpendocs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-uantwerpendocs and texlive-alldocumentation)
 
 %description -n texlive-uantwerpendocs-doc
 This package includes the documentation for texlive-uantwerpendocs
@@ -17144,9 +19868,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source284:      uassign.tar.xz
-Source285:      uassign.doc.tar.xz
+# from 20230311
+Source304:      uassign.tar.xz
+Source305:      uassign.doc.tar.xz
 
 %description -n texlive-uassign
 The purpose of this package is to provide simple question and
@@ -17160,6 +19884,7 @@ Summary:        Documentation for texlive-uassign
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-uassign and texlive-alldocumentation)
 
 %description -n texlive-uassign-doc
 This package includes the documentation for texlive-uassign
@@ -17230,9 +19955,9 @@ Requires:       tex(newpxtext.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source286:      ucalgmthesis.tar.xz
-Source287:      ucalgmthesis.doc.tar.xz
+# from 20230311
+Source306:      ucalgmthesis.tar.xz
+Source307:      ucalgmthesis.doc.tar.xz
 
 %description -n texlive-ucalgmthesis
 ucalgmthesis.cls is a LaTeX class file that produces documents
@@ -17255,6 +19980,7 @@ Summary:        Documentation for texlive-ucalgmthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ucalgmthesis and texlive-alldocumentation)
 
 %description -n texlive-ucalgmthesis-doc
 This package includes the documentation for texlive-ucalgmthesis
@@ -17325,9 +20051,9 @@ Suggests:       texlive-ucbthesis-doc >= %{texlive_version}
 Provides:       tex(ucbthesis.cls)
 Requires:       tex(memoir.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source288:      ucbthesis.tar.xz
-Source289:      ucbthesis.doc.tar.xz
+# from 20230311
+Source308:      ucbthesis.tar.xz
+Source309:      ucbthesis.doc.tar.xz
 
 %description -n texlive-ucbthesis
 The class provides the necessary framework for electronic
@@ -17342,6 +20068,7 @@ Summary:        Documentation for texlive-ucbthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ucbthesis and texlive-alldocumentation)
 
 %description -n texlive-ucbthesis-doc
 This package includes the documentation for texlive-ucbthesis
@@ -17413,9 +20140,9 @@ Provides:       tex(ucdthesis12.clo)
 Provides:       tex(ucdthesis13.clo)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source290:      ucdavisthesis.tar.xz
-Source291:      ucdavisthesis.doc.tar.xz
+# from 20230311
+Source310:      ucdavisthesis.tar.xz
+Source311:      ucdavisthesis.doc.tar.xz
 
 %description -n texlive-ucdavisthesis
 The ucdavisthesis class is a LaTeX class that allows you to
@@ -17429,6 +20156,7 @@ Summary:        Documentation for texlive-ucdavisthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ucdavisthesis and texlive-alldocumentation)
 
 %description -n texlive-ucdavisthesis-doc
 This package includes the documentation for texlive-ucdavisthesis
@@ -17565,13 +20293,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-times
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/times/*.{pf[ab],[ot]tf}
@@ -17581,9 +20319,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-times/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-times/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-times/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-times/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-times/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-times/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-times.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -17602,11 +20339,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-tinos
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/google/tinos/*.{pf[ab],[ot]tf} \
@@ -17617,9 +20354,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-tinos/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-tinos/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-tinos/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-tinos/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-tinos/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-tinos/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-tinos.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -17658,8 +20394,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-tinos.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-tinos.conf
-    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/fonts/tipa/gentfm.sh \
 	       %{_texmfdistdir}/doc/fonts/tipa/gentipa.sh \
@@ -17681,9 +20417,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-tipa/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-tipa/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-tipa/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-tipa/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-tipa/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-tipa/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-tipa.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -17702,16 +20437,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -17779,7 +20504,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -17788,6 +20513,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-trajan
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/trajan/*.{pf[ab],[ot]tf}
@@ -17797,9 +20535,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-trajan/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-trajan/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-trajan/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-trajan/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-trajan/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-trajan/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-trajan.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -17818,19 +20555,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -17857,8 +20581,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -17875,8 +20599,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -17885,6 +20609,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-twemoji-colr
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/twemoji-colr/*.{pf[ab],[ot]tf}
@@ -17894,9 +20636,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-twemoji-colr/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-twemoji-colr/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-twemoji-colr/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-twemoji-colr/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-twemoji-colr/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-twemoji-colr/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-twemoji-colr.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -17915,12 +20656,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-txfonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/txfonts/*.{pf[ab],[ot]tf}
@@ -17930,9 +20673,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-txfonts/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-txfonts/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-txfonts/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-txfonts/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-txfonts/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-txfonts/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-txfonts.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -17951,8 +20693,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-txfontsb
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/txfontsb/*.{pf[ab],[ot]tf} \
@@ -17963,9 +20705,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-txfontsb/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-txfontsb/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-txfontsb/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-txfontsb/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-txfontsb/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-txfontsb/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-txfontsb.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -18004,10 +20745,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-txfontsb.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-txfontsb.conf
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-txuprcal
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/txuprcal/*.{pf[ab],[ot]tf}
@@ -18017,9 +20758,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-txuprcal/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-txuprcal/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-txuprcal/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-txuprcal/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-txuprcal/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-txuprcal/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-txuprcal.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -18038,20 +20778,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-typicons
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/typicons/*.{pf[ab],[ot]tf}
@@ -18061,9 +20801,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-typicons/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-typicons/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-typicons/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-typicons/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-typicons/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-typicons/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-typicons.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -18082,26 +20821,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
