@@ -27,14 +27,13 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        39
+Version:        40
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Electronics
 URL:            https://ngspice.sourceforge.io
 Source0:        https://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
-Source1:        https://ngspice.sourceforge.io/docs/ngspice-%{version}-manual.pdf
 BuildRequires:  bison
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -69,17 +68,6 @@ ngspice package:
 - ngnutmeg
 - ngproc2mod
 - ngsconvert
-
-%package doc
-Summary:        Documentation for ngspice
-Group:          Documentation/Other
-Recommends:     %{pname} = %{version}
-BuildArch:      noarch
-
-%description doc
-Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
-is based on three open source software packages: Spice3f5, Cider1b1
-and Xspice.
 
 %package xspice-cm
 Summary:        Xspice code model Plugins
@@ -125,7 +113,6 @@ and Xspice. This package contains the development files.
 
 %prep
 %setup -q -n ngspice-%{version}
-cp %{S:1} .
 %autopatch -p1
 
 %build
@@ -142,8 +129,10 @@ export LDFLAGS="-pie"
     --with-readline=yes \
     --enable-xspice \
     --enable-cider \
-    --enable-openmp
-
+    --enable-openmp \
+    --enable-osdi \
+    --enable-predictor \
+    %{nil}
 %make_build
 
 %install
@@ -189,9 +178,6 @@ rm -rf %{buildroot}/%{_mandir} \
 
 %files scripts
 %{_datadir}/ngspice/scripts
-
-%files doc
-%doc ngspice-%{version}-manual.pdf
 
 %files xspice-cm
 %{_libdir}/%{pname}
