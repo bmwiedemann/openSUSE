@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  4 21:14:23 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20, update LLVM/Clang to version 16.
+  * Support `IWYU pragma: export` for forward-declarations.
+  * Silently break cycles in mappings instead of crashing.
+  * Require full type inside `typeid`.
+  * Improve template reporting and resugaring.
+  * Improve reporting of explicit template instantiations.
+  * Fix a few crashes.
+  * Improve logging (many small fixes).
+  * Abandon python2 for scripts in favor of python3.
+- Rebase fix-shebang.patch and iwyu_include_picker.patch.
+
+-------------------------------------------------------------------
 Sat Jan 28 22:28:52 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.19, update LLVM/Clang to version 15.

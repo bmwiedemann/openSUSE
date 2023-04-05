@@ -1,8 +1,8 @@
 #
 # spec file for package include-what-you-use
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 Aaron Puchert.
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Aaron Puchert.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define _llvm_version 15
+%define _llvm_version 16
 
 Name:           include-what-you-use
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA

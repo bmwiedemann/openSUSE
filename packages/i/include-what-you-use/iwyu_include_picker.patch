@@ -1,5 +1,5 @@
 diff --git a/iwyu_include_picker.cc b/iwyu_include_picker.cc
-index 9862115..6515080 100644
+index 638bf3f..bc0b0a1 100644
 --- a/iwyu_include_picker.cc
 +++ b/iwyu_include_picker.cc
 @@ -72,14 +72,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
@@ -19,7 +19,7 @@ index 9862115..6515080 100644
    // I ignored all entries that only appeared once on the list (eg uint32_t).
    // I then added in NULL, which according to [diff.null] C.2.2.3, can
    // be defined in <clocale>, <cstddef>, <cstdio>, <cstdlib>,
-@@ -372,55 +372,84 @@ const IncludeMapEntry libstdcpp_symbol_map[] = {
+@@ -372,6 +372,23 @@ const IncludeMapEntry stdlib_cxx_symbol_map[] = {
    { "std::size_t", kPrivate, "<ctime>", kPublic },
    { "std::size_t", kPrivate, "<cuchar>", kPublic },
    { "std::size_t", kPrivate, "<cwchar>", kPublic },
@@ -41,6 +41,9 @@ index 9862115..6515080 100644
 +  { "std::wofstream", kPrivate, "<fstream>", kPublic },
 +  { "std::wfstream", kPrivate, "<fstream>", kPublic },
  };
+ 
+ // Symbol -> include mappings for GNU libstdc++
+@@ -379,51 +396,63 @@ const IncludeMapEntry libstdcpp_symbol_map[] = {};
  
  const IncludeMapEntry libc_include_map[] = {
    // Private -> public include mappings for GNU libc
@@ -117,7 +120,7 @@ index 9862115..6515080 100644
    { "<bits/netdb.h>", kPrivate, "<netdb.h>", kPublic },
    { "<bits/param.h>", kPrivate, "<sys/param.h>", kPublic },
    { "<bits/poll.h>", kPrivate, "<sys/poll.h>", kPrivate },
-@@ -429,66 +458,107 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -432,66 +461,107 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/posix2_lim.h>", kPrivate, "<limits.h>", kPublic },
    { "<bits/posix_opt.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/printf-ldbl.h>", kPrivate, "<printf.h>", kPublic },
@@ -249,7 +252,7 @@ index 9862115..6515080 100644
    { "<bits/utmp.h>", kPrivate, "<utmp.h>", kPublic },
    { "<bits/utmpx.h>", kPrivate, "<utmpx.h>", kPublic },
    { "<bits/utsname.h>", kPrivate, "<sys/utsname.h>", kPublic },
-@@ -497,61 +567,155 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -500,61 +570,155 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/wchar-ldbl.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar2.h>", kPrivate, "<wchar.h>", kPublic },
@@ -421,7 +424,7 @@ index 9862115..6515080 100644
    // Top-level #includes that just forward to another file:
    // $ for i in /usr/include/*; do [ -f $i ] && [ `wc -l < $i` = 1 ] && echo $i; done
    // (poll.h, syscall.h, syslog.h, ustat.h, wait.h).
-@@ -568,8 +732,9 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -571,8 +735,9 @@ const IncludeMapEntry libc_include_map[] = {
    // $ for i in /usr/include/bits/*; do for dir in asm linux; do grep -H -e $dir/`basename $i` $i; done; done
    { "<linux/errno.h>", kPrivate, "<bits/errno.h>", kPrivate },
    { "<asm/ioctls.h>", kPrivate, "<bits/ioctls.h>", kPrivate },
@@ -432,7 +435,7 @@ index 9862115..6515080 100644
    // Some asm files have 32- and 64-bit variants:
    // $ ls /usr/include/asm/*_{32,64}.h
    { "<asm/posix_types_32.h>", kPrivate, "<asm/posix_types.h>", kPublic },
-@@ -599,12 +764,12 @@ const IncludeMapEntry stdlib_c_include_map[] = {
+@@ -602,12 +767,12 @@ const IncludeMapEntry stdlib_c_include_map[] = {
    // <cassert> back to <assert.h>.  (If you *did* want to replace
    // assert.h with cassert, you'd change it to a public->private
    // mapping.)  Here is how I identified the files to map:
@@ -447,7 +450,7 @@ index 9862115..6515080 100644
    { "<assert.h>", kPublic, "<cassert>", kPublic },
    { "<complex.h>", kPublic, "<ccomplex>", kPublic },
    { "<ctype.h>", kPublic, "<cctype>", kPublic },
-@@ -637,7 +802,7 @@ const char* stdlib_cpp_public_headers[] = {
+@@ -640,7 +805,7 @@ const char* stdlib_cpp_public_headers[] = {
    // These headers are defined in [headers.cpp].
    // https://github.com/cplusplus/draft/blob/c+%2B20/source/lib-intro.tex
    //
@@ -456,7 +459,7 @@ index 9862115..6515080 100644
    "<algorithm>",
    "<any>",
    "<array>",
-@@ -722,16 +887,19 @@ const char* stdlib_cpp_public_headers[] = {
+@@ -725,16 +890,19 @@ const char* stdlib_cpp_public_headers[] = {
  // Note: make sure to sync this setting with gcc.stl.headers.imp
  //
  const IncludeMapEntry libstdcpp_include_map[] = {
@@ -477,7 +480,7 @@ index 9862115..6515080 100644
    { "<bits/basic_ios.h>", kPrivate, "<ios>", kPublic },
    { "<bits/basic_ios.tcc>", kPrivate, "<ios>", kPublic },
    { "<bits/basic_string.h>", kPrivate, "<string>", kPublic },
-@@ -740,9 +908,11 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -743,9 +911,11 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/c++0x_warning.h>", kPrivate, "<iosfwd>", kPublic },
    { "<bits/charconv.h>", kPrivate, "<charconv>", kPublic },
    { "<bits/char_traits.h>", kPrivate, "<string>", kPublic },
@@ -490,7 +493,7 @@ index 9862115..6515080 100644
    { "<bits/cxxabi_forced.h>", kPrivate, "<cxxabi.h>", kPublic },
    { "<bits/deque.tcc>", kPrivate, "<deque>", kPublic },
    { "<bits/exception_defines.h>", kPrivate, "<exception>", kPublic },
-@@ -760,7 +930,6 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -763,7 +933,6 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/gslice.h>", kPrivate, "<valarray>", kPublic },
    { "<bits/hash_bytes.h>", kPrivate, "<functional>", kPublic },
    { "<bits/indirect_array.h>", kPrivate, "<valarray>", kPublic },
@@ -498,7 +501,7 @@ index 9862115..6515080 100644
    { "<bits/invoke.h>", kPrivate, "<functional>", kPublic },
    { "<bits/ios_base.h>", kPrivate, "<ios>", kPublic },
    { "<bits/istream.tcc>", kPrivate, "<istream>", kPublic },
-@@ -775,9 +944,13 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -778,9 +947,13 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/locale_facets.tcc>", kPrivate, "<locale>", kPublic },
    { "<bits/localefwd.h>", kPrivate, "<locale>", kPublic },
    { "<bits/mask_array.h>", kPrivate, "<valarray>", kPublic },
@@ -512,7 +515,7 @@ index 9862115..6515080 100644
    { "<bits/ostream_insert.h>", kPrivate, "<ostream>", kPublic },
    { "<bits/ostream.tcc>", kPrivate, "<ostream>", kPublic },
    { "<bits/parse_numbers.h>", kPrivate, "<chrono>", kPublic },
-@@ -788,10 +961,12 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -791,10 +964,12 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/random.h>", kPrivate, "<random>", kPublic },
    { "<bits/random.tcc>", kPrivate, "<random>", kPublic },
    { "<bits/range_access.h>", kPrivate, "<iterator>", kPublic },
@@ -526,7 +529,7 @@ index 9862115..6515080 100644
    { "<bits/refwrap.h>", kPrivate, "<functional>", kPublic },
    { "<bits/regex_automaton.h>", kPrivate, "<regex>", kPublic },
    { "<bits/regex_automaton.tcc>", kPrivate, "<regex>", kPublic },
-@@ -805,6 +980,7 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -808,6 +983,7 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/regex_scanner.h>", kPrivate, "<regex>", kPublic },
    { "<bits/regex_scanner.tcc>", kPrivate, "<regex>", kPublic },
    { "<bits/regex.tcc>", kPrivate, "<regex>", kPublic },
@@ -534,7 +537,7 @@ index 9862115..6515080 100644
    { "<bits/shared_ptr_atomic.h>", kPrivate, "<memory>", kPublic },
    { "<bits/shared_ptr_base.h>", kPrivate, "<memory>", kPublic },
    { "<bits/shared_ptr.h>", kPrivate, "<memory>", kPublic },
-@@ -813,6 +989,7 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -816,6 +992,7 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/sstream.tcc>", kPrivate, "<sstream>", kPublic },
    { "<bits/std_function.h>", kPrivate, "<functional>", kPublic },
    { "<bits/std_mutex.h>", kPrivate, "<mutex>", kPublic },
@@ -542,7 +545,7 @@ index 9862115..6515080 100644
    { "<bits/stl_algobase.h>", kPrivate, "<algorithm>", kPublic },
    { "<bits/stl_algo.h>", kPrivate, "<algorithm>", kPublic },
    { "<bits/stl_bvector.h>", kPrivate, "<vector>", kPublic },
-@@ -842,11 +1019,13 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -845,11 +1022,13 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/stream_iterator.h>", kPrivate, "<iterator>", kPublic },
    { "<bits/stringfwd.h>", kPrivate, "<string>", kPublic },
    { "<bits/string_view.tcc>", kPrivate, "<string_view>", kPublic },
@@ -556,7 +559,7 @@ index 9862115..6515080 100644
    { "<bits/utility.h>", kPrivate, "<utility>", kPublic },
    { "<bits/valarray_after.h>", kPrivate, "<valarray>", kPublic },
    { "<bits/valarray_array.h>", kPrivate, "<valarray>", kPublic },
-@@ -888,10 +1067,9 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -891,10 +1070,9 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<tr1/unordered_map.h>", kPrivate, "<tr1/unordered_map>", kPublic },
    { "<tr1/unordered_set.h>", kPrivate, "<tr1/unordered_set>", kPublic },
    { "<tr2/dynamic_bitset.tcc>", kPrivate, "<tr2/dynamic_bitset>", kPublic },
@@ -568,7 +571,7 @@ index 9862115..6515080 100644
    { "<bits/c++config.h>", kPrivate, "<version>", kPublic },
    { "<bits/c++io.h>", kPrivate, "<ios>", kPublic },
    { "<bits/c++locale.h>", kPrivate, "<locale>", kPublic },
-@@ -905,68 +1083,40 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -908,68 +1086,40 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/os_defines.h>", kPrivate, "<iosfwd>", kPublic },
    { "<bits/time_members.h>", kPrivate, "<locale>", kPublic },
    { "<ext/opt_random.h>", kPrivate, "<ext/random>", kPublic },
@@ -665,7 +668,7 @@ index 9862115..6515080 100644
    // Hash and hashtable-based containers.
    { "<tr1_impl/functional_hash.h>", kPrivate, "<tr1/functional>", kPublic },
    { "<tr1_impl/functional_hash.h>", kPrivate, "<tr1/unordered_map>", kPublic },
-@@ -978,22 +1128,35 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -981,22 +1131,35 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<tr1/hashtable.h>", kPrivate, "<tr1/unordered_map>", kPublic },
    { "<tr1/hashtable.h>", kPrivate, "<tr1/unordered_set>", kPublic },
    // All .tcc files are gcc internal-include files.  We get them from
@@ -706,7 +709,7 @@ index 9862115..6515080 100644
    // I don't think we want to be having people move to 'backward/'
    // yet.  (These hold deprecated STL classes that we still use
    // actively.)  These are the ones that turned up in an analysis of
-@@ -1010,32 +1173,40 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -1013,32 +1176,40 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<hash_fun.h>", kPrivate, "<hash_set>", kPublic },
    { "<hashtable.h>", kPrivate, "<hash_map>", kPublic },
    { "<hashtable.h>", kPrivate, "<hash_set>", kPublic },
