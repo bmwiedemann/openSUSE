@@ -1318,6 +1318,7 @@ BuildFlags: onlybuild:acl
 BuildFlags: onlybuild:adjtimex
 BuildFlags: onlybuild:adolc
 BuildFlags: onlybuild:adwaita-icon-theme
+BuildFlags: onlybuild:alsa-oss
 BuildFlags: onlybuild:alsa
 BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-utils
