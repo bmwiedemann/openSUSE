@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-opcua
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -39,12 +39,12 @@ Source99:       qt6-opcua-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-network-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(openssl)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
@@ -68,7 +68,7 @@ Qt 6 OpcUa Client Library.
 %package devel
 Summary:        Qt 6 OpcUa library - Development files
 Requires:       libQt6OpcUa6 = %{version}
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description devel
 Development files for the Qt 6 OpcUa library.
@@ -97,9 +97,9 @@ Qt 6 DeclarativeOpcua library.
 %package -n qt6-declarativeopcua-private-devel
 Summary:        Non-ABI stable API for the Qt 6 DeclarativeOpcua library
 Requires:       libQt6DeclarativeOpcua6 = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6OpcUa) = %{real_version}
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-declarativeopcua-private-devel
 This package provides private headers of libDeclarativeOpcua that do not have
