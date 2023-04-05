@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 05 04:39:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.6.2:
+  * update alpine and go mod (#210)
+  * Update documentation from template (#209)
+  * Update documentation from template (#202)
+- add shell completion subpackages
+- fix broken version display
+- BuildRequire go1.19
+- revert change to _service file, as releases are made without the
+  leading "v" again...
+
+-------------------------------------------------------------------
 Sun Feb 12 06:33:10 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.6.2:
