@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-mqtt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtmqtt-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-mqtt%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Module to implement MQTT protocol version 3.1 and 3.1.1
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -37,13 +37,13 @@ Source99:       qt6-mqtt-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6WebSockets)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6WebSockets) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -64,7 +64,7 @@ Qt library to implement MQTT protocol version 3.1 and 3.1.1
 %package devel
 Summary:        Qt 6 Mqtt library - Development files
 Requires:       libQt6Mqtt6 = %{version}
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Mqtt library.
