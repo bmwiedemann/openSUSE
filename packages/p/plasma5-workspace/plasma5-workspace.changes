@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * applets/systemtray: press and hold to open context menu for plasmoids
+  * applets/digital-clock: reload timezone after saving in Datetime KCM (kde#467494)
+  * components/keyboardlayout: Fix forced activation of vkbd
+  * Create directory before installing session-local
+  * applets/systemtray: fix menu key not working in SNI
+  * Find PkgConfig before first call to pkg_check_modules
+  * sddm-theme: Populate keyboard layouts menu only on first show
+  * [dashboard] Skip task switcher
+  * klipper: test bug 465225
+  * systemtraytest: take screenshot only when test fails
+  * kcms/nightcolor: fix timing strings with narrow window widths
+  * libtaskmanager: simplify `test_openCloseWindow`
+
+-------------------------------------------------------------------
 Tue Mar 14 15:06:04 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
