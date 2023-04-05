@@ -161,8 +161,8 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-# devel:automotive whitelisted on 20230111 | security:sensor on 20230118
-devel-whitelist = network:samba:CONTAINERS
+# 
+devel-whitelist = multimedia:proaudio
  
 # packagelist generator related configuration
 pkglistgen-archs = x86_64
@@ -194,7 +194,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230403</value>
+    <value>20230404</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
