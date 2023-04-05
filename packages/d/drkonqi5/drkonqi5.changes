@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- No code changes since 5.27.3
+
+-------------------------------------------------------------------
 Wed Mar 29 09:57:29 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Replace '%service_del_postun -n' with '%service_del_postun_without_restart'
