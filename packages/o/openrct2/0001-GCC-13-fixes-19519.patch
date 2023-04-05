@@ -1,0 +1,60 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20Janiszewski?=
+ <janisozaur@users.noreply.github.com>
+Date: Tue, 28 Feb 2023 20:04:52 +0100
+Subject: [PATCH] GCC 13 fixes (#19519)
+Upstream: merged, https://github.com/OpenRCT2/OpenRCT2/pull/19519
+
+This addresses issues when compiling with GCC 13
+---
+ src/openrct2/park/ParkFile.cpp                    | 2 +-
+ src/openrct2/park/ParkFile.h                      | 1 +
+ src/openrct2/ride/coaster/JuniorRollerCoaster.cpp | 4 ++--
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/openrct2/park/ParkFile.cpp b/src/openrct2/park/ParkFile.cpp
+index 5be5e18ff8a16d2a99ea9ba87cd4d9c15d4ad766..376fe5ca9cdbefe4847099f2a8ea44e25a5b617d 100644
+--- a/src/openrct2/park/ParkFile.cpp
++++ b/src/openrct2/park/ParkFile.cpp
+@@ -795,7 +795,7 @@ namespace OpenRCT2
+                 // Awards
+                 if (version <= 6)
+                 {
+-                    Award awards[RCT2::Limits::MaxAwards];
++                    Award awards[RCT2::Limits::MaxAwards]{};
+                     cs.ReadWriteArray(awards, [&cs](Award& award) {
+                         if (award.Time != 0)
+                         {
+diff --git a/src/openrct2/park/ParkFile.h b/src/openrct2/park/ParkFile.h
+index 7df5ab09595799ac4d52c2f1974c908a21c0b473..3e7c6c06977f9c6a9e20c0797466516cab6f3724 100644
+--- a/src/openrct2/park/ParkFile.h
++++ b/src/openrct2/park/ParkFile.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <string_view>
+ #include <vector>
+ 
+diff --git a/src/openrct2/ride/coaster/JuniorRollerCoaster.cpp b/src/openrct2/ride/coaster/JuniorRollerCoaster.cpp
+index 8a53f3d90a78b4e7353f205e18bc07462c236b29..a029b298d978935108ce9b3a6936a70c3d63ba63 100644
+--- a/src/openrct2/ride/coaster/JuniorRollerCoaster.cpp
++++ b/src/openrct2/ride/coaster/JuniorRollerCoaster.cpp
+@@ -5170,7 +5170,7 @@ void junior_rc_paint_track_60_deg_up(
+     if (track_paint_util_should_paint_supports(session.MapPosition))
+     {
+         MetalASupportsPaintSetup(
+-            session, (direction & 1) ? METAL_SUPPORTS_FORK_ALT : METAL_SUPPORTS_FORK, 4, support[direction], height,
++            session, (direction & 1) ? METAL_SUPPORTS_FORK_ALT : METAL_SUPPORTS_FORK, 4, support[direction & 3], height,
+             session.TrackColours[SCHEME_SUPPORTS]);
+     }
+ 
+@@ -5262,7 +5262,7 @@ void junior_rc_paint_track_25_deg_up_to_60_deg_up(
+     if (track_paint_util_should_paint_supports(session.MapPosition))
+     {
+         MetalASupportsPaintSetup(
+-            session, (direction & 1) ? METAL_SUPPORTS_FORK_ALT : METAL_SUPPORTS_FORK, 4, support[direction], height,
++            session, (direction & 1) ? METAL_SUPPORTS_FORK_ALT : METAL_SUPPORTS_FORK, 4, support[direction & 3], height,
+             session.TrackColours[SCHEME_SUPPORTS]);
+     }
+ 

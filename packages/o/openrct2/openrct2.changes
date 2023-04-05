@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 19 16:32:53 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Fix loading of title sequences, adjust path.
+  https://github.com/OpenRCT2/OpenRCT2/issues/8110
+- Make titlesequences package noarch, it doesn't contain architecture specific
+  files.
+- Add 0001-GCC-13-fixes-19519.patch to fix building with GCC 13:
+  https://github.com/OpenRCT2/OpenRCT2/pull/19519
+- Update dependencies
+  * objects 1.3.7 (sync with upstream CMakeLists.txt of 0.4.3)
+
+-------------------------------------------------------------------
 Thu Dec 15 20:09:01 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.3
@@ -265,5 +277,3 @@ Fri May  6 05:53:43 UTC 2016 - mailaender@opensuse.org
 Wed Dec 30 11:46:25 UTC 2015 - mailaender@opensuse.org
 
 - initial packaging of version 0.0.3.1
-
-
