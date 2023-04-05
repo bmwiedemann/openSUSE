@@ -17,7 +17,7 @@
 
 
 Name:           ucblogo
-Version:        6.2.3
+Version:        6.2.4
 Release:        0
 Summary:        Berkeley Logo interpreter
 License:        GPL-3.0-or-later

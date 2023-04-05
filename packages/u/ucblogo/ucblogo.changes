@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  1 09:25:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.2.4:
+  * Validate RANDOM range input has the smaller number first
+    (gh#jrincayc/ucblogo-code#151).
+  * Manual updates (gh#jrincayc/ucblogo-code#152).
+  * Avoid more implicit function declarations by @fweimer-rh in
+    (gh#jrincayc/ucblogo-code#156).
+  * Move wait include to else of windows.
+    (gh#jrincayc/ucblogo-code#157).
+  * Migrate to wxWidgets 3.2 (gh#jrincayc/ucblogo-code#163).
+
+-------------------------------------------------------------------
 Tue Jan 24 05:05:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.2.3:
