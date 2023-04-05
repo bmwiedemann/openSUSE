@@ -23,7 +23,7 @@
 %bcond_without libc_semaphore
 
 Name:           xrootd
-Version:        5.5.1
+Version:        5.5.4
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -32,8 +32,6 @@ URL:            http://xrootd.org/
 Source0:        http://xrootd.org/download/v%{version}/xrootd-%{version}.tar.gz
 Source1:        %{name}-user.conf
 Source100:      xrootd-rpmlintrc
-# PATCH-FIX-UPSTREAM xrootd-drop-python-distutils.patch badshah400@gmail.com -- Drop distutils usage in favour of setuptools; upstream commit
-Patch0:         https://github.com/xrootd/xrootd/commit/d5732ef1a602ee3559aebaebd7a64d682417ec26.patch#/xrootd-drop-python-distutils.patch
 # PATCH-FEATURE-OPENSUSE Hardening patches
 Patch100:       harden_cmsd@.service.patch
 Patch101:       harden_frm_purged@.service.patch
