@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  4 17:41:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.5.4
+  * Fix crash/regression when using LV2 plugins without worker
+    extension
+  * Fix compat with PyQt >= PyQt 5.15.8
+  * Fix macOS build
+  * Simplify JACK event handling, now using a single queue on the
+    main thread
+- Drop patches, merged upstream:
+  * 0001-Fix-compat-with-PyQt-PyQt-5.15.8.patch
+  * 0001-Fix-crash-regression-when-using-LV2-plugins-without-.patch
+
+-------------------------------------------------------------------
 Sat Mar 11 10:45:38 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Add patch to fix #boo1209057

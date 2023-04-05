@@ -36,7 +36,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
 # to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
@@ -51,9 +51,6 @@ Patch0:         0001-Use-system-flac-vorbis-ogg.patch
 Patch1:         0002-Remove-rpath-from-.pc-files.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
 Patch2:         0003-Use-correct-plugin-paths-for-openSUSE.patch
-# Patches from pre version 2.5.4 release
-Patch3:         0001-Fix-crash-regression-when-using-LV2-plugins-without-.patch
-Patch4:         0001-Fix-compat-with-PyQt-PyQt-5.15.8.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
