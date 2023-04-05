@@ -25,6 +25,8 @@ Summary:        A cross-platform (C99/C++11) process library
 License:        MIT
 URL:            https://github.com/DaanDeMeyer/reproc
 Source:         https://github.com/DaanDeMeyer/reproc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/DaanDeMeyer/reproc/commit/0b23d88894ccedde04537fa23ea55cb2f8365342.patch
+Patch1:         gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

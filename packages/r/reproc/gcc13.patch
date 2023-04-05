@@ -1,0 +1,153 @@
+From 0b23d88894ccedde04537fa23ea55cb2f8365342 Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Sat, 18 Mar 2023 19:38:19 +0100
+Subject: [PATCH] reproc++: Try to fix gcc 13 build
+
+---
+ reproc++/include/reproc++/reproc.hpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+Index: reproc-14.2.4/reproc++/include/reproc++/reproc.hpp
+===================================================================
+--- reproc-14.2.4.orig/reproc++/include/reproc++/reproc.hpp
++++ reproc-14.2.4/reproc++/include/reproc++/reproc.hpp
+@@ -88,7 +88,7 @@ struct redirect {
+ 
+ struct options {
+   struct {
+-    env::type behavior;
++    enum env::type behavior;
+     /*! Implicitly converts from any STL container of string pairs to the
+     environment format expected by `reproc_start`. */
+     class env extra;
+@@ -97,9 +97,9 @@ struct options {
+   const char *working_directory = nullptr;
+ 
+   struct {
+-    redirect in;
+-    redirect out;
+-    redirect err;
++    struct redirect in;
++    struct redirect out;
++    struct redirect err;
+     bool parent;
+     bool discard;
+     FILE *file;
+@@ -138,30 +138,12 @@ enum class stream {
+   err,
+ };
+ 
+-class process;
+-
+ namespace event {
+ 
+-enum {
+-  in = 1 << 0,
+-  out = 1 << 1,
+-  err = 1 << 2,
+-  exit = 1 << 3,
+-  deadline = 1 << 4,
+-};
+-
+-struct source {
+-  class process &process;
+-  int interests;
+-  int events;
+-};
++class source;
+ 
+ }
+ 
+-REPROCXX_EXPORT std::error_code poll(event::source *sources,
+-                                     size_t num_sources,
+-                                     milliseconds timeout = infinite);
+-
+ /*! Improves on reproc's API by adding RAII and changing the API of some
+ functions to be more idiomatic C++. */
+ class process {
+@@ -220,4 +202,26 @@ private:
+   std::unique_ptr<reproc_t, reproc_t *(*) (reproc_t *)> impl_;
+ };
+ 
++namespace event {
++
++enum {
++  in = 1 << 0,
++  out = 1 << 1,
++  err = 1 << 2,
++  exit = 1 << 3,
++  deadline = 1 << 4,
++};
++
++struct source {
++  class process process;
++  int interests;
++  int events;
++};
++
++}
++
++REPROCXX_EXPORT std::error_code poll(event::source *sources,
++                                     size_t num_sources,
++                                     milliseconds timeout = infinite);
++
+ }
+Index: reproc-14.2.4/reproc++/src/reproc.cpp
+===================================================================
+--- reproc-14.2.4.orig/reproc++/src/reproc.cpp
++++ reproc-14.2.4/reproc++/src/reproc.cpp
+@@ -86,8 +86,9 @@ std::pair<bool, std::error_code> process
+ std::pair<int, std::error_code> process::poll(int interests,
+                                               milliseconds timeout)
+ {
+-  event::source source{ *this, interests, 0 };
++  event::source source{ std::move(*this), interests, 0 };
+   std::error_code ec = ::reproc::poll(&source, 1, timeout);
++  *this = std::move(source.process);
+   return { source.events, ec };
+ }
+ 
+--- reproc-14.2.4/reproc++/include/reproc++/reproc.hpp	2023-04-04 23:14:25.549923395 +0200
++++ reproc-14.2.4/reproc++/include/reproc++/reproc.hpp	2023-04-04 23:13:00.824489755 +0200
+@@ -65,7 +65,7 @@
+ using handle = int;
+ #endif
+ 
+-struct redirect {
++struct redirect_t {
+   enum type {
+     default_, // Unfortunately, both `default` and `auto` are keywords.
+     pipe,
+@@ -88,7 +88,7 @@
+ 
+ struct options {
+   struct {
+-    enum env::type behavior;
++    enum redirect_t::type behavior;
+     /*! Implicitly converts from any STL container of string pairs to the
+     environment format expected by `reproc_start`. */
+     class env extra;
+@@ -97,9 +97,9 @@
+   const char *working_directory = nullptr;
+ 
+   struct {
+-    struct redirect in;
+-    struct redirect out;
+-    struct redirect err;
++    struct redirect_t in;
++    struct redirect_t out;
++    struct redirect_t err;
+     bool parent;
+     bool discard;
+     FILE *file;
+--- reproc-14.2.4/reproc++/src/reproc.cpp	2023-04-04 23:14:25.549923395 +0200
++++ reproc-14.2.4/reproc++/src/reproc.cpp	2023-04-04 23:13:41.693181299 +0200
+@@ -39,7 +39,7 @@
+   };
+ }
+ 
+-static reproc_redirect reproc_redirect_from(redirect redirect)
++static reproc_redirect reproc_redirect_from(redirect_t redirect)
+ {
+   return { static_cast<REPROC_REDIRECT>(redirect.type), redirect.handle,
+            redirect.file, redirect.path };

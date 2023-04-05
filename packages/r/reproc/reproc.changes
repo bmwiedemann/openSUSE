@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 21:15:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add gcc13.patch to fix build
+
+-------------------------------------------------------------------
 Fri Feb 24 08:58:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.2.4:
