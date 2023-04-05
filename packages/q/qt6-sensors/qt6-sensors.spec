@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-sensors
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -37,15 +37,14 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-sensors-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Multimedia)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6DBus) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6Svg) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
+BuildRequires:  cmake(Qt6Xml) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -76,7 +75,7 @@ The Qt 6 Sensors library.
 %package devel
 Summary:        Qt 6 Sensors library - Development files
 Requires:       libQt6Sensors6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Sensors library.
@@ -99,7 +98,7 @@ The Qt6 SensorsQuick library.
 %package -n qt6-sensorsquick-devel
 Summary:        Qt 6 SensorsQuick library - Development files
 Requires:       libQt6SensorsQuick6 = %{version}
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Sensors) = %{real_version}
 
 %description -n qt6-sensorsquick-devel
