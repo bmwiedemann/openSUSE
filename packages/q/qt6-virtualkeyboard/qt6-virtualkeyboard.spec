@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-virtualkeyboard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -37,13 +37,13 @@ Source99:       qt6-virtualkeyboard-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6QmlTools)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickControls2)
-BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlTools) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
+BuildRequires:  cmake(Qt6Svg) = %{real_version}
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(xcb)
 %if "%{qt6_flavor}" == "docs"
@@ -73,9 +73,9 @@ as a widget, and to create SVG files using drawing commands.
 %package -n qt6-virtualkeyboard-devel
 Summary:        Qt 6 VirtualKeyboard library - Development files
 Requires:       libQt6VirtualKeyboard6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-virtualkeyboard-devel
 Development files for the Qt 6 VirtualKeyboard library.
@@ -103,7 +103,7 @@ This library does not have any ABI or API guarantees.
 Summary:        Development files for the Qt 6 HunspellInputMethod library
 Requires:       libQt6HunspellInputMethod6 = %{version}
 Requires:       qt6-virtualkeyboard-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 # Renamed in 6.2.0
 Provides:       qt6-hunspellinputmethod-devel = 6.2.0
 Obsoletes:      qt6-hunspellinputmethod-devel < 6.2.0
@@ -186,7 +186,6 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_libdir}/libQt6HunspellInputMethod.so
 %{_qt6_metatypesdir}/qt6hunspellinputmethod_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_hunspellinputmethod.pri
-# TODO Check content & remove
 %{_qt6_mkspecsdir}/modules/qt_lib_hunspellinputmethod_private.pri
 
 %endif
