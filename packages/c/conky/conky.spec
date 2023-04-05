@@ -19,11 +19,6 @@
 %bcond_with    audacious
 %bcond_without cmus
 %bcond_without libXNVCtrl
-%if 0%{?is_opensuse} && 0%{?suse_version} <= 1500
-%bcond_without xmms2
-%else
-%bcond_with    xmms2
-%endif
 Name:           conky
 Version:        1.13.1
 Release:        0
@@ -60,7 +55,7 @@ BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.52
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xft)
@@ -90,9 +85,6 @@ BuildRequires:  libircclient-devel
 BuildRequires:  libtolua++-5_1-devel
 %else
 BuildRequires:  tolua++
-%endif
-%if %{with xmms2}
-BuildRequires:  pkgconfig(xmms2-client)
 %endif
 %endif
 
@@ -169,11 +161,7 @@ configuration files in nano.
 %else
     -DBUILD_IRC=OFF \
 %endif
-%if %{with xmms2}
-	-DBUILD_XMMS2=ON \
-%else
 	-DBUILD_XMMS2=OFF \
-%endif
 	-DBUILD_IOSTATS=ON \
 	-DBUILD_IPV6=ON \
 	-DBUILD_MATH=ON \
@@ -198,8 +186,7 @@ configuration files in nano.
 	-DBUILD_XDBE=ON \
 	-DBUILD_XFT=ON \
 	-DBUILD_XSHAPE=ON \
-	-DOWN_WINDOW=ON \
-	-DBUILD_XMMS2=OFF
+	-DOWN_WINDOW=ON
 
 %ninja_build
 

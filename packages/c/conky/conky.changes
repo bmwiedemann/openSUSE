@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 21 21:21:21 UTC 2023 - olaf@aepfle.de
+
+- Remove support for xmms2, which was dropped long ago
+- Add constraints for librsvg-2.0
+
+-------------------------------------------------------------------
 Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
 
 - Adjust package name of libXNVCtrl

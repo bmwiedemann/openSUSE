@@ -277,4 +277,14 @@ See the COPYING file (forwarded request 107510 from babelworx)</comment>
     <comment></comment>
     <requestid>1073378</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>3c6645161cc7c8b291597b3b76c77146</srcmd5>
+    <version>1.13.1</version>
+    <time>1680722882</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove support for xmms2, which was dropped long ago
+- Add constraints for librsvg-2.0
+</comment>
+    <requestid>1077433</requestid>
+  </revision>
 </revisionlist>
