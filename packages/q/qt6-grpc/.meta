@@ -1,0 +1,8 @@
+<package name="qt6-grpc" project="openSUSE:Factory">
+  <title>gRPC and Protobuf generator and bindings for Qt framework</title>
+  <description>gRPC and Protobuf generator and bindings for Qt framework.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-grpc"/>
+  <url>https://www.qt.io</url>
+</package>
