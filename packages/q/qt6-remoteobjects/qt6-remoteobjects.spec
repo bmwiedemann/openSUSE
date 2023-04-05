@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-remoteobjects
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-remoteobjects%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -37,11 +37,13 @@ Source99:       qt6-remoteobjects-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-qml-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Bluetooth) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -69,7 +71,7 @@ The Qt 6 RemoteObjects library.
 Summary:        Qt 6 RemoteObjects library - Development files
 Requires:       libQt6RemoteObjects6 = %{version}
 Requires:       qt6-remoteobjects-tools = %{version}
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description devel
 Development files for the Qt 6 RemoteObjects library.
@@ -91,8 +93,8 @@ The Qt 6 RemoteObjectsQml library.
 %package -n qt6-remoteobjectsqml-devel
 Summary:        Qt 6 RemoteObjectsQml library - Development files
 Requires:       libQt6RemoteObjectsQml6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6RemoteObjects) = %{real_version}
 
 %description -n qt6-remoteobjectsqml-devel
