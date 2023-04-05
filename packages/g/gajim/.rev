@@ -492,4 +492,12 @@
 </comment>
     <requestid>1071026</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>8300208b2e546d23aa235761e7dac4e4</srcmd5>
+    <version>1.7.3</version>
+    <time>1680722919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3.</comment>
+    <requestid>1077519</requestid>
+  </revision>
 </revisionlist>

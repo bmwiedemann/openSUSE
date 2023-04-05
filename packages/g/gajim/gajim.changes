@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  5 10:01:07 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.3:
+  * Allow muting chat notifications.
+  * Make `gemini` URIs clickable.
+  * Workspace menu: Always show Mark as read action.
+  * Audio Preview: Set correct pos when clicking into visualiser.
+  * Audio Preview: Add delay before pausing on EOS.
+  * Flatpak: Fix drag and drop.
+  * GroupChatDetails: Adapt to changed icons.
+  * Message input: Fix height for single line messages.
+  * Update message merged state after deleting a message.
+  * ChatActionProcessor: Fix inserting emojis by click.
+  * Account preferences: Adapt to changed icons.
+
+-------------------------------------------------------------------
 Sun Mar 12 20:08:25 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.7.2:

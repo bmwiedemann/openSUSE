@@ -25,14 +25,14 @@
 %define pythons python310
 %endif
 Name:           gajim
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
 Source:         https://gajim.org/downloads/1.7/gajim-%{version}.tar.gz
-BuildRequires:  %{python_module nbxmpp >= 4.2.0}
+BuildRequires:  %{python_module nbxmpp >= 4.2.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module wheel}
