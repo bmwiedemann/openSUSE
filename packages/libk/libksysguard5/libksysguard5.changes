@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * Add translation domain before diving in subdirectories
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
