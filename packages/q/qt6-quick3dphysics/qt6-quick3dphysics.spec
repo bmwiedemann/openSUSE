@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3dphysics
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
@@ -39,10 +39,11 @@ BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-quick3d-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Quick3D)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
 #
 # Only arm and x86_64 are supported
 ExclusiveArch:  %{arm} aarch64 x86_64
@@ -75,10 +76,11 @@ The Qt 6 Quick3DPhysics library.
 %package -n qt6-quick3dphysics-devel
 Summary:        Qt 6 Quick3DPhysics library - Development files
 Requires:       libQt6Quick3DPhysics6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick)
-Requires:       cmake(Qt6Quick3D)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Quick3D) = %{real_version}
+Recommends:     qt6-quick3dphysics
 
 %description -n qt6-quick3dphysics-devel
 Development files for the Qt 6 Quick3DPhysics library.
@@ -107,9 +109,9 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 Quick3DPhysicsHelpers library - Development files
 Requires:       libQt6Quick3DPhysicsHelpers6 = %{version}
 Requires:       qt6-quick3dphysics-private-devel = %{version}
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick)
-Requires:       cmake(Qt6Quick3D)
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Quick3D) = %{real_version}
 
 %description -n qt6-quick3dphysicshelpers-private-devel
 Development files for the Qt 6 Quick3DPhysics private library.
@@ -133,7 +135,8 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %cmake_qt6
 
 %{qt6_build}
