@@ -1,7 +1,7 @@
 #
 # spec file for package assimp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,9 @@ engine-specific format for easy and fast every-day-loading.
 sed -i '/Werror/d' code/CMakeLists.txt
 
 %build
-%cmake
+%cmake \
+    -DASSIMP_WARNINGS_AS_ERRORS=OFF \
+    -DASSIMP_BUILD_ASSIMP_TOOLS=ON
 
 %cmake_build
 
@@ -95,6 +97,7 @@ popd
 
 %files devel
 %doc CHANGES CREDITS
+%{_bindir}/assimp
 %{_includedir}/assimp/
 %{_libdir}/libassimp.so
 %{_libdir}/cmake/*
