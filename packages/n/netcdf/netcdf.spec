@@ -20,8 +20,8 @@
 
 %define _do_check 1
 
-%define ver 4.9.0
-%define _ver 4_9_0
+%define ver 4.9.2
+%define _ver 4_9_2
 %define pname netcdf
 %define sonum   19
 
@@ -497,6 +497,7 @@ BuildRequires:  pkg-config
 BuildRequires:  unzip
 BuildRequires:  zlib-devel >= 1.2.5
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 %if 0%{?valgrind_checks}
 BuildRequires:  valgrind
 %endif

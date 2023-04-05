@@ -21,11 +21,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  nczarr_test/ncdumpchunks.c |  2 +-
  oc2/ocdump.c               |  4 ++--
  8 files changed, 20 insertions(+), 20 deletions(-)
-diff --git a/libdispatch/nctime.c b/libdispatch/nctime.c
-index e265ba1f..256cea96 100644
---- a/libdispatch/nctime.c
-+++ b/libdispatch/nctime.c
-@@ -789,8 +789,8 @@ cdComp2Rel(cdCalenType timetype, cdCompTime comptime, char* relunits, double* re
+Index: netcdf-c-4.9.2/libdispatch/nctime.c
+===================================================================
+--- netcdf-c-4.9.2.orig/libdispatch/nctime.c
++++ netcdf-c-4.9.2/libdispatch/nctime.c
+@@ -789,8 +789,8 @@ cdComp2Rel(cdCalenType timetype, cdCompT
  	CdTime humantime;
  	CdTimeType old_timetype;
  	cdUnitTime unit;
@@ -36,7 +36,7 @@ index e265ba1f..256cea96 100644
  
  					     /* Parse the relunits */
  	if(cdParseRelunits(timetype, relunits, &unit, &base_comptime))
-@@ -982,7 +982,7 @@ cdRel2Comp(cdCalenType timetype, char* relunits, double reltime, cdCompTime* com
+@@ -982,7 +982,7 @@ cdRel2Comp(cdCalenType timetype, char* r
  	cdCompTime base_comptime;
  	cdUnitTime unit, baseunits;
  	double base_etm, result_etm;
@@ -45,11 +45,11 @@ index e265ba1f..256cea96 100644
  	long idelta;
  
  					     /* Parse the relunits */
-diff --git a/libhdf5/hdf5internal.c b/libhdf5/hdf5internal.c
-index 7817bed6..dca5bc86 100644
---- a/libhdf5/hdf5internal.c
-+++ b/libhdf5/hdf5internal.c
-@@ -860,7 +860,7 @@ nc4_hdf5_find_grp_var_att(int ncid, int varid, const char *name, int attnum,
+Index: netcdf-c-4.9.2/libhdf5/hdf5internal.c
+===================================================================
+--- netcdf-c-4.9.2.orig/libhdf5/hdf5internal.c
++++ netcdf-c-4.9.2/libhdf5/hdf5internal.c
+@@ -882,7 +882,7 @@ nc4_hdf5_find_grp_var_att(int ncid, int
      NC_FILE_INFO_T *my_h5;
      NC_GRP_INFO_T *my_grp;
      NC_VAR_INFO_T *my_var = NULL;
@@ -58,11 +58,11 @@ index 7817bed6..dca5bc86 100644
      char my_norm_name[NC_MAX_NAME + 1] = "";
      NCindex *attlist = NULL;
      int retval;
-diff --git a/libnczarr/zinternal.c b/libnczarr/zinternal.c
-index 48673110..24279b8d 100644
---- a/libnczarr/zinternal.c
-+++ b/libnczarr/zinternal.c
-@@ -554,7 +554,7 @@ ncz_find_grp_var_att(int ncid, int varid, const char *name, int attnum,
+Index: netcdf-c-4.9.2/libnczarr/zinternal.c
+===================================================================
+--- netcdf-c-4.9.2.orig/libnczarr/zinternal.c
++++ netcdf-c-4.9.2/libnczarr/zinternal.c
+@@ -571,7 +571,7 @@ ncz_find_grp_var_att(int ncid, int varid
      NC_FILE_INFO_T *my_h5;
      NC_GRP_INFO_T *my_grp;
      NC_VAR_INFO_T *my_var = NULL;
@@ -71,27 +71,10 @@ index 48673110..24279b8d 100644
      char my_norm_name[NC_MAX_NAME + 1] = "";
      NCindex *attlist = NULL;
      int retval;
-diff --git a/libnczarr/zsync.c b/libnczarr/zsync.c
-index 97db6e0f..d310ffcc 100644
---- a/libnczarr/zsync.c
-+++ b/libnczarr/zsync.c
-@@ -289,10 +289,10 @@ ncz_sync_var(NC_FILE_INFO_T* file, NC_VAR_INFO_T* var)
-     {	/* Add the type name */
- 	const char* dtypename;
- 	int endianness = var->type_info->endianness;
--	int islittle;
-+	int islittle = 0;
- 	switch (endianness) {
- 	case NC_ENDIAN_LITTLE: islittle = 1; break;
--	case NC_ENDIAN_BIG: islittle = 0; break;
-+	case NC_ENDIAN_BIG: break;
- 	case NC_ENDIAN_NATIVE: abort(); /* should never happen */
- 	}
- 	int atomictype = var->type_info->hdr.id;
-diff --git a/ncgen3/getfill.c b/ncgen3/getfill.c
-index 91c6ae6f..defa0e2a 100644
---- a/ncgen3/getfill.c
-+++ b/ncgen3/getfill.c
+Index: netcdf-c-4.9.2/ncgen3/getfill.c
+===================================================================
+--- netcdf-c-4.9.2.orig/ncgen3/getfill.c
++++ netcdf-c-4.9.2/ncgen3/getfill.c
 @@ -51,11 +51,11 @@ nc_fill(
       void *datp,		/* where to start filling */
       union generic fill_val)	/* value to use */
@@ -109,11 +92,11 @@ index 91c6ae6f..defa0e2a 100644
  
      switch (type) {
        case NC_CHAR:
-diff --git a/ncgen3/load.c b/ncgen3/load.c
-index 98fa9fbe..13fd2d1c 100644
---- a/ncgen3/load.c
-+++ b/ncgen3/load.c
-@@ -499,11 +499,11 @@ load_netcdf(
+Index: netcdf-c-4.9.2/ncgen3/load.c
+===================================================================
+--- netcdf-c-4.9.2.orig/ncgen3/load.c
++++ netcdf-c-4.9.2/ncgen3/load.c
+@@ -504,11 +504,11 @@ load_netcdf(
      int stat = NC_NOERR;
      size_t start[NC_MAX_VAR_DIMS];
      size_t count[NC_MAX_VAR_DIMS];
@@ -130,11 +113,11 @@ index 98fa9fbe..13fd2d1c 100644
  
      /* load values into variable */
  
-diff --git a/nczarr_test/ncdumpchunks.c b/nczarr_test/ncdumpchunks.c
-index a6fff5fb..71aed604 100755
---- a/nczarr_test/ncdumpchunks.c
-+++ b/nczarr_test/ncdumpchunks.c
-@@ -293,7 +293,7 @@ dump(Format* format)
+Index: netcdf-c-4.9.2/nczarr_test/ncdumpchunks.c
+===================================================================
+--- netcdf-c-4.9.2.orig/nczarr_test/ncdumpchunks.c
++++ netcdf-c-4.9.2/nczarr_test/ncdumpchunks.c
+@@ -303,7 +303,7 @@ dump(Format* format)
      char sindices[64];
  #ifdef H5
      int i;
@@ -143,11 +126,11 @@ index a6fff5fb..71aed604 100755
      hid_t dxpl_id = H5P_DEFAULT; /*data transfer property list */
      unsigned int filter_mask = 0;
      hsize_t hoffset[NC_MAX_VAR_DIMS];
-diff --git a/oc2/ocdump.c b/oc2/ocdump.c
-index fa2c32ae..5d67fcbd 100644
---- a/oc2/ocdump.c
-+++ b/oc2/ocdump.c
-@@ -467,8 +467,8 @@ ocreadfile(FILE* file, off_t datastart, char** memp, size_t* lenp)
+Index: netcdf-c-4.9.2/oc2/ocdump.c
+===================================================================
+--- netcdf-c-4.9.2.orig/oc2/ocdump.c
++++ netcdf-c-4.9.2/oc2/ocdump.c
+@@ -464,8 +464,8 @@ ocreadfile(FILE* file, off_t datastart,
  void
  ocdd(OCstate* state, OCnode* root, int xdrencoded, int level)
  {
