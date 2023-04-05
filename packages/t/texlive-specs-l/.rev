@@ -487,4 +487,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034296</requestid>
   </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>b9ab72b6d906933c72ae047334908156</srcmd5>
+    <version>unknown</version>
+    <time>1680722750</time>
+    <user>dimstar_suse</user>
+    <comment>Support mkiv as well as lmtx ConTeXt formats; Correct supplements tags of texlive packages to use the new texlive-alldocuments meta package</comment>
+    <requestid>1077477</requestid>
+  </revision>
 </revisionlist>
