@@ -2816,4 +2816,12 @@ However, upstream development now focuses on 3.x series.
 </comment>
     <requestid>1070346</requestid>
   </revision>
+  <revision rev="181" vrev="32">
+    <srcmd5>e6b06f05aa99d7929fab64a0ea89aa2a</srcmd5>
+    <version>2.7.18</version>
+    <time>1680722775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1077506</requestid>
+  </revision>
 </revisionlist>
