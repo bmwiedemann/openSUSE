@@ -6,7 +6,7 @@
 
 --- texmf-dist/doc/man/man1/latexmk.1
 +++ texmf-dist/doc/man/man1/latexmk.1	2022-04-06 14:29:16.262536603 +0000
-@@ -1532,6 +1532,7 @@ read at startup in the following order:
+@@ -1721,6 +1721,7 @@ read at startup in the following order:
     "/opt/local/share/latexmk",
     "/usr/local/share/latexmk",
     "/usr/local/lib/latexmk".
@@ -427,7 +427,7 @@
 +# $xelatex_silent_switch = '-interaction=batchmode';
 --- texmf-dist/scripts/latexmk/latexmk.pl
 +++ texmf-dist/scripts/latexmk/latexmk.pl	2022-04-06 14:28:17.883597521 +0000
-@@ -940,15 +940,11 @@ elsif ( $^O eq "cygwin" ) {
+@@ -1058,15 +1058,11 @@ elsif ( $^O eq "cygwin" ) {
      ##   with a cygwin equivalent of the MSWin location
      ## In addition, we need to add the same set of possible locations as with
      ## unix, so that the user use a unix-style setup.
