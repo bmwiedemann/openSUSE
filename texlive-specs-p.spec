@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-p
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define texlive_version  2022
-%define texlive_previous 2021
-%define texlive_release  20220321
-%define texlive_noarch   196
-%define biber_version    2.17
+%define texlive_version  2023
+%define texlive_previous 2022
+%define texlive_release  20230311
+%define texlive_noarch   201
+%define biber_version    2.18
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -56,13 +56,16 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-p
-Version:        2022
+Version:        2023
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+BuildRequires:  mkfontdir
+BuildRequires:  mkfontscale
 BuildRequires:  t1utils
 BuildRequires:  texlive-filesystem
+BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for p
@@ -108,7 +111,7 @@ Requires:       tex(color.sty)
 Requires:       tex(fancybox.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source1:        menu.tar.xz
 Source2:        menu.doc.tar.xz
 
@@ -123,6 +126,7 @@ Summary:        Documentation for texlive-menu
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-menu and texlive-alldocumentation)
 
 %description -n texlive-menu-doc
 This package includes the documentation for texlive-menu
@@ -185,7 +189,7 @@ Provides:       tex(menucard.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source3:        menucard.tar.xz
 Source4:        menucard.doc.tar.xz
 
@@ -200,6 +204,7 @@ Summary:        Documentation for texlive-menucard
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-menucard and texlive-alldocumentation)
 
 %description -n texlive-menucard-doc
 This package includes the documentation for texlive-menucard
@@ -231,7 +236,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/menucard/menucard.sty
 
 %package -n texlive-menukeys
-Version:        %{texlive_version}.%{texlive_noarch}.1.6.1svn57172
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.2svn64314
 Release:        0
 License:        LPPL-1.0
 Summary:        Format menu sequences, paths and keystrokes from lists
@@ -258,6 +263,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-menukeys-doc >= %{texlive_version}
+Provides:       tex(menukeys-2020-12-19.sty)
 Provides:       tex(menukeys.sty)
 Requires:       tex(adjustbox.sty)
 Requires:       tex(etoolbox.sty)
@@ -268,7 +274,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source5:        menukeys.tar.xz
 Source6:        menukeys.doc.tar.xz
 
@@ -278,12 +284,13 @@ keyboard shortcuts automatically. There are several predefined
 styles and one can define one's own styles in a flexible way.
 
 %package -n texlive-menukeys-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6.1svn57172
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.2svn64314
 Release:        0
 Summary:        Documentation for texlive-menukeys
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-menukeys and texlive-alldocumentation)
 
 %description -n texlive-menukeys-doc
 This package includes the documentation for texlive-menukeys
@@ -312,6 +319,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-menukeys
 %defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/menukeys/menukeys-2020-12-19.sty
 %{_texmfdistdir}/tex/latex/menukeys/menukeys.sty
 
 %package -n texlive-mercatormap
@@ -352,7 +360,7 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source7:        mercatormap.tar.xz
 Source8:        mercatormap.doc.tar.xz
 
@@ -372,6 +380,7 @@ Summary:        Documentation for texlive-mercatormap
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mercatormap and texlive-alldocumentation)
 
 %description -n texlive-mercatormap-doc
 This package includes the documentation for texlive-mercatormap
@@ -421,7 +430,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mercatormap/mercatorsupplier.def
 
 %package -n texlive-merriweather
-Version:        %{texlive_version}.%{texlive_noarch}.svn56365
+Version:        %{texlive_version}.%{texlive_noarch}.svn64452
 Release:        0
 License:        OFL-1.1
 Summary:        Merriweather and MerriweatherSans fonts, with LaTeX support
@@ -1752,7 +1761,7 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source9:        merriweather.tar.xz
 Source10:       merriweather.doc.tar.xz
 
@@ -1766,18 +1775,19 @@ closely harmonizes with the weights and styles of the serif
 family. There are four weights and italics for each.
 
 %package -n texlive-merriweather-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn56365
+Version:        %{texlive_version}.%{texlive_noarch}.svn64452
 Release:        0
 Summary:        Documentation for texlive-merriweather
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-merriweather and texlive-alldocumentation)
 
 %description -n texlive-merriweather-doc
 This package includes the documentation for texlive-merriweather
 
 %package -n texlive-merriweather-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn56365
+Version:        %{texlive_version}.%{texlive_noarch}.svn64452
 Release:        0
 Summary:        Severed fonts for texlive-merriweather
 License:        OFL-1.1
@@ -1786,9 +1796,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-merriweather-fonts
 The  separated fonts package for texlive-merriweather
@@ -3146,9 +3154,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-merriweather.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-merriweather.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-merriweather.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-merriweather/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-merriweather/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-merriweather/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-merriweather/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-merriweather/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-merriweather/fonts.scale
 %{_datadir}/fonts/texlive-merriweather/Merriweather-Black.otf
 %{_datadir}/fonts/texlive-merriweather/Merriweather-BlackItalic.otf
 %{_datadir}/fonts/texlive-merriweather/Merriweather-Bold.otf
@@ -3183,7 +3191,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-merriweather/MerriwthrSans-Regular.pfb
 
 %package -n texlive-messagepassing
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn62559
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn63116
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw diagrams to represent communication protocols
@@ -3215,7 +3223,7 @@ Requires:       tex(float.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source11:       messagepassing.tar.xz
 Source12:       messagepassing.doc.tar.xz
 
@@ -3229,12 +3237,13 @@ instance to annotate the diagram, to add crashes to the
 processes, checkpoints, ...
 
 %package -n texlive-messagepassing-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn62559
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn63116
 Release:        0
 Summary:        Documentation for texlive-messagepassing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-messagepassing and texlive-alldocumentation)
 
 %description -n texlive-messagepassing-doc
 This package includes the documentation for texlive-messagepassing
@@ -3266,7 +3275,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/messagepassing/messagepassing.sty
 
 %package -n texlive-metafont
-Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn66186
 Release:        0
 License:        SUSE-TeX
 Summary:        A system for specifying fonts
@@ -3317,7 +3326,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metafont-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source13:       metafont.tar.xz
 Source14:       metafont.doc.tar.xz
 
@@ -3337,12 +3346,13 @@ discussion of Metafont usage; the tex-k@tug.org list is best
 for bug reports about building the software, etc.
 
 %package -n texlive-metafont-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.2.71828182svn66186
 Release:        0
 Summary:        Documentation for texlive-metafont
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metafont and texlive-alldocumentation)
 Provides:       man(inimf.1)
 Provides:       man(mf-nowin.1)
 Provides:       man(mf.1)
@@ -3422,7 +3432,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source15:       metafont-beginners.doc.tar.xz
 
 %description -n texlive-metafont-beginners
@@ -3482,7 +3492,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metago-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source16:       metago.tar.xz
 Source17:       metago.doc.tar.xz
 
@@ -3499,6 +3509,7 @@ Summary:        Documentation for texlive-metago
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metago and texlive-alldocumentation)
 
 %description -n texlive-metago-doc
 This package includes the documentation for texlive-metago
@@ -3573,7 +3584,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifxetex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source18:       metalogo.tar.xz
 Source19:       metalogo.doc.tar.xz
 
@@ -3589,6 +3600,7 @@ Summary:        Documentation for texlive-metalogo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metalogo and texlive-alldocumentation)
 
 %description -n texlive-metalogo-doc
 This package includes the documentation for texlive-metalogo
@@ -3622,7 +3634,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/metalogo/metalogo.sty
 
 %package -n texlive-metalogox
-Version:        %{texlive_version}.%{texlive_noarch}.1.00svn49774
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn65448
 Release:        0
 License:        LPPL-1.0
 Summary:        Adjust TeX logos, with font detection
@@ -3654,7 +3666,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(metalogo.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source20:       metalogox.tar.xz
 Source21:       metalogox.doc.tar.xz
 
@@ -3667,12 +3679,13 @@ listed at The LaTeX Font Catalogue are supported. The package
 depends on metalogo, xparse, and etoolbox.
 
 %package -n texlive-metalogox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.00svn49774
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn65448
 Release:        0
 Summary:        Documentation for texlive-metalogox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metalogox and texlive-alldocumentation)
 
 %description -n texlive-metalogox-doc
 This package includes the documentation for texlive-metalogox
@@ -3743,7 +3756,7 @@ Requires:       tex(ulem.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source22:       metanorma.tar.xz
 Source23:       metanorma.doc.tar.xz
 
@@ -3762,6 +3775,7 @@ Summary:        Documentation for texlive-metanorma
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metanorma and texlive-alldocumentation)
 
 %description -n texlive-metanorma-doc
 This package includes the documentation for texlive-metanorma
@@ -3824,7 +3838,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metaobj-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source24:       metaobj.tar.xz
 Source25:       metaobj.doc.tar.xz
 
@@ -3843,6 +3857,7 @@ Summary:        Documentation for texlive-metaobj
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metaobj and texlive-alldocumentation)
 
 %description -n texlive-metaobj-doc
 This package includes the documentation for texlive-metaobj
@@ -3910,7 +3925,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metaplot-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source26:       metaplot.tar.xz
 Source27:       metaplot.doc.tar.xz
 
@@ -3935,6 +3950,7 @@ Summary:        Documentation for texlive-metaplot
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metaplot and texlive-alldocumentation)
 
 %description -n texlive-metaplot-doc
 This package includes the documentation for texlive-metaplot
@@ -3980,7 +3996,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/metaplot/metaplot.mp
 
 %package -n texlive-metapost
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66264
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        A development of Metafont for creating graphics
@@ -4066,7 +4082,7 @@ Provides:       tex(troff-updmap.map)
 Provides:       tex(troff.map)
 Provides:       tex(zpzdr-reversed.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source28:       metapost.tar.xz
 Source29:       metapost.doc.tar.xz
 
@@ -4076,12 +4092,13 @@ precise technical illustrations. Its output is scalable
 PostScript or SVG, rather than the bitmaps Metafont creates.
 
 %package -n texlive-metapost-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66264
 Release:        0
 Summary:        Documentation for texlive-metapost
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metapost and texlive-alldocumentation)
 Provides:       man(dvitomp.1)
 Provides:       man(mpost.1)
 
@@ -4089,7 +4106,7 @@ Provides:       man(mpost.1)
 This package includes the documentation for texlive-metapost
 
 %package -n texlive-metapost-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66264
 Release:        0
 Summary:        Severed fonts for texlive-metapost
 License:        LGPL-2.1-or-later
@@ -4098,9 +4115,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-metapost-fonts
 The  separated fonts package for texlive-metapost
@@ -4294,9 +4309,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-metapost
 %{_datadir}/fontconfig/conf.avail/58-texlive-metapost.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-metapost/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-metapost/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-metapost/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-metapost/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-metapost/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-metapost/fonts.scale
 %{_datadir}/fonts/texlive-metapost/freeeuro.pfa
 
 %package -n texlive-metapost-colorbrewer
@@ -4328,7 +4343,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metapost-colorbrewer-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source30:       metapost-colorbrewer.tar.xz
 Source31:       metapost-colorbrewer.doc.tar.xz
 
@@ -4350,6 +4365,7 @@ Summary:        Documentation for texlive-metapost-colorbrewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metapost-colorbrewer and texlive-alldocumentation)
 
 %description -n texlive-metapost-colorbrewer-doc
 This package includes the documentation for texlive-metapost-colorbrewer
@@ -4412,7 +4428,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source32:       metapost-examples.doc.tar.xz
 
 %description -n texlive-metapost-examples
@@ -4481,7 +4497,7 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(hyperxmp.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source33:       metastr.tar.xz
 Source34:       metastr.doc.tar.xz
 
@@ -4500,6 +4516,7 @@ Summary:        Documentation for texlive-metastr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metastr and texlive-alldocumentation)
 
 %description -n texlive-metastr-doc
 This package includes the documentation for texlive-metastr
@@ -4561,7 +4578,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metatex-doc >= %{texlive_version}
 Provides:       tex(metatex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source35:       metatex.tar.xz
 Source36:       metatex.doc.tar.xz
 
@@ -4581,6 +4598,7 @@ Summary:        Documentation for texlive-metatex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metatex and texlive-alldocumentation)
 
 %description -n texlive-metatex-doc
 This package includes the documentation for texlive-metatex
@@ -4646,7 +4664,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source37:       metatype1.source.tar.xz
 
 %description -n texlive-metatype1
@@ -4710,7 +4728,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-metauml-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source38:       metauml.tar.xz
 Source39:       metauml.doc.tar.xz
 
@@ -4727,6 +4745,7 @@ Summary:        Documentation for texlive-metauml
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metauml and texlive-alldocumentation)
 
 %description -n texlive-metauml-doc
 This package includes the documentation for texlive-metauml
@@ -4871,7 +4890,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-method-doc >= %{texlive_version}
 Provides:       tex(method.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source40:       method.tar.xz
 Source41:       method.doc.tar.xz
 
@@ -4887,6 +4906,7 @@ Summary:        Documentation for texlive-method
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-method and texlive-alldocumentation)
 
 %description -n texlive-method-doc
 This package includes the documentation for texlive-method
@@ -4949,7 +4969,7 @@ Suggests:       texlive-metre-doc >= %{texlive_version}
 Provides:       tex(metre.sty)
 Requires:       tex(relsize.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source42:       metre.tar.xz
 Source43:       metre.doc.tar.xz
 
@@ -4975,6 +4995,7 @@ Summary:        Documentation for texlive-metre
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metre and texlive-alldocumentation)
 
 %description -n texlive-metre-doc
 This package includes the documentation for texlive-metre
@@ -5048,7 +5069,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source44:       metrix.tar.xz
 Source45:       metrix.doc.tar.xz
 
@@ -5067,6 +5088,7 @@ Summary:        Documentation for texlive-metrix
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-metrix and texlive-alldocumentation)
 
 %description -n texlive-metrix-doc
 This package includes the documentation for texlive-metrix
@@ -5172,7 +5194,7 @@ Provides:       tex(mex1.tex)
 Provides:       tex(mex2.tex)
 Provides:       tex(mexconf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source46:       mex.tar.xz
 Source47:       mex.doc.tar.xz
 
@@ -5190,6 +5212,7 @@ Summary:        Documentation for texlive-mex
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mex and texlive-alldocumentation)
 
 %description -n texlive-mex-doc
 This package includes the documentation for texlive-mex
@@ -5380,7 +5403,7 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source48:       mf2pt1.tar.xz
 Source49:       mf2pt1.doc.tar.xz
 
@@ -5401,6 +5424,7 @@ Summary:        Documentation for texlive-mf2pt1
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mf2pt1 and texlive-alldocumentation)
 Requires(preun):%install_info_prereq
 Requires(post): %install_info_prereq
 
@@ -5446,7 +5470,7 @@ fi
 %{_texmfdistdir}/scripts/mf2pt1/mf2pt1.pl
 
 %package -n texlive-mfirstuc
-Version:        %{texlive_version}.%{texlive_noarch}.2.07svn60770
+Version:        %{texlive_version}.%{texlive_noarch}.2.08svn64743
 Release:        0
 License:        LPPL-1.0
 Summary:        Uppercase the first letter of a word
@@ -5473,13 +5497,12 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mfirstuc-doc >= %{texlive_version}
-Requires:       perl(warnings)
-#!BuildIgnore:  perl(warnings)
+Provides:       tex(mfirstuc-2021-10-15.sty)
 Provides:       tex(mfirstuc-english.sty)
 Provides:       tex(mfirstuc.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source50:       mfirstuc.tar.xz
 Source51:       mfirstuc.doc.tar.xz
 
@@ -5494,12 +5517,13 @@ spaces. (Exceptions can be made for words that shouldn't be
 converted.)
 
 %package -n texlive-mfirstuc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.07svn60770
+Version:        %{texlive_version}.%{texlive_noarch}.2.08svn64743
 Release:        0
 Summary:        Documentation for texlive-mfirstuc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mfirstuc and texlive-alldocumentation)
 
 %description -n texlive-mfirstuc-doc
 This package includes the documentation for texlive-mfirstuc
@@ -5534,7 +5558,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-mfirstuc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/scripts/mfirstuc/mfirstuc.perl
+%{_texmfdistdir}/scripts/mfirstuc/mfirstuc.l2h
+%{_texmfdistdir}/tex/latex/mfirstuc/mfirstuc-2021-10-15.sty
 %{_texmfdistdir}/tex/latex/mfirstuc/mfirstuc-english.sty
 %{_texmfdistdir}/tex/latex/mfirstuc/mfirstuc.sty
 
@@ -5570,7 +5595,7 @@ Provides:       tex(logosl8.tfm)
 Provides:       tex(mflogo.sty)
 Provides:       tex(ulogo.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source52:       mflogo.tar.xz
 Source53:       mflogo.doc.tar.xz
 
@@ -5586,6 +5611,7 @@ Summary:        Documentation for texlive-mflogo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mflogo and texlive-alldocumentation)
 
 %description -n texlive-mflogo-doc
 This package includes the documentation for texlive-mflogo
@@ -5663,7 +5689,7 @@ Requires:       texlive-mflogo-font-fonts >= %{texlive_version}
 Suggests:       texlive-mflogo-font-doc >= %{texlive_version}
 Provides:       tex(mflogo.map)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source54:       mflogo-font.tar.xz
 Source55:       mflogo-font.doc.tar.xz
 
@@ -5682,6 +5708,7 @@ Summary:        Documentation for texlive-mflogo-font
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mflogo-font and texlive-alldocumentation)
 
 %description -n texlive-mflogo-font-doc
 This package includes the documentation for texlive-mflogo-font
@@ -5696,9 +5723,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-mflogo-font-fonts
 The  separated fonts package for texlive-mflogo-font
@@ -5752,9 +5777,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-mflogo-font
 %{_datadir}/fontconfig/conf.avail/58-texlive-mflogo-font.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mflogo-font/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mflogo-font/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mflogo-font/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mflogo-font/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mflogo-font/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mflogo-font/fonts.scale
 %{_datadir}/fonts/texlive-mflogo-font/logo10.pfb
 %{_datadir}/fonts/texlive-mflogo-font/logo8.pfb
 %{_datadir}/fonts/texlive-mflogo-font/logo9.pfb
@@ -5815,7 +5840,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source56:       mflua.tar.xz
 
 %description -n texlive-mflua
@@ -5903,7 +5928,7 @@ Provides:       tex(uygoth.fd)
 Provides:       tex(uyinit.fd)
 Provides:       tex(uyswab.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source57:       mfnfss.tar.xz
 Source58:       mfnfss.doc.tar.xz
 
@@ -5921,6 +5946,7 @@ Summary:        Documentation for texlive-mfnfss
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mfnfss and texlive-alldocumentation)
 
 %description -n texlive-mfnfss-doc
 This package includes the documentation for texlive-mfnfss
@@ -5994,7 +6020,7 @@ Provides:       tex(mfpic.tex)
 Provides:       tex(mfpicdef.tex)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source59:       mfpic.tar.xz
 Source60:       mfpic.doc.tar.xz
 
@@ -6016,6 +6042,7 @@ Summary:        Documentation for texlive-mfpic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mfpic and texlive-alldocumentation)
 Provides:       locale(texlive-mfpic-doc:en)
 
 %description -n texlive-mfpic-doc
@@ -6097,7 +6124,7 @@ Suggests:       texlive-mfpic4ode-doc >= %{texlive_version}
 Provides:       tex(mfpic4ode.sty)
 Provides:       tex(mfpic4ode.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source61:       mfpic4ode.tar.xz
 Source62:       mfpic4ode.doc.tar.xz
 
@@ -6119,6 +6146,7 @@ Summary:        Documentation for texlive-mfpic4ode
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mfpic4ode and texlive-alldocumentation)
 
 %description -n texlive-mfpic4ode-doc
 This package includes the documentation for texlive-mfpic4ode
@@ -6188,7 +6216,7 @@ Requires:       tex(keyval.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(rawfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source63:       mftinc.tar.xz
 Source64:       mftinc.doc.tar.xz
 
@@ -6206,6 +6234,7 @@ Summary:        Documentation for texlive-mftinc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mftinc and texlive-alldocumentation)
 
 %description -n texlive-mftinc-doc
 This package includes the documentation for texlive-mftinc
@@ -6237,7 +6266,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mftinc/mftinc.sty
 
 %package -n texlive-mfware
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Supporting tools for use with Metafont
@@ -6267,7 +6296,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mfware-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source65:       mfware.tar.xz
 Source66:       mfware.doc.tar.xz
 
@@ -6276,12 +6305,13 @@ A collection of programs (as web source) for processing the
 output of Metafont.
 
 %package -n texlive-mfware-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 Summary:        Documentation for texlive-mfware
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mfware and texlive-alldocumentation)
 Provides:       man(gftodvi.1)
 Provides:       man(gftopk.1)
 Provides:       man(gftype.1)
@@ -6326,7 +6356,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/mft/base/plain.mft
 
 %package -n texlive-mgltex
-Version:        %{texlive_version}.%{texlive_noarch}.4.2svn63213
+Version:        %{texlive_version}.%{texlive_noarch}.4.2svn63255
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        High-quality graphics from MGL scripts embedded in LaTeX documents
@@ -6361,7 +6391,7 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source67:       mgltex.tar.xz
 Source68:       mgltex.doc.tar.xz
 
@@ -6381,12 +6411,13 @@ its own scripting language, called MGL, which can be used
 independently.
 
 %package -n texlive-mgltex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.2svn63213
+Version:        %{texlive_version}.%{texlive_noarch}.4.2svn63255
 Release:        0
 Summary:        Documentation for texlive-mgltex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mgltex and texlive-alldocumentation)
 Obsoletes:      mathgl-tex-doc <= 2.3.5.1
 Provides:       mathgl-tex-doc = 4.2
 
@@ -6500,7 +6531,7 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source69:       mhchem.tar.xz
 Source70:       mhchem.doc.tar.xz
 
@@ -6521,6 +6552,7 @@ Summary:        Documentation for texlive-mhchem
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mhchem and texlive-alldocumentation)
 
 %description -n texlive-mhchem-doc
 This package includes the documentation for texlive-mhchem
@@ -6582,7 +6614,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mhchem/rsphrase.sty
 
 %package -n texlive-mhequ
-Version:        %{texlive_version}.%{texlive_noarch}.1.71svn62561
+Version:        %{texlive_version}.%{texlive_noarch}.1.72svn64978
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Multicolumn equations, tags, labels, sub-numbering
@@ -6611,25 +6643,30 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mhequ-doc >= %{texlive_version}
 Provides:       tex(mhequ.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source71:       mhequ.tar.xz
 Source72:       mhequ.doc.tar.xz
 
 %description -n texlive-mhequ
-MHequ simplifies creating multi-column equation environments,
-and tagging the equations therein. It supports sub-numbers of
-blocks of equations (like (1.2a), (1.2b), etc) and references
-to each equation individually (1.2a) or to the whole block
-(1.2). The labels can be shown in draft mode. Comments in the
-package itself describe usage.
+The mhequ style file simplifies creating multi-column equation
+environments and tagging equations therein. It supports
+sub-numbering of blocks of equations (like (1.2a), (1.2b), etc)
+and references to each equation individually (1.2a) or to the
+whole block (1.2). The labels can be shown in draft mode. The
+default behaviour is to show an equation number if and only if
+the equation actually has a label, which reduces visual
+clutter. Comments in the package itself describe its usage,
+which should also be self-evident from the provided example
+file.
 
 %package -n texlive-mhequ-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.71svn62561
+Version:        %{texlive_version}.%{texlive_noarch}.1.72svn64978
 Release:        0
 Summary:        Documentation for texlive-mhequ
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mhequ and texlive-alldocumentation)
 
 %description -n texlive-mhequ-doc
 This package includes the documentation for texlive-mhequ
@@ -6654,8 +6691,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-mhequ-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/mhequ/README
-%{_texmfdistdir}/doc/latex/mhequ/example.pdf
-%{_texmfdistdir}/doc/latex/mhequ/example.tex
+%{_texmfdistdir}/doc/latex/mhequ/mhequ-example.pdf
+%{_texmfdistdir}/doc/latex/mhequ/mhequ-example.tex
 
 %files -n texlive-mhequ
 %defattr(-,root,root,755)
@@ -6692,7 +6729,7 @@ Suggests:       texlive-mi-solns-doc >= %{texlive_version}
 Provides:       tex(mi-solns.sty)
 Requires:       tex(shellesc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source73:       mi-solns.tar.xz
 Source74:       mi-solns.doc.tar.xz
 
@@ -6709,6 +6746,7 @@ Summary:        Documentation for texlive-mi-solns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mi-solns and texlive-alldocumentation)
 
 %description -n texlive-mi-solns-doc
 This package includes the documentation for texlive-mi-solns
@@ -6816,7 +6854,7 @@ Provides:       tex(x2-miama.enc)
 Provides:       tex(x2fmm.fd)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source75:       miama.tar.xz
 Source76:       miama.doc.tar.xz
 
@@ -6832,6 +6870,7 @@ Summary:        Documentation for texlive-miama
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-miama and texlive-alldocumentation)
 
 %description -n texlive-miama-doc
 This package includes the documentation for texlive-miama
@@ -6846,9 +6885,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-miama-fonts
 The  separated fonts package for texlive-miama
@@ -6920,14 +6957,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-miama.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-miama.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-miama.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-miama/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-miama/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-miama/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-miama/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-miama/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-miama/fonts.scale
 %{_datadir}/fonts/texlive-miama/miama.otf
 %{_datadir}/fonts/texlive-miama/miama.pfb
 
 %package -n texlive-microtype
-Version:        %{texlive_version}.%{texlive_noarch}.3.0dsvn62717
+Version:        %{texlive_version}.%{texlive_noarch}.3.1asvn66587
 Release:        0
 License:        LPPL-1.0
 Summary:        Subliminal refinements towards typographical perfection
@@ -6990,7 +7027,7 @@ Requires:       tex(luaotfload.sty)
 Requires:       tex(luatexbase.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source77:       microtype.tar.xz
 Source78:       microtype.doc.tar.xz
 
@@ -7017,12 +7054,13 @@ user commands for letterspacing only, omitting support for all
 other extensions.
 
 %package -n texlive-microtype-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0dsvn62717
+Version:        %{texlive_version}.%{texlive_noarch}.3.1asvn66587
 Release:        0
 Summary:        Documentation for texlive-microtype
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-microtype and texlive-alldocumentation)
 
 %description -n texlive-microtype-doc
 This package includes the documentation for texlive-microtype
@@ -7111,7 +7149,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source79:       microtype-de.doc.tar.xz
 
 %description -n texlive-microtype-de
@@ -7175,7 +7213,7 @@ Provides:       tex(loop.tex)
 Provides:       tex(quire.tex)
 Provides:       tex(styledef.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source80:       midnight.tar.xz
 Source81:       midnight.doc.tar.xz
 
@@ -7194,6 +7232,7 @@ Summary:        Documentation for texlive-midnight
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-midnight and texlive-alldocumentation)
 
 %description -n texlive-midnight-doc
 This package includes the documentation for texlive-midnight
@@ -7267,7 +7306,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-midpage-doc >= %{texlive_version}
 Provides:       tex(midpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source82:       midpage.tar.xz
 Source83:       midpage.doc.tar.xz
 
@@ -7282,6 +7321,7 @@ Summary:        Documentation for texlive-midpage
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-midpage and texlive-alldocumentation)
 
 %description -n texlive-midpage-doc
 This package includes the documentation for texlive-midpage
@@ -7342,7 +7382,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-miller-doc >= %{texlive_version}
 Provides:       tex(miller.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source84:       miller.tar.xz
 Source85:       miller.doc.tar.xz
 
@@ -7358,6 +7398,7 @@ Summary:        Documentation for texlive-miller
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-miller and texlive-alldocumentation)
 
 %description -n texlive-miller-doc
 This package includes the documentation for texlive-miller
@@ -7433,7 +7474,7 @@ Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xkvltxp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source86:       milog.tar.xz
 Source87:       milog.doc.tar.xz
 
@@ -7465,6 +7506,7 @@ Summary:        Documentation for texlive-milog
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-milog and texlive-alldocumentation)
 Provides:       locale(texlive-milog-doc:de)
 
 %description -n texlive-milog-doc
@@ -7547,7 +7589,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source88:       milsymb.tar.xz
 Source89:       milsymb.doc.tar.xz
 
@@ -7566,6 +7608,7 @@ Summary:        Documentation for texlive-milsymb
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-milsymb and texlive-alldocumentation)
 
 %description -n texlive-milsymb-doc
 This package includes the documentation for texlive-milsymb
@@ -7626,7 +7669,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/milsymb/milsymb.sty
 
 %package -n texlive-mindflow
-Version:        %{texlive_version}.%{texlive_noarch}.svn61843
+Version:        %{texlive_version}.%{texlive_noarch}.svn65236
 Release:        0
 License:        LPPL-1.0
 Summary:        Write your ideas in a clear way
@@ -7655,13 +7698,13 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mindflow-doc >= %{texlive_version}
 Provides:       tex(mindflow.sty)
 Requires:       tex(kvoptions.sty)
-Requires:       tex(linenoamsmath.sty)
+Requires:       tex(lineno.sty)
 Requires:       tex(nowidow.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source90:       mindflow.tar.xz
 Source91:       mindflow.doc.tar.xz
 
@@ -7671,12 +7714,13 @@ numbers or markers and can be well distinguished from the main
 text, for writing your ideas or annotations.
 
 %package -n texlive-mindflow-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn61843
+Version:        %{texlive_version}.%{texlive_noarch}.svn65236
 Release:        0
 Summary:        Documentation for texlive-mindflow
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mindflow and texlive-alldocumentation)
 
 %description -n texlive-mindflow-doc
 This package includes the documentation for texlive-mindflow
@@ -7739,7 +7783,7 @@ Suggests:       texlive-minibox-doc >= %{texlive_version}
 Provides:       tex(minibox.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source92:       minibox.tar.xz
 Source93:       minibox.doc.tar.xz
 
@@ -7756,6 +7800,7 @@ Summary:        Documentation for texlive-minibox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minibox and texlive-alldocumentation)
 
 %description -n texlive-minibox-doc
 This package includes the documentation for texlive-minibox
@@ -7817,7 +7862,7 @@ Suggests:       texlive-minidocument-doc >= %{texlive_version}
 Provides:       tex(minidocument.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source94:       minidocument.tar.xz
 Source95:       minidocument.doc.tar.xz
 
@@ -7834,6 +7879,7 @@ Summary:        Documentation for texlive-minidocument
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minidocument and texlive-alldocumentation)
 
 %description -n texlive-minidocument-doc
 This package includes the documentation for texlive-minidocument
@@ -7896,7 +7942,7 @@ Suggests:       texlive-minifp-doc >= %{texlive_version}
 Provides:       tex(mfpextra.tex)
 Provides:       tex(minifp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source96:       minifp.tar.xz
 Source97:       minifp.doc.tar.xz
 
@@ -7917,6 +7963,7 @@ Summary:        Documentation for texlive-minifp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minifp and texlive-alldocumentation)
 
 %description -n texlive-minifp-doc
 This package includes the documentation for texlive-minifp
@@ -7951,7 +7998,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/minifp/minifp.sty
 
 %package -n texlive-minim
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 License:        LPPL-1.0
 Summary:        A modern plain format for the LuaTeX engine
@@ -7988,7 +8035,7 @@ Provides:       tex(minim-plain.tex)
 Provides:       tex(minim.tex)
 Requires:       tex(luaotfload.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source98:       minim.tar.xz
 Source99:       minim.doc.tar.xz
 
@@ -8006,12 +8053,13 @@ shared lowest-level programming interface, along with their
 combined format.
 
 %package -n texlive-minim-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 Summary:        Documentation for texlive-minim
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minim and texlive-alldocumentation)
 
 %description -n texlive-minim-doc
 This package includes the documentation for texlive-minim
@@ -8086,7 +8134,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-hatching-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source100:      minim-hatching.tar.xz
 Source101:      minim-hatching.doc.tar.xz
 
@@ -8101,6 +8149,7 @@ Summary:        Documentation for texlive-minim-hatching
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minim-hatching and texlive-alldocumentation)
 
 %description -n texlive-minim-hatching-doc
 This package includes the documentation for texlive-minim-hatching
@@ -8134,7 +8183,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/minim-hatching/minim-hatching.mp
 
 %package -n texlive-minim-math
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 License:        LPPL-1.0
 Summary:        Extensive maths for LuaTeX
@@ -8163,7 +8212,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-math-doc >= %{texlive_version}
 Provides:       tex(minim-math.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source102:      minim-math.tar.xz
 Source103:      minim-math.doc.tar.xz
 
@@ -8175,12 +8224,13 @@ mathematical typesetting. Also included are the proper settings
 and definitions for almost all Unicode mathematical characters.
 
 %package -n texlive-minim-math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 Summary:        Documentation for texlive-minim-math
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minim-math and texlive-alldocumentation)
 
 %description -n texlive-minim-math-doc
 This package includes the documentation for texlive-minim-math
@@ -8216,7 +8266,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-math/minim-math.tex
 
 %package -n texlive-minim-mp
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 License:        LPPL-1.0
 Summary:        Low-level mplib integration for LuaTeX
@@ -8245,7 +8295,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-mp-doc >= %{texlive_version}
 Provides:       tex(minim-mp.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source104:      minim-mp.tar.xz
 Source105:      minim-mp.doc.tar.xz
 
@@ -8258,12 +8308,13 @@ MetaPost. With the included minim-mp format file, you can even
 use LuaTeX as a stand-alone MetaPost compiler.
 
 %package -n texlive-minim-mp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 Summary:        Documentation for texlive-minim-mp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minim-mp and texlive-alldocumentation)
 
 %description -n texlive-minim-mp-doc
 This package includes the documentation for texlive-minim-mp
@@ -8301,7 +8352,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-mp/minim-mp.tex
 
 %package -n texlive-minim-pdf
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 License:        LPPL-1.0
 Summary:        Low-level PDF integration for LuaTeX
@@ -8330,7 +8381,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-pdf-doc >= %{texlive_version}
 Provides:       tex(minim-pdf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source106:      minim-pdf.tar.xz
 Source107:      minim-pdf.doc.tar.xz
 
@@ -8341,12 +8392,13 @@ rather basic, but should allow you to make your PDFs fully
 PDF/A-compliant.
 
 %package -n texlive-minim-pdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 Summary:        Documentation for texlive-minim-pdf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minim-pdf and texlive-alldocumentation)
 
 %description -n texlive-minim-pdf-doc
 This package includes the documentation for texlive-minim-pdf
@@ -8382,7 +8434,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-pdf/minim-pdf.tex
 
 %package -n texlive-minim-xmp
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 License:        LPPL-1.0
 Summary:        Embed XMP metadata in PDF with LuaTeX
@@ -8411,7 +8463,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minim-xmp-doc >= %{texlive_version}
 Provides:       tex(minim-xmp.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source108:      minim-xmp.tar.xz
 Source109:      minim-xmp.doc.tar.xz
 
@@ -8421,12 +8473,13 @@ Platform) data in the pdf output generated by (plain) LuaTeX.
 The use of XMP is required by PDF standards such as PDF/A.
 
 %package -n texlive-minim-xmp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2022_1.1svn62419
+Version:        %{texlive_version}.%{texlive_noarch}.2023_1.2svn66395
 Release:        0
 Summary:        Documentation for texlive-minim-xmp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minim-xmp and texlive-alldocumentation)
 
 %description -n texlive-minim-xmp-doc
 This package includes the documentation for texlive-minim-xmp
@@ -8461,12 +8514,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/minim-xmp/minim-xmp.tex
 
 %package -n texlive-minimalist
-Version:        %{texlive_version}.%{texlive_noarch}.svn62900
+Version:        %{texlive_version}.%{texlive_noarch}.svn66434
 Release:        0
 License:        LPPL-1.0
 Summary:        Write your articles or books in a simple and clear way
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-projlib >= %{texlive_version}
+#!BuildIgnore: texlive-projlib
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -8489,10 +8544,13 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-minimalist-doc >= %{texlive_version}
 Provides:       tex(minimalist-classical.sty)
+Provides:       tex(minimalist-flow.sty)
 Provides:       tex(minimalist-plain.sty)
+Provides:       tex(minimalist-stream.sty)
 Provides:       tex(minimalist.sty)
 Provides:       tex(minimart.cls)
 Provides:       tex(minimbook.cls)
+Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(anyfontsize.sty)
@@ -8509,8 +8567,8 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(imakeidx.sty)
 Requires:       tex(indentfirst.sty)
-Requires:       tex(l3keys2e.sty)
-Requires:       tex(linenoamsmath.sty)
+Requires:       tex(lineno.sty)
+Requires:       tex(lua-widow-control.sty)
 Requires:       tex(mathpazo.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(newpxtext.sty)
@@ -8523,6 +8581,8 @@ Requires:       tex(projlib-language.sty)
 Requires:       tex(projlib-paper.sty)
 Requires:       tex(projlib-theorem.sty)
 Requires:       tex(projlib-titlepage.sty)
+Requires:       tex(regexpatch.sty)
+Requires:       tex(relsize.sty)
 Requires:       tex(silence.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
@@ -8530,10 +8590,9 @@ Requires:       tex(tikzpagenodes.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(titletoc.sty)
 Requires:       tex(ulem.sty)
-Requires:       tex(url.sty)
 Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source110:      minimalist.tar.xz
 Source111:      minimalist.doc.tar.xz
 
@@ -8553,12 +8612,13 @@ Russian and Spanish typesetting, and also use more beautiful
 fonts.
 
 %package -n texlive-minimalist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn62900
+Version:        %{texlive_version}.%{texlive_noarch}.svn66434
 Release:        0
 Summary:        Documentation for texlive-minimalist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minimalist and texlive-alldocumentation)
 
 %description -n texlive-minimalist-doc
 This package includes the documentation for texlive-minimalist
@@ -8582,15 +8642,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-minimalist-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/minimalist/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/minimalist/LICENSE
 %{_texmfdistdir}/doc/latex/minimalist/README.md
-%{_texmfdistdir}/doc/latex/minimalist/minimalist-doc.pdf
-%{_texmfdistdir}/doc/latex/minimalist/minimalist-doc.tex
 
 %files -n texlive-minimalist
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/minimalist/minimalist-classical.sty
+%{_texmfdistdir}/tex/latex/minimalist/minimalist-flow.sty
 %{_texmfdistdir}/tex/latex/minimalist/minimalist-plain.sty
+%{_texmfdistdir}/tex/latex/minimalist/minimalist-stream.sty
 %{_texmfdistdir}/tex/latex/minimalist/minimalist.sty
 %{_texmfdistdir}/tex/latex/minimalist/minimart.cls
 %{_texmfdistdir}/tex/latex/minimalist/minimbook.cls
@@ -8626,7 +8687,7 @@ Suggests:       texlive-minipage-marginpar-doc >= %{texlive_version}
 Provides:       tex(minipage-marginpar.sty)
 Provides:       tex(mpgmpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source112:      minipage-marginpar.tar.xz
 Source113:      minipage-marginpar.doc.tar.xz
 
@@ -8646,6 +8707,7 @@ Summary:        Documentation for texlive-minipage-marginpar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minipage-marginpar and texlive-alldocumentation)
 Provides:       locale(texlive-minipage-marginpar-doc:de)
 
 %description -n texlive-minipage-marginpar-doc
@@ -8712,7 +8774,7 @@ Requires:       tex(epsfig.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source114:      miniplot.tar.xz
 Source115:      miniplot.doc.tar.xz
 
@@ -8734,6 +8796,7 @@ Summary:        Documentation for texlive-miniplot
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-miniplot and texlive-alldocumentation)
 
 %description -n texlive-miniplot-doc
 This package includes the documentation for texlive-miniplot
@@ -8802,7 +8865,7 @@ Requires:       tex(flafter.sty)
 Requires:       tex(notoccite.sty)
 Requires:       tex(placeins.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source116:      minitoc.tar.xz
 Source117:      minitoc.doc.tar.xz
 
@@ -8825,6 +8888,7 @@ Summary:        Documentation for texlive-minitoc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minitoc and texlive-alldocumentation)
 Provides:       locale(texlive-minitoc-doc:en)
 
 %description -n texlive-minitoc-doc
@@ -9213,7 +9277,7 @@ Requires:       tex(lineno.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source118:      minorrevision.tar.xz
 Source119:      minorrevision.doc.tar.xz
 
@@ -9235,6 +9299,7 @@ Summary:        Documentation for texlive-minorrevision
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minorrevision and texlive-alldocumentation)
 
 %description -n texlive-minorrevision-doc
 This package includes the documentation for texlive-minorrevision
@@ -9267,12 +9332,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/minorrevision/minorrevision.sty
 
 %package -n texlive-minted
-Version:        %{texlive_version}.%{texlive_noarch}.2.6svn61405
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn65252
 Release:        0
 License:        LPPL-1.0
 Summary:        Highlighted source code for LaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-catchfile >= %{texlive_version}
+#!BuildIgnore: texlive-catchfile
+Requires:       texlive-etoolbox >= %{texlive_version}
+#!BuildIgnore: texlive-etoolbox
+Requires:       texlive-fancyvrb >= %{texlive_version}
+#!BuildIgnore: texlive-fancyvrb
+Requires:       texlive-float >= %{texlive_version}
+#!BuildIgnore: texlive-float
+Requires:       texlive-framed >= %{texlive_version}
+#!BuildIgnore: texlive-framed
+Requires:       texlive-fvextra >= %{texlive_version}
+#!BuildIgnore: texlive-fvextra
+Requires:       texlive-graphics >= %{texlive_version}
+#!BuildIgnore: texlive-graphics
+Requires:       texlive-ifplatform >= %{texlive_version}
+#!BuildIgnore: texlive-ifplatform
+Requires:       texlive-kvoptions >= %{texlive_version}
+#!BuildIgnore: texlive-kvoptions
+Requires:       texlive-lineno >= %{texlive_version}
+#!BuildIgnore: texlive-lineno
+Requires:       texlive-pdftexcmds >= %{texlive_version}
+#!BuildIgnore: texlive-pdftexcmds
+Requires:       texlive-tools >= %{texlive_version}
+#!BuildIgnore: texlive-tools
+Requires:       texlive-upquote >= %{texlive_version}
+#!BuildIgnore: texlive-upquote
+Requires:       texlive-xcolor >= %{texlive_version}
+#!BuildIgnore: texlive-xcolor
+Requires:       texlive-xstring >= %{texlive_version}
+#!BuildIgnore: texlive-xstring
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -9314,7 +9409,7 @@ Requires:       tex(shellesc.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source120:      minted.tar.xz
 Source121:      minted.doc.tar.xz
 
@@ -9325,12 +9420,13 @@ provides options to customize the highlighted source code
 output using fancyvrb.
 
 %package -n texlive-minted-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.6svn61405
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn65252
 Release:        0
 Summary:        Documentation for texlive-minted
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minted and texlive-alldocumentation)
 
 %description -n texlive-minted-doc
 This package includes the documentation for texlive-minted
@@ -9363,7 +9459,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/minted/minted1.sty
 
 %package -n texlive-mintspirit
-Version:        %{texlive_version}.%{texlive_noarch}.svn32069
+Version:        %{texlive_version}.%{texlive_noarch}.svn64461
 Release:        0
 License:        OFL-1.1
 Summary:        LaTeX support for MintSpirit font families
@@ -9942,7 +10038,7 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source122:      mintspirit.tar.xz
 Source123:      mintspirit.doc.tar.xz
 
@@ -9954,18 +10050,19 @@ for use as a system font on a Linux Mint system. The No. 2
 variant provides more conventional shapes for some glyphs.
 
 %package -n texlive-mintspirit-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn32069
+Version:        %{texlive_version}.%{texlive_noarch}.svn64461
 Release:        0
 Summary:        Documentation for texlive-mintspirit
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mintspirit and texlive-alldocumentation)
 
 %description -n texlive-mintspirit-doc
 This package includes the documentation for texlive-mintspirit
 
 %package -n texlive-mintspirit-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn32069
+Version:        %{texlive_version}.%{texlive_noarch}.svn64461
 Release:        0
 Summary:        Severed fonts for texlive-mintspirit
 License:        OFL-1.1
@@ -9974,9 +10071,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-mintspirit-fonts
 The  separated fonts package for texlive-mintspirit
@@ -10569,9 +10664,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-mintspirit.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-mintspirit.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-mintspirit.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mintspirit/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mintspirit/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mintspirit/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mintspirit/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mintspirit/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mintspirit/fonts.scale
 %{_datadir}/fonts/texlive-mintspirit/MintSpirit-Bold.otf
 %{_datadir}/fonts/texlive-mintspirit/MintSpirit-BoldItalic.otf
 %{_datadir}/fonts/texlive-mintspirit/MintSpirit-Italic.otf
@@ -10624,7 +10719,7 @@ Requires:       tex(multicol.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source124:      minutes.tar.xz
 Source125:      minutes.doc.tar.xz
 
@@ -10645,6 +10740,7 @@ Summary:        Documentation for texlive-minutes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-minutes and texlive-alldocumentation)
 
 %description -n texlive-minutes-doc
 This package includes the documentation for texlive-minutes
@@ -10683,7 +10779,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/minutes/minutes.sty
 
 %package -n texlive-mismath
-Version:        %{texlive_version}.%{texlive_noarch}.1.8svn56949
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn66391
 Release:        0
 License:        LPPL-1.0
 Summary:        Miscellaneous mathematical macros
@@ -10713,31 +10809,35 @@ Suggests:       texlive-mismath-doc >= %{texlive_version}
 Provides:       tex(mismath.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(esvect.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(ibrackets.sty)
+Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(mathtools.sty)
-Requires:       tex(upgreek.sty)
+Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source126:      mismath.tar.xz
 Source127:      mismath.doc.tar.xz
 
 %description -n texlive-mismath
 The package provides some mathematical macros to typeset:
-mathematical constants e, i, pi in upright shape
-(automatically) as recommended by ISO 80000-2, vectors with
-beautiful arrows and adjusted norm, some standard operator
-names, improved spacings in mathematical formulas, systems of
-equations and small matrices, displaymath in double columns for
-long calculations.
+mathematical constants e, i, p in upright shape (automatically)
+as recommended by ISO 80000-2, vectors with beautiful arrows
+and adjusted norm, some standard operator names, improved
+spacings in mathematical formulas, systems of equations and
+small matrices, displaymath in double columns for long
+calculations.
 
 %package -n texlive-mismath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.8svn56949
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn66391
 Release:        0
 Summary:        Documentation for texlive-mismath
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mismath and texlive-alldocumentation)
 
 %description -n texlive-mismath-doc
 This package includes the documentation for texlive-mismath
@@ -10805,7 +10905,7 @@ Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source128:      missaali.tar.xz
 Source129:      missaali.doc.tar.xz
 
@@ -10832,6 +10932,7 @@ Summary:        Documentation for texlive-missaali
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-missaali and texlive-alldocumentation)
 
 %description -n texlive-missaali-doc
 This package includes the documentation for texlive-missaali
@@ -10846,9 +10947,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-missaali-fonts
 The  separated fonts package for texlive-missaali
@@ -10900,9 +10999,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-missaali
 %{_datadir}/fontconfig/conf.avail/58-texlive-missaali.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-missaali/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-missaali/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-missaali/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-missaali/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-missaali/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-missaali/fonts.scale
 %{_datadir}/fonts/texlive-missaali/Missaali-Regular.otf
 
 %package -n texlive-mkgrkindex
@@ -10936,7 +11035,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mkgrkindex-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source130:      mkgrkindex.tar.xz
 Source131:      mkgrkindex.doc.tar.xz
 
@@ -10954,6 +11053,7 @@ Summary:        Documentation for texlive-mkgrkindex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mkgrkindex and texlive-alldocumentation)
 
 %description -n texlive-mkgrkindex-doc
 This package includes the documentation for texlive-mkgrkindex
@@ -11029,7 +11129,7 @@ Requires:       perl(Pod::Usage)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source132:      mkjobtexmf.tar.xz
 Source133:      mkjobtexmf.doc.tar.xz
 
@@ -11049,6 +11149,7 @@ Summary:        Documentation for texlive-mkjobtexmf
 License:        Artistic-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mkjobtexmf and texlive-alldocumentation)
 Provides:       man(mkjobtexmf.1)
 
 %description -n texlive-mkjobtexmf-doc
@@ -11116,7 +11217,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mkpattern-doc >= %{texlive_version}
 Provides:       tex(mkpatter.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source134:      mkpattern.tar.xz
 Source135:      mkpattern.doc.tar.xz
 
@@ -11135,6 +11236,7 @@ Summary:        Documentation for texlive-mkpattern
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mkpattern and texlive-alldocumentation)
 
 %description -n texlive-mkpattern-doc
 This package includes the documentation for texlive-mkpattern
@@ -11200,7 +11302,7 @@ Suggests:       texlive-mkpic-doc >= %{texlive_version}
 Requires:       perl(Getopt::Long)
 #!BuildIgnore:  perl(Getopt::Long)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source136:      mkpic.tar.xz
 Source137:      mkpic.doc.tar.xz
 
@@ -11219,6 +11321,7 @@ Summary:        Documentation for texlive-mkpic
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mkpic and texlive-alldocumentation)
 
 %description -n texlive-mkpic-doc
 This package includes the documentation for texlive-mkpic
@@ -11286,7 +11389,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(thumbpdf.sty)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source138:      mla-paper.tar.xz
 Source139:      mla-paper.doc.tar.xz
 
@@ -11303,6 +11406,7 @@ Summary:        Documentation for texlive-mla-paper
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mla-paper and texlive-alldocumentation)
 
 %description -n texlive-mla-paper-doc
 This package includes the documentation for texlive-mla-paper
@@ -11379,7 +11483,7 @@ Requires:       tex(ragged2e.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source140:      mlacls.tar.xz
 Source141:      mlacls.doc.tar.xz
 
@@ -11398,6 +11502,7 @@ Summary:        Documentation for texlive-mlacls
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mlacls and texlive-alldocumentation)
 
 %description -n texlive-mlacls-doc
 This package includes the documentation for texlive-mlacls
@@ -11466,7 +11571,7 @@ Provides:       tex(mleftright.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source142:      mleftright.tar.xz
 Source143:      mleftright.doc.tar.xz
 
@@ -11483,6 +11588,7 @@ Summary:        Documentation for texlive-mleftright
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mleftright and texlive-alldocumentation)
 
 %description -n texlive-mleftright-doc
 This package includes the documentation for texlive-mleftright
@@ -11546,7 +11652,7 @@ Provides:       tex(mlist.sty)
 Requires:       tex(ifmtarg.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source144:      mlist.tar.xz
 Source145:      mlist.doc.tar.xz
 
@@ -11563,6 +11669,7 @@ Summary:        Documentation for texlive-mlist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mlist and texlive-alldocumentation)
 
 %description -n texlive-mlist-doc
 This package includes the documentation for texlive-mlist
@@ -12293,7 +12400,7 @@ Provides:       tex(ts1mlmssq.fd)
 Provides:       tex(ts1mlmtt.fd)
 Provides:       tex(ts1mlmvtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source146:      mlmodern.tar.xz
 Source147:      mlmodern.doc.tar.xz
 
@@ -12310,6 +12417,7 @@ Summary:        Documentation for texlive-mlmodern
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mlmodern and texlive-alldocumentation)
 
 %description -n texlive-mlmodern-doc
 This package includes the documentation for texlive-mlmodern
@@ -12324,9 +12432,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-mlmodern-fonts
 The  separated fonts package for texlive-mlmodern
@@ -13116,9 +13222,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-mlmodern
 %{_datadir}/fontconfig/conf.avail/58-texlive-mlmodern.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mlmodern/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mlmodern/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mlmodern/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mlmodern/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mlmodern/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mlmodern/fonts.scale
 %{_datadir}/fonts/texlive-mlmodern/mlmb10.pfb
 %{_datadir}/fonts/texlive-mlmodern/mlmbo10.pfb
 %{_datadir}/fonts/texlive-mlmodern/mlmbsy10.pfb
@@ -13301,7 +13407,7 @@ Provides:       tex(lo1enc.def)
 Provides:       tex(mlltxchg.def)
 Provides:       tex(mltex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source148:      mltex.tar.xz
 Source149:      mltex.doc.tar.xz
 
@@ -13318,6 +13424,7 @@ Summary:        Documentation for texlive-mltex
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mltex and texlive-alldocumentation)
 
 %description -n texlive-mltex-doc
 This package includes the documentation for texlive-mltex
@@ -13460,7 +13567,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(totpages.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source150:      mluexercise.tar.xz
 Source151:      mluexercise.doc.tar.xz
 
@@ -13484,6 +13591,7 @@ Summary:        Documentation for texlive-mluexercise
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mluexercise and texlive-alldocumentation)
 
 %description -n texlive-mluexercise-doc
 This package includes the documentation for texlive-mluexercise
@@ -13546,7 +13654,7 @@ Provides:       tex(mmap.sty)
 Requires:       tex(cmap.sty)
 Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source152:      mmap.tar.xz
 Source153:      mmap.doc.tar.xz
 
@@ -13562,6 +13670,7 @@ Summary:        Documentation for texlive-mmap
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mmap and texlive-alldocumentation)
 
 %description -n texlive-mmap-doc
 This package includes the documentation for texlive-mmap
@@ -13637,7 +13746,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mmap/upzd.cmap
 
 %package -n texlive-mnotes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn35521
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn63406
 Release:        0
 License:        LPPL-1.0
 Summary:        Margin annotation for collaborative writing
@@ -13670,9 +13779,10 @@ Requires:       tex(ifoddpage.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(marginnote.sty)
 Requires:       tex(sidenotes.sty)
+Requires:       tex(soul.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source154:      mnotes.tar.xz
 Source155:      mnotes.doc.tar.xz
 
@@ -13681,12 +13791,13 @@ The package provides a flexible mechanism for annotating, and
 commenting upon, collaboratively-written documents.
 
 %package -n texlive-mnotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn35521
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn63406
 Release:        0
 Summary:        Documentation for texlive-mnotes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mnotes and texlive-alldocumentation)
 
 %description -n texlive-mnotes-doc
 This package includes the documentation for texlive-mnotes
@@ -13710,7 +13821,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-mnotes-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/mnotes/Makefile
 %{_texmfdistdir}/doc/latex/mnotes/README
 %{_texmfdistdir}/doc/latex/mnotes/mnotes.pdf
 
@@ -13752,7 +13862,7 @@ Requires:       tex(geometry.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source156:      mnras.tar.xz
 Source157:      mnras.doc.tar.xz
 
@@ -13767,6 +13877,7 @@ Summary:        Documentation for texlive-mnras
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mnras and texlive-alldocumentation)
 
 %description -n texlive-mnras-doc
 This package includes the documentation for texlive-mnras
@@ -13958,7 +14069,7 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(eufrak.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source158:      mnsymbol.tar.xz
 Source159:      mnsymbol.doc.tar.xz
 
@@ -13985,6 +14096,7 @@ Summary:        Documentation for texlive-mnsymbol
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mnsymbol and texlive-alldocumentation)
 
 %description -n texlive-mnsymbol-doc
 This package includes the documentation for texlive-mnsymbol
@@ -13999,9 +14111,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-mnsymbol-fonts
 The  separated fonts package for texlive-mnsymbol
@@ -14298,9 +14408,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-mnsymbol.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-mnsymbol.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-mnsymbol.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mnsymbol/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mnsymbol/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mnsymbol/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mnsymbol/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mnsymbol/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mnsymbol/fonts.scale
 %{_datadir}/fonts/texlive-mnsymbol/MnSymbol-Bold10.otf
 %{_datadir}/fonts/texlive-mnsymbol/MnSymbol-Bold12.otf
 %{_datadir}/fonts/texlive-mnsymbol/MnSymbol-Bold5.otf
@@ -14379,7 +14489,7 @@ Requires:       tex(multirow.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(ulem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source160:      modeles-factures-belges-assocs.tar.xz
 Source161:      modeles-factures-belges-assocs.doc.tar.xz
 
@@ -14394,6 +14504,7 @@ Summary:        Documentation for texlive-modeles-factures-belges-assocs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modeles-factures-belges-assocs and texlive-alldocumentation)
 
 %description -n texlive-modeles-factures-belges-assocs-doc
 This package includes the documentation for texlive-modeles-factures-belges-assocs
@@ -14544,7 +14655,7 @@ Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source162:      moderncv.tar.xz
 Source163:      moderncv.doc.tar.xz
 
@@ -14562,6 +14673,7 @@ Summary:        Documentation for texlive-moderncv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moderncv and texlive-alldocumentation)
 
 %description -n texlive-moderncv-doc
 This package includes the documentation for texlive-moderncv
@@ -14681,7 +14793,7 @@ Requires:       tex(sfmath.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source164:      modernposter.tar.xz
 Source165:      modernposter.doc.tar.xz
 
@@ -14701,6 +14813,7 @@ Summary:        Documentation for texlive-modernposter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modernposter and texlive-alldocumentation)
 
 %description -n texlive-modernposter-doc
 This package includes the documentation for texlive-modernposter
@@ -14766,7 +14879,7 @@ Provides:       tex(moderntimeline.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source166:      moderntimeline.tar.xz
 Source167:      moderntimeline.doc.tar.xz
 
@@ -14782,6 +14895,7 @@ Summary:        Documentation for texlive-moderntimeline
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moderntimeline and texlive-alldocumentation)
 
 %description -n texlive-moderntimeline-doc
 This package includes the documentation for texlive-moderntimeline
@@ -14841,7 +14955,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-modes-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source168:      modes.tar.xz
 Source169:      modes.doc.tar.xz
 
@@ -14862,6 +14976,7 @@ Summary:        Documentation for texlive-modes
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modes and texlive-alldocumentation)
 
 %description -n texlive-modes-doc
 This package includes the documentation for texlive-modes
@@ -14932,7 +15047,7 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source170:      modiagram.tar.xz
 Source171:      modiagram.doc.tar.xz
 
@@ -14952,6 +15067,7 @@ Summary:        Documentation for texlive-modiagram
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modiagram and texlive-alldocumentation)
 Provides:       locale(texlive-modiagram-doc:en)
 
 %description -n texlive-modiagram-doc
@@ -15015,7 +15131,7 @@ Suggests:       texlive-modref-doc >= %{texlive_version}
 Provides:       tex(modref.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source172:      modref.tar.xz
 Source173:      modref.doc.tar.xz
 
@@ -15033,6 +15149,7 @@ Summary:        Documentation for texlive-modref
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modref and texlive-alldocumentation)
 
 %description -n texlive-modref-doc
 This package includes the documentation for texlive-modref
@@ -15095,7 +15212,7 @@ Provides:       tex(modroman.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source174:      modroman.tar.xz
 Source175:      modroman.doc.tar.xz
 
@@ -15117,6 +15234,7 @@ Summary:        Documentation for texlive-modroman
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modroman and texlive-alldocumentation)
 Provides:       locale(texlive-modroman-doc:en;fr)
 
 %description -n texlive-modroman-doc
@@ -15186,7 +15304,7 @@ Requires:       tex(coseoul.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(import.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source176:      modular.tar.xz
 Source177:      modular.doc.tar.xz
 
@@ -15205,6 +15323,7 @@ Summary:        Documentation for texlive-modular
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modular and texlive-alldocumentation)
 
 %description -n texlive-modular-doc
 This package includes the documentation for texlive-modular
@@ -15278,7 +15397,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-modulus-doc >= %{texlive_version}
 Provides:       tex(modulus.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source178:      modulus.tar.xz
 Source179:      modulus.doc.tar.xz
 
@@ -15298,6 +15417,7 @@ Summary:        Documentation for texlive-modulus
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-modulus and texlive-alldocumentation)
 
 %description -n texlive-modulus-doc
 This package includes the documentation for texlive-modulus
@@ -15362,7 +15482,7 @@ Provides:       tex(mn.def)
 Provides:       tex(mongolian.ldf)
 Provides:       tex(mongolian.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source180:      mongolian-babel.tar.xz
 Source181:      mongolian-babel.doc.tar.xz
 
@@ -15378,6 +15498,7 @@ Summary:        Documentation for texlive-mongolian-babel
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mongolian-babel and texlive-alldocumentation)
 
 %description -n texlive-mongolian-babel-doc
 This package includes the documentation for texlive-mongolian-babel
@@ -15440,7 +15561,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-monofill-doc >= %{texlive_version}
 Provides:       tex(monofill.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source182:      monofill.tar.xz
 Source183:      monofill.doc.tar.xz
 
@@ -15456,6 +15577,7 @@ Summary:        Documentation for texlive-monofill
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-monofill and texlive-alldocumentation)
 
 %description -n texlive-monofill-doc
 This package includes the documentation for texlive-monofill
@@ -15675,7 +15797,7 @@ Requires:       tex(inputenc.sty)
 Requires:       tex(lscape.sty)
 Requires:       tex(rotating.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source184:      montex.tar.xz
 Source185:      montex.doc.tar.xz
 
@@ -15717,6 +15839,7 @@ Summary:        Documentation for texlive-montex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-montex and texlive-alldocumentation)
 
 %description -n texlive-montex-doc
 This package includes the documentation for texlive-montex
@@ -15731,9 +15854,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-montex-fonts
 The  separated fonts package for texlive-montex
@@ -16085,9 +16206,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-montex
 %{_datadir}/fontconfig/conf.avail/58-texlive-montex.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-montex/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-montex/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-montex/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-montex/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-montex/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-montex/fonts.scale
 %{_datadir}/fonts/texlive-montex/bcghsb.pfb
 %{_datadir}/fonts/texlive-montex/bcghsm.pfb
 %{_datadir}/fonts/texlive-montex/bcghwb.pfb
@@ -20032,7 +20153,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source186:      montserrat.tar.xz
 Source187:      montserrat.doc.tar.xz
 
@@ -20057,6 +20178,7 @@ Summary:        Documentation for texlive-montserrat
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-montserrat and texlive-alldocumentation)
 
 %description -n texlive-montserrat-doc
 This package includes the documentation for texlive-montserrat
@@ -20071,9 +20193,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-montserrat-fonts
 The  separated fonts package for texlive-montserrat
@@ -24057,9 +24177,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-montserrat.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-montserrat.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-montserrat.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-montserrat/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-montserrat/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-montserrat/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-montserrat/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-montserrat/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-montserrat/fonts.scale
 %{_datadir}/fonts/texlive-montserrat/Montserrat-Black.otf
 %{_datadir}/fonts/texlive-montserrat/Montserrat-BlackItalic.otf
 %{_datadir}/fonts/texlive-montserrat/Montserrat-Bold.otf
@@ -24134,7 +24254,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-montserrat/MontserratAlternates-ThinItalic.pfb
 
 %package -n texlive-moodle
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn57683
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn65672
 Release:        0
 License:        LPPL-1.0
 Summary:        Generating Moodle quizzes via LaTeX
@@ -24164,7 +24284,6 @@ Suggests:       texlive-moodle-doc >= %{texlive_version}
 Provides:       tex(moodle.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(array.sty)
-Requires:       tex(babel.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
@@ -24175,13 +24294,15 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifplatform.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(randomlist.sty)
+Requires:       tex(readprov.sty)
 Requires:       tex(shellesc.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(translator.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source188:      moodle.tar.xz
 Source189:      moodle.doc.tar.xz
 
@@ -24191,12 +24312,13 @@ typesetting the quizzes for proofreading, the package compiles
 an XML file to be uploaded to a Moodle server.
 
 %package -n texlive-moodle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn57683
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn65672
 Release:        0
 Summary:        Documentation for texlive-moodle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moodle and texlive-alldocumentation)
 
 %description -n texlive-moodle-doc
 This package includes the documentation for texlive-moodle
@@ -24223,14 +24345,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/LICENSE
 %{_texmfdistdir}/doc/latex/moodle/README.md
 %{_texmfdistdir}/doc/latex/moodle/moodle.pdf
+%{_texmfdistdir}/doc/latex/moodle/test/check_babel.tex
+%{_texmfdistdir}/doc/latex/moodle/test/check_polyglossia.tex
 %{_texmfdistdir}/doc/latex/moodle/test/fig/11.PNG
 %{_texmfdistdir}/doc/latex/moodle/test/fig/22.pdf
 %{_texmfdistdir}/doc/latex/moodle/test/fig/3.gif
 %{_texmfdistdir}/doc/latex/moodle/test/fig/4.jpg
 %{_texmfdistdir}/doc/latex/moodle/test/fig/5.jpeg
-%{_texmfdistdir}/doc/latex/moodle/test/fig/MoodlE_logo.SVG
-%{_texmfdistdir}/doc/latex/moodle/test/fig/NoodlE_logo.png
-%{_texmfdistdir}/doc/latex/moodle/test/fig/NoodlE_logo.svg
+%{_texmfdistdir}/doc/latex/moodle/test/fig/NoodlE_logo.SVG
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_allornothing-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_autopoints-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_calculated_python-moodle.ref
@@ -24241,6 +24363,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_cloze_shortanswer-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_commands-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_description-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_diacritics_and_ligatures-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_environments-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_escaping_right_braces_in_cloze-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_essay-moodle.ref
@@ -24251,28 +24374,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_generalfeedback-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_german-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_handout-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_horizontal_spacing-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_htmlonly-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_includegraphics-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_includegraphics_via_tikz-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_includegraphics_via_tikz_and_svg-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_includegraphics_with_svg-moodle.ref
-%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_macros-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_matching-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_math-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_mathenv-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_minted-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_multi-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_multiple_categories-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_numerical-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_paragraph_breaks-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_penalty-moodle.ref
-%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_point_points-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_points-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_punctuation_and_symbols-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_samepage-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_sanction-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_shortanswer-moodle.ref
-%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_special_characters-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_tags-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_tikz-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_tikz_with_svg-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_tolerance-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_truefalse-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_turkish-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/latin1ref/test_verbatim-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/makefile
 %{_texmfdistdir}/doc/latex/moodle/test/test_allornothing.tex
@@ -24286,6 +24413,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/test/test_cloze_shortanswer.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_commands.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_description.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_diacritics_and_ligatures.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_environments.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_escaping_right_braces_in_cloze.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_essay.tex
@@ -24296,28 +24424,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/test/test_generalfeedback.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_german.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_handout.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_horizontal_spacing.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_htmlonly.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_includegraphics.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_includegraphics_via_tikz.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_includegraphics_via_tikz_and_svg.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_includegraphics_with_svg.tex
-%{_texmfdistdir}/doc/latex/moodle/test/test_macros.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_matching.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_math.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_mathenv.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_minted.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_multi.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_multiple_categories.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_numerical.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_paragraph_breaks.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_penalty.tex
-%{_texmfdistdir}/doc/latex/moodle/test/test_point_points.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_points.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_punctuation_and_symbols.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_samepage.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_sanction.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_shortanswer.tex
-%{_texmfdistdir}/doc/latex/moodle/test/test_special_characters.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_tags.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_tikz.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_tikz_with_svg.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_tolerance.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_truefalse.tex
+%{_texmfdistdir}/doc/latex/moodle/test/test_turkish.tex
 %{_texmfdistdir}/doc/latex/moodle/test/test_verbatim.tex
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_allornothing-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_autopoints-moodle.ref
@@ -24330,6 +24462,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_cloze_shortanswer-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_commands-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_description-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_diacritics_and_ligatures-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_environments-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_escaping_right_braces_in_cloze-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_essay-moodle.ref
@@ -24340,28 +24473,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_generalfeedback-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_german-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_handout-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_horizontal_spacing-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_htmlonly-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_includegraphics-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_includegraphics_via_tikz-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_includegraphics_via_tikz_and_svg-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_includegraphics_with_svg-moodle.ref
-%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_macros-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_matching-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_math-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_mathenv-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_minted-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_multi-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_multiple_categories-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_numerical-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_paragraph_breaks-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_penalty-moodle.ref
-%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_point_points-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_points-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_punctuation_and_symbols-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_samepage-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_sanction-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_shortanswer-moodle.ref
-%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_special_characters-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_tags-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_tikz-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_tikz_with_svg-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_tolerance-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_truefalse-moodle.ref
+%{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_turkish-moodle.ref
 %{_texmfdistdir}/doc/latex/moodle/test/utf8ref/test_verbatim-moodle.ref
 
 %files -n texlive-moodle
@@ -24402,7 +24539,7 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(fmtcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source190:      moreenum.tar.xz
 Source191:      moreenum.doc.tar.xz
 
@@ -24433,6 +24570,7 @@ Summary:        Documentation for texlive-moreenum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moreenum and texlive-alldocumentation)
 
 %description -n texlive-moreenum-doc
 This package includes the documentation for texlive-moreenum
@@ -24496,7 +24634,7 @@ Provides:       tex(morefloats.sty)
 Requires:       tex(ifetex.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source192:      morefloats.tar.xz
 Source193:      morefloats.doc.tar.xz
 
@@ -24516,6 +24654,7 @@ Summary:        Documentation for texlive-morefloats
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-morefloats and texlive-alldocumentation)
 
 %description -n texlive-morefloats-doc
 This package includes the documentation for texlive-morefloats
@@ -24590,7 +24729,7 @@ Requires:       tex(dowith.sty)
 Requires:       tex(fifinddo.sty)
 Requires:       tex(langcode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source194:      morehype.tar.xz
 Source195:      morehype.doc.tar.xz
 
@@ -24609,6 +24748,7 @@ Summary:        Documentation for texlive-morehype
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-morehype and texlive-alldocumentation)
 
 %description -n texlive-morehype-doc
 This package includes the documentation for texlive-morehype
@@ -24696,7 +24836,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-moresize-doc >= %{texlive_version}
 Provides:       tex(moresize.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source196:      moresize.tar.xz
 Source197:      moresize.doc.tar.xz
 
@@ -24716,6 +24856,7 @@ Summary:        Documentation for texlive-moresize
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moresize and texlive-alldocumentation)
 
 %description -n texlive-moresize-doc
 This package includes the documentation for texlive-moresize
@@ -24778,7 +24919,7 @@ Suggests:       texlive-moreverb-doc >= %{texlive_version}
 Provides:       tex(moreverb.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source198:      moreverb.tar.xz
 Source199:      moreverb.doc.tar.xz
 
@@ -24798,6 +24939,7 @@ Summary:        Documentation for texlive-moreverb
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-moreverb and texlive-alldocumentation)
 
 %description -n texlive-moreverb-doc
 This package includes the documentation for texlive-moreverb
@@ -24860,7 +25002,7 @@ Provides:       tex(morewrites.sty)
 Provides:       tex(primargs.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source200:      morewrites.tar.xz
 Source201:      morewrites.doc.tar.xz
 
@@ -24881,6 +25023,7 @@ Summary:        Documentation for texlive-morewrites
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-morewrites and texlive-alldocumentation)
 
 %description -n texlive-morewrites-doc
 This package includes the documentation for texlive-morewrites
@@ -24995,7 +25138,7 @@ Provides:       tex(morisawa5.map)
 Provides:       tex(ryumin-l-v.tfm)
 Provides:       tex(ryumin-l.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source202:      morisawa.tar.xz
 Source203:      morisawa.doc.tar.xz
 
@@ -25012,6 +25155,7 @@ Summary:        Documentation for texlive-morisawa
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-morisawa and texlive-alldocumentation)
 Provides:       locale(texlive-morisawa-doc:ja)
 
 %description -n texlive-morisawa-doc
@@ -25124,7 +25268,7 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source204:      movie15.tar.xz
 Source205:      movie15.doc.tar.xz
 
@@ -25144,6 +25288,7 @@ Summary:        Documentation for texlive-movie15
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-movie15 and texlive-alldocumentation)
 
 %description -n texlive-movie15-doc
 This package includes the documentation for texlive-movie15
@@ -25217,7 +25362,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mp3d-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source206:      mp3d.tar.xz
 Source207:      mp3d.doc.tar.xz
 
@@ -25232,6 +25377,7 @@ Summary:        Documentation for texlive-mp3d
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mp3d and texlive-alldocumentation)
 Provides:       locale(texlive-mp3d-doc:fr;en)
 
 %description -n texlive-mp3d-doc
@@ -25330,7 +25476,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mparhack-doc >= %{texlive_version}
 Provides:       tex(mparhack.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source208:      mparhack.tar.xz
 Source209:      mparhack.doc.tar.xz
 
@@ -25345,6 +25491,7 @@ Summary:        Documentation for texlive-mparhack
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mparhack and texlive-alldocumentation)
 
 %description -n texlive-mparhack-doc
 This package includes the documentation for texlive-mparhack
@@ -25404,7 +25551,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mparrows-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source210:      mparrows.tar.xz
 Source211:      mparrows.doc.tar.xz
 
@@ -25419,6 +25566,7 @@ Summary:        Documentation for texlive-mparrows
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mparrows and texlive-alldocumentation)
 
 %description -n texlive-mparrows-doc
 This package includes the documentation for texlive-mparrows
@@ -25481,7 +25629,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mpattern-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source212:      mpattern.tar.xz
 Source213:      mpattern.doc.tar.xz
 
@@ -25496,6 +25644,7 @@ Summary:        Documentation for texlive-mpattern
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mpattern and texlive-alldocumentation)
 Provides:       locale(texlive-mpattern-doc:en;pl)
 
 %description -n texlive-mpattern-doc
@@ -25559,7 +25708,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mpcolornames-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source214:      mpcolornames.tar.xz
 Source215:      mpcolornames.doc.tar.xz
 
@@ -25579,6 +25728,7 @@ Summary:        Documentation for texlive-mpcolornames
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mpcolornames and texlive-alldocumentation)
 
 %description -n texlive-mpcolornames-doc
 This package includes the documentation for texlive-mpcolornames
@@ -25661,7 +25811,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mpfonts-doc >= %{texlive_version}
 Provides:       tex(mpfonts.map)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source216:      mpfonts.tar.xz
 Source217:      mpfonts.doc.tar.xz
 
@@ -25686,6 +25836,7 @@ Summary:        Documentation for texlive-mpfonts
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mpfonts and texlive-alldocumentation)
 
 %description -n texlive-mpfonts-doc
 This package includes the documentation for texlive-mpfonts
@@ -26029,7 +26180,7 @@ Requires:       tex(iftex.sty)
 Requires:       tex(moreverb.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source218:      mpgraphics.tar.xz
 Source219:      mpgraphics.doc.tar.xz
 
@@ -26048,6 +26199,7 @@ Summary:        Documentation for texlive-mpgraphics
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mpgraphics and texlive-alldocumentation)
 
 %description -n texlive-mpgraphics-doc
 This package includes the documentation for texlive-mpgraphics
@@ -26107,7 +26259,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source220:      mpman-ru.doc.tar.xz
 
 %description -n texlive-mpman-ru
@@ -26181,7 +26333,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source221:      mpostinl.tar.xz
 Source222:      mpostinl.doc.tar.xz
 
@@ -26200,6 +26352,7 @@ Summary:        Documentation for texlive-mpostinl
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mpostinl and texlive-alldocumentation)
 
 %description -n texlive-mpostinl-doc
 This package includes the documentation for texlive-mpostinl
@@ -26232,7 +26385,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mpostinl/mpostinl.sty
 
 %package -n texlive-mptopdf
-Version:        %{texlive_version}.%{texlive_noarch}.svn61520
+Version:        %{texlive_version}.%{texlive_noarch}.svn65952
 Release:        0
 License:        LPPL-1.0
 Summary:        Mpost to PDF, native MetaPost graphics inclusion
@@ -26290,7 +26443,7 @@ Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 Provides:       tex(mptopdf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source223:      mptopdf.tar.xz
 Source224:      mptopdf.doc.tar.xz
 
@@ -26305,12 +26458,13 @@ do not install the rest of ConTeXt. This can be found on CTAN
 in macros/pdftex/graphics.
 
 %package -n texlive-mptopdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn61520
+Version:        %{texlive_version}.%{texlive_noarch}.svn65952
 Release:        0
 Summary:        Documentation for texlive-mptopdf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mptopdf and texlive-alldocumentation)
 Provides:       man(mptopdf.1)
 
 %description -n texlive-mptopdf-doc
@@ -26386,7 +26540,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mptrees-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source225:      mptrees.tar.xz
 Source226:      mptrees.doc.tar.xz
 
@@ -26402,6 +26556,7 @@ Summary:        Documentation for texlive-mptrees
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mptrees and texlive-alldocumentation)
 
 %description -n texlive-mptrees-doc
 This package includes the documentation for texlive-mptrees
@@ -26467,7 +26622,7 @@ Requires:       tex(everyshi.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source227:      ms.tar.xz
 Source228:      ms.doc.tar.xz
 
@@ -26486,6 +26641,7 @@ Summary:        Documentation for texlive-ms
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ms and texlive-alldocumentation)
 
 %description -n texlive-ms-doc
 This package includes the documentation for texlive-ms
@@ -26521,7 +26677,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ms/multitoc.sty
 
 %package -n texlive-msc
-Version:        %{texlive_version}.%{texlive_noarch}.1.16svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2.00svn63291
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw MSC diagrams
@@ -26550,12 +26706,10 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-msc-doc >= %{texlive_version}
 Provides:       tex(msc.sty)
 Requires:       tex(calc.sty)
-Requires:       tex(color.sty)
-Requires:       tex(ifthen.sty)
-Requires:       tex(pst-node.sty)
-Requires:       tex(pstricks.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source229:      msc.tar.xz
 Source230:      msc.doc.tar.xz
 
@@ -26568,12 +26722,13 @@ MSC. The current version of the MSC macro package supports the
 full MSC2000 language.
 
 %package -n texlive-msc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.16svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2.00svn63291
 Release:        0
 Summary:        Documentation for texlive-msc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-msc and texlive-alldocumentation)
 
 %description -n texlive-msc-doc
 This package includes the documentation for texlive-msc
@@ -26598,17 +26753,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-msc-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/msc/COPYRIGHT.txt
-%{_texmfdistdir}/doc/latex/msc/README
-%{_texmfdistdir}/doc/latex/msc/maintenance.pdf
-%{_texmfdistdir}/doc/latex/msc/maintenance.tex
-%{_texmfdistdir}/doc/latex/msc/manual.pdf
-%{_texmfdistdir}/doc/latex/msc/manual.tex
-%{_texmfdistdir}/doc/latex/msc/refman.pdf
-%{_texmfdistdir}/doc/latex/msc/refman.tex
+%{_texmfdistdir}/doc/latex/msc/README.txt
+%{_texmfdistdir}/doc/latex/msc/biblio.bib
+%{_texmfdistdir}/doc/latex/msc/manual-macros.tex
+%{_texmfdistdir}/doc/latex/msc/msc.pdf
+%{_texmfdistdir}/doc/latex/msc/msc.tex
 
 %files -n texlive-msc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/bibtex/bib/msc/biblio.bib
 %{_texmfdistdir}/tex/latex/msc/msc.sty
 
 %package -n texlive-msg
@@ -26646,7 +26798,7 @@ Provides:       tex(msg.sty)
 Provides:       tex(norsk_msg-msg.tex)
 Requires:       tex(inputenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source231:      msg.tar.xz
 Source232:      msg.doc.tar.xz
 
@@ -26666,6 +26818,7 @@ Summary:        Documentation for texlive-msg
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-msg and texlive-alldocumentation)
 
 %description -n texlive-msg-doc
 This package includes the documentation for texlive-msg
@@ -26735,7 +26888,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mslapa-doc >= %{texlive_version}
 Provides:       tex(mslapa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source233:      mslapa.tar.xz
 Source234:      mslapa.doc.tar.xz
 
@@ -26751,6 +26904,7 @@ Summary:        Documentation for texlive-mslapa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mslapa and texlive-alldocumentation)
 
 %description -n texlive-mslapa-doc
 This package includes the documentation for texlive-mslapa
@@ -26786,7 +26940,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mslapa/mslapa.sty
 
 %package -n texlive-msu-thesis
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn62407
+Version:        %{texlive_version}.%{texlive_noarch}.4.0bsvn65462
 Release:        0
 License:        LPPL-1.0
 Summary:        Class for Michigan State University Master's and PhD theses
@@ -26818,9 +26972,10 @@ Requires:       tex(etex.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(memoir.cls)
 Requires:       tex(pdflscape.sty)
+Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source235:      msu-thesis.tar.xz
 Source236:      msu-thesis.doc.tar.xz
 
@@ -26834,12 +26989,13 @@ class is based on the memoir document class, and inherits the
 functionality of that class.
 
 %package -n texlive-msu-thesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn62407
+Version:        %{texlive_version}.%{texlive_noarch}.4.0bsvn65462
 Release:        0
 Summary:        Documentation for texlive-msu-thesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-msu-thesis and texlive-alldocumentation)
 
 %description -n texlive-msu-thesis-doc
 This package includes the documentation for texlive-msu-thesis
@@ -26864,12 +27020,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-msu-thesis-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/msu-thesis/README.md
+%{_texmfdistdir}/doc/latex/msu-thesis/docs/msu-thesis.tex
 %{_texmfdistdir}/doc/latex/msu-thesis/msu-thesis.pdf
-%{_texmfdistdir}/doc/latex/msu-thesis/msu-thesis.tex
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-chapterbib-testfile.pdf
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-chapterbib-testfile.tex
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-template.pdf
 %{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-template.tex
 %{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-testfile.bib
 %{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-testfile.pdf
 %{_texmfdistdir}/doc/latex/msu-thesis/samples/MSU-thesis-testfile.tex
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/chap1bib.tex
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/chap2bib.tex
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/chap3bib.tex
+%{_texmfdistdir}/doc/latex/msu-thesis/samples/chap4bib.tex
 
 %files -n texlive-msu-thesis
 %defattr(-,root,root,755)
@@ -26905,7 +27068,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mtgreek-doc >= %{texlive_version}
 Provides:       tex(mtgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source237:      mtgreek.tar.xz
 Source238:      mtgreek.doc.tar.xz
 
@@ -26924,6 +27087,7 @@ Summary:        Documentation for texlive-mtgreek
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mtgreek and texlive-alldocumentation)
 
 %description -n texlive-mtgreek-doc
 This package includes the documentation for texlive-mtgreek
@@ -27002,7 +27166,7 @@ Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(txfonts.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source239:      mucproc.tar.xz
 Source240:      mucproc.doc.tar.xz
 
@@ -27023,6 +27187,7 @@ Summary:        Documentation for texlive-mucproc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mucproc and texlive-alldocumentation)
 
 %description -n texlive-mucproc-doc
 This package includes the documentation for texlive-mucproc
@@ -27055,7 +27220,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mucproc/mucproc.cls
 
 %package -n texlive-mugsthesis
-Version:        %{texlive_version}.%{texlive_noarch}.svn34878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn64259
 Release:        0
 License:        LPPL-1.0
 Summary:        Thesis class complying with Marquette University Graduate School requirements
@@ -27087,7 +27252,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(indentfirst.sty)
 Requires:       tex(memoir.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source241:      mugsthesis.tar.xz
 Source242:      mugsthesis.doc.tar.xz
 
@@ -27097,12 +27262,13 @@ complies with Marquette University Graduate School
 requirements.
 
 %package -n texlive-mugsthesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn34878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn64259
 Release:        0
 Summary:        Documentation for texlive-mugsthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mugsthesis and texlive-alldocumentation)
 
 %description -n texlive-mugsthesis-doc
 This package includes the documentation for texlive-mugsthesis
@@ -27126,7 +27292,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-mugsthesis-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/mugsthesis/README
+%{_texmfdistdir}/doc/latex/mugsthesis/README.md
 %{_texmfdistdir}/doc/latex/mugsthesis/mugsthesis.pdf
 %{_texmfdistdir}/doc/latex/mugsthesis/sample/abstract.tex
 %{_texmfdistdir}/doc/latex/mugsthesis/sample/acknowledgments.tex
@@ -27181,7 +27347,7 @@ Requires:       tex(leipzig.sty)
 Requires:       tex(ling-macros.sty)
 Requires:       tex(tipa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source243:      muling.tar.xz
 Source244:      muling.doc.tar.xz
 
@@ -27196,6 +27362,7 @@ Summary:        Documentation for texlive-muling
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-muling and texlive-alldocumentation)
 
 %description -n texlive-muling-doc
 This package includes the documentation for texlive-muling
@@ -27258,7 +27425,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multenum-doc >= %{texlive_version}
 Provides:       tex(multienum.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source245:      multenum.tar.xz
 Source246:      multenum.doc.tar.xz
 
@@ -27276,6 +27443,7 @@ Summary:        Documentation for texlive-multenum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multenum and texlive-alldocumentation)
 
 %description -n texlive-multenum-doc
 This package includes the documentation for texlive-multenum
@@ -27340,7 +27508,7 @@ Provides:       tex(multiaudience.sty)
 Requires:       tex(environ.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source247:      multiaudience.tar.xz
 Source248:      multiaudience.doc.tar.xz
 
@@ -27355,6 +27523,7 @@ Summary:        Documentation for texlive-multiaudience
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multiaudience and texlive-alldocumentation)
 
 %description -n texlive-multiaudience-doc
 This package includes the documentation for texlive-multiaudience
@@ -27423,7 +27592,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multibbl-doc >= %{texlive_version}
 Provides:       tex(multibbl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source249:      multibbl.tar.xz
 Source250:      multibbl.doc.tar.xz
 
@@ -27440,6 +27609,7 @@ Summary:        Documentation for texlive-multibbl
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multibbl and texlive-alldocumentation)
 
 %description -n texlive-multibbl-doc
 This package includes the documentation for texlive-multibbl
@@ -27499,7 +27669,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multibib-doc >= %{texlive_version}
 Provides:       tex(multibib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source251:      multibib.tar.xz
 Source252:      multibib.doc.tar.xz
 
@@ -27518,6 +27688,7 @@ Summary:        Documentation for texlive-multibib
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multibib and texlive-alldocumentation)
 
 %description -n texlive-multibib-doc
 This package includes the documentation for texlive-multibib
@@ -27587,7 +27758,7 @@ Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 Provides:       tex(multibibliography.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source253:      multibibliography.tar.xz
 Source254:      multibibliography.doc.tar.xz
 
@@ -27607,6 +27778,7 @@ Summary:        Documentation for texlive-multibibliography
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multibibliography and texlive-alldocumentation)
 
 %description -n texlive-multibibliography-doc
 This package includes the documentation for texlive-multibibliography
@@ -27676,7 +27848,7 @@ Suggests:       texlive-multicap-doc >= %{texlive_version}
 Provides:       tex(multicap.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source255:      multicap.tar.xz
 Source256:      multicap.doc.tar.xz
 
@@ -27694,6 +27866,7 @@ Summary:        Documentation for texlive-multicap
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multicap and texlive-alldocumentation)
 
 %description -n texlive-multicap-doc
 This package includes the documentation for texlive-multicap
@@ -27761,7 +27934,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source257:      multicolrule.tar.xz
 Source258:      multicolrule.doc.tar.xz
 
@@ -27781,6 +27954,7 @@ Summary:        Documentation for texlive-multicolrule
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multicolrule and texlive-alldocumentation)
 
 %description -n texlive-multicolrule-doc
 This package includes the documentation for texlive-multicolrule
@@ -27845,7 +28019,7 @@ Provides:       tex(multidef.sty)
 Requires:       tex(trimspaces.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source259:      multidef.tar.xz
 Source260:      multidef.doc.tar.xz
 
@@ -27860,6 +28034,7 @@ Summary:        Documentation for texlive-multidef
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multidef and texlive-alldocumentation)
 
 %description -n texlive-multidef-doc
 This package includes the documentation for texlive-multidef
@@ -27922,7 +28097,7 @@ Suggests:       texlive-multido-doc >= %{texlive_version}
 Provides:       tex(multido.sty)
 Provides:       tex(multido.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source261:      multido.tar.xz
 Source262:      multido.doc.tar.xz
 
@@ -27940,6 +28115,7 @@ Summary:        Documentation for texlive-multido
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multido and texlive-alldocumentation)
 
 %description -n texlive-multido-doc
 This package includes the documentation for texlive-multido
@@ -27974,7 +28150,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/multido/multido.sty
 
 %package -n texlive-multienv
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Multiple environments using a "key=value" syntax
@@ -28003,7 +28179,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multienv-doc >= %{texlive_version}
 Provides:       tex(multienv.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source263:      multienv.tar.xz
 Source264:      multienv.doc.tar.xz
 
@@ -28014,12 +28190,13 @@ Macros to define environments using this syntax are also
 provided.
 
 %package -n texlive-multienv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn64967
 Release:        0
 Summary:        Documentation for texlive-multienv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multienv and texlive-alldocumentation)
 
 %description -n texlive-multienv-doc
 This package includes the documentation for texlive-multienv
@@ -28080,7 +28257,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-multiexpand-doc >= %{texlive_version}
 Provides:       tex(multiexpand.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source265:      multiexpand.tar.xz
 Source266:      multiexpand.doc.tar.xz
 
@@ -28099,6 +28276,7 @@ Summary:        Documentation for texlive-multiexpand
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multiexpand and texlive-alldocumentation)
 
 %description -n texlive-multiexpand-doc
 This package includes the documentation for texlive-multiexpand
@@ -28132,6 +28310,85 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-multiexpand
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/multiexpand/multiexpand.sty
+
+%package -n texlive-multifootnote
+Version:        %{texlive_version}.%{texlive_noarch}.svn63456
+Release:        0
+License:        LPPL-1.0
+Summary:        Multiple numbers for the same footnote
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-multifootnote-doc >= %{texlive_version}
+Provides:       tex(multifootnote.sty)
+Requires:       tex(l3keys2e.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source267:      multifootnote.tar.xz
+Source268:      multifootnote.doc.tar.xz
+
+%description -n texlive-multifootnote
+This package provides several commands for generating footnotes
+with multiple numbers (resp. marks).
+
+%package -n texlive-multifootnote-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn63456
+Release:        0
+Summary:        Documentation for texlive-multifootnote
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multifootnote and texlive-alldocumentation)
+
+%description -n texlive-multifootnote-doc
+This package includes the documentation for texlive-multifootnote
+
+%post -n texlive-multifootnote
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-multifootnote
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-multifootnote
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-multifootnote-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/multifootnote/LICENSE
+%{_texmfdistdir}/doc/latex/multifootnote/README.md
+%{_texmfdistdir}/doc/latex/multifootnote/multifootnote-doc.pdf
+%{_texmfdistdir}/doc/latex/multifootnote/multifootnote-doc.tex
+
+%files -n texlive-multifootnote
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/multifootnote/multifootnote.sty
 
 %package -n texlive-multilang
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.9bsvn49065
@@ -28169,9 +28426,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfopts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source267:      multilang.tar.xz
-Source268:      multilang.doc.tar.xz
+# from 20230311
+Source269:      multilang.tar.xz
+Source270:      multilang.doc.tar.xz
 
 %description -n texlive-multilang
 Maintaining a LaTeX document with translations for multiple
@@ -28191,6 +28448,7 @@ Summary:        Documentation for texlive-multilang
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multilang and texlive-alldocumentation)
 
 %description -n texlive-multilang-doc
 This package includes the documentation for texlive-multilang
@@ -28254,9 +28512,9 @@ Suggests:       texlive-multiobjective-doc >= %{texlive_version}
 Provides:       tex(multiobjective.sty)
 Requires:       tex(amssymb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source269:      multiobjective.tar.xz
-Source270:      multiobjective.doc.tar.xz
+# from 20230311
+Source271:      multiobjective.tar.xz
+Source272:      multiobjective.doc.tar.xz
 
 %description -n texlive-multiobjective
 The package provides a series of operators commonly used in
@@ -28271,6 +28529,7 @@ Summary:        Documentation for texlive-multiobjective
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multiobjective and texlive-alldocumentation)
 
 %description -n texlive-multiobjective-doc
 This package includes the documentation for texlive-multiobjective
@@ -28300,6 +28559,87 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-multiobjective
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/multiobjective/multiobjective.sty
+
+%package -n texlive-multiple-choice
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn63722
+Release:        0
+License:        LPPL-1.0
+Summary:        LaTeX package for multiple-choice questions
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-multiple-choice-doc >= %{texlive_version}
+Provides:       tex(multiple-choice.sty)
+Requires:       tex(biditools.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source273:      multiple-choice.tar.xz
+Source274:      multiple-choice.doc.tar.xz
+
+%description -n texlive-multiple-choice
+This package adjusts the choices of the multiple-choice
+question automatically. It has been wholly inspired by the work
+of Enrico Gregorio and improved by Vafa Khalighi and I've just
+packed and redistributed it under the name of the
+multiple-choice package.
+
+%package -n texlive-multiple-choice-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn63722
+Release:        0
+Summary:        Documentation for texlive-multiple-choice
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multiple-choice and texlive-alldocumentation)
+
+%description -n texlive-multiple-choice-doc
+This package includes the documentation for texlive-multiple-choice
+
+%post -n texlive-multiple-choice
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-multiple-choice
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-multiple-choice
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-multiple-choice-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/multiple-choice/README
+%{_texmfdistdir}/doc/latex/multiple-choice/multiple-choice-doc.pdf
+%{_texmfdistdir}/doc/latex/multiple-choice/multiple-choice-doc.tex
+
+%files -n texlive-multiple-choice
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/multiple-choice/multiple-choice.sty
 
 %package -n texlive-multirow
 Version:        %{texlive_version}.%{texlive_noarch}.2.8svn58396
@@ -28333,9 +28673,9 @@ Provides:       tex(bigdelim.sty)
 Provides:       tex(bigstrut.sty)
 Provides:       tex(multirow.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source271:      multirow.tar.xz
-Source272:      multirow.doc.tar.xz
+# from 20230311
+Source275:      multirow.tar.xz
+Source276:      multirow.doc.tar.xz
 
 %description -n texlive-multirow
 The package has a lot of flexibility, including an option for
@@ -28350,6 +28690,7 @@ Summary:        Documentation for texlive-multirow
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-multirow and texlive-alldocumentation)
 
 %description -n texlive-multirow-doc
 This package includes the documentation for texlive-multirow
@@ -28411,9 +28752,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-munich-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source273:      munich.tar.xz
-Source274:      munich.doc.tar.xz
+# from 20230311
+Source277:      munich.tar.xz
+Source278:      munich.doc.tar.xz
 
 %description -n texlive-munich
 The Munich BibTeX style is produced with custom-bib, as a
@@ -28427,6 +28768,7 @@ Summary:        Documentation for texlive-munich
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-munich and texlive-alldocumentation)
 
 %description -n texlive-munich-doc
 This package includes the documentation for texlive-munich
@@ -28498,9 +28840,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source275:      musical.tar.xz
-Source276:      musical.doc.tar.xz
+# from 20230311
+Source279:      musical.tar.xz
+Source280:      musical.doc.tar.xz
 
 %description -n texlive-musical
 This package is designed to simplify the development and
@@ -28521,6 +28863,7 @@ Summary:        Documentation for texlive-musical
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musical and texlive-alldocumentation)
 
 %description -n texlive-musical-doc
 This package includes the documentation for texlive-musical
@@ -28553,7 +28896,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/musical/musical.sty
 
 %package -n texlive-musicography
-Version:        %{texlive_version}.%{texlive_noarch}.svn53596
+Version:        %{texlive_version}.%{texlive_noarch}.svn66115
 Release:        0
 License:        LPPL-1.0
 Summary:        Accessing symbols for music writing with pdfLaTeX
@@ -28584,9 +28927,9 @@ Provides:       tex(musicography.sty)
 Requires:       tex(stackengine.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source277:      musicography.tar.xz
-Source278:      musicography.doc.tar.xz
+# from 20230311
+Source281:      musicography.tar.xz
+Source282:      musicography.doc.tar.xz
 
 %description -n texlive-musicography
 This package makes available the most commonly used symbols in
@@ -28599,12 +28942,13 @@ larger range of symbols and a more flexible, user-friendly
 interface written using xparse and stackengine.
 
 %package -n texlive-musicography-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn53596
+Version:        %{texlive_version}.%{texlive_noarch}.svn66115
 Release:        0
 Summary:        Documentation for texlive-musicography
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musicography and texlive-alldocumentation)
 
 %description -n texlive-musicography-doc
 This package includes the documentation for texlive-musicography
@@ -28667,9 +29011,9 @@ Suggests:       texlive-musikui-doc >= %{texlive_version}
 Provides:       tex(musikui.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source279:      musikui.tar.xz
-Source280:      musikui.doc.tar.xz
+# from 20230311
+Source283:      musikui.tar.xz
+Source284:      musikui.doc.tar.xz
 
 %description -n texlive-musikui
 This package permits to easily typeset arithmetical
@@ -28683,6 +29027,7 @@ Summary:        Documentation for texlive-musikui
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musikui and texlive-alldocumentation)
 
 %description -n texlive-musikui-doc
 This package includes the documentation for texlive-musikui
@@ -28750,9 +29095,9 @@ Requires:       tex(musixper.tex)
 Requires:       tex(musixtex.sty)
 Requires:       tex(setspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source281:      musixguit.tar.xz
-Source282:      musixguit.doc.tar.xz
+# from 20230311
+Source285:      musixguit.tar.xz
+Source286:      musixguit.doc.tar.xz
 
 %description -n texlive-musixguit
 The package provides commands for typesetting notes for guitar,
@@ -28765,6 +29110,7 @@ Summary:        Documentation for texlive-musixguit
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musixguit and texlive-alldocumentation)
 Provides:       locale(texlive-musixguit-doc:de)
 
 %description -n texlive-musixguit-doc
@@ -28798,7 +29144,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/musixguit/musixguit.sty
 
 %package -n texlive-musixtex
-Version:        %{texlive_version}.%{texlive_noarch}.1.35svn60382
+Version:        %{texlive_version}.%{texlive_noarch}.1.36svn65519
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Sophisticated music typesetting
@@ -28860,6 +29206,7 @@ Provides:       tex(musixlit.tex)
 Provides:       tex(musixltx.tex)
 Provides:       tex(musixlyr.tex)
 Provides:       tex(musixmad.tex)
+Provides:       tex(musixmkm.tex)
 Provides:       tex(musixper.tex)
 Provides:       tex(musixplt.tex)
 Provides:       tex(musixpoi.tex)
@@ -28874,15 +29221,16 @@ Provides:       tex(musixstr.tex)
 Provides:       tex(musixsty.tex)
 Provides:       tex(musixtex.sty)
 Provides:       tex(musixtex.tex)
+Provides:       tex(musixthacc.tex)
 Provides:       tex(musixtmr.tex)
 Provides:       tex(musixtri.tex)
 Provides:       tex(musixvbm.tex)
 Provides:       tex(tuplet.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source283:      musixtex.tar.xz
-Source284:      musixtex.doc.tar.xz
-Source285:      musixtex_various.dif
+# from 20230311
+Source287:      musixtex.tar.xz
+Source288:      musixtex.doc.tar.xz
+Source289:      musixtex_various.dif
 
 %description -n texlive-musixtex
 MusiXTeX provides a set of macros, based on the earlier
@@ -28900,12 +29248,13 @@ the pmx preprocessor compiles a simpler input language to
 MusiXTeX macros..
 
 %package -n texlive-musixtex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.35svn60382
+Version:        %{texlive_version}.%{texlive_noarch}.1.36svn65519
 Release:        0
 Summary:        Documentation for texlive-musixtex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musixtex and texlive-alldocumentation)
 Provides:       man(musixflx.1)
 Provides:       man(musixtex.1)
 
@@ -29126,6 +29475,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/musixtex/musixlit.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixlyr.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixmad.tex
+%{_texmfdistdir}/tex/generic/musixtex/musixmkm.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixper.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixplt.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixpoi.tex
@@ -29139,6 +29489,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/musixtex/musixstr.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixsty.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixtex.tex
+%{_texmfdistdir}/tex/generic/musixtex/musixthacc.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixtmr.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixtri.tex
 %{_texmfdistdir}/tex/generic/musixtex/musixvbm.tex
@@ -29152,7 +29503,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/musixtex/pdfmusixtex.ins
 
 %package -n texlive-musixtex-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn60381
+Version:        %{texlive_version}.%{texlive_noarch}.svn65517
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Fonts used by MusixTeX
@@ -29192,6 +29543,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-musixtex-fonts-fonts >= %{texlive_version}
 Suggests:       texlive-musixtex-fonts-doc >= %{texlive_version}
 Provides:       tex(MuseJazzText.tfm)
+Provides:       tex(feta20.tfm)
 Provides:       tex(frenchtab.tfm)
 Provides:       tex(musix.map)
 Provides:       tex(musix11.tfm)
@@ -29276,9 +29628,9 @@ Provides:       tex(xslz20.tfm)
 Provides:       tex(xslz20d.tfm)
 Provides:       tex(xtie20.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source286:      musixtex-fonts.tar.xz
-Source287:      musixtex-fonts.doc.tar.xz
+# from 20230311
+Source290:      musixtex-fonts.tar.xz
+Source291:      musixtex-fonts.doc.tar.xz
 
 %description -n texlive-musixtex-fonts
 These are fonts for use with MusixTeX; they are provided both
@@ -29287,18 +29639,19 @@ bundle renders the older (Type 1 fonts only) bundle
 musixtex-t1fonts obsolete.
 
 %package -n texlive-musixtex-fonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn60381
+Version:        %{texlive_version}.%{texlive_noarch}.svn65517
 Release:        0
 Summary:        Documentation for texlive-musixtex-fonts
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musixtex-fonts and texlive-alldocumentation)
 
 %description -n texlive-musixtex-fonts-doc
 This package includes the documentation for texlive-musixtex-fonts
 
 %package -n texlive-musixtex-fonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn60381
+Version:        %{texlive_version}.%{texlive_noarch}.svn65517
 Release:        0
 Summary:        Severed fonts for texlive-musixtex-fonts
 License:        GPL-2.0-or-later
@@ -29307,9 +29660,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-musixtex-fonts-fonts
 The  separated fonts package for texlive-musixtex-fonts
@@ -29448,6 +29799,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/public/musixtex-fonts/xslz20d.mf
 %{_texmfdistdir}/fonts/source/public/musixtex-fonts/xtie20.mf
 %{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/MuseJazzText.tfm
+%{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/feta20.tfm
 %{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/frenchtab.tfm
 %{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/musix11.tfm
 %{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/musix13.tfm
@@ -29531,6 +29883,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/xslz20d.tfm
 %{_texmfdistdir}/fonts/tfm/public/musixtex-fonts/xtie20.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/public/musixtex-fonts/MuseJazzText.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/musixtex-fonts/feta20.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/musixtex-fonts/frenchtab.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/musixtex-fonts/musix11.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/musixtex-fonts/musix13.pfb
@@ -29618,11 +29971,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-musixtex-fonts.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-musixtex-fonts.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-musixtex-fonts.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-musixtex-fonts/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-musixtex-fonts/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-musixtex-fonts/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-musixtex-fonts/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-musixtex-fonts/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-musixtex-fonts/fonts.scale
 %{_datadir}/fonts/texlive-musixtex-fonts/MuseJazzText.otf
 %{_datadir}/fonts/texlive-musixtex-fonts/MuseJazzText.pfb
+%{_datadir}/fonts/texlive-musixtex-fonts/feta20.pfb
 %{_datadir}/fonts/texlive-musixtex-fonts/frenchtab.pfb
 %{_datadir}/fonts/texlive-musixtex-fonts/musix11.pfb
 %{_datadir}/fonts/texlive-musixtex-fonts/musix13.pfb
@@ -29738,9 +30092,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-musixtnt-doc >= %{texlive_version}
 Provides:       tex(musixtnt.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source288:      musixtnt.tar.xz
-Source289:      musixtnt.doc.tar.xz
+# from 20230311
+Source292:      musixtnt.tar.xz
+Source293:      musixtnt.doc.tar.xz
 
 %description -n texlive-musixtnt
 The package includes an archive containing a MusiXTeX extension
@@ -29767,6 +30121,7 @@ Summary:        Documentation for texlive-musixtnt
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musixtnt and texlive-alldocumentation)
 Provides:       man(msxlint.1)
 
 %description -n texlive-musixtnt-doc
@@ -29848,9 +30203,9 @@ Requires:       tex(txfonts.sty)
 Requires:       tex(verse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source290:      musuos.tar.xz
-Source291:      musuos.doc.tar.xz
+# from 20230311
+Source294:      musuos.tar.xz
+Source295:      musuos.doc.tar.xz
 
 %description -n texlive-musuos
 The package provides a LaTeX class for typesetting term papers
@@ -29865,6 +30220,7 @@ Summary:        Documentation for texlive-musuos
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-musuos and texlive-alldocumentation)
 
 %description -n texlive-musuos-doc
 This package includes the documentation for texlive-musuos
@@ -29931,9 +30287,9 @@ Requires:       tex(report.cls)
 Requires:       tex(setspace.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source292:      muthesis.tar.xz
-Source293:      muthesis.doc.tar.xz
+# from 20230311
+Source296:      muthesis.tar.xz
+Source297:      muthesis.doc.tar.xz
 
 %description -n texlive-muthesis
 The bundle provides thesis and project report document classes
@@ -29947,6 +30303,7 @@ Summary:        Documentation for texlive-muthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-muthesis and texlive-alldocumentation)
 
 %description -n texlive-muthesis-doc
 This package includes the documentation for texlive-muthesis
@@ -30007,9 +30364,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mversion-doc >= %{texlive_version}
 Provides:       tex(mVersion.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source294:      mversion.tar.xz
-Source295:      mversion.doc.tar.xz
+# from 20230311
+Source298:      mversion.tar.xz
+Source299:      mversion.doc.tar.xz
 
 %description -n texlive-mversion
 The package enables the user to keep track of different
@@ -30026,6 +30383,7 @@ Summary:        Documentation for texlive-mversion
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mversion and texlive-alldocumentation)
 
 %description -n texlive-mversion-doc
 This package includes the documentation for texlive-mversion
@@ -30094,9 +30452,9 @@ Provides:       tex(mwbk11.clo)
 Provides:       tex(mwbk12.clo)
 Provides:       tex(mwrep.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source296:      mwcls.tar.xz
-Source297:      mwcls.doc.tar.xz
+# from 20230311
+Source300:      mwcls.tar.xz
+Source301:      mwcls.doc.tar.xz
 
 %description -n texlive-mwcls
 mwcls is a set of document classes for LaTeX 2e designed with
@@ -30118,6 +30476,7 @@ Summary:        Documentation for texlive-mwcls
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mwcls and texlive-alldocumentation)
 Provides:       locale(texlive-mwcls-doc:pl;en)
 
 %description -n texlive-mwcls-doc
@@ -30160,7 +30519,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/mwcls/mwrep.cls
 
 %package -n texlive-mwe
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Packages and image files for MWEs
@@ -30219,9 +30578,9 @@ Requires:       tex(blindtext.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(lipsum.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source298:      mwe.tar.xz
-Source299:      mwe.doc.tar.xz
+# from 20230311
+Source302:      mwe.tar.xz
+Source303:      mwe.doc.tar.xz
 
 %description -n texlive-mwe
 The bundle provides several files useful when creating a
@@ -30234,12 +30593,13 @@ commands, without the need to share image files or to use
 replacement code.
 
 %package -n texlive-mwe-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn64967
 Release:        0
 Summary:        Documentation for texlive-mwe
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mwe and texlive-alldocumentation)
 
 %description -n texlive-mwe-doc
 This package includes the documentation for texlive-mwe
@@ -30392,9 +30752,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mweights-doc >= %{texlive_version}
 Provides:       tex(mweights.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source300:      mweights.tar.xz
-Source301:      mweights.doc.tar.xz
+# from 20230311
+Source304:      mweights.tar.xz
+Source305:      mweights.doc.tar.xz
 
 %description -n texlive-mweights
 Many font families available for use with LaTeX are available
@@ -30412,6 +30772,7 @@ Summary:        Documentation for texlive-mweights
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mweights and texlive-alldocumentation)
 
 %description -n texlive-mweights-doc
 This package includes the documentation for texlive-mweights
@@ -30492,9 +30853,9 @@ Provides:       tex(uxuc.fd)
 Provides:       tex(xuc10.tfm)
 Provides:       tex(xucuri.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source302:      mxedruli.tar.xz
-Source303:      mxedruli.doc.tar.xz
+# from 20230311
+Source306:      mxedruli.tar.xz
+Source307:      mxedruli.doc.tar.xz
 
 %description -n texlive-mxedruli
 Two Georgian fonts, in both Metafont and Type 1 formats, which
@@ -30507,6 +30868,7 @@ Summary:        Documentation for texlive-mxedruli
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mxedruli and texlive-alldocumentation)
 
 %description -n texlive-mxedruli-doc
 This package includes the documentation for texlive-mxedruli
@@ -30521,9 +30883,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-mxedruli-fonts
 The  separated fonts package for texlive-mxedruli
@@ -30603,9 +30963,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-mxedruli
 %{_datadir}/fontconfig/conf.avail/58-texlive-mxedruli.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mxedruli/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mxedruli/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-mxedruli/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mxedruli/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mxedruli/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-mxedruli/fonts.scale
 %{_datadir}/fonts/texlive-mxedruli/mxed10.pfb
 %{_datadir}/fonts/texlive-mxedruli/mxedbf10.pfb
 %{_datadir}/fonts/texlive-mxedruli/mxedc10.pfb
@@ -30675,9 +31035,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source304:      mycv.tar.xz
-Source305:      mycv.doc.tar.xz
+# from 20230311
+Source308:      mycv.tar.xz
+Source309:      mycv.doc.tar.xz
 
 %description -n texlive-mycv
 The class provides a set of functionality for writing
@@ -30696,6 +31056,7 @@ Summary:        Documentation for texlive-mycv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mycv and texlive-alldocumentation)
 
 %description -n texlive-mycv-doc
 This package includes the documentation for texlive-mycv
@@ -30771,9 +31132,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mylatex-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source306:      mylatex.tar.xz
-Source307:      mylatex.doc.tar.xz
+# from 20230311
+Source310:      mylatex.tar.xz
+Source311:      mylatex.doc.tar.xz
 
 %description -n texlive-mylatex
 The file mylatex.ltx permits you to create a format that
@@ -30793,6 +31154,7 @@ Summary:        Documentation for texlive-mylatex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mylatex and texlive-alldocumentation)
 
 %description -n texlive-mylatex-doc
 This package includes the documentation for texlive-mylatex
@@ -30851,9 +31213,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-mylatexformat-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source308:      mylatexformat.tar.xz
-Source309:      mylatexformat.doc.tar.xz
+# from 20230311
+Source312:      mylatexformat.tar.xz
+Source313:      mylatexformat.doc.tar.xz
 
 %description -n texlive-mylatexformat
 The use of formats helps to speed up compilations: packages
@@ -30870,6 +31232,7 @@ Summary:        Documentation for texlive-mylatexformat
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mylatexformat and texlive-alldocumentation)
 
 %description -n texlive-mylatexformat-doc
 This package includes the documentation for texlive-mylatexformat
@@ -30946,9 +31309,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source310:      mynsfc.tar.xz
-Source311:      mynsfc.doc.tar.xz
+# from 20230311
+Source314:      mynsfc.tar.xz
+Source315:      mynsfc.doc.tar.xz
 
 %description -n texlive-mynsfc
 The package provides a XeLaTeX template for writing the main
@@ -30964,6 +31327,7 @@ Summary:        Documentation for texlive-mynsfc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-mynsfc and texlive-alldocumentation)
 
 %description -n texlive-mynsfc-doc
 This package includes the documentation for texlive-mynsfc
@@ -31033,9 +31397,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-merriweather/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-merriweather/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-merriweather/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-merriweather/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-merriweather/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-merriweather/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-merriweather.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31102,9 +31465,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-metapost/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-metapost/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-metapost/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-metapost/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-metapost/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-metapost/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-metapost.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31199,9 +31561,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-mflogo-font/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-mflogo-font/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mflogo-font/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mflogo-font/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-mflogo-font/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-mflogo-font/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-mflogo-font.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31251,9 +31612,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-miama/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-miama/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-miama/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-miama/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-miama/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-miama/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-miama.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31362,9 +31722,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-mintspirit/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-mintspirit/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mintspirit/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mintspirit/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-mintspirit/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-mintspirit/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-mintspirit.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31418,9 +31777,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-missaali/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-missaali/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-missaali/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-missaali/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-missaali/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-missaali/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-missaali.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31511,9 +31869,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-mlmodern/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-mlmodern/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mlmodern/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mlmodern/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-mlmodern/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-mlmodern/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-mlmodern.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31554,9 +31911,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-mnsymbol/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-mnsymbol/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mnsymbol/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mnsymbol/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-mnsymbol/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-mnsymbol/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-mnsymbol.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31639,9 +31995,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-montex/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-montex/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-montex/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-montex/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-montex/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-montex/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-montex.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31672,9 +32027,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-montserrat/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-montserrat/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-montserrat/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-montserrat/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-montserrat/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-montserrat/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-montserrat.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31756,7 +32110,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive
-    rm -vrf %{buildroot}%{_texmfdistdir}/scripts/context/stubs/mswin
     # Correct wrong perl scripts if any
     for scr in %{_texmfdistdir}/scripts/context/perl/mptopdf.pl
     do
@@ -31831,10 +32184,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:285}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:289}
     popd
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/scripts/musixtex/musixflx.bat
@@ -31858,8 +32215,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/musixtex-fonts/*.{pf[ab],[ot]tf} \
@@ -31870,9 +32227,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-musixtex-fonts/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-musixtex-fonts/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-musixtex-fonts.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31911,12 +32267,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-musixtex-fonts.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-musixtex-fonts.conf
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31927,6 +32279,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-mxedruli
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/mxedruli/*.{pf[ab],[ot]tf}
@@ -31936,9 +32292,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-mxedruli/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-mxedruli/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mxedruli/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-mxedruli/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-mxedruli/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-mxedruli/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-mxedruli.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -31957,20 +32312,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/mycv/checksum.pl
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
