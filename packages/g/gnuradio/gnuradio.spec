@@ -16,14 +16,14 @@
 #
 
 
-%define sover  3_10_5
+%define sover  3_10_6
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
 %bcond_without docs
 Name:           gnuradio
-Version:        3.10.5.1
+Version:        3.10.6.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
@@ -34,6 +34,7 @@ Source0:        https://github.com/gnuradio/gnuradio/archive/refs/tags/v%{versio
 Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
+Patch1:         gnuradio-not-install-freedesktop-files.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.16.3
 BuildRequires:  codec2-devel
@@ -177,7 +178,9 @@ performance wireless devices into software problems.
 This package contains some examples of using GNU Radio.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1 -R
 
 # protect the template files from %%cmake macro magic / mangling
 find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}' '{}.tmpl' \;
