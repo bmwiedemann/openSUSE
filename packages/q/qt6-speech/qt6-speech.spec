@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-speech
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtspeech-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-speech%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 TextToSpeech Library and Plugin
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -35,11 +35,11 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Multimedia)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 # flite is not in openSUSE Factory
 # BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  pkgconfig(speech-dispatcher)
