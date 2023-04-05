@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * applets/taskmanager: don't refresh virtual desktop info when menu item is not enabled
+  * applets/taskmanager: skip updating tooltip when it's disabled (kde#467709)
+  * Divide minimum panel size by two when not floating (kde#466098)
+  * applets/taskmanager: press menu key to open task menu
+  * applets/kicker: Hide separators when sorted alphabetically (kde#465865)
+  * Activate Emoji Selector using emoji key
+
+-------------------------------------------------------------------
 Tue Mar 14 15:06:00 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
