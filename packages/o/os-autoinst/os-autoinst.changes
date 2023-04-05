@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 05 18:28:37 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1680543297.d2a0a8b:
+  * ci: Add slash to directories in codecov.yml
+  * container: Provide jq for convenience in downstream jobs
+  * ci: Prevent module clash in code coverage
+  * ci: Fix fully covered codecov paths
+  * Turn around default of script_run, see #1807
+
+-------------------------------------------------------------------
 Sun Apr 02 16:49:57 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1680454188.7ce59f8:
