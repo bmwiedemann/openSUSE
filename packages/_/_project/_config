@@ -1305,6 +1305,7 @@ BuildFlags: onlybuild:FastCGI
 BuildFlags: onlybuild:ImageMagick
 BuildFlags: onlybuild:Imath
 BuildFlags: onlybuild:Mesa
+BuildFlags: onlybuild:Mesa-demo
 BuildFlags: onlybuild:Mesa:drivers
 BuildFlags: onlybuild:ModemManager
 BuildFlags: onlybuild:Modules
@@ -1333,6 +1334,7 @@ BuildFlags: onlybuild:apparmor
 BuildFlags: onlybuild:apparmor-rpm-macros
 BuildFlags: onlybuild:appstream-glib
 BuildFlags: onlybuild:apr
+BuildFlags: onlybuild:apulse
 BuildFlags: onlybuild:apr-util
 BuildFlags: onlybuild:argon2
 BuildFlags: onlybuild:argyllcms
@@ -1519,6 +1521,7 @@ BuildFlags: onlybuild:ftgl
 BuildFlags: onlybuild:fuse
 BuildFlags: onlybuild:fuse3
 BuildFlags: onlybuild:gawk
+BuildFlags: onlybuild:gamemode
 BuildFlags: onlybuild:gc
 BuildFlags: onlybuild:gcab
 BuildFlags: onlybuild:gcc
@@ -2026,6 +2029,7 @@ BuildFlags: onlybuild:malaga-suomi
 BuildFlags: onlybuild:malcontent
 BuildFlags: onlybuild:man
 BuildFlags: onlybuild:man-pages
+BuildFlags: onlybuild:mangohud
 BuildFlags: onlybuild:mandoc
 BuildFlags: onlybuild:mariadb-connector-c
 BuildFlags: onlybuild:mcstrans
@@ -2906,6 +2910,7 @@ BuildFlags: onlybuild:spice-protocol
 BuildFlags: onlybuild:spirv-headers
 BuildFlags: onlybuild:spirv-llvm-translator
 BuildFlags: onlybuild:spirv-tools
+BuildFlags: onlybuild:spdlog
 BuildFlags: onlybuild:sqlite3
 BuildFlags: onlybuild:squashfs
 BuildFlags: onlybuild:sratom
@@ -3034,6 +3039,7 @@ BuildFlags: onlybuild:vo-amrwbenc
 BuildFlags: onlybuild:vte
 BuildFlags: onlybuild:vulkan-headers
 BuildFlags: onlybuild:vulkan-loader
+BuildFlags: onlybuild:vulkan-tools
 BuildFlags: onlybuild:w3m
 BuildFlags: onlybuild:waf
 BuildFlags: onlybuild:wayland
@@ -3085,6 +3091,7 @@ BuildFlags: onlybuild:xmlstarlet
 BuildFlags: onlybuild:xmlto
 BuildFlags: onlybuild:xmltoman
 BuildFlags: onlybuild:xmodmap
+BuildFlags: onlybuild:xf86-video-intel
 BuildFlags: onlybuild:xorg-cf-files
 BuildFlags: onlybuild:xorg-sgml-doctools
 BuildFlags: onlybuild:xorg-x11
