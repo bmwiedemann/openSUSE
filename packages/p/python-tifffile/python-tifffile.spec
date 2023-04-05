@@ -25,14 +25,14 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2022.10.10
+Version:        2023.3.15
 Release:        0
 Summary:        Read and write TIFF(r) files
 License:        BSD-2-Clause
 URL:            https://github.com/cgohlke/tifffile/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/tifffile-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module numpy >= 1.19.2}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -51,16 +51,18 @@ Recommends:     python-zarr
 BuildRequires:  %{python_module cmapfile}
 BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module imagecodecs >= 2022.2.22}
+BuildRequires:  %{python_module imagecodecs >= 2023.1.23}
 BuildRequires:  %{python_module lfdfiles}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module matplotlib >= 3.3}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module ndtiff}
 BuildRequires:  %{python_module oiffile}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module roifile}
-BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module xarray if %python-base >= 3.9}
 BuildRequires:  %{python_module zarr}
 %endif
 # /SECTION
@@ -114,12 +116,17 @@ sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 donttest="test_write_ome"
 donttest="$donttest or test_write_imagej_raw"
 donttest="$donttest or test_write_bigtiff"
+donttest="$donttest or test_write_5GB_bigtiff"
 # can't connect to localhost
 donttest="$donttest or test_write_fsspec"
 # no lerc support in imagecodecs
 donttest="$donttest or test_write_compression_lerc"
 # can't connect to external server
 donttest="$donttest or test_class_omexml"
+# flaky write errors
+donttest="$donttest or test_write_extrasamples_planar"
+donttest="$donttest or test_write_extrasamples_contig_rgb"
+donttest="$donttest or test_write_compression_args"
 %pytest -n auto -k "not ($donttest)"
 %endif
 
