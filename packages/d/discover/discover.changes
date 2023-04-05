@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * rpm-ostree: Improve handling of externally started transactions
+  * rpm-ostree: Correctly set fetching and transaction state
+  * rpm-ostree: Unify transaction setup in a single function
+  * pk: Clear the offline state before starting a new one (kde#467638)
+  * notifier: Don't show updates notification if Discover is running
+  * pk: Do not create a QSet unnecessarily for isPackageNameUpgradeable
+  * pk: Group getUpdateDetail calls into one
+  * pk: Group offline updates resource size notifications
+  * PackageKitNotifier: Do not refresh database if an offline update is pending
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
