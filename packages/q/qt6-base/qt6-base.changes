@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  3 10:01:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * https://www.qt.io/blog/qt-6.5-lts-released
+- Drop patch, merged upstream:
+  * 0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 09:59:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.4.3:

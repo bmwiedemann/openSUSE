@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,7 +39,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-Avoid-resetting-CMAKE_AUTOMOC_MACRO_NAMES.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
@@ -401,7 +400,6 @@ ABI or API guarantees.
 Summary:        Qt 6 OpenGLWidgets library
 Requires:       libQt6Widgets6 = %{version}
 
-# FIXME
 %description -n libQt6OpenGLWidgets6
 The Qt OpenGL Widgets module provides an OpenGLWidgets class that can be used
 like any other Qt widget, except that it opens an OpenGL display
@@ -721,7 +719,7 @@ cp src/3rdparty/freetype/LICENSE.txt src/gui/painting/FREETYPE_LICENSE.txt
 sed -i 's#../../3rdparty/freetype/LICENSE.txt#FREETYPE_LICENSE.txt#' src/gui/painting/qt_attribution.json
 
 # We don't want to use these 3rdparty libraries
-rm -r src/3rdparty/{double-conversion,libjpeg,libpng,freetype,harfbuzz-ng,sqlite,xcb,zlib}
+rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng,pcre2,sqlite,xcb,zlib}
 
 # Empty file used for the meta packages
 cat >> meta_package << EOF
@@ -787,13 +785,6 @@ mkdir -p %{buildroot}%{_qt6_translationsdir}
 
 %{qt6_link_executables}
 
-# This is not an executable, no need to have a symlink
-rm %{buildroot}%{_bindir}/qt-cmake-private-install.cmake6
-
-# rpmlint
-# E: env-script-interpreter
-sed -i 's#env perl#perl#' %{buildroot}%{_qt6_libexecdir}/syncqt.pl
-
 # CMake modules for plugins are not useful
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
@@ -805,6 +796,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
 rm %{buildroot}%{_qt6_libexecdir}/android_*.sh
 rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
 rm %{buildroot}%{_qt6_libexecdir}/qt-testrunner.py
+rm %{buildroot}%{_qt6_libexecdir}/sanitizer-testrunner.py
 
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
@@ -843,22 +835,17 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_bindir}/qdbuscpp2xml6
 %{_bindir}/qdbusxml2cpp6
 %{_bindir}/qmake6
-%{_bindir}/qtpaths6
 %{_bindir}/qt-cmake6
-%{_bindir}/qt-cmake-private6
-%{_bindir}/qt-cmake-standalone-test6
 %{_bindir}/qt-configure-module6
+%{_bindir}/qtpaths6
 %{_qt6_bindir}/androiddeployqt
 %{_qt6_bindir}/androidtestrunner
 %{_qt6_bindir}/qdbuscpp2xml
 %{_qt6_bindir}/qdbusxml2cpp
 %{_qt6_bindir}/qmake
-%{_qt6_bindir}/qtpaths
 %{_qt6_bindir}/qt-cmake
-%{_qt6_bindir}/qt-cmake-private
-%{_qt6_bindir}/qt-cmake-private-install.cmake
-%{_qt6_bindir}/qt-cmake-standalone-test
 %{_qt6_bindir}/qt-configure-module
+%{_qt6_bindir}/qtpaths
 %{_qt6_cmakedir}/Qt6/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfig.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersion.cmake
@@ -870,11 +857,15 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libexecdir}/cmake_automoc_parser
 %{_qt6_libexecdir}/moc
 %{_qt6_libexecdir}/qlalr
+%{_qt6_libexecdir}/qt-cmake-private
+%{_qt6_libexecdir}/qt-cmake-private-install.cmake
+%{_qt6_libexecdir}/qt-cmake-standalone-test
 %{_qt6_libexecdir}/qt-internal-configure-tests
 %{_qt6_libexecdir}/qvkgen
 %{_qt6_libexecdir}/rcc
-%{_qt6_libexecdir}/syncqt.pl
+%{_qt6_libexecdir}/syncqt
 %{_qt6_libexecdir}/tracegen
+%{_qt6_libexecdir}/tracepointgen
 %{_qt6_libexecdir}/uic
 %{_qt6_mkspecsdir}/*
 %{_qt6_pkgconfigdir}/Qt6Platform.pc
