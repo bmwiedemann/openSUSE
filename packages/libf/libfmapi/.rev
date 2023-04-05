@@ -59,4 +59,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038460</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c25cc57873504c5d931dd74bf263f067</srcmd5>
+    <version>20230405</version>
+    <time>1680722914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230405</comment>
+    <requestid>1077495</requestid>
+  </revision>
 </revisionlist>
