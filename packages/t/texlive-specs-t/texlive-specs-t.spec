@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-specs-t
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define texlive_version  2022
-%define texlive_previous 2021
-%define texlive_release  20220321
-%define texlive_noarch   196
-%define biber_version    2.17
+%define texlive_version  2023
+%define texlive_previous 2022
+%define texlive_release  20230311
+%define texlive_noarch   201
+%define biber_version    2.18
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -56,13 +56,16 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-t
-Version:        2022
+Version:        2023
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+BuildRequires:  mkfontdir
+BuildRequires:  mkfontscale
 BuildRequires:  t1utils
 BuildRequires:  texlive-filesystem
+BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for t
@@ -114,7 +117,7 @@ Requires:       tex(luatex85.sty)
 Requires:       tex(preview.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source1:        pst-pdf.tar.xz
 Source2:        pst-pdf.doc.tar.xz
 
@@ -135,6 +138,7 @@ Summary:        Documentation for texlive-pst-pdf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-pdf and texlive-alldocumentation)
 Provides:       locale(texlive-pst-pdf-doc:de;en)
 
 %description -n texlive-pst-pdf-doc
@@ -207,7 +211,7 @@ Provides:       tex(pst-pdgr.sty)
 Provides:       tex(pst-pdgr.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source3:        pst-pdgr.tar.xz
 Source4:        pst-pdgr.doc.tar.xz
 
@@ -227,6 +231,7 @@ Summary:        Documentation for texlive-pst-pdgr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-pdgr and texlive-alldocumentation)
 
 %description -n texlive-pst-pdgr-doc
 This package includes the documentation for texlive-pst-pdgr
@@ -294,7 +299,7 @@ Provides:       tex(pst-perspective.tex)
 Requires:       tex(pst-grad.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source5:        pst-perspective.tar.xz
 Source6:        pst-perspective.doc.tar.xz
 
@@ -310,6 +315,7 @@ Summary:        Documentation for texlive-pst-perspective
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-perspective and texlive-alldocumentation)
 Provides:       locale(texlive-pst-perspective-doc:de;en)
 
 %description -n texlive-pst-perspective-doc
@@ -380,7 +386,7 @@ Requires:       tex(pst-3d.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source7:        pst-platon.tar.xz
 Source8:        pst-platon.doc.tar.xz
 
@@ -395,6 +401,7 @@ Summary:        Documentation for texlive-pst-platon
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-platon and texlive-alldocumentation)
 
 %description -n texlive-pst-platon-doc
 This package includes the documentation for texlive-pst-platon
@@ -429,7 +436,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-platon/pst-platon.sty
 
 %package -n texlive-pst-plot
-Version:        %{texlive_version}.%{texlive_noarch}.1.93svn60620
+Version:        %{texlive_version}.%{texlive_noarch}.1.94svn65346
 Release:        0
 License:        LPPL-1.0
 Summary:        Plot data using PSTricks
@@ -463,7 +470,7 @@ Requires:       tex(multido.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source9:        pst-plot.tar.xz
 Source10:       pst-plot.doc.tar.xz
 
@@ -473,12 +480,13 @@ files), using PSTricks. Plots may be configured using a wide
 variety of parameters.
 
 %package -n texlive-pst-plot-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.93svn60620
+Version:        %{texlive_version}.%{texlive_noarch}.1.94svn65346
 Release:        0
 Summary:        Documentation for texlive-pst-plot
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-plot and texlive-alldocumentation)
 Provides:       locale(texlive-pst-plot-doc:en)
 
 %description -n texlive-pst-plot-doc
@@ -533,7 +541,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-plot/pst-plot.sty
 
 %package -n texlive-pst-poker
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.03asvn53482
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.03bsvn65818
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        Drawing poker cards
@@ -567,7 +575,7 @@ Requires:       tex(pst-blur.sty)
 Requires:       tex(pst-fill.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source11:       pst-poker.tar.xz
 Source12:       pst-poker.doc.tar.xz
 
@@ -576,12 +584,13 @@ This PSTricks related package can create poker cards in various
 manners.
 
 %package -n texlive-pst-poker-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.03asvn53482
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.03bsvn65818
 Release:        0
 Summary:        Documentation for texlive-pst-poker
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-poker and texlive-alldocumentation)
 
 %description -n texlive-pst-poker-doc
 This package includes the documentation for texlive-pst-poker
@@ -614,29 +623,53 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pst-poker
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-club-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-club-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-club-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-club-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-diamond-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-diamond-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-diamond-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-diamond-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-heart-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-heart-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-heart-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-heart-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-spade-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-spade-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Jack-spade-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Jack-spade-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-club-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-club-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-club-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-club-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-diamond-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-diamond-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-diamond-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-diamond-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-heart-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-heart-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-heart-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-heart-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-spade-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-spade-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/King-spade-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/King-spade-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-club-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-club-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-club-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-club-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-diamond-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-diamond-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-diamond-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-diamond-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-heart-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-heart-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-heart-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-heart-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-spade-bw.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-spade-bw.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/Queen-spade-color.eps
+%{_texmfdistdir}/tex/latex/pst-poker/Queen-spade-color.pdf
 %{_texmfdistdir}/tex/latex/pst-poker/pst-poker.sty
 
 %package -n texlive-pst-poly
@@ -671,7 +704,7 @@ Provides:       tex(pst-poly.sty)
 Provides:       tex(pst-poly.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source13:       pst-poly.tar.xz
 Source14:       pst-poly.doc.tar.xz
 
@@ -690,6 +723,7 @@ Summary:        Documentation for texlive-pst-poly
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-poly and texlive-alldocumentation)
 
 %description -n texlive-pst-poly-doc
 This package includes the documentation for texlive-pst-poly
@@ -725,7 +759,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-poly/pst-poly.sty
 
 %package -n texlive-pst-pulley
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn45316
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn62977
 Release:        0
 License:        LPPL-1.0
 Summary:        Plot pulleys, using PSTricks
@@ -756,7 +790,7 @@ Provides:       tex(pst-pulley.sty)
 Provides:       tex(pst-pulley.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source15:       pst-pulley.tar.xz
 Source16:       pst-pulley.doc.tar.xz
 
@@ -767,12 +801,13 @@ properties of the system. The package uses pstricks and
 requires several PSTricks-related packages.
 
 %package -n texlive-pst-pulley-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn45316
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn62977
 Release:        0
 Summary:        Documentation for texlive-pst-pulley
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-pulley and texlive-alldocumentation)
 
 %description -n texlive-pst-pulley-doc
 This package includes the documentation for texlive-pst-pulley
@@ -840,7 +875,7 @@ Provides:       tex(pst-qtree.tex)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pst-tree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source17:       pst-qtree.tar.xz
 Source18:       pst-qtree.doc.tar.xz
 
@@ -854,6 +889,7 @@ Summary:        Documentation for texlive-pst-qtree
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-qtree and texlive-alldocumentation)
 
 %description -n texlive-pst-qtree-doc
 This package includes the documentation for texlive-pst-qtree
@@ -920,7 +956,7 @@ Provides:       tex(pst-rputover.tex)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source19:       pst-rputover.tar.xz
 Source20:       pst-rputover.doc.tar.xz
 
@@ -935,6 +971,7 @@ Summary:        Documentation for texlive-pst-rputover
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-rputover and texlive-alldocumentation)
 
 %description -n texlive-pst-rputover-doc
 This package includes the documentation for texlive-pst-rputover
@@ -1000,7 +1037,7 @@ Provides:       tex(pst-rubans.sty)
 Provides:       tex(pst-rubans.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source21:       pst-rubans.tar.xz
 Source22:       pst-rubans.doc.tar.xz
 
@@ -1019,6 +1056,7 @@ Summary:        Documentation for texlive-pst-rubans
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-rubans and texlive-alldocumentation)
 
 %description -n texlive-pst-rubans-doc
 This package includes the documentation for texlive-pst-rubans
@@ -1085,7 +1123,7 @@ Provides:       tex(pst-shell.sty)
 Provides:       tex(pst-shell.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source23:       pst-shell.tar.xz
 Source24:       pst-shell.doc.tar.xz
 
@@ -1105,6 +1143,7 @@ Summary:        Documentation for texlive-pst-shell
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-shell and texlive-alldocumentation)
 
 %description -n texlive-pst-shell-doc
 This package includes the documentation for texlive-pst-shell
@@ -1195,7 +1234,7 @@ Provides:       tex(pst-sigsys.sty)
 Provides:       tex(pst-sigsys.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source25:       pst-sigsys.tar.xz
 Source26:       pst-sigsys.doc.tar.xz
 
@@ -1217,6 +1256,7 @@ Summary:        Documentation for texlive-pst-sigsys
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-sigsys and texlive-alldocumentation)
 
 %description -n texlive-pst-sigsys-doc
 This package includes the documentation for texlive-pst-sigsys
@@ -1283,7 +1323,7 @@ Provides:       tex(pst-slpe.sty)
 Provides:       tex(pst-slpe.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source27:       pst-slpe.tar.xz
 Source28:       pst-slpe.doc.tar.xz
 
@@ -1305,6 +1345,7 @@ Summary:        Documentation for texlive-pst-slpe
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-slpe and texlive-alldocumentation)
 
 %description -n texlive-pst-slpe-doc
 This package includes the documentation for texlive-pst-slpe
@@ -1370,7 +1411,7 @@ Provides:       tex(pst-solarsystem.sty)
 Provides:       tex(pst-solarsystem.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source29:       pst-solarsystem.tar.xz
 Source30:       pst-solarsystem.doc.tar.xz
 
@@ -1390,6 +1431,7 @@ Summary:        Documentation for texlive-pst-solarsystem
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-solarsystem and texlive-alldocumentation)
 
 %description -n texlive-pst-solarsystem-doc
 This package includes the documentation for texlive-pst-solarsystem
@@ -1457,7 +1499,7 @@ Provides:       tex(pst-solides3d.sty)
 Provides:       tex(pst-solides3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source31:       pst-solides3d.tar.xz
 Source32:       pst-solides3d.doc.tar.xz
 
@@ -1479,6 +1521,7 @@ Summary:        Documentation for texlive-pst-solides3d
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-solides3d and texlive-alldocumentation)
 Provides:       locale(texlive-pst-solides3d-doc:en)
 
 %description -n texlive-pst-solides3d-doc
@@ -1677,7 +1720,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks-add.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source33:       pst-soroban.tar.xz
 Source34:       pst-soroban.doc.tar.xz
 
@@ -1692,6 +1735,7 @@ Summary:        Documentation for texlive-pst-soroban
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-soroban and texlive-alldocumentation)
 
 %description -n texlive-pst-soroban-doc
 This package includes the documentation for texlive-pst-soroban
@@ -1759,7 +1803,7 @@ Requires:       tex(multido.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source35:       pst-spectra.tar.xz
 Source36:       pst-spectra.doc.tar.xz
 
@@ -1777,6 +1821,7 @@ Summary:        Documentation for texlive-pst-spectra
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-spectra and texlive-alldocumentation)
 Provides:       locale(texlive-pst-spectra-doc:fr;en)
 
 %description -n texlive-pst-spectra-doc
@@ -1812,7 +1857,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-spectra/pst-spectra.sty
 
 %package -n texlive-pst-spinner
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn66115
 Release:        0
 License:        LPPL-1.0
 Summary:        Drawing a fidget spinner
@@ -1844,7 +1889,7 @@ Provides:       tex(pst-spinner.tex)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source37:       pst-spinner.tar.xz
 Source38:       pst-spinner.doc.tar.xz
 
@@ -1856,12 +1901,13 @@ Spinner. You can run the PSTricks related documents with
 XeLaTeX.
 
 %package -n texlive-pst-spinner-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn66115
 Release:        0
 Summary:        Documentation for texlive-pst-spinner
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-spinner and texlive-alldocumentation)
 
 %description -n texlive-pst-spinner-doc
 This package includes the documentation for texlive-pst-spinner
@@ -1932,7 +1978,7 @@ Provides:       tex(pst-stru.tex)
 Requires:       tex(multido.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source39:       pst-stru.tar.xz
 Source40:       pst-stru.doc.tar.xz
 
@@ -1948,6 +1994,7 @@ Summary:        Documentation for texlive-pst-stru
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-stru and texlive-alldocumentation)
 
 %description -n texlive-pst-stru-doc
 This package includes the documentation for texlive-pst-stru
@@ -2010,7 +2057,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source41:       pst-support.doc.tar.xz
 
 %description -n texlive-pst-support
@@ -2075,7 +2122,7 @@ Provides:       tex(pst-text.sty)
 Provides:       tex(pst-text.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source42:       pst-text.tar.xz
 Source43:       pst-text.doc.tar.xz
 
@@ -2091,6 +2138,7 @@ Summary:        Documentation for texlive-pst-text
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-text and texlive-alldocumentation)
 
 %description -n texlive-pst-text-doc
 This package includes the documentation for texlive-pst-text
@@ -2159,7 +2207,7 @@ Provides:       tex(pst-thick.sty)
 Provides:       tex(pst-thick.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source44:       pst-thick.tar.xz
 Source45:       pst-thick.doc.tar.xz
 
@@ -2174,6 +2222,7 @@ Summary:        Documentation for texlive-pst-thick
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-thick and texlive-alldocumentation)
 Provides:       locale(texlive-pst-thick-doc:fr)
 
 %description -n texlive-pst-thick-doc
@@ -2241,7 +2290,7 @@ Provides:       tex(pst-tools.sty)
 Provides:       tex(pst-tools.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source46:       pst-tools.tar.xz
 Source47:       pst-tools.doc.tar.xz
 
@@ -2256,6 +2305,7 @@ Summary:        Documentation for texlive-pst-tools
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-tools and texlive-alldocumentation)
 
 %description -n texlive-pst-tools-doc
 This package includes the documentation for texlive-pst-tools
@@ -2323,7 +2373,7 @@ Provides:       tex(pst-tree.sty)
 Provides:       tex(pst-tree.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source48:       pst-tree.tar.xz
 Source49:       pst-tree.doc.tar.xz
 
@@ -2339,6 +2389,7 @@ Summary:        Documentation for texlive-pst-tree
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-tree and texlive-alldocumentation)
 Provides:       locale(texlive-pst-tree-doc:en)
 
 %description -n texlive-pst-tree-doc
@@ -2407,7 +2458,7 @@ Provides:       tex(pst-turtle.tex)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source50:       pst-turtle.tar.xz
 Source51:       pst-turtle.doc.tar.xz
 
@@ -2423,6 +2474,7 @@ Summary:        Documentation for texlive-pst-turtle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-turtle and texlive-alldocumentation)
 
 %description -n texlive-pst-turtle-doc
 This package includes the documentation for texlive-pst-turtle
@@ -2490,7 +2542,7 @@ Provides:       tex(pst-tvz.sty)
 Provides:       tex(pst-tvz.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source52:       pst-tvz.tar.xz
 Source53:       pst-tvz.doc.tar.xz
 
@@ -2506,6 +2558,7 @@ Summary:        Documentation for texlive-pst-tvz
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-tvz and texlive-alldocumentation)
 
 %description -n texlive-pst-tvz-doc
 This package includes the documentation for texlive-pst-tvz
@@ -2580,7 +2633,7 @@ Requires:       tex(pst-tree.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source54:       pst-uml.tar.xz
 Source55:       pst-uml.doc.tar.xz
 
@@ -2596,6 +2649,7 @@ Summary:        Documentation for texlive-pst-uml
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-uml and texlive-alldocumentation)
 Provides:       locale(texlive-pst-uml-doc:fr)
 
 %description -n texlive-pst-uml-doc
@@ -2670,7 +2724,7 @@ Provides:       tex(psvectorian.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source56:       pst-vectorian.tar.xz
 Source57:       pst-vectorian.doc.tar.xz
 
@@ -2685,6 +2739,7 @@ Summary:        Documentation for texlive-pst-vectorian
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-vectorian and texlive-alldocumentation)
 Provides:       locale(texlive-pst-vectorian-doc:fr)
 
 %description -n texlive-pst-vectorian-doc
@@ -2751,7 +2806,7 @@ Provides:       tex(pst-vehicle.sty)
 Provides:       tex(pst-vehicle.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source58:       pst-vehicle.tar.xz
 Source59:       pst-vehicle.doc.tar.xz
 
@@ -2768,6 +2823,7 @@ Summary:        Documentation for texlive-pst-vehicle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-vehicle and texlive-alldocumentation)
 Provides:       locale(texlive-pst-vehicle-doc:fr)
 
 %description -n texlive-pst-vehicle-doc
@@ -2837,7 +2893,7 @@ Provides:       tex(pst-venn.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source60:       pst-venn.tar.xz
 Source61:       pst-venn.doc.tar.xz
 
@@ -2852,6 +2908,7 @@ Summary:        Documentation for texlive-pst-venn
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-venn and texlive-alldocumentation)
 
 %description -n texlive-pst-venn-doc
 This package includes the documentation for texlive-pst-venn
@@ -2917,7 +2974,7 @@ Provides:       tex(pst-vowel.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(vowel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source62:       pst-vowel.tar.xz
 Source63:       pst-vowel.doc.tar.xz
 
@@ -2934,6 +2991,7 @@ Summary:        Documentation for texlive-pst-vowel
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-vowel and texlive-alldocumentation)
 
 %description -n texlive-pst-vowel-doc
 This package includes the documentation for texlive-pst-vowel
@@ -3032,7 +3090,7 @@ Requires:       perl(autodie)
 Requires:       perl(if)
 #!BuildIgnore:  perl(if)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source64:       pst2pdf.tar.xz
 Source65:       pst2pdf.doc.tar.xz
 
@@ -3054,6 +3112,7 @@ Summary:        Documentation for texlive-pst2pdf
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst2pdf and texlive-alldocumentation)
 
 %description -n texlive-pst2pdf-doc
 This package includes the documentation for texlive-pst2pdf
@@ -3126,7 +3185,7 @@ Suggests:       texlive-pstool-doc >= %{texlive_version}
 Provides:       tex(pstool.sty)
 Requires:       tex(preview.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source66:       pstool.tar.xz
 Source67:       pstool.doc.tar.xz
 
@@ -3150,6 +3209,7 @@ Summary:        Documentation for texlive-pstool
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pstool and texlive-alldocumentation)
 
 %description -n texlive-pstool-doc
 This package includes the documentation for texlive-pstool
@@ -3182,7 +3242,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pstool/pstool.sty
 
 %package -n texlive-pstricks
-Version:        %{texlive_version}.%{texlive_noarch}.3.13svn61548
+Version:        %{texlive_version}.%{texlive_noarch}.3.18svn65346
 Release:        0
 License:        LPPL-1.0
 Summary:        PostScript macros for TeX
@@ -3286,7 +3346,7 @@ Requires:       tex(xkvview.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source68:       pstricks.tar.xz
 Source69:       pstricks.doc.tar.xz
 
@@ -3309,12 +3369,13 @@ document is processed XeTeX, without the need for other
 supporting packages.
 
 %package -n texlive-pstricks-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.13svn61548
+Version:        %{texlive_version}.%{texlive_noarch}.3.18svn65346
 Release:        0
 Summary:        Documentation for texlive-pstricks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pstricks and texlive-alldocumentation)
 
 %description -n texlive-pstricks-doc
 This package includes the documentation for texlive-pstricks
@@ -3423,7 +3484,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pstricks/pstricks.sty
 
 %package -n texlive-pstricks-add
-Version:        %{texlive_version}.%{texlive_noarch}.3.92svn61407
+Version:        %{texlive_version}.%{texlive_noarch}.3.93svn65067
 Release:        0
 License:        LPPL-1.0
 Summary:        A collection of add-ons and bugfixes for PSTricks
@@ -3460,7 +3521,7 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-plot.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source70:       pstricks-add.tar.xz
 Source71:       pstricks-add.doc.tar.xz
 
@@ -3476,12 +3537,13 @@ equations; box plots; matrix plots; and pie charts. The package
 makes use of PostScript routines provided by pst-math.
 
 %package -n texlive-pstricks-add-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.92svn61407
+Version:        %{texlive_version}.%{texlive_noarch}.3.93svn65067
 Release:        0
 Summary:        Documentation for texlive-pstricks-add
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pstricks-add and texlive-alldocumentation)
 
 %description -n texlive-pstricks-add-doc
 This package includes the documentation for texlive-pstricks-add
@@ -3562,7 +3624,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source72:       pstricks_calcnotes.doc.tar.xz
 
 %description -n texlive-pstricks_calcnotes
@@ -3684,7 +3746,7 @@ Requires:       tex(pgfcore.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source73:       pstring.tar.xz
 Source74:       pstring.doc.tar.xz
 
@@ -3703,6 +3765,7 @@ Summary:        Documentation for texlive-pstring
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pstring and texlive-alldocumentation)
 
 %description -n texlive-pstring-doc
 This package includes the documentation for texlive-pstring
@@ -3737,7 +3800,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pstring/pstring.sty
 
 %package -n texlive-ptex
-Version:        %{texlive_version}.%{texlive_noarch}.svn62464
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 License:        BSD-3-Clause
 Summary:        A TeX system for publishing in Japanese
@@ -3818,7 +3881,7 @@ Provides:       man(ppltotf.1)
 Provides:       man(ptex.1)
 Provides:       man(ptftopl.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source75:       ptex.doc.tar.xz
 
 %description -n texlive-ptex
@@ -3833,7 +3896,7 @@ mkdir -p /var/run/texlive
 > /var/run/texlive/run-fmtutil.eptex
 sed -ri 's/^\#\![[= =]]+eptex\b.*/eptex eptex language.def *eptex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
 > /var/run/texlive/run-fmtutil.ptex
-sed -ri 's/^\#\![[= =]]+ptex\b.*/ptex ptex - ptex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
+sed -ri 's/^\#\![[= =]]+ptex\b.*/ptex eptex - ptex.ini/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
 echo 'addKanjiMap ptex-@jaEmbed@@jaVariant@.map' >> /var/run/texlive/run-updmap
 
 %postun -n texlive-ptex
@@ -3844,7 +3907,7 @@ if test $1 = 0; then
     sed -ri 's/^(eptex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
     rm -f %{_texmfvardir}/web2c/eptex/eptex.*
     sed -ri 's/^(ptex\b)/\#\!\ \1/' %{_texmfconfdir}/web2c/fmtutil.cnf || :
-    rm -f %{_texmfvardir}/web2c/ptex/ptex.*
+    rm -f %{_texmfvardir}/web2c/eptex/ptex.*
     echo 'deleteKanjiMap ptex-@jaEmbed@@jaVariant@.map' >> /var/run/texlive/run-updmap
     exit 0
 fi
@@ -3912,7 +3975,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/ptftopl.1*
 
 %package -n texlive-ptex-base
-Version:        %{texlive_version}.%{texlive_noarch}.svn59406
+Version:        %{texlive_version}.%{texlive_noarch}.svn64072
 Release:        0
 License:        BSD-3-Clause
 Summary:        Plain TeX format for pTeX and e-pTeX
@@ -3943,7 +4006,7 @@ Provides:       tex(ascii-jplain.tex)
 Provides:       tex(kinsoku.tex)
 Provides:       tex(ptex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source76:       ptex-base.tar.xz
 Source77:       ptex-base.doc.tar.xz
 
@@ -3951,12 +4014,13 @@ Source77:       ptex-base.doc.tar.xz
 The bundle contains the plain TeX format for pTeX and e-pTeX.
 
 %package -n texlive-ptex-base-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn59406
+Version:        %{texlive_version}.%{texlive_noarch}.svn64072
 Release:        0
 Summary:        Documentation for texlive-ptex-base
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptex-base and texlive-alldocumentation)
 
 %description -n texlive-ptex-base-doc
 This package includes the documentation for texlive-ptex-base
@@ -3994,7 +4058,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/ptex/ptex-base/ptex.tex
 
 %package -n texlive-ptex-fontmaps
-Version:        %{texlive_version}.%{texlive_noarch}.20210625.0svn59711
+Version:        %{texlive_version}.%{texlive_noarch}.20210625.0svn65953
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Font maps and configuration tools for Japanese/Chinese/Korean fonts with (u)ptex
@@ -4255,7 +4319,7 @@ Provides:       tex(uptex-yu-osx.map)
 Provides:       tex(uptex-yu-win.map)
 Provides:       tex(uptex-yu-win10.map)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source78:       ptex-fontmaps.tar.xz
 Source79:       ptex-fontmaps.doc.tar.xz
 
@@ -4268,12 +4332,13 @@ Japanese/Chinese/Korean fonts available for (u)ptex and related
 programs and formats.
 
 %package -n texlive-ptex-fontmaps-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20210625.0svn59711
+Version:        %{texlive_version}.%{texlive_noarch}.20210625.0svn65953
 Release:        0
 Summary:        Documentation for texlive-ptex-fontmaps
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptex-fontmaps and texlive-alldocumentation)
 
 %description -n texlive-ptex-fontmaps-doc
 This package includes the documentation for texlive-ptex-fontmaps
@@ -4531,7 +4596,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfmaindir}/tlpkg/tlpostcode/ptex-fontmaps-tlpost.pl
 
 %package -n texlive-ptex-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn46940
+Version:        %{texlive_version}.%{texlive_noarch}.svn64330
 Release:        0
 License:        BSD-3-Clause
 Summary:        Fonts for use with pTeX
@@ -4651,7 +4716,7 @@ Provides:       tex(tmin8.vf)
 Provides:       tex(tmin9.tfm)
 Provides:       tex(tmin9.vf)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source80:       ptex-fonts.tar.xz
 Source81:       ptex-fonts.doc.tar.xz
 
@@ -4661,12 +4726,13 @@ for the makejvf program. This is a redistribution derived from
 the ptex-texmf distribution by ASCII MEDIA WORKS.
 
 %package -n texlive-ptex-fonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn46940
+Version:        %{texlive_version}.%{texlive_noarch}.svn64330
 Release:        0
 Summary:        Documentation for texlive-ptex-fonts
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptex-fonts and texlive-alldocumentation)
 
 %description -n texlive-ptex-fonts-doc
 This package includes the documentation for texlive-ptex-fonts
@@ -4690,10 +4756,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ptex-fonts-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/fonts/ptex-fonts/Changes_makejvf
 %{_texmfdistdir}/doc/fonts/ptex-fonts/LICENSE
 %{_texmfdistdir}/doc/fonts/ptex-fonts/README.md
-%{_texmfdistdir}/doc/fonts/ptex-fonts/README_makejvf
 
 %files -n texlive-ptex-fonts
 %defattr(-,root,root,755)
@@ -4831,7 +4895,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/ptex-fonts/standard/tmin9.vf
 
 %package -n texlive-ptex-manual
-Version:        %{texlive_version}.%{texlive_noarch}.svn60158
+Version:        %{texlive_version}.%{texlive_noarch}.svn66182
 Release:        0
 License:        BSD-3-Clause
 Summary:        Japanese pTeX manual
@@ -4858,7 +4922,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source82:       ptex-manual.doc.tar.xz
 
 %description -n texlive-ptex-manual
@@ -4909,7 +4973,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/ptex/ptex-manual/ptexskip_asciimw.tex
 
 %package -n texlive-ptex2pdf
-Version:        %{texlive_version}.%{texlive_noarch}.20200520.0svn58632
+Version:        %{texlive_version}.%{texlive_noarch}.20200520.0svn65953
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Convert Japanese TeX documents to PDF
@@ -4945,7 +5009,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ptex2pdf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source83:       ptex2pdf.tar.xz
 Source84:       ptex2pdf.doc.tar.xz
 
@@ -4957,12 +5021,13 @@ of the ptex-based programs (ptex, uptex, eptex, platex,
 uplatex) followed by dvipdfmx.
 
 %package -n texlive-ptex2pdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20200520.0svn58632
+Version:        %{texlive_version}.%{texlive_noarch}.20200520.0svn65953
 Release:        0
 Summary:        Documentation for texlive-ptex2pdf
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptex2pdf and texlive-alldocumentation)
 
 %description -n texlive-ptex2pdf-doc
 This package includes the documentation for texlive-ptex2pdf
@@ -5029,7 +5094,7 @@ Suggests:       texlive-ptext-doc >= %{texlive_version}
 Provides:       tex(ptext.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source85:       ptext.tar.xz
 Source86:       ptext.doc.tar.xz
 
@@ -5046,6 +5111,7 @@ Summary:        Documentation for texlive-ptext
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptext and texlive-alldocumentation)
 Provides:       locale(texlive-ptext-doc:fa)
 
 %description -n texlive-ptext-doc
@@ -5109,7 +5175,7 @@ Suggests:       texlive-ptolemaicastronomy-doc >= %{texlive_version}
 Provides:       tex(ptolemaicastronomy.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source87:       ptolemaicastronomy.tar.xz
 Source88:       ptolemaicastronomy.doc.tar.xz
 
@@ -5129,6 +5195,7 @@ Summary:        Documentation for texlive-ptolemaicastronomy
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptolemaicastronomy and texlive-alldocumentation)
 
 %description -n texlive-ptolemaicastronomy-doc
 This package includes the documentation for texlive-ptolemaicastronomy
@@ -5196,7 +5263,7 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(overcite.sty)
 Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source89:       ptptex.tar.xz
 Source90:       ptptex.doc.tar.xz
 
@@ -5212,6 +5279,7 @@ Summary:        Documentation for texlive-ptptex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ptptex and texlive-alldocumentation)
 
 %description -n texlive-ptptex-doc
 This package includes the documentation for texlive-ptptex
@@ -5281,7 +5349,7 @@ Provides:       tex(punk20.tfm)
 Provides:       tex(punkbx20.tfm)
 Provides:       tex(punksl20.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source91:       punk.tar.xz
 Source92:       punk.doc.tar.xz
 
@@ -5303,6 +5371,7 @@ Summary:        Documentation for texlive-punk
 License:        SUSE-TeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-punk and texlive-alldocumentation)
 
 %description -n texlive-punk-doc
 This package includes the documentation for texlive-punk
@@ -5381,7 +5450,7 @@ Suggests:       texlive-punk-latex-doc >= %{texlive_version}
 Provides:       tex(ot1pnk.fd)
 Provides:       tex(punk.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source93:       punk-latex.tar.xz
 Source94:       punk-latex.doc.tar.xz
 
@@ -5397,6 +5466,7 @@ Summary:        Documentation for texlive-punk-latex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-punk-latex and texlive-alldocumentation)
 
 %description -n texlive-punk-latex-doc
 This package includes the documentation for texlive-punk-latex
@@ -5459,7 +5529,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-punknova-fonts >= %{texlive_version}
 Suggests:       texlive-punknova-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source95:       punknova.tar.xz
 Source96:       punknova.doc.tar.xz
 Source97:       punknova_p2top3.dif
@@ -5479,6 +5549,7 @@ Summary:        Documentation for texlive-punknova
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-punknova and texlive-alldocumentation)
 
 %description -n texlive-punknova-doc
 This package includes the documentation for texlive-punknova
@@ -5493,9 +5564,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-punknova-fonts
 The  separated fonts package for texlive-punknova
@@ -5543,9 +5612,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-punknova
 %{_datadir}/fontconfig/conf.avail/58-texlive-punknova.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-punknova/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-punknova/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-punknova/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-punknova/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-punknova/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-punknova/fonts.scale
 %{_datadir}/fonts/texlive-punknova/punknova-bold.otf
 %{_datadir}/fonts/texlive-punknova/punknova-boldslanted.otf
 %{_datadir}/fonts/texlive-punknova/punknova-regular.otf
@@ -5608,7 +5677,7 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source98:       purifyeps.tar.xz
 Source99:       purifyeps.doc.tar.xz
 
@@ -5630,6 +5699,7 @@ Summary:        Documentation for texlive-purifyeps
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-purifyeps and texlive-alldocumentation)
 Provides:       man(purifyeps.1)
 
 %description -n texlive-purifyeps-doc
@@ -5694,7 +5764,7 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pythontex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source100:      puyotikz.tar.xz
 Source101:      puyotikz.doc.tar.xz
 
@@ -5712,6 +5782,7 @@ Summary:        Documentation for texlive-puyotikz
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-puyotikz and texlive-alldocumentation)
 
 %description -n texlive-puyotikz-doc
 This package includes the documentation for texlive-puyotikz
@@ -5746,7 +5817,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/puyotikz/puyotikz.sty
 
 %package -n texlive-pwebmac
-Version:        %{texlive_version}.%{texlive_noarch}.4.7svn61922
+Version:        %{texlive_version}.%{texlive_noarch}.4.8.1svn63731
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Consolidated WEB macros for DVI and PDF output
@@ -5775,7 +5846,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pwebmac-doc >= %{texlive_version}
 Provides:       tex(pwebmac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source102:      pwebmac.tar.xz
 Source103:      pwebmac.doc.tar.xz
 
@@ -5801,12 +5872,13 @@ change the first line in the TeX file created by weave. From
 there, all depends on the "TeX engine" you use.
 
 %package -n texlive-pwebmac-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.7svn61922
+Version:        %{texlive_version}.%{texlive_noarch}.4.8.1svn63731
 Release:        0
 Summary:        Documentation for texlive-pwebmac
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pwebmac and texlive-alldocumentation)
 
 %description -n texlive-pwebmac-doc
 This package includes the documentation for texlive-pwebmac
@@ -5842,7 +5914,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/pwebmac/pwebmac.tex
 
 %package -n texlive-pxbase
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn59473
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn66187
 Release:        0
 License:        LPPL-1.0
 Summary:        Tools for use with (u)pLaTeX
@@ -5883,7 +5955,7 @@ Requires:       tex(ifptex.sty)
 Requires:       tex(ifuptex.sty)
 Requires:       tex(rlbabel.def)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source104:      pxbase.tar.xz
 Source105:      pxbase.doc.tar.xz
 
@@ -5894,12 +5966,13 @@ same author. It also provides a few user commands to assist in
 creating Japanese documents using (u)pLaTeX.
 
 %package -n texlive-pxbase-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn59473
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn66187
 Release:        0
 Summary:        Documentation for texlive-pxbase
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxbase and texlive-alldocumentation)
 Provides:       locale(texlive-pxbase-doc:ja)
 
 %description -n texlive-pxbase-doc
@@ -5942,7 +6015,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxbase/upkcat.sty
 
 %package -n texlive-pxchfon
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn59449
+Version:        %{texlive_version}.%{texlive_noarch}.1.9asvn66064
 Release:        0
 License:        LPPL-1.0
 Summary:        Japanese font setup for pLaTeX and upLaTeX
@@ -6060,7 +6133,7 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(pxufont-ruby.sty)
 Requires:       tex(pxufont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source106:      pxchfon.tar.xz
 Source107:      pxchfon.doc.tar.xz
 
@@ -6077,12 +6150,13 @@ TeX format: LaTeX. TeX engine: pTeX or upTeX. DVIware:
 dvipdfmx. Prerequisite packages: atbegshi.
 
 %package -n texlive-pxchfon-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn59449
+Version:        %{texlive_version}.%{texlive_noarch}.1.9asvn66064
 Release:        0
 Summary:        Documentation for texlive-pxchfon
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxchfon and texlive-alldocumentation)
 Provides:       locale(texlive-pxchfon-doc:ja)
 
 %description -n texlive-pxchfon-doc
@@ -6211,7 +6285,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxchfon/pxjafont.sty
 
 %package -n texlive-pxcjkcat
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn47266
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn63967
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX interface for the CJK category codes of upTeX
@@ -6239,8 +6313,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pxcjkcat-doc >= %{texlive_version}
 Provides:       tex(pxcjkcat.sty)
+Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source108:      pxcjkcat.tar.xz
 Source109:      pxcjkcat.doc.tar.xz
 
@@ -6252,12 +6327,13 @@ documents that are principally written in Japanese, or
 principally written in English or other Western languages.
 
 %package -n texlive-pxcjkcat-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn47266
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn63967
 Release:        0
 Summary:        Documentation for texlive-pxcjkcat
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxcjkcat and texlive-alldocumentation)
 Provides:       locale(texlive-pxcjkcat-doc:ja;en)
 
 %description -n texlive-pxcjkcat-doc
@@ -6449,7 +6525,7 @@ Provides:       tex(upxsyb.fd)
 Provides:       tex(upxsyc.fd)
 Provides:       tex(upxtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source110:      pxfonts.tar.xz
 Source111:      pxfonts.doc.tar.xz
 
@@ -6473,6 +6549,7 @@ Summary:        Documentation for texlive-pxfonts
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxfonts and texlive-alldocumentation)
 
 %description -n texlive-pxfonts-doc
 This package includes the documentation for texlive-pxfonts
@@ -6487,9 +6564,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-pxfonts-fonts
 The  separated fonts package for texlive-pxfonts
@@ -6699,9 +6774,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-pxfonts
 %{_datadir}/fontconfig/conf.avail/58-texlive-pxfonts.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-pxfonts/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-pxfonts/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-pxfonts/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-pxfonts/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-pxfonts/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-pxfonts/fonts.scale
 %{_datadir}/fonts/texlive-pxfonts/pxbex.pfb
 %{_datadir}/fonts/texlive-pxfonts/pxbexa.pfb
 %{_datadir}/fonts/texlive-pxfonts/pxbmia.pfb
@@ -6760,7 +6835,7 @@ Suggests:       texlive-pxgreeks-doc >= %{texlive_version}
 Provides:       tex(pxgreeks.sty)
 Requires:       tex(pxfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source112:      pxgreeks.tar.xz
 Source113:      pxgreeks.doc.tar.xz
 
@@ -6780,6 +6855,7 @@ Summary:        Documentation for texlive-pxgreeks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxgreeks and texlive-alldocumentation)
 
 %description -n texlive-pxgreeks-doc
 This package includes the documentation for texlive-pxgreeks
@@ -6811,7 +6887,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxgreeks/pxgreeks.sty
 
 %package -n texlive-pxjahyper
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9dsvn62736
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn66272
 Release:        0
 License:        LPPL-1.0
 Summary:        Hyperref support for pLaTeX
@@ -6845,9 +6921,10 @@ Provides:       tex(pxjahyper.sty)
 Requires:       tex(atbegshi.sty)
 Requires:       tex(bxjatoucs.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(keyval.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source114:      pxjahyper.tar.xz
 Source115:      pxjahyper.doc.tar.xz
 
@@ -6857,12 +6934,13 @@ that authors can properly create PDF documents that contain
 document information in Japanese.
 
 %package -n texlive-pxjahyper-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9dsvn62736
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn66272
 Release:        0
 Summary:        Documentation for texlive-pxjahyper
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxjahyper and texlive-alldocumentation)
 Provides:       locale(texlive-pxjahyper-doc:ja)
 
 %description -n texlive-pxjahyper-doc
@@ -6901,7 +6979,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxjahyper/pxjahyper.sty
 
 %package -n texlive-pxjodel
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn55006
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn64072
 Release:        0
 License:        LPPL-1.0
 Summary:        Help change metrics of fonts from japanese-otf
@@ -7020,7 +7098,7 @@ Requires:       tex(otf-ujmr-h.tfm)
 Requires:       tex(otf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source116:      pxjodel.tar.xz
 Source117:      pxjodel.doc.tar.xz
 
@@ -7040,12 +7118,13 @@ using japanese-otf. So pxjodel is really about japanese-otf's
 singing, although some sense of word-play is intended.
 
 %package -n texlive-pxjodel-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn55006
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn64072
 Release:        0
 Summary:        Documentation for texlive-pxjodel
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxjodel and texlive-alldocumentation)
 
 %description -n texlive-pxjodel-doc
 This package includes the documentation for texlive-pxjodel
@@ -7164,7 +7243,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pxpgfmark-doc >= %{texlive_version}
 Provides:       tex(pxpgfmark.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source118:      pxpgfmark.tar.xz
 Source119:      pxpgfmark.doc.tar.xz
 
@@ -7180,6 +7259,7 @@ Summary:        Documentation for texlive-pxpgfmark
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxpgfmark and texlive-alldocumentation)
 
 %description -n texlive-pxpgfmark-doc
 This package includes the documentation for texlive-pxpgfmark
@@ -7211,7 +7291,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxpgfmark/pxpgfmark.sty
 
 %package -n texlive-pxpic
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn61294
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn65803
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw pixel pictures
@@ -7242,7 +7322,7 @@ Provides:       tex(pxpic.sty)
 Requires:       tex(expkv.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source120:      pxpic.tar.xz
 Source121:      pxpic.doc.tar.xz
 
@@ -7253,12 +7333,13 @@ a beautiful duck) showcasing the use of characters from the
 Mario video games by Nintendo in LaTeX.
 
 %package -n texlive-pxpic-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn61294
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn65803
 Release:        0
 Summary:        Documentation for texlive-pxpic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxpic and texlive-alldocumentation)
 
 %description -n texlive-pxpic-doc
 This package includes the documentation for texlive-pxpic
@@ -7283,6 +7364,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pxpic-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/pxpic/README.md
+%{_texmfdistdir}/doc/latex/pxpic/pxpic-parrot.csv
 %{_texmfdistdir}/doc/latex/pxpic/pxpic.pdf
 
 %files -n texlive-pxpic
@@ -7290,7 +7372,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxpic/pxpic.sty
 
 %package -n texlive-pxrubrica
-Version:        %{texlive_version}.%{texlive_noarch}.1.3dsvn58168
+Version:        %{texlive_version}.%{texlive_noarch}.1.3esvn66298
 Release:        0
 License:        LPPL-1.0
 Summary:        Ruby annotations according to JIS X 4051
@@ -7320,7 +7402,7 @@ Suggests:       texlive-pxrubrica-doc >= %{texlive_version}
 Provides:       tex(pxrubrica.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source122:      pxrubrica.tar.xz
 Source123:      pxrubrica.doc.tar.xz
 
@@ -7334,13 +7416,14 @@ provides a function to add kenten (emphasis marks) to Japanese
 text.
 
 %package -n texlive-pxrubrica-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3dsvn58168
+Version:        %{texlive_version}.%{texlive_noarch}.1.3esvn66298
 Release:        0
 Summary:        Documentation for texlive-pxrubrica
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-pxrubrica-doc:ja;en)
+Supplements:    (texlive-pxrubrica and texlive-alldocumentation)
+Provides:       locale(texlive-pxrubrica-doc:ja)
 
 %description -n texlive-pxrubrica-doc
 This package includes the documentation for texlive-pxrubrica
@@ -7384,7 +7467,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxrubrica/pxrubrica.sty
 
 %package -n texlive-pxtatescale
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn43009
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn63967
 Release:        0
 License:        LPPL-1.0
 Summary:        Patch to graphics driver for scaling in vertical direction of pTeX
@@ -7413,7 +7496,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pxtatescale-doc >= %{texlive_version}
 Provides:       tex(pxtatescale.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source124:      pxtatescale.tar.xz
 Source125:      pxtatescale.doc.tar.xz
 
@@ -7422,12 +7505,13 @@ Patch for graphics driver 'dvipdfmx' to support correct scaling
 in vertical direction of Japanese pTeX/upTeX.
 
 %package -n texlive-pxtatescale-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn43009
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn63967
 Release:        0
 Summary:        Documentation for texlive-pxtatescale
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxtatescale and texlive-alldocumentation)
 
 %description -n texlive-pxtatescale-doc
 This package includes the documentation for texlive-pxtatescale
@@ -7527,7 +7611,7 @@ Requires:       tex(txsy.tfm)
 Requires:       tex(txsyb.tfm)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source126:      pxtxalfa.tar.xz
 Source127:      pxtxalfa.doc.tar.xz
 
@@ -7543,6 +7627,7 @@ Summary:        Documentation for texlive-pxtxalfa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxtxalfa and texlive-alldocumentation)
 
 %description -n texlive-pxtxalfa-doc
 This package includes the documentation for texlive-pxtxalfa
@@ -7603,7 +7688,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxtxalfa/utx-of.fd
 
 %package -n texlive-pxufont
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn53733
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn64072
 Release:        0
 License:        LPPL-1.0
 Summary:        Emulate non-Unicode Japanese fonts using Unicode fonts
@@ -8188,7 +8273,7 @@ Requires:       tex(uprml-h.tfm)
 Requires:       tex(uprml-hq.tfm)
 Requires:       tex(uprml-v.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source128:      pxufont.tar.xz
 Source129:      pxufont.doc.tar.xz
 
@@ -8208,12 +8293,13 @@ from Adobe-Japan1, because mapping setups from non-Unicode JFMs
 to such physical fonts are difficult to prepare.
 
 %package -n texlive-pxufont-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn53733
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn64072
 Release:        0
 Summary:        Documentation for texlive-pxufont
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pxufont and texlive-alldocumentation)
 
 %description -n texlive-pxufont-doc
 This package includes the documentation for texlive-pxufont
@@ -8738,7 +8824,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxufont/pxufont.sty
 
 %package -n texlive-pygmentex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn57190
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn64131
 Release:        0
 License:        LPPL-1.0
 Summary:        Use Pygments to format code listings in documents
@@ -8775,8 +8861,9 @@ Requires:       tex(fancyvrb.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(mdframed.sty)
 Requires:       tex(pgfkeys.sty)
+Requires:       tex(shellesc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source130:      pygmentex.tar.xz
 Source131:      pygmentex.doc.tar.xz
 
@@ -8788,12 +8875,13 @@ kinds of software such as forum systems, wikis or other
 applications that need to prettify source code.
 
 %package -n texlive-pygmentex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn57190
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn64131
 Release:        0
 Summary:        Documentation for texlive-pygmentex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pygmentex and texlive-alldocumentation)
 
 %description -n texlive-pygmentex-doc
 This package includes the documentation for texlive-pygmentex
@@ -8828,6 +8916,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/pygmentex/pygmentex_demo.pdf
 %{_texmfdistdir}/doc/latex/pygmentex/pygmentex_demo.py
 %{_texmfdistdir}/doc/latex/pygmentex/pygmentex_demo.tex
+%{_texmfdistdir}/doc/latex/pygmentex/pygmentex_demo_2.pdf
+%{_texmfdistdir}/doc/latex/pygmentex/pygmentex_demo_2.tex
 
 %files -n texlive-pygmentex
 %defattr(-,root,root,755)
@@ -8835,7 +8925,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pygmentex/pygmentex.sty
 
 %package -n texlive-pyluatex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.4svn62765
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.1svn65855
 Release:        0
 License:        LPPL-1.0
 Summary:        Execute Python code on the fly in your LaTeX documents
@@ -8867,7 +8957,7 @@ Requires:       tex(atveryend.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source132:      pyluatex.tar.xz
 Source133:      pyluatex.doc.tar.xz
 
@@ -8886,12 +8976,13 @@ intermediate files have to be written. No placeholders have to
 be inserted.
 
 %package -n texlive-pyluatex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.4svn62765
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.1svn65855
 Release:        0
 Summary:        Documentation for texlive-pyluatex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pyluatex and texlive-alldocumentation)
 
 %description -n texlive-pyluatex-doc
 This package includes the documentation for texlive-pyluatex
@@ -8934,7 +9025,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pyluatex
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/lualatex/pyluatex/pyluatex-interpreter.py
-%{_texmfdistdir}/tex/lualatex/pyluatex/pyluatex-json.lua
 %{_texmfdistdir}/tex/lualatex/pyluatex/pyluatex.lua
 %{_texmfdistdir}/tex/lualatex/pyluatex/pyluatex.sty
 
@@ -8968,7 +9058,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-python-doc >= %{texlive_version}
 Provides:       tex(python.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source134:      python.tar.xz
 Source135:      python.doc.tar.xz
 
@@ -8983,6 +9073,7 @@ Summary:        Documentation for texlive-python
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-python and texlive-alldocumentation)
 
 %description -n texlive-python-doc
 This package includes the documentation for texlive-python
@@ -9044,7 +9135,7 @@ Provides:       tex(pythonhighlight.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source136:      pythonhighlight.tar.xz
 Source137:      pythonhighlight.doc.tar.xz
 
@@ -9058,6 +9149,7 @@ Summary:        Documentation for texlive-pythonhighlight
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pythonhighlight and texlive-alldocumentation)
 
 %description -n texlive-pythonhighlight-doc
 This package includes the documentation for texlive-pythonhighlight
@@ -9087,6 +9179,109 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pythonhighlight
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/pythonhighlight/pythonhighlight.sty
+
+%package -n texlive-pythonimmediate
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn66461
+Release:        0
+License:        LPPL-1.0
+Summary:        Library to run Python code
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-currfile >= %{texlive_version}
+#!BuildIgnore: texlive-currfile
+Requires:       texlive-l3packages >= %{texlive_version}
+#!BuildIgnore: texlive-l3packages
+Requires:       texlive-precattl >= %{texlive_version}
+#!BuildIgnore: texlive-precattl
+Requires:       texlive-saveenv >= %{texlive_version}
+#!BuildIgnore: texlive-saveenv
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pythonimmediate-doc >= %{texlive_version}
+Provides:       tex(pythonimmediate.sty)
+Requires:       tex(currfile.sty)
+Requires:       tex(l3keys2e.sty)
+Requires:       tex(precattl.sty)
+Requires:       tex(saveenv.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source138:      pythonimmediate.tar.xz
+Source139:      pythonimmediate.doc.tar.xz
+
+%description -n texlive-pythonimmediate
+Just like PerlTeX or PyLuaTeX (and unlike PythonTeX or
+lt3luabridge), this only requires a single run, and variables
+are persistent throughout the run. Unlike PerlTeX or PyLuaTeX,
+there is no restriction on compiler or script required to run
+the code. There are also debugging functionalities: TeX errors
+result in Python traceback, and Python errors result in TeX
+traceback. Errors in code executed with the pycode environment
+give the correct traceback point to the Python line of code in
+the TeX file. For advanced users, this package allows the user
+to manipulate the TeX state directly from within Python, so you
+don't need to write a single line of TeX code. CAUTION: In
+addition to this LaTeX package you need the Python
+pythonimmediate-tex package, which can be obtained from
+https://pypi.org/project/pythonimmediate-tex/.
+
+%package -n texlive-pythonimmediate-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn66461
+Release:        0
+Summary:        Documentation for texlive-pythonimmediate
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pythonimmediate and texlive-alldocumentation)
+
+%description -n texlive-pythonimmediate-doc
+This package includes the documentation for texlive-pythonimmediate
+
+%post -n texlive-pythonimmediate
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pythonimmediate
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pythonimmediate
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pythonimmediate-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/pythonimmediate/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/pythonimmediate/README
+%{_texmfdistdir}/doc/latex/pythonimmediate/pythonimmediate.pdf
+%{_texmfdistdir}/doc/latex/pythonimmediate/pythonimmediate.tex
+
+%files -n texlive-pythonimmediate
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/pythonimmediate/pythonimmediate.sty
+%{_texmfdistdir}/tex/latex/pythonimmediate/pythonimmediate_helper.lua
 
 %package -n texlive-pythontex
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.18svn59514
@@ -9128,10 +9323,10 @@ Requires:       tex(upquote.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source138:      pythontex.tar.xz
-Source139:      pythontex.doc.tar.xz
-Source140:      pythontex_p2top3.dif
+# from 20230311
+Source140:      pythontex.tar.xz
+Source141:      pythontex.doc.tar.xz
+Source142:      pythontex_p2top3.dif
 
 %description -n texlive-pythontex
 The package allows you to enter Python code within a LaTeX
@@ -9159,6 +9354,7 @@ Summary:        Documentation for texlive-pythontex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pythontex and texlive-alldocumentation)
 
 %description -n texlive-pythontex-doc
 This package includes the documentation for texlive-pythontex
@@ -9233,9 +9429,9 @@ Provides:       tex(qcircuit.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(xy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source141:      qcircuit.tar.xz
-Source142:      qcircuit.doc.tar.xz
+# from 20230311
+Source143:      qcircuit.tar.xz
+Source144:      qcircuit.doc.tar.xz
 
 %description -n texlive-qcircuit
 The package supports those within the quantum information
@@ -9249,6 +9445,7 @@ Summary:        Documentation for texlive-qcircuit
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qcircuit and texlive-alldocumentation)
 
 %description -n texlive-qcircuit-doc
 This package includes the documentation for texlive-qcircuit
@@ -9280,7 +9477,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/qcircuit/qcircuit.sty
 
 %package -n texlive-qcm
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn63833
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX2e class for making multiple choice questionnaires
@@ -9314,9 +9511,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source143:      qcm.tar.xz
-Source144:      qcm.doc.tar.xz
+# from 20230311
+Source145:      qcm.tar.xz
+Source146:      qcm.doc.tar.xz
 
 %description -n texlive-qcm
 QCM is a package for making multiple choices questionnaires
@@ -9333,12 +9530,13 @@ typeset exam corrections automatically, and comes with support
 for AUC-TeX.
 
 %package -n texlive-qcm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn63833
 Release:        0
 Summary:        Documentation for texlive-qcm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qcm and texlive-alldocumentation)
 
 %description -n texlive-qcm-doc
 This package includes the documentation for texlive-qcm
@@ -9402,9 +9600,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-qobitree-doc >= %{texlive_version}
 Provides:       tex(qobitree.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source145:      qobitree.tar.xz
-Source146:      qobitree.doc.tar.xz
+# from 20230311
+Source147:      qobitree.tar.xz
+Source148:      qobitree.doc.tar.xz
 
 %description -n texlive-qobitree
 Provides commands \branch and \leaf for specifying the elements
@@ -9418,6 +9616,7 @@ Summary:        Documentation for texlive-qobitree
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qobitree and texlive-alldocumentation)
 
 %description -n texlive-qobitree-doc
 This package includes the documentation for texlive-qobitree
@@ -9533,9 +9732,9 @@ Requires:       tex(ts1-qtmr.tfm)
 Requires:       tex(txbsya.tfm)
 Requires:       tex(txsya.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source147:      qpxqtx.tar.xz
-Source148:      qpxqtx.doc.tar.xz
+# from 20230311
+Source149:      qpxqtx.tar.xz
+Source150:      qpxqtx.doc.tar.xz
 
 %description -n texlive-qpxqtx
 The qpxqtx package
@@ -9547,6 +9746,7 @@ Summary:        Documentation for texlive-qpxqtx
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qpxqtx and texlive-alldocumentation)
 
 %description -n texlive-qpxqtx-doc
 This package includes the documentation for texlive-qpxqtx
@@ -9610,7 +9810,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/qpxqtx/qtxmath.tex
 
 %package -n texlive-qrbill
-Version:        %{texlive_version}.%{texlive_noarch}.1.03svn59232
+Version:        %{texlive_version}.%{texlive_noarch}.2.00svn66301
 Release:        0
 License:        LPPL-1.0
 Summary:        Create QR bills using LaTeX
@@ -9637,8 +9837,10 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-qrbill-doc >= %{texlive_version}
+Provides:       tex(epc.qrbill-cfg.tex)
 Provides:       tex(qrbill.sty)
 Provides:       tex(swiss.qrbill-cfg.tex)
+Requires:       tex(anyfontsize.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(graphicx.sty)
@@ -9649,9 +9851,9 @@ Requires:       tex(numprint.sty)
 Requires:       tex(qrcode.sty)
 Requires:       tex(scrbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source149:      qrbill.tar.xz
-Source150:      qrbill.doc.tar.xz
+# from 20230311
+Source151:      qrbill.tar.xz
+Source152:      qrbill.doc.tar.xz
 
 %description -n texlive-qrbill
 This LaTeX package provides support for creating QR-bills for
@@ -9663,12 +9865,13 @@ using a custom font setup), graphicx, scrbase, qrcode, iftex,
 l3keys2e, and numprint.
 
 %package -n texlive-qrbill-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.03svn59232
+Version:        %{texlive_version}.%{texlive_noarch}.2.00svn66301
 Release:        0
 Summary:        Documentation for texlive-qrbill
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qrbill and texlive-alldocumentation)
 
 %description -n texlive-qrbill-doc
 This package includes the documentation for texlive-qrbill
@@ -9693,14 +9896,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-qrbill-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/qrbill/README.md
-%{_texmfdistdir}/doc/latex/qrbill/qrbill-letter-demo.pdf
 %{_texmfdistdir}/doc/latex/qrbill/qrbill-letter-demo.tex
-%{_texmfdistdir}/doc/latex/qrbill/qrbill-standalone-demo.pdf
 %{_texmfdistdir}/doc/latex/qrbill/qrbill-standalone-demo.tex
 %{_texmfdistdir}/doc/latex/qrbill/qrbill.pdf
 
 %files -n texlive-qrbill
 %defattr(-,root,root,755)
+%{_texmfdistdir}/scripts/qrbill/qrbill-latexluaqrcode.lua
+%{_texmfdistdir}/scripts/qrbill/qrbill-qrencode.lua
+%{_texmfdistdir}/tex/latex/qrbill/epc.qrbill-cfg.tex
 %{_texmfdistdir}/tex/latex/qrbill/qrbill-vocab.csv
 %{_texmfdistdir}/tex/latex/qrbill/qrbill.sty
 %{_texmfdistdir}/tex/latex/qrbill/qrbill_swiss-cross.pdf
@@ -9738,9 +9942,9 @@ Provides:       tex(qrcode.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source151:      qrcode.tar.xz
-Source152:      qrcode.doc.tar.xz
+# from 20230311
+Source153:      qrcode.tar.xz
+Source154:      qrcode.doc.tar.xz
 
 %description -n texlive-qrcode
 The package generates QR (Quick Response) codes in LaTeX,
@@ -9753,6 +9957,7 @@ Summary:        Documentation for texlive-qrcode
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qrcode and texlive-alldocumentation)
 
 %description -n texlive-qrcode-doc
 This package includes the documentation for texlive-qrcode
@@ -9815,9 +10020,9 @@ Provides:       tex(qsharp.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source153:      qsharp.tar.xz
-Source154:      qsharp.doc.tar.xz
+# from 20230311
+Source155:      qsharp.tar.xz
+Source156:      qsharp.doc.tar.xz
 
 %description -n texlive-qsharp
 The package provides syntax highlighting for the Q# language, a
@@ -9830,6 +10035,7 @@ Summary:        Documentation for texlive-qsharp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qsharp and texlive-alldocumentation)
 
 %description -n texlive-qsharp-doc
 This package includes the documentation for texlive-qsharp
@@ -9893,9 +10099,9 @@ Provides:       tex(makematch.sty)
 Provides:       tex(qstest.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source155:      qstest.tar.xz
-Source156:      qstest.doc.tar.xz
+# from 20230311
+Source157:      qstest.tar.xz
+Source158:      qstest.doc.tar.xz
 
 %description -n texlive-qstest
 This is the public release of the qstest bundle (written for
@@ -9917,6 +10123,7 @@ Summary:        Documentation for texlive-qstest
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qstest and texlive-alldocumentation)
 
 %description -n texlive-qstest-doc
 This package includes the documentation for texlive-qstest
@@ -9985,9 +10192,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(stmaryrd.sty)
 Requires:       tex(xy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source157:      qsymbols.tar.xz
-Source158:      qsymbols.doc.tar.xz
+# from 20230311
+Source159:      qsymbols.tar.xz
+Source160:      qsymbols.doc.tar.xz
 
 %description -n texlive-qsymbols
 Provides macros for defining systematic mnemonic abbreviations,
@@ -10002,6 +10209,7 @@ Summary:        Documentation for texlive-qsymbols
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qsymbols and texlive-alldocumentation)
 
 %description -n texlive-qsymbols-doc
 This package includes the documentation for texlive-qsymbols
@@ -10067,9 +10275,9 @@ Suggests:       texlive-qtree-doc >= %{texlive_version}
 Provides:       tex(qtree.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source159:      qtree.tar.xz
-Source160:      qtree.doc.tar.xz
+# from 20230311
+Source161:      qtree.tar.xz
+Source162:      qtree.doc.tar.xz
 
 %description -n texlive-qtree
 The package offers support for drawing tree diagrams, and is
@@ -10087,6 +10295,7 @@ Summary:        Documentation for texlive-qtree
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qtree and texlive-alldocumentation)
 Provides:       locale(texlive-qtree-doc:en)
 
 %description -n texlive-qtree-doc
@@ -10151,9 +10360,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-qualitype-fonts >= %{texlive_version}
 Suggests:       texlive-qualitype-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source161:      qualitype.tar.xz
-Source162:      qualitype.doc.tar.xz
+# from 20230311
+Source163:      qualitype.tar.xz
+Source164:      qualitype.doc.tar.xz
 
 %description -n texlive-qualitype
 These 45 fonts were created by QualiType. With the kind
@@ -10167,6 +10376,7 @@ Summary:        Documentation for texlive-qualitype
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qualitype and texlive-alldocumentation)
 
 %description -n texlive-qualitype-doc
 This package includes the documentation for texlive-qualitype
@@ -10181,9 +10391,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-qualitype-fonts
 The  separated fonts package for texlive-qualitype
@@ -10372,9 +10580,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-qualitype
 %{_datadir}/fontconfig/conf.avail/58-texlive-qualitype.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-qualitype/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-qualitype/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-qualitype/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-qualitype/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-qualitype/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-qualitype/fonts.scale
 %{_datadir}/fonts/texlive-qualitype/QTAbbie.otf
 %{_datadir}/fonts/texlive-qualitype/QTAgateType-Bold.otf
 %{_datadir}/fonts/texlive-qualitype/QTAgateType-Italic.otf
@@ -10559,9 +10767,9 @@ Provides:       tex(quantikz.sty)
 Provides:       tex(tikzlibraryquantikz.code.tex)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source163:      quantikz.tar.xz
-Source164:      quantikz.doc.tar.xz
+# from 20230311
+Source165:      quantikz.tar.xz
+Source166:      quantikz.doc.tar.xz
 
 %description -n texlive-quantikz
 The purpose of this package is to extend TikZ with the
@@ -10574,6 +10782,7 @@ Summary:        Documentation for texlive-quantikz
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quantikz and texlive-alldocumentation)
 
 %description -n texlive-quantikz-doc
 This package includes the documentation for texlive-quantikz
@@ -10607,7 +10816,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quantikz/tikzlibraryquantikz.code.tex
 
 %package -n texlive-quantumarticle
-Version:        %{texlive_version}.%{texlive_noarch}.5.1svn56862
+Version:        %{texlive_version}.%{texlive_noarch}.6.1svn65242
 Release:        0
 License:        LPPL-1.0
 Summary:        Document class for submissions to the Quantum journal
@@ -10635,6 +10844,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-quantumarticle-doc >= %{texlive_version}
 Provides:       tex(quantumarticle.cls)
+Provides:       tex(quantumview.cls)
 Requires:       tex(amsfonts.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(amssymb.sty)
@@ -10644,19 +10854,22 @@ Requires:       tex(dsfont.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(lmodern.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(ltxgrid.sty)
 Requires:       tex(natbib.sty)
+Requires:       tex(soul.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source165:      quantumarticle.tar.xz
-Source166:      quantumarticle.doc.tar.xz
+# from 20230311
+Source167:      quantumarticle.tar.xz
+Source168:      quantumarticle.doc.tar.xz
 
 %description -n texlive-quantumarticle
 This package provides the preferred document class for papers
@@ -10664,18 +10877,25 @@ to be submitted to "Quantum -- the open journal of quantum
 science". It is based on the widely used article document class
 and designed to allow a seamless transition from documents
 typeset with the article, revtex4-1, and elsarticle document
-classes. The quantumarticle document class also offers an
-option to remove the Quantum-related branding. In that way,
-users appreciating the esthetics of this document class can use
-it for their notes as well.
+classes. As a service to authors, the document class comes with
+a predefined bibilography style quantum.bst that is optimized
+to be used with the quantumarticle document class.
+Additionally, the quantumview documentclass is provided, which
+can be used as a proxy to typeset the HTML-only editorial
+pieces in Quantum Views in a LaTeX editor. The quantumarticle
+document class also offers an option to remove the
+Quantum-related branding. In that way, users appreciating the
+esthetics of this document class can use it for their notes as
+well.
 
 %package -n texlive-quantumarticle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.1svn56862
+Version:        %{texlive_version}.%{texlive_noarch}.6.1svn65242
 Release:        0
 Summary:        Documentation for texlive-quantumarticle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quantumarticle and texlive-alldocumentation)
 
 %description -n texlive-quantumarticle-doc
 This package includes the documentation for texlive-quantumarticle
@@ -10700,17 +10920,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-quantumarticle-doc
 %defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/quantumarticle/README.md
+%{_texmfdistdir}/doc/latex/quantumarticle/example-plot.pdf
+%{_texmfdistdir}/doc/latex/quantumarticle/quantum-bibliographystyle-demo.bib
+%{_texmfdistdir}/doc/latex/quantumarticle/quantum-bibliographystyle-demo.pdf
+%{_texmfdistdir}/doc/latex/quantumarticle/quantum-bibliographystyle-demo.tex
 %{_texmfdistdir}/doc/latex/quantumarticle/quantum-template.pdf
 %{_texmfdistdir}/doc/latex/quantumarticle/quantum-template.tex
 %{_texmfdistdir}/doc/latex/quantumarticle/quantumarticle.pdf
 %{_texmfdistdir}/doc/latex/quantumarticle/quantumarticle.tex
+%{_texmfdistdir}/doc/latex/quantumarticle/quantumview-template.bib
+%{_texmfdistdir}/doc/latex/quantumarticle/quantumview-template.pdf
+%{_texmfdistdir}/doc/latex/quantumarticle/quantumview-template.tex
 
 %files -n texlive-quantumarticle
 %defattr(-,root,root,755)
+%{_texmfdistdir}/bibtex/bst/quantumarticle/quantum.bst
 %{_texmfdistdir}/tex/latex/quantumarticle/quantumarticle.cls
+%{_texmfdistdir}/tex/latex/quantumarticle/quantumview.cls
 
 %package -n texlive-quattrocento
-Version:        %{texlive_version}.%{texlive_noarch}.svn56020
+Version:        %{texlive_version}.%{texlive_noarch}.svn64372
 Release:        0
 License:        OFL-1.1
 Summary:        Quattrocento and Quattrocento Sans fonts with LaTeX support
@@ -10934,9 +11163,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source167:      quattrocento.tar.xz
-Source168:      quattrocento.doc.tar.xz
+# from 20230311
+Source169:      quattrocento.tar.xz
+Source170:      quattrocento.doc.tar.xz
 
 %description -n texlive-quattrocento
 The package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -10950,18 +11179,19 @@ also great for display use. Quattrocento Sans is the perfect
 sans-serif companion for Quattrocento.
 
 %package -n texlive-quattrocento-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn56020
+Version:        %{texlive_version}.%{texlive_noarch}.svn64372
 Release:        0
 Summary:        Documentation for texlive-quattrocento
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quattrocento and texlive-alldocumentation)
 
 %description -n texlive-quattrocento-doc
 This package includes the documentation for texlive-quattrocento
 
 %package -n texlive-quattrocento-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn56020
+Version:        %{texlive_version}.%{texlive_noarch}.svn64372
 Release:        0
 Summary:        Severed fonts for texlive-quattrocento
 License:        OFL-1.1
@@ -10970,9 +11200,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-quattrocento-fonts
 The  separated fonts package for texlive-quattrocento
@@ -11207,9 +11435,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-quattrocento.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-quattrocento.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-quattrocento.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-quattrocento/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-quattrocento/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-quattrocento/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-quattrocento/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-quattrocento/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-quattrocento/fonts.scale
 %{_datadir}/fonts/texlive-quattrocento/Quattro-BoldItalic.ttf
 %{_datadir}/fonts/texlive-quattrocento/Quattro-Italic.ttf
 %{_datadir}/fonts/texlive-quattrocento/Quattrocento-Bold.ttf
@@ -11258,9 +11486,9 @@ Suggests:       texlive-quicktype-doc >= %{texlive_version}
 Provides:       tex(quicktype.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source169:      quicktype.tar.xz
-Source170:      quicktype.doc.tar.xz
+# from 20230311
+Source171:      quicktype.tar.xz
+Source172:      quicktype.doc.tar.xz
 
 %description -n texlive-quicktype
 Intended for the quick typesetting of basic documents using
@@ -11275,6 +11503,7 @@ Summary:        Documentation for texlive-quicktype
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quicktype and texlive-alldocumentation)
 
 %description -n texlive-quicktype-doc
 This package includes the documentation for texlive-quicktype
@@ -11347,9 +11576,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source171:      quiz2socrative.tar.xz
-Source172:      quiz2socrative.doc.tar.xz
+# from 20230311
+Source173:      quiz2socrative.tar.xz
+Source174:      quiz2socrative.doc.tar.xz
 
 %description -n texlive-quiz2socrative
 This is a LaTeX package for preparing multiple choice,
@@ -11367,6 +11596,7 @@ Summary:        Documentation for texlive-quiz2socrative
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quiz2socrative and texlive-alldocumentation)
 Provides:       locale(texlive-quiz2socrative-doc:it)
 
 %description -n texlive-quiz2socrative-doc
@@ -11434,9 +11664,9 @@ Suggests:       texlive-quotchap-doc >= %{texlive_version}
 Provides:       tex(quotchap.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source173:      quotchap.tar.xz
-Source174:      quotchap.doc.tar.xz
+# from 20230311
+Source175:      quotchap.tar.xz
+Source176:      quotchap.doc.tar.xz
 
 %description -n texlive-quotchap
 A package for creating decorative chapter headings with
@@ -11450,6 +11680,7 @@ Summary:        Documentation for texlive-quotchap
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quotchap and texlive-alldocumentation)
 
 %description -n texlive-quotchap-doc
 This package includes the documentation for texlive-quotchap
@@ -11514,9 +11745,9 @@ Provides:       tex(quoting.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source175:      quoting.tar.xz
-Source176:      quoting.doc.tar.xz
+# from 20230311
+Source177:      quoting.tar.xz
+Source178:      quoting.doc.tar.xz
 
 %description -n texlive-quoting
 As an alternative to the LaTeX standard environments quotation
@@ -11534,6 +11765,7 @@ Summary:        Documentation for texlive-quoting
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quoting and texlive-alldocumentation)
 
 %description -n texlive-quoting-doc
 This package includes the documentation for texlive-quoting
@@ -11630,9 +11862,9 @@ Provides:       tex(quotmark-ukraineb.def)
 Provides:       tex(quotmark-welsh.def)
 Provides:       tex(quotmark.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source177:      quotmark.tar.xz
-Source178:      quotmark.doc.tar.xz
+# from 20230311
+Source179:      quotmark.tar.xz
+Source180:      quotmark.doc.tar.xz
 
 %description -n texlive-quotmark
 The package provides a means of ensuring consistent quote marks
@@ -11650,6 +11882,7 @@ Summary:        Documentation for texlive-quotmark
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quotmark and texlive-alldocumentation)
 
 %description -n texlive-quotmark-doc
 This package includes the documentation for texlive-quotmark
@@ -11768,9 +12001,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source179:      quran.tar.xz
-Source180:      quran.doc.tar.xz
+# from 20230311
+Source181:      quran.tar.xz
+Source182:      quran.doc.tar.xz
 
 %description -n texlive-quran
 This package offers the user an easy way to typeset The Holy
@@ -11788,6 +12021,7 @@ Summary:        Documentation for texlive-quran
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quran and texlive-alldocumentation)
 
 %description -n texlive-quran-doc
 This package includes the documentation for texlive-quran
@@ -11875,9 +12109,9 @@ Requires:       tex(quran.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source181:      quran-bn.tar.xz
-Source182:      quran-bn.doc.tar.xz
+# from 20230311
+Source183:      quran-bn.tar.xz
+Source184:      quran-bn.doc.tar.xz
 
 %description -n texlive-quran-bn
 The package is prepared for typesetting some Bengali
@@ -11891,6 +12125,7 @@ Summary:        Documentation for texlive-quran-bn
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quran-bn and texlive-alldocumentation)
 
 %description -n texlive-quran-bn-doc
 This package includes the documentation for texlive-quran-bn
@@ -11964,9 +12199,9 @@ Requires:       tex(qurantext-de.translation.def)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source183:      quran-de.tar.xz
-Source184:      quran-de.doc.tar.xz
+# from 20230311
+Source185:      quran-de.tar.xz
+Source186:      quran-de.doc.tar.xz
 
 %description -n texlive-quran-de
 The package is prepared for typesetting some German
@@ -11980,6 +12215,7 @@ Summary:        Documentation for texlive-quran-de
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quran-de and texlive-alldocumentation)
 
 %description -n texlive-quran-de-doc
 This package includes the documentation for texlive-quran-de
@@ -12059,9 +12295,9 @@ Requires:       tex(quran.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source185:      quran-ur.tar.xz
-Source186:      quran-ur.doc.tar.xz
+# from 20230311
+Source187:      quran-ur.tar.xz
+Source188:      quran-ur.doc.tar.xz
 
 %description -n texlive-quran-ur
 The package is prepared for typesetting some Urdu translations
@@ -12075,6 +12311,7 @@ Summary:        Documentation for texlive-quran-ur
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quran-ur and texlive-alldocumentation)
 
 %description -n texlive-quran-ur-doc
 This package includes the documentation for texlive-quran-ur
@@ -12171,9 +12408,9 @@ Requires:       tex(ulem.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source187:      qyxf-book.tar.xz
-Source188:      qyxf-book.doc.tar.xz
+# from 20230311
+Source189:      qyxf-book.tar.xz
+Source190:      qyxf-book.doc.tar.xz
 
 %description -n texlive-qyxf-book
 qyxf-book is a LaTeX document class (template) developed by
@@ -12199,6 +12436,7 @@ Summary:        Documentation for texlive-qyxf-book
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qyxf-book and texlive-alldocumentation)
 Provides:       locale(texlive-qyxf-book-doc:zh)
 
 %description -n texlive-qyxf-book-doc
@@ -12274,9 +12512,9 @@ Provides:       tex(nl_rs.tex)
 Provides:       tex(r_und_s.sty)
 Provides:       tex(r_und_s.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source189:      r_und_s.tar.xz
-Source190:      r_und_s.doc.tar.xz
+# from 20230311
+Source191:      r_und_s.tar.xz
+Source192:      r_und_s.doc.tar.xz
 
 %description -n texlive-r_und_s
 The r_und_s package decodes the german 'R- und S-Satze', which
@@ -12293,6 +12531,7 @@ Summary:        Documentation for texlive-r_und_s
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-r_und_s and texlive-alldocumentation)
 
 %description -n texlive-r_und_s-doc
 This package includes the documentation for texlive-r_und_s
@@ -12330,7 +12569,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/r_und_s/r_und_s.tex
 
 %package -n texlive-ragged2e
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn61313
+Version:        %{texlive_version}.%{texlive_noarch}.3.4svn66152
 Release:        0
 License:        LPPL-1.0
 Summary:        Alternative versions of "ragged"-type commands
@@ -12361,9 +12600,9 @@ Provides:       tex(ragged2e.sty)
 Requires:       tex(everysel.sty)
 Requires:       tex(footmisc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source191:      ragged2e.tar.xz
-Source192:      ragged2e.doc.tar.xz
+# from 20230311
+Source193:      ragged2e.tar.xz
+Source194:      ragged2e.doc.tar.xz
 
 %description -n texlive-ragged2e
 The package defines new commands \Centering, \RaggedLeft, and
@@ -12373,12 +12612,13 @@ to allow hyphenation (the corresponding commands in LaTeX, all
 of whose names are lower-case, prevent hyphenation altogether).
 
 %package -n texlive-ragged2e-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn61313
+Version:        %{texlive_version}.%{texlive_noarch}.3.4svn66152
 Release:        0
 Summary:        Documentation for texlive-ragged2e
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ragged2e and texlive-alldocumentation)
 
 %description -n texlive-ragged2e-doc
 This package includes the documentation for texlive-ragged2e
@@ -12402,6 +12642,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ragged2e-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/ragged2e/LICENSE.md
 %{_texmfdistdir}/doc/latex/ragged2e/README.md
 %{_texmfdistdir}/doc/latex/ragged2e/ragged2e.pdf
 
@@ -13167,9 +13408,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source193:      raleway.tar.xz
-Source194:      raleway.doc.tar.xz
+# from 20230311
+Source195:      raleway.tar.xz
+Source196:      raleway.doc.tar.xz
 
 %description -n texlive-raleway
 The package provides the Raleway family in an easy to use way.
@@ -13183,6 +13424,7 @@ Summary:        Documentation for texlive-raleway
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-raleway and texlive-alldocumentation)
 
 %description -n texlive-raleway-doc
 This package includes the documentation for texlive-raleway
@@ -13197,9 +13439,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-raleway-fonts
 The  separated fonts package for texlive-raleway
@@ -13990,9 +14230,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-raleway.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-raleway.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-raleway.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/fonts.scale
 %{_datadir}/fonts/texlive-raleway/Raleway-Black-Italic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Black.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Bold-Italic.otf
@@ -14063,9 +14303,9 @@ Provides:       tex(ran_toks.sty)
 Provides:       tex(rt-dbapp.def)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source195:      ran_toks.tar.xz
-Source196:      ran_toks.doc.tar.xz
+# from 20230311
+Source197:      ran_toks.tar.xz
+Source198:      ran_toks.doc.tar.xz
 
 %description -n texlive-ran_toks
 The package provides means of randomising lists of tokens, or
@@ -14083,6 +14323,7 @@ Summary:        Documentation for texlive-ran_toks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ran_toks and texlive-alldocumentation)
 
 %description -n texlive-ran_toks-doc
 This package includes the documentation for texlive-ran_toks
@@ -14163,9 +14404,9 @@ Suggests:       texlive-randbild-doc >= %{texlive_version}
 Provides:       tex(randbild.sty)
 Requires:       tex(pst-plot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source197:      randbild.tar.xz
-Source198:      randbild.doc.tar.xz
+# from 20230311
+Source199:      randbild.tar.xz
+Source200:      randbild.doc.tar.xz
 
 %description -n texlive-randbild
 Provides environments randbild to draw small marginal plots
@@ -14180,6 +14421,7 @@ Summary:        Documentation for texlive-randbild
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-randbild and texlive-alldocumentation)
 Provides:       locale(texlive-randbild-doc:de)
 
 %description -n texlive-randbild-doc
@@ -14241,9 +14483,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-random-doc >= %{texlive_version}
 Provides:       tex(random.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source199:      random.tar.xz
-Source200:      random.doc.tar.xz
+# from 20230311
+Source201:      random.tar.xz
+Source202:      random.doc.tar.xz
 
 %description -n texlive-random
 Generates pseudo-random integers in the range 1 to 2^{31}.
@@ -14258,6 +14500,7 @@ Summary:        Documentation for texlive-random
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-random and texlive-alldocumentation)
 
 %description -n texlive-random-doc
 This package includes the documentation for texlive-random
@@ -14321,9 +14564,9 @@ Provides:       tex(randomlist.sty)
 Provides:       tex(randomlist.tex)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source201:      randomlist.tar.xz
-Source202:      randomlist.doc.tar.xz
+# from 20230311
+Source203:      randomlist.tar.xz
+Source204:      randomlist.doc.tar.xz
 
 %description -n texlive-randomlist
 The main aim of this package is to work on lists, especially
@@ -14337,6 +14580,7 @@ Summary:        Documentation for texlive-randomlist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-randomlist and texlive-alldocumentation)
 
 %description -n texlive-randomlist-doc
 This package includes the documentation for texlive-randomlist
@@ -14411,9 +14655,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(pgfcore.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source203:      randomwalk.tar.xz
-Source204:      randomwalk.doc.tar.xz
+# from 20230311
+Source205:      randomwalk.tar.xz
+Source206:      randomwalk.doc.tar.xz
 
 %description -n texlive-randomwalk
 The randomwalk package provides a user command, \RandomWalk, to
@@ -14429,6 +14673,7 @@ Summary:        Documentation for texlive-randomwalk
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-randomwalk and texlive-alldocumentation)
 
 %description -n texlive-randomwalk-doc
 This package includes the documentation for texlive-randomwalk
@@ -14489,9 +14734,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-randtext-doc >= %{texlive_version}
 Provides:       tex(randtext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source205:      randtext.tar.xz
-Source206:      randtext.doc.tar.xz
+# from 20230311
+Source207:      randtext.tar.xz
+Source208:      randtext.doc.tar.xz
 
 %description -n texlive-randtext
 The package provides a single macro \randomize{TEXT} that
@@ -14509,6 +14754,7 @@ Summary:        Documentation for texlive-randtext
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-randtext and texlive-alldocumentation)
 
 %description -n texlive-randtext-doc
 This package includes the documentation for texlive-randtext
@@ -14575,9 +14821,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source207:      rank-2-roots.tar.xz
-Source208:      rank-2-roots.doc.tar.xz
+# from 20230311
+Source209:      rank-2-roots.tar.xz
+Source210:      rank-2-roots.doc.tar.xz
 
 %description -n texlive-rank-2-roots
 This package concerns mathematical drawings arising in
@@ -14593,6 +14839,7 @@ Summary:        Documentation for texlive-rank-2-roots
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rank-2-roots and texlive-alldocumentation)
 
 %description -n texlive-rank-2-roots-doc
 This package includes the documentation for texlive-rank-2-roots
@@ -14685,9 +14932,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source209:      rbt-mathnotes.tar.xz
-Source210:      rbt-mathnotes.doc.tar.xz
+# from 20230311
+Source211:      rbt-mathnotes.tar.xz
+Source212:      rbt-mathnotes.doc.tar.xz
 
 %description -n texlive-rbt-mathnotes
 Styles for typesetting mathematics notes. Includes document
@@ -14702,6 +14949,7 @@ Summary:        Documentation for texlive-rbt-mathnotes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rbt-mathnotes and texlive-alldocumentation)
 
 %description -n texlive-rbt-mathnotes-doc
 This package includes the documentation for texlive-rbt-mathnotes
@@ -14777,9 +15025,9 @@ Provides:       tex(rccol.sty)
 Requires:       tex(array.sty)
 Requires:       tex(fltpoint.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source211:      rccol.tar.xz
-Source212:      rccol.doc.tar.xz
+# from 20230311
+Source213:      rccol.tar.xz
+Source214:      rccol.doc.tar.xz
 
 %description -n texlive-rccol
 The rccol package provides decimal-centered numbers:
@@ -14795,6 +15043,7 @@ Summary:        Documentation for texlive-rccol
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rccol and texlive-alldocumentation)
 
 %description -n texlive-rccol-doc
 This package includes the documentation for texlive-rccol
@@ -14855,9 +15104,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rcs-doc >= %{texlive_version}
 Provides:       tex(rcs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source213:      rcs.tar.xz
-Source214:      rcs.doc.tar.xz
+# from 20230311
+Source215:      rcs.tar.xz
+Source216:      rcs.doc.tar.xz
 
 %description -n texlive-rcs
 The rcs package utilizes the inclusion of RCS supplied data in
@@ -14880,6 +15129,7 @@ Summary:        Documentation for texlive-rcs
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rcs and texlive-alldocumentation)
 
 %description -n texlive-rcs-doc
 This package includes the documentation for texlive-rcs
@@ -14917,7 +15167,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rcs/rcs.sty
 
 %package -n texlive-rcs-multi
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset RCS version control in multiple-file documents
@@ -14946,9 +15196,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rcs-multi-doc >= %{texlive_version}
 Provides:       tex(rcs-multi.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source215:      rcs-multi.tar.xz
-Source216:      rcs-multi.doc.tar.xz
+# from 20230311
+Source217:      rcs-multi.tar.xz
+Source218:      rcs-multi.doc.tar.xz
 
 %description -n texlive-rcs-multi
 The package enables the user to typeset version control
@@ -14957,12 +15207,13 @@ LaTeX documents that contain multiple TeX files. The package is
 based on the author's svn-multi package.
 
 %package -n texlive-rcs-multi-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn64967
 Release:        0
 Summary:        Documentation for texlive-rcs-multi
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rcs-multi and texlive-alldocumentation)
 
 %description -n texlive-rcs-multi-doc
 This package includes the documentation for texlive-rcs-multi
@@ -15026,9 +15277,9 @@ Provides:       tex(rcsinfo.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyheadings.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source217:      rcsinfo.tar.xz
-Source218:      rcsinfo.doc.tar.xz
+# from 20230311
+Source219:      rcsinfo.tar.xz
+Source220:      rcsinfo.doc.tar.xz
 
 %description -n texlive-rcsinfo
 A package to extract RCS (Revision Control System) information
@@ -15042,6 +15293,7 @@ Summary:        Documentation for texlive-rcsinfo
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rcsinfo and texlive-alldocumentation)
 
 %description -n texlive-rcsinfo-doc
 This package includes the documentation for texlive-rcsinfo
@@ -15118,9 +15370,9 @@ Requires:       tex(roboto.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source219:      readablecv.tar.xz
-Source220:      readablecv.doc.tar.xz
+# from 20230311
+Source221:      readablecv.tar.xz
+Source222:      readablecv.doc.tar.xz
 
 %description -n texlive-readablecv
 This class provides, what I have found, to be an extremely
@@ -15134,6 +15386,7 @@ Summary:        Documentation for texlive-readablecv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-readablecv and texlive-alldocumentation)
 
 %description -n texlive-readablecv-doc
 This package includes the documentation for texlive-readablecv
@@ -15200,9 +15453,9 @@ Requires:       tex(forloop.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(listofitems.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source221:      readarray.tar.xz
-Source222:      readarray.doc.tar.xz
+# from 20230311
+Source223:      readarray.tar.xz
+Source224:      readarray.doc.tar.xz
 
 %description -n texlive-readarray
 The package allows the user to input formatted data into
@@ -15221,6 +15474,7 @@ Summary:        Documentation for texlive-readarray
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-readarray and texlive-alldocumentation)
 
 %description -n texlive-readarray-doc
 This package includes the documentation for texlive-readarray
@@ -15253,7 +15507,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/readarray/readarray.sty
 
 %package -n texlive-realboxes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Variants of common box-commands that read their content as real box and not as macro argument
@@ -15291,9 +15545,9 @@ Requires:       tex(graphics.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source223:      realboxes.tar.xz
-Source224:      realboxes.doc.tar.xz
+# from 20230311
+Source225:      realboxes.tar.xz
+Source226:      realboxes.doc.tar.xz
 
 %description -n texlive-realboxes
 The package uses the author's package collectbox to define
@@ -15308,12 +15562,13 @@ long form uses the short form anyway when no optional arguments
 are used.
 
 %package -n texlive-realboxes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn56291
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn64967
 Release:        0
 Summary:        Documentation for texlive-realboxes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-realboxes and texlive-alldocumentation)
 
 %description -n texlive-realboxes-doc
 This package includes the documentation for texlive-realboxes
@@ -15345,7 +15600,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/realboxes/realboxes.sty
 
 %package -n texlive-realhats
-Version:        %{texlive_version}.%{texlive_noarch}.5.0svn52865
+Version:        %{texlive_version}.%{texlive_noarch}.6.0svn63595
 Release:        0
 License:        LPPL-1.0
 Summary:        Put real hats on symbols instead of ^
@@ -15380,9 +15635,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(lcg.sty)
 Requires:       tex(stackengine.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source225:      realhats.tar.xz
-Source226:      realhats.doc.tar.xz
+# from 20230311
+Source227:      realhats.tar.xz
+Source228:      realhats.doc.tar.xz
 
 %description -n texlive-realhats
 This LaTeX package makes \hat put real hats on symbols. The
@@ -15390,12 +15645,13 @@ package depends on amsmath, calc, graphicx, ifthen, lcg, and
 stackengine.
 
 %package -n texlive-realhats-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.0svn52865
+Version:        %{texlive_version}.%{texlive_noarch}.6.0svn63595
 Release:        0
 Summary:        Documentation for texlive-realhats
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-realhats and texlive-alldocumentation)
 
 %description -n texlive-realhats-doc
 This package includes the documentation for texlive-realhats
@@ -15427,12 +15683,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-ash.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-beret.pdf
+%{_texmfdistdir}/tex/latex/realhats/hats/realhats-birthday.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-cowboy.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-crown.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-dunce.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-fez.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-makelatexgreatagain.pdf
+%{_texmfdistdir}/tex/latex/realhats/hats/realhats-mortarboard.pdf
+%{_texmfdistdir}/tex/latex/realhats/hats/realhats-policeman.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-santa.pdf
+%{_texmfdistdir}/tex/latex/realhats/hats/realhats-scottish.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-sombrero.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-tophat.pdf
 %{_texmfdistdir}/tex/latex/realhats/hats/realhats-witch.pdf
@@ -15469,9 +15729,9 @@ Suggests:       texlive-realscripts-doc >= %{texlive_version}
 Provides:       tex(realscripts.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source227:      realscripts.tar.xz
-Source228:      realscripts.doc.tar.xz
+# from 20230311
+Source229:      realscripts.tar.xz
+Source230:      realscripts.doc.tar.xz
 
 %description -n texlive-realscripts
 This small package replaces \textsuperscript and \textsubscript
@@ -15490,6 +15750,7 @@ Summary:        Documentation for texlive-realscripts
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-realscripts and texlive-alldocumentation)
 
 %description -n texlive-realscripts-doc
 This package includes the documentation for texlive-realscripts
@@ -15551,9 +15812,9 @@ Suggests:       texlive-realtranspose-doc >= %{texlive_version}
 Provides:       tex(realtranspose.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source229:      realtranspose.tar.xz
-Source230:      realtranspose.doc.tar.xz
+# from 20230311
+Source231:      realtranspose.tar.xz
+Source232:      realtranspose.doc.tar.xz
 
 %description -n texlive-realtranspose
 With realtranspose you can notate the transposition of a matrix
@@ -15567,6 +15828,7 @@ Summary:        Documentation for texlive-realtranspose
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-realtranspose and texlive-alldocumentation)
 
 %description -n texlive-realtranspose-doc
 This package includes the documentation for texlive-realtranspose
@@ -15598,7 +15860,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/realtranspose/realtranspose.sty
 
 %package -n texlive-rec-thy
-Version:        %{texlive_version}.%{texlive_noarch}.3.7svn58732
+Version:        %{texlive_version}.%{texlive_noarch}.3.8.2svn63982
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Commands to typeset recursion theory papers
@@ -15645,9 +15907,9 @@ Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source231:      rec-thy.tar.xz
-Source232:      rec-thy.doc.tar.xz
+# from 20230311
+Source233:      rec-thy.tar.xz
+Source234:      rec-thy.doc.tar.xz
 
 %description -n texlive-rec-thy
 This package is designed to help mathematicians publishing
@@ -15657,12 +15919,13 @@ commands to denote Turing reductions, Turing functionals, c.e.
 sets, stagewise computations, forcing and syntactic classes.
 
 %package -n texlive-rec-thy-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.7svn58732
+Version:        %{texlive_version}.%{texlive_noarch}.3.8.2svn63982
 Release:        0
 Summary:        Documentation for texlive-rec-thy
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rec-thy and texlive-alldocumentation)
 
 %description -n texlive-rec-thy-doc
 This package includes the documentation for texlive-rec-thy
@@ -15725,9 +15988,9 @@ Suggests:       texlive-recipe-doc >= %{texlive_version}
 Provides:       tex(recipe.cls)
 Requires:       tex(book.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source233:      recipe.tar.xz
-Source234:      recipe.doc.tar.xz
+# from 20230311
+Source235:      recipe.tar.xz
+Source236:      recipe.doc.tar.xz
 
 %description -n texlive-recipe
 The layout design is relatively straightforward (and
@@ -15741,6 +16004,7 @@ Summary:        Documentation for texlive-recipe
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-recipe and texlive-alldocumentation)
 Provides:       locale(texlive-recipe-doc:it)
 
 %description -n texlive-recipe-doc
@@ -15833,9 +16097,9 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source235:      recipebook.tar.xz
-Source236:      recipebook.doc.tar.xz
+# from 20230311
+Source237:      recipebook.tar.xz
+Source238:      recipebook.doc.tar.xz
 
 %description -n texlive-recipebook
 This is a LaTeX2e class for typesetting recipes. It is designed
@@ -15853,6 +16117,7 @@ Summary:        Documentation for texlive-recipebook
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-recipebook and texlive-alldocumentation)
 
 %description -n texlive-recipebook-doc
 This package includes the documentation for texlive-recipebook
@@ -15927,9 +16192,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source237:      recipecard.tar.xz
-Source238:      recipecard.doc.tar.xz
+# from 20230311
+Source239:      recipecard.tar.xz
+Source240:      recipecard.doc.tar.xz
 
 %description -n texlive-recipecard
 The recipecard class typesets recipes into note card sized
@@ -15943,6 +16208,7 @@ Summary:        Documentation for texlive-recipecard
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-recipecard and texlive-alldocumentation)
 
 %description -n texlive-recipecard-doc
 This package includes the documentation for texlive-recipecard
@@ -15975,6 +16241,89 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/recipecard/recipecard.cls
 
+%package -n texlive-recorder-fingering
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn66008
+Release:        0
+License:        LPPL-1.0
+Summary:        Package to display recorder fingering diagrams
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-recorder-fingering-doc >= %{texlive_version}
+Provides:       tex(recorder-fingering.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source241:      recorder-fingering.tar.xz
+Source242:      recorder-fingering.doc.tar.xz
+
+%description -n texlive-recorder-fingering
+This package provides support for generating and displaying
+fingering diagrams for baroque fingering recorders. Standard
+fingerings are provided for recorders in both C and F, along
+with methods to create and display alternate fingerings for
+trills, etc.
+
+%package -n texlive-recorder-fingering-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn66008
+Release:        0
+Summary:        Documentation for texlive-recorder-fingering
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-recorder-fingering and texlive-alldocumentation)
+
+%description -n texlive-recorder-fingering-doc
+This package includes the documentation for texlive-recorder-fingering
+
+%post -n texlive-recorder-fingering
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-recorder-fingering
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-recorder-fingering
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-recorder-fingering-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/recorder-fingering/README.md
+%{_texmfdistdir}/doc/latex/recorder-fingering/recorder-fingering-RecorderInCchart.png
+%{_texmfdistdir}/doc/latex/recorder-fingering/recorder-fingering.pdf
+%{_texmfdistdir}/doc/latex/recorder-fingering/recorder-fingering.tex
+
+%files -n texlive-recorder-fingering
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/recorder-fingering/recorder-fingering.sty
+
 %package -n texlive-rectopma
 Version:        %{texlive_version}.%{texlive_noarch}.svn19980
 Release:        0
@@ -16005,9 +16354,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rectopma-doc >= %{texlive_version}
 Provides:       tex(rectopma.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source239:      rectopma.tar.xz
-Source240:      rectopma.doc.tar.xz
+# from 20230311
+Source243:      rectopma.tar.xz
+Source244:      rectopma.doc.tar.xz
 
 %description -n texlive-rectopma
 Saves the arguments of \author and \title for reference (after
@@ -16021,6 +16370,7 @@ Summary:        Documentation for texlive-rectopma
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rectopma and texlive-alldocumentation)
 
 %description -n texlive-rectopma-doc
 This package includes the documentation for texlive-rectopma
@@ -16095,9 +16445,9 @@ Provides:       tex(recycle.map)
 Provides:       tex(recycle.sty)
 Provides:       tex(recycle.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source241:      recycle.tar.xz
-Source242:      recycle.doc.tar.xz
+# from 20230311
+Source245:      recycle.tar.xz
+Source246:      recycle.doc.tar.xz
 
 %description -n texlive-recycle
 This single-character font is provided as Metafont source, and
@@ -16111,6 +16461,7 @@ Summary:        Documentation for texlive-recycle
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-recycle and texlive-alldocumentation)
 
 %description -n texlive-recycle-doc
 This package includes the documentation for texlive-recycle
@@ -16125,9 +16476,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-recycle-fonts
 The  separated fonts package for texlive-recycle
@@ -16169,9 +16518,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-recycle
 %{_datadir}/fontconfig/conf.avail/58-texlive-recycle.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-recycle/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-recycle/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-recycle/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-recycle/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-recycle/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-recycle/fonts.scale
 %{_datadir}/fonts/texlive-recycle/recycle.pfb
 
 %package -n texlive-refcheck
@@ -16204,9 +16553,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-refcheck-doc >= %{texlive_version}
 Provides:       tex(refcheck.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source243:      refcheck.tar.xz
-Source244:      refcheck.doc.tar.xz
+# from 20230311
+Source247:      refcheck.tar.xz
+Source248:      refcheck.doc.tar.xz
 
 %description -n texlive-refcheck
 The package checks references in a document, looking for
@@ -16222,6 +16571,7 @@ Summary:        Documentation for texlive-refcheck
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-refcheck and texlive-alldocumentation)
 
 %description -n texlive-refcheck-doc
 This package includes the documentation for texlive-refcheck
@@ -16285,9 +16635,9 @@ Provides:       tex(refcount.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source245:      refcount.tar.xz
-Source246:      refcount.doc.tar.xz
+# from 20230311
+Source249:      refcount.tar.xz
+Source250:      refcount.doc.tar.xz
 
 %description -n texlive-refcount
 Provides commands \setcounterref and \addtocounterref which use
@@ -16305,6 +16655,7 @@ Summary:        Documentation for texlive-refcount
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-refcount and texlive-alldocumentation)
 
 %description -n texlive-refcount-doc
 This package includes the documentation for texlive-refcount
@@ -16369,9 +16720,9 @@ Requires:       tex(csquotes.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source247:      refenums.tar.xz
-Source248:      refenums.doc.tar.xz
+# from 20230311
+Source251:      refenums.tar.xz
+Source252:      refenums.doc.tar.xz
 
 %description -n texlive-refenums
 The package provides commands to define enumerable items with a
@@ -16389,6 +16740,7 @@ Summary:        Documentation for texlive-refenums
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-refenums and texlive-alldocumentation)
 
 %description -n texlive-refenums-doc
 This package includes the documentation for texlive-refenums
@@ -16459,9 +16811,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source249:      reflectgraphics.tar.xz
-Source250:      reflectgraphics.doc.tar.xz
+# from 20230311
+Source253:      reflectgraphics.tar.xz
+Source254:      reflectgraphics.doc.tar.xz
 
 %description -n texlive-reflectgraphics
 The package provides a macro for reflecting images, in a number
@@ -16475,6 +16827,7 @@ Summary:        Documentation for texlive-reflectgraphics
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-reflectgraphics and texlive-alldocumentation)
 
 %description -n texlive-reflectgraphics-doc
 This package includes the documentation for texlive-reflectgraphics
@@ -16538,9 +16891,9 @@ Provides:       tex(pagepc.sty)
 Provides:       tex(refart.cls)
 Provides:       tex(refrep.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source251:      refman.tar.xz
-Source252:      refman.doc.tar.xz
+# from 20230311
+Source255:      refman.tar.xz
+Source256:      refman.doc.tar.xz
 
 %description -n texlive-refman
 Document classes (report- and article-style) for writing
@@ -16555,6 +16908,7 @@ Summary:        Documentation for texlive-refman
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-refman and texlive-alldocumentation)
 Provides:       locale(texlive-refman-doc:de;en)
 
 %description -n texlive-refman-doc
@@ -16627,9 +16981,9 @@ Provides:       tex(refstyle.cfg)
 Provides:       tex(refstyle.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source253:      refstyle.tar.xz
-Source254:      refstyle.doc.tar.xz
+# from 20230311
+Source257:      refstyle.tar.xz
+Source258:      refstyle.doc.tar.xz
 
 %description -n texlive-refstyle
 The package provides a consistent way of producing references
@@ -16651,6 +17005,7 @@ Summary:        Documentation for texlive-refstyle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-refstyle and texlive-alldocumentation)
 
 %description -n texlive-refstyle-doc
 This package includes the documentation for texlive-refstyle
@@ -16713,9 +17068,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-regcount-doc >= %{texlive_version}
 Provides:       tex(regcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source255:      regcount.tar.xz
-Source256:      regcount.doc.tar.xz
+# from 20230311
+Source259:      regcount.tar.xz
+Source260:      regcount.doc.tar.xz
 
 %description -n texlive-regcount
 Adds a macro \rgcounts which displays the allocation status of
@@ -16730,6 +17085,7 @@ Summary:        Documentation for texlive-regcount
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-regcount and texlive-alldocumentation)
 
 %description -n texlive-regcount-doc
 This package includes the documentation for texlive-regcount
@@ -16792,9 +17148,9 @@ Provides:       tex(regexpatch.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source257:      regexpatch.tar.xz
-Source258:      regexpatch.doc.tar.xz
+# from 20230311
+Source261:      regexpatch.tar.xz
+Source262:      regexpatch.doc.tar.xz
 
 %description -n texlive-regexpatch
 The package generalises the macro patching commands provided by
@@ -16810,6 +17166,7 @@ Summary:        Documentation for texlive-regexpatch
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-regexpatch and texlive-alldocumentation)
 
 %description -n texlive-regexpatch-doc
 This package includes the documentation for texlive-regexpatch
@@ -16875,9 +17232,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source259:      register.tar.xz
-Source260:      register.doc.tar.xz
+# from 20230311
+Source263:      register.tar.xz
+Source264:      register.doc.tar.xz
 
 %description -n texlive-register
 This package is designed for typesetting the programmable
@@ -16899,6 +17256,7 @@ Summary:        Documentation for texlive-register
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-register and texlive-alldocumentation)
 
 %description -n texlive-register-doc
 This package includes the documentation for texlive-register
@@ -16968,9 +17326,9 @@ Requires:       tex(intcalc.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source261:      regstats.tar.xz
-Source262:      regstats.doc.tar.xz
+# from 20230311
+Source265:      regstats.tar.xz
+Source266:      regstats.doc.tar.xz
 
 %description -n texlive-regstats
 The package will report number of used registers (counter,
@@ -16985,6 +17343,7 @@ Summary:        Documentation for texlive-regstats
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-regstats and texlive-alldocumentation)
 
 %description -n texlive-regstats-doc
 This package includes the documentation for texlive-regstats
@@ -17019,7 +17378,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/regstats/regstats.sty
 
 %package -n texlive-reledmac
-Version:        %{texlive_version}.%{texlive_noarch}.2.39.1svn61878
+Version:        %{texlive_version}.%{texlive_noarch}.2.39.1svn63105
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset scholarly editions
@@ -17060,9 +17419,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source263:      reledmac.tar.xz
-Source264:      reledmac.doc.tar.xz
+# from 20230311
+Source267:      reledmac.tar.xz
+Source268:      reledmac.doc.tar.xz
 
 %description -n texlive-reledmac
 A package for typesetting scholarly critical editions,
@@ -17073,12 +17432,13 @@ simple tabular- and array-style environments. The package is
 distributed with the related reledpar package.
 
 %package -n texlive-reledmac-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.39.1svn61878
+Version:        %{texlive_version}.%{texlive_noarch}.2.39.1svn63105
 Release:        0
 Summary:        Documentation for texlive-reledmac
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-reledmac and texlive-alldocumentation)
 
 %description -n texlive-reledmac-doc
 This package includes the documentation for texlive-reledmac
@@ -17260,9 +17620,9 @@ Requires:       tex(cmu10.tfm)
 Requires:       tex(lasy10.tfm)
 Requires:       tex(lcircle10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source265:      relenc.tar.xz
-Source266:      relenc.doc.tar.xz
+# from 20230311
+Source269:      relenc.tar.xz
+Source270:      relenc.doc.tar.xz
 
 %description -n texlive-relenc
 LaTeX package providing a relaxed font encoding to make
@@ -17276,6 +17636,7 @@ Summary:        Documentation for texlive-relenc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-relenc and texlive-alldocumentation)
 
 %description -n texlive-relenc-doc
 This package includes the documentation for texlive-relenc
@@ -17350,9 +17711,9 @@ Suggests:       texlive-relsize-doc >= %{texlive_version}
 Provides:       tex(relsize.sty)
 Requires:       tex(type1cm.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source267:      relsize.tar.xz
-Source268:      relsize.doc.tar.xz
+# from 20230311
+Source271:      relsize.tar.xz
+Source272:      relsize.doc.tar.xz
 
 %description -n texlive-relsize
 The basic command of the package is \relsize, whose argument is
@@ -17366,6 +17727,7 @@ Summary:        Documentation for texlive-relsize
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-relsize and texlive-alldocumentation)
 
 %description -n texlive-relsize-doc
 This package includes the documentation for texlive-relsize
@@ -17430,9 +17792,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source269:      reotex.tar.xz
-Source270:      reotex.doc.tar.xz
+# from 20230311
+Source273:      reotex.tar.xz
+Source274:      reotex.doc.tar.xz
 
 %description -n texlive-reotex
 The package defines macros and other utilities to design Reo
@@ -17445,6 +17807,7 @@ Summary:        Documentation for texlive-reotex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-reotex and texlive-alldocumentation)
 
 %description -n texlive-reotex-doc
 This package includes the documentation for texlive-reotex
@@ -17508,9 +17871,9 @@ Provides:       tex(repeatindex.sty)
 Requires:       tex(afterpage.sty)
 Requires:       tex(makeidx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source271:      repeatindex.tar.xz
-Source272:      repeatindex.doc.tar.xz
+# from 20230311
+Source275:      repeatindex.tar.xz
+Source276:      repeatindex.doc.tar.xz
 
 %description -n texlive-repeatindex
 This Package repeats item of an index if a page or column break
@@ -17524,6 +17887,7 @@ Summary:        Documentation for texlive-repeatindex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-repeatindex and texlive-alldocumentation)
 
 %description -n texlive-repeatindex-doc
 This package includes the documentation for texlive-repeatindex
@@ -17556,10 +17920,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/repeatindex/repeatindex.sty
 
 %package -n texlive-repere
-Version:        %{texlive_version}.%{texlive_noarch}.21.11svn60946
+Version:        %{texlive_version}.%{texlive_noarch}.23.02svn65769
 Release:        0
 License:        LPPL-1.0
-Summary:        Diagrams for school mathematics
+Summary:        MetaPost macros for secondary school mathematics teachers
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -17584,9 +17948,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-repere-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source273:      repere.tar.xz
-Source274:      repere.doc.tar.xz
+# from 20230311
+Source277:      repere.tar.xz
+Source278:      repere.doc.tar.xz
 
 %description -n texlive-repere
 This package provides MetaPost macros for drawing secondary
@@ -17596,12 +17960,13 @@ sequences) statistic diagrams plane geometry (polygons,
 circles) arrays and game boards
 
 %package -n texlive-repere-doc
-Version:        %{texlive_version}.%{texlive_noarch}.21.11svn60946
+Version:        %{texlive_version}.%{texlive_noarch}.23.02svn65769
 Release:        0
 Summary:        Documentation for texlive-repere
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-repere and texlive-alldocumentation)
 Provides:       locale(texlive-repere-doc:fr)
 
 %description -n texlive-repere-doc
@@ -17667,9 +18032,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source275:      repltext.tar.xz
-Source276:      repltext.doc.tar.xz
+# from 20230311
+Source279:      repltext.tar.xz
+Source280:      repltext.doc.tar.xz
 
 %description -n texlive-repltext
 The repltext package exposes to LaTeX a relatively obscure PDF
@@ -17684,6 +18049,7 @@ Summary:        Documentation for texlive-repltext
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-repltext and texlive-alldocumentation)
 
 %description -n texlive-repltext-doc
 This package includes the documentation for texlive-repltext
@@ -17715,7 +18081,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/repltext/repltext.sty
 
 %package -n texlive-rerunfilecheck
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn54841
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn63869
 Release:        0
 License:        LPPL-1.0
 Summary:        Checksum based rerun checks on auxiliary files
@@ -17753,22 +18119,23 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(uniquecounter.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source277:      rerunfilecheck.tar.xz
-Source278:      rerunfilecheck.doc.tar.xz
+# from 20230311
+Source281:      rerunfilecheck.tar.xz
+Source282:      rerunfilecheck.doc.tar.xz
 
 %description -n texlive-rerunfilecheck
 The package provides additional rerun warnings if some
-auxiliary files have changed. It is based on MD5 checksum,
-provided by pdfTeX.
+auxiliary files have changed. It is based on MD5 checksum
+provided by pdfTeX, LuaTeX, XeTeX.
 
 %package -n texlive-rerunfilecheck-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn54841
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn63869
 Release:        0
 Summary:        Documentation for texlive-rerunfilecheck
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rerunfilecheck and texlive-alldocumentation)
 
 %description -n texlive-rerunfilecheck-doc
 This package includes the documentation for texlive-rerunfilecheck
@@ -17799,6 +18166,257 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-rerunfilecheck
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+%package -n texlive-rescansync
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn63856
+Release:        0
+License:        LPPL-1.0
+Summary:        Re-scan tokens with synctex information
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-rescansync-doc >= %{texlive_version}
+Provides:       tex(rescansync.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source283:      rescansync.tar.xz
+Source284:      rescansync.doc.tar.xz
+
+%description -n texlive-rescansync
+Allow users to execute saved code to typeset text while
+preserving SyncTeX information.
+
+%package -n texlive-rescansync-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn63856
+Release:        0
+Summary:        Documentation for texlive-rescansync
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rescansync and texlive-alldocumentation)
+
+%description -n texlive-rescansync-doc
+This package includes the documentation for texlive-rescansync
+
+%post -n texlive-rescansync
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-rescansync
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-rescansync
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-rescansync-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/rescansync/README
+%{_texmfdistdir}/doc/latex/rescansync/rescansync.pdf
+%{_texmfdistdir}/doc/latex/rescansync/rescansync.tex
+
+%files -n texlive-rescansync
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/rescansync/rescansync.sty
+
+%package -n texlive-resmes
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn65375
+Release:        0
+License:        LPPL-1.0
+Summary:        Measure restriction symbol in LaTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-resmes-doc >= %{texlive_version}
+Provides:       tex(resmes.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source285:      resmes.tar.xz
+Source286:      resmes.doc.tar.xz
+
+%description -n texlive-resmes
+This package provides a simple macro \resmes that prints the
+measure restriction symbol.
+
+%package -n texlive-resmes-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn65375
+Release:        0
+Summary:        Documentation for texlive-resmes
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-resmes and texlive-alldocumentation)
+
+%description -n texlive-resmes-doc
+This package includes the documentation for texlive-resmes
+
+%post -n texlive-resmes
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-resmes
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-resmes
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-resmes-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/resmes/README.md
+%{_texmfdistdir}/doc/latex/resmes/resmes.pdf
+
+%files -n texlive-resmes
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/resmes/resmes.sty
+
+%package -n texlive-resolsysteme
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.5svn66192
+Release:        0
+License:        LPPL-1.0
+Summary:        Work on linear systems using xint or pyluatex
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-resolsysteme-doc >= %{texlive_version}
+Provides:       tex(ResolSysteme.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(listofitems.sty)
+Requires:       tex(nicefrac.sty)
+Requires:       tex(nicematrix.sty)
+Requires:       tex(siunitx.sty)
+Requires:       tex(xintexpr.sty)
+Requires:       tex(xinttools.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source287:      resolsysteme.tar.xz
+Source288:      resolsysteme.doc.tar.xz
+
+%description -n texlive-resolsysteme
+This package provides some commands (in French) to perform
+calculations on small (2x2 or 3x3 or 4x4) linear systems, with
+xint or pyluatex: \DetMatrice or \DetMatricePY to diplay the
+determinant of a matrix (with formatting options);
+\MatriceInverse or \MatriceInversePY to display the invers of a
+matrix (with formatting options) ; \SolutionSysteme or
+\SolutionSystemePY to display the solution of a linear system
+(with formatting options); ...
+
+%package -n texlive-resolsysteme-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.5svn66192
+Release:        0
+Summary:        Documentation for texlive-resolsysteme
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-resolsysteme and texlive-alldocumentation)
+Provides:       locale(texlive-resolsysteme-doc:fr)
+
+%description -n texlive-resolsysteme-doc
+This package includes the documentation for texlive-resolsysteme
+
+%post -n texlive-resolsysteme
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-resolsysteme
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-resolsysteme
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-resolsysteme-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/resolsysteme/README.md
+%{_texmfdistdir}/doc/latex/resolsysteme/ResolSysteme-doc.pdf
+%{_texmfdistdir}/doc/latex/resolsysteme/ResolSysteme-doc.tex
+%{_texmfdistdir}/doc/latex/resolsysteme/ResolSysteme-exemples-pyluatex.pdf
+%{_texmfdistdir}/doc/latex/resolsysteme/ResolSysteme-exemples-pyluatex.tex
+%{_texmfdistdir}/doc/latex/resolsysteme/ResolSysteme-exemples.pdf
+%{_texmfdistdir}/doc/latex/resolsysteme/ResolSysteme-exemples.tex
+
+%files -n texlive-resolsysteme
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/resolsysteme/ResolSysteme.sty
 
 %package -n texlive-resphilosophica
 Version:        %{texlive_version}.%{texlive_noarch}.1.35svn50935
@@ -17841,9 +18459,9 @@ Requires:       tex(natbib.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source279:      resphilosophica.tar.xz
-Source280:      resphilosophica.doc.tar.xz
+# from 20230311
+Source289:      resphilosophica.tar.xz
+Source290:      resphilosophica.doc.tar.xz
 
 %description -n texlive-resphilosophica
 The bundle provides a class for typesetting articles for the
@@ -17857,6 +18475,7 @@ Summary:        Documentation for texlive-resphilosophica
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-resphilosophica and texlive-alldocumentation)
 
 %description -n texlive-resphilosophica-doc
 This package includes the documentation for texlive-resphilosophica
@@ -17935,9 +18554,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source281:      rest-api.tar.xz
-Source282:      rest-api.doc.tar.xz
+# from 20230311
+Source291:      rest-api.tar.xz
+Source292:      rest-api.doc.tar.xz
 
 %description -n texlive-rest-api
 This LaTeX package provides macros to describe rest apis for
@@ -17952,6 +18571,7 @@ Summary:        Documentation for texlive-rest-api
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rest-api and texlive-alldocumentation)
 
 %description -n texlive-rest-api-doc
 This package includes the documentation for texlive-rest-api
@@ -18019,9 +18639,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source283:      resumecls.tar.xz
-Source284:      resumecls.doc.tar.xz
+# from 20230311
+Source293:      resumecls.tar.xz
+Source294:      resumecls.doc.tar.xz
 
 %description -n texlive-resumecls
 A LaTeX document class to typeset a resume or CV both in
@@ -18034,6 +18654,7 @@ Summary:        Documentation for texlive-resumecls
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-resumecls and texlive-alldocumentation)
 
 %description -n texlive-resumecls-doc
 This package includes the documentation for texlive-resumecls
@@ -18102,9 +18723,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-resumemac-doc >= %{texlive_version}
 Provides:       tex(resumemac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source285:      resumemac.tar.xz
-Source286:      resumemac.doc.tar.xz
+# from 20230311
+Source295:      resumemac.tar.xz
+Source296:      resumemac.doc.tar.xz
 
 %description -n texlive-resumemac
 A set of macros is provided, together with an file that offers
@@ -18117,6 +18738,7 @@ Summary:        Documentation for texlive-resumemac
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-resumemac and texlive-alldocumentation)
 
 %description -n texlive-resumemac-doc
 This package includes the documentation for texlive-resumemac
@@ -18181,9 +18803,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-savepos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source287:      returntogrid.tar.xz
-Source288:      returntogrid.doc.tar.xz
+# from 20230311
+Source297:      returntogrid.tar.xz
+Source298:      returntogrid.doc.tar.xz
 
 %description -n texlive-returntogrid
 returntogrid offers a few commands to get something like an
@@ -18200,6 +18822,7 @@ Summary:        Documentation for texlive-returntogrid
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-returntogrid and texlive-alldocumentation)
 
 %description -n texlive-returntogrid-doc
 This package includes the documentation for texlive-returntogrid
@@ -18233,7 +18856,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/returntogrid/returntogrid.sty
 
 %package -n texlive-reverxii
-Version:        %{texlive_version}.%{texlive_noarch}.svn60973
+Version:        %{texlive_version}.%{texlive_noarch}.svn63753
 Release:        0
 License:        LPPL-1.0
 Summary:        Playing Reversi in TeX
@@ -18260,10 +18883,11 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-reverxii-doc >= %{texlive_version}
+Provides:       tex(reverxii.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source289:      reverxii.source.tar.xz
-Source290:      reverxii.doc.tar.xz
+# from 20230311
+Source299:      reverxii.tar.xz
+Source300:      reverxii.doc.tar.xz
 
 %description -n texlive-reverxii
 Following the lead of xii.tex, this little (938 characters)
@@ -18271,12 +18895,13 @@ program that plays Reversi. (The program incorporates some
 primitive AI.)
 
 %package -n texlive-reverxii-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn60973
+Version:        %{texlive_version}.%{texlive_noarch}.svn63753
 Release:        0
 Summary:        Documentation for texlive-reverxii
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-reverxii and texlive-alldocumentation)
 
 %description -n texlive-reverxii-doc
 This package includes the documentation for texlive-reverxii
@@ -18300,13 +18925,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-reverxii-doc
 %defattr(-,root,root,755)
-%{_texmfdistdir}/doc/plain/reverxii/README.md
-%{_texmfdistdir}/doc/plain/reverxii/reverxii.pdf
-%{_texmfdistdir}/doc/plain/reverxii/reverxii.tex
+%{_texmfdistdir}/doc/generic/reverxii/README.md
+%{_texmfdistdir}/doc/generic/reverxii/reverxii.pdf
 
 %files -n texlive-reverxii
 %defattr(-,root,root,755)
-%{_texmfdistdir}/source/plain/reverxii/reverxii.dtx
+%{_texmfdistdir}/tex/generic/reverxii/reverxii.tex
 
 %package -n texlive-revquantum
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn43505
@@ -18361,9 +18985,9 @@ Requires:       tex(stmaryrd.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source291:      revquantum.tar.xz
-Source292:      revquantum.doc.tar.xz
+# from 20230311
+Source301:      revquantum.tar.xz
+Source302:      revquantum.doc.tar.xz
 
 %description -n texlive-revquantum
 This package provides a number of useful hacks to solve common
@@ -18381,6 +19005,7 @@ Summary:        Documentation for texlive-revquantum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-revquantum and texlive-alldocumentation)
 
 %description -n texlive-revquantum-doc
 This package includes the documentation for texlive-revquantum
@@ -18466,9 +19091,9 @@ Requires:       tex(textcase.sty)
 Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source293:      revtex.tar.xz
-Source294:      revtex.doc.tar.xz
+# from 20230311
+Source303:      revtex.tar.xz
+Source304:      revtex.doc.tar.xz
 
 %description -n texlive-revtex
 Includes styles for American Physical Society, American
@@ -18483,6 +19108,7 @@ Summary:        Documentation for texlive-revtex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-revtex and texlive-alldocumentation)
 
 %description -n texlive-revtex-doc
 This package includes the documentation for texlive-revtex
@@ -18611,9 +19237,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source295:      revtex4.tar.xz
-Source296:      revtex4.doc.tar.xz
+# from 20230311
+Source305:      revtex4.tar.xz
+Source306:      revtex4.doc.tar.xz
 
 %description -n texlive-revtex4
 This is an old version of revtex, and is kept as a courtesy to
@@ -18627,6 +19253,7 @@ Summary:        Documentation for texlive-revtex4
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-revtex4 and texlive-alldocumentation)
 
 %description -n texlive-revtex4-doc
 This package includes the documentation for texlive-revtex4
@@ -18721,9 +19348,9 @@ Requires:       tex(natbib.sty)
 Requires:       tex(textcase.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source297:      revtex4-1.tar.xz
-Source298:      revtex4-1.doc.tar.xz
+# from 20230311
+Source307:      revtex4-1.tar.xz
+Source308:      revtex4-1.doc.tar.xz
 
 %description -n texlive-revtex4-1
 This is an old version of revtex, and is kept as a courtesy to
@@ -18737,6 +19364,7 @@ Summary:        Documentation for texlive-revtex4-1
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-revtex4-1 and texlive-alldocumentation)
 
 %description -n texlive-revtex4-1-doc
 This package includes the documentation for texlive-revtex4-1
@@ -18873,9 +19501,9 @@ Requires:       tex(typearea.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source299:      rgltxdoc.tar.xz
-Source300:      rgltxdoc.doc.tar.xz
+# from 20230311
+Source309:      rgltxdoc.tar.xz
+Source310:      rgltxdoc.doc.tar.xz
 
 %description -n texlive-rgltxdoc
 This package combines several other packages and defines
@@ -18892,6 +19520,7 @@ Summary:        Documentation for texlive-rgltxdoc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rgltxdoc and texlive-alldocumentation)
 
 %description -n texlive-rgltxdoc-doc
 This package includes the documentation for texlive-rgltxdoc
@@ -18956,9 +19585,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source301:      ribbonproofs.tar.xz
-Source302:      ribbonproofs.doc.tar.xz
+# from 20230311
+Source311:      ribbonproofs.tar.xz
+Source312:      ribbonproofs.doc.tar.xz
 
 %description -n texlive-ribbonproofs
 The package provides a way to draw "ribbon proofs" in LaTeX. A
@@ -18974,6 +19603,7 @@ Summary:        Documentation for texlive-ribbonproofs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ribbonproofs and texlive-alldocumentation)
 
 %description -n texlive-ribbonproofs-doc
 This package includes the documentation for texlive-ribbonproofs
@@ -19037,9 +19667,9 @@ Provides:       tex(rjlpshap.sty)
 Requires:       tex(arrayjob.sty)
 Requires:       tex(forloop.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source303:      rjlparshap.tar.xz
-Source304:      rjlparshap.doc.tar.xz
+# from 20230311
+Source313:      rjlparshap.tar.xz
+Source314:      rjlparshap.doc.tar.xz
 
 %description -n texlive-rjlparshap
 The package provides macros and environments that relieve the
@@ -19054,6 +19684,7 @@ Summary:        Documentation for texlive-rjlparshap
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rjlparshap and texlive-alldocumentation)
 
 %description -n texlive-rjlparshap-doc
 This package includes the documentation for texlive-rjlparshap
@@ -19114,9 +19745,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rlepsf-doc >= %{texlive_version}
 Provides:       tex(rlepsf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source305:      rlepsf.tar.xz
-Source306:      rlepsf.doc.tar.xz
+# from 20230311
+Source315:      rlepsf.tar.xz
+Source316:      rlepsf.doc.tar.xz
 
 %description -n texlive-rlepsf
 A macro package for use with epsf.tex which allows PostScript
@@ -19135,6 +19766,7 @@ Summary:        Documentation for texlive-rlepsf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rlepsf and texlive-alldocumentation)
 
 %description -n texlive-rlepsf-doc
 This package includes the documentation for texlive-rlepsf
@@ -19199,9 +19831,9 @@ Requires:       tex(ifetex.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source307:      rmathbr.tar.xz
-Source308:      rmathbr.doc.tar.xz
+# from 20230311
+Source317:      rmathbr.tar.xz
+Source318:      rmathbr.doc.tar.xz
 
 %description -n texlive-rmathbr
 Repeating of math operators at the broken line and the new line
@@ -19219,6 +19851,7 @@ Summary:        Documentation for texlive-rmathbr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rmathbr and texlive-alldocumentation)
 
 %description -n texlive-rmathbr-doc
 This package includes the documentation for texlive-rmathbr
@@ -19289,9 +19922,9 @@ Requires:       tex(palatino.sty)
 Requires:       tex(times.sty)
 Requires:       tex(utopia.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source309:      rmpage.tar.xz
-Source310:      rmpage.doc.tar.xz
+# from 20230311
+Source319:      rmpage.tar.xz
+Source320:      rmpage.doc.tar.xz
 
 %description -n texlive-rmpage
 The package lets you change page layout parameters in small
@@ -19312,6 +19945,7 @@ Summary:        Documentation for texlive-rmpage
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rmpage and texlive-alldocumentation)
 
 %description -n texlive-rmpage-doc
 This package includes the documentation for texlive-rmpage
@@ -19347,7 +19981,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rmpage/rmpgen.cfg
 
 %package -n texlive-robotarm
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn62566
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn63116
 Release:        0
 License:        LPPL-1.0
 Summary:        TikZ powered LaTeX package to draw parameterized 2D robot arms
@@ -19377,21 +20011,22 @@ Suggests:       texlive-robotarm-doc >= %{texlive_version}
 Provides:       tex(robotarm.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source311:      robotarm.tar.xz
-Source312:      robotarm.doc.tar.xz
+# from 20230311
+Source321:      robotarm.tar.xz
+Source322:      robotarm.doc.tar.xz
 
 %description -n texlive-robotarm
 This LaTeX package uses TikZ to draw parameterized 2D robot
 arms, for example to be used in educational material.
 
 %package -n texlive-robotarm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn62566
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn63116
 Release:        0
 Summary:        Documentation for texlive-robotarm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-robotarm and texlive-alldocumentation)
 
 %description -n texlive-robotarm-doc
 This package includes the documentation for texlive-robotarm
@@ -19423,7 +20058,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/robotarm/robotarm.sty
 
 %package -n texlive-roboto
-Version:        %{texlive_version}.%{texlive_noarch}.svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.svn64350
 Release:        0
 License:        Apache-1.0
 Summary:        Support for the Roboto family of fonts
@@ -19467,18 +20102,33 @@ Provides:       tex(LGRRoboto-OsF.fd)
 Provides:       tex(LGRRoboto-TLF.fd)
 Provides:       tex(LGRRoboto-TOsF.fd)
 Provides:       tex(LGRRobotoMono-TLF.fd)
+Provides:       tex(LGRRobotoSerif-LF.fd)
+Provides:       tex(LGRRobotoSerif-OsF.fd)
+Provides:       tex(LGRRobotoSerif-Sup.fd)
+Provides:       tex(LGRRobotoSerif-TLF.fd)
+Provides:       tex(LGRRobotoSerif-TOsF.fd)
 Provides:       tex(LGRRobotoSlab-TLF.fd)
 Provides:       tex(LY1Roboto-LF.fd)
 Provides:       tex(LY1Roboto-OsF.fd)
 Provides:       tex(LY1Roboto-TLF.fd)
 Provides:       tex(LY1Roboto-TOsF.fd)
 Provides:       tex(LY1RobotoMono-TLF.fd)
+Provides:       tex(LY1RobotoSerif-LF.fd)
+Provides:       tex(LY1RobotoSerif-OsF.fd)
+Provides:       tex(LY1RobotoSerif-Sup.fd)
+Provides:       tex(LY1RobotoSerif-TLF.fd)
+Provides:       tex(LY1RobotoSerif-TOsF.fd)
 Provides:       tex(LY1RobotoSlab-TLF.fd)
 Provides:       tex(OT1Roboto-LF.fd)
 Provides:       tex(OT1Roboto-OsF.fd)
 Provides:       tex(OT1Roboto-TLF.fd)
 Provides:       tex(OT1Roboto-TOsF.fd)
 Provides:       tex(OT1RobotoMono-TLF.fd)
+Provides:       tex(OT1RobotoSerif-LF.fd)
+Provides:       tex(OT1RobotoSerif-OsF.fd)
+Provides:       tex(OT1RobotoSerif-Sup.fd)
+Provides:       tex(OT1RobotoSerif-TLF.fd)
+Provides:       tex(OT1RobotoSerif-TOsF.fd)
 Provides:       tex(OT1RobotoSlab-TLF.fd)
 Provides:       tex(Roboto-Black-lf-lgr--base.tfm)
 Provides:       tex(Roboto-Black-lf-lgr.tfm)
@@ -21530,6 +22180,2382 @@ Provides:       tex(RobotoMono-ThinItalic-tlf-t1.vf)
 Provides:       tex(RobotoMono-ThinItalic-tlf-ts1--base.tfm)
 Provides:       tex(RobotoMono-ThinItalic-tlf-ts1.tfm)
 Provides:       tex(RobotoMono-ThinItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Black-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Black-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Black-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Black-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Black-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Black-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Black-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Black-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Black-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Black-lf-t1.vf)
+Provides:       tex(RobotoSerif-Black-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Black-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Black-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Black-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Black-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Black-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Black-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Black-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Black-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Black-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Black-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Black-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Black-osf-t1.vf)
+Provides:       tex(RobotoSerif-Black-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Black-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Black-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Black-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Black-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Black-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Black-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Black-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Black-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Black-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Black-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Black-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Black-sup-t1.vf)
+Provides:       tex(RobotoSerif-Black-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Black-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Black-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Black-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Black-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Black-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Black-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Black-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Black-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Black-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Black-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Black-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-BlackItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-BlackItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-Bold-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Bold-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Bold-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-t1.vf)
+Provides:       tex(RobotoSerif-Bold-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Bold-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Bold-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Bold-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Bold-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-t1.vf)
+Provides:       tex(RobotoSerif-Bold-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Bold-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Bold-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Bold-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Bold-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Bold-sup-t1.vf)
+Provides:       tex(RobotoSerif-Bold-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Bold-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Bold-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Bold-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Bold-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Bold-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Bold-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Bold-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Bold-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Bold-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Bold-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Bold-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-BoldItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-BoldItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-lf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-osf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBold-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-sup-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBold-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraBoldItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-lf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-osf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLight-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-sup-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLight-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-ExtraLightItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-Italic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Italic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Italic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-t1.vf)
+Provides:       tex(RobotoSerif-Italic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Italic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Italic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Italic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Italic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-t1.vf)
+Provides:       tex(RobotoSerif-Italic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Italic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Italic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Italic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Italic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Italic-sup-t1.vf)
+Provides:       tex(RobotoSerif-Italic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Italic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Italic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Italic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Italic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Italic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Italic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Italic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Italic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Italic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Italic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Italic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-Light-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Light-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Light-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Light-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Light-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Light-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Light-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Light-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Light-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Light-lf-t1.vf)
+Provides:       tex(RobotoSerif-Light-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Light-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Light-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Light-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Light-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Light-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Light-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Light-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Light-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Light-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Light-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Light-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Light-osf-t1.vf)
+Provides:       tex(RobotoSerif-Light-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Light-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Light-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Light-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Light-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Light-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Light-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Light-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Light-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Light-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Light-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Light-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Light-sup-t1.vf)
+Provides:       tex(RobotoSerif-Light-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Light-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Light-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Light-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Light-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Light-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Light-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Light-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Light-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Light-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Light-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Light-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-LightItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-LightItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-LightItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-LightItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-LightItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-LightItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-LightItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-LightItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-LightItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-LightItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-LightItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-LightItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-Medium-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Medium-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Medium-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-t1.vf)
+Provides:       tex(RobotoSerif-Medium-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Medium-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Medium-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Medium-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Medium-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-t1.vf)
+Provides:       tex(RobotoSerif-Medium-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Medium-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Medium-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Medium-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Medium-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Medium-sup-t1.vf)
+Provides:       tex(RobotoSerif-Medium-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Medium-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Medium-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Medium-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Medium-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Medium-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Medium-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Medium-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Medium-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Medium-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Medium-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Medium-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-MediumItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-MediumItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-Regular-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Regular-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Regular-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-t1.vf)
+Provides:       tex(RobotoSerif-Regular-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Regular-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Regular-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Regular-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Regular-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-t1.vf)
+Provides:       tex(RobotoSerif-Regular-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Regular-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Regular-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Regular-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Regular-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Regular-sup-t1.vf)
+Provides:       tex(RobotoSerif-Regular-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Regular-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Regular-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Regular-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Regular-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Regular-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Regular-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Regular-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Regular-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Regular-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Regular-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Regular-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBold-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBold-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBold-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBold-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-lf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBold-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBold-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBold-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBold-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-osf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBold-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBold-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBold-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-sup-t1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBold-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-SemiBoldItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-Thin-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-lgr.vf)
+Provides:       tex(RobotoSerif-Thin-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-ly1.vf)
+Provides:       tex(RobotoSerif-Thin-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-t1.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-t1.vf)
+Provides:       tex(RobotoSerif-Thin-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-Thin-lf-ts1.vf)
+Provides:       tex(RobotoSerif-Thin-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-lgr.vf)
+Provides:       tex(RobotoSerif-Thin-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-ly1.vf)
+Provides:       tex(RobotoSerif-Thin-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-t1.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-t1.vf)
+Provides:       tex(RobotoSerif-Thin-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-Thin-osf-ts1.vf)
+Provides:       tex(RobotoSerif-Thin-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-lgr.vf)
+Provides:       tex(RobotoSerif-Thin-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-ly1.vf)
+Provides:       tex(RobotoSerif-Thin-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-t1.tfm)
+Provides:       tex(RobotoSerif-Thin-sup-t1.vf)
+Provides:       tex(RobotoSerif-Thin-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-Thin-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-Thin-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-Thin-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-t1.vf)
+Provides:       tex(RobotoSerif-Thin-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-Thin-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-Thin-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-Thin-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-Thin-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-Thin-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-t1.vf)
+Provides:       tex(RobotoSerif-Thin-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-Thin-tosf-ts1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-t1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-t1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerif-ThinItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-sup-t1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerif-ThinItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Black-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Black-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BlackItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Bold-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-BoldItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBold-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraBoldItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLight-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ExtraLightItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Italic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Light-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Light-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-LightItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Medium-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-MediumItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Regular-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBold-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-SemiBoldItalic-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-Thin-tosf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-lf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-osf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-sup-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tlf-ts1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-lgr--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-lgr.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-lgr.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ly1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ly1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ly1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ot1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ot1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ot1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-t1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-t1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-t1.vf)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ts1--base.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ts1.tfm)
+Provides:       tex(RobotoSerifCondensed-ThinItalic-tosf-ts1.vf)
 Provides:       tex(RobotoSlab-Bold-tlf-lgr--base.tfm)
 Provides:       tex(RobotoSlab-Bold-tlf-lgr.tfm)
 Provides:       tex(RobotoSlab-Bold-tlf-lgr.vf)
@@ -21635,15 +24661,26 @@ Provides:       tex(T1Roboto-OsF.fd)
 Provides:       tex(T1Roboto-TLF.fd)
 Provides:       tex(T1Roboto-TOsF.fd)
 Provides:       tex(T1RobotoMono-TLF.fd)
+Provides:       tex(T1RobotoSerif-LF.fd)
+Provides:       tex(T1RobotoSerif-OsF.fd)
+Provides:       tex(T1RobotoSerif-Sup.fd)
+Provides:       tex(T1RobotoSerif-TLF.fd)
+Provides:       tex(T1RobotoSerif-TOsF.fd)
 Provides:       tex(T1RobotoSlab-TLF.fd)
 Provides:       tex(TS1Roboto-LF.fd)
 Provides:       tex(TS1Roboto-OsF.fd)
 Provides:       tex(TS1Roboto-TLF.fd)
 Provides:       tex(TS1Roboto-TOsF.fd)
 Provides:       tex(TS1RobotoMono-TLF.fd)
+Provides:       tex(TS1RobotoSerif-LF.fd)
+Provides:       tex(TS1RobotoSerif-OsF.fd)
+Provides:       tex(TS1RobotoSerif-TLF.fd)
+Provides:       tex(TS1RobotoSerif-TOsF.fd)
 Provides:       tex(TS1RobotoSlab-TLF.fd)
 Provides:       tex(rbto_2cs4gp.enc)
+Provides:       tex(rbto_2uubtm.enc)
 Provides:       tex(rbto_2ylw52.enc)
+Provides:       tex(rbto_33jnad.enc)
 Provides:       tex(rbto_35j2t6.enc)
 Provides:       tex(rbto_4jpen6.enc)
 Provides:       tex(rbto_5au2tj.enc)
@@ -21653,6 +24690,7 @@ Provides:       tex(rbto_6i2fao.enc)
 Provides:       tex(rbto_6rxeh6.enc)
 Provides:       tex(rbto_7juiin.enc)
 Provides:       tex(rbto_a4rth4.enc)
+Provides:       tex(rbto_acwfoz.enc)
 Provides:       tex(rbto_adklll.enc)
 Provides:       tex(rbto_as7fdj.enc)
 Provides:       tex(rbto_b5rac7.enc)
@@ -21661,9 +24699,12 @@ Provides:       tex(rbto_bzwjdb.enc)
 Provides:       tex(rbto_ddkove.enc)
 Provides:       tex(rbto_dfqeeu.enc)
 Provides:       tex(rbto_dqsbwe.enc)
+Provides:       tex(rbto_dwsqhe.enc)
 Provides:       tex(rbto_e24joy.enc)
 Provides:       tex(rbto_el2qpt.enc)
+Provides:       tex(rbto_epkquw.enc)
 Provides:       tex(rbto_ghuabv.enc)
+Provides:       tex(rbto_h4xxl2.enc)
 Provides:       tex(rbto_h6xohf.enc)
 Provides:       tex(rbto_hdhu7c.enc)
 Provides:       tex(rbto_hlrajr.enc)
@@ -21672,12 +24713,26 @@ Provides:       tex(rbto_ihpqsf.enc)
 Provides:       tex(rbto_imandq.enc)
 Provides:       tex(rbto_iqgrsz.enc)
 Provides:       tex(rbto_j2bk2t.enc)
+Provides:       tex(rbto_je7obu.enc)
+Provides:       tex(rbto_jsccdt.enc)
+Provides:       tex(rbto_ktqtin.enc)
+Provides:       tex(rbto_lbdvpp.enc)
+Provides:       tex(rbto_lfutjz.enc)
 Provides:       tex(rbto_lhlrii.enc)
+Provides:       tex(rbto_lkebxp.enc)
+Provides:       tex(rbto_meyhpi.enc)
+Provides:       tex(rbto_muuaub.enc)
 Provides:       tex(rbto_ocbbsb.enc)
 Provides:       tex(rbto_ogts26.enc)
+Provides:       tex(rbto_pn7nyn.enc)
+Provides:       tex(rbto_pufewj.enc)
 Provides:       tex(rbto_q5hjoy.enc)
+Provides:       tex(rbto_qb5szn.enc)
 Provides:       tex(rbto_qhmgos.enc)
+Provides:       tex(rbto_qi3puo.enc)
+Provides:       tex(rbto_qtf2ec.enc)
 Provides:       tex(rbto_qulak4.enc)
+Provides:       tex(rbto_r7pbwp.enc)
 Provides:       tex(rbto_rehtu3.enc)
 Provides:       tex(rbto_s5b5bo.enc)
 Provides:       tex(rbto_schjax.enc)
@@ -21685,6 +24740,8 @@ Provides:       tex(rbto_shbyjm.enc)
 Provides:       tex(rbto_swa2hd.enc)
 Provides:       tex(rbto_t46jwv.enc)
 Provides:       tex(rbto_t4kqic.enc)
+Provides:       tex(rbto_tp43rw.enc)
+Provides:       tex(rbto_u4yc4h.enc)
 Provides:       tex(rbto_uf77so.enc)
 Provides:       tex(rbto_wkn3wn.enc)
 Provides:       tex(rbto_wttfgh.enc)
@@ -21694,6 +24751,7 @@ Provides:       tex(rbto_z4nc45.enc)
 Provides:       tex(rbto_zf56p3.enc)
 Provides:       tex(rbto_zfcuyn.enc)
 Provides:       tex(roboto-mono.sty)
+Provides:       tex(roboto-serif.sty)
 Provides:       tex(roboto.map)
 Provides:       tex(roboto.sty)
 Requires:       tex(fontaxes.sty)
@@ -21705,29 +24763,30 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source313:      roboto.tar.xz
-Source314:      roboto.doc.tar.xz
+# from 20230311
+Source323:      roboto.tar.xz
+Source324:      roboto.doc.tar.xz
 
 %description -n texlive-roboto
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
-support for the Roboto, RobotoCondensed, RobotoMono and
-RobotoSlab families of fonts, designed by Christian Robertson
-for Google.
+support for the Roboto Sans, Roboto Condensed, Roboto Mono,
+Roboto Slab and Roboto Serif families of fonts, designed by
+Christian Robertson and Greg Gazdowicz for Google.
 
 %package -n texlive-roboto-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.svn64350
 Release:        0
 Summary:        Documentation for texlive-roboto
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-roboto and texlive-alldocumentation)
 
 %description -n texlive-roboto-doc
 This package includes the documentation for texlive-roboto
 
 %package -n texlive-roboto-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.svn64350
 Release:        0
 Summary:        Severed fonts for texlive-roboto
 License:        Apache-1.0
@@ -21736,9 +24795,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-roboto-fonts
 The  separated fonts package for texlive-roboto
@@ -21770,6 +24827,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/roboto/ChangeLogLaTeX.txt
 %{_texmfdistdir}/doc/fonts/roboto/DESCRIPTION.en_us.html
 %{_texmfdistdir}/doc/fonts/roboto/LICENSE.txt
+%{_texmfdistdir}/doc/fonts/roboto/OFL.txt
 %{_texmfdistdir}/doc/fonts/roboto/README
 %{_texmfdistdir}/doc/fonts/roboto/RobotoSpecimenBook.pdf
 %{_texmfdistdir}/doc/fonts/roboto/roboto-samples.pdf
@@ -21778,7 +24836,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-roboto
 %defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_2cs4gp.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_2uubtm.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_2ylw52.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_33jnad.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_35j2t6.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_4jpen6.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_5au2tj.enc
@@ -21788,6 +24848,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_6rxeh6.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_7juiin.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_a4rth4.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_acwfoz.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_adklll.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_as7fdj.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_b5rac7.enc
@@ -21796,9 +24857,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_ddkove.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_dfqeeu.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_dqsbwe.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_dwsqhe.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_e24joy.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_el2qpt.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_epkquw.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_ghuabv.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_h4xxl2.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_h6xohf.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_hdhu7c.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_hlrajr.enc
@@ -21807,12 +24871,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_imandq.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_iqgrsz.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_j2bk2t.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_je7obu.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_jsccdt.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_ktqtin.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_lbdvpp.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_lfutjz.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_lhlrii.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_lkebxp.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_meyhpi.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_muuaub.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_ocbbsb.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_ogts26.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_pn7nyn.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_pufewj.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_q5hjoy.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_qb5szn.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_qhmgos.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_qi3puo.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_qtf2ec.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_qulak4.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_r7pbwp.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_rehtu3.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_s5b5bo.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_schjax.enc
@@ -21820,6 +24898,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_swa2hd.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_t46jwv.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_t4kqic.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_tp43rw.enc
+%{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_u4yc4h.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_uf77so.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_wkn3wn.enc
 %{_texmfdistdir}/fonts/enc/dvips/roboto/rbto_wttfgh.enc
@@ -21857,6 +24937,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoMono-Regular.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoMono-Thin.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoMono-ThinItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Black.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-BlackItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-ExtraBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-ExtraBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-ExtraLight.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-ExtraLightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Light.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-LightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Medium.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-MediumItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-SemiBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-SemiBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-Thin.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif-ThinItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Black.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-BlackItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-ExtraBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-ExtraBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-ExtraLight.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-ExtraLightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Light.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-LightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Medium.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-MediumItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-SemiBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-SemiBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-Thin.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSerif_Condensed-ThinItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSlab-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSlab-Light.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/google/roboto/RobotoSlab-Regular.otf
@@ -23255,6 +26371,1626 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/google/roboto/RobotoMono-ThinItalic-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/google/roboto/RobotoMono-ThinItalic-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/google/roboto/RobotoMono-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Black-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BlackItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Bold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLight-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Light-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-LightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Medium-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-MediumItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Regular-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-Thin-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerif-ThinItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Black-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Bold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Light-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Medium-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Regular-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-Thin-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSlab-Bold-tlf-lgr--base.tfm
 %{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSlab-Bold-tlf-lgr.tfm
 %{_texmfdistdir}/fonts/tfm/google/roboto/RobotoSlab-Bold-tlf-ly1--base.tfm
@@ -23351,6 +28087,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoMono-Regular.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoMono-Thin.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoMono-ThinItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Black.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-BlackItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Bold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-BoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-ExtraBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-ExtraBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-ExtraLight.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-ExtraLightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Italic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Light.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-LightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Medium.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-MediumItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Regular.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-SemiBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-SemiBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-Thin.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerif-ThinItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Black.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-BlackItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Bold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-BoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-ExtraBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-ExtraBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-ExtraLight.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-ExtraLightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Italic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Light.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-LightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Medium.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-MediumItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Regular.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-SemiBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-SemiBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-Thin.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSerifCondensed-ThinItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSlab-Bold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSlab-Light.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/google/roboto/RobotoSlab-Regular.pfb
@@ -24011,6 +28783,762 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/google/roboto/RobotoMono-ThinItalic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/google/roboto/RobotoMono-ThinItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/google/roboto/RobotoMono-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Black-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BlackItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Bold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraBoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLight-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ExtraLightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Light-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-LightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Medium-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-MediumItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Regular-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-SemiBoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-Thin-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerif-ThinItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Black-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BlackItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Bold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraBoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLight-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ExtraLightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Light-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-LightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Medium-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-MediumItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Regular-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-SemiBoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-Thin-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-lf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-osf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-lgr.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ot1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/google/roboto/RobotoSerifCondensed-ThinItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/google/roboto/RobotoSlab-Bold-tlf-lgr.vf
 %{_texmfdistdir}/fonts/vf/google/roboto/RobotoSlab-Bold-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/google/roboto/RobotoSlab-Bold-tlf-sc-lgr.vf
@@ -24048,32 +29576,57 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/roboto/LGRRoboto-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/LGRRoboto-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/LGRRobotoMono-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/LGRRobotoSerif-LF.fd
+%{_texmfdistdir}/tex/latex/roboto/LGRRobotoSerif-OsF.fd
+%{_texmfdistdir}/tex/latex/roboto/LGRRobotoSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/roboto/LGRRobotoSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/LGRRobotoSerif-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/LGRRobotoSlab-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/LY1Roboto-LF.fd
 %{_texmfdistdir}/tex/latex/roboto/LY1Roboto-OsF.fd
 %{_texmfdistdir}/tex/latex/roboto/LY1Roboto-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/LY1Roboto-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/LY1RobotoMono-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/LY1RobotoSerif-LF.fd
+%{_texmfdistdir}/tex/latex/roboto/LY1RobotoSerif-OsF.fd
+%{_texmfdistdir}/tex/latex/roboto/LY1RobotoSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/roboto/LY1RobotoSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/LY1RobotoSerif-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/LY1RobotoSlab-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/OT1Roboto-LF.fd
 %{_texmfdistdir}/tex/latex/roboto/OT1Roboto-OsF.fd
 %{_texmfdistdir}/tex/latex/roboto/OT1Roboto-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/OT1Roboto-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/OT1RobotoMono-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/OT1RobotoSerif-LF.fd
+%{_texmfdistdir}/tex/latex/roboto/OT1RobotoSerif-OsF.fd
+%{_texmfdistdir}/tex/latex/roboto/OT1RobotoSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/roboto/OT1RobotoSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/OT1RobotoSerif-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/OT1RobotoSlab-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/T1Roboto-LF.fd
 %{_texmfdistdir}/tex/latex/roboto/T1Roboto-OsF.fd
 %{_texmfdistdir}/tex/latex/roboto/T1Roboto-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/T1Roboto-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/T1RobotoMono-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/T1RobotoSerif-LF.fd
+%{_texmfdistdir}/tex/latex/roboto/T1RobotoSerif-OsF.fd
+%{_texmfdistdir}/tex/latex/roboto/T1RobotoSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/roboto/T1RobotoSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/T1RobotoSerif-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/T1RobotoSlab-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/TS1Roboto-LF.fd
 %{_texmfdistdir}/tex/latex/roboto/TS1Roboto-OsF.fd
 %{_texmfdistdir}/tex/latex/roboto/TS1Roboto-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/TS1Roboto-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/TS1RobotoMono-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/TS1RobotoSerif-LF.fd
+%{_texmfdistdir}/tex/latex/roboto/TS1RobotoSerif-OsF.fd
+%{_texmfdistdir}/tex/latex/roboto/TS1RobotoSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/roboto/TS1RobotoSerif-TOsF.fd
 %{_texmfdistdir}/tex/latex/roboto/TS1RobotoSlab-TLF.fd
 %{_texmfdistdir}/tex/latex/roboto/roboto-mono.sty
+%{_texmfdistdir}/tex/latex/roboto/roboto-serif.sty
 %{_texmfdistdir}/tex/latex/roboto/roboto.sty
 
 %files -n texlive-roboto-fonts
@@ -24082,9 +29635,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-roboto.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-roboto.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-roboto.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-roboto/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-roboto/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-roboto/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-roboto/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-roboto/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-roboto/fonts.scale
 %{_datadir}/fonts/texlive-roboto/Roboto-Black.otf
 %{_datadir}/fonts/texlive-roboto/Roboto-BlackItalic.otf
 %{_datadir}/fonts/texlive-roboto/Roboto-Bold.otf
@@ -24113,6 +29666,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-roboto/RobotoMono-Regular.otf
 %{_datadir}/fonts/texlive-roboto/RobotoMono-Thin.otf
 %{_datadir}/fonts/texlive-roboto/RobotoMono-ThinItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Black.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-BlackItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Bold.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-BoldItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraBold.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraBoldItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraLight.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraLightItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Italic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Light.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-LightItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Medium.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-MediumItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Regular.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-SemiBold.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-SemiBoldItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Thin.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ThinItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Black.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-BlackItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Bold.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-BoldItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-ExtraBold.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-ExtraBoldItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-ExtraLight.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-ExtraLightItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Italic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Light.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-LightItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Medium.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-MediumItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Regular.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-SemiBold.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-SemiBoldItalic.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-Thin.otf
+%{_datadir}/fonts/texlive-roboto/RobotoSerif_Condensed-ThinItalic.otf
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Bold.otf
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Light.otf
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Regular.otf
@@ -24145,6 +29734,42 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-roboto/RobotoMono-Regular.pfb
 %{_datadir}/fonts/texlive-roboto/RobotoMono-Thin.pfb
 %{_datadir}/fonts/texlive-roboto/RobotoMono-ThinItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Black.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-BlackItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Bold.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-BoldItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraBold.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraBoldItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraLight.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ExtraLightItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Italic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Light.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-LightItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Medium.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-MediumItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Regular.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-SemiBold.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-SemiBoldItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-Thin.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerif-ThinItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Black.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-BlackItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Bold.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-BoldItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-ExtraBold.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-ExtraBoldItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-ExtraLight.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-ExtraLightItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Italic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Light.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-LightItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Medium.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-MediumItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Regular.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-SemiBold.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-SemiBoldItalic.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-Thin.pfb
+%{_datadir}/fonts/texlive-roboto/RobotoSerifCondensed-ThinItalic.pfb
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Bold.pfb
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Light.pfb
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Regular.pfb
@@ -24180,9 +29805,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-robustcommand-doc >= %{texlive_version}
 Provides:       tex(robustcommand.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source315:      robustcommand.tar.xz
-Source316:      robustcommand.doc.tar.xz
+# from 20230311
+Source325:      robustcommand.tar.xz
+Source326:      robustcommand.doc.tar.xz
 
 %description -n texlive-robustcommand
 The package merely provides a variation of
@@ -24196,6 +29821,7 @@ Summary:        Documentation for texlive-robustcommand
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-robustcommand and texlive-alldocumentation)
 Provides:       locale(texlive-robustcommand-doc:de)
 
 %description -n texlive-robustcommand-doc
@@ -24396,9 +30022,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-punknova/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-punknova/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-punknova/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-punknova/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-punknova/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-punknova/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-punknova.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24449,6 +30074,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     done
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Make possible scripts usable if any
+    for scr in %{_texmfdistdir}/doc/plain/pwebmac/makeall
+    do
+	test -e %{buildroot}/$scr || continue
+	chmod 0755 %{buildroot}/$scr
+    done
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24466,9 +30097,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-pxfonts/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-pxfonts/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-pxfonts/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-pxfonts/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-pxfonts/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-pxfonts/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-pxfonts.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24525,10 +30155,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:140}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:142}
     popd
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/scripts/pythontex/depythontex2.py
@@ -24586,8 +30218,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24608,6 +30238,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-qualitype
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/qualitype/*.{pf[ab],[ot]tf}
@@ -24617,9 +30249,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-qualitype/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-qualitype/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-qualitype/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-qualitype/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-qualitype/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-qualitype/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-qualitype.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24638,12 +30269,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-quattrocento
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/impallari/quattrocento/*.{pf[ab],[ot]tf} \
@@ -24654,9 +30285,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-quattrocento/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-quattrocento/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-quattrocento/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-quattrocento/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-quattrocento/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-quattrocento/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-quattrocento.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24695,8 +30325,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-quattrocento.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-quattrocento.conf
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24721,6 +30349,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-raleway
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/raleway/*.{pf[ab],[ot]tf} \
@@ -24731,9 +30361,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-raleway/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-raleway/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-raleway/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-raleway/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-raleway/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-raleway/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-raleway.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24772,8 +30401,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-raleway.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-raleway.conf
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24820,6 +30447,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-recycle
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/recycle/*.{pf[ab],[ot]tf}
@@ -24829,9 +30460,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-recycle/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-recycle/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-recycle/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-recycle/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-recycle/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-recycle/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-recycle.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24850,10 +30480,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24868,6 +30494,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/doc/latex/register/reg_list.pl
     do
@@ -24880,10 +30510,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24934,6 +30560,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-roboto
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/google/roboto/*.{pf[ab],[ot]tf} \
@@ -24944,9 +30580,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-roboto/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-roboto/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-roboto/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-roboto/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-roboto/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-roboto/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-roboto.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24985,8 +30620,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-roboto.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-roboto.conf
-    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
