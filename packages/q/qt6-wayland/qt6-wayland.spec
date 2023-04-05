@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-wayland
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -45,12 +45,11 @@ BuildRequires:  qt6-opengl-private-devel
 BuildRequires:  qt6-platformsupport-private-devel
 BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
@@ -110,7 +109,7 @@ Summary:        Development files for the Qt 6 WaylandClient library
 Requires:       libQt6WaylandClient6 = %{version}
 # qtwaylandscanner is required
 Requires:       qt6-wayland = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description -n qt6-waylandclient-devel
@@ -133,10 +132,10 @@ The Qt 6 WaylandCompositor library.
 %package -n qt6-waylandcompositor-devel
 Summary:        Development files for the Qt6 WaylandCompositor library
 Requires:       libQt6WaylandCompositor6 = %{version}
-Requires:       cmake(Qt6Gui)
-Requires:       cmake(Qt6OpenGL)
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6OpenGL) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description -n qt6-waylandcompositor-devel
@@ -170,7 +169,7 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 WaylandEglClientHwIntegration library - Development files
 Requires:       libQt6WaylandEglClientHwIntegration6 = %{version}
 Requires:       qt6-waylandclient-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 %requires_eq    qt6-opengl-private-devel
 
 %description -n qt6-waylandeglclienthwintegration-private-devel
@@ -188,7 +187,7 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 WaylandEglCompositorHwIntegration library - Development files
 Requires:       libQt6WaylandEglCompositorHwIntegration6 = %{version}
 Requires:       qt6-waylandcompositor-private-devel = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-waylandeglcompositorhwintegration-private-devel
 Development files for the Qt 6 WaylandEglCompositorHwIntegration library.
@@ -236,6 +235,7 @@ EOF
 # .CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 
 %ldconfig_scriptlets -n libQt6WaylandClient6
 %ldconfig_scriptlets -n libQt6WaylandCompositor6
