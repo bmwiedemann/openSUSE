@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 29 16:07:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * fix the default value of the text background option (as
+    reported by #521 and #559)
+  * fix a scenario where saving without transparency would
+    consistently fail
+  * automatically reload the picture after saving
+  * mitigate initial state of the "filters" tool if "blur" is
+    selected
+  * change the keyboard shortcuts to switch tabs
+  * remove from the highlighter the (ineffective) UI to change
+    the active cairo operator
+  * change the UI of the selection tools to improve readability
+    of various items
+  * fix typos in the user help manual
+  * change the label of the "toggle the preview" menu item
+  * update several translations
+
+-------------------------------------------------------------------
 Sat Dec  3 19:44:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

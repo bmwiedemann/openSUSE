@@ -1,7 +1,7 @@
 #
 # spec file for package drawing
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define _name com.github.maoschanz.drawing
 Name:           drawing
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
-Summary:        A simple drawing application for Linux.
+Summary:        A simple drawing application for Linux
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/maoschanz/drawing
