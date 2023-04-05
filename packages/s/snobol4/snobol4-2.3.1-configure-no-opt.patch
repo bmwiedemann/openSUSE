@@ -1,0 +1,12 @@
+diff -up snobol4-2.3.1/configure.noopt snobol4-2.3.1/configure
+--- snobol4-2.3.1/configure.noopt	2023-03-26 13:12:22.826650002 -0400
++++ snobol4-2.3.1/configure	2023-03-26 13:12:33.679794072 -0400
+@@ -453,7 +453,7 @@ gcc|clang|icc)
+     CCVERS=-v
+     # was -M: -MM existed in gcc 3.4
+     echo 'CCM=$(CC) -MM'			>> $CONFIG_M4
+-    OPT=-O3
++    # OPT=-O3
+ 
+     # on by default in clang??
+     echo 'ADD_CFLAGS([-Wall])'			>> $CONFIG_M4

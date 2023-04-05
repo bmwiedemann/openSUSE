@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Apr  4 08:29:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build: also package /usr/bin/snobol4-%{version}
+
+-------------------------------------------------------------------
+Mon Mar 27 22:18:08 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Port to openSUSE
+
+-------------------------------------------------------------------
+Sun Mar 26 00:00:00 UTC 2023 - Tom Callaway <spot@fedoraproject.org>
+
+- initial package
