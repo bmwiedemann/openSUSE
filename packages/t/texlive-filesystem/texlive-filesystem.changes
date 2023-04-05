@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr  5 08:24:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Support mkiv as well as lmtx ConTeXt formats 
+
+-------------------------------------------------------------------
+Tue Apr  4 13:52:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Correct the meta package name for boo#1204746 to
+  texlive-alldocumentation as the documentation.sty has its own
+  package.
+
+-------------------------------------------------------------------
+Fri Mar 31 08:42:33 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modify update script in such way that the hash sum of the
+  mtxrun calls agree with those of the users 
+
+-------------------------------------------------------------------
+Mon Mar 20 08:38:07 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to final TeXLive 2023
+
+-------------------------------------------------------------------
+Thu Mar  9 13:45:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to pretest TeXLive 2023
+
+-------------------------------------------------------------------
 Thu Aug 18 09:15:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Rerun generate perl script to get https urls 

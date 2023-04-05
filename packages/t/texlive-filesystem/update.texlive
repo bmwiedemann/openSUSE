@@ -82,7 +82,8 @@ if test $VERBOSE = true ; then
     exec 4> >(rotator)
 elif test $VERBOSE = debug ; then
     log=$(mktemp --tmpdir=/tmp update.XXXXXXXX) || exit 1
-    exec 4> >(tee $log)
+    set -x
+    exec 4> >(tee $log)  2>&4
 else
     exec 4> /dev/null
 fi
@@ -261,6 +262,15 @@ do
 	inifile=$(kpsewhich -progname=$format -format=$kpse $inifile 2>/dev/null) || continue
 	let yes++ 
 	continue
+    fi
+    if test -x /usr/bin/mtxrun
+    then
+	case "${fmt}" in
+	/*/cont-[a-z][a-z].fmt)
+	    rm -f "$fmt"
+	    continue
+	    ;;
+	esac
     fi
     test "$fmt" -nt "$TEXMFCNFFILE" || init=true
     inifile=$(kpsewhich -progname=$format -format=$kpse $inifile 2>/dev/null) || continue
@@ -468,6 +478,89 @@ has_formats()
     return 1
 }
 
+make_context_fmts()
+{
+    local -i status=0
+
+    # luametatex/lmtx
+    for fmt in ${TEXMFDIST}/tex/context/base/mkxl/cont-[a-z][a-z].mkxl
+    do
+	test -x /usr/bin/mtxrun || break
+	fmt=${fmt##*/}
+	fmt=${fmt%.*}
+	LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
+	TEXMFCACHE=${TEXMFVAR} \
+	TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+	/usr/bin/context $fmt --make  < /dev/null 1>&4 2>&4
+	let status+=$?
+    done
+    # luatex/mkiv
+    for fmt in ${TEXMFDIST}/tex/context/base/mkiv/cont-[a-z][a-z].mkiv
+    do
+	test -x /usr/bin/mtxrun || break
+	fmt=${fmt##*/}
+	fmt=${fmt%.*}
+	LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
+	TEXMFCACHE=${TEXMFVAR} \
+	TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+	/usr/bin/context $fmt --luatex --make  < /dev/null 1>&4 2>&4
+	let status+=$?
+    done
+    # rehash database
+    LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
+    TEXMFCACHE=${TEXMFVAR} \
+    TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    /usr/bin/mtxrun  --script fonts --reload  < /dev/null 1>&4 2>&4
+    let status+=$?
+
+    return status
+}
+
+#
+# ConTeXt data bases
+#
+if test -x /usr/bin/mtxrun ; then
+    test $VERBOSE = true && { echo -en "\r[ ]Generate file database."; let nl++; }
+
+    # luametatex/lmtx
+    LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
+    TEXMFCACHE=${TEXMFVAR} \
+    TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    /usr/bin/mtxrun --generate < /dev/null 1>&4 2>&4
+    let rc+=$?
+
+    # luatex/mkiv
+    LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
+    TEXMFCACHE=${TEXMFVAR} \
+    TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    /usr/bin/context --luatex --generate < /dev/null 1>&4 2>&4
+    let rc+=$?
+
+    LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
+    TEXMFCACHE=${TEXMFVAR} \
+    TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    /usr/bin/mtxrun  --script fonts --reload  < /dev/null 1>&4 2>&4
+    let rc+=$?
+
+    if test -x /usr/bin/luatools ; then
+	TEXMF=${TEXMFDIST} \
+	TEXMFCACHE=${TEXMFVAR} \
+	TEXMFCNF=${TEXMFCNFFILE%/*} \
+	LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
+	/usr/bin/luatools --generate < /dev/null 1>&4 2>&4
+	let rc+=$?
+    fi
+    if test -x /usr/bin/luaotfload-tool ; then
+	TEXMF=${TEXMFDIST} \
+	TEXMFCACHE=${TEXMFVAR} \
+	TEXMFCNF=${TEXMFCNFFILE%/*} \
+	LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
+	/usr/bin/luaotfload-tool --update --prefer-texmf --formats=+afm --log=stdout < /dev/null 1>&4 2>&4
+	let rc+=$?
+    fi
+fi
+((nl == 0)) || { echo; let nl=0; }
+
 #
 # Go further
 #
@@ -477,6 +570,15 @@ for run in /var/run/texlive/run-fmtutil.* /var/run/texlive/run-fmtutil ; do
     option=""
     test $VERBOSE = true || option="--quiet"
     case "${run#*fmtutil.}" in
+    context)
+	test $VERBOSE = true && { echo -en "\r[ ](Re)fresh ConTeXt formats."; let nl++; }
+
+        make_context_fmts
+	let rc+=$?
+
+	((nl == 0)) || { echo; let nl=0; }
+	((rc != 0)) || rm -f "${run}"
+	;;
     language)
 	if test -n "${cnf_ldat}" ; then
 	    set -- $(md5sum < ${cnf_ldat})
@@ -506,6 +608,11 @@ for run in /var/run/texlive/run-fmtutil.* /var/run/texlive/run-fmtutil ; do
 		fmtutil-sys ${option:+$option} --byhyphen ${cnf_llua} --no-strict < /dev/null 1>&4 2>&4
 		let rc+=$?
 		((nl == 0)) || { echo; let nl=0; }
+            elif test -x /usr/bin/mtxrun > /dev/null 2>&2 ; then
+		test $VERBOSE = true && { echo -en "\r[ ]Handle language.dat.lua setups."; let nl++; }
+		make_context_fmts
+		let rc+=$?
+		((nl == 0)) || { echo; let nl=0; }
 	    fi
 	fi
 	((rc != 0)) || rm -f /var/run/texlive/run-fmtutil.language
@@ -520,6 +627,8 @@ for run in /var/run/texlive/run-fmtutil.* /var/run/texlive/run-fmtutil ; do
     "/var/run/texlive/run-fmtutil")
 	test $VERBOSE = true && { echo -en "\r[ ]Missing TeX formats."; let nl++; }
 	fmtutil-sys ${option:+$option} --missing --no-strict < /dev/null 1>&4 2>&4
+	let rc+=$?
+	make_context_fmts
 	let rc+=$?
 	((nl == 0)) || { echo; let nl=0; }
 	((rc != 0)) || rm -f /var/run/texlive/run-fmtutil
@@ -587,31 +696,6 @@ for run in /var/run/texlive/sync-updmap* ; do
     rm -f /var/run/texlive/sync-updmap*
     rm -f /var/run/texlive/run-mktexlsr*
 done
-((nl == 0)) || { echo; let nl=0; }
-
-if test -x /usr/bin/mtxrun ; then
-    test $VERBOSE = true && { echo -en "\r[ ]Generate file database."; let nl++; }
-    TEXMF=${TEXMFDIST} \
-    TEXMFCACHE=${TEXMFVAR} \
-    TEXMFCNF=${TEXMFCNFFILE%/*} \
-    /usr/bin/mtxrun --generate < /dev/null 1>&4 2>&4
-    let rc+=$?
-    if test -x /usr/bin/luatools ; then
-	TEXMF=${TEXMFDIST} \
-	TEXMFCACHE=${TEXMFVAR} \
-	TEXMFCNF=${TEXMFCNFFILE%/*} \
-	LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
-	/usr/bin/luatools --generate < /dev/null 1>&4 2>&4
-	let rc+=$?
-    fi
-    if test -x /usr/bin/luaotfload-tool ; then
-	TEXMF=${TEXMFDIST} \
-	TEXMFCACHE=${TEXMFVAR} \
-	TEXMFCNF=${TEXMFCNFFILE%/*} \
-	LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
-	/usr/bin/luaotfload-tool --update --prefer-texmf --formats=+afm --log=stdout < /dev/null 1>&4 2>&4
-    fi
-fi
 ((nl == 0)) || { echo; let nl=0; }
 
 #
