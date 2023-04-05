@@ -23,11 +23,13 @@ Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
 Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  asio-devel
+# PATCH-FIX-UPSTREAM widelands-fix-missing-include.patch -- Add missing #include <cstdint>
+Patch0:         widelands-fix-missing-include.patch
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
 BuildRequires:  SDL2_ttf-devel
+BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  distribution-release
