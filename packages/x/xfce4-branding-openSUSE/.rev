@@ -1351,4 +1351,13 @@
     <comment>Please only accept together with SR#985559</comment>
     <requestid>985560</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>5df79a72ea31e332e20ab6ceb6543fc5</srcmd5>
+    <version>4.18.0+git0.9a2f754</version>
+    <time>1680722862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.0+git0.9a2f754:
+  * Include all the wallpaper sizes and use better resolution for the default (bsc#1209970) (forwarded request 1077434 from mauriziogalli)</comment>
+    <requestid>1077438</requestid>
+  </revision>
 </revisionlist>

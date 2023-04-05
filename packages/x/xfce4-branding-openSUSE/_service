@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="localonly">
     <param name="url">https://code.opensuse.org/xfce/xfce4-branding-openSUSE.git</param>
     <param name="scm">git</param>
-    <param name="revision">4.16.1</param>
+    <param name="revision">4.18.0</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">maurizio.galli@gmail.com</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define thunar_volman_version   %(rpm -q --queryformat '%%{VERSION}' thunar-volman)
 
 Name:           xfce4-branding-openSUSE
-Version:        4.16.1+git0.77ba799
+Version:        4.18.0+git0.9a2f754
 Release:        0
 Summary:        openSUSE Branding of the Xfce Desktop Environment
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
@@ -289,6 +289,7 @@ done
 %license COPYING
 %dir %{_datadir}/wallpapers/xfce
 %{_datadir}/wallpapers/xfce/default.wallpaper
+%{_datadir}/wallpapers/xfce/*.jpg
 %dir %{_sysconfdir}/xdg/xfce4/xfconf/
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 
