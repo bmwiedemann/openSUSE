@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 20:46:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Drop python38 test flavor
+
+-------------------------------------------------------------------
 Thu Mar 30 21:00:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Enable pyarrow in the [complete] extra
