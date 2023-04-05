@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * gtk4/windowcontrols: reduce right margin of close button
+  * gtk3/titlebutton: extend control area to window borders
+  * gtk4/windowcontrols: extend control area to window borders (kde#414777)
+  * iconhelper: Query size via CSS
+  * gtk4/aboutdialog: set icon size for large icons
+  * gtk4/theme: Use 0.5 opacity for disabled pictures
+  * menus: make size react to fractional scaling
+
+-------------------------------------------------------------------
 Tue Mar 14 15:05:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.3
