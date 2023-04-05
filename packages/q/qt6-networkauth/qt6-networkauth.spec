@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-networkauth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define short_name qtnetworkauth
 %define tar_name qtnetworkauth-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-networkauth%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Set of APIs to obtain limited access to online accounts and HTTP services
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -37,9 +37,9 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-networkauth-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -61,7 +61,7 @@ The Qt 6 NetworkAuth library.
 %package devel
 Summary:        Qt 6 NetworkAuth library - Development files
 Requires:       libQt6NetworkAuth6 = %{version}
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description devel
 Development files for the Qt 6 NetworkAuth library.
