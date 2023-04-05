@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 29 09:03:19 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230329.af36a03:
+  * osclib: Skip debuginfo, debugsource and src rpms in fileinfo_ext_all
+  * Remove try/catch around code which must not fail
+  * Rewrite core algorithm of cleanup_rings.py
+  * cleanup_rings.py: Fix links handling
+
+-------------------------------------------------------------------
+Fri Mar 24 09:26:39 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230324.4a241c4:
+  * Allow cleanup_rings without locking the stagings
+  * cleanup_rings.py: Expand whitelist
+  * cleanup_rings.py: Look at all enabled images
+
+-------------------------------------------------------------------
+Thu Mar 23 10:43:13 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230323.0d10247:
+  * Handle deletion of packages with _multibuild (#2943)
+
+-------------------------------------------------------------------
 Wed Mar 15 11:38:33 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230315.982c565:
