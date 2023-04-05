@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3d
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
@@ -42,17 +42,17 @@ BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-quicktimeline-private-devel
 BuildRequires:  qt6-shadertools-private-devel
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
 # Only needed if QT_FEATURE_qml_debug is enabled
 # BuildRequires:  cmake(Qt6PacketProtocolPrivate)
-BuildRequires:  cmake(Qt6QuickTimeline)
-BuildRequires:  cmake(Qt6ShaderTools)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6QuickTimeline) = %{real_version}
+BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  cmake(assimp) >= 5.1.0
 BuildRequires:  pkgconfig(zlib)
 %if "%{qt6_flavor}" == "docs"
@@ -77,8 +77,8 @@ Summary:        Qt 6 Quick3D library - Development files
 Requires:       libQt6Quick3D6 = %{version}
 # Executables are required
 Requires:       qt6-quick3d
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick3DRuntimeRender)
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick3DRuntimeRender) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Quick3D library.
@@ -111,8 +111,8 @@ The Qt 6 Quick3DAssetImport library.
 %package -n qt6-quick3dassetimport-devel
 Summary:        Qt6 Quick3DAssetImport library - Development files
 Requires:       libQt6Quick3DAssetImport6 = %{version}
-Requires:       cmake(Qt6Qml)
-Requires:       cmake(Qt6Quick3DUtils)
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick3DUtils) = %{real_version}
 
 %description -n qt6-quick3dassetimport-devel
 Development files for the Qt 6 Quick3DAssetImport library.
@@ -162,7 +162,7 @@ The Qt 6 Quick3DEffects library.
 Summary:        Qt6 Quick3DEffects library - Development files
 Requires:       libQt6Quick3DEffects6 = %{version}
 Requires:       qt6-quick3d-private-devel = %{version}
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-quick3deffects-devel
 Development files for the Qt 6 Quick3DEffects library.
@@ -177,7 +177,7 @@ The Qt 6 Quick3DHelpers library.
 Summary:        Qt6 Quick3DHelpers library - Development files
 Requires:       libQt6Quick3DHelpers6 = %{version}
 Requires:       qt6-quick3d-private-devel = %{version}
-Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-quick3dhelpers-devel
 Development files for the Qt 6 Quick3DHelpers library.
@@ -190,6 +190,30 @@ Requires:       cmake(Qt6Quick3DHelpers) = %{real_version}
 This package provides private headers of libQt6Quick3DHelpers that do not
 have any ABI or API guarantees.
 
+%package -n libQt6Quick3DHelpersImpl6
+Summary:        Qt 6 Quick3DHelpersImpl library
+
+%description -n libQt6Quick3DHelpersImpl6
+The Qt 6 Quick3DHelpersImpl library.
+
+%package -n qt6-quick3dhelpersimpl-devel
+Summary:        Qt6 Quick3DHelpersImpl library - Development files
+Requires:       libQt6Quick3DHelpersImpl6 = %{version}
+Requires:       qt6-quick3d-private-devel = %{version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
+
+%description -n qt6-quick3dhelpersimpl-devel
+Development files for the Qt 6 Quick3DHelpersImpl library.
+
+%package -n qt6-quick3dhelpersimpl-private-devel
+Summary:        Non-ABI stable API for the Qt 6 Quick3DHelpersImpl library
+Requires:       cmake(Qt6Quick3DHelpersImpl) = %{real_version}
+
+%description -n qt6-quick3dhelpersimpl-private-devel
+This package provides private headers of libQt6Quick3DHelpersImpl that do not
+have any ABI or API guarantees.
+
 %package -n libQt6Quick3DIblBaker6
 Summary:        Qt 6 Quick3DIblBaker library
 
@@ -199,7 +223,7 @@ The Qt 6 Quick3DIblBaker library.
 %package -n qt6-quick3diblbaker-devel
 Summary:        Qt6 Quick3DIblBaker library - Development files
 Requires:       libQt6Quick3DIblBaker6 = %{version}
-Requires:       cmake(Qt6Quick3DRuntimeRender)
+Requires:       cmake(Qt6Quick3DRuntimeRender) = %{real_version}
 
 %description -n qt6-quick3diblbaker-devel
 Development files for the Qt 6 Quick3DIblBaker library.
@@ -221,8 +245,8 @@ The Qt 6 Quick3DParticles library.
 %package -n qt6-quick3dparticles-devel
 Summary:        Qt6 Quick3DParticles library - Development files
 Requires:       libQt6Quick3DParticles6 = %{version}
-Requires:       cmake(Qt6Quick3DAssetImport)
-Requires:       cmake(Qt6Quick3DRuntimeRender)
+Requires:       cmake(Qt6Quick3DAssetImport) = %{real_version}
+Requires:       cmake(Qt6Quick3DRuntimeRender) = %{real_version}
 
 %description -n qt6-quick3dparticles-devel
 Development files for the Qt 6 Quick3DParticles library.
@@ -244,9 +268,9 @@ The Qt 6 Quick3DParticleEffects library.
 %package -n qt6-quick3dparticleeffects-devel
 Summary:        Qt6 Quick3DParticleEffects library - Development files
 Requires:       libQt6Quick3DParticleEffects6 = %{version}
-Requires:       cmake(Qt6Quick3DAssetImport)
-Requires:       cmake(Qt6Quick3DParticles)
-Requires:       cmake(Qt6Quick3DRuntimeRender)
+Requires:       cmake(Qt6Quick3DAssetImport) = %{real_version}
+Requires:       cmake(Qt6Quick3DParticles) = %{real_version}
+Requires:       cmake(Qt6Quick3DRuntimeRender) = %{real_version}
 
 %description -n qt6-quick3dparticleeffects-devel
 Development files for the Qt 6 Quick3DParticleEffects library.
@@ -260,8 +284,8 @@ The Qt 6 Quick3DRuntimeRender library.
 %package -n qt6-quick3druntimerender-devel
 Summary:        Qt6 Quick3DRuntimeRender library - Development files
 Requires:       libQt6Quick3DRuntimeRender6 = %{version}
-Requires:       cmake(Qt6Quick3DUtils)
-Requires:       cmake(Qt6ShaderTools)
+Requires:       cmake(Qt6Quick3DUtils) = %{real_version}
+Requires:       cmake(Qt6ShaderTools) = %{real_version}
 
 %description -n qt6-quick3druntimerender-devel
 Development files for the Qt 6 Quick3DRuntimeRender library.
@@ -287,7 +311,7 @@ The Qt 6 Quick3DUtils library.
 %package -n qt6-quick3dutils-devel
 Summary:        Qt6 Quick3DUtils library - Development files
 Requires:       libQt6Quick3DUtils6 = %{version}
-Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Gui) = %{real_version}
 %requires_eq    qt6-quick-private-devel
 
 %description -n qt6-quick3dutils-devel
@@ -315,7 +339,7 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-quick3dglslparser-private-devel
 Summary:        Development files for the Qt 6 Quick3DGlslParser library
 Requires:       libQt6Quick3DGlslParser6 = %{version}
-Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description -n qt6-quick3dglslparser-private-devel
 Development files for the Qt 6 Quick3DGlslParser library.
@@ -342,9 +366,8 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%ifarch x86_64 aarch64
-%define _lto_cflags %{nil}
-%endif
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %cmake_qt6 \
   -DFEATURE_system_assimp=ON
 
@@ -373,6 +396,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %ldconfig_scriptlets -n libQt6Quick3DEffects6
 %ldconfig_scriptlets -n libQt6Quick3DGlslParser6
 %ldconfig_scriptlets -n libQt6Quick3DHelpers6
+%ldconfig_scriptlets -n libQt6Quick3DHelpersImpl6
 %ldconfig_scriptlets -n libQt6Quick3DIblBaker6
 %ldconfig_scriptlets -n libQt6Quick3DParticleEffects6
 %ldconfig_scriptlets -n libQt6Quick3DParticles6
@@ -489,6 +513,24 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %files -n qt6-quick3dhelpers-private-devel
 %{_qt6_includedir}/QtQuick3DHelpers/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpers_private.pri
+
+%files -n libQt6Quick3DHelpersImpl6
+%{_qt6_libdir}/libQt6Quick3DHelpersImpl.so.*
+
+%files -n qt6-quick3dhelpersimpl-devel
+%{_qt6_cmakedir}/Qt6Quick3DHelpersImpl/
+%{_qt6_descriptionsdir}/Quick3DHelpersImpl.json
+%{_qt6_includedir}/QtQuick3DHelpersImpl/
+%{_qt6_libdir}/libQt6Quick3DHelpersImpl.prl
+%{_qt6_libdir}/libQt6Quick3DHelpersImpl.so
+%{_qt6_metatypesdir}/qt6quick3dhelpersimpl_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpersimpl.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DHelpersImpl.pc
+%exclude %{_qt6_includedir}/QtQuick3DHelpersImpl/%{real_version}
+
+%files -n qt6-quick3dhelpersimpl-private-devel
+%{_qt6_includedir}/QtQuick3DHelpersImpl/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpersimpl_private.pri
 
 %files -n libQt6Quick3DIblBaker6
 %{_qt6_libdir}/libQt6Quick3DIblBaker.so.*
