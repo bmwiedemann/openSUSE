@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Apr  3 15:39:32 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 18.0
+  * Golem 2.0
+
+-------------------------------------------------------------------
+Sat Apr  1 19:09:37 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Remove unnecessary gcc-c++ build requirement
+
+-------------------------------------------------------------------
+Wed Feb  1 19:55:39 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 16.0
+  * PowerSag 2.0
+  * PowerSag2 2.0
+
+-------------------------------------------------------------------
+Fri Dec  9 14:20:45 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 14.0
+  * Fracture 2.0
+  * Infinity 2.0
+  * Infinity2 2.0
+  * MatrixVerb 2.0
+
+-------------------------------------------------------------------
+Sun Oct 16 13:11:59 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 12.0
+  * Distance2 2.0
+  * DrumSlam 2.0
+  * Monitoring 2.0
+
+-------------------------------------------------------------------
+Sat Oct 15 14:09:19 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 11.0
+  * BussColors4 2.0
+  * HighGlossDither 2.0
+  * Verbity 2.0
+  * XBandpass 2.0
+  * XNotch 2.0
+  * XRegion 2.0
+
+-------------------------------------------------------------------
+Tue Aug 23 17:37:27 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 9.0
+  * Compresaturator 2.0
+  * curve 2.0
+  * Facet 2.0
+  * PhaseNudge 2.0
+  * Recurve 2.0
+  * SideDull 2.0
+
+-------------------------------------------------------------------
+Sat Jul  2 13:57:13 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 7.0
+  * IronOxideClassic2 2.0
+
+-------------------------------------------------------------------
+Sat May 28 13:42:28 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 5.0
+  * Console6Buss 2.0
+  * Console6Channel 2.0
+  * Desk 2.0
+  * Focus 2.0
+  * PurestDrive 2.0
+  * Srsly2 2.0
+  * ToTape6 2.0
+  * TransDesk 2.0
+  * Tube 2.0
+  * Tube2 2.0
+  * TubeDesk 2.0
+
+-------------------------------------------------------------------
+Wed May  4 13:41:53 UTC 2022 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 3.0
+  * Channel9 2.0
+  * MoNoam 2.0
+  * PurestConsole2Buss 2.0
+  * PurestConsole2Channel 2.0
+  * Vibrato 2.0
+- Remove fix-paths.patch: merged into upstream
+- Remove fix-missing-link-lm.patch: merged into upstream
+
+-------------------------------------------------------------------
+Fri Apr 22 11:31:59 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- First upload, version 1.0
+
