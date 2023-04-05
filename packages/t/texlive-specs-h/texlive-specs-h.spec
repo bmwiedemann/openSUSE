@@ -16,11 +16,11 @@
 #
 
 
-%define texlive_version  2022
-%define texlive_previous 2021
-%define texlive_release  20220321
-%define texlive_noarch   197
-%define biber_version    2.17
+%define texlive_version  2023
+%define texlive_previous 2022
+%define texlive_release  20230311
+%define texlive_noarch   201
+%define biber_version    2.18
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -56,17 +56,20 @@
 %define _appdefdir      %{_x11data}/app-defaults
 
 Name:           texlive-specs-h
-Version:        2022
+Version:        2023
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
+BuildRequires:  mkfontdir
+BuildRequires:  mkfontscale
 BuildRequires:  t1utils
 BuildRequires:  texlive-filesystem
+BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for h
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0-or-later and LGPL-2.1-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-h-rpmlintrc
@@ -118,7 +121,7 @@ Requires:       tex(scrreprt.cls)
 Requires:       tex(tabularx.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source1:        dvdcoll.tar.xz
 Source2:        dvdcoll.doc.tar.xz
 
@@ -144,6 +147,7 @@ Summary:        Documentation for texlive-dvdcoll
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dvdcoll and texlive-alldocumentation)
 Provides:       locale(texlive-dvdcoll-doc:en;de)
 
 %description -n texlive-dvdcoll-doc
@@ -239,7 +243,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dvgloss-doc >= %{texlive_version}
 Provides:       tex(dvgloss.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source3:        dvgloss.tar.xz
 Source4:        dvgloss.doc.tar.xz
 
@@ -257,6 +261,7 @@ Summary:        Documentation for texlive-dvgloss
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dvgloss and texlive-alldocumentation)
 
 %description -n texlive-dvgloss-doc
 This package includes the documentation for texlive-dvgloss
@@ -288,7 +293,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/dvgloss/dvgloss.sty
 
 %package -n texlive-dviasm
-Version:        %{texlive_version}.%{texlive_noarch}.svn56373
+Version:        %{texlive_version}.%{texlive_noarch}.svn64430
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A utility for editing DVI files
@@ -318,7 +323,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dviasm-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source5:        dviasm.tar.xz
 Source6:        dviasm.doc.tar.xz
 
@@ -329,12 +334,13 @@ binary format. It supports advanced features such as adding a
 preprint number or watermarks.
 
 %package -n texlive-dviasm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn56373
+Version:        %{texlive_version}.%{texlive_noarch}.svn64430
 Release:        0
 Summary:        Documentation for texlive-dviasm
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dviasm and texlive-alldocumentation)
 Provides:       man(dviasm.1)
 
 %description -n texlive-dviasm-doc
@@ -367,7 +373,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/dviasm/dviasm.py
 
 %package -n texlive-dvicopy
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn66186
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Copy DVI files, flattening VFs
@@ -397,7 +403,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(dvicopy.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source7:        dvicopy.doc.tar.xz
 
 %description -n texlive-dvicopy
@@ -428,7 +434,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/dvicopy.1*
 
 %package -n texlive-dvidvi
-Version:        %{texlive_version}.%{texlive_noarch}.svn52851
+Version:        %{texlive_version}.%{texlive_noarch}.svn65952
 Release:        0
 License:        LPPL-1.0
 Summary:        Convert one DVI file into another
@@ -458,7 +464,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(dvidvi.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source8:        dvidvi.doc.tar.xz
 
 %description -n texlive-dvidvi
@@ -516,7 +522,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-dviincl-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source9:        dviincl.tar.xz
 Source10:       dviincl.doc.tar.xz
 
@@ -534,6 +540,7 @@ Summary:        Documentation for texlive-dviincl
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dviincl and texlive-alldocumentation)
 Provides:       locale(texlive-dviincl-doc:en;pl)
 
 %description -n texlive-dviincl-doc
@@ -605,7 +612,7 @@ Suggests:       texlive-dviinfox-doc >= %{texlive_version}
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source11:       dviinfox.tar.xz
 Source12:       dviinfox.doc.tar.xz
 
@@ -620,6 +627,7 @@ Summary:        Documentation for texlive-dviinfox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dviinfox and texlive-alldocumentation)
 
 %description -n texlive-dviinfox-doc
 This package includes the documentation for texlive-dviinfox
@@ -651,7 +659,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/dviinfox/dviinfox.pl
 
 %package -n texlive-dviljk
-Version:        %{texlive_version}.%{texlive_noarch}.svn52851
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        DVI to Laserjet output
@@ -686,7 +694,7 @@ Provides:       man(dvilj4.1)
 Provides:       man(dvilj4l.1)
 Provides:       man(dvilj6.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source13:       dviljk.doc.tar.xz
 
 %description -n texlive-dviljk
@@ -723,7 +731,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/dvilj6.1*
 
 %package -n texlive-dviout-util
-Version:        %{texlive_version}.%{texlive_noarch}.svn52851
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 License:        LPPL-1.0
 Summary:        Package dviout-util
@@ -754,7 +762,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(chkdvifont.1)
 Provides:       man(dvispc.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source14:       dviout-util.doc.tar.xz
 
 %description -n texlive-dviout-util
@@ -783,7 +791,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/dvispc.1*
 
 %package -n texlive-dvipdfmx
-Version:        %{texlive_version}.%{texlive_noarch}.svn61101
+Version:        %{texlive_version}.%{texlive_noarch}.svn66203
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        An extended version of dvipdfm
@@ -828,7 +836,7 @@ Provides:       tex(ckx.map)
 Provides:       tex(dvipdfmx-unsafe.cfg)
 Provides:       tex(dvipdfmx.cfg)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source15:       dvipdfmx.tar.xz
 Source16:       dvipdfmx.doc.tar.xz
 
@@ -847,12 +855,13 @@ and other information, please see TeX Live. However, the
 information on this page is maintained and should be current.
 
 %package -n texlive-dvipdfmx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn61101
+Version:        %{texlive_version}.%{texlive_noarch}.svn66203
 Release:        0
 Summary:        Documentation for texlive-dvipdfmx
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dvipdfmx and texlive-alldocumentation)
 Provides:       man(dvipdfm.1)
 Provides:       man(dvipdfmx.1)
 Provides:       man(dvipdft.1)
@@ -929,7 +938,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %config %verify(not md5 mtime size) %{_texmfconfdir}/dvipdfmx/dvipdfmx.cfg
 
 %package -n texlive-dvipng
-Version:        %{texlive_version}.%{texlive_noarch}.1.17svn62517
+Version:        %{texlive_version}.%{texlive_noarch}.1.17svn66203
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        A fast DVI to PNG/GIF converter
@@ -960,7 +969,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(dvigif.1)
 Provides:       man(dvipng.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source17:       dvipng.doc.tar.xz
 
 %description -n texlive-dvipng
@@ -1011,7 +1020,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/dvipng.1*
 
 %package -n texlive-dvipos
-Version:        %{texlive_version}.%{texlive_noarch}.svn52851
+Version:        %{texlive_version}.%{texlive_noarch}.svn66186
 Release:        0
 License:        LPPL-1.0
 Summary:        Support DVI pos: specials used by ConTeXt DVI output
@@ -1041,7 +1050,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(dvipos.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source18:       dvipos.doc.tar.xz
 
 %description -n texlive-dvipos
@@ -1069,7 +1078,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/dvipos.1*
 
 %package -n texlive-dvips
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66203
 Release:        0
 License:        LPPL-1.0
 Summary:        A DVI to PostScript driver
@@ -1149,7 +1158,7 @@ Provides:       tex(texmsym.enc)
 Provides:       tex(texnansx.enc)
 Provides:       tex(toshiba.cfg)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source19:       dvips.tar.xz
 Source20:       dvips.doc.tar.xz
 Source21:       dvips_config.dif
@@ -1162,12 +1171,13 @@ separate package. For download, support, and other information,
 please see TeX Live.
 
 %package -n texlive-dvips-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn62387
+Version:        %{texlive_version}.%{texlive_noarch}.svn66203
 Release:        0
 Summary:        Documentation for texlive-dvips
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dvips and texlive-alldocumentation)
 Provides:       man(afm2tfm.1)
 Provides:       man(dvips.1)
 Requires(preun):%install_info_prereq
@@ -1320,7 +1330,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source22:       dvipsconfig.tar.xz
 
 %description -n texlive-dvipsconfig
@@ -1387,7 +1397,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/dvips/dvipsconfig/config.usletter
 
 %package -n texlive-dvisvgm
-Version:        %{texlive_version}.%{texlive_noarch}.2.13.3svn62517
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.4svn66532
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Convert DVI, EPS, and PDF files to Scalable Vector Graphics format (SVG)
@@ -1417,7 +1427,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       man(dvisvgm.1)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source23:       dvisvgm.doc.tar.xz
 
 %description -n texlive-dvisvgm
@@ -1488,7 +1498,7 @@ Provides:       tex(dynamicnumber.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source24:       dynamicnumber.tar.xz
 Source25:       dynamicnumber.doc.tar.xz
 
@@ -1511,6 +1521,7 @@ Summary:        Documentation for texlive-dynamicnumber
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dynamicnumber and texlive-alldocumentation)
 
 %description -n texlive-dynamicnumber-doc
 This package includes the documentation for texlive-dynamicnumber
@@ -1574,7 +1585,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source26:       dynblocks.tar.xz
 Source27:       dynblocks.doc.tar.xz
 
@@ -1589,6 +1600,7 @@ Summary:        Documentation for texlive-dynblocks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dynblocks and texlive-alldocumentation)
 
 %description -n texlive-dynblocks-doc
 This package includes the documentation for texlive-dynblocks
@@ -1678,7 +1690,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source28:       dynkin-diagrams.tar.xz
 Source29:       dynkin-diagrams.doc.tar.xz
 
@@ -1695,6 +1707,7 @@ Summary:        Documentation for texlive-dynkin-diagrams
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dynkin-diagrams and texlive-alldocumentation)
 
 %description -n texlive-dynkin-diagrams-doc
 This package includes the documentation for texlive-dynkin-diagrams
@@ -1763,7 +1776,7 @@ Requires:       tex(coollist.sty)
 Requires:       tex(eepic.sty)
 Requires:       tex(epic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source30:       dyntree.tar.xz
 Source31:       dyntree.doc.tar.xz
 
@@ -1782,6 +1795,7 @@ Summary:        Documentation for texlive-dyntree
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-dyntree and texlive-alldocumentation)
 
 %description -n texlive-dyntree-doc
 This package includes the documentation for texlive-dyntree
@@ -1868,7 +1882,7 @@ Requires:       tex(latexsym.sty)
 Requires:       tex(msg.sty)
 Requires:       tex(ngerman.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source32:       e-french.tar.xz
 Source33:       e-french.doc.tar.xz
 
@@ -1885,6 +1899,7 @@ Summary:        Documentation for texlive-e-french
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-e-french and texlive-alldocumentation)
 Provides:       locale(texlive-e-french-doc:en;fr)
 
 %description -n texlive-e-french-doc
@@ -2046,7 +2061,7 @@ Suggests:       texlive-ean-doc >= %{texlive_version}
 Provides:       tex(ean13.tex)
 Provides:       tex(ean8.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source34:       ean.tar.xz
 Source35:       ean.doc.tar.xz
 
@@ -2062,6 +2077,7 @@ Summary:        Documentation for texlive-ean
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ean and texlive-alldocumentation)
 
 %description -n texlive-ean-doc
 This package includes the documentation for texlive-ean
@@ -2124,7 +2140,7 @@ Suggests:       texlive-ean13isbn-doc >= %{texlive_version}
 Provides:       tex(ean13isbn.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source36:       ean13isbn.tar.xz
 Source37:       ean13isbn.doc.tar.xz
 
@@ -2140,6 +2156,7 @@ Summary:        Documentation for texlive-ean13isbn
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ean13isbn and texlive-alldocumentation)
 
 %description -n texlive-ean13isbn-doc
 This package includes the documentation for texlive-ean13isbn
@@ -2202,7 +2219,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-easing-doc >= %{texlive_version}
 Provides:       tex(pgflibraryeasing.code.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source38:       easing.tar.xz
 Source39:       easing.doc.tar.xz
 
@@ -2217,6 +2234,7 @@ Summary:        Documentation for texlive-easing
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easing and texlive-alldocumentation)
 
 %description -n texlive-easing-doc
 This package includes the documentation for texlive-easing
@@ -2283,7 +2301,7 @@ Provides:       tex(easymat.sty)
 Provides:       tex(easytable.sty)
 Provides:       tex(easyvector.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source40:       easy.tar.xz
 Source41:       easy.doc.tar.xz
 
@@ -2301,6 +2319,7 @@ Summary:        Documentation for texlive-easy
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easy and texlive-alldocumentation)
 
 %description -n texlive-easy-doc
 This package includes the documentation for texlive-easy
@@ -2378,7 +2397,7 @@ Requires:       tex(ifdraft.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source42:       easy-todo.tar.xz
 Source43:       easy-todo.doc.tar.xz
 
@@ -2393,6 +2412,7 @@ Summary:        Documentation for texlive-easy-todo
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easy-todo and texlive-alldocumentation)
 
 %description -n texlive-easy-todo-doc
 This package includes the documentation for texlive-easy-todo
@@ -2426,7 +2446,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/easy-todo/easy-todo.sty
 
 %package -n texlive-easybook
-Version:        %{texlive_version}.%{texlive_noarch}.1.65svn62784
+Version:        %{texlive_version}.%{texlive_noarch}.1.71dsvn64976
 Release:        0
 License:        LPPL-1.0
 Summary:        Easily typesetting Chinese theses or books
@@ -2461,7 +2481,7 @@ Requires:       tex(ctexbook.cls)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source44:       easybook.tar.xz
 Source45:       easybook.doc.tar.xz
 
@@ -2476,12 +2496,13 @@ easybase can also be used with CTeX and standard document
 classes.
 
 %package -n texlive-easybook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.65svn62784
+Version:        %{texlive_version}.%{texlive_noarch}.1.71dsvn64976
 Release:        0
 Summary:        Documentation for texlive-easybook
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easybook and texlive-alldocumentation)
 Provides:       locale(texlive-easybook-doc:zh)
 
 %description -n texlive-easybook-doc
@@ -2517,7 +2538,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/easybook/eb-tcolorbox.cfg
 
 %package -n texlive-easyfig
-Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn56291
+Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn64967
 Release:        0
 License:        LPPL-1.0
 Summary:        Simplifying the use of common figures
@@ -2549,7 +2570,7 @@ Requires:       tex(adjustbox.sty)
 Requires:       tex(ifetex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source46:       easyfig.tar.xz
 Source47:       easyfig.doc.tar.xz
 
@@ -2567,12 +2588,13 @@ images or other material into floats or non-floats, including
 captions, easyfig has become quite redundant.
 
 %package -n texlive-easyfig-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn56291
+Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn64967
 Release:        0
 Summary:        Documentation for texlive-easyfig
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easyfig and texlive-alldocumentation)
 
 %description -n texlive-easyfig-doc
 This package includes the documentation for texlive-easyfig
@@ -2654,7 +2676,7 @@ Requires:       tex(longtable.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(subcaption.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source48:       easyfloats.tar.xz
 Source49:       easyfloats.doc.tar.xz
 
@@ -2673,6 +2695,7 @@ Summary:        Documentation for texlive-easyfloats
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easyfloats and texlive-alldocumentation)
 
 %description -n texlive-easyfloats-doc
 This package includes the documentation for texlive-easyfloats
@@ -2759,7 +2782,7 @@ Suggests:       texlive-easyformat-doc >= %{texlive_version}
 Provides:       tex(easyformat.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source50:       easyformat.tar.xz
 Source51:       easyformat.doc.tar.xz
 
@@ -2777,6 +2800,7 @@ Summary:        Documentation for texlive-easyformat
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easyformat and texlive-alldocumentation)
 
 %description -n texlive-easyformat-doc
 This package includes the documentation for texlive-easyformat
@@ -2838,7 +2862,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-easylist-doc >= %{texlive_version}
 Provides:       tex(easylist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source52:       easylist.tar.xz
 Source53:       easylist.doc.tar.xz
 
@@ -2856,6 +2880,7 @@ Summary:        Documentation for texlive-easylist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easylist and texlive-alldocumentation)
 
 %description -n texlive-easylist-doc
 This package includes the documentation for texlive-easylist
@@ -2920,7 +2945,7 @@ Requires:       tex(soul.sty)
 Requires:       tex(todonotes.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source54:       easyreview.tar.xz
 Source55:       easyreview.doc.tar.xz
 
@@ -2938,6 +2963,7 @@ Summary:        Documentation for texlive-easyreview
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-easyreview and texlive-alldocumentation)
 
 %description -n texlive-easyreview-doc
 This package includes the documentation for texlive-easyreview
@@ -3000,7 +3026,7 @@ Suggests:       texlive-ebezier-doc >= %{texlive_version}
 Provides:       tex(ebezier.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source56:       ebezier.tar.xz
 Source57:       ebezier.doc.tar.xz
 
@@ -3018,6 +3044,7 @@ Summary:        Documentation for texlive-ebezier
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ebezier and texlive-alldocumentation)
 
 %description -n texlive-ebezier-doc
 This package includes the documentation for texlive-ebezier
@@ -3048,7 +3075,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ebezier/ebezier.sty
 
 %package -n texlive-ebgaramond
-Version:        %{texlive_version}.%{texlive_noarch}.svn54721
+Version:        %{texlive_version}.%{texlive_noarch}.svn64343
 Release:        0
 License:        OFL-1.1
 Summary:        LaTeX support for EBGaramond fonts
@@ -4358,7 +4385,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source58:       ebgaramond.tar.xz
 Source59:       ebgaramond.doc.tar.xz
 
@@ -4369,18 +4396,19 @@ works for (pdf)LaTeX, XeLaTeX and LuaLaTeX users; configuration
 files for use with microtype are provided.
 
 %package -n texlive-ebgaramond-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn54721
+Version:        %{texlive_version}.%{texlive_noarch}.svn64343
 Release:        0
 Summary:        Documentation for texlive-ebgaramond
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ebgaramond and texlive-alldocumentation)
 
 %description -n texlive-ebgaramond-doc
 This package includes the documentation for texlive-ebgaramond
 
 %package -n texlive-ebgaramond-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn54721
+Version:        %{texlive_version}.%{texlive_noarch}.svn64343
 Release:        0
 Summary:        Severed fonts for texlive-ebgaramond
 License:        OFL-1.1
@@ -4389,9 +4417,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-ebgaramond-fonts
 The  separated fonts package for texlive-ebgaramond
@@ -5721,9 +5747,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-ebgaramond.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-ebgaramond.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-ebgaramond.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ebgaramond/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ebgaramond/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ebgaramond/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-ebgaramond/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-ebgaramond/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-ebgaramond/fonts.scale
 %{_datadir}/fonts/texlive-ebgaramond/EBGaramond-Bold.otf
 %{_datadir}/fonts/texlive-ebgaramond/EBGaramond-BoldItalic.otf
 %{_datadir}/fonts/texlive-ebgaramond/EBGaramond-ExtraBold.otf
@@ -5793,7 +5819,7 @@ Provides:       tex(a_w5zv5t.enc)
 Provides:       tex(ebgaramond-maths.sty)
 Requires:       tex(ebgaramond.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source60:       ebgaramond-maths.tar.xz
 Source61:       ebgaramond-maths.doc.tar.xz
 
@@ -5811,6 +5837,7 @@ Summary:        Documentation for texlive-ebgaramond-maths
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ebgaramond-maths and texlive-alldocumentation)
 
 %description -n texlive-ebgaramond-maths-doc
 This package includes the documentation for texlive-ebgaramond-maths
@@ -5882,7 +5909,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(moreverb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source62:       ebook.tar.xz
 Source63:       ebook.doc.tar.xz
 
@@ -5899,6 +5926,7 @@ Summary:        Documentation for texlive-ebook
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ebook and texlive-alldocumentation)
 
 %description -n texlive-ebook-doc
 This package includes the documentation for texlive-ebook
@@ -5960,7 +5988,7 @@ Provides:       tex(ebproof.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source64:       ebproof.tar.xz
 Source65:       ebproof.doc.tar.xz
 
@@ -5980,6 +6008,7 @@ Summary:        Documentation for texlive-ebproof
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ebproof and texlive-alldocumentation)
 
 %description -n texlive-ebproof-doc
 This package includes the documentation for texlive-ebproof
@@ -6061,7 +6090,7 @@ Requires:       tex(setspace.sty)
 Requires:       tex(titletoc.sty)
 Requires:       tex(tocbibind.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source66:       ebsthesis.tar.xz
 Source67:       ebsthesis.doc.tar.xz
 
@@ -6078,6 +6107,7 @@ Summary:        Documentation for texlive-ebsthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ebsthesis and texlive-alldocumentation)
 
 %description -n texlive-ebsthesis-doc
 This package includes the documentation for texlive-ebsthesis
@@ -6702,7 +6732,7 @@ Provides:       tex(tcvt2488.tfm)
 Provides:       tex(tcvt2986.tfm)
 Provides:       tex(tcvt3583.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source68:       ec.tar.xz
 Source69:       ec.doc.tar.xz
 
@@ -6731,6 +6761,7 @@ Summary:        Documentation for texlive-ec
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ec and texlive-alldocumentation)
 
 %description -n texlive-ec-doc
 This package includes the documentation for texlive-ec
@@ -8056,7 +8087,7 @@ Provides:       tex(tosl8.tfm)
 Provides:       tex(tosl9.tfm)
 Provides:       tex(toti10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source70:       ecc.tar.xz
 Source71:       ecc.doc.tar.xz
 
@@ -8074,6 +8105,7 @@ Summary:        Documentation for texlive-ecc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ecc and texlive-alldocumentation)
 
 %description -n texlive-ecc-doc
 This package includes the documentation for texlive-ecc
@@ -8198,7 +8230,7 @@ Suggests:       texlive-ecclesiastic-doc >= %{texlive_version}
 Provides:       tex(ecclesiastic.sty)
 Requires:       tex(iftex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source72:       ecclesiastic.tar.xz
 Source73:       ecclesiastic.doc.tar.xz
 
@@ -8216,6 +8248,7 @@ Summary:        Documentation for texlive-ecclesiastic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ecclesiastic and texlive-alldocumentation)
 
 %description -n texlive-ecclesiastic-doc
 This package includes the documentation for texlive-ecclesiastic
@@ -8279,7 +8312,7 @@ Provides:       tex(ecgdraw.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source74:       ecgdraw.tar.xz
 Source75:       ecgdraw.doc.tar.xz
 
@@ -8295,6 +8328,7 @@ Summary:        Documentation for texlive-ecgdraw
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ecgdraw and texlive-alldocumentation)
 Provides:       locale(texlive-ecgdraw-doc:it)
 
 %description -n texlive-ecgdraw-doc
@@ -8358,7 +8392,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ecltree-doc >= %{texlive_version}
 Provides:       tex(ecltree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source76:       ecltree.tar.xz
 Source77:       ecltree.doc.tar.xz
 
@@ -8374,6 +8408,7 @@ Summary:        Documentation for texlive-ecltree
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ecltree and texlive-alldocumentation)
 
 %description -n texlive-ecltree-doc
 This package includes the documentation for texlive-ecltree
@@ -9395,7 +9430,7 @@ Requires:       tex(tcvt2488.tfm)
 Requires:       tex(tcvt2986.tfm)
 Requires:       tex(tcvt3583.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source78:       eco.tar.xz
 Source79:       eco.doc.tar.xz
 
@@ -9413,6 +9448,7 @@ Summary:        Documentation for texlive-eco
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eco and texlive-alldocumentation)
 
 %description -n texlive-eco-doc
 This package includes the documentation for texlive-eco
@@ -9979,7 +10015,7 @@ Requires:       tex(authoryear-comp.bbx)
 Requires:       tex(authoryear-comp.cbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source80:       ecobiblatex.tar.xz
 Source81:       ecobiblatex.doc.tar.xz
 
@@ -9997,6 +10033,7 @@ Summary:        Documentation for texlive-ecobiblatex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ecobiblatex and texlive-alldocumentation)
 
 %description -n texlive-ecobiblatex-doc
 This package includes the documentation for texlive-ecobiblatex
@@ -10059,7 +10096,7 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-econ-bst-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source82:       econ-bst.tar.xz
 Source83:       econ-bst.doc.tar.xz
 
@@ -10077,6 +10114,7 @@ Summary:        Documentation for texlive-econ-bst
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-econ-bst and texlive-alldocumentation)
 
 %description -n texlive-econ-bst-doc
 This package includes the documentation for texlive-econ-bst
@@ -10178,7 +10216,7 @@ Provides:       tex(econlipsum.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source84:       econlipsum.tar.xz
 Source85:       econlipsum.doc.tar.xz
 
@@ -10195,6 +10233,7 @@ Summary:        Documentation for texlive-econlipsum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-econlipsum and texlive-alldocumentation)
 
 %description -n texlive-econlipsum-doc
 This package includes the documentation for texlive-econlipsum
@@ -10255,7 +10294,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-econometrics-doc >= %{texlive_version}
 Provides:       tex(econometrics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source86:       econometrics.tar.xz
 Source87:       econometrics.doc.tar.xz
 
@@ -10276,6 +10315,7 @@ Summary:        Documentation for texlive-econometrics
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-econometrics and texlive-alldocumentation)
 
 %description -n texlive-econometrics-doc
 This package includes the documentation for texlive-econometrics
@@ -10374,7 +10414,7 @@ Requires:       tex(ulem.sty)
 Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source88:       economic.tar.xz
 Source89:       economic.doc.tar.xz
 
@@ -10394,6 +10434,7 @@ Summary:        Documentation for texlive-economic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-economic and texlive-alldocumentation)
 
 %description -n texlive-economic-doc
 This package includes the documentation for texlive-economic
@@ -10512,7 +10553,7 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source90:       ecothesis.doc.tar.xz
 
 %description -n texlive-ecothesis
@@ -10611,7 +10652,7 @@ Requires:       tex(selinput.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source91:       ecv.tar.xz
 Source92:       ecv.doc.tar.xz
 
@@ -10628,6 +10669,7 @@ Summary:        Documentation for texlive-ecv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ecv and texlive-alldocumentation)
 Provides:       locale(texlive-ecv-doc:de;en)
 
 %description -n texlive-ecv-doc
@@ -10700,7 +10742,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-eczar-fonts >= %{texlive_version}
 Suggests:       texlive-eczar-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source93:       eczar.tar.xz
 Source94:       eczar.doc.tar.xz
 
@@ -10726,6 +10768,7 @@ Summary:        Documentation for texlive-eczar
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eczar and texlive-alldocumentation)
 
 %description -n texlive-eczar-doc
 This package includes the documentation for texlive-eczar
@@ -10740,9 +10783,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-eczar-fonts
 The  separated fonts package for texlive-eczar
@@ -10785,9 +10826,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-eczar
 %{_datadir}/fontconfig/conf.avail/58-texlive-eczar.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-eczar/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-eczar/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-eczar/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-eczar/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-eczar/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-eczar/fonts.scale
 %{_datadir}/fonts/texlive-eczar/Eczar-Bold.otf
 %{_datadir}/fonts/texlive-eczar/Eczar-ExtraBold.otf
 %{_datadir}/fonts/texlive-eczar/Eczar-Medium.otf
@@ -10827,7 +10868,7 @@ Requires:       tex(paralist.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source95:       ed.tar.xz
 Source96:       ed.doc.tar.xz
 
@@ -10845,6 +10886,7 @@ Summary:        Documentation for texlive-ed
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ed and texlive-alldocumentation)
 
 %description -n texlive-ed-doc
 This package includes the documentation for texlive-ed
@@ -10908,7 +10950,7 @@ Suggests:       texlive-edfnotes-doc >= %{texlive_version}
 Provides:       tex(edfnotes.sty)
 Requires:       tex(fnlineno.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source97:       edfnotes.tar.xz
 Source98:       edfnotes.doc.tar.xz
 
@@ -10924,6 +10966,7 @@ Summary:        Documentation for texlive-edfnotes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-edfnotes and texlive-alldocumentation)
 
 %description -n texlive-edfnotes-doc
 This package includes the documentation for texlive-edfnotes
@@ -10989,7 +11032,7 @@ Suggests:       texlive-edichokey-doc >= %{texlive_version}
 Provides:       tex(edichokey.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source99:       edichokey.tar.xz
 Source100:      edichokey.doc.tar.xz
 
@@ -11006,6 +11049,7 @@ Summary:        Documentation for texlive-edichokey
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-edichokey and texlive-alldocumentation)
 
 %description -n texlive-edichokey-doc
 This package includes the documentation for texlive-edichokey
@@ -11072,7 +11116,7 @@ Provides:       tex(edmacfss.sty)
 Provides:       tex(edstanza.tex)
 Provides:       tex(tabmac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source101:      edmac.tar.xz
 Source102:      edmac.doc.tar.xz
 
@@ -11087,6 +11131,7 @@ Summary:        Documentation for texlive-edmac
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-edmac and texlive-alldocumentation)
 
 %description -n texlive-edmac-doc
 This package includes the documentation for texlive-edmac
@@ -11157,7 +11202,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-edmargin-doc >= %{texlive_version}
 Provides:       tex(edmargin.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
+# from 20230311
 Source103:      edmargin.tar.xz
 Source104:      edmargin.doc.tar.xz
 
@@ -11179,6 +11224,7 @@ Summary:        Documentation for texlive-edmargin
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-edmargin and texlive-alldocumentation)
 
 %description -n texlive-edmargin-doc
 This package includes the documentation for texlive-edmargin
@@ -11208,105 +11254,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-edmargin
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/edmargin/edmargin.sty
-
-%package -n texlive-ednotes
-Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn35829
-Release:        0
-License:        LPPL-1.0
-Summary:        Typeset scholarly editions
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Requires:       texlive-ncctools >= %{texlive_version}
-#!BuildIgnore: texlive-ncctools
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun):coreutils
-Requires(postun):texlive >= %{texlive_version}
-Requires(postun):texlive-filesystem >= %{texlive_version}
-Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun):texlive-kpathsea >= %{texlive_version}
-Requires(postun):texlive-scripts-bin >= %{texlive_version}
-Requires(postun):texlive-scripts >= %{texlive_version}
-Requires(posttrans):coreutils
-Requires(posttrans):ed
-Requires(posttrans):findutils
-Requires(posttrans):grep
-Requires(posttrans):sed
-Requires(posttrans):texlive >= %{texlive_version}
-Requires(posttrans):texlive-filesystem >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea >= %{texlive_version}
-Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans):texlive-scripts >= %{texlive_version}
-Suggests:       texlive-ednotes-doc >= %{texlive_version}
-Provides:       tex(edcntwd0.sty)
-Provides:       tex(ednotes.sty)
-Provides:       tex(lblchng1.sty)
-Provides:       tex(mfparptc.sty)
-Provides:       tex(mfparxsp.sty)
-Requires:       tex(lineno.sty)
-Requires:       tex(manyfoot.sty)
-# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source105:      ednotes.tar.xz
-Source106:      ednotes.doc.tar.xz
-
-%description -n texlive-ednotes
-A macro package for typesetting scholarly critical editions.
-Provides macros for critical edition typesetting with LaTeX,
-including support for line numbers and layers of footnotes.
-
-%package -n texlive-ednotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn35829
-Release:        0
-Summary:        Documentation for texlive-ednotes
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-ednotes-doc:en)
-
-%description -n texlive-ednotes-doc
-This package includes the documentation for texlive-ednotes
-
-%post -n texlive-ednotes
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-ednotes
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-ednotes
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-ednotes-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/ednotes/CHANGES.txt
-%{_texmfdistdir}/doc/latex/ednotes/CHANGING.txt
-%{_texmfdistdir}/doc/latex/ednotes/README
-%{_texmfdistdir}/doc/latex/ednotes/README.TEXLIVE
-%{_texmfdistdir}/doc/latex/ednotes/README4U.txt
-%{_texmfdistdir}/doc/latex/ednotes/READMORE.txt
-%{_texmfdistdir}/doc/latex/ednotes/ednotes.pdf
-%{_texmfdistdir}/doc/latex/ednotes/ednotes.tex
-%{_texmfdistdir}/doc/latex/ednotes/ednotugb.pdf
-%{_texmfdistdir}/doc/latex/ednotes/emathtst.tex
-%{_texmfdistdir}/doc/latex/ednotes/varnrule.tex
-%{_texmfdistdir}/doc/latex/ednotes/visible.txt
-
-%files -n texlive-ednotes
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/ednotes/edcntwd0.sty
-%{_texmfdistdir}/tex/latex/ednotes/ednotes.sty
-%{_texmfdistdir}/tex/latex/ednotes/lblchng1.sty
-%{_texmfdistdir}/tex/latex/ednotes/mfparptc.sty
-%{_texmfdistdir}/tex/latex/ednotes/mfparxsp.sty
 
 %package -n texlive-eemeir
 Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn15878
@@ -11339,9 +11286,9 @@ Suggests:       texlive-eemeir-doc >= %{texlive_version}
 Provides:       tex(eemeir.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source107:      eemeir.tar.xz
-Source108:      eemeir.doc.tar.xz
+# from 20230311
+Source105:      eemeir.tar.xz
+Source106:      eemeir.doc.tar.xz
 
 %description -n texlive-eemeir
 Defines macros for third-person singular pronouns (\E, \Em,
@@ -11361,6 +11308,7 @@ Summary:        Documentation for texlive-eemeir
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eemeir and texlive-alldocumentation)
 
 %description -n texlive-eemeir-doc
 This package includes the documentation for texlive-eemeir
@@ -11423,9 +11371,9 @@ Provides:       tex(eepic.sty)
 Provides:       tex(eepicemu.sty)
 Provides:       tex(epic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source109:      eepic.tar.xz
-Source110:      eepic.doc.tar.xz
+# from 20230311
+Source107:      eepic.tar.xz
+Source108:      eepic.doc.tar.xz
 
 %description -n texlive-eepic
 Extensions to epic and the LaTeX picture drawing environment,
@@ -11443,6 +11391,7 @@ Summary:        Documentation for texlive-eepic
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eepic and texlive-alldocumentation)
 
 %description -n texlive-eepic-doc
 This package includes the documentation for texlive-eepic
@@ -11518,9 +11467,9 @@ Provides:       tex(efbox.sty)
 Requires:       tex(color.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source111:      efbox.tar.xz
-Source112:      efbox.doc.tar.xz
+# from 20230311
+Source109:      efbox.tar.xz
+Source110:      efbox.doc.tar.xz
 
 %description -n texlive-efbox
 The package defines the \efbox command, which creates a box
@@ -11535,6 +11484,7 @@ Summary:        Documentation for texlive-efbox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-efbox and texlive-alldocumentation)
 
 %description -n texlive-efbox-doc
 This package includes the documentation for texlive-efbox
@@ -11595,9 +11545,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-egameps-doc >= %{texlive_version}
 Provides:       tex(egameps.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source113:      egameps.tar.xz
-Source114:      egameps.doc.tar.xz
+# from 20230311
+Source111:      egameps.tar.xz
+Source112:      egameps.doc.tar.xz
 
 %description -n texlive-egameps
 The style is intended to have enough features to draw any
@@ -11614,6 +11564,7 @@ Summary:        Documentation for texlive-egameps
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-egameps and texlive-alldocumentation)
 
 %description -n texlive-egameps-doc
 This package includes the documentation for texlive-egameps
@@ -11678,9 +11629,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source115:      egplot.tar.xz
-Source116:      egplot.doc.tar.xz
+# from 20230311
+Source113:      egplot.tar.xz
+Source114:      egplot.doc.tar.xz
 
 %description -n texlive-egplot
 A package to encapsulate gnuplot commands in a LaTeX source
@@ -11694,6 +11645,7 @@ Summary:        Documentation for texlive-egplot
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-egplot and texlive-alldocumentation)
 
 %description -n texlive-egplot-doc
 This package includes the documentation for texlive-egplot
@@ -11757,9 +11709,9 @@ Provides:       tex(ehhline.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(hhline.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source117:      ehhline.tar.xz
-Source118:      ehhline.doc.tar.xz
+# from 20230311
+Source115:      ehhline.tar.xz
+Source116:      ehhline.doc.tar.xz
 
 %description -n texlive-ehhline
 This package extends the \hhline command with a !{...} token,
@@ -11772,6 +11724,7 @@ Summary:        Documentation for texlive-ehhline
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ehhline and texlive-alldocumentation)
 
 %description -n texlive-ehhline-doc
 This package includes the documentation for texlive-ehhline
@@ -11866,9 +11819,9 @@ Provides:       tex(eiadtcsc10.tfm)
 Provides:       tex(eiadtt10.tfm)
 Provides:       tex(eiadvtt10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source119:      eiad.tar.xz
-Source120:      eiad.doc.tar.xz
+# from 20230311
+Source117:      eiad.tar.xz
+Source118:      eiad.doc.tar.xz
 
 %description -n texlive-eiad
 In both lower and upper case 32 letters are defined (18 'plain'
@@ -11887,6 +11840,7 @@ Summary:        Documentation for texlive-eiad
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eiad and texlive-alldocumentation)
 
 %description -n texlive-eiad-doc
 This package includes the documentation for texlive-eiad
@@ -12022,9 +11976,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-eiad-ltx-doc >= %{texlive_version}
 Provides:       tex(eiad.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source121:      eiad-ltx.tar.xz
-Source122:      eiad-ltx.doc.tar.xz
+# from 20230311
+Source119:      eiad-ltx.tar.xz
+Source120:      eiad-ltx.doc.tar.xz
 
 %description -n texlive-eiad-ltx
 The package provides macros to support use of the eiad fonts in
@@ -12038,6 +11992,7 @@ Summary:        Documentation for texlive-eiad-ltx
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eiad-ltx and texlive-alldocumentation)
 
 %description -n texlive-eiad-ltx-doc
 This package includes the documentation for texlive-eiad-ltx
@@ -12101,8 +12056,8 @@ Provides:       tex(CD_labeler_test.tex)
 Provides:       tex(DB_process.tex)
 Provides:       tex(repeat.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source123:      eijkhout.tar.xz
+# from 20230311
+Source121:      eijkhout.tar.xz
 
 %description -n texlive-eijkhout
 Three unrelated packages: DB_process, to parse and process
@@ -12134,7 +12089,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/eijkhout/repeat.tex
 
 %package -n texlive-einfart
-Version:        %{texlive_version}.%{texlive_noarch}.svn62900
+Version:        %{texlive_version}.%{texlive_noarch}.svn65475
 Release:        0
 License:        LPPL-1.0
 Summary:        Write your articles in a simple and clear way
@@ -12174,20 +12129,21 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(indentfirst.sty)
-Requires:       tex(l3keys2e.sty)
+Requires:       tex(lua-widow-control.sty)
 Requires:       tex(mathpazo.sty)
 Requires:       tex(minimalist.sty)
 Requires:       tex(nowidow.sty)
 Requires:       tex(parskip.sty)
 Requires:       tex(projlib-font.sty)
+Requires:       tex(regexpatch.sty)
 Requires:       tex(silence.sty)
 Requires:       tex(tikz-cd.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source124:      einfart.tar.xz
-Source125:      einfart.doc.tar.xz
+# from 20230311
+Source122:      einfart.tar.xz
+Source123:      einfart.doc.tar.xz
 
 %description -n texlive-einfart
 This package provides a LaTeX class for typesetting articles
@@ -12202,13 +12158,13 @@ word "einfach" ("simple"), combined with the first three
 letters of "Artikel" ("article").
 
 %package -n texlive-einfart-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn62900
+Version:        %{texlive_version}.%{texlive_noarch}.svn65475
 Release:        0
 Summary:        Documentation for texlive-einfart
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-einfart-doc:zh;fr)
+Supplements:    (texlive-einfart and texlive-alldocumentation)
 
 %description -n texlive-einfart-doc
 This package includes the documentation for texlive-einfart
@@ -12232,14 +12188,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-einfart-doc
 %defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/einfart/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/einfart/LICENSE
 %{_texmfdistdir}/doc/latex/einfart/README.md
-%{_texmfdistdir}/doc/latex/einfart/einfart-doc-cn.pdf
-%{_texmfdistdir}/doc/latex/einfart/einfart-doc-cn.tex
-%{_texmfdistdir}/doc/latex/einfart/einfart-doc-en.pdf
-%{_texmfdistdir}/doc/latex/einfart/einfart-doc-en.tex
-%{_texmfdistdir}/doc/latex/einfart/einfart-doc-fr.pdf
-%{_texmfdistdir}/doc/latex/einfart/einfart-doc-fr.tex
 
 %files -n texlive-einfart
 %defattr(-,root,root,755)
@@ -12291,10 +12242,10 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source126:      ejpecp.tar.xz
-Source127:      ejpecp.doc.tar.xz
-Source128:      ejpecp_p2top3.dif
+# from 20230311
+Source124:      ejpecp.tar.xz
+Source125:      ejpecp.doc.tar.xz
+Source126:      ejpecp_p2top3.dif
 
 %description -n texlive-ejpecp
 The class is designed for typesetting articles for the
@@ -12311,6 +12262,7 @@ Summary:        Documentation for texlive-ejpecp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ejpecp and texlive-alldocumentation)
 
 %description -n texlive-ejpecp-doc
 This package includes the documentation for texlive-ejpecp
@@ -12382,9 +12334,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(indentfirst.sty)
 Requires:       tex(sectsty.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source129:      ekaia.tar.xz
-Source130:      ekaia.doc.tar.xz
+# from 20230311
+Source127:      ekaia.tar.xz
+Source128:      ekaia.doc.tar.xz
 
 %description -n texlive-ekaia
 The package provides the article format for publishing the
@@ -12398,6 +12350,7 @@ Summary:        Documentation for texlive-ekaia
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ekaia and texlive-alldocumentation)
 
 %description -n texlive-ekaia-doc
 This package includes the documentation for texlive-ekaia
@@ -12478,9 +12431,9 @@ Requires:       tex(verse.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-user.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source131:      ekdosis.tar.xz
-Source132:      ekdosis.doc.tar.xz
+# from 20230311
+Source129:      ekdosis.tar.xz
+Source130:      ekdosis.doc.tar.xz
 
 %description -n texlive-ekdosis
 ekdosis is a LuaLaTeX package designed for multilingual
@@ -12502,6 +12455,7 @@ Summary:        Documentation for texlive-ekdosis
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ekdosis and texlive-alldocumentation)
 
 %description -n texlive-ekdosis-doc
 This package includes the documentation for texlive-ekdosis
@@ -12539,7 +12493,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/ekdosis/ekdosis.sty
 
 %package -n texlive-ektype-tanka
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn56070
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn63255
 Release:        0
 License:        LPPL-1.0
 Summary:        Devanagari fonts by EkType
@@ -12568,9 +12522,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-ektype-tanka-fonts >= %{texlive_version}
 Suggests:       texlive-ektype-tanka-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source133:      ektype-tanka.tar.xz
-Source134:      ektype-tanka.doc.tar.xz
+# from 20230311
+Source131:      ektype-tanka.tar.xz
+Source132:      ektype-tanka.doc.tar.xz
 
 %description -n texlive-ektype-tanka
 ek-ttaaiip sNsthecyaa kaahii utkRsstt devnaagrii ttNkaaNcaa
@@ -12579,19 +12533,20 @@ sNgrh / . This package provides a collection of some excellent
 Devanagari fonts by EkType: Mukta, Baloo, Modak, and Jaini.
 
 %package -n texlive-ektype-tanka-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn56070
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn63255
 Release:        0
 Summary:        Documentation for texlive-ektype-tanka
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ektype-tanka and texlive-alldocumentation)
 Provides:       locale(texlive-ektype-tanka-doc:mr,hi)
 
 %description -n texlive-ektype-tanka-doc
 This package includes the documentation for texlive-ektype-tanka
 
 %package -n texlive-ektype-tanka-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn56070
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn63255
 Release:        0
 Summary:        Severed fonts for texlive-ektype-tanka
 License:        LPPL-1.0
@@ -12600,9 +12555,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-ektype-tanka-fonts
 The  separated fonts package for texlive-ektype-tanka
@@ -12655,9 +12608,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-ektype-tanka
 %{_datadir}/fontconfig/conf.avail/58-texlive-ektype-tanka.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ektype-tanka/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ektype-tanka/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ektype-tanka/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-ektype-tanka/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-ektype-tanka/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-ektype-tanka/fonts.scale
 %{_datadir}/fonts/texlive-ektype-tanka/Baloo2-Bold.ttf
 %{_datadir}/fonts/texlive-ektype-tanka/Baloo2-ExtraBold.ttf
 %{_datadir}/fonts/texlive-ektype-tanka/Baloo2-Medium.ttf
@@ -12711,9 +12664,9 @@ Requires:       tex(type1cm.sty)
 Requires:       tex(type1ec.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source135:      elbioimp.tar.xz
-Source136:      elbioimp.doc.tar.xz
+# from 20230311
+Source133:      elbioimp.tar.xz
+Source134:      elbioimp.doc.tar.xz
 
 %description -n texlive-elbioimp
 A document class for writing articles to the Journal of
@@ -12726,6 +12679,7 @@ Summary:        Documentation for texlive-elbioimp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elbioimp and texlive-alldocumentation)
 
 %description -n texlive-elbioimp-doc
 This package includes the documentation for texlive-elbioimp
@@ -13061,9 +13015,9 @@ Requires:       tex(nfssext-cfr.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source137:      electrum.tar.xz
-Source138:      electrum.doc.tar.xz
+# from 20230311
+Source135:      electrum.tar.xz
+Source136:      electrum.doc.tar.xz
 
 %description -n texlive-electrum
 Electrum ADF is a slab-serif font featuring optical and italic
@@ -13080,6 +13034,7 @@ Summary:        Documentation for texlive-electrum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-electrum and texlive-alldocumentation)
 
 %description -n texlive-electrum-doc
 This package includes the documentation for texlive-electrum
@@ -13094,9 +13049,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-electrum-fonts
 The  separated fonts package for texlive-electrum
@@ -13417,9 +13370,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-electrum
 %{_datadir}/fontconfig/conf.avail/58-texlive-electrum.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-electrum/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-electrum/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-electrum/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-electrum/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-electrum/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-electrum/fonts.scale
 %{_datadir}/fonts/texlive-electrum/yesb8a.pfb
 %{_datadir}/fonts/texlive-electrum/yesbo8a.pfb
 %{_datadir}/fonts/texlive-electrum/yesl8a.pfb
@@ -13460,9 +13413,9 @@ Suggests:       texlive-eledform-doc >= %{texlive_version}
 Provides:       tex(eledform.sty)
 Requires:       tex(eledmac.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source139:      eledform.tar.xz
-Source140:      eledform.doc.tar.xz
+# from 20230311
+Source137:      eledform.tar.xz
+Source138:      eledform.doc.tar.xz
 
 %description -n texlive-eledform
 The package provides commands to formalize textual variants in
@@ -13475,6 +13428,7 @@ Summary:        Documentation for texlive-eledform
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eledform and texlive-alldocumentation)
 
 %description -n texlive-eledform-doc
 This package includes the documentation for texlive-eledform
@@ -13550,9 +13504,9 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source141:      eledmac.tar.xz
-Source142:      eledmac.doc.tar.xz
+# from 20230311
+Source139:      eledmac.tar.xz
+Source140:      eledmac.doc.tar.xz
 
 %description -n texlive-eledmac
 A package for typesetting scholarly critical editions,
@@ -13570,6 +13524,7 @@ Summary:        Documentation for texlive-eledmac
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eledmac and texlive-alldocumentation)
 
 %description -n texlive-eledmac-doc
 This package includes the documentation for texlive-eledmac
@@ -13658,380 +13613,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/eledmac/eledmac.sty
 %{_texmfdistdir}/tex/latex/eledmac/eledpar.sty
 
-%package -n texlive-elegantbook
-Version:        %{texlive_version}.%{texlive_noarch}.4.1svn59053
-Release:        0
-License:        LPPL-1.0
-Summary:        An Elegant LaTeX Template for Books
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun):coreutils
-Requires(postun):texlive >= %{texlive_version}
-Requires(postun):texlive-filesystem >= %{texlive_version}
-Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun):texlive-kpathsea >= %{texlive_version}
-Requires(postun):texlive-scripts-bin >= %{texlive_version}
-Requires(postun):texlive-scripts >= %{texlive_version}
-Requires(posttrans):coreutils
-Requires(posttrans):ed
-Requires(posttrans):findutils
-Requires(posttrans):grep
-Requires(posttrans):sed
-Requires(posttrans):texlive >= %{texlive_version}
-Requires(posttrans):texlive-filesystem >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea >= %{texlive_version}
-Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans):texlive-scripts >= %{texlive_version}
-Suggests:       texlive-elegantbook-doc >= %{texlive_version}
-Provides:       tex(elegantbook.cls)
-Requires:       tex(adforn.sty)
-Requires:       tex(amsfonts.sty)
-Requires:       tex(amsmath.sty)
-Requires:       tex(amssymb.sty)
-Requires:       tex(amsthm.sty)
-Requires:       tex(anyfontsize.sty)
-Requires:       tex(appendix.sty)
-Requires:       tex(apptools.sty)
-Requires:       tex(babel.sty)
-Requires:       tex(bbding.sty)
-Requires:       tex(bm.sty)
-Requires:       tex(book.cls)
-Requires:       tex(booktabs.sty)
-Requires:       tex(caption.sty)
-Requires:       tex(comment.sty)
-Requires:       tex(csquotes.sty)
-Requires:       tex(ctex.sty)
-Requires:       tex(enumerate.sty)
-Requires:       tex(enumitem.sty)
-Requires:       tex(esint.sty)
-Requires:       tex(etoolbox.sty)
-Requires:       tex(fancyhdr.sty)
-Requires:       tex(fancyvrb.sty)
-Requires:       tex(fontenc.sty)
-Requires:       tex(footmisc.sty)
-Requires:       tex(geometry.sty)
-Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
-Requires:       tex(hyperref.sty)
-Requires:       tex(iftex.sty)
-Requires:       tex(indentfirst.sty)
-Requires:       tex(inputenc.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(lipsum.sty)
-Requires:       tex(listings.sty)
-Requires:       tex(makecell.sty)
-Requires:       tex(manfnt.sty)
-Requires:       tex(mathrsfs.sty)
-Requires:       tex(multicol.sty)
-Requires:       tex(multirow.sty)
-Requires:       tex(mwe.sty)
-Requires:       tex(newtxmath.sty)
-Requires:       tex(newtxtext.sty)
-Requires:       tex(pifont.sty)
-Requires:       tex(setspace.sty)
-Requires:       tex(tcolorbox.sty)
-Requires:       tex(tikz.sty)
-Requires:       tex(titlesec.sty)
-Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source143:      elegantbook.tar.xz
-Source144:      elegantbook.doc.tar.xz
-
-%description -n texlive-elegantbook
-ElegantBook is designed for writing Books. This template is
-based on the standard LaTeX book class. The goal of this
-template is to make the writing process more elegant. Just
-enjoy it!
-
-%package -n texlive-elegantbook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.1svn59053
-Release:        0
-Summary:        Documentation for texlive-elegantbook
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-elegantbook-doc:zh)
-
-%description -n texlive-elegantbook-doc
-This package includes the documentation for texlive-elegantbook
-
-%post -n texlive-elegantbook
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-elegantbook
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-elegantbook
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-elegantbook-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/elegantbook/License
-%{_texmfdistdir}/doc/latex/elegantbook/README-CN.md
-%{_texmfdistdir}/doc/latex/elegantbook/README.md
-%{_texmfdistdir}/doc/latex/elegantbook/elegantbook-cn.pdf
-%{_texmfdistdir}/doc/latex/elegantbook/elegantbook-cn.tex
-%{_texmfdistdir}/doc/latex/elegantbook/elegantbook-en.pdf
-%{_texmfdistdir}/doc/latex/elegantbook/elegantbook-en.tex
-%{_texmfdistdir}/doc/latex/elegantbook/figure/cover.jpg
-%{_texmfdistdir}/doc/latex/elegantbook/figure/logo-blue.png
-%{_texmfdistdir}/doc/latex/elegantbook/image/cert.pdf
-%{_texmfdistdir}/doc/latex/elegantbook/image/donate.jpg
-%{_texmfdistdir}/doc/latex/elegantbook/image/founder.png
-%{_texmfdistdir}/doc/latex/elegantbook/image/scatter.jpg
-%{_texmfdistdir}/doc/latex/elegantbook/reference.bib
-
-%files -n texlive-elegantbook
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/elegantbook/elegantbook.cls
-
-%package -n texlive-elegantnote
-Version:        %{texlive_version}.%{texlive_noarch}.2.30svn54758
-Release:        0
-License:        LPPL-1.0
-Summary:        Elegant LaTeX Template for Notes
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun):coreutils
-Requires(postun):texlive >= %{texlive_version}
-Requires(postun):texlive-filesystem >= %{texlive_version}
-Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun):texlive-kpathsea >= %{texlive_version}
-Requires(postun):texlive-scripts-bin >= %{texlive_version}
-Requires(postun):texlive-scripts >= %{texlive_version}
-Requires(posttrans):coreutils
-Requires(posttrans):ed
-Requires(posttrans):findutils
-Requires(posttrans):grep
-Requires(posttrans):sed
-Requires(posttrans):texlive >= %{texlive_version}
-Requires(posttrans):texlive-filesystem >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea >= %{texlive_version}
-Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans):texlive-scripts >= %{texlive_version}
-Suggests:       texlive-elegantnote-doc >= %{texlive_version}
-Provides:       tex(elegantnote.cls)
-Requires:       tex(amsmath.sty)
-Requires:       tex(amsthm.sty)
-Requires:       tex(anyfontsize.sty)
-Requires:       tex(article.cls)
-Requires:       tex(booktabs.sty)
-Requires:       tex(calc.sty)
-Requires:       tex(caption.sty)
-Requires:       tex(ctex.sty)
-Requires:       tex(enumitem.sty)
-Requires:       tex(esint.sty)
-Requires:       tex(etoolbox.sty)
-Requires:       tex(extsizes.sty)
-Requires:       tex(fancyhdr.sty)
-Requires:       tex(footmisc.sty)
-Requires:       tex(gbt7714.sty)
-Requires:       tex(geometry.sty)
-Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
-Requires:       tex(hyperref.sty)
-Requires:       tex(iftex.sty)
-Requires:       tex(indentfirst.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(listings.sty)
-Requires:       tex(lstautogobble.sty)
-Requires:       tex(natbib.sty)
-Requires:       tex(newtxmath.sty)
-Requires:       tex(newtxtext.sty)
-Requires:       tex(silence.sty)
-Requires:       tex(tikz.sty)
-Requires:       tex(titlesec.sty)
-Requires:       tex(xcolor.sty)
-Requires:       tex(xpatch.sty)
-# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source145:      elegantnote.tar.xz
-Source146:      elegantnote.doc.tar.xz
-
-%description -n texlive-elegantnote
-ElegantNote is designed for writing working papers, especially
-for economics students. This template is based on the standard
-LaTeX article class. The goal of this template is to make the
-writing process easier and more comfortable.
-
-%package -n texlive-elegantnote-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.30svn54758
-Release:        0
-Summary:        Documentation for texlive-elegantnote
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-elegantnote-doc:zh)
-
-%description -n texlive-elegantnote-doc
-This package includes the documentation for texlive-elegantnote
-
-%post -n texlive-elegantnote
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-elegantnote
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-elegantnote
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-elegantnote-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/elegantnote/License
-%{_texmfdistdir}/doc/latex/elegantnote/README.md
-%{_texmfdistdir}/doc/latex/elegantnote/elegantnote-cn.pdf
-%{_texmfdistdir}/doc/latex/elegantnote/elegantnote-cn.tex
-%{_texmfdistdir}/doc/latex/elegantnote/elegantnote-en.pdf
-%{_texmfdistdir}/doc/latex/elegantnote/elegantnote-en.tex
-%{_texmfdistdir}/doc/latex/elegantnote/image/donate.jpg
-%{_texmfdistdir}/doc/latex/elegantnote/image/founder.png
-%{_texmfdistdir}/doc/latex/elegantnote/image/logo-blue.png
-%{_texmfdistdir}/doc/latex/elegantnote/image/logo.png
-%{_texmfdistdir}/doc/latex/elegantnote/image/scatter.pdf
-%{_texmfdistdir}/doc/latex/elegantnote/image/scatter.py
-%{_texmfdistdir}/doc/latex/elegantnote/image/star.png
-
-%files -n texlive-elegantnote
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/elegantnote/elegantnote.cls
-
-%package -n texlive-elegantpaper
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn54758
-Release:        0
-License:        LPPL-1.0
-Summary:        An Elegant LaTeX Template for Working Papers
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Requires(pre):  texlive-filesystem >= %{texlive_version}
-Requires(post): coreutils
-Requires(postun):coreutils
-Requires(postun):texlive >= %{texlive_version}
-Requires(postun):texlive-filesystem >= %{texlive_version}
-Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
-Requires(postun):texlive-kpathsea >= %{texlive_version}
-Requires(postun):texlive-scripts-bin >= %{texlive_version}
-Requires(postun):texlive-scripts >= %{texlive_version}
-Requires(posttrans):coreutils
-Requires(posttrans):ed
-Requires(posttrans):findutils
-Requires(posttrans):grep
-Requires(posttrans):sed
-Requires(posttrans):texlive >= %{texlive_version}
-Requires(posttrans):texlive-filesystem >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
-Requires(posttrans):texlive-kpathsea >= %{texlive_version}
-Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
-Requires(posttrans):texlive-scripts >= %{texlive_version}
-Suggests:       texlive-elegantpaper-doc >= %{texlive_version}
-Provides:       tex(elegantpaper.cls)
-Requires:       tex(abstract.sty)
-Requires:       tex(amsmath.sty)
-Requires:       tex(amssymb.sty)
-Requires:       tex(amsthm.sty)
-Requires:       tex(appendix.sty)
-Requires:       tex(article.cls)
-Requires:       tex(booktabs.sty)
-Requires:       tex(calc.sty)
-Requires:       tex(caption.sty)
-Requires:       tex(ctex.sty)
-Requires:       tex(enumitem.sty)
-Requires:       tex(esint.sty)
-Requires:       tex(etoolbox.sty)
-Requires:       tex(fancyvrb.sty)
-Requires:       tex(footmisc.sty)
-Requires:       tex(gbt7714.sty)
-Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
-Requires:       tex(hyperref.sty)
-Requires:       tex(indentfirst.sty)
-Requires:       tex(kvoptions.sty)
-Requires:       tex(listings.sty)
-Requires:       tex(multicol.sty)
-Requires:       tex(multirow.sty)
-Requires:       tex(natbib.sty)
-Requires:       tex(newtxmath.sty)
-Requires:       tex(newtxtext.sty)
-Requires:       tex(xcolor.sty)
-# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source147:      elegantpaper.tar.xz
-Source148:      elegantpaper.doc.tar.xz
-
-%description -n texlive-elegantpaper
-ElegantPaper is designed for writing working papers, especially
-for economics students. This template is based on the standard
-LaTeX article class. The goal of this template is to make the
-writing process easier and more comfortable.
-
-%package -n texlive-elegantpaper-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn54758
-Release:        0
-Summary:        Documentation for texlive-elegantpaper
-License:        LPPL-1.0
-Group:          Productivity/Publishing/TeX/Base
-URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-elegantpaper-doc:zh)
-
-%description -n texlive-elegantpaper-doc
-This package includes the documentation for texlive-elegantpaper
-
-%post -n texlive-elegantpaper
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-
-%postun -n texlive-elegantpaper
-mkdir -p /var/run/texlive
-> /var/run/texlive/run-mktexlsr
-> /var/run/texlive/run-update
-if test $1 = 0; then
-    exit 0
-fi
-
-%posttrans -n texlive-elegantpaper
-test -d /var/run/texlive || exit 0
-VERBOSE=false %{_texmfdistdir}/texconfig/update || :
-
-%files -n texlive-elegantpaper-doc
-%defattr(-,root,root,755)
-%{_texmfdistdir}/doc/latex/elegantpaper/License
-%{_texmfdistdir}/doc/latex/elegantpaper/README.md
-%{_texmfdistdir}/doc/latex/elegantpaper/elegantpaper-cn.pdf
-%{_texmfdistdir}/doc/latex/elegantpaper/elegantpaper-cn.tex
-%{_texmfdistdir}/doc/latex/elegantpaper/elegantpaper-en.pdf
-%{_texmfdistdir}/doc/latex/elegantpaper/elegantpaper-en.tex
-%{_texmfdistdir}/doc/latex/elegantpaper/image/donate.jpg
-%{_texmfdistdir}/doc/latex/elegantpaper/image/founder.png
-%{_texmfdistdir}/doc/latex/elegantpaper/image/star.png
-%{_texmfdistdir}/doc/latex/elegantpaper/wpref.bib
-
-%files -n texlive-elegantpaper
-%defattr(-,root,root,755)
-%{_texmfdistdir}/tex/latex/elegantpaper/elegantpaper.cls
-
 %package -n texlive-elements
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn61792
 Release:        0
@@ -14070,9 +13651,9 @@ Provides:       tex(elements_names_spanish.def)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source149:      elements.tar.xz
-Source150:      elements.doc.tar.xz
+# from 20230311
+Source141:      elements.tar.xz
+Source142:      elements.doc.tar.xz
 
 %description -n texlive-elements
 The package provides means for retrieving properties of
@@ -14088,6 +13669,7 @@ Summary:        Documentation for texlive-elements
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elements and texlive-alldocumentation)
 
 %description -n texlive-elements-doc
 This package includes the documentation for texlive-elements
@@ -14156,9 +13738,9 @@ Suggests:       texlive-ellipse-doc >= %{texlive_version}
 Provides:       tex(ellipse.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source151:      ellipse.tar.xz
-Source152:      ellipse.doc.tar.xz
+# from 20230311
+Source143:      ellipse.tar.xz
+Source144:      ellipse.doc.tar.xz
 
 %description -n texlive-ellipse
 Draw ellipses and elliptical arcs using the standard LaTeX2e
@@ -14171,6 +13753,7 @@ Summary:        Documentation for texlive-ellipse
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ellipse and texlive-alldocumentation)
 
 %description -n texlive-ellipse-doc
 This package includes the documentation for texlive-ellipse
@@ -14232,9 +13815,9 @@ Suggests:       texlive-ellipsis-doc >= %{texlive_version}
 Provides:       tex(ellipsis.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source153:      ellipsis.tar.xz
-Source154:      ellipsis.doc.tar.xz
+# from 20230311
+Source145:      ellipsis.tar.xz
+Source146:      ellipsis.doc.tar.xz
 
 %description -n texlive-ellipsis
 This is a simple package that fixes a problem in the way LaTeX
@@ -14249,6 +13832,7 @@ Summary:        Documentation for texlive-ellipsis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ellipsis and texlive-alldocumentation)
 
 %description -n texlive-ellipsis-doc
 This package includes the documentation for texlive-ellipsis
@@ -14309,9 +13893,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-elmath-doc >= %{texlive_version}
 Provides:       tex(elmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source155:      elmath.tar.xz
-Source156:      elmath.doc.tar.xz
+# from 20230311
+Source147:      elmath.tar.xz
+Source148:      elmath.doc.tar.xz
 
 %description -n texlive-elmath
 This package has been designed to facilitate the use of Greek
@@ -14326,6 +13910,7 @@ Summary:        Documentation for texlive-elmath
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elmath and texlive-alldocumentation)
 
 %description -n texlive-elmath-doc
 This package includes the documentation for texlive-elmath
@@ -14386,9 +13971,9 @@ Suggests:       texlive-elocalloc-doc >= %{texlive_version}
 Provides:       tex(elocalloc.sty)
 Requires:       tex(etex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source157:      elocalloc.tar.xz
-Source158:      elocalloc.doc.tar.xz
+# from 20230311
+Source149:      elocalloc.tar.xz
+Source150:      elocalloc.doc.tar.xz
 
 %description -n texlive-elocalloc
 Local allocation macros, with names taken from etex.sty but
@@ -14401,6 +13986,7 @@ Summary:        Documentation for texlive-elocalloc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elocalloc and texlive-alldocumentation)
 
 %description -n texlive-elocalloc-doc
 This package includes the documentation for texlive-elocalloc
@@ -14475,9 +14061,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(mathptmx.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source159:      elpres.tar.xz
-Source160:      elpres.doc.tar.xz
+# from 20230311
+Source151:      elpres.tar.xz
+Source152:      elpres.doc.tar.xz
 
 %description -n texlive-elpres
 The elpres class is intended to be used for presentations on a
@@ -14495,6 +14081,7 @@ Summary:        Documentation for texlive-elpres
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elpres and texlive-alldocumentation)
 
 %description -n texlive-elpres-doc
 This package includes the documentation for texlive-elpres
@@ -14545,7 +14132,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/elpres/ep-ball-05.png
 
 %package -n texlive-els-cas-templates
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn59170
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn62931
 Release:        0
 License:        LPPL-1.0
 Summary:        Elsevier updated LaTeX templates
@@ -14603,9 +14190,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source161:      els-cas-templates.tar.xz
-Source162:      els-cas-templates.doc.tar.xz
+# from 20230311
+Source153:      els-cas-templates.tar.xz
+Source154:      els-cas-templates.doc.tar.xz
 
 %description -n texlive-els-cas-templates
 This bundle provides two class and corresponding template files
@@ -14616,12 +14203,13 @@ accepted for submitting articles both in Elsevier's electronic
 submission system and elsewhere.
 
 %package -n texlive-els-cas-templates-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn59170
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn62931
 Release:        0
 Summary:        Documentation for texlive-els-cas-templates
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-els-cas-templates and texlive-alldocumentation)
 
 %description -n texlive-els-cas-templates-doc
 This package includes the documentation for texlive-els-cas-templates
@@ -14658,12 +14246,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/els-cas-templates/doc/rvdtx.sty
 %{_texmfdistdir}/doc/latex/els-cas-templates/doc/sc-sample.pdf
 %{_texmfdistdir}/doc/latex/els-cas-templates/manifest.txt
-%{_texmfdistdir}/doc/latex/els-cas-templates/thumbnails/cas-email.jpeg
-%{_texmfdistdir}/doc/latex/els-cas-templates/thumbnails/cas-facebook.jpeg
-%{_texmfdistdir}/doc/latex/els-cas-templates/thumbnails/cas-gplus.jpeg
-%{_texmfdistdir}/doc/latex/els-cas-templates/thumbnails/cas-linkedin.jpeg
-%{_texmfdistdir}/doc/latex/els-cas-templates/thumbnails/cas-twitter.jpeg
-%{_texmfdistdir}/doc/latex/els-cas-templates/thumbnails/cas-url.jpeg
 
 %files -n texlive-els-cas-templates
 %defattr(-,root,root,755)
@@ -14671,6 +14253,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/els-cas-templates/cas-common.sty
 %{_texmfdistdir}/tex/latex/els-cas-templates/cas-dc.cls
 %{_texmfdistdir}/tex/latex/els-cas-templates/cas-sc.cls
+%{_texmfdistdir}/tex/latex/els-cas-templates/thumbnails/cas-email.jpeg
+%{_texmfdistdir}/tex/latex/els-cas-templates/thumbnails/cas-facebook.jpeg
+%{_texmfdistdir}/tex/latex/els-cas-templates/thumbnails/cas-gplus.jpeg
+%{_texmfdistdir}/tex/latex/els-cas-templates/thumbnails/cas-linkedin.jpeg
+%{_texmfdistdir}/tex/latex/els-cas-templates/thumbnails/cas-twitter.jpeg
+%{_texmfdistdir}/tex/latex/els-cas-templates/thumbnails/cas-url.jpeg
 
 %package -n texlive-elsarticle
 Version:        %{texlive_version}.%{texlive_noarch}.3.3svn56999
@@ -14713,9 +14301,9 @@ Requires:       tex(times.sty)
 Requires:       tex(txfonts.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source163:      elsarticle.tar.xz
-Source164:      elsarticle.doc.tar.xz
+# from 20230311
+Source155:      elsarticle.tar.xz
+Source156:      elsarticle.doc.tar.xz
 
 %description -n texlive-elsarticle
 This class for typesetting journal articles is accepted for
@@ -14731,6 +14319,7 @@ Summary:        Documentation for texlive-elsarticle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elsarticle and texlive-alldocumentation)
 
 %description -n texlive-elsarticle-doc
 This package includes the documentation for texlive-elsarticle
@@ -14781,7 +14370,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/elsarticle/elsarticle.cls
 
 %package -n texlive-elteikthesis
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn60563
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn63186
 Release:        0
 License:        LPPL-1.0
 Summary:        Thesis template for Eotvos Lorand University (Informatics)
@@ -14846,6 +14435,7 @@ Requires:       tex(multirow.sty)
 Requires:       tex(nomencl.sty)
 Requires:       tex(paralist.sty)
 Requires:       tex(parskip.sty)
+Requires:       tex(pdfpages.sty)
 Requires:       tex(preview.sty)
 Requires:       tex(report.cls)
 Requires:       tex(rotating.sty)
@@ -14857,9 +14447,9 @@ Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source165:      elteikthesis.tar.xz
-Source166:      elteikthesis.doc.tar.xz
+# from 20230311
+Source157:      elteikthesis.tar.xz
+Source158:      elteikthesis.doc.tar.xz
 
 %description -n texlive-elteikthesis
 This package provides a Bachelor and Master thesis template for
@@ -14868,13 +14458,14 @@ Hungary). The template supports producing both Hungarian and
 English theses.
 
 %package -n texlive-elteikthesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn60563
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn63186
 Release:        0
 Summary:        Documentation for texlive-elteikthesis
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       locale(texlive-elteikthesis-doc:hu)
+Supplements:    (texlive-elteikthesis and texlive-alldocumentation)
+Provides:       locale(texlive-elteikthesis-doc:en;hu)
 
 %description -n texlive-elteikthesis-doc
 This package includes the documentation for texlive-elteikthesis
@@ -14903,17 +14494,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/elteikthesis/README.pdf
 %{_texmfdistdir}/doc/latex/elteikthesis/README_hu.md
 %{_texmfdistdir}/doc/latex/elteikthesis/README_hu.pdf
-%{_texmfdistdir}/doc/latex/elteikthesis/appendices/sim.tex
-%{_texmfdistdir}/doc/latex/elteikthesis/chapters/impl.tex
-%{_texmfdistdir}/doc/latex/elteikthesis/chapters/intro.tex
-%{_texmfdistdir}/doc/latex/elteikthesis/chapters/sum.tex
-%{_texmfdistdir}/doc/latex/elteikthesis/chapters/user.tex
-%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis-minted.pdf
-%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis-minted.tex
 %{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis.bib
-%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis.pdf
-%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis_en.pdf
+%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis_en.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis_hu.pdf
+%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis_hu.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis_minted.pdf
+%{_texmfdistdir}/doc/latex/elteikthesis/elteikthesis_minted.tex
 %{_texmfdistdir}/doc/latex/elteikthesis/images/elte_cimer_szines.eps
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_en/impl.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_en/intro.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_en/sim.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_en/sum.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_en/user.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_hu/impl.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_hu/intro.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_hu/sim.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_hu/sum.tex
+%{_texmfdistdir}/doc/latex/elteikthesis/samples_hu/user.tex
 
 %files -n texlive-elteikthesis
 %defattr(-,root,root,755)
@@ -14955,9 +14553,9 @@ Provides:       tex(eltex5.tex)
 Provides:       tex(eltex6.tex)
 Provides:       tex(eltex7.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source167:      eltex.tar.xz
-Source168:      eltex.doc.tar.xz
+# from 20230311
+Source159:      eltex.tar.xz
+Source160:      eltex.doc.tar.xz
 
 %description -n texlive-eltex
 The macros enable the user to draw simple circuit diagrams in
@@ -14973,6 +14571,7 @@ Summary:        Documentation for texlive-eltex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eltex and texlive-alldocumentation)
 Provides:       locale(texlive-eltex-doc:en;cs)
 
 %description -n texlive-eltex-doc
@@ -15044,9 +14643,9 @@ Suggests:       texlive-elvish-doc >= %{texlive_version}
 Provides:       tex(cirth.tfm)
 Provides:       tex(teng10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source169:      elvish.tar.xz
-Source170:      elvish.doc.tar.xz
+# from 20230311
+Source161:      elvish.tar.xz
+Source162:      elvish.doc.tar.xz
 
 %description -n texlive-elvish
 The bundle provides fonts for Cirth (cirth.mf, etc.) and for
@@ -15060,6 +14659,7 @@ Summary:        Documentation for texlive-elvish
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elvish and texlive-alldocumentation)
 
 %description -n texlive-elvish-doc
 This package includes the documentation for texlive-elvish
@@ -15132,9 +14732,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source171:      elzcards.tar.xz
-Source172:      elzcards.doc.tar.xz
+# from 20230311
+Source163:      elzcards.tar.xz
+Source164:      elzcards.doc.tar.xz
 
 %description -n texlive-elzcards
 A LaTeX package for typesetting business cards, index cards,
@@ -15151,6 +14751,7 @@ Summary:        Documentation for texlive-elzcards
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-elzcards and texlive-alldocumentation)
 
 %description -n texlive-elzcards-doc
 This package includes the documentation for texlive-elzcards
@@ -15214,9 +14815,9 @@ Suggests:       texlive-emarks-doc >= %{texlive_version}
 Provides:       tex(emarks.sty)
 Requires:       tex(etex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source173:      emarks.tar.xz
-Source174:      emarks.doc.tar.xz
+# from 20230311
+Source165:      emarks.tar.xz
+Source166:      emarks.doc.tar.xz
 
 %description -n texlive-emarks
 E-TeX provides 32 768 mark registers; using this facility is
@@ -15238,6 +14839,7 @@ Summary:        Documentation for texlive-emarks
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emarks and texlive-alldocumentation)
 
 %description -n texlive-emarks-doc
 This package includes the documentation for texlive-emarks
@@ -15305,9 +14907,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(filehook.sty)
 Requires:       tex(letltxmacro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source175:      embedall.tar.xz
-Source176:      embedall.doc.tar.xz
+# from 20230311
+Source167:      embedall.tar.xz
+Source168:      embedall.doc.tar.xz
 
 %description -n texlive-embedall
 The package provides a means of storing a project, without
@@ -15323,6 +14925,7 @@ Summary:        Documentation for texlive-embedall
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-embedall and texlive-alldocumentation)
 
 %description -n texlive-embedall-doc
 This package includes the documentation for texlive-embedall
@@ -15354,7 +14957,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/embedall/embedall.sty
 
 %package -n texlive-embedfile
-Version:        %{texlive_version}.%{texlive_noarch}.2.11svn54865
+Version:        %{texlive_version}.%{texlive_noarch}.2.12svn65528
 Release:        0
 License:        LPPL-1.0
 Summary:        Embed files into PDF
@@ -15384,9 +14987,9 @@ Suggests:       texlive-embedfile-doc >= %{texlive_version}
 Provides:       tex(dtx-attach.sty)
 Provides:       tex(embedfile.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source177:      embedfile.tar.xz
-Source178:      embedfile.doc.tar.xz
+# from 20230311
+Source169:      embedfile.tar.xz
+Source170:      embedfile.doc.tar.xz
 
 %description -n texlive-embedfile
 This package embeds files in a PDF document, using the PDF
@@ -15395,12 +14998,13 @@ operation used by the attachfile and attachfile2 packages).
 Currently only pdfTeX >=1.30, in PDF mode, is supported.
 
 %package -n texlive-embedfile-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.11svn54865
+Version:        %{texlive_version}.%{texlive_noarch}.2.12svn65528
 Release:        0
 Summary:        Documentation for texlive-embedfile
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-embedfile and texlive-alldocumentation)
 
 %description -n texlive-embedfile-doc
 This package includes the documentation for texlive-embedfile
@@ -15467,9 +15071,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source179:      embrac.tar.xz
-Source180:      embrac.doc.tar.xz
+# from 20230311
+Source171:      embrac.tar.xz
+Source172:      embrac.doc.tar.xz
 
 %description -n texlive-embrac
 The package redefines the commands \emph and \textit so that
@@ -15485,6 +15089,7 @@ Summary:        Documentation for texlive-embrac
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-embrac and texlive-alldocumentation)
 
 %description -n texlive-embrac-doc
 This package includes the documentation for texlive-embrac
@@ -15548,9 +15153,9 @@ Suggests:       texlive-emf-doc >= %{texlive_version}
 Provides:       tex(emf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source181:      emf.tar.xz
-Source182:      emf.doc.tar.xz
+# from 20230311
+Source173:      emf.tar.xz
+Source174:      emf.doc.tar.xz
 
 %description -n texlive-emf
 This package provides LaTeX support for the symbol for the EMF
@@ -15566,6 +15171,7 @@ Summary:        Documentation for texlive-emf
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emf and texlive-alldocumentation)
 
 %description -n texlive-emf-doc
 This package includes the documentation for texlive-emf
@@ -15663,9 +15269,9 @@ Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source183:      emisa.tar.xz
-Source184:      emisa.doc.tar.xz
+# from 20230311
+Source175:      emisa.tar.xz
+Source176:      emisa.doc.tar.xz
 
 %description -n texlive-emisa
 The EMISA LaTeX package is provided for preparing manuscripts
@@ -15682,6 +15288,7 @@ Summary:        Documentation for texlive-emisa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emisa and texlive-alldocumentation)
 
 %description -n texlive-emisa-doc
 This package includes the documentation for texlive-emisa
@@ -15749,9 +15356,9 @@ Provides:       tex(emoji-table.def)
 Provides:       tex(emoji.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source185:      emoji.tar.xz
-Source186:      emoji.doc.tar.xz
+# from 20230311
+Source177:      emoji.tar.xz
+Source178:      emoji.doc.tar.xz
 
 %description -n texlive-emoji
 This package allows users to typeset emojis in LaTeX documents.
@@ -15765,6 +15372,7 @@ Summary:        Documentation for texlive-emoji
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emoji and texlive-alldocumentation)
 
 %description -n texlive-emoji-doc
 This package includes the documentation for texlive-emoji
@@ -15830,9 +15438,9 @@ Requires:       tex(emoji.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source187:      emojicite.tar.xz
-Source188:      emojicite.doc.tar.xz
+# from 20230311
+Source179:      emojicite.tar.xz
+Source180:      emojicite.doc.tar.xz
 
 %description -n texlive-emojicite
 This package adds emojis to citations.
@@ -15844,6 +15452,7 @@ Summary:        Documentation for texlive-emojicite
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emojicite and texlive-alldocumentation)
 
 %description -n texlive-emojicite-doc
 This package includes the documentation for texlive-emojicite
@@ -15909,9 +15518,9 @@ Provides:       tex(emp.sty)
 Requires:       tex(graphics.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source189:      emp.tar.xz
-Source190:      emp.doc.tar.xz
+# from 20230311
+Source181:      emp.tar.xz
+Source182:      emp.doc.tar.xz
 
 %description -n texlive-emp
 Emp is a package for encapsulating MetaPost figures in LaTeX:
@@ -15932,6 +15541,7 @@ Summary:        Documentation for texlive-emp
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emp and texlive-alldocumentation)
 
 %description -n texlive-emp-doc
 This package includes the documentation for texlive-emp
@@ -15995,9 +15605,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-emptypage-doc >= %{texlive_version}
 Provides:       tex(emptypage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source191:      emptypage.tar.xz
-Source192:      emptypage.doc.tar.xz
+# from 20230311
+Source183:      emptypage.tar.xz
+Source184:      emptypage.doc.tar.xz
 
 %description -n texlive-emptypage
 This package prevents page numbers and headings from appearing
@@ -16010,6 +15620,7 @@ Summary:        Documentation for texlive-emptypage
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emptypage and texlive-alldocumentation)
 
 %description -n texlive-emptypage-doc
 This package includes the documentation for texlive-emptypage
@@ -16075,9 +15686,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(latexsym.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source193:      emulateapj.tar.xz
-Source194:      emulateapj.doc.tar.xz
+# from 20230311
+Source185:      emulateapj.tar.xz
+Source186:      emulateapj.doc.tar.xz
 
 %description -n texlive-emulateapj
 A LaTeX class (based on current RevTeX) to produce preprints
@@ -16091,6 +15702,7 @@ Summary:        Documentation for texlive-emulateapj
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-emulateapj and texlive-alldocumentation)
 
 %description -n texlive-emulateapj-doc
 This package includes the documentation for texlive-emulateapj
@@ -16191,10 +15803,10 @@ Provides:       tex(utf8raw.tex)
 Provides:       tex(utf8unkn.tex)
 Provides:       tex(utf8warn.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source195:      enctex.tar.xz
-Source196:      enctex.doc.tar.xz
-Source197:      enctex_p2top3.dif
+# from 20230311
+Source187:      enctex.tar.xz
+Source188:      enctex.doc.tar.xz
+Source189:      enctex_p2top3.dif
 
 %description -n texlive-enctex
 EncTeX is (another) TeX extension, written at the change-file
@@ -16209,6 +15821,7 @@ Summary:        Documentation for texlive-enctex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-enctex and texlive-alldocumentation)
 Provides:       locale(texlive-enctex-doc:en;cs)
 
 %description -n texlive-enctex-doc
@@ -16322,9 +15935,9 @@ Suggests:       texlive-encxvlna-doc >= %{texlive_version}
 Provides:       tex(encxvlna.sty)
 Provides:       tex(encxvlna.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source198:      encxvlna.tar.xz
-Source199:      encxvlna.doc.tar.xz
+# from 20230311
+Source190:      encxvlna.tar.xz
+Source191:      encxvlna.doc.tar.xz
 
 %description -n texlive-encxvlna
 The package provides tools for inserting nonbreakable spaces
@@ -16341,6 +15954,7 @@ Summary:        Documentation for texlive-encxvlna
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-encxvlna and texlive-alldocumentation)
 
 %description -n texlive-encxvlna-doc
 This package includes the documentation for texlive-encxvlna
@@ -16406,9 +16020,9 @@ Suggests:       texlive-endfloat-doc >= %{texlive_version}
 Provides:       tex(endfloat.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source200:      endfloat.tar.xz
-Source201:      endfloat.doc.tar.xz
+# from 20230311
+Source192:      endfloat.tar.xz
+Source193:      endfloat.doc.tar.xz
 
 %description -n texlive-endfloat
 Place all floats on pages by themselves at the end of the
@@ -16426,6 +16040,7 @@ Summary:        Documentation for texlive-endfloat
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endfloat and texlive-alldocumentation)
 
 %description -n texlive-endfloat-doc
 This package includes the documentation for texlive-endfloat
@@ -16488,9 +16103,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-endheads-doc >= %{texlive_version}
 Provides:       tex(endheads.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source202:      endheads.tar.xz
-Source203:      endheads.doc.tar.xz
+# from 20230311
+Source194:      endheads.tar.xz
+Source195:      endheads.doc.tar.xz
 
 %description -n texlive-endheads
 Endheads provides running headers of the form "Notes to pp.
@@ -16507,6 +16122,7 @@ Summary:        Documentation for texlive-endheads
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endheads and texlive-alldocumentation)
 
 %description -n texlive-endheads-doc
 This package includes the documentation for texlive-endheads
@@ -16572,9 +16188,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source204:      endiagram.tar.xz
-Source205:      endiagram.doc.tar.xz
+# from 20230311
+Source196:      endiagram.tar.xz
+Source197:      endiagram.doc.tar.xz
 
 %description -n texlive-endiagram
 The package provides the facility of drawing potential energy
@@ -16588,6 +16204,7 @@ Summary:        Documentation for texlive-endiagram
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endiagram and texlive-alldocumentation)
 
 %description -n texlive-endiagram-doc
 This package includes the documentation for texlive-endiagram
@@ -16649,9 +16266,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-endnotes-doc >= %{texlive_version}
 Provides:       tex(endnotes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source206:      endnotes.tar.xz
-Source207:      endnotes.doc.tar.xz
+# from 20230311
+Source198:      endnotes.tar.xz
+Source199:      endnotes.doc.tar.xz
 
 %description -n texlive-endnotes
 Accumulates notes (using the \endnote command, which can be
@@ -16665,6 +16282,7 @@ Summary:        Documentation for texlive-endnotes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endnotes and texlive-alldocumentation)
 
 %description -n texlive-endnotes-doc
 This package includes the documentation for texlive-endnotes
@@ -16728,9 +16346,9 @@ Provides:       tex(endnotes-hy.sty)
 Requires:       tex(endnotes.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source208:      endnotes-hy.tar.xz
-Source209:      endnotes-hy.doc.tar.xz
+# from 20230311
+Source200:      endnotes-hy.tar.xz
+Source201:      endnotes-hy.doc.tar.xz
 
 %description -n texlive-endnotes-hy
 The package supports the creation of hypertext links in support
@@ -16748,6 +16366,7 @@ Summary:        Documentation for texlive-endnotes-hy
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endnotes-hy and texlive-alldocumentation)
 
 %description -n texlive-endnotes-hy-doc
 This package includes the documentation for texlive-endnotes-hy
@@ -16813,9 +16432,9 @@ Requires:       tex(endnotes.sty)
 Requires:       tex(luatexja-otf.sty)
 Requires:       tex(otf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source210:      endnotesj.tar.xz
-Source211:      endnotesj.doc.tar.xz
+# from 20230311
+Source202:      endnotesj.tar.xz
+Source203:      endnotesj.doc.tar.xz
 
 %description -n texlive-endnotesj
 This package provides customized styles for endnotes to be used
@@ -16829,6 +16448,7 @@ Summary:        Documentation for texlive-endnotesj
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endnotesj and texlive-alldocumentation)
 Provides:       locale(texlive-endnotesj-doc:ja)
 
 %description -n texlive-endnotesj-doc
@@ -16895,9 +16515,9 @@ Provides:       tex(endofproofwd.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(import.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source212:      endofproofwd.tar.xz
-Source213:      endofproofwd.doc.tar.xz
+# from 20230311
+Source204:      endofproofwd.tar.xz
+Source205:      endofproofwd.doc.tar.xz
 
 %description -n texlive-endofproofwd
 This package provides an additional "end of proof" sign. The
@@ -16910,6 +16530,7 @@ Summary:        Documentation for texlive-endofproofwd
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-endofproofwd and texlive-alldocumentation)
 
 %description -n texlive-endofproofwd-doc
 This package includes the documentation for texlive-endofproofwd
@@ -16976,9 +16597,9 @@ Requires:       tex(fancyvrb.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tipa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source214:      engpron.tar.xz
-Source215:      engpron.doc.tar.xz
+# from 20230311
+Source206:      engpron.tar.xz
+Source207:      engpron.doc.tar.xz
 
 %description -n texlive-engpron
 This package provides macros beginning with the PS character,
@@ -16994,6 +16615,7 @@ Summary:        Documentation for texlive-engpron
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-engpron and texlive-alldocumentation)
 Provides:       locale(texlive-engpron-doc:fr;en)
 
 %description -n texlive-engpron-doc
@@ -17067,9 +16689,9 @@ Provides:       tex(engrec.sty)
 Requires:       tex(amstext.sty)
 Requires:       tex(upgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source216:      engrec.tar.xz
-Source217:      engrec.doc.tar.xz
+# from 20230311
+Source208:      engrec.tar.xz
+Source209:      engrec.doc.tar.xz
 
 %description -n texlive-engrec
 This package provides two macros \engrec and \EnGrec to convert
@@ -17085,6 +16707,7 @@ Summary:        Documentation for texlive-engrec
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-engrec and texlive-alldocumentation)
 
 %description -n texlive-engrec-doc
 This package includes the documentation for texlive-engrec
@@ -17146,9 +16769,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-engtlc-doc >= %{texlive_version}
 Provides:       tex(engtlc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source218:      engtlc.tar.xz
-Source219:      engtlc.doc.tar.xz
+# from 20230311
+Source210:      engtlc.tar.xz
+Source211:      engtlc.doc.tar.xz
 
 %description -n texlive-engtlc
 The package provides a wide range of abbreviations for terms
@@ -17161,6 +16784,7 @@ Summary:        Documentation for texlive-engtlc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-engtlc and texlive-alldocumentation)
 Provides:       locale(texlive-engtlc-doc:en;it)
 
 %description -n texlive-engtlc-doc
@@ -17227,9 +16851,9 @@ Provides:       tex(enigma.sty)
 Provides:       tex(enigma.tex)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source220:      enigma.tar.xz
-Source221:      enigma.doc.tar.xz
+# from 20230311
+Source212:      enigma.tar.xz
+Source213:      enigma.doc.tar.xz
 
 %description -n texlive-enigma
 The package provides historical encryption (Enigma cipher) for
@@ -17242,6 +16866,7 @@ Summary:        Documentation for texlive-enigma
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-enigma and texlive-alldocumentation)
 
 %description -n texlive-enigma-doc
 This package includes the documentation for texlive-enigma
@@ -17316,9 +16941,9 @@ Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source222:      enotez.tar.xz
-Source223:      enotez.doc.tar.xz
+# from 20230311
+Source214:      enotez.tar.xz
+Source215:      enotez.doc.tar.xz
 
 %description -n texlive-enotez
 The package allows nested endnotes, supports hyperref and
@@ -17333,6 +16958,7 @@ Summary:        Documentation for texlive-enotez
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-enotez and texlive-alldocumentation)
 
 %description -n texlive-enotez-doc
 This package includes the documentation for texlive-enotez
@@ -17395,9 +17021,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-enumitem-doc >= %{texlive_version}
 Provides:       tex(enumitem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source224:      enumitem.tar.xz
-Source225:      enumitem.doc.tar.xz
+# from 20230311
+Source216:      enumitem.tar.xz
+Source217:      enumitem.doc.tar.xz
 
 %description -n texlive-enumitem
 This package provides user control over the layout of the three
@@ -17415,6 +17041,7 @@ Summary:        Documentation for texlive-enumitem
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-enumitem and texlive-alldocumentation)
 
 %description -n texlive-enumitem-doc
 This package includes the documentation for texlive-enumitem
@@ -17487,9 +17114,9 @@ Requires:       tex(zref-counter.sty)
 Requires:       tex(zref-user.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source226:      enumitem-zref.tar.xz
-Source227:      enumitem-zref.doc.tar.xz
+# from 20230311
+Source218:      enumitem-zref.tar.xz
+Source219:      enumitem-zref.doc.tar.xz
 
 %description -n texlive-enumitem-zref
 The package is a companion for the enumitem package; it makes
@@ -17510,6 +17137,7 @@ Summary:        Documentation for texlive-enumitem-zref
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-enumitem-zref and texlive-alldocumentation)
 
 %description -n texlive-enumitem-zref-doc
 This package includes the documentation for texlive-enumitem-zref
@@ -17571,9 +17199,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-envbig-doc >= %{texlive_version}
 Provides:       tex(envbig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source228:      envbig.tar.xz
-Source229:      envbig.doc.tar.xz
+# from 20230311
+Source220:      envbig.tar.xz
+Source221:      envbig.doc.tar.xz
 
 %description -n texlive-envbig
 A simple package, that prints both 'from' and 'to' addresses.
@@ -17585,6 +17213,7 @@ Summary:        Documentation for texlive-envbig
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-envbig and texlive-alldocumentation)
 
 %description -n texlive-envbig-doc
 This package includes the documentation for texlive-envbig
@@ -17647,9 +17276,9 @@ Suggests:       texlive-environ-doc >= %{texlive_version}
 Provides:       tex(environ.sty)
 Requires:       tex(trimspaces.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source230:      environ.tar.xz
-Source231:      environ.doc.tar.xz
+# from 20230311
+Source222:      environ.tar.xz
+Source223:      environ.doc.tar.xz
 
 %description -n texlive-environ
 The package provides the \collect@body command (as in amsmath),
@@ -17667,6 +17296,7 @@ Summary:        Documentation for texlive-environ
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-environ and texlive-alldocumentation)
 
 %description -n texlive-environ-doc
 This package includes the documentation for texlive-environ
@@ -17729,9 +17359,9 @@ Provides:       tex(envlab.cfg)
 Provides:       tex(envlab.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source232:      envlab.tar.xz
-Source233:      envlab.doc.tar.xz
+# from 20230311
+Source224:      envlab.tar.xz
+Source225:      envlab.doc.tar.xz
 
 %description -n texlive-envlab
 A LaTeX package for producing mailing envelopes and labels,
@@ -17746,6 +17376,7 @@ Summary:        Documentation for texlive-envlab
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-envlab and texlive-alldocumentation)
 
 %description -n texlive-envlab-doc
 This package includes the documentation for texlive-envlab
@@ -17778,6 +17409,114 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/envlab/envlab.cfg
 %{_texmfdistdir}/tex/latex/envlab/envlab.sty
+
+%package -n texlive-eolang
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.12.1svn66274
+Release:        0
+License:        LPPL-1.0
+Summary:        Formulas and graphs for the EO programming language
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-amsfonts >= %{texlive_version}
+#!BuildIgnore: texlive-amsfonts
+Requires:       texlive-amsmath >= %{texlive_version}
+#!BuildIgnore: texlive-amsmath
+Requires:       texlive-fancyvrb >= %{texlive_version}
+#!BuildIgnore: texlive-fancyvrb
+Requires:       texlive-iexec >= %{texlive_version}
+#!BuildIgnore: texlive-iexec
+Requires:       texlive-pgf >= %{texlive_version}
+#!BuildIgnore: texlive-pgf
+Requires:       texlive-pgfopts >= %{texlive_version}
+#!BuildIgnore: texlive-pgfopts
+Requires:       texlive-stmaryrd >= %{texlive_version}
+#!BuildIgnore: texlive-stmaryrd
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun):coreutils
+Requires(postun):texlive >= %{texlive_version}
+Requires(postun):texlive-filesystem >= %{texlive_version}
+Requires(postun):texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun):texlive-kpathsea >= %{texlive_version}
+Requires(postun):texlive-scripts-bin >= %{texlive_version}
+Requires(postun):texlive-scripts >= %{texlive_version}
+Requires(posttrans):coreutils
+Requires(posttrans):ed
+Requires(posttrans):findutils
+Requires(posttrans):grep
+Requires(posttrans):sed
+Requires(posttrans):texlive >= %{texlive_version}
+Requires(posttrans):texlive-filesystem >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans):texlive-kpathsea >= %{texlive_version}
+Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans):texlive-scripts >= %{texlive_version}
+Suggests:       texlive-eolang-doc >= %{texlive_version}
+Provides:       tex(eolang.sty)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(fancyvrb.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(iexec.sty)
+Requires:       tex(ifluatex.sty)
+Requires:       tex(ifxetex.sty)
+Requires:       tex(pdftexcmds.sty)
+Requires:       tex(pgfopts.sty)
+Requires:       tex(stmaryrd.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(trimclip.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
+# from 20230311
+Source226:      eolang.tar.xz
+Source227:      eolang.doc.tar.xz
+
+%description -n texlive-eolang
+This LaTeX package helps you write [?] -calculus formulas and
+SODG graphs for the EO programming language.
+
+%package -n texlive-eolang-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.12.1svn66274
+Release:        0
+Summary:        Documentation for texlive-eolang
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eolang and texlive-alldocumentation)
+
+%description -n texlive-eolang-doc
+This package includes the documentation for texlive-eolang
+
+%post -n texlive-eolang
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-eolang
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-eolang
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-eolang-doc
+%defattr(-,root,root,755)
+%{_texmfdistdir}/doc/latex/eolang/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/eolang/LICENSE.txt
+%{_texmfdistdir}/doc/latex/eolang/README.md
+%{_texmfdistdir}/doc/latex/eolang/cactus.pdf
+%{_texmfdistdir}/doc/latex/eolang/eolang.bib
+%{_texmfdistdir}/doc/latex/eolang/eolang.pdf
+
+%files -n texlive-eolang
+%defattr(-,root,root,755)
+%{_texmfdistdir}/tex/latex/eolang/eolang.sty
 
 %package -n texlive-epigrafica
 Version:        %{texlive_version}.%{texlive_noarch}.1.01svn17210
@@ -17868,9 +17607,9 @@ Provides:       tex(lgrepigrafica.fd)
 Provides:       tex(ot1epigrafica.fd)
 Requires:       tex(pxfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source234:      epigrafica.tar.xz
-Source235:      epigrafica.doc.tar.xz
+# from 20230311
+Source228:      epigrafica.tar.xz
+Source229:      epigrafica.doc.tar.xz
 
 %description -n texlive-epigrafica
 Epigrafica is forked from the development of the MgOpen font
@@ -17886,6 +17625,7 @@ Summary:        Documentation for texlive-epigrafica
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epigrafica and texlive-alldocumentation)
 
 %description -n texlive-epigrafica-doc
 This package includes the documentation for texlive-epigrafica
@@ -17900,9 +17640,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-epigrafica-fonts
 The  separated fonts package for texlive-epigrafica
@@ -17999,9 +17737,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-epigrafica
 %{_datadir}/fontconfig/conf.avail/58-texlive-epigrafica.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-epigrafica/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-epigrafica/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-epigrafica/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-epigrafica/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-epigrafica/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-epigrafica/fonts.scale
 %{_datadir}/fonts/texlive-epigrafica/Epigrafica-Entona.pfb
 %{_datadir}/fonts/texlive-epigrafica/Epigrafica-EntonaReonta.pfb
 %{_datadir}/fonts/texlive-epigrafica/Epigrafica-Ortha.pfb
@@ -18037,8 +17775,8 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(epigram.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source236:      epigram.tar.xz
+# from 20230311
+Source230:      epigram.tar.xz
 
 %description -n texlive-epigram
 The package determines (on the basis of the width of the text
@@ -18097,9 +17835,9 @@ Suggests:       texlive-epigraph-doc >= %{texlive_version}
 Provides:       tex(epigraph.sty)
 Requires:       tex(nextpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source237:      epigraph.tar.xz
-Source238:      epigraph.doc.tar.xz
+# from 20230311
+Source231:      epigraph.tar.xz
+Source232:      epigraph.doc.tar.xz
 
 %description -n texlive-epigraph
 Epigraphs are the pithy quotations often found at the start (or
@@ -18113,6 +17851,7 @@ Summary:        Documentation for texlive-epigraph
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epigraph and texlive-alldocumentation)
 
 %description -n texlive-epigraph-doc
 This package includes the documentation for texlive-epigraph
@@ -18177,9 +17916,9 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source239:      epigraph-keys.tar.xz
-Source240:      epigraph-keys.doc.tar.xz
+# from 20230311
+Source233:      epigraph-keys.tar.xz
+Source234:      epigraph-keys.doc.tar.xz
 
 %description -n texlive-epigraph-keys
 This package lays out epigraphs: quotations across a page,
@@ -18195,6 +17934,7 @@ Summary:        Documentation for texlive-epigraph-keys
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epigraph-keys and texlive-alldocumentation)
 
 %description -n texlive-epigraph-keys-doc
 This package includes the documentation for texlive-epigraph-keys
@@ -18270,9 +18010,9 @@ Provides:       tex(EpiOlmec.tfm)
 Provides:       tex(epiolmec.map)
 Provides:       tex(epiolmec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source241:      epiolmec.tar.xz
-Source242:      epiolmec.doc.tar.xz
+# from 20230311
+Source235:      epiolmec.tar.xz
+Source236:      epiolmec.doc.tar.xz
 
 %description -n texlive-epiolmec
 The package contains all the necessary files to typeset
@@ -18286,6 +18026,7 @@ Summary:        Documentation for texlive-epiolmec
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epiolmec and texlive-alldocumentation)
 
 %description -n texlive-epiolmec-doc
 This package includes the documentation for texlive-epiolmec
@@ -18300,9 +18041,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-epiolmec-fonts
 The  separated fonts package for texlive-epiolmec
@@ -18343,13 +18082,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-epiolmec
 %{_datadir}/fontconfig/conf.avail/58-texlive-epiolmec.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-epiolmec/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-epiolmec/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-epiolmec/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-epiolmec/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-epiolmec/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-epiolmec/fonts.scale
 %{_datadir}/fonts/texlive-epiolmec/Epi-Olmec.pfb
 
 %package -n texlive-eplain
-Version:        %{texlive_version}.%{texlive_noarch}.3.11svn62145
+Version:        %{texlive_version}.%{texlive_noarch}.3.13svn64721
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Extended plain TeX macros
@@ -18437,9 +18176,9 @@ Provides:       tex(arrow.tex)
 Provides:       tex(btxmac.tex)
 Provides:       tex(eplain.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source243:      eplain.tar.xz
-Source244:      eplain.doc.tar.xz
+# from 20230311
+Source237:      eplain.tar.xz
+Source238:      eplain.doc.tar.xz
 
 %description -n texlive-eplain
 An extended version of the plain TeX format, adding support for
@@ -18452,12 +18191,13 @@ color, autopict (a package instance of the LaTeX picture code),
 psfrag, and url.
 
 %package -n texlive-eplain-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.11svn62145
+Version:        %{texlive_version}.%{texlive_noarch}.3.13svn64721
 Release:        0
 Summary:        Documentation for texlive-eplain
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eplain and texlive-alldocumentation)
 Provides:       man(eplain.1)
 Requires(preun):%install_info_prereq
 Requires(post): %install_info_prereq
@@ -18663,9 +18403,9 @@ Provides:       tex(epsdice.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source245:      epsdice.tar.xz
-Source246:      epsdice.doc.tar.xz
+# from 20230311
+Source239:      epsdice.tar.xz
+Source240:      epsdice.doc.tar.xz
 
 %description -n texlive-epsdice
 The epsdice package defines a single command \epsdice that
@@ -18681,6 +18421,7 @@ Summary:        Documentation for texlive-epsdice
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epsdice and texlive-alldocumentation)
 
 %description -n texlive-epsdice-doc
 This package includes the documentation for texlive-epsdice
@@ -18747,9 +18488,9 @@ Suggests:       texlive-epsf-doc >= %{texlive_version}
 Provides:       tex(epsf.sty)
 Provides:       tex(epsf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source247:      epsf.tar.xz
-Source248:      epsf.doc.tar.xz
+# from 20230311
+Source241:      epsf.tar.xz
+Source242:      epsf.doc.tar.xz
 
 %description -n texlive-epsf
 The original (and now obsolescent) graphics inclusion macros
@@ -18767,6 +18508,7 @@ Summary:        Documentation for texlive-epsf
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epsf and texlive-alldocumentation)
 
 %description -n texlive-epsf-doc
 This package includes the documentation for texlive-epsf
@@ -18843,9 +18585,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-epsf-dvipdfmx-doc >= %{texlive_version}
 Provides:       tex(epsf-dvipdfmx.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source249:      epsf-dvipdfmx.tar.xz
-Source250:      epsf-dvipdfmx.doc.tar.xz
+# from 20230311
+Source243:      epsf-dvipdfmx.tar.xz
+Source244:      epsf-dvipdfmx.doc.tar.xz
 
 %description -n texlive-epsf-dvipdfmx
 epsf-dvipdfmx.tex is a plain TeX file to be \input after
@@ -18861,6 +18603,7 @@ Summary:        Documentation for texlive-epsf-dvipdfmx
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epsf-dvipdfmx and texlive-alldocumentation)
 
 %description -n texlive-epsf-dvipdfmx-doc
 This package includes the documentation for texlive-epsf-dvipdfmx
@@ -18921,9 +18664,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-epsincl-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source251:      epsincl.tar.xz
-Source252:      epsincl.doc.tar.xz
+# from 20230311
+Source245:      epsincl.tar.xz
+Source246:      epsincl.doc.tar.xz
 
 %description -n texlive-epsincl
 The package facilitates including EPS files in MetaPost
@@ -18936,6 +18679,7 @@ Summary:        Documentation for texlive-epsincl
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epsincl and texlive-alldocumentation)
 
 %description -n texlive-epsincl-doc
 This package includes the documentation for texlive-epsincl
@@ -18998,8 +18742,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source253:      epslatex-fr.doc.tar.xz
+# from 20230311
+Source247:      epslatex-fr.doc.tar.xz
 
 %description -n texlive-epslatex-fr
 This is the French translation of epslatex, and describes how
@@ -19086,7 +18830,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/epslatex-fr/xb.sty
 
 %package -n texlive-epspdf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.5svn53472
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.5.1svn66115
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Converter for PostScript, EPS and PDF
@@ -19116,9 +18860,9 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-epspdf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source254:      epspdf.tar.xz
-Source255:      epspdf.doc.tar.xz
+# from 20230311
+Source248:      epspdf.tar.xz
+Source249:      epspdf.doc.tar.xz
 
 %description -n texlive-epspdf
 Epspdftk.tcl is a GUI ps/eps/pdf converter. Epspdf.tlu, its
@@ -19128,12 +18872,13 @@ conversion options are made possible by converting in multiple
 steps.
 
 %package -n texlive-epspdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.5svn53472
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.5.1svn66115
 Release:        0
 Summary:        Documentation for texlive-epspdf
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epspdf and texlive-alldocumentation)
 Requires(preun):%install_info_prereq
 Requires(post): %install_info_prereq
 
@@ -19221,9 +18966,9 @@ Requires:       tex(epstopdf-base.sty)
 Requires:       tex(graphics.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source256:      epspdfconversion.tar.xz
-Source257:      epspdfconversion.doc.tar.xz
+# from 20230311
+Source250:      epspdfconversion.tar.xz
+Source251:      epspdfconversion.doc.tar.xz
 
 %description -n texlive-epspdfconversion
 The package calls the epstopdf package to convert EPS graphics
@@ -19238,6 +18983,7 @@ Summary:        Documentation for texlive-epspdfconversion
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epspdfconversion and texlive-alldocumentation)
 
 %description -n texlive-epspdfconversion-doc
 This package includes the documentation for texlive-epspdfconversion
@@ -19273,7 +19019,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/epspdfconversion/epspdfconversion.sty
 
 %package -n texlive-epstopdf
-Version:        %{texlive_version}.%{texlive_noarch}.2.28svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.2.31svn66461
 Release:        0
 License:        LPPL-1.0
 Summary:        Convert EPS to PDF using Ghostscript
@@ -19310,9 +19056,9 @@ Requires:       perl(File::Temp)
 Requires:       perl(Getopt::Long)
 #!BuildIgnore:  perl(Getopt::Long)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source258:      epstopdf.tar.xz
-Source259:      epstopdf.doc.tar.xz
+# from 20230311
+Source252:      epstopdf.tar.xz
+Source253:      epstopdf.doc.tar.xz
 
 %description -n texlive-epstopdf
 Epstopdf is a Perl script that converts an EPS file to an
@@ -19329,12 +19075,13 @@ fly", thus giving the illusion that pdfLaTeX is accepting EPS
 graphic files.
 
 %package -n texlive-epstopdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.28svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.2.31svn66461
 Release:        0
 Summary:        Documentation for texlive-epstopdf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epstopdf and texlive-alldocumentation)
 Provides:       man(epstopdf.1)
 Provides:       man(repstopdf.1)
 
@@ -19403,9 +19150,9 @@ Requires:       tex(infwarerr.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source260:      epstopdf-pkg.tar.xz
-Source261:      epstopdf-pkg.doc.tar.xz
+# from 20230311
+Source254:      epstopdf-pkg.tar.xz
+Source255:      epstopdf-pkg.doc.tar.xz
 
 %description -n texlive-epstopdf-pkg
 The package adds support for EPS files in the graphicx package
@@ -19421,6 +19168,7 @@ Summary:        Documentation for texlive-epstopdf-pkg
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-epstopdf-pkg and texlive-alldocumentation)
 
 %description -n texlive-epstopdf-pkg-doc
 This package includes the documentation for texlive-epstopdf-pkg
@@ -19482,9 +19230,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-eq-pin2corr-doc >= %{texlive_version}
 Provides:       tex(eq-pin2corr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source262:      eq-pin2corr.tar.xz
-Source263:      eq-pin2corr.doc.tar.xz
+# from 20230311
+Source256:      eq-pin2corr.tar.xz
+Source257:      eq-pin2corr.doc.tar.xz
 
 %description -n texlive-eq-pin2corr
 This package is an add-on to the quiz environment of the
@@ -19503,6 +19251,7 @@ Summary:        Documentation for texlive-eq-pin2corr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eq-pin2corr and texlive-alldocumentation)
 
 %description -n texlive-eq-pin2corr-doc
 This package includes the documentation for texlive-eq-pin2corr
@@ -19572,9 +19321,9 @@ Suggests:       texlive-eqell-doc >= %{texlive_version}
 Provides:       tex(eqell.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source264:      eqell.tar.xz
-Source265:      eqell.doc.tar.xz
+# from 20230311
+Source258:      eqell.tar.xz
+Source259:      eqell.doc.tar.xz
 
 %description -n texlive-eqell
 The package provides commands that give a well-spaced ellipsis
@@ -19587,6 +19336,7 @@ Summary:        Documentation for texlive-eqell
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqell and texlive-alldocumentation)
 
 %description -n texlive-eqell-doc
 This package includes the documentation for texlive-eqell
@@ -19619,7 +19369,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/eqell/eqell.sty
 
 %package -n texlive-eqexpl
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54080
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn63629
 Release:        0
 License:        LPPL-1.0
 Summary:        Align explanations for formulas
@@ -19651,9 +19401,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source266:      eqexpl.tar.xz
-Source267:      eqexpl.doc.tar.xz
+# from 20230311
+Source260:      eqexpl.tar.xz
+Source261:      eqexpl.doc.tar.xz
 
 %description -n texlive-eqexpl
 This package was developed in response to a question on
@@ -19662,12 +19412,13 @@ perfectly formatted explanation of components of a formula. The
 package depends on calc, etoolbox, and xparse.
 
 %package -n texlive-eqexpl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn54080
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn63629
 Release:        0
 Summary:        Documentation for texlive-eqexpl
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqexpl and texlive-alldocumentation)
 Provides:       locale(texlive-eqexpl-doc:ru)
 
 %description -n texlive-eqexpl-doc
@@ -19732,9 +19483,9 @@ Suggests:       texlive-eqlist-doc >= %{texlive_version}
 Provides:       tex(eqlist.sty)
 Requires:       tex(eqparbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source268:      eqlist.tar.xz
-Source269:      eqlist.doc.tar.xz
+# from 20230311
+Source262:      eqlist.tar.xz
+Source263:      eqlist.doc.tar.xz
 
 %description -n texlive-eqlist
 This package provides a list environment which sets a
@@ -19748,6 +19499,7 @@ Summary:        Documentation for texlive-eqlist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqlist and texlive-alldocumentation)
 
 %description -n texlive-eqlist-doc
 This package includes the documentation for texlive-eqlist
@@ -19810,9 +19562,9 @@ Suggests:       texlive-eqnalign-doc >= %{texlive_version}
 Provides:       tex(eqnalign.sty)
 Requires:       tex(amsmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source270:      eqnalign.tar.xz
-Source271:      eqnalign.doc.tar.xz
+# from 20230311
+Source264:      eqnalign.tar.xz
+Source265:      eqnalign.doc.tar.xz
 
 %description -n texlive-eqnalign
 The package makes eqnarray environment behave like align from
@@ -19827,6 +19579,7 @@ Summary:        Documentation for texlive-eqnalign
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqnalign and texlive-alldocumentation)
 
 %description -n texlive-eqnalign-doc
 This package includes the documentation for texlive-eqnalign
@@ -19886,8 +19639,8 @@ Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 Provides:       tex(eqname.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source272:      eqname.tar.xz
+# from 20230311
+Source266:      eqname.tar.xz
 
 %description -n texlive-eqname
 The \eqname command provides a name tag for the current
@@ -19946,9 +19699,9 @@ Suggests:       texlive-eqnarray-doc >= %{texlive_version}
 Provides:       tex(eqnarray.sty)
 Requires:       tex(array.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source273:      eqnarray.tar.xz
-Source274:      eqnarray.doc.tar.xz
+# from 20230311
+Source267:      eqnarray.tar.xz
+Source268:      eqnarray.doc.tar.xz
 
 %description -n texlive-eqnarray
 Defines an equationarray environment, that allows more than
@@ -19964,6 +19717,7 @@ Summary:        Documentation for texlive-eqnarray
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqnarray and texlive-alldocumentation)
 
 %description -n texlive-eqnarray-doc
 This package includes the documentation for texlive-eqnarray
@@ -20030,9 +19784,9 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source275:      eqnnumwarn.tar.xz
-Source276:      eqnnumwarn.doc.tar.xz
+# from 20230311
+Source269:      eqnnumwarn.tar.xz
+Source270:      eqnnumwarn.doc.tar.xz
 
 %description -n texlive-eqnnumwarn
 Sometimes an equation is too long that an equation number will
@@ -20048,6 +19802,7 @@ Summary:        Documentation for texlive-eqnnumwarn
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqnnumwarn and texlive-alldocumentation)
 
 %description -n texlive-eqnnumwarn-doc
 This package includes the documentation for texlive-eqnnumwarn
@@ -20111,9 +19866,9 @@ Provides:       tex(eqparbox.sty)
 Requires:       tex(array.sty)
 Requires:       tex(environ.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source277:      eqparbox.tar.xz
-Source278:      eqparbox.doc.tar.xz
+# from 20230311
+Source271:      eqparbox.tar.xz
+Source272:      eqparbox.doc.tar.xz
 
 %description -n texlive-eqparbox
 LaTeX users sometimes need to ensure that two or more blocks of
@@ -20135,6 +19890,7 @@ Summary:        Documentation for texlive-eqparbox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-eqparbox and texlive-alldocumentation)
 
 %description -n texlive-eqparbox-doc
 This package includes the documentation for texlive-eqparbox
@@ -20206,9 +19962,9 @@ Requires:       tex(natbib.sty)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source279:      erdc.tar.xz
-Source280:      erdc.doc.tar.xz
+# from 20230311
+Source273:      erdc.tar.xz
+Source274:      erdc.doc.tar.xz
 
 %description -n texlive-erdc
 A class for typesetting Technical Information Reports of the
@@ -20224,6 +19980,7 @@ Summary:        Documentation for texlive-erdc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-erdc and texlive-alldocumentation)
 
 %description -n texlive-erdc-doc
 This package includes the documentation for texlive-erdc
@@ -20262,7 +20019,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/erdc/erdc.cls
 
 %package -n texlive-erewhon
-Version:        %{texlive_version}.%{texlive_noarch}.1.119svn61835
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn63312
 Release:        0
 License:        OFL-1.1
 Summary:        Font package derived from Heuristica and Utopia
@@ -20302,6 +20059,7 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Requires:       texlive-erewhon-fonts >= %{texlive_version}
 Suggests:       texlive-erewhon-doc >= %{texlive_version}
 Provides:       tex(Erewhon-Bold-dnom-ly1.tfm)
+Provides:       tex(Erewhon-Bold-dnom-ot1.tfm)
 Provides:       tex(Erewhon-Bold-dnom-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-dnom-t1.tfm)
 Provides:       tex(Erewhon-Bold-dnom-t1.vf)
@@ -20309,6 +20067,7 @@ Provides:       tex(Erewhon-Bold-dnom-t2a.tfm)
 Provides:       tex(Erewhon-Bold-dnom-t2b.tfm)
 Provides:       tex(Erewhon-Bold-dnom-t2c.tfm)
 Provides:       tex(Erewhon-Bold-inf-ly1.tfm)
+Provides:       tex(Erewhon-Bold-inf-ot1.tfm)
 Provides:       tex(Erewhon-Bold-inf-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-inf-t1.tfm)
 Provides:       tex(Erewhon-Bold-inf-t1.vf)
@@ -20316,18 +20075,25 @@ Provides:       tex(Erewhon-Bold-inf-t2a.tfm)
 Provides:       tex(Erewhon-Bold-inf-t2b.tfm)
 Provides:       tex(Erewhon-Bold-inf-t2c.tfm)
 Provides:       tex(Erewhon-Bold-lf-ly1.tfm)
+Provides:       tex(Erewhon-Bold-lf-ot1.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-ly1.vf)
+Provides:       tex(Erewhon-Bold-lf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Bold-lf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Bold-lf-sc-ot1.vf)
 Provides:       tex(Erewhon-Bold-lf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-t1.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-t1.vf)
 Provides:       tex(Erewhon-Bold-lf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-t2a.tfm)
+Provides:       tex(Erewhon-Bold-lf-sc-t2a.vf)
 Provides:       tex(Erewhon-Bold-lf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-t2b.tfm)
+Provides:       tex(Erewhon-Bold-lf-sc-t2b.vf)
 Provides:       tex(Erewhon-Bold-lf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-sc-t2c.tfm)
+Provides:       tex(Erewhon-Bold-lf-sc-t2c.vf)
 Provides:       tex(Erewhon-Bold-lf-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-t1.tfm)
 Provides:       tex(Erewhon-Bold-lf-t1.vf)
@@ -20338,6 +20104,7 @@ Provides:       tex(Erewhon-Bold-lf-ts1--base.tfm)
 Provides:       tex(Erewhon-Bold-lf-ts1.tfm)
 Provides:       tex(Erewhon-Bold-lf-ts1.vf)
 Provides:       tex(Erewhon-Bold-numr-ly1.tfm)
+Provides:       tex(Erewhon-Bold-numr-ot1.tfm)
 Provides:       tex(Erewhon-Bold-numr-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-numr-t1.tfm)
 Provides:       tex(Erewhon-Bold-numr-t1.vf)
@@ -20345,18 +20112,25 @@ Provides:       tex(Erewhon-Bold-numr-t2a.tfm)
 Provides:       tex(Erewhon-Bold-numr-t2b.tfm)
 Provides:       tex(Erewhon-Bold-numr-t2c.tfm)
 Provides:       tex(Erewhon-Bold-osf-ly1.tfm)
+Provides:       tex(Erewhon-Bold-osf-ot1.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-ly1.vf)
+Provides:       tex(Erewhon-Bold-osf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Bold-osf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Bold-osf-sc-ot1.vf)
 Provides:       tex(Erewhon-Bold-osf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-t1.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-t1.vf)
 Provides:       tex(Erewhon-Bold-osf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-t2a.tfm)
+Provides:       tex(Erewhon-Bold-osf-sc-t2a.vf)
 Provides:       tex(Erewhon-Bold-osf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-t2b.tfm)
+Provides:       tex(Erewhon-Bold-osf-sc-t2b.vf)
 Provides:       tex(Erewhon-Bold-osf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-sc-t2c.tfm)
+Provides:       tex(Erewhon-Bold-osf-sc-t2c.vf)
 Provides:       tex(Erewhon-Bold-osf-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-t1.tfm)
 Provides:       tex(Erewhon-Bold-osf-t1.vf)
@@ -20367,6 +20141,7 @@ Provides:       tex(Erewhon-Bold-osf-ts1--base.tfm)
 Provides:       tex(Erewhon-Bold-osf-ts1.tfm)
 Provides:       tex(Erewhon-Bold-osf-ts1.vf)
 Provides:       tex(Erewhon-Bold-sup-ly1.tfm)
+Provides:       tex(Erewhon-Bold-sup-ot1.tfm)
 Provides:       tex(Erewhon-Bold-sup-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-sup-t1.tfm)
 Provides:       tex(Erewhon-Bold-sup-t1.vf)
@@ -20374,19 +20149,26 @@ Provides:       tex(Erewhon-Bold-sup-t2a.tfm)
 Provides:       tex(Erewhon-Bold-sup-t2b.tfm)
 Provides:       tex(Erewhon-Bold-sup-t2c.tfm)
 Provides:       tex(Erewhon-Bold-tlf-ly1.tfm)
+Provides:       tex(Erewhon-Bold-tlf-ot1.tfm)
 Provides:       tex(Erewhon-Bold-tlf-ot2.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-ly1.vf)
+Provides:       tex(Erewhon-Bold-tlf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Bold-tlf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Bold-tlf-sc-ot1.vf)
 Provides:       tex(Erewhon-Bold-tlf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-t1.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-t1.vf)
 Provides:       tex(Erewhon-Bold-tlf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-t2a.tfm)
+Provides:       tex(Erewhon-Bold-tlf-sc-t2a.vf)
 Provides:       tex(Erewhon-Bold-tlf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-t2b.tfm)
+Provides:       tex(Erewhon-Bold-tlf-sc-t2b.vf)
 Provides:       tex(Erewhon-Bold-tlf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-sc-t2c.tfm)
+Provides:       tex(Erewhon-Bold-tlf-sc-t2c.vf)
 Provides:       tex(Erewhon-Bold-tlf-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-t1.tfm)
 Provides:       tex(Erewhon-Bold-tlf-t1.vf)
@@ -20397,18 +20179,25 @@ Provides:       tex(Erewhon-Bold-tlf-ts1--base.tfm)
 Provides:       tex(Erewhon-Bold-tlf-ts1.tfm)
 Provides:       tex(Erewhon-Bold-tlf-ts1.vf)
 Provides:       tex(Erewhon-Bold-tosf-ly1.tfm)
+Provides:       tex(Erewhon-Bold-tosf-ot1.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-ly1.vf)
+Provides:       tex(Erewhon-Bold-tosf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Bold-tosf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Bold-tosf-sc-ot1.vf)
 Provides:       tex(Erewhon-Bold-tosf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-t1.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-t1.vf)
 Provides:       tex(Erewhon-Bold-tosf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-t2a.tfm)
+Provides:       tex(Erewhon-Bold-tosf-sc-t2a.vf)
 Provides:       tex(Erewhon-Bold-tosf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-t2b.tfm)
+Provides:       tex(Erewhon-Bold-tosf-sc-t2b.vf)
 Provides:       tex(Erewhon-Bold-tosf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-sc-t2c.tfm)
+Provides:       tex(Erewhon-Bold-tosf-sc-t2c.vf)
 Provides:       tex(Erewhon-Bold-tosf-t1--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-t1.tfm)
 Provides:       tex(Erewhon-Bold-tosf-t1.vf)
@@ -20419,6 +20208,7 @@ Provides:       tex(Erewhon-Bold-tosf-ts1--base.tfm)
 Provides:       tex(Erewhon-Bold-tosf-ts1.tfm)
 Provides:       tex(Erewhon-Bold-tosf-ts1.vf)
 Provides:       tex(Erewhon-BoldItalic-dnom-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-dnom-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-dnom-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-dnom-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-dnom-t1.vf)
@@ -20426,6 +20216,7 @@ Provides:       tex(Erewhon-BoldItalic-dnom-t2a.tfm)
 Provides:       tex(Erewhon-BoldItalic-dnom-t2b.tfm)
 Provides:       tex(Erewhon-BoldItalic-dnom-t2c.tfm)
 Provides:       tex(Erewhon-BoldItalic-inf-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-inf-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-inf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-inf-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-inf-t1.vf)
@@ -20433,18 +20224,25 @@ Provides:       tex(Erewhon-BoldItalic-inf-t2a.tfm)
 Provides:       tex(Erewhon-BoldItalic-inf-t2b.tfm)
 Provides:       tex(Erewhon-BoldItalic-inf-t2c.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-lf-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldItalic-lf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldItalic-lf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldItalic-lf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldItalic-lf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldItalic-lf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldItalic-lf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldItalic-lf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-t1.vf)
@@ -20455,6 +20253,7 @@ Provides:       tex(Erewhon-BoldItalic-lf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-ts1.tfm)
 Provides:       tex(Erewhon-BoldItalic-lf-ts1.vf)
 Provides:       tex(Erewhon-BoldItalic-numr-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-numr-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-numr-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-numr-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-numr-t1.vf)
@@ -20462,18 +20261,25 @@ Provides:       tex(Erewhon-BoldItalic-numr-t2a.tfm)
 Provides:       tex(Erewhon-BoldItalic-numr-t2b.tfm)
 Provides:       tex(Erewhon-BoldItalic-numr-t2c.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-osf-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldItalic-osf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldItalic-osf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldItalic-osf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldItalic-osf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldItalic-osf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldItalic-osf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-t1.vf)
@@ -20484,6 +20290,7 @@ Provides:       tex(Erewhon-BoldItalic-osf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-ts1.tfm)
 Provides:       tex(Erewhon-BoldItalic-osf-ts1.vf)
 Provides:       tex(Erewhon-BoldItalic-sup-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-sup-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-sup-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-sup-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-sup-t1.vf)
@@ -20491,19 +20298,26 @@ Provides:       tex(Erewhon-BoldItalic-sup-t2a.tfm)
 Provides:       tex(Erewhon-BoldItalic-sup-t2b.tfm)
 Provides:       tex(Erewhon-BoldItalic-sup-t2c.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-tlf-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-ot2.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldItalic-tlf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldItalic-tlf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldItalic-tlf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldItalic-tlf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldItalic-tlf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-t1.vf)
@@ -20514,18 +20328,25 @@ Provides:       tex(Erewhon-BoldItalic-tlf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-ts1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tlf-ts1.vf)
 Provides:       tex(Erewhon-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(Erewhon-BoldItalic-tosf-ot1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldItalic-tosf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldItalic-tosf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldItalic-tosf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldItalic-tosf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldItalic-tosf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-t1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-t1.vf)
@@ -20536,6 +20357,7 @@ Provides:       tex(Erewhon-BoldItalic-tosf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-ts1.tfm)
 Provides:       tex(Erewhon-BoldItalic-tosf-ts1.vf)
 Provides:       tex(Erewhon-BoldSlanted-dnom-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-dnom-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-dnom-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-dnom-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-dnom-t1.vf)
@@ -20543,6 +20365,7 @@ Provides:       tex(Erewhon-BoldSlanted-dnom-t2a.tfm)
 Provides:       tex(Erewhon-BoldSlanted-dnom-t2b.tfm)
 Provides:       tex(Erewhon-BoldSlanted-dnom-t2c.tfm)
 Provides:       tex(Erewhon-BoldSlanted-inf-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-inf-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-inf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-inf-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-inf-t1.vf)
@@ -20550,18 +20373,25 @@ Provides:       tex(Erewhon-BoldSlanted-inf-t2a.tfm)
 Provides:       tex(Erewhon-BoldSlanted-inf-t2b.tfm)
 Provides:       tex(Erewhon-BoldSlanted-inf-t2c.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-lf-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldSlanted-lf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldSlanted-lf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-lf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldSlanted-lf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldSlanted-lf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-t1.vf)
@@ -20572,6 +20402,7 @@ Provides:       tex(Erewhon-BoldSlanted-lf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-ts1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-lf-ts1.vf)
 Provides:       tex(Erewhon-BoldSlanted-numr-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-numr-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-numr-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-numr-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-numr-t1.vf)
@@ -20579,18 +20410,25 @@ Provides:       tex(Erewhon-BoldSlanted-numr-t2a.tfm)
 Provides:       tex(Erewhon-BoldSlanted-numr-t2b.tfm)
 Provides:       tex(Erewhon-BoldSlanted-numr-t2c.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-osf-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldSlanted-osf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldSlanted-osf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-osf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldSlanted-osf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldSlanted-osf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-t1.vf)
@@ -20601,6 +20439,7 @@ Provides:       tex(Erewhon-BoldSlanted-osf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-ts1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-osf-ts1.vf)
 Provides:       tex(Erewhon-BoldSlanted-sup-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-sup-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-sup-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-sup-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-sup-t1.vf)
@@ -20608,19 +20447,26 @@ Provides:       tex(Erewhon-BoldSlanted-sup-t2a.tfm)
 Provides:       tex(Erewhon-BoldSlanted-sup-t2b.tfm)
 Provides:       tex(Erewhon-BoldSlanted-sup-t2c.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tlf-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-ot2.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldSlanted-tlf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tlf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tlf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tlf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldSlanted-tlf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-t1.vf)
@@ -20631,18 +20477,25 @@ Provides:       tex(Erewhon-BoldSlanted-tlf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-ts1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tlf-ts1.vf)
 Provides:       tex(Erewhon-BoldSlanted-tosf-ly1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tosf-ot1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-ly1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-ly1.vf)
+Provides:       tex(Erewhon-BoldSlanted-tosf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tosf-sc-ot1.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tosf-sc-ot1.vf)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t1.vf)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2a--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2a.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2a.vf)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2b--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2b.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2b.vf)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2c--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2c.tfm)
+Provides:       tex(Erewhon-BoldSlanted-tosf-sc-t2c.vf)
 Provides:       tex(Erewhon-BoldSlanted-tosf-t1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-t1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-t1.vf)
@@ -20653,6 +20506,7 @@ Provides:       tex(Erewhon-BoldSlanted-tosf-ts1--base.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-ts1.tfm)
 Provides:       tex(Erewhon-BoldSlanted-tosf-ts1.vf)
 Provides:       tex(Erewhon-Italic-dnom-ly1.tfm)
+Provides:       tex(Erewhon-Italic-dnom-ot1.tfm)
 Provides:       tex(Erewhon-Italic-dnom-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-dnom-t1.tfm)
 Provides:       tex(Erewhon-Italic-dnom-t1.vf)
@@ -20660,6 +20514,7 @@ Provides:       tex(Erewhon-Italic-dnom-t2a.tfm)
 Provides:       tex(Erewhon-Italic-dnom-t2b.tfm)
 Provides:       tex(Erewhon-Italic-dnom-t2c.tfm)
 Provides:       tex(Erewhon-Italic-inf-ly1.tfm)
+Provides:       tex(Erewhon-Italic-inf-ot1.tfm)
 Provides:       tex(Erewhon-Italic-inf-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-inf-t1.tfm)
 Provides:       tex(Erewhon-Italic-inf-t1.vf)
@@ -20667,9 +20522,13 @@ Provides:       tex(Erewhon-Italic-inf-t2a.tfm)
 Provides:       tex(Erewhon-Italic-inf-t2b.tfm)
 Provides:       tex(Erewhon-Italic-inf-t2c.tfm)
 Provides:       tex(Erewhon-Italic-lf-ly1.tfm)
+Provides:       tex(Erewhon-Italic-lf-ot1.tfm)
 Provides:       tex(Erewhon-Italic-lf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Italic-lf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Italic-lf-sc-ly1.vf)
+Provides:       tex(Erewhon-Italic-lf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Italic-lf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Italic-lf-sc-ot1.vf)
 Provides:       tex(Erewhon-Italic-lf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-lf-sc-t1.tfm)
 Provides:       tex(Erewhon-Italic-lf-sc-t1.vf)
@@ -20692,6 +20551,7 @@ Provides:       tex(Erewhon-Italic-lf-ts1--base.tfm)
 Provides:       tex(Erewhon-Italic-lf-ts1.tfm)
 Provides:       tex(Erewhon-Italic-lf-ts1.vf)
 Provides:       tex(Erewhon-Italic-numr-ly1.tfm)
+Provides:       tex(Erewhon-Italic-numr-ot1.tfm)
 Provides:       tex(Erewhon-Italic-numr-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-numr-t1.tfm)
 Provides:       tex(Erewhon-Italic-numr-t1.vf)
@@ -20699,9 +20559,13 @@ Provides:       tex(Erewhon-Italic-numr-t2a.tfm)
 Provides:       tex(Erewhon-Italic-numr-t2b.tfm)
 Provides:       tex(Erewhon-Italic-numr-t2c.tfm)
 Provides:       tex(Erewhon-Italic-osf-ly1.tfm)
+Provides:       tex(Erewhon-Italic-osf-ot1.tfm)
 Provides:       tex(Erewhon-Italic-osf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Italic-osf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Italic-osf-sc-ly1.vf)
+Provides:       tex(Erewhon-Italic-osf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Italic-osf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Italic-osf-sc-ot1.vf)
 Provides:       tex(Erewhon-Italic-osf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-osf-sc-t1.tfm)
 Provides:       tex(Erewhon-Italic-osf-sc-t1.vf)
@@ -20724,6 +20588,7 @@ Provides:       tex(Erewhon-Italic-osf-ts1--base.tfm)
 Provides:       tex(Erewhon-Italic-osf-ts1.tfm)
 Provides:       tex(Erewhon-Italic-osf-ts1.vf)
 Provides:       tex(Erewhon-Italic-sup-ly1.tfm)
+Provides:       tex(Erewhon-Italic-sup-ot1.tfm)
 Provides:       tex(Erewhon-Italic-sup-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-sup-t1.tfm)
 Provides:       tex(Erewhon-Italic-sup-t1.vf)
@@ -20731,10 +20596,14 @@ Provides:       tex(Erewhon-Italic-sup-t2a.tfm)
 Provides:       tex(Erewhon-Italic-sup-t2b.tfm)
 Provides:       tex(Erewhon-Italic-sup-t2c.tfm)
 Provides:       tex(Erewhon-Italic-tlf-ly1.tfm)
+Provides:       tex(Erewhon-Italic-tlf-ot1.tfm)
 Provides:       tex(Erewhon-Italic-tlf-ot2.tfm)
 Provides:       tex(Erewhon-Italic-tlf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Italic-tlf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Italic-tlf-sc-ly1.vf)
+Provides:       tex(Erewhon-Italic-tlf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Italic-tlf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Italic-tlf-sc-ot1.vf)
 Provides:       tex(Erewhon-Italic-tlf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-tlf-sc-t1.tfm)
 Provides:       tex(Erewhon-Italic-tlf-sc-t1.vf)
@@ -20757,9 +20626,13 @@ Provides:       tex(Erewhon-Italic-tlf-ts1--base.tfm)
 Provides:       tex(Erewhon-Italic-tlf-ts1.tfm)
 Provides:       tex(Erewhon-Italic-tlf-ts1.vf)
 Provides:       tex(Erewhon-Italic-tosf-ly1.tfm)
+Provides:       tex(Erewhon-Italic-tosf-ot1.tfm)
 Provides:       tex(Erewhon-Italic-tosf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Italic-tosf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Italic-tosf-sc-ly1.vf)
+Provides:       tex(Erewhon-Italic-tosf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Italic-tosf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Italic-tosf-sc-ot1.vf)
 Provides:       tex(Erewhon-Italic-tosf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Italic-tosf-sc-t1.tfm)
 Provides:       tex(Erewhon-Italic-tosf-sc-t1.vf)
@@ -20782,6 +20655,7 @@ Provides:       tex(Erewhon-Italic-tosf-ts1--base.tfm)
 Provides:       tex(Erewhon-Italic-tosf-ts1.tfm)
 Provides:       tex(Erewhon-Italic-tosf-ts1.vf)
 Provides:       tex(Erewhon-Regular-dnom-ly1.tfm)
+Provides:       tex(Erewhon-Regular-dnom-ot1.tfm)
 Provides:       tex(Erewhon-Regular-dnom-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-dnom-t1.tfm)
 Provides:       tex(Erewhon-Regular-dnom-t1.vf)
@@ -20789,6 +20663,7 @@ Provides:       tex(Erewhon-Regular-dnom-t2a.tfm)
 Provides:       tex(Erewhon-Regular-dnom-t2b.tfm)
 Provides:       tex(Erewhon-Regular-dnom-t2c.tfm)
 Provides:       tex(Erewhon-Regular-inf-ly1.tfm)
+Provides:       tex(Erewhon-Regular-inf-ot1.tfm)
 Provides:       tex(Erewhon-Regular-inf-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-inf-t1.tfm)
 Provides:       tex(Erewhon-Regular-inf-t1.vf)
@@ -20796,9 +20671,13 @@ Provides:       tex(Erewhon-Regular-inf-t2a.tfm)
 Provides:       tex(Erewhon-Regular-inf-t2b.tfm)
 Provides:       tex(Erewhon-Regular-inf-t2c.tfm)
 Provides:       tex(Erewhon-Regular-lf-ly1.tfm)
+Provides:       tex(Erewhon-Regular-lf-ot1.tfm)
 Provides:       tex(Erewhon-Regular-lf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Regular-lf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Regular-lf-sc-ly1.vf)
+Provides:       tex(Erewhon-Regular-lf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Regular-lf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Regular-lf-sc-ot1.vf)
 Provides:       tex(Erewhon-Regular-lf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-lf-sc-t1.tfm)
 Provides:       tex(Erewhon-Regular-lf-sc-t1.vf)
@@ -20821,6 +20700,7 @@ Provides:       tex(Erewhon-Regular-lf-ts1--base.tfm)
 Provides:       tex(Erewhon-Regular-lf-ts1.tfm)
 Provides:       tex(Erewhon-Regular-lf-ts1.vf)
 Provides:       tex(Erewhon-Regular-numr-ly1.tfm)
+Provides:       tex(Erewhon-Regular-numr-ot1.tfm)
 Provides:       tex(Erewhon-Regular-numr-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-numr-t1.tfm)
 Provides:       tex(Erewhon-Regular-numr-t1.vf)
@@ -20828,9 +20708,13 @@ Provides:       tex(Erewhon-Regular-numr-t2a.tfm)
 Provides:       tex(Erewhon-Regular-numr-t2b.tfm)
 Provides:       tex(Erewhon-Regular-numr-t2c.tfm)
 Provides:       tex(Erewhon-Regular-osf-ly1.tfm)
+Provides:       tex(Erewhon-Regular-osf-ot1.tfm)
 Provides:       tex(Erewhon-Regular-osf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Regular-osf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Regular-osf-sc-ly1.vf)
+Provides:       tex(Erewhon-Regular-osf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Regular-osf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Regular-osf-sc-ot1.vf)
 Provides:       tex(Erewhon-Regular-osf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-osf-sc-t1.tfm)
 Provides:       tex(Erewhon-Regular-osf-sc-t1.vf)
@@ -20853,6 +20737,7 @@ Provides:       tex(Erewhon-Regular-osf-ts1--base.tfm)
 Provides:       tex(Erewhon-Regular-osf-ts1.tfm)
 Provides:       tex(Erewhon-Regular-osf-ts1.vf)
 Provides:       tex(Erewhon-Regular-sup-ly1.tfm)
+Provides:       tex(Erewhon-Regular-sup-ot1.tfm)
 Provides:       tex(Erewhon-Regular-sup-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-sup-t1.tfm)
 Provides:       tex(Erewhon-Regular-sup-t1.vf)
@@ -20860,10 +20745,14 @@ Provides:       tex(Erewhon-Regular-sup-t2a.tfm)
 Provides:       tex(Erewhon-Regular-sup-t2b.tfm)
 Provides:       tex(Erewhon-Regular-sup-t2c.tfm)
 Provides:       tex(Erewhon-Regular-tlf-ly1.tfm)
+Provides:       tex(Erewhon-Regular-tlf-ot1.tfm)
 Provides:       tex(Erewhon-Regular-tlf-ot2.tfm)
 Provides:       tex(Erewhon-Regular-tlf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Regular-tlf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Regular-tlf-sc-ly1.vf)
+Provides:       tex(Erewhon-Regular-tlf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Regular-tlf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Regular-tlf-sc-ot1.vf)
 Provides:       tex(Erewhon-Regular-tlf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-tlf-sc-t1.tfm)
 Provides:       tex(Erewhon-Regular-tlf-sc-t1.vf)
@@ -20886,9 +20775,13 @@ Provides:       tex(Erewhon-Regular-tlf-ts1--base.tfm)
 Provides:       tex(Erewhon-Regular-tlf-ts1.tfm)
 Provides:       tex(Erewhon-Regular-tlf-ts1.vf)
 Provides:       tex(Erewhon-Regular-tosf-ly1.tfm)
+Provides:       tex(Erewhon-Regular-tosf-ot1.tfm)
 Provides:       tex(Erewhon-Regular-tosf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-Regular-tosf-sc-ly1.tfm)
 Provides:       tex(Erewhon-Regular-tosf-sc-ly1.vf)
+Provides:       tex(Erewhon-Regular-tosf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-Regular-tosf-sc-ot1.tfm)
+Provides:       tex(Erewhon-Regular-tosf-sc-ot1.vf)
 Provides:       tex(Erewhon-Regular-tosf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-Regular-tosf-sc-t1.tfm)
 Provides:       tex(Erewhon-Regular-tosf-sc-t1.vf)
@@ -20911,6 +20804,7 @@ Provides:       tex(Erewhon-Regular-tosf-ts1--base.tfm)
 Provides:       tex(Erewhon-Regular-tosf-ts1.tfm)
 Provides:       tex(Erewhon-Regular-tosf-ts1.vf)
 Provides:       tex(Erewhon-RegularSlanted-dnom-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-dnom-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-dnom-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-dnom-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-dnom-t1.vf)
@@ -20918,6 +20812,7 @@ Provides:       tex(Erewhon-RegularSlanted-dnom-t2a.tfm)
 Provides:       tex(Erewhon-RegularSlanted-dnom-t2b.tfm)
 Provides:       tex(Erewhon-RegularSlanted-dnom-t2c.tfm)
 Provides:       tex(Erewhon-RegularSlanted-inf-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-inf-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-inf-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-inf-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-inf-t1.vf)
@@ -20925,9 +20820,13 @@ Provides:       tex(Erewhon-RegularSlanted-inf-t2a.tfm)
 Provides:       tex(Erewhon-RegularSlanted-inf-t2b.tfm)
 Provides:       tex(Erewhon-RegularSlanted-inf-t2c.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-lf-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-sc-ly1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-sc-ly1.vf)
+Provides:       tex(Erewhon-RegularSlanted-lf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-RegularSlanted-lf-sc-ot1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-lf-sc-ot1.vf)
 Provides:       tex(Erewhon-RegularSlanted-lf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-sc-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-sc-t1.vf)
@@ -20950,6 +20849,7 @@ Provides:       tex(Erewhon-RegularSlanted-lf-ts1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-ts1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-lf-ts1.vf)
 Provides:       tex(Erewhon-RegularSlanted-numr-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-numr-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-numr-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-numr-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-numr-t1.vf)
@@ -20957,9 +20857,13 @@ Provides:       tex(Erewhon-RegularSlanted-numr-t2a.tfm)
 Provides:       tex(Erewhon-RegularSlanted-numr-t2b.tfm)
 Provides:       tex(Erewhon-RegularSlanted-numr-t2c.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-osf-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-sc-ly1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-sc-ly1.vf)
+Provides:       tex(Erewhon-RegularSlanted-osf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-RegularSlanted-osf-sc-ot1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-osf-sc-ot1.vf)
 Provides:       tex(Erewhon-RegularSlanted-osf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-sc-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-sc-t1.vf)
@@ -20982,6 +20886,7 @@ Provides:       tex(Erewhon-RegularSlanted-osf-ts1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-ts1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-osf-ts1.vf)
 Provides:       tex(Erewhon-RegularSlanted-sup-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-sup-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-sup-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-sup-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-sup-t1.vf)
@@ -20989,10 +20894,14 @@ Provides:       tex(Erewhon-RegularSlanted-sup-t2a.tfm)
 Provides:       tex(Erewhon-RegularSlanted-sup-t2b.tfm)
 Provides:       tex(Erewhon-RegularSlanted-sup-t2c.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-tlf-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-ot2.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-sc-ly1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-sc-ly1.vf)
+Provides:       tex(Erewhon-RegularSlanted-tlf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-RegularSlanted-tlf-sc-ot1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-tlf-sc-ot1.vf)
 Provides:       tex(Erewhon-RegularSlanted-tlf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-sc-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-sc-t1.vf)
@@ -21015,9 +20924,13 @@ Provides:       tex(Erewhon-RegularSlanted-tlf-ts1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-ts1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tlf-ts1.vf)
 Provides:       tex(Erewhon-RegularSlanted-tosf-ly1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-tosf-ot1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tosf-sc-ly1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tosf-sc-ly1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tosf-sc-ly1.vf)
+Provides:       tex(Erewhon-RegularSlanted-tosf-sc-ot1--base.tfm)
+Provides:       tex(Erewhon-RegularSlanted-tosf-sc-ot1.tfm)
+Provides:       tex(Erewhon-RegularSlanted-tosf-sc-ot1.vf)
 Provides:       tex(Erewhon-RegularSlanted-tosf-sc-t1--base.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tosf-sc-t1.tfm)
 Provides:       tex(Erewhon-RegularSlanted-tosf-sc-t1.vf)
@@ -21047,6 +20960,14 @@ Provides:       tex(LY1erewhon-OsF.fd)
 Provides:       tex(LY1erewhon-Sup.fd)
 Provides:       tex(LY1erewhon-TLF.fd)
 Provides:       tex(LY1erewhon-TOsF.fd)
+Provides:       tex(OT1erewhon-Dnom.fd)
+Provides:       tex(OT1erewhon-Inf.fd)
+Provides:       tex(OT1erewhon-LF.fd)
+Provides:       tex(OT1erewhon-Numr.fd)
+Provides:       tex(OT1erewhon-OsF.fd)
+Provides:       tex(OT1erewhon-Sup.fd)
+Provides:       tex(OT1erewhon-TLF.fd)
+Provides:       tex(OT1erewhon-TOsF.fd)
 Provides:       tex(OT2erewhon-TLF.fd)
 Provides:       tex(T1erewhon-Dnom.fd)
 Provides:       tex(T1erewhon-Inf.fd)
@@ -21091,7 +21012,9 @@ Provides:       tex(erewMR.tfm)
 Provides:       tex(erewhon.map)
 Provides:       tex(erewhon.sty)
 Provides:       tex(erewhontlf-ot2.enc)
+Provides:       tex(zut1_24phrd.enc)
 Provides:       tex(zut1_25oktk.enc)
+Provides:       tex(zut1_2j6fzl.enc)
 Provides:       tex(zut1_2objs7.enc)
 Provides:       tex(zut1_2qulls.enc)
 Provides:       tex(zut1_2sunpf.enc)
@@ -21099,24 +21022,33 @@ Provides:       tex(zut1_36pkgq.enc)
 Provides:       tex(zut1_3cc3dt.enc)
 Provides:       tex(zut1_3ss64c.enc)
 Provides:       tex(zut1_3xl2sl.enc)
+Provides:       tex(zut1_4ap5la.enc)
+Provides:       tex(zut1_4b4gx6.enc)
 Provides:       tex(zut1_4chmhh.enc)
+Provides:       tex(zut1_4csakl.enc)
 Provides:       tex(zut1_4j4ux5.enc)
 Provides:       tex(zut1_4qs3ad.enc)
 Provides:       tex(zut1_53w3xs.enc)
 Provides:       tex(zut1_546xgo.enc)
-Provides:       tex(zut1_5eo37n.enc)
 Provides:       tex(zut1_5iiyxb.enc)
 Provides:       tex(zut1_5kulil.enc)
+Provides:       tex(zut1_5swz3g.enc)
+Provides:       tex(zut1_5ttobv.enc)
 Provides:       tex(zut1_5uxmf6.enc)
+Provides:       tex(zut1_5yzs2d.enc)
+Provides:       tex(zut1_62fpar.enc)
 Provides:       tex(zut1_6etwti.enc)
+Provides:       tex(zut1_6qa5mv.enc)
+Provides:       tex(zut1_6vm3oy.enc)
 Provides:       tex(zut1_74cce3.enc)
-Provides:       tex(zut1_74ksak.enc)
+Provides:       tex(zut1_75itn5.enc)
 Provides:       tex(zut1_7ajsnx.enc)
+Provides:       tex(zut1_7fkyik.enc)
 Provides:       tex(zut1_7lebnu.enc)
-Provides:       tex(zut1_7xxsa3.enc)
 Provides:       tex(zut1_7zfl2i.enc)
 Provides:       tex(zut1_7zlfno.enc)
 Provides:       tex(zut1_a27mgr.enc)
+Provides:       tex(zut1_a4zpim.enc)
 Provides:       tex(zut1_a7a6j7.enc)
 Provides:       tex(zut1_acvwor.enc)
 Provides:       tex(zut1_adckrx.enc)
@@ -21127,128 +21059,149 @@ Provides:       tex(zut1_amccbu.enc)
 Provides:       tex(zut1_amjics.enc)
 Provides:       tex(zut1_ax3b7f.enc)
 Provides:       tex(zut1_azbcfh.enc)
-Provides:       tex(zut1_azqpxw.enc)
-Provides:       tex(zut1_cmujr7.enc)
+Provides:       tex(zut1_bzygne.enc)
+Provides:       tex(zut1_chb3ca.enc)
 Provides:       tex(zut1_cqdyjt.enc)
 Provides:       tex(zut1_cxj5nb.enc)
 Provides:       tex(zut1_cyj7pa.enc)
 Provides:       tex(zut1_d6afaq.enc)
-Provides:       tex(zut1_dkbnkq.enc)
 Provides:       tex(zut1_dnhvn3.enc)
 Provides:       tex(zut1_dpee64.enc)
-Provides:       tex(zut1_dq4c7f.enc)
 Provides:       tex(zut1_dru2ao.enc)
 Provides:       tex(zut1_dsvoru.enc)
 Provides:       tex(zut1_dwvmxx.enc)
 Provides:       tex(zut1_e4qrg7.enc)
-Provides:       tex(zut1_eajfvl.enc)
-Provides:       tex(zut1_eazsup.enc)
+Provides:       tex(zut1_egk5ui.enc)
+Provides:       tex(zut1_el2ois.enc)
 Provides:       tex(zut1_elnhz2.enc)
-Provides:       tex(zut1_erihhu.enc)
+Provides:       tex(zut1_emma2w.enc)
 Provides:       tex(zut1_etc5hm.enc)
+Provides:       tex(zut1_fdnkjr.enc)
 Provides:       tex(zut1_fec52x.enc)
+Provides:       tex(zut1_fo623s.enc)
 Provides:       tex(zut1_fojqdn.enc)
 Provides:       tex(zut1_fomwqp.enc)
 Provides:       tex(zut1_fp3vw2.enc)
 Provides:       tex(zut1_fqlf3s.enc)
 Provides:       tex(zut1_frcrrk.enc)
-Provides:       tex(zut1_gbmzbk.enc)
 Provides:       tex(zut1_gm2ao2.enc)
-Provides:       tex(zut1_gqji7z.enc)
 Provides:       tex(zut1_gxqdb2.enc)
-Provides:       tex(zut1_hl634h.enc)
+Provides:       tex(zut1_hap62j.enc)
+Provides:       tex(zut1_haucyg.enc)
 Provides:       tex(zut1_i3xnrn.enc)
 Provides:       tex(zut1_i6k2d2.enc)
 Provides:       tex(zut1_iibx3x.enc)
-Provides:       tex(zut1_ijhs6t.enc)
 Provides:       tex(zut1_irfza6.enc)
 Provides:       tex(zut1_isszvh.enc)
 Provides:       tex(zut1_iszlz3.enc)
 Provides:       tex(zut1_iuc2sz.enc)
 Provides:       tex(zut1_ivciyi.enc)
-Provides:       tex(zut1_izu75o.enc)
 Provides:       tex(zut1_j6ua73.enc)
+Provides:       tex(zut1_jajasu.enc)
 Provides:       tex(zut1_jbzr5t.enc)
 Provides:       tex(zut1_jdnyy6.enc)
 Provides:       tex(zut1_jmwubr.enc)
 Provides:       tex(zut1_jofyrj.enc)
 Provides:       tex(zut1_jsdebf.enc)
-Provides:       tex(zut1_jyfbou.enc)
+Provides:       tex(zut1_k4xd4x.enc)
 Provides:       tex(zut1_kdakg5.enc)
+Provides:       tex(zut1_kezgz7.enc)
+Provides:       tex(zut1_kjdw2u.enc)
 Provides:       tex(zut1_knq7bi.enc)
 Provides:       tex(zut1_kpjvx5.enc)
 Provides:       tex(zut1_kwgi2r.enc)
 Provides:       tex(zut1_lefook.enc)
 Provides:       tex(zut1_ljsdwq.enc)
-Provides:       tex(zut1_lkesvg.enc)
 Provides:       tex(zut1_lql6bl.enc)
 Provides:       tex(zut1_lxr6iw.enc)
+Provides:       tex(zut1_lzkx6u.enc)
 Provides:       tex(zut1_m62wbz.enc)
+Provides:       tex(zut1_mb7plm.enc)
 Provides:       tex(zut1_mieo7u.enc)
 Provides:       tex(zut1_mkqhoa.enc)
 Provides:       tex(zut1_mmwqox.enc)
 Provides:       tex(zut1_mno2dl.enc)
 Provides:       tex(zut1_mqoft7.enc)
 Provides:       tex(zut1_mqrime.enc)
+Provides:       tex(zut1_msodj2.enc)
+Provides:       tex(zut1_mzhi5i.enc)
 Provides:       tex(zut1_ncwigg.enc)
 Provides:       tex(zut1_ncyh3k.enc)
 Provides:       tex(zut1_ndxvka.enc)
+Provides:       tex(zut1_nhgbwl.enc)
 Provides:       tex(zut1_nhu5qm.enc)
 Provides:       tex(zut1_nlk3tk.enc)
 Provides:       tex(zut1_nmevy6.enc)
+Provides:       tex(zut1_nqkiey.enc)
 Provides:       tex(zut1_nrup2h.enc)
 Provides:       tex(zut1_ntuunb.enc)
 Provides:       tex(zut1_nwll5a.enc)
-Provides:       tex(zut1_o4jtlp.enc)
+Provides:       tex(zut1_oapbtr.enc)
 Provides:       tex(zut1_odgoid.enc)
+Provides:       tex(zut1_oed5ww.enc)
 Provides:       tex(zut1_ojbxlk.enc)
 Provides:       tex(zut1_p7xglw.enc)
 Provides:       tex(zut1_peef5q.enc)
 Provides:       tex(zut1_pj2kv6.enc)
-Provides:       tex(zut1_ps4rne.enc)
+Provides:       tex(zut1_pkbtg2.enc)
 Provides:       tex(zut1_psbgvs.enc)
-Provides:       tex(zut1_psdthf.enc)
 Provides:       tex(zut1_pux3en.enc)
 Provides:       tex(zut1_qgiqhj.enc)
+Provides:       tex(zut1_qhk7j3.enc)
 Provides:       tex(zut1_qltwwe.enc)
 Provides:       tex(zut1_qprerv.enc)
+Provides:       tex(zut1_qqbsse.enc)
 Provides:       tex(zut1_qvbgtd.enc)
 Provides:       tex(zut1_r3uc5w.enc)
 Provides:       tex(zut1_r74hdq.enc)
+Provides:       tex(zut1_ra7von.enc)
+Provides:       tex(zut1_rajiiv.enc)
 Provides:       tex(zut1_rp5jpf.enc)
+Provides:       tex(zut1_rsg4nr.enc)
 Provides:       tex(zut1_s5ndkw.enc)
 Provides:       tex(zut1_sim7pz.enc)
+Provides:       tex(zut1_slg2ik.enc)
+Provides:       tex(zut1_snzspn.enc)
+Provides:       tex(zut1_sodton.enc)
 Provides:       tex(zut1_t32gte.enc)
+Provides:       tex(zut1_ta3xl2.enc)
+Provides:       tex(zut1_thrva6.enc)
 Provides:       tex(zut1_tmatie.enc)
-Provides:       tex(zut1_totpyl.enc)
-Provides:       tex(zut1_tzgz6e.enc)
+Provides:       tex(zut1_tra2uf.enc)
+Provides:       tex(zut1_uemunl.enc)
 Provides:       tex(zut1_ufk2cy.enc)
 Provides:       tex(zut1_uft3lp.enc)
+Provides:       tex(zut1_ugisnr.enc)
 Provides:       tex(zut1_uhamxn.enc)
 Provides:       tex(zut1_uk5nxi.enc)
-Provides:       tex(zut1_ul5nhk.enc)
 Provides:       tex(zut1_umzzxg.enc)
 Provides:       tex(zut1_uuvzxd.enc)
 Provides:       tex(zut1_v2pu2l.enc)
-Provides:       tex(zut1_vcw2hi.enc)
+Provides:       tex(zut1_v3vc6e.enc)
 Provides:       tex(zut1_vj42om.enc)
-Provides:       tex(zut1_vlikpx.enc)
 Provides:       tex(zut1_vtfujz.enc)
+Provides:       tex(zut1_vz5ynf.enc)
 Provides:       tex(zut1_w3f43e.enc)
 Provides:       tex(zut1_wg4pgf.enc)
 Provides:       tex(zut1_wrgbks.enc)
 Provides:       tex(zut1_x3bhkk.enc)
 Provides:       tex(zut1_x3yqgk.enc)
+Provides:       tex(zut1_x6t4jr.enc)
 Provides:       tex(zut1_xd5tcn.enc)
 Provides:       tex(zut1_xhc3k4.enc)
+Provides:       tex(zut1_xiqjov.enc)
 Provides:       tex(zut1_xlud6l.enc)
+Provides:       tex(zut1_xmqdd4.enc)
 Provides:       tex(zut1_xsflzz.enc)
+Provides:       tex(zut1_y5vzao.enc)
 Provides:       tex(zut1_yjdtdu.enc)
-Provides:       tex(zut1_ytd5fv.enc)
 Provides:       tex(zut1_yx3dqr.enc)
 Provides:       tex(zut1_zc3ibv.enc)
-Provides:       tex(zut1_zdrb2k.enc)
 Provides:       tex(zut1_zhgadb.enc)
+Provides:       tex(zut1_zkbe5o.enc)
+Provides:       tex(zut1_zlg4j6.enc)
+Provides:       tex(zut1_zoqj2o.enc)
+Provides:       tex(zut1_zt54pz.enc)
 Provides:       tex(zut1_zx32l7.enc)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontaxes.sty)
@@ -21260,9 +21213,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source281:      erewhon.tar.xz
-Source282:      erewhon.doc.tar.xz
+# from 20230311
+Source275:      erewhon.tar.xz
+Source276:      erewhon.doc.tar.xz
 
 %description -n texlive-erewhon
 Erewhon is based on the Heuristica package, which is based in
@@ -21273,18 +21226,19 @@ superior letters. The size is 6% smaller than Heuristica,
 matching that of UtopiaStd.
 
 %package -n texlive-erewhon-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.119svn61835
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn63312
 Release:        0
 Summary:        Documentation for texlive-erewhon
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-erewhon and texlive-alldocumentation)
 
 %description -n texlive-erewhon-doc
 This package includes the documentation for texlive-erewhon
 
 %package -n texlive-erewhon-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.119svn61835
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn63312
 Release:        0
 Summary:        Severed fonts for texlive-erewhon
 License:        OFL-1.1
@@ -21293,9 +21247,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-erewhon-fonts
 The  separated fonts package for texlive-erewhon
@@ -21343,7 +21295,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/afm/public/erewhon/erewMI.afm
 %{_texmfdistdir}/fonts/afm/public/erewhon/erewMR.afm
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/erewhontlf-ot2.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_24phrd.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_25oktk.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_2j6fzl.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_2objs7.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_2qulls.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_2sunpf.enc
@@ -21351,24 +21305,33 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_3cc3dt.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_3ss64c.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_3xl2sl.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_4ap5la.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_4b4gx6.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_4chmhh.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_4csakl.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_4j4ux5.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_4qs3ad.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_53w3xs.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_546xgo.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5eo37n.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5iiyxb.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5kulil.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5swz3g.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5ttobv.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5uxmf6.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_5yzs2d.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_62fpar.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_6etwti.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_6qa5mv.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_6vm3oy.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_74cce3.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_74ksak.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_75itn5.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_7ajsnx.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_7fkyik.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_7lebnu.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_7xxsa3.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_7zfl2i.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_7zlfno.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_a27mgr.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_a4zpim.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_a7a6j7.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_acvwor.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_adckrx.enc
@@ -21379,128 +21342,149 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_amjics.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ax3b7f.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_azbcfh.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_azqpxw.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_cmujr7.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_bzygne.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_chb3ca.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_cqdyjt.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_cxj5nb.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_cyj7pa.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_d6afaq.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dkbnkq.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dnhvn3.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dpee64.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dq4c7f.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dru2ao.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dsvoru.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_dwvmxx.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_e4qrg7.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_eajfvl.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_eazsup.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_egk5ui.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_el2ois.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_elnhz2.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_erihhu.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_emma2w.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_etc5hm.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fdnkjr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fec52x.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fo623s.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fojqdn.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fomwqp.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fp3vw2.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_fqlf3s.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_frcrrk.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_gbmzbk.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_gm2ao2.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_gqji7z.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_gxqdb2.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_hl634h.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_hap62j.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_haucyg.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_i3xnrn.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_i6k2d2.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_iibx3x.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ijhs6t.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_irfza6.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_isszvh.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_iszlz3.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_iuc2sz.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ivciyi.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_izu75o.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_j6ua73.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jajasu.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jbzr5t.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jdnyy6.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jmwubr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jofyrj.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jsdebf.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_jyfbou.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_k4xd4x.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_kdakg5.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_kezgz7.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_kjdw2u.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_knq7bi.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_kpjvx5.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_kwgi2r.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_lefook.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ljsdwq.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_lkesvg.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_lql6bl.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_lxr6iw.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_lzkx6u.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_m62wbz.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mb7plm.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mieo7u.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mkqhoa.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mmwqox.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mno2dl.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mqoft7.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mqrime.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_msodj2.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_mzhi5i.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ncwigg.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ncyh3k.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ndxvka.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nhgbwl.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nhu5qm.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nlk3tk.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nmevy6.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nqkiey.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nrup2h.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ntuunb.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_nwll5a.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_o4jtlp.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_oapbtr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_odgoid.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_oed5ww.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ojbxlk.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_p7xglw.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_peef5q.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_pj2kv6.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ps4rne.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_pkbtg2.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_psbgvs.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_psdthf.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_pux3en.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_qgiqhj.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_qhk7j3.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_qltwwe.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_qprerv.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_qqbsse.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_qvbgtd.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_r3uc5w.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_r74hdq.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ra7von.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_rajiiv.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_rp5jpf.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_rsg4nr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_s5ndkw.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_sim7pz.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_slg2ik.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_snzspn.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_sodton.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_t32gte.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ta3xl2.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_thrva6.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_tmatie.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_totpyl.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_tzgz6e.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_tra2uf.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_uemunl.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ufk2cy.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_uft3lp.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ugisnr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_uhamxn.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_uk5nxi.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ul5nhk.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_umzzxg.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_uuvzxd.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_v2pu2l.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_vcw2hi.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_v3vc6e.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_vj42om.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_vlikpx.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_vtfujz.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_vz5ynf.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_w3f43e.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_wg4pgf.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_wrgbks.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_x3bhkk.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_x3yqgk.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_x6t4jr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_xd5tcn.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_xhc3k4.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_xiqjov.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_xlud6l.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_xmqdd4.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_xsflzz.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_y5vzao.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_yjdtdu.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_ytd5fv.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_yx3dqr.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zc3ibv.enc
-%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zdrb2k.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zhgadb.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zkbe5o.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zlg4j6.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zoqj2o.enc
+%{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zt54pz.enc
 %{_texmfdistdir}/fonts/enc/dvips/erewhon/zut1_zx32l7.enc
 %{_texmfdistdir}/fonts/map/dvips/erewhon/erewhon.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/erewhon/Erewhon-Bold.otf
@@ -21510,20 +21494,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/erewhon/Erewhon-Regular.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/erewhon/Erewhon-RegularSlanted.otf
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-dnom-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-inf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-sc-t2a--base.tfm
@@ -21540,14 +21529,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-numr-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-sc-t2a--base.tfm
@@ -21564,15 +21557,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-sup-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-ot2.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-sc-t2a--base.tfm
@@ -21589,8 +21586,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-sc-t2a--base.tfm
@@ -21607,20 +21607,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Bold-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-dnom-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-inf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-sc-t2a--base.tfm
@@ -21637,14 +21642,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-numr-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-sc-t2a--base.tfm
@@ -21661,15 +21670,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-sup-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-ot2.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-sc-t2a--base.tfm
@@ -21686,8 +21699,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-sc-t2a--base.tfm
@@ -21704,20 +21720,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldItalic-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-dnom-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-inf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-sc-t2a--base.tfm
@@ -21734,14 +21755,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-numr-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-sc-t2a--base.tfm
@@ -21758,15 +21783,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-sup-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-ot2.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t2a--base.tfm
@@ -21783,8 +21812,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t2a--base.tfm
@@ -21801,20 +21833,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-BoldSlanted-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-dnom-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-inf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-sc-t2a--base.tfm
@@ -21831,14 +21868,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-numr-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-sc-t2a--base.tfm
@@ -21855,15 +21896,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-sup-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-ot2.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-sc-t2a--base.tfm
@@ -21880,8 +21925,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-sc-t2a--base.tfm
@@ -21898,20 +21946,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Italic-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-dnom-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-inf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-sc-t2a--base.tfm
@@ -21928,14 +21981,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-numr-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-sc-t2a--base.tfm
@@ -21952,15 +22009,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-sup-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-ot2.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-sc-t2a--base.tfm
@@ -21977,8 +22038,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-sc-t2a--base.tfm
@@ -21995,20 +22059,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-Regular-tosf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-dnom-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-inf-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-sc-t2a--base.tfm
@@ -22025,14 +22094,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-numr-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-sc-t2a--base.tfm
@@ -22049,15 +22122,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-osf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-t2b.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-sup-t2c.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-ot2.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-sc-t2a--base.tfm
@@ -22074,8 +22151,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/erewhon/Erewhon-RegularSlanted-tosf-sc-t2a--base.tfm
@@ -22108,66 +22188,115 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Bold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldItalic-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t2a.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t2b.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-sc-t2c.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-BoldSlanted-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-lf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-lf-sc-t2b.vf
@@ -22176,6 +22305,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-osf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-osf-sc-t2b.vf
@@ -22184,6 +22314,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-sc-t2b.vf
@@ -22191,6 +22322,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Italic-tosf-sc-t2b.vf
@@ -22200,6 +22332,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-lf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-lf-sc-t2b.vf
@@ -22208,6 +22341,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-osf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-osf-sc-t2b.vf
@@ -22216,6 +22350,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-sc-t2b.vf
@@ -22223,6 +22358,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-Regular-tosf-sc-t2b.vf
@@ -22232,6 +22368,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-dnom-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-inf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-lf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-lf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-lf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-lf-sc-t2b.vf
@@ -22240,6 +22377,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-numr-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-osf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-osf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-osf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-osf-sc-t2b.vf
@@ -22248,6 +22386,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-osf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-sc-t2b.vf
@@ -22255,6 +22394,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tosf-sc-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tosf-sc-t1.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tosf-sc-t2a.vf
 %{_texmfdistdir}/fonts/vf/public/erewhon/Erewhon-RegularSlanted-tosf-sc-t2b.vf
@@ -22269,6 +22409,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/erewhon/LY1erewhon-Sup.fd
 %{_texmfdistdir}/tex/latex/erewhon/LY1erewhon-TLF.fd
 %{_texmfdistdir}/tex/latex/erewhon/LY1erewhon-TOsF.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-Dnom.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-Inf.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-LF.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-Numr.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-OsF.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-Sup.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-TLF.fd
+%{_texmfdistdir}/tex/latex/erewhon/OT1erewhon-TOsF.fd
 %{_texmfdistdir}/tex/latex/erewhon/OT2erewhon-TLF.fd
 %{_texmfdistdir}/tex/latex/erewhon/T1erewhon-Dnom.fd
 %{_texmfdistdir}/tex/latex/erewhon/T1erewhon-Inf.fd
@@ -22315,9 +22463,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fontconfig/conf.avail/58-texlive-erewhon.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-erewhon.conf
 %config %{_sysconfdir}/fonts/conf.d/55-texlive-erewhon.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon/fonts.scale
 %{_datadir}/fonts/texlive-erewhon/Erewhon-Bold.otf
 %{_datadir}/fonts/texlive-erewhon/Erewhon-BoldItalic.otf
 %{_datadir}/fonts/texlive-erewhon/Erewhon-BoldSlanted.otf
@@ -22336,7 +22484,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-erewhon/erewMR.pfb
 
 %package -n texlive-erewhon-math
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn62098
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.56svn65684
 Release:        0
 License:        OFL-1.1
 Summary:        Utopia based OpenType Math font
@@ -22367,32 +22515,32 @@ Suggests:       texlive-erewhon-math-doc >= %{texlive_version}
 Provides:       tex(fourier-otf.sty)
 Requires:       tex(fourier-orns.sty)
 Requires:       tex(iftex.sty)
+Requires:       tex(realscripts.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source283:      erewhon-math.tar.xz
-Source284:      erewhon-math.doc.tar.xz
+# from 20230311
+Source277:      erewhon-math.tar.xz
+Source278:      erewhon-math.doc.tar.xz
 
 %description -n texlive-erewhon-math
-Erewhon Math is an OpenType math font meant to be used together
-with Erewhon text fonts in LuaLaTeX or XeLaTeX documents. Like
-Fourier-GUTenberg, it is Utopia based and has been designed as
-a replacement of Fourier-GUTenberg for Unicode engines.
+OpenType version of the fourier Type1 fonts designed by Michel
+Bovani.
 
 %package -n texlive-erewhon-math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn62098
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.56svn65684
 Release:        0
 Summary:        Documentation for texlive-erewhon-math
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-erewhon-math and texlive-alldocumentation)
 
 %description -n texlive-erewhon-math-doc
 This package includes the documentation for texlive-erewhon-math
 
 %package -n texlive-erewhon-math-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn62098
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.56svn65684
 Release:        0
 Summary:        Severed fonts for texlive-erewhon-math
 License:        OFL-1.1
@@ -22401,9 +22549,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-erewhon-math-fonts
 The  separated fonts package for texlive-erewhon-math
@@ -22437,6 +22583,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-erewhon-math
 %defattr(-,root,root,755)
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/erewhon-math/Erewhon-Math-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/erewhon-math/Erewhon-Math.otf
 %{_texmfdistdir}/tex/latex/erewhon-math/fourier-otf.sty
 
@@ -22444,9 +22591,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-erewhon-math
 %{_datadir}/fontconfig/conf.avail/58-texlive-erewhon-math.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon-math/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon-math/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon-math/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon-math/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon-math/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-erewhon-math/fonts.scale
+%{_datadir}/fonts/texlive-erewhon-math/Erewhon-Math-Bold.otf
 %{_datadir}/fonts/texlive-erewhon-math/Erewhon-Math.otf
 
 %package -n texlive-errata
@@ -22480,9 +22628,9 @@ Suggests:       texlive-errata-doc >= %{texlive_version}
 Provides:       tex(errata.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source285:      errata.tar.xz
-Source286:      errata.doc.tar.xz
+# from 20230311
+Source279:      errata.tar.xz
+Source280:      errata.doc.tar.xz
 
 %description -n texlive-errata
 This package provides a simple infrastructure for recording
@@ -22498,6 +22646,7 @@ Summary:        Documentation for texlive-errata
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-errata and texlive-alldocumentation)
 
 %description -n texlive-errata-doc
 This package includes the documentation for texlive-errata
@@ -22562,9 +22711,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source287:      erw-l3.tar.xz
-Source288:      erw-l3.doc.tar.xz
+# from 20230311
+Source281:      erw-l3.tar.xz
+Source282:      erw-l3.doc.tar.xz
 
 %description -n texlive-erw-l3
 Utilities based on LaTeX3. Highlight: \erw_merge_sort.
@@ -22576,6 +22725,7 @@ Summary:        Documentation for texlive-erw-l3
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-erw-l3 and texlive-alldocumentation)
 
 %description -n texlive-erw-l3-doc
 This package includes the documentation for texlive-erw-l3
@@ -22634,8 +22784,8 @@ Requires(posttrans):texlive-kpathsea >= %{texlive_version}
 Requires(posttrans):texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans):texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source289:      es-tex-faq.doc.tar.xz
+# from 20230311
+Source283:      es-tex-faq.doc.tar.xz
 
 %description -n texlive-es-tex-faq
 SGML source, converted LaTeX version, and readable copies of
@@ -22710,9 +22860,9 @@ Requires:       tex(pstricks.sty)
 Requires:       tex(xargs.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source290:      esami.tar.xz
-Source291:      esami.doc.tar.xz
+# from 20230311
+Source284:      esami.tar.xz
+Source285:      esami.doc.tar.xz
 
 %description -n texlive-esami
 The package enables the user to typeset exams with multiple
@@ -22731,6 +22881,7 @@ Summary:        Documentation for texlive-esami
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-esami and texlive-alldocumentation)
 Provides:       locale(texlive-esami-doc:en;it)
 
 %description -n texlive-esami-doc
@@ -22837,9 +22988,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-esdiff-doc >= %{texlive_version}
 Provides:       tex(esdiff.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source292:      esdiff.tar.xz
-Source293:      esdiff.doc.tar.xz
+# from 20230311
+Source286:      esdiff.tar.xz
+Source287:      esdiff.doc.tar.xz
 
 %description -n texlive-esdiff
 The package makes writing derivatives very easy. It offers
@@ -22855,6 +23006,7 @@ Summary:        Documentation for texlive-esdiff
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-esdiff and texlive-alldocumentation)
 
 %description -n texlive-esdiff-doc
 This package includes the documentation for texlive-esdiff
@@ -22917,9 +23069,9 @@ Suggests:       texlive-esieecv-doc >= %{texlive_version}
 Provides:       tex(ESIEEcv.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source294:      esieecv.tar.xz
-Source295:      esieecv.doc.tar.xz
+# from 20230311
+Source288:      esieecv.tar.xz
+Source289:      esieecv.doc.tar.xz
 
 %description -n texlive-esieecv
 The package allows the user to set up a curriculum vitae as a
@@ -22933,6 +23085,7 @@ License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Obsoletes:      texlive-ESIEEcv-doc < 2022
+Supplements:    (texlive-esieecv and texlive-alldocumentation)
 
 %description -n texlive-esieecv-doc
 This package includes the documentation for texlive-esieecv
@@ -22994,9 +23147,9 @@ Requires(posttrans):texlive-scripts >= %{texlive_version}
 Suggests:       texlive-esindex-doc >= %{texlive_version}
 Provides:       tex(esindex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source296:      esindex.tar.xz
-Source297:      esindex.doc.tar.xz
+# from 20230311
+Source290:      esindex.tar.xz
+Source291:      esindex.doc.tar.xz
 
 %description -n texlive-esindex
 This package helps you to create indexes in Spanish. With
@@ -23012,6 +23165,7 @@ Summary:        Documentation for texlive-esindex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-esindex and texlive-alldocumentation)
 
 %description -n texlive-esindex-doc
 This package includes the documentation for texlive-esindex
@@ -23075,9 +23229,9 @@ Provides:       tex(esint.sty)
 Provides:       tex(esint10.tfm)
 Provides:       tex(uesint.fd)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source298:      esint.tar.xz
-Source299:      esint.doc.tar.xz
+# from 20230311
+Source292:      esint.tar.xz
+Source293:      esint.doc.tar.xz
 
 %description -n texlive-esint
 The esint package permits access to alternate integral symbols
@@ -23095,6 +23249,7 @@ Summary:        Documentation for texlive-esint
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-esint and texlive-alldocumentation)
 
 %description -n texlive-esint-doc
 This package includes the documentation for texlive-esint
@@ -23175,9 +23330,9 @@ Suggests:       texlive-esint-type1-doc >= %{texlive_version}
 Provides:       tex(esint.map)
 Provides:       tex(esint.tex)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source300:      esint-type1.tar.xz
-Source301:      esint-type1.doc.tar.xz
+# from 20230311
+Source294:      esint-type1.tar.xz
+Source295:      esint-type1.doc.tar.xz
 
 %description -n texlive-esint-type1
 This is Eddie Saudrais's font esint10 in Adobe Type 1 format.
@@ -23194,6 +23349,7 @@ Summary:        Documentation for texlive-esint-type1
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-esint-type1 and texlive-alldocumentation)
 
 %description -n texlive-esint-type1-doc
 This package includes the documentation for texlive-esint-type1
@@ -23208,9 +23364,7 @@ Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
 Requires(posttrans):ghostscript-fonts-std
-Requires(posttrans):mkfontdir
-Requires(posttrans):mkfontscale
-Requires(posttrans):xorg-x11-fonts-core
+Suggests:       xorg-x11-fonts-core
 
 %description -n texlive-esint-type1-fonts
 The  separated fonts package for texlive-esint-type1
@@ -23254,9 +23408,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-esint-type1
 %{_datadir}/fontconfig/conf.avail/58-texlive-esint-type1.conf
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-esint-type1/encodings.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-esint-type1/fonts.dir
-%ghost %verify(not md5 size mtime) %{_datadir}/fonts/texlive-esint-type1/fonts.scale
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-esint-type1/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-esint-type1/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-esint-type1/fonts.scale
 %{_datadir}/fonts/texlive-esint-type1/esint10.pfb
 
 %package -n texlive-esk
@@ -23291,9 +23445,9 @@ Provides:       tex(esk.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlpretest/archive/
-# from 20220321
-Source302:      esk.tar.xz
-Source303:      esk.doc.tar.xz
+# from 20230311
+Source296:      esk.tar.xz
+Source297:      esk.doc.tar.xz
 
 %description -n texlive-esk
 The ESK package allows to encapsulate Sketch files in LaTeX
@@ -23313,6 +23467,7 @@ Summary:        Documentation for texlive-esk
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-esk and texlive-alldocumentation)
 
 %description -n texlive-esk-doc
 This package includes the documentation for texlive-esk
@@ -23498,9 +23653,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-ebgaramond/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-ebgaramond/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-ebgaramond/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-ebgaramond/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-ebgaramond/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-ebgaramond/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-ebgaramond.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -23583,9 +23737,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-eczar/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-eczar/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-eczar/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-eczar/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-eczar/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-eczar/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-eczar.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -23618,14 +23771,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/eepic/grafig.shar
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
+    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23641,10 +23794,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:128}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:126}
     popd
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/ejpecp/getmref.py
@@ -23664,12 +23815,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-ektype-tanka
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/ektype-tanka/*.{pf[ab],[ot]tf}
@@ -23679,9 +23830,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-ektype-tanka/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-ektype-tanka/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-ektype-tanka/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-ektype-tanka/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-ektype-tanka/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-ektype-tanka/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-ektype-tanka.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -23700,10 +23850,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-electrum
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/arkandis/electrum/*.{pf[ab],[ot]tf}
@@ -23713,9 +23863,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-electrum/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-electrum/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-electrum/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-electrum/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-electrum/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-electrum/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-electrum.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -23734,6 +23883,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23784,16 +23935,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:197}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:189}
     popd
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/enctex/unimap.py
@@ -23801,6 +23944,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23817,14 +23968,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/tex/generic/enigma/enigma.lua
     do
@@ -23843,6 +23986,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
+    tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23851,12 +24002,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-epigrafica
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/epigrafica/*.{pf[ab],[ot]tf}
@@ -23866,9 +24011,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-epigrafica/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-epigrafica/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-epigrafica/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-epigrafica/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-epigrafica/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-epigrafica/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-epigrafica.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -23887,13 +24031,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-epiolmec
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/epiolmec/*.{pf[ab],[ot]tf}
@@ -23903,9 +24047,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-epiolmec/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-epiolmec/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-epiolmec/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-epiolmec/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-epiolmec/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-epiolmec/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-epiolmec.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -23924,8 +24067,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/eplain/util/idxuniq \
 	       %{_texmfdistdir}/doc/eplain/util/trimsee
@@ -23933,14 +24076,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/metapost/epsincl/epsincl.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/metapost/epsincl/testincl.bat
@@ -23950,9 +24093,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/epspdf/epspdf.tlu \
 	       %{_texmfdistdir}/scripts/epspdf/epspdftk.tcl
@@ -23966,10 +24109,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/epstopdf/epstopdf.pl
     do
@@ -23982,6 +24125,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23999,12 +24148,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-erewhon
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/erewhon/*.{pf[ab],[ot]tf} \
@@ -24015,9 +24158,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-erewhon/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-erewhon/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-erewhon/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-erewhon/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-erewhon/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-erewhon/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-erewhon.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24056,8 +24198,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-erewhon.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-erewhon.conf
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-erewhon-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/erewhon-math/*.{pf[ab],[ot]tf}
@@ -24067,9 +24209,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-erewhon-math/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-erewhon-math/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-erewhon-math/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-erewhon-math/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-erewhon-math/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-erewhon-math/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-erewhon-math.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24088,6 +24229,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -24099,12 +24246,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-esint-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/esint-type1/*.{pf[ab],[ot]tf}
@@ -24114,9 +24255,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
         base=${font##*/}
         ln -sf %{_datadir}/fonts/texlive-esint-type1/${base} ${font}
     done
-    >  %{buildroot}%{_datadir}/fonts/texlive-esint-type1/encodings.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-esint-type1/fonts.dir
-    >  %{buildroot}%{_datadir}/fonts/texlive-esint-type1/fonts.scale
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-esint-type1/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-esint-type1/
     mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
     (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-esint-type1.conf)<<-'EOF'
 	<?xml version="1.0"?>
@@ -24135,8 +24275,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
