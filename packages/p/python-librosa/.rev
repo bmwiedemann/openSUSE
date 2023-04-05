@@ -118,4 +118,13 @@
     <comment></comment>
     <requestid>1061808</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>73db5b4bead4032eeb6bde736a57477e</srcmd5>
+    <version>0.9.2</version>
+    <time>1680722904</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python311, python-numba is not available for python 3.11 yet.
+</comment>
+    <requestid>1077186</requestid>
+  </revision>
 </revisionlist>

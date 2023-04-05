@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 09:59:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- skip python311, python-numba is not available for python 3.11 yet.
+
+-------------------------------------------------------------------
 Sat Jan 28 17:24:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add update-for-numpy-124.patch

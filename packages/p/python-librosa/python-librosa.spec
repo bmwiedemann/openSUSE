@@ -16,6 +16,8 @@
 #
 
 
+# python-numba is not available for python311
+%define skip_python311 1
 Name:           python-librosa
 Version:        0.9.2
 Release:        0
