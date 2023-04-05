@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.4.3
-%define short_version 6.4
+%define real_version 6.5.0
+%define short_version 6.5
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.4.3
+Version:        6.5.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -65,18 +65,18 @@ BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6PrintSupport)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickWidgets)
-BuildRequires:  cmake(Qt6Sql)
-BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6DBus) = %{real_version}
+BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
+BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
+BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
+BuildRequires:  cmake(Qt6Sql) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
+BuildRequires:  cmake(Qt6Xml) = %{real_version}
 # These packages are required to generate documentation for the Qt packages
 Requires:       qt6-tools-helpgenerators
 Requires:       qt6-tools-qdoc
@@ -279,8 +279,7 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
-%define _lto_cflags %{nil}
-%cmake_qt6
+%cmake_qt6 -DBUILD_TESTING:BOOL=OFF
 
 %{qt6_build}
 
@@ -419,7 +418,6 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_pluginsdir}/designer/libcustomwidgetplugin.so
 %{_qt6_pluginsdir}/designer/libqquickwidget.so
 %{_qt6_pluginsdir}/designer/libtaskmenuextension.so
-%{_qt6_pluginsdir}/designer/libworldtimeclockplugin.so
 
 %files helpgenerators
 %{_qt6_libexecdir}/qhelpgenerator
