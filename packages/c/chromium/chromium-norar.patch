@@ -1,8 +1,8 @@
-Index: chromium-108.0.5359.71/chrome/common/safe_browsing/BUILD.gn
+Index: chromium-112.0.5615.20/chrome/common/safe_browsing/BUILD.gn
 ===================================================================
---- chromium-108.0.5359.71.orig/chrome/common/safe_browsing/BUILD.gn
-+++ chromium-108.0.5359.71/chrome/common/safe_browsing/BUILD.gn
-@@ -58,39 +58,6 @@ if (safe_browsing_mode == 1) {
+--- chromium-112.0.5615.20.orig/chrome/common/safe_browsing/BUILD.gn
++++ chromium-112.0.5615.20/chrome/common/safe_browsing/BUILD.gn
+@@ -58,25 +58,6 @@ if (safe_browsing_mode == 1) {
      public_deps = [ "//components/safe_browsing/core/common/proto:csd_proto" ]
    }
  
@@ -22,27 +22,13 @@ Index: chromium-108.0.5359.71/chrome/common/safe_browsing/BUILD.gn
 -      "//third_party/unrar:unrar",
 -    ]
 -
--    defines = [
--      "_FILE_OFFSET_BITS=64",
--      "LARGEFILE_SOURCE",
--      "RAR_SMP",
--      "SILENT",
--
--      # The following is set to disable certain macro definitions in the unrar
--      # source code.
--      "CHROMIUM_UNRAR",
--
--      # Disables exceptions in unrar, replaces them with process termination.
--      "UNRAR_NO_EXCEPTIONS",
--    ]
--
 -    public_deps = [ "//components/safe_browsing/core/common/proto:csd_proto" ]
 -  }
 -
    if (is_linux || is_win) {
      source_set("document_analyzer") {
        sources = [
-@@ -191,7 +158,6 @@ source_set("safe_browsing") {
+@@ -172,7 +153,6 @@ source_set("safe_browsing") {
        ":archive_analyzer_results",
        ":binary_feature_extractor",
        ":download_type_util",
@@ -50,10 +36,10 @@ Index: chromium-108.0.5359.71/chrome/common/safe_browsing/BUILD.gn
        "//components/safe_browsing/core/common",
        "//third_party/lzma_sdk/google:seven_zip_reader",
      ]
-Index: chromium-108.0.5359.71/chrome/common/safe_browsing/DEPS
+Index: chromium-112.0.5615.20/chrome/common/safe_browsing/DEPS
 ===================================================================
---- chromium-108.0.5359.71.orig/chrome/common/safe_browsing/DEPS
-+++ chromium-108.0.5359.71/chrome/common/safe_browsing/DEPS
+--- chromium-112.0.5615.20.orig/chrome/common/safe_browsing/DEPS
++++ chromium-112.0.5615.20/chrome/common/safe_browsing/DEPS
 @@ -3,7 +3,6 @@ include_rules = [
    "+components/safe_browsing/core/common",
    "+third_party/maldoca",
@@ -62,10 +48,10 @@ Index: chromium-108.0.5359.71/chrome/common/safe_browsing/DEPS
    "+third_party/zlib",
    "+third_party/lzma_sdk/google",
  ]
-Index: chromium-108.0.5359.71/chrome/services/file_util/BUILD.gn
+Index: chromium-112.0.5615.20/chrome/services/file_util/BUILD.gn
 ===================================================================
---- chromium-108.0.5359.71.orig/chrome/services/file_util/BUILD.gn
-+++ chromium-108.0.5359.71/chrome/services/file_util/BUILD.gn
+--- chromium-112.0.5615.20.orig/chrome/services/file_util/BUILD.gn
++++ chromium-112.0.5615.20/chrome/services/file_util/BUILD.gn
 @@ -60,7 +60,6 @@ source_set("file_util") {
      deps += [
        "//chrome/common/safe_browsing",
@@ -74,10 +60,10 @@ Index: chromium-108.0.5359.71/chrome/services/file_util/BUILD.gn
      ]
  
      if (is_linux || is_win) {
-Index: chromium-108.0.5359.71/chrome/services/file_util/safe_archive_analyzer.cc
+Index: chromium-112.0.5615.20/chrome/services/file_util/safe_archive_analyzer.cc
 ===================================================================
---- chromium-108.0.5359.71.orig/chrome/services/file_util/safe_archive_analyzer.cc
-+++ chromium-108.0.5359.71/chrome/services/file_util/safe_archive_analyzer.cc
+--- chromium-112.0.5615.20.orig/chrome/services/file_util/safe_archive_analyzer.cc
++++ chromium-112.0.5615.20/chrome/services/file_util/safe_archive_analyzer.cc
 @@ -45,12 +45,16 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
  void SafeArchiveAnalyzer::AnalyzeRarFile(base::File rar_file,
                                           base::File temporary_file,
