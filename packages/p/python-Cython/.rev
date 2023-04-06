@@ -791,4 +791,22 @@
   * The ``cpow`` directive of Cython 3.0 is available as a no-op.</comment>
     <requestid>1058181</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>473153f5361d5edfabdd61be2471f083</srcmd5>
+    <version>0.29.34</version>
+    <time>1680789333</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.34:
+  * A refence leak of the for-loop list/tuple iterable was
+    resolved if the for-loop's  ``else:`` branch executes 
+    a ``break`` for an outer loop.
+  * Some C compile failures in CPython 3.12 were resolved.
+  * Some old usages of the deprecated Python ``imp`` module were
+    replaced with ``importlib``.
+  * Patch by Matúš Valo.  (Github issue :issue:`5300`)
+  * Some issues with ``depfile`` generation were resolved.
+  * Patches by Eli Schwartz.  (Github issues :issue:`5279`,
+    :issue:`5291`)</comment>
+    <requestid>1077062</requestid>
+  </revision>
 </revisionlist>
