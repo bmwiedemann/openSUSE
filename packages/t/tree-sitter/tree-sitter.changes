@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Apr  5 18:02:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.20.8:
+  - 0.20.8 - recovered
+  - cicd: fix bug in release workflow
+  - Bumps [webbrowser](https://github.com/amodm/webbrowser-rs)
+    from 0.5.5 to 0.8.3.
+  - cli: Bump tree-sitter dependency to 0.20.10
+  - Update python error corpus to reflect grammar changes
+  - Improve the performance of running a query in a small range
+    of a large file
+  - Add API for checking if a pattern in a query is non-local
+  - Fix bug in maintenance of query cursor's tree depth
+  - Restructure query_cursor_advance to explicitly control which
+    hidden nodes it descends into
+  - Extract 'internal' versions of tree cursor movement fns that
+    allow visiting hidden nodes
+  - Group analysis state sets into QueryAnalysis struct
+  - Precompute the set of repetition symbols that can match
+    rootless patterns
+  - Add --row-range, --quiet, and --time flags to query
+    subcommand
+  - Fix CLI build on windows
+  - Clear the parse stack when terminating parsing early due to
+    error cost
+  - This fixes a bug where the parse tree would not be rebalanced
+    if this code path was taken.
+  - Add --dot flag to parse subcommand, for printing tree as DOT
+    graph
+  - Derive Hash for Language
+  - docs: apply `scheme` marker for all query syntax snippets
+  - fix: possible rollover of nanoseconds in clock.h
+  - cli: make error message more specific for building in
+    `docker`
+  - cli: Improve init-config with respect to TREE_SITTER_DIR
+  - docs: merge of all binding and grammar link PRs
+  - Exclude huge generated files from `git diff` output
+  - loader: use portable way of path joining
+  - loader: add TREE_SITTER_LIBDIR; cli: add --libdir to
+    `tree-sitter generate`
+  - cli: add -b, --build flags for `tree-sitter generate`
+  - Remove unused no-minimize arg for the generate command
+  - cli: Fix build.rs in case of the current branch ref was
+    packed
+  - Support SHA lookup in .git/packed-refs
+  - fix: possible rollover of nanoseconds in clock.h
+  - Fix permanent rebuild triggering in a git worktree due to
+    wrong git branch file path
+  - fix(cli): Racing on playground webserver port binding
+  - Fix test output formatting for rules starting with M/U
+  - Allow web-tree-sitter to work with Emscripten 3
+  - Add __cxa_atexit to exports
+  - Add `memset` to exports
+  - Add 'stringToUTF16' and 'AsciiToString' to exported method
+  - Configure compiled WASM grammars to not catch rejections
+  - Add Erlang to list of Available Parsers
+  - Fix test output formatting for rules starting with M/U
+  - Previously the rule names could not begin with an uppercase
+    M or U because the test output formatter assumed that they
+    represent special tokens: MISSING or UEXPECTED.
+  - Allow retrieving a tree's list of included ranges, fix some
+    included range bugs
+  - Add tests that randomly edit files with disjoint included
+    ranges
+  - Fix suppression of empty tokens during error handling at
+    included range boundaries
+  - Fix parse error when reusing a node at the end of an included
+    range
+  - fix(cli): Racing on playground webserver port binding
+  - Add doc comments for tree included ranges getter
+  - Fix adjustment of trees' included ranges on edits
+  - Add D grammar - it is quite complete for D 2.100.
+  - Add Erlang to list of Available Parsers
+  - Add twig parser in documentation
+  - Fix integer size of subtree's child count field
+  - Explain in the docs that npm install supports limited
+    platforms
+- Removed upstreamed patch CVE-2022-45299-update-webbrowser.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 13:55:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - VERSION string used in generating *.pc file

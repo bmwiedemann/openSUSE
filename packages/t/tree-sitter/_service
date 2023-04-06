@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <!--service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/tree-sitter/tree-sitter</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
@@ -14,13 +14,12 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="disabled" name="set_version"/-->
   <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">tree-sitter</param>
+     <param name="srctar">tree-sitter-*.tar.xz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">tree-sitter</param>
   </service>
 </services>

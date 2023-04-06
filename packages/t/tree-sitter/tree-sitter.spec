@@ -19,7 +19,7 @@
 %define somajor 0
 %define libdirname tree_sitter
 Name:           tree-sitter
-Version:        0.20.7
+Version:        0.20.8
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        MIT
@@ -27,9 +27,6 @@ URL:            https://tree-sitter.github.io/
 Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-# PATCH-FIX-UPSTREAM CVE-2022-45299-update-webbrowser.patch bsc#1207196 mcepl@suse.com
-# Use more recent version of webbrowser-rs
-Patch0:         CVE-2022-45299-update-webbrowser.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  rust > 1.40
 Requires:       lib%{name}%{somajor} = %{version}
