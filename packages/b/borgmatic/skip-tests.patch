@@ -1,7 +1,7 @@
-Index: borgmatic-1.7.5/tests/integration/test_execute.py
+Index: borgmatic-1.7.10/tests/integration/test_execute.py
 ===================================================================
---- borgmatic-1.7.5.orig/tests/integration/test_execute.py
-+++ borgmatic-1.7.5/tests/integration/test_execute.py
+--- borgmatic-1.7.10.orig/tests/integration/test_execute.py
++++ borgmatic-1.7.10/tests/integration/test_execute.py
 @@ -132,6 +132,7 @@ def test_log_outputs_skips_error_output_
      assert not error.value.output
  
@@ -16,5 +16,5 @@ Index: borgmatic-1.7.5/tests/integration/test_execute.py
  
 +@pytest.mark.skip(reason="test is failing in our env")
  def test_log_outputs_truncates_long_error_output():
-     flexmock(module).ERROR_OUTPUT_MAX_LINE_COUNT = 0
      flexmock(module.logger).should_receive('log')
+     flexmock(module).should_receive('command_for_process').and_return('grep')

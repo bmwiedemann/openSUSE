@@ -1,7 +1,7 @@
-Index: borgmatic-1.7.5/setup.py
+Index: borgmatic-1.7.10/setup.py
 ===================================================================
---- borgmatic-1.7.5.orig/setup.py
-+++ borgmatic-1.7.5/setup.py
+--- borgmatic-1.7.10.orig/setup.py
++++ borgmatic-1.7.10/setup.py
 @@ -37,5 +37,5 @@ setup(
          'setuptools',
      ),

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 30 14:18:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.7.10:
+  * #396: When a database command errors, display and log the error message instead of swallowing it.
+  * #501: Optionally error if a source directory does not exist via "source_directories_must_exist"
+    option in borgmatic's location configuration.
+  * #576: Add support for "file://" paths within "repositories" option.
+  * #612: Define and use custom constants in borgmatic configuration files. See the documentation for
+    more information:
+    https://torsion.org/borgmatic/docs/how-to/make-per-application-backups/#constant-interpolation
+  * #618: Add support for BORG_FILES_CACHE_TTL environment variable via "borg_files_cache_ttl" option
+    in borgmatic's storage configuration.
+  * #623: Fix confusing message when an error occurs running actions for a configuration file.
+  * #635: Add optional repository labels so you can select a repository via "--repository yourlabel"
+    at the command-line. See the configuration reference for more information:
+    https://torsion.org/borgmatic/docs/reference/configuration/
+  * #649: Add documentation on backing up a database running in a container:
+    https://torsion.org/borgmatic/docs/how-to/backup-your-databases/#containers
+  * #655: Fix error when databases are configured and a source directory doesn't exist.
+  * Add code style plugins to enforce use of Python f-strings and prevent single-letter variables.
+    To join in the pedantry, refresh your test environment with "tox --recreate".
+  * Rename scripts/run-full-dev-tests to scripts/run-end-to-end-dev-tests and make it run end-to-end
+    tests only. Continue using tox to run unit and integration tests.
+
+-------------------------------------------------------------------
 Tue Mar  7 20:08:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.8:
