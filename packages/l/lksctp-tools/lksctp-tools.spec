@@ -1,7 +1,7 @@
 #
 # spec file for package lksctp-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,6 @@ transparent multi-homing, and multiple ordered streams of messages.
 %setup -q
 
 %build
-%define _lto_cflags %{nil}
 autoreconf -fi
 %configure --prefix=%{_prefix} \
 	--enable-shared \
