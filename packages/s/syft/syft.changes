@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 06 03:25:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.76.1:
+  * chore: update tools-golang to v0.5.0 (#1717)
+  * Add Nix cataloger (#1696)
+  * refactor spdx tooling test to reduce intermittent failures
+    (#1707)
+  * Capture file ownership relationships from portage ecosystem
+    (#1702)
+  * chore: update deprecated set-output calls (#1705)
+
+-------------------------------------------------------------------
 Mon Apr 03 12:04:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.76.0:
