@@ -1976,4 +1976,20 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1069886</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>b230fb702645174ddafc757f69355af4</srcmd5>
+    <version>23.04.0</version>
+    <time>1680789322</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.04.0:
+  * Fix memory issue when signing fails. Issue #1372
+  * Internal improvements of signature related code
+  * CairoOutputDev: improve type3 font rendering
+  * Fix memory leak in
+    GlobalParams::findSystemFontFileForFamilyAndStyle
+  * pdftocairo: Fix crash in some special situations
+  * pdfsig: allow holes in -dump signature list
+  * pdfsig: Support --help</comment>
+    <requestid>1077058</requestid>
+  </revision>
 </revisionlist>
