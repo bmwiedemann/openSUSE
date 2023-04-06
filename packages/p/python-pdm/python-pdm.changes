@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 06:26:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove pep517 requirement. 
+
+-------------------------------------------------------------------
 Tue Apr  4 06:45:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-installer version limit in requires

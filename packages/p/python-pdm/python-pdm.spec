@@ -43,7 +43,6 @@ Requires:       python-certifi
 Requires:       python-findpython >= 0.2.2
 Requires:       python-installer
 Requires:       python-packaging >= 20.9
-Requires:       python-pep517 >= 0.11.0
 Requires:       python-platformdirs
 Requires:       python-pyproject-hooks
 Requires:       python-python-dotenv >= 0.15
