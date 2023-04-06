@@ -70,13 +70,18 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
 BuildRequires:  containerd-devel
-BuildRequires:  glibc >= 2.27
 BuildRequires:  grpc-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libtirpc-devel
 BuildRequires:  protobuf-devel
+%define         arg_containerinfo --enable-containerinfo=yes
+%else
+%define         arg_containerinfo --enable-containerinfo=no
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+BuildRequires:  glibc >= 2.27
+BuildRequires:  libtirpc-devel
 BuildRequires:  rpcgen
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0) >= 2.21.0
 BuildRequires:  pkgconfig(sm)
@@ -87,11 +92,9 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
-%define         arg_containerinfo --enable-containerinfo=yes
 %else
 BuildRequires:  glibc >= 2.12
 BuildRequires:  xorg-x11-devel
-%define         arg_containerinfo --enable-containerinfo=no
 %endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
@@ -237,7 +240,7 @@ Requires:       libvmtools0 = %{version}
 Those are the development headers for libvmtools. They are needed
 if you intend to create own plugins for vmtoolsd.
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
 %package        containerinfo
 Summary:        Container Info Plugin
 Group:          System Environment/Libraries
@@ -448,7 +451,7 @@ systemctl try-restart vmtoolsd.service || :
 
 %postun -n libvmtools0 -p /sbin/ldconfig
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
 %post containerinfo
 systemctl try-restart vmtoolsd.service || :
 
@@ -585,7 +588,7 @@ systemctl try-restart vmtoolsd.service || :
 %{_includedir}/libDeployPkg
 %{_libdir}/pkgconfig/libDeployPkg.pc
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
 %files containerinfo
 %{_libdir}/%{name}/plugins/vmsvc/libcontainerInfo.so
 %endif

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  4 15:03:28 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- As per jsc-PED-1344, update spec file to only build the containerinfo
+  plugin for TW/SLES 15 SP5 and newer.
+
+-------------------------------------------------------------------
 Tue Mar 28 23:16:47 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - Update to 12.2.0 (build 21223074) (boo#1209128)
