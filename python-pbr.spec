@@ -53,7 +53,6 @@ BuildRequires:  gpg2
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures >= 3.0.0
-BuildRequires:  python3-pep517
 BuildRequires:  python3-pip
 BuildRequires:  python3-six >= 1.12.0
 BuildRequires:  python3-stestr >= 2.1.0

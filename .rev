@@ -711,4 +711,12 @@
   * Update tox.ini to work with tox 4</comment>
     <requestid>1060114</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>606750cd9ebf7c1a7fad0c8f1778208c</srcmd5>
+    <version>5.11.1</version>
+    <time>1680789339</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on pep517.</comment>
+    <requestid>1077105</requestid>
+  </revision>
 </revisionlist>
