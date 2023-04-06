@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  3 08:33:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.0
+  * Added idle-timeout option to specify the amount of time you need to be idle before notifications are prevented from timing out (#16).
+  * Added icon option, to specify icon to use when none is provided by the notification itself (#82).
+  * Support for image-path hints (#84).
+  * dpi-aware=no|yes|auto option (#80).
+  * Changed Default value of max-width and max-height is now 0 (unlimited).
+  * When determining initial font size, do FontConfig config substitution if the user-provided font pattern has no {pixel}size option (#1287).
+  * Fixed file:// URIs, in icon paths (#84)
+  * Replace ID being ignored if there were no prior notification with that ID.
+  * Wayland protocol violation when output scaling was enabled.
+  * Notification expiration (timeout) and dismissal are now deferred while the action selection helper is running (#90).
+- cleaned up specfile
+
+-------------------------------------------------------------------
 Fri Dec  2 13:48:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update specfile

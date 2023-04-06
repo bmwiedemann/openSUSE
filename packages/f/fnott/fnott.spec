@@ -1,7 +1,7 @@
 #
 # spec file for package fnott
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fnott
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Lightweight notification daemon for Wayland
 License:        MIT
@@ -25,11 +25,6 @@ Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/fnott
 Source0:        https://codeberg.org/dnkl/fnott/archive/%{version}.tar.gz
 BuildRequires:  meson >= 0.58
-%if 0%{?sle_version} >= 150400
-BuildRequires:  gcc11
-%else
-BuildRequires:  gcc >= 8
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
@@ -43,18 +38,24 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-scanner)
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc11
+%else
+BuildRequires:  gcc >= 8
+%endif
 
 %description
 Lightweight notification daemon for Wayland.
 
 %prep
-%autosetup -n %name
+%autosetup -n %{name}
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
 
 %description    zsh-completion
 Zsh command-line completion support for %{name}
