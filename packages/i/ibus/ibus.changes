@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 31 14:15:38 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix key typing order
+  * This prevents that keys get stuck in games with wine/proton (steam)
+  * Added ibus-fix-key-release.patch
+
+-------------------------------------------------------------------
 Thu Mar  9 07:47:01 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Update version to 1.5.28

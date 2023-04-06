@@ -76,6 +76,9 @@ Patch15:        ibus-socket-name-compatibility.patch
 # PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
 # Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
 Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
+# PATCH-FIX-UPSTREAM ibus-fix-key-release.patch
+# Fixes a problem that wine/proton (steam) got a key stuck
+Patch17:        ibus-fix-key-release.patch
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
@@ -234,6 +237,7 @@ cp -r %{SOURCE11} .
 %patch15 -p1
 %endif
 %patch16 -p1
+%patch17 -p1
 
 %build
 %configure --disable-static \

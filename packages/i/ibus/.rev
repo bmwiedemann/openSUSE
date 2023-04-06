@@ -1089,4 +1089,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>1070583</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>be89ef0c48e961bc3990b5ce7fb266ce</srcmd5>
+    <version>1.5.28</version>
+    <time>1680789342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077111</requestid>
+  </revision>
 </revisionlist>
