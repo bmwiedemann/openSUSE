@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,17 +33,13 @@
 %bcond_with     systemtap
 
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
 URL:            https://github.com/zlib-ng/zlib-ng
 Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.tar.gz#/zlib-ng-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM - Backport https://github.com/zlib-ng/zlib-ng/pull/1297 to fix boo#1200578
-Patch0:         1297.patch
-# Cherry-pick bisected from develop branch
-Patch1:         0001-Add-one-extra-byte-to-return-value-of-compressBound-.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 %if %{with systemtap}
