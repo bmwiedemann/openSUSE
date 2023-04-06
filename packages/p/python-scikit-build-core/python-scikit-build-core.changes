@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr  6 07:20:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.2.2:
+  * zipinfo should report regular files
+  * Support running in environments with SOURCE_DATE_EPOCH set
+  * Report self version too
+  * refactor: use from_pyproject
+  * Add {wheel_tag} for build-dir
+  * Support for conda's CMAKE_SYSTEM_PROCESSOR
+  * Print out paths
+  * docs: update readme for 3.26 backport
+  * tests: support running tests with system cmake3 visible
+  * tests: nicer exit, minor refactors
+  * refactor: minor changes & nicer environment logging printout
+  * Local build directory setting & build reuse
+  * Add prepare_metadata_for_build_wheel
+  * Native wheel writer implementation
+  * Use 3.26 dev version port of FindPython
+  * tests: allow pytest 7.0+ instead of 7.2+
+  * tests: include cmake and ninja if missing in nox
+  * tests: simpler pytest-subprocess
+  * chore: Python 3.11 Self usage
+  * chore: fix Ruff configuration
+  * chore: minor adjustments to wheel returns
+  * chore: remove duplicate Ruff code
+  * fix: handle local cmake dir for search
+  * fix: avoid resolving cmake/ninja paths
+  * tests: add isolated marker to test_pep518_sdist
+
+-------------------------------------------------------------------
 Fri Jan 27 17:59:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1.5

@@ -17,12 +17,12 @@
 
 
 Name:           python-scikit-build-core
-Version:        0.1.5
+Version:        0.2.2
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0
 URL:            https://github.com/scikit-build/scikit-build-core
-Source:         https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-0.1.5.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE scikit-build-core-offline-wheelhouse.patch provide the testing wheels without runtime download code@bnavigator.de
 Patch1:         scikit-build-core-offline-wheelhouse.patch
 BuildRequires:  %{python_module base >= 3.7}
@@ -32,12 +32,12 @@ BuildRequires:  %{python_module packaging >= 20.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       cmake >= 3.15
+Requires:       python-packaging >= 20.9
 Requires:       (python-exceptiongroup if python-base < 3.11)
 Requires:       (python-importlib-resources >= 1.3 if python-base < 3.9)
 Requires:       (python-tomli >= 1.1 if python-base < 3.11)
 Requires:       (python-typing-extensions >= 3.10.0 if python-base < 3.8)
-Requires:       cmake >= 3.15
-Requires:       python-packaging >= 20.9
 Recommends:     ninja
 Recommends:     python-rich
 Provides:       python-scikit_build_core = %{version}-%{release}
@@ -59,7 +59,7 @@ BuildRequires:  %{python_module pathspec >= 0.10.1}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module pyproject-metadata >= 0.5}
 BuildRequires:  %{python_module pytest >= 7.2}
-BuildRequires:  %{python_module pytest-subprocess}
+BuildRequires:  %{python_module pytest-subprocess >= 1.5.0}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -85,10 +85,10 @@ Features over classic Scikit-build:
 
 %package pyproject
 Summary:        The scikit_build_core[pyproject] extra
-Requires:       python-scikit-build-core = %{version}
 Requires:       python-distlib >= 0.3.5
 Requires:       python-pathspec >= 0.10.1
 Requires:       python-pyproject-metadata >= 0.5
+Requires:       python-scikit-build-core = %{version}
 Provides:       python-scikit_build_core-pyproject = %{version}-%{release}
 
 %description pyproject
@@ -107,10 +107,8 @@ Python CMake adaptor and Python API for plugins: The extra requirement to build 
 %check
 # no wheel dependencies for isolated build provided
 donttestmark="isolated"
-# missing isolated marker: no rich wheel -- gh#scikit-build/scikit-build-core#182
-donttest="test_pep518_sdist"
 # different hash due to different build environment:
-donttest="$donttest or test_pep517_sdist_hash"
+donttest="test_pep517_sdist_hash"
 %pytest -m "not ($donttestmark)" -k "not ($donttest)"
 
 %files %{python_files}
