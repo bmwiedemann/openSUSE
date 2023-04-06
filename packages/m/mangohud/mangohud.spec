@@ -19,6 +19,7 @@
 %define internal_ver 0.6.8
 %define imgui_ver 1.81
 %define imgui_wrap 1
+%define vulkan_ver 1.2.158
 Name:           mangohud
 Version:        0.6.8
 Release:        0
@@ -28,6 +29,8 @@ URL:            https://github.com/flightlessmango/MangoHud
 Source0:        %{url}/archive/v%{internal_ver}.tar.gz#/%{name}-%{internal_ver}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{imgui_ver}/imgui-%{imgui_ver}.tar.gz
 Source2:        https://wrapdb.mesonbuild.com/v1/projects/imgui/%{imgui_ver}/%{imgui_wrap}/get_zip#/imgui-%{imgui_ver}-%{imgui_wrap}-wrap.zip
+Source3:        https://wrapdb.mesonbuild.com/v2/vulkan-headers_%{vulkan_ver}-2/get_patch#/vulkan-headers-%{vulkan_ver}-2-wrap.zip
+Source4:        https://github.com/KhronosGroup/Vulkan-Headers/archive/v%{vulkan_ver}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  AppStream
 BuildRequires:  gcc-c++
@@ -38,23 +41,30 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-mako
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(spdlog)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 Suggests:       goverlay
 Provides:       bundled(ImGui)
+Provides:       bundled(Vulkan-Headers-sdk)
 
 %description
 A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 
 %prep
-%autosetup -n MangoHud-%{internal_ver}
-%autosetup -n MangoHud-%{internal_ver} -DTa1
-%autosetup -n MangoHud-%{internal_ver} -DTa2
+%autosetup -n MangoHud-%{version} -p1
+%autosetup -n MangoHud-%{version} -DTa1
+%autosetup -n MangoHud-%{version} -DTa2
+%autosetup -n MangoHud-%{version} -DTa3
+%autosetup -n MangoHud-%{version} -DTa4
 sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
 mv imgui-%{imgui_ver} subprojects/
+mv Vulkan-Headers-%{vulkan_ver} subprojects/
 sed -i 's/0.60.0/0.59/g' meson.build
 
 # Fix building with GCC 13 -- Workaround until the next release where the fix will be included
@@ -65,7 +75,6 @@ sed -i -e '1i#include <cstdint>' src/overlay_params.cpp
 
 %build
 %meson \
- -Duse_system_vulkan=enabled \
  -Dwith_wayland=enabled \
  -Dwith_xnvctrl=disabled \
  -Duse_system_spdlog=enabled

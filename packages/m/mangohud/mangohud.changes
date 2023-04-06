@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  4 17:27:46 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Disabled compilation with system libraries vulkan-headers
+  * https://github.com/flightlessmango/MangoHud/pull/975
+- Added BuildRequires glew, glfw3, nlohmann_json. 
+
+-------------------------------------------------------------------
 Tue Mar 28 03:20:41 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Fix building with GCC 13
