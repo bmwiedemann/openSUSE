@@ -17,11 +17,10 @@
 
 
 Name:           qt6ct
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Qt 6 Configuration Tool
 License:        BSD-2-Clause
-Group:          Development/Libraries/X11
 URL:            https://github.com/trialuser02/qt6ct
 Source:         https://github.com/trialuser02/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  qt6-gui-private-devel
@@ -40,16 +39,23 @@ etc.) under DE/WM without Qt integration.
 
 %build
 %cmake_qt6
+
 %qt6_build
 
 %install
 %qt6_install
+
+# Unneeded
+rm %{buildroot}%{_qt6_libdir}/libqt6ct-common.so
+
+%ldconfig_scriptlets
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README
 %dir %{_qt6_pluginsdir}/styles
 %{_bindir}/qt6ct
+%{_qt6_libdir}/libqt6ct-common.so.%{version}
 %{_qt6_sharedir}/qt6ct/
 %{_qt6_pluginsdir}/platformthemes/libqt6ct.so
 %{_qt6_pluginsdir}/styles/libqt6ct-style.so

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  4 14:58:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8:
+  * added keywords entry to desktop file
+  * fixed compatibility with applications that use own stylesheet
+  * fixed font applying issue
+  * updated Japanese translation
+
+-------------------------------------------------------------------
 Sat Jan 28 14:05:30 UTC 2023 - kh Lai <dlshcbmuipmam@hotmail.com>
 
 - Update to 0.7
