@@ -1,0 +1,77 @@
+From ab859fe59b464a038a45552921cb2b23892343af Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Fri, 17 Mar 2023 15:52:09 -0300
+Subject: [PATCH] Bug: Loading a corrupted binary file can segfault
+
+The size of the list of upvalue names are stored separated from the
+size of the list of upvalues, but they share the same array.
+---
+ ldump.c          |  8 ++++++--
+ lundump.c        |  2 ++
+ testes/calls.lua | 14 ++++++++++++++
+ 3 files changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/ldump.c b/ldump.c
+index f848b669c..f231691b7 100644
+--- a/src/ldump.c
++++ b/src/ldump.c
+@@ -10,6 +10,7 @@
+ #include "lprefix.h"
+ 
+ 
++#include <limits.h>
+ #include <stddef.h>
+ 
+ #include "lua.h"
+@@ -55,8 +56,11 @@ static void dumpByte (DumpState *D, int y) {
+ }
+ 
+ 
+-/* dumpInt Buff Size */
+-#define DIBS    ((sizeof(size_t) * 8 / 7) + 1)
++/*
++** 'dumpSize' buffer size: each byte can store up to 7 bits. (The "+6"
++** rounds up the division.)
++*/
++#define DIBS    ((sizeof(size_t) * CHAR_BIT + 6) / 7)
+ 
+ static void dumpSize (DumpState *D, size_t x) {
+   lu_byte buff[DIBS];
+diff --git a/lundump.c b/lundump.c
+index aba93f828..02aed64fb 100644
+--- a/src/lundump.c
++++ b/src/lundump.c
+@@ -248,6 +248,8 @@ static void loadDebug (LoadState *S, Proto *f) {
+     f->locvars[i].endpc = loadInt(S);
+   }
+   n = loadInt(S);
++  if (n != 0)  /* does it have debug information? */
++    n = f->sizeupvalues;  /* must be this many */
+   for (i = 0; i < n; i++)
+     f->upvalues[i].name = loadStringN(S, f);
+ }
+diff --git a/testes/calls.lua b/testes/calls.lua
+index a19385843..2d562a24a 100644
+--- a/testes/calls.lua
++++ b/testes/calls.lua
+@@ -342,6 +342,20 @@ do   -- another bug (in 5.4.0)
+ end
+ 
+ 
++do   -- another bug (since 5.2)
++  -- corrupted binary dump: list of upvalue names is larger than number
++  -- of upvalues, overflowing the array of upvalues.
++  local code =
++   "\x1b\x4c\x75\x61\x54\x00\x19\x93\x0d\x0a\x1a\x0a\x04\x08\x08\x78\x56\z
++    \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x28\x77\x40\x00\x86\x40\z
++    \x74\x65\x6d\x70\x81\x81\x01\x00\x02\x82\x48\x00\x02\x00\xc7\x00\x01\z
++    \x00\x80\x80\x80\x82\x00\x00\x80\x81\x82\x78\x80\x82\x81\x86\x40\x74\z
++    \x65\x6d\x70"
++
++  assert(load(code))   -- segfaults in previous versions
++end
++
++
+ x = string.dump(load("x = 1; return x"))
+ a = assert(load(read1(x), nil, "b"))
+ assert(a() == 1 and _G.x == 1)

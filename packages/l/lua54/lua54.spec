@@ -54,6 +54,7 @@ Patch13:        luabugs7.patch
 Patch14:        luabugs8.patch
 Patch15:        luabugs9.patch
 Patch16:        luabugs10.patch
+Patch17:        luabugs11.patch
 #
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
