@@ -1,0 +1,41 @@
+---
+ pyproject.toml |   16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -30,12 +30,23 @@ build-backend = "hatchling.build"
+ name = "mkdocs-material"
+ dynamic = [
+   "version",
+-  "dependencies",
+   "license",
+   "description",
+   "authors",
+   "keywords"
+ ]
++dependencies = [
++  "jinja2>=3.0",
++  "markdown>=3.2",
++  "mkdocs>=1.4.2",
++  "mkdocs-material-extensions>=1.1",
++  "pygments>=2.14",
++  "pymdown-extensions>=9.9.1",
++  "colorama>=0.4",
++  "regex>=2022.4.24",
++  "requests>=2.26"
++]
++
+ readme = "README.md"
+ requires-python = ">=3.7"
+ classifiers = [
+@@ -72,9 +83,6 @@ source = "nodejs"
+ [tool.hatch.metadata.hooks.nodejs]
+ fields = ["license", "description", "authors", "keywords", "urls"]
+ 
+-[tool.hatch.metadata.hooks.requirements_txt]
+-filename = "requirements.txt"
+-
+ [tool.hatch.build.targets.wheel]
+ include = ["/material"]
+ 

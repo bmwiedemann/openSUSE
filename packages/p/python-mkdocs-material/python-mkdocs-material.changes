@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon Apr  3 12:30:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.5:
+  * Updated Lithuanian and Japanese translations
+  * Updated Mermaid.js to version 9.4.3
+  * Fixed #5290: Footer previous/next labels cut-off for short page
+    titles
+- update to 9.1.4:
+  * Fixed #5239: Instant loading breaks anchors in details
+    (9.1.1 regression)
+  * Fixed #5211: Anchor following not working for Chinese
+    (9.1.2 regression)
+
+-------------------------------------------------------------------
+Tue Mar 28 08:42:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add no-hatchling-requirements_txt.patch, which manually
+  create project.dependencies in pyproject.toml instead of
+  using hatch_requirements_txt module. This is a brutal
+  hack, but otherwise (see sr#1072844 for details) we need
+  python-hatch_requirements_txt which pulls in excessive number
+  of packages (starting with python-conincidence, python-whey,
+  python-domdf-python-tools, and many others). Until we have
+  these in openSUSE, we should stay with this hand-managed patch.
+
+-------------------------------------------------------------------
+Sat Mar 18 10:42:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-mkdocs-material
