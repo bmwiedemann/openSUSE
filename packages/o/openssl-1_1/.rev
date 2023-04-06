@@ -385,4 +385,17 @@
   * Add openssl-CVE-2023-0464.patch</comment>
     <requestid>1074722</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>d2f11834bb2b91ef40f97a4fdba66214</srcmd5>
+    <version>1.1.1t</version>
+    <time>1680789353</time>
+    <user>dimstar_suse</user>
+    <comment>- Security Fix: [CVE-2023-0465, bsc#1209878]
+  * Invalid certificate policies in leaf certificates are silently ignored
+  * Add openssl-CVE-2023-0465.patch
+- Security Fix: [CVE-2023-0466, bsc#1209873]
+  * Certificate policy check not enabled
+  * Add openssl-CVE-2023-0466.patch</comment>
+    <requestid>1077221</requestid>
+  </revision>
 </revisionlist>

@@ -134,6 +134,10 @@ Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
 Patch80:        openssl-1_1-openssl-config.patch
 # PATCH-FIX-UPSTREAM: bsc#1209624, CVE-2023-0464 Excessive Resource Usage Verifying X.509 Policy Constraints
 Patch81:        openssl-CVE-2023-0464.patch
+# PATCH-FIX-UPSTREAM: bsc#1209878, CVE-2023-0465 Invalid certificate policies in leaf certificates are silently ignored
+Patch82:        openssl-CVE-2023-0465.patch
+# PATCH-FIX-UPSTREAM: bsc#1209873, CVE-2023-0466 Certificate policy check not enabled
+Patch83:        openssl-CVE-2023-0466.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl1_1 = %{version}-%{release}
