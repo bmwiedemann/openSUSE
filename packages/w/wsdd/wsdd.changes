@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  6 08:34:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previous change: really limit the forced change to python
+  3.10 on suse_version <= 1500 (up to SLE/Leap 15); newer products
+  already use python 3.10 (or newer) as default.
+
+-------------------------------------------------------------------
 Mon Apr  3 15:09:07 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Force the use of python 3.10 for openSUSE Leap
