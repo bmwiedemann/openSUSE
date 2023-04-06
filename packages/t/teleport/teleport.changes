@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Apr 06 03:50:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.2.1:
+  * Release 12.2.1 (#24098)
+  * [v12] helm: Add support for imagePullSecrets to
+    teleport-cluster chart (#24017)
+  * [v12] chore: Bump Go to 1.20.3 (#24062)
+  * Show the server name (instead of UUID) in errors (#23724)
+    (#23935)
+
+-------------------------------------------------------------------
+Thu Apr 06 03:29:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.2.0:
+  * Release 12.2.0 (#24056)
+  * fix joining moderated sessions in ui (#24018)
+  * revert marshal database tls mode (#24063)
+  * helm: delete hook-related resource on re-apply (#24068)
+  * Fix listing of participant modes in UI (#24029)
+  * [v12] Add a guide to creating Teleport roles via the API (#24003)
+  * docs: correct mongodb atlas example config (#24044)
+  * Add Azure auto-join docs (#23944)
+  * Replace "Spotlight Search" with "Cross-Cluster Search" (#24049)
+  * Recommend Proxy Service in event-handler guides (#23937)
+  * Add missing `join_method` in azure joining docs (#24031)
+  * [v12] docs: device trust edits (#24025)
+  * [v12] Define an explicit device resource as DeviceV1 (#24024)
+  * [v12] Connect: Collect protocol origin (#24039)
+  * [v12] docs: update version (#24027)
+  * Close auth clients in tctl tests (#24014)
+  * docs: add description of config versions (#23936)
+  * [v12] Headless Login (#23360)
+  * [v12] tsh: Fix redundant error in PPK generation on relogin
+    (#23984)
+  * Allow getting client ip from ProxyHelloSignature for
+    compatibility (#23419)
+  * Update e reference (#24006)
+  * [v12] docs: include enable teleport service in systemctl start
+    (#23988)
+  * [v12] Docs: prefer `curl .../auth/export` instead of `tctl auth
+    export` (#23982)
+  * [v12] docs: Add advisory and troubleshooting on non-tls mode
+    for machineid kube (#23951)
+  * [v12] Backport IP pinning for Kube and DB access (#23418)
+  * Update e reference (#23994)
+  * [v12] GitLab Delegated Joining docs (#23981)
+  * Add Support for Oracle protocol (#23892)
+  * [v12] Metrics: add IsSSO to Discover Events (#23902)
+  * [v12] Add Docker Hub login to Drone's Kubernetes pipelines
+    (#23958)
+
+-------------------------------------------------------------------
 Mon Apr 03 13:17:55 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.1.5:
