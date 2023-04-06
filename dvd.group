@@ -59,7 +59,6 @@
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="QGnomePlatform-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="QGnomePlatform-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="WebKitGTK-4.0-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="WebKitGTK-4.1-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
@@ -1462,6 +1461,7 @@
     <package name="libQt6QuickDialogs2-6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt6QuickDialogs2QuickImpl6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt6QuickDialogs2Utils6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt6QuickEffects6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt6QuickLayouts6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt6QuickParticles6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt6QuickShapes6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
