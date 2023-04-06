@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  4 07:19:56 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 4.2:
+  This is just a summary. Full release notes are available at
+  https://docs.djangoproject.com/en/4.2/releases/4.2/
+  + Psycopg 3 support
+  + Comments on columns and tables
+  + Mitigation for the BREACH attack
+  + In-memory file storage
+  + Custom file storages
+  + For backwards incompatible changes in 4.2 see
+  https://docs.djangoproject.com/en/4.2/releases/4.2/#backwards-incompatible-changes-in-4-2
+
+- Update of keyring file
+
+-------------------------------------------------------------------
 Tue Feb 14 09:59:42 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.1.7:

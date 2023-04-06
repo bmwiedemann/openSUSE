@@ -1,0 +1,67 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+This file contains MD5, SHA1, and SHA256 checksums for the source-code
+tarball and wheel files of Django 4.2, released April 3, 2023.
+
+To use this file, you will need a working install of PGP or other
+compatible public-key encryption software. You will also need to have
+the Django release manager's public key in your keyring. This key has
+the ID ``2EF56372BA48CD1B`` and can be imported from the MIT
+keyserver, for example, if using the open-source GNU Privacy Guard
+implementation of PGP:
+
+    gpg --keyserver pgp.mit.edu --recv-key 2EF56372BA48CD1B
+
+or via the GitHub API:
+
+    curl https://github.com/felixxm.gpg | gpg --import -
+
+Once the key is imported, verify this file:
+
+    gpg --verify Django-4.2.checksum.txt
+
+Once you have verified this file, you can use normal MD5, SHA1, or SHA256
+checksumming applications to generate the checksums of the Django
+package and compare them to the checksums listed below.
+
+Release packages
+================
+
+https://www.djangoproject.com/m/releases/4.2/Django-4.2.tar.gz
+https://www.djangoproject.com/m/releases/4.2/Django-4.2-py3-none-any.whl
+
+MD5 checksums
+=============
+
+20a7a89579493c5f264900a5dbb848aa  Django-4.2.tar.gz
+4b079efb729678cb02e6203302c52a74  Django-4.2-py3-none-any.whl
+
+SHA1 checksums
+==============
+
+95c87120a838585f13f929e681ba0ad7d19addd7  Django-4.2.tar.gz
+85eb474a37b7b6401926db880a46258f12ff9787  Django-4.2-py3-none-any.whl
+
+SHA256 checksums
+================
+
+c36e2ab12824e2ac36afa8b2515a70c53c7742f0d6eaefa7311ec379558db997  Django-4.2.tar.gz
+ad33ed68db9398f5dfb33282704925bce044bef4261cd4fb59e4e7f9ae505a78  Django-4.2-py3-none-any.whl
+-----BEGIN PGP SIGNATURE-----
+
+iQJPBAEBCAA5FiEEq7LCqM0B8WE2GLcNLvVjcrpIzRsFAmQqjZMbHGZlbGlzaWFr
+Lm1hcml1c3pAZ21haWwuY29tAAoJEC71Y3K6SM0br1gP/A8AsFizqY6emGGg1Vb7
+rvzSDL6eqAnUNcz7idGJNj48bAbWJwvEYysJ8FLXCvERiH+n6a2qHmf61gIUXW2R
+WwIvyU6DMFXIwBf/nz8kPWQ2gx3jsPAjnJp4vLOU6GwjdAa+Pzh6I0kVBkcQ7wMm
+IR7Ya+/vHCyBmvOkZ+MlQ+uWYCK/adc8WvItq/7H4MrIvBrnZQV21TDZzf1RWiq6
+BqqOGi86X2ZbGg8D4s0MG0ZKLSg7EB6azJ2xGC4qyoiorHlsP4nLIFlC8hC+Vxm0
+JZQXSJd3T8S2/kkRsVQABnrp1/GxSF4KRSASAbol8Vb9Hg9fSE9pJ/TEyJwAVLTC
+jrAMHtXF/NxIl2UalY0Kr6EM/Lx2syAMiaqmTJofEMUjzK2pN1GyPO3FMrq66ar9
+5R8DTby3FU3yK1omIikqz4Qc6XYEWuqZyQFctOYsuoLCpOKTquygJCIgkbUfh7gL
+gOeyts0uRNGPKbeOFQWZoHzK38kWwoS3Sy6CBePbc+9zvPzwPgBZrO3JzVrhY9gi
+MrG0S7EAO7QpNzZ+v82Wys31UKBvQ0iDmP/cou09V+4Trzu68QfMEHHe9DBBEuIJ
+mRN5kZbdHzcdAqmaWihAC2WNVxcQLWqRbXZ4cnFG1/ioQ5GhL0Sgx8lZ7XbreWmS
+EIen7N1kkVJQ6/CudYzfn8h2
+=Lk5W
+-----END PGP SIGNATURE-----
