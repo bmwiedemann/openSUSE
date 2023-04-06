@@ -127,4 +127,41 @@
   * second regression fix: Use gzip -d instead of gunzip</comment>
     <requestid>1059036</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9529565dff7f1242439a0e9c169f01c9</srcmd5>
+    <version>3.5.15</version>
+    <time>1680789334</time>
+    <user>dimstar_suse</user>
+    <comment>- n_no-compress-on-sle.patch
+  * we can't handle .Z files, since we don't have ncompress package
+    on SLE; so disable this feature as before (bsc#1207031)
+- BuildRequires
+  * removed again ncompress
+  * added again autoconf, automake, libtool
+- run again autoreconf due to patch above
+
+- update to 3.5.15:  
+  * Use gzip -d instead of gunzip
+  * Prevent a double free in the error code path
+  * Fix CVE-2022-4883: compression commands depend on $PATH
+  * Fix CVE-2022-44617: Runaway loop with width of 0 and enormous height
+  * test: add test cases for CVE-2022-44617 (zero-width w/enormous height)
+  * Fix CVE-2022-46285: Infinite loop on unclosed comments
+  * test: add test case for CVE-2022-46285 (unclosed comments)
+  * cxpm: getc/ungetc wrappers should not adjust position when c == EOF
+  * test: Add unit tests using glib framework
+  * configure: add --disable-open-zfile instead of requiring -DNO_ZPIPE
+  * man pages: Apply standard man page style/formatting
+  * man pages: Replace &quot;See Also&quot; entries with more useful ones
+  * man pages: Fix typos and other minor editing
+- drop U_0001-configure-add-disable-open-zfile-instead-of-requirin.patch,
+      U_0002-Fix-CVE-2022-46285-Infinite-loop-on-unclosed-comment.patch,
+      U_0004-Fix-CVE-2022-44617-Runaway-loop-with-width-of-0-and-.patch,
+      U_0005-Fix-CVE-2022-4883-compression-commands-depend-on-PAT.patch,
+      U_regression-bug1207029_1207030_1207031.patch
+      U_regression2-bug1207029_1207030_1207031.patch: upstream
+- switch urls to https
+- spec file cleanups</comment>
+    <requestid>1077087</requestid>
+  </revision>
 </revisionlist>
