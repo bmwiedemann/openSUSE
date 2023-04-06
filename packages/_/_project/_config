@@ -1319,8 +1319,8 @@ BuildFlags: onlybuild:acl
 BuildFlags: onlybuild:adjtimex
 BuildFlags: onlybuild:adolc
 BuildFlags: onlybuild:adwaita-icon-theme
-BuildFlags: onlybuild:alsa-oss
 BuildFlags: onlybuild:alsa
+BuildFlags: onlybuild:alsa-oss
 BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-utils
 BuildFlags: onlybuild:ant
@@ -1334,8 +1334,8 @@ BuildFlags: onlybuild:apparmor
 BuildFlags: onlybuild:apparmor-rpm-macros
 BuildFlags: onlybuild:appstream-glib
 BuildFlags: onlybuild:apr
-BuildFlags: onlybuild:apulse
 BuildFlags: onlybuild:apr-util
+BuildFlags: onlybuild:apulse
 BuildFlags: onlybuild:argon2
 BuildFlags: onlybuild:argyllcms
 BuildFlags: onlybuild:asciidoc
@@ -1384,6 +1384,7 @@ BuildFlags: onlybuild:bzip2
 BuildFlags: onlybuild:c-ares
 BuildFlags: onlybuild:ca-certificates
 BuildFlags: onlybuild:ca-certificates-mozilla
+BuildFlags: onlybuild:cabextract
 BuildFlags: onlybuild:cairo
 BuildFlags: onlybuild:cantarell-fonts
 BuildFlags: onlybuild:capstone
@@ -1466,6 +1467,7 @@ BuildFlags: onlybuild:dtc
 BuildFlags: onlybuild:duktape
 BuildFlags: onlybuild:dummy-release
 BuildFlags: onlybuild:dwz
+BuildFlags: onlybuild:dxvk
 BuildFlags: onlybuild:e2fsprogs
 BuildFlags: onlybuild:ebtables
 BuildFlags: onlybuild:ed
@@ -1520,8 +1522,8 @@ BuildFlags: onlybuild:fstrm
 BuildFlags: onlybuild:ftgl
 BuildFlags: onlybuild:fuse
 BuildFlags: onlybuild:fuse3
-BuildFlags: onlybuild:gawk
 BuildFlags: onlybuild:gamemode
+BuildFlags: onlybuild:gawk
 BuildFlags: onlybuild:gc
 BuildFlags: onlybuild:gcab
 BuildFlags: onlybuild:gcc
@@ -1551,6 +1553,7 @@ BuildFlags: onlybuild:gdb
 BuildFlags: onlybuild:gdbm
 BuildFlags: onlybuild:gdk-pixbuf
 BuildFlags: onlybuild:gdm
+BuildFlags: onlybuild:geany
 BuildFlags: onlybuild:geoclue2
 BuildFlags: onlybuild:geocode-glib
 BuildFlags: onlybuild:gettext-runtime
@@ -1558,11 +1561,11 @@ BuildFlags: onlybuild:gettext-runtime-mini
 BuildFlags: onlybuild:ghostscript
 BuildFlags: onlybuild:ghostscript-fonts
 BuildFlags: onlybuild:ghostscript:mini
-BuildFlags: onlybuild:rpmlint-mini-AGGR
 BuildFlags: onlybuild:giflib
 BuildFlags: onlybuild:git
 BuildFlags: onlybuild:gjs
 BuildFlags: onlybuild:glew
+BuildFlags: onlybuild:glfw
 BuildFlags: onlybuild:glib-networking
 BuildFlags: onlybuild:glib2
 BuildFlags: onlybuild:glib2:doc
@@ -1727,9 +1730,6 @@ BuildFlags: onlybuild:libXcomposite
 BuildFlags: onlybuild:libXcursor
 BuildFlags: onlybuild:libXdamage
 BuildFlags: onlybuild:libXdmcp
-BuildFlags: onlybuild:cabextract
-BuildFlags: onlybuild:python-future
-BuildFlags: onlybuild:python-pefile
 BuildFlags: onlybuild:libXevie
 BuildFlags: onlybuild:libXext
 BuildFlags: onlybuild:libXfixes
@@ -1857,9 +1857,9 @@ BuildFlags: onlybuild:libmanette
 BuildFlags: onlybuild:libmaxminddb
 BuildFlags: onlybuild:libmbim
 BuildFlags: onlybuild:libmd
+BuildFlags: onlybuild:libmetalink
 BuildFlags: onlybuild:libmicrodns
 BuildFlags: onlybuild:libmicrohttpd
-BuildFlags: onlybuild:dxvk
 BuildFlags: onlybuild:libmnl
 BuildFlags: onlybuild:libmodulemd
 BuildFlags: onlybuild:libmspack
@@ -1914,6 +1914,7 @@ BuildFlags: onlybuild:libqt5-qttools
 BuildFlags: onlybuild:libqt5-qtvirtualkeyboard
 BuildFlags: onlybuild:libqt5-qtwayland
 BuildFlags: onlybuild:libqt5-qtwebchannel
+BuildFlags: onlybuild:snobol4
 BuildFlags: onlybuild:libqt5-qtwebsockets
 BuildFlags: onlybuild:libqt5-qtx11extras
 BuildFlags: onlybuild:libqt5-qtxmlpatterns
@@ -1923,7 +1924,6 @@ BuildFlags: onlybuild:libraw1394
 BuildFlags: onlybuild:libreplaygain
 BuildFlags: onlybuild:librest
 BuildFlags: onlybuild:librist
-BuildFlags: onlybuild:libmetalink
 BuildFlags: onlybuild:librsvg
 BuildFlags: onlybuild:librubberband
 BuildFlags: onlybuild:libsamplerate
@@ -1989,7 +1989,6 @@ BuildFlags: onlybuild:libxshmfence
 BuildFlags: onlybuild:libxslt
 BuildFlags: onlybuild:libyaml
 BuildFlags: onlybuild:libyuv
-BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:libzio
 BuildFlags: onlybuild:libzip
 BuildFlags: onlybuild:libzypp
@@ -2029,8 +2028,8 @@ BuildFlags: onlybuild:malaga-suomi
 BuildFlags: onlybuild:malcontent
 BuildFlags: onlybuild:man
 BuildFlags: onlybuild:man-pages
-BuildFlags: onlybuild:mangohud
 BuildFlags: onlybuild:mandoc
+BuildFlags: onlybuild:mangohud
 BuildFlags: onlybuild:mariadb-connector-c
 BuildFlags: onlybuild:mcstrans
 BuildFlags: onlybuild:mdadm
@@ -2038,11 +2037,11 @@ BuildFlags: onlybuild:memory-constraints
 BuildFlags: onlybuild:meson
 BuildFlags: onlybuild:metis:serial
 BuildFlags: onlybuild:mingw32-binutils:mingw32-cross-binutils
-BuildFlags: onlybuild:mingw32-cross-wine
 BuildFlags: onlybuild:mingw32-cross-cmake
 BuildFlags: onlybuild:mingw32-cross-gcc
 BuildFlags: onlybuild:mingw32-cross-gcc-bootstrap
 BuildFlags: onlybuild:mingw32-cross-pkgconf
+BuildFlags: onlybuild:mingw32-cross-wine
 BuildFlags: onlybuild:mingw32-filesystem
 BuildFlags: onlybuild:mingw32-headers
 BuildFlags: onlybuild:mingw32-runtime
@@ -2081,6 +2080,7 @@ BuildFlags: onlybuild:nghttp2
 BuildFlags: onlybuild:nginx
 BuildFlags: onlybuild:nginx-macros
 BuildFlags: onlybuild:ninja
+BuildFlags: onlybuild:nlohmann_json
 BuildFlags: onlybuild:nodejs-common
 BuildFlags: onlybuild:nodejs19
 BuildFlags: onlybuild:npth
@@ -2543,6 +2543,7 @@ BuildFlags: onlybuild:python-fqdn
 BuildFlags: onlybuild:python-freezegun
 BuildFlags: onlybuild:python-frozenlist
 BuildFlags: onlybuild:python-fs
+BuildFlags: onlybuild:python-future
 BuildFlags: onlybuild:python-gast
 BuildFlags: onlybuild:python-geoip2
 BuildFlags: onlybuild:python-gevent
@@ -2629,6 +2630,7 @@ BuildFlags: onlybuild:python-paramiko
 BuildFlags: onlybuild:python-path
 BuildFlags: onlybuild:python-pathspec
 BuildFlags: onlybuild:python-pbr
+BuildFlags: onlybuild:python-pefile
 BuildFlags: onlybuild:python-pep517
 BuildFlags: onlybuild:python-pexpect
 BuildFlags: onlybuild:python-pip
@@ -2812,8 +2814,6 @@ BuildFlags: onlybuild:python-zope.event
 BuildFlags: onlybuild:python-zope.hookable
 BuildFlags: onlybuild:python-zope.interface
 BuildFlags: onlybuild:python-zstandard
-BuildFlags: onlybuild:winetricks
-BuildFlags: onlybuild:wine-binfmt
 BuildFlags: onlybuild:python310
 BuildFlags: onlybuild:python310:base
 BuildFlags: onlybuild:python311
@@ -2847,6 +2847,7 @@ BuildFlags: onlybuild:rpm
 BuildFlags: onlybuild:rpm-config-SUSE
 BuildFlags: onlybuild:rpmlint
 BuildFlags: onlybuild:rpmlint-mini
+BuildFlags: onlybuild:rpmlint-mini-AGGR
 BuildFlags: onlybuild:rpmlint:strict
 BuildFlags: onlybuild:rrdtool
 BuildFlags: onlybuild:rtkit
@@ -2902,6 +2903,7 @@ BuildFlags: onlybuild:soxr
 BuildFlags: onlybuild:spandsp
 BuildFlags: onlybuild:sparsehash
 BuildFlags: onlybuild:spawn-fcgi
+BuildFlags: onlybuild:spdlog
 BuildFlags: onlybuild:speech-dispatcher
 BuildFlags: onlybuild:speex
 BuildFlags: onlybuild:speexdsp
@@ -2910,7 +2912,6 @@ BuildFlags: onlybuild:spice-protocol
 BuildFlags: onlybuild:spirv-headers
 BuildFlags: onlybuild:spirv-llvm-translator
 BuildFlags: onlybuild:spirv-tools
-BuildFlags: onlybuild:spdlog
 BuildFlags: onlybuild:sqlite3
 BuildFlags: onlybuild:squashfs
 BuildFlags: onlybuild:sratom
@@ -3048,9 +3049,12 @@ BuildFlags: onlybuild:webkit2gtk3:gtk3
 BuildFlags: onlybuild:webkit2gtk3:gtk3-soup2
 BuildFlags: onlybuild:webkit2gtk3:gtk4
 BuildFlags: onlybuild:webrtc-audio-processing
+BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:which
 BuildFlags: onlybuild:wine
+BuildFlags: onlybuild:wine-binfmt
 BuildFlags: onlybuild:wine:staging
+BuildFlags: onlybuild:winetricks
 BuildFlags: onlybuild:wireless-tools
 BuildFlags: onlybuild:wireplumber
 BuildFlags: onlybuild:woff2
@@ -3075,6 +3079,7 @@ BuildFlags: onlybuild:xdg-utils
 BuildFlags: onlybuild:xdm
 BuildFlags: onlybuild:xerces-j2
 BuildFlags: onlybuild:xeyes
+BuildFlags: onlybuild:xf86-video-intel
 BuildFlags: onlybuild:xfsprogs
 BuildFlags: onlybuild:xhost
 BuildFlags: onlybuild:xinit
@@ -3091,7 +3096,6 @@ BuildFlags: onlybuild:xmlstarlet
 BuildFlags: onlybuild:xmlto
 BuildFlags: onlybuild:xmltoman
 BuildFlags: onlybuild:xmodmap
-BuildFlags: onlybuild:xf86-video-intel
 BuildFlags: onlybuild:xorg-cf-files
 BuildFlags: onlybuild:xorg-sgml-doctools
 BuildFlags: onlybuild:xorg-x11
