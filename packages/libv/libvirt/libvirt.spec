@@ -161,8 +161,8 @@
     %{nil}
 
 Name:           libvirt
-URL:            http://libvirt.org/
-Version:        9.1.0
+URL:            https://libvirt.org/
+Version:        9.2.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -293,42 +293,13 @@ BuildRequires:  libssh-devel >= 0.8.1
 BuildRequires:  firewall-macros
 %endif
 
-Source0:        https://libvirt.org/sources/%{name}-%{version}.tar.xz
-Source1:        https://libvirt.org/sources/%{name}-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
-Source3:        libvirtd-relocation-server.fw
-Source4:        libvirt-supportconfig
-Source5:        suse-qemu-domain-hook.py
-Source6:        libvirtd-relocation-server.xml
+Source0:        %{name}-%{version}.tar.xz
+Source1:        libvirt-supportconfig
+Source2:        suse-qemu-domain-hook.py
+Source3:        libvirtd-relocation-server.xml
+Source98:       README.packaging.txt
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
-# Upstream patches
-Patch0:         4959490e-support-SUSE-edk2-firmware-paths.patch
-Patch1:         bf3be5b7-libxl-Support-custom-firmware-path.patch
-Patch2:         705525cb-libxl-Support-custom-firmware-path-conversion.patch
-# Patches pending upstream review
-Patch100:       libxl-dom-reset.patch
-Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
-Patch102:       0001-util-Don-t-spawn-pkttyagent-when-stdin-is-not-a-tty.patch
-# Need to go upstream
-Patch150:       libvirt-power8-models.patch
-Patch151:       ppc64le-canonical-name.patch
-Patch152:       libxl-set-migration-constraints.patch
-Patch153:       libxl-set-cach-mode.patch
-Patch154:       0001-libxl-add-support-for-BlockResize-API.patch
-# Our patches
-Patch200:       suse-libvirtd-disable-tls.patch
-Patch201:       suse-libvirt-guests-service.patch
-Patch202:       suse-qemu-conf.patch
-Patch203:       suse-qemu-ovmf-paths.patch
-Patch204:       libxl-support-block-script.patch
-Patch205:       qemu-apparmor-screenshot.patch
-Patch206:       libvirt-suse-netcontrol.patch
-Patch207:       lxc-wait-after-eth-del.patch
-Patch208:       suse-libxl-disable-autoballoon.patch
-Patch209:       suse-xen-ovmf-paths.patch
-Patch210:       virt-create-rootfs.patch
-Patch211:       suse-fix-lxc-container-init.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -864,7 +835,7 @@ Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %if %{with_qemu}
@@ -1090,6 +1061,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dtests=enabled \
            -Drpath=disabled \
            -Dlogin_shell=disabled \
+           -Dno_git=true \
           %{nil}
 
 %meson_build
@@ -1175,14 +1147,14 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
 
 # install firewall services for migration ports
 mkdir -p %{buildroot}/%{_fwdefdir}
-install -m 644 %{S:6} %{buildroot}/%{_fwdefdir}/libvirtd-relocation-server.xml
+install -m 644 %{S:3} %{buildroot}/%{_fwdefdir}/libvirtd-relocation-server.xml
 
 # install supportconfig plugin
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
-install -m 755 %{S:4} %{buildroot}/usr/lib/supportconfig/plugins/libvirt
+install -m 755 %{S:1} %{buildroot}/usr/lib/supportconfig/plugins/libvirt
 
 # install qemu hook script
-install -m 755 %{S:5} %{buildroot}/%{_sysconfdir}/%{name}/hooks/qemu
+install -m 755 %{S:2} %{buildroot}/%{_sysconfdir}/%{name}/hooks/qemu
 
 %ifarch %{power64} s390x x86_64
 mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_probes.stp \
@@ -1248,10 +1220,10 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %libvirt_sysconfig_posttrans libvirtd
 # All connection drivers should be installed post transaction.
 # Time to restart the daemon
-test -f %{_sysconfdir}/sysconfig/services -a \
-  -z "$DISABLE_RESTART_ON_UPDATE" && . %{_sysconfdir}/sysconfig/services
-if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
-  "$DISABLE_RESTART_ON_UPDATE" != 1; then
+test -f %{_sysconfdir}/sysconfig/services && \
+  test -z "$DISABLE_RESTART_ON_UPDATE" && . %{_sysconfdir}/sysconfig/services
+if test "$DISABLE_RESTART_ON_UPDATE" != yes && \
+  test "$DISABLE_RESTART_ON_UPDATE" != 1; then
     # See if user has previously modified their install to
     # tell libvirtd to use --listen
     if grep -q -s -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
@@ -2030,7 +2002,7 @@ fi
 %{_datadir}/%{name}/api/libvirt-lxc-api.xml
 
 %files doc
-%doc AUTHORS.rst NEWS.rst README.rst
+%doc NEWS.rst README.rst
 %license COPYING COPYING.LESSER
 %dir %{_datadir}/doc/%{name}/
 %doc %{_datadir}/doc/%{name}/*

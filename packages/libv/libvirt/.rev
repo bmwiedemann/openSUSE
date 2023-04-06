@@ -4271,4 +4271,41 @@ StandardGroups in rpmlint package.
 - spec: Move ovmf dependency to correct package</comment>
     <requestid>1071839</requestid>
   </revision>
+  <revision rev="371" vrev="1">
+    <srcmd5>497fe58e81619f436f38f7f069544342</srcmd5>
+    <version>9.2.0</version>
+    <time>1680789336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 9.2.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-2-0-2023-04-01
+  - Move to a more git-centric packaging workflow using tar_scm
+    instead of download_files
+    - New source README.packaging.txt
+    - Remove now unused signature file and libvirt.keyring
+    - Patches now maintained in git
+      libxl-dom-reset.patch,
+      network-don-t-use-dhcp-authoritative-on-static-netwo.patch,
+      0001-util-Don-t-spawn-pkttyagent-when-stdin-is-not-a-tty.patch,
+      libvirt-power8-models.patch,
+      ppc64le-canonical-name.patch,
+      libxl-set-migration-constraints.patch,
+      libxl-set-cach-mode.patch,
+      0001-libxl-add-support-for-BlockResize-API.patch,
+      suse-libvirtd-disable-tls.patch,
+      suse-libvirt-guests-service.patch,
+      suse-qemu-conf.patch,
+      suse-qemu-ovmf-paths.patch,
+      libxl-support-block-script.patch,
+      qemu-apparmor-screenshot.patch,
+      libvirt-suse-netcontrol.patch,
+      lxc-wait-after-eth-del.patch,
+      suse-libxl-disable-autoballoon.patch,
+      suse-xen-ovmf-paths.patch,
+      virt-create-rootfs.patch,
+      suse-fix-lxc-container-init.patch
+  - Remove old, unused SUSEfirewall2 config file
+    libvirtd-relocation-server.fw</comment>
+    <requestid>1077101</requestid>
+  </revision>
 </revisionlist>

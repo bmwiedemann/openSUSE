@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Apr  3 20:38:30 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.2.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-2-0-2023-04-01
+  - Move to a more git-centric packaging workflow using tar_scm
+    instead of download_files
+    - New source README.packaging.txt
+    - Remove now unused signature file and libvirt.keyring
+    - Patches now maintained in git
+      libxl-dom-reset.patch,
+      network-don-t-use-dhcp-authoritative-on-static-netwo.patch,
+      0001-util-Don-t-spawn-pkttyagent-when-stdin-is-not-a-tty.patch,
+      libvirt-power8-models.patch,
+      ppc64le-canonical-name.patch,
+      libxl-set-migration-constraints.patch,
+      libxl-set-cach-mode.patch,
+      0001-libxl-add-support-for-BlockResize-API.patch,
+      suse-libvirtd-disable-tls.patch,
+      suse-libvirt-guests-service.patch,
+      suse-qemu-conf.patch,
+      suse-qemu-ovmf-paths.patch,
+      libxl-support-block-script.patch,
+      qemu-apparmor-screenshot.patch,
+      libvirt-suse-netcontrol.patch,
+      lxc-wait-after-eth-del.patch,
+      suse-libxl-disable-autoballoon.patch,
+      suse-xen-ovmf-paths.patch,
+      virt-create-rootfs.patch,
+      suse-fix-lxc-container-init.patch
+  - Remove old, unused SUSEfirewall2 config file
+    libvirtd-relocation-server.fw
+  - Dropped patches:
+    4959490e-support-SUSE-edk2-firmware-paths.patch,
+    bf3be5b7-libxl-Support-custom-firmware-path.patch,
+    705525cb-libxl-Support-custom-firmware-path-conversion.patch,
+
+-------------------------------------------------------------------
 Fri Mar 10 19:01:21 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Support custom firmware paths

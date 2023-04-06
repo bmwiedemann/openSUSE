@@ -1,7 +1,18 @@
 <services>
-  <service name="download_files" mode="disabled"/>
-  <service name="refresh_patches" mode="disabled">
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://oauth2: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@github.com/openSUSE/libvirt.git</param>
+    <param name="revision">factory</param>
+    <param name="extract">libvirt.spec</param>
+    <param name="extract">README.packaging.txt</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^-+a-z]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">disable</param>
-    <param name="ignorefuzz">disable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
 </services>
