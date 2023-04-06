@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 08:47:10 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Fix license, again (bsc#1210081).
+
+-------------------------------------------------------------------
 Fri Mar  3 12:41:21 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:
