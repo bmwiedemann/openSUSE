@@ -43,7 +43,7 @@ to libica, a library enabling the IBM s390/x CPACF crypto instructions.
 
 %prep
 %autosetup -p1
-./bootstrap.sh
+ ./bootstrap.sh
 
 %build
 export CFLAGS="%{optflags}"

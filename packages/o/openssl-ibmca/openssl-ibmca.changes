@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
-Tue Apr  4 07:59:03 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Thu Apr  6 08:14:25 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgraded openssl-ibmca to version 2.4.0(bsc#1210058 and bsc#1210059) 
+- Upgraded openssl-ibmca to version 2.4.0(bsc#1210059) 
+  * openssl-ibmca 2.4.0
+    - Provider: Adjustments for OpenSSL versions 3.1 and 3.2 
+    - Provider: Support RSA blinding
+    - Provider: Constant-time fixes for RSA PKCS#1 v1.5 and OAEP padding
+    - Provider: Support "implicit rejection" option for RSA PKCS#1 v1.5 padding
+    - Provider: Adjustments in OpenSSL config generator and example configs
+    - Engine: EC: Cache ICA key in EC_KEY object (performance improvement)
+    - Engine: Enable RSA blinding
 
 -------------------------------------------------------------------
 Tue Mar 14 11:35:44 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
