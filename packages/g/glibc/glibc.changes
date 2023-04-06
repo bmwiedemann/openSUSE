@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 12:03:36 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- getlogin-no-loginuid.patch: getlogin_r: fix missing fallback if loginuid
+  is unset (bsc#1209229, BZ #30235)
+
+-------------------------------------------------------------------
 Thu Mar 16 15:41:56 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Exclude static archives from preparation for live patching (bnc#1208721)

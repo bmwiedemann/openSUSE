@@ -284,6 +284,8 @@ Patch306:       glibc-fix-double-loopback.diff
 Patch1000:      printf-grouping.patch
 # PATCH-FIX-UPSTREAM Use 64-bit time_t interfaces in strftime and strptime (BZ #30053)
 Patch1001:      strftime-time64.patch
+# PATCH-FIX-UPSTREAM getlogin_r: fix missing fallback if loginuid is unset (BZ #30235)
+Patch1002:      getlogin-no-loginuid.patch
 
 ###
 # Patches awaiting upstream approval
@@ -510,6 +512,7 @@ library in a cross compilation setting.
 %if %{without snapshot}
 %patch1000 -p1
 %patch1001 -p1
+%patch1002 -p1
 %endif
 
 %patch2000 -p1
