@@ -33,8 +33,9 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  rubygem(asciidoctor)
-Recommends:     python3-pylibacl
-Recommends:     python3-xattr
+Requires:       python3-PyYAML
+Requires:       python3-pylibacl
+Requires:       python3-xattr
 
 %description
 rdiff-backup backs up one directory to another, possibly over a

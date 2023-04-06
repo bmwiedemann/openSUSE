@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 10:01:40 UTC 2023 - Petr Vorel <pvorel@suse.cz>
+
+- Require python3-PyYAML, python3-pylibacl, python3-xattr
+  (the latter two were Recommends only; all are runtime dependencies).
+
+-------------------------------------------------------------------
 Mon Mar 27 10:20:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.4:
