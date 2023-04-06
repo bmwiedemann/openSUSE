@@ -469,4 +469,12 @@
   meson, as this is needed. (forwarded request 1073091 from iznogood)</comment>
     <requestid>1073227</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>0a6ba11124e5c113ed688dfa4622b94b</srcmd5>
+    <version>0.3.16</version>
+    <time>1680789356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077232</requestid>
+  </revision>
 </revisionlist>

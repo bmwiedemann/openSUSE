@@ -18,15 +18,13 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.15
+Version:        0.3.16
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM d1c0835d.patch -- flickr: remove GOA support
-Patch0:         https://gitlab.gnome.org/GNOME/grilo-plugins/-/commit/d1c0835d.patch
 
 BuildRequires:  docbook_4
 BuildRequires:  fdupes

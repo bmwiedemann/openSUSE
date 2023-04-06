@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  4 08:39:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.16:
+  + tracker3: update fts query
+  + dmap: enable with libsoup3 supported libdmapsharing-4.0
+  + lua-factory: add support to 5.4
+  + build: libsoup3 related fixes
+  + flickr: remove GOA support
+  + tmdb: without config, fix single request
+  + Updated translations.
+- Drop d1c0835d.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Mar  8 17:54:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Build dmap plugins again now that libdmapsharing have been
