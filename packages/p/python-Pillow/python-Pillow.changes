@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Apr  3 20:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.5.0:
+  * Added ImageSourceData to TAGS_V2 #7053
+  * Clear PPM half token after use #7052
+  * Removed absolute path to ldconfig #7044
+  * Support custom comments and PLT markers when saving JPEG2000
+    images #6903
+  * Load before getting size in __array_interface__ #7034
+  * Support creating BGR;15, BGR;16 and BGR;24 images, but drop
+    support for BGR;32 #7010
+  * Consider transparency when applying APNG blend mask #7018
+  * Round duration when saving animated WebP images #6996
+  * Added reading of JPEG2000 comments #6909
+  * Decrement reference count #7003
+  * Allow libtiff_support_custom_tags to be missing #7020
+  * Improved I;16N support #6834
+  * Added QOI reading #6852
+  * Added saving RGBA images as PDFs #6925
+  * Do not raise an error if os.environ does not contain PATH
+  * Close OleFileIO instance when closing or exiting FPX or MIC
+  * Added __int__ to IFDRational for Python >= 3.11 #6998
+  * Added memoryview support to Dib.frombytes() #6988
+  * Close file pointer copy in the libtiff encoder if still open
+  * Raise an error if ImageDraw co-ordinates are incorrectly
+    ordered #6978
+  * Added "corners" argument to ImageDraw rounded_rectangle()
+  * Added memoryview support to frombytes() #6974
+  * Allow comments in FITS images #6973
+  * Support saving PDF with different X and Y resolutions #6961
+  * [jvanderneutstulen, radarhere, hugovk]
+  * Fixed writing int as UNDEFINED tag #6950
+  * Raise an error if EXIF data is too long when saving JPEG
+  * Handle more than one directory returned by pkg-config #6896
+  * [sebastic, radarhere]
+  * Do not retry past formats when loading all formats for the
+    first time #6902
+  * Do not retry specified formats if they failed when opening
+  * Do not unintentionally load TIFF format at first #6892
+  * Stop reading when EPS line becomes too long #6897
+  * Allow writing IFDRational to BYTE tag #6890
+  * Raise ValueError for BoxBlur filter with negative radius
+
+-------------------------------------------------------------------
 Mon Jan  2 11:45:30 UTC 2023 - Michael Ströder <michael@stroeder.com>
 
 - update to 9.4.0

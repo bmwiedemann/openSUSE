@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-Pillow
-Version:        9.4.0
+Version:        9.5.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
