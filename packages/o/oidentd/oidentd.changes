@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  6 03:25:06 UTC 2023 - Samu Voutilainen <smar@smar.fi>
+
+- Replaced patch oidentd-3.0.0-configure_zstd.patch with
+  oidentd-3.1.0-configure_zstd.patch to fix compilation on 15.4
+
+-------------------------------------------------------------------
 Thu Mar 16 15:34:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.1.0

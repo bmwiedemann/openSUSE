@@ -36,7 +36,7 @@ Source4:        oidentd.socket
 Source5:        https://files.janikrabe.com/pub/oidentd/releases/%{version}/oidentd-%{version}.tar.xz.asc
 # https://janikrabe.com/key.asc
 Source6:        %{name}.keyring
-Patch0:         oidentd-3.0.0-configure_zstd.patch
+Patch0:         oidentd-%{version}-configure_zstd.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex

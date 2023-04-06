@@ -1,0 +1,13 @@
+Index: oidentd-3.1.0/configure.ac
+===================================================================
+--- oidentd-3.1.0.orig/configure.ac
++++ oidentd-3.1.0/configure.ac
+@@ -16,7 +16,7 @@ dnl along with this program; if not, wri
+ dnl Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+ AC_INIT([oidentd],[3.1.0],[info@janikrabe.com],[],[https://oidentd.janikrabe.com])
+-AM_INIT_AUTOMAKE([dist-bzip2 dist-xz dist-zip dist-zstd])
++AM_INIT_AUTOMAKE([dist-bzip2 dist-xz dist-zip])
+
+ AC_DEFINE(PACKAGE_AUTHOR, ["Janik Rabe"], [maintainer])
+
