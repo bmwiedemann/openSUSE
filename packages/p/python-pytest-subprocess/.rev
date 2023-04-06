@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1061618</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c98bff3c1faba603d5b8a018122b1429</srcmd5>
+    <version>1.5.0</version>
+    <time>1680789454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * #109: Match also os.PathLike.
+  * #105: Add program matcher.</comment>
+    <requestid>1077664</requestid>
+  </revision>
 </revisionlist>
