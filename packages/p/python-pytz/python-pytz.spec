@@ -18,7 +18,7 @@
 
 # Ensure you update the tzdata_version for any minor version increase
 # otherwise the update python library has the incorrect timezone data.
-%define tzdata_version 2023b
+%define tzdata_version 2023c
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?!pyunittest:%define pyunittest(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \\\
@@ -29,7 +29,7 @@
     } }
 
 Name:           python-pytz
-Version:        2023.2
+Version:        2023.3
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT

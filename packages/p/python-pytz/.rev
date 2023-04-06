@@ -458,4 +458,13 @@
   * Update to IANA 2023b</comment>
     <requestid>1074590</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>becddc3d60d8f888318694af9152f9fb</srcmd5>
+    <version>2023.3</version>
+    <time>1680789323</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.3:
+  * Update to IANA 2023c</comment>
+    <requestid>1077059</requestid>
+  </revision>
 </revisionlist>
