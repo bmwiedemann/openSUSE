@@ -59,7 +59,7 @@ ExcludeArch:    ppc ppc64
 
 %if %{build_main}
 Summary:        A GNU source-level debugger for C, C++, Fortran and other languages
-License:        SUSE-Public-Domain
+License:        GPL-3.0-only WITH GCC-exception-3.1 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 %endif
 %if %{build_testsuite}
