@@ -106,6 +106,7 @@ ABI or API guarantees.
 
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+rm %{buildroot}%{_qt6_cmakedir}/Qt6Location/*Plugin*.cmake
 
 %ldconfig_scriptlets -n libQt6Location6
 

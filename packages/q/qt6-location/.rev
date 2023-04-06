@@ -7,4 +7,12 @@
     <comment>New Qt6 modules</comment>
     <requestid>1077357</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e9a461fee8efe02479bde64999186390</srcmd5>
+    <version>6.5.0</version>
+    <time>1680789365</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove more CMake files related to plugins.</comment>
+    <requestid>1077596</requestid>
+  </revision>
 </revisionlist>
