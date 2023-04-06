@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 03 10:46:16 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230403.7ce263c:
+  * tests: make a local copy of configuration in test_binaries.py
+
+-------------------------------------------------------------------
+Mon Apr 03 09:19:28 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230403.cf6f584:
+  * Add test for #1040.
+  * Exclude systemd directory in UsrLibBinaryException
+
+-------------------------------------------------------------------
 Fri Mar 31 13:35:31 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230331.bc7b966:

@@ -4408,4 +4408,17 @@ oddjob-gpupdate isn't blocked)</comment>
 - Depend on python-magic Python package.</comment>
     <requestid>1076468</requestid>
   </revision>
+  <revision rev="444" vrev="1">
+    <srcmd5>e495c887a83d990411cf9d4217f94863</srcmd5>
+    <version>2.4.0+git20230403.7ce263c</version>
+    <time>1680789319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230403.7ce263c:
+  * tests: make a local copy of configuration in test_binaries.py
+
+- Update to version 2.4.0+git20230403.cf6f584:
+  * Add test for #1040.
+  * Exclude systemd directory in UsrLibBinaryException</comment>
+    <requestid>1077137</requestid>
+  </revision>
 </revisionlist>
