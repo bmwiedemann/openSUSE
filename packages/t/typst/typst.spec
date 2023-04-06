@@ -19,13 +19,12 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           typst
-Version:        23.03.28
-%define dashed_version 23-03-28
+Version:        0.1.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
 URL:            https://github.com/typst/typst
-Source0:        https://github.com/typst/typst/archive/refs/tags/v%{dashed_version}.tar.gz#/%{name}-%{dashed_version}.tar.gz
+Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
@@ -36,7 +35,7 @@ BuildRequires:  git
 Typst is a new markup-based typesetting system that is designed to be as powerful as LaTeX while being much easier to learn and use.
 
 %prep
-%autosetup -p1 -a1 -n typst-%{dashed_version}
+%autosetup -p1 -a1 -n typst-%{version}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
