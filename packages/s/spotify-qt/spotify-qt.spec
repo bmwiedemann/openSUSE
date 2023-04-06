@@ -1,7 +1,7 @@
 #
 # spec file for package spotify-qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           spotify-qt
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        Lightweight Spotify client using Qt
 License:        GPL-3.0-only
 URL:            https://github.com/kraxarn/spotify-qt
-Source:         https://github.com/kraxarn/spotify-qt/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/kraxarn/spotify-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Group:          Productivity/Multimedia/Sound/Players
 BuildRequires:  gcc-c++
 BuildRequires:  make

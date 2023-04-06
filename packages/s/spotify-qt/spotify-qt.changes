@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Mar 25 10:56:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.10
+  Fixes
+  * Fixed not being able to change volume on some styles.
+  * Fixed crash when playing library items with many tracks.
+  * Fixed MPRIS support on Qt 6.
+  * Fixed side panel tabs not working on some styles.
+  * Fixed not showing tool-tip for added date in albums.
+  * Fixed using Fusion style when saving settings with default
+    selected.
+  * Fixed not displaying artist names with "&" properly.
+  * Fixed flat buttons having a background with built-in dark theme
+  * Fixed not refreshing some cached albums correctly.
+  Changes
+  * Added automatic re-authentication if token expired.
+  * Improved error handling when setting client path.
+  * Added support for saving passwords on more Linux systems.
+  * Added column for track liked status.
+  * Disallowed actions are now disabled.
+  * Client volume is now remembered instead of always being 100%
+  * Added options for copying name of playlist/track/album.
+  * Added support for librespot v0.5.0.
+  * Added back lyrics.
+  * Improved startup performance.
+  * Replaced "Save password in keyring" option with "Remember me"
+    in password entry.
+  * Replaced "fixed width remaining time" with custom fixed-width
+    system font.
+
+-------------------------------------------------------------------
 Thu Aug 11 18:37:47 UTC 2022 - Jens K. <karatekhd@opensuse.org>
 
 - Update to version 3.9
