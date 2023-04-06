@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
@@ -51,7 +51,7 @@ computer/network can handle) of bidirectional, high quality, uncompressed
 audio signal streaming.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 mv build .build

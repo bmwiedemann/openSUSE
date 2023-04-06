@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  6 06:58:20 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8.1
+  * Add tooltips to audio settings to explain "input device" and "output device" 
+  * Allow IP check to work with IPv6 only 
+  * make buffer size and sample rate settable for Pipewire 
+  * Fixes for Special Characters in Device Names 
+  * Adding a simple link to create your first studio to VS login page
+  * Fixing QML error on undefined boolean 
+  * AudioSettings should show the currently selected device
+  * Save Output Channels Settings
+
+-------------------------------------------------------------------
 Tue Mar 21 15:56:15 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.8.0
