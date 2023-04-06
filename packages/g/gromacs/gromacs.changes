@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Apr  2 19:22:23 UTC 2023 - andy great <andythe_great@pm.me>
+
+- Update to 2023
+  * Highlights:
+    - The SYCL GPU implementation, which is the GPU portability
+      layer that supports all major GPU platforms, has received
+      major extensions in support for both platforms and features.
+      To ensure portability in practice, the GROMACS GPU portability
+      layer is actively developed with multiple SYCL implementations
+      (hipSYCL, oneAPI DPC++, IntelLLVM) and regularly tested on
+      multiple GPU backends.
+      - SYCL supports more GPU offload features: bonded forces and
+        direct GPU-GPU communication with GPU-aware MPI.
+      - SYCL hardware support includes AMD (including RDNA support
+        added here) and Intel for production as well as NVIDIA GPUs
+        (not for production).
+      - SYCL optimizations targeting important HPC platforms.
+    - PME decomposition has been optimized and extended to support
+      offloading the entire PME calculation to multiple GPUs,
+      including the FFT computation; when combined with cuFFTmp or
+      heFFTe this enables much improved strong scaling
+      (experimental feature).
+    - CUDA Graph support has been added to execute GPU-resident
+      single-/multi-GPU simulations using thread-MPI entirely on the
+      GPU to improve performance (experimental feature).
+    - New ensemble temperature mdp options allow setting the
+      temperature of the ensemble for simulations without
+      temperature coupling or with different reference temperatures.
+    - With gmx dssp, GROMACS now has a native implementation of the
+      DSSP algorithm, which replaces gmx do_dssp.
+  * See https://manual.gromacs.org/2023/release-notes/index.html
+- Update to 2022.6
+  * Bugfix release, see
+    https://manual.gromacs.org/2023/release-notes/2022/2022.6.html
+- Update to 2022.5
+  * Bugfix release, see
+    https://manual.gromacs.org/2023/release-notes/2022/2022.5.html
+
+-------------------------------------------------------------------
 Wed Dec 28 10:26:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 2022.4

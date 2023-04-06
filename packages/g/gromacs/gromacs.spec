@@ -1,7 +1,7 @@
 #
-# spec file for package gromacs
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,10 +30,10 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if %{with mpi}
-%define libname_gromacs libgromacs_mpi7
+%define libname_gromacs libgromacs_mpi8
 %define libname_gmxapi libgmxapi_mpi0
 %else
-%define libname_gromacs libgromacs7
+%define libname_gromacs libgromacs8
 %define libname_gmxapi libgmxapi0
 %endif
 %define libname_nblib_gmx libnblib_gmx0
@@ -48,7 +48,7 @@ ExclusiveArch:  do_not_build
 %bcond_without tests
 
 Name:           gromacs%{?with_mpi:-openmpi}
-Version:        2022.4
+Version:        2023
 Release:        0
 %define uversion %{version}
 Summary:        Molecular Dynamics Package
