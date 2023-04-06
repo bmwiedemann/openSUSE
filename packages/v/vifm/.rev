@@ -204,4 +204,20 @@ for menus;
   * For details see https://vifm.info/news/2022-09-21.shtml</comment>
     <requestid>1005390</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a90728aa7b0c2bd12015c412cd6fbfcc</srcmd5>
+    <version>0.13</version>
+    <time>1680789457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13:
+  * Faster file-system navigation with new searching/filtering
+    submodule
+  * More interactive :compare
+  * Mouse supports and TUI improvements
+  * %N macro has been adjusted to fix integration with image preview
+    of Kitty v0.27+.
+  * Lots of fixes related to search and various combinations of'
+    hlsearch', 'incsearch' in different modes.</comment>
+    <requestid>1077686</requestid>
+  </revision>
 </revisionlist>

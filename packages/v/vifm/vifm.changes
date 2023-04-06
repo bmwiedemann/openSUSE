@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  6 08:31:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13:
+  * Faster file-system navigation with new searching/filtering
+    submodule
+  * More interactive :compare
+  * Mouse supports and TUI improvements
+  * %N macro has been adjusted to fix integration with image preview
+    of Kitty v0.27+.
+  * Lots of fixes related to search and various combinations of'
+    hlsearch', 'incsearch' in different modes.
+
+-------------------------------------------------------------------
 Thu Sep 22 11:03:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.1:
