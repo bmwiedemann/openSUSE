@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>912574</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae2bf49d76b63b57f350f3c22ce310f2</srcmd5>
+    <version>3.052</version>
+    <time>1680789348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.052:
+  * Adds Medium weight requested by user. (GitHub issue #253)
+  * Updates the design of several glyphs to arrive at more compact
+    vertical metrics</comment>
+    <requestid>1077185</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcesans3-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           adobe-sourcesans3-fonts
-Version:        3.046
+Version:        3.052
 Release:        0
 Summary:        A set of OpenType fonts designed for user interfaces
 License:        OFL-1.1

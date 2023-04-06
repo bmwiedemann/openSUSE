@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  4 10:24:27 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.052:
+  * Adds Medium weight requested by user. (GitHub issue #253)
+  * Updates the design of several glyphs to arrive at more compact
+    vertical metrics
+
+-------------------------------------------------------------------
 Mon Aug 16 14:19:13 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Create new package to Source Sans 3, the successor of Source Sans
