@@ -573,4 +573,14 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>1069422</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1cc755d894ba39ce6cdb38591e603349</srcmd5>
+    <version>20230403.29b58f8</version>
+    <time>1680789315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230403.29b58f8:
+  * Add python311 to buildset
+</comment>
+    <requestid>1077160</requestid>
+  </revision>
 </revisionlist>
