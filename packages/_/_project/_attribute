@@ -21,7 +21,7 @@
   boo#1204604: '20221109'
   boo#1204605: '20221022'
   boo#1204629: '20221024'
-  boo#1204833: '20230404'
+  boo#1204833: '20230405'
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
@@ -49,7 +49,7 @@
   boo#1207384: '20230219'
   boo#1207385: '20230312'
   boo#1207386: '20230405'
-  boo#1207390: '20230404'
+  boo#1207390: '20230405'
   boo#1207509: '20230126'
   boo#1207524: '20230125'
   boo#1207567: '20230125'
@@ -194,7 +194,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230405</value>
+    <value>20230406</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -319,8 +319,8 @@ products:
     - x86_64
   - opensuse-tumbleweed-dnf-image:docker-microdnf:
     - x86_64
-#  - opensuse-wsdd-image:
-#    - x86_64
+  - opensuse-wsdd-image:
+    - x86_64
   - php8-nginx-image:
     - x86_64
   - prometheus-webhook-snmp-image:
@@ -484,18 +484,16 @@ products:
   - livecd-tumbleweed-xfce:
     - x86_64
   main:
-#  - 000product:openSUSE-dvd5-dvd-i586
   - 000product:openSUSE-dvd5-dvd-x86_64
-#  - 000product:openSUSE-cd-mini-i586
   - 000product:openSUSE-cd-mini-x86_64
   - 000product:MicroOS-dvd5-dvd-x86_64
 test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20230405'
-published: '20230404'
-publishing: '20230404'
+    <value>failed: ''
+published: '20230405'
+publishing: '20230405'
 testing: '20230405'
 </value>
   </attribute>
