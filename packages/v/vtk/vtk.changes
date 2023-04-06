@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  4 08:52:20 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GCC 13, add add_missing_cstdint.patch
+
+-------------------------------------------------------------------
 Sat Feb 18 02:07:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.2.6, see:

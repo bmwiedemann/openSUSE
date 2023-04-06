@@ -120,6 +120,8 @@ Patch10:        0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
 Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
 # PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
 Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
+# PATCH-FIX-UPSTREAM -- Add missing cstdint header required by GCC 13
+Patch19:        https://gitlab.kitware.com/vtk/vtk/-/commit/b1a09529f3ab.patch#/add_missing_cstdint.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -399,6 +401,7 @@ languages.
 %endif
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
