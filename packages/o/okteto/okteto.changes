@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 06 03:26:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * remove sensitive data in git url displayed (#3535) (#3537)
+  * fix: adding .git folder to the folder should propagate okteto
+    git commit (#3533) (#3538)
+  * fix .env removal locally (#3534) (#3536)
+
+-------------------------------------------------------------------
 Mon Apr 03 12:08:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.1:
