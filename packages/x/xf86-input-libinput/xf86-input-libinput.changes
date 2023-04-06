@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  4 12:15:12 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.3.0
+  The main feature in this version is support for the new 'custom' pointer
+  acceleration profile in libinput 1.23.0. This acceleration profile is
+  quite flexible, so it is exposed via several properties:
+  - "libinput Accel Custom Fallback Points" and "libinput Accel Custom Fallback Step"
+  - "libinput Accel Custom Motion Points" and "libinput Accel Custom Motion Step"
+  - "libinput Accel Custom Scroll Points" and "libinput Accel Custom Scroll Points"
+  For details on what these mean, please see the man page and the
+  libinput documentation:
+  https://wayland.freedesktop.org/libinput/doc/latest/pointer-acceleration.html
+  In addition, the "libinput Accel Profiles Available" and
+  "libinput Accel Profile Enabled" properties have been expanded to 3 values. For
+  backwards compatibility, the "libinput Accel Profile Enabled" continues
+  to support setting 2 values only.
+
+-------------------------------------------------------------------
 Tue Jan 25 12:58:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable tarball sig url too, verify tarball via keyring.
