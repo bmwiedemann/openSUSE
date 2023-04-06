@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/wireplumber.git</param>
-    <param name="revision">0.4.13</param>
+    <param name="revision">refs/tags/0.4.14</param>
     <param name="versionformat">@PARENT_TAG@</param>
 <!--
     <param name="revision">master</param>
@@ -15,5 +15,5 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled" />
+  <service name="set_version" mode="manual" />
 </services>

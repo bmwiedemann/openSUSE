@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 10 23:20:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.4.14:
+  * Additions
+    - Add support for managing Bluetooth-MIDI, complementing the
+      parts that were merged in PipeWire recently.
+    - Add a default volume configuration option for streams whose
+      volume has never been saved before; that allows starting new
+      streams at a lower volume than 100% by default, if desired.
+    - Add support for managing link errors and propagating them to
+      the client(s) involved. This allows better error handling on
+      the application side in case a format cannot be negotiated -
+      useful in video streams.
+    - snd_aloop devices are now described as being "Loopback"
+      devices.
+    - ALSA nodes in the pro audio profile now get increased graph
+      priority, so that they are more likely to become the driver
+      in the graph.
+    - Add support for disabling libcamera nodes & devices with
+      node.disabled and device.disabled, like it works for ALSA
+      and V4L2.
+- Drop reduce-meson-required-version.patch: openSUSE Leap 15.3 is
+  no longer supported.
+- Drop patches already included upstream:
+  * 0001-alsa-monitor-handle-snd_aloop-devices-better.patch
+  * 0001-spa-json-make-sure-we-only-add-encoded-string-data.patch
+  * 0001-m-lua-scripting-ignore-string-integer-table-keys-when-constructing-a-JSON-Array-Object.patch
+
+-------------------------------------------------------------------
 Fri Jan 13 10:51:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Backport the workaround from SLE/Leap for the bug in systemd
