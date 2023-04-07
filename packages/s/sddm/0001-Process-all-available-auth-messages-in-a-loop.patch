@@ -1,0 +1,129 @@
+From aaf9ee34dc0e2776a8177de14b5e6c880a5ffacf Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 4 Apr 2023 16:36:21 +0200
+Subject: [PATCH] Process all available auth messages in a loop
+
+When QLocalSocket::readyRead is emitted, it's important to read all available
+data. Otherwise the event loop is reentered while data is still available and
+readyRead won't be emitted again.
+
+This can happen in practice if sddm-helper sends a message which does not
+need a reply (e.g. INFO) followed by another message before the daemon
+processed the first one. In that case the daemon would never process the second
+one, potentially leaving sddm-helper waiting for a reply.
+
+(cherry picked from commit 48a98c7ba45b49cf443ac46f0d218f044933c603)
+---
+ src/auth/Auth.cpp | 92 ++++++++++++++++++++++++-----------------------
+ 1 file changed, 47 insertions(+), 45 deletions(-)
+
+diff --git a/src/auth/Auth.cpp b/src/auth/Auth.cpp
+index c2228ae..9e132af 100644
+--- a/src/auth/Auth.cpp
++++ b/src/auth/Auth.cpp
+@@ -152,55 +152,57 @@ namespace SDDM {
+         Auth *auth = qobject_cast<Auth*>(parent());
+         Msg m = MSG_UNKNOWN;
+         SafeDataStream str(socket);
+-        str.receive();
+-        str >> m;
+-        switch (m) {
+-            case ERROR: {
+-                QString message;
+-                Error type = ERROR_NONE;
+-                str >> message >> type;
+-                Q_EMIT auth->error(message, type);
+-                break;
+-            }
+-            case INFO: {
+-                QString message;
+-                Info type = INFO_NONE;
+-                str >> message >> type;
+-                Q_EMIT auth->info(message, type);
+-                break;
+-            }
+-            case REQUEST: {
+-                Request r;
+-                str >> r;
+-                request->setRequest(&r);
+-                break;
+-            }
+-            case AUTHENTICATED: {
+-                QString user;
+-                str >> user;
+-                if (!user.isEmpty()) {
+-                    auth->setUser(user);
+-                    Q_EMIT auth->authentication(user, true);
++        while (socket->bytesAvailable() > 0) {
++            str.receive();
++            str >> m;
++            switch (m) {
++                case ERROR: {
++                    QString message;
++                    Error type = ERROR_NONE;
++                    str >> message >> type;
++                    Q_EMIT auth->error(message, type);
++                    break;
++                }
++                case INFO: {
++                    QString message;
++                    Info type = INFO_NONE;
++                    str >> message >> type;
++                    Q_EMIT auth->info(message, type);
++                    break;
++                }
++                case REQUEST: {
++                    Request r;
++                    str >> r;
++                    request->setRequest(&r);
++                    break;
++                }
++                case AUTHENTICATED: {
++                    QString user;
++                    str >> user;
++                    if (!user.isEmpty()) {
++                        auth->setUser(user);
++                        Q_EMIT auth->authentication(user, true);
++                        str.reset();
++                        str << AUTHENTICATED << environment << cookie;
++                        str.send();
++                    }
++                    else {
++                        Q_EMIT auth->authentication(user, false);
++                    }
++                    break;
++                }
++                case SESSION_STATUS: {
++                    bool status;
++                    str >> status;
++                    Q_EMIT auth->sessionStarted(status);
+                     str.reset();
+-                    str << AUTHENTICATED << environment << cookie;
++                    str << SESSION_STATUS;
+                     str.send();
++                    break;
+                 }
+-                else {
+-                    Q_EMIT auth->authentication(user, false);
++                default: {
++                    Q_EMIT auth->error(QStringLiteral("Auth: Unexpected value received: %1").arg(m), ERROR_INTERNAL);
+                 }
+-                break;
+-            }
+-            case SESSION_STATUS: {
+-                bool status;
+-                str >> status;
+-                Q_EMIT auth->sessionStarted(status);
+-                str.reset();
+-                str << SESSION_STATUS;
+-                str.send();
+-                break;
+-            }
+-            default: {
+-                Q_EMIT auth->error(QStringLiteral("Auth: Unexpected value received: %1").arg(m), ERROR_INTERNAL);
+             }
+         }
+     }
+-- 
+2.40.0
+

@@ -29,18 +29,21 @@ Source2:        00-general.conf
 Source3:        10-theme.conf
 Source4:        sddm-tmpfiles.conf
 Source5:        system-user-sddm.conf
+# PAM configuration
+Source20:       sddm.pam
+Source21:       sddm-autologin.pam
+Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
 Patch0:         0001-Use-PAM-s-username.patch
 Patch1:         0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
 Patch2:         0004-Retry-starting-the-display-server.patch
 Patch3:         0001-disable-automatic-portal-launching.patch
+Patch4:         0001-Process-all-available-auth-messages-in-a-loop.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1230
 Patch55:        0001-Redesign-Xauth-handling.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
-# Use openSUSE pam config
-Patch100:       proper_pam.diff
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
 Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
@@ -70,6 +73,9 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb-xkb)
 %systemd_requires
 %sysusers_requires
+BuildRequires:  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Requires(post): diffutils
 Requires:       sddm-branding = %{version}
 Requires:       xdm
@@ -156,6 +162,18 @@ fi
   install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
   install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/sddm.conf
 
+  # Install PAM config
+  rm -r %{buildroot}%{_sysconfdir}/pam.d # Remove sddm's config, for debian only
+  pam_dest="%{?_pam_vendordir}%{!?_pam_vendordir:%{_sysconfdir}/pam.d}"
+  install -Dm 0644 %{SOURCE20} %{buildroot}${pam_dest}/sddm
+  install -Dm 0644 %{SOURCE21} %{buildroot}${pam_dest}/sddm-autologin
+  install -Dm 0644 %{SOURCE22} %{buildroot}${pam_dest}/sddm-greeter
+
+  # Make it compatible on older systems
+  %if 0%{?suse_version} < 1550
+    sed -i'' '/postlogin-/d' %{buildroot}${pam_dest}/*
+  %endif
+
   # Adjust paths to X session scripts in 00-general.conf
   sed -e 's-/usr/etc-%{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}-g' -i %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
 
@@ -176,6 +194,12 @@ fi
 
 %pre -f sddm.pre
 %service_add_pre sddm.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in pam.d/sddm pam.d/sddm-autologin pam.d/sddm-greeter ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
 
 %post
 %service_add_post sddm.service
@@ -199,6 +223,14 @@ if [ $1 -eq 2 -a -f %{_sysconfdir}/sddm.conf ]; then
 fi
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/sddm 25
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in pam.d/sddm pam.d/sddm-autologin pam.d/sddm-greeter ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %preun
 %service_del_preun sddm.service
@@ -250,9 +282,15 @@ fi
 %doc README*
 %config(noreplace) %{_sysconfdir}/sddm.conf
 %dir %{_sysconfdir}/sddm.conf.d/
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/sddm
+%{_pam_vendordir}/sddm-autologin
+%{_pam_vendordir}/sddm-greeter
+%else
 %config %{_sysconfdir}/pam.d/sddm
 %config %{_sysconfdir}/pam.d/sddm-autologin
 %config %{_sysconfdir}/pam.d/sddm-greeter
+%endif
 %{_datadir}/dbus-1/system.d/sddm_org.freedesktop.DisplayManager.conf
 %dir %{_prefix}/lib/X11/displaymanagers/
 %{_prefix}/lib/X11/displaymanagers/%{name}
@@ -273,7 +311,7 @@ fi
 %{_datadir}/sddm/scripts/
 %{_datadir}/sddm/themes/
 %{_datadir}/sddm/translations/
-%ghost %attr(711,sddm,sddm) %dir %{_rundir}/sddm
+%ghost %attr(711,root,root) %dir %{_rundir}/sddm
 %ghost %attr(750,sddm,sddm) %dir %{_localstatedir}/lib/sddm
 %{_mandir}/man*/sddm*%{ext_man}
 %{_unitdir}/sddm.service

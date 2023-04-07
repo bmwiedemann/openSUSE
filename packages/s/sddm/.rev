@@ -702,4 +702,24 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>1066881</requestid>
   </revision>
+  <revision rev="62" vrev="10">
+    <srcmd5>19f3c87ef09a775dabddda3fb6affddc</srcmd5>
+    <version>0.19.0</version>
+    <time>1680884184</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace proper_pam.diff with installation of source files:
+  * sddm.pam, sddm-autologin.pam, sddm-greeter.pam
+- PAM services:
+  * Make use of substack for common-*
+  * Include postlogin-*
+  * Run pam_keyinit before common-session
+  * Deny password in sddm-greeter
+- /run/sddm is owned by root:root
+- Add patch to fix possible deadlock:
+  * 0001-Process-all-available-auth-messages-in-a-loop.patch
+- Add missing dependencies on update-alternatives
+
+- Migration of PAM settings to /usr/lib/pam.d.</comment>
+    <requestid>1077522</requestid>
+  </revision>
 </revisionlist>
