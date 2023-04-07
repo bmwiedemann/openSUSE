@@ -59,6 +59,7 @@
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="QGnomePlatform-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="QGnomePlatform-qt6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="WebKitGTK-4.0-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="WebKitGTK-4.1-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
@@ -3107,6 +3108,7 @@
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam_kwallet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pam_kwallet-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pam_kwallet-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pam_mount" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
