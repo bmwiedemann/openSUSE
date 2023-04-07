@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  6 10:18:17 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 5.4.9:
+  * Major change: Enable SVE & SVE2 builds and make it a
+    supported architecture! (thanks to @abondarev84)
+  * Fix various clang-related bugs
+  * Fix Aarch64 bug in Parser.rl because of char signedness.
+    Make unsigned char the default in the Parser for all architectures.
+  * Fix Power bug, multiple tests were failing.
+  * C++20 related change, use prefixed assume_aligned to avoid
+    conflict with C++20 std::assume_aligned.
+
+
+-------------------------------------------------------------------
 Mon Oct 31 13:26:43 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Stop building machine-dependent binaries (boo#1100677)
