@@ -77,4 +77,13 @@
     <comment>- Update to version 1.20.0: (forwarded request 1041735 from jfkw)</comment>
     <requestid>1041737</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1ad1959ffd0ce4987b7dfad6672b8b0</srcmd5>
+    <version>1.20.2</version>
+    <time>1680884198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.2:
+- Packaging update source service mode to manual formerly disabled (forwarded request 1077786 from jfkw)</comment>
+    <requestid>1077787</requestid>
+  </revision>
 </revisionlist>

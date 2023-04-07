@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Apr 06 19:56:10 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.20.2:
+  * proc: fix TestEvalExpression on Windows (#3313)
+  * terminal: Fix printing boolean values in Starlark scripts (#3314)
+  * proc: fix escapeCheck infinite recursion if something can not be (#3311)
+  * proc: support multiple functions with the same name (#3297)
+  * proc: fuzzing expression evaluator and variable loader (#3293)
+  * proc: limit maximum time.Time we try to format (#3294)
+  * Documentation: expand project layout to match usage (#3304)
+  * proc: fix automatic breakpoints visibility (#3300)
+  * proc,terminal: remove unused unexported functions (#3299)
+  * cmd/dlv: Add flag to replay for rr onprocess pid (#3281)
+  * proc: do not try to load a non-empty slice if the base address is 0 (#3295)
+  * Documentation: fix typo and grammar issues (#3291)
+  * dwarf/line: enable TestGrafana on Windows (#3289)
+  * dwarf/op: change generated comment header (#3288)
+  * proc,proc/native: adds ability to automatically debug child processes (#3165)
+  * Default to stop test_windows.ps1 when there is an error (#3285)
+  * dwarf/line: handle end_seq properly (#3277)
+  * proc: remove unused parameter from resolveParametricType (#3276)
+  * TeamCity,Documentation: use new TeamCity URL (#3275)
+  * terminal/logflags: Added `SetLoggerFactory(LoggerFactory)` (#3257)
+  * *: remove some code for Go 1.12 or earlier (#3271)
+  * pkg/proc,service/test: refactor to strings.ReplaceAll (#3269)
+  * _scripts: Update staticcheck (#3270)
+  * proc/native: fix syscalls to SYS_PROCESS_VM_READV (and WRITEV) (#3273)
+  * dwarf: fix broken external url to arm dwarf mapping (#3272)
+  * Documentation: watch example for arbitrary address (#3268)
+  * service/dap: correct typos in comments (#3264)
+  * cmd/dlv: fix exit status for trace subcommand  (#3263)
+  * godwarf: Allow extracting a DWARF entry's field (#3258)
+  * _scripts: fix log.Printf format specifier (#3260)
+  * cmd/dlv, pkg/proc: use T.TempDir in tests (#3256)
+  * pkg/proc: do not check decl line for FunctionArguments (#3254)
+  * terminal: use exact window size for pager (#3249)
+  * proc/dwarf: Move util functions to dwarf package (#3252)
+  * proc/dwarf: LEB128 encode/decode in separate pkg (#3235)
+  * debugger,terminal: Allow setting and clearing breakpoints after process exit (#3246)
+  * pkg/terminal: use default for Y/n empty response (#3248)
+  * godwarf: Attempt to load `DW_AT_specification` if present (#3247)
+  * terminal: Add config options for tab printing (#3243)
+  * pkg/proc: fix stripping DYLD_INSERT_LIBRARIES on macOS (#3245)
+  * cmd/dlv: match go test behavior when dlv test gets a list of .go files (#3232)
+  * pkg/proc: populate pointer values (#3229)
+  * pkg/terminal: fix handling list colors via config (#3240)
+  * Documentation: document how to debug runtime with Delve (#3234)
+  * go.mod: update github.com/google/go-dap to v0.7.0 (#3237)
+  * pkg/proc: apply simplifycompositelit analysis fixes (#3236)
+  * proc: Fix typos in the comments (#3231)
+  * service/debugger: fix comment on EvalVariableInScope (#3225)
+  * proc/native: fix FreeBSD backend (#3224)
+  * TeamCity: fix windows/amd64 builds (#3223)
+  * Documentation/faq: Correct commands in substitute-path section (#3222)
+  * *: Change comments to match common Go standarts (#3221)
+  * Update github.com/derekparker/trie dependency (#3219)
+  * dwarf/frame: Remove expression constants (#3218)
+  * proc: replace os.SEEK_CUR with io.SeekCurrent (#3214)
+  * Documentation: add -test.run to test example (#3212)
+- Packaging update source service mode to manual formerly disabled
+
+-------------------------------------------------------------------
+Tue Dec 13 14:16:21 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.20.1:
+  * gdbserial: continue if tcsetpgrp fails (#3211)
+
+-------------------------------------------------------------------
 Thu Dec 08 20:51:03 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.20.0:
