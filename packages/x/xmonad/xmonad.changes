@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  2 13:05:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xmonad to version 0.17.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmonad-0.17.2/src/CHANGES.md
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:22 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

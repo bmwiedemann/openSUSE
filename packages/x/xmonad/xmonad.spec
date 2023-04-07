@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.17.1
+Version:        0.17.2
 Release:        0
 Summary:        A tiling window manager
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
 Source10:       xmonad.desktop
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
@@ -115,7 +114,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
