@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-pecanwsme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-pecanwsme
 Version:        0.10.0
 Release:        0
@@ -25,12 +24,12 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/dreamhost/sphinxcontrib-pecanwsme
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-pecanwsme/sphinxcontrib-pecanwsme-%{version}.tar.gz
+# https://github.com/sphinx-contrib/pecanwsme/issues/21
+Patch0:         python-sphinxcontrib-pecanwsme-no-six.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sphinxcontrib-httpdomain}
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires:       python-sphinxcontrib-httpdomain
 BuildArch:      noarch
 
@@ -40,7 +39,7 @@ BuildArch:      noarch
 Extension to Sphinx for documenting APIs built with Pecan and WSME
 
 %prep
-%setup -q -n sphinxcontrib-pecanwsme-%{version}
+%autosetup -p1 -n sphinxcontrib-pecanwsme-%{version}
 
 %build
 %python_build
@@ -51,6 +50,7 @@ Extension to Sphinx for documenting APIs built with Pecan and WSME
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib_pecanwsme*
 
 %changelog

@@ -100,4 +100,12 @@
     <comment>- drop unused dependency on openstack-suse-macros</comment>
     <requestid>866154</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>33caa13633b18bd1a6593e121a57142f</srcmd5>
+    <version>0.10.0</version>
+    <time>1680884222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077838</requestid>
+  </revision>
 </revisionlist>
