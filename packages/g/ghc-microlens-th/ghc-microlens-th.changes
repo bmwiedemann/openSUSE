@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  3 05:21:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.12.
+  # 0.4.3.12
+
+  * [#164](https://github.com/stevenfontanella/microlens/pull/164), [#165](https://github.com/stevenfontanella/microlens/issues/165) Support template-haskell 2.19 (and GHC 9.6 by extension).
+
+  # 0.4.3.11
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
