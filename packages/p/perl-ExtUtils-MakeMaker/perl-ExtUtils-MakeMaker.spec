@@ -18,7 +18,7 @@
 
 %define cpan_name ExtUtils-MakeMaker
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.68
+Version:        7.70
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create a module Makefile

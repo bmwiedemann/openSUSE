@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  4 09:59:31 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Update Do_not_set_RPATH_by_default.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 03:06:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.70
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.70    Sun 26 Mar 14:13:20 BST 2023
+      No changes since v7.69_01
+  7.69_01 Sat 25 Mar 11:06:19 GMT 2023
+      Core reversions:
+      - Reverted the PERL_CORE and PERL_SRC changes from v7.67_02
+        These will be reintroduced after more testing in core
+
+-------------------------------------------------------------------
 Wed Mar 15 12:53:55 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Update Do_not_set_RPATH_by_default.patch
