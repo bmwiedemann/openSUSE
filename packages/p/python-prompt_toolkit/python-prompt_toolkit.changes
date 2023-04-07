@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  4 20:16:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.38
+  * Fix regression in filters. (Use of `WeakValueDictionary` caused
+    filters to not be cached).
+- Release 3.0.37 Bug fixes:
+  * Fix `currentThread()` deprecation warning.
+  * Fix memory leak in filters.
+  * Make VERSION tuple numeric.
+  * Add `.run()` method in `TelnetServer`. (To be used instead of
+    `.start()/.stop()`.
+  ## Breaking changes:
+  * Subclasses of `Filter` have to call `super()` in their
+    `__init__`.
+  * Drop support for Python 3.6:
+    - This includes code cleanup for Python 3.6 compatibility.
+    - Use `get_running_loop()` instead of `get_event_loop()`.
+    - Use `asyncio.run()` instead of
+      `asyncio.run_until_complete()`.
+
+-------------------------------------------------------------------
 Tue Dec 13 16:16:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.0.36 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-prompt_toolkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-prompt_toolkit
-Version:        3.0.36
+Version:        3.0.38
 Release:        0
 Summary:        Library for building interactive command lines in Python
 License:        BSD-3-Clause
-URL:            https://github.com/jonathanslenders/python-prompt-toolkit
+URL:            https://github.com/prompt-toolkit/python-prompt-toolkit
 Source:         https://files.pythonhosted.org/packages/source/p/prompt_toolkit/prompt_toolkit-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
@@ -44,10 +45,10 @@ lines in Python.
 %setup -q -n prompt_toolkit-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ lines in Python.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst CHANGELOG
-%{python_sitelib}/prompt_toolkit*
+%{python_sitelib}/prompt_toolkit
+%{python_sitelib}/prompt_toolkit-%{version}.dist-info
 
 %changelog
