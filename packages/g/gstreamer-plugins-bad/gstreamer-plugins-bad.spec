@@ -134,7 +134,6 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(ldacBT-enc)
 %endif
 BuildRequires:  pkgconfig(libass) >= 0.10.2
-BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl) >= 7.35.0
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.0.0
@@ -255,6 +254,7 @@ processing capabilities can be added simply by installing new plug-ins.
 %package chromaprint
 Summary:        Chromaprint plugin for GStreamer
 Group:          Productivity/Multimedia/Other
+BuildRequires:  pkgconfig(libchromaprint)
 
 %description chromaprint
 Add chromaprint (Audio Fingerprinting) support to any GStreamer based tool.
@@ -481,7 +481,6 @@ processing capabilities can be added simply by installing new plug-ins.
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       gstreamer-plugins-bad-chromaprint
 Requires:       libgstadaptivedemux-1_0-0 = %{version}
 Requires:       libgstbadaudio-1_0-0 = %{version}
 Requires:       libgstbasecamerabinsrc-1_0-0 = %{version}

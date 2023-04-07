@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  3 01:03:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move pkgconfig(libchromaprint) BuildRequires to chromaprint
+  plugin sub-package, and drop the hard
+  gstreamer-plugins-bad-chromaprint Requires from our devel
+  sub-package. This is a "stand alone" plugin, and this way
+  packages depending on gstreamer-plugins-bad during build avoids
+  pulling in libavcodec and libavfilter + ffmpeg-mini-devel
+  packages for no reason.
+
+-------------------------------------------------------------------
 Sat Mar 25 14:48:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move conditional pkgconfig(vo-amrwbenc) BuildRequires to main
