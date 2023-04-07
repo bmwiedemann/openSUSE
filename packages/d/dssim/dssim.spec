@@ -1,6 +1,7 @@
 #
 # spec file for package dssim
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,40 +13,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dssim
-Version:        1.3.2
+Version:        3.2.3
 Release:        0
 Summary:        This tool computes (dis)similarity between two (or more) PNG images
-License:        AGPL-3.0
+License:        AGPL-3.0-only
 Group:          Productivity/Graphics/Other
-Url:            https://kornel.ski/dssim
+URL:            https://kornel.ski/dssim
 Source:         https://github.com/pornel/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libpng16)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source1:        vendor.tar.gz
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
 
 %description
-This tool computes (dis)similarity between two PNG images using 
+This tool computes (dis)similarity between two PNG images using
 (my approximation of) algorithms approximating human vision.
 
 %prep
-%setup -q
+%autosetup -a1
+mkdir -p .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
-make CFLAGS='%{optflags} -std=c99' %{?_smp_mflags}
+%{cargo_build}
 
 %install
-install -d %{buildroot}%{_bindir}
-install -m 0755 bin/dssim %{buildroot}%{_bindir}/dssim
+%{cargo_install}
 
 %files
-%defattr(-,root,root)
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/dssim
 
 %changelog

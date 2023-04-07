@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jan 30 11:57:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * 25% faster
+  * WASM compatibility
+  * use more accurate pooling algorithm
+  * rewrite in Rust
+  * Chroma channels are compared at full resolution. 
+  * This increases accuracy on images with chroma subsampling.
+  * All scaling is done in linear-light premultiplied-alpha color
+    space, which further increases accuracy.
+  * Safe and reliable code. No more dodgy pointer manipulatio n
+  * Fixed handling of PNG files with invalid chunks
+  * Fixed handling of color channels smaller than 8 pixels
+
+-------------------------------------------------------------------
 Mon Jun  5 17:14:53 UTC 2017 - mardnh@gmx.de
 
 - initial package, version 1.3.2
