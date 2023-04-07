@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.2.30
+Version:        5.2.49
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-3.0-or-later
@@ -101,6 +101,7 @@ chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}* %{buildroot}%{_libdir}
 
 %files -n lib%{name}-tester%{sover}
 %license LICENSE.txt
+%{_bindir}/bctoolbox_tester
 %{_libdir}/lib%{name}-tester.so.%{sover}*
 
 %files devel
