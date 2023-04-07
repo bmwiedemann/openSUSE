@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 5 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.0.2
+
+  Added:
+  * Expose "apply_floor_snap" function to allow manual snap
+  * Drag and drop support for shader include files in shader editor
+
+  Changed:
+  * Cleanup pulseaudio defines for Linux
+  * Use 8×8 default grid size for TextureRegion and 2D polygon editors
+  * Don't allow selecting nodes without owner in the editor
+  * Exit with non-zero status if there are issues with
+      FreeType dependencies
+  * Remove disabled plugins from active plugins
+  * Delete unused compression formats from ".import"
+      files when exporting
+  * Make GDScript number highlighting stricter
+  * Revert attempted fix of trimesh CCD
+  * Incorporating the availability of screen and depth
+      textures for the GLES3 backend
+
+  Fixed:
+  * preview rendering and transform calculations in the tiles editor
+  * built-in scripts missing their methods on signal connection
+  * GDExtensions library export when multiple architectures are set
+  * "Find in Files" search results not opening built-in script
+  * scrolling behavior with zero/low page value
+  * Layout bug in "keyboard_get_keycode_from_physical"
+  * Agents with disabled avoidance getting added to avoidance simulation
+  * Spotlight shadows in volumetric fog
+  * Update GPUParticles2D/3D speed scale on "ENTER_TREE"
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/4.0.2/Godot_v4.0.2-stable_changelog_chrono.txt
+
+- dropped scons_regression.patch with Scons 4.5.2 available in Tumbleweed
+
+-------------------------------------------------------------------
 Tue Mar 22 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.0.1
