@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  7 07:57:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Revert a breaking change with chromium-112-feed_protos.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 22:38:23 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 112.0.5615.49 

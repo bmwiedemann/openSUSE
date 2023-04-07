@@ -133,6 +133,7 @@ Patch206:       chromium-109-clang-lp154.patch
 Patch208:       chromium-icu72-2.patch
 Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
+Patch212:       chromium-112-feed_protos.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
