@@ -124,4 +124,13 @@
     <comment></comment>
     <requestid>1042997</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bcde2fab649f849c7315368043be7893</srcmd5>
+    <version>1.4.1</version>
+    <time>1680884210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.4.1
+  * Fix a documentation typo</comment>
+    <requestid>1077781</requestid>
+  </revision>
 </revisionlist>
