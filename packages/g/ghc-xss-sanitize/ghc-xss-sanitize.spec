@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.7.1
+Version:        0.3.7.2
 Release:        0
 Summary:        Sanitize untrusted HTML to prevent XSS attacks
 License:        BSD-2-Clause

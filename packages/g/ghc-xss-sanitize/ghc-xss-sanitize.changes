@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:04:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7.2.
+  # 0.3.7.2
+
+  Stops Tag Soup from escaping &"<> which breaks HTML entities
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
