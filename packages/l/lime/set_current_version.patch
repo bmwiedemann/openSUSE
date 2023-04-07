@@ -1,0 +1,11 @@
+--- lime-5.2.49/CMakeLists.txt.orig	2023-04-07 11:19:32.690592153 +0200
++++ lime-5.2.49/CMakeLists.txt	2023-04-07 11:19:38.978623804 +0200
+@@ -57,7 +57,7 @@
+ 	set (LANGUAGES_LIST ${LANGUAGES_LIST} Java)
+ endif()
+ 
+-project(lime VERSION 5.2.0 LANGUAGES ${LANGUAGES_LIST})
++project(lime VERSION 5.2.49 LANGUAGES ${LANGUAGES_LIST})
+ 
+ set(LIME_SO_VERSION "0")
+ set(LIME_VERSION ${PROJECT_VERSION})

@@ -178,4 +178,14 @@
 </comment>
     <requestid>1074874</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eff03c0981329a32f58cb996afb0dd13</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.49 (no changelog).
+- Add set_current_version.patch.
+</comment>
+    <requestid>1077858</requestid>
+  </revision>
 </revisionlist>

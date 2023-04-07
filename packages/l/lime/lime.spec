@@ -19,7 +19,7 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.2.30
+Version:        5.2.49
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://linphone.org/technical-corner/lime/
 Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         add-cstdint.patch
+Patch1:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -38,8 +39,8 @@ BuildRequires:  soci-devel = 4.0.2
 BuildRequires:  soci-sqlite3-devel = 4.0.2
 %endif
 BuildRequires:  chrpath
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
-BuildRequires:  pkgconfig(belle-sip) >= 5.2.0
+BuildRequires:  pkgconfig(bctoolbox) >= %{version}
+BuildRequires:  pkgconfig(belle-sip) >= %{version}
 
 %description
 LIME is an encryption library for one-to-one and group instant
