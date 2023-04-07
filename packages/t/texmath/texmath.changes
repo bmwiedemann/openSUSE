@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 30 20:26:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.7.1.
+  texmath (0.12.7.1)
+
+   * Typst writer:
+
+     + Improve under/overbrace/bracket/line.
+     + Fix bugs with super/subscript grouping (#212).
+     + Fix case where super/subscript is on an empty element,
+       by inserting a zws.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:21 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
