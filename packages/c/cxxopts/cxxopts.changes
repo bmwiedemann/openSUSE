@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  7 12:41:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Fixed version number in header.
+  * Support for multiple long names for the same option (=
+    multiple long aliases)
+  * Add a `program()` function to retrieve the program name.
+  * Added a .clang-format file.
+  * Added iterator and printing for a ParseResult.
+  * Cleanup exception code, add cxxopts::exceptions namespace.
+  * Fix `arguments()` having no key for options that only have a
+    short name. 
+
+-------------------------------------------------------------------
 Fri Oct 14 10:04:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions with limitations.

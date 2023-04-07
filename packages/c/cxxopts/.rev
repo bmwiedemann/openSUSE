@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>1033516</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be66901ceea17dffe2449956ff3b4d0f</srcmd5>
+    <version>3.1.1</version>
+    <time>1680884279</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  * Fixed version number in header.
+  * Support for multiple long names for the same option (=
+    multiple long aliases)
+  * Add a `program()` function to retrieve the program name.
+  * Added a .clang-format file.
+  * Added iterator and printing for a ParseResult.
+  * Cleanup exception code, add cxxopts::exceptions namespace.
+  * Fix `arguments()` having no key for options that only have a
+    short name.</comment>
+    <requestid>1077876</requestid>
+  </revision>
 </revisionlist>

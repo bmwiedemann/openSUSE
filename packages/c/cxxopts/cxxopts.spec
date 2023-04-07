@@ -1,7 +1,7 @@
 #
 # spec file for package cxxopts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           cxxopts
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        C++ command line option parser
 License:        MIT
 URL:            https://github.com/jarro2783/cxxopts
 Source0:        https://github.com/jarro2783/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 
 %description
 CXXOpts is a C++ option parser library supporting some of the
