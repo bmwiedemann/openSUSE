@@ -92,4 +92,13 @@
   * fix-XSetTransientForHint.patch</comment>
     <requestid>1069132</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8f3a1177909aae36831db55c67aaee23</srcmd5>
+    <version>0.9.0</version>
+    <time>1680884217</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-fix-qt-6.5-compilation.patch to fix a compilation
+  error with qt 6.5</comment>
+    <requestid>1077790</requestid>
+  </revision>
 </revisionlist>

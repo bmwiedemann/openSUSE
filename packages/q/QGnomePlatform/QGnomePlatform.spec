@@ -73,6 +73,8 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/QGnomePlatform-%{version}.tar.gz
 Patch0:         fix-XSetTransientForHint.patch
+# PATCH-FIX-UPSTREAM 0001-fix-qt-6.5-compilation.patch -- Fix build with qt-6.5
+Patch1:         0001-fix-qt-6.5-compilation.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  6 17:53:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-qt-6.5-compilation.patch to fix a compilation
+  error with qt 6.5
+
+-------------------------------------------------------------------
 Thu Mar  2 15:56:04 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Don't use %elif which is not supported in SLE/Leap
