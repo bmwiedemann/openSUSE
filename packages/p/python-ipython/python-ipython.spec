@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.9.0
+Version:        8.12.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -47,7 +47,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       (python-prompt_toolkit >= 3.0.30 with python-prompt_toolkit < 3.1)
 # requires the full stdlib including sqlite3
 Requires:       python >= 3.8
 Requires:       python-backcall
@@ -59,6 +58,10 @@ Requires:       python-pickleshare
 Requires:       python-pygments >= 2.4.0
 Requires:       python-stack-data
 Requires:       python-traitlets >= 5
+Requires:       (python-prompt_toolkit >= 3.0.38 with python-prompt_toolkit < 3.1)
+%if %{python_version_nodots} < 310
+Requires:       python-typing-extensions
+%endif
 Recommends:     jupyter
 Recommends:     python-ipykernel
 Recommends:     python-ipyparallel
@@ -83,7 +86,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module curio}
 BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}

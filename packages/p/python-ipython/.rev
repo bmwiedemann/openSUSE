@@ -1249,4 +1249,41 @@
 </comment>
     <requestid>1063285</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cd9e69a49f636d69ab6d9dcf84caf465</srcmd5>
+    <version>8.12.0</version>
+    <time>1680884171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.12.0
+   * PR #13957 brings updates to the Qt integration, particularly
+     for Qt6.
+   * PR #13960 fixes the %debug magic command to give access to the
+     local scope.
+   * PR #13964 fixes some crashes with the new fast traceback code.
+     Note that there are still some issues with the fast traceback
+     code, and I a, likely to fix and tweak behavior.
+   * PR #13973 We are slowly migrating IPython internals to use
+     proper type objects/dataclasses instead of dictionaries to
+     allow static typing checks. These are technically public API
+     and could lead to breakage, so please let us know if that’s
+     the case and I’ll mitigate.
+   * PR #13990, PR #13991, PR #13994 all improve keybinding and
+     shortcut configurability.
+- Release 8.11
+  * Faster Traceback Highlighting
+  * Autoreload verbosity
+  * Terminal shortcuts customization
+  * %gui should now support PySide6. PR #13864
+  * Cli shortcuts can now be configured PR #13928, see above. (note
+    that there might be an issue with prompt_toolkit 3.0.37 and
+    shortcut configuration).
+  * Capture output should now respect ; semicolon to suppress
+    output. PR #13940
+  * Base64 encoded images (in jupyter frontend), will not have
+    trailing newlines. PR #13941
+- Release 8.10
+  * bump minimum numpy to &gt;=1.21 version following NEP29. PR #13930
+  * fix for compatibility with MyPy 1.0. PR #13933</comment>
+    <requestid>1077235</requestid>
+  </revision>
 </revisionlist>
