@@ -93,6 +93,7 @@ Patch15:        tomcat-9.0-fix_catalina.patch
 Patch16:        tomcat-9.0-logrotate_everything.patch
 Patch17:        tomcat-9.0.43-CVE-2023-24998.patch
 Patch18:        tomcat-9.0.43-CVE-2023-28708.patch
+Patch19:        tomcat-9.0.43-CVE-2022-45143.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -277,6 +278,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

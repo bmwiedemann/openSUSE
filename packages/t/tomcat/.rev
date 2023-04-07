@@ -861,4 +861,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>1074951</requestid>
   </revision>
+  <revision rev="92" vrev="16">
+    <srcmd5>c80af33383fa762e72fb8599a424e259</srcmd5>
+    <version>9.0.43</version>
+    <time>1680884226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077842</requestid>
+  </revision>
 </revisionlist>
