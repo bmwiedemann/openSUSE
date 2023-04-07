@@ -1,7 +1,7 @@
 #
 # spec file for package labplot-kf5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
 Name:           labplot-kf5
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://labplot.kde.org/
-Source:         https://download.kde.org/stable/labplot/%{version}/labplot-%{version}.tar.xz
+Source:         https://download.kde.org/stable/labplot/labplot-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  cantor-devel
 BuildRequires:  extra-cmake-modules
@@ -90,7 +90,7 @@ This version is based on KDE Frameworks 5
 %setup -q -n labplot-%{version}
 
 %build
-%cmake_kf5 -d build -- -DENABLE_READSTAT:BOOL=OFF -DREPRODUCIBLE_BUILD:BOOL=ON
+%cmake_kf5 -d build -- -DENABLE_READSTAT:BOOL=OFF -DENABLE_VECTOR_BLF:BOOL=OFF -DENABLE_REPRODUCIBLE:BOOL=ON
 %cmake_build
 
 %install
