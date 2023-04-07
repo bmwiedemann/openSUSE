@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Apr  6 13:27:49 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove HELIX_DISABLE_AUTO_GRAMMAR_BUILD.
+
+-------------------------------------------------------------------
+Thu Apr  6 12:20:41 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove sed command to modify HELIX_RUNTIME
+
+-------------------------------------------------------------------
+Thu Apr  6 09:21:16 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 22.03
+  * Breaking changes:
+    - Select diagnostic range in goto_*_diag commands
+    - Remove jump behavior from increment/decrement
+    - Select change range in goto_*_change commands
+    - Split file modification indicator from filename statusline elements
+    - Jump to symbol ranges in LSP goto commands
+    - Workspace detection now stops at the first .helix/ directory (merging multiple .helix/languages.toml configurations is no longer supported)
+  * Features:
+    - Dynamic workspace symbol picker
+    - Soft-wrap
+    - Initial support for LSP snippet completions
+    - Add a statusline element for showing the current version control HEAD
+    - Display LSP type hints
+    - Enable the Kitty keyboard protocol on terminals with support
+    - Add a statusline element for the basename of the current file
+    - Add substring matching syntax for the picker
+    - Support LSP textDocument/prepareRename
+    - Allow multiple runtime directories with priorities
+    - Allow configuring whether to insert or replace completions
+    - Allow per-workspace config file .helix/config.toml
+    - Add workspace-lsp-roots config option to support multiple LSP roots for use with monorepos
+  * Commands:
+    - :pipe-to which pipes selections into a shell command and ignores output
+    - merge_consecutive_selections (A-_) combines all consecutive selections
+    - rotate_view_reverse which focuses the previous view
+    - goto_declaration (gD, requires LSP) which jumps to a symbol's declaration
+    - file_picker_in_current_buffer_directory
+    - :character-info which shows information about the character under the cursor
+    - :toggle-option for toggling config options at runtime
+    - dap_restart for restarting a debug session in DAP
+    - :lsp-stop to stop the language server of the current buffer
+    - :reset-diff-change for resetting a diff hunk to its original text
+    - :config-open-workspace for opening the config file local to the current workspace
+  * Fixes:
+    - Fix behavior of auto-completion flag for completion-on-trigger
+    - Reset editor mode when changing buffers
+    - Respect scrolloff settings in mouse movements
+    - Avoid trailing s when only one file is opened
+    - Fix erroneous indent between closers of auto-pairs
+    - Expand ~ when parsing file paths in :open
+    - Fix theme inheritance for default themes
+    - Fix extend_line with a count when the current line(s) are selected
+    - Prompt: Fix autocompletion for paths containing periods
+    - Skip serializing JSONRPC params if params is null
+    - Fix interaction with the xclip clipboard provider
+    - Fix undo/redo execution from the command palette
+    - Fix highlighting of non-block cursors
+    - Fix panic when nooping in join_selections and join_selections_space
+    - Fix selecting a changed file in global search
+    - Fix initial syntax highlight layer sort order
+    - Fix UTF-8 length handling for shellwords
+    - Remove C-j and C-k bindings from the completion menu
+    - Always commit to history when pasting
+    - Properly handle LSP position encoding
+    - Fix infinite loop in copy_selection_on_prev_line
+    - Fix completion popup positioning
+    - Fix a panic when uncommenting a line with only a comment token
+    - Fix panic in goto_window_center at EOF
+    - Ignore invalid file URIs sent by a language server
+    - Decode LSP URIs for the workspace diagnostics picker
+    - Fix incorrect usages of tab_width with indent_width
+    - DAP: Send Disconnect if the Terminated event is received
+    - DAP: Validate key and index exist when requesting variables
+    - Check LSP renaming support before prompting for rename text
+    - Fix indent guide rendering
+    - Fix division by zero panic
+    - Fix lacking space panic
+    - Send error replies for malformed and unhandled LSP requests
+    - Fix table column calculations for dynamic pickers
+    - Skip adding jumplist entries for :<n> line number previews
+    - Fix completion race conditions
+    - Fix shrink_selection with multiple cursors
+    - Fix indentation calculation for lines with mixed tabs/spaces
+    - No-op client/registerCapability LSP requests
+    - Send the STOP signal to all processes in the process group
+    - Fix workspace edit client capabilities declaration (7bf168d)
+    - Fix highlighting in picker results with multiple columns
+    - Canonicalize paths before stripping the current dir as a prefix
+    - Fix truncation behavior for long path names in the file picker
+    - Fix theme reloading behavior in :config-reload (ab819d8)
+  * More information at https://github.com/helix-editor/helix/blob/master/CHANGELOG.md#2303-2023-03-31
+- Remove helix-runtime-path.patch
+- Fix SPDX license names
+
+-------------------------------------------------------------------
 Wed Mar  8 14:44:35 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix upgrade path

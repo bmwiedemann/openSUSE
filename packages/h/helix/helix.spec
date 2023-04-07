@@ -23,18 +23,17 @@
 %global _helix_runtimedir %{_libdir}/%{name}/runtime
 
 Name:           helix
-Version:        22.12
+Version:        23.03
 Release:        0
 Summary:        A post-modern modal text editor written in Rust
-License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0+ AND Zlib AND MPL-2.0
+License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0 AND Zlib AND MPL-2.0
 URL:            https://github.com/helix-editor/helix
 # This tarball includes fetched grammars
-Source0:        %{url}/releases/download/%{version}/%{name}-%{version}-source.tar.xz#/%{name}-%{version}.tar.xz
+Source0:        https://github.com/helix-editor/helix/releases/download/%{version}/%{name}-%{version}-source.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source3:        README-suse-maint.md
 Source4:        helix-rpmlintrc
-Patch0:         helix-runtime-path.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -89,16 +88,11 @@ if there is no runtime present in the users config directory specifically
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config.toml
 
-# Replace RUNTIME dir
-sed -e 's#@HELIX_RUNTIME_DIR@#%{_libdir}/%{name}#' -i helix-loader/src/lib.rs
-
 # Remove shell definitions
 sed -e '/^\#\!\/usr\/bin\/env .*/d' -i contrib/completion/hx.*
 
 %build
-export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=true
 %{cargo_build}
-HELIX_RUNTIME="$PWD/runtime" ./target/release/hx --grammar build
 
 # Shell completions
 sed -i "s|hx|helix|g" contrib/completion/hx.*
@@ -116,6 +110,9 @@ cp -av "runtime/themes" %{buildroot}%{_helix_runtimedir}
 find "%{_builddir}/%{name}-%{version}/runtime/grammars" -type f -name '*.so' -exec \
     install --verbose -Dm 755 {} -t "%{buildroot}%{_helix_runtimedir}/grammars" \;
 install -Dm644 runtime/tutor -t %{buildroot}%{_helix_runtimedir}
+
+# Not needed during runtime
+rm -rfv %{buildroot}%{_helix_runtimedir}/grammars/sources
 
 # Desktop application file
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/Helix.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
