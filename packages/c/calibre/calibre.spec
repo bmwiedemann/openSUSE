@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        6.14.1
+Version:        6.15.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -149,6 +149,7 @@ BuildRequires:  python3-psutil >= 5.8.0
 BuildRequires:  python3-pychm >= 0.8.6
 BuildRequires:  python3-pycryptodome >= 3.11.0
 BuildRequires:  python3-pyparsing >= 3.0.6
+BuildRequires:  python3-pyzstd >= 0.15.6
 # upstream use: BuildRequires:  python3-pyqt-builder >= 1.13.0
 BuildRequires:  python3-pyqt-builder >= 1.12.2
 BuildRequires:  python3-qt6-devel >= 6.3.1
@@ -212,6 +213,7 @@ Requires:       python3-odfpy
 Requires:       python3-psutil >= 5.8.0
 Requires:       python3-pychm >= 0.8.6
 Requires:       python3-pycryptodome >= 3.11.0
+Requires:       python3-pyzstd >= 0.15.6
 Requires:       python3-qt6 >= 6.3.1
 Requires:       python3-qtwebengine-qt6 >= 6.3.1
 Requires:       python3-regex >= 2021.11.10
@@ -341,7 +343,8 @@ rm %{buildroot}%{_datadir}/applications/calibre-ebook-{edit,viewer}.desktop
 rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
 
 # Fix missing user-agent-data.json
-install -Dm 0644 %{SOURCE6} %{buildroot}%{_datadir}/%{name}/user-agent-data.json
+# With version 6.15.0 it is available again. So we use it again from source but let the code in.
+#install -Dm 0644 %%{SOURCE6} %%{buildroot}%%{_datadir}/%%{name}/user-agent-data.json
 
 %fdupes %{buildroot}%{_prefix}
 
