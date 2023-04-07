@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  5 01:34:28 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- Allow to use stroke aka ipsec interface by default instead of
+  vici aka swanctl interface which is current upstream's default.
+  strongswan.service which enables swanctl interface is masked to
+  stop interfering with the ipsec interface (bsc#1184144)
+- Removes deprecated SysV support 
+
+-------------------------------------------------------------------
 Thu Mar  2 13:34:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.10

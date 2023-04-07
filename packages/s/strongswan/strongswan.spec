@@ -56,11 +56,6 @@ Release:        0
 %bcond_with     gcrypt
 %bcond_with     nm
 %endif
-%if 0%{suse_version} > 1220
-%bcond_without  systemd
-%else
-%bcond_with     systemd
-%endif
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
@@ -105,17 +100,11 @@ BuildRequires:  libgcrypt-devel
 %if %{with nm}
 BuildRequires:  pkgconfig(libnm)
 %endif
-%if %{with systemd}
 %{?systemd_requires}
-BuildRequires:  pkgconfig(libsystemd)
-%endif
 BuildRequires:  iptables
-%if %{with systemd}
+BuildRequires:  pkgconfig(libsystemd)
 %{!?_rundir: %global _rundir /run}
 %{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d}
-%else
-%{!?_rundir: %global _rundir /var/run}
-%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 %if %{with fipscheck}
@@ -282,10 +271,8 @@ autoreconf --force --install
 	--with-plugindir=%{strongswan_plugins} \
 	--with-resolv-conf=%{_rundir}/%{name}/resolv.conf \
 	--with-piddir=%{_rundir}/%{name} \
-%if %{with systemd}
 	--enable-systemd \
 	--with-systemdsystemunitdir=%{_unitdir} \
-%endif
 	--enable-pkcs11 \
 	--enable-openssl \
 	--enable-agent \
@@ -374,13 +361,9 @@ autoreconf --force --install
 %install
 install -d -m755              %{buildroot}/%{_sbindir}/
 install -d -m755              %{buildroot}/%{_sysconfdir}/ipsec.d/
-%if %{with systemd}
 ln -sf %{_sbindir}/service    %{buildroot}/%{_sbindir}/rcstrongswan
-%else
-install -d -m755              %{buildroot}/%{_sysconfdir}/init.d/
-install -m755 strongswan.init %{buildroot}/%{_sysconfdir}/init.d/ipsec
-ln -s %{_sysconfdir}/init.d/ipsec %{buildroot}/%{_sbindir}/rcipsec
-%endif
+ln -sf %{_sbindir}/service    %{buildroot}/%{_sbindir}/rcstrongswan-starter
+ln -sf %{_sbindir}/service    %{buildroot}/%{_sbindir}/rcipsec
 #
 # Ensure, plugin -> library dependencies can be resolved
 # (e.g. libtls) to avoid plugin segment checksum errors.
@@ -438,10 +421,8 @@ install -c -m644 TODO NEWS README COPYING LICENSE \
 		 %{buildroot}/%{strongswan_docdir}/
 install -c -m644 %{_sourcedir}/README.SUSE \
 		 %{buildroot}/%{strongswan_docdir}/
-%if %{with systemd}
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 echo 'd %{_rundir}/%{name} 0770 root root' > %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%endif
 %if %{with fipscheck}
 #
 # note: keep the following, _fipscheck's and file lists in sync
@@ -479,22 +460,34 @@ sed -i 's/\(load[ ]*=[ ]*\)yes/\1no/g' %{buildroot}/%{strongswan_configs}/charon
 
 %postun libs0 -p /sbin/ldconfig
 
-%if %{with systemd}
 %pre ipsec
-%service_add_pre %{name}.service
-%endif
+%service_add_pre %{name}-starter.service
 
-%if %{with systemd}
 %post ipsec
-%service_add_post %{name}.service
-%endif
+# Following code does the migration from strongwan.service (ver < 5.8.0) to
+# strongswan-starter.service (ver >= 5.8.0) during update. The systemd service
+# units have been renamed. The modern unit, which was called strongswan-swanctl,
+# is now called strongswan (the previous name is configured as alias in the unit,
+# for which a symlink is created when the unit is enabled). The legacy unit is now
+# called strongswan-starter.
+_ipsec_active=`/usr/bin/systemctl is-active %{name}-starter.service 2>/dev/null` || :
+_swanctl_active=`/usr/bin/systemctl is-active %{name}.service 2>/dev/null` || :
+_ipsec_enable=`/usr/bin/systemctl is-enabled %{name}-starter.service 2>/dev/null` || :
+_swanctl_enable=`/usr/bin/systemctl is-enabled %{name}.service 2>/dev/null` || :
+if [[ "$_swanctl_enable" == "enabled" || "$_swanctl_active" == "active" ]]; then
+        /usr/bin/systemctl disable --now %{name}.service || :
+        /usr/bin/systemctl mask %{name}.service || :
+fi
+if [[ "$_swanctl_enable" == "enabled" || "$_ipsec_enable" == "enabled" ]]; then
+        /usr/bin/systemctl daemon-reload
+        /usr/bin/systemctl enable %{name}-starter.service || :
+fi
+if [[ "$_swanctl_active" == "active" || "$_ipsec_active" == "active" ]]; then
+        /usr/bin/systemctl start %{name}-starter.service || :
+fi
 
 %preun ipsec
-%if %{with systemd}
-%service_del_preun %{name}.service
-%else
-%{stop_on_removal ipsec}
-%endif
+%service_del_preun %{name}-starter.service
 if test -s %{_sysconfdir}/ipsec.secrets.rpmsave ; then
 	cp -p --backup=numbered %{_sysconfdir}/ipsec.secrets.rpmsave \
 	                        %{_sysconfdir}/ipsec.secrets.rpmsave.old
@@ -504,10 +497,8 @@ if test -s %{_sysconfdir}/ipsec.conf.rpmsave ; then
 	                        %{_sysconfdir}/ipsec.conf.rpmsave.old
 fi
 
-%if %{with systemd}
 %postun ipsec
-%service_del_postun %{name}.service
-%endif
+%service_del_postun %{name}-starter.service
 
 %files
 %dir %{strongswan_docdir}
@@ -545,15 +536,12 @@ fi
 %dir %{_sysconfdir}/ipsec.d/cacerts
 %dir %{_sysconfdir}/ipsec.d/ocspcerts
 %dir %attr(700,root,root) %{_sysconfdir}/ipsec.d/private
-%if %{with systemd}
 %{_unitdir}/strongswan-starter.service
 %{_unitdir}/strongswan.service
 %{_sbindir}/rcstrongswan
+%{_sbindir}/rcstrongswan-starter
 %{_sbindir}/charon-systemd
-%else
-%config %{_sysconfdir}/init.d/ipsec
 %{_sbindir}/rcipsec
-%endif
 %{_bindir}/pki
 %{_bindir}/pt-tls-client
 %{_bindir}/tpm_extendpcr
@@ -596,16 +584,12 @@ fi
 %{_mandir}/man8/swanctl.8.*
 
 %files libs0
-%if %{with systemd}
 %{_tmpfilesdir}/%{name}.conf
-%endif
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/strongswan.conf
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon.conf
-%if %{with systemd}
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-systemd.conf
-%endif
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-logging.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/imcv.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pki.conf
@@ -935,9 +919,7 @@ fi
 %{strongswan_templates}/config/plugins/curve25519.conf
 %{strongswan_templates}/config/plugins/vici.conf
 %{strongswan_templates}/config/plugins/bypass-lan.conf
-%if %{with systemd}
 %{strongswan_templates}/config/strongswan.d/charon-systemd.conf
-%endif
 %{strongswan_templates}/config/strongswan.d/charon-logging.conf
 %{strongswan_templates}/config/strongswan.d/charon.conf
 %{strongswan_templates}/config/strongswan.d/imcv.conf
