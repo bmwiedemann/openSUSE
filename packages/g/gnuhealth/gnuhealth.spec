@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.0
+Version:        %{majorver}.1
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -220,7 +220,7 @@ EOF
 %{_bindir}/install_demo_database.sh
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
-%doc README.rst Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/* 
+%doc README.rst Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/*
 %{_docdir}/%{name}/examples*
 %dir %{_sysconfdir}/tryton
 %license COPYING LICENSES/*

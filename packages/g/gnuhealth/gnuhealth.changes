@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  7 20:06:56 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.2.1
+  * Fix bug TypeError: unsupported operand type(s) for &=: 'bool' and 'GreaterEqual'
+  * Fix bug #63871: Imaging Result Report: genshitemplateevalUndefinedError: None has no member named 'rec_name'
+  * Fix bug #64009: Include signing health professional and avoid scrolling in patient evaluation
+  * Fix bug #64014: Update gender identity in patient evaluations and reports
+
+-------------------------------------------------------------------
 Sun Feb 12 13:38:44 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.2.0
