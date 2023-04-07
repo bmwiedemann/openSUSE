@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  2 12:02:47 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update monoid-subclasses to version 1.2.3.
+  Version 1.2.3
+  ---------------
+  * Add `DistributiveGCDMonoid` and `DistributiveLCMMonoid` type class by Jonathan Knowles
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
