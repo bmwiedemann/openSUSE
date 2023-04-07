@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr  5 08:20:53 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- testsuite: TEST-75-RESOLVED needs knot DNS server
+
+-------------------------------------------------------------------
+Wed Apr  5 07:32:41 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 66f3a8a47d5bf6aea3f6fb181c01550a1a54406e (merge of v253.3)
+
+  This merge also includes the following fix, which is not part of the stable
+  release:
+
+    d2413cec02 test/test-functions: fix typo in install_suse_systemd()
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/03cfbe767327d01d5a71131d91bf06fdc0047ca1...66f3a8a47d5bf6aea3f6fb181c01550a1a54406e
+
+
+-------------------------------------------------------------------
 Mon Apr  3 09:36:03 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit 03cfbe767327d01d5a71131d91bf06fdc0047ca1

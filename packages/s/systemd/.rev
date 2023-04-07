@@ -6484,4 +6484,19 @@ handle manual pages that consist only of a .so directive such as
   69643c6c96 test: install unit tests in a dedicated subdirectory below '$testsdir'</comment>
     <requestid>1076955</requestid>
   </revision>
+  <revision rev="387" vrev="1">
+    <srcmd5>045340e0a6a62a2eb9a3a61660ff5774</srcmd5>
+    <version>253.3</version>
+    <time>1680884181</time>
+    <user>dimstar_suse</user>
+    <comment>- testsuite: TEST-75-RESOLVED needs knot DNS server
+
+- Import commit 66f3a8a47d5bf6aea3f6fb181c01550a1a54406e (merge of v253.3)
+  This merge also includes the following fix, which is not part of the stable
+  release:
+    d2413cec02 test/test-functions: fix typo in install_suse_systemd()
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/03cfbe767327d01d5a71131d91bf06fdc0047ca1...66f3a8a47d5bf6aea3f6fb181c01550a1a54406e</comment>
+    <requestid>1077457</requestid>
+  </revision>
 </revisionlist>

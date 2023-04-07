@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.20.g03cfbe7673
+%define archive_version +suse.22.g66f3a8a47d
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.2
+Version:        253.3
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -508,6 +508,8 @@ Recommends:     tpm2.0-tools
 # are used by test-funtions to find the libs on the host and install them in the
 # image, see install_missing_libraries() for details.
 %if %{with resolved}
+# Optional dep for knot needed by TEST-75-RESOLVED
+Recommends:     knot
 Requires:       libidn2
 Requires:       pkgconfig(libidn2)
 %endif
