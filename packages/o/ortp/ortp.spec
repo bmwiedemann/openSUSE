@@ -21,7 +21,7 @@
 %define sover   15
 
 Name:           ortp
-Version:        5.2.30
+Version:        5.2.49
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        AGPL-3.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.30
+BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 
 %description
 oRTP is a C library implementing the RTP protocol (RFC 1889).

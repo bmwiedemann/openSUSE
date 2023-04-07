@@ -401,4 +401,13 @@
 </comment>
     <requestid>1070100</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c19681c64fb28b2acf67b0c54547cab1</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.49 (no changelog)
+</comment>
+    <requestid>1077856</requestid>
+  </revision>
 </revisionlist>
