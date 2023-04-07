@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  6 13:26:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add heimdal-CVE-2022-45142.patch: Fix logic inversion introduced
+  when fixing/backporting CVE-2022-3437 (CVE-2022-45142,
+  boo#1208992).
+
+-------------------------------------------------------------------
 Tue Jan 10 19:30:57 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - replace libheimdal conflicts by obsoletes / provides to provide a

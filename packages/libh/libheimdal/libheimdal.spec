@@ -30,6 +30,8 @@ Source2:        heimdal-patch-source.sh
 Patch0:         heimdal-patched.diff
 # PATCH-FIX-UPSTREAM bmwiedemann -- make build reproducible (boo#1047218)
 Patch1:         reproducible.patch
+# PATCH-FIX-UPSTREAM https://www.openwall.com/lists/oss-security/2023/02/08/1
+Patch2:         heimdal-CVE-2022-45142.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  bison
 BuildRequires:  db-devel >= 4.8
