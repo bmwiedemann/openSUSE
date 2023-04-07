@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  2 16:18:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update extra to version 1.7.13.
+  1.7.13, released 2023-04-22
+      #102, add mwhen :: Monoid a => Bool -> a -> a
+      #99, make replace with an empty from intersperse the replacement
+      #101, future-proof against addition of Data.List.!?
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:44 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

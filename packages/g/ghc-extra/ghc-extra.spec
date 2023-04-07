@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.12
+Version:        1.7.13
 Release:        0
 Summary:        Extra functions I use
 License:        BSD-3-Clause
