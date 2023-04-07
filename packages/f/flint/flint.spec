@@ -1,7 +1,7 @@
 #
 # spec file for package flint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://flintlib.org/
 
-#Git-Clone:     https://github.com/wbhart/flint2
-Source:         https://github.com/wbhart/flint2/archive/v%version.tar.gz
+#Git-Clone:     https://github.com/flintlib/flint2
+Source:         https://github.com/flintlib/flint2/archive/v%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
