@@ -1,7 +1,35 @@
 -------------------------------------------------------------------
-Tue Mar 14 18:27:43 UTC 2023 - Martin Liška <mliska@suse.cz>
+Tue Apr  4 07:02:21 UTC 2023 - Martin Liška <mliska@suse.cz>
 
-- Bump to 42630fadbe248717859d61c0244c821c32b4e52c, git6669.
+- Bump to d0b961b802dd7d9d555ff4515835a479329326e9, git6995.
+
+-------------------------------------------------------------------
+Fri Mar 24 14:44:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add %limit_build for gcc13 to avoid OOM
+
+-------------------------------------------------------------------
+Fri Mar 24 13:37:38 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use --enable-link-serialization rather that --enable-link-mutex,
+  the benefit of the former one is that the linker jobs are not
+  holding tokens of the make's jobserver.
+
+-------------------------------------------------------------------
+Thu Mar 23 22:14:59 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Bump to c4792bd1de0621932a47fb86aca09fafafdb2972, git6840.
+
+-------------------------------------------------------------------
+Tue Mar 21 10:45:33 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add cross-bpf packages.  See https://gcc.gnu.org/wiki/BPFBackEnd
+  for the general state of BPF with GCC.
+
+-------------------------------------------------------------------
+Tue Mar 21 08:39:35 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Bump to 5f413dc41ee4f8bc3a0fc295f98b75dceae52fa8, git6773.
 
 -------------------------------------------------------------------
 Mon Feb 27 10:25:35 UTC 2023 - Richard Biener <rguenther@suse.com>

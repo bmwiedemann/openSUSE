@@ -24,7 +24,7 @@
 # nospeccleaner
 
 %define build_cp 0%{!?gcc_accel:1}
-%if 0%{?gcc_libc_bootstrap:1}
+%if 0%{?gcc_libc_bootstrap:1} || "%{cross_arch}" == "bpf"
 %define build_cp 0
 %endif
 %define build_ada 0
@@ -74,10 +74,14 @@
 %if "%{binutils_target}" == "arm"
 %define binutils_os %{canonical_target}-suse-linux-gnueabi
 %else
+%if "%{binutils_target}" == "bpf"
+%define binutils_os %{canonical_target}-none
+%else
 %if 0%{?gcc_accel:1}
 %define binutils_os %{gcc_target_arch}
 %else
 %define binutils_os %{canonical_target}-suse-linux
+%endif
 %endif
 %endif
 %endif
@@ -104,7 +108,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.1+git6669
+Version:        13.0.1+git6995
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -190,6 +194,9 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel-32bit
+%if %{with limitbuild}
+BuildRequires:  memory-constraints
+%endif
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  perl
@@ -338,6 +345,9 @@ ln -s newlib-4.3.0.20230120/newlib .
 #test patching end
 
 %build
+%if %{with limitbuild}
+%limit_build -m 900
+%endif
 %define _lto_cflags %{nil}
 # Avoid rebuilding of generated files
 contrib/gcc_update --touch
@@ -568,6 +578,9 @@ amdgcn-amdhsa,\
 	--without-headers --with-newlib \
 %endif
 %endif
+%if "%{TARGET_ARCH}" == "bpf"
+	--disable-gcov \
+%endif
 %if "%{TARGET_ARCH}" == "spu"
 	--with-gxx-include-dir=%sysroot/include/c++/%{gcc_dir_version} \
 	--with-newlib \
@@ -702,7 +715,7 @@ amdgcn-amdhsa,\
 %else
 	--disable-bootstrap \
 %endif
-	--enable-link-mutex \
+	--enable-link-serialization \
 	$CONFARGS \
 	--build=%{GCCDIST} \
 	--host=%{GCCDIST} || \
@@ -881,7 +894,7 @@ for ex in gcc cpp \
           c++ g++ \
 %endif
           gcc-ar gcc-nm gcc-ranlib lto-dump \
-%if 0%{!?gcc_libc_bootstrap:1}
+%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
           gcov gcov-dump gcov-tool \
 %endif
 	  ; do
@@ -897,7 +910,7 @@ done
   --slave %{_bindir}/%{gcc_target_arch}-c++ %{gcc_target_arch}-c++ %{_bindir}/%{gcc_target_arch}-c++%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-g++ %{gcc_target_arch}-g++ %{_bindir}/%{gcc_target_arch}-g++%{binsuffix} \
 %endif
-%if 0%{!?gcc_libc_bootstrap:1}
+%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
   --slave %{_bindir}/%{gcc_target_arch}-gcov %{gcc_target_arch}-gcov %{_bindir}/%{gcc_target_arch}-gcov%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-dump %{gcc_target_arch}-gcov-dump %{_bindir}/%{gcc_target_arch}-gcov-dump%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-tool %{gcc_target_arch}-gcov-tool %{_bindir}/%{gcc_target_arch}-gcov-tool%{binsuffix} \
@@ -927,7 +940,7 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump%{binsuffix}
-%if 0%{!?gcc_libc_bootstrap:1}
+%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
 %{_prefix}/bin/%{gcc_target_arch}-gcov%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-tool%{binsuffix}
@@ -947,7 +960,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-nm
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ranlib
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-lto-dump
-%if 0%{!?gcc_libc_bootstrap:1}
+%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool

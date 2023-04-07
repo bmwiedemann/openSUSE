@@ -126,6 +126,9 @@
 %define build_jit 0
 %endif
 
+# Limit the number of parallel jobs to avoid OOM
+%bcond_without limitbuild
+
 # Shared library SONAME versions
 %ifarch hppa
 %define libgcc_s 4
@@ -201,7 +204,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.0.1+git6669
+Version:        13.0.1+git6995
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -224,6 +227,9 @@ BuildRequires:  texinfo
 # until here, but at least renaming and patching info files breaks this
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel-32bit
+%if %{with limitbuild}
+BuildRequires:  memory-constraints
+%endif
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  perl
@@ -2361,6 +2367,9 @@ ln -s newlib-4.3.0.20230120/newlib .
 #test patching end
 
 %build
+%if %{with limitbuild}
+%limit_build -m 900
+%endif
 %define _lto_cflags %{nil}
 # Avoid rebuilding of generated files
 contrib/gcc_update --touch
@@ -2591,6 +2600,9 @@ amdgcn-amdhsa,\
 	--without-headers --with-newlib \
 %endif
 %endif
+%if "%{TARGET_ARCH}" == "bpf"
+	--disable-gcov \
+%endif
 %if "%{TARGET_ARCH}" == "spu"
 	--with-gxx-include-dir=%sysroot/include/c++/%{gcc_dir_version} \
 	--with-newlib \
@@ -2725,7 +2737,7 @@ amdgcn-amdhsa,\
 %else
 	--disable-bootstrap \
 %endif
-	--enable-link-mutex \
+	--enable-link-serialization \
 	$CONFARGS \
 	--build=%{GCCDIST} \
 	--host=%{GCCDIST} || \

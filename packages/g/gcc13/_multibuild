@@ -29,4 +29,5 @@
 <flavor>cross-rx-gcc13</flavor>
 <flavor>cross-nvptx-gcc13</flavor>
 <flavor>cross-amdgcn-gcc13</flavor>
+<flavor>cross-bpf-gcc13</flavor>
 </multibuild>

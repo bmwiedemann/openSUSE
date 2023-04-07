@@ -80,4 +80,12 @@
 - Fixes mariadb miscompilation (PR109109). (forwarded request 1071855 from marxin)</comment>
     <requestid>1071933</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d69145979cfa9a080708abfe9a56e2f</srcmd5>
+    <version>13.0.1+git6995</version>
+    <time>1680884188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077145</requestid>
+  </revision>
 </revisionlist>

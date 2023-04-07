@@ -16,10 +16,10 @@
 #
 
 
-%define pkgname cross-nvptx-gcc13
-%define cross_arch nvptx
-%define gcc_target_arch nvptx-none
-%define gcc_accel 1
+%define pkgname cross-bpf-gcc13
+%define cross_arch bpf
+%define gcc_target_arch bpf-none
+
 # nospeccleaner
 
 %define build_cp 0%{!?gcc_accel:1}

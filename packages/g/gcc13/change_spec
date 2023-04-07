@@ -124,6 +124,7 @@ fi
 # the nvptx and amdgcn crosses are used for offloading
 add_cross cross-nvptx-gcc$base_ver nvptx nvptx-none %define gcc_accel 1
 add_cross cross-amdgcn-gcc$base_ver amdgcn amdgcn-amdhsa %define gcc_accel 1
+add_cross cross-bpf-gcc$base_ver bpf bpf-none
 
 for f in *.spec; do
   sed -i -e '/^# .*-\(BEGIN\|END\)$/d' $f
