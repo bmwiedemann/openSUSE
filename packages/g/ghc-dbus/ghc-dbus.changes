@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 19:01:23 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update dbus to version 1.2.28.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:33 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
