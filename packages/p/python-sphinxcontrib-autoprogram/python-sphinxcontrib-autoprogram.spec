@@ -42,15 +42,15 @@ Source0:        %{URL}/archive/%{version}/python-sphinxcontrib-%{short_name}-%{v
 Patch1:         skip-failing-test.patch
 # PATCH-FIX-UPSTREAM sphinx6.patch gh#sphinx-contrib/autoprogram#62
 Patch2:         sphinx6.patch
+# https://github.com/sphinx-contrib/autoprogram/issues/63
+Patch3:         python-sphinxcontrib-autoprogram-no-six.patch
 BuildRequires:  %{python_module Sphinx >= 1.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.2
-Requires:       python-six
 BuildArch:      noarch
 %if "%{flavor}" == "test"
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sphinxcontrib-autoprogram == %{version}}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= 1.0.1}
 %endif
@@ -73,7 +73,7 @@ it into a set of .. program:: and .. option:: directives.
 %endif
 
 %prep
-%autosetup -n %{short_name}-%{version} -p1
+%autosetup -p1 -n %{short_name}-%{version} -p1
 
 %build
 %if "%{flavor}" == ""

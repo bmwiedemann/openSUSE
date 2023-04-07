@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  6 09:42:32 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/sphinx-contrib/autoprogram/issues/63
+  + python-sphinxcontrib-autoprogram-no-six.patch
+
+-------------------------------------------------------------------
 Mon Feb 20 10:40:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add sphinx6.patch to support Sphinx >= 6.0, gh#sphinx-contrib/autoprogram#62
