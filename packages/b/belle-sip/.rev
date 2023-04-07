@@ -308,4 +308,14 @@
 </comment>
     <requestid>1070097</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e5bf410eea06c9f57bb6ba897ff1c82b</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.49 (no changelog)
+- Add set_current_version.patch
+</comment>
+    <requestid>1077857</requestid>
+  </revision>
 </revisionlist>

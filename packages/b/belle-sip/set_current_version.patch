@@ -1,0 +1,11 @@
+--- belle-sip-5.2.49/CMakeLists.txt.orig	2023-04-07 11:11:53.644280774 +0200
++++ belle-sip-5.2.49/CMakeLists.txt	2023-04-07 11:12:01.512320388 +0200
+@@ -28,7 +28,7 @@
+     cmake_policy(SET CMP0077 NEW)
+ endif()
+ 
+-project(belle-sip VERSION 5.2.0 LANGUAGES C CXX)
++project(belle-sip VERSION 5.2.49 LANGUAGES C CXX)
+ 
+ set(PACKAGE "${PROJECT_NAME}")
+ set(PACKAGE_NAME "${PROJECT_NAME}")

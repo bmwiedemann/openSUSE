@@ -20,7 +20,7 @@
 %define soname  libbellesip
 %define sover   1
 Name:           belle-sip
-Version:        5.2.30
+Version:        5.2.49
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-3.0-or-later
@@ -28,12 +28,13 @@ Group:          Productivity/Telephony/SIP/Utilities
 URL:            https://linphone.org/technical-corner/belle-sip/
 Source:         https://gitlab.linphone.org/BC/public/belle-sip/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
+Patch0:         set_current_version.patch
 BuildRequires:  belr-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.0
+BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -80,7 +81,7 @@ to develop applications using the belle-sip library.
 
 %build
 %cmake \
-  -DENABLE_STRICT=OFF            \
+  -DENABLE_STRICT=OFF \
   -DENABLE_STATIC=OFF
 %cmake_build
 
