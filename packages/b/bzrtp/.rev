@@ -330,4 +330,13 @@
 </comment>
     <requestid>1070099</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>84f9f105c97123ec82b42b0bfe57a34e</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.49 (no changelog)
+</comment>
+    <requestid>1077855</requestid>
+  </revision>
 </revisionlist>
