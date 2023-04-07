@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzstd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define skip_python2 1
 Name:           python-pyzstd
-Version:        0.15.3
+Version:        0.15.6
 Release:        0
 Summary:        Python bindings to Zstandard (zstd) compression library
 License:        BSD-3-Clause
 URL:            https://github.com/animalize/pyzstd
 Source:         https://files.pythonhosted.org/packages/source/p/pyzstd/pyzstd-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libzstd-devel >= 1.4.0

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr  7 09:36:49 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.15.6
+  - Update bundled zstd source code from v1.5.4 to v1.5.5.
+- Changes from 0.15.5
+  - Update bundled zstd source code from v1.5.4 to v1.5.5.
+- Changes from 0.15.4
+  - Update bundled zstd source code from v1.5.2 to v1.5.4. v1.5.3
+    is a non-public release.
+  - Support pyproject.toml build mechanism (PEP-517).
+    Note that specifying build options in old way may be invalid,
+    see doc.
+  - Support "multi-phase initialization" (PEP-489) on CPython 3.11+,
+    can work with CPython sub-interpreters in the future.
+    Currently this build option is disabled by default.
+  - Add a command line interface (CLI).
+
+-------------------------------------------------------------------
 Wed Dec 21 11:14:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.15.3
