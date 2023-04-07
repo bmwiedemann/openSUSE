@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 12:24:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
 Thu Jan 26 07:22:50 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update c2hs to version 0.28.8 revision 2.
