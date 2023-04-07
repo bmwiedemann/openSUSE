@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  7 20:59:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Explicitly switch from MPIR to GMP (due to implicit presence of
+  GMP, arb was already built with it).
+
+-------------------------------------------------------------------
 Tue Jul  5 09:30:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.23.0

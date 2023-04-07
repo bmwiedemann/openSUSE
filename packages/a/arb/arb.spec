@@ -1,7 +1,7 @@
 #
 # spec file for package arb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  flint-devel >= 2.9
 BuildRequires:  gcc-c++
-BuildRequires:  libmpir-devel
+BuildRequires:  gmp-devel
 BuildRequires:  libtool
 BuildRequires:  mpfr-devel
 # packagers: see history.rst for changelog
