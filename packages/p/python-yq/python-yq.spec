@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yq
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
@@ -31,8 +30,7 @@ BuildRequires:  python-rpm-macros
 Requires:       jq
 Requires:       python-PyYAML >= 5.3.1
 Requires:       python-argcomplete >= 1.8.1
-Requires:       python-setuptools
-Requires:       python-toml >= 0.10.0
+Requires:       python-tomlkit >= 0.11.6
 Requires:       python-xmltodict >= 0.11.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -40,7 +38,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module argcomplete >= 1.8.1}
-BuildRequires:  %{python_module toml >= 0.10.0}
+BuildRequires:  %{python_module tomlkit >= 0.11.6}
 BuildRequires:  %{python_module xmltodict >= 0.11.0}
 BuildRequires:  jq
 # /SECTION
@@ -83,6 +81,6 @@ export LANG=en_US.UTF-8
 %python_alternative %{_bindir}/yq
 %python_alternative %{_bindir}/xq
 %python_alternative %{_bindir}/tomlq
-%{python_sitelib}/*
+%{python_sitelib}/yq*
 
 %changelog

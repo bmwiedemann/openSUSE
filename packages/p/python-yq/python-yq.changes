@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  6 12:15:52 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.2.1:
+  * Use tomlkit instead of toml
+  * Add security policy
+  * Documentation and release infrastructure improvements
+
+-------------------------------------------------------------------
 Wed Mar  1 20:21:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.1:
