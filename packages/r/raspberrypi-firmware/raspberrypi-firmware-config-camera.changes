@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  5 14:08:02 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to c4122b870 (2023-03-22):
+  * firmware: gencmd: Add a fallback to mailbox interface if vchiq is not available
+  * firmware: Handle 64-bitness of named kernels 
+    See: #1792
+  * firmware: bootloader: Fix automatic 64bit selection on Pi3s
+    See: https://forums.raspberrypi.com/viewtopic.php?p=2089764#p2089764
+  * firmware: bootloader: Raise CMA cap to 512MB on a 64-bit Pi4
+  * firmware: bootloader: Prefer 64-bit kernels on Pi 4s
+    See: https://forums.raspberrypi.com/viewtopic.php?p=2088935#p2088935
+  * firmware: platform: clocks: Replace m2mc with hdmi for state machine clock on 2711
+
+-------------------------------------------------------------------
 Fri Mar  3 12:02:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 489d3e2d0 (2023-02-22):
