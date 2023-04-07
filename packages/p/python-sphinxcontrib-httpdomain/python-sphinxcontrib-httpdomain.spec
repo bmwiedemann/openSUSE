@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-httpdomain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinxcontrib-httpdomain
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Sphinx domain for HTTP APIs
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-contrib/httpdomain
 Source:         https://github.com/sphinx-contrib/httpdomain/archive/%{version}.tar.gz
+# https://github.com/sphinx-contrib/httpdomain/issues/70
+Patch0:         python-sphinxcontrib-httpdomain-fix-version.patch
+# https://github.com/sphinx-contrib/httpdomain/issues/69
+Patch1:         python-sphinxcontrib-httpdomain-pyupgrade3.patch
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module Sphinx >= 1.5}
 BuildRequires:  %{python_module bottle >= 0.11.0}
@@ -63,6 +67,7 @@ https://sphinxcontrib-httpdomain.readthedocs.io/en/stable/
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/sphinxcontrib/autohttp/
+%{python_sitelib}/sphinxcontrib/locale/
 %{python_sitelib}/sphinxcontrib/httpdomain.py*
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
 %{python_sitelib}/sphinxcontrib_httpdomain-%{version}-py*-nspkg.pth

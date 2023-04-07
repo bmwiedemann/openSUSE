@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  6 09:11:28 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.8.1
+  * Update URL for RFC by @nijel in #63
+  * Copy parse_rule since it was removed in werkzeug 2.2 by @Klikini in #61
+  * mulitcore: Fix false positive warnings in merge_domaindata by @phlax in #59
+  * Fix typos by @kianmeng in #56
+  * I18n and l10n support by @olivier-heurtier in #57
+- added patches
+  fix https://github.com/sphinx-contrib/httpdomain/issues/70
+  + python-sphinxcontrib-httpdomain-fix-version.patch
+  fix https://github.com/sphinx-contrib/httpdomain/issues/69
+  + python-sphinxcontrib-httpdomain-pyupgrade3.patch
+
+-------------------------------------------------------------------
 Mon Mar 14 07:24:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Why did we need tornado in the first place?
