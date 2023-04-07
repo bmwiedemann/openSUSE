@@ -1,7 +1,7 @@
 #
 # spec file for package antic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Algebraic Number Theory library in C
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://github.com/wbhart/antic/
-Source:         https://github.com/wbhart/antic/archive/v%version.tar.gz
+URL:            https://github.com/flintlib/antic/
+Source:         https://github.com/flintlib/antic/archive/v%version.tar.gz
 BuildRequires:  flint-devel >= 2.7
 BuildRequires:  gmp-devel
 BuildRequires:  mpfr-devel
