@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  5 11:27:09 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.3
+  * all: update configure.ac to require at least version 2.0.5 of
+    libidn
+
+-------------------------------------------------------------------
 Mon Feb 20 08:45:57 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.2

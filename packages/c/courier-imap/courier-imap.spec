@@ -19,7 +19,7 @@
 %bcond_with     valgrind
 
 Name:           courier-imap
-Version:        5.2.2
+Version:        5.2.3
 Release:        0
 Summary:        An IMAP and POP3 Server for Maildir MTAs
 License:        GPL-3.0-or-later
@@ -54,7 +54,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  procps
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(libidn2)
+BuildRequires:  pkgconfig(libidn2) >= 2.0.5
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 %if %{with valgrind}
