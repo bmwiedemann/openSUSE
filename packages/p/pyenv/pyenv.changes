@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Apr  7 08:46:52 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.17
+
+- Update to 2.3.17
+  - Try locate readlink first in pyenv-hooks, fix #2654 by @Harry-Chen in #2655
+  - Add CPython 3.12.0a7 by @edgarrmondragon in #2668
+  - Add CPython 3.11.3 by @mirekdlugosz in #2671
+  - Add CPython 3.10.11 by @mirekdlugosz in #2670
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.16...v2.3.17
+
+-------------------------------------------------------------------
+Fri Apr  7 08:45:52 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.16
+
+- Update to 2.3.16
+  - Add Miniforge3-22.11.1-4 by @jlec in #2642
+  - Add Anaconda3-2023.03 by @anton-petrov in #2648
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.15...v2.3.16
+
+-------------------------------------------------------------------
+Fri Apr  7 08:44:20 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.15
+
+- Update to 2.3.15
+  - Add miniconda 23.1.0-1 by @aphedges in #2635
+  - Add CPython 3.12.0a6 by @saaketp in #2638
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.14...v2.3.15
+
+-------------------------------------------------------------------
+Fri Apr  7 08:43:35 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.14
+
+- Update to 2.3.14
+  - Fix indentation by @rafrafek in #2620
+  - Support for "BusyBox version" of "head" by @schuellerf in #2629
+  - bpo-27987 for v3.5.10 and v3.6.15: align by 16bytes on 64bit platforms by @chaimleib in #2630
+  - bpo-36231 for v3.5.10: fix Unsupported MacOS X CPU type in ffi.h by @chaimleib in #2633
+  - README: clarify behavior of pyenv latest by @mrienstra in #2634
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.13...v2.3.14
+
+-------------------------------------------------------------------
 Fri Feb 24 15:42:58 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.13
 
 - Update to 2.3.13  
