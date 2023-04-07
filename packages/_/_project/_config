@@ -1623,6 +1623,9 @@ BuildFlags: onlybuild:gsl:serial
 BuildFlags: onlybuild:gsound
 BuildFlags: onlybuild:gssdp
 BuildFlags: onlybuild:gstreamer
+BuildFlags: onlybuild:gstreamer-plugins-good
+BuildFlags: onlybuild:gstreamer-plugins-ugly
+BuildFlags: onlybuild:gstreamer-plugins-libav
 BuildFlags: onlybuild:gstreamer-plugins-bad
 BuildFlags: onlybuild:gstreamer-plugins-base
 BuildFlags: onlybuild:gtk-doc
@@ -2121,6 +2124,7 @@ BuildFlags: onlybuild:oxygen-gtk2
 BuildFlags: onlybuild:p11-kit
 BuildFlags: onlybuild:pam
 BuildFlags: onlybuild:pam-config
+BuildFlags: onlybuild:pam_kwallet
 BuildFlags: onlybuild:pango
 BuildFlags: onlybuild:parted
 BuildFlags: onlybuild:patch
@@ -3041,6 +3045,8 @@ BuildFlags: onlybuild:vte
 BuildFlags: onlybuild:vulkan-headers
 BuildFlags: onlybuild:vulkan-loader
 BuildFlags: onlybuild:vulkan-tools
+BuildFlags: onlybuild:libshout
+BuildFlags: onlybuild:wavpack
 BuildFlags: onlybuild:w3m
 BuildFlags: onlybuild:waf
 BuildFlags: onlybuild:wayland
@@ -3051,6 +3057,7 @@ BuildFlags: onlybuild:webkit2gtk3:gtk4
 BuildFlags: onlybuild:webrtc-audio-processing
 BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:which
+BuildFlags: onlybuild:wine-nine-standalone
 BuildFlags: onlybuild:wine
 BuildFlags: onlybuild:wine-binfmt
 BuildFlags: onlybuild:wine:staging
@@ -3132,6 +3139,11 @@ BuildFlags: onlybuild:zxing-cpp
 BuildFlags: onlybuild:zypp-plugin
 BuildFlags: onlybuild:zypper
 BuildFlags: onlybuild:zziplib
+
+BuildFlags: onlybuild:a52dec
+BuildFlags: onlybuild:libdvdread
+BuildFlags: onlybuild:libmpeg2
+BuildFlags: onlybuild:opencore-amr
 
 %endif
 %endif
