@@ -208,4 +208,28 @@
   * go#58810 crypto/x509: TestSystemVerify consistently failing (forwarded request 1070080 from jfkw)</comment>
     <requestid>1070082</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f030f2e5764e3e93c6abb49c5d49c4c1</srcmd5>
+    <version>1.19.8</version>
+    <time>1680884176</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19.8 (released 2023-04-04) includes security fixes to the
+  go/parser, html/template, mime/multipart, net/http, and
+  net/textproto packages, as well as bug fixes to the linker, the
+  runtime, and the time package.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-24534 CVE-2023-24536 CVE-2023-24537 CVE-2023-24538
+  * go#59267 go#58975 boo#1210127 net/http, net/textproto: denial of service from excessive memory allocation ​(CVE-2023-24534)
+  * go#59269 go#59153 boo#1210128 net/http, net/textproto, mime/multipart: denial of service from excessive resource consumption (CVE-2023-24536)
+  * go#59273 go#59180 boo#1210129 go/parser: infinite loop in parsing (CVE-2023-24537)
+  * go#59271 go#59234 boo#1210130 html/template: backticks not treated as string delimiters (CVE-2023-24538)
+  * go#58937 cmd/go: timeout on darwin-amd64-race builder
+  * go#58939 runtime/pprof: TestLabelSystemstack due to sample with no location
+  * go#58941 internal/testpty: fails on some Linux machines due to incorrect error handling
+  * go#59050 cmd/link: linker fails on linux/amd64 when gcc's lto options are used
+  * go#59058 cmd/link/internal/arm: off-by-one error in trampoline phase call reachability calculation
+  * go#59074 time: time zone lookup using extend string makes wrong start time for non-DST zones
+  * go#59219 runtime: crash on linux-ppc64le (forwarded request 1077382 from jfkw)</comment>
+    <requestid>1077384</requestid>
+  </revision>
 </revisionlist>
