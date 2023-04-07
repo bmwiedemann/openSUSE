@@ -18,10 +18,9 @@
 
 %define sobase  libmediastreamer
 %define sover   11
-%define docuver 5.2.0
 
 Name:           mediastreamer2
-Version:        5.2.30
+Version:        5.2.49
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        AGPL-3.0-or-later
@@ -31,6 +30,7 @@ Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 Patch1:         fix-srtp2-linphone.patch
 Patch2:         fix-build-ffmpeg5.patch
+Patch3:         set_current_version.patch
 BuildRequires:  bcmatroska2-devel >= 0.23
 BuildRequires:  broadvoice16-devel
 BuildRequires:  cmake
@@ -61,13 +61,13 @@ BuildRequires:  libsqlite3x-devel
 %endif
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.30
+BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 BuildRequires:  pkgconfig(libbcg729)
-BuildRequires:  pkgconfig(libbzrtp) >= 5.2.30
+BuildRequires:  pkgconfig(libbzrtp) >= %{version}
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 5.2.30
+BuildRequires:  pkgconfig(ortp) >= %{version}
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(theora)
@@ -131,6 +131,7 @@ develop programs using the mediastreamer2 library.
 if pkg-config --atleast-version 59.37.100 libavcodec; then
 %patch2 -p1
 fi
+%patch3 -p1
 
 %build
 export CFLAGS="%(echo %{optflags}) -fcommon -Wno-implicit-function-declaration"
@@ -148,7 +149,7 @@ export CXXFLAGS="$CFLAGS"
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-%{docuver}/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-%{version}/ \
   %{buildroot}%{_docdir}/%{name}/
 
 chrpath -d %{buildroot}%{_bindir}/mediastream %{buildroot}%{_bindir}/mkvstream %{buildroot}%{_bindir}/mediastreamer2_tester
