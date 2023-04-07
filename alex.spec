@@ -16,20 +16,14 @@
 #
 
 
-# Disable tests on aarch64. See: https://github.com/simonmar/alex/issues/130
-%ifarch aarch64
-%bcond_with tests
-%else
 %bcond_without tests
-%endif
 Name:           alex
-Version:        3.2.7.1
+Version:        3.2.7.2
 Release:        0
 Summary:        Alex is a tool for generating lexical analysers in Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -57,34 +51,19 @@ lex or flex for C/C++.
 
 %build
 %ghc_bin_build
-chmod a-x TODO *.md
-chmod a-x ./doc/*
-chmod a-x ./examples/*
-cd doc
-test -f configure || autoreconf
-# FIXME: you should use the %%configure macro
-./configure
-
 
 %install
 %ghc_bin_install
-mkdir -p %{buildroot}/%{_mandir}/man1
-cp doc/alex.1 %{buildroot}/%{_mandir}/man1
-rm -f doc/autom4te.cache/requests doc/config.log # varies across builds, breaking build-compare
 
 %check
-# Ensure that the test suite can find the alex binary.
-export PATH="%{buildroot}%{_bindir}:$PATH"
 %cabal_test
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md TODO doc examples
+%doc CHANGELOG.md README.md examples
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %{_datadir}/%{name}-%{version}/AlexTemplate.hs
 %{_datadir}/%{name}-%{version}/AlexWrappers.hs
-%{_datadir}/%{name}-%{version}
-%{_mandir}/man1/*
 
 %changelog

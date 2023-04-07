@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr  3 21:20:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.2.
+
+  * Fix bug with out-of-bound access to `alex_check` array.
+    (Surfaced with GHC's JS backend, fixed by Sylvain Henry in
+     PR [#223](https://github.com/haskell/alex/pull/223).)
+
+  * Upstream dropped installable documentation and man pages. The
+    documentation can now be found at these locations:
+
+    - Online (HTML): https://haskell-alex.readthedocs.io
+    - PDF: https://haskell-alex.readthedocs.io/_/downloads/en/latest/pdf/
+    - Downloadable HTML: https://haskell-alex.readthedocs.io/_/downloads/en/latest/htmlzip/
+
+  * Re-enabled the test suite for aarch64. The underlying issue
+    https://github.com/simonmar/alex/issues/130 was closed by
+    upstream.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
@@ -31,13 +51,13 @@ Sun Jan 23 23:20:45 UTC 2022 - Peter Simons <psimons@suse.com>
 -------------------------------------------------------------------
 Tue Sep  7 18:43:27 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- make rpmlint happy 
+- make rpmlint happy
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Tue Dec 15 16:30:27 UTC 2020 - psimons@suse.com
 
