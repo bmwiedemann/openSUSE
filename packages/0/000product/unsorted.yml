@@ -7210,8 +7210,13 @@ unsorted:
   - gstreamer-plugins-base-32bit 
   - gstreamer-plugins-base-devel 
   - gstreamer-plugins-base-devel-32bit 
+  - gstreamer-plugins-good-32bit 
+  - gstreamer-plugins-good-extra-32bit 
+  - gstreamer-plugins-good-jack-32bit 
+  - gstreamer-plugins-libav-32bit 
   - gstreamer-plugins-libcamera 
   - gstreamer-plugins-rs-devel 
+  - gstreamer-plugins-ugly-32bit 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder 
@@ -10454,6 +10459,7 @@ unsorted:
   - libYODA-1_9_7 
   - libZXing3-32bit 
   - liba2ps1 
+  - liba52-0-32bit 
   - liba52-devel 
   - libaal-1_0-7 
   - libaal-devel 
@@ -11529,6 +11535,7 @@ unsorted:
   - libdvbv5-devel 
   - libdvdnav-devel 
   - libdvdread-devel 
+  - libdvdread8-32bit 
   - libdw-devel 
   - libdw1-32bit 
   - libdwarf-devel 
@@ -13229,6 +13236,7 @@ unsorted:
   - libmpdec++3 
   - libmpdec++3-32bit 
   - libmpdec3-32bit 
+  - libmpeg2-0-32bit 
   - libmpeg2-devel 
   - libmpeg2convert0 
   - libmpeg2encpp-2_2-0-32bit 
@@ -13605,6 +13613,8 @@ unsorted:
   - libopencascade-visualization7_7 
   - libopencl-clang11 
   - libopencore-amr-devel 
+  - libopencore-amrnb0-32bit 
+  - libopencore-amrwb0-32bit 
   - libopencsd1 
   - libopencsd_c_api1 
   - libopencsg1 
@@ -14724,6 +14734,7 @@ unsorted:
   - libshine-devel 
   - libshine3 
   - libshout-devel 
+  - libshout3-32bit 
   - libshp-devel 
   - libshp2 
   - libshumate-devel 
@@ -15558,6 +15569,7 @@ unsorted:
   - libwaffle-1-0 
   - libwapcaplet-devel 
   - libwapcaplet0 
+  - libwavpack1-32bit 
   - libwayland-client0-32bit 
   - libwayland-cursor0-32bit 
   - libwayland-egl1-32bit 
@@ -45797,6 +45809,7 @@ unsorted:
   - wine-devel-32bit 
   - wine-gecko 
   - wine-nine-standalone 
+  - wine-nine-standalone-32bit 
   - wine-staging 
   - wine-staging-32bit 
   - wine-staging-devel 
