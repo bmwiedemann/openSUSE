@@ -1,0 +1,22 @@
+From 569a70671bc82a4dac1a96ba34d9bebaa4e54392 Mon Sep 17 00:00:00 2001
+From: Onuralp SEZER <thunderbirdtr@fedoraproject.org>
+Date: Sun, 19 Mar 2023 23:18:20 +0300
+Subject: [PATCH] fix: header import cstdint
+
+Signed-off-by: Onuralp SEZER <thunderbirdtr@fedoraproject.org>
+---
+ src/dependencies/drivelist/src/drivelist.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/dependencies/drivelist/src/drivelist.hpp b/src/dependencies/drivelist/src/drivelist.hpp
+index 096b181c..42d4e17a 100644
+--- a/src/dependencies/drivelist/src/drivelist.hpp
++++ b/src/dependencies/drivelist/src/drivelist.hpp
+@@ -20,6 +20,7 @@
+ #include <nan.h>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace Drivelist {
+ 

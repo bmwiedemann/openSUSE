@@ -24,7 +24,8 @@ License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
+# PATCH-FIX-UPSTREAM Fix build using gcc 13
+Patch0:         https://patch-diff.githubusercontent.com/raw/raspberrypi/rpi-imager/pull/567.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -52,7 +53,7 @@ Raspberry Pi Imager is the quick and easy way to install Raspberry Pi OS and oth
 Download and install Raspberry Pi Imager to a computer with an SD card reader. Put the SD card you'll use with your Raspberry Pi into the reader and run Raspberry Pi Imager.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 pushd src

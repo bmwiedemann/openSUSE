@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 10:47:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 567.patch: Fix build using gcc13.
+
+-------------------------------------------------------------------
 Wed Mar  8 16:42:57 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.7.4
