@@ -216,7 +216,6 @@ unsorted:
   - PrusaSlicer 
   - PyCBC-utils 
   - QCSXCAD-devel 
-  - QGnomePlatform-qt6 
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
@@ -2564,6 +2563,7 @@ unsorted:
   - cross-avr-gcc7 
   - cross-avr-gcc7-bootstrap 
   - cross-bpf-binutils 
+  - cross-bpf-gcc13 
   - cross-epiphany-binutils 
   - cross-epiphany-gcc11 
   - cross-epiphany-gcc11-bootstrap 
@@ -5483,6 +5483,8 @@ unsorted:
   - ghc-kan-extensions-prof 
   - ghc-language-c 
   - ghc-language-c-devel 
+  - ghc-language-c-doc 
+  - ghc-language-c-prof 
   - ghc-language-docker 
   - ghc-language-docker-devel 
   - ghc-language-docker-doc 
