@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  1 09:02:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.5 release
+  - Bundled vkd3d upgraded to version 1.7.
+  - Better error reporting in the IDL compiler.
+  - Support for shared Wow64 Classes registry key.
+  - More cleanups in IME support.
+  - Support for configuring a WinRT dark theme.
+  - Various bug fixes.
+- update staging to 8.5 release
+
+-------------------------------------------------------------------
 Sun Mar 19 09:15:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.4 release

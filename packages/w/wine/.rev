@@ -4741,4 +4741,12 @@
 - buildrequires pkgconfig(wayland-client)</comment>
     <requestid>1073049</requestid>
   </revision>
+  <revision rev="404" vrev="1">
+    <srcmd5>eab49678e2610edb58b2939fb6f6432c</srcmd5>
+    <version>8.5</version>
+    <time>1680968354</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1077989</requestid>
+  </revision>
 </revisionlist>
