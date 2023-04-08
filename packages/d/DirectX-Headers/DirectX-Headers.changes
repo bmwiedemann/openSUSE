@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 30 20:17:57 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 1.608.2:
+  * This release matches the content provided in the DirectX12
+    Agility SDK and the 1.608.2 NuGet package.
+    - https://devblogs.microsoft.com/directx/directx12agility/
+    - https://www.nuget.org/packages/Microsoft.Direct3D.D3D12/1.608.2
+
+-------------------------------------------------------------------
 Mon Nov 21 16:04:47 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 1.608.0:
