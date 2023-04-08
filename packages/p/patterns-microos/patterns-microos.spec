@@ -72,6 +72,7 @@ Suggests:       busybox-hostname
 Requires:       NetworkManager
 Requires:       NetworkManager-wifi
 Requires:       iproute2
+Requires:       lastlog2
 Requires:       libnss_usrfiles2
 Requires:       openSUSE-build-key
 Requires:       pam
@@ -191,7 +192,7 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9020
 Requires:       audit
-Requires:       systemd-logger
+Requires:       systemd-coredump
 Requires:       pattern() = microos_base
 
 %description defaults
@@ -647,6 +648,10 @@ Requires:       kdegraphics-thumbnailers
 
 # For being able to change SDDM settings
 Requires:       kcm_sddm
+
+# Add for mounting network shares in userspace (boo#1210125)
+Requires:       kio-fuse
+Requires:       kdenetwork-filesharing
 
 # Add kcm_flatpak for managing flatpak permissions (boo#1208256)
 Requires:       kcm_flatpak

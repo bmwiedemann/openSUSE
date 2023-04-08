@@ -1,9 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr  6 09:17:13 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use lastlog2 as Y2038 safe lastlog replacement
+
+-------------------------------------------------------------------
+Wed Apr  5 22:01:58 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add Requires kio-fuse and kdenetwork-filesharing to kde pattern
+  (boo#1210125)
+
+-------------------------------------------------------------------
+Tue Apr  4 07:49:27 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- Add systemd-coredump to defaults (boo#1091684)
+- remove systemd-logger requirement from defaults. It got merged into the main
+  package meanwhile.
+
+-------------------------------------------------------------------
 Mon Mar 27 08:14:31 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
 
 - Change xdg-desktop-portal-gnome to xdg-desktop-portal-gtk: it's meant for GNOME DE
 - Add Requires gtk4-metatheme-breeze
-- Clean specfile 
+- Clean specfile
 
 -------------------------------------------------------------------
 Mon Mar 13 17:08:50 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
