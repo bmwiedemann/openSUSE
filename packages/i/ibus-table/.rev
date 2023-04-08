@@ -389,4 +389,14 @@ feat: use _service files to automate fetching sources</comment>
 - Fix a problem in C/POSIX and invalid locales: Use lower() on LC_MESSAGES only if it is a string and not None (forwarded request 1035154 from Pi-Cla)</comment>
     <requestid>1035155</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>43d99cb2d2b60a4be0b8e2078055dabb</srcmd5>
+    <version>1.17.0</version>
+    <time>1680968349</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.16.14 -&gt; 1.17.0
+- New option commit_invalid_mode: Choose what happens when a character not in valid input characters is typed
+- More translations</comment>
+    <requestid>1077947</requestid>
+  </revision>
 </revisionlist>

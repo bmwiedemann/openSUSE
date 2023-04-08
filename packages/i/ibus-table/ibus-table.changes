@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  7 23:18:17 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.16.14 -> 1.17.0
+- New option commit_invalid_mode: Choose what happens when a character not in valid input characters is typed
+- More translations
+
+-------------------------------------------------------------------
 Fri Nov 11 05:15:19 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 1.16.13 -> 1.16.14
