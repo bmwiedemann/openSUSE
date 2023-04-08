@@ -1,7 +1,7 @@
 #
 # spec file for package irssi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ Source2:        irssi.png
 Source3:        https://github.com/irssi/irssi/releases/download/%{version}/irssi-%{version}.tar.xz.asc
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1
 Source4:        %{name}.keyring
-BuildRequires:  meson
 BuildRequires:  glib2-devel
+BuildRequires:  meson
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  perl
