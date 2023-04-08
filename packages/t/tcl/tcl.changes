@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 30 09:30:57 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update tcl-refchan-mode-needed.patch to the upstream version.
+
+-------------------------------------------------------------------
 Mon Feb  6 18:29:45 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1203982, tcl-interp-limit-time.patch: Fix a y2k38 problem

@@ -13,16 +13,7 @@
  supported by the \fIcmdPrefix\fR.
 --- generic/tclIORChan.c.orig
 +++ generic/tclIORChan.c
-@@ -425,7 +425,7 @@ static void		UnmarshallErrorResult(Tcl_I
-  */
- 
- static int		EncodeEventMask(Tcl_Interp *interp,
--			    const char *objName, Tcl_Obj *obj, int *mask);
-+			    const char *objName, Tcl_Obj *obj, int *mask, int needed);
- static Tcl_Obj *	DecodeEventMask(int mask);
- static ReflectedChannel * NewReflectedChannel(Tcl_Interp *interp,
- 			    Tcl_Obj *cmdpfxObj, int mode, Tcl_Obj *handleObj);
-@@ -532,11 +532,11 @@ TclChanCreateObjCmd(
+@@ -532,7 +532,7 @@ TclChanCreateObjCmd(
  
      /*
       * First argument is a list of modes. Allowed entries are "read", "write".
@@ -31,51 +22,46 @@
       */
  
      modeObj = objv[MODE];
--    if (EncodeEventMask(interp, "mode", objv[MODE], &mode) != TCL_OK) {
-+    if (EncodeEventMask(interp, "mode", objv[MODE], &mode, 0) != TCL_OK) {
+@@ -905,6 +905,11 @@ TclChanPostEventObjCmd(
+     if (EncodeEventMask(interp, "event", objv[EVENT], &events) != TCL_OK) {
  	return TCL_ERROR;
      }
++    if (events == 0) {
++	Tcl_SetObjResult(interp,
++		Tcl_NewStringObj("bad event list: is empty", -1));
++	return TCL_ERROR;
++    }
  
-@@ -902,7 +902,7 @@ TclChanPostEventObjCmd(
-      * "write". Expect at least one list element. Abbreviations are ok.
-      */
- 
--    if (EncodeEventMask(interp, "event", objv[EVENT], &events) != TCL_OK) {
-+    if (EncodeEventMask(interp, "event", objv[EVENT], &events, 1) != TCL_OK) {
- 	return TCL_ERROR;
-     }
- 
-@@ -2007,8 +2007,9 @@ ReflectGetOption(
+     /*
+      * Check that the channel is actually interested in the provided events.
+@@ -2007,10 +2012,10 @@ ReflectGetOption(
   * EncodeEventMask --
   *
   *	This function takes a list of event items and constructs the
 - *	equivalent internal bitmask. The list must contain at least one
 - *	element. Elements are "read", "write", or any unique abbreviation of
-+ *	equivalent internal bitmask. The list may be empty if the last
-+ *	argument is 0, otherwise it must contain at least one element.
-+ *	Elements are "read", "write", or any unique abbreviation of
-  *	them. Note that the bitmask is not changed if problems are
-  *	encountered.
+- *	them. Note that the bitmask is not changed if problems are
+- *	encountered.
++ *	equivalent internal bitmask. The list may be empty but will usually
++ *	contain at least one element. Valid elements are "read", "write", or
++ *	any unique abbreviation of them. Note that the bitmask is not changed
++ *	if problems are encountered.
   *
-@@ -2028,7 +2029,8 @@ EncodeEventMask(
-     Tcl_Interp *interp,
-     const char *objName,
-     Tcl_Obj *obj,
--    int *mask)
-+    int *mask,
-+    int needed)
- {
-     int events;			/* Mask of events to post */
-     int listc;			/* #elements in eventspec list */
-@@ -2040,7 +2042,7 @@ EncodeEventMask(
+  * Results:
+  *	A standard Tcl error code. A bitmask where TCL_READABLE and/or
+@@ -2040,12 +2045,6 @@ EncodeEventMask(
  	return TCL_ERROR;
      }
  
 -    if (listc < 1) {
-+    if (needed && listc < 1) {
- 	Tcl_SetObjResult(interp, Tcl_ObjPrintf(
-                 "bad %s list: is empty", objName));
- 	return TCL_ERROR;
+-	Tcl_SetObjResult(interp, Tcl_ObjPrintf(
+-                "bad %s list: is empty", objName));
+-	return TCL_ERROR;
+-    }
+-
+     events = 0;
+     while (listc > 0) {
+ 	if (Tcl_GetIndexFromObj(interp, listv[listc-1], eventOptions,
 --- tests/ioCmd.test.orig
 +++ tests/ioCmd.test
 @@ -670,12 +670,12 @@ test iocmd-21.1 {chan create, wrong#args
@@ -86,7 +72,7 @@
 -    proc foo {} {}
 -    catch {chan create {} foo} msg
 +test iocmd-21.2 {chan create, r/w mode empty} {
-+    proc foo {cmd args} { return "initialize finalize watch" }
++    proc foo {cmd args} { return {initialize finalize watch} }
 +    set chan [chan create {} foo]
 +    close $chan
      rename foo {}
