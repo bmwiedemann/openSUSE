@@ -2,9 +2,10 @@
   <service name="obs_scm" mode="manual">
     <param name="version">2</param>
     <param name="versionformat">2+git%cd.%h</param>
-    <param name="url">http://github.com/openSUSE/ca-certificates.git</param>
+    <param name="url">https://github.com/openSUSE/ca-certificates.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
+    <param name="extract">ca-certificates.spec</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service mode="buildtime" name="tar"/>

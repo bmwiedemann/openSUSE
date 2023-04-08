@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 06 08:03:11 UTC 2023 - lnussel@suse.de
+
+- Update to version 2+git20230406.2dae8b7:
+  * Build in place support
+  * Fix up argument parsing
+  * merge spec file into git
+
+-------------------------------------------------------------------
 Mon Oct 04 08:21:06 UTC 2021 - lnussel@suse.de
 
 - Update to version 2+git20211004.3efbea9:

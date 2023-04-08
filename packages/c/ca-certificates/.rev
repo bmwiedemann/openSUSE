@@ -450,4 +450,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>924635</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f04083926c404e9f49a0762d9ab1388a</srcmd5>
+    <version>2+git20230406.2dae8b7</version>
+    <time>1680968304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20230406.2dae8b7:
+  * Build in place support
+  * Fix up argument parsing
+  * merge spec file into git</comment>
+    <requestid>1077676</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,16 @@
 #
 
 
+%if 0%{?_build_in_place}
+%define git_version %(git log '-n1' '--date=format:%Y%m%d' '--no-show-signature' "--pretty=format:+git%cd.%h")
+BuildRequires:  git-core
+%else
+# this is required for obs' source validator. It's
+# 20-files-present-and-referenced ignores all conditionals. So the
+# definition of git_version actually happens always.
+%define git_version %{nil}
+%endif
+
 # the ca bundle file was meant as compat option for e.g.
 # proprietary packages. It's not meant to be used at all.
 # unfortunately glib-networking has such a complicated abstraction
@@ -28,7 +38,7 @@ Name:           ca-certificates
 %define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  /var/lib/ca-certificates/ca-bundle.pem
 %define sslcerts  %{ssletcdir}/certs
-Version:        2+git20211004.3efbea9
+Version:        2+git20230406.2dae8b7%{git_version}
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later

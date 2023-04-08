@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
             <param name="url">http://github.com/openSUSE/ca-certificates.git</param>
-          <param name="changesrevision">15986b230062fc4355616d0c63180811704b0933</param></service></servicedata>
+          <param name="changesrevision">d16f02666b959e10f5bc64b6ab26b398f388ad0b</param></service><service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/ca-certificates.git</param>
+              <param name="changesrevision">2dae8b77c250506dc1bf862351c3a5de89a08e90</param></service></servicedata>
