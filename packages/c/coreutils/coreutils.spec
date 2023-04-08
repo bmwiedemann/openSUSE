@@ -42,6 +42,8 @@ Patch1:         coreutils-remove_hostname_documentation.patch
 Patch3:         coreutils-remove_kill_documentation.patch
 Patch4:         coreutils-i18n.patch
 Patch8:         coreutils-sysinfo.patch
+# PATCH-FIX-UPSTREAM: https://github.com/coreutils/coreutils/commit/093a8b4bfaba60005f14493ce7ef11ed665a0176
+Patch9:         fix-reflink-fallback.patch
 Patch16:        coreutils-invalid-ids.patch
 # OBS / RPMLINT require /usr/bin/timeout to be built with the -fpie option.
 Patch100:       coreutils-build-timeout-as-pie.patch
@@ -137,6 +139,7 @@ This package contains the documentation for the GNU Core Utilities.
 %patch1
 %patch3
 %patch8
+%patch9 -p1
 %patch16
 #
 %if 0%{?suse_version} <= 1320

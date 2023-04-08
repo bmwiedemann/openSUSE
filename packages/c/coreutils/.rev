@@ -1296,4 +1296,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     -i', 'ln -i', and 'mv -i' when the user declines.  (POSIX</comment>
     <requestid>1075026</requestid>
   </revision>
+  <revision rev="150" vrev="2">
+    <srcmd5>7b631ccf90202ac02727324f522fa529</srcmd5>
+    <version>9.2</version>
+    <time>1680968300</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-reflink-fallback.patch (bsc#1210033)</comment>
+    <requestid>1077762</requestid>
+  </revision>
 </revisionlist>

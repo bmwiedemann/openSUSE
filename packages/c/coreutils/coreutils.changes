@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 16:12:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add fix-reflink-fallback.patch (bsc#1210033)
+
+-------------------------------------------------------------------
 Tue Mar 21 20:58:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.2:
