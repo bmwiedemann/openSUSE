@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  6 20:54:59 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.1.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+
+-------------------------------------------------------------------
+Wed Mar 29 08:56:43 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop BuildRequires. They are not necessary to build this package.
+  This has the advantage that on version bumps, the llvm metapackages
+  build first, turning everything depending on them unresolvable until
+  the right LLVM version is actually available. Without this, the old
+  llvm metapackages are available still and users of llvm build against
+  the old version of LLVM until the new metapackage is built.
+- Fix llvm-LTO-devel self-obsoletion
+
+-------------------------------------------------------------------
 Sat Mar 18 19:25:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.0.

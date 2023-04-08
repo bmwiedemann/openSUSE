@@ -39,7 +39,7 @@ Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        16.0.0
+Version:        16.0.1
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -47,25 +47,7 @@ Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # This file documents the process for updating llvm
 Source0:        README.packaging
-# Avoid multiple providers error
-BuildRequires:  clang%{_sonum} = %{version}
-BuildRequires:  clang%{_sonum}-devel = %{version}
-BuildRequires:  clang%{_sonum}-doc = %{version}
-BuildRequires:  lld%{_sonum} = %{version}
-BuildRequires:  llvm%{_sonum} = %{version}
-BuildRequires:  llvm%{_sonum}-devel = %{version}
-BuildRequires:  llvm%{_sonum}-doc = %{version}
-BuildRequires:  llvm%{_sonum}-gold = %{version}
-BuildRequires:  llvm%{_sonum}-vim-plugins = %{version}
 Requires:       llvm%{_sonum} = %{version}
-%if 0%{?has_lldb}
-BuildRequires:  lldb%{_sonum} = %{version}
-BuildRequires:  lldb%{_sonum}-devel = %{version}
-%endif
-BuildRequires:  python3-clang%{_sonum} = %{version}
-%if 0%{?has_lldb_python}
-BuildRequires:  python3-lldb%{_sonum} = %{version}
-%endif
 Suggests:       %{name}-doc
 # Mirrors ExcludeArch in llvm%{_sonum}
 ExcludeArch:    s390
@@ -87,7 +69,7 @@ Summary:        Header Files for LLVM
 Group:          Development/Libraries/C and C++
 Requires:       llvm%{_sonum}-devel = %{version}
 Provides:       llvm-LTO-devel = %{version}
-Obsoletes:      llvm-LTO-devel <= %{version}
+Obsoletes:      llvm-LTO-devel < %{version}
 Requires:       llvm-gold
 %obsolete_llvm_versioned llvm devel
 %obsolete_llvm_versioned llvm LTO-devel

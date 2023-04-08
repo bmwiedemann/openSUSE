@@ -2193,4 +2193,22 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1073327</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>d6ea692f8fefc528a82bb64828939b8d</srcmd5>
+    <version>16.0.1</version>
+    <time>1680968344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.1.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Drop BuildRequires. They are not necessary to build this package.
+  This has the advantage that on version bumps, the llvm metapackages
+  build first, turning everything depending on them unresolvable until
+  the right LLVM version is actually available. Without this, the old
+  llvm metapackages are available still and users of llvm build against
+  the old version of LLVM until the new metapackage is built.
+- Fix llvm-LTO-devel self-obsoletion
+</comment>
+    <requestid>1077797</requestid>
+  </revision>
 </revisionlist>
