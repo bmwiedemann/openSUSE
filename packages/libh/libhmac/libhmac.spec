@@ -18,7 +18,7 @@
 
 Name:           libhmac
 %define lname	libhmac1
-Version:        20230205
+Version:        20230407
 Release:        0
 Summary:        Library to support various HMACs
 License:        LGPL-3.0-or-later
