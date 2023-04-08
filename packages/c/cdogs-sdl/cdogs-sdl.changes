@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr  7 12:45:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Fix weapon swapping with None in equip menu 5281ac6
+  * Fix game loading mission via command line 5281ac6
+  * Add shareware WOLF3D in main game ad32ed8 (i.e. no need to
+    download separately via mission pack)
+  * Add buy/sell weapons and ammo functionality #739 (feature
+    hidden in WIP techdemo)
+  * Add a chainsaw switch sound d99a199
+  * Improve actor item drops by making them instant #752
+  * Fix crash when duplicating character with no hair b31663b
+  * Fix available weapons menu in campaigns with custom weapons
+
+-------------------------------------------------------------------
 Tue Dec 13 11:15:38 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.4.0 
