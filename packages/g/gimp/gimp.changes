@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 00:09:57 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Bump glib dependency to match the configure script.
+
+-------------------------------------------------------------------
 Thu Mar  2 12:33:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add boolean pkgconfig(babl-0.1) BuildRequires, allow build with
