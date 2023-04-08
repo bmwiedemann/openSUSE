@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230407" schemaversion="4.1">
+<image name="OBS__MicroOS___20230408" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230407</productvar>
+      <productvar name="VERSION">20230408</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230407,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230408,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230407/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230408/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -823,6 +823,7 @@
       <repopackage name="kwin5"/>
       <repopackage name="kwin5-lang"/>
       <repopackage name="kwrited5"/>
+      <repopackage name="lastlog2"/>
       <repopackage name="layer-shell-qt5"/>
       <repopackage name="less"/>
       <repopackage name="libabsl2206_0_0"/>
@@ -1379,6 +1380,7 @@
       <repopackage name="libkyotocabinet16"/>
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
+      <repopackage name="liblastlog2-1"/>
       <repopackage name="liblayout"/>
       <repopackage name="liblc3-1"/>
       <repopackage name="liblcms2-2"/>
@@ -1417,6 +1419,7 @@
       <repopackage name="libmd0"/>
       <repopackage name="libmediacheck6"/>
       <repopackage name="libmemcached11"/>
+      <repopackage name="libmemcachedutil2"/>
       <repopackage name="libmetalink3"/>
       <repopackage name="libmfx1"/>
       <repopackage name="libmicrodns1"/>
