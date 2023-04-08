@@ -452,4 +452,12 @@ now with changed patch tag, even though the patch might be accepted by upstream 
 - sigpipe-fatal.patch: removed (forwarded request 1067929 from Andreas_Schwab)</comment>
     <requestid>1067930</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>6915e1b043a0c1846315b514400a3e2e</srcmd5>
+    <version>4.4.1</version>
+    <time>1680968299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update license tag, tarball contains GPL-3.0-or-later code. (forwarded request 1077715 from fcrozat)</comment>
+    <requestid>1077717</requestid>
+  </revision>
 </revisionlist>

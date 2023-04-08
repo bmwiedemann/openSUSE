@@ -20,7 +20,7 @@ Name:           make
 Version:        4.4.1
 Release:        0
 Summary:        GNU make
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://www.gnu.org/software/make/make.html
 Source:         https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz
