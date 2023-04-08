@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  1 11:19:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 3.6.18:
+  - Make functions in string api accept numbers
+  - Don't override lm.bindir and lm.EXE_DIR in make.lua
+  - add: description for config.addonManager.enable
+  - Don't override lm.bindir and lm.EXE_DIR in make.lua
+  - add: description for config.addonManager.enable
+  - add: addon manager setting to template
+  - README updates
+  - Array of a class type does not get completion
+  - Improve math.abs annotation
+  - meta: newproxy can accept a userdata value
+
+-------------------------------------------------------------------
 Mon Feb 13 10:08:13 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.6.11:
