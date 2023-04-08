@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  6 07:11:53 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/sphinx-doc/sphinxcontrib-websupport/commit/a249f8f962bb4687b780482c6c5a1cc3dc60629f
+  + python-sphinxcontrib-websupport-no-six.patch
+
+-------------------------------------------------------------------
 Thu Feb 16 18:15:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove test dependency on xapian, which has large dependencies

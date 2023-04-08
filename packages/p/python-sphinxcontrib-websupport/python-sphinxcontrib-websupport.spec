@@ -32,13 +32,14 @@ Summary:        Sphinx API for Web Apps
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-doc/sphinxcontrib-websupport
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-websupport/sphinxcontrib-websupport-%{version}.tar.gz
+# https://github.com/sphinx-doc/sphinxcontrib-websupport/commit/a249f8f962bb4687b780482c6c5a1cc3dc60629f
+Patch0:         python-sphinxcontrib-websupport-no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-docutils
-Requires:       python-six
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
@@ -47,7 +48,6 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module Whoosh}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sphinxcontrib-websupport >= %{version}}
 %endif
 %if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24

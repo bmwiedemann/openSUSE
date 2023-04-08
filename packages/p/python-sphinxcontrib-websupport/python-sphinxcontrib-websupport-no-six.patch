@@ -1,0 +1,14 @@
+Index: sphinxcontrib-websupport-1.2.4/tests/test_searchadapters.py
+===================================================================
+--- sphinxcontrib-websupport-1.2.4.orig/tests/test_searchadapters.py
++++ sphinxcontrib-websupport-1.2.4/tests/test_searchadapters.py
+@@ -9,7 +9,8 @@
+     :license: BSD, see LICENSE for details.
+ """
+ 
+-from six import StringIO
++from io import StringIO
++
+ import pytest
+ 
+ from sphinxcontrib.websupport import WebSupport
