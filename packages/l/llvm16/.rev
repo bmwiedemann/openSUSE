@@ -43,4 +43,16 @@
 - Add PGP signatures and keyring for source verification.</comment>
     <requestid>1073326</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c484e4ba8c6a0d9671938c95f4e99636</srcmd5>
+    <version>16.0.1</version>
+    <time>1680968338</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.1.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1077796</requestid>
+  </revision>
 </revisionlist>
