@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  6 10:04:11 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to new maintained fork of libmemcached
+- Update to 1.1.4:
+  * Lot of bugfixes
+  * Have a look at Changelog-1.1.md for the complete list of changes
+- Removed patches:
+  * libmemcached-pthread.patch
+  * libmemcached-automake1_14.diff
+  * libmemcached-no-docs-available.patch
+  * libmemcached-1.0.18-fix-build-gcc7.patch
+- Remove libmemcached.keyring
+
+-------------------------------------------------------------------
 Thu Oct 21 16:08:29 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Move libmemcachedprotocol library into its own package to

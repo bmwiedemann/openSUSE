@@ -1,7 +1,7 @@
 #
 # spec file for package libmemcached
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,19 @@
 
 %define libsoname %{name}11
 Name:           libmemcached
-Version:        1.0.18
+Version:        1.1.4
 Release:        0
 Summary:        A C/C++ client library and tools for the memcached server
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://libmemcached.org
-Source0:        https://launchpad.net/libmemcached/1.0/%{version}/+download/libmemcached-%{version}.tar.gz
-Source1:        https://launchpad.net/libmemcached/1.0/%{version}/+download/libmemcached-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM libmemcached-pthread.patch lp#133614 dimstar@opensuse.org -- Fix pthread detection
-Patch0:         libmemcached-pthread.patch
-Patch1:         libmemcached-automake1_14.diff
-# PATCH-FIX-UPSTREAM libmemcached-no-docs-available.patch dimstar@opensuse.org -- Do not build docs if not VCS checkout
-Patch2:         libmemcached-no-docs-available.patch
-# PATCH-FIX-UPSTREAM libmemcached-1.0.18-fix-build-gcc7.patch -- Fix build with GCC 7
-Patch3:         libmemcached-1.0.18-fix-build-gcc7.patch
+URL:            https://awesomized.github.io/%{name}/
+Source0:        https://github.com/awesomized/%{name}/archive/refs/tags/%{version}.tar.gz
 # List of additional build dependencies
 BuildRequires:  automake >= 1.13
 BuildRequires:  bison
+BuildRequires:  cmake
 BuildRequires:  cyrus-sasl-devel
-# needed for man pages
-BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libevent-devel
 BuildRequires:  libtool
@@ -102,26 +93,24 @@ usage, thread safe, and provide full access to server side methods.
 
 %prep
 %setup -q
-%patch -P 0 -P 1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-autoreconf -fiv
-%configure \
-  --disable-static \
-  --enable-libmemcachedprotocol \
-  --with-memcached=%{_sbindir}/memcached
-make V=1 CFLAGS="-std=c99 %{optflags}" CXXFLAGS="%{optflags}" %{?_smp_mflags}
+%cmake \
+    -DBUILD_DOCS_HTML=OFF \
+    -DBUILD_DOCS_MANGZ=ON \
+    -DBUILD_TESTING=ON
+%cmake_build
+
+%check
+make test
 
 %install
-%make_install V=1 CFLAGS="-std=c99 %{optflags}" CXXFLAGS="%{optflags}"
-find %{buildroot} -type f -name "*.la" -delete -print
-# create symlinks for man pages
-%fdupes -s %{buildroot}%{_mandir}
+%cmake_install
 
 # remove not needed files
 rm -f %{buildroot}%{_datadir}/aclocal/ax_libmemcached.m4
+rm -f %{buildroot}%{_libdir}/libp9y.a
+rm -f %{buildroot}%{_libdir}/cmake/*/p9y*
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
@@ -131,6 +120,11 @@ rm -f %{buildroot}%{_datadir}/aclocal/ax_libmemcached.m4
 %postun -n libmemcachedprotocol0 -p /sbin/ldconfig
 
 %files
+%license %{_datadir}/doc/%{name}-awesome/LICENSE
+%dir %{_datadir}/doc/%{name}-awesome
+%doc %{_datadir}/doc/%{name}-awesome/*
+%doc %{_datadir}/%{name}-awesome/example.cnf
+%dir %{_datadir}/%{name}-awesome
 %{_bindir}/memcapable
 %{_bindir}/memcat
 %{_bindir}/memcp
@@ -142,12 +136,13 @@ rm -f %{buildroot}%{_datadir}/aclocal/ax_libmemcached.m4
 %{_bindir}/memping
 %{_bindir}/memrm
 %{_bindir}/memslap
+%{_bindir}/memaslap
 %{_bindir}/memstat
 %{_bindir}/memtouch
 %{_mandir}/man1/mem*.1%{?ext_man}
 
 %files -n %{libsoname}
-%license COPYING
+%license LICENSE
 %{_libdir}/%{name}.so.*
 
 %files -n libmemcachedutil2
@@ -179,5 +174,10 @@ rm -f %{buildroot}%{_datadir}/aclocal/ax_libmemcached.m4
 %{_libdir}/libmemcachedutil.so
 %{_libdir}/libmemcachedprotocol.so
 %{_mandir}/man3/*.3%{?ext_man}
+%dir %{_libdir}/cmake/%{name}-awesome
+%{_libdir}/cmake/%{name}-awesome/%{name}-*.cmake
+%{_libdir}/cmake/%{name}-awesome/libhashkit-*.cmake
+%{_libdir}/cmake/%{name}-awesome/%{name}util-*.cmake
+%{_libdir}/cmake/%{name}-awesome/%{name}protocol-*.cmake
 
 %changelog
