@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  8 10:42:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
+
+-------------------------------------------------------------------
 Mon Apr  3 10:01:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0
