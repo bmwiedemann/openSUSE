@@ -18,7 +18,7 @@
 
 Name:           libfmapi
 %define lname	libfmapi1
-Version:        20230405
+Version:        20230408
 Release:        0
 Summary:        Library for MAPI data types
 License:        LGPL-3.0-or-later
