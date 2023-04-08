@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  7 20:30:59 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * RigelEngine-fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
 Sat Dec 10 19:13:00 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.1

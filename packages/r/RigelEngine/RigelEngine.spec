@@ -1,8 +1,8 @@
 #
 # spec file for package RigelEngine
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/lethal-guitar/RigelEngine
 Source:         %{name}-%{version}.tar.xz
+Patch0:         RigelEngine-fix-build-with-gcc13.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
@@ -45,6 +46,7 @@ available shareware version.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %if 0%{?sle_version} >= 150100 && 0%{?is_opensuse}
