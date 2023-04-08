@@ -1,7 +1,7 @@
 #
 # spec file for package augeas
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           augeas
 Version:        1.13.0
 Release:        0
 Summary:        An utility for changing configuration files
-License:        GPL-3.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 URL:            https://augeas.net/
 Source0:        https://github.com/hercules-team/augeas/releases/download/release-%{version}/%{name}-%{version}.tar.gz
 Source2:        %{name}.keyring

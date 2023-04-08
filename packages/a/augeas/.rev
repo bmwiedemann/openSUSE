@@ -638,4 +638,12 @@ semicolon is ambiguous (forwarded request 137763 from babelworx)</comment>
     <comment></comment>
     <requestid>1033427</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>2526d5515fa9020b42c653f63ed1960d</srcmd5>
+    <version>1.13.0</version>
+    <time>1680968328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077751</requestid>
+  </revision>
 </revisionlist>
