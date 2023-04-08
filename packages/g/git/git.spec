@@ -61,6 +61,7 @@ Patch4:         git-prevent_xss-default.diff
 Patch6:         git-tcsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
+Patch11:        sha256_clone_fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel

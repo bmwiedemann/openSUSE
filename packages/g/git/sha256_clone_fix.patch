@@ -1,0 +1,76 @@
+commit 8b214c2e9dda8fc5b8d49b978fd2c155b7596cd0
+Author: Junio C Hamano <gitster@pobox.com>
+Date:   Wed Apr 5 14:15:33 2023 -0700
+
+    clone: propagate object-format when cloning from void
+    
+    A user could prepare an empty repository and set it to use SHA256 as
+    the object format.  The new repository created by "git clone" from
+    such a repository however would not record that it is expecting
+    objects in the same SHA256 format.  This works as expected if the
+    source repository is not empty.
+    
+    Just like we started copying the name of the primary branch from the
+    remote repository even if it is unborn in 3d8314f8 (clone: propagate
+    empty remote HEAD even with other branches, 2022-07-07), lift the
+    code that records the object format out of the block executed only
+    when cloning from an instantiated repository, so that it works also
+    when cloning from an empty repository.
+    
+    Signed-off-by: Junio C Hamano <gitster@pobox.com>
+
+diff --git a/builtin/clone.c b/builtin/clone.c
+index 462c286274..8f16d18a43 100644
+--- a/builtin/clone.c
++++ b/builtin/clone.c
+@@ -910,6 +910,7 @@ int cmd_clone(int argc, const char **argv, const char *prefix)
+ 	int err = 0, complete_refs_before_fetch = 1;
+ 	int submodule_progress;
+ 	int filter_submodules = 0;
++	int hash_algo;
+ 
+ 	struct transport_ls_refs_options transport_ls_refs_options =
+ 		TRANSPORT_LS_REFS_OPTIONS_INIT;
+@@ -1298,15 +1299,15 @@ int cmd_clone(int argc, const char **argv, const char *prefix)
+ 		}
+ 	}
+ 
+-	if (mapped_refs) {
+-		int hash_algo = hash_algo_by_ptr(transport_get_hash_algo(transport));
+-
+ 		/*
+ 		 * Now that we know what algorithm the remote side is using,
+ 		 * let's set ours to the same thing.
+ 		 */
+-		initialize_repository_version(hash_algo, 1);
+-		repo_set_hash_algo(the_repository, hash_algo);
++	hash_algo = hash_algo_by_ptr(transport_get_hash_algo(transport));
++	initialize_repository_version(hash_algo, 1);
++	repo_set_hash_algo(the_repository, hash_algo);
++
++	if (mapped_refs) {
+ 		/*
+ 		 * transport_get_remote_refs() may return refs with null sha-1
+ 		 * in mapped_refs (see struct transport->get_refs_list
+diff --git a/t/t5702-protocol-v2.sh b/t/t5702-protocol-v2.sh
+index 71aabe30b7..6af5c2062f 100755
+--- a/t/t5702-protocol-v2.sh
++++ b/t/t5702-protocol-v2.sh
+@@ -269,6 +269,17 @@ test_expect_success 'clone propagates unborn HEAD from non-empty repo' '
+ 	grep "warning: remote HEAD refers to nonexistent ref" stderr
+ '
+ 
++test_expect_success 'clone propagates object-format from empty repo' '
++	test_when_finished "rm -fr src256 dst256" &&
++
++	echo sha256 >expect &&
++	git init --object-format=sha256 src256 &&
++	git clone src256 dst256 &&
++	git -C dst256 rev-parse --show-object-format >actual &&
++
++	test_cmp expect actual
++'
++
+ test_expect_success 'bare clone propagates unborn HEAD from non-empty repo' '
+ 	test_when_finished "rm -rf file_unborn_parent file_unborn_child.git" &&
+ 
