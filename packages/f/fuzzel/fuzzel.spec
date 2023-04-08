@@ -17,7 +17,7 @@
 
 
 Name:           fuzzel
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
@@ -38,12 +38,17 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkbcommon)
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc11
+%else
+BuildRequires:  gcc >= 8
+%endif
 
 %description
 A Wayland-native application launcher, similar to rofi's drun mode.
 
 %prep
-%autosetup -n %name
+%autosetup -n %name -p1
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
@@ -66,13 +71,13 @@ Fish command-line completion support for %{name}.
 
 %build
 export CFLAGS="%{optflags}"
+%meson \
+-Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg \
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
 # For whatever reason, meson >= 0.58 should already support the c18 standard.
-# Setting it to none.
-%meson -Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg -Dc_std=none
-%else
-%meson -Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg
+	-Dc_std=c11
 %endif
+    -Db_lto=true
 
 %meson_build
 

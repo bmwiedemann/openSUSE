@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  8 00:00:11 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove 0000-wayland-regression-dont-reference-app-when-null.patch
+- Update to version 1.9.1
+  - Fixed:
+    * Regression: default font size was unintentionally changed from 12pt in 1.8.2, to 8pt in 1.9.0. The old default of 12pt has now been restored.
+    * Regression: crash when pressing Enter and the match list is empty (e.g. when trying to execute a command line)
+- Improvement of specfile
+
+-------------------------------------------------------------------
+Thu Mar 30 13:28:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-wayland-regression-dont-reference-app-when-null.patch
+
+-------------------------------------------------------------------
 Tue Mar 28 03:17:55 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.9.0:

@@ -127,4 +127,19 @@
 </comment>
     <requestid>1074809</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dc6f57410353691f30defe8b1278347a</srcmd5>
+    <version>1.9.1</version>
+    <time>1680968348</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove 0000-wayland-regression-dont-reference-app-when-null.patch
+- Update to version 1.9.1
+  - Fixed:
+    * Regression: default font size was unintentionally changed from 12pt in 1.8.2, to 8pt in 1.9.0. The old default of 12pt has now been restored.
+    * Regression: crash when pressing Enter and the match list is empty (e.g. when trying to execute a command line)
+- Improvement of specfile
+- Add 0000-wayland-regression-dont-reference-app-when-null.patch
+</comment>
+    <requestid>1077949</requestid>
+  </revision>
 </revisionlist>
