@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  7 21:01:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused build dependency on libmpir-devel (gmp-devel was
+  already used anyway).
+
+-------------------------------------------------------------------
 Sat Apr  1 18:33:15 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.10.6.0
