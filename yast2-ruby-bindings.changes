@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  3 10:46:37 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Improve YaST memory consumption related to import+publish (bsc#1210051)
+- 4.6.2
+
+-------------------------------------------------------------------
 Thu Mar  9 10:36:23 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - Use ruby-devel versioned to match the gems (bsc#1209098)
