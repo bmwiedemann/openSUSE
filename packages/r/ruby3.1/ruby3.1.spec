@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 
 %global patch_level p0
 Name:           ruby3.1%{psuffix}
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -88,7 +88,6 @@ Source4:        %{rb_soname}-default.macros
 Source98:       series
 Source99:       %{rb_soname}-rpmlintrc
 Patch:          use-pie.patch
-Patch1:         ruby-3.1.3-remove-timezone-test.patch
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
 BuildRequires:  clang

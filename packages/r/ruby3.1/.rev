@@ -117,4 +117,12 @@
     <comment>- also skip readline tests because they rely on system ruby</comment>
     <requestid>1045280</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>32daf841325a3df509ae0bfa0ad6fb51</srcmd5>
+    <version>3.1.4</version>
+    <time>1680968331</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1077754</requestid>
+  </revision>
 </revisionlist>
