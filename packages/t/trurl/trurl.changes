@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr  6 13:41:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3
+  Changes
+  * the set port is the same as the scheme-default, don't show
+  * many more tests
+  * https://curl.se/trurl is now the project's website
+  * added --accept-space
+  * added --trim
+  Bugfixes
+  * setting port to a blank now clears it
+  * improved the man page
+  * fix --append query when no previous query exists
+  * output JSON as an array
+  * provide the -h list in pure alphabetical order
+  * use 0644 for the man page install
+  * use Test::More inside of test.pl
+  * nicer JSON tests and test output
+- Drop patch:
+  * trurl-manpage-fix-spurious-executable-perm-manpage.patch
+- Run testsuite
+
+-------------------------------------------------------------------
 Mon Apr  3 20:36:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch
