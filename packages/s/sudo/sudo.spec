@@ -128,6 +128,9 @@ export LDFLAGS="-pie"
 
 %install
 %make_install install_uid=`id -u` install_gid=`id -g`
+%if 0%{?suse_version} <= 1500
+sed -i '/^session/s/common-session-nonlogin/common-session/g' %{SOURCE3}
+%endif
 %if %{defined _distconfdir}
 install -d -m 755 %{buildroot}%{_pam_vendordir}
 install -m 644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/sudo

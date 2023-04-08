@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 31 13:05:27 UTC 2023 - Michal Koutný <mkoutny@suse.com>
+
+- sudo.pamd: Use common-session-nonlogin for >15 codestreams
+  More info in https://github.com/SUSE/pam-config/pull/16
+
+-------------------------------------------------------------------
 Thu Mar  9 00:19:39 UTC 2023 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.9.13p3:
