@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  6 10:17:23 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt test to changes in ruby-bindings when detecting Yast
+  modules using public only methods (related to bsc#1210051)
+- Comment out expensive debug calls to improve performance
+  (bsc#1210051)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
