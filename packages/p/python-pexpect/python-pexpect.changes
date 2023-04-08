@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 30 16:56:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip REPLWrapTestCase.test_existing_spawn which seems to still
+  fail on s390x (gh#pexpect/pexpect#750, bsc#1209560).
+
+-------------------------------------------------------------------
 Mon Mar 27 08:12:48 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Skip test_interrupt, test_multiple_interrupts, test_existing_spawn when

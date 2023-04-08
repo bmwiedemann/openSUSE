@@ -21,7 +21,7 @@ Version:        4.8.0
 Release:        0
 Summary:        Pure Python Expect-like module
 License:        ISC
-URL:            https://pexpect.readthedocs.org/en/latest/
+URL:            https://github.com/pexpect/pexpect
 Source:         https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-%{version}.tar.gz
 Patch0:         no-python-binary.patch
 # Newer asyncio / python 3.11 support
@@ -75,7 +75,8 @@ export LANG=en_US.UTF-8
 # test_interact_escape_None - seen failed on s390x
 # test_interrupt, test_multiple_interrupts - hangs under linux-user emulation
 # test_existing_spawn - fails under linux-user emulation
-%pytest -k "not (test_bash or test_large_stdout_stream or test_pager_as_cat or test_spawn_uses_env or test_forced_terminate or test_interact_escape_None %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts or test_existing_spawn})"
+# test_existing_spawn fails on s390x - gh#pexpect/pexpect#750
+%pytest -k "not (test_bash or test_large_stdout_stream or test_pager_as_cat or test_spawn_uses_env or test_forced_terminate or test_interact_escape_None or test_existing_spawn %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts})"
 
 %files %{python_files}
 %license LICENSE
