@@ -16,10 +16,6 @@
 #
 
 
-# Qt6 is the default framework in 0.9.29
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
-%define qt6 1
-%endif
 Name:           qtractor
 Version:        0.9.32
 Release:        0
@@ -42,22 +38,12 @@ BuildRequires:  libsndfile-devel >= 1.0.11
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-%if 0%{?qt6}
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-%else
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Xml)
-%endif
 BuildRequires:  pkgconfig(aubio)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(lilv-0)
@@ -81,20 +67,11 @@ specially dedicated to the personal home-studio.
 %setup -q
 
 %build
-%if 0%{?qt6}
 %cmake_qt6
 %{qt6_build}
-%else
-%cmake
-%cmake_build
-%endif
 
 %install
-%if 0%{?qt6}
 %{qt6_install}
-%else
-%cmake_install
-%endif
 
 mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 
