@@ -820,4 +820,12 @@
 - Have the base pattern recommend service(network)</comment>
     <requestid>1068127</requestid>
   </revision>
+  <revision rev="94" vrev="40">
+    <srcmd5>117a7ccc62da24ddb44c74483b82b059</srcmd5>
+    <version>20200505</version>
+    <time>1680968330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077752</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,6 +139,7 @@ Recommends:     glibc-locale-base
 Recommends:     hostname
 Recommends:     iproute2
 Recommends:     issue-generator
+Recommends:     lastlog2
 Recommends:     pam_pwquality
 Recommends:     shadow
 Recommends:     system-group-trusted

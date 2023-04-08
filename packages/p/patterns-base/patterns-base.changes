@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 09:35:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- base: Add lastlog2 as Y2038 safe lastlog replacement
+
+-------------------------------------------------------------------
 Tue Feb 28 09:09:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - enhanced_base:
