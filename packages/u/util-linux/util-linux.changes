@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 31 13:02:13 UTC 2023 - Michal Koutný <mkoutny@suse.com>
+
+- su.pamd: Fixup common-session-nonlogin usage
+- runuser.pamd, su.pamd: Guard common-session-nonlogin away for <=15 codestreams
+  More info in https://github.com/SUSE/pam-config/pull/16
+
+-------------------------------------------------------------------
 Mon Mar 27 08:10:15 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - login.pamd, remote.pamd: include postlogin-* rules

@@ -4,5 +4,5 @@ auth      include     common-auth
 account   sufficient  pam_rootok.so
 account   include     common-account
 password  include     common-password
-session   include     common-session
+session   include     common-session-nonlogin
 session   optional    pam_xauth.so

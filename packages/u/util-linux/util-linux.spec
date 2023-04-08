@@ -549,8 +549,14 @@ mkdir -p %{buildroot}{%{_distconfdir}/default,%{_pam_vendordir},%{_sysconfdir}/i
 install -m 644 %{SOURCE51} %{buildroot}%{_sysconfdir}/blkid.conf
 install -m 644 %{SOURCE8} %{buildroot}%{_pam_vendordir}/login
 install -m 644 %{SOURCE9} %{buildroot}%{_pam_vendordir}/remote
+%if 0%{?suse_version} <= 1500
+sed -i '/^session/s/common-session-nonlogin/common-session/g' %{SOURCE14}
+%endif
 install -m 644 %{SOURCE14} %{buildroot}%{_pam_vendordir}/runuser
 install -m 644 %{SOURCE15} %{buildroot}%{_pam_vendordir}/runuser-l
+%if 0%{?suse_version} <= 1500
+sed -i '/^session/s/common-session-nonlogin/common-session/g' %{SOURCE10}
+%endif
 install -m 644 %{SOURCE10} %{buildroot}%{_pam_vendordir}/su
 install -m 644 %{SOURCE16} %{buildroot}%{_pam_vendordir}/su-l
 install -m 644 %{SOURCE11} %{buildroot}%{_distconfdir}/default/su
