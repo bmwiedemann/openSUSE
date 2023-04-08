@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  4 13:35:50 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- remove conflict with systemd-coredump (boo#1091684). There is no actual
+  conflict. It actually works fine to install systemd-coredump in addition.
+
+-------------------------------------------------------------------
 Thu Mar 16 12:06:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 2.20:

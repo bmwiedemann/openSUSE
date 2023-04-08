@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(systemd)
 Requires:       read-only-root-fs
-Conflicts:      systemd-coredump
 
 %description
 Files, scripts and directories for openSUSE MicroOS.
