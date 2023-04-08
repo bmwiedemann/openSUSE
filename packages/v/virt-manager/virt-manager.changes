@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  6 15:06:51 MDT 2023 - carnold@suse.com
+
+- Language file fixes
+  bsc#1209800, bsc#1197945, bsc#1197947, bsc#1198041
+  virtman-language-fixes.patch
+
+-------------------------------------------------------------------
 Fri Jan 20 11:20:21 MST 2023 - carnold@suse.com
 
 - bsc#1207070 - libvirt fails to start the guest once the new

@@ -101,6 +101,7 @@ Patch182:       virtinst-add-sle-hpc-support.patch
 Patch183:       virtinst-add-oracle-linux-support.patch
 Patch184:       virtinst-windows-server-detection.patch
 Patch185:       virtman-fix-shared-disk-request-alignment-error.patch
+Patch186:       virtman-language-fixes.patch
 
 BuildArch:      noarch
 
