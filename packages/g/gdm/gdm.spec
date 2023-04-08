@@ -50,6 +50,11 @@ Source9:        gdm.tmpfiles
 Source10:       reserveVT.conf
 # Use sysusers to create gdm system user
 Source11:       gdm.sysusers
+# PAM configuration files for SLE15 and older
+Source12:       gdm-sle.pamd
+Source13:       gdm-autologin-sle.pamd
+Source14:       gdm-fingerprint-sle.pamd
+Source15:       gdm-smartcard-sle.pamd
 # WARNING: do not remove/significantly change patch0 without updating the relevant patch in accountsservice too
 # PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch0:         gdm-s390-not-require-g-s-d_wacom.patch
@@ -273,17 +278,30 @@ running display manager.
 %meson_install
 ## Install PAM files.
 mkdir -p %{buildroot}%{_pam_vendordir}
+# Pam config for the greeter session
+cp %{SOURCE3} %{buildroot}%{_pam_vendordir}/gdm-launch-environment
+%if 0%{?suse_version} >= 1550
 # Generic pam config
 cp %{SOURCE1} %{buildroot}%{_pam_vendordir}/gdm
 # Pam config for autologin
 cp %{SOURCE2} %{buildroot}%{_pam_vendordir}/gdm-autologin
-# Pam config for the greeter session
-cp %{SOURCE3} %{buildroot}%{_pam_vendordir}/gdm-launch-environment
 %if %{enable_split_authentication}
 # Pam config for fingerprint authentication
 cp %{SOURCE4} %{buildroot}%{_pam_vendordir}/gdm-fingerprint
 # Pam config for smartcard authentication
 cp %{SOURCE5} %{buildroot}%{_pam_vendordir}/gdm-smartcard
+%endif
+%else
+# Generic pam config
+cp %{SOURCE12} %{buildroot}%{_pam_vendordir}/gdm
+# Pam config for autologin
+cp %{SOURCE13} %{buildroot}%{_pam_vendordir}/gdm-autologin
+%if %{enable_split_authentication}
+# Pam config for fingerprint authentication
+cp %{SOURCE14} %{buildroot}%{_pam_vendordir}/gdm-fingerprint
+# Pam config for smartcard authentication
+cp %{SOURCE15} %{buildroot}%{_pam_vendordir}/gdm-smartcard
+%endif
 %endif
 # The default gdm pam configuration is the one to be used as pam-password too
 ln -s gdm %{buildroot}%{_pam_vendordir}/gdm-password

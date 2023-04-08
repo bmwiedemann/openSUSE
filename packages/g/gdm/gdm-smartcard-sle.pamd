@@ -9,11 +9,9 @@ auth       required                    pam_env.so
 auth       [success=ok default=1]      pam_gdm.so
 auth       optional                    pam_gnome_keyring.so
 
-account    substack                    common-account
-account    include                     postlogin-account
+account    include                     common-account
 
 password   required                    pam_deny.so
 
-session    substack                    common-session
-session    include                     postlogin-session
+session    include                     common-session
 session    optional                    pam_gnome_keyring.so auto_start

@@ -1943,4 +1943,16 @@
   + Updated translations. (forwarded request 1073318 from iznogood)</comment>
     <requestid>1073328</requestid>
   </revision>
+  <revision rev="253" vrev="2">
+    <srcmd5>9af7ed78ecd8b74989e5a7a6d325c5e0</srcmd5>
+    <version>44.0</version>
+    <time>1680968333</time>
+    <user>dimstar_suse</user>
+    <comment>- Create two set of pam configuration files:
+  + *-sle.pamd are for SLES15 and older
+  + add postlogin-* includes to the others as required by openSUSEs
+    PAM config policy
+</comment>
+    <requestid>1077756</requestid>
+  </revision>
 </revisionlist>

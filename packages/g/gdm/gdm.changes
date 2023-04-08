@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 28 11:34:53 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create two set of pam configuration files:
+  + *-sle.pamd are for SLES15 and older
+  + add postlogin-* includes to the others as required by openSUSEs
+    PAM config policy
+
+-------------------------------------------------------------------
 Mon Mar 20 16:07:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

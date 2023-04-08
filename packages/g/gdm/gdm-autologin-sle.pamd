@@ -4,11 +4,8 @@ auth     requisite      pam_nologin.so
 auth     required       pam_permit.so
 auth     optional       pam_gdm.so
 auth     optional       pam_gnome_keyring.so
-account  substack       common-account
-account  include        postlogin-account
-password substack       common-password
-password include        postlogin-password
+account  include        common-account
+password include        common-password
 session  required       pam_loginuid.so
 session  optional       pam_keyinit.so force revoke
-session  substack       common-session
-session  include        postlogin-session
+session  include        common-session

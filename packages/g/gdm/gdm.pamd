@@ -1,9 +1,13 @@
 #%PAM-1.0
 # GDM PAM standard configuration (with passwords)
 auth     requisite      pam_nologin.so
-auth     include        common-auth
-account  include        common-account
-password include        common-password
+auth     substack       common-auth
+auth     include        postlogin-auth
+account  substack       common-account
+account  include        postlogin-account
+password substack       common-password
+password include        postlogin-password
 session  required       pam_loginuid.so
 session  optional       pam_keyinit.so force revoke
-session  include        common-session
+session  substack       common-session
+session  include        postlogin-session
