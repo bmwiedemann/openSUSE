@@ -1,7 +1,7 @@
 #
 # spec file for package amarok
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.75git.20230322T021226~4f7c3aff99
+Version:        2.9.75git.20230408T114133~7098c192a6
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 08 11:25:21 UTC 2023 - fabian@ritter-vogt.de
+
+- Switch from tar_scm to obs_scm
+- Update to version 2.9.75git.20230408T114133~7098c192a6:
+  * Do not attempt to re-seed the global QRandomGenerator
+    (boo#1210220)
+
+-------------------------------------------------------------------
 Thu Mar 23 09:26:55 UTC 2023 - christophe@krop.fr
 
 - Update to version 2.9.75git.20230322T021226~4f7c3aff99:
