@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * QtQuickDialogWrapper: Print out errors if component creation failed
+  * Deprecate knewstuffcore_version.h & knewstuffquick_version.h
+  * Add missing deps to KF5NewStuffCoreConfig
+
+-------------------------------------------------------------------
 Mon Mar  6 09:07:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
