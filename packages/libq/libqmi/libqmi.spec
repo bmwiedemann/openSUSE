@@ -19,18 +19,21 @@
 
 %define _soname libqmi-glib5
 Name:           libqmi
-Version:        1.30.8
+Version:        1.32.4
 Release:        0
 # NOTE: The file headers state LESSER GPL, which is a mistake. The upstream intended license is LIBRARY GPL 2.0+
 Summary:        Library to control QMI devices
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Hardware/Modem
-URL:            https://www.freedesktop.org/wiki/Software/libqmi/
-Source0:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz
-Source1:        https://www.freedesktop.org/software/libqmi/%{name}-%{version}.tar.xz.asc
-Source98:       libqmi.keyring
+URL:            https://gitlab.freedesktop.org/mobile-broadband/libqmi
+Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+
+BuildRequires:  help2man
 BuildRequires:  pkgconfig
+BuildRequires:  meson
 BuildRequires:  python3-base
+BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
@@ -63,10 +66,21 @@ which speak the Qualcomm MSM Interface (QMI) protocol.
 
 This package contains command line tools to manage such devices.
 
+%package -n typelib-1_0-Qmi-1_0
+Summary:        Introspection bindings for %{name}
+Group:          System/Libraries
+
+%description -n typelib-1_0-Qmi-1_0
+libqmi is a glib-based library for talking to WWAN modems and devices
+which speak the Qualcomm MSM Interface (QMI) protocol.
+
+This package contains the introspection bindings for %{name}.
+
 %package devel
 Summary:        Development files for the QMI device control library
 Group:          Development/Languages/C and C++
 Requires:       %{_soname} = %{version}
+Requires:       typelib-1_0-Qmi-1_0 = %{version}
 
 %description devel
 A GLib/GIO based library to control QMI devices
@@ -79,19 +93,16 @@ This package contains files required to link sources against libqmi.
 %build
 # Do not rely on env for choosing python
 sed -i "s|env python$|python3|g" build-aux/qmi-codegen/*
-%configure \
-  --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %check
-%make_build check
+%meson_test
 
-%post -n %{_soname} -p /sbin/ldconfig
-%postun -n %{_soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{_soname}
 
 %files tools
 %license COPYING
@@ -110,17 +121,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{_soname}
 %license COPYING.LIB
-
 %{_libdir}/libqmi-glib.so.*
 
+%files -n typelib-1_0-Qmi-1_0
+%{_libdir}/girepository-1.0/Qmi-1.0.typelib
+
 %files devel
-%doc AUTHORS README TODO
-#Own these directories to not depend on gtk-doc
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%doc %{_datadir}/gtk-doc/html/libqmi-glib/
+%doc AUTHORS README.md TODO
 %{_includedir}/libqmi-glib/
 %{_libdir}/libqmi-glib.so
 %{_libdir}/pkgconfig/qmi-glib.pc
+%{_datadir}/gir-1.0/Qmi-1.0.gir
+
 
 %changelog

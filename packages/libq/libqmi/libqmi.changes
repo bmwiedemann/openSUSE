@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Apr  3 17:57:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.4:
+  * libqmi-glib: Schedule indications with G_PRIORITY_DEFAULT to
+    ensure correct processing order between responses and
+    ndications.
+  * build: If QRTR enabled the pkg-config should publicly require
+    libqrtr-glib.
+- Changes from version 1.32.2:
+  * libqmi-glib: fixed message header validation to avoid reading
+    out of bounds.
+  * qmi-proxy: added --verbose-full flag to allow printing logs
+    with personal info included.
+- Changes from version 1.32.0:
+  * There is no longer an upstream-provided source tarball, please
+    use the signed git tag '1.32.0' instead to refer to the sources
+    of this release.
+  * The verbose message logging will now by default hide all fields
+    that are considered personal information. Extended message
+    logging including all field contents should be explicitly
+    requested.
+  * Build:
+    - The GNU autotools (autoconf/automake/libtool) support has
+      been fully removed, this release requires the use of the
+      meson build system.
+    - The 'instrospection' meson option is now a boolean.
+    - New boolean 'man' meson option to allow disabling the man
+      page generation.
+  * New services: New 'FOX' service for operations defined by
+    Foxconn, including "Get Firmware Version" for now.
+  * qmicli:
+    - New '--verbose-full' option to request enabling logs that
+      include personal information.
+    - New '--pdc-monitor-refresh' command.
+    - New '--gas-dms-set-usb-composition' and
+      '--gas-dms-get-usb-composition' commands.
+    - New '--wms-set-routes' command.
+    - New '--dsd-get-system-status' command.
+    - Updated the '--wda-set-data-format' command with new optional
+      fields to configure the uplink data aggregation max size and
+      max datagrams.
+  * Several other minor improvements and fixes.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Add help2man, pkgconfig(bash-completion) and
+  pkgconfig(gobject-introspection-1.0) BuildRequires: New
+  dependencies.
+- Use ldconfig_scriptlets macro.
+- New home, URL and Source.
+- Drop sig and keyfile, no longer available.
+
+-------------------------------------------------------------------
 Mon Jul 18 10:11:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.30.8:
