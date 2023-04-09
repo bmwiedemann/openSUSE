@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  8 16:01:12 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.8
+  - Fixed activation of a pinned identity in inline media requests.
+  - Fixed potential crash when changing split view mode during a UI animation.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Tue Mar 28 19:14:45 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.15.7
