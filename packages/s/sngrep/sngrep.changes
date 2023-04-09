@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  2 14:45:08 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * save: add option --text to save captured data to plain text
+  * capture: fix memory overflows while parsing IP headers
+  * hep: fix hep listener enabled in offline mode
+  * core: stop sngrep when parent process has ended
+  * ssl: fix decrypt with AES256 GCM SHA384 cipher
+
+-------------------------------------------------------------------
 Wed Sep  7 10:29:07 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.0
