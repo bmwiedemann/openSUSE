@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 01 21:20:37 UTC 2023 - schwab@linux-m68k.org
+
+- Update to version 1.4.632+546+gf8819bca:
+  * Silence the byte-compiler on Emacs 30
+  * ; sb-sankei.el (shimbun-sankei-login): Fix the way to parse forms
+  * Silence the byte compiler
+  * Silence warnings when compiling w3m.el individually ([emacs-w3m:13914])
+  * ; Fix last change in aclocal.m4
+  * Support Emacs 30
+  * Update ChangeLog
+  * Fix w3m-puny-encode1 failure on Emacs 29
+  * * w3m.el (w3m-unsafe-url-warning): New face
+
+-------------------------------------------------------------------
 Sat Apr 09 06:42:51 UTC 2022 - schwab@linux-m68k.org
 
 - Update to version 1.4.632+512+gc3a3a947:
