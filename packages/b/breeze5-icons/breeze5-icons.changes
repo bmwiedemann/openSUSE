@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * Add icons for showing and hiding a virtual keyboard
+  * Redshift icons: Add missing semi-transparency, add new breeze-dark icons
+  * Update Redshift icons to off on & sun (kde#462215)
+  * Delete false Gparted and Kwikdisk icons (kde#467319)
+
+-------------------------------------------------------------------
 Mon Mar  6 09:07:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
