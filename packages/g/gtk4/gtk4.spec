@@ -57,7 +57,8 @@ BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
 # sassc is ONLY needed when building gitcheckouts, and not when using tarball releases
 #BuildRequires:  sassc
-BuildRequires:  vulkan-devel
+# Disabled until upstream enables vulkan support by default
+# BuildRequires:  vulkan-devel
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
 BuildRequires:  pkgconfig(atk-bridge-2.0)
@@ -79,7 +80,8 @@ BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.6.0
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libavfilter)
+# Disabled until upstream enables ffmpeg support by default
+# BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -224,7 +226,8 @@ Requires:       %{name}-tools = %{version}
 Requires:       gettext-its-%{name} >= %{version}
 Requires:       libgtk-4-1 = %{version}
 Requires:       typelib-1_0-Gtk-4_0 = %{version}
-Requires:       vulkan-devel
+# # Disabled until upstream enables vulkan support by default
+# Requires:       vulkan-devel
 
 %description devel
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -256,12 +259,14 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 	-Dcloudproviders=enabled \
 	-Dcolord=enabled \
 	-Dprint-cups=enabled \
-	-Dvulkan=enabled \
 	-Dwayland-backend=true \
 	-Dx11-backend=true \
 	-Dintrospection=enabled \
 	-Dman-pages=true \
 	-Dtracker=enabled \
+	-Dbuild-testsuite=false \
+	-Dbuild-tests=false \
+	-Dbuild-examples=false \
 	%{nil}
 %meson_build
 
@@ -288,8 +293,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %fdupes %{buildroot}%{_datadir}
 %fdupes %{buildroot}%{_libdir}
 
-%post   -n libgtk-4-1 -p /sbin/ldconfig
-%postun -n libgtk-4-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtk-4-1
 
 %files -n libgtk-4-1
 %license COPYING
@@ -368,6 +372,8 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.IconBrowser4-symbolic.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.PrintEditor4-symbolic.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gtk.WidgetFactory4-symbolic.svg
+# This schemas file stays here and not in the schemas package
+%{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
 %{_datadir}/metainfo/org.gtk.Demo4.appdata.xml
 %{_datadir}/metainfo/org.gtk.IconBrowser4.appdata.xml
 %{_datadir}/metainfo/org.gtk.gtk4.NodeEditor.appdata.xml
@@ -382,7 +388,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
 
 %files schema
-%{_datadir}/glib-2.0/schemas/org.gtk.Demo4.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.ColorChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
