@@ -26,6 +26,7 @@ URL:            https://github.com/Alexays/Waybar
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         0000-replace-gethostbyname-getaddrinfo.patch
 Patch1:         0001-require-date-dependency.patch
+Patch2:         https://github.com/Alexays/Waybar/commit/ca9d237b00b4d01f341b0d7bc938afb10a4f8cad.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++

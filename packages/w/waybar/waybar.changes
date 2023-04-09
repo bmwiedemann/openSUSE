@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  1 19:59:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ca9d237b00b4d01f341b0d7bc938afb10a4f8cad.patch: Fix(sway):
+  add missing includes for GCC 13
+
+-------------------------------------------------------------------
 Mon Jan 16 09:18:06 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Remove `changesgenerate` service
