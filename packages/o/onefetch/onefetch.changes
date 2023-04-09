@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr  9 07:52:50 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.17.0:
+  Features:
+  * Disable line wrap #983
+  * Add Pascal support #989
+  * Add Coldfusion support #971
+  * Remove github token from url field #996
+  Chore:
+  * Changed Hashbang #979
+  * Prevent conflicts in wiki action 39fe441
+  * Fix typos #992
+  * Group CLI options in sections #995
+  * replace --show-logo with --no-art #1002
+  * Set snapshot language to plain text #1003
+  * Better error message when human_time panics #1010
+
+-------------------------------------------------------------------
 Mon Feb 27 15:41:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.16.0:

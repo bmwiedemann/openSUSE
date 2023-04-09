@@ -322,4 +322,25 @@
   * upgrade gix to 0.36.1 to avoid breakage. #965</comment>
     <requestid>1068034</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e4de55e792ca82a139260a858a4ecfb1</srcmd5>
+    <version>2.17.0~0</version>
+    <time>1681058470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.17.0:
+  Features:
+  * Disable line wrap #983
+  * Add Pascal support #989
+  * Add Coldfusion support #971
+  * Remove github token from url field #996
+  Chore:
+  * Changed Hashbang #979
+  * Prevent conflicts in wiki action 39fe441
+  * Fix typos #992
+  * Group CLI options in sections #995
+  * replace --show-logo with --no-art #1002
+  * Set snapshot language to plain text #1003
+  * Better error message when human_time panics #1010</comment>
+    <requestid>1078155</requestid>
+  </revision>
 </revisionlist>
