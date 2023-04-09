@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * API dox: add some minimal docs to namespace & classes to trigger coverage
+  * API dox: cover CalendarEvents in generated QCH file
+  * Overhaul configmodule docs
+
+-------------------------------------------------------------------
 Mon Mar  6 09:07:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
