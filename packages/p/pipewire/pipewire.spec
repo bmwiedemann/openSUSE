@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.67
+Version:        0.3.68
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -553,6 +553,7 @@ fi
 %{_mandir}/man5/pipewire.conf.5%{?ext_man}
 %dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
+%{_datadir}/pipewire/pipewire.conf.avail/
 %{_datadir}/pipewire/filter-chain.conf
 %dir %{_datadir}/pipewire/filter-chain/
 %{_datadir}/pipewire/filter-chain/*.conf
@@ -577,7 +578,9 @@ fi
 %{_datadir}/alsa-card-profile/mixer/*
 %{_udevrulesdir}/90-pipewire-alsa.rules
 %{_datadir}/pipewire/client.conf
+%{_datadir}/pipewire/client.conf.avail/
 %{_datadir}/pipewire/client-rt.conf
+%{_datadir}/pipewire/client-rt.conf.avail/
 %{_datadir}/pipewire/minimal.conf
 
 %files module-x11-%{apiver_str}
@@ -690,6 +693,7 @@ fi
 %{_mandir}/man1/pipewire-pulse.1%{?ext_man}
 %{_userunitdir}/pipewire-pulse.*
 %{_datadir}/pipewire/pipewire-pulse.conf
+%{_datadir}/pipewire/pipewire-pulse.conf.avail/
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 
 %files alsa
