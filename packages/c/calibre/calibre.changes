@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  9 09:29:50 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.15.1
+  - Fixes an issue with the new URL scheme popping up incorrect
+    book details windows
+
+-------------------------------------------------------------------
 Fri Apr  7 07:28:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.15.0
