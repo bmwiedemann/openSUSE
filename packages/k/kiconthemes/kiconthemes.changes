@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * Add missing comma between enum values
+- Drop patch, merged upstream:
+  * 0001-Add-missing-comma-between-enum-values.patch
+
+-------------------------------------------------------------------
 Sat Mar 18 09:01:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix build failures:

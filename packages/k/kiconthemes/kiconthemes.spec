@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5IconThemes5
-%define _tar_path 5.104
+%define _tar_path 5.103
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kiconthemes
-Version:        5.104.0
+Version:        5.105.0
 Release:        0
 Summary:        Icon GUI utilities
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -34,8 +34,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-comma-between-enum-values.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
