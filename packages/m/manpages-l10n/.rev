@@ -168,4 +168,12 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     <comment></comment>
     <requestid>1070736</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55ef4ffe09f8d7ba96fb0b1e59ab84a4</srcmd5>
+    <version>4.18.1</version>
+    <time>1681058461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078130</requestid>
+  </revision>
 </revisionlist>
