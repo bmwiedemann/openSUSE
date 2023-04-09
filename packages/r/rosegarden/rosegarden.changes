@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 09 07:19:09 UTC 2023 - davejplater@gmail.com
+
+- Remove broken service and build Leap the same way as Tumbleweed.
+- Download from chief developer's git hub site.
+- Update to version 22.12.1:
+  *The Rosegarden team is proud to announce the release of
+   version 22.12 of Rosegarden, a MIDI sequencer that features a
+   rich understanding of music notation along with basic support
+   for digital audio.
+   *Fix a crash caused by static initialization/link order.
+    Bug #1647. [fa6eea8]
+
+-------------------------------------------------------------------
 Sat Jun 18 14:48:04 UTC 2022 - dmueller@suse.com
 
 - Update to version 22.06:

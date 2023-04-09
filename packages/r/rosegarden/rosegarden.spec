@@ -1,7 +1,7 @@
 #
 # spec file for package rosegarden
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define vers    22.12
+
 Name:           rosegarden
-Version:        22.06
+Version:        22.12.1
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Midi, Audio And Notation Editor
 URL:            https://www.rosegardenmusic.com/
 Group:          Productivity/Multimedia/Sound/Midi
-Source0:        rosegarden-%{version}.tar.zst
+Source0:        https://github.com/tedfelix/%{name}-official/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.xpm
 Source2:        %{name}.1
 # PATCH-FIX-OPENSUSE davejplater@gmail.com This patch fixes the file search paths for examples, templates and midi driver libraries.
@@ -82,13 +84,7 @@ composers, musicians, music students, and small studio or
 home recording environments.
 
 %prep
-%if 0%{?suse_version} <= 1500
-zstd -d %{S:0} -o ./%{name}-%{version}.tar
-tar -xf %{name}-%{version}.tar
-cd %{name}-%{version}
-%else
-%setup -q
-%endif
+%setup -q -n %{name}-official-%{version}
 %autopatch -p1
 
 # When we build svn we need to execute bootstrap.sh
@@ -140,7 +136,7 @@ install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS README
+%doc AUTHORS README.md
 %license COPYING
 %dir %{_datadir}/metainfo
 %dir %{_datadir}/%{name}/
