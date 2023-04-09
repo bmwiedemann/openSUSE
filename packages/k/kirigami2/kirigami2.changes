@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * Fix quit action code
+  * GlobalDrawer: Fix header with invisible content taking up space
+  * ColorUtils: Handle cases where hue is -1 in linearInterpolate
+  * NavigationTabBar: Fix imports in doc example
+  * NavigationTabBar: Factor out minDelegateWidth part of expression
+  * Action Name Not required KF5
+  * Default page categorized settings
+  * Show back button when pushing a pagerow
+  * shadowed*rectangle: Don't use base class result if materials are different
+  * Set fallback theme path when a custom icon theme is used
+
+-------------------------------------------------------------------
 Mon Mar  6 09:07:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
