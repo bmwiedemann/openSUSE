@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr  9 14:53:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.2:
+  * improve unit tests
+  * fix threading issue with file-based logging
+  * re-enable --after option for mu cfind
+  * allow extracting message-parts from message (mu extract)
+  * allow using relative message paths (view/extract/verify)
+  Mu4e:
+  * by default, don't reuse frame with composing in new frame
+  * allow for disabling global modeline items
+  * create random name for newly detached views
+  * documentation update
+
+-------------------------------------------------------------------
 Sun Apr  2 18:13:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.1:

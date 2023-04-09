@@ -602,4 +602,22 @@
   * restore terminal colors after error</comment>
     <requestid>1076762</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fb47eb230d9b554ebf4426808ec3192f</srcmd5>
+    <version>1.10.2</version>
+    <time>1681065178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.2:
+  * improve unit tests
+  * fix threading issue with file-based logging
+  * re-enable --after option for mu cfind
+  * allow extracting message-parts from message (mu extract)
+  * allow using relative message paths (view/extract/verify)
+  Mu4e:
+  * by default, don't reuse frame with composing in new frame
+  * allow for disabling global modeline items
+  * create random name for newly detached views
+  * documentation update</comment>
+    <requestid>1078170</requestid>
+  </revision>
 </revisionlist>
