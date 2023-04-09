@@ -18,7 +18,7 @@
 
 
 Name:           tcping
-Version:        1.19.1
+Version:        1.19.2
 Release:        0
 Summary:        A ping program for TCP ports
 License:        MIT
