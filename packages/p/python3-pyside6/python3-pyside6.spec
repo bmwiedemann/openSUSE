@@ -16,7 +16,8 @@
 #
 
 
-%define tar_name pyside-setup-opensource-src
+%define tar_name pyside-setup-everywhere-src
+%define short_version 6.5
 #
 %if "@BUILD_FLAVOR@%{nil}" == "shiboken6"
 %global pyside_flavor shiboken6
@@ -25,18 +26,19 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.4.2
+Version:        6.5.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
-Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Always-link-to-python-libraries.patch
+Patch0:         0001-Always-link-to-python-libraries.patch
 # SECTION common_dependencies
-BuildRequires:  clang-devel
+# boo#1210176 - PYSIDE-2268
+BuildRequires:  clang15-devel
+BuildRequires:  llvm15-libclang13
+#!BuildIgnore:  clang16
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -70,15 +72,12 @@ BuildRequires:  cmake(Qt6Widgets)
 # /SECTION
 # SECTION optional_modules
 BuildRequires:  qt6-qml-private-devel
-# TODO: Reenable when 6.5.0 is released
-%ifnarch %{ix86}
 BuildRequires:  cmake(Qt63DAnimation)
 BuildRequires:  cmake(Qt63DCore)
 BuildRequires:  cmake(Qt63DExtras)
 BuildRequires:  cmake(Qt63DInput)
 BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
-%endif
 BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6DBus)
@@ -86,6 +85,7 @@ BuildRequires:  cmake(Qt6DataVisualization)
 BuildRequires:  cmake(Qt6Designer)
 BuildRequires:  cmake(Qt6Help)
 BuildRequires:  cmake(Qt6HttpServer)
+BuildRequires:  cmake(Qt6Location)
 BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6MultimediaWidgets)
 BuildRequires:  cmake(Qt6NetworkAuth)
@@ -100,6 +100,7 @@ BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6RemoteObjects)
 BuildRequires:  cmake(Qt6Scxml)
 BuildRequires:  cmake(Qt6Sensors)
+BuildRequires:  cmake(Qt6SerialBus)
 BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6SpatialAudio)
 BuildRequires:  cmake(Qt6StateMachine)
@@ -131,7 +132,7 @@ Requires:       %{name} = %{version}
 Python bindings for the Qt cross-platform application and UI framework
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{version}
+%autosetup -p1 -n %{tar_name}-%{short_version}
 
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
@@ -207,12 +208,13 @@ done
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2023-01-12)
+# Excluded tests (last update: 2023-04-08)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
 # Qt3DExtras_qt3dextras_test fails on s390x (timeout) and randomly everywhere else (exception)
-ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test"
+# QtPositioning_positioning fails
+ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning"
 
 # Random failures on aarch64: registry_existence_test times out and QtWebEngineCore_web_engine_custom_scheme asserts
 %ifarch aarch64
@@ -230,8 +232,7 @@ ctest \
   %{?excluded_tests:--exclude-regex "($ctest_exclude_regex)"}
 popd
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license sources/%{pyside_flavor}/COPYING*

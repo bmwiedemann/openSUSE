@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  4 23:22:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0. Check the installed changes-6.5.0 file for the
+  full list of changes
+- Drop patch, merged upstream:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+- Build pyside with llvm15 on Tumbleweed to work around
+  boo#1210176 / https://bugreports.qt.io/browse/PYSIDE-2268
+
+-------------------------------------------------------------------
 Fri Mar 17 09:04:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Temporarily disable Qt3D bindings on x86

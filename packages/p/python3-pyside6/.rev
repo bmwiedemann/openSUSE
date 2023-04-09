@@ -125,4 +125,12 @@
     <comment>- Temporarily disable Qt3D bindings on x86</comment>
     <requestid>1072542</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6fe6cfb8870735ad79da7c241c668924</srcmd5>
+    <version>6.5.0</version>
+    <time>1681058466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078137</requestid>
+  </revision>
 </revisionlist>
