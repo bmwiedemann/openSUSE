@@ -17,7 +17,9 @@
 
 
 # Find qt version used to build
-%define qt5version %(pkg-config --modversion Qt5Core)
+%define qt6version %(qmake6 --version |grep "Using Qt version"|cut -d " " -f 4)
+# NOTE: Appears there are no .pc files in qt6
+#%%(pkg-config --modversion Qt6Core)
 
 %bcond_with    x264
 
@@ -25,7 +27,7 @@
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
 
 Name:           shotcut
-Version:        22.12.21
+Version:        23.04.03
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -39,24 +41,29 @@ Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.
 ExclusiveArch:  ppc64 ppc64le %ix86 x86_64
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel
-BuildRequires:  mc
+BuildRequires:  qt6-declarative-private-devel >= 6.4.2
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5WebSockets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt6Concurrent) >= 6.4.2
+BuildRequires:  cmake(Qt6Core) >= 6.4.2
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6UiTools)
+BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(mlt++-7)
 BuildRequires:  pkgconfig(mlt-framework-7)
@@ -75,9 +82,11 @@ BuildRequires:  pkgconfig(x264)
 Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libx264.so) --qf '%%{NAME} >= %%{VERSION}')
 %endif
 # needed on runtime for the timeline to work see https://forums.opensuse.org/showthread.php/520592-shotcut-video-editor-timeline-blank/page3
-Requires:       libQt5Sql5-sqlite
-Requires:       libqt5-qtgraphicaleffects >= %{qt5version}
-Requires:       libqt5-qtquickcontrols2 >= %{qt5version}
+Requires:       qt6-sql-sqlite = %{qt6version}
+# NOTE: Can't find a matching package suspect it's merged into another package
+#Requires:       libqt6-qtgraphicaleffects >= %%{qt6version}
+# This is already pulled in by rpm
+#Requires:       libQt6QuickControls2-6 >= %%{qt6version}
 
 %description
 Shotcut is an audio/video editor. It supports most audio, video and
@@ -90,9 +99,8 @@ Shotcut can test MLT XML files, too.
 
 %prep
 %setup -q
-echo "Qt5Core = %{qt5version}"
+echo "Qt6Core = %{qt6version}"
 %autosetup -p0
-
 # Search for executable files
 find . \
 \( -name \*.html -o -name \*.js \) -type f -executable -exec chmod a-x {} + || :
@@ -101,6 +109,9 @@ find . \
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
        -DCMAKE_BUILD_TYPE=Release \
        -DSHOTCUT_VERSION=%{version} \
+%if 0%{?suse_version} == 1500
+       -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-12 \
+%endif
        -DDEFINES+=SHOTCUT_NOUPGRADE
 %cmake_build
 
@@ -117,7 +128,7 @@ basedir=$(basename "$langdir")
 pushd $basedir
 	for ts in *.ts; do
 		[ -e "$ts" ] || continue
-		lupdate-qt5 "$ts" && lrelease-qt5 "$ts"
+		lupdate6 "$ts" && lrelease6 "$ts"
 	done
 	for qm in *.qm; do
 		[ -e "$qm" ] || continue

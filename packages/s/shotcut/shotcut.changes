@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  7 10:31:32 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to 23.04.03 equal to 23.04 Beta
+- Build 15.5 with gcc12-c++ it fails with 7
+- Now builds with Qt6 >= 6.4
+  Many upstream changes see:
+  https://github.com/mltframework/shotcut/releases/tag/v23.04.03
+
+-------------------------------------------------------------------
 Fri Mar  3 03:03:03 UTC 2023 - olaf@aepfle.de
 
 - Limit architectures to avoid build errors

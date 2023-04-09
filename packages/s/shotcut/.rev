@@ -529,4 +529,14 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>1072941</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>fd0f5f03cbd64595ba8e7a6433b2eba6</srcmd5>
+    <version>23.04.03</version>
+    <time>1681058436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.04.03 equal to 23.04 Beta
+- Build 15.5 with gcc12-c++ it fails with 7
+- Now builds with Qt6 &gt;= 6.4</comment>
+    <requestid>1078111</requestid>
+  </revision>
 </revisionlist>
