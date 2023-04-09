@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * Remove some obsolete and incorrect code from UPower and UDisks2 backend
+  * Deprecate "Recall" API for batteries
+  * Avoid synchronous DBus calls for devices list
+  * Initialize supported interfaces with member initializer list
+  * Replace generic UPower QDBusInterface with concrete implementation
+  * Remove support for UPower < 0.99
+  * Remove invalid Refresh DBus call from UPower backend
+
+-------------------------------------------------------------------
 Mon Mar  6 09:08:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
