@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  7 18:48:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.7
+  * Always print processing time on stderr
+  * Move manual page to the man directory
+
+-------------------------------------------------------------------
 Fri Feb 11 16:14:05 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.6
