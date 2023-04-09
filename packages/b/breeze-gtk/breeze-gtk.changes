@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  8 09:30:51 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add patch to fix oversized titlebuttons in GTK3 apps (kde#468203)
+  * 0001-gtk3-restore-old-icon-size-for-titlebutton.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4

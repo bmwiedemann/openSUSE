@@ -30,6 +30,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{v
 Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM kde#468203 https://invent.kde.org/plasma/breeze-gtk/-/commit/c5e757a198321208c6b1e99313652577c263ecc0
+Patch0:         0001-gtk3-restore-old-icon-size-for-titlebutton.patch
 BuildRequires:  breeze5-style
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.98.0

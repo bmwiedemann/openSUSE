@@ -1086,4 +1086,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.27.4(.1) (forwarded request 1077257 from Vogtinator)</comment>
     <requestid>1077261</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>01682ce953c54a01268f52aef3e64a8a</srcmd5>
+    <version>5.27.4</version>
+    <time>1681058434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078106</requestid>
+  </revision>
 </revisionlist>
