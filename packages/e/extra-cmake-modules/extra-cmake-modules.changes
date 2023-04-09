@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  1 17:00:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * KDE_INSTALL_TARGETS_DEFAULT_ARGS (KF6): drop KDE_INSTALL_INCLUDEDIR
+  * KF_INSTALL_TARGETS_DEFAULT_ARGS: drop KDE_INSTALL_INCLUDEDIR_KF
+
+-------------------------------------------------------------------
 Mon Mar  6 09:07:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.104.0
