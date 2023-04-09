@@ -787,4 +787,16 @@
     gh#PyO3/maturin#1531</comment>
     <requestid>1075083</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2420ab760ab7dfa9a67d7bf04b8df867</srcmd5>
+    <version>0.14.17</version>
+    <time>1681058468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.17:
+  * Fix wrong EXT_SUFFIX when cross compiling musllinux wheels for
+    Python 3.11
+    gh#PyO3/maturin#1560
+- Drop vendor-update-ahash-dependency.patch</comment>
+    <requestid>1078139</requestid>
+  </revision>
 </revisionlist>

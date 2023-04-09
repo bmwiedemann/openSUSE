@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  9 01:01:18 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.17:
+  * Fix wrong EXT_SUFFIX when cross compiling musllinux wheels for
+    Python 3.11
+    gh#PyO3/maturin#1560
+- Drop vendor-update-ahash-dependency.patch
+
+-------------------------------------------------------------------
 Wed Mar 29 02:18:48 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.14.16:
