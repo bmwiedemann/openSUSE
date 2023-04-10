@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr  9 17:59:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Updatet to version 0.31.90:
+  + Fix display of f-number
+  + Fix several issues with unset exposure times
+  + Properly read exposure time from video files with GStreamer
+  + Fix display of time shift in AdjustDateTime dialog
+  + Support HEIF/HEVC files
+  + Support MXF files
+  + Fix issues with continously shifting images by time zone offset
+  + Minor UX enhancements with profile editor
+  + Fix alternate month names in sidebar
+  + Support .nomedia files when importing from folder
+  + Fix missing icon on import page
+  + Enable face recognition
+  + Clean up face detection and recognition helper
+  + Update haarcascade file
+  + Support profile haarcascade
+  + Support HiDPI for photo viewer and tools
+  + Updated translations.
+- Drop cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sun Feb 12 17:15:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch: gphoto2: Add

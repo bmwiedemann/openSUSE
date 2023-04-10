@@ -17,7 +17,7 @@
 
 
 Name:           shotwell
-Version:        0.31.7
+Version:        0.31.90
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
@@ -26,8 +26,6 @@ URL:            https://wiki.gnome.org/Apps/Shotwell
 
 Source0:        https://download.gnome.org/sources/shotwell/0.31/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
-# PATCH-FIX-UPSTREAM cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch -- gphoto2: Add missing cheader attributes of delegate symbols
-Patch0:         https://gitlab.gnome.org/GNOME/shotwell/-/commit/cd82759231e5ece2fa0dea40397c9051d15fd5c2.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
@@ -100,6 +98,8 @@ mode, and export them to share with others.
 %{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell-extras.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.yorba.shotwell-extras.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.yorba.shotwell.gschema.xml
 %{_datadir}/icons/hicolor/*/*/org.gnome.Shotwell*
 %{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
 %{_libdir}/shotwell/
@@ -114,6 +114,7 @@ mode, and export them to share with others.
 %{_libdir}/libshotwell-plugin-dev-1.0.so.0
 %{_libdir}/libshotwell-plugin-dev-1.0.so.%{version}
 %dir %{_libexecdir}/shotwell
+%{_libexecdir}/shotwell/shotwell-settings-migrator
 %{_libexecdir}/shotwell/shotwell-video-thumbnailer
 %{_mandir}/man1/shotwell.1%{?ext_man}
 
