@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-devpi-client
-Version:        5.2.3
+Version:        6.0.3
 Release:        0
 Summary:        Client for devpi
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-build
 Requires:       python-check-manifest >= 0.28
-Requires:       python-devpi-common >= 3.4.0
+Requires:       python-devpi-common >= 3.6.0
+Requires:       python-pep517
 Requires:       python-pkginfo >= 1.4.2
 Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.31
@@ -42,9 +45,11 @@ Recommends:     python-Sphinx
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module check-manifest >= 0.28}
-BuildRequires:  %{python_module devpi-common >= 3.4.0}
+BuildRequires:  %{python_module devpi-common >= 3.6.0}
 BuildRequires:  %{python_module devpi-server}
+BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pkginfo >= 1.4.2}
 BuildRequires:  %{python_module pluggy >= 0.6.0}
 BuildRequires:  %{python_module py >= 1.4.31}
@@ -69,10 +74,10 @@ sed -i 's/"python \(setup.py[^"]*\)"/(sys.executable + " \1")/' testing/test_upl
 sed -i 's/"python", "setup.py"/sys.executable, "setup.py"/' testing/test_test.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/devpi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -82,8 +87,15 @@ export PYTHONDONTWRITEBYTECODE=1
 export PATH=$PATH:%{buildroot}/%{_bindir}
 # Unknown failures gh#devpi/devpi#706
 # test_help: devpi binary is not available (update-alternatives)
-# gh#devpi/devpi#896 to skip test_delete_*_with_inheritance
-%pytest -k 'not (test_simple_install_new_venv_workflow or test_simple_install_activated_venv_workflow or test_help or test_delete_version_with_inheritance or test_delete_project_with_inheritance)'
+donttest="test_simple_install_new_venv_workflow or test_simple_install_activated_venv_workflow or test_help"
+# test_upload: requires network to work
+donttest+=" or test_upload"
+donttest+=" or test_main_example_with_basic_auth"
+# No module named 'pypitoken'
+donttest+=" or test_derive_devpi_token or test_derive_legacy_token or test_derive_token"
+# error deleting VIRTUAL_ENV
+donttest+=" or test_simple_install_missing_venvdir"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative devpi
@@ -95,6 +107,7 @@ export PATH=$PATH:%{buildroot}/%{_bindir}
 %doc AUTHORS CHANGELOG README.rst
 %license LICENSE
 %python_alternative %{_bindir}/devpi
-%{python_sitelib}/*
+%{python_sitelib}/devpi
+%{python_sitelib}/devpi_client-%{version}*-info
 
 %changelog
