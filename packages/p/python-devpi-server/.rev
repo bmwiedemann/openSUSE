@@ -134,4 +134,13 @@
     <comment></comment>
     <requestid>1042596</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>daca76a2749548b11532e52738bb05b5</srcmd5>
+    <version>6.8.0</version>
+    <time>1681150619</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests with latest version of python-packaging. gh#devpi/devpi#948
+</comment>
+    <requestid>1078232</requestid>
+  </revision>
 </revisionlist>

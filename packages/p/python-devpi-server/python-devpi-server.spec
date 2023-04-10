@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define commands export fsck gen-config import init passwd server gen-secret
-%define skip_python2 1
 Name:           python-devpi-server
 Version:        6.8.0
 Release:        0
@@ -102,6 +100,14 @@ done
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
+
+# Broken tests with latest version of packaging, gh#devpi/devpi#948
+donttest="test_dashes_to_undescores_when_imported_from_v1"
+donttest+=" or test_name_mangling_relates_to_issue132"
+donttest+=" or test_parse_index_with_valid_basenames[py.tar.gz]"
+donttest+=" or test_parse_index_with_valid_basenames[py-1.3.1-1.0rc4.tar.gz]"
+donttest+=" or test_simple_project_pypi_egg"
+
 %{python_expand \
 mkdir bin-%{$python_version}
 for c in %{commands}; do
@@ -109,7 +115,7 @@ for c in %{commands}; do
 done
 export PATH=$PATH:`pwd`/bin-%{$python_version}
 export PYTHONPATH=:%{buildroot}%{$python_sitelib}
-$python -m pytest --slow --ignore test_devpi_server %{buildroot}%{$python_sitelib}/test_devpi_server
+$python -m pytest --slow --ignore test_devpi_server -k "not ($donttest)" %{buildroot}%{$python_sitelib}/test_devpi_server
 }
 
 %post
