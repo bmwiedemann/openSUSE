@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 10 12:03:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-sre-compile.patch upstream patch to fix issues with
+  deprecated usage of sre_compile gh#cpplint/cpplint#214
+- Update to 1.6.1
+  * Fix #195 Fix post increment/decrement operator causing a false positive.
+  * Fix #202 .hh files should not be considered sytem headers
+  * Fix #207 Python2 incompatibility for loading CPPLINT.cfg file
+  * Fix #184 NOLINT(clang-analyzer) comments should not cause warnings
+- 1.6.0 (2022-02-19)
+  * Fix #188: "Include the directory when naming header files" also
+    for header files with other names like "*.hpp"
+- 1.5.5 (2021-05-20)
+  * Fix #172: Added 'size_t' to typecasts detected by CheckCStyleCast
+  * Fixed wrong CLI help text: Each filter needs + or -
+  * Fix #164: add elif as an exception for CheckSpacingForFunctionCall()
+  * Fix google#346: --root option not working on windows due to
+    slashes in path
+
+-------------------------------------------------------------------
 Mon Aug 31 06:47:40 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.4:

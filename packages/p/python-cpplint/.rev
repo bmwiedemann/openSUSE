@@ -80,4 +80,28 @@
   * improvements to regression tests</comment>
     <requestid>830677</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>50964d3a4c0232df762d9f8bd9f81f8b</srcmd5>
+    <version>1.6.1</version>
+    <time>1681154690</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-sre-compile.patch upstream patch to fix issues with
+  deprecated usage of sre_compile gh#cpplint/cpplint#214
+- Update to 1.6.1
+  * Fix #195 Fix post increment/decrement operator causing a false positive.
+  * Fix #202 .hh files should not be considered sytem headers
+  * Fix #207 Python2 incompatibility for loading CPPLINT.cfg file
+  * Fix #184 NOLINT(clang-analyzer) comments should not cause warnings
+- 1.6.0 (2022-02-19)
+  * Fix #188: &quot;Include the directory when naming header files&quot; also
+    for header files with other names like &quot;*.hpp&quot;
+- 1.5.5 (2021-05-20)
+  * Fix #172: Added 'size_t' to typecasts detected by CheckCStyleCast
+  * Fixed wrong CLI help text: Each filter needs + or -
+  * Fix #164: add elif as an exception for CheckSpacingForFunctionCall()
+  * Fix google#346: --root option not working on windows due to
+    slashes in path
+</comment>
+    <requestid>1078255</requestid>
+  </revision>
 </revisionlist>
