@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 18:21:31 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add fix_buffer_overflow_FORTIFY_SOURCE.patch (see
+  gh#ckb-next/ckb-next/issues#940)
+
+-------------------------------------------------------------------
 Fri May 27 11:09:17 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.5.0

@@ -1,7 +1,7 @@
 #
 # spec file for package ckb-next
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch4:         ckb-next-udev.patch
 # PATCH-FIX-OPENSUSE 422.patch boo#1135528
 Patch5:         422.patch
 Patch6:         harden_ckb-next-daemon.service.patch
+# PATCH-FIX-UPSTREAM fix_buffer_overflow_FORTIFY_SOURCE.patch
+Patch7:         fix_buffer_overflow_FORTIFY_SOURCE.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme

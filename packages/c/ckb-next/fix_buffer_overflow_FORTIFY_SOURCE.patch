@@ -1,0 +1,28 @@
+From c29a9f5e314ddb987b75cb05793ae1bf2bb9ae0c Mon Sep 17 00:00:00 2001
+From: Tasos Sahanidis <tasos@tasossah.com>
+Date: Sat, 18 Mar 2023 16:13:51 +0200
+Subject: [PATCH] Fix buffer overflow detected with _FORTIFY_SOURCE
+
+Technically there's no buffer overflow taking place, but the size
+argument passed to snprintf was incorrect.
+
+Closes #940
+---
+ src/daemon/device_bragi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/daemon/device_bragi.c b/src/daemon/device_bragi.c
+index e0690d32..8de99570 100644
+--- a/src/daemon/device_bragi.c
++++ b/src/daemon/device_bragi.c
+@@ -178,8 +178,8 @@ static int start_bragi_common(usbdevice* kb){
+     }
+ 
+     char str[PAIR_ID_SIZE*3+1] = {0};
+-    for(uint32_t i = 0; i < PAIR_ID_SIZE; i++)
+-        snprintf(str + i * 3, sizeof(str), "%02hhx ", kb->wl_pairing_id[i]);
++    for(int i = 0; i < PAIR_ID_SIZE; i++)
++        snprintf(str + i * 3, sizeof(str) - i * 3, "%02hhx ", kb->wl_pairing_id[i]);
+ 
+     ckb_info("ckb%d: Pairing id: %s", INDEX_OF(kb, keyboard), str);
+ 
