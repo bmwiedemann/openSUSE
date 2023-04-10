@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 10 08:21:05 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6
+  * This release adds an option, disabled by default, to use libxcb-errors to
+    improve the reporting of any X protocol error messages that may occur.
+    To enable it, pass --with-xcb-errors to configure.
+
+-------------------------------------------------------------------
 Mon Jul 15 10:19:53 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.5

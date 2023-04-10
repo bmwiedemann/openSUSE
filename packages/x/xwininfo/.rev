@@ -69,4 +69,15 @@
   * Update README for gitlab migration</comment>
     <requestid>715452</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23efbffae08c2cd7ded45f09863cf66a</srcmd5>
+    <version>1.1.6</version>
+    <time>1681150621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6
+  * This release adds an option, disabled by default, to use libxcb-errors to
+    improve the reporting of any X protocol error messages that may occur.
+    To enable it, pass --with-xcb-errors to configure.</comment>
+    <requestid>1078235</requestid>
+  </revision>
 </revisionlist>
