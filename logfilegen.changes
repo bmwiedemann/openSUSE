@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 13:51:49 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- logfilegen 3.0.2:
+  * seq macro fix, including a syntax change
+
+-------------------------------------------------------------------
 Sun Apr  9 10:18:35 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - logfilegen 3.0.1:
