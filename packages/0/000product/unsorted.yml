@@ -14576,7 +14576,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_3_2 
+  - librssguard-4_3_3 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16669,7 +16669,6 @@ unsorted:
   - malcontent-devel 
   - mame 
   - mame-data 
-  - mame-mess 
   - mame-tools 
   - man-pages-fi 
   - man-pages-id 
@@ -23631,7 +23630,6 @@ unsorted:
   - python310-celery 
   - python310-celery-batches 
   - python310-cepa 
-  - python310-cerealizer 
   - python310-certbot 
   - python310-certbot-apache 
   - python310-certbot-dns-cloudflare 
@@ -24590,7 +24588,6 @@ unsorted:
   - python310-looseversion 
   - python310-lscsoft-glue 
   - python310-lupa 
-  - python310-lws 
   - python310-lxml-devel 
   - python310-lz4 
   - python310-macholib 
@@ -24742,6 +24739,7 @@ unsorted:
   - python310-nbxmpp 
   - python310-ncclient 
   - python310-ndg-httpsclient 
+  - python310-ndindex 
   - python310-ndjson 
   - python310-ndtiff 
   - python310-neovim 
@@ -24773,7 +24771,6 @@ unsorted:
   - python310-nss 
   - python310-ntc-templates 
   - python310-ntfy 
-  - python310-ntlm-auth 
   - python310-ntplib 
   - python310-num2words 
   - python310-numba 
@@ -26208,6 +26205,7 @@ unsorted:
   - python311-JPype1 
   - python311-Jinja2 
   - python311-Js2Py 
+  - python311-JsonWeb 
   - python311-Kajiki 
   - python311-Kivy 
   - python311-Kivy-devel 
@@ -27064,6 +27062,7 @@ unsorted:
   - python311-coverage 
   - python311-coveralls-check 
   - python311-cppclean 
+  - python311-cpplint 
   - python311-cppy 
   - python311-cracklib 
   - python311-cramjam 
@@ -27144,7 +27143,9 @@ unsorted:
   - python311-deprecation 
   - python311-derpconf 
   - python311-devel 
+  - python311-devpi-client 
   - python311-devpi-common 
+  - python311-devpi-server 
   - python311-dfVFS 
   - python311-dfdatetime 
   - python311-dfwinreg 
@@ -27794,6 +27795,7 @@ unsorted:
   - python311-jupyterlab-widgets 
   - python311-jwcrypto 
   - python311-k5test 
+  - python311-kafka-python 
   - python311-kaitaistruct 
   - python311-kasa 
   - python311-kazoo 
@@ -28097,6 +28099,7 @@ unsorted:
   - python311-nbxmpp 
   - python311-ncclient 
   - python311-ndg-httpsclient 
+  - python311-ndindex 
   - python311-ndjson 
   - python311-ndtiff 
   - python311-neovim 
@@ -29536,7 +29539,6 @@ unsorted:
   - python38 
   - python38-32bit 
   - python38-Flask-Security-Too 
-  - python38-JsonWeb 
   - python38-QR-Code-generator 
   - python38-acoular 
   - python38-aeidon 
@@ -29545,14 +29547,10 @@ unsorted:
   - python38-awscrt 
   - python38-base 
   - python38-base-32bit 
-  - python38-cerealizer 
   - python38-chart-studio 
-  - python38-cpplint 
   - python38-curses 
   - python38-dbm 
   - python38-devel 
-  - python38-devpi-client 
-  - python38-devpi-server 
   - python38-django-oscar 
   - python38-doc 
   - python38-doc-devhelp 
@@ -29566,7 +29564,6 @@ unsorted:
   - python38-ipympl 
   - python38-ipyscales 
   - python38-ipyvolume 
-  - python38-kafka-python 
   - python38-kombu 
   - python38-lalpulsar 
   - python38-lalsimulation 
@@ -29574,11 +29571,9 @@ unsorted:
   - python38-librosa 
   - python38-limnoria 
   - python38-logutils 
-  - python38-lws 
   - python38-mypy 
   - python38-net-snmp 
   - python38-nilearn 
-  - python38-ntlm-auth 
   - python38-oct2py 
   - python38-pip-licenses 
   - python38-pybugz 
@@ -30421,7 +30416,6 @@ unsorted:
   - python39-celery 
   - python39-celery-batches 
   - python39-cepa 
-  - python39-cerealizer 
   - python39-certbot 
   - python39-certbot-apache 
   - python39-certbot-dns-cloudflare 
@@ -31434,7 +31428,6 @@ unsorted:
   - python39-looseversion 
   - python39-lscsoft-glue 
   - python39-lupa 
-  - python39-lws 
   - python39-lxml 
   - python39-lxml-devel 
   - python39-lz4 
@@ -31588,6 +31581,7 @@ unsorted:
   - python39-nbval 
   - python39-ncclient 
   - python39-ndg-httpsclient 
+  - python39-ndindex 
   - python39-ndjson 
   - python39-ndtiff 
   - python39-neovim 
@@ -31622,7 +31616,6 @@ unsorted:
   - python39-nss 
   - python39-ntc-templates 
   - python39-ntfy 
-  - python39-ntlm-auth 
   - python39-ntplib 
   - python39-num2words 
   - python39-numba 

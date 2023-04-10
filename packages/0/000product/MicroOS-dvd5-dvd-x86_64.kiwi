@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230409" schemaversion="4.1">
+<image name="OBS__MicroOS___20230410" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230409</productvar>
+      <productvar name="VERSION">20230410</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230409,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230410,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230409/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230410/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -870,13 +870,11 @@
       <repopackage name="libavahi-core7"/>
       <repopackage name="libavahi-glib1"/>
       <repopackage name="libavcodec59"/>
-      <repopackage name="libavcodec60"/>
       <repopackage name="libavfilter8"/>
       <repopackage name="libavformat59"/>
       <repopackage name="libavif15"/>
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil57"/>
-      <repopackage name="libavutil58"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libbd_btrfs2"/>
@@ -1761,7 +1759,6 @@
       <repopackage name="libsubid4"/>
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libSvtAv1Enc1"/>
-      <repopackage name="libswresample4"/>
       <repopackage name="libswresample4_ff5"/>
       <repopackage name="libswscale6"/>
       <repopackage name="libsynctex2"/>
