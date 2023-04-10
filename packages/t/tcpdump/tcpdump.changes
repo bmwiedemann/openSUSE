@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  8 11:04:16 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.99.4:
+  * LSP ping: Fix "Unused value" warnings from Coverity
+  * CVE-2023-1801: out-of-bounds write in the SMB printer (boo#1210265)
+  * DNS: sync resource types with IANA
+  * ICMPv6: Update the output to show a RPL DAO field name
+  Geneve: Fix the Geneve UDP port test
+  * build system tweaks and documentation updates
+
+-------------------------------------------------------------------
 Tue Jan 17 08:18:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.99.3:
