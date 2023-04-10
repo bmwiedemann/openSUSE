@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 30 15:07:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.1
+  * New NDArray class for handling multidimensional arrays using
+    compression. It includes:
+    - Data type handling (fully compatible with NumPy)
+    - Double partitioning
+  * See examples at:
+    https://github.com/Blosc/python-blosc2/tree/main/examples/ndarray
+    NDarray docs at:
+    https://www.blosc.org/python-blosc2/reference/ndarray_api.html
+    Explanatory video on why double partitioning:
+    https://youtu.be/LvP9zxMGBng Also, see our blog on C-Blosc2
+    NDim counterpart:
+    https://www.blosc.org/posts/blosc2-ndim-intro/
+- Drop python-blosc2-pr92-debundle.patch
+- Drop python-blosc2-pr82-fix-os-release.patch
+
+-------------------------------------------------------------------
 Fri Feb 24 05:50:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip incompatible tests on 32bit

@@ -17,19 +17,15 @@
 
 
 Name:           python-blosc2
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause
 URL:            https://github.com/Blosc/python-blosc2
 Source:         https://files.pythonhosted.org/packages/source/b/blosc2/blosc2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-blosc2-pr82-fix-os-release.patch gh#Blosc/python-blosc2#82
-Patch0:         https://github.com/Blosc/python-blosc2/pull/82.patch#/python-blosc2-pr82-fix-os-release.patch
-# PATCH-FIX-UPSTREAM python-blosc2-pr92-debundle.patch gh#Blosc/python-blosc2#92, gh#Blosc/python-blosc2#15
-Patch1:         python-blosc2-pr92-debundle.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 1.20.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
@@ -41,10 +37,17 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(blosc2)
 Requires:       python-msgpack
+Requires:       python-ndindex >= 1.4
+Requires:       python-numpy >= 1.20.3
+Requires:       python-py-cpuinfo
+Requires:       python-rich
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module ndindex >= 1.4}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rich}
 # /SECTION
 %python_subpackages
 
@@ -65,11 +68,13 @@ for the later.
 
 %prep
 %autosetup -p1 -n blosc2-%{version}
+# https://github.com/Blosc/python-blosc2/commit/f5fbba3a4f6b935da53563a6a0001f917dc407ab
+sed -i /pytest/d requirements-runtime.txt
 
 %build
 export CFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
-# debundle c-blosc2 (Patch1)
+# debundle c-blosc2
 export SKBUILD_CONFIGURE_OPTIONS="-DUSE_SYSTEM_BLOSC2:BOOL=ON"
 %pyproject_wheel
 
