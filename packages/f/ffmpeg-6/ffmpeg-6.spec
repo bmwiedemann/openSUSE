@@ -40,7 +40,6 @@
 %preamble_string ffmpeg-private-devel %comparator %conflicts_version \
 %nil
 
-%define BUILD_ORIG 1
 %if 0%{?BUILD_ORIG}
 %bcond_without amf_sdk
 %bcond_without cuda_sdk
@@ -186,9 +185,9 @@ BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vidstab) >= 0.98
 %endif
 %if %{with vulkan}
+BuildRequires:  pkgconfig(libplacebo) >= 4.192.0
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.189
-BuildRequires:  pkgconfig(libplacebo) >= 4.192.0
 %endif
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0

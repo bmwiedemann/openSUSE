@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 10 09:08:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Reset fixed leftover value for BUILD_ORIG
+
+-------------------------------------------------------------------
 Thu Mar 16 17:56:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Conflict with otherproviders(ffmpeg-tools).
