@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Mar 31 09:06:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip a flaky test in i586
+
+-------------------------------------------------------------------
+Thu Mar 30 15:20:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v1.6
+- Required by python-blosc2 2.1.1
+- Add ndindex-pr133-ragged.patch gh#Quansight-Labs/ndindex#133
+- Add ndindex-pr147-numpy.patch gh#Quansight-Labs/ndindex#147
+- Add custom-pytest.patch

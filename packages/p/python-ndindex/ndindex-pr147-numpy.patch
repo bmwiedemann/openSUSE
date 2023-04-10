@@ -1,0 +1,30 @@
+From 83ffdb18a1b2a04c8bfffc9024ec617b0bb8a7cc Mon Sep 17 00:00:00 2001
+From: Aaron Meurer <asmeurer@gmail.com>
+Date: Wed, 11 Jan 2023 15:03:20 -0700
+Subject: [PATCH] Fix a test failure with newer versions of NumPy
+
+---
+ ndindex/tests/test_ndindex.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/ndindex/tests/test_ndindex.py b/ndindex/tests/test_ndindex.py
+index a58b0260..228e4e07 100644
+--- a/ndindex/tests/test_ndindex.py
++++ b/ndindex/tests/test_ndindex.py
+@@ -103,12 +103,13 @@ def test_ndindex_invalid():
+                 np.array([])]:
+         check_same(a, idx)
+ 
+-    # This index is allowed by NumPy, but gives a deprecation warnings. We are
+-    # not going to allow indices that give deprecation warnings in ndindex.
++    # Older versions of NumPy gives a deprecation warning for this index. We
++    # are not going to allow indices that give deprecation warnings in
++    # ndindex.
+     with warnings.catch_warnings(record=True) as r:
+         # Make sure no warnings are emitted from ndindex()
+         warnings.simplefilter("error")
+-        raises(IndexError, lambda: ndindex([1, []]))
++        raises((IndexError, ValueError), lambda: ndindex([1, []]))
+     assert not r
+ 
+ def test_ndindex_ellipsis():
