@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  6 08:20:27 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/sphinx-contrib/documentedlist/issues/5
+  + python-sphinxcontrib-documentedlist-no-six.patch
+
+-------------------------------------------------------------------
 Mon Dec 10 12:18:02 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Fix %pycache_only in %files

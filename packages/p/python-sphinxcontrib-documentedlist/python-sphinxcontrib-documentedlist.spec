@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-documentedlist
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Release:        0
 Summary:        Sphinx DocumentedList extension
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/chintal/sphinxcontrib-documentedlist
+URL:            https://github.com/chintal/sphinxcontrib-documentedlist
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-documentedlist/sphinxcontrib-documentedlist-%{version}.tar.gz
+# https://github.com/sphinx-contrib/documentedlist/issues/5
+Patch0:         python-sphinxcontrib-documentedlist-no-six.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -51,7 +53,7 @@ simplest application, the second element of the tuple should be a string
 providing a description for the item.
 
 %prep
-%setup -q -n sphinxcontrib-documentedlist-%{version}
+%autosetup -p1 -n sphinxcontrib-documentedlist-%{version}
 
 %build
 %python_build
