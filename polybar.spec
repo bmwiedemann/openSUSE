@@ -1,7 +1,7 @@
 #
 # spec file for package polybar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libuv) >= 1.3
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
