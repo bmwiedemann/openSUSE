@@ -1,11 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 10 02:11:38 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Dropped files mame-rpmlintrc mame.png mess.png mame-mess.appdata.xml mame.appdata.xml.
+- Added files mame.svg and mame-ppc64le.patch (fix build ppc64 and ppc64le archs).
+- Changed optflags macro flag -g to -g1 for all archs (boo#1210115).
+- Fixed build on Leap 15.4 and Leap 15.5 via gcc11 (boo#1210115).
+- Fixed incorrect cfg diroctory path (boo#1184490).
+- Updated to 0.253
+  * Dropped file _multibuild, mess subpackage and 32bit archs (random ld oom).
+  * Changed files _constraints mame-bgfx.patch.
+  * Switched to built-in lua (requires Lua compiled as C++).
+  * https://mametesters.org/changelog_page.php
+
+-------------------------------------------------------------------
 Thu Mar 30 18:15:32 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.252
   * Refreshed spec-file via spec-cleaner and manual optimizations.
   * Changed file use_thin_archives.patch.
   * Added files: mame-fortify.patch and mame-bgfx.patch.
-  * Disabled LTO for all.
+  * Disabled LTO for all archs.
   * https://mametesters.org/changelog_page.php
 
 -------------------------------------------------------------------
