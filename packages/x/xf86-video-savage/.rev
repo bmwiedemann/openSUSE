@@ -182,4 +182,14 @@
     functionality has been removed from xorg-server 1.20</comment>
     <requestid>618969</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bf3cf64fb99b3f045de542984e44f251</srcmd5>
+    <version>2.4.0</version>
+    <time>1681150622</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0
+  * This release improves support for building with Xorg 1.19 and later. 
+- supersedes u_Add-check-for-max-HV-Value-to-ValidMode-hook.patch</comment>
+    <requestid>1078237</requestid>
+  </revision>
 </revisionlist>

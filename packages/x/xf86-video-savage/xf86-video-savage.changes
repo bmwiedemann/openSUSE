@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 10 08:29:28 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.4.0
+  * This release improves support for building with Xorg 1.19 and later. 
+- supersedes u_Add-check-for-max-HV-Value-to-ValidMode-hook.patch
+
+-------------------------------------------------------------------
 Fri Jun 22 13:31:21 UTC 2018 - sndirsch@suse.com
 
 - u_Add-check-for-max-HV-Value-to-ValidMode-hook.patch

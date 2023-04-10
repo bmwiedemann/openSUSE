@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-savage
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xf86-video-savage
-Version:        2.3.9
+Version:        2.4.0
 Release:        0
 Summary:        S3 Savage video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-# https://lists.x.org/archives/xorg-devel/2018-June/057207.html
-Patch0:         u_Add-check-for-max-HV-Value-to-ValidMode-hook.patch
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontsproto)
@@ -55,7 +53,6 @@ SuperSavage chips.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
@@ -67,7 +64,7 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog README
+%doc ChangeLog README.md
 %license COPYING
 %dir %{_libdir}/xorg/modules/drivers
 %{_libdir}/xorg/modules/drivers/savage_drv.so
