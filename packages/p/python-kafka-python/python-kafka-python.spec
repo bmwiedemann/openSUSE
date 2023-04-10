@@ -1,7 +1,7 @@
 #
 # spec file for package python-kafka-python
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kafka-python
 Version:        2.0.2
 Release:        0
@@ -31,6 +30,8 @@ Source3:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/
 Source4:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/service.py
 # PATCH-FIX-OPENSUSE Remove use of mock module
 Patch0:         remove-mock.patch
+# PATCH-FIX-UPSTREAM fix tests for py3.11 gh#dpkp/kafka-python#2358
+Patch1:         python-311.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

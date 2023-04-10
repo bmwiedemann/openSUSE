@@ -89,4 +89,13 @@
   * Remove use of mock.</comment>
     <requestid>1009965</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>3346e3d244e01531308151a8a3133699</srcmd5>
+    <version>2.0.2</version>
+    <time>1681154689</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to fix tests for py3.11 gh#dpkp/kafka-python#2358
+</comment>
+    <requestid>1078253</requestid>
+  </revision>
 </revisionlist>

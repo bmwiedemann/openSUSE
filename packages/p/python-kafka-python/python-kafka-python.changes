@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 10 11:36:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to fix tests for py3.11 gh#dpkp/kafka-python#2358
+
+-------------------------------------------------------------------
 Wed Oct 12 02:26:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
