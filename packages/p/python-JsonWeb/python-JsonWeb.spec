@@ -1,7 +1,7 @@
 #
 # spec file for package python-JsonWeb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-JsonWeb
 Version:        0.8.2
 Release:        0
@@ -24,6 +23,8 @@ Summary:        Add JSON (de)serialization to your python objects
 License:        BSD-3-Clause
 URL:            http://www.jsonweb.info/
 Source:         https://files.pythonhosted.org/packages/source/J/JsonWeb/JsonWeb-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE python-311.patch
+Patch0:         python-311.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -34,7 +35,7 @@ Quickly add json serialization and deserialization
 to your python classes.
 
 %prep
-%setup -q -n JsonWeb-%{version}
+%autosetup -p1 -n JsonWeb-%{version}
 
 %build
 %python_build
@@ -47,6 +48,7 @@ to your python classes.
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jsonweb
+%{python_sitelib}/JsonWeb-%{version}*-info
 
 %changelog

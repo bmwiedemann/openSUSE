@@ -1,0 +1,13 @@
+Index: JsonWeb-0.8.2/jsonweb/decode.py
+===================================================================
+--- JsonWeb-0.8.2.orig/jsonweb/decode.py
++++ JsonWeb-0.8.2/jsonweb/decode.py
+@@ -231,7 +231,7 @@ class ObjectHook(object):
+         
+ 
+ def get_arg_spec(func):
+-    arg_spec = inspect.getargspec(func)
++    arg_spec = inspect.getfullargspec(func)
+     args = arg_spec.args
+     
+     try:   
