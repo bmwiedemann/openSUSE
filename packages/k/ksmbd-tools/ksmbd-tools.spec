@@ -1,7 +1,7 @@
 #
 # spec file for package ksmbd-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,28 +11,28 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ksmbd-tools
-Version:        3.4.7
+Version:        3.4.8
 Release:        0
 Summary:        ksmbd kernel server userspace utilities
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            https://github.com/cifsd-team/ksmbd-tools
+URL:            https://github.com/cifsd-team/ksmbd-tools
 Source:         https://github.com/cifsd-team/ksmbd-tools/archive/refs/tags/%{version}.tar.gz
 
 # ksmbd kernel module was only added in kernel 5.15
 BuildRequires:  kernel-default >= 5.15
-BuildRequires:  glib2-devel
-BuildRequires:  libnl3-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:	libtool
-
-Requires(pre):	kernel-default >= 5.15
+BuildRequires:  glib2-devel
+BuildRequires:  libnl3-devel
+BuildRequires:  libtool
+Requires:       kmod(ksmbd.ko)
 
 %description
 Set of utilities for creating and managing SMB3 shares for the ksmbd kernel

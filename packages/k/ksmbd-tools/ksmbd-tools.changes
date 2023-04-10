@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  9 19:49:53 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Update to version 3.4.8:
+  * Fix memleaks.
+  * Fix two security issues that were reported by ZDI.
+
+-------------------------------------------------------------------
 Sun Mar 19 22:31:45 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
 - Update to version 3.4.7:
