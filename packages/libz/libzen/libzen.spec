@@ -1,7 +1,7 @@
 #
 # spec file for package libzen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover	0
 Name:           libzen
-Version:        0.4.40
+Version:        0.4.41
 Release:        0
 Summary:        C++ utility library
 License:        Zlib
