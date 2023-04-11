@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 11 10:48:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230411
+  * checkbrack: remove -p option
+  * gpsh: avoid spurious "mkvmerge failed" report
+  * wktimer: -S option behavior split off to -X
+
+-------------------------------------------------------------------
 Thu Dec  1 20:35:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20221120

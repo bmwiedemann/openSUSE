@@ -1,7 +1,7 @@
 #
 # spec file for package hxtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           hxtools
-Version:        20221120
+Version:        20230411
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
-License:        GPL-2.0+ and WTFPL
+License:        GPL-2.0-or-later AND WTFPL
 Group:          Productivity/Other
-Url:            https://inai.de/projects/hxtools/
+URL:            https://inai.de/projects/hxtools/
 
 Source:         https://inai.de/files/hxtools/%name-%version.tar.zst
 Source2:        https://inai.de/files/hxtools/%name-%version.tar.asc
@@ -30,8 +30,8 @@ Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel >= 2
-BuildRequires:  zstd
 BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(libHX) >= 3.17
 BuildRequires:  pkgconfig(libpci) >= 3
 BuildRequires:  pkgconfig(mount) >= 2.20
@@ -49,6 +49,7 @@ Requires:       sysinfo = %version
 %description
 A collection of various tools. Some of the important ones:
 
+* checkbrack(1) — check parenthesis and bracket count
 * fd0ssh(1) — pipe for password-over-stdin support to ssh
 * ofl(1) — open file lister (replaces fuser and lsof -m)
 * tailhex(1) — hex dumper with tail-following support
@@ -69,7 +70,6 @@ Requires:       perl(Text::CSV_XS)
 %description scripts
 Architecture-independent programs from hxtools.
 
-* checkbrack(1) — check parenthesis and bracket count
 * cwdiff(1) — run wdiff with color
 * diff2php(1) — transform patch to self-serving PHP file
 * doxygen-kerneldoc-filter(1) — filter for Doxygen to support kerneldoc
@@ -189,6 +189,7 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %license LICENSE*
 %_bindir/bin2c
 %_bindir/bsvplay
+%_bindir/checkbrack
 %_bindir/declone
 %_bindir/gxxdm
 %_bindir/hcdplay
@@ -200,7 +201,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %_bindir/tailhex
 %_bindir/xcp
 %dir %hldir
-%hldir/cctypeinfo
 %hldir/peicon
 %hldir/psthreads
 %hldir/rot13
@@ -208,7 +208,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 
 %files scripts
 %_bindir/aumeta
-%_bindir/checkbrack
 %_bindir/cwdiff
 %_bindir/fxterm
 %_bindir/git-*
