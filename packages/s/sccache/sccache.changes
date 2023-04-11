@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr 11 03:56:23 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.4.1~18:
+  * Add experimental concurrent cache support
+  * build(deps): bump chrono from 0.4.23 to 0.4.24
+  * build(deps): bump serial_test from 1.0.0 to 2.0.0
+  * Describe the default conf file locations in docs/Configuration.md
+  * Remove unnecessary import
+  * Use scoped thread provided by standard library (#1703)
+  * Refactor import style (#1701)
+  * Update rust-version in manifest to 1.64 (#1702)
+  * Replace atty with is-terminal (#1699)
+  * build(deps): bump clap from 4.0.32 to 4.1.11 (#1698)
+  * Remove Redis TTL (#1696)
+  * build(deps): bump assert_cmd from 2.0.8 to 2.0.10 (#1669)
+  * build(deps): bump reqsign from 0.8.3 to 0.8.5 (#1692)
+  * build(deps): bump reqwest from 0.11.15 to 0.11.16 (#1691)
+  * build(deps): bump crossbeam-utils from 0.8.14 to 0.8.15 (#1693)
+  * build(deps): bump toml from 0.7.2 to 0.7.3 (#1695)
+  * build(deps): bump predicates from 2.1.5 to 3.0.2 (#1694)
+  * build(deps): bump regex from 1.7.1 to 1.7.3 (#1690)
+  * version 0.4.1
+  * Revert "Support running dist compilations in unprivileged scenarios (#128)"
+  * Revert "amend to sccache"
+  * Revert "remove remainder cachepot and replace by sccache"
+  * Revert "migrate to ubuntu 22.04 for newly added ci check"
+  * build(deps): bump reqwest from 0.11.14 to 0.11.15
+  * build(deps): bump openssl from 0.10.45 to 0.10.48
+  * chore: Add more debug log for gcs to help us diagnose
+  * Add tests to verify that we work with cmake & autotools (#1678)
+  * Try to test c++ support with both clang & gcc
+  * remove trailing whitespaces
+
+-------------------------------------------------------------------
 Wed Mar 22 04:30:19 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.4.0~7:
