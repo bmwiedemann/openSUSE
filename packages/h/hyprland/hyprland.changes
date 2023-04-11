@@ -1,0 +1,1323 @@
+-------------------------------------------------------------------
+Tue Apr 11 12:19:45 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Updated _service to allow hyprland to be submitted to factory.
+
+-------------------------------------------------------------------
+Tue Apr 11 10:49:36 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.24.1:
+  + A minor update to fix a serious VFR issue + add the GS impl.
+  + Fixes:
+    - renderer: fixup damage repaint
+    - screencopy: fix crash in invalid format reads
+  + Other:
+    - GlobalShortcuts protocol impl (#1886)
+    - hyprctl: sanity check icons in notify
+    - socket2: receive bytes to avoid endless loops
+    - textInput: don't double destroy TI
+
+-------------------------------------------------------------------
+Sun Apr  9 06:49:43 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.24.0:
+  + A minor update with some small changes as usual. Brought to you
+    by Yours Truly.
+  + New features:
+    * Feat: add initial class/title to hyprctl clients
+    * LS: add blur and ignorezero rules
+    * LS: support address: in layerrules
+    * Meson: add rdynamic ld flag
+    * config: add misc:suppress_portal_warnings
+    * crashReporter: add hl ver
+    * debug: added manual_crash
+    * feat: add debug:enable_stdout_logs
+    * feat: add forcergbx rule
+    * feat: add pretty notifications
+    * hyprctl: add notify
+    * meson: add pango deps
+    * notifs: add ICON_OK to icons
+    * plugin api: add addNotificationV2
+    * plugins: Add an API entry for finding functions by name
+    * plugins: mark getFunctionAddressFromSignature deprecated
+  + Fixes:
+    * Fix crash in CConfigManager::parseKeyword (#1983)
+    * Fix nix build options
+    * Fix some typos (#1907)
+    * Fix swiping onto a new workspace with multiple monitors. (#1971)
+    * Input: fix always_follow_on_dnd
+    * LS: fix support for legacy blurls
+    * Misc FreeBSD fixes (#1926)
+    * Renderer: fix dim easing
+    * config: fix long variables being substrd
+    * dpms: fix key_press_enables_dpms
+    * dpms: fix keyboard dpms
+    * fix: a fullscreen bug. (#1821) (#1831)
+    * groups: fix moving between displays
+    * input: fix click-to-refocus not working on loose
+    * input: fix minor issue with holding focus
+    * keybinds: allow code: prefix
+    * monitors: fix segfault on non-unsafe remove
+    * monitors: fixes to unsafe mode
+    * popups: fix heap-use-after-free
+    * screencopy: fix crash
+    * screencopy: fix incorrect resource error post
+    * screencopy: fix read on incorrect monitor render
+    * screencopy: minor fixes for damage_ring
+    * shaders: fix missing discardAlphaZero
+  + Other:
+    * Better and more secure argument parsing, and code reformatting (#1976)
+    * Feat: Introduce render_ahead_of_time (#1863)
+    * Focus: warp cursor on movewindow
+    * Hyprland Screencopy impl (#1800)
+    * LS: don't try to get rules on non-existent ls
+    * compositor: adjust xdp error cases
+    * config: default manual animations to false
+    * config: default no direct scanout to true
+    * config: improve ux on workspace and transform
+    * config: make default config use hyphenated dev names
+    * core: remove old redundant shutdown stuff
+    * crashReporter: try $XDG_CACHE_HOME before $HOME (#1920)
+    * dbus: don't update vars in nests
+    * debug: allow manual crash from hyprctl
+    * debug: minor improvements to manual crash
+    * debug: unbreak debug builds
+    * docs: update crash report dirs
+    * docs: update issue guidelines for asan env
+    * events: guard output in change
+    * examples: pull correct wlr dirs in example plugin
+    * hyprctl: ignore null output monitors
+    * input: don't overset resize icons on drag
+    * input: don't set icon on held buttons without a drag
+    * input: hold focus on mouse buttons
+    * input: ignore constraints on touch
+    * internal: comply to nofocus on vectorToWindow
+    * internal: don't remove x11 children on parent remove
+    * internal: listen to output.damage events
+    * internal: make togglefloat better visible on small size deltas
+    * internal: migrate to damage_ring
+    * internal: release buttons on unmap
+    * internal: rename ensureDPMS to ensureMonitorStatus
+    * internal: wrap wlr surfaces (#1822)
+    * keybinds: allow MOD1 as an alias of ALT
+    * keybinds: improve movefocus on fullscreen
+    * keybinds: remember last workspace on focusmonitor
+    * layer: allow focus on top/overlay surfaces without a window
+    * log: Move stdout log disabling to the end of init
+    * log: log wlr logs to stdout
+    * logs: disable stdout after init
+    * monitors: don't refocus on apply rule
+    * monitors: guard output in damageSurface
+    * monitors: guard output when read
+    * monitors: guard scale in onConnect
+    * monitors: more guards for safety
+    * monitors: remove from monitors on unsafe
+    * monitors: update surface outputs on recover from unsafe
+    * notifs: use empty color for auto
+    * output: handle needs_frame
+    * plugins: use new lookups in example
+    * render: plug missing software cursor unlocks
+    * renderer: don't use simple rect on alphazero stencil
+    * renderer: go back to rendering layers without reverse
+    * screencopy: allow on legacy renderer
+    * secret: removed Herobrine
+    * subsurfaces: avoid reading destroyed surfaces
+    * subsurfaces: guard node's surface
+    * surface: set to nullptr after destroy()
+    * swallow: move swallowed on workspace change
+    * swipe: block on locked session
+    * switches: do not fire on no change in toggle
+    * toplevelExport: honor overlay_cursor
+    * window: unassign surface on unmap
+    * windowrules: allow monitor by str
+    * windows: only connect unmap when mapped
+    * workspaces: preserve pin on moves
+
+-------------------------------------------------------------------
+Wed Mar 15 16:18:46 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.23.0beta:
+  + A minor update after a short wait as usual, brought to you by
+    the one and only.
+  + Notable changes
+    * Your wrappers have been deprecated by the new env keyword.
+    * A powerful plugin system has landed. See the wiki
+    * zwp_text_input_v1 support has landed for supporting IME under
+      electron wayland.
+  + New features:
+    * Add env to example cfgs
+    * Add option to disable/enable mouse window dragging animations (#1658)
+    * Added center orientation to master layout (#1642)
+    * Added decoration reserved area
+    * Added mouseButton event
+    * Added mouseMove event
+    * Added moveintogroup dispatcher
+    * Added moveoutofgroup dispatcher
+    * Dwindle: Added default_split_ratio
+    * add desc: to getMonitorFromString
+    * add env dbus opt
+    * add env keyword to cfg
+    * add log tail to crash reports
+    * add mfact setting for master layout (#1666)
+    * add mouse_left _right
+    * add toggle group lock
+    * added a lockgroups dispatcher
+    * allow blurls by address
+    * blurls: fix address substr length
+    * config: add key_press_enables_dpms
+    * fix mfact not applying to addmaster (#1715)
+    * groups: add deco on moveIntoGroup
+    * Plugin System (#1590)
+  + Fixes:
+    * Bezier: Fix incorrect binary search in bezier approx
+    * Buffer overflow fix (#1707)
+    * Compositor: fix crash on exit
+    * Fix fatal aborts with X11 OR windows
+    * Fix plugin argument-less hyprctl calls (#1723)
+    * Fix plugin config breakage (#1687)
+    * Mirrors: minor fixes
+    * Opengl: Fix forcefully setting missing time prop to final shader
+    * Plugin Hooks: fix calls to %rip offsets
+    * Plugin Hooks: fix original bytes on %rip accesses
+    * blurls: fix address substr length
+    * fix bezier step approx
+    * fix changegroupactive back
+    * fix credentials of invalid surfaces
+    * fix cursor image on drag not resize
+    * fix cyclenext on empty focus
+    * fix mfact not applying to addmaster (#1715)
+    * fixup constraint snapping on no hint
+    * groups: fix fullscreen behavior with groups
+    * ime: fix panels overflowing on corners
+    * input: minor fixes for tiv1
+    * minor fixes to X11 configure/or handling
+    * minor fixes to touch handling
+    * tiv1: minor fixes for crashes
+  + Other:
+    * Allow decos to request interactivity
+    * Allow environment in config
+    * Conform to X11 OR surfaces wanting focus
+    * Convert reverse iterators to ranges
+    * Don't set surface cursors for overriden
+    * Draw HyprError on the last monitor
+    * Enable manual anims by default
+    * Events: Avoid sending std::nullptr_t in keyboardFocus
+    * Include unmapped and hidden windows in hyprctl clients
+    * Initialize priority managers before server init
+    * Mirrors: remove accidentally leftover logs
+    * Move AnimationManager::tick() to an event loop
+    * Nix: move dependency overrides inside wlroots-hyprland call
+    * Optionally expose time to screen shaders (#1700)
+    * Readme: update to mention plugins
+    * Remove useless rax preserve across callq
+    * Renderer: Nuke onWindowResize{start/end}
+    * Reset cursor to pointer on focus on interactable deco
+    * Resize on border icon bug (#1608)
+    * Revert small incorrect change to dragging
+    * Simplfy framebuffer erasing in cleanupFadingOut
+    * Unload plugins on compositor cleanup (#1662)
+    * Up the bezier bake count
+    * Update the debug overlay
+    * allow focus to grouped windows
+    * bugifx: updated urls poiting to old wiki pages (#1738)
+    * config: explicitly use environ(7) after b03c897 (#1708)
+    * crashReporter: remove inconsistent log from crash reports
+    * deny configure requests on drag
+    * dispatchers: disallow togglesplit on fullscreen
+    * dispatchers: remember named workspaces in prev
+    * don't snap on empty hint
+    * generate coredumps on sigabrt too
+    * ime: account for text height in popup calcs
+    * input: text-input-v1 support (#1778)
+    * layoutmgr: don't reenable layout on unchanged layout
+    * make window reserved area less stupid
+    * master: better cycle
+    * movefocus: Set new workspace as active when focusing new monitor (#1640)
+    * nuke cursorSI due to crashes
+    * nuke unmanagedx11 vector
+    * opengl: use a passthru shader for final wlr copy
+    * remove old unused animation cfgs
+    * reset signal handlers in unrecoverable
+    * systemd: expand sysd import env script
+    * unblock pure wayland compiles
+    * update dbus env on exec-once dispatches
+    * update decos on anim values update
+    * update license on main branch (#1604)
+    * use .txt for crash reports
+    * use XCURSOR_SIZE for internal cursor size
+    * use corner cursors on resize (#1638)
+    * use sans for fonts instead of noto sans
+    * xwl: don't try to get unmanaged titles
+  + What's Changed
+    * update license on main branch by @o69mar in #1604
+    * Resize on border icon bug by @horriblename in #1608
+    * use corner cursors on resize by @fufexan in #1638
+    * movefocus: Set new workspace as active when focusing new monitor by @RyanDwyer in #1640
+    * Added center orientation to master layout by @sharkusk in #1642
+    * [WIP] Plugin System by @vaxerski in #1590
+    * Add option to disable/enable mouse window dragging animations by @DashieTM in #1658
+    * Unload plugins on compositor cleanup by @Duckonaut in #1662
+    * Fix plugin config breakage by @Duckonaut in #1687
+    * Optionally expose time to screen shaders by @scorpion-26 in #1700
+    * add mfact setting for master layout by @hillyu in #1666
+    * Buffer over-read in removeBeginEndSpacesTabs() by @opsuu in #1707
+    * config: unbreak on BSDs due to undeclared environ by @jbeich in #1708
+    * fix mfact not applying to addmaster by @hillyu in #1715
+    * Fix plugin argument-less hyprctl calls by @Duckonaut in #1723
+    * bugifx: updated urls poiting to old wiki pages by @asbachb in #1738
+    * [WIP] text-input-v1 support by @vaxerski in #1778
+- Dropped: wlroots_fix_ia86.patch. Included upstream
+
+-------------------------------------------------------------------
+Fri Feb 24 17:26:55 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Added: wlroots_fix_ia86.patch. This allows compiling hyprland on
+  ia86 again. Can be dropped once hyprland updates wlroots to any
+  commit that has 59acc697 in it's history.
+
+-------------------------------------------------------------------
+Tue Feb 21 00:13:30 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.22.0beta:
+  + A minor update after a short wait, brought to you by Yours Truly.
+  + Breaking changes
+    * dwindle:col.group... -> general:col.group...
+    * misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at
+      default on. Saves on CPU usage.
+    * misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on),
+      2 (fullscreen only). Default 0 to avoid white flashes on
+      select hardware.
+  + New features:
+    * Add vrr to hyprctl monitor (#1560)
+    * Added a crash reporter
+    * Added an Event Hook System (#1578)
+    * Added execr
+    * Added support for layoutmsg params and added the param
+      'newfocus' for 'swapwithmaster' and 'focusmaster' (#1522)
+    * add a minimize ipc event
+    * add misc:mouse_move_focuses_monitor
+    * add missing xwayland stub
+    * add prev to getWorkspaceIDFromString
+    * added activewindowv2
+    * libinput: add tap_button_map (#1495)
+    * move no_vfr to vfr and add vrr
+  + Fixes:
+    * Fix VRR JSON output in hyprctl monitors (#1562)
+    * Fix some issues with a lost focus of the maximized window
+      after using swapwithmaster in fullscreen mode (#1524)
+    * fix compile for single_pixel_buffer_v1
+    * fix crash with libc++ in appid
+    * fix group data in hyprctl
+    * fix json output in hyprctl animations
+    * fix legacy system call to create hypr dir
+    * fix quick start link
+    * fix urgent hint order in code
+    * fix warn
+    * fix(hyprctl): allow dispatcher to have no args (#1464)
+    * fixup LS scaling impl
+    * fixup backtrace curpath
+    * fixup stutter in rendering with toplevel_export
+  + Other:
+    * Allow to disable X11 backend separately from Xwayland after
+      5a750b4 (#1445)
+    * Generate symbol info in release for crash reports
+    * Get active VT via ioctl instead of sysfs after e90c5c6 (#1448)
+    * Group/Tab Rework (#1580)
+    * Implement ext-session-lock-v1
+    * Only use true/false in default config to reduce confusion
+      (#1517)
+    * Resize on border (#1347)
+    * Simulate mouse movement on unmap of popups and subsurfaces
+    * Unbreak CrashReporter on FreeBSD (#1589)
+    * Unbreak build with libc++ (#1457)
+    * Update CMakeLists.txt (#1514)
+    * Update blurriness of layersurfaces after hyprctl keyword
+      blurls (#1493)
+    * abort instead of exiting on sigsegv
+    * adjust crash report paths
+    * bring back dynamic ls geom updates
+    * clear focus on failed unlock attempt
+    * clear focus on lockscreen refocus
+    * conform to unmanaged X11 activate requests
+    * don't alter LS geom on unmap
+    * don't loop border anim on disabled
+    * enable UV calcs for all surfaces
+    * enable single_pixel_buffer_v1
+    * err on invalid transform in monitor cfg
+    * explicit config path for autoreload config #1423 (#1494)
+    * ext_workspace_unstable: send done after output_enter when
+      wl_output is bound late (#1481)
+    * ext_workspace_unstable: send output_enter when wl_output is
+      bound late (#1480)
+    * feat: border angle animations (#1469)
+    * focusCurrentOrLast dispatcher (#1545)
+    * force monitor focus on refocus
+    * ignore VR headsets (#1555)
+    * ignore damage on hidden windows in animationmanager
+    * ignore hidden in allfloat
+    * improve VRR state checking with updates to mosthz
+    * make a null surface focus reset lastfocus
+    * meson: build in release by default
+    * minor adjustments to xwayland positioning
+    * notify of fractional scale for LS-es
+    * place sessionlock surfaces at correct coordinates
+    * properly clamp size in dragging floating corners
+    * properly meld groups together
+    * properly rid of whitespace chars from cfg lines
+    * refocus on monitor attach
+    * remove constraint recheck log
+    * render lockscreen in fullscreenworkspace
+    * reset focus on lock surface destroy
+    * reset layout-set render vars on floating
+    * rethink visible flag in animmgr
+    * scale the opaque region in blurring
+    * simplify nullcheck in minimize
+    * unset hidden at grouped remove
+    * update issue guidelines for crash reports
+
+-------------------------------------------------------------------
+Sat Jan 28 17:03:24 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.21.0beta:
+  + Minor update after a short while.
+  + New features:
+    * Add "on" and "off" for the bind of switch (#1342)
+    * Add hyprctl animations
+    * Add tablets calibration matrix for dynamic rotation with
+      2-in1/tablet PC usage (#1319)
+    * add an urgent event
+    * add fakefullscreen prop to windows in hyprctl
+    * add hyprctl setprop
+    * added binds:focus_preferred_method
+    * added hyprctl seterror
+    * added layer rules
+    * added make model and serial to hyprctl monitors
+    * added misc:hide_cursor_on_touch
+    * feat: add focus to urgent or last window (#1402)
+    * feat: dispatcher, add workspace renaming (#1336)
+    * fix destroying addon in fractional scale impl
+  + Fixes:
+    * fix clamp in monitor relative
+    * fix cmake systemd header detection
+    * fix color typo in hyprerror
+    * fix cutting geometry on surfaces spilling out
+    * fix deprecated-copy warn
+    * fix destroying addon in fractional scale impl
+    * fix dimaround with transformed displays
+    * fix focus history on workspace jumps
+    * fix font color in hyprerror
+    * fix rounding exceeding max in single-line errors
+    * fix up log types
+    * fix: cursor changing on window move and resize (#1371)
+    * fix: hyprland crashing wenn moving window -1 from first
+      monitor (#1419)
+  + Other:
+    * better log wl socket adding and use auto if failed
+    * Don't ignore previous maximise on defullscreen req (#1393)
+    * Implement urgency hint for workspaces (#1379)
+    * Pin dispatcher for a specific window (#1340)
+    * allow preblur for opaque surfaces if alpha not 1
+    * better error handling around getMonitorFromString
+    * change placement of isSwitchingToPrevious (#1388)
+    * damage monitor on moveactive
+    * damage monitor on stack rotations
+    * damage on border change
+    * describe layers in hyprctl layers
+    * don't set cursor when timeout reached
+    * dump monitor data after setting rules
+    * escape json strings in hyprctl binds
+    * expand region twice in blur damage
+    * handle fullscreen requests on maximized windows
+    * ignore null ls-es in cleanup
+    * make hyprerror follow fadein anim
+    * master layout: remember size & pos of floating windows on
+      fullscreen 1 (#1374)
+    * move window to top if floating activate
+    * recalculate layout on deco or border change
+    * release mouse buttons on map from LS
+    * remove restrictions from setprop for ints
+    * repaint on dynamic decoration keywords
+    * replace java envvar
+    * reset dragged window on failed begin
+    * scale hyprerror
+    * send cursor updates on touch move
+    * send enter for IME popups
+    * small hyprerror revamp
+    * update animated deco values after setprop
+    * update wlroots dep
+    * warp cursor on login to center
+    * wp-fractional-scaling-v1 impl (#1373)
+
+-------------------------------------------------------------------
+Sun Jan  8 18:04:51 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.20.1beta:
+  + Minor patch mostly to fix some crashes with overshot animations.
+  + New features:
+    * added hyprctl binds
+  + Fixes:
+    * fix crashes and bug wiki link (#1333)
+    * fix crashes on monitor ls remove
+    * minor fixes for fakefullscreen
+    * remove color rassert to fix overshot beziers
+  + Other:
+    * Build: use props file for versioning
+    * clamp a instead of asserting
+    * removed Herobrine
+
+- Changes from version 0.20.0beta:
+  + A small update after a short wait brought to you by Yours Truly™
+    et al; Fun stuff, as usual.
+  + New features:
+    * Add 'exact' option for 'splitratio' (#1245)
+    * Add sane permissions for /tmp/hypr
+    * Added clang format (#1239)
+    * Added make configdebug
+    * add auto scale
+    * add disabling keyboards
+    * add touchdevice to devicevalue
+    * added dim_special
+    * added dimaround
+    * added fakefullscreen
+    * added maximize windowrule
+    * added workspace_swipe_numbered
+  + Fixes:
+    * Fix cycleprev bug introduced in 46891b1 (#1213) (#1242)
+    * Fix focus not changing on (empty) workspace change (#1243)
+    * fix blur damage spam on no blurred windows
+    * fix damage issues with dimaround unmap
+    * fix double remove in destroyKeyboard
+    * fix dynamic monitor disables corrupting pmosthz
+    * fix for gap in master layout orientation right #1171 (#1260)
+    * fix group bar color calc
+    * fix mouse resize on master orientations
+    * fix restack in xwayland stubs
+    * fix stupid typo
+    * fix workspace special rules
+    * minor xcursor and scale fixes
+  + Other:
+    * Allow floats in % rules
+    * Drop Pango (unused) (#1251)
+    * Drop X11 headers (unused) (#1252)
+    * Make libinput tap-and-drag configurable (#1267)
+    * Normalize color storage
+    * Revert "Send initial focus to X11 type dialog"
+    * Send initial focus to X11 type dialog
+    * account for dimAround in fullboundingbox
+    * adjust medium ppi values
+    * allow binding tablets to outputs
+    * clarify layout enum
+    * clean draggedwindow in dragend
+    * destroy LS-es on disconnected monitor
+    * do not overwrite existing hyprland.desktop (#1228)
+    * downgrade wlroots due to issues
+    * get window under cursor in kill
+    * ignore dim when pass popup
+    * ignore focus to empty input region ls-es
+    * ignore self in candidate floating
+    * ignore silent workspace rules to same workspace
+    * log more in group creation
+    * mark blur dirty on dynamic blur keywords
+    * move setActiveMonitor backup later in onDisconnect
+    * normalize gradients and denormalize in groupbar
+    * prevent moving to invalid workspaces
+    * refocus on special move
+    * remember master width on master close
+    * remember pos and size across fullscreen moves
+    * remember size and pos on fullscreen 1
+    * remove damage_entire_on_snapshot
+    * remove main_mod
+    * remove useless log
+    * render overlay layers in reverse
+    * render pinned windows above floating separately
+    * respect ls protocol by forcing kb focus to kb interactive top
+      and overlay
+    * s/pkgs.system/pkgs.hostPlatform.system/g
+    * sanity check workspaces after enabling mirror
+    * set created over fullscreen in movetotop
+    * simplify workspace sanity checks
+    * support gradients in dwindle group colors
+    * touch up the clang format and format all files
+    * update debug coredump instructions
+    * update readme images
+    * update wlroots dep
+    * use auto scale in default cfgs
+    * use auto scale in fallback rule
+    * use curves for special dim anim
+    * verify lastmon status on connect
+
+- Added "jq" to builddepends, as it it now used to calculate the
+  current version.
+
+-------------------------------------------------------------------
+Mon Dec 12 19:06:36 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.19.2beta:
+  + New features:
+    - Added toplevel handle sharing
+    - add changefloatingmode event
+    - add missing c_str in debug log
+    - ensure mapped state in addViewCoords
+  + Fixes:
+    - fix drag resizing on special ws-es
+    - fix memory safety in getWindowFromSurface
+    - fix minor issues with move focus and follow mouse 0
+    - fix sharing scaled windows
+    - fix string escaping in CMakeLists.txt
+    - fix up relative monitors
+    - minor focus fixes with LS-es and moving windows
+  + Other:
+    - do not reject drags on visible windows over fullscreen
+    - find a default workspace smarter
+    - handle constraint cursor hints better
+    - optimize m+- and e+- workspace opts
+    - sort valid ws-es in relative
+    - update hyprland-protocols
+    - use anim callbacks and don't spam config resets in drag
+
+-------------------------------------------------------------------
+Fri Dec  9 19:11:18 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.19.1beta:
+  + Minor changes including bumping the wlroots ver, fixing a memory
+    leak and some issues with moving fullscreen windows.
+  + New features:
+    - add failsafe for dwindle windows
+    - added nomaxsize rule
+  + Fixes:
+    - fix lost windows clogging up memory
+    - fix up moving to special workspace
+    - minor fixes to special workspace behavior
+    - minor toplevel sharing fixups
+
+-------------------------------------------------------------------
+Tue Dec  6 21:05:39 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.19.0beta:
+  + New features:
+    - Add nofullscreen to windowrules (#1107)
+    - Add option for retrieving first empty workspace (#1085)
+    - Added handling more special workspaces
+    - Added screen shaders
+    - Fix incorrect layout positions in mirror re-add
+    - add scroll_button libinput opt
+    - added blur_xray
+    - added border gradients
+    - added hyprctl switchxkblayout
+    - Implement window sharing with the hl toplevel export proto (#1179)
+  + Fixes:
+    - Fix a compiler warning (#1124)
+    - Fix cmake error when using clang (#1009)
+    - Fix incorrect layout positions in mirror re-add
+    - Fix minor issues with mirrors
+    - Fix swiping on the first workspace going to the last (#1067)
+    - Fix wrong layout recalculate if statement (#1167)
+    - fix AA on borders
+    - fix border inner offset in shader
+    - fix crash in blurls remove
+    - fix crash in setActiveMonitor null
+    - fix crash with invalid frag dynamic shaders
+    - fix decorations missing after no_gaps_when_only toggle floating
+    - fix events in changeworkspace with bound ws-es
+    - fix fadeout with animated border
+    - fix group border oversaturation
+    - fix invisible windows on moving fullscreen out
+    - fix master resizes all
+    - fix minor issues with blur w/o new optim
+    - fix minor issues with blur_new_optimize
+    - fix shader destroy id unset
+    - fix transformed border thickness
+    - fix up the border shader
+    - fix warning
+    - minor fixes for mirrors & log more monitor events
+    - minor monitor code fixups
+    - monitor rule fixes
+    - use highp for pixcoord to fix nvidia border issues
+  + Other:
+    - Render focused window at last (#1060)
+    - Reset callbacks on remap
+    - Setting wayland environment variables at startup (#1045)
+    - Unify rounding shaders
+    - Update wiki link in manpage (#1144)
+    - Use internal device naming for Hyprctl devices (#1174)
+    - allow 360 degrees of freedom in gradients
+    - avoid duplicate device names
+    - avoid header clashes in make all
+    - avoid using wayland-0 as a socket name
+    - better capability handling
+    - block surface feedback on window sharing
+    - blur xray for layers (#1158)
+    - check for special workspace open in attemptDirectScanout
+    - convert bordercolors to GradientValueData correctly (#1122)
+    - damage monitor on group switch
+    - damage windows after switch
+    - default blur new optimizations to 1
+    - don't attempt rendering on begin failure
+    - don't change alpha on special anims
+    - don't focus back after dnd on follow mouse 1
+    - don't initial focus on LS keyboard grab
+    - don't send motion events to lock constraints
+    - don't set AS in onConnect
+    - find base surface if no subsurface found in ls
+    - find floating windows below closed one
+    - ignore alpha when sharing window
+    - improve constraint handling
+    - make focus/swap master layoutmsgs two-way
+    - minor changes to unsafe state handling
+    - more memory safety around onDisconnect
+    - optimize border shader
+    - optimize data feeding to gradient renderer
+    - override force opaque rule on keybind
+    - recalculate layout only when needed on dynamic keywords
+    - reload shader on dynamic shader keyword
+    - remove global var
+    - remove idiotic guard in processMouseDownNormal
+    - remove redundant strval_empty checks
+    - remove resize transitions
+    - reset m_bEmptyFocusCursorSet on workspace switch
+    - respect no_gaps_when_only in fullscreen 1
+    - return full monitor box for fullscreen windows in idealBB
+    - schedule frames and reloads on session re-activate
+    - show groupings and swallowing in hyprctl (#1159)
+    - skip covered windows on fullscreen workspaces in getWindowInDirection
+    - unify setting of the active monitor
+    - use gradients in default configs
+
+-------------------------------------------------------------------
+Wed Nov 16 22:07:56 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.18.0beta:
+  + New features:
+    * Add an idleinhibit windowrule
+    * Add bordercolor windowrule (#992)
+    * Add focusmaster dispatcher (#942)
+    * Add keyboard led update after keys/mod update
+    * Added creating / destroying outputs on a multi-backend + headless backend
+    * Added decoration:shadow_scale
+    * Added direct scanout
+    * Added exec rules
+    * Added multiple master layoutmsgs
+    * Added resize transitions
+    * Added resizing individual master windows
+    * add more wlroots flags for faster compile
+    * add move cursor windowrule
+    * added monitor cycling
+    * added toggle for drm scanout flags
+    * added unset rules
+    * added workspace_swipe_forever
+  + Fixes:
+    * Fix crashes with DS and mirrors
+    * Fix missing focusedmon event on focusmonitor dispatcher
+    * Fix resize transitions on multimon + transformed
+    * Minor fixes for virtual input devices
+    * Multiple animation optimization and xwayland wine fixes
+    * Nix HM: Fix invalid escapes
+    * fix extents in shadow deco
+    * fix fullscreen maximize size
+    * fix invalid master slave pos calc on y != 0
+    * fix issues with direct scanout's lack of surface frame feedback
+    * fix master window finding on closed
+    * fix missing stub for xwayland
+    * fix ordering in mouse connect
+    * fix passing input to constrained windows without relative
+    * fix raw exec in configmanager
+    * fix relative protocol paths
+    * fix safety over ls outputs
+    * fix shadow extent & offset calculations
+    * fix slide calcs for windows outside the viewport
+    * fix swipe on 2 detached workspaces
+    * fix the damageBox in damageMonitor
+    * fix trailing comma in hyprctl activewindow
+    * fix unregistering avars on sethidden
+    * minor fixes for follow_mouse 3
+    * minor loose focus fixes
+    * resize transition fixes + default transitions to false
+  + Other:
+    * Allow arguments to hyprctl dispatch exec commands. (#990)
+    * Dispatcher to center floating window (#961)
+    * Nix HM: prevent race condition between dbus and systemd
+    * Revert "Set child stdout and stderr to /dev/null (#1000)"
+    * Set child stdout and stderr to /dev/null (#1000)
+    * apply some rules dynamically when state of window changes (#1020)
+    * automatically update dbus environment on start
+    * constraint focus simplifications
+    * deprecate general:damage_tracking
+    * don't update the env in session-less hl
+    * guard empty str in isNumber
+    * guard empty str in removeBeginEndSpacesTabs
+    * guard header windows in layout messages
+    * guard lastwindow in circlenext
+    * handle transforming displays in outputMgr
+    * helpers: implement getPPIDof on BSDs (#972)
+    * ignore constraints on exclusiveClient create
+    * include utility in defines
+    * meson: explicitly specify path for find(1) (#971)
+    * meson: use gl instead of GL
+    * move no_direct_scanout to misc
+    * notify idle on touch down
+    * possible crash when current workspace does not exist (#1023)
+    * prevent double-registering of avars
+    * remove ensureFDsValid, legacy
+    * remove old comments
+    * remove redundant check in CShader
+    * remove redundant includes
+    * remove spammy ime logs
+    * remove spammy logs for DS
+    * render the debug overlay only on visible monitors
+    * set cursor to hand1 when moving a window
+    * streamline hypctl output of windows (#983)
+    * update window values after map finish
+    * use goal values in changeWindowFloatingMode
+    * use lld instead of i in hyprctl getopt for accurate int reads
+
+-------------------------------------------------------------------
+Sun Oct 30 14:38:58 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.17.0beta:
+  + New features:
+    * Add windowrules for noblur and noshadow (#884)
+    * Added hyprctl cursorpos
+    * add 10bit support to displays
+    * add disabling pointer devices
+    * added swipe create new
+    * allow glob wildcard in addreserved
+    * Allow 100%- for move rule
+    * allow # escaping in config
+  + Fixes:
+    * Fix self-noding in changeWindowFloatingMode
+    * fix animate_manual_resizes with moves
+    * fix crash in event manager on hangup
+    * fix debug nest black screen
+    * fix default 0 in box passing test
+    * fix maximized windows not hiding tiled
+    * fix minor anim issue with swipe new
+    * fix minor focus oopsie
+    * fix refocus on last window
+    * fix silent + size windowrules
+    * fix swipe with fullscreen maximized
+    * minor fix for swipes from empty workspaces
+    * minor fix to silent ws rules
+    * minor fixes for xwayland refocus
+    * minor swipe on new fixes
+    * minor workspace rule parsing fixes
+  + Other:
+    * CMakeLists.txt: use sh instead of bash
+    * Improve hyprctl
+    * No xwayland overhaul (#920)
+    * Rework candidate finding on close window
+    * Rework workspace rules
+    * T1C: window dance compat
+    * Transpose matrices on LEGACY_RENDERER
+    * allow cyclenext on null focus
+    * allow nofocus + workspace silent
+    * always report sizes after a window unmap
+    * avoid applying offset twice in onConnect
+    * avoid creating bound WS-es in moveWorkspaceToMonitor
+    * avoid layout changes when unnecessary in applyMonitorRule
+    * bump xdg ver to 5
+    * constrain mouse on focus change
+    * default focus_on_activate to false
+    * disable adaptive sync with no_vfr off
+    * don't set custom mode in change
+    * ensure VRR for current display only in onConnect
+    * handle activate requests
+    * ignore pointer constraints in touch
+    * lower IME errors to WARNs
+    * meson.build,CMakeLists.txt: use sh instead of bash
+    * meson.build: use sh instead of bash
+    * meson: Fallback to 'opengl' when 'GL' is not found.
+    * more safety around shutting down and mouse movements
+    *  more safety for focus requests
+    * properly find the constraint window
+    * properly scan for subsurfaces in fullscreen input refocus
+    * remove redundant check
+    * render layer snapshot without blur
+    * respect nofocus in candidate searching
+    * respect wsbind in workspace silent rules
+    * revert output smart layout reporting
+    * set lastmonitor in onDisconnect
+    * unify LS unmap focus
+    * unrestrict hyprctl message size
+
+-------------------------------------------------------------------
+Mon Oct 17 21:02:05 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.16.0beta:
+  + Thanks Brodie Robertson for the coverage!
+  + New features:
+    * Add additionnal matrices and rename config var
+    * Add debug coredump instructions (#812)
+    * Add input:touchdevice:td_rotation config
+    * Add input:touchdevice:transform config
+    * Add support for rgba() and rgb() colors in the config
+    * a bit more default config nice addons
+    * add PKGBUILD to ignored files
+    * add loose focus behavior
+    * add maxsize window rule
+    * add touch binding to output
+    * added bringactivetotop dispatcher
+    * fix invalid json output by adding a missing comma
+  + Fixes:
+    * Nix modules: fix environment variables
+    * fix crash in renderWorkspaceWithFullscreenWindow
+    * fix invalid json output by adding a missing comma
+    * fix windowsOut disabled with fadeOut enabled
+    * simplify shouldRenderWindow and fix one cond
+  + Other:
+    * check for same workspace in workspace rule
+    * default & example config overhaul
+    * don't recalc offset on monitor reload offset auto
+    * ignore OR windows' size hints
+    * remove old log
+    * rename transform in DC to touch_transform
+    * rework focus system to be more safe and faster
+    * set XCURSOR_SIZE if not set in init
+    * set workspace name in previous
+    * unsetenv on no XWayland
+    * use size hints when available in xwayland default geom
+    * use static for transformation matrices
+
+-------------------------------------------------------------------
+Tue Oct 11 10:20:17 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.15.3beta:
+  + Very small update to fix black screens on some hardware.
+  + Other:
+    * Change matrixProjection function stop use matrixFlip180
+      everywhere.
+    * Let openGL transpose the matrixes for us.
+    * Replace $(nproc) with $(shell nproc).
+    * Simplify matrix calculations
+    * Update wlroots
+
+-------------------------------------------------------------------
+Sun Oct  9 22:32:20 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.15.2beta:
+  + Rather minor update, some bugfixes and minor features.
+  + New features:
+    * Added clipping support, clip windows on slide anim
+    * add open/close layer events
+  + Fixes:
+    * fix a VRAM leak in destroyMonitorResources
+    * Transform the box data send to texture shaders.
+  + Other:
+    * Check earlier if pixman regions are empty.
+    * Check earlier if pixman_region is empty in some places.
+    * better subsurface handling on unmaps
+    * ensure texture safety in clearWithTex()
+    * inverse_transform the box in renderRectWithDamage.
+    * make swipe respect slidevert
+    * offset floating windows out of bounds on ws anims
+    * release all fbs in destroyMonitorResources
+    * swallow improvements
+
+-------------------------------------------------------------------
+Thu Oct  6 23:06:29 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.15.1beta:
+  + Critical update: 0.15.0beta has a defect due to an issue with
+    wlroots making the GPU suffer a lot!
+  + New features:
+    * Add accel profile and scroll method
+    * Add input:touchpad:scroll_factor
+    * Add switch device handling and binds
+    * add desc: to monitor rules
+    * add dpms per output
+    * add dpms status info in hyprctl
+    * add left_handed config for input
+    * add minsize rule
+    * added a noanim rule
+    * additional logic for identical pid swallowing
+  + Fixes:
+    * Fix compiler warnig comparing signed and unsigned integers.
+    * Fix compiler warnings.
+    * Fix getDeviceInt string arg "input:left_handed"
+    * Merge branch 'fix_rounding_in_size_changing_windows' into
+      rework_rounding_shader
+    * Merge branch 'main' into fix_rounding_in_size_changing_windows
+    * Merge branch 'make_TTY_unsigned' into fix_left_handed
+    * fix naming when workspace back and forth
+    * fix string corruption in hyprctl monitors -j
+    * fix tty switch freeze
+    * fix workspace previous with multi-mon ws moves
+    * fixes to window swallowing with same pid
+    * fixing your shit.
+    * revert wlroots ver to fix critical gpu issue
+  + Other:
+    * Avoid 38 files to compile every time a shader is modified.
+    * Compare PLASTWINDOW & PWINDOWTOCHANGETO m_iMonitorID's instead
+      of PWINDOWTOCHANGETO->m_iMonitorID &
+      g_pCompositor->m_pLastMonitor->ID
+    * Cut the number of pixels that call length() in half.
+    * Don't pass bottomRight to textureShaders compute it within.
+    * Even less branching (taken more or less from the border
+      shader).
+    * Make the rounding texture shaders smaller and more efficient.
+    * Merge branch 'main' into rework_rounding_shader
+    * Remove texcoord from QUADFRAGSRC.
+    * Remove unused ignoreCorners variable from texture shaders.
+    * Rework rounding shader
+    * Send absolute screen coordinates to texture shaders.
+    * focusedmon event check change
+    * ignore VT switches to current vt
+    * log GPU info for debugging
+    * map touch to the correct output
+    * monitor desc improvements
+    * more checks in pid gathering
+    * more monitor checks for shutdown:
+    * reset sigmask on fork
+    * return true on vt switch keysyms to avoid printing stuff
+    * texcoord is unused in the rounding part of the textureshaders.
+    * update wlroots dep
+    * use goalv in clientsRequest
+    * use vectorToWindowIdeal in mouse binds
+
+-------------------------------------------------------------------
+Tue Oct  4 08:28:42 UTC 2022 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.15.0beta:
+  + Enjoy your CPU usage when idle going down by as much as 95% in
+    some cases and much more!
+  + New features:
+    * Add "highest" mode to Monitor for autoconfiguration.
+    * Added window swallowing
+    * add case for empty strings in isNumber
+    * add fullscreen info to clients request
+    * add refreshrate or resolution preference
+    * added high to monitor resolution
+  + Fixes:
+    * Fix #711
+    * It wasn't a problem with the bug i tried to fix.
+    * Merge branch 'main' into fix_bordersize_again
+    * Splash position fix
+    * fix Hz Log
+    * fix commas in free binds
+    * fix crash
+    * fix crash on dwindle splitratio alter on single group
+    * fix custom rules on null modelist
+    * fix ipc event missing on silent movetoworkspace
+    * fix oopsies in rule code
+    * fix silly mistakes
+    * minor OR XWayland fixes
+  + Other:
+    * Change scaledBorderSize to int.
+    * Replace clamp with max if there is no upper bound.
+    * Scale border size in calculations of windows
+    * Scale border size in window size pos calculation
+    * Scale the border size, revert the window scaling according to
+      border
+    * Scale the cairo matrix to fit the monitor dimensions.
+    * Shift splash up if monitor has wider ratio than bgTexture.
+    * Unify arg lists, allow for trailing spaces in args
+    * Use double literals, don't cast a integer literal to double.
+    * Use double literals, don't cast integer or float literals to
+      double.
+    * allow for pure workspace names in dispatchers
+    * allow one less arg in bind
+    * anchor to proper quad in floating resize
+    * apply new node data to all group windows on close
+    * change Preferred mode to use highest refreshrate
+    * default pass_mouse_when_bound to 0
+    * disallow pinning fullscreen
+    * don't decorate on only no gaps
+    * don't recalc pseudo on fullscreen
+    * enter outputs for non-interactive ls-es too
+    * focusable checks in nextWindow calls
+    * guard event in maximize request
+    * guard kb settings in xkb translation state
+    * handle maximize toplevel request
+    * include shaders only in opengl.cpp
+    * optimize removing trailing spaces
+    * optimize vector config value setting
+    * overwrite wsbind rules on existing
+    * remove empty line
+    * remove more silly mistakes
+    * remove polling from socket2, fully event based
+    * remove redundant attrib setting
+    * rewrite isNumber
+    * scale border size in dwindle layout window sizes.
+    * send a focusedmon event on focus change mon
+    * support max in size rules
+    * support more wlr_cursor events
+    * update wlroots dep
+    * use goalv in movetoworkspace
+    * use the event data for determining maximize status in requests
+
+-------------------------------------------------------------------
+Wed Sep 21 17:38:03 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.14.0beta:
+  + Breaking changes
+    * main_mod has been deprecated.
+      new syntax for mouse binds: (example)
+        bindm=SUPER,mouse:272,movewindow
+        bindm=SUPER,mouse:273,resizewindow
+  + New features:
+    * Added monitor mirroring
+    * add default speed to hyprctl devices mice
+    * added misc:disable_autoreload
+    * added window pinning
+    * added wsbind
+  + Fixes:
+    * Various subsurface handling fixes
+    * fix LS fading out on ws change
+    * fix an unholy memory safety issue
+    * fix animation issues with workspace silent
+    * fix decos on pinned
+    * fix fadeout on unmap fullscreen
+    * fix focus follows mouse 0 event sending on wrong window
+    * fix groupbar being wonk on scaled
+    * fix groups with fullscreen
+    * fix hyprland freeze when undocking from docking station
+    * fix misc fullscreen issues
+    * fix mouse binds being stuck
+    * fix moving between fullscreen workspaces
+    * fix pinned fade on fs
+    * fix refocus on same workspace
+    * fix special fullscreen
+    * fix special workspace dispatcher logic
+    * fix wonky focus on movetoworkspace
+    * fix ws switching with LS opacity
+    * minor code styling fixes
+    * minor mouse bind handling fixes
+    * minor swipe fixes
+  + Other:
+    * accept any case in binds
+    * allow current in monitorfromstring
+    * better cycling in fullscreen with pinned
+    * better dwindle swapping with groups
+    * disable enabling groups on fullscreen windows
+    * disallow fullscreen pinned
+    * disallow move/resize dispatchers on fullscreen windows
+    * don't apply alpha to fadingOut on setWindowFullscreen
+    * don't iterate over subsurfaces in unmap
+    * export HYPRLAND_CMD for scripts
+    * fade control for fullscreen action on windows
+    * fullscreen animation en-nice-ment
+    * guard invalid FB allocs
+    * handle multi-ws swaps in layouts
+    * handle touch devices internally as objects
+    * hyprctl-nopoll
+    * introduce new mouse binds in default and example cfgs
+    * more forceRendering checks in shouldRenderWindow
+    * mouse binds overhaul
+    * only check for visible on xdg
+    * prevent assert killing Hyprland after reenabling monitor
+    * tick config after reload request
+    * verify visibility of new geom in floating creation
+
+-------------------------------------------------------------------
+Fri Sep  9 13:51:45 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.13.1beta:
+  + New features:
+    * consistent output of window addresses
+    * fix group decos on added windows
+  + Fixes:
+    * fix addreserved lag
+    * fix group decos on added windows
+    * guard drag in destroyDrag to fix a crash
+  + Other:
+    * more guarding in cleanup pid gathering
+    * prevent missed surface size updates on fullscreen window close
+
+-------------------------------------------------------------------
+Wed Sep  7 18:39:03 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.13.0beta:
+  + New features:
+    * Added Xwayland and floating props to windowrulev2
+    * Added windowrulev2
+    * add lastwindow info to hyprctl workspaces
+    * added a submap IPC event
+    * added closewindow dispatcher
+  + Fixes:
+    * Fix some more crimes against humanity
+    * fix a damage issue with transformed blur
+    * fix a minor bug with no gaps when only and groups
+    * fix blur on transformed displays
+    * fix dwindle no gaps when only when dissolving a group
+    * fix mouse focus not returning from a LS on follow mouse 0
+    * fix no_gaps_when_only with a group
+    * fix some minor crimes against humanity
+    * fix splash positioning
+    * fix transformed blur on new optimizations
+    * fix up styling
+    * fix wonky behavior with silent workspace rule
+  + Other:
+    * Update wlroots dep
+    * damage drag on destroy
+    * default rounding to 0
+    * don't accumulate from virtual
+    * escape json strings in workspaces lastwindow title
+    * guard pFoundWindow in CInputManager under fullscreen
+    * guard parent in X11TransientFor
+    * guard psurface in activateSurface
+    * guard unsafe state in unmap ls
+    * optimize calls in toggleSpecialWorkspace
+    * refocus on reserved area
+    * remember last window on workspace
+    * remove tiling node when invalid
+    * sanity check on last window
+    * send accumulated modifiers to surfaces
+    * set last monitor and dont refocus in some cases
+      (changeworkspace)
+    * simplify code and update monitor on warp
+    * simplify config monitor reloads and rearrange layers
+    * unify monitor args
+    * use activateSurface in unconstrainMouse
+    * use lastMonitor in mapWindow
+    * warp only on another monitor in changeworkspace
+    * wrap lastwindow in quotes in hyprctl json
+
+-------------------------------------------------------------------
+Tue Aug 30 19:23:22 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.12.1beta:
+  + New features:
+    * Add HiDPI xwayland + wlroots patches (#591)
+    * Added window dimming
+  + Fixes:
+    * finally fixed transformed snapshots
+    * fix LS popup damage
+    * fix dwindle groupbars
+  + Other:
+    * disable fullscreen and floating dispatchers on special
+    * set last monitor on move focus dispatcher
+
+-------------------------------------------------------------------
+Mon Aug 29 11:25:37 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.12.0beta:
+  + New features:
+    * Add cleaninstall task
+    * Nix: add nixConfig
+    * add clean install for those who build from source
+    * added a forceinput rule
+    * added a specialWorkspace anim leaf
+    * added a swapactiveworkspaces dispatcher
+    * added an event for moving workspace
+    * added swapnext
+    * added swapnext and swapprev for master
+  + Fixes:
+    * fix device closing
+    * fix fullscreen in moving ws
+    * fix fullscreen on workspace rule silent
+    * fix indents, change crit log to info
+    * fix internal keybinds
+    * fix logic in candidates on unmap
+    * fix more indents, im sorry vaxry
+    * fix parser in nested categories
+    * fix segfault in inactive sessions
+    * fix shadows on silent rule
+    * fix silent workspaces with back and forth
+    * fix styling in const ptrs
+    * fix subsurface UV handling on oversized windows
+    * fix window rules
+    * fix xwayland config option for nix (#587)
+    * fixes to swapnext logic on dwindle
+    * minor damage fixes
+    * minor fixes to the viewporter behavior
+  + Other:
+    * Allow passing the mouse as well in pass
+    * Force wlroots to not send leave events in pass to XWayland
+    * Multiple improvements to the shutdown procedure
+    * Unfocus first on non-internal ws changes
+    * Viewporter implementaion (#585)
+    * allow specifying window for toggle floating
+    * better find device cats
+    * don't find a new candidate to refocus on unfocused unmap
+    * don't focus silent windows
+    * guard nullptr in unmap
+    * ignore oversized popups' dims in global coords
+    * implemented DRM leasing for VR headsets
+    * modify exit behaviour a bit
+    * move X11 transients to top on parent top
+    * optimize options in dwindle
+    * pass press and release events separately
+    * ratelimit setting cursor
+    * remove general:sensitivity from the default config
+    * reset uv on invalid buffer source box
+
+-------------------------------------------------------------------
+Tue Aug 23 21:43:17 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.11.1beta:
+  + New features:
+    * added HYPRLAND_LOG_WLR envvar
+    * added misc:float_switch_override_focus
+  + Fixes:
+    * IME Popup damage fixes
+    * fix IME grab on multiple open native inputs
+    * fix LS snapshot rendering logic
+    * fix logic in fullscreen close candidates
+    * fix minor refocus issue
+    * fix oversized popup misalignment
+    * fix up hyprctl dispatch
+    * fix up keyword to accept spaced args
+    * fix wlr logging
+    * minor fix on unfocus on fullscreen workspace
+    * minor fixes to candidate finding
+  + Other:
+    * always use /usr/share/ for wayland-sessions
+    * clean up temp logic in snapshots
+    * damage on force warp resize
+    * destroy monitor resources on exit
+    * doc: build man pages to repo
+    * doc: install mapages
+    * docs: install manpages with meson
+    * don't refocus if candidate is last window
+    * don't round popups
+    * dropped deprecated gethostbyname check
+    * fullscreen request only when mapped
+    * gha: build man pages
+    * improve compatability with older meson versions
+    * move monitor damage to separate funcs
+    * openSUSE patches
+    * remove unintuitive candidate behavior
+    * report sizes to all windows on fullscreen
+    * use a custom logging func for wlr
+- Dropped gethostbyname.patch, included upstream.
+- Dropped old-meson.patch, included upstream.
+
+-------------------------------------------------------------------
+Mon Aug 22 10:24:52 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.11.0beta:
+  + Breaking changes:
+    * The SHIFT modifying behaviour in the config has been removed
+      example:
+        bind=SHIFT,exclam,movetoworkspace,1 # OLD
+        bind=SHIFT,1,movetoworkspace,1 # NEW
+      As an additional result of the above, for multi-layout users,
+      see
+      https://wiki.hyprland.org/Configuring/Uncommon-tips--tricks/
+  + New features:
+    * Add mapwindow, unmapwindow and movewindow IPC events
+    * Add switching to previous workspace
+    * add general:allow_workspace_cycles option
+    * add general:workspace_back_and_forth option
+    * add switching to previous workspace
+  + Fixes:
+    * fix a minor border issue
+    * fix another edge case for fullscreen default windows
+    * fix bug which allowed a switch to workspace ID -1.
+    * fix crash
+    * fix incorrect popup handling on oversized
+    * fix retrieval of monitor
+    * fix special workspace windows being xray with new optim
+    * fix style conflicts and config + monitor retrieval
+    * fix warn
+    * minor activewindow and focus fixes
+  + Other:
+    * handle fullscreen pre-map
+    * remove unused func
+    * set new optimizations for blur in example configs
+    * use a custom translation state in keybinds
+    * warn about outdated keybind cfg
+
+-------------------------------------------------------------------
+Sat Aug 20 22:27:43 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Initial packaging
