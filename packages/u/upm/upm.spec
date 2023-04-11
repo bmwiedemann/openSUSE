@@ -1,7 +1,7 @@
 #
 # spec file for package upm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Release:        0
 Summary:        High-level repository for sensors that use mraa
 License:        MIT
 Group:          Hardware/Other
-URL:            https://github.com/intel-iot-devkit/UPM
-Source:         https://github.com/intel-iot-devkit/UPM/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/eclipse/upm
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          %{url}/pull/704.patch
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -99,7 +101,7 @@ attached sensors, through calls to MRAA APIs.
 This package contains nodejs bindings for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 # remove CC BY-NC-SA 3.0 licenced images
 rm -rf docs/images
 
@@ -119,8 +121,7 @@ rm -rf docs/images
 sed -i "s|jpeg|libjpeg|g" %{buildroot}%{_libdir}/pkgconfig/upm-vcap.pc
 rm -rf %{buildroot}%{_datadir}/upm
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files -n lib%{name}%{sover}
 %license LICENSE

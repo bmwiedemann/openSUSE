@@ -130,4 +130,12 @@
 - Re-enable LTO</comment>
     <requestid>800236</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>dd7addca87a40857682bd60cde5261f0</srcmd5>
+    <version>2.0.0</version>
+    <time>1681213887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078369</requestid>
+  </revision>
 </revisionlist>
