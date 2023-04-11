@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 11 08:19:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.1:
+  * Fix some typos #110
+  * Add clap requires to flags that depent on --report #111
+  * Refactor tests: move --no-config to mod::run_cmd #112
+  * Prevent panic when --prune is used with --glob which results
+    in empty match set #116
+  * Add ability to take glob patterns from stdin #114
+  * Refactor/node and support hard link detection on Windows #118
+  * Support colorless output when redirecting/piping stdout;
+    also provide --no-color option #120
+  * Remove ansi escapes for default icon #122
+
+-------------------------------------------------------------------
 Fri Mar 31 06:26:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:

@@ -51,4 +51,22 @@
     infinite loop #107</comment>
     <requestid>1075745</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8129c3aa3587e30b68a63d030d153a53</srcmd5>
+    <version>1.8.1~0</version>
+    <time>1681213913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * Fix some typos #110
+  * Add clap requires to flags that depent on --report #111
+  * Refactor tests: move --no-config to mod::run_cmd #112
+  * Prevent panic when --prune is used with --glob which results
+    in empty match set #116
+  * Add ability to take glob patterns from stdin #114
+  * Refactor/node and support hard link detection on Windows #118
+  * Support colorless output when redirecting/piping stdout;
+    also provide --no-color option #120
+  * Remove ansi escapes for default icon #122</comment>
+    <requestid>1078371</requestid>
+  </revision>
 </revisionlist>
