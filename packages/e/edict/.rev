@@ -111,4 +111,12 @@
     <comment>- Update to snapshot 20220402</comment>
     <requestid>966550</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7408c9409a71e02b7de8952e382efed5</srcmd5>
+    <version>20230411</version>
+    <time>1681213873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 20230411</comment>
+    <requestid>1078349</requestid>
+  </revision>
 </revisionlist>
