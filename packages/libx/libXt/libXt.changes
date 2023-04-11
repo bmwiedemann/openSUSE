@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 10 08:46:46 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.3.0
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Use memcpy() instead of memmove() when buffers are known not to overlap
+  * Use memcpy() instead of XtMemmove() when buffers are known to differ
+  * tests: update g_test_bug_base url from bugzilla to gitlab
+  * tests: Use XORG_MEMORY_CHECK_FLAGS from xorg-macros 1.16
+  * tests: Replace g_assert() calls with g_assert_*() calls
+  * configure.ac: Replace HAVE_LIBRARY with AC_CHECK_LIB
+  * Add xfilesearchpath to xt.pc
+  * TMstate.c: Handle -Wduplicated-branches warnings
+  * Remove "All rights reserved" from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * test: Add unit tests for XtMalloc, XtCalloc, & XtRealloc
+  * Add XtReallocArray() for overflow checking of multiplied args
+  * Replace XtRealloc() calls with XtReallocArray()
+  * Replace XtMalloc() calls with XtMallocArray()
+  * Define LONG64 if __SIZEOF_LONG__ indicates 64-bit long
+  * XtArgVal: Support architectures where pointers are bigger than long
+  * Use XtUIntPtr for integer types that can hold pointers
+  * Cast via intptr_t when converting integers to pointers
+  * Fix XrmResource layout if pointers are bigger than long
+  * Fix InternalCallbackRec layout if pointers are bigger than 64 bits
+  * Support buttons > 5 in translation tables [v2]
+  * add _X_NORETURN to agree with header-file
+  * codespell-fixes
+  * cppcheck and clang --analyze fixes
+  * fixes for gcc13 warnings
+  * cppcheck fixes (const, null dereferencing, uninitialized, scope)
+  * cppcheck (revise IsDescendant() to fix possible null-dereference)
+  * update copyright-date
+
+-------------------------------------------------------------------
 Sun Jan 24 20:26:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
