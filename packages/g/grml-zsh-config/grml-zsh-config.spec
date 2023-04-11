@@ -23,7 +23,7 @@ Summary:        Zsh config used by grml
 License:        GPL-2.0-only
 URL:            https://grml.org/zsh/
 Source:         https://deb.grml.org/pool/main/g/grml-etc-core/grml-etc-core_%{version}.tar.gz
-BuildRequires:  python38-txt2tags
+BuildRequires:  python3-txt2tags
 Requires:       grep
 Requires:       procps
 Requires:       sed
