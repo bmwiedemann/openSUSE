@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 05:43:20 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.2:
+  * Bugfix for python_requires in setup.py. 
+
+-------------------------------------------------------------------
 Fri Oct 28 20:11:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 4.2.1 

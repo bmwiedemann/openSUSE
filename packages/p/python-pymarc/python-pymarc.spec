@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymarc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pymarc
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/edsu/pymarc
 Source:         https://files.pythonhosted.org/packages/source/p/pymarc/pymarc-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/edsu/pymarc/master/LICENSE
