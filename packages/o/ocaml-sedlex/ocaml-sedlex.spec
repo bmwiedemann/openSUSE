@@ -16,21 +16,37 @@
 #
 
 
-Name:           ocaml-sedlex
-Version:        3.0
+%bcond_with ocaml_sedlex_testsuite
+%define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == "testsuite"
+%if %{without ocaml_sedlex_testsuite}
+ExclusiveArch:  do-not-build
+%endif
+%define nsuffix -testsuite
+%else
+%define nsuffix %nil
+%endif
+
+%define     pkg ocaml-sedlex
+Name:           %pkg%nsuffix
+Version:        3.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
 License:        MIT
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/sedlex
-Source0:        %name-%version.tar.xz
-BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+Source0:        %pkg-%version.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 4.14
 BuildRequires:  ocaml-dune >= 3.0
 BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(gen)
 BuildRequires:  ocamlfind(ppxlib)
-BuildRequires:  ocamlfind(uchar)
+
+%if "%build_flavor" == "testsuite"
+BuildRequires:  ocamlfind(ppx_expect)
+BuildRequires:  ocamlfind(sedlex)
+%endif
 
 %description
 A lexer generator for OCaml, similar to ocamllex, but supporting Unicode.
@@ -48,23 +64,32 @@ The %name-devel package contains libraries and signature files for
 developing applications that use %name.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %pkg-%version
 
 %build
 dune_release_pkgs='sedlex'
 %ocaml_dune_setup
+%if "%build_flavor" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%build_flavor" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
+%endif
 
+%if "%build_flavor" == "testsuite"
 %check
 %ocaml_dune_test
+%endif
 
+%if "%build_flavor" == ""
 %files -f %name.files
 %doc README.md
 
 %files devel -f %name.files.devel
+
+%endif
 
 %changelog
