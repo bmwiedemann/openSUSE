@@ -1,7 +1,7 @@
 #
 # spec file for package mtr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,12 @@ Source:         https://github.com/traviscross/mtr/archive/refs/tags/v%{version}
 Source1:        xmtr.desktop
 Patch1:         mtr-0.75-manmtr.patch
 Patch2:         mtr-0.87-manxmtr.patch
+Patch3:         mtr-fixoverflow.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gtk3-devel
 BuildRequires:  libcap-devel
+BuildRequires:  libjansson-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
@@ -69,6 +71,7 @@ autoreconf -fvi
 %configure \
 	--disable-silent-rules \
 	--enable-ipv6 \
+	--with-json \
 	--with-gtk \
 	--disable-gtktest
 %make_build
@@ -78,6 +81,7 @@ mv mtr xmtr
 %configure \
 	--disable-silent-rules \
 	--enable-ipv6 \
+	--with-json \
 	--without-gtk
 %make_build
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 09:52:15 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- mtr-fixoverflow.patch: specify correct sizes to snprintf (bsc#1208937)
+- enable json support
+
+-------------------------------------------------------------------
 Tue Jan 11 18:21:16 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - update to 0.95:
