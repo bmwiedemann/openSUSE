@@ -140,4 +140,12 @@ https://www.knot-dns.cz/</comment>
   https://www.knot-dns.cz/2022-12-12-version-324.html</comment>
     <requestid>1062643</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9957af653d3afbd6bb4ccac7ac1caada</srcmd5>
+    <version>3.2.6</version>
+    <time>1681227489</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078475</requestid>
+  </revision>
 </revisionlist>
