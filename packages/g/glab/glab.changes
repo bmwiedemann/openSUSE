@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr 06 03:28:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.27.1:
+  * chore: upgrade go-gitlab to 0.81.0
+  * chore: fix testing repo to a local GitLab one
+  * feat(docs): Add aliases to gen-docs
+
+-------------------------------------------------------------------
+Mon Apr 03 12:48:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.27.0:
+  * chore: security release merge
+  * fix: markdown fence shell script needs to be "shell"
+  * feat(pagination): add pagination to user events
+  * chore: update golang/x/net package
+  * fix(variable set): scope for group variables
+  * refactor(test): replace os.Setenv with t.Setenv in tests
+  * docs: configuration for self-signed certs
+  * fix(test): use gray256 color in tests when enabled
+  * fix(color): fix gray color for 256 color terminal
+  * test(glab auth login): use temp config for test
+  * docs: fix link to issue command in index
+  * fix(issue): display list of comments in raw format
+  * docs(config): clarify config help
+  * docs(readme): clarify config file location and environment
+    variables
+  * feat(label): display label colors in the list
+  * security: Remove configuration import for old locations
+
+-------------------------------------------------------------------
 Wed Mar 15 08:08:40 UTC 2023 - kastl@b1-systems.de
 
 - set tar and recompress services to "buildtime"
