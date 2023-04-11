@@ -32,6 +32,7 @@ Patch10:        10_fix_private_libs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  gettext >= 0.21.0
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
