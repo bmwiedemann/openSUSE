@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 11 00:44:55 UTC 2023 - william.brown@suse.com
+
+- bsc#1210027 - apply upstream fix for setuptools
+- Update to version 2.3.2~git53.a01e230:
+  * Issue 5705 - Add config parameter to close client conns on failed bind (#5712)
+  * Issue 4758 - Add tests for WebUI
+  * Issue 5643 - Memory leak in entryrdn during delete (#5717)
+  * Issue 5714 - UI - fix typo, db settings, log settings, and LDAP editor paginations
+  * Issue 5701 - CLI - Fix referral mode setting (#5708)
+  * Bump openssl from 0.10.45 to 0.10.48 in /src (#5709)
+  * Issue 5710 - subtree search statistics for index lookup does not report ancestorid/entryrdn lookups (#5711)
+  * Issue 5697 - Obsolete nsslapd-ldapimaprootdn attribute (#5698)
+  * Issue 1081 - Stop schema replication from overwriting x-origin
+  * Issue 4812 - Listener thread does not scale with a high num of established connections (#5706)
+
+-------------------------------------------------------------------
+Wed Mar 22 06:43:01 UTC 2023 - william.brown@suse.com
+
+- Update to version 2.3.2~git44.5e4551e:
+  * Issue 4812 - Listener thread does not scale with a high num of established connections (#5706)
+  * Issue 4812 - Listener thread does not scale with a high num of established connections (#5681)
+  * Bump webpack from 5.75.0 to 5.76.0 in /src/cockpit/389-console (#5699)
+  * Issue 5598 - (3rd) In 2.x, SRCH throughput drops by 10% because of handling of referral (#5692)
+  * Issue 5598 - (2nd) In 2.x, SRCH throughput drops by 10% because of handling of referral (#5691)
+  * Issue 5687 - UI - sensitive information disclosure
+  * Issue 5661 - LMDB hangs while Rebuilding the replication changelog RUV (#5676)
+  * Issue 5554 - Add more tests to security_basic_test suite
+  * Issue 4583 - Update specfile to skip checks of ASAN builds
+  * Issue 4758 - Add tests for WebUI
+
+-------------------------------------------------------------------
 Fri Oct 21 03:26:08 UTC 2022 - william.brown@suse.com
 
 - Update to version 2.3.0~git22.8fedec0:

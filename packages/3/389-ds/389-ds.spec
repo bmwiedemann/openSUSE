@@ -1,7 +1,7 @@
 #
 # spec file for package 389-ds
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.3.0~git22.8fedec0
+Version:        2.3.2~git53.a01e230
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -78,6 +78,7 @@ BuildRequires:  openssl-devel
 # pam-devel is required by the pam passthru auth plug-in
 BuildRequires:  %use_python-argcomplete
 BuildRequires:  %use_python-argparse-manpage
+BuildRequires:  %use_python-cryptography
 BuildRequires:  %use_python-devel
 BuildRequires:  %use_python-ldap >= 3
 BuildRequires:  %use_python-pyasn1
