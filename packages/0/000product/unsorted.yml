@@ -514,11 +514,15 @@ unsorted:
   - alsa-plugins-aaf 
   - alsa-plugins-arcam-av 
   - alsa-plugins-jack 
+  - alsa-plugins-jack-32bit 
   - alsa-plugins-lavrate 
   - alsa-plugins-maemo 
+  - alsa-plugins-maemo-32bit 
   - alsa-plugins-oss 
   - alsa-plugins-pulse 
+  - alsa-plugins-pulse-32bit 
   - alsa-plugins-samplerate 
+  - alsa-plugins-samplerate-32bit 
   - alsa-plugins-speex 
   - alsa-plugins-usb-stream 
   - alsa-plugins-vdownmix 
@@ -759,6 +763,7 @@ unsorted:
   - apiguardian-javadoc 
   - apitrace 
   - apitrace-wrappers 
+  - apitrace-wrappers-32bit 
   - app-builder 
   - apparmor-rpm-macros 
   - appeditor 
@@ -3241,7 +3246,6 @@ unsorted:
   - dracut-kiwi-oem-dump 
   - dracut-kiwi-oem-repart 
   - dracut-kiwi-overlay 
-  - dracut-mkinitrd-deprecated 
   - dracut-sshd 
   - dracut-tools 
   - dragonbox-devel 
@@ -6804,7 +6808,6 @@ unsorted:
   - gnustep-base 
   - gnustep-base-devel 
   - gnustep-make 
-  - gnutls-guile 
   - go 
   - go-containerregistry 
   - go-doc 
@@ -7421,6 +7424,7 @@ unsorted:
   - guile-devel 
   - guile-gcrypt 
   - guile-git 
+  - guile-gnutls 
   - guile-json 
   - guile-lzlib 
   - guile-newt 
@@ -7794,6 +7798,7 @@ unsorted:
   - hypre_2_20_0-gnu-openmpi2-hpc-devel 
   - hypre_2_20_0-gnu-openmpi3-hpc-devel 
   - hypre_2_20_0-gnu-openmpi4-hpc-devel 
+  - hyprland 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -9931,7 +9936,6 @@ unsorted:
   - libLLVM12 
   - libLLVM13 
   - libLLVM14 
-  - libLLVM14-32bit 
   - libLLVM15 
   - libLLVM15-32bit 
   - libLLVM16-32bit 
@@ -10270,10 +10274,13 @@ unsorted:
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
   - libSDL2_gfx-1_0-0 
+  - libSDL2_gfx-1_0-0-32bit 
   - libSDL2_gfx-devel 
+  - libSDL2_gfx-devel-32bit 
   - libSDL2_image-2_0-0 
   - libSDL2_mixer-2_0-0 
   - libSDL2_net-2_0-0 
+  - libSDL2_net-2_0-0-32bit 
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
   - libSDL_Pango1 
@@ -10283,14 +10290,22 @@ unsorted:
   - libSDL_gfx-devel-32bit 
   - libSDL_gfx15-32bit 
   - libSDL_image-1_2-0 
+  - libSDL_image-1_2-0-32bit 
   - libSDL_image-devel 
+  - libSDL_image-devel-32bit 
   - libSDL_mixer-1_2-0 
+  - libSDL_mixer-1_2-0-32bit 
   - libSDL_mixer-devel 
+  - libSDL_mixer-devel-32bit 
   - libSDL_net-1_2-0 
+  - libSDL_net-1_2-0-32bit 
   - libSDL_net-devel 
+  - libSDL_net-devel-32bit 
   - libSDL_sound-1_0-1 
   - libSDL_ttf-2_0-0 
+  - libSDL_ttf-2_0-0-32bit 
   - libSDL_ttf-devel 
+  - libSDL_ttf-devel-32bit 
   - libSFCGAL1 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
@@ -11176,7 +11191,6 @@ unsorted:
   - libclFFT2 
   - libclang-cpp13 
   - libclang-cpp14 
-  - libclang-cpp14-32bit 
   - libclang-cpp15 
   - libclang-cpp15-32bit 
   - libclang-cpp16 
@@ -11581,7 +11595,7 @@ unsorted:
   - libeditorconfig-devel 
   - libefa1-32bit 
   - libei-devel 
-  - libei-suse3 
+  - libei-suse4 
   - libeiskaltdcpp2_4 
   - libelf-devel 
   - libelf-devel-32bit 
@@ -13152,6 +13166,7 @@ unsorted:
   - libmicrohttpd12 
   - libmikmod-devel 
   - libmikmod3 
+  - libmikmod3-32bit 
   - libmilter-doc 
   - libmimalloc2 
   - libmimetic-devel 
@@ -13196,6 +13211,7 @@ unsorted:
   - libmodi1 
   - libmodplug-devel 
   - libmodplug1 
+  - libmodplug1-32bit 
   - libmodsecurity3 
   - libmodulemd-devel 
   - libmongoose-doc 
@@ -13656,7 +13672,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio9 
   - libopenshot-devel 
-  - libopenshot23 
+  - libopenshot24 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -23075,7 +23091,6 @@ unsorted:
   - python310-acefile 
   - python310-acitoolkit 
   - python310-acme 
-  - python310-acoular 
   - python310-actdiag 
   - python310-adal 
   - python310-adapt-parser 
@@ -24004,7 +24019,6 @@ unsorted:
   - python310-elasticsearch 
   - python310-elasticsearch-dsl 
   - python310-elementpath 
-  - python310-eliot 
   - python310-email-reply-parser 
   - python310-email-validator 
   - python310-emcee 
@@ -24752,7 +24766,6 @@ unsorted:
   - python310-netutils 
   - python310-networkx 
   - python310-nibabel 
-  - python310-nilearn 
   - python310-nine 
   - python310-nlopt 
   - python310-nltk 
@@ -25615,7 +25628,6 @@ unsorted:
   - python310-sentry-sdk 
   - python310-seqdiag 
   - python310-serpent 
-  - python310-serpy 
   - python310-serverfiles 
   - python310-setproctitle 
   - python310-setuptools-declarative-requirements 
@@ -25830,7 +25842,6 @@ unsorted:
   - python310-textwrap3 
   - python310-thLib 
   - python310-thespian 
-  - python310-thewalrus 
   - python310-threadpoolctl 
   - python310-three-merge 
   - python310-threevis 
@@ -29018,7 +29029,6 @@ unsorted:
   - python311-sentry-sdk 
   - python311-seqdiag 
   - python311-serpent 
-  - python311-serpy 
   - python311-serverfiles 
   - python311-service_identity 
   - python311-setproctitle 
@@ -29538,11 +29548,8 @@ unsorted:
   - python311-zypp-plugin 
   - python38 
   - python38-32bit 
-  - python38-Flask-Security-Too 
   - python38-QR-Code-generator 
-  - python38-acoular 
   - python38-aeidon 
-  - python38-annoy 
   - python38-archmage 
   - python38-awscrt 
   - python38-base 
@@ -29556,7 +29563,6 @@ unsorted:
   - python38-doc-devhelp 
   - python38-dqsegdb2 
   - python38-efl 
-  - python38-eliot 
   - python38-gwdatafind 
   - python38-gwpy 
   - python38-idle 
@@ -29568,24 +29574,18 @@ unsorted:
   - python38-lalpulsar 
   - python38-lalsimulation 
   - python38-ldas-tools-al-swig 
-  - python38-librosa 
   - python38-limnoria 
-  - python38-logutils 
-  - python38-mypy 
   - python38-net-snmp 
-  - python38-nilearn 
   - python38-oct2py 
   - python38-pip-licenses 
   - python38-pybugz 
   - python38-pyheif 
-  - python38-pymarc 
   - python38-pymediainfo 
   - python38-python-datamatrix 
   - python38-python-jenkins 
   - python38-python-qpid-proton 
   - python38-sanlock 
   - python38-testsuite 
-  - python38-thewalrus 
   - python38-threevis 
   - python38-time-machine 
   - python38-tk 
@@ -29850,7 +29850,6 @@ unsorted:
   - python39-acefile 
   - python39-acitoolkit 
   - python39-acme 
-  - python39-acoular 
   - python39-actdiag 
   - python39-adal 
   - python39-adapt-parser 
@@ -30810,7 +30809,6 @@ unsorted:
   - python39-elasticsearch 
   - python39-elasticsearch-dsl 
   - python39-elementpath 
-  - python39-eliot 
   - python39-email-reply-parser 
   - python39-email-validator 
   - python39-emcee 
@@ -31596,7 +31594,6 @@ unsorted:
   - python39-netutils 
   - python39-networkx 
   - python39-nibabel 
-  - python39-nilearn 
   - python39-nine 
   - python39-nlopt 
   - python39-nltk 
@@ -32509,7 +32506,6 @@ unsorted:
   - python39-sentry-sdk 
   - python39-seqdiag 
   - python39-serpent 
-  - python39-serpy 
   - python39-serverfiles 
   - python39-service_identity 
   - python39-setproctitle 
@@ -32732,7 +32728,6 @@ unsorted:
   - python39-textwrap3 
   - python39-thLib 
   - python39-thespian 
-  - python39-thewalrus 
   - python39-threadpoolctl 
   - python39-three-merge 
   - python39-threevis 
