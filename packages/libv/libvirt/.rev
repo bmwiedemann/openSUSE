@@ -4308,4 +4308,12 @@ StandardGroups in rpmlint package.
     libvirtd-relocation-server.fw</comment>
     <requestid>1077101</requestid>
   </revision>
+  <revision rev="372" vrev="2">
+    <srcmd5>788e068333efe84ea9b79e57eb7d7a86</srcmd5>
+    <version>9.2.0</version>
+    <time>1681213848</time>
+    <user>dimstar_suse</user>
+    <comment>- service: Remove unnecessary auth token from github URL</comment>
+    <requestid>1078267</requestid>
+  </revision>
 </revisionlist>
