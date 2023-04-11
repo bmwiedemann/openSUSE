@@ -25,6 +25,11 @@
 %else
 %bcond_with dane
 %endif
+%if 0%{?suse_version} >= 1550
+%bcond_without srp
+%else
+%bcond_with srp
+%endif
 # Enable Linux kernel AF_ALG based acceleration
 %if 0%{?suse_version} >= 1550
 # disable for now, as our OBS builds do not work with it. Marcus 20220511
@@ -34,50 +39,37 @@
 %bcond_with kcapi
 %endif
 %bcond_with tpm
-%bcond_without guile
 Name:           gnutls
-Version:        3.7.9
+Version:        3.8.0
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.gnutls.org/
-Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz
-Source1:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz.sig
+Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/%{name}-%{version}.tar.xz
+Source1:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/%{name}-%{version}.tar.xz.sig
 # https://gnutls.org/gnutls-release-keyring.gpg
-Source2:        gnutls.keyring
+Source2:        https://gnutls.org/gnutls-release-keyring.gpg#/gnutls.keyring
 Source3:        baselibs.conf
 # Suppress a false positive on the .hmac file
 Source4:        gnutls.rpmlintrc
 Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-FIPS-TLS_KDF_selftest.patch
-Patch2:         gnutls-FIPS-disable-failing-tests.patch
-Patch3:         gnutls_ECDSA_signing.patch
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%ifnarch s390 s390x
-#PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
-Patch4:         gnutls-FIPS-jitterentropy.patch
-#PATCH-FIX-SUSE bsc#1202146 FIPS: Set error state when jent init failed in FIPS mode
-Patch5:         gnutls-FIPS-Set-error-state-when-jent-init-failed.patch
-%endif
-%endif
-#PATCH-FIX-SUSE bsc#1190698 FIPS: SLI gnutls_pbkdf2: verify keylengths and allow SHA only
-Patch6:         gnutls-FIPS-SLI-pbkdf2-verify-keylengths-only-SHA.patch
-#PATCH-FIX-UPSTREAM bsc#1203779 Make XTS key check failure not fatal
-Patch7:         gnutls-Make-XTS-key-check-failure-not-fatal.patch
-Patch8:         gnutls-disable-flaky-test-dtls-resume.patch
-#PATCH-FIX-OPENSUSE bsc#1199881 Verify only the libgnutls library HMAC
-Patch9:         gnutls-verify-library-HMAC.patch
+Patch2:         gnutls-disable-flaky-test-dtls-resume.patch
+# FIPS 140-3 patches:
 #PATCH-FIX-SUSE bsc#1207183 FIPS: DH/ECDH PCT public key regeneration
-Patch10:        gnutls-FIPS-PCT-DH.patch
-Patch11:        gnutls-FIPS-PCT-ECDH.patch
+Patch100:       gnutls-FIPS-PCT-DH.patch
+Patch101:       gnutls-FIPS-PCT-ECDH.patch
 #PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
-Patch12:        gnutls-FIPS-140-3-references.patch
+Patch102:       gnutls-FIPS-140-3-references.patch
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+#PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
+Patch103:       gnutls-FIPS-jitterentropy.patch
+%endif
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
 BuildRequires:  fdupes
-BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 # The test suite calls /usr/bin/ss from iproute2. It's our own duty to ensure we have it present
@@ -111,9 +103,6 @@ BuildRequires:  unbound-devel
 %else
 BuildRequires:  libunbound-devel
 %endif
-%endif
-%if %{with guile}
-BuildRequires:  guile-devel > 1.8
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  crypto-policies
@@ -213,17 +202,6 @@ Requires:       libstdc++-devel
 %description -n libgnutlsxx-devel
 Files needed for software development using gnutls.
 
-%if %{with guile}
-%package guile
-Summary:        Guile wrappers for gnutls
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Other
-Requires:       guile > 1.8
-
-%description guile
-GnuTLS Wrappers for GNU Guile, a dialect of Scheme.
-%endif
-
 %prep
 %autosetup -p1
 
@@ -233,10 +211,8 @@ echo "SYSTEM=NORMAL" >> tests/system.prio
 export LDFLAGS="-pie -Wl,-z,now -Wl,-z,relro"
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
-autoreconf -fiv
 
-# Rename the internal .hmac file to include the so library version
-sed -i "s/\.gnutls\.hmac/\.libgnutls\.so\.%{gnutls_sover}\.hmac/g" lib/Makefile.am lib/Makefile.in lib/fips.c
+autoreconf -fiv
 
 %configure \
         gl_cv_func_printf_directive_n=yes \
@@ -258,16 +234,18 @@ sed -i "s/\.gnutls\.hmac/\.libgnutls\.so\.%{gnutls_sover}\.hmac/g" lib/Makefile.
 %else
         --disable-libdane \
 %endif
-%if %{with guile}
-        --enable-guile \
-        --with-guile-extension-dir=%{_libdir}/guile/3.0 \
-%else
-        --disable-guile \
+%if %{with srp}
+        --enable-srp-authentication \
 %endif
+%ifarch %{ix86}
+        --disable-year2038 \
+%endif
+        --enable-shared \
         --enable-fips140-mode \
         --with-fips140-module-name="GnuTLS version" \
         --with-fips140-module-version="%{version}-%{release}" \
         %{nil}
+
 %make_build
 
 %install
@@ -287,11 +265,11 @@ sed -i "s/\.gnutls\.hmac/\.libgnutls\.so\.%{gnutls_sover}\.hmac/g" lib/Makefile.
 # the macro is too late.
 # remark: This is the same as running
 #   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
-# note: The FIPS hmac is now calculated with an internal tool since
+# Note: The FIPS hmac is now calculated with an internal tool since
 #   commit a86c8e87189e23920ae622da5e572cb4e1a6e0ed
 %{expand:%%global __os_install_post {%__os_install_post
-./lib/fipshmac "%{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}" > %{buildroot}%{_libdir}/.libgnutls.so.%{gnutls_sover}.hmac
-sed -i "s^%{buildroot}/usr^^" %{buildroot}%{_libdir}/.libgnutls.so.%{gnutls_sover}.hmac
+ ./lib/fipshmac "%{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}" > "%{buildroot}%{_libdir}/.libgnutls.so.%{gnutls_sover}.hmac"
+ sed -i "s^%{buildroot}/usr^^" "%{buildroot}%{_libdir}/.libgnutls.so.%{gnutls_sover}.hmac"
 }}
 
 rm -rf %{buildroot}%{_datadir}/locale/en@{,bold}quot
@@ -318,7 +296,8 @@ rm -rf %{buildroot}%{_datadir}/doc/gnutls
     find -name test-suite.log -print -exec cat {} +
     exit 1
 }
-#Run the regression tests also in FIPS mode
+
+# Run the regression tests also in forced FIPS mode
 GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
     find -name test-suite.log -print -exec cat {} +
     exit 1
@@ -346,7 +325,9 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_bindir}/ocsptool
 %{_bindir}/psktool
 %{_bindir}/p11tool
+%if %{with srp}
 %{_bindir}/srptool
+%endif
 %if %{with dane}
 %{_bindir}/danetool
 %endif
@@ -413,12 +394,5 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %{_libdir}/libgnutlsxx.so
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/gnutlsxx.h
-
-%if %{with guile}
-%files guile
-%license LICENSE
-%{_libdir}/guile/*
-%{_datadir}/guile/site/*
-%endif
 
 %changelog

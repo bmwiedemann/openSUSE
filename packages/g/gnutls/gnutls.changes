@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Apr 10 14:48:41 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Temporarily disable GNULIB's year2038 support for 64bit time_t
+  by using the --disable-year2038 flag. This omits support for
+  timestamps past the year 2038:
+  * Fixes the public API on 32-bit architectures avoiding to
+    change the size of time_t as it cannot be changed without
+    breaking the ABI compatibility.
+  * Upstream issue: https://gitlab.com/gnutls/gnutls/-/issues/1466
+
+-------------------------------------------------------------------
+Tue Feb 21 10:17:00 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.8.0: [bsc#1205763, bsc#1209627]
+  * libgnutls: Fix a Bleichenbacher oracle in the TLS RSA key
+    exchange. Reported by Hubert Kario (#1050). Fix developed by
+    Alexander Sosedkin. [GNUTLS-SA-2020-07-14, CVSS: medium]
+    [CVE-2023-0361]
+  * libgnutls: C++ library is now header only. All definitions
+    from gnutlsxx.c have been moved into gnutlsxx.h. Users of the
+    C++ interface have two options:
+    1. include gnutlsxx.h in their application and link against
+       the C library. (default)
+    2. include gnutlsxx.h in their application, compile with
+       GNUTLS_GNUTLSXX_NO_HEADERONLY macro defined and link
+       against the C++ library.
+  * libgnutls: GNUTLS_NO_STATUS_REQUEST flag and %NO_STATUS_REQUEST
+    priority modifier have been added to allow disabling of the
+    status_request TLS extension in the client side.
+  * libgnutls: TLS heartbeat is disabled by default.
+    The heartbeat extension in TLS (RFC 6520) is not widely used
+    given other implementations dropped support for it. To enable
+    back support for it, supply --enable-heartbeat-support to
+    configure script.
+  * libgnutls: SRP authentication is now disabled by default.
+    It is disabled because the SRP authentication in TLS is not
+    up to date with the latest TLS standards and its ciphersuites
+    are based on the CBC mode and SHA-1. To enable it back, supply
+    --enable-srp-authentication option to configure script.
+  * libgnutls: All code has been indented using "indent -ppi1 -linux".
+    CI/CD has been adjusted to catch regressions. This is implemented
+    through devel/indent-gnutls, devel/indent-maybe and .gitlab-ci.yml’s
+    commit-check. You may run devel/indent-gnutls to fix any
+    indentation issues if you make code modifications.
+  * guile: Guile-bindings removed. They have been extracted into a
+    separate project to reduce complexity and to simplify maintenance,
+    see <https://gitlab.com/gnutls/guile/>.
+  * minitasn1: Upgraded to libtasn1 version 4.19.
+  * API and ABI modifications:
+    GNUTLS_NO_STATUS_REQUEST: New flag
+    GNUTLS_SRTP_AEAD_AES_128_GCM: New gnutls_srtp_profile_t enum member
+    GNUTLS_SRTP_AEAD_AES_256_GCM: New gnutls_srtp_profile_t enum member
+  * Merge gnutls-FIPS-Set-error-state-when-jent-init-failed.patch
+    and gnutls-FIPS-jitterentropy-threadsafe.patch into the main
+    patch gnutls-FIPS-jitterentropy.patch
+  * Rebase gnutls-FIPS-140-3-references.patch
+  * Rebase patches with upstream version:
+    - gnutls-FIPS-PCT-DH.patch gnutls-FIPS-PCT-ECDH.patch
+  * Remove patches merged/fixed upstream:
+    - gnutls-FIPS-disable-failing-tests.patch
+    - gnutls-verify-library-HMAC.patch
+    - gnutls_ECDSA_signing.patch
+    - gnutls-Make-XTS-key-check-failure-not-fatal.patch
+    - gnutls-FIPS-SLI-pbkdf2-verify-keylengths-only-SHA.patch
+  * Update keyring with https://gnutls.org/gnutls-release-keyring.gpg
+
+-------------------------------------------------------------------
+Thu Feb 16 19:43:04 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Make the jitterentropy calls thread-safe [bsc#1208146]
+  * Add gnutls-FIPS-jitterentropy-threadsafe.patch
+
+-------------------------------------------------------------------
+Thu Feb 16 12:31:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: GnuTLS DH/ECDH PCT public key regeneration [bsc#1207183]
+  * Rebase patches with the version submitted upstream.
+  * Avoid copying the key material: gnutls-FIPS-PCT-DH.patch
+  * Improve logic around memory release: gnutls-FIPS-PCT-ECDH.patch
+
+-------------------------------------------------------------------
 Fri Feb 10 13:12:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.7.9: [bsc#1208143, CVE-2023-0361]
