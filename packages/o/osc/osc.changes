@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 11 12:04:56 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.1.1
+  - Command-line:
+    - Fix 'creq' command that wasn't working at all
+    - Fix 'ls' command when listing all projects by setting project argument to '/'
+    - Fix regression: Run interactive config setup on missing config or credentials
+    - Append plugin dirs to sys.path to allow loading modules installed next to the plugins
+    - Do not recurse into subdirs when loading plugins
+  - Configuration:
+    - Display apiurl when asking for a username or a password
+    - If apiurl is not set in interactive_config_setup(), use apiurl from DEFAULTS
+  - Library:
+    - Decode entities in HTTPError message body
+
+-------------------------------------------------------------------
 Mon Apr  3 11:58:12 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
-- Update to 1.1.0
+- 1.1.0
   - Command-line:
     - New class-based commands
     - Sort commands before printing help
@@ -16,7 +32,7 @@ Mon Apr  3 11:58:12 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 -------------------------------------------------------------------
 Fri Mar 17 15:11:46 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
-- Update to 1.0.1
+- 1.0.1
   - Configuration:
     - Fix a cut&paste error in setting 'disable_hdrmd5_check' config option
   - Connection:
@@ -25,7 +41,7 @@ Fri Mar 17 15:11:46 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 -------------------------------------------------------------------
 Tue Mar 14 12:26:57 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
-- Update to 1.0.0 (full changelog to the latest stable version 0.182.0)
+- 1.0.0 (full changelog to the latest stable version 0.182.0)
   - Command-line:
     - Use '.' as a wildcard that resolves to a project or a package name from the current working copy, for example 'osc rdiff ./. -c <num>'
     - Add 'create-pbuild-config' (cpc) command
