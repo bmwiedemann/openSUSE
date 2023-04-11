@@ -4,19 +4,19 @@ Date: 2020-08-13 11:01:08.470708019 +0200
 Do not fail the build if munit available (only) via /usr.
 
 ---
- meson.build |    2 --
+ test/meson.build |    2 --
  1 file changed, 2 deletions(-)
 
-Index: libei-0.3/meson.build
+Index: libei-0.5/test/meson.build
 ===================================================================
---- libei-0.3.orig/meson.build
-+++ libei-0.3/meson.build
-@@ -236,8 +236,6 @@ endif
+--- libei-0.5.orig/test/meson.build
++++ libei-0.5/test/meson.build
+@@ -2,8 +2,6 @@ if not get_option('tests')
+     subdir_done()
+ endif
  
- # tests
- if get_option('tests')
--    subproject('munit', default_options: 'werror=false')
+-subproject('munit', default_options: 'werror=false')
 -
-     munit = dependency('munit', fallback: ['munit', 'munit_dep'])
+ munit = dependency('munit', fallback: ['munit', 'munit_dep'])
  
-     lib_unittest = static_library('unittest',
+ lib_unittest = static_library('unittest',

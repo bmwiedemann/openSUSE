@@ -1,7 +1,7 @@
 #
 # spec file for package libei
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libei
-%define lname libei-suse3
-Version:        0.4.1
+%define lname libei-suse4
+Version:        0.5
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT
@@ -31,6 +31,8 @@ Patch2:         ver.diff
 BuildRequires:  meson >= 0.57
 BuildRequires:  ninja
 BuildRequires:  protobuf-c
+BuildRequires:  python3-attrs
+BuildRequires:  python3-jinja2
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)

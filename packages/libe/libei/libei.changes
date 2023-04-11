@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  6 13:12:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.5
+  * The previously protobuf-based ad-hoc protocol has changed to
+    custom format defined in the protocol.xml file. This protocol
+    is heavily influenced by the Wayland protocol but not binary
+    compatible. The protocol is not yet stable.
+  * ei_get_version() has been removed, with the protocol having
+    per-interface versions this is no longer useful.
+  * ei_device_start_emulating() now takes a sequence number.
+  * Support for properties has been removed.
+  * libreis has been removed.
+
+-------------------------------------------------------------------
 Tue Dec 13 10:10:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.1
