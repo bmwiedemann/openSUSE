@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 10 15:18:52 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable usage of optional cairo-gl surface in fbpdf, cairo-gl
+  has been deprecated/removed by upstream.
+- Clean up spec file.
+
+-------------------------------------------------------------------
 Sun Jul  5 10:58:08 UTC 2020 - olaf@aepfle.de
 
 - Fix build with fbi.patch

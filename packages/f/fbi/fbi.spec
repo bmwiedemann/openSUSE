@@ -1,7 +1,7 @@
 #
 # spec file for package fbi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpcd-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
-BuildRequires:  pkgconfig(cairo-gl)
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig)
@@ -76,14 +76,7 @@ library for rendering.
 %autosetup -p1 -n fbida-%{version}
 
 %build
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -name '*.[ch]' -print0 |\
-xargs -0 sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
-
-export CFLAGS="%{optflags}"
-make %{?_smp_mflags} prefix=%{_prefix} exiftran fbi
+%make_build prefix=%{_prefix} exiftran fbi
 
 %install
 %make_install prefix=%{_prefix}
