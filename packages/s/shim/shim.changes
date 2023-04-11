@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 10 05:04:33 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Removed POST_PROCESS_PE_FLAGS=-N from the build command in shim.spec to
+  enable the NX compatibility flag when using post-process-pe after
+  discussed with grub2 experts in mail. It's useful for further development
+  and testing. (bsc#1205588)
+
+-------------------------------------------------------------------
+Mon Mar 27 09:26:02 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Updated shim signature after shim 15.7 of SLE be signed back:
+  signature-sles.x86_64.asc, signature-sles.aarch64.asc (bsc#1198458)
+
+-------------------------------------------------------------------
 Thu Jan 12 07:00:19 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Removed shim-bsc1198101-opensuse-cert-prompt.patch (bsc#1198101) 
