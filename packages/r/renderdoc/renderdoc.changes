@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 11 07:07:15 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.26
+  * OpenGL: Pixel history is now supported on OpenGL.
+  * Vulkan: Improve the heuristic for when to use a GPU readback for
+    reading mapped memory over CPU reads.
+  * D3D12: Enable that same heuristic that was accidentally disabled in
+    a previous release.
+  * D3D12: DXIL handling refactored once again, to more closely clone
+    LLVM's codebase and be more reliable at editing/patching.
+
+-------------------------------------------------------------------
 Fri Mar 24 14:50:34 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.25
