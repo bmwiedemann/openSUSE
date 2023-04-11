@@ -292,4 +292,12 @@
 - Require gcc &gt;= 12</comment>
     <requestid>1032407</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>fbda21ff6d314dfbba920c60859a9613</srcmd5>
+    <version>2022.10.31</version>
+    <time>1681221282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078450</requestid>
+  </revision>
 </revisionlist>

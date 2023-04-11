@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  2 12:00:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patch: Fix new gcc errors for missing types.
+  * 894e44fdbff4221549d358faa4a73ea43e1283a5.patch
+
+-------------------------------------------------------------------
 Mon Oct 31 07:42:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2022.10.31:
