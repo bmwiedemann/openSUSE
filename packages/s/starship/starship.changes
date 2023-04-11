@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 11 11:11:39 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.14.1:
+  * Features:
+    - aws: add support for source_profile.
+    - aws: Adds support for AWS_CREDENTIAL_EXPIRATION 
+      environment variable.
+    - custom: add option to check if pwd is in a repo.
+    - fossil: detection of Fossil check-outs in subdirectories.
+  * Bug Fixes:
+    - gradle: add support for unstable Gradle versions.
+    - init: avoid cygpath for starship binary path.
+    - java: wrong version number when using Android Studio JDK.
+    - preset: add output-flag to avoid encoding issues.
+    - pulumi: Fix formatting on pulumi module when using version.
+
+-------------------------------------------------------------------
 Mon Feb 27 02:55:56 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.13.1:
