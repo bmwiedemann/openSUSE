@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 11 07:34:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.1:
+  * Large Time Re-mapping update (improved audio resampling, better support for backwards audio, bezier curve audio support)
+  * Caption effect font_size moving from "Points" to "Pixels"
+  * Caption effect default properties have been changed (smaller text)
+  * Caption effect improvements / fixes (better VTT support)
+  * Clip caching - causing a large memory leak
+  * Small memory leak in FFmpegReader
+  * Improved Performance (FrameMapper & Clip objects now include extra caching and optimizations)
+  * Improved unit tests (around clips, time mapping, resampling)
+  * Fixed crash in audio resampling when using MONO audio files
+  * Moved waveform generation before effects are applied (so waveform + caption effect can be used on audio-only files)
+  * Bug fixes for Brightness, Hue, and Saturation effects
+  * Bug fix for ColorShift bug when only adjusting the Y keyframes
+  * Refactoring Audio Device detection
+
+-------------------------------------------------------------------
 Tue Dec  6 14:06:45 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 23
+%define sover 24
 
 Name:           libopenshot
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
