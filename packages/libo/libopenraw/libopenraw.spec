@@ -29,6 +29,9 @@ Source2:        %{name}.keyring
 # cd lib/mp4 && cargo vendor -s Cargo.toml -s mp4parse/Cargo.toml -s mp4parse_capi/Cargo.toml && tar cf vendor.tar.xz vendor
 Source3:        vendor.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 03f8270d6bb255ca6618505e83169ab9d95ccef1.patch -- Include stdint.h where needed
+Patch0:         03f8270d6bb255ca6618505e83169ab9d95ccef1.patch
+
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
@@ -79,7 +82,7 @@ Requires:       libopenraw9 = %{version}-%{release}
 libopenraw is a library that aim at decoding digital camera RAW files.
 
 %prep
-%autosetup -a3
+%autosetup -a3 -p1
 mv vendor lib/mp4/
 cd lib/mp4
 sed -i 's/byteorder = "1.2.1"/byteorder = "1.2.2"/' mp4parse/Cargo.toml

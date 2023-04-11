@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 21:06:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 03f8270d6bb255ca6618505e83169ab9d95ccef1.patch: Include
+  stdint.h where needed. This fixes an issue building with gcc 13.
+
+-------------------------------------------------------------------
 Tue Feb 21 10:07:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.3.4:
