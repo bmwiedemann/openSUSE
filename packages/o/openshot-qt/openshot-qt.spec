@@ -1,7 +1,7 @@
 #
 # spec file for package openshot-qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define appname org.openshot.OpenShot
 Name:           openshot-qt
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Non-linear video editor with broad format support
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-openshot >= 0.3.0
+BuildRequires:  python3-openshot >= 0.3.1
 BuildRequires:  python3-pytest
 # Check list of dependencies:
 BuildRequires:  python3-pyxdg
@@ -41,7 +41,7 @@ BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-setuptools
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
-Requires:       python3-openshot >= 0.3.0
+Requires:       python3-openshot >= 0.3.1
 Requires:       python3-pyxdg
 Requires:       python3-pyzmq
 Requires:       python3-qt5

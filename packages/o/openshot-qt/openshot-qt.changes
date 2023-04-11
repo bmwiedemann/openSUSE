@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 11 07:13:41 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.0:
+  * Improved Profiles (400+ Export Profiles, New Profile UI, and more)
+  * Improved Undo / Redo system, includes grouping actions (i.e. single undo for split-clips and similar multi-step edits)
+  * Improved Preview & Split Clip dialog (correct aspect ratio, correct sample rate)
+  * Improved Keyboard Bindings (arrow keys)
+  * Bug fix for Blender Animated Titles using high FPS (incorrect duration)
+  * Bug fix for Mac Chroma Key effect (babl color methods)
+  * Bug fix for video preview widget resizing, to correctly clear cache
+  * Bug fix for Automatic Transition Direction logic (i.e. correctly fade in/out based on where the transition is dropped)
+  * Fixing many bugs reported via Sentry.io
+  * Fixed issue with AppImage to support newer distros (related to glibc compatibility)
+  * Improved About dialog (release notes link, remove "candidate" for official releases)
+  * Expanded default Emojis (adding in Arrows, Shapes, and Brands)
+  * Improved File Properties Dialog, to handle replacing files and thumbnails, and better support for changing FPS
+
+-------------------------------------------------------------------
 Tue Dec  6 14:13:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.0:
