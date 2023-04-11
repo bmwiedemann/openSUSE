@@ -77,4 +77,19 @@ and a version update</comment>
     <comment></comment>
     <requestid>1042466</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5550a19b45d7d587b00589cd5bbb7a2d</srcmd5>
+    <version>28.6</version>
+    <time>1681213922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 28.6
+  * German translation of web UI
+  * web UI: fix error messages not displaying
+  * fix low resolution Spotify artwork
+  * fix incorrect display of date released pre 1970
+  * fix for Denon speakers when pausing
+  * support password authentication for Airplay 2
+  * support for user config ffmpeg audio filters</comment>
+    <requestid>1078410</requestid>
+  </revision>
 </revisionlist>

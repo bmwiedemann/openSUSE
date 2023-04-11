@@ -1,7 +1,7 @@
 #
 # spec file for package owntone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Scott Shambarger
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 Summary:        DAAP server for iTunes and Chromecast with MPD and RSP support
 License:        GPL-2.0-or-later
 Name:           owntone
-Version:        28.5
+Version:        28.6
 Release:        0
 URL:            https://github.com/owntone/owntone-server
 Source0:        %url/releases/download/%{version}/%{name}-%{version}.tar.xz

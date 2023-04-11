@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 11 11:02:24 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to version 28.6
+  * German translation of web UI
+  * web UI: fix error messages not displaying
+  * fix low resolution Spotify artwork
+  * fix incorrect display of date released pre 1970
+  * fix for Denon speakers when pausing
+  * support password authentication for Airplay 2
+  * support for user config ffmpeg audio filters
+
+-------------------------------------------------------------------
 Mon Dec 12 11:35:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop explicit ffmpeg-4-libavfilter-devel BuildRequires: we
