@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  8 18:13:34 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Extend arj-3.10.22-fixstrcpy.patch to avoid trouble with strcpy
+  in two more places
+
+-------------------------------------------------------------------
 Wed Mar 25 20:50:54 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add arj-3.10.22-fixstrcpy.patch to fix data corruption
