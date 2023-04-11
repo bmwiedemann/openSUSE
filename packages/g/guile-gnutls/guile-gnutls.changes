@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Dec 29 00:12:52 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Add provides and obsoletes 
+
+-------------------------------------------------------------------
+Tue Dec 13 22:34:50 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 3.7.11 (changes since 3.7.9):
+  * It is now possible to run 'autoreconf from within a tarball
+  * Gnulib is used to improve code-reuse and maintainability
+  * Build fixes wrt static libraries and GNUTLS_CLAGS
+- Use source released on ftp.gnu.org
+- Add PGP keyring and tarball signature
+- Adapt prep and build phase
+- Adapt files to what is actually shipped with the release tarballs 
+
+-------------------------------------------------------------------
+Thu Dec  1 17:01:44 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- guile-gnutls in version 3.7.9 -> it was moved out of the GnuTLS source tree 
