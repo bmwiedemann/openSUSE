@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  7 13:55:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 24.1.0
+  * move cursor to view when jumping around
+  * add flag: -h, --help
+
+-------------------------------------------------------------------
 Sun May 22 11:55:35 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 24.0.0
