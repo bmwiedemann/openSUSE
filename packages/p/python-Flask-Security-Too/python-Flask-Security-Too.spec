@@ -26,6 +26,9 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-
 Patch0:         no-mongodb.patch
 # PATCH-FIX-OPENSUSE Use pyqrcodeng, we do not ship qrcode in OpenSUSE.
 Patch1:         use-pyqrcodeng.patch
+# PATCH-FIX-OPENSUSE Ignore DeprecationWarning, can be dropped after next update
+Patch2:         filterwarnings-ignore-pkg_resources.patch
+BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Babel >= 2.10.0}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module Flask-Babel >= 2.0.0}

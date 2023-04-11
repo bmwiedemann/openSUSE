@@ -198,4 +198,14 @@ This is a maintained fork of python-Flask-Security</comment>
 - Refresh all other patches.</comment>
     <requestid>1069082</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7e4cc84e18fb2a680f2c24a147171ee4</srcmd5>
+    <version>5.1.1</version>
+    <time>1681213863</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch filterwarnings-ignore-pkg_resources.patch:
+  * Filter out DeprecationWarning for pkg_resources.
+- Add Authlib to BuildRequires.</comment>
+    <requestid>1078318</requestid>
+  </revision>
 </revisionlist>

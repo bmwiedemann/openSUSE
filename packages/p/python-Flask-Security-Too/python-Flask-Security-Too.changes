@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 11 05:12:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch filterwarnings-ignore-pkg_resources.patch:
+  * Filter out DeprecationWarning for pkg_resources.
+- Add Authlib to BuildRequires. 
+
+-------------------------------------------------------------------
 Fri Mar  3 06:08:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.1.1:
