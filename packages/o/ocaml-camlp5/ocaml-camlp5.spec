@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-camlp5
-Version:        8.00.04
+Version:        8.01.00
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
@@ -27,11 +27,16 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-camlp5.patch
-BuildRequires:  ocaml < 5.1
+BuildRequires:  ocaml(ocaml_base_version) >= 4.10
 BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocamlfind(bos)
 BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(fmt)
+BuildRequires:  ocamlfind(pcre)
+BuildRequires:  ocamlfind(re)
+BuildRequires:  ocamlfind(rresult)
 
 %description
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.
@@ -40,6 +45,7 @@ Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and prin
 Summary:        Development files for ocaml-camlp5
 Group:          Development/Languages/OCaml
 Requires:       %name = %version
+Requires:       ocamlfind(pcre)
 
 %description devel
 Camlp5 is a preprocessor-pretty-printer of OCaml, parsing a source file and printing some result on standard output.
@@ -56,13 +62,12 @@ ulimit -s $((1024 * 64))
 %endif
 ./configure \
 	--mandir %_mandir
-make %{?_smp_mflags} out
-make %{?_smp_mflags} world
-make %{?_smp_mflags} world.opt
+%make_build out
+%make_build world
+%make_build world.opt
 
 %install
 %make_install
-cp -Lavit %buildroot%ocaml_standard_library/camlp5 etc/META
 %ocaml_create_file_list
 
 %files -f %name.files

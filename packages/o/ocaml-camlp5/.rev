@@ -112,4 +112,12 @@
 - Allow build with old rpm</comment>
     <requestid>1056071</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4a986fa8234bf0005c0e3e0731568b93</srcmd5>
+    <version>8.01.00</version>
+    <time>1681213853</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078295</requestid>
+  </revision>
 </revisionlist>
