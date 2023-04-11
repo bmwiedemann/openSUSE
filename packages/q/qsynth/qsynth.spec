@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.9.9
+Version:        0.9.10
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -27,11 +27,6 @@ URL:            https://qsynth.sourceforge.net/qsynth-index.html
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
 Patch1:         qsynth-fix_desktop_file.patch
 BuildRequires:  cmake
-%if 0%{?sle_version} >= 150400
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core)
@@ -41,7 +36,6 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.0.0
-Recommends:     %{name}-lang
 
 %description
 Qsynth is a fluidsynth GUI front-end application written in C++ around the Qt5
@@ -53,14 +47,11 @@ toolkit using Qt Designer.
 %autosetup -p1
 
 %build
-%if 0%{?sle_version} >= 150400
-export CXX=g++-11
-%endif
-%cmake
-%cmake_build
+%cmake_qt6
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 %suse_update_desktop_file -r "org.rncbc.%{name}" AudioVideo Midi
 %find_lang %{name} --with-qt
 

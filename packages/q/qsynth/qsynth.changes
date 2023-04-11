@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  6 09:13:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.10
+  * Bumping copyright headers to the brand new year.
+- Use the rpm macros provided by the Qt6 packages
+
+-------------------------------------------------------------------
 Mon Jan  2 10:26:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.9:
