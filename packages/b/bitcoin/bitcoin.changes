@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 11:56:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 392dc68e.patch: Fix build with gcc 13.
+
+-------------------------------------------------------------------
 Tue Dec 20 15:28:42 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 24.0.1

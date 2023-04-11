@@ -1,7 +1,7 @@
 #
 # spec file for package bitcoin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011-2014  P Rusnak <prusnak@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,6 +41,7 @@ Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
 Patch0:         harden_bitcoind.service.patch
+Patch1:         https://github.com/bitcoin/bitcoin/commit/392dc68e.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
