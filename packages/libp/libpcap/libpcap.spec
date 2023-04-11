@@ -17,7 +17,7 @@
 
 
 Name:           libpcap
-Version:        1.10.3
+Version:        1.10.4
 Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
@@ -29,14 +29,14 @@ Source3:        https://www.tcpdump.org/tcpdump-workers.asc#/%{name}.keyring
 Source4:        https://www.tcpdump.org/release/%{name}-%{version}.tar.gz.sig
 Patch2:         libpcap-1.0.0-ppp.patch
 Patch3:         libpcap-1.0.0-s390.patch
-BuildRequires:  autoconf >= 2.64
+BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  bluez-devel
 BuildRequires:  dbus-1-devel
 BuildRequires:  flex
 BuildRequires:  libnl3-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.17.0
 BuildRequires:  pkgconfig(libusb-1.0)
 
 %description
