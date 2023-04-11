@@ -234,4 +234,32 @@
     CommandConfig anymore (fixes #677)</comment>
     <requestid>962616</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ac2f6c2ca6d2283bb28a4b6c72263ba</srcmd5>
+    <version>2.26</version>
+    <time>1681221281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26:
+  Added:
+  * browser job: Add support for specifying useragent (#700)
+  * Document how to ignore whitespace changes (PR#707)
+  * shell reporter: Call a script or program when chanegs are detected (fixes #650)
+  * New separate configuration option for reporters to split reports into one-per-job
+  * --change-location option allowing job location to be changed without losing job history (#739)
+  Changed:
+  * Docs: Re-group diff-related topics and improve wording (PR#712)
+  * Improved HTML e-mail diff style, including Dark Mode support (#730)
+  * Require Python &gt;= 3.7, as Python 3.6 was EOL'd on 2021-12-23
+  * Dockerfile: Shrink image by switching to an Alpine-based Python 3.11
+    base image, this reduces the container size from 1 GiB to 151 MiB (#731)
+  * --gc-cache can now take a parameter to keep more than 1 historical snapshot (#732)
+  Fixed:
+  * Limit e-mail header length to 78 characters to avoid issues with some SMTP servers (PR#703, fixes #702)
+  * Fix a ResourceWarning for unclosed files when running unit tests (PR#698)
+  * Add support for html2text 2.1.1 and newer by feature-checking -utf8 support via -help (fixes #718)
+  * html2text options were only applied to the first job when using job_defaults (PR#726, fixes #588)
+  * Update Github tags watch filter documentation with new XPath (fixes #723)
+  * Fix --gc-cache to clear unknown keys when using Redis storage (fixes #743)</comment>
+    <requestid>1078448</requestid>
+  </revision>
 </revisionlist>

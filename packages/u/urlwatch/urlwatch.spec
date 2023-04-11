@@ -1,7 +1,7 @@
 #
 # spec file for package urlwatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           urlwatch
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        A tool for monitoring webpages for updates
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://thp.io/2008/urlwatch/
 Source0:        https://github.com/thp/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python3-devel >= 3.6
+BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-setuptools
 Requires:       python3-PyYAML
 Requires:       python3-appdirs
