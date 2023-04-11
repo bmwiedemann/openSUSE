@@ -36,7 +36,7 @@ BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argon2-cffi >= 19.1.0}
-BuildRequires:  %{python_module asgiref >= 3.5.2}
+BuildRequires:  %{python_module asgiref >= 3.6.0}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module geoip2}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sqlparse >= 0.2.2}
+BuildRequires:  %{python_module sqlparse >= 0.3.1}
 BuildRequires:  %{python_module tblib >= 1.5.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -54,14 +54,14 @@ BuildRequires:  %{python_module backports.zoneinfo if (%python-base with python3
 Requires:       python
 Requires:       python-Pillow >= 6.2.0
 Requires:       python-argon2-cffi >= 19.1.0
-Requires:       python-asgiref >= 3.5.2
+Requires:       python-asgiref >= 3.6.0
 %if "%{python_flavor}" == "python38"
 Requires:       python-backports.zoneinfo
 %endif
 Requires:       python-bcrypt
 Requires:       python-pytz
 Requires:       python-setuptools
-Requires:       python-sqlparse >= 0.2.2
+Requires:       python-sqlparse >= 0.3.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
