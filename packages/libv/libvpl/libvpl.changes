@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 10 15:58:39 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2023.2.0
+  * Added
+    + oneVPL API 2.9 support
+    + Perceptual encoding prefilter option to
+      sample_multi_transcode
+  * Fixed
+    + VPP processing for YUV input
+    + Sample_multi_transcode segfault on wayland
+    + Missing prerequisites in vpl-infer README
+  * Changed
+    + vpl-infer Dockerfile and Linux setup steps to better align
+      with https://dgpu-docs.intel.com/
+  * Removed
+    + dpcpp-blur example
+- Drop upstreamed fix_arm_ilp32.patch
+
+-------------------------------------------------------------------
 Tue Jan 17 23:36:53 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2023.1.1
