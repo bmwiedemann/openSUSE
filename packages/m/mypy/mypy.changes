@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 11 07:15:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Sadly, six is still required for tests, re-add to BuildRequires. 
+
+-------------------------------------------------------------------
 Tue Feb 14 06:02:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't skipp the test, add testI64Cast-fix.patch to make it

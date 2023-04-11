@@ -408,4 +408,12 @@
 </comment>
     <requestid>1065667</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>2f3b3523c657a79b442b0967b111df77</srcmd5>
+    <version>1.0.0</version>
+    <time>1681213871</time>
+    <user>dimstar_suse</user>
+    <comment>- Sadly, six is still required for tests, re-add to BuildRequires.</comment>
+    <requestid>1078346</requestid>
+  </revision>
 </revisionlist>

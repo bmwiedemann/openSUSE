@@ -26,7 +26,6 @@ Version:        1.0.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
@@ -72,6 +71,7 @@ BuildRequires:  %{python_module psutil >= 4}
 BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module pytest-forked >= 1.3}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module typed-ast >= 1.4.0}
 BuildRequires:  %{python_module virtualenv >= 20.6}
 BuildRequires:  gcc-c++
