@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Apr  5 00:22:48 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.1.2:
+  * It is now possible/easier to use the `build` module to build this module.
+    Previously, there was a namespace conflict (gh#fsfe/reuse-tool#640).
+- Changes of 1.1.1:
+  * Don't include documentation files (e.g. `README.md`) in top-level (i.e.,
+    `site-packages/`) (gh#fsfe/reuse-tool#657).
+  * Include documentation directory in sdist
+    (gh#fsfe/reuse-tool#657).
+- Changes of 1.1.0:
+  * Added support for Python 3.11 (gh#fsfe/reuse-tool#603).
+  * More file types are recognised:
+    + Kotlin script (`.kts`)
+    + Android Interface Definition Language (`.aidl`)
+    + Certificate files (`.pem`)
+  * Added comment styles:
+    + Apache Velocity Template (Extensions: `.vm`, `.vtl`)
+      (gh#fsfe/reuse-tool#554).
+    + XQuery comment style (Extensions: `.xq(l|m|y|uery|)`)
+      (gh#fsfe/reuse-tool#610).
+  * Some special endings are always stripped from copyright and
+    licensing statements (gh#fsfe/reuse-tool#602):
+    + `">` (and variations such as `'>`, `" >`, and `"/>`)
+    + `] ::`
+  * Removed `setup.py` and replaced it with a Poetry configuration
+    (gh#fsfe/reuse-tool#600).
+  * Updated PyPI development status to 'production/stable'
+    (gh#fsfe/reuse-tool#381).
+  * The pre-commit hook now passes `lint` as an overridable argument
+    (gh#fsfe/reuse-tool#574).
+  * `addheader` has been renamed to `annotate`. The functionality remains the
+    same (gh#fsfe/reuse-tool#550).
+  * Bumped SPDX license list to v3.19.
+  * `addheader` has been deprecated. It still works, but is now undocumented
+    (gh#fsfe/reuse-tool#550).
+  * Releases to PyPI are no longer GPG-signed. Support for this is not present
+    in Poetry and not planned (gh#fsfe/reuse-tool#600).
+  * Dependency on `requests` removed; using `urllib.request` from the standard
+    library instead (gh#fsfe/reuse-tool#600).
+  * Repair tests related to CVE-2022-39253 changes in upstream Git. New
+    versions of Git no longer allow `git submodule add repository path` where
+    repository is a file. A flag was added to explicitly allow this in the test
+    framework (gh#fsfe/reuse-tool#619).
+  * Sanitize xargs input in scripts documentation (gh#fsfe/reuse-tool#525).
+  * License identifiers in comments with symmetrical ASCII art frames are now
+    properly detected (gh#fsfe/reuse-tool#560)
+  * Fixed an error where copyright statements contained within a multi-line
+    comment style on a single line could not be parsed (gh#fsfe/reuse-tool#593).
+  * In PHP files, add header after `<?php` (gh#fsfe/reuse-tool#543).
+- Adapt spec file to poetry.
+- Update URL.
+
+-------------------------------------------------------------------
 Fri Dec 16 12:02:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow git to use the file: protocol: add "git config --global
