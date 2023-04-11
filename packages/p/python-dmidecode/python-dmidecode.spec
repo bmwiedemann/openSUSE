@@ -94,7 +94,6 @@ PRIO=$(echo %{python_version}|tr -d '.')
 
 %postun
 if [ ! -f %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml ] ; then
-   MAJVER=$(ver=%{python_version}; echo ${ver:0:1})
    %{_sbindir}/update-alternatives --remove pymap.xml \
         %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
 fi
