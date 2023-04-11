@@ -43,6 +43,9 @@ Summary:        Toolkit for scientific image processing, segmentation, and regis
 License:        Apache-2.0
 URL:            https://www.itk.org
 Source:         https://github.com/InsightSoftwareConsortium/ITK/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM add-missing-includes.patch -- Add missing #include <cstdint>
+Patch:          add-missing-includes.patch
+
 BuildRequires:  CastXML-devel
 BuildRequires:  bison
 BuildRequires:  cmake

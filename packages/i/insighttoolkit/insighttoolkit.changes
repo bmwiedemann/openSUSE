@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 21:28:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add add-missing-includes.patch: Add missing #include <cstdint>.
+  Now exposed by gcc 13.
+
+-------------------------------------------------------------------
 Wed Jan 25 14:04:22 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unused libnsl build requires
