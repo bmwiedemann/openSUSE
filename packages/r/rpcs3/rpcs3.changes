@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Tue Apr 11 12:50:42 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230411:
+  * Update to LLVM 16.0.1
+
+-------------------------------------------------------------------
+Mon Apr 10 14:31:51 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230409:
+  * remove unnecessary pointer bitcasts
+  * Updated BUILDING.md according to the changes made by #13622
+  * Fix BUILD_LLVM option
+  * Improve cellMic and sys_usbd thread scheduling
+  * Add alternate 3D display modes (#13582)
+  * cellGcm: add more enums
+  * llvm: fix submodule path
+  * rsx: Add a clip_width workaround for some buggy games
+  * Update to LLVM 16.0.0, switch to upstream LLVM
+  * Update dependencies
+  * Fix emulator crash when stopping emulation after being paused (#13530)
+  * sys_fs: Implemented CELL_FS_PATH path-as-device support
+  * sys_fs: Fix warning C6262
+  * sys_fs & VFS: Misc bug fixes
+
+-------------------------------------------------------------------
+Tue Apr 04 14:33:06 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230331:
+  * Add Qt Creator .autosave files to .gitignore (#13597)
+  * cellMusicExport: first implementation
+  * cellPhotoExport: add funcFinish check
+  * Fix mic thread usage
+  * vk: Fix vendor detection for apple
+  * vk: Obey safe/unsafe hint for D16F emulation
+  * Increase delay for GHL and TT int transfers
+  * cellMic: fix registration index
+  * cellAudio: silence cellAudioSendAck and add pseudo code for it
+  * cellAudio: re-use event_sources array
+  * cellMic: use fixed index for devices
+  * cellMic: wait for registration of multiple input devices
+  * cellMic: add some additional error check and silence log spam
+  * cellMicGetSignalState: fake some more values
+
+-------------------------------------------------------------------
+Sun Mar 26 03:18:32 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230325:
+  * Update MoltenVK to 1.2.3 (Vulkan SDK 1.3.243)
+  * Fix inaccuracies pointed out by PVS-Studio
+  * vk: Separate vertex and fragment stage push constant updates for overlays
+  * Fix an emulator crash in Emulator::SaveSettings (#13567)
+  * Fix timeout spam from signaling
+  * Savestates: Fix deadlock on savestate load
+  * cellFsReaddir: Fix termination sequence
+  * Add buf_to_hexstring
+  * Invite changes
+  * Fix recvn high cpu usage
+  * Signaling: report status inactive on unknown connection
+  * Fix timestamps in signaling_handler
+  * Trophies: log more specific errors on install failure
+  * Use relative urls in .gitmodules
+  * use new LLVM API in SPURecompiler
+  * SPU LLVM: fix regression from #13500
+  * llvm: update code to new API (#13500)
+  * Fix hid_pad_handler
+  * Add missing spinning icon from resources
+  * PPU: Do not break on unexpected TOC (#13490)
+  * Add better error handling for RequestSignalingInfos
+  * Use NBIO for RPCN
+  * cellSaveData: Slow save completion
+  * hid: try to fix linux
+  * cellVdec: revert RGBA alignment change
+  * Use win_error for WSAGetLastError
+  * overlays: apply message fade in during lifetime extension if necessary
+  * overlays: refresh existing compile message expiration
+  * overlays: properly remove outdated messages from the queue.
+  * overlays: add ppu compile message if the progress dialog is unavailable
+  * Improve some decryption log messages
+  * patches: fix move_file/hide_file error
+  * hid/ds4: add logging for PID and VID
+  * Windows: log more descriptive errors
+  * Qt: Disable some network settings in global config. Re-enable RPCN in global config.
+  * VFS: Fix mounting non-existant paths (#13488)
+  * Fix wolfssl connect
+  * Patches: Virtual move/remove game files patches
+  * rpcn: throw exception when using rpcn features without a proper config
+  * Qt: disable psn setting in global settings
+  * cellMic: random improvements
+  * pkg install: return correct error if possible. Add more early outs and skip workers on error,
+  * rsx: Implement deferred buffer allocations for GPU write
+  * rpcs3_version: Bump to 0.0.27
+  * Update FW 4.90 Latest Version
+  * [3rdparty] update cubeb
+  * cellRtc: fix out of bounds write
+  * rsx: Workaround for clang build
+  * rsx: Use simple_array for basic array of integers
+  * rsx: Use emplace when constructing in-place.
+  * rsx: Use non-owning container to ellide a derpy allocation with msvc
+  * Debugger: show CIA in register view (#13462)
+  * Update SPUThread.cpp
+  * cellMsgDialog: fix use-after-free
+  * overlays: hotfix for return_code lifetime
+  * cellSaveData: get rid of g_last_user_response
+  * input: disable ldd home menu for now
+  * cellVdec.cpp: use lock_unlock instead of lock_guard
+  * fix out-of-bounds in VKGSRenderTypes.hpp
+  * fix: back() called an empty string in PPUThread.cpp
+  * fix use after move in cellVdec.cpp
+  * Fix for Windows ENOTCONN on connecting socket
+  * rsx/overlays: Handle corner case where thread signal happens just before pop_all is called.
+  * rsx/overlays: Fix emu close
+  * Fix Visual Studio 17.5.0 compilation
+  * main: set locale to C before doing anything else
+  * config: try to fix float locale issues
+  * Qt: try to fix QString::toDouble locale nonsense
+  * Forces local IP to bind address if set
+  * overlays/manager: Explicit ctor for the input context
+  * [overlays] Implement input suspend+resume
+  * rsx/overlays: Enable input hijacking
+  * rsx/overlays: Fix clang/msvc build
+  * rsx/overlays: Add a name to the input thread context
+  * rsx/overlays: Remove some unused thread declarations
+  * rsx/overlays: Use lf_queue for a lock-free stack implementation
+  * rsx/overlays: Fix build
+  * rsx/vk: Remove stale include
+  * rsx/overlays: Fill in the user response when message dialog input loop exits and we're in blocking mode
+  * rsx/overlays: Fix crash
+  * rsx/overlays: Simplify attach-thread-input API
+  * rsx/overlays: Putting it all together
+  * rsx/overlays: Refactor and implement callbacks for input token
+  * Use u64 for system_time_t, as s64 doesn't make much sense in a microsecond context.
+  * fix some warnings
+  * fixed_typemap.hpp: static allocation for m_init
+  * patch_manager: fix focus loss during config value editing
+  * patch_manager: add more decimal places to spinbox
+  * patch_manager: check config values before applying them
+  * patch_manager: change wording
+  * patch_manager: allow multiple dynamic values
+  * patch_manager: Add dropdown labels
+  * patch_manager: add more dynamic to dynamic patches
+  * patch_manager: add ability to add dynamic patches
+  * fix some warnings
+  * VS: fix miniupnp dependency
+  * cellMsgDialog: Improve some logging and localization
+  * overlays: add internal lock for progress bar texts
+  * overlays: use array for progress bars
+  * sys_game: LV2 board storage minor fixups
+  * rpcn: signaling handler improvements & upnp
+  * Fix boot by RPCS3_GAMEID constants
+  * PINE: Fix crash on exit (#13409)
+  * cellVdec: align RGBA/ARGB strides
+  * cellVdec: fix au_count race condition
+  * PINE: fix error format function
+  * fix order of static initialization: add comment
+  * fix order of static initialization
+  * Create TEST12345/USRDIR for test elfs
+  * Remove whitespace
+  * Qt: save last gs_frame screen and re-use it in no-gui mode
+  * Qt/CLI: Add option to select a screen for the game window
+  * Qt: move fullscreen cli arg from global to gs_frame
+  * Fix C00 boot from external HG games
+  * Debugger: Print error codes stored in GPR
+  * cellPad: move CellPadData to pad_types for convenience
+  * cellPad/vsh: fix PS button recognition
+  * cellPad/vsh: fix sixaxis interaction
+  * cellPad: allow opening the home menu with ldd pads
+  * cellPad: add sanity check for indices in cellPadLdd functions
+  * cellPad: simplify some code
+
+-------------------------------------------------------------------
 Fri Feb 10 15:07:22 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.26~git20230210:
