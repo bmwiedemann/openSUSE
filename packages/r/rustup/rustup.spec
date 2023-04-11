@@ -39,6 +39,10 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        %{name}-rpmlintrc
+#PATCH-FIX-UPSTREAM https://github.com/rust-lang/rustup/commit/b5639d3fc0a52ed247973b15ff6fdbf36849bd3a.patch
+Patch0:         0000-rustup-add-rust-analyzer-proxy.patch
+#PATCH-FIX-UPSTREAM https://github.com/rust-lang/rustup/commit/0bfe6232a40dba83487e07d2a7cec73eaa151591.patch
+Patch1:         0001-rustup-move-rust-analyzer.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 # For system linker
@@ -76,6 +80,8 @@ managing multiple parallel toolchains in their environment.
 %prep
 %setup -q
 %setup -qa1
+%patch0 -p1
+%patch1 -p1
 cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking. Uncomment only if required.
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;

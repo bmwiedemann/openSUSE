@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 27 19:30:39 UTC 2023 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- fix rust-analyzer as a rustup proxy by backporting two upstream patches:
+  * 0000-rustup-add-rust-analyzer-proxy.patch
+  * 0001-rustup-move-rust-analyzer.patch
+
+-------------------------------------------------------------------
 Thu Feb 23 00:16:21 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1208552 - CVE-2022-31394 - header list size may allow denial of service
