@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 12 05:53:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support. 
+
+-------------------------------------------------------------------
+Tue Apr 11 08:30:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove test-py38 flavor from multibuild: Python 3.8 is no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Jan  3 12:13:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Split out python flavors into testing multibuilds. Depending on

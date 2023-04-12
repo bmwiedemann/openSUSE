@@ -312,4 +312,15 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>1046630</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>91a780ea4849bf2a3b08f03fe0894b42</srcmd5>
+    <version>0.56.4</version>
+    <time>1681296736</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support. 
+
+- Remove test-py38 flavor from multibuild: Python 3.8 is no longer
+  supported.</comment>
+    <requestid>1078560</requestid>
+  </revision>
 </revisionlist>

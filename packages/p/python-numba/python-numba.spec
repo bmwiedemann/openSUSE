@@ -31,22 +31,16 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if "%{flavor}" == "test-py38"
-%define psuffix -test-py38
-%define skip_python39 1
-%define skip_python310 1
-%bcond_without test
-%endif
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
-%define skip_python38 1
 %define skip_python310 1
+%define skip_python311 1
 %bcond_without test
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
-%define skip_python38 1
 %define skip_python39 1
+%define skip_python311 1
 %bcond_without test
 %endif
 
