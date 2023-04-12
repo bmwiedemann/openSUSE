@@ -1,7 +1,7 @@
 #
 # spec file for package check_postgres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           check_postgres
-Version:        2.25.0
+Version:        2.26.0
 Release:        0
 Summary:        Postgres monitoring script
 License:        GPL-2.0-or-later

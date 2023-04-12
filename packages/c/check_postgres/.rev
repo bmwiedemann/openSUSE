@@ -32,4 +32,12 @@
   nrpe checks for the different check options</comment>
     <requestid>960268</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00b1273e1802906edf9fbf07bb883fed</srcmd5>
+    <version>2.26.0</version>
+    <time>1681296691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078503</requestid>
+  </revision>
 </revisionlist>

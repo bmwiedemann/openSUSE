@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr  7 14:24:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.26.0
+  * Add new action "pgbouncer_maxwait".
+  * For the bloat check, add option to populate all known databases,
+    as well as includsion and exclusion regexes.
+  * Add Partman premake check.
+  * Add --role flag to explicitly set the role of the user after
+    connecting.
+  * Fix check_replication_slots on recently promoted servers.
+  * Allow the check_disk_space action to handle relative
+    log_directory paths.
+  * Fix MINPAGES and MINIPAGES in the "check_bloat" action.
+  * Replace 'which' with 'command -v'.
+  * Fix check_replication_slots on recently promoted servers.
+  * Fix undefined variable warning.
+  * In the tests, force log_destination to stderr.
+  * Add to docs how to exclude all items in the 'pg_temp_nnn'
+    per-session temporary schemas.
+  * Various improvements to the tests.
+
+-------------------------------------------------------------------
 Tue Mar  8 17:14:04 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
 
 - added /etc/nrpe.d/check_postgres.cfg, containing some pre-configured
