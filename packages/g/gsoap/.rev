@@ -649,4 +649,12 @@
     <comment>- Update to release 2.8.124</comment>
     <requestid>1042606</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>824579507a279c69d00d6912d9bc5063</srcmd5>
+    <version>2.8.127</version>
+    <time>1681296649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8.127</comment>
+    <requestid>1078368</requestid>
+  </revision>
 </revisionlist>
