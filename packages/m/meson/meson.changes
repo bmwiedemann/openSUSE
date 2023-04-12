@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 11 09:37:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + A new objects argument to declare_dependency() allow for adding
+    objects directly to executables that use an internal
+    dependency.
+  + Feature objects now have an "enable_auto_if" method, the
+    opposite of the existing "disable_auto_if" method.
+  + New FeatureOption.enable_if and FeatureOption.disable_if
+    features.
+  + The sudo meson install command will now drop privileges when
+    rebuilding targets to be "extra safe". This is done since
+    running Ninja as root isn't recommended since it updates a
+    state file.
+  + The meson install command now supports user-preferred root
+    elevation tools.
+  + A new "none" back-end that has no build rules but only install
+    rules, in order to avoid depending on Ninja in that case.
+  + Support for custom install scripts to run with the "--dry-run"
+    option.
+
+-------------------------------------------------------------------
 Sat Feb 25 16:14:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - meson 1.0.1:
