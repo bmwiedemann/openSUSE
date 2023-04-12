@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:26:52 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- add kubernetes1.18-client-common as conflicts with kubernetes-client-bash-completion
+
+-------------------------------------------------------------------
 Mon Mar 27 09:24:52 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
 - Stronger conflicts for completion packages 
