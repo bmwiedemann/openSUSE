@@ -412,4 +412,12 @@
   * Fixed using older game controller mappings on Linux</comment>
     <requestid>1071451</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8ec065410ffb7b286fa4f6392f7ae5c3</srcmd5>
+    <version>2.26.5</version>
+    <time>1681296648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.26.5</comment>
+    <requestid>1078367</requestid>
+  </revision>
 </revisionlist>
