@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 09:26:02 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pin to llvm15 for the time being: code fails to build with
+  llvm16.
+
+-------------------------------------------------------------------
 Thu Jan  5 15:33:51 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.05c

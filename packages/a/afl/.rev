@@ -1218,4 +1218,13 @@
   - several minor bugfixes (forwarded request 1056232 from msmeissn)</comment>
     <requestid>1056233</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>a1a9338495000a865e2570a186b548b0</srcmd5>
+    <version>4.05c</version>
+    <time>1681296756</time>
+    <user>dimstar_suse</user>
+    <comment>- Pin to llvm15 for the time being: code fails to build with
+  llvm16. (forwarded request 1078606 from dimstar)</comment>
+    <requestid>1078607</requestid>
+  </revision>
 </revisionlist>

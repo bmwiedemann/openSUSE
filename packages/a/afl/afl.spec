@@ -41,8 +41,8 @@ URL:            https://github.com/AFLplusplus/AFLplusplus
 Source:         https://github.com/AFLplusplus/AFLplusplus/archive/%{version}.tar.gz
 Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
-BuildRequires:  clang
 BuildRequires:  gcc-c++
+BuildRequires:  (clang < 16 or clang15)
 %ifarch x86_64
 BuildRequires:  gcc-32bit
 %endif
@@ -50,8 +50,8 @@ BuildRequires:  gcc-32bit
 BuildRequires:  gcc-devel
 %endif
 BuildRequires:  lld
-BuildRequires:  llvm-devel >= 11.0.0
 BuildRequires:  python3-devel
+BuildRequires:  ((llvm-devel >= 11.0.0 with llvm-devel < 16) or llvm15-devel)
 Requires:       lld
 
 %description
