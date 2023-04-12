@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  6 11:03:52 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Switch rsyncd symlink to a wrapper script to allow setting a distinct
+  SELinux type (bsc#1209654)
+
+-------------------------------------------------------------------
 Fri Oct 21 07:52:48 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - New version fixes bug (boo#1203727): implicit containing directory 

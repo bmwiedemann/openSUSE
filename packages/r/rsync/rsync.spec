@@ -1,7 +1,7 @@
 #
 # spec file for package rsync
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ Source9:        rsyncd@.service
 Source10:       https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
 Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
+Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -122,7 +123,7 @@ rm -f %{buildroot}%{_sbindir}/rsyncd
 install -d %{buildroot}%{_sysconfdir}/init.d
 install -d %{buildroot}%{_sysconfdir}/xinetd.d
 install -d %{buildroot}%{_sbindir}
-ln -sf ../bin/rsync %{buildroot}%{_sbindir}/rsyncd
+install -m 755 %{SOURCE13} %{buildroot}%{_sbindir}/rsyncd
 install -m 755 support/rsyncstats %{buildroot}%{_bindir}
 %if 0%{?suse_version} > 1500
 install -d %{buildroot}%{_distconfdir}/logrotate.d
