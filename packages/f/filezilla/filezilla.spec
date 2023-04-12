@@ -90,42 +90,6 @@ This are development files for filezilla.
 %patch0 -p1
 %patch1 -p1
 
-# Fix invalid translation locales:
-cd locales
-for LOC in\
-    bg_BG\
-    ca_ES@valencia\
-    cs_CZ\
-    fa_IR\
-    fi_FI\
-    gl_ES\
-    he_IL\
-    hu_HU\
-    id_ID\
-    ja_JP\
-    km_KH\
-    ko_KR\
-    lo_LA\
-    lt_LT\
-    lv_LV\
-    mk_MK\
-    nb_NO\
-    nn_NO\
-    pl_PL\
-    pt_BR\
-    pt_PT\
-    ro_RO\
-    sk_SK\
-    sl_SI\
-    th_TH\
-    uk_UA\
-    vi_VN\
-    zh_CN\
-    zh_TW;
-do
-    mv -iv $LOC.po ${LOC/_??}.po
-done
-
 %build
 autoreconf -fi
 %configure \
