@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 12 06:00:21 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.6.0:
+  * v1.6.0 release
+  * Update release notes for v1.6.0
+  * fix(deps): update rust crate tokio to 1.27.0
+  * use lower TTL for contianer entries
+  * fix(deps): update rust crate syslog to ^6.0.1
+  * fix(deps): update rust crate futures-util to 0.3.28
+  * chore(deps): update dependency containers/automation_images to v20230330
+  * Disable Dependabot in favor of Renovate
+  * chore(deps): update dependency containers/automation_images to v20230320
+  * build(deps): bump futures-util from 0.3.26 to 0.3.27
+  * [CI:BUILD] Packit: trigger builds on commit to main branch
+  * build(deps): bump anyhow from 1.0.68 to 1.0.70
+  * fix lint issue with new rust version 1.68
+  * Cirrus: Update to newer CI VM images
+  * build(deps): bump chrono from 0.4.23 to 0.4.24
+  * build(deps): bump libc from 0.2.139 to 0.2.140
+  * build(deps): bump async-broadcast from 0.5.0 to 0.5.1
+  * build(deps): bump signal-hook from 0.3.14 to 0.3.15
+  * build(deps): bump futures-util from 0.3.25 to 0.3.26
+  * build(deps): bump tokio from 1.25.0 to 1.26.0
+  * [CI:DOCS] Clarify packit related comments
+  * [CI:BUILD] Packit: initial enablement
+  * Allow custom cargo binary path
+  * Switch to explicit platform list for `cargo vendor-filterer`
+  * bump to v1.6.0-dev
+  * Add renovate.json5
+  * Cirrus: Groom rust cache before updating
+
+-------------------------------------------------------------------
 Fri Mar 17 11:30:46 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Fix libexecdir issue on Leap and SLE
