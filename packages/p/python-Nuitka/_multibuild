@@ -1,12 +1,10 @@
 <multibuild>
   <package>clang-test-py2</package>
   <package>clang-test-py36</package>
-  <package>clang-test-py38</package>
   <package>clang-test-py39</package>
   <package>clang-test-py310</package>
   <package>gcc-test-py2</package>
   <package>gcc-test-py36</package>
-  <package>gcc-test-py38</package>
   <package>gcc-test-py39</package>
   <package>gcc-test-py310</package>
 </multibuild>

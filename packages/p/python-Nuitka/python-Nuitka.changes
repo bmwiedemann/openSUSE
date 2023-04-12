@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 11 08:29:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove python 3.8 flavors from _multibuild.
+
+-------------------------------------------------------------------
 Mon Feb 13 02:30:56 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Recommends: python-ordered-set
