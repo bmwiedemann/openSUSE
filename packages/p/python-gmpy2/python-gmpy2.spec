@@ -28,7 +28,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
-BuildRequires:  libmpir-devel
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  python-rpm-macros

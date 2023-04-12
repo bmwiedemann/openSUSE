@@ -49,4 +49,12 @@
   * Latest release with minor bug fixes and support for Python 3.11</comment>
     <requestid>1056281</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ad411704b787b307c721748873608bff</srcmd5>
+    <version>2.1.5</version>
+    <time>1681296742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078563</requestid>
+  </revision>
 </revisionlist>
