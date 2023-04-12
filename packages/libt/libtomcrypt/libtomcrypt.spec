@@ -1,7 +1,7 @@
 #
 # spec file for package libtomcrypt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 Exata T.I., Maringa, PR, Brasil.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Cryptographic Toolkit Written in Portable C
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-Url:            http://libtom.org
+URL:            http://libtom.org
 Source0:        https://github.com/libtom/libtomcrypt/releases/download/v%{version}/crypt-%{version}.tar.xz
 Source1:        https://github.com/libtom/libtomcrypt/releases/download/v%{version}/crypt-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -78,11 +78,11 @@ numbergenerators, public key cryptography and a plethora of other routines.
 This package contains example *.c files showing how to use TomCrypt library.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -DLTM_DESC -DUSE_LTM"
-make %{?_smp_mflags} LIBPATH=%{_libdir} EXTRALIBS="-ltommath" -f makefile.shared
+%make_build LIBPATH=%{_libdir} EXTRALIBS="-ltommath" -f makefile.shared
 
 %install
 %make_install -f makefile.shared DESTDIR=%{buildroot} LIBPATH=%{_libdir} NODOCS=0 PREFIX=%{_prefix}
@@ -91,6 +91,8 @@ rm %{buildroot}%{_libdir}/*.a
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+%make_build test CFLAGS="%{optflags}"
+./test
 
 %post -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig

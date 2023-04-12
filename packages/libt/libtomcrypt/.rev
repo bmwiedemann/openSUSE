@@ -56,4 +56,13 @@ This is a required library for stoken, which I've also SR'd to Factory.</comment
     <comment></comment>
     <requestid>734098</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>865ef75f6554ecce4f2168357800fed9</srcmd5>
+    <version>1.18.2</version>
+    <time>1681296675</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Run tests during build (forwarded request 1072834 from pluskalm)</comment>
+    <requestid>1078478</requestid>
+  </revision>
 </revisionlist>
