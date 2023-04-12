@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 11 08:24:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use skip_pythonX instead of redefining pythons to explicit
+  versions: python38 is not supported in all distros anymore (e.g
+  Tumbleweed). So rather define for what distro flavors we do not
+  need to be built fot.
+
+-------------------------------------------------------------------
 Tue Mar 21 11:13:49 UTC 2023 - pgajdos@suse.com
 
 - do not require six

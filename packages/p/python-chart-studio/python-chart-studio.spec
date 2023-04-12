@@ -16,7 +16,11 @@
 #
 
 
-%define pythons python38 python39
+%define skip_python36 1
+%define skip_python37 1
+%define skip_python310 1
+%define skip_python311 1
+%define skip_python312 1
 Name:           python-chart-studio
 Version:        1.1.0
 Release:        0
