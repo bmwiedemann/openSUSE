@@ -534,4 +534,72 @@
 </comment>
     <requestid>1043595</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ed7db6686defcd5feb65977436f759ce</srcmd5>
+    <version>1.1.9</version>
+    <time>1681296680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.9:
+  * device: add descriptior for EX110 keyboard
+  * release 1.1.9rc2
+  * device: Add support for G535 wireless gaming headset (#2034)
+  * docs: Fix punctuation and language in rules.md (#2032)
+  * po: updated greek translation (#2030)
+  * Fix sentences and punctuation in features.md (#2029)
+  * docs: Fix spelling and capitalisation in index.md (#2028)
+  * Fix punctuation and wording in capabilities.md
+  * Update Polish translation
+  * release 1.1.9rc1
+  * docs: add description for LIFT mouse
+  * ui: remove deprecated GTK code
+  * ui: zero exit code for kill interrupts
+  * docs: update information about MX Master 3 for Business
+  * rules: add Test condition for battery charging
+  * doc: add description of G304 Lightspeed Wireless Gaming Mouse
+  * device: get wpid for 28Mz devices from udev when enumerating
+  * ui: add editing of Device rule condition
+  * rules: add Device condition
+  * docs: add Logi Pop Keys description
+  * ui: don't show wireless link or battery information when unknown or not present
+  * ui: online devices with no battery information probably don't have a battery
+  * device: add desccriptor for G9x
+  * receiver: fix bug in determining kind of devices for 27Mz receivers
+  * device: add descriptor for LX7 mouse
+  * doc: update documentation for EX100 receiver
+  * doc: add description of Illuminated Keyboard with ID C318
+  * ui: ignore smooth scroll settings by default
+  * configuration: fix glitch when changing versions
+  * rules: add more debugging output for rules
+  * device: add descriptor for Illuminated Keyboard USB ID C318
+  * device: clean up pinging code
+  * device: put initial ping of direct-connected devices inside listener thread
+  * settings: read and check before write for range settings
+  * doc: update lightspeed receiver descriptions
+  * ui: mention compatability and non-connection in pairing window
+  * ui: improve determination of whether pairing possible
+  * receiver: count found devices when enumerating them and cut off when all found
+  * config: remove derived fields from config file when Solaar version changes
+  * device: allow device descriptors without name and codename
+  * ui: Filter and escape technical detail fields (#1953)
+  * settings: add setting for ADC power management
+  * docs: add description of G535 and N545
+  * device: correctly determine whether to ping with a long HID++ message
+  * device: add description for K470 keyboard from the MK470 combo (#1945)
+  * docs: add setting value for mouse gestures
+  * po: update German translation (#1940)
+  * Update French translation for 1.1.8 release
+  * tools: remove unnecessary clean.sh
+  * tools: remove non-working monitor.py
+  * ui: retry adding devices if permissions are wrong
+  * ui: better handling of IO errors at device creation
+  * ui: improve error pop-up for errors when creating devices
+  * ui: add KeyIsDown to list of conditions
+  * ui: allow editing of KeyIsDown conditions
+  * docs: document KeyIsDown rule condition
+  * rules: add KeyIsDown condition
+  * device: clean up device creation
+  * receiver: clean up receiver creation
+</comment>
+    <requestid>1078468</requestid>
+  </revision>
 </revisionlist>
