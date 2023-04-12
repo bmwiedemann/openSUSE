@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 10:06:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add dolphin-emu-gcc13.patch: Fix build using GCC 13. Patch
+  imported based on https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/pull/326
+
+-------------------------------------------------------------------
 Wed Dec 28 20:53:15 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Updated to 5.0.17995 8bad821019721b9b72701b495da95656ace5fea5

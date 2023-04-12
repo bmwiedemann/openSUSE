@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin-emu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://dolphin-emu.org
 # n=dolphin-emu && v=5.0.17995 && c=8bad821019721b9b72701b495da95656ace5fea5 && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-not-discord-presence.patch
+Patch1:         dolphin-emu-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

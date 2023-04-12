@@ -1,0 +1,20 @@
+From 383f06b9fd9d36fb54cb3d4ac3363a670104bc62 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Wed, 29 Mar 2023 17:30:34 +0000
+Subject: [PATCH] IWYU: add cstdio for snprintf in vk_mem_alloc.h
+
+Discoverd with upcoming GCC 13.
+---
+ include/vk_mem_alloc.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- dolphin-emu-5.0.17995.orig/Externals/VulkanMemoryAllocator/include/vk_mem_alloc.h
++++ dolphin-emu-5.0.17995/Externals/VulkanMemoryAllocator/include/vk_mem_alloc.h
+@@ -2602,6 +2602,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeS
+ #undef VMA_IMPLEMENTATION
+ 
+ #include <cstdint>
++#include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+ #include <utility>
