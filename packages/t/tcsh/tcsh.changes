@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 11 09:52:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update too tcsh 6.24.08
+  * Support LS_COLORS su,sg,tw,ow,st,mh variables. (Luke Mewburn)
+  * Fixes for LS_COLORS ln=target: ls-F directory; reset on unsetenv;
+      intermittent parse bug; only support lower-case "target". (Luke Mewburn)
+  * Fix LSCOLORS bold/bright color support, add to manual (Luke Mewburn)
+  * Implement CLICOLOR_FORCE (Luke Mewburn)
+  * On startup, use LS_COLORS in preference to LSCOLORS (Luke Mewburn)
+  * Improve color ls-F documentation (Luke Mewburn)
+- Port patches
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.21.00.dif
+
+-------------------------------------------------------------------
 Wed Dec 28 09:52:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.24.07:

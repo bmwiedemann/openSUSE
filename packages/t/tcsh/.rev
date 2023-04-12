@@ -985,4 +985,23 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055745 from lnussel)</comment>
     <requestid>1056976</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>35913bc98324253f7f6c459c22d11903</srcmd5>
+    <version>6.24.08</version>
+    <time>1681296656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update too tcsh 6.24.08
+  * Support LS_COLORS su,sg,tw,ow,st,mh variables. (Luke Mewburn)
+  * Fixes for LS_COLORS ln=target: ls-F directory; reset on unsetenv;
+      intermittent parse bug; only support lower-case &quot;target&quot;. (Luke Mewburn)
+  * Fix LSCOLORS bold/bright color support, add to manual (Luke Mewburn)
+  * Implement CLICOLOR_FORCE (Luke Mewburn)
+  * On startup, use LS_COLORS in preference to LSCOLORS (Luke Mewburn)
+  * Improve color ls-F documentation (Luke Mewburn)
+- Port patches
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.21.00.dif</comment>
+    <requestid>1078404</requestid>
+  </revision>
 </revisionlist>

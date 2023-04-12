@@ -119,7 +119,7 @@
  
 --- sh.c
 +++ sh.c	2021-04-27 07:41:53.192829973 +0000
-@@ -1346,6 +1346,9 @@ main(int argc, char **argv)
+@@ -1348,6 +1348,9 @@ main(int argc, char **argv)
  	    setintr = osetintr;
  	    parintr = oparintr;
  	}
@@ -172,7 +172,7 @@
  #endif /* SYSMALLOC */
 --- tc.func.c
 +++ tc.func.c	2021-04-27 07:41:53.196829900 +0000
-@@ -739,9 +739,13 @@ auto_lock(void)
+@@ -743,9 +743,13 @@ auto_lock(void)
  	    handle_pending_signals();
  	    errno = 0;
  	}
@@ -187,7 +187,7 @@
  
  #else
  
-@@ -1957,7 +1961,7 @@ getremotehost(int dest_fd)
+@@ -1961,7 +1965,7 @@ getremotehost(int dest_fd)
  	     * have not caught up yet.
  	     */
  	    addr.s_addr = inet_addr(name);

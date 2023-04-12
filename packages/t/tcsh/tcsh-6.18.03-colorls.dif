@@ -1,18 +1,27 @@
 ---
- tw.color.c |   20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ tw.color.c |    9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 --- tw.color.c
-+++ tw.color.c	2021-11-11 11:00:40.989284076 +0000
-@@ -85,6 +85,7 @@ static Variable variables[] = {
-     VAR(NOS, "hl", "44;37"),    /* Reg file extra hard links, obsolete? */
-     VAR(NOS, "mh", "44;37"),    /* Reg file extra hard links */
-     VAR(NOS, "ca", "30;41"),    /* File with capability */
-+    VAR(NOS, "cl", ""),		/* CLRTOEOL */
++++ tw.color.c	2023-04-11 10:36:56.030561276 +0000
+@@ -56,7 +56,7 @@ typedef struct {
+ typedef enum {
+     Vdi, Vln, Vor, Vpi, Vso, Vdo, Vbd, Vcd,
+     Vex, Vfi, Vno, Vmi, Vlc, Vrc, Vec, Vsu,
+-    Vsg, Vtw, Vow, Vst, Vrs, Vhl, Vmh, Vca,
++    Vsg, Vtw, Vow, Vst, Vrs, Vhl, Vmh, Vca, Vcl,
+ } VARINDEX;
+ 
+ typedef struct {
+@@ -100,6 +100,7 @@ static Variable variables[] = {
+     VAR(Vhl, CV_NONE,	"hl", ""),	/* Obsolete, use mh */
+     VAR(Vmh, CV_HARD,	"mh", ""),	/* Regular file with multiple hard links */
+     VAR(Vca, CV_NONE,	"ca", ""),	/* File with capability. Not implemented. */
++    VAR(Vcl, CV_NONE,	"cl", ""),	/* CLRTOEOL */
  };
  
  #define nvariables (sizeof(variables)/sizeof(variables[0]))
-@@ -324,7 +325,7 @@ parseLS_COLORS(const Char *value)
+@@ -362,7 +363,7 @@ parseLS_COLORS(const Char *value)
      size_t  i, len;
      const Char	 *v;		/* pointer in value */
      char   *c;			/* pointer in colors */
@@ -21,7 +30,7 @@
      jmp_buf_t osetexit;
      size_t omark;
  
-@@ -381,16 +382,14 @@ parseLS_COLORS(const Char *value)
+@@ -419,16 +420,14 @@ parseLS_COLORS(const Char *value)
  			if ((Char)variables[i].variable[0] == (v[0] & CHAR) &&
  			    (Char)variables[i].variable[1] == (v[1] & CHAR))
  			    break;
@@ -29,9 +38,9 @@
  		    if (i < nvariables) {
 -			v += 3;
  			getstring(&c, &v, &variables[i].color, ':');
- 			if (i == VSym)
- 			    color_as_referent = strcasecmp(
- 				variables[VSym].color.s, "target") == 0;
+ 			if (i == Vln)
+ 			    color_as_referent = Str_equal_literal(
+ 				&variables[Vln].color, "target");
  			continue;
  		    }
 -		    else
@@ -39,23 +48,3 @@
  		}
  		break;
  	    }
-@@ -449,12 +448,13 @@ print_color(const Char *fname, size_t le
- 		break;
- 	    }
- 	if (i == nvariables) {
--	    for (i = 0; i < nextensions; i++)
--		if (len >= extensions[i].extension.len
--		    && strncmp(last - extensions[i].extension.len,
--			       extensions[i].extension.s,
--			       extensions[i].extension.len) == 0) {
--		  colorp = &extensions[i].color;
-+	    int j;
-+	    for (j = 0; j < nextensions; j++)
-+		if (len >= extensions[j].extension.len
-+		    && strncmp(last - extensions[j].extension.len,
-+			       extensions[j].extension.s,
-+			       extensions[j].extension.len) == 0) {
-+		  colorp = &extensions[j].color;
- 		break;
- 	    }
- 	}
