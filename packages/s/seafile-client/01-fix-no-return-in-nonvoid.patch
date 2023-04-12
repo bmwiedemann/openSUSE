@@ -1,7 +1,7 @@
-Index: seafile-client-8.0.9/src/ui/event-details-tree.cpp
+Index: seafile-client-9.0.1/src/ui/event-details-tree.cpp
 ===================================================================
---- seafile-client-8.0.9.orig/src/ui/event-details-tree.cpp
-+++ seafile-client-8.0.9/src/ui/event-details-tree.cpp
+--- seafile-client-9.0.1.orig/src/ui/event-details-tree.cpp
++++ seafile-client-9.0.1/src/ui/event-details-tree.cpp
 @@ -127,6 +127,8 @@ QString EventDetailsFileItem::etype_desc
        case DIR_DELETED:
          return QObject::tr("Deleted");
