@@ -72,6 +72,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -190,6 +191,7 @@ BuildArch:      noarch
 Obsoletes:      kubernetes%{baseversionminus1}-client-bash-completion
 Provides:       kubernetes-client-bash-completion = %{version}
 Conflicts:      kubernetes-client-bash-completion
+Conflicts:      kubernetes1.18-client-common
 
 %description client-bash-completion
 Bash command line completion support for %{name}-client
