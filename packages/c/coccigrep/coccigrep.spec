@@ -1,7 +1,7 @@
 #
 # spec file for package coccigrep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  xz
 Requires:       coccinelle
 Requires:       python3
 # Mimicing coccinelle
-ExclusiveArch:  aarch64 ppc64le s390x x86_64
+ExclusiveArch:  aarch64 ppc64le powerpc64le s390x x86_64 riscv64
 BuildArch:      noarch
 
 %description

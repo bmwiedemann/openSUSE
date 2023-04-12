@@ -131,4 +131,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>969653</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>495612ad1c76b580cd4b79e2a7d7110a</srcmd5>
+    <version>1.20</version>
+    <time>1681296732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update ExclusiveArch list (forwarded request 1078392 from Andreas_Schwab)</comment>
+    <requestid>1078555</requestid>
+  </revision>
 </revisionlist>
