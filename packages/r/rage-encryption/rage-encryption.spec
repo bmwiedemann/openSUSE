@@ -22,7 +22,7 @@ Name:           rage-encryption
 #               This will be set by osc services, that will run after this.
 Version:        0.9.1+0
 Release:        0
-Summary:        Simple, modern, and secure file encryption tool
+Summary:        X25519-based, simple, modern, and secure file encryption tool
 #               If you know the license, put it's SPDX string here.
 #               Alternately, you can use cargo lock2rpmprovides to help generate this.
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CDDL-1.0 AND MIT
@@ -47,8 +47,13 @@ Conflicts:      rage
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-Rage is a simple, modern, and secure file encryption tool, using the age format. It features small
-explicit keys, no config options, and UNIX-style composability.
+Rage is a simple, modern, and secure file encryption tool, using the
+age format. It features small explicit keys, no config options, and
+UNIX-style composability.
+
+Keys are based on X25519 which are similar to the ones used by SSH.
+rage-encryption can also use ssh-ed25519 and ssh-rsa keys as
+alternatives to age1 keys.
 
 %package bash-completion
 Summary:        Bash completion for %{name}
