@@ -84,6 +84,7 @@ Requires:       %{name} = %{version}
 # memcached.h includes memcached-1.0/struct/sasl.h, which in turn includes sasl/sasl.h
 Requires:       cyrus-sasl-devel
 Requires:       glibc-devel
+Requires:       libmemcachedprotocol0 = %{version}
 Requires:       libmemcachedutil2 = %{version}
 
 %description devel
@@ -98,6 +99,7 @@ usage, thread safe, and provide full access to server side methods.
 %cmake \
     -DBUILD_DOCS_HTML=OFF \
     -DBUILD_DOCS_MANGZ=ON \
+    -DENABLE_SASL=ON \
     -DBUILD_TESTING=ON
 %cmake_build
 
