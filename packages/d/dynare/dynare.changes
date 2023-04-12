@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 20:53:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add dynare-add-missing-include.patch: Add missing includes, now
+  exposed by gcc 13.
+
+-------------------------------------------------------------------
 Fri Dec 30 10:21:23 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.3:

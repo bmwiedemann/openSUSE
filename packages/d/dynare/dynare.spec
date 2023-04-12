@@ -1,7 +1,7 @@
 #
 # spec file for package dynare
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ URL:            https://www.dynare.org/
 Source:         https://www.dynare.org/release/source/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM dynare-no-return-in-non-void-function.patch badshah400@gmail.com -- Return trivial value from a function that is not declared as returning void
 Patch0:         dynare-no-return-in-non-void-function.patch
+# PATCH-FIX-UPSTREAM dynare-add-missing-include.patch -- Add missing includes, gcc 13 exposed
+Patch1:         dynare-add-missing-include.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc%{gccver}-c++
 BuildRequires:  gcc%{gccver}-fortran
@@ -79,8 +81,7 @@ Summary:        Documentation for dynare in HTML format
 This package provides documentation for %{name} in HTML format.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi

@@ -1,0 +1,12 @@
+Index: dynare-5.3/preprocessor/src/CodeInterpreter.hh
+===================================================================
+--- dynare-5.3.orig/preprocessor/src/CodeInterpreter.hh
++++ dynare-5.3/preprocessor/src/CodeInterpreter.hh
+@@ -22,6 +22,7 @@
+ 
+ #include <fstream>
+ #include <cstring>
++#include <cstdint>
+ #include <utility>
+ #include <vector>
+ #ifdef BYTE_CODE
