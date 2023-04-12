@@ -107,7 +107,7 @@
 %define build_http2 1
 
 Name:           apache2%{psuffix}
-Version:        2.4.56
+Version:        2.4.57
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Apr  7 13:17:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 2.4.57:
+    *) mod_proxy: Check before forwarding that a nocanon path has not been
+      rewritten with spaces during processing.  [Yann Ylavic]
+
+    *) mod_proxy: In case that AllowEncodedSlashes is set to NoDecode do not
+      double encode encoded slashes in the URL sent by the reverse proxy to the
+      backend. [Ruediger Pluem]
+
+    *) mod_http2: fixed a crash during connection termination. See PR 66539.
+      [Stefan Eissing]
+
+    *) mod_rewrite: Fix a 2.4.56 regression for substitutions ending
+      in a question mark. PR66547. [Eric Covener]
+
+    *) mod_rewrite: Add "BCTLS" and "BNE" RewriteRule flags. Re-allow encoded
+      characters on redirections without the "NE" flag. 
+      [Yann Ylavic, Eric Covener]
+
+    *) mod_proxy: Fix double encoding of the uri-path of the request forwarded
+      to the origin server, when using mapping=encoded|servlet.  [Yann Ylavic]
+
+    *) mod_mime: Do not match the extention against possible query string
+      parameters in case ProxyPass was used with the nocanon option.
+      [Ruediger Pluem]
+
+-------------------------------------------------------------------
 Wed Mar  8 19:44:32 UTC 2023 - David Anes <david.anes@suse.com>
 
 - This update fixes the following security issues:
