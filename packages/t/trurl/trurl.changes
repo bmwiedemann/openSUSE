@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 10 14:13:12 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4
+  Changes
+  * --get supports showing {query:key}
+  * --json outputs query pairs under "params"
+  * -a is an --append shortcut
+  * add --query-separator
+  * add --sort-query
+  Bugfixes
+  * components names are lower case and case sensitive
+  * fixed the json output of UTF-8 sequences
+  * flush stdout after handling every URL
+  * mixing --json with --get is an error
+  * more test cases
+  * show error messsage when component setting fails
+  * support "--" end-of-options argument
+  * support for building with older libcurl versions
+
+-------------------------------------------------------------------
 Thu Apr  6 13:41:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3
