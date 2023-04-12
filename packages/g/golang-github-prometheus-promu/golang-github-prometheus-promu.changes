@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jan 10 16:18:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.0:
+  * Add the ability to override tags per GOOS
+  * Remove ioutil
+  * Update common Prometheus files (#232) (#224)
+  * Validate environment variable value
+  * Set build date from SOURCE_DATE_EPOCH
+- drop patch 0001-Set-build-date-from-SOURCE_DATE_EPOCH.patch that is
+  included upstream now
+
+-------------------------------------------------------------------
 Mon Oct 31 14:17:46 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not include source code
