@@ -1,0 +1,36 @@
+From 9f1bc05396fe8fc148265cb55261bad57e149795 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 12 Apr 2023 11:14:31 +1000
+Subject: [PATCH] Use sys.executable when starting http server
+
+To avoid calling python directly, which may be Python 2 in some
+environments, use sys.executable, which returns the path of the current
+interpreter when starting the test http server.
+---
+ intake/conftest.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/intake/conftest.py b/intake/conftest.py
+index db04fa61c..13bafddb2 100644
+--- a/intake/conftest.py
++++ b/intake/conftest.py
+@@ -8,6 +8,7 @@
+ import os
+ import posixpath
+ import subprocess
++import sys
+ import tempfile
+ import time
+ 
+@@ -142,9 +143,9 @@ def intake_server(request):
+ def http_server():
+     port_as_str = str(pick_port())
+     if PY2:
+-        cmd = ["python", "-m", "SimpleHTTPServer", port_as_str]
++        cmd = [sys.executable, "-m", "SimpleHTTPServer", port_as_str]
+     else:
+-        cmd = ["python", "-m", "http.server", port_as_str]
++        cmd = [sys.executable, "-m", "http.server", port_as_str]
+     p = subprocess.Popen(cmd, cwd=os.path.join(here, "catalog", "tests"))
+     url = "http://localhost:{}/".format(port_as_str)
+     timeout = 5

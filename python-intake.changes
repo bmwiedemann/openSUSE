@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 12 01:28:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.8:
+  * user parameter parsed as string before conversion to given type
+  * numpy source becomes first to have read() path avoid dask
+  * when registering drivers dynamically, corresponding open_* functions will
+    be created automatically (plus refactor/cleanup of the discovery code)
+  * catalog .gui attribute will make top-level GUI instance instead of cut
+    down one-catalog version
+  * server fix for upstream dask change giving newlined in report
+  * editable plots, based on hvPlot's "explorer"
+  * remove "text" input to YAMLFileCatalog
+  * GUI bug fixes
+  * allow catalog TTL as None 
+- Add patch use-sys-executable.patch:
+  * Use sys.executable, rather than hardcoding python.
+
+-------------------------------------------------------------------
 Wed Nov 23 19:22:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.6
