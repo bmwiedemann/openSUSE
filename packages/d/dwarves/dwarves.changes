@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr  8 21:25:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * Fixed the handling of DW_TAG_unspecified type in assembly
+    functions that came with binutils 2.40
+  * Allow the BTF encoding of optimized functions (ending in
+    .constprop, .isra),
+  * Exclude BTF optimized functions not following the calling
+    convention
+  * Support for DW_TAG_atomic_type
+  * Support for the DW_TAG_LLVM_annotation BTF equivalent
+    (BTF_KIND_TYPE_TAG) on the BTF loader and for now suppressing
+    it when pretty printing
+- Drop 0001-pahole-Support-lang-lang_exclude-asm.patch,
+  0002-btf_encoder-Add-extra-debug-info-for-unsupported-DWA.patch,
+  0003-btf_encoder-Store-the-CU-being-processed-to-avoid-ch.patch,
+  0004-core-Add-DW_TAG_unspecified_type-to-tag__is_tag_type.patch,
+  0005-core-Record-if-a-CU-has-a-DW_TAG_unspecified_type.patch,
+  0006-btf_encoder-Encode-DW_TAG_unspecified_type-returning.patch,
+  0007-dwarves-Zero-initialize-struct-cu-in-cu__new-to-prev.patch
+
+-------------------------------------------------------------------
 Fri Feb 17 14:36:32 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add 0001-pahole-Support-lang-lang_exclude-asm.patch,

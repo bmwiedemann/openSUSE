@@ -16,8 +16,8 @@
 #
 
 
-# no distro has libbpf >= 1.0.1 yet
-%if 0
+%if 0%{?suse_version} >= 1590
+# have libbpf >= 1.0.1
 %define have_libbpf 1
 %endif
 %if (0%{?sle_version} && 0%{?sle_version} <= 150300) || (0%{?suse_version} && 0%{?suse_version} < 1500)
@@ -25,7 +25,7 @@
 %endif
 
 Name:           dwarves
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -37,13 +37,6 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source8:        dwarves.keyring
 Source9:        baselibs.conf
-Patch0:         0001-pahole-Support-lang-lang_exclude-asm.patch
-Patch1:         0002-btf_encoder-Add-extra-debug-info-for-unsupported-DWA.patch
-Patch2:         0003-btf_encoder-Store-the-CU-being-processed-to-avoid-ch.patch
-Patch3:         0004-core-Add-DW_TAG_unspecified_type-to-tag__is_tag_type.patch
-Patch4:         0005-core-Record-if-a-CU-has-a-DW_TAG_unspecified_type.patch
-Patch5:         0006-btf_encoder-Encode-DW_TAG_unspecified_type-returning.patch
-Patch6:         0007-dwarves-Zero-initialize-struct-cu-in-cu__new-to-prev.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
 BuildRequires:  libelf-devel

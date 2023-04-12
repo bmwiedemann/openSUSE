@@ -306,4 +306,12 @@
     <comment></comment>
     <requestid>1066420</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>355058e39d022ec97b2e4ae952f8651b</srcmd5>
+    <version>1.25</version>
+    <time>1681296646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.25</comment>
+    <requestid>1078348</requestid>
+  </revision>
 </revisionlist>
