@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Apr 11 15:59:42 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- initial import of C-language implementation of Javascript Object
+  Signing and Encryption, for use by clevis
