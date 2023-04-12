@@ -328,6 +328,8 @@
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="file-roller" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="file-roller-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="filelight" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="filelight-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="fillup" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="findutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->

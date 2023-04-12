@@ -2131,6 +2131,12 @@ unsorted:
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
   - clementine 
+  - clevis 
+  - clevis-bash-completion 
+  - clevis-dracut 
+  - clevis-luks 
+  - clevis-systemd 
+  - clevis-udisks2 
   - cli11-devel 
   - cli11-doc 
   - clinfo 
@@ -3947,8 +3953,6 @@ unsorted:
   - file-unpack 
   - fileb0x 
   - filebench 
-  - filelight 
-  - filelight-lang 
   - filezilla 
   - filezilla-devel 
   - filezilla-lang 
@@ -8618,6 +8622,7 @@ unsorted:
   - jondofox 
   - jopt-simple 
   - jopt-simple-javadoc 
+  - jose 
   - joycond 
   - joycond-autoload 
   - jp 
@@ -12211,7 +12216,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_124 
+  - libgsoap-2_8_127 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -12712,6 +12717,8 @@ unsorted:
   - libjcat-devel 
   - libjd0 
   - libjim0_81 
+  - libjose-devel 
+  - libjose0 
   - libjpeg62 
   - libjpeg62-devel 
   - libjpeg8-32bit 
@@ -13012,6 +13019,8 @@ unsorted:
   - libluksde-devel 
   - libluksde-tools 
   - libluksde1 
+  - libluksmeta-devel 
+  - libluksmeta0 
   - liblur3 
   - libluv-devel 
   - libluv1 
@@ -13259,9 +13268,6 @@ unsorted:
   - libmpfr6-32bit 
   - libmpfrcx1 
   - libmpg123-0-32bit 
-  - libmpir-devel 
-  - libmpir23 
-  - libmpirxx8 
   - libmplex2-2_2-0-32bit 
   - libmpris-qt5-1 
   - libmpv2 
@@ -15101,6 +15107,7 @@ unsorted:
   - libtaginfo1 
   - libtaginfo_c0 
   - libtalloc-devel 
+  - libtalloc2-x86-64-v3 
   - libtar 
   - libtar-devel 
   - libtar1 
@@ -16545,6 +16552,7 @@ unsorted:
   - luckybackup 
   - lugaru 
   - lugaru-data 
+  - luksmeta 
   - lunar-calendar-devel 
   - lunar-calendar-doc 
   - lunar-date-devel 
@@ -19434,6 +19442,7 @@ unsorted:
   - openscap-content 
   - openscap-devel 
   - openscap-docker 
+  - openscap-report 
   - openscap-utils 
   - openshot-qt 
   - openslide-doc 
@@ -22829,6 +22838,7 @@ unsorted:
   - python3-swiftclient 
   - python3-talloc-32bit 
   - python3-talloc-devel 
+  - python3-talloc-x86-64-v3 
   - python3-tdb-32bit 
   - python3-tevent-32bit 
   - python3-tooz 
@@ -27681,6 +27691,7 @@ unsorted:
   - python311-iniparse 
   - python311-injector 
   - python311-installer 
+  - python311-intake 
   - python311-interrogate 
   - python311-intervals 
   - python311-intervaltree 
@@ -29556,7 +29567,6 @@ unsorted:
   - python38-awscrt 
   - python38-base 
   - python38-base-32bit 
-  - python38-chart-studio 
   - python38-curses 
   - python38-dbm 
   - python38-devel 
@@ -29568,18 +29578,15 @@ unsorted:
   - python38-gwdatafind 
   - python38-gwpy 
   - python38-idle 
-  - python38-intake 
   - python38-ipympl 
   - python38-ipyscales 
   - python38-ipyvolume 
-  - python38-kombu 
   - python38-lalpulsar 
   - python38-lalsimulation 
   - python38-ldas-tools-al-swig 
   - python38-limnoria 
   - python38-net-snmp 
   - python38-oct2py 
-  - python38-pip-licenses 
   - python38-pybugz 
   - python38-pyheif 
   - python38-pymediainfo 
