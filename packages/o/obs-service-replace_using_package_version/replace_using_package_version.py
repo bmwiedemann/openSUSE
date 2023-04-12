@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 SUSE Linux GmbH.  All rights reserved.
+# SPDX-FileCopyrightText: (c) 2023 SUSE LLC
 #
 # This file is part of obs-service-replace_using_package_version.
 #
@@ -49,7 +49,7 @@ import docopt
 import re
 import os
 import subprocess
-from pkg_resources import parse_version
+from rpm import labelCompare
 from typing import List
 
 version_regex = {
@@ -185,7 +185,7 @@ def find_package_version_in_local_repos(repo_path, package):
             rpm_file = os.path.join(root, pkg)
             if get_pkg_name_from_rpm(rpm_file) == package:
                 rpm_ver = get_pkg_version_from_rpm(rpm_file)
-                if version is None or rpm_ver >= version:
+                if version is None or labelCompare(rpm_ver, version) >= 0:
                     version = rpm_ver
     return version
 
@@ -195,7 +195,7 @@ def find_package_version_in_obsinfo(path, package):
     for f in os.listdir(path):
         if f.endswith('obsinfo') and package in f:
             obsinfo_ver = get_pkg_version_from_obsinfo(f)
-            if version is None or obsinfo_ver >= version:
+            if version is None or labelCompare(obsinfo_ver, version) >= 0:
                 version = obsinfo_ver
     return version
 
@@ -212,35 +212,35 @@ def run_command(command: List[str]) -> str:
     return subprocess.check_output(command).decode()
 
 
-def get_pkg_version_from_obsinfo(obsinfo_file):
+def get_pkg_version_from_obsinfo(obsinfo_file: str) -> Optional[str]:
     regex = re.compile(obsinfo_regex)
     with open(obsinfo_file) as f:
         for line in f:
             match = regex.match(line)
             if match:
-                return parse_version(match[1])
+                return match[1]
     return None
 
 
-def get_pkg_name_from_rpm(rpm_file):
+def get_pkg_name_from_rpm(rpm_file: str) -> str:
     command = [
         'rpm', '-qp', '--queryformat', '%{NAME}', rpm_file
     ]
     return run_command(command)
 
 
-def get_pkg_version_from_rpm(rpm_file):
+def get_pkg_version_from_rpm(rpm_file: str) -> str:
     command = [
         'rpm', '-qp', '--queryformat', '%{VERSION}', rpm_file
     ]
-    return parse_version(run_command(command))
+    return run_command(command)
 
 
-def get_pkg_version(package):
+def get_pkg_version(package: str) -> str:
     command = [
         'rpm', '-q', '--queryformat', '%{VERSION}', package
     ]
-    return parse_version(run_command(command))
+    return run_command(command)
 
 
 def init(__name__):

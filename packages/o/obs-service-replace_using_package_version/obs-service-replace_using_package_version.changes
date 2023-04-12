@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 11 10:19:11 UTC 2023 - containers@suse.com
+
+- Update to version 1681202780.6d8bb3c:
+  * Run unit & install test only for the system python
+  * Add python 3.11 tox environment
+  * Switch to using rpm.labelCompare instead of parse_version
+  * Fix copyright strings
+  * Fix test_find_package_version
+  * Bump mock from 4.0.3 to 5.0.1
+  * Bump pytest-xdist from 2.5.0 to 3.0.2
+  * Bump tox from 3.25.1 to 3.28.0
+  * Bump Gr1N/setup-poetry from 7 to 8
+  * Bump pytest-container from 0.0.2 to 0.1.1
+  * Bump actions/setup-python from 4.3.0 to 4.5.0
+
+-------------------------------------------------------------------
 Thu Mar 30 07:25:53 UTC 2023 - containers@suse.com
 
 - Update to version 1680160876.6dcaef0:

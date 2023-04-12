@@ -30,7 +30,7 @@ Source1:        %{service}.service
 Source2:        LICENSE
 BuildRequires:  sed
 Requires:       python3-docopt
-Requires:       python3-setuptools
+Requires:       python3-rpm
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
