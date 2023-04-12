@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 08:30:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove test-py38 flavor from multibuild: python 3.8 is no longer
+  supported.
+
+-------------------------------------------------------------------
 Sat Feb 25 18:35:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Promote tables-debundled-blosc2.patch to
