@@ -1,7 +1,7 @@
 #
 # spec file for package python-HyperKitty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,6 +98,7 @@ BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
 # use the real python3 primary for rpm pythondistdeps.py
 BuildRequires:  python3-packaging
+BuildRequires:  sassc
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
@@ -152,6 +153,9 @@ Provides:       python3-%{hyperkitty_pkgname} = %{version}-%{release}
 Obsoletes:      python3-%{hyperkitty_pkgname} < %{version}-%{release}
 Provides:       %{mypython}-%{hyperkitty_pkgname} = %{version}-%{release}
 Obsoletes:      %{mypython}-%{hyperkitty_pkgname} < %{version}-%{release}
+%if 0%{?suse_version} >= 1550
+Requires:       sassc
+%endif
 
 %description -n %{hyperkitty_pkgname}
 A web interface to access GNU Mailman v3 archives.

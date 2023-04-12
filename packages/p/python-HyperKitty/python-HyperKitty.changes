@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  5 09:44:44 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing requires for sassc used by manage.py
+
+-------------------------------------------------------------------
 Thu Oct  6 12:07:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-django41.patch to fix issues with django4.1
