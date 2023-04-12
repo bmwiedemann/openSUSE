@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Apr 11 09:53:40 UTC 2023 - asn@cryptomilk.org
+
+- Update to version 0.6.4+0:
+  * Safety critical bounds checking is off-by-one in sgrproj_box_ab_internal
+  * Initialize `low` array in a more rust-like way in `kmeans`
+  * Rework mutable borrows for symbol_with_update
+  * Drop explicit size for macro symbol_with_update
+  * Use const generics for CDFContextLog
+  * Fix undefined behavior in CDFContextLogOps
+  * ec: Simplify lr_compute function
+  * Use a bit counter instead of a byte counter in WriterRecorder
+  * Minimize bounds checks in pred functions
+  * Use generics for BD-8 on sgrproj functions
+  * Use saturating_sub in sgrproj_sum_finish
+  * Move bounds checks out of hot loop in sgrproj
+  * Ensure quantizer values are non-zero with a const fn
+  * Optimize base quants using NonZero integers (#3115)
+  * Move quant tables to separate file to improve organization (#3113)
+  * Use is_power_of_two method in divu_gen
+  * Fix rounding issue in HBD CDEF code
+  * Hint that creating a region from an empty plane is unlikely
+  * Minor optimization to take_slice
+  * Clean up cdef_dist
+  * Minor optimizations
+  * Optimizations for weighted_sse
+  * Add HBD AVX2 assembly for SAD (#3099)
+  * ec: Manually inline `msb()` and `ilog()` for clarity (#3104)
+  * Comment regarding cnt being unused
+  * Improve naming
+  * Use a bit counter instead of a byte counter in EC
+  * Add 10-bit cdef_dist ASM
+  * Optimise sad_plane_internal
+  * Save some bounds checks on me_stats
+  * Minor optimization to av1_get_mv_joint
+  * Use chunks_exact for performance in diff method
+  * Integrate CfL AC x86 assembly functions
+  * benches: Fix alignment issue for cfl_rdo
+  * Move luma_ac to predict module
+  * Extract luma_ac_internal with const generics
+  * Optimise plane::as_region
+  * Optimise BlockSize::from_width_and_height_opt
+  * Improve vectorization in get_sad
+  * Template entropy coding functions to help optimiser
+  * Enable SSE2/AVX512ICL put/prep/avg x86 assembly
+  * Enable AVX2 12-bit Inverse Transform x86 assembly
+  * Enable new SSE4.1 HBD Inverse Transform x86 assembly
+  * Pin assert_cmd, predicates and clap in Cargo.toml for rust 1.60.0
+  * Prepare for release
+  * Fix header coding for level_idx < 7.
+
+-------------------------------------------------------------------
 Mon Jan 02 15:54:31 UTC 2023 - asn@cryptomilk.org
 
 - Update to version 0.6.2+0:

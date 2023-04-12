@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.6.2+0
+Version:        0.6.4+0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
