@@ -33,4 +33,12 @@
   * Allow the test suite to find modules not shipped as modules.</comment>
     <requestid>930278</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ed817c10ad7e3f818fe1e1874ebacc16</srcmd5>
+    <version>20200726</version>
+    <time>1681296685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078500</requestid>
+  </revision>
 </revisionlist>

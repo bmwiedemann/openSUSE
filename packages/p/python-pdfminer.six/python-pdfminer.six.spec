@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfminer.six
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pdfminer.six
 Version:        20200726
@@ -30,17 +29,13 @@ Patch0:         python-pdfminer.six-remove-nose.patch
 Patch1:         import-from-non-pythonpath-files.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-chardet
 Requires:       python-cryptography
-Requires:       python-pycryptodome
-Requires:       python-six
 Requires:       python-sortedcontainers
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -50,16 +45,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Fork of PDFMiner using six for Python3 compatibility.
-
-PDFMiner is a tool for extracting information from PDF documents.
-Unlike other PDF-related tools, it focuses entirely on getting
-and analyzing text data. PDFMiner allows to obtain the exact
-location of texts in a page, as well as other information such
-as fonts or lines. It includes a PDF converter that can transform
-PDF files into other text formats (such as HTML). It has an
-extensible PDF parser that can be used for other purposes instead
-of text analysis.
+Pdfminer.six is a community maintained fork of the original PDFMiner. It
+is a tool for extracting information from PDF documents. It focuses on
+getting and analyzing text data. Pdfminer.six extracts the text from a
+page directly from the sourcecode of the PDF. It can also be used to get
+the exact location, font or color of the text.
 
 %prep
 %setup -q -n pdfminer.six-%{version}
