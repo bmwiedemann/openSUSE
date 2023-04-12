@@ -1,0 +1,5 @@
+<package name="clevis" project="openSUSE:Factory">
+  <title>A pluggable framework for automated decryption</title>
+  <description></description>
+  <devel project="security" package="clevis"/>
+</package>
