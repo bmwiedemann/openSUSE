@@ -1,7 +1,7 @@
 #
 # spec file for package php-memcache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,24 +31,16 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-%if "%{php_name}" == "php8"
-Version:        8.0
+Version:        8.0.1
 Release:        0
-%else
-Version:        4.0.5.2
-Release:        0
-%endif
 Summary:        PHP Memcache client Extension
 License:        PHP-3.0
 Group:          Productivity/Networking/Web/Servers
-URL:            https://pecl.php.net/package/memcache
-Source0:        https://pecl.php.net/get/%{pkg_name}-4.0.5.2.tgz
-Source1:        https://pecl.php.net/get/%{pkg_name}-8.0.tgz
+URL:            https://github.com/websupport-sk/pecl-memcache
+Source0:        https://github.com/websupport-sk/pecl-memcache/archive/refs/tags/%{version}.tar.gz
 Source10:       php-memcache-rpmlintrc
+# PATCH-FIX-OPENSUSE: fix unit tests that don't work on OBS
 Patch1:         fixup-unit-tests.patch
-Patch2:         fixup-unit-test-040.patch
-# PATCH-FIX-UPSTREAM: https://github.com/websupport-sk/pecl-memcache/pull/88
-Patch3:         fix-deprecated-memcache_connect.patch
 # PATCH-FIX-UPSTREAM: https://github.com/websupport-sk/pecl-memcache/pull/104
 Patch4:         trivial-minimal-fix-for-PHP-8.2.patch
 %if 0%{?suse_version} > 1500
@@ -70,15 +62,7 @@ The extension allows use to store sessions in memcached
 via memcache.
 
 %prep
-%if "%{flavor}" == "php8"
-%setup -q -n %{pkg_name}-%{version} -T -b 1
-%patch3 -p1
-%patch4 -p1
-%else
-%setup -q -n %{pkg_name}-%{version}
-%patch2
-%endif
-%patch1
+%autosetup -p1 -n pecl-%{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"

@@ -50,4 +50,18 @@
     <comment></comment>
     <requestid>1042179</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df4e2b5d9f60d58cc7dc9619a18229e4</srcmd5>
+    <version>8.0.1</version>
+    <time>1681296692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.1
+  * change upstream source
+  * includes a fix for a possible memory corruption during flush
+- Remove upstreamed / obsolete patches
+  - fix-deprecated-memcache_connect.patch
+  - fixup-unit-test-040.patch
+</comment>
+    <requestid>1078512</requestid>
+  </revision>
 </revisionlist>

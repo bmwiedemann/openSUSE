@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 11 10:21:54 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 8.0.1
+  * change upstream source
+  * includes a fix for a possible memory corruption during flush
+- Remove upstreamed / obsolete patches
+  - fix-deprecated-memcache_connect.patch
+  - fixup-unit-test-040.patch
+
+-------------------------------------------------------------------
 Sun Dec 11 12:32:55 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build issues for PHP 8.2
