@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          102
-%define mainver        %major.9.0
-%define orig_version   102.9.0
+%define mainver        %major.10.0
+%define orig_version   102.10.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -207,6 +207,7 @@ Patch20:        mozilla-bmo531915.patch
 Patch21:        one_swizzle_to_rule_them_all.patch
 Patch22:        svg-rendering.patch
 Patch23:        gcc13-fix.patch
+Patch24:        mozilla-llvm16.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -296,6 +297,7 @@ fi
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
+%patch24 -p1
 %endif
 
 %build

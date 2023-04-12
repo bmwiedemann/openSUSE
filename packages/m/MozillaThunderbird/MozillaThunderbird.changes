@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Apr  5 21:10:11 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.10.0
+  * New messages will automatically select S/MIME if configured and
+    OpenPGP is not
+  * Calendar events with timezone America/Mexico_City incorrectly
+    applied Daylight Savings Time
+  MFSA 2023-15 (bsc#1210212)
+  * CVE-2023-29531 (bmo#1794292)
+    Out-of-bound memory access in WebGL on macOS
+  * CVE-2023-29532 (bmo#1806394)
+    Mozilla Maintenance Service Write-lock bypass
+  * CVE-2023-29533 (bmo#1798219, bmo#1814597)
+    Fullscreen notification obscured
+  * MFSA-TMP-2023-0001 (bmo#1819244)
+    Double-free in libwebp
+  * CVE-2023-29535 (bmo#1820543)
+    Potential Memory Corruption following Garbage Collector compaction
+  * CVE-2023-29536 (bmo#1821959)
+    Invalid free from JavaScript code
+  * CVE-2023-0547 (bmo#1811298)
+    Revocation status of S/Mime recipient certificates was not checked
+  * CVE-2023-29479 (bmo#1824978)
+    Hang when processing certain OpenPGP messages
+  * CVE-2023-29539 (bmo#1784348)
+    Content-Disposition filename truncation leads to Reflected
+    File Download
+  * CVE-2023-29541 (bmo#1810191)
+    Files with malicious extensions could have been downloaded
+    unsafely on Linux
+  * CVE-2023-29542 (bmo#1810793, bmo#1815062)
+    Bypass of file download extension restrictions
+  * CVE-2023-29545 (bmo#1823077)
+    Windows Save As dialog resolved environment variables
+  * CVE-2023-1945 (bmo#1777588)
+    Memory Corruption in Safe Browsing Code
+  * CVE-2023-29548 (bmo#1822754)
+    Incorrect optimization result on ARM64
+  * CVE-2023-29550 (bmo#1720594, bmo#1751945, bmo#1812498, bmo#1814217,
+    bmo#1818357, bmo#1818762, bmo#1819493, bmo#1820389, bmo#1820602,
+    bmo#1821448, bmo#1822413, bmo#1824828)
+    Memory safety bugs fixed in Thunderbird 102.10
+- add mozilla-llvm16.patch to fix build with LLVM16
+
+-------------------------------------------------------------------
+Wed Mar 29 10:50:35 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.9.1
+  MFSA 2023-12
+  * CVE-2023-28427 (bmo#1822595)
+    Matrix SDK bundled with Thunderbird vulnerable to
+    denial-of-service attack
+
+-------------------------------------------------------------------
 Sun Mar 26 10:57:52 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - add gcc13-fix.patch to support current Tumbleweed

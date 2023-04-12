@@ -1,0 +1,207 @@
+From 80738016a36e803fe3bf8b8f6f388c6589d86a1c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Emilio=20Cobos=20=C3=81lvarez?= <emilio@crisal.io>
+Date: Tue, 18 Oct 2022 02:17:18 +0200
+Subject: [PATCH] clang: Detect anonymous items explicitly, rather than relying
+ on empty names.
+
+In Clang 16, anonymous items may return names like
+`(anonymous union at ..)` rather than empty names.
+
+The right way to detect them is using clang_Cursor_isAnonymous.
+
+Fixes #2312
+Closes #2316
+
+Co-Authored-by: Patrick Walton <pcwalton@fb.com>
+
+From c03b37697a1e117995ea76203e5c0ce7d6696c4e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Emilio=20Cobos=20=C3=81lvarez?= <emilio@crisal.io>
+Date: Wed, 9 Nov 2022 13:33:19 +0100
+Subject: [PATCH] ir: Don't crash with built-in unexposed types from libclang.
+
+This fixes #2325.
+
+The issue is that `__bf16` is not exposed at all by libclang, which
+causes us to crash. It's a bit of a shame libclang doesn't expose it but
+there's no rust equivalent I think, so this should be ok for now.
+
+Unfortunately no test because the header crashes older clang versions.
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 163674ec5d..28456ee0ba 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -394,8 +394,6 @@ dependencies = [
+ [[package]]
+ name = "bindgen"
+ version = "0.56.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2da379dbebc0b76ef63ca68d8fc6e71c0f13e59432e0987e508c1820e6ab5239"
+ dependencies = [
+  "bitflags",
+  "cexpr",
+diff --git a/Cargo.toml b/Cargo.toml
+index d918adae95..dddd1298f7 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -117,6 +117,7 @@ packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/pa
+ midir = { git = "https://github.com/mozilla/midir.git", rev = "4c11f0ffb5d6a10de4aff40a7b81218b33b94e6f" }
+ minidump_writer_linux = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "75ada456c92a429704691a85e1cb42fef8cafc0d" }
+ glslopt = { path = "third_party/rust/glslopt/" }
++bindgen = { path = "third_party/rust/bindgen/" }
+ 
+ # Patch mio 0.6 to use winapi 0.3 and miow 0.3, getting rid of winapi 0.2.
+ # There is not going to be new version of mio 0.6, mio now being >= 0.7.11.
+diff --git a/third_party/rust/bindgen/src/clang.rs b/third_party/rust/bindgen/src/clang.rs
+index 488660c434..ef74ac08c2 100644
+--- a/third_party/rust/bindgen/src/clang.rs
++++ b/third_party/rust/bindgen/src/clang.rs
+@@ -54,6 +54,11 @@ impl Cursor {
+         unsafe { clang_isDeclaration(self.kind()) != 0 }
+     }
+ 
++    /// Is this cursor's referent an anonymous record or so?
++    pub fn is_anonymous(&self) -> bool {
++        unsafe { clang_Cursor_isAnonymous(self.x) != 0 }
++    }
++
+     /// Get this cursor's referent's spelling.
+     pub fn spelling(&self) -> String {
+         unsafe { cxstring_into_string(clang_getCursorSpelling(self.x)) }
+diff --git a/third_party/rust/bindgen/src/ir/comp.rs b/third_party/rust/bindgen/src/ir/comp.rs
+index 22c124fa36..b715616c5e 100644
+--- a/third_party/rust/bindgen/src/ir/comp.rs
++++ b/third_party/rust/bindgen/src/ir/comp.rs
+@@ -1372,8 +1372,7 @@ impl CompInfo {
+ 
+                     // A declaration of an union or a struct without name could
+                     // also be an unnamed field, unfortunately.
+-                    if cur.spelling().is_empty() &&
+-                        cur.kind() != CXCursor_EnumDecl
++                    if cur.is_anonymous() && cur.kind() != CXCursor_EnumDecl
+                     {
+                         let ty = cur.cur_type();
+                         let offset = cur.offset_of_field().ok();
+diff --git a/third_party/rust/bindgen/src/ir/ty.rs b/third_party/rust/bindgen/src/ir/ty.rs
+index e6eecc3c50..f3e1193ce2 100644
+--- a/third_party/rust/bindgen/src/ir/ty.rs
++++ b/third_party/rust/bindgen/src/ir/ty.rs
+@@ -737,7 +737,12 @@ impl Type {
+ 
+         let layout = ty.fallible_layout(ctx).ok();
+         let cursor = ty.declaration();
+-        let mut name = cursor.spelling();
++        let is_anonymous = cursor.is_anonymous();
++        let mut name = if is_anonymous {
++            None
++        } else {
++            Some(cursor.spelling()).filter(|n| !n.is_empty())
++        };
+ 
+         debug!(
+             "from_clang_ty: {:?}, ty: {:?}, loc: {:?}",
+@@ -771,7 +776,7 @@ impl Type {
+             if is_canonical_objcpointer && is_template_type_param {
+                 // Objective-C generics are just ids with fancy name.
+                 // To keep it simple, just name them ids
+-                name = "id".to_owned();
++                name = Some("id".to_owned());
+             }
+         }
+ 
+@@ -900,7 +905,7 @@ impl Type {
+                                         return Err(ParseError::Recurse);
+                                     }
+                                 } else {
+-                                    name = location.spelling();
++                                    name = Some(location.spelling());
+                                 }
+ 
+                                 let complex = CompInfo::from_ty(
+@@ -942,7 +947,7 @@ impl Type {
+                                                 CXType_Typedef
+                                             );
+ 
+-                                            name = current.spelling();
++                                            name = Some(location.spelling());
+ 
+                                             let inner_ty = cur
+                                                 .typedef_type()
+@@ -1126,10 +1131,10 @@ impl Type {
+                 CXType_Enum => {
+                     let enum_ = Enum::from_ty(ty, ctx).expect("Not an enum?");
+ 
+-                    if name.is_empty() {
++                    if !is_anonymous {
+                         let pretty_name = ty.spelling();
+                         if clang::is_valid_identifier(&pretty_name) {
+-                            name = pretty_name;
++                            name = Some(pretty_name);
+                         }
+                     }
+ 
+@@ -1144,12 +1149,12 @@ impl Type {
+                     )
+                     .expect("Not a complex type?");
+ 
+-                    if name.is_empty() {
++                    if !is_anonymous {
+                         // The pretty-printed name may contain typedefed name,
+                         // but may also be "struct (anonymous at .h:1)"
+                         let pretty_name = ty.spelling();
+                         if clang::is_valid_identifier(&pretty_name) {
+-                            name = pretty_name;
++                            name = Some(pretty_name);
+                         }
+                     }
+ 
+@@ -1161,8 +1166,7 @@ impl Type {
+                         location,
+                         None,
+                         ctx,
+-                    )
+-                    .expect("Not able to resolve vector element?");
++                    )?;
+                     TypeKind::Vector(inner, ty.num_elements().unwrap())
+                 }
+                 CXType_ConstantArray => {
+@@ -1189,7 +1193,9 @@ impl Type {
+                 CXType_ObjCClass | CXType_ObjCInterface => {
+                     let interface = ObjCInterface::from_ty(&location, ctx)
+                         .expect("Not a valid objc interface?");
+-                    name = interface.rust_name();
++                    if !is_anonymous {
++                        name = Some(interface.rust_name());
++                    }
+                     TypeKind::ObjCInterface(interface)
+                 }
+                 CXType_Dependent => {
+@@ -1207,7 +1213,7 @@ impl Type {
+             }
+         };
+ 
+-        let name = if name.is_empty() { None } else { Some(name) };
++        name = name.filter(|n| !n.is_empty());
+ 
+         let is_const = ty.is_const() ||
+             (ty.kind() == CXType_ConstantArray &&
+diff --git a/third_party/rust/bindgen/src/ir/var.rs b/third_party/rust/bindgen/src/ir/var.rs
+index c6f121d74e..679c92bbea 100644
+--- a/third_party/rust/bindgen/src/ir/var.rs
++++ b/third_party/rust/bindgen/src/ir/var.rs
+@@ -301,11 +301,11 @@ impl ClangSubItemParser for Var {
+                 let ty = match Item::from_ty(&ty, cursor, None, ctx) {
+                     Ok(ty) => ty,
+                     Err(e) => {
+-                        assert_eq!(
+-                            ty.kind(),
+-                            CXType_Auto,
++                        assert!(
++			    matches!(ty.kind(), CXType_Auto | CXType_Unexposed),
+                             "Couldn't resolve constant type, and it \
+-                             wasn't an nondeductible auto type!"
++                             wasn't an nondeductible auto type or unexposed \
++			     type!"
+                         );
+                         return Err(e);
+                     }

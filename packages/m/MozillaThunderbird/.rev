@@ -4786,4 +4786,41 @@ I cannot test locally unfortunately.
     <comment>- add gcc13-fix.patch to support current Tumbleweed</comment>
     <requestid>1074474</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>0a5c66a22746665cedbb7149558f4f24</srcmd5>
+    <version>102.10.0</version>
+    <time>1681296694</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.10.0
+  * New messages will automatically select S/MIME if configured and
+    OpenPGP is not
+  * Calendar events with timezone America/Mexico_City incorrectly
+    applied Daylight Savings Time
+  MFSA 2023-15 (bsc#1210212)
+  * CVE-2023-29531 (bmo#1794292)
+    Out-of-bound memory access in WebGL on macOS
+  * CVE-2023-29532 (bmo#1806394)
+    Mozilla Maintenance Service Write-lock bypass
+  * CVE-2023-29533 (bmo#1798219, bmo#1814597)
+    Fullscreen notification obscured
+  * MFSA-TMP-2023-0001 (bmo#1819244)
+    Double-free in libwebp
+  * CVE-2023-29535 (bmo#1820543)
+    Potential Memory Corruption following Garbage Collector compaction
+  * CVE-2023-29536 (bmo#1821959)
+    Invalid free from JavaScript code
+  * CVE-2023-0547 (bmo#1811298)
+    Revocation status of S/Mime recipient certificates was not checked
+  * CVE-2023-29479 (bmo#1824978)
+    Hang when processing certain OpenPGP messages
+  * CVE-2023-29539 (bmo#1784348)
+    Content-Disposition filename truncation leads to Reflected
+    File Download
+  * CVE-2023-29541 (bmo#1810191)
+    Files with malicious extensions could have been downloaded
+    unsafely on Linux
+  * CVE-2023-29542 (bmo#1810793, bmo#1815062)
+    Bypass of file download extension restrictions</comment>
+    <requestid>1078519</requestid>
+  </revision>
 </revisionlist>
