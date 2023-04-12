@@ -1,0 +1,17 @@
+Index: ltrace-0.7.91/sysdeps/linux-gnu/ppc/plt.c
+===================================================================
+--- ltrace-0.7.91.orig/sysdeps/linux-gnu/ppc/plt.c
++++ ltrace-0.7.91/sysdeps/linux-gnu/ppc/plt.c
+@@ -688,10 +688,10 @@ arch_elf_add_func_entry(struct process *
+ 		    || library_symbol_init(libsym, addr, full_name, 1,
+ 					   LS_TOPLT_NONE) < 0) {
+ 			free(libsym);
+-			delete_symbol_chain(libsym);
+-			libsym = NULL;
+ 			fprintf(stderr, "Couldn't add symbol %s"
+ 				"for tracing.\n", name);
++			free(full_name);
++			return PLT_FAIL;
+ 		}
+ 		full_name = NULL;
+ 		libsym->next = *ret;

@@ -1,7 +1,7 @@
 #
 # spec file for package ltrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch5:         gcc9-printf-s-null-argument.patch
 Patch6:         lens-double-free.patch
 Patch7:         gcc9-Wlto-type-mismatch.patch
 Patch8:         s390x-ptrace.patch
+Patch9:         ppc64le-use-after-free.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -66,6 +67,7 @@ child processes may fail or some things may not work as expected.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 ./autogen.sh

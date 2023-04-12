@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 11 10:59:57 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- ppc64le-use-after-free.patch: fix use after free
+
+-------------------------------------------------------------------
 Fri Apr  9 12:27:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add ltrace-0.7.91-ppc64le-scv.patch from Fedora

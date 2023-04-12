@@ -398,4 +398,12 @@
 - add timeout to testsuite run, it is non-fatal anyway</comment>
     <requestid>884045</requestid>
   </revision>
+  <revision rev="47" vrev="14">
+    <srcmd5>80e0add27384a24479ce405de6209d00</srcmd5>
+    <version>0.7.91</version>
+    <time>1681296659</time>
+    <user>dimstar_suse</user>
+    <comment>- ppc64le-use-after-free.patch: fix use after free (forwarded request 1078433 from Andreas_Schwab)</comment>
+    <requestid>1078434</requestid>
+  </revision>
 </revisionlist>
