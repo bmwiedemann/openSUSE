@@ -1,3 +1,10 @@
+gpxsee (12.4) stable; urgency=medium
+
+  * Fixed/improved Mapsforge maps rendering.
+  * Minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 10 Apr 2023 18:47:49 +0200
+
 gpxsee (12.3) stable; urgency=low
 
   * Improved ENC maps rendering.
