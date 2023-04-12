@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 12 09:47:50 UTC 2023 - info@paolostivanin.com
+
+- Update to version 3.3.0.20230224:
+  * Waiting with WaitNamedPipe() if a named pipe is busy (#62)
+  * Filter rpc slow log include password (#61)
+  * Add support c++ compile (#60)
+  * Change slow log format (#58)
+  * Configure x64-debug build (#56)
+  * add --with-python3 option (#55)
+  * only use python3 in linux (#54)
+  * remove python3 future
+  * configure with python3 (#53)
+  * Fixed python-searpc installation place (#52)
+
+-------------------------------------------------------------------
 Mon Nov  7 16:10:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3.0.20220902:

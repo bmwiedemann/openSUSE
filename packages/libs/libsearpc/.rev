@@ -66,4 +66,23 @@
 </comment>
     <requestid>1034487</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>078616a52fbe804d0e20010b768ae3d9</srcmd5>
+    <version>3.3.0.20230224</version>
+    <time>1681296751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.0.20230224:
+  * Waiting with WaitNamedPipe() if a named pipe is busy (#62)
+  * Filter rpc slow log include password (#61)
+  * Add support c++ compile (#60)
+  * Change slow log format (#58)
+  * Configure x64-debug build (#56)
+  * add --with-python3 option (#55)
+  * only use python3 in linux (#54)
+  * remove python3 future
+  * configure with python3 (#53)
+  * Fixed python-searpc installation place (#52)
+</comment>
+    <requestid>1078617</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libsearpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           libsearpc
-Version:        3.3.0.20220902
+Version:        3.3.0.20230224
 Release:        0
 Summary:        Simple C language RPC framework based on GObject system
 License:        Apache-2.0
@@ -81,7 +81,7 @@ The python-pysearpc package contains python files to make use of %{name}.
 
 %build
 ./autogen.sh
-%configure --disable-static
+%configure --disable-static --with-python3
 %make_build
 sed -i -e 's#^prefix.*#prefix=/usr#g' libsearpc.pc
 sed -i -e 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' lib/searpc-codegen.py
