@@ -851,4 +851,14 @@
 - Switch BuildRequires to Pyro5.</comment>
     <requestid>1067310</requestid>
   </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>b1d485c6fb9d9e94295a67e300369815</srcmd5>
+    <version>5.2.4</version>
+    <time>1681296727</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-zoneinfo.patch:
+  * Use zoneinfo, rather than pytz.
+- Switch BuildRequires to zoneinfo and timezone.</comment>
+    <requestid>1078545</requestid>
+  </revision>
 </revisionlist>

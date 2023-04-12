@@ -1,0 +1,87 @@
+From d9e705aa1c42af24adf49ca1ef3ae339abc908dc Mon Sep 17 00:00:00 2001
+From: Maxwell Muoto <41130755+max-muoto@users.noreply.github.com>
+Date: Thu, 30 Mar 2023 09:32:24 -0500
+Subject: [PATCH 01/30] Main
+
+---
+ kombu/asynchronous/timer.py | 10 +++++-----
+ requirements/test.txt       |  2 +-
+ t/unit/utils/test_json.py   |  7 +++++--
+ 3 files changed, 11 insertions(+), 8 deletions(-)
+
+Index: kombu-5.2.4/kombu/asynchronous/timer.py
+===================================================================
+--- kombu-5.2.4.orig/kombu/asynchronous/timer.py
++++ kombu-5.2.4/kombu/asynchronous/timer.py
+@@ -13,23 +13,23 @@ from vine.utils import wraps
+ 
+ from kombu.log import get_logger
+ 
+-try:
+-    from pytz import utc
+-except ImportError:  # pragma: no cover
+-    utc = None
++if sys.version_info >= (3, 9):
++    from zoneinfo import ZoneInfo
++else:
++    from backports.zoneinfo import ZoneInfo
+ 
+ __all__ = ('Entry', 'Timer', 'to_timestamp')
+ 
+ logger = get_logger(__name__)
+ 
+ DEFAULT_MAX_INTERVAL = 2
+-EPOCH = datetime.utcfromtimestamp(0).replace(tzinfo=utc)
++EPOCH = datetime.utcfromtimestamp(0).replace(tzinfo=ZoneInfo("UTC"))
+ IS_PYPY = hasattr(sys, 'pypy_version_info')
+ 
+ scheduled = namedtuple('scheduled', ('eta', 'priority', 'entry'))
+ 
+ 
+-def to_timestamp(d, default_timezone=utc, time=monotonic):
++def to_timestamp(d, default_timezone=ZoneInfo("UTC"), time=monotonic):
+     """Convert datetime to timestamp.
+ 
+     If d' is already a timestamp, then that will be used.
+Index: kombu-5.2.4/requirements/test.txt
+===================================================================
+--- kombu-5.2.4.orig/requirements/test.txt
++++ kombu-5.2.4/requirements/test.txt
+@@ -1,4 +1,3 @@
+-pytz>dev
+ pytest~=7.0.1
+ pytest-sugar
+ Pyro4
+Index: kombu-5.2.4/t/unit/utils/test_json.py
+===================================================================
+--- kombu-5.2.4.orig/t/unit/utils/test_json.py
++++ kombu-5.2.4/t/unit/utils/test_json.py
+@@ -3,13 +3,18 @@ from datetime import datetime
+ from decimal import Decimal
+ from unittest.mock import MagicMock, Mock
+ from uuid import uuid4
++import sys
+ 
+ import pytest
+-import pytz
+ 
+ from kombu.utils.encoding import str_to_bytes
+ from kombu.utils.json import _DecodeError, dumps, loads
+ 
++if sys.version_info >= (3, 9):
++    from zoneinfo import ZoneInfo
++else:
++    from backports.zoneinfo import ZoneInfo
++
+ 
+ class Custom:
+ 
+@@ -24,7 +29,7 @@ class test_JSONEncoder:
+ 
+     def test_datetime(self):
+         now = datetime.utcnow()
+-        now_utc = now.replace(tzinfo=pytz.utc)
++        now_utc = now.replace(tzinfo=ZoneInfo("UTC"))
+         stripped = datetime(*now.timetuple()[:3])
+         serialized = loads(dumps({
+             'datetime': now,

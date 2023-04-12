@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 12 02:16:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-zoneinfo.patch:
+  * Use zoneinfo, rather than pytz.
+- Switch BuildRequires to zoneinfo and timezone. 
+
+-------------------------------------------------------------------
 Thu Feb 23 06:08:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pyro-5.patch:
