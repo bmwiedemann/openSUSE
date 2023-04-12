@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 12:03:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix monitor settings issue on amdgpu (kde#468235):
+  * 0001-backends-drm-set-the-scaling-mode-to-none.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4

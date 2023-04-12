@@ -39,6 +39,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-backends-drm-set-the-scaling-mode-to-none.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
