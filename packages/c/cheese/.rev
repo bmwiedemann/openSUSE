@@ -880,4 +880,12 @@
     <comment>New stable release (forwarded request 1042594 from iznogood)</comment>
     <requestid>1042676</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>56872867f6fdfb7a0b207b32a991adb2</srcmd5>
+    <version>44.0</version>
+    <time>1681296644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078308</requestid>
+  </revision>
 </revisionlist>

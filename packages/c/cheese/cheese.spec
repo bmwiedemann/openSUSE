@@ -1,7 +1,7 @@
 #
 # spec file for package cheese
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,21 +22,22 @@
 %define typelib_minor 0
 
 Name:           cheese
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
-Source0:        https://download.gnome.org/sources/cheese/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cheese/44/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.25.2
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.13.2
@@ -132,11 +133,14 @@ with fun graphical effects.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.Cheese
 %fdupes %{buildroot}%{_datadir}/help/
 
 %ldconfig_scriptlets -n libcheese%{lib_major}
 %ldconfig_scriptlets -n libcheese-gtk%{lib_gtk_major}
+
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Cheese.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Cheese.desktop
 
 %files
 %license COPYING
