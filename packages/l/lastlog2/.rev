@@ -38,4 +38,15 @@ There should be a rpmlint which whitelists this PAM module.</comment>
   - liblastlog2: fix memory leak (forwarded request 1077557 from kukuk)</comment>
     <requestid>1077558</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>884138cf667f9923c8d6dd51af0c8717</srcmd5>
+    <version>1.1.0</version>
+    <time>1681296655</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.1.0
+  - Add option to install lastlog compat symlink
+  - lastlog2: add --service option
+  - liblastlog2: sort output according to user names (forwarded request 1078398 from kukuk)</comment>
+    <requestid>1078399</requestid>
+  </revision>
 </revisionlist>
