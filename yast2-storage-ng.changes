@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 11 13:38:25 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Adjusted detection of Dell BOSS devices (bsc#1200975).
+- Partitioner: improved column Type for disks (bsc#1200975).
+- 4.6.5
+
+-------------------------------------------------------------------
 Mon Apr  3 09:01:17 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - AutoYaST: export thin LVM volumes when cloning (bsc#1209725)
