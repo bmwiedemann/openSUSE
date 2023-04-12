@@ -1,0 +1,7 @@
+<package name="openscap-report" project="openSUSE:Factory">
+  <title>openscap report tool</title>
+  <description>
+	  openscap report generator
+  </description>
+  <devel project="security" package="openscap-report"/>
+</package>
