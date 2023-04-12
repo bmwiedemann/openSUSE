@@ -46,6 +46,7 @@ Source4:        baselibs.conf
 Patch0:         talloc-python3.5-fix-soabi_name.patch
 Source50:       talloc.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{?suse_build_hwcaps_libs}
 
 %description
 Talloc is a hierarchical, reference counted memory pool system with

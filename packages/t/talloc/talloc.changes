@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 19:28:53 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
 Fri Mar 17 07:54:23 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 2.4.0
