@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 11 09:09:56 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- CVE-2023-28879.patch fixes CVE-2023-28879
+  Buffer Overflow in s_xBCPE_process
+  cf. https://bugs.ghostscript.com/show_bug.cgi?id=706494
+  (bsc#1210062)
+
+-------------------------------------------------------------------
 Mon Jul 18 07:28:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.56.1:

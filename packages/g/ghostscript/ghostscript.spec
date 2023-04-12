@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,12 @@ Patch100:       remove-zlib-h-dependency.patch
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 Patch101:       ijs_exec_server_dont_use_sh.patch
+# Patch102 CVE-2023-28879.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=37ed5022cecd
+# that fixes CVE-2023-28879 Buffer Overflow in s_xBCPE_process
+# cf. https://bugs.ghostscript.com/show_bug.cgi?id=706494
+# and https://bugzilla.suse.com/show_bug.cgi?id=1210062
+Patch102:       CVE-2023-28879.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
@@ -240,6 +246,12 @@ This package contains the development files for Ghostscript.
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 %patch101 -p1
+# Patch102 CVE-2023-28879.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=37ed5022cecd
+# that fixes CVE-2023-28879 Buffer Overflow in s_xBCPE_process
+# cf. https://bugs.ghostscript.com/show_bug.cgi?id=706494
+# and https://bugzilla.suse.com/show_bug.cgi?id=1210062
+%patch102
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
