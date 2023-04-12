@@ -664,4 +664,13 @@ Please forward to Factory and 13.1
     <comment></comment>
     <requestid>1077191</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>ea3fa4cb1ee822d9dfe8c736230b6a73</srcmd5>
+    <version>2.13.0</version>
+    <time>1681296712</time>
+    <user>dimstar_suse</user>
+    <comment>- apply replacement for default install directories correctly
+  (boo#1210267)</comment>
+    <requestid>1078520</requestid>
+  </revision>
 </revisionlist>

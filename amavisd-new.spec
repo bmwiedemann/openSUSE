@@ -109,7 +109,7 @@ This package contains the documentation and Release-Notes.
 
 %prep
 %autosetup -n amavis-v%{version} -p1
-for i in $(find -maxdepth 1 -name "amavisd*" | sed s#./##); do
+for i in $(find bin/ conf/ -maxdepth 1 -name "amavisd*"); do
     if [[ $i == *patch ]] ; then continue; fi
     if [[ $i == *patch ]] ; then continue; fi
     if [[ $i == *spec ]] ; then continue; fi
@@ -198,6 +198,7 @@ fi
 %dir %{perl_vendorlib}/Mail/SpamAssassin
 %dir %{perl_vendorlib}/Mail/SpamAssassin/Logger
 %defattr(0750,vscan,vscan,0750)
+%dir %{avspool}/
 %dir %{avspool}/tmp
 %dir %{avspool}/db
 %dir %{avspool}/var

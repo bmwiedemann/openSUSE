@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 19:48:38 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- apply replacement for default install directories correctly
+  (boo#1210267)
+
+-------------------------------------------------------------------
 Mon Mar 27 20:27:29 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - update to version 2.13.0
