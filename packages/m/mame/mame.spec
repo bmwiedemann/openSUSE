@@ -37,7 +37,6 @@ Patch2:         fix_lua_misspelling.patch
 Patch3:         %{name}-fortify.patch
 Patch4:         %{name}-bgfx.patch
 BuildRequires:  asio-devel
-BuildRequires:  binutils-gold
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -67,8 +66,7 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 Suggests:       %{name}-tools = %{version}
-ExcludeArch:    %{ix86} aarch64_ilp32 armv7hl ppc riscv32
-%ifarch ppc64 ppc64le
+%ifarch ppc ppc64 ppc64le
 Patch5:         %{name}-ppc64le.patch
 %endif
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
@@ -108,12 +106,12 @@ rm -r 3rdparty/{asio,compat,dxsdk,expat,glm,libflac,libjpeg,portaudio,portmidi,p
 
 %build
 %define _lto_cflags %{nil}
-
 MY_OPT_FLAGS=$(echo %{optflags} | sed -re 's@-g($|[0-9])@-g1@g; s@-g\s@-g1 @g')
-MY_LD_FLAGS="${LDFLAGS} -Wl,-v -fuse-ld=gold -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped -Wl,--no-mmap-output-file"
-
 sed -i "s@-Wall -Wextra -Os \$(MPARAM)@$MY_OPT_FLAGS@" 3rdparty/genie/build/gmake.linux/genie.make
-sed -i "s@-s -rdynamic@$MY_LD_FLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/genie.make
+sed -i "s@-s -rdynamic@$LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/genie.make
+%ifarch i586 ppc armv6hl armv7hl aarch64_ilp32 aarch64
+MY_OPT_FLAGS=''
+%endif
 
 %make_build \
     NOWERROR=1 \
@@ -139,7 +137,7 @@ sed -i "s@-s -rdynamic@$MY_LD_FLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux
     CXX="g++-11" \
 %endif
     OPT_FLAGS="$MY_OPT_FLAGS" \
-    LDOPTS="$MY_LD_FLAGS"
+    LDOPTS="$LDFLAGS"
 
 %install
 install -pm0644 %{SOURCE1} whatsnew-%{version}.txt
@@ -191,7 +189,7 @@ pushd docs/man
     install -pm0644 %{name}.6 %{buildroot}%{_mandir}/man6
 popd
 
-%fdupes -s %{buildroot}/%{_datadir}/%{name}
+%fdupes -s %{buildroot}%{_datadir}/%{name}
 
 %check
 ./%{name} -validate
