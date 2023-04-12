@@ -44,6 +44,9 @@ buildignore simple-scan
 # Moved here from list-common.sh, too big for x11
 install xf86-video-vmware i686,x86_64
 
+# Moved here from list-common.sh, needed by GNOME now
+buildignore xorg-x11-fonts
+
 # make sure pdf support for evince is installed
 install evince-plugin-pdfdocument
 

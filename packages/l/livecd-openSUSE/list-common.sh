@@ -101,7 +101,8 @@ buildignore google-droid-fonts
 buildignore efont-unicode-bitmap-fonts
 buildignore baekmuk-bitmap-fonts
 buildignore intlfonts-chinese-big-bitmap-fonts
-buildignore xorg-x11-fonts
+# Needed by GDM on Leap 15.5 for some weird reason (bsc#1203966)
+# buildignore xorg-x11-fonts
 buildignore xorg-x11-fonts-legacy
 
 buildignore strace

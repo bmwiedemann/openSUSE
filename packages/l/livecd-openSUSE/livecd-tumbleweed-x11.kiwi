@@ -227,8 +227,6 @@
     <ignore name="baekmuk-bitmap-fonts"/>
     <package name="aaa_base" replaces="intlfonts-chinese-big-bitmap-fonts"/>
     <ignore name="intlfonts-chinese-big-bitmap-fonts"/>
-    <package name="aaa_base" replaces="xorg-x11-fonts"/>
-    <ignore name="xorg-x11-fonts"/>
     <package name="aaa_base" replaces="xorg-x11-fonts-legacy"/>
     <ignore name="xorg-x11-fonts-legacy"/>
     <package name="aaa_base" replaces="strace"/>
@@ -566,6 +564,8 @@
     <ignore name="cyrus-sasl"/>
     <package name="aaa_base" replaces="deltarpm"/>
     <ignore name="deltarpm"/>
+    <package name="aaa_base" replaces="xorg-x11-fonts"/>
+    <ignore name="xorg-x11-fonts"/>
     <package name="aaa_base" replaces="Mesa-dri-nouveau"/>
     <ignore name="Mesa-dri-nouveau"/>
     <package name="aaa_base" replaces="libvdpau_nouveau"/>

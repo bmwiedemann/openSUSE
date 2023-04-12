@@ -76,6 +76,8 @@ install partitionmanager
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
+# Moved here from list-common.sh, needed by GNOME now
+buildignore xorg-x11-fonts
 
 # From rest_cd_core
 install alsa-firmware

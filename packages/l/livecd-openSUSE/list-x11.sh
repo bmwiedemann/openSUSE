@@ -98,6 +98,9 @@ buildignore cyrus-sasl
 # Moved here from list-common.sh. Needed by createrepo_c, which is needed for libzypp-plugin-appdata
 buildignore deltarpm
 
+# Moved here from list-common.sh, needed by GNOME now
+buildignore xorg-x11-fonts
+
 # Too big and not really useful here
 buildignore Mesa-dri-nouveau
 buildignore libvdpau_nouveau
