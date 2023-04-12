@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 11 05:44:25 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 44.0+24:
+  + x11: Wrap X call with error traps. And pass Atom directly. This
+    should make Mutter more resilient and avoid a type of crash on
+    gnome-shell.
+  + frames/window-tracker: Select StructureNotifyMask X11 events.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 31 06:45:44 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.0+18:
