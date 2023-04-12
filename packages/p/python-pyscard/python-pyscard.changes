@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  7 14:19:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.7
+  * do not include the generated HTML documentation in the archive
+- Update to version 2.0.6
+  * handle SCARD_E_NO_SERVICE on Windows (on last reader removal)
+  * add support of MSYS2/mingw environment on Windows
+  * improve documentation
+  * minor changes
+
+-------------------------------------------------------------------
 Thu Sep 29 18:26:31 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.5

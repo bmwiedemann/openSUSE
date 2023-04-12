@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyscard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname pyscard
 Name:           python-pyscard
-Version:        2.0.5
+Version:        2.0.7
 Release:        0
 Summary:        Python module adding smart card support
 License:        LGPL-2.0-or-later
