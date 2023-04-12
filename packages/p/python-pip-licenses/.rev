@@ -101,4 +101,23 @@
 - Add missing BuildRequires to fix test failures.</comment>
     <requestid>1063338</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>02c7b5fb6cd56914d6f50503293a2e44</srcmd5>
+    <version>4.2.0</version>
+    <time>1681307302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0:
+  - Implement new option --with-maintainers
+  - Implement new option --python
+  - Allow version spec in --ignore-packages parameters
+  - When the Author field is UNKNOWN, the output is automatically
+    completed from Author-email
+  - When the home-page field is UNKNOWN, the output is
+    automatically completed from Project-URL
+- Update to 4.1.0:
+  - Support case-insensitive license name matching around
+    --fail-on and --allow-only parameters
+</comment>
+    <requestid>1078727</requestid>
+  </revision>
 </revisionlist>
