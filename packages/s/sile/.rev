@@ -99,4 +99,36 @@
  * tooling: Use luaEnv properly (forwarded request 1061682 from Pi-Cla)</comment>
     <requestid>1061683</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb06c5eac3056ee1fdb95bc0678a95c5</srcmd5>
+    <version>0.14.9</version>
+    <time>1681296729</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.8 -&gt; 0.14.9
+- Features
+ * classes: Add Picas unit to cover all units speced in Docbook
+ * classes: Implement the\code command in the plain class
+ * cli: Add -q / --quiet flag to reduce output to essential errors
+ * core: Support initializing fill glues with a width
+ * packages: Introduce urlstyle hook in the url package
+ * packages: New scalebox package for arbitrary box re-scaling
+ * packages: Support migrating content in re-wrapped hboxes
+ * typesetters: Implement hbox building logic in the typesetter
+- Bug Fixes
+ * build: Distribute SVG and FTL source files in packages
+ * classes: Avoid justification issues with relative parindent
+ * classes: Make sure un-numbered chapters make it in the ToC
+ * classes: Parse bare number and percentage units in docbook images
+ * classes: Setting current.hangIndent is a measurement
+ * cli: Return success if --help explicitly requested
+ * core,typesetter: Discretionary nodes are incorrectly handled
+ * core: Ensure restoring settings top-level state does not error
+ * outputters: Update Cairo/Podofo hbox debug API to match libtexpdf
+* packages: Correct image aspect preservation logic
+* packages: Fix output of debug breaks in infonode package
+* packages: Make sure pullquotes start in block mode
+* packages: Strip content position in ToC entries
+* etc. https://github.com/sile-typesetter/sile/releases/tag/v0.14.9</comment>
+    <requestid>1078548</requestid>
+  </revision>
 </revisionlist>

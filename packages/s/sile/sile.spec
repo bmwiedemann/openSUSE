@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.14.8
+Version:        0.14.9
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 Group:          Productivity/Publishing
