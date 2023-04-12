@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>1035662</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4977a2d4ac4d407b88d5b89a7a6b8bb9</srcmd5>
+    <version>1.7.4</version>
+    <time>1681296730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.4:
+  * Remove aud enforcement from deserialize function
+  * Reduce length of comment line
+  * Update minimum pyjwt
+  * Remove use of six 
+- Drop patch python-scitokens-no-six.patch, included upstream
+- Add patch use-importlib-metadata.patch:
+  * Use importlib.metadata, rather than pkg_resources.</comment>
+    <requestid>1078556</requestid>
+  </revision>
 </revisionlist>

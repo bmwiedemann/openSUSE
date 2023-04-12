@@ -1,7 +1,7 @@
 #
 # spec file for package python-scitokens
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,21 @@
 
 %define bname scitokens
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 Name:           python-scitokens
-Version:        1.7.2
+Version:        1.7.4
 Release:        0
 Summary:        SciToken reference implementation library
 License:        Apache-2.0
 URL:            https://scitokens.org
 Source:         https://github.com/scitokens/scitokens/archive/refs/tags/v%{version}.tar.gz#/%{bname}-%{version}.tar.gz
-# https://github.com/scitokens/scitokens/issues/169
-Patch0:         python-scitokens-no-six.patch
-BuildRequires:  %{python_module PyJWT}
+# PATCH-FIX-UPSTREAM Do not use pkg_resources gh#scitokens/scitokens#182
+Patch0:         use-importlib-metadata.patch
+BuildRequires:  %{python_module PyJWT >= 2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyJWT
-Requires:       python-six
+Requires:       python-PyJWT >= 2.2
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -50,8 +46,7 @@ federated environment where several otherwise-independent storage endpoints
 want to delegate trust for an issuer for managing a storage allocation.
 
 %prep
-%setup -q -n scitokens-%{version}
-%patch0 -p1
+%autosetup -p1 -n scitokens-%{version}
 
 %build
 %python_build

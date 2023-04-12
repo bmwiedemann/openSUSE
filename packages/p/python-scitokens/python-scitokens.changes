@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 12 04:56:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.4:
+  * Remove aud enforcement from deserialize function
+  * Reduce length of comment line
+  * Update minimum pyjwt
+  * Remove use of six 
+- Drop patch python-scitokens-no-six.patch, included upstream
+- Add patch use-importlib-metadata.patch:
+  * Use importlib.metadata, rather than pkg_resources.
+
+-------------------------------------------------------------------
 Mon Nov 14 08:47:39 UTC 2022 - pgajdos@suse.com
 
 - added patches
