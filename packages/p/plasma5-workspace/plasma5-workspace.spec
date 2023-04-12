@@ -193,6 +193,8 @@ Requires:       xprop
 # hardcode versions of plasma-framework-components and plasma-framework-private packages, as upstream doesn't keep backwards compability there
 %requires_ge    plasma-framework-components
 %requires_ge    plasma-framework
+# Called by the free space notifier
+Recommends:     filelight
 Recommends:     kio-extras5
 # The lockscreen has a button to open a virtual keyboard
 Recommends:     libqt5-qtvirtualkeyboard
