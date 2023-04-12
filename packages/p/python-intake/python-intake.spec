@@ -1,7 +1,7 @@
 #
 # spec file for package python-intake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           python-intake
-Version:        0.6.6
+Version:        0.6.8
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
 URL:            https://github.com/intake/intake
 Source:         https://github.com/intake/intake/archive/refs/tags/%{version}.tar.gz#/intake-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#intake/intake#728
+Patch0:         use-sys-executable.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

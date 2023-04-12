@@ -80,4 +80,25 @@
     <comment></comment>
     <requestid>1037876</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>87a441c9dd3a627b73ba31515a53c665</srcmd5>
+    <version>0.6.8</version>
+    <time>1681296726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.8:
+  * user parameter parsed as string before conversion to given type
+  * numpy source becomes first to have read() path avoid dask
+  * when registering drivers dynamically, corresponding open_* functions will
+    be created automatically (plus refactor/cleanup of the discovery code)
+  * catalog .gui attribute will make top-level GUI instance instead of cut
+    down one-catalog version
+  * server fix for upstream dask change giving newlined in report
+  * editable plots, based on hvPlot's &quot;explorer&quot;
+  * remove &quot;text&quot; input to YAMLFileCatalog
+  * GUI bug fixes
+  * allow catalog TTL as None 
+- Add patch use-sys-executable.patch:
+  * Use sys.executable, rather than hardcoding python.</comment>
+    <requestid>1078543</requestid>
+  </revision>
 </revisionlist>
