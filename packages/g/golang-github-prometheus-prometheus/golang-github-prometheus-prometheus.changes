@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Apr  5 11:28:56 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require promu >= 0.14.0 for building
+
+-------------------------------------------------------------------
+Wed Mar 22 06:00:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.43.0:
+  * [FEATURE] Promtool: Add HTTP client configuration to query
+    commands. #11487
+  * [FEATURE] Scrape: Add `include_scrape_configs` to include
+    scrape configs from different files. #12019
+  * [FEATURE] HTTP client: Add `no_proxy` to exclude URLs from
+    proxied requests. #12098
+  * [FEATURE] HTTP client: Add `proxy_from_enviroment` to read
+    proxies from env variables. #12098
+  * [ENHANCEMENT] API: Add support for setting lookback delta per
+    query via the API. #12088
+  * [ENHANCEMENT] API: Change HTTP status code from 503/422 to 499
+    if a request is canceled. #11897
+  * [ENHANCEMENT] Scrape: Allow exemplars for all metric types.
+    #11984
+  * [ENHANCEMENT] TSDB: Add metrics for head chunks and WAL folders
+    size. #12013
+  * [ENHANCEMENT] TSDB: Automatically remove incorrect snapshot
+    with index that is ahead of WAL. #11859
+  * [ENHANCEMENT] TSDB: Improve Prometheus parser error outputs to
+    be more comprehensible. #11682
+  * [ENHANCEMENT] UI: Scope `group by` labels to metric in
+    autocompletion. #11914
+  * [BUGFIX] Scrape: Fix
+    `prometheus_target_scrape_pool_target_limit` metric not set
+    before reloading. #12002
+  * [BUGFIX] TSDB: Correctly update
+    `prometheus_tsdb_head_chunks_removed_total` and
+    `prometheus_tsdb_head_chunks` metrics when reading WAL. #11858
+  * [BUGFIX] TSDB: Use the correct unit (seconds) when recording
+    out-of-order append deltas in the
+    `prometheus_tsdb_sample_ooo_delta` metric. #12004
+
+-------------------------------------------------------------------
 Tue Feb 28 15:44:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix building web assets (boo#1208752)
