@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -71,10 +71,10 @@ Provides:       freeciv_client-%{version}
 Freeciv executable using Qt library
 
 %package lang
-# FIXME: consider using %%lang_package macro
 Summary:        Translation files for freeciv
 Group:          Amusements/Games/Strategy/Turn Based
 Requires:       freeciv = %{version}
+BuildArch:      noarch
 
 %description lang
 Translation files for freeciv main package and clients.
