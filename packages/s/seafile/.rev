@@ -137,4 +137,13 @@
 </comment>
     <requestid>1046540</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8c758ab67ac8aba692af1a0ea8772e36</srcmd5>
+    <version>9.0.1</version>
+    <time>1681296752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.0.1 (no changelog).
+</comment>
+    <requestid>1078618</requestid>
+  </revision>
 </revisionlist>
