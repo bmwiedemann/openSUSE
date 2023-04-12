@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  9 14:58:34 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * bstone-fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
 Sun Sep 18 09:57:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.12

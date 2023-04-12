@@ -1,7 +1,7 @@
 #
 # spec file for package bstone
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://bibendovsky.github.io/bstone/
 Source:         https://github.com/bibendovsky/bstone/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         bstone-fix-build-with-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -49,6 +50,7 @@ You need to start the game from within the folder with these files.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake
