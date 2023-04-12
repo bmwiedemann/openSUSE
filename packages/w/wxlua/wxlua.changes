@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 12 11:40:34 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move files accidentally placed in devel to main package
+
+-------------------------------------------------------------------
 Thu Sep 29 08:12:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add a rpmlintrc file to ignore false positive in 15.4

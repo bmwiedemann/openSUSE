@@ -178,6 +178,8 @@ sed 's-#!/usr/bin/env lua-#!/usr/bin/lua%{lua_version}-g' -i %{buildroot}%{_data
 %{_bindir}/wxLua
 %{_bindir}/wxLuaCan
 %{_bindir}/wxLuaFreeze
+%{_datadir}/wxlua
+%exclude %{_datadir}/wxlua/*.cmake
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/mime/packages/%{name}.xml
@@ -199,6 +201,7 @@ sed 's-#!/usr/bin/env lua-#!/usr/bin/lua%{lua_version}-g' -i %{buildroot}%{_data
 
 %files devel
 %{_includedir}/wxlua/
-%{_datadir}/wxlua/
+%dir %{_datadir}/wxlua
+%{_datadir}/wxlua/*.cmake
 
 %changelog
