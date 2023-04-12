@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 11 09:03:26 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  + python-pycha-no-six.patch
+- test the package
+
+-------------------------------------------------------------------
 Wed May 20 07:26:19 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

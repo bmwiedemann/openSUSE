@@ -1,0 +1,132 @@
+Index: pycha-0.8.1/pycha.egg-info/requires.txt
+===================================================================
+--- pycha-0.8.1.orig/pycha.egg-info/requires.txt
++++ pycha-0.8.1/pycha.egg-info/requires.txt
+@@ -1,4 +1,3 @@
+-six
+ cairocffi
+ 
+ [testing]
+Index: pycha-0.8.1/pycha/chart.py
+===================================================================
+--- pycha-0.8.1.orig/pycha/chart.py
++++ pycha-0.8.1/pycha/chart.py
+@@ -19,7 +19,7 @@ import copy
+ import math
+ 
+ import cairocffi as cairo
+-from six.moves import reduce
++from functools import reduce
+ 
+ from pycha.color import ColorScheme, hex2rgb, DEFAULT_COLOR
+ from pycha.compat import getfullargspec
+Index: pycha-0.8.1/pycha/color.py
+===================================================================
+--- pycha-0.8.1.orig/pycha/color.py
++++ pycha-0.8.1/pycha/color.py
+@@ -18,8 +18,6 @@
+ 
+ import math
+ 
+-import six
+-
+ from pycha.utils import clamp
+ 
+ 
+@@ -125,14 +123,14 @@ class ColorSchemeMetaclass(type):
+         return klass
+ 
+ 
+-class ColorScheme(six.with_metaclass(ColorSchemeMetaclass, dict)):
++class ColorScheme(dict, metaclass=ColorSchemeMetaclass):
+     """A color scheme is a dictionary where the keys match the keys
+     constructor argument and the values are colors"""
+ 
+     __registry__ = {}
+ 
+     def __init__(self, keys):
+-        super(ColorScheme, self).__init__()
++        super().__init__()
+ 
+     @classmethod
+     def registerColorScheme(cls):
+@@ -154,7 +152,7 @@ class GradientColorScheme(ColorScheme):
+     """
+ 
+     def __init__(self, keys, initialColor=DEFAULT_COLOR):
+-        super(GradientColorScheme, self).__init__(keys)
++        super().__init__(keys)
+         if initialColor in basicColors:
+             initialColor = basicColors[initialColor]
+ 
+@@ -172,7 +170,7 @@ class FixedColorScheme(ColorScheme):
+     """
+ 
+     def __init__(self, keys, colors=[]):
+-        super(FixedColorScheme, self).__init__(keys)
++        super().__init__(keys)
+ 
+         if len(keys) != len(colors):
+             raise ValueError("You must provide as many colors as datasets "
+@@ -190,7 +188,7 @@ class RainbowColorScheme(ColorScheme):
+     """
+ 
+     def __init__(self, keys, initialColor=DEFAULT_COLOR):
+-        super(RainbowColorScheme, self).__init__(keys)
++        super().__init__(keys)
+         if initialColor in basicColors:
+             initialColor = basicColors[initialColor]
+ 
+Index: pycha-0.8.1/pycha/stackedbar.py
+===================================================================
+--- pycha-0.8.1.orig/pycha/stackedbar.py
++++ pycha-0.8.1/pycha/stackedbar.py
+@@ -16,7 +16,7 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with PyCha.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-from six.moves import reduce, xrange
++from functools import reduce
+ 
+ from pycha.bar import BarChart, VerticalBarChart, HorizontalBarChart, Rect
+ from pycha.chart import uniqueIndices
+@@ -40,9 +40,9 @@ class StackedBarChart(BarChart):
+             n_stores = len(stores)
+             flat_y = [pair[1] for pair in reduce(lambda a, b: a + b, stores)]
+             store_size = len(flat_y) // n_stores
+-            accum = [sum(flat_y[j]for j in xrange(i,
+-                                                  i + store_size * n_stores,
+-                                                  store_size))
++            accum = [sum(flat_y[j]for j in range(i,
++                                                 i + store_size * n_stores,
++                                                 store_size))
+                      for i in range(len(flat_y) // n_stores)]
+             self.yrange = float(max(accum))
+             if self.yrange == 0:
+Index: pycha-0.8.1/setup.py
+===================================================================
+--- pycha-0.8.1.orig/setup.py
++++ pycha-0.8.1/setup.py
+@@ -26,7 +26,6 @@ def read(*rnames):
+ 
+ 
+ base_requirements = [
+-    'six',
+     'cairocffi',
+ ]
+ 
+Index: pycha-0.8.1/pycha/utils.py
+===================================================================
+--- pycha-0.8.1.orig/pycha/utils.py
++++ pycha-0.8.1/pycha/utils.py
+@@ -16,9 +16,7 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with PyCha.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import six
+-
+-unicode = six.text_type
++unicode = str
+ 
+ 
+ def clamp(minValue, maxValue, value):

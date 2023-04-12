@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycha
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pycha
 Version:        0.8.1
 Release:        0
@@ -25,17 +24,19 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/lgs/pycha/
 Source:         https://files.pythonhosted.org/packages/source/p/pycha/pycha-%{version}.tar.gz
+# upstream repo (bitbucket) as defined on pypi gone
+# is safe_unicode() needed at all?
+Patch0:         python-pycha-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cairocffi
-Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module cairocffi}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -47,7 +48,7 @@ PlotKit, both of which are written in JavaScript and are for client
 web programming. Pycha was developed for the server side.
 
 %prep
-%setup -q -n pycha-%{version}
+%autosetup -p1 -n pycha-%{version}
 
 %build
 %python_build
@@ -63,10 +64,14 @@ web programming. Pycha was developed for the server side.
 %postun
 %python_uninstall_alternative chavier
 
+%check
+%pytest tests/*.py
+
 %files %{python_files}
 %doc README.txt CHANGES.txt AUTHORS
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/pycha*
+%{python_sitelib}/chavier
 %python_alternative %{_bindir}/chavier
 
 %changelog
