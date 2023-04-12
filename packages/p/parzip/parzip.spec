@@ -17,16 +17,15 @@
 
 
 Name:           parzip
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Parallel pkzip implementation
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/jpakkane/parzip
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM parzip-fix-missing-includes.patch
-Patch0:         parzip-fix-missing-includes.patch
-BuildRequires:  gcc-c++
+
+BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(liblzma)

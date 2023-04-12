@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  3 17:32:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.0:
+  * Start using std::filesystem instead of native code.
+  * More use of C++ filesystem library.
+  * Update to new style wrapdb deps.
+  * Add #include <stdexcept>
+  * Add #include <cstdint> in file.h
+- Drop parzip-fix-missing-includes.patch: Patch applied upstream.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+
+-------------------------------------------------------------------
 Sat Apr  1 22:32:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add parzip-fix-missing-includes.patch: Add missing includes
