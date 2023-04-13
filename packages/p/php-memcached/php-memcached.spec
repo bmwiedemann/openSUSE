@@ -1,7 +1,7 @@
 #
 # spec file for package php-memcached
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/memcached
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
+# PATCH-FIX-UPSTREAM - fix ${var} deprecation
+Patch0:         fc388e65e7ceab9e6d52bc77b6306f71db981873.patch
 BuildRequires:  %{php_name}-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  fastlzlib-devel
@@ -57,7 +59,7 @@ This extension uses libmemcached library to provide API for
 communicating with memcached servers.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"
