@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  5 21:38:26 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- re-enable %check section as the built-in tests now all pass
+        --
+
+-------------------------------------------------------------------
 Wed Mar  8 15:22:51 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to 20221224
@@ -31,6 +37,7 @@ Thu Dec  1 18:11:16 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
   - Added ISO9660 test file and tests 
 - add BuildRequires python-libcaes
 - add BuildRequires python-libfsfat
+- re-disable %check section as the built-in tests fail again for most APFS tests
 - ran spec-cleaner
 
 -------------------------------------------------------------------

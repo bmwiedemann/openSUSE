@@ -130,8 +130,7 @@ chmod -x run_tests.py
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-# APFS testing for encrypted volumes is currently failing dfVFS 20220917
-# $python ./run_tests.py
+$python ./run_tests.py
 }
 
 %files %{python_files}

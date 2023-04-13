@@ -471,4 +471,12 @@ Move from python 2 to python 3</comment>
     <comment></comment>
     <requestid>1070239</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e14aed2c656b5c6ffb943c63ba4028b8</srcmd5>
+    <version>0~20221224</version>
+    <time>1681387844</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078816</requestid>
+  </revision>
 </revisionlist>
