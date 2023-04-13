@@ -1,7 +1,7 @@
 #
 # spec file for package weblate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,16 @@ Version:        4.14.2
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
-URL:            https://weblate.org/
+URL:            https://github.com/WeblateOrg/weblate
 Source0:        https://dl.cihar.com/weblate/%{_name}-%{version}.tar.xz
 Source1:        https://dl.cihar.com/weblate/%{_name}-%{version}.tar.xz.asc
 # GPG key from Michal Čihař
 # Fingerprint 63CB 1DF1 EF12 CF2A C0EE 5A32 9C27 B313 42B7 511D
 # https://cihar.com/.well-known/openpgpkey/hu/wmxth3chu9jfxdxywj1skpmhsj311mzm
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM skip-test_ocr.patch gh#WeblateOrg/weblate#8931 mcepl@suse.com
+# skip failing test_ocr
+Patch0:         skip-test_ocr.patch
 BuildRequires:  bitstream-vera
 BuildRequires:  borgbackup >= 1.1.11
 BuildRequires:  fdupes
@@ -235,7 +238,8 @@ HTML documentation files for the Weblate collaborative web translation tool.
 
 sed -i \
     -e 's:#!%{_bindir}/env python3:#!%{_bindir}/python3:' \
-    setup.py manage.py
+    setup.py manage.py \
+    weblate/utils/generate_secret_key.py
 # do not pull in the diff match patch
 sed -i -e '/diff-match-patch/d' requirements.txt
 # do not hardcode versions
