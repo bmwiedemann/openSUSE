@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:33:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.1:
+  * use newer go 1.20.3 and corresponding new lints (#743)
+  * Bump actions/checkout from 3.4.0 to 3.5.0 (#742)
+  * Bump github/codeql-action from 2.2.7 to 2.2.9 (#741)
+  * Bump google.golang.org/grpc from 1.53.0 to 1.54.0 (#738)
+
+-------------------------------------------------------------------
 Mon Mar 20 19:16:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.54.0:
