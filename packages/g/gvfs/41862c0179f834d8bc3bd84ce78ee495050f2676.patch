@@ -1,0 +1,55 @@
+From 41862c0179f834d8bc3bd84ce78ee495050f2676 Mon Sep 17 00:00:00 2001
+From: rong wang <wangrong@uniontech.com>
+Date: Thu, 23 Mar 2023 10:26:24 +0800
+Subject: [PATCH] trash: Sync trash dir items when files change
+
+In the case of an application monitoring the trash can, delete a file
+on the mounted device to the trash can, and then unmount the device.
+At this time, if you check the status of the trash can, you will find
+that the number of files queried is inconsistent with the number of
+files obtained through the enumeration job. This is because the number
+of files queried includes some files that do not exist when the device
+is unmounted. The solution is to synchronize the status of the trash
+can in time to ensure that the trash can does not record files that do
+not exist.
+---
+ daemon/trashlib/trashdir.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/trashlib/trashdir.c b/daemon/trashlib/trashdir.c
+index c470d3bdf..0d7d2b1be 100644
+--- a/daemon/trashlib/trashdir.c
++++ b/daemon/trashlib/trashdir.c
+@@ -163,10 +163,27 @@ trash_dir_changed (GFileMonitor      *monitor,
+   TrashDir *dir = user_data;
+ 
+   if (event_type == G_FILE_MONITOR_EVENT_CREATED)
+-    trash_root_add_item (dir->root, file, dir->topdir, dir->is_homedir);
++    {
++      dir->items = g_slist_insert_sorted (dir->items,
++                                          g_object_ref (file),
++                                          (GCompareFunc) compare_basename);
++      trash_root_add_item (dir->root, file, dir->topdir, dir->is_homedir);
++    }
+ 
+   else if (event_type == G_FILE_MONITOR_EVENT_DELETED)
+-    trash_root_remove_item (dir->root, file, dir->is_homedir);
++    {
++      GSList *node;
++
++      node = g_slist_find_custom (dir->items,
++                                  file,
++                                  (GCompareFunc) compare_basename);
++      if (node)
++        {
++          g_object_unref (node->data);
++          dir->items = g_slist_delete_link (dir->items, node);
++        }
++      trash_root_remove_item (dir->root, file, dir->is_homedir);
++    }
+ 
+   else if (event_type == G_FILE_MONITOR_EVENT_PRE_UNMOUNT ||
+            event_type == G_FILE_MONITOR_EVENT_UNMOUNTED ||
+-- 
+GitLab
+
