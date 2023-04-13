@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:35:38 UTC 2023 - pgajdos@suse.com
+
+- authlib.patch removes dependency on six by the way
+- modified patches
+  % authlib.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue Sep 20 09:33:23 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add authlib.patch to remove the oauth2client dependency
