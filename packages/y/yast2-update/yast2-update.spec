@@ -17,7 +17,7 @@
 
 
 Name:           yast2-update
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        YaST2 - Update
 Group:          System/YaST
@@ -52,8 +52,8 @@ Requires:       yast2 >= 4.4.25
 Requires:       yast2-installation
 # ProductSpec#register_target
 Requires:       yast2-packager >= 4.4.15
-# filtering orphaned packages
-Requires:       yast2-pkg-bindings >= 4.5.1
+# "rebuild_db" option in Pkg.TargetInitializeOptions
+Requires:       yast2-pkg-bindings >= 4.6.1
 Requires:       yast2-ruby-bindings >= 1.0.0
 # nokogiri is used for parsing pam conf.
 Requires:       rubygem(%{rb_default_ruby_abi}:nokogiri)
