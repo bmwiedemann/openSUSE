@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 10 03:40:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.12:
+  * Fix that a source file was installed and install more header
+    files [gh#coin-or/Ipopt#641, gh#coin-or/Ipopt#642].
+  * Fixed crash of GetIpoptCurrentIterate() and
+    GetIpoptCurrentViolations() in C interface when called before
+    or after IpoptSolve() [gh#coin-or/Ipopt#644,
+    gh#coin-or/Ipopt#645].
+  * Updated HSL_MA97 header file to the one from HSL MA97 2.8.0
+    [gh#coin-or/Ipopt#646].
+  * Fixed crash when trying to solve problem without variables and
+    constraints [gh#coin-or/Ipopt#648].
+  * Added optional argument to AlgorithmBuilder constructor to
+    provide name of custom solver [gh#coin-or/Ipopt#618].
+  * Changed handling of dual solution for square problems.
+  * Updated HSL_MC86 header file to the one from HSL MC68 3.3.3
+    [gh#coin-or/Ipopt#653].
+- Make java package noarch (rpmlint recommends).
+
+-------------------------------------------------------------------
 Sun Oct 23 06:47:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.10:

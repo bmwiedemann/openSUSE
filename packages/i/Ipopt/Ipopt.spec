@@ -1,7 +1,7 @@
 #
 # spec file for package Ipopt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 3
 %define shlib libipopt%{sover}
 Name:           Ipopt
-Version:        3.14.10
+Version:        3.14.12
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
 License:        EPL-2.0
@@ -72,6 +72,7 @@ This package contains the development and header files for %{name}.
 %package java
 Summary:        Java bindings for %{name}
 Group:          Development/Libraries/C and C++
+BuildArch:      noarch
 
 %description java
 This package provides the java bindings for %{name} in a jar file.
