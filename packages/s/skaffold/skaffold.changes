@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:27:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.1:
+  * fix: update skaffold verify to respect deploy default namespace
+    field (#8660)
+  * chore: upgrade docker and make integration-in-docker to use
+    docker dependencies from pr (#8596)
+  * chore: bump image deps (#8612)
+  * feat: better Job support by allowing skaffold to re-apply Jobs
+    by removing child pod label transform (#8659)
+  * fix: fix issue where verify would panic if a jobManifestPath
+    with no spec.template.spec.metadata.labels existed (#8618)
+  * fix: deploy to multiple namespaces (#8623)
+  * feat: add support for deployment cancellation and error surface
+    when admission webhook blocks pod skaffold is waiting on
+    (#8624)
+  * feat: add new 'skaffold inspect executionModes' command (#8651)
+
+-------------------------------------------------------------------
 Wed Mar 29 05:16:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.0:
