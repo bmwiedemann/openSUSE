@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 13 10:18:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.1:
+  * Add a note to the changelog.
+  * Enable the type annotation linter.
+  * Slight improvements to a few more docstrings.
+  * Update requirements.
+  * Bump suite from `5f47bda` to `e8927d9`
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Tue Apr 04 06:16:10 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.0:
