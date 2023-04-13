@@ -1,7 +1,7 @@
 #
 # spec file for package netavark
 #
-# Copyright (c) SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           netavark
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
@@ -25,10 +25,11 @@ URL:            https://github.com/containers/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
-BuildRequires:  rust+cargo >= 1.66
 BuildRequires:  cargo-packaging
 BuildRequires:  go-md2man
 BuildRequires:  protobuf-devel
+BuildRequires:  rust+cargo >= 1.66
+BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
 Recommends:     aardvark-dns >= %{version}-1
 # Provides: container-network-stack = 2
@@ -58,7 +59,6 @@ Its features include:
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
-
 %build
 cargo build --release
 mkdir -p bin
@@ -67,15 +67,27 @@ cp target/release/%{name} bin/
 cd docs
 go-md2man -in %{name}.1.md -out %{name}.1
 
-
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
-
 
 %files
 %license LICENSE
 %dir %{_libexecdir}/podman
 %{_libexecdir}/podman/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_unitdir}/%{name}-dhcp-proxy.service
+%{_unitdir}/%{name}-dhcp-proxy.socket
+
+%pre
+%service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+
+%post
+%service_add_post %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+
+%preun
+%service_del_preun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
+
+%postun
+%service_del_postun %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket
 
 %changelog

@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Apr 12 06:12:35 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.6.0:
+  * v1.6.0 release
+  * Update release notes for v1.6.0
+  * dhcp-proxy: fix typo for --activity-timeout
+  * chore(deps): update dependency containers/automation_images to v20230405
+  * dhcp-proxy: use better error when connection fails
+  * add documentation for netavark plugins
+  * add stderr example plugin to test stderr passthrough
+  * add netavark plugin driver
+  * add example error plugin
+  * add host-device example plugin
+  * plugin: add simple plugin interface
+  * netlink: add dump_addresses
+  * netlink: add set_link_ns
+  * dhcp-proxy: correctly exit > 0 on errors
+  * fix(deps): update rust crate tonic to 0.9
+  * fix(deps): update rust crate mozim to 0.2.2
+  * fix(deps): update rust crate serde to 1.0.159
+  * fix(deps): update rust crate netlink-sys to 0.8.5
+  * dhcp-proxy: create socket directory only when used
+  * dhcp-proxy: do not remove socket when running under systemd
+  * Makefile: netavark-dhcp-proxy.service use correct path
+  * fix(deps): update rust crate http to 0.2.9
+  * chore(deps): update rust crate once_cell to 1.17.1
+  * fix(deps): update rust-futures monorepo to 0.3.28
+  * fix(deps): update rust crate serde_json to 1.0.95
+  * chore(deps): update dependency containers/automation_images to v20230330
+  * Disable Dependabot in favor of Renovate
+  * chore(deps): update rust crate chrono to 0.4.24
+  * build(deps): bump ipnet from 2.7.1 to 2.7.2
+  * build(deps): bump serde from 1.0.158 to 1.0.159
+  * build(deps): bump serde_json from 1.0.94 to 1.0.95
+  * update,main: dont write empty space when no network_dns_servers is given
+  * fix(deps): update rust crate tokio to 1.27
+  * Quit Leasing when Client disconnects
+  * build(deps): bump mozim from 0.2.1 to 0.2.2
+  * iptables: fix incorrect debug statement
+  * build(deps): bump serde from 1.0.156 to 1.0.158
+  * iptables: port fw handle wildcard address correctly
+  * chore(deps): update dependency containers/automation_images to v20230320
+  * build(deps): bump zbus from 3.11.0 to 3.11.1
+  * build(deps): bump anyhow from 1.0.69 to 1.0.70
+  * [CI:BUILD] Packit: trigger builds on commit to main branch
+  * Cirrus: Invalidate v2 bin cache
+  * Include Systemd Files in RPM Package
+  * Cirrus: Fix success failing on artifact extraction
+  * fix lint issue with new rust version 1.68
+  * Cirrus: Update to newer CI VM images
+  * build(deps): bump serde from 1.0.152 to 1.0.156
+  * combine dhcp-proxy and netavark into one binary
+  * update: should allow empty network_dns_servers
+  * build(deps): bump libc from 0.2.139 to 0.2.140
+  * fix aarch64 ncat flake
+  * update to mozim 0.2.1
+  * build(deps): bump zbus from 3.10.0 to 3.11.0
+  * packit: Update build release tag correctly
+  * test: move proto option into run_nc_test()
+  * test: add netns pid param to port checks
+  * test: import podman code to check for ports
+  * cirrus.yaml: add new binaries in art_prep_script
+  * fix netavark-dhcp-proxy binary in system unit
+  * import netavark-proxy-dhcp tests
+  * add build_proxy_client target
+  * add netavark-dhcp-proxy to rpm
+  * Fix dhcp-proxy build
+  * Merge nv-dhcp-proxy into nv
+  * fix default route metric test name
+  * build(deps): bump tokio from 1.25.0 to 1.26.0
+  * Support none parameter on NETAVARK_FW
+  * build(deps): bump anyhow from 1.0.68 to 1.0.69
+  * Fix typos
+  * update netlink-packet-{route,core} to 0.15 and 0.5
+  * build(deps): bump serde_json from 1.0.92 to 1.0.93
+  * build(deps): bump zbus from 3.8.0 to 3.10.0
+  * [CI:BUILD] Packit: initial enablement
+  * Allow custom cargo binary path
+  * build(deps): bump serde_json from 1.0.91 to 1.0.92
+  * Cirrus: Reduce requested CPUs for compile-tasks
+  * bump to version 1.0.6-dev
+  * build(deps): bump netlink-sys from 0.8.3 to 0.8.4
+  * Add renovate.json5
+
+-------------------------------------------------------------------
 Thu Mar 16 14:07:12 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Bump required rust version & fix libexecdir
