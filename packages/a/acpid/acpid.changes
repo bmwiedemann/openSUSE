@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  9 10:14:44 UTC 2023 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- do not ship thinkpad_handler script or config, it's broken since
+  libexecdir changed and nobody noticed, most likely it's not doing
+  anything on recent thinkpads, put it into the examples instead
+- fix file timestamps to not change with every rebuild
+
+-------------------------------------------------------------------
 Tue Nov 15 14:01:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.34:
