@@ -11,6 +11,10 @@ exported to grub as environment variables.
 Please note there's no support for whitelist variables and also
 --skip-sig option compared to ordinary load_env command.
 
+v2:
+To avoid disrupting the boot process with errors, it's important to log
+any errors that may occur and always return GRUB_ERR_NONE.
+
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
  grub-core/Makefile.core.def       |   5 +
@@ -18,11 +22,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  2 files changed, 232 insertions(+)
  create mode 100644 grub-core/commands/prep_loadenv.c
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 49bdb63b69..4d529859be 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2624,3 +2624,8 @@ module = {
+@@ -2624,3 +2624,8 @@
    common = lib/libtasn1_wrap/tests/Test_strings.c;
    common = lib/libtasn1_wrap/wrap_tests.c;
  };
@@ -31,12 +33,9 @@ index 49bdb63b69..4d529859be 100644
 +  name = prep_loadenv;
 +  common = commands/prep_loadenv.c;
 +};
-diff --git a/grub-core/commands/prep_loadenv.c b/grub-core/commands/prep_loadenv.c
-new file mode 100644
-index 0000000000..f4bb270a2b
 --- /dev/null
 +++ b/grub-core/commands/prep_loadenv.c
-@@ -0,0 +1,227 @@
+@@ -0,0 +1,230 @@
 +#include <grub/dl.h>
 +#include <grub/mm.h>
 +#include <grub/file.h>
@@ -247,7 +246,10 @@ index 0000000000..f4bb270a2b
 + out:
 +  grub_free (devname);
 +  grub_free (prep);
-+  return err;
++  
++  if (err)
++    grub_print_error ();
++  return GRUB_ERR_NONE;
 +}
 +
 +static grub_command_t cmd_prep_load;
@@ -264,6 +266,3 @@ index 0000000000..f4bb270a2b
 +{
 +  grub_unregister_command (cmd_prep_load);
 +}
--- 
-2.34.1
-

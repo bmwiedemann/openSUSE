@@ -505,6 +505,8 @@ Patch975:       0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
 Patch976:       0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
 Patch977:       0001-loader-linux-Ensure-the-newc-pathname-is-NULL-termin.patch
 Patch978:       0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
+Patch979:       0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
+Patch980:       0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -920,11 +922,21 @@ echo "earlycfg: root=$root prefix=$prefix"
 EOF
         cat > ./grub.cfg <<'EOF'
 
-regexp --set 1:bdev --set 2:bpart --set 3:bpath '\(([^,]+)(,?.*)?\)(.*)' "$cmdpath"
+regexp --set 1:bdev --set 2:bpath '\((.*)\)(.*)' "$cmdpath"
+regexp --set 1:bdev --set 2:bpart '(.*[^\])(,.*)' "$bdev"
 
 echo "bdev=$bdev"
 echo "bpart=$bpart"
 echo "bpath=$bpath"
+
+if [ -z "$ENV_FS_UUID" ]; then
+  echo "Reading vars from ($bdev)"
+  prep_load_env "($bdev)"
+fi
+
+echo "ENV_HINT=$ENV_HINT"
+echo "ENV_GRUB_DIR=$ENV_GRUB_DIR"
+echo "ENV_FS_UUID=$ENV_FS_UUID"
 
 if [ "$btrfs_relative_path" = xy ]; then
   btrfs_relative_path=1

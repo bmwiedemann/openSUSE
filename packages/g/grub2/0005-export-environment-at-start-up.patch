@@ -17,19 +17,15 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  include/grub/env.h                |  1 +
  5 files changed, 85 insertions(+)
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 4d529859be..f3140815b8 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2628,4 +2628,6 @@ module = {
+@@ -2617,4 +2617,6 @@
  module = {
    name = prep_loadenv;
    common = commands/prep_loadenv.c;
 +  cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
 +  cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
  };
-diff --git a/grub-core/commands/prep_loadenv.c b/grub-core/commands/prep_loadenv.c
-index f4bb270a2b..4f40f7e41a 100644
 --- a/grub-core/commands/prep_loadenv.c
 +++ b/grub-core/commands/prep_loadenv.c
 @@ -10,6 +10,7 @@
@@ -40,11 +36,10 @@ index f4bb270a2b..4f40f7e41a 100644
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -184,6 +185,65 @@ prep_partname (const char *devname, char **prep)
-   return err;
+@@ -185,6 +186,65 @@
  }
  
-+static grub_err_t
+ static grub_err_t
 +boot_disk_prep_partname (char **name)
 +{
 +  regex_t regex;
@@ -103,11 +98,12 @@ index f4bb270a2b..4f40f7e41a 100644
 +  return err;
 +}
 +
- static grub_err_t
++static grub_err_t
  grub_cmd_prep_loadenv (grub_command_t cmd __attribute__ ((unused)),
  		       int argc,
-@@ -211,10 +271,27 @@ grub_cmd_prep_loadenv (grub_command_t cmd __attribute__ ((unused)),
-   return err;
+ 		       char **argv)
+@@ -214,10 +274,27 @@
+   return GRUB_ERR_NONE;
  }
  
 +static void
@@ -134,11 +130,9 @@ index f4bb270a2b..4f40f7e41a 100644
    cmd_prep_load =
      grub_register_command("prep_load_env", grub_cmd_prep_loadenv,
  			  "DEVICE",
-diff --git a/grub-core/kern/env.c b/grub-core/kern/env.c
-index c408626423..ec0d268905 100644
 --- a/grub-core/kern/env.c
 +++ b/grub-core/kern/env.c
-@@ -28,6 +28,8 @@ static struct grub_env_context initial_context;
+@@ -28,6 +28,8 @@
  /* The current context.  */
  struct grub_env_context *grub_current_context = &initial_context;
  
@@ -147,11 +141,9 @@ index c408626423..ec0d268905 100644
  /* Return the hash representation of the string S.  */
  static unsigned int
  grub_env_hashval (const char *s)
-diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index c7c6d2d0b8..42ea96e39e 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
-@@ -310,6 +310,9 @@ grub_main (void)
+@@ -310,6 +310,9 @@
  
    grub_boot_time ("Before execution of embedded config.");
  
@@ -161,17 +153,12 @@ index c7c6d2d0b8..42ea96e39e 100644
    if (load_config)
      grub_parser_execute (load_config);
  
-diff --git a/include/grub/env.h b/include/grub/env.h
-index 76f832eb94..636e190a21 100644
 --- a/include/grub/env.h
 +++ b/include/grub/env.h
-@@ -68,5 +68,6 @@ grub_env_extractor_open (int source);
+@@ -68,5 +68,6 @@
  grub_err_t
  grub_env_extractor_close (int source);
  
 +extern void (*EXPORT_VAR (early_env_hook)) (void);
  
  #endif /* ! GRUB_ENV_HEADER */
--- 
-2.34.1
-

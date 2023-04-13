@@ -2502,4 +2502,12 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1073913</requestid>
   </revision>
+  <revision rev="291" vrev="48">
+    <srcmd5>8e7e7559e3e0adcc07573997ed491db7</srcmd5>
+    <version>2.06</version>
+    <time>1681387790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078547</requestid>
+  </revision>
 </revisionlist>

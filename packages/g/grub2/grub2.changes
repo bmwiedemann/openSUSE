@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 11 11:13:26 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Resolve some issues with OS boot failure on PPC NVMe-oF disks and made
+  enhancements to PPC secure boot's root device discovery config (bsc#1207230)
+- Ensure get_devargs and get_devname functions are consistent
+  * 0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
+- Fix regex for Open Firmware device specifier with encoded commas
+  * 0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
+- Fix regular expression in PPC secure boot config to prevent escaped commas
+  from being treated as delimiters when retrieving partition substrings.
+- Use prep_load_env in PPC secure boot config to handle unset host-specific
+  environment variables and ensure successful command execution.
+  * 0004-Introduce-prep_load_env-command.patch
+- Refreshed
+  * 0005-export-environment-at-start-up.patch
+ 
+-------------------------------------------------------------------
 Thu Mar 23 05:25:50 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix aarch64 kiwi image's file not found due to '/@' prepended to path in
