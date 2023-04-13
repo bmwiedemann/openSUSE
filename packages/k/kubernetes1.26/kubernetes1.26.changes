@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr 13 11:02:02 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.26.4:
+  * Release commit for Kubernetes v1.26.4
+  * releng/go: Update images, dependencies and version to Go 1.19.8
+  * Drop development dependencies from test targets
+  * Clear front proxy headers after authentication is complete
+  * Make prerelease tag optional in CI versions
+  * Annotate CI version regexes
+  * Drop unused regex grouping
+  * Delete unused version regex function
+  * kubelet: Fix fs quota monitoring on volumes
+  * fsquota: only generate pod uuid is nil
+  * Preserve UID/ResourceVersion in the BindingREST endpoint
+  * Add integration test for DefaultBinder
+  * API-initiated eviction: handle deleteOptions correctly
+  * Change where transformers are called.
+  * Aggregated discovery resilient to nil GVK
+  * wait again on pending state
+  * cacher allow context cancellation if not ready
+  * Unlock CSIMigrationvSphere feature gate until there is a supported vSphere CSI driver available
+  * Route controller should update routes with NodeIP changed When a node reboots or kubelet restarts, it is possible that its IP is changed. In this case, node route should be updated with the correct IP. In this PR, it checks if the IP in an existing route is the same as the actual one. If not, it marks it as "update" so the old route will be deleted and a new one will be created. There's a new field EnableNodeAddresses, which is a feature gate for specific cloud providers to enable after they update their cloud provider code for CreateRoute().
+  * client-go/cache: update Replace comment to be more clear
+  * client-go/cache: rewrite Replace to check queue first
+  * client-go/cache: merge ReplaceMakesDeletionsForObjectsInQueue tests
+  * client-go/cache: fix missing delete event on replace without knownObjects
+  * client-go/cache: fix missing delete event on replace
+  * CHANGELOG-1.26: move OpenStack in-tree provider removal to urgent notes
+
+-------------------------------------------------------------------
 Mon Mar 27 09:24:52 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
 - Stronger conflicts for completion packages 
