@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 10 04:18:13 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.5.4:
+  * Add __repr__ methods to Python wrappers.
+  * Add keys() and keys_local() methods to Info classes.
+  * Fix PDFUncertainty and PDFErrInfo object lifetimes in the
+    Python interface.
+  * Add setname_nmem variants of methods for making PDFInfo and
+    AlphaS objects.
+  * Introduce MemType and MemDesc flags, used by preference to
+    PdfType and PdfDesc.
+  * Convert MPI interface to use MPI v3.
+  * Avoid silent compilation failures during the python extension
+    build.
+  * Replace deprecated egrep with grep -E in lhapdf-config and
+    other places.
+  * Change nmem type in mk function signatures from int to size_t,
+    and fix several other signed/unsigned warnings.
+  * Add CXXFLAGS and LDFLAGS propagation to the Python-extension
+    build script.
+  * Fix bug in in precomputed grid-differences that would lead to
+    lookups outside array bounds.
+- Drop LHAPDF-python-platlib.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Sep  1 01:37:41 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.5.3:

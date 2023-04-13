@@ -1,7 +1,7 @@
 #
 # spec file for package LHAPDF
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%define so_name libLHAPDF-6_5_3
+# Not needed for actual use, but quilt does not work without this
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+#
+%define so_name libLHAPDF-6_5_4
 %define execname lhapdf
 Name:           LHAPDF
-Version:        6.5.3
+Version:        6.5.4
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
 URL:            https://lhapdf.hepforge.org/
 Source:         http://www.hepforge.org/archive/lhapdf/%{name}-%{version}.tar.gz
 Patch1:         sover.diff
-# PATCH-FIX-UPSTREAM LHAPDF-python-platlib.patch badshah400@gmail.com -- Correct system platlib determination in configure.ac
-Patch2:         LHAPDF-python-platlib.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -154,7 +155,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/%{execname}.pc
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lhapdf/
 
 %files -n %{name}-doc
 %doc %{_docdir}/%{name}/
