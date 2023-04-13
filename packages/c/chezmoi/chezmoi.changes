@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 12 15:16:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.33.1:
+  * chore: Add rbw version check to doctor command
+  * fix: Allow source dir to be a git worktree
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Fri Mar 24 15:02:32 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.33.0:
