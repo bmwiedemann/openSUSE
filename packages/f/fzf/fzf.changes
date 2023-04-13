@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 13 06:03:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- All those completion scripts not requiring their respective
+  shells is a bit ridiculous.
+
+-------------------------------------------------------------------
 Fri Feb 17 13:29:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Disable LTO

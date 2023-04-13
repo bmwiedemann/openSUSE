@@ -47,6 +47,7 @@ separate tmux pane.
 Summary:        Bash completion for fzf
 Group:          Productivity/File utilities
 Requires:       bash-completion
+Requires:       fzf
 Supplements:    (fzf and bash-completion)
 BuildArch:      noarch
 
@@ -57,6 +58,7 @@ Bash shell completions for fzf
 Summary:        Fish completion for fzf
 Group:          Productivity/File utilities
 Requires:       fish
+Requires:       fzf
 Supplements:    (fzf and fish)
 BuildArch:      noarch
 
@@ -74,6 +76,8 @@ end
 %package zsh-completion
 Summary:        ZSH completion for fzf
 Group:          Productivity/File utilities
+Requires:       fzf
+Requires:       zsh
 Supplements:    (fzf and zsh)
 BuildArch:      noarch
 

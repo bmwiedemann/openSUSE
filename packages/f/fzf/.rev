@@ -539,4 +539,14 @@
     <comment></comment>
     <requestid>1066417</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>064285389378640a349bff7a42048960</srcmd5>
+    <version>0.38.0</version>
+    <time>1681387856</time>
+    <user>dimstar_suse</user>
+    <comment>- All those completion scripts not requiring their respective
+  shells is a bit ridiculous.
+</comment>
+    <requestid>1078867</requestid>
+  </revision>
 </revisionlist>
