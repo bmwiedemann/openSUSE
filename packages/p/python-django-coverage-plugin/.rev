@@ -41,4 +41,12 @@
   * Declare our support for Python 3.11 and Django 4.1.</comment>
     <requestid>1064240</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9bed4cf6dbd2c740d3cee46d9e138556</srcmd5>
+    <version>3.0.0</version>
+    <time>1681388080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079122</requestid>
+  </revision>
 </revisionlist>

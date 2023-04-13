@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-coverage-plugin
 Version:        3.0.0
 Release:        0
@@ -29,7 +28,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
 Requires:       python-coverage >= 4.0
-Requires:       python-six >= 1.4.0
 Provides:       python-django_coverage_plugin = %{version}
 Obsoletes:      python-django_coverage_plugin < %{version}
 BuildArch:      noarch
@@ -37,7 +35,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module unittest-mixins}
 # /SECTION
 %python_subpackages
@@ -46,7 +43,7 @@ BuildRequires:  %{python_module unittest-mixins}
 Django template coverage.py plugin
 
 %prep
-%setup -q -n django_coverage_plugin-%{version}
+%autosetup -p1 -n django_coverage_plugin-%{version}
 
 %build
 %python_build
@@ -61,6 +58,6 @@ Django template coverage.py plugin
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/django_coverage_plugin*
 
 %changelog
