@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 11 14:05:12 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also mark /usr/share/factory/var/lib/ca-certificates/ as writable
+  by the user during install: allow rpm to properly execute %clean
+  when completed.
+
+-------------------------------------------------------------------
 Tue Aug 30 10:23:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Create /var/lib/ca-certificates during build to ensure rpm gives

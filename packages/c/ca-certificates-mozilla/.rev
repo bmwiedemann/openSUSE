@@ -710,4 +710,14 @@
   Patch: remove-trustcor.patch (forwarded request 1044253 from msmeissn)</comment>
     <requestid>1044255</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>640bdc72b9d69e5a8429fd9261aee624</srcmd5>
+    <version>2.60</version>
+    <time>1681387796</time>
+    <user>dimstar_suse</user>
+    <comment>- Also mark /usr/share/factory/var/lib/ca-certificates/ as writable
+  by the user during install: allow rpm to properly execute %clean
+  when completed. (forwarded request 1078460 from dimstar)</comment>
+    <requestid>1078593</requestid>
+  </revision>
 </revisionlist>

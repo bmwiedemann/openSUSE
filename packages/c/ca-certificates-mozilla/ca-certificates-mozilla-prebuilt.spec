@@ -1,7 +1,7 @@
 #
 # spec file for package ca-certificates-mozilla-prebuilt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ ln -s /var/lib/ca-certificates/ca-bundle.pem %{buildroot}/etc/ssl/ca-bundle.pem
 mkdir -p %{buildroot}/usr/share/factory/var/lib
 cp -a /var/lib/ca-certificates %{buildroot}/usr/share/factory/var/lib
 # need rpm needs to be able to delete the buildroot
-chmod u+w %{buildroot}/usr/share/factory/var/lib/ca-certificates/*
+chmod u+w %{buildroot}/usr/share/factory/var/lib/ca-certificates{,/*}
 mkdir -p %{buildroot}%{_tmpfilesdir}
 echo "C /var/lib/ca-certificates" > %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
