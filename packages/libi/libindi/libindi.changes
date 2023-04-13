@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  4 14:18:36 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.1:
+  * Resolve timestamp name conflict.
+  * Fix PMC8 tracking rate.
+  * Support for XISF files.
+  * Update DDW dome driver for new property functions.
+  * Added Safety and Goto Limits.
+  * Feature/qhy gps timestamp.
+  * Addition of myDewControllerPro driver.
+  * Southern Hemisphere Support for PMC8.
+  * Fixed regression with Servo Precision logic setting.
+  * [WandererCover] Adding support for newer firmware (20221008).
+  * Add driver for myDCP4ESP32 Dew Contoller.
+  * Focuser Temperature Compensation minor fixes.
+  * Fixing Openastrotech AutoPA.
+  * Fixed SestoSenso2 calibration.
+  * Force enable tracking after slew and unpark.
+- Remove fix-operator.patch
+- Remove fix-timestamp.patch
+
+-------------------------------------------------------------------
 Thu Mar 23 16:52:12 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO as it builds fine.

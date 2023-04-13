@@ -19,18 +19,19 @@
 %define so_ver 2
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         fix-operator.patch
-Patch1:         fix-timestamp.patch
 BuildRequires:  cmake
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 %if 0%{?suse_version} > 1590
@@ -38,7 +39,8 @@ BuildRequires:  cfitsio-devel
 %else
 BuildRequires:  libcfitsio-devel
 %endif
-BuildRequires:  libev-devel
+BuildRequires:  libXISF-devel
+BuildRequires:  libev-devel >= 4.33
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
@@ -147,7 +149,6 @@ completely dynamic GUI based on the services provided by the device.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-
 export CFLAGS="%(echo %{optflags}) -Wno-stringop-truncation"
 export CXXFLAGS="$CFLAGS"
 
@@ -156,8 +157,13 @@ export CXXFLAGS="$CFLAGS"
     -DUDEVRULES_INSTALL_DIR=%{_udevdir}/rules.d \
     -DINDI_BUILD_QT5_CLIENT=ON \
     -DINDI_BUILD_WEBSOCKET=ON \
+    -DINDI_BUILD_XISF=ON \
+%if 0%{?suse_version} < 1590
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-10 \
+%else
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++ \
+%endif
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
-
 %cmake_build
 
 %install
