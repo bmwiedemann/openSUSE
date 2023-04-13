@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 13:40:10 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Rebuild the RPM database during upgrade (--rebuilddb) (bsc#1209565)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
