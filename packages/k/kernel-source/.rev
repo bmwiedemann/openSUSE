@@ -6242,4 +6242,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2.9 &amp; s390 fix &amp; LSM changed</comment>
     <requestid>1075544</requestid>
   </revision>
+  <revision rev="686" vrev="1">
+    <srcmd5>8772afbcf66f92e8bcf023dec3e4eb62</srcmd5>
+    <version>6.2.10</version>
+    <time>1681387763</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.10 &amp; other fixes</comment>
+    <requestid>1078422</requestid>
+  </revision>
 </revisionlist>
