@@ -25,6 +25,7 @@ License:        Apache-2.0
 URL:            https://mistertea.github.io/EternalTerminal/
 Source0:        https://github.com/MisterTea/EternalTerminal/archive/et-v%{version}.tar.gz
 Source1:        et.xml
+Patch0:         ET-gcc13.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
