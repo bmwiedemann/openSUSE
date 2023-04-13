@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:08:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.2.2:
+  * Release 12.2.2 (#24478)
+  * docs: bump cloud to 12.2.1 (#24475)
+  * Unlock keychain in drone (#24474)
+  * [v12] Add CA, Role, Lock AuthPreference RO persmissions to
+    RoleOkta. (#24397)
+  * Add caveat re: the audit event list (#24406)
+  * helm: support setting proxyListenerMode to emptystring (#24426)
+  * Clarify that "local" is not an auth connector (#24455)
+  * [v12] Integration: add service to server and client (#24133)
+    (#24439)
+  * [v12] Return enroll_status unspecified for empty status
+    (#24435)
+  * [v12] docs: correct rds proxy policy example (#24423)
+  * Restore MajorVersion template var for Installers (#24388)
+    (#24434)
+  * [v12] usagereporter: enable on-prem user activity reporting
+    (#24433)
+  * reduce log spam when AWS Aurora engine name is not recognized
+    (#24413)
+  * [v12] Distroless doc updates (#24036)
+  * * Fix Hardware Key support docs when scoped for Open Source.
+      (#24408)
+  * * Add --mlock flag with auto, off, best_effort, and strict
+      options. (#24236) (#24410)
+  * Add new `reporting` license flag (#21928) (#24396)
+  * Fix log output in aggregating.Reporter (#24391)
+  * Move docs builds down in GitHub Actions (#24385)
+  * Remove unnecessary query string (#24289)
+  * [v12] Updates access plane to access platform and operator def
+    (#24389)
+  * Expose CopyAndConfigureTLS. (#24384)
+  * [v12] Fields in WebAuthn comments (#24354)
+  * chore: Bump Buf from 1.16.0 to 1.17.0 (#24351)
+  * * Fix headless authentication watcher race condition on wait
+      condition (#24361)
+  * Add longer meta descriptions to high-traffic pages (#24334)
+  * Update e reference. (#24341)
+  * [v12] Support spellchecking in docs content (#24304)
+  * Allow Okta role to heartbeat app servers. (#24329)
+  * Constrict app.FindPublicAddr client. (#24331)
+  * docs: correct header in changelog (#24308)
+  * [v12] Update to Teleport Access Platform name in teleport,tctl
+    (#24300)
+  * purge extra newlines (#24283)
+  * fix protocol name for elasticsearch guide (#24280)
+  * [v12] Fixes to metrics docs (#24290)
+  * add Datadog to audit events index (#24274)
+  * Make react-router-dom and @types versions consistent (#24201)
+    (#24272)
+  * docs: use teleport systemd include for start mongodb (#24258)
+  * [v12] Fix package names for v1 protos, misc proto changes
+    (#24183) (#24263)
+  * Connect: Do not include staging feedback address in prod CSP
+    (#24189)
+  * Add missing continue and handle error in the test echo SSH
+    server (#24243)
+  * Added 04/03 Upcoming Releases Update (#24215)
+  * [v12] Bump cloud docs to 12.1.5 (#24204)
+  * Include correct identity in post-renewal log message (#24246)
+  * docs: use teleport systemd include for start (#24248)
+  * update Makefile to use cargo sparse protocol in all cargo
+    commands (#23856) (#24225)
+  * GHA: Update path filters to include workflow files and Makefile
+    (#24252)
+  * Lowercase "Teleport Service" (#24219)
+  * [v12] Disable `build-macos` and `build-windows` on PR (#24233)
+  * bump teleport version in docs (#24205)
+  * usagereporter: on-prem dial home (#23916) (#24196)
+  * Fix tctl test timeouts (#24216)
+  * [v12] Add configuration options for hosted plugin runtime
+    (#22320) (#24112)
+  * [v12] [docs] Add documentation page for IP pinning (#23897)
+  * Integrations service for CRUD operations (#23989) (#24144)
+  * Add local guidance for Linux Server guide users (#24140)
+  * [v12] Fix panic when incoming request is nil (#24199)
+  * Fix panic for when `/web/launch` is requested (#24132)
+  * Add systemctl instructions to Connecting Apps (#24137)
+  * Make TestTeleportProcess_reconnectToAuth less flaky (#24191)
+  * ClusterItem: Remove usage of colors.secondary.lighter (#24182)
+  * add `set -eu` to discovery installer (#24034)
+  * Clarify how to decide undocumented style questions (#24085)
+  * update eref (#24165)
+  * [v12] docs: update mfa docs (#24157)
+  * Include year in cert rotate examples docs (#24153)
+  * Send tunnel reconnects before waiting for sessions to drain
+    (#24141)
+  * [v12] Fix improper report of status on success (#24155)
+  * refactor theme (#23876)
+  * update eref (#24148)
+  * helm: Propagate securityContext and nodeSelector to Job hooks
+    (#24012) (#24134)
+  * Remove no longer used Teleport enterprise yaml example (#24150)
+  * Remove the Access Controls FAQ (#24081)
+  * fix flaky tests (#24126)
+  * [V12] Integration resource: proto (#24057)
+  * Fix TestTerminal_KillUnderlyingShell (#24125)
+  * [v12] Docs: Remove Details block from tctl partial. (#24072)
+  * docs: Oracle Database Access (#24119)
+  * [v12] Update gosaml2 to 0.9.1 (#24079)
+  * Bump Cloud SLA to 99.9% (#24093)
+
+-------------------------------------------------------------------
 Thu Apr 06 03:50:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.2.1:
