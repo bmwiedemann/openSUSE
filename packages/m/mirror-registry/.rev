@@ -36,4 +36,13 @@
   - Refresh dependencies</comment>
     <requestid>1059935</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dcb7e54aebd9b210212332ac2c63df66</srcmd5>
+    <version>1.4</version>
+    <time>1681387881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4
+  - Refresh dependencies to get some docker CVEs fixed</comment>
+    <requestid>1079085</requestid>
+  </revision>
 </revisionlist>
