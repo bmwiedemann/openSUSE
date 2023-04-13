@@ -1243,4 +1243,13 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>1074485</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>4c922fed4f0b94feebfb4f1346c4090b</srcmd5>
+    <version>6.2.2</version>
+    <time>1681387765</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pre-generated documentation from tarball, fixes build on SLE targets
+  where sphinx might not be available (forwarded request 1078506 from dsterba)</comment>
+    <requestid>1078507</requestid>
+  </revision>
 </revisionlist>
