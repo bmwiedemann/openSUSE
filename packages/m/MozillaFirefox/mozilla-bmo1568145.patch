@@ -10,14 +10,14 @@ for the definition of this variable.
 diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbuild/mozbuild/action/langpack_manifest.py
 --- a/python/mozbuild/mozbuild/action/langpack_manifest.py
 +++ b/python/mozbuild/mozbuild/action/langpack_manifest.py
-@@ -13,16 +13,17 @@
- 
+@@ -14,16 +14,17 @@
  import argparse
  import datetime
  import io
  import json
  import logging
  import os
+ import re
  import sys
 +import time
  
@@ -28,7 +28,7 @@ diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbu
  from fluent.syntax.parser import FluentParser
  from mozpack.chrome.manifest import Manifest, ManifestLocale, parse_manifest
  
-@@ -101,17 +102,17 @@ def get_dt_from_hg(path):
+@@ -102,17 +103,17 @@ def get_dt_from_hg(path):
  #    ts == "20170914215617"
  ###
  def get_timestamp_for_locale(path):

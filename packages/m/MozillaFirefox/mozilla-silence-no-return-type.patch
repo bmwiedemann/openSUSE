@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  c9ee7d75ce3f624221f3ba8ef7c821f501c9a028
+# Parent  6bace0b1d6e9c82e8d3f557cac1a4bcc10ec9c13
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
@@ -26,7 +26,7 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -158,16 +158,17 @@ chardetng_c = { git = "https://github.co
+@@ -161,16 +161,17 @@ chardetng_c = { git = "https://github.co
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
  firefox-on-glean = { path = "toolkit/components/glean/api" }
  libudev-sys = { path = "dom/webauthn/libudev-sys" }
@@ -37,13 +37,13 @@ diff --git a/Cargo.toml b/Cargo.toml
  warp = { git = "https://github.com/glandium/warp", rev = "4af45fae95bc98b0eba1ef0db17e1dac471bb23d" }
 +glslopt = { path = "third_party/rust/glslopt/" }
  
- cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "d3670a89bae26ba3a8db4758eb7976616113987d" }
+ cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "b196a164dcbb317016d4aa6c58c13147e6045ebb" }
  
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
- sql-support = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
- sync15 = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
- tabs = { git = "https://github.com/bendk/application-services", rev = "ecb35df5fc40357c49922f90e86bf4147fa52953" }
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
+ sync15 = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
+ tabs = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -2161,22 +2161,6 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
  VideoSendStream::StreamStats::~StreamStats() = default;
  
  std::string VideoSendStream::StreamStats::ToString() const {
-diff --git a/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
-@@ -373,11 +373,12 @@ std::unique_ptr<ClippingPredictor> Creat
-           /*adaptive_step_estimation=*/true);
-     case ClippingPredictorMode::kFixedStepClippingPeakPrediction:
-       return std::make_unique<ClippingPeakPredictor>(
-           num_channels, config.window_length, config.reference_window_length,
-           config.reference_window_delay, config.clipping_threshold,
-           /*adaptive_step_estimation=*/false);
-   }
-   RTC_DCHECK_NOTREACHED();
-+  return nullptr;
- }
- 
- }  // namespace webrtc
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
@@ -2220,7 +2204,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -1980,16 +1981,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1982,16 +1983,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:

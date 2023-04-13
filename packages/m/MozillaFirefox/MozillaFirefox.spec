@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          111
-%define mainver        %major.0.1
-%define orig_version   111.0.1
+%define major          112
+%define mainver        %major.0
+%define orig_version   112.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -120,16 +120,22 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.88.1
+BuildRequires:  mozilla-nss-devel >= 3.89
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 BuildRequires:  python-libxml2
 BuildRequires:  python36
 %else
-BuildRequires:  python3 >= 3.5
+%if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 150500
+BuildRequires:  python39
+BuildRequires:  python39-curses
+BuildRequires:  python39-devel
+%else
+BuildRequires:  python3 >= 3.7
 BuildRequires:  python3-curses
 BuildRequires:  python3-devel
+%endif
 %endif
 BuildRequires:  rust-cbindgen >= 0.24.3
 BuildRequires:  unzip
@@ -228,7 +234,6 @@ Patch23:        mozilla-bmo531915.patch
 Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
 Patch27:        mozilla-buildfixes.patch
-Patch28:        mozilla-bmo1807652.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -402,7 +407,7 @@ EOF
 # Done with env-variables.
 source ./.obsenv.sh
 
-%ifarch aarch64 %arm ppc64 ppc64le riscv64 %ix86
+%ifarch aarch64 %arm ppc64 ppc64le riscv64
 %limit_build -m 2500
 %endif
 
@@ -618,7 +623,8 @@ ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
 mkdir -p %{buildroot}%{_datadir}/applications
 sed "s:%%NAME:%{appname}:g
 s:%%EXEC:%{progname}:g
-s:%%ICON:%{progname}:g" \
+s:%%ICON:%{progname}:g
+s:%%WMCLASS:%{progname}%{major}:g" \
   %{SOURCE1} > %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
 %suse_update_desktop_file %{desktop_file_name} Network WebBrowser GTK
 # additional mime-types

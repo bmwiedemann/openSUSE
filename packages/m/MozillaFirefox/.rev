@@ -6112,4 +6112,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1077029</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>8f345ff09840f23d1e13a02bd29db2f4</srcmd5>
+    <version>112.0</version>
+    <time>1681387771</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 112.0
+  * https://www.mozilla.org/en-US/firefox/112.0/releasenotes/
+  MFSA 2023-13 (bsc#1210212)
+  * CVE-2023-29531 (bmo#1794292)
+    Out-of-bound memory access in WebGL on macOS
+  * CVE-2023-29532 (bmo#1806394)
+    Mozilla Maintenance Service Write-lock bypass
+  * CVE-2023-29533 (bmo#1798219, bmo#1814597)
+    Fullscreen notification obscured
+  * CVE-2023-29534 (bmo#1816007, bmo#1816059, bmo#1821155, bmo#1821576,
+    bmo#1821906, bmo#1822298, bmo#1822305)
+    Fullscreen notification could have been obscured on Firefox
+    for Android
+  * MFSA-TMP-2023-0001 (bmo#1819244)
+    Double-free in libwebp
+  * CVE-2023-29535 (bmo#1820543)
+    Potential Memory Corruption following Garbage Collector compaction
+  * CVE-2023-29536 (bmo#1821959)
+    Invalid free from JavaScript code
+  * CVE-2023-29537 (bmo#1823365, bmo#1824200, bmo#1825569)
+    Data Races in font initialization code
+  * CVE-2023-29538 (bmo#1685403)
+    Directory information could have been leaked to WebExtensions
+  * CVE-2023-29539 (bmo#1784348)
+    Content-Disposition filename truncation leads to Reflected
+    File Download
+  * CVE-2023-29540 (bmo#1790542)
+    Iframe sandbox bypass using redirects and sourceMappingUrls
+  * CVE-2023-29541 (bmo#1810191)
+    Files with malicious extensions could have been downloaded</comment>
+    <requestid>1078521</requestid>
+  </revision>
 </revisionlist>
