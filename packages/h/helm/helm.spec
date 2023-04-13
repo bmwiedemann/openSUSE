@@ -20,7 +20,7 @@
 %define git_commit d506314abfb5d21419df8c7e7e68012379db2354
 %define git_dirty clean
 Name:           helm
-Version:        3.11.2
+Version:        3.11.3
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -28,8 +28,6 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
 Source0:        https://github.com/helm/helm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# PATCH submitted upstream https://github.com/helm/helm/pull/11949
-Patch1:         fix-plugin-32bit.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.19
 %{go_provides}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:54:49 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.11.3:
+  * chore(deps): bump golang.org/x/text from 0.7.0 to 0.9.0
+  * Fix goroutine leak in perform
+  * Fix goroutine leak in action install
+  * Fix 32bit-x86 typo in testsuite
+  * chore(deps): bump github.com/docker/docker
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15 to 1.7.0
+  * Fixes Readiness Check for statefulsets using partitioned rolling update. (#11774)
+- droip fix-plugin-32bit.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Mar 28 13:18:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add fix-plugin-32bit.patch

@@ -499,4 +499,20 @@ See changelog in:
 - run tests</comment>
     <requestid>1075020</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>15ce6eda43de90d2b2cd2dd10b3a5011</srcmd5>
+    <version>3.11.3</version>
+    <time>1681387862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11.3:
+  * chore(deps): bump golang.org/x/text from 0.7.0 to 0.9.0
+  * Fix goroutine leak in perform
+  * Fix goroutine leak in action install
+  * Fix 32bit-x86 typo in testsuite
+  * chore(deps): bump github.com/docker/docker
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15 to 1.7.0
+  * Fixes Readiness Check for statefulsets using partitioned rolling update. (#11774)
+- droip fix-plugin-32bit.patch (upstream)</comment>
+    <requestid>1079080</requestid>
+  </revision>
 </revisionlist>
