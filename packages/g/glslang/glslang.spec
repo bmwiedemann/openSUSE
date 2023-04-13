@@ -103,7 +103,7 @@ pushd "$b"
 popd
 
 mkdir -p "$b/%_includedir"
-cp -a SPIRV glslang "$b/%_includedir/"
+cp -a SPIRV StandAlone glslang "$b/%_includedir/"
 find "$b/%_includedir/" -type f ! -iname "*.h" -a ! -iname "*.hpp" -print -delete
 ln -s SPIRV/spirv.hpp "$b/%_includedir/"
 find "$b/%_includedir/" -type f -exec chmod a-x "{}" "+"

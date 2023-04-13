@@ -334,4 +334,12 @@
     <comment>- Update to release 12.1.0:</comment>
     <requestid>1075215</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>9fcf997280cddd6e6ed0fe0c16c385cd</srcmd5>
+    <version>12.1.0</version>
+    <time>1681387766</time>
+    <user>dimstar_suse</user>
+    <comment>- Add StandAlone/ to glslang-nonstd-devel</comment>
+    <requestid>1078511</requestid>
+  </revision>
 </revisionlist>
