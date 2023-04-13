@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 13 10:32:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.6
+  * Updated Persian (Farsi) translations
+  * Fixed #5300: Boxes in Mermaid sequence diagrams not
+    color-abiding
+
+-------------------------------------------------------------------
 Thu Apr 13 06:41:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - really add proper Requires for plugins...
