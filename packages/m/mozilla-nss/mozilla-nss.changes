@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 10 21:31:33 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.89
+  * bmo#1820834 - revert freebl/softoken RSA_MIN_MODULUS_BITS increase
+  * bmo#1820175 - PR_STATIC_ASSERT is cursed
+  * bmo#1767883 - Need to add policy control to keys lengths for signatures
+  * bmo#1820175 - Fix unreachable code warning in fuzz builds
+  * bmo#1820175 - Fix various compiler warnings in NSS
+  * bmo#1820175 - Enable various compiler warnings for clang builds
+  * bmo#1815136 - set PORT error after sftk_HMACCmp failure
+  * bmo#1767883 - Need to add policy control to keys lengths for signatures
+  * bmo#1804662 - remove data length assertion in sec_PKCS7Decrypt
+  * bmo#1804660 - Make high tag number assertion failure an error
+  * bmo#1817513 - CKM_SHA384_KEY_DERIVATION correction maximum key
+                  length from 284 to 384
+  * bmo#1815167 - Tolerate certificate_authorities xtn in ClientHello
+  * bmo#1789436 - Fix build failure on Windows
+  * bmo#1811337 - migrate Win 2012 tasks to Azure
+  * bmo#1810702 - fix title length in doc
+  * bmo#1570615 - Add interop tests for HRR and PSK to GREASE suite
+  * bmo#1570615 - Add presence/absence tests for TLS GREASE
+  * bmo#1804688 - Correct addition of GREASE value to ALPN xtn
+  * bmo#1789436 - CH extension permutation
+  * bmo#1570615 - TLS GREASE (RFC8701)
+  * bmo#1804640 - improve handling of unknown PKCS#12 safe bag types
+  * bmo#1815870 - use a different treeherder symbol for each docker
+                  image build task
+  * bmo#1815868 - pin an older version of the ubuntu:18.04 and
+                  20.04 docker images
+  * bmo#1810702 - remove nested table in rst doc
+  * bmo#1815246 - Export NSS_CMSSignerInfo_GetDigestAlgTag
+  * bmo#1812671 - build failure while implicitly casting SECStatus
+                  to PRUInt32
+
+-------------------------------------------------------------------
 Sat Mar 11 13:21:23 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.88.1
