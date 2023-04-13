@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:55:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230412T022151Z:
+  * Remove diskInfo structure in heal report (#4545)
+  * heal: Fix summary ETA with multiple disks healing in one set
+    (#4543)
+  * update minio-go/v7 -> v7.0.52 (#4544)
+  * stat: fix printing bucket usage info (#4542)
+  * fix: remove replace directive merged incorrectly
+  * perf: Add --noclear flag to avoid doing cleanup (#4473)
+  * Add trace for ilm call type (#4538)
+  * do not crash on zero values (#4536)
+  * Add metadata and tags to mc find (#4531)
+  * Add flag to `admin replicate update` to toggle synchronous
+    replication (#4514)
+  * Improve errInvalidAlias (#4532)
+  * Dont send blank perf report to SUBNET (#4533)
+  * print RestoreInfo to check status of restored objects (#4534)
+
+-------------------------------------------------------------------
+Thu Apr 13 07:43:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230406T165110Z:
+  * Add errors for deprecated commands (#4498)
+  * Add trace options for batch key rotation (#4507)
+  * Upgrade madmin-go to 2.0.18 (#4535)
+  * fix: redact secretKey from printed on screen (#4526)
+
+-------------------------------------------------------------------
 Sun Mar 26 08:25:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230323T200304Z:
