@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 11 08:32:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python38-backports.zoneinfo only when python38-base
+  is present in the buildsystem: fix build on distros where python
+  3.8 is no longer in the supported set of python interpreters.
+
+-------------------------------------------------------------------
 Sat Oct 29 16:04:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.8.2 
+- Update to version 2.8.2
   * Improve type hints for time_machine.travel() to preserve the types of the wrapped function/coroutine/class.
 
 -------------------------------------------------------------------

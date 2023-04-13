@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-machine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module pytzdata}
-BuildRequires:  python38-backports.zoneinfo
+BuildRequires:  (python38-backports.zoneinfo if python38-base)
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
