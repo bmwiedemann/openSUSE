@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        9.3.6
+Version:        9.4.7
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
@@ -36,8 +36,6 @@ Source3:        README
 # Makefile to automate build process
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
-# CVE-2022-46146 bsc#1208065
-Patch0:         0002-Update-exporter-toolkit-to-version-0.7.3.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
@@ -63,7 +61,6 @@ dashboards and data with teams.
 %prep
 %setup -q -n grafana-%{version}
 %setup -q -T -D -a 1 -n grafana-%{version}
-%patch0 -p1
 
 %build
 %goprep github.com/grafana/grafana
@@ -83,10 +80,19 @@ go install $BUILDFLAGS -ldflags '-X main.version=%{version}' $IMPORTPATH/pkg/cmd
 %install
 %goinstall
 
+# install binaries and service
 install -Dm644 {packaging/rpm/systemd/,%{buildroot}%{_unitdir}/}%{name}-server.service
 install -dm755 %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service  %{buildroot}%{_sbindir}/rc%{name}-server
-mv %{buildroot}/%{_bindir}/grafana-* %{buildroot}/%{_sbindir}
+install -dm755 %{buildroot}%{_libexecdir}/%{name}
+install -m755 --target-directory=%{buildroot}%{_sbindir} packaging/wrappers/%{name}*
+mv --target-directory=%{buildroot}%{_libexecdir}/%{name} %{buildroot}/%{_bindir}/%{name}*
+
+# create "rc symlink" (https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#rc_symlink)
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-server
+
+# add symlink to binary where systemd unit file expects it to be
+install -dm755 %{buildroot}%{_datadir}/%{name}/bin
+ln -s %{_libexecdir}/%{name}/%{name} %{buildroot}%{_datadir}/%{name}/bin/%{name}
 
 install -Dm644 packaging/rpm/sysconfig/%{name}-server \
 %{buildroot}%{_fillupdir}/sysconfig.%{name}-server
@@ -134,6 +140,8 @@ install -d -m755 %{buildroot}%{_datadir}/%{name}/tools
 %doc CHANGELOG*
 %{_sbindir}/%{name}*
 %{_sbindir}/rc%{name}-server
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/%{name}*
 %{_unitdir}/%{name}-server.service
 %{_fillupdir}/sysconfig.%{name}-server
 %attr(0755,root,root) %dir %{_sysconfdir}/%{name}

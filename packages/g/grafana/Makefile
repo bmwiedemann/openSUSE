@@ -24,7 +24,6 @@ tar:
 	cd $$basename && \
 	# Patches for the JS frontend go after here \
 	patch --no-backup-if-mismatch -p1 -i ../../0001-Add-source-code-reference.patch && \
-	patch --no-backup-if-mismatch -p1 -i ../../0002-Update-exporter-toolkit-to-version-0.7.3.patch && \
 	# End patches section \
 	go mod download && \
 	go mod verify && \
