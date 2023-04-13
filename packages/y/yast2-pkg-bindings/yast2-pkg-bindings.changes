@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 12 13:20:02 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Pkg.TargetInitializeOptions() - added a new option for
+  rebuilding the RPM database (--rebuilddb) (bsc#1209565)
+- 4.6.1 
+
+-------------------------------------------------------------------
 Fri Mar 03 14:41:17 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
