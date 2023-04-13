@@ -45,12 +45,20 @@ BuildRequires:  %{python_module pymdown-extensions >= 9.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# Requirements for core
+# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
 Requires:       python-Markdown >= 3.2
 Requires:       python-jinja2 >= 3.0
 Requires:       python-mkdocs >= 1.4.2
 Requires:       python-mkdocs-material-extensions >= 1.1
 Requires:       python-pygments >= 2.14
 Requires:       python-pymdown-extensions >= 9.9.1
+# Requirements for plugins
+# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
+Requires:       python-colorama >= 0.4
+Requires:       python-regex => 2022.4.24
+Requires:       python-requests >= 2.26
+
 BuildArch:      noarch
 %python_subpackages
 
