@@ -1,7 +1,7 @@
 #
 # spec file for package sane-backends
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(systemd)
 Summary:        SANE (Scanner Access Now Easy) Scanner Drivers
 License:        GPL-2.0-or-later AND SUSE-GPL-2.0+-with-sane-exception AND SUSE-Public-Domain
 Group:          Hardware/Scanner
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 URL:            http://www.sane-project.org/
 # On https://gitlab.com/sane-project/backends/-/releases
@@ -62,7 +62,7 @@ URL:            http://www.sane-project.org/
 # and autoconf fails as it requires a complete git clone, see https://gitlab.com/sane-project/backends/issues/248
 # We use the second one "sane-backends-1.0.32.tar.gz" that is a dist tarball with a prebuilt configure script via
 # wget https://gitlab.com/sane-project/backends/uploads/104f09c07d35519cc8e72e604f11643f/sane-backends-1.0.32.tar.gz
-Source0:        https://gitlab.com/sane-project/backends/uploads/7d30fab4e115029d91027b6a58d64b43/sane-backends-1.1.1.tar.gz
+Source0:        https://gitlab.com/sane-project/backends/uploads/110fc43336d0fb5e514f1fdc7360dd87/sane-backends-1.2.1.tar.gz
 # Source100... is SUSE specific stuff:
 # Source102 is the OpenSLP registration file for the saned:
 Source102:      sane.reg

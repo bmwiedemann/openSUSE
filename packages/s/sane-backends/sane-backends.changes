@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Apr  7 18:15:29 UTC 2023 - Javier Llorente <javier@opensuse.org>
+
+- Updated to sane-backends version 1.2.1
+  * Backends
+    + avision:
+      - Minor fix for protocol packet length.
+      - Added “basic” support for Avision AD345F. Note that multi-sheet scanning is problematic.
+      - Fix for 32-bit limitation on scan line size which caused early abort of scan.
+      - Fix for minimum resolution for devices with AV_ASIC_C6.
+      - Various small logic errors addressed.
+    + canon: Use the common model name instead of string from the device.
+    + canon_lide70: Some small corrections to option support.
+    + canon_pp: Potential buffer overrun issue addressed.
+    + canon-dr: Added support for lifecycle counters for dr-x10c scanners.
+    + epjitsu: Hang fix for Scansnap S1300i.
+    + epsonds: Added support for Epson XP-2200 Series devices.
+    + escl:
+      - Fixes related to support for HP M277dw.
+      - Fix for Canon TS-3400 series resolution support.
+      - Added support for Epson EcoTank L3160.
+      - Fix for segfault crash.
+      - Performance and memory use enhancements through the use of memory-mapped I/O.
+      - Fix for TIFF file type generation failure.
+      - IPv6 detection improvements.
+    + fujitsu:
+      - Contrast/brightness fixes for Fujitsu ix500.
+      - Support confirmed for Fujitsu fi-7300NX.
+      - Support added for ScanSnap ix1400.
+      - Added support for ScanPartner SP30.
+    + genesys:
+       - Fixes for unit test build errors related to GCC 12.
+       - Fix for 32-bit limitation on scan line size which caused early abort. of scan.
+       - Build issue fix for OSX.
+       - Button support for Canon 8400f scanner corrected.
+       - Support added back in for Plustek OpticFilm 7600i: config file entry was missing.
+    + kvs40xx: Compiler warnings fixed.
+    + mustek_usb2: Compiler warnings fixed.
+    + pixma:
+      - Fix for Canon TS-3400 series resolution support.
+      - Button support for Canon MG5700 series corrected.
+      - Added support for Canon imageRUNNER 1018/1022/1023.
+      - Added support for Canon PIXMA TS2400 Series.
+      - Added support for Canon PIXMA TS2600 Series.
+      - Testing confirmed for Canon TS6400 series devices.
+      - Testing confirmed for Canon TS3400 series devices.
+      - Various devices’ max resolutions fixed.
+      - Minor fix for broadcast buffer size error.
+    + plustek_pp: Support removed for deprecated Linux kernel driver build.
+    + test: Fix for 32-bit limitation on scan line size which caused early abort of scan.
+    + xerox_mfp:
+      - JPEG support fix for Samsung SCX-4828 FN and similar.
+      - JPEG support fix for Samsung SCX-4824 FN and similar.
+  * Frontends
+    + sane-find-scanner: Alteration to output to indicate that indicated devices are potentially
+      scanners.
+    + saned: Fix for poll.h header file, which caused problems on Alpine Linux.
+    + scanimage:
+      - Attempts to set readonly options will give a warning about readonly option set attempt now,
+        instead of the misleading "unknown option" error.
+      - Header file build fixes for FreeBSD.
+      - Fix for backends presenting NULL attributes in deactivated options.
+  * Miscellaneous
+    + Updated translation to Russian, Italian, British English and Ukraine.
+    + Compiler warnings addressed for a number of backends.
+    + A number of fixes for the build system:
+      - Fix to ignore LDFLAGS environment variable in build.
+      - Fix to not build umax_pp tool when disabled.
+      - Fix for CLANG compiler warnings.
+      - Various small improvements to dependency checking and CI builds.
+      - General corrections for backends’ use of mkstemp() function.
+      - Added support for autotools’ silent build option.
+      - Remove –with-group configure option, since it is no longer used.
+      - Autotools fixes for backend library installation. 
+
+-------------------------------------------------------------------
 Fri Jan 28 16:59:19 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Upgraded to sane-backends version 1.1.1
