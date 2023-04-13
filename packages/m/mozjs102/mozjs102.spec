@@ -39,7 +39,7 @@ BuildArch:      i686
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        102.9.0
+Version:        102.10.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
@@ -72,12 +72,12 @@ Patch20:        Fix-i586-float-math.patch
 BuildRequires:  autoconf213
 BuildRequires:  cargo
 BuildRequires:  ccache
-BuildRequires:  clang-devel
+BuildRequires:  clang
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  llvm
-BuildRequires:  llvm-devel
+BuildRequires:  llvm-gold
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
