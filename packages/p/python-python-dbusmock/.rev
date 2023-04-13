@@ -81,4 +81,12 @@
 - Add python-dataclasses to {Build,}Requires</comment>
     <requestid>940130</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>cb02004fc3982b01969f3d193e1954c4</srcmd5>
+    <version>0.24.1</version>
+    <time>1681387817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078647</requestid>
+  </revision>
 </revisionlist>

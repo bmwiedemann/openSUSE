@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dbusmock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15modernpython}
 Name:           python-python-dbusmock
 Version:        0.24.1
 Release:        0
@@ -25,22 +23,23 @@ Summary:        Python library for creating mock D-Bus objects
 License:        LGPL-3.0-or-later
 URL:            https://github.com/martinpitt/python-dbusmock
 Source:         https://files.pythonhosted.org/packages/source/p/python-dbusmock/python-dbusmock-%{version}.tar.gz
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module dbus-python}
+BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-%if %python_version_nodots < 37
-Requires:       python-dataclasses
-%endif
 Requires:       dbus-1-x11
 Requires:       python-dbus-python
 Requires:       python-gobject
 Provides:       python-dbusmock = %{version}
 BuildArch:      noarch
+%if %python_version_nodots < 37
+Requires:       python-dataclasses
+%endif
 %python_subpackages
 
 %description
@@ -51,13 +50,13 @@ such as upower, systemd, logind, gnome-session or others, and it is hard
 to what one may expect in tests.
 
 %prep
-%setup -q -n python-dbusmock-%{version}
+%autosetup -p1 -n python-dbusmock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,7 +65,7 @@ to what one may expect in tests.
 %files %{python_files}
 %license COPYING
 %doc NEWS README.rst
-%{python_sitelib}/dbusmock/
-%{python_sitelib}/python_dbusmock-%{version}-py*.egg-info
+%{python_sitelib}/dbusmock
+%{python_sitelib}/python_dbusmock-%{version}*-info
 
 %changelog

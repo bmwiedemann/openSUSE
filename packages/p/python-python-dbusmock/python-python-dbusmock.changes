@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 10:15:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to pyproject_*
+- Add missing BR on python-gobject.
+
+-------------------------------------------------------------------
 Mon Dec 13 04:35:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.24.1:
