@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 1430
+%define patchlevel 1443
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site

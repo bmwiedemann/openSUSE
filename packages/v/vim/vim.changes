@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 12 10:47:28 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1443, fixes the following problems
+  * Livebook files are not recognized.
+  * getscriptinfo() loops even when specific SID is given.
+  * Completion popup in wrong position with virtual text "above".
+  * On some systems the Lua library is not found.
+  * Crash when adding package already in 'runtimepath'.
+  * Scrolling too many lines when 'wrap' and 'diff' are set.
+  * Cannot compare a typed variable with v:none.
+  * Test fails with different error number.
+  * .fs files are falsely recognized as forth files.
+  * Start Insert mode when accessing a hidden prompt buffer.
+  * "rvim" can execute a shell through :diffpatch.
+  * mapset() does not restore non-script context.
+  * Ending Insert mode when accessing a hidden prompt buffer.
+
+-------------------------------------------------------------------
 Thu Mar 30 16:24:53 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1430, fixes the following problems

@@ -6989,4 +6989,25 @@ always built-in because vim has direct perl dependencies anyway.
   * Condition is always true.</comment>
     <requestid>1075605</requestid>
   </revision>
+  <revision rev="346" vrev="1">
+    <srcmd5>7381d3154d75e08f6a09735d17b2b37d</srcmd5>
+    <version>9.0.1443</version>
+    <time>1681387799</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1443, fixes the following problems
+  * Livebook files are not recognized.
+  * getscriptinfo() loops even when specific SID is given.
+  * Completion popup in wrong position with virtual text &quot;above&quot;.
+  * On some systems the Lua library is not found.
+  * Crash when adding package already in 'runtimepath'.
+  * Scrolling too many lines when 'wrap' and 'diff' are set.
+  * Cannot compare a typed variable with v:none.
+  * Test fails with different error number.
+  * .fs files are falsely recognized as forth files.
+  * Start Insert mode when accessing a hidden prompt buffer.
+  * &quot;rvim&quot; can execute a shell through :diffpatch.
+  * mapset() does not restore non-script context.
+  * Ending Insert mode when accessing a hidden prompt buffer.</comment>
+    <requestid>1078626</requestid>
+  </revision>
 </revisionlist>
