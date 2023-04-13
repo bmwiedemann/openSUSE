@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 13 06:52:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.5:
+  * Bugfixes
+    - Use fqcn[canonical] in place of fqcn[action-redirect] (#3273)
+      @shatakshiiii
+    - Refactor tests (#3271) @ssbarnea
+    - Refactor no-relative-paths tests (#3270) @ssbarnea
+    - Minor fixes for no-handler rule (#3269) @ssbarnea
+    - name[casing]: Add transform to automatically fix this during
+      --write (#3268) @ssbarnea
+    - Remove meta-no-info rule due to being covered by schema[meta]
+      (#3267) @ssbarnea
+    - Ignore unknown sections under changes key on changelogs
+      (#3262) @ssbarnea
+    - Add current FreeBSD and OpenBSD versions (#3260) @rkrieger
+    - Ensure playbook path is absolute (#3250) @ssbarnea
+    - Updated 'kind' message if file kind is unknown (#3247)
+      @ajinkyau
+    - Rename arg-spec schema file to clarify it applies to roles
+      only (#3243) @ssbarnea
+
+-------------------------------------------------------------------
 Mon Apr  3 11:03:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.14.4:
