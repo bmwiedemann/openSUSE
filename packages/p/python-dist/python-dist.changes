@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 13 10:37:20 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/duboviy/dist/issues/8
+  + python-dist-no-six.patch
+
+-------------------------------------------------------------------
 Mon Nov  8 10:16:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add six build dependency 

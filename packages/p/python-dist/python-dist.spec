@@ -1,7 +1,7 @@
 #
 # spec file for package python-dist
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/duboviy/dist
 Source:         https://github.com/duboviy/dist/archive/%{version}.tar.gz
+# https://github.com/duboviy/dist/issues/8
+Patch0:         python-dist-no-six.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -42,7 +43,7 @@ and presents a time efficient practical solution,
 that is almost 3 times faster than similar fast pure python implementation.
 
 %prep
-%setup -q -n dist-%{version}
+%autosetup -p1 -n dist-%{version}
 
 %build
 export CFLAGS="%{optflags}"
