@@ -9936,7 +9936,7 @@ unsorted:
   - libKasten4 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_5_3 
+  - libLHAPDF-6_5_4 
   - libLLVM11 
   - libLLVM12 
   - libLLVM13 
@@ -20056,6 +20056,8 @@ unsorted:
   - pdfgrep-bash-completion 
   - pdfgrep-zsh-completion 
   - pdfmixtool 
+  - pdfposter 
+  - pdfposter-doc 
   - pdfquirk 
   - pdftk 
   - pdns 
@@ -29594,7 +29596,6 @@ unsorted:
   - python38-sanlock 
   - python38-testsuite 
   - python38-threevis 
-  - python38-time-machine 
   - python38-tk 
   - python38-tools 
   - python38-volatility3 
@@ -45501,6 +45502,7 @@ unsorted:
   - viewnior 
   - viewnior-lang 
   - viewres 
+  - viewvc 
   - vifm 
   - vifm-colors 
   - vigra-devel 
