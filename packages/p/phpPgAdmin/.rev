@@ -207,4 +207,12 @@
     <comment>Fix for boo#1162794 (CVE-2019-10784) (forwarded request 989215 from computersalat)</comment>
     <requestid>989217</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>33c2ab1b8f23b7d3d7bb00332576138b</srcmd5>
+    <version>7.13.0</version>
+    <time>1681387855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078841</requestid>
+  </revision>
 </revisionlist>

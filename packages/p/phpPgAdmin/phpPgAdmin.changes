@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Feb 13 10:55:19 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Also remove subpackage apache when uninstalling the main package. 
+
+-------------------------------------------------------------------
 Thu Jul 14 15:41:56 UTC 2022 - chris@computersalat.de
 
 - Fix for boo#1162794 (CVE-2019-10784)

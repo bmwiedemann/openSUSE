@@ -1,7 +1,7 @@
 #
 # spec file for package phpPgAdmin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,7 @@ Features
 Summary:        Apache configuration for %{name}
 Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache2
+Requires:       %{name}
 Requires:       apache2
 Requires:       mod_php_any
 Supplements:    packageand(apache2:%name)
