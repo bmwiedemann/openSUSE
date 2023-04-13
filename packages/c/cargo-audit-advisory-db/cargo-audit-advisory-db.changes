@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 13 01:00:08 UTC 2023 - william.brown@suse.com
+
+- Update to version 20230413:
+  * Bump peter-evans/create-pull-request from 4 to 5 (#1677)
+  * Withdraw RUSTSEC-2021-0147 (#1676)
+  * Assigned RUSTSEC-2023-0032 to ntru (#1674)
+  * Add unsound ntru (#1652)
+  * Assigned RUSTSEC-2023-0031 to spin (#1673)
+  * Added unsound `spin` (#1671)
+  * Assigned RUSTSEC-2023-0030 to versionize (#1669)
+  * Add advisory for versionize crate (#1662)
+  * Assigned RUSTSEC-2023-0029 to nats (#1668)
+  * Fix `nats` directory (#1667)
+
+-------------------------------------------------------------------
 Thu Feb 23 00:12:48 UTC 2023 - william.brown@suse.com
 
 - Update to version 20230223:
