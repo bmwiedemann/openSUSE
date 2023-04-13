@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 12 14:52:38 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1681223954.646cf61:
+  * Allow setting measured boot log path for testing
+  * build(deps): bump base64 from 0.13.1 to 0.21.0
+  * build(deps): bump wiremock from 0.5.14 to 0.5.18
+  * Build Fedora and CentOS packages on Copr using packit
+  * build(deps): bump serde_json from 1.0.91 to 1.0.95
+  * build(deps): bump actix-rt from 2.7.0 to 2.8.0
+  * build(deps): bump base64 from 0.13.1 to 0.21.0
+  * build(deps): bump serde from 1.0.147 to 1.0.159
+  * build(deps): bump glob from 0.3.0 to 0.3.1
+  * Add missing test from keylime testsuite to e2e plan
+  * Fix typo in name of test for generating coverage
+  * build(deps): bump thiserror from 1.0.38 to 1.0.40
+  * build(deps): bump base64 from 0.13.1 to 0.21.0
+  * build(deps): bump actix-web from 4.2.1 to 4.3.1
+  * build(deps): bump serde from 1.0.145 to 1.0.147
+  * build(deps): bump libc from 0.2.139 to 0.2.140
+  * build(deps): bump futures from 0.3.25 to 0.3.27
+  * build(deps): bump reqwest from 0.11.12 to 0.11.15
+  * build(deps): bump config from 0.13.2 to 0.13.3
+  * build(deps): bump openssl from 0.10.45 to 0.10.48
+  * build(deps): bump tokio from 1.24.2 to 1.26.0
+  * Cargo: Update tempfile to 3.4.0 version
+
+-------------------------------------------------------------------
 Wed Mar 15 16:46:28 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add keylime-ima-policy subpackage to provide a better IMA policy
