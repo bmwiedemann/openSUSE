@@ -58,6 +58,8 @@ Patch4:         qtwebengine-pipewire-0.3.patch
 Patch5:         qtwebengine-python3.patch
 # PATCH-FIX-UPSTREAM -- handle futex_time64
 Patch6:         sandbox_futex_time64.patch
+# PATCH-FIX-UPSTREAM -- gcc13 fixes
+Patch7:         0001-Fixes-for-building-with-GCC-13.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -71,9 +73,6 @@ BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  flex
 BuildRequires:  git-core
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc12-c++
-%endif
 BuildRequires:  gperf
 BuildRequires:  krb5
 BuildRequires:  krb5-devel
@@ -301,6 +300,7 @@ Examples for the libqt5-qtpdf module.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # Replace the whole catapult folder rather than picking individual changes
 pushd src/3rdparty/chromium/third_party
@@ -344,11 +344,6 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
 %qmake5 QMAKE_CFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_CXXFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_LFLAGS+="-Wl,--no-keep-memory -Wl,--hash-size=31 -Wl,--reduce-memory-overheads" \
-%if 0%{?suse_version} >= 1550
-        QMAKE_CC=gcc-12 \
-        QMAKE_CXX=g++-12 \
-        QMAKE_LINK=g++-12 \
-%endif
         gn_args+="link_pulseaudio=true" \
         gn_args+="media_use_openh264=false" \
         gn_args+="use_system_libxml=true use_system_libxslt=true" \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 19:28:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build with GCC 13 (boo#1207469):
+  * 0001-Fixes-for-building-with-GCC-13.patch
+
+-------------------------------------------------------------------
 Thu Mar 09 10:11:11 UTC 2023 - christophe@krop.fr
 
 - Update to version 5.15.13:
