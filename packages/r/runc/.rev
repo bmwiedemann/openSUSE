@@ -466,4 +466,12 @@ provides).</comment>
 - Drop version-specific Go requirement.</comment>
     <requestid>1075228</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>460c24081245b30f97a893fecfb2c6e0</srcmd5>
+    <version>1.1.6</version>
+    <time>1681387791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078554</requestid>
+  </revision>
 </revisionlist>
