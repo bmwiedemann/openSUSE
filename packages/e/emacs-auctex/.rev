@@ -460,4 +460,14 @@
     and will be removed in future release.  If your personal code uses</comment>
     <requestid>1002783</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>a5d96b1830c1327b13f9407e50713a4b</srcmd5>
+    <version>13.1</version>
+    <time>1681387886</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch auctex-13.1-expand.patch
+  * Let it build with latest texinfo and TeXLive
+- Add keyring</comment>
+    <requestid>1079094</requestid>
+  </revision>
 </revisionlist>

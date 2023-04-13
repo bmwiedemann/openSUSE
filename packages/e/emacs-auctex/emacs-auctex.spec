@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,12 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Editors/Emacs
 Source0:        https://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz.sig
+Source2:        auctex.keyring
 URL:            https://www.gnu.org/software/auctex
 # Allows to select printer instance
 # PATCH-FEATURE-UPSTREAM dvips.patch
 Patch0:         dvips.patch
+Patch1:         auctex-13.1-expand.patch
 BuildArch:      noarch
 
 %description
@@ -67,6 +69,7 @@ you cannot use this package for XEmacs.
 %prep
 %setup -n auctex-%{version}
 %patch0
+%patch1
 
 %build
     unset ${!LC_*}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:23:22 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch auctex-13.1-expand.patch
+  * Let it build with latest texinfo and TeXLive
+- Add keyring
+
+-------------------------------------------------------------------
 Mon Sep 12 08:33:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 13.1
