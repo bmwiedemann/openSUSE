@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 12 14:01:11 UTC 2023 - Andy Li <andy@onthewings.net>
+
+- Update to 4.3.0
+  * New features:
+    * support defaults for type parameters
+    * support @:op(a()) on abstracts
+    * support abstract keyword to reference the abstract
+    * support static var at expression-level
+    * support ?. safe navigation operator
+    * added ?? null coalescing operator
+    * add -w compiler option to configure warnings
+    * added new error reporting modes
+    * support custom metadata and defines
+  * Standard Library:
+    * added atomic operations to several targets
+    * added Vector.fill
+    * added sys.thread.Condition and Semaphore
+    * added Http.getResponseHeaderValues to deal with multiple values of same key
+    * make Sys.environment consistent between targets
+    * consistent way to unset environment variables with Sys.putEnv
+  * Various improvements and bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.3.0/extra/CHANGES.txt
+  * Update haxelib to 4.1.0
+    * Added support for documenting custom defines and metadata (#573)
+    * Fixed a segmentation fault on Linux systems
+
+-------------------------------------------------------------------
 Mon Mar 14 21:28:43 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 4.2.5
