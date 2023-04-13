@@ -153,4 +153,15 @@
   * Compat: bump supported GTK to 3.24.34</comment>
     <requestid>1030848</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82f5be00487a1ea8b42d0d3b0772f5d4</srcmd5>
+    <version>0.8.1</version>
+    <time>1681387863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Meson: mark wayland-scanner as a build-time dependency
+  * Docs: deploy docs to GitHub Pages
+  * Compat: bump supported GTK to v3.24.37</comment>
+    <requestid>1079067</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:17:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * Meson: mark wayland-scanner as a build-time dependency
+  * Docs: deploy docs to GitHub Pages
+  * Compat: bump supported GTK to v3.24.37
+
+-------------------------------------------------------------------
 Mon Oct 24 10:34:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:
