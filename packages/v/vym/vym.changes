@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 13 12:08:45 UTC 2023 - Uwe Drechsel <vym@insilmaril.de>
+
+- Update to upstream Version 2.9.2
+- Bugfix: #64 Potential loss of data when parsing (very) old maps
+- Other changes since 2.8.43:
+    Bugfix: Read <note> with inline HTML correctly
+    Bugfix: Finding translations on Windows
+    Bugfix: #52 Saving part of map overwrites original map
+    Bugfix: Read map attributes for default map
+    Bugfix: #48 lockfile cannot be renamed on Windows
+    Bugfix: Create translation files during build
+    Bugfix: Create *.qm files during build for translations
+    Feature: Settings dialog for dark theme support
+    Feature: Increase max. number of recent maps to 20
+
+-------------------------------------------------------------------
+Wed Mar 22 15:49:25 UTC 2023 - Uwe Drechsel <vym@insilmaril.de>
+
+- Update to upstream Version 2.9.0
+
+-------------------------------------------------------------------
 Fri Oct 28 10:54:11 UTC 2022 - Uwe Drechsel <vym@insilmaril.de>
 
 - Update to upstream Version 2.8.43

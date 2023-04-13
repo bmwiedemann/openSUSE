@@ -1,7 +1,7 @@
 #
 # spec file for package vym
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vym
-Version:        2.8.43
+Version:        2.9.2
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only
