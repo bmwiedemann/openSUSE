@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:32:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.1:
+  * Bump distroless base images and kind versions
+  * make: force the use of registry.k8s.io by ingressnginx
+  * update k8s.gcr.io to registry.k8s.io
+  * use jetstack vcert fork to properly reset on error for TPP
+  * bump go version
+  * update base images to latest
+  * bump dependencies to fix CVEs
+  * e2e: the vault addon was incorrectly using StdoutPipe
+  * bump base images to latest
+  * Code review feedback: fix imports
+  * Resets secrets lister in RFC2136 conformance tests
+  * RFC2136 solver has an init option to reset secrets lister
+  * A bunch of comments on webhook solver functionality
+  * Bump keystore-go to v4.4.1
+  * Use fake kube apiserver version when generating helm template
+    in cmctl x install
+
+-------------------------------------------------------------------
 Wed Jan 11 19:08:01 UTC 2023 - kastl@b1-systems.de
 
 - BuildRequire go1.19
