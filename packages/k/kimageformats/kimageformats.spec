@@ -61,6 +61,8 @@ BuildRequires:  cmake(libheif) >= 1.10.0
 BuildRequires:  pkgconfig(libjxl) >= 0.6.1
 BuildRequires:  pkgconfig(libjxl_threads) >= 0.6.1
 %endif
+BuildRequires:  pkgconfig(libraw) >= 0.20.2
+BuildRequires:  pkgconfig(libraw_r) >= 0.20.2
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5PrintSupport5
 Recommends:     libqt5-qtimageformats >= 5.15.2
@@ -114,6 +116,7 @@ environments.
 %{_kf5_plugindir}/imageformats/kimg_pic.so
 %{_kf5_plugindir}/imageformats/kimg_psd.so
 %{_kf5_plugindir}/imageformats/kimg_ras.so
+%{_kf5_plugindir}/imageformats/kimg_raw.so
 %{_kf5_plugindir}/imageformats/kimg_rgb.so
 %{_kf5_plugindir}/imageformats/kimg_tga.so
 %{_kf5_plugindir}/imageformats/kimg_xcf.so
@@ -138,6 +141,7 @@ environments.
 %{_kf5_servicesdir}/qimageioplugins/pic.desktop
 %{_kf5_servicesdir}/qimageioplugins/psd.desktop
 %{_kf5_servicesdir}/qimageioplugins/ras.desktop
+%{_kf5_servicesdir}/qimageioplugins/raw.desktop
 %{_kf5_servicesdir}/qimageioplugins/rgb.desktop
 %{_kf5_servicesdir}/qimageioplugins/tga.desktop
 %{_kf5_servicesdir}/qimageioplugins/xcf.desktop

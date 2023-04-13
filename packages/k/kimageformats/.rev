@@ -966,4 +966,12 @@
     <comment>KDE Frameworks 5.105.0 (forwarded request 1077737 from krop)</comment>
     <requestid>1078063</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>9daca391f024092018a5e1fd7e2d2bf6</srcmd5>
+    <version>5.105.0</version>
+    <time>1681387798</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for RAW image formats</comment>
+    <requestid>1078624</requestid>
+  </revision>
 </revisionlist>
