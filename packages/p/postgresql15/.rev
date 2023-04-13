@@ -51,4 +51,12 @@
 - Bump latest_supported_llvm_ver to 15.</comment>
     <requestid>1064054</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>70aad61f78345e8f61d5f82890a21cda</srcmd5>
+    <version>15.2</version>
+    <time>1681387793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078576</requestid>
+  </revision>
 </revisionlist>

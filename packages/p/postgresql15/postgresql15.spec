@@ -41,13 +41,14 @@
 
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
-Name:           %pgname
 %if "@BUILD_FLAVOR@" == "mini"
 %define devel devel-mini
 %define mini 1
+Name:           %pgname-mini
 %else
 %define devel devel
 %define mini 0
+Name:           %pgname
 %endif
 
 # Use Python 2 for for PostgreSQL 10 on SLE12.
@@ -239,7 +240,7 @@ and functions.
 This package provides the runtime library of the embedded SQL C
 preprocessor for PostgreSQL.
 
-%package %devel
+%package -n %pgname-%devel
 Summary:        PostgreSQL client development header files and libraries
 Group:          Development/Libraries/C and C++
 Provides:       postgresql-devel = %version-%release
@@ -302,7 +303,7 @@ C extensions that link into the PostgreSQL server. For building client
 applications, see the postgresql%pgmajor-devel package.
 %endif
 
-%description %devel
+%description -n %pgname-%devel
 PostgreSQL is an advanced object-relational database management system
 that supports an extended subset of the SQL standard, including
 transactions, foreign keys, subqueries, triggers, and user-defined
@@ -790,14 +791,14 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %fdupes %buildroot
 
-%post %devel
+%post -n %pgname-%devel
 /sbin/ldconfig
 %if %{with server_devel}
 %post server-devel
 %endif
 /usr/share/postgresql/install-alternatives %pgmajor
 
-%postun %devel
+%postun -n %pgname-%devel
 /sbin/ldconfig
 %if %{with server_devel}
 %postun server-devel
@@ -963,10 +964,10 @@ fi
 %endif
 
 %if %buildlibs && %mini
-%files %devel -f devel.files -f libpq.files -f libecpg.files
+%files -n %pgname-%devel -f devel.files -f libpq.files -f libecpg.files
 %else
 
-%files %devel -f devel.files
+%files -n %pgname-%devel -f devel.files
 %endif
 
 %defattr(-,root,root)
