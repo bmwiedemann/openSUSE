@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 21:00:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add avahi-CVE-2023-1981.patch: emit error if requested service
+  is not found (boo#1210328 CVE-2023-1981).
+
+-------------------------------------------------------------------
 Mon Dec 19 12:16:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop %{_sysconfdir}/sysconfig/network/if-{up,down}.d scripts:

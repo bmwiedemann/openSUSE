@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,6 +99,8 @@ Patch26:        0007-Ship-avahi-discover-1-bssh-1-and-bvnc-1-also-for-GTK.patch
 Patch27:        0009-fix-bytestring-decoding-for-proper-display.patch
 Patch28:        harden_avahi-daemon.service.patch
 Patch29:        harden_avahi-dnsconfd.service.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2023-1981.patch boo#1210328 mgorse@suse.com -- emit error if requested service is not found.
+Patch30:        avahi-CVE-2023-1981.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -417,6 +419,7 @@ DNS specifications for Zeroconf Computing.
 
 
 
+
 # This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
@@ -510,6 +513,7 @@ cp -a %{SOURCE12} service-type-database/build-db
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
+%patch30 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
