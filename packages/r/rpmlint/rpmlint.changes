@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 11 12:41:23 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230411.8f9c3d4:
+  * PythonCheck: Improve dependencies check
+
+-------------------------------------------------------------------
+Tue Apr 11 09:21:30 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230411.f83b036:
+  * SpecCheck: Improve patch applied regex
+
+-------------------------------------------------------------------
 Mon Apr 03 10:46:16 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230403.7ce263c:

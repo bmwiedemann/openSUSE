@@ -4421,4 +4421,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * Exclude systemd directory in UsrLibBinaryException</comment>
     <requestid>1077137</requestid>
   </revision>
+  <revision rev="445" vrev="1">
+    <srcmd5>1c5976534a560cd4788e02e8eae7345f</srcmd5>
+    <version>2.4.0+git20230411.8f9c3d4</version>
+    <time>1681387761</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230411.8f9c3d4:
+  * PythonCheck: Improve dependencies check
+
+- Update to version 2.4.0+git20230411.f83b036:
+  * SpecCheck: Improve patch applied regex</comment>
+    <requestid>1078431</requestid>
+  </revision>
 </revisionlist>
