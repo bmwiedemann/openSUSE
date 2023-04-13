@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 06 06:31:14 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.057:
+  * sql: Optimize lookup for server_project (#369)
+  * Avoid deadlock in minion pubsub code (#371)
+  * Avoid deadlock in cleanup job deleting from folder_diff (#371)
+  * ci: Switch ci container from 15.3 to 15.4 (#370)
+
+-------------------------------------------------------------------
 Thu Feb 09 09:41:42 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.056:
