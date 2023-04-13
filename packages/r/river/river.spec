@@ -141,15 +141,15 @@ install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}
 %{_bindir}/river-run.sh
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/river.desktop
-%{_mandir}/man1/river.1.gz
+%{_mandir}/man1/river.1%{?ext_man}
 
 %files  riverctl
 %{_bindir}/riverctl
-%{_mandir}/man1/riverctl.1.gz
+%{_mandir}/man1/riverctl.1%{?ext_man}
 
 %files rivertile
 %{_bindir}/rivertile
-%{_mandir}/man1/rivertile.1.gz
+%{_mandir}/man1/rivertile.1%{?ext_man}
 
 %files devel
 %{_datadir}/pkgconfig/river-protocols.pc
