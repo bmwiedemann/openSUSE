@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 12 15:32:03 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20230407:
+  - Features
+    * imap : support IMAP4 ID extension (RFC2971)
+    * parse: query all changed (set) / all (set all) config variables
+  - Bug Fixes
+    * lua: fix command registration
+    * postpone: use colours from the right mailbox
+    * smtp: ignore oauth if it isn't configured and not requested
+  - Changed Config
+    * New: imap_send_id - Send IMAP ID command when logging in
+
+-------------------------------------------------------------------
 Tue Mar 28 09:53:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20230322:
