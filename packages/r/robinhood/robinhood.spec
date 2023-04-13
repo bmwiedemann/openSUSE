@@ -1,7 +1,7 @@
 #
 # spec file for package robinhood
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,6 +118,7 @@ find ./doc/templates -type f -executable -exec chmod 644 {} +
 autoreconf -fi
 
 %build
+export CFLAGS="%optflags -Wno-error=unused-result"
 %configure \
   --enable-lustre \
   --disable-static \

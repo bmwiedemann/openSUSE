@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 12 14:34:45 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- removed errors on warnings from gcc12
+
+-------------------------------------------------------------------
 Mon Nov 22 09:31:54 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - update to 3.1.7 with following minor fixes:
