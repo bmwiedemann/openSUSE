@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 13 03:23:59 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.8.12
+  * Add appdata.xml files
+  * Convert license tags to SPDX format
+  * Add .svg icon files for use in appdata.xml files
+
+-------------------------------------------------------------------
 Thu Nov  3 20:26:51 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 1.8.9 -> 1.8.11

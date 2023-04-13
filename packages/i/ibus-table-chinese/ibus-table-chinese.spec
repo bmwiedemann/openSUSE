@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-chinese
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table-chinese
-Version:        1.8.11
+Version:        1.8.12
 Release:        0
 Summary:        Various Chinese input method table for the IBus framework
 License:        GPL-3.0-or-later

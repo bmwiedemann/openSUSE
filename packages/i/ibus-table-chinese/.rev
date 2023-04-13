@@ -250,4 +250,15 @@
     <comment></comment>
     <requestid>1033166</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7e44b47d06d058928bfece5f71f49ad4</srcmd5>
+    <version>1.8.12</version>
+    <time>1681387853</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.8.12
+  * Add appdata.xml files
+  * Convert license tags to SPDX format
+  * Add .svg icon files for use in appdata.xml files (forwarded request 1078833 from hillwood)</comment>
+    <requestid>1078834</requestid>
+  </revision>
 </revisionlist>
