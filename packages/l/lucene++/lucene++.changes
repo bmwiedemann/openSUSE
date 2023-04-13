@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:55:45 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add explicit build dependency on libboost_atomic-devel: Fix build
+  with older boost version (Leap 15.5).
+
+-------------------------------------------------------------------
 Tue Jun  8 06:41:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Contrib headers should be installed, add lucene++-3.0.8-fix-missing-headers.patch

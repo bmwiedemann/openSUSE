@@ -66,4 +66,14 @@ A dependency for poedit 1.6.x</comment>
 </comment>
     <requestid>898523</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1c6a1c36653eee436d0880a404d9d16f</srcmd5>
+    <version>3.0.8</version>
+    <time>1681387834</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit build dependency on libboost_atomic-devel: Fix build
+  with older boost version (Leap 15.5).
+</comment>
+    <requestid>1078773</requestid>
+  </revision>
 </revisionlist>

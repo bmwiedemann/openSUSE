@@ -1,7 +1,7 @@
 #
 # spec file for package lucene++
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Patch2:         lucene++-3.0.8-fix-cmake-issues.patch
 Patch3:         lucene++-3.0.8-fix-missing-headers.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
