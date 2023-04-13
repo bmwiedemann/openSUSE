@@ -497,11 +497,12 @@ FileProvides: /usr/sbin/usermod shadow
 
 # Files which are provided and required by the same package only
 # are not part of primary.xml.gz, thus missing in the section above.
-FileProvides: /usr/sbin/ldconfig glibc
-FileProvides: /usr/bin/busybox busybox
-FileProvides: /usr/bin/zsh zsh
-FileProvides: /usr/bin/racket racket
 FileProvides: /usr/bin/Xvfb xorg-x11-server-Xvfb
+FileProvides: /usr/bin/busybox busybox
+FileProvides: /usr/bin/qemu-system-aarch64 qemu-arm
+FileProvides: /usr/bin/racket racket
+FileProvides: /usr/bin/zsh zsh
+FileProvides: /usr/sbin/ldconfig glibc
 
 # Set preferences for above list - work with negative prefers, in order to be able to catch no-longer existing ones
 Prefer: bash-sh
