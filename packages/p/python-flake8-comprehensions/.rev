@@ -93,4 +93,16 @@
   * Expand C416 to ``dict`` comprehensions.</comment>
     <requestid>1073581</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aae2c31cf0ae858d4742ddb181ec6fcb</srcmd5>
+    <version>3.12.0</version>
+    <time>1681392649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.0:
+  * Add rule C418 to check for calls passing a dict literal or
+    dict comprehension to ``dict()``.
+  * Add rule C419 to check for calls passing a list comprehension
+    to ``any()``/``all()``.</comment>
+    <requestid>1079170</requestid>
+  </revision>
 </revisionlist>
