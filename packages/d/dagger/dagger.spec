@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dagger
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        A portable devkit for CI/CD pipelines
 License:        GPL-3.0-only
 URL:            https://github.com/dagger/dagger
 Source:         dagger-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.20
 
 %description
 Dagger is a portable devkit for CICD.

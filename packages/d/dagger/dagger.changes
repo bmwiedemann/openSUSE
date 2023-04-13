@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Apr 13 10:35:45 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.20
+- Update to version 0.5.0:
+  * Set secret store in engine internal session. (#4903)
+  * feat: append information to dagger session user_agent flags
+    (#4892)
+  * Improve instructions while releasing v0.4.1 (#4776)
+  * feat: Allow labels to be specified on `dagger session`. Add
+    default labels. (#4802)
+  * `withExposedPort` also exposes port in OCI image config (#4900)
+  * Add more debug log lines to engine start. (#4901)
+  * Container: add `import` API (#4876)
+  * Interactive logs via `dagger run` (#4522)
+  * docs: Highlight for better readability on code blocks (#4882)
+  * fix: use the right syntax for deprecated comments with
+    supersedure (#4885)
+  * Docs: tweak quickstart examples (#4880)
+  * Upgrade go releaser image to pick up go 1.20. (#4887)
+  * Safeguard pdeathsig usage in shim w/ os thread lock. (#4886)
+  * Update to latest buildkit commit. (#4879)
+  * docs: Updated style guide for embeds (#4874)
+  * docs: Added guide for local exports (#4814)
+  * docs: (fix) remove 'r' from .with_registry_auth statement
+    (#4873)
+  * docs: fix external link icons (#4788)
+  * docs: updated requirements for AWS CDK guide (#4813)
+  * docs: Added database example to services guide (#4867)
+  * docs: Added guide for secrets (#4822)
+  * docs: Added tsc instruction to Node get started (#4868)
+  * feat!: deprecate HostVariable.secret in favor of setSecret
+    (#4862)
+  * docs: Update service containers guide (#4851)
+  * feat: scrub secrets containing whitespace (#4772)
+  * collect github.com/pr.head label (#4849)
+  * docs: remove guides.json from git index (#4853)
+  * docs: Added multi-lang snippets for GitHub guide (#4811)
+  * Use a more flexible way to collect data from GitHub events
+    (#4847)
+  * docs: add multi-language snippets to "replace dockerfile" guide
+    (#4778)
+  * test: bump dagger version for mage tasks (#4836)
+  * Add flag for configuring max parallel execs in engine. (#4834)
+  * engine: Use MergeOp to optimize size of CombinedResult. (#4824)
+
+-------------------------------------------------------------------
 Fri Mar 24 05:58:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.2:
