@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 09 13:02:06 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.24.1:
+  * refactor: unknown keys are now an error
+  * (GH-597) Find config in home folder as last resort (#598)
+  * feat: support multi-part selectors
+  * (MAINT) Add tests for PowerShell code linting (#586)
+- Use _service mode manual as better alias name than disabled
+
+-------------------------------------------------------------------
 Mon Mar 06 02:22:44 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.24.0:

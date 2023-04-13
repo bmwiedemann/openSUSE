@@ -170,4 +170,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1071035</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>70176815188872bc4f487fa183fb8dfa</srcmd5>
+    <version>2.24.1</version>
+    <time>1681387850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.24.1:
+  * refactor: unknown keys are now an error
+  * (GH-597) Find config in home folder as last resort (#598)
+  * feat: support multi-part selectors
+  * (MAINT) Add tests for PowerShell code linting (#586)
+- Use _service mode manual as better alias name than disabled (forwarded request 1078828 from jfkw)</comment>
+    <requestid>1078829</requestid>
+  </revision>
 </revisionlist>
