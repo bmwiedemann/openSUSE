@@ -27,6 +27,9 @@ URL:            https://wiki.gnome.org/Projects/gvfs
 Source0:        https://download.gnome.org/sources/gvfs/1.50/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+# PATCH-FIX-UPSTREAM 41862c0179f834d8bc3bd84ce78ee495050f2676.patch -- trash: Sync trash dir items when files change
+Patch0:         https://gitlab.gnome.org/GNOME/gvfs/-/commit/41862c0179f834d8bc3bd84ce78ee495050f2676.patch
+
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus
 Patch1000:      gvfs-nds.patch
@@ -170,11 +173,10 @@ gvfs plugins.
 %lang_package
 
 %prep
-%setup -q
-
+%autosetup -N
+%autopatch -p1 -M 999
 %if 0%{?sle_version}
-%patch1000 -p1
-%patch1001 -p1
+%autopatch -p1 -m 1000
 %endif
 
 %build
