@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 14 06:48:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.25.0:
+  * Update CHANGELOG for v1.25.0 (#258)
+  * Fix the heading level in README.md (#257)
+  * Update dependencies and tools (#256)
+  * Allow an empty config file (#255)
+  * Add support for the config file (#254)
+  * Make setup-go get Go version from go.mod (#253)
+
+-------------------------------------------------------------------
 Sun Mar 12 19:30:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.24.0:
