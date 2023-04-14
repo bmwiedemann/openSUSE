@@ -1,7 +1,7 @@
 #
 # spec file for package capnproto
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _libver 0_10_3
+%define _libver 0_10_4
 Name:           capnproto
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        A Data Serialization Format
 License:        MIT
