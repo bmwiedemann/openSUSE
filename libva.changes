@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 13 07:40:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.18.0:
+  * doc: Add build and install libva informatio in home page.
+  * fix:
+    - Add libva.def into distribution package
+    - NULL check before calling strncmp.
+    - Remove reference to non-existent symbol
+  * meson: docs:
+    - Add encoder interface for av1
+    - Use libva_version over project_version()
+  * va:
+    - Add VAProfileH264High10
+    - Always build with va-messaging API
+    - Fix the codying style of CHECK_DISPLAY
+    - Remove Android pre Jelly Bean workarounds
+    - Remove dummy isValid() hook
+    - Remove unused drm_sarea.h include & ANDROID references in
+      va_dricommon.h
+    - va/sysdeps.h: remove Android section
+  * x11:
+    - Allow disabling DRI3 via LIBVA_DRI3_DISABLe env var
+    - Use LIBVA_DRI3_DISABLE in GetNumCandidates
+- Switch to multibuild style. Drop libva-gl.spec|changes and
+  pre_checkin.sh.
+- Switch to meson build system, add meson BuildRequires, drop
+  libtool and xz BuildRequires, and replace gcc-c++ with generic
+  c++_compiler.
+- Use autosetup and ldconfig_scriptlets macros.
+- Add libva-wayland to baselibs.conf, now that its build have moved
+  to the main part of spec, source validator should no longer
+  complain on SLE.
+- Drop propagate-dpy.patch: The upstream issue was closed without
+  the patch ever getting applied, and the issue that it fixed was
+  deemed to not be a libva issue. See upstream issue:
+  https://github.com/intel/libva/issues/479
+
+-------------------------------------------------------------------
 Mon Jan 16 08:00:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.0:
