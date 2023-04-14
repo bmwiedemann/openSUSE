@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 13 10:01:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Build with LLVM 15 on Tumbleweed
+- Add a _constraints file to avoid disk and memory issues
+
+-------------------------------------------------------------------
 Wed Jan 11 11:18:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.15.8.

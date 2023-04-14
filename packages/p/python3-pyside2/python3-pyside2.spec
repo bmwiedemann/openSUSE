@@ -48,7 +48,14 @@ Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}
 Provides:       python3-shiboken2_generator = %{version}-%{release}
 # SECTION common_dependencies
+%if 0%{?suse_version} > 1500
+# boo#1210176 - PYSIDE-2268
+BuildRequires:  clang15-devel
+BuildRequires:  llvm15-libclang13
+#!BuildIgnore:  clang16
+%else
 BuildRequires:  clang-devel >= 3.9
+%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
