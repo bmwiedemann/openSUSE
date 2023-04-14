@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Apr  6 10:51:06 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
-- sha256_clone_fix.patch: fix cloning of empty sha256 repositories
+- sha256_clone_fix.patch: fix cloning of empty sha256 repositories (jsc#PED-3891)
 
 -------------------------------------------------------------------
 Mon Mar 13 20:08:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>

@@ -2612,4 +2612,12 @@ git 2.12.3
     <comment></comment>
     <requestid>1077730</requestid>
   </revision>
+  <revision rev="297" vrev="3">
+    <srcmd5>5d28b8fcb255e865220a30f456596b13</srcmd5>
+    <version>2.40.0</version>
+    <time>1681470767</time>
+    <user>dimstar_suse</user>
+    <comment>- sha256_clone_fix.patch: fix cloning of empty sha256 repositories (jsc#PED-3891)</comment>
+    <requestid>1079426</requestid>
+  </revision>
 </revisionlist>
