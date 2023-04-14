@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  3 18:52:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26:
+  * fix inherited overloaded methods in Python bindings
+  * decompose topological sort of clusters in incremental
+    scheduler
+  * improved isl_pw_aff_list_{min,max}
+  * add some convenience functions
+  * more exports to (templated C++) bindings
+  * slightly improved conversion from binary relation to function
+
+-------------------------------------------------------------------
 Mon Jul 18 20:16:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25:

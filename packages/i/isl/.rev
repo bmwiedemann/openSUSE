@@ -228,4 +228,19 @@
   * add some convenience functions (forwarded request 990048 from dirkmueller)</comment>
     <requestid>990099</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>63dfb434d5251c099a6964370fafcdc0</srcmd5>
+    <version>0.26</version>
+    <time>1681470724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26:
+  * fix inherited overloaded methods in Python bindings
+  * decompose topological sort of clusters in incremental
+    scheduler
+  * improved isl_pw_aff_list_{min,max}
+  * add some convenience functions
+  * more exports to (templated C++) bindings
+  * slightly improved conversion from binary relation to function (forwarded request 1077049 from dirkmueller)</comment>
+    <requestid>1078657</requestid>
+  </revision>
 </revisionlist>
