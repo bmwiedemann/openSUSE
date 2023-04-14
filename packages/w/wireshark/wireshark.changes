@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:45:32 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.5:
+  * CVE-2023-1992: RPCoRDMA dissector crash (boo#1210405).
+  * CVE-2023-1993: LISP dissector large loop (boo#1210404).
+  * CVE-2023-1994: GQUIC dissector crash (boo#1210403).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.5.html
+
+-------------------------------------------------------------------
 Fri Mar  3 14:26:36 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.4:
