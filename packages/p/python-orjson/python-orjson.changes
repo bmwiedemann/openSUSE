@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 13 19:01:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.10:
+  - Fix compatibility with CPython 3.12.0a7.
+  - Fix compatibility with big-endian architectures.
+  - Fix crash in serialization.
+  - Fix parallel initialization of orjson.
+
+-------------------------------------------------------------------
 Mon Jan  2 20:07:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.3:

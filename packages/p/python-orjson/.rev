@@ -27,4 +27,17 @@
   * Support building with maturin 0.13 or 0.14.</comment>
     <requestid>1046301</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2bbd311227964854923c91f9db5bd60f</srcmd5>
+    <version>3.8.10</version>
+    <time>1681470804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.10:
+  - Fix compatibility with CPython 3.12.0a7.
+  - Fix compatibility with big-endian architectures.
+  - Fix crash in serialization.
+  - Fix parallel initialization of orjson.
+</comment>
+    <requestid>1079288</requestid>
+  </revision>
 </revisionlist>

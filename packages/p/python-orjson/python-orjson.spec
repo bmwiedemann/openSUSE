@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-orjson
-Version:        3.8.3
+Version:        3.8.10
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
