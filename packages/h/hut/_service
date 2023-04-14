@@ -1,0 +1,6 @@
+<services>
+  <service name="download_files" mode="localonly"/>
+  <service name="go_modules" mode="localonly">
+   <param name="archive">v0.3.0.tar.gz</param>
+  </service>
+</services>

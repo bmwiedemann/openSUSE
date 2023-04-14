@@ -1,7 +1,7 @@
 #
 # spec file for package hut
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hut
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        A CLI tool for sr.ht
 License:        AGPL-3.0-or-later
@@ -25,8 +25,10 @@ Group:          Development/Tools/Navigators
 URL:            https://sr.ht/~emersion/hut
 Source0:        https://git.sr.ht/~emersion/hut/archive/v%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.17
+BuildRequires:  go >= 1.17
+BuildRequires:  golang-packaging
 BuildRequires:  scdoc
+%{go_nostrip}
 
 %description
 hut is a CLI companion utility to interact with sr.ht.
