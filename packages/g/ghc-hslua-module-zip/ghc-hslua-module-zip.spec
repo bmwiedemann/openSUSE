@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Lua module to work with file zips
 License:        MIT
@@ -41,6 +41,8 @@ BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
 BuildRequires:  ghc-hslua-packaging-devel
 BuildRequires:  ghc-hslua-packaging-prof
+BuildRequires:  ghc-hslua-typing-devel
+BuildRequires:  ghc-hslua-typing-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
