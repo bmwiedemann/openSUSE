@@ -39,7 +39,9 @@ Requires:       xdg-desktop-portal
 # Needed for use of gtk apps outside of gnome
 Requires:       gsettings-desktop-schemas
 # Users of GTK+ 3.0 and flatpak would enjoy this integration
-Supplements:    (gtk3 and (flatpak or snapd))
+Supplements:    (gtk3-schema and (flatpak or snapd))
+# Users of GTK4 and flatpak would enjoy this integration
+Supplements:    (gtk4-schema and (flatpak or snapd))
 %if 0%{?suse_version} >= 1330
 BuildRequires:  pkgconfig(gtk+-wayland-3.0) >= 3.21.5
 %endif
