@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  2 18:30:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patch - Include stdexcept when using logic_error:
+  * 38849c22aa34c5fad10091e066a520dd831462b3.patch
+
+-------------------------------------------------------------------
 Fri Oct 14 06:39:06 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to v0.11.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package cryfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://github.com/cryfs/cryfs/releases/download/%{version}/%{na
 Source1:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # 0x5D5EC7BC6F1443EC2AF7177A9E6C996C991D25E1
 Source2:        %{name}.keyring
+Patch:          https://github.com/cryfs/cryfs/commit/38849c22aa34c5fad10091e066a520dd831462b3.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel >= 1.65.1
