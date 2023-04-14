@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 14 00:24:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+- Fix jsversion: 11.3
+
+-------------------------------------------------------------------
+Tue Apr  4 16:21:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.3
+  * MNT: PEP 632 removed distutils by @tacaswell in #494
+  * Make handle_binary compliant with the KernelMessage.IMessage
+    spec by @mctoohey in #505
+  * Ensure throttling does not break capture_scroll by @ianhi in
+    #478
+  * fix: add event modifiers for mpl 3.7 by @ianhi in #517
+
+-------------------------------------------------------------------
 Sun Oct  9 17:30:00 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

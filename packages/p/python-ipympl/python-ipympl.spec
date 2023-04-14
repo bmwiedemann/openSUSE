@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipympl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
-%define pyver   0.9.2
-%define jsver   0.10.4
+%define pyver   0.9.3
+%define jsver   0.11.3
+%define pydist  python3dist
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{pyver}
@@ -32,20 +30,28 @@ URL:            https://github.com/matplotlib/ipympl
 Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipympl/ipympl-%{pyver}-py2.py3-none-any.whl
 Source1:        https://github.com/matplotlib/ipympl/raw/%{pyver}/docs/examples/full-example.ipynb
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module ipykernel >= 4.7}
-BuildRequires:  %{python_module ipywidgets >= 7.6.0}
-BuildRequires:  %{python_module matplotlib >= 3.4.0}
+BuildRequires:  %{python_module ipython < 9}
+BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
+BuildRequires:  %{python_module matplotlib >= 3.4.0 with %python-matplotlib < 4}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module nbval}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module traitlets < 6}
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyterlab-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-ipykernel >= 4.7
-Requires:       python-ipywidgets >= 7.6.0
-Requires:       python-matplotlib >= 3.4.0
+Requires:       jupyter-matplotlib = %{jsver}
+Requires:       python-Pillow
+Requires:       python-ipython < 9
+Requires:       python-ipython_genutils
 Requires:       python-matplotlib-web
+Requires:       python-numpy
+Requires:       python-traitlets < 6
+Requires:       (python-ipywidgets >= 7.6.0 with python-ipywidgets < 9)
+Requires:       (python-matplotlib >= 3.4.0 with python-matplotlib < 4)
 Suggests:       python-jupyterlab
 Suggests:       python-notebook
 Provides:       python-jupyter_ipympl = %{pyver}
@@ -63,7 +69,7 @@ Version:        %{jsver}
 Summary:        Matplotlib Jupyter Extension
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
-Requires:       python3-ipympl = %{pyver}
+Requires:       %pydist(ipympl) = %{pyver}
 Provides:       jupyter-ipympl = %{jsver}
 Obsoletes:      jupyter-ipympl < %{jsver}
 
@@ -78,9 +84,7 @@ Release:        0
 Summary:        Matplotlib JupyterLab Extension
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
-Requires:       python3-ipympl = %{pyver}
-Provides:       python3-jupyter_ipympl_jupyterlab = %{jsver}
-Obsoletes:      python3-jupyter_ipympl_jupyterlab < %{jsver}
+Requires:       %pydist(ipympl) = %{pyver}
 Provides:       jupyter-ipympl-jupyterlab = %{jsver}
 Obsoletes:      jupyter-ipympl-jupyterlab < %{jsver}
 

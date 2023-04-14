@@ -141,4 +141,13 @@
   * Fix CI by @martinRenou in #423</comment>
     <requestid>1009859</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>9298eaf44607fb138d891a063ee10396</srcmd5>
+    <version>unknown</version>
+    <time>1681470760</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requirements
+- Fix jsversion: 11.3 (forwarded request 1079310 from bnavigator)</comment>
+    <requestid>1079316</requestid>
+  </revision>
 </revisionlist>
