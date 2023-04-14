@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  6 15:50:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Remove web-ui archives during "make clean".
+
+-------------------------------------------------------------------
 Wed Apr  5 11:28:56 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Require promu >= 0.14.0 for building
