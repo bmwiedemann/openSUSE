@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 14 06:58:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.2:
+  * Yet another stab at anchor lookup from non-canonical URIs.
+  * Bump suite from `2751845` to `e8927d9`
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Thu Apr 13 10:18:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.1:
