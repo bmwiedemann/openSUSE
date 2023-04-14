@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -42,10 +42,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module jsonschema >= 4.5.1}
+BuildRequires:  %{python_module jsonschema >= 4.6.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
-BuildRequires:  ansible
+BuildRequires:  ansible-core >= 2.12
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
