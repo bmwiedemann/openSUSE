@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 14 06:47:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.54.2:
+  * Fixing a long standing bug with histogram buckets and payload
+    file error should abort (#746)
+  * Bump github/codeql-action from 2.2.9 to 2.2.11 (#745)
+
+-------------------------------------------------------------------
 Thu Apr 13 07:33:09 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.54.1:
