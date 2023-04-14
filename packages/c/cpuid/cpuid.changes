@@ -1,7 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr 14 07:02:53 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Update to release 20230406:
+  * Support APIC bit fields for the newest 4 topology layers:
+    module, tile, die, die group.
+  * Support leaf 0xb method for AMD/Hygon.
+  * Added prelim Bergamo A1 stepping from sample.
+  * Added AMX-COMPLEX instructions, UC-lock disable,
+    non-contiguous 1s value support, event logging supported
+    bitmap.
+  * Update CPUID utility with new feature bits as documented in
+    the AMD Processor Programming Reference for Family 19h and
+    Model 11h: extended LVT offset fault cange, enhanced
+    predictive store forwarding, FSRS, FSRC,
+    FsGsKernelGsBaseNonSerializing, number of available UMC PMCs,
+    bitmask representing active UMCs.
+  * Added (synth) decoding for Sapphire Rapids D & E0 steppings
+  * Improved (synth) decoding for Scalable 3rd Gen Xeons to Ice
+    Lake-SP, for Intel N-Series, for Raptor Lake-S/HX/P, for
+    Raptor Lake-H/U/P.
+  * Differentiate (synth) & (uarch synth) for (0,6),(11,14)
+    Alder Lake-N based on core type.
+  * Differentiate Lakefield P-cores from Tremont E-cores.
+  * Added (4th Gen) to the (synth) description of AMD EPYC Genoa.
+  * Added (uarch synth) decoding for AMD Ryzen (Phoenix E0)
+  * Added PkgType decoding for AMD Family 19h CPUs: Vermeer,
+    Cezanne/Barcelo, Raphael, and Phoenix, based on their
+    respective PPPRs.
+  * Added Alder Lake Core names: i*-12000.
+  * Decode Xen tsc mode.
+
+-------------------------------------------------------------------
 Sat Jan 28 19:47:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- updaet to 20230120:
+- updated to 20230120:
   * Intel's 13th Generation Core datasheet provides stepping names as
     well as numbers!  So:
   * cpuid.c: Added synth decoding for (0,6),(11,7) Raptor Lake B0 stepping.
@@ -101,7 +133,7 @@ Sat Aug 13 10:39:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20220812
   * Corrected (synth) decoding for (0,6),(8,6) Intel Snow
-    Ridge/Parker Ridge.  
+    Ridge/Parker Ridge.
   * Added 8000000a/edx X2AVIC flag
   * Generalized (0,6),(8,14),9,YP stepping case to include
     Pentium 4425Y, from instlatx64 sample.
