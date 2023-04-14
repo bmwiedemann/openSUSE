@@ -26,6 +26,7 @@ Summary:        Mid-Level PostgreSQL client library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 Patch0:         https://github.com/haskellari/postgresql-simple/pull/110.patch#/dont-depend-on-obsolete-bytestring-builder.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Only-devel
@@ -112,7 +113,9 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -p1 -n %{pkg_name}-%{version}
+%setup -q -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
+%patch0 -p1
 
 %build
 %ghc_lib_build

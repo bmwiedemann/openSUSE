@@ -1,6 +1,6 @@
-From 9361ef190b3a18f26760a8d228f5fc7c0094ba1c Mon Sep 17 00:00:00 2001
+From 3af9e50bfbd4ab69b1b99ad7128cc063a508db10 Mon Sep 17 00:00:00 2001
 From: Peter Simons <simons@cryp.to>
-Date: Fri, 24 Mar 2023 10:22:47 +0100
+Date: Wed, 12 Apr 2023 22:31:08 +0200
 Subject: [PATCH] postgresql-simple.cabal: add conditional logic for obsolete
  bytestring-builder
 
@@ -12,12 +12,12 @@ on the obsolete package in that case.
  1 file changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/postgresql-simple.cabal b/postgresql-simple.cabal
-index 584b379..3d399fb 100644
+index 203b9c4..c66fcb8 100644
 --- a/postgresql-simple.cabal
 +++ b/postgresql-simple.cabal
-@@ -36,6 +36,9 @@ tested-with:
-    || ==9.2.4
-    || ==9.4.2
+@@ -38,6 +38,9 @@ tested-with:
+    || ==9.4.4
+    || ==9.6.1
  
 +Flag bytestring_has_builder
 +  default: True
@@ -25,15 +25,15 @@ index 584b379..3d399fb 100644
  library
    default-language:   Haskell2010
    hs-source-dirs:     src
-@@ -81,7 +84,6 @@ library
+@@ -83,7 +86,6 @@ library
    -- GHC bundled libs
    build-depends:
-       base              >=4.6.0.0  && <4.18
+       base              >=4.6.0.0  && <4.19
 -    , bytestring        >=0.10.0.0 && <0.12
      , containers        >=0.5.0.0  && <0.7
-     , template-haskell  >=2.8.0.0  && <2.20
+     , template-haskell  >=2.8.0.0  && <2.21
      , text              >=1.2.3.0  && <1.3 || >=2.0 && <2.1
-@@ -92,7 +94,6 @@ library
+@@ -94,7 +96,6 @@ library
    build-depends:
        aeson               >=1.4.1.0    && <1.6 || >=2.0.0.0 && <2.2
      , attoparsec          >=0.13.2.2   && <0.15
@@ -41,14 +41,14 @@ index 584b379..3d399fb 100644
      , case-insensitive    >=1.2.0.11   && <1.3
      , hashable            >=1.2.7.0    && <1.5
      , Only                >=0.1        && <0.1.1
-@@ -109,6 +110,12 @@ library
+@@ -111,6 +112,12 @@ library
    if !impl(ghc >=7.6)
      build-depends: ghc-prim
  
 +  if flag(bytestring_has_builder)
-+      build-depends:     bytestring          >=0.10.4 && <0.12
++      build-depends:     bytestring          >=0.10.4     && <0.12
 +  else
-+      build-depends:     bytestring           <0.10.4
++      build-depends:     bytestring          >=0.10       && <0.10.4
 +                       , bytestring-builder  >=0.10.8.1.0 && <0.11
 +
    default-extensions:
