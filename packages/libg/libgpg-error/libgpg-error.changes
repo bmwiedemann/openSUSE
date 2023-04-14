@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 12 11:43:52 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.47:
+  * New error codes for PUKs and reset codes. [T6421]
+  * Avoid segv in logging with improper use of the "socket://".
+  * Fixed translation of argparse's internal option --help.
+  * Interface changes relative to the 1.46 release:
+    - GPG_ERR_SOURCE_TKD             NEW.
+    - GPG_ERR_BAD_PUK                NEW.
+    - GPG_ERR_NO_RESET_CODE          NEW.
+    - GPG_ERR_BAD_RESET_CODE         NEW.
+    - GPGRT_SPAWN_KEEP_STDIN         NEW.
+    - GPGRT_SPAWN_KEEP_STDOUT        NEW.
+    - GPGRT_SPAWN_KEEP_STDERR        NEW.
+    - GPGRT_SPAWN_INHERIT_FILE       NEW.
+  * Release-info: https://dev.gnupg.org/T6231
+
+-------------------------------------------------------------------
 Mon Oct 17 12:43:22 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.46:

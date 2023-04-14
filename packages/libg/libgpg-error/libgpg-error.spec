@@ -1,7 +1,7 @@
 #
 # spec file for package libgpg-error
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           libgpg-error
-Version:        1.46
+Version:        1.47
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.gnupg.org/
+URL:            https://www.gnupg.org/software/libgpg-error/
 Source0:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2
 Source1:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2.sig
 # http://www.gnupg.org/signature_key.en.html
@@ -91,21 +91,22 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gpgrt.info.gz
 
 %files -n libgpg-error0 -f %{name}.lang
+%license COPYING.LIB COPYING
+%doc README NEWS ChangeLog AUTHORS ABOUT-NLS
 %{_libdir}/libgpg-error*.so.*
 
 %files devel
-%license COPYING.LIB COPYING
-%doc README NEWS ChangeLog AUTHORS ABOUT-NLS
-%{_datadir}/aclocal/gpg-error.m4
-%{_datadir}/aclocal/gpgrt.m4
-%{_includedir}/*
 %{_bindir}/*
 %{_libdir}/libgpg-error*.so
-%{_infodir}/gpgrt.info%{?ext_info}
-%{_mandir}/man1/gpg-error-config.*
+%{_libdir}/pkgconfig/gpg-error.pc
+%{_includedir}/*
+%dir %{_datadir}/aclocal
+%{_datadir}/aclocal/gpg-error.m4
+%{_datadir}/aclocal/gpgrt.m4
 %dir %{_datadir}/libgpg-error
 %{_datadir}/libgpg-error/errorref.txt
-%dir %{_datadir}/aclocal
-%{_libdir}/pkgconfig/gpg-error.pc
+%{_infodir}/gpgrt.info%{?ext_info}
+%{_mandir}/man1/gpg-error-config.*
+%{_mandir}/man1/gpgrt-config.*
 
 %changelog
