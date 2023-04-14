@@ -19,7 +19,7 @@
 %global pkg_name hslua-cli
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.2.0
+Version:        1.4.1
 Release:        0
 Summary:        Command-line interface for Lua
 License:        MIT
@@ -34,11 +34,15 @@ BuildRequires:  ghc-hslua-core-devel
 BuildRequires:  ghc-hslua-core-prof
 BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
+BuildRequires:  ghc-hslua-repl-devel
+BuildRequires:  ghc-hslua-repl-prof
 BuildRequires:  ghc-lua-devel
 BuildRequires:  ghc-lua-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unix-prof
 ExcludeArch:    %{ix86}
 
 %description
