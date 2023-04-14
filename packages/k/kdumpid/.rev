@@ -18,4 +18,19 @@
 </comment>
     <requestid>996781</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7c88e448897bfed320a345f445b817c5</srcmd5>
+    <version>1.4</version>
+    <time>1681470802</time>
+    <user>dimstar_suse</user>
+    <comment>- kdumpid-Fix-build-for-binutils-2.40.patch: Fix build for
+  binutils &lt; 2.40.
+- Update to version 1.4
+  * Bugfix release
+- Patches moved to upstream:
+  * kdumpid-append_insn.patch
+  * kdumpid-binutils-2.39-fix.patch
+</comment>
+    <requestid>1079287</requestid>
+  </revision>
 </revisionlist>

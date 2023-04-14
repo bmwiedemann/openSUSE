@@ -1,0 +1,80 @@
+From: Petr Tesarik <petr@tesarici.cz>
+Date: Thu, 13 Apr 2023 20:32:32 +0200
+Subject: Fix build for binutils < 2.40
+Upstream: merged
+Git-commit: b5a88def22c8f73c9d7c7b7f5c143a8423b344dd
+
+The list of libraries also depends on binutils version, so it must
+be produced by a script. One step closer to GNU Autoconf... *sigh*
+
+Signed-off-by: Petr Tesarik <petr@tesarici.cz>
+---
+ Makefile |    4 ++--
+ libs.sh  |   41 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 2 deletions(-)
+ create mode 100755 libs.sh
+
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@ MANDIR=$(PREFIX)/man
+ endif
+ 
+ CUSTOM_CFLAGS= -ggdb -Wall -I/home/petr/.local/include
+-LIBS += -L/home/petr/.local/lib64 -lkdumpfile -laddrxlat -lz -lzstd -lopcodes -lbfd -lsframe -liberty -ldl
++LIBS += -L/home/petr/.local/lib64 -lkdumpfile -laddrxlat $(shell ./libs.sh)
+ 
+ LD=ld
+ 
+@@ -39,7 +39,7 @@ SRC=main.c util.c search.c ppc.c ppc64.c
+ OBJS=$(addsuffix .o,$(basename $(SRC)))
+ 
+ DIST_EXTRA=Makefile Makefile.lib kdumpid.1
+-DIST_SCRIPTS=cdefs.sh
++DIST_SCRIPTS=cdefs.sh libs.sh
+ DIST=$(HDRS) $(SRC) $(DIST_EXTRA)
+ 
+ PKGDIR=kdumpid-$(VER_MAJOR).$(VER_MINOR)
+--- /dev/null
++++ b/libs.sh
+@@ -0,0 +1,41 @@
++#!/bin/sh
++
++tmpdir=$(mktemp -d)
++trap 'rm -rf "$tmpdir"' EXIT
++cd "$tmpdir"
++
++cat > disas.c <<EOF
++void disassembler();
++void (*fn)() = disassembler;
++EOF
++
++rebuild()
++{
++    gcc -shared -o disas.o disas.c $LIBS
++}
++
++LIBS="-lopcodes"
++rebuild
++if nm -u disas.o | grep -q '^ *U bfd_' ; then
++    LIBS="$LIBS -lbfd"
++    rebuild
++fi
++if nm -u disas.o | grep -q '^ *U sframe_' ; then
++    LIBS="$LIBS -lsframe"
++    rebuild
++fi
++if nm -u disas.o | grep -q '^ *U \(htab_create\|splay_tree_new\)$' ; then
++    LIBS="$LIBS -liberty"
++    rebuild
++fi
++if nm -u disas.o | grep -q '^ *U inflate$' ; then
++    LIBS="$LIBS -lz"
++fi
++if nm -u disas.o | grep -q '^ *U ZSTD_' ; then
++    LIBS="$LIBS -lzstd"
++fi
++if nm -u disas.o | grep -q '^ *U dlopen' ; then
++    LIBS="$LIBS -ldl"
++fi
++
++echo $LIBS

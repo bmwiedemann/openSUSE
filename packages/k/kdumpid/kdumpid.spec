@@ -1,7 +1,7 @@
 #
 # spec file for package kdumpid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,10 @@
 #Url:
 
 Name:           kdumpid
-BuildRequires:  zlib-devel
-%if 0%{?suse_version} < 1030 && ! 0%{?fedora}
-BuildRequires:  binutils
-%else
 BuildRequires:  binutils-devel
-%endif
 BuildRequires:  libkdumpfile-devel
-Version:        1.3
+BuildRequires:  zlib-devel
+Version:        1.4
 Release:        0
 Summary:        Utility to extract information from vmcores
 License:        GPL-2.0-or-later
@@ -34,8 +30,7 @@ Group:          System/Kernel
 URL:            http://sourceforge.net/p/kdumpid
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar.bz2
-Patch1:         %{name}-append_insn.patch
-Patch2:         %{name}-binutils-2.39-fix.patch
+Patch1:         %{name}-Fix-build-for-binutils-2.40.patch
 
 %description
 Kdumpid extracts information such as type of dump, architecture
@@ -44,6 +39,8 @@ and kernel version from raw vmcores (Kernel memory dumps).
 %prep
 %setup
 %autopatch -p1
+
+chmod +x libs.sh
 
 %build
 make CUSTOM_CFLAGS="${CFLAGS:-%optflags}"

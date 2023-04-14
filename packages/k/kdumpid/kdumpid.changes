@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 13 18:35:49 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- kdumpid-Fix-build-for-binutils-2.40.patch: Fix build for
+  binutils < 2.40.
+
+-------------------------------------------------------------------
+Thu Apr 13 17:36:52 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to version 1.4
+  * Bugfix release
+- Patches moved to upstream:
+  * kdumpid-append_insn.patch
+  * kdumpid-binutils-2.39-fix.patch
+
+-------------------------------------------------------------------
 Tue Aug 16 09:20:30 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - Fix build with binutils-2.39:
