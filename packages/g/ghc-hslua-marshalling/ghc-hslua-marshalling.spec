@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Marshalling of values between Haskell and Lua
 License:        MIT
