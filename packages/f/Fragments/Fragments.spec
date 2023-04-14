@@ -17,7 +17,6 @@
 
 
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           Fragments
 Version:        2.1
@@ -61,17 +60,19 @@ mkdir .cargo
 cp %{SOURCE3} .cargo/config
 
 %build
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 %meson
 %meson_build
 
 %install
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 %meson_install
 %find_lang fragments %{?no_lang_C}
 
 %check
+export RUSTFLAGS="%{__rustflags}"
 %meson_test
+%cargo_test
 
 %files
 %license COPYING.md

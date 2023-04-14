@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 12 03:31:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use rustflags in check section also + run cargo_test macro.
+- Add constraints, we need a bigger hdd than some of the builders
+  provide.
+
+-------------------------------------------------------------------
+Wed Apr 12 01:50:20 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop %rustflags macro definition and use %__rustflags from
+  cargo-packaging package instead.
+
+-------------------------------------------------------------------
 Thu Mar 16 09:27:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Automatic update of vendored dependencies
