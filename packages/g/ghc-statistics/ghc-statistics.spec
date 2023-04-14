@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.16.1.2
+Version:        0.16.2.0
 Release:        0
 Summary:        A library of statistical types, data, and functions
 License:        BSD-2-Clause
