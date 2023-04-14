@@ -1,6 +1,6 @@
-diff -Nur image-editor-1.0.13/CMakeLists.txt image-editor-1.0.13-new/CMakeLists.txt
---- image-editor-1.0.13/CMakeLists.txt	2022-03-30 09:47:20.000000000 +0800
-+++ image-editor-1.0.13-new/CMakeLists.txt	2022-04-07 20:50:43.098078041 +0800
+diff -Nur image-editor-1.0.24/CMakeLists.txt image-editor-1.0.24-new/CMakeLists.txt
+--- image-editor-1.0.24/CMakeLists.txt	2022-11-29 10:21:28.000000000 +0800
++++ image-editor-1.0.24-new/CMakeLists.txt	2023-02-10 21:45:19.451016506 +0800
 @@ -2,6 +2,9 @@
  
  project(imageeditor)
@@ -10,4 +10,30 @@ diff -Nur image-editor-1.0.13/CMakeLists.txt image-editor-1.0.13-new/CMakeLists.
 +
  execute_process(COMMAND uname -m OUTPUT_VARIABLE MACH
      ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+diff -Nur image-editor-1.0.24/libimageviewer/CMakeLists.txt image-editor-1.0.24-new/libimageviewer/CMakeLists.txt
+--- image-editor-1.0.24/libimageviewer/CMakeLists.txt	2022-11-29 10:21:28.000000000 +0800
++++ image-editor-1.0.24-new/libimageviewer/CMakeLists.txt	2023-02-10 21:45:56.506879153 +0800
+@@ -10,6 +10,9 @@
+ set(CMAKE_AUTORCC ON)
+ set(CMAKE_AUTOUIC ON)
+ 
++set(CMAKE_C_FLAGS "-fPIC")
++set(CMAKE_CXX_FLAGS "-fPIC")
++
+ #Qt需要的包
+ set(QtModule Core Gui Widgets Svg DBus Concurrent PrintSupport LinguistTools)
+ 
+diff -Nur image-editor-1.0.24/libimagevisualresult/CMakeLists.txt image-editor-1.0.24-new/libimagevisualresult/CMakeLists.txt
+--- image-editor-1.0.24/libimagevisualresult/CMakeLists.txt	2022-11-29 10:21:28.000000000 +0800
++++ image-editor-1.0.24-new/libimagevisualresult/CMakeLists.txt	2023-02-10 21:45:19.451016506 +0800
+@@ -11,6 +11,9 @@
+ 
+ set(CMAKE_EXPORT_COMPILE_COMMANDS on)
+ 
++set(CMAKE_C_FLAGS "-fPIC")
++set(CMAKE_CXX_FLAGS "-fPIC")
++
+ find_package(PkgConfig REQUIRED)
+ find_package(OpenCV REQUIRED)
  

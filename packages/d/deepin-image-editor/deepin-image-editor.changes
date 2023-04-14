@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 27 07:16:49 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-gcc-13.patch, fix build by gcc 13 
+
+-------------------------------------------------------------------
+Fri Feb 10 13:56:15 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.0.24
+  * Fix bugs
+
+-------------------------------------------------------------------
 Mon Nov 21 11:10:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(opencv) with pkgconfig(opencv4) BuildRequires,

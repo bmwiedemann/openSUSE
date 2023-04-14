@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-image-editor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,11 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define    _name    image-editor
 %define    sover    0_1
 
 Name:           deepin-image-editor
-Version:        1.0.19
+Version:        1.0.24
 Release:        0
 Summary:        Libraries of Deepin Image editor
 License:        GPL-3.0-or-later
@@ -32,6 +33,9 @@ Patch0:         recompile-with-fPIC.patch
 %if 0%{?suse_version} <= 1500
 # PATCH-FIX-OPENSUSE fix-library-link.patch hillwood@opensuse.org - Neet link dl for Leap 15.x
 Patch1:         fix-library-link.patch
+%else
+# PATCH-FIX-UPSTREAM fix-gcc-13.patch hillwood@opensuse.org - Fix build by gcc 13
+Patch2:         fix-gcc-13.patch
 %endif
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore >= 5.0.0
@@ -41,19 +45,21 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(opencv4)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(dtkcore)
-BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(dtkgui)
+BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libffmpegthumbnailer)
 BuildRequires:  pkgconfig(libmediainfo)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(opencv4)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -125,11 +131,11 @@ docs for Deepin Image editor.
 
 %files
 %doc README.md
-%license LICENSE
+%license LICENSE.txt
 
 %files -n libimagevisualresult-data
-%doc README.md
-%license LICENSE
+%doc README.md README.zh_CN.md
+%license LICENSE.txt
 %dir %{_datadir}/libimagevisualresult
 %dir %{_datadir}/libimagevisualresult/filter_cube
 %{_datadir}/libimagevisualresult/filter_cube/*.CUBE
@@ -142,15 +148,15 @@ docs for Deepin Image editor.
 %{_libdir}/libimagevisualresult.so.*
 
 %files -n libimageviewer-devel
-%doc README.md
-%license LICENSE
+%doc README.md README.zh_CN.md
+%license LICENSE.txt
 %{_includedir}/libimageviewer
 %{_libdir}/libimageviewer.so
 %{_libdir}/pkgconfig/libimageviewer.pc
 
 %files -n libimagevisualresult-devel
-%doc README.md
-%license LICENSE
+%doc README.md README.zh_CN.md
+%license LICENSE.txt
 %{_includedir}/libimagevisualresult
 %{_libdir}/libimagevisualresult.so
 %{_libdir}/pkgconfig/libimagevisualresult.pc

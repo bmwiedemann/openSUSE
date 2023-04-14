@@ -29,4 +29,15 @@
   (use current version of opencv). (forwarded request 1037065 from iznogood)</comment>
     <requestid>1037837</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3aef1aad79e68fa153a18365948b96f1</srcmd5>
+    <version>1.0.24</version>
+    <time>1681470852</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-gcc-13.patch, fix build by gcc 13 
+
+- Update version to 1.0.24
+  * Fix bugs (forwarded request 1079402 from hillwood)</comment>
+    <requestid>1079403</requestid>
+  </revision>
 </revisionlist>
