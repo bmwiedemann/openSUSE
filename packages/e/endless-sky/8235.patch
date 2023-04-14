@@ -1,0 +1,37 @@
+From dd13181fcd26eb574981f3c94a91ba0bf1c4b830 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 26 Jan 2023 21:43:39 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint>
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <cstdint> is no longer transitively included. Explicitly include
+it for uint32_t.
+---
+ source/ImageBuffer.h | 1 +
+ source/Sound.cpp     | 1 +
+ 2 files changed, 2 insertions(+)
+
+Index: endless-sky-0.9.14/source/ImageBuffer.h
+===================================================================
+--- endless-sky-0.9.14.orig/source/ImageBuffer.h
++++ endless-sky-0.9.14/source/ImageBuffer.h
+@@ -13,6 +13,7 @@ PARTICULAR PURPOSE.  See the GNU General
+ #ifndef IMAGE_BUFFER_H_
+ #define IMAGE_BUFFER_H_
+ 
++#include <cstdint>
+ #include <string>
+ 
+ 
+Index: endless-sky-0.9.14/source/Sound.cpp
+===================================================================
+--- endless-sky-0.9.14.orig/source/Sound.cpp
++++ endless-sky-0.9.14/source/Sound.cpp
+@@ -21,6 +21,7 @@ PARTICULAR PURPOSE.  See the GNU General
+ #include <OpenAL/al.h>
+ #endif
+ 
++#include <cstdint>
+ #include <cstdio>
+ #include <vector>
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE fix-data-path.patch -- Fix installation path of data
 Patch0:         fix-data-path.patch
+# Patch1 based on https://patch-diff.githubusercontent.com/raw/endless-sky/endless-sky/pull/8235.patch
+Patch1:         8235.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -54,12 +56,12 @@ find some friendly aliens whose culture is more civilized than your own...
 %autosetup -p1
 
 %build
-export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden"
+export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 export CFLAGS="%optflags -fvisibility=hidden"
 scons PREFIX=%{_prefix} DESTDIR=%{buildroot}
 
 %install
-export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden"
+export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 export CFLAGS="%optflags -fvisibility=hidden"
 scons install PREFIX=%{_prefix} DESTDIR=%{buildroot}
 

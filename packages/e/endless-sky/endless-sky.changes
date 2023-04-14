@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 12 10:16:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 8235.patch: upstream PR 8235 to fix build using GCC 13.
+
+-------------------------------------------------------------------
 Fri Dec  3 15:47:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Drop upstream fixed patches:

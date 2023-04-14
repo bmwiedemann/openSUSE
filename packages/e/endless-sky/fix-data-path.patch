@@ -1,7 +1,8 @@
-diff -Nur endless-sky-0.9.14/endless-sky.6 new/endless-sky.6
---- endless-sky-0.9.14/endless-sky.6	2021-07-11 22:56:35.000000000 +0200
-+++ new/endless-sky.6	2021-12-04 14:40:42.589146795 +0100
-@@ -17,7 +17,7 @@
+Index: endless-sky-0.9.14/endless-sky.6
+===================================================================
+--- endless-sky-0.9.14.orig/endless-sky.6
++++ endless-sky-0.9.14/endless-sky.6
+@@ -17,7 +17,7 @@ Most of the controls should be self\-exp
  
  For a manual and other information, visit https://endless\-sky.github.io
  
@@ -10,10 +11,11 @@ diff -Nur endless-sky-0.9.14/endless-sky.6 new/endless-sky.6
  
  .SH OPTIONS
  .IP \fB\-h,\ \-\-help
-diff -Nur endless-sky-0.9.14/SConstruct new/SConstruct
---- endless-sky-0.9.14/SConstruct	2021-07-11 22:56:35.000000000 +0200
-+++ new/SConstruct	2021-12-04 14:40:42.589146795 +0100
-@@ -198,11 +198,11 @@
+Index: endless-sky-0.9.14/SConstruct
+===================================================================
+--- endless-sky-0.9.14.orig/SConstruct
++++ endless-sky-0.9.14/SConstruct
+@@ -198,11 +198,11 @@ def RecursiveInstall(env, target, source
  			RecursiveInstall(env, pathjoin(target, name), node.abspath)
  		else:
  			env.Install(target, node)
@@ -30,10 +32,11 @@ diff -Nur endless-sky-0.9.14/SConstruct new/SConstruct
  
  # Make the word "install" in the command line do an installation.
  env.Alias("install", "$DESTDIR$PREFIX")
-diff -Nur endless-sky-0.9.14/source/Files.cpp new/source/Files.cpp
---- endless-sky-0.9.14/source/Files.cpp	2021-07-11 22:56:35.000000000 +0200
-+++ new/source/Files.cpp	2021-12-04 14:40:42.589146795 +0100
-@@ -119,7 +119,7 @@
+Index: endless-sky-0.9.14/source/Files.cpp
+===================================================================
+--- endless-sky-0.9.14.orig/source/Files.cpp
++++ endless-sky-0.9.14/source/Files.cpp
+@@ -119,7 +119,7 @@ void Files::Init(const char * const *arg
  	// the executable, but are under the same prefix (/usr or /usr/local).
  	static const string LOCAL_PATH = "/usr/local/";
  	static const string STANDARD_PATH = "/usr/";
@@ -42,3 +45,15 @@ diff -Nur endless-sky-0.9.14/source/Files.cpp new/source/Files.cpp
  	if(!resources.compare(0, LOCAL_PATH.length(), LOCAL_PATH))
  		resources = LOCAL_PATH + RESOURCE_PATH;
  	else if(!resources.compare(0, STANDARD_PATH.length(), STANDARD_PATH))
+Index: endless-sky-0.9.14/source/News.h
+===================================================================
+--- endless-sky-0.9.14.orig/source/News.h
++++ endless-sky-0.9.14/source/News.h
+@@ -18,6 +18,7 @@ PARTICULAR PURPOSE.  See the GNU General
+ #include "Phrase.h"
+ 
+ #include <string>
++#include <cstdint>
+ #include <vector>
+ 
+ class DataNode;
