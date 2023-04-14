@@ -819,4 +819,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>1070246</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8761f61e2fba8a54a08972622e2dda55</srcmd5>
+    <version>1.10.2</version>
+    <time>1681470721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078615</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
-Index: libgcrypt-1.10.0/src/fips.c
+Index: libgcrypt-1.10.2/src/fips.c
 ===================================================================
---- libgcrypt-1.10.0.orig/src/fips.c
-+++ libgcrypt-1.10.0/src/fips.c
-@@ -379,10 +379,15 @@ int
+--- libgcrypt-1.10.2.orig/src/fips.c
++++ libgcrypt-1.10.2/src/fips.c
+@@ -520,10 +520,15 @@ int
  _gcry_fips_indicator_kdf (va_list arg_ptr)
  {
    enum gcry_kdf_algos alg = va_arg (arg_ptr, enum gcry_kdf_algos);
@@ -18,22 +18,25 @@ Index: libgcrypt-1.10.0/src/fips.c
        return GPG_ERR_NO_ERROR;
      default:
        return GPG_ERR_NOT_SUPPORTED;
-Index: libgcrypt-1.10.0/doc/gcrypt.texi
+Index: libgcrypt-1.10.2/doc/gcrypt.texi
 ===================================================================
---- libgcrypt-1.10.0.orig/doc/gcrypt.texi
-+++ libgcrypt-1.10.0/doc/gcrypt.texi
-@@ -995,10 +995,12 @@ algorithm supports different key sizes).
- this function returns @code{GPS_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
- is returned.
+--- libgcrypt-1.10.2.orig/doc/gcrypt.texi
++++ libgcrypt-1.10.2/doc/gcrypt.texi
+@@ -970,12 +970,13 @@ is approved under the current FIPS 140-3
+ combination is approved, this function returns @code{GPG_ERR_NO_ERROR}.
+ Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
 -@item GCRYCTL_FIPS_SERVICE_INDICATOR_KDF; Arguments: enum gcry_kdf_algos
 +@item GCRYCTL_FIPS_SERVICE_INDICATOR_KDF; Arguments: enum gcry_kdf_algos [, unsigned int]
  
  Check if the given KDF is approved under the current FIPS 140-3
--certification. If the KDF is approved, this function returns @code{GPG_ERR_NO_ERROR}.
+-certification. If the KDF is approved, this function returns
+-@code{GPG_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
+-is returned.
 +certification. The second parameter provides the keylength in bits.
 +Keylength values of less that 112 bits are considered non-approved.
 +If the KDF is approved, this function returns @code{GPG_ERR_NO_ERROR}.
- Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
++Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
- @item GCRYCTL_FIPS_SERVICE_INDICATOR_PK; Arguments: enum gcry_pk_algos
+ @item GCRYCTL_FIPS_SERVICE_INDICATOR_FUNCTION; Arguments: const char *
+ 

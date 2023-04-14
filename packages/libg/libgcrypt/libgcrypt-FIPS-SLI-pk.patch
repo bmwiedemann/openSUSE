@@ -1,8 +1,8 @@
-Index: libgcrypt-1.10.0/src/fips.c
+Index: libgcrypt-1.10.2/src/fips.c
 ===================================================================
---- libgcrypt-1.10.0.orig/src/fips.c
-+++ libgcrypt-1.10.0/src/fips.c
-@@ -36,6 +36,7 @@
+--- libgcrypt-1.10.2.orig/src/fips.c
++++ libgcrypt-1.10.2/src/fips.c
+@@ -38,6 +38,7 @@
  
  #include "g10lib.h"
  #include "cipher-proto.h"
@@ -10,7 +10,7 @@ Index: libgcrypt-1.10.0/src/fips.c
  #include "../random/random.h"
  
  /* The states of the finite state machine used in fips mode.  */
-@@ -386,6 +387,77 @@ _gcry_fips_indicator_kdf (va_list arg_pt
+@@ -399,6 +400,94 @@ _gcry_fips_indicator_mac (va_list arg_pt
      default:
        return GPG_ERR_NOT_SUPPORTED;
      }
@@ -49,11 +49,25 @@ Index: libgcrypt-1.10.0/src/fips.c
 +    { NULL, NULL}
 +  };
 +
++enum pk_operation convert_from_pk_usage(unsigned int pk_usage)
++{
++  switch (pk_usage)
++    {
++    case GCRY_PK_USAGE_SIGN:
++      return PUBKEY_OP_SIGN;
++    case GCRY_PK_USAGE_ENCR:
++      return PUBKEY_OP_ENCRYPT;
++    default:
++      return PUBKEY_OP_DECRYPT;
++    }
++}
++
 +int
 +_gcry_fips_indicator_pk (va_list arg_ptr)
 +{
 +  enum gcry_pk_algos alg = va_arg (arg_ptr, enum gcry_pk_algos);
 +  enum pk_operation oper;
++  unsigned int keylen;
 +  const char *curve_name;
 +
 +  switch (alg)
@@ -61,13 +75,16 @@ Index: libgcrypt-1.10.0/src/fips.c
 +    case GCRY_PK_RSA:
 +    case GCRY_PK_RSA_E:
 +    case GCRY_PK_RSA_S:
-+      oper = va_arg (arg_ptr, enum pk_operation);
++      oper = convert_from_pk_usage(va_arg (arg_ptr, unsigned int));
 +      switch (oper)
 +        {
 +        case PUBKEY_OP_ENCRYPT:
 +        case PUBKEY_OP_DECRYPT:
 +          return GPG_ERR_NOT_SUPPORTED;
 +        default:
++          keylen = va_arg (arg_ptr, unsigned int);
++          if (keylen < 2048)
++            return GPG_ERR_NOT_SUPPORTED;
 +          return GPG_ERR_NO_ERROR;
 +        }
 +    case GCRY_PK_ECC:
@@ -87,62 +104,63 @@ Index: libgcrypt-1.10.0/src/fips.c
 +    }
  }
  
- 
-Index: libgcrypt-1.10.0/src/gcrypt.h.in
+ int
+Index: libgcrypt-1.10.2/src/gcrypt.h.in
 ===================================================================
---- libgcrypt-1.10.0.orig/src/gcrypt.h.in
-+++ libgcrypt-1.10.0/src/gcrypt.h.in
-@@ -330,7 +330,8 @@ enum gcry_ctl_cmds
-     GCRYCTL_SET_DECRYPTION_TAG = 80,
-     GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER = 81,
-     GCRYCTL_FIPS_SERVICE_INDICATOR_KDF = 82,
--    GCRYCTL_NO_FIPS_MODE = 83
-+    GCRYCTL_NO_FIPS_MODE = 83,
-+	GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 84
+--- libgcrypt-1.10.2.orig/src/gcrypt.h.in
++++ libgcrypt-1.10.2/src/gcrypt.h.in
+@@ -334,7 +334,8 @@ enum gcry_ctl_cmds
+     GCRYCTL_FIPS_SERVICE_INDICATOR_FUNCTION = 84,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_MAC = 85,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_MD = 86,
+-    GCRYCTL_FIPS_SERVICE_INDICATOR_PK_FLAGS = 87
++    GCRYCTL_FIPS_SERVICE_INDICATOR_PK_FLAGS = 87,
++    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 88
    };
  
  /* Perform various operations defined by CMD. */
-Index: libgcrypt-1.10.0/doc/gcrypt.texi
+Index: libgcrypt-1.10.2/doc/gcrypt.texi
 ===================================================================
---- libgcrypt-1.10.0.orig/doc/gcrypt.texi
-+++ libgcrypt-1.10.0/doc/gcrypt.texi
-@@ -987,6 +987,18 @@ certification. If the KDF is approved, t
- @code{GPG_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
- is returned.
+--- libgcrypt-1.10.2.orig/doc/gcrypt.texi
++++ libgcrypt-1.10.2/doc/gcrypt.texi
+@@ -997,6 +997,19 @@ Check if the given message digest algori
+ FIPS 140-3 certification. If the algorithm is approved, this function returns
+ @code{GPG_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
-+@item GCRYCTL_FIPS_SERVICE_INDICATOR_PK; Arguments: enum gcry_pk_algos
-+[, enum pk_operation (only for GCRY_PK_RSA)] [, const char * (only for
-+GCRY_PK_ECC, GCRY_PK_ECDH or GCRY_PK_ECDSA)]
++@item GCRYCTL_FIPS_SERVICE_INDICATOR_PK; Arguments: enum gcry_pk_algos [, constantsGCRY_PK_USAGE_ENCR or GCRY_PK_USAGE_SIGN, unsigned int (only for GCRY_PK_RSA)] [, const char * (only for GCRY_PK_ECC, GCRY_PK_ECDH or GCRY_PK_ECDSA)]
 +
-+Check if the given asymmetric cipher is approved under the current FIPS
-+140-3 certification. For GCRY_PK_RSA, an additional parameter for the
-+operation mode @code{enum pk_operation} is required. For GCRY_PK_ECC,
-+GCRY_PK_ECDH and GCRY_PK_ECDSA, the additional parameter is the curve
-+name or its alias as @code{const char *}. If the combination is
-+approved, this function returns @code{GPG_ERR_NO_ERROR}. Otherwise
++Check if the given asymmetric cipher is approved under the current
++FIPS 140-3 certification. For GCRY_PK_RSA, two additional parameter
++are required: first describes the purpose of the algorithm through one
++of the constants (GCRY_PK_USAGE_ENCR for encryption or decryption
++operations; GCRY_PK_USAGE_SIGN for sign or verify operations). Second
++one is the key length. For GCRY_PK_ECC, GCRY_PK_ECDH and
++GCRY_PK_ECDSA, only a single parameter is needed: the curve name or
++its alias as @code{const char *}. If the combination is approved, this
++function returns @code{GPG_ERR_NO_ERROR}. Otherwise
 +@code{GPG_ERR_NOT_SUPPORTED} is returned.
 +
- @end table
+ @item GCRYCTL_FIPS_SERVICE_INDICATOR_PK_FLAGS; Arguments: const char *
  
- @end deftypefun
-Index: libgcrypt-1.10.0/src/g10lib.h
+ Check if the given public key operation flag or s-expression object name is
+Index: libgcrypt-1.10.2/src/g10lib.h
 ===================================================================
---- libgcrypt-1.10.0.orig/src/g10lib.h
-+++ libgcrypt-1.10.0/src/g10lib.h
-@@ -457,6 +457,7 @@ void _gcry_fips_signal_error (const char
- 
- int _gcry_fips_indicator_cipher (va_list arg_ptr);
+--- libgcrypt-1.10.2.orig/src/g10lib.h
++++ libgcrypt-1.10.2/src/g10lib.h
+@@ -460,6 +460,7 @@ int _gcry_fips_indicator_mac (va_list ar
+ int _gcry_fips_indicator_md (va_list arg_ptr);
  int _gcry_fips_indicator_kdf (va_list arg_ptr);
+ int _gcry_fips_indicator_function (va_list arg_ptr);
 +int _gcry_fips_indicator_pk (va_list arg_ptr);
+ int _gcry_fips_indicator_pk_flags (va_list arg_ptr);
  
  int _gcry_fips_is_operational (void);
- 
-Index: libgcrypt-1.10.0/src/global.c
+Index: libgcrypt-1.10.2/src/global.c
 ===================================================================
---- libgcrypt-1.10.0.orig/src/global.c
-+++ libgcrypt-1.10.0/src/global.c
-@@ -797,6 +797,15 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
-       rc = _gcry_fips_indicator_kdf (arg_ptr);
+--- libgcrypt-1.10.2.orig/src/global.c
++++ libgcrypt-1.10.2/src/global.c
+@@ -825,6 +834,15 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
+       rc = _gcry_fips_indicator_pk_flags (arg_ptr);
        break;
  
 +    case GCRYCTL_FIPS_SERVICE_INDICATOR_PK:

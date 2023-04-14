@@ -21,7 +21,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -36,20 +36,21 @@ Source4:        hwf.deny
 Source5:        libgcrypt.keyring
 Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
-#PATCH-FIX-UPSTREAM bsc#1190700 FIPS: Provide a service-level indicator for PK
-Patch2:         libgcrypt-FIPS-SLI-pk.patch
-#PATCH-FIX-SUSE bsc#1190700 FIPS add indicators
-Patch3:         libgcrypt-FIPS-SLI-hash-mac.patch
-#PATCH-FIX-SUSE bsc#1190700 FIPS: Check keylength in gcry_fips_indicator_kdf()
-Patch4:         libgcrypt-FIPS-SLI-kdf-leylength.patch
 #PATCH-FIX-SUSE bsc#1182983 gpg: out of core handler ignored in FIPS mode while typing Tab key to Auto-Completion
-Patch5:         libgcrypt-1.10.0-out-of-core-handler.patch
-#PATCH-FIX-UPSTREAM bsc#1202117 jsc#SLE-24941 FIPS: Port libgcrypt to use jitterentropy
-Patch6:         libgcrypt-jitterentropy-3.4.0.patch
+Patch2:         libgcrypt-1.10.0-out-of-core-handler.patch
+# FIPS patches:
+#PATCH-FIX-SUSE bsc#1190700 FIPS: Provide a service-level indicator for PK
+Patch100:       libgcrypt-FIPS-SLI-pk.patch
+#PATCH-FIX-SUSE bsc#1190700 FIPS: Check keylength in gcry_fips_indicator_kdf()
+Patch101:       libgcrypt-FIPS-SLI-kdf-leylength.patch
+#PATCH-FIX-SUSE bsc#1190700 FIPS add indicators
+Patch102:       libgcrypt-FIPS-SLI-hash-mac.patch
+#PATCH-FIX-SUSE bsc#1202117 jsc#SLE-24941 FIPS: Port libgcrypt to use jitterentropy
+Patch103:       libgcrypt-jitterentropy-3.4.0.patch
 #PATCH-FIX-SUSE bsc#1202117 FIPS: Get most of the entropy from rndjent_poll
-Patch7:         libgcrypt-FIPS-rndjent_poll.patch
+Patch104:       libgcrypt-FIPS-rndjent_poll.patch
 #PATCH-FIX-SUSE Check the FIPS "module is complete" trigger file .fips
-Patch8:         libgcrypt-1.10.0-use-fipscheck.patch
+Patch105:       libgcrypt-1.10.0-use-fipscheck.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  libtool
