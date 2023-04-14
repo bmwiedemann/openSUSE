@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan  2 13:46:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.9:
+  * Fix an invalid icon size #120
+  * Import or merge documents
+  * Add a force-based layout system
+
+-------------------------------------------------------------------
 Sat Jun 25 21:30:06 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 1.2.8
