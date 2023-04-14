@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 13 17:23:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lua to version 2.3.1.
+  ## lua-2.3.1
+
+  Released 2023-03-17.
+
+  -   New module *Lua.Debug*: the module provides bindings to a
+      subset of functions of the Lua debug interface. Currently the
+      module only binds `lua_getupvalue` and `lua_setupvalue`.
+
+  ## lua-2.3.0
+
+  Released 2023-03-13.
+
+  -   New function `hslua_setwarnf`: The function allows to set a
+      C function as a hook that is called on all complete warning
+      messages. It is intended as a simple way to set a custom
+      warning function.
+
+  -   Export version and copyright info from Lua.Constants: the
+      following patterns are made available, with content identical
+      to that of the respective C functions: `LUA_VERSION`,
+      `LUA_RELEASE`, and `LUA_COPYRIGHT`.
+
+  -   Added a new flag `cross-compile`. When enabled, the code is
+      setup in a way that allows cross-compilation of the package,
+      but some of the string constants will be hard-coded and may
+      not match the Lua version against which the library is
+      compiled.
+
+  -   `Type` is now an instance of `Read`.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
