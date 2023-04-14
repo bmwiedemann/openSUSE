@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 13 11:32:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.24.13:
+  * Release commit for Kubernetes v1.24.13
+  * releng/go: Update images, dependencies and version to Go 1.19.8
+  * wait again on pending state
+  * cacher allow context cancellation if not ready
+  * Drop development dependencies from test targets
+  * apiserver cacher: don't accept requests if stopped
+  * Clear front proxy headers after authentication is complete
+  * Make prerelease tag optional in CI versions
+  * Annotate CI version regexes
+  * Drop unused regex grouping
+  * Delete unused version regex function
+  * kubelet: Fix fs quota monitoring on volumes
+  * fsquota: only generate pod uuid is nil
+  * Change where transformers are called.
+  * Route controller should update routes with NodeIP changed When a node reboots or kubelet restarts, it is possible that its IP is changed. In this case, node route should be updated with the correct IP. In this PR, it checks if the IP in an existing route is the same as the actual one. If not, it marks it as "update" so the old route will be deleted and a new one will be created. There's a new field EnableNodeAddresses, which is a feature gate for specific cloud providers to enable after they update their cloud provider code for CreateRoute().
+  * client-go/cache: update Replace comment to be more clear
+  * client-go/cache: rewrite Replace to check queue first
+  * client-go/cache: merge ReplaceMakesDeletionsForObjectsInQueue tests
+  * client-go/cache: fix missing delete event on replace without knownObjects
+  * client-go/cache: fix missing delete event on replace
+  * Bump konnectivity-client to v0.0.36
+  * test: demote service ClientIP affinity timeout tests from conformance
+
+-------------------------------------------------------------------
 Wed Apr 12 12:26:52 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add kubernetes1.18-client-common as conflicts with kubernetes-client-bash-completion
