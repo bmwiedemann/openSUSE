@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 13 12:34:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.09
+  * ls-F: unsetenv LS*COLOR reapplies other LS*COLOR (Luke Mewburn)
+  * Don't crash if LSCOLORS contains > 11 pairs (Luke Mewburn)
+- Port patch
+  * tcsh-6.18.03-colorls.dif
+    that is we ignore unknown colors to be compatible with LS_COLOR
+    used by /usr/bin/ls from coreutils
+
+-------------------------------------------------------------------
 Tue Apr 11 09:52:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Update too tcsh 6.24.08
+- Update to tcsh 6.24.08
   * Support LS_COLORS su,sg,tw,ow,st,mh variables. (Luke Mewburn)
   * Fixes for LS_COLORS ln=target: ls-F directory; reset on unsetenv;
       intermittent parse bug; only support lower-case "target". (Luke Mewburn)

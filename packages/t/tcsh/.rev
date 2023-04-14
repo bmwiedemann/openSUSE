@@ -1004,4 +1004,20 @@
   * tcsh-6.21.00.dif</comment>
     <requestid>1078404</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ce65030b1bce0e50c13ee7bfa29de5a8</srcmd5>
+    <version>6.24.09</version>
+    <time>1681470750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh 6.24.09
+  * ls-F: unsetenv LS*COLOR reapplies other LS*COLOR (Luke Mewburn)
+  * Don't crash if LSCOLORS contains &gt; 11 pairs (Luke Mewburn)
+- Port patch
+  * tcsh-6.18.03-colorls.dif
+    that is we ignore unknown colors to be compatible with LS_COLOR
+    used by /usr/bin/ls from coreutils
+
+- Update to tcsh 6.24.08</comment>
+    <requestid>1079203</requestid>
+  </revision>
 </revisionlist>

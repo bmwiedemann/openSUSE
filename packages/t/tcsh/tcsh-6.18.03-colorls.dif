@@ -1,9 +1,76 @@
 ---
- tw.color.c |    9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ tests/ls-F.at |   36 ++++++++++++++++++------------------
+ tw.color.c    |   10 ++++------
+ 2 files changed, 22 insertions(+), 24 deletions(-)
 
+--- tests/ls-F.at
++++ tests/ls-F.at	2023-04-13 12:51:33.133052023 +0000
+@@ -358,9 +358,9 @@ dnl
+ dnl Fail: environment LS_COLORS=YY:XX=0 exits with unknown 'XX'.
+ dnl (Unknown 'YY' is ignored.)
+ dnl
+-AT_CHECK([LS_COLORS=YY:XX=0 tcsh -f -c 'set color;cd DIR && ls-F'], [1], [], [dnl
+-Unknown LS_COLORS color variable 'XX'.
+-])
++dnl AT_CHECK([LS_COLORS=YY:XX=0 tcsh -f -c 'set color;cd DIR && ls-F'], [1], [], [dnl
++dnl Unknown LS_COLORS color variable 'XX'.
++dnl ])
+ 
+ dnl
+ dnl setenv LS_COLORS "YY:XX=0" warns for unknown 'XX='. (Unknown 'YY' is ignored').
+@@ -368,11 +368,11 @@ dnl listflags=A, listlinks
+ dnl
+ dnl As per ls-F-color-default.out.
+ dnl
+-TCSH_LS_F([${tests_dir}/ls-F-color-default.out],
+-    [],
+-    [setenv LS_COLORS "YY:XX=0"; set color listflags=A listlinks], [dnl
+-Unknown LS_COLORS color variable 'XX'.
+-])
++dnl TCSH_LS_F([${tests_dir}/ls-F-color-default.out],
++dnl     [],
++dnl     [setenv LS_COLORS "YY:XX=0"; set color listflags=A listlinks], [dnl
++dnl Unknown LS_COLORS color variable 'XX'.
++dnl ])
+ 
+ dnl
+ dnl Check setenv LS_COLORS that all variables before an unknown variable are used.
+@@ -383,11 +383,11 @@ dnl listflags=A, listlinks
+ dnl
+ dnl As per ls-F-LS_COLORS-all.out.
+ dnl
+-TCSH_LS_F([${tests_dir}/ls-F-LS_COLORS-all.out],
+-    [],
+-    [setenv LS_COLORS "TCSH_TEXT_LS_COLORS:YY:XX=0"; set color listflags=A listlinks], [dnl
+-Unknown LS_COLORS color variable 'XX'.
+-])
++dnl TCSH_LS_F([${tests_dir}/ls-F-LS_COLORS-all.out],
++dnl     [],
++dnl     [setenv LS_COLORS "TCSH_TEXT_LS_COLORS:YY:XX=0"; set color listflags=A listlinks], [dnl
++dnl Unknown LS_COLORS color variable 'XX'.
++dnl ])
+ 
+ dnl
+ dnl LS_COLORS as TCSH_TEXT_LS_COLORS, override with setenv LSCOLORS,
+@@ -407,11 +407,11 @@ dnl override with LSCOLORS=Aa,
+ dnl then unsetenv LSCOLORS to reapply faulty LS_COLORS without warning.
+ dnl and results in default colors.
+ dnl
+-TCSH_LS_F([${tests_dir}/ls-F-color-default.out],
+-    [],
+-    [setenv LS_COLORS XX=0; setenv LSCOLORS Aa; unsetenv LSCOLORS || echo FAIL; set color listflags=A listlinks], [dnl
+-Unknown LS_COLORS color variable 'XX'.
+-])
++dnl TCSH_LS_F([${tests_dir}/ls-F-color-default.out],
++dnl     [],
++dnl     [setenv LS_COLORS XX=0; setenv LSCOLORS Aa; unsetenv LSCOLORS || echo FAIL; set color listflags=A listlinks], [dnl
++dnl Unknown LS_COLORS color variable 'XX'.
++dnl ])
+ 
+ m4_popdef([TCSH_TEXT_LS_COLORS])
+ 
 --- tw.color.c
-+++ tw.color.c	2023-04-11 10:36:56.030561276 +0000
++++ tw.color.c	2023-04-13 12:33:48.052952714 +0000
 @@ -56,7 +56,7 @@ typedef struct {
  typedef enum {
      Vdi, Vln, Vor, Vpi, Vso, Vdo, Vbd, Vcd,
@@ -21,7 +88,7 @@
  };
  
  #define nvariables (sizeof(variables)/sizeof(variables[0]))
-@@ -362,7 +363,7 @@ parseLS_COLORS(const Char *value)
+@@ -369,7 +370,7 @@ parseLS_COLORS(const Char *value, int si
      size_t  i, len;
      const Char	 *v;		/* pointer in value */
      char   *c;			/* pointer in colors */
@@ -30,7 +97,7 @@
      jmp_buf_t osetexit;
      size_t omark;
  
-@@ -419,16 +420,14 @@ parseLS_COLORS(const Char *value)
+@@ -426,17 +427,14 @@ parseLS_COLORS(const Char *value, int si
  			if ((Char)variables[i].variable[0] == (v[0] & CHAR) &&
  			    (Char)variables[i].variable[1] == (v[1] & CHAR))
  			    break;
@@ -44,7 +111,8 @@
  			continue;
  		    }
 -		    else
--			stderror(ERR_BADCOLORVAR, v[0], v[1]);
+-			stderror(ERR_BADCOLORVAR | (silent ? ERR_SILENT : 0),
+-			    "LS_COLORS", v[0], v[1]);
  		}
  		break;
  	    }
