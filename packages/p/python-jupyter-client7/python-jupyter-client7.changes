@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 14 02:17:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove jupyter package, provide alternatives instead
+
+-------------------------------------------------------------------
 Thu Mar 30 17:52:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Copy to python-jupyter-client7 package: Required by
