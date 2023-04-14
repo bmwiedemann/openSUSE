@@ -4030,4 +4030,28 @@
   + add/use configure check for clock_gettime(), to supersede</comment>
     <requestid>1071083</requestid>
   </revision>
+  <revision rev="236" vrev="9">
+    <srcmd5>76f35d569b08c4c3f0c4a3282df35854</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1681470719</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20230408
+  + document limitations of tparm, and error-returns in curs_terminfo.3x
+  + document limitations of tgoto, and error-returns in curs_termcap.3x
+  + add xterm+focus to alacritty+common (patch by Christian Duerr).
+  + add &quot;-v&quot; option to tput, to show warnings.
+  &gt; improve checks for malformed terminfo data (report/analysis by
+    Jonathan Bar Or, Michael Pearse, Emanuele Cozzi).
+    + make the parameter type/count checks in _nc_tiparm() more stringent
+    + update tgoto() to account for _nc_tiparm() changes
+    + add checks in tparm() and tiparm() for misuse of string parameters
+    + add special cases in tput to handle extensions Cs/Ms parameters
+    + ignore compiled-terminfo where the array sizes exceed the standard
+- Skip gzipping manual pages as brp-compress does the job
+
+- Add ncurses patch 20230401
+  + modify experimental Windows driver to work with xterm mouse protocol.
+  + remove DECCOLM+DECSCLM from foot (patch by Daniel Ekloef).</comment>
+    <requestid>1078402</requestid>
+  </revision>
 </revisionlist>

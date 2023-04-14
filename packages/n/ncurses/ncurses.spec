@@ -454,15 +454,8 @@ export CFLAGS_SHARED
 	unset include
     fi
     test -n "$TERM" || TERM=linux
-    mkdir gzip
-    cat > gzip/gzip <<-'EOF'
-	#!/bin/sh
-	exec /usr/bin/gzip -9 ${1+"$@"}
-	EOF
-    chmod 0755 gzip/gzip
     INSTALL_PROGRAM='${INSTALL}'
     INSTALL_OPT_S=""
-    PATH=$PWD/gzip:$PATH
     export CC CFLAGS CXX CXXFLAGS CPPFLAGS TERM LDFLAGS INSTALL_PROGRAM INSTALL_OPT_S
     #
     # Detect 64bit architecures and be sure that we use an
@@ -521,7 +514,6 @@ export CFLAGS_SHARED
 	--without-tests		\
 	--with-shared		\
 	--with-normal		\
-	--with-manpage-format=gzip \
 	--with-manpage-renames=${PWD}/man/man_db.renames.in	\
 	--with-manpage-aliases	\
 	--with-ospeed=speed_t	\
