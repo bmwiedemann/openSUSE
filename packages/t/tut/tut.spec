@@ -1,7 +1,7 @@
 #
 # spec file for package tut
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tut
-Version:        1.0.24
+Version:        2.0.1
 Release:        0
 Summary:        A TUI for Mastodon with vim inspired keys
 License:        MIT
@@ -50,10 +50,16 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0644 docs/man/%{name}.1 "%{buildroot}/%{_mandir}/man1/%{name}.1"
+install -D -m 0644 docs/man/%{name}.5 "%{buildroot}/%{_mandir}/man5/%{name}.5"
+install -D -m 0644 docs/man/%{name}.7 "%{buildroot}/%{_mandir}/man7/%{name}.7"
 
 %files
 %{_bindir}/%{name}
 %license LICENSE
 %doc README.md
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/%{name}.5%{?ext_man}
+%{_mandir}/man7/%{name}.7%{?ext_man}
 
 %changelog
