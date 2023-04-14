@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  8 12:47:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lucid to version 2.11.20230408.
+  ## 2.11.20230408
+
+  * Don't expect Control.Monad to be re-exported from mtl anymore
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
