@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Utilities to build Lua modules
 License:        MIT
@@ -37,6 +37,8 @@ BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
 BuildRequires:  ghc-hslua-objectorientation-devel
 BuildRequires:  ghc-hslua-objectorientation-prof
+BuildRequires:  ghc-hslua-typing-devel
+BuildRequires:  ghc-hslua-typing-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
