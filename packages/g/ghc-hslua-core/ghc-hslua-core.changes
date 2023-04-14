@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 13 17:23:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-core to version 2.3.1.
+  ## hslua-core-2.3.1
+
+  Released 2023-03-17.
+
+  -   New module *HsLua.Core.Debug*: the module provides bindings to
+      a subset of functions of the Lua debug interface. Currently
+      the module only exports `getupvalue` and `setupvalue`, both of
+      which are also re-exported from *HsLua.Core*.
+
+  ## hslua-core-2.3.0
+
+  Released 2023-03-13.
+
+  -   The functions `loadfile`, `dofile`, and `dofileTrace` now
+      expect the argument to be of type `Maybe FilePath`. The
+      functions load from *stdin* when the argument is `Nothing`.
+
+  -   Added `setwarnf'` for simple warning messgae handling: The
+      built-in method of setting a warn function is flexible but not
+      straight-forward to use. The new `setwarnf'` function allows
+      to set a Haskell action as a warning hook: the default warning
+      behavior is kept in place, but, in addition to the default
+      action, the hook is called on the concatenated warning
+      messages. This can be used to plug Lua warnings into an
+      application specific Haskell reporting system.
+
+  -   Export `GCManagedState`, `newGCManagedState`,
+      `closeGCManagedState`, and `withGCManagedState` from
+      `HsLua.Core`.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:01 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        Bindings to Lua, an embeddable scripting language
 License:        MIT

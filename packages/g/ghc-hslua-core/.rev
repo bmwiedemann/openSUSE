@@ -31,4 +31,12 @@
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075901</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb2f0c37682488c07bf8f63a3f92ef0d</srcmd5>
+    <version>2.3.1</version>
+    <time>1681470780</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1079182</requestid>
+  </revision>
 </revisionlist>
