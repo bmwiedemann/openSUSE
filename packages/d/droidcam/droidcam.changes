@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  7 09:38:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.9.0
+  * Increase the socket timeout, extra logging
+  * Fixup a/v/batt syncing
+  * Fix the White-Balance menu
+  * Fix battery value parsing
+  * Support ayatana-appindicator
+  * Continue trying when setting audio hwparams fails
+
+-------------------------------------------------------------------
 Mon May 16 20:35:05 UTC 2022 - Grover Chou <groverchout@opensuse.org>
 
 - Update to version 1.8.2

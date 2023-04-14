@@ -1,7 +1,7 @@
 #
 # spec file for package droidcam
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           droidcam
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Program to turn a mobile device into a webcam
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(libswscale)
 # BuildRequires:  pkgconfig(libusbmuxd-2.0)
 BuildRequires:  libusbmuxd-devel
 BuildRequires:  pkgconfig(speex)
-Requires:       hicolor-icon-theme
+Requires:       hicolor-icon-theme >= 0.17
 Requires:       kmod(v4l2loopback.ko)
 # USB connection uses adb for Android, other
 # options are usbmuxd (iOS) or Wifi
@@ -65,8 +65,7 @@ It can be used with chat programs like Skype, Zoom, Teams, or with
 live streaming programs like OBS.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 export USBMUXDLIBS="`pkg-config --silence-errors --libs libusbmuxd-2.0 || pkg-config --silence-errors --libs libusbmuxd`"

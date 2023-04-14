@@ -1,7 +1,7 @@
-diff --git a/src/decoder.c b/src/decoder.c
-index 5c72ceb..a408d72 100644
---- a/src/decoder.c
-+++ b/src/decoder.c
+Index: droidcam-1.9.0/src/decoder.c
+===================================================================
+--- droidcam-1.9.0.orig/src/decoder.c
++++ droidcam-1.9.0/src/decoder.c
 @@ -31,6 +31,15 @@ extern "C"
  }
  #endif

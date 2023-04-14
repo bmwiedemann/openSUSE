@@ -1,8 +1,8 @@
-diff --git a/src/droidcam.c b/src/droidcam.c
-index cad1ee4..7a6ff4c 100644
---- a/src/droidcam.c
-+++ b/src/droidcam.c
-@@ -43,7 +43,7 @@ struct settings g_settings = {0};
+Index: droidcam-1.9.0/src/droidcam.c
+===================================================================
+--- droidcam-1.9.0.orig/src/droidcam.c
++++ droidcam-1.9.0/src/droidcam.c
+@@ -50,7 +50,7 @@ struct settings g_settings = {0};
  extern const char *thread_cmd_val_str;
  extern char snd_device[32];
  extern char v4l2_device[32];
@@ -11,7 +11,7 @@ index cad1ee4..7a6ff4c 100644
  
  void * AudioThreadProc(void * args);
  void * VideoThreadProc(void * args);
-@@ -416,7 +416,7 @@ ERROR:
+@@ -425,7 +425,7 @@ ERROR:
  // Example discussion: https://github.com/dino/dino/issues/98
  #if 1
  static void add_indicator(GtkWidget *window) {
@@ -20,7 +20,7 @@ index cad1ee4..7a6ff4c 100644
  	GtkWidget *menu = gtk_menu_new();
  	GtkWidget *name_menu_item = gtk_menu_item_new_with_label("Droidcam");
  	GtkWidget *show_menu_item = gtk_menu_item_new_with_label("Show");
-@@ -464,7 +464,7 @@ int main(int argc, char *argv[])
+@@ -473,7 +473,7 @@ int main(int argc, char *argv[])
  	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
  	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
  	gtk_container_set_border_width(GTK_CONTAINER(window), 4);
