@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define aarch64_machine thunderx
 %define exclusive_arch aarch64
 %endif
-# http://doc.dpdk.org/guides-21.11/linux_gsg/build_dpdk.html#adjusting-build-options
+# http://doc.dpdk.org/guides-22.11/linux_gsg/build_dpdk.html#adjusting-build-options
 %define platform generic
 %define machine  auto
 %ifarch aarch64
@@ -36,7 +36,7 @@
 %endif
 # This is in sync with <src>/ABI_VERSION
 # TODO: automate this sync
-%define maj 22
+%define maj 23
 %define min 0
 #%%define lname libdpdk-%%{maj}_%%{min}
 %define lname libdpdk-%{maj}
@@ -46,7 +46,7 @@
 %bcond_without tools
 #
 Name:           dpdk%{name_tag}
-Version:        21.11.1
+Version:        22.11.1
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -55,15 +55,14 @@ URL:            https://www.dpdk.org/
 Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Source1:        preamble
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
-Patch0:         0001-build-try-to-get-kernel-version-from-kernel-source.patch
+Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
-Patch2:         kni-fix-build-with-Linux-5.18.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kernel-syms
 BuildRequires:  libfdt-devel
-BuildRequires:  meson >= 0.49.2
+BuildRequires:  meson >= 0.53.2
 BuildRequires:  modutils
 BuildRequires:  patchelf
 BuildRequires:  pesign-obs-integration
@@ -164,7 +163,6 @@ as L2 and L3 forwarding.
 Summary:        DPDK KNI kernel module %{summary_tag}
 Group:          System/Kernel
 BuildRequires:  %{kernel_module_package_buildreqs}
-Conflicts:      dpdk-any-kmp
 %suse_kernel_module_package -p %{_sourcedir}/preamble pae 64kb
 
 %description kmp
@@ -189,7 +187,7 @@ sed -i "/performance-thread/d" examples/meson.build
 %define _vpath_builddir "build-%{_target_cpu}-$flavor"
 
 %ifarch x86_64
-export CFLAGS="%{optflags} -msse4"
+export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -msse4"
 %endif
 examples="all"
 for flavor in %{flavors_to_build}; do
@@ -236,7 +234,15 @@ mv %{buildroot}/lib/modules %{buildroot}%{_prefix}/lib
 # Fix documentation
 mkdir -p %{buildroot}%docdir
 mv %{buildroot}%{_datadir}/doc/dpdk %{buildroot}%docdir
-find %{buildroot}%docdir -name .doctrees | xargs rm -r # cleanup Sphinx leftovers
+
+# driver .so files often depend upon the bus drivers for their connect bus,
+# e.g. ixgbe depends on librte_bus_pci. This means that the bus drivers need
+# to be in the library path, so symlink the drivers from the main lib directory
+# Fix broken symlink created by buildtools/symlink-drivers-solibs.sh
+for f in %{buildroot}/%{pmddir}/*.so.*; do
+    bn=$(basename ${f})
+    ln -s %{pmddir}/${bn} %{buildroot}%{_libdir}/${bn}
+done
 
 %if ! %{with tools}
 # Remove tools if not needed

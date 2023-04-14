@@ -1,0 +1,69 @@
+From e2950fec9cd9c235a7847ed97b6914174857bf93 Mon Sep 17 00:00:00 2001
+From: "mvarlese@suse.de" <mvarlese@suse.de>
+Date: Wed, 29 Apr 2020 12:24:16 +0200
+Subject: [PATCH] fix cpu compatibility
+
+Added 0001-fix-cpu-compatibility.patch to address issue with older CPUs (bsc#1125961, bsc#1099474)
+
+Updated 2023-02-26 for version 22.11
+
+diff --git a/drivers/bus/vdev/vdev.c b/drivers/bus/vdev/vdev.c
+index 41bc07dde7..750180cb84 100644
+--- a/drivers/bus/vdev/vdev.c
++++ b/drivers/bus/vdev/vdev.c
+@@ -51,7 +51,11 @@ static struct vdev_custom_scans vdev_custom_scans =
+ static rte_spinlock_t vdev_custom_scan_lock = RTE_SPINLOCK_INITIALIZER;
+ 
+ /* register a driver */
+-void
++#if defined(__x86_64__) ||  defined(__i386__)
++void __attribute__((target ("sse2")))
++#else
++ void
++#endif
+ rte_vdev_register(struct rte_vdev_driver *driver)
+ {
+ 	TAILQ_INSERT_TAIL(&vdev_driver_list, driver, next);
+diff --git a/lib/eal/common/eal_common_bus.c b/lib/eal/common/eal_common_bus.c
+index deb9fb8a12..cb7bec607f 100644
+--- a/lib/eal/common/eal_common_bus.c
++++ b/lib/eal/common/eal_common_bus.c
+@@ -22,7 +22,11 @@ rte_bus_name(const struct rte_bus *bus)
+ 	return bus->name;
+ }
+ 
+-void
++#if defined(__x86_64__) ||  defined(__i386__)
++void __attribute__((target ("sse2")))
++#else
++ void
++#endif
+ rte_bus_register(struct rte_bus *bus)
+ {
+ 	RTE_VERIFY(bus);
+diff --git a/lib/eal/include/rte_common.h b/lib/eal/include/rte_common.h
+index 15765b408d..4291706faa 100644
+--- a/lib/eal/include/rte_common.h
++++ b/lib/eal/include/rte_common.h
+@@ -179,8 +179,20 @@ typedef uint16_t unaligned_uint16_t;
+  *   Lowest number is the first to run.
+  */
+ #ifndef RTE_INIT_PRIO /* Allow to override from EAL */
++#if defined(__x86_64__) ||  defined(__i386__)
+ #define RTE_INIT_PRIO(func, prio) \
+-static void __attribute__((constructor(RTE_PRIO(prio)), used)) func(void)
++static void \
++       __attribute__((constructor(RTE_PRIO(prio)), used)) \
++       __attribute__((target ("sse2"))) \
++       __attribute__((target ("no-sse3"))) \
++       __attribute__((target ("no-sse4"))) \
++       func(void)
++#else
++#define RTE_INIT_PRIO(func, prio) \
++static void \
++       __attribute__((constructor(RTE_PRIO(prio)), used)) \
++       func(void)
++#endif
+ #endif
+ 
+ /**

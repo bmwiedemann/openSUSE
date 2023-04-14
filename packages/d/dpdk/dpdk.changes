@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Apr  5 21:10:54 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+-- Update to LTS release version v22.11.1
+   Some of the new features are,
+    * Added initial LoongArch architecture support.
+    * Added support for multiple mbuf pools per ethdev Rx queue.
+    * Added support for congestion management in ethdev.
+    * Added protocol header based buffer split.
+    * Added proactive error handling mode for ethdev.
+    * Added ethdev Rx/Tx descriptor dump API.
+    * Added ethdev hairpin memory configuration options.
+    * Added new configuration flags for hairpin queues in rte_eth_hairpin_conf:
+    * Added strict queue to pre-configuration flow hints.
+    * Added configuration for asynchronous flow connection tracking.
+    * Added support for queue-based async query in flow API.
+    * Added new function rte_flow_async_action_handle_query() to query the action asynchronously.
+    * Extended metering and marking support in the flow API.
+    * Added flow offload action to route packets to kernel.
+    * Updated AF_XDP driver.
+    * Updated AMD Pensando ionic driver.
+    * Added GVE net PMD.
+    * Updated Intel iavf driver.
+    * Updated Intel ice driver.
+    * Added Intel idpf driver.
+    * Updated Marvell cnxk driver.
+    * Added Microsoft mana driver.
+    * Updated Netronome nfp driver.
+    * Added flow API support:
+    * Updated NVIDIA mlx5 driver.
+    * Updated NXP dpaa2 driver.
+    * Updated Wangxun ngbe driver.
+    * Added DMA vChannel unconfiguration for async vhost.
+    * Added non-blocking notify API to vhost library.
+    * Added support for MACsec in rte_security.
+    * Added new algorithms to cryptodev.
+    * Updated Intel QuickAssist Technology (QAT) crypto driver.
+    * Updated Marvell cnxk crypto driver.
+    * Updated aesni_mb crypto driver.
+    * Updated ipsec_mb crypto driver.
+    * Added UADK crypto driver.
+    * Added bbdev operation for FFT processing.
+    * Added Intel ACC200 bbdev driver.
+    * Added eventdev adapter instance get API.
+    * Added eventdev Tx adapter queue start/stop API.
+    * Added event crypto adapter vectorization support.
+    * Added NitroSketch in membership library.
+    * Added Intel uncore frequency control API to the power library.
+    * Added security performance test application.
+    * Updated IPsec sample application.
+    * Updated FIPS validation sample application.
+    * Rewrote pmdinfo script.
+    * More details can be found in
+        http://doc.dpdk.org/guides/rel_notes/release_22_11.html
+    * Removed the patches as fixed in upstream
+	0001-build-try-to-get-kernel-version-from-kernel-source.patch
+	kni-fix-build-with-Linux-5.18.patch
+    * Added Patches:
+        0001-fix-cpu-compatibility.patch
+    * Rebased patches:
+        0002-SLE15-SP3-compatibility-patch-for-kni.patch 
+
+-------------------------------------------------------------------
 Wed Feb 22 08:58:07 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Cleanup Sphinx build leftovers for reproducible builds

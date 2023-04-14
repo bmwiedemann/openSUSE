@@ -3,11 +3,17 @@ From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
 Date: Mon, 21 Sep 2020 14:50:13 +0200
 Subject: [PATCH] SLE15 SP3 compatibility patch for kni
 
-Updated 2022-02-25 for version 21.11
+  Add patch to resolve build error reported in Staging:E project 
+  where a kernel backport (jsc#SLE-13536) introduced backward
+  incompatible changes to the API that break kni module build
+  * 0001-SLE15-SP3-compatibility-patch-for-kni.patch
 
-diff -Nur dpdk-21.11/kernel/linux/kni/compat.h new/kernel/linux/kni/compat.h
---- dpdk-21.11/kernel/linux/kni/compat.h	2021-11-26 18:58:21.000000000 +0100
-+++ new/kernel/linux/kni/compat.h	2022-02-25 18:08:52.638000134 +0100
+Updated 2023-02-26 for version 22.11
+
+diff --git a/kernel/linux/kni/compat.h b/kernel/linux/kni/compat.h
+index 3a86d12bbc..66d1afd944 100644
+--- a/kernel/linux/kni/compat.h
++++ b/kernel/linux/kni/compat.h
 @@ -14,7 +14,10 @@
  #define SLE_VERSION(a, b, c) KERNEL_VERSION(a, b, c)
  #endif
