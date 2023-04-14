@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 13 12:14:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.1.0.
+  ## 1.1.0
+
+  Release pending.
+
+  -   Require hslua-2.3 and tasty-lua-1.1.
+
+  -   Type info is added to all fields.
+
+  -   The `Doc` type is now associated with this module's docs,
+      making it easier to generate documentation.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:03 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
