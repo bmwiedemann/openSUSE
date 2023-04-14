@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 14 07:13:24 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Commit 0d37d47eca896005eb0a645e0db461f4dafb317b breaks building
+  with glibmm < 2.76; use DESKTOP_APP_DISABLE_DBUS_INTEGRATION
+  on Leap 15.4 and 15.5 to work around it.
+
+-------------------------------------------------------------------
+Mon Apr 10 01:58:12 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Upgrade to 4.7.1:
+  * Fix calls on Linux
+- Upgrade from 4.6.5 to 4.7.0:
+  * You can disable all resource-intensive animations
+    and animated stickers and emoji.
+  * Fully flexible playback speed settings for videos,
+    voice and video messages.
+  * Fix several possible crashes.
+- Update tg_owt-master.zip
+
+-------------------------------------------------------------------
 Sat Mar 25 11:06:57 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - The new default compiler gcc13 on Tumbleweed is too new for

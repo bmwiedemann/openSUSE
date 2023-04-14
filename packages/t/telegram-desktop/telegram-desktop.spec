@@ -41,7 +41,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.6.5
+Version:        4.7.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -286,6 +286,9 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_QT6=OFF \
       -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=ON \
       -DDESKTOP_APP_USE_ENCHANT=ON \
+%endif
+%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150500 ) )
+      -DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=ON \
 %endif
       -DTDESKTOP_API_ID=611335 \
       -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
