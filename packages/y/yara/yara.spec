@@ -16,17 +16,16 @@
 #
 
 
-%global soname 9
+%global soname 10
 Name:           yara
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Summary:        A malware identification and classification tool
 License:        BSD-3-Clause
 Group:          System/Filesystems
 URL:            https://virustotal.github.io/yara/
 Source:         https://github.com/VirusTotal/yara/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- backport upstream fixes for file magic tests
-Patch:          fix-test-magic.patch
+Source99:       baselibs.conf
 BuildRequires:  file-devel
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -36,6 +35,7 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libpcre16)
 BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpcreposix)
+%{?suse_build_hwcaps_libs}
 
 %description
 YARA is a tool aimed at helping malware researchers to identify and classify
@@ -71,6 +71,7 @@ determines its logic.
 Summary:        Documentation files to support the YARA malware identification tool
 Group:          Development/Libraries/C and C++
 Requires:       libyara%{soname} = %{version}-%{release}
+BuildArch:      noarch
 
 %description doc
 Documentation and guideslines to support YARA.

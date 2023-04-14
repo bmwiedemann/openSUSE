@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 30 14:56:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+
+-------------------------------------------------------------------
+Thu Mar 30 12:41:35 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 4.3.0:
+  * Added a not operator for bytes in hex strings. Example: {01 ~02 03} (#1676).
+  * for statement can iterate over sets of literal strings (e.g. for any s in ("a", "b"): (pe.imphash() == s)) (#1787).
+    of statement can be used with at (e.g. any of them at 0) (#1790).
+  * Added the --print-xor-key (-X in short form) command-line option that prints the XOR key for xored strings (#1745).
+  * Implement the --skip-larger command-line option in Windows (#1678).
+  * Add parsing of .NET user types from .NET metadata stream in "dotnet" module (#1605).
+  * Improve certificate parsing and validation in "pe" module (#1623).
+  * Improve error reporting on certain edge cases (#1709, #1722).
+  * BUGFIX: Fix multiple memory alignment issues causing crashes in non-x86 platforms (#1724).
+  * BUGFIX: Fix implementation of math.serial_correlation(#1771).
+  * BUGFIX: Fix infinite recursion in dotnet module (#1794).
+  * BUGFIX: Fix SIGFPE when dividing INT64_MIN by -1 (c2557fc).
+  * BUGFIX: Fix several endianess issues (#1884, #1874, #1855).
+- removed fix-test-magic.patch as was merged into upstream
+
+-------------------------------------------------------------------
 Mon Feb  6 18:32:53 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - backport upstream fixes for file magic tests: fix-test-magic.patch
