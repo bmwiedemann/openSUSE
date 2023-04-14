@@ -1,4 +1,305 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:33:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Install the pandoc.1 man page. [bsc#1172058]
+
+-------------------------------------------------------------------
+Wed Apr 12 23:48:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc to version 3.1.2.
+  ## pandoc 3.1.2 (2023-03-26)
+
+    * Add a Lua REPL (Albert Krewinkel). This can be started
+      with `pandoc lua -i`.  It is also possible to instruct a filter to
+      open the REPL at a certain point, for debugging (see `pandoc.cli.repl`).
+
+    * Support `typst` as a `--pdf-engine`.
+
+    * Add typst writer (#8713).  New module Text.Pandoc.Writers.Typst,
+      exporting `writeTypst` [API change].
+
+    * Org reader:
+
+      + Allow zero width space as an escape character (#8716,
+        Christian Christiansen). Allow the character U+200B to be used as
+        an escape character as described in the Org-mode documentation
+        (<https://orgmode.org/manual/Escape-Character.html>).
+
+    * DocBook reader:
+
+      + Handle "book" for xref references (#8712, Andres Freund)
+        This also adds a test xref to book and part.
+      + Handle `<part>` (#8712).
+
+    * HTML reader:
+
+      + Fix behavior with `-native_spans-raw_html` (#8711). Previously with
+        this configuration, `<span>`s were not treated as inline elements at all.
+
+    * HTML writer:
+
+      + Avoid duplicate classes (#8705).
+      + Use img element instead of embed for `.svg.gz` and `.png.gz` etc. (#8699).
+      + HTML writer footnotes changes (#8695): when `--reference-location=section`
+        or `=block`, use an `aside` element for the notes rather than a `section`.
+        When `--reference-location=section`, include the `aside` element inside
+        the section element, rather than outside. (In slide shows, this option
+        causes footnotes on a slide to be displayed at the bottom of the slide.)
+
+    * EPUB writer:
+
+      + Use different structure for epub footnotes (#8676, see #8672, #5583).
+        Many EPUB readers are thrown off by pandoc's current footnote
+        output.  Both the ol and the fact that the footnote backlink is
+        at the end of the note seem to pose problems.
+        With this commit, we now create a list of aside (or div) elements,
+        instead of an ordered list. Each element begins with a note number
+        that is linked back to the note reference.  (So, the backlink occurs
+        at the beginning rather than the end.) Thanks to @Porges and @lewer.
+
+    * Docx writer:
+
+      + Include abstract title (#8702). Uses localized term for abstract.
+
+    * Markdown writer:
+
+      + Use implicit figures if there's a caption but no alt (#8689,
+        Albert Krewinkel).
+
+    * Jira reader (Albert Krewinkel):
+
+      + Add panel title as nested div (#8681).
+      + Require jira-wiki-markup 1.5.1 (#8680). This fixes a bug in the parser
+        that caused text between two exclamation marks to be parsed as an
+        image. The first `!` of image markup must now be followed by a
+        non-space character; otherwise, the enclosed text is parsed as
+        normal content.
+
+    * Ms writer:
+
+      + Fix handling of Figure (#8660).
+
+    * ICML writer:
+
+      + Fix images with data (#8675). The Contents element
+        should be inside Properties.
+
+    * LaTeX writer:
+
+      + Add Chinese to Babel languages.
+      + Fix background image in Beamer when there are figure environments (#8671,
+        Martín Pozo).
+
+    * LaTeX template:
+
+      + Add `babelfonts` variable to default LaTeX template.
+        This allows specifying certain fonts to be used with
+        certain babel languages. Thanks to Frederik Elwert.
+      + Fix highlight/underline with lualatex (#8707). We need the lua-ul package
+        instead of soul, which doesn't work with lualatex.
+
+    * Lua (Albert Krewinkel):
+
+      + Add `pandoc.cli.repl` function
+      + Fix `json.encode` for nested AST elements. Ensures that objects with
+        nested AST elements can be encoded as JSON.
+      + Auto-generate docs for pandoc modules.
+      + Load text module as `pandoc.text`. This only affects the name in the
+        Lua-internal documentation. It is still possible to load the modules
+        via `require 'text'`, although this is deprecated.
+      + Move docs from module `text` to `pandoc.text`
+        The latter is easier to use and more consistent with the other modules.
+      + Keep the Lua stack clean A metatable used during initialization was
+        not properly removed from the stack. Likewise, accessing the
+        CommonState from Lua previously led to the pollution of the
+        Lua stack with a left-over value.
+      * Add function `pandoc.format.from_path`.
+      + Allow to get the JSON encoding of log messages.
+
+    * Text.Pandoc.Format: Add new function `formatFromFilePaths` [API change]
+      (#8710, Albert Krewinkel).
+
+    * The old Text.Pandoc.App.FormatHeuristics module has been removed.
+
+    * In `--version`, use Windows `%APPDATA%` variable to describe
+      user data dir (#8686, Pablo Rodríguez).
+
+    * Text.Pandoc.App.CommandLineOptions: don't lowercase arg to `--from`/`--read`
+      (Albert Krewinkel). This prevented users to use custom writers with
+      uppercase characters in their filenames. Format-normalization,
+      including lower-casing of format identifiers, happens during
+      format parsing.
+
+    * Documentation:
+
+      + Add `doc/nix.md`.
+      + Add `doc/extras.md`. This was formally in the website repo.
+      + `doc/lua-filters.md`: improve docs for `pandoc.zip`.
+
+    * Factor out `make_macos_release.sh` from the release candidate workflow.
+      Use cabal instead of stack to build the macos binary.
+
+    * Modify linux/make_artifacts.sh so it will work on cirrus.
+
+    * Switch to hslua-2.3
+
+    * Depend on latest releases of texmath, doclayout.
+
+  ## pandoc 3.1.1 (2023-03-05)
+
+    * EPUB reader: Give additional information in error if the epub
+      zip container can't be unpacked.
+
+    * TSV reader: don't gobble tabs as whitespace (#8661).
+
+    * Org reader: accept empty tables (#8659).
+
+    * LaTeX reader: fix multiplication syntax for tabular (#8658).
+      We recognized `*{6}{...}` but not `*6{...}` or `*6c`.
+
+    * Docx reader: parse image alt texts in LibreOffice generated files.
+      LibreOffice tags images slightly differently than Word; this change lets
+      the parses take that difference into account when looking for an image
+      description (alt text).
+
+    * DocBook reader:
+
+      + Fix `<xref>` references to tables in DocBook files
+        (#8626, Pavol Otto).
+      + Parse `figure` as a Figure element in the AST (#8668).
+
+    * JATS reader: avoid generating duplicate figure captions (#8669).
+
+    * RST reader: align with spec in syntax for role names (#8653).
+      In particular, we now allow colons in row names.
+
+    * Add note on converting from .doc format to FAQs (#8654).
+
+    * Trap error in getAppUserDataDirectory (#8648).
+      This can raise an error if pandoc is run in a non-user environment.
+
+    * LaTeX writer: do not use longtable foot with Beamer (#8638, Albert
+      Krewinkel). The table foot is made part of the table body, as
+      otherwise it won't show up in the output. The root cause for
+      this is that longtable cannot detect page breaks in Beamer.
+
+    * LaTeX template: Add CJKsansfont and CJKmonofont for XeLaTeX
+      (#8656, Yudong Jin). `CJKsansfont` and `CJKmonofont` will be
+      set for xelatex only if `CJKmainfont` is also provided.
+
+    * URL style in ConTeXt (#8612, Thomas Hodgson). Previously, a
+      URL like this would be in monospace text:
+      `\useURL[url1][https://example.com]`.  Now, it will match the
+      main text unless the `linkstyle` variable is set, which
+      controls the styling of all links.  Closes #8602.
+
+    * Asciidoc writer: Properly escape `|` in table cells (#8665).
+
+    * asciidoc{,tor} template: fix revision date when author is unset
+      (#8637, arcnmx). Revision line syntax is only valid in
+      combination with an author line, so the date attribute must be
+      set explicitly when the author is missing
+
+    * HTML writer: allow "track" element to be treated as block-level HTML
+      (#8629).
+
+    * Include needed polyfill when MathJaX is used (#8625).
+
+    * JATS writer: include alt-text in `<graphic>`,
+      `<inline-graphic>` elements (#8631, Albert Krewinkel).
+
+    * Chunked HTML writer:  Retain metadata in processing sections
+      for chunked HTML (#8620).  Previously we suppressed metadata
+      in all but the top page, in order to prevent the title block
+      from being printed on every page. This prevented use of
+      custom variables set by metadata fields.  This commit moves
+      to a better solution: a conditional in the default template
+      restricts the title block to the top page.
+
+    * Lua API:
+
+      + Add new function `pandoc.system.cputime` (Albert
+        Krewinkel).  The function returns the CPU time consumed by
+        pandoc and can be used to benchmark Lua computations.
+      + Add module `pandoc.json` to handle JSON encoding (#8605,
+        Albert Krewinkel).
+
+    * Use pandoc-lua-marshal 0.2.1 (Albert Krewinkel).
+      All major AST elements now have `__tojson` metamethods that return the
+      JSON representation of an element. This allows to JSON-encode these
+      elements with libraries that respect the `__tojson` metamethod,
+      including dkjson.
+
+    * Use latest zip-archive.  This allows pandoc to open certain
+      epubs that it could not open before.
+
+    * Use commonmark-extensions 0.2.3.4. This fixes some bugs involving
+      definition lists and inline formatting.
+
+    * Use latest skylighting-format-context
+
+    * MANUAL.txt:
+
+      + Document chunk-template in defaults file.
+      + Remove obsolete "raw content in a style" section.
+      + Revise documentation for `--mathml` to reflect support in all major
+        browsers (#8667).
+
+    * docs/custom-readers.md: Update JSON parsing example. The example now
+      uses the built-in `pandoc.json` library to parse the API output.
+
+    * doc/press.md: Add article on CiTO in J Cheminform by @egonw.
+
+    * doc/lua-filters.md: fix typo in `run_json_filter` (Morgan Willcock).
+
+  ## pandoc 3.1 (2023-02-09)
+
+    * Fix regression with `--print-highlight-style` option (#8586).
+
+    * Add new `--chunk-template` option (#8581), allowing more control
+      over the filenames in chunked HTML output.
+
+    * Text.Pandoc.App: Add `optChunkTemplate` constructor to Opt [API change].
+
+    * Text.Pandoc.Options: add `writerChunkTemplate` constructor to
+      `WriterOptions` [API change].
+
+    * Text.Pandoc.Chunks: add Data, Typeable, Generic, ToJSON, FromJSON
+      instances for `PathTemplate` [API change].
+
+    * Text.Pandoc.Citeproc: Fix bug in `metaValueToReference` (#8611).
+      This bug caused us to get some repeated content when converting
+      MetaBlock to Inlines.
+
+    * Textile reader:
+
+      + Support footnote backlinks (#8585, Stephen Altamirano).
+      + Don't allow brackets in URLs (#8582).
+
+    * ODT reader: fix blockquote indent detection (#3437, Daniel Kessler).
+
+    * LaTeX writer: include short figure/table caption if one is given
+      (Albert Krewinkel). Short captions are used by LaTeX when generating
+      the list of figures or list of tables. Adding a short caption will
+      now overwrite the full caption in these lists.
+
+    * Powerpoint writer: fix handling of simple figures (#8565,
+      Albert Krewinkel). This ensures that simple figures are displayed
+      in the same way as before the introduction of a dedicated `Figure`
+      constructor in the AST.
+
+    * Improve handling of `%` in bib(la)tex parsing (#8597, #8595).
+
+    * Use released skylighting 0.13.2.1
+
+    * INSTALL.md: direct people to cabal install pandoc-cli.
+
+    * doc/lua-filters.md: document 'Figure' type and constructor (Albert
+      Krewinkel). Fix typos (Martin Joerg).
+
+    * Fix link in manual (#8583, Salim B).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
