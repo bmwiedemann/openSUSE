@@ -56,4 +56,12 @@
   * Fix padding calculations in RadioTapWriter</comment>
     <requestid>1039774</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>609e0ba1d555451d4e74d5a6d15527dd</srcmd5>
+    <version>4.4</version>
+    <time>1681484047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079460</requestid>
+  </revision>
 </revisionlist>

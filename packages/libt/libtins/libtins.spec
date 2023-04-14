@@ -1,7 +1,7 @@
 #
 # spec file for package libtins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Other
 URL:            https://libtins.github.io/
 Source0:        https://github.com/mfontanini/%{name}/archive/v%{version}.tar.gz
 Patch0:         libtins-4.2_build.patch
+Patch1:         https://github.com/mfontanini/libtins/commit/812be7966d445ec56e88eab512f8fd2d57152427.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
@@ -56,8 +57,7 @@ This package contains header files, and libraries needed to develop
 application that use libtins.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake -DLIBTINS_ENABLE_CXX11=1
@@ -65,8 +65,7 @@ application that use libtins.
 %install
 %make_install -C build
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %doc CHANGES.md README.md THANKS
