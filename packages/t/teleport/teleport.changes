@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 14 06:52:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.2.3:
+  * Release 12.2.3 (#24546)
+  * Machine ID: Add ability to request RouteToCluster in generated
+    certs (#23838) (#24544)
+  * Update e reference (#24550)
+  * [v12] spelling fixes and ignore adds (#24539)
+  * Added 03/13 Upcoming Releases Update (#24547)
+  * Document alert acknowledgement (#24489)
+  * Add info to the Directory Sharing guide (#24487)
+  * Update e ref. (#24542)
+  * Fix IP pinning for SSO login (#24541)
+  * [v12] docs: include Amazon Linux in BPF-supported distributions
+    (#24480)
+  * Allow the Okta role to read the cluster name. (#24540)
+  * Integrations: web API and tctl (#24145) (#24458)
+  * [v12] Ensure the Okta service can connect through the reverse
+    tunnel. (#24524)
+  * Update FAQ for on-prem data collection (#24512)
+  * Support app servers on different types of tunnels. (#23749)
+    (#24525)
+  * Attempt ssh connections with and without mfa at the same time
+    (#24371)
+  * Fix relaxed moderator joining for Kube Access (#23674) (#23993)
+  * [v12] Hosted plugin manager prerequisites (#23922) (#24390)
+  * Add check for nil auth.local in ping response. (#24490)
+  * Docs: adjust Active Directory (manual) guide (#24071) (#24462)
+  * Docs: Standardize prerequisite partial use. (#23394) (#24452)
+  * Create a partial for Event Handler role/user (#24469)
+
+-------------------------------------------------------------------
 Thu Apr 13 07:08:02 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.2.2:
