@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 13 12:06:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hslua-classes to version 2.3.0.
+  ## hslua-classes-2.3.0
+
+  Released 2023-03-13.
+
+  -   Require version 2.3.* of HsLua packages hslua-core and
+      hslua-marshalling.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
