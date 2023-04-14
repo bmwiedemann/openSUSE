@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  4 12:10:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.4:
+  * Use binary search for synonyms
+  * Various improvments in work with synonyms
+  * Added --json (same as --json-output) to match man
+  * Show all matched result
+  * More robust parsing of ifo file
+  * Prevent crash if file size of files not matched expecting one for .oft files 
+
+-------------------------------------------------------------------
 Thu Feb 11 22:53:05 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 0.5.3:
