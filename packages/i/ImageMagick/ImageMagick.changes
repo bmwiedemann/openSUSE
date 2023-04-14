@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 13 11:17:45 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.6
+- https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-6---2023-04-02
+- fixes CVE-2023-1906 [bsc#1210308]
+
+-------------------------------------------------------------------
 Thu Mar 30 07:46:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.1.5:
