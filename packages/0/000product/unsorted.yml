@@ -815,6 +815,8 @@ unsorted:
   - argus-server 
   - argyllcms-doc 
   - aria2-devel 
+  - arianna 
+  - arianna-lang 
   - arkade 
   - arm-ml-examples-data 
   - arm-trusted-firmware 
@@ -2506,7 +2508,6 @@ unsorted:
   - crash 
   - crash-devel 
   - crash-doc 
-  - crash-eppic 
   - crash-gcore 
   - crash-kmp-default 
   - crash-trace 
@@ -5401,6 +5402,14 @@ unsorted:
   - ghc-hslua-packaging-doc 
   - ghc-hslua-packaging-prof 
   - ghc-hslua-prof 
+  - ghc-hslua-repl 
+  - ghc-hslua-repl-devel 
+  - ghc-hslua-repl-doc 
+  - ghc-hslua-repl-prof 
+  - ghc-hslua-typing 
+  - ghc-hslua-typing-devel 
+  - ghc-hslua-typing-doc 
+  - ghc-hslua-typing-prof 
   - ghc-html 
   - ghc-html-devel 
   - ghc-html-doc 
@@ -5473,6 +5482,10 @@ unsorted:
   - ghc-ipynb-devel 
   - ghc-ipynb-doc 
   - ghc-ipynb-prof 
+  - ghc-isocline 
+  - ghc-isocline-devel 
+  - ghc-isocline-doc 
+  - ghc-isocline-prof 
   - ghc-iwlib 
   - ghc-iwlib-devel 
   - ghc-iwlib-doc 
@@ -8709,8 +8722,6 @@ unsorted:
   - jupyter-ipyvue-nbextension 
   - jupyter-ipyvuetify-nbextension 
   - jupyter-ipywebrtc 
-  - jupyter-jupyter-client 
-  - jupyter-jupyter-client7 
   - jupyter-jupyter-wysiwyg 
   - jupyter-jupyter_core-filesystem 
   - jupyter-jupyter_highlight_selected_word 
@@ -11088,7 +11099,7 @@ unsorted:
   - libcapi20-devel 
   - libcapi20-devel-32bit 
   - libcapi20-mod_misdn 
-  - libcapnp-0_10_3 
+  - libcapnp-0_10_4 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
@@ -11513,7 +11524,7 @@ unsorted:
   - libdocparser1 
   - libdouble-conversion3-32bit 
   - libdovi-devel 
-  - libdpdk-22 
+  - libdpdk-23 
   - libdqlite0 
   - libdrm-devel 
   - libdrm-devel-32bit 
@@ -12069,10 +12080,10 @@ unsorted:
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit 
-  - libgit2 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
+  - libgit2-tools 
   - libgitg-1_0-0 
   - libgitg-devel 
   - libgitg-ext-1_0-0 
@@ -13708,7 +13719,7 @@ unsorted:
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
   - libopenvdb9_0 
-  - libopenvswitch-2_17-0 
+  - libopenvswitch-3_1-0 
   - liboping-devel 
   - liboping0 
   - libopts25 
@@ -13817,6 +13828,7 @@ unsorted:
   - libout123-0-32bit 
   - libovf-glib-devel 
   - libovn-21_09-0 
+  - libovn-23_03-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-devel 
@@ -15417,8 +15429,6 @@ unsorted:
   - libva-devel-32bit 
   - libva-drm2-32bit 
   - libva-gl-devel 
-  - libva-gl-devel-32bit 
-  - libva-glx2-32bit 
   - libva-utils 
   - libva-vdpau-driver 
   - libva-wayland2-32bit 
@@ -15936,7 +15946,8 @@ unsorted:
   - libyang-doc 
   - libyang2 
   - libyara-devel 
-  - libyara9 
+  - libyara10 
+  - libyara10-x86-64-v3 
   - libyascreen0 
   - libyate6_4_0 
   - libyaz-devel 
@@ -22778,6 +22789,7 @@ unsorted:
   - python3-oslo.vmware 
   - python3-oslotest 
   - python3-osprofiler 
+  - python3-ovs 
   - python3-ovsdbapp 
   - python3-pacemaker 
   - python3-paraview 
@@ -23853,7 +23865,6 @@ unsorted:
   - python310-dialite 
   - python310-dictdiffer 
   - python310-dictknife 
-  - python310-dictpath 
   - python310-dicttoxml 
   - python310-diff-match-patch 
   - python310-diffimg 
@@ -24861,7 +24872,6 @@ unsorted:
   - python310-ospd-openvas 
   - python310-outcome 
   - python310-ovirt-engine-sdk 
-  - python310-ovs 
   - python310-pa-ringbuffer 
   - python310-padaos 
   - python310-padatious 
@@ -27176,7 +27186,6 @@ unsorted:
   - python311-dialite 
   - python311-dictdiffer 
   - python311-dictknife 
-  - python311-dictpath 
   - python311-dicttoxml 
   - python311-diff-match-patch 
   - python311-diffimg 
@@ -28224,7 +28233,6 @@ unsorted:
   - python311-ospd-openvas 
   - python311-outcome 
   - python311-ovirt-engine-sdk 
-  - python311-ovs 
   - python311-pa-ringbuffer 
   - python311-packaging 
   - python311-padaos 
@@ -29578,15 +29586,11 @@ unsorted:
   - python38-efl 
   - python38-gwpy 
   - python38-idle 
-  - python38-ipympl 
-  - python38-ipyscales 
-  - python38-ipyvolume 
   - python38-lalpulsar 
   - python38-lalsimulation 
   - python38-ldas-tools-al-swig 
   - python38-limnoria 
   - python38-net-snmp 
-  - python38-oct2py 
   - python38-pybugz 
   - python38-pyheif 
   - python38-pymediainfo 
@@ -29595,7 +29599,6 @@ unsorted:
   - python38-python-qpid-proton 
   - python38-sanlock 
   - python38-testsuite 
-  - python38-threevis 
   - python38-tk 
   - python38-tools 
   - python38-volatility3 
@@ -30637,7 +30640,6 @@ unsorted:
   - python39-dialite 
   - python39-dictdiffer 
   - python39-dictknife 
-  - python39-dictpath 
   - python39-dicttoxml 
   - python39-diff-match-patch 
   - python39-diffimg 
@@ -31689,7 +31691,6 @@ unsorted:
   - python39-ospd-openvas 
   - python39-outcome 
   - python39-ovirt-engine-sdk 
-  - python39-ovs 
   - python39-pa-ringbuffer 
   - python39-packaging 
   - python39-padaos 
