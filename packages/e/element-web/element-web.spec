@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.26
+Version:        1.11.29
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 Group:          Productivity/Networking/Talk/Clients
