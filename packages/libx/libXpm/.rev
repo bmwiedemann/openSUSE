@@ -164,4 +164,33 @@
 - spec file cleanups</comment>
     <requestid>1077087</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>74c2f107cf32d3ae684fbf77ee8fddae</srcmd5>
+    <version>3.5.15</version>
+    <time>1681470740</time>
+    <user>dimstar_suse</user>
+    <comment>- with switching to suggests making use of (n)compress no longer
+  needs to be limited to openSUSE
+
+- suggests instead of require compress (see changelog below) 
+
+- require compress (ncompress package) on openSUSE; it's not
+  supported on SLE
+
+- Drop n_no-compress-on-sle.patch and set XPM_PATH_COMPRESS instead
+  (xpmPipeThrough function returns NULL when the command is not 
+   available; so same result as with the patch applied; that the
+   child process for executing 'compress' returns with exit(1)
+   doesn't matter much; it might even be useful to see the error
+   message ...)
+
+- Depend also on /usr/bin/uncompress, not only /usr/bin/gzip;
+  Requiring binaries instead of packages resolves the file 
+  conflict with busybox-gzip, which is used when building nginx
+  opensuse images; dep chain was: nginx -&gt; libdg3 -&gt; libXpm4 -&gt; gzip
+  ==&gt; conflict with busybox-gzip
+
+- Depend on /usr/bin/gzip, not gzip</comment>
+    <requestid>1079097</requestid>
+  </revision>
 </revisionlist>

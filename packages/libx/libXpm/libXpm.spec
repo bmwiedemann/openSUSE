@@ -30,10 +30,9 @@ Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{v
 Source1:        https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz.sig
 Source2:        libXpm.keyring
 Source9:        baselibs.conf
-Patch0:         n_no-compress-on-sle.patch
+BuildRequires:  /usr/bin/gzip
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gzip
 BuildRequires:  libtool
 
 BuildRequires:  pkgconfig
@@ -51,8 +50,11 @@ storing/retrieving X pixmaps to/from files.
 %package -n %{lname}
 Summary:        X Pixmap image file format library
 Group:          System/Libraries
-# Invokes 'uncompress' and 'gzip' at runtim
-Requires:       gzip
+# Invokes 'gzip' and 'uncompress' at runtime.
+Requires:       /usr/bin/gzip
+Requires:       /usr/bin/uncompress
+# 'compress' (ncompress package) is not available on SLE
+Suggests:       /usr/bin/compress
 
 %description -n %{lname}
 libXpm facilitates working with XPM (X PixMap), a format for
@@ -90,6 +92,7 @@ regard to its format.
 
 %build
 autoreconf -fi
+export XPM_PATH_COMPRESS=%{_bindir}/compress
 %configure --disable-static
 %make_build
 

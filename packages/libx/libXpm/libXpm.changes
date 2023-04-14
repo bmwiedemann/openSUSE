@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:24:55 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- with switching to suggests making use of (n)compress no longer
+  needs to be limited to openSUSE
+
+-------------------------------------------------------------------
+Thu Apr 13 08:18:00 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- suggests instead of require compress (see changelog below) 
+
+-------------------------------------------------------------------
+Wed Apr 12 16:01:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- require compress (ncompress package) on openSUSE; it's not
+  supported on SLE
+
+-------------------------------------------------------------------
+Wed Apr 12 13:39:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop n_no-compress-on-sle.patch and set XPM_PATH_COMPRESS instead
+  (xpmPipeThrough function returns NULL when the command is not 
+   available; so same result as with the patch applied; that the
+   child process for executing 'compress' returns with exit(1)
+   doesn't matter much; it might even be useful to see the error
+   message ...)
+
+-------------------------------------------------------------------
+Wed Apr 12 11:59:25 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Depend also on /usr/bin/uncompress, not only /usr/bin/gzip;
+  Requiring binaries instead of packages resolves the file 
+  conflict with busybox-gzip, which is used when building nginx
+  opensuse images; dep chain was: nginx -> libdg3 -> libXpm4 -> gzip
+  ==> conflict with busybox-gzip
+
+-------------------------------------------------------------------
+Tue Apr 11 13:41:44 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Depend on /usr/bin/gzip, not gzip
+
+-------------------------------------------------------------------
 Mon Apr  3 20:27:28 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_no-compress-on-sle.patch
