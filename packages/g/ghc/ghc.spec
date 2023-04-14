@@ -83,6 +83,7 @@
 %global base_ver 4.17.0.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.6.1.0
+%global hsc2hs_ver 0.68.8
 
 Name:           ghc
 Version:        %{short_version}
@@ -191,6 +192,7 @@ License:        BSD-3-Clause
 Requires:       gcc
 Requires:       ghc-base-devel = %{base_ver}-%{release}
 Requires:       %{name}-filesystem = %{version}-%{release}
+Provides:       hsc2hs-%{hsc2hs_ver}-%{release}
 %ifarch riscv64 s390x
 Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
