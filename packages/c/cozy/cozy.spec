@@ -1,7 +1,7 @@
 #
 # spec file for package cozy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,29 +27,28 @@ Source0:        https://github.com/geigi/cozy/archive/%{version}.tar.gz#/%{name}
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libhandy-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  libhandy-devel
 BuildRequires:  pkgconfig(granite) >= 5.3.0
+BuildRequires:  pkgconfig(gtk+-3.0)
+Requires:       granite
+Requires:       libhandy-1-0
+Requires:       python3-apsw
 Requires:       python3-cairo
 Requires:       python3-distro
 Requires:       python3-gst
-Requires:       python3-magic
 Requires:       python3-mutagen
+Requires:       python3-packaging
 Requires:       python3-peewee >= 3.9.6
-Requires:       python3-apsw
 Requires:       python3-pytaglib
-Requires:       libhandy-1-0
+Requires:       python3-pytz
+Requires:       python3-requests
 Requires:       pkgconfig(libdazzle-1.0)
-Requires:       granite
-Requires:	python3-pytz
-Requires:	python3-requests
-Requires:	python3-packaging
 Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good
@@ -59,15 +58,14 @@ Provides:       com.github.geigi.cozy = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  python3-cairo
+BuildRequires:  libhandy-1-0
+BuildRequires:  python3-apsw
+BuildRequires:  python3-distro
 BuildRequires:  python3-gst
-BuildRequires:  python3-magic
 BuildRequires:  python3-mutagen
+BuildRequires:  python3-packaging
 BuildRequires:  python3-peewee >= 3.9.6
 BuildRequires:  python3-pytaglib
-BuildRequires:  python3-distro
-BuildRequires:  python3-apsw
-BuildRequires:  python3-packaging
-BuildRequires:  libhandy-1-0
 BuildRequires:  pkgconfig(libdazzle-1.0)
 # /SECTION
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jan 10 10:55:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop unnecessary python3-magic dependency
+
+-------------------------------------------------------------------
 Sun Aug 21 13:01:42 UTC 2022 - Julian Geywitz <suse@geigi.de>
 
 - Update to 1.2.1
