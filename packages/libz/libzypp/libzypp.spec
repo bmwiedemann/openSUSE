@@ -42,7 +42,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.8
+Version:        17.31.10
 Release:        0
 License:        GPL-2.0+
 Url:            https://github.com/openSUSE/libzypp
@@ -100,7 +100,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 
-BuildRequires:  libsolv-devel >= 0.7.17
+BuildRequires:  libsolv-devel >= 0.7.24
 %if 0%{?suse_version} >= 1100
 BuildRequires:  libsolv-tools
 %requires_eq    libsolv-tools
