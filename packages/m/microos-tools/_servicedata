@@ -1,0 +1,5 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/openSUSE/microos-tools.git</param>
+  <param name="changesrevision">2a43cdb3220241f02b8cae551976aa1776c69b38</param></service>
+</servicedata>

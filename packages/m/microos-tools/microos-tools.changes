@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 13 09:34:21 UTC 2023 - kukuk@suse.com
+
+- Update to version 2.20+git20230413.2a43cdb:
+  * Drop extra sysctl file for coredumps (boo#1091684)
+
+-------------------------------------------------------------------
 Tue Apr  4 13:35:50 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
 
 - remove conflict with systemd-coredump (boo#1091684). There is no actual

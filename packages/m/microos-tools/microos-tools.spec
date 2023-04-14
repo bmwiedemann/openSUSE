@@ -19,13 +19,13 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        2.20
+Version:        2.20+git20230413.2a43cdb
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/openSUSE/microos-tools
-Source:         https://github.com/openSUSE/microos-tools/releases/download/v%{version}/microos-tools-%{version}.tar.xz
+Source:         microos-tools-%{version}.tar.xz
 Source1:        tmp.mount
 Source2:        microos-tmp.conf
 Source99:       microos-tools-rpmlintrc
@@ -103,7 +103,6 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %endif
 %dir %{_distconfdir}/tukit.conf.d
 %{_distconfdir}/tukit.conf.d/salt-tukit.conf
-%{_sysctldir}/30-corefiles.conf
 %{_sbindir}/setup-systemd-proxy-env
 %dir %{_prefix}/lib/dracut
 %dir %{_prefix}/lib/dracut/modules.d

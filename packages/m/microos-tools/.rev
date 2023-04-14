@@ -267,4 +267,13 @@
     <comment></comment>
     <requestid>1077738</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ee1263644e855f9acdeaa0846213bffd</srcmd5>
+    <version>2.20+git20230413.2a43cdb</version>
+    <time>1681470743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20+git20230413.2a43cdb:
+  * Drop extra sysctl file for coredumps (boo#1091684)</comment>
+    <requestid>1079104</requestid>
+  </revision>
 </revisionlist>
