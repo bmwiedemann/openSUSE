@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Lua module to work with file paths
 License:        MIT
