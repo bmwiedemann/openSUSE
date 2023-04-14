@@ -2154,4 +2154,12 @@ contain it.
   [bsc#1206556]</comment>
     <requestid>1073595</requestid>
   </revision>
+  <revision rev="165" vrev="4">
+    <srcmd5>c48e5021dbbe9eb66e1dc62974758a72</srcmd5>
+    <version>2.40</version>
+    <time>1681470755</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase branch patch (includes fix for PR30281).</comment>
+    <requestid>1079086</requestid>
+  </revision>
 </revisionlist>

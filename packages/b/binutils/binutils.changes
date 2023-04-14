@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 12 14:56:56 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Rebase branch patch (includes fix for PR30281).
+
+-------------------------------------------------------------------
 Tue Mar 21 16:33:06 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Document fixed CVEs:
