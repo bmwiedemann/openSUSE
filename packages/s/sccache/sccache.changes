@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 13 01:22:53 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1210346 - CVE-2023-26964 - hyper,h2: stream stacking when H2 processing HTTP2 RST_STREAM frames
+
+-------------------------------------------------------------------
 Tue Apr 11 03:56:23 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.4.1~18:
