@@ -1,20 +1,8 @@
-From b5ae9ddfa0df356ae7bf9445631b756883226825 Mon Sep 17 00:00:00 2001
-From: Jonathan Kang <jonathankang@gnome.org>
-Date: Sun, 26 Sep 2021 11:04:13 +0800
-Subject: [PATCH] add error messages when wicked is used as network manager
-
----
- panels/network/cc-network-panel.c | 37 ++++++++++++++++++++++++++-
- panels/network/cc-wifi-panel.c    | 22 +++++++++++++++-
- panels/network/cc-wifi-panel.ui   | 42 +++++++++++++++++++++++++++++++
- tests/meson.build                 |  3 +++
- 4 files changed, 102 insertions(+), 2 deletions(-)
-
-Index: gnome-control-center-43.1/panels/network/cc-network-panel.c
-===================================================================
---- gnome-control-center-43.1.orig/panels/network/cc-network-panel.c
-+++ gnome-control-center-43.1/panels/network/cc-network-panel.c
-@@ -646,10 +646,24 @@ static void
+diff --git a/panels/network/cc-network-panel.c b/panels/network/cc-network-panel.c
+index 6a3074ce..40fb0283 100644
+--- a/panels/network/cc-network-panel.c
++++ b/panels/network/cc-network-panel.c
+@@ -659,10 +659,24 @@ static void
  panel_check_network_manager_version (CcNetworkPanel *self)
  {
          const gchar *version;
@@ -40,7 +28,7 @@ Index: gnome-control-center-43.1/panels/network/cc-network-panel.c
                  GtkWidget *status_page;
  
                  status_page = adw_status_page_new ();
-@@ -661,9 +675,23 @@ panel_check_network_manager_version (CcN
+@@ -674,9 +688,23 @@ panel_check_network_manager_version (CcNetworkPanel *self)
                                                   _("NetworkManager needs to be running to view or make "
                                                     "connections. Contact a system administrator or the "
                                                     "software vendor."));
@@ -64,22 +52,11 @@ Index: gnome-control-center-43.1/panels/network/cc-network-panel.c
  }
  
  static void
-Index: gnome-control-center-43.1/panels/network/cc-wifi-panel.c
-===================================================================
---- gnome-control-center-43.1.orig/panels/network/cc-wifi-panel.c
-+++ gnome-control-center-43.1/panels/network/cc-wifi-panel.c
-@@ -425,8 +425,8 @@ remove_wifi_device (CcWifiPanel *self,
-     }
- 
-   /* Disconnect the signal to prevent assertion crash */
--  g_signal_handlers_disconnect_by_func (device, 
--                                        G_CALLBACK (wifi_panel_update_qr_image_cb), 
-+  g_signal_handlers_disconnect_by_func (device,
-+                                        G_CALLBACK (wifi_panel_update_qr_image_cb),
-                                         self);
- 
-   /* Destroy all stack pages related to this device */
-@@ -444,21 +444,41 @@ static void
+diff --git a/panels/network/cc-wifi-panel.c b/panels/network/cc-wifi-panel.c
+index 8e0b17b0..495b5616 100644
+--- a/panels/network/cc-wifi-panel.c
++++ b/panels/network/cc-wifi-panel.c
+@@ -302,21 +302,41 @@ static void
  check_main_stack_page (CcWifiPanel *self)
  {
    const gchar *nm_version;
@@ -122,11 +99,11 @@ Index: gnome-control-center-43.1/panels/network/cc-wifi-panel.c
  }
  
  static void
-Index: gnome-control-center-43.1/panels/network/cc-wifi-panel.ui
-===================================================================
---- gnome-control-center-43.1.orig/panels/network/cc-wifi-panel.ui
-+++ gnome-control-center-43.1/panels/network/cc-wifi-panel.ui
-@@ -311,10 +311,53 @@
+diff --git a/panels/network/cc-wifi-panel.ui b/panels/network/cc-wifi-panel.ui
+index 722ca3d4..c196f984 100644
+--- a/panels/network/cc-wifi-panel.ui
++++ b/panels/network/cc-wifi-panel.ui
+@@ -226,6 +226,50 @@ Error details: NetworkManager not running.</property>
                        </object>
                      </child>
  
@@ -177,14 +154,10 @@ Index: gnome-control-center-43.1/panels/network/cc-wifi-panel.ui
                    </object>
                  </child>
  
--
-               </object>
-             </child>
- 
-Index: gnome-control-center-43.1/tests/meson.build
-===================================================================
---- gnome-control-center-43.1.orig/tests/meson.build
-+++ gnome-control-center-43.1/tests/meson.build
+diff --git a/tests/meson.build b/tests/meson.build
+index 69667acb..5f6a932d 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
 @@ -1,8 +1,11 @@
  subdir('common')
  #subdir('datetime')

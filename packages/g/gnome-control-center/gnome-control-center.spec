@@ -35,8 +35,10 @@ URL:            https://apps.gnome.org/app/org.gnome.Settings
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
-# PATCH-NEED-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-fix-6f1567f23.patch glgo#GNOME/gnome-control-center/commit/8cb77b4d3, bsc#1210377 sckang@suse.com -- network/connection-editor: fix crash when removing a connection
+Patch2:         gnome-control-center-fix-6f1567f23.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -181,7 +183,8 @@ GNOME control center.
 
 %prep
 %setup -q
-#patch1 -p1
+%patch1 -p1
+%patch2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
