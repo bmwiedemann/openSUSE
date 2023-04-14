@@ -1,7 +1,7 @@
 #
 # spec file for package scitokens-cpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ want to delegate trust for an issuer for managing a storage allocation.
 %autosetup -n scitokens-cpp-%{version}
 
 %build
+export CFLAGS="%optflags -Wno-error=deprecated-declarations"
 %{cmake}
 %{cmake_build}
 
@@ -72,7 +73,6 @@ want to delegate trust for an issuer for managing a storage allocation.
 
 %post -n libSciTokens0 -p /sbin/ldconfig
 %postun -n libSciTokens0 -p /sbin/ldconfig
-
 
 %files -n libSciTokens0
 %license LICENSE

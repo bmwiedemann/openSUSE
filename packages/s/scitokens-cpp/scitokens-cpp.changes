@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 12 09:34:32 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- disable error on deprecated warnings of openssl
+
+-------------------------------------------------------------------
 Thu Dec 23 10:38:18 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - initial commit of libscitokens of version 0.6.3
