@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  8 17:35:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Change Supplements: Replace gtk3 with gtk3-schema, ensure the
+  supplements gets triggered.
+- Add (gtk4-schema and (flatpak or snapd)) Supplements:
+  Futureproof the supplements, as more and more of GNOME moves to
+  gtk4.
+
+-------------------------------------------------------------------
 Tue Dec  6 15:05:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.14.1:
