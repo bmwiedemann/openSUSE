@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 20:31:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add dee032d0a0ecd958c902b88302dc59703d703c7f.patch: ipc: add
+  LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM entry.
+
+-------------------------------------------------------------------
 Sun Feb 12 20:39:46 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to 1.8.1:

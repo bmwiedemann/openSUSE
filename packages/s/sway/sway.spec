@@ -26,6 +26,9 @@ URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
+# PATCH-FIX-UPSTREAM dee032d0a0ecd958c902b88302dc59703d703c7f.patch -- ipc: add LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM entry
+Patch0:         https://github.com/swaywm/sway/commit/dee032d0a0ecd958c902b88302dc59703d703c7f.patch
+
 BuildRequires:  gcc-c++
 #BuildRequires:  libxslt-tools
 BuildRequires:  libevdev-devel
