@@ -160,4 +160,12 @@
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075889</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>daba01baddb1bc52e91ac51bd5708336</srcmd5>
+    <version>1.11.0</version>
+    <time>1681470769</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1079140</requestid>
+  </revision>
 </revisionlist>
