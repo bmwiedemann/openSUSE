@@ -1,0 +1,10 @@
+--- pingus-0.7.6/src/util/pathname.hpp~	2011-12-24 15:46:47.000000000 -0600
++++ pingus-0.7.6/src/util/pathname.hpp	2023-02-22 11:27:31.569308609 -0600
+@@ -19,6 +19,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ /** Simple class to allow a distinction of paths that refer to the
+  *  filesystem and paths that refer to the datadir, it also hides

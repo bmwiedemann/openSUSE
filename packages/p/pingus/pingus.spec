@@ -1,7 +1,7 @@
 #
 # spec file for package pingus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Patch1:         %{name}-%{version}-Makefile.patch
 Patch2:         %{name}-%{version}-SConscript.patch
 # PATCH-FIX-UPSTREAM pingus-scons-on-py3.patch dimstar@opensuse.org -- Fix build with scons using python3 as interpreter
 Patch3:         pingus-scons-on-py3.patch
+# PATCH-FIX-OPENSUSE pingus-gcc13.patch munix9@googlemail.com -- Fix build with gcc 13
+Patch4:         pingus-gcc13.patch
 BuildRequires:  bluez-devel
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -87,6 +89,7 @@ the level editor and then click the play button.
 %patch1
 %patch2
 %patch3 -p1
+%patch4 -p1
 
 # Convert to unix line end
 dos2unix data/po/pl.po data/levels/incoming/*.pingus \
