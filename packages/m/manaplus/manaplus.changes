@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 21:55:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add add-missing-includes.patch: Add missing include cstdint.
+  Exposed by gcc 13.
+
+-------------------------------------------------------------------
 Tue Feb  7 16:59:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires SDL2 for openSUSE Leap: fix for building with

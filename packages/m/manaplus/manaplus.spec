@@ -26,6 +26,8 @@ URL:            https://manaplus.org/
 Source:         https://download.tuxfamily.org/manaplus/download/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM fix-include-time_h.patch -- Fix missing include for time.h when not using clang
 Patch0:         fix-include-time_h.patch
+# PATCH-FIX-UPSTREAM add-missing-includes.patch -- Add missing include cstdint
+Patch1:         add-missing-includes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dejavu-fonts
