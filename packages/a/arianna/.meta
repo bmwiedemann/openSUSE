@@ -1,0 +1,10 @@
+<package name="arianna" project="openSUSE:Factory">
+  <title>Ebook reader and library management app</title>
+  <description>An ebook reader and library management app supporting &quot;.epub&quot; files. Arianna
+discovers your books automatically, and sorts them by categories, genres and
+authors.
+
+</description>
+  <devel project="KDE:Extra" package="arianna"/>
+  <url>https://apps.kde.org/arianna/</url>
+</package>
