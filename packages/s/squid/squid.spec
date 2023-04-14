@@ -24,7 +24,7 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        5.7
+Version:        5.8
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
@@ -218,7 +218,6 @@ for i in errors/*; do
     install -m 644 $i/* %{buildroot}%{_datadir}/%{name}/$i
   fi
 done
-ln -sf %{_datadir}/%{name}/errors/en %{buildroot}%{squidconfdir}/errors
 
 # systemd
 install -D -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/%{name}.service
@@ -342,7 +341,6 @@ fi
 %endif
 %config(noreplace) %{squidconfdir}/cachemgr.conf
 %config(noreplace) %{squidconfdir}/errorpage.css
-%config(noreplace) %{squidconfdir}/errors
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/%{name}
 %else
