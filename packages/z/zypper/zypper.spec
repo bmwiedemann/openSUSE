@@ -1,7 +1,7 @@
 #
 # spec file for package zypper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2006-2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -26,15 +26,14 @@ BuildRequires:  boost-devel >= 1.33.1
 BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  gettext-devel >= 0.15
-BuildRequires:  libxml2-devel
 BuildRequires:  libzypp-devel >= 17.31.7
 BuildRequires:  readline-devel >= 5.1
+BuildRequires:  libxml2-devel
 Requires:       procps
 %if 0%{?suse_version}
-Requires:       libaugeas0 >= 1.10.0
+Requires:	libaugeas0 >= 1.10.0
 %requires_ge    libzypp
-Recommends:     logrotate
-Recommends:     zypper-log
+Recommends:     logrotate zypper-log
 %else
 Requires:       augeas >= 1.10.0
 %endif
@@ -44,20 +43,20 @@ BuildRequires:  rubygem(asciidoctor)
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
-License:        GPL-2.0-or-later
+License:        GPL-2.0+
 Group:          System/Packages
-Version:        1.14.59
+Version:        1.14.60
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
-URL:            https://github.com/openSUSE/zypper
+Url:            https://github.com/openSUSE/zypper
 Provides:       y2pmsh
 Obsoletes:      y2pmsh
 
-Provides:       zypper(auto-agree-with-product-licenses)
 Provides:       zypper(oldpackage)
-Provides:       zypper(purge-kernels)
-Provides:       zypper(updatestack-only)
+Provides:	zypper(updatestack-only)
+Provides:	zypper(auto-agree-with-product-licenses)
+Provides:	zypper(purge-kernels)
 
 %description
 Zypper is a command line tool for managing software. It can be used to add
@@ -76,9 +75,9 @@ Authors:
     Josef Reidinger <jreidinger@suse.cz>
 
 %package log
-Requires:       /bin/bash
-Requires:       /usr/bin/awk
-Requires:       /usr/bin/grep
+Requires:	/bin/bash
+Requires:	/usr/bin/grep
+Requires:	/usr/bin/awk
 BuildArch:      noarch
 Summary:        CLI for accessing the zypper logfile
 Group:          System/Packages
