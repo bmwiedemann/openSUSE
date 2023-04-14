@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 13 23:56:19 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-engine to version 0.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

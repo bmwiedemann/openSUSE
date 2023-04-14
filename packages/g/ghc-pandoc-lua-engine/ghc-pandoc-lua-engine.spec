@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Lua engine to power custom pandoc conversions
 License:        GPL-2.0-or-later
@@ -29,6 +29,8 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-SHA-devel
 BuildRequires:  ghc-SHA-prof
+BuildRequires:  ghc-aeson-devel
+BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
@@ -45,10 +47,6 @@ BuildRequires:  ghc-doctemplates-devel
 BuildRequires:  ghc-doctemplates-prof
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-exceptions-prof
-BuildRequires:  ghc-hslua-aeson-devel
-BuildRequires:  ghc-hslua-aeson-prof
-BuildRequires:  ghc-hslua-core-devel
-BuildRequires:  ghc-hslua-core-prof
 BuildRequires:  ghc-hslua-devel
 BuildRequires:  ghc-hslua-module-doclayout-devel
 BuildRequires:  ghc-hslua-module-doclayout-prof
@@ -63,6 +61,8 @@ BuildRequires:  ghc-hslua-module-version-prof
 BuildRequires:  ghc-hslua-module-zip-devel
 BuildRequires:  ghc-hslua-module-zip-prof
 BuildRequires:  ghc-hslua-prof
+BuildRequires:  ghc-hslua-repl-devel
+BuildRequires:  ghc-hslua-repl-prof
 BuildRequires:  ghc-lpeg-devel
 BuildRequires:  ghc-lpeg-prof
 BuildRequires:  ghc-mtl-devel
