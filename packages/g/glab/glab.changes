@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 13 17:43:20 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.28.0:
+  * chore: simpler installation method from binary if Go is available
+  * fix: Change platform generating code
+  * fix: purposely adding the "v" goreleaser strips out
+  * refactor: default check_update true on new install
+  * chore: modify MIT license and inspiration
+  * feat(incident): add `incident close` command
+  * refactor: move issue/close to issuable/close
+
+-------------------------------------------------------------------
 Thu Apr 06 03:28:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.27.1:
