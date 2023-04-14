@@ -1,7 +1,7 @@
 #
 # spec file for package libsolv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.23
+Version:        0.7.24
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
@@ -134,7 +134,6 @@ so-called satisfiability algorithm for resolving package
 dependencies.
 
 %endif
-
 %package devel
 Summary:        Development files for libsolv, a package solver
 Group:          Development/Libraries/C and C++
@@ -154,6 +153,7 @@ Group:          System/Management
 Conflicts:      satsolver-tools-obsolete
 Obsoletes:      satsolver-tools < 0.18
 Provides:       satsolver-tools = 0.18
+Requires:       findutils
 
 %description tools
 libsolv is a library for solving packages and reading repositories.
