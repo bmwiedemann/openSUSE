@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.1
+Version:        2.3.0.1
 Release:        0
 Summary:        Allow aeson data types to be used with Lua
 License:        MIT
@@ -59,6 +59,8 @@ BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
