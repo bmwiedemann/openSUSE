@@ -24,6 +24,8 @@ License:        LGPL-2.0-or-later
 Group:          Amusements/Games/Other
 URL:            http://www.openlierox.net/
 Source:         http://downloads.sourceforge.net/%{name}/OpenLieroX_%{version}.src.tar.bz2
+# PATCH-FIX-UPSTREAM openlierox-add-missing-include.patch -- Add missing include cstdint
+Patch:          openlierox-add-missing-include.patch
 BuildRequires:  SDL_image-devel
 BuildRequires:  SDL_mixer-devel
 BuildRequires:  cmake
@@ -52,7 +54,7 @@ shoot-em-up backed by an active gamers community. Dozens of levels and mods
 are available to provide endless gaming pleasure.
 
 %prep
-%autosetup -n OpenLieroX
+%autosetup -n OpenLieroX -p1
 
 %build
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}

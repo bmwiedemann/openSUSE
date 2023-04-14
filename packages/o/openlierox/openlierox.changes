@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 22:21:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add openlierox-add-missing-include.patch: Add missing include
+  cstdint. Exposed by gcc 13.
+
+-------------------------------------------------------------------
 Sat Jan 21 15:30:24 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for openSUSE Leap: use gcc11
