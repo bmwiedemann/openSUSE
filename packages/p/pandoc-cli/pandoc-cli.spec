@@ -58,6 +58,7 @@ convert between markup formats.
 %autosetup
 
 %build
+%define cabal_configure_options -f+lua -f+server
 %ghc_bin_build
 
 %install
