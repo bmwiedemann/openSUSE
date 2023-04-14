@@ -56,4 +56,12 @@
 </comment>
     <requestid>972981</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>221b2107b1475f8a656c29e9326ddcfb</srcmd5>
+    <version>3.0.4</version>
+    <time>1681479606</time>
+    <user>dimstar_suse</user>
+    <comment>- Snap package no longer includes share/doc directory. Thanks @LeoniePhiline</comment>
+    <requestid>1079435</requestid>
+  </revision>
 </revisionlist>
