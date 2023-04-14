@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  7 17:37:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20230407.
+  git-annex (10.20230407) upstream; urgency=medium
+
+    * Fix laziness bug introduced in last release that breaks use
+      of --unlock-present and --hide-missing adjusted branches.
+    * Support user.useConfigOnly git config.
+    * registerurl, unregisterurl: Added --remote option.
+    * registerurl: When an url is claimed by a special remote other than the
+      web, update location tracking for that special remote.
+      (This was the behavior before version 6.20181011)
+    * Sped up sqlite inserts 2x when built with persistent 2.14.5.0
+    * git-annex.cabal: Prevent building with unix-compat 0.7 which
+      removed System.PosixCompat.User.
+
+   -- Joey Hess <id@joeyh.name>  Fri, 07 Apr 2023 13:36:23 -0400
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:14 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
