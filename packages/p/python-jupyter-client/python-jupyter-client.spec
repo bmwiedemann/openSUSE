@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-jupyter-client%{psuffix}
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       jupyter-jupyter_client = %{version}
 Requires:       python-entrypoints
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pyzmq >= 23.0
@@ -48,8 +47,16 @@ Requires:       python-tornado >= 6.2
 Requires:       python-traitlets >= 5.3
 Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
 Requires:       (python-jupyter-core >= 5.1 or (python-jupyter-core >= 4.12 with python-jupyter-core < 5.0))
-Provides:       python-jupyter_client = %{version}
-Obsoletes:      python-jupyter_client < %{version}
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Provides:       python-jupyter_client = %{version}-%{release}
+Obsoletes:      python-jupyter_client < %{version}-%{release}
+Provides:       jupyter-jupyter-client = %{version}-%{release}
+Obsoletes:      jupyter-jupyter-client < %{version}-%{release}
+Provides:       jupyter-jupyter_client = %{version}-%{release}
+Obsoletes:      jupyter-jupyter_client < %{version}-%{release}
+Provides:       jupyter-jupyter-client-doc = %{version}-%{release}
+Obsoletes:      jupyter-jupyter-client-doc < %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 # gh#jupyter/jupyter_client#787
@@ -73,26 +80,6 @@ It also provides client and kernel management APIs for working with kernels.
 It also provides the jupyter kernelspec entrypoint for installing kernelspecs
 for use with Jupyter frontends.
 
-This package provides the python interface.
-
-%package     -n jupyter-jupyter-client
-Summary:        Jupyter protocol implementation and client libraries
-Group:          Development/Languages/Python
-Requires:       python3-jupyter-client = %{version}
-Provides:       jupyter-jupyter_client = %{version}
-Obsoletes:      jupyter-jupyter_client < %{version}
-Provides:       jupyter-jupyter-client-doc = %{version}
-Obsoletes:      jupyter-jupyter-client-doc < %{version}
-
-%description -n jupyter-jupyter-client
-This package contains the reference implementation of the Jupyter protocol.
-It also provides client and kernel management APIs for working with kernels.
-
-It also provides the jupyter kernelspec entrypoint for installing kernelspecs
-for use with Jupyter frontends.
-
-This package provides the jupyter components.
-
 %prep
 %autosetup -p1 -n jupyter_client-%{version}
 sed -i 's/--color=yes//' pyproject.toml
@@ -103,6 +90,9 @@ sed -i 's/--color=yes//' pyproject.toml
 %install
 %if !%{with test}
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/jupyter-kernel
+%python_clone -a %{buildroot}%{_bindir}/jupyter-kernelspec
+%python_clone -a %{buildroot}%{_bindir}/jupyter-run
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -113,18 +103,20 @@ donttest="(TestAsyncKernelClient and test_input_request)"
 %pytest --force-flaky --max-runs=3 --no-success-flaky-report -k "not ($donttest)"
 %endif
 
+%post
+%python_install_alternative jupyter-kernel jupyter-kernelspec jupyter-run
+
+%postun
+%python_uninstall_alternative jupyter-kernel
+
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/jupyter_client-%{version}*-info
 %{python_sitelib}/jupyter_client/
-
-%files -n jupyter-jupyter-client
-%license LICENSE
-%doc CONTRIBUTING.md README.md
-%{_bindir}/jupyter-kernel
-%{_bindir}/jupyter-kernelspec
-%{_bindir}/jupyter-run
+%python_alternative %{_bindir}/jupyter-kernel
+%python_alternative %{_bindir}/jupyter-kernelspec
+%python_alternative %{_bindir}/jupyter-run
 %endif
 
 %changelog

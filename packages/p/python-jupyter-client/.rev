@@ -316,4 +316,12 @@ Update to 5.3.4</comment>
 </comment>
     <requestid>1075692</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ece2fdc4233f1b12a2f1f1ed3c918868</srcmd5>
+    <version>8.2.0</version>
+    <time>1681470824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079328</requestid>
+  </revision>
 </revisionlist>

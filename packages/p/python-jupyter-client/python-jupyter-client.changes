@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 14 02:19:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- update to v8.2.0
+  * use c.f.Future to wait across threads #940 (@minrk)
+- Remove jupyter package, provide alternatives instead
+
+-------------------------------------------------------------------
 Thu Mar 23 07:51:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.1.0
