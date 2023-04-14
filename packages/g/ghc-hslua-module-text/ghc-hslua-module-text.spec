@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.3.1
+Version:        1.1.0.1
 Release:        0
 Summary:        Lua module for text
 License:        MIT
