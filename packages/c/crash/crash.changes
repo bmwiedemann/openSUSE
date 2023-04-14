@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 13 11:42:28 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- crash-EPPIC-extension-support-for-crash-8.x-gdb-10.x.patch: EPPIC
+  extension support for crash-8.x + gdb-10.x.
+
+-------------------------------------------------------------------
+Wed Apr 12 10:25:15 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to crash 8.0.2
+  - Update to gdb-10.2
+  - Support kernels at least up to 5.18
+  - Refresh
+    * crash-patch-gdb.patch
+    * crash-extensions-rule-for-defs.patch
+    * crash-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
+  - Remove upstreamed patches
+    * 0019-Add-kernel-version-dependent-check-for-getting-lengt.patch
+    * crash-missing-declarations.patch
+- Disable eppic extension, because it does not built for GDB 10.2.
+- Remove eppic patches
+  * eppic-remove-duplicate-symbols.patch
+  * eppic-support-arm64.patch
+  * eppic-switch-to-system-lib.patch
+- Clean up specfile after the discontinued SIAL extension.
+
+-------------------------------------------------------------------
 Fri Jan 20 00:17:52 UTC 2023 - David Mair <dmair@suse.com>
 
 - Added crash-trace-2021-02-08.tar.bz2 and modified project to

@@ -10,4 +10,4 @@ Index: b/extensions/Makefile
 +
  $(CONTRIB_SO): %.so: %.c defs.h
  	@if [ -f $*.mk ]; then \
- 		make -f $*.mk; \
+ 		$(MAKE) -f $*.mk; \
