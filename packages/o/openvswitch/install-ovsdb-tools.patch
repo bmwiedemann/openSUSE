@@ -1,7 +1,8 @@
-diff -Nur openvswitch-2.17.0/ovsdb/automake.mk new/ovsdb/automake.mk
---- openvswitch-2.17.0/ovsdb/automake.mk	2022-02-17 23:15:55.240680736 +0100
-+++ new/ovsdb/automake.mk	2022-02-27 20:21:59.358719903 +0100
-@@ -88,8 +88,9 @@
+diff --git a/ovsdb/automake.mk b/ovsdb/automake.mk
+index eba713bb6..f1c40d019 100644
+--- a/ovsdb/automake.mk
++++ b/ovsdb/automake.mk
+@@ -88,8 +88,9 @@ CLEANFILES += ovsdb/ovsdb-server.1
  MAN_ROOTS += ovsdb/ovsdb-server.1.in
  
  # ovsdb-idlc
@@ -12,7 +13,7 @@ diff -Nur openvswitch-2.17.0/ovsdb/automake.mk new/ovsdb/automake.mk
  MAN_ROOTS += ovsdb/ovsdb-idlc.1
  CLEANFILES += ovsdb/ovsdb-idlc
  SUFFIXES += .ovsidl .ovsschema
-@@ -112,14 +113,18 @@
+@@ -112,14 +113,18 @@ CLEANFILES += $(OVSIDL_BUILT)
  # at least for now.
  $(OVSIDL_BUILT): ovsdb/ovsdb-idlc.in python/ovs/dirs.py
  

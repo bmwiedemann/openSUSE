@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Apr  5 21:14:59 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Update OVS version to v3.1.0 and OVN version to v23.03.0
+   Some of the features are, 
+   - ovs-vswitchd now detects changes in CPU affinity and adjusts the number
+     of handler and revalidator threads if necessary.
+   - AF_XDP:
+     * Added support for building with libxdp and libbpf >= 0.7.
+     * Support for AF_XDP is now enabled by default if all dependencies are
+       available at the build time.  Use --disable-afxdp to disable.
+       Use --enable-afxdp to fail the build if dependencies are not present.
+   - ovs-appctl:
+     * "ovs-appctl ofproto/trace" command can now display port names with the
+       "--names" option.
+   - OVSDB-IDL:
+     * Add the support to specify the persistent uuid for row insert in both
+       C and Python IDLs.
+   - Windows:
+     * Conntrack IPv6 fragment support.
+   - DPDK:
+     * Add support for DPDK 22.11.1.
+   - For the QoS max-rate and STP/RSTP path-cost configuration OVS now assumes
+     10 Gbps link speed by default in case the actual link speed cannot be
+     determined.  Previously it was 10 Mbps.  Values can still be overridden
+     by specifying 'max-rate' or '[r]stp-path-cost' accordingly.
+   - OpenFlow:
+     * New OpenFlow extension NXT_CT_FLUSH to flush connections matching
+       the specified fields.
+   - ovs-ctl:
+     * New option '--dump-hugepages' to include hugepages in core dumps. This
+       can assist with postmortem analysis involving DPDK, but may also produce
+       significantly larger core dump files.
+   - ovs-dpctl and 'ovs-appctl dpctl/' commands:
+     * 'flush-conntrack' is now capable of handling partial 5-tuple,
+        with additional optional parameter to specify the reply direction.
+   - ovs-ofctl:
+     * New command 'flush-conntrack' that accepts zone and 5-tuple (or partial
+       5-tuple) for both directions.
+   - Support for travis-ci.org based continuous integration builds has been
+     dropped.
+   - Userspace datapath:
+     * Add '-secs' argument to appctl 'dpif-netdev/pmd-rxq-show' to show
+       the pmd usage of an Rx queue over a configurable time period.
+     * Add new experimental PMD load based sleeping feature. PMD threads can
+       request to sleep up to a user configured 'pmd-maxsleep' value under
+       low load conditions.
+   -For more details, check 
+      https://github.com/openvswitch/ovs/blob/v3.1.0/NEWS
+   -Includes secrity fix for CVE-2022-4338 (bsc#1206580) and CVE-2022-4337 (bsc#1206581)
+   - Removed patches,
+     * 0001-Replace-deprecated-var-run-with-run.patch
+     * 0001-openvswitch-merge-compiler.h-files-into-one-file.patch
+     * openvswitch-CVE-2021-36980.patch
+     * 0002-build-Seperated-common-used-headers.patch
+     * a77ad9693c8b49055389559187fe74eddb619746.patch
+     * 0001-m4-Test-avx512-for-x86-only.patch
+     * openvswitch-2.17.2-Fix-tests-with-GNU-grep-3.8.patch
+   - Renamed and rebased patches,
+     * 0001-Don-t-change-permissions-of-dev-hugepages.patch
+     * 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
+     * 0001-Run-ovn-as-openvswitch-openvswitch.patch
+     * 0001-Use-strongswan-for-openvswitch-ipsec-service.patch
+     * 0001-Run-openvswitch-as-openvswitch-openvswitch.patch
+   - Added ovsb tool install patch, 
+     * install-ovsdb-tools.patch 
+
+-------------------------------------------------------------------
 Thu Sep 29 11:58:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add a77ad9693c8b49055389559187fe74eddb619746.patch to avoid

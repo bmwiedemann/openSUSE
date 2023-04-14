@@ -1,0 +1,49 @@
+diff --git a/rhel/etc_logrotate.d_ovn b/rhel/etc_logrotate.d_ovn
+index a351ec303..4b26333fc 100644
+--- a/rhel/etc_logrotate.d_ovn
++++ b/rhel/etc_logrotate.d_ovn
+@@ -6,7 +6,7 @@
+ # without warranty of any kind.
+ 
+ /var/log/ovn/*.log {
+-    su root root
++    su openvswitch openvswitch
+     daily
+     compress
+     sharedscripts
+diff --git a/rhel/usr_lib_systemd_system_ovn-controller-vtep.service b/rhel/usr_lib_systemd_system_ovn-controller-vtep.service
+index c6601cb46..48f6e3992 100644
+--- a/rhel/usr_lib_systemd_system_ovn-controller-vtep.service
++++ b/rhel/usr_lib_systemd_system_ovn-controller-vtep.service
+@@ -35,6 +35,7 @@ After=openvswitch.service
+ [Service]
+ Type=simple
+ Restart=on-failure
++Environment=OVN_USER_ID=openvswitch:openvswitch
+ Environment=OVS_RUNDIR=%t/openvswitch
+ Environment=OVN_RUNDIR=%t/ovn
+ Environment=OVN_DB=unix:%t/ovn/ovnsb_db.sock
+diff --git a/rhel/usr_lib_systemd_system_ovn-controller.service b/rhel/usr_lib_systemd_system_ovn-controller.service
+index 15d0ac853..c602760f1 100644
+--- a/rhel/usr_lib_systemd_system_ovn-controller.service
++++ b/rhel/usr_lib_systemd_system_ovn-controller.service
+@@ -23,6 +23,7 @@ After=openvswitch.service
+ Type=forking
+ PIDFile=/var/run/ovn/ovn-controller.pid
+ Restart=on-failure
++Environment=OVN_USER_ID=openvswitch:openvswitch
+ Environment=OVN_RUNDIR=%t/ovn OVS_RUNDIR=%t/openvswitch
+ EnvironmentFile=-/etc/sysconfig/ovn
+ EnvironmentFile=-/etc/sysconfig/ovn-controller
+diff --git a/rhel/usr_lib_systemd_system_ovn-northd.service b/rhel/usr_lib_systemd_system_ovn-northd.service
+index 6c4c6621c..d74196a49 100644
+--- a/rhel/usr_lib_systemd_system_ovn-northd.service
++++ b/rhel/usr_lib_systemd_system_ovn-northd.service
+@@ -20,6 +20,7 @@ After=syslog.target
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
++Environment=OVN_USER_ID=openvswitch:openvswitch
+ Environment=OVN_RUNDIR=%t/ovn OVN_DBDIR=/var/lib/ovn
+ EnvironmentFile=-/etc/sysconfig/ovn
+ EnvironmentFile=-/etc/sysconfig/ovn-northd

@@ -6,12 +6,11 @@ Subject: [PATCH 1/2] Don't change permissions of /dev/hugepages
 For SLES/openSUSE, don't change permissions of /dev/hugepages as that is
 a system path. Sysadmin shoudl mount hugepages on a path and permission
 of his choosing if OVS either manually or via hugeadm.
----
- rhel/usr_lib_systemd_system_ovs-vswitchd.service.in | 4 ----
- 1 file changed, 4 deletions(-)
+
+Updated 2023-02-26 for version 3.1.0
 
 diff --git a/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in b/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in
-index ff43dae96..08355d950 100644
+index 6d021618b..71c49dc59 100644
 --- a/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in
 +++ b/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in
 @@ -16,10 +16,6 @@ EnvironmentFile=/etc/openvswitch/default.conf
@@ -25,6 +24,3 @@ index ff43dae96..08355d950 100644
  ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
            --no-ovsdb-server --no-monitor --system-id=random \
            ${OVS_USER_OPT} \
--- 
-2.16.4
-
