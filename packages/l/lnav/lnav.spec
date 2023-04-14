@@ -2,7 +2,7 @@
 #
 # spec file for package lnav
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,8 @@ URL:            https://lnav.org
 #Git-Clone:     https://github.com/tstack/lnav.git
 Source:         https://github.com/tstack/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        lnav.desktop
+# PATCH-FIX-UPSTREAM e25d3e3c69fcf57bbaec2333846b9a43c4d1fc90.patch -- Fix build with GCC 13 (add missing <cstdint> include)
+Patch:          https://github.com/tstack/lnav/commit/e25d3e3c69fcf57bbaec2333846b9a43c4d1fc90.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libcurl-devel
