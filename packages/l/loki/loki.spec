@@ -1,7 +1,7 @@
 #
 # spec file for package loki
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,11 @@
 
 
 %global loki_datadir /var/lib/loki
+%global loki_logdir /var/log/loki
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        2.6.1+git.1658128747.6bd05c9a4
+Version:        2.8.0+git.1680557182.90888a0c
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -37,7 +38,7 @@ Patch1:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.20
 Requires:       logcli = %{version}
 Requires:       group(loki)
 Requires:       user(loki)
@@ -109,7 +110,7 @@ install -Dm755 loki %{buildroot}%{_bindir}
 install -Dm755 promtail %{buildroot}%{_bindir}
 install -Dm755 logcli %{buildroot}%{_bindir}
 
-install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir}
+install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir} %{buildroot}%{loki_logdir}
 
 %pre
 %service_add_pre loki.service
@@ -147,6 +148,7 @@ install -D -d -m 0750 %{buildroot}%{promtail_datadir} %{buildroot}%{loki_datadir
 %config(noreplace) %attr(-,root,loki) %{_sysconfdir}/loki/loki.yaml
 %{_sbindir}/rcloki
 %dir %attr(-,loki,loki) %{loki_datadir}/
+%dir %attr(-,loki,loki) %{loki_logdir}/
 
 %files -n promtail
 %{_unitdir}/promtail.service
