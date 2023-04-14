@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 12 16:35:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.6.4:
+  * config: return GIT_ENOTFOUND for missing programdata
+- move experimental cli into libgit2-tools as intended
+
+-------------------------------------------------------------------
 Tue Mar 21 14:27:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.6.3:
