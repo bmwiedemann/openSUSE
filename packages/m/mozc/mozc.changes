@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 14 16:19:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add add-missing-include.patch: Add missing #include <cstdint>,
+  fix build with gcc13.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu May  5 07:28:39 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp> - 2.28.4715.102
 
 - Upstream update to 2.28.4715.102

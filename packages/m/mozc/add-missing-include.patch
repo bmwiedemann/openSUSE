@@ -1,0 +1,12 @@
+Index: mozc-2.28.4715.102/src/third_party/abseil-cpp/absl/strings/internal/str_format/extension.h
+===================================================================
+--- mozc-2.28.4715.102.orig/src/third_party/abseil-cpp/absl/strings/internal/str_format/extension.h
++++ mozc-2.28.4715.102/src/third_party/abseil-cpp/absl/strings/internal/str_format/extension.h
+@@ -26,6 +26,7 @@
+ #include "absl/base/port.h"
+ #include "absl/meta/type_traits.h"
+ #include "absl/strings/internal/str_format/output.h"
++#include <cstdint>
+ #include "absl/strings/string_view.h"
+ 
+ namespace absl {
