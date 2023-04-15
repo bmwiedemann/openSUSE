@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.68
+Version:        0.3.69
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -62,6 +62,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch0:         reduce-meson-dependency.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -363,7 +364,6 @@ export CXX=g++-9
     -Dffmpeg=disabled \
     -Dsystemd=enabled \
     -Dsystemd-user-unit-dir=%{_userunitdir} \
-    -Dgstreamer-device-provider=disabled \
     -Droc=disabled \
 %if %{with_vulkan}
     -Dvulkan=enabled \

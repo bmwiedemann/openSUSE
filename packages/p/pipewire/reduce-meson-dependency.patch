@@ -1,0 +1,57 @@
+Index: pipewire-0.3.69/meson.build
+===================================================================
+--- pipewire-0.3.69.orig/meson.build
++++ pipewire-0.3.69/meson.build
+@@ -1,7 +1,7 @@
+ project('pipewire', ['c' ],
+   version : '0.3.69',
+   license : [ 'MIT', 'LGPL-2.1-or-later', 'GPL-2.0-only' ],
+-  meson_version : '>= 0.61.1',
++  meson_version : '>= 0.59.4',
+   default_options : [ 'warning_level=3',
+                       'c_std=gnu11',
+                       'cpp_std=c++17',
+Index: pipewire-0.3.69/src/daemon/meson.build
+===================================================================
+--- pipewire-0.3.69.orig/src/daemon/meson.build
++++ pipewire-0.3.69/src/daemon/meson.build
+@@ -116,11 +116,12 @@ foreach alias : ['pipewire-pulse', 'pipe
+     input: pipewire_exec,
+     output: alias,
+   )
+-  install_symlink(
+-    alias,
+-    pointing_to: pipewire_exec.name(),
+-    install_dir: pipewire_bindir,
+-  )
++  #install_symlink(
++    #  alias,
++    #  pointing_to: pipewire_exec.name(),
++    #  install_dir: pipewire_bindir,
++    #)
++  meson.add_install_script('sh', '-c', 'ln -s ' + pipewire_exec.name() + ' $DESTDIR/' + pipewire_bindir + '/' + alias)
+ endforeach
+ 
+ custom_target('pipewire-uninstalled',
+Index: pipewire-0.3.69/src/tools/meson.build
+===================================================================
+--- pipewire-0.3.69.orig/src/tools/meson.build
++++ pipewire-0.3.69/src/tools/meson.build
+@@ -73,11 +73,12 @@ if get_option('pw-cat').allowed() and sn
+       input: pw_cat,
+       output: alias,
+     )
+-    install_symlink(
+-      alias,
+-      pointing_to: pw_cat.name(),
+-      install_dir: pipewire_bindir,
+-    )
++    #install_symlink(
++      #  alias,
++      #  pointing_to: pw_cat.name(),
++      #  install_dir: pipewire_bindir,
++      #)
++    meson.add_install_script('sh', '-c', 'ln -s ' + pw_cat.name() + ' $DESTDIR/' + pipewire_bindir + '/' + alias)
+   endforeach
+ elif not sndfile_dep.found() and get_option('pw-cat').enabled()
+   error('pw-cat is enabled but required dependency `sndfile` was not found.')

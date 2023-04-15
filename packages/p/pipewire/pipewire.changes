@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Apr 14 08:58:53 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to build pipewire in Leap 15.4:
+  * reduce-meson-dependency.patch
+
+-------------------------------------------------------------------
+Thu Apr 13 19:23:05 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.69:
+  * Highlights:
+    - Reverted the UCM changes, they seem to cause regressions
+      causing audio to be muted in some cases.
+    - Fix a regression in the scheduler where a driver node might
+      not be marked as runnable in some cases, like when
+      echo-cancel is used.
+    - Handle links from the driver to itself. This makes the midi
+      bridge work again.
+    - ALSA rate matching for sources was fixed. It would previously
+      wait too long for rate matching and then cause drift. This
+      should reduce crackling and stuttering whan capturing in
+      low latency.
+    - Fix the GStreamer clock to make cheese video recording work
+      again.
+    - More fixes and improvements.
+  * PipeWire:
+    - Fix a regression in the scheduler where a driver node might
+      not be marked as runnable in some cases, like when
+      echo-cancel is used.
+    - Handle links from the driver to itself. This makes the midi
+      bridge work again.
+    - Some man pages were improved.
+    - Fix a potential crash when thread-loop is destroyed before
+      the loop.
+  * Modules:
+    - A new raw biquad filter was added to filter-chain. You can
+      manually set the 6 parameters and you can use this to create
+      custom filters per sample rate.
+    - The echo-canceller now supports different channels for the
+      capture and playback streams.
+  * SPA:
+    - A SB Audigy specific profile set was added to make better use
+      of the controls.
+    - More ALSA IRQ based scheduling improvements.
+    - ALSA rate matching for sources was fixed. It would previously
+      wait too long for rate matching and then cause drift. This
+      should reduce crackling and stuttering whan capturing in
+      low latency.
+    - The echo-cancel plugin API has a new method to make it
+      possible to have different channels for capture, source and
+      playback.
+    - Reverted the UCM changes, they seem to cause regressions
+      causing audio to be muted in some cases.
+  * Bluetooth:
+    - Many more BAP fixes and improvements. Devices are now
+      created as a set and can be combined into one device by the
+      session manager.
+  * GStreamer:
+    - Fix the GStreamer clock to make cheese video recording work
+      again.
+- Enable gstreamer-device-provider (rh#2183691).
+
+-------------------------------------------------------------------
 Thu Apr  6 14:12:51 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.68:
