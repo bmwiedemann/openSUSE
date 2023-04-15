@@ -342,4 +342,12 @@
     <comment>- Don't build with shared on riscv64 for &lt; go1.18 (forwarded request 999102 from jfkw)</comment>
     <requestid>999106</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>90d197a5c484007d94247308b069fd26</srcmd5>
+    <version>1.17.13</version>
+    <time>1681590771</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc13 compiler for Tumbleweed. (forwarded request 1079520 from jfkw)</comment>
+    <requestid>1079521</requestid>
+  </revision>
 </revisionlist>

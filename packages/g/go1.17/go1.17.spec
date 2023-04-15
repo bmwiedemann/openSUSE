@@ -1,7 +1,7 @@
 #
 # spec file for package go1.17
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 # Used to bootstrap go toolchain using specific version of gcc-go
 %if 0%{?suse_version} > 1500
 # openSUSE Tumbleweed
-%define gcc_go_version 12
+%define gcc_go_version 13
 %else
 %define gcc_go_version 11
 %endif
