@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:01:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + Highlighted bugfixes:
+    - avdec_h264: fix decoder deadlocks with FFmpeg 6.0
+    - rtspsrc:
+      . fix regression with URI protocols in OPTIONS requests for
+        RTSP over TLD
+      . improved control url handling compatibility for broken
+        servers
+    - decklink: fix 10 bit RGB (r210) format auto detection for
+      capture and fix playout if video caps are configured before
+      audio caps
+    - d3d11videosink: Fix tearing in case of fullscreen mode
+    - playbin: fix deadlock when stopping stream with subtitles
+      visible (even more)
+    - typefinding: fix regression not detecting
+      application/dash+xml in some corner cases
+    - osxvideosink: fix broken aspect ratio and frame drawing
+      region
+    - decodebin3, parsebin: Improve elementary stream handling when
+      decoders are not present and fix hang when removing a failing
+      stream
+    - urisourcebin: Propagate sticky events from parsebin, so that
+      the `STREAM_START` event with the `GstStream` info is always
+      available when pads get exposed
+    - v4l2: Add support for YVU420M format; mark JPEG content as
+      parsed
+    - h264decoder, h265decoder: DPB bumping process and latency
+      reporting fixes
+    - Opus: Fix reading of extended channel config in MPEG-TS and
+      fix missing sample rate when remuxing from RTP to Matroska
+    - zxing: add support for building against zxing-c++ 2.0
+    - cerbero: Fix packaging of Rust plugins on Android; fix modern
+      Gentoo distro detection
+    - various bug fixes, memory leak fixes, and other stability and
+      reliability improvements
+  + Gstreamer:
+    - datetime: Return G_MAXFLOAT instead of G_MAXDOUBLE for no
+      timezone offset
+    - inputselector: Wake up streaming thread before
+      PLAYING_TO_PAUSED transition
+    - tools: fix potential crash when passing command-line options
+      on Windows
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Mar  9 17:03:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.1:
