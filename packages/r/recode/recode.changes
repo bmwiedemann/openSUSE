@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 13 12:17:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.14:
+  * No user-visible changes; minor clean-ups as part of the
+    Debian packaging process.
+  * switch to setuptools
+
+-------------------------------------------------------------------
 Mon Jan 30 10:36:30 UTC 2023 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - update to 3.7.13:
