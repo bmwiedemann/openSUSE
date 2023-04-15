@@ -17,7 +17,7 @@
 
 
 Name:           openhantek
-Version:        3.3.2.1
+Version:        3.3.2.2
 Release:        0
 Summary:        Software for Hantek DSO6022 USB digital signal oscilloscopes
 License:        GPL-3.0-or-later
