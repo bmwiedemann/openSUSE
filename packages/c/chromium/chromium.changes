@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 15 10:49:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 112.0.5615.121:
+  * CVE-2023-2033: Type Confusion in V8 (boo#1210478)
+
+-------------------------------------------------------------------
 Fri Apr  7 07:57:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Revert a breaking change with chromium-112-feed_protos.patch
