@@ -51,6 +51,7 @@ Source11:       README.FIPS
 Source12:       cavs_driver-ssh.pl
 Source13:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc#/openssh.keyring
 Source14:       sysusers-sshd.conf
+Source15:       sshd-sle.pamd
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 Patch3:         openssh-7.7p1-enable_PAM_by_default.patch
 Patch4:         openssh-7.7p1-eal3.patch
@@ -308,8 +309,9 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
 install -d -m 755 %{buildroot}%{_pam_vendordir}
 install -m 644 %{SOURCE2} %{buildroot}%{_pam_vendordir}/sshd
 %else
+# SLE has no distconfdir, so use sle PAM config
 install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
-install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/sshd
+install -m 644 %{SOURCE15} %{buildroot}%{_sysconfdir}/pam.d/sshd
 %endif
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/sshd
 install -d -m 755 %{buildroot}%{_sysconfdir}/ssh/ssh_config.d

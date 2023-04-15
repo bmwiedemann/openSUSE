@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 27 08:39:38 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rename sshd.pamd to sshd-sle.pamd and fix order of pam_keyinit
+- Add new sshd.pamd including postlogin-* config files
+
+-------------------------------------------------------------------
 Wed Feb 15 10:35:43 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove BuildRequires for libtirpc, we don't use it
