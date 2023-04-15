@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/graeme-hill/crossguid
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         include_missing_cstdint.patch
 BuildRequires:  cmake >= 3.8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(uuid)
@@ -67,8 +68,7 @@ test -x "$(type -p g++-9)" && export CXX="$_"
 %install
 %cmake_install
 
-%post   -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files -n lib%{name}%{sover}
 %license LICENSE

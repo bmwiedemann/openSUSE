@@ -16,4 +16,12 @@
 - drop crossguid.patch: included upstream</comment>
     <requestid>997612</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fcba492e010eb213b0a9cf7468d5f602</srcmd5>
+    <version>0.2.2.20190529T083634.ca1bf4b</version>
+    <time>1681590871</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1079659</requestid>
+  </revision>
 </revisionlist>

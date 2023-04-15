@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  8 19:04:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add include_missing_cstdint.patch, taken from upstream pull req.
+  Fixes build with new gcc 13.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Wed Aug 17 20:20:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to ca1bf4b810e2d188d04cb6286f957008ee1b7681 
