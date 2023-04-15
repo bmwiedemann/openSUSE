@@ -79,4 +79,14 @@
     <comment></comment>
     <requestid>1070740</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>37917e8812302cdc58415c77a5746440</srcmd5>
+    <version>0.13.1</version>
+    <time>1681590864</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1079621 from jlkDE
+
+Update to version 0.13.1</comment>
+    <requestid>1079624</requestid>
+  </revision>
 </revisionlist>

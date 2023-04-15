@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 15 15:04:26 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.13.1
+Maintenance
+  * Disable ncspot default features for xtask to simplify build
+  * Statusbar: Update nerdfont glyphs
+  * Split up README
+  * Add 'browse' to 'library_tabs' docs
+  * Rewrite MPRIS implementation using zbus
+  Features
+  * Add vim-like page scrolling
+  * Emulate double click to play items
+
+-------------------------------------------------------------------
 Fri Mar 10 14:20:33 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
 
 - Remove check stage via cargo test

@@ -18,7 +18,7 @@
 
 
 Name:           ncspot
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Ncurses Spotify client
 License:        BSD-2-Clause
