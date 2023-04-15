@@ -1,5 +1,5 @@
 #
-# spec file for package octave-forge-statistics
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 %define octpkg  statistics
 Name:           octave-forge-%{octpkg}
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Additional statistics functions for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain

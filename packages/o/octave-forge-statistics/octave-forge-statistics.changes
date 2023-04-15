@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 10 04:54:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.4:
+  * New functions:
+    - bvtcdf
+    - correlation_test (new functionality, replacing old cor_test)
+    - icdf (wrapper for all available *inv distribution functions)
+    - fishertest (fully Matlab compatible)
+    - procrustes (fully Matlab compatible)
+    - ztest2 (new functionality, replacing old prop_test_2)
+  * Improvements:
+    - cdf: updated wrapper for all available *cdf distribution
+      functions
+    - dcov: handles missing values and multivariate samples
+    - geomean: fixed MATLAB compatibility
+    - harmmean: fixed MATLAB compatibility
+    - mean: fixed MATLAB compatibility
+    - median: fixed MATLAB compatibility
+    - mvtcdf: improved speed, fixed Matlab compatibility
+    - pdf: updated wrapper for all available *pdf distribution
+      functions
+    - random: updated wrapper for all available *rnd distribution
+      functions
+    - regression_ttest: new functionality
+    - std: fixed MATLAB compatibility
+    - var: fixed MATLAB compatibility
+  * Removed:
+    - cor_test (replaced by correlation_test)
+    - prop_test_2 (replaced by ztest2)
+
+-------------------------------------------------------------------
 Sun Feb 12 17:19:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.5.3:
