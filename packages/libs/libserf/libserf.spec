@@ -1,7 +1,7 @@
 #
 # spec file for package libserf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,18 +40,15 @@ Patch0:         libserf-python3.patch
 Patch1:         libserf-python3-2.patch
 # PATCH-FIX-OPENSUSE: avoid removed macros
 Patch2:         openssl3.patch
-BuildRequires:  gcc
-BuildRequires:  glibc-devel
-BuildRequires:  libapr-util1-devel >= %{minimum_apr_version}
-BuildRequires:  libapr1-devel >= %{minimum_apr_version}
-BuildRequires:  libexpat-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scons >= 2.3
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(apr-1) >= %{minimum_apr_version}
+BuildRequires:  pkgconfig(apr-util-1) >= %{minimum_apr_version}
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(zlib)
 %if %{with gssapi}
-BuildRequires:  krb5-devel
+BuildRequires:  pkgconfig(krb5-gssapi)
 %endif
 
 %description
@@ -73,16 +70,7 @@ kept to a minimum to provide high performance operation.
 %package -n libserf-devel
 Summary:        High-Performance Asynchronous HTTP Client Library
 Group:          Development/Libraries/C and C++
-Requires:       libapr-util1-devel >= %{minimum_apr_version}
-Requires:       libapr1-devel >= %{minimum_apr_version}
-Requires:       libexpat-devel
-Requires:       libopenssl-devel
 Requires:       libserf-%{major}-%{major} = %{version}
-Requires:       openldap2-devel
-Requires:       zlib-devel
-%if %{with gssapi}
-Requires:       krb5-devel
-%endif
 
 %description -n libserf-devel
 The serf library is a C-based HTTP client library built upon the Apache
@@ -101,7 +89,7 @@ scons \
 	OPENSSL=%{_prefix} \
 	ZLIB=%{_prefix} \
 %if %{with gssapi}
-	GSSAPI=$(krb5-config --prefix) \
+	GSSAPI=$(which krb5-config) \
 %endif
 	DEBUG=yes \
 	CFLAGS="%{optflags}" \
@@ -123,6 +111,7 @@ rm -f "%{buildroot}%{_libdir}"/lib*.a
 %{_libdir}/libserf-%{major}.so.%{SHLIBVER}
 
 %files -n libserf-devel
+%license LICENSE
 %{_includedir}/serf-%{major}
 %{_libdir}/libserf-%{major}.so
 %{_libdir}/pkgconfig/serf-%{major}.pc
