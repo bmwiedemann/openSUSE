@@ -1,0 +1,15 @@
+<package name="backupninja" project="openSUSE:Factory">
+  <title>Lightweight, extensible meta-backup system</title>
+  <description>Backupninja allows you to coordinate system backup by dropping a few simple configuration files into /etc/backup.d/. Most programs you might use for making backups don't have their own configuration file format. Backupninja provides a centralized way to configure and coordinate many different backup utilities.
+
+The key features of backupninja are:
+
+- easy to read ini style configuration files
+- you can drop in scripts to handle new types of backups
+- backup actions can be scheduled
+- you can choose when status report emails are mailed to you (always, on warning, on error, never)
+- console-based wizard (ninjahelper) makes it easy to create backup action configuration files
+- passwords are never sent via the command line to helper programs</description>
+  <devel project="Archiving:Backup" package="backupninja"/>
+  <url>https://0xacab.org/liberate/backupninja</url>
+</package>
