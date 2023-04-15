@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar  1 19:11:17 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix reproducible build (remove files only needed for packaging)
+
+-------------------------------------------------------------------
 Mon Jan 23 22:09:31 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 2.8.0

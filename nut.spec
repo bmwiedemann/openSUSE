@@ -383,7 +383,7 @@ cp -a docs/*.pdf %{buildroot}%{_docdir}/%{name}/
 
 # Not needed for packaged contents:
 rm -f %{buildroot}%{_docdir}/%{name}/packager-guide.*
-rm -f %{buildroot}%{_docdir}/%{name}/cables/Makefile.am
+rm -f %{buildroot}%{_docdir}/%{name}/cables/Makefile*
 
 # Create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
@@ -511,9 +511,9 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_mandir}/man3/*%{ext_man}
 
 %files doc-asciidoc
-%doc %dir %{_docdir}/%{name}
+%doc %dir %{_docdir}/%{name}{,/cables}
 %{_docdir}/%{name}/*.txt
-%{_docdir}/%{name}/cables
+%{_docdir}/%{name}/cables/*.txt
 
 %files devel-doc-html
 %{_docdir}/%{name}/developer-guide.html
