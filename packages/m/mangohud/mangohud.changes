@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 14 18:26:34 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0001-fix-gcc13-build.patch to fix build with openSUSE's gcc13
+- Now package mangohudctl, now package mangoapp as a sub-package
+- Drop support for openSUSE Leap 15.4 as it cannot
+  provide any compiler that works with mangohud >= 0.6.9
+- Update to version 0.6.9:
+  * Add missing division for fallback AMD CPU power calculation.
+  * workflow: arch release package
+  * gpu: amdgpuinfo: ifdef linux for windows build
+  * bump minhook wrap rev
+  * workflow: mingw: fetch git
+  * use minhook subproject instead of module
+  * workflow: mingw build test
+
+-------------------------------------------------------------------
 Tue Apr  4 17:27:46 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Disabled compilation with system libraries vulkan-headers
