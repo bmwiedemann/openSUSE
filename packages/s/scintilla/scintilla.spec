@@ -17,8 +17,8 @@
 
 
 %define so_ver 5.3
-%define _ver %{so_ver}.3
-%define tar_ver 533
+%define _ver %{so_ver}.4
+%define tar_ver 534
 %define libname libscintilla5
 Name:           scintilla
 Version:        %{_ver}
@@ -28,6 +28,8 @@ License:        MIT
 URL:            http://www.scintilla.org
 Source:         http://sourceforge.net/projects/scintilla/files/scintilla/%{version}/%{name}%{tar_ver}.tgz
 Patch0:         %{name}-shared.patch
+Patch1:         %{name}-add-missing-includes.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

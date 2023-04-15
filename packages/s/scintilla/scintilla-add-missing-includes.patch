@@ -1,0 +1,24 @@
+Index: scintilla/include/ScintillaCall.h
+===================================================================
+--- scintilla.orig/include/ScintillaCall.h
++++ scintilla/include/ScintillaCall.h
+@@ -10,6 +10,7 @@
+ 
+ #ifndef SCINTILLACALL_H
+ #define SCINTILLACALL_H
++#include <cstdint>
+ 
+ namespace Scintilla {
+ 
+Index: scintilla/include/ScintillaTypes.h
+===================================================================
+--- scintilla.orig/include/ScintillaTypes.h
++++ scintilla/include/ScintillaTypes.h
+@@ -10,6 +10,7 @@
+ 
+ #ifndef SCINTILLATYPES_H
+ #define SCINTILLATYPES_H
++#include <cstdint>
+ 
+ namespace Scintilla {
+ 

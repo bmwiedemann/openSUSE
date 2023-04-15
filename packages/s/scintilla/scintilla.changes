@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Apr  2 14:15:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.3.4:
+  * Add multithreaded wrap to significantly improve performance of
+    wrapping large files.
+  * More typesafe bindings of *Full APIs in ScintillaCall.
+  * Fix overlapping of text with line end wrap marker.
+  * Fix clipping of line end wrap symbol for
+    SC_WRAPVISUALFLAGLOC_END_BY_TEXT.
+  * Where a multi-byte character contains multiple styles, display
+    each byte as a representation. This makes it easier to see and
+    fix lexers that change styles mid-character, commonly because
+    they use fixed size buffers.
+  * Fix a potential crash with autocompletion list fill-ups where a
+    SCN_CHARADDED handler retriggered an autocompletion list, but
+    with no items that match the typed character.
+- Rebase patch with quilt.
+- Bump sover following upstream changes.
+- Add scintilla-add-missing-includes.patch: Needed for scite when
+  building with system scintilla.
+
+-------------------------------------------------------------------
 Tue Feb 14 12:21:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.3:
