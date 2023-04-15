@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Apr 10 20:18:49 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 16.9:
+  * [Client] Add random skin button
+  * [Client] Select language on first start based on user locale
+  * [Client] Save screenshot in separate thread to avoid lags
+  * [Editor] Drag layers to reorder
+  * [Editor] Sort by name and modified time in file dialog
+  * [Editor] Show popups in editor when loading/saving file fails
+  * [Client] Improved MOTD rendering
+  * [Client] Don't add duplicate consecutive commands to
+    console history
+  * [Client] Support scrolling when mouse at edge
+  * [Client] Support holding shift for slow mouse with color pickers
+  * [Client] Fix incorrect tee blood color being shown in settings
+  * [Client] Reveal selection when scrolling layer list with
+    up/down arrow keys
+  * [Client] Fix inp_controller_guid
+  * [Client] Fix dummy tee being able to ping main tee in chat 
+  * [Client] Check if HTTP request task is aborted in completion
+    callback
+  * [Client] Save console_output_level and console_enable_colors
+    variables
+  * [Client] Fix rcon login when disconnecting dummy and when
+    username used
+  * [Client] Fix client crash when cl_chat_old config is used
+  * [Client] Fix erratic smooth scrolling when scroll time is
+    changed
+  * [Editor] Allow choosing envelopes by typing their ID
+  * [Editor] Ignore some tiles in free slot finder
+  * [Editor] Always enable editor panning and zooming when
+    GUI is hidden
+  * [Editor] Handle loading invalid files
+  * [Editor] Add "Show Directory" button in file dialog
+  * [Editor] Add "Delete" button to editor file browser
+  * [Editor] Disable editor file browser hotkeys while another
+    popup is open
+  * [Editor] Add missing default value for custom parallax
+    zoom property
+  * [Server] Optimizations in preparation for 128 player support
+  * [Server] Fix incorrect sixup detection when snapping pickups
+  * [Server] Round time in scoreboard by millisecond, not centisecond
+  * [Server] Improve ping command accuracy
+  * [Server] Fix server logfile error message
+  * [Tooling] Fix and improve twping
+  * [Tooling] Allow to pass in the git shortrev in git_revision.py
+  * [Tooling] Improve crash parsing in parse_drmingw.sh
+  * [Tooling] Set uniform client/server names in cmake,
+    easier modding
+
+-------------------------------------------------------------------
 Tue Mar  7 20:46:11 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 16.8:
