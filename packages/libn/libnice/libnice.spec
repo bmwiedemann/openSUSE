@@ -25,14 +25,17 @@ Group:          Development/Libraries/GNOME
 URL:            https://nice.freedesktop.org/
 Source:         https://nice.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  libgupnp-igd-devel
+# PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
+Patch1:         libnice-port-gupnp-igd-bump.patch
+
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gnutls) >= 2.12.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.91
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 0.11.91
+BuildRequires:  pkgconfig(gupnp-igd-1.6)
 
 %description
 libnice is an implementation of the IETF's draft Interactive
@@ -80,20 +83,20 @@ This package provides the GObject Introspection bindings for libnice.
 %prep
 %autosetup -p1
 
+# Disable tests that don't work in the build service
+sed -e 's/^  '\''test-set-port-range'\''/#&/'  -i tests/meson.build
+
 %build
 %meson
 %meson_build
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
-##%%check
-##make check disabled - Since version 0.1.3, libnice tries to interact with NM during make check
-##%%meson_test
+%check
+%meson_test
 
-%post   -n libnice10 -p /sbin/ldconfig
-%postun -n libnice10 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libnice10
 
 %files
 %{_bindir}/stunbdc
