@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 13 04:58:20 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use gcc13 compiler for Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Aug 23 19:49:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Don't build with shared on riscv64 for < go1.18
