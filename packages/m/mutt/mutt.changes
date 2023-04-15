@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  3 19:43:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.10:
+  *  Bug fix release.
+  Ü  $message_id_format %r and %z expandos use a URL-safe Base64 encoding:
+     '-' and '_' instead of '+' and '/'.
+
+-------------------------------------------------------------------
 Sun Dec  4 14:27:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.9:

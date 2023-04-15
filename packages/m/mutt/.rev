@@ -1374,4 +1374,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   * Add explicit void to 0-parameter function definitions. (forwarded request 1039996 from dirkmueller)</comment>
     <requestid>1040160</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>577639c4e9d3aa4b05a538a83a68112c</srcmd5>
+    <version>2.2.10</version>
+    <time>1681590869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079639</requestid>
+  </revision>
 </revisionlist>

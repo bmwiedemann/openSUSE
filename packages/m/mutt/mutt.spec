@@ -1,7 +1,7 @@
 #
 # spec file for package mutt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.2.9
+Version:        2.2.10
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
