@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 14 17:03:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.33.3:
+  * Fixed bug when splatting empty array #1613
+  * Added scalar output for TOML (#1617)
+  * Fixed passing of read-only context in pipe (partial fix for
+    #1631)
+  * Bumped dependency versions
+
+-------------------------------------------------------------------
 Fri Mar 31 08:42:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.33.2:
