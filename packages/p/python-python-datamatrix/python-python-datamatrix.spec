@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-datamatrix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-python-datamatrix
-Version:        0.13.2
+Version:        1.0.2
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
@@ -58,7 +56,7 @@ The datamatrix package provides a high way to work with tabular data in Python.
 Tabular data is datasets that consist of named columns and numbered rows.
 
 %prep
-%setup -q -n python-datamatrix-release-%{version}
+%setup -q -n datamatrix-release-%{version}
 # wrong-file-end-of-line-encoding
 sed -i 's/\r$//' doc-pelican/data/fratescu-replication-data-exp1.csv
 
@@ -83,6 +81,6 @@ fi
 %doc doc-pelican/data/
 %doc doc-pelican/include/api
 %{python_sitelib}/datamatrix/
-%{python_sitelib}/python_datamatrix-%{version}*-info
+%{python_sitelib}/datamatrix-%{version}*-info
 
 %changelog

@@ -61,4 +61,13 @@
     <comment></comment>
     <requestid>948038</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bd2c7694ed718bc20cb84bbb5971148f</srcmd5>
+    <version>1.0.2</version>
+    <time>1681590750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * Initial implementation of multidimensionalcolumn</comment>
+    <requestid>1079332</requestid>
+  </revision>
 </revisionlist>
