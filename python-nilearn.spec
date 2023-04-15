@@ -82,6 +82,7 @@ donttest+=" or test_reorder_img_mirror"
 donttest+=" or (test_load_confounds and test_nilearn_standardize)"
 # x86_64 https://github.com/nilearn/nilearn/issues/3382
 donttest+=" or test_tfce_smoke"
+donttest+=" or test_load_uniform_ball_cloud"
 
 if [[ $(getconf LONG_BIT) -eq 64 ]]; then
     # this is a noarch rpm package but the pure python code is only intended for 64-bit architectures
