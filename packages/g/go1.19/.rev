@@ -232,4 +232,13 @@
   * go#59219 runtime: crash on linux-ppc64le (forwarded request 1077382 from jfkw)</comment>
     <requestid>1077384</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f7146df9312a37b8ffa97947b7acd6fb</srcmd5>
+    <version>1.19.8</version>
+    <time>1681592914</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc13 compiler for Tumbleweed.
+- Format one recent changelog entry for better visibility of CVEs (forwarded request 1079524 from jfkw)</comment>
+    <requestid>1079525</requestid>
+  </revision>
 </revisionlist>
