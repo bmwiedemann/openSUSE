@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathable
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pathable
 Version:        0.4.3
 Release:        0
@@ -24,13 +23,18 @@ Summary:        Object-oriented paths
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/pathable
 Source:         /https://github.com/p1c2u/pathable/archive/refs/tags/%{version}.tar.gz#/pathable-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+# I know self obsoletion, but se want following, right?
+# Unfortunately dictpath v. 0.4.3 exists
+# change <= to < 0.4.4 as soon as 0.4.4 is out
+Obsoletes:      python-dictpath <= 0.4.3
+Provides:       python-dictpath = 0.4.3
 BuildArch:      noarch
 %python_subpackages
 

@@ -7,4 +7,12 @@
     <comment>dep of https://build.opensuse.org/package/show/devel:languages:python/python-jsonschema-spec</comment>
     <requestid>1005986</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>52c62bcb27132559960dcaca3fd87f10</srcmd5>
+    <version>0.4.3</version>
+    <time>1681590762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079494</requestid>
+  </revision>
 </revisionlist>
