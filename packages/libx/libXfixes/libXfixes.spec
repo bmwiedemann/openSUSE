@@ -1,7 +1,7 @@
 #
 # spec file for package libXfixes
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-Name:           libXfixes
 %define lname	libXfixes3
-Version:        6.0.0
+Name:           libXfixes
+Version:        6.0.1
 Release:        0
 Summary:        X11 miscellaneous "fixes" extension library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXfixes
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXfixes/
-Source:         http://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.bz2
-Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.xz
+Source1:        https://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.xz.sig
+Source2:        libXfixes.keyring
+Source3:        baselibs.conf
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fixesproto) >= 5.0
@@ -73,22 +73,21 @@ in %lname.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post -n %lname -p /sbin/ldconfig
-
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
+%license COPYING
 %_libdir/libXfixes.so.3*
 
 %files devel
-%defattr(-,root,root)
+%doc README.md
 %_includedir/X11/*
 %_libdir/libXfixes.so
 %_libdir/pkgconfig/xfixes.pc

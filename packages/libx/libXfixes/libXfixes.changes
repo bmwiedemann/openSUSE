@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 13 19:59:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add keyring validation
+- modernize spec file. install license and documentation 
+
+-------------------------------------------------------------------
+Mon Apr 10 08:41:49 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 6.0.1
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Remove unnecessary casts from malloc & free calls
+  * Variable scope reduction as recommended by cppcheck
+  * Mark two dpy parameters const as suggested by cppcheck
+  * Quiet -Wconditional-uninitialized warnings from clang
+  * Resolve 36 of 40 -Wextra-semi-stmt warnings from clang
+  * Handle 63 of 63 -Wshorten-64-to-32 warnings from clang
+  * Handle 60 of 60 -Wimplicit-int-conversion warnings from clang
+  * Handle 6 of 9 -Wsign-conversion warnings from clang
+  * XFixesCloseDisplay: Mark codes as unused
+  * Require LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Remove "All rights reserved" from Oracle copyright notices
+
+-------------------------------------------------------------------
 Wed Dec  1 12:51:06 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 6.0 is needed for GNOME41, particularly the 
