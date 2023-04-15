@@ -35,7 +35,7 @@
 %endif
 
 Name:           transmission
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
@@ -46,8 +46,6 @@ Source1:        README.openSUSE
 Source99:       %{name}.rpmlintrc
 # PATCH-FEATURE-OPENSUSE harden_transmission-daemon.service.patch
 Patch0:         harden_transmission-daemon.service.patch
-# PATCH-FIX-UPSTREAM 9fc0e4ff6186e3aee3d3350e9f1b062aa6e161fe.patch -- fix: disable-deprecated by default for end users
-Patch1:         https://github.com/transmission/transmission/commit/9fc0e4ff6186e3aee3d3350e9f1b062aa6e161fe.patch
 
 BuildRequires:  cmake
 BuildRequires:  fdupes
