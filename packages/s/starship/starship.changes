@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 14 16:23:24 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.14.2:
+  * git_commit: resolve panic on 32-bit targets. 
+
+-------------------------------------------------------------------
 Tue Apr 11 11:11:39 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.14.1:
