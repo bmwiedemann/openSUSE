@@ -369,4 +369,12 @@
   * go#58006 boo#1208272 security: fix CVE-2022-41725 bsc1208491-41725.patch (forwarded request 1072628 from jfkw)</comment>
     <requestid>1072629</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f82a466870babd91a74587deebf1e945</srcmd5>
+    <version>1.18.10</version>
+    <time>1681592912</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc13 compiler for Tumbleweed. (forwarded request 1079522 from jfkw)</comment>
+    <requestid>1079523</requestid>
+  </revision>
 </revisionlist>

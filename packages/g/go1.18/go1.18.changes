@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 13 04:58:20 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use gcc13 compiler for Tumbleweed.
+
+-------------------------------------------------------------------
 Wed Mar  1 17:04:37 UTC 2023 - Jaroslav Jindrak <jjindrak@suse.com>
 
 - Fix for SG#65262, bsc#1208491:
