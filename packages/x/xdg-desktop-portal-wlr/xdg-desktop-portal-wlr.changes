@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 15 17:10:03 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Use signing key from maintainer's website.
+
+-------------------------------------------------------------------
+Sat Apr 15 16:13:05 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.7.0:
+  * Support for Screenshot protocol.
+  * Report output transforms to PipeWire so that clients can show screencasts
+    and screenshots correctly transformed.
+  * Partial support for ScreenCast v4 persisted data. Currently this data is
+    the name of the selected output, and support must be enabled by setting
+    the XDPW_PERSIST_MODE to "transient" or "permanent".
+- Add keyring file so that source_validator can verify it.
+- Download tarball from release instead of GitHub-packed archive so that
+  signature verification works.
+
+-------------------------------------------------------------------
 Thu Jun  9 11:00:02 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Set explicit version bound on libdrm and gbm deps so that build failure
