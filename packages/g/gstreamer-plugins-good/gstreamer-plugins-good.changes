@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:14:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + osxvideosink: fix broken aspect ratio and frame drawing region
+  + qtdemux: Fix seek adjustment with SNAP_AFTER flag
+  + rtpopusdepay, matroskamux: Fix invalid rate while muxing Opus
+    in Matroska
+  + rtpmanager: twcc: Fix duplicate packet handling
+  + rtsp: url: fix incorrect request URI scheme for TLS transport
+    methods (regression)
+  + rtspsrc:
+    - Consider "451: Parameter Not Understood" when handling broken
+      control urls
+    - fix behavior change with URI protocols in OPTIONS requests
+    - Skip PTs with caps incompatible to the global caps
+    - rtpjpegdepay: fix logic error when checking if an end of
+      image (EOI) tag is present
+  + v4l2:
+    - Add support for YVU420M format
+    - mark JPEG as parsed
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
 Tue Mar 21 15:42:46 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Conflict with gstreamer-plugins-ugly < 1.22.0 to ensure we don't
