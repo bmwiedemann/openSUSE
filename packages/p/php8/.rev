@@ -419,4 +419,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1073969</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ae83f97454150c7df3947e855a0213d6</srcmd5>
+    <version>8.1.18</version>
+    <time>1681590726</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.18
+  * This is a bug fix release.
+  https://www.php.net/ChangeLog-8.php#8.1.18
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-ini.patch (refreshed)</comment>
+    <requestid>1079356</requestid>
+  </revision>
 </revisionlist>
