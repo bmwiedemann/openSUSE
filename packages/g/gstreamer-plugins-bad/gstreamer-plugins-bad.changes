@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:21:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + cea708overlay: fix HCR interpretation
+  + d3d11bufferpool: Fix invalid access in debug print loop
+  + d3d11compositor: Fix composition error on release_pad()
+  + d3d11converter: Fix conversion backend selection
+  + d3d11videosink: Fix tearing in case of fullscreen mode
+  + d3d11window: fix memory leak
+  + debugqroverlay: fix string leak
+  + decklinkaudiosink: Fix playback when video caps is configured
+    before audio
+  + decklink: fix 10 bit RGB (r210) format auto detection
+  + decklinkvideosrc:
+    - RGB 4:4:4 doesn't work after GStreamer upgrade (regression)
+    - unable to show HDMI stream that Blackmagic's Media Express is
+      able to see
+  + gtkwaylandsink:
+    - Destroy GstWlWindow when parent GtkWindow is destroyed
+    - Fix crash when rendering after the window is closed
+  + h264decoder: Fix DPB bumping process
+  + h264decoder, h265decoder: Latency reporting related fixes
+  + h264parse: Validate VUI framerate
+  + jpegparse: reset parse state when the SOI is not the first
+    marker
+  + ksvideo, directshow: Fix reference leaks in device providers
+  + nvencoder: Fix CQP option setting
+  + nvh264encoder: Fix template caps to include progressive mode as
+    well
+  + openjpegdec: allow multithread decoding only in subframe mode
+  + tsdemux: Fix reading of extended Opus channel configuration
+  + vulkan: fix validation layer issues
+  + vulkanoverlaycompositor: fix potential use after free
+  + vulkanswapper: correctly handle force-aspect-ratio=false
+  + wasapi2: Fix potential crash on device activation failure
+  + webrtc: Fix segfault traversing ice transports
+  + webrtc: patch leak caused by early return
+  + zxing: add support for zxing-c++ 2.0
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Mon Apr  3 01:03:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move pkgconfig(libchromaprint) BuildRequires to chromaprint
