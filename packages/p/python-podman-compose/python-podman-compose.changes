@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 13 13:32:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.0.6
+  - no CHANGELOG available upstream or in PyPi
+- add _service file
+
+-------------------------------------------------------------------
 Thu Jun 30 06:11:27 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire python-python-dotenv
