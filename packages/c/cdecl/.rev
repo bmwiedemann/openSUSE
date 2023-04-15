@@ -506,4 +506,12 @@
     <comment>- Update to release 14.1</comment>
     <requestid>1077225</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0ee5e0e7566a4d30818cf915f262c824</srcmd5>
+    <version>14.1.1</version>
+    <time>1681590851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 14.1.1</comment>
+    <requestid>1079597</requestid>
+  </revision>
 </revisionlist>
