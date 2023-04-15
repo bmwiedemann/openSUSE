@@ -23,7 +23,7 @@
 %bcond_with saml
 
 Name:           python-social-auth-core
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause

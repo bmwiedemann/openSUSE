@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 13 12:21:32 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 4.4.1 
+  - Moved Facebook Limited Login to a separate module to avoid extra
+    dependency
+  - Update Azure AD B2C base URL to match updated endpoints
+
+-------------------------------------------------------------------
 Thu Mar 16 08:58:44 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 4.4.0 
