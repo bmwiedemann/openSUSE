@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:07:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + alsasink: Fix for being stuck in stop_streaming_threads state
+  + decodebin3: fix hang when removing a failing stream
+  + gl: wayland: cleanup on close
+  + parsebin: Improve elementary stream handling
+  + playbin: fix deadlock when stopping stream with subtitles
+    visible even more
+  + sdp: Skip source-specific caps fields when creating an SDP
+    media from caps
+  + urisourcebin:
+    - Propagate sticky events from parsebin
+    - Activate pad before transferring sticky events
+  + typefinding: fix failure to recognize application/dash+xml in
+    some cases
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Mar  9 17:12:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update version to 1.22.1:
