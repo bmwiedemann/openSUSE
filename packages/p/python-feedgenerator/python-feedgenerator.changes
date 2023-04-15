@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 14 16:28:32 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 2.1.0:
+  * Modernize and improve tests (#32 & #34 — thanks to @venthur)
+  * Drop support for Python 3.6 and test on 3.10 & 3.11
+    (#35 — thanks to @hugovk)
+  * Exclude tests_feedgenerator/__pycache__ from distribution
+    (#33 — thanks to @BenSturmfels)
+- require python >= 3.7
+
+-------------------------------------------------------------------
 Thu Dec 15 09:38:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six dependency
