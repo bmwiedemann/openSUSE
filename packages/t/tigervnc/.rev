@@ -970,4 +970,13 @@
 </comment>
     <requestid>1076858</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>77a900139589ecd75d0012551f597142</srcmd5>
+    <version>1.13.1</version>
+    <time>1681590736</time>
+    <user>dimstar_suse</user>
+    <comment>- xorg-x11-Xvnc requires dbus-1-x11 (bsc#1207730)
+</comment>
+    <requestid>1079390</requestid>
+  </revision>
 </revisionlist>

@@ -153,6 +153,7 @@ BuildRequires:  firewall-macros
 %endif
 # Needed to generate certificates
 Requires:       windowmanager
+Requires:       dbus-1-x11
 Requires:       xauth
 Requires:       xinit
 Requires:       xkbcomp
