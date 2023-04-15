@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr 15 04:55:58 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 4.0.3:
+  + Fix 4.0.2 higher CPU load while downloading (a regression).
+  + Fix 4.0.0 bug where the torrentGet RPC method returned wrong
+    trackerStats.tier values.
+  + Fix 4.0.0 HTTP announce behavior with bind-address-ipv*
+    settings.
+  + Fix 4.0.0 bug in code that detects the computer's IPv6 support.
+  + Silenced 4.0.0 minor log warnings for cross_seed_entry and uid
+    entries in torrent files.
+  + When adding a duplicate torrent via the RPC API, the return
+    value now matches Transmission 3's return value.
+  + Fix use of metainfo display-name as a fallback name.
+  + Updated torrent Peer ID generation to happen once per session,
+    even for public torrents.
+  + GTK client:
+    - Fix 4.0.0 preferences dialog being too large for small
+      displays.
+    - Fix 4.0.0 regression of percents, speeds, sizes, etc, not
+      being i18nized properly.
+  + Daemon: Set the log level sooner at startup to ensure events
+    aren't missed.
+  + Fix 4.0.0 bug in the display of how much of a torrent has been
+    downloaded.
+  + Documentation improvements.
+- Drop merged-upstream patch:
+  9fc0e4ff6186e3aee3d3350e9f1b062aa6e161fe.patch
+
+-------------------------------------------------------------------
 Mon Mar 27 12:28:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 9fc0e4ff6186e3aee3d3350e9f1b062aa6e161fe.patch: Fix:
