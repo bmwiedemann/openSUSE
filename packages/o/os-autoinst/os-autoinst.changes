@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 14 12:23:09 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1681474976.f647990:
+  * Cover all code of `console.pm`
+  * Fix CMake warning about ordering
+  * ci: Improve marking uncoverable statements
+  * Drop Leap-15.3 from OBS CI
+  * ci: Add slash to directories in codecov.yml
+
+-------------------------------------------------------------------
 Wed Apr 05 18:28:37 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1680543297.d2a0a8b:
