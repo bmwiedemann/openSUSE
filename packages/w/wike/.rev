@@ -49,4 +49,12 @@
     <comment></comment>
     <requestid>1072672</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f9d6dc983338325538cddf7ecd949ce</srcmd5>
+    <version>2.0.0</version>
+    <time>1681590858</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>1079632</requestid>
+  </revision>
 </revisionlist>

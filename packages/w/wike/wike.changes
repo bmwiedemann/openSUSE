@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Apr 14 15:32:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.0.0:
+  * Migration to GTK4 + Libadwaita.
+  * The search input is now always visible. It also includes an
+    indication of the selected language and a button that gives
+    access to the search settings.
+  * Type to search. Just start typing to find articles.
+  * New side panel that provides access to the article table of
+    contents, languages, bookmarks and history. It can be used in
+    floating or pinned mode.
+  * Bookmarks with multiple lists.
+  * New view menu that allows you to change the theme, zoom,
+    typography and more.
+  * Content view now defaults to system font.
+  * Responsive design. The user interface now adapts to small
+    screens, like phones.
+  * Improved status pages (new tab, article not found...).
+  * Use of flag icons to help identify languages. This can be
+    turned off.
+  * New printing option. This also allows export articles using the
+    "Print to PDF" option.
+  * New app icon.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 14 09:26:27 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.3:

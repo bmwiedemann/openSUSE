@@ -17,7 +17,7 @@
 
 
 Name:           wike
-Version:        1.8.3
+Version:        2.0.0
 Release:        0
 Summary:        A Wikipedia reader for the GNOME Desktop
 License:        GPL-3.0-or-later
