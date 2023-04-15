@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  7 18:30:55 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 23.0.2
+  * 2nd bug fix release: lots of patches for all over the tree, 
+    zink being the biggest singel source of changes.
+
+-------------------------------------------------------------------
 Sun Mar 26 20:58:34 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 23.0.1

@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.0.1
+%define _version 23.0.2
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.0.1
+Version:        23.0.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
