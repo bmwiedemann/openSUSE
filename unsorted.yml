@@ -15429,6 +15429,8 @@ unsorted:
   - libva-devel-32bit 
   - libva-drm2-32bit 
   - libva-gl-devel 
+  - libva-gl-devel-32bit 
+  - libva-glx2-32bit 
   - libva-utils 
   - libva-vdpau-driver 
   - libva-wayland2-32bit 
