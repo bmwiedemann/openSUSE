@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 14 07:42:55 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.0+git.1681457715.54484b7:
+  * build(deps): bump h2 from 0.3.14 to 0.3.17 (CVE-2023-26964,
+    bsc#1210344)
+  * build(deps): bump reqwest from 0.11.15 to 0.11.16
+
+-------------------------------------------------------------------
 Wed Apr 12 14:52:38 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.2.0+git.1681223954.646cf61:
