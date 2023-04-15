@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  4 04:04:04 UTC 2023 - olaf@aepfle.de
+
+- Update kexec-tools-SYS_getrandom.patch to fix build errors on
+  old x86_64 distributions
+
+-------------------------------------------------------------------
 Thu Feb 23 15:01:24 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - kexec-bootloader: Add -a argument to load using kexec_load_file() when available (boo#1202820).
