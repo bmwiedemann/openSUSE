@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 14 09:39:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.0
+  * New components added:
+    AbstractMaximizeComponent
+    Convergent SpinBox
+  * small bug fixes and API improvements
+
+-------------------------------------------------------------------
 Thu Mar  9 11:47:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.7.2. No changelog. Changes since 0.7.1:
