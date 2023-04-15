@@ -2257,7 +2257,7 @@ BuildFlags: onlybuild:libusb-compat
 BuildFlags: onlybuild:libusbmuxd
 BuildFlags: onlybuild:libuv
 BuildFlags: onlybuild:libva
-BuildFlags: onlybuild:libva-gl
+BuildFlags: onlybuild:libva:gl
 BuildFlags: onlybuild:libvdpau
 BuildFlags: onlybuild:libverto
 BuildFlags: onlybuild:libverto-libev
