@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 14 07:30:42 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- xorg-x11-Xvnc requires dbus-1-x11 (bsc#1207730)
+
+-------------------------------------------------------------------
 Mon Apr  3 08:57:25 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Fixes for bsc#1209283
