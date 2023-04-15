@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 10 15:39:05 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add discover-backend-fwupd for automated firmware updates on
+  plasma
+
+-------------------------------------------------------------------
 Thu Apr  6 09:17:13 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use lastlog2 as Y2038 safe lastlog replacement

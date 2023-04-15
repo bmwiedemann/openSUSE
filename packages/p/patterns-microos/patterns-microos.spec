@@ -605,6 +605,7 @@ Requires:       google-noto-sans-cjk-fonts
 
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
+Requires:       discover-backend-fwupd
 #Requires:       discover-backend-packagekit
 Requires:       kde-gtk-config5
 Requires:       kde-gtk-config5-gtk3
