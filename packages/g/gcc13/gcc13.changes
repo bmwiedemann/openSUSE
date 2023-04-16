@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 12 21:15:13 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Bump to d339e9802f758e051b0a1ef6db732ff846cbf4e3, git7162.
+
+-------------------------------------------------------------------
+Tue Apr 11 08:58:11 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add new x86-related intrinsics (amxcomplexintrin.h).
+
+-------------------------------------------------------------------
+Tue Apr 11 08:29:47 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv-atomic.patch: RISC-V: Add support for inlining subword atomic
+  operations
+- riscv-pthread.patch: Don't add -latomic with -pthread
+
+
+-------------------------------------------------------------------
 Tue Apr  4 07:02:21 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Bump to d0b961b802dd7d9d555ff4515835a479329326e9, git6995.

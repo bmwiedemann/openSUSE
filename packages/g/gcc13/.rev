@@ -88,4 +88,14 @@
     <comment></comment>
     <requestid>1077145</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>829c87af9e7b0b3e7c926552f42c1b3b</srcmd5>
+    <version>13.0.1+git7162</version>
+    <time>1681653992</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to d339e9802f758e051b0a1ef6db732ff846cbf4e3, git7162.
+
+- Add new x86-related intrinsics (amxcomplexintrin.h). (forwarded request 1078870 from marxin)</comment>
+    <requestid>1079070</requestid>
+  </revision>
 </revisionlist>

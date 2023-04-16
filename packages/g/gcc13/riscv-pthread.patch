@@ -1,0 +1,33 @@
+From 79dc619188c0b42ae7a329c6abe50dee19000895 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Sat, 23 Apr 2022 15:48:42 +0200
+Subject: [PATCH] Don't add -latomic with -pthread
+
+---
+ gcc/config/riscv/linux.h | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/gcc/config/riscv/linux.h b/gcc/config/riscv/linux.h
+index b9557a75dc7..2fdfd930cf2 100644
+--- a/gcc/config/riscv/linux.h
++++ b/gcc/config/riscv/linux.h
+@@ -35,16 +35,6 @@ along with GCC; see the file COPYING3.  If not see
+ #undef MUSL_DYNAMIC_LINKER
+ #define MUSL_DYNAMIC_LINKER "/lib/ld-musl-riscv" XLEN_SPEC MUSL_ABI_SUFFIX ".so.1"
+ 
+-/* Because RISC-V only has word-sized atomics, it requries libatomic where
+-   others do not.  So link libatomic by default, as needed.  */
+-#undef LIB_SPEC
+-#ifdef LD_AS_NEEDED_OPTION
+-#define LIB_SPEC GNU_USER_TARGET_LIB_SPEC \
+-  " %{pthread:" LD_AS_NEEDED_OPTION " -latomic " LD_NO_AS_NEEDED_OPTION "}"
+-#else
+-#define LIB_SPEC GNU_USER_TARGET_LIB_SPEC " -latomic "
+-#endif
+-
+ #define ICACHE_FLUSH_FUNC "__riscv_flush_icache"
+ 
+ #define CPP_SPEC "%{pthread:-D_REENTRANT}"
+-- 
+2.40.0
+
