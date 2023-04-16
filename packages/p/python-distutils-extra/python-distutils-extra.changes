@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 16 16:52:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.50:
+  * Fix KeyError on .egg-info files in debian directory
+    (regression in 2.48)
+  * setup.py: Check that Debian version starts with
+    DistUtilsExtra version
+
+-------------------------------------------------------------------
 Fri Feb 10 10:00:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.49:

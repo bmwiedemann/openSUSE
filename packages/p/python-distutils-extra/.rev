@@ -250,4 +250,16 @@
   * Adapt tests to setuptools 54+</comment>
     <requestid>1064200</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a79c95e9acedf4cc75cdfa84ec460d09</srcmd5>
+    <version>2.50</version>
+    <time>1681666744</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.50:
+  * Fix KeyError on .egg-info files in debian directory
+    (regression in 2.48)
+  * setup.py: Check that Debian version starts with
+    DistUtilsExtra version</comment>
+    <requestid>1079775</requestid>
+  </revision>
 </revisionlist>
