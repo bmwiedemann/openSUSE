@@ -220,4 +220,16 @@
   * touchpad: Enable tap-to-click by default.</comment>
     <requestid>1061776</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e04861240c02e6b3b9c2f27cadedbd34</srcmd5>
+    <version>5.6.2</version>
+    <time>1681666554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.2:
+  * gnome-desktop-thumbnail.c: Use g_get_user_cache_dir() for
+    thumbnail permission checks.
+  * gnome-desktop-thumbnailer.c: Only attempt to thumbnail
+    internally if gdk-pixbuf actually supports the mime_type.</comment>
+    <requestid>1079768</requestid>
+  </revision>
 </revisionlist>

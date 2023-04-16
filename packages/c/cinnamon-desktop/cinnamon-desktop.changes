@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 16 16:07:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.2:
+  * gnome-desktop-thumbnail.c: Use g_get_user_cache_dir() for
+    thumbnail permission checks.
+  * gnome-desktop-thumbnailer.c: Only attempt to thumbnail
+    internally if gdk-pixbuf actually supports the mime_type.
+
+-------------------------------------------------------------------
 Sat Jan 28 18:24:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.1:
