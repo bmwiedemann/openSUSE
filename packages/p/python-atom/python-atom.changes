@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 16 16:47:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.1:
+  * fix generation of Value member from union containing
+    object/Any PR #198
+  * fix setdefault method of atomdict to return the actually
+    stored item PR #197
+
+-------------------------------------------------------------------
 Wed Mar  1 13:53:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:

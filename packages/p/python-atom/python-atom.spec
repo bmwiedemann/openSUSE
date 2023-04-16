@@ -17,7 +17,7 @@
 
 
 Name:           python-atom
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause
