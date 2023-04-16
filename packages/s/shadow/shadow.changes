@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:08:43 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rename lastlog to lastlog.legacy to be able to switch to
+  Y2038 safe lastlog2 as default [jsc#PED-3144]
+
+-------------------------------------------------------------------
 Thu Feb 16 11:31:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update shadow-fix-print-login-timeout.patch

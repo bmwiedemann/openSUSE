@@ -862,4 +862,12 @@
   * userdel-pre.local</comment>
     <requestid>1066319</requestid>
   </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>b646857809026ae5736bc65b6e6cc256</srcmd5>
+    <version>4.13</version>
+    <time>1681653998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079091</requestid>
+  </revision>
 </revisionlist>

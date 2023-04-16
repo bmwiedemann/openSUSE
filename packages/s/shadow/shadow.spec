@@ -227,6 +227,12 @@ if [ ! -d %{buildroot}%{_distconfdir} ]; then
 fi
 mkdir -p %{buildroot}%{_sysconfdir}/login.defs.d
 
+%if 0%{?suse_version} >= 1599
+# Rename lastlog to lastlog.legacy, as it got replaced by lastlog2
+mv %{buildroot}/%{_bindir}/lastlog %{buildroot}/%{_bindir}/lastlog.legacy
+mv %{buildroot}/%{_mandir}/man8/lastlog.8 %{buildroot}/%{_mandir}/man8/lastlog.legacy.8
+%endif
+
 %find_lang shadow
 
 %pre
@@ -326,7 +332,11 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/newgidmap
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
+%if 0%{?suse_version} >= 1599
+%{_bindir}/lastlog.legacy
+%else
 %{_bindir}/lastlog
+%endif
 %{_bindir}/sg
 %{_bindir}/getsubids
 %attr(0755,root,root) %{_sbindir}/groupadd
@@ -358,7 +368,11 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_mandir}/man8/groupdel.8%{?ext_man}
 %{_mandir}/man8/groupmod.8%{?ext_man}
 %{_mandir}/man8/grpck.8%{?ext_man}
+%if 0%{?suse_version} >= 1599
+%{_mandir}/man8/lastlog.legacy.8%{?ext_man}
+%else
 %{_mandir}/man8/lastlog.8%{?ext_man}
+%endif
 %{_mandir}/man8/newusers.8%{?ext_man}
 %{_mandir}/man8/pwck.8%{?ext_man}
 %{_mandir}/man8/pwconv.8%{?ext_man}
