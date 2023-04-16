@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Fri Apr 14 13:41:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Mon Apr 10 04:53:53 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 20230408.112425.69ae8472:
+  * windows: fix: mess up full screen mode on config reload
+  * pty: fix unused import warning on windows
+  * windows: fix warning; mut not required here
+  * config: defer evaluating default wsl domains
+  * docs: update for wezterm replay changes
+  * docs: explain what font shaping actually is
+  * docs: add tags to a number of pages
+  * wayland: fix webgpu invalidation issue
+  * wezterm replay: add --explain-only and --cat options
+  * switch to fancy-regex crate
+  * docs: for integrated title buttons
+  * Push folks towards the bug report template
+  * schemes: fix origin url when importing toml files
+  * add more color schemes
+  * docs: update color scheme versions
+  * windows: speculative fix for recursive borrow
+  * add wezterm.has_action
+  * Make background painting more consistent when window is transparent
+  * fix build on windows
+  * docs: fix link
+  * expose the tty name associated with a pane
+  * docs: update gui.get_appearance example for mux
+  * quick select: make user patterns take precedence
+  * docs: show schemes in the per-page toc
+  * Add InputSelector action
+  * admit defeat to intel shader weirdness
+  * refine charselect move logic per comments on #3449
+  * character select pgup/down, less jerky navigation, selected centered in list (#3449)
+  * docs: ... and format the examples
+  * docs: update format-tab-title examples
+  * wezterm cli list: add is_active and is_zoomed fields to json output
+  * add `wezterm cli get-pane-direction`
+  * Add PromptInputLine and examples of (re)naming tabs/workspaces
+  * remove stray debug
+  * mux: explicitly update tab/pane active status on focus change
+  * cli: add --pane-id option to activate-pane-direction
+  * mux: increase default fetch throttle limit
+  * cli: defer parsing config in most cases
+  * make config_builder work with table.insert(config.keys, ...)
+  * mux: spawn: only use the cwd from a pane in a compatible domain
+  * mux: fix unseen output status for remote panes
+  * docs: changelog for #1872
+  * fix unused import warning
+  * mux: avoid WindowTitleChanged cycle
+  * ssh: fix token expansion for ProxyCommand
+  * fix permute_any_mods
+  * fix(clippy): Implement From instead of Into
+  * fix: 'wezterm connect --workspace foo dom' part 2
+  * render: ensure alt color and mix are well-defined for poly quads
+  * Expand sponsor section of readme
+  * docs: Add sponsor page
+  * Update FUNDING.yml
+  * mux: reduce volume of bonus lines sent by server
+  * skip pruning old logs unless we are the gui
+  * mux: forward ClearScrollback requests to remote server
+  * fix wezterm connect --workspace
+  * mux: increase unix reconnect delay
+  * suppress dead code warning for locate_app_wide_key_assignment
+  * mux: detach domain on window close
+  * wezterm: defer parsing config
+  * config: lazyily produce ssh domain list
+  * refactor: split cli subcommand into separate modules
+  * add wezterm.mux.rename_workspace
+  * add wezterm cli rename-workspace
+  * maybe fix freebsd build
+  * add wezterm cli set-tab-title and wezterm cli set-window-title
+  * tab navigator: use tab title > pane title if set
+  * mux: propagate tab and window title when it changes
+  * default format-tab-title now respects tab:set_title
+  * add window:active_tab(), window:active_pane(), tab:active_pane()
+  * add display_pixel_geometry config option for subpixel geometry
+  * font: minor refact to derive Default for FreeTypeLoadTarget
+  * windows: fix INTEGRATED_BUTTONS|RESIZE
+  * rustfmt
+  * x11: fix INTEGRATED_BUTTONS|RESIZE
+  * refactor: remove opengl and OpenGL from names
+  * refactor: tidy up window_buttons a little
+  * refactor: split render.rs into smaller modules
+  * integrated buttons: tweak gnome button logic
+  * integrated title bar: default to mac style on mac
+  * docs: changelog for #2722
+  * minor tidy up of hover handling for maximize button
+  * rename PushOval -> Oval
+  * tab bar: fixup placement of macos native titlebar buttons
+  * macos: correctly synthesize WindowState::MAXIMIZED
+  * remove redundant mix operation from shader
+  * cheaper case insensitive compare
+  * avoid bespoke lightness calc, reuse hsl function
+  * allow using Gnome and Windows styles on macos.
+  * remove some macos conditional compilation
+  * macos: fixup window_decorations w/ INTEGRATED_BUTTONS+RESIZE
+  * integrated-title-bar: Add Native button style parameter
+  * integrated-title-bar: Replace window button recoloring
+  * integrated-title-bar: Use snap layouts for any maximize button
+  * integrated-title-bar: Improve windows support
+  * integrated-title-bar: Update config options
+  * integrated-title-bar: Remove commented line
+  * integrated-title-bar: Remove macos button style
+  * integrated-title-bar: Add macOS support
+  * integrated-title-bar: Ignore style config on macos and windows
+  * integrated-title-bar: Add x11 support
+  * integrated-title-bar: Add button style option
+  * integrated-title-bar: Add option to remove useless buttons
+  * integrated-title-bar: Add button placement option
+  * integrated-title-bar: Add libadwaita styled buttons
+  * integrated-title-bar: Add initial shape for macos buttons
+  * integrated-title-bar: Add color configuration
+  * integrated-title-bar: Add windows support
+  * integrated-title-bar: Add window buttons to the tabbar
+  * mux: allow client to provide palette to mux server
+  * docs: fix list syntax
+  * doc: mention that hyperlink prefix is required
+  * Add Homebrew tap for nightly build
+  * Update webgpu_preferred_adapter.md
+  * macos: fix CTRL key behavior when use_ime=true
+  * win:perform_action now works with Copy Mode and other overlays
+  * gui: win:perform_action now awaits the underlying perform_key_assignment
+  * mux: don't request lines if we think we are dead
+  * surface config errors when running `wezterm connect`
+  * fix is_zoomed property in tab:get_panes_with_info()
+  * update libssh-rs dep to latest build
+  * Fix minor typo
+  * docs: cover new default ssh domain behavior and function
+  * serial: fix some FIXMEs
+  * docs: fixup a couple of Since thingies
+  * Add serial_ports config
+  * Fix broken link to list of features
+  * populate ssh domains from your ssh config by default
+  * fix broken link on features page
+  * mux: fix pid file locking
+  * mux server: propagate config CLI options when daemonizing
+  * term: respect log_unknown_escape_sequences for OSC
+  * docs: changelog for https://github.com/wez/wezterm/issues/3390
+  * fix build.rs on windows, take 2
+  * fix build.rs on windows
+  * windows: add manifest to config-using console apps, force UTF8 ACP
+  * add more context to errors
+  * config: add more context on some errors
+  * fix unused import
+  * mux: more robust handling of pane killing
+  * RLIMIT_NPROC is not a macos thing
+  * raise ulimit nofile and nproc to a reasonable min value on unix systems
+  * mux client: GC unreferenced remote window/tab/pane ids on resync
+  * fix stray debug
+  * add pane:activate() and tab:activate()
+  * adjust log level for 'going to run proxy' message
+  * fix overflowing sub assertion in debug mode
+  * fix: Update snapshot (see commit 31100244)
+  * fix: Derive Eq on Selection
+  * fix: Use serde with bitflags
+  * fix: Formatting
+  * chore: Update Cargo.lock
+  * fix: Update signal-hook to 0.3 and fix compilation errors
+  * chore: Update criterion to 0.4
+  * chore: Update nix to 0.26
+  * fix: Update bitflags to 2.0 and fix compilation errors
+  * chore: Update phf to 0.11
+  * deps: update sha2
+  * ci: update cargo-install
+  * docs: update for latest release
+
+-------------------------------------------------------------------
 Sun Mar 26 23:08:55 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 20230326.111934.3666303c:
