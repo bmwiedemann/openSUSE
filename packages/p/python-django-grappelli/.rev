@@ -208,4 +208,20 @@
   * Fixed changelist actions.</comment>
     <requestid>1055868</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>947a3455522531e354178b1e5bb86a8c</srcmd5>
+    <version>3.0.5</version>
+    <time>1681654056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.5:
+  * Removed package.json from jquery-ui.
+  * Fixed change_list_filter_confirm peoduces wrong url
+    parameters.
+  * Fixed change_list_filter_confirm is using
+    admin_list.admin_list_filter instead of
+    grp_tags.admin_list_filter.
+  * Added default for dummy template with dahboard (because of
+    django-compressor offline compression).</comment>
+    <requestid>1079738</requestid>
+  </revision>
 </revisionlist>

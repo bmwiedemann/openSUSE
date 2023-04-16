@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.5:
+  * Removed package.json from jquery-ui.
+  * Fixed change_list_filter_confirm peoduces wrong url
+    parameters.
+  * Fixed change_list_filter_confirm is using
+    admin_list.admin_list_filter instead of
+    grp_tags.admin_list_filter.
+  * Added default for dummy template with dahboard (because of
+    django-compressor offline compression).
+
+-------------------------------------------------------------------
 Wed Jan  4 14:26:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:
