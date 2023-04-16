@@ -183,4 +183,21 @@
 - Use _service mode manual as better alias name than disabled (forwarded request 1078828 from jfkw)</comment>
     <requestid>1078829</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>74c23c691343e6c3e3e5ca841ea43bae</srcmd5>
+    <version>2.24.2</version>
+    <time>1681666620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.24.2:
+  * fix: ensure `negate` is always checked for tags
+  * fix: don't make tmpdir for local pkg
+  * fix: set config defaults
+  * refactor: don't require config for metrics
+  * refactor: don't require config in `run`
+  * feat: better error for unknown keys
+  * refactor: don't require `.vale.ini` for `compile`
+  * refactor: match case in returned suggestions
+  * chore: update choco (forwarded request 1079769 from jfkw)</comment>
+    <requestid>1079773</requestid>
+  </revision>
 </revisionlist>

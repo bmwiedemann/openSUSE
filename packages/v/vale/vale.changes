@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 16 12:55:39 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.24.2:
+  * fix: ensure `negate` is always checked for tags
+  * fix: don't make tmpdir for local pkg
+  * fix: set config defaults
+  * refactor: don't require config for metrics
+  * refactor: don't require config in `run`
+  * feat: better error for unknown keys
+  * refactor: don't require `.vale.ini` for `compile`
+  * refactor: match case in returned suggestions
+  * chore: update choco
+
+-------------------------------------------------------------------
 Sun Apr 09 13:02:06 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.24.1:
