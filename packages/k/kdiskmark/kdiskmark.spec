@@ -19,7 +19,7 @@
 
 %define _singleapplication_version 3.3.4
 Name:           kdiskmark
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only
