@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 14 09:33:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.52.0:
+  * https://nghttp2.org/blog/2023/02/13/nghttp2-v1-52-0/
+  * sphinx_rtd_theme has been removed from the repository
+    and archive.
+  * The deprecated Python bindings has been removed.
+  * The deprecated libnghttp2_asio has been removed.
+  * llhttp and neverbleed have been updated.
+  * This release fixes the bug that stalls TLS connection.
+  * This release adds more http3 integration tests.
+- drop nghttp2-remove-python-build.patch: obsolete as the code got removed
+
+-------------------------------------------------------------------
 Thu Nov 17 16:35:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.51.0:

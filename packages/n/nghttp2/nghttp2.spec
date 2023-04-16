@@ -21,18 +21,11 @@
 %global soname_asio libnghttp2_asio
 %global sover_asio 1
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "python"
-%define psuffix -python
-%bcond_without python
-%else
-%define psuffix %{nil}
-%bcond_with python
-%endif
 # libnghttp2_asio has been deprecated in this repository due to maintenance
 # issue and will be removed at the end of 2022
 %bcond_with asio
-Name:           nghttp2%{psuffix}
-Version:        1.51.0
+Name:           nghttp2
+Version:        1.52.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -40,8 +33,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://nghttp2.org/
 Source:         https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE nghttp2-remove-python-build.patch
-Patch0:         nghttp2-remove-python-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -57,11 +48,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
-%if %{with python}
-BuildRequires:  python3-Cython
-BuildRequires:  python3-setuptools
-BuildRequires:  pkgconfig(python3)
-%endif
 %ifnarch ppc %{arm}
 %if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(jemalloc)
@@ -136,42 +122,20 @@ HTTP/2 client, server and proxy.
 
 %prep
 %setup -q -n nghttp2-%{version}
-%patch0 -p1
 # fix python shebang
 sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:g' script/fetch-ocsp-response
 
 %build
-%if %{with python}
-export PYTHON=%{_bindir}/python3
-%else
-sed -i -e '/AM_PATH_PYTHON([2.7],, [:]) /d' configure.ac
-%endif
 autoreconf -fiv
 %configure \
   --disable-static        \
   --disable-silent-rules  \
   %{?with_asio:--enable-asio-lib} %{!?with_asio: --disable-asio-lib} \
   --enable-app            \
-%if %{with python}
-  --enable-python-bindings \
-%else
-  --disable-python-bindings \
-%endif
   %{nil}
 %make_build all
-%if %{with python}
-pushd python
-%make_build nghttp2.c
-%python3_build
-popd
-%endif
 
 %install
-%if %{with python}
-pushd python
-%python3_install
-popd
-%else
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -181,26 +145,18 @@ rm -rf %{buildroot}%{_datadir}/doc/nghttp2
 # None of applications using these man pages are built.
 rm -rf %{buildroot}%{_mandir}/man1/* \
   doc/manual/html/.buildinfo
-%endif
 
 %check
 # One test fails if python-sphinx is not present
 %make_build check ||:
 
-%if !%{with python}
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
 %postun -n %{soname}-%{sover} -p /sbin/ldconfig
 %if %{with asio}
 %post -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
 %postun -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
 %endif
-%endif
 
-%if %{with python}
-%files -n python3-nghttp2
-%{python3_sitearch}/nghttp2.*.so
-%{python3_sitearch}/python_nghttp2-*
-%else
 %files
 %{_bindir}/deflatehd
 %{_bindir}/inflatehd
@@ -230,7 +186,6 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %{_includedir}/%{name}/asio_http2*.h
 %{_libdir}/%{soname_asio}.so
 %{_libdir}/pkgconfig/%{soname_asio}.pc
-%endif
 %endif
 
 %changelog
