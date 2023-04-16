@@ -68,4 +68,22 @@
     <comment></comment>
     <requestid>1068649</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>727b724ac9f2a8b4b3671591af01747d</srcmd5>
+    <version>3.4.4</version>
+    <time>1681654055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.4:
+  * Upgrading to ``setuptools-65.6.0`` and beyond will result in
+    a new version of ``distutils`` that &quot;fixed&quot; how logging
+    works, but now the hooks and expected workarounds no
+    longer work.  Given that the deprecation of ``distutils``
+    is in the works, no fixes will be done until ``setuptools``
+    fully replaces it beyond the release of Python 3.12, 
+    as the author no longer trust Python to provide a
+    stable platform to develop software on. 
+    Thus, any future &quot;fixes&quot; will only be provided on an
+    even more reactive (rather than proactive) basis.</comment>
+    <requestid>1079741</requestid>
+  </revision>
 </revisionlist>

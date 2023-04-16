@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-calmjs
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        A Python framework for working with the Node.js ecosystem
 License:        GPL-2.0-or-later
