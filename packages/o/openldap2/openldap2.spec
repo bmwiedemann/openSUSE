@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define run_test_suite 0
-%define version_main 2.6.3
 %define slapdrundir %{_rundir}/slapd
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == "contrib"
@@ -30,11 +29,11 @@ Name:           openldap2%{name_suffix}
 Summary:        An open source implementation of the Lightweight Directory Access Protocol
 License:        OLDAP-2.8
 Group:          Productivity/Networking/LDAP/Servers
-Version:        %{version_main}
+Version:        2.6.4
 Release:        0
 URL:            https://www.openldap.org
-Source0:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz
-Source1:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version_main}.tgz.asc
+Source0:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version}.tgz
+Source1:        https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-%{version}.tgz.asc
 Source2:        openldap2.keyring
 Source4:        sasl-slapd.conf
 Source5:        README.module-loading
@@ -79,7 +78,7 @@ BuildRequires:  openldap2-devel
 %{?systemd_requires}
 %endif
 Requires:       /usr/bin/awk
-Requires:       libldap2 = %{version_main}
+Requires:       libldap2 = %{version}
 Recommends:     cyrus-sasl
 Conflicts:      openldap
 PreReq:         %fillup_prereq
@@ -94,7 +93,7 @@ The server provides several database backends and overlays.
 %package back-perl
 Summary:        OpenLDAP Perl Back-End
 Group:          Productivity/Networking/LDAP/Servers
-Requires:       openldap2 = %{version_main}
+Requires:       openldap2 = %{version}
 Requires:       perl = %{perl_version}
 
 %description back-perl
@@ -104,7 +103,7 @@ different LDAP operations.
 %package back-sock
 Summary:        OpenLDAP Socket Back-End
 Group:          Productivity/Networking/LDAP/Servers
-Requires:       openldap2 = %{version_main}
+Requires:       openldap2 = %{version}
 Provides:       openldap2:/usr/share/man/man5/slapd-sock.5.gz
 
 %description back-sock
@@ -114,7 +113,7 @@ results with an external process listening on a Unix domain socket.
 %package back-meta
 Summary:        OpenLDAP Meta Back-End
 Group:          Productivity/Networking/LDAP/Servers
-Requires:       openldap2 = %{version_main}
+Requires:       openldap2 = %{version}
 Provides:       openldap2:/usr/share/man/man5/slapd-meta.5.gz
 
 %description back-meta
@@ -126,7 +125,7 @@ Information Tree (DIT).
 %package back-sql
 Summary:        OpenLDAP SQL Back-End
 Group:          Productivity/Networking/LDAP/Servers
-Requires:       openldap2 = %{version_main}
+Requires:       openldap2 = %{version}
 
 %description back-sql
 The primary purpose of this OpenLDAP backend is to present information
@@ -145,7 +144,7 @@ to be applied with all usages of libldap.
 %package contrib
 Summary:        OpenLDAP Contrib Modules
 Group:          Productivity/Networking/LDAP/Servers
-Requires:       openldap2 = %{version_main}
+Requires:       openldap2 = %{version}
 
 %description contrib
 Various overlays found in contrib/:
@@ -178,7 +177,7 @@ The OpenLDAP Admin Guide plus a set of OpenLDAP related IETF internet drafts.
 %package client
 Summary:        OpenLDAP client utilities
 Group:          Productivity/Networking/LDAP/Clients
-Requires:       libldap2 = %{version_main}
+Requires:       libldap2 = %{version}
 
 %description client
 OpenLDAP client utilities such as ldapadd, ldapsearch, ldapmodify.
@@ -192,7 +191,7 @@ Obsoletes:      openldap2-devel-64bit
 %endif
 #
 Conflicts:      openldap-devel
-Requires:       libldap2 = %{version_main}
+Requires:       libldap2 = %{version}
 Recommends:     cyrus-sasl-devel
 
 %description devel
@@ -213,7 +212,7 @@ for development.
 %package      -n libldap2
 Summary:        OpenLDAP Client Libraries
 Group:          Productivity/Networking/LDAP/Clients
-Recommends:     libldap-data >= %{version_main}
+Recommends:     libldap-data >= %{version}
 
 %description -n libldap2
 This package contains the OpenLDAP client libraries.
@@ -221,7 +220,7 @@ This package contains the OpenLDAP client libraries.
 %package      -n libldapcpp-devel
 Summary:        C++ wrapper around openLDAP API
 Group:          Development/Libraries/C and C++
-Requires:       libldapcpp0 = %{version_main}
+Requires:       libldapcpp0 = %{version}
 Requires:       openldap2-devel
 
 %description -n libldapcpp-devel
@@ -231,7 +230,7 @@ library.
 %package      -n libldapcpp0
 Summary:        C++ wrapper around openLDAP API
 Group:          Development/Libraries/C and C++
-Provides:       ldapcpplib = %{version_main}
+Provides:       ldapcpplib = %{version}
 Obsoletes:      ldapcpplib <= 0.0.5
 
 %description -n libldapcpp0
@@ -239,7 +238,7 @@ This package provides a C++ library for accessing LDAP (Version 3)
 Servers
 
 %prep
-%setup -q -a 9 -n openldap-%{version_main}
+%setup -q -a 9 -n openldap-%{version}
 %patch1 -p1
 %patch3 -p1
 %patch5 -p1

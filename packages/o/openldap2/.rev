@@ -1503,4 +1503,41 @@ Removal of SuSEfirewall2 service.
   constructs (forwarded request 1041971 from dirkmueller)</comment>
     <requestid>1041973</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>f59ce0f3442434516edc9b2f589fbe1f</srcmd5>
+    <version>2.6.4</version>
+    <time>1681654007</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.4:
+  * Fixed client tools to remove 'h' and 'p' options
+  * Fixed ldapsearch memory leak with paged results (ITS#9860)
+  * Fixed libldap ldif_open_urlto check for failure (ITS#9904)
+  * Fixed libldap ldap_url_parsehosts check for failure
+  * Fixed liblunicode UTF8bvnormalize buffer size (ITS#9955)
+  * Fixed lloadd memory leaks (ITS#9907)
+  * Fixed lloadd shutdown code to protect memory correctly
+  * Fixed lloadd race in epoch.c (ITS#9947)
+  * Fixed lloadd potential deadlock with cn=monitor (ITS#9951)
+  * Fixed lloadd to keep listener base around when not active
+  * Fixed lloadd object reclamation sequencing (ITS#9983)
+  * Fixed slapd memory leak with olcAuthIDRewrite (ITS#6035)
+  * Fixed slapd free of redundant cmdline option (ITS#9912)
+  * Fixed slapd transactions extended operations cleanup after
+  * Fixed slapd deadlock with replicated cn=config
+  * Fixed slapd connection close logic (ITS#9991)
+  * Fixed slapd bconfig locking of cn=config entries (ITS#9045)
+  * Fixed slapd-mdb max number of index databases to 256
+  * Fixed slapd-mdb to always release entries from ADD operations
+  * Fixed slapd-mdb to fully init empty DN in tool_entry_get
+  * Fixed slapd-monitor memory leaks with lloadd (ITS#9906)
+  * Fixed slapd-monitor to free remembered cookies (ITS#9339)
+  * Fixed slapo-accesslog reqStart ordering matching rule
+  * Fixed slapo-deref memory leak (ITS#9924)
+  * Fixed slapo-dynlist to ignore irrelevant objectClasses
+  * Fixed slapo-dynlist to avoid unnecessary searches (ITS#9929)
+  * Fixed slapo-dynlist to mark internal searches as such
+  * Fixed slapo-pcache crash in consistency_check (ITS#9966)
+  * Fixed slapo-remoteauth memory leaks (ITS#9438)</comment>
+    <requestid>1079577</requestid>
+  </revision>
 </revisionlist>
