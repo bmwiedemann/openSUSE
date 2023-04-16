@@ -15,4 +15,13 @@
     <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
     <requestid>881626</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>55705b526e655932770fade8db068f24</srcmd5>
+    <version>1.0.2</version>
+    <time>1681654060</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file (copyright year)
+</comment>
+    <requestid>1079747</requestid>
+  </revision>
 </revisionlist>

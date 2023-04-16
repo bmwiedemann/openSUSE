@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:06:08 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Cleanup spec file (copyright year)
+
+-------------------------------------------------------------------
 Sat Mar 27 00:31:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc
