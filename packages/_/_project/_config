@@ -503,6 +503,7 @@ FileProvides: /usr/bin/qemu-system-aarch64 qemu-arm
 FileProvides: /usr/bin/racket racket
 FileProvides: /usr/bin/zsh zsh
 FileProvides: /usr/sbin/ldconfig glibc
+FileProvides: /usr/sbin/showconsole blog
 
 # Set preferences for above list - work with negative prefers, in order to be able to catch no-longer existing ones
 Prefer: bash-sh

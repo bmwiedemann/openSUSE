@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 16 13:14:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.51:
+  * Fix bug resulting in empty matches not being considered as
+    valid when enclosed within a selector.
+  * Fix build using flexisip flags
+
+-------------------------------------------------------------------
 Wed Jan 11 03:04:02 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.9
 
 - Update to version 5.2.9:
