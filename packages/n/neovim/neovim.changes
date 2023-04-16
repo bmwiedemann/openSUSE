@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 14 17:13:38 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.0
+  * For notable changes see `:help news`
+- Remove snprintf-buf-ovrflw-FORTIFY-3.patch
+
+-------------------------------------------------------------------
 Mon Mar 27 11:42:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add snprintf-buf-ovrflw-FORTIFY-3.patch to fix
