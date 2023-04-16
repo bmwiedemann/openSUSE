@@ -101,4 +101,15 @@ tools.</comment>
     <comment></comment>
     <requestid>1034469</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5d53bdcd1bf61ac0a2b85daadc63d166</srcmd5>
+    <version>4.1</version>
+    <time>1681666745</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1:
+  * A new `--include` feature, inspired by `help2man --include`.
+  * Allow overriding build date with SOURCE_DATE_EPOCH
+    environment variable in order to make builds reproducible.</comment>
+    <requestid>1079778</requestid>
+  </revision>
 </revisionlist>
