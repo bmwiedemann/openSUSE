@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 12 13:51:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + rtsp-server: fix deadlock on shutdown with non-live pipeline if
+    media isn't playing/prerolled yet and eos-shutdown is enabled
+    for the media
+- Rebase patch.
+
+-------------------------------------------------------------------
 Thu Mar  9 18:32:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.1:
