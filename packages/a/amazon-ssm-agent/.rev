@@ -223,4 +223,39 @@
     <comment></comment>
     <requestid>1059300</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c5ec122751ed8e1b413e34bd27442d4</srcmd5>
+    <version>3.2.815.0</version>
+    <time>1681665182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.815.0:
+  * Add EC2 credential fallback for AssumeRoleUnauthorizedAccess
+    error
+  * Add CloudWatch log upload support for document and session
+    worker
+  * Add set-hostname support in domainjoin plugin for windows
+  * Add wait time in Agent updater to avoid installation issues
+    caused during reboots initiated by domainjoin plugin
+  * Add support for AlmaLinux
+  * Fix KeepHostName parameter without DNS IP address parameter
+    in domainJoin plugin
+  * Fix issue where carriage returns cause json conversion to
+    fail in aws:softwareInventory plugin
+  * Remove IMDS calls in Onprem during health check
+  * Remove S3 global endpoint fallback logic
+  * Update cli descriptions for registration parameters
+  * Update go version to 1.19.6
+- update to 3.2.582.0:
+  * Modified EC2 credential fallback logic
+- update to 3.2.574.0:
+  * Fixed go-vet issues by passing mocks by value
+  * Updated domainjoin and cloudwatch executables for windows
+- update to 3.2.532.0:
+  * Removed explicit setting of EC2 aws credential profile
+  * Added public key to registration info
+  * Sends non-interactive command errors that occur before
+    command execution to data channel
+  * Added instance id verification to registration process</comment>
+    <requestid>1079758</requestid>
+  </revision>
 </revisionlist>
