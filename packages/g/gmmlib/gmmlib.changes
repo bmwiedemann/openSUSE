@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 15 18:20:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.5:
+  * Change Scratch L1 Caching to WB
+  * Update Cachepolicy for MTL
+  * Add forceful fallback to support Tile4 using an Ftr flag
+  * Enable L3 for VP_INPUT_PICTURE_RENDER usage 
+
+-------------------------------------------------------------------
 Mon Feb 27 20:21:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.4:
