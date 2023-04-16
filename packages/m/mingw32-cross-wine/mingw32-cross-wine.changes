@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:05:08 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file
+
+-------------------------------------------------------------------
 Thu Jul 28 10:50:06 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Do not create wine prefix when running on aarch64 and ppc64le cpu host

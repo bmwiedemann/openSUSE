@@ -7,4 +7,14 @@
     <comment>- Required by mingw32-cross-cmake (see https://build.opensuse.org/request/show/1074855)</comment>
     <requestid>1074889</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb11b2a1236bc05ee2550966c05c7390</srcmd5>
+    <version>1.3.2</version>
+    <time>1681654062</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file
+</comment>
+    <requestid>1079749</requestid>
+  </revision>
 </revisionlist>

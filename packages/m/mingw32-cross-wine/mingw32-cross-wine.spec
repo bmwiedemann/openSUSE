@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-cross-wine
 #
-# Copyright (c) 2020 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _with_dns 0
 
@@ -23,9 +24,9 @@ Name:           mingw32-cross-wine
 Version:        1.3.2
 Release:        0
 Summary:        Wine cross runtime
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.winehq.org/
+URL:            http://www.winehq.org/
 Source1:        macros
 Source2:        wine.sh
 %if %{?_with_dns}
@@ -41,21 +42,20 @@ Requires:       sysconfig
 BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-filesystem
 Requires:       mingw32-filesystem
-Requires:       wine-binfmt-standalone
 Requires:       wget
+Requires:       wine-binfmt-standalone
 Requires:       winetricks
 # Xvfb for x display
 Requires:       xorg-x11-server
 Requires:       xvfb-run
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %_mingw32_package_header
 BuildArch:      noarch
 #!BuildIgnore: post-build-checks
 
 %description
 This package contains a ready to use wine prefix for
-running cross compiled applications while building 
-packages, for example cross compiled test 
+running cross compiled applications while building
+packages, for example cross compiled test
 
 %prep
 %setup -c -T
@@ -76,13 +76,12 @@ ln -s ../lib/mingw32-scripts %{buildroot}%{_bindir}/mingw32-cross-wine-start-ses
 # setup dns config
 set -x
 # add dnsmasq as local dns server
-sed -i '/^NETCONFIG_DNS_FORWARDER=/ s,"resolver","dnsmasq",g' /etc/sysconfig/network/config 
+sed -i '/^NETCONFIG_DNS_FORWARDER=/ s,"resolver","dnsmasq",g' /etc/sysconfig/network/config
 sed -i '/^NETCONFIG_DNS_STATIC_SERVERS=/ s,"","127.0.0.1",g' /etc/sysconfig/network/config
 sed -i '/^DEBUG=/ s,"no","yes",g' /etc/sysconfig/network/config
 sed -i '/^NETCONFIG_VERBOSE=/ s,"no","yes",g' /etc/sysconfig/network/config
 
 cat /etc/sysconfig/network/config
-
 
 # update /etc/resolv.conf
 netconfig update -f
