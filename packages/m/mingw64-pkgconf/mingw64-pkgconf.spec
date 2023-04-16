@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-pkgconf
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define pkgconfig_ver 0.29.2
 # For obsoleting pkgconfig, bump the ver to a number higher than latest version
@@ -34,7 +35,6 @@ BuildRequires:  mingw64-filesystem
 Conflicts:      mingw64-pkg-config < %{pkgconfig_obsver}
 Obsoletes:      mingw64-pkg-config < %{pkgconfig_obsver}
 Provides:       mingw64-pkg-config = %{pkgconfig_obsver}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %_mingw64_package_header_debug
 BuildArch:      noarch
 
