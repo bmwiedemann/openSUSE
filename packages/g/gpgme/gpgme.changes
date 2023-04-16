@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 22:15:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add a Qt6 flavor to build Qt6 bindings
+- Use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Mon Mar 20 15:46:55 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.19.0:

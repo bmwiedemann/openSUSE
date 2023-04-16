@@ -21,10 +21,16 @@
 %define psuffix %{nil}
 %bcond_without python3
 %bcond_with qt
-%else
+%endif
+%if "%{flavor}" == "qt"
 %define psuffix qt
 %bcond_with python3
 %bcond_without qt
+%endif
+%if "%{flavor}" == "qt6"
+%define psuffix qt6
+%bcond_with python3
+%bcond_without qt6
 %endif
 Name:           gpgme%{psuffix}
 Version:        1.19.0
@@ -59,6 +65,10 @@ BuildRequires:  python-rpm-macros
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
+%endif
+%if %{with qt6}
+BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Test)
 %endif
 %if 0%{?suse_version} >= 1550
 # TW: generate subpackages for every python3 flavor
@@ -166,7 +176,7 @@ This package contains the bindings to use the library from Python 3 applications
 %endif
 
 %package -n libqgpgme15
-Summary:        Programmatic Qt library interface to GnuPG
+Summary:        Programmatic Qt 5 library interface to GnuPG
 Group:          System/Libraries
 Requires:       gpg2
 
@@ -176,10 +186,10 @@ easier for applications. It provides a high-level crypto API for
 encryption, decryption, signing, signature verification, and key
 management.
 
-This package contains the Qt bindings.
+This package contains the Qt 5 bindings.
 
 %package -n libqgpgme-devel
-Summary:        Development files for libqgpgme, a Qt library for accessing GnuPG
+Summary:        Development files for libqgpgme, a Qt 5 library for accessing GnuPG
 Group:          Development/Libraries/C and C++
 Requires:       libgpgme-devel = %{version}
 Requires:       libgpgmepp-devel = %{version}
@@ -191,7 +201,37 @@ easier for applications. It provides a high-level crypto API for
 encryption, decryption, signing, signature verification, and key
 management.
 
-This package contains the bindings to use the library in Qt C++ applications.
+This package contains the bindings to use the library in Qt 5 C++ applications.
+
+%package -n libqgpgmeqt6-15
+Summary:        Programmatic Qt 6 library interface to GnuPG
+Group:          System/Libraries
+Requires:       gpg2
+
+%description -n libqgpgmeqt6-15
+GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
+easier for applications. It provides a high-level crypto API for
+encryption, decryption, signing, signature verification, and key
+management.
+
+This package contains the Qt 6 bindings.
+
+%package -n libqgpgmeqt6-devel
+Summary:        Development files for libqgpgmeqt6, a Qt library for accessing GnuPG
+Group:          Development/Libraries/C and C++
+Requires:       libgpgme-devel = %{version}
+Requires:       libgpgmepp-devel = %{version}
+Requires:       libqgpgmeqt6-15 = %{version}
+# The include folders have the same name in both libqgpgme-devel and libqgpgmeqt6-devel
+Conflicts:      libqgpgme-devel
+
+%description -n libqgpgmeqt6-devel
+GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
+easier for applications. It provides a high-level crypto API for
+encryption, decryption, signing, signature verification, and key
+management.
+
+This package contains the bindings to use the library in Qt 6 C++ applications.
 
 %prep
 %autosetup -p1 -n gpgme-%{version}
@@ -209,6 +249,10 @@ languages="${languages} python"
 languages="cpp qt"
 %endif
 
+%if %{with qt6}
+languages="cpp qt6"
+%endif
+
 %configure \
 	--disable-silent-rules \
 	--disable-static \
@@ -222,7 +266,7 @@ languages="cpp qt"
 find %{buildroot} -type f -name "*.la" -delete -print
 chmod -x %{buildroot}%{_libdir}/cmake/Gpgmepp/*.cmake
 
-%if %{with qt}
+%if %{with qt} || %{with qt6}
 rm -r %{buildroot}%{_bindir}
 rm -r %{buildroot}%{_datadir}/aclocal/gpgme*
 rm -r %{buildroot}%{_includedir}/gpgme*
@@ -238,18 +282,19 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %endif
 
 %if %{with qt}
-%post -n libqgpgme15 -p /sbin/ldconfig
-%postun -n libqgpgme15 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libqgpgme15
 %endif
 
-%if !%{with qt}
-%post -n libgpgme11 -p /sbin/ldconfig
-%postun -n libgpgme11 -p /sbin/ldconfig
-%post -n libgpgmepp6 -p /sbin/ldconfig
-%postun -n libgpgmepp6 -p /sbin/ldconfig
+%if %{with qt6}
+%ldconfig_scriptlets -n libqgpgmeqt6-15
 %endif
 
-%if !%{with qt}
+%if !%{with qt} && !%{with qt6}
+%ldconfig_scriptlets -n libgpgme11
+%ldconfig_scriptlets -n libgpgmepp6
+%endif
+
+%if !%{with qt} && !%{with qt6}
 %files
 %license COPYING COPYING.LESSER LICENSES
 %doc AUTHORS ChangeLog ChangeLog-2011 README NEWS THANKS TODO VERSION
@@ -305,6 +350,21 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %dir %{_libdir}/cmake/QGpgme
 %{_libdir}/cmake/QGpgme/*.cmake
 %{_libdir}/libqgpgme.so
+%endif
+
+%if %{with qt6}
+%files -n libqgpgmeqt6-15
+%license COPYING COPYING.LESSER LICENSES
+%{_libdir}/libqgpgmeqt6.so.*
+
+%files -n libqgpgmeqt6-devel
+%license COPYING COPYING.LESSER LICENSES
+%{_includedir}/qgpgme/
+%{_includedir}/QGpgME/
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/QGpgmeQt6
+%{_libdir}/cmake/QGpgmeQt6/*.cmake
+%{_libdir}/libqgpgmeqt6.so
 %endif
 
 %changelog
