@@ -16,17 +16,37 @@
 #
 
 
-%define luv_min_ver 1.30.0
+%{?!python3_pkgversion:%define python3_pkgversion 3}
+
+# %%undefine _build_create_debug \
+#     %%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+
+%if 0%{?rhel}
+%define __cmake cmake3
+BuildRequires:  cmake3
+%else
+BuildRequires:  cmake
+%endif
+%if 0%{?rhel} || 0%{?fedora}
+%define vimplugin_dir %{_datadir}/vim/vimfiles
+%else
+%define vimplugin_dir %{_datadir}/vim/site
+%endif
+%if 0%{?fedora}
+%define lua_archdir %{lua_libdir}
+%define lua_noarchdir %{lua_pkgdir}
+%define lua_incdir %{_includedir}/lua-%{lua_version}
+Requires:       python3-neovim
+%bcond_with luajit
+%endif
 # Luajit not available on all platforms
 %ifarch %{arm} %{ix86} x86_64 aarch64
 %bcond_without luajit
 %else
 %bcond_with luajit
 %endif
-%define luaver 5.1
-%define luaver_nopoint 51
 Name:           neovim
-Version:        0.8.3
+Version:        0.9.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -40,10 +60,6 @@ Source3:        suse-spec-template
 # we need /usr/bin/luajit. Fake it.
 Source10:       lj-busted.sh
 Source99:       neovim-rpmlintrc
-# PATCH-FIX-UPSTREAM snprintf-buf-ovrflw-FORTIFY-3.patch gh#neovim/neovim#22779 mcepl@suse.com
-# fix snprintf buffer overflow (crash on :he)
-Patch0:         snprintf-buf-ovrflw-FORTIFY-3.patch
-BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -52,44 +68,46 @@ BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libtermkey-devel
 BuildRequires:  libtool
-BuildRequires:  libuv-devel
-BuildRequires:  libvterm-devel >= 0.3
-BuildRequires:  lua-macros
 BuildRequires:  make
-BuildRequires:  msgpack-c-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  tree-sitter-devel
-BuildRequires:  unibilium-devel
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libutf8proc)
+BuildRequires:  pkgconfig(libuv) >= 1.42.0
+BuildRequires:  pkgconfig(msgpack)
+BuildRequires:  pkgconfig(termkey)
+BuildRequires:  pkgconfig(tree-sitter) >= 0.20.8
+BuildRequires:  pkgconfig(unibilium)
+BuildRequires:  pkgconfig(vterm) >= 0.3
 Requires:       gperf
 Requires:       libvterm0 >= 0.3
-Recommends:     python3-neovim
-Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
-# XSel provides access to the system clipboard
+Requires:       xdg-utils
+
+Recommends:     wl-clipboard
 Recommends:     xsel
+
+%if 0%{?suse_version}
+BuildRequires:  libluv-devel
+BuildRequires:  lua-macros
+BuildRequires:  lua51-LPeg
+BuildRequires:  lua51-bit32
+BuildRequires:  lua51-luarocks
+BuildRequires:  lua51-luv
+BuildRequires:  lua51-mpack
 %if %{with luajit}
 BuildRequires:  luajit-devel
 %else
 BuildRequires:  lua51-BitOp
 BuildRequires:  lua51-devel
 %endif
-# luajit implements version 5.1 of the lua language spec, so it needs the
-# compat versions of libs.
-BuildRequires:  lua51-LPeg
-BuildRequires:  libluv-devel >= %{luv_min_ver}
-BuildRequires:  lua51-luarocks
-BuildRequires:  lua51-luv >= %{luv_min_ver}
-BuildRequires:  lua51-mpack
-Requires:       lua51-luv >= %{luv_min_ver}
+Requires:       lua51-bit32
+Requires:       lua51-luv
+Recommends:     python3-neovim
 %if 0%{?suse_version} < 1330
-BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools
 Requires(postun):gtk3-tools
+%endif
 %endif
 %if 0%{?suse_version} > 1500
 # Modern *SUSE … tests are enabled
@@ -97,6 +115,23 @@ Requires(postun):gtk3-tools
 BuildRequires:  lua51-busted
 BuildRequires:  hostname
 # end of test requirements
+%endif
+%if 0%{?rhel} || 0%{?fedora}
+BuildRequires:  lua-bit32
+BuildRequires:  lua-devel
+BuildRequires:  lua-lpeg
+BuildRequires:  lua-luv-devel
+BuildRequires:  lua-mpack
+BuildRequires:  luarocks
+BuildRequires:  python2-six
+Requires:       lua-luv
+%endif
+%if 0%{?rhel}
+BuildRequires:  lua-bit32
+BuildRequires:  lua-macros
+BuildRequires:  luajit-devel
+Requires:       lua-bit32
+Requires:       python34-neovim
 %endif
 
 %description
@@ -137,19 +172,21 @@ export CXXFLAGS="%{optflags} -fcommon"
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
 %if %{with luajit}
        -DBUSTED_PRG="$(readlink -f ../lj-busted.sh)" \
+       -DLUAJIT_INCLUDE_DIR:PATH=%(pkgconf --cflags-only-I luajit|cut -c 3-) \
 %endif
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=ON  \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
-       -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
        -DCMAKE_COLOR_MAKEFILE=OFF \
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-       -DLUA_INCLUDE_DIR:PATH=%{lua_incdir}
+       -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir} \
+# -DLIBLUV_LIBRARY=%{lua_archdir}/luv.so
 %make_build
 
 popd
 
 %install
+%{?!cmake_install:%define cmake_install DESTDIR=%{buildroot} make install -C build}
 %cmake_install
 
 # system-wide configuration file
@@ -162,7 +199,8 @@ install -p -m 644 %{SOURCE3} %{buildroot}%{_datadir}/nvim/template.spec
 install -p -m 644 %{SOURCE2} %{buildroot}%{_datadir}/nvim/template.spec
 %endif
 
-%suse_update_desktop_file -r nvim ConsoleOnly Application Utility TextEditor
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
+    runtime/nvim.desktop
 install -d -m0755 %{buildroot}%{_datadir}/pixmaps
 install -m0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
 
@@ -181,7 +219,6 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 export NO_BRP_CHECK_RPATH=true
 
 %check
-# Unit tests require the ffi module which is only available with luajit
 %if %{with luajit}
 # Tests fail on aarch64 gh#neovim/neovim#18176
 %ifnarch aarch64
@@ -194,13 +231,13 @@ popd
 %endif
 %endif
 
-%if 0%{?suse_version} < 1330
+%if 0%{?suse_version} && 0%{?suse_version} < 1330
 %post
 %desktop_database_post
 %icon_theme_cache_post
 %endif
 
-%if 0%{?suse_version} < 1330
+%if 0%{?suse_version} && 0%{?suse_version} < 1330
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
@@ -208,19 +245,23 @@ popd
 
 %files
 %doc BACKERS.md CONTRIBUTING.md README.md
+%docdir %{_mandir}
 %license LICENSE.txt
 %{_bindir}/nvim
-%{_datadir}/nvim/
-%{_datadir}/applications/nvim.desktop
-%{_datadir}/pixmaps/nvim.png
-%{_datadir}/icons/hicolor/*/apps/nvim.png
 %{_mandir}/man1/nvim.1%{?ext_man}
+%dir %{_datadir}/nvim
+%{_datadir}/nvim/sysinit.vim
+%{_datadir}/nvim/template.spec
+%{_datadir}/nvim/runtime/
+%{_datadir}/applications/*
+%{_datadir}/pixmaps/*
+%{_datadir}/icons/*
 %dir %{_sysconfdir}/nvim
 %config(noreplace) %{_sysconfdir}/nvim/sysinit.vim
 %dir %{_datadir}/vim
-%dir %{vimplugin_dir}/
+%dir %{vimplugin_dir}
 %dir %{vimplugin_dir}/after
-%dir %{vimplugin_dir}/after/syntax
+%dir %{vimplugin_dir}/after/*
 %dir %{vimplugin_dir}/autoload
 %dir %{vimplugin_dir}/colors
 %dir %{vimplugin_dir}/doc
