@@ -83,6 +83,8 @@ echo -n "$(git log -1 --date=unix --format=format:%cd $LASTCHANGE)" > build/util
 
 
 echo ">>>>>> Generate GPU_LISTS_VERSION"
+# Make git all commits in chromium history visible to the script
+git fetch  --filter=tree:0 --unshallow origin $(git rev-parse HEAD)
 python3 build/util/lastchange.py -m GPU_LISTS_VERSION \
     --revision-id-only --header gpu/config/gpu_lists_version.h
 if [ $? -ne 0 ]; then

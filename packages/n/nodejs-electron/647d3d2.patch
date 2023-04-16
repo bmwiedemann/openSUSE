@@ -20,12 +20,15 @@ diff --git src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp src/third_party/s
 index d3dbdb9..fad747a 100644
 --- src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
 +++ src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
-@@ -922,7 +922,7 @@
+@@ -922,7 +922,11 @@
  
  	if(optimizationLevel > 0)
  	{
--		fpm.addPass(llvm::SROAPass());
++#if LLVM_VERSION_MAJOR >= 16
 +		fpm.addPass(llvm::SROAPass(llvm::SROAOptions::PreserveCFG));
++#else
+ 		fpm.addPass(llvm::SROAPass());
++#endif
  		fpm.addPass(llvm::InstCombinePass());
  	}
  

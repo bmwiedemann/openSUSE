@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 15 11:33:42 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.6
+  * Fixed an issue with Content-Security-Policy not being correctly enforced when sandbox: false and contextIsolation: false. (CVE-2023-23623)
+  * Fixed a memory leak in v8.serialize() when running Node.js within Electron. 
+  * Viz: Add CHECKs in HostFrameSinkManager (CVE-2023-1810)
+  * Blink: Move the edit commands to an on stack variable (CVE-2023-1811)
+- Fix download tarball script wrongly setting GPU_LISTS_VERSION to zero
+- Change 647d3d2.patch to fix FTBFS on aarch64 Fedora
+- Fix unresolvable build on Fedora 37
+
+-------------------------------------------------------------------
 Mon Apr  3 15:36:21 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patches to fix build on aarch64:
