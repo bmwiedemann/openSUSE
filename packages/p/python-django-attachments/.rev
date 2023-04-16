@@ -31,4 +31,24 @@
     <comment></comment>
     <requestid>970872</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f1ed75125e6a4567b20b8b082dc3dcd0</srcmd5>
+    <version>1.10</version>
+    <time>1681654046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10:
+  * Support custom form validators via
+    ``AppConfig.attachment_validators``
+  * Remove quotes from &quot;attachment_list&quot; (Aaron C. de Bruyn)
+  * Add a URL for matching objects with a UUID4 primary key. Fix
+  * `Issue #94 &lt;https://github.com/bartTC/django-
+    attachments/issues/94&gt;`_
+  * Document settings supported by django-attachments
+  * Document how to make a new release. Closes
+  * Add testing with Django 4.0 and 4.1, Python 3.9 and 3.10
+    and switch the default Python version used to 3.10
+  * Add testing w/ Python 3.11 - supported only on Django 4.1 for
+    now</comment>
+    <requestid>1079721</requestid>
+  </revision>
 </revisionlist>
