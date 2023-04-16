@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 15 10:26:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 40.0.2:
+  * Fixed compilation when using LibreSSL 3.7.2.
+
+-------------------------------------------------------------------
 Mon Mar 27 06:38:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - rebase patch remove_python_3_6_deprecation_warning.patch

@@ -869,4 +869,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1076828</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>548fc9e9373f4d10f5c66493afc15a36</srcmd5>
+    <version>40.0.2</version>
+    <time>1681654003</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 40.0.2:
+  * Fixed compilation when using LibreSSL 3.7.2.</comment>
+    <requestid>1079573</requestid>
+  </revision>
 </revisionlist>
