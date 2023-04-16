@@ -36,6 +36,7 @@ BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
+BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module pytz if %python-base < 3.9}
 # pyxmpp2-scram not available, the code actually covers the non-availability
 #BuildRequires:  %%{python_module pyxmpp2-scram}
@@ -52,6 +53,7 @@ Requires:       python-ecdsa
 Requires:       python-feedparser
 Requires:       python-python-dateutil
 Requires:       python-python-gnupg
+Requires:       python-pytzdata
 #Requires:       python-pyxmpp2-scram
 %if 0%{?python_version_nodots} < 39
 Requires:       python-pytz
