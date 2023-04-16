@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        3.8.1
+Version:        3.15.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
@@ -42,6 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module jaraco.itertools}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
@@ -72,7 +73,7 @@ rm -r zipp.egg-info
 # skip performance test (we do not have func_timeout sofar)
 sed -i -e 's:import func_timeout::' \
        -e 's:@func_timeout.func_set_timeout(.):@unittest.skip("skip performance test"):' \
-       test_zipp.py
+       tests/test_zipp.py
 %pytest
 %endif
 
@@ -80,9 +81,8 @@ sed -i -e 's:import func_timeout::' \
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/zipp.py*
-%pycache_only %{python_sitelib}/__pycache__/zipp*.pyc
-%{python_sitelib}/zipp-%{version}*-info
+%{python_sitelib}/zipp
+%{python_sitelib}/zipp-%{version}.dist-info
 %endif
 
 %changelog

@@ -171,4 +171,30 @@
     <comment></comment>
     <requestid>999761</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0d6231a9fc4975171d8f36da03113ce3</srcmd5>
+    <version>3.15.0</version>
+    <time>1681654009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.0:
+  * gh-102209: ``test_implied_dirs_performance`` now tests
+  * measures the time complexity experimentally.
+  * Minor cleanup in tests, including #93.
+  * In tests, add a fallback when ``func_timeout`` isn't
+    available.
+  * gh-101566: In ``CompleteDirs``, override ``ZipFile.getinfo``
+  * to supply a ``ZipInfo`` for implied dirs.
+  * gh-101144: Honor ``encoding`` as positional parameter
+  * to ``Path.open()`` and ``Path.read_text()``.
+  * #85: Added support for new methods on ``Path``:
+  * ``match`` * ``glob`` and ``rglob`` * ``relative_to``
+  * ``is_symlink``
+  * Removed 'print' expression in test_pickle.
+  * bpo-43651: Apply ``io.text_encoding`` on Python 3.10 and
+    later.
+  * #81: ``Path`` objects are now pickleable if they've been
+  * constructed from pickleable objects. Any restored objects
+  * will re-construct the zip file with the original arguments.</comment>
+    <requestid>1079595</requestid>
+  </revision>
 </revisionlist>
