@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 14 10:32:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Only run tests for arches where there is a remote chance they
+  will succeed (ix86 and x86_64).
+
+-------------------------------------------------------------------
 Tue Apr 11 09:37:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.0:

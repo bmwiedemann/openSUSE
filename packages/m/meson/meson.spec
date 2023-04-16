@@ -59,6 +59,7 @@ Provides:       meson-gui = %{version}
 Obsoletes:      meson-gui < %{version}
 BuildArch:      noarch
 %else
+ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  bison
 BuildRequires:  clang
 BuildRequires:  cups-devel
