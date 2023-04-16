@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -86,21 +86,25 @@ URL:            https://www.blender.org/
 # Please leave the source url intact
 Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
-Source2:        geeko.blend
-Source3:        geeko.README
-Source4:        geeko_example_scene.blend
-Source5:        geeko_example_scene.README
-Source6:        %{name}-sample
-Source8:        %{name}.appdata.xml
-Source9:        SUSE-NVIDIA-GPU-rendering.txt
-Source10:       SUSE-NVIDIA-OptiX-rendering.txt
+# addons are no longer included in the source tarball
+# repos do not provide any released files
+# https://projects.blender.org/blender/blender-addons.git
+Source2:        %{name}-addons-%{version}.tar.xz
+# https://projects.blender.org/blender/blender-addons-contrib.git
+Source3:        %{name}-addons-contrib-%{version}.tar.xz
+Source4:        geeko.blend
+Source5:        geeko.README
+Source6:        geeko_example_scene.blend
+Source7:        geeko_example_scene.README
+Source8:        %{name}-sample
+Source9:        %{name}.appdata.xml
+Source10:       SUSE-NVIDIA-GPU-rendering.txt
+Source11:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://github.com/blender/blender/commit/79837c5ed4b5.patch#/Add_missing_iostream_header.patch
 # PATCH-FIX-OPENSUSE - fix gcc 13 fallout
-Patch2:         Add_missing_system_error_handler.patch
+Patch1:         Add_missing_system_error_handler.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -303,8 +307,16 @@ pushd "%{_sourcedir}"
 md5sum -c %{SOURCE1}
 popd
 
-%setup -q
+%setup -q -a2 -a3
 %autopatch -p1
+
+# integrate addons in source tree
+mkdir scripts/addons
+for d in addons addons-contrib; do
+    mv blender-$d-%{version}/* scripts/addons
+    # wipe .gitea and .github
+    rm -r blender-$d-%{version}
+done
 
 rm -rf extern/libopenjpeg
 %if %{with system_glew}
@@ -497,17 +509,17 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 mv -v %{buildroot}%{_datadir}/doc/blender/* %{buildroot}%{_docdir}/%{name}/
 rmdir %{buildroot}%{_datadir}/doc/blender
 # install blender sample.
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0755 %{SOURCE6} %{buildroot}%{_bindir}/
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE7} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0755 %{SOURCE8} %{buildroot}%{_bindir}/
 # install appdata file
 mkdir -p %{buildroot}%{_datadir}/appdata/
-install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
+install -D -m 0644 %{SOURCE9} %{buildroot}%{_datadir}/appdata/
 # GPU and OptiX rendering texts
-install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE11} %{buildroot}%{_docdir}/%{name}/
 
 chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
 

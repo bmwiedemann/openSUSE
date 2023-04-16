@@ -1,0 +1,25 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://projects.blender.org/blender/blender-addons.git</param>
+    <param name="revision">v3.5.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">blender-addons*.tar</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://projects.blender.org/blender/blender-addons-contrib.git</param>
+    <param name="revision">v3.5.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">blender-addons-contrib*.tar</param>
+  </service>
+</services>

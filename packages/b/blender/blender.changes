@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  1 15:36:26 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.5.0:
+  way too many to be listed here, check:
+  https://wiki.blender.org/wiki/Reference/Release_Notes/3.5
+  https://www.blender.org/download/releases/3-5/
+- Removed Add_missing_iostream_header.patch, applied upstream
+- Add blender-addons and blender-addons-contrib by _service
+
+-------------------------------------------------------------------
 Sun Mar 26 10:30:52 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Remove the explicit zstd lib definition
