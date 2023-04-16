@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  9 14:43:39 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 0.9.72:
+  * modif: move hardcoded apps recognized by default in uiapps file
+  * modif: remove sandbox edit dialog and replace it with uiapps file
+  * feature: added uiapps file for default and user apps configuration
+  * feature: added a system network monitor in sandbox stats
+  * feature: added apparmor support in firejail-ui
+  * feature: added bluetooth support in firejail-ui
+  * feature: print final sandbox configuration in firejail-ui
+  * bugfixes
+
+-------------------------------------------------------------------
 Tue Jun 14 20:21:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove patches fix-internet-access.patch and fix-CVE-2022-31214.patch

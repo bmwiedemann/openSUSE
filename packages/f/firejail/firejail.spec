@@ -1,7 +1,7 @@
 #
 # spec file for package firejail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.70
+Version:        0.9.72
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
+BuildRequires:  xz
 Requires(post): permissions
 Requires(pre):  shadow
 
@@ -110,6 +111,10 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %dir %{_datadir}/vim/vimfiles/syntax
 %{_datadir}/vim/vimfiles/ftdetect/firejail.vim
 %{_datadir}/vim/vimfiles/syntax/firejail.vim
+%dir %{_datadir}/gtksourceview-5
+%dir %{_datadir}/gtksourceview-5/language-specs
+%{_datadir}/gtksourceview-5/language-specs/firejail-profile.lang
+%config /etc/apparmor.d/abstractions/base.d/firejail-base
 
 %files bash-completion
 %license COPYING
@@ -122,6 +127,5 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %dir %{_datarootdir}/zsh
 %dir %{_datarootdir}/zsh/site-functions/
 %{_datadir}/zsh/site-functions/_firejail
-/etc/apparmor.d/abstractions/base.d/firejail-base
 
 %changelog
