@@ -468,4 +468,23 @@
     <comment></comment>
     <requestid>966169</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>341dba3a5ea09cdfd827a49d784e21c8</srcmd5>
+    <version>6.16</version>
+    <time>1681654065</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.16:
+  * Misc man page fixes, specifically addressing -V option
+    misdocumentation
+  * Improve security by allowing rngd to drop privlidges
+  * Misc documentation improvements
+  * Fix building with jitterentropy when configured for internal
+    software clock usage
+  * Fix building of power9 darn code on power systems that don't
+    natively support DARN instruction
+  * Fix jitterentropy long timeout failures on low power hardware
+  * Fix various build time errors on non libc systems
+  * Misc covscan issue fixes</comment>
+    <requestid>1079756</requestid>
+  </revision>
 </revisionlist>

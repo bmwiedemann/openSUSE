@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:27:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.16:
+  * Misc man page fixes, specifically addressing -V option
+    misdocumentation
+  * Improve security by allowing rngd to drop privlidges
+  * Misc documentation improvements
+  * Fix building with jitterentropy when configured for internal
+    software clock usage
+  * Fix building of power9 darn code on power systems that don't
+    natively support DARN instruction
+  * Fix jitterentropy long timeout failures on low power hardware
+  * Fix various build time errors on non libc systems
+  * Misc covscan issue fixes
+
+-------------------------------------------------------------------
 Sun Mar 27 19:45:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.15:

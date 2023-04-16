@@ -1,7 +1,7 @@
 #
 # spec file for package rng-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           rng-tools
-Version:        6.15
+Version:        6.16
 Release:        0
 Summary:        Support daemon for hardware random device
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source3:        90-hwrng.rules
 BuildRequires:  automake
 BuildRequires:  libp11-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       opensc
@@ -83,7 +84,7 @@ ensure that it is properly random.
 ./autogen.sh
 # NIST Beacon fetches a randomness token over internet in clear text
 # Try without this functionality
-%configure --without-rtlsdr --without-nistbeacon
+%configure --without-rtlsdr --without-nistbeacon --without-qrypt
 %make_build
 
 %install
