@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 15 18:49:13 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Ignore test failures on Leap 15.x ppc64le.
+
+-------------------------------------------------------------------
 Sun Oct 30 14:09:39 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
