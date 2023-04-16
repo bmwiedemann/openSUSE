@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1037040</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>00fba52397ae1a63ffb841cff51fde30</srcmd5>
+    <version>1.6.3</version>
+    <time>1681654061</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file (name, year, url protocol)</comment>
+    <requestid>1079748</requestid>
+  </revision>
 </revisionlist>

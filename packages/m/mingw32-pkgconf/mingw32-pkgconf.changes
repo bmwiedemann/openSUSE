@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:02:04 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file (name, year, url protocol)
+
+-------------------------------------------------------------------
 Mon Dec  9 09:20:18 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 
 - fix file list

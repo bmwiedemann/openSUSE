@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:02:14 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file (name, year, url protocol)
+
+-------------------------------------------------------------------
 Wed Nov 16 19:49:47 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add additional utils package used by mingw32-filesystem to fix
