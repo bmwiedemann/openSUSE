@@ -49,4 +49,19 @@
     `RequestConfig.configure()` (#888) fixes: #865</comment>
     <requestid>1066274</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>79a13d2f0e42dc4a7ade1787e70b3a55</srcmd5>
+    <version>2.5.3</version>
+    <time>1681654046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.3:
+  * Assign request to table before anything else in
+    `RequestConfig.configure()` (#888) fixes: #865
+  * Add type hints to get_context_data (#895) by @mschoettle
+  * Document hidden table attributes setting (#897) by
+    @mschoettle
+  * Fix building of the docs (#900) by @danielroseman
+  * Add template bootstrap5-responsive.html (#896) by @mschoettle</comment>
+    <requestid>1079723</requestid>
+  </revision>
 </revisionlist>

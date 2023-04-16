@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 16 08:15:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Assign request to table before anything else in
+    `RequestConfig.configure()` (#888) fixes: #865
+  * Add type hints to get_context_data (#895) by @mschoettle
+  * Document hidden table attributes setting (#897) by
+    @mschoettle
+  * Fix building of the docs (#900) by @danielroseman
+  * Add template bootstrap5-responsive.html (#896) by @mschoettle
+
+-------------------------------------------------------------------
 Thu Feb 16 21:11:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.2:
