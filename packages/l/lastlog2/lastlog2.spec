@@ -53,11 +53,12 @@ to develop applications that needs to read, write or modify the lastlog2 databas
 %setup -q
 
 %build
-%meson -Dman=true
+%meson -Dman=true -Dcompat-symlink=true
 %meson_build
 
 %install
 %meson_install
+echo ".so lastlog2" > %{buildroot}%{_mandir}/man8/lastlog.8
 
 %check
 %meson_test
@@ -84,11 +85,13 @@ fi
 
 %files
 %license LICENSE
+%{_bindir}/lastlog
 %{_bindir}/lastlog2
 %{_unitdir}/lastlog2-import.service
 %{_tmpfilesdir}/lastlog2.conf
 %{_pam_moduledir}/pam_lastlog2.so
 %ghost %{_localstatedir}/lib/lastlog
+%{_mandir}/man8/lastlog.8%{?ext_man}
 %{_mandir}/man8/lastlog2.8%{?ext_man}
 %{_mandir}/man8/pam_lastlog2.8%{?ext_man}
 

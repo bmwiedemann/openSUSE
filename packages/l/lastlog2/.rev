@@ -49,4 +49,12 @@ There should be a rpmlint which whitelists this PAM module.</comment>
   - liblastlog2: sort output according to user names (forwarded request 1078398 from kukuk)</comment>
     <requestid>1078399</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cdc60fdac00e65a2fdf2e2cbbf4812bf</srcmd5>
+    <version>1.1.0</version>
+    <time>1681653999</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lastlog symlink for compatibility (forwarded request 1079199 from kukuk)</comment>
+    <requestid>1079200</requestid>
+  </revision>
 </revisionlist>
