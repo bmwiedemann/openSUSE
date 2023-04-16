@@ -31,4 +31,26 @@
     <comment></comment>
     <requestid>1061196</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e28327e62eefe2949e613dc1f7b12b43</srcmd5>
+    <version>0.6.3</version>
+    <time>1681666961</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.3:
+  * `autoray.lazy.compute`: allow computing multiple outputs
+    simultaneously
+  * `autoray.lazy.Function` allow pickling and viewing of
+    uncompiled source
+  * make sure `shape` and `ndim` work for builtins similarly to
+    `numpy.{shape,ndim}`
+  * Add: `autoray.lazy.where` function for `LazyArray`
+  * Add: `autoray.lazy.take` function for `LazyArray`
+  * Add`LazyArray.plot_history_stats` pie charts
+  * Add `autoray.shape` and `autoray.ndim` as preferred shape
+    functions
+  * Add basic support for `aesara`
+  * `LazyArray`: fix negative axis reductions
+  * fix fancy indexing of `LazyArray` objects</comment>
+    <requestid>1079777</requestid>
+  </revision>
 </revisionlist>
