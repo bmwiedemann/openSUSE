@@ -200,4 +200,20 @@
     names.</comment>
     <requestid>1064204</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4bc1b8bc48a89cbe60aa1d70b15b74c6</srcmd5>
+    <version>3.41.2.0</version>
+    <time>1681654054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.41.2.0:
+  * Fixed :issue:`412` in :meth:`apsw.ext.make_virtual_module`.
+  * Added :meth:`apsw.connections` to get all connections.
+  * :func:`sys.unraisablehook` is called correctly (:issue:`410`)
+  * Be stricter where :class:`bool` values are expected (eg
+  * :meth:`VTTable.BestIndex`), only accepting :class:`int` and
+    :class:`bool`.  Previously you could for example supply
+    strings and lists, which were almost certainly unintended
+    errors.</comment>
+    <requestid>1079739</requestid>
+  </revision>
 </revisionlist>

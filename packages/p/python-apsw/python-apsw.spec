@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apsw
-Version:        3.40.1.0
+Version:        3.41.2.0
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib

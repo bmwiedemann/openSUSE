@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:22:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.41.2.0:
+  * Fixed :issue:`412` in :meth:`apsw.ext.make_virtual_module`.
+  * Added :meth:`apsw.connections` to get all connections.
+  * :func:`sys.unraisablehook` is called correctly (:issue:`410`)
+  * Be stricter where :class:`bool` values are expected (eg
+  * :meth:`VTTable.BestIndex`), only accepting :class:`int` and
+    :class:`bool`.  Previously you could for example supply
+    strings and lists, which were almost certainly unintended
+    errors.
+
+-------------------------------------------------------------------
 Fri Feb 10 10:08:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.40.1.0:
