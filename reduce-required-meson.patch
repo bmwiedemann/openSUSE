@@ -1,10 +1,10 @@
-Index: gstreamer-1.22.0/meson.build
+Index: gst-devtools-1.22.2/meson.build
 ===================================================================
---- gstreamer-1.22.0.orig/meson.build
-+++ gstreamer-1.22.0/meson.build
+--- gst-devtools-1.22.2.orig/meson.build
++++ gst-devtools-1.22.2/meson.build
 @@ -1,6 +1,6 @@
  project('gst-devtools', 'c',
-   version : '1.22.1',
+   version : '1.22.2',
 -  meson_version : '>= 0.62',
 +  meson_version : '>= 0.61',
    default_options : [ 'warning_level=1',
