@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 15 09:49:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15:
+  * New MESON build system, many thanks to amispark and Lovell
+    Fuller for bringing this.
+  * Fixed a bug that caused memory corruption on colord
+  * cmsReadRawTag can read portions  of tags again. Removing this
+    caused colord to segfault when dumping profiles
+  * Added more checks based of fuzzer discoveries.
+  * MSYS2 can now compile lcms2
+  * Checked on Apple Silicon M1 and M2
+  * Fixed a bug of fastfloat plug-in that affected Krita CMYK
+    color selector
+- drop 0001-fix-memory-corruption-when-unregistering-plugins.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Dec 12 08:50:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) for alternative providers support

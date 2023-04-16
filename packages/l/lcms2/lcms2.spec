@@ -1,7 +1,7 @@
 #
 # spec file for package lcms2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lcms2
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        Little CMS Engine - A color management library and tools
 License:        MIT
@@ -27,7 +27,6 @@ Source0:        https://github.com/mm2/Little-CMS/releases/download/lcms%{versio
 Source1:        baselibs.conf
 Patch0:         lcms2-ocloexec.patch
 Patch1:         lcms2-visibility.patch
-Patch2:         0001-fix-memory-corruption-when-unregistering-plugins.patch
 %if 0%{?suse_version}
 BuildRequires:  autoconf
 BuildRequires:  glibc-devel
