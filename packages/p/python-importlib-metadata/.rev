@@ -218,4 +218,19 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment>- Remove unneeded BuildRequires on pep517.</comment>
     <requestid>1076787</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>820416ef43f242005f9e80cbf0b8c163</srcmd5>
+    <version>6.3.0</version>
+    <time>1681654001</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.3.0:
+  * #115: Support ``installed-files.txt`` for
+    ``Distribution.files`` when present.
+  * #442: Fixed issue introduced in v6.1.0 where non-importable
+  * names (metadata dirs) began appearing in ``packages_distributions``.
+  * #384: ``PackageMetadata`` now stipulates an additional
+    ``get`` method allowing for easy querying of metadata keys that may
+    not be present</comment>
+    <requestid>1079571</requestid>
+  </revision>
 </revisionlist>

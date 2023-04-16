@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 15 10:16:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * #115: Support ``installed-files.txt`` for
+    ``Distribution.files`` when present.
+  * #442: Fixed issue introduced in v6.1.0 where non-importable
+  * names (metadata dirs) began appearing in ``packages_distributions``.
+  * #384: ``PackageMetadata`` now stipulates an additional
+    ``get`` method allowing for easy querying of metadata keys that may
+    not be present
+
+-------------------------------------------------------------------
 Mon Apr  3 01:27:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on pep517. 
