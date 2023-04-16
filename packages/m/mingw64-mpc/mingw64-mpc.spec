@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-mpc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-cross-pkg-config
 BuildRequires:  mingw64-gmp-devel
 BuildRequires:  mingw64-mpfr-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %_mingw64_package_header_debug
 BuildArch:      noarch
 # bugzilla.opensuse.org/1184052

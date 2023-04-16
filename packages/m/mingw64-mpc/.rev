@@ -15,4 +15,14 @@
     <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
     <requestid>881628</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9443a8601ef4adbe2ef9e0620de8eb64</srcmd5>
+    <version>1.0.2</version>
+    <time>1681654058</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file (copyright year)
+</comment>
+    <requestid>1079735</requestid>
+  </revision>
 </revisionlist>
