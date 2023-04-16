@@ -27,4 +27,41 @@
 </comment>
     <requestid>1060970</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e2104e9ef6e4f6b06b288912f5cffa48</srcmd5>
+    <version>0.13.1</version>
+    <time>1681654054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.1:
+  * The `test_pep561_mypy()` integration test validating that
+    @beartype passes all mypy-specific static runtime type-
+    checks
+  * **Pandera (pandas) type hints** (i.e., ad-hoc PEP-
+    noncompliant type hints validating pandas `DataFrame`
+    objects, produced by subscripting factories published by the
+    `pandera.typing` subpackage and validated *only* by user-
+    defined callables decorated by the ad-hoc PEP-noncompliant
+    `@pandera.check_types` runtime type-checking decorator),
+    resolving feature request #227 kindly submitted by
+    @ulfaslakprecis (Ulf Aslak) the Big Boss Typer. @beartype
+    now:
+  * Transparently supports pandera's PEP-noncompliant
+    `@pandera.check_types` decorator for deeply runtime type-
+    checking arbitrary pandas objects.
+  * *Always* performs a rudimentary `O(1)` `isinstance()`-based
+    type-check for each pandera type hint. Doing so substantially
+    improves usability in common use cases, including:
+  * Callables annotated by one or more pandera type hints that
+    are correctly decorated by @beartype but incorrectly *not*
+    decorated by the pandera-specific `@pandera.check_types`
+    decorator.
+  * (Data)classes annotated by one or more pandera type hints.
+  * Pandera type hints passed as the second argument to
+    statement-level @beartype type-checkers – including:
+  * **Pseudo-callable monkey-patching support.** `@beartype` now
+    supports **pseudo-callables** (i.e., otherwise uncallable
+    objects masquerading as callable by defining the `__call__()`
+    dunder method), resolving feature request #211 kindly</comment>
+    <requestid>1079737</requestid>
+  </revision>
 </revisionlist>
