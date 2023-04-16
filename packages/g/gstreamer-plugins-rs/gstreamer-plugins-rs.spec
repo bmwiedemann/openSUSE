@@ -17,10 +17,8 @@
 
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-
-%define _name gstreamer-plugins-rs
+%define _name gst-plugins-rs
 %define gst_branch 1.0
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 # Disable csound for now, bring issue upstream
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
@@ -31,20 +29,20 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.10.5
+Version:        0.10.6
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 
-Source0:        %{_name}-%{version}.tar.xz
-Source1:        vendor.tar.zst
-Source2:        cargo_config
-Source3:        gstreamer-plugins-rs.appdata.xml
+Source:         %{_name}-%{version}.tar.xz
+Source2:        vendor.tar.zst
+Source3:        cargo_config
+Source4:        gstreamer-plugins-rs.appdata.xml
 
-BuildRequires:  cargo
 BuildRequires:  cargo-c
+BuildRequires:  cargo-packaging
 BuildRequires:  clang
 # Disable csound for now, bring issue upstream
 #BuildRequires:  csound-devel
@@ -54,7 +52,6 @@ BuildRequires:  meson >= 0.60
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  python3-tomli
-BuildRequires:  rust >= 1.51
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(dav1d)
@@ -100,17 +97,14 @@ This package contains the pkgconfig development files for the rust
 plugins.
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
-
-%setup -q -D -T -a 1
-%define cargo_registry $(pwd)/vendor
+%autosetup -n %{_name}-%{version} -a2 -p1
 mkdir .cargo
-cp %{SOURCE2} .cargo/config
+cp %{SOURCE3} .cargo/config
 
 %build
 # Disable csound for now, bring issue upstream
 #export CSOUND_LIB_DIR=%%{_libdir}
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 
 %meson \
 	--default-library=shared \
@@ -125,10 +119,10 @@ export RUSTFLAGS=%{rustflags}
 %meson_build
 
 %install
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 %meson_install
 mkdir -p %{buildroot}%{_datadir}/appdata
-cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
+cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 
 %files
 %license LICENSE-APACHE LICENSE-LGPLv2 LICENSE-MIT

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 12 11:50:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.6:
+  + Fixed:
+    - webrtcsink: Fix max/min-bitrate property blurb/nick.
+    - uriplaylistbin: Add missing queues to example.
+    - tttocea608:
+      . Fix pushing of caps events that sometimes contained unfixed
+        caps.
+      . Fix disappearing text after special character in non-popon
+        mode.
+    - transcriberbin:
+      . Fix deadlock on construction.
+      . Fix initial bin setup.
+    - fallbacksrc: Handle incompatible downstream caps without
+      panicking.
+    - ndisrc: Fix copying of raw video frames with different
+      NDI/GStreamer strides.
+    - livesync: Correctly assume zero upstream latency if latency
+      query fails.
+  + Added: webrtcsink: Add ice-transport-policy property that
+    proxies the same webrtcbin property.
+- Switch to cargo-packaging: Drop cargo and rust BuildRequires and
+  rustflags global. Add cargo-packaging BuildRequires and rustflags
+  macro where needed. Use autosetup macro.
+
+-------------------------------------------------------------------
 Fri Mar 31 20:55:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.5:
