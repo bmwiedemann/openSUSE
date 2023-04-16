@@ -1196,6 +1196,7 @@ unsorted:
   - backintime 
   - backintime-lang 
   - backintime-qt 
+  - backupninja 
   - backward-cpp-devel 
   - baekmuk-bitmap-fonts 
   - baekmuk-ttf-fonts 
@@ -12332,7 +12333,7 @@ unsorted:
   - libgupnp-av-devel 
   - libgupnp-devel 
   - libgupnp-dlna-devel 
-  - libgupnp-igd-1_0-4-32bit 
+  - libgupnp-igd-1_6-0-32bit 
   - libgupnp-igd-devel 
   - libgusb-devel 
   - libgusb2-32bit 
@@ -16723,6 +16724,7 @@ unsorted:
   - mandoc 
   - mandoc-bin 
   - mandown 
+  - mangoapp 
   - mangohud 
   - mangohud-32bit 
   - manpageeditor 
@@ -24791,6 +24793,7 @@ unsorted:
   - python310-netutils 
   - python310-networkx 
   - python310-nibabel 
+  - python310-nilearn 
   - python310-nine 
   - python310-nlopt 
   - python310-nltk 
@@ -28150,6 +28153,7 @@ unsorted:
   - python311-netutils 
   - python311-networkx 
   - python311-nibabel 
+  - python311-nilearn 
   - python311-nine 
   - python311-nlopt 
   - python311-nltk 
@@ -29596,7 +29600,6 @@ unsorted:
   - python38-pybugz 
   - python38-pyheif 
   - python38-pymediainfo 
-  - python38-python-datamatrix 
   - python38-python-jenkins 
   - python38-python-qpid-proton 
   - python38-sanlock 
@@ -31606,6 +31609,7 @@ unsorted:
   - python39-netutils 
   - python39-networkx 
   - python39-nibabel 
+  - python39-nilearn 
   - python39-nine 
   - python39-nlopt 
   - python39-nltk 
@@ -45031,7 +45035,7 @@ unsorted:
   - typelib-1_0-GUPnPAV-1_0 
   - typelib-1_0-GUPnPDLNA-2_0 
   - typelib-1_0-GUPnPDLNAGst-2_0 
-  - typelib-1_0-GUPnPIgd-1_0 
+  - typelib-1_0-GUPnPIgd-1_6 
   - typelib-1_0-GUdev-1_0 
   - typelib-1_0-GUsb-1_0 
   - typelib-1_0-GVncPulse-1_0 
