@@ -213,4 +213,13 @@
   * Update test vectors to match python-cryptography 40.0.1</comment>
     <requestid>1074607</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9a5604f79b4f60c6812a9a597d2aa0f0</srcmd5>
+    <version>40.0.2</version>
+    <time>1681654005</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 40.0.2: 
+  * Update test vectors to match python-cryptography 40.0.2</comment>
+    <requestid>1079574</requestid>
+  </revision>
 </revisionlist>
