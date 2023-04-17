@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 17 13:31:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.13:
+  * Update version for metrics-server
+  * bump linkerd
+  * Add kyverno CLI
+  * Remove ioutil usage
+  * Fix command info
+  * Remove background from image using Gimp
+  * Clarify how Derek works with DCO sign-off messages
+
+-------------------------------------------------------------------
+Mon Apr 17 13:30:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.12:
+  * Fix test for kubens
+  * Update kubectl, terraform and remove version for kubens
+  * Bump github.com/otiai10/copy from 1.9.0 to 1.10.0
+  * enable support for seaweedfs
+  * Update ISSUE_TEMPLATE.md
+  * Bump golang.org/x/crypto from 0.7.0 to 0.8.0
+
+-------------------------------------------------------------------
 Thu Apr 13 09:31:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.11:
