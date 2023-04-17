@@ -272,4 +272,14 @@
     (issue #334)</comment>
     <requestid>1074605</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>42dd904402b238e01c74c5510fb87ff6</srcmd5>
+    <version>2.2.3</version>
+    <time>1681746059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.3:
+  * Add support for Python 3.12
+  * Detach content iteration methods from ModelVisitor</comment>
+    <requestid>1079725</requestid>
+  </revision>
 </revisionlist>
