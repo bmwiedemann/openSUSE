@@ -37,7 +37,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        67.6.0
+Version:        67.6.1
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
