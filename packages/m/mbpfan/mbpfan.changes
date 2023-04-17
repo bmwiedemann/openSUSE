@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 12 15:42:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.4.0:
+  * Add support for alternate SMC path used with newer MacBooks, #236
+  * Improved systemd integration, #250, #252, 253
+  * Removed developer tests which confused users
+- Added 0001-fix-pidfile-path.patch to align PID path to systemd service file
+
+-------------------------------------------------------------------
 Sun Dec  4 14:19:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

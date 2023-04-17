@@ -1,7 +1,7 @@
 #
 # spec file for package mbpfan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           mbpfan
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        A simple daemon to control fan speed on all MacBook/MacBook Pros
 License:        GPL-3.0-only
 URL:            https://github.com/linux-on-mac/mbpfan
 Source0:        https://github.com/linux-on-mac/mbpfan/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         harden_mbpfan.service.patch
+# PATCH-FIX-UPSTREAM fix-pidfile-path.patch
+Patch1:         0001-fix-pidfile-path.patch
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  systemd-rpm-macros
@@ -44,8 +46,7 @@ number of processors and fans (max. 10).
 * Users can configure it using the file %{_sysconfdir}/mbpfan.conf
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
