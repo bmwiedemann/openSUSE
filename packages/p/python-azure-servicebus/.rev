@@ -259,4 +259,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1070635 from glaubitz)</comment>
     <requestid>1070699</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>aa6f4fcec98de2ac70742b94df041b2d</srcmd5>
+    <version>7.9.0</version>
+    <time>1681746099</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1079895 from glaubitz)</comment>
+    <requestid>1079897</requestid>
+  </revision>
 </revisionlist>
