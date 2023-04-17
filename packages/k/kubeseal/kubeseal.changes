@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 17 13:30:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.3:
+  * Release version v0.20.3 (#1178)
+  * Generate embedded ObjectMeta in CRD (#1177)
+  * Sign images using Cosign v2 (#1176)
+  * Bump golang.org/x/crypto from 0.7.0 to 0.8.0 (#1175)
+  * ReProcess only on spec changes (#1174)
+  * Upgrade sealed secrets to Go 1.20 (#1173)
+  * Feature/updatereadme (#1172)
+  * Bump github.com/onsi/gomega from 1.27.5 to 1.27.6 (#1169)
+  * order certs by notBefore date (#1153)
+  * Feature/updatevib (#1165)
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 (#1167)
+  * Bump github.com/onsi/gomega from 1.27.4 to 1.27.5 (#1168)
+  * Update vib action (#1164)
+  * Verify chart with secret recreation disabled (#1163)
+  * Remove automountServiceAccountToken parameter (#1162)
+  * Bump k8s.io/code-generator from 0.26.2 to 0.26.3 (#1159)
+  * Bump k8s.io/client-go from 0.26.2 to 0.26.3 (#1157)
+  * Release Carvel package 2.8.1 (#1156)
+  * Release chart v2.8.1 (#1155)
+
+-------------------------------------------------------------------
 Mon Mar 20 19:32:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.20.2:
