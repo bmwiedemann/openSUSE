@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 15 10:28:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1
+  * chore: add typed classifier
+  * Improve parser error messaging around mistakes in/around 
+    version specifiers
+  * Upgrade to latest mypy
+  * Delete print() from test_tags
+  * Update our linters
+  * Improve error for local version label with unsupported operators
+  * Parse raw metadata
+  * Handle prefix match with zeros at end of prefix correctly
+  * Relax typing of _key on _BaseVersion
+  * Replace spaces in platform names with underscores
+  * Import underlying parser function as an underscored variable
+  
+-------------------------------------------------------------------
 Thu Mar  9 16:39:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - Don't use :primary multibuild flavor for non-Tumbleweed

@@ -264,4 +264,24 @@
     not building for primary python3</comment>
     <requestid>1070509</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d5e3ebe85e0903dbade4040f8e43d93e</srcmd5>
+    <version>23.1</version>
+    <time>1681746056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.1
+  * chore: add typed classifier
+  * Improve parser error messaging around mistakes in/around 
+    version specifiers
+  * Upgrade to latest mypy
+  * Delete print() from test_tags
+  * Update our linters
+  * Improve error for local version label with unsupported operators
+  * Parse raw metadata
+  * Handle prefix match with zeros at end of prefix correctly
+  * Relax typing of _key on _BaseVersion
+  * Replace spaces in platform names with underscores
+  * Import underlying parser function as an underscored variable</comment>
+    <requestid>1079575</requestid>
+  </revision>
 </revisionlist>
