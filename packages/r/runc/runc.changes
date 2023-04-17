@@ -15,9 +15,9 @@ Wed Mar 29 07:05:52 UTC 2023 - Aleksa Sarai <asarai@suse.com>
    - CVE-2023-27561 bsc#1208962
    - CVE-2023-28642 bsc#1209888
 
-  * Fix the inability to use `/dev/null` when inside a container.
+  * Fix the inability to use `/dev/null` when inside a container. bsc#1168481
   * Fix changing the ownership of host's `/dev/null` caused by fd redirection
-    (a regression in 1.1.1). bsc#1168481
+    (a regression in 1.1.1). bsc#1207004
   * Fix rare runc exec/enter unshare error on older kernels.
   * nsexec: Check for errors in `write_log()`.
 
