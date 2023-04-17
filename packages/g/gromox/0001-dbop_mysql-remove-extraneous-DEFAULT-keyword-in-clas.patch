@@ -1,0 +1,28 @@
+From 6a53ab4e03588a26dcaf77c1948ac843c9366898 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sun, 16 Apr 2023 14:31:08 +0200
+Subject: [PATCH] dbop_mysql: remove extraneous DEFAULT keyword in "classes"
+ table CREATE statement
+
+Fixes: gromox-2.7-154-g7d7944f9d
+References: GXF-991
+---
+ lib/dbop_mysql.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git lib/dbop_mysql.cpp lib/dbop_mysql.cpp
+index 2a172a38d..ea091ed5c 100644
+--- lib/dbop_mysql.cpp
++++ lib/dbop_mysql.cpp
+@@ -428,7 +428,7 @@ static constexpr char tbl_classes_top[] =
+ "CREATE TABLE `classes` ("
+ "  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,"
+ "  `classname` varchar(128) NOT NULL,"
+-"  `listname` varchar(320) CHARACTER SET ascii DEFAULT NOT NULL,"
++"  `listname` varchar(320) CHARACTER SET ascii NOT NULL,"
+ "  `filters` TEXT,"
+ "  `domain_id` int(10) unsigned NOT NULL,"
+ "  PRIMARY KEY (`id`),"
+-- 
+2.40.0
+

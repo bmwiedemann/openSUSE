@@ -1,7 +1,7 @@
 Format: 1.0
 Source: gromox
 Architecture: any
-Version: 2.6
+Version: 2.8
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Gromox <null@gromox.com>
 Homepage: https://gromox.com
@@ -19,19 +19,22 @@ Build-Depends:
  gettext,
  libbfio-dev,
  libcurl4-openssl-dev,
- libfmt-dev,
- libgumbo-dev,
- libhx-dev (>= 4.3),
+ libfmt-dev (>= 8),
+ libhx-dev (>= 4.12),
  libjsoncpp-dev (>= 1.4.0),
  libldap2-dev,
  libmariadbclient-dev | libmysqlclient-dev | libmariadb-dev,
  libpam0g-dev,
+ libolecf-dev,
  libpff-dev,
  libsqlite3-dev,
  libssl-dev,
  libtinyxml2-dev (>= 8),
  libtool (>= 2),
  libtool-bin (>= 2) | libtool (>= 2),
+ libvmime-dev (>= 0.9.2),
+ libxml2-dev,
+ libzstd-dev,
  lsb-release,
  make,
  m4,
