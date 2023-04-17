@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v18.14.2/Makefile
+Index: node-v18.16.0/Makefile
 ===================================================================
---- node-v18.14.2.orig/Makefile
-+++ node-v18.14.2/Makefile
+--- node-v18.16.0.orig/Makefile
++++ node-v18.16.0/Makefile
 @@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v18.14.2/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v18.14.2/tools/install.py
+Index: node-v18.16.0/tools/install.py
 ===================================================================
---- node-v18.14.2.orig/tools/install.py
-+++ node-v18.14.2/tools/install.py
+--- node-v18.16.0.orig/tools/install.py
++++ node-v18.16.0/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -93,7 +93,7 @@ Index: node-v18.14.2/tools/install.py
 +  ], 'include/node18/')
  
    # Add the expfile that is created on AIX
-   if sys.platform.startswith('aix'):
+   if sys.platform.startswith('aix') or sys.platform == "os400":
 -    action(['out/Release/node.exp'], 'include/node/')
 +    action(['out/Release/node.exp'], 'include/node18/')
  
@@ -122,10 +122,10 @@ Index: node-v18.14.2/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v18.14.2/doc/node.1
+Index: node-v18.16.0/doc/node.1
 ===================================================================
---- node-v18.14.2.orig/doc/node.1
-+++ node-v18.14.2/doc/node.1
+--- node-v18.16.0.orig/doc/node.1
++++ node-v18.16.0/doc/node.1
 @@ -31,24 +31,24 @@
  .Dt NODE 1
  .
@@ -155,10 +155,10 @@ Index: node-v18.14.2/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v18.14.2/src/node.stp
+Index: node-v18.16.0/src/node.stp
 ===================================================================
---- node-v18.14.2.orig/src/node.stp
-+++ node-v18.14.2/src/node.stp
+--- node-v18.16.0.orig/src/node.stp
++++ node-v18.16.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -231,10 +231,10 @@ Index: node-v18.14.2/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v18.14.2/deps/npm/man/man1/npm.1
+Index: node-v18.16.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v18.14.2.orig/deps/npm/man/man1/npm.1
-+++ node-v18.14.2/deps/npm/man/man1/npm.1
+--- node-v18.16.0.orig/deps/npm/man/man1/npm.1
++++ node-v18.16.0/deps/npm/man/man1/npm.1
 @@ -1,11 +1,11 @@
  .TH "NPM" "1" "February 2023" "" ""
  .SH "NAME"
@@ -282,10 +282,10 @@ Index: node-v18.14.2/deps/npm/man/man1/npm.1
 -npm help publish
 +npm18 help publish
  .RE 0
-Index: node-v18.14.2/src/node_main.cc
+Index: node-v18.16.0/src/node_main.cc
 ===================================================================
---- node-v18.14.2.orig/src/node_main.cc
-+++ node-v18.14.2/src/node_main.cc
+--- node-v18.16.0.orig/src/node_main.cc
++++ node-v18.16.0/src/node_main.cc
 @@ -90,6 +90,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -294,10 +294,10 @@ Index: node-v18.14.2/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v18.14.2/tools/test.py
+Index: node-v18.16.0/tools/test.py
 ===================================================================
---- node-v18.14.2.orig/tools/test.py
-+++ node-v18.14.2/tools/test.py
+--- node-v18.16.0.orig/tools/test.py
++++ node-v18.16.0/tools/test.py
 @@ -954,7 +954,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -307,10 +307,10 @@ Index: node-v18.14.2/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v18.14.2/node.gyp
+Index: node-v18.16.0/node.gyp
 ===================================================================
---- node-v18.14.2.orig/node.gyp
-+++ node-v18.14.2/node.gyp
+--- node-v18.16.0.orig/node.gyp
++++ node-v18.16.0/node.gyp
 @@ -25,8 +25,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
@@ -322,10 +322,10 @@ Index: node-v18.14.2/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v18.14.2/deps/npm/man/man1/npx.1
+Index: node-v18.16.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v18.14.2.orig/deps/npm/man/man1/npx.1
-+++ node-v18.14.2/deps/npm/man/man1/npx.1
+--- node-v18.16.0.orig/deps/npm/man/man1/npx.1
++++ node-v18.16.0/deps/npm/man/man1/npx.1
 @@ -1,14 +1,14 @@
  .TH "NPX" "1" "February 2023" "" ""
  .SH "NAME"

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 13 13:49:59 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to NodeJS 18.16.0 LTS version
+  * Add initial support for single executable applications
+  * Replace url parser with Ada
+  * buffer: add Buffer.copyBytesFrom
+
+- refreshed patches: versioned.patch linker_lto_jobs.patch
+
+-------------------------------------------------------------------
 Mon Mar 13 16:43:33 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - relax Requires to Suggests for alts on TW
@@ -25,7 +35,7 @@ Thu Feb 23 10:41:38 UTC 2023 - Adam Majer <adam.majer@suse.de>
 Wed Feb 22 13:59:45 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to NodeJS 18.14.2 LTS:
-  * deps: upgrade npm to 9.5.0
+  * deps: upgrade npm to 9.5.0 (bsc#1208744, CVE-2022-25881)
   * deps: update undici to 5.20.0
 
 - Changes in version 18.14.1:

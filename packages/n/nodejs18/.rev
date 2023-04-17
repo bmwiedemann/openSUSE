@@ -228,4 +228,18 @@ flaky_test_rerun.patch nodejs-libpath.patch  sle12_python3_compat.patch</comment
     <comment>- relax Requires to Suggests for alts on TW</comment>
     <requestid>1071190</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4da017ae2ec3ff2f14abf19673a44563</srcmd5>
+    <version>18.16.0</version>
+    <time>1681746096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to NodeJS 18.16.0 LTS version
+  * Add initial support for single executable applications
+  * Replace url parser with Ada
+  * buffer: add Buffer.copyBytesFrom
+- refreshed patches: versioned.patch linker_lto_jobs.patch
+
+  * deps: upgrade npm to 9.5.0 (bsc#1208744, CVE-2022-25881)</comment>
+    <requestid>1079891</requestid>
+  </revision>
 </revisionlist>

@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs18
-Version:        18.15.0
+Version:        18.16.0
 Release:        0
 
 # Double DWZ memory limits
@@ -302,7 +302,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.18.1
+Provides:       bundled(libcares2) = 1.19.0
 %endif
 
 %if ! 0%{with intree_icu}
@@ -314,7 +314,7 @@ Provides:       bundled(icu) = 72.1
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.51.0
+Provides:       bundled(nghttp2) = 1.52.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -376,17 +376,17 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(llhttp) = 6.0.10
 Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.0
-Provides:       bundled(simdutf) = 3.1.0
+Provides:       bundled(simdutf) = 3.2.2
 # bundled url-ada parser, not ada
-
+Provides:       bundled(ada) = 1.0.4
 
 Provides:       bundled(node-acorn) = 8.8.2
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
-Provides:       bundled(node-corepack) = 0.15.3
+Provides:       bundled(node-corepack) = 0.17.0
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.20.0
+Provides:       bundled(node-undici) = 5.21.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -415,7 +415,7 @@ Requires:       nodejs-common
 Requires:       nodejs18 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 9.5.0
+Provides:       npm(npm) = 9.5.1
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -514,18 +514,18 @@ Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 5.2.0
 Provides:       bundled(node-just-diff-apply) = 5.5.0
 Provides:       bundled(node-libnpmaccess) = 7.0.2
-Provides:       bundled(node-libnpmdiff) = 5.0.10
-Provides:       bundled(node-libnpmexec) = 5.0.10
-Provides:       bundled(node-libnpmfund) = 4.0.10
+Provides:       bundled(node-libnpmdiff) = 5.0.11
+Provides:       bundled(node-libnpmexec) = 5.0.11
+Provides:       bundled(node-libnpmfund) = 4.0.11
 Provides:       bundled(node-libnpmhook) = 9.0.3
 Provides:       bundled(node-libnpmorg) = 5.0.3
-Provides:       bundled(node-libnpmpack) = 5.0.10
+Provides:       bundled(node-libnpmpack) = 5.0.11
 Provides:       bundled(node-libnpmpublish) = 7.1.0
 Provides:       bundled(node-libnpmsearch) = 6.0.2
 Provides:       bundled(node-libnpmteam) = 5.0.3
 Provides:       bundled(node-libnpmversion) = 4.0.2
 Provides:       bundled(node-lru-cache) = 6.0.0
-Provides:       bundled(node-lru-cache) = 7.14.1
+Provides:       bundled(node-lru-cache) = 7.16.2
 Provides:       bundled(node-make-fetch-happen) = 10.2.1
 Provides:       bundled(node-make-fetch-happen) = 11.0.3
 Provides:       bundled(node-minimatch) = 3.1.2
@@ -564,7 +564,7 @@ Provides:       bundled(node-npmlog) = 6.0.2
 Provides:       bundled(node-npmlog) = 7.0.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 15.1.0
+Provides:       bundled(node-pacote) = 15.1.1
 Provides:       bundled(node-parse-conflict-json) = 3.0.0
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-postcss-selector-parser) = 6.0.11
@@ -999,7 +999,7 @@ make test-ci
 %defattr(-, root, root)
 %license LICENSE
 %doc doc/changelogs/CHANGELOG_V%{node_version_number}.md
-%doc AUTHORS *.md
+%doc *.md
 %doc deps/v8/tools/gdbinit
 %dir %{_libdir}/node_modules
 %dir %{_datadir}/libalternatives
