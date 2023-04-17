@@ -1,2 +1,4 @@
 # docker builds an isolated buildroot, this not in the system
 addFilter("E: wrong-script-interpreter")
+# the check does not understand the python version specifier for python_version <= '3.9'
+addFilter("python-missing-require importlib-resources")

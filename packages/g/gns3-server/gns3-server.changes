@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  4 22:09:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.38
+  * Bundle web-ui v2.2.38
+  * Fix c7200_i0_log.txt is created in the current directory. Fixes
+    #2191
+  * Check swtpm version and start swtpm before qemu
+  * Fix broken websocket console with Python 3.11
+  * Fix "cannot reopen console". Ref #2182
+  * Fix Qemu binary not set when adding appliance from template
+- Update requirements
+- Replace deprecated `setup.py install` call through PEP517 build
+
+-------------------------------------------------------------------
 Wed Jan 25 21:07:37 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.37

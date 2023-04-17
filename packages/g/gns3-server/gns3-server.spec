@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.37
+Version:        2.2.38
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
@@ -34,37 +34,33 @@ Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
 BuildRequires:  busybox
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       busybox
 Requires:       cpulimit
 Requires:       docker
 Requires:       dynamips >= 0.2.11
 Requires:       iouyap
-Requires:       python3-Jinja2 >= 3.0.3
-Requires:       python3-aiofiles >= 0.5.0
-Requires:       python3-aiohttp >= 3.6.2
+Requires:       python3-Jinja2 >= 3.0.1
+Requires:       python3-aiofiles >= 0.7
+Requires:       python3-aiohttp >= 3.8.3
 Requires:       python3-aiohttp_cors >= 0.7.0
-Requires:       python3-async_generator
-Requires:       python3-async_timeout >= 3.0.1
+Requires:       python3-async_timeout >= 4.0.2
 Requires:       python3-distro >= 1.6.0
-Requires:       python3-docker-py >= 1.4.0
-Requires:       python3-prompt_toolkit1
-Requires:       python3-psutil >= 5.9.0
+Requires:       python3-jsonschema >= 3.2.0
+Requires:       python3-psutil >= 5.8.0
 Requires:       python3-py-cpuinfo >= 8.0.0
-Requires:       python3-sentry-sdk >= 1.5.4
-Requires:       python3-zipstream >= 1.1.3
+Requires:       python3-sentry-sdk >= 1.12.1
+%if 0%{?python3_version_nodots} < 39
+Requires:       python3-importlib-resources >= 1.3
+%endif
 Requires:       qemu
 Requires:       ubridge >= 0.9.14
 Requires:       vpcs >= 0.5b1
 Requires:       wireshark
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-Requires:       python3-jsonschema >= 3.2.0
-%else
-Requires:       python3-jsonschema < 3
-Requires:       python3-jsonschema >= 2.4.0
-%endif
 %if 0%{?suse_version}
 Recommends:     virtualbox
 %endif
@@ -84,25 +80,28 @@ find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python/#!\/usr\/b
 cp -f %{_bindir}/busybox gns3server/compute/docker/resources/bin/busybox
 ## Relax requirements
 # Leap 15.2
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
-sed -i 's|aiohttp==3.7.4.post0|aiohttp>=3.6.1|g' requirements.txt
-%endif
 sed -i -r 's/==/>=/g' requirements.txt
-sed -i -r 's/3.7.4.*/3.7.4/' requirements.txt
 sed -i -r 's/distro>=1.7.*/distro>=1.6.0/' requirements.txt
 sed -i -r 's/psutil>=5.9.4/psutil>=5.8.0/' requirements.txt
 sed -i -r 's/aiofiles>=22.1.0/aiofiles>=0.7/' requirements.txt
 sed -i -r 's/Jinja2>=3.1.2/jinja2>=3.0.1/' requirements.txt
 sed -i -r 's/jsonschema>=4.17.3/jsonschema>=3.2.0/' requirements.txt
 sed -i -r 's/py-cpuinfo>=9.0.0/py-cpuinfo>=8.0.0/' requirements.txt
-sed -i -r 's/sentry-sdk.*//g' requirements.txt
 sed -i -r '/setuptools/d' requirements.txt
 
 %build
+%if 0%{?suse_version} >= 1550
+%python3_pyproject_wheel
+%else
 python3 setup.py build
+%endif
 
 %install
+%if 0%{?suse_version} >= 1550
+%python3_pyproject_install
+%else
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%endif
 rm %{buildroot}/%{python3_sitelib}/gns3server/static/.gitkeep
 rm %{buildroot}/%{python3_sitelib}/gns3server/symbols/.gitkeep
 find %{buildroot}/%{python3_sitelib}/gns3server -type f -name "*.py" -exec grep -Hl python3 {} + | xargs chmod +x
@@ -141,7 +140,7 @@ cp -f %{_bindir}/busybox %{python3_sitelib}/gns3server/compute/docker/resources/
 %{_bindir}/gns3loopback
 %{_sbindir}/rc%{name}
 %{python3_sitelib}/gns3server
-%{python3_sitelib}/gns3_server-%{version}-py%{py3_ver}.egg-info
+%{python3_sitelib}/gns3_server-%{version}*-info
 %ghost %{python3_sitelib}/gns3server/compute/docker/resources/bin/busybox
 %dir %attr(0750,%{gns3_user},%{gns3_group}) %{_sharedstatedir}/gns3
 %{_unitdir}/%{name}.service
