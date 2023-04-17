@@ -1,7 +1,7 @@
 #
 # spec file for package wine-gecko
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           wine-gecko
 Summary:        The Wine specific Gecko HTML rendering engine
 License:        MPL-1.1+
 Group:          Development/Tools/Other
-Version:        2.47.3
+Version:        2.47.4
 Release:        0
 # not needed with unpacked tree.
 #Source0:        http://dl.winehq.org/wine/wine-gecko/%{version}/wine-gecko-%{version}-x86.msi
@@ -33,7 +33,8 @@ BuildArch:      noarch
 # http://wine.git.sourceforge.net/git/gitweb.cgi?p=wine/wine-gecko;a=summary
 # build instructions are at http://wiki.winehq.org/BuildingWineGecko
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Supplements:    wine wine-snapshot
+Supplements:    wine
+Supplements:    wine-snapshot
 
 %description
 This package contains the prepackaged Win32 Gecko rendering engine for use by Wine.

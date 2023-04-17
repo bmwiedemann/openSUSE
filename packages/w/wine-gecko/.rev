@@ -293,4 +293,12 @@
     <comment>- updated for wine 7.13.</comment>
     <requestid>989566</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a9610b58d44d235b3424680793206872</srcmd5>
+    <version>2.47.4</version>
+    <time>1681746110</time>
+    <user>dimstar_suse</user>
+    <comment>- updated for wine 8.6</comment>
+    <requestid>1079920</requestid>
+  </revision>
 </revisionlist>
