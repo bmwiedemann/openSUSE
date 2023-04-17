@@ -3334,6 +3334,7 @@ unsorted:
   - dxflib-devel 
   - dxvk 
   - dxvk-32bit 
+  - dyff 
   - dynamic-wallpapers-11x 
   - dynamips 
   - dynare 
@@ -9363,6 +9364,10 @@ unsorted:
   - kturtle 
   - kturtle-lang 
   - kube-no-trouble 
+  - kubeaudit 
+  - kubeaudit-bash-completion 
+  - kubeaudit-fish-completion 
+  - kubeaudit-zsh-completion 
   - kubeconform 
   - kubectl-explore 
   - kubectl-foreach 
@@ -9468,6 +9473,7 @@ unsorted:
   - kubernetes1.26-scheduler 
   - kubescape 
   - kubeseal 
+  - kubespy 
   - kubetap 
   - kubeval 
   - kubevirt-container-disk 
@@ -11489,7 +11495,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore7_10_0 
+  - libdigikamcore8_0_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -29600,7 +29606,6 @@ unsorted:
   - python38-pybugz 
   - python38-pyheif 
   - python38-pymediainfo 
-  - python38-python-jenkins 
   - python38-python-qpid-proton 
   - python38-sanlock 
   - python38-testsuite 
