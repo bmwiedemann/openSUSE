@@ -310,6 +310,7 @@ FileProvides: /usr/bin/groups busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/gs ghostscript gswrap
 FileProvides: /usr/bin/gs.bin ghostscript
 FileProvides: /usr/bin/guile guile
+FileProvides: /usr/bin/guile1 guile1
 FileProvides: /usr/bin/gunzip busybox-gzip gzip zstd-gzip
 FileProvides: /usr/bin/gzip busybox-gzip gzip zstd-gzip
 FileProvides: /usr/bin/head busybox-coreutils coreutils coreutils-single
