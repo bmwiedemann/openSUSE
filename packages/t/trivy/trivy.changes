@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Apr 16 18:05:08 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.40.0:
+  * feat(flag): Support globstar for `--skip-files` and `--skip-directories` (#4026)
+  * chore(deps): bump actions/stale from 7 to 8 (#3955)
+  * fix: return insecure option to download javadb (#4064)
+  * fix(nodejs): don't stop parsing when unsupported yarn.lock protocols are found (#4052)
+  * ci: add gpg signing for RPM packages (#4056)
+  * fix(k8s): current context title (#4055)
+  * fix(k8s): quit support on k8s progress bar (#4021)
+  * chore: add a note about Dockerfile.canary (#4050)
+  * ci: fix path to canary binaries (#4045)
+  * fix(vuln): report architecture for debian packages (#4032)
+  * feat: add support for Chainguard's commercial distro (#3641)
+  * ci: bump goreleaser for Github Action from 1.4.1 to 1.16.2 (#3979)
+  * fix(vuln): fix error message for remote scanners (#4031)
+  * feat(report): add image metadata to SARIF (#4020)
+  * docs: fix broken cache link on Installation page (#3999)
+  * fix: lock downloading policies and database (#4017)
+  * fix: avoid concurrent access to the global map (#4014)
+  * feat(rust): add Cargo.lock v3 support (#4012)
+  * feat: auth support oci download server subcommand (#4008)
+  * chore(deps): bump github.com/docker/docker (#4009)
+  * chore: install.sh support for armv7 (#3985)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest/adal (#3961)
+
+-------------------------------------------------------------------
+Thu Apr 13 08:10:58 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.39.1:
+  * fix(rust): fix panic when 'dependencies' field is not used in cargo.toml (#3997)
+  * fix(sbom): fix infinite loop for cyclonedx (#3998)
+  * chore(deps): bump helm/chart-testing-action from 2.3.1 to 2.4.0 (#3954)
+  * fix: use warning for errors from enrichment files for post-analyzers (#3972)
+  * chore(deps): bump github.com/docker/docker (#3963)
+  * fix(helm): added annotation to psp configurable from values (#3893)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.5.2 to 5.6.1 (#3962)
+  * fix(secret): update built-in rule `tests`  (#3855)
+  * chore(deps): bump github.com/alicebob/miniredis/v2 from 2.23.0 to 2.30.1 (#3957)
+  * test: rewrite scripts in Go (#3968)
+  * docs(cli): Improve glob documentation (#3945)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/sts (#3959)
+  * ci: check CLI references (#3967)
+  * chore(deps): bump alpine from 3.17.2 to 3.17.3 (#3951)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.212 to 1.44.234 (#3956)
+  * chore(deps): bump github.com/moby/buildkit from 0.11.4 to 0.11.5 (#3958)
+  * chore(deps): bump actions/setup-go from 3 to 4 (#3953)
+  * chore(deps): bump actions/cache from 3.2.6 to 3.3.1 (#3950)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.19 to 1.7.0 (#3965)
+  * chore(deps): bump github.com/sigstore/rekor from 1.0.1 to 1.1.0 (#3964)
+
+-------------------------------------------------------------------
 Mon Apr 03 08:36:44 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.39.0:

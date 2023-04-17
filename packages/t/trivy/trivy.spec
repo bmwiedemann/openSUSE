@@ -14,12 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
 
-%global goipath github.com/aquasecurity/trivy
 Name:           trivy
-Version:        0.39.0
+Version:        0.40.0
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -46,17 +44,13 @@ name of the container.
 
 %prep
 %setup -qa1
-%autopatch -p1
 
 %build
-%goprep %{goipath}
-
 export CGO_ENABLED=0
-
-%gobuild -mod vendor -ldflags "-X=main.version=%{version}" cmd/trivy
+go build -o trivy -mod=vendor -buildmode=pie -trimpath -ldflags "-s -w -X=main.version=%{version}" cmd/trivy/main.go
 
 %install
-%goinstall
+install -D -m 755 trivy %{buildroot}/%{_bindir}/%{name}
 
 %files
 %license LICENSE

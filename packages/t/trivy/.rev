@@ -831,4 +831,41 @@
   * fix(report): try to guess direct deps for dependency tree (#3852)</comment>
     <requestid>1077009</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>88ce53d7eac2670fa772a794b9172810</srcmd5>
+    <version>0.40.0</version>
+    <time>1681746061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.40.0:
+  * feat(flag): Support globstar for `--skip-files` and `--skip-directories` (#4026)
+  * chore(deps): bump actions/stale from 7 to 8 (#3955)
+  * fix: return insecure option to download javadb (#4064)
+  * fix(nodejs): don't stop parsing when unsupported yarn.lock protocols are found (#4052)
+  * ci: add gpg signing for RPM packages (#4056)
+  * fix(k8s): current context title (#4055)
+  * fix(k8s): quit support on k8s progress bar (#4021)
+  * chore: add a note about Dockerfile.canary (#4050)
+  * ci: fix path to canary binaries (#4045)
+  * fix(vuln): report architecture for debian packages (#4032)
+  * feat: add support for Chainguard's commercial distro (#3641)
+  * ci: bump goreleaser for Github Action from 1.4.1 to 1.16.2 (#3979)
+  * fix(vuln): fix error message for remote scanners (#4031)
+  * feat(report): add image metadata to SARIF (#4020)
+  * docs: fix broken cache link on Installation page (#3999)
+  * fix: lock downloading policies and database (#4017)
+  * fix: avoid concurrent access to the global map (#4014)
+  * feat(rust): add Cargo.lock v3 support (#4012)
+  * feat: auth support oci download server subcommand (#4008)
+  * chore(deps): bump github.com/docker/docker (#4009)
+  * chore: install.sh support for armv7 (#3985)
+  * chore(deps): bump github.com/Azure/go-autorest/autorest/adal (#3961)
+
+- Update to version 0.39.1:
+  * fix(rust): fix panic when 'dependencies' field is not used in cargo.toml (#3997)
+  * fix(sbom): fix infinite loop for cyclonedx (#3998)
+  * chore(deps): bump helm/chart-testing-action from 2.3.1 to 2.4.0 (#3954)
+  * fix: use warning for errors from enrichment files for post-analyzers (#3972)
+  * chore(deps): bump github.com/docker/docker (#3963)</comment>
+    <requestid>1079785</requestid>
+  </revision>
 </revisionlist>
