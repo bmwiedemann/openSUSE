@@ -2,7 +2,7 @@
     <service name="tar_scm" mode="disabled">
         <param name="scm">git</param>
         <param name="url">https://github.com/maxmind/geoipupdate</param>
-        <param name="revision">v4.11.1</param>
+        <param name="revision">v5.0.3</param>
         <param name="exclude">.git</param>
         <param name="versionformat">@PARENT_TAG@</param>
         <param name="changesgenerate">enable</param>
@@ -18,4 +18,3 @@
 
     <service name="go_modules" mode="disabled"></service>
 </services>
-

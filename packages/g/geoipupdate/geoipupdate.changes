@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 17 09:18:15 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 5.0.3:
+  * The directory /usr/local/share/GeoIP was being used rather than
+    /usr/share/GeoIP. 
+
+- Update to 5.0.2:
+  * "Database ... up to date" messages are now only shown if the verbose
+flag is set. 
+
+- Update to 5.0.1:
+  * set the file permissions on downloaded databases to 0600.
+
+- Update to 5.0.0
+  * Redefined the Reader and Writer interface apis in
+    pkg/geoipupdate/database
+  * Changed the signature of NewConfig in pkg/geoipupdate to accept
+    optional parameters.
+  * Introduced Parallelism as a new flag and config option to enable
+    concurrent database updates.
+
+-------------------------------------------------------------------
 Tue Mar 21 07:56:45 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.11.1:
