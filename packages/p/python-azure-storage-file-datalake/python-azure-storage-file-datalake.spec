@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-file-datalake
-Version:        12.10.0
+Version:        12.11.0
 Release:        0
 Summary:        Azure DataLake service client library for Python
 License:        MIT
@@ -39,7 +39,7 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.26.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-blob < 13.0.0
-Requires:       python-azure-storage-blob >= 12.15.0
+Requires:       python-azure-storage-blob >= 12.16.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.1
 Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.8)

@@ -169,4 +169,16 @@
 - Update Requires from setup.py (forwarded request 1067369 from glaubitz)</comment>
     <requestid>1067375</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1cec428b064cb172677f09340aa0ca53</srcmd5>
+    <version>12.11.0</version>
+    <time>1681746106</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1079904 from glaubitz)</comment>
+    <requestid>1079909</requestid>
+  </revision>
 </revisionlist>
