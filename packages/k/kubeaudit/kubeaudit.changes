@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Mar 28 10:51:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- bash-completion subpackage now Requires bash-completion
+
+-------------------------------------------------------------------
+Tue Mar 28 05:43:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubeaudit: audit your Kubernetes clusters against
+  common security controls
