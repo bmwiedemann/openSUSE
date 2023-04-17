@@ -1,12 +1,8 @@
 -------------------------------------------------------------------
-Sun Dec 18 19:14:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+Sun Apr 16 17:54:37 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
 
-- update to 4.4.3:
-  * fixed type safety with recent clang
-  * minor improvements
-  * improved thread-safety of AgsSynthGenerator and machines using it like
-    AgsSynth, AgsFMSynth, AgsSyncsynth and AgsFMSyncsynth
-  * improved AgsIndicator applying margin of GtkWidget
+- new upstream v4.5.5 introduced api-pdf automake target
+- new since v4.5.4 fixed AgsSFZSynth by correcting type check.
 
 -------------------------------------------------------------------
 Sat Sep 17 07:56:00 UTC 2022 - Joël Krähemann <jkraehemann@gmail.com>
