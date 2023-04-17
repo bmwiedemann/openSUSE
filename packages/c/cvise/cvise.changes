@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 17 09:06:07 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.7.0+git.20230417.6b558fe:
+  * Handle cyclic namespace include that leads to inf. recursion.
+  * Shorten pass names that use max_transforms property.
+  * Fix clang warning:
+  * build: factory out common flags and use -pedantic
+  * Simplify dump output for BinaryState.
+  * Revert "drop unneeded -Wno-error=mismatched-new-delete"
+  * drop unneeded -Wno-error=mismatched-new-delete
+
+-------------------------------------------------------------------
 Fri Mar 31 14:05:13 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.7.0+git.20230331.62a7391:

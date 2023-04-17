@@ -1036,4 +1036,19 @@
   * Fix one -Wdangling-reference and disable -Werror for it.</comment>
     <requestid>1076474</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>ce5d91b249d6768fd7c7116eb3c237c4</srcmd5>
+    <version>2.7.0+git.20230417.6b558fe</version>
+    <time>1681746091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git.20230417.6b558fe:
+  * Handle cyclic namespace include that leads to inf. recursion.
+  * Shorten pass names that use max_transforms property.
+  * Fix clang warning:
+  * build: factory out common flags and use -pedantic
+  * Simplify dump output for BinaryState.
+  * Revert &quot;drop unneeded -Wno-error=mismatched-new-delete&quot;
+  * drop unneeded -Wno-error=mismatched-new-delete</comment>
+    <requestid>1079869</requestid>
+  </revision>
 </revisionlist>
