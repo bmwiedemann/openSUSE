@@ -1,7 +1,7 @@
 #
 # spec file for package thermald
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           thermald
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
