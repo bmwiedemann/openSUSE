@@ -1,9 +1,56 @@
 -------------------------------------------------------------------
+Sun Apr 16 15:31:09 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7.0:
+  * Headline additions:
+    - Add room permanence option to server.
+    - Add playlist-related commands:
+      + /qa [file/url] – add file or url to bottom of playlist;
+      + /qas [file/url] – add file or url to bottom of playlist and
+        select it;
+      + /ql – show the current playlist;
+      + /qs [index] – select given entry in the playlist;
+      + /qn – select next entry in the playlist;
+      + /qd [index] – delete the given entry from the playlist.
+  * Other improvements:
+    - Allow playlists to be played from network.
+    - If LANG parameter is set in setup, don’t show language
+      dialogue.
+    - Print timestamp when pausing.
+    - More verbose connection error messages.
+    - Remove mpv fallback warning spam.
+    - Console: Document setting offset in help.
+    - Update translations.
+  * Bug Fixes:
+    - Restore server-side playlist on reconnect.
+    - Trusted Domains: Allow trusting a domain regardless of HTTP
+      basic auth credentials.
+    - Fix room name case sensitivity UI issue.
+    - Remove redundant help button from dialogues.
+    - Fix server argument max-username-length not working.
+    - Fix disconnected monitor bug.
+    - Fix converting lines to array.
+    - Explicitly pass certifi as trustRoot for Twisted.
+    - Don’t detect SMPlayer as mplayer2.
+    - Add/fix wildcard matching of trusted subdomains.
+    - Fix localhost connection breaking mpv chat.
+    - Fix mpv quit message.
+    - Revert default max username length to 16 chars.
+    - Fix dark mode detection by moving to darkdetect v0.7.1.
+  * Maintenance:
+    - Remove Encoding from .desktop files as it’s deprecated now
+      and add Keywords entry to .desktop files.
+    - Correct persistence argument type.
+    - Log –debug as UTF-8 to fix charmap mapping.
+    - Add deprecation notice for offset help.
+
+-------------------------------------------------------------------
 Thu Sep  2 20:14:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to version 1.6.9 
   * Removed references to discontinued IRC channel
   * Update and improve Brazilian Portuguese translation
+
 -------------------------------------------------------------------
 Sat Jul 24 13:05:51 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 

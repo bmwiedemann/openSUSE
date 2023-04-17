@@ -1,7 +1,7 @@
 #
 # spec file for package syncplay
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           syncplay
-Version:        1.6.9
+Version:        1.7.0
 Release:        0
 Summary:        Client/server to synchronize media playback on mpv/VLC on multiple computers
 License:        Apache-2.0
@@ -47,10 +47,15 @@ Requires:       %{name}-common
 Requires:       python3-Twisted >= 16.4.0
 Recommends:     python3-certifi >= 2018.11.29
 Recommends:     python3-idna >= 0.6
+Recommends:     python3-pem >= 21.2.0
 Recommends:     python3-pyOpenSSL >= 16.0.0
-Recommends:     python3-pyside2 >= 5.12.0
 Recommends:     python3-service_identity
 Suggests:       mpv
+%if 0%{?suse_version} > 1500
+Recommends:     python3-pyside6
+%else
+Recommends:     python3-pyside2 >= 5.12.0
+%endif
 
 %description client
 The client application for Syncplay, allows you to play media in
@@ -63,6 +68,7 @@ Requires:       %{name}-common
 Requires:       python3-Twisted >= 16.4.0
 Recommends:     python3-certifi >= 2018.11.29
 Recommends:     python3-idna >= 0.6
+Recommends:     python3-pem >= 21.2.0
 Recommends:     python3-pyOpenSSL >= 16.0.0
 Recommends:     python3-service_identity
 
