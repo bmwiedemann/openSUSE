@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 16 17:56:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.16:
+  * Fix incorret detection of TLSv1.3 on Server 2019
+  * Fix incorrect XML certificate output
+
+-------------------------------------------------------------------
 Tue Aug  2 11:31:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.15:
