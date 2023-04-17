@@ -14180,6 +14180,8 @@ unsorted:
   - libqd0 
   - libqgpgme-devel 
   - libqgpgme15-32bit 
+  - libqgpgmeqt6-15 
+  - libqgpgmeqt6-devel 
   - libqhexedit4 
   - libqhull_r8_0 
   - libqimageblitz5-1 
@@ -22749,7 +22751,6 @@ unsorted:
   - python3-netgen 
   - python3-neutronclient 
   - python3-newt 
-  - python3-nghttp2 
   - python3-notcurses 
   - python3-notmuch 
   - python3-novaclient 
@@ -29595,7 +29596,6 @@ unsorted:
   - python38-lalpulsar 
   - python38-lalsimulation 
   - python38-ldas-tools-al-swig 
-  - python38-limnoria 
   - python38-net-snmp 
   - python38-pybugz 
   - python38-pyheif 
