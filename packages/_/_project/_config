@@ -245,8 +245,6 @@ FileProvides: /usr/bin/cdrecord cdrecord
 FileProvides: /usr/bin/chfn shadow
 FileProvides: /usr/bin/chgrp busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chmod busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/uncompress gzip
-FileProvides: /usr/bin/compress ncompress
 FileProvides: /usr/bin/chown busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chsh shadow
 FileProvides: /usr/bin/cksum busybox-coreutils coreutils coreutils-single
@@ -446,6 +444,7 @@ FileProvides: /usr/bin/tsort busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/tty busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/umount busybox-util-linux util-linux
 FileProvides: /usr/bin/uname busybox-coreutils coreutils coreutils-single
+FileProvides: /usr/bin/uncompress busybox-gzip gzip
 FileProvides: /usr/bin/unexpand busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/uniq busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/unzip busybox-unzip unzip unzip-rcc
