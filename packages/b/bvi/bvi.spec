@@ -1,7 +1,7 @@
 #
 # spec file for package bvi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           bvi
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Editor for binary files
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-URL:            http://bvi.sourceforge.net
-Source:         http://sourceforge.net/projects/bvi/files/bvi/%{version}/bvi-%{version}.src.tar.gz
+URL:            https://bvi.sourceforge.net
+Source:         https://sourceforge.net/projects/bvi/files/bvi/%{version}/bvi-%{version}.src.tar.gz
 BuildRequires:  ncurses-devel
 
 %description
@@ -37,7 +37,7 @@ about vi, maybe bvi is not the best choice for you.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

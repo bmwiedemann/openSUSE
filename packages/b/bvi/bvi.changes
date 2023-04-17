@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 16 16:09:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * :wq bug fixed
+  * Error-message if input no terminal
+  * Mixed licenses (SF bug #10)
+  * Segmentation fault occurs on undo (SF bug #11)
+  * Segmentation fault occurs on substitution in 32-bit systems
+  * ncursesw support
+  * Handling inputs larger than 2^31 bytes (SF bug #13)
+  * Some incorrect function prototypes in ANSI mode fixed (SF bug
+  * Minor fixes
+
+-------------------------------------------------------------------
 Sat Nov 30 18:13:37 UTC 2019 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 1.4.1
