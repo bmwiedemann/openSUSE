@@ -4749,4 +4749,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1077989</requestid>
   </revision>
+  <revision rev="405" vrev="1">
+    <srcmd5>cfb8c648c729e3a46170940bf2a974fb</srcmd5>
+    <version>8.6</version>
+    <time>1681746089</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.6 release
+  - Bundled math library from Musl libc.
+  - Gecko engine updated to version 2.47.4.
+  - Improved spool file support in the PostScript driver.
+  - Various bug fixes.
+- update staging to 8.6 release</comment>
+    <requestid>1079870</requestid>
+  </revision>
 </revisionlist>

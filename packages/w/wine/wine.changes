@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 15 18:15:25 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.6 release
+  - Bundled math library from Musl libc.
+  - Gecko engine updated to version 2.47.4.
+  - Improved spool file support in the PostScript driver.
+  - Various bug fixes.
+- update staging to 8.6 release
+
+-------------------------------------------------------------------
 Sat Apr  1 09:02:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.5 release
