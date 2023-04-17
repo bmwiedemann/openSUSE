@@ -1,21 +1,20 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/vladimirvivien/ktop</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.3.0</param>
+    <param name="revision">v0.3.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="disabled">
-    <param name="basename">ktop</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">ktop-0.3.0.tar.gz</param>
   </service>
 </services>

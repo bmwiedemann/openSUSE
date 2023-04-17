@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 17 05:03:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.3.5:
+  * Implements an informer for metrics-api types
+  * Support for OCI image release
+  * Bump golang.org/x/crypto from 0.0.0-20220214200702-86341886e292
+    to 0.1.0
+  * Bump golang.org/x/net from 0.0.0-20220127200216-cd36cc0744dd to
+    0.7.0
+  * Bump golang.org/x/text from 0.3.7 to 0.3.8
+  * Bump github.com/emicklei/go-restful
+  * Homebrew documentation update
+- skip non-existent releases
+  * 0.3.1
+  * 0.3.2
+  * 0.3.3
+  * 0.3.4
+
+-------------------------------------------------------------------
 Wed Jun 22 07:58:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.3.0:
