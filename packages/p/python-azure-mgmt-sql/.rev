@@ -233,4 +233,15 @@
 - Update Requires from setup.py (forwarded request 1074581 from glaubitz)</comment>
     <requestid>1074668</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6a1e2539b0bf633bfa2e4a6a7b6f62c7</srcmd5>
+    <version>4.0.0b10</version>
+    <time>1681746107</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0b10
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1079915 from glaubitz)</comment>
+    <requestid>1079923</requestid>
+  </revision>
 </revisionlist>
