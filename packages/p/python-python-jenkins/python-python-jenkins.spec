@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jenkins
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,30 +17,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-jenkins
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Python bindings for the remote Jenkins API
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://opendev.org/jjb/python-jenkins
 Source:         https://files.pythonhosted.org/packages/source/p/python-jenkins/python-jenkins-%{version}.tar.gz
 # https://bugs.launchpad.net/python-jenkins/+bug/1971524
 Patch0:         python-python-jenkins-no-mock.patch
+# PATCH-FIX-OPENSUSE Upstream are arguing about version parsing, use the
+# underlying parts of LegacyVersion from packaging pre-removal
+Patch1:         use-parts-of-legacy-version.patch
 BuildRequires:  %{python_module cmd2}
 BuildRequires:  %{python_module multi_key_dict}
 BuildRequires:  %{python_module pbr >= 0.8.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests-mock >= 1.4}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(krb5-gssapi)
 Requires:       python-multi_key_dict
+Requires:       python-pbr
 Requires:       python-requests
-Requires:       python-setuptools
 Requires:       python-six >= 1.3.0
 Provides:       python-jenkins = %{version}
 Obsoletes:      python-jenkins < %{version}
@@ -57,18 +61,22 @@ API. It currently supports management of:
 %prep
 %autosetup -p1 -n python-jenkins-%{version}
 
+sed -i '1{\@^#!%{_bindir}/env python@d}' jenkins/__init__.py
+
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest tests/*.py
+%pyunittest discover -v tests
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jenkins
+%{python_sitelib}/python_jenkins-%{version}*-info
 
 %changelog

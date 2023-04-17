@@ -151,4 +151,18 @@
     <comment></comment>
     <requestid>974819</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d41652701ab4c1891d966e58ee990b83</srcmd5>
+    <version>1.8.0</version>
+    <time>1681746080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * Add retrieval of stages of artifacts
+  * Switch links to opendev.org
+  * Allow build number to be a string
+  * Use fullname in get_job_info_regex
+- Add patch use-parts-of-legacy-version.patch:
+  * Use underpining parts of LegacyVersion pre-removal.</comment>
+    <requestid>1079857</requestid>
+  </revision>
 </revisionlist>

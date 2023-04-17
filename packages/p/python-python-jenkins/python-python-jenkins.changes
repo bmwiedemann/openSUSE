@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 17 08:05:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Add retrieval of stages of artifacts
+  * Switch links to opendev.org
+  * Allow build number to be a string
+  * Use fullname in get_job_info_regex
+- Add patch use-parts-of-legacy-version.patch:
+  * Use underpining parts of LegacyVersion pre-removal.
+
+-------------------------------------------------------------------
 Wed May  4 05:46:39 UTC 2022 - pgajdos@suse.com
 
 - added patches
