@@ -50,6 +50,7 @@ BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5WebSockets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+Requires:       kirigami-addons
 Requires:       kirigami2
 Requires:       libQt5Sql5-sqlite
 Requires:       libqt5-qtquickcontrols2
