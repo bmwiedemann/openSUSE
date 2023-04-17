@@ -22,7 +22,7 @@
 %bcond_with     remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.29
+Version:        1.4.30
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -234,7 +234,7 @@ export CFLAGS="$CFLAGS -fPIC"
 %{_datadir}/icons/hicolor/**/**/*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.remmina.Remmina.appdata.xml
-%{_datadir}/mime/packages/%{name}-mime.xml
+%{_datadir}/mime/packages/org.remmina.Remmina-mime.xml
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins/

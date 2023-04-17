@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 14 10:25:01 UTC 2023 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to remmina version 1.4.30
+  * Add text mime type formats to RDP clibpoard !2459
+  * Ensure timer is null after destruction !2462
+  * Ability to view passwords in the clear using a toggle in the 
+    password field !2460
+  * Made icons viewable in lower resulution. !2463
+  * Improve mime file !2464
+  * [REM-2809] Appearance preferences now refresh in the main window when
+    the user... !2466
+  * This should be a message instead of a info print.
+    So that the user can see it by default. !2461
+  * remmina_rdp_monitor_get(): fix maxw, maxh and monitorids calculation !2467
+  * Rem 2864 !2469
+  * Fix undefined symbol error when importing gi in a python extension !2470
+  * Rem 2864 !2472
+  * [REM-1987] allow for dynamic resolution updates for vnc connections !2476
+  * Fix overlapping text in preferences menu, terminal tab !2477
+  * Allow could not authenticate banner to go away after successful 
+    reauthentication !2478
+  * Add environments for easy manual testing !2473
+
+-------------------------------------------------------------------
 Thu Jan 26 12:42:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to remmina version 1.4.29
