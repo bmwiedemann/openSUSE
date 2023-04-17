@@ -1823,4 +1823,12 @@ General : Update internal Libraw to snapshot 202110
   * 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch</comment>
     <requestid>1074923</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>c4b7bbd6f5642cfac3a94c65eda1ae44</srcmd5>
+    <version>8.0.0</version>
+    <time>1681746093</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.0.0</comment>
+    <requestid>1079881</requestid>
+  </revision>
 </revisionlist>

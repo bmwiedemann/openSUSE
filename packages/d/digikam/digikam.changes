@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 17 08:18:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.0.0:
+  https://www.digikam.org/news/2023-04-16-8.0.0_release_announcement/
+- Drop patch, merged upstream:
+  * 0001-fix-compile-DNG-SDK-with-GCC13.patch
+
+-------------------------------------------------------------------
 Tue Mar 28 08:43:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

@@ -16,11 +16,11 @@
 #
 
 
-%define soversion 7_10_0
+%define soversion 8_0_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.10.0
+Version:        8.0.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-fix-compile-DNG-SDK-with-GCC13.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -96,21 +94,12 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{suse_version} >= 1550
-BuildRequires:  ffmpeg-4-libavcodec-devel
-BuildRequires:  ffmpeg-4-libavdevice-devel
-BuildRequires:  ffmpeg-4-libavfilter-devel
-BuildRequires:  ffmpeg-4-libavformat-devel
-BuildRequires:  ffmpeg-4-libavutil-devel
-BuildRequires:  ffmpeg-4-libswscale-devel
-%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
-%endif
 Requires:       %{name}-plugins
 Requires:       libQt5Sql5-sqlite
 Recommends:     marble
@@ -189,10 +178,8 @@ sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addr
 %install
 %kf5_makeinstall -C build
 
-%if 0%{?suse_version}
 %suse_update_desktop_file -r org.kde.digikam Qt KDE Graphics Photography
 %suse_update_desktop_file -r org.kde.showfoto Qt KDE Graphics Photography
-%endif
 
 %find_lang %{name} --without-kde
 
@@ -201,22 +188,23 @@ sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addr
 %ldconfig_scriptlets -n libdigikamcore%{soversion}
 
 %files
-%{_kf5_bindir}/digikam
-%{_kf5_bindir}/digitaglinktree
-%{_kf5_bindir}/cleanup_digikamdb
-%{_kf5_applicationsdir}/org.kde.digikam.desktop
-%{_kf5_iconsdir}/hicolor/*/actions/
-%{_kf5_iconsdir}/hicolor/*/apps/digikam.*
-%doc %{_kf5_mandir}/man1/cleanup_digikamdb.1%{ext_man}
-%doc %{_kf5_mandir}/man1/digitaglinktree.1%{ext_man}
-%{_kf5_sharedir}/digikam/
+%doc AUTHORS NEWS README.md
 %dir %{_kf5_sharedir}/solid
 %dir %{_kf5_sharedir}/solid/actions
-%{_kf5_sharedir}/solid/actions/digikam-opencamera.desktop
+%doc %{_kf5_mandir}/man1/cleanup_digikamdb.1%{ext_man}
+%doc %{_kf5_mandir}/man1/digitaglinktree.1%{ext_man}
+%{_kf5_applicationsdir}/org.kde.digikam.desktop
+%{_kf5_appstreamdir}/org.kde.digikam.appdata.xml
+%{_kf5_bindir}/cleanup_digikamdb
+%{_kf5_bindir}/digikam
+%{_kf5_bindir}/digitaglinktree
+%{_kf5_iconsdir}/hicolor/*/actions/
+%{_kf5_iconsdir}/hicolor/*/apps/avplayer.*
+%{_kf5_iconsdir}/hicolor/*/apps/digikam.*
 %{_kf5_kxmlguidir}/digikam/
 %{_kf5_notifydir}/digikam.notifyrc
-%{_kf5_appstreamdir}/org.kde.digikam.appdata.xml
-%doc AUTHORS NEWS README.md
+%{_kf5_sharedir}/digikam/
+%{_kf5_sharedir}/solid/actions/digikam-opencamera.desktop
 
 %files plugins
 %{_kf5_iconsdir}/hicolor/*/apps/dk-*
@@ -235,18 +223,18 @@ sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addr
 %{_kf5_libdir}/libdigikamgui.so
 
 %files -n showfoto
-%{_kf5_bindir}/showfoto
 %{_kf5_applicationsdir}/org.kde.showfoto.desktop
-%{_kf5_iconsdir}/hicolor/*/apps/showfoto.*
-%{_kf5_sharedir}/showfoto/
-%{_kf5_kxmlguidir}/showfoto/
 %{_kf5_appstreamdir}/org.kde.showfoto.appdata.xml
+%{_kf5_bindir}/showfoto
+%{_kf5_iconsdir}/hicolor/*/apps/showfoto.*
+%{_kf5_kxmlguidir}/showfoto/
+%{_kf5_sharedir}/showfoto/
 
 %files -n libdigikamcore%{soversion}
-%license COPYING*
-%{_kf5_libdir}/libdigikamcore.so.7.10.0
-%{_kf5_libdir}/libdigikamdatabase.so.7.10.0
-%{_kf5_libdir}/libdigikamgui.so.7.10.0
+%license LICENSES/*
+%{_kf5_libdir}/libdigikamcore.so.8.0.0
+%{_kf5_libdir}/libdigikamdatabase.so.8.0.0
+%{_kf5_libdir}/libdigikamgui.so.8.0.0
 
 %files lang -f %{name}.lang
 
