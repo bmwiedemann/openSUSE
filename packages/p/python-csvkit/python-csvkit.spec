@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 %define         skip_python2 1
 %define         skip_python36 1
@@ -42,7 +41,6 @@ BuildRequires:  %{python_module jdcal}
 BuildRequires:  %{python_module openpyxl >= 2.2.0.b1}
 BuildRequires:  %{python_module python-dateutil >= 2.2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module xlrd >= 0.9.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
