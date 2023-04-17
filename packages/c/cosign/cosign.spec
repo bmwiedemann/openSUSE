@@ -16,9 +16,9 @@
 #
 
 
-%define revision 69c9b37f2a021326c67b2aa9552c790e12ae5fb8
+%define revision 8faaee4d2b5f65678eb0831a8a3d5990a0271d3a
 Name:           cosign
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0

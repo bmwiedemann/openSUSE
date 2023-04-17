@@ -388,4 +388,30 @@
 - build against a maintained golang version (upstream uses go1.20) (forwarded request 1077363 from dirkmueller)</comment>
     <requestid>1077439</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5101a9c12bf6331af3aeab64b3729386</srcmd5>
+    <version>2.0.1</version>
+    <time>1681746087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1 (jsc#SLE-23879)
+  Enhancements
+  - Add environment variable token provider (#2864)
+  - Remove cosign policy command (#2846)
+  - Allow customising 'go' executable with GOEXE var (#2841)
+  - Consistent tlog warnings during verification (#2840)
+  - Add riscv64 arch (#2821)
+  - Default generated PEM labels to SIGSTORE (#2735)
+  - Update privacy statement and confirmation (#2797)
+  - Add exit codes for verify errors (#2766)
+  - Add Buildkite provider (#2779)
+  - verify-blob-attestation: Loosen arg requirements if --check-claims=false (#2746)
+  Bug Fixes
+  - PKCS11 sessions are now opened read only (#2853)
+  - Makefile: date format of log should not show signatures (#2835)
+  - Add missing flags to cosign verify dockerfile/manifest (#2830)
+  - Add a warning to remember how to configure a custom Gitlab host (#2816)
+  - Remove tag warning message from save/copy commands (#2799)
+  - Mark keyless pem files with b64 (#2671) (forwarded request 1079858 from msmeissn)</comment>
+    <requestid>1079859</requestid>
+  </revision>
 </revisionlist>
