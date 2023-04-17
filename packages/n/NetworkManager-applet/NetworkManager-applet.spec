@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-applet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define _name   network-manager-applet
 
 Name:           NetworkManager-applet
-Version:        1.30.0
+Version:        1.32.0
 Release:        0
 Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/projects/NetworkManager
-Source0:        https://download.gnome.org/sources/network-manager-applet/1.30/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/network-manager-applet/1.32/%{_name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch

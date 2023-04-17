@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 16 20:41:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.0:
+  + Allow using MTU larger than 10000 octets.
+  + Prefer using AppIndicator outside X11.
+  + Added support for importing WireGuard profiles from wg-quick
+    files.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov  8 10:50:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.30.0:
