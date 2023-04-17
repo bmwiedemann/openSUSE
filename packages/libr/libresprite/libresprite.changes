@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 17 14:13:23 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with newest GCC (LibreSprite-1.0_includes.patch)
+
+-------------------------------------------------------------------
 Sun Dec 19 20:49:47 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix build on Tumbleweed
@@ -7,4 +12,3 @@ Sun Dec 19 20:49:47 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 Sun Nov 28 17:41:37 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - initial packaging of version 1.0
-

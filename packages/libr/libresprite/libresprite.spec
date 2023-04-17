@@ -1,7 +1,7 @@
 #
-# spec file for package aseprite
+# spec file for package libresprite
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,45 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           libresprite
 Version:        1.0
 Release:        0
 Summary:        Animated sprite editor & pixel art tool
-License:        GPL-2.0+ and MIT
+License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Graphics/Bitmap Editors
 Source:         LibreSprite-%{version}.tar.bz2
-Url:            https://libresprite.github.io/
+URL:            https://libresprite.github.io/
 BuildRequires:  cmake >= 3.4
+# PATCH-FIX-UPSTREAM add missing includes for newer gcc https://github.com/LibreSprite/LibreSprite/issues/399
+Patch1:         LibreSprite-1.0_includes.patch
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  glibc-devel
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  fdupes
 BuildRequires:  giflib-devel >= 5.1.0
-BuildRequires:  pkgconfig(SDL2_image)
-BuildRequires:  libjpeg-devel
+BuildRequires:  glibc-devel
 BuildRequires:  googletest-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libpng)
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  libjpeg-devel
+BuildRequires:  nodejs-devel-default
+BuildRequires:  shared-mime-info
 BuildRequires:  tinyxml-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(duktape)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  shared-mime-info
-BuildRequires:  pkgconfig(lua5.3)
-BuildRequires:  nodejs-devel-default
-BuildRequires:  pkgconfig(duktape)
-BuildRequires:  pkgconfig(libwebp)
 
 %description
 LibreSprite is an open source program to create animated sprites
@@ -55,6 +58,7 @@ for websites and games.
 
 %prep
 %setup -q -n LibreSprite-%{version}
+%patch1 -p1
 
 %build
 %cmake .. -DWITH_DESKTOP_INTEGRATION=ON \
@@ -78,7 +82,8 @@ install -m0644 -D data/icons/ase64.png %{buildroot}%{_datadir}/icons/hicolor/64x
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE.txt
+%doc README.md
+%license LICENSE.txt
 %{_bindir}/%{name}
 %{_bindir}/%{name}-thumbnailer
 %{_datadir}/appdata/%{name}.appdata.xml
