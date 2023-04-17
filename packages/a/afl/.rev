@@ -1227,4 +1227,41 @@
   llvm16. (forwarded request 1078606 from dimstar)</comment>
     <requestid>1078607</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b03f0ff668a07c5f96d8d02bbab5f03d</srcmd5>
+    <version>4.06c</version>
+    <time>1681746092</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.06c
+  - afl-fuzz:
+    - ensure temporary file descriptor is closed when not used
+    - added `AFL_NO_WARN_INSTABILITY`
+    - added time_wo_finds to fuzzer_stats
+    - fixed a crash in pizza (1st april easter egg) mode. Sorry for
+      everyone who was affected!
+    - allow pizza mode to be disabled when AFL_PIZZA_MODE is set to -1
+    - option `-p mmopt` now also selects new queue items more often
+    - fix bug in post_process custom mutator implementation
+    - print name of custom mutator in UI
+    - slight changes that improve fuzzer performance
+  - afl-cc:
+    - add CFI sanitizer variant to gcc targets
+    - llvm 16 + 17 support (thanks to @devnexen!)
+    - support llvm 15 native pcguard changes
+    - support for LLVMFuzzerTestOneInput -1 return
+    - LTO autoken and llvm_mode: added AFL_LLVM_DICT2FILE_NO_MAIN support
+  - qemu_mode:
+    - fix _RANGES envs to allow hyphens in the filenames
+    - basic riscv support
+  - frida_mode:
+    - added `AFL_FRIDA_STATS_INTERVAL`
+    - fix issue on MacOS
+  - unicorn_mode:
+    - updated and minor issues fixed
+  - nyx_mode support for all tools
+  - better sanitizer default options support for all tools
+  - new custom module: autotoken, a grammar free fuzzer for text inputs
+  - fixed custom mutator C examples (forwarded request 1079878 from msmeissn)</comment>
+    <requestid>1079879</requestid>
+  </revision>
 </revisionlist>
