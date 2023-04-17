@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rhythmbox
-Version:        3.4.6
+Version:        3.4.7
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
@@ -49,15 +49,14 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libbrasero-media3)
-BuildRequires:  pkgconfig(libdmapsharing-3.0) >= 2.9.19
+BuildRequires:  pkgconfig(libdmapsharing-4.0)
 BuildRequires:  pkgconfig(libgpod-1.0)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.3
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 0.7.3
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42.0
-BuildRequires:  pkgconfig(libsoup-gnome-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(tdb)
@@ -97,6 +96,7 @@ export MOZILLA_PLUGINDIR=%{_libdir}/browser-plugins
 export PYTHON=%{_bindir}/python3
 %meson \
 	-D tests=disabled \
+	-D daap=enabled \
 	%{nil}
 %meson_build
 

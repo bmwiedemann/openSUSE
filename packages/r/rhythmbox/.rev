@@ -797,4 +797,12 @@
     <comment>- Add firewalld profiles for DAAP and Remote Control plugins (forwarded request 1034435 from hillwood)</comment>
     <requestid>1034490</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>be44d530808c92d61e20c4b4b706749b</srcmd5>
+    <version>3.4.7</version>
+    <time>1681746116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079953</requestid>
+  </revision>
 </revisionlist>
