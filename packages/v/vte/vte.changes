@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 16 13:30:24 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.72.1:
+  + emulation: Fix invalid mouse scroll event on window edge
+  + widget:
+    - Fix compilation
+    - Fix setting clipboard with html data
+    - Fix introspection warnings
+    - Fix cursor blink timeout
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 20 09:12:45 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.72.0:
