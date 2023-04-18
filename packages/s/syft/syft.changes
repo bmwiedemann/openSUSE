@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 18 04:55:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.78.0:
+  * Create consul binary classifier (#1738)
+  * chore(deps): update bootstrap tools to latest versions (#1740)
+  * Fix kernel cataloger test fixtures (#1742)
+  * feat: Support scanning license files in golang packages over
+    the network (#1630)
+  * Add package-to-file location evidence relationships (#1698)
+  * Add Linux Kernel cataloger (#1694)
+  * Add annotations for evidence on package locations (#1723)
+  * add format make target (#1733)
+  * Update tests to not fail on Mac M1's. (#1730)
+
+-------------------------------------------------------------------
 Thu Apr 13 07:22:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.77.0:
