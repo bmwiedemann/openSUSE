@@ -104,6 +104,8 @@ dvd:
   - arabic-fonts
   - arphic-uming-fonts
   - cracklib-dict-full
+  # gedit is tested as part of staging
+  - gedit
   - indic-fonts
   - ipa-gothic-fonts
   - khmeros-fonts
