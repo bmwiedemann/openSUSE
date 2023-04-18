@@ -1567,6 +1567,9 @@ Constraint: hardware:cpu:flag power8
 %if "%{_project}" == "openSUSE:Factory" || "%{sub %_project 1 28}" == "openSUSE:Factory:Staging:adi" || "%{sub %_project 1 22}" == "openSUSE:Factory:Rings" || "%{_project}" == "openSUSE:Factory:Rebuild"
 
 # BuildFlags: onlybuild:bootstrap-copy
+BuildFlags: onlybuild:glibc-AGGR
+BuildFlags: onlybuild:dwz-AGGR
+BuildFlags: onlybuild:binutils-AGGR
 
 BuildFlags: onlybuild:7zip
 BuildFlags: onlybuild:AppStream
