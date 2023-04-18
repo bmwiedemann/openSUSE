@@ -1,0 +1,35 @@
+# This file is part of package mumble-server.
+#
+# Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
+# Author: Pascal Bleser
+#
+# Description:
+#
+#  Used to start the Mumble server (murmurd)
+#
+
+[Unit]
+Description=Mumble Server (murmur)
+Requires=var-run.mount network.target remote-fs.target time-sync.target
+After=var-run.mount network.target remote-fs.target time-sync.target mysql.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+User=_mumble-server
+Group=_mumble-server
+ExecStart=/usr/bin/mumble-server -fg -ini /etc/mumble/mumble-server.ini
+
+[Install]
+WantedBy=multi-user.target

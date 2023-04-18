@@ -1,0 +1,42 @@
+# Last Modified: Thu Mar 24 13:33:08 2011
+#include <tunables/global>
+
+profile murmurd /usr/sbin/murmurd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/user-tmp>
+
+  # needed for real time scheduling of the mixer threads
+  capability sys_resource,
+
+  network inet dgram,
+  network inet stream,
+  network netlink,
+
+  /usr/share/icu/*/icu*.dat r,
+
+  /etc/mumble-server.ini rk,
+  /usr/bin/lsb_release cx,
+  /var/lib/mumble-server/ rwk,
+  /var/lib/mumble-server/** rwk,
+  /var/log/mumble-server/murmur.log w,
+  /var/run/mumble-server/mumble-server.pid w,
+
+  profile /usr/bin/lsb_release {
+    #include <abstractions/base>
+    #include <abstractions/consoles>
+
+    /{usr/,}bin/bash rm,
+    /proc/meminfo r,
+    /usr/bin/getopt rmix,
+    /usr/bin/head rmix,
+    /usr/bin/grep rmix,
+    /usr/bin/sed rmix,
+    /usr/bin/cut rmix,
+    /usr/bin/lsb_release r,
+    /etc/SuSE-release r,
+  }
+  #include if exists <local/usr.bin.mumble-server>
+}
