@@ -6753,8 +6753,6 @@ unsorted:
   - gnome-taquin-lang 
   - gnome-tetravex 
   - gnome-tetravex-lang 
-  - gnome-text-editor 
-  - gnome-text-editor-lang 
   - gnome-themes 
   - gnome-themes-extras 
   - gnome-themes-lang 
@@ -6849,12 +6847,15 @@ unsorted:
   - go1.16-race 
   - go1.17 
   - go1.17-doc 
+  - go1.17-libstd 
   - go1.17-race 
   - go1.18 
   - go1.18-doc 
+  - go1.18-libstd 
   - go1.18-race 
   - go1.19 
   - go1.19-doc 
+  - go1.19-libstd 
   - go1.19-race 
   - go1.20 
   - go1.20-doc 
@@ -13945,7 +13946,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_101 
+  - libphobos2-0_103 
   - libphobos2-ldc99 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -13997,7 +13998,6 @@ unsorted:
   - libpnetcdf-gnu-mpich-hpc 
   - libpnetcdf-gnu-mvapich2-hpc 
   - libpnetcdf-gnu-openmpi2-hpc 
-  - libpnetcdf-gnu-openmpi3-hpc 
   - libpnetcdf-gnu-openmpi4-hpc 
   - libpnetcdf4-mpich 
   - libpnetcdf4-mvapich2 
@@ -14008,7 +14008,6 @@ unsorted:
   - libpnetcdf_1_12_3-gnu-mpich-hpc 
   - libpnetcdf_1_12_3-gnu-mvapich2-hpc 
   - libpnetcdf_1_12_3-gnu-openmpi2-hpc 
-  - libpnetcdf_1_12_3-gnu-openmpi3-hpc 
   - libpnetcdf_1_12_3-gnu-openmpi4-hpc 
   - libpng12-0 
   - libpng12-0-32bit 
@@ -15256,6 +15255,7 @@ unsorted:
   - libtranscript1 
   - libtre5 
   - libtree-sitter0 
+  - libtree-sitter0-x86-64-v3 
   - libtrilinos-gnu-mpich-hpc 
   - libtrilinos-gnu-mvapich2-hpc 
   - libtrilinos-gnu-openmpi2-hpc 
@@ -17815,6 +17815,8 @@ unsorted:
   - multiverse-javadoc 
   - multus 
   - multus-k8s-yaml 
+  - mumble 
+  - mumble-server 
   - mumps-devel 
   - mumps-devel-static 
   - mumps-doc 
@@ -21845,8 +21847,6 @@ unsorted:
   - pnetcdf-gnu-mvapich2-hpc-devel 
   - pnetcdf-gnu-openmpi2-hpc 
   - pnetcdf-gnu-openmpi2-hpc-devel 
-  - pnetcdf-gnu-openmpi3-hpc 
-  - pnetcdf-gnu-openmpi3-hpc-devel 
   - pnetcdf-gnu-openmpi4-hpc 
   - pnetcdf-gnu-openmpi4-hpc-devel 
   - pnetcdf-hpc-doc 
@@ -21877,9 +21877,6 @@ unsorted:
   - pnetcdf_1_12_3-gnu-openmpi2-hpc 
   - pnetcdf_1_12_3-gnu-openmpi2-hpc-devel 
   - pnetcdf_1_12_3-gnu-openmpi2-hpc-devel-static 
-  - pnetcdf_1_12_3-gnu-openmpi3-hpc 
-  - pnetcdf_1_12_3-gnu-openmpi3-hpc-devel 
-  - pnetcdf_1_12_3-gnu-openmpi3-hpc-devel-static 
   - pnetcdf_1_12_3-gnu-openmpi4-hpc 
   - pnetcdf_1_12_3-gnu-openmpi4-hpc-devel 
   - pnetcdf_1_12_3-gnu-openmpi4-hpc-devel-static 
@@ -23487,6 +23484,7 @@ unsorted:
   - python310-azure-mgmt-privatedns 
   - python310-azure-mgmt-purview 
   - python310-azure-mgmt-quantum 
+  - python310-azure-mgmt-qumulo 
   - python310-azure-mgmt-quota 
   - python310-azure-mgmt-rdbms 
   - python310-azure-mgmt-recoveryservices 
@@ -26266,7 +26264,6 @@ unsorted:
   - python311-MarkupPy 
   - python311-MarkupSafe 
   - python311-Markups 
-  - python311-Mathics 
   - python311-Mathics-Scanner 
   - python311-MechanicalSoup 
   - python311-MiniMock 
@@ -26790,6 +26787,7 @@ unsorted:
   - python311-azure-mgmt-privatedns 
   - python311-azure-mgmt-purview 
   - python311-azure-mgmt-quantum 
+  - python311-azure-mgmt-qumulo 
   - python311-azure-mgmt-quota 
   - python311-azure-mgmt-rdbms 
   - python311-azure-mgmt-recoveryservices 
@@ -30240,6 +30238,7 @@ unsorted:
   - python39-azure-mgmt-privatedns 
   - python39-azure-mgmt-purview 
   - python39-azure-mgmt-quantum 
+  - python39-azure-mgmt-qumulo 
   - python39-azure-mgmt-quota 
   - python39-azure-mgmt-rdbms 
   - python39-azure-mgmt-recoveryservices 
