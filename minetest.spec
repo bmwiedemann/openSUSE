@@ -1,7 +1,7 @@
 #
 # spec file for package minetest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
-%define irrlichtmt_version 1.9.0mt8
+%define irrlichtmt_version 1.9.0mt10
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.6.1
+Version:        5.7.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
