@@ -124,4 +124,12 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>1007598</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cc7a526987f4bc2b7fd0742e41719edf</srcmd5>
+    <version>5.7.0</version>
+    <time>1681825954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079961</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package minetest-game
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minetest-game
-Version:        5.6.1
+Version:        5.7.0
 Release:        0
 Summary:        Minetest Game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND LGPL-2.1-or-later AND CC-BY-SA-4.0 AND CC0-1.0

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 14 19:53:11 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.7.0:
+  * Limit and sanitize formspec fields (appgurueu)
+  * Fix player_api.set_model not updating the animation (appgurueu)
+  * Ensure chests close properly (fluxionary)
+  * Ensure proper creative hand override (AntumDeluge)
+  * Fix error if /home is executed with an invalid name (zmv7)
+  * Fix wall craft registrations (alek13)
+  * Screwdriver: 4dir node support (Wuzzy)
+
+-------------------------------------------------------------------
 Wed Sep 28 19:40:52 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.6.1:
