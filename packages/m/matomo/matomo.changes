@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Apr 18 09:50:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.14.2
+  * matomo-org/matomo
+    - #20573 Added site detection for cloudflare and updated noData page to mention cloudflare
+    - #20579 Improve brute force protection checks (#20543)
+    - #20512 Faster archiving for non-day periods by only storing one datatable and blob row at a time in memory
+    - #20594 Improve archiving performance by loading cached actions from
+      a database reader when using a multi-server database environment
+  * matomo-org/tag-manager
+    - #620 Reverting Tag Manager JavaScript Change that caused fewer visits to be tracked
+      when both Tag Manager and JavaScript trackers were used together
+    - #614 Fixed regression of container to set conditionally only if not present
+  * matomo-org/device-detector
+    - #7379 Update README.md
+    - #7380 Detect new brands: Kinstone, ROiK and Detect device for
+      exist brands: Samsung, Huawai, DEXP, TCL, Xiaomi
+    - #7382 Detect new brand HIPER and Detect devices for exits brands:
+      Samsung, Xiaomi, BBK, SUNWIND, Stylo
+    - #7383 Detect new brands: GOODTEL, Viper, VIIPOO, Vityaz, Samtron
+      and Detect devices for exist brands: Huawei, ZTE, Doogee, Realme. OPPO
+    - #7384 Detect new brands: ANXONIT, Ctroniq, Punos, TopDevice
+      and Detect devices for exist brands: OPPO, POCO, Pico, Tecno Mobile, DEXP
+    - #7385 Adds detection for Wavebox browser
+    - #7387 Detect browsers: IVVI Browser, NOMone VR Browser, Opus Browser, Soundy Browser
+    - #7388 Detect new brands: RedLine, HAOQIN, XY Auto and Detect devices
+      for exist brands: Tecno Mobile, Vsmart, Itel, Samsung
+    - #7388 Detect new brands: RedLine, HAOQIN, XY Auto and Detect devices
+      for exist brands: Tecno Mobile, Vsmart, Itel, Samsung
+  * matomo-org/matomo-php-tracker
+    - #115 add support for CURLOPT_CONNECTTIMEOUT
+  * matomo-org/tracker-proxy
+    - #81 Documenting new Safari limitations on setting first party cookies from a subdomain
+  * matomo-org/referrer-spam-list
+    - #1347 Add emicef.com
+    - #1348 Add singularwebs.net
+    - #1349 Add tourburlington.com
+    - #1350 Add nfocusdriver.com
+    - #1351 Add www.chomexun.com
+    - #1352 Add chomexun.com
+    - #1353 Add madisonclothingny.com
+
+-------------------------------------------------------------------
 Wed Mar 22 07:13:49 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.14.1
