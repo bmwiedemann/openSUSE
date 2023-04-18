@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 10 23:49:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.4.1:
+  * Do not return symbols with empty names
+  * Repair `textDocument/formatting` request
+  * From 5.4.0:
+    - Add experimental settings to allow extending the list of special environments:
+      * `texlab.experimental.mathEnvironments`
+      * `texlab.experimental.enumEnvironments`
+      * `texlab.experimental.verbatimEnvironments`
+    - Add `texlab.changeEnvironment workspace command
+    - Add `texlab.showDependencyGraph workspace command
+    - Do not show caption or section names in label inlay hints
+    - Include more user-defined commands in command completion
+    - Parse nested `\iffalse` blocks correctly
+    - Parse commands with multi-byte characters correctly
+    - Fix checking whether a document can be a root file
+
+-------------------------------------------------------------------
 Wed Mar  1 12:51:23 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 5.3.0:
