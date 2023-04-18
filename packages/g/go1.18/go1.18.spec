@@ -24,28 +24,24 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true NO_BRP_AR=true
 
-# Used to bootstrap go toolchain with specific existing package
-%define go_bootstrap_version go1.16
-
-# Used to bootstrap go toolchain using specific version of gcc-go
+# Specify Go toolchain version used to bootstrap this package's Go toolchain
+# go_bootstrap_version bootstrap go toolchain with specific existing go1.x package
+# gcc_go_version       bootstrap go toolchain with specific version of gcc-go
 %if 0%{?suse_version} > 1500
 # openSUSE Tumbleweed
+# Usually ahead of bootstrap version specified by upstream Go
+# Use Tumbleweed default gccgo and N-1 go1.x for testing
 %define gcc_go_version 13
+%define go_bootstrap_version go1.17
 %else
+# Use gccgo and go1.x specified by upstream Go
 %define gcc_go_version 11
+%define go_bootstrap_version go1.17
 %endif
 
 # Bootstrap go toolchain using existing go package go_bootstrap_version
 # To bootstrap using gccgo use '--with gccgo'
 %bcond_with gccgo
-
-# Boostrapping using existing go package can fail on certain SLE-12 architectures
-# Override here as needed
-%if 0%{?suse_version} == 1315
-%ifarch aarch64 ppc64le ppc64 s390x
-%bcond_without gccgo
-%endif
-%endif
 
 # gccgo on ppc64le with default PIE enabled fails with:
 # error while loading shared libraries:
@@ -58,9 +54,7 @@
 #!BuildIgnore: gcc-PIE
 %endif
 
-# Build go-race only on platforms where it's supported (both amd64 and aarch64
-# requires SLE15-or-later because of C++14, and ppc64le doesn't build at all
-# on openSUSE yet).
+# Build go-race only on platforms where C++14 is supported (SLE-15)
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
 %define tsan_arch x86_64 aarch64
 %else
@@ -113,6 +107,8 @@
 %endif
 %ifarch x86_64
 %define go_arch amd64
+# set GOAMD64 consistently
+%define go_amd64 v1
 %endif
 %ifarch aarch64
 %define go_arch arm64
@@ -138,13 +134,15 @@ Version:        1.18.10
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
-Group:          Development/Languages/Other
-URL:            http://golang.org
-Source:         http://golang.org/dl/go%{version}.src.tar.gz
+Group:          Development/Languages/Go
+URL:            https://go.dev/
+Source:         https://go.dev/dl/go%{version}.src.tar.gz
 Source1:        go-rpmlintrc
 Source4:        README.SUSE
 Source6:        go.gdbinit
 # We have to compile TSAN ourselves. boo#1052528
+# Preferred form when all arches share llvm race version
+# Source100:      llvm-%{tsan_commit}.tar.xz
 Source100:      llvm-%{tsan_commit}.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
@@ -162,7 +160,11 @@ BuildRequires:  gcc%{gcc_go_version}-go
 BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
-Recommends:     %{name}-doc = %{version}
+Suggests:       %{name}-doc = %{version}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
+Suggests:       %{name}-libstd = %{version}
+%endif
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
 BuildRequires:  gcc-c++
@@ -192,7 +194,6 @@ safety of a static language.
 %package doc
 Summary:        Go documentation
 Group:          Documentation/Other
-Requires:       %{name} = %{version}
 Provides:       go-doc = %{version}
 
 %description doc
@@ -202,7 +203,7 @@ Go examples and documentation.
 # boo#1052528
 %package race
 Summary:        Go runtime race detector
-Group:          Development/Languages/Other
+Group:          Development/Languages/Go
 URL:            https://compiler-rt.llvm.org/
 Requires:       %{name} = %{version}
 Supplements:    %{name} = %{version}
@@ -213,11 +214,25 @@ Go runtime race detector libraries. Install this package if you wish to use the
 -race option, in order to detect race conditions present in your Go programs.
 %endif
 
+%if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
+%package libstd
+Summary:        Go compiled shared library libstd.so
+Group:          Development/Languages/Go
+Provides:       go-libstd = %{version}
+
+%description libstd
+Go standard library compiled to a dynamically loadable shared object libstd.so
+%endif
+%endif
+
 %prep
 %ifarch %{tsan_arch}
 # compiler-rt (from LLVM)
 %setup -q -T -b 100 -n llvm-%{tsan_commit}
 %endif
+
 # go
 %setup -q -n go
 %patch7 -p1
@@ -265,6 +280,10 @@ export GOARM=6
 export GOARCH=arm
 export GOARM=7
 %endif
+%ifarch x86_64 %{?x86_64}
+# use the baseline defined above. Other option is GOAMD64=v3 for x86_64_v3 support
+export GOAMD64=%go_amd64
+%endif
 export GOROOT="`pwd`"
 export GOROOT_FINAL=%{_libdir}/go/%{go_label}
 export GOBIN="$GOROOT/bin"
@@ -279,7 +298,25 @@ bin/go install -race std
 %endif
 
 %if %{with_shared}
-bin/go install -buildmode=shared -linkshared std
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
+# Compile Go standard library as a dynamically loaded shared object libstd.so
+# for inclusion in a subpackage which can be installed standalone.
+# Upstream Go binary releases do not ship a compiled libstd.so.
+# Standard practice is to build Go binaries as a single executable.
+# Upstream Go discussed removing this feature, opted to fix current support:
+# Relevant upstream comments on: https://github.com/golang/go/issues/47788
+#
+# -buildmode=shared
+#    Combine all the listed non-main packages into a single shared
+#    library that will be used when building with the -linkshared
+#    option. Packages named main are ignored.
+#
+# -linkshared
+#    build code that will be linked against shared libraries previously
+#    created with -buildmode=shared.
+bin/go install -buildmode=shared std
+%endif
 %endif
 
 %check
@@ -402,13 +439,29 @@ fi
 %exclude %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 
+# We don't include libstd.so in the main Go package.
+%if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
+# ./go/1.20/pkg/linux_amd64_dynlink/libstd.so
+%exclude %{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
+%endif
+%endif
+
 %files doc
-%defattr(-,root,root,-)
 %doc %{_docdir}/go/%{go_label}/*.html
 
 %ifarch %{tsan_arch}
 %files race
 %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
+%endif
+
+%if %{with_shared}
+%if 0%{?suse_version} > 1500
+# openSUSE Tumbleweed
+%files libstd
+%{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
+%endif
 %endif
 
 %changelog
