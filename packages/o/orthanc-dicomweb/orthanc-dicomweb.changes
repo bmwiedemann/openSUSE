@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 15 21:14:04 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.13
+  * Use Orthanc SDK 1.11.3 to avoid a crash in Stow-RS jobs.
+  * Stow-RS now calls to the plugin flavored /instances route and now also forwards
+    the HTTP headers from the Incoming Stow-RS request.
+  * Added a list of "Resources" in the DicomWebStowClient Job "Content"
+
+-------------------------------------------------------------------
 Tue Sep 27 10:57:30 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.10
