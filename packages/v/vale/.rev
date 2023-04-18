@@ -200,4 +200,14 @@
   * chore: update choco (forwarded request 1079769 from jfkw)</comment>
     <requestid>1079773</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>107c789583ed77a48f9b2f435901765f</srcmd5>
+    <version>2.24.3</version>
+    <time>1681825987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.24.3:
+  * test: add `occurrence` case
+  * fix: don't crash on no `extends` (forwarded request 1080042 from jfkw)</comment>
+    <requestid>1080043</requestid>
+  </revision>
 </revisionlist>

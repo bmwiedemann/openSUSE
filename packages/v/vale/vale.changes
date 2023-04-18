@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 18 04:40:14 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.24.3:
+  * test: add `occurrence` case
+  * fix: don't crash on no `extends`
+
+-------------------------------------------------------------------
 Sun Apr 16 12:55:39 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.24.2:
