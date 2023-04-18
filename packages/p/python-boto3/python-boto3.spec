@@ -32,7 +32,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module s3transfer < 0.7.0}
 BuildRequires:  %{python_module s3transfer >= 0.6.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore < 1.30.0
@@ -41,7 +40,6 @@ Requires:       python-jmespath < 2.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-s3transfer < 0.7.0
 Requires:       python-s3transfer >= 0.6.0
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,6 +50,7 @@ services like Amazon S3 and Amazon EC2.
 
 For documentation consult the online documentation at
 http://boto3.readthedocs.org/en/latest/
+
 
 
 
