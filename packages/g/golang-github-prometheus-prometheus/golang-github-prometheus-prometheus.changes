@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 13 13:23:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Remove npm_licenses.tar.bz2 during "make clean"
+
+-------------------------------------------------------------------
 Thu Apr  6 15:50:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Remove web-ui archives during "make clean".
