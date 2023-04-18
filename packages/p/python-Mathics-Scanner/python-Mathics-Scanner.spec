@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics-Scanner
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,26 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-Mathics-Scanner
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 Summary:        Character Tables and Tokenizer for Mathics and the Wolfram Language
 License:        GPL-3.0-only
 URL:            https://mathics.org/
 Source:         https://files.pythonhosted.org/packages/source/M/Mathics-Scanner/Mathics_Scanner-%{version}.tar.gz
-Patch0:         https://github.com/Mathics3/mathics-scanner/commit/9346764dfd22f011ec7bba9248497383f4b98a3a.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module PyYAML}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-PyYAML
 Requires:       python-chardet
 Requires:       python-click
-Requires:       python-PyYAML
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-ujson
 BuildArch:      noarch
 %python_subpackages
@@ -47,9 +48,9 @@ Character Tables and Tokenizer for Mathics and the Wolfram Language.
 
 %prep
 %setup -q -n Mathics_Scanner-%{version}
-%patch0 -p1
 # Fix shbang
-sed -i "s|/usr/bin/env python|/usr/bin/python|" mathics_scanner/generate/{build_tables,rl_inputrc}.py
+sed -i "s|/usr/bin/env python|/usr/bin/python3|" mathics_scanner/generate/build_tables.py
+sed -i "s|/usr/bin/env python3|/usr/bin/python3|" mathics_scanner/generate/rl_inputrc.py
 
 %build
 %python_build
@@ -72,6 +73,7 @@ sed -i "s|/usr/bin/env python|/usr/bin/python|" mathics_scanner/generate/{build_
 
 %files %{python_files}
 %python_alternative %{_bindir}/mathics-generate-json-table
-%{python_sitelib}/*
+%{python_sitelib}/mathics_scanner/
+%{python_sitelib}/Mathics_Scanner-%{version}-py%{python_version}.egg-info/
 
 %changelog
