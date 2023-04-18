@@ -5166,6 +5166,16 @@ snd_maestro3: pci:v0000125Dd00001998sv*sd*bc04sc01i*
 snd_maestro3: pci:v0000125Dd00001999sv*sd*bc04sc01i*
 snd_maestro3: pci:v0000125Dd0000199Asv*sd*bc04sc01i*
 snd_maestro3: pci:v0000125Dd0000199Bsv*sd*bc04sc01i*
+snd_soc_avs: pci:v00008086d00003198sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d00005A98sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d00009D70sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d00009D71sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d0000A170sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d0000A171sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d0000A2F0sv*sd*bc*sc*i*
+snd_soc_avs: pci:v00008086d0000A3F0sv*sd*bc*sc*i*
+snd_soc_catpt: acpi*:INT33C8%3A*
+snd_soc_catpt: acpi*:INT3438%3A*
 snd_soc_skl: pci:v00008086d000002C8sv*sd*bc*sc*i*
 snd_soc_skl: pci:v00008086d000006C8sv*sd*bc*sc*i*
 snd_soc_skl: pci:v00008086d00003198sv*sd*bc*sc*i*

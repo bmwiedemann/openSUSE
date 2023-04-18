@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Apr 17 08:13:49 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230406 (git commit 86da2ac9b4e5):
+  * linux-firmware: update firmware for MT7916
+  * rtw89: 8852b: update format-1 fw to v0.29.29.1
+  * rtw89: 8852c: update fw to v0.27.56.13
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: WCN6750 hw1.0: update to WLAN.MSL.1.0.1-01160-QCAMSLSWPLZ-1
+  * ath11k: QCN9074 hw1.0: update to WLAN.HK.2.7.0.1-01744-QCAHKSWPL_SILICONZ-1
+  * ath11k: IPQ8074 hw2.0: update to WLAN.HK.2.7.0.1-01744-QCAHKSWPL_SILICONZ-1
+  * ath11k: IPQ8074 hw2.0: update board-2.bin
+  * ath11k: IPQ6018 hw1.0: update to WLAN.HK.2.7.0.1-01744-QCAHKSWPL_SILICONZ-1
+  * ath11k: IPQ6018 hw1.0: update board-2.bin
+  * ath10k: QCA99X0 hw2.0: update board-2.bin
+  * ath10k: QCA9984 hw1.0: update board-2.bin
+  * ath10k: QCA9888 hw2.0: update board-2.bin
+  * ath10k: QCA6174 hw3.0: update board-2.bin
+  * ath10k: QCA4019 hw1.0: update board-2.bin
+  * nvidia: update Tu10x and Tu11x signed firmware to support newer Turing HW
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * linux-firmware: Amphion: Update vpu firmware
+  * iwlwifi: add new FWs from core78-32 release
+  * iwlwifi: update 9000-family firmwares to core78-32
+  * amdgpu: Update SDMA 6.0.1 firmware
+  * amdgpu: Add PSP 13.0.11 firmware
+  * amdgpu: Update PSP 13.0.4 firmware
+  * amdgpu: Update GC 11.0.1 firmware
+  * amdgpu: Update DCN 3.1.4 firmware
+  * amdgpu: Add GC 11.0.4 firmware
+  * rtw88: 8822c: Update normal firmware to v9.9.15
+
+-------------------------------------------------------------------
 Fri Mar 24 08:22:16 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230320 (git commit bcdcfbcf0a8f):
