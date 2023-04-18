@@ -67,13 +67,13 @@ Patch1001:      dnf-4.8.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patc
 ## We default allow_vendor_change to False, upstream has it as True
 Patch1002:      dnf-4.6_vendor_change_doc.patch
 
-BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-bugzilla
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(bash-completion)
 Requires:       python3-dnf = %{version}-%{release}
 Recommends:     %{name}-lang >= %{version}
 Recommends:     %{yum_subpackage_name}

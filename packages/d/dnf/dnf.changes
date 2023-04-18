@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 17 10:02:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(bash-completion) instead of
+  bash-completion: the build system needs this to find out where to
+  install the completion files to.
+
+-------------------------------------------------------------------
 Mon Feb 13 08:12:01 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - spec: Run python_compileall macro to generate bytecode
