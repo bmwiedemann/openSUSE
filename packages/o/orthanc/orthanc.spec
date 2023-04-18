@@ -2,7 +2,7 @@
 # spec file for package orthanc
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019-2022 Dr. Axel Braun
+# Copyright (c) 2019-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -37,8 +37,6 @@ Source10:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/bootstra
 Source11:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/axios-0.19.0.tar.gz
 Source12:       https://orthanc.osimis.io/ThirdPartyDownloads/jquery-3.4.1.min.js
 Source13:       https://orthanc.osimis.io/ThirdPartyDownloads/dicom-web/vuejs-2.6.10.tar.gz
-Patch0:         install_cmd.diff
-Patch1:         cmake.diff
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
@@ -48,6 +46,7 @@ BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
+BuildRequires:  protobuf-devel 
 BuildRequires:  help2man
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -125,7 +124,7 @@ This package includes the source files for Orthanc. Use it in conjunction with t
 
 %prep
 %setup -q -n Orthanc-%{version}
-%autopatch -p1
+## %autopatch -p1
 
 cp %{S:1} %{S:2} .
 
@@ -134,8 +133,8 @@ cp %{S:8} OrthancServer/Resources/.
 
 #OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
-mkdir -p OrthancServer/Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads
-cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/Plugins/Samples/ConnectivityChecks/ThirdPartyDownloads/.
+mkdir -p OrthancServer/ThirdPartyDownloads
+cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/ThirdPartyDownloads/.
 
 %build
 %cmake	../OrthancServer \
@@ -144,7 +143,7 @@ cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/Plugins/Samples/ConnectivityChe
     -DENABLE_CIVETWEB=ON \
     -DORTHANC_UNIT_TESTS_LINK_FRAMEWORK=OFF \
     -DUSE_SYSTEM_MONGOOSE=OFF \
-    -DSYSTEM_MONGOOSE_USE_CALLBACKS=OFF \
+    -DSYSTEM_MONGOOSE_USE_CA/var/tmp/build-root/openSUSE_Tumbleweed-x86_64LLBACKS=OFF \
     -DUNIT_TESTS_WITH_HTTP_CONNEXIONS=OFF \
     -DBoost_NO_BOOST_CMAKE=ON
 

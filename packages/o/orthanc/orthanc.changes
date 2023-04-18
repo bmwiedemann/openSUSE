@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 16 19:52:25 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.12.0
+  * Support for labels associated with patients, studies, series, and instances
+  * Added a sample plugin bringing multitenant DICOM support through labels
+  * Many other fixes and improvements, see NEWS
+
+-------------------------------------------------------------------
+Fri Apr 14 17:08:47 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.11.3
+  * cmake.diff removed (included in source)
+  * install_cmd.diff removed (included in source)
+  * Many improvements, for detailed log see NEWS
+
+-------------------------------------------------------------------
 Tue Oct 25 10:13:39 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - Build fixed for new plugins
