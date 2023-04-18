@@ -44,6 +44,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xlrd >= 0.9.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-agate
+Requires:       python-agate-dbf
+Requires:       python-agate-excel
+Requires:       python-agate-sql
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
