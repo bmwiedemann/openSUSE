@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Apr 14 23:41:22 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Build subpackage go1.x-libstd compiled shared object libstd.so
+  only on Tumbleweed at this time.
+  Refs jsc#PED-1962
+
+-------------------------------------------------------------------
+Fri Apr 14 23:20:06 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add subpackage go1.x-libstd for compiled shared object libstd.so.
+  Refs jsc#PED-1962
+  * Main go1.x package included libstd.so in previous versions
+  * Split libstd.so into subpackage that can be installed standalone
+  * Continues the slimming down of main go1.x package by 40 Mb
+  * Experimental and not recommended for general use, Go currently has no ABI
+  * Upstream Go has not committed to support buildmode=shared long-term
+  * Do not use in packaging, build static single binaries (the default)
+  * Upstream Go go1.x binary releases do not include libstd.so
+  * go1.x Suggests go1.x-libstd so not installed by default Recommends
+  * go1.x-libstd does not Require: go1.x so can install standalone
+  * Provides go-libstd unversioned package name
+  * Fix build step -buildmode=shared std to omit -linkshared
+- Packaging improvements:
+  * go1.x Suggests go1.x-doc so not installed by default Recommends
+  * Use Group: Development/Languages/Go instead of Other
+
+-------------------------------------------------------------------
+Fri Apr 14 23:06:51 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Improvements to go1.x packaging spec:
+  * On Tumbleweed bootstrap with current default gcc13 and gccgo118
+  * On SLE-12 aarch64 ppc64le ppc64 remove overrides to bootstrap
+    using go1.x package (%bcond_without gccgo). This is no longer
+    needed on current SLE-12:Update and removing will consolidate
+    the build configurations used.
+  * Change source URLs to go.dev as per Go upstream
+
+-------------------------------------------------------------------
 Thu Apr 13 04:58:20 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use gcc13 compiler for Tumbleweed.
