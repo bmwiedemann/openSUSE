@@ -75,7 +75,7 @@ export CFLAGS="%{optflags}"
 -Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg \
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
 # For whatever reason, meson >= 0.58 should already support the c18 standard.
-	-Dc_std=c11
+	-Dc_std=c11 \
 %endif
     -Db_lto=true
 
