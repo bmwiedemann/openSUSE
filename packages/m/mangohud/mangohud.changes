@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 17 22:44:19 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Drop 0001-fix-gcc13-build.patch and instead do the same with sed
+  inside the spec file
+- Update to version 0.6.9~1:
+  * Fixed issue that applied picmip without option being set
+  * Reverted x11 poller that was causing segfaults 06edee4
+  * Fixed issues with horizontal and legacy_layout
+  * Fixed amdgpu APU power and temperature reading
+  * Fixed certain hud elements displaying incorrectly in horizontal
+  * Fixed an issue causing segfault when using MANGOHUD_CONFIG
+
+-------------------------------------------------------------------
 Fri Apr 14 18:26:34 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add 0001-fix-gcc13-build.patch to fix build with openSUSE's gcc13

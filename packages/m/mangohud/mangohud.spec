@@ -16,12 +16,12 @@
 #
 
 
-%define internal_ver 0.6.9
+%define internal_ver 0.6.9-1
 %define imgui_ver 1.81
 %define imgui_wrap 1
 %define vulkan_ver 1.2.158
 Name:           mangohud
-Version:        0.6.9
+Version:        0.6.9~1
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
@@ -32,8 +32,6 @@ Source2:        https://wrapdb.mesonbuild.com/v1/projects/imgui/%{imgui_ver}/%{i
 Source3:        https://wrapdb.mesonbuild.com/v2/vulkan-headers_%{vulkan_ver}-2/get_patch#/vulkan-headers-%{vulkan_ver}-2-wrap.zip
 Source4:        https://github.com/KhronosGroup/Vulkan-Headers/archive/v%{vulkan_ver}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE 0001-fix-gcc13-build.patch -- Fix build with openSUSE's gcc13
-Patch1:         0001-fix-gcc13-build.patch
 BuildRequires:  AppStream
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150500
 BuildRequires:  gcc12-c++
@@ -73,26 +71,23 @@ Requires:       %{name}
 A transparent background OpenGL application with a built-in MangoHud designed to be run inside a gamescope instance.
 
 %prep
-%autosetup -n MangoHud-%{version} -p1
-%setup -n MangoHud-%{version} -DTa1
-%setup -n MangoHud-%{version} -DTa2
-%setup -n MangoHud-%{version} -DTa3
-%setup -n MangoHud-%{version} -DTa4
+%autosetup -n MangoHud-%{internal_ver} -p1
+%setup -n MangoHud-%{internal_ver} -DTa1
+%setup -n MangoHud-%{internal_ver} -DTa2
+%setup -n MangoHud-%{internal_ver} -DTa3
+%setup -n MangoHud-%{internal_ver} -DTa4
 sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
 mv imgui-%{imgui_ver} subprojects/
 mv Vulkan-Headers-%{vulkan_ver} subprojects/
 sed -i 's/0.60.0/0.59/g' meson.build
 
+# Fix tests building with GCC 13
+sed -i -e '1i#include <cstdint>' tests/test_amdgpu.cpp
+
 # Force system cmocka instead of bundled cmocka
 sed -i "s/  cmocka = subproject('cmocka')//g" meson.build
 sed -i "s/cmocka_dep = cmocka.get_variable('cmocka_dep')/cmocka_dep = dependency('cmocka')/g" meson.build
-
-# Fix building with GCC 13 -- Workaround until the next release where the fix will be included
-sed -i -e '1i#include <cstdint>' src/control.cpp
-sed -i -e '1i#include <cstdint>' src/font.cpp
-sed -i -e '1i#include <cstdint>' src/keybinds.cpp
-sed -i -e '1i#include <cstdint>' src/overlay_params.cpp
 
 %build
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150500
