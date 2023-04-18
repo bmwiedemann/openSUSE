@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 16 20:20:46 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 20230416:
+  * MAINTAINERS: update from mobile-broadband-provider-info.doap
+  * ua: fix +7Telecom
+  * all: include a <name> in <country>
+  * ru: add Vainah Telecom
+  * ru: add Tinkoff Mobile
+  * ru: add STS
+  * ru: add SberMobile
+  * ru: add Phoenix
+  * ru: add Letai
+  * ru: add Gazprombank Mobile
+  * ru: add +7Telecom
+  * ru: add VTB Mobile
+  * ua: add Win Mobile
+  * ua: add Volna mobile
+  * ua: add Krymtelekom
+  * ru: update operators
+  * ru: clean up old operators
+  * ca: add Rogers LTE APNs
+  * gb:Add Superdrug Mobile
+  * dk: Update Telenor DNS
+  * pk: unbreak Pakistani MCC
+  * doap: add Guido to maintainer list
+  * us: AT&T: add RESELLER as MVNO APN
+
+-------------------------------------------------------------------
 Tue Nov 08 10:21:25 UTC 2022 - dimstar@opensuse.org
 
 - Update to version 20221107:
