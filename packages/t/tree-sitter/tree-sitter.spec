@@ -26,10 +26,12 @@ License:        MIT
 URL:            https://tree-sitter.github.io/
 Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
+Source10:       cargo_config
+Source11:       baselibs.conf
 BuildRequires:  cargo-packaging
 BuildRequires:  rust > 1.40
 Requires:       lib%{name}%{somajor} = %{version}
+%{?suse_build_hwcaps_libs}
 
 %description
 Tree-sitter is a parser generator tool and an incremental parsing
@@ -65,7 +67,7 @@ developing applications that use %{name}.
 %autosetup -p1 -a1
 
 mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
+cp %{SOURCE10} .cargo/config
 
 # fix VERSION in Makefile
 sed -i -e '/^VERSION/s/:= .*$/:= %{version}/' Makefile
