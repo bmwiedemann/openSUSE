@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -189,7 +189,6 @@ Requires:       gnome-user-share
 Recommends:     baobab
 Recommends:     file-roller
 Recommends:     gcr-viewer
-Recommends:     gedit
 Recommends:     gnome-characters
 Recommends:     gnome-contacts
 Recommends:     gnome-dictionary
@@ -197,6 +196,7 @@ Recommends:     gnome-logs
 Recommends:     gnome-maps
 Recommends:     gnome-screenshot
 Recommends:     gnome-system-monitor
+Recommends:     gnome-text-editor
 #
 # While running a GNOME3 session, it's nice to have the GNOME3 related pinentry
 # for proper gpg2 integration
@@ -365,7 +365,7 @@ Recommends:     evince
 # bsc#1069699
 Recommends:     file-roller
 # bsc#1065146
-Recommends:     gedit
+Recommends:     gnome-text-editor
 # implified by gnome-keyring-pam
 # Recommends:     gnome-keyring
 # bsc#1063156
@@ -468,12 +468,11 @@ Provides:       pattern-order() = 2060
 Obsoletes:      patterns-openSUSE-gnome_ide < %{version}
 # from data/GNOME-IDE
 Recommends:     devhelp
-Recommends:     glade
 Recommends:     gnome-builder
 # from devel_ide
 Suggests:       accerciser
-Suggests:       gedit
-Suggests:       gedit-plugins
+Suggests:       glade
+Suggests:       gnome-text-editor
 Suggests:       ghex
 Suggests:       gnome-devel-docs
 
@@ -668,11 +667,11 @@ Recommends:     bijiben
 Recommends:     cheese
 Recommends:     file-roller
 Recommends:     gdk-pixbuf-thumbnailer
-Recommends:     gedit
 Recommends:     gnome-calculator
 Recommends:     gnome-characters
 Recommends:     gnome-dictionary
 Recommends:     gnome-screenshot
+Recommends:     gnome-text-editor
 #
 # Packages that really make sense
 #
@@ -687,7 +686,6 @@ Recommends:     seahorse
 # Official upstream
 #
 Suggests:       eog-plugins
-Suggests:       gedit-plugins
 # #388570
 Suggests:       nautilus-share
 
