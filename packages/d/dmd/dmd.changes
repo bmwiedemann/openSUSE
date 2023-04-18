@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Apr 16 17:15:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.103.0
+  * Compiler changes:
+    - Add __check(assign-expression) to ImportC
+    - Alias this for classes is deprecated
+    - -preview=dip25 has been enabled by default
+    - export int a; now generates dllexport instead of dllimport
+    - Deprecate traits(isVirtualFunction) and
+      traits(getVirtualFunctions)
+  * Library changes:
+    - Unicode grapheme walking updated to conform to Unicode
+      version 15
+    - Better static assert messages for
+      std.algorithm.iteration.joiner
+    - Better static assert messages for std.algorithm.sorting.sort
+  * Dub changes: The --color argument now accepts values auto,
+    never, always
+- Changes from version 2.102.2:
+  * 6 fixed Bugzilla issues.
+- Changes from version 2.102.1:
+  * Dub changes:
+    - Reverted v1.31.0 working directory change when using dub run
+      --root=<value>
+    - Path dependencies of path-based sub-packages have been fixed
+- Changes from version 2.102.0:
+  * Compiler changes:
+    - A missed case of conflicting extern (D) @system function
+      definitions has been deprecated
+    - Deprecate the ability to call __traits(getAttributes) on
+      overload sets
+    - Deprecate non-empty for statement Increment clause with no
+      effect
+    - Array literals assigned to scope array variables can now be
+      allocated on the stack
+    - static assert now supports multiple message arguments
+    - -preview=systemVariables has been added
+  * Runtime changes: The default Throwable.TraceInfo generation now
+    is @nogc.
+  * Library changes:
+    - Single- and double-precision implementations for log function
+      families
+    - The Unicode property "C" aka "Other" has had the wrong
+      properties associated with it
+    - Unicode table generator is now in Phobos, tables are updated
+      to version 15
+    - std.typecons.Unique now calls destroy on struct types
+  * Installer changes:
+    - Update the bundled VisualD package
+    - Prefer 64 bit over 32 bit DMD on Windows 64 bit.
+  * Dub changes:
+    - Binary output will now be in a central cache
+    - DUB API breaking change: Package.metadataCache setter and
+      getter have been removed
+- Changes from version 2.101.2:
+  * 16 fixed Bugzilla issues.
+- Changes from version 2.101.1:
+  * 11 fixed Bugzilla issues.
+
+-------------------------------------------------------------------
 Thu Dec  1 11:03:47 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Bootstrap using gdmd instead of prebuilt binaries
