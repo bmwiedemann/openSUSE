@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  3 20:33:48 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 1.1.0
+  * PHP 8 readiness
+- Update to version 1.0.7
+  * xattr fix
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
@@ -6,7 +14,8 @@ Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 -------------------------------------------------------------------
 Sun Feb 28 22:52:22 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- ftruncate implemented on smb_streams
+- Update to version 1.0.6
+  * ftruncate implemented on smb_streams
 
 -------------------------------------------------------------------
 Fri Feb 19 18:59:18 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
