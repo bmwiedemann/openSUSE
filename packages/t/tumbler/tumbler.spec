@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,11 +31,11 @@ Source:         https://archive.xfce.org/src/xfce/%{name}/4.18/%{name}-%{version
 Source1:        custom_thumbnailers.tar.gz
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.1
 # GdkPibuxf thumbnailer plugin
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.14

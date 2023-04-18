@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 17 13:32:36 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.1
+  * Fix memory leak in jpeg-thumbnailer
+  * Fix memory leak in cover-thumbnailer
+  * Fix previous commit
+  * cover-thumbnailer: Fix deprecation warning
+  * build: Let xdt-depends.m4 macros set GLib macros
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Sat Dec 17 13:53:31 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.18.0

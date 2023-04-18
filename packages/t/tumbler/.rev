@@ -441,4 +441,19 @@
     <comment></comment>
     <requestid>1045182</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e6d7fdb02d3686761b6ab6c177deeb47</srcmd5>
+    <version>4.18.1</version>
+    <time>1681825964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.1
+  * Fix memory leak in jpeg-thumbnailer
+  * Fix memory leak in cover-thumbnailer
+  * Fix previous commit
+  * cover-thumbnailer: Fix deprecation warning
+  * build: Let xdt-depends.m4 macros set GLib macros
+  * Translation Updates
+- Remove _service file (forwarded request 1079938 from manfred-h)</comment>
+    <requestid>1079982</requestid>
+  </revision>
 </revisionlist>
