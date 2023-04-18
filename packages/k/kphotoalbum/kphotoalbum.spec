@@ -16,16 +16,21 @@
 #
 
 
+%bcond_without released
 Name:           kphotoalbum
-Version:        5.9.1
+Version:        5.10.0
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://www.kphotoalbum.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+Source2:        kphotoalbum.keyring
+%endif
 BuildRequires:  QtAV-devel
-BuildRequires:  cmake >= 3.16.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  libexiv2-devel
@@ -34,7 +39,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons) >= 5.44.0
+BuildRequires:  cmake(KF5CoreAddons) >= 5.78.0
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
@@ -47,10 +52,10 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libvlc)
@@ -81,11 +86,14 @@ an image from a special place, or even both.
 %suse_update_desktop_file org.kde.%{name} Graphics Photography
 %suse_update_desktop_file org.kde.%{name}-import Graphics Photography
 
+# Fix rpmlint warning text file has executable bits
+chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.kphotoalbum.open-raw.desktop
+
 %fdupes -s %{buildroot}
 
 %files
 %license LICENSES/*
-%doc ChangeLog README.md
+%doc CHANGELOG.md README.md
 %{_kf5_applicationsdir}/*
 %{_kf5_appstreamdir}/org.kde.kphotoalbum.appdata.xml
 %{_kf5_bindir}/*

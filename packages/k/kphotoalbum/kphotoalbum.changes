@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Apr 16 19:22:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.10.0
+  Changed
+  * View-related actions formerly found in the "Settings" menu were
+    moved to the "View" menu.
+  * Make options "Display Labels in Thumbnail View" and 
+    "Display Categories in Thumbnail View" reachable via the "View"
+    menu and allow both actions to be assigned keyboard shortcuts
+  * Store the untagged tag information inside the index.xml file
+    instead of the Settings
+  * Change scroll direction in the annotation dialog's date edit
+    fields to match common (western) expectations and the date
+    picker.
+  * Prevent scrolling past the occupied areas of the date bar.
+  * Files are now always created with group read/write permissions
+  * When exiting the demo mode, the demo database is now always
+    saved if it isn't deleted.
+  Fixed
+  * Improve readability of "Show Tooltips in Thumbnails Window"
+    tooltip.
+  * Fix image selection order for newly added images
+  * Improve date bar behavior when zooming the date bar and
+    changing views
+  Removed
+  * Default shortcut for "View" images was removed.
+  * Pressing "Enter" to open the viewer is now the preferred way.
+    To restore the old behavior, reassign the shortcut via
+    "Settings | Configure Keyboard Shortcuts...".
+  Dependencies
+  * CMake: 3.18
+  * Qt5: 5.15
+  * KDE Frameworks: 5.78
+- Fix one rpmlint warnings
+
+-------------------------------------------------------------------
 Thu Feb 23 17:15:22 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.9.1
