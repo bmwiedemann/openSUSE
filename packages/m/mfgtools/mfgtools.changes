@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 17 13:26:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add mfgtools-gcc13.patch: Fix build using GCC 13.
+
+-------------------------------------------------------------------
 Mon Sep  5 08:57:38 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to version 1.4.243.7

@@ -1,7 +1,7 @@
 #
 # spec file for package mfgtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        BSD-3-Clause
 Group:          System/Management
 URL:            https://github.com/NXPmicro/mfgtools.git
 Source0:        %{name}-%{version}.tar
+Patch0:         mfgtools-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
@@ -38,7 +39,7 @@ BuildRequires:  zlib-devel
 Freescale/NXP I.MX Chip image deploy tools. This package holds the evolution of MFGTools (aka MFGTools v3), which is called the UUU (Universal Update Utility).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 echo uuu_%{version} > .tarball-version
