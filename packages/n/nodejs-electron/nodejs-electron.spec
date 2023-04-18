@@ -266,6 +266,7 @@ Patch75:        gcc-asmflags.patch
 # https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
 Patch76:        disable-devtools-tests.patch
 Patch77:        angle_link_glx.patch
+Patch78:        Revert-e2c4acd-apply-csp-correctly-when-contextIsolation-false.patch
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch

@@ -1,0 +1,162 @@
+Revert upstream changes causing VSCode crash:
+https://github.com/microsoft/vscode/pull/179991
+
+#0  blink::V8PerIsolateData::HasInstance(blink::WrapperTypeInfo const*, v8::Local<v8::Value>, WTF::HashMap<void const*, v8::Eternal<v8::Template>, blink::V8PerIsolateData::SimplePtrHash, WTF::HashTraits<void const*>, WTF::HashTraits<v8::Eternal<v8::Template> >, WTF::PartitionAllocator> const&) [clone .isra.0] () at ../../third_party/blink/renderer/platform/bindings/v8_per_isolate_data.cc:224
+#1  0x000055f3e7bdb2e7 in blink::V8PerIsolateData::HasInstance (Reading in symbols for <artificial>@0x83cf73c...
+this=0x0, wrapper_type_info=0x55f3ebf64b80 <blink::V8TrustedScript::wrapper_type_info_>, untrusted_value=...) at ../../third_party/blink/renderer/platform/bindings/v8_per_isolate_data.cc:218
+#2  0x000055f3e80509cf in blink::bindings::V8InterfaceBridge<blink::V8TrustedScript, blink::TrustedScript>::HasInstance () at ../../third_party/blink/renderer/platform/bindings/v8_interface_bridge.h:30
+#3  blink::V8UnionStringOrTrustedScript::Create (isolate=0x13280038c000, v8_value=..., exception_state=...) at gen/third_party/blink/renderer/bindings/core/v8/v8_union_string_trustedscript.cc:25
+#4  0x000055f3e6fdcbc3 in blink::NativeValueTraits<blink::V8UnionStringOrTrustedScript, void>::NativeValue () at ../../third_party/blink/renderer/bindings/core/v8/native_value_traits_impl.h:1489
+#5  TrustedTypesCodeGenerationCheck () at ../../third_party/blink/renderer/bindings/core/v8/v8_initializer.cc:420
+#6  blink::V8Initializer::CodeGenerationCheckCallbackInMainThread (Reading in symbols for <artificial>@0x1b39c10...
+context=..., source=..., is_code_like=56) at ../../third_party/blink/renderer/bindings/core/v8/v8_initializer.cc:460
+#7  0x000055f3e334e1df in ModifyCodeGenerationFromStrings (Reading in symbols for <artificial>@0x25392ba...
+context=..., source=..., is_code_like=48) at ../../electron/shell/common/node_bindings.cc:211
+#8  0x000055f3e3ea63bd in v8::internal::ModifyCodeGenerationFromStrings () at ../../v8/src/codegen/compiler.cc:2928
+#9  v8::internal::Compiler::ValidateDynamicCompilationSource (isolate=0x13280038c000, context=..., original_source=..., is_code_like=false) at ../../v8/src/codegen/compiler.cc:2991
+#10 0x000055f3e4263dd0 in CompileGlobalEval () at ../../v8/src/runtime/runtime-compiler.cc:578
+#11 __RT_impl_Runtime_ResolvePossiblyDirectEval () at ../../v8/src/runtime/runtime-compiler.cc:623
+#12 v8::internal::Runtime_ResolvePossiblyDirectEval (args_length=-336180352, args_object=0x132800280030, isolate=0x13280038c000) at ../../v8/src/runtime/runtime-compiler.cc:607
+#13 0x000055f37ff170b3 in ?? ()
+#14 0x00007fff7ce1df20 in ?? ()
+#15 0x0000000000000006 in ?? ()
+
+
+reverted:
+--- b/electron/shell/common/node_bindings.cc
++++ a/electron/shell/common/node_bindings.cc
+@@ -184,10 +184,9 @@
+     v8::Local<v8::Context> context,
+     v8::Local<v8::Value> source,
+     bool is_code_like) {
++  // If we're running with contextIsolation enabled in the renderer process,
++  // fall back to Blink's logic.
+   if (node::Environment::GetCurrent(context) == nullptr) {
+-    // No node environment means we're in the renderer process, either in a
+-    // sandboxed renderer or in an unsandboxed renderer with context isolation
+-    // enabled.
+     if (gin_helper::Locker::IsBrowserProcess()) {
+       NOTREACHED();
+       return {false, {}};
+@@ -196,22 +195,6 @@
+         context, source, is_code_like);
+   }
+ 
+-  // If we get here then we have a node environment, so either a) we're in the
+-  // main process, or b) we're in the renderer process in a context that has
+-  // both node and blink, i.e. contextIsolation disabled.
+-
+-  // If we're in the main process, delegate to node.
+-  if (gin_helper::Locker::IsBrowserProcess()) {
+-    return node::ModifyCodeGenerationFromStrings(context, source, is_code_like);
+-  }
+-
+-  // If we're in the renderer with contextIsolation disabled, ask blink first
+-  // (for CSP), and iff that allows codegen, delegate to node.
+-  v8::ModifyCodeGenerationFromStringsResult result =
+-      blink::V8Initializer::CodeGenerationCheckCallbackInMainThread(
+-          context, source, is_code_like);
+-  if (!result.codegen_allowed)
+-    return result;
+   return node::ModifyCodeGenerationFromStrings(context, source, is_code_like);
+ }
+ 
+reverted:
+--- b/electron/spec/chromium-spec.ts
++++ a/electron/spec/chromium-spec.ts
+@@ -355,74 +355,28 @@
+     });
+   });
+ 
++  describe('csp in sandbox: false', () => {
++    it('is correctly applied', async () => {
++      const w = new BrowserWindow({
++        show: false,
++        webPreferences: { sandbox: false }
+-  describe('csp', () => {
+-    for (const sandbox of [true, false]) {
+-      describe(`when sandbox: ${sandbox}`, () => {
+-        for (const contextIsolation of [true, false]) {
+-          describe(`when contextIsolation: ${contextIsolation}`, () => {
+-            it('prevents eval from running in an inline script', async () => {
+-              const w = new BrowserWindow({
+-                show: false,
+-                webPreferences: { sandbox, contextIsolation }
+-              });
+-              w.loadURL(`data:text/html,<head>
+-              <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
+-            </head>
+-            <script>
+-              try {
+-                // We use console.log here because it is easier than making a
+-                // preload script, and the behavior under test changes when
+-                // contextIsolation: false
+-                console.log(eval('true'))
+-              } catch (e) {
+-                console.log(e.message)
+-              }
+-            </script>`);
+-              const [,, message] = await emittedOnce(w.webContents, 'console-message');
+-              expect(message).to.match(/Refused to evaluate a string/);
+-            });
+-
+-            it('does not prevent eval from running in an inline script when there is no csp', async () => {
+-              const w = new BrowserWindow({
+-                show: false,
+-                webPreferences: { sandbox, contextIsolation }
+-              });
+-              w.loadURL(`data:text/html,
+-            <script>
+-              try {
+-                // We use console.log here because it is easier than making a
+-                // preload script, and the behavior under test changes when
+-                // contextIsolation: false
+-                console.log(eval('true'))
+-              } catch (e) {
+-                console.log(e.message)
+-              }
+-            </script>`);
+-              const [,, message] = await emittedOnce(w.webContents, 'console-message');
+-              expect(message).to.equal('true');
+-            });
+-
+-            it('prevents eval from running in executeJavaScript', async () => {
+-              const w = new BrowserWindow({
+-                show: false,
+-                webPreferences: { sandbox, contextIsolation }
+-              });
+-              w.loadURL('data:text/html,<head><meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\' \'unsafe-inline\'"></meta></head>');
+-              await expect(w.webContents.executeJavaScript('eval("true")')).to.be.rejected();
+-            });
+-
+-            it('does not prevent eval from running in executeJavaScript when there is no csp', async () => {
+-              const w = new BrowserWindow({
+-                show: false,
+-                webPreferences: { sandbox, contextIsolation }
+-              });
+-              w.loadURL('data:text/html,');
+-              expect(await w.webContents.executeJavaScript('eval("true")')).to.be.true();
+-            });
+-          });
+-        }
+       });
++      w.loadURL(`data:text/html,<head>
++          <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
++        </head>
++        <script>
++          try {
++            // We use console.log here because it is easier than making a
++            // preload script, and the behavior under test changes when
++            // contextIsolation: false
++            console.log(eval('failure'))
++          } catch (e) {
++            console.log('success')
++          }
++        </script>`);
++      const [,, message] = await emittedOnce(w.webContents, 'console-message');
++      expect(message).to.equal('success');
++    });
+-    }
+   });
+ 
+   it('does not crash when multiple WebContent are created with web security disabled', () => {

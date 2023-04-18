@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 17 15:43:58 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add Revert-e2c4acd-apply-csp-correctly-when-contextIsolation-false.patch
+  * revert changes causing crash of VSCode: https://github.com/microsoft/vscode/pull/179991
+
+-------------------------------------------------------------------
 Sat Apr 15 11:33:42 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.6
   * Fixed an issue with Content-Security-Policy not being correctly enforced when sandbox: false and contextIsolation: false. (CVE-2023-23623)
