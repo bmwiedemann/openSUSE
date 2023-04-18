@@ -11,7 +11,7 @@ Subject: [PATCH] Fix compilation with ffmpeg5 #63
  4 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/src/streamprocessor/streamprocessor.cpp b/src/streamprocessor/streamprocessor.cpp
-index b86795e..8faf8a2 100644
+index b86795e7..8faf8a29 100644
 --- a/src/streamprocessor/streamprocessor.cpp
 +++ b/src/streamprocessor/streamprocessor.cpp
 @@ -195,7 +195,7 @@ StreamProcessor::findStream(int streamType, int streamIndex, bool imageSub)
@@ -24,7 +24,7 @@ index b86795e..8faf8a2 100644
  			qWarning() << "Failed to find decoder for stream" << i;
  			return false;
 diff --git a/src/videoplayer/backend/decoder.h b/src/videoplayer/backend/decoder.h
-index 4ab95b2..fb6840d 100644
+index 4ab95b2c..fb6840de 100644
 --- a/src/videoplayer/backend/decoder.h
 +++ b/src/videoplayer/backend/decoder.h
 @@ -11,6 +11,7 @@
@@ -36,7 +36,7 @@ index 4ab95b2..fb6840d 100644
  }
  
 diff --git a/src/videoplayer/backend/framequeue.h b/src/videoplayer/backend/framequeue.h
-index dc9b2fa..ece1166 100644
+index dc9b2fa4..ece11668 100644
 --- a/src/videoplayer/backend/framequeue.h
 +++ b/src/videoplayer/backend/framequeue.h
 @@ -9,6 +9,7 @@
@@ -48,7 +48,7 @@ index dc9b2fa..ece1166 100644
  }
  
 diff --git a/src/videoplayer/backend/streamdemuxer.cpp b/src/videoplayer/backend/streamdemuxer.cpp
-index 1e339b3..e8320ea 100644
+index 1e339b33..e8320ea0 100644
 --- a/src/videoplayer/backend/streamdemuxer.cpp
 +++ b/src/videoplayer/backend/streamdemuxer.cpp
 @@ -230,7 +230,7 @@ StreamDemuxer::componentOpen(int streamIndex)

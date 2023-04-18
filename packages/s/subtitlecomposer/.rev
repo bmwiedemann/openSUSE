@@ -97,4 +97,13 @@
 </comment>
     <requestid>988947</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>8d6fcbf01ccc12fc4644e887f3054ac7</srcmd5>
+    <version>0.7.1</version>
+    <time>1681825962</time>
+    <user>dimstar_suse</user>
+    <comment>- Add d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch: Fix video
+  player with newer version of ffmpeg</comment>
+    <requestid>1080108</requestid>
+  </revision>
 </revisionlist>

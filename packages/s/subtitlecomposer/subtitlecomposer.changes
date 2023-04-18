@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:14:38 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Add d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch: Fix video
+  player with newer version of ffmpeg
+
+-------------------------------------------------------------------
 Tue Jul 12 20:38:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch: Fix build
