@@ -716,4 +716,18 @@ Build tested.
     <comment></comment>
     <requestid>1079411</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>36c69eb6245dfa792ade77e0a4a6eb85</srcmd5>
+    <version>0.3.69</version>
+    <time>1681825912</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch from upstream for https://bugs.archlinux.org/task/78195
+  * 0001-Revert-alsa-mixer-allow-to-re-attach-the-mixer-control.patch
+- Add patch from upstream to fix some potentially broken devices:
+  * 0002-alsa-fix-area-pointers.patch
+
+- Only apply reduce-meson-dependency.patch when meson present
+  during build is too old.</comment>
+    <requestid>1079813</requestid>
+  </revision>
 </revisionlist>

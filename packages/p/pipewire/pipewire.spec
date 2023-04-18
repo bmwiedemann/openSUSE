@@ -62,7 +62,12 @@ Group:          Development/Libraries/C and C++
 URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-Revert-alsa-mixer-allow-to-re-attach-the-mixer-control.patch
+Patch1:         0001-Revert-alsa-mixer-allow-to-re-attach-the-mixer-control.patch
+# PATCH-FIX-UPSTREAM 0002-alsa-fix-area-pointers.patch
+Patch2:         0002-alsa-fix-area-pointers.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -72,7 +77,7 @@ BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  graphviz
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 0.59.4
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -350,7 +355,10 @@ This package provides a PulseAudio implementation based on PipeWire
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if %{?pkg_vcmp:%{pkg_vcmp meson <= 0.61.0}}
+%patch0 -p1
+%endif
 
 %build
 %if %{pkg_vcmp gcc < 8}
