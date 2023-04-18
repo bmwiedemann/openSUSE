@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 18 11:25:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.0:
+  * An option has been added for showing the window title on the menu-bar.
+  * application/x-zerosize is associated to FeatherPad by default,
+    alongside text/plain (because of a change in GLib).
+  * The recent files menu shows icons where possible.
+  * The side-pane can be focused by Ctrl+Escape.
+  * text/plain;charset=... is recognized as plain text when pasted
+   (Qt didn't see it as plain text
+  * The file type filters of file dialogs are protected against
+    incorrect translations.
+
+-------------------------------------------------------------------
 Mon Jan  9 08:10:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.5:

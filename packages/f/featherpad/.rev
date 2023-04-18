@@ -534,4 +534,21 @@
   * Side-pane and session buttons have been added to the tool-bar.</comment>
     <requestid>1056982</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9735f28ff27507b65b4dff4d9ea36511</srcmd5>
+    <version>1.4.0</version>
+    <time>1681826005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0:
+  * An option has been added for showing the window title on the menu-bar.
+  * application/x-zerosize is associated to FeatherPad by default,
+    alongside text/plain (because of a change in GLib).
+  * The recent files menu shows icons where possible.
+  * The side-pane can be focused by Ctrl+Escape.
+  * text/plain;charset=... is recognized as plain text when pasted
+   (Qt didn't see it as plain text
+  * The file type filters of file dialogs are protected against
+    incorrect translations.</comment>
+    <requestid>1080114</requestid>
+  </revision>
 </revisionlist>
