@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 17 06:23:47 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.2.0
+  * Add shell script to migrate settings to xfconf
+  * Fix GDK_Critical
+  * Fixed deskbar support. Issue #8
+  * Add Update Now menu option to right-click menu
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * ***Migrate settings to xfconf
+  * Remove unused variable
+  * Fix intltool lock file bug in make distcheck
+  * Remove closing of standard file descriptors in the child process
+  * Update COPYING
+  * Add <css> tag support
+  * fixed .genmon_label and -gtk-icon transform bugs
+  * Fix code indentation and readalility
+  * Add support for single and multi-row panel layout options
+  * Added support for <css></css> XML tag. Changed default
+    progressbar width to 4px
+  * automake: Modernize following other projects
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Add missing comments to code functions
+  * Fix indentation
+  * Translation updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Mon Jan 25 09:40:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.1.1

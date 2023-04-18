@@ -31,4 +31,37 @@
   * Translation updates</comment>
     <requestid>866794</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0f8265410ae17a66b4f8919f3af4a7d</srcmd5>
+    <version>4.2.0</version>
+    <time>1681825963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0
+  * Add shell script to migrate settings to xfconf
+  * Fix GDK_Critical
+  * Fixed deskbar support. Issue #8
+  * Add Update Now menu option to right-click menu
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * ***Migrate settings to xfconf
+  * Remove unused variable
+  * Fix intltool lock file bug in make distcheck
+  * Remove closing of standard file descriptors in the child process
+  * Update COPYING
+  * Add &lt;css&gt; tag support
+  * fixed .genmon_label and -gtk-icon transform bugs
+  * Fix code indentation and readalility
+  * Add support for single and multi-row panel layout options
+  * Added support for &lt;css&gt;&lt;/css&gt; XML tag. Changed default
+    progressbar width to 4px
+  * automake: Modernize following other projects
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Add missing comments to code functions
+  * Fix indentation
+  * Translation updates
+- Remove _service file (forwarded request 1079971 from manfred-h)</comment>
+    <requestid>1079981</requestid>
+  </revision>
 </revisionlist>
