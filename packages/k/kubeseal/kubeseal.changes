@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 17 16:00:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.5:
+  * Release version v0.20.5 (#1183)
+  * Fix kubeseal image sign for cosign v2 (#1182)
+
+-------------------------------------------------------------------
+Mon Apr 17 14:52:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.4:
+  * Release version v0.20.4 with the latest PR included (#1181)
+  * Fix cosign command for goreleaser (#1180)
+  * Release version v0.20.4 (#1179)
+
+-------------------------------------------------------------------
 Mon Apr 17 13:30:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.20.3:
