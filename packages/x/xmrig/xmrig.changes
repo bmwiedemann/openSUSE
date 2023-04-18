@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 18 07:40:55 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.2:
+  * v6.19.2
+  * Update CHANGELOG.md
+  * Sync with changes from proxy
+  * Improve .cmd files when run by shortcuts on another drive
+  * Code style cleanup.
+  * DaemonClient: new X-Hash-Difficulty HTTP header optimization
+  * Fixed parsing of TX_EXTRA_MERGE_MINING_TAG
+  * v6.19.2-dev
+
+-------------------------------------------------------------------
 Fri Mar 24 07:43:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.19.1:

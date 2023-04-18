@@ -551,4 +551,20 @@
   * v6.19.1-dev</comment>
     <requestid>1074091</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8c7f8c16c41adaeb62f3a3e8f2792a04</srcmd5>
+    <version>6.19.2</version>
+    <time>1681825994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.2:
+  * v6.19.2
+  * Update CHANGELOG.md
+  * Sync with changes from proxy
+  * Improve .cmd files when run by shortcuts on another drive
+  * Code style cleanup.
+  * DaemonClient: new X-Hash-Difficulty HTTP header optimization
+  * Fixed parsing of TX_EXTRA_MERGE_MINING_TAG
+  * v6.19.2-dev</comment>
+    <requestid>1080067</requestid>
+  </revision>
 </revisionlist>
