@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Apr 16 21:20:57 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+54:
+  + backends/stage: Pass ClutterFrame to MetaStageWatchFunc
+  + clutter/paint-context: Allow assigning a ClutterFrame
+  + clutter/stage: Assign frames to paint context
+  + core:
+    - Create passive button grab on topmost Window
+    - Minor refactor
+    - Pass MetaWindow on passive button grab machinery
+  + cursor-tracker: Enhance the documentation and increase
+    annotation coverage
+  + dnd: Clear Wayland drag source when cancelled from stage grab
+    context
+  + frames/content: Use gtk_widget_compute_point()
+  + frames: Forward _NET_WM_STATE during frame initialization
+  + output-xrandr:
+    - Consistently return -1 on error
+    - Don't treat 0 as invalid backlight value
+  + screen-cast/monitor-src:
+    - Record DMA-BUF frames immediately
+    - Record frames with presentation time
+  + screen-cast/src:
+    - Add frame recording variant with timestamp
+    - Clean up DMA-BUF only error paths
+  + screen-cast-stream-src:
+    - Shuffle a variable around
+    - Export damaged video regions
+    - Minor adjustment
+  + stage-impl: Do clipped redraws when drawing offscreen
+  + wayland/data-device: Clear data source when cancelling drag
+    with ESC
+  + wayland:
+    - Don't leak XDnD mime type strings
+    - Set compositor when creating MetaWaylandDataSourceXWayland
+  + wayland/xdg-shell:
+    - Dismiss instead of destroy invalid popup
+    - Ignore reposition if popup was dismissed
+  + workspace: Only consider windows that should be showing as
+    focusable
+  + x11:
+    - Fix remaining leaks from switch to XGetAtomName()
+    - Remove unused member variables from
+      MetaX11SelectionInputStream
+    - Use Atoms when constructing a new
+      MetaX11SelectionOutputStream
+  + xdg-shell: Early out of apply if dismissed
+- Add 2963.patch: xdg-shell: Always handle frame callbacks in
+  popup_apply_state(). Fixes a crash in mutter.
+- Use auto(setup|patch) macros.
+
+-------------------------------------------------------------------
 Tue Apr 11 05:44:25 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 44.0+24:

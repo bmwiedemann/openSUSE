@@ -1758,4 +1758,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>1078454</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>884f5fdd9ec6572f7b53dc3b0357ad63</srcmd5>
+    <version>44.0+54</version>
+    <time>1681825948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079954</requestid>
+  </revision>
 </revisionlist>
