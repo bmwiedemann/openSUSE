@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  2 10:26:09 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move cmake config files to devel
+
+-------------------------------------------------------------------
 Tue Jul 26 19:26:11 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add patch fix-curl-help-completion-bsc1200791.patch (bsc#1200791)

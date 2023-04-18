@@ -549,4 +549,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993929</requestid>
   </revision>
+  <revision rev="56" vrev="7">
+    <srcmd5>00fce5543cadfea11f2033dcdd94cf10</srcmd5>
+    <version>2.11</version>
+    <time>1681825923</time>
+    <user>dimstar_suse</user>
+    <comment>- Move cmake config files to devel (forwarded request 1076726 from gmbr3)</comment>
+    <requestid>1079846</requestid>
+  </revision>
 </revisionlist>

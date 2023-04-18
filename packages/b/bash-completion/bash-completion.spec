@@ -160,11 +160,11 @@ install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{_name}/README
 %else
 %license COPYING
 %{_datadir}/bash-completion
-%dir %{_datadir}/cmake
-%{_datadir}/cmake/bash-completion
 %config %{_sysconfdir}/profile.d/bash_completion.sh
 
 %files devel
+%dir %{_datadir}/cmake
+%{_datadir}/cmake/bash-completion
 %{_datadir}/pkgconfig/bash-completion.pc
 # TRICK: bash-completion-devel does not require bash-completion.
 # It would cause failure of directory ownership check.
