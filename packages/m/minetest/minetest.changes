@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 14 19:53:11 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.7.0:
+  * Various bug fixes
+  * Full changes: https://dev.minetest.net/Changelog#5.6.0_.E2.86.92_5.7.0
+
+-------------------------------------------------------------------
 Fri Oct 14 12:18:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Set -mbranch-protection=none only in Tumbleweed since gcc7 does
