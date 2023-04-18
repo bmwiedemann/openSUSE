@@ -35,12 +35,12 @@
 %define hostapps gimp%{?gimp_suffix} krita
 %endif
 
-%define gmic_qt_options -DENABLE_SYSTEM_GMIC=OFF -DENABLE_DYNAMIC_LINKING=ON
+%define gmic_qt_options -DENABLE_SYSTEM_GMIC=ON -DENABLE_DYNAMIC_LINKING=ON
 
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -53,9 +53,6 @@ Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Patch0:         krita5.patch
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-Find-the-local-gmic-library.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-Qt-form-paths-in-CMakeLists.patch
-Patch3:         0001-Do-not-build-all-host-code-by-default.patch
 #
 # SECTION pkg_vcmp
 #
@@ -160,9 +157,8 @@ BuildArch:      noarch
 This package contains shared data files for the various gmic frontends.
 
 %prep
-%setup -q
-dos2unix src/{gmic_libc.*,use_libcgmic.c}
-%autopatch -p1
+%autosetup -p1
+dos2unix src/gmic_libc.*
 
 %build
 # Build gmic
@@ -178,7 +174,9 @@ sed -i 's# -Wl,-rpath,.##' src/Makefile
 # The file is moved post-install in a directory not owned by gimp
 sed -i 's#/usr/lib/gimp/2.0/plug-ins#%{gmic_datadir}#' src/gmic_stdlib.gmic
 
-EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 make lib cli_shared
+# There's no concept of build order in the crappy Makefile provided
+EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make lib %{?_smp_mflags}
+EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make cli_shared %{?_smp_mflags}
 
 # Build gmic{_gimp|_krita}_qt
 pushd gmic-qt
@@ -246,8 +244,7 @@ install -m 0755 build/gmic_qt %{buildroot}%{_bindir}/gmic_qt
 install -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 popd
 
-%post -n libgmic3 -p /sbin/ldconfig
-%postun -n libgmic3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgmic3
 
 %files
 %doc README gmic-qt/README.md

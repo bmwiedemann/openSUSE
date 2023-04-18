@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 17 09:31:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.3. No changelog
+- Drop patches, merged upstream:
+  * 0001-Fix-Qt-form-paths-in-CMakeLists.patch
+  * 0001-Do-not-build-all-host-code-by-default.patch
+- Rework 0001-Find-the-local-gmic-library.patch to speed up build
+  and fix failures on Leap
+
+-------------------------------------------------------------------
 Mon Mar 20 13:14:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.2. No changelog.

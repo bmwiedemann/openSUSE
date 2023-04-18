@@ -1,38 +1,57 @@
-From 66475044c5ebed112d75cb51af925f9643b20d18 Mon Sep 17 00:00:00 2001
-From: Christophe Giboudeaux <christophe@krop.fr>
-Date: Sat, 30 Apr 2022 09:23:31 +0200
+From 117f2d84d1baf454f8eeef05c0779f7011be8102 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 17 Apr 2023 16:07:00 +0200
 Subject: [PATCH] Find the local gmic library
 
 GMic's working build system was replaced by a Makefile for unknown reasons
-(the gmic author doesn't add messages to his commits).
 
-To keep using CMake in gmic-qt, we need to teach it where the libgmic library is located.
+To keep using CMake in gmic-qt, we need to find the locally built gmic library.
 ---
- gmic-qt/CMakeLists.txt | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ gmic-qt/CMakeLists.txt | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/gmic-qt/CMakeLists.txt b/gmic-qt/CMakeLists.txt
-index d720221..7425466 100644
+index 9aa0568..7763df7 100644
 --- a/gmic-qt/CMakeLists.txt
 +++ b/gmic-qt/CMakeLists.txt
-@@ -120,8 +120,10 @@ if (NOT ENABLE_SYSTEM_GMIC)
-   if (NOT(${GMIC_VERSION} EQUAL ${CIMG_VERSION}))
-   message(FATAL_ERROR "\nVersion numbers of files 'gmic.h' (" ${GMIC_VERSION} ") and 'CImg.h' (" ${CIMG_VERSION} ") mismatch")
-   endif()
--endif()
+@@ -142,7 +142,13 @@ endif()
+ # Gmic
+ #
+ if (ENABLE_SYSTEM_GMIC)
+-  find_package(Gmic REQUIRED CONFIG)
++  find_library(GMIC_LIBRARY gmic PATHS ${CMAKE_SOURCE_DIR}/../src)
++  find_path(GMIC_INCLUDE_DIR gmic.h PATHS ${CMAKE_SOURCE_DIR}/../src)
++  add_library(GMic::GMic UNKNOWN IMPORTED)
++  set_target_properties(GMic::GMic PROPERTIES
++    IMPORTED_LOCATION "${GMIC_LIBRARY}"
++    INTERFACE_INCLUDE_DIRECTORIES "${GMIC_INCLUDE_DIR}"
++  )
+ endif (ENABLE_SYSTEM_GMIC)
  
-+  # find the 'gmic' library built using 'make lib' in the top folder
-+  find_library(gmic NAMES gmic PATHS "${CMAKE_CURRENT_SOURCE_DIR}/../src")
-+endif()
- 
- option(PRERELEASE "Set to ON makes this a prelease build")
- if (${PRERELEASE})
-@@ -593,7 +595,7 @@ if(ENABLE_DYNAMIC_LINKING)
-   elseif(GMIC_LIB_PATH)
+ #
+@@ -577,10 +583,10 @@ if(ENABLE_DYNAMIC_LINKING)
+       ${gmic_qt_LIBRARIES}
+       libgmicstatic
+     )
+-  elseif(TARGET libgmic)
++  elseif(TARGET GMic::GMic)
      set(gmic_qt_LIBRARIES
        ${gmic_qt_LIBRARIES}
--      "gmic"
-+      ${gmic}
+-      libgmic
++      GMic::GMic
      )
-   else()
-     message(FATAL_ERROR "No G'MIC library is available for linking. Please build libgmic as a static library.")
+   elseif(GMIC_LIB_PATH)
+     set(gmic_qt_LIBRARIES
+@@ -612,9 +618,6 @@ if(ENABLE_DYNAMIC_LINKING)
+         ${CURL_LIBRARIES}
+         ${EXTRA_LIBRARIES})
+     endif()
+-  else()
+-    # Inject the G'MIC CImg plugin.
+-    include_directories(../src)
+   endif()
+ else(ENABLE_DYNAMIC_LINKING)
+   set(gmic_qt_SRCS
+-- 
+2.40.0
+
