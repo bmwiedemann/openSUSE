@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 18 00:55:51 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- update to 0.7.2
+  * Feature: support for variant_group action 0 prop for vehicles by @andythenorth in #272
+  * Add: 'tunnels' callback for road- and tramtypes by @glx22 in #273
+  * Feature: Engine name callback by @michicc in #276
+  * Update: reformat source with black 23.1 by @frosch123 in #278
+  * Fix: By default there is no ELRL railtype. by @frosch123 in #277
+  * Update: [Actions] Bump used actions versions by @glx22 in #280
+  * Add: Road stops (feature 0x14) by @JGRennison in #279
+  * Optimise variational action2 trivial cases by @JGRennison in #281
+  * Update: changelog for 0.7.2 by @glx22 in #282
+
+-------------------------------------------------------------------
 Sun Dec 11 18:17:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.1:
