@@ -121,4 +121,18 @@
 - Use %autosetup (not having to add -p1 for patches)</comment>
     <requestid>1038055</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ffddd14c56205b0f8b3b0e01e4adeb4e</srcmd5>
+    <version>2.5</version>
+    <time>1681825998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5:
+  https://lore.kernel.org/linux-rt-users/20230120205220.26218-1-jkacur@redhat.com/T/#u
+- Drop upstreamed patches:
+  * 0001-cyclictest-Fix-threads-being-affined-even-when-a-isn.patch
+  * 0002-rt-tests-Remove-arbitrary-num-of-threads-limits.patch
+  * 0003-rt-tests-hackbench-Add-error-checking-to-connect-and.patch
+  * 0004-rt-tests-hwlatdetect-Update-to-integer-division.patch</comment>
+    <requestid>1080074</requestid>
+  </revision>
 </revisionlist>

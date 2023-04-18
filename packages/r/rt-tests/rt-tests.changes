@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 18 08:23:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5:
+  https://lore.kernel.org/linux-rt-users/20230120205220.26218-1-jkacur@redhat.com/T/#u
+- Drop upstreamed patches:
+  * 0001-cyclictest-Fix-threads-being-affined-even-when-a-isn.patch
+  * 0002-rt-tests-Remove-arbitrary-num-of-threads-limits.patch
+  * 0003-rt-tests-hackbench-Add-error-checking-to-connect-and.patch
+  * 0004-rt-tests-hwlatdetect-Update-to-integer-division.patch 
+
+-------------------------------------------------------------------
 Fri Nov 25 09:19:51 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Use sources which are actually published
