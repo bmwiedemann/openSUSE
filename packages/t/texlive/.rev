@@ -1051,4 +1051,16 @@
 - Make it build even on ppc64le</comment>
     <requestid>1077462</requestid>
   </revision>
+  <revision rev="85" vrev="88">
+    <srcmd5>db7a7f489d2f3375188b61f0868b9180</srcmd5>
+    <version>unknown</version>
+    <time>1681825926</time>
+    <user>dimstar_suse</user>
+    <comment>- Really update biber to version 2.19 (boo#1210257)
+
+- Use ERR trap in bash used by spec file to catch rare and random
+  bibtexu/bibtex8 FAILS
+- Do not build nor test bibtex8/bibtexu in parallel</comment>
+    <requestid>1079884</requestid>
+  </revision>
 </revisionlist>

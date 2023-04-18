@@ -19,9 +19,9 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   201
+%define texlive_noarch   202
 %define texlive_source   texlive-20230311-source
-%define biber_version    2.18
+%define biber_version    2.19
 
 %define __perl_requires		%{nil}
 %define __os_install_post	/usr/lib/rpm/brp-compress \\\
@@ -4299,10 +4299,25 @@ popd
 	    --with-xdvi-x-toolkit=xaw3d		\
 	    --with-editor='vi +%%d %%s'
 
+	testsuite () {
+	    test -s ${world}/texk/bibtex-x/test-suite.log || return
+	    cat ${world}/texk/bibtex-x/test-suite.log
+	    for log in ${world}/texk/bibtex-x/tests/*.log
+	    do
+		echo $log
+		cat $log
+	    done
+	    rm -vf %{options}
+	}
+	trap "testsuite" ERR
+
 	PATH=$prefix/bin:$PATH			\
 	TEXMFLOCAL=%{_texmfmaindir}		\
 	TEXMFCNF=$texmfcnf			\
 	make %{?_smp_mflags} world STRIP=/bin/true STRIPPROG=/bin/true
+
+	trap 'rm -vf %{options}' ERR
+
     popd
 
     pushd utils/asymptote

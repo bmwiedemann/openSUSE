@@ -1,6 +1,7 @@
 ---
  libs/icu/icu-src/source/common/Makefile.in                  |    2 
  reautoconf                                                  |    2 
+ texk/bibtex-x/Makefile.in                                   |    2 
  texk/dviljk/dvi2xx.c                                        |   11 
  texk/kpathsea/c-fopen.h                                     |    6 
  texk/kpathsea/c-memstr.h                                    |    3 
@@ -21,7 +22,7 @@
  texk/web2c/window/x11-Xt.c                                  |    4 
  texk/xdvik/psgs.c                                           |   22 +
  texk/xdvik/xdvi-sh.in                                       |   19 +
- 22 files changed, 224 insertions(+), 83 deletions(-)
+ 23 files changed, 225 insertions(+), 84 deletions(-)
 
 --- reautoconf
 +++ reautoconf	2022-04-05 13:46:43.207504121 +0000
@@ -45,6 +46,17 @@
  
  # for icu data location
  ifeq ($(PKGDATA_MODE),common)
+--- texk/bibtex-x/Makefile.in
++++ texk/bibtex-x/Makefile.in	2023-04-12 13:47:24.619293127 +0000
+@@ -13,7 +13,7 @@
+ # PARTICULAR PURPOSE.
+ 
+ @SET_MAKE@
+-
++.NOTPARALLEL:
+ 
+ VPATH = @srcdir@
+ am__is_gnu_make = { \
 --- texk/dviljk/dvi2xx.c
 +++ texk/dviljk/dvi2xx.c	2021-04-07 10:14:44.206880772 +0000
 @@ -168,7 +168,18 @@ main(int argc, char *argv[])

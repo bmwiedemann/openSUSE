@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 17 09:28:07 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Really update biber to version 2.19 (boo#1210257)
+
+-------------------------------------------------------------------
+Wed Apr 12 08:42:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Use ERR trap in bash used by spec file to catch rare and random
+  bibtexu/bibtex8 FAILS
+- Do not build nor test bibtex8/bibtexu in parallel
+
+-------------------------------------------------------------------
 Wed Apr  5 08:24:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Support mkiv as well as lmtx ConTeXt formats 
