@@ -38,7 +38,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
-Requires:       python-six
 Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3.0.0)
 Requires:       (python-urllib3 >= 1.25.4 with python-urllib3 < 1.27)
@@ -79,7 +78,7 @@ sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/inte
 %check
 # TODO: Figure out whether integration tests are possible offline
 # no_bare_six_imports: we "fixed" that above.
-%pytest --ignore tests/integration -k "not no_bare_six_imports"
+%pytest --ignore tests/integration -k "not six"
 %endif
 
 %if !%{with test}
