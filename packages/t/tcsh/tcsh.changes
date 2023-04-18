@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 15 09:32:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.24.10:
+  * Restore skipping of the "$edit" and "Comments" tests when not
+    running on a terminal
+
+-------------------------------------------------------------------
 Thu Apr 13 12:34:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.09
