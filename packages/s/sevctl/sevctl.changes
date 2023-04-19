@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 19 07:39:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire rubygem(asciidoctor) instead of %{rubygem
+  asciidoctor}" the %rubygem} macro expands to all ruby versions,
+  wheras we are perfectly fine with getting only one version for
+  asciidoctor into the buildroot.
+
+-------------------------------------------------------------------
 Tue Mar 14 15:25:33 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
 
 - Update to v0.3.2 + git commit 255d370

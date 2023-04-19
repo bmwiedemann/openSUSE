@@ -26,9 +26,9 @@ URL:            https://github.com/virtee/sevctl
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-BuildRequires:  %{rubygem asciidoctor}
 BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
+BuildRequires:  rubygem(asciidoctor)
 ExclusiveArch:  x86_64
 
 %description
