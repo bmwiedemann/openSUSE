@@ -75,7 +75,6 @@ BuildRequires:  python3-qscintilla-qt5
 BuildRequires:  python3-qscintilla-qt5-sip
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-sip-devel
-BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
 BuildRequires:  qwt6-devel
 BuildRequires:  sqlite-devel >= 3.12.0
@@ -138,7 +137,6 @@ Requires:       python3-numpy
 Requires:       python3-psycopg2
 # Those are not picked by obs
 Requires:       python3-qscintilla-qt5
-Requires:       python3-six
 Requires:       python3-termcolor
 Recommends:     %{name}-sample-data
 Recommends:     apache2-mod_fcgid
