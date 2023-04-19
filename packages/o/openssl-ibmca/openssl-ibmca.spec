@@ -28,8 +28,11 @@ URL:            https://github.com/opencryptoki/openssl-ibmca
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        engine_section.txt
 ###
+Patch001:       openssl-ibmca-engine-noregister.patch
+###
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libica >= 4.0.0
 BuildRequires:  libica-devel >= 3.1.1
 BuildRequires:  libica-tools >= 2.4.0
 BuildRequires:  libtool
@@ -73,7 +76,7 @@ cp -p %{SOURCE1} %{buildroot}%{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 grep -v "^#" src/engine/openssl.cnf.sample | \
     sed -n -e '/^\[ibmca_section\]/,$ p' | \
     sed -e '/^$/ {N;N;s/\n\n/\n/g;}' | \
-    sed -e 's/^dynamic_path/dynamic_path/' > %{buildroot}%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
+    sed -e 's/^dynamic_path/#dynamic_path/' > %{buildroot}%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
 
 %post
 #Original fix for bsc#942839 was to update on first install

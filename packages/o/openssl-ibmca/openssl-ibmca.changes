@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 19 10:52:06 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applies a patch (bsc#1210359)
+  * openssl-ibmca-engine-noregister.patch
+- Updated the '#dynamic_path' line, as it was before, with the comment '#'.
+
+-------------------------------------------------------------------
 Thu Apr  6 08:14:25 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgraded openssl-ibmca to version 2.4.0(bsc#1210059) 

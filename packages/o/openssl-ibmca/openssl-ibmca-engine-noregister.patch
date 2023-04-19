@@ -1,0 +1,12 @@
+--- openssl-ibmca-2.3.1/src/engine/e_ibmca.c.xx	2023-04-19 10:36:53.514635802 +0200
++++ openssl-ibmca-2.3.1/src/engine/e_ibmca.c	2023-04-19 10:39:01.678265739 +0200
+@@ -642,6 +642,9 @@
+         if (!ENGINE_set_pkey_meths(e, ibmca_engine_pkey_meths))
+             goto out;
+ 
++    if (!ENGINE_set_flags(e, ENGINE_FLAGS_NO_REGISTER_ALL))
++        goto out;
++
+     rc = 1;
+ out:
+     free(pmech_list);
