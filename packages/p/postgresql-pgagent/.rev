@@ -61,4 +61,14 @@
   * Correct schema update message.</comment>
     <requestid>1060591</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>311cb77a77f5d5bde97983726993f3c9</srcmd5>
+    <version>4.2.2</version>
+    <time>1681922497</time>
+    <user>dimstar_suse</user>
+    <comment>- PostgreSQL 10 and older are EOL.
+
+- enable pg 15</comment>
+    <requestid>1080338</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 19 13:53:52 UTC 2023 - Reinhard Max <max@suse.com>
+
+- PostgreSQL 10 and older are EOL.
+
+-------------------------------------------------------------------
+Tue Jan 31 15:13:06 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 15
+
+-------------------------------------------------------------------
 Tue Jan 24 08:30:28 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix source name
