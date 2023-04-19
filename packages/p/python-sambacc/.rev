@@ -7,4 +7,47 @@
     <comment>Initial submission of sambacc. This is a dependency of samba containers.</comment>
     <requestid>1063470</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fa18331cec33b2529033f7385077e30</srcmd5>
+    <version>v0.2+git.88.c81c65a</version>
+    <time>1681918971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v0.2+git.88.c81c65a:
+  * workflows: add a job to check commit messages
+  * gitlint: add a .gitlint configuration file
+  * tox: add a gitlint environment
+  * tox: add an 'extras' to the python package
+  * extras: fix a warning when building on fc37
+  * extras: use the new py3-sys tox env in the rpm spec file
+  * tox: create a new py3-sys environment
+  * workflows: do not run push job if test job fails
+  * workflows: add test runs for centos stream9 and fedora 37
+  * workflows: use non-shallow git checkout to please setuptools_scm
+  * container: inform git that our repo path is acceptable
+  * container: always run rpm build as part of a normal build
+  * tox: remove jsonschema from the tox deps list
+  * sambacc: ignore mypy errors if it can't import jsonschema
+  * setup.cfg: add sambacc.schema to package list
+  * tox: add schemacheck to verify that generated schema data matches yaml
+  * tests: add initial tests of json schema validation
+  * commands: extend the context protocol with a require_validation method
+  * commands: add cli option &amp; env var to control config validation
+  * sambacc: add support for json schema based validation of the config
+  * tox: add type definition packages for mypy testing with json schema
+  * pyproject: do not require typing in the schema dir
+  * schema: commit generated python
+  * schema: add a python tool to manage schema files
+  * schema: add new json-schema based schema files to the tree
+  * tests: supply invalid configuration to GloalConfig directly
+  * sambacc: add an initial_data argument to GlobalConfig class
+  * sambacc: add a JSONData type for convenience
+  * tests: fix a typo in a test name
+  * sambacc: rename check_config_data to take it private
+  * github: sync mergify rules that handle aged PRs
+  * docs: fix incorrect version number in configuration.md
+- Drop empty %generate_buildrequires section: no code in the
+  section produces build deps.
+</comment>
+    <requestid>1080186</requestid>
+  </revision>
 </revisionlist>

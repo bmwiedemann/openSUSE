@@ -19,7 +19,7 @@
 %global bname sambacc
 
 Name:           python-%{bname}
-Version:        v0.2+git.56.9d8b892
+Version:        v0.2+git.88.c81c65a
 Release:        0
 Summary:        Samba Container Configurator
 License:        GPL-3.0-or-later
@@ -53,8 +53,6 @@ supporting components.
 
 %prep
 %autosetup -n %{bname}-%{version}
-
-%generate_buildrequires
 
 %build
 %pyproject_wheel
