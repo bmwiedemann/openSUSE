@@ -35,25 +35,15 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM boost-1.74.patch gh#espressomd/espresso#3864
-Patch0:         boost-1.74.patch
-# PATCH-FIX-OPENSUSE missing_size_t.patch gh#espressomd/espresso#4274
-Patch1:         missing_size_t.patch
-# PATCH-FIX-OPENSUSE hdf5.patch gh#espressomd/espresso#3543
-Patch2:         hdf5.patch
-# PATCH-FIX-OPENSUSE rpath.patch boo#1198352
-Patch3:         rpath.patch
-# PATCH-FIX-UPSTREAM fix-broken-fft-check.patch gh#espressomd/espresso#4567
-Patch4:         fix-broken-fft-check.patch
-# PATCH-FIX-UPSTREAM numpy-1.24.patch gh#espressomd/espresso#4635
-Patch5:         numpy-1.24.patch
+# PATCH-FIX-UPSTREAM setuptools.patch gh#espressomd/espresso#4709
+Patch0:         setuptools.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake
@@ -112,6 +102,7 @@ export HDF5_USE_SHLIB=yes
 # we don't install {i,}pypresso scripts as they aren't needed when installing in /usr
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--as-needed -Wl,-z,now' \
+  -DCMAKE_SKIP_RPATH=ON \
   -DLIBDIR=%{_libdir} \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DPYTHON_INSTDIR=%{python3_sitearch} \
@@ -124,10 +115,6 @@ find %{buildroot}%{python3_sitearch} -name \*.so \
     -exec chrpath -r %{python3_sitearch} '{}' \;
 
 %check
-# gh#espressomd/espresso#3315
-%ifarch i586
-%define testargs ARGS='-E collision_detection'
-%endif
 LD_LIBRARY_PATH='%{buildroot}/%{python3_sitearch}/espressomd::%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}' make -C build check CTEST_OUTPUT_ON_FAILURE=1 %{?testargs:%{testargs}}
 
 %files

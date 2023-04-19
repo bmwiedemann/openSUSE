@@ -1,0 +1,18 @@
+diff --git a/testsuite/python/unittest_decorators.py b/testsuite/python/unittest_decorators.py
+index 109f89cc8..a9a0e5200 100644
+--- a/testsuite/python/unittest_decorators.py
++++ b/testsuite/python/unittest_decorators.py
+@@ -20,5 +20,5 @@
+ import sys
+ import importlib
+-import setuptools
++import pkg_resources
+ import unittest
+ 
+@@ -75,5 +75,5 @@ def skipIfUnmetModuleVersionRequirement(module, version_requirement):
+     except ImportError:
+         return skipIfMissingModules(module)
+-    if not setuptools.version.pkg_resources.packaging.specifiers.SpecifierSet(
++    if not pkg_resources.packaging.specifiers.SpecifierSet(
+             version_requirement).contains(_module.__version__):
+         return unittest.skip(
