@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        1.4.2
+Version:        1.5.2
 Release:        0
 Summary:        PostgreSQL module for simple job schedule
 License:        PostgreSQL
