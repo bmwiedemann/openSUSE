@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A PHP wrapper for libsmbclient
 License:        PHP-3.01
