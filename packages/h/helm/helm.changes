@@ -9,7 +9,7 @@ Thu Apr 13 07:54:49 UTC 2023 - dmueller@suse.com
   * chore(deps): bump github.com/docker/docker
   * chore(deps): bump github.com/containerd/containerd from 1.6.15 to 1.7.0
   * Fixes Readiness Check for statefulsets using partitioned rolling update. (#11774)
-- droip fix-plugin-32bit.patch (upstream)
+- drop fix-plugin-32bit.patch (upstream)
 
 -------------------------------------------------------------------
 Tue Mar 28 13:18:30 UTC 2023 - Dirk Müller <dmueller@suse.com>

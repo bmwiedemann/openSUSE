@@ -515,4 +515,12 @@ See changelog in:
 - droip fix-plugin-32bit.patch (upstream)</comment>
     <requestid>1079080</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>889da8185721c465b34a5c1a4781faff</srcmd5>
+    <version>3.11.3</version>
+    <time>1681918961</time>
+    <user>dimstar_suse</user>
+    <comment>- drop fix-plugin-32bit.patch (upstream)</comment>
+    <requestid>1080005</requestid>
+  </revision>
 </revisionlist>
