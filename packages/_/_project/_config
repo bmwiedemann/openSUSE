@@ -1392,6 +1392,7 @@ Prefer: -perl-App-cpanminus
 # libmediaart is prepared for a larger update; for now favor mediaart-1.0
 Prefer: -typelib-1_0-MediaArt-2_0
 Prefer: -typelib-1_0-Gtk-2_0 -typelib-1_0-Gtk-4_0 -typelib-1_0-GooCanvas-2_0
+Prefer: typelib-1_0-GtkSource-4
 Prefer: gettext-its-gtk3 gtk3-schema
 # for pkgconfig(ijs) and no one actually rely on ghostscript-mini-devel in Factory
 Prefer: ghostscript-devel
