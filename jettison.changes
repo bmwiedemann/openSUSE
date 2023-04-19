@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 18 15:26:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.5.4
+  * Fixes:
+    + Fixing issue 60: Infinite recursion triggered when
+      constructing a JSONArray from a Collection (bsc#1209605,
+      CVE-2023-1436)
+
+-------------------------------------------------------------------
 Wed Dec 14 12:11:51 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.5.3

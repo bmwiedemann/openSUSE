@@ -39,4 +39,12 @@
     <comment>Misc. security fixes</comment>
     <requestid>1042912</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>78ec9b8d2f5925ecea89fcc38a385e13</srcmd5>
+    <version>1.5.4</version>
+    <time>1681918965</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1209605</comment>
+    <requestid>1080162</requestid>
+  </revision>
 </revisionlist>
