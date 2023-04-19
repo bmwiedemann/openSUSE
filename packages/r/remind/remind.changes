@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Apr 11 13:40:47 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 5 - 2023-04-11
+
+- MINOR IMPROVEMENT: remind: If someone uses OMIT yyyy-mm-dd UNTIL yyyy-mm-dd
+  give a better error message suggesting THROUGH instead of UNTIL.
+
+- BUG FIX: remind: The fix for the combination of ADDOMIT and SATISFY that
+  appeared in version 04.02.00 was not complete; the bug has finally been
+  properly fixed.
+
+- BUG FIX: remind: Remove an unnecessary #include <sys/file.h>.
+  Nothing needed that and it broke compilation on FreeBSD.
+
+- VERSION 4.2 Patch 4 - 2023-03-15
+
+- NEW FEATURE: Remind: Add "htmlescape" and "htmlstriptags" built-in
+  functions.
+
+- NEW FEATURE: Rem2PDF: Add the "--wrap, -y" option to ensure that no
+  printed calendar takes up more than 5 rows.  If a calendar would normally
+  require 6 rows, wrap it so the last day or two appear on the first
+  row instead of on a sixth row.
+
+- NEW FEATURE: Remind: Improve the -k option to allow specification of
+  separate commands for immediately-issued vs. queued reminders.  For
+  example:
+
+     remind '-kcmd1 %s' '-k:cmd2 %s' ...
+
+  will use "cmd1" for immediately-issued reminders and "cmd2" for queued
+  ones.  If you only use '-k:cmd2 %s' then immediately-issued reminders
+  are simply printed as usual rather than being passed to a command.
+
+- IMPROVEMENT: Remind:  Make "SPECIAL MSG" the same as just "MSG" and
+  the same for MSF, RUN, PS and PSFILE.  This effectively lets you use
+  expression-pasting to determine the type of a REM command; see the
+  remind(1) man page for details.
+
+- MINOR IMPROVEMENT: If "make test" fails, output up to 200 lines of diff
+  so we can see immediately what failed.
+
+- DOCUMENTATION FIX: Fix some typos; fix TkRemind syntax description.
+
+- TEST FIX: Make tests run reliably regardless of local machine's time zone.
+
+- BUG FIX: TkRemind: Don't crash if local installation of Tk lacks the
+  -underlinefg configuration option.
+
+- BUG FIX: examples/defs.rem: Fix up US Thanksgiving example.
+
+- BUG FIX: include/holidays/us.rem: Add logic for US holidays that are
+  observed on a Friday if the holiday is a Saturday, or on a Monday if the
+  holiday is a Sunday.
+
+- BUG FIX: TkRemind: Don't cut off MOON text at the first white-space
+  character.
+
+- BUG FIX: Remind: prevent functions defined on the command-line (as in
+  remind '-if(x)=whatever') from segfaulting.
+
+-------------------------------------------------------------------
 Fri Feb 10 19:28:53 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.2 Patch 3 - 2023-02-10
