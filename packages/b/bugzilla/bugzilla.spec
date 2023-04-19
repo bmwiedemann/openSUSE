@@ -30,6 +30,7 @@ Source4:        %{name}.conf
 Source5:        %{name}-rpmlintrc
 Patch1:         fix_whine_error.patch
 Patch2:         modernize-bugzilla-submit.patch
+Patch3:         bugzilla-py3-jb2bz.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(systemd)

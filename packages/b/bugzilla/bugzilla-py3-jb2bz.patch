@@ -1,0 +1,75 @@
+--- a/contrib/jb2bz.py
++++ b/contrib/jb2bz.py
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/python
++#!/usr/bin/python3
+ # -*- mode: python -*-
+ 
+ """
+@@ -22,10 +22,10 @@ import sys, re, glob, os, stat, time
+ import MySQLdb, getopt
+ 
+ # mimetypes doesn't include everything we might encounter, yet.
+-if not mimetypes.types_map.has_key('.doc'):
++if '.doc' not in mimetypes.types_map:
+     mimetypes.types_map['.doc'] = 'application/msword'
+ 
+-if not mimetypes.encodings_map.has_key('.bz2'):
++if '.bz2' not in mimetypes.encodings_map:
+     mimetypes.encodings_map['.bz2'] = "bzip2"
+ 
+ bug_status='CONFIRMED'
+@@ -170,7 +170,7 @@ def process_jitterbug(filename):
+     current['date-reported'] = ()
+     current['short-description'] = ''
+ 
+-    print "Processing: %d" % current['number']
++    print("Processing: %d" % current['number'])
+ 
+     mfile = open(filename, "r")
+     create_date = os.fstat(mfile.fileno())
+@@ -183,7 +183,7 @@ def process_jitterbug(filename):
+     if current['date-reported'][0] < 1900:
+        current['date-reported'] = time.gmtime(create_date[stat.ST_MTIME])
+ 
+-    if msg.has_key('Subject') is not False:
++    if 'Subject' in msg:
+         current['short-description'] = msg['Subject']
+     else:
+         current['short-description'] = "Unknown"
+@@ -195,7 +195,7 @@ def process_jitterbug(filename):
+         process_multi_part(msg, current)
+     else:
+         # Huh? This should never happen.
+-        print "Unknown content-type: %s" % msgtype
++        print("Unknown content-type: %s" % msgtype)
+         sys.exit(1)
+ 
+     add_notes(current)
+@@ -289,7 +289,7 @@ def process_jitterbug(filename):
+                             "id=LAST_INSERT_ID(), thedata=%s",
+                             [ a[2] ])
+ 
+-    except MySQLdb.IntegrityError, message:
++    except MySQLdb.IntegrityError as message:
+         errorcode = message[0]
+         if errorcode == 1062: # duplicate
+             return
+@@ -301,7 +301,7 @@ def process_jitterbug(filename):
+     db.close()
+ 
+ def usage():
+-    print """Usage: jb2bz.py [OPTIONS] Product
++    print("""Usage: jb2bz.py [OPTIONS] Product
+ 
+ Where OPTIONS are one or more of the following:
+ 
+@@ -316,7 +316,7 @@ Product is the Product to assign these d
+ 
+ All of the JitterBugs in the current directory are imported, including replies, notes,
+ attachments, and similar noise.
+-"""
++""")
+     sys.exit(1)
+ 
+ 
