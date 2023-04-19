@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 17 16:53:57 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.1:
+  * Bug fixes:
+    + Fix recognition of token 0[bB] in the lexer.
+    + Do not validate and check _print* functions within struct types
+      as if they were methods.  As functions, they can have any
+      signature as they are no special in any way.
+    + Do not emit an empty table for computed fiels in the output of
+      .info type if the type has no computed fields.
+    + Use tar-ustar in AM_INIT_AUTOMAKE.  The usage older algorithms in
+      tar was causing problems when creating poke tarballs with long
+      path names.
+    + std.pk now provides utility functions to parse and compare poke
+      versions. This is for example to be used by poke pickles in
+      order to require a particular minimum version of the program.
+    + poked now recognizes the short option -S.
+    + poked now creates its socket with umask 0077, and it uses a more
+      suitable default socket path that includes the PID of the process
+      running the daemon.
+    + The Poke compiler now emits proper parse errors when problems are
+      found in asm templates.
+    + poke will no longer abort execution in case it finds a fatal
+      error in the lexer, such as memory exhaustion.
+    + Casts from arrays to arrays now use the right bounder.
+    + Constant folding of offset multiplication by an offset with zero
+      unit is now fixed.
+
+-------------------------------------------------------------------
 Wed Jan 25 20:52:34 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.0:

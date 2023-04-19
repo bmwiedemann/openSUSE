@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           poke
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-or-later
@@ -116,6 +116,7 @@ make check
 
 %files devel
 %license COPYING
+%{_datadir}/aclocal/poke.m4
 %{_includedir}/libpoke.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/poke.pc
