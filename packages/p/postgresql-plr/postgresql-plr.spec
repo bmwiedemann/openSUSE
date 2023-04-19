@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 # Thanks upstream :-)
 %define sname plr
-%define sversion REL8_4_1
+%define sversion REL8_4_5
 # Make our path like what postgresql packager decide
 
 %if 0%{?sles_version} == 11
@@ -36,7 +36,7 @@ Summary:        PL/R - R Procedural Language for PostgreSQL
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 Name:           %{pgname}-%{sname}
-Version:        8.4.1
+Version:        8.4.5
 Release:        1.0
 Source:         https://github.com/postgres-plr/plr/archive/%{sversion}.tar.gz
 Source1:        readme.SUSE

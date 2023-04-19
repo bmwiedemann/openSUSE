@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr 19 13:56:23 UTC 2023 - Reinhard Max <max@suse.com>
+
+- PostgreSQL 10 is EOL.
+
+-------------------------------------------------------------------
+Tue Jan 31 14:48:45 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- refresh patch-Makefile-ldflags.patch
+
+-------------------------------------------------------------------
+Tue Jan 31 14:46:58 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 13 and 14
+
+-------------------------------------------------------------------
+Tue Jan 31 14:44:44 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 8.4.5
+  - added sql upgrade path to fix
+- changes from 8.4.4
+  - changed files names to be consistent with extension version
+- changes from 8.4.3
+  - reverted part of PR#88. postgres has reverted the changes to
+    hex_decode that made it necessary (#120)
+- changes from 8.4.2
+  - Changed R version to 4.10.
+  - Added support for transactions in procedures. @petere
+  - Added support for pg custom type (tuple) arguments in window
+    functions
+
+-------------------------------------------------------------------
 Wed Jun 30 14:26:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build postgresql95 and postgresql96 flavors on Tumbleweed.

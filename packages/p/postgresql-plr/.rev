@@ -119,4 +119,29 @@ Fri Feb  13 13:13:13 UTC 2015 - bruno@ioda-net.ch
     <comment></comment>
     <requestid>903358</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dbfa4fd552d1452bd78d2b6e15d4559d</srcmd5>
+    <version>8.4.5</version>
+    <time>1681922498</time>
+    <user>dimstar_suse</user>
+    <comment>- PostgreSQL 10 is EOL.
+
+- refresh patch-Makefile-ldflags.patch
+
+- enable pg 13 and 14
+
+- update to 8.4.5
+  - added sql upgrade path to fix
+- changes from 8.4.4
+  - changed files names to be consistent with extension version
+- changes from 8.4.3
+  - reverted part of PR#88. postgres has reverted the changes to
+    hex_decode that made it necessary (#120)
+- changes from 8.4.2
+  - Changed R version to 4.10.
+  - Added support for transactions in procedures. @petere
+  - Added support for pg custom type (tuple) arguments in window
+    functions</comment>
+    <requestid>1080340</requestid>
+  </revision>
 </revisionlist>
