@@ -1,7 +1,7 @@
 #
 # spec file for package digikam
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,18 +88,18 @@ BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(lensfun)
-BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-plugins
 Requires:       libQt5Sql5-sqlite
 Recommends:     marble
@@ -168,7 +168,14 @@ sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addr
 %endif
 
 %build
-%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON -DENABLE_KFILEMETADATASUPPORT=ON -DENABLE_AKONADICONTACTSUPPORT=ON
+%{cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON -DENABLE_KFILEMETADATASUPPORT=ON -DENABLE_AKONADICONTACTSUPPORT=ON \
+-DSSE3_FOUND=OFF -DSSSE3_FOUND=OFF -DSSE4_1_FOUND=OFF -DSSE4_2_FOUND=OFF \
+%ifarch x86_64 %{?x86_64}
+-DSSE2_FOUND=ON
+%else
+-DSSE2_FOUND=OFF
+%endif
+}
 %cmake_build
 
 %if %{with apidocs}

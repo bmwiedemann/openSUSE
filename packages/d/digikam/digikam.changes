@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 18 10:42:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Explicitly disable buildtime detected CPU features as a workaround
+  for kde#465548 (boo#1210569)
+
+-------------------------------------------------------------------
 Mon Apr 17 08:18:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 8.0.0:
