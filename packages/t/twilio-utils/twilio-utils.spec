@@ -1,7 +1,7 @@
 #
 # spec file for package twilio-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright 2013 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define defaultconf %{_sysconfdir}/twilio.conf
 
 Name:           twilio-utils
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Command line utilities for Twilio users
 License:        Apache-2.0
@@ -34,11 +34,11 @@ BuildRequires:  curl
 BuildRequires:  gcc
 BuildRequires:  libxslt-tools
 BuildRequires:  make
-BuildRequires:  php
+BuildRequires:  php-cli
 BuildRequires:  xmlstarlet
 Requires:       curl >= 7.18
 Requires:       libxslt-tools
-Requires:       php
+Requires:       php-cli
 Requires:       xmlstarlet
 %if %suse_version < 1320
 BuildRequires:  util-linux

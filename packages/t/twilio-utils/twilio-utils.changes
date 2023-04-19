@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 11 21:13:40 UTC 2023 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.2.2
+  + Fixed bug in twils(1) where "--to" was acting like "--from"
+  + Restricted twimsg page size to no more than limit, if any
+  + Allow twils(1) "--minDate" and "--maxDate" to have time of day.
+  + Added twils(1) "--verbose" flag.
+  + Fixed bug with twimsg '-S' flag
+
+-------------------------------------------------------------------
 Thu Jun  3 16:40:42 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.2.1
