@@ -14,10 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
-
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           vale
 Version:        2.24.3
@@ -54,6 +51,10 @@ go build \
    -tags extended \
    -buildmode=pie \
    ./cmd/vale
+
+%check
+# execute the binary as a basic check
+./%{name} --help
 
 %install
 # Install the binary.

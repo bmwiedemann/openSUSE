@@ -210,4 +210,28 @@
   * fix: don't crash on no `extends` (forwarded request 1080042 from jfkw)</comment>
     <requestid>1080043</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>87e0e86ea7be38a4c39d623843847f09</srcmd5>
+    <version>2.24.3</version>
+    <time>1681918966</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove NO_BRP_STRIP_DEBUG=true experimentally to test which if
+  any platforms in OBS currently produce invalid Go binaries when
+  calling brp-15-strip-debug from brp-check-suse.
+  * Go packages %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+  * Available in golang-packaging as macro go_nostrip
+  * go_nostrip is one of the only golang-packaging macros still
+    useful after Go modules without a full rewrite or replacement
+  * Also remove spec comment &quot;# nodebug&quot;
+  * GNU strip circa 2016 would incorrectly strip Go intermediate
+    step .a archives and write out an invalid binary instead of
+    erroring.
+  * Error manifested as fmt.a: go archive is missing __.PKGDEF
+    on OBS built Go binaries which had passed their build step
+  * Upstream issue reported in 2016 as
+    https://github.com/golang/go/issues/17890
+  * brp-check-suse PR https://github.com/openSUSE/brp-check-suse/pull/7
+    closed in 2019 due to age, needs follow-up on current versions (forwarded request 1080075 from jfkw)</comment>
+    <requestid>1080156</requestid>
+  </revision>
 </revisionlist>
