@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 18 06:41:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add parallel-missing-header-cdef_object.patch Fix no member
+  named 'cdef_object' in namespace 'octave'
+  (https://savannah.gnu.org/bugs/?63922).
+
+-------------------------------------------------------------------
 Fri Feb 10 11:07:03 UTC 2023 - Markus Ebner <info@ebner-markus.de>
 
 - Add patch 0001-Bug62349-fix-missing-num_processors.patch

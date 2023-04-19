@@ -1,0 +1,12 @@
+Index: octave-forge-parallel-4.0.1/parallel-4.0.1/src/p-connection.cc
+===================================================================
+--- octave-forge-parallel-4.0.1.orig/parallel-4.0.1/src/p-connection.cc
++++ octave-forge-parallel-4.0.1/parallel-4.0.1/src/p-connection.cc
+@@ -17,6 +17,7 @@ along with this program; If not, see <ht
+ 
+ */
+ 
++#include <octave/cdef-object.h>
+ #include <octave/oct.h>
+ #include <octave/Array.cc>
+ 
