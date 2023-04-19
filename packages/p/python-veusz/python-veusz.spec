@@ -19,15 +19,13 @@
 %define X_display ":98"
 
 Name:           python-veusz
-Version:        3.5.3
+Version:        3.6.2
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM veusz-numpy1.24.patch commit without PR or issue
-Patch1:         https://github.com/veusz/veusz/commit/f93cf7ac0a1d93902524f38efbb58c4f0d016caa.patch#/veusz-numpy1.24.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
@@ -165,7 +163,7 @@ fi
 %doc README.md AUTHORS ChangeLog
 %doc Documents/manual/html
 %license COPYING
-%{python_sitearch}/veusz-%{version}.dist-info
+%{python_sitearch}/veusz-%{version}.dist-info/
 %{python_sitearch}/veusz/
 
 %files -n veusz

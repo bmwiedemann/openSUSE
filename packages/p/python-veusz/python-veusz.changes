@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 18 20:16:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.6.2:
+  * Fix broken resource symlink handling.
+- Changes from version 3.6.1:
+  * Fix appdata file.
+  * Fix issue in setup.cfg.
+- Changes from version 3.6.0:
+  * Interactive rotation of 3D plots.
+  * Add 12-bit rainbow colormap.
+  * Fix crash in contour key values.
+  * Fix breakage with recent numpy versions due to removal of
+    bool.
+  * Fix error in colormap sequence.
+  * About dialog shows software versions.
+  * Rewrite install instructions in INSTALL.md.
+  * Fix for Python 3.11 due to opening with universal newlines.
+  * Remove use of distutils.
+- Drop veusz-numpy1.24.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Fri Jan 13 16:55:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add veusz-numpy1.24.patch for compatibility with NumPy 1.24
