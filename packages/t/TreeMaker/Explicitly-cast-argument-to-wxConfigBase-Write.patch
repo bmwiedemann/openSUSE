@@ -1,0 +1,24 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 8 Apr 2023 23:54:27 +0200
+Subject: [PATCH 06/20] Explicitly cast argument to wxConfigBase::Write
+
+Otherwise it would like to see a wxToString(const tmNLCO::Algorithm&)
+overload. But judging from the counterpart code in tmwxApp::OnInit this
+should be written as an integer, so we explicitly cast to that.
+---
+ Source/tmwxGUI/tmwxCommon/tmwxApp.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp b/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
+index 4a01e37..b39cff0 100644
+--- a/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
++++ b/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
+@@ -1464,7 +1464,7 @@ bool tmwxPrefsDialog::TransferDataFromWindow()
+   tmNLCO::Algorithm algorithm = 
+     tmNLCO::Algorithm(mAlgorithm->GetCurrentSelection());
+   tmNLCO::SetAlgorithm(algorithm);
+-  wxConfig::Get()->Write(ALGORITHM_KEY, algorithm);
++  wxConfig::Get()->Write(ALGORITHM_KEY, int(algorithm));
+   
+   int showAboutAtStartup = mShowAboutAtStartup->GetValue();
+   wxConfig::Get()->Write(SHOW_ABOUT_AT_STARTUP_KEY, showAboutAtStartup);

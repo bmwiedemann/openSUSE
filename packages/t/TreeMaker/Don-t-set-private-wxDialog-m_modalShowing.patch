@@ -1,0 +1,22 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 01:35:46 +0200
+Subject: [PATCH 12/20] Don't set private wxDialog::m_modalShowing
+
+There doesn't seem to be any functionality to set the member, so I guess
+we just have to leave it?
+---
+ Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp b/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp
+index a815f0a..87b5654 100644
+--- a/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp
++++ b/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp
+@@ -45,7 +45,6 @@ void tmwxOptimizerDialog::DoStartModal() {
+     wxBeginBusyCursor ();
+     Show (true);
+     SetFocus();
+-    m_modalShowing = true;
+     g_openDialogs++;
+     gtk_grab_add (m_widget);
+ }

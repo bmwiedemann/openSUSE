@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14be002bf95b9b56155593b5ba81cb73</srcmd5>
+    <version>5.0.1</version>
+    <time>1681918984</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release based on version 5.0.1.
+- Add patches to fix build:
+  * Allow-building-with-system-wxWidgets.patch
+  * Use-explicit-this-for-dependent-base-members.patch
+  * Fix-missing-declaration-of-wxPageSetupData-in-tmwxAp.patch
+  * Replace-call-to-protected-wxWindow-ProcessEvent-by-H.patch
+  * Stop-using-wxT-with-non-literals.patch
+  * Explicitly-cast-argument-to-wxConfigBase-Write.patch
+  * Let-tmwxTextCtrl-constructor-take-a-wxString.patch
+  * Replace-tmwxDoc-GetPrintableName-call-by-GetDocument.patch
+  * Inline-private-wxDocChildFrameAny-OnActivate.patch
+  * Fix-flag-arguments-to-wxFileDialog-constructor.patch
+  * Try-to-resolve-missing-members-in-tmwxHtmlHelpFrame.patch
+  * Don-t-set-private-wxDialog-m_modalShowing.patch
+  * Resolve-ambiguous-call-to-tmOnAssert.patch
+  * Let-tmwxHtmlHelpController-CreateHelpWindow-match-wi.patch
+  * Link-with-GTK-libraries.patch
+  * Internalize-g_openDialogs-in-tmwxOptimizerDialog_gtk.patch
+- Add patches to fix some bugs:
+  * Fix-annoying-warning-about-suspiciuos-cast.patch
+  * Fix-popups-about-ignored-flags-at-startup.patch
+  * Fix-crash-on-opening-help.patch
+  * Make-some-build-options-configurable.patch</comment>
+    <requestid>1080207</requestid>
+  </revision>
+</revisionlist>

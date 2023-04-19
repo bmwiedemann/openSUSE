@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+  <id type="desktop">com.langorigami.TreeMaker</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>TreeMaker</name>
+  <summary>Tool for the Design of Origami Bases</summary>
+  <description>
+    <p>
+      TreeMaker is a program for the design of origami bases. You draw a stick figure
+      of the base on the screen; each stick in the stick figure (the “tree”) will be
+      represented by a flap on the base. You can also place various constraints on
+      the flaps, forcing them to be corner, edge, or middle flaps, and/or setting up
+      various symmetry relationships (forcing pairs of flaps to be symmetric about a
+      line of symmetry of the paper, for example). Once you have defined the tree,
+      TreeMaker computes the full crease pattern for a base which, when folded, will
+      have a projection (roughly speaking, its “shadow”) equivalent to that specified
+      by the defining tree. The crease pattern can be printed out, or copied and
+      pasted into another graphics program for further processing.
+    </p>
+  </description>
+  <categories>
+    <category>Science</category>
+    <category>Art</category>
+  </categories>
+  <keywords>
+    <keyword>origami</keyword>
+    <keyword>folding</keyword>
+    <keyword>design</keyword>
+  </keywords>
+  <url type="homepage">https://www.langorigami.com/article/treemaker</url>
+  <launchable type="desktop-id">com.langorigami.TreeMaker</launchable>
+  <releases>
+    <release version="5.0.1" date="2006-04-13"/>
+  </releases>
+  <provides>
+    <binary>TreeMaker</binary>
+  </provides>
+  <project_license>GPL-2.0-only</project_license>
+  <content_rating type="oars-1.1"/>
+</component>

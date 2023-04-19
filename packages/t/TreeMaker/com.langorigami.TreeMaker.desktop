@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=TreeMaker
+GenericName=Origami Designer
+Categories=Science;Art;
+MimeType=model/x-tmd5;
+Exec=TreeMaker %F
+Icon=treemaker

@@ -1,0 +1,60 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 8 Apr 2023 23:16:20 +0200
+Subject: [PATCH 03/20] Fix missing declaration of wxPageSetupData in tmwxApp.h
+
+We could simply include <wx/cmndata.h>, but the style seems to be to use
+forward declarations. What makes it a bit more complicated is that this
+symbol isn't a regular class in my version of wxWidgets anymore, it is
+instead #defined as wxPageSetupDialogData. So let's directly use that.
+---
+ Source/tmwxGUI/tmwxCommon/tmwxApp.cpp | 4 ++--
+ Source/tmwxGUI/tmwxCommon/tmwxApp.h   | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp b/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
+index 1da2c9d..b9843fd 100644
+--- a/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
++++ b/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
+@@ -1089,10 +1089,10 @@ wxPrintData& tmwxApp::GetPrintData()
+ /*****
+ Return the current page setup settings
+ *****/
+-wxPageSetupData& tmwxApp::GetPageSetupData()
++wxPageSetupDialogData& tmwxApp::GetPageSetupData()
+ {
+   if (!mPageSetupData)
+-    mPageSetupData = new wxPageSetupData();
++    mPageSetupData = new wxPageSetupDialogData();
+   return *mPageSetupData;
+ }
+ 
+diff --git a/Source/tmwxGUI/tmwxCommon/tmwxApp.h b/Source/tmwxGUI/tmwxCommon/tmwxApp.h
+index f855564..f73e755 100644
+--- a/Source/tmwxGUI/tmwxCommon/tmwxApp.h
++++ b/Source/tmwxGUI/tmwxCommon/tmwxApp.h
+@@ -24,6 +24,7 @@ class wxHtmlWindow;
+ class wxHtmlHelpController;
+ class wxFileName;
+ class wxServerBase;
++class wxPageSetupDialogData;
+ 
+ // Doc architecture choice
+ #ifdef TM_USE_MDI
+@@ -221,7 +222,7 @@ public:
+   static void SetPalettes(tmwxDoc* doc = NULL);
+   bool IsQuitting() const {return mIsQuitting;};
+   wxPrintData& GetPrintData();
+-  wxPageSetupData& GetPageSetupData();
++  wxPageSetupDialogData& GetPageSetupData();
+   
+ #if defined(__LINUX__) || defined(__WXMSW__)
+   wxIcon GetAppIcon() const { return mConfig.mAppIcon; }
+@@ -273,7 +274,7 @@ private:
+   wxString mDataDir;
+   tmwxHtmlHelpController* mHelp;
+   wxPrintData* mPrintData;
+-  wxPageSetupData* mPageSetupData;
++  wxPageSetupDialogData* mPageSetupData;
+   struct { // runtime configuration/parameters
+     wxString mInstallDir; // if ! empty, installation directory
+     wxArrayString mArgs; // copy of non-option cmdline arguments

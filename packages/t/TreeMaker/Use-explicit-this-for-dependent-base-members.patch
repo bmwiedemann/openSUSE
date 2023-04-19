@@ -1,0 +1,111 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 8 Apr 2023 23:11:38 +0200
+Subject: [PATCH 02/20] Use explicit `this->` for dependent base members
+
+Might have accidentally worked with implicit `this` back in the day, but
+since base classes can be specialized, lookup can only happen after
+instantiation, which prevents implicit `this` in referring to its
+members with all conformant compilers.
+---
+ Source/tmModel/tmPtrClasses/tmArray.h      | 16 ++++++++--------
+ Source/tmModel/tmPtrClasses/tmDpptrArray.h |  4 ++--
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Source/tmModel/tmPtrClasses/tmArray.h b/Source/tmModel/tmPtrClasses/tmArray.h
+index 3782b98..f7f2547 100644
+--- a/Source/tmModel/tmPtrClasses/tmArray.h
++++ b/Source/tmModel/tmPtrClasses/tmArray.h
+@@ -171,7 +171,7 @@ Add an element to the beginning of the list
+ template <class T>
+ void tmArray<T>::push_front(const T& t)
+ {
+-  insert(this->begin(), t);
++  this->insert(this->begin(), t);
+ }
+ 
+ 
+@@ -182,7 +182,7 @@ Add an element to the list if it isn't already there
+ template <class T>
+ void tmArray<T>::union_with(const T& t)
+ {
+-  if (find(this->begin(), this->end(), t) == this->end()) push_back(t);
++  if (find(this->begin(), this->end(), t) == this->end()) this->push_back(t);
+ }
+ 
+ 
+@@ -206,7 +206,7 @@ Remove an item from a list given its index
+ template <class T>
+ tmArray<T>& tmArray<T>::RemoveItemAt(std::size_t n)
+ {
+-  erase(this->begin() + ptrdiff_t(n) - 1);
++  this->erase(this->begin() + ptrdiff_t(n) - 1);
+   return *this;
+ }
+ 
+@@ -217,7 +217,7 @@ Remove an item from a list given its value
+ template <class T>
+ void tmArray<T>::erase_remove(const T& t)
+ {
+-  erase(remove(this->begin(), this->end(), t), this->end());
++  this->erase(remove(this->begin(), this->end(), t), this->end());
+ }
+ 
+ 
+@@ -240,7 +240,7 @@ template <class T>
+ tmArray<T>& tmArray<T>::InsertItemAt(std::size_t n, const T& t)
+ {
+   TMASSERT(n > 0); // 1-based indexing
+-  insert(this->begin() + ptrdiff_t(n) - 1, t);
++  this->insert(this->begin() + ptrdiff_t(n) - 1, t);
+   return *this;
+ }
+ 
+@@ -293,7 +293,7 @@ void tmArray<T>::rotate_left()
+ {
+   if (this->empty()) return;
+   T t = this->front();
+-  erase(this->begin());
++  this->erase(this->begin());
+   this->push_back(t);
+ }
+ 
+@@ -306,7 +306,7 @@ void tmArray<T>::rotate_right()
+ {
+   if (this->empty()) return;
+   T t = this->back();
+-  erase(this->rbegin());
++  this->erase(this->rbegin());
+   this->push_front(t);
+ }
+ 
+@@ -331,7 +331,7 @@ Append all elements of another list
+ template <class T>
+ void tmArray<T>::merge_with(const tmArray<T>& aList)
+ {
+-  insert(this->end(), aList.begin(), aList.end());
++  this->insert(this->end(), aList.begin(), aList.end());
+ }
+ 
+ 
+diff --git a/Source/tmModel/tmPtrClasses/tmDpptrArray.h b/Source/tmModel/tmPtrClasses/tmDpptrArray.h
+index c30ca8e..f01b8db 100644
+--- a/Source/tmModel/tmPtrClasses/tmDpptrArray.h
++++ b/Source/tmModel/tmPtrClasses/tmDpptrArray.h
+@@ -240,7 +240,7 @@ referencing it
+ template <class T>
+ void tmDpptrArray<T>::union_with(T* pt)
+ {
+-  if (!contains(pt)) push_back(pt);
++  if (!this->contains(pt)) push_back(pt);
+ }
+ 
+ 
+@@ -250,7 +250,7 @@ Remove all copies of this item from the list.
+ template <class T>
+ void tmDpptrArray<T>::erase_remove(T* pt)
+ {
+-  if (contains(pt)) {
++  if (this->contains(pt)) {
+     tmArray<T*>::erase_remove(pt);
+     DstRemoveMeAsDpptrSrc(pt);
+   };

@@ -1,0 +1,39 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 00:03:47 +0200
+Subject: [PATCH 07/20] Let tmwxTextCtrl constructor take a wxString
+
+Otherwise we'd get an error in tmwxGetUserInputDialog.cpp about no
+conversion from `const wxString` to `const wxChar*`. We could explicitly
+request that, but it seems pointless to extract that string if we're
+going to store it as wxString anyway.
+---
+ Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.cpp | 2 +-
+ Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.cpp b/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.cpp
+index 44c0b28..b93a792 100644
+--- a/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.cpp
++++ b/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.cpp
+@@ -16,7 +16,7 @@ Copyright:    
+ /*****
+ Constructor
+ *****/
+-tmwxTextCtrl::tmwxTextCtrl(wxWindow* parent, const wxChar* floatFormat) : 
++tmwxTextCtrl::tmwxTextCtrl(wxWindow* parent, const wxString& floatFormat) :
+   wxTextCtrl(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 
+     wxTE_PROCESS_ENTER),
+   mFloatFormat(floatFormat)
+diff --git a/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.h b/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.h
+index 92954e9..861069e 100644
+--- a/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.h
++++ b/Source/tmwxGUI/tmwxPalette/tmwxTextCtrl.h
+@@ -34,7 +34,7 @@ private:
+   wxString mFloatFormat;
+ public:
+   // Constructors
+-  tmwxTextCtrl(wxWindow* parent, const wxChar* floatFormat = wxEmptyString);
++  tmwxTextCtrl(wxWindow* parent, const wxString& floatFormat = wxEmptyString);
+ 
+   // Value setting, augments ancestor method SetValue(const wxString&)
+   using wxTextCtrl::SetValue;

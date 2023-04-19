@@ -1,0 +1,30 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Mon, 10 Apr 2023 19:56:42 +0200
+Subject: [PATCH 18/20] Fix popups about ignored flags at startup
+
+It doesn't like wxALIGN_RIGHT, and ignores it, so let's just remove it
+for now.
+---
+ Source/tmwxGUI/tmwxInspector/tmwxTreePanel.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxInspector/tmwxTreePanel.cpp b/Source/tmwxGUI/tmwxInspector/tmwxTreePanel.cpp
+index 62d4329..289280e 100644
+--- a/Source/tmwxGUI/tmwxInspector/tmwxTreePanel.cpp
++++ b/Source/tmwxGUI/tmwxInspector/tmwxTreePanel.cpp
+@@ -46,13 +46,13 @@ tmwxTreePanel::tmwxTreePanel(wxWindow* parent)
+   wxBoxSizer* symsizer = new wxBoxSizer(wxHORIZONTAL);
+   symsizer->Add(1, 0, 1);
+   symsizer->Add(mHasSymmetry = new tmwxCheckBoxSmall(this, wxT("Symmetry")),
+-    0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL | wxTOP|wxBOTTOM, 2);
++    0, wxALIGN_CENTER_VERTICAL | wxTOP|wxBOTTOM, 2);
+   symsizer->Add(10, 0, 0);
+   symsizer->Add(mDiag = new tmwxButtonSmall(this, wxT("Diag"), BUTTON_WIDTH),
+     0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL | wxTOP|wxBOTTOM, 2);
+   symsizer->Add(10, 0, 0);
+   symsizer->Add(mBook = new tmwxButtonSmall(this, wxT("Book"), BUTTON_WIDTH),
+-    0, wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL | wxTOP|wxBOTTOM, 2);
++    0, wxALIGN_CENTER_VERTICAL | wxTOP|wxBOTTOM, 2);
+   symsizer->Add(1, 0, 1);
+   mPanelSizer->Add(symsizer, 0, wxGROW);
+   

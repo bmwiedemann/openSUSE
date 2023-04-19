@@ -1,0 +1,25 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 02:05:28 +0200
+Subject: [PATCH 16/20] Internalize g_openDialogs in
+ tmwxOptimizerDialog_gtk.cpp
+
+There doesn't seem to be a definition anywhere, so the link fails. I
+don't quite see where we'd need this, so let's just give it internal
+linkage for now.
+---
+ Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp b/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp
+index 87b5654..ee3a273 100644
+--- a/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp
++++ b/Source/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.cpp
+@@ -18,7 +18,7 @@ Copyright:    
+ #include "tmwxStr.h"
+ #include "tmwxOptimizerDialog.h"
+ 
+-extern int g_openDialogs;
++static int g_openDialogs;
+ 
+ void tmwxOptimizerDialog::DoStartModal() {
+   /* CAF - essentially lifted from wxGTK 2.5.1's wxDialog::ShowModal, up to
