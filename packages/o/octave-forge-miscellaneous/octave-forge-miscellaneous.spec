@@ -46,6 +46,8 @@ This is part of Octave-Forge project.
 
 %install
 %octave_pkg_install
+#fix shebang
+sed -i -e 's|#!%{_bindir}/python|#!%{_bindir}/python3|' %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/*.py
 
 %check
 %octave_pkg_test
