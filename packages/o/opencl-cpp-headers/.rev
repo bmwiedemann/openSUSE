@@ -109,4 +109,14 @@
 </comment>
     <requestid>1063687</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>573ef6505da828ebc3e3cdd181df7b5b</srcmd5>
+    <version>2023.04.17</version>
+    <time>1681918981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.04.17.
+  * Synchronize with OpenCL v3.0.14 specification release.
+</comment>
+    <requestid>1080206</requestid>
+  </revision>
 </revisionlist>
