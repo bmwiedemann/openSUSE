@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 19 09:14:12 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add 0001-Update-prometheus-exporter-toolkit-to-0.7.3.patch
+  * Fix authentication bypass via cache poisoning
+    (CVE-2022-46146, bsc#1208060)
+- Fix _service to pull correct version
+
+-------------------------------------------------------------------
 Mon May 16 08:31:06 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Use go_modules source service
 - Upgrade to version 0.10.1:
-  * Fix broken log-level for values other than debug.
+  * Fix broken log-level for values other than debug (bsc#1208965)
 
 -------------------------------------------------------------------
 Wed May 11 17:27:07 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>

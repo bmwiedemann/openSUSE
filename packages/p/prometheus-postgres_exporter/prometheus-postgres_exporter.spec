@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-postgres_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,6 +43,8 @@ Source:         postgres_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-postgres_exporter.service
 Source3:        prometheus-postgres_exporter.sysconfig
+# This patch has been applied before generating vendor tarball
+Patch1:         0001-Update-prometheus-exporter-toolkit-to-0.7.3.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
