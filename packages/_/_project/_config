@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20230404
+ExpandFlags: macroserial:20230419
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -407,7 +407,6 @@ FileProvides: /usr/bin/rm busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rmdir busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/rsync rsync
 FileProvides: /usr/bin/ruby ruby3.2
-FileProvides: /usr/bin/ruby.ruby3.1 ruby3.1
 FileProvides: /usr/bin/ruby.ruby3.2 ruby3.2
 FileProvides: /usr/bin/runawk runawk
 FileProvides: /usr/bin/scheme-srfi-7 scheme48
@@ -3481,39 +3480,6 @@ Macros:
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
 
-### And now Ruby 2.7
-
-%rubygemsruby27() rubygem(ruby:2.7.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby27() %{expand:%%{rubygemsx%*}}
-
-%rubyruby27() ruby2.7 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby27() %{expand:%%{rubyx%*}}
-
-%rubydevelruby27() ruby2.7-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby27() %{expand:%%{rubydevelx%*}}
-
-### And now Ruby 3.0
-
-%rubygemsruby30() rubygem(ruby:3.0.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby30() %{expand:%%{rubygemsx%*}}
-
-%rubyruby30() ruby3.0 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby30() %{expand:%%{rubyx%*}}
-
-%rubydevelruby30() ruby3.0-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby30() %{expand:%%{rubydevelx%*}}
-
-### And now Ruby 3.1
-
-%rubygemsruby31() rubygem(ruby:3.1.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby31() %{expand:%%{rubygemsx%*}}
-
-%rubyruby31() ruby3.1 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby31() %{expand:%%{rubyx%*}}
-
-%rubydevelruby31() ruby3.1-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby31() %{expand:%%{rubydevelx%*}}
-
 ### And now Ruby 3.2
 
 %rubygemsruby32() rubygem(ruby:3.2.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
@@ -3531,24 +3497,22 @@ Macros:
 %rb_default_ruby_suffix ruby3.2
 %rb_default_ruby_abi    ruby:3.2.0
 
-%rb_build_ruby_abis     ruby:3.2.0 ruby:3.1.0
-%rb_build_versions      ruby32 ruby31
+%rb_build_ruby_abis     ruby:3.2.0
+%rb_build_versions      ruby32
 :Macros
 
 Macros:
-%_with_ruby31               1
 %_with_ruby32               1
 :Macros
 
-%define _with_ruby31         1
 %define _with_ruby32         1
 
 %define rb_default_ruby        ruby32
 %define rb_default_ruby_suffix ruby3.2
 %define rb_default_ruby_abi    ruby:3.2.0
 
-%define rb_build_ruby_abis     ruby:3.2.0 ruby:3.1.0
-%define rb_build_versions      ruby32 ruby31
+%define rb_build_ruby_abis     ruby:3.2.0
+%define rb_build_versions      ruby32
 
 Prefer: %{rb_default_ruby_suffix}-rubygem-asciidoctor
 Prefer: %{rb_default_ruby_suffix}-rubygem-bundler
