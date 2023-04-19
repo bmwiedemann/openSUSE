@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 19 07:49:02 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+-Added
+  * Introducing Font Awesome Sharp Light!
+  * Unearthed a new dinosaur icon.
+  * Saved the planet with a new bin-recycle icon.
+  * Reduced, reused, and recycled a new jug-bottle icon.
+  * Added to our file collection with new file-doc and file-zip icons.
+  * Added a new gear-complex icon, along with a gear-code icon.
+  * Rounded up a new sponsored grid-round icon and variants.
+  * Exchanged a new sponsored chf-sign icon.
+  * Donned a new sponsored hat-beach icon.
+  * Batch of new sponsored icons, including arrow-progress, bag-seedling, bin-bottles-recycle, calendar-users, chart-line-up-down, chart-mixed-up-circle-currency, circles-overlap, cloud-binary, conveyor-belt-arm, display-chart-up-circle-currency, flask-gear, gear-complex-code, laptop-binary, lightbulb-gear, person-running-fast, right-left-large, and user-group-simple.
+-Changed
+  * Minor adjustments to all icons in the Classic Light, Classic Thin, and Duotone styles for consistency and clarity.
+  * Swapped the placement of the laptop and file in the laptop-file icon.
+  * Updated file-pdf and file-csv to be more legible.
+  * Adjusted all of our newspaper icons.
+  * Adjusted hands-asl-interpreting.
+  * Made our rugby-ball icon look more like a rugby ball.
+  * Updated teamspeak logo with new version.
+-Fixed
+  * Fixed a regression in 6.3.0 where a number of icons weren't centered properly in their viewboxes.
+  * Adjusted the copy icon to be consistent across all styles.
+  * Fixed image-landscape in the Sharp Solid style to make it, you know, actually sharp.
+  * Fixed an issue with the interior shape of our "virus" icons.
+  * Fixed fill state of the regular narwhal icon.
+  * Fixed duotone of our gear icon.
+  * Fixed misalignment of the thumbs-down icon in duotone and light.
+  * Fixed an issue where ligature in OTF files weren't working properly for the plus and ampersand icons.
+  * Fixed the light style of the wreath-laurel icon.
+  * Fixed box-archive in regular.
+
+-------------------------------------------------------------------
 Tue Feb 14 14:57:38 UTC 2023 - Dawid Respondek <nyslay@gmail.com>
 
 -Added
