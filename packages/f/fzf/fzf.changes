@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 19 04:26:40 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 0.39.0:
+  * Added 'one' event that is triggered when there's only one
+    match.
+  * Added --track option that makes fzf track the current selection
+    when the result list is updated. This can be useful when
+    browsing logs using fzf with sorting disabled.
+  * If you use --listen option without a port number fzf will
+    automatically allocate an available port and export it as
+    $FZF_PORT environment variable.
+  * A carriage return and a line feed character will be rendered as
+    dim ␍ and ␊ respectively.
+  * fzf will stop rendering a non-displayable characters as a
+    space. This will likely cause less glitches in the preview
+    window.
+  * Other bug fixes and improvements.
+- Update vendor tarball.
+
+-------------------------------------------------------------------
 Thu Apr 13 06:03:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - All those completion scripts not requiring their respective

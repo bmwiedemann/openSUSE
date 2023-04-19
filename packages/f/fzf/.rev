@@ -549,4 +549,12 @@
 </comment>
     <requestid>1078867</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d6486d3732bbb597793f93753bf0f071</srcmd5>
+    <version>0.39.0</version>
+    <time>1681919067</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.39.0 major upstream release. (forwarded request 1080214 from luc14n0)</comment>
+    <requestid>1080294</requestid>
+  </revision>
 </revisionlist>
