@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           typst
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -34,6 +34,24 @@ BuildRequires:  git
 %description
 Typst is a new markup-based typesetting system that is designed to be as powerful as LaTeX while being much easier to learn and use.
 
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
 %prep
 %autosetup -p1 -a1 -n typst-%{version}
 mkdir -p .cargo
@@ -45,6 +63,8 @@ cp %{SOURCE2} .cargo/config
 sed -i "s/_TYPST_HASH_/%{build_hash}/" cli/build.rs
 
 %build
+export GEN_ARTIFACTS=%{_builddir}/%{name}-%{version}/artifacts
+mkdir -p $GEN_ARTIFACTS
 cd cli
 RUSTFLAGS=%{rustflags} %{cargo_build}
 
@@ -55,9 +75,25 @@ RUSTFLAGS=%{rustflags} %{cargo_build}
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 target/release/typst %{buildroot}%{_bindir}/%{name}
 
+# Shell completions
+install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm644 -T %{_builddir}/%{name}-%{version}/artifacts/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+# copy man-pages
+mkdir -p %{buildroot}%{_mandir}/man1/
+cp -L  %{_builddir}/%{name}-%{version}/artifacts/*.1 %{buildroot}%{_mandir}/man1/
+
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/typst
+%{_mandir}/*/*
+
+%files bash-completion
+%{_datadir}/bash-completion/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
 
 %changelog
