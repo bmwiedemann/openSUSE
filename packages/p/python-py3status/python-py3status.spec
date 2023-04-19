@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3status
-Version:        3.49
+Version:        3.50
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
