@@ -124,9 +124,6 @@ chmod 644 %{buildroot}%{_datadir}/%{name}/scripts/README
 chmod 644 %{buildroot}%{_datadir}/%{name}/scripts/color-list
 #chmod 644 %%{buildroot}%%{_datadir}/%%{name}/scripts/simple-makefile
 rm -f %{buildroot}%{_datadir}/%{name}/scripts/svn-to-hg-and-git.sh
-pushd %{buildroot}%{_datadir}/%{name}/scripts
-sed -i '1s/^#!.*/#!\/usr\/bin\/python/' sf2rg.py
-popd
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/pixmaps/%{name}.xpm"
 %suse_update_desktop_file %{buildroot}/%{_datadir}/applications/com.rosegardenmusic.%{name}.desktop
 #This is a man page made by help2man to satisfy factories hunger for one /usr/bin/ one man page.

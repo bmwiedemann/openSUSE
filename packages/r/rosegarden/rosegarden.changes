@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 18 12:51:00 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Do not change the interpreter back to /usr/bin/python in sf2rg.py
+  since scripts-sf2rg-python3.patch changed it to /usr/bin/python3
+
+-------------------------------------------------------------------
 Sun Apr 09 07:19:09 UTC 2023 - davejplater@gmail.com
 
 - Remove broken service and build Leap the same way as Tumbleweed.
