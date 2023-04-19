@@ -180,4 +180,14 @@
   + Test matrix covers Python 3.11 (#512) (forwarded request 1063813 from glaubitz)</comment>
     <requestid>1063879</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43cf06ce0fb5f368a7758f178d96bc5a</srcmd5>
+    <version>1.22.0</version>
+    <time>1681919085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0
+  + New feature: Support CIAM authorities in the
+    form of &quot;tenant.ciamlogin.com/*&quot; (#520) (forwarded request 1080273 from glaubitz)</comment>
+    <requestid>1080298</requestid>
+  </revision>
 </revisionlist>
