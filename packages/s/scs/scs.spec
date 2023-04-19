@@ -1,7 +1,7 @@
 #
 # spec file for package scs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scs
-Version:        3.2.0
+Version:        3.2.3
 Release:        0
 Summary:        Numerical package for solving large-scale convex cone problems
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  5 08:58:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Exponential cone projection now about 50x faster!
+  * GPU version working again!
+  * More testing.
+
+-------------------------------------------------------------------
 Sun Dec  4 12:19:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
