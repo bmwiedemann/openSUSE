@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Inline-Python
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define cpan_name Inline-Python
 Name:           perl-Inline-Python
-Version:        0.56.5d4b1ff
+Version:        0.57
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write Perl subs and classes in Python
 URL:            https://metacpan.org/release/%{cpan_name}
-#Source0:        https://cpan.metacpan.org/authors/id/N/NI/NINE/%{cpan_name}-%{version}.tar.gz
-Source0:        %{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NI/NINE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:47:40 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.57
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+
+  0.57 Sun  Sep 18 13:20:00 CEST 2022 (Stefan Seifert)
+  	- Try to detect more object types.
+  	- Further tighten the "is it a dict or object" check
+  	- Also skip List and Tuple when checking for python object
+  	- Unify "is this an object" checks into a macro to fix method calls on strange objects
+  	- Define PY_MAJOR_VERSION automatically
+  	- Search for and prefer python3 when building
+  	- Pass ASCII strings as <class 'str'> in Python 3
+  	- Fix segfault on Python 3.10 by calling Py_Initialize() before calling PyBytes_FromString()
+  	- Process rss information not supported by Proc::ProcessTable on Windows
+
+-------------------------------------------------------------------
 Thu Jul 14 09:21:11 UTC 2022 - Oliver Kurz <okurz@suse.com>
 
 - updated to 0.56.5d4b1ff
