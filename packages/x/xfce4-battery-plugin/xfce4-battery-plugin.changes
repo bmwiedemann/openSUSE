@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 20 07:53:15 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.5
+  * Update copyright year
+  * build: Add GLib requirement
+  * Replace deprecated XfcePanelImage with GtkImage
+  * Update `.gitignore`
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * Fix make distcheck
+  * Respect panel setting "Adjust size automatically"
+  * Update COPYING
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Tue Mar 23 11:17:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.1.4

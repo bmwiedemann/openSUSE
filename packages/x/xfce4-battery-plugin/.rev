@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>881053</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5283af1ed8c77f95d94c82ff93d39989</srcmd5>
+    <version>1.1.5</version>
+    <time>1681996497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Update copyright year
+  * build: Add GLib requirement
+  * Replace deprecated XfcePanelImage with GtkImage
+  * Update `.gitignore`
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * Fix make distcheck
+  * Respect panel setting &quot;Adjust size automatically&quot;
+  * Update COPYING
+  * Translation Updates
+- Remove _service file (forwarded request 1080494 from manfred-h)</comment>
+    <requestid>1080848</requestid>
+  </revision>
 </revisionlist>
