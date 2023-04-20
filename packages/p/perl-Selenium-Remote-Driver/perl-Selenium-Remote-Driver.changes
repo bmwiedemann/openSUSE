@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  7 03:08:22 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.49 2023-04-06 TEODESIAN
+      - Fix the action type for button_up(), courtesy of Bernard Schmalhofer
+
+-------------------------------------------------------------------
 Tue Jan  3 03:08:37 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.48
