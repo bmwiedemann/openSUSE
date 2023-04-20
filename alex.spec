@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           alex
-Version:        3.2.7.2
+Version:        3.2.7.3
 Release:        0
 Summary:        Alex is a tool for generating lexical analysers in Haskell
 License:        BSD-3-Clause
