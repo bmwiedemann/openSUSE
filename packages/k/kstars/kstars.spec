@@ -18,9 +18,9 @@
 
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
-%bcond_without lang
+%bcond_without released
 Name:           kstars
-Version:        3.6.3
+Version:        3.6.4
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -31,16 +31,14 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+%if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-Patch0:         fix-dir-separator.patch
-Patch1:         fix-indi-timestamp.patch
-Patch2:         fix-placeholder-path-part1.patch
-Patch3:         fix-placeholder-path-part2.patch
-Patch4:         fix-scheduler.patch
+%endif
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -106,10 +104,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
 %kf5_makeinstall -C build
-%if %{with lang}
-  %find_lang %{name} --with-man --all-name
-  %{kf5_find_htmldocs}
-%endif
+
+%find_lang %{name} --with-man --all-name
+%{kf5_find_htmldocs}
 
 # Remove static library
 rm %{buildroot}%{_kf5_libdir}/libhtmesh.a
@@ -129,9 +126,7 @@ rm %{buildroot}%{_kf5_libdir}/libhtmesh.a
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_notifydir}/kstars.notifyrc
 
-%if %{with lang}
 %files lang -f %{name}.lang
 %license LICENSES/GPL-2.0-or-later.txt LICENSES/GPL-3.0-or-later.txt
-%endif
 
 %changelog

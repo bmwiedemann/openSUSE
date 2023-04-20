@@ -1141,4 +1141,29 @@
     <comment>multiple fixes after stable release</comment>
     <requestid>1064154</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>12e702e7b3a22a9064f07f4b8b9bcc10</srcmd5>
+    <version>3.6.4</version>
+    <time>1681996491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.4:
+  * Fix range for reducer/barlow
+  * Fix separator replacement mistake
+  * Fix setting optical train reducer
+  * Fix asteroid visual magnitude calculation
+  * Support for XISF
+  * Controlling EKOS with external Sky Maps
+  * Update target position angle when a meridian flip is detected so that
+    it does not cause uncommanded rotation post MF
+  * Fix file overwriting issue
+  * Max dark guide threshold Default is 1 sec
+  * Fix dark library cache issue
+  * Bugfix for mount model
+- Drop fix-indi-timestamp.patch
+- Drop fix-dir-separator.patch
+- Drop fix-scheduler.patch
+- Drop fix-placeholder-path-part1.patch
+- Drop fix-placeholder-path-part2.patch</comment>
+    <requestid>1080480</requestid>
+  </revision>
 </revisionlist>
