@@ -1,0 +1,45 @@
+From: Xianting Tian <xianting.tian@linux.alibaba.com>
+Date: Thu, 20 Oct 2022 09:50:14 +0800
+Subject: RISCV64: Add the implementation of symbol verify
+Upstream: merged
+Git-commit: 0d5ad129252a18a46d1818a68ed22b35c5234289
+
+Verify the symbol to accept or reject a symbol from the kernel namelist.
+
+Signed-off-by: Xianting Tian <xianting.tian@linux.alibaba.com>
+---
+ riscv64.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/riscv64.c b/riscv64.c
+index ff77e41..6b9a688 100644
+--- a/riscv64.c
++++ b/riscv64.c
+@@ -165,10 +165,23 @@ riscv64_cmd_mach(void)
+ 	riscv64_display_machine_stats();
+ }
+ 
++/*
++ * Accept or reject a symbol from the kernel namelist.
++ */
+ static int
+ riscv64_verify_symbol(const char *name, ulong value, char type)
+ {
+-	/* TODO: */
++	if (CRASHDEBUG(8) && name && strlen(name))
++		fprintf(fp, "%08lx %s\n", value, name);
++
++	if (!(machdep->flags & KSYMS_START)) {
++		if (STREQ(name, "_text") || STREQ(name, "_stext"))
++			machdep->flags |= KSYMS_START;
++
++		return (name && strlen(name) && !STRNEQ(name, "__func__.") &&
++			!STRNEQ(name, "__crc_"));
++	}
++
+ 	return TRUE;
+ }
+ 
+-- 
+2.40.0
+

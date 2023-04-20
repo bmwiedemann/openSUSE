@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 20 12:09:36 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- crash-define-EM_RISCV-fallback.patch: Provide a fallback
+  definition of EM_RISCV.
+
+-------------------------------------------------------------------
+Thu Apr 20 11:56:49 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Remove crash-Define-fallback-PN_XNUM.patch: No more compatibility
+  with SLE11.
+
+-------------------------------------------------------------------
+Thu Apr 20 07:43:51 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Enable build for 32-bit Arm and 32-bit IBM POWER.
+
+-------------------------------------------------------------------
+Thu Apr 20 07:41:07 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Add support for RISCV64:
+  *  crash-Add-RISCV64-framework-code-support.patch
+  *  crash-RISCV64-Make-crash-tool-enter-command-line-and-suppo.patch
+  *  crash-RISCV64-Add-dis-command-support.patch
+  *  crash-RISCV64-Add-irq-command-support.patch
+  *  crash-RISCV64-Add-bt-command-support.patch
+  *  crash-RISCV64-Add-help-r-command-support.patch
+  *  crash-RISCV64-Add-help-m-M-command-support.patch
+  *  crash-RISCV64-Add-mach-command-support.patch
+  *  crash-RISCV64-Add-the-implementation-of-symbol-verify.patch
+
+-------------------------------------------------------------------
 Thu Apr 13 11:42:28 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - crash-EPPIC-extension-support-for-crash-8.x-gdb-10.x.patch: EPPIC

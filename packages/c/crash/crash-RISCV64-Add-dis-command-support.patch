@@ -1,0 +1,44 @@
+From: Xianting Tian <xianting.tian@linux.alibaba.com>
+Date: Thu, 20 Oct 2022 09:50:08 +0800
+Subject: RISCV64: Add 'dis' command support
+Upstream: merged
+Git-commit: b410e14f7865e8c0e28cf2fb7a0092e3a8735645
+
+Use generic_dis_filter() function to support dis command implementation.
+
+With this patch, we can get the disassembled code,
+crash> dis __crash_kexec
+0xffffffff80088580 <__crash_kexec>:     addi    sp,sp,-352
+0xffffffff80088582 <__crash_kexec+2>:   sd      s0,336(sp)
+0xffffffff80088584 <__crash_kexec+4>:   sd      s1,328(sp)
+0xffffffff80088586 <__crash_kexec+6>:   sd      s2,320(sp)
+0xffffffff80088588 <__crash_kexec+8>:   addi    s0,sp,352
+0xffffffff8008858a <__crash_kexec+10>:  sd      ra,344(sp)
+0xffffffff8008858c <__crash_kexec+12>:  sd      s3,312(sp)
+0xffffffff8008858e <__crash_kexec+14>:  sd      s4,304(sp)
+0xffffffff80088590 <__crash_kexec+16>:  auipc   s2,0x1057
+0xffffffff80088594 <__crash_kexec+20>:  addi    s2,s2,-1256
+0xffffffff80088598 <__crash_kexec+24>:  ld      a5,0(s2)
+0xffffffff8008859c <__crash_kexec+28>:  mv      s1,a0
+0xffffffff8008859e <__crash_kexec+30>:  auipc   a0,0xfff
+
+Signed-off-by: Xianting Tian <xianting.tian@linux.alibaba.com>
+---
+ riscv64.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/riscv64.c b/riscv64.c
+index d8de3d5..1e20a09 100644
+--- a/riscv64.c
++++ b/riscv64.c
+@@ -988,6 +988,7 @@ riscv64_init(int when)
+ 		machdep->is_task_addr = riscv64_is_task_addr;
+ 		machdep->get_smp_cpus = riscv64_get_smp_cpus;
+ 		machdep->value_to_symbol = generic_machdep_value_to_symbol;
++		machdep->dis_filter = generic_dis_filter;
+ 		machdep->show_interrupts = generic_show_interrupts;
+ 		machdep->get_irq_affinity = generic_get_irq_affinity;
+ 		machdep->init_kernel_pgd = NULL; /* pgd set by symbol_value("swapper_pg_dir") */
+-- 
+2.40.0
+

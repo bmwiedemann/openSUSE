@@ -1,0 +1,36 @@
+From: Xianting Tian <xianting.tian@linux.alibaba.com>
+Date: Thu, 20 Oct 2022 09:50:09 +0800
+Subject: RISCV64: Add irq command support
+Upstream: merged
+Git-commit: 67216c741c4ebe8494f74f1ceabff9cdafb67883
+
+With the patch, we can get the irq info,
+crash> irq
+ IRQ   IRQ_DESC/_DATA      IRQACTION      NAME
+ 0       (unused)          (unused)
+ 1   ff60000001329600  ff60000001d17180  "101000.rtc"
+ 2   ff60000001329800  ff60000001d17680  "ttyS0"
+ 3   ff60000001329a00  ff60000001c33c00  "virtio0"
+ 4   ff60000001329c00  ff60000001c33f80  "virtio1"
+ 5   ff6000000120f400  ff60000001216000  "riscv-timer"
+
+Signed-off-by: Xianting Tian <xianting.tian@linux.alibaba.com>
+---
+ riscv64.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/riscv64.c b/riscv64.c
+index 1e20a09..2355dac 100644
+--- a/riscv64.c
++++ b/riscv64.c
+@@ -989,6 +989,7 @@ riscv64_init(int when)
+ 		machdep->get_smp_cpus = riscv64_get_smp_cpus;
+ 		machdep->value_to_symbol = generic_machdep_value_to_symbol;
+ 		machdep->dis_filter = generic_dis_filter;
++		machdep->dump_irq = generic_dump_irq;
+ 		machdep->show_interrupts = generic_show_interrupts;
+ 		machdep->get_irq_affinity = generic_get_irq_affinity;
+ 		machdep->init_kernel_pgd = NULL; /* pgd set by symbol_value("swapper_pg_dir") */
+-- 
+2.40.0
+

@@ -55,6 +55,10 @@
 %define build_kmp 0
 %endif
 %endif
+# kernel is missing on 32-bit ppc
+%ifarch ppc
+%define build_kmp 0
+%endif
 
 Name:           crash
 URL:            https://crash-utility.github.io/
@@ -91,10 +95,19 @@ Patch18:        %{name}-stop_read_error_when_intent_is_retry.patch
 Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
 Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128TB.patch
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
-Patch27:        %{name}-Define-fallback-PN_XNUM.patch
 Patch30:        %{name}-enable-zstd-support.patch
 Patch31:        %{name}-extensions-rule-for-defs.patch
 Patch32:        %{name}-EPPIC-extension-support-for-crash-8.x-gdb-10.x.patch
+Patch33:        %{name}-Add-RISCV64-framework-code-support.patch
+Patch34:        %{name}-RISCV64-Make-crash-tool-enter-command-line-and-suppo.patch
+Patch35:        %{name}-RISCV64-Add-dis-command-support.patch
+Patch36:        %{name}-RISCV64-Add-irq-command-support.patch
+Patch37:        %{name}-RISCV64-Add-bt-command-support.patch
+Patch38:        %{name}-RISCV64-Add-help-r-command-support.patch
+Patch39:        %{name}-RISCV64-Add-help-m-M-command-support.patch
+Patch40:        %{name}-RISCV64-Add-mach-command-support.patch
+Patch41:        %{name}-RISCV64-Add-the-implementation-of-symbol-verify.patch
+Patch42:        %{name}-define-EM_RISCV-fallback.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 Patch99:        %{name}-usrmerge.patch
 BuildRequires:  bison
@@ -112,12 +125,9 @@ BuildRequires:  libzstd-devel
 BuildRequires:  libelf-devel
 BuildRequires:  zlib-devel
 Requires:       /usr/bin/nm
-ExclusiveArch:  %ix86 x86_64 ia64 s390 s390x ppc64 ppc64le alpha aarch64
-# Source code says it can do ppc32. Excluded here?
-ExcludeArch:    ppc
+ExclusiveArch:  %ix86 x86_64 ia64 s390 s390x ppc ppc64 ppc64le alpha aarch64 %arm riscv64
 %if 0%{?build_kmp}
 BuildRequires:  kernel-syms
-%endif
 %ifarch x86_64
 %if 0%{?suse_version} >= 1520 && 0%{?suse_version} < 1550
 BuildRequires:  kernel-syms-rt
@@ -128,6 +138,7 @@ BuildRequires:  kernel-devel
 %endif
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  module-init-tools
+%endif
 
 %if 0%{?build_kmp}
 %suse_kernel_module_package -n crash -p %_sourcedir/%{name}-kmp-preamble um
@@ -266,7 +277,6 @@ ln -s %{SOURCE1} .
 %patch23 -p1
 %patch24 -p1
 %endif
-%patch27 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
@@ -281,6 +291,16 @@ ln -s %{SOURCE1} .
 
 %patch31 -p1
 %patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}

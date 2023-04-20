@@ -1624,4 +1624,27 @@
     <comment></comment>
     <requestid>1079223</requestid>
   </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>bf188ba664a7cfcc0c2b47a0fd524b78</srcmd5>
+    <version>8.0.2</version>
+    <time>1682000758</time>
+    <user>dimstar_suse</user>
+    <comment>- crash-define-EM_RISCV-fallback.patch: Provide a fallback
+  definition of EM_RISCV.
+- Remove crash-Define-fallback-PN_XNUM.patch: No more compatibility
+  with SLE11.
+- Enable build for 32-bit Arm and 32-bit IBM POWER.
+- Add support for RISCV64:
+  *  crash-Add-RISCV64-framework-code-support.patch
+  *  crash-RISCV64-Make-crash-tool-enter-command-line-and-suppo.patch
+  *  crash-RISCV64-Add-dis-command-support.patch
+  *  crash-RISCV64-Add-irq-command-support.patch
+  *  crash-RISCV64-Add-bt-command-support.patch
+  *  crash-RISCV64-Add-help-r-command-support.patch
+  *  crash-RISCV64-Add-help-m-M-command-support.patch
+  *  crash-RISCV64-Add-mach-command-support.patch
+  *  crash-RISCV64-Add-the-implementation-of-symbol-verify.patch
+</comment>
+    <requestid>1080856</requestid>
+  </revision>
 </revisionlist>
