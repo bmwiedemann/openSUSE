@@ -22,7 +22,7 @@
 %define typelib_minor 0
 
 Name:           cheese
-Version:        44.0
+Version:        44.0.1
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
