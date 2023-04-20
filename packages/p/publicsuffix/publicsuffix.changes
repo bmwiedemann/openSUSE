@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 18 07:38:17 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230414:
+  * util: gTLD data autopull updates for 2023-04-14T15:13:16 UTC (#1738)
+  * Change - update comments/policy for the French ccTLDs (`.fr`, `.pm`, `.re`, `.tf`, `.wf`, `.yt`) by Administrator (#1732)
+  * New policy for .museum, without all the SLD (Second-Level Domains) (#1729)
+  * Add ladesk.com (#1538)
+  * util: gTLD data autopull updates for 2023-03-18T15:13:12 UTC (#1723)
+  * util: gTLD data autopull updates for 2023-03-08T15:15:40 UTC (#1714)
+  * Additional ngrok domains - more `ngrok.io` from #48 + `ngrok.app` `ngrok-free.app` `ngrok.dev` `ngrok-free.dev` `ngrok.pizza` (#1653)
+  * Add `ie.ua` (#1597)
+
+-------------------------------------------------------------------
 Mon Feb 27 20:40:10 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20230226:

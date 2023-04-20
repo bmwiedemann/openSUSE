@@ -1234,4 +1234,20 @@ Now with build cycle removed.</comment>
     <comment></comment>
     <requestid>1068236</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>eaa2ed8d9081a5bde80dc2adf79396ad</srcmd5>
+    <version>20230414</version>
+    <time>1681996411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230414:
+  * util: gTLD data autopull updates for 2023-04-14T15:13:16 UTC (#1738)
+  * Change - update comments/policy for the French ccTLDs (`.fr`, `.pm`, `.re`, `.tf`, `.wf`, `.yt`) by Administrator (#1732)
+  * New policy for .museum, without all the SLD (Second-Level Domains) (#1729)
+  * Add ladesk.com (#1538)
+  * util: gTLD data autopull updates for 2023-03-18T15:13:12 UTC (#1723)
+  * util: gTLD data autopull updates for 2023-03-08T15:15:40 UTC (#1714)
+  * Additional ngrok domains - more `ngrok.io` from #48 + `ngrok.app` `ngrok-free.app` `ngrok.dev` `ngrok-free.dev` `ngrok.pizza` (#1653)
+  * Add `ie.ua` (#1597)</comment>
+    <requestid>1080062</requestid>
+  </revision>
 </revisionlist>
