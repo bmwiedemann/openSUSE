@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 15 17:01:20 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.13.0
+  * Bumped minimum compatibility level to C++17
+- Remove lxqt-build-tools-0.12.0-cpp17.patch
+
+-------------------------------------------------------------------
 Tue Feb 14 12:41:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - boo#1208217: Bump required C++ version
