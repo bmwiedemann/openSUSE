@@ -1,7 +1,7 @@
 #
 # spec file for package easyeffects
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,8 @@
 #
 
 
-%ifarch riscv64
-%bcond_with gold
-%else
-%bcond_without gold
-%endif
-
 Name:           easyeffects
-Version:        6.3.0
+Version:        7.0.0
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -31,9 +25,6 @@ URL:            https://github.com/wwmm/easyeffects
 #Source0:        https://github.com/wwmm/easyeffects/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
-%if %{with gold}
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -44,6 +35,7 @@ BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zita-convolver-devel
 BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libbs2b)
@@ -89,16 +81,9 @@ sed -i '/^meson.add_install_script/d' meson.build
 export QMAKE_CFLAGS_ISYSTEM=-I
 
 %build
-%if %{with gold}
-export LD=ld.gold
-alias ld=gold
-%endif
 export CC=gcc
 export CXX=g++
 export LDFLAGS="${LDFLAGS} -fPIC -Wl,--gc-sections -Wl,-O1"
-%if %{with gold}
-LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
-%endif
 %meson \
             -Db_ndebug=true \
             -Dc_args="${CFLAGS}" \
