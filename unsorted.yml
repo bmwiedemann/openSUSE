@@ -6419,6 +6419,7 @@ unsorted:
   - gimp-plugin-lqr 
   - gimp-plugin-lqr-lang 
   - gimp-plugin-resynthesizer 
+  - gimp-plugins-python 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
   - ginac 
@@ -10345,8 +10346,8 @@ unsorted:
   - libSavitar-devel 
   - libSavitar0 
   - libSciTokens0 
-  - libShowMySky-Qt6-14 
-  - libShowMySky-Qt6-14-devel 
+  - libShowMySky-Qt6-15 
+  - libShowMySky-Qt6-devel 
   - libSimGearCore-2020_3_18 
   - libSingular-4_3_1 
   - libSingular-devel 
@@ -11835,7 +11836,7 @@ unsorted:
   - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
-  - libfm-qt12 
+  - libfm-qt13 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -12099,6 +12100,7 @@ unsorted:
   - libgivaro9 
   - libgjs-devel 
   - libgl2ps1 
+  - libglade-2_0-0 
   - libglade2-devel 
   - libglade2-doc 
   - libgladeui-2-13 
@@ -13718,6 +13720,7 @@ unsorted:
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit 
   - libopenssl1_1-32bit 
+  - libopenssl1_1-hmac 
   - libopenssl1_1-hmac-32bit 
   - libopenssl3-hmac-32bit 
   - libopenssl3-hmac-x86-64-v3 
@@ -14160,6 +14163,7 @@ unsorted:
   - libpystring0_0 
   - libpythia8 
   - libpythia8lhapdf6 
+  - libpython2_7-1_0 
   - libpython2_7-1_0-32bit 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0 
@@ -22398,6 +22402,7 @@ unsorted:
   - pystring-devel 
   - pythia-devel 
   - pythia-doc 
+  - python 
   - python-32bit 
   - python-Genshi-doc 
   - python-Kivy-doc 
@@ -22423,6 +22428,7 @@ unsorted:
   - python-azure-agent 
   - python-azure-agent-test 
   - python-barbicanclient-doc 
+  - python-base 
   - python-base-32bit 
   - python-beautifulsoup4-doc 
   - python-billiard-doc 
@@ -22461,7 +22467,9 @@ unsorted:
   - python-glanceclient-doc 
   - python-gnome-dvb-daemon 
   - python-gobject-common-devel 
+  - python-gobject2 
   - python-gobject2-devel 
+  - python-gtk 
   - python-gtk-devel 
   - python-gtk-doc 
   - python-gunicorn-doc 
@@ -22568,11 +22576,13 @@ unsorted:
   - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-typeshed 
+  - python-xml 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
   - python2-pip 
+  - python2-pycairo 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-setuptools 
@@ -22911,6 +22921,7 @@ unsorted:
   - python310-DataShape 
   - python310-DateTime 
   - python310-Delorean 
+  - python310-Deprecated 
   - python310-Django 
   - python310-Dumper 
   - python310-Durus 
@@ -26075,6 +26086,7 @@ unsorted:
   - python310-wmctrl 
   - python310-wolframalpha 
   - python310-wptools 
+  - python310-wrapt 
   - python310-ws4py 
   - python310-wsaccel 
   - python310-wsgi_intercept 
