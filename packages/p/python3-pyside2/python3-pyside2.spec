@@ -22,7 +22,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           python3-pyside2
-Version:        5.15.8
+Version:        5.15.9
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -30,9 +30,8 @@ Summary:        Python bindings for Qt
 # pyside2-tools is GPL-2.0-only
 # shiboken2 contains files under GPL-3.0-only WITH Qt-GPL-exception-1.0
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
-Group:          Development/Languages/Python
-URL:            http://wiki.qt.io/Qt_for_Python
-Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-%{version}-src/pyside-setup-opensource-src-%{version}.tar.xz
+URL:            https://wiki.qt.io/Qt_for_Python
+Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.9-src/pyside-setup-opensource-src-5.15.9-1.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM
@@ -41,8 +40,6 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Backport-Fix-GLES-builds.patch
-# PATCH-FIX-UPSTREAM PYSIDE-1775
-Patch4:         0001-Fix-build-with-Python-3.10.patch
 # Provide the PyPI names
 Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}
@@ -126,7 +123,6 @@ application and UI framework.
 %package devel
 Summary:        Header Files for PySide2
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 
 %description devel
@@ -136,7 +132,6 @@ for Qt.
 %package examples
 Summary:        Examples for using PySide2
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -144,7 +139,7 @@ BuildArch:      noarch
 Examples and Tutorials for the PySide2 bindings for Qt.
 
 %prep
-%autosetup -p1 -n pyside-setup-opensource-src-%{version}
+%autosetup -p1 -n pyside-setup-opensource-src-5.15.9
 
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
@@ -246,8 +241,7 @@ pushd build/sources/pyside2
 popd
 %endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LICENSE.*
