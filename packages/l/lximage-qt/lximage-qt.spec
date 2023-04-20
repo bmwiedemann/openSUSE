@@ -1,7 +1,7 @@
 #
 # spec file for package lximage-qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5WindowSystem)
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libfm-qt) >= %{version}
-BuildRequires:  pkgconfig(lxqt)
+BuildRequires:  pkgconfig(lxqt) >= %{version}
 BuildRequires:  pkgconfig(xfixes)
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils
