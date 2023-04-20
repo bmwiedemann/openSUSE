@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230419" schemaversion="4.1">
+<image name="OBS__openSUSE___20230420" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230419</productvar>
+      <productvar name="VERSION">20230420</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230419,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230420,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230419/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230420/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -556,7 +556,6 @@
       <repopackage name="ghostscript-x11"/>
       <repopackage name="gimp"/>
       <repopackage name="gimp-plugin-aa"/>
-      <repopackage name="gimp-plugins-python"/>
       <repopackage name="gimp-ufraw"/>
       <repopackage name="gio-branding-openSUSE"/>
       <repopackage name="girepository-1_0"/>
@@ -1584,7 +1583,6 @@
       <repopackage name="libgirepository-1_0-1"/>
       <repopackage name="libgit2-1_6"/>
       <repopackage name="libgjs0"/>
-      <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgle3"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1"/>
@@ -2201,7 +2199,6 @@
       <repopackage name="libopenobex2"/>
       <repopackage name="libopenraw9"/>
       <repopackage name="libopenssl1_1"/>
-      <repopackage name="libopenssl1_1-hmac"/>
       <repopackage name="libopenssl3"/>
       <repopackage name="libopenssl3-32bit"/>
       <repopackage name="libopenssl3-hmac"/>
@@ -2327,7 +2324,6 @@
       <repopackage name="libpwquality-lang"/>
       <repopackage name="libpwquality1"/>
       <repopackage name="libpwquality1-32bit"/>
-      <repopackage name="libpython2_7-1_0"/>
       <repopackage name="libpython3_10-1_0"/>
       <repopackage name="libqaccessibilityclient-qt5-0"/>
       <repopackage name="libqalculate22"/>
@@ -2544,7 +2540,7 @@
       <repopackage name="libsmbios-lang"/>
       <repopackage name="libsmbios_c2"/>
       <repopackage name="libsmputils1-1"/>
-      <repopackage name="libsnapper6"/>
+      <repopackage name="libsnapper7"/>
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
       <repopackage name="libsnmp40"/>
@@ -3512,12 +3508,6 @@
       <repopackage name="purpose"/>
       <repopackage name="purpose-lang"/>
       <repopackage name="pwgen"/>
-      <repopackage name="python"/>
-      <repopackage name="python-base"/>
-      <repopackage name="python-gobject2"/>
-      <repopackage name="python-gtk"/>
-      <repopackage name="python-xml"/>
-      <repopackage name="python2-pycairo"/>
       <repopackage name="python3-apparmor"/>
       <repopackage name="python3-audit"/>
       <repopackage name="python3-brlapi"/>

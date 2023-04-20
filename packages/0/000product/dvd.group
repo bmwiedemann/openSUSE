@@ -561,7 +561,6 @@
     <package name="ghostscript-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-plugin-aa" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="gimp-plugins-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-ufraw" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1903,7 +1902,6 @@
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgit2-1_6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libglade-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2328,8 +2326,7 @@
     <package name="libopenmpt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenobex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libopenraw9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libopenssl1_1-hmac" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenssl3-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopenssl3-hmac" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2454,7 +2451,6 @@
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libpython2_7-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpython3_10-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libqaccessibilityclient-qt5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqalculate22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2585,7 +2581,7 @@
     <package name="libsmbios-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmbios_c2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsmputils1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libsnapper6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libsnapper7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsndfile1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsnmp40" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3464,12 +3460,6 @@
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="purpose-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pwgen" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python-xml" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python2-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python3-brlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
