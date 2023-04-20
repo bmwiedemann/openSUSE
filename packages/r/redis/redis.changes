@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Apr 17 17:14:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- redis 7.0.11
+  - (CVE-2023-28856) Authenticated users can use the HINCRBYFLOAT
+    command to create an invalid hash field that will crash Redis
+    on access (boo#1210548)
+  - Add a missing fsync of AOF file in rare cases
+  - Disconnect pub-sub subscribers when revoking allchannels
+    permission
+  - Fix a compiler fortification induced crash when used with link
+    time optimizations
+- Drop get-old-size-calculations.patch:
+  replaced with proper fix
+
+-------------------------------------------------------------------
+Fri Mar 24 19:18:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added get-old-size-calculations.patch:
+  my workaround for https://github.com/redis/redis/issues/11965
+
+-------------------------------------------------------------------
+Mon Mar 20 21:22:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 7.0.10
+  * CVE-2023-28425: Specially crafted MSETNX command can lead to
+    assertion and denial-of-service (boo#1209528)
+  * Large blocks of replica client output buffer may lead to psync
+    loops and unnecessary memory usage
+  * Fix CLIENT REPLY OFF|SKIP to not silence push notifications
+  * Trim excessive memory usage in stream nodes when exceeding
+    `stream-node-max-bytes`
+  * Fix module RM_Call commands failing with OOM when maxmemory is
+    changed to zero
+
+-------------------------------------------------------------------
+Mon Mar 20 21:16:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 7.0.9
+  * CVE-2023-25155: Specially crafted SRANDMEMBER, ZRANDMEMBER, and
+    HRANDFIELD commands can trigger an integer overflow, resulting
+    in a runtime assertion and termination of the Redis server
+    process. Previously patched, drop
+    Integer-Overflow-in-RAND-commands-can-lead-to-assert.patch
+  * CVE-2022-36021: String matching commands (like SCAN or KEYS)
+    with a specially crafted pattern to trigger a denial-of-service
+    attack on Redis, causing it to hang and consume 100% CPU time.
+    Previously upatched, drop 
+    String-pattern-matching-had-exponential-time-complex.patch
+  * Fix a crash when reaching the maximum invalidations limit of
+    client-side tracking
+  * Fix a crash when SPUBLISH is used after passing the
+    cluster-link-sendbuf-limit
+  * Fix possible memory corruption in FLUSHALL when a client
+    watches more than one key
+  * Fix cluster inbound link keepalive time
+  * Flush propagation list in active-expire of writable replicas to
+    fix an assertion
+  * Avoid propagating DEL of lazy expire from SCAN and RANDOMKEY as
+    MULTI-EXEC
+  * Avoid realloc to reduce size of strings when it is unneeded
+  * Improve CLUSTER SLOTS reply efficiency for non-continuous slots
+
+-------------------------------------------------------------------
 Wed Mar  1 16:29:28 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix CVE-2022-36021 (bsc#1208790 CVE-2022-36021)
