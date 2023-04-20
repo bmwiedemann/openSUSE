@@ -109,7 +109,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  lcov
 %endif
 Requires:       diffutils
-Requires:       libsnapper6 = %version
+Requires:       libsnapper7 = %version
 Requires:       systemd
 %if 0%{?suse_version}
 Recommends:     logrotate
@@ -239,7 +239,7 @@ test -f /etc/logrotate.d/snapper.rpmsave && mv -v /etc/logrotate.d/snapper.rpmsa
 %{_datadir}/bash-completion
 %{_datadir}/zsh
 
-%package -n libsnapper6
+%package -n libsnapper7
 Summary:        Library for filesystem snapshot management
 Group:          System/Libraries
 Requires:       util-linux
@@ -247,12 +247,12 @@ Requires:       util-linux
 PreReq:         %fillup_prereq
 %endif
 # expands to Obsoletes: libsnapper1 libsnapper2 libsnapper3...
-Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((6 - 1))`)
+Obsoletes:      %(echo `seq -s " " -f "libsnapper%.f" $((7 - 1))`)
 
-%description -n libsnapper6
+%description -n libsnapper7
 This package contains libsnapper, a library for filesystem snapshot management.
 
-%files -n libsnapper6
+%files -n libsnapper7
 %license %{_defaultdocdir}/snapper/COPYING
 %doc %dir %{_defaultdocdir}/snapper
 %doc %{_defaultdocdir}/snapper/AUTHORS
@@ -270,25 +270,25 @@ This package contains libsnapper, a library for filesystem snapshot management.
 %config(noreplace) %{_sysconfdir}/sysconfig/snapper
 %endif
 
-%pre -n libsnapper6
+%pre -n libsnapper7
 # Migration from /etc/snapper to /usr/share/snapper
 for i in config-templates/default filters/base.txt filters/lvm.txt filters/x11.txt ; do
     test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i}.rpmsave.old ||:
 done
 
-%posttrans -n libsnapper6
+%posttrans -n libsnapper7
 # Migration from /etc/snapper to /usr/share/snapper
 for i in config-templates/default filters/base.txt filters/lvm.txt filters/x11.txt ; do
     test -f /etc/snapper/${i}.rpmsave && mv -v /etc/snapper/${i}.rpmsave /etc/snapper/${i} ||:
 done
 
-%post -n libsnapper6
+%post -n libsnapper7
 /sbin/ldconfig
 %if 0%{?suse_version}
 %{fillup_only -n snapper}
 %endif
 
-%postun -n libsnapper6 -p /sbin/ldconfig
+%postun -n libsnapper7 -p /sbin/ldconfig
 
 %package -n libsnapper-devel
 %if 0%{?suse_version}
@@ -298,7 +298,7 @@ Requires:       boost-devel
 %endif
 Requires:       gcc-c++
 Requires:       libacl-devel
-Requires:       libsnapper6 = %version
+Requires:       libsnapper7 = %version
 Requires:       libstdc++-devel
 Requires:       libxml2-devel
 %if 0%{?suse_version}
