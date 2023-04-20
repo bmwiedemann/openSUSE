@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-powermanagement
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  lxqt-globalkeys-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5IdleTime)
