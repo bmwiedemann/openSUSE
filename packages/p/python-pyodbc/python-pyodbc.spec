@@ -17,15 +17,13 @@
 
 
 Name:           python-pyodbc
-Version:        4.0.35
+Version:        4.0.39
 Release:        0
 Summary:        Python ODBC API
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mkleehammer/pyodbc
 Source:         https://files.pythonhosted.org/packages/source/p/pyodbc/pyodbc-%{version}.tar.gz
-# PATCH-FIX-INSTALL-LOCATION-UPSTREAM fix_install_location_of_pyodbc.pyi.patch -- based on PR 1146
-Patch1:         fix_install_location_of_pyodbc.pyi.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  gcc-c++
@@ -44,7 +42,6 @@ even more.
 
 %prep
 %setup -q -n pyodbc-%{version}
-%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"

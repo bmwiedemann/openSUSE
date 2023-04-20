@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 17 19:00:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.39:
+  * Version 4.0.38 had a serious bug in Row.__repr__ which could
+    cause crashes (#1196 ).
+  * Version 5.0 is on its way and will drop support for Python 2.
+    This release is a (hopefully final) bug fix release for
+    the 4.x line.
+  * added typing for Connection, Cursor, and connect parameters.
+  * corrected the install location of the pyi file.
+  * fixed Unicode errors in repr(row)
+  * fixed more typing related issues by removing TypeAlias
+  * arturxedex128 opened a security advisory for a buffer
+    overflow if selecting a decimal more
+  * than 100 digits long.  Fixed by Michael Kleehammer.
+- drop fix_install_location_of_pyodbc.pyi.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Feb  7 20:20:18 UTC 2023 - Dirk Hartmann <2monex@gmx.net>
 
 - Update to version 4.0.35

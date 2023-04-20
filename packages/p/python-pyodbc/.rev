@@ -102,4 +102,25 @@
   * fix_install_location_of_pyodbc.pyi.patch</comment>
     <requestid>1063824</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>78ac0e983830dfaab294ff5f7d57520a</srcmd5>
+    <version>4.0.39</version>
+    <time>1682002141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.39:
+  * Version 4.0.38 had a serious bug in Row.__repr__ which could
+    cause crashes (#1196 ).
+  * Version 5.0 is on its way and will drop support for Python 2.
+    This release is a (hopefully final) bug fix release for
+    the 4.x line.
+  * added typing for Connection, Cursor, and connect parameters.
+  * corrected the install location of the pyi file.
+  * fixed Unicode errors in repr(row)
+  * fixed more typing related issues by removing TypeAlias
+  * arturxedex128 opened a security advisory for a buffer
+    overflow if selecting a decimal more
+  * than 100 digits long.  Fixed by Michael Kleehammer.
+- drop fix_install_location_of_pyodbc.pyi.patch (upstream)</comment>
+    <requestid>1079995</requestid>
+  </revision>
 </revisionlist>
