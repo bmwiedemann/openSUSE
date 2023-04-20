@@ -18,7 +18,7 @@
 
 %define cpan_name Sereal-Decoder
 Name:           perl-Sereal-Decoder
-Version:        5.003
+Version:        5.004
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (decoder part)
