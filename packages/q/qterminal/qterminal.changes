@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 15 18:27:32 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0:
+  * Guaranteed correct positioning of the context menu under
+    Wayland.
+  * Fixed a crash in the dropdown mode under Wayland.
+  * Improved UX by opening new terminals in current directory by
+    default.
+  * Corrected typos and the meta-info license.
+
+
+-------------------------------------------------------------------
 Sat Nov  5 18:48:03 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

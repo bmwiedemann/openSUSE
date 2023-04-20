@@ -1,7 +1,7 @@
 #
 # spec file for package qterminal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.10.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  qtermwidget-qt5-devel >= %{version}
 BuildRequires:  utf8proc-devel
