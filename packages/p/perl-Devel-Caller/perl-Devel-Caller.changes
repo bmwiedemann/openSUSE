@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 12 03:07:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.07
+   see /usr/share/doc/packages/perl-Devel-Caller/Changes
+
+  2.07 Tuesday 11th April, 2023
+          Fix compatibility with bleadperl https://rt.cpan.org/Public/Bug/Display.html?id=144051
+          Small Pod and Distribution cleanups contributed by Tom Hukins based on other rt.cpan tickets https://github.com/richardc/perl-devel-caller/pull/1
+
+-------------------------------------------------------------------
 Tue Jun  4 08:17:41 UTC 2013 - coolo@suse.com
 
 - updated to 2.06

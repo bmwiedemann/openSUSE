@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Caller
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Devel-Caller
-Version:        2.06
-Release:        0
 %define cpan_name Devel-Caller
-Summary:        meatier versions of C<caller>
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Devel-Caller/
-Source:         http://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:           perl-Devel-Caller
+Version:        2.07
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Meatier versions of caller
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(PadWalker) >= 0.08
@@ -35,36 +33,36 @@ Requires:       perl(PadWalker) >= 0.08
 %description
 * caller_cv($level)
 
-  'caller_cv' gives you the coderef of the subroutine being invoked at the
-  call frame indicated by the value of $level
+'caller_cv' gives you the coderef of the subroutine being invoked at the
+call frame indicated by the value of $level
 
 * caller_args($level)
 
-  Returns the arguments passed into the caller at level $level
+Returns the arguments passed into the caller at level $level
 
 * caller_vars( $level, $names )
   =item called_with($level, $names)
 
-  'called_with' returns a list of references to the original arguments to
-  the subroutine at $level. if $names is true, the names of the variables
-  will be returned instead
+'called_with' returns a list of references to the original arguments to the
+subroutine at $level. if $names is true, the names of the variables will be
+returned instead
 
-  constants are returned as 'undef' in both cases
+constants are returned as 'undef' in both cases
 
 * called_as_method($level)
 
-  'called_as_method' returns true if the subroutine at $level was called as
-  a method.
+'called_as_method' returns true if the subroutine at $level was called as a
+method.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -72,7 +70,6 @@ Requires:       perl(PadWalker) >= 0.08
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes
 
 %changelog
