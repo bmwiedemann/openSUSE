@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Apr 18 03:15:56 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.6.1:
+  * The Web-based configuration for abbreviations has been removed,
+    as it was not functional with the changes abbreviations
+    introduced in 3.6.0.
+  * 'read' will now print an error if told to set a read-only
+    variable, instead of silently doing nothing.
+  * 'set_color -v' no longer crashes fish.
+  * Using fish_vi_key_bindings in combination with fish's
+    --no-config mode works without locking up the shell.
+  * The history pager now uses more screen space, usually half the
+    screen.
+  * Variables that were set while the locale was C (the default
+    ASCII-only locale) will now properly be encoded if the locale
+    is switched.
+  * Escape during history search restores the original command line
+    again.
+  * Using --help on builtins now respects the $MANPAGER variable,
+    in preference to $PAGER.
+  * The documentation for the ':', '[' and '.' builtin commands can
+    now be looked up with 'man'.
+  * fish no longer crashes when searching history for non-ASCII
+    codepoints case-insensitively.
+  * Themes that don't specify every color option can be installed
+    correctly in the Web-based configuration.
+  * Compatibility with Midnight Commander's prompt integration has
+    been improved.
+  * A spurious error, noted when using fish in Google Drive
+    directories under WSL 2, has been silenced.
+  * Using 'read' in 'fish_greeting' or similar functions will not
+    trigger an infinite loop.
+  * The git prompt will compute the stash count to be used
+    independently of the informative status.
+  * Added completions for: apkanalyzer, neovim, otool, pre-commit,
+    proxychains, scrypt, stow, trash and helper utilities
+    (trash-empty, trash-list, trash-put and trash-restore) and
+    ssh-copy-id.
+  * Improvements to many completions, including the speed of
+    completing directories in WSL 2.
+  * Completions using __fish_complete_suffix are now offered in
+    the correct order (regression).
+  * 'git' completions for 'git-foo'-style commands was restored
+    (regression).
+  * File completion now offers ../ and ./ again (regression).
+  * Improvements and corrections to the documentation.
+
+-------------------------------------------------------------------
 Tue Jan 17 11:23:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.6.0:

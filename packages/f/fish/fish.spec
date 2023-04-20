@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
@@ -56,7 +56,8 @@ This package contains development files for the fish shell.
 %autosetup -p1
 
 # fix E: env-script-interpreter
-find share/tools -type f -name *.py -exec sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
+find share/tools -type f -name *.py -exec \
+    sed -i -r '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} +
 
 %build
 %cmake \
