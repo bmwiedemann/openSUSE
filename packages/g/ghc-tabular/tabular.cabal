@@ -1,0 +1,60 @@
+name:                tabular
+version:             0.2.2.8
+x-revision: 1
+synopsis:            Two-dimensional data tables with rendering functions
+description:         Tabular provides a Haskell representation of two-dimensional
+                     data tables, the kind that you might find in a spreadsheet or
+                     or a research report.  It also comes with some default
+                     rendering functions for turning those tables into ASCII art,
+                     simple text with an arbitrary delimiter, CSV, HTML or LaTeX.
+                     .
+                     Below is an example of the kind of output this library produces.
+                     The tabular package can group rows and columns, each group
+                     having one of three separators (no line, single line, double line)
+                     between its members.
+                     .
+                     >     || memtest 1 | memtest 2 ||  time test  | time test 2
+                     > ====++===========+===========++=============+============
+                     > A 1 ||       hog |  terrible ||        slow |      slower
+                     > A 2 ||       pig |   not bad ||        fast |     slowest
+                     > ----++-----------+-----------++-------------+------------
+                     > B 1 ||      good |     awful || intolerable |    bearable
+                     > B 2 ||    better | no chance ||    crawling |     amazing
+                     > B 3 ||       meh |   well... ||  worst ever |          ok
+category:            Text
+license:             BSD3
+license-file:        LICENSE
+author:              Eric Kow
+maintainer:          Ben Gamari <bgamari@well-typed.com>
+homepage:            https://github.com/bgamari/tabular
+cabal-version:       1.18
+build-type:          Simple
+extra-doc-files:     example/sample1.hs,
+                     example/sample1.tex
+tested-with:         GHC==8.10.2,
+                     GHC==8.8.4,
+                     GHC==8.6.5,
+                     GHC==8.4.4,
+                     GHC==8.2.2,
+                     GHC==8.0.2,
+                     GHC==7.10.3,
+                     GHC==7.8.4,
+                     GHC==7.6.3
+
+
+source-repository head
+  type:     git
+  location: https://github.com/bgamari/tabular
+
+library
+  build-Depends:       base >= 2.1 && < 5,
+                       mtl >= 1 && < 2.4,
+                       csv  >= 0.1 && < 0.2,
+                       html >= 1.0 && < 2.0
+  exposed-modules:     Text.Tabular,
+                       Text.Tabular.AsciiArt,
+                       Text.Tabular.SimpleText,
+                       Text.Tabular.Csv,
+                       Text.Tabular.Html,
+                       Text.Tabular.Latex
+  default-language:    Haskell2010
