@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 18 08:24:30 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1681806256.6802f44:
+  * Replace Perl::Critic::{Freenode,Community}
+  * Add workaround to prevent `t/29-backend-generalhw.t` being unstable
+  * Cover all code of `console.pm`
+  * Fix CMake warning about ordering
+  * Drop Leap-15.3 from OBS CI
+
+-------------------------------------------------------------------
 Fri Apr 14 12:23:09 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1681474976.f647990:
