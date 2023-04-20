@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-lxqt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  cmake(KF5WindowSystem) >= 5.78
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= 1.1.0
+BuildRequires:  pkgconfig(libfm-qt) >= 1.3.0
 BuildRequires:  pkgconfig(xdg-desktop-portal)
 
 %description
