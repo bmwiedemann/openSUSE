@@ -1,0 +1,98 @@
+From 4746ab11be5a8558a54c21142800abaa30efc3a6 Mon Sep 17 00:00:00 2001
+From: Pablo Marquez Tello <pablo.tello@arm.com>
+Date: Fri, 31 Mar 2023 15:57:43 +0100
+Subject: [PATCH] Fix gcc 13 compiler errors
+
+* Resolves MLCE-1040
+
+Change-Id: I32878ed70af356832403e83dcb63b0b89a8a84e3
+Signed-off-by: Pablo Marquez Tello <pablo.tello@arm.com>
+---
+
+diff --git a/include/armnn/utility/TransformIterator.hpp b/include/armnn/utility/TransformIterator.hpp
+index f65ac79..b038447 100644
+--- a/include/armnn/utility/TransformIterator.hpp
++++ b/include/armnn/utility/TransformIterator.hpp
+@@ -1,5 +1,5 @@
+ //
+-// Copyright © 2020 Arm Ltd and Contributors. All rights reserved.
++// Copyright © 2020,2023 Arm Ltd and Contributors. All rights reserved.
+ // SPDX-License-Identifier: MIT
+ //
+ #pragma once
+@@ -18,10 +18,15 @@
+         typename Reference =
+         typename std::result_of<const Function(typename std::iterator_traits<Iterator>::reference)>::type
+ >
+-class TransformIterator : public std::iterator<Category, T, Distance, Pointer, Reference>
++class TransformIterator
+ {
+-
+ public:
++    using iterator_category = Category;
++    using value_type = T;
++    using difference_type = Distance;
++    using pointer = Pointer;
++    using reference = Reference;
++
+ 
+     TransformIterator() = default;
+     TransformIterator(TransformIterator const& transformIterator) = default;
+@@ -83,4 +88,4 @@
+     return TransformIterator<Function, Iterator>(i, f);
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/profiling/client/include/CounterIdMap.hpp b/profiling/client/include/CounterIdMap.hpp
+index cce7184..45cad7b 100644
+--- a/profiling/client/include/CounterIdMap.hpp
++++ b/profiling/client/include/CounterIdMap.hpp
+@@ -1,9 +1,10 @@
+ //
+-// Copyright © 2020 Arm Ltd. All rights reserved.
++// Copyright © 2020,2023 Arm Ltd and Contributors. All rights reserved.
+ // SPDX-License-Identifier: MIT
+ //
+ #pragma once
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ 
+diff --git a/profiling/common/include/Counter.hpp b/profiling/common/include/Counter.hpp
+index ff96d25..4ddc89b 100644
+--- a/profiling/common/include/Counter.hpp
++++ b/profiling/common/include/Counter.hpp
+@@ -1,10 +1,11 @@
+ //
+-// Copyright © 2022 Arm Ltd. All rights reserved.
++// Copyright © 2022,2023 Arm Ltd and Contributors. All rights reserved.
+ // SPDX-License-Identifier: MIT
+ //
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace arm
+diff --git a/src/armnnUtils/VerificationHelpers.hpp b/src/armnnUtils/VerificationHelpers.hpp
+index be09ba9..508cdc0 100644
+--- a/src/armnnUtils/VerificationHelpers.hpp
++++ b/src/armnnUtils/VerificationHelpers.hpp
+@@ -1,11 +1,11 @@
+ //
+-// Copyright © 2017 Arm Ltd. All rights reserved.
++// Copyright © 2017,2023 Arm Ltd and Contributors. All rights reserved.
+ // SPDX-License-Identifier: MIT
+ //
+ 
+ #include <iostream>
+ #include <sstream>
+-
++#include <cstdint>
+ #include <armnn/Exceptions.hpp>
+ 
+ namespace armnnUtils

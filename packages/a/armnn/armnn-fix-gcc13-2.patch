@@ -1,0 +1,10 @@
+--- ./profiling/client/include/Holder.hpp.orig	2023-03-21 14:36:13.377591628 +0100
++++ ./profiling/client/include/Holder.hpp	2023-03-21 14:36:31.325798921 +0100
+@@ -8,6 +8,7 @@
+ #include <mutex>
+ #include <vector>
+ #include <set>
++#include <string>
+ 
+ namespace arm
+ {
