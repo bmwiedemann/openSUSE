@@ -152,4 +152,25 @@
   * Fix encoding of None (#118)</comment>
     <requestid>1064219</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b371ee087564e103e23aca9bfd23e55f</srcmd5>
+    <version>2.10.3</version>
+    <time>1681996419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.3:
+  * Support for redis-py 5.0.0b1
+  * Include tests in sdist (#133)
+  * Fix import used in GenericCommandsMixin.randomkey (#135)
+  * Fix async_timeout usage on py3.11 (#132)
+  * Enable testing django-cache using FakeConnection.
+  * All geo commands implemented
+  * Fix bug for xrange
+  * Fix bug for xrevrange
+  * Implement XTRIM
+  * Add support for MAXLEN, MAXID, LIMIT arguments for XADD command
+  * Add support for ZRANGE arguments for ZRANGE command #127
+  * Relax python version requirement #128
+  * Support for redis-py 4.5.0 #125</comment>
+    <requestid>1080252</requestid>
+  </revision>
 </revisionlist>

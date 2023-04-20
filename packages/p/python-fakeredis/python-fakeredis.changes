@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 19 07:46:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.10.3:
+  * Support for redis-py 5.0.0b1
+  * Include tests in sdist (#133)
+  * Fix import used in GenericCommandsMixin.randomkey (#135)
+  * Fix async_timeout usage on py3.11 (#132)
+  * Enable testing django-cache using FakeConnection.
+  * All geo commands implemented
+  * Fix bug for xrange
+  * Fix bug for xrevrange
+  * Implement XTRIM
+  * Add support for MAXLEN, MAXID, LIMIT arguments for XADD command
+  * Add support for ZRANGE arguments for ZRANGE command #127
+  * Relax python version requirement #128
+  * Support for redis-py 4.5.0 #125 
+
+-------------------------------------------------------------------
 Fri Feb 10 10:40:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.1:
