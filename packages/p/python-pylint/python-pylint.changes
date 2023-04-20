@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 17 19:33:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.2:
+  * invalid-name now allows for integers in typealias
+    names: 
+    * now valid: Good2Name, GoodName2.
+    * still invalid: _1BadName.
+  * No longer consider Union as type annotation as type alias
+    for naming checks.
+  * unnecessary-lambda no longer warns on lambdas which use
+    its parameters in their body (other than the final arguments),
+    e.g. lambda foo: (bar if foo else baz)(foo).
+  * Fix a crash in pyreverse when "/" characters are used in the
+    output filename e.g pyreverse -o png -p name/ path/to/project.
+  * Add new option (--show-stdlib, -L) to pyreverse.
+  * This is similar to the behavior of --show-builtin in that
+    standard library modules are now not included by default,
+    and this option will include them.
+  * Adds asyncSetUp to the default defining-attr-methods
+    list to silence
+    * attribute-defined-outside-init warning when using
+    * unittest.IsolatedAsyncioTestCase.
+  * invalid-name now allows for integers in typealias
+    names:
+    * now valid: Good2Name, GoodName2.
+    * still invalid: _1BadName.
+  * No longer consider Union as type annotation as type alias
+    for naming checks.
+  * unnecessary-lambda no longer warns on lambdas which use
+    its parameters in their body (other than the final arguments),
+    e.g. lambda foo: (bar if foo else baz)(foo).
+  * --clear-cache-post-run now also clears LRU caches for
+    pylint utilities holding references to AST nodes.
+  * Fix a crash when TYPE_CHECKING is used without importing
+    it.
+  * Fix a used-before-assignment false positive when imports
+    are made under the TYPE_CHECKING else if branch.
+  * Fix a regression of preferred-modules where a partial
+    match was used instead of the required full match.
+- drop pylint-pr7367-pythonpathtest.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jan  9 11:54:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.15.10:

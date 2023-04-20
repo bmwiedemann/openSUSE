@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           python-pylint
-Version:        2.15.10
+Version:        2.17.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
 # Tests are no longer packaged in the PyPI sdist, use GitHub archive
 Source:         https://github.com/PyCQA/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM gh#PyCQA/pylint#7367
-Patch0:         pylint-pr7367-pythonpathtest.patch
 BuildRequires:  %{python_module base >= 3.7.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -37,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.6
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 2.12.13 with python-astroid < 2.14.0~dev0)
+Requires:       (python-astroid >= 2.15.2 with python-astroid < 2.17.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 6)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
@@ -48,7 +46,7 @@ Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 2.12.13 with %python-astroid < 2.14.0~dev0}
+BuildRequires:  %{python_module astroid >= 2.15.2 with %python-astroid < 2.17.0~dev0}
 BuildRequires:  %{python_module dill >= 0.3.6}
 BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
