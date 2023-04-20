@@ -697,4 +697,26 @@
 </comment>
     <requestid>1079305</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7c8fea062090f5e136c4826d426abb4e</srcmd5>
+    <version>1.32.5</version>
+    <time>1681996478</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.32.5:
+  * feat(UNSTABLE/kv): AtomicOperation#sum (#18704)
+  * fix(core): Use safe primordials wrappers (#18687)
+  * fix(ext/node): add req.socket.remoteAddress (#18733)
+  * fix(ext/node): implement crypto.createVerify (#18703)
+  * fix(ext/node): polyfill response._implicitHeader method (#18738)
+  * fix(ext/websocket): Avoid write deadlock that requires read_frame to complete
+    (#18705)
+  * fix(lsp): ensure language server status works on unix (#18727)
+  * fix(npm): eagerly reload package information when version from lockfile not
+    found locally (#18673)
+  * fix(path): Remove non node symbols (#18630)
+  * fix(test): add process sigint handler for --watch (#18678)
+  * perf(ext/websocket): make op_server_ws_next_event deferred (#18632)
+</comment>
+    <requestid>1080412</requestid>
+  </revision>
 </revisionlist>

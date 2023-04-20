@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 19 17:56:40 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org
+
+- update to 1.32.5:
+  * feat(UNSTABLE/kv): AtomicOperation#sum (#18704)
+  * fix(core): Use safe primordials wrappers (#18687)
+  * fix(ext/node): add req.socket.remoteAddress (#18733)
+  * fix(ext/node): implement crypto.createVerify (#18703)
+  * fix(ext/node): polyfill response._implicitHeader method (#18738)
+  * fix(ext/websocket): Avoid write deadlock that requires read_frame to complete
+    (#18705)
+  * fix(lsp): ensure language server status works on unix (#18727)
+  * fix(npm): eagerly reload package information when version from lockfile not
+    found locally (#18673)
+  * fix(path): Remove non node symbols (#18630)
+  * fix(test): add process sigint handler for --watch (#18678)
+  * perf(ext/websocket): make op_server_ws_next_event deferred (#18632)
+
+-------------------------------------------------------------------
 Thu Apr 13 21:58:41 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 1.32.4:
