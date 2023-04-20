@@ -156,4 +156,17 @@
   * stdint.h header is needed for SIZE_MAX</comment>
     <requestid>1036197</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>10d51e4ea7f25aa83f57357c3b6c0102</srcmd5>
+    <version>2.3.8</version>
+    <time>1681996413</time>
+    <user>dimstar_suse</user>
+    <comment>- Updat to version 2.3.8
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * add check for missing glyph in XftFontCheckGlyph()
+  * issue 17: libxft-2.3.7: Bold fonts in urxvt missing leftmost pixels
+  * issue 18: Problems with rotated text (monospace font only)</comment>
+    <requestid>1080113</requestid>
+  </revision>
 </revisionlist>

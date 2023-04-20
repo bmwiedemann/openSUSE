@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 18 11:23:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Updat to version 2.3.8
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * add check for missing glyph in XftFontCheckGlyph()
+  * issue 17: libxft-2.3.7: Bold fonts in urxvt missing leftmost pixels
+  * issue 18: Problems with rotated text (monospace font only)
+
+-------------------------------------------------------------------
 Wed Nov 16 10:18:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.3.7
