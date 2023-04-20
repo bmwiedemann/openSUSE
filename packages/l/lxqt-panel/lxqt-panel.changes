@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 15 19:00:30 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0:
+  * Small problems are fixed in the seconds shown by the clock
+    widget
+  * DOM plugin is enabled by default
+  * Some code cleanup
+
+-------------------------------------------------------------------
 Mon Jan  2 13:20:07 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.1:

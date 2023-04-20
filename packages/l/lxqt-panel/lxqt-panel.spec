@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Solid) >= 5.36.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
@@ -45,8 +45,8 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= 1.1.0
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= 1.1.0
+BuildRequires:  pkgconfig(lxqt) >= %{version}
+BuildRequires:  pkgconfig(lxqt-globalkeys) >= %{version}
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(sysstat-qt5)
 BuildRequires:  pkgconfig(x11)
