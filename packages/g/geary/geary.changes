@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 19 08:56:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Fix-build-newer-vala.patch: client: Add missing
+  type-arguments for interfaces. vala-unit: Fix non-null build
+  with newer vala.
+
+-------------------------------------------------------------------
 Thu Mar 16 11:24:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add Support-GNOME-42-dark-theme-preference.patch: Support GNOME

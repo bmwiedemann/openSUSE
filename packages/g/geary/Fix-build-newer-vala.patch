@@ -1,0 +1,184 @@
+Index: geary-43.0/src/client/accounts/accounts-editor-row.vala
+===================================================================
+--- geary-43.0.orig/src/client/accounts/accounts-editor-row.vala
++++ geary-43.0/src/client/accounts/accounts-editor-row.vala
+@@ -385,7 +385,7 @@ private abstract class Accounts.ServiceR
+ 
+ 
+ /** Interface for rows that use a validator for editable values. */
+-internal interface Accounts.ValidatingRow : EditorRow {
++internal interface Accounts.ValidatingRow<PaneType> : EditorRow<PaneType> {
+ 
+ 
+     /** The row's validator */
+Index: geary-43.0/src/client/accounts/accounts-editor-servers-pane.vala
+===================================================================
+--- geary-43.0.orig/src/client/accounts/accounts-editor-servers-pane.vala
++++ geary-43.0/src/client/accounts/accounts-editor-servers-pane.vala
+@@ -694,7 +694,7 @@ private class Accounts.SaveSentRow :
+ 
+ 
+ private class Accounts.ServiceHostRow :
+-    ServiceRow<EditorServersPane,Gtk.Entry>, ValidatingRow {
++    ServiceRow<EditorServersPane,Gtk.Entry>, ValidatingRow<EditorServersPane> {
+ 
+ 
+     public Components.Validator validator {
+@@ -848,7 +848,7 @@ private class Accounts.ServiceSecurityRo
+ 
+ 
+ private class Accounts.ServiceLoginRow :
+-    ServiceRow<EditorServersPane,Gtk.Entry>, ValidatingRow {
++    ServiceRow<EditorServersPane,Gtk.Entry>, ValidatingRow<EditorServersPane> {
+ 
+ 
+     public Components.Validator validator {
+@@ -972,7 +972,7 @@ private class Accounts.ServiceLoginRow :
+ 
+ 
+ private class Accounts.ServicePasswordRow :
+-    ServiceRow<EditorServersPane,Gtk.Entry>, ValidatingRow {
++    ServiceRow<EditorServersPane,Gtk.Entry>, ValidatingRow<EditorServersPane> {
+ 
+ 
+     public Components.Validator validator {
+Index: geary-43.0/subprojects/vala-unit/src/collection-assertions.vala
+===================================================================
+--- geary-43.0.orig/subprojects/vala-unit/src/collection-assertions.vala
++++ geary-43.0/subprojects/vala-unit/src/collection-assertions.vala
+@@ -256,7 +256,7 @@ internal class ValaUnit.ArrayCollectionA
+ 
+     public CollectionAssertions<E> contains(E expected)
+         throws GLib.Error {
+-        E boxed_expected = box_value(expected);
++        E? boxed_expected = box_value(expected);
+         bool found = false;
+         for (int i = 0; i < this.actual.length; i++) {
+             try {
+@@ -281,7 +281,7 @@ internal class ValaUnit.ArrayCollectionA
+ 
+     public CollectionAssertions<E> not_contains(E expected)
+         throws GLib.Error {
+-        E boxed_expected = box_value(expected);
++        E? boxed_expected = box_value(expected);
+         for (int i = 0; i < this.actual.length; i++) {
+             try {
+                 assert_equal(box_value(this.actual[i]), boxed_expected);
+@@ -312,8 +312,8 @@ internal class ValaUnit.ArrayCollectionA
+                 this.context
+             );
+         }
+-        E boxed_actual = box_value(this.actual[index]);
+-        E boxed_expected = box_value(expected);
++        E? boxed_actual = box_value(this.actual[index]);
++        E? boxed_expected = box_value(expected);
+         try {
+             assert_equal(boxed_actual, boxed_expected);
+         } catch (TestError.FAILED err) {
+@@ -453,8 +453,8 @@ internal class ValaUnit.GeeCollectionAss
+         for (int i = 0; i <= index; i++) {
+             iterator.next();
+         }
+-        E boxed_actual = box_value(iterator.get());
+-        E boxed_expected = box_value(expected);
++        E? boxed_actual = box_value(iterator.get());
++        E? boxed_expected = box_value(expected);
+         try {
+             assert_equal(boxed_actual, boxed_expected);
+         } catch (TestError.FAILED err) {
+Index: geary-43.0/subprojects/vala-unit/src/mock-object.vala
+===================================================================
+--- geary-43.0.orig/subprojects/vala-unit/src/mock-object.vala
++++ geary-43.0/subprojects/vala-unit/src/mock-object.vala
+@@ -138,7 +138,7 @@ public interface ValaUnit.MockObject : G
+         throws GLib.Error {
+         assert_false(this.expected.is_empty, "Unexpected call: %s".printf(name));
+ 
+-        ExpectedCall expected = this.expected.poll();
++        ExpectedCall expected = (!) this.expected.poll();
+         assert_equal(name, expected.name, "Unexpected call");
+         if (expected.expected_args != null) {
+             assert_args(args, expected.expected_args, "Call %s".printf(name));
+@@ -229,7 +229,7 @@ public interface ValaUnit.MockObject : G
+                                           R default_return)
+         throws GLib.Error {
+         check_for_exception(expected);
+-        R? return_object = default_return;
++        R return_object = default_return;
+         if (expected.return_object != null) {
+             return_object = (R) expected.return_object;
+         }
+@@ -243,7 +243,7 @@ public interface ValaUnit.MockObject : G
+         if (expected.return_object == null) {
+             throw default_error;
+         }
+-        return expected.return_object;
++        return (!) expected.return_object;
+     }
+ 
+     private inline void check_for_exception(ExpectedCall expected)
+Index: geary-43.0/subprojects/vala-unit/src/test-assertions.vala
+===================================================================
+--- geary-43.0.orig/subprojects/vala-unit/src/test-assertions.vala
++++ geary-43.0/subprojects/vala-unit/src/test-assertions.vala
+@@ -21,8 +21,8 @@ namespace ValaUnit {
+ 
+     }
+ 
+-    internal inline void assert_equal<T>(T actual,
+-                                         T expected,
++    internal inline void assert_equal<T>(T? actual,
++                                         T? expected,
+                                          string? context = null)
+         throws TestError {
+         if ((actual == null && expected != null) ||
+@@ -107,9 +107,9 @@ namespace ValaUnit {
+      *
+      * This will only work when the values are not already boxed.
+      */
+-    internal T box_value<T>(T value) {
++    internal T? box_value<T>(T value) {
+         var type = typeof(T);
+-        T boxed = value;
++        T? boxed = value;
+ 
+         if (type == typeof(int) || type.is_enum()) {
+             int actual = (int) value;
+@@ -133,7 +133,7 @@ namespace ValaUnit {
+         return boxed;
+     }
+ 
+-    internal string to_display_string<T>(T value) {
++    internal string to_display_string<T>(T? value) {
+         var type = typeof(T);
+         var display = "";
+ 
+@@ -191,8 +191,8 @@ namespace ValaUnit {
+         );
+     }
+ 
+-    private void assert_equal_enum<T>(T actual,
+-                                      T expected,
++    private void assert_equal_enum<T>(T? actual,
++                                      T? expected,
+                                       string? context)
+         throws TestError {
+         int actual_val = (int) ((int?) actual);
+@@ -342,7 +342,7 @@ public interface ValaUnit.TestAssertions
+ 
+ 
+     /** Asserts a value is null */
+-    public void assert_non_null<T>(T actual, string? context = null)
++    public void assert_non_null<T>(T? actual, string? context = null)
+         throws TestError {
+         if (actual == null) {
+             ValaUnit.assert(
+@@ -353,7 +353,7 @@ public interface ValaUnit.TestAssertions
+     }
+ 
+     /** Asserts a value is null */
+-    public void assert_is_null<T>(T actual, string? context = null)
++    public void assert_is_null<T>(T? actual, string? context = null)
+         throws TestError {
+         if (actual != null) {
+             ValaUnit.assert(

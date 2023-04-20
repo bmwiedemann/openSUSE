@@ -30,6 +30,8 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         Support-GNOME-42-dark-theme-preference.patch
 # PATCH-FEATURE-OPENSUSE Support-dark-theme-webview.patch -- Support dark mode for email bodies
 Patch1:         Support-dark-theme-webview.patch
+# PATCH-FIX-UPSTREAM Fix-build-newer-vala.patch -- Fix build with newer vala
+Patch2:         Fix-build-newer-vala.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
