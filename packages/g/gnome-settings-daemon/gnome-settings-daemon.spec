@@ -30,7 +30,7 @@
 %define base_ver 44
 
 Name:           gnome-settings-daemon
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -142,15 +142,11 @@ contact the settings daemon via its DBus interface.
 
 %prep
 %autosetup -N
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1 -M 999
 
 # Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
 %if 0%{?sle_version} >= 150000
-%patch1000 -p1
-%patch1001 -p1
-%patch1002 -p1
+%autopatch -p1 -m 1000
 %endif
 
 %build

@@ -1447,4 +1447,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>New stable release (forwarded request 1073069 from iznogood)</comment>
     <requestid>1073215</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>4b5abfe1766584e4ff81b21d5213b5c0</srcmd5>
+    <version>44.1</version>
+    <time>1681996397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080196</requestid>
+  </revision>
 </revisionlist>

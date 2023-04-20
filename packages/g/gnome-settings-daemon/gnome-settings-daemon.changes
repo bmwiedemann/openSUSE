@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 18 14:40:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Build improvements
+  + Power:
+    - Connect to light sensor asynchronously
+    - Initialize check for VM environment earlier
+  + Rfkill: Monitor WwanEnabled property changes properly
+  + Smartcards: Check for the addition of new smartcard readers
+  + Xsettings: Do not force deprecated High Contrast icon theme
+  + Updated translations.
+- Use autopatch.
+
+-------------------------------------------------------------------
 Mon Mar 20 09:26:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
