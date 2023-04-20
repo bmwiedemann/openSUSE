@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 18 09:17:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.7:
+  + Various improvements and bug fixes:
+    - codegen: Fix usage of lambda-expression from delegate
+      initializer
+    - vala:
+      . Check type-argument count of interface prerequisites
+      . Improve Symbol.to_string() to include TypeParameters
+      . Improve error message for wrong number of type-arguments
+      . Improve check of type_reference in ObjectCreationExpression
+      . Allow inheritance from sealed class in bindings
+    - Fix a couple of type-argument issues in vala itself
+    - g-i: Fix compiling with mingw clang
+  + Bindings:
+    - gio-2.0,glib-2.0,gtk+-3.0,gtk4: Fix a few binding issues
+    - glib-2.0: g_chdir is declared in <glib/gstdio.h>
+
+-------------------------------------------------------------------
 Tue Apr  4 12:46:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.6:
