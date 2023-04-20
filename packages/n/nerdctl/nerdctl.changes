@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Apr 05 13:27:20 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.3.0:
+  * bump: buildkit to v0.11.3, fuse-overlayfs to v1.10, kubo to v0.18.1
+  * build(deps): bump golang.org/x/term from 0.6.0 to 0.7.0
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * build(deps): bump golang.org/x/sys from 0.6.0 to 0.7.0
+  * build(deps): bump github.com/ipfs/go-cid from 0.4.0 to 0.4.1
+  * pkg/mountutil: improve error messages
+  * use digest instead of a tag while signing
+  * Add manugupt1's GPG key
+  * build(deps): bump github.com/opencontainers/runc from 1.1.4 to 1.1.5
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/compose-spec/compose-go
+  * Support quiet in push cmd
+  * Refactor image sign and verify logic
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump actions/checkout from 3.4.0 to 3.5.0
+  * Fix nerdctl help show the hidden commands
+  * set container state error
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18
+  * rootlessutil: always claim non-rootless on non-Linux.
+  * Refactor run command networking options for Windows support.
+  * Fix the top command on Windows
+  * Add support for showing image size on inspect
+  * build(deps): bump github.com/ipfs/go-cid from 0.3.2 to 0.4.0
+  * Completely skip syslog-related tests on Windows.
+  * test: rootless: main: use v2 config
+  * Upgrade cosign to 2.0.0 in tests
+  * Add unit test for exposing devices to Windows containers
+  * Add MAINTAINERS_GUIDE.md
+  * build(deps): bump actions/checkout from 3.3.0 to 3.4.0
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump actions/setup-go from 3 to 4
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/klauspost/compress from 1.16.0 to 1.16.3
+  * build(deps): bump github.com/fatih/color from 1.14.1 to 1.15.0
+  * update containerd (1.7.0)
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/containerd/containerd
+  * build(deps): bump github.com/containerd/containerd
+  * Drop dependency on ctr/commands
+  * Drop dependency on ctr/commands/content
+  * Drop dependency on ctr/commands/tasks
+  * remote snapshotters: migrate to containerd-based label management
+  * build(deps): bump github.com/containerd/containerd
+  * Port Windows device support from containerd
+  * build(deps): bump golang.org/x/crypto from 0.6.0 to 0.7.0
+  * Add notation signing and verification
+  * build(deps): bump golang.org/x/net from 0.7.0 to 0.8.0
+  * handle container deps removal with postsop hooks
+  * build(deps): bump github.com/containerd/containerd
+  * Update naming of filter containers function && `container list` handler
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * Fix `operation not permitted` with systemd-homed
+  * build(deps): bump github.com/containerd/go-cni
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * feat: resolve special ip host-gateway
+  * cmd/compose: add support for profiles
+  * refactor(container-list): separate main logic out of printing logic
+
+-------------------------------------------------------------------
 Tue Feb 28 05:39:54 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.2.1:

@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           nerdctl
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Docker-compatible CLI for containerd
 License:        Apache-2.0
