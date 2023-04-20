@@ -33,7 +33,7 @@ Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{v
 Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.2.0
+BuildRequires:  extra-cmake-modules >= 5.102
 BuildRequires:  kf5-filesystem
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
@@ -41,24 +41,25 @@ BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Auth)
 BuildRequires:  cmake(KF5BluezQt)
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5NetworkManagerQt)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Screen) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5Wayland)
 #!BuildIgnore:  kwin5
 BuildRequires:  cmake(LibKWorkspace) >= %{_plasma5_version}
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.2
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.2
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-dpms)
