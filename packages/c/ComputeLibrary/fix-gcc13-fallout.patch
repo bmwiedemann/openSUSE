@@ -1,0 +1,358 @@
+From 732c1b218bd78bf13e37d0b6e541a2b3573b87a9 Mon Sep 17 00:00:00 2001
+From: Pablo Marquez Tello <pablo.tello@arm.com>
+Date: Wed, 29 Mar 2023 11:42:30 +0100
+Subject: [PATCH] Fix GCC13 compiler errors
+
+* Removed namespace arm_compute::utils::requires to fix the build error
+  ‘requires’ is a keyword in C++20 [-Wc++20-compat]
+
+* Added missing includes for cstdint.h
+
+* Resolves MLCE-1040
+
+Change-Id: I08842a273a4422f8e9b10daded680f521efe26e0
+Signed-off-by: Pablo Marquez Tello <pablo.tello@arm.com>
+Reviewed-on: https://review.mlplatform.org/c/ml/ComputeLibrary/+/9388
+Comments-Addressed: Arm Jenkins <bsgcomp@arm.com>
+Tested-by: Arm Jenkins <bsgcomp@arm.com>
+Reviewed-by: Viet-Hoa Do <viet-hoa.do@arm.com>
+Reviewed-by: Jakub Sujak <jakub.sujak@arm.com>
+Benchmark: Arm Jenkins <bsgcomp@arm.com>
+---
+
+diff --git a/arm_compute/core/Strides.h b/arm_compute/core/Strides.h
+index 265799e..b582d06 100644
+--- a/arm_compute/core/Strides.h
++++ b/arm_compute/core/Strides.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2017-2019 Arm Limited.
++ * Copyright (c) 2017-2019, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -30,6 +30,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cstddef>
++#include <cstdint>
+ 
+ namespace arm_compute
+ {
+diff --git a/arm_compute/core/utils/math/SafeOps.h b/arm_compute/core/utils/math/SafeOps.h
+index f0d76a3..dc928a0 100644
+--- a/arm_compute/core/utils/math/SafeOps.h
++++ b/arm_compute/core/utils/math/SafeOps.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2019-2021 Arm Limited.
++ * Copyright (c) 2019-2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -25,7 +25,7 @@
+ #define ARM_COMPUTE_UTILS_MATH_SAFE_OPS
+ 
+ #include "arm_compute/core/Error.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ 
+ #include <limits>
+ 
+diff --git a/arm_compute/core/utils/misc/Utility.h b/arm_compute/core/utils/misc/Utility.h
+index 648758c..e3e20d7 100644
+--- a/arm_compute/core/utils/misc/Utility.h
++++ b/arm_compute/core/utils/misc/Utility.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2017-2021 Arm Limited.
++ * Copyright (c) 2017-2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -28,6 +28,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <limits>
+ #include <numeric>
+ #include <vector>
+diff --git a/src/core/NEON/kernels/detail/NEDirectConvolutionDetail.h b/src/core/NEON/kernels/detail/NEDirectConvolutionDetail.h
+index 779db60..7ba52a1 100644
+--- a/src/core/NEON/kernels/detail/NEDirectConvolutionDetail.h
++++ b/src/core/NEON/kernels/detail/NEDirectConvolutionDetail.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2017-2021 Arm Limited.
++ * Copyright (c) 2017-2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -27,7 +27,7 @@
+ 
+ #include "src/core/NEON/NEFixedPoint.h"
+ #include "src/core/NEON/wrapper/wrapper.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ 
+ #include <arm_neon.h>
+ 
+diff --git a/src/core/utils/helpers/bit_ops.h b/src/core/utils/helpers/bit_ops.h
+index 954fb56..fbd0382 100644
+--- a/src/core/utils/helpers/bit_ops.h
++++ b/src/core/utils/helpers/bit_ops.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2018-2021 Arm Limited.
++ * Copyright (c) 2018-2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -24,7 +24,7 @@
+ #ifndef ARM_COMPUTE_UTILS_HELPERS_BIT_OPS_H
+ #define ARM_COMPUTE_UTILS_HELPERS_BIT_OPS_H
+ 
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ 
+ #include <type_traits>
+ 
+diff --git a/src/cpu/kernels/CpuDepthwiseConv2dNativeKernel.h b/src/cpu/kernels/CpuDepthwiseConv2dNativeKernel.h
+index 95835e6..8bc4d83 100644
+--- a/src/cpu/kernels/CpuDepthwiseConv2dNativeKernel.h
++++ b/src/cpu/kernels/CpuDepthwiseConv2dNativeKernel.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2019-2022 Arm Limited.
++ * Copyright (c) 2019-2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -27,7 +27,7 @@
+ #include "arm_compute/core/utils/misc/Traits.h"
+ #include "src/core/common/Macros.h"
+ #include "src/cpu/ICpuKernel.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ 
+ #ifdef __ARM_FEATURE_FP16_VECTOR_ARITHMETIC
+ #include <arm_neon.h>
+diff --git a/src/dynamic_fusion/sketch/gpu/template_writer/GpuKernelVariableTable.h b/src/dynamic_fusion/sketch/gpu/template_writer/GpuKernelVariableTable.h
+index 82b7513..14f1c36 100644
+--- a/src/dynamic_fusion/sketch/gpu/template_writer/GpuKernelVariableTable.h
++++ b/src/dynamic_fusion/sketch/gpu/template_writer/GpuKernelVariableTable.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2022 Arm Limited.
++ * Copyright (c) 2022-2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -26,7 +26,7 @@
+ 
+ #include "arm_compute/core/ITensorInfo.h"
+ #include "src/dynamic_fusion/sketch/gpu/GpuKernelArgument.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ #include "support/StringSupport.h"
+ 
+ #include <set>
+diff --git a/support/AclRequires.h b/support/AclRequires.h
+new file mode 100644
+index 0000000..1c20f7f
+--- /dev/null
++++ b/support/AclRequires.h
+@@ -0,0 +1,48 @@
++/*
++ * Copyright (c) 2018-2021, 2023 Arm Limited.
++ *
++ * SPDX-License-Identifier: MIT
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to
++ * deal in the Software without restriction, including without limitation the
++ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
++ * sell copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all
++ * copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++ * SOFTWARE.
++ */
++#ifndef ARM_COMPUTE_UTILS_ACLREQUIRES_H
++#define ARM_COMPUTE_UTILS_ACLREQUIRES_H
++
++namespace arm_compute
++{
++namespace utils
++{
++// *INDENT-OFF*
++// clang-format off
++namespace detail
++{
++enum class enabler
++{
++};
++} // namespace arm_compute
++
++/** Requirements as template */
++#define ARM_COMPUTE_REQUIRES_T(...) template <bool Cond = (__VA_ARGS__), typename std::enable_if<Cond, int>::type = 0>
++/** Requirements as template argument */
++#define ARM_COMPUTE_REQUIRES_TA(...) typename = typename std::enable_if<(__VA_ARGS__), arm_compute::utils::detail::enabler>::type
++// clang-format on
++// *INDENT-ON*
++} // namespace utils
++} // namespace arm_compute
++#endif /*ARM_COMPUTE_UTILS_REQUIRES_H */
+diff --git a/support/Requires.h b/support/Requires.h
+deleted file mode 100644
+index 21c98ca..0000000
+--- a/support/Requires.h
++++ /dev/null
+@@ -1,51 +0,0 @@
+-/*
+- * Copyright (c) 2018-2021 Arm Limited.
+- *
+- * SPDX-License-Identifier: MIT
+- *
+- * Permission is hereby granted, free of charge, to any person obtaining a copy
+- * of this software and associated documentation files (the "Software"), to
+- * deal in the Software without restriction, including without limitation the
+- * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+- * sell copies of the Software, and to permit persons to whom the Software is
+- * furnished to do so, subject to the following conditions:
+- *
+- * The above copyright notice and this permission notice shall be included in all
+- * copies or substantial portions of the Software.
+- *
+- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+- * SOFTWARE.
+- */
+-#ifndef ARM_COMPUTE_UTILS_REQUIRES_H
+-#define ARM_COMPUTE_UTILS_REQUIRES_H
+-
+-namespace arm_compute
+-{
+-namespace utils
+-{
+-namespace requires
+-{
+-// *INDENT-OFF*
+-// clang-format off
+-namespace detail
+-{
+-enum class enabler
+-{
+-};
+-} // namespace arm_compute
+-
+-/** Requirements as template */
+-#define ARM_COMPUTE_REQUIRES_T(...) template <bool Cond = (__VA_ARGS__), typename std::enable_if<Cond, int>::type = 0>
+-/** Requirements as template argument */
+-#define ARM_COMPUTE_REQUIRES_TA(...) typename = typename std::enable_if<(__VA_ARGS__), arm_compute::utils::requires::detail::enabler>::type
+-// clang-format on
+-// *INDENT-ON*
+-} // namespace requires
+-} // namespace utils
+-} // namespace arm_compute
+-#endif /*ARM_COMPUTE_UTILS_REQUIRES_H */
+diff --git a/support/Rounding.h b/support/Rounding.h
+index 47c8f76..e2732dc 100644
+--- a/support/Rounding.h
++++ b/support/Rounding.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2018-2021 Arm Limited.
++ * Copyright (c) 2018-2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -26,7 +26,7 @@
+ 
+ #include "arm_compute/core/Error.h"
+ #include "arm_compute/core/utils/misc/Traits.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ #include "support/ToolchainSupport.h"
+ 
+ #include <cmath>
+diff --git a/tests/validation/NEON/ActivationLayer.cpp b/tests/validation/NEON/ActivationLayer.cpp
+index 20197cb..d64945a 100644
+--- a/tests/validation/NEON/ActivationLayer.cpp
++++ b/tests/validation/NEON/ActivationLayer.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2017-2022 Arm Limited.
++ * Copyright (c) 2017-2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -40,7 +40,7 @@
+ #include "tests/validation/fixtures/ActivationLayerFixture.h"
+ 
+ #include "arm_compute/Acl.hpp"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ 
+ namespace arm_compute
+ {
+diff --git a/tests/validation/reference/Conv3D.cpp b/tests/validation/reference/Conv3D.cpp
+index 706059d..e4010a5 100644
+--- a/tests/validation/reference/Conv3D.cpp
++++ b/tests/validation/reference/Conv3D.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2021 Arm Limited.
++ * Copyright (c) 2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -25,7 +25,7 @@
+ 
+ #include "arm_compute/core/utils/misc/ShapeCalculator.h"
+ #include "arm_compute/core/utils/quantization/AsymmHelpers.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ #include "tests/validation/reference/UtilsQuantizedAsymm.h"
+ 
+ // Source/Destination Tensor shape indices (N D H W C)
+@@ -257,4 +257,4 @@
+ } // namespace reference
+ } // namespace validation
+ } // namespace test
+-} // namespace arm_compute
+\ No newline at end of file
++} // namespace arm_compute
+diff --git a/tests/validation/reference/Convolution3d.h b/tests/validation/reference/Convolution3d.h
+index 1666e38..b67e88e 100644
+--- a/tests/validation/reference/Convolution3d.h
++++ b/tests/validation/reference/Convolution3d.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2017-2021 Arm Limited.
++ * Copyright (c) 2017-2021, 2023 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -25,7 +25,7 @@
+ #define ARM_COMPUTE_TEST_VALIDATION_CONVOLUTION_H
+ 
+ #include "arm_compute/core/utils/quantization/AsymmHelpers.h"
+-#include "support/Requires.h"
++#include "support/AclRequires.h"
+ #include "tests/validation/Helpers.h"
+ #include "tests/validation/reference/UtilsQuantizedAsymm.h"
+ 

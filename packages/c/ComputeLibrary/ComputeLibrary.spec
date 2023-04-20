@@ -26,6 +26,8 @@ Summary:        ARM Compute Library
 License:        MIT
 URL:            https://developer.arm.com/technologies/compute-library
 Source:         https://github.com/ARM-software/ComputeLibrary/archive/v%{version}.tar.gz#/ComputeLibrary-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://review.mlplatform.org/c/ml/ComputeLibrary/+/9388
+Patch:          fix-gcc13-fallout.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  ocl-icd-devel
@@ -132,8 +134,10 @@ install -Dm0755 scripts/* %{buildroot}%{_bindir}
 rm -f %{buildroot}%{_bindir}/*.h
 # Fix Python scripts interpreter
 for pyfile in `ls %{buildroot}%{_bindir}/*.py`; do
-  sed -i -e 's|#!%{_bindir}/env python|#!%{_bindir}/python|' $pyfile
+  sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' $pyfile
+  sed -i -e 's|#!%{_bindir}/env python|#!%{_bindir}/python3|' $pyfile
 done
+sed -i -e 's|#!%{_bindir}/python|#!%{_bindir}/python3|' %{buildroot}%{_bindir}/generate_build_files.py
 
 %post -n libarm_compute%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
