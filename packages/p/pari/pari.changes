@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 17 06:01:18 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 2.15.3
+  * rare infinite loop in idealtwoelt
+  * nfisisom(16*x^4+1,16*x^4+1) -> error
+  * forprimestep(p=a,b,q,) overflow when a > primelimit
+  * lfun([bnrinit(bnfinit(y^2+1),12),[[2,0],[6,0]]],2) -> error
+  * lfunthetacost(polcyclo(43)): silent overflow
+  * ellcard(ellinit([1,1]*ffgen([41,16])))-> impossible inverse
+  * wrong result (missing content) in idealred(nf, [id, elt])
+  * det(integer matrix) -> inconsistent exact division
+  * fft([],[]) -> SEGV, fft([1],[1]) -> SEGV
+  * nfrootsof1(x^0) -> oo-loop
+  * hgmalpha did not check its input
+  * hyperellchangecurve([],[]) -> SEGV
+  * hyperellchangecurve(x^0,[1,matid(2),0]) -> SEGV
+  * rnfeltnorm(x,x) -> SEGV
+  * polylogmult(1,[],-1) -> SEGV
+  * ellheight(non-integral E) -> crash
+  * content(1,y) -> pol_1(y) instead of t_INT 1
+  * s=taylor(1/((x-1)*(y-1)),x); taylor(s,y) -> invalid object
+  * avoid crashing when sumnumsidi diverges (0 bits of accuracy)
+
+-------------------------------------------------------------------
 Thu Jan  5 08:17:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.2:

@@ -28,7 +28,7 @@ power series, algebraic numbers, and transcendental functions.\
 %global sover 8
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.15.2
+Version:        2.15.3
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
