@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 18 08:53:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend gimp-plugins-python even when we build it: it
+  pulls in python2. Users are free to install it, but the default
+  is not to do it anymore.
+
+-------------------------------------------------------------------
 Thu Apr  6 00:09:57 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Bump glib dependency to match the configure script.

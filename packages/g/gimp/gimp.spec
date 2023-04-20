@@ -116,9 +116,6 @@ Requires:       libbabl-0_1-0 >= 0.1.78
 Requires:       libgimp-2_0-0 = %{version}
 Requires:       libgimpui-2_0-0 = %{version}
 Requires:       xdg-utils
-%if %{with python_plugin}
-Recommends:     %{name}-plugins-python = %{version}
-%endif
 Recommends:     iso-codes
 Suggests:       AdobeICCProfiles
 Suggests:       gimp-2.0-scanner-plugin
@@ -167,7 +164,6 @@ Group:          Productivity/Graphics/Bitmap Editors
 Requires:       %{name} = %{version}
 Requires:       python-gtk
 Recommends:     python-xml
-Supplements:    %{name}
 Provides:       gimp-2.0-plugins-python = %{version}
 Obsoletes:      gimp-unstable-plugins-python < 2.6.0
 # For update from <= 10.3 and SLED 10:
