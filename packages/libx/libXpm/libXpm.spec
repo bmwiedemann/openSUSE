@@ -18,7 +18,7 @@
 
 %define lname	libXpm4
 Name:           libXpm
-Version:        3.5.15
+Version:        3.5.16
 Release:        0
 Summary:        X Pixmap image file format library
 License:        MIT

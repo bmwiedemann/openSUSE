@@ -193,4 +193,24 @@
 - Depend on /usr/bin/gzip, not gzip</comment>
     <requestid>1079097</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7c8c8eb747d425577cb7e08529135feb</srcmd5>
+    <version>3.5.16</version>
+    <time>1681996414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.16:
+  * test: skip compressed file tests when --disable-open-zfile is used
+  * gitlab CI: build with each of --enable-open-zfile &amp; --disable-open-zfile
+  * configure: correct error message to suggest --disable-open-zfile
+  * open-zfile: Make compress &amp; uncompress commands optional
+  * Require LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * XpmCreateDataFromXpmImage: Fix misleading indentation
+  * parse.c: Wrap FREE_CIDX definition in do { ... } while(0)
+  * parse.c: remove unused function xstrlcpy()
+  * test: Use PACKAGE_BUGREPORT instead of hard-coded URL's
+  * test: Add simple test cases for functions in src/rgb.c
+  * xpmReadRgbNames: constify filename argument
+  * Fix a memleak in ParsePixels error code path</comment>
+    <requestid>1080119</requestid>
+  </revision>
 </revisionlist>

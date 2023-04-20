@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 18 11:28:16 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 3.5.16:
+  * test: skip compressed file tests when --disable-open-zfile is used
+  * gitlab CI: build with each of --enable-open-zfile & --disable-open-zfile
+  * configure: correct error message to suggest --disable-open-zfile
+  * open-zfile: Make compress & uncompress commands optional
+  * Require LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * XpmCreateDataFromXpmImage: Fix misleading indentation
+  * parse.c: Wrap FREE_CIDX definition in do { ... } while(0)
+  * parse.c: remove unused function xstrlcpy()
+  * test: Use PACKAGE_BUGREPORT instead of hard-coded URL's
+  * test: Add simple test cases for functions in src/rgb.c
+  * xpmReadRgbNames: constify filename argument
+  * Fix a memleak in ParsePixels error code path
+
+-------------------------------------------------------------------
 Thu Apr 13 09:24:55 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - with switching to suggests making use of (n)compress no longer
