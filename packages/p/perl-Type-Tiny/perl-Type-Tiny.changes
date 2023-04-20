@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr  6 03:11:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.004000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.004000	2023-04-05
+   [ Documentation ]
+   - Document that the `BoolLike` type is unstable.
+   - Minor pod changes to Types::Standard.
+   [ Packaging ]
+   - Summarized the change log for versions prior to Type::Tiny 2.000000. If
+     you need more information, see the Changes file included with Type::Tiny
+     2.002001.
+     <https://metacpan.org/release/TOBYINK/Type-Tiny-2.002001/source/Changes>
+  2.003_000	2023-04-02
+   [ Documentation ]
+   - Add SYNOPSIS for Type::Tiny::Class.
+   - Add SYNOPSIS for Type::Tiny::Duck.
+   - Add SYNOPSIS for Type::Tiny::Enum.
+   - Add SYNOPSIS for Type::Tiny::Intersection.
+   - Add SYNOPSIS for Type::Tiny::Role.
+   - Add SYNOPSIS for Type::Tiny::Union.
+   - Add documentation and tests for the combination of the `goto_next` and
+     `multiple` options when used with `signature_for`.
+   - Add example of `signature_for` applying a signature to multiple
+     functions at once.
+   - Document changes to `make_immutable` in Type::Library v2.x.
+     <https://github.com/tobyink/p5-type-tiny/issues/129>
+   [ Other ]
+   - Added: Type::Tiny now has an `exception_class` attribute, allowing a
+     type to throw exceptions using a custom class. These classes should
+     usually be a subclass of Error::TypeTiny::Assertion.
+     <https://github.com/tobyink/p5-type-tiny/issues/133>
+   - Added: Type::Tiny::Bitfield class.
+     <https://github.com/tobyink/p5-type-tiny/issues/131>
+   - Added: Types::TypeTiny::BoolLike type constraint.
+     <https://github.com/tobyink/p5-type-tiny/issues/137>
+
+-------------------------------------------------------------------
 Sat Jan 21 03:11:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.002001
