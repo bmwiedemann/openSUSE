@@ -1,7 +1,7 @@
 #
 # spec file for package xfconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define libname libxfconf-0-3
 
 Name:           xfconf
-Version:        4.18.0
+Version:        4.18.1
 Release:        0
 Summary:        Simple Configuration Storage for Xfce
 License:        GPL-2.0-or-later
