@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Map
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,21 @@
 #
 
 
-Name:           perl-File-Map
-Version:        0.67
-Release:        0
 %define cpan_name File-Map
-Summary:        Memory mapping made simple and safe
+Name:           perl-File-Map
+Version:        0.71
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Memory mapping made simple and safe
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.280000
-BuildRequires:  perl(PerlIO::Layers)
 BuildRequires:  perl(Sub::Exporter::Progressive) >= 0.001005
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::Warnings) >= 0.005
-Requires:       perl(PerlIO::Layers)
 Requires:       perl(Sub::Exporter::Progressive) >= 0.001005
 %{perl_requires}
 
@@ -42,7 +38,7 @@ Requires:       perl(Sub::Exporter::Progressive) >= 0.001005
 File::Map maps files or anonymous memory into perl variables.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor optimize="%{optflags}"
@@ -56,7 +52,6 @@ perl Build.PL installdirs=vendor optimize="%{optflags}"
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples metamerge.yml README
 %license LICENSE
 
