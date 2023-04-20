@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-runner
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-runner
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15
