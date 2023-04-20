@@ -15,4 +15,21 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860873</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3b73b4d8b49724b443f26743dc815f7</srcmd5>
+    <version>1.1.3</version>
+    <time>1681996499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.3
+  * Fix autotools warnings
+  * Update copyright year
+  * build: Add GLib requirement
+  * Fix blurry icons when UI scale &gt; 1
+  * build: Fix intltool lock file problem during make distcheck
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Translation Updates
+- Remove _service file (forwarded request 1080496 from manfred-h)</comment>
+    <requestid>1080850</requestid>
+  </revision>
 </revisionlist>

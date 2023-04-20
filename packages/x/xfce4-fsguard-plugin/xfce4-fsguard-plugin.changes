@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 20 08:06:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.3
+  * Fix autotools warnings
+  * Update copyright year
+  * build: Add GLib requirement
+  * Fix blurry icons when UI scale > 1
+  * build: Fix intltool lock file problem during make distcheck
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Mon Dec 28 15:14:10 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.1.2

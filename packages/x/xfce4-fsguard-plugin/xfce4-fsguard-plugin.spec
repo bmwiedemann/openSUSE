@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-fsguard-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.12.0
 %define plugin fsguard
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Filesystem Space Monitoring Plugin for the Xfce Panel
 License:        BSD-2-Clause
@@ -30,8 +30,11 @@ Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.1/%{name}-%
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
