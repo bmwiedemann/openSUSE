@@ -569,4 +569,12 @@
   * Fixed the context menus of tabs and forward/backward buttons under Wayland.</comment>
     <requestid>1046191</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c9a5b3a9fc8923f80f43b2e408be9cfe</srcmd5>
+    <version>1.3.0</version>
+    <time>1681996451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080368</requestid>
+  </revision>
 </revisionlist>
