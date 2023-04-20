@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 15 17:56:00 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.7.0:
+  * The info-bar tooltips have been corrected in several ways.
+  * Showing of tooltips is fixed under Wayland.
+  * The (PNG) font of the info-bar is made a little larger.
+  * Lots of code cleanup.
+
+-------------------------------------------------------------------
 Sat Nov  5 18:17:08 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Updated to 2.6.0:
