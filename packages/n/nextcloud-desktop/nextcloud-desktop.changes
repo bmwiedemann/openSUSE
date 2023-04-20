@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 19 15:03:44 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.8.1
+  - desktop#5570 [stable-3.8] sort encrypted files by their id to compute checksum
+  - desktop#5573 [stable-3.8] try different permutation to try to recover the broken checksum
+  - desktop#5578 [stable-3.8] Fix unit tests SecureFileDrop
+  - desktop#5582 [stable-3.8] Do not display error status and messages when aborting a sync during hydration request in VFS mode
+  - desktop#5589 [stable-3.8] in case server has no private key, let e2ee init fail
+  - desktop#5592 [stable-3.8] Edit locally. Restart current folder sync immediately after file opened.
+  - desktop#5597 [stable-3.8] Alway add the item at the end of the layout.
+  - desktop#5599 [stable-3.8] properly preserve the format of e2ee metadata during DB operations
+
+-------------------------------------------------------------------
 Sat Apr  1 07:40:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update ot 3.8.0
