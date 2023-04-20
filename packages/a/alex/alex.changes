@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 14 05:54:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.2.7.3.
+  ## Change in 3.2.7.3
+
+   * Amend last change (3.2.7.2)
+     so that Alex-generated code does not need `LANGUAGE PatternGuards`.
+   * Tested with GHC 7.0 - 9.6.1.
+
+  _Andreas Abel, 2023-04-14_
+
+-------------------------------------------------------------------
 Mon Apr  3 21:20:37 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update alex to version 3.2.7.2.
