@@ -324,4 +324,13 @@
   * Fix megaraid for PERC H330 Adapter #520</comment>
     <requestid>1062174</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ba318710864f7dbefbf3e64d92f276a0</srcmd5>
+    <version>1.9.8</version>
+    <time>1681996401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.8:
+  * Fips correction #528</comment>
+    <requestid>1079977</requestid>
+  </revision>
 </revisionlist>
