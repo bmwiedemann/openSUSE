@@ -287,4 +287,41 @@
     <comment></comment>
     <requestid>982470</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>dd3fcc9164a0ec21b7e7f91f141cf0f2</srcmd5>
+    <version>4.5.4</version>
+    <time>1681996407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.4:
+  * Security
+    + Cancelling an async future does not, properly trigger, leading to a
+      potential data leak in specific cases. (CVE-2023-28858, bsc#1209811) 
+    + Cancelling an async future does not, properly trigger, leading to a
+      potential data leak in specific cases. (CVE-2023-28859, bsc#1209812)
+  * New Features
+    + Introduce AbstractConnection so that UnixDomainSocketConnection can
+      call super().init (#2588)
+    + Added queue_class to REDIS_ALLOWED_KEYS (#2577)
+    + Made search document subscriptable (#2615)
+    + Sped up the protocol parsing (#2596)
+    + Use hiredis::pack_command to serialized the commands. (#2570)
+    + Add support for unlink in cluster pipeline (#2562)
+  * Bug Fixes
+    + Fixing cancelled async futures (#2666)
+    + Fix: do not use asyncio's timeout lib before 3.11.2 (#2659)
+    + Fix UDS in v4.5.2: UnixDomainSocketConnection missing constructor
+      argument (#2630)
+    + CWE-404 AsyncIO Race Condition Fix (#2624, #2579)
+    + Fix behaviour of async PythonParser to match RedisParser as for
+      issue #2349 (#2582)
+    + Replace async_timeout by asyncio.timeout (#2602)
+    + Update json().arrindex() default values (#2611)
+    + Fix #2581 UnixDomainSocketConnection object has no attribute
+      _command_packer (#2583)
+    + Fix issue with pack_commands returning an empty byte sequence (#2416)
+    + Async HiredisParser should finish parsing after a
+      Connection.disconnect() (#2557)
+    + Check for none, prior to raising exception (#2569)</comment>
+    <requestid>1080032</requestid>
+  </revision>
 </revisionlist>

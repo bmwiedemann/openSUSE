@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-redis
-Version:        4.3.3
+Version:        4.5.4
 Release:        0
 Summary:        Python client for Redis key-value store
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/redis/redis-py
 Source0:        https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
 Source1:        https://github.com/redis/redis-py/raw/v%{version}/tox.ini
-BuildRequires:  %{python_module Deprecated >= 1.2.3}
 BuildRequires:  %{python_module async-timeout >= 4.0.2}
-BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module importlib-metadata >= 1.0 if %python-base < 3.8}
-# requires mock.AsyncMock
-BuildRequires:  %{python_module mock if %python-base < 3.8}
-BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
-Requires:       python-Deprecated >= 1.2.3
 Requires:       python-async-timeout >= 4.0.2
-Requires:       python-packaging >= 20.4
 Requires:       redis
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 1.0
-Requires:       python-typing-extensions
-%endif
 Recommends:     python-hiredis >= 1.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -93,7 +79,9 @@ if [ $(getconf LONG_BIT) -ne 64 ]; then
   # reference precision issues on 32-bit
   donttest=" or test_geopos"
 fi
-%pytest -m 'not (onlycluster or redismod)' -k "not (dummyprefix $donttest)" --ignore tests/test_ssl.py
+# gh#redis/redis-py#2554 and gh#redis/redis-py#2679
+donttest="$donttest or test_xautoclaim or test_acl_list"
+%pytest -m 'not (onlycluster or redismod)' -k "not (dummyprefix $donttest)" --ignore tests/test_ssl.py --ignore tests/test_asyncio/test_cluster.py --redis-url=redis://localhost:6379/
 
 %files %{python_files}
 %license LICENSE

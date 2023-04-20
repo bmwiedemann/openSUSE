@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Apr 18 03:37:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.5.4:
+  * Security
+    + Cancelling an async future does not, properly trigger, leading to a
+      potential data leak in specific cases. (CVE-2023-28858, bsc#1209811) 
+    + Cancelling an async future does not, properly trigger, leading to a
+      potential data leak in specific cases. (CVE-2023-28859, bsc#1209812)
+  * New Features
+    + Introduce AbstractConnection so that UnixDomainSocketConnection can
+      call super().init (#2588)
+    + Added queue_class to REDIS_ALLOWED_KEYS (#2577)
+    + Made search document subscriptable (#2615)
+    + Sped up the protocol parsing (#2596)
+    + Use hiredis::pack_command to serialized the commands. (#2570)
+    + Add support for unlink in cluster pipeline (#2562)
+  * Bug Fixes
+    + Fixing cancelled async futures (#2666)
+    + Fix: do not use asyncio's timeout lib before 3.11.2 (#2659)
+    + Fix UDS in v4.5.2: UnixDomainSocketConnection missing constructor
+      argument (#2630)
+    + CWE-404 AsyncIO Race Condition Fix (#2624, #2579)
+    + Fix behaviour of async PythonParser to match RedisParser as for
+      issue #2349 (#2582)
+    + Replace async_timeout by asyncio.timeout (#2602)
+    + Update json().arrindex() default values (#2611)
+    + Fix #2581 UnixDomainSocketConnection object has no attribute
+      _command_packer (#2583)
+    + Fix issue with pack_commands returning an empty byte sequence (#2416)
+    + Async HiredisParser should finish parsing after a
+      Connection.disconnect() (#2557)
+    + Check for none, prior to raising exception (#2569)
+    + Tuple function cannot be passed more than one argument (#2573)
+    + Synchronise concurrent command calls to single-client to single-client
+      mode (#2568)
+    + Async: added 'blocking' argument to call lock method (#2454)
+    + Added a replacement for the default cluster node in the event of
+      failure. (#2463)
+    + Fixed geosearch: Wrong number of arguments for geosearch command (#2464)
+- Clean up BuildRequires and Requires.
+
+-------------------------------------------------------------------
+Wed Jan 18 13:09:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken test test_xautoclaim gh#redis/redis-py#2554
+- udpate to 4.3.5:
+  * Add support for TIMESERIES 1.8 (#2296)
+  * Graph - add counters for removed labels and properties (#2292)
+  * Add support for TDIGEST.QUANTILE extensions (#2317)
+  * Add TDIGEST.TRIMMED_MEAN (#2300)
+  * Add support for async GRAPH module (#2273)
+  * Support TDIGEST.MERGESTORE and make compression optional on TDIGEST.CREATE
+    (#2319)
+  * Adding reserve as an alias for create, so that we have BF.RESERVE and
+    CF.RESERVE accuratenly supported (#2331)
+  * Fix async connection.is_connected to return a boolean value (#2278)
+  * Fix: workaround asyncio bug on connection reset by peer (#2259)
+  * Fix crash: key expire while search (#2270)
+  * Async cluster: fix concurrent pipeline (#2280)
+  * Fix async SEARCH pipeline (#2316)
+  * Fix KeyError in async cluster - initialize before execute multi key
+    commands (#2439)
+  * Supply chain risk reduction: remove dependency on library named deprecated
+    (#2386)
+  * Search test - Ignore order of the items in the response (#2322)
+  * Fix GRAPH.LIST & TDIGEST.QUANTILE tests (#2335)
+  * Fix TimeSeries range aggregation (twa) tests (#2358)
+  * Mark TOPK.COUNT as deprecated (#2363)
+
+-------------------------------------------------------------------
+Sat Oct  1 17:22:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.4:
+  * Fix backward compatibility from 4.3.2 in Lock.acquire()
+  * Fix XAUTOCLAIM to return the full response, instead of only keys 2+
+  * Added dynamic_startup_nodes configuration to RedisCluster.
+  * Fix retries in async mode
+  * Async cluster: fix simultaneous initialize
+  * Uppercased commands in CommandsParser.get_keys
+  * Late eval of the skip condition in async tests
+  * Reuse the old nodes' connections when a cluster topology refresh is being done
+  * Docs: add pipeline examples
+  * Correct retention_msecs value
+  * Cluster: use pipeline to execute split commands
+  * Docs: Add a note about client_setname and client_name difference
+
+-------------------------------------------------------------------
 Mon Jun 13 10:18:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Delete unused redismod.conf, remove duplicate Source entry for
