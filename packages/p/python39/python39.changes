@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 18 05:00:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python3 modules to build the documentation. 
+
+-------------------------------------------------------------------
 Wed Mar  1 14:43:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,

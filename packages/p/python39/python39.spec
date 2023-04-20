@@ -192,13 +192,8 @@ BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
-%if 0%{?sle_version} && 0%{?sle_version} <= 150300
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-python-docs-theme >= 2022.1
-%else
-BuildRequires:  %{python_pkg_name}-Sphinx
-BuildRequires:  %{python_pkg_name}-python-docs-theme >= 2022.1
-%endif
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)
