@@ -566,4 +566,12 @@
   libcontainers-common</comment>
     <requestid>1074879</requestid>
   </revision>
+  <revision rev="60" vrev="60">
+    <srcmd5>c9efe1d4cc18bff77d7d8a40f2a89b1c</srcmd5>
+    <version>16.0.0</version>
+    <time>1681996423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080291</requestid>
+  </revision>
 </revisionlist>
