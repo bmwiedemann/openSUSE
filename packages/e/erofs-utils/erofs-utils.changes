@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 17 13:44:38 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 1.6
+  * support fragments by using `-Efragments`
+  * support compressed data deduplication by using `-Ededupe`
+  * (erofsfuse) support extended attributes
+  * (mkfs.erofs) support multiple algorithms in a single image
+  * (mkfs.erofs) support chunk-based sparse files
+  * (mkfs.erofs) add volume-label setting support 
+  * (mkfs.erofs) add uid/gid offsetting support 
+  * (mkfs.erofs) pack files entirely by using `-Eall-fragments` 
+  * various bugfixes and cleanups;
+
+-------------------------------------------------------------------
 Mon Jun 13 12:28:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5
