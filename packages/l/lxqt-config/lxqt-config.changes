@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 15 19:28:23 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated to 1.3.0:
+  * Prevented a potential segfault when loading keyboard layout
+    settings and updated the code of `lxqt-config-monitor` for
+    libkscreen 5.26.90
+- Removed lxqt-config-1.2.0-include.patch
+
+-------------------------------------------------------------------
 Tue Feb 14 12:51:42 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - boo#1208217: Include kscreen mode header
