@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Compile
 Name:           perl-Test-Compile
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Assert that your Perl files compile OK
