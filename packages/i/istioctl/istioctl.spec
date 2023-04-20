@@ -26,6 +26,7 @@ License:        Apache-2.0
 URL:            https://github.com/istio/istio
 Source:         istio-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  go >= 1.19
 
 %description
@@ -67,6 +68,14 @@ go build \
 # Install the binary.
 install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
 
+# copy the sample files
+mkdir -p %{buildroot}%{_docdir}/%{name}
+cp -vr samples %{buildroot}%{_docdir}/%{name}
+rm -f %{buildroot}%{_docdir}/%{name}/samples/bookinfo/src/reviews/.gitignore
+rm -f %{buildroot}%{_docdir}/%{name}/samples/bookinfo/src/reviews/reviews-wlpcfg/shared/.gitkeep
+rm -f %{buildroot}%{_docdir}/%{name}/samples/wasm_modules/header_injector/.gitignore
+%fdupes %{buildroot}%{_docdir}/%{name}/samples/
+
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
@@ -79,6 +88,7 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_docdir}/%{name}
 
 %files -n %{name}-bash-completion
 %dir %{_datarootdir}/bash-completion/completions/
