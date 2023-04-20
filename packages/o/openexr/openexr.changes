@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 15 09:53:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.7:
+  * Patch release that fixes a build regression on ARMv7, and
+    fixes a build issue with zlib.
+
+-------------------------------------------------------------------
 Tue Mar 14 09:13:04 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.1.6:

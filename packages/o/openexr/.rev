@@ -795,4 +795,14 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
 - Drop gcc13-fix.patch (forwarded request 1071437 from polslinux)</comment>
     <requestid>1071520</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6a8bae1ae946c21182ca26a7ff43fde4</srcmd5>
+    <version>3.1.7</version>
+    <time>1681996416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.7:
+  * Patch release that fixes a build regression on ARMv7, and
+    fixes a build issue with zlib. (forwarded request 1079570 from dirkmueller)</comment>
+    <requestid>1080129</requestid>
+  </revision>
 </revisionlist>
