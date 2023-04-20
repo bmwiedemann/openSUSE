@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-session
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-session
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ Patch1:         lxqt-session-default_wm.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  qtxdg-tools
 BuildRequires:  xdg-user-dirs
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= 1.1.0
+BuildRequires:  pkgconfig(lxqt) >= %{version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 Requires(post): update-alternatives
