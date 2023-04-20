@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 18 01:59:28 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 1.3.1:
+  * fix(fw_nm): use IP interface names for connection lookup (18c8b81)
+  * fix(fw_policy): raise exceptions (5ae9322)
+  * fix(service): include: when used with rich rule (986f0be)
+  * fix(nftables): rich: log: limit was not taking effect (0dc0575)
+  * fix(build): rpm must build all as prerequisite (6896748)
+  * fix: use error codes for FirewallError instances (370e5f2)
+  * fix(ipset): chunk entries when restoring set (8a88855)
+  * fix(applet): allows using KDE network connection editor (29c8ef6)
+
+-------------------------------------------------------------------
 Fri Jan  6 15:11:02 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - update to 1.3.0:

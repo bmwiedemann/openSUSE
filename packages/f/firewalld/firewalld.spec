@@ -1,7 +1,7 @@
 #
 # spec file for package firewalld
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@
 %global modprobe_d_files firewalld-sysctls.conf
 
 Name:           firewalld
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.firewalld.org
-Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.gz
+Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.bz2
 Source1:        docker-zone.xml
 Patch0:         0002-Disable-FlushAllOnReload-option.patch
 BuildRequires:  autoconf
