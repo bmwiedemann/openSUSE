@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 13 10:36:14 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.058:
+  * Add Vary header into http responses (#373)
+  * Add experimental feature mirrorlist for folder (#372)
+  * Fix redirect on remote MirrorCache (#372)
+
+-------------------------------------------------------------------
 Thu Apr 06 06:31:14 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.057:
