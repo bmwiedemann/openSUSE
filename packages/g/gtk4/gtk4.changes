@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 12 21:31:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Place English translations in the tools sub-package instead of
+  lang. This should offer translations for the main English locales
+  without the need to install any additional package by default.
+- Add "file-not-in-%lang" RPM Lint warning to rpmlintrc file for
+  the reason above.
+- Drop "shlib-policy-name-error" unused filter from rpmlintrc.
+
+-------------------------------------------------------------------
 Sun Apr  2 23:07:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable vulkan support, stop passing vulkan=enabled to meson.

@@ -1,1 +1,4 @@
-addFilter("shlib-policy-name-error");
+# We're keeping English locales in the tools sub-packages instead of lang.
+# English should be offered to everybody by default, without installing lang
+# packages.
+addFilter("file-not-in-%lang");

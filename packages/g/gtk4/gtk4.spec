@@ -253,7 +253,6 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 
 %build
 %meson \
-	-Dbuild-tests=false \
 	-Dgtk_doc=true \
 	-Dbroadway-backend=true \
 	-Dcloudproviders=enabled \
@@ -273,7 +272,7 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 %install
 %meson_install
 
-%find_lang gtk40
+%find_lang gtk40 %{?no_lang_C}
 install -m 644 -D %{SOURCE2} %{buildroot}%{_datadir}/gtk-4.0/settings.ini
 # create modules directory that should have been created during the build
 if test ! -d %{buildroot}%{_libdir}/gtk-4.0/modules; then
@@ -343,6 +342,11 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-launch.1%{?ext_man}
 %{_mandir}/man1/gtk4-query-settings.1%{?ext_man}
 %{_mandir}/man1/gtk4-update-icon-cache.1%{?ext_man}
+# English should be offered to every installation by default.
+%{_datadir}/locale/en/
+%{_datadir}/locale/en_GB/
+%{_datadir}/locale/en@shaw/
+%{_datadir}/locale/en_CA/
 
 %files devel-tools
 %{_bindir}/gtk4-builder-tool
@@ -424,5 +428,10 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/gettext/its/gtk4builder.loc
 
 %files lang -f gtk40.lang
+# Those shouldn't be here in the first place.
+%exclude %{_datadir}/locale/en/
+%exclude %{_datadir}/locale/en_GB/
+%exclude %{_datadir}/locale/en@shaw/
+%exclude %{_datadir}/locale/en_CA/
 
 %changelog
