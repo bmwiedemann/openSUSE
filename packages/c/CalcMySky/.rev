@@ -7,4 +7,19 @@
     <comment>This package adds support for ShowMySky atmosphere model in Stellarium</comment>
     <requestid>1034851</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3746135313a3f4c61c0ee2df57c71b95</srcmd5>
+    <version>0.3.0</version>
+    <time>1681996494</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix packaging issue.
+- Update to 0.3.0:
+  * Now it's possible to replace view direction shaders via ShowMySky API
+    without re-creating the renderer. This lets Stellarium switch between
+    projections while implementing them in fragment shaders for better image quality.
+  * CMake configuration modules are now installed in paths like /usr/lib/cmake/ShowMySky-Qt6
+    instead of /usr/lib/ShowMySky-Qt6/cmake.
+</comment>
+    <requestid>1080857</requestid>
+  </revision>
 </revisionlist>

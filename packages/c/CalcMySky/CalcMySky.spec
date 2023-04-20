@@ -1,7 +1,7 @@
 #
 # spec file for package CalcMySky
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sover 14
+
+%define sover 15
 %if 0%{?suse_version} > 1550
 %define qtver 6
 %else
@@ -23,13 +24,13 @@
 %endif
 
 Name:           CalcMySky
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Software package that simulates scattering of light by the atmosphere
 License:        GPL-3.0-or-later
 URL:            https://github.com/10110111/CalcMySky
 Source:         https://github.com/10110111/CalcMySky/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1590
 BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
@@ -59,16 +60,19 @@ Requires:       %{name} = %{version}
 Devel files needed by software that have to use CalcMySky (e.g. Stellarium >= 1.0)
 
 %package -n libShowMySky-Qt%{qtver}-%{sover}
-Summary:  ShowMySky library
+Summary:        ShowMySky library
 
 %description -n libShowMySky-Qt%{qtver}-%{sover}
 This package contains the library libShowMySky.
 
-%package -n libShowMySky-Qt%{qtver}-%{sover}-devel
-Summary: Devel files for libShowMySky
-Requires: libShowMySky-Qt%{qtver}-%{sover} = %{version}
+%package -n libShowMySky-Qt%{qtver}-devel
+Summary:        Devel files for libShowMySky
+Requires:       libShowMySky-Qt%{qtver}-%{sover} = %{version}
+# fix packaging issue that was done when package was created
+Provides:       libShowMySky-Qt6-14-devel = %{version}
+Obsoletes:      libShowMySky-Qt6-14-devel < %{version}
 
-%description -n libShowMySky-Qt%{qtver}-%{sover}-devel
+%description -n libShowMySky-Qt%{qtver}-devel
 This package contains the devel files for libShowMySky.
 
 %prep
@@ -79,7 +83,7 @@ export CFLAGS="%{optflags} -fpie -fPIC"
 export LDFLAGS="$LDFLAGS -pie"
 
 %cmake \
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1590
   -DQT_VERSION=6 \
 %else
   -DQT_VERSION=5 \
@@ -145,12 +149,11 @@ export LDFLAGS="$LDFLAGS -pie"
 %{_libdir}/libShowMySky-Qt%{qtver}.so.%{sover}
 %{_libdir}/libShowMySky-Qt%{qtver}.so.%{sover}.0.0
 
-%files -n libShowMySky-Qt%{qtver}-%{sover}-devel
+%files -n libShowMySky-Qt%{qtver}-devel
 %{_libdir}/libShowMySky-Qt%{qtver}.so
-%dir %{_libdir}/ShowMySky-Qt%{qtver}
-%dir %{_libdir}/ShowMySky-Qt%{qtver}/cmake
-%{_libdir}/ShowMySky-Qt%{qtver}/cmake/ShowMySky-Qt%{qtver}Config-relwithdebinfo.cmake
-%{_libdir}/ShowMySky-Qt%{qtver}/cmake/ShowMySky-Qt%{qtver}Config.cmake
+%dir %{_libdir}/cmake/ShowMySky-Qt%{qtver}
+%{_libdir}/cmake/ShowMySky-Qt%{qtver}/ShowMySky-Qt%{qtver}Config-relwithdebinfo.cmake
+%{_libdir}/cmake/ShowMySky-Qt%{qtver}/ShowMySky-Qt%{qtver}Config.cmake
 
 %files devel
 %dir %{_includedir}/ShowMySky
