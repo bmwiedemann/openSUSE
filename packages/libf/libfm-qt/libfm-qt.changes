@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 15 17:11:52 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0
+  * Disabling of smooth scrolling is made possible for all views.
+  * Zero-sized files are treated based on their extensions.
+  * "New file" is used as the default name for new files
+    (especially after GLib 2.75.1, that does not treat empty files
+    as text/plain).
+  * Opening of non-executable files that have executable types is
+    fixed.
+  * Problems about adding file extension on saving and pressing
+    ENTER are fixed in LXQt file dialog.
+  * The thumbnail/icon rectangles of list views are fixed (they
+    might not be aligned correctly in previous versions).
+  * Several small fixes and improvements.
+
+
+-------------------------------------------------------------------
 Mon Jan  2 13:18:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.1:
