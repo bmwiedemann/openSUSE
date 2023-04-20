@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 15 17:25:39 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 3.11.0:
+  * File association is fixed with desktop entries that are
+    symlinks
+
+-------------------------------------------------------------------
 Sat Nov  5 17:05:32 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 3.10.0:
