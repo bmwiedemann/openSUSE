@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 15 18:07:32 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0:
+  * Fixed a case of memory leak and updated translations
+
+-------------------------------------------------------------------
 Sat Nov  5 18:31:37 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

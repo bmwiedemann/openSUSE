@@ -1,7 +1,7 @@
 #
 # spec file for package pavucontrol-qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol-qt
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Qt port of pavucontrol
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(Qt5LinguistTools)
