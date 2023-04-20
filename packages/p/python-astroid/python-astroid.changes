@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Apr 17 19:07:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.3:
+  * Fix ``infer_call_result()`` crash on methods called
+    ``with_metaclass()``
+  * Suppress ``UserWarning`` when finding module specs.
+
+-------------------------------------------------------------------
+Sun Apr 16 09:20:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.2:
+  * Support more possible usages of ``attrs`` decorators.
+  * Restore behavior of setting a Call as a base for classes
+    created using ``six.with_metaclass()``,
+    and harden support for using enums as metaclasses in this
+    case.
+  * astroid now supports ``TryStar`` nodes from python 3.11 and
+    should be fully compatible with python 3.11.
+  * ``Formattedvalue.postinit`` is now keyword only. This is to
+    allow correct typing of the ``Formattedvalue`` class.
+  * ``Astroid`` now supports custom import hooks.
+  * ``astroid`` now infers return values from match cases.
+  * ``AstroidManager.clear_cache`` now also clears the inference
+    context cache.
+  * ``Astroid`` now retrieves the default values of keyword only
+    arguments and sets them on ``Arguments.kw_defaults``.
+  * ``Uninferable`` now has the type ``UninferableBase``. This is
+    to facilitate correctly type annotating code that uses this
+    singleton.
+  * Deprecate ``modutils.is_standard_module()``. It will be
+    removed in the next minor release.
+  * Fix ``are_exclusive`` function when a walrus operator is used
+    inside ``IfExp.test`` field.
+ 
+-------------------------------------------------------------------
 Sat Jan  7 08:50:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v2.12.14:

@@ -403,4 +403,39 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1058347</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c8132bf6072e320f60f7606ecfaf5b07</srcmd5>
+    <version>2.15.3</version>
+    <time>1681996404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.3:
+  * Fix ``infer_call_result()`` crash on methods called
+    ``with_metaclass()``
+  * Suppress ``UserWarning`` when finding module specs.
+
+- update to 2.15.2:
+  * Support more possible usages of ``attrs`` decorators.
+  * Restore behavior of setting a Call as a base for classes
+    created using ``six.with_metaclass()``,
+    and harden support for using enums as metaclasses in this
+    case.
+  * astroid now supports ``TryStar`` nodes from python 3.11 and
+    should be fully compatible with python 3.11.
+  * ``Formattedvalue.postinit`` is now keyword only. This is to
+    allow correct typing of the ``Formattedvalue`` class.
+  * ``Astroid`` now supports custom import hooks.
+  * ``astroid`` now infers return values from match cases.
+  * ``AstroidManager.clear_cache`` now also clears the inference
+    context cache.
+  * ``Astroid`` now retrieves the default values of keyword only
+    arguments and sets them on ``Arguments.kw_defaults``.
+  * ``Uninferable`` now has the type ``UninferableBase``. This is
+    to facilitate correctly type annotating code that uses this
+    singleton.
+  * Deprecate ``modutils.is_standard_module()``. It will be
+    removed in the next minor release.
+  * Fix ``are_exclusive`` function when a walrus operator is used
+    inside ``IfExp.test`` field.</comment>
+    <requestid>1080002</requestid>
+  </revision>
 </revisionlist>
