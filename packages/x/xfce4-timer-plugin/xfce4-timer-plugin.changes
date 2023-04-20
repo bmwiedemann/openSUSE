@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 18 17:47:45 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.7.2
+  * Update copyright year and bug report address
+  * always keep the dialog window above
+  * Allow to start any timer on timeout
+  * Remove dead code generating a warning
+  * Remove wrong function call
+  * Do not quit the main loop on "free-data"
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Update configure.ac.in
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING
+  * Delete "xfce4" from various strings
+  * Replace GTimeVal with GDateTime
+  * Context menu option to add new timer and pause/stop icons (!11)
+  * Fix missing translation macro for Time's up dialog
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Request automatic widget length
+  * Properly save settings for many plugin instances
+  * Reaplce AC_CONFIG_MACRO_DIR with AC_CONFIG_MACRO_DIRS (!1)
+  * Create README.md. Update configure.ac.in
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Fri Jul 24 09:04:37 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.7.1

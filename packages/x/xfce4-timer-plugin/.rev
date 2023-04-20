@@ -15,4 +15,37 @@
     <comment></comment>
     <requestid>822753</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f49fbd6aaebac55a582e7d226a317def</srcmd5>
+    <version>1.7.2</version>
+    <time>1681996497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2
+  * Update copyright year and bug report address
+  * always keep the dialog window above
+  * Allow to start any timer on timeout
+  * Remove dead code generating a warning
+  * Remove wrong function call
+  * Do not quit the main loop on &quot;free-data&quot;
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Update configure.ac.in
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING
+  * Delete &quot;xfce4&quot; from various strings
+  * Replace GTimeVal with GDateTime
+  * Context menu option to add new timer and pause/stop icons (!11)
+  * Fix missing translation macro for Time's up dialog
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Request automatic widget length
+  * Properly save settings for many plugin instances
+  * Reaplce AC_CONFIG_MACRO_DIR with AC_CONFIG_MACRO_DIRS (!1)
+  * Create README.md. Update configure.ac.in
+  * Translation Updates
+- Remove _service file (forwarded request 1080176 from manfred-h)</comment>
+    <requestid>1080847</requestid>
+  </revision>
 </revisionlist>
