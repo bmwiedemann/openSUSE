@@ -15,4 +15,30 @@
     <comment>Upgrade to Xfce 4.16</comment>
     <requestid>860868</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ffa64a890e396ea92c8549686604e396</srcmd5>
+    <version>0.7.2</version>
+    <time>1681996498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2
+  * Add basic GitLab pipeline
+  * Use same automake options as other projects
+  * build: Fix intltool lock file problem during make distcheck
+  * Update copyright year
+  * Remove deprecated project files
+  * build: Add missing includes
+  * build: Fix autoconf warnings
+  * build: Add GLib requirement
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * Fix license notices mentioning LGPL (#7)
+  * tests: Parenthesize concatenations to avoid ambiguity
+  * Fix the 64x64 icon
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update bug report URL
+  * Make configure.ac.in more friendly to xfce-do-release helper
+  * Translation Updates
+- Remove _service file (forwarded request 1080495 from manfred-h)</comment>
+    <requestid>1080849</requestid>
+  </revision>
 </revisionlist>

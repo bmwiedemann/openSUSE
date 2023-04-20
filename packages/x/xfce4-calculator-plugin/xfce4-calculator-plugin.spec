@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-calculator-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.14.0
+%define panel_version 4.12.0
 %define plugin calculator
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Calculator plugin for the Xfce4 panel
 License:        GPL-2.0-only
@@ -30,7 +30,8 @@ Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.7/%{name}-%
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= %{panel_version}
@@ -83,7 +84,7 @@ NOCONFIGURE=1 ./autogen.sh
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%license COPYING COPYING.LIB
+%license COPYING
 %doc AUTHORS NEWS README.md
 %{_libdir}/xfce4/panel/plugins/libcalculator.la
 %{_libdir}/xfce4/panel/plugins/libcalculator.so
