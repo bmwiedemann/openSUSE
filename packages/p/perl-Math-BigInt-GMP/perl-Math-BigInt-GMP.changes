@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  4 03:08:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.6012
+   see /usr/share/doc/packages/perl-Math-BigInt-GMP/CHANGES
+
+  1.6012 2023-04-03
+
+   * Sync test files with Math-BigInt.
+
+-------------------------------------------------------------------
 Wed May 18 03:08:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.6011
