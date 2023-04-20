@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 17 14:13:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update simple-sendfile to version 0.2.30 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:16 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
