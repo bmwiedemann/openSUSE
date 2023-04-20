@@ -21,7 +21,7 @@ Name:           libgarcon
 Version:        4.18.1
 Release:        0
 Summary:        Library Implementing the freedesktop.org Desktop Menu Specification
-License:        GPL-2.0-or-later
+License:        GFDL-1.1-only AND LGPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.xfce.org/dev/garcon
 Source:         https://archive.xfce.org/src/xfce/garcon/4.18/garcon-%{version}.tar.bz2
@@ -101,6 +101,7 @@ BuildArch:      noarch
 
 %description branding-upstream
 This package provides the upstream look and feel for garcon.
+
 
 
 # this should be replaced by %%lang_package once bnc#513786 is resolved

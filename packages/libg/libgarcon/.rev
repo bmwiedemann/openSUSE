@@ -341,4 +341,13 @@
   * Translation Updates (forwarded request 1075062 from manfred-h)</comment>
     <requestid>1076638</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>82eef1f5522c61cf494b00b35bed9df4</srcmd5>
+    <version>4.18.1</version>
+    <time>1681996493</time>
+    <user>dimstar_suse</user>
+    <comment>- Correction of license should be LGPL-2.0-only and GFDL-1.1-only 
+  * confirmed with suse legal (forwarded request 1080504 from lkocman)</comment>
+    <requestid>1080506</requestid>
+  </revision>
 </revisionlist>
