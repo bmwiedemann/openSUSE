@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 19 09:32:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * allow to disassemble code containing ``EXTENDED_ARG``
+    targeting a ``NOP`` PR #117
+
+-------------------------------------------------------------------
 Thu Dec 15 22:44:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies

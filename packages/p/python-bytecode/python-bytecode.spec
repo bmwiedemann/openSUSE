@@ -1,7 +1,7 @@
 #
 # spec file for package python-bytecode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-bytecode
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Python module to generate and modify bytecode
 License:        MIT
@@ -25,8 +25,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/vstinner/bytecode
 Source:         https://files.pythonhosted.org/packages/source/b/bytecode/bytecode-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
