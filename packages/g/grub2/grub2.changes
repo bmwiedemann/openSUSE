@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 18 02:42:23 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix no prep partition error on non-PReP architectures by making the
+  prep_loadenv module exclusive to powerpc_ieee1275 platform (bsc#1210489)
+  * 0004-Introduce-prep_load_env-command.patch
+- Fix the issue of freeing an uninitialized pointer
+  * 0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
+- Rediff
+  * 0005-export-environment-at-start-up.patch
+  * 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+
+-------------------------------------------------------------------
 Tue Apr 11 11:13:26 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Resolve some issues with OS boot failure on PPC NVMe-oF disks and made

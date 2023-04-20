@@ -19,12 +19,13 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2617,4 +2617,6 @@
+@@ -2628,5 +2628,7 @@
  module = {
    name = prep_loadenv;
    common = commands/prep_loadenv.c;
 +  cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
 +  cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
+   enable = powerpc_ieee1275;
  };
 --- a/grub-core/commands/prep_loadenv.c
 +++ b/grub-core/commands/prep_loadenv.c

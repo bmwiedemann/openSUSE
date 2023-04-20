@@ -15,6 +15,9 @@ v2:
 To avoid disrupting the boot process with errors, it's important to log
 any errors that may occur and always return GRUB_ERR_NONE.
 
+v3:
+Making the new module powerpc_ieee1275 specific.
+
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
  grub-core/Makefile.core.def       |   5 +
@@ -24,7 +27,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2624,3 +2624,8 @@
+@@ -2624,3 +2624,9 @@
    common = lib/libtasn1_wrap/tests/Test_strings.c;
    common = lib/libtasn1_wrap/wrap_tests.c;
  };
@@ -32,6 +35,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +module = {
 +  name = prep_loadenv;
 +  common = commands/prep_loadenv.c;
++  enable = powerpc_ieee1275;
 +};
 --- /dev/null
 +++ b/grub-core/commands/prep_loadenv.c

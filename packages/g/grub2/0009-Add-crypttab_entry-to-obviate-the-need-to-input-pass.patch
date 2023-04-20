@@ -31,9 +31,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2643,3 +2643,8 @@
-   cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
+@@ -2633,3 +2633,8 @@
    cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
+   enable = powerpc_ieee1275;
  };
 +
 +module = {
