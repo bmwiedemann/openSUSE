@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v19.3.0/Makefile
+Index: node-v19.8.1/Makefile
 ===================================================================
---- node-v19.3.0.orig/Makefile
-+++ node-v19.3.0/Makefile
+--- node-v19.8.1.orig/Makefile
++++ node-v19.8.1/Makefile
 @@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v19.3.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v19.3.0/tools/install.py
+Index: node-v19.8.1/tools/install.py
 ===================================================================
---- node-v19.3.0.orig/tools/install.py
-+++ node-v19.3.0/tools/install.py
+--- node-v19.8.1.orig/tools/install.py
++++ node-v19.8.1/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -84,7 +84,7 @@ Index: node-v19.3.0/tools/install.py
 +  ], 'include/node19/')
  
    # Add the expfile that is created on AIX
-   if sys.platform.startswith('aix'):
+   if sys.platform.startswith('aix') or sys.platform == "os400":
 -    action(['out/Release/node.exp'], 'include/node/')
 +    action(['out/Release/node.exp'], 'include/node19/')
  
@@ -113,10 +113,10 @@ Index: node-v19.3.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v19.3.0/doc/node.1
+Index: node-v19.8.1/doc/node.1
 ===================================================================
---- node-v19.3.0.orig/doc/node.1
-+++ node-v19.3.0/doc/node.1
+--- node-v19.8.1.orig/doc/node.1
++++ node-v19.8.1/doc/node.1
 @@ -31,24 +31,24 @@
  .Dt NODE 1
  .
@@ -146,10 +146,10 @@ Index: node-v19.3.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v19.3.0/src/node_main.cc
+Index: node-v19.8.1/src/node_main.cc
 ===================================================================
---- node-v19.3.0.orig/src/node_main.cc
-+++ node-v19.3.0/src/node_main.cc
+--- node-v19.8.1.orig/src/node_main.cc
++++ node-v19.8.1/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -158,11 +158,11 @@ Index: node-v19.3.0/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v19.3.0/tools/test.py
+Index: node-v19.8.1/tools/test.py
 ===================================================================
---- node-v19.3.0.orig/tools/test.py
-+++ node-v19.3.0/tools/test.py
-@@ -949,7 +949,7 @@ class Context(object):
+--- node-v19.8.1.orig/tools/test.py
++++ node-v19.8.1/tools/test.py
+@@ -954,7 +954,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -171,10 +171,10 @@ Index: node-v19.3.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v19.3.0/node.gyp
+Index: node-v19.8.1/node.gyp
 ===================================================================
---- node-v19.3.0.orig/node.gyp
-+++ node-v19.3.0/node.gyp
+--- node-v19.8.1.orig/node.gyp
++++ node-v19.8.1/node.gyp
 @@ -23,8 +23,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',

@@ -149,4 +149,12 @@ For details, see CHANGELOG_V19.md</comment>
     <comment>- relax Requires to Suggests for alts on TW</comment>
     <requestid>1071191</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c9956f23ca11b76d2e7a5e2dd612a46</srcmd5>
+    <version>19.9.0</version>
+    <time>1681996427</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1080326</requestid>
+  </revision>
 </revisionlist>

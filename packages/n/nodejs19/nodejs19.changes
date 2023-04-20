@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 12 09:10:03 UTC 2023 - Adam Majer <adam.majer@suse.de> - 19.9.0
+
+- Update to version 19.9.0
+  * add Tracing Channel in diagnostic_channel
+  * new URL.canParse API
+
+-------------------------------------------------------------------
+Mon Mar 20 12:49:54 UTC 2023 - Adam Majer <adam.majer@suse.de> - 19.8.1 
+
+- Update to version 19.8.1
+  * buffer: add Buffer.copyBytesFrom(...)
+  * events: add listener argument to listenerCount
+  * lib: add AsyncLocalStorage.bind() and .snapshot()
+  * tls: support automatic DHE
+  * wasi: add support for version when creating WASI
+  * worker: add support for worker name in inspector and trace_events
+  * deps: npm updated to 9.5.1
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Mar 13 16:44:05 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - relax Requires to Suggests for alts on TW
