@@ -605,4 +605,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
 </comment>
     <requestid>1076404</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>e261b047515df17b8551f576bafcbc9c</srcmd5>
+    <version>12.60</version>
+    <time>1681996501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080855</requestid>
+  </revision>
 </revisionlist>

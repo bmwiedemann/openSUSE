@@ -17,16 +17,13 @@
 
 
 %define cpan_name Image-ExifTool
-
 Name:           perl-Image-ExifTool
-Version:        12.59
+Version:        12.60
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Read and write meta information
 URL:            https://metacpan.org/release/%{cpan_name}
-# use non-release build because of CVE-2022-23935
-#Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXIFTOOL/%%{cpan_name}-%%{version}.tar.gz
-Source0:        https://exiftool.org/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXIFTOOL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -52,6 +49,7 @@ Sony.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
