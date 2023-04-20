@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.4.4
+Version:        4.5.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -42,7 +42,8 @@ BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) = 1.18
+# at least go 1.18 is needed from go.mod
+BuildRequires:  golang(API) > 1.18
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 Recommends:     apparmor-abstractions
