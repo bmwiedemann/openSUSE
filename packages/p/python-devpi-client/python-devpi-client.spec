@@ -17,7 +17,7 @@
 
 
 Name:           python-devpi-client
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 Summary:        Client for devpi
 License:        MIT

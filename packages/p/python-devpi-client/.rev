@@ -149,4 +149,21 @@
 </comment>
     <requestid>1078250</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78b6858788e4c92014379eae87c1287f</srcmd5>
+    <version>6.0.4</version>
+    <time>1681996454</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.4:
+  * Fix precedence of URL from command line over DEVPI_INDEX
+    environment variable for ``devpi use``.
+  * Fix relative DEVPI_INDEX environment variable with user and
+    index causing an invalid URL in some cases.
+  * Fix persistence of username when DEVPI_INDEX environment
+    variable is used with ``devpi login``.
+  * Fix precedence of ``--sdist`` and ``--wheel`` over
+    ``formats`` setting from setup.cfg ``[devpi:upload]``
+    section.</comment>
+    <requestid>1080284</requestid>
+  </revision>
 </revisionlist>

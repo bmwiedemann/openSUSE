@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 19 09:33:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.4:
+  * Fix precedence of URL from command line over DEVPI_INDEX
+    environment variable for ``devpi use``.
+  * Fix relative DEVPI_INDEX environment variable with user and
+    index causing an invalid URL in some cases.
+  * Fix persistence of username when DEVPI_INDEX environment
+    variable is used with ``devpi login``.
+  * Fix precedence of ``--sdist`` and ``--wheel`` over
+    ``formats`` setting from setup.cfg ``[devpi:upload]``
+    section.
+
+-------------------------------------------------------------------
 Mon Apr 10 09:35:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.0.3:
