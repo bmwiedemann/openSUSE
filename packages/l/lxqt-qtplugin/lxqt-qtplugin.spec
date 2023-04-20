@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-qtplugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-qtplugin
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        LXQt platform integration plugin for Qt 5
 License:        LGPL-2.1-or-later
@@ -30,13 +30,13 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libexif-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.13.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.0
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg) >= 3.9.0
+BuildRequires:  pkgconfig(Qt5Xdg) >= 3.11.0
 BuildRequires:  pkgconfig(Qt5XdgIconLoader)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libfm-qt) >= %{version}
