@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 15 18:18:02 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0:
+  * A problem is fixed in switching the color scheme between dark
+    and light.
+  * Prevented a crash on splitting the terminal under
+    `kwin_wayland`
+
+-------------------------------------------------------------------
 Sat Nov  5 18:43:44 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:
