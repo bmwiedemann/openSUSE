@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-HandlesVia
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Sub-HandlesVia
 Name:           perl-Sub-HandlesVia
-Version:        0.046
+Version:        0.050000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative handles_via implementation

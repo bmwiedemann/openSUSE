@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  6 03:09:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.050000
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.050000	2023-04-05
+
+   [ Documentation ]
+   - Add a few missing references to the
+     Sub::HandlesVia::HandlerLibrary::Enum module to the documentation.
+   - Mention potential load-order bugs when importing multiple extensions for
+     Moo into the same package.
+   - Update Sub::HandlesVia::Manual::Comparison.
+
+   [ Packaging ]
+   - Change versioning scheme.
+
+-------------------------------------------------------------------
 Sat Dec 17 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.046
