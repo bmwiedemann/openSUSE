@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 17 19:08:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.5:
+  * General:
+    * Add: Display kills and units in spectator stats UI
+    * Fix: "Get off my land" and "kill selected" cheats 
+    * Fix: Don't assign trucks from factories to commanders
+    * Fix: Repairs: Reset secondary only after "go-to-rally-point"
+      was triggered, separate RTR logic from RTR_SPECIFIED
+    * Fix: Various potential crashes and corrupt config issues
+  * Graphics:
+    * Fix: Properly render unit resistance bar
+  * Multiplayer:
+    * Add: /hostmsg lobby chat prefix that sends a message only
+      to the host
+    * Change: Add Heavy Rocket Array to all skirmish AIs
+    * Change: Improvements to Nexus AI
+    * Fix: Desync with losing player-turned-spectator when
+      certain defensive structures remain
+  * Balance MP:
+    * Change: Slightly increase the build cost of Mortar1Mk1
+    * Change: Return Tank Killer reloadTime from 160 -> 180
+    * Change: Increase HRA production time from 800 -> 900
+  * Other:
+    * Fix: "kick identity" command should only kick, not ban
+
+-------------------------------------------------------------------
 Mon Mar 27 15:35:11 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 * Add BuildRequires pkgconfig(fribidi)
