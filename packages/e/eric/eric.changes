@@ -1,10 +1,487 @@
 -------------------------------------------------------------------
-Sun Mar  6 13:50:42 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+Wed Apr 19 15:45:30 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 23.4.2
+  - bug fixes
+
+- Update to version 23.4.1
+  - bug fixes
+
+- Update to version 23.4
+  - bug fixes
+  - Editor
+      - Added capability to highlight the area used by a text search (if it is not the
+        whole document).
+  - MicroPython
+      - Updated the list of known CircuitPython boards.
+      - Updated the list of known UF2 capable boards.
+      - Added functionality to search for known boot volumes in the UF2 flash dialog.
+      - Added functionality to install packages using `mip` or `upip`.
+      - Added support for WiFi enabled boards.
+      - Added support for Bluetooth enabled boards.
+      - Added support for Ethernet enabled boards.
+      - Added support for synchronizing the board time via NTP for network enabled
+        boards.
+      - Added a dialog to enter the parameters to convert a .hex or .bin firmware
+        file to UF2.
+  - Mini Editor
+      - Added capability to highlight the area used by a text search (if it is not the
+        whole document).
+  - Syntax Checker
+      - Added the capability to define names to be treated as builtin names by the
+        `pyflakes` checker globally (see configuration dialog `Editor => Code Checkers`
+        page and on a per project basis (see `Project-Tools => Check => Syntax`).
+  - Third Party packages
+      - Upgraded eradicate to version 2.2.0.
+      - Upgraded pipdeptree to version 2.5.2.
+      - Upgraded pip-licenses to version 4.1.0.
+
+- Update to version 23.3
+  - bug fixes
+  - MicroPython
+      - Updated the list of known CircuitPython boards.
+      - Updated the list of known UF2 capable boards.
+      - Some smaller enhancements for CircuitPython devices.
+      - Added functionality to update modules of CircuitPython devices with `circup`
+        (adapted for use within eric-ide).
+      - Added functionality to show the installed firmware version and the version
+        available on Github (for all boards except 'Calliope mini').
+      - Added support for Teensy 4.0 and 4.1 devices with MicroPython.
+      - Extended the file manager to be able to load device files into an editor and
+        save them back to the device.
+  - PDF Viewer
+      - Added a tool based on `QtPdf` and `QtPdfWidgets` to show the contents of PDF
+        files.
+
+- Update to version 23.2
+  - bug fixes
+  - Human Machine Interfaces
+      - Changed code to use the default tab bar icon size.
+  - Debug Client - Python
+      - Removed the internal copy of the 'coverage' package and made it a dependency.
+  - pip Interface
+      - Added code to show the full text of security advisories in the package details
+        dialog.
+      - Added a tab to show the defined project URLs to the package details dialog.
+      - Changed the package details dialog to show just those tabs, that contain some
+        data.
+  - Help Viewer
+      - Added a configuration option to disable the search for new QtHelp documents
+        on startup.
+  - Web Browser
+      - Updated the included 'jquery.js' and 'jquery-ui.js' needed by the Speeddial page
+        and adapted this page to the new/changed functions.
+
+- Update to version 23.1.1
+  - bug fixes
+
+- Update to version 23.1
+  - bug fixes
+  - Class Browsers
+      - Removed the IDL and Protobuf class browsers to include them in their respective
+        plugin.
+  - Code Formatting
+      - Added an option to configure the 'known first party' packages to the isort
+        configuration dialog.
+  - Editor
+      - Changed the handling of files whose type cannot be determined by the Python
+        mimetypes module to check against a list of known text file patterns and
+        ultimately asking the user, if the file in question is a text file (see
+        `Mimetypes` configuration page).
+      - Added a configuration option to disable the source navigator (selector boxes above
+        the editor or code outline right of the editor). This is useful e.g. on very small
+        screens.
+      - Added support for multiple cursor paste.
+  - Find In Files
+      - Added context menu entries in Replace mode to select/deselect all entries
+        (e.g. useful for checking big replacement lists for validity).
+  - MicroPython
+      - Updated the list of known CircuitPython boards.
+      - Updated the list of known UF2 capable boards.
+  - Project
+      - Extended the list of default file type associations.
+      - Added the capability to edit the file type associations from within the
+        project properties dialog.
+  - Project Viewer
+      - Removed the CORBA and Protobuf viewers to make them available as plugins.
+      - Added a `Collapse all files` entry to the Project Sources viewer.
+  - Version Control Systems - git
+      - Changed git interface code to work with `git worktrees`.
+      - Added a dialog to manage worktrees ( `git worktree` commands).
+  - Third Party packages
+      - Upgraded pipdeptree to version 2.3.3.
+      - Upgraded pip-licenses to version 4.0.2.
+      - Upgraded pycodestyle to version 2.10.0.
+      - Upgraded pyflakes to version 3.0.1.
+
+- Update to version 22.12
+  - bug fixes
+  - Code Formatting
+      - added an interface to resort the import statements of Python source files with
+        the 'isort' utility
+  - Code Style Checker
+      - added a few imports style options and added a sorting function iaw. the 'isort'
+        utility
+  - CycloneDX Interface
+      - addad capability to generate readable (prettified) output
+  - Debugger
+      - increased the configuration possibilities for the network interface the debug
+        server listens on
+      - added the capability to configure the debug server of the IDE to listen at a
+        fixed network port (default 35000)
+      - added a stack frame selector to the global variables viewer (synchronized with
+        the one of the local variables viewer)
+  - MicroPython
+      - introduced a configuration option to enable manual selection of devices
+        (e.g. for unknown devices or inside the Linux container of ChromeOS)
+  - Previewers
+      - added a button to copy the contents of the HTML previewer to the clipboard
+  - Project
+      - added capability to reload the current project
+  - Qt Tools
+      - added a configuration option for the path of the 'qhelpgenerator' tool
+        (it is installed differently by various Linux distributions)
+  - Web Browser
+      - added bookmark importer entries for
+          - Falkon
+          - Microsoft Edge
+          - Opera (Chromium based)
+          - Vivaldi
+
+- Update to version 22.11.1
+  - bug fixes
+
+- Update to version 22.11
+    - bug fixes
+    - Debugger
+        - added the capability to apply the current selection of the `Variable Types Filter`
+          to see its effect
+        - added the capability to add a positive (`Show Only`) or negative (`Don't Show`)
+          variables filter to the global and local variables viewers
+    - Editor
+        - added a configuration option to reject the loading of a file that exceeds the
+          configured size
+        - opening a file that is not a text file will be rejected
+    - Git Interface
+        - added support for `git blame --ignore-revs-file` including an action to create
+          such a skip list file
+    - Mercurial Interface
+        - added support for `hg annotate --skip` including an action to create a file
+          for the commit IDs to be skipped (one per line)
+    - Project
+        - refined the embedded environment handling
+        - added a topic to the project properties to define the sources start path within
+          the project ('Translations Properties Dialog')
+    - Scripts
+        - renamed 'eric7.py' to 'eric7_ide.py' in order to remove the ambiguity between the
+          main script and the package
+    - Styles and Themes
+        - added a style sheet for the dark gray theme
+    - Translator
+        - added the command line switch `--no-multimedia` to forcefully disable the
+          pronounce function of the translator widget (in case Qt aborts the application
+          start process)
+    - Various
+        - changed the Gmail interface to use the Google API packages for authentication
+          (OAuth2) and sending of emails
+    - Virtual Environments
+        - added the capability to enter a descriptive text for a virtual environment
+    - Third Party packages
+        - upgraded coverage to version 6.5.0
+        - upgraded pycodestyle to version 2.9.1
+        - upgraded pyflakes to version 2.5.0
+
+- Update to version 22.10
+  - bug fixes
+  - API files
+      - added API files for the Adafruit CircuitPython Library Bundle
+      - updated the CircuitPython API file
+  - Code Formatting
+      - added a Project menu entry to just configure the formatting parameters
+      - added the capability to format the source code after a diff or check
+        run from within the results dialog
+  - Code Style Checker
+      - added some more security related checks
+      - extended the list of miscellaneous checks
+  - pip Interface
+      - changed the pip licenses dialog to show the count of each individual license
+  - Project
+      - added capability to use a virtual Python environment named `.venv` embedded
+        within the project directory
+      - added a configuration option to save the project automatically whenever it changes
+  - Testing
+      - extended the testing dialog to allow test case filtering on markers (pytest only)
+      - extended the testing dialog to allow test case filtering by a list of test name
+        patterns (unittest) or test name expression (pytest)
+  - Translator
+      - added support for 'Ukrainian' to the DeepL translator interface
+  - install scripts
+      - modified install.py script to differentiate between optional and required
+        dependencies
+      - modified the install script such, that the qt6-applications package is only
+        installed upon request (--with-tools)
+      - extended the install-dependencies.py script to differentiate between optional and
+        required dependencies. Invoke it with
+        `python3 install-dependencies.py --all | --optional | --required`.
+
+- Update to version 22.9
+  - bug fixes
+  - Code Style Checker
+      - extended the Naming style checker to be more PEP8 compliant
+      - updated imports checker to support banned module patterns
+      - updated the annotations checker to support more cases
+      - updated the simplifications checker to support more cases
+  - Debugger
+      - added capability to suppress reporting of unhandled exceptions
+  - Editor
+      - extended the Pygments based lexer to support the various comment variants
+  - Interface
+      - added capability to expand or shrink the sidebar by clicking on the empty
+        part of the icon bar
+  - MicroPython
+      - added capability to connect to devices for which only the serial port name
+        is available
+
+- Update to version 22.8
+  - bug fixes
+  - API Generator
+      - added capability to configure a start directory for the API generation
+        process
+  - Code Documentation Generator
+      - added capability to configure a start directory for the documentation
+        generation process
+  - Code Formatting
+      - added an interface to reformat Python source code with the 'Black' utility
+  - Eric Widgets
+      - extended EricPathPicker to offer a pathlib.Path based interface
+      - extended EricFileDialog to offer a pathlib.Path based interface
+      - extended the EricFileDialog Wizard to create the pathlib.Path based methods
+  - MicroPython
+      - updated the list of known CircuitPython boards
+      - updated the list of known UF2 capable boards
+  - pip Interface
+      - included a copy of pipdeptree and patched it to work with Python 3.11+
+      - added capability to repair dependency issues
+      - added capability to generate text for a 'constraints.txt' file
+  - setup Wizard
+      - added support for `project_urls`
+      - added support for `entry_points`
+      - added a variant to create a `setup.cfg` file
+      - added a variant to create a `pyproject.toml` file
+  - Third Party packages
+      - upgraded coverage to version 6.4.2
+      - upgraded eradicate to version 2.1.0
+
+- Update to version 22.7
+  - bug fixes
+  - Code Style Checker
+      - introduced an additional documentation style type for eric and blacked
+        code (i.e. code formatted by the 'Black' tool)
+  - CycloneDX Interface
+      - added capability to create a Software Bill of Materials (SBOM) file in
+        CycloneDX format
+  - pip Interface
+      - added SBOM capability
+  - Project
+      - added SBOM capability
+      - added License to project properties
+  - Styles and Themes
+      - added a style and theme with a dark gray background
+  - Translator
+      - changed DeepL support to the v2 API and added support for the Free API
+        next to the Pro API
+      - removed the interface to Glosbe as they don't provide an API anymore
+      - removed the interface to PROMT as they don't provide a free API anymore
+      - upgraded the interfaces to the Google V2 and Microsoft translators
+  - Virtual Environments
+      - added the capability to upgrade a virtual environment
+
+- Update to version 22.6
+  - bug fixes
+  - Dataview Coverage
+      - added support to write coverage reports as HTML, JSON or LCOV files
+      - removed the support for writing annotated sources
+        (deprecated in coverage.py)
+  - Mercurial Interface
+      - added configuration option to override the automatic search for the hg
+        executable
+  - MicroPython
+      - updated the list of known CircuitPython boards
+      - updated the list of known UF2 capable boards
+  - pip Interface
+      - added a filter to the package licenses dialog
+  - Syntax Checker
+      - changed the TOML syntax checker to use 'tomlkit' because 'toml' is no
+        longer maintained
+  - Testing
+      - reworked the former unittest interface to allow to support testing
+        frameworks other than "unittest"
+      - implemented support for the "unittest" and "pytest" frameworks
+  - Wizards
+      - extended the QInputDialog wizard to support the `getMultiLineText()`
+        function
+  - Third Party packages
+      - upgraded pip-licenses to version 3.5.4
+      - upgraded coverage to version 6.4.0
+
+- Update to version 22.5
+  - bug fixes
+  - General
+      - added configuration options to disable the embedded `Find/Replace In
+        Files` and `Find File` tools and use dialog based variants instead
+  - Mercurial Interface
+      - added capability to enter a revset expression when defining a revision
+        to operate on
+  - pip Interface
+      - added the capability to save the licenses overview as a CSV file
+
+- Update to version 22.4
+  - bug fixes
+  - General
+      - added capability to upgrade PyQt packages eric depends on from within eric
+      - added capability to upgrade eric from within eric
+  - pip Interface
+      - added a vulnerability check for installed packages based on "Safety DB"
+      - added a widget to show a package dependency tree
+      - added a button to search for more packages (i.e. one more page of results)
+  - Third Party packages
+      - upgraded coverage to version 6.3.2
+      - upgraded mccabe to version 0.7.0
+
+- Adjust dependencies and installation items
+
+-------------------------------------------------------------------
+Sat Mar  5 23:01:55 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add new EditorConfig dependency
-- Add libQt5Sql5-sqlite dependency and recommends for mysql and
+- Add qt6-sql-sqlite dependency and recommends for mysql and 
   postgresql plug-ins
-- Add more recommends, according to install.py
+
+-------------------------------------------------------------------
+Sat Mar  5 17:39:12 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 22.3
+  - bug fixes
+  - General
+    -- performance improvements
+    -- added a '__main__.py' script to allow starting eric7 with
+    'python3 -m eric7'
+  - MicroPython
+    -- enhanced support for ESP32 devices
+    -- updated the list of known UF2 capable boards
+
+-------------------------------------------------------------------
+Thu Mar  3 17:28:37 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switched to PyQt6 based eric7
+- Update to version 22.2
+  - bug fixes
+  - General
+    -- dropped support for Python 3.6 because that is end-of-life
+  - File Browser
+    -- added capability to open SVG files in the text editor
+  - Help Viewer
+    -- added bookmarks to the internal help viewer
+  - MicroPython
+    -- updated the list of known CircuitPython boards
+    -- updated the list of known UF2 capable boards
+    -- added support for ESP32-C3, ESP32-S2 and ESP32-S3 chips
+    -- added a dialog to show information for a connected board
+  - Project Browser
+    -- added capability to open SVG files in the text editor to the
+    Project
+    Others Browser
+  - Styles and Themes
+    -- added a dark blueish style (QSS and Highlighters) and an
+    associated theme
+    (dark_blue.ethj and dark_blue_with_stylesheet.ethj)
+  - Third Party packages
+    -- upgraded coverage to 6.2.0
+
+- Update to version 22.1.1
+  - bug fix
+
+- Update to version 22.1
+  - bug fixes
+  - Code Style Checker
+    -- added a checker for various import statement topics
+  - Color Themes
+    -- added capability to import and export ALL colors
+  - Mini Editor
+    -- added configuration capability
+  - QSS Previewer
+    -- added disabled widgets in order to show their colors as well
+  - Styles and Themes
+    -- added a dark greenish style (QSS and Highlighters) and an
+    associated theme
+    (dark_green.ethj and dark_green_with_stylesheet.ethj)
+
+- Update to version 21.12
+  - bug fixes
+  - first release of eric7 (i.e. the PyQt6 port of eric6)
+  - General
+    -- rearranged the interface and modernized the sidebars layout
+    -- integrated some dialogs into the sidebars
+  - Debugger
+    -- added code to remember the list of recently used breakpoint
+    conditions
+    in the editor and the breakpoint viewer
+    -- added code to enter the script to be run/debugged/... in the
+    start dialog
+  - Editor
+    -- added the capability to suppress syntax highlighting by
+    associating
+    the file type 'Text'
+    -- added code to move a breakpoint to a line actually creating
+    some byte code
+    (Python only)
+    -- added mouse button capability to perform undo/redo actions
+    (Extra
+    Buttons 1 and 2)
+    -- added support for 'multi cursor editing' (additional cursors
+    with
+    Meta+Alt+Left Click, Esc to end it)
+  - Find In Files
+    -- integrated the dialog into the right sidebar
+  - Help Viewer
+    -- added an internal help viewer based on QTextBrowser or
+    QWebEngine
+  - Jedi
+    -- integrated the Assistant Jedi plugin as a fixed part of eric
+    -- added code to jump to references when clicked on a
+    definition
+    -- added support for mouse hover help
+    -- added support for simple refactorings to the editor context
+    menu
+  - Plugin Repository
+    -- added an integrated plugin repository viewer (right side)
+  - Plugin Uninstall Dialog
+    -- added capability to uninstall several plugins with one
+    invocation of the
+    dialog
+  - Project
+    -- added a 'Start' context sub menu to the project sources
+    browser
+  - Shell
+    -- added capability to save the contents of the shell window
+    into a file
+  - Unit Test
+    -- added capability to remember the most recently used test
+    data
+  - Viewmanager
+    -- added a 'Start' sub menu to the tabview and listspace view
+    managers
+    context menu
+  - Virtual Environments
+    -- integrated the Virtual Environments Manager window into the
+    right side bar
+    -- added a standalone variant of the Virtual Environments
+    Manager
+  - Third Party packages
+    -- upgraded coverage to 6.1.2
+    -- upgraded pycodestyle to version 2.8.0
+    -- upgraded mccabe to version 0.6.1
+    -- upgraded pyflakes to version 2.4.0
 
 -------------------------------------------------------------------
 Sat Jan 15 18:56:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
