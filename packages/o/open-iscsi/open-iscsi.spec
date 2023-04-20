@@ -150,8 +150,7 @@ the libopeniscsiusr library.
 %meson --libdir=%{_libdir} \
 	-Dc_args="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED" \
 	-Discsi_sbindir=%{_iscsi_sbindir} -Ddbroot=%{_dbroot} -Drulesdir=%{_udevrulesdir} -Dlockdir=%{_lockdir} \
-	-Dinstall_dbdir_move_readme=%{_install_dbdir_move_readme_value} \
-	--strip
+	-Dinstall_dbdir_move_readme=%{_install_dbdir_move_readme_value}
 %meson_build
 
 %install
