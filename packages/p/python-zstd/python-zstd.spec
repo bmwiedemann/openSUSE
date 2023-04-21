@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-zstd
 Version:        1.5.4.0
 Release:        0
