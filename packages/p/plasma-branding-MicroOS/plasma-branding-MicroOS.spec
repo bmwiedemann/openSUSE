@@ -35,7 +35,7 @@ Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
 Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20230323
+Version:        20230420
 Release:        0
 
 %description
@@ -58,8 +58,8 @@ install -d %{buildroot}%{_sysconfdir}/skel/.config/autostart
 install -m0644 mod-firstboot.desktop %{buildroot}%{_sysconfdir}/skel/.config/autostart/mod-firstboot.desktop
 install -d %{buildroot}%{_bindir}
 install -m0755 mod-firstboot %{buildroot}%{_bindir}/mod-firstboot
-install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.d
-install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.d/50-desktop.conf
+install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d
+install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
 
 %post
 
@@ -73,7 +73,7 @@ install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional
 %dir %{_sysconfdir}/skel/.config/autostart
 %config(noreplace) %{_sysconfdir}/skel/.config/autostart/mod-firstboot.desktop
 %{_bindir}/mod-firstboot
-%dir %{_prefix}%{_sysconfdir}/transactional-update.d
-%{_prefix}%{_sysconfdir}/transactional-update.d/50-desktop.conf
+%dir %{_prefix}%{_sysconfdir}/transactional-update.conf.d
+%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
 
 %changelog

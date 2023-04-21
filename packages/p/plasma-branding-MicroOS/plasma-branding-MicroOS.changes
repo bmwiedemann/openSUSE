@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:48:13 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Remove unneeded cleanup of desktop drop-in
+- 20230420
+
+-------------------------------------------------------------------
+Wed Apr 19 16:04:49 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Correct location for Desktop drop-in config
+- Clean up invalid desktop drop-in file
+- 20230419
+
+-------------------------------------------------------------------
 Fri Mar 24 16:26:45 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Use new transactional-update drop-in config for Desktop
