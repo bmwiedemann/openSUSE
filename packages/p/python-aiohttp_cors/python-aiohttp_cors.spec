@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-aiohttp_cors
 Version:        0.7.0
 Release:        0
