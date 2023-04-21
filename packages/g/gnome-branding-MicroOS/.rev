@@ -81,4 +81,17 @@
 - 20230323</comment>
     <requestid>1074231</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a8b249b0792bff81f729fd0eaded20c9</srcmd5>
+    <version>20230420</version>
+    <time>1682079349</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded cleanup of desktop drop-in
+- 20230420 
+
+- Correct location for Desktop drop-in config
+- Clean up invalid desktop drop-in file
+- 20230419</comment>
+    <requestid>1080791</requestid>
+  </revision>
 </revisionlist>
