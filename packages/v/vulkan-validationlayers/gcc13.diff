@@ -1,0 +1,16 @@
+---
+ layers/external/vma/vk_mem_alloc.h |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: Vulkan-ValidationLayers-1.3.247/layers/external/vma/vk_mem_alloc.h
+===================================================================
+--- Vulkan-ValidationLayers-1.3.247.orig/layers/external/vma/vk_mem_alloc.h
++++ Vulkan-ValidationLayers-1.3.247/layers/external/vma/vk_mem_alloc.h
+@@ -35,6 +35,7 @@
+ 
+ #ifndef AMD_VULKAN_MEMORY_ALLOCATOR_H
+ #define AMD_VULKAN_MEMORY_ALLOCATOR_H
++#include <cstdio>
+ 
+ /** \mainpage Vulkan Memory Allocator
+ 

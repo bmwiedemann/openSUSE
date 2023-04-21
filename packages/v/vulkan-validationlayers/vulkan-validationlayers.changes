@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 19 21:08:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.247
+  * layers: Add shader identifier tracking
+  * layers: Add Map/UnmapMemory2KHR support to the state tracker
+  * layers: Validate image view sampler conversion format
+  * layers: Add VK_QCOM_image_processing
+  * layers: Add VK_EXT_pipeline_robustness
+  * layers: Add full screen info to validate swapchain
+- Add gcc13.diff
+
+-------------------------------------------------------------------
 Wed Mar 29 18:35:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.243.0

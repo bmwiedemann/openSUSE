@@ -10,25 +10,25 @@ xxhash as well, so that the ABI matches.
  layers/CMakeLists.txt |    4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-Index: Vulkan-ValidationLayers-sdk-1.3.243.0/layers/CMakeLists.txt
+Index: Vulkan-ValidationLayers-1.3.247/layers/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-sdk-1.3.243.0.orig/layers/CMakeLists.txt
-+++ Vulkan-ValidationLayers-sdk-1.3.243.0/layers/CMakeLists.txt
-@@ -41,8 +41,6 @@ target_sources(VkLayer_utils PRIVATE
-     vk_layer_logging.cpp
-     vk_layer_utils.h
-     vk_layer_utils.cpp
--    xxhash.h
--    xxhash.cpp
- )
- 
- # XXH_NO_LONG_LONG: removes compilation of algorithms relying on 64-bit types (XXH3 and XXH64). Only XXH32 will be compiled.
-@@ -53,7 +51,7 @@ target_sources(VkLayer_utils PRIVATE
+--- Vulkan-ValidationLayers-1.3.247.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-1.3.247/layers/CMakeLists.txt
+@@ -19,8 +19,6 @@ target_sources(VkLayer_utils PRIVATE
+     containers/custom_containers.h
+     error_message/logging.h
+     error_message/logging.cpp
+-    external/xxhash.h
+-    external/xxhash.cpp
+     generated/vk_format_utils.h
+     generated/vk_format_utils.cpp
+     generated/vk_validation_error_messages.h
+@@ -51,7 +49,7 @@ target_sources(VkLayer_utils PRIVATE
  # https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/4640
  target_compile_definitions(VkLayer_utils PUBLIC XXH_NO_LONG_LONG)
  
 -target_link_libraries(VkLayer_utils PUBLIC Vulkan::Headers)
 +target_link_libraries(VkLayer_utils PUBLIC Vulkan::Headers -lxxhash)
- target_include_directories(VkLayer_utils PUBLIC
-     .
-     generated # Needed otherwise VkLayer_utils won't install properly.
+ target_include_directories(VkLayer_utils SYSTEM PRIVATE external)
+ target_include_directories(VkLayer_utils PUBLIC .)
+ 
