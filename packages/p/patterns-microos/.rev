@@ -654,4 +654,28 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1079516</requestid>
   </revision>
+  <revision rev="68" vrev="68">
+    <srcmd5>cce195ad1c5e631fbff8826effba6e98</srcmd5>
+    <version>5.0</version>
+    <time>1682079349</time>
+    <user>dimstar_suse</user>
+    <comment>- Relocate the below change to kernel-firmware-all and sof-firmware
+  from base pattern to desktop-common - the requirement is for
+  very broad hardware support Desktops, not ever MicroOS install
+
+- Add kernel-firmware-all and sof-firmware to the base pattern.
+  This should ensure any MicroOS system can handle the various
+  kinds/vendors of hardware out of the box, since those systems
+  don't use package recommendation/supplementation (boo#1184767,
+  boo#1210483).
+- Add missing gtk4-branding-openSUSE requirement (GTK2 and GTK3 are
+  already being required).
+- Drop duplicated NetworkManager requirement from GNOME pattern.
+  This is part of the base pattern which get's pulled in by any
+  MicrOS system.
+- Move xdg-desktop-portal-gtk to the desktop common pattern. Both
+  GNOME and KDE need it for proper theming of GTK-based flatpak
+  apps.</comment>
+    <requestid>1080790</requestid>
+  </revision>
 </revisionlist>

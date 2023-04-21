@@ -409,6 +409,14 @@ Requires:       avahi
 # for the masses
 Requires:       transactional-update-notifier
 
+# Needed by both GNOME and KDE for theming of GTK-based flatpak apps properly
+Requires:       xdg-desktop-portal-gtk
+
+# Needed to ensure MicroOS Desktop systems are be able to handle varied hardware out
+# of the box, and not only during the system installation.
+Requires:       kernel-firmware-all
+Requires:       sof-firmware
+
 %description desktop-common
 Packages required for openSUSE MicroOS Desktops.
 
@@ -537,7 +545,6 @@ Suggests:       power-profiles-daemon
 #
 %if 0%{is_opensuse}
 # bnc#430161
-Requires:       NetworkManager
 Requires:       NetworkManager-openconnect-gnome
 Requires:       NetworkManager-openvpn-gnome
 Requires:       canberra-gtk-play
@@ -547,6 +554,7 @@ Requires:       canberra-gtk-play
 # #591535
 Requires:       gtk2-branding-openSUSE
 Requires:       gtk3-branding-openSUSE
+Requires:       gtk4-branding-openSUSE
 %endif
 
 %description desktop-gnome
@@ -614,7 +622,6 @@ Requires:       plasma5-defaults-openSUSE
 Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
-Requires:       xdg-desktop-portal-gtk
 Requires:       xdg-desktop-portal-kde
 
 # Recommended by powerdevil5, but allow tlp as alternative
@@ -673,8 +680,6 @@ Requires:       iscsiuio
 #extra items for DVD, not every install
 Requires:       ModemManager
 Requires:       NetworkManager-wwan
-# Firmware packages with proper "Supplements:" (see bsc#1184767)
-Requires:       kernel-firmware-all
 Requires:       lvm2
 Requires:       multipath-tools
 Requires:       nvme-cli
