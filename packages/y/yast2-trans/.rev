@@ -3745,4 +3745,17 @@
     <comment>Submit new version</comment>
     <requestid>1079824</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>c8a06994cee8b8d940477b1934195701</srcmd5>
+    <version>84.87.20230420.b54e9530</version>
+    <time>1682079364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87.20230420.b54e9530:
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Catalan)
+  * New POT for text domain 'storage'.
+  * Translated using Weblate (Czech)</comment>
+    <requestid>1080894</requestid>
+  </revision>
 </revisionlist>
