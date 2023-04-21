@@ -1,6 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/coreos/afterburn.git</param>
-              <param name="changesrevision">a6393f31d0ca996228756a1cdbe41b293006b034</param></service><service name="tar_scm">
+              <param name="changesrevision">5b4a520bab90855258d78b00dbd2209e60ba60c9</param></service><service name="tar_scm">
                 <param name="url">https://github.com/JanZerebecki/afterburn.git</param>
               <param name="changesrevision">104ec25049bf429578c60877c0ea503ee96354e4</param></service></servicedata>

@@ -80,4 +80,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>979857</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b09d86b860c46b2499933cea72e98fc1</srcmd5>
+    <version>5.4.1</version>
+    <time>1682079431</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1080839 from malikirri
+
+- Update to version 5.4.1:
+  * cargo: Afterburn release 5.4.1</comment>
+    <requestid>1080942</requestid>
+  </revision>
 </revisionlist>

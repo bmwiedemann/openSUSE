@@ -1,7 +1,7 @@
 #
 # spec file for package afterburn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global dracutmodulesdir %(pkg-config --variable=dracutmodulesdir dracut || echo '/usr/lib/dracut/modules.d')
 
 Name:           afterburn
-Version:        5.3.0
+Version:        5.4.1
 Release:        0
 Summary:        A cloud provider agent
 License:        Apache-2.0
@@ -36,7 +36,7 @@ Patch3:         no-network-args.patch
 ExcludeArch:    %ix86 s390x ppc64le
 
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.56.0
+BuildRequires:  rust >= 1.66.0
 BuildRequires:  pkgconfig(openssl)
 
 %description
