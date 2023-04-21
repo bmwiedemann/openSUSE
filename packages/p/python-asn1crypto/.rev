@@ -123,4 +123,12 @@
    `core.Sequence` fields. Previously the value would be truncated, now</comment>
     <requestid>964490</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>24b327c7ab38ff2dad58d0960412422e</srcmd5>
+    <version>1.5.1</version>
+    <time>1682095698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082006</requestid>
+  </revision>
 </revisionlist>
