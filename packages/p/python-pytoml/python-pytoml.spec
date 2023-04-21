@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytoml
 Version:        0.1.21
