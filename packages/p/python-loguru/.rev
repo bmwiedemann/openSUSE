@@ -71,4 +71,12 @@
     <comment>- add python311.patch to fix build with python 3.11</comment>
     <requestid>1061762</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>53f9100f34da8521b52a0ac7a2d688c0</srcmd5>
+    <version>0.6.0</version>
+    <time>1682095688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081863</requestid>
+  </revision>
 </revisionlist>
