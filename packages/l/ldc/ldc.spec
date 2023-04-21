@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver        99
+%define so_ver        102
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
@@ -34,7 +34,7 @@
 
 # Dynamic compiling is not supported with LLVM >= 12
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-# We force llvm14 on TW
+# We force llvm15 on TW
 %global jit_support 0
 %else
 %if %{pkg_vcmp llvm-devel >= 12}
@@ -50,7 +50,7 @@
 %endif
 
 Name:           ldc
-Version:        1.29.0
+Version:        1.32.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause
@@ -65,12 +65,12 @@ BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-# Cannot build with llvm15, so stick with llvm14 for now
-BuildRequires:  clang14
-BuildRequires:  llvm14-devel
+# Cannot build with llvm16, so stick with llvm15 for now
+BuildRequires:  clang15
+BuildRequires:  llvm15-devel
 %else
-BuildRequires:  llvm-clang >= 6.0
-BuildRequires:  llvm-devel >= 6.0
+BuildRequires:  llvm-clang >= 9.0
+BuildRequires:  llvm-devel >= 9.0
 %endif
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
@@ -121,6 +121,8 @@ The minimal runtime library required to support the D programming language.
 Summary:        Development files for the D runtime library
 Group:          Development/Libraries/Other
 Requires:       %{lname_runtime}%{so_ver} = %{version}
+# library version 99 wrongly packaged an unversioned file %{_libdir}/ldc_rt.dso.o
+Conflicts:      %{lname_runtime}99
 Recommends:     ldc-phobos-devel = %{version}
 
 %description runtime-devel
@@ -184,8 +186,8 @@ touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-    -DCMAKE_C_COMPILER="%{_bindir}/clang-14" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-14" \
+    -DCMAKE_C_COMPILER="%{_bindir}/clang-15" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-15" \
 %else
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
@@ -209,8 +211,8 @@ touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-    -DCMAKE_C_COMPILER="%{_bindir}/clang-14" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-14" \
+    -DCMAKE_C_COMPILER="%{_bindir}/clang-15" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-15" \
 %else
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
@@ -234,9 +236,11 @@ popd
 %install
 %cmake_install
 # Install bash completion in the right folder
-install -d %{buildroot}%{_bashcompletionsdir}
-mv %{buildroot}%{_sysconfdir}/bash_completion.d/ldc2 %{buildroot}%{_bashcompletionsdir}
-rmdir %{buildroot}%{_sysconfdir}/bash_completion.d/
+if [ ! -d %{buildroot}%{_bashcompletionsdir} ]; then
+  install -d %{buildroot}%{_bashcompletionsdir}
+  mv %{buildroot}%{_sysconfdir}/bash_completion.d/ldc2 %{buildroot}%{_bashcompletionsdir}
+  rmdir %{buildroot}%{_sysconfdir}/bash_completion.d/
+fi
 # Make sure it can find its own libs (help2man runs the binaries)
 export LD_LIBRARY_PATH="$PWD/build/%_lib"
 # Build man pages
@@ -260,17 +264,18 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %config %{_sysconfdir}/ldc2.conf
 %{_bindir}/ldc*
 %{_bindir}/ldmd2
+%{_bindir}/timetrace2txt
 
 %files -n %{lname_runtime}%{so_ver}
 %{_libdir}/%{lname_runtime}-shared.so.%{so_ver}
 %{_libdir}/%{lname_runtime}-shared.so.*
 %{_libdir}/%{lname_runtime}-debug-shared.so.%{so_ver}
 %{_libdir}/%{lname_runtime}-debug-shared.so.*
-%{_libdir}/ldc_rt.dso.o
 
 %files runtime-devel
 %{_libdir}/%{lname_runtime}-shared.so
 %{_libdir}/%{lname_runtime}-debug-shared.so
+%{_libdir}/ldc_rt.dso.o
 %dir %{_includedir}/d
 %{_includedir}/d/core
 %{_includedir}/d/ldc

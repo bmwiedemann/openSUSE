@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:52:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add specific conflict from runtime-devel to the old/previous
+  libdruntime-ldc99. which contained an unversioned file.
+
+-------------------------------------------------------------------
+Thu Apr 20 10:28:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only move bash-completion from /etc to /usr/share if this was not
+  properly installed. There was an error that
+  bash-completion-devel did not actually contain the .cmake file
+  which in turn resulted in this package mis-installing despite the
+  correct build deps.
+
+-------------------------------------------------------------------
+Tue Apr 11 12:23:35 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Move %{_libdir}/ldc_rt.dso.o to runtime-devel package
+
+-------------------------------------------------------------------
+Thu Apr  6 14:52:02 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use llvm15 when available (Tumbleweed + Leap 15.5)
+- Update to 1.32.0:
+  * Big news
+    - Frontend, druntime and Phobos are at version 2.102.2. (#4323, #4341) (new)
+    - LLVM for prebuilt packages bumped to v15.0.7. (#4311)
+    - Linker-level dead code elimination is enabled by default for Apple,
+      wasm and all ELF targets too now. (#4320)
+    - Vector comparisons (==, !=, <, <=, >, >=) now yield a vector mask.
+      Identity comparisons (is, !is) still yield a scalar bool. (3a59ee8)
+    - New timetrace2txt tool for easier inspection of --ftime-trace
+      output. (#4335) (new)
+    - --ftime-trace now also traces CTFE execution: the start
+      expression of CTFE and function calls during CTFE. (#4339) (new)
+  * Platform support
+    - Supports LLVM 9.0 - 15.0.
+    - Now supports -mabi for RISC-V targets. (#4322)
+  * Bug fixes
+    - GC closures including variables with alignment > 16 bytes are
+      now properly aligned. (ef8ba48)
+    - Fix regression with LLVM 13+: some errors in inline assembly
+      don't stop compilation. (#4293, #4331)
+- Changelog from skipped 1.31.0:
+  * Big news
+    - Frontend, druntime and Phobos are at version 2.101.2. (#4141, #4279)
+    - Bit fields support. (#4015)
+    - macOS on Apple M1: linking with -g is working again without
+      unaligned pointer warnings/errors. This fixes file:line debug
+      information in exception backtraces (requiring atos, a macOS
+      development tool installed with Xcode), without the need to set
+      MACOSX_DEPLOYMENT_TARGET=11 and using a modified LLVM. (#4291)
+    - Preliminary support for LLVM 15, incl. adding support for the
+      'new' pass manager (-passmanager) and opaque IR pointers
+      (-opaque-pointers). (way too many PRs to list!)
+    - New command-line option -fno-delete-null-pointer-checks,
+      mimicking the same option of GCC and Clang. (#4297)
+    - New UDA ldc.attributes.callingConvention("..."), which 
+      overrides the default calling convention. For expert use only! (#4299)
+    - New command-line option -fno-discard-value-names to keep 
+      value names in LLVM IR. (#4012)
+    - dcompute: Support for OpenCL image I/O. (#3835)
+  * Platform support
+    - Initial ABI support for 64-bit RISC-V. (#4007)
+  * Bug fixes
+    - dcompute: Fix v1.29 regression when trying to use
+      intrinsics. (#4266, #4267)
+    - Fix 64-bit symbol offsets. (#4264, #4283)
+    - Add missing 32-bit LTO versions of druntime & Phobos to
+      Linux multilib package. (#4234, #4235)
+    - Fix compiler crash. (#4130, #4135)
+  * Internals
+    - The former druntime and dmd-testsuite git submodules are now
+      part of the LDC repo directly, leaving Phobos as single
+      remaining submodule. We are now using a subset of the DMD
+      repo (which includes druntime since v2.101), rewritten via
+      git filter-repo and exposed as dmd-rewrite-* branches/tags
+      in the LDC repo, to merge newer frontend+druntime+tests from
+      upstream DMD. The tests/d2/dmd-testsuite dir was moved to
+      tests/dmd. (#4274, #4276)
+- Changelog from skipped 1.30.0:
+  * Big news
+    - Frontend, druntime and Phobos are at version 2.100.1.
+      (#3970, #4008, #4009) (new)
+    - LLVM for prebuilt packages bumped to v14.0.3.
+      (#3952, #3979)
+    - All LLVM targets are enabled now (=> more targets for
+      cross-compilation).
+    - For the Mac package, the minimum supported macOS version
+      has been raised to v10.12.
+    - The minimum D version for bootstrapping has been raised to
+      v2.079 (for GDC: v9.4), in line with DMD. (#3956)
+    - The minimum LLVM version has been raised to v9.0. (#3960)
+    - New LeakSanitizer support via -fsanitize=leak (not (yet?)
+      supported on Windows). (#4005) (new)
+    - New prebuilt universal macOS package, runnable on both
+      x86_64 and arm64, and enabling x86_64/arm64 macOS/iOS
+      cross-compilation targets out of the box (-mtriple={x86_64,arm64}-apple-{macos,ios}).
+      The x86_64 package doesn't bundle any arm64 libs anymore;
+      the arm64 package newly bundles iOS libs (arm64). (#3958)
+    - Avoid an external x86_64-only dub, use the bundled universal
+      dub executable instead.
+  * Platform support
+    - Supports LLVM 9.0 - 14.0.
+  * Bug fixes
+    - Enable output of variable names in ASan and MSan error
+      reporting. (#4004) (new)
+    - Report unexpected type repaints as fatal ICEs instead of
+      crashing. (#3990, #3991) (new)
+  * Internals
+    - Main CI was moved from Azure Pipelines to GitHub Actions.
+      Any fork on GitHub can trivially reuse the fully automated
+      prebuilt packages generation & upload to a GitHub release. (#3978)
+
+-------------------------------------------------------------------
 Fri Nov 25 07:33:17 UTC 2022 - Max Lin <mlin@suse.com>
 
 - Force to use llvm14 in Leap 15.5 since the default llvm version is
