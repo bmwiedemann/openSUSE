@@ -109,4 +109,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1073750 from glaubitz)</comment>
     <requestid>1073754</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03e29b05d352cac7c55c8e6199ebe0dd</srcmd5>
+    <version>5.0.0</version>
+    <time>1682079472</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1080837 from glaubitz)</comment>
+    <requestid>1081165</requestid>
+  </revision>
 </revisionlist>
