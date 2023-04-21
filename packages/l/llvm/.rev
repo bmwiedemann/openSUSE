@@ -2211,4 +2211,12 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1077797</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>76ad6605fb847e25af68a2f89b601df6</srcmd5>
+    <version>16.0.1</version>
+    <time>1682079341</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1080460</requestid>
+  </revision>
 </revisionlist>

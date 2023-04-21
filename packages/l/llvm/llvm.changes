@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 13 04:32:44 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1210383 - Add aarch64 to lldb platforms
+
+-------------------------------------------------------------------
 Thu Apr  6 20:54:59 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.1.

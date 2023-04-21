@@ -17,7 +17,7 @@
 
 
 %define _sonum 16
-%ifarch x86_64
+%ifarch aarch64 x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
 %if 0%{?suse_version} > 1320
