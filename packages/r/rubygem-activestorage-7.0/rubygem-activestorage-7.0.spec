@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-activestorage-7.0
-Version:        7.0.4
+Version:        7.0.4.3
 Release:        0
 %define mod_name activestorage
 %define mod_full_name %{mod_name}-%{version}
