@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 11:53:19 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+  (dependency removed in ead51323d85be09d5a96a4a5b328f404aaac6a8e)
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Thu Apr 13 06:52:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.14.5:

@@ -67,7 +67,6 @@ BuildRequires:  %{ansible_python}-packaging >= 21.3
 BuildRequires:  %{ansible_python}-PyYAML >= 5.4.1
 BuildRequires:  %{ansible_python}-rich >= 12.0.0
 BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.21 and %{ansible_python}-ruamel.yaml < 0.18)
-BuildRequires:  %{ansible_python}-six
 BuildRequires:  %{ansible_python}-subprocess-tee
 BuildRequires:  %{ansible_python}-tenacity
 BuildRequires:  %{ansible_python}-wcmatch >= 8.3.2
@@ -85,7 +84,6 @@ Requires:       %{ansible_python}-packaging >= 21.3
 Requires:       %{ansible_python}-PyYAML  >= 5.4.1
 Requires:       %{ansible_python}-rich >= 12.0.0
 Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.21 and %{ansible_python}-ruamel.yaml < 0.18)
-Requires:       %{ansible_python}-six
 Requires:       %{ansible_python}-subprocess-tee
 Requires:       %{ansible_python}-tenacity
 Requires:       %{ansible_python}-wcmatch >= 8.3.2
