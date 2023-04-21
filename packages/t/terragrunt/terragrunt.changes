@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 20 14:27:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.4:
+  * Update S3 bucket creation to pass ObjectOwnership (#2540)
+  * ~ aws-auth docs - iam remove object level actions from the
+    bucket resource (#2533)
+
+-------------------------------------------------------------------
 Tue Apr 18 04:55:31 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.3:
