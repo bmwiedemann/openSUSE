@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 21 16:13:05 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.33.2:
+  * fix: Set CHEZMOI_ environment variables for modify_ scripts
+  * fix: Don't download ignored git-repo externals
+  * feat: Add .chezmoi.config template variable
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Wed Apr 12 15:16:48 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.33.1:
