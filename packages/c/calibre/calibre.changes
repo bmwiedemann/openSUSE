@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 21 05:01:52 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.16.0
+  * New Features
+    - Allow storing extra data files with a book
+    - Allow undoing the deletion of books from the calibre library
+    - Kobo driver: Add support for the new Kobo Elipsa 2E
+    - Book details: if an item has an associated link then offer
+      that link in the item's context menu
+  * Bug Fixes
+    - Content server viewer: Fix end of chapter content being
+      occasionally skipped when scrolling by screen full with
+      multiple pages
+    - E-book viewer: Fix a regression that caused notes from a
+      different highlights to be shown in some situations
+    - E-book viewer: Show an error if the user tries to search for
+      only punctuation or spaces in the search modes that ignore
+      these
+    - Fix custom columns not showing in Book details links from
+      other libraries
+
+-------------------------------------------------------------------
 Sun Apr  9 09:29:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.15.1
