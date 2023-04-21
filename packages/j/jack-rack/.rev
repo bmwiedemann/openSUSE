@@ -190,4 +190,12 @@ Removed obsolete 10.2 patch jack-rack-gtk-old-tooltip-fix.diff
 </comment>
     <requestid>576995</requestid>
   </revision>
+  <revision rev="29" vrev="142">
+    <srcmd5>5bdc6510a9f44fea8ec61a18bf732220</srcmd5>
+    <version>1.4.7</version>
+    <time>1682079455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081133</requestid>
+  </revision>
 </revisionlist>

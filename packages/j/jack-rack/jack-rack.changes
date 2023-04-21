@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 18 10:37:27 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Porting ecarack to python3 (boo#1210581)
+  * Add jack-rack-python3-ecarack.patch
+
+-------------------------------------------------------------------
 Thu Feb 15 12:39:19 UTC 2018 - davejplater@gmail.com
 
 - Disabled gnome support to fix Factory build, see boo#1078841

@@ -27,6 +27,7 @@ Source:         %{name}-%{version}.tar.bz2
 Patch0:         jack-rack-undeprec.dif
 Patch1:         jack-rack-inc-fix.diff
 Patch3:         jack-rack-ld_fix.diff
+Patch4:         jack-rack-python3-ecarack.patch
 BuildRequires:  automake
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
@@ -56,6 +57,7 @@ GUI.
 %patch0
 %patch1
 %patch3
+%patch4 -p1
 
 %build
 autoreconf -fi
