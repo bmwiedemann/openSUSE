@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:31:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Thu Dec 15 06:47:56 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python-memcached.

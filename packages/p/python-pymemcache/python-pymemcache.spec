@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymemcache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-pymemcache
 Version:        4.0.0
 Release:        0

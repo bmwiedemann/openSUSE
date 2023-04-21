@@ -204,4 +204,12 @@
 - Clean up python 2 gubbins.</comment>
     <requestid>1043051</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d3972f9dd0fa4045574e5426151ee0ed</srcmd5>
+    <version>4.0.0</version>
+    <time>1682095677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081651</requestid>
+  </revision>
 </revisionlist>
