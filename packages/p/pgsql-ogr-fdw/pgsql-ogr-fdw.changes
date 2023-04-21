@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 19 14:03:29 UTC 2023 - Reinhard Max <max@suse.com>
+
+- PostgreSQL 10 and older are EOL. 
+
+-------------------------------------------------------------------
 Sun Sep 26 16:17:07 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Fix build by Add BuildRequirements for llvm and clang
