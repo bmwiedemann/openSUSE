@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 20 07:27:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Breaking change: inputs starting with "http://" or "https://" like
+    PyQuery("http://example.com") will no longer fetch the contents of the
+    URL. Users desiring the old behavior should switch to
+    PyQuery(url="http://example.com").
+  * Add nextUntil method
+  * .remove() no longer inserts a space in place of the removed element
+  * Fix escaping of top-level element text in .html() output
+  * Support (and require) cssselect 1.2+
+  * Drop support for python 3.5/3.6 
+
+-------------------------------------------------------------------
 Fri Feb 17 16:46:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add make_webtest_optional.patch to allow testing without

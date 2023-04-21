@@ -26,22 +26,21 @@
 %bcond_with test
 %endif
 Name:           python-pyquery%{psuffix}
-Version:        1.4.3
+Version:        2.0.0
 Release:        0
 Summary:        A jQuery-like library for python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pyquery
 Source:         https://files.pythonhosted.org/packages/source/p/pyquery/pyquery-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE make_webtest_optional.patch mcepl@suse.com
 # Make it possible to run test suite (albeit partial) without WebTest module
 Patch0:         make_webtest_optional.patch
-BuildRequires:  %{python_module cssselect > 0.7.9}
+BuildRequires:  %{python_module cssselect >= 1.2.0}
 BuildRequires:  %{python_module lxml >= 2.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cssselect > 0.7.9
+Requires:       python-cssselect >= 1.2.0
 Requires:       python-lxml >= 2.1
 BuildArch:      noarch
 %if %{with test}
@@ -74,7 +73,8 @@ XML and HTML manipulation.
 %if %{with test}
 %check
 # Disable tests which perform live fetch
-%pytest -k 'not test_get' tests
+# test_selector_html uses XML namespaces, which are broken with libxml2 2.10.4+
+%pytest -k 'not (test_get or test_selector_html)' tests
 %endif
 
 %if !%{with test}
