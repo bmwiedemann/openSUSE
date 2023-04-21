@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 20 09:22:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.6.1:
+  * Use Unicode symbol for minus in scientific e notation
+  * Option to change symbols used for output of digits 10 and 11 in
+    duodecimal numbers (use A and B as default digits)
+  * Fixes for output of scientific notation using number bases other
+    than decimal
+
+-------------------------------------------------------------------
 Tue Dec 27 10:00:34 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.0:
