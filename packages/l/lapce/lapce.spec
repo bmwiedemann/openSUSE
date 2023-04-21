@@ -60,7 +60,7 @@ cp %{SOURCE2} .cargo/config
 
 %build
 # We disable default feature as they include auto-update.
-# For reference: 
+# For reference:
 # https://github.com/lapce/lapce/blob/0ded46c988d72b563bd78b29cc11107d4e2248bc/lapce-ui/Cargo.toml#L48
 %{cargo_build} --no-default-features -p lapce-ui --features all-languages
 
