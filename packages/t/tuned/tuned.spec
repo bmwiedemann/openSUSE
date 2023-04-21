@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         profile_dir %{_prefix}/lib/%{name}
 Name:           tuned
-Version:        2.19.0.29+git.b894a3e
+Version:        2.20.0.18+git.7b1a20b
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -140,8 +140,8 @@ Requires:       %{name} = %{version}
 Additional profile(s) for the tuned daemon, targeted to realtime.
 
 # Do not ship SAP profiles for SLE and Leap, there are other packages
-# providing these profiles
-%if !0%{?sle_version}
+# providing these profiles (starting with ALP these are included again)
+%if !0%{?sle_version} || %{?suse_version} >= 1599
 %package profiles-sap
 Summary:        Additional tuned profile(s) targeted to SAP NetWeaver loads
 Group:          System/Base
@@ -185,18 +185,16 @@ rm -rf %{buildroot}%{profile_dir}/{default,desktop-powersave,laptop-ac-powersave
 rm %{buildroot}%{_mandir}/man7/tuned-profiles-compat.7
 ln -sf service %{buildroot}%{_sbindir}/rctuned
 
+%if 0%{?sle_version} && %{?suse_version} < 1599
+rm -r %{buildroot}%{_prefix}/lib/tuned/sap-netweaver
+rm -r %{buildroot}%{_prefix}/lib/tuned/sap-hana
+rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap.7
+rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap-hana.7
+%endif
+
 %post
 %service_add_post %{name}.service
-%if 0%{?suse_version} <= 1320
-    systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf >/dev/null 2>&1 || :
-%else
-    %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
-%endif
-# convert active_profile from full path to name (if needed)
-sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
-%if 0%{?suse_version} < 1500
-%desktop_database_post
-%endif
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %pre
 %service_add_pre %{name}.service
@@ -214,9 +212,6 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 
 %postun
 %service_del_postun %{name}.service
-%if 0%{?suse_version} < 1500
-%desktop_database_postun
-%endif
 
 %files
 %license COPYING
@@ -237,9 +232,16 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %{profile_dir}/recommend.d/50-tuned.conf
 %{profile_dir}/defirqaffinity.py
 
+%if 0%{?sle_version} && %{?suse_version} < 1599
+%exclude %{_prefix}/lib/tuned/sap-netweaver
+%exclude %{_prefix}/lib/tuned/sap-hana
+%exclude %{_mandir}/man7/tuned-profiles-sap.7%{?ext_man}
+%exclude %{_mandir}/man7/tuned-profiles-sap-hana.7%{?ext_man}
+%endif
+
 # Profiles included in main package - alphabetically sorted
 %{profile_dir}/accelerator-performance
-%{profile_dir}/balanced
+%{profile_dir}/aws
 %{profile_dir}/balanced
 %{profile_dir}/cpu-partitioning
 %{profile_dir}/cpu-partitioning-powersave
@@ -274,7 +276,6 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %dir %{_sysconfdir}/tuned
 %{_mandir}/man5/tuned*
 %{_mandir}/man7/tuned-profiles-cpu-partitioning.7%{?ext_man}
-%{_mandir}/man7/tuned-profiles-cpu-partitioning-powersave.7%{?ext_man}
 %{_mandir}/man7/tuned-profiles.7%{?ext_man}
 %{_mandir}/man7/tuned-profiles-mssql.7%{?ext_man}
 %{_mandir}/man8/tuned*
@@ -294,7 +295,7 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %{python3_sitelib}/tuned/gtk
 %{_datadir}/tuned/ui
 
-%if !0%{?sle_version}
+%if !0%{?sle_version} || %{?suse_version} >= 1599
 %files profiles-sap
 %{profile_dir}/sap-netweaver
 %{_mandir}/man7/tuned-profiles-sap.7%{?ext_man}

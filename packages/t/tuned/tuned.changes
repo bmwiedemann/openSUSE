@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Apr 14 13:12:27 UTC 2023 - trenn@suse.de
+
+- New polkit interface has been reviewed by security bsc#1185418
+- Remove old outdated spec scripts before suse_version 1500
+- Separate SAP and related profiles to not be installed in SLE 15 SPx
+  and older, but add them with openSUSE (as before), ALP and upcoming
+  SLE distros
+- Update to version tuned-2.20.0.18+git.7b1a20b
+  * scheduler: fix traceback if running with runtime=0
+  * plugin_scheduler: fix perf fd leaks
+  * Better log on unsupported hw for pm_qos_resume_latency_us option
+  * fix-tuned-profiles-adoc-error
+  * explicitly use /bin/bash for tuned scripts
+  * set the icon in the about dialog
+  * install dbus policy in /usr/share/dbus-1
+  * tuned-adm: better error message for unauthorized switch_profile
+  * man: updated manual pages to be more consistent
+  * spec: dropped unneeded ncat dependency
+  * fix log error
+  * Report reapplied sysctls only on different values
+  * Fixing no _evlist attribute when run without daemon
+  * fix 'is_active' does not work
+  * new release (2.20.0-rc.1)
+  * build: fixed FTBFS with python2
+  * Expose TuneD API to the Unix Domain Socket.
+  * Inform users about reapplied sysctls
+  * API: add support for moving devices between instances
+  * throughput-performance: set net.core.somaxconn to at least 2048
+  * Adding support for cpu intel_pstate scaling driver
+  * configparser: use no strict parser to mimic old behavior
+  * Adding pm_qos_resume_latency_us option for cpu plugin.i
+  * Makefile: added fix for python-3.12
+  * D-Bus: only send tracebacks through the D-Bus if in the debug mode
+  * update vendor_url in policy file
+  * correct section of the tuned-profiles-openshift manpage
+  * Allow selecting a different pkg-config executable
+  * fix tuned/gtk/gui_profile_loader.py spell error
+  * bootloader: create bootcmdline even when skip_grub_config=true
+  * profiles: added aws profile for aws ec2 instances
+  * Closing fd from perf module in scheduler plugin
+
+-------------------------------------------------------------------
 Tue Dec 27 15:45:40 UTC 2022 - trenn@suse.de
 
 - Update to version 2.19.0.29+git.b894a3e:

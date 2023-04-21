@@ -289,4 +289,12 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <comment></comment>
     <requestid>1045853</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0e9e1f821446b05afd09fee79a3421ff</srcmd5>
+    <version>2.20.0.18+git.7b1a20b</version>
+    <time>1682095681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1081801</requestid>
+  </revision>
 </revisionlist>
