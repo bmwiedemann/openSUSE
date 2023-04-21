@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 30 03:06:26 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.60
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.60    2023-03-28
+  - This release is based on version 2023c of the Olson database. The 2023c
+    release has the same zone data as 2023a, undoing the changes for Lebanon
+    from the past week.
+  2.59    2023-03-23
+  - This release is based on version 2023b of the Olson database. This release
+    includes contemporary changes for Lebanon.
+  2.58    2023-03-22
+  - This release is based on version 2023a of the Olson database. This release
+    includes contemporary changes for Egypt, Greenland, Morocco, and Palestine.
+
+-------------------------------------------------------------------
 Thu Dec 15 03:06:46 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.57
