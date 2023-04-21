@@ -17,16 +17,15 @@
 
 
 Name:           endless-sky
-Version:        0.9.14
+Version:        0.9.16.1
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            https://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE fix-data-path.patch -- Fix installation path of data
-Patch0:         fix-data-path.patch
+# PATCH-FIX-OPENSUSE endless-sky-fix-data-path.patch -- Fix installation path of data
+Patch0:         endless-sky-fix-data-path.patch 
 # Patch1 based on https://patch-diff.githubusercontent.com/raw/endless-sky/endless-sky/pull/8235.patch
 Patch1:         8235.patch
 BuildRequires:  desktop-file-utils
@@ -35,6 +34,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libmad-devel
+BuildRequires:  libuuid-devel
+BuildRequires:  pkgconfig
 BuildRequires:  scons
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(gl)
@@ -43,7 +44,6 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Explore other star systems. Earn money by trading, carrying passengers,
@@ -56,13 +56,21 @@ find some friendly aliens whose culture is more civilized than your own...
 %autosetup -p1
 
 %build
-export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
-export CFLAGS="%optflags -fvisibility=hidden"
-scons PREFIX=%{_prefix} DESTDIR=%{buildroot}
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
+%else
+export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
+%endif
+export CFLAGS="%{optflags} -fvisibility=hidden"
+scons
 
 %install
-export CXXFLAGS="%optflags -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
-export CFLAGS="%optflags -fvisibility=hidden"
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
+%else
+export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
+%endif
+export CFLAGS="%{optflags} -fvisibility=hidden"
 scons install PREFIX=%{_prefix} DESTDIR=%{buildroot}
 
 mkdir -p %{buildroot}%{_bindir}
@@ -71,14 +79,14 @@ mv %{buildroot}%{_prefix}/games/endless-sky %{buildroot}%{_bindir}/endless-sky
 %fdupes %{buildroot}
 
 %files
-%defattr(-,root,root)
-%doc license.txt README.md changelog copyright
+%license license.txt
+%doc README.md changelog copyright
 %{_bindir}/endless-sky
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/man/man6/*
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_mandir}/man6/*
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/io.github.endless_sky.endless_sky.appdata.xml
 
 %changelog
