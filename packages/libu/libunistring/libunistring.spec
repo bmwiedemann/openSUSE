@@ -1,7 +1,7 @@
 #
 # spec file for package libunistring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           libunistring
 Version:        1.1
 Release:        0
 Summary:        GNU Unicode string library
-License:        GPL-2.0-or-later OR LGPL-3.0-or-later
+License:        GPL-3.0-or-later OR LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libunistring/
 Source0:        http://ftp.gnu.org/gnu/libunistring/libunistring-%{version}.tar.xz
