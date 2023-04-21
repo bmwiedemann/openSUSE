@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 20 15:01:10 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.2.0:
+  * Closed issue since 1.2.0-rc1:
+    - Parsec 1.1 fails to build with meta-security master branch
+
+-------------------------------------------------------------------
 Mon Mar 27 09:55:24 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable jwt-svid-authenticator (SPIFFE) until fixed upstream
