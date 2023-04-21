@@ -4533,4 +4533,22 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1079587</requestid>
   </revision>
+  <revision rev="379" vrev="1">
+    <srcmd5>728facde0f965ab1076cf10227369c47</srcmd5>
+    <version>112.0.5615.165</version>
+    <time>1682079371</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 112.0.5615.165 (boo#1210618):
+  * CVE-2023-2133: Out of bounds memory access in Service Worker API
+  * CVE-2023-2134: Out of bounds memory access in Service Worker API
+  * CVE-2023-2135: Use after free in DevTools
+  * CVE-2023-2136: Integer overflow in Skia
+  * CVE-2023-2137: Heap buffer overflow in sqlite
+- drop chromium-112-feed_protos.patch
+- Fix Leap 15.4 build failures from default comparison operators
+  defined outside of the class definition, a C++20 feature
+  adding chromium-112-default-comparison-operators.patch
+</comment>
+    <requestid>1080757</requestid>
+  </revision>
 </revisionlist>

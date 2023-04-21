@@ -1,0 +1,159 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sun, 16 Apr 2023 10:01:24 +0200
+Subject: [PATCH] move default quality operators to class definition
+References: https://bugzilla.opensuse.org/show_bug.cgi?id=1210126
+Upstream: no
+
+Fixes build errors caused by equality operators defaulted outside of
+class definitions. This is a C++20 feature, the failure is specific
+to LLVM in openSUSE Leap 15.4.
+
+../components/password_manager/core/browser/affiliation/affiliation_fetcher_base.cc:182:6: error: equality comparison operator can only be defaulted in a class definition
+bool operator==(const AffiliationFetcherInterface::RequestInfo& lhs,
+     ^
+1 error generated.
+
+../printing/page_setup.cc:52:19: error: equality comparison operator can only be defaulted in a class definition
+bool PageMargins::operator==(const PageMargins& other) const = default;
+                  ^
+../printing/page_setup.cc:80:17: error: equality comparison operator can only be defaulted in a class definition
+bool PageSetup::operator==(const PageSetup& other) const = default;
+                ^
+2 errors generated.
+
+../printing/print_settings.cc:269:37: error: equality comparison operator can only be defaulted in a class definition
+bool PrintSettings::RequestedMedia::operator==(
+                                    ^
+../printing/print_settings.cc:328:21: error: equality comparison operator can only be defaulted in a class definition
+bool PrintSettings::operator==(const PrintSettings& other) const = default;
+                    ^
+2 errors generated.
+
+Index: chromium-112.0.5615.121/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.cc
+===================================================================
+--- chromium-112.0.5615.121.orig/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.cc
++++ chromium-112.0.5615.121/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.cc
+@@ -179,7 +179,4 @@ void AffiliationFetcherBase::OnSimpleLoa
+   }
+ }
+ 
+-bool operator==(const AffiliationFetcherInterface::RequestInfo& lhs,
+-                const AffiliationFetcherInterface::RequestInfo& rhs) = default;
+-
+ }  // namespace password_manager
+Index: chromium-112.0.5615.121/components/password_manager/core/browser/affiliation/affiliation_fetcher_interface.h
+===================================================================
+--- chromium-112.0.5615.121.orig/components/password_manager/core/browser/affiliation/affiliation_fetcher_interface.h
++++ chromium-112.0.5615.121/components/password_manager/core/browser/affiliation/affiliation_fetcher_interface.h
+@@ -20,7 +20,7 @@ class AffiliationFetcherInterface {
+     bool change_password_info = false;
+     bool psl_extension_list = false;
+ 
+-    friend bool operator==(const RequestInfo&, const RequestInfo&);
++    friend bool operator==(const RequestInfo&, const RequestInfo&) = default;
+   };
+ 
+   AffiliationFetcherInterface() = default;
+Index: chromium-112.0.5615.121/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.h
+===================================================================
+--- chromium-112.0.5615.121.orig/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.h
++++ chromium-112.0.5615.121/components/password_manager/core/browser/affiliation/affiliation_fetcher_base.h
+@@ -80,9 +80,6 @@ class AffiliationFetcherBase : public vi
+   std::unique_ptr<network::SimpleURLLoader> simple_url_loader_;
+ };
+ 
+-bool operator==(const AffiliationFetcherInterface::RequestInfo& lhs,
+-                const AffiliationFetcherInterface::RequestInfo& rhs);
+-
+ }  // namespace password_manager
+ 
+ #endif  // COMPONENTS_PASSWORD_MANAGER_CORE_BROWSER_AFFILIATION_AFFILIATION_FETCHER_BASE_H_
+Index: chromium-112.0.5615.121/printing/page_setup.cc
+===================================================================
+--- chromium-112.0.5615.121.orig/printing/page_setup.cc
++++ chromium-112.0.5615.121/printing/page_setup.cc
+@@ -49,8 +49,6 @@ PageMargins::PageMargins(int header,
+       top(top),
+       bottom(bottom) {}
+ 
+-bool PageMargins::operator==(const PageMargins& other) const = default;
+-
+ void PageMargins::Clear() {
+   header = 0;
+   footer = 0;
+@@ -77,8 +75,6 @@ PageSetup::PageSetup(const PageSetup& ot
+ 
+ PageSetup::~PageSetup() = default;
+ 
+-bool PageSetup::operator==(const PageSetup& other) const = default;
+-
+ // static
+ gfx::Rect PageSetup::GetSymmetricalPrintableArea(
+     const gfx::Size& page_size,
+Index: chromium-112.0.5615.121/printing/page_setup.h
+===================================================================
+--- chromium-112.0.5615.121.orig/printing/page_setup.h
++++ chromium-112.0.5615.121/printing/page_setup.h
+@@ -16,7 +16,7 @@ class COMPONENT_EXPORT(PRINTING) PageMar
+   PageMargins();
+   PageMargins(int header, int footer, int left, int right, int top, int bottom);
+ 
+-  bool operator==(const PageMargins& other) const;
++  bool operator==(const PageMargins& other) const = default;
+ 
+   void Clear();
+ 
+@@ -44,7 +44,7 @@ class COMPONENT_EXPORT(PRINTING) PageSet
+   PageSetup(const PageSetup& other);
+   ~PageSetup();
+ 
+-  bool operator==(const PageSetup& other) const;
++  bool operator==(const PageSetup& other) const = default;
+ 
+   // Gets a symmetrical printable area.
+   static gfx::Rect GetSymmetricalPrintableArea(const gfx::Size& page_size,
+Index: chromium-112.0.5615.121/printing/print_settings.cc
+===================================================================
+--- chromium-112.0.5615.121.orig/printing/print_settings.cc
++++ chromium-112.0.5615.121/printing/print_settings.cc
+@@ -266,9 +266,6 @@ absl::optional<bool> IsColorModelSelecte
+   // all ColorModel values are determinantly handled.
+ }
+ 
+-bool PrintSettings::RequestedMedia::operator==(
+-    const PrintSettings::RequestedMedia& other) const = default;
+-
+ // Global SequenceNumber used for generating unique cookie values.
+ static base::AtomicSequenceNumber cookie_seq;
+ 
+@@ -325,8 +322,6 @@ PrintSettings& PrintSettings::operator=(
+ 
+ PrintSettings::~PrintSettings() = default;
+ 
+-bool PrintSettings::operator==(const PrintSettings& other) const = default;
+-
+ void PrintSettings::Clear() {
+   ranges_.clear();
+   selection_only_ = false;
+Index: chromium-112.0.5615.121/printing/print_settings.h
+===================================================================
+--- chromium-112.0.5615.121.orig/printing/print_settings.h
++++ chromium-112.0.5615.121/printing/print_settings.h
+@@ -63,7 +63,7 @@ class COMPONENT_EXPORT(PRINTING) PrintSe
+   // Media properties requested by the user. Default instance represents
+   // default media selection.
+   struct RequestedMedia {
+-    bool operator==(const RequestedMedia& other) const;
++    bool operator==(const RequestedMedia& other) const = default;
+     bool IsDefault() const {
+       return size_microns.IsEmpty() && vendor_id.empty();
+     }
+@@ -83,7 +83,7 @@ class COMPONENT_EXPORT(PRINTING) PrintSe
+   PrintSettings& operator=(const PrintSettings&);
+   ~PrintSettings();
+ 
+-  bool operator==(const PrintSettings& other) const;
++  bool operator==(const PrintSettings& other) const = default;
+ 
+   // Reinitialize the settings to the default values.
+   void Clear();
