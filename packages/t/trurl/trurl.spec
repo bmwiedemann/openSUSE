@@ -18,7 +18,7 @@
 
 
 Name:           trurl
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Command line tool for URL parsing and manipulation
 License:        MIT
@@ -27,6 +27,7 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://curl.se/trurl
 Source:         https://github.com/curl/trurl/archive/refs/tags/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 
 %description

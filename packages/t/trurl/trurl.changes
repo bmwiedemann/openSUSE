@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 17 18:08:18 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5
+  Changes since previous release
+  * --get supports variables in [brackets] as well
+  * --get {query-all:key} outputs all values for 'key' in the
+    query
+  * switched to test.py for tests
+  * --iterate is a new option.
+  Bugfixes since previous release
+  * handle %00 sequences in {query:key} output
+  * support reading URL from a file without a newline
+  * fixed a json memory-leak
+
+-------------------------------------------------------------------
 Mon Apr 10 14:13:12 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4
