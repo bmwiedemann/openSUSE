@@ -348,4 +348,13 @@ Upgrade to version 11.11:
 - Bump latest_supported_llvm_ver to 15.</comment>
     <requestid>1064058</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4ea337d7f87bde62ac52e3d57d73a5c1</srcmd5>
+    <version>11.19</version>
+    <time>1682079469</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.</comment>
+    <requestid>1081149</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,6 @@
 
 %define pgversion 11.19
 %define pgmajor 11
-%define pgsuffix %pgmajor
 %define buildlibs 0
 %define tarversion %{pgversion}
 %define latest_supported_llvm_ver 15
@@ -42,13 +41,14 @@
 
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
-Name:           %pgname
 %if "@BUILD_FLAVOR@" == "mini"
 %define devel devel-mini
 %define mini 1
+Name:           %pgname-mini
 %else
 %define devel devel
 %define mini 0
+Name:           %pgname
 %endif
 
 # Use Python 2 for for PostgreSQL 10 on SLE12.
@@ -94,13 +94,6 @@ BuildRequires:  pkgconfig(libzstd)
 %if  !%buildlibs
 BuildRequires:  %libecpg
 BuildRequires:  %libpq
-%endif
-%if 0%{?suse_version} >= 1300
-%bcond_without  systemd
-%bcond_without  systemd_notify
-%else
-%bcond_with     systemd
-%bcond_with     systemd_notify
 %endif
 
 %if 0%{?suse_version} >= 1500 && %pgmajor >= 11
@@ -148,10 +141,8 @@ BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(krb5)
-%if %{with systemd_notify}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-%endif
 #!BuildIgnore:  postgresql-implementation
 #!BuildIgnore:  postgresql-server-implementation
 #!BuildIgnore:  postgresql-devel-noarch
@@ -240,7 +231,7 @@ and functions.
 This package provides the runtime library of the embedded SQL C
 preprocessor for PostgreSQL.
 
-%package %devel
+%package -n %pgname-%devel
 Summary:        PostgreSQL client development header files and libraries
 Group:          Development/Libraries/C and C++
 Provides:       postgresql-devel = %version-%release
@@ -303,7 +294,7 @@ C extensions that link into the PostgreSQL server. For building client
 applications, see the postgresql%pgmajor-devel package.
 %endif
 
-%description %devel
+%description -n %pgname-%devel
 PostgreSQL is an advanced object-relational database management system
 that supports an extended subset of the SQL standard, including
 transactions, foreign keys, subqueries, triggers, and user-defined
@@ -547,9 +538,7 @@ PACKAGE_TARNAME=%pgname %configure \
 %if %{with libzstd}
         --with-zstd \
 %endif
-%if %{with systemd_notify}
         --with-systemd \
-%endif
 %if %{with selinux}
         --with-selinux \
 %endif
@@ -791,14 +780,14 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %fdupes %buildroot
 
-%post %devel
+%post -n %pgname-%devel
 /sbin/ldconfig
 %if %{with server_devel}
 %post server-devel
 %endif
 /usr/share/postgresql/install-alternatives %pgmajor
 
-%postun %devel
+%postun -n %pgname-%devel
 /sbin/ldconfig
 %if %{with server_devel}
 %postun server-devel
@@ -818,45 +807,26 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %preun server
 # Stop only when we are uninstalling the currently running version
-test -n "$FIRST_ARG" || FIRST_ARG="$1"
-if [ "$FIRST_ARG" -eq 0 ]; then
-  %if %{with systemd}
-    %define stop systemctl stop postgresql.service
-    eval $(systemctl show postgresql.service --property=MainPID)
-  %else
-    %define stop /sbin/init.d postgresql stop
-    MainPID=$(pidof -s postgres) || :
-  %endif
-  if test -n "$MainPID" && test "$MainPID" -ne 0; then
-    BIN=$(readlink -n /proc/$MainPID/exe)
-    DIR=$(dirname ${BIN% *})
-    if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
-        %stop
-    fi
+test -x /usr/bin/systemctl &&
+  MAINPID=$(/usr/bin/systemctl show postgresql.service --property=MainPID --value) ||:
+if test -n "$MAINPID" && test "$MAINPID" -ne 0; then
+  BIN=$(readlink -n /proc/$MAINPID/exe)
+  DIR=$(dirname ${BIN% *})
+  if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
+      %service_del_preun postgresql.service
   fi
 fi
 
 %postun server
 /usr/share/postgresql/install-alternatives %pgmajor
 # Restart only when we are updating the currently running version
-# or from the old packaging scheme
-test -n "$FIRST_ARG" || FIRST_ARG="$1"
-if [ "$FIRST_ARG" -ge 1 ]; then
-  %if %{with systemd}
-    %define restart %_restart_on_update postgresql.service
-    eval $(systemctl show postgresql --property=MainPID)
-  %else
-    %define restart /sbin/init.d postgresql restart
-    MainPID=$(pidof -s postgres) || :
-  %endif
-  if test -n "$MainPID" && test "$MainPID" -ne 0 &&
-    readlink -n /proc/$MainPID/exe | grep -Fq " (deleted)"
-  then
-    BIN=$(readlink -n /proc/$MainPID/exe)
-    DIR=$(dirname ${BIN% *})
-    if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
-        %restart
-    fi
+test -x /usr/bin/systemctl &&
+  MAINPID=$(/usr/bin/systemctl show postgresql.service --property=MainPID --value) ||:
+if test -n "$MAINPID" && test "$MAINPID" -ne 0; then
+  BIN=$(readlink -n /proc/$MAINPID/exe)
+  DIR=$(dirname ${BIN% *})
+  if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
+      %service_del_postun postgresql.service
   fi
 fi
 
@@ -938,6 +908,7 @@ fi
 %endif
 
 %files llvmjit-devel
+%defattr(-,root,root)
 %doc README
 
 %files pltcl -f pltcl.lang
@@ -964,13 +935,14 @@ fi
 %endif
 
 %if %buildlibs && %mini
-%files %devel -f devel.files -f libpq.files -f libecpg.files
+%files -n %pgname-%devel -f devel.files -f libpq.files -f libecpg.files
+%defattr(-,root,root)
 %else
 
-%files %devel -f devel.files
+%files -n %pgname-%devel -f devel.files
+%defattr(-,root,root)
 %endif
 
-%defattr(-,root,root)
 %dir %pgbasedir
 %dir %pgbindir
 %ghost %_bindir/ecpg

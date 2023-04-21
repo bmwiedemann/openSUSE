@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 18 09:05:09 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.
+
+-------------------------------------------------------------------
 Thu Feb  9 12:03:40 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 11.19:
