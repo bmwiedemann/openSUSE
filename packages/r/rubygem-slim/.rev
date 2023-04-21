@@ -63,4 +63,29 @@
   to allow newer temple versions</comment>
     <requestid>1042829</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b974c076fefd27057f281c9f8e23c54</srcmd5>
+    <version>5.1.0</version>
+    <time>1682095657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0 
+  * Allow whitespace markers for verbatim text: `|&lt;`, `|&gt;`, and `|&lt;&gt;` - #912
+  * Do not swallow single quote after output line indicator - #911
+  * Support Tilt 2.1.0 - #910
+  * Fix Railtie load error - #904
+  * Fix attribute parsing with square brackets - #796
+- Changes from 5.0.0
+  * Fix markdown interpolation #773
+  * Support case/in #884
+  * Extract slim/railtie #850
+  * css: doesn't add type='text/css' anymore #828
+  * Remove deprecated whitespace syntax =' etc
+  * Add support for annotate_rendered_view_with_filenames #867, #878, #901
+  * Remove deprecated syntax
+  * Add option to hyphenate underscore attributes - #852
+  * Update CI/CD testing and dependencies
+- drop 894.patch
+  Included in update</comment>
+    <requestid>1081224</requestid>
+  </revision>
 </revisionlist>

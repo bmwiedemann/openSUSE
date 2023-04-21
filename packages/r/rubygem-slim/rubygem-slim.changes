@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 21 11:01:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.1.0 
+  * Allow whitespace markers for verbatim text: `|<`, `|>`, and `|<>` - #912
+  * Do not swallow single quote after output line indicator - #911
+  * Support Tilt 2.1.0 - #910
+  * Fix Railtie load error - #904
+  * Fix attribute parsing with square brackets - #796
+- Changes from 5.0.0
+  * Fix markdown interpolation #773
+  * Support case/in #884
+  * Extract slim/railtie #850
+  * css: doesn't add type='text/css' anymore #828
+  * Remove deprecated whitespace syntax =' etc
+  * Add support for annotate_rendered_view_with_filenames #867, #878, #901
+  * Remove deprecated syntax
+  * Add option to hyphenate underscore attributes - #852
+  * Update CI/CD testing and dependencies
+- drop 894.patch
+  Included in update
+
+-------------------------------------------------------------------
 Tue Dec 13 12:03:34 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - apply a modified version of the patch from PR 894 (894.patch)
