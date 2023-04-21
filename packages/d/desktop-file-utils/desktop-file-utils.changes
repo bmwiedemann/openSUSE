@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 20 09:04:41 UTC 2023 - Guido Berhoerster <guido+opensuse@berhoerster.name>
+
+- suse-update-mime-defaults:
+  * add support for MATE desktop
+  * ensure C locale is set for sorting order
+  * fix quoting of DESTDIR
+
+-------------------------------------------------------------------
 Fri Jun 24 07:32:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to avoid bogus errors in post-build checks:

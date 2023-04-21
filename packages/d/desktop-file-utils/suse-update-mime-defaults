@@ -2,7 +2,7 @@
 #
 # suse-update-mime-defaults - create default application ordering for MIME associations
 #
-# Copyright (C) 2012 Guido Berhoerster <gber@opensuse.org>
+# Copyright (C) 2023 Guido Berhoerster <guido+opensuse@berhoerster.name>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -16,28 +16,25 @@
 # TORTIOUS ACTION, ARISING OUT OF PERFORMANCE OF THIS SOFTWARE.
 #
 
-export LC_ALL=C
-
 r=
 case $1 in
-DESTDIR=* )
-  r=`echo "$1" | sed s/^DESTDIR=//`
-  shift
-  ;;
+DESTDIR=*)
+    r="${1#DESTDIR=}"
+    ;;
 esac
 
 # reset XDG_DATA_DIRS so it can be trusted
 unset XDG_DATA_DIRS
 if [ "${PROFILEREAD}" != "true" ]; then
-        . $r/etc/profile
+        . "$r/etc/profile"
 fi
 
-# ensue the cache directory structure is in order
-if [ ! -d $r/var/cache/gio-2.0 ]; then
-  mkdir -m 755 -p $r/var/cache/gio-2.0
-fi
+export LC_ALL=C
 
-for desktop in gnome xfce lxde pantheon budgie; do
+# ensure the cache directory structure is in order
+mkdir -m 755 -p "$r/var/cache/gio-2.0"
+
+for desktop in gnome xfce lxde pantheon budgie mate; do
     awk -vdesktop=${desktop} '
 # print a warning to stderr
 function warn(msg,      cmd) {
@@ -125,6 +122,8 @@ BEGIN {
         categories_list = "GTK"
     } else if (desktop == "budgie") {
         categories_list = "GTK"
+    } else if (desktop == "mate") {
+        categories_list = "MATE,GTK"
     }
     split(categories_list, categories, /,/)
     root = ENVIRON["r"]
@@ -256,5 +255,5 @@ BEGIN {
         printf("%s=%s\n", mimetype, defaults_list[mimetype])
     }
 }
-' >$r/var/cache/gio-2.0/${desktop}-mimeapps.list
+' >"$r/var/cache/gio-2.0/${desktop}-mimeapps.list"
 done
