@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:22:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim R/TM signs as per
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
 Tue Feb 21 10:00:00 UTC 2023 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202302:

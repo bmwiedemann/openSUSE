@@ -1,7 +1,7 @@
 #
 # spec file for package pcm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           pcm
 Version:        202302
 Release:        0
-Summary:        Intel(r) Performance Counter Monitor
+Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
 URL:            https://github.com/intel/pcm
 Source:         https://github.com/intel/pcm/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -29,7 +29,7 @@ BuildRequires:  make
 ExclusiveArch:  %{ix86} x86_64
 
 %description
-Intel(r) Performance Counter Monitor (Intel(r) PCM) is an application programming
+Intel Performance Counter Monitor (PCM) is an application programming
 interface (API) and a set of tools based on the API to monitor performance and
 energy metrics of Intel Core, Xeon, Atom and Xeon Phi processors.
 
