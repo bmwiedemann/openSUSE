@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 20 12:39:36 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Adapt the systemd service security configuration
+  to be able to start it on RHEL systems and clones
+- Create the prometheus user for RHEL systems and clones
+
+-------------------------------------------------------------------
 Wed Apr 19 09:14:12 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add 0001-Update-prometheus-exporter-toolkit-to-0.7.3.patch

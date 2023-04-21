@@ -17,6 +17,10 @@
 #
 
 
+%if 0%{?rhel} == 8
+%global debug_package %{nil}
+%endif
+
 %if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
@@ -54,6 +58,8 @@ BuildRequires:  golang >= 1.14
 Requires(pre):  shadow-utils
 %else
 BuildRequires:  golang(API) >= 1.14
+Requires(pre):  user(prometheus)
+Requires(pre):  group(prometheus)
 Requires(pre):  shadow
 %endif
 %{?systemd_requires}
@@ -67,6 +73,11 @@ Prometheus exporter for PostgreSQL server metrics. Supported PostgreSQL versions
 %prep
 %autosetup -a 1 -n postgres_exporter-%{version}
 
+# Avoid "Unknown lvalue 'XXX' in section 'Service'" errors from systemd on older releases
+%if 0%{?sle_version} && 0%{?sle_version} < 150300 || 0%{?rhel} && 0%{?rhel} < 9
+sed -r -i '/^(Protect(Clock|Home|Hostname|KernelLogs)|PrivateMounts)=/d' %{SOURCE2}
+%endif
+
 %build
 %goprep github.com/prometheus-community/postgres_exporter
 GOPATH=%{_builddir}/go promu build -v
@@ -78,8 +89,12 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-postgres_export
 install -D -m 0645 %{SOURCE3} %buildroot%{_fillupdir}/sysconfig.prometheus-postgres_exporter
 %fdupes %{buildroot}
 
-%if 0%{?suse_version}
 %pre
+%if 0%{?rhel}
+%define serviceuser prometheus
+getent group %{serviceuser} >/dev/null || %{_sbindir}/groupadd -r %{serviceuser}
+getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceuser} -d %{_localstatedir}/lib/%{serviceuser} -M -s /sbin/nologin %{serviceuser}
+%else
 %service_add_pre %{name}.service
 %endif
 
