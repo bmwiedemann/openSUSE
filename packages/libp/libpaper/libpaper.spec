@@ -19,7 +19,7 @@
 %define sover 2
 
 Name:           libpaper
-Version:        2.0.10
+Version:        2.1.0
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
@@ -90,6 +90,7 @@ find %{buildroot}%{_libdir} -name *libpaper.la -delete
 
 %files -n %{name}-tools
 %{_bindir}/paper
+%{_bindir}/paperconf
 %{_mandir}/man1/paper.1.gz
 
 %files -n %{name}%{sover}

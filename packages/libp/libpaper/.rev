@@ -53,4 +53,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1069597</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc3c93f31d8ab52c940b033853b0442e</srcmd5>
+    <version>2.1.0</version>
+    <time>1682079346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * This release reintroduces the old ‘paperconf’ utility, for
+    backwards compatibility only.
+</comment>
+    <requestid>1080490</requestid>
+  </revision>
 </revisionlist>
