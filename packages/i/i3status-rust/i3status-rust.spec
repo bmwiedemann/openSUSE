@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           i3status-rust
-Version:        0.30.4
+Version:        0.30.7
 Release:        0%{?dist}
 Summary:        Feature-rich and resource-friendly replacement for i3status, written in Rust
 
@@ -53,7 +53,6 @@ compatible with sway.
 %prep
 %setup -qa1
 
-mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

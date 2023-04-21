@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Apr 19 08:41:43 UTC 2023 - nyslay@gmail.com
+
+- Update to version 0.30.7:
+  * update crossbeam-channel (0.5.7 is yanked)
+  * update NEWS.md
+  * formatting: try to fix rounding in .eng() (#1858)
+  * update NEWS.md
+  * docs: fix some manpages by disabling texmath extension
+  * docs: rearrange sound docs to match other blocks
+  * update NEWS.md
+  * sound: add active_port_mappings, hide active_port when not available
+  * custom: set child's stdin to null
+  * move some docs from readme to blocks.rs
+
+-------------------------------------------------------------------
+Wed Apr 19 08:32:08 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.30.7
+- Added:
+  * Backlight: Add regex device name matching, and display/control more than one monitor with the same block.
+  * Backlight: Add missing_format option.
+  * Sound: add mappings_use_regex option which makes the block treat mappings as regexps. Defaults to false.
+  * Sound: add $active_port placeholder and active_port_mappings option.
+- Changed
+  * Kdeconnect: do not fail if notifications are not available.
+  * Fix a panic when formatting a number as tebibytes.
+  * Custom: set command stdin to null. This prevents custom commands from stealing click events.
+  * Fix some rounding errors in .eng formatter.
+
+-------------------------------------------------------------------
+Wed Apr 19 08:32:08 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.30.6
+- Added:
+  * New block: vpn: Shows the current connection status for VPN networks. Currently only nordvpn is supported (#1725).
+  * Padding character of eng formatter is now configurable. For example, $volume.eng(pad_with:0) will render as 05% instead of  5%.
+  * Bluetooth: added battery_state config option which allows to customize block's color in relation to device battery level (#1836).
+  * Bluetooth: added $battery_icon placeholder (#1837).
+  * Time: Right click on the block to reverse cycle between timezones (#1839).
+- Changed
+  * TNet: the WiFi icon now reflects the signal strength (material-nf icon set only).
+  * TApt: now works on systems with non-English locales (#1843).
+  * TNotify: support latest SwayNotificationCenter version.
+
+-------------------------------------------------------------------
+Wed Apr 19 08:32:08 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.30.5
+- Added:
+  * New block amd_gpu: display the stats of your AMD GPU.
+  * Battery: filter battery selection by model (#1808).
+  * External_ip: allow forcing legacy (v4) IP (#1801).
+- Changed
+  * Backlight: improve ddcci interactions (#1770).
+  * Battery: fix the default device for UPower driver.
+  * Custom: support shell expansions in watch_files.
+  * Custom_dbus: fix default format.
+  * merge_with_next block option now works with non-native separators, and also fix color of separators.
+  * Hueshift: step now actually maxes at 500 (#1827)
+  * Fix --help page.
+  * config,theme,icons: do not look for files relative to the CWD
+
+-------------------------------------------------------------------
 Wed Mar  8 17:08:53 UTC 2023 - Dawid Adam <nyslay@gmail.com>
 
 - Update to version 0.30.4
