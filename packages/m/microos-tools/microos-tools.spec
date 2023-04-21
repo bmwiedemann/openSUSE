@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        2.20+git20230413.2a43cdb
+Version:        2.21+git0
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ Source:         microos-tools-%{version}.tar.xz
 Source1:        tmp.mount
 Source2:        microos-tmp.conf
 Source99:       microos-tools-rpmlintrc
+BuildRequires:  automake
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dracut)
@@ -49,6 +50,7 @@ This package contains tools to make developing of MicroOS easier.
 %autosetup -p1
 
 %build
+./autogen.sh
 %configure
 %make_build
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 20 11:42:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Switch to obs_scm
+- Call autogen.sh so that it actually builds
+- Update to version 2.21+git0:
+  * Release version 2.21
+  * 98selinux-microos: Work around overlayfs bug (bsc#1210690)
+  * 98selinux-microos: Create .relabelled marker before relabelling
+
+-------------------------------------------------------------------
 Thu Apr 13 09:34:21 UTC 2023 - kukuk@suse.com
 
 - Update to version 2.20+git20230413.2a43cdb:
