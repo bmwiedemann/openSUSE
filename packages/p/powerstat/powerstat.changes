@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 16 16:54:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.03.02:
+  * Don't account for duplicated RAPL domains, make Watts field
+    total of all RAPL domains
+  * Makefile: bump minor version
+  * Fix spelling mistake "informatiom" -> "information"
+  * Makefile: use xz compression for dist tarball
+  * Ignore duplicated power readings from RAPL mmio
+  * Remove unused variable total_freq
+  * Add min/max CPU frequencies, calculate CPU freq using
+    geometric mean
+  * Remove i915 power measurements
+  * Add extra errno error information and check for access issues
+
+-------------------------------------------------------------------
 Mon Jan  2 14:11:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.02.28:
