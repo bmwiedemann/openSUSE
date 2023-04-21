@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:23:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Sun Sep 19 20:06:38 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Upgrade to latest upstream version v1.1.29 (jre#SLE-17360):
