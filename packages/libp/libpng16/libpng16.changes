@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 20 07:09:39 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix license tag to libpng-2.0.
+
+-------------------------------------------------------------------
 Wed Feb  1 12:18:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build: some*.la files are symlinks. Adjust spec to use

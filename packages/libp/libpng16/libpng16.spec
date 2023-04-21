@@ -28,7 +28,7 @@ Name:           libpng16
 Version:        %{major}.%{minor}.%{micro}
 Release:        0
 Summary:        Library for the Portable Network Graphics Format (PNG)
-License:        Zlib
+License:        libpng-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://www.libpng.org/pub/png/libpng.html
 Source0:        https://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
