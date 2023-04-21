@@ -10734,15 +10734,19 @@ unsorted:
   - libavcall1 
   - libavcodec58_134-32bit 
   - libavcodec59-32bit 
+  - libavcodec60-32bit 
   - libavdevice58_13 
   - libavdevice58_13-32bit 
   - libavdevice59 
   - libavdevice59-32bit 
+  - libavdevice60-32bit 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
   - libavfilter8-32bit 
+  - libavfilter9-32bit 
   - libavformat58_76-32bit 
   - libavformat59-32bit 
+  - libavformat60-32bit 
   - libavfs0 
   - libavif-devel 
   - libavif15-32bit 
@@ -10753,6 +10757,7 @@ unsorted:
   - libavtp0-32bit 
   - libavutil56_70-32bit 
   - libavutil57-32bit 
+  - libavutil58-32bit 
   - libax25-0 
   - libax25-common 
   - libax25-devel 
@@ -11534,6 +11539,7 @@ unsorted:
   - libdocparser1 
   - libdouble-conversion3-32bit 
   - libdovi-devel 
+  - libdovi3-32bit 
   - libdpdk-23 
   - libdqlite0 
   - libdrm-devel 
@@ -13964,6 +13970,7 @@ unsorted:
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
   - libplacebo-devel 
+  - libplacebo264-32bit 
   - libplanarity0 
   - libplank1 
   - libplasma1100 
@@ -14061,6 +14068,7 @@ unsorted:
   - libportaudiocpp0 
   - libpostproc55_9-32bit 
   - libpostproc56-32bit 
+  - libpostproc57-32bit 
   - libpowerman0 
   - libppl14 
   - libppl_c4 
@@ -15092,9 +15100,11 @@ unsorted:
   - libsvn_auth_kwallet-1-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit 
+  - libswresample4-32bit 
   - libswresample4_ff5-32bit 
   - libswscale5_9-32bit 
   - libswscale6-32bit 
+  - libswscale7-32bit 
   - libsybdb5 
   - libsybdb5-32bit 
   - libsymmetrica2 
