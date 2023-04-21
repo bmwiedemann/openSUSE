@@ -20,7 +20,7 @@
 %define lib_name librocksdb8
 %bcond_with jemalloc
 Name:           rocksdb
-Version:        8.0.0
+Version:        8.1.1
 Release:        0
 Summary:        A library that provides an embeddable, persistent key-value store for fast storage
 License:        (Apache-2.0 OR GPL-2.0-only) AND BSD-2-Clause
@@ -31,10 +31,8 @@ Patch1:         rocksdb-8.0.0-shared-liburing.patch
 Patch2:         rocksdb-8.0.0-rpath.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gflags-devel-static
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Snappy)
-BuildRequires:  cmake(gflags)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liburing)
@@ -42,6 +40,12 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 %if %{with jemalloc}
 BuildRequires:  pkgconfig(jemalloc)
+%endif
+# see SR#1075555 for gflags linking failure
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(gflags)
+%else
+BuildRequires:  gflags-devel-static
 %endif
 
 %description
