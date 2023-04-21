@@ -27,7 +27,7 @@ Source0:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz
 Source1:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         tests-tsprintf.patch
+Patch0:         mpfr-4.2.0-cummulative.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 

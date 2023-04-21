@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 18 08:13:21 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add mpfr-4.2.0-cummulative.patch, cummulative patches for
+  mpfr 4.2.0:
+  * A test of the thousands separator in tsprintf.c is based on the
+    output from the GNU C Library up to 2.36, which is incorrect.
+  * The mpfr_ui_pow_ui function has infinite loop in case of overflow.
+  * The tfprintf and tprintf tests may fail in locales where decimal_point
+    has several bytes, such as ps_AF.
+  * In particular cases that are very hard to round, mpfr_rec_sqrt may yield
+    a stack overflow due to many small allocations in the stack, based on
+    alloca().
+- Remove tests-tsprintf.patch that's included in the above set.
+
+-------------------------------------------------------------------
 Tue Jan 31 15:58:22 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - tests-tsprintf.patch: Avoid testsuite failure with glibc >= 2.37
