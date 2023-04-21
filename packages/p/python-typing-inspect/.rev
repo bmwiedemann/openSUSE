@@ -29,4 +29,12 @@
 - drop typing_inspect-pr69-py39-GenericAlias.patch (upstream)</comment>
     <requestid>1056831</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3a3705fbcd913d90bd66010cae70fad1</srcmd5>
+    <version>0.8.0</version>
+    <time>1682095682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081800</requestid>
+  </revision>
 </revisionlist>
