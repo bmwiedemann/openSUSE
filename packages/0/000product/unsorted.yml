@@ -11562,7 +11562,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc99 
+  - libdruntime-ldc102 
   - libdrvproxy2 
   - libdspy-1-1 
   - libdtkcore5 
@@ -13957,7 +13957,7 @@ unsorted:
   - libphdi-tools 
   - libphdi1 
   - libphobos2-0_103 
-  - libphobos2-ldc99 
+  - libphobos2-ldc102 
   - libphonenumber-devel 
   - libphysfs-devel 
   - libphysfs1 
@@ -15606,10 +15606,10 @@ unsorted:
   - libvterm-devel 
   - libvterm-tools 
   - libvterm0 
-  - libvtk-m-1_9 
-  - libvtk-m-1_9-mpich 
-  - libvtk-m-1_9-openmpi3 
-  - libvtk-m-1_9-openmpi4 
+  - libvtk-m-2_0 
+  - libvtk-m-mpich-2_0 
+  - libvtk-m-openmpi3-2_0 
+  - libvtk-m-openmpi4-2_0 
   - libvtk1 
   - libvtk1-openmpi2 
   - libvtk1-openmpi3 
@@ -19059,7 +19059,6 @@ unsorted:
   - ocrad 
   - ocrad-devel 
   - ocserv 
-  - octant 
   - octave 
   - octave-CSXCAD 
   - octave-cli 
@@ -19746,9 +19745,9 @@ unsorted:
   - pam-devel-32bit 
   - pam-doc 
   - pam-extra 
-  - pam-extra-32bit 
   - pam-fscrypt 
   - pam-test 
+  - pam-userdb 
   - pam_apparmor 
   - pam_apparmor-32bit 
   - pam_ccreds 
@@ -21971,8 +21970,6 @@ unsorted:
   - postgresql10-devel 
   - postgresql10-docs 
   - postgresql10-llvmjit-devel 
-  - postgresql10-pgaudit 
-  - postgresql10-pgsql-ogr-fdw 
   - postgresql10-plperl 
   - postgresql10-plpython 
   - postgresql10-pltcl 
@@ -22073,6 +22070,7 @@ unsorted:
   - postgresql15-orafce 
   - postgresql15-pg_cron 
   - postgresql15-pgagent 
+  - postgresql15-pgaudit 
   - postgresql15-plperl 
   - postgresql15-plpython 
   - postgresql15-plr 
@@ -23293,7 +23291,6 @@ unsorted:
   - python310-aws-xray-sdk-pymongo 
   - python310-aws-xray-sdk-pynamodb 
   - python310-aws-xray-sdk-requests 
-  - python310-awscrt 
   - python310-axolotl 
   - python310-axolotl-curve25519 
   - python310-azure-agrifood-farming 
@@ -25060,7 +25057,6 @@ unsorted:
   - python310-prometheus-client 
   - python310-promise 
   - python310-prompt_toolkit 
-  - python310-prompt_toolkit1 
   - python310-proselint 
   - python310-proto-plus 
   - python310-proton-client 
@@ -28429,7 +28425,6 @@ unsorted:
   - python311-prometheus-client 
   - python311-promise 
   - python311-prompt_toolkit 
-  - python311-prompt_toolkit1 
   - python311-proselint 
   - python311-proto-plus 
   - python311-protobuf 
@@ -29609,7 +29604,6 @@ unsorted:
   - python311-zypp-plugin 
   - python38 
   - python38-32bit 
-  - python38-awscrt 
   - python38-base 
   - python38-base-32bit 
   - python38-curses 
@@ -30043,7 +30037,6 @@ unsorted:
   - python39-aws-xray-sdk-pymongo 
   - python39-aws-xray-sdk-pynamodb 
   - python39-aws-xray-sdk-requests 
-  - python39-awscrt 
   - python39-axolotl 
   - python39-axolotl-curve25519 
   - python39-azure-agrifood-farming 
@@ -31880,7 +31873,6 @@ unsorted:
   - python39-prometheus-client 
   - python39-promise 
   - python39-prompt_toolkit 
-  - python39-prompt_toolkit1 
   - python39-proselint 
   - python39-proto-plus 
   - python39-protobuf 
@@ -34125,55 +34117,10 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby3.1-rubygem-rails-7.0 
-  - ruby3.1-rubygem-sassc-2.2 
-  - ruby3.1-rubygem-slim 
-  - ruby3.1-rubygem-xdg 
   - ruby3.2-devel 
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
-  - ruby3.2-rubygem-actioncable-7.0 
-  - ruby3.2-rubygem-actionmailbox-7.0 
-  - ruby3.2-rubygem-actionmailer-7.0 
-  - ruby3.2-rubygem-actionpack-7.0 
-  - ruby3.2-rubygem-actiontext-7.0 
-  - ruby3.2-rubygem-actionview-7.0 
-  - ruby3.2-rubygem-activejob-7.0 
-  - ruby3.2-rubygem-activemodel-7.0 
-  - ruby3.2-rubygem-activerecord-7.0 
-  - ruby3.2-rubygem-activestorage-7.0 
-  - ruby3.2-rubygem-coffee-rails 
-  - ruby3.2-rubygem-delayed_job_active_record 
-  - ruby3.2-rubygem-devise 
-  - ruby3.2-rubygem-devise-i18n 
-  - ruby3.2-rubygem-devise_ldap_authenticatable 
-  - ruby3.2-rubygem-exception_notification 
-  - ruby3.2-rubygem-font-awesome-rails 
-  - ruby3.2-rubygem-gettext_i18n_rails_js 
-  - ruby3.2-rubygem-haml-rails 
-  - ruby3.2-rubygem-importmap-rails 
-  - ruby3.2-rubygem-jbuilder 
-  - ruby3.2-rubygem-jquery-rails 
-  - ruby3.2-rubygem-js-routes 
-  - ruby3.2-rubygem-lightbox2 
-  - ruby3.2-rubygem-openid_connect 
-  - ruby3.2-rubygem-rails-7.0 
-  - ruby3.2-rubygem-rails-i18n 
-  - ruby3.2-rubygem-railties-7.0 
-  - ruby3.2-rubygem-responders 
-  - ruby3.2-rubygem-rspec-rails 
-  - ruby3.2-rubygem-rspec-rails-4.0 
-  - ruby3.2-rubygem-sass-rails 
-  - ruby3.2-rubygem-sass-rails-5.1 
-  - ruby3.2-rubygem-sassc-rails 
-  - ruby3.2-rubygem-sprockets-rails 
-  - ruby3.2-rubygem-stimulus-rails 
-  - ruby3.2-rubygem-turbo-rails 
-  - ruby3.2-rubygem-validate_email 
-  - ruby3.2-rubygem-validate_url 
-  - ruby3.2-rubygem-web-console 
-  - ruby3.2-rubygem-webpacker 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
@@ -34754,7 +34701,6 @@ unsorted:
   - soci-postgresql-devel 
   - soci-sqlite3-devel 
   - socket_wrapper 
-  - sof-firmware 
   - sofia-sip 
   - sofia-sip-devel 
   - solaar 
@@ -46085,7 +46031,6 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
-  - yarn 
   - yaru-icon-theme 
   - yascreen-devel 
   - yasm 
