@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Apr 20 14:35:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.2.4:
+  * Release 12.2.4 (#24844)
+  * [v12] docs: document error with older SSM agent version
+    (#24833)
+  * OS packaging and auto updates backport - v12 (#24781)
+  * [v12] SFTP fixes (#24831)
+  * [v12] Checks proxy server and token set for join openssh
+    (#24745)
+  * [v12] Fix `TestHeadlessAuthenticationWatcher` flakiness
+    (#24705)
+  * [v12] docs: make consistent access request plugins helm
+    configuration and instructions (#24760)
+  * Add docs subsection about joining services (#24756)
+  * Update embedded video (#24699)
+  * [web] Add isModeratedSession flag to web ssh session (#24238)
+    (#24806)
+  * [v12] Backport Mac build GitHub Actions support (#24432)
+  * Backport --raw version flag (#24772)
+  * Acquire user certs from root cluster during web file transfers
+    (#24768)
+  * Fix memory leak on Kubernetes port-forwarding (#24763)
+  * [v12] Use CompareAndSwap for OktaAssignments instead of lock.
+    (#24748)
+  * Tweak protogen to not change protos from cloud (#24688)
+    (#24739)
+  * Tweak messaging to anticipate a new linter (#24411)
+  * docs: Login Rules Terraform docs (#24674)
+  * [v12] reduce cache retry load (#23025) (#24719)
+  * Change port-forwarding completion logs to debug (#24658)
+  * [v12] Make audit log details dialog larger. (#24722)
+  * stop handling SIGINT, SIGTERM in tctl (#24681)
+  * Add Okta assignment update statuses to Okta access point.
+    (#24735)
+  * [v12] docs: remove ignored user parameter in tsh login example
+    (#24624)
+  * [v12] Check Okta action transitions during update, allow failed
+    -> pending. (#24685)
+  * Prevent multiple discovery agents to race against each other
+    (#24214) (#24716)
+  * Document `discovery_group` parameter (#24713)
+  * Add cleanup time and last transition time to OktaAssignment.
+    (#24725)
+  * Add in a Okta assignments copy method. (#24694)
+  * refresh vscode guide (#24697)
+  * helm: fix `teleport-kube-agent` telemetry (#24471) (#24680)
+  * allow redundant security release alert suppression (#24692)
+  * [v12] Tag output from teleport configure as ERROR or WARNING if
+    applies (#24676)
+  * [v12] Introduce an OktaAssignmentsGetter and use it in the
+    watcher. (#24584)
+  * Ensure that proxy services join by dialing auth (#24668)
+  * docs: update audit results faq for cloud (#24633)
+  * Pull kube proxy address from proxy ping endpoint (#24516)
+  * docs version (#24622)
+  * [v12] docs: kubernetes joining guide + reference (#24545)
+  * [v12] docs: update k8s gke discovery to use zone variable
+    consistently (#24613)
+  * [v12] Hosted plugins frontend / user-facing parts (#24597)
+  * Make the OpenSSH guide more prominent (#24568)
+  * Edit the SSH Key Extensions guide prereqs (#24537)
+  * Add top-level redirects to intro pages (#24565)
+  * Add architectural clarity to the AD guide (#24569)
+  * [v12] Renders user auth types in User List in expected
+    capitalization (#24604)
+  * [v12] docs: simplify tokens generation examples (#24497)
+  * [v12] Update relcli to fix publishing of release notes (#24438)
+    (#24529)
+  * [v12] Fix authenticated conn metrics for http reporter (#24570)
+  * only call 'user.Current' when we really need to (#24573)
+  * update aws configurator (#24362) (#24494)
+
+-------------------------------------------------------------------
 Fri Apr 14 06:52:08 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.2.3:
