@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 11 12:37:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.4:
+  + Security:
+    - [CVE-2023-29469, bsc#1210412] Hashing of empty dict strings 
+      isn’t deterministic
+    - [CVE-2023-28484, bsc#1210411] Fix null deref in 
+      xmlSchemaFixupComplexType
+    - schemas: Fix null-pointer-deref in
+      xmlSchemaCheckCOSSTDerivedOK
+  + Regressions:
+    - SAX2: Ignore namespaces in HTML documents
+    - io: Fix “buffer full” error with certain buffer sizes
+
+-------------------------------------------------------------------
 Wed Feb  1 09:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove zlib-devel, pkgconfig(zlib) is sufficient
