@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 21 08:47:46 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230421.a509b8ce:
+  * Dev: bootstrap: Call 'crm configure load' inside crm_configure_load
+  * Fix: cibconfig: use any existing rsc_defaults set rather than create another one (bsc#1210614)
+  * Revert "Dev: bootstrap: Avoid duplicated setting for rsc_defaults"
+  * Dev: bootstrap: Print output for other nodes when using -N option
+
+-------------------------------------------------------------------
 Fri Mar 31 02:51:40 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230331.10398d83:
