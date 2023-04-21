@@ -50,4 +50,15 @@
 </comment>
     <requestid>1032163</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e391ab4a51aee2ec4dcf37d6421fba6</srcmd5>
+    <version>0.10.0</version>
+    <time>1682095658</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.10.0
+  * Regression: Revert changes to :capture_generator since 0.8.2 (#112, #113, #137)
+  * Regression: Ensure that output buffer is not reused for capturing in Rails (#135)
+  * Drop support for Rails 4.x</comment>
+    <requestid>1081282</requestid>
+  </revision>
 </revisionlist>

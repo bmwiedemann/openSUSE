@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:58:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- updated to version 0.10.0
+  * Regression: Revert changes to :capture_generator since 0.8.2 (#112, #113, #137)
+  * Regression: Ensure that output buffer is not reused for capturing in Rails (#135)
+  * Drop support for Rails 4.x
+
+-------------------------------------------------------------------
 Fri Oct 28 05:09:51 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.9.1
