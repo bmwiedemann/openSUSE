@@ -162,4 +162,16 @@
   https://github.com/timescale/timescaledb/releases/tag/2.10.0</comment>
     <requestid>1067045</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f6f53de98fa8707cb47bc3c5f8c13900</srcmd5>
+    <version>2.10.2</version>
+    <time>1682079442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.2
+  https://github.com/timescale/timescaledb/releases/tag/2.10.2
+
+- Update to version 2.10.1
+  https://github.com/timescale/timescaledb/releases/tag/2.10.1</comment>
+    <requestid>1080967</requestid>
+  </revision>
 </revisionlist>
