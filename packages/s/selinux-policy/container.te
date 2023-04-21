@@ -1,4 +1,4 @@
-policy_module(container, 2.205.0)
+policy_module(container, 2.210.0)
 
 gen_require(`
 	class passwd rootok;
@@ -16,6 +16,13 @@ gen_require(`
 ##  </p>
 ## </desc>
 gen_tunable(container_connect_any, false)
+
+## <desc>
+##  <p>
+##  Determine whether sshd can launch container engines
+##  </p>
+## </desc>
+gen_tunable(sshd_launch_containers, false)
 
 ## <desc>
 ##  <p>
@@ -77,7 +84,6 @@ ifdef(`enable_mls',`
 type spc_t, container_domain;
 domain_type(spc_t)
 role system_r types spc_t;
-init_initrc_domain(spc_t)
 
 type container_auth_t alias docker_auth_t;
 type container_auth_exec_t alias docker_auth_exec_t;
@@ -124,6 +130,7 @@ term_pty(container_devpts_t)
 
 typealias container_ro_file_t alias { container_share_t docker_share_t };
 files_mountpoint(container_ro_file_t)
+userdom_user_home_content(container_ro_file_t)
 
 type container_port_t alias docker_port_t;
 corenet_port(container_port_t)
@@ -286,6 +293,8 @@ domain_read_all_domains_state(container_runtime_domain)
 domain_getattr_all_domains(container_runtime_domain)
 
 userdom_map_tmp_files(container_runtime_domain)
+
+anaconda_domtrans_install(container_runtime_domain)
 
 optional_policy(`
 	gnome_map_generic_data_home_files(container_runtime_domain)
@@ -575,7 +584,6 @@ fs_unmount_fusefs(container_runtime_domain)
 fs_exec_fusefs_files(container_runtime_domain)
 storage_rw_fuse(container_runtime_domain)
 
-
 optional_policy(`
     files_search_all(container_domain)
     container_read_share_files(container_domain)
@@ -806,7 +814,7 @@ gen_require(`
 ')
 container_manage_files_template(container, container)
 
-typeattribute container_file_t container_file_type;
+typeattribute container_file_t container_file_type, user_home_type;
 typeattribute container_t container_domain, container_net_domain, container_user_domain;
 allow container_user_domain self:process getattr;
 allow container_domain { container_var_lib_t container_ro_file_t container_file_t }:file entrypoint;
@@ -1411,7 +1419,7 @@ optional_policy(`
 		type syslogd_t;
 	')
 
-	allow syslogd_t container_runtime_tmpfs_t:file { read write };
+	allow syslogd_t container_runtime_tmpfs_t:file rw_inherited_file_perms;
 	logging_send_syslog_msg(container_runtime_t)
 ')
 
@@ -1422,3 +1430,14 @@ manage_lnk_files_pattern(svirt_sandbox_domain, container_file_t, container_file_
 manage_chr_files_pattern(svirt_sandbox_domain, container_file_t, container_file_t)
 manage_blk_files_pattern(svirt_sandbox_domain, container_file_t, container_file_t)
 manage_sock_files_pattern(svirt_sandbox_domain, container_file_t, container_file_t)
+
+tunable_policy(`sshd_launch_containers',`
+	gen_require(`
+		type sshd_t;
+		type systemd_logind_t;
+		type iptables_var_run_t;
+	')
+
+	container_runtime_domtrans(sshd_t)
+	dontaudit systemd_logind_t iptables_var_run_t:dir read;
+')

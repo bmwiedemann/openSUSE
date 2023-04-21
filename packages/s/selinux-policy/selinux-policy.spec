@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20230321
+Version:        20230420
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -42,6 +42,7 @@ Source3:        container.if
 Source4:        selinux-policy-rpmlintrc
 Source5:        README.Update
 Source6:        update.sh
+Source7:        debug-build.sh
 
 Source10:       modules-targeted-base.conf
 Source11:       modules-targeted-contrib.conf

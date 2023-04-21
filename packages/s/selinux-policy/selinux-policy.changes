@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:47:16 UTC 2023 - jsegitz@suse.com
+
+- Update to version 20230420:
+  * libzypp creates temporary files in /var/adm/mount. Label it with
+    rpm_var_cache_t to prevent wrong labels in /var/cache/zypp
+  * only use rsync_exec_t for the rsync server, not for the client
+    (bsc#1209890)
+  * properly label sshd-gen-keys-start to ensure ssh host keys have proper
+    labels after creation
+  * Allow dovecot-deliver write to the main process runtime fifo files
+  * Allow dmidecode write to cloud-init tmp files
+  * Allow chronyd send a message to cloud-init over a datagram socket
+  * Allow cloud-init domain transition to insights-client domain
+  * Allow mongodb read filesystem sysctls
+  * Allow mongodb read network sysctls
+  * Allow accounts-daemon read generic systemd unit lnk files
+  * Allow blueman watch generic device dirs
+  * Allow nm-dispatcher tlp plugin create tlp dirs
+  * Allow systemd-coredump mounton /usr
+  * Allow rabbitmq to read network sysctls
+  * Allow certmonger dbus chat with the cron system domain
+  * Allow geoclue read network sysctls
+  * Allow geoclue watch the /etc directory
+  * Allow logwatch_mail_t read network sysctls
+  * allow systemd_resolved_t to bind to all nodes (bsc#1200182)
+  * Allow insights-client read all sysctls
+  * Allow passt manage qemu pid sock files
+  * Allow sssd read accountsd fifo files
+  * Add support for the passt_t domain
+  * Allow virtd_t and svirt_t work with passt
+  * Add new interfaces in the virt module
+  * Add passt interfaces defined conditionally
+  * Allow tshark the setsched capability
+  * Allow poweroff create connections to system dbus
+  * Allow wg load kernel modules, search debugfs dir
+  * Boolean: allow qemu-ga manage ssh home directory
+  * Label smtpd with sendmail_exec_t
+  * Label msmtp and msmtpd with sendmail_exec_t
+  * Allow dovecot to map files in /var/spool/dovecot
+  * Confine gnome-initial-setup
+  * Allow qemu-guest-agent create and use vsock socket
+  * Allow login_pgm setcap permission
+  * Allow chronyc read network sysctls
+  * Enhancement of the /usr/sbin/request-key helper policy
+  * Fix opencryptoki file names in /dev/shm
+  * Allow system_cronjob_t transition to rpm_script_t
+  * Revert "Allow system_cronjob_t domtrans to rpm_script_t"
+  * Add tunable to allow squid bind snmp port
+  * Allow staff_t getattr init pid chr & blk files and read krb5
+  * Allow firewalld to rw z90crypt device
+  * Allow httpd work with tokens in /dev/shm
+  * Allow svirt to map svirt_image_t char files
+  * Allow sysadm_t run initrc_t script and sysadm_r role access
+  * Allow insights-client manage fsadm pid files
+  * Allowing snapper to create snapshots of /home/ subvolume/partition
+  * Add boolean qemu-ga to run unconfined script
+  * Label systemd-journald feature LogNamespace
+  * Add none file context for polyinstantiated tmp dirs
+  * Allow certmonger read the contents of the sysfs filesystem
+  * Add journalctl the sys_resource capability
+  * Allow nm-dispatcher plugins read generic files in /proc
+
+-------------------------------------------------------------------
+Tue Mar 28 12:27:47 UTC 2023 - Hu <cathy.hu@suse.com>
+
+- Add debug-build.sh script to make debugging without committing easier
+
+-------------------------------------------------------------------
 Tue Mar 21 15:37:23 UTC 2023 - jsegitz@suse.com
 
 - Update to version 20230321:

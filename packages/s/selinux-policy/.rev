@@ -370,4 +370,41 @@
     <comment>please stage this with the microos-tools changes. Should now be good since kernel_t is unconfined again</comment>
     <requestid>1073587</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0e9d4260e418f9bed557629cbf62af83</srcmd5>
+    <version>20230420</version>
+    <time>1682079352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230420:
+  * libzypp creates temporary files in /var/adm/mount. Label it with
+    rpm_var_cache_t to prevent wrong labels in /var/cache/zypp
+  * only use rsync_exec_t for the rsync server, not for the client
+    (bsc#1209890)
+  * properly label sshd-gen-keys-start to ensure ssh host keys have proper
+    labels after creation
+  * Allow dovecot-deliver write to the main process runtime fifo files
+  * Allow dmidecode write to cloud-init tmp files
+  * Allow chronyd send a message to cloud-init over a datagram socket
+  * Allow cloud-init domain transition to insights-client domain
+  * Allow mongodb read filesystem sysctls
+  * Allow mongodb read network sysctls
+  * Allow accounts-daemon read generic systemd unit lnk files
+  * Allow blueman watch generic device dirs
+  * Allow nm-dispatcher tlp plugin create tlp dirs
+  * Allow systemd-coredump mounton /usr
+  * Allow rabbitmq to read network sysctls
+  * Allow certmonger dbus chat with the cron system domain
+  * Allow geoclue read network sysctls
+  * Allow geoclue watch the /etc directory
+  * Allow logwatch_mail_t read network sysctls
+  * allow systemd_resolved_t to bind to all nodes (bsc#1200182)
+  * Allow insights-client read all sysctls
+  * Allow passt manage qemu pid sock files
+  * Allow sssd read accountsd fifo files
+  * Add support for the passt_t domain
+  * Allow virtd_t and svirt_t work with passt
+  * Add new interfaces in the virt module
+  * Add passt interfaces defined conditionally</comment>
+    <requestid>1080824</requestid>
+  </revision>
 </revisionlist>
