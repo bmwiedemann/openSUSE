@@ -439,4 +439,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1057847</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>d9d9ec0070ec0f4f749cad1131a89c58</srcmd5>
+    <version>5.15.12</version>
+    <time>1682095668</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082082</requestid>
+  </revision>
 </revisionlist>
