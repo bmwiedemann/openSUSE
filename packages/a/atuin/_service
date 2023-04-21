@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="download_files" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">atuin-13.0.1.tar.gz</param>
+     <param name="srctar">atuin-14.0.0.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Apr 14 11:26:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 14.0.0:
+  * Add Hachyderm links
+  * Update flake.lock to Rust 1.67
+  * nix: add flake-compat
+  * Fix race condition in directory tests
+  * Rework Bash import
+  * docs(README): fix activity graph link
+  * Show preview of selected command
+  * Up arrow filter_mode setting default to global filter mode
+  * feat: add common default keybindings
+  * Bump debian from bullseye-20230208-slim to bullseye-20230227-slim
+  * Windows support
+  * fix(client): always read session_path from settings
+  * Add register notification webhook
+  * Install CA certificates in docker image
+  * Docker isn't interactive ofc
+  * Minor documentation updates
+  * Fix before/after combined with limit
+  * Allow specifying fulltext as well as full-text
+  * fix new stats unique count
+  * add common prefixes and subcommands to stats
+  * fix(installer): use case-insensitive comparisons
+  * Fixes a bug on windows
+  * Prefer PWD environment variable over cwd if available to better support symbolic links
+  * fix: many links were broken 📝
+  * skim-demo
+  * Add history deletion
+  * fix: paste into terminal after switching modes
+  * Support old msgpack
+  * Fix skim search
+  * Allow changing search_mode during interactive search
+  * chore: remove tui vendoring
+  * Bump debian from bullseye-20230227-slim to bullseye-20230320-slim
+  * Delete all instances of a command
+  * Bump lukemathwalker/cargo-chef from latest-rust-1.67.1 to latest-rust-1.68.0
+  * feat: respect exit_mode setting when exiting with arrow down keypress
+  * feat: add an inline view mode
+  * Add musl build
+  * feat: add Nushell support
+  * chore: use fork of skim
+  * Bind keys in vi mode too
+  * Account for user not yet having count cache
+  * Fixes nushell recording empty commands
+  * Update CONTRIBUTING.md
+  * client filtering done in query
+  * fix: record negative exit codes
+  * Refactor/nu remove dep on sh
+  * Update CI
+  * Add more fields to atuin search --format
+  * install.sh - add endeavouros to archlinux detection
+  * Add --offset flag to atuin search
+  * Update atuin search docs
+  * Add atuin status
+  * fix: allow nix package to fetch dependencies from git
+  * feat: add github action to test the nix builds
+  * Vendor ratatui temporarily
+
+-------------------------------------------------------------------
 Sat Mar 25 00:30:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 13.0.1:
