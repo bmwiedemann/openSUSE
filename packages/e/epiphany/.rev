@@ -1640,4 +1640,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment></comment>
     <requestid>1076883</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>b4cc0531af67ee6cd6c45e4df1cd30a0</srcmd5>
+    <version>44.2</version>
+    <time>1682079454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081097</requestid>
+  </revision>
 </revisionlist>
