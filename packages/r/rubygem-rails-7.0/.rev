@@ -51,4 +51,12 @@ updated to version 7.0.3.1
 </comment>
     <requestid>1010077</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5bf7d57ab65d33eb9db419046962de2e</srcmd5>
+    <version>7.0.4.3</version>
+    <time>1682095668</time>
+    <user>dimstar_suse</user>
+    <comment>7.0.4.3</comment>
+    <requestid>1081242</requestid>
+  </revision>
 </revisionlist>
