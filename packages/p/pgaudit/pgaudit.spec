@@ -1,7 +1,7 @@
 #
 # spec file for package pgaudit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,9 @@ Version:        1.5.2
 # you need to update both the Version: field and the define below for the factory check
 %if "%{name_pg}" == "postgresql14"
 Version:        1.6.2
+%endif
+%if "%{name_pg}" == "postgresql15"
+Version:        1.7.0
 %endif
 Release:        0
 Summary:        An auditing module for PostgreSQL

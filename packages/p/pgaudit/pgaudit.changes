@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 19 13:52:06 UTC 2023 - Reinhard Max <max@suse.com>
+
+- PostgreSQL 10 is EOL.
+
+-------------------------------------------------------------------
+Tue Jan 31 14:50:20 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- added 1.7.0 to enable pg 15
+
+-------------------------------------------------------------------
 Thu Sep 22 09:57:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Hack up spec file a bit to get over source_validator, we rely on

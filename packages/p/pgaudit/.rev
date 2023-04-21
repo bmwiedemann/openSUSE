@@ -49,4 +49,14 @@
   - 1.3.2: https://github.com/pgaudit/pgaudit/releases/tag/1.3.2</comment>
     <requestid>1005389</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>75a9d796ac338ee5c3ec866856acbac9</srcmd5>
+    <version>unknown</version>
+    <time>1682079464</time>
+    <user>dimstar_suse</user>
+    <comment>- PostgreSQL 10 is EOL.
+
+- added 1.7.0 to enable pg 15</comment>
+    <requestid>1081139</requestid>
+  </revision>
 </revisionlist>
