@@ -121,6 +121,10 @@ def code_key(val):
         return ':'.join((map(hexstr, map(hex, (val[:2], val[2:4], val[4:])))))
 
 
+def append_qemu(content):
+    content += b'MA-L,525400,QEMU/KVM,Cyberspace\x0d\x0a'
+    return content
+
 def fetch_infile(infile):
     # check oui.csv parameter
     vout(1, 'check {ouifile}')
@@ -159,6 +163,7 @@ def fetch_infile(infile):
     if fetchoui:
         vout(1, 'fetch {ouifile}')
         content = req.read()
+        content = append_qemu(content)
         lines = content.split(sep=b'\r')
         heading = lines.pop(0).replace(b'\n', b'', 1)
 
