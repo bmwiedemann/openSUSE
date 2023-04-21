@@ -164,4 +164,12 @@
 - Also remove the conditional definition of python_module.</comment>
     <requestid>1030999</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f33c12aa3ecb9dedb82f5bc285cef9fa</srcmd5>
+    <version>0.18.0</version>
+    <time>1682095691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081939</requestid>
+  </revision>
 </revisionlist>
