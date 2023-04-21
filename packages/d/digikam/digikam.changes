@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 20 11:43:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add the sonnet build dependency (boo#1210689)
+
+-------------------------------------------------------------------
 Tue Apr 18 10:42:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Explicitly disable buildtime detected CPU features as a workaround
