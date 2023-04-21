@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:39:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:46:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Wed Jan 13 11:01:50 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro
