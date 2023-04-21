@@ -1,7 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 19 09:16:10 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Fix get_version_number.sh to show version without suffix gz.asc 
+
+-------------------------------------------------------------------
+Wed Apr 19 07:39:41 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230418 (boo#1210485, (boo#1210434)
+  + improve checks for limits on privileged execution:
+    + modify _nc_syserr_abort() to use _nc_env_access(), rather than
+      only checking root uid.
+    + use getauxval() when available, to improve setuid/setgid checks.
+    + modify test packages to disable root access/environ options.
+  + modify tgoto() to accept no-parameter capabilities, for joe editor
+    (OpenSUSE #1210485, Gentoo #904263).
+
+-------------------------------------------------------------------
+Tue Apr 18 09:01:36 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add signatures of the patches as well in patch tar ball 
+
+-------------------------------------------------------------------
+Mon Apr 17 06:14:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230415 (boo#1210485)
+  + configure script fixes:
+    + fix copy/paste error in configure option --disable-root-access
+      (report/patch by Sven Joachim).
+    + modify CF_XOPEN_SOURCE macro's amend default case to avoid
+      undefining _XOPEN_SOURCE if _POSIX_C_SOURCE is defined.
+  + modify test_tparm to account for extended capabilities.
+  + add checks in tparm() and tiparm() for misuse of numeric parameters,
+    overlooked in 20230408.
+  + fix errata in clear.1 and curs_terminfo.3x
+
+-------------------------------------------------------------------
 Tue Apr 11 09:24:59 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Add ncurses patch 20230408
+- Add ncurses patch 20230408 (boo#1210434)
   + document limitations of tparm, and error-returns in curs_terminfo.3x
   + document limitations of tgoto, and error-returns in curs_termcap.3x
   + add xterm+focus to alacritty+common (patch by Christian Duerr).

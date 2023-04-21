@@ -10,6 +10,6 @@ test -e ${sourcedir}/ncurses-${version}-patches.tar.bz2 || echo ${last[2]}
 tar --wildcards -tf ${sourcedir}/ncurses-${version}-patches.tar.bz2 '*/*.patch' &> /dev/null || echo ${last[2]}
 OFS="$IFS"
 IFS=-
-last=($(tar -tf ${sourcedir}/ncurses-${version}-patches.tar.bz2 | sed -r 's@\.patch$@@'| sort -t '-' -k 3,3 -n | tail -n 1))
+last=($(tar -tf ${sourcedir}/ncurses-${version}-patches.tar.bz2 | grep -v 'gz.asc' | sed -r 's@\.patch$@@'| sort -t '-' -k 3,3 -n | tail -n 1))
 IFS="$OFS"
 echo ${last[2]}

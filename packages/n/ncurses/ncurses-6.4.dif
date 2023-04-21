@@ -806,12 +806,12 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2023-01-23 13:00:47.043268809 +0000
-@@ -1132,12 +1132,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1135,12 +1135,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */
 -#define ABSENT_BOOLEAN		((signed char)-1)	/* 255 */
-+#define ABSENT_BOOLEAN		(char)-1)		/* 255 */
++#define ABSENT_BOOLEAN		((char)-1)		/* 255 */
  #define ABSENT_NUMERIC		(-1)
  #define ABSENT_STRING		(char *)0
  

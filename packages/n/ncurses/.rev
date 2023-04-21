@@ -4054,4 +4054,36 @@
   + remove DECCOLM+DECSCLM from foot (patch by Daniel Ekloef).</comment>
     <requestid>1078402</requestid>
   </revision>
+  <revision rev="237" vrev="10">
+    <srcmd5>d4ac2909df7d2a621e872ab1868b4d7e</srcmd5>
+    <version>6.4.MACRO</version>
+    <time>1682079334</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix get_version_number.sh to show version without suffix gz.asc 
+
+- Add ncurses patch 20230418 (boo#1210485, (boo#1210434)
+  + improve checks for limits on privileged execution:
+    + modify _nc_syserr_abort() to use _nc_env_access(), rather than
+      only checking root uid.
+    + use getauxval() when available, to improve setuid/setgid checks.
+    + modify test packages to disable root access/environ options.
+  + modify tgoto() to accept no-parameter capabilities, for joe editor
+    (OpenSUSE #1210485, Gentoo #904263).
+
+- Add signatures of the patches as well in patch tar ball 
+
+- Add ncurses patch 20230415 (boo#1210485)
+  + configure script fixes:
+    + fix copy/paste error in configure option --disable-root-access
+      (report/patch by Sven Joachim).
+    + modify CF_XOPEN_SOURCE macro's amend default case to avoid
+      undefining _XOPEN_SOURCE if _POSIX_C_SOURCE is defined.
+  + modify test_tparm to account for extended capabilities.
+  + add checks in tparm() and tiparm() for misuse of numeric parameters,
+    overlooked in 20230408.
+  + fix errata in clear.1 and curs_terminfo.3x
+
+- Add ncurses patch 20230408 (boo#1210434)</comment>
+    <requestid>1080277</requestid>
+  </revision>
 </revisionlist>

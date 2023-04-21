@@ -330,22 +330,22 @@ timings needed to ensure that screen updates do not fall behind the
 incoming data stream.
 
 %prep
-%setup -q -n %{name}-%{basevers}
-tar -xjf %{S:1}
+%setup -q -n %{name}-%{basevers} -b1 -a5
 set +x
-for patch in patches/ncurses*.patch
+for patch in ../patches/ncurses*.patch
 do
     test -e "$patch" || continue
     echo Apply patch: $patch
     patch -f -T -p1 -s < $patch
 done
 set -x
-rm -rf patches/
+%if ! %{defined donttouch}
+rm -rf ../patches/
+%endif
 find -name '*.orig' -delete
 # replace tack from ncurses tarball with the latest version in
 # separate tarball
 rm -fr tack
-tar -xzf %{S:5}
 mv tack-* tack
 %patch1 -p0 -b .327x
 %patch2 -p0 -b .hs
