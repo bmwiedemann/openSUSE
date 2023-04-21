@@ -384,4 +384,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
   * Wheel package compiled against OpenSSL 1.1.1t.</comment>
     <requestid>1077060</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>cb822319d26d70abbc1abe1af9ae60d4</srcmd5>
+    <version>2.9.6</version>
+    <time>1682095683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081820</requestid>
+  </revision>
 </revisionlist>

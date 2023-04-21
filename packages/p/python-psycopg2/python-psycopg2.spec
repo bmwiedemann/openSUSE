@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-psycopg2
 Version:        2.9.6
 Release:        0
