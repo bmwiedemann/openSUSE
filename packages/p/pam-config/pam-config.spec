@@ -17,7 +17,7 @@
 
 
 Name:           pam-config
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only

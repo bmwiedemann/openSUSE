@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:58:30 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.5
+  - Add skip_if option for pam_wtmpdb
+
+-------------------------------------------------------------------
 Mon Apr  3 20:33:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.4

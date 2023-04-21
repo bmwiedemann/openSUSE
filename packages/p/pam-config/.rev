@@ -753,4 +753,12 @@
   - Add silent_if option for pam_lastlog2</comment>
     <requestid>1077079</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>243d971b1bd91c19e2e0f690b63deb8b</srcmd5>
+    <version>2.5</version>
+    <time>1682079366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080905</requestid>
+  </revision>
 </revisionlist>
