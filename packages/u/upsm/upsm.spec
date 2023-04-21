@@ -1,7 +1,7 @@
 #
 # spec file for package upsm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          System/Monitoring
 URL:            https://github.com/psemiletov/upsm
 Source:         https://github.com/psemiletov/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ImageMagick
-BuildRequires:  binutils-gold
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig

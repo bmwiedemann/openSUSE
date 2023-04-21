@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:59:13 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Drop binutils-gold dependency as the package is obsolete.
+
+-------------------------------------------------------------------
 Sat Oct 15 11:02:34 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0
