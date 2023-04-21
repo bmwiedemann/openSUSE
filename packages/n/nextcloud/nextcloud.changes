@@ -1,14 +1,246 @@
 -------------------------------------------------------------------
+Fri Apr 21 05:00:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 25.0.6
+  - No changelog from upstream at this time.
+
+-------------------------------------------------------------------
+Fri Mar 24 13:02:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add missing require php-opcache.
+
+-------------------------------------------------------------------
 Thu Mar 23 17:33:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 25.0.5
-  - No changelog from upstream at this time.
+  - Add brute force protection on all methods wrapped by PublicShareMiddleware (server#35650)
+  - Add option to return an exit-code when occ status signals an update is needed (server#36218)
+  - Allow settings navigation items with no route entry (server#36529)
+  - Fix(client-login-flow): Handle missing stateToken gracefully (server#36585)
+  - Fix(caldav): Fix reminder timezone drift for all-day events (server#36642)
+  - Safer URL match in FileReferenceProvider (server#36645)
+  - Port user menu to Vue (server#36668)
+  - Fix the login log entry (server#36672)
+  - Create an accessible name for logo on logged in page (server#36682)
+  - Fix missing files:navigation:changed when clicking on a dir in the favorites view (server#36683)
+  - Fix: Only get params from PUT content if possible (server#36696)
+  - Add a disk_free_space check before writing config (server#36729)
+  - Check for opcache.file_cache_only=1 (server#36731)
+  - Avoid locking on restore/delete and limit concurrent requests (server#36745)
+  - Fix too long entries in contacts-menu (server#36747)
+  - Change X-Robots-Tag header from “none” to “noindex, nofollow” (server#36749)
+  - Fix the contacts-menu vcf-contact avatars (server#36752)
+  - Don’t regard 1024px width viewport as mobile (server#36764)
+  - Bump @nextcloud/password-confirmation from 4.0.2 to 4.0.4 (server#36770)
+  - Avoid extra parenthesis around SQL in IN expressions (server#36797)
+  - Fix event listener race condition on login-form (server#36806)
+  - Avoid getting null mimetype when getting reference preview (server#36828)
+  - Bump @nextcloud/vue from 7.5.0 to 7.7.0 and add node-polyfill-webpack-plugin (server#36841)
+  - Add focus border for search results (server#36844)
+  - Fix broken search for tags in workflow checks (server#36856)
+  - Add name for home breadcrumb in filepicker (server#36858)
+  - Bump php-opencloud/openstack to 3.2.1 in stable25 (server#36879)
+  - Remove extraneous Node.js core module dependencies (server#36885)
+  - Fix(CI): Run repair steps against Oracle DB (server#36886)
+  - Convert tag id to number (closing #35645) (server#36887)
+  - Adapt native tooltip for new structure of NcAvatar (server#36896)
+  - Fix(SystemTagManager): Truncate overlong tag names (server#36899)
+  - Port admin delegation selects (server#36929)
+  - Port clear user status select (server#36932)
+  - Fix share select dropdown not opening when viewer is open (server#37000)
+  - Db]: Remove not supported column comments for SQLite (server#37003)
+  - Fix right-click img tags (server#37007)
+  - Bump @nextcloud/vue from 7.7.0 to 7.8.0 (server#37027)
+  - Chore(security): Bump “Expires” of well-known/security.txt (server#37036)
+  - Add avatar contact img description (server#37047)
+  - Update wording for disabled web updater (server#37051)
+  - Add label and switch ocdialog close button to button element (server#37063)
+  - Fix(CI): Fix acceptance test password field selector after @nextcloud… (server#37075)
+  - Create headings for apps, users, settings pages (server#37118)
+  - Imaginary – fix autorotate for heic and improve the logic (server#37156)
+  - Add a check for disk_free_space in Config.php (server#37158)
+  - Postgresql installation – add quotes around user names (server#37162)
+  - Fix white scrollbar corner in dark mode (server#37164)
+  - Fix(user_status): Fix the user status automation on the day availablity rules are adjusted (server#37196)
+  - Fix(dav): Handle no next potential toggle in availability detection (server#37200)
+  - Add chunking in SystemTagObjectMapper::getTagIdsForObjects (server#37216)
+  - Save some CI time (server#37225)
+  - Set headings for navigation through files app (server#37232)
+  - Chore: use local variable for remote address (server#37236)
+  - Fix Cache-Control header of non-versioned assets (server#37249)
+  - Fix(workflow): Check tag attribute (server#37255)
+  - Replace custom tooltips with native ones and add description to all e… (server#37274)
+  - Revert “Replace custom tooltips with native ones and add description to all e…” (server#37285)
+  - Bump php-opencloud/openstack to 3.2.1 in stable25 (3rdparty#1321)
+  - Update nextcloud/ocp dependency (activity#1097)
+  - Exception on missing session (circles#1270)
+  - Upgrade @nextcloud/vue from 5.4.0 to 7.5.0 (firstrunwizard#817)
+  - Mount menu entry into Vue user menu (firstrunwizard#827)
+  - Bump @nextcloud/vue from 7.5.0 to 7.7.1 (firstrunwizard#837)
+  - Update nextcloud/ocp dependency (nextcloud_announcements#164)
+  - Update nextcloud/ocp dependency (notifications#1460)
+  - Fix(FetchFacesMixin): Decode entities in file.realpath (photos#1646)
+  - Improve overall preview loading (photos#1658)
+  - Use full filenames in folder view (photos#1660)
+  - Take into account cropped layout setting (photos#1669)
+  - Create headings for photos pages (photos#1688)
+  - Remove unneeded attr `title` (privacy#860)
+  - Bump/bump nextcloud vue to 7.8.0 (privacy#866)
+  - Fix FreeBSD: Add Support for Swap Output on TrueNas Core (serverinfo#431)
+  - Chore(deps): update dependency jest-environment-jsdom to ^29.4.3 (text#3809)
+  - Chore(deps): update dependency @cypress/webpack-preprocessor to ^5.17.0 (text#3810)
+  - Fix(deps): update dependency @nextcloud/vue to ^7.7.1 (text#3811)
+  - Update nextcloud/ocp dependency (text#3813)
+  - Ci: Pin phpunit to 9 (text#3840)
+  - Fix: solve publicly shared document with hide download issue (text#3851)
+  - Shrink heading anchor links to `1em`, fixes links in headings (text#3852)
+  - Fix(deps): update dependency @nextcloud/vue to ^7.8.0 (text#3867)
+  - Use the href of links for link previews, not `node.textContent` (text#3887)
+  - Only open direct link files if link points to Files app (text#3905)
+  - Chore(deps): update dependency jest-environment-jsdom to ^29.5.0 (text#3920)
+  - Chore(deps): update dependency vite-plugin-commonjs to ^0.6.2 (text#3935)
+  - Allow to scroll tables horizontally (text#3938)
+  - Bump dns-packet from 5.3.1 to 5.4.0 (twofactor_totp#1334)
+  - Bump filerobot-image-editor from 4.3.7 to 4.3.8 (viewer#1547)
+  - Update preview when file is updated in ImageEditor (viewer#1555)
+  - Handle 404 when opening files (viewer#1559)
+  - Fix AxiosError when deleting photo in viewer (viewer#1561)
+  - Fix(dependencies): force `react-filerobot-image-editor@^4.3.8` (viewer#1576)
 
 -------------------------------------------------------------------
 Thu Feb 23 18:21:52 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 25.0.4
-  - No changelog from upstream at this time.
+  - Fix array to string conversion in errorlog writer (server#35821) 5
+  - Use mimetype from cache for workflow checks (server#35842) 1
+  - Update psalm-baseline.xml (server#35954) 1
+  - Fix: show toggle grid view button with open sidebar (server#36032)
+  - Replace custom tooltips with native one in vue components and views (server#36044) 2
+  - Remove js navigation on alternative login click (server#36076) 1
+  - Replace custom tooltips with native ones in apps page (server#36082) 2
+  - Replace custom tooltips with native ones in users page (server#36084)
+  - Escape path prefix when doing cache jail search (server#36099) 1
+  - IMigrationStep progress bar fix (server#36102)
+  - Limit key names when uploading theme images (server#36103)
+  - Fix inability to re-enter share password after invalid input (server#36106) 1
+  - Differentiate share links (server#36129) 7
+  - Add always visible share label (server#36134)
+  - Focus trap contacts menu with NcHeaderMenu port (server#36142) 1
+  - Catch Exceptions when loading storage data of users (server#36155)
+  - Extend ViewOnly DAV plugin to versions endpoint (server#36164)
+  - Ext storage configs default value support + enable SSL by default (server#36165) 3
+  - Improve exception serializing (server#36167)
+  - Improve saving applicable users in ext storage (server#36174)
+  - Improve password generation for link shares (server#36179) 1
+  - Only expose storage location to admins (server#36180) 1
+  - Revert “Add alt to the logo, adapt css for logo” (server#36193) 4
+  - Fix/35886 replace custom tooltips with native one for personal
+    and administration settings stable25 (server#36197) 1
+  - Fix login loop if login CSRF fails and user is not logged in (server#36208) 7
+  - Fix(search): Fix settings section icon color (server#36226)
+  - Fix(dav): catch MaxInstancesExceededException for recurring events without end date (server#36230) 1
+  - Port global search menu to focus trapped NcHeaderMenu (server#36236)
+  - Allow interaction with encrypted folders (server#36238) 2
+  - Disable unreliable acceptance tests (server#36240)
+  - Fix github action “performance-8.0” when PR is from a fork. (server#36243) 1
+  - Specify the profiler app branch to test with (server#36246)
+  - Docs: document types flag for search options (server#36255)
+  - Fix(theming): fix admin images migration (server#36272)
+  - Remove Bootstrap version reference from tooltip.scss (server#36273) 2
+  - Fix(occ): Fix comment formatting of maintenance:repair command (server#36274)
+  - L10n: Fixed grammar (server#36283)
+  - Fix interned strings buffer check if 0 free bytes (server#36292) 3
+  - Fix double where in CustomProperiesBackendTest (server#36294)
+  - Add success message to personal settings clipboard button (server#36296)
+  - Fix user status message input (server#36297)
+  - Fix WHERE condition when selecting user’s availability for the status… (server#36308)
+  - [Fix]: scan-app-data conversion (server#36311)]([stable25] 
+  - [Fix]: scan-app-data conversion by backportbot-nextcloud[bot] · 
+  - Pull Request #36311 · nextcloud/server · GitHub 2)
+  - Fix double where() usage in resource manager (server#36317)
+  - Bump @nextcloud/vue to v7.5.0 (server#36322) 1
+  - Fix default value for files_no_background_scan (server#36335) 1
+  - Port files sharing selector (server#36339) 1
+  - Don’t translate a variable (server#36344) 1
+  - Imaginary – add tiff to supported formats (server#36364) 3
+  - Fix moving files of encrypted local storage to unencrypted local storage (server#36374) 1
+  - Fix(dav): check if principal has email address before accessing it (server#36387)
+  - Fix admin-disabled background and user pristine theming settings (server#36394)
+  - Fix focus not returning to search icon (server#36398) 1
+  - Do not store generated mysql password if it was not used (server#36400)
+  - Fix(caldav): Fix wrong Psalm report for nullable calendar data (server#36412)
+  - Allow keyup enter in user status (server#36415)
+  - Fix the exif_read_data issue (server#36439) 3
+  - Fix(encryption): don’t throw on missing file (server#36442)
+  - Fix MigrateBackgroundImages on oracle (server#36456) 1
+  - Add a safeguard for Version23000Date20210721100600.php (server#36466)
+  - Non-static app_dir (server#36476)
+  - Do not reuse query builder objects in DAV account deletion (server#36490)
+  - Drop vue-clipboard2 in favour of native Clipboard API to fix copy to clipboard (server#36507)
+  - Do not open the sidebar automatically on small widths (server#36514)
+  - Chore(CI): Opt-out of PHPUnit 10 for now (server#36518)
+  - Perf(federation): Only request root share info for checking availability (server#36557)
+  - Add bruteforce protection to password reset page (server#36573) 4
+  - Revert #34908 to allow 32bit setups to upgrade to 26 (server#36593) 3
+  - Port profile visibility select (server#36595)
+  - Update psalm-baseline.xml (server#36597)
+  - Imaginary – fix generation of heif, pdf, illustrator and svg thumbnails (server#36602) 2
+  - Prevent scrolling hover .files-controls (server#36614)
+  - Restore copy button text on directory fetch error (server#36615)
+  - Fix compilation of Vue 2.7 features (server#36624) 3
+  - Revert “update 64-bit check wording” (server#36631)
+  - Also copy meta data when converting DataResponse to JSONRe… (server#36702)
+  - Validate the scope when validating operations (server#36815)
+  - Update nextcloud/ocp dependency (activity#1053)
+  - Replace custom tooltips with native tooltips (activity#1055)
+  - Update nextcloud/ocp dependency (activity#1067)
+  - Show full date after headings like “Today” as a hidden-visually span (activity#1070)
+  - Create an unordered list for the list of activities (activity#1078)
+  - Bump @nextcloud/router from 2.0.0 to 2.0.1 (files_pdfviewer#706)
+  - Update nextcloud/ocp dependency (firstrunwizard#807)
+  - Update nextcloud/ocp dependency (firstrunwizard#820) 1
+  - Update nextcloud/ocp dependency (nextcloud_announcements#157)
+  - Bugfix/noid/close header menu (notifications#1417)
+  - Update nextcloud/ocp dependency (notifications#1438)
+  - Replace custom tooltips with native ones. (notifications#1439)
+  - Remove focus border when not keyboard focused (notifications#1449)
+  - Update title when changing sections in navigation (photos#1515)
+  - Make face covers smaller (photos#1552)
+  - Fix renaming faces: Do not delete existing face when renaming (photos#1581) 1
+  - Fix upload of pictures into album (photos#1603) 1
+  - Fix sharing with group (photos#1605) 1
+  - Listen to NodeDeletedEvent to remove photos from albums (photos#1607)
+  - Fix FaceContent: Fix viewer path (photos#1608)
+  - Correctly listen to group change events (photos#1612)
+  - Fix(tags performance): Cache tag counts on server and load them using initial state (photos#1620) 1
+  - Fix viewer in public albums (photos#1630) 2
+  - Fix(FetchFacesMixin): Decode entities in file.realpath (photos#1646) 2
+  - Replace custom tooltips with native ones (privacy#849)
+  - Improve related resources’ title (related_resources#163)
+  - Update nextcloud/ocp dependency (serverinfo#408) 1
+  - Fix(deps): update dependency markdown-it-image-figures to ^2.1.1 (text#3648)
+  - Update nextcloud/ocp dependency (text#3651)
+  - Fix(deps): update dependency path-normalize to ^6.0.10 (text#3655)
+  - Chore(deps): update dependency @nextcloud/eslint-config to ^8.2.0 (text#3661)
+  - Fix(deps): update dependency @nextcloud/logger to ^2.5.0 (text#3662)
+  - Fix(deps): update dependency @nextcloud/vue to ^7.5.0 (text#3664)
+  - Fix(deps): update tiptap (text#3675)
+  - Chore(deps): update dependency jest-environment-jsdom to ^29.4.0 (text#3699)
+  - Chore(deps): update dependency jest-environment-jsdom to ^29.4.1 (text#3702)
+  - Fix bug when session not found (text#3705)
+  - Chore(deps): update dependency @vue/test-utils to ^1.3.4 (text#3708)
+  - Update nextcloud/ocp dependency (text#3721) 3
+  - Fix background color of tables (text#3734) 3
+  - Chore(deps): update dependency @cypress/webpack-preprocessor to ^5.16.2 (text#3743)
+  - Chore(deps): update dependency @nextcloud/eslint-config to ^8.2.1 (text#3744)
+  - Fix(deps): update dependency vue-material-design-icons to ^5.2.0 (text#3755) 1
+  - Fix: transations in status message (text#3767) 1
+  - Fix(Polling): Perform computations in milliseconds (text#3773)
+  - Fix: empty code blocks (text#3780)
+  - Chore(deps): update dependency @cypress/webpack-preprocessor to ^5.16.3 (text#3782)
+  - Chore(deps): update dependency jest-environment-jsdom to ^29.4.2 (text#3783)
+  - Catch error if no user is logged in (viewer#1527)
+  - Enable app specific preview URL (viewer#1536) 7
 
 -------------------------------------------------------------------
 Tue Jan 17 18:09:53 UTC 2023 - ecsos <ecsos@opensuse.org>

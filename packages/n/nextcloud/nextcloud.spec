@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        25.0.5
+Version:        25.0.6
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -98,6 +98,7 @@ Requires:       php-curl
 # SUSE does not include the fileinfo module in php-common.
 Requires:       php-fileinfo
 Requires:       php-iconv
+Requires:       php-opcache
 Requires:       php-openssl
 Requires:       php-pear
 Requires:       php-xmlreader

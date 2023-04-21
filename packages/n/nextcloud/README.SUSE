@@ -2,7 +2,7 @@ To speed up nextcloud you should enable PHP OPcache
 
 The OPcache improves the performance of PHP applications by caching precompiled bytecode. We recommend at least following settings:
 
-Put this in this insert in /etc/php7/apache2/php.ini
+Put this in this insert in /etc/php8/apache2/php.ini
 
 opcache.enable=On
 opcache.enable_cli=1
@@ -12,3 +12,5 @@ opcache.memory_consumption=128
 opcache.save_comments=1
 opcache.revalidate_freq=1
 
+Also you should set the memory_limit to somthing like >=512MB in
+/etc/php8/apache2/php.ini and /etc/php8/cli/php.ini
