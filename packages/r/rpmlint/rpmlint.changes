@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:15:32 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230421.f2ea8ab:
+  * pam-modules: whitelist pam_wtmpdb (bsc#1209963)
+  * Drop dependency on pytest-flake8 as it's unmaintained.
+
+-------------------------------------------------------------------
+Wed Apr 19 15:01:24 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230419.2b26601:
+  * pam-modules: Move pam_timestamp, pam_issue and pam-userdb (bsc#1210371)
+  * flake8: fix C419 Unnecessary list comprehension passed to any() prevents short-circuiting
+
+-------------------------------------------------------------------
 Tue Apr 11 12:41:23 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230411.8f9c3d4:

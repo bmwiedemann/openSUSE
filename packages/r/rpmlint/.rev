@@ -4433,4 +4433,18 @@ oddjob-gpupdate isn't blocked)</comment>
   * SpecCheck: Improve patch applied regex</comment>
     <requestid>1078431</requestid>
   </revision>
+  <revision rev="446" vrev="1">
+    <srcmd5>4fbfa942f7654ea39881c8bfd0275548</srcmd5>
+    <version>2.4.0+git20230421.f2ea8ab</version>
+    <time>1682079329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230421.f2ea8ab:
+  * pam-modules: whitelist pam_wtmpdb (bsc#1209963)
+  * Drop dependency on pytest-flake8 as it's unmaintained.
+- Update to version 2.4.0+git20230419.2b26601:
+  * pam-modules: Move pam_timestamp, pam_issue and pam-userdb (bsc#1210371)
+  * flake8: fix C419 Unnecessary list comprehension passed to any() prevents short-circuiting
+</comment>
+    <requestid>1081220</requestid>
+  </revision>
 </revisionlist>
