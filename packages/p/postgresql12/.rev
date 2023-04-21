@@ -313,4 +313,16 @@ Upgrade to version 12.6:
 - Bump latest_supported_llvm_ver to 15.</comment>
     <requestid>1064057</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e4172ff92314733dab38e57e439c0c5d</srcmd5>
+    <version>12.14</version>
+    <time>1682079468</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.
+
+- Include -mini in Name: to avoid conflicts in the source package
+  name and OBS internal dependency tracking.</comment>
+    <requestid>1081148</requestid>
+  </revision>
 </revisionlist>
