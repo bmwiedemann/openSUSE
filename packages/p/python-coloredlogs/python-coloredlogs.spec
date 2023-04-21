@@ -17,9 +17,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-coloredlogs
 Version:        15.0.1
 Release:        0
@@ -35,7 +33,8 @@ BuildRequires:  %{python_module capturer >= 2.4}
 BuildRequires:  %{python_module humanfriendly >= 9.1}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module pytest-cov >= 2.3.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module verboselogs >= 1.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,14 +56,13 @@ pulls in Colorama_ as a dependency and enables ANSI escape sequence translation
 using Colorama.
 
 %prep
-%setup -q -n coloredlogs-%{version}
-%autopatch -p1
+%autosetup -p1 -n coloredlogs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/coloredlogs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -85,6 +83,6 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 %python_alternative %{_bindir}/coloredlogs
 %{python_sitelib}/coloredlogs/
 %{python_sitelib}/coloredlogs.pth
-%{python_sitelib}/coloredlogs-%{version}-py*.egg-info
+%{python_sitelib}/coloredlogs-%{version}*-info
 
 %changelog
