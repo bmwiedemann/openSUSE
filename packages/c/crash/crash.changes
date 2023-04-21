@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 21 13:07:00 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Fix ppc64le build with glibc 2.32+:
+  * gdb-10.2-Revert-gnulib-fix-stat-fstat-build-errors.patch
+  * gdb-10.2-gnulib-update-to-776af40e0.patch
+  * crash-gdb-10.2.series: Patch series for the embedded GDB.
+  * crash-gdb-7.6.series: Remove (obsolete).
+
+-------------------------------------------------------------------
 Thu Apr 20 12:09:36 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - crash-define-EM_RISCV-fallback.patch: Provide a fallback

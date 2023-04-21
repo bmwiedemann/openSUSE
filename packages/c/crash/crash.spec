@@ -82,7 +82,9 @@ Source96:       depmod.sh
 Source97:       mkinitrd.sh
 Source98:       %{name}-kmp-preamble
 Source99:       crash-rpmlintrc
-Source100:      %{name}-gdb-7.6.series
+Source100:      %{name}-gdb-10.2.series
+Source101:      gdb-10.2-Revert-gnulib-fix-stat-fstat-build-errors.patch
+Source102:      gdb-10.2-gnulib-update-to-776af40e0.patch
 Patch1:         %{name}-make-emacs-default.diff
 Patch2:         %{name}-sles9-quirk.patch
 Patch4:         %{name}-sles9-time.patch
@@ -284,10 +286,10 @@ ln -s %{SOURCE1} .
 %patch30 -p1
 %endif
 ## GDB patches
-#for f in %{S:XXX} ; do
-#    base=`basename "$f"`
-#    cp "$f" "${base#%{name}-}"
-#done
+for f in %{S:100} %{S:101} %{S:102}; do
+    base=`basename "$f"`
+    cp "$f" "${base#%{name}-}"
+done
 
 %patch31 -p1
 %patch32 -p1

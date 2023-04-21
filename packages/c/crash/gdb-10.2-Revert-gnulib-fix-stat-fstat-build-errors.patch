@@ -1,0 +1,386 @@
+From: Petr Tesarik <petr@tesarici.cz>
+Date: Fri, 9 Oct 2020 12:50:50 -0700
+Subject: Revert "gnulib: fix stat/fstat build errors on old Windows version
+ or using old MinGW"
+Upstream: never, required to apply another patch that supersedes this one
+
+Revert gdb commit dc37fea7593f1ebfbe5fc5331c72f0b3c5d9236d by Joel
+Brobecker. That commit cherry-picked two changes from gnulib to
+gdb-10-branch without a full import.
+
+However, the full import is needed to fix ppc64le build on Tumbleweed
+(gdb commit 9c9d63b15ad548f65f8bfd41cb7a4ef9af5ccb28), and the
+partial update conflicts in that case.
+
+---
+ gnulib/ChangeLog                                   |   12 --
+ gnulib/config.in                                   |    3 
+ gnulib/configure                                   |   21 ---
+ gnulib/import/m4/fstat.m4                          |    3 
+ gnulib/import/m4/stat.m4                           |   13 --
+ gnulib/import/stat-w32.c                           |   29 +----
+ gnulib/patches/0002-stat-fstat-windows-older-vista |  116 ---------------------
+ gnulib/patches/0003-stat-fstat-windows-old-mingw   |   34 ------
+ gnulib/update-gnulib.sh                            |    6 -
+ 9 files changed, 8 insertions(+), 229 deletions(-)
+
+diff --git a/gnulib/ChangeLog b/gnulib/ChangeLog
+index bf617428c4d..714ca1dc3e3 100644
+--- b/gnulib/ChangeLog
++++ a/gnulib/ChangeLog
+@@ -1,15 +1,3 @@
+-2020-10-09  Joel Brobecker  <brobecker@adacore.com>
+-
+-	GDB PR build/26607
+-	* patches/0002-stat-fstat-windows-older-vista: New patch.
+-	* patches/0003-stat-fstat-windows-old-mingw: New patch.
+-	* update-gnulib.sh: Update to use the two new patches above.
+-	* import/m4/fstat.m4: Update after applying patches above.
+-	* import/m4/stat.m4: Ditto.
+-	* import/stat-w32.c: Ditto.
+-	* config.in: Regenerate.
+-	* configure: Regenerate.
+-
+ 2020-09-08  Tom Tromey  <tromey@adacore.com>
+ 
+ 	PR win32/25302:
+diff --git a/gnulib/config.in b/gnulib/config.in
+index 4a20b470fb2..d8a5e8be727 100644
+--- b/gnulib/config.in
++++ a/gnulib/config.in
+@@ -693,9 +693,6 @@
+ /* Define to 1 if the system has the type `sa_family_t'. */
+ #undef HAVE_SA_FAMILY_T
+ 
+-/* Define to 1 if you have the <sdkddkver.h> header file. */
+-#undef HAVE_SDKDDKVER_H
+-
+ /* Define to 1 if you have the <search.h> header file. */
+ #undef HAVE_SEARCH_H
+ 
+diff --git a/gnulib/configure b/gnulib/configure
+index 5c6add6e371..ef7f6d5e80f 100644
+--- b/gnulib/configure
++++ a/gnulib/configure
+@@ -10107,25 +10107,6 @@
+ 
+ 
+ 
+-
+-  case "$host_os" in
+-    mingw*)
+-      for ac_header in sdkddkver.h
+-do :
+-  ac_fn_c_check_header_mongrel "$LINENO" "sdkddkver.h" "ac_cv_header_sdkddkver_h" "$ac_includes_default"
+-if test "x$ac_cv_header_sdkddkver_h" = xyes; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_SDKDDKVER_H 1
+-_ACEOF
+-
+-fi
+-
+-done
+-
+-      ;;
+-  esac
+-
+-
+          { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether lstat correctly handles trailing slash" >&5
+ $as_echo_n "checking whether lstat correctly handles trailing slash... " >&6; }
+ if ${gl_cv_func_lstat_dereferences_slashed_symlink+:} false; then :
+@@ -19595,7 +19576,6 @@
+     esac
+ 
+ 
+-
+   :
+ 
+   fi
+@@ -27025,7 +27005,6 @@
+     esac
+ 
+ 
+-
+   :
+ 
+   fi
+diff --git a/gnulib/import/m4/fstat.m4 b/gnulib/import/m4/fstat.m4
+index 53c08961937..bd8cb796621 100644
+--- b/gnulib/import/m4/fstat.m4
++++ a/gnulib/import/m4/fstat.m4
+@@ -1,4 +1,4 @@
+-# fstat.m4 serial 7
++# fstat.m4 serial 6
+ dnl Copyright (C) 2011-2020 Free Software Foundation, Inc.
+ dnl This file is free software; the Free Software Foundation
+ dnl gives unlimited permission to copy and/or distribute it,
+@@ -35,6 +35,5 @@
+ # Prerequisites of lib/fstat.c and lib/stat-w32.c.
+ AC_DEFUN([gl_PREREQ_FSTAT], [
+   AC_REQUIRE([gl_HEADER_SYS_STAT_H])
+-  AC_REQUIRE([gl_PREREQ_STAT_W32])
+   :
+ ])
+diff --git a/gnulib/import/m4/stat.m4 b/gnulib/import/m4/stat.m4
+index 8ef355f9407..5e827b594ab 100644
+--- b/gnulib/import/m4/stat.m4
++++ a/gnulib/import/m4/stat.m4
+@@ -1,4 +1,4 @@
+-# serial 17
++# serial 16
+ 
+ # Copyright (C) 2009-2020 Free Software Foundation, Inc.
+ #
+@@ -70,16 +70,5 @@
+ # Prerequisites of lib/stat.c and lib/stat-w32.c.
+ AC_DEFUN([gl_PREREQ_STAT], [
+   AC_REQUIRE([gl_HEADER_SYS_STAT_H])
+-  AC_REQUIRE([gl_PREREQ_STAT_W32])
+   :
+ ])
+-
+-# Prerequisites of lib/stat-w32.c.
+-AC_DEFUN([gl_PREREQ_STAT_W32], [
+-  AC_REQUIRE([AC_CANONICAL_HOST])
+-  case "$host_os" in
+-    mingw*)
+-      AC_CHECK_HEADERS([sdkddkver.h])
+-      ;;
+-  esac
+-])
+diff --git a/gnulib/import/stat-w32.c b/gnulib/import/stat-w32.c
+index 19bdfaa379c..108ce199cc8 100644
+--- b/gnulib/import/stat-w32.c
++++ a/gnulib/import/stat-w32.c
+@@ -20,22 +20,10 @@
+ 
+ #if defined _WIN32 && ! defined __CYGWIN__
+ 
+-/* Attempt to make <windows.h> define FILE_ID_INFO.
+-   But ensure that the redefinition of _WIN32_WINNT does not make us assume
+-   Windows Vista or newer when building for an older version of Windows.  */
+-#if HAVE_SDKDDKVER_H
+-# include <sdkddkver.h>
+-# if _WIN32_WINNT >= _WIN32_WINNT_VISTA
+-#  define WIN32_ASSUME_VISTA 1
+-# else
+-#  define WIN32_ASSUME_VISTA 0
+-# endif
+-# if !defined _WIN32_WINNT || (_WIN32_WINNT < _WIN32_WINNT_WIN8)
+-#  undef _WIN32_WINNT
+-#  define _WIN32_WINNT _WIN32_WINNT_WIN8
+-# endif
+-#else
+-# define WIN32_ASSUME_VISTA (_WIN32_WINNT >= _WIN32_WINNT_VISTA)
++/* Ensure that <windows.h> defines FILE_ID_INFO.  */
++#if !defined _WIN32_WINNT || (_WIN32_WINNT < _WIN32_WINNT_WIN8)
++# undef _WIN32_WINNT
++# define _WIN32_WINNT _WIN32_WINNT_WIN8
+ #endif
+ 
+ #include <sys/types.h>
+@@ -58,12 +46,7 @@
+ #undef GetFinalPathNameByHandle
+ #define GetFinalPathNameByHandle GetFinalPathNameByHandleA
+ 
+-/* Older mingw headers do not define VOLUME_NAME_NONE.  */
+-#ifndef VOLUME_NAME_NONE
+-# define VOLUME_NAME_NONE 4
+-#endif
+-
+-#if !WIN32_ASSUME_VISTA
++#if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+ 
+ /* Avoid warnings from gcc -Wcast-function-type.  */
+ # define GetProcAddress \
+@@ -166,7 +149,7 @@
+   DWORD type = GetFileType (h);
+   if (type == FILE_TYPE_DISK)
+     {
+-#if !WIN32_ASSUME_VISTA
++#if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+       if (!initialized)
+         initialize ();
+ #endif
+diff --git a/gnulib/patches/0002-stat-fstat-windows-older-vista b/gnulib/patches/0002-stat-fstat-windows-older-vista
+new file mode 100644
+index 00000000000..edb98276f60
+--- b/gnulib/patches/0002-stat-fstat-windows-older-vista
++++ /dev/null
+@@ -1,116 +0,0 @@
+-From 1796cda9975bd459a87222676030b943869c686e Mon Sep 17 00:00:00 2001
+-From: Bruno Haible <bruno@clisp.org>
+-Date: Wed, 16 Sep 2020 23:51:52 +0200
+-Subject: [PATCH 1/2] stat, fstat: Fix when compiling for versions older than
+- Windows Vista.
+-
+-Reported by Eli Zaretskii <eliz@gnu.org> in
+-<https://lists.gnu.org/archive/html/bug-gnulib/2020-09/msg00027.html>.
+-
+-* lib/stat-w32.c: Include <sdkddkver.h>. Test the value of _WIN32_WINNT
+-that was originally set before we redefined it.
+-* m4/stat.m4 (gl_PREREQ_STAT_W32): New macro.
+-(gl_PREREQ_STAT): Require it.
+-* m4/fstat.m4 (gl_PREREQ_FSTAT): Likewise.
+----
+- stat-w32.c | 24 ++++++++++++++++++------
+- m4/fstat.m4    |  3 ++-
+- m4/stat.m4     | 13 ++++++++++++-
+- 4 files changed, 43 insertions(+), 8 deletions(-)
+-
+-diff --git a/gnulib/import/stat-w32.c b/gnulib/import/stat-w32.c
+-index 19bdfaa37..72442e933 100644
+---- a/gnulib/import/stat-w32.c
+-+++ b/gnulib/import/stat-w32.c
+-@@ -20,10 +20,22 @@
+- 
+- #if defined _WIN32 && ! defined __CYGWIN__
+- 
+--/* Ensure that <windows.h> defines FILE_ID_INFO.  */
+--#if !defined _WIN32_WINNT || (_WIN32_WINNT < _WIN32_WINNT_WIN8)
+--# undef _WIN32_WINNT
+--# define _WIN32_WINNT _WIN32_WINNT_WIN8
+-+/* Attempt to make <windows.h> define FILE_ID_INFO.
+-+   But ensure that the redefinition of _WIN32_WINNT does not make us assume
+-+   Windows Vista or newer when building for an older version of Windows.  */
+-+#if HAVE_SDKDDKVER_H
+-+# include <sdkddkver.h>
+-+# if _WIN32_WINNT >= _WIN32_WINNT_VISTA
+-+#  define WIN32_ASSUME_VISTA 1
+-+# else
+-+#  define WIN32_ASSUME_VISTA 0
+-+# endif
+-+# if !defined _WIN32_WINNT || (_WIN32_WINNT < _WIN32_WINNT_WIN8)
+-+#  undef _WIN32_WINNT
+-+#  define _WIN32_WINNT _WIN32_WINNT_WIN8
+-+# endif
+-+#else
+-+# define WIN32_ASSUME_VISTA (_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+- #endif
+- 
+- #include <sys/types.h>
+-@@ -46,7 +58,7 @@
+- #undef GetFinalPathNameByHandle
+- #define GetFinalPathNameByHandle GetFinalPathNameByHandleA
+- 
+--#if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+-+#if !WIN32_ASSUME_VISTA
+- 
+- /* Avoid warnings from gcc -Wcast-function-type.  */
+- # define GetProcAddress \
+-@@ -149,7 +161,7 @@ _gl_fstat_by_handle (HANDLE h, const char *path, struct stat *buf)
+-   DWORD type = GetFileType (h);
+-   if (type == FILE_TYPE_DISK)
+-     {
+--#if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+-+#if !WIN32_ASSUME_VISTA
+-       if (!initialized)
+-         initialize ();
+- #endif
+-diff --git a/gnulib/import/m4/fstat.m4 b/gnulib/import/m4/fstat.m4
+-index 53c089619..bd8cb7966 100644
+---- a/gnulib/import/m4/fstat.m4
+-+++ b/gnulib/import/m4/fstat.m4
+-@@ -1,4 +1,4 @@
+--# fstat.m4 serial 6
+-+# fstat.m4 serial 7
+- dnl Copyright (C) 2011-2021 Free Software Foundation, Inc.
+- dnl This file is free software; the Free Software Foundation
+- dnl gives unlimited permission to copy and/or distribute it,
+-@@ -35,5 +35,6 @@ AC_DEFUN([gl_FUNC_FSTAT],
+- # Prerequisites of lib/fstat.c and lib/stat-w32.c.
+- AC_DEFUN([gl_PREREQ_FSTAT], [
+-   AC_REQUIRE([gl_HEADER_SYS_STAT_H])
+-+  AC_REQUIRE([gl_PREREQ_STAT_W32])
+-   :
+- ])
+-diff --git a/gnulib/import/m4/stat.m4 b/gnulib/import/m4/stat.m4
+-index 46e9abcee..db2038f63 100644
+---- a/gnulib/import/m4/stat.m4
+-+++ b/gnulib/import/m4/stat.m4
+-@@ -1,4 +1,4 @@
+--# serial 16
+-+# serial 17
+- 
+- # Copyright (C) 2009-2020 Free Software Foundation, Inc.
+- #
+-@@ -70,5 +70,16 @@ AC_DEFUN([gl_FUNC_STAT],
+- # Prerequisites of lib/stat.c and lib/stat-w32.c.
+- AC_DEFUN([gl_PREREQ_STAT], [
+-   AC_REQUIRE([gl_HEADER_SYS_STAT_H])
+-+  AC_REQUIRE([gl_PREREQ_STAT_W32])
+-   :
+- ])
+-+
+-+# Prerequisites of lib/stat-w32.c.
+-+AC_DEFUN([gl_PREREQ_STAT_W32], [
+-+  AC_REQUIRE([AC_CANONICAL_HOST])
+-+  case "$host_os" in
+-+    mingw*)
+-+      AC_CHECK_HEADERS([sdkddkver.h])
+-+      ;;
+-+  esac
+-+])
+--- 
+-2.17.1
+-
+diff --git a/gnulib/patches/0003-stat-fstat-windows-old-mingw b/gnulib/patches/0003-stat-fstat-windows-old-mingw
+new file mode 100644
+index 00000000000..e43c88f08ce
+--- b/gnulib/patches/0003-stat-fstat-windows-old-mingw
++++ /dev/null
+@@ -1,34 +0,0 @@
+-From f8c23f202d11992182e87736e73929bcc369cc75 Mon Sep 17 00:00:00 2001
+-From: Bruno Haible <bruno@clisp.org>
+-Date: Wed, 16 Sep 2020 23:52:44 +0200
+-Subject: [PATCH 2/2] stat, fstat: Fix compilation error with old mingw
+- headers.
+-
+-Reported by Eli Zaretskii <eliz@gnu.org> in
+-<https://lists.gnu.org/archive/html/bug-gnulib/2020-09/msg00027.html>.
+-
+-* lib/stat-w32.c (VOLUME_NAME_NONE): Define if the Windows headers don't
+-define it.
+----
+- stat-w32.c | 5 +++++
+- 2 files changed, 13 insertions(+)
+-
+-diff --git a/gnulib/import/stat-w32.c b/gnulib/import/stat-w32.c
+-index 72442e933..108ce199c 100644
+---- a/gnulib/import/stat-w32.c
+-+++ b/gnulib/import/stat-w32.c
+-@@ -58,6 +58,11 @@
+- #undef GetFinalPathNameByHandle
+- #define GetFinalPathNameByHandle GetFinalPathNameByHandleA
+- 
+-+/* Older mingw headers do not define VOLUME_NAME_NONE.  */
+-+#ifndef VOLUME_NAME_NONE
+-+# define VOLUME_NAME_NONE 4
+-+#endif
+-+
+- #if !WIN32_ASSUME_VISTA
+- 
+- /* Avoid warnings from gcc -Wcast-function-type.  */
+--- 
+-2.17.1
+-
+diff --git a/gnulib/update-gnulib.sh b/gnulib/update-gnulib.sh
+index ac5e3d56a29..3aa70141a59 100755
+--- b/gnulib/update-gnulib.sh
++++ a/gnulib/update-gnulib.sh
+@@ -174,12 +174,6 @@
+ }
+ 
+ apply_patches "patches/0001-use-windows-stat"
+-# The following two patches are specific imports of two commits
+-# already in gnulib's master. We import those patches individually
+-# because we want to avoid doing a standard gnulib update, which
+-# would be too disruptive for a release branch.
+-apply_patches "patches/0002-stat-fstat-windows-older-vista"
+-apply_patches "patches/0003-stat-fstat-windows-old-mingw"
+ 
+ # Regenerate all necessary files...
+ aclocal &&
++- 
+2.40.0
+
