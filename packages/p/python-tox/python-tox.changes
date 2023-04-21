@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:37:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Thu Jan 19 12:30:37 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Add missing python-tomli dependency.
