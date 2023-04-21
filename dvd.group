@@ -323,11 +323,11 @@
     <package name="cups-pk-helper-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyreal-lobster-cyrillic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="cyrus-sasl-plain" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="cyrus-sasl-plain" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="dLeyna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="db48-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -439,7 +439,7 @@
     <package name="expect" supportstatus="unsupported"/> <!-- reason: dvd:expect -->
     <package name="eyeD3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="f2fs-tools" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
-    <package name="farstream-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="farstream-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="fbiterm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fcitx-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -740,7 +740,7 @@
     <package name="gstreamer-plugins-bad-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gstreamer-plugins-base-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="gstreamer-plugins-farstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gstreamer-plugins-farstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gstreamer-plugins-good" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-good-extra" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gstreamer-plugins-good-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -811,7 +811,7 @@
     <package name="gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="gtksourceview4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gtksourceview5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gtkspell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gtkspell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gucharmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gucharmap-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
@@ -1515,7 +1515,7 @@
     <package name="libXpresent1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libXrandr2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXrender1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libXss1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libXss1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libXt6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXtst6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXv1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1819,7 +1819,7 @@
     <package name="libf2fs9" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
     <package name="libfa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfakekey0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="libfcitx-config4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfcitx-core0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1860,7 +1860,7 @@
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libfuse3-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfwupd2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libgadu3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgadu3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgarcon-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgarcon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgarcon-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2016,7 +2016,7 @@
     <package name="libgtksourceview-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libgtksourceview-4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgtksourceview-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgtkspell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgtkspell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgtop-2_0-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtop-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgucharmap_2_90-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2062,7 +2062,7 @@
     <package name="libicu72" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libicu72-ledata" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libid3tag0_16_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libidn2-0-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2423,10 +2423,10 @@
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpurple" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpurple-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpurple-client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpurple-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpurple" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libpurple-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libpurple-client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libpurple-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libpurple-plugin-bot-sentry" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-bot-sentry-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-carbons" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2446,8 +2446,8 @@
     <package name="libpurple-plugin-telegram" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-telegram-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-xmpp-http-upload" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libpurple-tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpurple0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpurple-tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libpurple0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3329,7 +3329,7 @@
     <package name="php8-xmlreader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="php8-xmlwriter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="pia" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="pidgin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pidgin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pidgin-plugin-libsteam" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pidgin-plugin-mattermost" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pidgin-plugin-pack" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3693,6 +3693,16 @@
     <package name="ruby3.2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.2-rubygem-Ascii85" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="ruby3.2-rubygem-actioncable-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actionmailbox-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actionmailer-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actionpack-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actiontext-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-actionview-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-activejob-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-activemodel-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-activerecord-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-activestorage-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-activesupport-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-aes_key_wrap" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3728,6 +3738,7 @@
     <package name="ruby3.2-rubygem-childprocess" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coderay" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coercible" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-coffee-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coffee-script" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-coffee-script-source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-colorator" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3742,7 +3753,11 @@
     <package name="ruby3.2-rubygem-debase-ruby_core_source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-debug_inspector" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-delayed_job" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-delayed_job_active_record" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-descendants_tracker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-devise" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-devise-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-devise_ldap_authenticatable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-diff-lcs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-diffy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-docile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3762,6 +3777,7 @@
     <package name="ruby3.2-rubygem-erubi" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-erubis" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-eventmachine" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-exception_notification" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-excon" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-execjs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-fake_ftp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3779,12 +3795,14 @@
     <package name="ruby3.2-rubygem-fog-json" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-fog-libvirt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-fog-xml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-font-awesome-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-formatador" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-forwardable-extended" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gem2rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby3.2-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gli" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-google-protobuf" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3795,6 +3813,7 @@
     <package name="ruby3.2-rubygem-gssapi" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-gyoku" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-haml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-haml-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hashdiff" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hashery" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-hashicorp-checkpoint" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3811,11 +3830,15 @@
     <package name="ruby3.2-rubygem-httpclient" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-ice_nine" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-importmap-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-inifile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jaro_winkler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll-sass-converter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-jekyll-watch" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-jquery-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-js-routes" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json-jwt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-json-schema" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3826,6 +3849,7 @@
     <package name="ruby3.2-rubygem-kramdown-parser-gfm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-launchy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-libyui-rake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-lightbox2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-liquid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-liquid-4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-listen" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3877,6 +3901,7 @@
     <package name="ruby3.2-rubygem-oauth2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-omniauth" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-omniauth-oauth2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-openid_connect" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-optimist" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-orm_adapter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-os" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3916,8 +3941,11 @@
     <package name="ruby3.2-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rails-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-railties-7.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rainbow" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-raindrops" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rake-compiler" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3927,6 +3955,7 @@
     <package name="ruby3.2-rubygem-rdiscount" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-red-datasets" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-regexp_parser" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-responders" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-reverse_markdown" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rgl" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rice" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3942,6 +3971,8 @@
     <package name="ruby3.2-rubygem-rspec-its" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-mocks" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-mocks-3_5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rspec-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-rspec-rails-4.0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-support" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rspec-support-3_5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-rubocop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3959,8 +3990,10 @@
     <package name="ruby3.2-rubygem-safe_yaml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sass" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sass-listen" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sass-rails-5.1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.2-rubygem-sassc-2.2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sdoc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-semantic_range" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-serverengine" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3977,8 +4010,10 @@
     <package name="ruby3.2-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sprockets-3.7" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sprockets-helpers" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-sshkit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-stimulus-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-stomp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-stream" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-strptime" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3997,6 +4032,7 @@
     <package name="ruby3.2-rubygem-treetop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-trollop" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-ttfunk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-turbo-rails" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-tzinfo" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4009,10 +4045,14 @@
     <package name="ruby3.2-rubygem-unicode-display_width-1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-vagrant-spec" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-vagrant_cloud" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-validate_email" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-validate_url" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-version_gem" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-virtus" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-warden" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-webfinger" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-webrick" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-websocket" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-websocket-driver" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4020,6 +4060,7 @@
     <package name="ruby3.2-rubygem-winrm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-winrm-elevated" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-winrm-fs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-xdg" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-xdg-2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-xml-simple" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-xmlhash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4243,7 +4284,7 @@
     <package name="time" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="timezone" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="timezone-java" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tmux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="tnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="tnftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4557,7 +4598,7 @@
     <package name="xfwm4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfwm4-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xfwm4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="xhost" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xhost" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="xiccd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xinetd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="xinit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4603,6 +4644,7 @@
     <package name="xxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="yarn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
