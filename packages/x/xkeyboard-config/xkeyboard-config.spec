@@ -20,7 +20,7 @@ Name:           xkeyboard-config
 Version:        2.38
 Release:        0
 Summary:        The X Keyboard Extension
-License:        CDDL-1.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://www.freedesktop.org/Software/XKeyboardConfig
 Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.xz
