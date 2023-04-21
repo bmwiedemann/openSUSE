@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.0.0-0
+
+- Updated spec to vtk-m 2.0.0.
+- Dropped 0001-fix-soname-lib.patch.
+- Find the release notes at <https://gitlab.kitware.com/vtk/vtk-m/-/tags/v2.0.0>.
+
+-------------------------------------------------------------------
 Tue Oct 18 22:01:07 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use format_spec_file service to clean up/correct whitespace

@@ -1,5 +1,0 @@
-# Needed as per VTK-m architecture and mode of usage
-addFilter("libvtk-m.* W: shared-lib-calls-exit /usr/.*vtkm.*")
-
-# We use multibuilds
-addFilter("vtk-m.*: E: invalid-spec-name")

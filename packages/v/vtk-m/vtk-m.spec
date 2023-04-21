@@ -1,7 +1,7 @@
 #
-# spec file for package vtk-m
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%define major_ver 1
-%define minor_ver 9
+%define major_ver 2
+%define minor_ver 0
 %define patch_ver 0
 %define short_ver %{major_ver}.%{minor_ver}
 
-%if "%flavor" != "%nil"
+%if "%{flavor}" != "%{nil}"
   %define pkg_suffix -%{flavor}
   %bcond_without mpi
 %else
   %bcond_with mpi
 %endif
 
-%if 0%{?fedora} && %{with mpi}
-ExclusiveArch:  do_not_build
-%endif
+%{?suse_version:%define is_suse 1}%{?!suse_version:%define is_suse 0}
+%define shlib        libvtk-m%{?pkg_suffix}-%{major_ver}_%{minor_ver}
 
 # Let the user build the rpm with cuda if wanted
 %bcond_with cuda
@@ -49,11 +48,6 @@ ExclusiveArch:  do_not_build
 %define pkg_datadir    %{_datadir}
 %define pkg_docdir     %{_docdir}/%{name}
 %endif
-
-%{?suse_version:%define is_suse 1}%{?!suse_version:%define is_suse 0}
-
-%define shlib        libvtk-m-%{major_ver}_%{minor_ver}%{?pkg_suffix}
-
 # Header ----------------------------------------------------------------------
 Name:           vtk-m%{?pkg_suffix}
 Version:        %{major_ver}.%{minor_ver}.%{patch_ver}
@@ -63,18 +57,19 @@ License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://m.vtk.org/
 Source0:        vtk-m-v%{version}.tar.gz
-Source1:        vtk-m-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.kitware.com/vtk/vtk-m/-/commit/7ceec1ddac79e6e7e3dc8b6c8f02fb01e2cbdc46.patch#/0001-fix-soname-lib.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glew)
+%if 0%{?fedora} && %{with mpi}
+ExclusiveArch:  do_not_build
+%endif
 %if %{?is_suse}
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
 %endif
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 %if %{with mpi}
 BuildRequires:  %{flavor}-devel
 %endif
@@ -123,8 +118,7 @@ This provides development libraries and header files required to compile C++
 programs that use VTK-m to do 3D visualization.
 
 %prep
-%setup  -q -n vtk-m-v%{version}
-%patch0 -p1
+%setup -q -n vtk-m-v%{version}
 
 %build
 # vtk-m requires massive amounts of memory to build:
@@ -138,6 +132,7 @@ programs that use VTK-m to do 3D visualization.
 %endif
 # INSTALL_CONFIG_DIR must be specified as relative path, https://gitlab.kitware.com/vtk/vtk-m/-/issues/741
 %cmake \
+    -DVTKm_BUILD_ALL_LIBRARIES=ON \
 %if %{with cuda}
     -DVTKm_ENABLE_CUDA=ON \
     -DVTKm_CUDA_Architecture=all \
@@ -150,7 +145,6 @@ programs that use VTK-m to do 3D visualization.
     -DVTKm_ENABLE_GL_CONTEXT=ON \
     -DVTKm_ENABLE_TESTING=OFF \
     -DVTKm_ENABLE_TESTING_LIBRARY=ON \
-    -DVTKm_ENABLE_EXAMPLES=ON \
     -DVTKm_NO_INSTALL_README_LICENSE=ON \
     -DVTKm_INSTALL_CONFIG_DIR=%{_lib}/cmake/vtkm-%{short_ver} \
     -DVTKm_INSTALL_LIB_DIR=%{pkg_libdir} \
@@ -164,17 +158,15 @@ programs that use VTK-m to do 3D visualization.
 
 %install
 %cmake_install
-# VTKm_INSTALL_EXAMPLES=OFF has no effect, https://gitlab.kitware.com/vtk/vtk-m/-/issues/742
-rm -Rf %{buildroot}/%{pkg_docdir}/examples
 
 %post   -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
-%files  -n %{shlib}
+%files -n %{shlib}
+%license LICENSE.txt
 %{pkg_libdir}/lib*.so.*
 
-%files  devel
-%license LICENSE.txt
+%files devel
 %doc CONTRIBUTING.md README.md
 %{pkg_libdir}/cmake/vtkm-%{short_ver}
 %{pkg_libdir}/lib*.so
