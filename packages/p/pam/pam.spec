@@ -35,6 +35,7 @@
 %define livepatchable 0
 %endif
 
+%bcond_without selinux
 %bcond_with debug
 
 %define flavor @BUILD_FLAVOR@%{nil}
@@ -46,15 +47,18 @@
 %if "%{flavor}" == "full"
 %define build_main 0
 %define build_doc 1
+%define build_extra 1
+%define build_userdb 1
 %define name_suffix -%{flavor}-src
 %else
 %define build_main 1
 %define build_doc 0
+%define build_extra 0
+%define build_userdb 0
 %define name_suffix %{nil}
 %endif
 
 #
-%define enable_selinux 1
 %define libpam_so_version 0.85.1
 %define libpam_misc_so_version 0.82.1
 %define libpamc_so_version 0.82.1
@@ -67,14 +71,14 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.5.2
+Version:        1.5.2.90
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
 Group:          System/Libraries
-URL:            http://www.linux-pam.org/
+URL:            https://github.com/linux-pam/linux-pam
 Source:         Linux-PAM-%{version}.tar.xz
-Source1:        Linux-PAM-%{version}-docs.tar.xz
+# XXX Source1:        Linux-PAM-%{version}.tar.xz.asc
 Source2:        macros.pam
 Source3:        other.pamd
 Source4:        common-auth.pamd
@@ -86,20 +90,12 @@ Source10:       unix2_chkpwd.c
 Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
 Source13:       pam.tmpfiles
-Source14:       Linux-PAM-%{version}-docs.tar.xz.asc
-Source15:       Linux-PAM-%{version}.tar.xz.asc
 Source20:       common-session-nonlogin.pamd
 Source21:       postlogin-auth.pamd
 Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
-Patch3:         pam-xauth_ownership.patch
-Patch4:         pam-bsc1177858-dont-free-environment-string.patch
-Patch5:        pam_xauth_data.3.xml.patch
-Patch11:        pam-git.diff
-Patch13:        pam_pwhistory-docu.patch
-Patch14:        docbook5.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -110,39 +106,55 @@ Requires(post): permissions
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
 Recommends:     login_defs-support-for-pam >= 1.5.2
-%if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
-%endif
-%if %{enable_selinux}
+%if %{with selinux}
 BuildRequires:  libselinux-devel
 %endif
 Obsoletes:      pam_unix
 Obsoletes:      pam_unix-nis
 Recommends:     pam-manpages
-%if 0%{?suse_version} >= 1330
 Requires(pre):  group(shadow)
 Requires(pre):  user(root)
-%endif
 
 %description
 PAM (Pluggable Authentication Modules) is a system security tool that
 allows system administrators to set authentication policies without
 having to recompile programs that do authentication.
 
-%package extra
+%if %{build_userdb}
+%package -n pam-userdb
 Summary:        PAM module to authenticate against a separate database
 Group:          System/Libraries
+Provides:       pam-extra:%{_pam_moduledir}/pam_userdb.so
 BuildRequires:  libdb-4_8-devel
 BuildRequires:  pam-devel
 
-%description extra
+%description -n pam-userdb
 PAM (Pluggable Authentication Modules) is a system security tool that
 allows system administrators to set authentication policies without
 having to recompile programs that do authentication.
 
-This package contains useful extra modules eg pam_userdb which is
-used to verify a username/password pair against values stored in
-a Berkeley DB database.
+This package contains pam_userdb which is used to verify a
+username/password pair against values stored in a Berkeley DB database.
+%endif
+
+
+%if %{build_extra}
+%package -n pam-extra
+Summary:        PAM module with extended dependencies
+Group:          System/Libraries
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pam-devel
+Provides:	pam:%{_sbindir}/pam_timestamp_check
+
+%description -n pam-extra
+PAM (Pluggable Authentication Modules) is a system security tool that
+allows system administrators to set authentication policies without
+having to recompile programs that do authentication.
+
+This package contains extra modules eg pam_issue and pam_timestamp which
+can have extended dependencies.
+%endif
 
 %if %{build_doc}
 
@@ -191,17 +203,9 @@ This package contains header files and static libraries used for
 building both PAM-aware applications and modules for use with PAM.
 
 %prep
-%setup -q -n Linux-PAM-%{version} -b 1
+%setup -q -n Linux-PAM-%{version}
 cp -a %{SOURCE12} .
-%patch11 -p1
 %patch1 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%if %{build_doc}
-%patch13 -p1
-%patch14 -p1
-%endif
 
 %build
 bash ./pam-login_defs-check.sh
@@ -220,6 +224,7 @@ CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 	--enable-isadir=../..%{_pam_moduledir} \
 	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_prefix}/etc \
+	--disable-nis \
 %if %{with debug}
 	--enable-debug
 %endif
@@ -291,9 +296,6 @@ mkdir -p %{buildroot}%{_prefix}/lib/motd.d
 # Remove crap
 #
 find %{buildroot} -type f -name "*.la" -delete -print
-for x in pam_unix_auth pam_unix_acct pam_unix_passwd pam_unix_session; do
-  ln -f %{buildroot}%{_pam_moduledir}/pam_unix.so %{buildroot}%{_pam_moduledir}/$x.so
-done
 #
 # Install READMEs of PAM modules
 #
@@ -312,27 +314,25 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 
-mkdir -p %{buildroot}%{_pam_secdistconfdir}
-mv %{buildroot}%{_sysconfdir}/security/{limits.conf,faillock.conf,group.conf,pam_env.conf,access.conf,limits.d,sepermit.conf,time.conf} %{buildroot}%{_pam_secdistconfdir}/
-mv %{buildroot}%{_sysconfdir}/security/{namespace.conf,namespace.d,namespace.init} %{buildroot}%{_pam_secdistconfdir}/
+mkdir -p %{buildroot}%{_pam_secdistconfdir}/{limits.d,namespace.d}
 mv %{buildroot}%{_sysconfdir}/environment %{buildroot}%{_distconfdir}/environment
 
 # Remove manual pages for main package
 %if !%{build_doc}
-rm -rf %{buildroot}%{_mandir}/man[58]/*
-install -m 644 modules/pam_userdb/pam_userdb.8 %{buildroot}/%{_mandir}/man8/
+rm -rf %{buildroot}%{_mandir}/man?/*
 %else
 install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
 # bsc#1188724
 echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
 %endif
-%if !%{build_main}
-rm -rf %{buildroot}{%{_sysconfdir},%{_distconfdir},%{_sbindir},%{_pam_secconfdir},%{_pam_confdir},%{_datadir}/locale}
-rm -rf %{buildroot}{%{_includedir},%{_libdir},%{_prefix}/lib}
-rm -rf %{buildroot}%{_mandir}/man3/*
-rm -rf %{buildroot}%{_mandir}/man8/pam_userdb.8*
 
+%if !%{build_main}
+rm -rf %{buildroot}{%{_sysconfdir},%{_distconfdir},%{_sbindir}/{f*,m*,pam_n*,pw*,u*},%{_pam_secconfdir},%{_pam_confdir},%{_datadir}/locale}
+rm -rf %{buildroot}{%{_includedir},%{_libdir}/{libpam*,pkgconfig},%{_pam_vendordir},%{_rpmmacrodir},%{_tmpfilesdir}}
+rm -rf %{buildroot}%{_pam_moduledir}/pam_{a,b,c,d,e,f,g,h,j,k,l,m,n,o,p,q,r,s,v,w,x,y,z,time.,tt,um,un,usertype}*
 %else
+# Delete files for extra package
+rm -rf  %{buildroot}{%{_pam_moduledir}/pam_issue.so,%{_pam_moduledir}/pam_timestamp.so,%{_sbindir}/pam_timestamp_check}
 
 # Create filelist with translations
 %find_lang Linux-PAM
@@ -392,13 +392,13 @@ done
 %{_pam_secdistconfdir}/faillock.conf
 %{_pam_secdistconfdir}/limits.conf
 %{_pam_secdistconfdir}/pam_env.conf
-%if %{enable_selinux}
+%if %{with selinux}
 %{_pam_secdistconfdir}/sepermit.conf
 %endif
 %{_pam_secdistconfdir}/time.conf
 %{_pam_secdistconfdir}/namespace.conf
 %{_pam_secdistconfdir}/namespace.init
-%config(noreplace) %{_pam_secconfdir}/pwhistory.conf
+%{_pam_secdistconfdir}/pwhistory.conf
 %dir %{_pam_secdistconfdir}/namespace.d
 %{_libdir}/libpam.so.0
 %{_libdir}/libpam.so.%{libpam_so_version}
@@ -420,9 +420,7 @@ done
 %{_pam_moduledir}//pam_filter/upperLOWER
 %{_pam_moduledir}/pam_ftp.so
 %{_pam_moduledir}/pam_group.so
-%{_pam_moduledir}/pam_issue.so
 %{_pam_moduledir}/pam_keyinit.so
-%{_pam_moduledir}/pam_lastlog.so
 %{_pam_moduledir}/pam_limits.so
 %{_pam_moduledir}/pam_listfile.so
 %{_pam_moduledir}/pam_localuser.so
@@ -437,7 +435,7 @@ done
 %{_pam_moduledir}/pam_rhosts.so
 %{_pam_moduledir}/pam_rootok.so
 %{_pam_moduledir}/pam_securetty.so
-%if %{enable_selinux}
+%if %{with selinux}
 %{_pam_moduledir}/pam_selinux.so
 %{_pam_moduledir}/pam_sepermit.so
 %endif
@@ -446,14 +444,9 @@ done
 %{_pam_moduledir}/pam_stress.so
 %{_pam_moduledir}/pam_succeed_if.so
 %{_pam_moduledir}/pam_time.so
-%{_pam_moduledir}/pam_timestamp.so
 %{_pam_moduledir}/pam_tty_audit.so
 %{_pam_moduledir}/pam_umask.so
 %{_pam_moduledir}/pam_unix.so
-%{_pam_moduledir}/pam_unix_acct.so
-%{_pam_moduledir}/pam_unix_auth.so
-%{_pam_moduledir}/pam_unix_passwd.so
-%{_pam_moduledir}/pam_unix_session.so
 %{_pam_moduledir}/pam_usertype.so
 %{_pam_moduledir}/pam_warn.so
 %{_pam_moduledir}/pam_wheel.so
@@ -461,7 +454,6 @@ done
 %{_sbindir}/faillock
 %{_sbindir}/mkhomedir_helper
 %{_sbindir}/pam_namespace_helper
-%{_sbindir}/pam_timestamp_check
 %{_sbindir}/pwhistory_helper
 %verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix_chkpwd
 %verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix2_chkpwd
@@ -469,23 +461,30 @@ done
 %{_unitdir}/pam_namespace.service
 %{_tmpfilesdir}/pam.conf
 
-%files extra
-%defattr(-,root,root,755)
-%{_pam_moduledir}/pam_userdb.so
-%{_mandir}/man8/pam_userdb.8%{?ext_man}
-
 %files devel
 %defattr(644,root,root,755)
 %dir %{_includedir}/security
-%{_mandir}/man3/pam*
-%{_mandir}/man3/misc_conv.3%{?ext_man}
 %{_includedir}/security/*.h
 %{_libdir}/libpam.so
 %{_libdir}/libpamc.so
 %{_libdir}/libpam_misc.so
 %{_rpmmacrodir}/macros.pam
 %{_libdir}/pkgconfig/pam*.pc
+%endif
 
+%if %{build_userdb}
+%files -n pam-userdb
+%defattr(-,root,root,755)
+%{_pam_moduledir}/pam_userdb.so
+%{_mandir}/man8/pam_userdb.8%{?ext_man}
+%endif
+
+%if %{build_extra}
+%files -n pam-extra
+%defattr(-,root,root,755)
+%{_pam_moduledir}/pam_issue.so
+%{_pam_moduledir}/pam_timestamp.so
+%{_sbindir}/pam_timestamp_check
 %endif
 
 %if %{build_doc}
@@ -499,6 +498,8 @@ done
 %doc %{_defaultdocdir}/pam/*.txt
 
 %files -n pam-manpages
+%{_mandir}/man3/pam*.3%{?ext_man}
+%{_mandir}/man3/misc_conv.3%{?ext_man}
 %{_mandir}/man5/environment.5%{?ext_man}
 %{_mandir}/man5/*.conf.5%{?ext_man}
 %{_mandir}/man5/pam.d.5%{?ext_man}
@@ -520,7 +521,6 @@ done
 %{_mandir}/man8/pam_group.8%{?ext_man}
 %{_mandir}/man8/pam_issue.8%{?ext_man}
 %{_mandir}/man8/pam_keyinit.8%{?ext_man}
-%{_mandir}/man8/pam_lastlog.8%{?ext_man}
 %{_mandir}/man8/pam_limits.8%{?ext_man}
 %{_mandir}/man8/pam_listfile.8%{?ext_man}
 %{_mandir}/man8/pam_localuser.8%{?ext_man}

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 20 09:40:50 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam-extra: add split provide
+
+-------------------------------------------------------------------
+Wed Apr 12 11:28:48 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam-userdb: add split provide
+
+-------------------------------------------------------------------
+Tue Apr 11 07:53:44 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop pam-xauth_ownership.patch, got fixed in sudo itself
+- Drop pam-bsc1177858-dont-free-environment-string.patch, was a 
+  fix for above patch
+
+-------------------------------------------------------------------
+Thu Apr  6 12:11:30 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use bcond selinux to disable SELinux
+- Remove old pam_unix_* compat symlinks
+- Move pam_userdb to own pam-userdb sub-package
+- pam-extra contains now modules having extended dependencies like
+  libsystemd
+- Update to 1.5.3.90 git snapshot
+- Drop merged patches:
+  - pam-git.diff
+  - docbook5.patch
+  - pam_pwhistory-docu.patch
+  - pam_xauth_data.3.xml.patch
+- Drop Linux-PAM-1.5.2.90.tar.xz as we have to rebuild all
+  documentation anyways and don't use the prebuild versions
+- Move all devel manual pages to pam-manpages, too. Fixes the 
+  problem that adjusted defaults not shown correct.
+
+-------------------------------------------------------------------
 Mon Mar 20 10:12:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add common-session-nonlogin and postlogin-* pam.d config files
@@ -45,7 +81,7 @@ Thu Dec 15 12:47:53 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 Tue Dec  6 16:43:49 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - pam_pwhistory-docu.patch, docbook5.patch: convert docu to
-  docbook5 
+  docbook5
 
 -------------------------------------------------------------------
 Thu Dec  1 13:51:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
@@ -129,7 +165,7 @@ Mon Nov 22 13:12:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
   - 0001-Include-pam_xauth_data.3.xml-in-source-archive-400.patch
   - 0002-Only-include-vendordir-in-manual-page-if-set-401.patch
   - 0003-Use-vendor-specific-limits.conf-as-fallback-402.patch
-- For buggy bot: Makefile-pam_unix-nis.diff belonged to the other 
+- For buggy bot: Makefile-pam_unix-nis.diff belonged to the other
   spec file.
 
 -------------------------------------------------------------------
@@ -296,7 +332,7 @@ Fri Nov 27 09:10:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Thu Nov 26 13:31:52 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
-- add macros.pam to abstract directory for pam modules 
+- add macros.pam to abstract directory for pam modules
 
 -------------------------------------------------------------------
 Thu Nov 19 15:43:33 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
@@ -678,8 +714,8 @@ Thu Dec  8 12:41:05 UTC 2016 - josef.moellers@suse.com
 -------------------------------------------------------------------
 Sun Jul 31 11:08:19 UTC 2016 - develop7@develop7.info
 
-- pam-limit-nproc.patch: increased process limit to help 
-  Chrome/Chromuim users with really lots of tabs. New limit gets 
+- pam-limit-nproc.patch: increased process limit to help
+  Chrome/Chromuim users with really lots of tabs. New limit gets
   closer to UserTasksMax parameter in logind.conf
 
 -------------------------------------------------------------------
@@ -803,7 +839,7 @@ Mon Jan 27 17:05:11 CET 2014 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Jan 27 15:14:34 CET 2014 - kukuk@suse.de
 
-- Update to current git (Linux-PAM-git-20140127.diff), which 
+- Update to current git (Linux-PAM-git-20140127.diff), which
   obsoletes pam_loginuid-part1.diff, pam_loginuid-part2.diff and
   Linux-PAM-git-20140109.diff.
   - Fix gratuitous use of strdup and x_strdup
@@ -865,7 +901,7 @@ Sat Sep 28 09:26:21 UTC 2013 - mc@suse.com
 -------------------------------------------------------------------
 Fri Sep 20 21:42:54 UTC 2013 - hrvoje.senjan@gmail.com
 
-- Explicitly add pam_systemd.so to list of modules in 
+- Explicitly add pam_systemd.so to list of modules in
   common-session.pamd (bnc#812462)
 
 -------------------------------------------------------------------
@@ -886,7 +922,7 @@ Mon Sep 16 11:54:15 CEST 2013 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Sep 12 10:05:53 CEST 2013 - kukuk@suse.de
 
-- Remove pam_unix-login.defs.diff, not needed anymore 
+- Remove pam_unix-login.defs.diff, not needed anymore
 
 -------------------------------------------------------------------
 Thu Sep 12 09:47:52 CEST 2013 - kukuk@suse.de
@@ -908,7 +944,7 @@ Mon May 27 12:26:53 CEST 2013 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri Apr 26 10:25:06 UTC 2013 - mmeister@suse.com
 
-- Added libtool as BuildRequire, and autoreconf -i option to fix 
+- Added libtool as BuildRequire, and autoreconf -i option to fix
   build with new automake
 
 -------------------------------------------------------------------
@@ -1004,7 +1040,7 @@ Wed May 25 16:15:30 CEST 2011 - kukuk@suse.de
 Wed Feb 23 12:45:03 UTC 2011 - vcizek@novell.com
 
 - bnc#673826 rework
-  * manpage is left intact, as it was 
+  * manpage is left intact, as it was
   * correct parsing of "quiet" option
 
 -------------------------------------------------------------------
@@ -1037,7 +1073,7 @@ Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon May 10 14:22:18 CEST 2010 - kukuk@suse.de
 
-- Update to current CVS version (pam_rootok: Add support for 
+- Update to current CVS version (pam_rootok: Add support for
   chauthtok and acct_mgmt, [bnc#533249])
 
 -------------------------------------------------------------------
@@ -1087,13 +1123,13 @@ Fri Apr  3 21:43:48 CEST 2009 - rguenther@suse.de
 Fri Mar 27 11:41:23 CET 2009 - kukuk@suse.de
 
 - Update to version 1.0.91 aka 1.1 Beta2:
-  * Changes in the behavior of the password stack. Results of 
+  * Changes in the behavior of the password stack. Results of
     PRELIM_CHECK are not used for the final run.
   * Redefine LOCAL keyword of pam_access configuration file
-  * Add support for try_first_pass and use_first_pass to 
+  * Add support for try_first_pass and use_first_pass to
     pam_cracklib
   * New password quality tests in pam_cracklib
-  * Add support for passing PAM_AUTHTOK to stdin of helpers from 
+  * Add support for passing PAM_AUTHTOK to stdin of helpers from
     pam_exec
   * New options for pam_lastlog to show last failed login attempt and
     to disable lastlog update
@@ -1137,7 +1173,7 @@ Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
 -------------------------------------------------------------------
 Thu Nov 27 15:56:51 CET 2008 - mc@suse.de
 
-- enhance the man page for limits.conf (bnc#448314) 
+- enhance the man page for limits.conf (bnc#448314)
 
 -------------------------------------------------------------------
 Mon Nov 24 17:21:19 CET 2008 - kukuk@suse.de
@@ -1154,7 +1190,7 @@ Wed Nov 19 11:13:31 CET 2008 - kukuk@suse.de
 Tue Nov  4 13:42:03 CET 2008 - mc@suse.de
 
 - pam_xauth: put XAUTHLOCALHOSTNAME into new enviroment
-  (bnc#441314) 
+  (bnc#441314)
 
 -------------------------------------------------------------------
 Fri Oct 17 14:02:31 CEST 2008 - kukuk@suse.de
@@ -1263,7 +1299,7 @@ Mon Mar 26 15:48:13 CEST 2007 - rguenther@suse.de
 Wed Jan 24 11:27:16 CET 2007 - mc@suse.de
 
 - add %verify_permissions for /sbin/unix_chkpwd
-  [#237625] 
+  [#237625]
 
 -------------------------------------------------------------------
 Tue Jan 23 13:19:51 CET 2007 - kukuk@suse.de
@@ -1422,7 +1458,7 @@ Thu Mar  2 16:49:10 CET 2006 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Feb 23 13:21:22 CET 2006 - kukuk@suse.de
 
-- pam_lastlog: 
+- pam_lastlog:
   - Initialize correct struct member [SF#1427401]
   - Mark strftime fmt string for translation [SF#1428269]
 
@@ -1434,13 +1470,13 @@ Sun Feb 19 09:15:42 CET 2006 - kukuk@suse.de
 -------------------------------------------------------------------
 Sat Feb 18 12:45:19 CET 2006 - ro@suse.de
 
-- really disable audit if header file not present 
+- really disable audit if header file not present
 
 -------------------------------------------------------------------
 Tue Feb 14 13:29:42 CET 2006 - kukuk@suse.de
 
 - Update fi.po
-- Add km.po 
+- Add km.po
 - Update pl.po
 
 -------------------------------------------------------------------
@@ -1603,7 +1639,7 @@ Fri May 20 13:18:43 CEST 2005 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu May 12 16:37:07 CEST 2005 - schubi@suse.de
 
-- Bug 82687 - pam_client.h redefines __u8 and __u32 
+- Bug 82687 - pam_client.h redefines __u8 and __u32
 
 -------------------------------------------------------------------
 Fri Apr 29 11:18:16 CEST 2005 - kukuk@suse.de
@@ -1629,7 +1665,7 @@ Mon Jan 24 16:02:11 CET 2005 - kukuk@suse.de
 Mon Jan 24 11:30:27 CET 2005 - schubi@suse.de
 
 - Made patch of latest CVS tree
-- Removed patch pam_handler.diff ( included in CVS now ) 
+- Removed patch pam_handler.diff ( included in CVS now )
 - moved Linux-PAM-0.78.dif to pam_group_time.diff
 
 -------------------------------------------------------------------
@@ -1692,7 +1728,7 @@ Fri Mar 12 14:32:27 CET 2004 - kukuk@suse.de
 -------------------------------------------------------------------
 Sun Jan 18 12:11:37 CET 2004 - meissner@suse.de
 
-- We no longer have pam in the buildsystem, so we 
+- We no longer have pam in the buildsystem, so we
   need some buildroot magic flags for the dlopen tests.
 
 -------------------------------------------------------------------
@@ -1756,7 +1792,7 @@ Tue Jun 10 12:08:56 CEST 2003 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue May 27 16:26:00 CEST 2003 - ro@suse.de
 
-- added cracklib-devel to neededforbuild 
+- added cracklib-devel to neededforbuild
 
 -------------------------------------------------------------------
 Thu Feb 13 14:56:05 CET 2003 - kukuk@suse.de
@@ -1776,7 +1812,7 @@ Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Sat Sep 14 18:12:49 CEST 2002 - ro@suse.de
 
-- changed securetty / use extra file 
+- changed securetty / use extra file
 
 -------------------------------------------------------------------
 Fri Sep 13 18:21:35 CEST 2002 - bk@suse.de
@@ -1830,7 +1866,7 @@ Wed Mar 13 10:44:20 CET 2002 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Feb 11 22:46:43 CET 2002 - ro@suse.de
 
-- tar option for bz2 is "j" 
+- tar option for bz2 is "j"
 
 -------------------------------------------------------------------
 Fri Jan 25 18:55:26 CET 2002 - kukuk@suse.de
@@ -1933,7 +1969,7 @@ Tue Feb 13 14:17:13 CET 2001 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue Feb  6 01:34:06 CET 2001 - ro@suse.de
 
-- pam_issue.c: include time.h to make it compile 
+- pam_issue.c: include time.h to make it compile
 
 -------------------------------------------------------------------
 Fri Jan  5 22:51:44 CET 2001 - kukuk@suse.de
@@ -1964,12 +2000,12 @@ Thu Oct 26 16:36:09 CEST 2000 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri Oct 20 12:03:07 CEST 2000 - kukuk@suse.de
 
-- Don't link PAM modules against old libpam library 
+- Don't link PAM modules against old libpam library
 
 -------------------------------------------------------------------
 Wed Oct 18 11:53:34 CEST 2000 - kukuk@suse.de
 
-- Create new "devel" subpackage 
+- Create new "devel" subpackage
 
 -------------------------------------------------------------------
 Thu Oct 12 15:16:55 CEST 2000 - kukuk@suse.de
@@ -1979,7 +2015,7 @@ Thu Oct 12 15:16:55 CEST 2000 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue Oct  3 15:05:00 CEST 2000 - kukuk@suse.de
 
-- Fix problems with new gcc and glibc 2.2 header files 
+- Fix problems with new gcc and glibc 2.2 header files
 
 -------------------------------------------------------------------
 Wed Sep 13 13:12:08 CEST 2000 - kukuk@suse.de
@@ -2034,7 +2070,7 @@ Tue Feb 15 17:47:50 CET 2000 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Feb  7 17:55:42 CET 2000 - kukuk@suse.de
 
-- pwdb: Update to 0.61 
+- pwdb: Update to 0.61
 
 -------------------------------------------------------------------
 Thu Jan 27 16:54:03 CET 2000 - kukuk@suse.de
@@ -2053,7 +2089,7 @@ Thu Jan 13 18:22:10 CET 2000 - kukuk@suse.de
 -------------------------------------------------------------------
 Wed Oct 13 16:48:51 MEST 1999 - kukuk@suse.de
 
-- pam_pwdb: Add security fixes from RedHat 
+- pam_pwdb: Add security fixes from RedHat
 
 -------------------------------------------------------------------
 Mon Oct 11 20:34:18 MEST 1999 - kukuk@suse.de
@@ -2077,14 +2113,14 @@ Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
 Sat Sep 11 17:38:50 MEST 1999 - kukuk@suse.de
 
 - Add pam_wheel to file list
-- pam_wheel: Minor fixes 
+- pam_wheel: Minor fixes
 - pam_unix2: root is allowed to change passwords with wrong
              password aging information
 
 -------------------------------------------------------------------
 Mon Aug 30 10:16:43 MEST 1999 - kukuk@suse.de
 
-- pam_unix2: Fix typo 
+- pam_unix2: Fix typo
 
 -------------------------------------------------------------------
 Thu Aug 19 16:05:09 MEST 1999 - kukuk@suse.de
@@ -2104,7 +2140,7 @@ Tue Jul 13 11:09:41 MEST 1999 - kukuk@suse.de
 -------------------------------------------------------------------
 Sat Jul 10 18:41:00 MEST 1999 - kukuk@suse.de
 
-- Add HP-UX password aging to pam_unix2. 
+- Add HP-UX password aging to pam_unix2.
 
 -------------------------------------------------------------------
 Wed Jul  7 17:45:04 MEST 1999 - kukuk@suse.de
@@ -2130,7 +2166,7 @@ Tue Jun 29 10:57:18 MEST 1999 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Jun 28 13:59:18 MEST 1999 - kukuk@suse.de
 
-- pam_warn: Add missing functions 
+- pam_warn: Add missing functions
 - other.pamd: Update
 - Add more doku
 
@@ -2144,19 +2180,19 @@ Thu Jun 24 14:24:54 MEST 1999 - kukuk@suse.de
 Mon Jun 21 10:10:35 MEST 1999 - kukuk@suse.de
 
 - Update to Linux-PAM 0.67
-- Add Debian pam_env patch 
+- Add Debian pam_env patch
 
 -------------------------------------------------------------------
 Thu Jun 17 15:59:30 MEST 1999 - kukuk@suse.de
 
-- pam_ftp malloc (core dump) fix 
+- pam_ftp malloc (core dump) fix
 
 -------------------------------------------------------------------
 Tue Jun 15 18:57:03 MEST 1999 - kukuk@suse.de
 
-- pam_unix2 fixes 
+- pam_unix2 fixes
 
 -------------------------------------------------------------------
 Mon Jun  7 11:34:48 MEST 1999 - kukuk@suse.de
 
-- First PAM package: pam 0.66, pwdb 0.57 and pam_unix2 
+- First PAM package: pam 0.66, pwdb 0.57 and pam_unix2
