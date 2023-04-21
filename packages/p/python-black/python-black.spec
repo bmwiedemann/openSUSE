@@ -16,6 +16,8 @@
 #
 
 
+%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-black
 Version:        23.3.0
 Release:        0
