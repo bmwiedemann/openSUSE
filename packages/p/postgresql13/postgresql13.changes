@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 18 09:05:09 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.
+
+-------------------------------------------------------------------
+Tue Apr  4 10:57:41 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Include -mini in Name: to avoid conflicts in the source package
+  name and OBS internal dependency tracking.
+
+-------------------------------------------------------------------
 Thu Feb  9 12:01:58 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 13.10:
