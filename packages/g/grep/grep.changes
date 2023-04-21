@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 30 07:41:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10:
+  * With -P, \d now matches only ASCII digits, regardless of
+    PCRE options/modes. The changes in grep-3.9 to make ^H and \w
+    work properly had the undesirable side effect of making \d
+    also match e.g., the Arabic digits: ٠١٢٣٤٥٦٧٨٩.  
+    With grep-3.9, -P '\d+' would match that ten-digit (20-byte)
+    string. Now, to match such a digit, you would use \p{Nd}.
+    Similarly, \D is now mapped to [^0-9].
+
+-------------------------------------------------------------------
 Mon Mar  6 09:28:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update to grep 3.9

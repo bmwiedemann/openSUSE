@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
