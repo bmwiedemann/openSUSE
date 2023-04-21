@@ -1,14 +1,11 @@
-diff -Naur vorta-0.8.2.orig/setup.cfg vorta-0.8.2/setup.cfg
---- vorta-0.8.2.orig/setup.cfg	2021-11-27 16:41:45.000000000 +0000
-+++ vorta-0.8.2/setup.cfg	2021-12-29 16:35:04.497205554 +0000
-@@ -37,11 +37,9 @@
- include_package_data = true
- python_requires = >=3.7
- setup_requires =
--  pip >= 10
+Index: vorta-0.8.12/setup.cfg
+===================================================================
+--- vorta-0.8.12.orig/setup.cfg
++++ vorta-0.8.12/setup.cfg
+@@ -39,7 +39,6 @@ python_requires = >=3.7
  install_requires =
-   appdirs
-   paramiko
+   platformdirs >=3.0.0, <4.0.0; sys_platform == 'darwin'  # for macOS: breaking changes in 3.0.0,
+   platformdirs >=2.6.0, <4.0.0; sys_platform != 'darwin'  # for others: 2.6+ works consistently.
 -  pyqt5
    peewee
    psutil

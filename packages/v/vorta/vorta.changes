@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 19 19:58:09 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Install the appdata.xml file
+
+-------------------------------------------------------------------
+Wed Apr 19 06:09:49 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 0.8.12:
+  * see https://github.com/borgbase/vorta/releases/tag/v0.8.12
+  * Removes a leftover dependency of paramiko
+- update to 0.8.11:
+  * see https://github.com/borgbase/vorta/releases/tag/v0.8.11
+  * Retain sort settings in extract, diff and source views.
+  * Support new Borg diff types.
+  * Remove Paramiko dependency.
+  * Migrate from appdirs to platformdirs.
+  * Add tooltips to many settings in Misc tab.
+  * Allow adding a SSH key when no repo was added yet.
+- Refresh fix-dependencies.patch
+
+-------------------------------------------------------------------
 Thu Feb 16 05:42:00 UTC 2023 - CJ <c.j@tuta.io>
 
 - Add the missing applications menu icon

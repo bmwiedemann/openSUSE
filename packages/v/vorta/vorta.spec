@@ -17,7 +17,7 @@
 
 
 Name:           vorta
-Version:        0.8.10
+Version:        0.8.12
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only
@@ -32,10 +32,9 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-APScheduler < 4.0
 BuildRequires:  python3-QDarkStyle
-BuildRequires:  python3-appdirs
 BuildRequires:  python3-keyring
-BuildRequires:  python3-paramiko
 BuildRequires:  python3-peewee
+BuildRequires:  python3-platformdirs
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
@@ -46,10 +45,9 @@ BuildRequires:  update-desktop-files
 Requires:       borgbackup
 Requires:       python3-APScheduler < 4.0
 Requires:       python3-QDarkStyle
-Requires:       python3-appdirs
 Requires:       python3-keyring
-Requires:       python3-paramiko
 Requires:       python3-peewee
+Requires:       python3-platformdirs
 Requires:       python3-psutil
 Requires:       python3-python-dateutil
 Requires:       python3-qt5
@@ -73,6 +71,7 @@ export LANG=en_US.UTF-8
 %python3_install
 install -d %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -Dm644 "src/vorta/assets/icons/icon.svg" "%{buildroot}%{_datadir}/icons/hicolor/256x256/apps/vorta.svg"
+install -Dm644 -t %{buildroot}%{_datadir}/metainfo "src/vorta/assets/metadata/com.borgbase.Vorta.appdata.xml"
 %suse_update_desktop_file -i vorta
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -81,6 +80,7 @@ install -Dm644 "src/vorta/assets/icons/icon.svg" "%{buildroot}%{_datadir}/icons/
 %doc README.md
 %{_bindir}/vorta
 %{_datadir}/applications/vorta.desktop
+%{_datadir}/metainfo/com.borgbase.Vorta.appdata.xml
 %{_datadir}/icons/hicolor/256x256/apps/vorta.svg
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
