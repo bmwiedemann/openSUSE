@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Apr 19 21:00:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.4:
+  * avcodec/012v: Order operations for odd size handling
+  * avcodec/alsdec: The minimal block is at least 7 bits
+  * avcodec/bink:
+    - Avoid undefined out of array end pointers in 
+      binkb_decode_plane()
+    - Fix off by 1 error in ref end
+  * avcodec/eac3dec: avoid float noise in fixed mode addition to
+    overflow
+  * avcodec/eatgq: : Check index increments in tgq_decode_block()
+  * avcodec/escape124:
+    - Fix signdness of end of input check
+    - Fix some return codes
+  * avcodec/ffv1dec:
+    - Check that num h/v slices is supported
+    - Fail earlier if prior context is corrupted
+    - Restructure slice coordinate reading a bit
+  * avcodec/mjpegenc: take into account component count when
+    writing the SOF header size
+  * avcodec/mlpdec: Check max matrix instead of max channel in
+    noise check
+  * avcodec/motionpixels: Mask pixels to valid values
+  * avcodec/mpeg12dec: Check input size
+  * avcodec/nvenc:
+    - Fix b-frame DTS behavior with fractional framerates
+    - Fix vbv buffer size in cq mode
+  * avcodec/pictordec: Remove mid exit branch
+  * avcodec/pngdec: Check deloco index more exactly
+  * avcodec/rpzaenc: stop accessing out of bounds frame
+  * avcodec/scpr3: Check bx
+  * avcodec/scpr: Test bx before use
+  * avcodec/snowenc: Fix visual weight calculation
+  * avcodec/speedhq: Check buf_size to be big enough for DC
+  * avcodec/sunrast: Fix maplength check
+  * avcodec/tests/snowenc:
+    - Fix 2nd test
+    - Return a failure if DWT/IDWT mismatches
+    - Unbreak DWT tests
+  * avcodec/tiff: Ignore tile_count
+  * avcodec/utils:
+    - Allocate a line more for VC1 and WMV3
+    - Ensure linesize for SVQ3
+    - Use 32pixel alignment for bink
+  * avcodec/videodsp_template: Adjust pointers to avoid undefined
+    pointer things
+  * avcodec/vp3: Add missing check for av_malloc
+  * avcodec/wavpack:
+    - Avoid undefined shift in get_tail()
+    - Check for end of input in wv_unpack_dsd_high()
+  * avcodec/xpmdec: Check size before allocation to avoid
+    truncation
+  * avfilter/vf_untile: swap the chroma shift values used for plane
+    offsets
+  * avformat/id3v2: Check taglen in read_uslt()
+  * avformat/mov: Check samplesize and offset to avoid integer
+    overflow
+  * avformat/mxfdec: Use 64bit in remainder
+  * avformat/nutdec: Add check for avformat_new_stream
+  * avformat/replaygain: avoid undefined / negative abs
+  * swscale/input: Use more unsigned intermediates
+  * swscale/output: Bias 16bps output calculations to improve non
+    overflowing range
+  * swscale: aarch64: Fix yuv2rgb with negative stride
+  * Use https for repository links
+- Drop patches fixed upstream:
+  * ffmpeg-CVE-2022-3964.patch
+  * ffmpeg-CVE-2022-3109.patch
+  * ffmpeg-CVE-2022-3341.patch
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
+Thu Mar 16 17:54:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Conflict with otherproviders(ffmpeg-tools).
+
+-------------------------------------------------------------------
 Fri Jan 20 07:22:58 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add ffmpeg-CVE-2022-3341.patch: Backport from upstream to fix

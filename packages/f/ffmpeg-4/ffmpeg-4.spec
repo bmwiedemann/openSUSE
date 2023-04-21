@@ -95,7 +95,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -120,9 +120,6 @@ Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch11:        ffmpeg-libglslang-detection.patch
-Patch12:        ffmpeg-CVE-2022-3964.patch
-Patch13:        ffmpeg-CVE-2022-3109.patch
-Patch14:        ffmpeg-CVE-2022-3341.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -259,10 +256,9 @@ BuildRequires:  pkgconfig(x264)
 BuildRequires:  pkgconfig(x265)
 %endif
 Provides:       ffmpeg-tools = %version
-Obsoletes:      ffmpeg-tools < %version
+Conflicts:      ffmpeg-tools
 Provides:       ffmpeg = %version
 Obsoletes:      ffmpeg < %version
-Conflicts:      ffmpeg-5
 Requires:       libavcodec58_134 = %version-%release
 Requires:       libavdevice58_13 = %version-%release
 Requires:       libavfilter7_110 = %version-%release
@@ -789,24 +785,15 @@ for i in libavformat/options_table.h libavformat/os_support.h \
 	cp -a $i "$b/%_includedir/ffmpeg/private/$i"
 done
 
-%post   -n libavcodec58_134 -p /sbin/ldconfig
-%postun -n libavcodec58_134 -p /sbin/ldconfig
-%post   -n libavdevice58_13 -p /sbin/ldconfig
-%postun -n libavdevice58_13 -p /sbin/ldconfig
-%post   -n libavfilter7_110 -p /sbin/ldconfig
-%postun -n libavfilter7_110 -p /sbin/ldconfig
-%post   -n libavformat58_76 -p /sbin/ldconfig
-%postun -n libavformat58_76 -p /sbin/ldconfig
-%post   -n libavresample4_0 -p /sbin/ldconfig
-%postun -n libavresample4_0 -p /sbin/ldconfig
-%post   -n libavutil56_70 -p /sbin/ldconfig
-%postun -n libavutil56_70 -p /sbin/ldconfig
-%post   -n libpostproc55_9 -p /sbin/ldconfig
-%postun -n libpostproc55_9 -p /sbin/ldconfig
-%post   -n libswresample3_9 -p /sbin/ldconfig
-%postun -n libswresample3_9 -p /sbin/ldconfig
-%post   -n libswscale5_9 -p /sbin/ldconfig
-%postun -n libswscale5_9 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libavcodec58_134
+%ldconfig_scriptlets -n libavdevice58_13
+%ldconfig_scriptlets -n libavfilter7_110
+%ldconfig_scriptlets -n libavformat58_76
+%ldconfig_scriptlets -n libavresample4_0
+%ldconfig_scriptlets -n libavutil56_70
+%ldconfig_scriptlets -n libpostproc55_9
+%ldconfig_scriptlets -n libswresample3_9
+%ldconfig_scriptlets -n libswscale5_9
 
 %files
 %doc Changelog CREDITS README.md
