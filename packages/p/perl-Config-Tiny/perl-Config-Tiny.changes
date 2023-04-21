@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  6 03:06:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.29
+   see /usr/share/doc/packages/perl-Config-Tiny/Changelog.ini
+
+  [V 2.29]
+  Date=2023-04-05T12:53:00
+  Comments= <<EOT
+  - Edit to remove Test::Pod from TEST_REQUIRES in Makefile.PL, again.
+  Thanx to Andrew Daugherity for the patch.
+  - Update versiojnn # in t/02.main.t.
+  EOT
+
+-------------------------------------------------------------------
 Wed Jan  5 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.28
