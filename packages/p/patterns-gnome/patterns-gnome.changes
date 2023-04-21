@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 18 16:59:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pidgin and planner Recommends from openSUSE, only install by
+  default on SLED. Planner is no longer available on Tumbleweed.
+
+-------------------------------------------------------------------
 Fri Apr 14 12:04:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace gedit with gnome-text-editor as default editor. Following

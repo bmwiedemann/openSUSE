@@ -143,9 +143,11 @@ Recommends:     mousetweaks
 Recommends:     nautilus-sendto
 Recommends:     noto-sans-cjk-fonts
 Recommends:     orca
+%if 0%{?sle_version} && !0%{?is_opensuse}
 # bsc#1065191
 Recommends:     pidgin
 Recommends:     planner
+%endif
 Recommends:     python3-speechd
 Recommends:     speech-dispatcher
 Recommends:     systemd-icon-branding
@@ -545,7 +547,6 @@ Recommends:     evolution
 #
 # Official upstream
 #
-Recommends:     pidgin
 Recommends:     polari
 # bnc#530416
 Recommends:     transmission-gtk
