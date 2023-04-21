@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 20 09:24:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.6.1:
+  * More robust and consistent default language detection and option
+    to change language on Windows
+  * Option to change symbols used for output of digits 10 and 11 in
+    duodecimal numbers (use A and B as default digits)
+
+-------------------------------------------------------------------
 Tue Dec 27 10:00:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.0:
