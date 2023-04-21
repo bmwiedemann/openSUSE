@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 10.1.0b1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-containerinstance
-Version:        10.1.0~b1
+Version:        10.1.0
 Release:        0
 Summary:        Microsoft Azure Container Instance Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-containerinstance/azure-mgmt-containerinstance-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-containerinstance/azure-mgmt-containerinstance-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -43,7 +41,8 @@ Requires:       python-azure-mgmt-core < 2.0.0
 Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.7.1
+Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
@@ -60,10 +59,10 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-mgmt-containerinstance-%{realversion}
+%setup -q -n azure-mgmt-containerinstance-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-containerinstance-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-containerinstance-%{version}
 %python_build
 
 %install
