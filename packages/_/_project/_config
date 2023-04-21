@@ -118,13 +118,13 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
+Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
 
 # Podman based image building
-Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
+Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini patterns-base-fips
 
 # To build ISO images
-Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
+Substitute: build-packages:iso !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !ffmpeg-5-mini-libs !ffmpeg-6-mini-libs !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !systemd-mini-container !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql15-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # create conflicts for packages installed into the target image
 Substitute: kiwi python3-kiwi
@@ -692,6 +692,8 @@ Ignore: dummy-release:this-is-only-for-build-envs
 Ignore: erlang-rebar-obs:this-is-only-for-build-envs
 Ignore: ffmpeg-5-mini-devel:this-is-only-for-build-envs
 Ignore: ffmpeg-5-mini-libs:this-is-only-for-build-envs
+Ignore: ffmpeg-6-mini-devel:this-is-only-for-build-envs
+Ignore: ffmpeg-6-mini-libs:this-is-only-for-build-envs
 Ignore: ghc-bootstrap-helpers:this-is-only-for-build-envs
 Ignore: ghc-bootstrap:this-is-only-for-build-envs
 Ignore: ghostscript-mini:this-is-only-for-build-envs
@@ -1567,9 +1569,6 @@ Constraint: hardware:cpu:flag power8
 %if "%{_project}" == "openSUSE:Factory" || "%{sub %_project 1 28}" == "openSUSE:Factory:Staging:adi" || "%{sub %_project 1 22}" == "openSUSE:Factory:Rings" || "%{_project}" == "openSUSE:Factory:Rebuild"
 
 # BuildFlags: onlybuild:bootstrap-copy
-BuildFlags: onlybuild:glibc-AGGR
-BuildFlags: onlybuild:dwz-AGGR
-BuildFlags: onlybuild:binutils-AGGR
 
 BuildFlags: onlybuild:7zip
 BuildFlags: onlybuild:AppStream
@@ -1788,7 +1787,9 @@ BuildFlags: onlybuild:fdupes
 BuildFlags: onlybuild:ffado
 BuildFlags: onlybuild:ffmpeg-4
 BuildFlags: onlybuild:ffmpeg-5
+BuildFlags: onlybuild:ffmpeg-6
 BuildFlags: onlybuild:ffmpeg-5:ffmpeg-5-mini
+BuildFlags: onlybuild:ffmpeg-6:ffmpeg-6-mini
 BuildFlags: onlybuild:ffnvcodec
 BuildFlags: onlybuild:fftw3:standard
 BuildFlags: onlybuild:file
@@ -2101,6 +2102,7 @@ BuildFlags: onlybuild:libdc1394
 BuildFlags: onlybuild:libdca
 BuildFlags: onlybuild:libdecor
 BuildFlags: onlybuild:libdmx
+BuildFlags: onlybuild:libdovi
 BuildFlags: onlybuild:libdrm
 BuildFlags: onlybuild:libdv
 BuildFlags: onlybuild:libeconf
@@ -2187,6 +2189,7 @@ BuildFlags: onlybuild:libpciaccess
 BuildFlags: onlybuild:libpfm
 BuildFlags: onlybuild:libphonenumber
 BuildFlags: onlybuild:libpipeline
+BuildFlags: onlybuild:libplacebo
 BuildFlags: onlybuild:libplist
 BuildFlags: onlybuild:libpng12
 BuildFlags: onlybuild:libpng16
@@ -2848,6 +2851,7 @@ BuildFlags: onlybuild:python-geoip2
 BuildFlags: onlybuild:python-gevent
 BuildFlags: onlybuild:python-gi-docgen
 BuildFlags: onlybuild:python-gitdb
+BuildFlags: onlybuild:python-glad2
 BuildFlags: onlybuild:python-gobject
 BuildFlags: onlybuild:python-graphviz
 BuildFlags: onlybuild:python-greenlet
