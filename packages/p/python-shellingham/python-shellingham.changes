@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:34:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Sun Oct  9 13:15:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.0
