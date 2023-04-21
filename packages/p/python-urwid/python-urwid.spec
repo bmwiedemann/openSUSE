@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-urwid
 Version:        2.1.2
 Release:        0

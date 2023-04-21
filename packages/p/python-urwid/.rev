@@ -188,4 +188,12 @@ Should fix problem with non-downloadable source file.</comment>
 </comment>
     <requestid>1066735</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>1880224defd23f990cb06964e5914f9d</srcmd5>
+    <version>2.1.2</version>
+    <time>1682095678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081710</requestid>
+  </revision>
 </revisionlist>

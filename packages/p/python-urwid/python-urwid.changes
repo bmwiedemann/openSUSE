@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:38:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Mon Feb 20 08:41:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch to fix tests for python 3.11
