@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 18 15:39:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1210507 (CVE-2023-29383):
+  Check for control characters
+- Add shadow-CVE-2023-29383.patch
+
+-------------------------------------------------------------------
 Wed Apr 12 12:08:43 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Rename lastlog to lastlog.legacy to be able to switch to

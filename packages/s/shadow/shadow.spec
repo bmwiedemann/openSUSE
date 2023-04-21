@@ -54,6 +54,8 @@ Patch6:         disable_new_audit_function.patch
 Patch7:         shadow-audit-no-id.patch
 # PATCH-FIX-UPSTREAM shadow-fix-print-login-timeout.patch mvetter@suse.com -- Fix print full login timeout message (gh/shadow-maint/shadow#621)
 Patch8:         shadow-fix-print-login-timeout.patch
+# PATCH-FIX-UPSTREAM shadow-CVE-2023-29383.patch mvetter@suse.com -- Check control chracters in chfn (bsc#1210507)
+Patch9:         shadow-CVE-2023-29383.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -123,6 +125,7 @@ Development files for libsubid4.
 %endif
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
