@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 18 14:52:00 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Tue Apr 11 00:44:55 UTC 2023 - william.brown@suse.com
 
 - bsc#1210027 - apply upstream fix for setuptools

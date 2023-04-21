@@ -85,7 +85,6 @@ BuildRequires:  %use_python-pyasn1
 BuildRequires:  %use_python-pyasn1-modules
 BuildRequires:  %use_python-python-dateutil
 BuildRequires:  %use_python-setuptools
-BuildRequires:  %use_python-six
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -184,7 +183,6 @@ Requires:       %{use_python}-pyasn1
 Requires:       %{use_python}-pyasn1-modules
 Requires:       %{use_python}-python-dateutil
 Requires:       %{use_python}-python-slugify
-Requires:       %{use_python}-six
 Requires:       iproute2
 Requires:       krb5-client
 Requires:       mozilla-nss-tools
