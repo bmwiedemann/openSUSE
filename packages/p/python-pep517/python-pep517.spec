@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pep517%{psuffix}
 Version:        0.13.0
 Release:        0
@@ -34,8 +35,8 @@ Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
 URL:            https://github.com/pypa/pep517
 Source:         https://files.pythonhosted.org/packages/source/p/pep517/pep517-%{version}.tar.gz
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module flit-core >= 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
