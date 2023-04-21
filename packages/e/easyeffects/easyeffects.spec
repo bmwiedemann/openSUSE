@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        7.0.0
+Version:        7.0.3
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
