@@ -29,6 +29,9 @@ Source99:       python-lxml.rpmlintrc
 # PATCH-FIX-UPSTREAM close_file_before_test.patch bsc#1206555 mcepl@suse.com
 # make sure the testing data are flushed to the file
 Patch0:         close_file_before_test.patch
+# PATCH-FIX-OPENSUSE Skip a test under libxml2 2.10.4+
+# https://bugs.launchpad.net/lxml/+bug/2016939
+Patch1:         skip-test-under-libxml2-2.10.4.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}

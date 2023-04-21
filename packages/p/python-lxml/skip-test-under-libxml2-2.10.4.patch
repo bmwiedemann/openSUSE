@@ -1,0 +1,12 @@
+Index: lxml-4.9.2/src/lxml/tests/test_etree.py
+===================================================================
+--- lxml-4.9.2.orig/src/lxml/tests/test_etree.py
++++ lxml-4.9.2/src/lxml/tests/test_etree.py
+@@ -3068,6 +3068,7 @@ class ETreeOnlyTestCase(HelperTestCase):
+         self.assertEqual(re, e.nsmap)
+         self.assertEqual(r,  s.nsmap)
+ 
++    @unittest.skipIf(etree.LIBXML_VERSION >= (2, 10, 4), "libxml2 regression ignores namespaces")
+     def test_html_prefix_nsmap(self):
+         etree = self.etree
+         el = etree.HTML('<hha:page-description>aa</hha:page-description>').find('.//page-description')

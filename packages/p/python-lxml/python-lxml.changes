@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 19 04:52:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch skip-test-under-libxml2-2.10.4.patch:
+  * Skip a test if using libxml2 >= 2.10.4
+
+-------------------------------------------------------------------
 Thu Feb 16 20:17:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - allow building against any libxml2 version in sle15 
