@@ -80,7 +80,7 @@
 %define _major_expected 6
 
 Name:           ffmpeg-5
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -106,9 +106,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
-Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch92:        no-vk-video-decoding.patch
 Patch93:        soname.diff
 
 %if %{with amf_sdk}
@@ -711,22 +709,14 @@ for i in libavformat/options_table.h libavformat/os_support.h \
 	cp -a $i "$b/%_includedir/ffmpeg/private/$i"
 done
 
-%post   -n libavcodec59 -p /sbin/ldconfig
-%postun -n libavcodec59 -p /sbin/ldconfig
-%post   -n libavdevice59 -p /sbin/ldconfig
-%postun -n libavdevice59 -p /sbin/ldconfig
-%post   -n libavfilter8 -p /sbin/ldconfig
-%postun -n libavfilter8 -p /sbin/ldconfig
-%post   -n libavformat59 -p /sbin/ldconfig
-%postun -n libavformat59 -p /sbin/ldconfig
-%post   -n libavutil57 -p /sbin/ldconfig
-%postun -n libavutil57 -p /sbin/ldconfig
-%post   -n libpostproc56 -p /sbin/ldconfig
-%postun -n libpostproc56 -p /sbin/ldconfig
-%post   -n libswresample4_ff5 -p /sbin/ldconfig
-%postun -n libswresample4_ff5 -p /sbin/ldconfig
-%post   -n libswscale6 -p /sbin/ldconfig
-%postun -n libswscale6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libavcodec59
+%ldconfig_scriptlets -n libavdevice59
+%ldconfig_scriptlets -n libavfilter8
+%ldconfig_scriptlets -n libavformat59
+%ldconfig_scriptlets -n libavutil57
+%ldconfig_scriptlets -n libpostproc56
+%ldconfig_scriptlets -n libswresample4_ff5
+%ldconfig_scriptlets -n libswscale6
 
 %files
 %doc Changelog CREDITS README.md
@@ -829,7 +819,7 @@ done
 %define _name ffmpeg
 
 Name:           ffmpeg-5-mini
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -846,9 +836,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
-Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
-Patch92:        no-vk-video-decoding.patch
 Patch93:        soname.diff
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
@@ -930,8 +918,7 @@ b="%buildroot"
 %make_install
 rm -Rf "$b/%_datadir/ffmpeg/examples"
 
-%post   libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%ldconfig_scriptlets libs
 
 %files libs
 %_libdir/libavcodec.so.*

@@ -11,11 +11,11 @@ reduced codec selection list.
  libavformat/matroskaenc.c |   20 ++++++++++++++------
  1 file changed, 14 insertions(+), 6 deletions(-)
 
-Index: ffmpeg-5.0/libavformat/matroskaenc.c
+Index: ffmpeg-5.1.3/libavformat/matroskaenc.c
 ===================================================================
---- ffmpeg-5.0.orig/libavformat/matroskaenc.c
-+++ ffmpeg-5.0/libavformat/matroskaenc.c
-@@ -2887,16 +2887,25 @@ static int mkv_query_codec(enum AVCodecI
+--- ffmpeg-5.1.3.orig/libavformat/matroskaenc.c
++++ ffmpeg-5.1.3/libavformat/matroskaenc.c
+@@ -3316,16 +3316,25 @@ static int mkv_query_codec(enum AVCodecI
      return 0;
  }
  
@@ -45,7 +45,7 @@ Index: ffmpeg-5.0/libavformat/matroskaenc.c
      .init              = mkv_init,
      .deinit            = mkv_deinit,
      .write_header      = mkv_write_header,
-@@ -2954,8 +2963,7 @@ const AVOutputFormat ff_matroska_audio_m
+@@ -3383,8 +3392,7 @@ const AVOutputFormat ff_matroska_audio_m
      .mime_type         = "audio/x-matroska",
      .extensions        = "mka",
      .priv_data_size    = sizeof(MatroskaMuxContext),

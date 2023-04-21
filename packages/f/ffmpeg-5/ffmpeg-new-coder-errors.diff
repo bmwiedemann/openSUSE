@@ -10,11 +10,11 @@ Improve the error messages a bit to say what's really going on
  fftools/ffmpeg_opt.c    |    2 +-
  3 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: ffmpeg-4.4.1/fftools/ffmpeg.c
+Index: ffmpeg-5.1.3/fftools/ffmpeg.c
 ===================================================================
---- ffmpeg-4.4.1.orig/fftools/ffmpeg.c
-+++ ffmpeg-4.4.1/fftools/ffmpeg.c
-@@ -2954,7 +2954,7 @@ static int init_input_stream(int ist_ind
+--- ffmpeg-5.1.3.orig/fftools/ffmpeg.c
++++ ffmpeg-5.1.3/fftools/ffmpeg.c
+@@ -2606,7 +2606,7 @@ static int init_input_stream(int ist_ind
      if (ist->decoding_needed) {
          const AVCodec *codec = ist->dec;
          if (!codec) {
@@ -23,11 +23,11 @@ Index: ffmpeg-4.4.1/fftools/ffmpeg.c
                      avcodec_get_name(ist->dec_ctx->codec_id), ist->file_index, ist->st->index);
              return AVERROR(EINVAL);
          }
-Index: ffmpeg-4.4.1/fftools/ffmpeg_filter.c
+Index: ffmpeg-5.1.3/fftools/ffmpeg_filter.c
 ===================================================================
---- ffmpeg-4.4.1.orig/fftools/ffmpeg_filter.c
-+++ ffmpeg-4.4.1/fftools/ffmpeg_filter.c
-@@ -959,7 +959,7 @@ static int configure_input_filter(Filter
+--- ffmpeg-5.1.3.orig/fftools/ffmpeg_filter.c
++++ ffmpeg-5.1.3/fftools/ffmpeg_filter.c
+@@ -945,7 +945,7 @@ static int configure_input_filter(Filter
  {
      if (!ifilter->ist->dec) {
          av_log(NULL, AV_LOG_ERROR,
@@ -36,7 +36,7 @@ Index: ffmpeg-4.4.1/fftools/ffmpeg_filter.c
                 ifilter->ist->file_index, ifilter->ist->st->index);
          return AVERROR_DECODER_NOT_FOUND;
      }
-@@ -1103,7 +1103,7 @@ int configure_filtergraph(FilterGraph *f
+@@ -1117,7 +1117,7 @@ int configure_filtergraph(FilterGraph *f
          if (!ost->enc) {
              /* identical to the same check in ffmpeg.c, needed because
                 complex filter graphs are initialized earlier */
@@ -45,11 +45,11 @@ Index: ffmpeg-4.4.1/fftools/ffmpeg_filter.c
                       avcodec_get_name(ost->st->codecpar->codec_id), ost->file_index, ost->index);
              ret = AVERROR(EINVAL);
              goto fail;
-Index: ffmpeg-4.4.1/fftools/ffmpeg_opt.c
+Index: ffmpeg-5.1.3/fftools/ffmpeg_opt.c
 ===================================================================
---- ffmpeg-4.4.1.orig/fftools/ffmpeg_opt.c
-+++ ffmpeg-4.4.1/fftools/ffmpeg_opt.c
-@@ -1400,7 +1400,7 @@ static int choose_encoder(OptionsContext
+--- ffmpeg-5.1.3.orig/fftools/ffmpeg_opt.c
++++ ffmpeg-5.1.3/fftools/ffmpeg_opt.c
+@@ -1497,7 +1497,7 @@ static int choose_encoder(OptionsContext
              if (!ost->enc) {
                  av_log(NULL, AV_LOG_FATAL, "Automatic encoder selection failed for "
                         "output stream #%d:%d. Default encoder for format %s (codec %s) is "
