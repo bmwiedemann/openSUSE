@@ -20,14 +20,15 @@
 # are at an older version, which in the past confused some users.
 # Consider only updating the sources in lockstep.
 #
+
 Name:           vulkan-headers
-Version:        1.3.243.0
+Version:        1.3.247
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Headers
-Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/sdk-%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v%version.tar.gz
 Source9:        %name-rpmlintrc
 BuildRequires:  cmake >= 2.8.11
 BuildArch:      noarch
@@ -46,7 +47,7 @@ This package contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -n Vulkan-Headers-sdk-%version -p1
+%autosetup -n Vulkan-Headers-%version -p1
 
 %build
 %cmake \
