@@ -19,13 +19,13 @@
 # Prefer to go with just /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.3.243.0
+Version:        1.3.247
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
-Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/sdk-%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v%version.tar.gz
 Source9:        baselibs.conf
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
@@ -67,15 +67,13 @@ This subpackage contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -p1 -n Vulkan-Loader-sdk-%version
+%autosetup -p1 -n Vulkan-Loader-%version
 
 %build
 %cmake \
 	-DVulkanHeaders_INCLUDE_DIR:PATH="%_includedir" \
 	-DVulkanRegistry_DIR:PATH="%_datadir/vulkan/registry" \
-	-DLIB_SUFFIX:STRING="" \
-	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags -U_FORTIFY_SOURCE -O0 -ggdb3" \
-	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="%optflags -U_FORTIFY_SOURCE -O0 -ggdb3"
+	-DLIB_SUFFIX:STRING=""
 
 %cmake_build
 
