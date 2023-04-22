@@ -26,6 +26,7 @@
 %endif
 # there is no platformdirs for python2 on any of the target distributions
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
 Version:        20.16.7
 Release:        0
