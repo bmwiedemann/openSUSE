@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-python-magic
 Version:        0.4.27
 Release:        0
