@@ -131,4 +131,12 @@
     <comment>- no longer supports python 3.6, we can drop the 3.6 specific requires</comment>
     <requestid>1062522</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>07b99512566dca1ba5b86892ac25f749</srcmd5>
+    <version>1.2.0</version>
+    <time>1682193486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:38:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:46:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Wed Feb  1 16:38:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - no longer supports python 3.6, we can drop the 3.6 specific requires
