@@ -1,7 +1,7 @@
 #
 # spec file for package python-isoduration
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-isoduration
 Version:        20.11.0
 Release:        0
@@ -25,9 +26,9 @@ URL:            https://github.com/bolsote/isoduration
 Source:         https://github.com/bolsote/isoduration/archive/refs/tags/%{version}.tar.gz#/isoduration-%{version}-gh.tar.gz
 BuildRequires:  %{python_module arrow >= 0.15.0}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # SECTION test
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module isodate}
