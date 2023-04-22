@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 07:42:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.1:
+  + Fix HTTP/2 on platforms with unsigned char.
+  + Change request cancellation to be handled earlier.
+  + Add names to GSources and source tags to GTasks to aid
+    debugging.
+- Run meson_test macro for all arches.
+
+-------------------------------------------------------------------
 Fri Mar 17 16:42:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.0:

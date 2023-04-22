@@ -18,8 +18,7 @@
 
 %define api_version 3.0
 Name:           libsoup
-### FIXME ### Run meson tests for all arches when stable branch!
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -139,12 +138,9 @@ mkdir -p %{buildroot}%{_docdir}/%{name}-%{api_version}
 mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 
 %check
-# Temp fix for failing tests during unstable
-%ifarch ix86 x86_64
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
 %meson_test
-%endif
 
 %ldconfig_scriptlets 3_0-0
 

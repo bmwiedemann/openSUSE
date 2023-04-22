@@ -1134,4 +1134,12 @@
     <comment>New stable release (forwarded request 1072695 from iznogood)</comment>
     <requestid>1073172</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>0f9a6e3a04c5ea53d37e89bf4500fcf8</srcmd5>
+    <version>3.4.1</version>
+    <time>1682193432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081151</requestid>
+  </revision>
 </revisionlist>
