@@ -24,6 +24,7 @@
 
 %define dbdir %{_sysconfdir}/target
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-rtslib-fb
 Version:        2.1.75
 Release:        0%{?dist}
