@@ -1573,4 +1573,12 @@
     <comment>Mercurial 6.4 (forwarded request 1074137 from develop7)</comment>
     <requestid>1074149</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>639a6b0edcd020536b4900cb5ccd0c00</srcmd5>
+    <version>6.4.2</version>
+    <time>1682193447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081253</requestid>
+  </revision>
 </revisionlist>
