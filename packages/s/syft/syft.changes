@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 22 14:33:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.79.0:
+  * feat: Add template func `hasField` (#1754)
+  * fix: only cache java packages and not source content (#1750)
+  * Add sections of interest for Gemfile.lock cataloger (#1749)
+  * fix: update cache.fingerprint file to java-builds dir (#1748)
+  * Add ALPM Metadata to CYCLONEDX and SPDX output formats (#1747)
+  * chore: bump stereoscope to latest version (#1741)
+  * chore(deps): update bootstrap tools to latest versions (#1744)
+  * chore(deps): bump github.com/docker/docker (#1746)
+
+-------------------------------------------------------------------
 Tue Apr 18 04:55:15 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.78.0:
