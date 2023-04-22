@@ -17,6 +17,7 @@
 
 
 %define oname   service_identity
+%{?sle15_python_module_pythons}
 Name:           python-service_identity
 Version:        21.1.0
 Release:        0
