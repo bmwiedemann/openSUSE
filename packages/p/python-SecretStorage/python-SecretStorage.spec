@@ -26,6 +26,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-SecretStorage%{psuffix}
 Version:        3.3.3
 Release:        0

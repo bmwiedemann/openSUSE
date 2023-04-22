@@ -140,4 +140,12 @@
     <comment>- fix build for older distributions</comment>
     <requestid>1062356</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d77be4a4137e50d96c287bb65395be01</srcmd5>
+    <version>3.3.3</version>
+    <time>1682193751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082020</requestid>
+  </revision>
 </revisionlist>
