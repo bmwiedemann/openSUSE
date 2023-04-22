@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.path
 Version:        3.4.0
 Release:        0
