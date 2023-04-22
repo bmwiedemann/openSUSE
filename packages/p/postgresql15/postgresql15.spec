@@ -95,13 +95,6 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  %libecpg
 BuildRequires:  %libpq
 %endif
-%if 0%{?suse_version} >= 1300
-%bcond_without  systemd
-%bcond_without  systemd_notify
-%else
-%bcond_with     systemd
-%bcond_with     systemd_notify
-%endif
 
 %if 0%{?suse_version} >= 1500 && %pgmajor >= 11
 %ifarch riscv64
@@ -148,10 +141,8 @@ BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(krb5)
-%if %{with systemd_notify}
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-%endif
 #!BuildIgnore:  postgresql-implementation
 #!BuildIgnore:  postgresql-server-implementation
 #!BuildIgnore:  postgresql-devel-noarch
@@ -547,9 +538,7 @@ PACKAGE_TARNAME=%pgname %configure \
 %if %{with libzstd}
         --with-zstd \
 %endif
-%if %{with systemd_notify}
         --with-systemd \
-%endif
 %if %{with selinux}
         --with-selinux \
 %endif
@@ -818,45 +807,26 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 
 %preun server
 # Stop only when we are uninstalling the currently running version
-test -n "$FIRST_ARG" || FIRST_ARG="$1"
-if [ "$FIRST_ARG" -eq 0 ]; then
-  %if %{with systemd}
-    %define stop systemctl stop postgresql.service
-    eval $(systemctl show postgresql.service --property=MainPID)
-  %else
-    %define stop /sbin/init.d postgresql stop
-    MainPID=$(pidof -s postgres) || :
-  %endif
-  if test -n "$MainPID" && test "$MainPID" -ne 0; then
-    BIN=$(readlink -n /proc/$MainPID/exe)
-    DIR=$(dirname ${BIN% *})
-    if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
-        %stop
-    fi
+test -x /usr/bin/systemctl &&
+  MAINPID=$(/usr/bin/systemctl show postgresql.service --property=MainPID --value) ||:
+if test -n "$MAINPID" && test "$MAINPID" -ne 0; then
+  BIN=$(readlink -n /proc/$MAINPID/exe)
+  DIR=$(dirname ${BIN% *})
+  if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
+      %service_del_preun postgresql.service
   fi
 fi
 
 %postun server
 /usr/share/postgresql/install-alternatives %pgmajor
 # Restart only when we are updating the currently running version
-# or from the old packaging scheme
-test -n "$FIRST_ARG" || FIRST_ARG="$1"
-if [ "$FIRST_ARG" -ge 1 ]; then
-  %if %{with systemd}
-    %define restart %_restart_on_update postgresql.service
-    eval $(systemctl show postgresql --property=MainPID)
-  %else
-    %define restart /sbin/init.d postgresql restart
-    MainPID=$(pidof -s postgres) || :
-  %endif
-  if test -n "$MainPID" && test "$MainPID" -ne 0 &&
-    readlink -n /proc/$MainPID/exe | grep -Fq " (deleted)"
-  then
-    BIN=$(readlink -n /proc/$MainPID/exe)
-    DIR=$(dirname ${BIN% *})
-    if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
-        %restart
-    fi
+test -x /usr/bin/systemctl &&
+  MAINPID=$(/usr/bin/systemctl show postgresql.service --property=MainPID --value) ||:
+if test -n "$MAINPID" && test "$MAINPID" -ne 0; then
+  BIN=$(readlink -n /proc/$MAINPID/exe)
+  DIR=$(dirname ${BIN% *})
+  if test "$DIR" = "%pgbindir" -o "$DIR" = "%_bindir"; then
+      %service_del_postun postgresql.service
   fi
 fi
 
@@ -938,6 +908,7 @@ fi
 %endif
 
 %files llvmjit-devel
+%defattr(-,root,root)
 %doc README
 
 %files pltcl -f pltcl.lang
@@ -965,12 +936,13 @@ fi
 
 %if %buildlibs && %mini
 %files -n %pgname-%devel -f devel.files -f libpq.files -f libecpg.files
+%defattr(-,root,root)
 %else
 
 %files -n %pgname-%devel -f devel.files
+%defattr(-,root,root)
 %endif
 
-%defattr(-,root,root)
 %dir %pgbasedir
 %dir %pgbindir
 %ghost %_bindir/ecpg
