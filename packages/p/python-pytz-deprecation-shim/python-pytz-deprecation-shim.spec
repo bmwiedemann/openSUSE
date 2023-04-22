@@ -19,6 +19,7 @@
 # Upstream also supports shimming python2.7, but we assume Python >= 3.6 here (if 15.3 were resolvable for the python3 flavor)
 %global skip_python2 1
 %define modname pytz-deprecation-shim
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        0.1.0.post0
 Release:        0

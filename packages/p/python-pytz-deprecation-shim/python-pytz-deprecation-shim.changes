@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:32:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Apr  3 05:17:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on pep517. 
