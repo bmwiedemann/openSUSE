@@ -179,4 +179,12 @@
     <comment>- pull in dbm for all flavors on SLE15 SP4+ as well</comment>
     <requestid>1062425</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>34c5038be964e94b31b97dc490fb31d7</srcmd5>
+    <version>0.18.3</version>
+    <time>1682193648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081909</requestid>
+  </revision>
 </revisionlist>
