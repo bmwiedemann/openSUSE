@@ -54,4 +54,12 @@
 - %check: use %pytest rpm macro</comment>
     <requestid>896443</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b716ec989695db90383cc9205e858e30</srcmd5>
+    <version>3.5.0</version>
+    <time>1682193597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081852</requestid>
+  </revision>
 </revisionlist>
