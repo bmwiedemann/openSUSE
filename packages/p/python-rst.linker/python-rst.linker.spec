@@ -1,7 +1,7 @@
 #
 # spec file for package python-rst.linker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define _name   rst.linker
+%{?sle15_python_module_pythons}
 Name:           python-rst.linker
 Version:        2.3.1
 Release:        0
