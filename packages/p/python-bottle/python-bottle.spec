@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bottle
 Version:        0.12.25
 Release:        0
