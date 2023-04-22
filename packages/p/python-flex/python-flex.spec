@@ -1,7 +1,7 @@
 #
 # spec file for package python-flex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Python 2 is not supported by factory_boy anymore
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-flex
 Version:        6.14.1
 Release:        0
