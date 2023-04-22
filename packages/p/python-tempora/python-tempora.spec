@@ -22,6 +22,7 @@
 %else
 %bcond_with libalternatives
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-tempora
 Version:        5.2.1
 Release:        0
