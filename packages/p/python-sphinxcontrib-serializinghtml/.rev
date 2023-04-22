@@ -24,4 +24,12 @@
   * Remove deprecation warnings for Sphinx-3.x</comment>
     <requestid>897847</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4ba65b7046960553d2095b068ec75c06</srcmd5>
+    <version>1.1.5</version>
+    <time>1682193508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081747</requestid>
+  </revision>
 </revisionlist>
