@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:22:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:02 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Tue Dec 14 22:35:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add fix_two_tests_py310.patch which fixes those tests with Python 3.10
