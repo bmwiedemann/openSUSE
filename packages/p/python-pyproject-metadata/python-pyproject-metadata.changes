@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:31:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Jan  2 10:18:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test failing due to new error strings in packaging 22

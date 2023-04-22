@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pyproject-metadata
 Version:        0.6.1
 Release:        0
