@@ -47,4 +47,12 @@
   * Support fromYAML classmethod for all Munch subclasses (fixes #34)</comment>
     <requestid>758636</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>64d40889658ca1bcdfd3cf2256b53f89</srcmd5>
+    <version>2.5.0</version>
+    <time>1682193600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081859</requestid>
+  </revision>
 </revisionlist>
