@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-filelock
 Version:        3.9.1
 Release:        0

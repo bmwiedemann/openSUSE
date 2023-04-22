@@ -97,4 +97,12 @@
   * use time.perf_counter instead of time.monotonic</comment>
     <requestid>1071878</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f680da03871a9743d8ff6c9d6d455887</srcmd5>
+    <version>3.9.1</version>
+    <time>1682193662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081927</requestid>
+  </revision>
 </revisionlist>
