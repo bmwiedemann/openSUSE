@@ -67,4 +67,12 @@
 - Switch to using pytest</comment>
     <requestid>879557</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>968477ae3bc13774c68f59a768632ed5</srcmd5>
+    <version>2.3.2</version>
+    <time>1682193692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081958</requestid>
+  </revision>
 </revisionlist>
