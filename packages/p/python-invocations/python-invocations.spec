@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-invocations
 Version:        3.0.0
 Release:        0
