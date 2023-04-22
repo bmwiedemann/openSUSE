@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:21:46 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update project URL: https://github.com/arighi/virtme
+- Update to version 0.1.2
+  - Remove upstreamed patches
+    - 0001-Add-save-initramfs-to-save-the-actual-generated-init.patch
+    - 0002-Make-save-initramfs-show-command-output-more-useful.patch
+    - 0003-Fix-the-error-message-for-mods-misuse.patch
+    - 0004-Fix-the-mods-error-even-better.patch
+    - 0005-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+    - 0006-mkinitramfs-Improve-the-find_busybox-algorithm.patch
+    - 0007-Add-util.find_binary-to-find-binaries.patch
+    - 0008-modfinder-Use-find_binary_or_raise-to-find-modprobe.patch
+    - 0009-Enable-the-Xen-console-when-using-xen.patch
+    - 0001-configkernel-Add-CONFIG_INOTIFY_USER-y.patch
+    - 0002-Use-fsdev-multidevs-remap-on-QEMU-4.2.patch
+    - 0003-Add-more-typing-annotations.patch
+    - 0004-run.py-Extract-path-file-sanitizing-into-a-new-funct.patch
+    - 0005-run.py-Introduce-blk-disk-argument.patch
+    - 0006-Minor-sanitize_disk_args-cleanup.patch
+    - aarch64-Fix-aarch64-support.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
 
 - Add python-rpm-macros (bsc#1180125)
