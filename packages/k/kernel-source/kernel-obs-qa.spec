@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 6.2.10
+%define patchversion 6.2.12
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -36,9 +36,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.2.10
+Version:        6.2.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gba7816e
+Release:        <RELEASE>.geb3255d
 %else
 Release:        0
 %endif

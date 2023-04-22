@@ -6250,4 +6250,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2.10 &amp; other fixes</comment>
     <requestid>1078422</requestid>
   </revision>
+  <revision rev="687" vrev="1">
+    <srcmd5>d21bb388c0b5a4ff23d5787d92fd1c47</srcmd5>
+    <version>6.2.12</version>
+    <time>1682193339</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.12 &amp; 6.2.11 &amp; other fixes</comment>
+    <requestid>1080987</requestid>
+  </revision>
 </revisionlist>

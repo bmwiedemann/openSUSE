@@ -17,9 +17,8 @@
 
 
 %define srcversion 6.2
-%define patchversion 6.2.10
+%define patchversion 6.2.12
 %define variant %{nil}
-%define vanilla_only 0
 
 %include %_sourcedir/kernel-spec-macros
 
@@ -31,9 +30,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.2.10
+Version:        6.2.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gba7816e
+Release:        <RELEASE>.geb3255d
 %else
 Release:        0
 %endif
@@ -50,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-ba7816e0ae08661ece79de1c621443536811787f
+Provides:       %name-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -231,11 +230,7 @@ sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' linux-%kernelrelease%vari
 %endif
 
 %if %do_vanilla
-%if %vanilla_only
-	mv \
-%else
 	cp -al \
-%endif
 	linux-%kernelrelease%variant linux-%kernelrelease-vanilla
 cd linux-%kernelrelease-vanilla
 %_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
@@ -245,7 +240,6 @@ rm -f $(find . -name ".gitignore")
 cd ..
 %endif
 
-%if ! %vanilla_only
 cd linux-%kernelrelease%variant
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
 rm -f $(find . -name ".gitignore")
@@ -256,10 +250,8 @@ fi
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
 cd ..
-%endif
 popd
 
-%if ! %vanilla_only
 # Install the documentation and example Kernel Module Package.
 DOC=/usr/share/doc/packages/%name-%kernelrelease
 mkdir -p %buildroot/$DOC
@@ -286,7 +278,6 @@ perl "%_sourcedir/group-source-files.pl" \
 	-D "$OLDPWD/devel.files" -N "$OLDPWD/nondevel.files" \
 	-L "%src_install_dir"
 popd
-%endif
 
 find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
 # OBS checks don't like /usr/bin/env in script interpreter lines
@@ -301,7 +292,6 @@ done
 ts="$(head -n1 %_sourcedir/source-timestamp)"
 find %buildroot/usr/src/linux* ! -type l | xargs touch -d "$ts"
 
-%if ! %vanilla_only
 %post
 %relink_function
 
@@ -329,7 +319,6 @@ relink linux-%kernelrelease%variant /usr/src/linux%variant
 /usr/lib/rpm/kernel/*
 %endif
 
-%endif
 
 %if %do_vanilla
 

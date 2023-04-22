@@ -18,9 +18,8 @@
 
 
 %define srcversion 6.2
-%define patchversion 6.2.10
+%define patchversion 6.2.12
 %define variant %{nil}
-%define vanilla_only 0
 %define compress_modules zstd
 %define compress_vmlinux xz
 %define livepatch livepatch%{nil}
@@ -31,6 +30,7 @@
 %define build_flavor	64kb
 %define build_default	("%build_flavor" == "default")
 %define build_vanilla	("%build_flavor" == "vanilla")
+%define vanilla_only    %{lua: if (rpm.expand("%variant") == "-vanilla") then print(1) else print(0) end}
 
 %if ! %build_vanilla
 %define src_install_dir /usr/src/linux-%kernelrelease%variant
@@ -111,9 +111,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.2.10
+Version:        6.2.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gba7816e
+Release:        <RELEASE>.geb3255d
 %else
 Release:        0
 %endif
@@ -238,10 +238,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-ba7816e0ae08661ece79de1c621443536811787f
-Provides:       kernel-srchash-ba7816e0ae08661ece79de1c621443536811787f
+Provides:       kernel-%build_flavor-base-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
+Provides:       kernel-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
 # END COMMON DEPS
-Provides:       %name-srchash-ba7816e0ae08661ece79de1c621443536811787f
+Provides:       %name-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -471,7 +471,7 @@ awk '{
 cd linux-%srcversion
 
 %_sourcedir/apply-patches \
-%if %{build_vanilla}
+%if %{build_vanilla} && ! %vanilla_only
 	--vanilla \
 %endif
 	%_sourcedir/series.conf .. $SYMBOLS
@@ -1409,7 +1409,7 @@ Summary:        Development files necessary for building kernel modules
 Group:          Development/Sources
 Provides:       %name-devel = %version-%source_rel
 Provides:       multiversion(kernel)
-%if ! %build_vanilla
+%if ! %build_vanilla && ! %vanilla_only
 Requires:       kernel-devel%variant = %version-%source_rel
 Recommends:     make
 Recommends:     gcc
