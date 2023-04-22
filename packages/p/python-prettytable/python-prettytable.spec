@@ -1,7 +1,7 @@
 #
 # spec file for package python-prettytable
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Christian Berendt.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-prettytable
 Version:        3.5.0
 Release:        0
@@ -26,9 +27,9 @@ License:        BSD-2-Clause
 URL:            https://github.com/jazzband/prettytable
 Source0:        https://files.pythonhosted.org/packages/source/p/prettytable/prettytable-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
-BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-lazy-fixture}
 BuildRequires:  %{python_module pytest}
