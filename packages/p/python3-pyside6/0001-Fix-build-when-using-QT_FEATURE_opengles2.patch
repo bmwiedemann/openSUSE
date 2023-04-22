@@ -1,0 +1,45 @@
+From 2369e85c53bfc3a0d0c55173ac31c87945bb03ee Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sat, 22 Apr 2023 09:53:19 +0200
+Subject: [PATCH] Fix build when using QT_FEATURE_opengles2
+
+'QT_CONFIG(opengl)' doesn't necessarily mean all of the
+qopenglfunctions_* headers are present.
+
+That's not the case when QT_FEATURE_opengles2 is enabled. Only
+qopenglfunctions_es2.h is installed in this configuration.
+
+Amends: 6d6f614fdd7510a1b8a00a51bb6232a3d151523b
+
+Fixes: QTBUG-112708
+Pick-to: 6.5
+Change-Id: I00219554caf25e48236724c150f8bcd7fc9dc46c
+---
+ sources/pyside6/PySide6/QtOpenGL/QtOpenGL_global.post.h.in | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/sources/pyside6/PySide6/QtOpenGL/QtOpenGL_global.post.h.in b/sources/pyside6/PySide6/QtOpenGL/QtOpenGL_global.post.h.in
+index 3fdc1d4e1..c5b5ab293 100644
+--- a/sources/pyside6/PySide6/QtOpenGL/QtOpenGL_global.post.h.in
++++ b/sources/pyside6/PySide6/QtOpenGL/QtOpenGL_global.post.h.in
+@@ -4,7 +4,9 @@
+ // OpenGL functions are not in the QtGui module header
+ #cmakedefine ANDROID
+ 
+-#if QT_CONFIG(opengl) && !defined(ANDROID)
++#if QT_CONFIG(opengles2)
++#  include <QtOpenGL/qopenglfunctions_es2.h>
++#elif QT_CONFIG(opengl) && !defined(ANDROID)
+ #  include <QtOpenGL/qopenglfunctions_1_0.h>
+ #  include <QtOpenGL/qopenglfunctions_1_1.h>
+ #  include <QtOpenGL/qopenglfunctions_1_2.h>
+@@ -33,6 +35,3 @@
+ #  include <QtOpenGL/qopenglfunctions_4_5_core.h>
+ #  include <QtOpenGL/qopenglversionfunctionsfactory.h>
+ #endif
+-#if QT_CONFIG(opengles2)
+-#  include <QtOpenGL/qopenglfunctions_es2.h>
+-#endif
+-- 
+2.40.0
+

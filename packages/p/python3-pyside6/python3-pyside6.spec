@@ -34,6 +34,8 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-when-using-QT_FEATURE_opengles2.patch
 # SECTION common_dependencies
 # boo#1210176 - PYSIDE-2268
 BuildRequires:  clang15-devel

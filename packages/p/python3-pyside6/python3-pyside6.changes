@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 22 08:38:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build on arm (boo#1210723):
+  * 0001-Fix-build-when-using-QT_FEATURE_opengles2.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 23:22:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0. Check the installed changes-6.5.0 file for the
