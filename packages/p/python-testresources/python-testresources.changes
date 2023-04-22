@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:37:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 12:39:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
 Wed Jan 13 13:12:54 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro
