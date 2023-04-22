@@ -99,4 +99,12 @@
     gh#encode/httpcore#511, gh#agronholm/anyio#470</comment>
     <requestid>1045130</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3a5eb95cf34e866ecf4d7f8c98893072</srcmd5>
+    <version>0.16.3</version>
+    <time>1682193454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081481</requestid>
+  </revision>
 </revisionlist>
