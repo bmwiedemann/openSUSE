@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 22 04:44:27 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- API Headers, Loader, & Validation Layer based on oneAPI Level Zero Specification v1.6.0
+- oneAPI Level Zero API Headers generated from:
+  * oneAPI Level Zero v1.6.0 Core API Headers
+  * oneAPI Level Zero v1.6.0 Tools API Headers  
+  * neAPI Level Zero v1.6.0 Sysman API Headers
+- oneAPI Level Zero Loader v1.10.0
+- oneAPI Level Zero Validation Layer v1.10.0
+- oneAPI Level Zero Tracing Layer v1.10.0
+- Packages Included:
+  * level-zero -> Runtime package providing oneAPI Level Zero Loader & Validation Layer
+  * level-zero-devel -> Development package providing oneAPI Level Zero Loader, Validation Layer & API Headers
+  * level-zero Windows SDK -> Windows Software Development Kit for oneAPI Level-Zero
+- Installation of Windows SDK
+  * extract level-zero_win-sdk*.zip
+  * Add Include path for compiler to use <level-zero_win-sdk>\include
+  * Add Library path for compiler to use <level-zero_win-sdk>\lib
+- Runtime Implementations Supported
+  *    intel-level-zero-gpu (https://github.com/intel/compute-runtime/releases) Minimum required version 21.09.19150
+
+-------------------------------------------------------------------
 Sun Mar 19 16:18:49 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.9.9:
@@ -12,7 +34,7 @@ Tue Jan 31 01:10:41 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org
 
 - update to 1.9.4:
   * Add support for Level Zero spec v1.5
-  * Fix some compilation issues with windows non-vc compiler
+  * Fix some compilation issues with windows non-vc compiler.
   * Fix building when included in another cmake project.
 
 -------------------------------------------------------------------
