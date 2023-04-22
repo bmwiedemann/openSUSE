@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 22 02:10:55 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1682067800.cbbc51b:
+  *  Improve contrast of progress bar showing number of failures (#5080)
+  * Fix non-deleted serial_terminal_user.txt
+  * Dependency cron 2023-04-21
+  * docs: Add SLE installation instructions
+  * docs: Update outdated reference for "job label"
+  * Dependency cron 2023-04-20
+  * Add conditional check to skip maint updates verification
+
+-------------------------------------------------------------------
 Tue Apr 18 15:59:41 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1681833567.dd4f8b9:
