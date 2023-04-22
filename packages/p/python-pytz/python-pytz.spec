@@ -28,6 +28,7 @@
            print(rpm.expand(intro .. args .. "}"))
     } }
 
+%{?sle15_python_module_pythons}
 Name:           python-pytz
 Version:        2023.3
 Release:        0
