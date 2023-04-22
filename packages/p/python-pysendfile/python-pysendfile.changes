@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:31:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 23:38:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Refresh SPEC file.
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Fri Aug 11 16:33:20 UTC 2017 - tbechtold@suse.com
 
 - convert to singlespec

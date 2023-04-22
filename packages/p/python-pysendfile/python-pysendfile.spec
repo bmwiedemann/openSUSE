@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysendfile
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define mod_name pysendfile
-
 Name:           python-pysendfile
 Version:        2.0.1
 Release:        0
 Summary:        A Python interface to sendfile(2)
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://code.google.com/p/pysendfile/
+URL:            https://github.com/giampaolo/pysendfile
 Source:         https://files.pythonhosted.org/packages/source/p/pysendfile/pysendfile-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %python_subpackages
 
 %description
@@ -41,14 +40,15 @@ A python interface to sendfile(2) system call.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc LICENSE README.rst
-%{python_sitearch}/*
+%license LICENSE
+%doc README.rst
+%{python_sitearch}/sendfile.*.so
+%{python_sitearch}/pysendfile-%{version}*-info
 
 %changelog
