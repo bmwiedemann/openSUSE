@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools_scm_git_archive
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-setuptools_scm_git_archive
 Version:        1.1
 Release:        0
 Summary:        Git archive plugin setuptools_scm
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Changaco/setuptools_scm_git_archive/
+URL:            https://github.com/Changaco/setuptools_scm_git_archive/
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools_scm_git_archive/setuptools_scm_git_archive-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
