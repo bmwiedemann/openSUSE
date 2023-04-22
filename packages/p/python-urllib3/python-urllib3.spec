@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
 Version:        1.26.15
 Release:        0
