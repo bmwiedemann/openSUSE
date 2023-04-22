@@ -248,4 +248,12 @@
   ` decorator.contextmanager` even more. Both issues are now solved.</comment>
     <requestid>945419</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>befbc6c16390fa87d77065542e5b9344</srcmd5>
+    <version>5.1.1</version>
+    <time>1682193680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081946</requestid>
+  </revision>
 </revisionlist>
