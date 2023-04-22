@@ -25,4 +25,12 @@
 - Rebase fix_version.patch</comment>
     <requestid>705409</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e331fdf196bbbaff45785e40b454929c</srcmd5>
+    <version>2.7.1</version>
+    <time>1682193473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081652</requestid>
+  </revision>
 </revisionlist>
