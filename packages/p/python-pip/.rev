@@ -712,4 +712,12 @@
       options that can’t be sucessfully parsed by shlex. (#11491)</comment>
     <requestid>1041297</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>206675a96b7feda8fd60a62d3be23eec</srcmd5>
+    <version>22.3.1</version>
+    <time>1682193587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081839</requestid>
+  </revision>
 </revisionlist>

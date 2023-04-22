@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@
 %endif
 %endif
 %global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
 Version:        22.3.1
 Release:        0
