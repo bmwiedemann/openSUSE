@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-yarl
 Version:        1.8.2
 Release:        0
