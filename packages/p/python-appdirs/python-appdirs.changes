@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:21:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:39:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Thu Jun 17 17:16:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add Provides: for python*dist(appdirs): work around boo#1186870
