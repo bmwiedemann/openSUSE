@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 13 22:40:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Nov  7 20:02:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.11.0 
