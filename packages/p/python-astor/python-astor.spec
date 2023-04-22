@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-astor
 Version:        0.8.1
 Release:        0
