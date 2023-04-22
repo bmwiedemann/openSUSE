@@ -57,4 +57,12 @@
   * requires python 3.7</comment>
     <requestid>1003953</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9fc388d37212625287fd05be9b0cd824</srcmd5>
+    <version>1.3.0</version>
+    <time>1682193520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081760</requestid>
+  </revision>
 </revisionlist>
