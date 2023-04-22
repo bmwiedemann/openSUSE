@@ -18,6 +18,7 @@
 
 %define skip_python2 1
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
 Version:        1.4.46
 Release:        0
