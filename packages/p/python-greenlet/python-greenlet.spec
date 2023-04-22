@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-greenlet
 Version:        1.1.3
 Release:        0
