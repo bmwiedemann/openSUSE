@@ -19,6 +19,7 @@
 %define skip_python2 1
 # requires some unavailable modules
 %bcond_with docs
+%{?sle15_python_module_pythons}
 Name:           python-aiohttp
 Version:        3.8.3
 Release:        0
