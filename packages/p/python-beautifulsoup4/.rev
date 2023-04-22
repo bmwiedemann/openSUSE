@@ -406,4 +406,12 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
 - Do not pass the directory to pytest.</comment>
     <requestid>952905</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>72efe433a02902cc82c28d6c6baaa1c7</srcmd5>
+    <version>4.10.0</version>
+    <time>1682193708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081983</requestid>
+  </revision>
 </revisionlist>
