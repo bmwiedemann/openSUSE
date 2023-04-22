@@ -88,4 +88,12 @@
   * fix an issue with setuptools configuration PR #134</comment>
     <requestid>990875</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ceed699bb06bf19fc9b485bae1abacc5</srcmd5>
+    <version>1.4.4</version>
+    <time>1682193451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081477</requestid>
+  </revision>
 </revisionlist>
