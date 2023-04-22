@@ -1038,4 +1038,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
 - Bump gs_plugin_api define to 20 following upstream changes. (forwarded request 1072609 from iznogood)</comment>
     <requestid>1073157</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>50c14bed34b8923b76b52109174e276e</srcmd5>
+    <version>44.1</version>
+    <time>1682193434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081152</requestid>
+  </revision>
 </revisionlist>
