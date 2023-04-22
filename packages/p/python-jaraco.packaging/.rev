@@ -68,4 +68,12 @@
   * #6: Added minimal test to ``sphinx.packaging``.</comment>
     <requestid>1056000</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2b7b1097bdb2ff636182788a767059df</srcmd5>
+    <version>9.1.2</version>
+    <time>1682193612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081872</requestid>
+  </revision>
 </revisionlist>

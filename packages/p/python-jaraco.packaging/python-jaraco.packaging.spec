@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.packaging
 Version:        9.1.2
 Release:        0
