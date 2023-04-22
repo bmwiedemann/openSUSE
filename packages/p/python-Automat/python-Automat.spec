@@ -26,6 +26,7 @@
 %endif
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-Automat%{psuffix}
 Version:        22.10.0
 Release:        0
