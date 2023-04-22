@@ -16,6 +16,8 @@
 #
 
 
+%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-prompt_toolkit
 Version:        3.0.38
 Release:        0
