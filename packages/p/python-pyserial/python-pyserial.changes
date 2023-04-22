@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:31:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Wed Jan 20 08:06:12 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - update to version 3.5:
