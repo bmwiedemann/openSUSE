@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-eventlet
 Version:        0.33.3
 Release:        0
