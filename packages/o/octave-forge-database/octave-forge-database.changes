@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 19 08:28:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add database-drop-error_state.patch -- Drop error_state usage
+  for octave >= 8 compatibility
+  (https://savannah.gnu.org/bugs/index.php?61567).
+
+-------------------------------------------------------------------
 Wed Oct 26 14:54:22 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update 0001-Use-pkg-config-instead-of-pg_config.patch: simplify

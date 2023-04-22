@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.ta
 Patch0:         add_missing_iostream_include.patch
 # PATCH-FIX-OPENSUSE -- boo#1120035, pg_config is no longer in the postgresql-devel package, use pkg-config instead
 Patch1:         0001-Use-pkg-config-instead-of-pg_config.patch
+# PATCH-FIX-UPSTREAM database-drop-error_state.patch badshah400@gmail.com -- Drop error_state for octave >= 8 compatibility (https://savannah.gnu.org/bugs/index.php?61567)
+Patch2:         database-drop-error_state.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel >= 4.0.0
@@ -44,8 +46,7 @@ This is part of Octave-Forge project.
 %prep
 %setup -q -c %{name}-%{version}
 pushd %{octpkg}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 popd
 %octave_pkg_src
 
