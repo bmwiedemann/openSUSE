@@ -98,4 +98,15 @@
 - Add new x86-related intrinsics (amxcomplexintrin.h). (forwarded request 1078870 from marxin)</comment>
     <requestid>1079070</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aed0468a8d1318ebfb4cf28a63f2f43d</srcmd5>
+    <version>13.0.1+git7231</version>
+    <time>1682193341</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to f980561c60b0446cc427595198d7f3f4f90e0924, git7231.
+  * fixes compile-time issue reported in [bsc#1210557]
+  * GCC 13.1 RC3
+- Disable building the rust frontend.</comment>
+    <requestid>1081094</requestid>
+  </revision>
 </revisionlist>

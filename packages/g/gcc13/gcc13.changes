@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 21 06:46:36 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump to f980561c60b0446cc427595198d7f3f4f90e0924, git7231.
+  * fixes compile-time issue reported in [bsc#1210557]
+  * GCC 13.1 RC3
+- Disable building the rust frontend.
+
+-------------------------------------------------------------------
 Wed Apr 12 21:15:13 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Bump to d339e9802f758e051b0a1ef6db732ff846cbf4e3, git7162.
