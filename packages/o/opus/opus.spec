@@ -1,7 +1,7 @@
 #
 # spec file for package opus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,20 +19,14 @@
 
 %define sover   0
 Name:           opus
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        Audio Codec Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://opus-codec.org/
-Source:         https://archive.mozilla.org/pub/opus/%{name}-%{version}.tar.gz
+Source:         https://github.com/xiph/opus/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM opus-Silk-CNG-adapts-faster.patch -- Silk CNG adapts faster to received packets with lower gains
-Patch0:         opus-Silk-CNG-adapts-faster.patch
-# PATCH-FIX-UPSTREAM opus-Silk-fix-arm-optimization.patch -- Avoid processing LPC coeffs beyond the given order in NEON optimizations
-Patch1:         opus-Silk-fix-arm-optimization.patch
-# PATCH-FIX-UPSTREAM opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch -- Fix celt decoder assertion when using OPUS_CUSTOM
-Patch2:         opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -60,10 +54,7 @@ the Internet. It is designed by the IETF Codec Working Group and incorporates
 technology from Skype's SILK codec and Xiph.Org's CELT codec.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure \
@@ -71,24 +62,23 @@ technology from Skype's SILK codec and Xiph.Org's CELT codec.
   --disable-silent-rules \
   --disable-doc \
   --enable-custom-modes
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libopus%{sover} -p /sbin/ldconfig
-%postun -n libopus%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libopus%{sover}
 
 %files -n libopus%{sover}
 %license COPYING
-%doc AUTHORS README
 %{_libdir}/libopus.so.%{sover}*
 
 %files -n libopus-devel
+%doc AUTHORS README
 %{_libdir}/libopus.so
 %{_includedir}/opus
 %{_libdir}/pkgconfig/opus.pc
