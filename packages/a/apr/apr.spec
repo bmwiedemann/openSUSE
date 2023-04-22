@@ -21,7 +21,7 @@
 %define         installbuilddir %{_libdir}/apr-%{aprver}/build
 %define         includedir %{_includedir}/apr-%{aprver}
 Name:           apr
-Version:        1.7.2
+Version:        1.7.4
 Release:        0
 Summary:        Apache Portable Runtime (APR) Library
 License:        Apache-2.0
@@ -92,9 +92,6 @@ sed -i \
 	--enable-other-child \
 	--with-installbuilddir=%{installbuilddir} \
 	--includedir=%{includedir} \
-%ifarch %{ix86}
-	--enable-nonportable-atomics=yes \
-%endif
 	--with-devrandom=/dev/urandom \
 	--disable-static \
 	--enable-posix-shm \

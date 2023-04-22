@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:29:07 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.7.4
+  *) Fix a regression where writing to a file opened with both APR_FOPEN_APPEND
+     and APR_FOPEN_BUFFERED did not properly append the data on Windows.
+     (This regression was introduced in APR 1.7.3)  [Evgeny Kotkov]
+
+-------------------------------------------------------------------
+Sun Apr 16 16:10:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.3:
+  * apr-1-config: Fix crosscompiling detection
+  * configure: Add --enable-sysv-shm to use SysV shared
+    memory (shmget) if available.
+  * apr_socket_sendfile: Use WSAIoctl() to get TransmitFile
+    function pointer on Windows. [Ivan Zhakov]
+  * apr_dir_read: Do not request short file names on Windows
+    7 and later. [Ivan Zhakov]
+  * apr_file_gets: Optimize for buffered files on Windows.
+  * Fix a deadlock when writing to locked files opened with
+    APR_FOPEN_APPEND on Windows. PR 50058. [Evgeny Kotkov]
+  * Don't seek to the end when opening files with
+    APR_FOPEN_APPEND on Windows.
+  * apr_file_write: Optimize large writes to buffered files
+    on Windows.
+  * apr_file_write: Optimize large reads from buffered files
+    on Windows.
+
+-------------------------------------------------------------------
 Thu Feb  2 19:55:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.7.2:
