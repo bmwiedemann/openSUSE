@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:24:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Sun Apr 16 01:30:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update single spec from Factory
+
+-------------------------------------------------------------------
 Tue Jan 24 07:15:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Refactor pygments-2.14.patch to not use distutils. 
