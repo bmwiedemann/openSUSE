@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-semantic_version%{psuffix}
 Version:        2.10.0
 Release:        0
