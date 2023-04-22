@@ -128,4 +128,12 @@
   * BaseDirectory: Add support for $XDG_STATE_DIR</comment>
     <requestid>1005764</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3d1123b570f91bd8f0f3519155b9933e</srcmd5>
+    <version>0.28</version>
+    <time>1682193459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081577</requestid>
+  </revision>
 </revisionlist>
