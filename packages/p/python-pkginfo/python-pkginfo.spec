@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pkginfo
 Version:        1.9.6
 Release:        0
