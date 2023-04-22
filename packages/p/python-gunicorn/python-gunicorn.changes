@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Thu Nov 18 23:11:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-eventlet-30-3.patch:

@@ -242,4 +242,12 @@
   * Upstream patch to support eventlet &gt;= 0.30.3</comment>
     <requestid>932372</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>bfa3e2b656d30d39ba44803c30ed1dda</srcmd5>
+    <version>20.1.0</version>
+    <time>1682193638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081901</requestid>
+  </revision>
 </revisionlist>
