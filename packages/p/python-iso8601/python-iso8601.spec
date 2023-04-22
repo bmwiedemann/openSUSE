@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-iso8601
 Version:        1.1.0
 Release:        0
