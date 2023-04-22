@@ -27,4 +27,12 @@
   * Fix deprecation warnings from Sphinx 6.1</comment>
     <requestid>1069746</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3fef47180aedf902e95f29d69bda9bde</srcmd5>
+    <version>1.0.4</version>
+    <time>1682193513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081753</requestid>
+  </revision>
 </revisionlist>
