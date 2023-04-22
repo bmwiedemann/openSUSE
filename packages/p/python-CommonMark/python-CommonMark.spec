@@ -18,6 +18,7 @@
 
 %define oldpython python
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-CommonMark
 Version:        0.9.1
 Release:        0
