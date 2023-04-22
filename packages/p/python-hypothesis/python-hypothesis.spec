@@ -35,6 +35,7 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_without complete_tests
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
 Version:        6.61.2
 Release:        0
