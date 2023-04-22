@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpbin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # The PyPI version is 0.7.0 but the metadata reads an internal file with version 0.9.2
 %define internalversion 0.9.2
+%{?sle15_python_module_pythons}
 Name:           python-httpbin
 Version:        0.7.0+git20181107.f8ec666
 Release:        0
