@@ -21,4 +21,12 @@ Please, put in  openSUSE:Factory:Staging:adi:18 </comment>
 - drop autocommand-fixtests.patch (upstream)</comment>
     <requestid>1046265</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4afe0b0ad419d48aa40a4f3049c1961f</srcmd5>
+    <version>2.2.2</version>
+    <time>1682193717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081991</requestid>
+  </revision>
 </revisionlist>
