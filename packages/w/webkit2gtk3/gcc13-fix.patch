@@ -1,19 +1,18 @@
-diff --git a/Source/WebCore/platform/graphics/SourceBrush.cpp b/Source/WebCore/platform/graphics/SourceBrush.cpp
-index d7ff7292..48ae0e61 100644
---- a/Source/WebCore/platform/graphics/SourceBrush.cpp
-+++ b/Source/WebCore/platform/graphics/SourceBrush.cpp
+diff -urp webkitgtk-2.40.1.orig/Source/WebCore/platform/graphics/SourceBrush.cpp webkitgtk-2.40.1/Source/WebCore/platform/graphics/SourceBrush.cpp
+--- webkitgtk-2.40.1.orig/Source/WebCore/platform/graphics/SourceBrush.cpp	2023-04-12 08:07:29.748326800 -0500
++++ webkitgtk-2.40.1/Source/WebCore/platform/graphics/SourceBrush.cpp	2023-04-20 11:31:00.456319923 -0500
 @@ -65,12 +65,12 @@ Pattern* SourceBrush::pattern() const
  
  void SourceBrush::setGradient(Ref<Gradient>&& gradient, const AffineTransform& spaceTransform)
  {
 -    m_brush = { Brush::LogicalGradient { WTFMove(gradient), spaceTransform } };
-+    m_brush = Brush { Brush::LogicalGradient { WTFMove(gradient), spaceTransform } };
++    m_brush = Brush { Brush::LogicalGradient { { WTFMove(gradient) }, spaceTransform } };
  }
  
  void SourceBrush::setPattern(Ref<Pattern>&& pattern)
  {
--    m_brush = { WTFMove(pattern) };
-+    m_brush = Brush { WTFMove(pattern) };
+-    m_brush = { Brush::Variant { std::in_place_type<Ref<Pattern>>, WTFMove(pattern) } };
++    m_brush = Brush { Brush::Variant { std::in_place_type<Ref<Pattern>>, WTFMove(pattern) } };
  }
  
  WTF::TextStream& operator<<(TextStream& ts, const SourceBrush& brush)
