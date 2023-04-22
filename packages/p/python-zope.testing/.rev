@@ -112,4 +112,12 @@
   * Add support for Python 3.11.</comment>
     <requestid>1056372</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e52adac991768d8dd03d5685005ca2fd</srcmd5>
+    <version>5.0.1</version>
+    <time>1682193479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081713</requestid>
+  </revision>
 </revisionlist>
