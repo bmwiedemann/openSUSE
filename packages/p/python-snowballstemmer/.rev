@@ -109,4 +109,12 @@
   * irish: Minor optimisation in setting `pV` and `p1`.</comment>
     <requestid>935957</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ceef241dc06766d6718d719eafeeebaf</srcmd5>
+    <version>2.2.0</version>
+    <time>1682193521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081761</requestid>
+  </revision>
 </revisionlist>
