@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySocks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,6 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-PySocks
 Version:        1.7.1
 Release:        0
