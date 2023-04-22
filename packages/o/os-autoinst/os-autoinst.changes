@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 22 02:12:08 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1682085875.d9579ac:
+  * container: Distinguish jq and non-jq variants in BuildTag
+  * Drop setting of TESSDATA_PREFIX in invoke-tests
+  * Replace Perl::Critic::{Freenode,Community}
+  * Add workaround to prevent `t/29-backend-generalhw.t` being unstable
+  * Cover all code of `console.pm`
+
+-------------------------------------------------------------------
 Tue Apr 18 08:24:30 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1681806256.6802f44:
