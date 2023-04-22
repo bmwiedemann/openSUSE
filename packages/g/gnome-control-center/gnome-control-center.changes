@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 21 07:49:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Common:
+    - Update hostname only after apply is clicked.
+    - Add widget name and css class to CcIllustratedRow and
+      CcSplitRow.
+  + Color: Do not try to access to null pointer in destruction.
+  + Date & Time: Fix NTP switch getting out of sync.
+  + Display:
+    - Allow configuring all monitors and apply settings at once.
+    - Disconnect config manager changed handler.
+    - Don't leak config manager proxy.
+  + Network: Fix crash when removing a connection.
+  + Region: Fix label of formats for the login screen.
+  + Sharing: Fix network row visible name bug.
+  + Shell: Add workaround to make disabled pictures are painted as
+    such.
+  + Sound:
+    - Prevent duplicate sound device entries.
+    - Revert accidental libgvc downgrade.
+  + Updated translations.
+- Drop gnome-control-center-fix-6f1567f23.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Apr 13 08:08:26 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Rebase gnome-control-center-disable-error-message-for-NM.patch
