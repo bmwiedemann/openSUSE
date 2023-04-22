@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 21 06:19:17 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.20.0:
+  * On Windows, the gettext functions provided by gpgrt are switched
+    into utf8 mode, so that all localized texts returned by GpgME or
+    gpgrt, e.g. the texts for error codes are now UTF-8 encoded. [T5960]
+  * Key::canSign now returns false for OpenPGP keys without signing
+    (sub)key. [T6456]
+  * The new macOS Homebrew location is now by default supported. [T6440]
+  * Fix regression in 1.19.0.
+  * Fix invocation of gpgtar on Windows.
+  * Interface changes relative to the 1.19.0 release:
+    - gpgme_subkey_t              EXTENDED: New field 'can_renc'.
+    - gpgme_subkey_t              EXTENDED: New field 'can_timestamp'.
+    - gpgme_subkey_t              EXTENDED: New field 'is_group_owned'.
+    - cpp: Subkey::canRenc        NEW.
+    - cpp: Subkey::canTimestamp   NEW.
+    - cpp: Subkey::isGroupOwned   NEW.
+    - cpp: Key::canReallySign     DEPRECATED.
+  * Release-info: https://dev.gnupg.org/T6463
+
+-------------------------------------------------------------------
 Tue Apr 11 22:15:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add a Qt6 flavor to build Qt6 bindings

@@ -33,7 +33,7 @@
 %bcond_without qt6
 %endif
 Name:           gpgme%{psuffix}
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
