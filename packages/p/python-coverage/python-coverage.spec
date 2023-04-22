@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-coverage
 Version:        7.2.2
 Release:        0
