@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Apr 18 06:21:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0
+  - libwtmpdb: Use project version for library version
+  - libwtmpdb: Always use _PATH_WTMPDB as fallback
+
+-------------------------------------------------------------------
+Mon Apr 17 13:28:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Skip pam_wtmpdb for sshd
+
+-------------------------------------------------------------------
+Wed Apr 12 13:28:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0
+  - pam_wtmpdb: Add skip_if option
+  - Add manual pages
+  - wtmpdb last: fix wtmp begins timestamp if no matching entry was found
+  - wtmpdb last: Add --since and --until options
+  - Add compat symlink for "last"
+  - wtmpdb last: add --present option
+  - wtmpdb last: implement -n/--limit
+  - pam_wtmpdb: Try XDG_VTNR if PAM_TTY is not a tty
+
+-------------------------------------------------------------------
+Mon Apr  3 09:17:15 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0
+  - pam_lastlog: support PAM_XDISPLAY
+  - wtmpdb last: show PAM service on request
+  - wtmpdb: log audit records for boot/shutdown
+
+-------------------------------------------------------------------
+Thu Mar 30 13:12:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial package 
