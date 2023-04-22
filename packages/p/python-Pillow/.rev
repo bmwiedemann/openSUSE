@@ -641,4 +641,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Fixed writing int as UNDEFINED tag #6950</comment>
     <requestid>1077061</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>a4f39c95e4a9c97f47d3f009d3671814</srcmd5>
+    <version>9.5.0</version>
+    <time>1682193560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081810</requestid>
+  </revision>
 </revisionlist>
