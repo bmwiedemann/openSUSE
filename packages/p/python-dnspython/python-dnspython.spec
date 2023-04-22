@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-dnspython%{psuffix}
 Version:        2.3.0
 Release:        0

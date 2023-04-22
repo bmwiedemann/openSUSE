@@ -356,4 +356,12 @@
     mutability and form of the iterable returned when it is read.</comment>
     <requestid>1063213</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>cdb4a29653a2454cdaebb6a143c6c24b</srcmd5>
+    <version>2.3.0</version>
+    <time>1682193678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081944</requestid>
+  </revision>
 </revisionlist>
