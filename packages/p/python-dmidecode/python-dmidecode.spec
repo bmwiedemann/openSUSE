@@ -18,6 +18,7 @@
 
 %define oldpython python
 %define modname dmidecode
+%{?sle15_python_module_pythons}
 Name:           python-dmidecode
 Version:        3.12.3
 Release:        0
@@ -94,6 +95,7 @@ PRIO=$(echo %{python_version}|tr -d '.')
 
 %postun
 if [ ! -f %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml ] ; then
+   MAJVER=$(ver=%{python_version}; echo ${ver:0:1})
    %{_sbindir}/update-alternatives --remove pymap.xml \
         %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
 fi
