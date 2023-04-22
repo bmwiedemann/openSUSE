@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-astroid
 Version:        2.15.3
 Release:        0
