@@ -61,4 +61,12 @@
   * CI only fixes, no bug fixes or new features</comment>
     <requestid>1007458</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6384a1a1f6689f86228d8333fe2085fa</srcmd5>
+    <version>1.12</version>
+    <time>1682193491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081727</requestid>
+  </revision>
 </revisionlist>
