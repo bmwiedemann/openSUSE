@@ -152,4 +152,12 @@
   * Fix invalid escape sequences</comment>
     <requestid>981384</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>d42bd21b1af34c3bae06c2ef4b8c5de1</srcmd5>
+    <version>2.3</version>
+    <time>1682193653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081914</requestid>
+  </revision>
 </revisionlist>
