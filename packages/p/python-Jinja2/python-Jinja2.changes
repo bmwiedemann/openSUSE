@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:20:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Fri Dec  2 07:35:08 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - ignore 'pytest.PytestRemovedIn8Warning: Support for nose tests is
