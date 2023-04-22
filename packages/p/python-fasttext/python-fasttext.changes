@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:24:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Mon Mar  6 12:30:34 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add gcc13-fix.patch that fixes upstream issue:

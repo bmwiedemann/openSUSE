@@ -20,6 +20,7 @@
 %define modname fastText
 # Using annotation futures and dataclasses
 %define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-fasttext
 Version:        0.9.2
 Release:        0
