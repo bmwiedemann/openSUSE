@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bleach
 Version:        5.0.1
 Release:        0

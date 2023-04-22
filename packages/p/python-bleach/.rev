@@ -169,4 +169,12 @@
     <comment>- Remove not needed dependency python-packaging</comment>
     <requestid>1074154</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>a9355d1af32df9a1dae71e956eb52db7</srcmd5>
+    <version>5.0.1</version>
+    <time>1682193707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081979</requestid>
+  </revision>
 </revisionlist>
