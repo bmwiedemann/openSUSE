@@ -1,7 +1,8 @@
-diff -Nrua a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
+diff --git a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
+index 34c4aa4..7996af0 100644
 --- a/SRC/CMakeLists.txt
 +++ b/SRC/CMakeLists.txt
-@@ -21,7 +21,6 @@
+@@ -23,7 +23,6 @@ set(sources
    ilu_relax_snode.c
    ilu_heap_relax_snode.c
    mark_relax.c
@@ -9,7 +10,7 @@ diff -Nrua a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
    qselect.c
    input_error.c
    dmach.c
-@@ -65,9 +64,7 @@
+@@ -68,9 +67,7 @@ if(enable_single)
      smemory.c
      sutil.c
      smyblas2.c
@@ -19,7 +20,7 @@ diff -Nrua a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
      ilu_sdrop_row.c
      ilu_ssnode_dfs.c
      ilu_scolumn_dfs.c
-@@ -115,9 +112,7 @@
+@@ -118,9 +115,7 @@ if(enable_double)
      dmemory.c
      dutil.c
      dmyblas2.c
@@ -29,7 +30,7 @@ diff -Nrua a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
      ilu_ddrop_row.c
      ilu_dsnode_dfs.c
      ilu_dcolumn_dfs.c
-@@ -168,9 +163,7 @@
+@@ -171,9 +166,7 @@ if(enable_complex)
      cmemory.c
      cutil.c
      cmyblas2.c
@@ -39,7 +40,7 @@ diff -Nrua a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
      ilu_cdrop_row.c
      ilu_csnode_dfs.c
      ilu_ccolumn_dfs.c
-@@ -219,9 +212,7 @@
+@@ -222,9 +215,7 @@ if(enable_complex16)
      zmemory.c
      zutil.c
      zmyblas2.c

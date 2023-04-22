@@ -1,16 +1,17 @@
-diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
+diff --git a/EXAMPLE/Makefile b/EXAMPLE/Makefile
+index eb961e3..0ae9052 100644
 --- a/EXAMPLE/Makefile
 +++ b/EXAMPLE/Makefile
-@@ -39,8 +39,6 @@
+@@ -39,8 +39,6 @@ SLINXEXM 	= slinsolx.o
  SLINXEXM1 	= slinsolx1.o
  SLINXEXM2	= slinsolx2.o
  SLINXEXM3	= slinsolx3.o
 -SITSOL	     	= sitersol.o sfgmr.o
 -SITSOL1	     	= sitersol1.o sfgmr.o
  
- DLINEXM		= dlinsol.o
+ DLINEXM		= dlinsol.o dreadtriple_noheader.o #dgstrf.o dcolumn_dfs.o #sp_ienv.o
  DLINEXM1	= dlinsol1.o
-@@ -49,8 +47,6 @@
+@@ -49,8 +47,6 @@ DLINXEXM1 	= dlinsolx1.o
  DLINXEXM2 	= dlinsolx2.o
  DLINXEXM3 	= dlinsolx3.o
  SUPERLUEXM 	= superlu.o sp_ienv.o
@@ -19,7 +20,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  
  CLINEXM 	= clinsol.o
  CLINEXM1 	= clinsol1.o
-@@ -58,8 +54,6 @@
+@@ -58,8 +54,6 @@ CLINXEXM 	= clinsolx.o
  CLINXEXM1 	= clinsolx1.o
  CLINXEXM2 	= clinsolx2.o
  CLINXEXM3 	= clinsolx3.o
@@ -28,7 +29,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  
  ZLINEXM 	= zlinsol.o
  ZLINEXM1 	= zlinsol1.o
-@@ -67,20 +61,17 @@
+@@ -67,20 +61,17 @@ ZLINXEXM 	= zlinsolx.o
  ZLINXEXM1 	= zlinsolx1.o
  ZLINXEXM2 	= zlinsolx2.o
  ZLINXEXM3 	= zlinsolx3.o
@@ -55,7 +56,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  
  slinsol: $(SLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(SLINEXM) $(LIBS) -lm -o $@
-@@ -100,11 +91,6 @@
+@@ -100,11 +91,6 @@ slinsolx2: $(SLINXEXM2) $(SUPERLULIB)
  slinsolx3: $(SLINXEXM3) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(SLINXEXM3) $(LIBS) -lm -o $@
  
@@ -67,7 +68,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  
  dlinsol: $(DLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(DLINEXM) $(LIBS) -lm -o $@
-@@ -127,12 +113,6 @@
+@@ -127,12 +113,6 @@ dlinsolx3: $(DLINXEXM3) $(SUPERLULIB)
  superlu: $(SUPERLUEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(SUPERLUEXM) $(LIBS) -lm -o $@
  
@@ -80,7 +81,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  clinsol: $(CLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(CLINEXM) $(LIBS) -lm -o $@
  
-@@ -151,12 +131,6 @@
+@@ -151,12 +131,6 @@ clinsolx2: $(CLINXEXM2) $(SUPERLULIB)
  clinsolx3: $(CLINXEXM3) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(CLINXEXM3) $(LIBS) -lm -o $@
  
@@ -93,7 +94,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  zlinsol: $(ZLINEXM) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(ZLINEXM) $(LIBS) -lm -o $@
  
-@@ -175,11 +149,6 @@
+@@ -175,11 +149,6 @@ zlinsolx2: $(ZLINXEXM2) $(SUPERLULIB)
  zlinsolx3: $(ZLINXEXM3) $(SUPERLULIB)
  	$(LOADER) $(LOADOPTS) $(ZLINXEXM3) $(LIBS) -lm -o $@
  
@@ -105,7 +106,7 @@ diff -Nrua a/EXAMPLE/Makefile b/EXAMPLE/Makefile
  
  .c.o:
  	$(CC) $(CFLAGS) $(CDEFS) $(INCLUDEDIR) -c $< $(VERBOSE)
-@@ -189,7 +158,7 @@
+@@ -189,7 +158,7 @@ zitersol1: $(ZITSOL1) $(SUPERLULIB)
  
  clean:	
  	rm -f *.o *linsol *linsol1 *linsolx *linsolx1 *linsolx2 *linsolx3 \

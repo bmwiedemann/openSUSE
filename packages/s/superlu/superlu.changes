@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 19 23:20:41 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Fix two rpmlint warning.
+
+-------------------------------------------------------------------
+Sun Apr 16 07:22:44 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Make doc and example packages noarch.
+
+-------------------------------------------------------------------
+Sun Apr  9 03:01:30 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to version 6.0.0
+  * Add 64-bit indexing support, with mixed int and int64_t types.
+  * Add METIS ordering option.
+  * Add FORTRAN/CMakeLists.txt
+- Update and rename patch superlu-5.2-remove-mc64ad.patch to
+  superlu-remove-mc64ad.patch
+- update superlu-examples_Makefile_remove_itersol.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 19:47:48 UTC 2021 - Antoine Ginies <aginies@suse.com>
 
 - update to version 5.3.0 (JSC#SLE-22138)

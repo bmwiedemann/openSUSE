@@ -1,7 +1,7 @@
 #
 # spec file for package superlu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 # Base package name
 %define pname superlu
-%define ver 5.3.0
+%define ver 6.0.0
 %define _ver %(echo %{ver} | tr . _)
 
 %if "%flavor" == ""
@@ -72,7 +72,7 @@ ExclusiveArch:  do_not_build
 %define p_prefix %_prefix
 %define p_includedir %_includedir
 %define p_libdir %_libdir
-%define _sover 5
+%define _sover 6
 %define libname lib%{name}%{?_sover}
 %else
 %{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
@@ -94,11 +94,11 @@ Source0:        %{pname}-%{version}.tar.gz
 # Tarball above is generated with the script below
 Source1:        get-tarball.sh
 Source2:        README.SUSE
-# PATCH-FIX-OPENSUSE superlu-5.2-remove-mc64ad.patch [bnc#796236]
+# PATCH-FIX-OPENSUSE superlu-remove-mc64ad.patch [bnc#796236]
 # The Harwell Subroutine Library (HSL) routine mc64ad.c have been removed
 # from the original sources for legal reasons. This patch disables the inclusion of
 # this routine in the library which, however, remains fully functional
-Patch3:         superlu-5.2-remove-mc64ad.patch
+Patch3:         superlu-remove-mc64ad.patch
 Patch4:         superlu-examples_Makefile_remove_itersol.patch
 Patch5:         superlu-make.linux.patch
 BuildRequires:  cmake >= 2.8.12
@@ -150,6 +150,7 @@ SuperLU headers and libraries files needed for development
 %package        doc
 Summary:        Documentation for %name
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description    doc
 Documentation (HTML/PDF) for SuperLU.
@@ -160,6 +161,7 @@ decomposition of sparse matrices.
 Summary:        Examples for %name
 Group:          Documentation/Other
 Recommends:     %name-devel
+BuildArch:      noarch
 
 %description    examples
 Example programs for SuperLU.
@@ -200,7 +202,7 @@ make %{?_smp_mflags}
 %install
 %cmake_install
 #fix permissions
-chmod 644 MATLAB/*
+chmod 644 MATLAB/* EXAMPLE/*
 
 # remove all build examples
 cd EXAMPLE
@@ -219,7 +221,6 @@ cp FORTRAN/README README.fortran
 
 # TODO: is there any path to add for Matlab files?
 %hpc_write_modules_files
-#%Module1.0#####################################################################
 
 proc ModulesHelp { } {
 
