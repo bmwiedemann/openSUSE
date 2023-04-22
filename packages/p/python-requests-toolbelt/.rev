@@ -103,4 +103,12 @@
     to avoid a DeprecationWarning.</comment>
     <requestid>1007133</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>227313bea6977425d8697fd51461ed95</srcmd5>
+    <version>0.9.1</version>
+    <time>1682193534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081776</requestid>
+  </revision>
 </revisionlist>
