@@ -1,7 +1,7 @@
 #
 # spec file for package python-fqdn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-fqdn
 Version:        1.5.1
 Release:        0
@@ -23,13 +24,13 @@ Summary:        RFC-compliant FQDN validation and manipulation for Python
 License:        MPL-2.0
 URL:            https://github.com/ypcrts/fqdn
 Source:         https://github.com/ypcrts/fqdn/archive/refs/tags/v%{version}.tar.gz#/fqdn-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module cached-property if %python-base < 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %if %python_version_nodots < 38
 Requires:       python-cached-property >= 1.3.0
 %endif
@@ -45,7 +46,6 @@ modern web browsers like Mozilla Firefox and Chromium that determines whether
 make a DNS lookup. Configuration options can relax constraints so that short
 hostnames without periods or others with underscores will be valid. These
 relaxations are closer to how modern web browsers work.
-
 
 %prep
 %setup -q -n fqdn-%{version}
@@ -67,4 +67,3 @@ relaxations are closer to how modern web browsers work.
 %{python_sitelib}/fqdn-%{version}.dist-info
 
 %changelog
-
