@@ -23,6 +23,7 @@
 %else
 %define use_bundled_libev 0
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-gevent
 Version:        22.10.1
 Release:        0
