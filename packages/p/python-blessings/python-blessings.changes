@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:22:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Fri Mar 27 10:08:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove nose dep since we are not running the tests 
