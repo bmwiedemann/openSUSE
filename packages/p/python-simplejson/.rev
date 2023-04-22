@@ -414,4 +414,12 @@
   * Declare support for Python 3.11 and add wheels</comment>
     <requestid>1055979</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>f6f991b734c4e587da48f4d461d12afd</srcmd5>
+    <version>3.18.1</version>
+    <time>1682193524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081765</requestid>
+  </revision>
 </revisionlist>
