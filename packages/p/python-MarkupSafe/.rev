@@ -226,4 +226,12 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
   *   Fix ``striptags`` not stripping tags containing newlines.</comment>
     <requestid>1061901</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0163d1fecba60c4f2cc933fbb4e3bf27</srcmd5>
+    <version>2.1.2</version>
+    <time>1682193762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082034</requestid>
+  </revision>
 </revisionlist>

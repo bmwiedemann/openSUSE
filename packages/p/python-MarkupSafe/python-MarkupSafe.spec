@@ -20,6 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
+%{?sle15_python_module_pythons}
 Name:           python-MarkupSafe
 Version:        2.1.2
 Release:        0
