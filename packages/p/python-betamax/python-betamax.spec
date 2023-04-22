@@ -1,7 +1,7 @@
 #
 # spec file for package python-betamax
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-betamax
 Version:        0.8.1
 Release:        0
 Summary:        A VCR imitation for python-requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/sigmavirus24/betamax
+URL:            https://github.com/sigmavirus24/betamax
 Source:         https://pypi.io/packages/source/b/betamax/betamax-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

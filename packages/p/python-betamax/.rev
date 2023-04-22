@@ -45,4 +45,12 @@
 - Use %license macro</comment>
     <requestid>657780</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bb5926e658cd8f0077ad6d1ed12a9f20</srcmd5>
+    <version>0.8.1</version>
+    <time>1682193708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081982</requestid>
+  </revision>
 </revisionlist>
