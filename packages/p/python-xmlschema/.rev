@@ -282,4 +282,12 @@
   * Detach content iteration methods from ModelVisitor</comment>
     <requestid>1079725</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1f6b15c7560b903a767554d7e60d799e</srcmd5>
+    <version>2.2.3</version>
+    <time>1682193484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081720</requestid>
+  </revision>
 </revisionlist>
