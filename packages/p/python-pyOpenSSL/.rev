@@ -501,4 +501,12 @@
     to support DTLS timeouts `#1180</comment>
     <requestid>1075038</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>20bbf0cdac282f411e2af4c049390c10</srcmd5>
+    <version>23.1.1</version>
+    <time>1682193566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081816</requestid>
+  </revision>
 </revisionlist>
