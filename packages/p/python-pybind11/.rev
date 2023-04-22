@@ -215,4 +215,12 @@
   * Better stacklevel for a warning in setuptools helpers.</comment>
     <requestid>1072929</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>96af6d984ecba2046e9112567e656cc2</srcmd5>
+    <version>2.10.4</version>
+    <time>1682193563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081812</requestid>
+  </revision>
 </revisionlist>

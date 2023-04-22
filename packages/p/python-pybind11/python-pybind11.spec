@@ -33,6 +33,7 @@
 
 %define skip_python2 1
 %define plainpython python
+%{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
 Version:        2.10.4
 Release:        0
