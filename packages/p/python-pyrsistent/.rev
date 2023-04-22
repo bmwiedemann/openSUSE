@@ -177,4 +177,12 @@
  * Fix #254, #258, support manylinux_2014_aarch64 wheels.</comment>
     <requestid>1056270</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>911516e5122bd1dbce77a851861da93b</srcmd5>
+    <version>0.19.3</version>
+    <time>1682193467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081611</requestid>
+  </revision>
 </revisionlist>
