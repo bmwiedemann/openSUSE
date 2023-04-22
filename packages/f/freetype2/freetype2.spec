@@ -21,7 +21,7 @@ Name:           freetype2
 Version:        2.13.0
 Release:        0
 Summary:        A TrueType Font Library
-License:        GPL-2.0-or-later OR SUSE-Freetype
+License:        FTL AND GPL-2.0-only
 Group:          System/Libraries
 URL:            https://www.freetype.org
 Source0:        https://downloads.sourceforge.net/project/freetype/freetype2/%{version}/freetype-%{version}.tar.xz
