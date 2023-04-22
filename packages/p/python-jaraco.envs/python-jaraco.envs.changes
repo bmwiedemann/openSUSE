@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:27:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Aug 29 14:37:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Do not own the jaraco toplevel directory (PEP440 namespace pkg)
