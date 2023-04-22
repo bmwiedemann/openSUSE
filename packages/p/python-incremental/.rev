@@ -59,4 +59,12 @@
   * Incremental now supports type-checking with Mypy (#69)</comment>
     <requestid>1011264</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>33100c3c6495df89b444cb2039b69109</srcmd5>
+    <version>22.10.0</version>
+    <time>1682193626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081885</requestid>
+  </revision>
 </revisionlist>
