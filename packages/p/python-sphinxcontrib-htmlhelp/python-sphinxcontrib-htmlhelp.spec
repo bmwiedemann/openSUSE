@@ -26,6 +26,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-htmlhelp%{psuffix}
 Version:        2.0.1
 Release:        0

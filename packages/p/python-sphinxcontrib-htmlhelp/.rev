@@ -47,4 +47,12 @@
 - drop sphinx5.patch (upstream)</comment>
     <requestid>1069747</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>de012e56df2777b27e06f913e32f9a66</srcmd5>
+    <version>2.0.1</version>
+    <time>1682193510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081749</requestid>
+  </revision>
 </revisionlist>
