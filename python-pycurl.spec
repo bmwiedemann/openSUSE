@@ -26,6 +26,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pycurl%{psuffix}
 Version:        7.45.2
 Release:        0
