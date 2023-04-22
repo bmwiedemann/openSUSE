@@ -1,7 +1,7 @@
 #
 # spec file for package python-fs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,6 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-fs
 Version:        2.4.16
 Release:        0

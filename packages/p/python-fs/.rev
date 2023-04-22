@@ -147,4 +147,12 @@
   * Marked filesystems wrapped with `fs.wrap.WrapReadOnly` as read-only.</comment>
     <requestid>979746</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cc17516cbabe4e21361a99d0a1c21853</srcmd5>
+    <version>2.4.16</version>
+    <time>1682193649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081910</requestid>
+  </revision>
 </revisionlist>
