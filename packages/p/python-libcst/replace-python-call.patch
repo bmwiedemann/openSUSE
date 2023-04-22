@@ -1,7 +1,21 @@
-Index: libcst-0.4.9/libcst/codemod/tests/test_codemod_cli.py
-===================================================================
---- libcst-0.4.9.orig/libcst/codemod/tests/test_codemod_cli.py
-+++ libcst-0.4.9/libcst/codemod/tests/test_codemod_cli.py
+---
+ libcst/codegen/generate.py               |    2 +-
+ libcst/codemod/tests/test_codemod_cli.py |    4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/libcst/codegen/generate.py
++++ b/libcst/codegen/generate.py
+@@ -69,7 +69,7 @@ def codegen_visitors() -> None:
+         # by attempting to run codegen again in a new process.
+         with open(os.devnull, "w") as devnull:
+             subprocess.check_call(
+-                ["python3", "-m", "libcst.codegen.gen_visitor_functions"],
++                [sys.executable, "-m", "libcst.codegen.gen_visitor_functions"],
+                 cwd=base,
+                 stdout=devnull,
+             )
+--- a/libcst/codemod/tests/test_codemod_cli.py
++++ b/libcst/codemod/tests/test_codemod_cli.py
 @@ -4,7 +4,7 @@
  # LICENSE file in the root directory of this source tree.
  #

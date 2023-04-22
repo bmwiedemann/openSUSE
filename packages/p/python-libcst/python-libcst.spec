@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@
 %bcond_with test
 %endif
 %define modname libcst
+%{?sle15_python_module_pythons}
 Name:           python-libcst%{psuffix}
 Version:        0.4.9
 Release:        0
@@ -61,7 +62,6 @@ BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module hypothesis >= 4.36.0}
 BuildRequires:  %{python_module hypothesmith >= 0.0.4}
-BuildRequires:  %{python_module isort >= 5.5.3}
 BuildRequires:  %{python_module typing-inspect >= 0.4.0}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4.2}
 %endif
@@ -90,7 +90,7 @@ rm \
   libcst/tests/test_pyre_integration.py
 
 # gh#Instagram/LibCST#467
-sed -i 's/import AbstractBaseMatcherNodeMeta/import Optional, AbstractBaseMatcherNodeMeta/' libcst/codegen/gen_matcher_classes.py
+sed -i -e 's/import AbstractBaseMatcherNodeMeta/import Optional, AbstractBaseMatcherNodeMeta/' libcst/codegen/gen_matcher_classes.py
 
 %if !%{with test}
 %build
@@ -107,15 +107,8 @@ export CARGO_NET_OFFLINE=true PROFILE=release
 
 %if %{with test}
 %check
-# test_fuzz needs network access because of 'from hypothesmith import from_grammar'
-rm libcst/tests/test_fuzz.py
-
-%{python_exec # https://github.com/Instagram/LibCST/issues/331 + 467
-$python -m libcst.codegen.generate matchers
-$python -m libcst.codegen.generate return_types
-$python -m libcst.codegen.generate visitors
-$python -m unittest -v
-}
+%python_exec -m libcst.codegen.generate all
+%pyunittest -v
 %endif
 
 %if !%{with test}
