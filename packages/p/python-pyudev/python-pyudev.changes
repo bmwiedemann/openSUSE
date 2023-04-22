@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:32:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Fri Oct 14 08:25:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update hypothesis_settings.patch:

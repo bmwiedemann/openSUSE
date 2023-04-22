@@ -259,4 +259,12 @@
   * extend deadlines to handle qemu emulated arches better</comment>
     <requestid>1010622</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>07ec379cc4f5c8755c289bc3df47c44c</srcmd5>
+    <version>0.24.0</version>
+    <time>1682193460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081579</requestid>
+  </revision>
 </revisionlist>
