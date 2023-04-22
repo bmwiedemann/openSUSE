@@ -48,4 +48,12 @@
     <comment>- The test build branch MUST BR the package itself.</comment>
     <requestid>1067918</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>241a35913c379a6a79136a1cbf62afbf</srcmd5>
+    <version>0.3.0</version>
+    <time>1682193457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081526</requestid>
+  </revision>
 </revisionlist>
