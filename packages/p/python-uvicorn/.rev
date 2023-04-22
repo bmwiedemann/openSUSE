@@ -97,4 +97,12 @@
     <comment>- skip optional uvloop test dependency for SLE15</comment>
     <requestid>1072282</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>93c944263383849427145cab788886ea</srcmd5>
+    <version>0.20.0</version>
+    <time>1682193720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081993</requestid>
+  </revision>
 </revisionlist>

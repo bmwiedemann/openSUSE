@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-uvicorn
 Version:        0.20.0
 Release:        0
