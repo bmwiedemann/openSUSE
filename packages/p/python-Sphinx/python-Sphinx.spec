@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
 Version:        6.1.3
 Release:        0
