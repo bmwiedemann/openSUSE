@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-xcffib%{?psuffix}
 Version:        1.2.0
 Release:        0
