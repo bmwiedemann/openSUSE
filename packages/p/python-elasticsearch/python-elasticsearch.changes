@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:24:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Tue Oct 18 10:04:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Revert back to 7.6.0. elasticsearch-dsl is not compatible with
