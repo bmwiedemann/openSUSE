@@ -235,4 +235,12 @@
   * Revert to the previous classmethod expectations for PyPy3.9</comment>
     <requestid>1008416</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>68310d19785297b04389a0f63a52129b</srcmd5>
+    <version>4.0.1</version>
+    <time>1682193661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081924</requestid>
+  </revision>
 </revisionlist>
