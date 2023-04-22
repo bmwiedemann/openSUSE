@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-wcwidth
 Version:        0.2.6
 Release:        0
