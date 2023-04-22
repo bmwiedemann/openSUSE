@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:29:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Tue Jun 21 18:53:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for version 2.0

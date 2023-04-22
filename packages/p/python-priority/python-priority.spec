@@ -1,7 +1,7 @@
 #
 # spec file for package python-priority
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-priority
 Version:        2.0.0
 Release:        0
@@ -24,12 +25,12 @@ Summary:        A pure-Python implementation of the HTTP/2 priority tree
 License:        MIT
 URL:            https://github.com/python-hyper/priority/
 Source:         https://files.pythonhosted.org/packages/source/p/priority/priority-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.6.1}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
