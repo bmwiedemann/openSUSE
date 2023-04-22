@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 21 15:04:55 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to version 2.5.2
+  * contains profiles for Original Prusa MK4 printer
+
+- Update to version 2.5.1
+  * 'Monotonic lines' top/bottom fill pattern
+  * It is now possible to set acceleration separately for external
+    perimeters, solid infill and top solid infill (Print Settings->
+      Speed->Acceleration control)
+  * Original Prusa XL specific: Arrangement into the corner
+  * Fixed a crash sometimes occurring when slicing very detailed models
+  * Added Original Prusa XL profiles
+
+-------------------------------------------------------------------
 Tue Jan 31 18:34:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add gentoo-887055-boost-fix.patch

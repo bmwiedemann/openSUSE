@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.5.0
+Version:        2.5.2
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
