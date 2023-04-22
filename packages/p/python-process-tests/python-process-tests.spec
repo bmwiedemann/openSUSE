@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-process-tests
 Version:        2.1.2
 Release:        0

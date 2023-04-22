@@ -64,4 +64,12 @@
   used. This also fixes warnings on Python 3.</comment>
     <requestid>1056272</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>badedc18789ced5463801df1e96eadf9</srcmd5>
+    <version>2.1.2</version>
+    <time>1682193574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081825</requestid>
+  </revision>
 </revisionlist>
