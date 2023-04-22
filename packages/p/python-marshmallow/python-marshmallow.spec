@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-marshmallow
 Version:        3.19.0
 Release:        0
