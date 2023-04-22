@@ -206,7 +206,7 @@ for F in \
 	%{buildroot}/%{_prefix}/lib/munin/plugins/ipmi_sensor_ \
 	%{buildroot}/%{_prefix}/lib/munin/plugins/smart_ \
 	; do
-	sed -i -e 's|^#!%{_bindir}/env python|#!%{_bindir}/python|' $F
+	sed -i -e 's|^#!%{_bindir}/env python|#!%{_bindir}/python3|' $F
 done
 for F in \
 	%{buildroot}/%{_prefix}/lib/munin/plugins/tomcat_ \

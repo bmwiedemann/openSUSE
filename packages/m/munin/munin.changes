@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 08:13:58 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Use python3 as the interpreter in ipmi_sensor_ and
+  smart_, boo#1210588
+
+-------------------------------------------------------------------
 Sun Mar 12 10:13:53 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.0.72 
