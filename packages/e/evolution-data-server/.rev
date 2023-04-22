@@ -2222,4 +2222,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>New stable release (forwarded request 1072606 from iznogood)</comment>
     <requestid>1073154</requestid>
   </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>874672d1b2e3ccbc3d0cbfedc24f0477</srcmd5>
+    <version>3.48.1</version>
+    <time>1682193435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081153</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 21 08:16:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.1:
+  + WebDAV Notes: Fallback to derive component summary from
+    description.
+  + CamelFilterDriver: Unset info's headers only when folder has
+    summary.
+  + Bugs fixed:
+    - Camel: POP3's 'UTF8' command blocking login.
+    - backends: React to destination URI changes.
+    - Fails to refresh backend with offline changes and broken
+      local cache state.
+    - IMAPx: Ignore 'Permission denied' error on refresh.
+    - libedataserver: Disable deprecation notice around
+      e_flag_timed_wait.
+    - Calendar: Change file backend discard_alarm() function.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 12:14:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.0:
