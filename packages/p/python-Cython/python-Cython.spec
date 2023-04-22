@@ -17,6 +17,7 @@
 
 
 %bcond_with test
+%{?sle15_python_module_pythons}
 Name:           python-Cython
 Version:        0.29.34
 Release:        0
