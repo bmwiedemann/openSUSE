@@ -116,4 +116,12 @@
   * Implement SortedDict methods: __or__, __ror__, and __ior__ per PEP 584.</comment>
     <requestid>897833</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5e692bc1602924a16414d732cbd035ee</srcmd5>
+    <version>2.4.0</version>
+    <time>1682193518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081759</requestid>
+  </revision>
 </revisionlist>
