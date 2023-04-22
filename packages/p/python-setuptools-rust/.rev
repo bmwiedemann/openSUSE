@@ -78,4 +78,12 @@
   * Fix RustBin setuptools install. #275</comment>
     <requestid>1046123</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b0d38403f6118260764e56fa4e1ada04</srcmd5>
+    <version>1.5.2</version>
+    <time>1682193607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081867</requestid>
+  </revision>
 </revisionlist>

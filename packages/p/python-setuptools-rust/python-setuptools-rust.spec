@@ -16,6 +16,8 @@
 #
 
 
+%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-setuptools-rust
 Version:        1.5.2
 Release:        0
