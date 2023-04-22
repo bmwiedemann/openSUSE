@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Apr 21 11:28:00 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#926
+- reimplemented transport detection for NVMe (bsc#1210144)
+- added tests for nvme parsers
+- 4.5.97
+
+--------------------------------------------------------------------
 Tue Apr 18 04:48:59 UTC 2023 - aschnell@suse.com
 
 - Translated using Weblate (Georgian) (bsc#1149754)
