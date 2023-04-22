@@ -18,6 +18,7 @@
 
 
 %global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-argcomplete
 Version:        2.0.0
 Release:        0
