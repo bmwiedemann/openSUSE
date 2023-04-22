@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %global skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-attrs%{psuffix}
 Version:        22.2.0
 Release:        0

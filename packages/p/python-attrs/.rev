@@ -233,4 +233,12 @@
     sensitive templating operations to f-strings.</comment>
     <requestid>1046288</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3e7a0a1ed7804ad6f3175643f5f5ead1</srcmd5>
+    <version>22.2.0</version>
+    <time>1682193716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081990</requestid>
+  </revision>
 </revisionlist>
