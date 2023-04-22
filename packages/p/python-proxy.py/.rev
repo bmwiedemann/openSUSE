@@ -7,4 +7,12 @@
     <comment>We don’t store packages in d:l:p just for fun … submitting to Factory.</comment>
     <requestid>940547</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eea38e2772ae5de6b800b2adad62db23</srcmd5>
+    <version>2.3.1</version>
+    <time>1682193572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081823</requestid>
+  </revision>
 </revisionlist>
