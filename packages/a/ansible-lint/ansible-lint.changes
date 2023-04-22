@@ -1,9 +1,71 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:54:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.15.0:
+  * Minor Changes
+    - Add ability to auto-fix fcqn rule violations (#3316)
+      @MarkusTeufelberger
+    - Document how to avoid vault related errors (#3313) @ssbarnea
+    - Require at least one known subfolder for roles (#3303)
+      @ssbarnea
+  * Bugfixes
+    - Ensure that JSON output does not contain newlines (#3315)
+      @ssbarnea
+    - Improve description of task names (#3314) @ssbarnea
+    - Fix config path detection logic (#3312) @ssbarnea
+    - Improve tests related to vault processing (#3306) @ssbarnea
+    - Avoid running args rule if we encounter a windows module
+      (#3305) @ajinkyau
+    - Ensure non zero exit code when no files are linted (#3302)
+      @ssbarnea
+    - Refactor exit codes to use an enum (#3300) @ssbarnea
+    - Ensure profile rules do not have experimental or opt-in tag
+      (#3299) @ssbarnea
+    - Change logging to use rich output (#3297) @ssbarnea
+    - Refactor project root directory detection code (#3295)
+      @ssbarnea
+    - Remove flake8 and pyupgrade (#3292) @ssbarnea
+    - Extend ruff checks (#3291) @ssbarnea
+    - Send GHA annotations to stderr (#3288) @ssbarnea
+    - Fix Schema validation for variables in tasks/vars directory
+      (#3289) @ajinkyau
+    - Recognize ansible collections installed at system level
+      (#3286) @ssbarnea
+
+-------------------------------------------------------------------
 Fri Apr 21 11:53:19 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
   (dependency removed in ead51323d85be09d5a96a4a5b328f404aaac6a8e)
   https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
+Thu Apr 13 10:15:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.14.6:
+  * Bugfixes
+    - Update schema to add some of the missing rules (#3274)
+      @shatakshiiii
+    - Use temporary playbooks to check role syntax (#3280)
+      @ssbarnea
+    - Enable ruff linter (#3276) @ssbarnea
+    - Use fqcn[canonical] in place of fqcn[action-redirect] (#3273)
+      @shatakshiiii
+    - Refactor tests (#3271) @ssbarnea
+    - Refactor no-relative-paths tests (#3270) @ssbarnea
+    - Minor fixes for no-handler rule (#3269) @ssbarnea
+    - name[casing]: Add transform to automatically fix this during
+      --write (#3268) @ssbarnea
+    - Remove meta-no-info rule due to being covered by schema[meta]
+      (#3267) @ssbarnea
+    - Ignore unknown sections under changes key on changelogs
+      (#3262) @ssbarnea
+    - Add current FreeBSD and OpenBSD versions (#3260) @rkrieger
+    - Ensure playbook path is absolute (#3250) @ssbarnea
+    - Updated 'kind' message if file kind is unknown (#3247)
+      @ajinkyau
+    - Rename arg-spec schema file to clarify it applies to roles
+      only (#3243) @ssbarnea
 
 -------------------------------------------------------------------
 Thu Apr 13 06:52:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
