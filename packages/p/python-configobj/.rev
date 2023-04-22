@@ -147,4 +147,12 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
     <comment>- require setuptools</comment>
     <requestid>1058778</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>aa82b80ebe2e314101f1e330f7104ada</srcmd5>
+    <version>5.0.6</version>
+    <time>1682193696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081963</requestid>
+  </revision>
 </revisionlist>

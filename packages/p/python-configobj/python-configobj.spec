@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-configobj
 Version:        5.0.6
 Release:        0
