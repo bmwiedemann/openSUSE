@@ -177,4 +177,12 @@
   Fix some typos in error messages.</comment>
     <requestid>1007461</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ebb3b2557be942ad0416de3c77da3edf</srcmd5>
+    <version>2.3.2.post1</version>
+    <time>1682193518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081758</requestid>
+  </revision>
 </revisionlist>
