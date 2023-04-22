@@ -197,4 +197,12 @@
   * will re-construct the zip file with the original arguments.</comment>
     <requestid>1079595</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cc26a6df811aa9da3662973268d90818</srcmd5>
+    <version>3.15.0</version>
+    <time>1682193548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081794</requestid>
+  </revision>
 </revisionlist>

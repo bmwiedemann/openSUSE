@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -82,7 +82,7 @@ sed -i -e 's:import func_timeout::' \
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/zipp
-%{python_sitelib}/zipp-%{version}.dist-info
+%{python_sitelib}/zipp-%{version}*-info
 %endif
 
 %changelog
