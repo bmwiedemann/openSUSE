@@ -16,8 +16,8 @@
 #
 
 
-%define full_version 9.4.4
-%define short_version 9.4.4
+%define full_version 9.4.5
+%define short_version 9.4.5
 
 %ifnarch s390x
 %define with_libnuma 1
@@ -80,7 +80,7 @@
 %global ghc_llvm_archs s390x
 %global ghc_unregisterized_arches riscv64
 
-%global base_ver 4.17.0.0
+%global base_ver 4.17.1.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.6.1.0
 %global hsc2hs_ver 0.68.8
@@ -92,7 +92,6 @@ Summary:        The Glorious Glasgow Haskell Compiler
 License:        BSD-3-Clause
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
-Source1:        https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz.sig
 Source2:        ghc-rpmlintrc
 Source3:        9_2_3-bootstrap-sources.tar.gz
 Source5:        ghc-pkg.man
@@ -105,22 +104,15 @@ Patch1:         ghc-gen_contents_index-haddock-path.patch
 Patch2:         ghc-Cabal-install-PATH-warning.patch
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-# https://phabricator.haskell.org/rGHC4eebc8016f68719e1ccdf460754a97d1f4d6ef05
-# Patch6:         ghc-8.6.3-sphinx-1.8.patch
 # PATCH-FIX-UPSTREAM execstack.patch -- RTS: Add stack marker to StgCRunAsm.S
 Patch7:         execstack.patch
 # Work around a bug in Sphinx 6.1.x to fix the documentation build. Remove this patch ASAP.
 Patch8:         fix_extlinks.patch
-# unregisterized
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
-# PATCH-FIX-OPENSUSE ghc-8.0.2-Cabal-dynlibdir.patch -- Fix shared library directory location.
-Patch100:       ghc-8.0.2-Cabal-dynlibdir.patch
 Patch120:       libatomic.patch
-Patch130:       riscv-tntc.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
 BuildRequires:  binutils-devel
-BuildRequires:  clang%{llvm_major}
 BuildRequires:  gcc-PIE
 BuildRequires:  gcc-c++
 BuildRequires:  ghc-bootstrap >= 9.0
@@ -132,8 +124,11 @@ BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libtool
+%ifarch s390x riscv64
 BuildRequires:  llvm%{llvm_major}
 BuildRequires:  llvm%{llvm_major}-devel
+BuildRequires:  clang%{llvm_major}
+%endif
 BuildRequires:  memory-constraints
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -258,10 +253,10 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d Cabal-3.8.1.0
 %ghc_lib_subpackage -d Cabal-syntax-3.8.1.0
 %ghc_lib_subpackage -d array-0.5.4.0
-%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.17.0.0
+%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-%{base_ver}
 %ghc_lib_subpackage -d binary-0.8.9.1
-%ghc_lib_subpackage -d bytestring-0.11.3.1
-%ghc_lib_subpackage -d containers-0.6.6
+%ghc_lib_subpackage -d bytestring-0.11.4.0
+%ghc_lib_subpackage -d containers-0.6.7
 %ghc_lib_subpackage -d deepseq-1.4.8.0
 %ghc_lib_subpackage -d directory-1.3.7.1
 %ghc_lib_subpackage -d exceptions-0.10.5
@@ -276,13 +271,13 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d -x hpc-0.6.1.0
 %ghc_lib_subpackage -d -x libiserv-%{ghc_version_override}
 %ghc_lib_subpackage -d mtl-2.2.2
-%ghc_lib_subpackage -d parsec-3.1.15.0
+%ghc_lib_subpackage -d parsec-3.1.16.1
 %ghc_lib_subpackage -d pretty-1.1.3.6
 %ghc_lib_subpackage -d process-1.6.16.0
 %ghc_lib_subpackage -d stm-2.5.1.0
 %ghc_lib_subpackage -d template-haskell-2.19.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.5
-%ghc_lib_subpackage -d text-2.0.1
+%ghc_lib_subpackage -d text-2.0.2
 %ghc_lib_subpackage -d time-1.12.2
 %ghc_lib_subpackage -d transformers-0.5.6.2
 %ghc_lib_subpackage -d unix-2.7.3
@@ -316,16 +311,13 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %setup -q
 %patch1 -p1
 %patch2 -p1
-#%%patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %ifarch ppc64 s390 s390x
 %patch3 -p1
 %endif
 %patch35 -p1
-#%%patch100 -p1
 %patch120 -p1
-# %patch130 -p1
 %ifarch ppc64 ppc64le s390x riscv64
 %patch200 -p1
 %endif
@@ -432,23 +424,10 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_gen_filelists integer-gmp 1.1
 %ghc_gen_filelists rts 1.0.2
 
-%define merge_filelist()\
-cat %{name}-%{1}.files >> %{name}-%{2}.files\
-cat %{name}-%{1}-devel.files >> %{name}-%{2}-devel.files\
-%if %{with ghc_prof}\
-cat %{name}-%{1}-doc.files >> %{name}-%{2}-doc.files\
-cat %{name}-%{1}-prof.files >> %{name}-%{2}-prof.files\
-%endif\
-if [ "%{1}" != "rts" ]; then\
-cp -p libraries/%{1}/LICENSE libraries/LICENSE.%{1}\
-echo "%%license libraries/LICENSE.%{1}" >> %{name}-%{2}.files\
-fi\
-%{nil}
-
-%merge_filelist ghc-bignum base
-%merge_filelist ghc-prim base
-%merge_filelist integer-gmp base
-%merge_filelist rts base
+%ghc_merge_filelist ghc-bignum base
+%ghc_merge_filelist ghc-prim base
+%ghc_merge_filelist integer-gmp base
+%ghc_merge_filelist rts base
 
 # add rts libs
 %if %{with hadrian}

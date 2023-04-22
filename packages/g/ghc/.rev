@@ -968,4 +968,22 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>version update</comment>
     <requestid>1079136</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>35ad624110b67faa7feedfc99a82e788</srcmd5>
+    <version>9.4.5</version>
+    <time>1682193792</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.4.5
+- drop unused patches:
+    ghc-8.0.2-Cabal-dynlibdir.patch
+    riscv-tntc.patch
+ * Fixes for a number of bug fixes in the simplifier 
+ * Many bug fixes to the non-moving and parallel GCs
+ * A number of improvements to recompilation avoidance with multiple
+   home units
+ * Fixes for regressions in the typechecker and constraint solver
+ * and many more. See the release notes for a full accounting.
+-&gt; https://downloads.haskell.org/~ghc/9.4.5/docs/users_guide/9.4.5-notes.html</comment>
+    <requestid>1081178</requestid>
+  </revision>
 </revisionlist>
