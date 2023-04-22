@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:24:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Tue Apr 19 19:52:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for ephemeral-port-reserve 1.1.4.

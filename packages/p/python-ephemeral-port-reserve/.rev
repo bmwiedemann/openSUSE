@@ -7,4 +7,12 @@
     <comment>Required for testing of Werkzeug.</comment>
     <requestid>970986</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1c25d3e8c161e4d156ef2f8e82bf02e2</srcmd5>
+    <version>1.1.4</version>
+    <time>1682193669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081933</requestid>
+  </revision>
 </revisionlist>
