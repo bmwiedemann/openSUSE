@@ -1,7 +1,7 @@
 #
 # spec file for package python-cppy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-cppy
 Version:        1.2.1
 Release:        0
@@ -27,8 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/c/cppy/cppy-%{ver
 Source99:       python-cppy-rpmlintrc
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
