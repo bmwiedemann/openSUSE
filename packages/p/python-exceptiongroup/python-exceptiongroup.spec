@@ -27,6 +27,7 @@
 %define psuffix %{nil}
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-exceptiongroup%{psuffix}
 Version:        1.1.1
 Release:        0
