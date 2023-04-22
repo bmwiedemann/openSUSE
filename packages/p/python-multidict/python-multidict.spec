@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-multidict
 Version:        6.0.4
 Release:        0
