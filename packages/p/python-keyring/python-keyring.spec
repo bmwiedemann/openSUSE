@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
 Version:        23.13.1
 Release:        0
