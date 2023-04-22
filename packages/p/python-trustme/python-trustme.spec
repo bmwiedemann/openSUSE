@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-trustme
 Version:        0.9.0
 Release:        0
