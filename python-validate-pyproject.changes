@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:38:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 22:39:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
 Wed Jul 13 15:53:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for v0.9, required by ini2toml
