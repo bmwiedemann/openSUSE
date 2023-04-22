@@ -57,4 +57,12 @@
 - %check: use %pyunittest rpm macro</comment>
     <requestid>895729</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>fb227cfba40b1bf9a4788aec86724ece</srcmd5>
+    <version>0.46</version>
+    <time>1682193595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081850</requestid>
+  </revision>
 </revisionlist>
