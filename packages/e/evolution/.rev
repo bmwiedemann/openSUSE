@@ -2456,4 +2456,12 @@ Recommended for 12.3</comment>
     <comment>New stable release (forwarded request 1072607 from iznogood)</comment>
     <requestid>1073155</requestid>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>3331dbe33774e75b56fff59df410af28</srcmd5>
+    <version>3.48.1</version>
+    <time>1682193438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081155</requestid>
+  </revision>
 </revisionlist>

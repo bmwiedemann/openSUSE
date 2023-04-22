@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr 21 08:19:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.1:
+  + e-gtkemojichooser: Correct packing of the internal widgets.
+  + Add plugins' directory into WebKitGTK only when it exists.
+  + e-util: Optimize
+    e_util_check_gtk_bindings_in_key_press_event_cb() a bit.
+  + Calendar: Add shortcuts for move to previous/next date.
+  + Misc: Update contact information in the README.md file.
+  + README.md: Update information about the mailing list.
+  + Bugs fixed:
+    - Composer: Copy/paste changes text size in HTML mode.
+    - Signature is re-added to a Draft mail after open.
+    - Calendar: Summary not always shown in the Day View.
+    - Blockquotes styling changes in Markdown live preview when
+      editing area is focused.
+    - Composer: Preserve '\n' inside paragraph text.
+    - Mail: libunity badge counter does not disappear.
+    - Cannot import pkcs12 with empty password.
+    - Mail: Space bar no longer scrolls preview messages.
+    - ESpinner: Do not animate when animations are disabled.
+    - Ctrl+Shift+F does not focus the search field when already
+      visible.
+    - Composer: Bulleted list margin inconsistent in HTML.
+    - Composer: Can send outdated message content.
+    - ECompEditor: Classification submenu inaccessible for
+      read-only calendars.
+    - RSS: Limit re-download on content change, if possible.
+    - Contacts: LDAP not searching for contact after launch.
+    - iTIP-formatter: respect the color-scheme in HTML MIME parts.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 12:17:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.0:
