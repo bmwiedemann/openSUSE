@@ -58,4 +58,12 @@
   python &lt; 3.8</comment>
     <requestid>1074152</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>aa727141c2e8f90157aaa9eb26334a33</srcmd5>
+    <version>4.0.2</version>
+    <time>1682193725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082000</requestid>
+  </revision>
 </revisionlist>

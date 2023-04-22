@@ -17,6 +17,7 @@
 
 
 %define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-async_timeout
 Version:        4.0.2
 Release:        0
@@ -26,9 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/async_timeout/
 Source:         https://files.pythonhosted.org/packages/source/a/async-timeout/async-timeout-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.5.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-async-timeout = %{version}
@@ -40,15 +42,15 @@ BuildArch:      noarch
 This provides an asyncio-compatible timeout context manager.
 
 %prep
-%setup -q -n async-timeout-%{version}
+%autosetup -p1 -n async-timeout-%{version}
 # do not bother with coverage
 sed -i -e '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
