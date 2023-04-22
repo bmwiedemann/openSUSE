@@ -7,4 +7,12 @@
     <comment>Required for python-jsonschema[format-nongpl]</comment>
     <requestid>1045654</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b73770e9b8317a20c0407288828482d</srcmd5>
+    <version>0.1.1</version>
+    <time>1682193532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081774</requestid>
+  </revision>
 </revisionlist>

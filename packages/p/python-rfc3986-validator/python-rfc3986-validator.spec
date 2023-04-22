@@ -1,7 +1,7 @@
 #
 # spec file for package python-rfc3986-validator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-rfc3986-validator
 Version:        0.1.1
 Release:        0
@@ -44,7 +45,7 @@ Usage:
     >>> from rfc3986_validator import validate_rfc3986
     >>> validate_rfc3986('http://foo.bar?q=Spaces should be encoded')
     False
-    
+
     >>> validate_rfc3986('http://foo.com/blah_blah_(wikipedia)')
     True
 
