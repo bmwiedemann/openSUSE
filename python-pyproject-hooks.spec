@@ -16,6 +16,7 @@
 #
 
 %define fname pyproject_hooks
+%{?sle15_python_module_pythons}
 Name:           python-pyproject-hooks
 Version:        1.0.0
 Release:        0
