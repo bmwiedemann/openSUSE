@@ -51,4 +51,12 @@ This should fix the license issues.</comment>
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>743975</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>bc0cc4e1dce92c74beca1220a14d5e84</srcmd5>
+    <version>1.4.0</version>
+    <time>1682193499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081735</requestid>
+  </revision>
 </revisionlist>
