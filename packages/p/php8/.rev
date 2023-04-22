@@ -433,4 +433,14 @@
   % php-ini.patch (refreshed)</comment>
     <requestid>1079356</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>5a41bc83a9bc56bb4ec698ceb0860002</srcmd5>
+    <version>8.1.18</version>
+    <time>1682193441</time>
+    <user>dimstar_suse</user>
+    <comment>- The %_restart_on_update macro was removed from systemd-rpm-macros.
+  Remove %posttrans for FPM as it wasn't working as intended anyway.
+  [boo#1210576] (forwarded request 1080973 from adkorte)</comment>
+    <requestid>1081222</requestid>
+  </revision>
 </revisionlist>

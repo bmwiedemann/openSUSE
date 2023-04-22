@@ -348,6 +348,7 @@ Requires:       php-fpm = %{version}
 Requires(post): %{_sbindir}/a2enmod
 Supplements:    (php-fpm and apache2)
 Conflicts:      mod_php_any
+BuildArch:      noarch
 
 %description apache
 Configuration for Apache to pass all requests for PHP scripts to the
@@ -1353,17 +1354,7 @@ fi
 %service_del_preun php-fpm.service
 
 %postun
-# do not try-restart yet as extensions may be updated too
-%if 0%{?suse_version} > 1500
-%service_del_postun_without_restart php-fpm.service
-%else
 %service_del_postun php-fpm.service
-%endif
-
-%posttrans
-if [ -x /usr/bin/systemctl ]; then
-%_restart_on_update php-fpm.service
-fi
 
 %post apache
 if [ $1 -eq 1 ]; then
