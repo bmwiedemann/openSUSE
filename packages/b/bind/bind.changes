@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 21 13:08:03 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.14
+  Removed Features:
+  * Zone type delegation-only, and the delegation-only and
+    root-delegation-only statements, have been deprecated. A
+    warning is now logged when they are used.
+  * These statements were created to address the SiteFinder
+    controversy, in which certain top-level domains redirected
+    misspelled queries to other sites instead of returning NXDOMAIN
+    responses. Since top-level domains are now DNSSEC-signed, and
+    DNSSEC validation is active by default, the statements are no
+    longer needed.
+
+  Bug Fixes:
+  * Several bugs which could cause named to crash during catalog
+    zone processing have been fixed.
+  * Previously, downloading large zones over TLS (XoT) from a
+    primary could hang the transfer on the secondary, especially
+    when the connection was unstable. This has been fixed.
+  * Performance of DNSSEC validation in zones with many DNSKEY
+    records has been improved.
+
+-------------------------------------------------------------------
 Wed Mar 15 16:13:44 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.13

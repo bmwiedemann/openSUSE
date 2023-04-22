@@ -2046,4 +2046,31 @@ New Features
 </comment>
     <requestid>1072172</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>938345651ff025f7c8ead983520b0c48</srcmd5>
+    <version>9.18.14</version>
+    <time>1682193547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.18.14
+  Removed Features:
+  * Zone type delegation-only, and the delegation-only and
+    root-delegation-only statements, have been deprecated. A
+    warning is now logged when they are used.
+  * These statements were created to address the SiteFinder
+    controversy, in which certain top-level domains redirected
+    misspelled queries to other sites instead of returning NXDOMAIN
+    responses. Since top-level domains are now DNSSEC-signed, and
+    DNSSEC validation is active by default, the statements are no
+    longer needed.
+  Bug Fixes:
+  * Several bugs which could cause named to crash during catalog
+    zone processing have been fixed.
+  * Previously, downloading large zones over TLS (XoT) from a
+    primary could hang the transfer on the secondary, especially
+    when the connection was unstable. This has been fixed.
+  * Performance of DNSSEC validation in zones with many DNSKEY
+    records has been improved.
+</comment>
+    <requestid>1081793</requestid>
+  </revision>
 </revisionlist>
