@@ -1,7 +1,7 @@
 #
 # spec file for package python-FormEncode
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,6 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-FormEncode
 Version:        2.0.1
 Release:        0
