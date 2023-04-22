@@ -285,4 +285,12 @@
       - Fixed #172: Compute ABI correctly for Python &lt; 3.8.</comment>
     <requestid>1007444</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>525c4ff9dbeb847ce587b2aa3ca9faf7</srcmd5>
+    <version>0.3.6</version>
+    <time>1682193679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081945</requestid>
+  </revision>
 </revisionlist>
