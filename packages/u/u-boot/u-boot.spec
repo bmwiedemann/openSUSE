@@ -180,7 +180,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2023.01
+%define archive_version 2023.04
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -210,7 +210,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2023.01
+Version:        2023.04
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -238,8 +238,6 @@ Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
 Patch0016:      0016-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0017:      0017-Bump-LMB_MAX_REGIONS-default-to-16.patch
-Patch0018:      0018-lmb-Treat-a-region-which-is-a-subse.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -418,7 +416,7 @@ export OPENSBI=%{_datadir}/opensbi/opensbi.bin
 cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
 %endif
 %if 0%{?is_rk3399}
-cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
+cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf ./atf-bl31
 %endif
 
 %if %{is_zynq}

@@ -1,4 +1,4 @@
-From cb28d31624acaa80a28647277b0600f47982dae9 Mon Sep 17 00:00:00 2001
+From 94ffe4f51fb990760d68eb2f5eb8fa0dda3a7e7a Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Tue, 25 May 2021 06:45:01 +0000
 Subject: [PATCH] Disable timer check in file loading
@@ -25,10 +25,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/lib/efi_loader/efi_disk.c b/lib/efi_loader/efi_disk.c
-index 7ea0334083..9f73995527 100644
+index d2256713a8..4f82b5397c 100644
 --- a/lib/efi_loader/efi_disk.c
 +++ b/lib/efi_loader/efi_disk.c
-@@ -18,6 +18,7 @@
+@@ -19,6 +19,7 @@
  #include <log.h>
  #include <part.h>
  #include <malloc.h>
@@ -36,7 +36,7 @@ index 7ea0334083..9f73995527 100644
  
  struct efi_system_partition efi_system_partition = {
  	.uclass_id = UCLASS_INVALID,
-@@ -141,8 +142,7 @@ static efi_status_t efi_disk_rw_blocks(struct efi_block_io *this,
+@@ -142,8 +143,7 @@ static efi_status_t efi_disk_rw_blocks(struct efi_block_io *this,
  			n = blk_dwrite(desc, lba, blocks, buffer);
  	}
  

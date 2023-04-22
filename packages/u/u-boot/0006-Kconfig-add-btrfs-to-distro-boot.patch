@@ -1,6 +1,6 @@
-From 12fb340d8e330662f0859602d159d36b815304a7 Mon Sep 17 00:00:00 2001
-From: Matthias Brugger <mbrugger@suse.com>
-Date: Fri, 17 Jan 2020 20:59:02 +0100
+From f871287c2816f989f8d61ac4e3ef4efedbd473d5 Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Wed, 5 Apr 2023 14:25:29 +0200
 Subject: [PATCH] Kconfig: add btrfs to distro boot
 
 Some distributions use btrfs as the default file system.
@@ -9,18 +9,18 @@ architectures but riscv, as it breaks compilation due to size problems.
 
 Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
- Kconfig | 1 +
+ boot/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Kconfig b/Kconfig
-index 0cdc9658f7..dd2c898210 100644
---- a/Kconfig
-+++ b/Kconfig
-@@ -211,6 +211,7 @@ config DISTRO_DEFAULTS
+diff --git a/boot/Kconfig b/boot/Kconfig
+index ad035695a4..f462ab0e88 100644
+--- a/boot/Kconfig
++++ b/boot/Kconfig
+@@ -838,6 +838,7 @@ config DISTRO_DEFAULTS
+ 	select CMD_SYSBOOT
  	select HUSH_PARSER
- 	select SUPPORT_RAW_INITRD
  	select SYS_LONGHELP
 +	imply CMD_BTRFS if !RISCV && !MIPS
- 	imply CMD_MII if NET
- 	imply USB_STORAGE
- 	imply USE_BOOTCOMMAND
+ 	help
+ 	  Select this to enable various options and commands which are suitable
+ 	  for building u-boot for booting general purpose Linux distributions.

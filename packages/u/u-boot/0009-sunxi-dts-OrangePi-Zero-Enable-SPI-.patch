@@ -1,4 +1,4 @@
-From e847d93b0d9717e01b817ddb90b8c228df129ede Mon Sep 17 00:00:00 2001
+From d6e08d9277b271ef4a7bf44dc8959cd2ba1c3712 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 28 Sep 2020 23:02:01 +0200
 Subject: [PATCH] sunxi: dts: OrangePi Zero: Enable SPI flash.

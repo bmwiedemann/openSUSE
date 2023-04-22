@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:58:34 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2023.04:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2023.01...v2023.04
+
+-------------------------------------------------------------------
+Wed Apr  5 12:28:46 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2023.04-rc5:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2023.01...v2023.04-rc5
+  * Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.04
+    * Patches dropped:
+      0017-Bump-LMB_MAX_REGIONS-default-to-16.patch
+      0018-lmb-Treat-a-region-which-is-a-subse.patch
+
+-------------------------------------------------------------------
 Mon Feb 20 07:54:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.01

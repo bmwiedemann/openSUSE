@@ -1,23 +1,23 @@
-From 870ef7f07fe1aa36bd8b1a0676c0a67145dc8d30 Mon Sep 17 00:00:00 2001
-From: Andreas Schwab <schwab@suse.de>
-Date: Fri, 24 Sep 2021 18:25:51 +0200
+From 44939288ab16748b84e31241684e0b8563749156 Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Wed, 5 Apr 2023 14:27:09 +0200
 Subject: [PATCH] riscv: enable CMD_BTRFS
 
 Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
- Kconfig | 2 +-
+ boot/Kconfig | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Kconfig b/Kconfig
-index dd2c898210..959e510f16 100644
---- a/Kconfig
-+++ b/Kconfig
-@@ -211,7 +211,7 @@ config DISTRO_DEFAULTS
+diff --git a/boot/Kconfig b/boot/Kconfig
+index f462ab0e88..fe5d91dc64 100644
+--- a/boot/Kconfig
++++ b/boot/Kconfig
+@@ -838,7 +838,7 @@ config DISTRO_DEFAULTS
+ 	select CMD_SYSBOOT
  	select HUSH_PARSER
- 	select SUPPORT_RAW_INITRD
  	select SYS_LONGHELP
 -	imply CMD_BTRFS if !RISCV && !MIPS
 +	imply CMD_BTRFS if !MIPS
- 	imply CMD_MII if NET
- 	imply USB_STORAGE
- 	imply USE_BOOTCOMMAND
+ 	help
+ 	  Select this to enable various options and commands which are suitable
+ 	  for building u-boot for booting general purpose Linux distributions.
