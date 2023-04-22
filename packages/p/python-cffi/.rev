@@ -376,4 +376,12 @@
   testsuite failures with Python 3.11</comment>
     <requestid>1056350</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>ae0fae64fa78749d1501a76efcb2fcf7</srcmd5>
+    <version>1.15.1</version>
+    <time>1682193697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081967</requestid>
+  </revision>
 </revisionlist>

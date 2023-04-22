@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:23:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:28 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Fri Jan  6 08:59:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 8a3c2c816d789639b49d3ae867213393ed7abdff.patch to resolve
