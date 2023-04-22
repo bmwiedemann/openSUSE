@@ -398,4 +398,12 @@
 - Refresh patches.</comment>
     <requestid>1046682</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>c405bc27f2ef0c285ddc21bd51326b07</srcmd5>
+    <version>3.1.30.1672298042.141cd65</version>
+    <time>1682193767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082039</requestid>
+  </revision>
 </revisionlist>

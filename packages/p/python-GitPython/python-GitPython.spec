@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-GitPython
 Version:        3.1.30.1672298042.141cd65
 Release:        0
