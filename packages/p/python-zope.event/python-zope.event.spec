@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname zope.event
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-zope.event
 Version:        4.6
 Release:        0
