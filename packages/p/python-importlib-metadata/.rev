@@ -233,4 +233,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     not be present</comment>
     <requestid>1079571</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>2df874984707c71d4894034e698bca7d</srcmd5>
+    <version>6.3.0</version>
+    <time>1682193625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081884</requestid>
+  </revision>
 </revisionlist>

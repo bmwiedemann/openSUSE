@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:26:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Sat Apr 15 10:16:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.0:
@@ -9,6 +14,11 @@ Sat Apr 15 10:16:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * #384: ``PackageMetadata`` now stipulates an additional
     ``get`` method allowing for easy querying of metadata keys that may
     not be present
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:02 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
 Mon Apr  3 01:27:18 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
