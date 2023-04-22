@@ -308,4 +308,12 @@
 - Also remove the conditional definition of python_module.</comment>
     <requestid>1030997</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d9d00dc9c065421c96fdffa25e3a12a3</srcmd5>
+    <version>3.2.2</version>
+    <time>1682193596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081851</requestid>
+  </revision>
 </revisionlist>
