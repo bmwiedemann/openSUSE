@@ -54,6 +54,7 @@ ExclusiveArch:  do-not-build
 %else
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           %{pprefix}-pyparsing%{?psuffix}
 Version:        3.0.9
 Release:        0
