@@ -205,4 +205,12 @@ the incoming packet is out-of-range.
     <comment></comment>
     <requestid>795967</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5f755018f0401da78271a487da3bc5ac</srcmd5>
+    <version>1.4</version>
+    <time>1682193427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081128</requestid>
+  </revision>
 </revisionlist>

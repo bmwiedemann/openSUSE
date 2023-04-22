@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 20 21:00:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4:
+  * Improved tuning of the Opus in-band FEC (LBRR). See the
+    https://gitlab.xiph.org/xiph/opus/-/issues/2360 for details
+  * Added a OPUS_SET_INBAND_FEC(2) option that turns on FEC, but
+    does not force SILK mode (FEC will be disabled in CELT mode)
+  * Improved tuning and various fixes to DTX
+  * Added Meson support, improved CMake support
+- Change Source to new home on github.
+- Use autosetup, make_build and ldconfig_scriptlets macros.
+- Move AUTHORS and README docs to devel package.
+- Drop patches fixed upstream:
+  * opus-Fix-celt-decoder-assertion-when-using-OPUS_CUSTOM.patch
+  * opus-Silk-CNG-adapts-faster.patch
+  * opus-Silk-fix-arm-optimization.patch
+
+-------------------------------------------------------------------
 Wed Apr 15 17:38:39 UTC 2020 - Gustavo Pichorim Boiko <gboiko@suse.com>
 
 - Backport of an upstream fix for celt decoder:
