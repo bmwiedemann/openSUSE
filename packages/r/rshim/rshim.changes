@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 16 11:18:48 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.19.2
+  * fix potential NULL pointer access during USB disconnection
+  * fix vfio and direct mapping mode with several devices
+  * avoid use of stale cached pci_dev pointer after device reset
+  * adjust reset delay
+  * update to dual-licensese GPL-2.0/BSD-3-Clause
+
+-------------------------------------------------------------------
 Thu Sep 15 08:56:34 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 2.0.6.13.7

@@ -18,10 +18,10 @@
 
 
 Name:           rshim
-Version:        2.0.6.13.7
+Version:        2.0.6.19.2
 Release:        0
 Summary:        User-space driver for Mellanox BlueField SoC
-License:        GPL-2.0-only
+License:        GPL-2.0 or BSD-3-Clause
 Group:          System/Management
 URL:            https://github.com/mellanox/rshim-user-space
 Source0:        %{name}-%{version}.tar

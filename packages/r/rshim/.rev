@@ -78,4 +78,12 @@ via the virtual console or network interface.</comment>
     <comment></comment>
     <requestid>1004722</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9082b515048a1ae77fe8183ace1bc29c</srcmd5>
+    <version>2.0.6.19.2</version>
+    <time>1682193797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082118</requestid>
+  </revision>
 </revisionlist>
