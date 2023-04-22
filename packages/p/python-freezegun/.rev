@@ -156,4 +156,12 @@
   * messing with pytest timings.  Pass through all setUp and tearDown arguments</comment>
     <requestid>1004362</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d5e42a25e9073c1c14165b9925b65d9d</srcmd5>
+    <version>1.2.2</version>
+    <time>1682193656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081917</requestid>
+  </revision>
 </revisionlist>
