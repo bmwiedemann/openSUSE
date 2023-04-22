@@ -27,6 +27,8 @@
 # wheeldir of name build does not work well with this packagename gh#openSUSE/python-rpm-macros#157
 %define _pyproject_wheeldir distwheel
 
+%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
 Version:        0.10.0
 Release:        0
