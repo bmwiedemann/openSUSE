@@ -279,4 +279,12 @@
 - build with all python flavors for SLE 15 SP4+</comment>
     <requestid>1062543</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>75a77d1cce9f95dc56ddb940ee4b2141</srcmd5>
+    <version>1.10.0</version>
+    <time>1682193537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081779</requestid>
+  </revision>
 </revisionlist>
