@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 20 13:24:13 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Mozilla Firefox 112.0.1
+  * Fix a bug where cookie dates appear to be set in the far
+    future after updating Firefox. This may have caused cookies to
+    be unintentionally purged (bmo#1827669)
+
+-------------------------------------------------------------------
 Mon Apr 10 21:58:19 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 112.0

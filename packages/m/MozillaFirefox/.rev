@@ -6149,4 +6149,12 @@
     Files with malicious extensions could have been downloaded</comment>
     <requestid>1078521</requestid>
   </revision>
+  <revision rev="394" vrev="1">
+    <srcmd5>b2259f6a7a2795e1fd1bca6421eab6e5</srcmd5>
+    <version>112.0.1</version>
+    <time>1682193384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080954</requestid>
+  </revision>
 </revisionlist>
