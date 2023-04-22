@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:23:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Fri Mar 24 12:48:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed requirement python-setuptools

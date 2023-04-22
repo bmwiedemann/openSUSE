@@ -18,6 +18,7 @@
 
 %define oldpython python
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-click
 Version:        8.1.3
 Release:        0
