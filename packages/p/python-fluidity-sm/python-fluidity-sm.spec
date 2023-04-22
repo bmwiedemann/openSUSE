@@ -1,7 +1,7 @@
 #
 # spec file for package python-fluidity-sm
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-fluidity-sm
 Version:        0.2.0
 Release:        0
 Summary:        State machine implementation for Python objects
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/nsi-iff/fluidity
+URL:            https://github.com/nsi-iff/fluidity
 Source:         https://github.com/nsi-iff/fluidity/archive/%{version}/fluidity-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

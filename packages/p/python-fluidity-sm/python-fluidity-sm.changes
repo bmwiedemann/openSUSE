@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:25:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Sat Aug 11 11:30:47 UTC 2018 - tchvatal@suse.com
 
 - Initial package, required by python-invoke, was bundled
