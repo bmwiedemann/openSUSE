@@ -90,4 +90,12 @@ Resubmit with fixed license</comment>
   * require sphinx 6+</comment>
     <requestid>1058612</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>31b0f457b17aaf3b6053076e5d582894</srcmd5>
+    <version>0.7.13</version>
+    <time>1682193789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082059</requestid>
+  </revision>
 </revisionlist>
