@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
 Version:        2.2.3
 Release:        0
