@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 20 20:26:32 UTC 2023 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
+
+- Add 0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
+  fixes test with kernel <= 5.16 (bsc#1209723)
+
+-------------------------------------------------------------------
 Tue Feb 21 13:10:33 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-Do-not-always-expect-multishot-recv-to-stop-posting-.patch

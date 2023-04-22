@@ -1,0 +1,46 @@
+From 87943e896268efbe85e15f7e59f45a042d2ba8f7 Mon Sep 17 00:00:00 2001
+From: Gabriel Krisman Bertazi <krisman@suse.de>
+Date: Thu, 20 Apr 2023 14:23:55 -0400
+Subject: [PATCH] test/file-verify.t: Don't run over mlock limit when run as
+ non-root
+
+test/file-verify tries to get 2MB of pinned memory at once, which is
+higher than the default allowed for non-root users in older
+kernels (64kb before v5.16, nowadays 8mb).  Skip the test for non-root
+users if the registration fails instead of failing the test.
+
+Signed-off-by: Gabriel Krisman Bertazi <krisman@suse.de>
+---
+ test/file-verify.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/test/file-verify.c b/test/file-verify.c
+index f33b24a..89cbb02 100644
+--- a/test/file-verify.c
++++ b/test/file-verify.c
+@@ -381,9 +381,12 @@ static int test(struct io_uring *ring, const char *fname, int buffered,
+ 			v[i].iov_base = buf[i];
+ 			v[i].iov_len = CHUNK_SIZE;
+ 		}
+-		ret = io_uring_register_buffers(ring, v, READ_BATCH);
++		ret = t_register_buffers(ring, v, READ_BATCH);
+ 		if (ret) {
+-			fprintf(stderr, "Error buffer reg %d\n", ret);
++			if (ret == T_SETUP_SKIP) {
++				ret = 0;
++				goto free_bufs;
++			}
+ 			goto err;
+ 		}
+ 	}
+@@ -477,6 +480,7 @@ static int test(struct io_uring *ring, const char *fname, int buffered,
+ done:
+ 	if (registered)
+ 		io_uring_unregister_buffers(ring);
++free_bufs:
+ 	if (vectored) {
+ 		for (j = 0; j < READ_BATCH; j++)
+ 			for (i = 0; i < nr_vecs; i++)
+-- 
+2.40.0
+

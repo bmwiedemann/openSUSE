@@ -28,6 +28,7 @@ Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.
 # PATCH-FIX-UPSTREAM: fix tests on big endian
 Patch1:         0001-test-helpers-fix-socket-length-type.patch
 Patch2:         0001-Do-not-always-expect-multishot-recv-to-stop-posting-.patch
+Patch3:         0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps

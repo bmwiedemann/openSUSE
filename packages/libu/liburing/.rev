@@ -129,4 +129,13 @@
     <comment></comment>
     <requestid>1067010</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>26196304db43cb0a430563487704435b</srcmd5>
+    <version>2.3</version>
+    <time>1682193402</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
+  fixes test with kernel &lt;= 5.16 (bsc#1209723)</comment>
+    <requestid>1080969</requestid>
+  </revision>
 </revisionlist>
