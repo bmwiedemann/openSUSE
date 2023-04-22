@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:21:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:45:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Thu Jun 24 22:29:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - We should require python3-* packages, not python-* ones, which
