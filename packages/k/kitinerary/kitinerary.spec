@@ -16,9 +16,10 @@
 #
 
 
+%define libname libKPimItinerary5
 %bcond_without released
 Name:           kitinerary
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -28,8 +29,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-asn1-Fix-build-with-GCC-13-add-missing-cstdint-inclu.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 %if 0%{?suse_version} == 1500
@@ -46,42 +45,44 @@ BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(KPimPkPass)
+BuildRequires:  cmake(KPim5PkPass)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(ZXing)
-Requires:       libKPimItinerary5 = %{version}
+%requires_eq    libKPim5Itinerary5
+Conflicts:      libKPimItinerary5 < %{version}
 
 %description
 Kitinerary is a library which provides a data model and a system to extract information
 from travel reservations. The model can then be reused in other applications.
 
-%package -n libKPimItinerary5
+%package -n libKPim5Itinerary5
 Summary:        Data model and extraction system for travel reservations
-Recommends:     %{name}
-Recommends:     libKPimItinerary5-lang
+%requires_eq    %{name}
+# Renamed
+Obsoletes:      libKPimItinerary5-lang
 
-%description -n libKPimItinerary5
+%description -n libKPim5Itinerary5
 Kitinerary is a library which provides a data model and a system to extract information
 from travel reservations. The model can then be reused in other applications.
 This package contains the library itself.
 
 %package devel
 Summary:        Development files for kitinerary
-Requires:       libKPimItinerary5 = %{version}
+Requires:       libKPim5Itinerary5 = %{version}
 Requires:       libqt5-qtdeclarative-private-headers-devel
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5Mime)
-Requires:       cmake(KPimPkPass)
+Requires:       cmake(KPim5PkPass)
 Requires:       cmake(Qt5Gui)
 
 %description devel
 This package contains all necessary include files and libraries needed
 to build programs that use the kitinerary library.
 
-%lang_package -n libKPimItinerary5
+%lang_package -n libKPim5Itinerary5
 
 %prep
 %autosetup -p1
@@ -102,25 +103,26 @@ export CXX=g++-10
 %check
 %ctest
 
-%ldconfig_scriptlets -n libKPimItinerary5
+%ldconfig_scriptlets -n libKPim5Itinerary5
 
 %files
+%license LICENSES/*
+%{_kf5_debugdir}/*.categories
 %{_kf5_libexecdir}/kitinerary-extractor
 %{_kf5_sharedir}/mime/packages/application-vnd-kde-itinerary.xml
 
-%files -n libKPimItinerary5
-%license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_libdir}/libKPimItinerary.so.*
+%files -n libKPim5Itinerary5
+%{_kf5_libdir}/libKPim5Itinerary.so.*
 
 %files devel
-%dir %{_includedir}/KPim/
-%{_includedir}/KPim/KItinerary/
-%{_includedir}/KPim/kitinerary/
-%{_includedir}/KPim/kitinerary_version.h
+%dir %{_includedir}/KPim5/
+%{_includedir}/KPim5/KItinerary/
+%{_includedir}/KPim5/kitinerary/
+%{_includedir}/KPim5/kitinerary_version.h
 %{_kf5_cmakedir}/KPimItinerary/
-%{_kf5_libdir}/libKPimItinerary.so
+%{_kf5_cmakedir}/KPim5Itinerary/
+%{_kf5_libdir}/libKPim5Itinerary.so
 
-%files -n libKPimItinerary5-lang -f %{name}.lang
+%files -n libKPim5Itinerary5-lang -f %{name}.lang
 
 %changelog

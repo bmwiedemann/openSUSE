@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 15 08:45:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:43:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+- Drop patch, merged upstream:
+  * 0001-asn1-Fix-build-with-GCC-13-add-missing-cstdint-inclu.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:46:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3
