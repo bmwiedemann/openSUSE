@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalzium
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -34,7 +32,6 @@ BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
-BuildRequires:  gettext-devel
 BuildRequires:  glew-devel
 BuildRequires:  libopenbabel-devel
 BuildRequires:  ocaml
