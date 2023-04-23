@@ -17,10 +17,8 @@
 
 
 %bcond_without released
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -34,9 +32,9 @@ Source100:      kdeconnect-kde.SuSEfirewall
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
@@ -47,6 +45,7 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5ModemManagerQt)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5People)
 BuildRequires:  cmake(KF5PeopleVCard)
@@ -59,12 +58,14 @@ BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(wayland-protocols)
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Requires:       plasma-framework-components
