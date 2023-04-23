@@ -79,4 +79,12 @@
     <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
     <requestid>1057235</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bf08de7a3a2a9226706f4d3e2077b4eb</srcmd5>
+    <version>5.15.9+kde0</version>
+    <time>1682282871</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082080</requestid>
+  </revision>
 </revisionlist>
