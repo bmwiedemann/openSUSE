@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kig
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
@@ -36,12 +34,11 @@ BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5Emoticons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5XmlGui)
@@ -71,6 +68,7 @@ drawing mathematical figures and including them in other documents.
 %kf5_makeinstall -C build
 
 %find_lang %{name} --with-man --all-name
+
 %{kf5_find_htmldocs}
 
 %files
@@ -85,7 +83,6 @@ drawing mathematical figures and including them in other documents.
 %{_kf5_iconsdir}/hicolor/*/*/*kig.*
 %{_kf5_mandir}/man?/*
 %{_kf5_plugindir}/kf5/parts/kigpart.so
-%{_kf5_servicesdir}/kig_part.desktop
 %{_kf5_sharedir}/katepart5/
 %{_kf5_sharedir}/kig/
 %{_kf5_sharedir}/kxmlgui5/
