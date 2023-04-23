@@ -1,7 +1,7 @@
 #
 # spec file for package tokodon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        23.02.0
+Version:        23.04.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/tokodon/
-Source0:        https://download.kde.org/stable/tokodon/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/tokodon/%{name}-%{version}.tar.xz.sig
-# https://carlschwan.eu/gpg-02325448204e452a/
-Source2:        tokodon.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(KF5Config)

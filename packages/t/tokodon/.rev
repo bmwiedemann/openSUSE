@@ -23,4 +23,12 @@
     <comment>Update to 23.02.0</comment>
     <requestid>1066366</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f1f00970865e8c6918471372ebbf9a1</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282841</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080750</requestid>
+  </revision>
 </revisionlist>
