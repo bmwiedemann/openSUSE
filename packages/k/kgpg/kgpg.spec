@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kgpg
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
@@ -36,12 +34,10 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libgpgme-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KDELibs4Support)
@@ -49,11 +45,12 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5GrantleeTheme)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       gpg2
-BuildRequires:  libboost_headers-devel
 
 %description
 Kgpg is a simple GUI for gpg
