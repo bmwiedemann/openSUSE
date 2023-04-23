@@ -87,4 +87,34 @@
     <comment></comment>
     <requestid>1065292</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f72f19e29a1e913953984322464088c2</srcmd5>
+    <version>0.10.5</version>
+    <time>1682282878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.5
+  * Start counting effect stacks from 1 not 2
+  * Fixed launcher weapons using outfit mass instead of ammo mass
+  * taiomi: fixed claim check for last mission
+  * Fixed some typos
+  * Fixed equipment of Lancelot in &quot;Sharkman Is Back&quot; mission
+  * Fixed clicking on jump points also selecting planets in some
+    cases
+  * nelly02: Nelly now stops recommending stuff that only does
+    a little disable
+  * shadowvigil: Fixed mission not spawning escorts
+  * flf_patrol: Missions should no longer be able to have
+    ridiculously low credit rewards
+  * Fixed some events not claiming systems that could interfere
+    with other missions
+  * hypergate_construction: should actually claim the system
+  * Fixed some formatting in the alt text when hovering over
+    outfits in the equipment window
+  * ec06: refuel tanker should provide as much fuel as possible
+  * taiomi09: fixed smugglers becoming hostile in some cases
+  * Changed music.stop() API to stop music from continuing by
+    default
+  * Fixed potential memory issues on some platforms (forwarded request 1082276 from Kieltux)</comment>
+    <requestid>1082282</requestid>
+  </revision>
 </revisionlist>
