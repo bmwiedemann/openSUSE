@@ -979,4 +979,12 @@ I would be grateful.
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068796</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>dfcfdf4b14eff0e30d61d98663f9425e</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282757</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080584</requestid>
+  </revision>
 </revisionlist>
