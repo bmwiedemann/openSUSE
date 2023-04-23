@@ -1,7 +1,7 @@
 #
 # spec file for package duktape
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define sover 206
+%define sover 207
 Name:           duktape
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Embeddable Javascript engine
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://duktape.org/
 Source0:        https://duktape.org/%{name}-%{version}.tar.xz
-Source1:        duktape.pc.in
 Patch0:         duktape-link-m.patch
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
@@ -55,30 +54,15 @@ This package contains header files and libraries needed to develop
 application that use %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-
-sed -e's|@prefix@|%{_prefix}|' \
-    -e's|@libdir@|%{_lib}|' \
-    -e's|@PACKAGE_VERSION@|%{version}|' \
-    < %{SOURCE1} > %{name}.pc.in
+%autosetup -p1
 
 %build
-sed -e '/^INSTALL_PREFIX/s|[^=]*$|%{_prefix}|' \
-    -e 's/\(-o.*\)/%{optflags} \1/' \
-   	-e '/install\:/a\\tinstall -d $(DESTDIR)$(INSTALL_PREFIX)/%{_lib}\n\tinstall -d $(DESTDIR)$(INSTALL_PREFIX)/include' \
-    -e 's/\(\$.INSTALL_PREFIX.\)/$(DESTDIR)\1/' \
-    -e 's/\/lib\b/\/%{_lib}/g' \
-     < Makefile.sharedlibrary > Makefile
-%make_build
+%make_build -f Makefile.sharedlibrary INSTALL_PREFIX=%{_prefix} LIBDIR=/%{_lib}
 
 %install
-%make_install
+%make_install -f Makefile.sharedlibrary INSTALL_PREFIX=%{_prefix} LIBDIR=/%{_lib}
 
-install -Dm0644 %{name}.pc.in %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
-
-%post   -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files -n lib%{name}%{sover}
 %doc AUTHORS.rst
