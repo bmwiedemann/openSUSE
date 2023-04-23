@@ -18,11 +18,9 @@
 
 %define rname gwenview
 %define kf5_version 5.100.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           gwenview5
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
@@ -64,10 +62,14 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(kImageAnnotator)
 BuildRequires:  cmake(kColorPicker)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  libqt5-qtbase-private-headers-devel
+%requires_ge    libQt5Core5
 Provides:       gwenview = %{version}
 Obsoletes:      gwenview < %{version}
 
