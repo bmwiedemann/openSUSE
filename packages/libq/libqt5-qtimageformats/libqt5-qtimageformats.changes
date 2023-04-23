@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:59:00 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde12, rebased upstream:
+  * Update bundled libwebp to version 1.2.2
+
+-------------------------------------------------------------------
 Thu Mar 16 08:14:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.8+kde9:
