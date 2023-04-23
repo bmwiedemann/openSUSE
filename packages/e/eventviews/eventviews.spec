@@ -16,11 +16,10 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
+%define libname libKPim5EventViews5
 Name:           eventviews
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,49 +30,56 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  libboost_headers-devel
-BuildRequires:  cmake(KChart)
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KGantt)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 
 %description
 This internal library implements a GUI framework for viewing various
 calendar events in agenda, list, month view or timeline fashion.
 
-%package -n libKF5EventViews5
+%package -n %{libname}
 Summary:        Eventviews Library
 License:        LGPL-2.1-or-later
-Requires:       %{name}
+Requires:       eventviews
+# Renamed
+Obsoletes:      eventviews-lang <= 23.04.0
 
-%description -n libKF5EventViews5
+%description -n %{libname}
 This internal library implements a GUI framework for viewing various
 calendar events in agenda, list, month view or timeline fashion.
 
 %package devel
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
-Requires:       libKF5EventViews5 = %{version}
-Requires:       cmake(KF5Akonadi)
-Requires:       cmake(KF5AkonadiCalendar)
+Requires:       %{libname} = %{version}
+Requires:       cmake(KPim5Akonadi)
 Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KF5CalendarSupport)
-Requires:       cmake(KF5CalendarUtils)
+Requires:       cmake(KPim5AkonadiCalendar)
+Requires:       cmake(KPim5CalendarSupport)
+Requires:       cmake(KPim5CalendarUtils)
 
 %description devel
 The development package for the eventviews libraries
 
-%lang_package
+%lang_package -n %{libname}
 
 %prep
 %autosetup -p1
@@ -86,24 +92,26 @@ The development package for the eventviews libraries
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{libname} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5EventViews5
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license LICENSES/*
 %{_kf5_debugdir}/eventviews.categories
 %{_kf5_debugdir}/eventviews.renamecategories
 
+%files -n %{libname}
+%{_kf5_libdir}/libKPim5EventViews.so.*
+
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/EventViews/
 %{_kf5_cmakedir}/KF5EventViews/
-%{_kf5_includedir}/EventViews/
-%{_kf5_libdir}/libKF5EventViews.so
+%{_kf5_cmakedir}/KPim5EventViews/
+%{_kf5_libdir}/libKPim5EventViews.so
 %{_kf5_mkspecsdir}/qt_EventViews.pri
 
-%files -n libKF5EventViews5
-%{_kf5_libdir}/libKF5EventViews.so.*
-
-%files lang -f %{name}.lang
+%files -n %{libname}-lang -f %{libname}.lang
 
 %changelog
