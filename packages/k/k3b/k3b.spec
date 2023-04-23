@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -150,6 +150,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_applicationsdir}/org.kde.k3b.desktop
 %{_kf5_appstreamdir}/org.kde.k3b.appdata.xml
 %{_kf5_bindir}/k3b
+%{_kf5_debugdir}/k3b.categories
 %{_kf5_iconsdir}/hicolor/*/apps/k3b.*
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-k3b.*
 %{_kf5_knsrcfilesdir}/k3btheme.knsrc
