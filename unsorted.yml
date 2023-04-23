@@ -1869,6 +1869,7 @@ unsorted:
   - cargo1.66 
   - cargo1.67 
   - cargo1.68 
+  - cargo1.69 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -4396,7 +4397,6 @@ unsorted:
   - gcc13-obj-c++-32bit 
   - gcc13-objc 
   - gcc13-objc-32bit 
-  - gcc13-rust 
   - gcc13-testresults 
   - gcc7 
   - gcc7-32bit 
@@ -14009,6 +14009,7 @@ unsorted:
   - libpnetcdf-gnu-mpich-hpc 
   - libpnetcdf-gnu-mvapich2-hpc 
   - libpnetcdf-gnu-openmpi2-hpc 
+  - libpnetcdf-gnu-openmpi3-hpc 
   - libpnetcdf-gnu-openmpi4-hpc 
   - libpnetcdf4-mpich 
   - libpnetcdf4-mvapich2 
@@ -14019,6 +14020,7 @@ unsorted:
   - libpnetcdf_1_12_3-gnu-mpich-hpc 
   - libpnetcdf_1_12_3-gnu-mvapich2-hpc 
   - libpnetcdf_1_12_3-gnu-openmpi2-hpc 
+  - libpnetcdf_1_12_3-gnu-openmpi3-hpc 
   - libpnetcdf_1_12_3-gnu-openmpi4-hpc 
   - libpng12-0 
   - libpng12-0-32bit 
@@ -15088,9 +15090,9 @@ unsorted:
   - libsundials_sunnonlin3_3_0-openmpi3 
   - libsundials_sunnonlin3_3_0-openmpi4 
   - libsuperlu-gnu-hpc 
-  - libsuperlu5 
-  - libsuperlu5-32bit 
-  - libsuperlu_5_3_0-gnu-hpc 
+  - libsuperlu6 
+  - libsuperlu6-32bit 
+  - libsuperlu_6_0_0-gnu-hpc 
   - libsurgescript0_5_6 
   - libsuseconnect 
   - libsvm-devel 
@@ -15705,6 +15707,7 @@ unsorted:
   - libwtdbo4_8_1 
   - libwtdbomysql4_8_1 
   - libwtdbopostgres4_8_1 
+  - libwtmpdb0 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_base-suse-devel 
@@ -21861,6 +21864,8 @@ unsorted:
   - pnetcdf-gnu-mvapich2-hpc-devel 
   - pnetcdf-gnu-openmpi2-hpc 
   - pnetcdf-gnu-openmpi2-hpc-devel 
+  - pnetcdf-gnu-openmpi3-hpc 
+  - pnetcdf-gnu-openmpi3-hpc-devel 
   - pnetcdf-gnu-openmpi4-hpc 
   - pnetcdf-gnu-openmpi4-hpc-devel 
   - pnetcdf-hpc-doc 
@@ -21891,6 +21896,9 @@ unsorted:
   - pnetcdf_1_12_3-gnu-openmpi2-hpc 
   - pnetcdf_1_12_3-gnu-openmpi2-hpc-devel 
   - pnetcdf_1_12_3-gnu-openmpi2-hpc-devel-static 
+  - pnetcdf_1_12_3-gnu-openmpi3-hpc 
+  - pnetcdf_1_12_3-gnu-openmpi3-hpc-devel 
+  - pnetcdf_1_12_3-gnu-openmpi3-hpc-devel-static 
   - pnetcdf_1_12_3-gnu-openmpi4-hpc 
   - pnetcdf_1_12_3-gnu-openmpi4-hpc-devel 
   - pnetcdf_1_12_3-gnu-openmpi4-hpc-devel-static 
@@ -34136,6 +34144,7 @@ unsorted:
   - rust1.66 
   - rust1.67 
   - rust1.68 
+  - rust1.69 
   - rustscan 
   - rustup 
   - rxp 
@@ -35009,9 +35018,9 @@ unsorted:
   - superlu-gnu-hpc-devel 
   - superlu-gnu-hpc-doc 
   - superlu-gnu-hpc-examples 
-  - superlu_5_3_0-gnu-hpc-devel 
-  - superlu_5_3_0-gnu-hpc-doc 
-  - superlu_5_3_0-gnu-hpc-examples 
+  - superlu_6_0_0-gnu-hpc-devel 
+  - superlu_6_0_0-gnu-hpc-doc 
+  - superlu_6_0_0-gnu-hpc-examples 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -45480,6 +45489,8 @@ unsorted:
   - wsmancli 
   - wt 
   - wt-devel 
+  - wtmpdb 
+  - wtmpdb-devel 
   - wtype 
   - wumpus 
   - wv 
