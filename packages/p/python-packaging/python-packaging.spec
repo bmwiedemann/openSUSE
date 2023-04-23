@@ -42,6 +42,7 @@ ExclusiveArch:  do-not-build
 %else
 %define pprefix python
 %endif
+%{?sle15_python_module_pythons}
 %endif
 %if "%{flavor}" == "test"
 %define pprefix python

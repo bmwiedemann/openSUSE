@@ -284,4 +284,12 @@
   * Import underlying parser function as an underscored variable</comment>
     <requestid>1079575</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>f6c2c8a0c6268da67dbe21539bf4d4fa</srcmd5>
+    <version>23.1</version>
+    <time>1682282593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081847</requestid>
+  </revision>
 </revisionlist>
