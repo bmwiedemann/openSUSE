@@ -19,11 +19,9 @@
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
 %bcond_without bhsolver
 %endif
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpat
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
