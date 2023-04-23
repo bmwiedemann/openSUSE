@@ -1,0 +1,9 @@
+<package name="koko" project="openSUSE:Factory">
+  <title>Kirigami based gallery application</title>
+  <description>Koko is a simple image gallery application that is designed to view, edit and
+share images.
+
+</description>
+  <devel project="KDE:Applications" package="koko"/>
+  <url>https://apps.kde.org/koko/</url>
+</package>
