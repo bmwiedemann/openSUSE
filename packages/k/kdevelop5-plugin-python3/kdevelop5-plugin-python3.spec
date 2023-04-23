@@ -19,12 +19,12 @@
 %define rname kdev-python
 %if 0%{suse_version} >= 1550
 %define mypython python310
-%else
+%else 
 %define mypython python3
 %endif
 %bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
@@ -34,14 +34,14 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# FIX-PATCH-UPSTREAM fix-for-python3.6.patch alarrosa@suse.com -- Fix build with python < 3.9
+# PATCH-FIX-OPENSUSE
 Patch0:         fix-for-python3.6.patch
-BuildRequires:  %mypython >= 3.4.3
-BuildRequires:  %mypython-devel >= 3.4.3
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kdevelop5
 BuildRequires:  kf5-filesystem
+BuildRequires:  %mypython >= 3.4.3
+BuildRequires:  %mypython-devel >= 3.4.3
 BuildRequires:  cmake(KDevPlatform)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5TextEditor)
@@ -50,8 +50,8 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdevelop5
-Recommends:     %mypython-pep8
 Recommends:     %{name}-lang
+Recommends:     %mypython-pep8
 Provides:       kdevelop4-plugin-python = %{version}
 Obsoletes:      kdevelop4-plugin-python < %{version}
 # The following are needed due to old unstable packages in KDE repositories

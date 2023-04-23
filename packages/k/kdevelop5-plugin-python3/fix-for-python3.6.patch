@@ -1,3 +1,6 @@
+Allow building kdev-python with older python versions
+Author: Antonio Larrosa
+
 Index: kdev-python-22.12.3/parser/python_grammar.h
 ===================================================================
 --- kdev-python-22.12.3.orig/parser/python_grammar.h
