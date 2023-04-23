@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 16.08 in KA, but 16.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kopete
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
@@ -32,6 +30,30 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DNSSD)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5Emoticons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Libkleo)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5TextEditTextToSpeech)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(Phonon4Qt5)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  giflib-devel
 BuildRequires:  libgadu-devel
 BuildRequires:  libidn-devel
@@ -45,29 +67,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  speex-devel
 BuildRequires:  sqlite-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5Emoticons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdentityManagement)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KHtml)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(expat)

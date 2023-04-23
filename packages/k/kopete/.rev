@@ -995,4 +995,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068867</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>4e17e6f4c2b67682125c9d1b57cc00e2</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282795</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080661</requestid>
+  </revision>
 </revisionlist>
