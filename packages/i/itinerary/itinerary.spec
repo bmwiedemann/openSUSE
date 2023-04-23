@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           itinerary
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -35,19 +33,26 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DeskopStyle)
 BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5UnitConversion)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KOSMIndoorMap)
-BuildRequires:  cmake(KPimItinerary)
-BuildRequires:  cmake(KPimPkPass)
+BuildRequires:  cmake(KPim5Itinerary)
+BuildRequires:  cmake(KPim5PkPass)
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Location)
@@ -55,6 +60,7 @@ BuildRequires:  cmake(Qt5Positioning)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickCompiler)
 BuildRequires:  cmake(Qt5QuickControls2)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} <= 1500
@@ -64,12 +70,13 @@ BuildRequires:  gcc10-PIE
 %endif
 # QML imports
 Requires:       kirigami2
-Requires:       ki18n-imports
 Requires:       prison-qt5-imports
+Requires:       ki18n-imports
 # Runtime dependencies (itinerary won't start without these packages)
 Requires:       kopeninghours
 Requires:       kosmindoormap
 Requires:       kpublictransport
+
 
 %description
 Itinerary and boarding pass management application.
@@ -107,6 +114,9 @@ install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
 
 %files
 %license LICENSES/*
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/kfilemetadata
+%dir %{_kf5_plugindir}/kf5/thumbcreator
 %dir %{_kf5_qmldir}/org
 %dir %{_kf5_qmldir}/org/kde
 %{_kf5_applicationsdir}/org.kde.itinerary.desktop
@@ -116,7 +126,8 @@ install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
 %{_kf5_iconsdir}/hicolor/
 %{_kf5_libdir}/libSolidExtras.so
 %{_kf5_notifydir}/itinerary.notifyrc
+%{_kf5_plugindir}/kf5/kfilemetadata/kfilemetadata_itineraryextractor.so
+%{_kf5_plugindir}/kf5/thumbcreator/itinerarythumbnail.so
 %{_kf5_qmldir}/org/kde/solidextras/
-%{_kf5_qmldir}/org/kde/itinerary/
 
 %changelog
