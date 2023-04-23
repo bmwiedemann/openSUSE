@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio-gdrive
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Google Drive KIO slave for KDE applications
 License:        GPL-2.0-or-later
@@ -37,14 +35,14 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KPimGAPI)
+BuildRequires:  cmake(KPim5GAPI)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 # Used by the .desktop file
 Recommends:     dolphin
 # libkgapi has no ABI stability
-%requires_eq    libKPimGAPICore5
+%requires_eq    libKPim5GAPICore5
 
 %description
 Google Drive KIO slave for KDE applications.
