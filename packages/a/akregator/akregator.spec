@@ -17,11 +17,9 @@
 
 
 %define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           akregator
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -33,42 +31,37 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  gettext-devel
 BuildRequires:  libkleo
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GrantleeTheme)
-BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MessageCore)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Syndication)
+BuildRequires:  cmake(KF5TextEditTextToSpeech)
 BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MessageViewer)
+BuildRequires:  cmake(KPim5TextEdit)
+BuildRequires:  cmake(KPim5WebEngineViewer)
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-BuildRequires:  cmake(Qt5Quick) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.15.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
 Provides:       akregator5 = %{version}
 Obsoletes:      akregator5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Akregator is a news feed reader. It enables you to follow news sites,
