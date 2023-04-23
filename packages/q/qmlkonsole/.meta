@@ -1,0 +1,9 @@
+<package name="qmlkonsole" project="openSUSE:Factory">
+  <title>Terminal application</title>
+  <description>Terminal application offering additional keyboard buttons useful on touch
+devices.
+
+</description>
+  <devel project="KDE:Applications" package="qmlkonsole"/>
+  <url>https://apps.kde.org/qmlkonsole/</url>
+</package>
