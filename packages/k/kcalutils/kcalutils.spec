@@ -16,12 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.103.0
 %bcond_without released
 Name:           kcalutils
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -37,36 +35,36 @@ BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5IdentityManagement)
-BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
+BuildRequires:  cmake(KPim5IdentityManagement)
 BuildRequires:  cmake(Qt5Test)
-#  Only with stable builds
-%if %{with released}
 %requires_eq    grantlee5
-%endif
+Conflicts:      libKF5CalendarUtils5 < %{version}
 
 %description
 This library provides a set of utility functions that help
 applications access and use calendar data via the KCalCore library.
 
-%package -n libKF5CalendarUtils5
+%package -n libKPim5CalendarUtils5
 Summary:        Library with utility functions for handling calendar data
-Requires:       %{name} = %{version}
+%requires_eq    kcalutils
 
-%description  -n libKF5CalendarUtils5
+%description  -n libKPim5CalendarUtils5
 This library provides a set of utility functions that help
 applications access and use calendar data via the KCalCore library.
 
 %package devel
 Summary:        Development files for kcalutils
-Requires:       libKF5CalendarUtils5
+Requires:       libKPim5CalendarUtils5
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
 Requires:       cmake(KF5KDELibs4Support) >= %{kf5_version}
-Obsoletes:      kcalutils5-devel < %{version}
 Provides:       kcalutils5-devel = %{version}
+Obsoletes:      kcalutils5-devel < %{version}
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -78,7 +76,7 @@ to develop applications wanting to use kcalutils.
 %autosetup -p1 -n kcalutils-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
 %install
@@ -88,24 +86,26 @@ to develop applications wanting to use kcalutils.
 
 %global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
-%ldconfig_scriptlets -n libKF5CalendarUtils5
-
-%files -n libKF5CalendarUtils5
-%license LICENSES/*
-%{_kf5_debugdir}/*.categories
-%{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/libKF5CalendarUtils.so.*
-
-%files devel
-%{_kf5_cmakedir}/KF5CalendarUtils/
-%{_kf5_includedir}/KCalUtils/
-%{_kf5_libdir}/libKF5CalendarUtils.so
-%{_kf5_mkspecsdir}/qt_KCalUtils.pri
+%ldconfig_scriptlets -n libKPim5CalendarUtils5
 
 %files
+%license LICENSES/*
 %dir %{_kf5_libdir}/grantlee/
 %dir %{_kf5_libdir}/grantlee/%{grantlee_shortver}
+%{_kf5_debugdir}/*.categories
+%{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/grantlee/%{grantlee_shortver}/kcalendar_grantlee_plugin.so
+
+%files -n libKPim5CalendarUtils5
+%{_kf5_libdir}/libKPim5CalendarUtils.so.*
+
+%files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KCalUtils/
+%{_kf5_cmakedir}/KF5CalendarUtils/
+%{_kf5_cmakedir}/KPim5CalendarUtils/
+%{_kf5_libdir}/libKPim5CalendarUtils.so
+%{_kf5_mkspecsdir}/qt_KCalUtils.pri
 
 %files lang -f %{name}.lang
 
