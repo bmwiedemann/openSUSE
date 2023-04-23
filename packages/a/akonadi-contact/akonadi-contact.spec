@@ -18,12 +18,10 @@
 
 %define rname akonadi-contacts
 %define sonum   5
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadi-contact
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -36,29 +34,27 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
 BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5Contacts) >= %{kf5_version}
-BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5GrantleeTheme)
+BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
-# Needed by kdesktopjson
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Prison) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Requires:       libKF5AkonadiContact5 = %{version}
-Requires:       libKF5ContactEditor5 = %{version}
+Requires:       libKPim5AkonadiContact5 = %{version}
+Requires:       libKPim5ContactEditor5 = %{version}
 Provides:       akonadi-contacts = %{version}
 Obsoletes:      akonadi-contacts < %{version}
 
@@ -66,7 +62,7 @@ Obsoletes:      akonadi-contacts < %{version}
 This package provides a library used for handling personal contacts,
 as part of the KDE Personal Information Management (PIM) software.
 
-%package -n libKF5AkonadiContact5
+%package -n libKPim5AkonadiContact5
 Summary:        Library for personal contact handling
 Requires:       akonadi-contact >= %{version}
 Obsoletes:      akonadi-socialutils
@@ -74,15 +70,15 @@ Obsoletes:      akonadi-socialutils-devel
 Obsoletes:      kdepim-apps-libs <= 20.08.3
 Obsoletes:      kdepim-apps-libs-lang <= 20.08.3
 
-%description -n libKF5AkonadiContact5
+%description -n libKPim5AkonadiContact5
 This package provides a library used for handling personal contacts,
 as part of the KDE Personal Information Management (PIM) software.
 
-%package -n libKF5ContactEditor5
+%package -n libKPim5ContactEditor5
 Summary:        Library for personal contact handling
 Requires:       akonadi-contact >= %{version}
 
-%description -n libKF5ContactEditor5
+%description -n libKPim5ContactEditor5
 This package provides a library used for handling personal contacts,
 as part of the KDE Personal Information Management (PIM) software.
 
@@ -96,16 +92,15 @@ This package provides plugins required by PIM applications to read and write con
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       akonadi-contact = %{version}
-Requires:       libKF5AkonadiContact5 = %{version}
-Requires:       libKF5ContactEditor5 = %{version}
+Requires:       libKPim5AkonadiContact5 = %{version}
+Requires:       libKPim5ContactEditor5 = %{version}
 Requires:       cmake(Grantlee5)
-Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KPim5Akonadi)
 Requires:       cmake(KF5Contacts)
-Requires:       cmake(KF5GrantleeTheme)
+Requires:       cmake(KPim5GrantleeTheme)
 Requires:       cmake(Qt5Widgets)
-
-Obsoletes:      akonadi-contacts-devel < %{version}
 Provides:       akonadi-contacts-devel = %{version}
+Obsoletes:      akonadi-contacts-devel < %{version}
 Obsoletes:      kdepim-apps-libs-devel <= 20.08.3
 
 %description devel
@@ -118,7 +113,7 @@ to develop KDE PIM applications.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf5 -d build -- -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build
 %cmake_build
 
 %install
@@ -126,8 +121,8 @@ to develop KDE PIM applications.
 
 %find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5AkonadiContact5
-%ldconfig_scriptlets -n libKF5ContactEditor5
+%ldconfig_scriptlets -n libKPim5AkonadiContact5
+%ldconfig_scriptlets -n libKPim5ContactEditor5
 
 %files
 %license LICENSES/*
@@ -142,11 +137,11 @@ to develop KDE PIM applications.
 %{_kf5_plugindir}/pim5/akonadi/contacts/plugins/
 %{_kf5_plugindir}/pim5/kcms/kaddressbook/kcm_akonadicontact_actions.so
 
-%files -n libKF5AkonadiContact5
-%{_kf5_libdir}/libKF5AkonadiContact.so.*
+%files -n libKPim5AkonadiContact5
+%{_kf5_libdir}/libKPim5AkonadiContact.so.*
 
-%files -n libKF5ContactEditor5
-%{_kf5_libdir}/libKF5ContactEditor.so.*
+%files -n libKPim5ContactEditor5
+%{_kf5_libdir}/libKPim5ContactEditor.so.*
 
 %files -n akonadi-plugin-contacts
 %{_kf5_plugindir}/akonadi_serializer_addressee.so
@@ -158,12 +153,15 @@ to develop KDE PIM applications.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_contactgroup.desktop
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/AkonadiContact/
+%{_includedir}/KPim5/AkonadiContactEditor/
 %{_kf5_cmakedir}/KF5AkonadiContact/
-%{_kf5_cmakedir}/KF5ContactEditor/
-%{_kf5_includedir}/AkonadiContact/
-%{_kf5_includedir}/AkonadiContactEditor/
-%{_kf5_libdir}/libKF5AkonadiContact.so
-%{_kf5_libdir}/libKF5ContactEditor.so
+%{_kf5_cmakedir}/KF5AkonadiContactEditor/
+%{_kf5_cmakedir}/KPim5AkonadiContact/
+%{_kf5_cmakedir}/KPim5ContactEditor/
+%{_kf5_libdir}/libKPim5AkonadiContact.so
+%{_kf5_libdir}/libKPim5ContactEditor.so
 %{_kf5_mkspecsdir}/qt_AkonadiContact.pri
 %{_kf5_mkspecsdir}/qt_ContactEditor.pri
 
