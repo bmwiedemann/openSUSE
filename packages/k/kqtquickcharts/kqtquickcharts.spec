@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kqtquickcharts
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Plugin to render beautiful and interactive graphs
 License:        LGPL-2.1-or-later
@@ -52,7 +50,7 @@ A QtQuick plugin to render beautiful and interactive graphs.
 %files
 %license COPYING*
 %{_kf5_includedir}/kqtquickcharts_version.h
-%{_kf5_libdir}/cmake/KQtQuickCharts/
+%{_kf5_cmakedir}/KQtQuickCharts/
 %{_kf5_qmldir}/
 
 %changelog
