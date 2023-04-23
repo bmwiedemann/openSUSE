@@ -17,11 +17,9 @@
 
 
 %define sonum   6
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libktorrent
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
@@ -84,9 +82,6 @@ libktorrent is a torrent downloading library.
 sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %build
-%ifarch ppc64
-%define _lto_cflags %{nil}
-%endif
 
 %cmake_kf5 -d build
 %cmake_build
