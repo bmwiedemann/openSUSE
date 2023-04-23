@@ -1,8 +1,0 @@
-# This patch only exists on PostgreSQL 11 and later
-# The following hack is needed to get the empty patch
-# accepted by valid_sources.
---- /dev/null
-+++ /dev/null
-@@ -1 +1 @@
-- 
-+ 
