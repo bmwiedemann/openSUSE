@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:01:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde4, rebased upstream:
+  * Fix QtSpeech example querying locales before initialising
+
+-------------------------------------------------------------------
 Mon Jan  9 09:23:35 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde1, rebased upstream:
