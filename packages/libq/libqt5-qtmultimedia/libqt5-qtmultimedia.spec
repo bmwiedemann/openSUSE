@@ -28,11 +28,11 @@
 %define gles 0
 %endif
 %define base_name libqt5
-%define real_version 5.15.8
-%define so_version 5.15.8
+%define real_version 5.15.9
+%define so_version 5.15.9
 %define tar_version qtmultimedia-everywhere-src-%{version}
 Name:           libqt5-qtmultimedia
-Version:        5.15.8+kde3
+Version:        5.15.9+kde3
 Release:        0
 Summary:        Qt 5 Multimedia Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
