@@ -1,7 +1,7 @@
 #
 # spec file for package python-sh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-sh
 Version:        1.14.3
 Release:        0
@@ -25,8 +25,10 @@ License:        MIT
 URL:            https://github.com/amoffat/sh
 Source:         https://files.pythonhosted.org/packages/source/s/sh/sh-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
@@ -47,9 +49,10 @@ sh is not a collection of system commands implemented in Python.
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec test.py
+%pyunittest -v test
 
 %files %{python_files}
 %license LICENSE.txt
