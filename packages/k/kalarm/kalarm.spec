@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalarm
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -31,50 +29,47 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  gettext-devel
-BuildRequires:  libxslt-devel
 BuildRequires:  polkit-default-privs
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Auth)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5IdleTime)
+BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5MailTransportAkonadi)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextEditTextToSpeech)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5MailTransportAkonadi)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Network) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 Provides:       kalarm5 = %{version}
 Obsoletes:      kalarm5 < %{version}
 
