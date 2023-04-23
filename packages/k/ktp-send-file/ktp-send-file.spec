@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-send-file
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        File manager plugin
 License:        LGPL-2.1-or-later
