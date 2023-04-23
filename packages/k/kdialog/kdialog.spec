@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdialog
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE version of xdialog
 License:        GPL-2.0-or-later
@@ -58,6 +56,7 @@ KDialog can be used to show nice dialog boxes from shell scripts.
 %license COPYING*
 %doc README
 %{_kf5_appstreamdir}/org.kde.kdialog.metainfo.xml
+%{_kf5_applicationsdir}/org.kde.kdialog.desktop
 %{_kf5_bindir}/kdialog
 %{_kf5_bindir}/kdialog_progress_helper
 %{_kf5_dbusinterfacesdir}/org.kde.kdialog.ProgressDialog.xml
