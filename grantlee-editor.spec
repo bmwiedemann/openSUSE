@@ -17,11 +17,9 @@
 
 
 %define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           grantlee-editor
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -36,26 +34,26 @@ BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kaddressbook
 BuildRequires:  kmail-application-icons
 BuildRequires:  libkleo
-BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GrantleeTheme)
-BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5MessageCore)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5WebEngine) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5IMAP)
+BuildRequires:  cmake(KPim5MessageViewer)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5TextEdit)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       kaddressbook
 Requires:       kmail-application-icons
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 A theme editor for messageviewer based on Grantlee. Once created or modified,
