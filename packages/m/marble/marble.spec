@@ -18,11 +18,9 @@
 
 %define _so -28
 %define _so_astro 1
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           marble
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -40,6 +38,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtlocation-devel
 BuildRequires:  libshp-devel
 BuildRequires:  perl
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
@@ -68,6 +67,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(protobuf)
 Requires:       %{name}-data = %{version}
 Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
@@ -75,10 +75,11 @@ Requires:       marble-frontend = %{version}
 Recommends:     %{name}-doc = %{version}
 Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 # Only include WebEngine on platforms where it is available
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
+
 
 %description
 Marble is a viewer of map data.
@@ -120,7 +121,7 @@ Requires:       cmake(Qt5Widgets)
 Requires:       cmake(Qt5Xml)
 Obsoletes:      marble5-devel < %{version}
 Provides:       marble5-devel = %{version}
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 Requires:       cmake(Qt5WebEngineWidgets)
 %endif
 
@@ -179,7 +180,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license COPYING* LICENSE*
 %doc CREDITS ChangeLog MANIFESTO.txt
-%{_kf5_knsrcfilesdir}/marble.knsrc
 %exclude %{_datadir}/marble/data
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/krunner/
