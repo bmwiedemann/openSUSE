@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knotes
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -31,15 +29,9 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  gettext-devel
-BuildRequires:  libboost_headers-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiNotes)
-BuildRequires:  cmake(KF5AkonadiSearch)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -49,25 +41,29 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiNotes)
+BuildRequires:  cmake(KPim5AkonadiSearch)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5TextEdit)
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
