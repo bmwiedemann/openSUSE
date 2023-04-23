@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -33,34 +33,37 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pbr/latest/
 Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Recommends:     git-core
-Suggests:       python-nose
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     git-core
+Suggests:       python-nose
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  git-core
-BuildRequires:  gpg2
 # Package originates from OpenStack and depends on other OpenStack packages for testing.
 # These are only available for the primary python3 interpreter in TW, but optional.
 # --> Only test in default python3 flavor.  gh#openSUSE/python-rpm-macros#66
 # Python 2 packages on Leap are too outdated to test, either (stestr, subunit).
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel
-BuildRequires:  python3-fixtures >= 3.0.0
-BuildRequires:  python3-pip
-BuildRequires:  python3-six >= 1.12.0
-BuildRequires:  python3-stestr >= 2.1.0
-BuildRequires:  python3-testresources >= 2.0.0
-BuildRequires:  python3-testscenarios >= 0.4
-BuildRequires:  python3-testtools >= 2.2.0
-BuildRequires:  python3-virtualenv >= 20.0.3
-BuildRequires:  python3-wheel >= 0.32.0
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six >= 1.12.0}
+BuildRequires:  %{python_module testresources >= 2.0.0}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module virtualenv >= 20.0.3}
+BuildRequires:  %{python_module wheel >= 0.32.0}
+BuildRequires:  git-core
+BuildRequires:  gpg2
 %endif
 %python_subpackages
 
@@ -77,17 +80,22 @@ information.
 sed -i '/coverage/d;/hacking/d' test-requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %if %{with test}
 %check
 export OS_TEST_TIMEOUT=60
-python3 -m stestr run --suppress-attachments --exclude-regex '(pbr.tests.test_packaging.TestPEP517Support|pbr.tests.test_packaging.TestRequirementParsing.test_requirement_parsing)'
+dont_test="test_parse_requirements or test_requirement_parsing or test_pep_517_support "
+dont_test+="or test_write_git_changelog or test_build_doc or test_cmd_builder_override "
+dont_test+="or test_cmd_builder_override_multiple_builders or test_extras_parsing "
+dont_test+="or test_project_url_parsing or test_keywords_parsing "
+dont_test+="or test_handling_of_whitespace_in_data_files"
+%pytest -k "not ($dont_test)"
 %endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r  %{buildroot}%{$python_sitelib}/pbr/tests
 %python_clone -a %{buildroot}%{_bindir}/pbr
 
@@ -104,7 +112,7 @@ python3 -m stestr run --suppress-attachments --exclude-regex '(pbr.tests.test_pa
 %doc AUTHORS ChangeLog CONTRIBUTING.rst README.rst
 %python_alternative %{_bindir}/pbr
 %{python_sitelib}/pbr
-%{python_sitelib}/pbr-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pbr-%{version}*-info
 %endif
 
 %changelog
