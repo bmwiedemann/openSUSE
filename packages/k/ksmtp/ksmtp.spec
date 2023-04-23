@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksmtp
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -41,28 +41,28 @@ BuildRequires:  cmake(Qt5Test)
 %description
 KSMTP is a job based library to send email through an SMTP server.
 
-%package -n libKPimSMTP5
+%package -n libKPim5SMTP5
 Summary:        Job-based library to send email through an SMTP server
-Requires:       %{name}
-Recommends:     %{name}-lang = %{version}
+# Renamed
+Obsoletes:      ksmtp-lang <= 23.04.0
 
-%description -n libKPimSMTP5
+%description -n libKPim5SMTP5
 KSMTP is a job based library to send email through an SMTP server. This
 package contains the KSMTP library itself.
 
 %package devel
 Summary:        Development files for KSMTP
-Requires:       libKPimSMTP5 = %{version}
+Requires:       libKPim5SMTP5 = %{version}
 Requires:       cmake(KF5CoreAddons)
 Requires:       cmake(KF5I18n)
 Requires:       cmake(KF5KIO)
-Requires:       cmake(KF5Mime)
+Requires:       cmake(KPim5Mime)
 
 %description devel
 This package contains all necessary include files and libraries needed
 to build programs that use the KSMTP library.
 
-%lang_package
+%lang_package -n libKPim5SMTP5
 
 %prep
 %autosetup -p1
@@ -74,23 +74,26 @@ to build programs that use the KSMTP library.
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --with-qt --all-name
+%find_lang libKPim5SMTP5 --with-man --with-qt --all-name
 
-%ldconfig_scriptlets -n libKPimSMTP5
+%ldconfig_scriptlets -n libKPim5SMTP5
 
-%files -n libKPimSMTP5
+%files -n libKPim5SMTP5
 %license LICENSES/*
-%{_kf5_libdir}/libKPimSMTP.so.*
+%{_kf5_libdir}/libKPim5SMTP.so.*
 
 %files
 %{_kf5_debugdir}/ksmtp.categories
 
 %files devel
-%{_includedir}/KPim/
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KSMTP/
+%{_includedir}/KPim5/ksmtp_version.h
+%{_kf5_cmakedir}/KPim5SMTP/
 %{_kf5_cmakedir}/KPimSMTP/
-%{_kf5_libdir}/libKPimSMTP.so
+%{_kf5_libdir}/libKPim5SMTP.so
 %{_kf5_mkspecsdir}/qt_KSMTP.pri
 
-%files lang -f %{name}.lang
+%files -n libKPim5SMTP5-lang -f libKPim5SMTP5.lang
 
 %changelog
