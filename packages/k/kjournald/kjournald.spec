@@ -15,31 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define soname  0
 %bcond_without released
 Name:           kjournald
-Version:        0.1.0
+Version:        23.04.0
 Release:        0
 Summary:        Qt browser for journald database
 License:        LGPL-2.1-or-later
 URL:            https://invent.kde.org/system/kjournald
-Source0:        https://download.kde.org/stable/kjournald/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/kjournald/%{name}-%{version}.tar.xz.sig
-Source2:        kjournald.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
-BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig
-BuildRequires:  gcc-c++
-BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  pkgconfig(libsystemd)
-
 Requires:       libqt5-qtquickcontrols2
 
 %description
@@ -48,13 +46,13 @@ terms of QAbstractItemModel classes. The main purpose is to ease the
 integration of journald into Qt based applications (both QML and QtWidget).
 Additional to the library, the project provides a reference implementation of
 the API, called kjournaldbrowser. Even though that application provides a
-powerful journal database reader, we aim to do a clear split between 
+powerful journal database reader, we aim to do a clear split between
 reuseable library and application logic.
 
 %lang_package
 
 %prep
-%autosetup -p1 
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -76,11 +74,11 @@ rm %{buildroot}%{_libdir}/lib%{name}.so
 
 %files
 %license LICENSES/*
-%{_bindir}/kjournaldbrowser
-%{_libdir}/lib%{name}.so.*
-%{_datadir}/applications/org.kde.kjournaldbrowser.desktop
-%{_datadir}/metainfo/*.xml
-%{_datadir}/qlogging-categories5/*
+%{_kf5_applicationsdir}/org.kde.kjournaldbrowser.desktop
+%{_kf5_appstreamdir}/org.kde.kjournaldbrowser.appdata.xml
+%{_kf5_bindir}/kjournaldbrowser
+%{_kf5_debugdir}/kjournald.*
+%{_kf5_libdir}/libkjournald.so.*
 
 %files lang -f %{name}.lang
 
