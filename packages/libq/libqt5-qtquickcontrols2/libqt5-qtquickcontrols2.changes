@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:00:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde11, rebased upstream:
+  * SwipeView: don't cull every child item that gets added
+  * AbstractButton: fix fast clicks being treated as double clicks
+
+-------------------------------------------------------------------
 Mon Jan  9 09:22:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde7, rebased upstream:
