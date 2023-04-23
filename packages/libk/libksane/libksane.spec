@@ -18,11 +18,9 @@
 
 %define _so 5
 %define lname libKF5Sane
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libksane
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE scanning library
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -32,8 +30,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Don-t-search-for-KSane-Core-in-KF5SaneConfig.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  sane-backends-devel
