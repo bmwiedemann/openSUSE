@@ -19,11 +19,9 @@
 # Internal QML imports
 %global __requires_exclude qmlimport\\((widgets|org\\.kde\\.kalgebra\\.mobile).*
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kalgebra
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -59,7 +57,7 @@ BuildRequires:  pkgconfig(eigen3)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 KAlgebra is a math expression solver and plotter.
