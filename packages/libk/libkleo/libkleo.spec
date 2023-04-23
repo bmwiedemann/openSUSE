@@ -16,11 +16,10 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define libname libKPim5libkleo5
 %bcond_without released
 Name:           libkleo
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,9 +40,9 @@ BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(QGpgme)
 BuildRequires:  cmake(Qt5Widgets)
 
@@ -51,19 +50,17 @@ BuildRequires:  cmake(Qt5Widgets)
 libkleo is a library used by KDE PIM applications to handle cryptographic key
 and certificate management.
 
-%package -n libKF5Libkleo5
+%package -n %{libname}
 Summary:        LibKleo library for kdepim
-License:        LGPL-2.1-or-later
 Requires:       libkleo = %{version}
 
-%description -n libKF5Libkleo5
+%description -n %{libname}
 This package contains the libkleo library, a library used by KDE PIM
 applications to handle cryptographic key and certificate management.
 
 %package devel
 Summary:        Development package for libkleo
-License:        LGPL-2.1-or-later
-Requires:       libKF5Libkleo5 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       libgpgmepp-devel
 Requires:       cmake(QGpgme)
 
@@ -84,7 +81,7 @@ The development package for the libkleo libraries.
 
 %find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5Libkleo5
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %config %{_kf5_configdir}/libkleopatrarc
@@ -92,14 +89,16 @@ The development package for the libkleo libraries.
 %{_kf5_debugdir}/libkleo.renamecategories
 %{_kf5_sharedir}/libkleopatra/
 
-%files -n libKF5Libkleo5
+%files -n %{libname}
 %license LICENSES/*
-%{_kf5_libdir}/libKF5Libkleo.so.*
+%{_kf5_libdir}/libKPim5Libkleo.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/Libkleo/
 %{_kf5_cmakedir}/KF5Libkleo/
-%{_kf5_includedir}/Libkleo/
-%{_kf5_libdir}/libKF5Libkleo.so
+%{_kf5_cmakedir}/KPim5Libkleo/
+%{_kf5_libdir}/libKPim5Libkleo.so
 %{_kf5_mkspecsdir}/qt_Libkleo.pri
 
 %files lang -f %{name}.lang
