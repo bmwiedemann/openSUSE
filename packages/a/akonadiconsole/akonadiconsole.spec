@@ -16,12 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadiconsole
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,11 +32,7 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  libxapian-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiSearch)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -50,24 +44,31 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MessageViewer)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5DBus) >= 5.15.0
-BuildRequires:  cmake(Qt5Sql) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5AkonadiSearch)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MessageViewer)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      akonadi_resources < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Akonadi Console is a utility that can be used to explore or manage
 Akonadi. This utility exposes Akonadi internals, and can be useful
 for debugging.
+
+%lang_package
 
 %prep
 %autosetup -p1
@@ -80,7 +81,11 @@ for debugging.
 %kf5_makeinstall -C build
 %suse_update_desktop_file -u org.kde.akonadiconsole Network Email
 
+%find_lang %{name}
+
 %ldconfig_scriptlets
+
+%files lang -f %{name}.lang
 
 %files
 %license LICENSES/*
