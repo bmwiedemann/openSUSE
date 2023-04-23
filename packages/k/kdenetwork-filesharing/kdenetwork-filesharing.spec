@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdenetwork-filesharing
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
@@ -32,12 +30,18 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  extra-cmake-modules
+%if 0%{?suse_version} < 1550
+# c++-20 required
+BuildRequires:  gcc10-PIE
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(QCoro5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Widgets)
@@ -57,6 +61,9 @@ Used for configuring Samba shares.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1550
+  export CXX=g++-10
+%endif
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
