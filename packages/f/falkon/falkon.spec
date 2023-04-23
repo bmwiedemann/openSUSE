@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           falkon
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ Source2:        applications.keyring
 Source3:        obs.png
 Source4:        opensusesoftware.png
 # No QtWebEngine for other archs
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
