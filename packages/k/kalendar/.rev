@@ -105,4 +105,12 @@
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068767</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d20a29534e2a8f83562f2886a95a6fb</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282740</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080554</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define kf5_version 5.96.0
 %bcond_without released
 Name:           kalendar
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -31,33 +31,42 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Akonadi) >= 5.19.0
-BuildRequires:  cmake(KF5AkonadiContact) >= 5.19.0
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport) >= 5.19.0
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5EventViews) >= 5.19.0
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5MailCommon)
+BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5PimCommonAkonadi)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5EventViews)
+BuildRequires:  cmake(KPim5MailCommon)
 BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5QuickTest)
 BuildRequires:  pkgconfig(gpgme)
 Requires:       kalendarac
 Requires:       kdepim-addons
@@ -70,8 +79,8 @@ Requires:       qt5qmlimport(QtQuick.Dialogs.1)
 Requires:       qt5qmlimport(org.kde.kitemmodels.1)
 # Got vendored for now
 # Requires:       qt5qmlimport(org.kde.kirigamiaddons.treeview.1)
-# It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+# kalendar has a runtime dependency on QtWebEngine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Calendar application using Akonadi to sync with external services (NextCloud, GMail, ...).
@@ -90,6 +99,10 @@ This package provides a Plasma widget to view address book contacts.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+  export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build
 %cmake_build
 
@@ -110,7 +123,9 @@ This package provides a Plasma widget to view address book contacts.
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.kalendar.svg
 %{_kf5_qmldir}/org/kde/akonadi/
 %{_kf5_qmldir}/org/kde/kalendar/contact/
+%{_kf5_qmldir}/org/kde/kalendar/calendar/
 %{_kf5_qmldir}/org/kde/kalendar/mail/
+%{_kf5_qmldir}/org/kde/kalendar/components/
 
 %files plasmoid
 %dir %{_kf5_plasmadir}/plasmoids
