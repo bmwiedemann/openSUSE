@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.103.0
 %bcond_without released
+%define libname libKPim5Ldap5
 Name:           kldap
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries
 License:        LGPL-2.1-or-later
@@ -39,26 +38,26 @@ BuildRequires:  cmake(KF5Completion) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Mbox)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
+BuildRequires:  cmake(KPim5Mbox)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Test)
 
 %description
 This package contains additional libraries for KDE PIM applications.
 
-%package -n libKF5Ldap5
+%package -n %{libname}
 Summary:        KDE PIM Libraries: LDAP support
 Requires:       %{name} = %{version}
 
-%description  -n libKF5Ldap5
+%description  -n %{libname}
 This package provides LDAP support for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       cyrus-sasl-devel
-Requires:       libKF5Ldap5 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       openldap2-devel
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
 
@@ -72,7 +71,7 @@ to develop KDE PIM applications.
 %autosetup -p1 -n kldap-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
 %install
@@ -81,7 +80,7 @@ to develop KDE PIM applications.
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
 
-%ldconfig_scriptlets -n libKF5Ldap5
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
@@ -91,14 +90,16 @@ to develop KDE PIM applications.
 %dir %{_kf5_plugindir}/kf5/kio
 %{_kf5_plugindir}/kf5/kio/ldap.so
 
-%files -n libKF5Ldap5
+%files -n %{libname}
 %license LICENSES/*
-%{_kf5_libdir}/libKF5Ldap.so.*
+%{_kf5_libdir}/libKPim5Ldap.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KLDAP/
 %{_kf5_cmakedir}/KF5Ldap/
-%{_kf5_includedir}/KLDAP/
-%{_kf5_libdir}/libKF5Ldap.so
+%{_kf5_cmakedir}/KPim5Ldap/
+%{_kf5_libdir}/libKPim5Ldap.so
 %{_kf5_mkspecsdir}/qt_Ldap.pri
 
 %files lang -f %{name}.lang
