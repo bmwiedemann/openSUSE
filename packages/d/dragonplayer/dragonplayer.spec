@@ -17,11 +17,9 @@
 
 
 %define rname dragon
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dragonplayer
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -81,7 +79,6 @@ Dragon Player is a simple video player.
 %license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/dragonplayer/
 %doc %{_kf5_mandir}/man1/dragon.1*
-%doc README
 %config %{_kf5_configdir}/dragonplayerrc
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
@@ -95,7 +92,6 @@ Dragon Player is a simple video player.
 %{_kf5_iconsdir}/oxygen/*/actions/player-volume-muted.*
 %{_kf5_plugindir}/kf5/parts/dragonpart.so
 %{_kf5_servicesdir}/ServiceMenus/dragonplayer_play_dvd.desktop
-%{_kf5_servicesdir}/dragonplayer_part.desktop
 %{_kf5_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
 %{_kf5_sharedir}/solid/actions/dragonplayer-opendvd.desktop
 
