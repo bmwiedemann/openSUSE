@@ -18,11 +18,9 @@
 
 %define kf5_version 5.91.0
 %define qt5_version 5.15.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           markdownpart
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
@@ -64,7 +62,6 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/markdownpart.so
-%{_kf5_servicesdir}/markdownpart.desktop
 
 %files lang -f %{name}.lang
 
