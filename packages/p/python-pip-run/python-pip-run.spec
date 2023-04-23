@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,6 +27,10 @@
 %endif
 # Disables installing nbformat for tests in Ring1 (see also Patch1)
 %bcond_with ringdisabled
+
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+%bcond_without ringdisabled
+%endif
 
 Name:           python-pip-run%{psuffix}
 Version:        8.8.2
@@ -60,7 +65,7 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module pip-run = %{version}}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  ca-certificates
-%if !%{with ringdisabled}
+%if %{without ringdisabled}
 BuildRequires:  %{python_module nbformat}
 %endif
 %endif
@@ -85,6 +90,10 @@ readily address the on-demand needs.
 %prep
 %autosetup -p1 -n pip-run-%{version}
 
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+sed -i -e '/nbformat/d' setup.cfg
+%endif
+
 %if !%{with test}
 %build
 %pyproject_wheel
@@ -100,7 +109,11 @@ readily address the on-demand needs.
 mkdir -p wheels
 cp %{SOURCE10} %{SOURCE11} wheels/
 export PIP_FIND_LINKS=$PWD/wheels/
-%pytest -x
+dont_test=""
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+dont_test+=""
+%endif
+%pytest -k "$dont_test"
 %endif
 
 %post

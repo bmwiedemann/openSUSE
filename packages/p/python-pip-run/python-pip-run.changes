@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:29:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 23:00:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
 Tue Dec  6 04:22:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version v8.8.2 
