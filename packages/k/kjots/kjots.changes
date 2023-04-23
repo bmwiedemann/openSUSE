@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 20 18:18:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.1.1. No changelog
+- Drop patches, merged upstream:
+  * noteshared-add-missing-library-to-link-list.patch
+  * Adapt-to-new-Akonadi-libraries.patch
+  * Fix-akonadi-includes.patch
+  * Fix-build-with-Akonadi-21.12.patch
+  * 0001-Adapt-to-new-KontactInterface-Plugin-ctor.patch
+  * port-to-new-KPIMTextEditTextToSpeech-split-library-location.patch
+  * Make-compile-against-ktextaddons.patch
+
+-------------------------------------------------------------------
+Wed Apr  5 07:26:59 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patches to fix build with Akonadi 23.04:
+  * port-to-new-KPIMTextEditTextToSpeech-split-library-location.patch
+  * Make-compile-against-ktextaddons.patch
+
+-------------------------------------------------------------------
 Fri Aug 12 06:15:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with recent kontactinterface releases:

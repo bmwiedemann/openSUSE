@@ -106,4 +106,12 @@
   * 0001-Adapt-to-new-KontactInterface-Plugin-ctor.patch</comment>
     <requestid>994688</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0dbfee47c4bc11f867ff20fb21ad4169</srcmd5>
+    <version>5.1.1</version>
+    <time>1682282845</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.1</comment>
+    <requestid>1080953</requestid>
+  </revision>
 </revisionlist>
