@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:02:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde3, rebased upstream:
+  * Android: Enable local storage by default
+
+-------------------------------------------------------------------
 Mon Jan  9 09:24:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde0, rebased upstream:
