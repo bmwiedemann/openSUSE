@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:00:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde4, rebased upstream:
+  * QQuick3DNode: Fix application order of local/parent rotation matrices
+
+-------------------------------------------------------------------
 Mon Jan  9 09:22:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde1, rebased upstream:
