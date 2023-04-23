@@ -16,21 +16,21 @@
 #
 
 
+%bcond_without released
 %define kf5_version 5.93.0
 Name:           kde-inotify-survey
-Version:        1.0.0
+Version:        23.04.0
 Release:        0
 Summary:        Monitor inotify limits and inform the user when they are reached
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.zst
-Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.zst.sig
-Source2:        kde-inotify-survey.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:          install-i18n.patch
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cmake >= 3.22
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  zstd
 BuildRequires:  cmake(KF5Auth)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
@@ -49,7 +49,7 @@ when they have been or are about to be reached.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
