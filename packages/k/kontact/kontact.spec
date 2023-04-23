@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kontact
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -34,19 +32,19 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
@@ -59,7 +57,7 @@ Suggests:       korganizer
 Provides:       kontact5 = %{version}
 Obsoletes:      kontact5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Kontact combines the individual applications KMail, KAddressBook and
