@@ -16,14 +16,13 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.103.0
+%define libname libKPim5Tnef5
 %bcond_without released
 Name:           ktnef
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
-Summary:        KDE PIM Libraries: TNEF support
+Summary:        TNEF support
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
@@ -34,29 +33,39 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KPim5CalendarUtils)
 BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 This package contains additional libraries for KDE PIM applications.
 
-%package -n libKF5Tnef5
-Summary:        KDE PIM Libraries: TNEF Support
+%package common
+Summary:        Files requires by libKPim5Tnef5
+Conflicts:      libKF5Tnef5 < %{version}
 
-%description  -n libKF5Tnef5
+%description common
+Files that can't be in the libKPim5Tnef5 package anymore.
+
+%package -n %{libname}
+Summary:        TNEF Support
+%requires_eq    ktnef-common
+
+%description  -n %{libname}
 This package contains the TNEF support library for KDE PIM applications
 
 %package devel
-Summary:        KDE PIM Libraries: Build Environment
-Requires:       libKF5Tnef5 = %{version}
+Summary:        Development files for libKPim5Tnef5
+Requires:       %{libname} = %{version}
 Requires:       cmake(KF5CalendarCore)
 
 %description devel
 This package contains necessary include files and libraries needed
 to develop KDE PIM applications.
 
-%lang_package
+%lang_package -n %{libname}
 
 %prep
 %autosetup -p1 -n ktnef-%{version}
@@ -68,22 +77,26 @@ to develop KDE PIM applications.
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{libname} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5Tnef5
+%ldconfig_scriptlets -n %{libname}
 
-%files -n libKF5Tnef5
+%files common
 %license LICENSES/*
-%{_kf5_libdir}/libKF5Tnef.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
+%files -n %{libname}
+%{_kf5_libdir}/libKPim5Tnef.so.*
+
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KTNEF/
 %{_kf5_cmakedir}/KF5Tnef/
-%{_kf5_includedir}/KTNEF/
-%{_kf5_libdir}/libKF5Tnef.so
+%{_kf5_cmakedir}/KPim5Tnef/
+%{_kf5_libdir}/libKPim5Tnef.so
 %{_kf5_mkspecsdir}/qt_KTNef.pri
 
-%files lang -f %{name}.lang
+%files -n %{libname}-lang -f %{libname}.lang
 
 %changelog
