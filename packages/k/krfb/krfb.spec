@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krfb
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -49,6 +47,7 @@ BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPipeWire)
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -58,6 +57,7 @@ BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 
