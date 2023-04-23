@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pim-data-exporter
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Data exporter for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,8 +31,6 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 # Only required for the icon
 BuildRequires:  kontact
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiNotes)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
@@ -44,24 +40,27 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MailCommon)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
-BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KF5TextAutoCorrection)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiNotes)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailCommon)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kontact
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 This package contains utlities needed by KDE PIM applications to export data
