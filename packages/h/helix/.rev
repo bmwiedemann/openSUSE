@@ -121,4 +121,12 @@ This will increase possible helix users.</comment>
     <comment>Fixed the changelog file by renaming the removed file.</comment>
     <requestid>1077798</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>42f2143f3c04769b36824e83a13f3784</srcmd5>
+    <version>23.03</version>
+    <time>1682282877</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1082235</requestid>
+  </revision>
 </revisionlist>

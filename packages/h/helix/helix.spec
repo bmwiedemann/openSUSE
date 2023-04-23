@@ -39,7 +39,7 @@ BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
-Recommends:     %{name}-runtime
+Recommends:     %{name}-runtime = %{version}
 ExclusiveArch:  %{rust_arches}
 
 %description
@@ -75,6 +75,7 @@ Zsh command-line completion support for %{name}.
 
 %package        runtime
 Summary:        Runtime files for %{name}
+Version:        %{version}
 Recommends:     %{name}
 
 %description runtime
@@ -125,11 +126,6 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/logo.svg %{buildroot}%{_datadi
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-
-%pre
-if [ -l "%{_helix_runtimedir}" ] ; then
-    rm -f "%{_helix_runtimedir}"
-fi
 
 %files
 %license LICENSE

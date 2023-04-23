@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 16 01:06:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Removed preinstall hook. Not needed since we added version
+  in line with the helix binary.
+
+-------------------------------------------------------------------
 Thu Apr  6 13:27:49 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove HELIX_DISABLE_AUTO_GRAMMAR_BUILD.
