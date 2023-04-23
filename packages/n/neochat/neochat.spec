@@ -19,16 +19,16 @@
 %define _kf5_version 5.88.0
 %bcond_without  released
 Name:           neochat
-Version:        23.01.0
+Version:        23.04.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        GPL-3.0-or-later AND GPL-3.0-only AND BSD-2-Clause
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://apps.kde.org/neochat/
-Source0:        https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma-mobile/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  cmark
@@ -40,22 +40,22 @@ BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(QCoro5Coro)
 BuildRequires:  cmake(KF5Config) >= %{_kf5_version}
+BuildRequires:  cmake(KF5ConfigWidgets) >= %{_kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{_kf5_version}
-BuildRequires:  cmake(KF5Declarative) >= %{_kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{_kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{_kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{_kf5_version}
 BuildRequires:  cmake(KF5ItemModels) >= %{_kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{_kf5_version}
-BuildRequires:  cmake(KF5KirigamiAddons)
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.7.2
 BuildRequires:  cmake(KF5Notifications) >= %{_kf5_version}
 BuildRequires:  cmake(KF5QQC2DesktopStyle) >= %{_kf5_version}
 BuildRequires:  cmake(KF5Sonnet) >= %{_kf5_version}
+BuildRequires:  cmake(KF5WindowSystem) >= %{_kf5_version}
 BuildRequires:  cmake(KQuickImageEditor) >= 0.1
+BuildRequires:  cmake(QCoro5Coro)
 BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Gui) >= 5.15.2
 BuildRequires:  cmake(Qt5Keychain)
@@ -66,8 +66,8 @@ BuildRequires:  cmake(Qt5Svg) >= 5.15.2
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.2
 BuildRequires:  cmake(Quotient) >= 0.6.3
 BuildRequires:  pkgconfig(libcmark)
-Requires:       kirigami2
 Requires:       kirigami-addons
+Requires:       kirigami2
 Requires:       kitemmodels-imports
 Requires:       kquickimageeditor-imports
 Requires:       syntax-highlighting-imports
@@ -96,17 +96,11 @@ messaging.
 
 %fdupes %{buildroot}
 
-%find_lang %{name} --all-name
+%find_lang %{name} --all-name --with-man
 
 %files
 %license LICENSES/*
 %doc README*
-%doc %lang(en) %{_kf5_mandir}/man1/neochat.1%{?ext_man}
-%doc %lang(ca) %{_kf5_mandir}/ca/man1/neochat.1%{?ext_man}
-%doc %lang(es) %{_kf5_mandir}/es/man1/neochat.1%{?ext_man}
-%doc %lang(it) %{_kf5_mandir}/it/man1/neochat.1%{?ext_man}
-%doc %lang(nl) %{_kf5_mandir}/nl/man1/neochat.1%{?ext_man}
-%doc %lang(uk) %{_kf5_mandir}/uk/man1/neochat.1%{?ext_man}
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
 %{_kf5_applicationsdir}/org.kde.neochat.desktop
@@ -114,6 +108,7 @@ messaging.
 %{_kf5_bindir}/neochat
 %{_kf5_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg
+%{_kf5_mandir}/man1/neochat.1%{?ext_man}
 %{_kf5_notifydir}/neochat.notifyrc
 %{_kf5_sharedir}/krunner/dbusplugins/plasma-runner-neochat.desktop
 
