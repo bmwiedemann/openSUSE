@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-anyio
 Version:        3.6.2
 Release:        0
@@ -41,7 +42,6 @@ BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
 BuildRequires:  %{python_module trio >= 0.16}
 BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module uvloop if (%python-base without python36-base)}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
