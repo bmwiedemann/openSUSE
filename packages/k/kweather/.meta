@@ -1,0 +1,9 @@
+<package name="kweather" project="openSUSE:Factory">
+  <title>Weather application for Plasma</title>
+  <description>A convergent weather application for Plasma. Has flat and dynamic/animated
+views for showing forecasts and other information.
+
+</description>
+  <devel project="KDE:Applications" package="kweather"/>
+  <url>https://apps.kde.org/kweather</url>
+</package>
