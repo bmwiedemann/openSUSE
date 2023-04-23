@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:01:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde10, rebased upstream:
+  * qdoc: Fix assert on empty link target
+  * macdeployqt: don’t err on unexpected otool output
+  * Don't run qdoc tests if qdoc was not enabled during configure
+  * CMake: Fix qt_create_translation to not remove .ts files on "clean"
+  * lupdate: Support numeric literal separators
+  * designer: Fix MSVC warning about returning address of local variable or temporary
+  * Bump copyright year to 2022
+
+-------------------------------------------------------------------
 Mon Jan  9 09:23:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde1, rebased upstream:
