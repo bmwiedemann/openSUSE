@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           mobipocket
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        E-book plugin and library
 License:        GPL-2.0-or-later
@@ -75,7 +75,7 @@ library
 %{_kf5_libdir}/libqmobipocket.so.*
 
 %files devel
-%{_includedir}/qmobipocket/
+%{_includedir}/QMobipocket/
 %{_kf5_cmakedir}/QMobipocket/
 %{_kf5_libdir}/libqmobipocket.so
 
