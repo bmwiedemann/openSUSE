@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:54:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde4, rebased upstream:
+  * Fix autotest failure
+  * Use signalspy instead of processevents
+
+-------------------------------------------------------------------
 Mon Jan  9 09:17:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde0, rebased upstream:
