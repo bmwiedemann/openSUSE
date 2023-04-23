@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkgapi
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,80 +40,80 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+Conflicts:      libKPimGAPICore5 < %{version}
 
 %description
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPIBlogger5
+%package -n libKPim5GAPIBlogger5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
 
-%description -n libKPimGAPIBlogger5
+%description -n libKPim5GAPIBlogger5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPICalendar5
+%package -n libKPim5GAPICalendar5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
 
-%description -n libKPimGAPICalendar5
+%description -n libKPim5GAPICalendar5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPIContacts5
+%package -n libKPim5GAPICore5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
-
-%description -n libKPimGAPIContacts5
-An extension for accessing some Google services, such as Google Calendar,
-Google Contacts and Google tasks.
-
-%package -n libKPimGAPICore5
-Summary:        Extension for accessing Google data
-Recommends:     %{name}-lang = %{version}
-Provides:       %{name} = %{version}
+%requires_eq    libkgapi
 Requires:       sasl2-kdexoauth2 >= %{version}
 
-%description -n libKPimGAPICore5
+%description -n libKPim5GAPICore5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPIDrive5
+%package -n libKPim5GAPIDrive5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
 
-%description -n libKPimGAPIDrive5
+%description -n libKPim5GAPIDrive5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPILatitude5
+%package -n libKPim5GAPILatitude5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
 
-%description -n libKPimGAPILatitude5
+%description -n libKPim5GAPILatitude5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPIMaps5
+%package -n libKPim5GAPIMaps5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
 
-%description -n libKPimGAPIMaps5
+%description -n libKPim5GAPIMaps5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
-%package -n libKPimGAPITasks5
+%package -n libKPim5GAPIPeople5
 Summary:        Extension for accessing Google data
 Recommends:     %{name}-lang = %{version}
 
-%description -n libKPimGAPITasks5
+%description -n libKPim5GAPIPeople5
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
+
+%package -n libKPim5GAPITasks5
+Summary:        Extension for accessing Google data
+Recommends:     %{name}-lang = %{version}
+
+%description -n libKPim5GAPITasks5
 An extension for accessing some Google services, such as Google Calendar,
 Google Contacts and Google tasks.
 
 %package -n sasl2-kdexoauth2
 Summary:        Cyrus SASL plugin for using Google's XOAUTH
-Conflicts:      kdepim-runtime < %{_kapp_version}
 Provides:       sasl2-kdexoauth2-3 = %{version}
 Obsoletes:      sasl2-kdexoauth2-3 < %{version}
 
@@ -125,14 +123,14 @@ for receiving and sending mail through Google servers.
 
 %package devel
 Summary:        Build environment for libkgapi
-Requires:       libKPimGAPIBlogger5 = %{version}
-Requires:       libKPimGAPICalendar5 = %{version}
-Requires:       libKPimGAPIContacts5 = %{version}
-Requires:       libKPimGAPICore5 = %{version}
-Requires:       libKPimGAPIDrive5 = %{version}
-Requires:       libKPimGAPILatitude5 = %{version}
-Requires:       libKPimGAPIMaps5 = %{version}
-Requires:       libKPimGAPITasks5 = %{version}
+Requires:       libKPim5GAPIBlogger5 = %{version}
+Requires:       libKPim5GAPICalendar5 = %{version}
+Requires:       libKPim5GAPICore5 = %{version}
+Requires:       libKPim5GAPIDrive5 = %{version}
+Requires:       libKPim5GAPILatitude5 = %{version}
+Requires:       libKPim5GAPIMaps5 = %{version}
+Requires:       libKPim5GAPIPeople5 = %{version}
+Requires:       libKPim5GAPITasks5 = %{version}
 Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KF5Contacts)
 Obsoletes:      libkgapi5-devel < %{version}
@@ -148,7 +146,7 @@ to develop KDE PIM applications.
 %autosetup -p1 -n libkgapi-%{version}
 
 %build
-# workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
+# workaround, kio-gdrive crashes when loading libKPim5GAPIDrive5 if built with LTO (boo#1148217)
 %define _lto_cflags %{nil}
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
@@ -158,63 +156,68 @@ to develop KDE PIM applications.
 
 %find_lang %{name} --with-man --with-qt --all-name
 
-%ldconfig_scriptlets -n libKPimGAPIBlogger5
-%ldconfig_scriptlets -n libKPimGAPICalendar5
-%ldconfig_scriptlets -n libKPimGAPIContacts5
-%ldconfig_scriptlets -n libKPimGAPICore5
-%ldconfig_scriptlets -n libKPimGAPIDrive5
-%ldconfig_scriptlets -n libKPimGAPILatitude5
-%ldconfig_scriptlets -n libKPimGAPIMaps5
-%ldconfig_scriptlets -n libKPimGAPITasks5
+%ldconfig_scriptlets -n libKPim5GAPIBlogger5
+%ldconfig_scriptlets -n libKPim5GAPICalendar5
+%ldconfig_scriptlets -n libKPim5GAPICore5
+%ldconfig_scriptlets -n libKPim5GAPIDrive5
+%ldconfig_scriptlets -n libKPim5GAPILatitude5
+%ldconfig_scriptlets -n libKPim5GAPIMaps5
+%ldconfig_scriptlets -n libKPim5GAPIPeople5
+%ldconfig_scriptlets -n libKPim5GAPITasks5
 
-%files -n libKPimGAPIBlogger5
-%{_kf5_libdir}/libKPimGAPIBlogger.so.*
-
-%files -n libKPimGAPICalendar5
-%{_kf5_libdir}/libKPimGAPICalendar.so.*
-
-%files -n libKPimGAPIContacts5
-%{_kf5_libdir}/libKPimGAPIContacts.so.*
-
-%files -n libKPimGAPICore5
+%files
 %license LICENSES/*
 %{_kf5_debugdir}/libkgapi.categories
-%{_kf5_libdir}/libKPimGAPICore.so.*
 
-%files -n libKPimGAPIDrive5
-%{_kf5_libdir}/libKPimGAPIDrive.so.*
+%files -n libKPim5GAPIBlogger5
+%{_kf5_libdir}/libKPim5GAPIBlogger.so.*
 
-%files -n libKPimGAPILatitude5
-%{_kf5_libdir}/libKPimGAPILatitude.so.*
+%files -n libKPim5GAPICalendar5
+%{_kf5_libdir}/libKPim5GAPICalendar.so.*
 
-%files -n libKPimGAPIMaps5
-%{_kf5_libdir}/libKPimGAPIMaps.so.*
+%files -n libKPim5GAPICore5
+%{_kf5_libdir}/libKPim5GAPICore.so.*
 
-%files -n libKPimGAPITasks5
-%{_kf5_libdir}/libKPimGAPITasks.so.*
+%files -n libKPim5GAPIDrive5
+%{_kf5_libdir}/libKPim5GAPIDrive.so.*
+
+%files -n libKPim5GAPILatitude5
+%{_kf5_libdir}/libKPim5GAPILatitude.so.*
+
+%files -n libKPim5GAPIMaps5
+%{_kf5_libdir}/libKPim5GAPIMaps.so.*
+
+%files -n libKPim5GAPIPeople5
+%{_kf5_libdir}/libKPim5GAPIPeople.so.*
+
+%files -n libKPim5GAPITasks5
+%{_kf5_libdir}/libKPim5GAPITasks.so.*
 
 %files -n sasl2-kdexoauth2
 %dir %{_kf5_libdir}/sasl2/
 %{_kf5_libdir}/sasl2/libkdexoauth2.so*
 
 %files devel
-%{_includedir}/KPim/
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KGAPI/
+%{_includedir}/KPim5/kgapi_version.h
 %{_kf5_cmakedir}/KPimGAPI/
-%{_kf5_libdir}/libKPimGAPIBlogger.so
-%{_kf5_libdir}/libKPimGAPICalendar.so
-%{_kf5_libdir}/libKPimGAPIContacts.so
-%{_kf5_libdir}/libKPimGAPICore.so
-%{_kf5_libdir}/libKPimGAPIDrive.so
-%{_kf5_libdir}/libKPimGAPILatitude.so
-%{_kf5_libdir}/libKPimGAPIMaps.so
-%{_kf5_libdir}/libKPimGAPITasks.so
+%{_kf5_cmakedir}/KPim5GAPI/
+%{_kf5_libdir}/libKPim5GAPIBlogger.so
+%{_kf5_libdir}/libKPim5GAPICalendar.so
+%{_kf5_libdir}/libKPim5GAPICore.so
+%{_kf5_libdir}/libKPim5GAPIDrive.so
+%{_kf5_libdir}/libKPim5GAPILatitude.so
+%{_kf5_libdir}/libKPim5GAPIMaps.so
+%{_kf5_libdir}/libKPim5GAPIPeople.so
+%{_kf5_libdir}/libKPim5GAPITasks.so
 %{_kf5_mkspecsdir}/qt_KGAPIBlogger.pri
 %{_kf5_mkspecsdir}/qt_KGAPICalendar.pri
-%{_kf5_mkspecsdir}/qt_KGAPIContacts.pri
 %{_kf5_mkspecsdir}/qt_KGAPICore.pri
 %{_kf5_mkspecsdir}/qt_KGAPIDrive.pri
 %{_kf5_mkspecsdir}/qt_KGAPILatitude.pri
 %{_kf5_mkspecsdir}/qt_KGAPIMaps.pri
+%{_kf5_mkspecsdir}/qt_KGAPIPeople.pri
 %{_kf5_mkspecsdir}/qt_KGAPITasks.pri
 
 %files lang -f %{name}.lang
