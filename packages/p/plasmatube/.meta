@@ -1,0 +1,9 @@
+<package name="plasmatube" project="openSUSE:Factory">
+  <title>YouTube client</title>
+  <description>PlasmaTube allows you to watch YouTube videos on your phone or desktop using a
+elegant user interface integrated with the rest of Plasma.
+
+</description>
+  <devel project="KDE:Applications" package="plasmatube"/>
+  <url>https://apps.kde.org/plasmatube</url>
+</package>
