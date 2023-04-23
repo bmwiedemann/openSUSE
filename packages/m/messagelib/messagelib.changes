@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 15 08:46:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:44:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+- Drop patch, merged upstream:
+  * 0001-Fix-fallback-path-in-MessageFactoryNG-applyCharset.patch
+
+-------------------------------------------------------------------
 Thu Mar  9 13:16:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix encoding of replies (kde#447297, kde#443009, kde#298349):
