@@ -735,4 +735,12 @@
     <comment>- Use the %ldconfig_scriptlets macro</comment>
     <requestid>1072295</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>a346e098907b20c34c4bdc38b27fc7c1</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282756</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080579</requestid>
+  </revision>
 </revisionlist>
