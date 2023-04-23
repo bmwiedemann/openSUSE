@@ -17,11 +17,9 @@
 
 
 %define soname 5
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkomparediff2
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
@@ -91,7 +89,7 @@ A library to compare files and strings, used in Kompare and KDevelop.
 %files devel
 %{_kf5_cmakedir}/LibKompareDiff2/
 %{_kf5_libdir}/libkomparediff2.so
-%{_kf5_prefix}/include/libkomparediff2/
+%{_includedir}/KompareDiff2/
 
 %files lang -f %{name}.lang
 
