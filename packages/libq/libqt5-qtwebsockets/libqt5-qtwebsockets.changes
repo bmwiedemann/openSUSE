@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:02:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde6, rebased upstream:
+  * Fix setting of socket options
+
+-------------------------------------------------------------------
 Mon Jan  9 09:24:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde3, rebased upstream:
