@@ -719,4 +719,12 @@
     <comment>- Remove unneeded BuildRequires on pep517.</comment>
     <requestid>1077105</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>1e8f343d3649bf80582321e9be0cc0ed</srcmd5>
+    <version>5.11.1</version>
+    <time>1682282623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082128</requestid>
+  </revision>
 </revisionlist>

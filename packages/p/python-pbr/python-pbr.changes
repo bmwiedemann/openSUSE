@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:29:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 21:30:25 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
+Fri Apr 14 22:00:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Tue Apr  4 02:27:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on pep517. 
