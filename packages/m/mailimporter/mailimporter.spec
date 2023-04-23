@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mailimporter
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
@@ -32,15 +30,15 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(KF5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
@@ -54,28 +52,28 @@ KMail or Kontact.
 %package devel
 Summary:        Development package for mailimporter
 License:        LGPL-2.1-or-later
-Requires:       libKF5MailImporter5 = %{version}
-Requires:       libKF5MailImporterAkonadi5 = %{version}
+Requires:       libKPim5MailImporter5 = %{version}
+Requires:       libKPim5MailImporterAkonadi5 = %{version}
 Requires:       cmake(KF5Archive)
 
 %description devel
 This package provides the development headers of the mailimporter library.
 
-%package -n libKF5MailImporter5
+%package -n libKPim5MailImporter5
 Summary:        MailImporter library for kdepim
 License:        LGPL-2.1-or-later
-Requires:       %{name} >= %{version}
+Requires:       mailimporter >= %{version}
 
-%description -n libKF5MailImporter5
+%description -n libKPim5MailImporter5
 This package provides the mailimporter library, used by KDE PIM applications
 to import data from other mail formats (such as mbox, Maildir...).
 
-%package -n libKF5MailImporterAkonadi5
+%package -n libKPim5MailImporterAkonadi5
 Summary:        MailImporter Akonadi based library for kdepim
 License:        LGPL-2.1-or-later
-Requires:       %{name} >= %{version}
+Requires:       mailimporter >= %{version}
 
-%description -n libKF5MailImporterAkonadi5
+%description -n libKPim5MailImporterAkonadi5
 This package provides the mailimporter library for Akonadi based functions,
 used by KDE PIM applications to import data from other mail formats
 (such as mbox, Maildir...).
@@ -95,29 +93,32 @@ used by KDE PIM applications to import data from other mail formats
 
 %find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5MailImporter5
-%ldconfig_scriptlets -n libKF5MailImporterAkonadi5
-
-%files devel
-%{_kf5_cmakedir}/KF5MailImporter/
-%{_kf5_cmakedir}/KF5MailImporterAkonadi/
-%{_kf5_includedir}/MailImporter/
-%{_kf5_includedir}/MailImporterAkonadi/
-%{_kf5_libdir}/libKF5MailImporter.so
-%{_kf5_libdir}/libKF5MailImporterAkonadi.so
-%{_kf5_mkspecsdir}/qt_MailImporter.pri
-%{_kf5_mkspecsdir}/qt_MailImporterAkonadi.pri
-
-%files -n libKF5MailImporter5
-%license LICENSES/*
-%{_kf5_libdir}/libKF5MailImporter.so.*
-
-%files -n libKF5MailImporterAkonadi5
-%{_kf5_libdir}/libKF5MailImporterAkonadi.so.*
+%ldconfig_scriptlets -n libKPim5MailImporter5
+%ldconfig_scriptlets -n libKPim5MailImporterAkonadi5
 
 %files
 %{_kf5_debugdir}/mailimporter.categories
 %{_kf5_debugdir}/mailimporter.renamecategories
+
+%files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/MailImporter/
+%{_includedir}/KPim5/MailImporterAkonadi/
+%{_kf5_cmakedir}/KF5MailImporter/
+%{_kf5_cmakedir}/KPim5MailImporter/
+%{_kf5_cmakedir}/KF5MailImporterAkonadi/
+%{_kf5_cmakedir}/KPim5MailImporterAkonadi/
+%{_kf5_libdir}/libKPim5MailImporter.so
+%{_kf5_libdir}/libKPim5MailImporterAkonadi.so
+%{_kf5_mkspecsdir}/qt_MailImporter.pri
+%{_kf5_mkspecsdir}/qt_MailImporterAkonadi.pri
+
+%files -n libKPim5MailImporter5
+%license LICENSES/*
+%{_kf5_libdir}/libKPim5MailImporter.so.*
+
+%files -n libKPim5MailImporterAkonadi5
+%{_kf5_libdir}/libKPim5MailImporterAkonadi.so.*
 
 %files lang -f %{name}.lang
 
