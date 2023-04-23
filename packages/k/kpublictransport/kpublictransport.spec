@@ -18,11 +18,9 @@
 
 %global sover   1
 %global lname   libKPublicTransport%{sover}
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpublictransport
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -38,11 +36,13 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{lname} = %{version}
+Requires:       libKPublicTransportOnboard%{sover} = %{version}
 
 %description
 A library for access realtime public transport data and for performing public
@@ -55,9 +55,20 @@ Summary:        Library for querying public transport data
 A library for access realtime public transport data and for performing public
 ransport journey queries.
 
+%package -n libKPublicTransportOnboard%{sover}
+Summary:        Library for querying public transport data onboard trains
+Requires:       %{lname} = %{version}
+
+%description -n libKPublicTransportOnboard%{sover}
+A library for access realtime public transport data and for performing public
+transport journey queries. This package contains a library to determine 
+the presence onboard of a train using WiFi SSIDs and provide journey 
+details.
+
 %package devel
 Summary:        Library for querying public transport data
 Requires:       %{lname} = %{version}
+Requires:       libKPublicTransportOnboard%{sover} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Gui)
 Requires:       pkgconfig(zlib)
@@ -80,6 +91,7 @@ ransport journey queries.Development files.
 %ctest
 
 %ldconfig_scriptlets -n %{lname}
+%ldconfig_scriptlets -n libKPublicTransportOnboard%{sover}
 
 %files
 %dir %{_kf5_qmldir}/org/
@@ -91,9 +103,14 @@ ransport journey queries.Development files.
 %{_kf5_debugdir}/org_kde_kpublictransport.categories
 %{_kf5_libdir}/libKPublicTransport.so.*
 
+%files -n libKPublicTransportOnboard%{sover}
+%{_kf5_libdir}/libKPublicTransportOnboard.so.*
+%{_kf5_debugdir}/org_kde_kpublictransport_onboard.categories
+
 %files devel
 %{_includedir}/KPublicTransport/
-%{_kf5_libdir}/cmake/KPublicTransport/
+%{_kf5_cmakedir}/KPublicTransport/
 %{_kf5_libdir}/libKPublicTransport.so
+%{_kf5_libdir}/libKPublicTransportOnboard.so
 
 %changelog
