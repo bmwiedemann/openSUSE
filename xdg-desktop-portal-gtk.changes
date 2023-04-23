@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 07:27:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass missing --disable-lockdown to configure,
+  xdg-desktop-portal-gnome handles that one too.
+
+-------------------------------------------------------------------
 Sat Apr  8 17:35:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Change Supplements: Replace gtk3 with gtk3-schema, ensure the

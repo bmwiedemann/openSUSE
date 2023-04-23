@@ -67,6 +67,7 @@ or org.gnome.SessionManager D-Bus interfaces.
 	--disable-screenshot \
 	--enable-settings \
 	--disable-wallpaper \
+	--disable-lockdown \
 	%{nil}
 %make_build
 
