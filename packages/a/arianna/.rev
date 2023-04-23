@@ -15,4 +15,12 @@
     <comment>- Add kirigami-addons to runtime dependencies</comment>
     <requestid>1079784</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0c2111e38ae75bb3cd50af7c40f5f00</srcmd5>
+    <version>1.0.1</version>
+    <time>1682282889</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0.1</comment>
+    <requestid>1082284</requestid>
+  </revision>
 </revisionlist>

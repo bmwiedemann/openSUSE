@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           arianna
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.6
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.8
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Gui)
