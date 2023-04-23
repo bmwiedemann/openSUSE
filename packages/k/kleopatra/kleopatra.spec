@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kleopatra
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
@@ -36,7 +34,6 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-PIE
 %endif
-BuildRequires:  libboost_headers-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
@@ -49,13 +46,14 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
