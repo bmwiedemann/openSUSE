@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:53:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde329, rebased upstream:
+  * QCborValue: fix incorrect to{Array,Map} when the value is empty
+  * QMargins: fix a missing "full stop" in the docs
+  * QLibrary: restore translated string
+  * QLibrary: fix possible arg() format clobbering
+  * iOS: Use python3 for enumerating test target devices
+  * Android: Treat ACTION_CANCEL as TouchCancelEvent
+  * Doc: Fix broken formatting
+  * QFileSystemEngine: fix potential formatting error
+  * QString::asprintf: check that passing field widths as arguments works
+  * Backport recent QFlags tests
+  * network: Fix typos in documentation
+  * Fix accuracy with screen composition
+  * Doc: Update documentation for QElapsedTimer's in Windows
+  * Document that QStandardPath::findExecutable works with absolute paths
+  * macOS: Use native resize cursors for diagonal resize
+  * Fix clipped glyphs in text rendering of QGraphicsTextItem
+  * Change comparison data type to fix int overflow
+  * Add missing Q_WEAK_OVERLOAD definition
+  * Update QFileInfo docs to mention macOS aliases
+  * Distinguish macOS aliases from normal symbolic links
+  * Windows QPA: Fix frameless maximize on secondary screens
+  * Rewrite tst_qdataurl as a data-driven test
+  * Fix compilation for wasm
+  * QIOSFileDialog/QIOSDocumentPickerController - handle dismissed view controller
+  * Fix QDockWidget's dock area permissions after hovering
+  * Fix C++20 ambiguous relational operators between QJsonValue{,Ref}
+  * Android: make sure that orientationChange is reported after resize
+  * Android: set all QScreen's geometry-related parameters together
+  * Blacklist: test cases blacklisted in tst_QDBusConnection:
+  * wasm:  fix issue with passing username/password to network request
+  * macOS: Pass multi arch flags when linking qmake
+  * QCocoaFileDialogHelper: Always enable symlinks and aliases to directories
+  * Android: terminate argv passed to main() with nullptr
+  * Update bundled libjpeg-turbo to version 2.1.3
+  * ANGLE: Load the DirectX libraries from the system path directly
+  * SQLite: Update SQLite to v3.37.2
+  * Fix compiler warnings about unused parameters
+  * Fix getsockopt option_value initial initialization
+  * Http2: Fix redirect-handling
+  * Android A11Y: Fix value rounding
+  * Android A11Y: Announce value together with element name when focused
+  * Android A11Y: handle valueChanged events
+  * tst_QSystemSemaphore: give proper path to test-helper
+  * QNX: Silence compiler warning by initializing variable
+  * Update LICENSE.QT-LICENSE-AGREEMENT
+  * winrt appxmanifest: Properly replace VCLibs version for newer MSVC versions
+  * QAbstractSocket: Don't pretend pause and resume is a stack
+  * Gui: test also depends for clipboard feature
+  * QDesktopServices: deprecate destroying URL handlers w/o explicit unsetUrlHandler()
+  * macOS: Respect QMAKE_APPLE_DEVICE_ARCHS when building qmake
+  * HTTP: Make redirect response parsing more generic
+  * BLACKLIST: tst_QGlyphRun::mixedScripts for Ubuntu 20.04
+  * Android A11Y: populate child elements when constructing node info
+  * Fix issue where readyRead() could happen after disconnected()
+  * QStringView: add missing constexpr so we can use is_constant_evaluated
+  * Use Android's View.generateViewId() for generating ids for views/surfaces
+  * Remove documentation of non-existing QAccessible state
+  * Doc: Fix snippet to match actual QFileInfo behavior
+  * Android: Re-focus focused accessibility node after orientation change
+  * Android A11Y: execute C++ code on main Qt thread
+  * Android: extract parentId for hidden object in advance
+  * xcb: Show valuator atom names properly in categorized logging
+  * Android: replace stacktrace with debug message in search for setService
+  * Better document attaching a QFutureWatcher to a started QFuture
+  * doc: Update GenericDataLocation location on iOS
+  * BLACKLIST test_Gestures tests for RHEL-8.4
+  * QPlainTestLogger: do not print "failure location" if there's no failure
+  * QAbstractItemView: do not access invalid model indices (3/N)
+  * Win32: always allow the event loop to be woken up by posted events
+  * rhi: d3d11: Use __uuidof where we can
+  * Don't QEXPECT_FAIL tst_QLineEdit::testQuickSelectionWithMouse on macOS ARM
+  * Network: Emit authenticationRequired when using Ntlm
+  * testlib: Disable window restoration on macOS in a non-persistent way
+  * QAbstractItemView: do not access invalid model indices (2/N)
+  * QAbstractItemView: do not access invalid model indices (1/N)
+  * QAbstractItemView: code tidies
+  * Update float16 part of TestLib selftest
+  * QGuiApplication: constant-initialize lastCursorPosition
+  * Blacklist tst_QFileSystemWatcher::signalsEmittedAfterFileMoved on all Windows versions
+  * [Android]: Handle the screen name, modes and refreshRate properly
+  * QVersionNumber: remove the "pure" attribute from commonPrefix()
+  * QEvent: initialize the static userEventTypeRegistry constexprly
+  * Let QXcbGlxWindow::createVisual fallback to QXcbWindow::createVisual
+  * Android A11Y: fix content update notification when object is hidden
+  * Android: explicitly remove accessibility focus when element is hidden
+  * BLACKLIST tst_qfont for Red Hat 8.4 and Ubuntu 20.04
+  * QtCore: includemocs
+  * Fix memory leak in QtConcurrent::run when called with a NULL QThreadPool
+  * INTEGRITY: Prevent deletion of virtual functions
+  * QMake: replace a Q_ASSERT() with a Q_UNREACHABLE()
+  * QTransform benchmark: measure what was promised
+  * QStaticByteArrayMatcher: add a useful comment
+  * QMacStyle: use the 'momentary push in' type for push buttons
+  * qopengl.h: Move C header #include(s) out of the QT_NAMESPACE
+  * Enable all supported 1.0 device features in QVulkanWindow
+  * Fix queue passed to vkQueuePresent
+  * QFusionStyle: don't draw an invalid outline for up/down buttons
+  * Doc: Make QListIterator snippets more robust
+  * QVersionNumber: don't detach() in rvalue QList/QVector ctor
+  * QNetworkRequest: Document how Qt handles 301 and 302 status codes
+  * Convert date-time to UTC before claiming it's in GMT
+  * Remove execute permission from XML files
+  * Add test case for style sheet selectors for enum properties
+  * FreeType: allow falling back to synthesized bold if desired
+  * Fix an assertion failure in massageAdjustedDateTime()
+  * Relax tst_qvulkan::vulkanVersionRequest to make it compatible with 1.1
+  * Doc: Replace "C:Documents and Settings" paths
+  * QOrderedMutexLocker: fix compilation with C++11
+  * QHttpNetworkConnection: Always set proxy settings to all channels
+  * Add a markdown writer test for a checklist item ending with `code`
+  * Use QTextCharFormat::fontFixedPitch to remember Markdown backtick spans
+  * QWizardLayoutInfo: make == and != operators const
+  * Revert "Android: Fix screen flicker issues"
+  * macOS: Handle momentum scroll NSEventPhaseBegan when scroll had ended
+  * SQLite: Update SQLite to v3.37.0
+  * Update copyright year to 2022
+  * QTzTimeZonePrivate: use ctor delegation instead of init()
+  * QTzTimeZonePrivate: fix permanently-detaching m_icu
+  * tst_QGraphicsView: fix memleak
+  * Doc: Update external links to Qt Creator Manual
+  * macOS: assume an unidentified tablet device is a stylus
+  * tst_QItemModel: fix memleaks
+  * tst_qanimationgroup: fix memleaks
+  * QAbstractAnimation: add missing forward-declaration
+  * [doc] QCoreApplication::installTranslator() doesn't take ownership
+  * tst_qtranslator: fix memleak
+  * QTestData: fix streaming of u8 string literals in C++20 mode
+  * QThread/Unix: extract duplicate code
+  * QWindowPrivate: fix inconsistent inline on some methods
+  * tst_QStringList: check that join(u'0') embeds NULs
+  * macOS: Sanitize scroll deltas for NSEventPhaseCancelled
+  * tst_qsharedmemory: skip readOnly() test under asan
+  * QXmlStreamReader: update test distribution
+  * QZipReader: update to unzip partly broken archives
+  * Deliver context menu event with correct coordinates to widgets in popups
+  * QTextHtmlParser: fix prefix lookahead and html comments
+  * QtConcurrent::run crashes on program exit
+  * tst_QPropertyAnimation: fix leaks occurring under normal operation
+  * tst_QPropertyAnimation: fix wrong comment
+  * QLogging: fix potential missing NUL-terminator when calling OutputDebugString
+  * Fix qt_scrollRectInImage when scrolling outside of the image
+- Commits dropped by the rebase:
+  * Fix compile with Qt5: Use QString::mid instead of QString::sliced
+  * Restore C++11 compatibility after e8b9f4c28d3ab5e960dc54f2dc0c4b749b0b50e0
+  * QDateTime: Don't require c++17
+
+-------------------------------------------------------------------
 Mon Apr 03 10:48:53 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.8+kde185:
