@@ -355,4 +355,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.8, untested as usual. qtdoc not included yet. (forwarded request 1057153 from Vogtinator)</comment>
     <requestid>1057226</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>dc43c2ff927f1a78005cab9ad9e4fad0</srcmd5>
+    <version>5.15.9+kde0</version>
+    <time>1682282598</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082071</requestid>
+  </revision>
 </revisionlist>
