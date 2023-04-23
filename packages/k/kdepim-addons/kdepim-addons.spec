@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdepim-addons
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -35,41 +33,42 @@ Patch0:         0001-Enable-the-expert-plugin-by-default.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  libboost_headers-devel
 BuildRequires:  libmarkdown-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
-BuildRequires:  cmake(KF5AkonadiNotes)
-BuildRequires:  cmake(KF5CalendarSupport)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5EventViews)
-BuildRequires:  cmake(KF5GrantleeTheme)
-BuildRequires:  cmake(KF5Gravatar)
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IncidenceEditor)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5LibKSieve)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5MailCommon)
-BuildRequires:  cmake(KF5MailImporter)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5MessageCore)
-BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(KF5Tnef)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(KPimAddressbookImportExport)
-BuildRequires:  cmake(KPimGAPI)
-BuildRequires:  cmake(KPimImportWizard)
-BuildRequires:  cmake(KPimItinerary)
-BuildRequires:  cmake(KPimPkPass)
+BuildRequires:  cmake(KPim5AddressbookImportExport)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5AkonadiNotes)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5ContactEditor)
+BuildRequires:  cmake(KPim5EventViews)
+BuildRequires:  cmake(KPim5GAPI)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5Gravatar)
+BuildRequires:  cmake(KPim5ImportWizard)
+BuildRequires:  cmake(KPim5IncidenceEditor)
+BuildRequires:  cmake(KPim5Itinerary)
+BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5LibKSieve)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5Libkleo)
+BuildRequires:  cmake(KPim5MailCommon)
+BuildRequires:  cmake(KPim5MailImporter)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KPim5MessageCore)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PkPass)
+BuildRequires:  cmake(KPim5Tnef)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5OpenGL)
@@ -81,7 +80,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5XmlPatterns)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Addons for KDE PIM applications, such as extensions for KMail, additional
@@ -123,13 +122,7 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libakonadidatasetools.so.5
 %{_kf5_libdir}/libakonadidatasetools.so.5.*
 %{_kf5_libdir}/libdkimverifyconfigure.so.*
-%{_kf5_libdir}/libgrammarcommon.so.5
-%{_kf5_libdir}/libgrammarcommon.so.5.*
 %{_kf5_libdir}/libkaddressbookmergelibprivate.so.*
-%{_kf5_libdir}/libkmailgrammalecte.so.5
-%{_kf5_libdir}/libkmailgrammalecte.so.5.*
-%{_kf5_libdir}/libkmaillanguagetool.so.5
-%{_kf5_libdir}/libkmaillanguagetool.so.5.*
 %{_kf5_libdir}/libkmailmarkdown.so.5
 %{_kf5_libdir}/libkmailmarkdown.so.5.*
 %{_kf5_libdir}/libkmailquicktextpluginprivate.so.5
@@ -168,7 +161,6 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/pim5/messageviewer/bodypartformatter/
 %{_kf5_plugindir}/pim5/messageviewer/checkbeforedeleting/
 %{_kf5_plugindir}/pim5/messageviewer/configuresettings/
-%{_kf5_plugindir}/pim5/messageviewer/configuresettings/
 %{_kf5_plugindir}/pim5/messageviewer/headerstyle/
 %{_kf5_plugindir}/pim5/messageviewer/viewercommonplugin/
 %{_kf5_plugindir}/pim5/messageviewer/viewerplugin/
@@ -180,16 +172,16 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/pim5/kmail/plugineditorconverttext/
 %{_kf5_plugindir}/pim5/kmail/plugineditorgrammar/
 %{_kf5_plugindir}/pim5/kmail/plugineditorinit/
-%{_kf5_plugindir}/pim5/libksieve/
-%{_kf5_plugindir}/pim5/webengineviewer/urlinterceptor/
 %{_kf5_plugindir}/pim5/korganizer/datenums.so
 %{_kf5_plugindir}/pim5/korganizer/picoftheday.so
+%{_kf5_plugindir}/pim5/libksieve/emaillineeditplugin.so
+%{_kf5_plugindir}/pim5/libksieve/imapfoldercompletionplugin.so
+%{_kf5_plugindir}/pim5/webengineviewer/urlinterceptor/
 %{_kf5_plugindir}/pim5/korganizer/thisdayinhistory.so
 %{_kf5_plugindir}/pim5/korganizer/lunarphases.so
 %{_kf5_plugindir}/pim5/messageviewer/grantlee/5.0/kitinerary_grantlee_extension.so
 %{_kf5_plugindir}/plasmacalendarplugins/
 %{_kf5_qmldir}/org/kde/plasma/PimCalendars/
-%{_kf5_sharedir}/kconf_update/languagetool_kmail.upd
 %{_kf5_sharedir}/kconf_update/webengineurlinterceptoradblock.upd
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/CMakeLists.txt
 %{_kf5_sharedir}/qtcreator/templates/kmaileditorconvertertextplugins/plugin.json.impl
