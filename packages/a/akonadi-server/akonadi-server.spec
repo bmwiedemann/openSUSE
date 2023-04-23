@@ -17,12 +17,10 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadi-server
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -38,8 +36,6 @@ BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
-BuildRequires:  libboost_graph-devel
-BuildRequires:  libboost_headers-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  mariadb
@@ -47,16 +43,13 @@ BuildRequires:  postgresql-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  sqlite3-devel
 BuildRequires:  cmake(KAccounts)
-BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
@@ -71,7 +64,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Requires:       libqt5-sql-mysql
 Requires:       mysql
-# FIXME: Check if it's worth it
 Recommends:     kaccounts-integration
 Recommends:     kaccounts-providers
 Suggests:       mariadb
@@ -85,39 +77,39 @@ Obsoletes:      akonadi-runtime < %{version}
 This package contains the data files of Akonadi, the KDE PIM storage
 service.
 
-%package -n libKF5AkonadiCore5
+%package -n libKPim5AkonadiCore5
 Summary:        Core Akonadi Server library
 Recommends:     %{name}
 
-%description -n libKF5AkonadiCore5
+%description -n libKPim5AkonadiCore5
 This package includes the core Akonadi library, the KDE PIM storage service.
 
-%package -n libKF5AkonadiAgentBase5
+%package -n libKPim5AkonadiAgentBase5
 Summary:        Akonadi Agent base library
 Recommends:     %{name}
 
-%description -n libKF5AkonadiAgentBase5
+%description -n libKPim5AkonadiAgentBase5
 This package includes the agent library for Akonadi, the KDE PIM storage service.
 
-%package -n libKF5AkonadiWidgets5
+%package -n libKPim5AkonadiWidgets5
 Summary:        Akonadi Agent base library
 Recommends:     %{name}
 
-%description -n libKF5AkonadiWidgets5
+%description -n libKPim5AkonadiWidgets5
 This package provides the basic GUI widgets for Akonadi, the KDE PIM storage service.
 
-%package -n libKF5AkonadiPrivate5
+%package -n libKPim5AkonadiPrivate5
 Summary:        Akonadi Private Server library
 Recommends:     %{name}
 
-%description -n libKF5AkonadiPrivate5
+%description -n libKPim5AkonadiPrivate5
 This package includes the Private Akonadi library for Akonadi, the KDE PIM storage service.
 
-%package -n libKF5AkonadiXml5
+%package -n libKPim5AkonadiXml5
 Summary:        Akonadi Xml library
 Recommends:     %{name}
 
-%description -n libKF5AkonadiXml5
+%description -n libKPim5AkonadiXml5
 This package includes the Akonadi Xml library for Akonadi, the KDE PIM storage service.
 
 %package sqlite
@@ -131,11 +123,9 @@ Akonadi server's SQlite plugin.
 %package devel
 Summary:        Akonadi Framework: Build Environment
 Requires:       %{name} = %{version}
-Requires:       libKF5AkonadiAgentBase5 = %{version}
-Requires:       libKF5AkonadiCore5 = %{version}
-Requires:       libKF5AkonadiWidgets5 = %{version}
-Requires:       libboost_headers-devel
-Requires:       cmake(KF5Completion)
+Requires:       libKPim5AkonadiAgentBase5 = %{version}
+Requires:       libKPim5AkonadiCore5 = %{version}
+Requires:       libKPim5AkonadiWidgets5 = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5ConfigWidgets)
 Requires:       cmake(KF5CoreAddons)
@@ -149,8 +139,8 @@ Requires:       cmake(Qt5Widgets)
 Requires:       cmake(Qt5Xml)
 Conflicts:      libakonadiprotocolinternals-devel
 Obsoletes:      akonadi-devel < %{version}
-Obsoletes:      libKF5AkonadiPrivate-devel < %{version}
 Provides:       libKF5AkonadiPrivate-devel = %{version}
+Obsoletes:      libKF5AkonadiPrivate-devel < %{version}
 
 %description devel
 This package contains development files of Akonadi, the KDE PIM storage
@@ -179,11 +169,11 @@ This package contains AppArmor profiles for Akonadi.
 
 %ldconfig_scriptlets
 
-%ldconfig_scriptlets -n libKF5AkonadiWidgets5
-%ldconfig_scriptlets -n libKF5AkonadiCore5
-%ldconfig_scriptlets -n libKF5AkonadiAgentBase5
-%ldconfig_scriptlets -n libKF5AkonadiPrivate5
-%ldconfig_scriptlets -n libKF5AkonadiXml5
+%ldconfig_scriptlets -n libKPim5AkonadiWidgets5
+%ldconfig_scriptlets -n libKPim5AkonadiCore5
+%ldconfig_scriptlets -n libKPim5AkonadiAgentBase5
+%ldconfig_scriptlets -n libKPim5AkonadiPrivate5
+%ldconfig_scriptlets -n libKPim5AkonadiXml5
 
 %post apparmor
 %apparmor_reload %{_sysconfdir}/apparmor.d/mariadbd_akonadi %{_sysconfdir}/apparmor.d/mysqld_akonadi %{_sysconfdir}/apparmor.d/postgresql_akonadi %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
@@ -213,41 +203,43 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Akonadi.Control.service
 %{_kf5_sharedir}/mime/packages/akonadi-mime.xml
 
-%files -n libKF5AkonadiAgentBase5
-%{_kf5_libdir}/libKF5AkonadiAgentBase.so.*
+%files -n libKPim5AkonadiAgentBase5
+%{_kf5_libdir}/libKPim5AkonadiAgentBase.so.*
 
-%files -n libKF5AkonadiCore5
+%files -n libKPim5AkonadiCore5
 %license LICENSES/*
-%{_kf5_libdir}/libKF5AkonadiCore.so.*
+%{_kf5_libdir}/libKPim5AkonadiCore.so.*
 
-%files -n libKF5AkonadiWidgets5
-%{_kf5_libdir}/libKF5AkonadiWidgets.so.*
+%files -n libKPim5AkonadiWidgets5
+%{_kf5_libdir}/libKPim5AkonadiWidgets.so.*
 
-%files -n libKF5AkonadiPrivate5
-%{_kf5_libdir}/libKF5AkonadiPrivate.so.*
+%files -n libKPim5AkonadiPrivate5
+%{_kf5_libdir}/libKPim5AkonadiPrivate.so.*
 
-%files -n libKF5AkonadiXml5
-%{_kf5_libdir}/libKF5AkonadiXml.so.*
+%files -n libKPim5AkonadiXml5
+%{_kf5_libdir}/libKPim5AkonadiXml.so.*
 
 %files sqlite
 %{_kf5_plugindir}/sqldrivers/
 
 %files devel
+%dir %{_includedir}/KPim5
 %dir %{_kf5_sharedir}/kdevappwizard
 %dir %{_kf5_sharedir}/kdevappwizard/templates
+%{_includedir}/KPim5/Akonadi/
+%{_includedir}/KPim5/AkonadiAgentBase/
+%{_includedir}/KPim5/AkonadiCore/
+%{_includedir}/KPim5/AkonadiWidgets/
+%{_includedir}/KPim5/AkonadiXml/
 %{_kf5_bindir}/akonadi2xml
-%{_kf5_cmakedir}/KF5Akonadi
+%{_kf5_cmakedir}/KF5Akonadi/
+%{_kf5_cmakedir}/KPim5Akonadi/
 %{_kf5_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
-%{_kf5_includedir}/Akonadi/
-%{_kf5_includedir}/AkonadiAgentBase/
-%{_kf5_includedir}/AkonadiCore/
-%{_kf5_includedir}/AkonadiWidgets/
-%{_kf5_includedir}/AkonadiXml/
-%{_kf5_libdir}/libKF5AkonadiAgentBase.so
-%{_kf5_libdir}/libKF5AkonadiCore.so
-%{_kf5_libdir}/libKF5AkonadiPrivate.so
-%{_kf5_libdir}/libKF5AkonadiWidgets.so
-%{_kf5_libdir}/libKF5AkonadiXml.so
+%{_kf5_libdir}/libKPim5AkonadiAgentBase.so
+%{_kf5_libdir}/libKPim5AkonadiCore.so
+%{_kf5_libdir}/libKPim5AkonadiPrivate.so
+%{_kf5_libdir}/libKPim5AkonadiWidgets.so
+%{_kf5_libdir}/libKPim5AkonadiXml.so
 %{_kf5_mkspecsdir}/qt_AkonadiAgentBase.pri
 %{_kf5_mkspecsdir}/qt_AkonadiCore.pri
 %{_kf5_mkspecsdir}/qt_AkonadiWidgets.pri
