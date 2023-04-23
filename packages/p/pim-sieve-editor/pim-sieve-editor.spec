@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pim-sieve-editor
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Sieve scripts editor for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,21 +36,21 @@ BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5LibKSieve)
-BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KPim5IMAP)
+BuildRequires:  cmake(KPim5LibKSieve)
+BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(KUserFeedback)
-BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kmail
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 This package provides an editor, complete with syntax highlighting and
