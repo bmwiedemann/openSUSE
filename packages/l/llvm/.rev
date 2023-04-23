@@ -2219,4 +2219,15 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1080460</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>882886d03810ac655ca0e58f1f62b117</srcmd5>
+    <version>16.0.2</version>
+    <time>1682282634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.2.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+</comment>
+    <requestid>1082182</requestid>
+  </revision>
 </revisionlist>

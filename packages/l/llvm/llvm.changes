@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 21:07:38 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.2.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+
+-------------------------------------------------------------------
 Thu Apr 13 04:32:44 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1210383 - Add aarch64 to lldb platforms
