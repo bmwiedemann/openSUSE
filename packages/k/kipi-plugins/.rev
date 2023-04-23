@@ -380,4 +380,12 @@ kipi-plugins will not be part of digikam 6.0.0 anymore, but it is still used by 
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068828</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>02718351f712fd5cd3a515f58a4c2004</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282777</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080616</requestid>
+  </revision>
 </revisionlist>
