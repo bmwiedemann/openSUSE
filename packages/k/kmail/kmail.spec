@@ -16,12 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.103.0
 %bcond_without released
 Name:           kmail
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -32,16 +30,10 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  gettext-devel
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
-BuildRequires:  cmake(KF5AkonadiSearch)
 BuildRequires:  cmake(KF5Bookmarks)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -49,46 +41,51 @@ BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GrantleeTheme)
-BuildRequires:  cmake(KF5Gravatar)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5LibKSieve)
-BuildRequires:  cmake(KF5Libkdepim)
+BuildRequires:  cmake(KPim5LibKSieve)
 BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5MailCommon)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5MessageComposer)
-BuildRequires:  cmake(KF5MessageCore)
-BuildRequires:  cmake(KF5MessageList)
-BuildRequires:  cmake(KF5MessageViewer)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
 BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TemplateParser)
 BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Tnef)
-BuildRequires:  cmake(KF5WebEngineViewer)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5AkonadiSearch)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5Gravatar)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5Ldap)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailCommon)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KPim5MessageComposer)
+BuildRequires:  cmake(KPim5MessageCore)
+BuildRequires:  cmake(KPim5MessageList)
+BuildRequires:  cmake(KPim5MessageViewer)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5TemplateParser)
+BuildRequires:  cmake(KPim5TextEdit)
+BuildRequires:  cmake(KPim5Tnef)
+BuildRequires:  cmake(KPim5WebEngineViewer)
 BuildRequires:  cmake(QGpgme)
-BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
@@ -110,7 +107,7 @@ Recommends:     pim-sieve-editor
 Provides:       kmail5 = %{version}
 Obsoletes:      kmail5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 %if %{with released}
 %requires_eq    libKF5PimCommon5
 %requires_eq    libKF5PimCommonAkonadi5
