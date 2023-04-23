@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 21 14:56:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Improve handling of non-existing files on the filechooser
+    portal
+  + Minor debugging improvements to the backgrounds portal
+  + More precise initialization timing
+  + Fix duplicate monitor and window streams
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 20 09:11:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
