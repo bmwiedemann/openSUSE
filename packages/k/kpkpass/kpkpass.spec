@@ -17,8 +17,9 @@
 
 
 %bcond_without released
+%define libname libKPim5PkPass5
 Name:           kpkpass
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -34,25 +35,24 @@ BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
+Conflicts:      libKPimPkPass5 < %{version}
 
 %description
 kpkpass is a library to read and parse Apple Passbook files, such as the ones
 commonly used for hotel and flight reservations.
 
-%package -n libKPimPkPass5
+%package -n %{libname}
 Summary:        Library to parse Passbook files
-%if %{pkg_vcmp shared-mime-info < 2.2}
-Requires:       %{name}
-%endif
+%requires_eq    %{name}
 
-%description -n libKPimPkPass5
+%description -n %{libname}
 kpkpass is a library to read and parse Apple Passbook files, such as the ones
 commonly used for hotel and flight reservations. This package contains the
 library itself.
 
 %package devel
 Summary:        Development files for kpkpass
-Requires:       libKPimPkPass5 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       cmake(KF5Archive)
 
 %description devel
@@ -63,28 +63,29 @@ to build programs that use the kpkpass library.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-%ldconfig_scriptlets -n libKPimPkPass5
+%ldconfig_scriptlets -n %{libname}
 
-%if %{pkg_vcmp shared-mime-info < 2.2}
 %files
+%license LICENSES/*
+%if %{pkg_vcmp shared-mime-info < 2.2}
 %{_datadir}/mime/packages/application-vnd-apple-pkpass.xml
 %endif
-
-%files -n libKPimPkPass5
-%license LICENSES/*
-%{_kf5_libdir}/libKPimPkPass.so.*
 %{_kf5_debugdir}/*.categories
 
+%files -n %{libname}
+%{_kf5_libdir}/libKPim5PkPass.so.*
+
 %files devel
-%dir %{_includedir}/KPim/
-%{_includedir}/KPim/KPkPass/
+%dir %{_includedir}/KPim5/
+%{_includedir}/KPim5/KPkPass/
 %{_kf5_cmakedir}/KPimPkPass/
-%{_kf5_libdir}/libKPimPkPass.so
+%{_kf5_cmakedir}/KPim5PkPass/
+%{_kf5_libdir}/libKPim5PkPass.so
 
 %changelog
