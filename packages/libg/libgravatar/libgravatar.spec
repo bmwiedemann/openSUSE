@@ -16,11 +16,10 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
+%define libname libKPim5Gravatar5
 Name:           libgravatar
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -35,9 +34,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
@@ -45,26 +44,26 @@ BuildRequires:  cmake(Qt5Widgets)
 %description
 This package contains the debug categories for the libgravatar library.
 
-%package -n libKF5Gravatar5
+%package -n %{libname}
 Summary:        Libgravatar library for KDE PIM applications
 License:        LGPL-2.1-or-later
-Requires:       %{name}
+Requires:       libgravatar
+# Renamed
+Obsoletes:      libgravatar-lang <= 23.04.0
 
-%description -n libKF5Gravatar5
+%description -n %{libname}
 libgravatar adds support for downloading and displaying gravatars in
 applications.
-
-%ldconfig_scriptlets -n libKF5Gravatar5
 
 %package devel
 Summary:        Development package for libgravatar
 License:        LGPL-2.1-or-later
-Requires:       libKF5Gravatar5 = %{version}
+Requires:       %{libname} = %{version}
 
 %description devel
 The development package for the libgravatar library.
 
-%lang_package
+%lang_package -n %{libname}
 
 %prep
 %autosetup -p1
@@ -77,22 +76,26 @@ The development package for the libgravatar library.
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{libname} --with-man --all-name
+
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %{_kf5_debugdir}/libgravatar.categories
 %{_kf5_debugdir}/libgravatar.renamecategories
 
-%files -n libKF5Gravatar5
+%files -n %{libname}
 %license LICENSES/*
-%{_libdir}/libKF5Gravatar.so.*
+%{_libdir}/libKPim5Gravatar.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/Gravatar/
 %{_kf5_cmakedir}/KF5Gravatar/
-%{_kf5_includedir}/Gravatar/
-%{_kf5_libdir}/libKF5Gravatar.so
+%{_kf5_cmakedir}/KPim5Gravatar/
+%{_kf5_libdir}/libKPim5Gravatar.so
 %{_kf5_mkspecsdir}/qt_Gravatar.pri
 
-%files lang -f %{name}.lang
+%files -n %{libname}-lang -f %{libname}.lang
 
 %changelog
