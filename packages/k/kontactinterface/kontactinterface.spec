@@ -17,11 +17,9 @@
 
 
 %define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kontactinterface
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
@@ -39,55 +37,59 @@ BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
+BuildRequires:  cmake(Qt5X11Extras)
 
 %description
 This package contains additional libraries for KDE PIM applications.
 
-%package -n libKF5KontactInterface5
+%package -n libKPim5KontactInterface5
 Summary:        KDE PIM Libraries: Interface to Contacts
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
+# Renamed
+Obsoletes:      kontactinterface-lang <= 23.04.0
 
-%description  -n libKF5KontactInterface5
+%description  -n libKPim5KontactInterface5
 This package provides the interface to contacts for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       libKF5KontactInterface5 = %{version}
+Requires:       libKPim5KontactInterface5 = %{version}
 Requires:       cmake(KF5Parts) >= %{kf5_version}
 
 %description devel
 This package contains necessary include files and libraries needed
 to develop KDE PIM applications.
 
-%lang_package
+%lang_package -n libKPim5KontactInterface5
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang libKPim5KontactInterface5 --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5KontactInterface5
+%ldconfig_scriptlets -n libKPim5KontactInterface5
 
-%files -n libKF5KontactInterface5
+%files -n libKPim5KontactInterface5
 %license LICENSES/*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/libKF5KontactInterface.so.*
+%{_kf5_libdir}/libKPim5KontactInterface.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KontactInterface/
 %{_kf5_cmakedir}/KF5KontactInterface/
-%{_kf5_includedir}/KontactInterface/
-%{_kf5_libdir}/libKF5KontactInterface.so
+%{_kf5_cmakedir}/KPim5KontactInterface/
+%{_kf5_libdir}/libKPim5KontactInterface.so
 %{_kf5_mkspecsdir}/qt_KontactInterface.pri
 
-%files lang -f %{name}.lang
+%files -n libKPim5KontactInterface5-lang -f libKPim5KontactInterface5.lang
 
 %changelog
