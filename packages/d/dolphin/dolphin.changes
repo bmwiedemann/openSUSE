@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 15 08:45:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:42:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+- Rebase patches:
+  * dolphin-go_up.diff
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
 Tue Feb 28 09:45:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 22.12.3

@@ -7,16 +7,16 @@ This reverts commit 0bdd8e0b0516555c6233fdc7901e9b417cf89791.
 We ship a desktop file to open dolphin as root and we allow YaST on the
 desktop. So this patch is absolutely pointless for us.
 ---
- src/main.cpp | 13 -------------
- 1 file changed, 13 deletions(-)
+ src/main.cpp | 11 -------------
+ 1 file changed, 11 deletions(-)
 
-Index: dolphin-19.11.70git.20220102T020350~f386f848d/src/main.cpp
+Index: dolphin-19.11.70git.20230131T022613~e4e68b90b/src/main.cpp
 ===================================================================
---- dolphin-19.11.70git.20220102T020350~f386f848d.orig/src/main.cpp	2022-01-02 09:31:36.170555336 +0100
-+++ dolphin-19.11.70git.20220102T020350~f386f848d/src/main.cpp	2022-01-02 09:32:45.570093055 +0100
-@@ -33,31 +33,8 @@
- #include <QDBusConnectionInterface>
- #include <QSessionManager>
+--- dolphin-19.11.70git.20230131T022613~e4e68b90b.orig/src/main.cpp	2023-01-31 03:26:13.000000000 +0100
++++ dolphin-19.11.70git.20230131T022613~e4e68b90b/src/main.cpp	2023-01-31 07:40:48.073527099 +0100
+@@ -43,25 +43,8 @@
+ #endif
+ #endif
  
 -#ifndef Q_OS_WIN
 -#include <unistd.h>
@@ -29,16 +29,10 @@ Index: dolphin-19.11.70git.20220102T020350~f386f848d/src/main.cpp
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
 -    if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Running Dolphin with sudo can cause bugs and expose you to security vulnerabilities. "
--                         "Instead use Dolphin normally and you will be prompted for elevated privileges when "
--                         "performing file operations that require them."
--                      << std::endl;
+-            std::cout << "Running Dolphin with sudo can cause bugs and expose you to security vulnerabilities." << std::endl;
 -            return EXIT_FAILURE;
 -        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Running Dolphin with kdesu can cause bugs and expose you to security vulnerabilities. "
--                         "Instead use Dolphin normally and you will be prompted for elevated privileges when "
--                         "performing file operations that require them."
--                      << std::endl;
+-            std::cout << "Running Dolphin with kdesu can cause bugs and expose you to security vulnerabilities." << std::endl;
 -            return EXIT_FAILURE;
 -        }
 -    }

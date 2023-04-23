@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -64,6 +62,7 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 Requires:       baloo5-kioslaves
 Requires:       dolphin-part = %{version}-%{release}
 Recommends:     kio-extras5
@@ -75,7 +74,9 @@ This package contains the default file manager of KDE Workspaces.
 
 %package part
 Summary:        KDE File Manager
+%if %{with released}
 %requires_ge    kio
+%endif
 Obsoletes:      dolphin5-part
 
 %description part
@@ -95,6 +96,15 @@ Provides:       dolphin5-devel = %{version}
 
 %description devel
 This package contains the libraries used by Dolphin and Konqueror.
+
+%package zsh-completion
+Summary:        ZSH completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH command line completion support for %{name}.
 
 %package -n %{name}-part-lang
 Summary:        Translations for package %{name}
@@ -161,6 +171,11 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphi
 
 %files -n libdolphinvcs5
 %{_kf5_libdir}/libdolphinvcs.so.*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_dolphin
 
 %files devel
 %{_includedir}/dolphinvcs_export.h
