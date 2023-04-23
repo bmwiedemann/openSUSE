@@ -31,7 +31,7 @@ Index: doc/coreutils.texi
  * hostid invocation::            Print numeric host identifier
  * uptime invocation::            Print system uptime and load
  
-@@ -16203,7 +16201,6 @@ information.
+@@ -16227,7 +16225,6 @@ information.
  * arch invocation::             Print machine hardware name.
  * nproc invocation::            Print the number of processors.
  * uname invocation::            Print system information.
@@ -39,7 +39,7 @@ Index: doc/coreutils.texi
  * hostid invocation::           Print numeric host identifier.
  * uptime invocation::           Print system uptime and load.
  @end menu
-@@ -17094,15 +17091,6 @@ Note this is non-portable (even across G
+@@ -17118,15 +17115,6 @@ Note this is non-portable (even across G
  Print the machine hardware name (sometimes called the hardware class
  or hardware type).
  
@@ -55,7 +55,7 @@ Index: doc/coreutils.texi
  @item -p
  @itemx --processor
  @opindex -p
-@@ -17156,34 +17144,6 @@ Print the kernel version.
+@@ -17180,34 +17168,6 @@ Print the kernel version.
  
  @exitstatus
  

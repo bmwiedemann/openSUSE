@@ -37,7 +37,7 @@ Index: tests/misc/help-version.sh
 ===================================================================
 --- tests/misc/help-version.sh.orig
 +++ tests/misc/help-version.sh
-@@ -240,6 +240,7 @@ parted_setup () { args="-s $tmp_in mklab
+@@ -241,6 +241,7 @@ parted_setup () { args="-s $tmp_in mklab
  for i in $built_programs; do
    # Skip these.
    case $i in chroot|stty|tty|false|chcon|runcon|coreutils) continue;; esac

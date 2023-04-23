@@ -33,7 +33,7 @@ Index: doc/coreutils.texi
  Delaying
  
  * sleep invocation::             Delay for a specified time
-@@ -18604,90 +18598,6 @@ timeout -s INT 5s env --ignore-signal=IN
+@@ -18628,90 +18622,6 @@ timeout -s INT 5s env --ignore-signal=IN
  timeout -s INT -k 3s 5s env --ignore-signal=INT sleep 20
  @end example
  

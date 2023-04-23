@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Apr 20 09:19:20 UTC 2023 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- update to 9.3:
+  Bug fixes:
+  * cp --reflink=auto (the default), mv, and install
+    will again fall back to a standard copy in more cases.
+    Previously copies could fail with permission errors on
+    more restricted systems like android or containers etc.
+    [bug introduced in coreutils-9.2]
+  * cp --recursive --backup will again operate correctly.
+    Previousy it may have issued "File exists" errors when
+    it failed to appropriately rename files being replaced.
+    [bug introduced in coreutils-9.2]
+  * date --file and dircolors will now diagnose a failure to read a file.
+    Previously they would have silently ignored the failure.
+    [This bug was present in "the beginning".]
+  * md5sum --check again correctly prints the status of each file checked.
+    Previously the status for files was printed as 'OK' once any file had passed.
+    This also applies to cksum, sha*sum, and b2sum.
+    [bug introduced in coreutils-9.2]
+  * wc will now diagnose if any total counts have overflowed.
+    [This bug was present in "the beginning".]
+  * `wc -c` will again correctly update the read offset of inputs.
+    Previously it deduced the size of inputs while leaving the offset unchanged.
+    [bug introduced in coreutils-8.27]
+  * Coreutils programs no longer fail for timestamps past the year 2038
+    on obsolete configurations with 32-bit signed time_t, because the
+    build procedure now rejects these configurations.
+    [This bug was present in "the beginning".]
+  Changes in behavior:
+  * 'cp -n' and 'mv -n' now issue an error diagnostic if skipping a file,
+    to correspond with -n inducing a nonzero exit status as of coreutils 9.2.
+    Similarly 'cp -v' and 'mv -v' will output a message for each file skipped
+    due to -n, -i, or -u.
+  New features:
+  * cp and mv now support --update=none to always skip existing files
+    in the destination, while not affecting the exit status.
+    This is equivalent to the --no-clobber behavior from before v9.2.
+- drop fix-reflink-fallback.patch (upstream).
+
+-------------------------------------------------------------------
 Thu Apr  6 16:12:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add fix-reflink-fallback.patch (bsc#1210033)

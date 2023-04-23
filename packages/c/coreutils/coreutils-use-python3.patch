@@ -1,3 +1,7 @@
+---
+ tests/du/move-dir-while-traversing.sh |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
 Index: tests/du/move-dir-while-traversing.sh
 ===================================================================
 --- tests/du/move-dir-while-traversing.sh.orig

@@ -4,38 +4,38 @@ Date: Mon, 4 Oct 2021 08:54:37 +0200
 Subject: [PATCH] coreutils-i18n.patch
 
 ---
- bootstrap.conf              |   1 +
- configure.ac                |   2 +
- lib/linebuffer.h            |   8 +
- lib/mbfile.c                |   3 +
- lib/mbfile.h                | 255 ++++++++++++
- m4/mbfile.m4                |  14 +
- src/cut.c                   | 508 +++++++++++++++++++++--
- src/expand-common.c         | 114 ++++++
- src/expand-common.h         |  12 +
- src/expand.c                |  90 +++-
- src/fold.c                  | 312 ++++++++++++--
- src/join.c                  | 359 ++++++++++++++--
- src/local.mk                |   4 +-
- src/pr.c                    | 443 ++++++++++++++++++--
- src/sort.c                  | 792 +++++++++++++++++++++++++++++++++---
- src/unexpand.c              | 102 ++++-
- src/uniq.c                  | 119 +++++-
- tests/Coreutils.pm          |   3 +
- tests/expand/mb.sh          | 183 +++++++++
- tests/i18n/sort.sh          |  29 ++
- tests/local.mk              |   4 +
- tests/misc/expand.pl        |  42 ++
- tests/misc/fold.pl          |  50 ++-
- tests/misc/join.pl          |  50 +++
- tests/misc/sort-mb-tests.sh |  45 ++
- tests/misc/sort-merge.pl    |  42 ++
- tests/misc/sort.pl          |  40 +-
- tests/misc/unexpand.pl      |  39 ++
- tests/misc/uniq.pl          |  55 +++
- tests/pr/pr-tests.pl        |  49 +++
- tests/unexpand/mb.sh        | 172 ++++++++
- 31 files changed, 3699 insertions(+), 242 deletions(-)
+ bootstrap.conf              |    1 
+ configure.ac                |    2 
+ lib/linebuffer.h            |    8 
+ lib/mbfile.c                |    3 
+ lib/mbfile.h                |  255 ++++++++++++++
+ m4/mbfile.m4                |   14 
+ src/cut.c                   |  508 ++++++++++++++++++++++++++--
+ src/expand-common.c         |  114 ++++++
+ src/expand-common.h         |   12 
+ src/expand.c                |   90 ++++
+ src/fold.c                  |  312 +++++++++++++++--
+ src/join.c                  |  236 +++++++++++--
+ src/local.mk                |    4 
+ src/pr.c                    |  443 ++++++++++++++++++++++--
+ src/sort.c                  |  793 +++++++++++++++++++++++++++++++++++++++++---
+ src/unexpand.c              |  102 ++++-
+ src/uniq.c                  |  119 ++++++
+ tests/Coreutils.pm          |    3 
+ tests/expand/mb.sh          |  183 ++++++++++
+ tests/i18n/sort.sh          |   29 +
+ tests/local.mk              |    4 
+ tests/misc/expand.pl        |   42 ++
+ tests/misc/fold.pl          |   50 ++
+ tests/misc/join.pl          |   50 ++
+ tests/misc/sort-mb-tests.sh |   45 ++
+ tests/misc/sort-merge.pl    |   42 ++
+ tests/misc/sort.pl          |   40 ++
+ tests/misc/unexpand.pl      |   39 ++
+ tests/misc/uniq.pl          |   55 +++
+ tests/pr/pr-tests.pl        |   49 ++
+ tests/unexpand/mb.sh        |  172 +++++++++
+ 31 files changed, 3600 insertions(+), 219 deletions(-)
  create mode 100644 lib/mbfile.c
  create mode 100644 lib/mbfile.h
  create mode 100644 m4/mbfile.m4
@@ -44,10 +44,10 @@ Subject: [PATCH] coreutils-i18n.patch
  create mode 100755 tests/misc/sort-mb-tests.sh
  create mode 100755 tests/unexpand/mb.sh
 
-Index: coreutils-9.2/bootstrap.conf
+Index: bootstrap.conf
 ===================================================================
---- coreutils-9.2.orig/bootstrap.conf
-+++ coreutils-9.2/bootstrap.conf
+--- bootstrap.conf.orig
++++ bootstrap.conf
 @@ -165,6 +165,7 @@ gnulib_modules="
    maintainer-makefile
    malloc-gnu
@@ -56,10 +56,10 @@ Index: coreutils-9.2/bootstrap.conf
    mbrlen
    mbrtowc
    mbsalign
-Index: coreutils-9.2/configure.ac
+Index: configure.ac
 ===================================================================
---- coreutils-9.2.orig/configure.ac
-+++ coreutils-9.2/configure.ac
+--- configure.ac.orig
++++ configure.ac
 @@ -477,6 +477,8 @@ fi
  # I'm leaving it here for now.  This whole thing needs to be modernized...
  gl_WINSIZE_IN_PTEM
@@ -69,10 +69,10 @@ Index: coreutils-9.2/configure.ac
  gl_HEADER_TIOCGWINSZ_IN_TERMIOS_H
  
  if test $gl_cv_sys_tiocgwinsz_needs_termios_h = no && \
-Index: coreutils-9.2/lib/linebuffer.h
+Index: lib/linebuffer.h
 ===================================================================
---- coreutils-9.2.orig/lib/linebuffer.h
-+++ coreutils-9.2/lib/linebuffer.h
+--- lib/linebuffer.h.orig
++++ lib/linebuffer.h
 @@ -22,6 +22,11 @@
  # include "idx.h"
  # include <stdio.h>
@@ -95,18 +95,18 @@ Index: coreutils-9.2/lib/linebuffer.h
  };
  
  /* Initialize linebuffer LINEBUFFER for use. */
-Index: coreutils-9.2/lib/mbfile.c
+Index: lib/mbfile.c
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/lib/mbfile.c
++++ lib/mbfile.c
 @@ -0,0 +1,3 @@
 +#include <config.h>
 +#define MBFILE_INLINE _GL_EXTERN_INLINE
 +#include "mbfile.h"
-Index: coreutils-9.2/lib/mbfile.h
+Index: lib/mbfile.h
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/lib/mbfile.h
++++ lib/mbfile.h
 @@ -0,0 +1,255 @@
 +/* Multibyte character I/O: macros for multi-byte encodings.
 +   Copyright (C) 2001, 2005, 2009-2015 Free Software Foundation, Inc.
@@ -363,10 +363,10 @@ Index: coreutils-9.2/lib/mbfile.h
 +_GL_INLINE_HEADER_BEGIN
 +
 +#endif /* _MBFILE_H */
-Index: coreutils-9.2/m4/mbfile.m4
+Index: m4/mbfile.m4
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/m4/mbfile.m4
++++ m4/mbfile.m4
 @@ -0,0 +1,14 @@
 +# mbfile.m4 serial 7
 +dnl Copyright (C) 2005, 2008-2015 Free Software Foundation, Inc.
@@ -382,10 +382,10 @@ Index: coreutils-9.2/m4/mbfile.m4
 +  AC_REQUIRE([AC_TYPE_MBSTATE_T])
 +  :
 +])
-Index: coreutils-9.2/src/cut.c
+Index: src/cut.c
 ===================================================================
---- coreutils-9.2.orig/src/cut.c
-+++ coreutils-9.2/src/cut.c
+--- src/cut.c.orig
++++ src/cut.c
 @@ -28,6 +28,11 @@
  #include <assert.h>
  #include <getopt.h>
@@ -1042,10 +1042,10 @@ Index: coreutils-9.2/src/cut.c
  
  
    if (have_read_stdin && fclose (stdin) == EOF)
-Index: coreutils-9.2/src/expand-common.c
+Index: src/expand-common.c
 ===================================================================
---- coreutils-9.2.orig/src/expand-common.c
-+++ coreutils-9.2/src/expand-common.c
+--- src/expand-common.c.orig
++++ src/expand-common.c
 @@ -19,6 +19,7 @@
  #include <assert.h>
  #include <stdio.h>
@@ -1174,10 +1174,10 @@ Index: coreutils-9.2/src/expand-common.c
  /* Add the comma or blank separated list of tab stops STOPS
     to the list of tab stops.  */
  extern void
-Index: coreutils-9.2/src/expand-common.h
+Index: src/expand-common.h
 ===================================================================
---- coreutils-9.2.orig/src/expand-common.h
-+++ coreutils-9.2/src/expand-common.h
+--- src/expand-common.h.orig
++++ src/expand-common.h
 @@ -25,6 +25,18 @@ extern size_t max_column_width;
  /* The desired exit status.  */
  extern int exit_status;
@@ -1197,10 +1197,10 @@ Index: coreutils-9.2/src/expand-common.h
  /* Add tab stop TABVAL to the end of 'tab_list'.  */
  extern void
  add_tab_stop (uintmax_t tabval);
-Index: coreutils-9.2/src/expand.c
+Index: src/expand.c
 ===================================================================
---- coreutils-9.2.orig/src/expand.c
-+++ coreutils-9.2/src/expand.c
+--- src/expand.c.orig
++++ src/expand.c
 @@ -37,6 +37,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -1353,10 +1353,10 @@ Index: coreutils-9.2/src/expand.c
      }
  }
  
-Index: coreutils-9.2/src/fold.c
+Index: src/fold.c
 ===================================================================
---- coreutils-9.2.orig/src/fold.c
-+++ coreutils-9.2/src/fold.c
+--- src/fold.c.orig
++++ src/fold.c
 @@ -22,12 +22,34 @@
  #include <getopt.h>
  #include <sys/types.h>
@@ -1759,10 +1759,10 @@ Index: coreutils-9.2/src/fold.c
            break;
  
          case 's':		/* Break at word boundaries. */
-Index: coreutils-9.2/src/join.c
+Index: src/join.c
 ===================================================================
---- coreutils-9.2.orig/src/join.c
-+++ coreutils-9.2/src/join.c
+--- src/join.c.orig
++++ src/join.c
 @@ -22,19 +22,33 @@
  #include <sys/types.h>
  #include <getopt.h>
@@ -2095,10 +2095,10 @@ Index: coreutils-9.2/src/join.c
            }
            break;
  
-Index: coreutils-9.2/src/local.mk
+Index: src/local.mk
 ===================================================================
---- coreutils-9.2.orig/src/local.mk
-+++ coreutils-9.2/src/local.mk
+--- src/local.mk.orig
++++ src/local.mk
 @@ -438,8 +438,8 @@ src_base32_CPPFLAGS = -DBASE_TYPE=32 $(A
  src_basenc_SOURCES = src/basenc.c
  src_basenc_CPPFLAGS = -DBASE_TYPE=42 $(AM_CPPFLAGS)
@@ -2110,10 +2110,10 @@ Index: coreutils-9.2/src/local.mk
  
  src_wc_SOURCES = src/wc.c
  if USE_AVX2_WC_LINECOUNT
-Index: coreutils-9.2/src/pr.c
+Index: src/pr.c
 ===================================================================
---- coreutils-9.2.orig/src/pr.c
-+++ coreutils-9.2/src/pr.c
+--- src/pr.c.orig
++++ src/pr.c
 @@ -311,6 +311,24 @@
  
  #include <getopt.h>
@@ -2876,10 +2876,10 @@ Index: coreutils-9.2/src/pr.c
  /* We've just printed some files and need to clean up things before
     looking for more options and printing the next batch of files.
  
-Index: coreutils-9.2/src/sort.c
+Index: src/sort.c
 ===================================================================
---- coreutils-9.2.orig/src/sort.c
-+++ coreutils-9.2/src/sort.c
+--- src/sort.c.orig
++++ src/sort.c
 @@ -29,6 +29,14 @@
  #include <sys/wait.h>
  #include <signal.h>
@@ -3952,10 +3952,10 @@ Index: coreutils-9.2/src/sort.c
            }
            break;
  
-Index: coreutils-9.2/src/unexpand.c
+Index: src/unexpand.c
 ===================================================================
---- coreutils-9.2.orig/src/unexpand.c
-+++ coreutils-9.2/src/unexpand.c
+--- src/unexpand.c.orig
++++ src/unexpand.c
 @@ -38,6 +38,9 @@
  #include <stdio.h>
  #include <getopt.h>
@@ -4157,10 +4157,10 @@ Index: coreutils-9.2/src/unexpand.c
      }
  }
  
-Index: coreutils-9.2/src/uniq.c
+Index: src/uniq.c
 ===================================================================
---- coreutils-9.2.orig/src/uniq.c
-+++ coreutils-9.2/src/uniq.c
+--- src/uniq.c.orig
++++ src/uniq.c
 @@ -21,6 +21,17 @@
  #include <getopt.h>
  #include <sys/types.h>
@@ -4322,10 +4322,10 @@ Index: coreutils-9.2/src/uniq.c
    skip_chars = 0;
    skip_fields = 0;
    check_chars = SIZE_MAX;
-Index: coreutils-9.2/tests/Coreutils.pm
+Index: tests/Coreutils.pm
 ===================================================================
---- coreutils-9.2.orig/tests/Coreutils.pm
-+++ coreutils-9.2/tests/Coreutils.pm
+--- tests/Coreutils.pm.orig
++++ tests/Coreutils.pm
 @@ -269,6 +269,9 @@ sub run_tests ($$$$$)
        # Yes, this is an arbitrary limit.  If it causes trouble,
        # consider removing it.
@@ -4336,10 +4336,10 @@ Index: coreutils-9.2/tests/Coreutils.pm
        if ($max < length $test_name)
          {
            warn "$program_name: $test_name: test name is too long (> $max)\n";
-Index: coreutils-9.2/tests/expand/mb.sh
+Index: tests/expand/mb.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/tests/expand/mb.sh
++++ tests/expand/mb.sh
 @@ -0,0 +1,183 @@
 +#!/bin/sh
 +
@@ -4524,10 +4524,10 @@ Index: coreutils-9.2/tests/expand/mb.sh
 +compare exp out > /dev/null 2>&1 || fail=1
 +
 +exit $fail
-Index: coreutils-9.2/tests/i18n/sort.sh
+Index: tests/i18n/sort.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/tests/i18n/sort.sh
++++ tests/i18n/sort.sh
 @@ -0,0 +1,29 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4558,11 +4558,11 @@ Index: coreutils-9.2/tests/i18n/sort.sh
 +
 +
 +Exit $fail
-Index: coreutils-9.2/tests/local.mk
+Index: tests/local.mk
 ===================================================================
---- coreutils-9.2.orig/tests/local.mk
-+++ coreutils-9.2/tests/local.mk
-@@ -381,6 +381,8 @@ all_tests =					\
+--- tests/local.mk.orig
++++ tests/local.mk
+@@ -383,6 +383,8 @@ all_tests =					\
    tests/misc/sort-discrim.sh			\
    tests/misc/sort-files0-from.pl		\
    tests/misc/sort-float.sh			\
@@ -4571,7 +4571,7 @@ Index: coreutils-9.2/tests/local.mk
    tests/misc/sort-h-thousands-sep.sh		\
    tests/misc/sort-merge.pl			\
    tests/misc/sort-merge-fdlimit.sh		\
-@@ -582,6 +584,7 @@ all_tests =					\
+@@ -584,6 +586,7 @@ all_tests =					\
    tests/du/threshold.sh				\
    tests/du/trailing-slash.sh			\
    tests/du/two-args.sh				\
@@ -4579,7 +4579,7 @@ Index: coreutils-9.2/tests/local.mk
    tests/id/gnu-zero-uids.sh			\
    tests/id/no-context.sh			\
    tests/id/context.sh				\
-@@ -734,6 +737,7 @@ all_tests =					\
+@@ -736,6 +739,7 @@ all_tests =					\
    tests/touch/read-only.sh			\
    tests/touch/relative.sh			\
    tests/touch/trailing-slash.sh			\
@@ -4587,10 +4587,10 @@ Index: coreutils-9.2/tests/local.mk
    $(all_root_tests)
  
  # See tests/factor/create-test.sh.
-Index: coreutils-9.2/tests/misc/expand.pl
+Index: tests/misc/expand.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/expand.pl
-+++ coreutils-9.2/tests/misc/expand.pl
+--- tests/misc/expand.pl.orig
++++ tests/misc/expand.pl
 @@ -27,6 +27,15 @@ my $prog = 'expand';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4654,10 +4654,10 @@ Index: coreutils-9.2/tests/misc/expand.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.2/tests/misc/fold.pl
+Index: tests/misc/fold.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/fold.pl
-+++ coreutils-9.2/tests/misc/fold.pl
+--- tests/misc/fold.pl.orig
++++ tests/misc/fold.pl
 @@ -20,9 +20,18 @@ use strict;
  
  (my $program_name = $0) =~ s|.*/||;
@@ -4727,10 +4727,10 @@ Index: coreutils-9.2/tests/misc/fold.pl
 -my $prog = 'fold';
  my $fail = run_tests ($program_name, $prog, \@Tests, $save_temps, $verbose);
  exit $fail;
-Index: coreutils-9.2/tests/misc/join.pl
+Index: tests/misc/join.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/join.pl
-+++ coreutils-9.2/tests/misc/join.pl
+--- tests/misc/join.pl.orig
++++ tests/misc/join.pl
 @@ -25,6 +25,15 @@ my $limits = getlimits ();
  
  my $prog = 'join';
@@ -4797,10 +4797,10 @@ Index: coreutils-9.2/tests/misc/join.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.2/tests/misc/sort-mb-tests.sh
+Index: tests/misc/sort-mb-tests.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/tests/misc/sort-mb-tests.sh
++++ tests/misc/sort-mb-tests.sh
 @@ -0,0 +1,45 @@
 +#!/bin/sh
 +# Verify sort's multi-byte support.
@@ -4847,10 +4847,10 @@ Index: coreutils-9.2/tests/misc/sort-mb-tests.sh
 +compare exp out || { fail=1; cat out; }
 +
 +Exit $fail
-Index: coreutils-9.2/tests/misc/sort-merge.pl
+Index: tests/misc/sort-merge.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/sort-merge.pl
-+++ coreutils-9.2/tests/misc/sort-merge.pl
+--- tests/misc/sort-merge.pl.orig
++++ tests/misc/sort-merge.pl
 @@ -26,6 +26,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4907,10 +4907,10 @@ Index: coreutils-9.2/tests/misc/sort-merge.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.2/tests/misc/sort.pl
+Index: tests/misc/sort.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/sort.pl
-+++ coreutils-9.2/tests/misc/sort.pl
+--- tests/misc/sort.pl.orig
++++ tests/misc/sort.pl
 @@ -24,10 +24,15 @@ my $prog = 'sort';
  # Turn off localization of executable's output.
  @ENV{qw(LANGUAGE LANG LC_ALL)} = ('C') x 3;
@@ -4975,10 +4975,10 @@ Index: coreutils-9.2/tests/misc/sort.pl
  
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
-Index: coreutils-9.2/tests/misc/unexpand.pl
+Index: tests/misc/unexpand.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/unexpand.pl
-+++ coreutils-9.2/tests/misc/unexpand.pl
+--- tests/misc/unexpand.pl.orig
++++ tests/misc/unexpand.pl
 @@ -27,6 +27,14 @@ my $limits = getlimits ();
  
  my $prog = 'unexpand';
@@ -5032,10 +5032,10 @@ Index: coreutils-9.2/tests/misc/unexpand.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.2/tests/misc/uniq.pl
+Index: tests/misc/uniq.pl
 ===================================================================
---- coreutils-9.2.orig/tests/misc/uniq.pl
-+++ coreutils-9.2/tests/misc/uniq.pl
+--- tests/misc/uniq.pl.orig
++++ tests/misc/uniq.pl
 @@ -23,9 +23,17 @@ my $limits = getlimits ();
  my $prog = 'uniq';
  my $try = "Try '$prog --help' for more information.\n";
@@ -5108,10 +5108,10 @@ Index: coreutils-9.2/tests/misc/uniq.pl
  @Tests = add_z_variants \@Tests;
  @Tests = triple_test \@Tests;
  
-Index: coreutils-9.2/tests/pr/pr-tests.pl
+Index: tests/pr/pr-tests.pl
 ===================================================================
---- coreutils-9.2.orig/tests/pr/pr-tests.pl
-+++ coreutils-9.2/tests/pr/pr-tests.pl
+--- tests/pr/pr-tests.pl.orig
++++ tests/pr/pr-tests.pl
 @@ -24,6 +24,15 @@ use strict;
  my $prog = 'pr';
  my $normalize_strerror = "s/': .*/'/";
@@ -5177,10 +5177,10 @@ Index: coreutils-9.2/tests/pr/pr-tests.pl
  my $save_temps = $ENV{DEBUG};
  my $verbose = $ENV{VERBOSE};
  
-Index: coreutils-9.2/tests/unexpand/mb.sh
+Index: tests/unexpand/mb.sh
 ===================================================================
 --- /dev/null
-+++ coreutils-9.2/tests/unexpand/mb.sh
++++ tests/unexpand/mb.sh
 @@ -0,0 +1,172 @@
 +#!/bin/sh
 +

@@ -1304,4 +1304,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment>- add fix-reflink-fallback.patch (bsc#1210033)</comment>
     <requestid>1077762</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>06bdf95e5c0b9f4fdc1be08e8a00c7bf</srcmd5>
+    <version>9.3</version>
+    <time>1682282591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080972</requestid>
+  </revision>
 </revisionlist>
