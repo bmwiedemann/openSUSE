@@ -17,11 +17,9 @@
 
 
 %define kf5_version 5.90.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -49,6 +47,7 @@ BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kipi)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Purpose)
@@ -57,13 +56,18 @@ BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPipeWire)
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickControls2)
+BuildRequires:  cmake(Qt5QuickTemplates2)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(kColorPicker)
