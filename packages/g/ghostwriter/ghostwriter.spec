@@ -1,7 +1,7 @@
 #
 # spec file for package ghostwriter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,36 +16,38 @@
 #
 
 
+%bcond_without released
 Name:           ghostwriter
-Version:        2.1.6
+Version:        23.04.0
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
-Group:          Productivity/Text/Editors
 URL:            https://ghostwriter.kde.org
-Source:         https://github.com/KDE/ghostwriter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  gcc-c++
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5WebEngineCore)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5WebChannel)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(hunspell)
-Recommends:     %{name}-lang
 Recommends:     multimarkdown
-Suggests:       MultiMarkdown-5
-Suggests:       MultiMarkdown-6
-Suggests:       cmark
-Suggests:       discount
-Suggests:       pandoc
-Suggests:       texlive-context
-Suggests:       wkhtmltopdf
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 ghostwriter is a text editor for Markdown, which is a plain text
@@ -56,30 +58,26 @@ provides a relaxing, distraction-free writing environment.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-lrelease-qt5 %{name}.pro
-%qmake5 PREFIX=%{_prefix}
-%make_jobs
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-%qmake5_install
-%suse_update_desktop_file -r %{name} TextEditor
-%find_lang %{name} --with-qt
+%kf5_makeinstall -C build
+
+%find_lang %{name} --with-qt --with-man
 
 %files
-%license COPYING
-%doc README.md CREDITS.md
-%{_bindir}/ghostwriter
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/ghostwriter.appdata.xml
-%{_datadir}/applications/ghostwriter.desktop
-%{_datadir}/icons/hicolor/*
-%{_mandir}/man1/ghostwriter.1%{?ext_man}
+%license LICENSES/*
+%doc README.md
+%{_kf5_applicationsdir}/org.kde.ghostwriter.desktop
+%{_kf5_appstreamdir}/org.kde.ghostwriter.metainfo.xml
+%{_kf5_bindir}/ghostwriter
+%{_kf5_iconsdir}/hicolor/*/apps/ghostwriter.*
+%{_kf5_mandir}/man1/ghostwriter.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/ghostwriter
-%dir %{_datadir}/ghostwriter/translations
 
 %changelog
