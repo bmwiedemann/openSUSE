@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kmail-account-wizard
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,28 +30,28 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiMime)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Kross)
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5IMAP)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5Ldap)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
@@ -62,7 +60,7 @@ BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      akonadi_resources
 Obsoletes:      kdepim
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 An application which assists you with the configuration of accounts in KMail.
