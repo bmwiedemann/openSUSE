@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
@@ -31,12 +31,12 @@ Source2:        applications.keyring
 BuildRequires:  boost-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KontactInterface)
 BuildRequires:  cmake(KF5Runner)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5KontactInterface)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
@@ -77,10 +77,10 @@ job and personal life. You will never forget anything anymore.
 %{_kf5_iconsdir}/hicolor/scalable/apps/zanshin.svgz
 %{_kf5_kxmlguidir}/zanshin/
 %{_kf5_plugindir}/pim5/kontact/kontact_zanshinplugin.so
-%{_kf5_plugindir}/krunner_zanshin.so
 %{_kf5_plugindir}/zanshin_part.so
-%{_kf5_servicesdir}/plasma-runner-zanshin.desktop
-%{_kf5_servicesdir}/zanshin_part.desktop
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/krunner
+%{_kf5_plugindir}/kf5/krunner/org.kde.zanshin.so
 
 %files lang -f %{name}.lang
 
