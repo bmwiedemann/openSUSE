@@ -16,12 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.103.0
 %bcond_without released
 Name:           kdepim-runtime
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -38,15 +36,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_system-devel
-BuildRequires:  cmake(Libkolabxml) >= 1.1
+BuildRequires:  libkolabxml-devel >= 1.1
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
-BuildRequires:  cmake(KF5AkonadiNotes)
 BuildRequires:  cmake(KF5CalendarCore) >= %{kf5_version}
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
@@ -54,21 +46,27 @@ BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DAV)
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5Holidays) >= %{kf5_version}
-BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5Mbox)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
 BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(KPimGAPI)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5AkonadiNotes)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5GAPI)
+BuildRequires:  cmake(KPim5IMAP)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5Ldap)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KPim5Mbox)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Keychain)
@@ -76,7 +74,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 # Only the tomboy and ews resources need Qt5WebEngine
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
@@ -103,7 +101,7 @@ use PIM applications.
 %autosetup -p1 -n kdepim-runtime-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
 
 %cmake_build
 
@@ -126,7 +124,7 @@ use PIM applications.
 %{_kf5_dbusinterfacesdir}/*.xml
 %{_kf5_debugdir}/kdepim-runtime.categories
 %{_kf5_debugdir}/kdepim-runtime.renamecategories
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 %{_kf5_iconsdir}/hicolor/*/apps/akonadi-ews.png
 %endif
 %{_kf5_iconsdir}/hicolor/*/apps/ox.png
