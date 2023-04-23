@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -35,6 +35,9 @@
 # all          |       |    x    |
 # experimental |       |         |
 %bcond_without lite
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
+%bcond_without ringdisabled
+%endif
 %if %{with ringdisabled}
 %bcond_with full
 %bcond_with all
