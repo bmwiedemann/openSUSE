@@ -2520,4 +2520,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * big-endian-scroll.patch (forwarded request 1077015 from favogt)</comment>
     <requestid>1077032</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>d336c276a62c25fd8022f8a9c751c5cf</srcmd5>
+    <version>5.15.9+kde151</version>
+    <time>1682282595</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082064</requestid>
+  </revision>
 </revisionlist>
