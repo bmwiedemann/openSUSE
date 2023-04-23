@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:00:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde4, rebased upstream:
+  * qconnection_qnx_global_p.h: add missing Qt namespace
+  * Check nullptr before using pointer
+
+-------------------------------------------------------------------
 Mon Jan  9 09:23:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde0, rebased upstream:
