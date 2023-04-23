@@ -51,6 +51,7 @@ ExclusiveArch:  do-not-build
 %define pprefix python
 %define psuffix -test
 %endif
+%{?sle15_python_module_pythons}
 Name:           %{pprefix}-flit-core%{?psuffix}
 Version:        3.8.0
 Release:        0
