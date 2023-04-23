@@ -16,9 +16,10 @@
 #
 
 
+%global __requires_exclude qmlimport\\(kcmcolord.*
 %bcond_without released
 Name:           colord-kde
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE interfaces and session daemon to colord
 License:        GPL-2.0-or-later
@@ -33,9 +34,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Core)
@@ -46,7 +50,6 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       colord
-Recommends:     %{name}-lang
 # Enable calibrate functional if gnome-color-manager installed
 Suggests:       gnome-color-manager
 
@@ -69,13 +72,18 @@ Colord-kde provides KCM module and KDE daemon module for colord support.
 
 %files
 %license COPYING
-%doc MAINTAINERS TODO
+%doc MAINTAINERS
 %dir %{_kf5_plugindir}/kf5/kded
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings
+%dir %{_kf5_sharedir}/kpackage
+%dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_applicationsdir}/colordkdeiccimporter.desktop
 %{_kf5_bindir}/colord-kde-icc-importer
-%{_kf5_plugindir}/kcm_colord.so
-%{_kf5_servicesdir}/kcm_colord.desktop
 %{_kf5_plugindir}/kf5/kded/colord.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_colord.so
+%{_kf5_sharedir}/kpackage/kcms/kcm_colord/
 
 %files lang -f %{name}.lang
 
