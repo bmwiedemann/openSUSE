@@ -17,11 +17,9 @@
 
 
 %define rname audiocd-kio
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio_audiocd
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -78,26 +76,28 @@ This package contains the development files for the audiocd kio slave
 %license COPYING*
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/audiocd/
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol/audiocd/
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
 %dir %{_kf5_sharedir}/konqsidebartng
 %dir %{_kf5_sharedir}/konqsidebartng/virtual_folders
 %dir %{_kf5_sharedir}/konqsidebartng/virtual_folders/services
 %dir %{_kf5_sharedir}/solid
 %dir %{_kf5_sharedir}/solid/actions
+%{_kf5_applicationsdir}/kcm_audiocd.desktop
 %{_kf5_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
 %{_kf5_configkcfgdir}/audiocd_*_encoder.kcfg
 %{_kf5_debugdir}/kio_audiocd.categories
 %{_kf5_debugdir}/kio_audiocd.renamecategories
 %{_kf5_libdir}/libaudiocdplugins.so.*
-%{_kf5_plugindir}/kcm_audiocd.so
 %{_kf5_plugindir}/kf5/kio/audiocd.so
 %{_kf5_plugindir}/libaudiocd_encoder_*.so
-%{_kf5_servicesdir}/audiocd.desktop
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_audiocd.so
 %{_kf5_sharedir}/konqsidebartng/virtual_folders/services/audiocd.desktop
 %{_kf5_sharedir}/solid/actions/solid_audiocd.desktop
 
 %files devel
-%{_includedir}/audiocdencoder.h
-%{_includedir}/audiocdplugins_export.h
+%{_includedir}/audiocdplugins/
 %{_kf5_libdir}/libaudiocdplugins.so
 
 %files lang -f %{name}.lang
