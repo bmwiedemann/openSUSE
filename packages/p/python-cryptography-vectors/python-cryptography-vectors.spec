@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-cryptography-vectors
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
 Version:        40.0.2

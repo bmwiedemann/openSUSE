@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:23:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Sat Apr 15 10:18:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 40.0.2: 
   * Update test vectors to match python-cryptography 40.0.2
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:43 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
 Sun Mar 26 19:12:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
