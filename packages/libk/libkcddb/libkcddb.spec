@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkcddb
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
@@ -34,6 +32,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  libmusicbrainz5-devel
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
@@ -90,10 +89,10 @@ information over the Internet.
 
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/*/
+%{_kf5_applicationsdir}/kcm_cddb.desktop
 %{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/libkcddb.categories
 %{_kf5_plugindir}/
-%{_kf5_servicesdir}/
 
 %files -n libKF5Cddb5
 %license LICENSES/*
@@ -103,7 +102,6 @@ information over the Internet.
 %{_includedir}/KCddb5/
 %{_kf5_cmakedir}/KF5Cddb/
 %{_kf5_includedir}/KCddb/
-%{_kf5_includedir}/kcddb_version.h
 %{_kf5_libdir}/libKF5Cddb.so
 %{_kf5_mkspecsdir}/qt_KCddb.pri
 
