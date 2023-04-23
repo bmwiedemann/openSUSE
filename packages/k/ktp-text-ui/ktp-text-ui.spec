@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ktp-text-ui
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Telepathy chat handler by KDE
 License:        GPL-2.0-or-later
@@ -63,7 +61,7 @@ Obsoletes:      %{name}-devel
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Includes KDE's implementation of the Telepathy chat handler,
