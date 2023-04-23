@@ -18,11 +18,9 @@
 
 %define soversion 8
 %define kf5_version 5.90.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           analitza
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
