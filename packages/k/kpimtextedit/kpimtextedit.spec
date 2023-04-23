@@ -16,11 +16,10 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define libname libKPim5TextEdit5
 %bcond_without released
 Name:           kpimtextedit
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -32,17 +31,18 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DesignerPlugin)
-BuildRequires:  cmake(KF5Emoticons)
+BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
+BuildRequires:  cmake(KF5TextEditTextToSpeech)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
@@ -55,53 +55,58 @@ BuildRequires:  cmake(Qt5Widgets)
 This package contains the basic packages for KDE PIM applications, in
 particular those related to editing text, like email messages.
 
-%package -n libKF5PimTextEdit5
+%package -n %{libname}
 Summary:        KDE PIM Libraries: Text editing functionality
-Requires:       %{name}
+Requires:       kpimtextedit
+# Renamed
+Obsoletes:      kpimtextedit-lang <= 23.04.0
 
-%description  -n libKF5PimTextEdit5
+%description  -n %{libname}
 This package provides text editing functionality for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       libKF5PimTextEdit5 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       cmake(KF5SyntaxHighlighting)
 Requires:       cmake(KF5TextWidgets)
+Requires:       cmake(KF5TextEditTextToSpeech)
 
 %description devel
 This package contains necessary include files and libraries needed
 to develop KDE PIM applications.
 
-%lang_package
+%lang_package -n %{libname}
 
 %prep
 %autosetup -p1 -n kpimtextedit-%{version}
 
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{libname} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5PimTextEdit5
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %{_kf5_debugdir}/kpimtextedit.categories
 
-%files -n libKF5PimTextEdit5
+%files -n %{libname}
 %license LICENSES/*
-%{_kf5_libdir}/libKF5PimTextEdit.so.*
+%{_kf5_libdir}/libKPim5TextEdit.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KPIMTextEdit/
 %{_kf5_cmakedir}/KF5PimTextEdit/
-%{_kf5_includedir}/KPIMTextEdit/
-%{_kf5_libdir}/libKF5PimTextEdit.so
+%{_kf5_cmakedir}/KPim5TextEdit/
+%{_kf5_libdir}/libKPim5TextEdit.so
 %{_kf5_mkspecsdir}/qt_KPIMTextEdit.pri
-%{_kf5_plugindir}/designer/kpimtexteditwidgets.so
+%{_kf5_plugindir}/designer/kpimtextedit5widgets.so
 
-%files lang -f %{name}.lang
+%files -n %{libname}-lang -f %{libname}.lang
 
 %changelog
