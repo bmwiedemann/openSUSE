@@ -16,11 +16,10 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
+%define libname libKPim5IncidenceEditor5
 Name:           incidenceeditor
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,54 +32,56 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KChart)
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
-BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KGantt)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5EventViews)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdentityManagement)
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5EventViews)
+BuildRequires:  cmake(KPim5Ldap)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailTransportAkonadi)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(KF5PimCommonAkonadi)
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 This package contains the incidenceeditor library.
 
-%package -n libKF5IncidenceEditor5
+%package -n %{libname}
 Summary:        Incidenceeditor Library
 License:        LGPL-2.1-or-later
-Requires:       %{name} >= %{version}
-Obsoletes:      libKF5IncidenceEditorsng5 < %{version}
-Provides:       libKF5IncidenceEditorsng5 = %{version}
+Requires:       incidenceeditor >= %{version}
+# Renamed
+Obsoletes:      incidenceeditor-lang <= 23.04.0
 
-%description -n libKF5IncidenceEditor5
+%description -n %{libname}
 The IncidenceEditor library for KDE PIM applications.
 
 %package devel
 Summary:        Development package for incidenceeditor
 License:        LGPL-2.1-or-later
-Requires:       libKF5IncidenceEditor5 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       cmake(KChart)
 Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KF5CalendarSupport)
-Requires:       cmake(KF5CalendarUtils)
-Requires:       cmake(KF5EventViews)
-Requires:       cmake(KF5MailTransport)
-Requires:       cmake(KF5Mime)
+Requires:       cmake(KPim5CalendarSupport)
+Requires:       cmake(KPim5CalendarUtils)
+Requires:       cmake(KPim5EventViews)
+Requires:       cmake(KPim5MailTransportAkonadi)
+Requires:       cmake(KPim5Mime)
 
 %description devel
 The development package for the incidenceeditor libraries.
 
-%lang_package
+%lang_package -n %{libname}
 
 %prep
 %autosetup -p1
@@ -93,24 +94,26 @@ The development package for the incidenceeditor libraries.
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{libname} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5IncidenceEditor5
-
-%files devel
-%{_kf5_cmakedir}/KF5IncidenceEditor/
-%{_kf5_includedir}/IncidenceEditor/
-%{_kf5_libdir}/libKF5IncidenceEditor.so
-%{_kf5_mkspecsdir}/qt_IncidenceEditor.pri
-
-%files -n libKF5IncidenceEditor5
-%license LICENSES/*
-%{_libdir}/libKF5IncidenceEditor.so.*
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %{_kf5_debugdir}/incidenceeditor.categories
 %{_kf5_debugdir}/incidenceeditor.renamecategories
 
-%files lang -f %{name}.lang
+%files -n %{libname}
+%license LICENSES/*
+%{_libdir}/libKPim5IncidenceEditor.so.*
+
+%files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/IncidenceEditor/
+%{_kf5_cmakedir}/KF5IncidenceEditor/
+%{_kf5_cmakedir}/KPim5IncidenceEditor/
+%{_kf5_libdir}/libKPim5IncidenceEditor.so
+%{_kf5_mkspecsdir}/qt_IncidenceEditor.pri
+
+%files -n %{libname}-lang -f %{libname}.lang
 
 %changelog
