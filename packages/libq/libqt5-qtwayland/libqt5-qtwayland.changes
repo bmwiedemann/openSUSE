@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:02:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde70, rebased upstream:
+  * Don't keep eglConfig in hardwareintegration
+  * Update the window geometry when changing decorations
+  * Fix build with -no-feature-tabletevent
+  * Fix wayland touch event to use time stamp from wayland compositor
+  * wayland touch event to add key modifier
+
+-------------------------------------------------------------------
 Thu Mar 16 08:17:47 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.8+kde63:

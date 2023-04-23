@@ -459,4 +459,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
     <requestid>1072582</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>3c50acd6b3c5ae4400f0a94e11f6e2e9</srcmd5>
+    <version>5.15.9+kde55</version>
+    <time>1682282610</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082092</requestid>
+  </revision>
 </revisionlist>
