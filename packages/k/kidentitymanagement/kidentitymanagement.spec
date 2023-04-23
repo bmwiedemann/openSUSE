@@ -16,12 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.103.0
 %bcond_without released
 Name:           kidentitymanagement
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -40,40 +38,44 @@ BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Emoticons) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KF5TextEditTextToSpeech)
 BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
+Conflicts:      libKF5IdentityManagement5 < %{version}
+Conflicts:      libKF5IdentityManagementWidgets5 < %{version}
 
 %description
 This package provides a library to handle multiple email identities and
 associated settings.
 
-%package -n libKF5IdentityManagement5
+%package -n libKPim5IdentityManagement5
 Summary:        KDE PIM Libraries: Identity Management - core library
 Recommends:     %{name}-lang
-Provides:       %{name} = %{version}
+%requires_eq    %{name}
 
-%description  -n libKF5IdentityManagement5
+%description  -n libKPim5IdentityManagement5
 This package provides the core library to handle multiple email identities and
 associated settings.
 
-%package -n libKF5IdentityManagementWidgets5
+%package -n libKPim5IdentityManagementWidgets5
 Summary:        KDE PIM Libraries: Identity Management - widgets library
 Recommends:     %{name}-lang
-Requires:       libKF5IdentityManagement5 = %{version}
+Requires:       libKPim5IdentityManagement5 = %{version}
 
-%description  -n libKF5IdentityManagementWidgets5
+%description  -n libKPim5IdentityManagementWidgets5
 This package provides graphical widgets to handle multiple email identities
 and associated settings.
 
 %package devel
 Summary:        KDE PIM Libraries: Identity Management - development files
-Requires:       libKF5IdentityManagement5 = %{version}
-Requires:       libKF5IdentityManagementWidgets5 = %{version}
+Requires:       libKPim5IdentityManagement5 = %{version}
+Requires:       libKPim5IdentityManagementWidgets5 = %{version}
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
-Requires:       cmake(KF5PimTextEdit)
+Requires:       cmake(KF5TextEditTextToSpeech)
+Requires:       cmake(KPim5TextEdit)
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -93,26 +95,29 @@ to develop applications that make use of multiple email identities.
 
 %find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5IdentityManagement5
-%ldconfig_scriptlets -n libKF5IdentityManagementWidgets5
+%ldconfig_scriptlets -n libKPim5IdentityManagement5
+%ldconfig_scriptlets -n libKPim5IdentityManagementWidgets5
 
-%files -n libKF5IdentityManagement5
+%files
 %license LICENSES/*
-%{_kf5_libdir}/libKF5IdentityManagement.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 
-%files -n libKF5IdentityManagementWidgets5
-%license LICENSES/*
-%{_kf5_libdir}/libKF5IdentityManagementWidgets.so.*
+%files -n libKPim5IdentityManagement5
+%{_kf5_libdir}/libKPim5IdentityManagement.so.*
+
+%files -n libKPim5IdentityManagementWidgets5
+%{_kf5_libdir}/libKPim5IdentityManagementWidgets.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KIdentityManagement/
+%{_includedir}/KPim5/KIdentityManagementWidgets/
 %{_kf5_cmakedir}/KF5IdentityManagement/
+%{_kf5_cmakedir}/KPim5IdentityManagement/
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.pim.IdentityManager.xml
-%{_kf5_includedir}/KIdentityManagement/
-%{_kf5_includedir}/KIdentityManagementWidgets/
-%{_kf5_libdir}/libKF5IdentityManagement.so
-%{_kf5_libdir}/libKF5IdentityManagementWidgets.so
+%{_kf5_libdir}/libKPim5IdentityManagement.so
+%{_kf5_libdir}/libKPim5IdentityManagementWidgets.so
 %{_kf5_mkspecsdir}/qt_KIdentityManagement.pri
 %{_kf5_mkspecsdir}/qt_KIdentityManagementWidgets.pri
 
