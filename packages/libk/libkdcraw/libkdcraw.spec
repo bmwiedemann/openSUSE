@@ -18,11 +18,9 @@
 
 %define _so 5
 %define lname libKF5KDcraw
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libkdcraw
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
@@ -79,7 +77,7 @@ programs.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DENABLE_LCMS2=true -DENABLE_RAWSPEED=true
+  %cmake_kf5 -d build
   %cmake_build
 
 %install
