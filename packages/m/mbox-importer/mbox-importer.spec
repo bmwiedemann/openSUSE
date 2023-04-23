@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 16.08 in KA, but 16.11.90 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           mbox-importer
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Tool for importing mbox archives into akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,18 +29,18 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5MailCommon)
-BuildRequires:  cmake(KF5MailImporter)
-BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5MailCommon)
+BuildRequires:  cmake(KPim5MailImporter)
+BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 This package contains a tool that can be used to import mbox archives
