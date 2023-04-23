@@ -1096,4 +1096,12 @@ This should fix the failures seen in Staging:E</comment>
     <comment>KDE Release Gear 22.12.3 (forwarded request 1068358 from krop)</comment>
     <requestid>1068893</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>8c505e19370829703b053b2d27f6df3c</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282811</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080687</requestid>
+  </revision>
 </revisionlist>
