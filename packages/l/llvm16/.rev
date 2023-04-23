@@ -55,4 +55,21 @@
 </comment>
     <requestid>1077796</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00be9586cc7c4f713e0a7e90e14ddea7</srcmd5>
+    <version>16.0.2</version>
+    <time>1682282629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.2.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Rebase check-no-llvm-exegesis.patch.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Relax requirements for clang-tools to allow installation of older
+  versions of libclang13 with the -devel package. (boo#1210176)
+- Enable ThinLTO for ARM 6/7/8 again. (boo#1178070)
+- bsc#1210383 - Add aarch64 to lldb platforms
+</comment>
+    <requestid>1082181</requestid>
+  </revision>
 </revisionlist>

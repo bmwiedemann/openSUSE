@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 16.0.1
+%define _relver 16.0.2
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  16.0
 %define _sonum  16
 %define _itsme16 1
 # Integer version used by update-alternatives
-%define _uaver  1601
+%define _uaver  1602
 %define _soclang 13
 %define _socxx  1
 
@@ -45,7 +45,7 @@
 %bcond_without use_lld
 %endif
 
-%ifarch x86_64
+%ifarch aarch64 x86_64
 %bcond_without lldb
 %bcond_without lldb_python
 %else
@@ -53,8 +53,7 @@
 %bcond_with lldb_python
 %endif
 
-# Disabled on ARM because it's awfully slow and often times out. (boo#1178070)
-%ifarch %{ix86} ppc64le s390x x86_64
+%ifarch %{arm} aarch64 %{ix86} ppc64le s390x x86_64
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
@@ -522,8 +521,8 @@ This package contains the clang (C language) frontend for LLVM.
 Summary:        Tools for Clang
 Group:          Development/Languages/C and C++
 URL:            https://clang-analyzer.llvm.org/
-# Avoid multiple provider errors
-Requires:       clang%{_sonum}
+# Can be used with older versions of Clang.
+Requires:       /usr/bin/clang
 # Some binaries used to be in the clang package.
 Conflicts:      clang5
 Conflicts:      clang6
@@ -744,7 +743,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python3-lldb%{_sonum}
-ExclusiveArch:  x86_64
 
 %description -n lldb%{_sonum}
 LLDB is a next generation, high-performance debugger. It is built as a set

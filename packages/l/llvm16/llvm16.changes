@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 21 21:07:38 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.2.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Rebase check-no-llvm-exegesis.patch.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
+Tue Apr 18 20:40:44 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Relax requirements for clang-tools to allow installation of older
+  versions of libclang13 with the -devel package. (boo#1210176)
+- Enable ThinLTO for ARM 6/7/8 again. (boo#1178070)
+
+-------------------------------------------------------------------
+Thu Apr 13 04:30:36 UTC 2023 - William Brown <william.brown@suse.com>
+
+- bsc#1210383 - Add aarch64 to lldb platforms
+
+-------------------------------------------------------------------
 Thu Apr  6 20:48:07 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.1.
