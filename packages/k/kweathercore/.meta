@@ -1,0 +1,11 @@
+<package name="kweathercore" project="openSUSE:Factory">
+  <title>Library to facilitate retrieval of weather information</title>
+  <description>Get weather forecast and alerts anywhere on the earth easy. KWeatherCore
+provides you a highly abstracted library for things related to weather:
+Get local weather forecast, get weather of a location by name or coordinate,
+get sunrise/set moonrise/set and many more informations about a location.
+
+</description>
+  <devel project="KDE:Applications" package="kweathercore"/>
+  <url>https://invent.kde.org/libraries/kweathercore</url>
+</package>
