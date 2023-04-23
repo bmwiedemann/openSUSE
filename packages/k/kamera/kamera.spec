@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kamera
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Digital camera support for KDE applications
 License:        LGPL-2.1-or-later
@@ -35,6 +33,7 @@ BuildRequires:  libgphoto2-devel
 BuildRequires:  oxygen-icon-theme-large
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
@@ -72,9 +71,10 @@ This package contains a KIO slave to access digital cameras.
 %ldconfig_scriptlets -n kio_kamera
 
 %files -n kio_kamera
-%license COPYING*
+%license LICENSES/*
 %doc README
 %dir %{_kf5_htmldir}/en/kcontrol
+%doc %lang(en) %{_kf5_htmldir}/en/kcontrol/kamera/
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kio
 %dir %{_kf5_plugindir}/plasma
@@ -82,11 +82,11 @@ This package contains a KIO slave to access digital cameras.
 %dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets
 %dir %{_kf5_sharedir}/solid/
 %dir %{_kf5_sharedir}/solid/actions/
-%doc %lang(en) %{_kf5_htmldir}/en/kcontrol/kamera/
-%{_kf5_applicationsdir}/kamera.desktop
+%{_kf5_applicationsdir}/kcm_kamera.desktop
 %{_kf5_appstreamdir}/org.kde.kamera.metainfo.xml
+%{_kf5_debugdir}/*.categories
 %{_kf5_plugindir}/kf5/kio/kio_kamera.so
-%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kamera.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kamera.so
 %{_kf5_sharedir}/solid/actions/solid_camera.desktop
 
 %files lang -f %{name}.lang
