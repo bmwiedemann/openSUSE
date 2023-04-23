@@ -1,0 +1,9 @@
+<package name="ktextaddons" project="openSUSE:Factory">
+  <title>Various text handling addons</title>
+  <description>KTextAddons provides libraries to work with texts, such as grammar checks,
+text to speech, or translations.
+
+</description>
+  <devel project="KDE:Applications" package="ktextaddons"/>
+  <url>https://www.kde.org</url>
+</package>
