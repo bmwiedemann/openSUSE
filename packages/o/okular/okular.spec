@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           okular
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -31,8 +29,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Compile-with-discount-3.patch
 %if 0
 # PATCH-FEATURE-OPENSUSE
 # PATCH-NEEDS-REBASE DISABLED as of 2021-04-10: needs rework (underlying code changed)
@@ -85,6 +81,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
 Provides:       okular5 = %{version}
@@ -132,6 +129,9 @@ Document viewing program; supports document in various formats
 
 %prep
 %autosetup -p1 -n okular-%{version}
+
+# No technical reason for requiring cmake 3.22. 15.4 only has 3.20
+sed -i 's#3.22#3.20#' CMakeLists.txt
 
 %build
 %ifarch ppc64

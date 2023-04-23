@@ -1284,4 +1284,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
   * 0001-Compile-with-discount-3.patch</comment>
     <requestid>1075077</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>07c0377f35b71b12cb008c0eaede9626</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282685</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080733</requestid>
+  </revision>
 </revisionlist>

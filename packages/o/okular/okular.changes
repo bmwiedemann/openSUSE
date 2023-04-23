@@ -1,8 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr 15 08:46:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Thu Mar 30 07:45:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Drop patch, now unneeded:
+  * 0001-Compile-with-discount-3.patch
+
+-------------------------------------------------------------------
 Tue Mar 28 22:24:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add Discount 3 compatibility patch:
   * 0001-Compile-with-discount-3.patch
+
+-------------------------------------------------------------------
+Fri Mar 17 20:44:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
 
 -------------------------------------------------------------------
 Tue Feb 28 09:46:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
