@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 16 09:25:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Change requirement of xdg-desktop-portal-wlr as a suggestion. This is
+  for if an alternative exists e.g. xdg-desktop-portal-hyprland
+
+-------------------------------------------------------------------
 Thu Apr  6 12:44:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix installation of manpages.

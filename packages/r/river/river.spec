@@ -54,7 +54,7 @@ Recommends:     libqt5-qtwayland
 Recommends:     libqt5-qtwayland-32bit
 Requires:       river-riverctl
 Requires:       river-rivertile
-Requires:       xdg-desktop-portal-wlr
+Suggests:       xdg-desktop-portal-wlr
 
 ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
 
