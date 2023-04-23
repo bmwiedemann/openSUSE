@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           messagelib
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -30,46 +28,45 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-fallback-path-in-MessageFactoryNG-applyCharset.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libgpgmepp-devel
 BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
-BuildRequires:  cmake(KF5AkonadiSearch)
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5GrantleeTheme)
-BuildRequires:  cmake(KF5Gravatar)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IMAP)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Libkleo)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5Mbox)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
+BuildRequires:  cmake(KF5TextAutoCorrection)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5AkonadiSearch)
+BuildRequires:  cmake(KPim5GrantleeTheme)
+BuildRequires:  cmake(KPim5Gravatar)
+BuildRequires:  cmake(KPim5IMAP)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5Ldap)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KPim5Mbox)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(QGpgme)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Concurrent)
@@ -81,8 +78,7 @@ BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-BuildRequires:  libboost_headers-devel
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 This package contains the messagelib library. It is used by KDE PIM to parse and
@@ -92,14 +88,13 @@ display emails.
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}
-Requires:       cmake(KF5Akonadi)
-Requires:       cmake(KF5AkonadiMime)
 Requires:       cmake(KF5Contacts)
-Requires:       cmake(KF5IdentityManagement)
 Requires:       cmake(KF5Libkleo)
-Requires:       cmake(KF5MessageCore)
-Requires:       cmake(KF5Mime)
 Requires:       cmake(KF5PimCommon)
+Requires:       cmake(KPim5Akonadi)
+Requires:       cmake(KPim5AkonadiMime)
+Requires:       cmake(KPim5IdentityManagement)
+Requires:       cmake(KPim5Mime)
 Requires:       cmake(Qt5WebEngineWidgets)
 
 %description devel
@@ -111,7 +106,7 @@ This package contains source headers for messagelib.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf5 -d build -- -DBUILD_TESTS=OFF
 %cmake_build
 
 %install
@@ -130,13 +125,13 @@ This package contains source headers for messagelib.
 %dir %{_kf5_sharedir}/org.kde.syntax-highlighting/syntax
 %{_kf5_sharedir}/org.kde.syntax-highlighting/syntax/kmail-template.xml
 %{_kf5_configkcfgdir}/*.kcfg
-%{_kf5_libdir}/libKF5MessageComposer.so.*
-%{_kf5_libdir}/libKF5MessageCore.so.*
-%{_kf5_libdir}/libKF5MessageList.so.*
-%{_kf5_libdir}/libKF5MessageViewer.so.*
-%{_kf5_libdir}/libKF5MimeTreeParser.so.*
-%{_kf5_libdir}/libKF5TemplateParser.so.*
-%{_kf5_libdir}/libKF5WebEngineViewer.so.*
+%{_kf5_libdir}/libKPim5MessageComposer.so.*
+%{_kf5_libdir}/libKPim5MessageCore.so.*
+%{_kf5_libdir}/libKPim5MessageList.so.*
+%{_kf5_libdir}/libKPim5MessageViewer.so.*
+%{_kf5_libdir}/libKPim5MimeTreeParser.so.*
+%{_kf5_libdir}/libKPim5TemplateParser.so.*
+%{_kf5_libdir}/libKPim5WebEngineViewer.so.*
 %{_kf5_notifydir}/messageviewer.notifyrc
 %dir %{_kf5_plugindir}/pim5
 %dir %{_kf5_plugindir}/pim5/messageviewer
@@ -150,21 +145,28 @@ This package contains source headers for messagelib.
 %{_kf5_sharedir}/messageviewer/
 
 %files devel
-%{_kf5_cmakedir}/KF5MessageComposer/
-%{_kf5_cmakedir}/KF5MessageCore/
-%{_kf5_cmakedir}/KF5MessageList/
-%{_kf5_cmakedir}/KF5MessageViewer/
-%{_kf5_cmakedir}/KF5MimeTreeParser/
-%{_kf5_cmakedir}/KF5TemplateParser/
-%{_kf5_cmakedir}/KF5WebEngineViewer/
-%{_kf5_includedir}/
-%{_kf5_libdir}/libKF5MessageComposer.so
-%{_kf5_libdir}/libKF5MessageCore.so
-%{_kf5_libdir}/libKF5MessageList.so
-%{_kf5_libdir}/libKF5MessageViewer.so
-%{_kf5_libdir}/libKF5MimeTreeParser.so
-%{_kf5_libdir}/libKF5TemplateParser.so
-%{_kf5_libdir}/libKF5WebEngineViewer.so
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/MessageComposer/
+%{_includedir}/KPim5/MessageCore/
+%{_includedir}/KPim5/MessageList/
+%{_includedir}/KPim5/MessageViewer/
+%{_includedir}/KPim5/MimeTreeParser/
+%{_includedir}/KPim5/TemplateParser/
+%{_includedir}/KPim5/WebEngineViewer/
+%{_kf5_cmakedir}/KPim5MessageComposer/
+%{_kf5_cmakedir}/KPim5MessageCore/
+%{_kf5_cmakedir}/KPim5MessageList/
+%{_kf5_cmakedir}/KPim5MessageViewer/
+%{_kf5_cmakedir}/KPim5MimeTreeParser/
+%{_kf5_cmakedir}/KPim5TemplateParser/
+%{_kf5_cmakedir}/KPim5WebEngineViewer/
+%{_kf5_libdir}/libKPim5MessageComposer.so
+%{_kf5_libdir}/libKPim5MessageCore.so
+%{_kf5_libdir}/libKPim5MessageList.so
+%{_kf5_libdir}/libKPim5MessageViewer.so
+%{_kf5_libdir}/libKPim5MimeTreeParser.so
+%{_kf5_libdir}/libKPim5TemplateParser.so
+%{_kf5_libdir}/libKPim5WebEngineViewer.so
 %{_kf5_mkspecsdir}/qt_*.pri
 
 %files lang -f %{name}.lang
