@@ -16,11 +16,10 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
+%define libname libKPim5Mbox5
 Name:           kmbox
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
@@ -32,22 +31,24 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5Test)
+Conflicts:      libKF5MBox5 < %{version}
 
 %description
 This package contains the basic packages for KDE PIM applications.
 
-%package -n libKF5Mbox5
+%package -n %{libname}
 Summary:        KDE PIM Libraries: Mailbox functionality
+%requires_eq    kmbox
 
-%description  -n libKF5Mbox5
+%description  -n %{libname}
 This package provides the mailbox functionality for KDE PIM applications
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       libKF5Mbox5 = %{version}
-Requires:       cmake(KF5Mime)
+Requires:       %{libname} = %{version}
+Requires:       cmake(KPim5Mime)
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -57,24 +58,28 @@ to develop KDE PIM applications.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
-%ldconfig_scriptlets -n libKF5Mbox5
+%ldconfig_scriptlets -n %{libname}
 
-%files -n libKF5Mbox5
+%files
 %license LICENSES/*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/libKF5Mbox.so.*
+
+%files -n %{libname}
+%{_kf5_libdir}/libKPim5Mbox.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KMbox/
 %{_kf5_cmakedir}/KF5Mbox/
-%{_kf5_includedir}/KMbox/
-%{_kf5_libdir}/libKF5Mbox.so
+%{_kf5_cmakedir}/KPim5Mbox/
+%{_kf5_libdir}/libKPim5Mbox.so
 %{_kf5_mkspecsdir}/qt_KMbox.pri
 
 %changelog
