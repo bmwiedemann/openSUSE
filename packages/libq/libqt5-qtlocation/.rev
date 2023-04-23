@@ -450,4 +450,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
     <requestid>1072580</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c120b8a1a934ba23f99b1b57f3481955</srcmd5>
+    <version>5.15.9+kde5</version>
+    <time>1682282601</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082073</requestid>
+  </revision>
 </revisionlist>
