@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:57:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde67, rebased upstream:
+  * QQuickItem: Fix effective visibility for items without parent
+  * Prevent crash when destroying asynchronous Loader
+  * Quick Animations: Fix crash
+  * qv4function: Fix crash due to reference being invalidated
+  * Models: Avoid crashes when deleting cache items
+  * QQuickState::when: handle QJSValue properties correctly
+  * QQmlImportDatabase: Make sure the newly added import path be first
+  * Revert "Fix missing glyphs when using NativeRendering"
+  * Fix missing glyphs when using NativeRendering
+  * Update the window cursor on mouse release
+  * Blacklist: test cases blacklisted in tst_QQuickListView:
+  * Blacklist: test cases blacklisted in tst_QQuickMultiPointTouchArea:
+  * Fix crash with NativeRendering on RHI
+  * A11Y: make QQuickText focusable for A11Y
+  * QQuickWindow: improve docs for activeFocusItem
+  * Doc: add example snippets for containmentMask
+  * Fix typo in qquickdroparea/BLACKLIST for Ubuntu-20.04
+  * QQmlAdaptorModel: Do not use reparenting for lifetime managemment
+  * Correctly handle QQuickState::when
+  * CMake: Fix handling of empty qrc files with qtquickcompiler
+  * CMake: Skip qtquickcompiler cmake test on macOS ARM
+  * Fix indices alignment problem
+  * Fix indentation in positioners example
+  * doc: Fix QQuickItem point/rect mapping methods signatures
+  * Instantiator: Do not load items when inactive
+  * Doc: Fix QtQuick::Loader::item type
+  * Doc: fix incorrect type name on focus page
+  * icutils::Node: GCC 11 -Werror=maybe-uninitialized w/-fsanitize=undefined
+  * tst_qquickimageprovider: fix some memleaks
+  * Fix incorrect behavior after displace transition
+  * Fix edge cases in arcTo
+  * Don't blacklist tst_QQuickFramebufferObject::everything on b2qt
+  * Use tree hash rather than commit hash in .tag file
+  * Adjust default max call depth for QNX
+  * Blacklist containsDrag_internal on Ubuntu 20.04
+  * QQmlLoggingCategory: Avoid unnecessary warnings from setters
+  * Blacklist flakey tst_QPauseAnimationJob::multipleSequentialGroups on macOS
+  * Assert that QQmlDelegateModel's count can't be less than zero
+  * qml{plugindump|importscanner}: Don't mix std::cerr and std::wcerr
+  * Treat unknown tablet device as stylus and create QTabletEvent
+  * GridView: Set content position when changing cell size
+  * QQuickItemViewTransitionAttached: Avoid dangling pointers
+  * Bound animatorjob value to the given range
+- Commits dropped by the rebase:
+  * Document that StyledText also supports &nbsp; and &quot;
+
+-------------------------------------------------------------------
 Thu Mar  2 11:49:15 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Drop the mechanism for supporting systems without SSE2. glibc removed
