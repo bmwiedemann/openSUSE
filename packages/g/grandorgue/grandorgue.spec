@@ -19,14 +19,12 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
 URL:            https://github.com/GrandOrgue/grandorgue
 Source:         https://github.com/GrandOrgue/grandorgue/archive/%{version}-%{version_suffix}.tar.gz#/%{name}-%{version}-%{version_suffix}.tar.gz
-# Upstream patch for GCC13 compatibility.
-Patch0:         gcc13_fix.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
@@ -47,6 +45,7 @@ BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(rtaudio)
 BuildRequires:  pkgconfig(rtmidi)
 BuildRequires:  pkgconfig(wavpack)
+BuildRequires:  pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     grandorgue-demo
 
@@ -64,7 +63,6 @@ This package contains the demo sampleset for GrandOrgue.
 
 %prep
 %setup -qn %{name}-%{version}-%{version_suffix}
-%patch0 -p1
 
 %build
 %cmake -DDOC_INSTALL_DIR=%{_docdir} \

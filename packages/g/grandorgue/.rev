@@ -32,4 +32,21 @@
 </comment>
     <requestid>1076462</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a5e28ba0f2cdc65b38d8bc85e6dacd3a</srcmd5>
+    <version>3.11.0</version>
+    <time>1682282875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11.0.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.11.0-1
+  - Added capability of navigating over, loading and saving the YAML combinations files on the Combination Setter panel https://github.com/GrandOrgue/grandorgue/issues/1196
+  - Added capability of exporting and importing combinations in yaml format files https://github.com/GrandOrgue/grandorgue/issues/1195
+  - Removed support of old linux distros (with libc6 versions before 2.31) https://github.com/GrandOrgue/grandorgue/discussions/1334
+  - Fixed the translation of the desktop icon on Linux https://github.com/GrandOrgue/grandorgue/issues/1429
+  - Added support of labels without a background image by specifying DispImageNum=0 https://github.com/GrandOrgue/grandorgue/issues/1386
+  - Added capability of overriding wav MIDIPitchFraction with the Pipe999MIDIPitchFraction key https://github.com/GrandOrgue/grandorgue/issues/1378
+- Remove gcc13_fix.patch since it is included in this version.
+</comment>
+    <requestid>1082289</requestid>
+  </revision>
 </revisionlist>

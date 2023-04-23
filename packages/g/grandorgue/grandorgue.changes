@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:52:40 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.11.0.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.11.0-1
+  - Added capability of navigating over, loading and saving the YAML combinations files on the Combination Setter panel https://github.com/GrandOrgue/grandorgue/issues/1196
+  - Added capability of exporting and importing combinations in yaml format files https://github.com/GrandOrgue/grandorgue/issues/1195
+  - Removed support of old linux distros (with libc6 versions before 2.31) https://github.com/GrandOrgue/grandorgue/discussions/1334
+  - Fixed the translation of the desktop icon on Linux https://github.com/GrandOrgue/grandorgue/issues/1429
+  - Added support of labels without a background image by specifying DispImageNum=0 https://github.com/GrandOrgue/grandorgue/issues/1386
+  - Added capability of overriding wav MIDIPitchFraction with the Pipe999MIDIPitchFraction key https://github.com/GrandOrgue/grandorgue/issues/1378
+- Remove gcc13_fix.patch since it is included in this version.
+
+-------------------------------------------------------------------
 Mon Mar 27 23:29:28 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Add gcc13_fix.patch from upstream to fix GCC13 build errors.
