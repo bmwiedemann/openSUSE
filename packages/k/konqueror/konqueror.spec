@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           konqueror
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -66,7 +64,7 @@ Obsoletes:      kdebase4-libkonq
 Obsoletes:      libKF5Konq6 < 17.04
 Provides:       libKF5Konq6 = 17.04
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
 
 %description
 Konqueror allows you to manage your files and browse the web in a
@@ -158,6 +156,7 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/konqueror_kcms/kcm_performance.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_appearance.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_behavior.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_cache.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_filter.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_general.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_java_js.so
