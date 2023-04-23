@@ -19,15 +19,13 @@
 %global __requires_exclude org.kde.kaccounts.(next|own)cloud
 
 # The nextcloud plugin will only be built on these archs
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%ifarch %{ix86} x86_64 %{arm} aarch64
 %bcond_without qtwebengine
 %endif
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kaccounts-providers
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
