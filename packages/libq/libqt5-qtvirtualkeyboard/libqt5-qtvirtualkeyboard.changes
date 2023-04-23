@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 21 10:01:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde6, rebased upstream:
+  * Fix activation of input panel when initial active focus is set
+  * Blacklist: test cases blacklisted in inputpanel:
+  * Blacklist more test_fullScreenModeSelectionHandles rows
+  * Disable Windows IME when Qt Virtual Keyboard plugin is loaded
+
+-------------------------------------------------------------------
 Mon Jan  9 09:23:58 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde0, rebased upstream:
