@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           korganizer
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -33,36 +31,35 @@ Source2:        applications.keyring
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Look-for-designer-qt5-on-openSUSE.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  libboost_headers-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
-BuildRequires:  cmake(KF5AkonadiNotes)
-BuildRequires:  cmake(KF5AkonadiSearch)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport)
-BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5EventViews)
 BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5IdentityManagement)
-BuildRequires:  cmake(KF5IncidenceEditor)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5PimCommon)
-BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5AkonadiContact)
+BuildRequires:  cmake(KPim5AkonadiMime)
+BuildRequires:  cmake(KPim5AkonadiNotes)
+BuildRequires:  cmake(KPim5AkonadiSearch)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5EventViews)
+BuildRequires:  cmake(KPim5IdentityManagement)
+BuildRequires:  cmake(KPim5IncidenceEditor)
+BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5Ldap)
+BuildRequires:  cmake(KPim5Libkdepim)
+BuildRequires:  cmake(KPim5MailTransport)
+BuildRequires:  cmake(KPim5Mime)
+BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
