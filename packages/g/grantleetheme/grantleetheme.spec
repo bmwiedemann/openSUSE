@@ -16,11 +16,9 @@
 #
 
 
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           grantleetheme
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
@@ -33,10 +31,12 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
+BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
@@ -47,18 +47,20 @@ BuildRequires:  cmake(Qt5Widgets)
 %description
 the grantleetheme library adds Grantlee theme support for PIM applications.
 
-%package -n libKF5GrantleeTheme5
+%package -n libKPim5GrantleeTheme5
 Summary:        GrantleeTheme library for KDE PIM applications
 License:        LGPL-2.1-or-later
-Requires:       grantleetheme = %{version}
+%if %{with released}
+%requires_eq    grantleetheme
+%endif
 
-%description -n libKF5GrantleeTheme5
+%description -n libKPim5GrantleeTheme5
 The GrantleeTheme library
 
 %package devel
 Summary:        Development package for grantleetheme
 License:        LGPL-2.1-or-later
-Requires:       libKF5GrantleeTheme5 = %{version}
+Requires:       libKPim5GrantleeTheme5 = %{version}
 
 %description devel
 The development package for the grantleetheme library
@@ -80,13 +82,7 @@ The development package for the grantleetheme library
 
 %global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
-%ldconfig_scriptlets -n libKF5GrantleeTheme5
-
-%files devel
-%{_kf5_cmakedir}/KF5GrantleeTheme/
-%{_kf5_includedir}/GrantleeTheme/
-%{_kf5_libdir}/libKF5GrantleeTheme.so
-%{_kf5_mkspecsdir}/qt_GrantleeTheme.pri
+%ldconfig_scriptlets -n libKPim5GrantleeTheme5
 
 %files
 %dir %{_kf5_libdir}/grantlee/
@@ -95,9 +91,17 @@ The development package for the grantleetheme library
 %{_kf5_debugdir}/grantleetheme.renamecategories
 %{_kf5_libdir}/grantlee/%{grantlee_shortver}/kde_grantlee_plugin.so
 
-%files -n libKF5GrantleeTheme5
+%files -n libKPim5GrantleeTheme5
 %license LICENSES/*
-%{_kf5_libdir}/libKF5GrantleeTheme.so.*
+%{_kf5_libdir}/libKPim5GrantleeTheme.so.*
+
+%files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/GrantleeTheme/
+%{_kf5_cmakedir}/KF5GrantleeTheme/
+%{_kf5_cmakedir}/KPim5GrantleeTheme/
+%{_kf5_libdir}/libKPim5GrantleeTheme.so
+%{_kf5_mkspecsdir}/qt_GrantleeTheme.pri
 
 %files lang -f %{name}.lang
 
