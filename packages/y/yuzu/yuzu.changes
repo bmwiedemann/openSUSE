@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Apr 16 00:31:38 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1404:
+  * input_common: minor fix to mouse movement
+  * video_core: Enable ImageGather rounding fix on AMD open source drivers
+  * kernel: move more memory to application in 8GB arrangement
+  * kernel: switch extended memory setting to 8GB arrangement
+  * Use GetGlobalTimeNs as opposed to clock ticks
+  * shader_recompiler: Use vector arithmetic rather than component-wise in ImageGatherSubpixelOffset Should be more efficient and better readable
+  * video_core: Enable ImageGather with subpixel offset on Intel
+  * shader_recompiler: Add subpixel offset for correct rounding at `ImageGather` On AMD a subpixel offset of 1/512 of the texel size is applied to the texture coordinates at a ImageGather call to ensure the rounding at the texel centers is done the same way as in Maxwell or other Nvidia architectures. See https://www.reedbeta.com/blog/texture-gathers-and-coordinate-precision/ for more details why this might be necessary.
+  * Add some explicit latency to sample count reporting
+  * video_core: Keep the definition of DimensionControl consistent with nvidia open doc
+  * Re-enable LTO for Linux
+  * video_core: Better defined ImageInfo parameters
+
+-------------------------------------------------------------------
+Sun Apr 09 00:31:40 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1397:
+  * "Merge Tagged PR 10014"
+  * "Merge Tagged PR 10027"
+  * "Merge Tagged PR 10030"
+  * general: fixes for gcc 13
+
+-------------------------------------------------------------------
+Tue Apr 04 18:46:02 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1393:
+  * "Merge Tagged PR 10009"
+  * "Merge Tagged PR 10014"
+  * Update translations (2023-04-04)
+  * service: hid: Fix handle validation
+  * Only upload GPU-modified overlaps
+
+-------------------------------------------------------------------
+Sun Apr 02 15:36:05 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1391:
+  * "Merge Tagged PR 10004"
+  * core: arm_dynarmic_32: Update SaveContext/LoadContext.
+  * externals: Update dynarmic to 6.4.6
+  * externals: update Vulkan-Headers to v1.3.246
+  * applet: controller: Implement cancel button
+  * service: hid: Implement SetNpadJoyAssignmentModeSingleWithDestination
+  * service: am: Improve profile select applet
+  * audio_core: No longer stall when sink queue is full
+  * Run clang-format
+  * audio: Wait for samples on the emulated DSP side to avoid desyncs
+  * audio: Interpolate system manager sample count using host sink sample info
+
+-------------------------------------------------------------------
+Sun Apr 02 00:32:10 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1390:
+  * "Merge Tagged PR 9969"
+  * "Merge Tagged PR 10004"
+  * Fixes 'Continous' typo
+  * kernel: fix unbounded stack usage in atomics
+  * telemetry: Add waitpkg instruction
+  * x64: Simplify RDTSC on non-MSVC compilers
+  * core_timing: Make use of MicroSleep for x64 CPUs
+  * x64: Add MicroSleep
+  * x64: cpu_detect: Add detection of waitpkg instructions
+  * service: hid: Silence warning on MergeSingleJoyAsDualJoy
+  * qt: Fix log softlock
+  * service: nfp: Add plain amiibo support
+  * tests: mark integer literals as unsigned
+  * container_hash: use climits
+  * video_core/macro: Make use of Common::HashValue
+  * tests: Implement tests for verifying HashValue
+  * common: Port boost's hash_value implementation
+  * CMakeLists: Require a minimum of boost 1.79.0
+  * qt: implement RequestExit for applets
+  * applets: implement RequestExit
+  * memory: rename global memory references to application memory
+
+-------------------------------------------------------------------
+Sun Mar 26 00:32:23 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1382:
+  * "Merge Tagged PR 9989"
+  * Pass GPU page table by reference
+  * vulkan: fix scheduler chunk reserve
+  * zstd: Use ZSTD_getFrameContentSize instead of ZSTD_getDecompressedSize
+  * CMakeLists: Update boost to 1.81.0
+  * vcpkg: Update vcpkg to 2023.02.24
+  * nfc: Initialize device when controller is connected
+
+-------------------------------------------------------------------
 Sat Mar 25 11:29:27 UTC 2023 - pousaduarte@gmail.com
 
 - Update to version 0.1380:

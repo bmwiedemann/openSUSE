@@ -19,7 +19,7 @@
 
 %define __builder ninja
 Name:           yuzu
-Version:        0.1380
+Version:        0.1404
 Release:        0
 Summary:        Nintendo Switch emulator/debugger
 License:        GPL-3.0-or-later
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.18
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(tinfo)
-BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vulkan) >= 1.3.246
 
 #Qt
 BuildRequires:  libQt5PlatformSupport-private-headers-devel
