@@ -17,10 +17,10 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 510
+%define libkdev_major 511
 %bcond_without released
 Name:           kdevelop5
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -30,11 +30,15 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  kdevelop5-pg-qt
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
 BuildRequires:  clang-devel
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  okteta-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  subversion-devel
@@ -168,6 +172,10 @@ Provides translations for the "kdevplatform" package.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
+%if 0%{?suse_version} == 1500
+  export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build
 %make_jobs
 
@@ -201,8 +209,7 @@ done
 
 %files -n libkdevplatform%{libkdev_major}
 %license LICENSES/*
-%{_kf5_libdir}/libKDevPlatform*.so.%{libkdev_major}
-%{_kf5_libdir}/libKDevPlatform*.so.5.*
+%{_kf5_libdir}/libKDevPlatform*.so.*
 
 %files
 %doc README.md
@@ -222,7 +229,7 @@ done
 %{_kf5_bindir}/kdevelop*
 %{_kf5_debugdir}/kdevelop.categories
 %{_kf5_iconsdir}/*/*/*/*
-%{_kf5_libdir}/cmake/KDevelop/
+%{_kf5_cmakedir}/KDevelop/
 %{_kf5_libdir}/libKDevCMakeCommon.so.*
 %{_kf5_libdir}/libKDevClangPrivate.so.*
 %{_kf5_libdir}/libKDevCompileAnalyzerCommon.so.*
@@ -263,7 +270,7 @@ done
 %{_kf5_sharedir}/kdevplatform/
 
 %files -n kdevplatform-devel
-%{_kf5_libdir}/cmake/KDevPlatform/
+%{_kf5_cmakedir}/KDevPlatform/
 %{_kf5_libdir}/libKDevPlatform*.so
 %{_kf5_prefix}/include/kdevplatform/
 
