@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Apr 22 19:18:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.3:
+  + Fix a popover positioning regression in 4.10.2.
+  + Fix issues with slow loading files in the file chooser.
+
+-------------------------------------------------------------------
+Fri Apr 21 15:02:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.2:
+  + Holding control to select multiple files broken in filechooser
+  + Inspector crash
+  + Listbase doesn't account for bottom padding in
+    size_allocate_child
+  + Leaking AT contexts
+  + OpenGL / Windows: Crash when closing gtk4-widget-factory
+  + GTK apps crash on startup when setting cursor-size to 0 on
+    Wayland
+  + Segmentation fault: gdk_wayland_toplevel_set_startup_id() needs
+    to null-check display->xdg_activation before using it
+  + Possible use-after-free under
+    gtk_scrolled_window_update_use_indicators()
+  + Wrong error message in `gtk_init`
+  + Segfault when scrolling after changing ListView model
+  + Bluetooth panel from the Settings app: clicking in the
+    "Downloads" link no longer opens Nautilus
+  + Broadway docs or code is broken
+  + Disabled GtkPicture's are not properly themed
+  + Setting CSS padding to a GtkTextView gives the context menu an
+    offset
+  + A11y: the Showing state is used only for windows
+  + Gtk4 expander: CSS nodes mismatch code vs. documentation
+  + Invoking gtk inspector on a folder results in a crash
+  + Double tap requires very precise touch input
+  + Name autocompletion dropdown in the GTK4 FileChooser's Save
+    dialog gets stuck, creates artifacts, jumps around
+  + Links are not opened when xdg-desktop-portal OpenURI is not
+    available
+  + GtkSnapshot generates no nodes appending whitespace-only
+    layouts
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr 12 21:31:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Place English translations in the tools sub-package instead of

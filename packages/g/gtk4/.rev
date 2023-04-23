@@ -649,4 +649,47 @@
     <comment></comment>
     <requestid>1080265</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>fc43bb3a8a34ddfd8f653d10f534638f</srcmd5>
+    <version>4.10.3</version>
+    <time>1682282620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.3:
+  + Fix a popover positioning regression in 4.10.2.
+  + Fix issues with slow loading files in the file chooser.
+- Update to version 4.10.2:
+  + Holding control to select multiple files broken in filechooser
+  + Inspector crash
+  + Listbase doesn't account for bottom padding in
+    size_allocate_child
+  + Leaking AT contexts
+  + OpenGL / Windows: Crash when closing gtk4-widget-factory
+  + GTK apps crash on startup when setting cursor-size to 0 on
+    Wayland
+  + Segmentation fault: gdk_wayland_toplevel_set_startup_id() needs
+    to null-check display-&gt;xdg_activation before using it
+  + Possible use-after-free under
+    gtk_scrolled_window_update_use_indicators()
+  + Wrong error message in `gtk_init`
+  + Segfault when scrolling after changing ListView model
+  + Bluetooth panel from the Settings app: clicking in the
+    &quot;Downloads&quot; link no longer opens Nautilus
+  + Broadway docs or code is broken
+  + Disabled GtkPicture's are not properly themed
+  + Setting CSS padding to a GtkTextView gives the context menu an
+    offset
+  + A11y: the Showing state is used only for windows
+  + Gtk4 expander: CSS nodes mismatch code vs. documentation
+  + Invoking gtk inspector on a folder results in a crash
+  + Double tap requires very precise touch input
+  + Name autocompletion dropdown in the GTK4 FileChooser's Save
+    dialog gets stuck, creates artifacts, jumps around
+  + Links are not opened when xdg-desktop-portal OpenURI is not
+    available
+  + GtkSnapshot generates no nodes appending whitespace-only
+    layouts
+  + Updated translations.
+</comment>
+    <requestid>1082209</requestid>
+  </revision>
 </revisionlist>
