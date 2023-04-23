@@ -289,4 +289,12 @@
     <comment>Update from git. qtlocation i586 not built yet. (forwarded request 1072558 from favogt)</comment>
     <requestid>1072578</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>265252fe0d4a674cadee77d17a5a5c29</srcmd5>
+    <version>5.15.9+kde5</version>
+    <time>1682282597</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
+    <requestid>1082066</requestid>
+  </revision>
 </revisionlist>

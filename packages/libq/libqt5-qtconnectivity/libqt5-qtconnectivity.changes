@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:54:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde34, rebased upstream:
+  * Close socket descriptor when QBluetoothSocketBluez is destroyed
+  * Fix Bluez BT LE battery reading
+  * Repair tst_QBluetoothDeviceDiscoveryAgent on Android
+  * Accommodate different bluez socket types in autotest [secFlags]
+  * Improve bluetooth service discovery on macOS Monterey
+  * Avoid multiple client sockets in pingpong bluetooth example
+  * IOBluetooth: tweak a couple of classes
+  * Fix missing MetaType registration
+  * Improve macOS classic bluetooth (server) SDP record creation
+  * IOBluetooth: fix SDP inquiry broken by Monterey
+  * Windows BT: reverse the latter UUID part to correct order
+  * Document the bluetooth socket data pausing on macOS Monterey
+  * Decrement the pending paired device counter only once per device
+  * Make Windows bluetooth to scan all found devices for services
+  * PingPong example: let the parent QObject do the cleanup
+  * Android: fix signal order during service discovery
+  * Store the serviceinfo in pingpong example
+  * tst_QBluetoothServiceInfo::tst_assignment - fix for Monterey
+  * IOBluetooth (device scan) - reduce the manual timeout
+  * Android BT LE Client thread protection improvement
+  * Windows QBluetoothSocket: fix crash at disconnecting
+  * Add Info.plists to autotests which require bluetooth usage key
+  * Windows QBluetoothSocket: remove unneeded variable from SocketWorker
+  * QLowEnergyController Windows: fix early disconnect crash on Win 11
+
+-------------------------------------------------------------------
 Thu Mar 16 08:04:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.8+kde8:
