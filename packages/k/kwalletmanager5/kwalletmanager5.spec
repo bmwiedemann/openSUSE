@@ -17,11 +17,9 @@
 
 
 %define rname   kwalletmanager
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwalletmanager5
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
@@ -87,12 +85,14 @@ This application allows you to manage your KDE password wallet.
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmkwallet5.conf
 %{_kf5_debugdir}/kwalletmanager.categories
 %{_kf5_iconsdir}/hicolor/*/*/*.*
-%{_kf5_plugindir}/kcm_kwallet5.so
-%{_kf5_servicesdir}/kwalletconfig5.desktop
-%{_kf5_servicesdir}/kwalletmanager5_show.desktop
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kwallet5.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.kwalletmanager5.service
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmkwallet5.service
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmkwallet5.policy
+%{_kf5_servicesdir}/kwalletmanager5_show.desktop
 %{_libexecdir}/kauth/kcm_kwallet_helper5
 
 %files lang -f %{name}.lang
