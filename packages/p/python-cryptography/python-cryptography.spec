@@ -27,6 +27,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
 Version:        40.0.2
 Release:        0

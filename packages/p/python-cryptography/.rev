@@ -878,4 +878,12 @@
   * Fixed compilation when using LibreSSL 3.7.2.</comment>
     <requestid>1079573</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>2b1c8e533610525b55f6d82868f8846b</srcmd5>
+    <version>40.0.2</version>
+    <time>1682282625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082167</requestid>
+  </revision>
 </revisionlist>

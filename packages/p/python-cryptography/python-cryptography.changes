@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:23:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Sat Apr 15 10:26:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 40.0.2:
   * Fixed compilation when using LibreSSL 3.7.2.
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
 Mon Mar 27 06:38:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
