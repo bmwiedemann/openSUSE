@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 15 08:45:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:43:11 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+- Rebase patch:
+  * 0001-Defuse-root-block.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 08:55:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Use the %ldconfig_scriptlets macro

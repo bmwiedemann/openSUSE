@@ -17,11 +17,9 @@
 
 
 %define _appstreamkpackage 0%(cat %{_kf5_cmakedir}/KF5Package/KF5PackageMacros.cmake | grep -q 'appstream-metainfo' && echo 1)
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kate
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -48,6 +46,7 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5Pty)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(KF5TextEditor)
@@ -60,6 +59,7 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 %if 0%{?suse_version} <= 1500
