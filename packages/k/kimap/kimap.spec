@@ -17,11 +17,10 @@
 
 
 %define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define libname libKPim5IMAP5
 %bcond_without released
 Name:           kimap
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        KDE PIM Libraries: IMAP library
 License:        LGPL-2.1-or-later
@@ -37,16 +36,16 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5Test)
+Conflicts:      libKF5IMAP5 < %{version}
 
 %description
 KIMAP provides libraries to interface and communicate with
 IMAP mail servers.
 
-%package -n libKF5IMAP5
+%package -n %{libname}
 Summary:        KDE PIM Libraries: IMAP APIs
-Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
 # Modules used for authentication
 Requires:       cyrus-sasl-crammd5
@@ -54,53 +53,61 @@ Requires:       cyrus-sasl-digestmd5
 Requires:       cyrus-sasl-gssapi
 Requires:       cyrus-sasl-plain
 Requires:       sasl2-kdexoauth2
+%requires_eq    %{name}
+# Renamed
+Obsoletes:      kimap-lang <= 23.04.0
 
-%description  -n libKF5IMAP5
+%description  -n %{libname}
 This package provides the core library to interface and communicate with
 IMAP mail servers.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       cyrus-sasl-devel
-Requires:       libKF5IMAP5 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       cmake(KF5CoreAddons) >= %{kf5_version}
-Requires:       cmake(KF5Mime)
+Requires:       cmake(KPim5Mime)
 
 %description devel
 This package contains development headers to add IMAP support to PIM
 applications.
 
-%lang_package
+%lang_package -n %{libname}
 
 %prep
 %autosetup -p1 -n kimap-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 
-%find_lang %{name} --with-man --all-name
+%find_lang %{libname} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5IMAP5
+%ldconfig_scriptlets -n %{libname}
 
-%files -n libKF5IMAP5
+%files
 %license LICENSES/*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
-%{_kf5_libdir}/libKF5IMAP.so.*
+
+%files -n %{libname}
+%{_kf5_libdir}/libKPim5IMAP.so.*
 
 %files devel
+%dir %{_includedir}/KPim5
+%{_includedir}/KPim5/KIMAP/
+%{_includedir}/KPim5/KIMAPTest/
 %{_kf5_cmakedir}/KF5IMAP/
-%{_kf5_includedir}/KIMAP/
-%{_kf5_includedir}/KIMAPTest/
-%{_kf5_libdir}/libKF5IMAP.so
+%{_kf5_cmakedir}/KPim5IMAP/
+%{_kf5_libdir}/libKPim5IMAP.so
 %{_kf5_libdir}/libkimaptest.a
 %{_kf5_mkspecsdir}/qt_KIMAP.pri
 
-%files lang -f %{name}.lang
+%files -n %{libname}-lang -f %{libname}.lang
 
 %changelog
