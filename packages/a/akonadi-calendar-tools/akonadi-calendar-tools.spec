@@ -16,12 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
-# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
-%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadi-calendar-tools
-Version:        22.12.3
+Version:        23.04.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,19 +31,15 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  gettext-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
-BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarSupport)
-BuildRequires:  cmake(KF5CalendarUtils)
-BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KPim5Akonadi)
+BuildRequires:  cmake(KPim5AkonadiCalendar)
+BuildRequires:  cmake(KPim5CalendarSupport)
+BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 Console applications and utilities for managing calendars in Akonadi.
