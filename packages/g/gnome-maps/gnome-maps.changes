@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 21 11:31:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Disable animations also on zoom-to-fit and when selecting
+    itinerary point for public transit routes, to avoid tile server
+    throttling.
+  + Fix the "Send to" dialog which was broken in the case when
+    there are external apps supporting geo: links.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 18 09:35:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
