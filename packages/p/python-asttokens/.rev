@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>1040387</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>41a4987d69be6ee86d199d9d9bed4d42</srcmd5>
+    <version>2.2.1</version>
+    <time>1682368251</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+
+- Make calling of %{sle15modernpython} optional.</comment>
+    <requestid>1082309</requestid>
+  </revision>
 </revisionlist>
