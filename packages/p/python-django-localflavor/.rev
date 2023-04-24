@@ -23,4 +23,37 @@
     <comment></comment>
     <requestid>944607</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>775cd3e62d040745a22b95fd27663474</srcmd5>
+    <version>4.0</version>
+    <time>1682368264</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0:
+  * Nepal LocalFlavor: Support for Nepal added
+  * Belarus localflavor
+  * Ghana localflavor
+  * New fields for existing flavors:
+    * Added `fr.forms.FRRNAField` models field
+    * Added permanent account number(PAN) field in Indian flavor.
+    * Added the Canadian Models fields.
+  * Modifications to existing flavors:
+    * Properly validate IBANs using BBAN to ensure invalid IBANs
+      cannot be entered,
+    * updated IBAN_SEPA_COUNTRIES and IBAN_COUNTRY_CODE_LENGTH to
+      latest data
+    * Fix typo in Marijampolė county name in LTCountySelect
+    * Add support for new Finnish identity codes
+    * CIF spanish starting with 'U' bug resolved
+    * Fix error code for BRPostalCodeValidator
+    * Fix spelling of the India state of Chhattisgarh
+    * Fix CURP regex for MX flavor
+    * Removed inconvenient word VACA from CURP_INCONVENIENT_WORDS
+      for MX flavor
+  * Other changes:
+    * Use 'return value' when value is in the empty_values list
+    * Dropped support for Django 2.2, 3.0 and 3.1.
+    * Dropped support for Python 3.5.
+    * Added support for Python 3.10 and 3.11.</comment>
+    <requestid>1082316</requestid>
+  </revision>
 </revisionlist>
