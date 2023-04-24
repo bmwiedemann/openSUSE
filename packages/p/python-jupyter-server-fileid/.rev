@@ -7,4 +7,24 @@
     <comment>required by jupyterlab-rtc / jupyter-collaboration</comment>
     <requestid>1073768</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8f08aa83dd07b1ea7734c486c35847b</srcmd5>
+    <version>0.9.0</version>
+    <time>1682368261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0
+  * add Jupyter Releaser workflows #65 (@dlqqq)
+  * Fix behavior for OOB move followed by IB move #63 (@dlqqq)
+- Release 0.8.0
+  * Add db_journal_mode trait to FileIdManager classes #61
+    (@kevin-bates)
+- Release 0.7.0
+  * remove mtime fallback #47 (@dlqqq)
+  * Make ArbitraryFileIdManager filesystem-agnostic and fix Windows
+    CI #46 (@kevin-bates)
+  * Relax jupyter_events dependency requirement #57 (@akchinSTC)
+  * Update check-jsonschema usage to latest style #50 (@sirosen)
+</comment>
+    <requestid>1082311</requestid>
+  </revision>
 </revisionlist>

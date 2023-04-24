@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 23 17:38:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.0
+  * add Jupyter Releaser workflows #65 (@dlqqq)
+  * Fix behavior for OOB move followed by IB move #63 (@dlqqq)
+- Release 0.8.0
+  * Add db_journal_mode trait to FileIdManager classes #61
+    (@kevin-bates)
+- Release 0.7.0
+  * remove mtime fallback #47 (@dlqqq)
+  * Make ArbitraryFileIdManager filesystem-agnostic and fix Windows
+    CI #46 (@kevin-bates)
+  * Relax jupyter_events dependency requirement #57 (@akchinSTC)
+  * Update check-jsonschema usage to latest style #50 (@sirosen)
+
+-------------------------------------------------------------------
 Sun Feb 12 17:36:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.6
