@@ -34,7 +34,7 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        6.5.3
+Version:        6.5.4
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause

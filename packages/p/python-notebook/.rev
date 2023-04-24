@@ -253,4 +253,14 @@
 </comment>
     <requestid>1077226</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2dc9af8a184dff6e375d1193f6d67a59</srcmd5>
+    <version>6.5.4</version>
+    <time>1682368260</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.4
+  * Add show_banner trait to control the banner display #6808
+    (@echarles) (forwarded request 1082297 from bnavigator)</comment>
+    <requestid>1082298</requestid>
+  </revision>
 </revisionlist>

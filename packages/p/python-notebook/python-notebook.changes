@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 23 17:28:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.4
+  * Add show_banner trait to control the banner display #6808
+    (@echarles)
+
+-------------------------------------------------------------------
 Tue Apr  4 14:51:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix debugsources error by having and %install section in :test
