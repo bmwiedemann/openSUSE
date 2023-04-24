@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 23 01:04:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- New hotness is the sle15_python_module_pythons macro.
+
+-------------------------------------------------------------------
 Wed Apr 19 04:52:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch skip-test-under-libxml2-2.10.4.patch:
   * Skip a test if using libxml2 >= 2.10.4
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
 Thu Feb 16 20:17:22 UTC 2023 - Dirk Müller <dmueller@suse.com>

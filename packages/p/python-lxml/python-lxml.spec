@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-lxml
 Version:        4.9.2
 Release:        0

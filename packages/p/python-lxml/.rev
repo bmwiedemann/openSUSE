@@ -939,4 +939,16 @@ Send to Staging:E.
   * Skip a test if using libxml2 &gt;= 2.10.4</comment>
     <requestid>1080215</requestid>
   </revision>
+  <revision rev="99" vrev="5">
+    <srcmd5>c8e0ad03f503b4a8cf41b6054aed2e8b</srcmd5>
+    <version>4.9.2</version>
+    <time>1682368244</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1082223 from mcepl
+
+- New hotness is the sle15_python_module_pythons macro.
+
+  - Make calling of %{sle15modernpython} optional.</comment>
+    <requestid>1082229</requestid>
+  </revision>
 </revisionlist>
