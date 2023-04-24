@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 24 19:48:01 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230424.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230424
+  * Fall back on shasum if sha256sum is unavailable by @jas14 in #2177
+  * Mark EOL status to Ruby 2.6 and 2.7 by @hsbt in #2180
+  * Fix uploading SARIF reports from Differential Shellcheck by @mislav in #2181
+  * Fix compilation of Ruby 3.2.x on FreeBSD by @jarmo in #2187
+  * Fix truffleruby+graalvm-dev download URLs by @eregon in #2189
+
+-------------------------------------------------------------------
 Thu Mar 30 19:50:45 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230330.
