@@ -37,6 +37,7 @@ BuildRequires:  libica-devel >= 3.1.1
 BuildRequires:  libica-tools >= 2.4.0
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
+Requires:       libica >= 4.0.0
 Requires:       openssl
 ExclusiveArch:  s390x
 
