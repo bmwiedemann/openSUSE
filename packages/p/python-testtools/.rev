@@ -348,4 +348,12 @@
 </comment>
     <requestid>1037124</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>5b0f61f4a98055848db1bf6390febce3</srcmd5>
+    <version>2.5.0</version>
+    <time>1682368249</time>
+    <user>dimstar_suse</user>
+    <comment>SR for python stack proposal</comment>
+    <requestid>1082306</requestid>
+  </revision>
 </revisionlist>
