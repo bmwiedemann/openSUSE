@@ -84,4 +84,14 @@
 </comment>
     <requestid>1039045</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9b4a5ddb077ebf45104c935b297bd650</srcmd5>
+    <version>2.3.0</version>
+    <time>1682368245</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1082224 from mcepl
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1082230</requestid>
+  </revision>
 </revisionlist>
