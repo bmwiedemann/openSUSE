@@ -248,6 +248,7 @@ FileProvides: /usr/bin/chmod busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chown busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chsh shadow
 FileProvides: /usr/bin/cksum busybox-coreutils coreutils coreutils-single
+FileProvides: /usr/bin/clang clang-tools
 FileProvides: /usr/bin/clear busybox-ncurses-utils ncurses-utils
 FileProvides: /usr/bin/clisp clisp
 FileProvides: /usr/bin/cmp busybox-diffutils diffutils
