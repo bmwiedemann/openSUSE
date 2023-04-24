@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-sip6
 Version:        6.7.7
 Release:        0
