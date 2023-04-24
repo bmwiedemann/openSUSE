@@ -67,4 +67,12 @@
   * Drop various other python2 helpers, test on newer versions of Python.</comment>
     <requestid>946659</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>07e2a594f02334c7d1fb8bba54486e37</srcmd5>
+    <version>0.9.14</version>
+    <time>1682368252</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1082310</requestid>
+  </revision>
 </revisionlist>
