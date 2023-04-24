@@ -9384,6 +9384,8 @@ unsorted:
   - ktp-send-file-lang 
   - ktp-text-ui 
   - ktp-text-ui-lang 
+  - ktrip 
+  - ktrip-lang 
   - ktuberling 
   - ktuberling-lang 
   - kturtle 
@@ -12904,7 +12906,6 @@ unsorted:
   - libktorrent-devel 
   - libktorrent-lang 
   - libktpaccountskcminternal9 
-  - libkwin-xcb0 
   - libkwnn0 
   - libkyotocabinet-devel 
   - liblab_gamut1 
@@ -16640,6 +16641,7 @@ unsorted:
   - lxde-common-branding-openSUSE 
   - lxde-common-branding-upstream 
   - lxgw-wenkai-fonts 
+  - lxgw-wenkai-screen-fonts 
   - lximage-qt 
   - lximage-qt-lang 
   - lxinput 
@@ -23318,6 +23320,7 @@ unsorted:
   - python310-azure-ai-textanalytics 
   - python310-azure-ai-translation-document 
   - python310-azure-ai-translation-nspkg 
+  - python310-azure-ai-translation-text 
   - python310-azure-appconfiguration 
   - python310-azure-applicationinsights 
   - python310-azure-batch 
@@ -26622,6 +26625,7 @@ unsorted:
   - python311-azure-ai-textanalytics 
   - python311-azure-ai-translation-document 
   - python311-azure-ai-translation-nspkg 
+  - python311-azure-ai-translation-text 
   - python311-azure-appconfiguration 
   - python311-azure-applicationinsights 
   - python311-azure-batch 
@@ -30064,6 +30068,7 @@ unsorted:
   - python39-azure-ai-textanalytics 
   - python39-azure-ai-translation-document 
   - python39-azure-ai-translation-nspkg 
+  - python39-azure-ai-translation-text 
   - python39-azure-appconfiguration 
   - python39-azure-applicationinsights 
   - python39-azure-batch 
