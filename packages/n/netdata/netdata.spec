@@ -18,7 +18,7 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.51.0
+%define godplugin_version 0.51.4
 Name:           netdata
 Version:        1.38.1
 Release:        0

@@ -4260,4 +4260,12 @@ Other Notable Changes
   and https://github.com/netdata/netdata/releases/tag/v1.38.1</comment>
     <requestid>1066952</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>fbae156f66e993bc38757b5b4b7376f4</srcmd5>
+    <version>1.38.1</version>
+    <time>1682368280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082341</requestid>
+  </revision>
 </revisionlist>
