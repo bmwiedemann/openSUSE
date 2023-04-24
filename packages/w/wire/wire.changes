@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:50:15 UTC 2023 - Marina Latini <marina.latini@suse.com>
+
+- Always require go >= 1.19 (bsc#1203599)
+
+-------------------------------------------------------------------
 Wed Mar  8 15:05:01 UTC 2023 - Marina Latini <marina.latini@suse.com>
 
 - Build with go >= 1.19 on SUSE Linux Enterprise and

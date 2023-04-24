@@ -35,12 +35,7 @@ URL:            https://github.com/google/wire
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-%if 0%{?sle_version} == 150300
-# Needed due to bsc#1203599
-BuildRequires:  golang(API) = 1.18
-%else
 BuildRequires:  golang(API) >= 1.19
-%endif
 %{?systemd_ordering}
 ExcludeArch:    s390
 

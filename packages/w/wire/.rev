@@ -71,4 +71,12 @@
     <comment>Build with go &gt;= 1.19 on SUSE Linux Enterprise and with go1.18 only on SUSE Linux Enterprise 15 SP3. (bsc#1203599) (forwarded request 1070205 from deneb_alpha)</comment>
     <requestid>1070228</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>08263bf9dc477eb416b68a0aa30abc23</srcmd5>
+    <version>0.5.0</version>
+    <time>1682368310</time>
+    <user>dimstar_suse</user>
+    <comment>use go1.19. bsc#1203599 (forwarded request 1082513 from deneb_alpha)</comment>
+    <requestid>1082526</requestid>
+  </revision>
 </revisionlist>
