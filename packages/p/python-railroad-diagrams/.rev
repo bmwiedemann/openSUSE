@@ -7,4 +7,14 @@
     <comment>Required by pyparsing</comment>
     <requestid>933880</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ccf690fe018bb14320726dce0416a6f6</srcmd5>
+    <version>1.1.1</version>
+    <time>1682368246</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1082225 from mcepl
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1082231</requestid>
+  </revision>
 </revisionlist>
