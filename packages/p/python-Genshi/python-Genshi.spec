@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Genshi
@@ -50,6 +49,7 @@ components for parsing, generating, and processing HTML, XML or
 other textual content for output generation on the web. The major
 feature is a template language, which is heavily inspired by Kid.
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        A toolkit for generation of output for the web - Documentation
 Group:          Development/Libraries/Python
@@ -63,6 +63,7 @@ other textual content for output generation on the web. The major
 feature is a template language, which is heavily inspired by Kid.
 
 This package contains documentation and examples.
+%endif
 
 %prep
 %autosetup -p1 -n Genshi-%{version}
@@ -76,12 +77,6 @@ This package contains documentation and examples.
 %python_expand find %{buildroot}%{$python_sitearch}/genshi -name '*.c' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-# install (flavor-agnostic) examples
-mkdir -p %{buildroot}%{_docdir}/%{name}-doc/
-cp -r examples %{buildroot}%{_docdir}/%{name}-doc/
-sed -i '1{s/env python.*/python3/}' %{buildroot}%{_docdir}/%{name}-doc/examples/tutorial/geddit/controller.py
-%fdupes %{buildroot}%{_docdir}/%{name}-doc/
-
 %check
 %if %{suse_version} < 1550
 # calling unittest directly fails on Leap
@@ -94,10 +89,11 @@ sed -i '1{s/env python.*/python3/}' %{buildroot}%{_docdir}/%{name}-doc/examples/
 %license COPYING
 %doc ChangeLog README.txt
 %{python_sitearch}/genshi/
-%{python_sitearch}/Genshi-%{version}-py%{python_version}.egg-info
-
+%{python_sitearch}/Genshi-%{version}*-info
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
 %doc doc
-%doc %{_docdir}/%{name}-doc/examples
+%endif
+%doc examples
 
 %changelog
