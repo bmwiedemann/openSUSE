@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 22 19:31:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Don't crash on empty/NULL call id
+  + Properly unregister SIP account on shutdown
+  + A couple of memory leaks
+  + Updated libcall-ui to bring in latest fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 18:08:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
