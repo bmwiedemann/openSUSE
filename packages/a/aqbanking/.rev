@@ -1143,4 +1143,12 @@ Added SUSE-Free-Art-1.3 to the spreadsheet linked at license.opensuse.org (forwa
     <comment></comment>
     <requestid>998494</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>37113c690ab244dcf831960b1c0dcf1b</srcmd5>
+    <version>6.5.4</version>
+    <time>1682368319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082563</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package aqbanking
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,14 +29,14 @@
 %define          releasever  400
 %define          ascreleasever 399
 Name:           aqbanking
-Version:        6.5.3
+Version:        6.5.4
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
-Source:         https://www.aquamaniac.de/rdm/attachments/download/467/aqbanking-%{version}.tar.gz
-Source1:        https://www.aquamaniac.de/rdm/attachments/download/466/aqbanking-%{version}.tar.gz.asc
+Source:         https://www.aquamaniac.de/rdm/attachments/download/499/aqbanking-%{version}.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/498/aqbanking-%{version}.tar.gz.asc
 Source2:        aqbanking6-handbook-20190221.pdf
 Source3:        aqbanking.keyring
 BuildRequires:  cmake
@@ -244,6 +244,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/aqbanking-handbook.pdf
 %if %{build_ofx}
 %files ofx
 %license COPYING
+%{_bindir}/aqofxconnect-tool
 %{_datadir}/aqbanking/backends/aqofxconnect
 %{aq_plugindir}/providers/aqofxconnect.*
 %{imex_datadir}/ofx

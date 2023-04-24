@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 17 20:37:20 UTC 2023 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to 6.5.4
+  + Bugfixes
+  + add command line tool to create ofx user/accounts (#288)
+
+-------------------------------------------------------------------
 Thu Aug 18 07:49:16 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 6.5.3
