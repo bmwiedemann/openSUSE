@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 19 09:47:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.4.0:
+  * Add currency symbols for all listed currencies.
+  * Ensure `pyfloat` honors min and max values.
+  * Use correct union type for provider argument (#1840).
+  * Fix determinism in `state_abbr()` for `en_US`.
+  * Separate freely-associated states & US territories.
+  * Fix value error formatting.
+  * Add lorem provider for `nl_BE`.
+  * Add `nl_BE` automotive provider.
+  * Add `nl_BE` company provider.
+  * Add territory zip codes for `en_US`.
+  * Add `nl_BE` bank provider.
+  * Fix North Macedonia entry in `uk_UA` provider.
+  * Add SBN provider.
+  * Use the official name for North Macedonia due to the name
+    change in 2019.
+  * Add `zh_TW` `date_time` provider.
+  * Add support for latvian `ssn` generation.
+  * Add argument validation to `pybool()`.
+
+-------------------------------------------------------------------
 Thu Feb 16 21:06:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 17.0.0:
