@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 22 21:13:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.0:
+  + Fix generating video thumbnails if debugging is enabled
+  + Add JPEG XL support
+  + Fix display of duplicate tags in suggestion popup
+  + Support more variants of HEIF
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr  9 17:59:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Updatet to version 0.31.90:

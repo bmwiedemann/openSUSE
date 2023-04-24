@@ -17,14 +17,14 @@
 
 
 Name:           shotwell
-Version:        0.31.90
+Version:        0.32.0
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/Shotwell
 
-Source0:        https://download.gnome.org/sources/shotwell/0.31/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/shotwell/0.32/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
 
 BuildRequires:  appstream-glib
