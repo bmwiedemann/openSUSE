@@ -21,7 +21,7 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.42.2
+Version:        0.42.3
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
@@ -229,6 +229,9 @@ the local machine.
 	-Dplugins=external,gst-launch,lms,media-export,mpris,playbin,ruih,tracker3 \
 	%{nil}
 %meson_build
+
+%check
+%meson_test
 
 %install
 %meson_install
