@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Apr 24 10:48:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.0:
+  * Added dev.okteto.com/namespace label to external resource
+    objects when they are being created (#3551)
+  * build(deps): Bump mheap/github-action-required-labels from 3 to
+    4 (#3528)
+  * fix: e2e test for remote deploy (#3557)
+  * Fixes the remove of '' when no dev env is specified for okteto
+    destroy (#3491)
+  * Always use baggage header name for istio divert driver (#3555)
+  * Apply divert transformation in the local deploy proxy (#3543)
+  * fix(translate): use selector name if available (#3550)
+  * remote output fixes (#3529)
+  * feat: always pull & export default cache when building an image
+    (#3478)
+  * feat(build): improve missing cache error message (#3541)
+  * fix: adding .git folder to the folder should propagate okteto
+    git commit (#3533)
+  * remove sensitive data in git url displayed (#3535)
+  * fix .env removal locally (#3534)
+  * fix: duplicated logs on same stage (#3521)
+  * Added Platform to BuildOptions return of OptsFromBuildInfo
+    (#3508)
+  * fix: remote deploy/destroy with no pull access image (#3526)
+  * fix: deploy with invalid image on remote
+  * fix: destroy with multiple words (#3523)
+  * infer dev name before create remote image (#3513)
+  * fix: e2e test for cmd output (#3518)
+  * fix: extra step internal server error on remote (#3507)
+  * fix: e2e test (#3514)
+  * fix external resource deploy without belonging to an env
+    (#3496)
+  * fix destroy remote when adding envs with blank values (#3504)
+  * fix: add remote build image building (#3493)
+  * chore(destroy): better error message when image not accessible
+    (#3494)
+  * build(deps): Bump github.com/opencontainers/runc from 1.1.2 to
+    1.1.5 (#3492)
+  * Added instructions to creating alias for running okteto binary
+    locally (#3497)
+  * inject OKTETO_ACTION_NAME in remote (#3489)
+  * don't initialize okteto client if not using okteto cloud
+    (#3475)
+  * Revert "Okteto kubeconfig will use kubetoken client auth if
+    available on okteto server (#3409)" (#3490)
+  * Okteto kubeconfig will use kubetoken client auth if available
+    on okteto server (#3409)
+  * Fixed issue where okteto doesnt accept 'Y' as option (#3480)
+  * tests: add auth unit test (#3473)
+  * build(deps): Bump actions/stale from 7 to 8 (#3474)
+  * fix: destroy command should expand env vars (#3477)
+  * tests: add ns gql test (#3472)
+  * add pipeline gql tests (#3471)
+  * chore(deploy): better err on dev deployment fail (#3462)
+  * Add golang style guidelines (#3469)
+  * Jlopezbarb/add preview graphql tests (#3463)
+  * Implement `kubetoken` command for k8s client authentication
+    (#3404)
+  * tests: remove unused file credential.go (#3468)
+  * Update dependencies and add spinner to check whether images
+    needs to be built (#3441)
+  * fix(deploy): wait if dependency is being deployed (#3455)
+  * add secrets graphql tests (#3464)
+  * fix: remote deploy with name multiple words (#3465)
+  * Jlopezbarb/add actions graphql tests (#3458)
+
+-------------------------------------------------------------------
 Wed Apr 19 13:29:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.14.3:
