@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,10 +42,6 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch5:         0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch
-Patch6:         0006-nfsd-allow-server-scope-to-be-set-with-config-or-com.patch
-Patch7:         0007-mount.nfs-always-include-mountpoint-or-spec-if-error.patch
-Patch8:         0008-nfsd.man-fix-typo-in-section-on-scope.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -278,8 +274,10 @@ fi
 %{_sbindir}/blkmapd
 %{_sbindir}/rpc.svcgssd
 %{_sbindir}/nfsconf
+%{_udevrulesdir}/60-nfs.rules
 %{_udevrulesdir}/99-nfs.rules
 %{_unitdir}/auth-rpcgss-module.service
+%{_unitdir}/fsidd.service
 %{_unitdir}/nfs-blkmap.service
 %{_unitdir}/nfs-client.target
 %{_unitdir}/nfs-idmapd.service
@@ -298,7 +296,6 @@ fi
 %dir %{_systemdgeneratordir}
 %{_systemdgeneratordir}/nfs-server-generator
 %{_systemdgeneratordir}/rpc-pipefs-generator
-%{_modprobedir}/50-nfs.conf
 %{_mandir}/man5/idmapd.conf.5%{ext_man}
 %{_mandir}/man5/nfs.5%{ext_man}
 %{_mandir}/man5/nfs.conf.5%{ext_man}
@@ -347,6 +344,7 @@ fi
 %{_unitdir}/proc-fs-nfsd.mount
 %{_prefix}/lib/tmpfiles.d/nfs-kernel-server.conf
 %{_sbindir}/exportfs
+%{_sbindir}/fsidd
 %{_sbindir}/rcnfs-server
 %{_sbindir}/rpc.mountd
 %{_sbindir}/rpc.nfsd

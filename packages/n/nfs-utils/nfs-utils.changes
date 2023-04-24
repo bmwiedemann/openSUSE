@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:10:14 UTC 2023 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.6.3
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.6.3/2.6.3-Changelog
+- Remove patches from this release:
+  - 0006-nfsd-allow-server-scope-to-be-set-with-config-or-com.patch
+  - 0007-mount.nfs-always-include-mountpoint-or-spec-if-error.patch
+  - 0008-nfsd.man-fix-typo-in-section-on-scope.patch
+- Remove systemd/50-nfs.conf (was removed in upstream in d8d29f85)
+  and the realted patch (bsc#1200710).
+  0005-modprobe-avoid-error-messages-if-sbin-sysctl-fail.patch.
+- New file /usr/lib/udev/rules.d/60-nfs.rules (which replaced in upstream
+  systemd/50-nfs.conf in 9466df03).
+- Add fsidd:
+  - /usr/lib/systemd/system/fsidd.service
+  - /usr/lib/udev/rules.d/60-nfs.rules
+  - /usr/sbin/fsidd
+
+-------------------------------------------------------------------
 Tue Mar 28 22:37:58 UTC 2023 - Neil Brown <nfbrown@suse.com>
 
 - Add 0007-mount.nfs-always-include-mountpoint-or-spec-if-error.patch
