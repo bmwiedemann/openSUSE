@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 23 20:36:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.0
+  * fix manifest to exclude node_modules and built assets by
+    @timkpaine in #177
+  * Clean up references and add files for FINOS move by @timkpaine
+    in #181
+  * add security checks, add license checks, prune docs by
+    @timkpaine in #180
+  * fixes #167 for new jupyter-server by @timkpaine in #200
+  * Use nb server logging instead of print by @toslunar in #202
+
+-------------------------------------------------------------------
 Tue Jan  3 18:21:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.3.2

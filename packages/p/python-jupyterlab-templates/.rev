@@ -68,4 +68,21 @@
   pythondistdeps.py choke</comment>
     <requestid>1046632</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>473f8ef2cfea1086ca5e77fc80a1ff53</srcmd5>
+    <version>0.4.0</version>
+    <time>1682368275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0
+  * fix manifest to exclude node_modules and built assets by
+    @timkpaine in #177
+  * Clean up references and add files for FINOS move by @timkpaine
+    in #181
+  * add security checks, add license checks, prune docs by
+    @timkpaine in #180
+  * fixes #167 for new jupyter-server by @timkpaine in #200
+  * Use nb server logging instead of print by @toslunar in #202
+</comment>
+    <requestid>1082512</requestid>
+  </revision>
 </revisionlist>
