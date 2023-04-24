@@ -41,13 +41,8 @@ BuildRequires:  golang-packaging
 BuildRequires:  golang >= 1.14
 BuildRequires:  libcap
 %else
-%if 0%{?sle_version} == 150300
-# Needed due to bsc#1203599
-BuildRequires:  golang(API) = 1.18
-%else
-BuildRequires:  golang(API) >= 1.19
-%endif
 BuildRequires:  libcap-progs
+BuildRequires:  golang(API) >= 1.19
 %endif
 %{?systemd_ordering}
 %if 0%{?suse_version}
