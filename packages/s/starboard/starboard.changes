@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 24 10:49:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.12:
+  * release: prepare v0.15.12 (#1343)
+  * release: prepare v0.15.12-rc (#1340)
+  * chore: update base image to alpine:3.17 (#1338)
+  * chore: bump base image and golang.org/x/net (#1335)
+  * chore(deps): bump k8s.io/klog/v2 from 2.70.1 to 2.90.1 (#1328)
+  * release: prepare v0.15.11 (#1294)
+
+-------------------------------------------------------------------
 Wed Oct 19 13:10:56 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.11:
