@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 23 03:21:07 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix a crash when an itemref in the spine has no idref,
+  see kde#466540.
+  * add 0002-Avoid-crash-on-spine-itemref-without-idref.patch
+- Replace 0001-Avoid-crash-on-toc-navPoint-without-navLabel.patch
+  with 0001-Avoid-crash-on-toc.ncx-navPoint-without-navLabel.patch
+
+-------------------------------------------------------------------
 Mon Jan  4 10:34:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use cmake build macros + spec-cleaner 

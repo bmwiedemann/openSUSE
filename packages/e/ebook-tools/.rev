@@ -166,4 +166,12 @@ Please checkin to 13.1, old version makes Okular crashy</comment>
     <comment>- use cmake build macros + spec-cleaner</comment>
     <requestid>861866</requestid>
   </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>e7509943104191cadc92e8b25933bdc5</srcmd5>
+    <version>0.2.2</version>
+    <time>1682368247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082271</requestid>
+  </revision>
 </revisionlist>

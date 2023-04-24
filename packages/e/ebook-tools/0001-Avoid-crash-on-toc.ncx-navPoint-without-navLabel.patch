@@ -1,7 +1,7 @@
-From 93ebf942a90f9c95797838f9adab94bc0378671c Mon Sep 17 00:00:00 2001
+From 68869c7b5a0ba92d6cccdab5070e5ac4143aca81 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Tue, 30 Apr 2019 16:36:09 +0200
-Subject: [PATCH] Avoid crash on toc.ncx navPoint without navLabel
+Subject: [PATCH 1/2] Avoid crash on toc.ncx navPoint without navLabel
 
 Althoug at least one navLabel is required per navPoint, there is no
 guarantee it actually exists.
@@ -11,14 +11,14 @@ broken, and spew a warning.
 
 Fixes #8 epub_tit_next crashes on navPoint without navLabel.
 ---
- ebook-tools/src/libepub/epub.c | 5 +++--
- ebook-tools/src/libepub/opf.c  | 4 ++++
+ src/libepub/epub.c | 5 +++--
+ src/libepub/opf.c  | 4 ++++
  2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/ebook-tools/src/libepub/epub.c b/ebook-tools/src/libepub/epub.c
+diff --git a/src/libepub/epub.c b/src/libepub/epub.c
 index d085503..a259d9d 100644
---- a/ebook-tools/src/libepub/epub.c
-+++ b/ebook-tools/src/libepub/epub.c
+--- a/src/libepub/epub.c
++++ b/src/libepub/epub.c
 @@ -469,8 +469,9 @@ int epub_tit_next(struct titerator *tit) {
    case TITERATOR_NAVMAP:
    case TITERATOR_PAGES:
@@ -31,21 +31,21 @@ index d085503..a259d9d 100644
  
      if (! tit->cache.label)
        tit->cache.label = (char *)ti->id;
-diff --git a/ebook-tools/src/libepub/opf.c b/ebook-tools/src/libepub/opf.c
-index 6851db2..09bce9e 100644
---- a/ebook-tools/src/libepub/opf.c
-+++ b/ebook-tools/src/libepub/opf.c
-@@ -398,6 +398,10 @@ void _opf_parse_navmap(struct opf *opf, xmlTextReaderPtr reader) {
+diff --git a/src/libepub/opf.c b/src/libepub/opf.c
+index 34145b9..ae41184 100644
+--- a/src/libepub/opf.c
++++ b/src/libepub/opf.c
+@@ -394,6 +394,10 @@ void _opf_parse_navmap(struct opf *opf, xmlTextReaderPtr reader) {
       
        } else if (xmlTextReaderNodeType(reader) == 15) {
          if (item) {
 +          if (! item->label) {
-+            _epub_print_debug(opf->epub, DEBUG_WARNING, 
++            _epub_print_debug(opf->epub, DEBUG_WARNING,
 +                              "- missing navlabel for nav point element");
 +          }
            _epub_print_debug(opf->epub, DEBUG_INFO, 
                              "adding nav point item->%s %s (d:%d,p:%d)", 
                              item->id, item->src, item->depth, item->playOrder);
 -- 
-2.21.0
+2.40.0
 

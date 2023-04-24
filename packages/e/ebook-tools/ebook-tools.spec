@@ -1,7 +1,7 @@
 #
 # spec file for package ebook-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,9 @@ Source1:        baselibs.conf
 Patch1:         ebook-tools-64bit-installation.diff
 Patch2:         ebook-tools-visibility-hidden.patch
 # PATCH-FIX-OPENSUSE - fix https://sourceforge.net/p/ebook-tools/bugs/8/
-Patch3:         0001-Avoid-crash-on-toc-navPoint-without-navLabel.patch
+Patch3:         0001-Avoid-crash-on-toc.ncx-navPoint-without-navLabel.patch
+# PATCH-FIX-OPENSUSE
+Patch4:         0002-Avoid-crash-on-spine-itemref-without-idref.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -58,7 +60,8 @@ Header files for the libepub library
 %setup -q
 %patch1 -p1
 %patch2
-%patch3 -p2
+%patch3 -p1
+%patch4 -p1
 
 %build
 %cmake
