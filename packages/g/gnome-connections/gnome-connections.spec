@@ -17,7 +17,7 @@
 
 
 Name:           gnome-connections
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later

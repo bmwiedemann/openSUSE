@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:00:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Update gtk-frdp which fixes these 2 issues:
+    - Wrong size after connection when resizing is enabled
+    - Crash when connecting second time to the same machine
+
+-------------------------------------------------------------------
 Sat Mar 18 10:50:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
