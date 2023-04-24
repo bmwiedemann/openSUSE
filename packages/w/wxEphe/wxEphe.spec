@@ -1,7 +1,7 @@
 #
 # spec file for package wxEphe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wxEphe
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Astronomical ephemeris for the Sun, Moon and solar system planets
 License:        GPL-3.0-only
