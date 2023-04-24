@@ -30,6 +30,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -68,6 +69,8 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-PIE
 %endif
+# itinerary uses icons from the breeze theme
+Requires:       breeze5-icons
 # QML imports
 Requires:       kirigami2
 Requires:       prison-qt5-imports
@@ -99,8 +102,6 @@ Itinerary and boarding pass management application.
 
 # Should be Utility Maps, but the checker does not like it
 %suse_update_desktop_file org.kde.itinerary Education Geography
-install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
-  %{buildroot}%{_kf5_iconsdir}/hicolor/22x22/actions/map-globe.svg
 
 %check
 # one test fails on ppc64 (be). Upstream is investigating
@@ -123,7 +124,7 @@ install -m0644 -D %{_kf5_iconsdir}/breeze/actions/22/map-globe.svg \
 %{_kf5_appstreamdir}/org.kde.itinerary.appdata.xml
 %{_kf5_bindir}/itinerary
 %{_kf5_debugdir}/org_kde_itinerary.categories
-%{_kf5_iconsdir}/hicolor/
+%{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.itinerary.svg
 %{_kf5_libdir}/libSolidExtras.so
 %{_kf5_notifydir}/itinerary.notifyrc
 %{_kf5_plugindir}/kf5/kfilemetadata/kfilemetadata_itineraryextractor.so
