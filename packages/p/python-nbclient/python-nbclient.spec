@@ -31,7 +31,7 @@
 %endif
 
 Name:           python-nbclient%{psuffix}
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -55,6 +55,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
 %if %{with test}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
