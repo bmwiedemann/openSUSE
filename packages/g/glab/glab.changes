@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 24 06:39:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.28.1:
+  * docs: Update installation_options.md
+  * docs: update string for merge request flag on repo
+  * docs: et cetera without dots
+  * docs: Update README.md - fix punctuation
+  * fix: Disable breaking test for CI Lint endpoint
+  * chore: fix broken link
+  * chore: improve documentation visibility
+  * chore: replace README badges with native project badges
+  * fix: add newline to auth status command output
+  * test: fix Test_getFromKeyring not passing in CI
+  * test: fix assertion order, clear token in keyring test
+  * chore: update use-keyring flag description
+  * test: add tests for loading and storing tokens in keyring
+  * chore: update docs, fix lint error
+  * chore: replace native keyring with os keyring in login argument
+    desc
+  * docs: regenerate the docs
+  * feat: add support for token storage in encrypted keychains
+
+-------------------------------------------------------------------
 Thu Apr 13 17:43:20 UTC 2023 - pdostal@suse.com
 
 - Update to version 1.28.0:
