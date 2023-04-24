@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 22 19:23:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Preserve week view zoom levels when closing the app
+  + Lots of stability and performance improvements to search
+  + Improve keyboard navigation of event preview popover
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 16 16:52:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
