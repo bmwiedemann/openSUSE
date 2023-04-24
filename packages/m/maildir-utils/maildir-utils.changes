@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 17 06:31:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.3:
+  * fix logger unit-test build for some environments
+  * mu/mu4e: improve server error messages
+  * add 'uninstall' target to makefile
+  * reset mu4e--last-delta-unread (notifications)
+
+-------------------------------------------------------------------
 Sun Apr  9 14:53:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.2:
