@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 23 20:25:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.5
+  * Remove redirect from /notebooks to /files #235 (@mwouts)
+- Release 0.5.4
+  * Copy marked.umd.js to marked.js and revert loading #236
+    (@echarles)
+
+-------------------------------------------------------------------
 Sun Mar 19 16:11:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.3
