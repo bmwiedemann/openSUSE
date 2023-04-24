@@ -7,4 +7,12 @@
     <comment>wtmpdb replacing wtmp</comment>
     <requestid>1081659</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2c5cbe3fdff942de9a4f0e856c0d1a3f</srcmd5>
+    <version>0.4.0</version>
+    <time>1682368293</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Requires(pre) and Requires(post) instead of PreReq</comment>
+    <requestid>1082462</requestid>
+  </revision>
 </revisionlist>

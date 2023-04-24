@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:46:56 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use Requires(pre) and Requires(post) instead of PreReq
+
+-------------------------------------------------------------------
 Tue Apr 18 06:21:02 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.4.0

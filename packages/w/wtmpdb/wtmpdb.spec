@@ -30,7 +30,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(sqlite3)
-PreReq:         pam-config
+Requires(post): pam-config
+Requires(postun):pam-config
 
 %description
 pam_wtmpdb and wtmpdb are Y2038 safe versions of wtmp and the last utility. pam_wtmpdb collects all data in a sqlite3 database and wtmpdb creates boot and shutdown entries or formats and prints the contents of the wtmp database.
