@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 23 21:09:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.3
+  * Use local coverage #114 (@blink1073)
+  * Add more linting #106 (@blink1073)
+  * Fix test typing #104 (@blink1073)
+  * Add more ci checks #102 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Dec 25 20:55:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.8.2

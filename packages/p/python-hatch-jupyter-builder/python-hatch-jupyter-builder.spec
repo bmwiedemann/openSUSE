@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatch-jupyter-builder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 # This si with alts/libalternatives only and has never been something else
 %bcond_without libalternatives
 Name:           python-hatch-jupyter-builder
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        A hatch plugin to help build Jupyter packages
 License:        BSD-3-Clause
@@ -51,6 +51,7 @@ adds a build step for use with Jupyter packages.
 
 %prep
 %autosetup -p1 -n hatch_jupyter_builder-%{version}
+sed -i '/addopts/ s/--color=yes//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -70,6 +71,7 @@ adds a build step for use with Jupyter packages.
 %python_uninstall_alternative hatch-jupyter-builder
 
 %files %{python_files}
+%license LICENSE.txt
 %python_alternative %{_bindir}/hatch-jupyter-builder
 %{python_sitelib}/hatch_jupyter_builder
 %{python_sitelib}/hatch_jupyter_builder-%{version}.dist-info
