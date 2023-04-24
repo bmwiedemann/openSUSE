@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 18 14:59:39 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.25.0
+  * Merge dde-kwin and deepin-kwin
+- Drop deepin-kwin-tabbox-chameleon-rename.patch, drop-nonexistent-translations.patch
+  and fix-library-links.patch
+- Add 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+
+-------------------------------------------------------------------
+Tue Jan 17 07:37:36 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update fix-library-links.patch, fix build on new dtk 
+
+-------------------------------------------------------------------
+Fri Oct 28 13:45:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.24
+  * Add split screen menu
+  * Add decoration property interface
+  * Add watermark feature and support super+s
+  * Fix bugs
+- Drop fix-build-on-5_25_3.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 03:21:02 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.5.11
