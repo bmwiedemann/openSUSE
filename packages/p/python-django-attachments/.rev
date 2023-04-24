@@ -51,4 +51,16 @@
     now</comment>
     <requestid>1079721</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef400ecafe85ff5eb2273b00cc51b0a2</srcmd5>
+    <version>1.11</version>
+    <time>1682368263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11:
+  * Return form errors as JSON from ``add_attachment()`` view
+    when the ``X-Return-Form-Errors`` request header is present.
+    Response code is 400 - BAD REQUEST because this is a client
+    error.</comment>
+    <requestid>1082315</requestid>
+  </revision>
 </revisionlist>

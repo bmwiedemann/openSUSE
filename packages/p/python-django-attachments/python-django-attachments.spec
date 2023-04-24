@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-attachments
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Attach files to any Django model
 License:        MIT

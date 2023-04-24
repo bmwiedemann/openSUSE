@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 23 20:12:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11:
+  * Return form errors as JSON from ``add_attachment()`` view
+    when the ``X-Return-Form-Errors`` request header is present.
+    Response code is 400 - BAD REQUEST because this is a client
+    error. 
+
+-------------------------------------------------------------------
 Sun Apr 16 08:14:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10:
