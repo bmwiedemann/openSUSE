@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 23 17:35:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.3.1
+  * Remove overwriting of default KernelManager #1972 (@tuncbkose)
+- Release 7.3.0
+  * Allow pattern in output_base #1967 (@JeppeKlitgaard)
+  * Make date configurable in latex/PDF #1963 (@achimgaedke)
+  * Update jupyterlab CSS #1960 (@martinRenou)
+
+-------------------------------------------------------------------
 Sun Mar 19 16:09:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.10
