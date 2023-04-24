@@ -89,4 +89,16 @@
     CHANGELOG.md file provided with this package (forwarded request 977581 from glaubitz)</comment>
     <requestid>977587</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a475576677fa39d5dabef7fbbd1395b</srcmd5>
+    <version>8.0.0</version>
+    <time>1682368300</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1080505 from glaubitz)</comment>
+    <requestid>1082476</requestid>
+  </revision>
 </revisionlist>
