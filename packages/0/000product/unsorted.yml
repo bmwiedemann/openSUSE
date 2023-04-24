@@ -472,9 +472,11 @@ unsorted:
   - aisleriot-themes 
   - akka 
   - akka-javadoc 
+  - akonadi-calendar 
   - akonadi-calendar-devel 
   - akonadi-contact-devel 
   - akonadi-import-wizard-devel 
+  - akonadi-mime 
   - akonadi-mime-devel 
   - akonadi-notes-devel 
   - akonadi-search-devel 
@@ -482,6 +484,7 @@ unsorted:
   - akonadi-server-devel 
   - akonadi-server-sqlite 
   - akonadiconsole 
+  - akonadiconsole-lang 
   - alac 
   - alac-devel 
   - alacarte 
@@ -503,6 +506,8 @@ unsorted:
   - allegro44-dga2-plugin 
   - allegro44-jack-plugin 
   - allegro44-tools 
+  - alligator 
+  - alligator-lang 
   - almanah 
   - almanah-lang 
   - alpine 
@@ -559,6 +564,8 @@ unsorted:
   - android-tools-mkbootimg 
   - android-tools-partition 
   - android-udev-rules 
+  - angelfish 
+  - angelfish-lang 
   - angelscript-devel 
   - anjuta 
   - anjuta-devel 
@@ -1821,6 +1828,8 @@ unsorted:
   - calcurse-lang 
   - calendarsupport-devel 
   - calibre 
+  - calindori 
+  - calindori-lang 
   - callaudiod 
   - callaudiod-devel 
   - callaudiod-doc 
@@ -2099,7 +2108,6 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
-  - clang-tools 
   - clang11 
   - clang11-devel 
   - clang11-doc 
@@ -2115,7 +2123,6 @@ unsorted:
   - clang15 
   - clang15-devel 
   - clang15-doc 
-  - clang16 
   - clang16-devel 
   - clang16-doc 
   - clanlib 
@@ -2131,7 +2138,6 @@ unsorted:
   - claws-mail 
   - claws-mail-devel 
   - claws-mail-lang 
-  - clazy 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -2472,7 +2478,6 @@ unsorted:
   - cpp11 
   - cpp12 
   - cpp7 
-  - cppcheck 
   - cppcheck-gui 
   - cpphs 
   - cppi 
@@ -4316,7 +4321,6 @@ unsorted:
   - gcad3d 
   - gcal 
   - gcal-lang 
-  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -6471,7 +6475,6 @@ unsorted:
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
-  - git-svn 
   - git-sync 
   - git-test 
   - gitg 
@@ -7115,7 +7118,9 @@ unsorted:
   - grantlee-editor 
   - grantlee-editor-lang 
   - grantlee5-devel 
+  - grantleetheme 
   - grantleetheme-devel 
+  - grantleetheme-lang 
   - graphite2 
   - graphite2-devel 
   - graphviz 
@@ -7612,10 +7617,7 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic 
   - health-checker-testing 
-  - heaptrack 
   - heaptrack-devel 
-  - heaptrack-gui 
-  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -8829,6 +8831,8 @@ unsorted:
   - kalendar-lang 
   - kalendar-plasmoid 
   - kalgebra-mobile 
+  - kalk 
+  - kalk-lang 
   - kalzium 
   - kalzium-devel 
   - kalzium-lang 
@@ -8858,6 +8862,8 @@ unsorted:
   - kapman 
   - kapman-lang 
   - karchive-devel 
+  - kasts 
+  - kasts-lang 
   - kasumi 
   - katomic 
   - katomic-lang 
@@ -8883,8 +8889,12 @@ unsorted:
   - kbreakout-lang 
   - kbuild 
   - kcalendarcore-devel 
+  - kcalutils 
   - kcalutils-devel 
+  - kcalutils-lang 
   - kchmviewer 
+  - kclock 
+  - kclock-lang 
   - kcm_fcitx5 
   - kcmutils-devel 
   - kcodecs-devel 
@@ -8931,8 +8941,6 @@ unsorted:
   - kdesignerplugin-lang 
   - kdesu-devel 
   - kdesvn 
-  - kdevelop5 
-  - kdevelop5-lang 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
@@ -9078,6 +9086,7 @@ unsorted:
   - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
+  - kimap 
   - kimap-devel 
   - kinit-devel 
   - kio-devel 
@@ -9122,6 +9131,7 @@ unsorted:
   - kitemmodels-devel 
   - kitemviews-devel 
   - kiten-devel 
+  - kitinerary 
   - kitinerary-devel 
   - kitty 
   - kiwi-man-pages 
@@ -9166,8 +9176,10 @@ unsorted:
   - kmailtransport-devel 
   - kmarkdownwebview 
   - kmarkdownwebview-lang 
+  - kmbox 
   - kmbox-devel 
   - kmediaplayer-devel 
+  - kmime 
   - kmime-devel 
   - kmix 
   - kmix-lang 
@@ -9198,6 +9210,8 @@ unsorted:
   - kochmorse 
   - kohsuke-pom 
   - kokkos-devel 
+  - koko 
+  - koko-lang 
   - kolf 
   - kolf-lang 
   - kollision 
@@ -9207,6 +9221,8 @@ unsorted:
   - kompare-devel 
   - kompose 
   - kompose-bash-completion 
+  - kongress 
+  - kongress-lang 
   - konkretcmpi-devel 
   - konkretcmpi-python3 
   - konqueror 
@@ -9239,6 +9255,7 @@ unsorted:
   - kphotoalbum-lang 
   - kpimtextedit-devel 
   - kpipewire-devel 
+  - kpkpass 
   - kpkpass-devel 
   - kplotting-devel 
   - kpmcore 
@@ -9268,6 +9285,8 @@ unsorted:
   - krdc 
   - krdc-devel 
   - krdc-lang 
+  - krecorder 
+  - krecorder-lang 
   - krename 
   - kreport 
   - kreport-devel 
@@ -9305,6 +9324,7 @@ unsorted:
   - ksirk 
   - ksirk-lang 
   - ksmbd-tools 
+  - ksmtp 
   - ksmtp-devel 
   - ksnakeduel 
   - ksnakeduel-lang 
@@ -9325,6 +9345,7 @@ unsorted:
   - ksystemlog-lang 
   - kteatime 
   - kteatime-lang 
+  - ktextaddons-devel 
   - ktexteditor-devel 
   - ktextwidgets-devel 
   - ktikz 
@@ -9332,6 +9353,7 @@ unsorted:
   - ktimer-lang 
   - ktimetracker 
   - ktimetracker-lang 
+  - ktnef-common 
   - ktnef-devel 
   - ktoblzcheck 
   - ktoblzcheck-devel 
@@ -9528,6 +9550,9 @@ unsorted:
   - kwave 
   - kwave-lang 
   - kwayland-devel 
+  - kweather 
+  - kweather-lang 
+  - kweathercore-devel 
   - kwidgetsaddons-devel 
   - kwikdisk 
   - kwin5-devel 
@@ -9929,12 +9954,12 @@ unsorted:
   - libIlmThread-3_1-30-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
-  - libKChart2 
   - libKDb3-4 
   - libKF5Emoticons5 
   - libKF5JsEmbed5 
   - libKF5JsEmbed5-lang 
   - libKF5KDGantt2-5 
+  - libKF5KWeatherCore5 
   - libKF5MediaPlayer5 
   - libKF5ModemManagerQt-devel 
   - libKF5NetworkManagerQt-devel 
@@ -9944,17 +9969,17 @@ unsorted:
   - libKOSM1 
   - libKOSMIndoorMap1 
   - libKOpeningHours1 
-  - libKPimAddressbookImportExport5-devel 
-  - libKPimGAPIBlogger5 
-  - libKPimGAPIDrive5 
-  - libKPimGAPILatitude5 
-  - libKPimGAPIMaps5 
+  - libKPim5AddressbookImportExport5-devel 
+  - libKPim5GAPIBlogger5 
+  - libKPim5GAPIDrive5 
+  - libKPim5GAPILatitude5 
+  - libKPim5GAPIMaps5 
   - libKPropertyCore3-4 
   - libKPropertyWidgets3-4 
   - libKPublicTransport1 
+  - libKPublicTransportOnboard1 
   - libKReport3-4 
   - libKSeExpr4 
-  - libKasten4 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_4 
@@ -10011,7 +10036,6 @@ unsorted:
   - libOgreTerrain13_5 
   - libOgreVolume-devel 
   - libOgreVolume13_5 
-  - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenCOLLADABaseUtils0_3 
@@ -10954,7 +10978,6 @@ unsorted:
   - libboost_numpy-py3-1_81_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
-  - libboost_program_options1_81_0 
   - libboost_program_options1_81_0-32bit 
   - libboost_program_options1_81_0-devel 
   - libboost_program_options1_81_0-x86-64-v3 
@@ -11224,11 +11247,9 @@ unsorted:
   - libclang-cpp14 
   - libclang-cpp15 
   - libclang-cpp15-32bit 
-  - libclang-cpp16 
   - libclang-cpp16-32bit 
   - libclang11 
   - libclang12 
-  - libclang13 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12776,14 +12797,12 @@ unsorted:
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
-  - libkasten-lang 
   - libkate-devel 
   - libkate-tools 
   - libkcapi-devel 
   - libkcapi-tools 
   - libkcapi1 
   - libkcddb-devel 
-  - libkchart-lang 
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
@@ -13595,7 +13614,6 @@ unsorted:
   - liboil-0_3-0 
   - liboil-devel 
   - liboil-doc 
-  - libokteta-lang 
   - liboldX-devel 
   - liboldX-devel-32bit 
   - liboldX6 
@@ -14769,7 +14787,6 @@ unsorted:
   - libsepol-utils 
   - libsepol2-32bit 
   - libserd-0-0-32bit 
-  - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
   - libserializer-javadoc 
@@ -14965,14 +14982,12 @@ unsorted:
   - libstartup-notification-1-0-32bit 
   - libstatgrab-devel 
   - libstatgrab10 
-  - libstdc++-devel 
   - libstdc++-devel-32bit 
   - libstdc++6-32bit 
   - libstdc++6-devel-gcc11 
   - libstdc++6-devel-gcc11-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
-  - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
@@ -15098,8 +15113,6 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
-  - libsvn_auth_gnome_keyring-1-0 
-  - libsvn_auth_kwallet-1-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit 
   - libswresample4-32bit 
@@ -15431,7 +15444,6 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit 
-  - libutf8proc2 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -16256,7 +16268,6 @@ unsorted:
   - llvm16 
   - llvm16-devel 
   - llvm16-doc 
-  - llvm16-gold 
   - llvm16-opt-viewer 
   - llvm16-polly 
   - llvm16-polly-devel 
@@ -19148,7 +19159,6 @@ unsorted:
   - ohcount 
   - oidentd 
   - okteta 
-  - okteta-data 
   - okteta-devel 
   - okteta-lang 
   - okteta-part 
@@ -21650,7 +21660,9 @@ unsorted:
   - piglit 
   - pijul 
   - pilot 
+  - pimcommon 
   - pimcommon-devel 
+  - pimcommon-lang 
   - pin 
   - pinentry-efl 
   - pinentry-emacs 
@@ -21732,6 +21744,8 @@ unsorted:
   - plasma5-workspace-devel 
   - plasma5-workspace-wallpapers 
   - plasmaengineexplorer5 
+  - plasmatube 
+  - plasmatube-lang 
   - plater 
   - platformsh-cli 
   - playerctl 
@@ -21973,16 +21987,6 @@ unsorted:
   - postgresql-pltcl 
   - postgresql-server-devel 
   - postgresql-test 
-  - postgresql10 
-  - postgresql10-contrib 
-  - postgresql10-devel 
-  - postgresql10-docs 
-  - postgresql10-llvmjit-devel 
-  - postgresql10-plperl 
-  - postgresql10-plpython 
-  - postgresql10-pltcl 
-  - postgresql10-server 
-  - postgresql10-test 
   - postgresql11 
   - postgresql11-contrib 
   - postgresql11-devel 
@@ -33157,6 +33161,8 @@ unsorted:
   - qm 
   - qml-autoreqprov 
   - qml-box2d 
+  - qmlkonsole 
+  - qmlkonsole-lang 
   - qmlpluginexports-qt5 
   - qmlpluginexports-qt6 
   - qmltermwidget 
@@ -34969,11 +34975,8 @@ unsorted:
   - subunit-devel 
   - subunit-filters 
   - subunit-shell 
-  - subversion 
-  - subversion-bash-completion 
   - subversion-devel 
   - subversion-doc 
-  - subversion-perl 
   - subversion-python 
   - subversion-ruby 
   - subversion-server 
@@ -35276,6 +35279,8 @@ unsorted:
   - teleport-tsh 
   - tellico 
   - tellico-lang 
+  - telly-skout 
+  - telly-skout-lang 
   - telnet 
   - telnet-server 
   - template-glib-devel 
