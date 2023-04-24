@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Apr 23 20:26:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * fix: support empty records in ak.with_field by @agoose77 in #2387
+  * fix: only format exception for primary context
+  * fix: only touch data in nplike.asarray if copy is required
+  * fix: update GrowableBuffer::move_to algorithm
+  * fix: don't touch for ascontiguousarray
+  * feat: use cppyy for JIT
+  * feat!: rename cpptype
+  * feat: implemented GrowableBuffer in Numba as a start toward LayoutBuilder
+  * feat: add to_backend to ak.record.Record
+  * feat: add type equality is_equal_to member
+  * fix: expose array interface for CUDA
+  * fix: test untested path in ak.cartesian & broadcasting
+  * fix: ak.cartesian for typetracer
+  * fix: Numba string reference count memory leak.
+  * fix: generate an array view when an Array C++ type is requested
+  * fix: do not expose an rdfentry_ column
+  * fix: generate RDataSource API based on ROOT attribute
+  * fix: simplify depth limit test to support bigger-than-depth values
+  * fix: use cppyy include
+  * fix: convert ufunc arguments to same backend
+  * fix: support N-d sequences in TypeTracer.asarray
+  * fix: make from_iter require iterables!
+  * fix: avoid stack overflow with std::unique_ptr linked list
+  * fix: ak.unzip visits all contents
+  * fix: remove spurious typetracer conversion
+  * feat: add support for arrays in from_buffers
+  * feat: validate axis in L1
+  * feat: add examples to header-only module
+  * fix: support typetracer in ak.unflatten
+  * fix: view for unknown scalar
+  * fix: common backend in functions accepting multiple arrays
+  * fix: support unknown scalars in __getitem__
+  * fix: fail early if index is too dimensional
+  * fix: uneccessary use of nplike_of
+  * fix: jupyterlite dependency changes
+
+-------------------------------------------------------------------
 Tue Mar 14 22:34:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
