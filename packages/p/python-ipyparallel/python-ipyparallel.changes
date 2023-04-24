@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 23 21:15:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.6.1
+  * avoid errors when engine id cannot be identified #793 (@minrk)
+  * Disable variable expansion in %px #792 (@minrk)
+  * fix wait_interactive(return_when=FIRST_EXCEPTION) when there
+    are no errors #790 (@minrk)
+- Release 8.6.0
+  * Fix KeyError on parent_header when streaming output with %%px
+  * Allow disabling streaming/progress defaults with
+    IPP_NONINTERACTIVE=1 environment variable (e.g. when building
+    notebooks in documentation)
+
+-------------------------------------------------------------------
 Thu Mar 30 18:56:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.5.1

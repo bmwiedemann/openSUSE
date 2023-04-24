@@ -17,7 +17,7 @@
 
 
 Name:           python-ipyparallel
-Version:        8.5.1
+Version:        8.6.1
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
