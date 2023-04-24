@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.19.0
+Version:        2.22.1
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -84,12 +84,12 @@ Summary:        The jupyterlab_server[test] requirements
 Requires:       python-Werkzeug
 Requires:       python-ipykernel
 Requires:       python-jupyterlab-server-openapi = %{version}
-Requires:       python-openapi-spec-validator >= 0.5.1
 Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
 Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
+Requires:       (python-openapi-spec-validator >= 0.5.1 with python-openapi-spec-validator < 0.6)
 #Requires:       python-sphinxcontrib-spelling
 Requires:       python-strict-rfc3339
 
@@ -100,8 +100,8 @@ without code coverage.
 %package openapi
 Summary:        The jupyterlab_server[openapi]] extra
 Requires:       python-jupyterlab-server = %{version}
-Requires:       python-openapi-core >= 0.16.1
 Requires:       python-ruamel.yaml
+Requires:       (python-openapi-core >= 0.16.1 with python-openapi-core < 0.17)
 
 %description openapi
 Metapackage for the jupyterlab_server[openapi] extra

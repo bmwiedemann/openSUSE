@@ -30,4 +30,18 @@
   * Sync lint deps #365 (@blink1073)</comment>
     <requestid>1058707</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>194b6e768d6dfac68a9f558fa383a326</srcmd5>
+    <version>2.22.1</version>
+    <time>1682368274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.22.1
+  * Fix coverage handling (#392 #392 (@blink1073)
+- Release 2.22.0
+  * Optional argument to get only the schema names #385 (@brichet)
+- Release 2.21.0
+  * Add json5 support for page_config.json #388 (@peytondmurray)
+  * Ignore warning from bind_sockets #383 (@blink1073) (forwarded request 1082329 from bnavigator)</comment>
+    <requestid>1082331</requestid>
+  </revision>
 </revisionlist>

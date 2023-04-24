@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 23 20:59:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.22.1
+  * Fix coverage handling (#392 #392 (@blink1073)
+- Release 2.22.0
+  * Optional argument to get only the schema names #385 (@brichet)
+- Release 2.21.0
+  * Add json5 support for page_config.json #388 (@peytondmurray)
+  * Ignore warning from bind_sockets #383 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Mar 19 16:52:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.20.0
+  * Change periodic callback time from tuple to int #376 (@rmoe)
+  * Pin openapi deps #381 (@blink1073)
+  * Add more linting #369 (@blink1073)
+  * Clean up openapi compat and warnings #368 (@blink1073)
+
+-------------------------------------------------------------------
 Mon Jan 16 12:56:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.19.0
