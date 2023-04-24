@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 22 19:25:05 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.1:
+  * daemon: Stop and clear rdp/vnc servers when start fails
+  * session-rdp:
+    - Prevent DVC reinitializations on session shutdown
+    - Fix small style issue
+  * rdp/rdpgfx: Use correct GMainContext for protocol reset source
+  * clipboard-rdp: Make warnings more explicit on content
+    conversion failure
+
+-------------------------------------------------------------------
 Sun Mar 19 07:38:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

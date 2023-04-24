@@ -22,7 +22,7 @@
 %define gstreamer_version  1.10.0
 
 Name:           gnome-remote-desktop
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
