@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 23 17:22:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.2
+  * Check if the iopub channel is not closed before flushing it
+  * Fix kernel autorestart after it's killed for Jupyter-client 8+
+
+-------------------------------------------------------------------
 Sun Mar 19 15:57:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.1

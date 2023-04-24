@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause

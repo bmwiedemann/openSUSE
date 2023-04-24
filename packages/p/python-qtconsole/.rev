@@ -239,4 +239,14 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * Cast images width and height to int when trying to insert them.</comment>
     <requestid>1072944</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5056e0d7d74aa0de3905b062745fc749</srcmd5>
+    <version>5.4.2</version>
+    <time>1682368286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.2
+  * Check if the iopub channel is not closed before flushing it
+  * Fix kernel autorestart after it's killed for Jupyter-client 8+ (forwarded request 1082299 from bnavigator)</comment>
+    <requestid>1082300</requestid>
+  </revision>
 </revisionlist>
