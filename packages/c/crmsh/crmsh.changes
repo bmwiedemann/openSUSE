@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:12:24 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230424.75600b3f:
+  * Fix: help: Long time to load and parse crm.8.adoc (bsc#1210198)
+  * Dev: behave: Adjust functional test for previous change
+  * Dev: unittest: Adjust unit test for previous change
+  * Fix: lock: Join node failed to wait init node finished (bsc#1210332)
+
+-------------------------------------------------------------------
 Fri Apr 21 08:47:46 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230421.a509b8ce:
