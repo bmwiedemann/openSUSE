@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:31:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Thu Apr 20 07:27:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.0:
@@ -11,6 +16,11 @@ Thu Apr 20 07:27:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * Fix escaping of top-level element text in .html() output
   * Support (and require) cssselect 1.2+
   * Drop support for python 3.5/3.6 
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
 Fri Feb 17 16:46:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
