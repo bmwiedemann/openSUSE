@@ -1,7 +1,7 @@
 #
 # spec file for package vit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vit
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Visual Interactive Taskwarrior full-screen terminal interface
 License:        MIT

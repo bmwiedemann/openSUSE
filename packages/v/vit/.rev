@@ -91,4 +91,27 @@ their configuration.
   * Make vit respect taskrc in config.ini</comment>
     <requestid>979057</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4379488f18f850c60746ab3e3e413f19</srcmd5>
+    <version>2.3.0</version>
+    <time>1682368279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0
+  * Allow flash configuration
+  * correctly calculate text width of full-width characters
+  * Fix required minimum Python version
+  * add documentation for auto-refresh configuration
+  * place IS_VIT_INSTANCE into environ earlier
+  * example hook for intelligent VIT refresh
+  * sample script to externally refresh VIT instances
+  * add Bash function example for vit wrapper
+  * add pid_dir option to [vit] section
+    See sample config.ini for details on usage
+  * add basic signal support
+    + SIGUSR1: refresh (equivalent to hitting refresh key in VIT)
+    + SIGTERM/SIGINT/SIGQUIT: quit VIT cleanly
+  * more user-friendly error message for unsupported color
+    definitions</comment>
+    <requestid>1082340</requestid>
+  </revision>
 </revisionlist>

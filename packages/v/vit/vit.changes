@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 24 03:35:41 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.3.0
+  * Allow flash configuration
+  * correctly calculate text width of full-width characters
+  * Fix required minimum Python version
+  * add documentation for auto-refresh configuration
+  * place IS_VIT_INSTANCE into environ earlier
+  * example hook for intelligent VIT refresh
+  * sample script to externally refresh VIT instances
+  * add Bash function example for vit wrapper
+  * add pid_dir option to [vit] section
+    See sample config.ini for details on usage
+  * add basic signal support
+    + SIGUSR1: refresh (equivalent to hitting refresh key in VIT)
+    + SIGTERM/SIGINT/SIGQUIT: quit VIT cleanly
+  * more user-friendly error message for unsupported color
+    definitions
+
+-------------------------------------------------------------------
 Tue May 24 20:40:11 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.2.0
