@@ -439,4 +439,15 @@
 </comment>
     <requestid>1073771</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>134a59394e9ebeff74f6cd144d852ef4</srcmd5>
+    <version>3.6.3</version>
+    <time>1682368273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.3
+  * Bump lumino 1.x #14286 (@fcollonval)
+  * Provide @jupyterlab/shared-models as singleton #14229
+    (@fcollonval) (forwarded request 1082328 from bnavigator)</comment>
+    <requestid>1082330</requestid>
+  </revision>
 </revisionlist>

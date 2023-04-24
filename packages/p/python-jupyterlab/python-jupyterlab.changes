@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 23 21:05:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.6.3
+  * Bump lumino 1.x #14286 (@fcollonval)
+  * Provide @jupyterlab/shared-models as singleton #14229
+    (@fcollonval)
+
+-------------------------------------------------------------------
 Mon Mar 20 21:42:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.6.2
