@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.7.3
+Version:        5.8.0
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
@@ -92,7 +92,7 @@ sed -i 's/--color=yes//' pyproject.toml
 %python_uninstall_alternative jupyter-trust
 
 %files %{python_files}
-%license COPYING.md
+%license LICENSE
 %doc README.md
 %python_alternative jupyter-trust
 %{python_sitelib}/nbformat/

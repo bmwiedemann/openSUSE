@@ -195,4 +195,16 @@
   * Only require nbformat_minor for v4 #342 (@minrk)</comment>
     <requestid>1058566</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0310b2a668df8dfc4932db2aeb8cfe61</srcmd5>
+    <version>5.8.0</version>
+    <time>1682368268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.0
+  * Add strip_invalid_metadata argument to validator normalize
+    method #355 (@jonabc)
+  * Only add ellipsis to NotJSONError message if message is
+    truncated #344 (@rschroll) (forwarded request 1082322 from bnavigator)</comment>
+    <requestid>1082323</requestid>
+  </revision>
 </revisionlist>
