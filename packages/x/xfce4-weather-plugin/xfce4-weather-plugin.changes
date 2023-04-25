@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 22 07:08:05 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.11.1
+  * Update copyright year
+  * Remove deprecated project files
+  * Prevent Celcius display of -0C (fixes #63)
+  * Fix blurry logo when UI scale > 1
+  * Fix blurry icons when UI scale > 1
+  * Fix intltool lock file bug in make distcheck
+  * Rename `timezone` to avoid shadowing global variable
+  * Return from function to avoid using garbage values
+  * Use correct variable
+  * Add settings button to summary window (Fixes #41)
+  * Drop strftime padding (Fixes #46)
+  * Improve settings UI
+  * Add new icons with rDNS naming
+  * Fix forecast layout (Fixes #40)
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Mon Feb 15 17:26:25 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed broken package and URL 
