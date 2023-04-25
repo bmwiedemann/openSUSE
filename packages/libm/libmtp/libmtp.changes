@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:46:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.1.21 release
+  Bugs fixed:
+
+  - Fix LIBMTP_STORAGE_SORTBY_MAXSPACE not working (copy-paste mistake)
+  - fix warnings regarding mismatched parameter docs
+  - fix comment above  sort_storage_bysort_storage_by
+  - Revert "ptp_pack_string: check string length for no iconv situation"
+  - remove dependency on ptp.h
+  - fixed paste error vendor/product id
+  - libusb-glue: check return value of ptp_init_send_memory_handler
+  - ptp_pack_string: check string length for no iconv situation
+  - ptp-pack: fix ucs2str overflow
+
+  Features:
+
+  - add a LIBMTP_FreeMemory function that wraps free()
+  - added functions to get device by serial number
+  - added serial number of device to output of 'mtp-files'
+  - added optional serial number parameter to 'mtp-getfile'
+  - added optional serial number parameter to 'mtp-delfile'
+  - feat: Add LIBMTP_Get_Children() to read the list of raw IDs of a folder.
+  - merge a patch from google https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/media-libs/libmtp/files/libmtp-1.1.20-10_remove_nexus_s_from_device_list.patch
+
+  - several new devices added, some device renaming for consistency.
+
+-------------------------------------------------------------------
 Sat Jul  2 08:50:23 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.1.20 release
