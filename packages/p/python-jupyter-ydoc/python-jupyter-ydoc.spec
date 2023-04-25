@@ -17,7 +17,9 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        0.2.3
+# Don't update to >= 0.3 before jupyterlab and jupyter-collaboration release a new requirement
+# jupyterlab 3.6 requires jupyter-ydoc~=0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
