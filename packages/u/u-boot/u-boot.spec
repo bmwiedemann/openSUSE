@@ -413,7 +413,7 @@ export OPENSBI=%{_datadir}/opensbi/opensbi.bin
 %endif
 
 %if 0%{?is_rk3328}
-cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf .
+cp %{_datadir}/arm-trusted-firmware-rk3328/bl31.elf ./atf-bl31
 %endif
 %if 0%{?is_rk3399}
 cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf ./atf-bl31
