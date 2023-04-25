@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 24 19:03:13 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 1.4.2
+  * When trying to install wheels with invalid RECORD files, Poetry does
+    not fail anymore but only prints a warning.
+    This mitigates an unintended change introduced in Poetry 1.4.1 (#7694).
+  * Fix an issue where relative git submodule urls were not parsed correctly (#7017).
+  * Fix an issue where Poetry could freeze when building a project with a build
+    script if it generated enough output to fill the OS pipe buffer (#7699).
+- Changes in 1.4.0
+  * Add a modern installer (installer.modern-installation) for
+    faster installation of packages and independence from pip
+    (#6205).
+  * Add support for Private :: trove classifiers (#7271).
+  * Add the version of poetry in the @generated comment at the
+    beginning of the lock file (#7339).
+  * Add support for virtualenvs.prefer-active-python when running
+    poetry new and poetry init (#7100).
+  * Deprecate the old installer, i.e. setting
+    experimental.new-installer to false (#7358).
+  * Remove unused platform field from cached package info and bump
+    the cache version (#7304).
+  * Extra dependencies of the root project are now sorted in the
+    lock file (#7375).
+  * Remove upper boundary for importlib-metadata dependency
+    (#7434).
+  * Validate path dependencies during use instead of during
+    construction (#6844).
+  * Remove the deprecated repository modules (#7468).
+
+-------------------------------------------------------------------
 Fri Feb 24 12:34:19 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-orjson test requirement, it's needed because
