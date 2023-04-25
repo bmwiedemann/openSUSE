@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 %global mbflavor @BUILD_FLAVOR@%{nil}
 %if "%{mbflavor}" == "python2" && 0%{with python2}
 # TW Factory defines _without_python2 and skips all python3 flavors if skip_python3 is defined
@@ -35,14 +36,18 @@ ExclusiveArch:  DoNotBuild
 %endif
 
 # query the default provider and assume that all installed python flavors have the same version
+%if %{defined sle15_python_module_pythons}
+%define Nversion %(rpm -q --qf '%%{version}' --whatprovides %{pythons}-%{tornadoN})
+%else
 %define Nversion %(rpm -q --qf '%%{version}' --whatprovides %{mbflavor}-%{tornadoN})
-%{?!python_module:%define python_module() %{?!skip_python2:python-%{**}} %{?!skip_python3:python3-%{**}}}
+%endif
+
 Name:           python-tornado
 Version:        %{Nversion}
 Release:        0
 Summary:        A Python web framework and asynchronous networking library
 License:        Apache-2.0
-URL:            http://www.tornadoweb.org
+URL:            https://www.tornadoweb.org
 Source0:        README.SUSE
 BuildRequires:  %{python_module %{tornadoN}}
 BuildRequires:  python-rpm-macros

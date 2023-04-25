@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:24:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not hardcode the python version to get the python-tornadoN
+  version.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:37:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:45:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Feb  8 18:53:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Multibuild and singlespec again: remove a lot of duplicated code
