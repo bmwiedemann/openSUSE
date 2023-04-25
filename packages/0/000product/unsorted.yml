@@ -9542,7 +9542,6 @@ unsorted:
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
-  - kvantum-openbox-themes 
   - kvantum-qt5 
   - kvantum-qt6 
   - kvantum-themes 
@@ -10537,6 +10536,7 @@ unsorted:
   - libabigail0 
   - libabiword-3_0 
   - libabiword-3_0-devel 
+  - libabsl2301_0_0 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -10920,6 +10920,7 @@ unsorted:
   - libboost_coroutine1_81_0-32bit 
   - libboost_coroutine1_81_0-devel 
   - libboost_date_time-devel 
+  - libboost_date_time1_81_0 
   - libboost_date_time1_81_0-32bit 
   - libboost_date_time1_81_0-devel 
   - libboost_date_time1_81_0-x86-64-v3 
@@ -12580,7 +12581,7 @@ unsorted:
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
-  - libhydrogen-core-1_1_1 
+  - libhydrogen-core-1_2_0 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libi2c0 
