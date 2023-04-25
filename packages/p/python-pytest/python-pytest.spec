@@ -32,6 +32,7 @@
 %endif
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
 Version:        7.2.0
 Release:        0
