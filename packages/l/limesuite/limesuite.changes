@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 25 08:05:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add limesuite-add-missing-includes.patch: Add missing include,
+  exposed by gcc 13.
+- Use autopatch, cmake_build and ldconfig_scriptlets macros.
+- Build udev sub-package as noarch.
+
+-------------------------------------------------------------------
 Tue Oct 25 19:17:28 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 22.09.1

@@ -1,0 +1,19 @@
+Index: LimeSuite-22.09.1/src/lms7002m_mcu/MCU_File.cpp
+===================================================================
+--- LimeSuite-22.09.1.orig/src/lms7002m_mcu/MCU_File.cpp
++++ LimeSuite-22.09.1/src/lms7002m_mcu/MCU_File.cpp
+@@ -1,6 +1,7 @@
+ #include "MCU_File.h"
+ #include <algorithm>
+ #include <iostream>
++#include <cstdint>
+ 
+ using namespace std;
+ 
+@@ -506,4 +507,4 @@ bool MCU_File::BitString(const unsigned
+         mask <<= 1;
+     }
+     return true;
+-}
+\ No newline at end of file
++}

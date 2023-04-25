@@ -1,7 +1,7 @@
 #
 # spec file for package limesuite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ Group:          Productivity/Hamradio/Other
 URL:            https://myriadrf.org/projects/lime-suite/
 #Git-Clone:     https://github.com/myriadrf/LimeSuite.git
 Source:         https://github.com/myriadrf/LimeSuite/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM limesuite-add-missing-includes.patch -- Add missing include
+Patch:          limesuite-add-missing-includes.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
@@ -58,6 +60,7 @@ platforms and other tools for developing with LMS7-based hardware.
 %package udev
 Summary:        Udev rules for LimeSDR
 Group:          Hardware/Other
+BuildArch:      noarch
 
 %description udev
 Udev rules for Lime Suite
@@ -81,6 +84,7 @@ A Soapy module that supports LimeSDR devices within the Soapy API.
 
 %prep
 %setup -q -n LimeSuite-%{version}
+%autopatch -p1
 
 # HACK: set udev permissions to 666
 sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
@@ -96,13 +100,12 @@ sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
   -DENABLE_SIMD_FLAGS="none" \
 %endif
   -DLIME_SUITE_EXTVER=release
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun  -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %post udev
 %udev_rules_update
