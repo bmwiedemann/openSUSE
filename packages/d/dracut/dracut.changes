@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:35:19 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.375.gafb362e4:
+  * fix(network-legacy): handle do_dhcp calls without arguments (bsc#1210640)
+
+  fips=1 and separate /boot break s390x (bsc#1204478):
+  * fix(fips): move fips-boot script to pre-pivot
+  * fix(fips): only unmount /boot if it was mounted by the fips module
+  * feat(fips): add progress messages
+  * fix(fips): do not blindly remove /boot
+
+-------------------------------------------------------------------
 Mon Apr 10 07:02:29 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.368.g2e7ac134:
