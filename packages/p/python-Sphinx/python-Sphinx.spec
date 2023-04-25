@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -43,8 +43,6 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
-# PATCH-FIX-UPSTREAM: Update test_config.py::test_needs_sphinx for Alabaster 0.7.13 compat
-Patch1:         alabaster-0713-compat.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
@@ -86,7 +84,9 @@ Requires:       python-importlib-metadata >= 4.4
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}
 BuildRequires:  %{python_module Sphinx-latex = %{version}}
+BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
@@ -257,8 +257,8 @@ sed -i -e "s/\((.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" d
 sed -i -e "s/\((.https:..requests.readthedocs.io.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
 sed -i -e "s/\((.https:..docs.readthedocs.io.*, \)None\()\)/\1'readthedocs.inv'\2/g" doc/conf.py
 # rm build/sphinx/html/.buildinfo
-$python -m sphinx -b man ./doc ./build.doc/man
-$python -m sphinx -M html ./doc ./build.doc/html
+$python -m sphinx -b man -j auto ./doc ./build.doc/man
+$python -m sphinx -b html -j auto ./doc ./build.doc/html
 }
 %endif
 
@@ -314,7 +314,7 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 export LC_ALL="C.utf8"
 # test_latex_images test downloading a remote image
 # test_signature_annotations doesn’t work
-%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images)'
+%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images)' -n auto --dist=loadfile
 %endif
 
 %if ! %{with test}
