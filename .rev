@@ -70,4 +70,12 @@ Required by python-scikit-image</comment>
     <comment></comment>
     <requestid>998104</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4b5e43aecfffed13c6d178a91c3bb9de</srcmd5>
+    <version>1.0.5</version>
+    <time>1682434413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082435</requestid>
+  </revision>
 </revisionlist>
