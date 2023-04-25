@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %define dsc_suffix Qt5
 %endif
 Name:           kvantum%{?pkg_suffix}
-Version:        1.0.7
+Version:        1.0.10
 Release:        0
 Summary:        SVG-based theme engine for Qt5 and Qt6
 License:        GPL-3.0-or-later
@@ -167,11 +167,6 @@ pushd Kvantum
 %dir %{_datadir}/Kvantum/Kv*
 %{_datadir}/color-schemes/*
 %{_datadir}/Kvantum/Kv*/*
-
-%files -n kvantum-openbox-themes
-%dir %{_datadir}/themes/Kv*
-%dir %{_datadir}/themes/Kv*/openbox-3
-%{_datadir}/themes/Kv*/openbox-3/*
 %endif
 
 %changelog

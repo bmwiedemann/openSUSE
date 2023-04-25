@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Apr 25 13:40:36 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Remove kvantum-openbox-themes package
+
+- Version 1.0.10
+
+In addition to better drawing of some widgets,
+
+  * To support Qt5 long after Qt6 becomes the default, compilation
+    without KDE Frameworks is made possible (if it is used, KWin's
+    blur effect will be available only under X11). It works with Qt6 too.
+  * Rounded buttons, combo-boxes and line-edits are allowed in LibreOffice.
+  * Openbox themes are removed (Openbox's development stopped years ago).
+    If you use Openbox, you could import its themes from older
+    versions of Kvantum at GitHub.
+
+- Version 1.0.9
+
+  * Fixed a regression that caused crashes in QML apps and LibreOffice
+    when the widget animation was disabled.
+
+  * Also, a workaround is added for a rare case, where a bad code
+    gives an enormous contents size to item-views.
+
+- Version 1.0.8
+
+  Main changes:
+
+  * Dragging of inactive windows of multi-window apps is fixed under
+    Wayland.
+  * Wide combo menu icons are taken into account.
+  * QML indeterminate progressbars are animated (when qqc2-desktop-style
+    is used).
+  * Small workarounds, especially under Wayland.
+
+-------------------------------------------------------------------
 Thu Mar 16 08:01:17 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use qt6_build macros to fix build in SLE15 SP5
