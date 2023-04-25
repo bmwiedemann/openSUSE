@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Apr 24 17:44:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.2
+  * no changes relevant for Linux
+- Release 1.5.1
+  * Improve performance by caching parsed markers, constraints and
+    versions (#556).
+- Release 1.5.0
+  ## Added
+  * Improve marker handling (#528, #534, #530, #546, #547).
+  * Allow overriding the output directory when building dist files
+    (#527).
+  * Validate whether dependencies referenced in extras are defined
+    in the main dependency group (#542).
+  * Improve handling of generic constraints (#515).
+  ## Changed
+  * Deprecate the hash function of FileDependency (#535).
+  * Do not set allows_preleases implicitly anymore if the lower
+    bound of a constraint is a pre-release (#543).
+  * Poetry no longer generates a setup.py file in sdists by default
+    (#318).
+  * Remove the unused platform attribute from Package (#548).
+  * Deprecate the pretty_version parameter when creating a Package
+    (#549).
+  * Validate path dependencies during use instead of during
+    construction (#520).
+  ## Fixed
+  * Fix an issue where the PEP 517 metadata_directory was not
+    respected when building an editable wheel (#537).
+  * Fix an issue where trailing newlines were allowed in
+    tool.poetry.description (#505).
+  * Fix an issue where the name of the data folder in wheels was
+    not normalized (#532).
+  * Fix an issue where the order of entries in the RECORD file was
+    not deterministic (#545).
+  * Fix an issue where parsing of VCS URLs with escaped characters
+    failed (#524).
+  * Fix an issue where the subdirectory parameter of VCS URLs was
+    not respected (#518).
+  * Fix an issue where zero padding was not correctly handled in
+    version comparisons (#540).
+  * Fix an issue where sdist builds did not support multiple
+    READMEs (#486).
+- Remove devendoring: produces too many build dependency cycles as
+  a build backend
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -18,36 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        1.4.0
+Version:        1.5.2
 Release:        0
 Summary:        Python poetry core utilities
-License:        MIT
+License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
-BuildRequires:  %{python_module attrs >= 22.1.0}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jsonschema >= 4.16.0}
-BuildRequires:  %{python_module lark >= 1.1.3}
-BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing >= 3.0.9}
-BuildRequires:  %{python_module pyrsistent >= 0.18.1}
-BuildRequires:  %{python_module tomlkit >= 0.11.5}
-BuildRequires:  %{python_module typing-extensions >= 4.4.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 22.1.0
-Requires:       python-jsonschema >= 4.16.0
-Requires:       python-lark >= 1.1.3
-Requires:       python-packaging >= 21.3
-Requires:       python-pyparsing >= 3.0.9
-Requires:       python-pyrsistent >= 0.18.1
-Requires:       python-tomlkit >= 0.11.5
-Requires:       python-typing-extensions >= 4.4.0
+%if %{python_version_nodots} < 38
+Requires:       python-importlib-metadata >= 1.7.0
+%endif
 BuildArch:      noarch
-# SECTION these are all test dependencies, including devel and git
+# SECTION these are all test dependencies, including python-devel and git-core
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest-mock}
@@ -64,8 +51,16 @@ PEP 517 compatible build frontends to build Poetry managed projects.
 
 %prep
 %setup -q -n poetry-core-%{version}
-# unbundle: we provide the vendored packages on our own
-rm -r src/poetry/core/_vendor
+mkdir vendoredlicenses
+cp src/poetry/core/_vendor/attrs/LICENSE             vendoredlicenses/attrs.LICENSE
+cp src/poetry/core/_vendor/jsonschema/COPYING        vendoredlicenses/jsonschema.COPYING
+cp src/poetry/core/_vendor/lark/LICENSE              vendoredlicenses/lark.LICENSE
+cp src/poetry/core/_vendor/packaging/LICENSE         vendoredlicenses/packaging.LICENSE
+cp src/poetry/core/_vendor/packaging/LICENSE.APACHE  vendoredlicenses/packaging.LICENSE.APACHE
+cp src/poetry/core/_vendor/packaging/LICENSE.BSD     vendoredlicenses/packaging.LICENSE.BSD
+cp src/poetry/core/_vendor/pyrsistent/LICENSE.mit    vendoredlicenses/pyrsistent.LICENSE.mit
+cp src/poetry/core/_vendor/tomlkit/LICENSE           vendoredlicenses/tomlkit.LICENSE
+cp src/poetry/core/_vendor/typing_extensions.LICENSE vendoredlicenses/typing_extensions.LICENSE
 
 %build
 %pyproject_wheel
@@ -81,7 +76,7 @@ git init
 
 %files %{python_files}
 %doc README.md
-%license LICENSE
+%license LICENSE vendoredlicenses/*
 %dir %{python_sitelib}/poetry
 %{python_sitelib}/poetry/core
 %{python_sitelib}/poetry_core-%{version}.dist-info
