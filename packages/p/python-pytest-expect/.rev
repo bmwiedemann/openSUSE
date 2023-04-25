@@ -25,4 +25,12 @@
     <comment>- Don't use fdupes -s, it hurts.</comment>
     <requestid>1067944</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ebd7bf006b1867816b0a023869e6289b</srcmd5>
+    <version>1.1.0</version>
+    <time>1682434416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082438</requestid>
+  </revision>
 </revisionlist>
