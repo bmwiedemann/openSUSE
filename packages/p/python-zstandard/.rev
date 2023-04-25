@@ -84,4 +84,13 @@
     <comment></comment>
     <requestid>1067413</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03cd723cd862622b8e6423dd54892a31</srcmd5>
+    <version>0.21.0</version>
+    <time>1682434384</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.21.0
+  * Support zstd 1.5.5</comment>
+    <requestid>1080378</requestid>
+  </revision>
 </revisionlist>

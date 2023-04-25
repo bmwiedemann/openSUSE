@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-zstandard
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Zstandard bindings for Python
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libzstd-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  zstd
+BuildRequires:  zstd = 1.5.5
 Requires:       python-cffi >= 1.11
 Requires:       zstd
 Conflicts:      python-zstd
