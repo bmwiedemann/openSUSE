@@ -44,6 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  gcc-c++ >= 9.3.0
 BuildRequires:  gmp-devel
+BuildRequires:  gobject-introspection
 BuildRequires:  gsl-devel
 BuildRequires:  libSDL-devel
 BuildRequires:  libboost_atomic-devel >= 1.69

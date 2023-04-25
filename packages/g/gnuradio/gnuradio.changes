@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 25 10:00:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gobject-introspection BuildRequires: inspect the python code
+  to add relevant typelib() dependencies (boo#1182927).
+
+-------------------------------------------------------------------
 Fri Apr  7 21:01:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove unused build dependency on libmpir-devel (gmp-devel was
