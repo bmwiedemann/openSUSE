@@ -98,4 +98,14 @@
 </comment>
     <requestid>1062938</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>52fe236a7d0f13ebe2937ea2e0272e1a</srcmd5>
+    <version>unknown</version>
+    <time>1682433739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to python v3.2.0 / jupyter 6.2.0 / jupyterlab 2.2.0
+  * no upstream release notes.
+</comment>
+    <requestid>1082590</requestid>
+  </revision>
 </revisionlist>

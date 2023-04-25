@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 23 20:15:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to python v3.2.0 / jupyter 6.2.0 / jupyterlab 2.2.0
+  * no upstream release notes.
+
+-------------------------------------------------------------------
 Thu Feb  2 14:47:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Package current master commit as version 3.1.1.27.g2da614b
