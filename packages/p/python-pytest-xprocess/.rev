@@ -45,4 +45,12 @@ python-Werkzeug 2.0.1 (currently in Staging:F)</comment>
 </comment>
     <requestid>1039102</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ee939f384a28587cebfaf5fa2e7d00f0</srcmd5>
+    <version>0.21.0</version>
+    <time>1682434403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082424</requestid>
+  </revision>
 </revisionlist>
