@@ -139,4 +139,12 @@ required by mycroft-core</comment>
 </comment>
     <requestid>1041848</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f21be4a48e6e6e23d15ba4f5912aa0ef</srcmd5>
+    <version>0.20.3</version>
+    <time>1682434420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082442</requestid>
+  </revision>
 </revisionlist>
