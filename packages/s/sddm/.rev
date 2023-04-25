@@ -722,4 +722,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
 - Migration of PAM settings to /usr/lib/pam.d.</comment>
     <requestid>1077522</requestid>
   </revision>
+  <revision rev="63" vrev="11">
+    <srcmd5>9a4e85e9d26f111993bbb2bdf2b94b15</srcmd5>
+    <version>0.19.0</version>
+    <time>1682434444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082483</requestid>
+  </revision>
 </revisionlist>

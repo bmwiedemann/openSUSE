@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 19 16:40:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix delays on shutdown (boo#1210391):
+ * 0001-Avoid-starting-a-new-session-on-exit.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 09:00:00 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Replace proper_pam.diff with installation of source files:

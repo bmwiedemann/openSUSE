@@ -39,6 +39,7 @@ Patch1:         0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
 Patch2:         0004-Retry-starting-the-display-server.patch
 Patch3:         0001-disable-automatic-portal-launching.patch
 Patch4:         0001-Process-all-available-auth-messages-in-a-loop.patch
+Patch5:         0001-Avoid-starting-a-new-session-on-exit.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/997
 Patch50:        0001-Remove-suffix-for-Wayland-session.patch
 # Not merged yet: https://github.com/sddm/sddm/pull/1230

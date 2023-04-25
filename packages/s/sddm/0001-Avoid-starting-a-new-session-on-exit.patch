@@ -1,0 +1,34 @@
+From 935caf554d41b18a00ea719b72842576f80e2167 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Mon, 13 Sep 2021 17:06:02 +0100
+Subject: [PATCH] Avoid starting a new session on exit
+
+Stopping SDDM will tear down the display.
+This calls m->auth() stop, which stops the helper (any active session)
+
+A newly introduced waitForFinished() means we can emit signals that the
+process has finished.
+
+We don't want Display's handling of the session ending to be active as
+we can end up starting a greeter during shutdown.
+
+(cherry picked from commit 83e1ae579a923e859ea3c3ae18a2dd95c3a7774c)
+---
+ src/daemon/Display.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/daemon/Display.cpp b/src/daemon/Display.cpp
+index 8d1a4af..63104f4 100644
+--- a/src/daemon/Display.cpp
++++ b/src/daemon/Display.cpp
+@@ -79,6 +79,7 @@ namespace SDDM {
+     }
+ 
+     Display::~Display() {
++        disconnect(m_auth, &Auth::finished, this, &Display::slotHelperFinished);
+         stop();
+     }
+ 
+-- 
+2.40.0
+
