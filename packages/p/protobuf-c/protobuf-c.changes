@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 11:19:07 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Add protobuf-devel to devel package recommends as the binary there
+  is required to actually generated protobuf headers.
+
+-------------------------------------------------------------------
 Thu Mar 23 14:36:19 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO again.
@@ -7,7 +13,7 @@ Thu Mar 23 14:36:19 UTC 2023 - Martin Liška <mliska@suse.cz>
 Mon Jul 11 07:46:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.1
-  * Fixed unsigned integer overflow (GH#499)
+  * Fixed unsigned integer overflow (GH#499, bsc#1210323, CVE-2022-48468)
   * Avoid shifting signed values (GH#508)
 - Remove 508.patch (merged)
 

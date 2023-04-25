@@ -182,4 +182,12 @@
     <comment>- Enable LTO again. (forwarded request 1073985 from marxin)</comment>
     <requestid>1074034</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>738ee8b166b3839352327c02adc01bd4</srcmd5>
+    <version>1.4.1</version>
+    <time>1682434452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082548</requestid>
+  </revision>
 </revisionlist>

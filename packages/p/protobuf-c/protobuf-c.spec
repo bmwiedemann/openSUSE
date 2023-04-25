@@ -53,6 +53,7 @@ Buffers from pure C (not C++).
 Summary:        C bindings for Google's Protocol Buffers
 Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-c%sover = %version
+Recommends:     protobuf-devel
 Provides:       %name = %version
 Obsoletes:      %name <= 1.4.0
 
