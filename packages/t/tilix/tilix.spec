@@ -1,7 +1,7 @@
 #
 # spec file for package tilix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A tiling terminal emulator based on GTK+ 3
 License:        LGPL-3.0-only AND MPL-2.0
 URL:            https://github.com/gnunn1/tilix
-Source0:        https://github.com/gnunn1/tilix/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 %if 0%{?sle_version} < 150400 && 0%{?is_opensuse}
 Source1:        com.gexperts.Tilix.appdata.xml
 %endif
@@ -36,6 +36,8 @@ Patch1:         0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
 %endif
 # PATCH-FIX-UPSTREAM tilix-nautilus-43-compat.patch  gh#gnunn1/tilix#2115 badshah400@gmail.com -- nautilus: Add compatibility with Nautilus 43
 Patch2:         tilix-nautilus-43-compat.patch
+# PATCH-FIX-UPSTREAM b027797.patch -- Replace std.xml with GMarkup-based parser
+Patch3:         %{url}/commit/b027797.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -73,6 +75,7 @@ A tiling terminal emulator for Linux using GTK+ 3
 
 %package -n nautilus-extension-tilix
 Summary:        Nautilus Extension to Open Tilix in Folders
+BuildArch:      noarch
 Requires:       python3-nautilus
 Supplements:    (nautilus and %{name})
 

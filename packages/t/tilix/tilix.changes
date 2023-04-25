@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 25 07:35:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add b027797.patch: Replace std.xml with GMarkup-based parser.
+- Build nautilus-extension-tilix as noarch.
+
+-------------------------------------------------------------------
 Thu Sep 22 21:28:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add tilix-nautilus-43-compat.patch: nautilus: Add compatibility
