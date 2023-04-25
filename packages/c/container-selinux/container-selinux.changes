@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 24 07:24:46 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.211.0:
+  * Don't transition to initrc_t domains from spc_t
+  * Add tunable to allow sshd_t to launch container engines
+  * Allow syslogd_t gettatr on inheritited runtime tmpfs files
+  * Add container_file_t and container_ro_file_t as user_home_type
+  * Set default context for local-path-provisioner
+  * Allow daemon to send dbus messages to spc_t by
+
+-------------------------------------------------------------------
 Wed Mar 29 13:04:36 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.206.0:
