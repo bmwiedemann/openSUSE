@@ -19,25 +19,27 @@
 %define anypython3dist python3dist
 %define untaggedversioncommit 1aaafbcce5a58e59a14311ac36594038893da4e1
 Name:           python-ipyvuetify
-Version:        1.8.7
+Version:        1.8.10
 Release:        0
 Summary:        Jupyter widgets based on vuetify UI components
 License:        MIT
 URL:            https://github.com/mariobuikhuizen/ipyvuetify
 Source0:        https://files.pythonhosted.org/packages/source/i/ipyvuetify/ipyvuetify-%{version}.tar.gz
 Source1:        https://github.com/widgetti/ipyvuetify/raw/%{untaggedversioncommit}/examples/Examples.ipynb
+BuildRequires:  %{python_module jupyter-packaging >= 0.7.9}
+BuildRequires:  %{python_module jupyterlab >= 3.0 with %python-jupyterlab < 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
-Requires:       (python-ipyvue >= 1.5 with python-ipyvue < 2)
+Requires:       (python-ipyvue >= 1.7 with python-ipyvue < 2)
 Recommends:     jupyter-ipyvuetify-nbextension = %{version}
 Recommends:     jupyter-juypterlab-ipyvuetify = %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipyvue >= 1.5 with %python-ipyvue < 2}
+BuildRequires:  %{python_module ipyvue >= 1.7 with %python-ipyvue < 2}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -68,7 +70,7 @@ This package provides the jupyterlab extension.
 
 %prep
 %setup -q -n ipyvuetify-%{version}
-chmod -x ipyvuetify/labextension/package.json README.md
+chmod -x ipyvuetify/labextension/package.json jupyter-vuetify.json README.md
 
 %build
 %pyproject_wheel
@@ -76,15 +78,11 @@ chmod -x ipyvuetify/labextension/package.json README.md
 %install
 %pyproject_install
 %jupyter_move_config
-%{python_expand # https://github.com/widgetti/ipyvuetify/issues/251
-rm -r %{buildroot}%{$python_sitelib}/generate_source
-sed -i '/^generate_source/d' %{buildroot}%{$python_sitelib}/ipyvuetify-%{version}.dist-info/RECORD
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
-%pytest --nbval-lax %{SOURCE1}
+%pytest --nbval %{SOURCE1}
 
 %files %{python_files}
 %doc README.md
