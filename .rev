@@ -1183,4 +1183,36 @@ PubCloud:
     <comment>- Release version 2.9: Implement `System-Token` header handling to improve unique system reporting.</comment>
     <requestid>1002350</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>8fde672354de83316d36554c0299a69b</srcmd5>
+    <version>2.12</version>
+    <time>1682433767</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.12
+  * Update translations
+  * CVE-2023-28120: Update active support to fix possible XSS Security Vulnerability
+    in bytesliced strings for html_safe. (bsc#1209507)
+  * CVE-2023-27530: Update rack to mitigate possible DoS in multipart mime parsing (bsc#1209096)
+  * Force rmt-client-setup-res script to use https (bsc#1209825)
+  * Download repomd.xml.asc before repomd.xml.key, because there are repos that only have repomd.xml.asc
+
+- Version 2.11:
+  * Mark secrets.yml.key file as part of the rpm to allow seamless downgrades (bsc#1207670)
+  * Adding -f to the file move command when moving the mirrored directory to its final location (bsc#1203171) 
+  * Fix %post install of pubcloud subpackage reload of nginx (bsc#1206593)
+  * Skip warnings regarding nokogiri libxml version mismatch (bsc#1202053)
+
+- Release version 2.10:
+  - Add option to turn off system token support (bsc#1205089)
+  - Update the `last_seen_at` column on zypper service refresh
+  - Do not retry to import non-existing files in air-gapped mode (bsc#1204769)
+  - Fix CVE-2022-31254 (bsc#1204285): rmt-server-pubcloud allows to escalate from user _rmt to root
+  Root-level escalation vector bug was found in the packaging file which has been mitigated.
+
+- adapt rmt-client-setup-res script to work on SLL9/RHEL9
+
+- Send system creation and product activation dates to SCC for better
+  visibility in SCC.</comment>
+    <requestid>1082660</requestid>
+  </revision>
 </revisionlist>
