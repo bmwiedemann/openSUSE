@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Apr 23 08:57:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Resolve some crashes.
+  + Visual bugfixes:
+    - Tweak style colors in view items
+    - Show custom emblems from extensions again
+    - Relayout SELinux property row
+    - Flip switches correctly
+  + Other bugfixes:
+    - Disable some actions when not usefull
+    - Fix dead characters handling in batch rename dialog
+    - Fix crashes when rapidly opening and closing windows
+    - Prevent location change when autofs timeouts
+    - Fix issues with translations in libadwaita widgets
+    - Drop workarounds for fixed GTK bugs
+    - Fix other issues
+  + Enhancements:
+    - Dismiss toast on undo
+    - Select right items after some operations
+    - Paste into expanded folders
+    - Allow extraction of .tar.zst and .zstd archives
+    - Performance optimization
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 13:08:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
