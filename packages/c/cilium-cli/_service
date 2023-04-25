@@ -3,13 +3,12 @@
     <param name="url">https://github.com/cilium/cilium-cli</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.13.2</param>
+    <param name="revision">v0.14.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="disabled">
-    <param name="basename">cilium-cli</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

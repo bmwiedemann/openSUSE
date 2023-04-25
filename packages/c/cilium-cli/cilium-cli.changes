@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Apr 24 18:27:39 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.20
+- Update to version 0.14.0:
+  * Prepare for v0.14.0 release
+  * go.mod, vendor: bump github.com/docker/docker
+  * defaults: bump json-mock to 1.3.5
+  * cli: adapt helm chart cleanup of deprecated hubble values
+  * .github: add mirror from main -> master
+  * docs: update references to the main branch
+  * ci: rename master -> main
+  * Adjust cilium/cilium URLs after primary branch rename to `main`
+  * Add documentation for helm installation mode
+  * ci: bump google-github-actions/auth from 1.0.0 to 1.1.0
+  * ci: update Cilium version to v1.13.2
+  * defaults: install Cilium v1.13.2 by default
+  * go.mod, vendor: pull in latest cilium charts
+  * misc: replace label goto with extracted method or for loops
+  * misc: replace label breaks with extracted method
+  * Default Helm Upgrade to not reuse values
+  * Clean up signature and usage of helm Upgrade func
+  * Add chart version as parameter for upgrade
+  * Expose helm reset/reuse values as flags for upgrade
+  * Add upgrade implementation using Helm
+  * Factor out ListVersions from preinstall
+  * .github: Prepare workflows for tests with a 3rd node
+  * connectivity: Implement FromCIDR tests
+  * connectivity: Refactor scenarios passed to tests
+  * Rename current CIDR tests to to-cidr.go
+  * connectivity/check: Validate --external-from-cidrs
+  * .github/workflows: Install static routes for nodes without
+    Cilium
+  * .github/workflows: Label nodes for --nodes-without-cilium
+  * internal/cli/cmd: Clarify --nodes-without-cilium
+  * connectivity/check: Deploy host-netns daemonset by default
+  * ci: bump actions/checkout from 3.5.1 to 3.5.2
+  * BGP: Introduce new cli to get bgp state
+  * Add connectivity tests for auth
+  * go.mod, vendor: bump helm.sh/helm/v3 from 3.11.2 to 3.11.3
+  * connectivity: Make detected Cilium Agent version available for
+    feature detection
+  * ci: bump actions/checkout from 3.5.0 to 3.5.1
+  * Refactor generic policy to Cilium policy
+  * Add KNPs tests scenarios
+  * Add KNPs utils methods
+  * Add KNP feature
+  * Add CRD feature and CNP enabled requirement
+  * helm mode install: Add --dry-run / --dry-run-helm-values flags
+  * Use --set-string for node affinity
+  * go.mod, vendor: bump github.com/cloudflare/cfssl from 1.6.3 to
+    1.6.4
+  * vendor: get latest cilium
+  * install: Support --nodes-without-cilium in Helm install mode
+  * Fix quotation for Cilium schedule affinity
+  * Dockerfile: Bump library/golang
+  * go.mod, vendor: bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * go.mod, vendor: bump golang.org/x/mod from 0.9.0 to 0.10.0
+  * helm mode: Test with GKE
+  * helm mode: Add hubble enable / disable commands
+  * Add Helm-based install / uninstall commands
+  * Refactor for Helm-based Cilium installation management
+  * Dockerfile: Bump library/golang from `08bd1aa` to `1d7fec2`
+  * Dockerfile: Bump library/golang from `b1f83bc` to `08bd1aa`
+  * go.mod, vendor: bump github.com/go-openapi/strfmt from 0.21.5
+    to 0.21.7
+  * Dockerfile: Bump library/golang from `50e46c1` to `b1f83bc`
+  * go.mod, vendor: bump google.golang.org/grpc from 1.53.0 to
+    1.54.0
+  * Sysdump: Add missing Cilium CRDs
+  * ci: bump actions/checkout from 3.4.0 to 3.5.0
+  * Replace deprecated flags with --helm-set
+  * Tetragon Tracing Policies
+  * Add a l7 header replace test
+  * Update stable release to v0.13.2
+
+-------------------------------------------------------------------
 Tue Mar 21 08:19:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.13.2:
