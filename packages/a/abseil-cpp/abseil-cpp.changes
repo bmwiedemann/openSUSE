@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Apr 24 12:12:45 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to 20230125.2
+  What's New:
+    The Abseil logging library has been released. This library
+    provides facilities for writing short text messages about the
+    status of a program to stderr, disk files, or other sinks
+    (via an extension API). See the logging library documentation
+    for more information.
+      An extension point, AbslStringify(), allows user-defined types
+    to seamlessly work with Abseil's string formatting functions
+    like absl::StrCat() and absl::StrFormat().
+      A library for computing CRC32C checksums has been added.
+      Floating-point parsing now uses the Eisel-Lemire algorithm,
+    which provides a significant speed improvement.
+      The flags library now provides suggestions for the closest 
+    flag(s) in the case of misspelled flags.
+      Using CMake to install Abseil now makes the installed artifacts
+    (in particular absl/base/options.h) reflect the compiled ABI.
+
+  Breaking Changes:
+    Abseil now requires at least C++14 and follows Google's Foundational
+    C++ Support Policy. See this table for a list of currently supported
+    versions compilers, platforms, and build tools.
+      The legacy spellings of the thread annotation macros/functions
+    (e.g. GUARDED_BY()) have been removed by default in favor of the
+    ABSL_ prefixed versions (e.g. ABSL_GUARDED_BY()) due to clashes with
+    other libraries. The compatibility macro ABSL_LEGACY_THREAD_ANNOTATIONS
+    can be defined on the compile command-line to temporarily restore these
+    spellings, but this compatibility macro will be removed in the future.
+
+  Known Issues
+    The Abseil logging library in this release is not a feature-complete
+    replacement for glog yet. VLOG and DFATAL are examples of features
+    that have not yet been released.
+
+- obsolete Fix-maes-msse41-leaking-into-pkgconfig.patch
+
+-------------------------------------------------------------------
 Sat Sep 24 13:47:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220623.1:

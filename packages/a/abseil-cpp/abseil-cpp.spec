@@ -1,7 +1,7 @@
 #
 # spec file for package abseil-cpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libabsl2206_0_0
+%define lname	libabsl2301_0_0
 Name:           abseil-cpp
-Version:        20220623.1
+Version:        20230125.2
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -34,8 +34,6 @@ Patch0:         options-old.patch
 %else
 Patch0:         options-cxx17.patch
 %endif
-# PATCH-FIX-UPSTREAM Fix-maes-msse41-leaking-into-pkgconfig.patch
-Patch1:         Fix-maes-msse41-leaking-into-pkgconfig.patch
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++
