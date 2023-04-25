@@ -1524,4 +1524,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>New stable release (forwarded request 1072625 from iznogood)</comment>
     <requestid>1073162</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>3995c7f9e359b3b7cf861961f8ea9a9e</srcmd5>
+    <version>44.1</version>
+    <time>1682434398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082380</requestid>
+  </revision>
 </revisionlist>
