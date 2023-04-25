@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 23 16:27:15 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- update to 0.33:
+  * Removed unused imports.
+  * Avoid to use fcntl module on some environments.
+  * Change a test behavior for unix_connect.get_socket.
+  * Fix accidental data change. 
+  * Prefer bool over Literal[0, 1, None].
+  * Change parentheses to brackets in LICENSE.
+- Changes from version 0.32:
+  * Use archived link for X documentation resource.
+  * Fix for auth entry having no display number.
+  * Fix return type inconsistency with the pack_value for class Object.
+  * Rename add_extension_error method to extension_add_error.
+  * Extension screensaver: fix screensaver protocol mismatch.
+  * Extension XRandr: add version 1.5 support for 
+    RRSetMonitor RRGetMonitors and RRDeleteMonitors.
+
+-------------------------------------------------------------------
 Tue Apr 12 08:58:13 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - do not use mock

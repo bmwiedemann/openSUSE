@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %bcond_with wheel
 %endif
 Name:           python-python-xlib%{psuffix}
-Version:        0.31
+Version:        0.33
 Release:        0
 Summary:        Python X11 interface
 License:        LGPL-2.1-or-later
