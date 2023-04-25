@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 06:55:46 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 4.4.2
+  - Fixed Azure AD Tenant authentication with custom signing keys
+  - Added CAS OIDC backend 
+  
+-------------------------------------------------------------------
 Thu Apr 13 12:21:32 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 4.4.1 
