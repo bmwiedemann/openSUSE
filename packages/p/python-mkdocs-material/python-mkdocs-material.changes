@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 24 18:31:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.8:
+  * Fixed #5417: Theme breaks when `palette` is not defined (9.1.7
+    regression)
+
+-------------------------------------------------------------------
 Sat Apr 22 14:24:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.7:
