@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-xdist
 Version:        3.2.1
 Release:        0
