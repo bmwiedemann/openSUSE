@@ -1,0 +1,13 @@
+Index: rapid-photo-downloader-0.9.34/setup.py
+===================================================================
+--- rapid-photo-downloader-0.9.34.orig/setup.py
++++ rapid-photo-downloader-0.9.34/setup.py
+@@ -328,7 +328,7 @@ setup(
+         "raphodo.metadata.analysis",
+         "raphodo.prefs",
+     ],
+-    python_requires=">=3.6.*, <4",
++    python_requires=">=3.6, <4",
+     entry_points={
+         "gui_scripts": ["rapid-photo-downloader=raphodo.rapid:main"],
+     },

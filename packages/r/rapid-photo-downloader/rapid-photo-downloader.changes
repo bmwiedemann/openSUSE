@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 11 14:21:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add fix-build-with-setuptools67.patch: Fix build with
+  pyton-setuptools 67.x.
+
+-------------------------------------------------------------------
 Wed Nov  2 09:41:56 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.9.34:

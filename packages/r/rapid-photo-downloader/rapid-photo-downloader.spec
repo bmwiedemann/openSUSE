@@ -1,7 +1,7 @@
 #
 # spec file for package rapid-photo-downloader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 # Copyright (c) 2009-2011 Pascal Blesser pascal.bleser@opensuse.org
 #
@@ -30,6 +30,7 @@ Source:         https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{
 Source1:        https://launchpad.net/rapid/pyqt/%{version}/+download/%{name}-%{version}.tar.gz.asc
 # PATCH-FEATURE-OPENSUSE disable-version-check.patch
 Patch0:         disable-version-check.patch
+Patch1:         fix-build-with-setuptools67.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
@@ -116,8 +117,7 @@ consecutive days.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 find raphodo -type f -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %build

@@ -675,4 +675,12 @@
     install.py script.</comment>
     <requestid>1032847</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>86505f7e63a6ec9ee4229fa15bd9c6f1</srcmd5>
+    <version>0.9.34</version>
+    <time>1682433771</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1082709</requestid>
+  </revision>
 </revisionlist>
