@@ -476,4 +476,12 @@
     <comment>Support mkiv as well as lmtx ConTeXt formats; Correct supplements tags of texlive packages to use the new texlive-alldocuments meta package</comment>
     <requestid>1077474</requestid>
   </revision>
+  <revision rev="49" vrev="52">
+    <srcmd5>6780c76c34c359590a1ae938da703bdd</srcmd5>
+    <version>unknown</version>
+    <time>1682433758</time>
+    <user>dimstar_suse</user>
+    <comment>Map the upstream license fdl tag to newer GFDL-1.3.or-later (bsc#1210680)</comment>
+    <requestid>1082671</requestid>
+  </revision>
 </revisionlist>
