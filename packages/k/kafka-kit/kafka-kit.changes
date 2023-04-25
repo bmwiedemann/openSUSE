@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 07:57:22 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Port runant.py to python3
+  * Add kafka-kit-port-py3-runant.patch
+
+-------------------------------------------------------------------
 Thu Jan 20 05:59:11 UTC 2022 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Remove JDBCAppender, JMSSink, chainsaw from log4j jars during build to

@@ -34,6 +34,7 @@ URL:            https://github.com/SilvioMoioli/tetra
 Source0:        %{name}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        README.updating
+Patch0:         kafka-kit-port-py3-runant.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 BuildRequires:  fdupes
@@ -52,6 +53,7 @@ thus it should never be installed on end users' systems.
 
 %prep
 %setup -q -n kit
+%patch0 -p1
 
 %build
 # nothing to do, precompiled by design
