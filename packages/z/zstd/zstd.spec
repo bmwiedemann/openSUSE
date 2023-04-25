@@ -18,7 +18,7 @@
 
 %define libname libzstd1
 Name:           zstd
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
