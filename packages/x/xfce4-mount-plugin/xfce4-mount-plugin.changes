@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Apr 21 05:38:06 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 1.1.5
+  * Remove unused old doc/ folder
+  * Improve autotools configuration
+  * Update copyright year
+  * Remove deprecated project files
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use xfce_panel_plugin_popup_menu() when possible
+  * Replace deprecated XfcePanelImage with GtkImage
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING
+  * autoconf: Remove AC_HEADER_STDC
+  * Bump version to 1.1.5 after German translation update and
+    compilation on FreeBSD 12.2
+  * Partly merge in commit 498e6d23 of skunnyk with autotools
+    improvements
+  * Removed auto-generatable developer documentation, but keep
+    Doxyfile for anyone who wants to create the documentation
+  * Removed commented-out AC_CHECK lines in configure.ac.in and
+    their comments where reasonable as of now
+  * Ran 'make update-po' after fixed typo and line removements in
+    C file
+  * Comment out step by step old AC_CHECKS, explaining the
+    reasoning for future reference and discussion, esp. wrt. *NIX
+    compilation problems.
+  * Revert "remove checks for unused functions from configure.ac"
+  * Updated and revised German translation for next release
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Mon Dec 28 16:44:45 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Updated to 1.1.5
