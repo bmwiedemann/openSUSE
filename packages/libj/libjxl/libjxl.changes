@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 17 07:36:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Refresh 0001-Remove-LCMS-mutex.patch
+
+-------------------------------------------------------------------
 Fri Feb 10 08:14:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build glibc hwcaps optimized overlay

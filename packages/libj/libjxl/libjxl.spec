@@ -71,9 +71,13 @@ Command-line utilities to convert from/to JPEG XL.
 %prep
 %setup -q
 
+%if %{pkg_vcmp liblcms2-2 < 2.13}
 # libjxl 0.7.0 requires lcms2 >= 2.13, so if we have an older version
 # (as in SLE15/Leap) just reverse the patch that adds that dependency
-%if %{pkg_vcmp liblcms2-2 < 2.13}
+%patch0 -p1
+%else
+# Make sure patch at least applies
+%patch0 -p1
 %patch0 -p1 -R
 %endif
 
