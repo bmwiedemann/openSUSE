@@ -1,7 +1,7 @@
 #
 # spec file for package gutenprint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 Name:           gutenprint
 URL:            http://gutenprint.sourceforge.net
-Version:        5.2.15
+Version:        5.3.4
 Release:        0
-#Version:        5.2.14pre15.1
+#Version:        5.3.4
 %define tarball_version %{version}
-#%%define tarball_version 5.2.15-pre1
-%define gutenprintmajor 5.2
+#%%define tarball_version 5.3.4
+%define gutenprintmajor 5.3
 BuildRequires:  cairo-devel
 # SLE10 and SLE11 and SLE12 need special BuildRequires.
 # For suse_version values see https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
@@ -96,14 +96,10 @@ Requires:       ghostscript
 %endif
 # Install into this non-root directory (required when it is built as non-root user):
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# URL for Source0 automated download:
-# https://sourceforge.net/projects/gimp-print/files/gutenprint-5.2/5.2.14/gutenprint-5.2.14.tar.bz2/download
-# How to get Source0 directly:
-# wget --no-check-certificate -O gutenprint-5.2.14.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.2/5.2.14/gutenprint-5.2.14.tar.bz2
+
 Source0:        http://downloads.sourceforge.net/gimp-print/%{name}-%{version}.tar.bz2
 # How to get Source0 directly:
-# wget --no-check-certificate -O gutenprint-5.2.15-pre1.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.2/5.2.15-pre1/gutenprint-5.2.15-pre1.tar.bz2/download
-#Source0:        gutenprint-5.2.15-pre1.tar.bz2
+# wget --no-check-certificate -O gutenprint-5.3.4.tar.bz2 https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.4/gutenprint-5.3.4.tar.bz2
 # Patch0...Patch9 is for patches from upstream:
 # Patch10...Patch99 is for openSUSE patches which which are intended for upstream:
 
@@ -191,7 +187,7 @@ done
 %endif
 %if 0%{?suse_version} != 1010
 # Skip that on SLE10 because there is no .../cups/driver/ directory.
-# Disable the run-time PPD generator /usr/lib/cups/driver/gutenprint.5.2
+# Disable the run-time PPD generator /usr/lib/cups/driver/gutenprint.5.3
 # so that it is not executed by the cups-driverd (e.g. in response to a "lpinfo -m" request)
 # to avoid duplicated PPDs because we create the PPDs during compile-time (via --enable-cups-ppds)
 # and provide ready-made PPDs in /usr/share/cups/model/gutenprint/... in the RPM package
@@ -261,7 +257,7 @@ exit 0
 /usr/lib/cups/filter/rastertogutenprint.%{gutenprintmajor}
 %endif
 %if 0%{?suse_version} >= 1140
-/usr/lib/cups/backend/gutenprint52+usb
+/usr/lib/cups/backend/gutenprint53+usb
 %dir /usr/share/cups/usb
 /usr/share/cups/usb/net.sf.gimp-print.usb-quirks
 %endif

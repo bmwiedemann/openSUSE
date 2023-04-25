@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 22 12:25:42 UTC 2023 - Erwan GEORGET <egeorget@canopus.dev>
+
+- Update to 5.3.4 final version
+  * Support for many new printers has been added
+  * Support for color printing has been added to many already supported printers
+  * Many fixes where added
+- For more details, please refer to the following links :
+  * 5.3.1: https://sourceforge.net/p/gimp-print/source/ci/gutenprint-5_3_1/tree/NEWS
+  * 5.3.3: https://sourceforge.net/p/gimp-print/source/ci/gutenprint-5_3_3/tree/NEWS
+  * 5.3.4: https://sourceforge.net/projects/gimp-print/files/gutenprint-5.3/5.3.4/NEWS/download 
+
+-------------------------------------------------------------------
 Sun Jul  5 19:12:17 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to 5.2.15 final version:
