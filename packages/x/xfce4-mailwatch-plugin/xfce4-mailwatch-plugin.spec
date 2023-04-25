@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-mailwatch-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin mailwatch
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Versatile Mail Checking Plugin for the Xfce Panel
 License:        GPL-2.0-only
@@ -31,15 +31,15 @@ BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(exo-2)
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2)
-BuildRequires:  pkgconfig(libxfce4util-1.0)
+BuildRequires:  pkgconfig(exo-2) >= 0.11.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gnutls) >= 1.2.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.42.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -91,7 +91,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %find_lang %{name} %{name}.lang %{?no_lang_C}
 
 %files
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libmailwatch.so
 %{_datadir}/xfce4/panel/plugins/mailwatch.desktop

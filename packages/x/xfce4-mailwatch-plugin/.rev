@@ -30,4 +30,29 @@
 </comment>
     <requestid>860902</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2af7fec61fd549ae70e2ae15250ce048</srcmd5>
+    <version>1.3.1</version>
+    <time>1682433758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1
+  * Update copyright year
+  * Remove deprecated project files
+  * Add remote-event functionality - fixes #51
+  * build: Fix autotools warnings
+  * Fix remaining blurry icons when UI scale &gt; 1
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * Remove soon-to-be-deprecated exo-string functions
+  * Fix intltool lock file problem during make distcheck
+  * Update COPYING
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Add &quot;View Log...&quot; menu item
+  * Update log status on force mail update
+  * Fix missing-prototypes
+  * Translation Updates
+- Remove _service file
+</comment>
+    <requestid>1082642</requestid>
+  </revision>
 </revisionlist>
