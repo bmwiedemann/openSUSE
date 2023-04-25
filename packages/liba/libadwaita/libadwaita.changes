@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 22 02:13:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.3.2:
+  + AdwAvatar: Fix a memory leak
+  + AdwMessageDialog: Fix criticals when using choose() with
+    hide-on-close=true
+  + AdwTabBar/Overview: Correctly unparent context menu
+  + Build: Fix build on Windows
+  + Demo: Fix a critical when trying to set a non-image file as
+    avatar
+  + Docs:
+    - Remove an erroneous mention of mnemonics in row subtitles
+    - Clarify AdwBanner title placement
+    - Mention the version .large-title is deprecated since
+    - Fix successs/error color values
+    - List thumbnail colors on the named colors page
+  + Stylesheet:
+    - Improve selected list/grid item contrast
+    - Fix file chooser grid dimensions
+    - Fix button.card checked state
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 15:36:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.3.1:
