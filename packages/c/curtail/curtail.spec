@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later

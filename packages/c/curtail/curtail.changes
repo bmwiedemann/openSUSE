@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 21 05:57:50 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.0:
+  * Added:
+    - SVG support.
+    - Add a warning banner for overwrite mode.
+    - New start screen with an AdwStatusPage.
+    - Add debug information in about window.
+  * Changed:
+    - Switch from OptiPNG to Oxipng.
+    - Minor UI improvements.
+    - Remove some remaining dialogs.
+    - Bump deps.
+  * Fixed: Fix handling of filenames with spaces for WEBP
+    compressor.
+
+-------------------------------------------------------------------
 Sat Apr  1 09:32:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.6.0:
