@@ -50,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.8
+Version:        2.8.6
 Release:        0
-%define srcversion 2.8
+%define srcversion 2.8.6
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master
@@ -60,7 +60,7 @@ Summary:        Arm Trusted Firmware-A
 License:        BSD-3-Clause
 Group:          System/Boot
 URL:            https://www.trustedfirmware.org/
-Source:         https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snapshot/trusted-firmware-a-%{srcversion}.tar.gz
+Source:         https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snapshot/trusted-firmware-a-lts-v%{srcversion}.tar.gz
 Source1:        mv-ddr-marvell-%{mv_ddr_ver}.tar.gz
 Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
@@ -197,9 +197,9 @@ This package contains fiptool.
 %prep
 %if "%{platform}" == "a3700" || "%{platform}" == "a80x0_mcbin"
 %if "%{platform}" == "a3700"
-%setup -q -n trusted-firmware-a-%{srcversion} -a 1 -a 2
+%setup -q -n trusted-firmware-a-lts-v%{srcversion} -a 1 -a 2
 %else
-%setup -q -n trusted-firmware-a-%{srcversion} -a 1 -a 3
+%setup -q -n trusted-firmware-a-lts-v%{srcversion} -a 1 -a 3
 %endif
 # git repo or branch.txt file are expected
 echo "%{mv_ddr_ver}" > mv-ddr-marvell-%{mv_ddr_ver}/branch.txt
@@ -212,9 +212,9 @@ pushd mv-ddr-marvell-%{mv_ddr_ver}
 popd
 %else
 %if "%{platform}" == ""
-%setup -q -n trusted-firmware-a-%{srcversion} -a 2
+%setup -q -n trusted-firmware-a-lts-v%{srcversion} -a 2
 %else
-%setup -q -n trusted-firmware-a-%{srcversion}
+%setup -q -n trusted-firmware-a-lts-v%{srcversion}
 %endif
 %endif
 %if "%{platform}" == "" || "%{platform}" == "a3700"
