@@ -125,9 +125,6 @@ BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
 BuildRequires:  awk
-%ifnarch riscv64
-BuildRequires:  binutils-gold
-%endif
 BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  commons-logging
@@ -1123,11 +1120,7 @@ export NOCONFIGURE=yes
 %configure \
         --with-parallelism=%{jobs} \
         --enable-eot \
-%ifarch riscv64
         --enable-ld=bfd \
-%else
-        --enable-ld=gold \
-%endif
 %if %{with lto}
         --enable-lto \
 %endif
