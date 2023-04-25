@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Apr 21 16:14:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.76.2:
+  + Fixed various build failures in less common setups
+  + Fix launching files in Windows via GtkFileLauncher
+  + Bugs fixed:
+    - GMarkupParser documentation completion
+    - Disagreement between runtime and docs on whether interfaces
+      are "classed"
+    - gdbus-example-proxy-subclass.c is not complete
+    - GAppInfoMonitor documentation deficiencies
+    - Check for __kernel_long_t when enabling futex()
+    - Documentation mentions non-existing function `g_value_free`
+    - Not clear that GPollableInputStream methods are undefined if
+      can_poll() returns FALSE
+    - Missing docs for GOption (commandline parser)
+    - GDebugControllerDBus wrong default in documentation
+    - Probably wrong information regarding G_PLATFORM_WIN32 in
+      README.win32.md
+    - Multiple Definition Error When Generating
+      gio/tests/test5.gresource
+    - user docs: GLib.DateTime.format: broken highlighting
+    - GtkFileLauncher: generated paths not recognized on Win32
+    - Build failed due to NULL pointer redefinition in C++
+    - Build randomly fails with: 'gmodule/gmodule-visibility.h'
+      file not found
+    - unicode: add tests for g_utf8_normalize() and empty strings
+    - build: Drop old .gitignore files from test directories
+    - tools: Drop check-abis.sh script
+    - docs: Drop section about default branch renaming from
+      README.md
+    - tests: Update Unicode normalisation tests from Unicode 15
+    - Make clang++ happier when using G_STATIC_ASSERT
+    - gwin32: Avoid use of function call with side effect in
+      g_return_* macro
+    - gsignal: Clarify documentation for GSignalMatchType matching
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 20 09:35:56 UTC 2023 - Guido Berhoerster <guido+opensuse@berhoerster.name>
 
 - Add mate-mimeapps.list for MATE-specific MIME associations

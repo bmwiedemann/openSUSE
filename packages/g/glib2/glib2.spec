@@ -30,7 +30,7 @@
 %define libgthread libgthread-%{libver}
 %bcond_without     systemtap
 Name:           glib2%{psuffix}
-Version:        2.76.1
+Version:        2.76.2
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later

@@ -2135,4 +2135,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
 </comment>
     <requestid>1081105</requestid>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>70e7a700275748dc36937490dec781ea</srcmd5>
+    <version>2.76.2</version>
+    <time>1682434394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082376</requestid>
+  </revision>
 </revisionlist>
