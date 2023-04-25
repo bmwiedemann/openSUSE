@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr 23 07:17:31 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.5
+  * build: Fix -Wunused-result warning
+  * Update copyright year
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * Remove ENABLE_NLS ifdefs
+  * autoconf: Use AC_CONFIG_MACRO_DIRS
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING (Issue #7)
+  * Remove unnecessary code
+  * Use symbolic icons
+  * Escape markup in server information
+  * Replaces siginterrupt with sigaction
+  * Do not close window with ctrl+c (#5)
+  * Fix Text field size setting (#4)
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Remove "." at the end of Comment string
+  * Remove GSourceFunc casts
+  * Include stdlib.h to get atoi prototype (!2)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Oct 27 20:56:26 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.8.4

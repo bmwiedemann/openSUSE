@@ -264,4 +264,32 @@
     <comment></comment>
     <requestid>844856</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>29c812ccb7cb19194883093de5532916</srcmd5>
+    <version>0.8.5</version>
+    <time>1682433757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5
+  * build: Fix -Wunused-result warning
+  * Update copyright year
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * Remove ENABLE_NLS ifdefs
+  * autoconf: Use AC_CONFIG_MACRO_DIRS
+  * build: Fix intltool lock file problem during make distcheck
+  * Update COPYING (Issue #7)
+  * Remove unnecessary code
+  * Use symbolic icons
+  * Escape markup in server information
+  * Replaces siginterrupt with sigaction
+  * Do not close window with ctrl+c (#5)
+  * Fix Text field size setting (#4)
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Remove &quot;.&quot; at the end of Comment string
+  * Remove GSourceFunc casts
+  * Include stdlib.h to get atoi prototype (!2)
+  * Translation Updates
+</comment>
+    <requestid>1082641</requestid>
+  </revision>
 </revisionlist>
