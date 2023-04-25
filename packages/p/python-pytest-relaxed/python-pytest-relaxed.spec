@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-relaxed
 Version:        2.0.0
 Release:        0

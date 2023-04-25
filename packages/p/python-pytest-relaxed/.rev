@@ -106,4 +106,12 @@
 - Removed six from BuildRequires, is no longer used.</comment>
     <requestid>1057683</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>22d65c4cf5c96c97c44540d0c2ef4729</srcmd5>
+    <version>2.0.0</version>
+    <time>1682434409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082430</requestid>
+  </revision>
 </revisionlist>
