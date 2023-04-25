@@ -1608,4 +1608,14 @@
     * updated traditional chinese</comment>
     <requestid>986347</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>bd7f896556e6184d8ec8064540bd0638</srcmd5>
+    <version>2.5.30</version>
+    <time>1682434400</time>
+    <user>dimstar_suse</user>
+    <comment>- libgphoto2-enable-vusb-ptp.patch: enable virtual PTP camera in vusb
+
+- added %bcond_with vusb in case anyone needs a test drive</comment>
+    <requestid>1082394</requestid>
+  </revision>
 </revisionlist>

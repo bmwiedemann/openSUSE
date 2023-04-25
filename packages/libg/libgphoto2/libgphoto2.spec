@@ -1,7 +1,7 @@
 #
 # spec file for package libgphoto2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{nil <URL:
+  https://github.com/gphoto/libgphoto2/issues/408#issuecomment-1472123588 >
+  }
+%bcond_with vusb
+%if %{with:vusb}
+%define configure_vusb    --enable-vusb --without-libusb --with-libusb-1.0=no
+%else
+%define configure_vusb %{nil}
+%endif
 
 %if %( pkg-config --modversion udev ) > 190
 %define _udevrulesdir /usr/lib/udev/rules.d
@@ -35,10 +45,8 @@ BuildRequires:  libusb-1_0-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  lockdev-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(udev)
-%if 0%{?suse_version} > 1230
 BuildRequires:  systemd-rpm-macros
-%endif
+BuildRequires:  pkgconfig(udev)
 URL:            https://gphoto.sourceforge.io/
 # bug437293
 %ifarch ppc64
@@ -54,6 +62,7 @@ Source0:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%vers
 Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz.asc
 Source2:        %name.keyring
 Source3:        baselibs.conf
+Patch0:         libgphoto2-enable-vusb-ptp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %package -n libgphoto2-%major
@@ -62,7 +71,7 @@ Group:          System/Libraries
 Requires(pre):  /sbin/ldconfig
 Requires(post): /sbin/ldconfig
 Requires(post): udev
-Requires(postun): udev
+Requires(postun):udev
 
 %package -n libgphoto2_port12
 Summary:        Port drivers for the libgphoto2 digital camera library
@@ -73,6 +82,7 @@ Requires(post): /sbin/ldconfig
 %package doc
 Summary:        Documentation for libgphoto2
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %package devel
 Summary:        Development headers for libgphoto2
@@ -86,6 +96,7 @@ Requires:       libusb-1_0-devel
 Summary:        Development documentation for libgphoto2
 Group:          Documentation/HTML
 Recommends:     libgphoto2-devel
+BuildArch:      noarch
 
 %description
 gPhoto (GNU Photo) is a set of libraries for previewing, retrieving,
@@ -149,6 +160,7 @@ This is its API documentation in HTML format.
 
 %prep
 %setup -q
+%patch0 -p1
 (cd doc && tar -xaf libgphoto2-api.html.tar.gz)
 
 %build
@@ -157,7 +169,7 @@ PATH="/usr/X11R6/bin:$PATH"			\
 %configure					\
   --with-doc-dir=%_defaultdocdir/%name	\
   --without-hal \
-  --with-drivers=all
+  --with-drivers=all %configure_vusb
 make %{?_smp_mflags}
 
 %check

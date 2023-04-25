@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 24 07:19:55 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- libgphoto2-enable-vusb-ptp.patch: enable virtual PTP camera in vusb
+
+-------------------------------------------------------------------
+Sat Apr 22 19:43:26 UTC 2023 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
+
+- added %bcond_with vusb in case anyone needs a test drive
+
+-------------------------------------------------------------------
 Sat Jul  2 09:39:31 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.5.30 release

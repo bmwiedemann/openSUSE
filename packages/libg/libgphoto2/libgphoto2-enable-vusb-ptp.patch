@@ -1,0 +1,13 @@
+Index: libgphoto2-2.5.30/libgphoto2_port/vusb/vcamera.h
+===================================================================
+--- libgphoto2-2.5.30.orig/libgphoto2_port/vusb/vcamera.h
++++ libgphoto2-2.5.30/libgphoto2_port/vusb/vcamera.h
+@@ -22,7 +22,7 @@
+ #ifndef IOLIBS_VUSB_VCAMERA_H
+ #define IOLIBS_VUSB_VCAMERA_H
+ 
+-#undef FUZZ_PTP
++#define FUZZ_PTP
+ 
+ #include <stdio.h>
+ 
