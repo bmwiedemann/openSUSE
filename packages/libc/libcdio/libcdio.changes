@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 08:16:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild definition: define the additional spec file as a
+  2nd flavor to build.
+
+-------------------------------------------------------------------
 Thu Aug 25 11:30:10 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Rebase fix-undefined-behavior-in-readlink.patch to the upstream
