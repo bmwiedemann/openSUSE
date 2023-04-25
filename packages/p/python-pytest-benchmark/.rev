@@ -132,4 +132,12 @@
   * Ignore DeprecationWarning, some of our dependancies use pkg_resources.</comment>
     <requestid>1072990</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>43d3478292633e6b616ba158b44f7f48</srcmd5>
+    <version>4.0.0</version>
+    <time>1682434419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082441</requestid>
+  </revision>
 </revisionlist>
