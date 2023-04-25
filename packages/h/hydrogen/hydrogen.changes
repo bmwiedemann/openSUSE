@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Tue Apr 25 14:12:20 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add upstream patch:
+  hydrogen-Fix-beat-and-bar-calculation-in-pattern-mode.patch
+
+- Update to version 1.2.0
+
+* General behavior
+  - Remembering paths in all export/import/save/open dialogs.
+  - Introducing keyboard shortcut for the Open Pattern dialog.
+  - Allow for opening more than one Pattern at once.
+  - All available audio drivers can now be chosen via CLI.
+  - Implement missing EFFECT_LEVEL_RELATIVE MIDI action
+  - If the Timeline is activated, the tempo set using the BPM
+    widget, BeatCounter, Tap Tempo, or MIDI/OSC commands is used left
+    of the first tempo marker.
+  - The tempo provided by an external JACK timebase master
+    overwrites all internal tempo settings.
+  - The BPM widget switches to read-only mode and displays the
+    current playback speed when the Timeline is activated.
+  - Activation of the Timeline is now stored in each individual
+    .h2song file.
+  - Autosave files will be hidden. The interval they are stored with
+    as well whether there is an autosave at all can be set via the
+    Preferences. Hydrogen will inform the user whether there are
+    unsaved changes to recover taken from the autosave file.
+  - Hydrogen is now able to recover changes applied to a new and
+    empty song in case they are discarded or the session end
+    untimely (using autosave files)
+  - Multiple actions can be assigned to a single MIDI event.
+  - The virtual keyboard is now decoupled from the "Hear New Notes"
+    button in the Pattern Editor and can be used to play back notes in
+    song mode with playback rolling too.
+  - Mutable warning dialogs are shown when saving/exporting a
+    drumkit containing samples of mismatching license and when
+    saving/exporting a drumkit or song containing a copyleft license
+    or one requiring an attribution.
+  - Drumkit properties dialog does now feature a table listing all
+    contained samples and associated licenses.
+  - All actions accessible via right-clicking in the SoundLibrary do
+    affect the stack drumkits and not the instrument list of the
+    current song.
+  - All actions accessible via the Drumkits tab of the main menu do
+    affect the loaded drumkit using the current song's custom
+    instrument and component list.
+* Interface
+  - Improved scalability (most PNG images were replaced by SVGs,
+    hardcoded PNG labels are now directly drawn by Qt, and spin boxes,
+    buttons, and combo boxes are now based on native Qt widgets)
+  - Improved internationalization (all labels are translatable now
+    and support UTF-8)
+  - Improved accessibility (widgets were increased to fill available
+    space, preference option to (de- and) increase font size)
+  - All colors can be altered via the preferences
+  - Input widgets (rotary, fader, combo box, spin box, button) do
+    support both mouse and keyboard input (e.g. setting numerical values)
+  - Input widgets are faintly highlighted when hovered and more
+    strongly highlighted when clicked (focuses). Only the focused
+    widget can receive keyboard input
+  - MIDI-learnable widgets now show their corresponding MIDI action
+    and it's binding in the tooltip
+  - It's now possible to jump to the beginning of the currently
+    playing pattern by clicking its position on the ruler in the
+    pattern editor.
+  - The length of patterns can now be changed while transport is
+    rolling.
+* PreferencesDialog > Appearance tab overhaul
+  - Drop previous font options in favor for three different
+    levels of font (without exposing their point sizes)
+  - Ability to decrease or increase the overall font size
+  - All settings in the Appearance tab - except the overall layout
+    and the scaling policy - take effect immediately (no restart
+    required anymore)
+  - Drop the "fixed" coloring methods and rename "steps" to
+    "Custom".
+  - Via a colored button the particular line color can now be
+    adjusted using a QColorDialog
+  - Custom color tab to alter all colors in the GUI (big thanks to
+    the Muse4 team for the original code).
+  - All options set in the Appearance tab can be imported and
+    exported into and shared via dedicated .h2theme files.
+  - Overhauled MIDI Table
+    - Per effect or layer setting are now done in dedicated spin
+      boxes instead of providing individual actions for each.
+    - Only spin boxes for parameters required for a particular
+      action are shown.
+    - Rows can be removed by unsetting both the Event and Action
+      combo box.
+  - Clicking the widget showing the status messages does now open a
+    dropdown menu displaying the last 100 messages.
+* Audio processing
+  - Set CoreAudio (macOS) buffer size to control latency
+  - New fast exponential ADSR envelope processing
+* InstrumentEditor UX improvements:
+  - rework start/end/loop frame slider selection and motion.
+  - rework velocity/pan envelope editing
+* SongEditor UX improvements:
+  - Tags can now be inserted at all possible columns
+  - Hovering a Tag displays its content
+  - Changed behavior of the Tempo Marker dialog: When clicking an
+    existing Tempo Marker it can be moved, edited, or
+    deleted. Clicking a column with no Tempo Marker present allows
+    to create a new one at an arbitrary location.
+  - Timeline is deactivated automatically when switching to Pattern
+    Mode or a JACK timebase master is present
+  - The tempo used left of the first tempo marker is painted in a
+    darker color.
+  - The currently used Tempo Marker gets highlighted.
+  - Tags have been moved into Timeline (next to the Tempo Markers)
+    in order to make room to accommodate the cursor in the ruler to
+    highlight the current position
+  - Tags can be inserted by left-clicking the bottom area of the
+    Timeline (above the ruler).
+  - Clicking the ruler is now always enabled and automatically
+    switches transport into Song Mode.
+  - Full-size playhead
+  - The icons in the pattern list indicating whether a pattern is
+    playing in stacked pattern mode are now colored and can have four
+    different states: on, off, off next (pattern is played till the
+    end and then turned off), and on next (pattern is played as soon
+    as transport is looped again)
+  - In song mode the pattern editor can be locked meaning that
+    always the bottom-most pattern of the current column the
+    playhead resides in as well as all other playing notes are
+    shown. Pattern selection is done automatically when moving into
+    a different column.
+* PatternEditor UX tweaks:
+  - Relocating transport by clicking the ruler is now supported
+    (like in the SongEditor) and automatically switches transport
+    into Pattern Mode.
+  - Full-size playhead
+  - The ruler was decoupled from the currently selected pattern. It
+    always has the size of the largest playing pattern and always
+    shows the transport position using a playhead. Whether or not the
+    current pattern is played back is indicated by a full-height
+    cursor.
+  - All note properties except of the note key can now be altered in
+    both the drum pattern editor and the piano roll editor by
+    right-clicking and dragging a note.
+  - All notes of the currently playing patterns will be hinted in
+    stacked pattern mode, when selecting a virtual pattern, or in
+    case the pattern editor is locked in song mode. Even those notes
+    exceeding the length of the current pattern are shown.
+* OSC API
+  - Add command /Hydrogen/LOAD_DRUMKIT
+  - Add command /Hydrogen/UPGRADE_DRUMKIT
+  - Add command /Hydrogen/VALIDATE_DRUMKIT
+  - Add command /Hydrogen/EXTRACT_DRUMKIT
+  - Add command /Hydrogen/BPM
+  - /Hydrogen/STRIP_SOLO_TOGGLE/X and /Hydrogen/STRIP_MUTE_TOGGLE/X
+    can now be called without any argument too
+* H2CLI
+  - Add `--upgrade` option to upgrade a drumkit
+  - Add `--check` option to validate a drumkit
+  - Add `--extract` option to extract the content of a drumkit
+  - Drumkit supplied using `-k` option can now be either the name of
+    an install kit or an absolute path to a kit (does not have to be
+    located in the Hydrogen's drumkit folder).
+* Bugfixes
+  - fix dithering of SongEditor when viewing the playback track
+    and resizing the application or for very small size (#1379).
+  - fix rewinding to beginning of pattern in pattern mode with no
+    pattern inserted in SongEditor (#932)
+  - fix display of tags and tempo marker while loading a song
+    (introduced in 1.1.0) (#1393)
+  - default MIDI driver is now picked with the system's capabilities
+    in mind
+  - remove unwanted samples at the end of the exported song (to
+    .wav) (#946)
+  - fix undefined tempo before first tempo marker (#416)
+  - fix Song export to keep writing till all notes and FX have faded
+    out
+  - notes at first ticks in pattern were missed when relocation
+    transport using the position ruler
+  - fix playhead glitches when adding toggling patterns at the end
+    of the song after transport was loop at least once
+  - deactivating loop mode result stopping transport at the end of
+    the song even if transport was already looped at least once
+  - relocation of the playhead use JACK is now also support in case
+    transport is not rolling
+  - Hydrogen is now able to handle multiple drumkits featuring the
+    same name in the SoundLibrary. The drumkit's absolute path will be
+    used as unique handler from now on.
+  - Mixing instruments from different drumkit in one Song works
+    again
+  - Hydrogen shows a now a warning dialog when exporting/saving date
+    to read-only folders
+  - fix text overflow in Director
+* Crash reporting
+  - Fatal errors will now show a GUI report including details to report
+    and potential hints about the cause
+
+-------------------------------------------------------------------
 Sat Jul 23 07:00:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

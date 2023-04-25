@@ -1,7 +1,7 @@
 #
 # spec file for package hydrogen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.1.1
-%define soversion 1_1_1
+Version:        1.2.0
+%define soversion 1_2_0
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/hydrogen/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1:         fix-obsolete-appdata.patch
 Patch2:         release-version.patch
+Patch3:         hydrogen-Fix-beat-and-bar-calculation-in-pattern-mode.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  help2man
@@ -52,6 +53,7 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
@@ -89,7 +91,7 @@ Hydrogen is a software synthesizer which can be used alone, emulating
 a drum machine based on patterns, or via an external MIDI
 keyboard/sequencer software.
 
-It features a modular and graphical interface based on QT4, has a
+It features a modular and graphical interface based on QT5, has a
 sample-based stereo audio engine, with import of sound samples in PCM
 formats. Furthermore, a pattern-based sequencer with the ability to
 chain patterns into a song. Up to 64 ticks per pattern with
@@ -160,7 +162,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog README.txt
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/org.hydrogenmusic.Hydrogen.desktop
