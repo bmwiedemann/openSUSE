@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.29
+Version:        1.11.30
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 Group:          Productivity/Networking/Talk/Clients
@@ -44,12 +44,12 @@ echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 ls -l ./npm-packages-offline-cache | head
 
 # fix some strange dependency
-cp npm-packages-offline-cache/matrix-analytics-events-0.0.1.tgz \
-   npm-packages-offline-cache/@matrix-analytics-events-0.0.1.tgz
-ls -l ./npm-packages-offline-cache/*matrix-analytics-events*
+#cp npm-packages-offline-cache/matrix-analytics-events-0.0.1.tgz \
+#   npm-packages-offline-cache/@matrix-analytics-events-0.0.1.tgz
+#ls -l ./npm-packages-offline-cache/*matrix-analytics-events*
 
-sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#[^"]*"|    matrix-analytics-events "^0.0.1"|' yarn.lock
-sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#[^"]*"|matrix-analytics-events@^0.0.1|' yarn.lock
+#sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#[^"]*"|    matrix-analytics-events "^0.0.1"|' yarn.lock
+#sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#[^"]*"|matrix-analytics-events@^0.0.1|' yarn.lock
 
 yarn install --offline --pure-lockfile
 

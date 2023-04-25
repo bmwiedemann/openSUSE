@@ -28,11 +28,11 @@ yarn install --pure-lockfile --ignore-engines || : # this will download tha pack
 
 # download some additional dependencie that slips through this earlier method
 cd ./npm-packages-offline-cache/
-wget -O matrix-analytics-events-0.0.1.tgz $(grep -m1 -A2 "@matrix.org/analytics-events" ../yarn.lock | grep resolved | awk '{print $NF}' | tr -d '"')
-mkdir package
-tar xvf matrix-analytics-events-0.0.1.tgz --strip-components=1 -C package/
-tar czf matrix-analytics-events-0.0.1.tgz package/
-rm -r package
+#wget -O matrix-analytics-events-0.0.1.tgz $(grep -m1 -A2 "@matrix.org/analytics-events" ../yarn.lock | grep resolved | awk '{print $NF}' | tr -d '"')
+#mkdir package
+#tar xvf matrix-analytics-events-0.0.1.tgz --strip-components=1 -C package/
+#tar czf matrix-analytics-events-0.0.1.tgz package/
+#rm -r package
 
 # fill sentry-cli cache with mock binaries for all architecutres
 cd sentry-cli
