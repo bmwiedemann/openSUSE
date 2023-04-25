@@ -1,0 +1,1701 @@
+Index: mediafile-0.11.0/docs/conf.py
+===================================================================
+--- mediafile-0.11.0.orig/docs/conf.py
++++ mediafile-0.11.0/docs/conf.py
+@@ -1,5 +1,3 @@
+-# -*- coding: utf-8 -*-
+-
+ # Path to mediafile module for autodoc.
+ import os
+ import sys
+Index: mediafile-0.11.0/mediafile.py
+===================================================================
+--- mediafile-0.11.0.orig/mediafile.py
++++ mediafile-0.11.0/mediafile.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ # This file is part of MediaFile.
+ # Copyright 2016, Adrian Sampson.
+ #
+@@ -33,7 +32,6 @@ Internally ``MediaFile`` uses ``MediaFie
+ data from the tags. In turn ``MediaField`` uses a number of
+ ``StorageStyle`` strategies to handle format specific logic.
+ """
+-from __future__ import division, absolute_import, print_function
+ 
+ import mutagen
+ import mutagen.id3
+@@ -54,7 +52,6 @@ import logging
+ import math
+ import os
+ import re
+-import six
+ import struct
+ import traceback
+ 
+@@ -101,9 +98,9 @@ class FileTypeError(UnreadableFileError)
+     """
+     def __init__(self, filename, mutagen_type=None):
+         if mutagen_type is None:
+-            msg = u'{0!r}: not in a recognized format'.format(filename)
++            msg = '{!r}: not in a recognized format'.format(filename)
+         else:
+-            msg = u'{0}: of mutagen type {1}'.format(
++            msg = '{}: of mutagen type {}'.format(
+                 repr(filename), mutagen_type
+             )
+         Exception.__init__(self, msg)
+@@ -113,7 +110,7 @@ class MutagenError(UnreadableFileError):
+     """Raised when Mutagen fails unexpectedly---probably due to a bug.
+     """
+     def __init__(self, filename, mutagen_exc):
+-        msg = u'{0}: {1}'.format(repr(filename), mutagen_exc)
++        msg = '{}: {}'.format(repr(filename), mutagen_exc)
+         Exception.__init__(self, msg)
+ 
+ 
+@@ -136,16 +133,16 @@ def mutagen_call(action, filename, func,
+     try:
+         return func(*args, **kwargs)
+     except mutagen.MutagenError as exc:
+-        log.debug(u'%s failed: %s', action, six.text_type(exc))
+-        raise UnreadableFileError(filename, six.text_type(exc))
++        log.debug('%s failed: %s', action, str(exc))
++        raise UnreadableFileError(filename, str(exc))
+     except UnreadableFileError:
+         # Reraise our errors without changes.
+         # Used in case of decorating functions (e.g. by `loadfile`).
+         raise
+     except Exception as exc:
+         # Isolate bugs in Mutagen.
+-        log.debug(u'%s', traceback.format_exc())
+-        log.error(u'uncaught Mutagen exception in %s: %s', action, exc)
++        log.debug('%s', traceback.format_exc())
++        log.error('uncaught Mutagen exception in %s: %s', action, exc)
+         raise MutagenError(filename, exc)
+ 
+ 
+@@ -202,8 +199,8 @@ def _safe_cast(out_type, val):
+             # Process any other type as a string.
+             if isinstance(val, bytes):
+                 val = val.decode('utf-8', 'ignore')
+-            elif not isinstance(val, six.string_types):
+-                val = six.text_type(val)
++            elif not isinstance(val, str):
++                val = str(val)
+             # Get a number from the front of the string.
+             match = re.match(r'[\+-]?[0-9]+', val.strip())
+             return int(match.group(0)) if match else 0
+@@ -215,13 +212,13 @@ def _safe_cast(out_type, val):
+         except ValueError:
+             return False
+ 
+-    elif out_type == six.text_type:
++    elif out_type == str:
+         if isinstance(val, bytes):
+             return val.decode('utf-8', 'ignore')
+-        elif isinstance(val, six.text_type):
++        elif isinstance(val, str):
+             return val
+         else:
+-            return six.text_type(val)
++            return str(val)
+ 
+     elif out_type == float:
+         if isinstance(val, int) or isinstance(val, float):
+@@ -230,7 +227,7 @@ def _safe_cast(out_type, val):
+             if isinstance(val, bytes):
+                 val = val.decode('utf-8', 'ignore')
+             else:
+-                val = six.text_type(val)
++                val = str(val)
+             match = re.match(r'[\+-]?([0-9]+\.?[0-9]*|[0-9]*\.[0-9]+)',
+                              val.strip())
+             if match:
+@@ -289,7 +286,7 @@ def _sc_decode(soundcheck):
+     """
+     # We decode binary data. If one of the formats gives us a text
+     # string, interpret it as UTF-8.
+-    if isinstance(soundcheck, six.text_type):
++    if isinstance(soundcheck, str):
+         soundcheck = soundcheck.encode('utf-8')
+ 
+     # SoundCheck tags consist of 10 numbers, each represented by 8
+@@ -345,7 +342,7 @@ def _sc_encode(gain, peak):
+     # unused so we just use zero.
+     uk = 0
+     values = (g1, g1, g2, g2, uk, uk, int(peak), int(peak), uk, uk)
+-    return (u' %08X' * 10) % values
++    return (' %08X' * 10) % values
+ 
+ 
+ # Cover art and other images.
+@@ -379,7 +376,7 @@ def image_mime_type(data):
+     # match such a jpeg file.
+     kind = _imghdr_what_wrapper(data)
+     if kind in ['gif', 'jpeg', 'png', 'tiff', 'bmp']:
+-        return 'image/{0}'.format(kind)
++        return 'image/{}'.format(kind)
+     elif kind == 'pgm':
+         return 'image/x-portable-graymap'
+     elif kind == 'pbm':
+@@ -389,7 +386,7 @@ def image_mime_type(data):
+     elif kind == 'xbm':
+         return 'image/x-xbitmap'
+     else:
+-        return 'image/x-{0}'.format(kind)
++        return 'image/x-{}'.format(kind)
+ 
+ 
+ def image_extension(data):
+@@ -423,7 +420,7 @@ class ImageType(enum.Enum):
+     publisher_logo = 20
+ 
+ 
+-class Image(object):
++class Image:
+     """Structure representing image data and metadata that can be
+     stored and retrieved from tags.
+ 
+@@ -437,14 +434,14 @@ class Image(object):
+     def __init__(self, data, desc=None, type=None):
+         assert isinstance(data, bytes)
+         if desc is not None:
+-            assert isinstance(desc, six.text_type)
++            assert isinstance(desc, str)
+         self.data = data
+         self.desc = desc
+         if isinstance(type, int):
+             try:
+                 type = list(ImageType)[type]
+             except IndexError:
+-                log.debug(u"ignoring unknown image type index %s", type)
++                log.debug("ignoring unknown image type index %s", type)
+                 type = ImageType.other
+         self.type = type
+ 
+@@ -465,7 +462,7 @@ class Image(object):
+ # StorageStyle classes describe strategies for accessing values in
+ # Mutagen file objects.
+ 
+-class StorageStyle(object):
++class StorageStyle:
+     """A strategy for storing a value for a certain tag format (or set
+     of tag formats). This basic StorageStyle describes simple 1:1
+     mapping from raw values to keys in a Mutagen file object; subclasses
+@@ -495,7 +492,7 @@ class StorageStyle(object):
+     """List of mutagen classes the StorageStyle can handle.
+     """
+ 
+-    def __init__(self, key, as_type=six.text_type, suffix=None,
++    def __init__(self, key, as_type=str, suffix=None,
+                  float_places=2, read_only=False):
+         """Create a basic storage strategy. Parameters:
+ 
+@@ -520,8 +517,8 @@ class StorageStyle(object):
+         self.read_only = read_only
+ 
+         # Convert suffix to correct string type.
+-        if self.suffix and self.as_type is six.text_type \
+-           and not isinstance(self.suffix, six.text_type):
++        if self.suffix and self.as_type is str \
++           and not isinstance(self.suffix, str):
+             self.suffix = self.suffix.decode('utf-8')
+ 
+     # Getter.
+@@ -544,7 +541,7 @@ class StorageStyle(object):
+         """Given a raw value stored on a Mutagen object, decode and
+         return the represented value.
+         """
+-        if self.suffix and isinstance(mutagen_value, six.text_type) \
++        if self.suffix and isinstance(mutagen_value, str) \
+            and mutagen_value.endswith(self.suffix):
+             return mutagen_value[:-len(self.suffix)]
+         else:
+@@ -566,17 +563,17 @@ class StorageStyle(object):
+         """Convert the external Python value to a type that is suitable for
+         storing in a Mutagen file object.
+         """
+-        if isinstance(value, float) and self.as_type is six.text_type:
+-            value = u'{0:.{1}f}'.format(value, self.float_places)
++        if isinstance(value, float) and self.as_type is str:
++            value = '{0:.{1}f}'.format(value, self.float_places)
+             value = self.as_type(value)
+-        elif self.as_type is six.text_type:
++        elif self.as_type is str:
+             if isinstance(value, bool):
+                 # Store bools as 1/0 instead of True/False.
+-                value = six.text_type(int(bool(value)))
++                value = str(int(bool(value)))
+             elif isinstance(value, bytes):
+                 value = value.decode('utf-8', 'ignore')
+             else:
+-                value = six.text_type(value)
++                value = str(value)
+         else:
+             value = self.as_type(value)
+ 
+@@ -662,7 +659,7 @@ class ListStorageStyle(StorageStyle):
+         mutagen_file[self.key] = values
+ 
+ 
+-class SoundCheckStorageStyleMixin(object):
++class SoundCheckStorageStyleMixin:
+     """A mixin for storage styles that read and write iTunes SoundCheck
+     analysis values. The object must have an `index` field that
+     indicates which half of the gain/peak pair---0 or 1---the field
+@@ -701,8 +698,8 @@ class MP4StorageStyle(StorageStyle):
+     formats = ['MP4']
+ 
+     def serialize(self, value):
+-        value = super(MP4StorageStyle, self).serialize(value)
+-        if self.key.startswith('----:') and isinstance(value, six.text_type):
++        value = super().serialize(value)
++        if self.key.startswith('----:') and isinstance(value, str):
+             value = value.encode('utf-8')
+         return value
+ 
+@@ -712,7 +709,7 @@ class MP4TupleStorageStyle(MP4StorageSty
+     MPEG-4 file.
+     """
+     def __init__(self, key, index=0, **kwargs):
+-        super(MP4TupleStorageStyle, self).__init__(key, **kwargs)
++        super().__init__(key, **kwargs)
+         self.index = index
+ 
+     def deserialize(self, mutagen_value):
+@@ -721,7 +718,7 @@ class MP4TupleStorageStyle(MP4StorageSty
+         return list(items) + [0] * (packing_length - len(items))
+ 
+     def get(self, mutagen_file):
+-        value = super(MP4TupleStorageStyle, self).get(mutagen_file)[self.index]
++        value = super().get(mutagen_file)[self.index]
+         if value == 0:
+             # The values are always present and saved as integers. So we
+             # assume that "0" indicates it is not set.
+@@ -738,7 +735,7 @@ class MP4TupleStorageStyle(MP4StorageSty
+ 
+     def delete(self, mutagen_file):
+         if self.index == 0:
+-            super(MP4TupleStorageStyle, self).delete(mutagen_file)
++            super().delete(mutagen_file)
+         else:
+             self.set(mutagen_file, None)
+ 
+@@ -749,7 +746,7 @@ class MP4ListStorageStyle(ListStorageSty
+ 
+ class MP4SoundCheckStorageStyle(SoundCheckStorageStyleMixin, MP4StorageStyle):
+     def __init__(self, key, index=0, **kwargs):
+-        super(MP4SoundCheckStorageStyle, self).__init__(key, **kwargs)
++        super().__init__(key, **kwargs)
+         self.index = index
+ 
+ 
+@@ -764,20 +761,20 @@ class MP4BoolStorageStyle(MP4StorageStyl
+             return None
+ 
+     def get_list(self, mutagen_file):
+-        raise NotImplementedError(u'MP4 bool storage does not support lists')
++        raise NotImplementedError('MP4 bool storage does not support lists')
+ 
+     def set(self, mutagen_file, value):
+         mutagen_file[self.key] = value
+ 
+     def set_list(self, mutagen_file, values):
+-        raise NotImplementedError(u'MP4 bool storage does not support lists')
++        raise NotImplementedError('MP4 bool storage does not support lists')
+ 
+ 
+ class MP4ImageStorageStyle(MP4ListStorageStyle):
+     """Store images as MPEG-4 image atoms. Values are `Image` objects.
+     """
+     def __init__(self, **kwargs):
+-        super(MP4ImageStorageStyle, self).__init__(key='covr', **kwargs)
++        super().__init__(key='covr', **kwargs)
+ 
+     def deserialize(self, data):
+         return Image(data)
+@@ -788,7 +785,7 @@ class MP4ImageStorageStyle(MP4ListStorag
+         elif image.mime_type == 'image/jpeg':
+             kind = mutagen.mp4.MP4Cover.FORMAT_JPEG
+         else:
+-            raise ValueError(u'MP4 files only supports PNG and JPEG images')
++            raise ValueError('MP4 files only supports PNG and JPEG images')
+         return mutagen.mp4.MP4Cover(image.data, kind)
+ 
+ 
+@@ -802,7 +799,7 @@ class MP3StorageStyle(StorageStyle):
+         the language field of newly created frames.
+         """
+         self.id3_lang = id3_lang
+-        super(MP3StorageStyle, self).__init__(key, **kwargs)
++        super().__init__(key, **kwargs)
+ 
+     def fetch(self, mutagen_file):
+         try:
+@@ -820,7 +817,7 @@ class MP3PeopleStorageStyle(MP3StorageSt
+     """
+     def __init__(self, key, involvement='', **kwargs):
+         self.involvement = involvement
+-        super(MP3PeopleStorageStyle, self).__init__(key, **kwargs)
++        super().__init__(key, **kwargs)
+ 
+     def store(self, mutagen_file, value):
+         frames = mutagen_file.tags.getall(self.key)
+@@ -871,7 +868,7 @@ class MP3UFIDStorageStyle(MP3StorageStyl
+     """
+     def __init__(self, owner, **kwargs):
+         self.owner = owner
+-        super(MP3UFIDStorageStyle, self).__init__('UFID:' + owner, **kwargs)
++        super().__init__('UFID:' + owner, **kwargs)
+ 
+     def fetch(self, mutagen_file):
+         try:
+@@ -881,7 +878,7 @@ class MP3UFIDStorageStyle(MP3StorageStyl
+ 
+     def store(self, mutagen_file, value):
+         # This field type stores text data as encoded data.
+-        assert isinstance(value, six.text_type)
++        assert isinstance(value, str)
+         value = value.encode('utf-8')
+ 
+         frames = mutagen_file.tags.getall(self.key)
+@@ -903,13 +900,13 @@ class MP3DescStorageStyle(MP3StorageStyl
+     ``multispec`` specifies if frame data is ``mutagen.id3.MultiSpec``
+     which means that the data is being packed in the list.
+     """
+-    def __init__(self, desc=u'', key='TXXX', attr='text', multispec=True,
++    def __init__(self, desc='', key='TXXX', attr='text', multispec=True,
+                  **kwargs):
+-        assert isinstance(desc, six.text_type)
++        assert isinstance(desc, str)
+         self.description = desc
+         self.attr = attr
+         self.multispec = multispec
+-        super(MP3DescStorageStyle, self).__init__(key=key, **kwargs)
++        super().__init__(key=key, **kwargs)
+ 
+     def store(self, mutagen_file, value):
+         frames = mutagen_file.tags.getall(self.key)
+@@ -956,9 +953,9 @@ class MP3DescStorageStyle(MP3StorageStyl
+ 
+ 
+ class MP3ListDescStorageStyle(MP3DescStorageStyle, ListStorageStyle):
+-    def __init__(self, desc=u'', key='TXXX', split_v23=False, **kwargs):
++    def __init__(self, desc='', key='TXXX', split_v23=False, **kwargs):
+         self.split_v23 = split_v23
+-        super(MP3ListDescStorageStyle, self).__init__(
++        super().__init__(
+             desc=desc, key=key, **kwargs
+         )
+ 
+@@ -988,13 +985,13 @@ class MP3SlashPackStorageStyle(MP3Storag
+     separated string.
+     """
+     def __init__(self, key, pack_pos=0, **kwargs):
+-        super(MP3SlashPackStorageStyle, self).__init__(key, **kwargs)
++        super().__init__(key, **kwargs)
+         self.pack_pos = pack_pos
+ 
+     def _fetch_unpacked(self, mutagen_file):
+         data = self.fetch(mutagen_file)
+         if data:
+-            items = six.text_type(data).split('/')
++            items = str(data).split('/')
+         else:
+             items = []
+         packing_length = 2
+@@ -1010,11 +1007,11 @@ class MP3SlashPackStorageStyle(MP3Storag
+             items[0] = ''
+         if items[1] is None:
+             items.pop()  # Do not store last value
+-        self.store(mutagen_file, '/'.join(map(six.text_type, items)))
++        self.store(mutagen_file, '/'.join(map(str, items)))
+ 
+     def delete(self, mutagen_file):
+         if self.pack_pos == 0:
+-            super(MP3SlashPackStorageStyle, self).delete(mutagen_file)
++            super().delete(mutagen_file)
+         else:
+             self.set(mutagen_file, None)
+ 
+@@ -1027,7 +1024,7 @@ class MP3ImageStorageStyle(ListStorageSt
+     list of ``Image``s as its ``values`` argument.
+     """
+     def __init__(self):
+-        super(MP3ImageStorageStyle, self).__init__(key='APIC')
++        super().__init__(key='APIC')
+         self.as_type = bytes
+ 
+     def deserialize(self, apic_frame):
+@@ -1051,7 +1048,7 @@ class MP3ImageStorageStyle(ListStorageSt
+         frame = mutagen.id3.Frames[self.key]()
+         frame.data = image.data
+         frame.mime = image.mime_type
+-        frame.desc = image.desc or u''
++        frame.desc = image.desc or ''
+ 
+         # For compatibility with OS X/iTunes prefer latin-1 if possible.
+         # See issue #899
+@@ -1069,7 +1066,7 @@ class MP3ImageStorageStyle(ListStorageSt
+ class MP3SoundCheckStorageStyle(SoundCheckStorageStyleMixin,
+                                 MP3DescStorageStyle):
+     def __init__(self, index=0, **kwargs):
+-        super(MP3SoundCheckStorageStyle, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+         self.index = index
+ 
+ 
+@@ -1080,7 +1077,7 @@ class ASFImageStorageStyle(ListStorageSt
+     formats = ['ASF']
+ 
+     def __init__(self):
+-        super(ASFImageStorageStyle, self).__init__(key='WM/Picture')
++        super().__init__(key='WM/Picture')
+ 
+     def deserialize(self, asf_picture):
+         mime, data, type, desc = _unpack_asf_image(asf_picture.value)
+@@ -1090,7 +1087,7 @@ class ASFImageStorageStyle(ListStorageSt
+         pic = mutagen.asf.ASFByteArrayAttribute()
+         pic.value = _pack_asf_image(image.mime_type, image.data,
+                                     type=image.type_index,
+-                                    description=image.desc or u'')
++                                    description=image.desc or '')
+         return pic
+ 
+ 
+@@ -1103,7 +1100,7 @@ class VorbisImageStorageStyle(ListStorag
+                'OggFlac']
+ 
+     def __init__(self):
+-        super(VorbisImageStorageStyle, self).__init__(
++        super().__init__(
+             key='metadata_block_picture'
+         )
+         self.as_type = bytes
+@@ -1131,7 +1128,7 @@ class VorbisImageStorageStyle(ListStorag
+             del mutagen_file['coverart']
+         if 'coverartmime' in mutagen_file:
+             del mutagen_file['coverartmime']
+-        super(VorbisImageStorageStyle, self).store(mutagen_file, image_data)
++        super().store(mutagen_file, image_data)
+ 
+     def serialize(self, image):
+         """Turn a Image into a base64 encoded FLAC picture block.
+@@ -1140,7 +1137,7 @@ class VorbisImageStorageStyle(ListStorag
+         pic.data = image.data
+         pic.type = image.type_index
+         pic.mime = image.mime_type
+-        pic.desc = image.desc or u''
++        pic.desc = image.desc or ''
+ 
+         # Encoding with base64 returns bytes on both Python 2 and 3.
+         # Mutagen requires the data to be a Unicode string, so we decode
+@@ -1154,7 +1151,7 @@ class FlacImageStorageStyle(ListStorageS
+     formats = ['FLAC']
+ 
+     def __init__(self):
+-        super(FlacImageStorageStyle, self).__init__(key='')
++        super().__init__(key='')
+ 
+     def fetch(self, mutagen_file):
+         return mutagen_file.pictures
+@@ -1177,7 +1174,7 @@ class FlacImageStorageStyle(ListStorageS
+         pic.data = image.data
+         pic.type = image.type_index
+         pic.mime = image.mime_type
+-        pic.desc = image.desc or u''
++        pic.desc = image.desc or ''
+         return pic
+ 
+     def delete(self, mutagen_file):
+@@ -1216,7 +1213,7 @@ class APEv2ImageStorageStyle(ListStorage
+     }
+ 
+     def __init__(self):
+-        super(APEv2ImageStorageStyle, self).__init__(key='')
++        super().__init__(key='')
+ 
+     def fetch(self, mutagen_file):
+         images = []
+@@ -1261,7 +1258,7 @@ class APEv2ImageStorageStyle(ListStorage
+ # aggregates several StorageStyles describing how to access the data for
+ # each file type.
+ 
+-class MediaField(object):
++class MediaField:
+     """A descriptor providing access to a particular (abstract) metadata
+     field.
+     """
+@@ -1277,7 +1274,7 @@ class MediaField(object):
+                          getting this property.
+ 
+         """
+-        self.out_type = kwargs.get('out_type', six.text_type)
++        self.out_type = kwargs.get('out_type', str)
+         self._styles = styles
+ 
+     def styles(self, mutagen_file):
+@@ -1317,8 +1314,8 @@ class MediaField(object):
+             return 0.0
+         elif self.out_type == bool:
+             return False
+-        elif self.out_type == six.text_type:
+-            return u''
++        elif self.out_type == str:
++            return ''
+ 
+ 
+ class ListMediaField(MediaField):
+@@ -1364,7 +1361,7 @@ class DateField(MediaField):
+         always set on this style, but is only retrieved if the main
+         storage styles do not return a value.
+         """
+-        super(DateField, self).__init__(*date_styles)
++        super().__init__(*date_styles)
+         year_style = kwargs.get('year', None)
+         if year_style:
+             self._year_field = MediaField(*year_style)
+@@ -1389,7 +1386,7 @@ class DateField(MediaField):
+             self._set_date_tuple(mediafile, date.year, date.month, date.day)
+ 
+     def __delete__(self, mediafile):
+-        super(DateField, self).__delete__(mediafile)
++        super().__delete__(mediafile)
+         if hasattr(self, '_year_field'):
+             self._year_field.__delete__(mediafile)
+ 
+@@ -1399,10 +1396,10 @@ class DateField(MediaField):
+         None.
+         """
+         # Get the underlying data and split on hyphens and slashes.
+-        datestring = super(DateField, self).__get__(mediafile, None)
+-        if isinstance(datestring, six.string_types):
+-            datestring = re.sub(r'[Tt ].*$', '', six.text_type(datestring))
+-            items = re.split('[-/]', six.text_type(datestring))
++        datestring = super().__get__(mediafile, None)
++        if isinstance(datestring, str):
++            datestring = re.sub(r'[Tt ].*$', '', str(datestring))
++            items = re.split('[-/]', str(datestring))
+         else:
+             items = []
+ 
+@@ -1434,13 +1431,13 @@ class DateField(MediaField):
+             self.__delete__(mediafile)
+             return
+ 
+-        date = [u'{0:04d}'.format(int(year))]
++        date = ['{:04d}'.format(int(year))]
+         if month:
+-            date.append(u'{0:02d}'.format(int(month)))
++            date.append('{:02d}'.format(int(month)))
+         if month and day:
+-            date.append(u'{0:02d}'.format(int(day)))
+-        date = map(six.text_type, date)
+-        super(DateField, self).__set__(mediafile, u'-'.join(date))
++            date.append('{:02d}'.format(int(day)))
++        date = map(str, date)
++        super().__set__(mediafile, '-'.join(date))
+ 
+         if hasattr(self, '_year_field'):
+             self._year_field.__set__(mediafile, year)
+@@ -1520,11 +1517,11 @@ class QNumberField(MediaField):
+     simple integer.
+     """
+     def __init__(self, fraction_bits, *args, **kwargs):
+-        super(QNumberField, self).__init__(out_type=int, *args, **kwargs)
++        super().__init__(out_type=int, *args, **kwargs)
+         self.__fraction_bits = fraction_bits
+ 
+     def __get__(self, mediafile, owner=None):
+-        q_num = super(QNumberField, self).__get__(mediafile, owner)
++        q_num = super().__get__(mediafile, owner)
+         if q_num is None:
+             return None
+         return q_num / pow(2, self.__fraction_bits)
+@@ -1532,7 +1529,7 @@ class QNumberField(MediaField):
+     def __set__(self, mediafile, value):
+         q_num = round(value * pow(2, self.__fraction_bits))
+         q_num = int(q_num)  # needed for py2.7
+-        super(QNumberField, self).__set__(mediafile, q_num)
++        super().__set__(mediafile, q_num)
+ 
+ 
+ class ImageListField(ListMediaField):
+@@ -1546,7 +1543,7 @@ class ImageListField(ListMediaField):
+         # The storage styles used here must implement the
+         # `ListStorageStyle` interface and get and set lists of
+         # `Image`s.
+-        super(ImageListField, self).__init__(
++        super().__init__(
+             MP3ImageStorageStyle(),
+             MP4ImageStorageStyle(),
+             ASFImageStorageStyle(),
+@@ -1559,7 +1556,7 @@ class ImageListField(ListMediaField):
+ 
+ # MediaFile is a collection of fields.
+ 
+-class MediaFile(object):
++class MediaFile:
+     """Represents a multimedia file on disk and provides access to its
+     metadata.
+     """
+@@ -1728,20 +1725,17 @@ class MediaFile(object):
+         :class:`DateItemField`, which are sorted in year-month-day
+         order.
+         """
+-        for property in sorted(cls.fields(), key=cls._field_sort_name):
+-            yield property
++        yield from sorted(cls.fields(), key=cls._field_sort_name)
+ 
+     @classmethod
+     def readable_fields(cls):
+         """Get all metadata fields: the writable ones from
+         :meth:`fields` and also other audio properties.
+         """
+-        for property in cls.fields():
+-            yield property
+-        for property in ('length', 'samplerate', 'bitdepth', 'bitrate',
++        yield from cls.fields()
++        yield from ('length', 'samplerate', 'bitdepth', 'bitrate',
+                          'bitrate_mode', 'channels', 'encoder_info',
+-                         'encoder_settings', 'format'):
+-            yield property
++                         'encoder_settings', 'format')
+ 
+     @classmethod
+     def add_field(cls, name, descriptor):
+@@ -1754,10 +1748,10 @@ class MediaFile(object):
+         """
+         if not isinstance(descriptor, MediaField):
+             raise ValueError(
+-                u'{0} must be an instance of MediaField'.format(descriptor))
++                '{} must be an instance of MediaField'.format(descriptor))
+         if name in cls.__dict__:
+             raise ValueError(
+-                u'property "{0}" already exists on MediaFile'.format(name))
++                'property "{}" already exists on MediaFile'.format(name))
+         setattr(cls, name, descriptor)
+ 
+     def update(self, dict):
+@@ -1780,7 +1774,7 @@ class MediaFile(object):
+         metadata tags (i.e., those that are instances of
+         :class:`MediaField`).
+         """
+-        return dict((x, getattr(self, x)) for x in self.fields())
++        return {x: getattr(self, x) for x in self.fields()}
+ 
+     # Field definitions.
+ 
+@@ -1797,7 +1791,7 @@ class MediaFile(object):
+         ASFStorageStyle('Author'),
+     )
+     artists = ListMediaField(
+-        MP3ListDescStorageStyle(desc=u'ARTISTS'),
++        MP3ListDescStorageStyle(desc='ARTISTS'),
+         MP4ListStorageStyle('----:com.apple.iTunes:ARTISTS'),
+         ListStorageStyle('ARTISTS'),
+         ASFStorageStyle('WM/ARTISTS'),
+@@ -1931,9 +1925,9 @@ class MediaFile(object):
+         ASFStorageStyle('WM/AlbumArtist'),
+     )
+     albumartists = ListMediaField(
+-        MP3ListDescStorageStyle(desc=u'ALBUMARTISTS'),
+-        MP3ListDescStorageStyle(desc=u'ALBUM_ARTISTS'),
+-        MP3ListDescStorageStyle(desc=u'ALBUM ARTISTS', read_only=True),
++        MP3ListDescStorageStyle(desc='ALBUMARTISTS'),
++        MP3ListDescStorageStyle(desc='ALBUM_ARTISTS'),
++        MP3ListDescStorageStyle(desc='ALBUM ARTISTS', read_only=True),
+         MP4ListStorageStyle('----:com.apple.iTunes:ALBUMARTISTS'),
+         MP4ListStorageStyle('----:com.apple.iTunes:ALBUM_ARTISTS'),
+         MP4ListStorageStyle(
+@@ -1969,13 +1963,13 @@ class MediaFile(object):
+         ASFStorageStyle('WM/ArtistSortOrder'),
+     )
+     albumartist_sort = MediaField(
+-        MP3DescStorageStyle(u'ALBUMARTISTSORT'),
++        MP3DescStorageStyle('ALBUMARTISTSORT'),
+         MP4StorageStyle('soaa'),
+         StorageStyle('ALBUMARTISTSORT'),
+         ASFStorageStyle('WM/AlbumArtistSortOrder'),
+     )
+     asin = MediaField(
+-        MP3DescStorageStyle(u'ASIN'),
++        MP3DescStorageStyle('ASIN'),
+         MP4StorageStyle('----:com.apple.iTunes:ASIN'),
+         StorageStyle('ASIN'),
+         ASFStorageStyle('MusicBrainz/ASIN'),
+@@ -2001,7 +1995,7 @@ class MediaFile(object):
+     catalognum = catalognums.single_field()
+ 
+     barcode = MediaField(
+-        MP3DescStorageStyle(u'BARCODE'),
++        MP3DescStorageStyle('BARCODE'),
+         MP4StorageStyle('----:com.apple.iTunes:BARCODE'),
+         StorageStyle('BARCODE'),
+         StorageStyle('UPC', read_only=True),
+@@ -2011,7 +2005,7 @@ class MediaFile(object):
+         ASFStorageStyle('WM/Barcode'),
+     )
+     isrc = MediaField(
+-        MP3StorageStyle(u'TSRC'),
++        MP3StorageStyle('TSRC'),
+         MP4StorageStyle('----:com.apple.iTunes:ISRC'),
+         StorageStyle('ISRC'),
+         ASFStorageStyle('WM/ISRC'),
+@@ -2030,7 +2024,7 @@ class MediaFile(object):
+         ASFStorageStyle('WM/EncodedBy'),
+     )
+     script = MediaField(
+-        MP3DescStorageStyle(u'Script'),
++        MP3DescStorageStyle('Script'),
+         MP4StorageStyle('----:com.apple.iTunes:SCRIPT'),
+         StorageStyle('SCRIPT'),
+         ASFStorageStyle('WM/Script'),
+@@ -2044,14 +2038,14 @@ class MediaFile(object):
+     language = languages.single_field()
+ 
+     country = MediaField(
+-        MP3DescStorageStyle(u'MusicBrainz Album Release Country'),
++        MP3DescStorageStyle('MusicBrainz Album Release Country'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz '
+                         'Album Release Country'),
+         StorageStyle('RELEASECOUNTRY'),
+         ASFStorageStyle('MusicBrainz/Album Release Country'),
+     )
+     albumstatus = MediaField(
+-        MP3DescStorageStyle(u'MusicBrainz Album Status'),
++        MP3DescStorageStyle('MusicBrainz Album Status'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz Album Status'),
+         StorageStyle('RELEASESTATUS'),
+         StorageStyle('MUSICBRAINZ_ALBUMSTATUS'),
+@@ -2065,7 +2059,7 @@ class MediaFile(object):
+     )
+     albumdisambig = MediaField(
+         # This tag mapping was invented for beets (not used by Picard, etc).
+-        MP3DescStorageStyle(u'MusicBrainz Album Comment'),
++        MP3DescStorageStyle('MusicBrainz Album Comment'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz Album Comment'),
+         StorageStyle('MUSICBRAINZ_ALBUMCOMMENT'),
+         ASFStorageStyle('MusicBrainz/Album Comment'),
+@@ -2096,13 +2090,13 @@ class MediaFile(object):
+ 
+     # Nonstandard metadata.
+     artist_credit = MediaField(
+-        MP3DescStorageStyle(u'Artist Credit'),
++        MP3DescStorageStyle('Artist Credit'),
+         MP4StorageStyle('----:com.apple.iTunes:Artist Credit'),
+         StorageStyle('ARTIST_CREDIT'),
+         ASFStorageStyle('beets/Artist Credit'),
+     )
+     albumartist_credit = MediaField(
+-        MP3DescStorageStyle(u'Album Artist Credit'),
++        MP3DescStorageStyle('Album Artist Credit'),
+         MP4StorageStyle('----:com.apple.iTunes:Album Artist Credit'),
+         StorageStyle('ALBUMARTIST_CREDIT'),
+         ASFStorageStyle('beets/Album Artist Credit'),
+@@ -2122,25 +2116,25 @@ class MediaFile(object):
+         ASFStorageStyle('MusicBrainz/Track Id'),
+     )
+     mb_releasetrackid = MediaField(
+-        MP3DescStorageStyle(u'MusicBrainz Release Track Id'),
++        MP3DescStorageStyle('MusicBrainz Release Track Id'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz Release Track Id'),
+         StorageStyle('MUSICBRAINZ_RELEASETRACKID'),
+         ASFStorageStyle('MusicBrainz/Release Track Id'),
+     )
+     mb_workid = MediaField(
+-        MP3DescStorageStyle(u'MusicBrainz Work Id'),
++        MP3DescStorageStyle('MusicBrainz Work Id'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz Work Id'),
+         StorageStyle('MUSICBRAINZ_WORKID'),
+         ASFStorageStyle('MusicBrainz/Work Id'),
+     )
+     mb_albumid = MediaField(
+-        MP3DescStorageStyle(u'MusicBrainz Album Id'),
++        MP3DescStorageStyle('MusicBrainz Album Id'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz Album Id'),
+         StorageStyle('MUSICBRAINZ_ALBUMID'),
+         ASFStorageStyle('MusicBrainz/Album Id'),
+     )
+     mb_artistids = ListMediaField(
+-        MP3ListDescStorageStyle(u'MusicBrainz Artist Id', split_v23=True),
++        MP3ListDescStorageStyle('MusicBrainz Artist Id', split_v23=True),
+         MP4ListStorageStyle('----:com.apple.iTunes:MusicBrainz Artist Id'),
+         ListStorageStyle('MUSICBRAINZ_ARTISTID'),
+         ASFStorageStyle('MusicBrainz/Artist Id'),
+@@ -2149,7 +2143,7 @@ class MediaFile(object):
+ 
+     mb_albumartistids = ListMediaField(
+         MP3ListDescStorageStyle(
+-            u'MusicBrainz Album Artist Id',
++            'MusicBrainz Album Artist Id',
+             split_v23=True,
+         ),
+         MP4ListStorageStyle(
+@@ -2161,7 +2155,7 @@ class MediaFile(object):
+     mb_albumartistid = mb_albumartistids.single_field()
+ 
+     mb_releasegroupid = MediaField(
+-        MP3DescStorageStyle(u'MusicBrainz Release Group Id'),
++        MP3DescStorageStyle('MusicBrainz Release Group Id'),
+         MP4StorageStyle('----:com.apple.iTunes:MusicBrainz Release Group Id'),
+         StorageStyle('MUSICBRAINZ_RELEASEGROUPID'),
+         ASFStorageStyle('MusicBrainz/Release Group Id'),
+@@ -2169,13 +2163,13 @@ class MediaFile(object):
+ 
+     # Acoustid fields.
+     acoustid_fingerprint = MediaField(
+-        MP3DescStorageStyle(u'Acoustid Fingerprint'),
++        MP3DescStorageStyle('Acoustid Fingerprint'),
+         MP4StorageStyle('----:com.apple.iTunes:Acoustid Fingerprint'),
+         StorageStyle('ACOUSTID_FINGERPRINT'),
+         ASFStorageStyle('Acoustid/Fingerprint'),
+     )
+     acoustid_id = MediaField(
+-        MP3DescStorageStyle(u'Acoustid Id'),
++        MP3DescStorageStyle('Acoustid Id'),
+         MP4StorageStyle('----:com.apple.iTunes:Acoustid Id'),
+         StorageStyle('ACOUSTID_ID'),
+         ASFStorageStyle('Acoustid/Id'),
+@@ -2184,16 +2178,16 @@ class MediaFile(object):
+     # ReplayGain fields.
+     rg_track_gain = MediaField(
+         MP3DescStorageStyle(
+-            u'REPLAYGAIN_TRACK_GAIN',
+-            float_places=2, suffix=u' dB'
++            'REPLAYGAIN_TRACK_GAIN',
++            float_places=2, suffix=' dB'
+         ),
+         MP3DescStorageStyle(
+-            u'replaygain_track_gain',
+-            float_places=2, suffix=u' dB'
++            'replaygain_track_gain',
++            float_places=2, suffix=' dB'
+         ),
+         MP3SoundCheckStorageStyle(
+             key='COMM',
+-            index=0, desc=u'iTunNORM',
++            index=0, desc='iTunNORM',
+             id3_lang='eng'
+         ),
+         MP4StorageStyle(
+@@ -2205,50 +2199,50 @@ class MediaFile(object):
+             index=0
+         ),
+         StorageStyle(
+-            u'REPLAYGAIN_TRACK_GAIN',
+-            float_places=2, suffix=u' dB'
++            'REPLAYGAIN_TRACK_GAIN',
++            float_places=2, suffix=' dB'
+         ),
+         ASFStorageStyle(
+-            u'replaygain_track_gain',
+-            float_places=2, suffix=u' dB'
++            'replaygain_track_gain',
++            float_places=2, suffix=' dB'
+         ),
+         out_type=float
+     )
+     rg_album_gain = MediaField(
+         MP3DescStorageStyle(
+-            u'REPLAYGAIN_ALBUM_GAIN',
+-            float_places=2, suffix=u' dB'
++            'REPLAYGAIN_ALBUM_GAIN',
++            float_places=2, suffix=' dB'
+         ),
+         MP3DescStorageStyle(
+-            u'replaygain_album_gain',
+-            float_places=2, suffix=u' dB'
++            'replaygain_album_gain',
++            float_places=2, suffix=' dB'
+         ),
+         MP4StorageStyle(
+             '----:com.apple.iTunes:replaygain_album_gain',
+             float_places=2, suffix=' dB'
+         ),
+         StorageStyle(
+-            u'REPLAYGAIN_ALBUM_GAIN',
+-            float_places=2, suffix=u' dB'
++            'REPLAYGAIN_ALBUM_GAIN',
++            float_places=2, suffix=' dB'
+         ),
+         ASFStorageStyle(
+-            u'replaygain_album_gain',
+-            float_places=2, suffix=u' dB'
++            'replaygain_album_gain',
++            float_places=2, suffix=' dB'
+         ),
+         out_type=float
+     )
+     rg_track_peak = MediaField(
+         MP3DescStorageStyle(
+-            u'REPLAYGAIN_TRACK_PEAK',
++            'REPLAYGAIN_TRACK_PEAK',
+             float_places=6
+         ),
+         MP3DescStorageStyle(
+-            u'replaygain_track_peak',
++            'replaygain_track_peak',
+             float_places=6
+         ),
+         MP3SoundCheckStorageStyle(
+-            key=u'COMM',
+-            index=1, desc=u'iTunNORM',
++            key='COMM',
++            index=1, desc='iTunNORM',
+             id3_lang='eng'
+         ),
+         MP4StorageStyle(
+@@ -2259,25 +2253,25 @@ class MediaFile(object):
+             '----:com.apple.iTunes:iTunNORM',
+             index=1
+         ),
+-        StorageStyle(u'REPLAYGAIN_TRACK_PEAK', float_places=6),
+-        ASFStorageStyle(u'replaygain_track_peak', float_places=6),
++        StorageStyle('REPLAYGAIN_TRACK_PEAK', float_places=6),
++        ASFStorageStyle('replaygain_track_peak', float_places=6),
+         out_type=float,
+     )
+     rg_album_peak = MediaField(
+         MP3DescStorageStyle(
+-            u'REPLAYGAIN_ALBUM_PEAK',
++            'REPLAYGAIN_ALBUM_PEAK',
+             float_places=6
+         ),
+         MP3DescStorageStyle(
+-            u'replaygain_album_peak',
++            'replaygain_album_peak',
+             float_places=6
+         ),
+         MP4StorageStyle(
+             '----:com.apple.iTunes:replaygain_album_peak',
+             float_places=6
+         ),
+-        StorageStyle(u'REPLAYGAIN_ALBUM_PEAK', float_places=6),
+-        ASFStorageStyle(u'replaygain_album_peak', float_places=6),
++        StorageStyle('REPLAYGAIN_ALBUM_PEAK', float_places=6),
++        ASFStorageStyle('replaygain_album_peak', float_places=6),
+         out_type=float,
+     )
+ 
+@@ -2285,31 +2279,31 @@ class MediaFile(object):
+     r128_track_gain = QNumberField(
+         8,
+         MP3DescStorageStyle(
+-            u'R128_TRACK_GAIN'
++            'R128_TRACK_GAIN'
+         ),
+         MP4StorageStyle(
+             '----:com.apple.iTunes:R128_TRACK_GAIN'
+         ),
+         StorageStyle(
+-            u'R128_TRACK_GAIN'
++            'R128_TRACK_GAIN'
+         ),
+         ASFStorageStyle(
+-            u'R128_TRACK_GAIN'
++            'R128_TRACK_GAIN'
+         ),
+     )
+     r128_album_gain = QNumberField(
+         8,
+         MP3DescStorageStyle(
+-            u'R128_ALBUM_GAIN'
++            'R128_ALBUM_GAIN'
+         ),
+         MP4StorageStyle(
+             '----:com.apple.iTunes:R128_ALBUM_GAIN'
+         ),
+         StorageStyle(
+-            u'R128_ALBUM_GAIN'
++            'R128_ALBUM_GAIN'
+         ),
+         ASFStorageStyle(
+-            u'R128_ALBUM_GAIN'
++            'R128_ALBUM_GAIN'
+         ),
+     )
+ 
+Index: mediafile-0.11.0/test/__init__.py
+===================================================================
+--- mediafile-0.11.0.orig/test/__init__.py
++++ mediafile-0.11.0/test/__init__.py
+@@ -1,3 +0,0 @@
+-# -*- coding: utf-8 -*-
+-
+-from __future__ import division, absolute_import, print_function
+Index: mediafile-0.11.0/test/_common.py
+===================================================================
+--- mediafile-0.11.0.orig/test/_common.py
++++ mediafile-0.11.0/test/_common.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ # This file is part of mediafile.
+ # Copyright 2016, Adrian Sampson.
+ #
+@@ -14,7 +13,6 @@
+ # included in all copies or substantial portions of the Software.
+ 
+ """Some common functionality for mediafile tests."""
+-from __future__ import division, absolute_import, print_function
+ 
+ import os
+ import tempfile
+@@ -31,7 +29,7 @@ HAVE_SYMLINK = sys.platform != 'win32'
+ 
+ # Convenience methods for setting up a temporary sandbox directory for tests
+ # that need to interact with the filesystem.
+-class TempDirMixin(object):
++class TempDirMixin:
+     """Text mixin for creating and deleting a temporary directory.
+     """
+ 
+Index: mediafile-0.11.0/test/test_mediafile.py
+===================================================================
+--- mediafile-0.11.0.orig/test/test_mediafile.py
++++ mediafile-0.11.0/test/test_mediafile.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ # This file is part of MediaFile.
+ # Copyright 2016, Adrian Sampson.
+ #
+@@ -16,14 +15,12 @@
+ """Automatically-generated blanket testing for the MediaFile metadata
+ layer.
+ """
+-from __future__ import division, absolute_import, print_function
+ 
+ import os
+ import shutil
+ import datetime
+ import time
+ import unittest
+-from six import assertCountEqual
+ 
+ from test import _common
+ from mediafile import MediaFile, Image, \
+@@ -31,7 +28,7 @@ from mediafile import MediaFile, Image,
+ import mutagen
+ 
+ 
+-class ArtTestMixin(object):
++class ArtTestMixin:
+     """Test reads and writes of the ``art`` property.
+     """
+ 
+@@ -109,18 +106,18 @@ class ImageStructureTestMixin(ArtTestMix
+         image = next(i for i in mediafile.images
+                      if i.mime_type == 'image/png')
+         self.assertEqual(image.data, self.png_data)
+-        self.assertExtendedImageAttributes(image, desc=u'album cover',
++        self.assertExtendedImageAttributes(image, desc='album cover',
+                                            type=ImageType.front)
+ 
+         image = next(i for i in mediafile.images
+                      if i.mime_type == 'image/jpeg')
+         self.assertEqual(image.data, self.jpg_data)
+-        self.assertExtendedImageAttributes(image, desc=u'the artist',
++        self.assertExtendedImageAttributes(image, desc='the artist',
+                                            type=ImageType.artist)
+ 
+     def test_set_image_structure(self):
+         mediafile = self._mediafile_fixture('empty')
+-        image = Image(data=self.png_data, desc=u'album cover',
++        image = Image(data=self.png_data, desc='album cover',
+                       type=ImageType.front)
+         mediafile.images = [image]
+         mediafile.save()
+@@ -131,14 +128,14 @@ class ImageStructureTestMixin(ArtTestMix
+         image = mediafile.images[0]
+         self.assertEqual(image.data, self.png_data)
+         self.assertEqual(image.mime_type, 'image/png')
+-        self.assertExtendedImageAttributes(image, desc=u'album cover',
++        self.assertExtendedImageAttributes(image, desc='album cover',
+                                            type=ImageType.front)
+ 
+     def test_add_image_structure(self):
+         mediafile = self._mediafile_fixture('image')
+         self.assertEqual(len(mediafile.images), 2)
+ 
+-        image = Image(data=self.png_data, desc=u'the composer',
++        image = Image(data=self.png_data, desc='the composer',
+                       type=ImageType.composer)
+         mediafile.images += [image]
+         mediafile.save()
+@@ -146,10 +143,10 @@ class ImageStructureTestMixin(ArtTestMix
+         mediafile = MediaFile(mediafile.filename)
+         self.assertEqual(len(mediafile.images), 3)
+ 
+-        images = (i for i in mediafile.images if i.desc == u'the composer')
++        images = (i for i in mediafile.images if i.desc == 'the composer')
+         image = next(images, None)
+         self.assertExtendedImageAttributes(
+-            image, desc=u'the composer', type=ImageType.composer
++            image, desc='the composer', type=ImageType.composer
+         )
+ 
+     def test_delete_image_structures(self):
+@@ -166,7 +163,7 @@ class ImageStructureTestMixin(ArtTestMix
+         mediafile = self._mediafile_fixture('image')
+         self.assertEqual(len(mediafile.images), 2)
+         cover = CoverArtField.guess_cover_image(mediafile.images)
+-        self.assertEqual(cover.desc, u'album cover')
++        self.assertEqual(cover.desc, 'album cover')
+         self.assertEqual(mediafile.art, cover.data)
+ 
+     def assertExtendedImageAttributes(self, image, **kwargs):  # noqa
+@@ -190,7 +187,7 @@ class ExtendedImageStructureTestMixin(Im
+         mediafile = self._mediafile_fixture('image')
+         self.assertEqual(len(mediafile.images), 2)
+ 
+-        image = Image(data=self.tiff_data, desc=u'the composer',
++        image = Image(data=self.tiff_data, desc='the composer',
+                       type=ImageType.composer)
+         mediafile.images += [image]
+         mediafile.save()
+@@ -202,14 +199,14 @@ class ExtendedImageStructureTestMixin(Im
+         image = list(filter(lambda i: i.mime_type == 'image/tiff',
+                      mediafile.images))[0]
+         self.assertExtendedImageAttributes(
+-            image, desc=u'the composer', type=ImageType.composer)
++            image, desc='the composer', type=ImageType.composer)
+ 
+ 
+-class LazySaveTestMixin(object):
++class LazySaveTestMixin:
+     """Mediafile should only write changes when tags have changed
+     """
+ 
+-    @unittest.skip(u'not yet implemented')
++    @unittest.skip('not yet implemented')
+     def test_unmodified(self):
+         mediafile = self._mediafile_fixture('full')
+         mtime = self._set_past_mtime(mediafile.filename)
+@@ -218,7 +215,7 @@ class LazySaveTestMixin(object):
+         mediafile.save()
+         self.assertEqual(os.stat(mediafile.filename).st_mtime, mtime)
+ 
+-    @unittest.skip(u'not yet implemented')
++    @unittest.skip('not yet implemented')
+     def test_same_tag_value(self):
+         mediafile = self._mediafile_fixture('full')
+         mtime = self._set_past_mtime(mediafile.filename)
+@@ -237,14 +234,14 @@ class LazySaveTestMixin(object):
+         mediafile.save()
+         self.assertEqual(os.stat(mediafile.filename).st_mtime, mtime)
+ 
+-    @unittest.skip(u'not yet implemented')
++    @unittest.skip('not yet implemented')
+     def test_tag_value_change(self):
+         mediafile = self._mediafile_fixture('full')
+         mtime = self._set_past_mtime(mediafile.filename)
+         self.assertEqual(os.stat(mediafile.filename).st_mtime, mtime)
+ 
+         mediafile.title = mediafile.title
+-        mediafile.album = u'another'
++        mediafile.album = 'another'
+         mediafile.save()
+         self.assertNotEqual(os.stat(mediafile.filename).st_mtime, mtime)
+ 
+@@ -253,7 +250,7 @@ class LazySaveTestMixin(object):
+         mtime = self._set_past_mtime(mediafile.filename)
+         self.assertEqual(os.stat(mediafile.filename).st_mtime, mtime)
+ 
+-        mediafile.update({'title': mediafile.title, 'album': u'another'})
++        mediafile.update({'title': mediafile.title, 'album': 'another'})
+         mediafile.save()
+         self.assertNotEqual(os.stat(mediafile.filename).st_mtime, mtime)
+ 
+@@ -263,38 +260,38 @@ class LazySaveTestMixin(object):
+         return mtime
+ 
+ 
+-class GenreListTestMixin(object):
++class GenreListTestMixin:
+     """Tests access to the ``genres`` property as a list.
+     """
+ 
+     def test_read_genre_list(self):
+         mediafile = self._mediafile_fixture('full')
+-        assertCountEqual(self, mediafile.genres, ['the genre'])
++        unittest.TestCase().assertCountEqual(mediafile.genres, ['the genre'])
+ 
+     def test_write_genre_list(self):
+         mediafile = self._mediafile_fixture('empty')
+-        mediafile.genres = [u'one', u'two']
++        mediafile.genres = ['one', 'two']
+         mediafile.save()
+ 
+         mediafile = MediaFile(mediafile.filename)
+-        assertCountEqual(self, mediafile.genres, [u'one', u'two'])
++        unittest.TestCase().assertCountEqual(mediafile.genres, ['one', 'two'])
+ 
+     def test_write_genre_list_get_first(self):
+         mediafile = self._mediafile_fixture('empty')
+-        mediafile.genres = [u'one', u'two']
++        mediafile.genres = ['one', 'two']
+         mediafile.save()
+ 
+         mediafile = MediaFile(mediafile.filename)
+-        self.assertEqual(mediafile.genre, u'one')
++        self.assertEqual(mediafile.genre, 'one')
+ 
+     def test_append_genre_list(self):
+         mediafile = self._mediafile_fixture('full')
+-        self.assertEqual(mediafile.genre, u'the genre')
+-        mediafile.genres += [u'another']
++        self.assertEqual(mediafile.genre, 'the genre')
++        mediafile.genres += ['another']
+         mediafile.save()
+ 
+         mediafile = MediaFile(mediafile.filename)
+-        assertCountEqual(self, mediafile.genres, [u'the genre', u'another'])
++        unittest.TestCase().assertCountEqual(mediafile.genres, ['the genre', 'another'])
+ 
+ 
+ class ReadWriteTestBase(ArtTestMixin, GenreListTestMixin,
+@@ -319,12 +316,12 @@ class ReadWriteTestBase(ArtTestMixin, Ge
+     """
+ 
+     full_initial_tags = {
+-        'title':             u'full',
+-        'artist':            u'the artist',
+-        'album':             u'the album',
+-        'genre':             u'the genre',
+-        'composer':          u'the composer',
+-        'grouping':          u'the grouping',
++        'title':             'full',
++        'artist':            'the artist',
++        'album':             'the album',
++        'genre':             'the genre',
++        'composer':          'the composer',
++        'grouping':          'the grouping',
+         'year':              2001,
+         'month':             None,
+         'day':               None,
+@@ -333,8 +330,8 @@ class ReadWriteTestBase(ArtTestMixin, Ge
+         'tracktotal':        3,
+         'disc':              4,
+         'disctotal':         5,
+-        'lyrics':            u'the lyrics',
+-        'comments':          u'the comments',
++        'lyrics':            'the lyrics',
++        'comments':          'the comments',
+         'bpm':               6,
+         'comp':              True,
+         'mb_trackid':        '8b882575-08a5-4452-a7a7-cbb8a1531f9e',
+@@ -342,7 +339,7 @@ class ReadWriteTestBase(ArtTestMixin, Ge
+         'mb_albumid':        '9e873859-8aa4-4790-b985-5a953e8ef628',
+         'mb_artistid':       '7cf0ea9d-86b9-4dad-ba9e-2355a64899ea',
+         'art':               None,
+-        'label':             u'the label',
++        'label':             'the label',
+     }
+ 
+     tag_fields = [
+@@ -618,7 +615,7 @@ class ReadWriteTestBase(ArtTestMixin, Ge
+         mediafile = self._mediafile_fixture('full')
+ 
+         keys = self.full_initial_tags.keys()
+-        for key in set(keys) - set(['art', 'month', 'day']):
++        for key in set(keys) - {'art', 'month', 'day'}:
+             self.assertIsNotNone(getattr(mediafile, key))
+         for key in keys:
+             delattr(mediafile, key)
+@@ -680,12 +677,12 @@ class ReadWriteTestBase(ArtTestMixin, Ge
+             try:
+                 value2 = getattr(mediafile, key)
+             except AttributeError:
+-                errors.append(u'Tag %s does not exist' % key)
++                errors.append('Tag %s does not exist' % key)
+             else:
+                 if value2 != value:
+-                    errors.append(u'Tag %s: %r != %r' % (key, value2, value))
++                    errors.append('Tag {}: {!r} != {!r}'.format(key, value2, value))
+         if any(errors):
+-            errors = [u'Tags did not match'] + errors
++            errors = ['Tags did not match'] + errors
+             self.fail('\n  '.join(errors))
+ 
+     def _mediafile_fixture(self, name):
+@@ -738,7 +735,7 @@ class ReadWriteTestBase(ArtTestMixin, Ge
+         return tags
+ 
+ 
+-class PartialTestMixin(object):
++class PartialTestMixin:
+     tags_without_total = {
+         'track':      2,
+         'tracktotal': 0,
+@@ -835,7 +832,7 @@ class MusepackTest(ReadWriteTestBase, un
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'Musepack',
++        'format': 'Musepack',
+         'samplerate': 44100,
+         'bitdepth': 0,
+         'channels': 2,
+@@ -851,7 +848,7 @@ class WMATest(ReadWriteTestBase, Extende
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'Windows Media',
++        'format': 'Windows Media',
+         'samplerate': 44100,
+         'bitdepth': 0,
+         'channels': 1,
+@@ -860,17 +857,17 @@ class WMATest(ReadWriteTestBase, Extende
+     def test_write_genre_list_get_first(self):
+         # WMA does not preserve list order
+         mediafile = self._mediafile_fixture('empty')
+-        mediafile.genres = [u'one', u'two']
++        mediafile.genres = ['one', 'two']
+         mediafile.save()
+ 
+         mediafile = MediaFile(mediafile.filename)
+-        self.assertIn(mediafile.genre, [u'one', u'two'])
++        self.assertIn(mediafile.genre, ['one', 'two'])
+ 
+     def test_read_pure_tags(self):
+         mediafile = self._mediafile_fixture('pure')
+-        self.assertEqual(mediafile.comments, u'the comments')
+-        self.assertEqual(mediafile.title, u'the title')
+-        self.assertEqual(mediafile.artist, u'the artist')
++        self.assertEqual(mediafile.comments, 'the comments')
++        self.assertEqual(mediafile.title, 'the title')
++        self.assertEqual(mediafile.artist, 'the artist')
+ 
+ 
+ class OggTest(ReadWriteTestBase, ExtendedImageStructureTestMixin,
+@@ -882,7 +879,7 @@ class OggTest(ReadWriteTestBase, Extende
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'OGG',
++        'format': 'OGG',
+         'samplerate': 44100,
+         'bitdepth': 0,
+         'channels': 1,
+@@ -899,7 +896,7 @@ class OggTest(ReadWriteTestBase, Extende
+         mediafile.save()
+ 
+         mediafile = MediaFile(mediafile.filename)
+-        self.assertEqual(mediafile.mgfile['YEAR'], [u'2000'])
++        self.assertEqual(mediafile.mgfile['YEAR'], ['2000'])
+ 
+     def test_legacy_coverart_tag(self):
+         mediafile = self._mediafile_fixture('coverart')
+@@ -929,7 +926,7 @@ class FlacTest(ReadWriteTestBase, Partia
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'FLAC',
++        'format': 'FLAC',
+         'samplerate': 44100,
+         'bitdepth': 16,
+         'channels': 1,
+@@ -945,7 +942,7 @@ class ApeTest(ReadWriteTestBase, Extende
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'APE',
++        'format': 'APE',
+         'samplerate': 44100,
+         'bitdepth': 16,
+         'channels': 1,
+@@ -960,7 +957,7 @@ class WavpackTest(ReadWriteTestBase, uni
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'WavPack',
++        'format': 'WavPack',
+         'samplerate': 44100,
+         'bitdepth': 16 if mutagen.version >= (1, 45, 0) else 0,
+         'channels': 1,
+@@ -975,7 +972,7 @@ class OpusTest(ReadWriteTestBase, unitte
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'Opus',
++        'format': 'Opus',
+         'samplerate': 48000,
+         'bitdepth': 0,
+         'channels': 1,
+@@ -990,7 +987,7 @@ class AIFFTest(ReadWriteTestBase, unitte
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'AIFF',
++        'format': 'AIFF',
+         'samplerate': 44100,
+         'bitdepth': 16,
+         'channels': 1,
+@@ -1005,17 +1002,17 @@ class WAVETest(ReadWriteTestBase, unitte
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'WAVE',
++        'format': 'WAVE',
+         'samplerate': 44100,
+         'bitdepth': 16,
+         'channels': 1,
+     }
+ 
+     full_initial_tags = {
+-        'title':             u'full',
+-        'artist':            u'the artist',
+-        'album':             u'the album',
+-        'genre':             u'the genre',
++        'title':             'full',
++        'artist':            'the artist',
++        'album':             'the album',
++        'genre':             'the genre',
+         'track':             2,
+         'tracktotal':        3,
+     }
+@@ -1084,7 +1081,7 @@ class DSFTest(ReadWriteTestBase, unittes
+         'bitrate_mode': '',
+         'encoder_info': '',
+         'encoder_settings': '',
+-        'format': u'DSD Stream File',
++        'format': 'DSD Stream File',
+         'samplerate': 5644800,
+         'bitdepth': 1,
+         'channels': 2,
+@@ -1112,7 +1109,7 @@ class MediaFieldTest(unittest.TestCase):
+              'albumartists', 'url', 'mb_artistids', 'mb_albumartistids',
+              'albumtypes', 'catalognums', 'languages')
+         )
+-        assertCountEqual(self, MediaFile.fields(), fields)
++        self.assertCountEqual(MediaFile.fields(), fields)
+ 
+     def test_fields_in_readable_fields(self):
+         readable = MediaFile.readable_fields()
+Index: mediafile-0.11.0/test/test_mediafile_edge.py
+===================================================================
+--- mediafile-0.11.0.orig/test/test_mediafile_edge.py
++++ mediafile-0.11.0/test/test_mediafile_edge.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ # This file is part of MediaFile.
+ # Copyright 2016, Adrian Sampson.
+ #
+@@ -15,7 +14,6 @@
+ 
+ """Specific, edge-case tests for the MediaFile metadata layer.
+ """
+-from __future__ import division, absolute_import, print_function
+ 
+ import os
+ import shutil
+@@ -25,7 +23,6 @@ import mutagen.id3
+ from test import _common
+ 
+ import mediafile
+-import six
+ 
+ 
+ _sc = mediafile._safe_cast
+@@ -103,47 +100,47 @@ class EdgeTest(unittest.TestCase):
+ class InvalidValueToleranceTest(unittest.TestCase):
+ 
+     def test_safe_cast_string_to_int(self):
+-        self.assertEqual(_sc(int, u'something'), 0)
++        self.assertEqual(_sc(int, 'something'), 0)
+ 
+     def test_safe_cast_string_to_int_with_no_numbers(self):
+-        self.assertEqual(_sc(int, u'-'), 0)
++        self.assertEqual(_sc(int, '-'), 0)
+ 
+     def test_safe_cast_int_string_to_int(self):
+-        self.assertEqual(_sc(int, u'20'), 20)
++        self.assertEqual(_sc(int, '20'), 20)
+ 
+     def test_safe_cast_string_to_bool(self):
+-        self.assertEqual(_sc(bool, u'whatever'), False)
++        self.assertEqual(_sc(bool, 'whatever'), False)
+ 
+     def test_safe_cast_intstring_to_bool(self):
+-        self.assertEqual(_sc(bool, u'5'), True)
++        self.assertEqual(_sc(bool, '5'), True)
+ 
+     def test_safe_cast_string_to_float(self):
+-        self.assertAlmostEqual(_sc(float, u'1.234'), 1.234)
++        self.assertAlmostEqual(_sc(float, '1.234'), 1.234)
+ 
+     def test_safe_cast_int_to_float(self):
+         self.assertAlmostEqual(_sc(float, 2), 2.0)
+ 
+     def test_safe_cast_string_with_cruft_to_float(self):
+-        self.assertAlmostEqual(_sc(float, u'1.234stuff'), 1.234)
++        self.assertAlmostEqual(_sc(float, '1.234stuff'), 1.234)
+ 
+     def test_safe_cast_negative_string_to_float(self):
+-        self.assertAlmostEqual(_sc(float, u'-1.234'), -1.234)
++        self.assertAlmostEqual(_sc(float, '-1.234'), -1.234)
+ 
+     def test_safe_cast_special_chars_to_unicode(self):
+-        us = _sc(six.text_type, 'caf\xc3\xa9')
+-        self.assertTrue(isinstance(us, six.text_type))
+-        self.assertTrue(us.startswith(u'caf'))
++        us = _sc(str, 'caf\xc3\xa9')
++        self.assertTrue(isinstance(us, str))
++        self.assertTrue(us.startswith('caf'))
+ 
+     def test_safe_cast_float_with_no_numbers(self):
+-        v = _sc(float, u'+')
++        v = _sc(float, '+')
+         self.assertEqual(v, 0.0)
+ 
+     def test_safe_cast_float_with_dot_only(self):
+-        v = _sc(float, u'.')
++        v = _sc(float, '.')
+         self.assertEqual(v, 0.0)
+ 
+     def test_safe_cast_float_with_multiple_dots(self):
+-        v = _sc(float, u'1.0.0')
++        v = _sc(float, '1.0.0')
+         self.assertEqual(v, 1.0)
+ 
+ 
+@@ -190,7 +187,7 @@ class SafetyTest(unittest.TestCase, _com
+         self._exccheck(b'nothing.xml', mediafile.UnreadableFileError,
+                        "ftyp")
+ 
+-    @unittest.skipUnless(_common.HAVE_SYMLINK, u'platform lacks symlink')
++    @unittest.skipUnless(_common.HAVE_SYMLINK, 'platform lacks symlink')
+     def test_broken_symlink(self):
+         fn = os.path.join(_common.RSRC, b'brokenlink')
+         os.symlink('does_not_exist', fn)
+@@ -225,10 +222,10 @@ class MP4EncodingTest(unittest.TestCase,
+         self.remove_temp_dir()
+ 
+     def test_unicode_label_in_m4a(self):
+-        self.mf.label = u'foo\xe8bar'
++        self.mf.label = 'foo\xe8bar'
+         self.mf.save()
+         new_mf = mediafile.MediaFile(self.path)
+-        self.assertEqual(new_mf.label, u'foo\xe8bar')
++        self.assertEqual(new_mf.label, 'foo\xe8bar')
+ 
+ 
+ class MP3EncodingTest(unittest.TestCase, _common.TempDirMixin):
+@@ -247,7 +244,7 @@ class MP3EncodingTest(unittest.TestCase,
+         self.mf.mgfile['COMM::eng'].encoding = 0
+ 
+         # Try to store non-Latin1 text.
+-        self.mf.comments = u'\u2028'
++        self.mf.comments = '\u2028'
+         self.mf.save()
+ 
+ 
+@@ -259,7 +256,7 @@ class ZeroLengthMediaFile(mediafile.Medi
+ 
+ class MissingAudioDataTest(unittest.TestCase):
+     def setUp(self):
+-        super(MissingAudioDataTest, self).setUp()
++        super().setUp()
+         path = os.path.join(_common.RSRC, b'full.mp3')
+         self.mf = ZeroLengthMediaFile(path)
+ 
+@@ -270,12 +267,12 @@ class MissingAudioDataTest(unittest.Test
+ 
+ class TypeTest(unittest.TestCase):
+     def setUp(self):
+-        super(TypeTest, self).setUp()
++        super().setUp()
+         path = os.path.join(_common.RSRC, b'full.mp3')
+         self.mf = mediafile.MediaFile(path)
+ 
+     def test_year_integer_in_string(self):
+-        self.mf.year = u'2009'
++        self.mf.year = '2009'
+         self.assertEqual(self.mf.year, 2009)
+ 
+     def test_set_replaygain_gain_to_none(self):
+@@ -322,14 +319,14 @@ class SoundCheckTest(unittest.TestCase):
+         self.assertEqual(peak, 0.0)
+ 
+     def test_special_characters(self):
+-        gain, peak = mediafile._sc_decode(u'caf\xe9'.encode('utf-8'))
++        gain, peak = mediafile._sc_decode('caf\xe9'.encode())
+         self.assertEqual(gain, 0.0)
+         self.assertEqual(peak, 0.0)
+ 
+     def test_decode_handles_unicode(self):
+         # Most of the time, we expect to decode the raw bytes. But some formats
+         # might give us text strings, which we need to handle.
+-        gain, peak = mediafile._sc_decode(u'caf\xe9')
++        gain, peak = mediafile._sc_decode('caf\xe9')
+         self.assertEqual(gain, 0.0)
+         self.assertEqual(peak, 0.0)
+ 
+@@ -359,7 +356,7 @@ class ID3v23Test(unittest.TestCase, _com
+             mf.year = 2013
+             mf.save()
+             frame = mf.mgfile['TDRC']
+-            self.assertTrue('2013' in six.text_type(frame))
++            self.assertTrue('2013' in str(frame))
+             self.assertTrue('TYER' not in mf.mgfile)
+         finally:
+             self._delete_test()
+@@ -370,7 +367,7 @@ class ID3v23Test(unittest.TestCase, _com
+             mf.year = 2013
+             mf.save()
+             frame = mf.mgfile['TYER']
+-            self.assertTrue('2013' in six.text_type(frame))
++            self.assertTrue('2013' in str(frame))
+             self.assertTrue('TDRC' not in mf.mgfile)
+         finally:
+             self._delete_test()
+@@ -393,17 +390,17 @@ class ID3v23Test(unittest.TestCase, _com
+             mf = self._make_test(id3v23=v23)
+             try:
+                 mf.images = [
+-                    mediafile.Image(b'data', desc=u""),
+-                    mediafile.Image(b'data', desc=u"foo"),
+-                    mediafile.Image(b'data', desc=u"\u0185"),
++                    mediafile.Image(b'data', desc=""),
++                    mediafile.Image(b'data', desc="foo"),
++                    mediafile.Image(b'data', desc="\u0185"),
+                 ]
+                 mf.save()
+                 apic_frames = mf.mgfile.tags.getall('APIC')
+-                encodings = dict([(f.desc, f.encoding) for f in apic_frames])
++                encodings = {f.desc: f.encoding for f in apic_frames}
+                 self.assertEqual(encodings, {
+-                    u"": mutagen.id3.Encoding.LATIN1,
+-                    u"foo": mutagen.id3.Encoding.LATIN1,
+-                    u"\u0185": mutagen.id3.Encoding.UTF16,
++                    "": mutagen.id3.Encoding.LATIN1,
++                    "foo": mutagen.id3.Encoding.LATIN1,
++                    "\u0185": mutagen.id3.Encoding.UTF16,
+                 })
+             finally:
+                 self._delete_test()
+Index: mediafile-0.11.0/pyproject.toml
+===================================================================
+--- mediafile-0.11.0.orig/pyproject.toml
++++ mediafile-0.11.0/pyproject.toml
+@@ -9,7 +9,6 @@ author-email = "adrian@radbox.org"
+ home-page = "https://github.com/beetbox/mediafile"
+ description-file = "README.rst"
+ requires = [
+-    "six>=1.9",
+     "mutagen>=1.46",
+ ]
+ requires-python = ">=3.7"
+Index: mediafile-0.11.0/PKG-INFO
+===================================================================
+--- mediafile-0.11.0.orig/PKG-INFO
++++ mediafile-0.11.0/PKG-INFO
+@@ -15,7 +15,6 @@ Classifier: Programming Language :: Pyth
+ Classifier: Programming Language :: Python :: 3.9
+ Classifier: Programming Language :: Python :: 3.10
+ Classifier: Programming Language :: Python :: Implementation :: PyPy
+-Requires-Dist: six>=1.9
+ Requires-Dist: mutagen>=1.46
+ Requires-Dist: tox ; extra == "test"
+ Provides-Extra: test

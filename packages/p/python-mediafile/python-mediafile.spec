@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mediafile
 Version:        0.11.0
@@ -25,16 +24,17 @@ Summary:        Handles low-level interfacing for files' tags Wraps Mutagen to
 License:        MIT
 URL:            https://github.com/beetbox/mediafile
 Source:         https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-%{version}.tar.gz
+# https://github.com/beetbox/mediafile/issues/68
+Patch0:         python-mediafile-pyupgrade.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit >= 2}
+BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module mutagen >= 1.45}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mutagen >= 1.45
-Requires:       python-six >= 1.9
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,7 +42,7 @@ BuildArch:      noarch
 Handles low-level interfacing for files' tags. Wraps Mutagen to
 
 %prep
-%setup -q -n mediafile-%{version}
+%autosetup -p1 -n mediafile-%{version}
 
 %build
 %pyproject_wheel
@@ -52,7 +52,7 @@ Handles low-level interfacing for files' tags. Wraps Mutagen to
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+%pytest -v
 
 %files %{python_files}
 %doc README.rst
