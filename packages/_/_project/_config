@@ -818,6 +818,9 @@ Prefer: kernel-default-base
 Prefer: -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
 Prefer: -kubernetes1.24-client-common -kubernetes1.25-client-common
 
+# have choice for cmake(KWinDBusInterface) >= MACRO: deepin-kwin-devel kwin5-devel
+Prefer: -deepin-kwin-devel
+
 # have choice for html2text
 Prefer: -python38-html2text -python39-html2text -python310-html2text -python311-html2text
 
