@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.29
+Version:        1.11.30
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
@@ -35,6 +35,9 @@ BuildRequires:  moreutils
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  yarn
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1540
+BuildRequires:  nodejs18
+%endif
 Requires:       element-web = %{version}
 Requires:       nodejs-electron
 
