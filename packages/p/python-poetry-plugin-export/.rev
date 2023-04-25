@@ -22,4 +22,12 @@ fix multibuild</comment>
 </comment>
     <requestid>1042959</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e18e6eba45c35685ca8ff60441fbdaf</srcmd5>
+    <version>1.3.1</version>
+    <time>1682433745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082594</requestid>
+  </revision>
 </revisionlist>

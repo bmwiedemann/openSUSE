@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
@@ -37,13 +37,15 @@ BuildRequires:  %{python_module poetry-core >= 1.3.0}
 # No buildtime requirement of poetry: avoid build dep cycles!
 BuildRequires:  python-rpm-macros
 %if %{with test}
+BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module poetry-plugin-export = %{version}}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildRequires:  fdupes
-Requires:       python-poetry >= 1.2.2
+Requires:       python-poetry >= 1.3.0
 Requires:       python-poetry-core >= 1.3.0
 Provides:       python-poetry_plugin_export = %{version}-%{release}
 BuildArch:      noarch
