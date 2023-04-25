@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 24 12:19:08 UTC 2023 - Elisei Roca <eroca@mailbox.org>
+
+- require python-PyYAML from requirements/project.txt
+- recommend python-Pygments from requirements/extra.txt
+
+- update to 9.11:
+  * NEW: Emoji: Update to new CDN and use Twemoji 14.1.2.
+  * NEW: Snippets: Ignore nested snippet section syntax when including a section.
+
+-------------------------------------------------------------------
 Fri Mar 17 07:29:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.10:

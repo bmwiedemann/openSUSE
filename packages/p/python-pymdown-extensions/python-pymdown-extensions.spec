@@ -17,7 +17,7 @@
 
 
 Name:           python-pymdown-extensions
-Version:        9.10
+Version:        9.11
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT
@@ -28,12 +28,14 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 # test requirements
 BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module Pygments >= 2.12}
 BuildRequires:  %{python_module pytest}
 #
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Markdown >= 3.2
+Requires:       python-PyYAML >= 3.10
+Recommends:     python-Pygments >= 2.12
 BuildArch:      noarch
 %python_subpackages
 
