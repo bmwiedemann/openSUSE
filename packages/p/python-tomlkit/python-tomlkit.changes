@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 18 06:47:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't add dependency on full poetry, when poetry-core is enough.
+
+-------------------------------------------------------------------
+Sun Apr 16 08:08:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.7:
+  * Parse empty table name if it is quoted. (#258)
+  * Fix a bug that remove last element of an Inline Table leaves
+    a comma. (#259)
+  * Parse datetime when it is followed by a space. (#260)
+  * Fix the `unwrap()` method for `Container` children values
+    which sometimes returns an internal object if the table is an
+    out-of-order table. (#264)
+  * Fix the wrong return type when doing arithmetic operations
+    between integers and floats. (#270)
+
+-------------------------------------------------------------------
 Wed Nov  9 19:31:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.11.6 

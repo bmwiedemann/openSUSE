@@ -123,4 +123,23 @@
     <comment></comment>
     <requestid>1035274</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4e636cf847c6a5c9105b75902832a861</srcmd5>
+    <version>0.11.7</version>
+    <time>1682434454</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't add dependency on full poetry, when poetry-core is enough.
+- update to 0.11.7:
+  * Parse empty table name if it is quoted. (#258)
+  * Fix a bug that remove last element of an Inline Table leaves
+    a comma. (#259)
+  * Parse datetime when it is followed by a space. (#260)
+  * Fix the `unwrap()` method for `Container` children values
+    which sometimes returns an internal object if the table is an
+    out-of-order table. (#264)
+  * Fix the wrong return type when doing arithmetic operations
+    between integers and floats. (#270)
+</comment>
+    <requestid>1080076</requestid>
+  </revision>
 </revisionlist>
