@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:30:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Tue Nov 29 17:04:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
