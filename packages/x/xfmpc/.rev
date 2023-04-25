@@ -144,4 +144,33 @@
     <comment></comment>
     <requestid>711585</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ac89c44c0e896308b4de2dc4ce84a4f0</srcmd5>
+    <version>0.3.1</version>
+    <time>1682433756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.1
+  * Improve icon and style of clear playlist button
+  * build: Fix &quot;unhandled error&quot; vala warning
+  * build: Fix &quot;never used&quot; vala warning
+  * build: Fix &quot;access to static member&quot; vala warning
+  * Fix previous commit
+  * Update copyright year
+  * build: Silence compiler warnings for generated C code
+  * build: Add GLib requirement
+  * Fix make distcheck and update urls
+  * Fix missing-prototypes
+  * Update COPYING
+  * Fix compilation warnings
+  * use Gtk MenuButton for context button
+  * Call methods from GtkDialog instead of XfceTitleDialog (#8)
+  * add parenthesis around expression
+  * Adds new README.md and updates AM_INIT_AUTOMAKE macro with
+    foreign option
+  * Use 'multimedia-player' icon instead of 'stock_volume'
+    (Bug #15636)
+  * Translation Updates
+</comment>
+    <requestid>1082640</requestid>
+  </revision>
 </revisionlist>

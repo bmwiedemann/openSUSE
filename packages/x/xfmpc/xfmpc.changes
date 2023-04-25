@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr 23 07:22:35 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- update to 0.3.1
+  * Improve icon and style of clear playlist button
+  * build: Fix "unhandled error" vala warning
+  * build: Fix "never used" vala warning
+  * build: Fix "access to static member" vala warning
+  * Fix previous commit
+  * Update copyright year
+  * build: Silence compiler warnings for generated C code
+  * build: Add GLib requirement
+  * Fix make distcheck and update urls
+  * Fix missing-prototypes
+  * Update COPYING
+  * Fix compilation warnings
+  * use Gtk MenuButton for context button
+  * Call methods from GtkDialog instead of XfceTitleDialog (#8)
+  * add parenthesis around expression
+  * Adds new README.md and updates AM_INIT_AUTOMAKE macro with
+    foreign option
+  * Use 'multimedia-player' icon instead of 'stock_volume'
+    (Bug #15636)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jun 22 15:44:21 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - update to 0.3.0

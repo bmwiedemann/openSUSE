@@ -1,7 +1,7 @@
 #
 # spec file for package xfmpc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,24 @@
 
 
 Name:           xfmpc
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        MPD Client for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            https://goodies.xfce.org/projects/applications/xfmpc
+URL:            https://goodies.xfce.org/projects/applications/xfmpc
 Source:         https://archive.xfce.org/src/apps/xfmpc/0.3/%{name}-%{version}.tar.bz2
 Source1:        xfmpc.png
 BuildRequires:  intltool
 BuildRequires:  sed
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libmpd)
-BuildRequires:  pkgconfig(libxfce4ui-2)
-BuildRequires:  pkgconfig(libxfce4util-1.0)
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libmpd) >= 0.15.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 Recommends:     %{name}-lang = %{version}
 Suggests:       mpd
 
@@ -61,7 +63,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc AUTHORS IDEAS NEWS README THANKS
+%doc AUTHORS IDEAS NEWS README.md THANKS
 %license COPYING
 %{_bindir}/xfmpc
 %{_mandir}/man1/*
