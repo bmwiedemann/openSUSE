@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Mon Apr 24 21:32:43 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use _service mode manual as better alias name than disabled
+
+-------------------------------------------------------------------
+Mon Apr 24 20:36:40 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.26.2:
+  * Telegraf v1.26.2
+  * Update changelog for v1.26.2
+  * Update build_version.txt for v1.26.2
+  * docs(inputs.mysql): remove duplicate settings from config (#13131)
+  * docs: use single quotes for multi-line literal TOML (#13124)
+  * chore: update license URLs (#13113)
+  * chore: update golangci-lint (#13110)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from 1.15.13 to 1.20.9 (#13107)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/credentials from 1.13.15 to 1.13.20 (#13106)
+  * chore(deps): Bump github.com/docker/docker from 23.0.0 to 23.0.4 (#13105)
+  * fix(processors.lookup): Fix tracking metrics (#13092)
+  * chore: Enable G110 rule for gosec (#13044)
+  * test: Check correct build tags for each plugin registered (#13019)
+  * fix(parsers.grok): Fix nil metric for multiline inputs (#13078)
+  * fix(inputs.prometheus): Add namespace option in k8s informer factory (#13063)
+  * chore: Enable G601 rule for gosec (#13042)
+  * chore: Enable G103 rule for gosec (#13038)
+  * fix: Correct spelling of "fingerprints" in circleci config (#13074)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/cloudwatch from 1.21.6 to 1.25.9 (#13072)
+  * chore(deps): Bump github.com/wavefronthq/wavefront-sdk-go from 0.11.0 to 0.12.0 (#13070)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/sts from 1.18.5 to 1.18.9 (#13069)
+  * chore(deps): Bump github.com/vishvananda/netns from 0.0.2 to 0.0.4 (#13071)
+  * fix(inputs.socket_listener): Fix tracking of unix sockets (#13059)
+  * chore: Update to go1.20.3 (#13055)
+  * feat: implement remote artifact signing (#13066)
+  * chore: Update lxd images for testing (#13064)
+  * chore: Enable G303 and G305 rules for gosec (#13039)
+  * chore: Enable G301, G302 and G306 rules for gosec (#13022)
+  * fix(agent): pass quiet flag earlier (#13020)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/kinesis (#13027)
+  * chore(deps): Bump github.com/prometheus/common from 0.41.0 to 0.42.0 (#13026)
+  * chore(deps): Bump github.com/safchain/ethtool from 0.2.0 to 0.3.0 (#13025)
+  * chore(deps): Bump github.com/tinylib/msgp from 1.1.6 to 1.1.8 (#13023)
+  * chore(deps): Bump github.com/openconfig/gnmi from 0.0.0-20220920173703-480bf53a74d2 to 0.9.1 (#13024)
+  * chore: Update README.md (#12989)
+  * chore: Enable G401, G403, G501, G502, G503 and G505 rules for gosec (#13021)
+
+-------------------------------------------------------------------
+Mon Apr 03 22:49:47 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.26.1:
+  * Telegraf v1.26.1
+  * Update changelog for v1.26.1
+  * Update build_version.txt for v1.26.1
+  * chore: Enable G101 rule for gosec (#13009)
+  * chore: Enable G107 rule for gosec (#13010)
+  * fix(inputs.procstat): Return tags of pids if lookup_error (#13015)
+  * Make docs.
+  * chore(deps): Bump github.com/shirou/gopsutil from 3.23.2 to 3.23.3 (#13017)
+  * fix(inputs.netflow): Use correct name in the build tag (#13006)
+  * fix(secrets): Minimize secret holding time (#13002)
+  * chore: Enable G112 and G114 rules for gosec (#12986)
+  * chore: Enable G202 rule for gosec (#12984)
+  * chore(deps): Bump github.com/opencontainers/runc from 1.1.4 to 1.1.5 (#12981)
+  * chore: Remove `revive:unhandled-error` - `errcheck` is more flexible (#13008)
+  * fix(secretstores): Handle array of secrets correctly (#12919)
+  * fix(secret): Add function to set a secret (#13012)
+  * fix(secrets): Warn if OS limit for locked memory is too low (#12993)
+  * docs(outputs.http): add service to aws creds (#13003)
+  * fix(systemd): Increase lock memory for service to 8192kb (#12990)
+  * chore: Don't use all default exclude patterns for golangci-lint (#12969)
+  * chore: Enable G102 rule for gosec (#12976)
+  * chore(deps): Bump github.com/jhump/protoreflect from 1.8.3-0.20210616212123-6cc1efa697ca to 1.15.1 (#12967)
+  * fix(inputs.upsd): Include ups.real_power (#12961)
+  * fix(inputs.execd): Read from stdout using ReadLine instead of scanner.Scan to overcome 64kb buffer limit (#12935)
+  * chore(deps): Bump github.com/Azure/go-autorest/autorest/azure/auth (#12966)
+  * chore(deps): Bump github.com/rabbitmq/amqp091-go from 1.7.0 to 1.8.0 (#12968)
+  * chore(deps): Bump github.com/golang-jwt/jwt/v4 from 4.4.2 to 4.5.0 (#12964)
+  * fix(govulncheck): Downgrade govulncheck to fix github action (#12973)
+  * docs(inputs.upsd): Add comment about ipv6 addresses (#12962)
+  * chore: Fix linter findings for Darwin (#12958)
+  * chore: Enable G106, G108, G109, G111, G201, G203 rules for gosec (#12956)
+  * chore: Fix gosec G102 issues (#12923)
+  * docs: Explain and note service inputs (#12870)
+  * chore(deps): Bump govulncheck-action from 0.0.9 to 0.10.0 (#12927)
+  * docs: Remove broken link to default config (#12925)
+  * feat(inputs.kubernetes): Apply timeout for the whole HTTP request (#12918)
+  * fix(outputs.graphite): Add custom regex to outputs (#12908)
+  * fix(inputs.ethtool): Check for nil (#12867)
+  * chore: go mod tidy (#12922)
+  * chore(deps): Bump github.com/pion/dtls/v2 from 2.2.4 to 2.2.6 (#12913)
+  * chore(deps): Bump golang.org/x/net from 0.7.0 to 0.8.0 (#12912)
+  * chore(deps): Bump github.com/tidwall/gjson from 1.14.3 to 1.14.4 (#12911)
+  * chore(deps): Bump modernc.org/sqlite from 1.19.2 to 1.21.0 (#12910)
+  * chore(deps): Bump github.com/apache/thrift from 0.16.0 to 0.18.1 (#12909)
+  * fix(inputs.prometheus): Use set over add for custom headers (#12907)
+  * chore: Update circleci macos runners (#12887)
+  * fix(config): Return error on order set as string (#12880)
+  * docs: Fix various typos in comments (#12888)
+  * docs: Add homekit plugin as external plugin (#12874)
+  * docs(agent): resolve typo (#12884)
+  * docs(typo): update wording (#12885)
+  * chore: Update default folder locations to match packaging (#12865)
+  * fix(inputs.prometheus): Correctly set timeout param (#12864)
+  * docs: Update minimum documented go version (#12869)
+  * chore: Ensure go generate runs on all platforms (#12871)
+  * fix(inputs.internet_speed): Rename host tag to source (#12877)
+  * docs(typo): output.go (#12873)
+  * docs: update change log format (#12872)
+  * chore(deps): Bump github.com/Azure/azure-event-hubs-go/v3 from 3.3.20 to 3.4.0 (#12856)
+  * chore(deps): Bump github.com/antchfx/xpath from 1.2.3 to 1.2.4 (#12857)
+  * chore(deps): Bump github.com/nats-io/nats.go from 1.19.0 to 1.24.0 (#12855)
+  * chore(deps): Bump github.com/sensu/sensu-go/api/core/v2 from 2.15.0 to 2.16.0 (#12854)
+  * chore(deps): Bump github.com/Shopify/sarama from 1.37.2 to 1.38.1 (#12853)
+  * fix(serializers.graphite): Allow for specifying regex to sanitize (#12835)
+
+-------------------------------------------------------------------
 Tue Mar 14 14:34:56 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add memory constraint with 6G

@@ -204,4 +204,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
 - Update to version 1.26.0: (forwarded request 1071808 from darix)</comment>
     <requestid>1071899</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>67c27760bd273aa2708c011658a39942</srcmd5>
+    <version>1.26.2</version>
+    <time>1682433746</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _service mode manual as better alias name than disabled (forwarded request 1082598 from jfkw)</comment>
+    <requestid>1082599</requestid>
+  </revision>
 </revisionlist>
