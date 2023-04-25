@@ -1,7 +1,7 @@
 #
 # spec file for package speexdsp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,7 @@ Summary:        Development package for SpeeX
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Conflicts:      pkgconfig(speex) <= 1.1.999_1.2rc1
+License:        BSD-3-Clause AND GFDL-1.1-or-later
 
 %description devel
 This package contains the files needed to compile programs that use the
@@ -81,6 +82,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
+%license COPYING
 %{_libdir}/libspeexdsp.so.%{sover}*
 
 %files devel
