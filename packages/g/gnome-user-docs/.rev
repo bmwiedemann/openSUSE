@@ -735,4 +735,12 @@
     <comment>New stable release (forwarded request 1072897 from iznogood)</comment>
     <requestid>1073196</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>2e0b01f87f8bac0b024fd66b25467206</srcmd5>
+    <version>44.1</version>
+    <time>1682434395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082378</requestid>
+  </revision>
 </revisionlist>
