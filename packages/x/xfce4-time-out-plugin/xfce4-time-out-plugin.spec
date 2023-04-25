@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-time-out-plugin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define panel_version 4.8.0
+%define panel_version 4.12.0
 %define plugin time-out
 %define old_plugname timeout
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Time-out Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -31,10 +31,10 @@ Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.1/%{name}-%
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libxfce4panel-2.0)
-BuildRequires:  pkgconfig(libxfce4ui-2)
-BuildRequires:  pkgconfig(libxfce4util-1.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -90,7 +90,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS THANKS
+%doc AUTHORS NEWS README.md
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libtime-out.so
 %{_datadir}/icons/hicolor/*/apps/xfce4-time-out-plugin.*
