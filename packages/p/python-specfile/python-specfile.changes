@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 07:18:46 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.16.0:
+  * Added Specfile.has_autorelease property to detect if a spec 
+    file uses the %autorelease macro. (#221)
+
+-------------------------------------------------------------------
 Mon Mar 13 12:34:39 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.15.0: 
