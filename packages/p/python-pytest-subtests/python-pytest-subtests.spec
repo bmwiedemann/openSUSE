@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-subtests
 Version:        0.10.0
 Release:        0
