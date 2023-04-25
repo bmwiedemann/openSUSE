@@ -187,4 +187,29 @@
     <comment></comment>
     <requestid>1040606</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c15a0dfaba733706fb4fcae0c4a9b6c6</srcmd5>
+    <version>0.6.3</version>
+    <time>1682433776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.3:
+  * Support for Intel Pentium and Celeron for Alder Lake-S
+  * Support for Intel Alder Lake-HX
+  * Support for Intel Alder Lake-X
+  * Fix detection of Intel Alder Lake-P
+  * Fix infinite loop in set_cpu_affinity() on macOS
+  * Fix a misprint of extended CPUID in cpuid_basic_identify()
+  * Restore previous thread CPU affinity before returning from cpuid_get_all_raw_data() (#184)
+  * Query CPU info at least once even if set_cpu_affinity() fails
+  * Support for AMD 19h family MSRs
+  * Fix detection of Intel Core i5 Lynnfield
+  * Rename set_error() to cpuid_set_error() and get_error() to cpuid_get_error() (#188)
+  * Support for Intel Alder Lake-N
+  * Support for AMD Rembrandt with Radeon Graphics
+  * Support for Intel Raptor Lake-S with &quot;Golden Cove&quot; cores
+  * Support for Intel Raptor Lake-P
+  * Support for Intel Raptor Lake-U
+  * Support for Intel Rocket Lake-E</comment>
+    <requestid>1082737</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libcpuid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  16
 Name:           libcpuid
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
@@ -77,8 +77,7 @@ install -D -p -m 0644 cpuid_tool.1 \
 %check
 %make_build test
 
-%post -n %{name}%{so_ver} -p /sbin/ldconfig
-%postun -n %{name}%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{so_ver}
 
 %files tools
 %{_bindir}/cpuid_tool
