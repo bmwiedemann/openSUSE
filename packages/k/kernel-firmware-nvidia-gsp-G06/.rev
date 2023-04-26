@@ -25,4 +25,12 @@
     <comment>- update firmware to version 525.105.17</comment>
     <requestid>1075668</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ab32fea6032f40ae84ea516fa99f8cf</srcmd5>
+    <version>525.116.03</version>
+    <time>1682522681</time>
+    <user>dimstar_suse</user>
+    <comment>update firmware to version 525.116.03</comment>
+    <requestid>1082831</requestid>
+  </revision>
 </revisionlist>
