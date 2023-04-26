@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyerfa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,8 @@
 %endif
 
 %define erfaversion 2.0.0
-%define skip_python2 1
 Name:           python-pyerfa
-Version:        2.0.0.1
+Version:        2.0.0.3
 Release:        0
 Summary:        Python bindings for ERFA
 License:        BSD-3-Clause
@@ -37,7 +36,7 @@ BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.7}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -64,8 +63,6 @@ context of Astropy project, into a standalone package.
 %if %{with systemlibs}
 rm -rf liberfa/
 %endif
-# numpy 1.24 has some new xpass ufunc tests -- https://github.com/liberfa/pyerfa/issues/99
-sed -i '/xfail_strict = true/d' setup.cfg
 
 %build
 %if %{with systemlibs}
