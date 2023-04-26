@@ -69,7 +69,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for n
-License:        BSD-3-Clause and GFDL-1.2-only and GPL-2.0-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
+License:        BSD-3-Clause and GFDL-1.3-or-later and GPL-2.0-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-n-rpmlintrc
@@ -748,7 +748,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-latex4musicians
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.1svn49759
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        A guide for combining LaTeX and music
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -920,7 +920,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-latex4wp
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.10svn35999
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        A LaTeX guide specifically designed for word processor users
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -991,7 +991,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-latex4wp-it
 Version:        %{texlive_version}.%{texlive_noarch}.1.0.10svn36000
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        LaTeX guide for word processor users, in Italian
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -31994,7 +31994,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-lshort-chinese
 Version:        %{texlive_version}.%{texlive_noarch}.6.03svn61100
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        Introduction to LaTeX, in Chinese
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -32681,7 +32681,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-lshort-korean
 Version:        %{texlive_version}.%{texlive_noarch}.svn58468
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        Korean introduction to LaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
