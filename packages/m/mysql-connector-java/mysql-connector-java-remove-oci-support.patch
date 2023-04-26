@@ -1,7 +1,7 @@
-Index: mysql-connector-j-8.0.29/src/main/protocol-impl/java/com/mysql/cj/protocol/a/NativeAuthenticationProvider.java
+Index: mysql-connector-j-8.0.33/src/main/protocol-impl/java/com/mysql/cj/protocol/a/NativeAuthenticationProvider.java
 ===================================================================
---- mysql-connector-j-8.0.29.orig/src/main/protocol-impl/java/com/mysql/cj/protocol/a/NativeAuthenticationProvider.java
-+++ mysql-connector-j-8.0.29/src/main/protocol-impl/java/com/mysql/cj/protocol/a/NativeAuthenticationProvider.java
+--- mysql-connector-j-8.0.33.orig/src/main/protocol-impl/java/com/mysql/cj/protocol/a/NativeAuthenticationProvider.java
++++ mysql-connector-j-8.0.33/src/main/protocol-impl/java/com/mysql/cj/protocol/a/NativeAuthenticationProvider.java
 @@ -58,7 +58,6 @@ import com.mysql.cj.protocol.a.NativeCon
  import com.mysql.cj.protocol.a.authentication.AuthenticationFidoClient;
  import com.mysql.cj.protocol.a.authentication.AuthenticationKerberosClient;
@@ -10,7 +10,7 @@ Index: mysql-connector-j-8.0.29/src/main/protocol-impl/java/com/mysql/cj/protoco
  import com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin;
  import com.mysql.cj.protocol.a.authentication.MysqlClearPasswordPlugin;
  import com.mysql.cj.protocol.a.authentication.MysqlNativePasswordPlugin;
-@@ -256,7 +255,6 @@ public class NativeAuthenticationProvide
+@@ -257,7 +256,6 @@ public class NativeAuthenticationProvide
          pluginsToInit.add(new MysqlOldPasswordPlugin());
          pluginsToInit.add(new AuthenticationLdapSaslClientPlugin());
          pluginsToInit.add(new AuthenticationKerberosClient());
@@ -18,20 +18,26 @@ Index: mysql-connector-j-8.0.29/src/main/protocol-impl/java/com/mysql/cj/protoco
          pluginsToInit.add(new AuthenticationFidoClient());
  
          // plugins from authenticationPluginClasses connection parameter
-Index: mysql-connector-j-8.0.29/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
+Index: mysql-connector-j-8.0.33/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
 ===================================================================
---- mysql-connector-j-8.0.29.orig/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
-+++ mysql-connector-j-8.0.29/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
-@@ -50,12 +50,6 @@ AuthenticationLdapSaslClientPlugin.Missi
+--- mysql-connector-j-8.0.33.orig/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
++++ mysql-connector-j-8.0.33/src/main/resources/com/mysql/cj/LocalizedErrorMessages.properties
+@@ -49,18 +49,6 @@ AuthenticationLdapSaslClientPlugin.Missi
  AuthenticationLdapSaslClientPlugin.FailCreateSaslClient=Failed creating a SASL client for the authentication mechanism ''{0}''.
  AuthenticationLdapSaslClientPlugin.ErrProcessingAuthIter=Error while processing an authentication iteration for the authentication mechanism ''{0}''.
  
--AuthenticationOciClientPlugin.SdkNotFound=The OCI SDK could not be found or is not installed.
--AuthenticationOciClientPlugin.OciConfigFileError=OCI configuration file could not be read.
--AuthenticationOciClientPlugin.OciConfigFileMissingEntry=OCI configuration file does not contain a ''fingerprint'' or ''key_file'' entry.
--AuthenticationOciClientPlugin.PrivateKeyNotFound=Private key could not be found at location given by OCI configuration entry ''key_file''.
--AuthenticationOciClientPlugin.PrivateKeyNotValid=OCI configuration entry ''key_file'' does not reference a valid key file.
+-AuthenticationOciClientPlugin.ConfigFileNotFound=OCI configuration file not found.
+-AuthenticationOciClientPlugin.OciSdkNotFound=The OCI SDK cannot be found or it is not installed.
+-AuthenticationOciClientPlugin.OciConfigFileError=The OCI configuration file cannot be read.
+-AuthenticationOciClientPlugin.ProfileNotFound=The specified profile is not found in the OCI configuration file.
+-AuthenticationOciClientPlugin.OciConfigFileMissingEntry=The OCI configuration file does not contain a ''fingerprint'' or ''key_file'' entry.
+-AuthenticationOciClientPlugin.PrivateKeyNotFound=The private key cannot be found at the location referenced in the OCI configuration entry ''key_file''.
+-AuthenticationOciClientPlugin.FailedReadingPrivateKey=Failed reading the private key file referenced in the OCI configuration entry ''key_file''.
+-AuthenticationOciClientPlugin.PrivateKeyNotValid=The OCI configuration entry ''key_file'' does not reference a valid key file.
+-AuthenticationOciClientPlugin.SecurityTokenFileNotFound=The security token file cannot be found at the location referenced in the OCI configuration entry ''security_token_file''.
+-AuthenticationOciClientPlugin.SecurityTokenTooBig=Invalid security token file. File size above 10 KB.
+-AuthenticationOciClientPlugin.FailedReadingSecurityTokenFile=Failed reading the security token file referenced in the OCI configuration entry ''security_token_file''.
 -
- AuthenticationProvider.BadAuthenticationPlugin=Unable to load authentication plugin ''{0}''.
  AuthenticationProvider.BadDefaultAuthenticationPlugin=Improper value "{0}" for property ''defaultAuthenticationPlugin''.
  AuthenticationProvider.DefaultAuthenticationPluginIsNotListed=Default authentication plugin "{0}" is neither one of the built-in plugins nor one of the plugins listed in ''authenticationPlugins''.
+ AuthenticationProvider.BadDisabledAuthenticationPlugin=Can''t disable the default authentication plugin. Either remove "{0}" from the disabled authentication plugins list, or choose a different default authentication plugin.

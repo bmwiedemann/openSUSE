@@ -359,4 +359,12 @@
     <comment>fix build with older protobuf</comment>
     <requestid>1064176</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>30820c57c1ace35c66ee3b7b72fad0dc</srcmd5>
+    <version>8.0.33</version>
+    <time>1682522662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082728</requestid>
+  </revision>
 </revisionlist>

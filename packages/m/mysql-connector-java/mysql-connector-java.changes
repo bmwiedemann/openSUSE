@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Apr 25 07:33:23 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 8.0.33:
+  - Fix for Bug#34558945, PS using setCharacterStream() fails with 
+    "Incorrect string value" if the Java program encoding is not 
+    UTF-8 after 8.0.29.
+  - Fix for Bug#109013 (Bug#34772608), useServerPrepStmts and 
+    useLocalTransactionState could cause rollback failure.
+  - Fix for bug Bug#108643 (Bug#34652568), Commit statement not 
+    effect when two params turns on.
+  - Fix for Bug#34918989, Pluggable classes are initialized even 
+    when they cannot be used by Connector/J.
+  - Fix for Bug#93415 (Bug#28992710), Documentation for 
+    getDefaultSchema() Needs Improvements.
+  - Fix for Bug#110168 (Bug#35110706), yum update fails upgrading 
+    Connector/J package.
+  - Fix for Bug#35018216, Problems with Connector/J RPM's: jar names 
+    renamed.
+  - Fix for Bug#107577 (Bug#34325361), rewriteBatchedStatements not 
+    work when table column name contains 'value' string.
+  - Fix for Bug#109377 (Bug#34900156), rewriteBatchedStatements 
+    doesn't work when parenthesis are found in values.
+  - Fix for Bug#109808 (Bug#35021038), DatabaseMetaData#getPrimaryKeys 
+    should ordered by COLUMN_NAME.
+  - Fix for Bug#109864 (Bug#35034666), Connector/J 8.0.32 hangs on 
+    MySQL 5.5 with prepared statements.
+  - Fix for Bug#109807 (Bug#35021014), DatabaseMetaData#getTypeInfo 
+    should ordered by DATA_TYPE.
+  - Fix for Bug#77368 (Bug#21321849), "LOAD DATA LOCAL INFILE" 
+    doesn't work properly with relative paths.
+  - Fix for Bug#109243 (Bug#34852047), Judge whether the returned 
+    result set of the sql statement is incorrect.
+  - WL#15490, Support OCI ephemeral key based authentication.
+
+-------------------------------------------------------------------
 Fri Jan 27 16:38:41 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Ship protobuf 3.9.2 compatible generated files to support 
