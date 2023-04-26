@@ -1,7 +1,7 @@
 #
 # spec file for package Rivet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%define ver 3.1.6
+%define ver 3.1.7
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
 Version:        %{ver}
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
-Group:          Productivity/Scientific/Physics
 URL:            https://rivet.hepforge.org/
 Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
+# PATCH-FEATURE-OPENSUSE Rivet-correct-python-platlib.patch badshah400@gmail.com -- Use consistent platlib across multiple python versions
+Patch1:         Rivet-correct-python-platlib.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  bash-completion
@@ -59,7 +60,6 @@ development of future theory models.
 
 %package -n %{so_name}
 Summary:        A toolkit for validation of Monte Carlo event generators
-Group:          System/Libraries
 
 %description -n %{so_name}
 The Rivet project (Robust Independent Validation of Experiment and
@@ -73,9 +73,20 @@ development of future theory models.
 
 This package provides the shared libraries for %{name}.
 
+%package data
+Summary:        Data files for Rivet
+BuildArch:      noarch
+
+%description data
+The Rivet project (Robust Independent Validation of Experiment and
+Theory) is a toolkit for validation of Monte Carlo event generators.
+
+This package provides common data files for Rivet used by both C++
+and Python bindings.
+
 %package devel
 Summary:        A toolkit for validation of Monte Carlo event generators
-Group:          Development/Libraries/C and C++
+Requires:       %{name}-data = %{version}
 Requires:       %{so_name} = %{version}
 Requires:       YODA-devel >= 1.8.0
 
@@ -93,7 +104,7 @@ This package provides the source files for development with %{name}.
 
 %package -n python3-%{name}
 Summary:        A toolkit for validation of Monte Carlo event generators
-Group:          Productivity/Scientific/Physics
+Requires:       %{name}-data = %{version}
 Provides:       python-%{name} = %{version}
 Obsoletes:      python-%{name} < %{version}
 
@@ -111,7 +122,6 @@ This package provides the python bindings for %{name}.
 
 %package plugins
 Summary:        A collection of analyses plugins for %{name}
-Group:          Productivity/Scientific/Physics
 Requires:       %{name}-devel = %{version}
 
 %description plugins
@@ -130,11 +140,18 @@ This package provides all the analysis plugins for %{name}.
 %autosetup -p1
 
 # REMOVE EXISTING rivet.pc FILE, ALLOW make TO GENERATE rivet.pc FROM rivet.pc.in
-rm -f rivet.pc
+rm rivet.pc
 
-# REMOVE INCORRECT LIBDIRS FROM .pc.in FILE (the right libdirs are already present)
-sed -i "s| -L@GSLLIBPATH@||g" rivet.pc.in
-sed -i "s| -L@GSLINCPATH@||g" rivet.pc.in
+# SECTION Fix/drop env based hashbangs in binaries as appropriate
+# Need to do this here rather than post-install in buildroot for tests in %%check to succeed
+sed -Ei "1s:^#!\s*%{_bindir}/env bash:#!/bin/bash:" ./bin/*
+sed -Ei "1s:^#!\s*%{_bindir}/env python:#!%{_bindir}/python3:" \
+  ./bin/* \
+  ./pyext/build.py.in
+sed -E -i '1{/^#!.*env python/d}' \
+          ./pyext/rivet/spiresbib.py \
+          ./analyses/pluginLHCb/LHCB_201*_ratios.py
+# /SECTION
 
 %build
 autoreconf -fvi
@@ -150,11 +167,6 @@ export PYTHON_VERSION=%{py3_ver}
 export PYTHONPATH+=':%{buildroot}%{_libdir}/python%{py3_ver}/site-packages'
 %make_install
 
-# SECTION Fix env based hashbangs in binaries
-sed -Ei "1s:^#!\s*%{_bindir}/env python:#!%{_bindir}/python3:" %{buildroot}%{_bindir}/*
-sed -Ei "1s:^#!\s*%{_bindir}/env bash:#!/bin/bash:" %{buildroot}%{_bindir}/*
-# /SECTION
-
 # SECTION Remove rpaths from config binaries and pkgconfig file
 sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/rivet-config
 # /SECTION
@@ -165,14 +177,18 @@ mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/%{name}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
 
 chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info \
-        %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info \
-        %{buildroot}%{_datadir}/Rivet/STAR_2017_I1510593.{info,plot}
-sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbib.py
+         %{buildroot}%{_datadir}/Rivet/ALICE_2014_I1243865.info \
+         %{buildroot}%{_datadir}/Rivet/STAR_2017_I1510593.{info,plot} \
+         %{buildroot}%{_datadir}/Rivet/ATLAS_2019_I1772071.{cc,plot}
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/bash-completion/completions/
 
 %fdupes %{buildroot}%{_datadir}/Rivet/
+
+%check
+export PYTHONPATH+=':%{buildroot}%{_libdir}/python%{py3_ver}/site-packages'
+%make_build check
 
 %post -n %{so_name} -p /sbin/ldconfig
 %postun -n %{so_name} -p /sbin/ldconfig
@@ -180,13 +196,16 @@ mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/b
 %files -n %{so_name}
 %{_libdir}/libRivet-*.so
 
+%files data
+%license COPYING
+%{_datadir}/%{name}/
+
 %files devel
 %license COPYING
 %doc AUTHORS ChangeLog NEWS
 %{_bindir}/rivet-config
 %{_bindir}/rivet-buildplugin
 %{_includedir}/%{name}/
-%{_datadir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/rivet.pc
 
@@ -196,7 +215,6 @@ mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/b
 %exclude %{_bindir}/rivet-config
 %exclude %{_bindir}/rivet-buildplugin
 %{python3_sitearch}/rivet/
-%{python3_sitearch}/rivet-*egg-info
 %{_datadir}/bash-completion/completions/*
 
 %files plugins

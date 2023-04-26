@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Oct 23 18:41:35 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.7:
+  * Add HEPTopTagger interface (since made optional, with no-build
+    example analysis).
+  * Add EXAMPLE_NTUPLE_ROOT example analysis showing how to open
+    and write to a ROOT ntuple file.
+  * Add CMS_2021_I1866118: Z boson plus jets (DPS) at 13 TeV
+  * Add EXAMPLE_NTUPLE_CSV example analysis showing how to open
+    and write to a CSV ntuple file.
+  * Add Analysis::analysisDataPath() and the RivetLWTNN.hh include
+    with convenience functions for loading of LWTNN DNNs.
+  * Add EXAMPLE_LWTNN example analysis, demonstrating use of a
+    preserved LWTNN neural network in Rivet.
+  * Install more generically named files from the analysis
+    plugin/data dirs rather than limiting to the .plot, .info,
+    .yoda* set.
+  * Move EXAMPLE_* analyses, which demonstrate functionality to
+    analysis writers rather than being directly useful in compiled
+    form, into an uncompiled analyses/examples/ directory.
+  * Hide the bundled eigen3 in a mangled RivetEigen namespace, to
+    avoid clashes.
+  * Submission of CMS_2022_I2079374: Z pT over a wide mass range
+    at 13 TeV
+  * Upgrade eigen3 and yaml-cpp bundling to remove compiler
+    warnings.
+- Add Rivet-correct-python-platlib.patch: Ensure consistent python
+  platlib across different python versions.
+- Split out data files common to C++ and Python bindings into
+  separate package (Rivet-data) and have it required from both
+  %{name}-devel and python3-%{name} packages.
+- Run tests as part of %check section.
+- Move sed fixes to hashbangs to %setup section, running them over
+  scripts in source rather than on buildroot installed dirs to
+  allow tests in %check to succeed.
+- Drop fixes to pkgconfig script made during %setup as these are
+  no longer needed.
+
+-------------------------------------------------------------------
 Sun May 29 13:09:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.6:

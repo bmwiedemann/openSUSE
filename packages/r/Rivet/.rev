@@ -197,4 +197,12 @@ Depends on
     <comment></comment>
     <requestid>980608</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1689f7f71da71e5468c2e830fd722dd0</srcmd5>
+    <version>3.1.7</version>
+    <time>1682522774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082887</requestid>
+  </revision>
 </revisionlist>
