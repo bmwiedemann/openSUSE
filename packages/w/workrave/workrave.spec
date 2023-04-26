@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,12 +39,15 @@ BuildRequires:  libtool
 BuildRequires:  python-xml
 BuildRequires:  python3-Jinja2
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(sigc++-2.0)
+BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xtst)
 
 %description
 Workrave is a program that assists in the recovery and prevention of Repetitive Strain Injury (RSI). The program frequently alerts you to take micro-pauses, rest breaks and restricts you to your daily limit.
