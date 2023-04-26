@@ -134,7 +134,6 @@ or manipulate any kind of XML files.
 Summary:        Python  Bindings for %{name}
 Requires:       %{libname} = %{version}
 Requires:       python-extras
-Requires:       python-testtools >= 1.8.0
 Provides:       %{base_name}-python = %{version}-%{release}
 Provides:       python-libxml2-python = %{version}-%{release}
 # Use hardcoded version to avoid unwanted behavior in the future.

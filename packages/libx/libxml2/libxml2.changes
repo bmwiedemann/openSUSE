@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 14:50:09 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Remove unneeded dependency (bsc#1209918). 
+
+-------------------------------------------------------------------
 Tue Apr 11 12:37:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.10.4:
