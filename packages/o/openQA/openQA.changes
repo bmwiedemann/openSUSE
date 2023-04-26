@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 26 12:21:42 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1682511024.316b8d8:
+  * docs: Use version variable in PackageHub call as well
+  * Use constant `WORKER_COMMAND_ABORT`
+  * Avoid race condition by waiting for the #text element
+  * Improve coding style in `parse_tags_from_comments`
+  * Remove mostly useless logging for tag detection
+  * Result/Jobs.pm: Update serial console name
+
+-------------------------------------------------------------------
 Mon Apr 24 10:10:56 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1682330950.cdcc4a7:
