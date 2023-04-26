@@ -20,7 +20,7 @@ Name:           xbitmaps
 Version:        1.1.3
 Release:        0
 Summary:        Base X bitmaps
-License:        MIT
+License:        X11
 Group:          Development/Libraries/C and C++
 URL:            http://xorg.freedesktop.org/releases/individual/data/
 Source:         http://xorg.freedesktop.org/releases/individual/data/%{name}-%{version}.tar.xz
