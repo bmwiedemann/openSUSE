@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:41:08 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.33.3_
+  * fix: Correct capitalization of .chezmoi.config template variables
+
+-------------------------------------------------------------------
 Fri Apr 21 16:13:05 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.33.2:
