@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 19 11:59:50 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Tailored the .spec, added a patch 
+  * s390-tools-ALP-zdev-live.patch
+
+-------------------------------------------------------------------
 Thu Mar 23 12:45:57 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Allow activation of devices at boot via kernel command line  

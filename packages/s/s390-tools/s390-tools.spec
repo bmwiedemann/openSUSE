@@ -105,7 +105,7 @@ Source39:       vmlogrdr.service.suse
 Source40:       xpram.service
 Source41:       pkey.conf
 ###
-Source42:       dracut-zdev-live-20230321.tar
+### Source42:       dracut-zdev-live-20230321.tar
 
 ###
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
@@ -169,6 +169,8 @@ Patch925:       s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-li
 Patch926:       s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
 # Bug 1209196
 Patch927:       s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
+#
+Patch928:       s390-tools-ALP-zdev-live.patch
 #
 Patch999:       s390-tools-sles15sp5-fix-chown-commands-syntax.patch
 
@@ -327,7 +329,7 @@ volume. If available, it reconfigures the FCP re-IPL settings to use an
 operational path.
 
 %prep
-%autosetup -p1 -a 42
+%autosetup -p1
 
 cp -vi %{SOURCE22} CAUTION
 
@@ -398,8 +400,8 @@ cp %{SOURCE2} zipl.conf.sample
 cp  %{SOURCE23} README.SUSE
 
 ### Adding SUSE scripts
-install -d -m 755 %{buildroot}%{_prefix}/lib/dracut/modules.d
-cp -a 96zdev-live %{buildroot}%{_prefix}/lib/dracut/modules.d
+### install -d -m 755 %{buildroot}%{_prefix}/lib/dracut/modules.d
+### cp -a 96zdev-live %{buildroot}%{_prefix}/lib/dracut/modules.d
 ###
 
 cd %{buildroot}
