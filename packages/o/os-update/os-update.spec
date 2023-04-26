@@ -30,6 +30,7 @@ Source:         https://github.com/thkukuk/os-update/releases/download/v%{versio
 Source99:       os-update-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+Requires:       lsof
 Requires:       zypper-needs-restarting
 Recommends:     rebootmgr
 Recommends:     systemd-status-mail
