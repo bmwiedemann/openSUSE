@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1682085875.d9579ac
+Version:        4.6.1682499524.994700d
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -93,6 +93,7 @@ Source0:        %{name}-%{version}.tar.xz
 # The following line is generated from dependencies.yaml
 %define devel_requires %python_style_requires %test_requires ShellCheck perl(Code::TidyAll) perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy) perl(Template::Toolkit)
 %define s390_zvm_requires /usr/bin/xkbcomp /usr/bin/Xvnc x3270 icewm xterm xterm-console xdotool fonts-config mkfontdir mkfontscale
+%define qemu_requires qemu-tools %{_bindir}/chattr
 BuildRequires:  %test_requires %test_version_only_requires
 # For unbuffered output of Perl testsuite, especially when running it on OBS so timestamps in the log are actually useful
 BuildRequires:  expect
@@ -100,9 +101,9 @@ Requires:       %main_requires
 %if %{with ocr}
 Recommends:     tesseract-ocr
 %endif
+Recommends:     %qemu_requires
 Recommends:     dumponlyconsole %s390_zvm_requires
 Recommends:     qemu >= 4.0.0
-Recommends:     qemu-tools
 # Optional dependency for Python test API support
 Recommends:     perl(Inline::Python)
 # Optional dependency for crop.py
@@ -145,17 +146,17 @@ This package contains openvswitch support for os-autoinst.
 %package qemu-kvm
 Summary:        Convenience package providing os-autoinst+qemu-kvm
 Group:          Development/Tools/Other
+Requires:       %qemu_requires
 Requires:       os-autoinst
 Requires:       qemu-kvm >= 4.0.0
-Requires:       qemu-tools
 
 %description qemu-kvm
 
 %package qemu-x86
 Summary:        Convenience package providing os-autoinst+qemu-x86
 Group:          Development/Tools/Other
+Requires:       %qemu_requires
 Requires:       os-autoinst
-Requires:       qemu-tools
 Requires:       qemu-x86 >= 4.0.0
 
 %description qemu-x86

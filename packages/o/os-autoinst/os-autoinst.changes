@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:58:55 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1682499524.994700d:
+  * Show initialization errors of `isotovideo` again
+  * dist: Fix missing dependency to "chattr" when using qemu on Tumbleweed
+  * Test sending forced VNC update request explicitly
+  * container: Distinguish jq and non-jq variants in BuildTag
+  * Drop setting of TESSDATA_PREFIX in invoke-tests
+
+-------------------------------------------------------------------
 Sat Apr 22 02:12:08 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1682085875.d9579ac:
