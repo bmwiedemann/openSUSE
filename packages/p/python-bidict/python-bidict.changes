@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Feb 10 10:31:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.1:
+  * Only include the source code in the source distribution. This
+    reduces the size of the source distribution from ~200kB to ~30kB.
+  * Fix the return type hint of bidict.inverted() to return an
+    Iterator, rather than an Iterable
+
+-------------------------------------------------------------------
 Sat Sep 24 10:33:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.0:

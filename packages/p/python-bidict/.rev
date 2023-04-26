@@ -124,4 +124,16 @@
  - Optimize rolling back</comment>
     <requestid>1005757</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e071c91daaa01286fb9a39915db15549</srcmd5>
+    <version>0.22.1</version>
+    <time>1682522677</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.1:
+  * Only include the source code in the source distribution. This
+    reduces the size of the source distribution from ~200kB to ~30kB.
+  * Fix the return type hint of bidict.inverted() to return an
+    Iterator, rather than an Iterable</comment>
+    <requestid>1082828</requestid>
+  </revision>
 </revisionlist>
