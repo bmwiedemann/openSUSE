@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230425" schemaversion="4.1">
+<image name="OBS__openSUSE___20230426" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230425</productvar>
+      <productvar name="VERSION">20230426</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230425,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230426,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230425/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230426/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3589,7 +3589,6 @@
       <repopackage name="python310-dnspython"/>
       <repopackage name="python310-extras"/>
       <repopackage name="python310-filetype"/>
-      <repopackage name="python310-fixtures"/>
       <repopackage name="python310-gevent"/>
       <repopackage name="python310-gobject"/>
       <repopackage name="python310-gobject-cairo"/>
@@ -3615,7 +3614,6 @@
       <repopackage name="python310-ldap"/>
       <repopackage name="python310-libvirt-python"/>
       <repopackage name="python310-libxml2"/>
-      <repopackage name="python310-linecache2"/>
       <repopackage name="python310-linux-procfs"/>
       <repopackage name="python310-lxml"/>
       <repopackage name="python310-M2Crypto"/>
@@ -3628,7 +3626,6 @@
       <repopackage name="python310-numpy"/>
       <repopackage name="python310-olefile"/>
       <repopackage name="python310-packaging"/>
-      <repopackage name="python310-pbr"/>
       <repopackage name="python310-pexpect"/>
       <repopackage name="python310-Pillow"/>
       <repopackage name="python310-pip"/>
@@ -3651,7 +3648,6 @@
       <repopackage name="python310-pysmbc"/>
       <repopackage name="python310-PySocks"/>
       <repopackage name="python310-python-dateutil"/>
-      <repopackage name="python310-python-mimeparse"/>
       <repopackage name="python310-python-slugify"/>
       <repopackage name="python310-pytz"/>
       <repopackage name="python310-pyudev"/>
@@ -3676,11 +3672,9 @@
       <repopackage name="python310-slip"/>
       <repopackage name="python310-slip-dbus"/>
       <repopackage name="python310-sniffio"/>
-      <repopackage name="python310-testtools"/>
       <repopackage name="python310-text-unidecode"/>
       <repopackage name="python310-toml"/>
       <repopackage name="python310-tornado6"/>
-      <repopackage name="python310-traceback2"/>
       <repopackage name="python310-Twisted"/>
       <repopackage name="python310-Twisted-tls"/>
       <repopackage name="python310-typing_extensions"/>
