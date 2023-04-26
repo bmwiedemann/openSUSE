@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 12:47:39 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file as follow:
+  * BuildRequires:  libica-devel >= 4.0.0
+  * BuildRequires:  libica-tools >= 4.0.0
+
+-------------------------------------------------------------------
 Mon Apr 24 09:23:09 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Added dependency on libica4 (bsc#1209038)

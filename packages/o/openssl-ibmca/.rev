@@ -360,4 +360,12 @@ Changed Jira reference to the Epic and not the Team task.</comment>
     <comment></comment>
     <requestid>1082459</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>814d39b66d29207400ee5e6a197b815d</srcmd5>
+    <version>2.4.0</version>
+    <time>1682522778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082896</requestid>
+  </revision>
 </revisionlist>

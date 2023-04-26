@@ -33,8 +33,8 @@ Patch001:       openssl-ibmca-engine-noregister.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libica >= 4.0.0
-BuildRequires:  libica-devel >= 3.1.1
-BuildRequires:  libica-tools >= 2.4.0
+BuildRequires:  libica-devel >= 4.0.0
+BuildRequires:  libica-tools >= 4.0.0
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 Requires:       libica >= 4.0.0
