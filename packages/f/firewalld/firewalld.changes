@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 25 11:20:58 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 1.3.2:
+  * test(container): add centos9-stream (b7bb3d0)
+  * test(functions): iptables: normalize protocols to numeric values (33a1b16)
+  * test(functions): ip6tables: normalize opt field output (eeac39c)
+
+-------------------------------------------------------------------
 Tue Apr 18 01:59:28 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 1.3.1:

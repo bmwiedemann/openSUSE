@@ -1251,4 +1251,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>1080031</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>40b149788d6dde61b4411d6d3c7f9505</srcmd5>
+    <version>1.3.2</version>
+    <time>1682522662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082734</requestid>
+  </revision>
 </revisionlist>
