@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 24 12:16:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download patches: the server presents them with shorter hash
+  refs:
+  * Fix-boundingbox-parsing_part1.patch
+  * Fix-boundingbox-parsing_part2.patch
+  * Fix-boundingbox-parsing_part3.patch
+  * Fix-boundingbox-parsing_part4.patch
+
+
+-------------------------------------------------------------------
+Mon Apr 24 11:40:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Mar 16 02:17:05 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix boundingbox parsing of graphviz PDFs when using cairo >=

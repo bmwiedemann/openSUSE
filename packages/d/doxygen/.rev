@@ -1081,4 +1081,20 @@
   * Fix-boundingbox-parsing_part4.patch (forwarded request 1072216 from StefanBruens)</comment>
     <requestid>1072283</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>56b304f14c150225dc11db51ad18caf8</srcmd5>
+    <version>1.9.6</version>
+    <time>1682522664</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-download patches: the server presents them with shorter hash
+  refs:
+  * Fix-boundingbox-parsing_part1.patch
+  * Fix-boundingbox-parsing_part2.patch
+  * Fix-boundingbox-parsing_part3.patch
+  * Fix-boundingbox-parsing_part4.patch
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.</comment>
+    <requestid>1082738</requestid>
+  </revision>
 </revisionlist>
