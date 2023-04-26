@@ -69,7 +69,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for m
-License:        Apache-1.0 and BSD-3-Clause and GFDL-1.2-only and GPL-2.0-or-later and LGPL-2.1-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GFDL-1.3-or-later and GPL-2.0-or-later and LGPL-2.1-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-m-rpmlintrc
@@ -35679,7 +35679,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-l2picfaq
 Version:        %{texlive_version}.%{texlive_noarch}.1.50svn19601
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        LaTeX pictures "how-to" (German)
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
