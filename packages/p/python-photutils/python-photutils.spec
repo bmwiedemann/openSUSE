@@ -1,7 +1,7 @@
 #
 # spec file for package python-photutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           python-photutils
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM photutils-pr1484-no-setuptools.patch -- gh#astropy/photutils#1484
-Patch1:         photutils-pr1484-no-setuptools.patch
 BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module extension-helpers}
@@ -40,8 +38,10 @@ Requires:       python >= 3.7
 Requires:       python-astropy >= 5.0
 Requires:       python-numpy >= 1.20
 Recommends:     python-Bottleneck
+Recommends:     python-Shapely
 Recommends:     python-gwcs >= 0.16
 Recommends:     python-matplotlib >= 3.3
+Recommends:     python-rasterio
 Recommends:     python-scikit-image >= 0.18.0
 Recommends:     python-scikit-learn >= 1.0
 Recommends:     python-scipy >= 1.6.0

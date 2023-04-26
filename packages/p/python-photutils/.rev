@@ -423,4 +423,12 @@
   * Added quadratic centroids to SourceCatalog. [#1467, #1469] (forwarded request 1044299 from bnavigator)</comment>
     <requestid>1044300</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6cdee9f9bcaf642a97cbddc78cbbb060</srcmd5>
+    <version>1.7.0</version>
+    <time>1682522808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082982</requestid>
+  </revision>
 </revisionlist>
