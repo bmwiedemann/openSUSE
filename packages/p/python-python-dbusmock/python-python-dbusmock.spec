@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?sle15modernpython}
+
 Name:           python-python-dbusmock
 Version:        0.24.1
 Release:        0

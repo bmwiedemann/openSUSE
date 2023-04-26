@@ -89,4 +89,13 @@
     <comment></comment>
     <requestid>1078647</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>30d9f07fc943ce5c93022cf73bcfa350</srcmd5>
+    <version>0.24.1</version>
+    <time>1682522637</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed not needed sle15modernpython macro
+</comment>
+    <requestid>1082656</requestid>
+  </revision>
 </revisionlist>
