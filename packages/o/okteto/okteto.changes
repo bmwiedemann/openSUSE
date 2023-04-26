@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 26 09:07:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.1:
+  * Remove trailing whitespace on converted JSON log line (#3577)
+    (#3578)
+
+-------------------------------------------------------------------
 Mon Apr 24 10:48:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.0:
