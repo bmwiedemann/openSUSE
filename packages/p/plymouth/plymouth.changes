@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 18 12:18:34 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Update plymouth.spec: Change bootup terminal to default to satisfy
+  Nvidia proprietary driver (bsc#1208726).
+
+-------------------------------------------------------------------
 Wed Oct 26 07:12:23 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+94.4bd41a3:
