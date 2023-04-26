@@ -36,6 +36,7 @@ Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
 Source6:        system-user-dnsmasq.conf
 Patch0:         dnsmasq-groups.patch
+Patch1:         dnsmasq-CVE-2023-28450.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libidn2-devel
@@ -71,7 +72,7 @@ Utilities that use the standard DHCP protocol to query/remove a DHCP
 server's leases.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies

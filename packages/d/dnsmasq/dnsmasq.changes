@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 25 08:32:41 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1209358, CVE-2023-28450, dnsmasq-CVE-2023-28450.patch:
+  default maximum EDNS.0 UDP packet size should be 1232
+
+-------------------------------------------------------------------
 Mon Feb  6 09:27:27 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 2.89:

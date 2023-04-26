@@ -889,4 +889,13 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment>Added bug reference</comment>
     <requestid>1066370</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>4f8dee295b4c31ba3715d996ab75527b</srcmd5>
+    <version>2.89</version>
+    <time>1682522655</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1209358, CVE-2023-28450, dnsmasq-CVE-2023-28450.patch:
+  default maximum EDNS.0 UDP packet size should be 1232</comment>
+    <requestid>1082695</requestid>
+  </revision>
 </revisionlist>
