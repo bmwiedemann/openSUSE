@@ -7,4 +7,12 @@
     <comment>new package kubespy: Tools for observing Kubernetes resources in real time</comment>
     <requestid>1079818</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16c44721ae7755bd5640d939d64d8ae4</srcmd5>
+    <version>0.6.2</version>
+    <time>1682522812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082986</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:42:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.2:
+  * Bump golang.org/x/net from 0.0.0-20220906165146-f3363e06e74c to
+    0.7.0 (#84)
+  * Clean up changes command (#55)
+  * Add record command (#56)
+  * Bump golang.org/x/text from 0.3.7 to 0.3.8
+
+-------------------------------------------------------------------
 Tue Mar 28 10:46:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubespy: Tools for observing Kubernetes resources in
