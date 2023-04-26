@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 26 02:40:03 UTC 2023 - william.brown@suse.com
+
+- Update to version 2.4.0~git0.87efeb2:
+  * Bump version to 2.4.0
+  * Issue 5156 - RFE that implement slapi_memberof (#5694)
+  * Issue 5734 - RFE - Exclude pwdFailureTime and ContextCSN (#5735)
+  * Issue 5726 - ns-slapd crashing in ldbm_back_upgradednformat (#5727)
+  * Issue 4758 - Add tests for WebUI
+  * Issue 5718 - Memory leak in connection table (#5719)
+  * Issue 5705 - Add config parameter to close client conns on failed bind (#5712)
+  * Issue 4758 - Add tests for WebUI
+  * Issue 5643 - Memory leak in entryrdn during delete (#5717)
+  * Issue 5714 - UI - fix typo, db settings, log settings, and LDAP editor paginations
+
+-------------------------------------------------------------------
 Tue Apr 18 14:52:00 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
