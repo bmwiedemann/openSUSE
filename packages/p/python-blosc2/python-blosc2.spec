@@ -17,7 +17,7 @@
 
 
 Name:           python-blosc2
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause

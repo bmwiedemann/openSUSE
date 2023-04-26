@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 25 21:45:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * New bytedelta filter.  We have blogged about this:
+    https://www.blosc.org/posts/bytedelta-enhance-compression-
+    toolset/.  See the examples/ndarray/bytedelta_filter.py for a
+    sample script.  We also have a short video on how bytedelta
+    works: https://www.youtube.com/watch?v=5OXs7w2x6nw
+  * `dtype.itemsize` will have preference over typesize in
+    cparams (as it was documented).
+  * `blosc2.compressor_list(plugins=False)` do not list codec
+    plugins by default now.  If you want to list plugins too, you
+    need to pass `plugins=True`.
+  * Internal C-Blosc2 updated to latest version (2.8.0).
+
+-------------------------------------------------------------------
 Thu Mar 30 15:07:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.1

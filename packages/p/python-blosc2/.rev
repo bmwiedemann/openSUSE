@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>1076710</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ac6005986575fd637f73950b9f1c4091</srcmd5>
+    <version>2.2.0</version>
+    <time>1682522679</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * New bytedelta filter.  We have blogged about this:
+    https://www.blosc.org/posts/bytedelta-enhance-compression-
+    toolset/.  See the examples/ndarray/bytedelta_filter.py for a
+    sample script.  We also have a short video on how bytedelta
+    works: https://www.youtube.com/watch?v=5OXs7w2x6nw
+  * `dtype.itemsize` will have preference over typesize in
+    cparams (as it was documented).
+  * `blosc2.compressor_list(plugins=False)` do not list codec
+    plugins by default now.  If you want to list plugins too, you
+    need to pass `plugins=True`.
+  * Internal C-Blosc2 updated to latest version (2.8.0).</comment>
+    <requestid>1082827</requestid>
+  </revision>
 </revisionlist>
