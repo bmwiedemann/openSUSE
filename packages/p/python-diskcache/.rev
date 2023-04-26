@@ -85,4 +85,17 @@
   * run isort</comment>
     <requestid>946689</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8765d7c41de2140db0f3482abac9d43c</srcmd5>
+    <version>5.6.1</version>
+    <time>1682522706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.1
+  * Close the cache explictly before deleting the reference
+  * pylint fixes
+  * Add maxlen parameter to diskcache.Deque
+  * update docs
+  * Support pathlib.Path as directory argument</comment>
+    <requestid>1082879</requestid>
+  </revision>
 </revisionlist>
