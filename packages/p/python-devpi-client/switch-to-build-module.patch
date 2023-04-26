@@ -1,0 +1,55 @@
+From 95af2bd5eb0636a64820d6a63462a8d4cfb033ba Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 20 Apr 2023 16:20:37 +1000
+Subject: [PATCH] client: Use build instead of pep517
+
+pep517 has been renamed to pyproject-hooks, and as a consequence all of
+the deprecated functionality has been removed. Users of that
+functionality should switch to using build. Switch to using a method
+under build.util to determine the wheel metadata for upload.
+---
+ client/devpi/upload.py | 10 ++++++----
+ client/setup.py        |  1 -
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/client/devpi/upload.py b/client/devpi/upload.py
+index ded4245e..4a946128 100644
+--- a/devpi/upload.py
++++ b/devpi/upload.py
+@@ -5,8 +5,8 @@
+ import re
+ import zipfile
+ 
++import build.util
+ import check_manifest
+-import pep517.meta
+ 
+ from devpi_common.metadata import Version, get_pyversion_filetype
+ from devpi_common.archive import Archive
+@@ -378,9 +378,11 @@ def __str__(self):
+         return "<Exported %s>" % self.rootpath
+ 
+     def setup_name_and_version(self):
+-        result = pep517.meta.load(self.rootpath.strpath)
+-        name = result.metadata["name"]
+-        version = result.metadata["version"]
++        metadata = build.util.project_wheel_metadata(
++            self.rootpath.strpath, False
++        )
++        name = metadata["name"]
++        version = metadata["version"]
+         self.hub.debug("name, version = %s, %s" % (name, version))
+         return name, version
+ 
+diff --git a/client/setup.py b/client/setup.py
+index 7d9a98cc..92e7ff95 100755
+--- a/setup.py
++++ b/setup.py
+@@ -31,7 +31,6 @@ def get_changelog():
+         "check-manifest>=0.28",
+         "devpi_common<4,>=3.6.0",
+         "iniconfig",
+-        "pep517",
+         "pkginfo>=1.4.2",
+         "platformdirs",
+         "pluggy>=0.6.0,<2.0",

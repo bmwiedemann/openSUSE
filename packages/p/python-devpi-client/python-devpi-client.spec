@@ -21,9 +21,10 @@ Version:        6.0.4
 Release:        0
 Summary:        Client for devpi
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/devpi/devpi
 Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#devpi/devpi#966
+Patch0:         switch-to-build-module.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -32,7 +33,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-build
 Requires:       python-check-manifest >= 0.28
 Requires:       python-devpi-common >= 3.6.0
-Requires:       python-pep517
 Requires:       python-pkginfo >= 1.4.2
 Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.31
@@ -49,7 +49,6 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module check-manifest >= 0.28}
 BuildRequires:  %{python_module devpi-common >= 3.6.0}
 BuildRequires:  %{python_module devpi-server}
-BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pkginfo >= 1.4.2}
 BuildRequires:  %{python_module pluggy >= 0.6.0}
 BuildRequires:  %{python_module py >= 1.4.31}
