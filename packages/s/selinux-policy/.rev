@@ -407,4 +407,12 @@
   * Add passt interfaces defined conditionally</comment>
     <requestid>1080824</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1f8b3d57bc817a975ce34e88b56681fe</srcmd5>
+    <version>20230425</version>
+    <time>1682522668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082789</requestid>
+  </revision>
 </revisionlist>

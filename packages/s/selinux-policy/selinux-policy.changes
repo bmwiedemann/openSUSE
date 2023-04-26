@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 25 15:12:47 UTC 2023 - cathy.hu@suse.com
+
+- Update to version 20230425:
+  * Remove unneeded manage_dirs_pattern for lastlog_t (bsc#1210461)
+  * Add policy for wtmpdb (bsc#1210717)
+
+-------------------------------------------------------------------
+Tue Apr 25 11:29:59 UTC 2023 - cathy.hu@suse.com
+
+- Update to version 20230425:
+  * Add support for lastlog2 (bsc#1210461)
+  * allow the chrony client to use unallocated ttys (bsc#1210672)
+
+-------------------------------------------------------------------
 Thu Apr 20 10:47:16 UTC 2023 - jsegitz@suse.com
 
 - Update to version 20230420:
