@@ -413,4 +413,14 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
  * Update setting description to match reality ([\#10600](https://github.com/matrix-org/matrix-react-sdk/pull/10600)). Fixes #25106.</comment>
     <requestid>1082748</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>d5e9c5873bf15842d1a9f680451be11c</srcmd5>
+    <version>1.11.30</version>
+    <time>1682522802</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply https://github.com/vector-im/element-web/pull/25200/files
+- Bump yaml from 2.2.1 to 2.2.2
+- Fix boo#1210802 / CVE-2023-2251</comment>
+    <requestid>1082943</requestid>
+  </revision>
 </revisionlist>

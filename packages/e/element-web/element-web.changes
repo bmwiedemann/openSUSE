@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 26 09:39:45 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Apply https://github.com/vector-im/element-web/pull/25200/files
+- Bump yaml from 2.2.1 to 2.2.2
+- Fix boo#1210802 / CVE-2023-2251
+
+-------------------------------------------------------------------
 Tue Apr 25 12:21:13 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.30
