@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Apr 25 07:46:43 UTC 2023 - trenn@suse.de
+
+- Update to version 2.0.16.21.g693fee1:
+  * fix typo
+  * Add fuzzer for OSS-Fuzz integration
+  * numactl.c: Fix merging of neighboring pages' policies in dump_shm
+  * memhog: Update memhog usage
+  * feat: Add minimum permissions to makefile.yml
+  * feat: Add minimum permissions to cut-release.yml
+  * feat: Add minimum permissions to codeql.yml
+
+-------------------------------------------------------------------
+Sun Jan 08 21:33:11 UTC 2023 - trenn@suse.de
+
+- jsc#PED-3367
+- Remove unneeded defattr(root,root) statements from spec file from dmueller
+- Replace deletion of *.la files with a more general version from dmueller
+- Update to version 2.0.16.14.gc09fefd:
+  * numactl.c: Remove unused variable
+  * shm.c: Replace stat64/fstat64/ftruncate64mmap64 with normal functions
+  * configure: Check for largefile support
+  * numastat: Update system hugepages memory info from sysfs/node/hugepages directory
+  * numastat: statistical errors occur when huge pages is used
+  * fix wrong nodemask_sz when CONFIG_NODES_SHIFT is less than 5
+  * libnuma: clear errno at the end of numa_init
+  * numastat: Add SwapCached to list of known fields in meminfo
+  * numastat: Add SecPageTables to list of known fields in meminfo
+  * numastat: Add ShadowCallStack to list of known fields in meminfo
+  * numastat: Add FileHugePages/FilePmdMapped to list of known fields in meminfo
+  * numactl: 'numactl --length=xxx --shm xxx -px' doesn't work
+  * numactl: Fix shm verfiy for preferred policy
+  * link with -latomic if needed (again ...)
+  * Release numactl 2.0.16
+  * add cut-release github workflow (#142)
+  * when preferred_many is not supported, fall back to preferred will report error.
+  * fix the memory leak of numa_preferred api
+  * build: Refactor autotools setup to store version in separate file
+  * Revert "numademo: fix error on 32bit system"
+
+-------------------------------------------------------------------
 Fri Sep 09 10:16:30 UTC 2022 - trenn@suse.de
 
 - Update to version 2.0.15.0.g01a39cb:

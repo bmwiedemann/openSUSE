@@ -1,7 +1,7 @@
 #
 # spec file for package numactl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           numactl
-Version:        2.0.15.0.g01a39cb
+Version:        2.0.16.21.g693fee1
 Release:        0
 Summary:        NUMA Policy Control
 License:        GPL-2.0-only
@@ -69,24 +69,21 @@ make %{?_smp_mflags} CFLAGS="%{optflags}" V=1
 %install
 %make_install
 rm  %{buildroot}%{_mandir}/man2/move_pages.2*
-rm -f %{buildroot}/%{_libdir}/lib*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libnuma1 -p /sbin/ldconfig
 
 %postun -n libnuma1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license LICENSE.GPL2 LICENSE.LGPL2.1
 %{_bindir}/*
 %{_mandir}/man8/*
 
 %files -n libnuma1
-%defattr(-,root,root)
 %{_libdir}/lib*so.*
 
 %files -n libnuma-devel
-%defattr(-,root,root)
 %{_mandir}/man3/*
 %{_includedir}/*
 %{_libdir}/lib*so
