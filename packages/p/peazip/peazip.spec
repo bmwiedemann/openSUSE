@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 9.1.0
+%define         _helpver 9.2.0
 Name:           peazip
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -115,18 +115,18 @@ cp -r res %{buildroot}%{_peazipinstalldir}
 cp %{SOURCE1} %{buildroot}%{_peazipinstalldir}/res
 
 mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/7z
-mkdir -p %{buildroot}%{_peazipinstalldir}/res/upx
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/upx
 ln -s %{_bindir}/7z  %{buildroot}%{_peazipinstalldir}/res/bin/7z/7z
-ln -s %{_bindir}/upx  %{buildroot}%{_peazipinstalldir}/res/upx/upx
+ln -s %{_bindir}/upx  %{buildroot}%{_peazipinstalldir}/res/bin/upx/upx
 
-mkdir -p %{buildroot}%{_peazipinstalldir}/res/arc
-mkdir -p %{buildroot}%{_peazipinstalldir}/res/brotli
-mkdir -p %{buildroot}%{_peazipinstalldir}/res/zpaq
-mkdir -p %{buildroot}%{_peazipinstalldir}/res/zstd
-ln -s %{_bindir}/arc  %{buildroot}%{_peazipinstalldir}/res/arc/arc
-ln -s %{_bindir}/brotli  %{buildroot}%{_peazipinstalldir}/res/brotli/brotli
-ln -s %{_bindir}/zpaq  %{buildroot}%{_peazipinstalldir}/res/zpaq/zpaq
-ln -s %{_bindir}/zstd  %{buildroot}%{_peazipinstalldir}/res/zstd/zstd
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/arc
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/brotli
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/zpaq
+mkdir -p %{buildroot}%{_peazipinstalldir}/res/bin/zstd
+ln -s %{_bindir}/arc  %{buildroot}%{_peazipinstalldir}/res/bin/arc/arc
+ln -s %{_bindir}/brotli  %{buildroot}%{_peazipinstalldir}/res/bin/brotli/brotli
+ln -s %{_bindir}/zpaq  %{buildroot}%{_peazipinstalldir}/res/bin/zpaq/zpaq
+ln -s %{_bindir}/zstd  %{buildroot}%{_peazipinstalldir}/res/bin/zstd/zstd
 
 install -m755 dev/peazip %{buildroot}%{_peazipinstalldir}
 ln -s %{_peazipinstalldir}/peazip %{buildroot}%{_bindir}/peazip
@@ -146,10 +146,13 @@ rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peaz
 # Remove hard linked png
 rm %{buildroot}%{_peazipinstalldir}/res/share/icons/peazip_app.png
 
+chmod +x %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/Nautilus-scripts/Archiving/PeaZip/*
 pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 install -m644 *.desktop %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 popd
+
+find %{buildroot} -type f -size 0 -delete
 
 %fdupes %{buildroot}/%{_prefix}
 

@@ -1034,4 +1034,32 @@
 </comment>
     <requestid>1067896</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ce58cd32447078dc4b54ac8af6db83eb</srcmd5>
+    <version>9.2.0</version>
+    <time>1682522705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.2.0:
+  BACKEND:
+  * Can now use zpaqfranz https://github.com/fcorbelli/zpaqfranz as
+    alternative backend for .zpaq. To use an alternative zpaq rename the
+    binary as zpaq and replace the zpaq binary in /usr/lib64/peazip/res/bin/zpaq/
+  CODE:
+  * Fixed compression method is now saved accordingly for 7z.
+  * Re-organized Help section with quicker access to online updates, Plugins,
+    Themes, and Translations.
+  * Privacy and Security section in main Settings tab, collecting all relevant
+    functions, including Updates.
+  FILE MANAGER:
+  * Minor modification to themes and icons.
+  * New options in Main menu, Organize (Tab bar can now be swapped with Address bar,
+    Breadcrumb bar can be shown as plain text).
+  EXTRACTION and ARCHIVING:
+  * Can now set a custom alias name for 7z / p7zip binary, to make easier to use an
+    alternative backend, in Options &gt; Settings, Advanced tab.
+  * Improved &quot;Edit non-canonical archive types&quot; (Options &gt; Settings, Archive manager tab).
+- Fix bin location for upx/arc/brotli/zpaq/zstd
+</comment>
+    <requestid>1082932</requestid>
+  </revision>
 </revisionlist>
