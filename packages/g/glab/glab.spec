@@ -22,7 +22,7 @@
 Name:           glab
 Version:        1.28.1
 Release:        0
-Summary:        An open-source GitLab command line tool
+Summary:        A GitLab command line tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://gitlab.com/gitlab-org/cli
@@ -33,7 +33,7 @@ BuildRequires:  golang(API) >= 1.18
 Suggests:       glab-doc
 
 %description
-glab is an open-source GitLab command line tool bringing GitLab's cool features to your command line.
+glab is a command line tool bringing GitLab's features to the command line.
 
 %package doc
 Summary:        Documentation for GLab
@@ -41,7 +41,7 @@ Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
-glab is an open-source GitLab command line tool bringing GitLab's cool features to your command line.
+glab is a command line tool bringing GitLab's features to the command line.
 
 %package bash-completion
 Summary:        Bash completion for %{name}
@@ -119,14 +119,12 @@ install -D -m0644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d
 install -D -m0644 %{name}.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_mandir}/*/*
 %{_bindir}/%{name}
 
 %files doc
-%defattr(-,root,root)
 %{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/README.md
 
