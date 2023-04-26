@@ -270,6 +270,7 @@ unsorted:
   - Regina-REXX-doc 
   - RemoteBox 
   - RigelEngine 
+  - Rivet-data 
   - Rivet-devel 
   - Rivet-plugins 
   - SDL2-devel 
@@ -10320,7 +10321,7 @@ unsorted:
   - libQuotient0_6 
   - libRaTools0 
   - libRecast1 
-  - libRivet-3_1_6 
+  - libRivet-3_1_7 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -18804,6 +18805,7 @@ unsorted:
   - nvme-stas 
   - nvmetcli 
   - nvptx-tools 
+  - nvtop 
   - nwg-launchers 
   - nxtvepg 
   - nyancat 
@@ -24159,6 +24161,7 @@ unsorted:
   - python310-fire 
   - python310-first 
   - python310-fissix 
+  - python310-fixtures 
   - python310-flake8 
   - python310-flake8-blind-except 
   - python310-flake8-bugbear 
@@ -24647,6 +24650,7 @@ unsorted:
   - python310-ligotimegps 
   - python310-limnoria 
   - python310-line_profiler 
+  - python310-linecache2 
   - python310-linetable 
   - python310-lineup-widget 
   - python310-link-traits 
@@ -24967,6 +24971,7 @@ unsorted:
   - python310-patiencediff 
   - python310-patsy 
   - python310-pbkdf2 
+  - python310-pbr 
   - python310-pcodedmp 
   - python310-pdd 
   - python310-pdfminer.six 
@@ -25445,6 +25450,7 @@ unsorted:
   - python310-python-lzo 
   - python310-python-magic 
   - python310-python-memcached 
+  - python310-python-mimeparse 
   - python310-python-mpd2 
   - python310-python-mpv 
   - python310-python-multipart 
@@ -25904,6 +25910,7 @@ unsorted:
   - python310-testresources 
   - python310-testscenarios 
   - python310-testsuite 
+  - python310-testtools 
   - python310-textX 
   - python310-textdistance 
   - python310-textfsm 
@@ -25948,6 +25955,7 @@ unsorted:
   - python310-tox-wheel 
   - python310-tpfd 
   - python310-tqdm 
+  - python310-traceback2 
   - python310-traitlets 
   - python310-traits 
   - python310-traitsui 

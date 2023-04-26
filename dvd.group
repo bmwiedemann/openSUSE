@@ -565,7 +565,7 @@
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:git -->
-    <package name="git-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="git-core" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="git-email" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="git-gui" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="git-svn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -2587,7 +2587,7 @@
     <package name="libserf-1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsgutils2-1_48-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libshumate-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3550,7 +3550,6 @@
     <package name="python310-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-extras" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-filetype" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-gevent" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-gobject" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-gobject-Gdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3575,7 +3574,6 @@
     <package name="python310-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="python310-linecache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-lxml" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python310-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3586,7 +3584,6 @@
     <package name="python310-numpy" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-olefile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-packaging" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-pbr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python310-pip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-ply" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3606,7 +3603,6 @@
     <package name="python310-pyparsing" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python310-python-mimeparse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-python-slugify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-pytz" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3630,11 +3626,9 @@
     <package name="python310-slip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-slip-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python310-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-testtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-toml" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-traceback2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-unicodedata2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
