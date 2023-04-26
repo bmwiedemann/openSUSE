@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Reports last logged in users and system reboots
 License:        BSD-2-Clause

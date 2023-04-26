@@ -15,4 +15,12 @@
     <comment>- Use Requires(pre) and Requires(post) instead of PreReq</comment>
     <requestid>1082462</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e02050eed542284fa0d9d3881c10234b</srcmd5>
+    <version>0.5.0</version>
+    <time>1682522785</time>
+    <user>dimstar_suse</user>
+    <comment>- wtmpdb boot: more accurate calculation of boot time (forwarded request 1082983 from kukuk)</comment>
+    <requestid>1082984</requestid>
+  </revision>
 </revisionlist>

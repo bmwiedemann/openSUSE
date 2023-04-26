@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 26 09:11:23 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.5.0
+  - Use uint64_t instead of usec_t to avoid conflicts
+  - wtmpdb boot: more accurate calculation of boot time
+
+
+-------------------------------------------------------------------
 Mon Apr 24 09:46:56 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use Requires(pre) and Requires(post) instead of PreReq
