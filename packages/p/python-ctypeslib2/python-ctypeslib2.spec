@@ -1,7 +1,7 @@
 #
 # spec file for package python-ctypeslib2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,30 +21,37 @@
 %define pythons python3
 # help in the rename from multiflavor to python3 only
 %define primary_python3 python%{python3_version_nodots}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch %{ix86} x86_64
 %bcond_without test
 %else
 %bcond_with test
 %endif
+%if 0%{suse_version} >= 1599
+# Tumbleweed default 16 is not compatible
+%define clangmajor 15
+%endif
 Name:           python-ctypeslib2
-Version:        2.3.2
+Version:        2.3.4
 Release:        0
 Summary:        Python FFI toolkit using clang
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trolldbois/ctypeslib
-Source:         https://files.pythonhosted.org/packages/source/c/ctypeslib2/ctypeslib2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ctypeslib-pr113-clang2py-h.patch -- gh#trolldbois/ctypeslib#113
-Patch1:         ctypeslib-pr113-clang2py-h.patch
-BuildRequires:  %{python_module clang >= 11}
+Source:         https://github.com/trolldbois/ctypeslib/archive/refs/tags/%{version}.tar.gz#/ctypeslib2-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE ctypeslib2-suse-remove-info-check.patch code@bnavigator.de, python3-clang does not provide dist- or egg-info, we do not use the unofficial pypi package there
+Patch1:         ctypeslib2-suse-remove-info-check.patch
+BuildRequires:  %{python_module clang%{?clangmajor} >= 11}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  clang >= 11
+BuildRequires:  %{python_module wheel}
+BuildRequires:  clang%{?clangmajor} >= 11
 BuildRequires:  fdupes
+%{?clangmajor:BuildRequires:  llvm%{?clangmajor}-libclang13}
 BuildRequires:  python-rpm-macros >= 20220610
-Requires:       python-clang >= 11
+Requires:       python-clang%{?clangmajor} >= 11
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       %{primary_python3}-ctypeslib2 = %{version}-%{release}
@@ -56,20 +63,15 @@ BuildArch:      noarch
 Python FFI toolkit using clang.
 
 %prep
-%autosetup -p1 -n ctypeslib2-%{version}
+%autosetup -p1 -n ctypeslib-%{version}
 sed -i '1{/^#!/d}' ctypeslib/clang2py.py
 
-# avoid pkg_resources/importlib errors because python3-clang does not provide an egg-info (even upstream does not)
-sed -i '/clang>=/ d' setup.py
-
-# avoid toml error: gh#trolldbois/ctypeslib#94
-sed -i 's/True/true/' pyproject.toml
-
 %build
-%python_build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/clang2py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -79,8 +81,8 @@ CFLAGS="-Wall -Wextra -Werror -Wno-strict-prototypes -std=c99 -pedantic -fpic"
 LDFLAGS="-shared"
 clang $CFLAGS $LDFLAGS -o test/data/test-callbacks.so test/data/test-callbacks.c
 
+%python_flavored_alternatives
 export LANG=en_US.UTF-8
-export PATH="$(pwd)/build/bin:$PATH"
 export CPATH=$(clang  -print-resource-dir)/include
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   # not for 32-bit (looks for gnu/stubs-64.h)
@@ -89,7 +91,8 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   sed -i 's/test_extern_function_pointer_multiarg/_&/' test/test_types_values.py
 fi
 
-%pyunittest discover -s test/ -v
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} clang2py --version
+%pyunittest -v test.alltests
 %endif
 
 %post

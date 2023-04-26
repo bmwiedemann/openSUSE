@@ -72,4 +72,20 @@
     <comment></comment>
     <requestid>1010556</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6dc89f82e3430e6971ba1c7014eebb4e</srcmd5>
+    <version>2.3.4</version>
+    <time>1682522783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.4
+  * no release notes
+- Release 2.3.3
+  * be more specific on the warning
+- Upstream released only a wheel not an sdist: use github tarball
+- Drop ctypeslib-pr113-clang2py-h.patch
+- Add ctypeslib2-suse-remove-info-check.patch
+- Restrict to clang15 on Tumbleweed
+</comment>
+    <requestid>1082938</requestid>
+  </revision>
 </revisionlist>

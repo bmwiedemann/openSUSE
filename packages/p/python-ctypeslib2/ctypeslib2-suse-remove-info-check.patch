@@ -1,0 +1,39 @@
+# python3-clang does not provide dist- or egg-info, we do not use the unofficial pypi package there
+Index: ctypeslib-2.3.4/ctypeslib/__init__.py
+===================================================================
+--- ctypeslib-2.3.4.orig/ctypeslib/__init__.py
++++ ctypeslib-2.3.4/ctypeslib/__init__.py
+@@ -11,7 +11,9 @@ and providing tools for handling errors
+ import ctypes
+ import os
+ import re
++import subprocess
+ import sys
++import sysconfig
+ import warnings
+ from ctypes.util import find_library
+ 
+@@ -114,7 +116,10 @@ try:
+     from clang import cindex
+     from ctypeslib.codegen.codegenerator import translate, translate_files
+ 
+-    __clang_py_version__ = get_distribution('clang').version
++    purelib = sysconfig.get_path("purelib")
++    __clang_py_version__ = subprocess.check_output(
++        ["rpm", "--query", "--queryformat", "%{version}", "-f", f"{purelib}/clang"],
++        text=True)
+     __clang_library_filename = __configure_clang_cindex()
+     if __clang_library_filename is None:
+         warnings.warn("Could not find the clang library. please install llvm libclang", RuntimeWarning)
+Index: ctypeslib-2.3.4/pyproject.toml
+===================================================================
+--- ctypeslib-2.3.4.orig/pyproject.toml
++++ ctypeslib-2.3.4/pyproject.toml
+@@ -15,7 +15,6 @@ classifiers = [
+     "Programming Language :: Python :: 3.8",
+     "Topic :: Software Development :: Libraries :: Python Modules",
+ ]
+-dependencies = ["clang>=11"]
+ dynamic = ["version"]
+ 
+ [project.urls]

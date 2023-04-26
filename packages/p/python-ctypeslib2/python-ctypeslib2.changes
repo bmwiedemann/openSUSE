@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 24 21:34:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.4
+  * no release notes
+- Release 2.3.3
+  * be more specific on the warning
+- Upstream released only a wheel not an sdist: use github tarball
+- Drop ctypeslib-pr113-clang2py-h.patch
+- Add ctypeslib2-suse-remove-info-check.patch
+- Restrict to clang15 on Tumbleweed
+
+-------------------------------------------------------------------
 Fri Oct 14 01:33:02 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add -Wno-strict-prototypes to CFLAGS for compiling tests
