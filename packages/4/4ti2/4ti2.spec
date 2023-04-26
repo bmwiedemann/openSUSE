@@ -17,24 +17,19 @@
 
 
 Name:           4ti2
-Version:        1.6.9
+Version:        1.6.10
 Release:        0
 Summary:        Package for algebraic, geometric and combinatorial problems on linear spaces
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://4ti2.github.io/
 
-Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_9/4ti2-1.6.9.tar.gz
-Patch1:         4ti2-docdir.diff
+Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_10/4ti2-1.6.10.tar.gz
 Patch2:         4ti2-handle-prefix.patch
-Patch3:         0001-build-resolve-missing-includes-showing-on-gcc-13.patch
-BuildRequires:  autoconf >= 2.59
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.3
 BuildRequires:  glpk-devel >= 4.52
 BuildRequires:  gmp-devel >= 4.1.4
-BuildRequires:  libtool
 
 %description
 4ti2 is a collection of programs that compute and solve algebraic,
@@ -73,7 +68,6 @@ developing against 4ti2's libraries.
 %autosetup -p1
 
 %build
-autoreconf -fi
 %configure --enable-shared --disable-static \
 	--includedir="%_includedir/%name" --docdir="%_docdir/%name"
 %make_build
