@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Apr 19 10:57:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.18:
+  * Streamline the `ConfigLineFactory()` function
+  * Replace four `_bootstrap_obj_init_FOO()` methods where FOO is
+    {ios, nxos, asa, junos}.  The repalcement is
+    `_bootstrap_obj_init_ng()`, which handles initial parse from
+    text into `*CfgLine()` object instances for *all* syntax.
+  * Rename `_build_cfgobj_from_text()` to `_cfgobj_from_text()`
+  * Deprecate `ConfigList()._bootstrap_from_text()` and replace
+    it with `ConfigList()._bootstrap_obj_init_ng()`
+  * Remove `foo_DEPRECATED()` code in
+    `ciscoconfparse/ciscoconfparse.py`
+  * Modify `CiscoConfParse()` to parse `syntax='ios'` roughly 25%
+    faster.
+  * Simplify `find_object_branches()`
+  * Remove unused test fixtures and imports
+  * As part of Github issue #264 (Remove duplicated obj init code
+    from `CiscoConfParse()._bootstrap_obj_init_foo()`), also
+    remove a duplicate method:
+    `ConfigList()._build_cfgobj_from_text()`
+  * As part of Github issue #265, fix a broken `loguru`
+    parameter: change it from `allow_enqueue` to `enqueue`
+  * Close Github issue #266 as wont-fix: make
+    `BaseCfgLine().calculate_line_id()` hash comments /
+    whitespace
+  * Reformat `ciscoconfparse/ciscoconfparse.py` and
+    `ciscoconfparse/ccp_abc.py` with black
+  * Add new `as_dict_diff` attribute (used by `HDiff()`) on
+    `BaseCfgLine()`.
+  * Add more debugs in `HDiff().compress_dict_diffs()`.
+  * Raise an explicit `NotImplementedError` in
+    `HDiff().sort_lines()`
+  * Remove manual prepends from `HDiff()` and
+    `CiscoConfParse().sync_diff()`
+  * Remove hard-coded blank-line handling which was based on the
+    value of the `HDiff()` `syntax` parameter
+  * Add `ignore_blank_lines` parameter to `HDiff()` (to mirror
+    the same parameter in `CiscoConfParse()`)
+  * Remove the `consider_whitespace` parameter from
+    `HDiff().build_diff_obj_list()`
+  * Change `CiscoConfParse()._list` to
+    `CiscoConfParse().ConfigObjs`
+  * Expand test coverage to test parsing with and without blank
+    lines in the input config.
+  * Add more test cases to check blank line parsing while using
+    any valid ccp syntax
+  * Update documentation
+  * Summary:
+  * Add initial support for `CiscoConfParse()` object instance
+    support in `HDiff()`
+  * Add `HDiff()` documentation
+  * Convert `diff_word` and `diff_side` `HDiff()` attributes to
+    `HDiff()` getter / setter methods
+  * Improve `BaseCfgLine()` initialization
+  * Improve `BaseCfgLine()` attribute handling: `.text`,
+    `.indent`
+  * Remove loop in `testValues_find_children()` to simplify test
+    flow.
+  * Ensured that all comments are their own parents - comments
+    can NOT be children of a parent
+  * Add `ccp_util.fix_repeated_words()`
+  * Change `allow_enqueue` parameter to `enqueue` in
+    `ccp_logger_control()`.  `allow_enqueue` is not a valid
+    `loguru` parameter name.
+  * ## Version: 1.7.15
+  * Released: 2023-02-10
+  * Summary:
+  * Streamline `_bootstrap_from_text()` code.
+  * Extract common code into `_build_banner_re_ios()` (for nxos
+    and ios)
+  * Extract common object init code from
+    `CiscoConfParse()._bootstrap_obj_init_foo()` (where foo =
+    asa, ios, nxos and junos) into `_build_cfgobj_from_text()`.
+  * Remove the unused `output_format` parameter from `HDiff()`
+  * Add `HDiff()` docstrings
+  * Resolved Github issue #262: bad function argument + infinite
+    recursion problem
+  * Resolved Github issue #263: Remove duplicated code from
+    `CiscoConfParse()._bootstrap_from_text()`
+
+-------------------------------------------------------------------
 Fri Feb 10 12:28:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.14:
