@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 05:09:50 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Disable fdupes on SLE/Leap due to incorrect debuginfo extraction
+
+-------------------------------------------------------------------
 Tue Mar 28 02:30:57 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1209839 - replace leaked github keys in rust/cargo

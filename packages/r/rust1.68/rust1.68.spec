@@ -260,7 +260,10 @@ Patch0:         ignore-Wstring-conversion.patch
 
 BuildRequires:  chrpath
 BuildRequires:  curl
+# BUG - fdupes on leap/sle causes issues with debug info
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
 BuildRequires:  fdupes
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3-base
@@ -623,7 +626,9 @@ if [ ! -f %{buildroot}%{_libexecdir}/rust-analyzer-proc-macro-srv ] &&
 fi
 
 # Silence any duplicate library warnings.
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
 %fdupes %{buildroot}/%{common_libdir}
+%endif
 
 # Ugly hack to get brp-15-strip-debug call llvm-strip, which is wasm-aware, as system-strip will break wasm-files (same for ar/ranlib)
 export CROSS_COMPILE=llvm-
