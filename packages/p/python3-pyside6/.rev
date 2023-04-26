@@ -142,4 +142,12 @@
   * 0001-Fix-build-when-using-QT_FEATURE_opengles2.patch</comment>
     <requestid>1082196</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>e36e986b80c9391773d6a6a7af731d19</srcmd5>
+    <version>6.5.0</version>
+    <time>1682522672</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate egg-info.</comment>
+    <requestid>1082791</requestid>
+  </revision>
 </revisionlist>

@@ -188,6 +188,11 @@ mkdir -p %{buildroot}%{_qt6_pluginsdir}/designer
 mv %{buildroot}%{_prefix}/plugins/designer/libPySidePlugin.so %{buildroot}%{_qt6_pluginsdir}/designer
 
 %endif
+# Install egg-info
+# qtpaths is needed
+export PATH="%{_qt6_bindir}:$PATH"
+python3 setup.py egg_info --build-type=%{pyside_flavor}
+cp -r *.egg-info %{buildroot}%{python_sitearch}
 
 %fdupes -s %{buildroot}%{_libdir}/cmake
 
@@ -252,6 +257,7 @@ popd
 %{_qt6_pluginsdir}/designer/libPySidePlugin.so
 %{python_sitearch}/PySide6/
 %endif
+%{python_sitearch}/*.egg-info
 
 %files devel
 %if "%{pyside_flavor}" == "shiboken6"

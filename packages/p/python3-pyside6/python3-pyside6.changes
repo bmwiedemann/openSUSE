@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 24 09:45:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Generate egg-info.
+
+-------------------------------------------------------------------
 Sat Apr 22 08:38:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix build on arm (boo#1210723):
