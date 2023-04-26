@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rosetta
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-rosetta
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Django application that eases the translation of Django projects
 License:        MIT

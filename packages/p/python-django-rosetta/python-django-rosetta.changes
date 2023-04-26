@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 26 06:22:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.9:
+  * Use packaged jQuery instead of the CDN version. (#274, thanks
+    @stephanema1)
+  * Test test_47_azure_ajax_translation: avoid DNS lookup for
+    better isolation. Should fix #233
+  * Adds Chinese (Simplified) translation. (#266 thanks
+    @chenluyong)
+  * Test against Django 4.1 and 4.2
+  * Limit supported versions to Django 3.2 and later, using
+    Python 3.8, 3.9 and 3.10
+  * Proxy Deepl translations suggestions through the back-end to
+    avoid CORS issues. (#271 thanks @rafaelromon, @biermeester
+    and @matthiask)
+  * Format code with pre-commit
+  * Replace case sensitivity check with setting (#273 thanks
+    @patroqueeet)
+
+-------------------------------------------------------------------
 Fri Dec 16 07:04:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python-python-memcached. 
