@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 26 10:08:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.0.3
+  * Ensure minimum numpy version of 1.17 continues to work (for astropy LTS).
+- Release 2.0.0.2
+  * Fix compatibility with numpy v1.24.
+  * Min setuptools_scm updated.
+
+-------------------------------------------------------------------
 Wed Jan  4 16:19:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Prevent Python 3.6 builds: Requires 3.7+
