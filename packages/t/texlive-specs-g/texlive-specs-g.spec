@@ -69,7 +69,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for g
-License:        Artistic-1.0 and BSD-3-Clause and GFDL-1.2-only and GPL-2.0-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
+License:        Artistic-1.0 and BSD-3-Clause and GFDL-1.3-or-later and GPL-2.0-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-g-rpmlintrc
@@ -7437,7 +7437,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-dickimaw
 Version:        %{texlive_version}.%{texlive_noarch}.svn32925
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        Books and tutorials from the "Dickimaw LaTeX Series"
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
