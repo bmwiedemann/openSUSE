@@ -327,4 +327,12 @@ view</comment>
     <user>dimstar_suse</user>
     <comment>Bump constraints: disk 10gb</comment>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a80b95a86939e26bc17d60f16af19980</srcmd5>
+    <version>1.73</version>
+    <time>1682522660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082727</requestid>
+  </revision>
 </revisionlist>

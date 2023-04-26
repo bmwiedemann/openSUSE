@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Tue Apr 25 10:26:27 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 1.73:
+  * Defects Fixed:
+    - BCJSSE: Instantiating a JSSE provider in some contexts could
+      cause an AccessControl exception.
+    - The EC key pair generator can generate out of range private
+      keys when used with SM2. A specific SM2KeyPairGenerator has
+      been added to the low-level API and is used by
+      KeyPairGenerator.getInstance("SM2", "BC"). The SM2 signer has
+      been updated to check for out of range keys as well..
+    - The attached signature type byte was still present in Falcon
+      signatures as well as the detached signature byte.
+    - There was an off-by-one error in engineGetOutputSize() for ECIES.
+    - The method for invoking read() internally in BCPGInputStream
+      could result in inconsistent behaviour if the class was extended.
+    - Fixed a rounding issue with FF1 Format Preserving Encryption
+      algorithm for certain radices.
+    - Fixed RFC3394WrapEngine handling of 64 bit keys.
+    - Internal buffer for blake2sp was too small and could result in
+      an ArrayIndexOutOfBoundsException.
+    - JCA PSS Signatures using SHAKE128 and SHAKE256 now support
+      encoding of algorithm parameters.
+    - PKCS10CertificationRequest now checks for empty extension
+      parameters.
+    - Parsing errors in the processing of PGP Armored Data now throw
+      an explicit exception ArmoredInputException.
+    - PGP AEAD streams could occassionally be truncated.
+    - The ESTService class now supports processing of chunked HTTP data.
+    - A constructed ASN.1 OCTET STRING with a single member would
+      sometimes be re-encoded as a definite-length OCTET STRING. The
+      encoding has been adjusted to preserve the BER status of the object.
+    - PKIXCertPathReviewer could fail if the trust anchor was also
+      included in the certificate store being used for path analysis.
+    - UTF-8 parsing of an array range ignored the provided length.
+    - IPAddress has been written to provide stricter checking and
+      avoid the use of Integer.parseInt().
+    - A Java 7 class snuck into the Java 5 to Java 8 build.
+  * Additional Features and Functionality:
+    - The Rainbow NIST Post Quantum Round-3 Candidate has been added to
+      the low-level API and the BCPQC provider (level 3 and level 5
+      parameter sets only).
+    - The GeMSS NIST Post Quantum Round-3 Candidate has been added to
+      the low-level API.
+    - The org.bouncycastle.rsa.max_mr_tests property check has been
+      added to allow capping of MR tests done on RSA moduli.
+    - Significant performance improvements in PQC algorithms,
+      especially BIKE, CMCE, Frodo, HQC, Picnic.
+    - EdDSA verification now conforms to the recommendations of Taming
+      the many EdDSAs, in particular cofactored verification. As a side
+      benefit, Pornin's basis reduction is now used for EdDSA
+      verification, giving a significant performance boost.
+    - Major performance improvements for Anomalous Binary (Koblitz) Curves.
+    - The lightweight Cryptography finalists Ascon, ISAP, Elephant,
+      PhotonBeetle, Sparkle, and Xoodyak have been added to the
+      light-weight cryptography API.
+    - BLAKE2bp and BLAKE2sp have been added to the light-weight
+      cryptography API.
+    - Support has been added for X.509, Section 9.8, hybrid certificates
+      and CRLs using alternate public keys and alternate signatures.
+    - The property "org.bouncycastle.emulate.oracle" has been added to
+      signal the provider should return algorithm names on some algorithms
+      in the same manner as the Oracle JCE provider.
+    - An extra replaceSigners method has been added to CMSSignedData
+      which allows for specifying the digest algorithm IDs to be used
+      in the new CMSSignedData object.
+    - Parsing and re-encoding of ASN.1 PEM data has been further
+      optimized to prevent unecessary conversions between basic encoding,
+      definite length, and DER.
+    - Support has been added for KEM ciphers in CMS in accordance with
+      draft-ietf-lamps-cms-kemri
+    - Support has been added for certEncr in CRMF to allow issuing of
+      certificates for KEM public keys.
+    - Further speedups have been made to CRC24.
+    - GCMParameterSpec constructor caching has been added to improve
+      performance for JVMs that have the class available.
+    - The PGPEncrytedDataGenerator now supports injecting the session
+      key to be used for PGP PBE encrypted data.
+    - The CRMF CertificateRequestMessageBuilder now supports optional
+      attributes.
+    - Improvements to the s calculation in JPAKE.
+    - A general purpose PQCOtherInfoGenerator has been added which
+      supports all Kyber and NTRU.
+    - An implementation of HPKE (RFC 9180 - Hybrid Public Key
+      Encryption) has been added to the light-weight cryptography API.
+  * Security Advisories:
+    - The PQC implementations have now been subject to formal review for
+      secret leakage and side channels, there were issues in BIKE, Falcon,
+      Frodo, HQC which have now been fixed. Some weak positives also
+      showed up in Rainbow, Picnic, SIKE, and GeMSS - for now this last
+      set has been ignored as the algorithms will either be updated if
+      they reappear in the Signature Round, or deleted, as is already the
+      case for SIKE (it is now in the legacy package). Details on the
+      group responsible for the testing can be found in the CONTRIBUTORS
+      file.
+    - For at least some ECIES variants (e.g. when using CBC) there is
+      an issue with potential malleability of a nonce (implying silent
+      malleability of the plaintext) that must be sent alongside the
+      ciphertext but is outside the IES integrity check. For this reason
+      the automatic generation of nonces with IED is now disabled and
+      they have to be passed in using an IESParameterSpec. The current
+      advice is to agree on a nonce between parties and then rely on the
+      use of the ephemeral key component to allow the nonce (rather the
+      so called nonce) usage to be extended.
+
+-------------------------------------------------------------------
 Wed Oct 19 12:09:48 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 1.72:
