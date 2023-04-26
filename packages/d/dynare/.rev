@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1078552</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cdab74d85ac427eed5559a6c4fac428a</srcmd5>
+    <version>5.4</version>
+    <time>1682522776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4
+- Make doc packages noarch.
+</comment>
+    <requestid>1082889</requestid>
+  </revision>
 </revisionlist>

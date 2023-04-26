@@ -26,7 +26,7 @@
 %bcond_without doc
 %endif
 Name:           dynare
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        A platform for handling a wide class of economic models
 License:        GPL-3.0-or-later
@@ -70,12 +70,14 @@ generations (OLG) models.
 
 %package doc-pdf
 Summary:        Documentation for dynare in PDF format
+BuildArch:      noarch
 
 %description doc-pdf
 This package provides documentation for %{name} in PDF format.
 
 %package doc-html
 Summary:        Documentation for dynare in HTML format
+BuildArch:      noarch
 
 %description doc-html
 This package provides documentation for %{name} in HTML format.

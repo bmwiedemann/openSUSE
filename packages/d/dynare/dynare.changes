@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Apr 12 04:31:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.4:
+  * Estimation:
+    - The load_results_after_load_mh option would not find the
+      location of the results file
+    - The computation of prior/posterior statistics would crash if
+      the value of the filter step_ahead option was greater than 1
+      without requesting a forecast or the smoother
+    - NaN or complex parameters returned by steady state files
+      were not correctly handled
+    - analytical_derivation could be triggered with
+      endogenous_prior but would not take the endogenous prior
+      into account for the Jacobian and Hessian
+  * OccBin:
+    - Running the calib_smoother command with
+      smoother_inversion_filter would crash unless
+      likelihood_inversion_filter was also specified
+    - Running the piecewise Kalman smoother would crash if an
+      error was encountered during computation of the decision
+      rules
+  * PAC equation estimation through iterative OLS would crash if
+    the auxiliary model contained a constant.
+  * The variable label was incorrect for leads and lags of
+    exogenous variables in the display of decision rules and in
+    the model_info command.
+  * Declaring a trend_var variable while not having a
+    var(deflator=...) statement would cause the preprocessor to
+    crash.
+  * Macro processor: error messages following a @#define,
+    @#include or @#includepath directive could in some cases point
+    to a line number off by 1.
+  * Perfect foresight simulations: the debug option would not
+    preserve sparsity, causing out of memory errors.
+- Make doc packages noarch.
+
+-------------------------------------------------------------------
 Mon Apr 10 20:53:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add dynare-add-missing-include.patch: Add missing includes, now
