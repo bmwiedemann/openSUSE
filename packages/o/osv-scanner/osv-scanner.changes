@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:43:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.3.2:
+  * Fix sbom scanning code (#360)
+  * 1.3.2 Release (#359)
+  * Refactor reporter to interfaces (#345)
+  * Update all minor dependencies without spdx (#358)
+  * chore(deps): update workflows (#334)
+  * Better SBOM documentation and error message (#349)
+  * Move a specific regex to static variable (#346)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#328)
+  * chore(deps): bump nokogiri from 1.14.1 to 1.14.3 in /docs
+    (#338)
+  * chore(deps): bump commonmarker from 0.23.8 to 0.23.9 in /docs
+    (#337)
+  * SBOM parsing improvements. (#339)
+  * Make the reporter public (#341)
+  * Set `skip-pkg-cache: true` for golangci-lint (#340)
+  * Support PNPM v6+ Lockfile (#325)
+  * chore(deps): update alpine:3.17 docker digest to 124c7d2 (#326)
+  * Call analysis note fixed.  (#331)
+  * Add configs to ignore test vulnerabilities (#329)
+
+-------------------------------------------------------------------
 Thu Mar 30 08:10:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.3.1:
