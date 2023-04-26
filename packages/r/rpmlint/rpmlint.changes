@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 24 08:58:05 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230424.e2a5b62:
+  * port to get_tested_path instead of testpath
+  * Allow *args for get_tested_path.
+  * tests: use get_tested_path rather than testpath
+
+-------------------------------------------------------------------
+Mon Apr 24 08:34:50 UTC 2023 - mliska@suse.cz
+
+- Update to version 2.4.0+git20230424.b8b7e4e:
+  * Remove trailing whitespace.
+  * pytest: fix one warning
+  * Introducing new file 'pytest.ini' a conf file for pytest (#1047)
+  * Add rpmlint.svg with the new rpmlint logo
+-Rebase disable-flake-and-cov.patch.
+
+-------------------------------------------------------------------
 Fri Apr 21 10:15:32 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230421.f2ea8ab:

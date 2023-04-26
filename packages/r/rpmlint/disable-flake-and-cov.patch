@@ -1,10 +1,12 @@
-diff --git a/setup.cfg b/setup.cfg
-index f9d99831..3ef7694a 100644
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -12,4 +12,4 @@ import-order-style = google
- application-import-names = Testing
- 
- [tool:pytest]
--addopts = -vv --cov=rpmlint -n auto -p no:legacypath
-+addopts = -vv -n auto -p no:legacypath
+diff --git a/pytest.ini b/pytest.ini
+index 819ea304..06b8aa7d 100644
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -1,7 +1,6 @@
+ [pytest]
+ addopts =
+     -vv
+-    --cov=rpmlint
+     -n auto
+     -p no:legacypath
+ pythonpath= .
