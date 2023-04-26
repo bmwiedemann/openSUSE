@@ -69,7 +69,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for o
-License:        BSD-3-Clause and GFDL-1.2-only and GPL-2.0-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
+License:        BSD-3-Clause and GFDL-1.3-or-later and GPL-2.0-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-o-rpmlintrc
@@ -4887,7 +4887,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-lualatex-doc
 Version:        %{texlive_version}.%{texlive_noarch}.svn30473
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        A guide to use of LaTeX with LuaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
@@ -4947,7 +4947,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-lualatex-doc-de
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn30474
 Release:        0
-License:        GFDL-1.2-only
+License:        GFDL-1.3-or-later
 Summary:        Guide to LuaLaTeX (German translation)
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
