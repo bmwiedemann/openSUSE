@@ -1181,6 +1181,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstde265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmodplug.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstopenaptx.so
 %if %{with openh264}
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so
 %endif
