@@ -27,15 +27,9 @@ URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 
-BuildRequires:  pkgconfig
-# Use cmake3 package on SLE12 because cmake is too old (version 3.5)
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-BuildRequires:  cmake3-full >= 3.10
-BuildRequires:  gcc11-c++
-%else
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-%endif
+BuildRequires:  pkgconfig
 # only TW has fmt
 %if 0%{?suse_version} > 1500
 # For blackbox tests
@@ -71,14 +65,10 @@ other applications.
 %autosetup -p1
 
 %build
-# Use g++-11 to build a C++17 codebase
 # Examples require QT5-base/multimedia, but doing so creates a cycle
 # Blackbox tests require fmt
 %cmake \
     -DBUILD_EXAMPLES=OFF \
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-    -DCMAKE_CXX_COMPILER=/usr/bin/g++-11 \
-%endif
 %if 0%{?suse_version} < 1550
     -DBUILD_BLACKBOX_TESTS=OFF
 %endif
