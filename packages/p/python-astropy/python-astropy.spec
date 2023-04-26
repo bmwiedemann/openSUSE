@@ -54,7 +54,7 @@
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause

@@ -1531,4 +1531,12 @@
     <comment>- Don't test with skyfield on python311: gh#brandon-rhodes/assay#15</comment>
     <requestid>1066659</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1380f6dd75c9358d8bf5413b0c54ab20</srcmd5>
+    <version>5.2.2</version>
+    <time>1682522806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082980</requestid>
+  </revision>
 </revisionlist>
