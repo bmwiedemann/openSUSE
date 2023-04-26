@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 24 11:06:22 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update riscv64 bootstrap compiler
+
+-------------------------------------------------------------------
 Mon Apr  3 09:13:52 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update bootstrap compiler to 9.2.3 using hadrian build 

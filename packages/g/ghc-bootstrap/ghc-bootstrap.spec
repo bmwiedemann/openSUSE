@@ -62,7 +62,7 @@ Source13:       ghc-9.2.3-powerpc64le-unknown-linux.tar.xz
 Source14:       ghc-9.2.3-x86_64-unknown-linux.tar.xz
 Source16:       ghc-9.2.3-s390x-ibm-linux.tar.xz
 Source17:       ghc-9.2.3-aarch64-unknown-linux.tar.xz
-Source19:       ghc-8.10.4-riscv64-unknown-linux.tar.xz
+Source19:       ghc-9.2.3-riscv64-unknown-linux.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -80,13 +80,8 @@ Requires:       pkgconfig(libffi)
 Provides:       ghc-bootstrap-devel
 ExclusiveArch:  ppc64 ppc64le x86_64 s390x aarch64 riscv64
 AutoReq:        off
-%ifarch riscv64
-Version:        8.10.4
-Release:        0
-%else
 Version:        9.2.3
 Release:        0
-%endif
 %ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif
@@ -117,19 +112,11 @@ cp %{SOURCE19} .
 
 %build
 tar Jxf ghc-%{version}-%{longarch}-%{sysname}-linux.tar.xz
-%ifarch riscv64
-cd ghc-%{version}
-%else
 cd ghc-%{version}-%{longarch}-%{sysname}-linux
-%endif
 # FIXME: you should use the %%configure macro
 
 %install
-%ifarch riscv64
-cd ghc-%{version}
-%else
 cd ghc-%{version}-%{longarch}-%{sysname}-linux
-%endif
 
 ./configure --prefix=/opt
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
