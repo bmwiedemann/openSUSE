@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-mahjongg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/GnomeMahongg
 Source0:        https://download.gnome.org/sources/gnome-mahjongg/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 26.patch -- Fix build with meson 0.60 and newer
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/26.patch
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/26.patch -- Fix build with meson 0.60 and newer
+Patch0:         26.patch
+# PATCH-FIX-UPSTREAM fix-new-cairo-select-tile.patch -- Fix selecting a tile since cairo 1.17.8
+Patch1:         fix-new-cairo-select-tile.patch
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

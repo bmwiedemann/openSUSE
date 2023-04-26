@@ -1,4 +1,4 @@
-From 7604f8c8311f1088293596e639fefafdbeb73235 Mon Sep 17 00:00:00 2001
+From a2037b0747163601a5d5b57856d037eecf3a4db7 Mon Sep 17 00:00:00 2001
 From: Jan Beich <jbeich@FreeBSD.org>
 Date: Mon, 24 Jan 2022 11:22:48 +0000
 Subject: [PATCH] meson: drop unused argument for i18n.merge_file()
@@ -11,11 +11,11 @@ data/meson.build:45:0: ERROR: Function does not take positional arguments.
  data/meson.build | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/data/meson.build b/data/meson.build
-index 8325c1b..063e839 100644
---- a/data/meson.build
-+++ b/data/meson.build
-@@ -22,7 +22,6 @@ install_data ('smooth.png', install_dir: join_paths (pkgdatadir, 'themes'))
+Index: gnome-mahjongg-3.38.3/data/meson.build
+===================================================================
+--- gnome-mahjongg-3.38.3.orig/data/meson.build
++++ gnome-mahjongg-3.38.3/data/meson.build
+@@ -22,7 +22,6 @@ install_data ('smooth.png', install_dir:
  install_data ('edu_kang_xi.png', install_dir: join_paths (pkgdatadir, 'themes'))
  
  desktop_file = i18n.merge_file (
@@ -32,6 +32,3 @@ index 8325c1b..063e839 100644
                   input: 'org.gnome.Mahjongg.appdata.xml.in',
                   output: 'org.gnome.Mahjongg.appdata.xml',
                   install: true,
--- 
-GitLab
-

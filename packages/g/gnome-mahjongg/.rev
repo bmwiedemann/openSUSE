@@ -205,4 +205,24 @@
     <comment></comment>
     <requestid>951431</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d79397277a7d1ef13636b18208a441e0</srcmd5>
+    <version>3.38.3</version>
+    <time>1682522784</time>
+    <user>dimstar_suse</user>
+    <comment>- Redownload 26.patch from upstream, changed since it is now
+  checked-in upstream, and we added pre check-in. However this
+  leads to a need for rebase, do so, and no longer link to the
+  patch upstream in spec.
+
+- Re-generate fix-new-cairo-select-tile.patch against the 3.38.3
+  sources
+
+- Add fix-new-cairo-select-tile.patch: Fix selecting a tile since
+  cairo 1.17.8. Cairo 1.17.8 includes a fix for out of range
+  coordinates which exposed a problem with the values used to
+  translate the context in GameView.find_tile() (boo#1209827).
+  https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/35</comment>
+    <requestid>1082973</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 26 09:50:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Redownload 26.patch from upstream, changed since it is now
+  checked-in upstream, and we added pre check-in. However this
+  leads to a need for rebase, do so, and no longer link to the
+  patch upstream in spec.
+
+-------------------------------------------------------------------
+Wed Apr 26 09:03:28 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Re-generate fix-new-cairo-select-tile.patch against the 3.38.3
+  sources
+
+-------------------------------------------------------------------
+Sun Apr 23 20:04:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-new-cairo-select-tile.patch: Fix selecting a tile since
+  cairo 1.17.8. Cairo 1.17.8 includes a fix for out of range
+  coordinates which exposed a problem with the values used to
+  translate the context in GameView.find_tile() (boo#1209827).
+  https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/35
+
+-------------------------------------------------------------------
 Wed Feb  2 15:43:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 26.patch: Fix build with meson 0.60 and newer.
