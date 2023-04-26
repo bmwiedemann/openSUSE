@@ -1,0 +1,6 @@
+<package name="nvtop" project="openSUSE:Factory">
+  <title>nvtop</title>
+  <description>Nvtop stands for NVidia TOP, a (h)top like task monitor for AMD and NVIDIA GPUs. It can handle multiple GPUs and print information about them in a htop familiar way.</description>
+  <devel project="utilities" package="nvtop"/>
+  <url>https://github.com/Syllo/nvtop</url>
+</package>

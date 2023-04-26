@@ -1,0 +1,257 @@
+-------------------------------------------------------------------
+Sat Apr 01 17:37:28 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 3.0.1+29:
+  + Fix typo in pci id.
+  + Add pre-parsed hardware info.
+  + Update copyrights.
+  + Fix monitored gpu selection logic.
+  + Fix multiple gpus selection.
+  + Fix a unused case.
+  + Add license.
+  + Add copyright info.
+  + New gpus support using a local gpu type database.
+  + hjkl motion keys.
+- Add %%doc README.markdown.
+
+-------------------------------------------------------------------
+Sun Nov 06 23:28:59 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 3.0.1:
+  * Don't overwrite usage for graphics+compute processes.
+  * Expose processes that are both graphical and compute.
+  * Fix nvtop process hiding.
+  * Move misplaced assertion.
+- Changes from version 3.0.0:
+  * Update documentation.
+  * Option to hide nvtop from the process list.
+  * Clang-format all.
+- Changes from 2.0.3+4:
+  * Option to toggle startup messages.
+  * Don't print the infos to stdout.
+  * Fix spacing.
+  * Save message option and fix multidevice save.
+  * Support info window.
+  * Support info messages.
+  * Save monitored gpus to config.
+  * Setup window to select gpus.
+  * Dynamic gpu monitored list.
+  * Rework interface for gpu select option.
+  * Remove GPU mask option.
+  * Extract pdev for all devices.
+  * Fix for libudev wrapper.
+  * Readme update for Intel support.
+  * Don't need device discovery for NVIDIA only.
+  * Fix FindUDev and FindSystemd for older cmake.
+  * Show intel ENC/DEC together.
+  * Fix integrated AMDGPU drm and fdinfo usage mismatch.
+  * Fix macro extra arguments.
+  * Mark AMDGPU integrated gpu as such.
+  * Fix amdgpu null pointer deref.
+  * Fix intel and integrated GPU support.
+  * Use device discovery for Intel.
+  * Use device discovery for AMDGPU.
+  * Udev/sd-device wrapper.
+  * Fix intel support.
+  * Preliminary Intel support.
+  * nvtop metainfo file.
+  * Auto date for manpage.
+  * Nvtop logo.
+  * add process-control plug to allow killing processes.
+  * Guard against huge jump in usage.
+  * Uint64 literals.
+  * Guard against suspect values reported by fdinfo.
+  * Better validity macros.
+  * Mark valid AMDGPU cache entries.
+  * AMDGPU compute process support.
+  * Add desktop file.
+  * Code reorganization to sweep /proc once per update.
+
+-------------------------------------------------------------------
+Sun Aug 28 17:03:15 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.3+3:
+  * Enable format warnings.
+  * Fix format-security warnings.
+  * Fix drm node file descriptor opening logic.
+  * Fix fdinfo name typo.
+  * Remove unnecessary list and free amdgpu resources.
+  * Support new amdgpu fdinfo interface kernel >=5.19.
+  * Display time on x axis.
+  * Resolve some warning messages.
+
+-------------------------------------------------------------------
+Sun Jul 03 23:26:54 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.2:
+  * Fix encode/decode window cleaning on AMDGPU.
+  * Fix fast resize event not registering.
+  * Put expensive tests behind an option.
+  * Fix plot for a maximum of 64 GPUs.
+  * Expensive test at the end.
+  * Add test for infinite loop fix.
+  * Fix wrong size UCHAR_MAX -> UINT_MAX.
+  * Test for expected empty process window.
+  * Don't redistribute when no rows are left.
+  * Header stack of minimum 1 to avoid divide by zero.
+  * More interface tests.
+  * Resolve compilation warnings.
+  * C++ friendly header for testing.
+  * Don't build testing by default unless in Debug.
+  * Simplified and fixed plot merge algorithm.
+  * Expose max lines in a plot as a macro.
+  * Enable CMake testing using GTest.
+  * Add assert in info_in_plot.
+
+-------------------------------------------------------------------
+Fri May 20 23:15:36 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.1+12:
+  * Project wide allocarray availability check.
+  * Metrics reset cleanup.
+  * Fix AMDGPU encoder value stored in decoder usage.
+  * Update encode and decode rates for AMDGPU.
+  * Alternative path to get GPU usage from process info.
+  * Linear realloc strategy.
+  * realloc to reallocarray to catch potential overflows.
+  * Check for reallocarray availability.
+
+-------------------------------------------------------------------
+Tue May 03 00:58:30 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.1+2:
+  * docs(README): fix typo (querry -> query).
+  * Use pp_dpm_pcie to get the current PCIe link configuration.
+  * Guard GPU family to support older libdrm.
+  * Bump initial major release with AMDGPU support.
+  * Disable over-verbose warnings and enable useful ones.
+  * Fix goto label not preceding a statement.
+  * Dev tooling improvement.
+  * Update README and manpage with AMDGPU support info.
+  * Use libdrm for AMDGPU support.
+  * AMDGPU power cap info.
+  * AMDGPU max temps and PCIe gen/width and usage.
+  * Fan speed extraction from sysfs.
+  * Don't close negative file descriptors and fix error check.
+  * Convert AMDGPU watts to the datastructure milliwatts.
+  * Reset return status when handle or function are not loaded.
+  * Get the right gpu name in the setup window.
+  * extract_gpuinfo_amdgpu: Support per-process GPU usage.
+  * Add basic global (not per-process) GPU usage for AMDGPU.
+  * Prepare mask for inclusion of multiple vendors.
+  * Make GPU vendors use a hooking mechanism.
+  * Make devices into a linked list and make use container_of.
+  * typedef struct foo -> struct foo.
+  * extract_gpuinfo_nvidia: Get rid of dlsym cast.
+  * optimization_flags.cmake: Disable quite a few warnings.
+
+-------------------------------------------------------------------
+Mon Dec 13 01:43:09 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 1.2.2+5:
+  * Remove printf statement.
+  * Use the maximum of graphical and sm as GPU speed.
+  * Fix: filter out nvidia utilization samples.
+
+-------------------------------------------------------------------
+Sun Jun 06 14:21:09 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 1.2.1:
+  * Remove TODO file.
+  * Line plot algorithm rewrite.
+  * Call most specific ncurses function.
+  * Rename weirdly named function.
+  * Clear only the updated part of the process window.
+  * Merge process related options to process logic.
+  * Separate the shortcut window logic from process and setup.
+  * end/dec: clear the windows only when needed.
+  * Make changes to please clang-tidy in some cases.
+  * Fix: improve backward compatibility for old drivers.
+  * Fix: potential buffer overflow on process memory buffer.
+  * Fix: search in the two pid info caches for a match.
+  * Fix: not assuming at least one process for pid selection.
+  * Up-to-date screenshots and README.
+
+-------------------------------------------------------------------
+Thu May 20 21:26:43 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.0+34:
+  * All the charts have the same scale.
+  * Fix: chart layout now correctly handles multiple GPUs.
+  * Bump nvtop version to 1.2.
+  * Integration of per process utilization to the interface.
+  * NVIDIA per process utilization info retrieval.
+  * Add the process list metric options to the setup window.
+  * Add a notice about the maximum number of metrics per GPU.
+  * Add the GPU/MEM clock rates to the list of metrics that can be
+    plotted.
+  * Add the fan speed to the list of metrics that can be plotted.
+  * Add the power draw rate to the list of metrics that can be
+    plotted.
+  * Add the a no-modification notice to the generated config file.
+  * Reduce legend size.
+  * Update README and manpage.
+  * Fix: the memory usage was initialized with a wrong metric.
+  * Update interface codebase.
+  * Use a ring buffer to store the chart data.
+  * Fix: encode/decode now correctly cleared and displayed.
+  * Consistency size reduction of menu shortcuts.
+  * Add the update interval as an option.
+  * Setup window implementation.
+  * Configuration file support.
+  * Redisign of program option handling.
+  * Update README and doc following the gpuinfo redesign.
+  * Build system update following the gpuinfo redesign.
+  * Update interface and main compilation units to use the new
+    gpuinfo functions.
+  * Processus info field rename and add missing header.
+  * Per vendor GPU extraction.
+  * Bump uthash version to 2.3.0.
+  * Fix: /proc/<pid>/cmdline may be empty so initialize the string
+    as empty.
+  * More paths for NVML library.
+  * Fix: initialize_device_info failed cause double free.
+
+-------------------------------------------------------------------
+Sun Apr 18 15:43:35 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.0+3:
+  * Interface: plot refresh rate respects the -d option.
+  * Fix: sorting function relied on integer conversion.
+  * Add additional path hints for nvml.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:53:00 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 1.1.0:
+  * Bump version 1.1.0
+  * README.markdown: add gentoo install commands
+- Update _service: Change to @PARENT_TAG@+@TAG_OFFSET@ version
+  scheme, with +0 being stripped when detected.
+
+-------------------------------------------------------------------
+Sun Nov 15 00:47:57 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 1.0.0+git20201111.aa48ce2:
+  * ITF: print power draw or max draw even when both are not
+    provided by the driver
+
+-------------------------------------------------------------------
+Sat Oct 24 23:39:20 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 1.0.0+git20201012.087a025:
+  * Plot: reverse to march other monitoring programs behavior
+  * Build: clear cached variable for build check
+  * Fix: imprecise information from nvml library
+  * Fix: wrong variable was used for column computation
+  * Fix: initialize the correct ammount of plot location
+  * Build: do not use nvml header automatic api upgrade
+  * CMake: add nvml path hints
+  * Doc: fix typo and add encoder/decoder info to manpage
+  * Fix: increase PID field size supporting linux range
+  * Update Arch Linux installation instructions
+
+-------------------------------------------------------------------
+Sat Oct 24 23:39:04 UTC 2020 - malcolmlewis@opensuse.org
+
+- Initial build. 
