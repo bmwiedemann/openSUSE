@@ -26,14 +26,14 @@
 %endif
 
 Name:           python-isort%{psuffix}
-Version:        5.11.4
+Version:        5.12.0
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
 URL:            https://pycqa.github.io/isort/
 # tests and example projects are not packaged for PyPI, get them from Github
 Source:         https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
@@ -42,6 +42,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-colorama >= 0.4.3
 Recommends:     python-pip-api
+Recommends:     python-pip-shims >= 0.5.2
 Recommends:     python-pipreqs
 Recommends:     python-setuptools
 Suggests:       git-core
@@ -70,7 +71,7 @@ isort your python imports for you so you don't have to.
 isort is a Python utility / library to sort imports alphabetically, and
 automatically separated into sections and by type. It provides a command line
 utility, Python library and plugins for various editors to quickly sort all your
-imports. It requires Python 3.6+ to run but supports formatting Python 2 code
+imports. It requires Python 3.8+ to run but supports formatting Python 2 code
 too.
 
 %prep

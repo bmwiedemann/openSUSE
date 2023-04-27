@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 26 19:37:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.12.0
+  * Add the ability to restrict which directories isort works
+    against (#1967) @vkomarov-r7
+  * updated format strings to fstrings (#2076) @marksmayo
+  * Simplify typeshed integration test (#2075) @AlexWaygood
+  * Fix re-export sorter (#2065) @parafoxia
+  * Removal Python 3.7 (#2064) @staticdev
+  * Added test case and fix for cython pure python import (#2063)
+    @jtoledo1974
+
+-------------------------------------------------------------------
 Thu Jan 19 11:36:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.11.4
