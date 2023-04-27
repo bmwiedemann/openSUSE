@@ -1,7 +1,7 @@
 #
-# spec file for package jnr-unixsocket
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global cluster jnr
 Name:           %{cluster}-unixsocket
-Version:        0.38.8
+Version:        0.38.19
 Release:        0
 Summary:        Unix sockets for Java
 License:        Apache-2.0
