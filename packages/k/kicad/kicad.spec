@@ -20,8 +20,8 @@
 # symbol libraries from version 7.0.0
 %define compatversion 7.0.0
 Name:           kicad
-Version:        7.0.1
-%define file_version 7.0.1
+Version:        7.0.2
+%define file_version 7.0.2
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  libboost_filesystem-devel-impl
 BuildRequires:  libboost_system-devel-impl >= 1.71
 BuildRequires:  libboost_test-devel-impl
 BuildRequires:  libngspice-devel
+BuildRequires:  memory-constraints
 BuildRequires:  occt-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-pybind11-devel
@@ -134,6 +135,7 @@ sed -i -e '/SWIG_OPTS/ { s/ -O/ -py3/ ; s/ -fastdispatch//}' pcbnew/CMakeLists.t
 %if 0%{?suse_version} < 1550
 export CXX=g++-11 CC=gcc-11
 %endif
+%limit_build -m 1500
 %cmake \
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
@@ -176,9 +178,11 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %find_lang %{name}
 
 %check
-%ifarch %{ix86}
-# https://gitlab.com/kicad/code/kicad/-/issues/10149
+%ifarch %{ix86} aarch64
+# ix86: https://gitlab.com/kicad/code/kicad/-/issues/10149
+# aarch64: https://sourceforge.net/p/ngspice/bugs/622/
 %ctest --exclude-regex qa_eeschema
+%ctest --tests-regex qa_eeschema || true
 %else
 %ctest
 %endif
