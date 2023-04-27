@@ -23,7 +23,7 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.12.9.0
+Version:        1.12.10.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -34,14 +34,20 @@ Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY
 BuildRequires:  OpenEXR-devel >= 2.3
 BuildRequires:  OpenImageIO >= 2.2
 BuildRequires:  bison
-BuildRequires:  clang-devel > 7
+%if 0%{?suse_version} > 1500
+#!BuildIgnore:  clang-tools
+BuildRequires:  clang15-devel
+BuildRequires:  llvm15-devel
+%else
+BuildRequires:  clang-devel > 9
+BuildRequires:  llvm-devel > 9
+%endif
 BuildRequires:  cmake >= 3.12
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  llvm-devel > 9
 %ifnarch %{arm}
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel

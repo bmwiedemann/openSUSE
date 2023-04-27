@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr  1 09:50:52 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 1.12.10.0:
+  + feat(testrender): Modify testrender so that it correctly sets
+    raytype to "camera" for camera rays, "shadow" for shadow rays,
+    and "diffuse" for all secondary rays. Also rerun the shades for
+    background shader group on the camera rays rather than use the
+    cached map. This helps the MaterialX project use testrender for
+    certain unit tests and verification. #1648 #1649
+  + feat: Expose llvm groupdata size as a shadergroup attribute
+    "llvm_groupdata_size". #1642
+  + fix: Crash could result from uncaught exception in OpenColorIO
+    when calling transformc with derivatives for color spaces that
+    require OCIO.  #1646
+  + fix: certain uses of fmod() in shaders could fail to generate
+    LLVM code correctly, due to a missing implementation for the
+    fmod(triple,float) varieties. #1643
+  + build: Change snprintf formatting to satisfy some compilers.
+    #1640
+  + CI: Fix broken Mac ci. #1647
+- Force build with LLVM 15 on TW
+- Add a BuildIgnore for clang-tools, that would render the llvm15
+  containment ineffective otherwise (by depending on clang16).
+
+-------------------------------------------------------------------
 Wed Feb 15 12:58:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.9.0:
@@ -31,6 +56,11 @@ Sat Dec 10 21:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Test against OpenColorIO 2.2. #1616
   * Build: Fix how version overrides work to reduce the chance of user
     mistakes.
+
+-------------------------------------------------------------------
+Sat Dec  3 11:21:09 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add 4G memory _constraints
 
 -------------------------------------------------------------------
 Fri Nov  4 16:54:56 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
