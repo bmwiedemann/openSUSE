@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint-ignore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pylev}
 BuildRequires:  %{python_module pylint > 2.4}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-astroid > 2.1.0

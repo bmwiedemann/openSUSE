@@ -30,4 +30,12 @@
 </comment>
     <requestid>1010894</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6a7d38fded5bb83f96a3ab11e2445925</srcmd5>
+    <version>2022.1025</version>
+    <time>1682618486</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on typing_extensions.</comment>
+    <requestid>1083177</requestid>
+  </revision>
 </revisionlist>

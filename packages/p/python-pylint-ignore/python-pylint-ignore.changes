@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 27 06:55:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on typing_extensions. 
+
+-------------------------------------------------------------------
 Fri Oct 14 11:44:33 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add update-alternatives requires
