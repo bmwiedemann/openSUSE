@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 26 14:37:57 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.6.9
+  * load dxcb if XDG_CURRENT_DESKTOP set to DDE
+  * Fix bugs
+- Add support-Qt-5_15_8.patch and support-Qt-5_15_9.patch
+
+-------------------------------------------------------------------
 Fri Apr  7 07:46:54 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Fix build with Qt 5.15.8+kde185
+
+-------------------------------------------------------------------
+Mon Mar 27 13:34:43 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.6.5
+  * Add support for 5.15.7
+  * Support multi split screen
+  * Allow specify include path of qtxcb private headers
+- Disable wayland support
 
 -------------------------------------------------------------------
 Fri Mar 24 05:48:32 UTC 2023 - Max Lin <mlin@suse.com>
