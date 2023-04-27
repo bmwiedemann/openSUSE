@@ -1,4 +1,8 @@
 -------------------------------------------------------------------
+Wed Apr 26 16:58:54 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Disable thread_annotations-fix-build-with-system-abseil.patch on Tumbleweed to fix FTBFS with Abseil 20230125.
+
+-------------------------------------------------------------------
 Mon Apr 17 15:43:58 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Add Revert-e2c4acd-apply-csp-correctly-when-contextIsolation-false.patch
   * revert changes causing crash of VSCode: https://github.com/microsoft/vscode/pull/179991

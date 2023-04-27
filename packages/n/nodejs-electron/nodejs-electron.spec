@@ -178,7 +178,7 @@ BuildArch:      i686
 %if %{without clang}
 %bcond_without system_abseil
 
-%if 0%{?fedora} >= 38
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 38
 %bcond_without abseil_2023
 %else
 %bcond_with abseil_2023
