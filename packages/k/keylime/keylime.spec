@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.7.0
+Version:        7.0.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -38,10 +38,9 @@ Source2:        %{name}-user.conf
 Source3:        logrotate.%{name}
 Source4:        tmpfiles.%{name}
 # openSUSE adjustments for generated configuration files
-Source10:       agent.conf.diff
-Source11:       registrar.conf.diff
-Source12:       verifier.conf.diff
-Source13:       tenant.conf.diff
+Source10:       registrar.conf.diff
+Source11:       verifier.conf.diff
+Source12:       tenant.conf.diff
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -103,19 +102,6 @@ Provides:       user(keylime)
 %description -n %{name}-tpm_cert_store
 Subpackage of %{name} for storing the TPM certificates.
 
-%package -n %{name}-agent
-Summary:        Keylime agent service
-Requires:       %{name}-config = %{version}
-Requires:       %{name}-logrotate = %{version}
-Requires:       %{name}-tpm_cert_store = %{version}
-Requires:       python3-%{name} = %{version}
-Recommends:     %{name}-firewalld = %{version}
-Recommends:     dmidecode
-Conflicts:      rust-keylime
-
-%description -n %{name}-agent
-Subpackage of %{name} for agent service.
-
 %package -n %{name}-registrar
 Summary:        Keylime registrar service
 Requires:       %{name}-config = %{version}
@@ -170,17 +156,17 @@ Subpackage of %{name} for logrotate for Keylime services
 export VERSION=%{version}
 %python_install
 
-patch -s --fuzz=0 config/agent.conf < %{SOURCE10}
-patch -s --fuzz=0 config/registrar.conf < %{SOURCE11}
-patch -s --fuzz=0 config/verifier.conf < %{SOURCE12}
-patch -s --fuzz=0 config/tenant.conf < %{SOURCE13}
+rm config/agent.conf
+patch -s --fuzz=0 config/registrar.conf < %{SOURCE10}
+patch -s --fuzz=0 config/verifier.conf < %{SOURCE11}
+patch -s --fuzz=0 config/tenant.conf < %{SOURCE12}
 
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_agent
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_attest
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ca
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_convert_runtime_policy
-%python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_create_policy
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_sign_runtime_policy
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_tenant
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_upgrade_config
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_userdata_encrypt
@@ -192,8 +178,6 @@ for cfg in config/*.conf; do
   install -Dpm 0600 "$cfg" %{buildroot}%{_distconfdir}/%{srcname}/$(basename "$cfg")
 done
 
-install -Dpm 0644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
-install -Dpm 0644 ./services/var-lib-%{srcname}-secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
 install -Dpm 0644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
 install -Dpm 0644 ./services/%{srcname}_registrar.service %{buildroot}%{_unitdir}/%{srcname}_registrar.service
 
@@ -211,24 +195,24 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 # %%pyunittest -v
 
 %post
-%python_install_alternative %{srcname}_agent
 %python_install_alternative %{srcname}_attest
 %python_install_alternative %{srcname}_ca
 %python_install_alternative %{srcname}_convert_runtime_policy
-%python_install_alternative %{srcname}_ima_emulator
+%python_install_alternative %{srcname}_create_policy
 %python_install_alternative %{srcname}_registrar
+%python_install_alternative %{srcname}_sign_runtime_policy
 %python_install_alternative %{srcname}_tenant
 %python_install_alternative %{srcname}_upgrade_config
 %python_install_alternative %{srcname}_userdata_encrypt
 %python_install_alternative %{srcname}_verifier
 
 %postun
-%python_uninstall_alternative %{srcname}_agent
 %python_uninstall_alternative %{srcname}_attest
 %python_uninstall_alternative %{srcname}_ca
 %python_uninstall_alternative %{srcname}_convert_runtime_policy
-%python_uninstall_alternative %{srcname}_ima_emulator
+%python_uninstall_alternative %{srcname}_create_policy
 %python_uninstall_alternative %{srcname}_registrar
+%python_uninstall_alternative %{srcname}_sign_runtime_policy
 %python_uninstall_alternative %{srcname}_tenant
 %python_uninstall_alternative %{srcname}_upgrade_config
 %python_uninstall_alternative %{srcname}_userdata_encrypt
@@ -266,31 +250,15 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %postun -n %{srcname}-registrar
 %service_del_postun %{srcname}_registrar.service
 
-%pre -n %{srcname}-agent
-%service_add_pre %{srcname}_agent.service
-%service_add_pre var-lib-%{srcname}-secure.mount
-
-%post -n %{srcname}-agent
-%service_add_post %{srcname}_agent.service
-%service_add_post var-lib-%{srcname}-secure.mount
-
-%preun -n %{srcname}-agent
-%service_del_preun %{srcname}_agent.service
-%service_del_preun var-lib-%{srcname}-secure.mount
-
-%postun -n %{srcname}-agent
-%service_del_postun %{srcname}_agent.service
-%service_del_postun var-lib-%{srcname}-secure.mount
-
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/%{srcname}_agent
 %python_alternative %{_bindir}/%{srcname}_attest
 %python_alternative %{_bindir}/%{srcname}_ca
 %python_alternative %{_bindir}/%{srcname}_convert_runtime_policy
-%python_alternative %{_bindir}/%{srcname}_ima_emulator
+%python_alternative %{_bindir}/%{srcname}_create_policy
 %python_alternative %{_bindir}/%{srcname}_registrar
+%python_alternative %{_bindir}/%{srcname}_sign_runtime_policy
 %python_alternative %{_bindir}/%{srcname}_tenant
 %python_alternative %{_bindir}/%{srcname}_upgrade_config
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
@@ -316,12 +284,6 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{_sysusersdir}/%{srcname}-user.conf
 %ghost %dir %attr(0700,keylime,tss) %{_rundir}/%{srcname}
 %{_tmpfilesdir}/%{srcname}.conf
-
-%files -n %{srcname}-agent
-%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/agent.conf
-%{_unitdir}/%{srcname}_agent.service
-%{_unitdir}/var-lib-%{srcname}-secure.mount
 
 %files -n %{srcname}-registrar
 %dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}

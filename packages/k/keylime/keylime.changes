@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:08:04 UTC 2023 - aplanas@suse.com
+
+- Remove the agent subpackage
+- Remove keylime_ima_emulator binary
+- Add keylime_create_policy and keylime_sign_runtime_policy
+- Update to version v7.0.0:
+  * bump version to 7.0.0
+  * bump to version 6.8.0
+  * build-sys: Use comma-separated list for running multiple linters
+  * tenant: Add brackets to ipv6 addresses when used in URL
+  * registrar: Detect IPv6 addresses to bind to and set address_family
+  * setup.cfg: use license_files instead of license_file
+  * Do not run Packit tests on F38
+  * tests: Use Rust agent from COPR for e2e tests
+  * tenant: Raise a UserError on status_code != 200 returned from server
+  * Add missing test from keylime testsuite to e2e plan
+  * tests: remove tpm2-tss downgrade as Fedora bug got fixed
+  * da: non-zero exit code for attestation replay failures.
+  * ca:CLI utilities (keylime_ca,keylime_tenant) read password from ca.conf
+  * log: add a barebones log config in case configuration files not present
+  * Fix typo
+  * Use subtest in unittest.
+  * create_policy: Strip newline from file path read from measurement list
+  * create_policy: Validate policies against the JSON schema
+  * create_policy: Clarify help text for IMA measurement list
+  * create_policy: Add list of ignored keyrings after processing base policy
+  * create_policy: Add support for adding an IMA exclude list to the policy
+  * create_policy: Avoid duplicate entries in lists
+  * codestyle: Annotate with RuntimePolicyType and adapt code
+  * codestyle: Import urllib to make pyright happy
+  * Introduce PathLike_str for older python versions
+  * codestyle: Annotate create_policy.py and add to mypy
+  * docs: Update docs to reflect renaming of create_policy tool
+  * create_policy: Fix issues related to filelists-ext
+  * Move create_policy to keylime/cmd and install as keylime_create_policy
+  * Implement DSSE signature verification for runtime policies
+  * tenant: Raise UserError on (add/update)runtimepolicy status codes 401
+  * tests: Split unittests into two runs to avoid issue
+  * ima: Add a JSON schema for the runtime policy and use it on given policies
+  * Implement DSSE policy signing tool
+  * ima: Derive RUNTIME_POLICY_GENERATOR from enum.IntEnum
+  * packit: use rust agent for e2e tests
+  * services: remove agent systemd services
+  * tests: remove unused code
+  * tests: remove agent from config test
+  * tpm_ek_ca: remove check_tpm_cert_store(..) function
+  * tpm, measured boot: remove refrences to virtual TPMs
+  * tpm: remove unsed variables and some refactoring
+  * algorithms: remove unused from_algorithm method
+  * mpypy, pyright: remove refrences to agent in ignores
+  * config: remove refrences to agent
+  * crypto: remove unused functions
+  * secure_mount: removal
+  * tpm: remove unsed functions
+  * registar_client: remove functions only used by the agent
+  * user_utils: removal
+  * revocation notifier: remove zeroMQ client code
+  * ca_util: remove listen command and related functions
+  * revocation actions: remove all
+  * ima emulator: full removal
+  * agent: remove agent code
+  * agentstates: rename tpm_clocking to tpm_clockinfo
+
+-------------------------------------------------------------------
 Tue Mar 14 08:09:07 UTC 2023 - aplanas@suse.com
 
 - Update to version v6.7.0:
