@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 14:37:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Fri May 20 12:54:09 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4.13

@@ -1,7 +1,7 @@
 #
 # spec file for package tkimg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Patch1:         fix-aarch64-neon.patch
 BuildRequires:  dos2unix
 BuildRequires:  tcllib
 BuildRequires:  tk-devel
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xvfb-run
+BuildRequires:  pkgconfig(x11)
 
 %description
 This package contains a collection of image format handlers for the Tk
@@ -72,7 +72,6 @@ chmod a-x %buildroot%tcl_archdir/*/*.a
 xvfb-run make test DESTDIR=%buildroot
 
 %files
-%defattr(-,root,root,-)
 %doc ANNOUNCE ChangeLog README Reorganization.Notes.txt changes doc/*.htm demo.tcl
 %license license.terms
 %doc %_mandir/*/*
@@ -80,7 +79,6 @@ xvfb-run make test DESTDIR=%buildroot
 %exclude %tcl_archdir/*/*.a
 
 %files devel
-%defattr(-,root,root,-)
 %_includedir/*
 %tcl_archdir/*/*.a
 
