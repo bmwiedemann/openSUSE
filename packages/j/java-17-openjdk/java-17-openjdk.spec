@@ -32,8 +32,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       6
-%global buildver        10
+%global updatever       7
+%global buildver        7
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -175,6 +175,7 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch300:       JDK-8282944.patch
+Patch301:       JDK-8303509.patch
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
 #
@@ -414,6 +415,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch200 -p1
 
 %patch300 -p1
+%patch301 -p1
 %patch302 -p1
 %patch303 -p1
 
