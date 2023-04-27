@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:00:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs (macros and macro lines),
+  update description.
+
+-------------------------------------------------------------------
+Tue Apr 25 14:25:22 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add baselibs.conf as source to specfile.
+
+-------------------------------------------------------------------
 Mon Apr 15 12:42:51 UTC 2013 - mmeister@suse.com
 
 - Added url as source.
