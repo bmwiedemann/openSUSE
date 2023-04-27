@@ -30,7 +30,7 @@
 %endif
 
 Name:           ansible
-Version:        7.4.0
+Version:        7.5.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -46,11 +46,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.14.4
+BuildRequires:  ansible-core >= 2.14.5
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.9
-Requires:       ansible-core >= 2.14.4
+Requires:       ansible-core >= 2.14.5
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
@@ -70,9 +70,6 @@ automatically.
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete
 done
-
-# fix for wrong shebang:
-sed -i 's|/Users/kbreit/Documents/Programming/ansible_collections/cisco/meraki/venv/bin/python|%{_bindir}/%{ansible_python_executable}|g' ansible_collections/cisco/meraki/scripts/sublime-build/build.py.generic
 
 # remove .keep and .gitignore files
 find ./ansible_collections/ -iname .gitignore -delete
