@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 25 16:01:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 112.0.2
+  * Fix a high memory usage issue with animated images in minimized
+    (or completely covered) windows, especially when using animated
+    themes (bmo#1828587)
+  * Fix an issue where Linux users with bitmap fonts installed may
+    have had entire sections of text invisible to them on some
+    sites (bmo#1827950)
+
+-------------------------------------------------------------------
+Fri Apr 21 09:48:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Include Leap 15.5 in check for which python version is required.
+
+-------------------------------------------------------------------
 Thu Apr 20 13:24:13 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Mozilla Firefox 112.0.1
