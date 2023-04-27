@@ -215,4 +215,20 @@
     <comment></comment>
     <requestid>1081718</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>eb7f1b78a48936b99dffa05bf867263f</srcmd5>
+    <version>1.9.2</version>
+    <time>1682618344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.2
+  Fix regression with truediv and absolute URLs with empty paths
+  causing the raw path to lack the leading /. ((#854)_)
+- update to version 1.9.1
+  * Marked tests that fail on older Python patch releases 
+   (&lt; 3.7.10, &lt; 3.8.8 and &lt; 3.9.2) as expected to fail due to missing
+    a security fix for CVE-2021-23336. ((#850)_)
+- Delete support-python-311.patch, not needed anymore
+</comment>
+    <requestid>1082898</requestid>
+  </revision>
 </revisionlist>
