@@ -1,7 +1,7 @@
 #
-# spec file for package jnr-process
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global cluster jnr
 Name:           %{cluster}-process
-Version:        0.4.5
+Version:        0.4.12
 Release:        0
 Summary:        A ProcessBuilder look-alike based entirely on native POSIX APIs
 License:        Apache-2.0
