@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        6.16.0
+Version:        6.17.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -122,6 +122,7 @@ BuildRequires:  jxrlib-devel >= 0.2.4
 BuildRequires:  libjpeg-turbo >= 2.0.5
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Brotli >= 1.0.9
+BuildRequires:  python3-FontTools >= 4.39.3
 BuildRequires:  python3-Markdown >= 3.3.6
 BuildRequires:  python3-Pillow >= 8.4.0
 BuildRequires:  python3-Pygments >= 2.10.0
@@ -197,6 +198,7 @@ Requires:       python3-css-parser >= 1.0.8
 Requires:       python3-dateutil >= 2.8.2
 #Requires:       python3-dbus-python
 Requires:       python3-dnspython >= 2.1.0
+Requires:       python3-FontTools >= 4.39.3
 Requires:       python3-PyQt6-sip >= 13.4.0
 Requires:       python3-dukpy-kovidgoyal >= 0.3
 Requires:       python3-feedparser >= 6.0.8
