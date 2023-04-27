@@ -1,7 +1,7 @@
-From bc52d15141402d94eeaee618f1df0b540f527b98 Mon Sep 17 00:00:00 2001
+From 3e37bbad6f0a0c2576ad0b9dfe7a4a9290aa2aa0 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/7] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 3/3] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -22,7 +22,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index 21813ec14f8f..0de75b32b7fa 100644
+index 6376001613f7..5fde21a4af8a 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
 @@ -24,6 +24,15 @@ func DefaultApparmorProfile() string {
@@ -30,7 +30,7 @@ index 21813ec14f8f..0de75b32b7fa 100644
  }
  
 +func clobberDefaultAppArmorProfile() error {
-+	if apparmor.IsEnabled() {
++	if apparmor.HostSupports() {
 +		if err := aaprofile.InstallDefault(defaultAppArmorProfile); err != nil {
 +			return fmt.Errorf("AppArmor enabled on system but the %s profile could not be loaded: %s", defaultAppArmorProfile, err)
 +		}
@@ -39,7 +39,7 @@ index 21813ec14f8f..0de75b32b7fa 100644
 +}
 +
  func ensureDefaultAppArmorProfile() error {
- 	if apparmor.IsEnabled() {
+ 	if apparmor.HostSupports() {
  		loaded, err := aaprofile.IsLoaded(defaultAppArmorProfile)
 @@ -37,10 +46,7 @@ func ensureDefaultAppArmorProfile() error {
  		}
@@ -69,10 +69,10 @@ index e3dc18b32b5e..9c7723056268 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index f15a4b038498..2f0c23bc62c9 100644
+index 40abbe8cc19c..05c6db818c30 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -857,8 +857,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+@@ -807,8 +807,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
  		logrus.Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
@@ -85,5 +85,5 @@ index f15a4b038498..2f0c23bc62c9 100644
  	}
  
 -- 
-2.38.1
+2.40.0
 

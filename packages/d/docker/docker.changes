@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 27 14:09:05 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 23.0.5-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/23.0/#2305>.
+- Rebase patches:
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 00:31:54 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 23.0.4-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/23.0/#2304>. bsc#1208074
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+- Renumbered patches:
+  - 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+- Remove upstreamed patches:
+  - 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+  - 0006-bsc1193930-vendor-update-golang.org-x-crypto.patch
+  - 0007-bsc1200022-fifo.Close-prevent-possible-panic-if-fifo.patch
+- Backport <https://github.com/docker/cli/pull/4228> to allow man pages to be
+  built without internet access in OBS.
+  + cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
 Wed Feb  1 14:33:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.10.23-ce.
