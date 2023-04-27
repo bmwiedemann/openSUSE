@@ -69,7 +69,6 @@ BuildRequires:  fftw3-threads-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-devel
 BuildRequires:  (krita-devel if krita >= 5)
 BuildRequires:  (pkgconfig(gimp-2.0) if gimp < 2.99)
 BuildRequires:  (pkgconfig(gimp-3.0) if gimp >= 2.99)
@@ -86,10 +85,13 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(opencv4)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb-shm)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
 Requires:       gmic-data = %{version}
 
@@ -109,7 +111,7 @@ License:        CECILL-2.1
 Requires:       libgmic3 = %{version}
 
 %description -n libgmic3
-Shared library allows you to use gmic functionality from other
+This shared library allows using gmic functionality from other
 programs.
 
 %description -n libgmic-devel
@@ -203,7 +205,7 @@ cd ..
 popd
 
 %install
-DESTDIR=%{buildroot} make install
+%make_install
 
 # As planned, only providing a Makefile partially works...
 install -m 0644 src/CImg.h %{buildroot}%{_includedir}

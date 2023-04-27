@@ -319,4 +319,12 @@
     <comment>Update to 3.2.3</comment>
     <requestid>1079976</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>93d62d0305abb452ac1f7b957be2a695</srcmd5>
+    <version>3.2.3</version>
+    <time>1682618459</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)</comment>
+    <requestid>1083102</requestid>
+  </revision>
 </revisionlist>

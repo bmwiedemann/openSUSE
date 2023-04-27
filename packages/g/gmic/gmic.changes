@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 18:59:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Mon Apr 17 09:31:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.3. No changelog
