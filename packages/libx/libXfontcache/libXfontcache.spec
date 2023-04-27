@@ -1,7 +1,7 @@
 #
 # spec file for package libXfontcache
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ Release:        0
 Summary:        X TrueType font cache extension client library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXfontcache
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXfontcache/
 Source:         http://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source1:        baselibs.conf
 #git#BuildRequires:	autoconf >= 2.57, automake, libtool
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -63,14 +63,14 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 %fdupes %buildroot/%_prefix
 
@@ -79,11 +79,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libXfontcache.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libXfontcache.so
 %_libdir/pkgconfig/xfontcache.pc
 %_mandir/man3/*
