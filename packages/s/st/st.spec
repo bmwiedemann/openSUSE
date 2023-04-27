@@ -35,7 +35,9 @@ BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xproto)
 Requires:       terminfo
 
 %description
