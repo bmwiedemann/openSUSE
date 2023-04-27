@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 26 11:17:30 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 4.4.2:
+  * Make NetworkX optional. sedta and seinfoflow tools, along with the
+    equivalent analyses in apol require NetworkX.
+  * Remove neverallow options in sesearch and apol. These are not usable
+    since they are removed in the final binary policy.
+- Drop make_networkx_optional.patch, now merged upstream
+
+-------------------------------------------------------------------
 Mon Feb  6 16:08:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 4.4.1:

@@ -26,7 +26,7 @@ print(rpm.expand("%{?" .. flavor .. "_prefix}%{!?" .. flavor .. "_prefix:python3
 %define pythons %python3_primary_provider
 
 Name:           setools
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
@@ -34,8 +34,6 @@ License:        GPL-2.0-only
 Group:          System/Management
 Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source2:        README.SUSE
-# PATCH-FIX-UPSTREAM https://github.com/SELinuxProject/setools/pull/68
-Patch1:         make_networkx_optional.patch
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
