@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 18 13:54:45 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 3.2.2.1:
+  * Corrects a regression in 3.2.2 which resulted in not drawing any
+    icons for the non-root item of wxGenericTreeCtrl in this release
+    (gh#wxWidgets/wxWidgets#23255).
+- Changes of version 3.2.2:
+  * Fix regression in saving TIFF images that could end up truncated
+  * Fix long standing bug in parsing wxHTTP responses.
+  * Fix memory leak when destroying wxThread
+  * Allow 'T' separator in wxDateTime::ParseDateTime()
+  * Add Serbian translations.
+  * Fix MT-safety problem in wxZipInputStream
+  * Add wxUILocale::GetSystemLocaleId() replacing GetSystemLocale()
+  * Fail when setting unsupported "mixed" locale under Unix
+  * Improve wxWebView::RunScriptAsync() performance
+  * Fix data race when processing events generated in a worker thread.
+  * Fix wxGeneric{List,Tree}Ctrl high DPI icons
+  * Add macros for event tables for missing wxWebView events
+  * Improve month selection in wxGenericCalendarCtrl
+  * Fix maximum length of wxPropertyGrid editors
+  * Add support for Caps/Num/Scroll Lock to wxGetKeyState()
+  * Fix wxToolBar::GetToolBitmapSize() in high DPI under non-MSW
+  * Fix resizing wxGLCanvas with EGL and Wayland
+  * Fix display artefacts when using AUI without compositor under X11
+  * Allow selecting and copying text in wxMessageDialog
+  * Fix initial size of top-level window on Wayland
+  * Improve size and behaviour of in-place editor in wxTreeCtrl
+  * wxQt: Fix creating wxFont using fractional point size
+
+-------------------------------------------------------------------
 Tue Oct  4 21:15:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.1:

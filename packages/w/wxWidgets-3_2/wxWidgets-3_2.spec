@@ -1,7 +1,7 @@
 #
 # spec file for package wxWidgets-3_2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,7 +69,7 @@ Name:           wxQt-3_2
 %define wx_debug %nil
 %define psonum 8_0_0
 %define sonum 8.0.0
-Version:        3.2.1
+Version:        3.2.2.1
 Release:        0
 %define wx_minor 3.2
 Summary:        C++ Library for Cross-Platform Development

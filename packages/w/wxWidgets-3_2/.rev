@@ -183,4 +183,12 @@
 - Rebase soversion.diff with quilt. (forwarded request 1008004 from iznogood)</comment>
     <requestid>1008085</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>11149e607dfeb7e83e96dd0e1858adb2</srcmd5>
+    <version>3.2.2.1</version>
+    <time>1682618378</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083010</requestid>
+  </revision>
 </revisionlist>
