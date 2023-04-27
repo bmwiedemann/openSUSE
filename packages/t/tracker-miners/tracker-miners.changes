@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 25 16:36:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.1:
+  + The tracker-extract-3 service moved all SPARQL queries and
+    updates to a GResource. Consistently uses
+    TrackerSparqlStatement/TrackerResource for updates.
+  + Fixes in uniquely identifying files in BTRFS subvolumes.
+  + Ensure deletion of files lingering in content graphs.
+  + Ensure correct nie:dataSource after moving files between
+    indexed folders.
+  + Optimize mass removal of deleted files found during
+    initialization.
+  + Documentation improvements for the miner services.
+  + Do not let systemd spuriously start the tracker-extract-3
+    service.
+  + Test suite fixes.
+
+-------------------------------------------------------------------
 Sun Mar 26 09:04:09 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
 
 - Add 'tracker' to runtime dependencies (boo#1209737)
