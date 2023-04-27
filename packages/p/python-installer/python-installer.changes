@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 26 20:44:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with any python3 interpreter installed in the buildenv 
+
+-------------------------------------------------------------------
+Mon Apr 24 16:05:22 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use python311 to build if sle15_python_module_pythons is defined.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:26:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Tue Mar 28 03:51:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.0:

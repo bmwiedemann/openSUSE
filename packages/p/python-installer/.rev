@@ -63,4 +63,16 @@
 - Only build the wheel once.</comment>
     <requestid>1074810</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f3a81fd9c6af38577e177d80423dc6aa</srcmd5>
+    <version>0.7.0</version>
+    <time>1682618397</time>
+    <user>dimstar_suse</user>
+    <comment>- build with any python3 interpreter installed in the buildenv 
+
+- Use python311 to build if sle15_python_module_pythons is defined.
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083115</requestid>
+  </revision>
 </revisionlist>

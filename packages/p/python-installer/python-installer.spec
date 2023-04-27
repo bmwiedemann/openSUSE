@@ -24,6 +24,7 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-installer%{pkg_suffix}
 Version:        0.7.0
 Release:        0
@@ -50,7 +51,10 @@ A library for installing Python wheels.
 
 %if !%{with test}
 %build
-python3 -m flit_core.wheel
+
+export apython3=$(find %_bindir -name 'python3*[0-9]' -print -quit)
+$apython3 -m flit_core.wheel
+
 %endif
 
 %if !%{with test}
