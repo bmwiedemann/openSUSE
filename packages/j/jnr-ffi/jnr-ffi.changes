@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Dec 18 06:31:31 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v2.2.13
+  * No changelog provided by upstream
+
+-------------------------------------------------------------------
 Mon Mar 21 11:43:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-antrun-pluging >= 3.0.0
@@ -12,6 +18,7 @@ Wed Jul 28 07:37:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 Thu Jul  8 13:08:02 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update with v2.2.4
+  * No changelog provided by upstream
 - Add build dependency on mvn(com.github.jnr:jnr-a64asm)
 - Remove build dependencies on gcc, make
 - Change the package description
