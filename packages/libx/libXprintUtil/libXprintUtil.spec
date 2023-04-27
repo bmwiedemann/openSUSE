@@ -1,7 +1,7 @@
 #
 # spec file for package libXprintUtil
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,12 @@ Release:        0
 Summary:        Xprint printer utility client library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://cgit.freedesktop.org/xorg/lib/libXprintUtil/
+URL:            http://cgit.freedesktop.org/xorg/lib/libXprintUtil/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXprintUtil
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXprintUtil/
 Source:         http://ftp.x.org/pub/X11R7.1/src/lib/%name-X11R7.0-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source1:        baselibs.conf
 #git#BuildRequires:	autoconf >= 2.57, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(printproto)
@@ -71,14 +71,14 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -qn %name-X11R7.0-%version
+%autosetup -n %name-X11R7.0-%version
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post -n %lname -p /sbin/ldconfig
@@ -86,11 +86,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libXprintUtil.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/X11/*
 %_libdir/libXprintUtil.so
 %_libdir/pkgconfig/xprintutil.pc
