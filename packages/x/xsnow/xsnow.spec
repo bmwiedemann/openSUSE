@@ -1,7 +1,7 @@
 #
 # spec file for package xsnow
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xsnow
-Version:        3.6.0
+Version:        3.7.4
 Release:        0
 Summary:        A Christmas Animation
 License:        GPL-3.0-or-later
@@ -30,11 +30,18 @@ Patch0:         xsnow-desktop_file.patch
 Patch1:         xsnow-bindir.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(xtst)
 
 %description
 Xsnow is an application that animates snowfall, Santa and some scenery on your desktop.
@@ -44,9 +51,10 @@ Xsnow runs on most varieties of Linux, and probably on other Unix systems as wel
 
 Xsnow is derived from Rick Jansen's xsnow-1.42.
 
+%lang_package
+
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure --disable-selfrep
@@ -54,6 +62,8 @@ Xsnow is derived from Rick Jansen's xsnow-1.42.
 
 %install
 %make_install
+
+%find_lang %{name}
 
 %files
 %license COPYING
@@ -64,5 +74,7 @@ Xsnow is derived from Rick Jansen's xsnow-1.42.
 %{_datadir}/pixmaps/%{name}.svg
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.appdata.xml
+
+%files lang -f %{name}.lang
 
 %changelog

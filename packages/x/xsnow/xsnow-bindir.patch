@@ -1,7 +1,7 @@
-diff -Nur xsnow-3.6.0-orig/src/Makefile.am xsnow-3.6.0/src/Makefile.am
---- xsnow-3.6.0-orig/src/Makefile.am	2022-12-03 14:03:29.000000000 +0100
-+++ xsnow-3.6.0/src/Makefile.am	2022-12-11 21:06:11.643533594 +0100
-@@ -22,7 +22,7 @@
+diff -Nur xsnow-3.7.4-orig/src/Makefile.am xsnow-3.7.4/src/Makefile.am
+--- xsnow-3.7.4-orig/src/Makefile.am	2023-03-29 16:30:45.000000000 +0200
++++ xsnow-3.7.4/src/Makefile.am	2023-04-27 18:28:21.389544208 +0200
+@@ -23,7 +23,7 @@
  TOCC     = $(top_srcdir)/src/tocc.sh
  TOASCII  = $(top_srcdir)/src/toascii.sh
  
@@ -9,16 +9,16 @@ diff -Nur xsnow-3.6.0-orig/src/Makefile.am xsnow-3.6.0/src/Makefile.am
 +gamesdir = $(exec_prefix)/bin
  games_PROGRAMS = xsnow
  
- xsnow_CPPFLAGS    = $(GTK_CFLAGS) $(X11_CFLAGS) $(GSL_CFLAGS)
-diff -Nur xsnow-3.6.0-orig/src/Makefile.in xsnow-3.6.0/src/Makefile.in
---- xsnow-3.6.0-orig/src/Makefile.in	2022-12-03 14:03:29.000000000 +0100
-+++ xsnow-3.6.0/src/Makefile.in	2022-12-11 21:06:26.579620720 +0100
-@@ -623,7 +623,7 @@
+ xsnow_CPPFLAGS    = $(GTK_CFLAGS) $(X11_CFLAGS) $(GSL_CFLAGS) -DLOCALEDIR=\"$(LOCALEDIR)\" \
+diff -Nur xsnow-3.7.4-orig/src/Makefile.in xsnow-3.7.4/src/Makefile.in
+--- xsnow-3.7.4-orig/src/Makefile.in	2023-03-29 16:30:45.000000000 +0200
++++ xsnow-3.7.4/src/Makefile.in	2023-04-27 18:28:44.621665740 +0200
+@@ -650,7 +650,7 @@
  SUBDIRS = Pixmaps
  TOCC = $(top_srcdir)/src/tocc.sh
  TOASCII = $(top_srcdir)/src/toascii.sh
 -gamesdir = $(exec_prefix)/games
 +gamesdir = $(exec_prefix)/bin
  xsnow_CPPFLAGS = $(GTK_CFLAGS) $(X11_CFLAGS) $(GSL_CFLAGS) \
- 	$(am__append_1)
- xsnow_LDADD = $(GTK_LIBS)   $(X11_LIBS)   $(GSL_LIBS) libxdo.a
+ 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DLANGUAGES='"$(LANGUAGES)"' \
+ 	$(am__append_1) $(am__append_2)
