@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 25 20:43:30 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- git 2.40.1:
+  * CVE-2023-25652: By feeding specially crafted input to git apply
+    --reject, a path outside the working tree can be overwritten
+    with partially controlled contents (corresponding to the
+    rejected hunk(s) from the given patch).
+  * CVE-2023-25815: When Git is compiled with runtime prefix
+    support and runs without translated messages, it still used
+    the gettext machinery to display messages, which subsequently
+    potentially looked for translated messages in unexpected
+    places. This allowed for malicious placement of crafted
+    messages.
+  * CVE-2023-29007: When renaming or deleting a section from a
+    configuration file, certain malicious configuration values may
+    be misinterpreted as the beginning of a new configuration
+    section, leading to arbitrary configuration injection.
+
+-------------------------------------------------------------------
 Thu Apr  6 10:51:06 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - sha256_clone_fix.patch: fix cloning of empty sha256 repositories (jsc#PED-3891)
