@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Apr 26 09:20:58 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1488, fixes the following problems
+  * Ending Insert mode when accessing a hidden prompt buffer.
+  * Crash when passing NULL to setcmdline(). (Andreas Louv)
+  * openSUSE: configure doesn't find the Motif library. (Tony Mechelynck)
+  * Unnecessary checks for the "skip" flag when skipping.
+  * Condition is always true.
+  * Diff test fails on MacOS 13.
+  * Test for prompt buffer is flaky.
+  * Unnecessary redrawing when 'showcmdloc' is not "last".
+  * Code using EVAL_CONSTANT is dead, it is never set.
+  * Typos in source code and tests.
+  * Code indenting is confused by macros.
+  * C++ 20 modules are not recognized.
+  * Shortmess test depends on order of test execution.
+  * No regression test for what patch 9.0.1333 fixes.
+  * Buffer overflow when expanding long file name.
+  * Typo in name of type.
+  * Insufficient testing for getcmdcompltype().
+  * Ruler not drawn correctly when using 'rulerformat'.
+  * Recursively calling :defer function if it does :qa.
+  * Virtual text truncation only works with Unicode 'encoding'.
+  * Strace filetype detection is expensive.
+  * Haiku build fails.
+  * Cannot use an object member name as a method argument.
+  * Jenkinsfiles are not recognized as groovy.
+  * Recursively calling :defer function if it does :qa in a compiled function.
+  * Deferred functions not called from autocommands.
+  * Deferred functions invoked in unexpected order when using :qa and
+  autocommands.
+  * Warnings for function declarations.
+  * ":drop fname" may change the last used tab page.
+  * Busted configuration files are not recognized.
+  * Lines put in non-current window are not displayed. (Marius Gedminas)
+  * Crash when recovering from corrupted swap file.
+  * Filetypes for *.v files not detected properly.
+  * Small source file problems; outdated list of distributed files.
+  * Using popup menu may leave text in the command line.
+  * Decrypting with libsodium may fail if the library changes.
+  * Crash when textprop has a very large "padding" value. (Yegappan Lakshmanan)
+  * += operator does not work on class member.
+  * Coverity warns for using invalid array index.
+  * no functions for converting from/to UTF-16 index.
+  * Parallel make might not work.
+  * Content-type header for LSP channel not according to spec.
+  * xchacha20v2 crypt header is platform dependent.
+
+-------------------------------------------------------------------
 Wed Apr 12 10:47:28 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1443, fixes the following problems

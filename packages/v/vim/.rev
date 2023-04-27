@@ -7010,4 +7010,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Ending Insert mode when accessing a hidden prompt buffer.</comment>
     <requestid>1078626</requestid>
   </revision>
+  <revision rev="347" vrev="1">
+    <srcmd5>386403f6dcda2a551690573f17e5df7f</srcmd5>
+    <version>9.0.1488</version>
+    <time>1682618350</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1488, fixes the following problems
+  * Ending Insert mode when accessing a hidden prompt buffer.
+  * Crash when passing NULL to setcmdline(). (Andreas Louv)
+  * openSUSE: configure doesn't find the Motif library. (Tony Mechelynck)
+  * Unnecessary checks for the &quot;skip&quot; flag when skipping.
+  * Condition is always true.
+  * Diff test fails on MacOS 13.
+  * Test for prompt buffer is flaky.
+  * Unnecessary redrawing when 'showcmdloc' is not &quot;last&quot;.
+  * Code using EVAL_CONSTANT is dead, it is never set.
+  * Typos in source code and tests.
+  * Code indenting is confused by macros.
+  * C++ 20 modules are not recognized.
+  * Shortmess test depends on order of test execution.
+  * No regression test for what patch 9.0.1333 fixes.
+  * Buffer overflow when expanding long file name.
+  * Typo in name of type.
+  * Insufficient testing for getcmdcompltype().
+  * Ruler not drawn correctly when using 'rulerformat'.
+  * Recursively calling :defer function if it does :qa.
+  * Virtual text truncation only works with Unicode 'encoding'.
+  * Strace filetype detection is expensive.
+  * Haiku build fails.
+  * Cannot use an object member name as a method argument.
+  * Jenkinsfiles are not recognized as groovy.
+  * Recursively calling :defer function if it does :qa in a compiled function.
+  * Deferred functions not called from autocommands.
+  * Deferred functions invoked in unexpected order when using :qa and
+  autocommands.
+  * Warnings for function declarations.</comment>
+    <requestid>1082937</requestid>
+  </revision>
 </revisionlist>
