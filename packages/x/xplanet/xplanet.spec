@@ -1,7 +1,7 @@
 #
 # spec file for package xplanet
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,15 +47,9 @@ BuildRequires:  libnetpbm-devel
 %else
 BuildRequires:  netpbm-devel
 %endif
-%if 0%{?suse_version} == 1110
-BuildRequires:  xorg-x11-devel
-BuildRequires:  xorg-x11-libICE-devel
-#BuildRequires:  XScrnSaver-devel
-%else
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
-%endif
 
 %description
 Xplanet can display the earth or other planets in the background of
@@ -65,12 +59,7 @@ an included script, it is very easy to combine map files with current
 satellite cloud images.
 
 %prep
-%setup -q
-%if 0%{?suse_version} > 1320
-%patch0 -p1
-%endif
-%patch1
-%patch2 -p1
+%autosetup -p1
 cp -a %{S:2} .
 
 %build
@@ -81,7 +70,7 @@ export CPPFLAGS=-I%{_includedir}/netpbm
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 10:02:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove pre-SUSE-15 build logic
+- Refersh gcc6.patch from -p0 to -p1 to match the rest
+
+-------------------------------------------------------------------
 Tue Jan 19 15:26:37 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add moon.jpg
