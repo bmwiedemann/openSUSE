@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 27 13:36:31 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.11
+  - Add LOG_TAG
+  - Fix reboottrigger for SLES12 
+
+-------------------------------------------------------------------
 Tue Apr 25 23:07:54 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Require lsof

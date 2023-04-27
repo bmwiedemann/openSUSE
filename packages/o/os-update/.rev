@@ -124,4 +124,14 @@
     <comment></comment>
     <requestid>1082876</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>237c4f844b18ba025d14bf978d3bc303</srcmd5>
+    <version>1.11</version>
+    <time>1682618558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.11
+  - Add LOG_TAG
+  - Fix reboottrigger for SLES12</comment>
+    <requestid>1083272</requestid>
+  </revision>
 </revisionlist>
