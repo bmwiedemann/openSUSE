@@ -99,7 +99,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  wayland-devel
 BuildRequires:  webkit2gtk3-devel
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
@@ -116,6 +115,14 @@ BuildRequires:  cmake(Qt%{qt_major_version}Svg)
 BuildRequires:  cmake(Qt%{qt_major_version}WaylandClient)
 BuildRequires:  cmake(Qt%{qt_major_version}WaylandCompositor)
 BuildRequires:  cmake(Qt%{qt_major_version}Widgets)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xtst)
 %if %{qt_major_version} >= 6
 BuildRequires:  qt%{qt_major_version}-gui-private-devel
 BuildRequires:  qt%{qt_major_version}-waylandclient-private-devel

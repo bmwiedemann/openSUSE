@@ -969,4 +969,12 @@
     <comment></comment>
     <requestid>1079425</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>a871a979c20eb067a96c97cbfca9bda9</srcmd5>
+    <version>4.7.1</version>
+    <time>1682618460</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace BuildRequire on xorg-x11-devel by pkgconfig(...) (forwarded request 1083067 from jengelh)</comment>
+    <requestid>1083072</requestid>
+  </revision>
 </revisionlist>

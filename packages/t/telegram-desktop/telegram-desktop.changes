@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 15:16:06 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Fri Apr 14 07:13:24 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Commit 0d37d47eca896005eb0a645e0db461f4dafb317b breaks building
