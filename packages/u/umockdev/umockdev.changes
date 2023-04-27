@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 06:05:43 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.17.17:
+  * Fix uevent race condition in
+    umockdev_testbed_add_from_string().
+
+-------------------------------------------------------------------
 Tue Feb 14 05:24:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.17.16:
