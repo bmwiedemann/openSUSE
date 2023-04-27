@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 18 06:48:02 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v0.32.14
+  * No changelog provided by upstream
+
+-------------------------------------------------------------------
 Thu Jul  8 13:48:55 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v0.32.6
+  * No changelog provided by upstream
 - Fix summary and description
 - Remove patch 0001-Add-enxio-classes-from-jnr-unixsocket.patch
 - Install artifact into %{_javadir}/jnr

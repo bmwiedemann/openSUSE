@@ -1,7 +1,7 @@
 #
-# spec file for package jnr-enxio
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global cluster jnr
 Name:           %{cluster}-enxio
-Version:        0.32.6
+Version:        0.32.14
 Release:        0
 Summary:        Native I/O access for java
 # src/main/java/jnr/enxio/channels/PollSelectionKey.java is LGPLv3
