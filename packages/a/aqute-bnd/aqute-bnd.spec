@@ -1,7 +1,7 @@
 #
 # spec file for package aqute-bnd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ Summary:        BND Tool
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://bnd.bndtools.org/
-Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
-Source1:        bnd-%{version}.REL-build_xml.tar.xz
+Source0:        bnd-%{version}.tar.xz
+Source1:        bnd-%{version}-build_xml.tar.xz
 Source2:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.ant/%{version}/biz.aQute.bnd.ant-%{version}.pom
 Source3:        https://repo1.maven.org/maven2/biz/aQute/bnd/aQute.libg/%{version}/aQute.libg-%{version}.pom
 Source4:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd/%{version}/biz.aQute.bnd-%{version}.pom
@@ -85,10 +85,7 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n bnd-%{version}.REL -a 1
-
-rm gradlew*
-rm -f $(find | grep -E '\.(.ar|exe|tar\.(gz|bz2|xz)|zip)$' | xargs)
+%setup -q -n bnd-%{version} -a 1
 
 mkdir -p lib
 build-jar-repository -s lib \

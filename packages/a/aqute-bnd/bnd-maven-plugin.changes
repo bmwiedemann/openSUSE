@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 17:47:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source_service and don't distribute legally
+  spurious files (bsc#1210878)
+
+-------------------------------------------------------------------
 Wed Nov 10 08:13:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to aqute-bnd 5.1.1

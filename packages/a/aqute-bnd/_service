@@ -1,0 +1,26 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/bndtools/bnd.git</param>
+		<param name="revision">5.2.0.REL</param>
+		<param name="match-tag">*.REL</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">(.*).REL</param>
+        <param name="exclude">gradlew*</param>
+        <param name="exclude">docs</param>
+        <param name="exclude">**.jar</param>
+        <param name="exclude">**.class</param>
+        <param name="exclude">**.ar</param>
+        <param name="exclude">**.gz</param>
+        <param name="exclude">**.bz2</param>
+        <param name="exclude">**.xz</param>
+        <param name="exclude">**.zip</param>
+        <param name="exclude">**.exe</param>
+        <param name="exclude">**.dll</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

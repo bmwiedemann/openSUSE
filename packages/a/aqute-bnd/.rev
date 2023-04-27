@@ -56,4 +56,12 @@
     <comment>5.2.0</comment>
     <requestid>930610</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5cdb41caa150f79c8f5c73c57a09770b</srcmd5>
+    <version>5.2.0</version>
+    <time>1682618443</time>
+    <user>dimstar_suse</user>
+    <comment>Appease lawyers</comment>
+    <requestid>1083075</requestid>
+  </revision>
 </revisionlist>

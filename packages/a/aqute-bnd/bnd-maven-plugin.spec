@@ -1,7 +1,7 @@
 #
 # spec file for package bnd-maven-plugin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        BND Maven plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://bnd.bndtools.org/
-Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
+Source0:        bnd-%{version}.tar.xz
 Patch0:         0001-Disable-removed-commands.patch
 Patch2:         0003-Port-to-OSGI-7.0.0.patch
 Patch3:         aqute-bnd-java8compat.patch
@@ -56,15 +56,12 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q -n bnd-%{version}.REL
+%setup -q -n bnd-%{version}
 
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-
-rm gradlew*
-rm -f $(find | grep -E '\.(.ar|exe|tar\.(gz|bz2|xz)|zip)$' | xargs)
 
 pushd maven
 %pom_remove_dep -r :biz.aQute.bnd.maven
