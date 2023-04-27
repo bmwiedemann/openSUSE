@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 20 08:55:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add vhba-sle-kernel.diff [boo#1206169]
+
+-------------------------------------------------------------------
 Mon Dec  5 12:47:43 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - BuildRequire %kernel_module_package_buildreqs (boo#1205149)

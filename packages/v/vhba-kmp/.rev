@@ -170,4 +170,12 @@
     <comment>- BuildRequire %kernel_module_package_buildreqs (boo#1205149) (forwarded request 1040302 from lnussel)</comment>
     <requestid>1040306</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>369e30342c5994db4f882e54c9fec1f9</srcmd5>
+    <version>20211218</version>
+    <time>1682618502</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083227</requestid>
+  </revision>
 </revisionlist>

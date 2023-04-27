@@ -1,7 +1,7 @@
 #
 # spec file for package vhba-kmp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://downloads.sf.net/cdemu/vhba-module-%version.tar.xz
 Source2:        %name-preamble
 Patch1:         vhba-no-werror.diff
 Patch2:         vhba-devname.diff
+Patch3:         vhba-sle-kernel.diff
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-syms >= 2.6.20
 
@@ -57,6 +58,9 @@ echo %flavors_to_build
 %autosetup -n vhba-module-%version -p1
 
 %build
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000
+export KCFLAGS="-DSLE"
+%endif
 for flavor in %flavors_to_build; do
 	cp -a . "../obj-$flavor/"
 	pushd "../obj-$flavor/"
