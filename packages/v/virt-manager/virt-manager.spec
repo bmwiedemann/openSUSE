@@ -36,7 +36,7 @@ Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://virt-manager.org/
-Source0:        https://virt-manager.org/download/sources/virt-manager/virt-manager-%{version}.tar.gz
+Source0:        https://releases.pagure.org/virt-manager/virt-manager-%{version}.tar.gz
 Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
@@ -74,17 +74,17 @@ Patch125:       virtinst-add-caasp-support.patch
 Patch126:       virtinst-add-sle15-detection-support.patch
 Patch127:       virtinst-add-pvh-support.patch
 Patch128:       virtinst-media-detection.patch
+Patch129:       virtinst-enable-video-virtio-for-arm.patch
 # Bug Fixes
 Patch151:       virtman-increase-setKeepAlive-count.patch
 Patch152:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
-Patch153:       virtman-check-for-valid-display.patch
-Patch154:       virtman-allow-creating-i686-vm.patch
-Patch155:       virtman-dont-specify-vte-version.patch
-Patch156:       virtman-dont-specify-gtksource-version.patch
-Patch157:       virtman-fix-restore-vm-menu-selection.patch
-Patch158:       virtman-disallow-adding-floppy-disk.patch
-Patch159:       virtman-register-delete-event-for-details-dialog.patch
-Patch160:       virtman-revert-use-of-AyatanaAppIndicator3.patch
+Patch153:       virtman-allow-creating-i686-vm.patch
+Patch154:       virtman-dont-specify-vte-version.patch
+Patch155:       virtman-dont-specify-gtksource-version.patch
+Patch156:       virtman-fix-restore-vm-menu-selection.patch
+Patch157:       virtman-disallow-adding-floppy-disk.patch
+Patch158:       virtman-register-delete-event-for-details-dialog.patch
+Patch159:       virtman-revert-use-of-AyatanaAppIndicator3.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -246,6 +246,9 @@ donttest="$donttest or testCLI0162virt_install"
 # Expectsion <video> element
 donttest="$donttest or testCLI0168virt_install_s390x_cdrom"
 donttest="$donttest or testCLI0169virt_install_s390x_cdrom"
+# Fedora specific
+donttest="$donttest or testCLI0178virt_install_arm_defaultmach_f20"
+donttest="$donttest or testCLI0179virt_install_arm_kvm_import"
 # missing <boot> element, extra <kernel> element
 donttest="$donttest or testCLI0189virt_install_xen_default"
 donttest="$donttest or testCLI0190virt_install_xen_default"

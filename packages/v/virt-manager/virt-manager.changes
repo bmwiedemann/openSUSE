@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 25 06:14:10 MDT 2023 - carnold@suse.com
+
+- bsc#1201748 - virt-install --graphics vnc fails with not support
+  for video model 'virtio'
+  virtinst-enable-video-virtio-for-arm.patch
+
+-------------------------------------------------------------------
+Mon Apr 17 13:24:16 MDT 2023 - carnold@suse.com
+
+- Drop virtman-check-for-valid-display.patch. This patch is no
+  longer required.
+
+-------------------------------------------------------------------
 Thu Apr  6 15:06:51 MDT 2023 - carnold@suse.com
 
 - Language file fixes
