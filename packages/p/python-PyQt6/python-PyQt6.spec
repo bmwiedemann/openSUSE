@@ -20,7 +20,7 @@
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.4.2
+Version:        6.5.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -62,17 +62,22 @@ BuildRequires:  cmake(Qt6PdfWidgets)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickWidgets)
-BuildRequires:  cmake(Qt6RemoteObjects)
-BuildRequires:  cmake(Qt6Sensors)
-BuildRequires:  cmake(Qt6SerialPort)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6WebChannel)
-BuildRequires:  cmake(Qt6WebSockets)
-%if 0%{?suse_version} >= 1550
-BuildRequires:  cmake(Qt6TextToSpeech)
+%if %{?suse_version} >= 1550
 BuildRequires:  cmake(Qt6Quick3D)
 BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
 %endif
+BuildRequires:  cmake(Qt6RemoteObjects)
+BuildRequires:  cmake(Qt6Sensors)
+BuildRequires:  cmake(Qt6SerialPort)
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 155000
+BuildRequires:  cmake(Qt6SpatialAudio)
+%endif
+BuildRequires:  cmake(Qt6Svg)
+%if %{?suse_version} >= 1550
+BuildRequires:  cmake(Qt6TextToSpeech)
+%endif
+BuildRequires:  cmake(Qt6WebChannel)
+BuildRequires:  cmake(Qt6WebSockets)
 %requires_ge    python-PyQt6-sip
 %requires_ge    python-dbus-python
 Provides:       python-qt6 = %{version}-%{release}

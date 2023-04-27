@@ -105,4 +105,12 @@ in order to avoid conflicts like boo#1192300</comment>
   * Fixed a regression in pylupdate</comment>
     <requestid>1063979</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>53cebf9626ae7fa6f2703251d2046210</srcmd5>
+    <version>6.5.0</version>
+    <time>1682618444</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>1083083</requestid>
+  </revision>
 </revisionlist>
