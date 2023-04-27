@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr 26 18:53:25 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 3.24.37+68:
+  + application: Clean up signal handlers
+  + OLE2 DND: Check if move is supported
+  + Address issue 5711 by checking that the context is not NULL
+  + wayland:
+    - Don't crash without xdg_activation_v1
+    - Don't crash on cursor size 0
+  + gdkscreen-wayland: Notify initial setting change from
+    org.gtk.Settings
+  + gdk: Swap Cairo calls when reading back from a GdkWindow
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr 10 00:19:39 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Deprecate %gtk_immodule_(requires|post|postun) macros defined in
+  the macros.gtk3 file. Since we are using RPM file triggers to
+  provide their functionality, without nullifying them the commands
+  will run twice, once by the file triggers and another time by the
+  macros.
+
+-------------------------------------------------------------------
 Tue Mar 21 08:43:48 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-add macros.gtk3: there are quite a few consumers left

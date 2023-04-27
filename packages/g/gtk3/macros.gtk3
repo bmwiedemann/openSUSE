@@ -10,26 +10,20 @@
 #  - %gtk3_immodule_postun in %postun
 #
 ###
+#
+# WARNING:
+#
+# Those macros have been deprecated and their use can be dropped in spec files.
+# Their functionaly is implemented now as RPM file triggers.
+#
+# https://lists.opensuse.org/opensuse-factory/2017-06/msg00898.html
+# https://rpm-software-management.github.io/rpm/manual/file_triggers.html
 
-%gtk3_immodule_requires                                  \
-Requires(post): gtk3-tools                               \
-Requires(postun): gtk3-tools
+%gtk3_immodule_requires %{nil}
 
 # On install, update the cache
-%gtk3_immodule_post                                      \
-%if "%_lib" == "lib64"                                   \
-  %{_bindir}/gtk-query-immodules-3.0-64 --update-cache   \
-%else                                                    \
-  %{_bindir}/gtk-query-immodules-3.0 --update-cache      \
-%endif
+%gtk3_immodule_post %{nil}
 
 # On uninstall, update the cache. Note: we ignore upgrades (already
 # handled in %post of the new package).
-%gtk3_immodule_postun                                    \
-if [ $1 -eq 0 ]; then                                    \
-  %if "%_lib" == "lib64"                                 \
-    %{_bindir}/gtk-query-immodules-3.0-64 --update-cache \
-  %else                                                  \
-    %{_bindir}/gtk-query-immodules-3.0 --update-cache    \
-  %endif                                                 \
-fi
+%gtk3_immodule_postun %{nil}

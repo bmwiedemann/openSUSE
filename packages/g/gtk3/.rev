@@ -1623,4 +1623,28 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment></comment>
     <requestid>1073503</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>7bf562b6ab6ac6efd302d77ee39bfaa9</srcmd5>
+    <version>3.24.37+68</version>
+    <time>1682618393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.24.37+68:
+  + application: Clean up signal handlers
+  + OLE2 DND: Check if move is supported
+  + Address issue 5711 by checking that the context is not NULL
+  + wayland:
+    - Don't crash without xdg_activation_v1
+    - Don't crash on cursor size 0
+  + gdkscreen-wayland: Notify initial setting change from
+    org.gtk.Settings
+  + gdk: Swap Cairo calls when reading back from a GdkWindow
+  + Updated translations.
+- Deprecate %gtk_immodule_(requires|post|postun) macros defined in
+  the macros.gtk3 file. Since we are using RPM file triggers to
+  provide their functionality, without nullifying them the commands
+  will run twice, once by the file triggers and another time by the
+  macros.
+</comment>
+    <requestid>1083109</requestid>
+  </revision>
 </revisionlist>
