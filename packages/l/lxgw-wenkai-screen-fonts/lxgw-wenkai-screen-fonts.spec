@@ -19,7 +19,7 @@
 Name:           lxgw-wenkai-screen-fonts
 Version:        1.250.2
 Release:        0
-Summary:        LXGW WenKai for Screen Reading
+Summary:        Chinese font derived from Klee One
 License:        OFL-1.1
 URL:            https://github.com/lxgw/LxgwWenKai-Screen
 Source0:        https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v%{version}/LXGWWenKaiScreen.ttf
@@ -27,7 +27,7 @@ BuildRequires:  fontpackages-devel
 BuildArch:	noarch
 
 %description
-An open-source Chinese font derived from Fontworks' Klee One.
+A Chinese font derived from Fontworks's Klee One.
 
 %prep
 cp %{S:0} ./
