@@ -1,7 +1,7 @@
 #
 # spec file for package jansi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Java library for generating and interpreting ANSI escape sequenc
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://fusesource.github.io/jansi/
-Source0:        https://github.com/fusesource/jansi/archive/jansi-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 Patch0:         %{name}-jni.patch
 BuildRequires:  ant
@@ -46,7 +46,7 @@ BuildArch:      noarch
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n jansi-jansi-%{version}
+%setup -q
 cp %{SOURCE1} build.xml
 
 %pom_remove_parent
@@ -66,11 +66,7 @@ cp %{SOURCE1} build.xml
 # Build for JDK 1.8 at a minimum
 %pom_xpath_set "//pom:properties/pom:jdkTarget" 1.8
 
-# Remove prebuilt shared objects
-rm -fr src/main/resources/org/fusesource/jansi/internal
-
-# Unbundle the JNI headers
-rm src/main/native/inc_linux/*.h
+# Link the JNI headers
 ln -s %{java_home}/include/jni.h src/main/native/inc_linux
 ln -s %{java_home}/include/linux/jni_md.h src/main/native/inc_linux
 

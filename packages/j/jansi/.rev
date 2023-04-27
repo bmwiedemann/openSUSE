@@ -45,4 +45,12 @@
     <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
     <requestid>977561</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cd94c34d39e542ede7d2d4b01dae8e78</srcmd5>
+    <version>2.4.0</version>
+    <time>1682618442</time>
+    <user>dimstar_suse</user>
+    <comment>Appease lawyers</comment>
+    <requestid>1083071</requestid>
+  </revision>
 </revisionlist>
