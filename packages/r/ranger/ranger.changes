@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Wed Apr 19 14:04:00 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- doc: clean up doc files 
+
+-------------------------------------------------------------------
+Sun Apr 16 22:40:31 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20230416.478d5b6:
+  * img_display, popen23: Appease lints
+  * Move path to suffix=, add prefix="ranger"
+  * GHActions: Update checkout and setup-python version
+  * GHActions: Change CI to run conditionally without remaining pending
+  * Fix the logic for determining the preview scale
+  * Clean up the SIXEL documentation
+  * Fix standard library misuse
+  * Tidy up Magick executable detection logic
+  * Move the ABC compat wrapper to a separate file
+  * Tweaked human_readable
+  * directory: Fix max call in mtimelevel
+  * Added a default argument to the human_readable function
+  * Reduce unnecessary string concatination
+  * Reformat script
+  * scope: Reformat sqlite preview for width
+  * scope: Add missing parens in SQL OFFSET calculation
+  * Show ellipsis `...` when reaching row limits
+  * Reduce unnecessary variable assignment
+  * Show row limits
+  * Pretty format SQL query
+  * get_executables: Use platform instead of reading /proc
+  * Encourage ImageMagick to use OpenCL for processing
+  * Implement the SIXEL image previewer
+  * Support Expansion Of Environment Variables in cd command
+  * shutil_generatorized: Float exists condition outwards
+  * Disable the pylint checks for this workaround
+  * Fix the ABC checks on Python 3
+  * Set COLOR_PAIRS only in the cases it's relevant
+  * color: Catch Color number is greater than COLORS-1
+  * Skip WSL-related dirs from PATH in WSL
+  * Revert "Disable multiplexer title renaming in Microsoft WSL"
+  * gui.color: Change dummy key
+  * doc: added binary_size_prefix option
+  * doc: Add BAT_STYLE
+  * Feat: Make BAT_STYLE configurable
+  * Changed the default unit prefixes for file sizes
+  * Change the import as per the pylint suggestion
+  * Don't reinvent the regex.pattern value
+  * Add the live previews for the filter stack name filters
+  * Replace the legacy filter with a compatibility layer
+  * Fix Python 2 support related to Subprocess
+  * img_display: Drop FileExistsError for COMPAT
+  * img_display: Adhere to snake_case naming
+  * img_display: Directory existing is not an error
+  * img_display: Fix identifier for the error message
+  * img_display: Restore cleanup of Kitty tempfiles
+  * img_display: Make formatting consistent
+  * actions: Implement custom notify exception
+  * actions: Replace SystemExit with RuntimeError
+  * Pylint: Replace f-strings in port checker for Py 2 compat
+  * actions: Replace raising Exception with SystemExit
+  * Pylint: Use dict literals instead of dict() calls
+  * directory: Drop unnecessary nested max()
+  * Pylint: Disable superfluous-parens
+  * scope: Resolve unreachable exit
+  * Pylint: Drop explicit IAstroidChecker implements
+  * Pylint: Add Python 2/3 port checker
+  * Pylint: Drop redefined-variable-type disable
+  * Pylint: Drop disabling locally-enabled
+  * bookmarks: Drop no-self-use disable
+  * requirements.txt: Drop Pylint pin.
+  * img_display: Borrow implementation from imghdr
+  * browsercolumn: Avoid creating intermediate list for sum
+  * Pylint: Tackle unnecessary-dunder-calls
+  * Pylint: Add MockFM to ignored-classes
+  * GHActions: Only PyLint on latest and bump 3.5 to 3.7
+  * Make display of directory size in linemodes less misleading
+  * Update actions.py
+  * Disable multiplexer title renaming in Microsoft WSL
+  * Gracefully fallback when file(1) is not available
+  * img_display: Simplify RGB(A) conversion
+  * doc: w3m preview compatible with Alacritty and tmux
+  * Fix case where info["transparent"] could be equal to a falsey value and still trigger warning
+  * Fix image display for palette images with transparency
+  * Make pylint shush about indentation and simplify-boolean-expression
+  * Fix "Loader work process failed" error when copying dangling symlinks
+  * Feat: add preview handler for SQLite to scope.sh
+  * ueberzug suppress stderr
+
+-------------------------------------------------------------------
+Tue Feb 28 17:43:21 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.9.3+git20230222.e81adca:
+  * Fix nsxiv workaround
+  * fm: Add nsxiv to sxiv workaround
+  * Recommend use of pipx over pip installation
+
+-------------------------------------------------------------------
 Tue Jan 03 19:00:21 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.9.3+git20221124.f8b304f:

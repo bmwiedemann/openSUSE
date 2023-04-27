@@ -1,7 +1,7 @@
 #
 # spec file for package ranger
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %define short_version 1.9.3
 
 Name:           ranger
-Version:        1.9.3+git20221124.f8b304f
+Version:        1.9.3+git20230416.478d5b6
 Release:        0
 Summary:        Console File Manager
 License:        GPL-3.0-or-later
@@ -63,7 +63,8 @@ python3 ./setup.py install \
   --prefix="%{_prefix}" \
   --root=%{buildroot}
 
-rm -rf "%{buildroot}%{_datadir}/doc/ranger"
+mv "%{buildroot}%{_datadir}/doc/ranger" _doc
+find _doc -type f -exec chmod -R -x '{}' \;
 
 %if 0%{?suse_version} < 1500
 %post
@@ -75,10 +76,7 @@ rm -rf "%{buildroot}%{_datadir}/doc/ranger"
 
 %files
 %license LICENSE
-%doc AUTHORS CHANGELOG.md README.md HACKING.md
-%doc doc/colorschemes.md
-%doc doc/tools
-%doc examples
+%doc _doc/*
 %{_bindir}/ranger
 %{_bindir}/rifle
 %{python3_sitelib}/ranger_fm-%{short_version}-*.egg-info
