@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Apr 27 11:50:51 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.25.1:
+  * fix: revert godirwalk upgrade
+  * chore: fix AppVeyor
+  * chore: bump Go in Docker
+
+-------------------------------------------------------------------
+Thu Apr 27 11:50:09 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.25.0:
+  * chore: fix version
+  * chore: bump checkout
+  * chore: upgrade GoReleaser [ci skip]
+  * chore: bump Go
+  * test: fix templates
+  * chore: update `godirwalk`
+  * refactor: add NOTE about `os`
+  * test: add another template case
+  * chore: update Go to 1.20
+  * refactor: use `unsafe.StringData` to keep multiple file views
+  * feat: support comment-based config on Org Mode
+  * docs: add NOTE about `Substitute`
+  * refactor: use `Strings.Replace` in `Substitute`
+  * chore: add `make profile`
+  * chore: update `go-org`
+  * chore: update sprig
+  * chore: fix `make bench`
+  * chore: update `archiver`
+  * chore: bump Go version
+  * test: add fuzzing to `existence`
+  * chore: remove redundant section from feat template
+  * chore: remove word-wrapping
+  * chore: fix bug report wording
+- Packaging: BuildRequires: golang(API) >= 1.20
+
+-------------------------------------------------------------------
+Thu Apr 27 11:49:37 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.24.4:
+  * fix: don't call `re2loc` in `script`-based rules
+  * fix: support symlinks in `dicpath`
+  * docs: Add Studio to README
+  * New ISSUE_TEMPLATE
+  * chore: move `CODE_OF_CONDUCT`
+  * Create CODE_OF_CONDUCT.md
+  * fix: check bounds on tags
+  * test: add case for custom threshold
+  * test: add Packages tests
+  * fix: check bounds for `scope: raw`
+
+-------------------------------------------------------------------
 Tue Apr 18 06:27:01 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Remove NO_BRP_STRIP_DEBUG=true experimentally to test which if

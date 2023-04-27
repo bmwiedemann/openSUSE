@@ -234,4 +234,13 @@
     closed in 2019 due to age, needs follow-up on current versions (forwarded request 1080075 from jfkw)</comment>
     <requestid>1080156</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e6739762933d9c12ed593998e10e0178</srcmd5>
+    <version>2.25.1</version>
+    <time>1682618570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.25.1:
+- Packaging: BuildRequires: golang(API) &gt;= 1.20 (forwarded request 1083280 from jfkw)</comment>
+    <requestid>1083281</requestid>
+  </revision>
 </revisionlist>
