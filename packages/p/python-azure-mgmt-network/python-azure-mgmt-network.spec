@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-network
-Version:        23.0.0
+Version:        23.0.1
 Release:        0
 Summary:        Microsoft Azure Network Management Client Library
 License:        MIT
