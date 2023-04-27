@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 20:44:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Fri Apr 21 11:10:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 5.15.9:

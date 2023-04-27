@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtdoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           libqt5-qtdoc
 Version:        5.15.9
 Release:        0
 Summary:        Qt 5 API Documentation
-License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only
+License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 Group:          Documentation/Other
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/single/%{tar_version}.tar.xz
@@ -37,6 +37,7 @@ BuildRequires:  bison
 BuildRequires:  clang
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
@@ -47,11 +48,11 @@ BuildRequires:  libmysqlclient-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  libpulse-devel
+BuildRequires:  libqt5-qtbase-common-devel >= %{version}
 BuildRequires:  libqt5-qtbase-devel >= %{version}
 BuildRequires:  libqt5-qttools >= %{version}
 BuildRequires:  libqt5-qttools-devel >= %{version}
 BuildRequires:  libqt5-qttools-doc >= %{version}
-BuildRequires:  libqt5-qtbase-common-devel >= %{version}
 BuildRequires:  libtiff-devel
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  openssl-devel
@@ -66,7 +67,6 @@ BuildRequires:  xcb-util-image-devel
 BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  xcb-util-renderutil-devel
 BuildRequires:  xcb-util-wm-devel
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xz
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
@@ -83,9 +83,21 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.4.1
 BuildRequires:  pkgconfig(xkbcommon-x11) >= 0.4.1
-BuildRequires:  fdupes
+BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(xv)
 BuildArch:      noarch
 Requires:       %{name}-html = %{version}
 Requires:       %{name}-qch  = %{version}
@@ -117,8 +129,8 @@ This package contains the Qt API Documentation in QCH format, which can be used 
 %package devel
 Summary:        QDoc index files and doxygen tag files for Qt 5 API Documentation
 Group:          Development/Tools/Doc Generators
-Requires:       libqt5-qttools => %{version}
 Requires:       doxygen
+Requires:       libqt5-qttools => %{version}
 
 %description devel
 This package contains the QDoc index files and the doxygen tag files to create cross links between the QCH documentation files. This package is normally not

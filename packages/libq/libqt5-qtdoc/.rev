@@ -413,4 +413,12 @@
     <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
     <requestid>1082069</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9615f0d87a3558f8dea8fbbf44097bac</srcmd5>
+    <version>5.15.9</version>
+    <time>1682618464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083122</requestid>
+  </revision>
 </revisionlist>
