@@ -1,7 +1,7 @@
 #
 # spec file for package xset
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{v
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfontcache)
 BuildRequires:  pkgconfig(xmuu)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
@@ -39,7 +38,7 @@ This program is used to set various user preference options of the
 display.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:47:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable building with libXfontcache. xorg-server 1.6 removed the
+  corresponding feature, and it seems unlikely and unusual for
+  anyone to e.g. ssh from an old Xorg system to a contemporary
+  SUSE to attempt to run the (undocumented) `xset fc` command.
+
+-------------------------------------------------------------------
 Sun Dec  4 22:46:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.5

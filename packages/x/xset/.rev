@@ -104,4 +104,12 @@
   * configure: Make xf86misc support disabled by default</comment>
     <requestid>1040100</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f188b5abcb552db790fb291f82e6c191</srcmd5>
+    <version>1.2.5</version>
+    <time>1682618371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082971</requestid>
+  </revision>
 </revisionlist>
