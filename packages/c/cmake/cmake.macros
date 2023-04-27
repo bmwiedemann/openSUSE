@@ -7,6 +7,9 @@
 %__builder %__make
 %__sourcedir .
 
+%__cmake_make_prefix_relative() %{lua:print((string.gsub((rpm.expand("%1")), ((rpm.expand("%{_prefix}")) .. "/"), "", 1)))}
+%__cmake_make_root_relative() %{lua:print((string.gsub((rpm.expand("%1")), "/", "", 1)))}
+
 %cmake \
     find %__sourcedir -type f -name CMakeLists.txt \\\
         -exec sed -i -re '/^[[:blank:]]*[sS][eE][tT][[:blank:]]*\\\([[:blank:]]*(CMAKE_BUILD_TYPE|CMAKE_COLOR_MAKEFILE|CMAKE_INSTALL_PREFIX|CMAKE_VERBOSE_MAKEFILE).*\\\)/{s/^/#IGNORE /}' {} + \
@@ -19,12 +22,20 @@
         -GNinja \\\
 %endif \
         -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \\\
+        -DCMAKE_INSTALL_BINDIR:PATH=%{__cmake_make_prefix_relative %{_bindir}} \\\
+        -DCMAKE_INSTALL_SBINDIR:PATH=%{__cmake_make_prefix_relative %{_sbindir}} \\\
+        -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{__cmake_make_prefix_relative %{_libexecdir}} \\\
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{__cmake_make_root_relative %{_sysconfdir}} \\\
+        -DCMAKE_INSTALL_SHAREDSTATEDIR:PATH=%{_sharedstatedir} \\\
+        -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=%{__cmake_make_root_relative %{_localstatedir}} \\\
+        -DCMAKE_INSTALL_RUNSTATEDIR:PATH=%{__cmake_make_root_relative %{_rundir}} \\\
+        -DCMAKE_INSTALL_LIBDIR:PATH=%{__cmake_make_prefix_relative %{_libdir}} \\\
+        -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{__cmake_make_prefix_relative %{_includedir}} \\\
+        -DCMAKE_INSTALL_DATAROOTDIR:PATH=%{__cmake_make_prefix_relative %{_datadir}} \\\
         -DINCLUDE_INSTALL_DIR:PATH=%{_includedir} \\\
         -DLIB_INSTALL_DIR:PATH=%{_libdir} \\\
         -DSYSCONF_INSTALL_DIR:PATH=%{_sysconfdir} \\\
         -DSHARE_INSTALL_PREFIX:PATH=%{_datadir} \\\
-        -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \\\
-        -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \\\
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \\\
         -DCMAKE_C_FLAGS="${CFLAGS:-%optflags}" \\\
         -DCMAKE_CXX_FLAGS="${CXXFLAGS:-%optflags}" \\\
