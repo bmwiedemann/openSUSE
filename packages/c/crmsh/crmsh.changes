@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 27 06:35:41 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230427.11d11104:
+  * Dev: behave: Add <user>@ when joining for non-root case
+  * Dev: behave: Add functional test for bsc#1210693
+
+-------------------------------------------------------------------
+Wed Apr 26 14:28:37 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230426.b7c4b1aa:
+  * Dev: behave: Adjust functional test for previous change
+  * Dev: unittest: adjust unit tests for previous changes
+  * Fix: bootstrap: crm cluster join default behavior change in ssh key handling (bsc#1210693)
+
+-------------------------------------------------------------------
 Mon Apr 24 09:12:24 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230424.75600b3f:
