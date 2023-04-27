@@ -1,7 +1,7 @@
 #
 # spec file for package libxkbui
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,13 +23,13 @@ Release:        0
 Summary:        X11 keyboard UI presentation library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libxkbui
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libxkbui/
 Source:         http://ftp.x.org/pub/X11R7.1/src/lib/%{name}-X11R7.1-%{version}.tar.bz2
+Source1:        baselibs.conf
 Patch1:         libxkbui.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.57, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -61,15 +61,14 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -qn %name-X11R7.1-%version
-%patch -P 1 -p0
+%autosetup -n %name-X11R7.1-%version -p0
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 rm -f "%buildroot/%_libdir"/*.la
 
 %post -n %lname -p /sbin/ldconfig
@@ -77,11 +76,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libxkbui.so.1*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/X11/*
 %_libdir/libxkbui.so
 %_libdir/pkgconfig/xkbui.pc

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:44:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs
+
+-------------------------------------------------------------------
+Tue Apr 25 14:26:17 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add baselibs.conf as source to specfile.
+
+-------------------------------------------------------------------
 Tue Apr 16 07:15:32 UTC 2013 - mmeister@suse.com
 
 - Added url as source.
