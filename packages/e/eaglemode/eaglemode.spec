@@ -47,7 +47,9 @@ BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  vlc-devel
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xt)
 %endif
 %if 0%{?mandriva_version}
 BuildRequires:  libpoppler-glib-devel
@@ -103,8 +105,7 @@ methods, anti-aliased graphics, a virtually unlimited deep panel
 tree, and a C++ API.
 
 %prep
-%setup -q -a 1
-%patch0 -p1
+%autosetup -a 1 -p1
 
 %build
 # stupid build scripts don't allow passing custom flags
