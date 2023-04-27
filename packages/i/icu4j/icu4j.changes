@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 20 08:33:20 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 73.1
+  * Updates to CLDR 43 locale data with various additions and
+    corrections.
+  * Improves Japanese and Korean short-text line breaking, reduces
+    C++ memory use in date formatting, and promotes the Java person
+    name formatter from tech preview to draft.
+  * ICU 73 and CLDR 43 are minor releases, mostly focused on bug
+    fixes and small enhancements. (The fall CLDR/ICU releases will
+    update to Unicode 15.1 which is planned for September.)
+  * Updates to the time zone data version 2023c (2023-mar). Note
+    that pre-1970 data for a number of time zones has been removed,
+    as has been the case in the upstream tzdata release since
+    2021b.
+  * For details, please see https://icu.unicode.org/download/73.
+- Upgrade to version 72.1
+  * Updates to Unicode 15, and to CLDR 42 locale data with various
+    additions and corrections.
+  * ICU 72 and CLDR 42 are major releases, including a new version
+    of Unicode and major locale data improvements.
+  * Adds two technology preview implementations based on draft
+    Unicode specifications:
+    + Formatting of people’s names in multiple languages (CLDR
+      background on why this feature is being added and what it does)
+    + An enhanced version of message formatting
+  * This release also updates to the time zone data version 2022e
+    (2022-oct). Note that pre-1970 data for a number of time zones
+    has been removed, as has been the case in the upstream tzdata
+    release since 2021b.
+  * For details, please see https://icu.unicode.org/download/72.
+- Update patch:
+  * icu4j-jdk10plus.patch
+
+-------------------------------------------------------------------
 Fri Apr 29 11:55:45 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to version 71.1

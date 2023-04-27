@@ -1,6 +1,7 @@
---- a/build.xml
-+++ b/build.xml
-@@ -423,7 +423,7 @@
+diff -up SRC/build.xml.p00 SRC/build.xml
+--- SRC/build.xml.p00	2023-04-20 11:16:32.762221158 +0300
++++ SRC/build.xml	2023-04-20 11:24:00.668073471 +0300
+@@ -462,7 +462,7 @@
      </patternset>
  
      <!-- meta build targets -->
@@ -9,7 +10,7 @@
      <target name="main" depends="info, core, collate, charset, currdata, langdata, regiondata, translit, localespi" description="Build ICU4J runtime library classes"/>
      <target name="tests" depends="info, core-tests, charset-tests, collate-tests, packaging-tests, translit-tests, localespi-tests" description="Build ICU4J test classes"/>
  
-@@ -1261,7 +1261,7 @@
+@@ -1312,7 +1312,7 @@
      </target>
  
      <!-- doc targets -->
@@ -18,43 +19,43 @@
  
      <target name="docsStrict" description="Build API documents with all doclint check enabled">
          <condition property="doclint.option" value="-Xdoclint:all">
-@@ -1315,7 +1315,7 @@
+@@ -1356,7 +1356,7 @@
                  docencoding="UTF-8"
                  charset="UTF-8"
                  bottom="${icu4j.api.doc.copyright.footer}"
 -                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
 +                additionalparam="${doclint.option} -breakiterator -use -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
                  link="${icu4j.api.doc.jdk.link}"
-                 source="1.7"
+                 source="${javac.source}"
                  stylesheetfile="${docs.style.sheet}"
-@@ -1351,7 +1351,7 @@
+@@ -1393,7 +1393,7 @@
                  docencoding="UTF-8"
                  charset="UTF-8"
                  bottom="${icu4j.api.doc.copyright.footer}"
 -                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet"
 +                additionalparam="${doclint.option} -breakiterator -use"
                  link="${icu4j.api.doc.jdk.link}"
-                 source="1.7"
+                 source="${javac.source}"
                  failonerror="true">
-@@ -1396,7 +1396,7 @@
+@@ -1439,7 +1439,7 @@
                  docencoding="UTF-8"
                  charset="UTF-8"
                  bottom="${icu4j.api.doc.copyright.footer}"
 -                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
 +                additionalparam="${doclint.option} -breakiterator -use -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
                  link="${icu4j.api.doc.jdk.link}"
-                 source="1.7"
+                 source="${javac.source}"
                  stylesheetfile="${docs.style.sheet}"
-@@ -1435,7 +1435,7 @@
+@@ -1479,7 +1479,7 @@
                  docencoding="UTF-8"
                  charset="UTF-8"
                  bottom="${icu4j.api.doc.copyright.footer}"
 -                additionalparam="${doclint.option} -breakiterator -use -tagletpath ${icu4j.build-tools.jar}${path.separator}${jcite.libs} -taglet com.ibm.icu.dev.tool.docs.ICUTaglet -taglet ch.arrenbrecht.jcite.JCiteTaglet -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
 +                additionalparam="${doclint.option} -breakiterator -use -J-Djcitesourcepath=${jcite.addl.src} -J-Dfile.encoding=UTF-8"
                  link="${icu4j.api.doc.jdk.link}"
-                 source="1.7"
+                 source="${javac.source}"
                  stylesheetfile="${docs.style.sheet}"
-@@ -1619,7 +1619,6 @@
+@@ -1664,7 +1664,6 @@
              <packageset dir="${icu4j.charset.dir}/src">
                  <include name="com/ibm/icu/charset/**"/>
              </packageset>
@@ -62,7 +63,7 @@
          </javadoc>
      </target>
  
-@@ -1645,13 +1644,6 @@
+@@ -1690,13 +1689,6 @@
              <packageset dir="${icu4j.translit.dir}/src">
                  <include name="com/ibm/icu/text/**"/>
              </packageset>
@@ -71,19 +72,6 @@
 -                <param name="-output" value="${out.dir}/icu4j${api.report.version}.api3"/>
 -                <param name="-internal"/>
 -                <param name="-version"/>
--                <param name="-gzip"/>
--            </doclet>
-         </javadoc>
-     </target>
- 
-@@ -1691,12 +1683,6 @@
-             <packageset dir="${icu4j.translit.dir}/src">
-                 <include name="com/ibm/icu/text/**"/>
-             </packageset>
--            <doclet name="com.ibm.icu.dev.tool.docs.GatherAPIDataOld" path="${icu4j.build-tools.jar}">
--                <param name="-name" value="ICU4J ${icu4j.impl.version}"/>
--                <param name="-output" value="${out.dir}/icu4j${api.report.version}.api"/>
--                <param name="-internal"/>
 -                <param name="-gzip"/>
 -            </doclet>
          </javadoc>
