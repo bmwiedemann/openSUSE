@@ -1,7 +1,7 @@
 #
 # spec file for package libXprintAppUtil
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,11 +23,12 @@ Release:        0
 Summary:        Xprint application utility routines
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXprintAppUtil
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXprintAppUtil/
 Source:         http://ftp.x.org/pub/X11R7.1/src/lib/%name-X11R7.0-%version.tar.bz2
+Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.57, automake, libtool
 BuildRequires:  pkgconfig
