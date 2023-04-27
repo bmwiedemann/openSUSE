@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 22:00:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.4:
+  * Add visitor function for ``TryStar`` to ``AsStringVisitor``
+    and add ``TryStar`` to ``astroid.nodes.ALL_NODE_CLASSES``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

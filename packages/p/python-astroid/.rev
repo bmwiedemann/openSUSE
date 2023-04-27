@@ -446,4 +446,14 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>1082058</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bd61f0385a2c563b1a012c68a2a9ff4b</srcmd5>
+    <version>2.15.4</version>
+    <time>1682618229</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.4:
+  * Add visitor function for ``TryStar`` to ``AsStringVisitor``
+    and add ``TryStar`` to ``astroid.nodes.ALL_NODE_CLASSES``.</comment>
+    <requestid>1082830</requestid>
+  </revision>
 </revisionlist>
