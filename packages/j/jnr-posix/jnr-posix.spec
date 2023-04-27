@@ -1,7 +1,7 @@
 #
-# spec file for package jnr-posix
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global cluster jnr
 Name:           %{cluster}-posix
-Version:        3.1.7
+Version:        3.1.16
 Release:        0
 Summary:        Java Posix layer
 License:        CPL-1.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later

@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sun Dec 18 06:36:29 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.1.16
+  * No changelog provided by upstream
+
+-------------------------------------------------------------------
 Thu Jul  8 14:43:57 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update with v3.1.7
+  * No changelog provided by upstream
 - Wipe obsolete stuff out from the spec
 - Install artifact into %{_javadir}/jnr
 
