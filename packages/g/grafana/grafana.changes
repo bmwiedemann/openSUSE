@@ -1,4 +1,338 @@
 -------------------------------------------------------------------
+Wed Apr 26 10:57:01 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 9.5.0 (CVE-2023-1387, bsc#1210907)
+  * Breaking changes
+    - default named retention policies won't be used to query.
+      Users who have a default named retention policy in their
+      influxdb database, have to rename it to something else.
+      Having default named retention policy is not breaking
+      anything. We will make sure to use the actual default
+      retention policy under the hood. To change the hardcoded
+      retention policy in the dashboard.json, users must they
+      select the right retention policy from dropdown and save the
+      panel/dashboard.
+    - Grafana Alerting rules with NoDataState configuration set to
+      Alerting will now respect "For" duration.
+    - Users who use LDAP role sync to only sync Viewer, Editor and
+      Admin roles, but grant Grafana Server Admin role manually
+      will not be able to do that anymore. After this change, LDAP
+      role sync will override any manual changes to Grafana Server
+      Admin role assignments. If grafana_admin is left unset in
+      LDAP role mapping configuration, it will default to false.
+  * Features and enhancements
+    - API keys: Add deprecation to api keys.
+    - API: Enable serving Swagger UI by default and add docs and
+      guidelines.
+    - API: Permit Cache-Control (browser caching) for datasource
+      resources.
+    - Accessibility: Make row actions keyboard accessible.
+    - Admin/Plugins: Set category filter in connections link.
+    - Alerting: Add CustomDetails field in PagerDuty contact point.
+    - Alerting: Add dashboard and panel links to rule and instance
+      annotations.
+    - Alerting: Add filter and remove funcs for custom labels and
+      annotations.
+    - Alerting: Add fuzzy search to alert list view.
+    - Alerting: Add metrics for active receiver and integrations.
+    - Alerting: Better printing of labels.
+    - Alerting: Create new state history "fanout" backend that
+      dispatches to multiple other backends at once.
+    - Alerting: Enable preview for recording rules.
+    - Alerting: Fetch all applied alerting configurations.
+    - Alerting: Introduce proper feature toggles for common state
+      history backend combinations.
+    - Alerting: Make time range query parameters not required when
+      querying Loki.
+    - Alerting: New notification policies view.
+    - Alerting: No longer index state history log streams by
+      instance labels.
+    - Alerting: Respect "For" Duration for NoData alerts.
+    - Alerting: Support filtering rules by multiple datasources.
+    - Alerting: Switch to snappy-compressed-protobuf for outgoing
+      push requests to Loki.
+    - Angular: Prevent angular from loading when disabled.
+    - Auth: Add Generic oauth skip org role sync setting.
+    - Auth: Add feature flag to move token rotation to client.
+    - Auth: Show user sync external Authentication status.
+    - Backend: Use sdk version 0.148.0.
+    - Chore: Add stat for remote cache config.
+    - Chore: Replace short UID generation with more standard UUIDs.
+    - Chore: Use DOMPurify to sanitize strings rather than js-xss.
+    - CloudMonitoring: Add possibility to use path for private key.
+    - CloudWatch Logs: Update default timeout to 30m.
+    - CloudWatch: Add AWS/IotSiteWise namespace and metrics.
+    - CloudWatch: Add account support to variable queries.
+    - CloudWatch: Make deeplinks work for us-gov and china regions.
+    - Cloudwatch: Add MeteredIOBytes metric for EFS.
+    - Command Palette: Display dashboard location.
+    - Command palette: Enable folder searching.
+    - Connections: Turn on feature toggle by default.
+    - Cookies: Provide a mechanism for per user control over
+      cookies.
+    - Dashboard Datasource: Update Query List & Improve UX.
+    - Dashboard: Add a feature that creates a table panel when a
+      spreadsheet file is dropped on the dashboard.
+    - Dashboard: Add new visualization/row/library panel/pasted
+      panel is now a dropdown menu.
+    - Dashboard: Add value format for requests per minute.
+    - Dashboard: Empty/No Panels dashboard with a new design.
+    - Dashboard: When dashboard is not found show message instead
+      of empty page.
+    - Dashboards: Enable feature flag newPanelChromeUI by default.
+    - Dataplane: Support timeSeriesLong without transform.
+    - Datasources: Add user_agent header customization for outgoing
+      HTTP requests.
+    - Datasources: Use getDefaultQuery in annotations editors.
+    - Docs: Add documentation on how to debug backend plugins.
+    - Docs: Deprecate dashboard previews.
+    - Elasticsearch: Detect Elasticsearch version.
+    - Elasticsearch: Run Explore queries trough data source
+      backend.
+    - Explore: Add range option to internal data links.
+    - Explore: Add transformations to correlation data links.
+    - Explore: Support mixed data sources for supplementary query.
+    - Extensions: Expose an enum for available placements.
+    - Feat: Changing link destination for get more plugins.
+    - Feat: Linking to plugin details page rather than externally
+      for new datasources.
+    - FieldMatchers: Add match by value (reducer).
+    - Flame graph: Add context menu.
+    - Flame graph: Add metadata above flame graph.
+    - Geomap: Improve tooltip url for photos layer.
+    - Geomap: Release night / day layer.
+    - InfluxDB: Move database information into jsondata.
+    - Jaeger and Zipkin: Config & docs upgrade.
+    - LDAP: Allow setting minimum TLS version and accepted ciphers.
+    - Licensing: Allow server admin user to log in even if the
+      active user limit is reached. (Enterprise)
+    - Live: Remove (alpha) ability to configure live pipelines.
+    - Logger: Add feature toggle for errors in HTTP request logs.
+    - Login: Allow custom name and icon for social providers.
+    - Logs Panel: Refactor style generation to improve rendering
+      performance.
+    - Logs: Add millisecond to timestamp in log line.
+    - Logs: Rename dedup to deduplicate.
+    - Loki Query Editor: Make Monaco the default editor.
+    - Loki: Add unpack query builder hint.
+    - Loki: Add descriptions to query builder operations.
+    - Loki: Add placeholder to the loki query editor.
+    - Loki: Always fetch for new label keys in the QueryBuilder.
+    - Loki: Display error with label filter conflicts.
+    - Loki: Improve the display of loki query stats.
+    - MSSQL/Postgres: List views in table dropdown as well.
+    - MSSQL: Update forked go-mssqldb dependency.
+    - Metrics: Update comment to mention folders instead of
+      dashboards.
+    - Navigation: Enable new navigation by default.
+    - NodeGraph: Support icons for nodes.
+    - Notifications: Enable display of trace ID by default.
+    - Packaging: Start Grafana service after InfluxDB.
+    - Panel Header: Add CancelQuery option to panel header.
+    - Panel: Show multiple errors info in the inspector.
+    - PanelChrome: Add option to show actions on the right side
+      (actions = leftItems).
+    - Phlare: Allow variables in labelSelector (in query).
+    - Plugin: Skip preloading disabled app plugins.
+    - Plugins: Add optional logger for plugin requests sent to
+      backend plugins.
+    - Plugins: Extend panel menu with commands from plugins.
+    - Plugins: Extend panel menu with links from plugins.
+    - Plugins: Improve instrumentation by adding metrics and
+      tracing.
+    - Plugins: Support for distributed tracing in backend plugins
+      SDK.
+    - Plugins: Support for link extensions.
+    - Profiling: Enable flame graph & Phlare/Parca data sources for
+      all users.
+    - Prometheus Datasource: Improve Prom query variable editor.
+    - Prometheus Metrics: Add missing stat_total_teams metric.
+    - Prometheus/Loki: Run query explicitly instead of onblur in
+      panel edit.
+    - Prometheus: Browser resource caching.
+    - Prometheus: Improve prometheus query variable editor.
+    - Prometheus: Use $__rate_interval for rate queries generated
+      by metric browser.
+    - Pubdash: Email sharing handle dashboard deleted.
+    - Pubdash: Email sharing handle dashboard deleted. (Enterprise)
+    - PublicDashboards: Backfills share column with default value.
+    - PublicDashboards: Configuration modal redesign.
+    - PublicDashboards: Email sharing.
+    - PublicDashboards: Email sharing. (Enterprise)
+    - PublicDashboards: Enable creation when dashboard has template
+      variables.
+    - PublicDashboards: Paused or deleted public dashboard screen.
+    - PublicDashboards: Viewer can request and claim magic link.
+      (Enterprise)
+    - QueryHistory: Improve handling of mixed datasource entries.
+    - Rendering: Experimental support to use JWTs as auth method.
+    - Reports: Improve the UI for the new navigation. (Enterprise)
+    - SQL Datasources: Add back help content.
+    - Schema: Remove exclusion for timeseries and update imports.
+    - Search: Improvements for starred dashboard search.
+    - Select: Show icon in the grafana/ui Select component.
+    - Service accounts: Creation logic simplification.
+    - Service accounts: Remove Add API keys buttons and remove one
+      state of migrating for API keys tab.
+    - SplitOpen: Update API to accept multiple queries.
+    - Stat Panel: Add an option for a non-gradient/solid
+      background.
+    - Stat: Add ability to remove default single-color background
+      gradient.
+    - SupportBundles: Add OAuth bundle collectors.
+    - Table Panel: Add ability to use text color for value or hide
+      value in gauge cell.
+    - Table: Introduce sparkline cell type.
+    - Tempo: Config and doc updates.
+    - Tempo: Update service graph view and docs.
+    - TraceView: Add key and url escaping of json tag values.
+    - TraceView: Reworked header.
+    - Tracing: Add more detail to HTTP Outgoing Request.
+    - Tracing: Docs and config improvements for
+      Tempo/Jaeger/Zipkin.
+    - Tracing: Support multiple OTel propagators.
+    - Transformations: Support time format when converting time to
+      strings.
+    - Transformers: Support adding the row index using calculate
+      field transformer.
+    - Units: Format currency with negative before the symbol.
+  * Bug fixes
+    - API: Fix "Updated by" Column in dashboard versions table.
+    - AccessControl: Allow editors to access GET /api/datasources.
+    - Alerting: Add "backend" label to state history writes metrics.
+    - Alerting: Add alert instance labels to Loki log lines in
+      addition to stream labels.
+    - Alerting: Elide requests to Loki if nothing should be
+      recorded.
+    - Alerting: Fix DatasourceUID and RefID missing for
+      DatasourceNoData alerts.
+    - Alerting: Fix ambiguous handling of equals in labels when
+      bucketing Loki state history streams.
+    - Alerting: Fix attachment of external labels to Loki state
+      history log streams.
+    - Alerting: Fix creating a recording rule when having multiple
+      datasources.
+    - Alerting: Fix explore link in alert detail view.
+    - Alerting: Fix share URL for Prometheus rules on subpath.
+    - Alerting: Fix stats that display alert count when using
+      unified alerting.
+    - Alerting: Hide mute timing actions when dealing with vanilla
+      prometheus.
+    - Alerting: Paginate result previews.
+    - Alerting: Prometheus-compatible Alertmanager timings editor.
+    - Alerting: Update scheduler to get updates only from database.
+    - Alerting: Use a completely isolated context for state history
+      writes.
+    - Alerting: Use displayNameFromDS if available in preview.
+    - Annotation List: Fix panel not updating when variable is
+      changed.
+    - Annotations: Ignore unique constraint violations for tags.
+    - Auth: Fix orgrole picker disabled if isSynced user.
+    - AzureMonitor: Fix Log Analytics portal links.
+    - BrowseDashboards: Fix move to General folder not working.
+    - Catalog: Show install error with incompatible version.
+    - Chore: Update Grafana to use Alertmanager
+      v0.25.1-0.20230308154952-78fedf89728b.
+    - CloudMonitoring: Add project selector for MQL editor[fix].
+    - CloudWatch Logs: Fix running logs queries with expressions.
+    - CloudWatch Logs: Fix to make log queries use a relative time
+      if available.
+    - CloudWatch Logs: Revert "Queries in an expression should run
+      synchronously".
+    - CloudWatch: Fix cachedQueries insights not being updated for
+      metric queries.
+    - Cloudwatch: Pass refId from query for expression queries.
+    - Dashboards: Evaluate provisioned dashboard titles in a
+      backwards compatible way.
+    - Dashboards: Fix Mobile support dashboard issues on new iOS
+      16.3.
+    - Dashboards: Fix broken internal data links.
+    - Database: Don't sleep 10ms before every request.
+    - Elasticsearch: Fix processing of response with multiple group
+      by for alerting.
+    - Elasticsearch: Handle multiple annotation structures.
+    - Email: Mark HTML comments as "safe" in email templates.
+    - Emails: Preserve HTML comments. (Enterprise)
+    - ErrorHandling: Fixes issues with bad error messages.
+    - ErrorView: Better detection of no-data responses.
+    - Explore: Make DataSourcePicker visible on small screens.
+    - Fix: DataLinks from data sources override user defined data
+      link.
+    - Fix: Top table rendering and update docs.
+    - Frontend: Fix broken links in /plugins when pathname has a
+      trailing slash.
+    - Geomap: Fix route layer zoom behavior.
+    - Google Cloud Monitoring: Fix project variable.
+    - HeatMap: Sort y buckets when all bucket names are numeric.
+    - InfluxDB: Fix querying with hardcoded retention policy.
+    - InfluxDB: Fix sending retention policy with InfluxQL queries.
+    - KVStore: Include database field in migration.
+    - LDAP: Always synchronize Server Admin role through role sync
+      if role sync is enabled.
+    - Library panels: Ensure pagination controls are always
+      correctly displayed.
+    - Loki: Fix autocomplete situations with multiple escaped
+      quotes.
+    - MegaMenu: Fixes mega menu showing scroll indicator when it
+      shouldn't.
+    - Navigation: Redirect to root page when switching
+      organization.
+    - Navigation: Scrolled hamburger menu links now navigate
+      correctly in Safari.
+    - NestedFolders: Fix nested folder deletion.
+    - New Panel Header: Fix when clicking submenu item the parent
+      menu item onClick get's triggered.
+    - Phlare: Fix error when there are no profileTypes to send from
+      backend.
+    - PieChart: Show long labels properly.
+    - PluginExtensions: Fixed issue with incorrect type being
+      exposed when configuring an extension.
+    - Plugins: Ensure proxy route bodies are valid JSON.
+    - Plugins: Fix width for README pages with tables.
+    - Plugins: Markdown fetch retry with lowercase.
+    - Plugins: Skip instrumenting plugin build info for core and
+      bundled plugins.
+    - PublicDashboards: Query collapsed panels inside rows.
+    - Query Splitting: Fix for handling queries with no requestId.
+    - SQL Datasources: Fix variable throwing error if query returns
+      no data.
+    - SQL Datasources: Prevent Call Stack Overflows with Large
+      Numbers of Values for Variable.
+    - SQLStore: Fix SQLite error propagation if query retries are
+      disabled.
+    - Stat Panel: Fix issue with clipping text values.
+    - Table Panel: Fix panel migration for options cell type.
+    - Table: Fix migrations from old angular table for cell color
+      modes.
+    - Table: Fixes issue with pagination summary causing scrollbar.
+    - Table: Fixes table panel gauge alignment.
+    - TablePanel: Fix table cells overflowing when there are
+      multiple data links.
+    - TablePanel: fix footer bug; no footer calculated values after
+      "hidden" column override.
+    - Team sync: Fix apply query string instead of param.
+      (Enterprise)
+    - Templating: Allow percent encoding of variable with custom
+      all.
+    - Tempo: Set default limit if none is provided for traceql
+      queries.
+    - TimeSeries: Don't extend stepped interpolation to graph
+      edges.
+    - TimeSeries: Improve stacking direction heuristic.
+    - Trace View: Update the queryType to traceql for checking if
+      same trace when clicking span link.
+    - TraceView: Don't require preferredVisualisationType to
+      render.
+    - Utils: Reimplement util.GetRandomString to avoid modulo bias.
+    - XYChart: Add all dataset columns in tooltip.
+  * Plugin development fixes & changes
+    - DateTimePicker: Can now select time correctly.
+    - Grafana UI: Fix tooltip prop of button component.
+    - DateTimePicker: Add min date support to calendar.
+    - GrafanaUI: Implement new component Toggletip.
+    - ContextMenu: Fix padding and show border based on items.
+
+-------------------------------------------------------------------
 Thu Apr  6 15:03:14 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 9.4.7 (2023-03-16)
