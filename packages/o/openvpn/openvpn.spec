@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.5.9
+Version:        2.6.3
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        GPL-2.0-only WITH openvpn-openssl-exception
@@ -37,9 +37,11 @@ Source9:        %{name}.target
 Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
-Patch6:         %{name}-fips140-2.3.2.patch
 BuildRequires:  iproute2
+BuildRequires:  libcap-ng-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  libselinux-devel
+BuildRequires:  lz4
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
 BuildRequires:  p11-kit-devel
@@ -116,7 +118,6 @@ This package provides the header file to build external plugins.
 %prep
 %setup -q
 %patch1
-%patch6
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Apr 25 14:02:08 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.6.3:
+  * For full changelog please refer to:
+    https://github.com/OpenVPN/openvpn/blob/v2.6.3/Changes.rst
+  * implement byte counter statistics for DCO Linux (p2mp server
+    and client)
+  * implement byte counter statistics for DCO Windows (client only)
+  * '--dns server <n> address ...' now permits up to 8 v4 or v6
+    addresses
+  * fix a few cases of possibly undefined behaviour detected by ASAN
+  * add more unit tests for Windows cryptoapi interface
+  * Dynamic TLS Crypt When both peers are OpenVPN 2.6.1+, OpenVPN
+    will dynamically create a tls-crypt key that is used for
+    renegotiation. This ensure that only the previously authenticated
+    peer can do trigger renegotiation and complete renegotiations.
+  * Keying Material Exporters (RFC 5705) based key generation
+  * As part of the cipher negotiation OpenVPN will automatically prefer
+    the RFC5705 based key material generation to the current custom
+    OpenVPN PRF. This feature requires OpenSSL or mbed TLS 2.18+.
+  * OpenVPN will now work with OpenSSL in FIPS mode. Note, no effort
+    has been made to check or implement all the requirements/
+    recommendation of FIPS 140-2. This just allows OpenVPN to be run on
+    a system that be configured OpenSSL in FIPS mode.
+  * mlock will now check if enough memlock-able memory has been reserved,
+    and if less than 100MB RAM are available, use setrlimit() to upgrade
+    the limit. See Trac #1390. Not available on OpenSolaris.
+  * The --peer-fingerprint option has been introduced to give users an
+    easy to use alternative to the tls-verify for matching the fingerprint
+    of the peer. The option takes use a number of allowed SHA256
+    certificate fingerprints.
+  * When --peer-fingerprint is used, the --ca and --capath option become
+    optional. This allows for small OpenVPN setups without setting up a
+    PKI with Easy-RSA or similar software.
+  * The --auth-user-pass-verify script supports now deferred authentication.
+  * Both auth plugin and script can now signal pending authentication to
+    the client when using deferred authentication. The new client-crresponse
+    script option and OPENVPN_PLUGIN_CLIENT_CRRESPONSE plugin function can
+    be used to parse a client response to a CR_TEXT two factor challenge.
+  * The modernisation of defaults can impact the compatibility of OpenVPN
+    2.6.0 with older peers. The options --compat-mode allows UIs to provide
+    users with an easy way to still connect to older servers.
+  * OpenSSL 3.0 has been added. Most of OpenSSL 3.0 changes are not user
+    visible but improve general compatibility with OpenSSL 3.0.
+    --tls-cert-profile insecure has been added to allow selecting the lowest
+    OpenSSL security level (not recommended, use only if you must). OpenSSL
+    3.0 no longer supports the Blowfish (and other deprecated) algorithm by
+    default and the new option --providers allows loading the legacy provider
+    to renable these algorithms.
+  * Ciphers in --data-ciphers can now be prefixed with a ? to mark those as
+    optional and only use them if the SSL library supports them.
+  * The --mssfix and --fragment options now allow an optional mtu parameter to
+    specify that different overhead for IPv4/IPv6 should taken into account
+    and the resulting size is specified as the total size of the VPN packets
+    including IP and UDP headers.
+  * Instead of allocating a connection for each client on the initial packet
+    OpenVPN server will now use an HMAC based cookie as its session id. This way
+    the server can verify it on completing the handshake without keeping state.
+    This eliminates the amplification and resource exhaustion attacks.
+    For tls-crypt-v2 clients, this requires OpenVPN 2.6 clients or later because
+    the client needs to resend its client key on completing the hand shake.
+    The tls-crypt-v2 option allows controlling if older clients are accepted.
+- Removed openvpn-fips140-2.3.2.patch
+-------------------------------------------------------------------
 Thu Mar  2 07:34:31 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.5.9:
