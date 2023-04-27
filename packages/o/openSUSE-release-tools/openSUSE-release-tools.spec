@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20230329.af36a03
+Version:        20230420.372c67d
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -396,6 +396,7 @@ exit 0
 %{_bindir}/osrt-issue-diff
 %{_bindir}/osrt-legal-auto
 %{_bindir}/osrt-openqa-maintenance
+%{_bindir}/osrt-repo2fileprovides
 %{_bindir}/osrt-requestfinder
 %{_bindir}/osrt-totest-manager
 %{_datadir}/%{source_dir}
@@ -494,7 +495,6 @@ exit 0
 %files repo-checker
 %{_bindir}/osrt-project-installcheck
 %{_bindir}/osrt-staging-installcheck
-%{_bindir}/osrt-maintenance-installcheck
 %{_bindir}/osrt-findfileconflicts
 %{_bindir}/osrt-maintenance-installcheck
 %{_bindir}/osrt-write_repo_susetags_file
