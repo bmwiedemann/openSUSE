@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 20:15:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.0
+  * Added support for Qt v6.5.
+
+-------------------------------------------------------------------
 Wed Mar 15 14:08:48 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to support python 3.6 in order to build for SLE/Leap:
