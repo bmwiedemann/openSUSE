@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-WebOb
 Version:        1.8.7
@@ -50,6 +49,7 @@ The objects map much of the specified behavior of HTTP, including
 header parsing and accessors for other standard parts of the
 environment.
 
+%if 0%{?suse_version} > 1500
 %package -n python-WebOb-doc
 Summary:        WSGI request and response object - Documentation
 Group:          Documentation/HTML
@@ -57,6 +57,7 @@ Provides:       %{python_module WebOb-doc = %{version}}
 
 %description -n python-WebOb-doc
 This package contains documentation files for %{name}.
+%endif
 
 %prep
 %setup -q -n WebOb-%{version}
@@ -80,7 +81,9 @@ PYTHONPATH=./src python3 setup.py build_sphinx && rm build/sphinx/html/.buildinf
 %{python_sitelib}/webob
 %{python_sitelib}/WebOb-%{version}*-info
 
+%if 0%{?suse_version} > 1500
 %files -n python-WebOb-doc
+%endif
 %doc build/sphinx/html
 
 %changelog
