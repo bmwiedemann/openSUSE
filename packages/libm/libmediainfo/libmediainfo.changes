@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 27 06:40:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 23.04
+  Added features:
+  * MXF: support of SMPTE ST 381-4 (AAC in MXF)
+  * DTS: show MA or HRA tip in commercial name for DTS:X
+  * DTS: detection of DTS:X not lossless
+  * APT-X100 a.k.a. Cinema DTS: initial support
+  * Matroska: support of HDR10+
+  * MP4: more information about thumbnails
+  * ID3v2: more information about thumbnails
+  * VP9: initial support, for more information about chroma
+    subsampling
+  * AWS S3: support for reference files with
+    AccessID:SecretKey@URL
+  Fixed bugs:
+  * AWS S3: fix errors with some special chars in SecretKey
+  * AWS S3: fix random credential issues with non geolocated
+    URLs
+  * DTS: fix freeze with some DTS-HD not DTS:X files
+  * MPEG-TS: fix crash in HEVC_timing_and_HRD
+  * AAC: fix samples per frame with SBR streams
+  * FLAC: fix missing Tbc Tbr in ChannelLayout
+
+-------------------------------------------------------------------
 Wed Mar 29 12:49:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 23.03
