@@ -1,7 +1,7 @@
 #
 # spec file for package suitesparse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Version:        5.13.0
 Release:        0
@@ -102,7 +102,7 @@ matrices.
 
 %package devel
 Summary:        Development headers for SuiteSparse
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 %if 0%{?suse_version} < 1500
 Requires:       gcc7-c++
@@ -189,7 +189,7 @@ applications which use the suitesparse libraries.
 
 %package devel-static
 Summary:        Static version of SuiteSparse libraries
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
@@ -201,7 +201,7 @@ version of the suitesparse libraries.
 Version:        %{amdver}
 Release:        0
 Summary:        Symmetric Approximate Minimum Degree
-License:        LGPL-2.1-or-later
+License:        BSD-3-Clause
 Group:          System/Libraries
 Provides:       %(echo "libamd-%{amdver}" | tr . _) = %{version}
 Obsoletes:      %(echo "libamd-%{amdver}" | tr . _) < %{version}
@@ -218,7 +218,7 @@ AMD is part of the SuiteSparse sparse matrix suite.
 
 %package -n libamd-doc
 Summary:        Documentation for libamd
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        BSD-3-Clause
 Group:          Documentation/Other
 
 %description -n libamd-doc
@@ -244,7 +244,7 @@ BTF is part of the SuiteSparse sparse matrix suite.
 Version:        %{camdver}
 Release:        0
 Summary:        Symmetric Approximate Minimum Degree
-License:        LGPL-2.1-or-later
+License:        BSD-3-Clause
 Group:          System/Libraries
 Provides:       %(echo "libcamd-%{camdver}" | tr . _) = %{version}
 Obsoletes:      %(echo "libcamd-%{camdver}" | tr . _) < %{version}
@@ -259,7 +259,7 @@ CAMD is part of the SuiteSparse sparse matrix suite.
 
 %package -n libcamd-doc
 Summary:        Documentation for libcamd
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        BSD-3-Clause
 Group:          Documentation/Other
 
 %description -n libcamd-doc
@@ -269,7 +269,7 @@ Documentation for libcam.
 Version:        %{ccolamdver}
 Release:        0
 Summary:        Constrained Column Approximate Minimum Degree
-License:        LGPL-2.1-or-later
+License:        BSD-3-Clause
 Group:          System/Libraries
 Provides:       %(echo "libccolamd-%{ccolamdver}" | tr . _) = %{version}
 Obsoletes:      %(echo "libccolamd-%{ccolamdver}" | tr . _) < %{version}
@@ -314,7 +314,7 @@ CHOLMOD is part of the SuiteSparse sparse matrix suite.
 Version:        %{colamdver}
 Release:        0
 Summary:        Column Approximate Minimum Degree
-License:        LGPL-2.1-or-later
+License:        BSD-3-Clause
 Group:          System/Libraries
 Provides:       %(echo "libcolamd-%{colamdver}" | tr . _) = %{version}
 Obsoletes:      %(echo "libcolamd-%{colamdver}" | tr . _) < %{version}
@@ -419,7 +419,7 @@ KLU is part of the SuiteSparse sparse matrix suite.
 
 %package -n libklu-doc
 Summary:        Documentation for libklu
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 Group:          Documentation/Other
 
 %description -n libklu-doc
@@ -449,7 +449,7 @@ LDL is part of the SuiteSparse sparse matrix suite.
 
 %package -n libldl-doc
 Summary:        Documentation for libldl
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 Group:          Documentation/Other
 
 %description -n libldl-doc
@@ -472,7 +472,7 @@ mongoose is part of the SuiteSparse sparse matrix suite.
 
 %package -n libmongoose-doc
 Summary:        Documentation for libmongoose
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+License:        GPL-3.0-only
 Group:          Documentation/Other
 
 %description -n libmongoose-doc
@@ -499,7 +499,7 @@ RBio is part of the SuiteSparse sparse matrix suite.
 Version:        %{slipluver}
 Release:        0
 Summary:        SLIP LU, A Sparse Left-Looking Integer Preserving LU Factorization
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          System/Libraries
 Provides:       %(echo "libsliplu-%{slipluver}" | tr . _) = %{version}
 Obsoletes:      %(echo "libsliplu-%{slipluver}" | tr . _) < %{version}

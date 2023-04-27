@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 15:00:16 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Adjust licenses in SPEC files (bsc#1210879)
+
+-------------------------------------------------------------------
 Wed Nov 30 16:55:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64
