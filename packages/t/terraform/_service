@@ -3,7 +3,7 @@
     <param name="url">https://github.com/hashicorp/terraform</param>
     <param name="scm">git</param>
     <param name="filename">terraform</param>
-    <param name="revision">v1.4.5</param>
+    <param name="revision">v1.4.6</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="exclude">.git</param>
