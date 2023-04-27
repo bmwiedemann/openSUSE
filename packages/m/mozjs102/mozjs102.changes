@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 26 01:51:01 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add missing copyright in the spec to claim:
+  + Frantisek Zatloukal's work from:
+    https://src.fedoraproject.org/rpms/mozjs102/blob/rawhide/f/mozjs102.spec
+  + Wolfgang Rosenauer's work from:
+    https://build.opensuse.org/package/view_file/openSUSE:Leap:42.3/mozjs38/mozjs38.spec?expand=1
+ 
+-------------------------------------------------------------------
 Wed Apr 12 03:13:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 102.10.0:

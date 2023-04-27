@@ -2,6 +2,8 @@
 # spec file
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Frantisek Zatloukal <fzatlouk@redhat.com>
+# Copyright (c) 2014 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
