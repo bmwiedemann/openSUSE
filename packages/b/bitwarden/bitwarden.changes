@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 26 20:36:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2022.4.0
+  * Send service refactor
+  * Updated help links
+- Correct bogus npm(…) RPM provides
+- Do not ship JS debuginfo (no-sourcemaps.patch)
+- Fix unresolvable build on Fedora
+
+-------------------------------------------------------------------
 Fri Apr  7 09:59:54 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 2022.3.2
   * Copy send link fix

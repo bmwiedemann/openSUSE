@@ -17,9 +17,8 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
 Name:       bitwarden
-Version:    2023.3.2
+Version:    2023.4.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -60,6 +59,7 @@ Patch4:    desktop_native-rust-arch.patch
 Patch5:    use-node-argon2.patch
 Patch6:    argon2-binary-path.patch
 Patch7:    bug-reporting-url.patch
+Patch8:    no-sourcemaps.patch
 
 
 #patches to use system libs
@@ -72,9 +72,17 @@ Patch4000: remove-esbuild-version-check.patch
 %if 0%{?fedora_version}
 %define _ttfontsdir %{_datadir}/fonts/truetype
 %endif
-BuildRequires: npm
+%if 0%{?fedora} >= 37
+BuildRequires:  nodejs-npm
+%else
+BuildRequires:  npm
+%endif
 BuildRequires: cargo
-BuildRequires: rust-packaging
+%if 0%{?fedora}
+BuildRequires:  rust-srpm-macros
+%else
+BuildRequires:  rust-packaging
+%endif
 BuildRequires: fdupes
 BuildRequires: fontpackages-devel
 BuildRequires: hicolor-icon-theme
@@ -94,6 +102,9 @@ Requires: (google-opensans-fonts or open-sans-fonts)
 Requires: nodejs-electron%{_isa}
 
 %global __requires_exclude ^npm(.*)|^nodejs(.*)
+%global __provides_exclude ^npm(.*)|^nodejs(.*)
+
+
 
 %description
 Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault.  Bitwarden offers a cloud-hosted service as well as the ability to deploy the solution on-premises. This package provides the GUI client.
