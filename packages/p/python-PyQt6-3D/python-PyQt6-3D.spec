@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,9 @@
 
 
 %define mname PyQt6-3D
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Python bindings for the Qt 3D framework
 License:        GPL-3.0-only
@@ -45,8 +43,6 @@ BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
 %requires_ge    python-PyQt6
 Provides:       python-qt3d-qt6 = %{version}-%{release}
-# qt6-3d-devel for i586 is projected to be reenabled when 6.5.0 is released
-ExcludeArch:    %{ix86}
 %python_subpackages
 
 %description

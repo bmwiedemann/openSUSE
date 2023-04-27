@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 20:15:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.0
+  * Added support for Qt v6.5.
+
+-------------------------------------------------------------------
 Tue Mar 28 09:19:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Disable ix86 build: qt6-3d has disabled it temporarily
