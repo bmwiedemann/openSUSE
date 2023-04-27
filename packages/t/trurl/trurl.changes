@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 26 18:24:50 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6
+  * offer {puny:host} and {puny:url} for --get
+  * provide built-with libcurl version info for --version
+  * support for skipping tests
+  * test.py replaced test.pl
+  * test.py supports --with-valgrind
+  * tests.json: extended and updated
+  * URL-QUIRKS: specify if they are build-time or run-time
+    requirements
+
+-------------------------------------------------------------------
 Mon Apr 17 18:08:18 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5
