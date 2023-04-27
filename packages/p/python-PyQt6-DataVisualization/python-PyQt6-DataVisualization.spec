@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define pyqt_build_for_qt6 1
 %define plainpython python
 Name:           python-%{mname}
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Python bindings for the Qt Data Visualization library
 License:        GPL-3.0-only
