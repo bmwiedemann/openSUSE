@@ -1,7 +1,7 @@
 #
 # spec file for package xournalpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM xournalpp-include.patch -- Add missing include
+Patch0:         xournalpp-include.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -70,7 +72,6 @@ It supports pen input, e.g. Wacom tablets.
 %install
 %cmake_install
 %find_lang xournalpp %{no_lang_C}
-
 %fdupes %{buildroot}%{_datadir}
 
 %files

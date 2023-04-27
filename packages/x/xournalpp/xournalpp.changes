@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 13:24:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add xournalpp-include.patch: Add missing include exposed by
+  gcc-13.
+
+-------------------------------------------------------------------
 Tue Dec  6 15:28:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:
