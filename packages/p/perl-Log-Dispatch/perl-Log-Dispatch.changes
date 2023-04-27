@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 21 03:07:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.71
+   see /usr/share/doc/packages/perl-Log-Dispatch/Changes
+
+  2.71     2023-04-05
+
+  - The docs for the Screen output were never updated after the changes in 2.50,
+    when it reverted back to using STDOUT or STDERR directly. This led to a lot
+    of the docs being confusing and wrong. Reported by @mauke. GH #65, #66, and
+    #67.
+
+-------------------------------------------------------------------
 Tue Jul 21 03:14:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.70
