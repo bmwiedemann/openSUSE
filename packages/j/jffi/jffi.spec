@@ -1,7 +1,7 @@
 #
 # spec file for package jffi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global cluster jnr
 %global sover 1.2
 Name:           jffi
-Version:        1.3.10
+Version:        1.3.11
 Release:        0
 Summary:        Java Foreign Function Interface
 License:        Apache-2.0 OR LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 Source3:        p2.inf
 Patch0:         jffi-fix-dependencies-in-build-xml.patch
 Patch1:         jffi-add-built-jar-to-test-classpath.patch
-Patch4:         jffi-fix-system-ffi.patch
+Patch2:         jffi-fix-system-ffi.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -64,11 +64,13 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0
-%patch1
-%patch4 -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
+%if 0%{?suse_version} <= 1500
 sed -i -e '/case FFI_BAD_ARGTYPE:/,3d' jni/jffi/CallContext.c
+%endif
 
 # ppc{,64} fix
 # https://bugzilla.redhat.com/show_bug.cgi?id=561448#c9
