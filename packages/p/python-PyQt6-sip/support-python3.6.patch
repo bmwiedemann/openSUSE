@@ -1,7 +1,7 @@
-Index: PyQt6_sip-13.4.1/PKG-INFO
+Index: PyQt6_sip-13.5.1/PKG-INFO
 ===================================================================
---- PyQt6_sip-13.4.1.orig/PKG-INFO
-+++ PyQt6_sip-13.4.1/PKG-INFO
+--- PyQt6_sip-13.5.1.orig/PKG-INFO
++++ PyQt6_sip-13.5.1/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS
@@ -11,10 +11,10 @@ Index: PyQt6_sip-13.4.1/PKG-INFO
  License-File: LICENSE
  License-File: LICENSE-GPL3
  License-File: LICENSE-GPL2
-Index: PyQt6_sip-13.4.1/PyQt6_sip.egg-info/PKG-INFO
+Index: PyQt6_sip-13.5.1/PyQt6_sip.egg-info/PKG-INFO
 ===================================================================
---- PyQt6_sip-13.4.1.orig/PyQt6_sip.egg-info/PKG-INFO
-+++ PyQt6_sip-13.4.1/PyQt6_sip.egg-info/PKG-INFO
+--- PyQt6_sip-13.5.1.orig/PyQt6_sip.egg-info/PKG-INFO
++++ PyQt6_sip-13.5.1/PyQt6_sip.egg-info/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS
@@ -24,22 +24,22 @@ Index: PyQt6_sip-13.4.1/PyQt6_sip.egg-info/PKG-INFO
  License-File: LICENSE
  License-File: LICENSE-GPL3
  License-File: LICENSE-GPL2
-Index: PyQt6_sip-13.4.1/setup.py
+Index: PyQt6_sip-13.5.1/setup.py
 ===================================================================
---- PyQt6_sip-13.4.1.orig/setup.py
-+++ PyQt6_sip-13.4.1/setup.py
+--- PyQt6_sip-13.5.1.orig/setup.py
++++ PyQt6_sip-13.5.1/setup.py
 @@ -40,6 +40,6 @@ setup(
          name='PyQt6_sip',
-         version='13.4.1',
+         version='13.5.1',
          license='SIP',
 -        python_requires='>=3.7',
 +        python_requires='>=3.6',
          ext_modules=[module]
       )
-Index: PyQt6_sip-13.4.1/sip.h
+Index: PyQt6_sip-13.5.1/sip.h
 ===================================================================
---- PyQt6_sip-13.4.1.orig/sip.h
-+++ PyQt6_sip-13.4.1/sip.h
+--- PyQt6_sip-13.5.1.orig/sip.h
++++ PyQt6_sip-13.5.1/sip.h
 @@ -24,8 +24,8 @@
  #include <Python.h>
  

@@ -17,7 +17,7 @@
 
 
 Name:           python-PyQt6-sip
-Version:        13.4.1
+Version:        13.5.1
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
