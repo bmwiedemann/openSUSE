@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 26 06:22:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.5.1:
+  * Fix release.
+  * Add `de_DE` `swift_location_codes`. Thanks @MiloniAtal.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:20:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Wed Apr 19 09:47:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.4.0:

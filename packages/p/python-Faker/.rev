@@ -449,4 +449,16 @@
   * Add argument validation to `pybool()`.</comment>
     <requestid>1082313</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>87ae98ca58e4ffd1377d02a4a1081af6</srcmd5>
+    <version>18.5.1</version>
+    <time>1682618392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.5.1:
+  * Fix release.
+  * Add `de_DE` `swift_location_codes`. Thanks @MiloniAtal.
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083104</requestid>
+  </revision>
 </revisionlist>
