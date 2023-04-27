@@ -1,7 +1,7 @@
 #
 # spec file for package libalternatives
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define sover 1
 
 Name:           libalternatives
-Version:        1.2+3.b848aad
+Version:        1.2+30.a5431e9
 Release:        0
 Summary:        Helper for executing preferred application based on user preferences
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later
+License:        Apache-2.0
 URL:            https://github.com/openSUSE/libalternatives
 Source0:        libalternatives-v%{version}.tar.zst
 BuildRequires:  cmake > 3.8
@@ -38,7 +38,7 @@ config files and without the need to maintain system symlinks states.
 
 %package -n alts
 Summary:        Helper for executing preferred application based on user preferences
-License:        GPL-3.0-or-later
+License:        Apache-2.0
 
 %description -n alts
 This package contains a default helper and configuration application utility
@@ -49,7 +49,7 @@ and without the need to maintain system symlinks states.
 
 %package devel
 Summary:        Development headers for libalternatives
-License:        LGPL-3.0-or-later
+License:        Apache-2.0
 Requires:       libalternatives%sover = %version
 
 %description devel
@@ -57,7 +57,7 @@ This package contains development headers and library for libalternatives.
 
 %package -n libalternatives%sover
 Summary:        Runtime for libalternatives
-License:        LGPL-3.0-or-later
+License:        Apache-2.0
 
 %description -n libalternatives%sover
 This package contains the core logic and the runtime library for
@@ -68,7 +68,9 @@ without the need to maintain system symlinks states.
 
 %package unit-test-helper
 Summary:        Verification helper for libalternatives
-License:        LGPL-3.0-or-later
+License:        Apache-2.0
+Requires:       alts = %version
+BuildArch:      noarch
 
 %description unit-test-helper
 This is a testing-only installation that may be used to verify that successful
@@ -117,12 +119,14 @@ chmod 755 %buildroot/%_bindir/libalternatives-unit-test-helper.sh
 
 %files devel
 %_includedir/libalternatives.h
-%_libdir/libalternatives.so
+%{_libdir}/libalternatives.so
+%{_libdir}/cmake/libalternatives
+%{_libdir}/pkgconfig/libalternatives.pc
 
 %files -n libalternatives%sover
-%license COPYING.LIB
 %dir %_datadir/libalternatives
-%_libdir/libalternatives.so.%sover
+%{_libdir}/libalternatives.so.%sover
+%{_libdir}/libalternatives.so.%sover.*
 
 %files unit-test-helper
 %dir %_datadir/libalternatives

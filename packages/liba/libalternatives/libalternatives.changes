@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 25 10:21:11 UTC 2023 - bogdan.lezhepekov@suse.com
+
+- Update to version v1.2+30.a5431e9: (bsc#1191692)
+  * Change license to less restrictive Apache 2.0
+  * doc: fixing a few typos
+  * Adds option to display target executable only
+  * Makefiles and cmake: rework for reproducible build
+  * Improve Makefile
+  * libalts_exec_default: fix memory leak on error condition
+  * libalts_write_binary_configured_priority_to_file: fix memory leak
+  * saveConfigData(): fix file descriptor leak in while loop error case
+  * loadConfigData(): use goto exit label to prevent file descriptor leaks
+  * libalts_load_available_binaries: use goto err: label to fix leaks
+  * loadAlternativeForBinary: goto-assisted error handling to avoid leaks
+  * checkGroupConsistencies(): explicitly ignore unused `flags`
+  * lib: refactor error handling of findAltConfig()
+  * utils: fix possible memory leaks on error conditions
+  * docs: fix some typos and grammar
+  * Update README.md
+  * lib: generally open[at] with O_CLOEXEC
+  * Fix logic in options parser
+  * Add basic Makefile for buidling without cmake
+  * Added description for options=KeepArgv0
+  * cmake: Express the dependency on CUnit correctly for building tests
+  * cmake: Build and install CMake and PkgConfig files
+  * cmake: Fix setup of shared linker flags
+  * config.h: Fix the version to match the current latest tag
+
+-------------------------------------------------------------------
 Mon Nov 14 10:26:50 UTC 2022 - dmueller@suse.com
 
 - switch to a manual service rather than a buildtime tar service

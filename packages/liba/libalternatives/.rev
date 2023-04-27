@@ -49,4 +49,36 @@
     <comment></comment>
     <requestid>1035906</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c6bd732492ea09757cf8de285d3ad4c</srcmd5>
+    <version>1.2+30.a5431e9</version>
+    <time>1682618346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.2+30.a5431e9: (bsc#1191692)
+  * Change license to less restrictive Apache 2.0
+  * doc: fixing a few typos
+  * Adds option to display target executable only
+  * Makefiles and cmake: rework for reproducible build
+  * Improve Makefile
+  * libalts_exec_default: fix memory leak on error condition
+  * libalts_write_binary_configured_priority_to_file: fix memory leak
+  * saveConfigData(): fix file descriptor leak in while loop error case
+  * loadConfigData(): use goto exit label to prevent file descriptor leaks
+  * libalts_load_available_binaries: use goto err: label to fix leaks
+  * loadAlternativeForBinary: goto-assisted error handling to avoid leaks
+  * checkGroupConsistencies(): explicitly ignore unused `flags`
+  * lib: refactor error handling of findAltConfig()
+  * utils: fix possible memory leaks on error conditions
+  * docs: fix some typos and grammar
+  * Update README.md
+  * lib: generally open[at] with O_CLOEXEC
+  * Fix logic in options parser
+  * Add basic Makefile for buidling without cmake
+  * Added description for options=KeepArgv0
+  * cmake: Express the dependency on CUnit correctly for building tests
+  * cmake: Build and install CMake and PkgConfig files
+  * cmake: Fix setup of shared linker flags
+  * config.h: Fix the version to match the current latest tag</comment>
+    <requestid>1082926</requestid>
+  </revision>
 </revisionlist>
