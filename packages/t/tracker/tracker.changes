@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 25 16:34:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.1:
+  + Reintroduce order/distance independent handling of FTS terms.
+  + Documentation improvements.
+  + Do not prune too early content of failed batches for error
+    processing purposes.
+
+-------------------------------------------------------------------
 Mon Mar 20 09:36:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.5.0:
