@@ -310,4 +310,22 @@
     <comment></comment>
     <requestid>1082013</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c9499f3504d73f147b56eca757f23d8f</srcmd5>
+    <version>3.8.4</version>
+    <time>1682618398</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Update-update_query-calls-to-work-with-latest-yarl.patch to fix
+  problems with latest python-yarl
+- Delete aiohttp-pr7057-bump-charset-normalizer.patch not needed
+  anymore
+- Update to 3.8.4:
+  * Fixed incorrectly overwriting cookies with the same name and
+    domain, but different path. (#6638)
+  * Fixed ConnectionResetError not being raised after client
+    disconnection in SSL environments. (#7180)
+
+- Move documentation into the main package for SLE15</comment>
+    <requestid>1083129</requestid>
+  </revision>
 </revisionlist>

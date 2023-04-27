@@ -21,16 +21,16 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM aiohttp-pr7057-bump-charset-normalizer.patch gh#aio-libs/aiohttp#7057
-Patch0:         aiohttp-pr7057-bump-charset-normalizer.patch
 # PATCH-FIX-OPENSUSE py3109-compat.patch
 Patch1:         py3109-compat.patch
+# PATCH-FIX-UPSTREAM Update-update_query-calls-to-work-with-latest-yarl.patch gh#aio-libs/aiohttp#7260
+Patch2:         Update-update_query-calls-to-work-with-latest-yarl.patch
 # SECTION build requirements
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
@@ -94,15 +94,15 @@ BuildRequires:  python3-sphinxcontrib-towncrier
 # /SECTION
 %python_subpackages
 
-%package -n %{name}-doc
-Summary:        Documentation files for %{name}
-
 %description
 Asynchronous HTTP client/server framework for Python.
 
 - Supports both the client and server side of HTTP protocol.
 - Supports both client and server WebSockets out-of-the-box.
 - Web-server has middleware and pluggable routing.
+
+%package -n %{name}-doc
+Summary:        Documentation files for %{name}
 
 %description -n %{name}-doc
 HTML documentation on the API and examples for %{name}.
@@ -156,7 +156,9 @@ fi
 %{python_sitearch}/aiohttp-%{version}*-info
 
 %if %{with docs}
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc docs/_build/html
 %endif
 

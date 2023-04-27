@@ -1,7 +1,7 @@
-Index: aiohttp-3.8.3/tests/test_client_request.py
+Index: aiohttp-3.8.4/tests/test_client_request.py
 ===================================================================
---- aiohttp-3.8.3.orig/tests/test_client_request.py
-+++ aiohttp-3.8.3/tests/test_client_request.py
+--- aiohttp-3.8.4.orig/tests/test_client_request.py
++++ aiohttp-3.8.4/tests/test_client_request.py
 @@ -2,6 +2,7 @@ import asyncio
  import hashlib
  import io
@@ -14,7 +14,7 @@ Index: aiohttp-3.8.3/tests/test_client_request.py
      Fingerprint,
      _merge_ssl_params,
  )
--from aiohttp.helpers import PY_310
+-from aiohttp.helpers import PY_311
  from aiohttp.test_utils import make_mocked_coro
  
  
@@ -22,15 +22,15 @@ Index: aiohttp-3.8.3/tests/test_client_request.py
  
  
  @pytest.mark.xfail(
--    PY_310,
+-    PY_311,
 +    sys.version_info >= (3, 10) and sys.version_info < (3, 10, 9),
      reason="No idea why ClientRequest() is constructed out of loop but "
      "it calls `asyncio.get_event_loop()`",
      raises=DeprecationWarning,
-Index: aiohttp-3.8.3/tests/test_streams.py
+Index: aiohttp-3.8.4/tests/test_streams.py
 ===================================================================
---- aiohttp-3.8.3.orig/tests/test_streams.py
-+++ aiohttp-3.8.3/tests/test_streams.py
+--- aiohttp-3.8.4.orig/tests/test_streams.py
++++ aiohttp-3.8.4/tests/test_streams.py
 @@ -4,6 +4,7 @@ import abc
  import asyncio
  import gc
@@ -43,7 +43,7 @@ Index: aiohttp-3.8.3/tests/test_streams.py
  from re_assert import Matches
  
  from aiohttp import streams
--from aiohttp.helpers import PY_310
+-from aiohttp.helpers import PY_311
  
  DATA = b"line1\nline2\nline3\n"
  
@@ -51,15 +51,15 @@ Index: aiohttp-3.8.3/tests/test_streams.py
              await stream._wait("test")
  
      @pytest.mark.xfail(
--        PY_310,
+-        PY_311,
 +        sys.version_info >= (3, 10) and sys.version_info < (3, 10, 9),
          reason="No idea why ClientRequest() is constructed out of loop but "
          "it calls `asyncio.get_event_loop()`",
          raises=DeprecationWarning,
-Index: aiohttp-3.8.3/tests/test_web_app.py
+Index: aiohttp-3.8.4/tests/test_web_app.py
 ===================================================================
---- aiohttp-3.8.3.orig/tests/test_web_app.py
-+++ aiohttp-3.8.3/tests/test_web_app.py
+--- aiohttp-3.8.4.orig/tests/test_web_app.py
++++ aiohttp-3.8.4/tests/test_web_app.py
 @@ -1,12 +1,13 @@
  import asyncio
  import gc
@@ -70,7 +70,7 @@ Index: aiohttp-3.8.3/tests/test_web_app.py
  
  from aiohttp import log, web
  from aiohttp.abc import AbstractAccessLogger, AbstractRouter
--from aiohttp.helpers import DEBUG, PY_36, PY_310
+-from aiohttp.helpers import DEBUG, PY_36, PY_311
 +from aiohttp.helpers import DEBUG, PY_36
  from aiohttp.test_utils import make_mocked_coro
  from aiohttp.typedefs import Handler
@@ -79,7 +79,7 @@ Index: aiohttp-3.8.3/tests/test_web_app.py
  
  
  @pytest.mark.xfail(
--    PY_310,
+-    PY_311,
 -    reason="No idea why _set_loop() is constructed out of loop "
 -    "but it calls `asyncio.get_event_loop()`",
 +    sys.version_info >= (3, 10) and sys.version_info < (3, 10, 9),

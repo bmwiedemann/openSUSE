@@ -1,0 +1,65 @@
+From f984bea2a14c11cb5560aa02263126ed5e1d68bc Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Wed, 26 Apr 2023 09:27:18 +0200
+Subject: [PATCH] Update update_query calls to work with latest yarl
+
+This patch pass "{}" when params is "None" to the url.update_query to
+avoid setting the url params to None.
+
+Related to this change in yarl:
+https://github.com/aio-libs/yarl/commit/dd86b3435093b9ca251ecb7831346b92a3f16b25
+
+Fix https://github.com/aio-libs/aiohttp/issues/7259
+---
+ aiohttp/client.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+Index: aiohttp-3.8.4/aiohttp/client.py
+===================================================================
+--- aiohttp-3.8.4.orig/aiohttp/client.py
++++ aiohttp-3.8.4/aiohttp/client.py
+@@ -460,7 +460,7 @@ class ClientSession:
+         ]
+ 
+         for trace in traces:
+-            await trace.send_request_start(method, url.update_query(params), headers)
++            await trace.send_request_start(method, url.update_query(params or {}), headers)
+ 
+         timer = tm.timer()
+         try:
+@@ -578,7 +578,7 @@ class ClientSession:
+ 
+                         for trace in traces:
+                             await trace.send_request_redirect(
+-                                method, url.update_query(params), headers, resp
++                                method, url.update_query(params or {}), headers, resp
+                             )
+ 
+                         redirects += 1
+@@ -630,7 +630,7 @@ class ClientSession:
+                             headers.pop(hdrs.AUTHORIZATION, None)
+ 
+                         url = parsed_url
+-                        params = None
++                        params = {}
+                         resp.release()
+                         continue
+ 
+@@ -653,7 +653,7 @@ class ClientSession:
+ 
+             for trace in traces:
+                 await trace.send_request_end(
+-                    method, url.update_query(params), headers, resp
++                    method, url.update_query(params or {}), headers, resp
+                 )
+             return resp
+ 
+@@ -666,7 +666,7 @@ class ClientSession:
+ 
+             for trace in traces:
+                 await trace.send_request_exception(
+-                    method, url.update_query(params), headers, e
++                    method, url.update_query(params or {}), headers, e
+                 )
+             raise
+ 
