@@ -172,6 +172,7 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 %{_libdir}/libica-cex.so.%{major}
 %{_libdir}/.libica-cex.so.%{version}.hmac
 %{_libdir}/.libica-cex.so.%{major}.hmac
+%dir %{_sysconfdir}/libica
 
 %files tools
 %license LICENSE
