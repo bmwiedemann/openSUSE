@@ -519,4 +519,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1076878</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5a8189d61881dcc0fe6092c643f46646</srcmd5>
+    <version>44.1</version>
+    <time>1682618567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083288</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 27 07:31:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Update application screenshots to version 44.
+  + hex-dialog: Prevent decimal display widgets from getting
+    truncated.
+
+-------------------------------------------------------------------
 Sat Apr  1 18:15:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

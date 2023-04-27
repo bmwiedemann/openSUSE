@@ -22,7 +22,7 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        44.0
+Version:        44.1
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
