@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:34:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update specfile constructs; run fdupes
+
+-------------------------------------------------------------------
+Tue Apr 25 14:22:03 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add baselibs.conf as source in specfile.
+
+-------------------------------------------------------------------
 Thu Apr 11 11:35:34 UTC 2013 - mmeister@suse.com
 
 - Added url as source.
