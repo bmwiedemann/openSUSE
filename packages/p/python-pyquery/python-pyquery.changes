@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 16:44:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update make_webtest_optional.patch to make the import optional in
+  conftest.py
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

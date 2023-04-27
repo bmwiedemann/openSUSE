@@ -2,8 +2,10 @@
  tests/test_pyquery.py |   11 ++++++++---
  1 file changed, 8 insertions(+), 3 deletions(-)
 
---- a/tests/test_pyquery.py
-+++ b/tests/test_pyquery.py
+Index: pyquery-2.0.0/tests/test_pyquery.py
+===================================================================
+--- pyquery-2.0.0.orig/tests/test_pyquery.py
++++ pyquery-2.0.0/tests/test_pyquery.py
 @@ -7,9 +7,12 @@ import time
  from lxml import etree
  from pyquery.pyquery import PyQuery as pq, no_default
@@ -20,7 +22,7 @@
  
  sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
  
-@@ -835,6 +838,7 @@ class TestXMLNamespace(TestCase):
+@@ -894,6 +897,7 @@ class TestXMLNamespace(TestCase):
          self.assertEqual(repr(val), repr('b'))
  
  
@@ -28,7 +30,7 @@
  class TestWebScrapping(TestCase):
  
      def setUp(self):
-@@ -879,6 +883,7 @@ class TestWebScrappingEncoding(TestCase)
+@@ -938,6 +942,7 @@ class TestWebScrappingEncoding(TestCase)
          self.assertEqual(d('#pt-login').text(), u'Войти')
  
  
@@ -36,3 +38,22 @@
  class TestWebScrappingTimeouts(TestCase):
  
      def setUp(self):
+Index: pyquery-2.0.0/conftest.py
+===================================================================
+--- pyquery-2.0.0.orig/conftest.py
++++ pyquery-2.0.0/conftest.py
+@@ -1,7 +1,12 @@
+ import os
+ import pytest
+-from webtest import http
+-from webtest.debugapp import debug_app
++
++try:
++    from webtest import http
++    from webtest.debugapp import debug_app
++except (ImportError, ModuleNotFoundError):
++    http = None
++
+ from urllib.request import urlopen
+ 
+ 
