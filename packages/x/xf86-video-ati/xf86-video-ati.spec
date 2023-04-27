@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-ati
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,15 @@
 
 %define xserver_glamor 1
 Name:           xf86-video-ati
-Version:        19.1.0
+Version:        22.0.0
 Release:        0
 Summary:        ATI video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-Patch0:         u_fno-common.patch
-Patch1:         U_ati-cleanup-terminology-to-use-primary-secondary.patch
-Patch2:         u_kscreen-rotation-fix.patch
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
 BuildRequires:  libtool

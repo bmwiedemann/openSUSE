@@ -568,4 +568,30 @@ Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 f
 - set SUSE_ZNOW to 0 (boo#1197994)</comment>
     <requestid>977270</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0730551d309c6e98a8d4e1f15532db98</srcmd5>
+    <version>22.0.0</version>
+    <time>1682618225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 22.0.0
+  * Fix link failure with gcc 10
+  * Fix spelling/wording issues
+  * gitlab CI: enable commit &amp; merge request checks
+  * gitlab CI: enable gitlab's builtin static analysis
+  * radeon_glamor_wrappers.c: Convert from ISO-8859-1 to UTF-8
+  * Don't crash X server if GPU acceleration is not available
+  * ati: cleanup terminology to use primary/secondary
+  * Don't set SourceValidate pointer to NULL
+  * Handle NULL fb_ptr in pixmap_get_fb
+  * Guard local variable priv only used with glamor
+  * Guard local variable info only used with glamor
+  * Add GitLab CI pipeline
+  * Only include dri.h with older versions of xserver
+  * Fix return value check of drmIoctl()
+- supersedes the following patches
+  * U_ati-cleanup-terminology-to-use-primary-secondary.patch
+  * u_fno-common.patch
+  * u_kscreen-rotation-fix.patch</comment>
+    <requestid>1082816</requestid>
+  </revision>
 </revisionlist>

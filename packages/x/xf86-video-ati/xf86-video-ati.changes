@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 25 18:57:34 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 22.0.0
+  * Fix link failure with gcc 10
+  * Fix spelling/wording issues
+  * gitlab CI: enable commit & merge request checks
+  * gitlab CI: enable gitlab's builtin static analysis
+  * radeon_glamor_wrappers.c: Convert from ISO-8859-1 to UTF-8
+  * Don't crash X server if GPU acceleration is not available
+  * ati: cleanup terminology to use primary/secondary
+  * Don't set SourceValidate pointer to NULL
+  * Handle NULL fb_ptr in pixmap_get_fb
+  * Guard local variable priv only used with glamor
+  * Guard local variable info only used with glamor
+  * Add GitLab CI pipeline
+  * Only include dri.h with older versions of xserver
+  * Fix return value check of drmIoctl()
+- supersedes the following patches
+  * U_ati-cleanup-terminology-to-use-primary-secondary.patch
+  * u_fno-common.patch
+  * u_kscreen-rotation-fix.patch
+
+-------------------------------------------------------------------
 Sat May 14 20:57:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - remove hardware supplements for AMD GPUs; i.e. no longer install
