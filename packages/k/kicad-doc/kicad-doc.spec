@@ -1,5 +1,5 @@
 #
-# spec file for package kicad-doc
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -28,7 +28,7 @@ ExclusiveArch:  do_not_build
 %bcond_without pdf
 # Disabled, fails to build, asciidoc+dblatex no longer supported by upstream
 # E.g. https://gitlab.com/kicad/services/kicad-doc/-/issues/808
-ExclusiveArch: do_not_build
+ExclusiveArch:  do_not_build
 %endif
 
 %if "%flavor" == "html"
@@ -36,7 +36,7 @@ ExclusiveArch: do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
