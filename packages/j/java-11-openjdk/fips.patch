@@ -927,40 +927,6 @@
              } else {
                  supportedProtocols = Arrays.asList(
                      ProtocolVersion.TLS13,
-@@ -620,6 +639,16 @@
- 
-         static ProtocolVersion[] getSupportedProtocols() {
-             if (SunJSSE.isFIPS()) {
-+                if (SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
-+                        .isSystemFipsEnabled()) {
-+                    // RH1860986: TLSv1.3 key derivation not supported with
-+                    // the Security Providers available in system FIPS mode.
-+                    return new ProtocolVersion[] {
-+                            ProtocolVersion.TLS12,
-+                            ProtocolVersion.TLS11,
-+                            ProtocolVersion.TLS10
-+                    };
-+                }
-                 return new ProtocolVersion[] {
-                         ProtocolVersion.TLS13,
-                         ProtocolVersion.TLS12,
-@@ -949,6 +978,16 @@
- 
-         static ProtocolVersion[] getProtocols() {
-             if (SunJSSE.isFIPS()) {
-+                if (SharedSecrets.getJavaSecuritySystemConfiguratorAccess()
-+                        .isSystemFipsEnabled()) {
-+                    // RH1860986: TLSv1.3 key derivation not supported with
-+                    // the Security Providers available in system FIPS mode.
-+                    return new ProtocolVersion[] {
-+                            ProtocolVersion.TLS12,
-+                            ProtocolVersion.TLS11,
-+                            ProtocolVersion.TLS10
-+                    };
-+                }
-                 return new ProtocolVersion[]{
-                         ProtocolVersion.TLS13,
-                         ProtocolVersion.TLS12,
 --- jdk11u/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2022-10-19 09:05:18.352146661 +0200
 +++ jdk11u/src/java.base/share/classes/sun/security/ssl/SunJSSE.java	2022-10-19 09:05:52.472419757 +0200
 @@ -27,6 +27,8 @@

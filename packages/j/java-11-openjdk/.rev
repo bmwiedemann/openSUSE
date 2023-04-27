@@ -487,4 +487,12 @@
     <comment>Mess-up with bug number</comment>
     <requestid>1068363</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>40e83894824aebc2bc23a64dd370a458</srcmd5>
+    <version>11.0.19.0</version>
+    <time>1682618382</time>
+    <user>dimstar_suse</user>
+    <comment>April 2023 CPU</comment>
+    <requestid>1083019</requestid>
+  </revision>
 </revisionlist>
