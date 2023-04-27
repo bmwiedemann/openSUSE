@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 11:27:18 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Don't use ProtectKernelTunables, can break some use cases
+  (bsc#1210656)
+
+-------------------------------------------------------------------
 Tue Feb 28 02:07:16 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
 
 - add a patch to fix bsc#1208613

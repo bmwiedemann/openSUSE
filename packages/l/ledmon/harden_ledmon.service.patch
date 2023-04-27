@@ -1,8 +1,8 @@
-Index: ledmon-0.95/systemd/ledmon.service.in
+Index: ledmon-0.96/systemd/ledmon.service.in
 ===================================================================
---- ledmon-0.95.orig/systemd/ledmon.service.in
-+++ ledmon-0.95/systemd/ledmon.service.in
-@@ -5,6 +5,17 @@ Description=Enclosure LED Utilities
+--- ledmon-0.96.orig/systemd/ledmon.service.in
++++ ledmon-0.96/systemd/ledmon.service.in
+@@ -5,6 +5,16 @@ Description=Enclosure LED Utilities
  WantedBy=multi-user.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: ledmon-0.95/systemd/ledmon.service.in
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
