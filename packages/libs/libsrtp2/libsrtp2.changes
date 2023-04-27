@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 12:33:30 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable running the regression tests:
+  * Add libsrtp2-test-verbose.patch from the debian folks:
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=460534
+
+-------------------------------------------------------------------
 Wed Feb  1 11:25:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.0

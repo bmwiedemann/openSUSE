@@ -1,0 +1,63 @@
+Description: Avoid runtest silencing its output
+Author: Victor Seva <linuxmaniac@torreviejawireless.org>
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=460534
+Bug-Debian: http://bugs.debian.org/460534
+Last-Update: 2016-03-15
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,24 +44,24 @@
+ 
+ runtest: test
+ 	@echo "running libsrtp2 test applications..."
+-	$(FIND_LIBRARIES) crypto/test/cipher_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) crypto/test/kernel_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) test/test_srtp$(EXE) >/dev/null
+-	$(FIND_LIBRARIES) test/rdbx_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) test/srtp_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) test/roc_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) test/replay_driver$(EXE) -v >/dev/null
+-	cd test; $(CRYPTO_LIBDIR_FORWARD) $(abspath $(srcdir))/test/rtpw_test.sh -w $(abspath $(srcdir))/test/words.txt >/dev/null
++	$(FIND_LIBRARIES) crypto/test/cipher_driver$(EXE) -v
++	$(FIND_LIBRARIES) crypto/test/kernel_driver$(EXE) -v
++	$(FIND_LIBRARIES) test/test_srtp$(EXE)
++	$(FIND_LIBRARIES) test/rdbx_driver$(EXE) -v
++	$(FIND_LIBRARIES) test/srtp_driver$(EXE) -v
++	$(FIND_LIBRARIES) test/roc_driver$(EXE) -v
++	$(FIND_LIBRARIES) test/replay_driver$(EXE) -v
++	cd test; $(CRYPTO_LIBDIR_FORWARD) $(abspath $(srcdir))/test/rtpw_test.sh -w $(abspath $(srcdir))/test/words.txt
+ ifeq (1, $(USE_EXTERNAL_CRYPTO))
+-	cd test; $(CRYPTO_LIBDIR_FORWARD) $(abspath $(srcdir))/test/rtpw_test_gcm.sh -w $(abspath $(srcdir))/test/words.txt >/dev/null
++	cd test; $(CRYPTO_LIBDIR_FORWARD) $(abspath $(srcdir))/test/rtpw_test_gcm.sh -w $(abspath $(srcdir))/test/words.txt
+ endif
+ 	@echo "libsrtp2 test applications passed."
+ 	$(MAKE) -C crypto runtest
+ 
+ runtest-valgrind: test
+ 	@echo "running libsrtp2 test applications... (valgrind)"
+-	valgrind --error-exitcode=1 --leak-check=full test/test_srtp$(EXE) -v >/dev/null
+-	valgrind --error-exitcode=1 --leak-check=full test/srtp_driver$(EXE) -v >/dev/null
++	valgrind --error-exitcode=1 --leak-check=full test/test_srtp$(EXE) -v
++	valgrind --error-exitcode=1 --leak-check=full test/srtp_driver$(EXE) -v
+ 	@echo "libsrtp2 test applications passed. (valgrind)"
+ 
+ # makefile variables
+--- a/crypto/Makefile.in
++++ b/crypto/Makefile.in
+@@ -86,11 +86,11 @@
+ ifneq (1, $(USE_EXTERNAL_CRYPTO))
+ 	$(FIND_LIBRARIES) test `test/aes_calc $(k128) $(p128)` = $(c128)
+ 	$(FIND_LIBRARIES) test `test/aes_calc $(k256) $(p256)` = $(c256)
+-	$(FIND_LIBRARIES) test/sha1_driver$(EXE) -v >/dev/null
++	$(FIND_LIBRARIES) test/sha1_driver$(EXE) -v
+ endif
+-	$(FIND_LIBRARIES) test/cipher_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) test/datatypes_driver$(EXE) -v >/dev/null
+-	$(FIND_LIBRARIES) test/kernel_driver$(EXE) -v >/dev/null
++	$(FIND_LIBRARIES) test/cipher_driver$(EXE) -v
++	$(FIND_LIBRARIES) test/datatypes_driver$(EXE) -v
++	$(FIND_LIBRARIES) test/kernel_driver$(EXE) -v
+ 	@echo "crypto test applications passed."
+ 
+ 

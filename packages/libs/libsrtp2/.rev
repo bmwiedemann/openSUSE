@@ -82,4 +82,14 @@
     <comment>- Update to release 2.5.0</comment>
     <requestid>1062446</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>57eeb360a2ad78f0c0ca783aefcdbc0e</srcmd5>
+    <version>2.5.0</version>
+    <time>1682618348</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable running the regression tests:
+  * Add libsrtp2-test-verbose.patch from the debian folks:
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=460534</comment>
+    <requestid>1082936</requestid>
+  </revision>
 </revisionlist>

@@ -27,20 +27,25 @@ URL:            https://github.com/cisco/libsrtp
 
 Source:         https://github.com/cisco/libsrtp/archive/v%version.tar.gz
 Source99:       baselibs.conf
+Patch1:         libsrtp2-test-verbose.patch
+BuildRequires:  libpcap-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(openssl) >= 1.0.1
+BuildRequires:  procps
+BuildRequires:  pkgconfig(openssl) >= 1.1.0
 
 %description
-libsrtp is an implementation of the Secure Real-time Transport
-Protocol (SRTP) originally authored by Cisco Systems, Inc.
+libsrtp is Cisco's implementation of the Secure Real-time Transport
+Protocol (SRTP), the Universal Security Transform (UST), and a
+supporting cryptographic kernel.
 
 %package -n %lname
 Summary:        Secure Real-Time Transport Protocol (SRTP) library v2
 Group:          System/Libraries
 
 %description -n %lname
-libsrtp is an implementation of the Secure Real-time Transport
-Protocol (SRTP) originally authored by Cisco Systems, Inc.
+libsrtp is Cisco's implementation of the Secure Real-time Transport
+Protocol (SRTP), the Universal Security Transform (UST), and a
+supporting cryptographic kernel.
 
 SRTP is a security profile for RTP that adds confidentiality, message
 authentication, and replay protection to that protocol. It is
@@ -53,13 +58,14 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-libsrtp is an implementation of the Secure Real-time Transport
-Protocol (SRTP) originally authored by Cisco Systems, Inc.
+libsrtp is Cisco's implementation of the Secure Real-time Transport
+Protocol (SRTP), the Universal Security Transform (UST), and a
+supporting cryptographic kernel.
 
 This subpackage contains the development headers.
 
 %prep
-%autosetup -p0 -n libsrtp-%version
+%autosetup -p1 -n libsrtp-%version
 
 %build
 %configure --enable-openssl
@@ -67,6 +73,9 @@ This subpackage contains the development headers.
 
 %install
 %make_install
+
+%check
+%make_build runtest
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
