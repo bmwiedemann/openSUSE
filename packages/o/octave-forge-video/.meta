@@ -1,0 +1,5 @@
+<package name="octave-forge-video" project="openSUSE:Factory">
+  <title>octave-forge-video</title>
+  <description>A wrapper for OpenCV's CvCapture_FFMPEG and CvVideoWriter_FFMPEG.</description>
+  <devel project="science" package="octave-forge-video"/>
+</package>
