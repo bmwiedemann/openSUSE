@@ -26,6 +26,7 @@ URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz
 Source1:        http://xorg.freedesktop.org/releases/individual/app/igt-gpu-tools-%{version}.tar.xz.sig
 Patch0:         u_%{name}-1.7-fix-bashisms.patch
+Patch1:         intel-gpu-tools-libproc2_libproc2_library.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -43,7 +44,7 @@ BuildRequires:  pkgconfig(libdrm_intel) >= 2.4.82
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(liboping)
-BuildRequires:  pkgconfig(libprocps)
+BuildRequires:  pkgconfig(libproc2)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
@@ -71,6 +72,8 @@ Development files and library headers for %{name}
 %prep
 %setup -q -n igt-gpu-tools-%{version}
 %patch0
+#Only works with libproc2, not libprocps, despite description
+%patch1 -p1
 
 %build
 #Tests fail on x86_64 with -z now

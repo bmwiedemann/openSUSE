@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 20 00:55:37 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Build against libproc2 instead of libprocps
+  * intel-gpu-tools-libproc2_libproc2_library.patch
+
+-------------------------------------------------------------------
 Sat Mar  4 04:16:41 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 1.27.1:   
