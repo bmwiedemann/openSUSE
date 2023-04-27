@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 26 11:54:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused old BuildRequires on xorg-x11-*; this is actually
+  a dependency of tk, not so much wordnet.
+- Modernize specfile constructs.
+
+-------------------------------------------------------------------
 Fri Aug 28 21:43:28 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable LTO since it causes segmentation faults when running.

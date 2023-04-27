@@ -1,7 +1,7 @@
 #
 # spec file for package wordnet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,8 +45,6 @@ BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
-BuildRequires:  xorg-x11-devel
-BuildRequires:  xorg-x11-libXext-devel
 Requires:       tcl
 Requires:       tk
 
@@ -97,27 +95,21 @@ This package contains the libraries and header files required to create
 applications based on WordNet.
 
 %prep
-%setup -q -n WordNet-3.0 -b 1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -n WordNet-3.0 -b 1 -p1
 # delete the include/tk dir, since we do not use the included tk headers
 rm -rf include/tk
 
 %build
-libtoolize && aclocal
-autoupdate
-autoreconf -i
-
-CFLAGS="%{optflags} -DUSE_INTERP_RESULT"
+autoreconf -fi
+export CFLAGS="%{optflags} -DUSE_INTERP_RESULT"
 %configure --enable-static=no --prefix=%{_datadir}/wordnet-%{version}/
 
+# Build will fail with SLE15SP2 tk because /usr/lib64/tkConfig.sh's TK_LIBS
+# has extraneous libs in it. (But SP2 is EOL.)
 %make_build
 
 %install
-%make_install DESTDIR=%{buildroot}
+%make_install
 
 # delete the libWN.la files (reasoning in the packaging guidelines)
 rm -f  %{buildroot}%{_libdir}/libWN.la
