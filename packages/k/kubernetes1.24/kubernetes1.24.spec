@@ -71,6 +71,7 @@ for management and discovery.
 
 
 
+
 # packages to build containerized control plane
 
 %package apiserver
@@ -161,7 +162,7 @@ kubeadm bootstrapping tool
 Summary:        Kubernetes client tools
 Group:          System/Management
 Provides:       kubernetes-client-provider = %{version}
-Requires:       kubernetes-client-common >= %{version}
+Requires:       kubernetes%{baseversion}-client-common
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 
@@ -174,7 +175,6 @@ Group:          System/Management
 Requires:       kubernetes%{baseversion}-client
 Provides:       kubernetes-client-common = %{version}
 Conflicts:      kubernetes-client-common
-Obsoletes:      kubernetes%{baseversionminus1}-client-common
 
 %description client-common
 Kubernetes client tools common files

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 27 11:52:05 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update `Requires` in the "kubernetes1.24-client" pkg to:
+  * Requires: kubernetes%{baseversion}-client-common 
+- Remove following `Obsoletes` from the "kubernetes1.24-client-common" pkg:
+  * Obsoletes: kubernetes%{baseversionminus1}-client-common
+
+-------------------------------------------------------------------
 Thu Apr 13 11:32:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.24.13:
