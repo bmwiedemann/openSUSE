@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 28 04:39:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.54.0:
+  * Fix DeprecationWarning when calling asyncio.get_event_loop()
+    (gh#grpc/grpc#32533).
+  * Remove references to deprecated syntax field
+    (gh#grpc/grpc#32497).
+
+-------------------------------------------------------------------
 Mon Dec  5 14:44:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.51.1:
