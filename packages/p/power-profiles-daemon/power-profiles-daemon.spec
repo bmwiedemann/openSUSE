@@ -1,7 +1,7 @@
 #
 # spec file for package power-profiles-daemon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           power-profiles-daemon
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Power profiles handling over D-Bus
 License:        GPL-3.0-or-later
@@ -28,16 +28,16 @@ Patch0:         hold-profile-hardening.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(gudev-1.0) >= 234
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(umockdev-1.0)
-BuildRequires:  pkgconfig(upower-glib)
 Requires:       polkit
 
 %description
@@ -59,6 +59,7 @@ This package provides documentation for %{name}.
 %meson \
 	-Dsystemdsystemunitdir=%{_unitdir} \
 	-Dgtk_doc=true \
+	-Dtests=true \
 	%{nil}
 %meson_build
 
