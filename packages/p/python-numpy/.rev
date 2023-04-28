@@ -1069,4 +1069,12 @@ All packages broken by this update should be fixed now</comment>
   for details</comment>
     <requestid>1074078</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>84763855804717c7e3f2414e2514917a</srcmd5>
+    <version>1.24.2</version>
+    <time>1682691737</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083120</requestid>
+  </revision>
 </revisionlist>

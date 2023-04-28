@@ -72,6 +72,7 @@
 ExclusiveArch:  do_not_build
 %endif
 %endif
+%{?sle15_python_module_pythons}
 Name:           %{package_name}
 # set %%ver and %%_ver instead above
 Version:        %{ver}
