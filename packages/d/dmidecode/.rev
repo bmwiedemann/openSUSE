@@ -447,4 +447,12 @@ Partial support for SMBIOS 3.3.0:
     <comment>Fix the decoding of the last field of HPE OEM record type 237 (DIMM Vendor Information).</comment>
     <requestid>1076890</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>e2af8bdac138a565262e1a43bff7630d</srcmd5>
+    <version>3.5</version>
+    <time>1682691761</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a regression which prevents root from using the --from-dump option after the latest security fixes. No big deal in practice as you aren't supposed to do that anyway.</comment>
+    <requestid>1083252</requestid>
+  </revision>
 </revisionlist>

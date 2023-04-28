@@ -29,6 +29,7 @@ Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source2:        %{name}.keyring
 Patch1:         arm-use-alignment-workaround.patch
 Patch2:         dmioem-hpe-oem-record-237-firmware-change.patch
+Patch3:         use-read_file-to-read-from-dump.patch
 Provides:       pmtools:%{_sbindir}/dmidecode
 Obsoletes:      pmtools < 20071117
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,6 +54,7 @@ the BIOS told it to.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags}

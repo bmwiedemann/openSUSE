@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 27 10:55:57 UTC 2023 - Jean Delvare <jdelvare@suse.de>
+
+Fix a potential regression:
+- use-read_file-to-read-from-dump.patch: Fix an old harmless bug
+  which would prevent root from using the --from-dump option since
+  the latest security fixes.
+
+-------------------------------------------------------------------
 Mon Apr  3 10:04:57 UTC 2023 - Jean Delvare <jdelvare@suse.de>
 
 - dmioem-hpe-oem-record-237-firmware-change.patch: Fix the decoding
