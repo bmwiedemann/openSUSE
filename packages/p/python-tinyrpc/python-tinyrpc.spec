@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyrpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tinyrpc
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        A modular transport and protocol neutral RPC library
 License:        MIT
 URL:            https://github.com/mbr/tinyrpc
 Source:         https://github.com/mbr/tinyrpc/archive/%{version}.tar.gz
+# https://github.com/mbr/tinyrpc/issues/103
+Patch0:         python-tinyrpc-no-six.patch
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module msgpack}
@@ -33,10 +34,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,7 +50,7 @@ transport (i.e. going from json via TCP to an implementation using
 WebSockets or ZeroMQ).
 
 %prep
-%setup -q -n tinyrpc-%{version}
+%autosetup -p1 -n tinyrpc-%{version}
 
 %build
 %python_build
@@ -59,6 +58,8 @@ WebSockets or ZeroMQ).
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
+%python_expand find %{buildroot}%{$python_sitelib}/tinyrpc -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 
 %check
 # test_batch_dispatch - needs old pytest syntax, skip
@@ -67,6 +68,6 @@ WebSockets or ZeroMQ).
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/tinyrpc*
 
 %changelog

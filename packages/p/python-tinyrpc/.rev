@@ -92,4 +92,12 @@
   * changed zmq client timeout to seconds</comment>
     <requestid>1007454</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0688d5f788db411ea73e8db8b117613a</srcmd5>
+    <version>1.1.6</version>
+    <time>1682691900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083353</requestid>
+  </revision>
 </revisionlist>

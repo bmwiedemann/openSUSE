@@ -1,0 +1,256 @@
+Index: tinyrpc-1.1.6/requirements.txt
+===================================================================
+--- tinyrpc-1.1.6.orig/requirements.txt
++++ tinyrpc-1.1.6/requirements.txt
+@@ -6,6 +6,5 @@ pytest==6.2.4
+ pytest-cov==2.11.1
+ pyzmq==22.0.3
+ requests==2.25.1
+-six==1.16.0
+ Werkzeug==2.0.0
+ 
+Index: tinyrpc-1.1.6/setup.py
+===================================================================
+--- tinyrpc-1.1.6.orig/setup.py
++++ tinyrpc-1.1.6/setup.py
+@@ -22,7 +22,7 @@ setup(
+     maintainer_email='leo@noordergraaf.net',
+     url='http://github.com/mbr/tinyrpc',
+     license='MIT',
+-    install_requires=['six'],
++    install_requires=[],
+     extras_require={
+         'gevent': ['gevent'],
+         'httpclient': ['requests', 'websocket-client', 'gevent-websocket'],
+Index: tinyrpc-1.1.6/tests/_compat.py
+===================================================================
+--- tinyrpc-1.1.6.orig/tests/_compat.py
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# from http://stackoverflow.com/questions/28215214/how-to-add-custom-renames-in-six
+-
+-import six
+-mod = six.MovedModule('mock', 'mock', 'unittest.mock')
+-six.add_move(mod)
+-six._importer._add_module(mod, "moves." + mod.name)
+-
+-# issue open at https://bitbucket.org/gutworth/six/issue/116/enable-importing-from-within-custom
+Index: tinyrpc-1.1.6/tests/test_jsonrpc.py
+===================================================================
+--- tinyrpc-1.1.6.orig/tests/test_jsonrpc.py
++++ tinyrpc-1.1.6/tests/test_jsonrpc.py
+@@ -3,7 +3,6 @@
+ 
+ import json
+ 
+-import six
+ import pytest
+ 
+ from tinyrpc import MethodNotFoundError, InvalidRequestError, ServerError, \
+@@ -65,7 +64,7 @@ def prot():
+ def test_parsing_good_request_samples(prot, data, attrs):
+     req = prot.parse_request(data)
+ 
+-    for k, v in six.iteritems(attrs):
++    for k, v in attrs.items():
+         assert getattr(req, k) == v
+ 
+ 
+Index: tinyrpc-1.1.6/tests/test_msgpackrpc.py
+===================================================================
+--- tinyrpc-1.1.6.orig/tests/test_msgpackrpc.py
++++ tinyrpc-1.1.6/tests/test_msgpackrpc.py
+@@ -2,7 +2,6 @@
+ # -*- coding: utf-8 -*-
+ 
+ import msgpack
+-import six
+ import pytest
+ 
+ from tinyrpc import InvalidReplyError, MethodNotFoundError
+@@ -48,7 +47,7 @@ def prot():
+ def test_parsing_good_request_samples(prot, data, attrs):
+     req = prot.parse_request(data)
+ 
+-    for k, v in six.iteritems(attrs):
++    for k, v in attrs.items():
+         assert getattr(req, k) == v
+ 
+ 
+Index: tinyrpc-1.1.6/tests/test_transport.py
+===================================================================
+--- tinyrpc-1.1.6.orig/tests/test_transport.py
++++ tinyrpc-1.1.6/tests/test_transport.py
+@@ -2,7 +2,6 @@
+ # -*- coding: utf-8 -*-
+ 
+ import pytest
+-import six
+ 
+ import zmq
+ import zmq.green
+@@ -60,11 +59,9 @@ def zmq_green_context(request):
+     return ctx
+ 
+ 
+-if six.PY3:
+-    # zmq and zmq.green fail on python3
+-    SERVERS=['dummy']
+-else:
+-    SERVERS=['dummy', 'zmq', 'zmq.green']
++# zmq and zmq.green fail on python3
++SERVERS=['dummy']
++
+ @pytest.fixture(params=SERVERS)
+ def transport(request, zmq_context, zmq_green_context):
+     if request.param == 'dummy':
+@@ -87,10 +84,7 @@ def transport(request, zmq_context, zmq_
+ 
+ SAMPLE_MESSAGES = ['asdf', 'loremipsum' * 1500, '', '\x00', 'b\x00a', '\r\n',
+                    '\n', u'\u1234'.encode('utf8')]
+-if six.PY3:
+-    BAD_MESSAGES = [b'asdf', b'', 1234, 1.2, None, True, False, ('foo',)]
+-else:
+-    BAD_MESSAGES = [u'asdf', u'', 1234, 1.2, None, True, False, ('foo',)]
++BAD_MESSAGES = [b'asdf', b'', 1234, 1.2, None, True, False, ('foo',)]
+ 
+ 
+ @pytest.fixture(scope='session',
+Index: tinyrpc-1.1.6/tests/test_wsgi_transport.py
+===================================================================
+--- tinyrpc-1.1.6.orig/tests/test_wsgi_transport.py
++++ tinyrpc-1.1.6/tests/test_wsgi_transport.py
+@@ -3,8 +3,7 @@
+ 
+ import pytest
+ 
+-
+-import six
++import importlib
+ import gevent
+ import gevent.queue
+ import gevent.monkey
+@@ -33,7 +32,7 @@ def monkey_patches(request):
+         aggressive=False)
+ 
+     def fin():
+-        six.moves.reload_module(socket)
++        importlib.reload(socket)
+ 
+     request.addfinalizer(fin)
+ 
+@@ -70,21 +69,21 @@ def test_server_supports_post_only(wsgi_
+ 
+ 
+ @pytest.mark.parametrize(('msg',),
+-    [(six.b('foo'),), (six.b(''),), (six.b('bar'),), (six.b('1234'),), (six.b('{}'),), (six.b('{'),), (six.b('\x00\r\n'),)])
++    [(b'foo',), (b'',), (b'bar',), (b'1234',), (b'{}',), (b'{',), (b'\x00\r\n',)])
+ def test_server_receives_messages(wsgi_server, msg):
+     transport, addr = wsgi_server
+ 
+     def consumer():
+         context, received_msg = transport.receive_message()
+         assert received_msg == msg
+-        reply = six.b('reply:') + msg
++        reply = b'reply:' + msg
+         transport.send_reply(context, reply)
+ 
+     gevent.spawn(consumer)
+ 
+     r = requests.post(addr, data=msg)
+ 
+-    assert r.content == six.b('reply:') + msg
++    assert r.content == b'reply:' + msg
+ 
+ 
+ @pytest.fixture
+@@ -106,20 +105,20 @@ def non_sessioned_client():
+ 
+ 
+ @pytest.mark.parametrize(('msg',),
+-    [(six.b('foo'),), (six.b(''),), (six.b('bar'),), (six.b('1234'),), (six.b('{}'),), (six.b('{'),), (six.b('\x00\r\n'),)])
++    [(b'foo',), (b'',), (b'bar',), (b'1234',), (b'{}',), (b'{',), (b'\x00\r\n',)])
+ def test_sessioned_http_sessioned_client(wsgi_server, sessioned_client, msg):
+     transport, addr = wsgi_server
+ 
+     def consumer():
+         context, received_msg = transport.receive_message()
+         assert received_msg == msg
+-        reply = six.b('reply:') + msg
++        reply = b'reply:' + msg
+         transport.send_reply(context, reply)
+ 
+     gevent.spawn(consumer)
+ 
+     result = sessioned_client.send_message(msg)
+-    assert result == six.b('reply:') + msg
++    assert result == b'reply:' + msg
+ 
+ 
+ @pytest.mark.skip('somehow fails on travis')
+@@ -137,22 +136,22 @@ def test_exhaust_ports(wsgi_server, non_
+ 
+     def consumer():
+         context, received_msg = transport.receive_message()
+-        reply = six.b('reply:') + received_msg
++        reply = b'reply:' + received_msg
+         transport.send_reply(context, reply)
+ 
+     def send_and_receive(i):
+         try:
+             gevent.spawn(consumer)
+-            msg = six.b('msg_%s' % i)
++            msg = b'msg_%s' % i
+             result = non_sessioned_client.send_message(msg)
+-            return result == six.b('reply:') + msg
++            return result == b'reply:' + msg
+         except Exception as e:
+             return e
+ 
+     pool = gevent.pool.Pool(500)
+ 
+     with pytest.raises(requests.ConnectionError):
+-        for result in pool.imap_unordered(send_and_receive, six.moves.xrange(55000)):
++        for result in pool.imap_unordered(send_and_receive, range(55000)):
+             assert result
+             if isinstance(result, Exception):
+                 raise result
+Index: tinyrpc-1.1.6/tinyrpc/protocols/msgpackrpc.py
+===================================================================
+--- tinyrpc-1.1.6.orig/tinyrpc/protocols/msgpackrpc.py
++++ tinyrpc-1.1.6/tinyrpc/protocols/msgpackrpc.py
+@@ -14,7 +14,6 @@ from .. import (
+ )
+ 
+ import msgpack
+-import six
+ 
+ from typing import Any, Dict, List, Optional, Tuple, Union, Generator
+ 
+@@ -104,7 +103,7 @@ class MSGPACKRPCErrorResponse(RPCErrorRe
+ 
+ 
+ def _get_code_and_message(error):
+-    assert isinstance(error, (Exception, six.string_types))
++    assert isinstance(error, (Exception, str))
+     if isinstance(error, Exception):
+         if hasattr(error, "msgpackrpc_error_code"):
+             code = error.msgpackrpc_error_code
+@@ -390,7 +389,7 @@ class MSGPACKRPCProtocol(RPCProtocol):
+             raise MSGPACKRPCInvalidRequestError()
+ 
+     def _parse_notification(self, req):
+-        if not isinstance(req[1], six.string_types):
++        if not isinstance(req[1], str):
+             raise MSGPACKRPCInvalidRequestError()
+ 
+         request = MSGPACKRPCRequest()
+@@ -408,7 +407,7 @@ class MSGPACKRPCProtocol(RPCProtocol):
+         return request
+ 
+     def _parse_request(self, req):
+-        if not isinstance(req[2], six.string_types):
++        if not isinstance(req[2], str):
+             raise MSGPACKRPCInvalidRequestError(request_id=req[1])
+ 
+         request = MSGPACKRPCRequest()

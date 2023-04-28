@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 25 09:14:21 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.1.6
+  * no upstream changelog found
+- added patches
+  fix https://github.com/mbr/tinyrpc/issues/103
+  + python-tinyrpc-no-six.patch
+
+-------------------------------------------------------------------
 Sat Oct  1 13:51:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.4:
