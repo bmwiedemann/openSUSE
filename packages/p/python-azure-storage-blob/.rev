@@ -245,4 +245,12 @@
     CHANGELOG.md file provided with this package (forwarded request 1079902 from glaubitz)</comment>
     <requestid>1079906</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>899892322f6d7aecd821fac7de874766</srcmd5>
+    <version>12.16.0</version>
+    <time>1682691825</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Requires on python-typing_extensions.</comment>
+    <requestid>1083380</requestid>
+  </revision>
 </revisionlist>

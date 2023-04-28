@@ -43,7 +43,7 @@ Requires:       python-azure-storage-common >= 2.1.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-isodate >= 0.6.1
-Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.8)
+Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.11)
 %if "%{python_flavor}" == "python2"
 Requires:       python-futures
 %endif
