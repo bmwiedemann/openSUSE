@@ -1,7 +1,7 @@
 #
 # spec file for package python-Whoosh
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,8 +86,10 @@ export LANG=en_US.UTF8
 %doc README.txt
 %{python_sitelib}/*
 
+%if 0%{?suse_version} > 1500
 %files -n python-Whoosh-doc
 %license LICENSE.txt
+%endif
 %doc docs/build/html
 
 %changelog

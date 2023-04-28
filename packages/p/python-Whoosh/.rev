@@ -55,4 +55,12 @@
 </comment>
     <requestid>901102</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>9d29b3014dd5bcb718d59d81295c9ce2</srcmd5>
+    <version>2.7.4</version>
+    <time>1682691743</time>
+    <user>dimstar_suse</user>
+    <comment>- Move documentation into the main package for SLE15</comment>
+    <requestid>1083127</requestid>
+  </revision>
 </revisionlist>
