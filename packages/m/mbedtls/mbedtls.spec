@@ -1,7 +1,7 @@
 #
 # spec file for package mbedtls
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define lib_tls    libmbedtls14
-%define lib_crypto libmbedcrypto7
-%define lib_x509   libmbedx509-1
+%define lib_tls    libmbedtls19
+%define lib_crypto libmbedcrypto14
+%define lib_x509   libmbedx509-5
 Name:           mbedtls
-Version:        2.28.2
+Version:        3.4.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
-Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  ninja
@@ -89,10 +89,6 @@ SSL/TLS protocol suite.
 
 %prep
 %autosetup -p1
-sed -i 's|//\(#define MBEDTLS_ZLIB_SUPPORT\)|\1|' include/mbedtls/config.h
-sed -i 's|//\(#define MBEDTLS_HAVEGE_C\)|\1|' include/mbedtls/config.h
-sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
-sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
 
 %build
 %define __builder ninja
@@ -132,6 +128,8 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %doc ChangeLog README.md
 %dir %{_includedir}/mbedtls
 %dir %{_includedir}/psa
+%dir %{_libdir}/cmake/MbedTLS
+%{_libdir}/cmake/MbedTLS/*
 %{_includedir}/mbedtls/*.h
 %{_includedir}/psa/*.h
 %{_libdir}/libmbedtls.so

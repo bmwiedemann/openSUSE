@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/Mbed-TLS/mbedtls.git</param>
+              <param name="changesrevision">1873d3bfc2da771672bd8e7e8f41f57e0af77f33</param></service></servicedata>

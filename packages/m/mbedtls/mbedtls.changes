@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 28 08:25:31 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.0:
+  * psa_util: fix for correctly computing elements in array
+  * Add generated files
+  * Update BRANCHES.md
+  * Bump library, libcrypto and libx509 versions
+  * Assemble Changelog for 3.4.0 release
+  * Add security entry to ChangeLog for AES-NI
+  * Add security entry to ChangeLog for AES-CE
+  * Add TLS1.2 Opaque ECJPAKE changelog entry
+- Switch to scm service
+
+-------------------------------------------------------------------
 Wed Mar  8 11:38:26 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
