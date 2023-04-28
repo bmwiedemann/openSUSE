@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-paramiko
 Version:        2.12.0
 Release:        0
@@ -29,6 +30,11 @@ Patch0:         paramiko-test_extend_timeout.patch
 # PATCH-FIX-UPSTREAM paramiko-pr1665-remove-pytest-relaxed.patch gh#paramiko/paramiko#1665 -- pytest-relaxed is broken
 Patch1:         paramiko-pr1665-remove-pytest-relaxed.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-Sphinx
+%else
+BuildRequires:  %{python_module Sphinx}
+%endif
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.5}
 BuildRequires:  %{python_module gssapi}
@@ -57,6 +63,7 @@ Emphasis is on using SSH2 as an alternative to SSL for making secure
 connections between python scripts.  All major ciphers and hash methods
 are supported.  SFTP client and server mode are both supported too.
 
+%if 0%{?suse_version} > 1500
 %package -n python-paramiko-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
@@ -69,6 +76,7 @@ connections between python scripts.  All major ciphers and hash methods
 are supported.  SFTP client and server mode are both supported too.
 
 This package contains the documentation.
+%endif
 
 %prep
 %autosetup -p1 -n paramiko-%{version}
@@ -94,8 +102,10 @@ export LANG=en_US.UTF-8
 %{python_sitelib}/paramiko
 %{python_sitelib}/paramiko-%{version}*-info
 
+%if 0%{?suse_version} > 1500
 %files -n python-paramiko-doc
 %license LICENSE
+%endif
 %doc demos/
 
 %changelog
