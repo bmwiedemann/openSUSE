@@ -235,4 +235,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993490</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e497108fae28811190ac056ba10ac42d</srcmd5>
+    <version>2.2.5</version>
+    <time>1682691860</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.2.5 
+- older changes entries had mixed content. the new changes file matches the changelog.md</comment>
+    <requestid>1083483</requestid>
+  </revision>
 </revisionlist>
