@@ -103,4 +103,12 @@
     <comment>New upstream</comment>
     <requestid>928861</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f649ee3df041b137e7836393c5ea160d</srcmd5>
+    <version>6.0.5</version>
+    <time>1682691899</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream</comment>
+    <requestid>1083525</requestid>
+  </revision>
 </revisionlist>

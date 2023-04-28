@@ -1,7 +1,7 @@
 #
 # spec file for package wcd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define wcd_docdir %{_defaultdocdir}/%{name}
 Name:           wcd
-Version:        6.0.4
+Version:        6.0.5
 Release:        0
 Summary:        Chdir for DOS and Unix
 License:        GPL-2.0-only
@@ -68,7 +68,9 @@ make -C src install-profile DESTDIR=%{buildroot} prefix=%{_prefix} sysconfdir=%{
 %doc %lang(fr) %dir %{_mandir}/fr
 %doc %lang(nl) %dir %{_mandir}/nl
 %doc %lang(pt_BR) %dir %{_mandir}/pt_BR
+%doc %lang(ro) %dir %{_mandir}/ro
 %doc %lang(sr) %dir %{_mandir}/sr
+%doc %lang(sv) %dir %{_mandir}/sv
 %doc %lang(uk) %dir %{_mandir}/uk
 %doc %{wcd_docdir}
 %{_libexecdir}/wcd.exe
