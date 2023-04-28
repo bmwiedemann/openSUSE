@@ -21,6 +21,13 @@
 %define gtk_binary_version 4.0.0
 %define _name gtk
 
+%bcond_without gst
+
+# disable gstreamer media player when bootstrapping on workbench
+%if 0%{?workbench_version} > 0
+%bcond_with gst
+%endif
+
 Name:           gtk4
 Version:        4.10.3
 Release:        0
@@ -76,8 +83,10 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
+%if %{with gst}
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
+%endif
 BuildRequires:  pkgconfig(harfbuzz) >= 2.6.0
 BuildRequires:  pkgconfig(iso-codes)
 # Disabled until upstream enables ffmpeg support by default
@@ -263,6 +272,11 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 	-Dintrospection=enabled \
 	-Dman-pages=true \
 	-Dtracker=enabled \
+%if %{with gst}
+	-Dmedia-gstreamer=enabled \
+%else
+	-Dmedia-gstreamer=disabled \
+%endif
 	-Dbuild-testsuite=false \
 	-Dbuild-tests=false \
 	-Dbuild-examples=false \
@@ -302,9 +316,11 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-cups.so
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-file.so
+%if %{with gst}
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/
 #%%{_libdir}/gtk-4.0/%%{gtk_binary_version}/media/libmedia-ffmpeg.so
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/libmedia-gstreamer.so
+%endif
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines/
 %dir %{_libdir}/gtk-4.0/modules
 %{_libdir}/libgtk-4.so.*
