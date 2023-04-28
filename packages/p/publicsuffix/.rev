@@ -1250,4 +1250,12 @@ Now with build cycle removed.</comment>
   * Add `ie.ua` (#1597)</comment>
     <requestid>1080062</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>15cec55b0f7adf300e999efc1edfacdb</srcmd5>
+    <version>20230426</version>
+    <time>1682691759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083242</requestid>
+  </revision>
 </revisionlist>

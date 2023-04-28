@@ -18,7 +18,7 @@
 
 
 Name:           publicsuffix
-Version:        20230414
+Version:        20230426
 Release:        0
 Summary:        Cross-vendor public domain suffix database
 License:        MPL-2.0
