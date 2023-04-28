@@ -1,7 +1,7 @@
 #
 # spec file for package xrestop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xrestop
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Utility to monitor server resources used by X11 clients
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/archive/individual/app/%{name}-%{version}.tar.gz
+Source0:        https://xorg.freedesktop.org/archive/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
@@ -49,7 +49,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/xrestop
 %{_mandir}/man1/xrestop.1%{?ext_man}
 

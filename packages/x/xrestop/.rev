@@ -44,4 +44,22 @@
   * bugfix release</comment>
     <requestid>909985</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57299eef5a9d31f9e440f8b61ab19e3f</srcmd5>
+    <version>0.6</version>
+    <time>1682691828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6
+  * gitlab CI: add a basic build test
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * configure: remove unnecessary checks
+  * configure: remove fallback for pre-pkg-config systems
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Fix builds on Solaris
+  * Add --version option
+  * man page: stop saying the X-Resource extension is &quot;very new&quot;
+  * Link with libtinfo if available
+  * Fixes -Wformat warning in xrestop_display</comment>
+    <requestid>1083411</requestid>
+  </revision>
 </revisionlist>
