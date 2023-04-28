@@ -150,4 +150,12 @@
     <comment>- skip testing with Django on SLE15</comment>
     <requestid>1062545</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>047fbeb4badd8ec481fba7f2cd6aaf30</srcmd5>
+    <version>3.2.1</version>
+    <time>1682691734</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083112</requestid>
+  </revision>
 </revisionlist>
