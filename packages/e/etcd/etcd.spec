@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.5.7
+Version:        3.5.8
 Release:        0
 Summary:        Highly-available key value store for configuration and service discovery
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Source12:       %{name}.service
 Source15:       README.security
 Source16:       system-user-etcd.conf
 Source17:       vendor-update.sh
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.19
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools

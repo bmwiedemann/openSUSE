@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:46:04 UTC 2023 - eroca@suse.com
+
+- Update to version 3.5.8:
+  * version: bump up to 3.5.8
+  * etcdserver: Guarantee order of requested progress notifications
+  * etcdserver: verify field 'username' and 'revision' present when decoding a JWT token
+  * set zap logging to wsproxy
+  * security: remove password after authenticating the user
+  * test: add an e2e test to reproduce https://nvd.nist.gov/vuln/detail/CVE-2021-28235
+  * bump golang to 1.19.8
+  * server/auth: disallow creating empty permission ranges
+  * chore: enable strict mode for test CI
+  * Fixes: #15266 All docker images of Architecture show amd64
+  * scripts: Add testing of etcd in local image in release workflow.
+  * server: Fix defer function closure escape
+  * tests: Test separate http port connection multiplexing
+  * server: Add --listen-client-http-urls flag to allow running grpc server separate from http server
+  * server: Pick one address that all grpc gateways connect to
+  * server: Extract resolveUrl helper function
+  * server: Separate client listener grouping from serving
+  * refactor: Use proper variable names for urls
+  * sever/auth: fix addUserWithNoOption of store_test
+  * server/auth: fix auth panic bug when user changes password
+  * Automated cherry-pick of #14860: Trigger release in current branch for github workflow case
+  * server/embed: fix data race when start insecure grpc
+  * server: Test watch restore
+  * mvcc: update minRev when watcher stays synced
+  * tests: Add v2 API to connection multiplexing test
+  * tests: Add connection muiltiplexer testing
+  * tests: Backport RunUtilCompletion
+  * tests: Backport tls for etcdctl
+  * tests: Extract e2e test utils
+  * tests: Allow specifying http version in curl
+  * tests: Refactor newClient args
+  * tests: Refactor CURLPrefixArgs
+  * Backport tls 1.3 support.
+  * server: Switch back to random scheduler to improve resilience to watch starvation
+  * test: Test etcd watch stream starvation under high read response load when sharing the same connection
+  * tests: Allow configuring progress notify interval in e2e tests
+  * Run go mod tidy
+  * Updated go to 1.19.7.
+  * Backport go_srcs_in_module changes and fix goword failures.
+  * Formatted source code for go 1.19.6.
+  *  Bump to go 1.19.6
+  *  Bump golang.org/x/net to v0.7.0 to address CVE GO-2023-1571.
+  * test:enhance the test case TestV3WatchProgressOnMemberRestart
+  * clientv3: correct the nextRev on receving progress notification response
+  * etcdserver: add failpoints walBeforeSync and walAfterSync
+  * Fix regression in timestamp resolution
+  * upgrade cockroachdb/datadriven to v1.0.2 to remove archived dependencies
+  * bump github.com/stretchr/testify to v1.8.1
+  * bump bbolt to v1.3.7 for release-3.5
+  * netutil: consistently format ipv6 addresses
+  * docker: remove nsswitch.conf
+
+-------------------------------------------------------------------
 Wed Jan 25 13:19:15 UTC 2023 - Elisei Roca <eroca@suse.com>
 
 - Add -trimpath which removes specific build time paths from the binary
