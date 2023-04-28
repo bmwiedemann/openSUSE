@@ -1,7 +1,7 @@
 #
 # spec file for package apache-pdfbox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.
 Name:           apache-pdfbox
-Version:        2.0.23
+Version:        2.0.28
 Release:        0
 Summary:        Java PDF Library
 License:        Apache-2.0 AND OFL-1.1
@@ -68,7 +68,7 @@ find -name '*.jar' -delete
 %build
 mkdir -p lib
 build-jar-repository -s lib bcmail bcpkix bcprov bcutil commons-logging
-%ant -Dtest.skip=true package javadoc
+%ant -Dproject.version=%{version} -Dtest.skip=true package javadoc
 
 %install
 # Code

@@ -126,4 +126,12 @@ Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.</co
     <comment>fix build with bouncycastle 1.71</comment>
     <requestid>973709</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>117b854a955b376d6a6a9ac9b9acf21a</srcmd5>
+    <version>2.0.28</version>
+    <time>1682691746</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.28</comment>
+    <requestid>1083170</requestid>
+  </revision>
 </revisionlist>

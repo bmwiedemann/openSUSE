@@ -1,4 +1,270 @@
 -------------------------------------------------------------------
+Fri Apr 14 08:10:09 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 2.0.28
+  * Bug
+    - Extraction of Arabic PDF has incorrect ordering of normalized
+      ligatures
+    - Parsing differences between 2.0.23 and 2.0.24/3.0
+    - Signing tries to set byteRange of old signature
+    - Bug in
+      org/apache/pdfbox/multipdf/Overlay#overlay(specificPageOverlayFile)
+    - Inactive OCGs shown when not top level
+    - Null pointer exception in PDFASchemaType.getNamespaceURI()
+    - export:text creates jibberish / malformed output
+    - ArrayIndexOutOfBounds in SampledImageReader.fromAny()
+    - PDFRenderer resulting image has black background
+    - NPE due to a malformed rectangle
+    - Fix meta markup in HTML generation
+    - ArrayIndexOutOfBoundsException in CFFCIDFont class
+    - Can't open PDF with PDFBox: java.awt.color.CMMException: LCMS
+      error 13: Couldn't link the profiles
+    - ClassCastException in ShadingFill.process()
+    - Font gets smaller for each rendered page
+    - fix some logging inconsistencies
+    - NPE in PDFMergerUtility.acroFormLegacyMode()
+    - Avoid OOME when parsing an malformed pdf with a corrupted
+      object stream
+  * Improvement
+    - Apply subsampling and region to masks
+    - Remove finalize from ScratchFileBuffer
+    - Invisible signature field is not referenced from /Annots
+      dictionary of a Page
+    - Support charset parameter in TextToPDF
+    - Add a method to get the components of a composite glyph
+    - PDResource font cache improvement 
+    - RFE: Comb flag warning
+    - fix unnecessary boxing/unboxing
+    - optimize LZWFilter
+    - renderer.setSubsamplingAllowed(true) causing the picture to
+      blur
+  * Task
+    - Remove Travis build
+- Update to 2.0.27
+  * Bug
+    - Invalid stream Length validation in StreamValidationProcess
+    - To set compressed on buffered image while creating a PDF
+    - Blurry / distorted rendering
+    - java.lang.IndexOutOfBoundsException (2)
+    - PDFDebugger does not remove listeners for PagePane when
+      opening new File
+    - PDFRenderer.renderImageWithDPI thows EOFException in PDF
+    - PDFCloneUtility.checkForRecursion breaks support for some
+      existing PDFs
+    - PDFStreamEngine.showTextStrings with font switch
+    - ClassCastException (PDColor.java:66)
+    - NullPointerException in PDFunctionType3.eval()
+    - Deadlock in TrueTypeFont and RAFDataStream
+    - illegalArgumentException for rendering PDF (image extraction)
+    - NullPointerException in CmapSubtable.getCharCode
+    - PDActionEmbeddedGoTo does not accept a Destination with a
+      page number or string
+    - NPE when Transparency Group is missing the BBox
+    - PDFRenderer does not render letters when converting page to
+      image
+    - JPEG image rendered with wrong colors when using
+      TwelveMonkeys
+    - Performance issue since 2.0.18
+    - NullPointerException in PDType0Font.readCode() if cMap is
+      null
+    - NullPointerException in CFFParser.parseFont()
+    - IndexOutOfBoundsException in PDCIDFont.readWidths()
+    - IndexOutOfBoundsException in Type1Parser.java
+    - ClassCastException in CMapParser.parseBeginbfchar
+    - ClassCastException in PDXObject.createXObject()
+    - ClassCastException in PDAcroForm.getFields()
+    - ClassCastException in PDDocumentCatalog.getAcroForm()
+    - ClassCastException in PDResources.getIndirect()
+    - getPageLayout throws IllegalArgumentException for empty mode
+    - Font not found because of case issues
+- Update to 2.0.26
+  * Bug
+    - COSParser: Infinite recursion
+    - TestCreateSignature.testCreateSignedTimeStamp checkLTV build
+      test fail
+    - No Content - xRef / Obj Parsing
+    - Pdf-A/1b Validation
+    - A list of bugs found （70 bugs in total)
+    - Text size option for PDFBox Debugger
+    - IllegalArgumentException: Input buffer too short in
+      StandardSecurityHandler.computeRC4key
+    - ArrayIndexOutOfBoundsException in
+      PDSeparation.tintTransform()
+    - EOFException: Can't read 20 bytes
+    - Wrong datatype for OPM in PDExtendedGraphicsState
+    - Unhandled IOException thrown from BaseParser creates issue in
+      PDFStreamEngine.processStreamOperators
+    - *LOADS of* "WARNING: key node000xxxxx already exists in
+      destination IDTree"
+    - NullPointerException in PDRange.getMin()
+    - Image interpolation when there shouldn't be
+    - pDAcroForm.flatten() does not remove /SigFlags in /Catalog
+      object
+    - Could not read embedded TTF for font 
+    - ToUnicodeWriter.writeTo allows byte overflow in bfrange
+      operator
+    - TextToPDF appends space to each line
+    - NegativeArraySizeException in pfb parser with 0 byte pfb font
+      file
+    - Hangup in COSFilterInputStream.nextRange
+    - Certain PDF cannot be processed
+    - Parsing fails in 2.0.26 that worked in 2.0.25
+    - Object must be defined and must not be compressed object
+    - Page tree root must be a dictionary
+    - A carefully crafted pdf can trigger an infinite loop while
+      parsing
+    - POCIDFontType2 (Wingdings) encode throws a
+      NullPointerException
+    - Possible loop detection is triggered in 2.0.26 but file works
+      in 2.0.25
+    - IOException: object reference 112 0 R at offset 18355 in
+      content stream
+    - Field text missing
+    - NPE during page render
+    - Parsing shows 1 empty page with 2.0.26 and 7 with 2.0.25
+  * Improvement
+    - Create push button example
+    - FontMapper should also take into account the user's font
+      directory on Windows operating systems
+    - Don't log warnings if there are not fonts to cache
+    - support multiple widgets in PDTerminalField.importFDF()
+    - Improve AddValidationInformation to handle exceptional
+      situations better
+    - Avoid duplicate certificates in AddValidation example
+    - Render symbol for file attachment annotations
+  * Task
+    - Add test of PFB font
+    - Add maven enforcer rule to ensure that JAVA_HOME is set
+- Update to 2.0.25
+  * Sub-task
+    - Add print dpi submenu
+    - Reduce HighResolutionImageIcons memory leaks
+  * Bug
+    - Page not rendered / extracted, Unknown type in array for TJ
+      operation
+    - ArrayIndexOutOfBoundsException: arraycopy: length -2 is
+      negative in PDPanose.getPanose
+    - LayerUtility().importPageAsForm() doesn't return
+    - PDPageContentStream.setLineWidth(float) not allowed in text
+      block
+    - preflight SMask entry check incorrect
+    - NumberFormatException in merge if fieldname is
+      "dummyFieldName1#1"
+    - FDFJavaScript.getDoc() always returns null or empty
+    - Annotation shown with thick border
+    - Deeply nested drawings not shown
+    - Not existing rectangle appears on page image
+    - Not rendered (white) pages for given pdf
+    - Encryption on Split documents
+    - PDPage.getAnnotations() causes subsequent calls to
+      PDDocument.getPages() to fail
+    - Error rendering png from PDF - Error at Type1Parser
+      parseBinary for Type 1 Font
+    - EOFException during TTF parsing
+    - Incorrect rendering of Type3 character
+    - class org.apache.pdfbox.cos.COSName cannot be cast to class
+      org.apache.pdfbox.cos.COSString
+    - unneeded / double code in PageExtractor
+    - When PDF is converted to an image, the image has a large
+      black rectangle.
+    - Slow rendering for specific PDF File with small chunks 16x8
+    - Decryption for V4 fails when no Length entry is set in
+      Encryption Dictionary
+    - `NullPointerException` when intersecting area with null
+      clipping path
+    - Stack overflow in PDColorSpace.create()
+    - Splitter: Problematic /Info causes big files
+    - Resolution of ambiguities in inline images don't follow the
+      standard
+    - Silent fail of PDTextField.setValue when font encoding
+      missing
+    - TTFSubsetter incorrectly calculating 'searchRange'
+    - Failing to get multiple encodings from cmap table
+    - Text "820-01869-U-A" is omitted from PDF doc
+    - Wrong number of fonts leads to OOM-Exception
+  * New Feature
+    - Additional `showTransparencyGroupOnGraphics()` method
+  * Improvement
+    - Optimize SampledImageReader.from1Bit()
+    - Optimize reading of masked images
+    - Support BGR for OpenCV and JavaCV
+    - Preserve indirect object reference when copying resources
+    - PDFBox should use the quadding for fields with the comb flag
+    - Lazier clipping
+    - LegacyPDFStreamEngine.glyphList loaded from disk on each
+      instantiation rather than static final?
+    - Prefer MergeSort over QuickSort and try native TimSort first
+      (with explanation)
+    - Avoid creating Paint objects and filling when there is
+      nothing to do
+    - support get unicode from embedded TrueTypeFont cmap
+    - Update liberation fonts
+  * Test
+    - Add test for double visible signature on the same page
+  * Task
+    - Add test for double visible signature on encrypted file
+    - Add test for comb fields adjustment
+    - Store x and y scaling factor
+    - Update CCITTFaxDecoderStream.java from twelvemonkeys (3)
+- Update to 2.0.24
+  * Bug
+    - Slow rendering for specific PDF file
+    - Very slow rendering on PageDrawer.shadingFill
+    - Glyphs missed in rendering
+    - Wrong classification of an JPEG image leading to a blank
+      image added to a pdf document
+    - Embedded files not extracted from PDF files with multilevel
+      EmbeddedFiles tree
+    - 3.0.0-RC1: PDComboBox.setValue() throws
+      IllegalArgumentException: /DA is a required entry
+    - Issue with COSObjectKey::fixGeneration
+    - Error extracting text from PDF - Can't read the embedded
+      Type1 font FDFBJU+NewsGothic
+    - Error in identification of PDF comment symbol % as a token
+      separator with PDF names
+    - Stack overflow when reading a corrupt dictionary
+    - dash pattern [0] should be invisible
+    - Behaviour change in 2.0.20 due to use of
+      IOUtils.populateBuffer in
+      SecurityHandler.prepareAESInitializationVector leading to
+      IOException for certain PDF 
+    - java.io.IOException: Page tree root must be a dictionary
+    - Snapshot Deploy not working
+    - TSAClient with username+password
+    - COSOutputStream.flush doesn't call super
+    - BaseParser: stack overflow when reading a corrupt pdf
+    - isEmbeddingPermitted() is too restrictive on TTFs with OS2
+      table versions 0-2
+    - Wild rendering when repeating truetype glyph flag is outside
+      of range
+    - v2.0.22 and v3.0.0-RC1 PDF Debugger app crashes with
+      java.lang.NullPointerException
+    - CreateCheckBox example draws too large, clipped checkmark
+    - Wrong color space detected for some Jpeg images
+    - Possible memory leak after calling decode filter
+    - Ink annotation not rendered
+  * Improvement
+    - Pass PDFRenderer to PDFPrintable constructor
+    - Create tests for HelloWorld examples
+    - Faster PDImageXObject.applyMask
+    - Custom folder for fonts in FontMapper
+    - allow to make timestamp only signature "LTV"
+    - Create portable collection PDF
+    - Optimize memory footprint of PDFObjectStreamParser
+    - Add getter/setter for suppressDuplicateOverlappingText in
+      PDFMarkedContentExtractor
+    - Cache PageTree in PDFPrintable
+    - Add Adobe Illustrator COSNames
+    - Make constructors of CIDSystemInfo and PDPanoseClassification
+      public
+  * Wish
+    - When merging multiple pdf ua documents, Tags become nested
+  * Task
+    - Failing testFlattenPDFBox2469Filled on Ubuntu 
+    - Add test for PDFMarkedContentExtractor class
+    - Create test for CreateGradientShadingPDF
+
+-------------------------------------------------------------------
 Sat Apr 23 08:48:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with bouncycastle 1.71 and the new bcutil artifact
@@ -24,22 +290,30 @@ Mon Apr 12 08:13:49 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
       PDF file [bsc#1184357]
   * Bug fixes:
     - Transparency Group issues
-    - getLastSignatureDictionary modifies internal structure of PDDocument
-    - NullPointerexception in AcroFormOrphanWidgetsProcessor.resolveNonRootField()
+    - getLastSignatureDictionary modifies internal structure of
+      PDDocument
+    - NullPointerexception in
+      AcroFormOrphanWidgetsProcessor.resolveNonRootField()
     - AcroForm PDTextField formatting lost when setting value
     - java.lang.IndexOutOfBoundsException
-    - Failure to modify cropBox when splitting a PDF Page vertically into 2 pieces
+    - Failure to modify cropBox when splitting a PDF Page
+      vertically into 2 pieces
     - ArrayIndexOutOfBoundsException in isOwnerPassword
     - IllegalArgumentException in computeEncryptedKeyRev56
-    - IllegalArgumentException in PDFObjectStreamParser.privateReadObjectNumbers
+    - IllegalArgumentException in
+      PDFObjectStreamParser.privateReadObjectNumbers
     - ClassCastException in COSStream.getFilterList
-    - ArrayIndexOutOfBoundsException in PDFXrefStreamParser.parseValue
+    - ArrayIndexOutOfBoundsException in
+      PDFXrefStreamParser.parseValue
    * Improvements:
     - Improve document signing
-    - Allow reuse of subsetted fonts by inverting the ToUnicode CMap
+    - Allow reuse of subsetted fonts by inverting the ToUnicode
+      CMap
     - improve performance in signature validation
-    - Add more checks to PDFXrefStreamParser and reduce memory footprint
-    - Use StringBuilder for key in PDDeviceN.toRGBWithTintTransform()
+    - Add more checks to PDFXrefStreamParser and reduce memory
+      footprint
+    - Use StringBuilder for key in
+      PDDeviceN.toRGBWithTintTransform()
     - Don't use RGB loop in PDDeviceN.toRGBWithTintTransform()
 
 -------------------------------------------------------------------
