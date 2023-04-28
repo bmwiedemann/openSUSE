@@ -1,7 +1,7 @@
 #
 # spec file for package xinput
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           xinput
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Utility to configure and test X input devices
 License:        HPND AND MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2.sig
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        xinput.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(inputproto) >= 2.0.99.1

@@ -103,4 +103,15 @@
     <comment></comment>
     <requestid>998307</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c986ed5dcde1b45b7a505ce3752c6144</srcmd5>
+    <version>1.6.4</version>
+    <time>1682691829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4
+  * xinput now supports `xinput map-to-output all` to reset the
+    monitor mapping to the whole desktop area. Other than that it's
+    cleanups and general fixes.</comment>
+    <requestid>1083421</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 28 06:34:18 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.4
+  * xinput now supports `xinput map-to-output all` to reset the
+    monitor mapping to the whole desktop area. Other than that it's
+    cleanups and general fixes.
+
+-------------------------------------------------------------------
 Thu Aug 11 08:13:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to %%licensedir
