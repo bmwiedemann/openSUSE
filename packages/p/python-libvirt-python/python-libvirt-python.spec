@@ -21,6 +21,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define srcname libvirt-python
+%{?sle15_python_module_pythons}
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
 Version:        9.2.0

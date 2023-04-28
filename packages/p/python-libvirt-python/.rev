@@ -721,4 +721,12 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 9.2.0</comment>
     <requestid>1077095</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>9fe90ff5e170c13dd674bbc539bbf2f0</srcmd5>
+    <version>9.2.0</version>
+    <time>1682691784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083309</requestid>
+  </revision>
 </revisionlist>
