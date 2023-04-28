@@ -1,0 +1,758 @@
+From f47daa58d18e490ee14636f504c4ee8fa04d62ff Mon Sep 17 00:00:00 2001
+From: som <somashekhar.puttagangaiah@intel.com>
+Date: Mon, 17 Oct 2022 14:53:08 +0530
+Subject: [PATCH] intel-tools: new service, trace-config
+
+To debug modem side issues, modem logs are required
+to be captured in debug mode. This intel specific
+cid is used to configure the modem trace information
+which will be used by tool to configure.
+
+Co-author: Bestha, Lakshminarayana
+(cherry picked from commit 8a6dec6ed11931601e605c9537da9904b3be5bc0)
+---
+ data/mbim-service-intel-tools.json            |  24 ++
+ .../libmbim-glib/libmbim-glib-common.sections |  11 +
+ .../libmbim-glib/libmbim-glib-docs.xml        |   1 +
+ src/libmbim-glib/generated/meson.build        |   1 +
+ src/libmbim-glib/libmbim-glib.h               |   1 +
+ src/libmbim-glib/mbim-cid.c                   |  21 ++
+ src/libmbim-glib/mbim-cid.h                   |  14 +
+ src/libmbim-glib/mbim-enums.h                 |  18 ++
+ src/libmbim-glib/mbim-message.c               |   4 +
+ src/libmbim-glib/mbim-uuid.c                  |  13 +
+ src/libmbim-glib/mbim-uuid.h                  |  13 +
+ src/mbimcli/mbimcli-helpers.h                 |   3 +-
+ src/mbimcli/mbimcli-intel-tools.c             | 255 ++++++++++++++++++
+ src/mbimcli/mbimcli.c                         |   9 +
+ src/mbimcli/mbimcli.h                         |   6 +-
+ src/mbimcli/meson.build                       |   1 +
+ 16 files changed, 393 insertions(+), 2 deletions(-)
+ create mode 100644 data/mbim-service-intel-tools.json
+ create mode 100644 src/mbimcli/mbimcli-intel-tools.c
+
+diff --git a/data/mbim-service-intel-tools.json b/data/mbim-service-intel-tools.json
+new file mode 100644
+index 0000000..2f2569d
+--- /dev/null
++++ b/data/mbim-service-intel-tools.json
+@@ -0,0 +1,24 @@
++[
++  // *********************************************************************************
++  { "type" : "Service",
++    "name" : "Intel Tools" },
++
++  // *********************************************************************************
++
++  { "name"     : "Trace Config",
++    "type"     : "Command",
++    "since"    : "1.30",
++    "set"      : [ { "name"          : "TraceCmd",
++                     "format"        : "guint32",
++                     "public-format" : "MbimTraceCommand" },
++                   { "name"          : "TraceValue",
++                     "format"        : "guint32" } ],
++    "query"    : [ { "name"          : "TraceCmd",
++                     "format"        : "guint32",
++                     "public-format" : "MbimTraceCommand" } ],
++    "response" : [ { "name"          : "TraceCmd",
++                     "format"        : "guint32",
++                     "public-format" : "MbimTraceCommand" },
++                   { "name"          : "Result",
++                     "format"        : "guint32" } ] }
++]
+diff --git a/docs/reference/libmbim-glib/libmbim-glib-common.sections b/docs/reference/libmbim-glib/libmbim-glib-common.sections
+index 5a29bb5..1425e2c 100644
+--- a/docs/reference/libmbim-glib/libmbim-glib-common.sections
++++ b/docs/reference/libmbim-glib/libmbim-glib-common.sections
+@@ -34,6 +34,7 @@ MBIM_UUID_QUECTEL
+ MBIM_UUID_INTEL_THERMAL_RF
+ MBIM_UUID_MS_VOICE_EXTENSIONS
+ MBIM_UUID_INTEL_MUTUAL_AUTHENTICATION
++MBIM_UUID_INTEL_TOOLS
+ <SUBSECTION Methods>
+ mbim_service_get_string
+ mbim_service_lookup_name
+@@ -77,6 +78,7 @@ MbimCidQuectel
+ MbimCidIntelThermalRf
+ MbimCidMsVoiceExtensions
+ MbimCidIntelMutualAuthentication
++MbimCidIntelTools
+ <SUBSECTION Methods>
+ mbim_cid_can_set
+ mbim_cid_can_query
+@@ -103,6 +105,7 @@ mbim_cid_quectel_get_string
+ mbim_cid_intel_thermal_rf_get_string
+ mbim_cid_ms_voice_extensions_get_string
+ mbim_cid_intel_mutual_authentication_get_string
++mbim_cid_intel_tools_get_string
+ <SUBSECTION Private>
+ mbim_cid_atds_build_string_from_mask
+ mbim_cid_basic_connect_build_string_from_mask
+@@ -125,6 +128,7 @@ mbim_cid_quectel_build_string_from_mask
+ mbim_cid_intel_thermal_rf_build_string_from_mask
+ mbim_cid_ms_voice_extensions_build_string_from_mask
+ mbim_cid_intel_mutual_authentication_build_string_from_mask
++mbim_cid_intel_tools_build_string_from_mask
+ <SUBSECTION Standard>
+ MBIM_TYPE_CID_ATDS
+ MBIM_TYPE_CID_AUTH
+@@ -147,6 +151,7 @@ MBIM_TYPE_CID_QUECTEL
+ MBIM_TYPE_CID_INTEL_THERMAL_RF
+ MBIM_TYPE_CID_MS_VOICE_EXTENSIONS
+ MBIM_TYPE_CID_INTEL_MUTUAL_AUTHENTICATION
++MBIM_TYPE_CID_INTEL_TOOLS
+ mbim_cid_atds_get_type
+ mbim_cid_auth_get_type
+ mbim_cid_basic_connect_get_type
+@@ -168,6 +173,7 @@ mbim_cid_quectel_get_type
+ mbim_cid_intel_thermal_rf_get_type
+ mbim_cid_ms_voice_extensions_get_type
+ mbim_cid_intel_mutual_authentication_get_type
++mbim_cid_intel_tools_get_type
+ </SECTION>
+ 
+ <SECTION>
+@@ -421,6 +427,7 @@ MbimUiccApplicationType
+ MbimUiccFileAccessibility
+ MbimUiccFileType
+ MbimUiccFileStructure
++MbimTraceCommand
+ <SUBSECTION Methods>
+ mbim_device_type_get_string
+ mbim_cellular_class_build_string_from_mask
+@@ -516,6 +523,7 @@ mbim_uicc_application_type_get_string
+ mbim_uicc_file_accessibility_get_string
+ mbim_uicc_file_type_get_string
+ mbim_uicc_file_structure_get_string
++mbim_trace_command_get_string
+ <SUBSECTION Private>
+ mbim_device_type_build_string_from_mask
+ mbim_cellular_class_get_string
+@@ -613,6 +621,7 @@ mbim_uicc_application_type_build_string_from_mask
+ mbim_uicc_file_accessibility_build_string_from_mask
+ mbim_uicc_file_type_build_string_from_mask
+ mbim_uicc_file_structure_build_string_from_mask
++mbim_trace_command_build_string_from_mask
+ <SUBSECTION Standard>
+ MBIM_TYPE_ACTIVATION_COMMAND
+ MBIM_TYPE_ACTIVATION_STATE
+@@ -713,6 +722,7 @@ MBIM_TYPE_UICC_APPLICATION_TYPE
+ MBIM_TYPE_UICC_FILE_ACCESSIBILITY
+ MBIM_TYPE_UICC_FILE_TYPE
+ MBIM_TYPE_UICC_FILE_STRUCTURE
++MBIM_TYPE_TRACE_COMMAND
+ mbim_activation_command_get_type
+ mbim_activation_state_get_type
+ mbim_auth_protocol_get_type
+@@ -812,6 +822,7 @@ mbim_uicc_application_type_get_type
+ mbim_uicc_file_accessibility_get_type
+ mbim_uicc_file_type_get_type
+ mbim_uicc_file_structure_get_type
++mbim_trace_command_get_type
+ </SECTION>
+ 
+ <SECTION>
+diff --git a/docs/reference/libmbim-glib/libmbim-glib-docs.xml b/docs/reference/libmbim-glib/libmbim-glib-docs.xml
+index cc65e64..ccf939b 100644
+--- a/docs/reference/libmbim-glib/libmbim-glib-docs.xml
++++ b/docs/reference/libmbim-glib/libmbim-glib-docs.xml
+@@ -105,6 +105,7 @@
+     <xi:include href="xml/mbim-intel-firmware-update-v2.xml"/>
+     <xi:include href="xml/mbim-intel-thermal-rf.xml"/>
+     <xi:include href="xml/mbim-intel-mutual-authentication.xml"/>
++    <xi:include href="xml/mbim-intel-tools.xml"/>
+   </chapter>
+ 
+   <chapter>
+diff --git a/src/libmbim-glib/generated/meson.build b/src/libmbim-glib/generated/meson.build
+index 63fe8d1..cd13cb6 100644
+--- a/src/libmbim-glib/generated/meson.build
++++ b/src/libmbim-glib/generated/meson.build
+@@ -109,6 +109,7 @@ services_data = [
+   ['stk'],
+   ['ussd'],
+   ['intel-mutual-authentication'],
++  ['intel-tools'],
+ ]
+ 
+ foreach service_data: services_data
+diff --git a/src/libmbim-glib/libmbim-glib.h b/src/libmbim-glib/libmbim-glib.h
+index 38d8db4..6b963c8 100644
+--- a/src/libmbim-glib/libmbim-glib.h
++++ b/src/libmbim-glib/libmbim-glib.h
+@@ -47,6 +47,7 @@
+ #include "mbim-intel-thermal-rf.h"
+ #include "mbim-ms-voice-extensions.h"
+ #include "mbim-intel-mutual-authentication.h"
++#include "mbim-intel-tools.h"
+ 
+ /* backwards compatibility */
+ #include "mbim-compat.h"
+diff --git a/src/libmbim-glib/mbim-cid.c b/src/libmbim-glib/mbim-cid.c
+index 11170b3..fec3515 100644
+--- a/src/libmbim-glib/mbim-cid.c
++++ b/src/libmbim-glib/mbim-cid.c
+@@ -235,6 +235,19 @@ static const CidConfig cid_intel_mutual_authentication_config [MBIM_CID_INTEL_MU
+     { SET, QUERY, NO_NOTIFY }, /* MBIM_CID_INTEL_MUTUAL_AUTHENTICATION_FCC_LOCK */
+ };
+ 
++/* Note: index of the array is CID-1 */
++#define MBIM_CID_INTEL_TOOLS_LAST MBIM_CID_INTEL_TOOLS_TRACE_CONFIG
++static const CidConfig cid_intel_tools_config [MBIM_CID_INTEL_TOOLS_LAST] = {
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { NO_SET, NO_QUERY, NO_NOTIFY }, /* Unused */
++    { SET   , QUERY   , NO_NOTIFY }, /* MBIM_CID_INTEL_TOOLS_TRACE_CONFIG */
++};
++
+ gboolean
+ mbim_cid_can_set (MbimService service,
+                   guint       cid)
+@@ -288,6 +301,8 @@ mbim_cid_can_set (MbimService service,
+         return cid_ms_voice_extensions_config[cid - 1].set;
+     case MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION:
+         return cid_intel_mutual_authentication_config[cid - 1].set;
++    case MBIM_SERVICE_INTEL_TOOLS:
++        return cid_intel_tools_config[cid - 1].set;
+     case MBIM_SERVICE_INVALID:
+     case MBIM_SERVICE_LAST:
+     default:
+@@ -349,6 +364,8 @@ mbim_cid_can_query (MbimService service,
+         return cid_ms_voice_extensions_config[cid - 1].query;
+     case MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION:
+         return cid_intel_mutual_authentication_config[cid - 1].query;
++    case MBIM_SERVICE_INTEL_TOOLS:
++        return cid_intel_tools_config[cid - 1].query;
+     case MBIM_SERVICE_INVALID:
+     case MBIM_SERVICE_LAST:
+     default:
+@@ -410,6 +427,8 @@ mbim_cid_can_notify (MbimService service,
+         return cid_ms_voice_extensions_config[cid - 1].notify;
+     case MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION:
+         return cid_intel_mutual_authentication_config[cid - 1].notify;
++    case MBIM_SERVICE_INTEL_TOOLS:
++        return cid_intel_tools_config[cid - 1].notify;
+     case MBIM_SERVICE_INVALID:
+     case MBIM_SERVICE_LAST:
+     default:
+@@ -472,6 +491,8 @@ mbim_cid_get_printable (MbimService service,
+         return mbim_cid_ms_voice_extensions_get_string (cid);
+     case MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION:
+         return mbim_cid_intel_mutual_authentication_get_string (cid);
++    case MBIM_SERVICE_INTEL_TOOLS:
++        return mbim_cid_intel_tools_get_string (cid);
+     case MBIM_SERVICE_LAST:
+     default:
+         g_assert_not_reached ();
+diff --git a/src/libmbim-glib/mbim-cid.h b/src/libmbim-glib/mbim-cid.h
+index 82014db..7bde46e 100644
+--- a/src/libmbim-glib/mbim-cid.h
++++ b/src/libmbim-glib/mbim-cid.h
+@@ -457,6 +457,20 @@ typedef enum { /*< since=1.28 >*/
+     MBIM_CID_MS_VOICE_EXTENSIONS_NITZ    = 10,
+ } MbimCidMsVoiceExtensions;
+ 
++/**
++ * MbimCidIntelTools:
++ * @MBIM_CID_INTEL_TOOLS_UNKNOWN: Unknown command.
++ * @MBIM_CID_INTEL_TOOLS_TRACE_CONFIG: Configure Modem traces.
++ *
++ * MBIM commands in the %MBIM_SERVICE_INTEL_TOOLS service.
++ *
++ * Since: 1.30
++ */
++typedef enum { /*< since=1.30 >*/
++    MBIM_CID_INTEL_TOOLS_UNKNOWN      = 0,
++    MBIM_CID_INTEL_TOOLS_TRACE_CONFIG = 8,
++} MbimCidIntelTools;
++
+ /**
+  * mbim_cid_can_set:
+  * @service: a #MbimService.
+diff --git a/src/libmbim-glib/mbim-enums.h b/src/libmbim-glib/mbim-enums.h
+index 9dcdfd1..3b54825 100644
+--- a/src/libmbim-glib/mbim-enums.h
++++ b/src/libmbim-glib/mbim-enums.h
+@@ -2007,6 +2007,24 @@ typedef enum { /*< since=1.28 >*/
+     MBIM_UICC_FILE_STRUCTURE_BER_TLV     = 4,
+ } MbimUiccFileStructure;
+ 
++/**
++ * MbimTraceCommand:
++ * @MBIM_TRACE_COMMAND_MODE: Trace command mode value.
++ * @MBIM_TRACE_COMMAND_LEVEL: Trace command level value.
++ * @MBIM_TRACE_COMMAND_LOCATION: Trace command location information.
++ * @MBIM_TRACE_COMMAND_FLASH_INTERVAL: Trace command flash interval information.
++ *
++ * The trace command value.
++ *
++ * Since: 1.30
++ */
++typedef enum { /*< since=1.28 >*/
++    MBIM_TRACE_COMMAND_MODE           = 0,
++    MBIM_TRACE_COMMAND_LEVEL          = 1,
++    MBIM_TRACE_COMMAND_LOCATION       = 2,
++    MBIM_TRACE_COMMAND_FLASH_INTERVAL = 3,
++} MbimTraceCommand;
++
+ G_END_DECLS
+ 
+ #endif /* _LIBMBIM_GLIB_MBIM_ENUMS_H_ */
+diff --git a/src/libmbim-glib/mbim-message.c b/src/libmbim-glib/mbim-message.c
+index bead3d2..6a362ac 100644
+--- a/src/libmbim-glib/mbim-message.c
++++ b/src/libmbim-glib/mbim-message.c
+@@ -41,6 +41,7 @@
+ #include "mbim-intel-thermal-rf.h"
+ #include "mbim-ms-voice-extensions.h"
+ #include "mbim-intel-mutual-authentication.h"
++#include "mbim-intel-tools.h"
+ 
+ /*****************************************************************************/
+ 
+@@ -2206,6 +2207,9 @@ mbim_message_get_printable_full (const MbimMessage  *self,
+         case MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION:
+             fields_printable = __mbim_message_intel_mutual_authentication_get_printable_fields (self, line_prefix, &inner_error);
+             break;
++        case MBIM_SERVICE_INTEL_TOOLS:
++            fields_printable = __mbim_message_intel_tools_get_printable_fields (self, line_prefix, &inner_error);
++            break;
+         case MBIM_SERVICE_INVALID:
+         case MBIM_SERVICE_LAST:
+             g_assert_not_reached ();
+diff --git a/src/libmbim-glib/mbim-uuid.c b/src/libmbim-glib/mbim-uuid.c
+index fe95923..e734b9b 100644
+--- a/src/libmbim-glib/mbim-uuid.c
++++ b/src/libmbim-glib/mbim-uuid.c
+@@ -265,6 +265,14 @@ static const MbimUuid uuid_intel_mutual_authentication = {
+     .e = { 0x4d, 0x18, 0x3c, 0x0a, 0x3a, 0xec }
+ };
+ 
++static const MbimUuid uuid_intel_tools = {
++    .a = { 0x4a, 0xda, 0x49, 0x62 },
++    .b = { 0xb9, 0x88 },
++    .c = { 0x46, 0xc3 },
++    .d = { 0x87, 0xa7 },
++    .e = { 0x97, 0xf2, 0x0f, 0x99, 0x4a, 0xbb }
++};
++
+ static GList *mbim_custom_service_list = NULL;
+ 
+ typedef struct {
+@@ -402,6 +410,8 @@ mbim_uuid_from_service (MbimService service)
+         return &uuid_ms_voice_extensions;
+     case MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION:
+         return &uuid_intel_mutual_authentication;
++    case MBIM_SERVICE_INTEL_TOOLS:
++        return &uuid_intel_tools;
+     case MBIM_SERVICE_LAST:
+         g_assert_not_reached ();
+     default:
+@@ -481,6 +491,9 @@ mbim_uuid_to_service (const MbimUuid *uuid)
+     if (mbim_uuid_cmp (uuid, &uuid_intel_mutual_authentication))
+         return MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION;
+ 
++    if (mbim_uuid_cmp (uuid, &uuid_intel_tools))
++        return MBIM_SERVICE_INTEL_TOOLS;
++
+     for (l = mbim_custom_service_list; l != NULL; l = l->next) {
+         if (mbim_uuid_cmp (&((MbimCustomService *)l->data)->uuid, uuid))
+             return ((MbimCustomService *)l->data)->service_id;
+diff --git a/src/libmbim-glib/mbim-uuid.h b/src/libmbim-glib/mbim-uuid.h
+index 3d15adf..7bcf321 100644
+--- a/src/libmbim-glib/mbim-uuid.h
++++ b/src/libmbim-glib/mbim-uuid.h
+@@ -115,6 +115,7 @@ gboolean mbim_uuid_from_printable (const gchar *str,
+  * @MBIM_SERVICE_INTEL_THERMAL_RF: Intel thermal rf related commands. Since 1.28
+  * @MBIM_SERVICE_MS_VOICE_EXTENSIONS: Microsoft Voice extensions service. Since 1.28.
+  * @MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION: Intel mutual authentication commands. Since 1.30.
++ * @MBIM_SERVICE_INTEL_TOOLS: Intel tools service. Since 1.30.
+  * @MBIM_SERVICE_LAST: Internal value.
+  *
+  * Enumeration of the generic MBIM services.
+@@ -144,6 +145,7 @@ typedef enum { /*< since=1.0 >*/
+     MBIM_SERVICE_INTEL_THERMAL_RF            = 19,
+     MBIM_SERVICE_MS_VOICE_EXTENSIONS         = 20,
+     MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION = 21,
++    MBIM_SERVICE_INTEL_TOOLS                 = 22,
+ #if defined LIBMBIM_GLIB_COMPILATION
+     MBIM_SERVICE_LAST /*< skip >*/
+ #endif
+@@ -392,6 +394,17 @@ typedef enum { /*< since=1.0 >*/
+  */
+ #define MBIM_UUID_INTEL_MUTUAL_AUTHENTICATION mbim_uuid_from_service (MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION)
+ 
++/**
++ * MBIM_UUID_INTEL_TOOLS:
++ *
++ * Get the UUID of the %MBIM_SERVICE_INTEL_TOOLS service.
++ *
++ * Returns: (transfer none): a #MbimUuid.
++ *
++ * Since: 1.30
++ */
++#define MBIM_UUID_INTEL_TOOLS mbim_uuid_from_service (MBIM_SERVICE_INTEL_TOOLS)
++
+ /**
+  * mbim_service_lookup_name:
+  * @service: a MbimService or custom service.
+diff --git a/src/mbimcli/mbimcli-helpers.h b/src/mbimcli/mbimcli-helpers.h
+index dc4e2ee..91410e8 100644
+--- a/src/mbimcli/mbimcli-helpers.h
++++ b/src/mbimcli/mbimcli-helpers.h
+@@ -70,7 +70,8 @@ gboolean mbimcli_parse_sar_config_state_array (const gchar  *str,
+     MBIMCLI_ENUM_LIST_ITEM (MbimUiccSecureMessaging,      uicc_secure_messaging,       "uicc secure messaging")       \
+     MBIMCLI_ENUM_LIST_ITEM (MbimUiccClassByteType,        uicc_class_byte_type,        "uicc class byte type")        \
+     MBIMCLI_ENUM_LIST_ITEM (MbimUiccPassThroughAction,    uicc_pass_through_action,    "uicc pass through action")    \
+-    MBIMCLI_ENUM_LIST_ITEM (MbimIntelBootMode,            intel_boot_mode,             "intel boot mode")
++    MBIMCLI_ENUM_LIST_ITEM (MbimIntelBootMode,            intel_boot_mode,             "intel boot mode")             \
++    MBIMCLI_ENUM_LIST_ITEM (MbimTraceCommand,             trace_command,               "trace command")
+ 
+ #define MBIMCLI_ENUM_LIST_ITEM(TYPE,TYPE_UNDERSCORE,DESCR)        \
+     gboolean mbimcli_read_## TYPE_UNDERSCORE ##_from_string (const gchar *str, TYPE *out);
+diff --git a/src/mbimcli/mbimcli-intel-tools.c b/src/mbimcli/mbimcli-intel-tools.c
+new file mode 100644
+index 0000000..3ba7893
+--- /dev/null
++++ b/src/mbimcli/mbimcli-intel-tools.c
+@@ -0,0 +1,255 @@
++/* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
++/*
++ * mbimcli -- Command line interface to control MBIM devices
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ *
++ * Copyright (C) 2022 Intel Corporation
++ */
++
++#include "config.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <locale.h>
++#include <string.h>
++
++#include <glib.h>
++#include <gio/gio.h>
++#include <glib/gprintf.h>
++#include <libmbim-glib.h>
++
++#include "mbim-common.h"
++#include "mbimcli.h"
++#include "mbimcli-helpers.h"
++
++/* Context */
++typedef struct {
++    MbimDevice   *device;
++    GCancellable *cancellable;
++} Context;
++static Context *ctx;
++
++/* Options */
++static char *set_trace_config_str;
++static char *query_trace_config_str;
++
++static GOptionEntry entries[] = {
++    { "set-trace-config", 0, 0, G_OPTION_ARG_STRING, &set_trace_config_str,
++      "Set trace configuration",
++      "[(TraceCmd)|(TraceValue)]"
++    },
++    { "query-trace-config", 0, 0, G_OPTION_ARG_STRING, &query_trace_config_str,
++      "Query trace configuration",
++      "[(TraceCmd)]"
++    },
++    { NULL }
++};
++
++GOptionGroup *
++mbimcli_intel_tools_get_option_group (void)
++{
++   GOptionGroup *group;
++   group = g_option_group_new ("intel-tools",
++                               "Intel 5G tools options",
++                               "Show Intel 5G tools options",
++                               NULL,
++                               NULL);
++   g_option_group_add_entries (group, entries);
++
++   return group;
++}
++
++gboolean
++mbimcli_intel_tools_options_enabled (void)
++{
++    static guint n_actions = 0;
++    static gboolean checked = FALSE;
++
++    if (checked)
++        return !!n_actions;
++
++    n_actions =(!!set_trace_config_str +
++                !!query_trace_config_str);
++
++    if (n_actions > 1) {
++        g_printerr ("error: too many intel tools actions requested\n");
++        exit (EXIT_FAILURE);
++    }
++
++    checked = TRUE;
++    return !!n_actions;
++}
++
++static void
++context_free (Context *context)
++{
++    if (!context)
++        return;
++
++    if (context->cancellable)
++        g_object_unref (context->cancellable);
++    if (context->device)
++        g_object_unref (context->device);
++    g_slice_free (Context, context);
++}
++
++static void
++shutdown (gboolean operation_status)
++{
++    /* Cleanup context and finish async operation */
++    context_free (ctx);
++    mbimcli_async_operation_done (operation_status);
++}
++
++static void
++query_trace_config_ready (MbimDevice   *device,
++                          GAsyncResult *res)
++{
++    g_autoptr(MbimMessage)  response = NULL;
++    g_autoptr(GError)       error = NULL;
++    MbimTraceCommand        trace_cmd;
++    const gchar            *trace_cmd_str;
++    guint32                 trace_result;
++
++    response = mbim_device_command_finish (device, res, &error);
++    if (!response || !mbim_message_response_get_result (response, MBIM_MESSAGE_TYPE_COMMAND_DONE, &error)) {
++        g_printerr ("error: operation failed: %s\n", error->message);
++        shutdown (FALSE);
++        return;
++    }
++
++    g_print ("[%s] Successfully retrieved trace configuration\n",
++             mbim_device_get_path_display (device));
++    if (!mbim_message_intel_tools_trace_config_response_parse (
++            response,
++            &trace_cmd,
++            &trace_result,
++            &error)) {
++        g_printerr ("error: couldn't parse response messages: %s\n", error->message);
++        shutdown (FALSE);
++        return;
++    }
++
++    trace_cmd_str = mbim_trace_command_get_string (trace_cmd);
++
++    g_print ("[%s] Trace configuration retrieved:\n"
++             "\t Trace Command: '%s'\n"
++             "\t  Trace Result: '%u'\n",
++             mbim_device_get_path_display (device),
++             VALIDATE_UNKNOWN(trace_cmd_str),
++             trace_result);
++
++    shutdown (TRUE);
++}
++
++static void
++set_trace_config_ready (MbimDevice   *device,
++                        GAsyncResult *res)
++{
++    g_autoptr(MbimMessage)  response = NULL;
++    g_autoptr(GError)       error = NULL;
++
++    response = mbim_device_command_finish (device, res, &error);
++    if (!response || !mbim_message_response_get_result (response, MBIM_MESSAGE_TYPE_COMMAND_DONE, &error)) {
++        g_printerr ("error: operation failed: %s\n", error->message);
++        shutdown (FALSE);
++        return;
++    }
++
++    g_print ("[%s] Successfully retrieved trace configuration\n",
++             mbim_device_get_path_display (device));
++
++    shutdown (TRUE);
++}
++
++void
++mbimcli_intel_tools_run (MbimDevice   *device,
++                         GCancellable *cancellable)
++{
++    g_autoptr(MbimMessage) request = NULL;
++    g_autoptr(GError)      error = NULL;
++
++    /* Initialize context */
++    ctx = g_slice_new (Context);
++    ctx->device = g_object_ref (device);
++    ctx->cancellable = cancellable ? g_object_ref (cancellable) : NULL;
++
++    /* Request to set trace config? */
++    if (set_trace_config_str) {
++        g_auto(GStrv)    split = NULL;
++        MbimTraceCommand trace_command;
++        guint32          trace_value = 0;
++
++        split = g_strsplit (set_trace_config_str, ",", -1);
++
++        if (g_strv_length (split) > 2) {
++            g_printerr ("error: couldn't parse input string, too many arguments\n");
++            return;
++        }
++
++        if (g_strv_length (split) < 2) {
++            g_printerr ("error: couldn't parse input string, missing arguments\n");
++            return;
++        }
++
++        if (split[0]) {
++            if (!mbimcli_read_trace_command_from_string (split[0], &trace_command)) {
++                g_printerr ("error: couldn't parse input string, invalid trace command '%s'\n", split[0]);
++                return;
++            }
++        }
++
++        if (split[1]) {
++            if (!mbimcli_read_uint_from_string (split[1], &trace_value)) {
++                g_printerr ("error: couldn't parse input string, invalid trace value '%s'\n", split[1]);
++                return;
++            }
++        }
++
++        g_debug ("Asynchronously setting trace info...");
++        request = mbim_message_intel_tools_trace_config_set_new (trace_command, trace_value, NULL);
++        mbim_device_command (ctx->device,
++                             request,
++                             10,
++                             ctx->cancellable,
++                             (GAsyncReadyCallback)set_trace_config_ready,
++                             NULL);
++        return;
++    }
++
++    /* Request to get trace config? */
++    if (query_trace_config_str) {
++        MbimTraceCommand trace_command;
++
++        if (query_trace_config_str) {
++            if (!mbimcli_read_trace_command_from_string (query_trace_config_str, &trace_command)) {
++                g_printerr ("error: couldn't parse input string, invalid trace command '%d'\n", trace_command);
++                return;
++            }
++        }
++
++        g_debug ("Asynchronously querying trace info...");
++        request = mbim_message_intel_tools_trace_config_query_new (trace_command, NULL);
++        mbim_device_command (ctx->device,
++                             request,
++                             10,
++                             ctx->cancellable,
++                             (GAsyncReadyCallback)query_trace_config_ready,
++                             NULL);
++        return;
++    }
++
++    g_warn_if_reached ();
++}
+diff --git a/src/mbimcli/mbimcli.c b/src/mbimcli/mbimcli.c
+index 496d553..922291f 100644
+--- a/src/mbimcli/mbimcli.c
++++ b/src/mbimcli/mbimcli.c
+@@ -322,6 +322,9 @@ device_open_ready (MbimDevice   *dev,
+     case MBIM_SERVICE_PROXY_CONTROL:
+     case MBIM_SERVICE_QMI:
+     case MBIM_SERVICE_QDU:
++    case MBIM_SERVICE_INTEL_TOOLS:
++        mbimcli_intel_tools_run (dev, cancellable);
++        return;
+         /* unsupported actions in the CLI */
+     case MBIM_SERVICE_INVALID:
+     default:
+@@ -456,6 +459,11 @@ parse_actions (void)
+         actions_enabled++;
+     }
+ 
++    if (mbimcli_intel_tools_options_enabled ()) {
++        service = MBIM_SERVICE_INTEL_TOOLS;
++        actions_enabled++;
++    }
++
+     /* Noop */
+     if (noop_flag)
+         actions_enabled++;
+@@ -505,6 +513,7 @@ int main (int argc, char **argv)
+     g_option_context_add_group (context, mbimcli_ms_voice_extensions_get_option_group ());
+     g_option_context_add_group (context, mbimcli_ms_uicc_low_level_access_get_option_group ());
+     g_option_context_add_group (context, mbimcli_intel_mutual_authentication_get_option_group ());
++    g_option_context_add_group (context, mbimcli_intel_tools_get_option_group ());
+     g_option_context_add_main_entries (context, main_entries, NULL);
+     if (!g_option_context_parse (context, &argc, &argv, &error)) {
+         g_printerr ("error: %s\n", error->message);
+diff --git a/src/mbimcli/mbimcli.h b/src/mbimcli/mbimcli.h
+index 7553d3a..0989106 100644
+--- a/src/mbimcli/mbimcli.h
++++ b/src/mbimcli/mbimcli.h
+@@ -32,6 +32,7 @@ GOptionGroup *mbimcli_intel_thermal_rf_get_option_group            (void);
+ GOptionGroup *mbimcli_ms_voice_extensions_get_option_group         (void);
+ GOptionGroup *mbimcli_ms_uicc_low_level_access_get_option_group    (void);
+ GOptionGroup *mbimcli_intel_mutual_authentication_get_option_group (void);
++GOptionGroup *mbimcli_intel_tools_get_option_group                 (void);
+ 
+ gboolean      mbimcli_basic_connect_options_enabled               (void);
+ gboolean      mbimcli_phonebook_options_enabled                   (void);
+@@ -47,6 +48,7 @@ gboolean      mbimcli_intel_thermal_rf_options_enabled            (void);
+ gboolean      mbimcli_ms_voice_extensions_options_enabled         (void);
+ gboolean      mbimcli_ms_uicc_low_level_access_options_enabled    (void);
+ gboolean      mbimcli_intel_mutual_authentication_options_enabled (void);
++gboolean      mbimcli_intel_tools_options_enabled                 (void);
+ 
+ void          mbimcli_basic_connect_run                 (MbimDevice   *device,
+                                                          GCancellable *cancellable);
+@@ -74,7 +76,9 @@ void          mbimcli_ms_voice_extensions_run           (MbimDevice   *device,
+                                                          GCancellable *cancellable);
+ void          mbimcli_ms_uicc_low_level_access_run      (MbimDevice   *device,
+                                                          GCancellable *cancellable);
+-void          mbimcli_intel_mutual_authentication_run   (MbimDevice *device,
++void          mbimcli_intel_mutual_authentication_run   (MbimDevice   *device,
++                                                         GCancellable *cancellable);
++void          mbimcli_intel_tools_run                   (MbimDevice   *device,
+                                                          GCancellable *cancellable);
+ 
+ 
+diff --git a/src/mbimcli/meson.build b/src/mbimcli/meson.build
+index babe487..ae659cb 100644
+--- a/src/mbimcli/meson.build
++++ b/src/mbimcli/meson.build
+@@ -17,6 +17,7 @@ mbimcli_sources = files(
+   'mbimcli-phonebook.c',
+   'mbimcli-quectel.c',
+   'mbimcli-intel-mutual-authentication.c',
++  'mbimcli-intel-tools.c',
+ )
+ 
+ sources = mbimcli_sources + files(
+-- 
+2.38.1
+

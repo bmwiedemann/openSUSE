@@ -1,7 +1,7 @@
 #
 # spec file for package libmbim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,20 @@
 
 
 Name:           libmbim
-Version:        1.26.4
+Version:        1.28.4
 Release:        0
 Summary:        Mobile Broadband Interface Model (MBIM) protocol
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Networking/System
-URL:            https://www.freedesktop.org/wiki/Software/libmbim/
-Source:         https://www.freedesktop.org/software/libmbim/%{name}-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/mobile-broadband/libmbim
+Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-intel-mutual-authentication-new-service-fcc-lock.patch -- intel-mutual-authentication: new service, fcc-lock
+Patch:          0001-intel-mutual-authentication-new-service-fcc-lock.patch
+# PATCH-FIX-UPSTREAM 0002-intel-tools-new-service-trace-config.patch --intel-tools: new service, trace-config
+Patch2:         0002-intel-tools-new-service-trace-config.patch
 
+BuildRequires:  help2man
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(gio-2.0)
@@ -33,6 +39,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(udev)
 
 %description
 libmbim is a glib-based library for talking to WWAN modems and devices
@@ -61,9 +68,10 @@ which speak the Mobile Broadband Interface Model (MBIM) protocol.
 Summary:        Bash completion for mbimcli
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Networking/System
-BuildRequires:  bash-completion
+BuildArch:      noarch
+BuildRequires:  pkgconfig(bash-completion)
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 
 %description -n mbimcli-bash-completion
 This package contain de bash completion command for mbimcli tools.
@@ -83,27 +91,19 @@ This package provides the GObject Introspection bindings for libmbim.
 %autosetup -p1
 
 %build
-# Do not rely on env for choosing python
-sed -i "s|env python|python3|g" build-aux/mbim-codegen/*
-%configure \
-	--with-udev \
-	--disable-static \
-	--enable-introspection=yes \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %check
-%make_build check
+%meson_test
 
-%post -n libmbim-glib4 -p /sbin/ldconfig
-%postun -n libmbim-glib4 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmbim-glib4
 
 %files
-%license COPYING
 %doc NEWS
 %{_bindir}/mbim-network
 %{_bindir}/mbimcli
@@ -112,16 +112,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/mbimcli.1%{?ext_man}
 
 %files -n libmbim-glib4
-%license COPYING.LIB
-
+%license LICENSES
 %{_libdir}/libmbim-glib.so.*
 
 %files devel
-%doc AUTHORS README
-# Own these directories to not depend on gtk-doc
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%doc %{_datadir}/gtk-doc/html/libmbim-glib/
+%doc AUTHORS README.md
 %{_datadir}/gir-1.0/*.gir
 %{_includedir}/libmbim-glib/
 %{_libdir}/libmbim-glib.so
