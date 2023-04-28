@@ -62,4 +62,13 @@
     <comment></comment>
     <requestid>1061811</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>972b8c56f4778c6b494c6339b52ed295</srcmd5>
+    <version>0.10.1</version>
+    <time>1682691816</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.1:
+  * Make combining marks always inherit the script of their base.</comment>
+    <requestid>1083361</requestid>
+  </revision>
 </revisionlist>

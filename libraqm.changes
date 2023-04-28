@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 27 22:27:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Make combining marks always inherit the script of their base.
+
+-------------------------------------------------------------------
 Wed Jan 18 09:29:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v0.10.0:

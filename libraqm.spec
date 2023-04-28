@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           libraqm
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Complex Textlayout Library
 License:        MIT
