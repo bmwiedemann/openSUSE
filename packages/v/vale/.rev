@@ -243,4 +243,14 @@
 - Packaging: BuildRequires: golang(API) &gt;= 1.20 (forwarded request 1083280 from jfkw)</comment>
     <requestid>1083281</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a4526c754c60f1cdcde05b478d0980e5</srcmd5>
+    <version>2.25.2</version>
+    <time>1682691823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.25.2:
+  * fix: rollback file view changes for now
+- Add Refs boo#1210938 to recent changelog entry (forwarded request 1083373 from jfkw)</comment>
+    <requestid>1083374</requestid>
+  </revision>
 </revisionlist>
