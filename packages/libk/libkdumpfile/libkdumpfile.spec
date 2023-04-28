@@ -21,11 +21,11 @@
 
 %{!?make_install:%define make_install make install DESTDIR=%{?buildroot}}
 
-%if 0%{!?have_snappy:1}
-%if 0%{?suse_version} >= 1310
-%define have_snappy 1
+%if 0%{!?have_zstd:1}
+%if 0%{?sle_version} >= 152000 || 0%{?suse_version} > 1500
+%define have_zstd 1
 %else
-%define have_snappy 0
+%define have_zstd 0
 %endif
 %endif
 
@@ -63,21 +63,17 @@ URL:            https://github.com/ptesarik/libkdumpfile
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  libzstd-devel
-BuildRequires:  lzo-devel
-BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} < 1030
-BuildRequires:  binutils
-%else
 BuildRequires:  binutils-devel
+BuildRequires:  libtool
+%if %{have_zstd}
+BuildRequires:  libzstd-devel
 %endif
 BuildRequires:  %{python_module devel}
-%if %{have_snappy}
+BuildRequires:  lzo-devel
+BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
-%endif
+BuildRequires:  zlib-devel
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %ifpython2
 Provides:       %{oldpython}-libaddrxlat = %{version}-%{release}
 Obsoletes:      %{oldpython}-libaddrxlat < %{version}-%{release}
@@ -161,18 +157,6 @@ Requires:       libaddrxlat3 = %{version}
 %description -n libaddrxlat-devel
 This package contains all necessary include files and libraries needed
 to develop applications that require libaddrxlat.
-
-# Compatibility cruft
-# there is no %%license prior to SLE12
-%if %{undefined _defaultlicensedir}
-%define license %doc
-%else
-# filesystem before SLE12 SP3 lacks /usr/share/licenses
-%if 0%(test ! -d %{_defaultlicensedir} && echo 1)
-%define _defaultlicensedir %{_defaultdocdir}
-%endif
-%endif
-# End of compatibility cruft
 
 %prep
 %setup -q

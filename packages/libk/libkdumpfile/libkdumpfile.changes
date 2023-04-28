@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 21 07:43:17 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Remove compatibility with SLE12 before SP3.
+
+-------------------------------------------------------------------
+Thu Apr 20 15:00:13 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Fix build for SLE12 (no libzstd).
+- Remove pre-SLE12 compatibility.
+
+-------------------------------------------------------------------
 Wed Mar  1 14:15:19 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable zstd compression algorithm.
