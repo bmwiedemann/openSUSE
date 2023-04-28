@@ -75,4 +75,19 @@
   * Fix `touch)` on Debian/kFreeBSD, use `creat()` instad of `mknod()`</comment>
     <requestid>1039769</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36e556f9c8e011e5c9467c04640ad416</srcmd5>
+    <version>2.5.3</version>
+    <time>1682691814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.3:
+  * Refactor `copyfile()` unit test and verify number of bytes
+    copied
+  * Add missing `rsync()` unit test to ensure proper function
+  * `rsync()` does not copy single files correctly
+  * `copyfile()` does not handle empty source files correctly
+    (error)
+  * `copyfile()` does not properly create destination dir</comment>
+    <requestid>1083360</requestid>
+  </revision>
 </revisionlist>
