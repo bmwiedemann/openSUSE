@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-dotenv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-python-dotenv
 Version:        0.20.0
 Release:        0
@@ -42,7 +42,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Add .env support to your Fjango/Flask apps in development and deployments.
+Add .env support to your Django/Flask apps in development and deployments.
 
 %prep
 %setup -q -n python-dotenv-%{version}
@@ -80,6 +80,7 @@ mv %{buildroot}%{_bindir}/dotenv.orig %{buildroot}%{_bindir}/dotenv
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/dotenv
-%{python_sitelib}/*
+%{python_sitelib}/dotenv/
+%{python_sitelib}/python_dotenv*/
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 26 01:56:00 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove duplicate sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Apr 21 12:32:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Wed Apr 19 01:08:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:15 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Apr 11 10:55:56 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.20.0
