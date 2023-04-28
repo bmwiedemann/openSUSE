@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a513112b2f634e3882b5989f16bd0321</srcmd5>
+    <version>1.0.3</version>
+    <time>1682691802</time>
+    <user>dimstar_suse</user>
+    <comment>xroachng is the classic xroach game for X11 but adapted for desktop environments like Gnome and KDE. Runs fine on openSUSE Leap 15.4. Bug squishing is possible, but I had to lower the speed of the xroaches. Maybe I am getting old :-)</comment>
+    <requestid>1083315</requestid>
+  </revision>
+</revisionlist>

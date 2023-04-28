@@ -1,0 +1,12 @@
+<package name="xroachng" project="openSUSE:Factory">
+  <title>xroachng</title>
+  <description>The classic xroach game for X11: displays disgusting cockroaches on your root
+window. These creepy crawlies scamper around until they find a window to
+hide under. Whenever you move or iconify a window, the exposed beetles again
+scamper for cover.
+
+Adapted for desktop environments like Gnome and KDE. Still works for FVWM, TWM
+and the like.</description>
+  <devel project="X11:Utilities" package="xroachng"/>
+  <url>https://www.ratrabbit.nl/ratrabbit/software/xroach_ng/index.html</url>
+</package>
