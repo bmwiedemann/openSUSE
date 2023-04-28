@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">typst-0.2.0.tar.gz</param>
+     <param name="srctar">typst-0.3.0.tar.gz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
