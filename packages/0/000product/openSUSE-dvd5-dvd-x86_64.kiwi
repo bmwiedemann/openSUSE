@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230427" schemaversion="4.1">
+<image name="OBS__openSUSE___20230428" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230427</productvar>
+      <productvar name="VERSION">20230428</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230427,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230428,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230427/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230428/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -600,8 +600,6 @@
       <repopackage name="gnome-control-center-lang"/>
       <repopackage name="gnome-control-center-user-faces"/>
       <repopackage name="gnome-desktop-lang"/>
-      <repopackage name="gnome-dictionary"/>
-      <repopackage name="gnome-dictionary-lang"/>
       <repopackage name="gnome-disk-utility"/>
       <repopackage name="gnome-disk-utility-lang"/>
       <repopackage name="gnome-extensions"/>
@@ -634,8 +632,6 @@
       <repopackage name="gnome-photos-lang"/>
       <repopackage name="gnome-remote-desktop"/>
       <repopackage name="gnome-remote-desktop-lang"/>
-      <repopackage name="gnome-screenshot"/>
-      <repopackage name="gnome-screenshot-lang"/>
       <repopackage name="gnome-session"/>
       <repopackage name="gnome-session-core"/>
       <repopackage name="gnome-session-default-session"/>
