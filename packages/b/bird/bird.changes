@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 24 15:32:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13
+  * Babel: IPv4 via IPv6 extension (RFC 9229)
+  * Babel: Improve authentication on lossy networks
+  * BGP: New 'allow bgp_med' option
+  * BSD: Support for IPv4 routes with IPv6 nexthop on FreeBSD
+  * Experimental BMP protocol implementation
+  * Important bugfixes
+
+-------------------------------------------------------------------
 Mon Jan 23 19:51:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.12
