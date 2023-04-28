@@ -115,8 +115,13 @@ Provides:       ghostscript_any = %{version}
 %if "%{flavor}" != "mini"
 BuildRequires:  dbus-1-devel
 BuildRequires:  libexpat-devel
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xorg-x11-fonts
+BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xt)
 %if 0%{?suse_version} == 1315
 BuildRequires:  cups154-devel
 %else

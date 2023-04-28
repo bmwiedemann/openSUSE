@@ -495,4 +495,12 @@
     <comment>Fixes bsc#1210062 for ghostscript and ghostscript-mini (forwarded request 1078389 from jsmeix)</comment>
     <requestid>1078390</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>7828f2d0093f02415d4dfa9fa916636a</srcmd5>
+    <version>9.56.1</version>
+    <time>1682691752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083209</requestid>
+  </revision>
 </revisionlist>

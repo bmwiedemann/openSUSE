@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 19:08:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Tue Apr 11 09:09:56 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - CVE-2023-28879.patch fixes CVE-2023-28879
