@@ -211,4 +211,18 @@
     <comment></comment>
     <requestid>1064743</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aa96bf561455d4314cf8d079b2c67e4a</srcmd5>
+    <version>2023.4.0</version>
+    <time>1682691854</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.4.0:
+  * allow loading categoricals even if not so in the pandas metadata,
+    when a column is dict-encoded￼and we only have one row-group (#863)
+￼ * apply dtype to the columns names series, even when selecting no
+    columns (#861, 859)
+￼ * don't make strings while estimating bye column size (#858)
+￼ * handle upstream depr (#857, 856)</comment>
+    <requestid>1083474</requestid>
+  </revision>
 </revisionlist>
