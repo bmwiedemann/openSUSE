@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Apr 25 10:50:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Add section title in background apps menu.
+  + Fix visibility of xembed icons.
+  + Fix placeholder alignment in bluetooth menu.
+  + Fix recording screenshots in recent items.
+  + Fix reloading extensions on version-validation changes.
+  + Fix force-enabling animations at runtime.
+  + Fix stuck session after logout dialog timeout.
+  + Fix window screenshots with pointer.
+  + Only show network subtitles if they don't match the title.
+  + Fix constructing QuickMenuToggles with icon-name.
+  + Fix accessible names in VPN menu.
+  + Don't fail extracting extensions without schemas.
+  + Fixes and improvements to the light theme variant.
+  + Improve accessible name of wireless menu items.
+  + Use consistent naming for "Power Mode" toggle.
+  + Fix support for transparent colors in symbolic SVGs.
+  + Fix notifications getting stuck indefinitely.
+  + Fix keynav of menu-less buttons.
+  + Fix corner cases when matching apps on StartupWmClass.
+  + Fix occasional misalignment of search results.
+  + Fix regression in content-type sniffing on autorun.
+  + Fix building API documentation.
+  + Fixed crash.
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Enable gtk_doc passed to meson again, build the docs.
+
+-------------------------------------------------------------------
+Thu Apr 20 08:08:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move file wrongly placed in the split out gnome-extensions
+  sub-package. There is the gui app and there is the commandline
+  binary. These two are destinct from one another.
+- Mark patch that needs rebase correctly.
+
+-------------------------------------------------------------------
 Thu Apr  6 01:13:10 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update gnome-shell-private-connection.patch: (bsc#1209373)

@@ -21,7 +21,7 @@
 %define mutter_req 44.beta
 
 Name:           gnome-shell
-Version:        44.0+42
+Version:        44.1
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -41,7 +41,7 @@ Source2:        noise-texture.png
 Patch1:         gnome-shell-private-connection.patch
 # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
 Patch7:         gnome-shell-executable-path-not-absolute.patch
-# PATCH-FIX-UPSTREAM gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing
+# PATCH-NEEDS-REBASE gnome-shell-exit-crash-workaround.patch bsc#1190878 glgo#GNOME/gnome-shell#4344 qkzhu@suse.com -- Workaround logout crashing WAS: PATCH-FIX-UPSTREAM
 Patch8:         gnome-shell-exit-crash-workaround.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
@@ -209,7 +209,7 @@ cp %{SOURCE1} js/ui/
 %build
 %meson \
 	--libexecdir=%{_libexecdir}/%{name} \
-	-D gtk_doc=false \
+	-D gtk_doc=true \
 	-D man=true \
 	-D networkmanager=true \
 	-D systemd=true \
@@ -234,7 +234,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %license COPYING
 %doc README.md NEWS
 %{_bindir}/gnome-shell
-%{_bindir}/gnome-shell-extension-prefs
 %dir %{_libdir}/gnome-shell
 %dir %{_libexecdir}/gnome-shell
 %exclude %{_libexecdir}/gnome-shell/gnome-shell-calendar-server
@@ -249,9 +248,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libdir}/gnome-shell/libgvc.so
 %{_libdir}/gnome-shell/libst-12.so
 %{_datadir}/applications/org.gnome.Shell.desktop
-%{_datadir}/applications/org.gnome.Shell.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
-%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.PadOsd.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
@@ -280,21 +277,14 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_userunitdir}/org.gnome.Shell.target
 %{_userunitdir}/org.gnome.Shell@wayland.service
 %{_userunitdir}/org.gnome.Shell@x11.service
-%{_userunitdir}/org.gnome.Shell-disable-extensions.service
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.Extensions-symbolic.svg
 
 %dir %{_libdir}/gnome-shell/girepository-1.0
 %{_libdir}/gnome-shell/girepository-1.0/Shew-0.typelib
 
 %{_libdir}/gnome-shell/libshew-0.so
 
-%{_datadir}/dbus-1/services/org.gnome.Shell.Extensions.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.Notifications.service
-
-%{_datadir}/gnome-shell/org.gnome.Shell.Extensions
-%{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
 %{_datadir}/gnome-shell/org.gnome.Shell.Notifications
 %{_datadir}/gnome-shell/org.gnome.Shell.Notifications.src.gresource
 
@@ -306,11 +296,25 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/org.gnome.ScreenSaver
 %{_datadir}/gnome-shell/org.gnome.ScreenSaver.src.gresource
 
-%files devel
-%doc HACKING.md
-#%%doc %%{_datadir}/gtk-doc/html
 %{_bindir}/gnome-shell-extension-tool
 %{_bindir}/gnome-shell-perf-tool
+
+%{_bindir}/gnome-extensions
+%{_bindir}/gnome-shell-extension-prefs
+%{_mandir}/man?/gnome-extensions.?%{ext_man}
+%{_datadir}/bash-completion/completions/gnome-extensions
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Shell.Extensions-symbolic.svg
+%{_userunitdir}/org.gnome.Shell-disable-extensions.service
+%{_datadir}/applications/org.gnome.Shell.Extensions.desktop
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
+%{_datadir}/dbus-1/services/org.gnome.Shell.Extensions.service
+%{_datadir}/gnome-shell/org.gnome.Shell.Extensions
+%{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
+
+%files devel
+%doc HACKING.md
+%doc %{_datadir}/gtk-doc/html
 %{_datadir}/gnome-shell/*.gir
 %dir %{_datadir}/gnome-shell/gir-1.0
 %{_datadir}/gnome-shell/gir-1.0/Shew-0.gir
@@ -320,13 +324,10 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 
 %files -n gnome-extensions
-%{_bindir}/gnome-extensions
 %{_bindir}/gnome-extensions-app
 %{_datadir}/applications/org.gnome.Extensions.desktop
-%{_mandir}/man?/gnome-extensions.?%{ext_man}
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Extensions-symbolic.svg
-%{_datadir}/bash-completion/completions/gnome-extensions
 %{_datadir}/dbus-1/services/org.gnome.Extensions.service
 %{_datadir}/gnome-shell/org.gnome.Extensions
 %{_datadir}/gnome-shell/org.gnome.Extensions.data.gresource
