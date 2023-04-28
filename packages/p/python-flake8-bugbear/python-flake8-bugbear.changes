@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 28 08:01:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.3.23:
+  * flake8-bugbear is now >= 3.8.1 project like flake8>=6.0.0
+  * This has allowed some more modern AST usage cleanup and less
+    CI running etc.
+  * B030: Fix crash on certain unusual except handlers (e.g.
+    ``except a[0].b:``)
+  * B950: now ignores 'noqa' and 'type: ignore' comments.
+  * B005: Do not flag when using the ``strip()`` method on an
+    imported module.
+  * B030: Allow calls and starred expressions in except handlers.
+
+-------------------------------------------------------------------
 Wed Feb 15 19:44:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.2.13:

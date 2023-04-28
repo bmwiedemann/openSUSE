@@ -106,4 +106,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067208</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>79bfd96f9cb2b45aeb44a8e2588a8a1a</srcmd5>
+    <version>23.3.23</version>
+    <time>1682691853</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.3.23:
+  * flake8-bugbear is now &gt;= 3.8.1 project like flake8&gt;=6.0.0
+  * This has allowed some more modern AST usage cleanup and less
+    CI running etc.
+  * B030: Fix crash on certain unusual except handlers (e.g.
+    ``except a[0].b:``)
+  * B950: now ignores 'noqa' and 'type: ignore' comments.
+  * B005: Do not flag when using the ``strip()`` method on an
+    imported module.
+  * B030: Allow calls and starred expressions in except handlers.</comment>
+    <requestid>1083470</requestid>
+  </revision>
 </revisionlist>
