@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 25 07:49:04 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/dcantrell/pyparted/issues/98
+  + python-parted-no-six.patch
+
+-------------------------------------------------------------------
 Thu Jul 21 13:12:51 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
  - Rebase more-features-exposed.patch to catch another test failure.

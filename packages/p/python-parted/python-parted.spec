@@ -1,7 +1,7 @@
 #
 # spec file for package python-parted
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define srcname pyparted
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parted
 Version:        3.12.0
 Release:        0
@@ -30,6 +29,8 @@ Patch0:         pyparted-3.10.patch
 Patch3:         python-parted-parted-binary.patch
 Patch4:         python-parted-featurestest.patch
 Patch5:         more-features-exposed.patch
+# https://github.com/dcantrell/pyparted/pull/101
+Patch6:         python-parted-no-six.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
