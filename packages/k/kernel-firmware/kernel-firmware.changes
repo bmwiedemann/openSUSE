@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 27 15:10:32 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230427 (git commit fab149657d8d):
+  * Group all Conexant V4L devices together
+  * rtl_nic: update firmware of USB devices
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: update firmware for MT7981
+  * qca: Update firmware files for BT chip WCN6750
+  * mt76xx: Move the old Mediatek WiFi firmware to mediatek
+  * rtl_bt: Add firmware and config files for RTL8851B
+  * linux-firmware: Update AMD cpu microcode
+  * linux-firmware: add firmware for MT7981
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * linux-firmware: update qat firmware
+  * linux-firmware: Add firmware for Cirrus CS35L41 on Lenovo Laptops
+
+-------------------------------------------------------------------
 Mon Apr 17 08:13:49 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230406 (git commit 86da2ac9b4e5):

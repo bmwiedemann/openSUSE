@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20230406
+%define version_unconverted 20230427
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20230406
+Version:        20230427
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
