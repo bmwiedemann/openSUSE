@@ -1478,4 +1478,12 @@ which haven't landed upstream yet
   is not such systemd service. (bsc#1203491) (forwarded request 1076652 from colyli)</comment>
     <requestid>1076783</requestid>
   </revision>
+  <revision rev="142" vrev="7">
+    <srcmd5>b26c3e79fc92ffb347edd20297c49ff4</srcmd5>
+    <version>4.2</version>
+    <time>1682691725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083057</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 24 15:06:42 UTC 2023 - Coly Li <colyli@suse.de>
+
+- Fixes for mdmon to ensure it run at the right time in the
+  fight mount namespace.  This fixes various problems with 
+  IMSM raid arrays in 15-SP4 (bsc#1205493, bsc#1205830)
+  - mdmon: fix segfault
+    0052-mdmon-fix-segfault.patch
+  - util: remove obsolete code from get_md_name
+    0053-util-remove-obsolete-code-from-get_md_name.patch
+  - mdmon: don't test both 'all' and 'container_name'.
+    0054-mdmon-don-t-test-both-all-and-container_name.patch
+  - mdmon: change systemd unit file to use --foreground
+    0055-mdmon-change-systemd-unit-file-to-use-foreground.patch
+  - mdmon: Remove need for KillMode=none
+    0056-mdmon-Remove-need-for-KillMode-none.patch
+  - mdmon: Improve switchroot interactions.
+    0057-mdmon-Improve-switchroot-interactions.patch
+  - mdopen: always try create_named_array()
+    0058-mdopen-always-try-create_named_array.patch
+  - Improvements for IMSM_NO_PLATFORM testing
+    0059-Improvements-for-IMSM_NO_PLATFORM-testing.patch
+
+-------------------------------------------------------------------
 Sat Apr  1 15:17:58 UTC 2023 - Coly Li <colyli@suse.de>
 
 - sysconfig.mdadm: Remove ServiceRestart line to mdadm since there
