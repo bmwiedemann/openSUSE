@@ -33,6 +33,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{versi
 Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-ProgressBar-Stop-emitting-polish-requests-when-item-.patch
 # PATCH-FEATURE-UPSTREAM
 Patch100:       0001-Outline-intensity-setting.patch
 # PATCH-FIX-OPENSUSE for ^

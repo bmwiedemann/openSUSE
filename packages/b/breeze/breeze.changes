@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 06:25:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid CPU use in idle apps (boo#1210747, kde#468903):
+  * 0001-ProgressBar-Stop-emitting-polish-requests-when-item-.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
