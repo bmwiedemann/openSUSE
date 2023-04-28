@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 25 16:42:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Fall back to the default, not the unknown color space.
+  + Fix resizing windows via keyboard.
+  + Fix possible screen freeze after resume with multiple monitors.
+  + Fix anchor position when dragging window.
+  + Fix applying XSettings to decorations on X11.
+  + Allow clipped redraws for headless backend.
+  + Improve screencast support.
+  + Fix focus-on-click for server-side decorated windows.
+  + Fix initial fullscreen state of server-side decorated windows.
+  + Fix feedback loop triggering bursts of excessive CPU load.
+  + Enable modifiers by default on non-native backend.
+  + Check EDID for supported sink Colorimetry.
+  + Fix artifacts in titlebars on some hardware.
+  + Fix map transitions for X11 windows on wayland.
+  + Fixed crashes.
+  + Plugged leaks.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop 2963.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sun Apr 16 21:20:57 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.0+54:
