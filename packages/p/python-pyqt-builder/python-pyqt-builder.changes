@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 24 20:12:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.0
+  * Added support for QtSpatialAudio for PyQt6.
+  * A bug fix release.
+
+-------------------------------------------------------------------
 Tue Jan 24 18:51:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.14.1

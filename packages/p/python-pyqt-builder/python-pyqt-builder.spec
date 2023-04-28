@@ -18,7 +18,7 @@
 
 %define mname pyqt-builder
 Name:           python-%{mname}
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
