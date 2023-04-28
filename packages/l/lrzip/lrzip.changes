@@ -1,0 +1,677 @@
+-------------------------------------------------------------------
+Fri Apr 28 09:36:02 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.641:
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Apr 27 18:24:49 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fixasmstack.patch to mark stack as non-executable
+  to fix build on x86_64 and others
+
+-------------------------------------------------------------------
+Sun Mar  7 20:13:46 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lrzip 0.641:
+  * lz4 now used for compressibility testing (only)
+  * Fixes for handling of corrupt archives without crashing
+  * Fixes for creating small lzma based archives to stdout
+  * Incomplete files are now deleted on interrupting lrzip unless
+    the keep-broken option is enabled
+  * Version prints to stdout instead of stderr
+  * Assembler code is back and works with x86_64
+
+-------------------------------------------------------------------
+Fri Oct 21 14:18:08 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.631:
+  * No changelog available
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Mon Jun 27 18:03:00 UTC 2016 - mpluskal@suse.com
+
+- Add conflict with rzsz as it also provides binary called lrz
+
+-------------------------------------------------------------------
+Sun Jun 12 08:52:38 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0.630:
+  * checksum.buf should only be changed after the semaphore wait
+  * Update README
+  * Add documentation for recursive mode
+  * Implement gzip compatible -r recursive option
+  * Add initial argument processing for recursive option
+  * Tidy
+  * Add one more verbose for compat mode
+  * Add support for various combinations in compat mode
+  * models is array of chars. char's signess is implementation 
+    specific. It's unsigned on ARMv7. Unsigned char cannot represent 
+    negative values. GCC 6 complains about it:
+  * Fix decompression of multiple chunk encrypted archives
+  * Tidy gotos
+  * Show correct lengths during testing on big endian and compressed 
+    archives
+  * Update copyright dates
+  * Allow less than maxram to be malloced for checksum to fix Failed 
+    to malloc ckbuf in hash_search2
+  * Base temporary output buffer on maximum mallocable, not maxram
+  * Enable subdir objects for future automake compatibility
+  * Add support for -m option in lrztar
+  * Big endian fix for Solaris Sparc courtesy of joelfredrikson.
+  * Fixed typographical error, changed accomodate to accommodate in 
+    README.
+  * A whitespace fix on lrztar.
+  * Add sanity check to prevent trying to malloc more ram than a 
+    system/environment is capable of
+  * Cosmetic help change for compat
+  * Add rudimentary manpage for lrz
+  * Fix lrz symbolic linkage
+  * Do not fail if we are unable to write temporary files, giving 
+    a warning only that it might fail if we don't have enough ram
+  * Try /tmp/ if none of the temporary environment directories or 
+    the current directory are writeable
+  * Set STDOUT correctly in compat mode
+  * Style police
+  * Fix false warning on decompressing from stdin without keep files
+  * Fix false warning on compressing from stdin without keep files
+  * Don't show extra message in compat mode decompress
+  * Show correct appname when called in compat mode
+  * Add support for progress, fast and best flags in compat mode
+  * Add compatibility mode with gzip when called as lrz
+  * Correct adding slash to control->tmpdir. off-by-one error.
+  * Update manpage for long options
+
+-------------------------------------------------------------------
+Sun Apr 12 09:49:20 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.621
+  * Fix libzpaq.cpp warnings
+  * Fix warnings in LzmaLib.c
+  * Making the high buffer only one page size is faster for sliding 
+    mmap mode
+  * Fix incompatible log callback in liblrzip
+  * Use PRId64 instead of lld in fscanf
+  * Use int64_t for i64
+  * Fix ISO C warning in lrzip.c
+  * Fix ISO C warning in lrzip.c
+  * Fix ISO C warning in runzip.c
+  * Fix ISO C warnings in rzip.c
+  * Fix iso c warning in util.c
+  * Fix EOL to unix on libzpaq
+  * control->tmpdir fixes
+  * Null terminate long options to find unhandled options
+  * Trivial date
+  * Add long option support
+  * Brace failure lead to broken dump to stdout
+  * fflush messages on print_err
+  * Fix inverse logic
+  * Honour the proper unix environment variable for temporary 
+    directory and then try variations
+  * Attempt to decompress file in ram only if we are unable to 
+    create temporary files when decompressing to stdout
+  * Avoid checking return values repeatedly on compress that only 
+    lead to failures anyway
+  * Microoptimisation
+  * Don't check for failure condition that can no longer occur
+  * Don't check twice for failure conditions that are fatal in 
+    hot paths
+  * Cache the chunk bytes value to avoid setting it on each 
+    read_header call
+  * fake_mremap is only used when defined to mremap
+  * Remove unused cksem functions
+  * Fix remaining use of mutexes lock/unlocking in different 
+    threads with cksems, corecting cksem usage on osx
+  * Update copyright dates
+  * Make match_len a function completely removing all indirect calls 
+    to get_sb, significantly speeding up the single_get_sb case
+  * Make full_tag a pointer allowing us to avoid a function 
+    call for get_sb
+  * Call sliding_get_sb directly in sliding_next_tag
+  * Make next_tag a pointer to allow ordinary mapping to avoid an 
+    extra function call
+  * fix order of lrzip.conf search
+- Claanup spec file with spec-cleaner
+- Trim unnecessary dependencies
+
+-------------------------------------------------------------------
+Mon Feb 11 23:05:20 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.614:
+  + Fixed lrztar not working.
+- Changes from version 0.613:
+  + Fixed the bug where massive files would show an incorrect md5
+    value on decompression.
+  + Compressing ultra-small files to corrupt archives was fixed.
+  + Compilation on various other platforms was fixed.
+  + A crash with using -S was fixed.
+- Add explicit libbz2-devel BuildRequires, fixes build on 12.2 and
+  factory.
+- Update licencetag to current openSUSE standard.
+
+-------------------------------------------------------------------
+Sun Mar 18 17:42:27 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.612:
+  * minor formatting improvement to delete misaligned %
+  * implement progress counter on zpaq compress/decompress per thread within
+    the Reader function
+  * add some lrzip style defines and optimisations to the lrzip functions in
+    libzpaq.h
+  * re-instantiate the lzo compresses test for zpaq compression
+  * remove redundant code
+  * delete now-unused zpipe code
+  * implement virtual write support for bufWrite to speed up zpaq support and
+    simplify the virtual read function for bufRead
+  * add virtual read() support to the bufRead class to speed up
+    encoding/decoding via the zpaq library
+  * use libzpaq backend for decompression
+  * move zpaq compression to new libzpaq library back end
+  * merge branch 'master' into zpaq
+  * add minimal libzpaq compilation support
+  * move to libzpaq directory
+  * import libzapq files
+  * fix Lrzip.h not being installed into include directory and make distcheck
+    failing
+
+-------------------------------------------------------------------
+Sun Mar 11 20:25:29 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.611:
+  * move the update counter to earlier in the hash_search so it still updates
+    even when there are not matches
+  * perform all checksumming in a separate thread to speed up the hash search
+    in the rzip phase
+  * optimise the hot function empty_hash
+  * micro-optimise the hot next_tag function
+  * micro-optimise the match_len function
+  * pass one less variable to the get_sb function as an optimisation
+  * cache the hash_entry value passing one less variable to hash_empty as a
+    micro-optimisation
+  * use ffsl for a faster lesser_bitness function
+  * prevent lrzuntar from automatically overwriting existing directories
+    without the -f option being specified
+  * fix: calling lrzip via lrzcat would fail as the proper parameters weren't
+    being passed to the control structure
+
+-------------------------------------------------------------------
+Thu Mar 08 21:11:08 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.610:
+  * implement complete set of liblrzip libraries, documentation and example
+    uses with support for simple lrzip_compress() and lrzip_decompress() or
+    complete fine-grained control over all compression and decompression
+    options
+  * use as much of the low buffer as possible with a single memcopy before
+    going fine grained byte by byte
+  * preserve the compressed time on decompression where suitable
+  * store a copy of the control struct to be reused on subsequent files to
+    prevent variables being modified in the control struct on the first file
+    that corrupt compression/decompression of the 2nd file
+  * fix typos
+  * use an array of parameters in lrztar to allow working with directories with
+    spaces in their names
+
+- add subpackages for devel and shlib
+
+-------------------------------------------------------------------
+Mon Sep 26 08:20:20 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.608:
+  * faster rzip stage through use of selective data access functions
+
+- changes from 0.607:
+  * a rare case of not being able to decompress archives was fixed
+  * the lzma library was updated to version 920
+  * more debugging info was added in maximum verbose mode
+  * fewer messages occur without verbose mode
+
+-------------------------------------------------------------------
+Tue May 17 09:45:10 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.606:
+  * lrzuntar broke as lrzip doesn't automatically use stdout now, so use lrzcat
+    in the lrztar script instead
+
+-------------------------------------------------------------------
+Sun May  8 14:04:40 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.605:
+  * lrzcat was added, which automatically decompresses .lrz files to STDOUT
+  * lrzip and lrunzip will no longer automatically output to STDOUT when output
+    is redirected
+  * progress output will no longer spam the output unless the percentage has
+    changed
+  * lrzip now has no lower limit on the file sizes it will happily compress and
+    is able to work with zero byte sized files
+  * the percentage counter when getting file information on small files will
+    not show %nan
+  * the executable bit will not be enabled when compressing via a means that
+    can't preserve the original permissions (e.g. from STDIN)
+
+-------------------------------------------------------------------
+Wed Apr 27 07:16:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.604:
+  * lrzip will no longer fail with a "resource temporarily unavailable" error
+    when compressing files over 100GB that require hundreds of threads to
+    complete
+
+-------------------------------------------------------------------
+Sun Apr 24 20:53:38 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.603:
+  * detect when stdout is being redirected and automatically direct output to
+    stdout unless a filename is specified
+  * update lrztar to properly support -S -O and -o, and use new syntax not
+    requiring '-o -' for stdout
+  * update lrzip.conf to support encryption
+  * do a sanity check to ensure lrzip is not attempting to work on a directory
+
+-------------------------------------------------------------------
+Sun Apr 24 20:16:57 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.603:
+
+-------------------------------------------------------------------
+Wed Apr 13 09:37:00 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.602:
+  * limits were imposed for 32-bit machines with way too much RAM for their own
+    good
+  * full version is displayed with -V
+  * fle permissions are better carried over instead of being only 0600
+
+-------------------------------------------------------------------
+Wed Mar 23 23:30:52 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.601: no user-visible changes
+
+-------------------------------------------------------------------
+Wed Mar 23 09:29:45 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.600:
+  * massive rewrite with new file format to accomodate new features
+  * allocate temporary buffers of safely sized ram that can act as temporary
+    storage for performing de/compression to/from STDIN/STDOUT without
+    requiring temporary physical files; files compressed on machines with much
+    larger ram being decompressed on smaller ram machines may still require
+    temporary files, but as much as possible is done using in-ram
+    decompression, and minimally sized temporary files; information displayed
+    is more verbose and accurate in STDIN/STDOUT mode
+  * the temporary buffers created for decompressing to STDOUT are also used for
+    decompressing regular files now avoiding multiple write/reads when
+    re-constructing the file on decompression: this can dramatically speed up
+    the rzip phase of decompression on complicated files with many small
+    matches, and always makes testing faster
+  * compress block headers as well now since we know how many bytes can be used
+    to describe the length of the block, decreasing overall file size
+  * store the rzip chunk size per chunk to make it possible to check total file
+    size by summating each rzip chunk size when it's not known till the end (as
+    happens when compressing from STDIN)
+  * implement password protected encryption:
+    + import the polarssl code for sha512 and aes128 routines
+    + read password without echoing to screen by disabling echo via terminfo
+    + take the password then multiply hash it according to the date it was
+      generated
+    + increase the number of hashes according to Moore's law so it always takes
+      approximately 1 second per password on the most modern hardware when first
+      encrypted
+    + hash the password against 8 bytes of salt which is a combination of the 2
+      byte encoded loop counter (for how many times to hash the password) and 6
+      random bytes
+    + take random from /dev/urandom if it's available and fall back to random()
+      if not
+    + encrypt each block of compressed data with 8 extra bytes of random salt
+    + once the headers are written, go back and encrypt the headers as well
+    + then encrypt the md5 hash value as well
+    + anything beyond the initial lrzip magic header should apppear as random
+      data and no two successive encryptions of the same data with
+      the same password should generate the same data
+    + big Endian fixes
+    + change lrztar and lrzuntar to not use temporary files
+    + countless other fixes, documentation and cleanups
+
+-------------------------------------------------------------------
+Tue Mar 08 10:38:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.571:
+  * negative value allocs are now prevented with high thread/low RAM
+    combinations
+  * free space is now checked before attempting to compress or decompress, and
+    the program aborts if there is inadequate space and -f is not enabled
+  * the check for where data is going when refusing to write stdout to a
+    terminal was corrected
+  * temporary files are unlinked as soon as possible to minimize the chance of
+    stale temporary files being left
+  * file check can no longer be enabled when meaningless
+  * the time displayed and progress when known from STDIN were fixed
+  * spurious errors when trying to mmap files are avoided
+  * temporary file sizes used when decompressing to STDOUT were minimized
+
+-------------------------------------------------------------------
+Fri Feb 25 16:51:19 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.570:
+  * improvements were made for more CPU usage and faster compression and
+    decompression
+  * memory is now precisely controlled to avoid running out of memory while
+    using the largest possible compression windows
+  * a single thread is used when advantageous
+  * verbose output options were added for -i information
+  * the lrzip.conf features were updated
+  * the -M option was dropped
+  * the -T lzo testing option was changed to not take a parameter
+  * deletion of files that the program has refused to overwrite is prevented
+  * output in failure modes was made cleaner
+  * default compiler flags were added
+  * the program now refuses to read from or write to a terminal with
+    stdin/stdout
+  * missed temporary files are deleted
+  * a large clean up of the documentation was done
+
+-------------------------------------------------------------------
+Mon Feb 21 19:12:05 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.560:
+  * implement md5 hash checking on compression and decompression by using
+    buffers to pass to the existing crc checking and re-using them for the md5
+    checking
+  * speed up the hash checking on compression by not reading the whole chunk at
+    once to do the hash check, and instead read one paged size chunk
+  * store the md5 hash value at the end of the archive, maintaining backward
+    compatibility with existing 0.5 versions of lrzip, and places a flag in the
+    header denoting its existence
+  * use the header flag for md5's existence to determine what hash check to
+    perform on decompression
+  * add hash value display to maximum verbose output and in information mode
+  * add -H option to enable hash value displaying without verbose mode
+  * display what hash checking will be used on decompression in verbose mode
+    and in information displayed with -i
+  * add -c option to perform a hash check on the file generated on
+    decompression, comparing it to that stored in the lrzip archive, or that
+    generated on decompression on archives that do not have it stored
+  * delete broken or damaged files generated on interruption or when they fail
+    integrity testing by default
+  * implement the -k option to keep broken or damaged files
+
+-------------------------------------------------------------------
+Fri Feb 11 12:05:13 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.552:
+  * fix incompressible blocks causing failure with bzip2 and gzip
+  * flush writes to disk before allocating ram
+  * relax memory allocation when no back end compression will be used
+  * clean up unnecessary semaphore usage in decompression
+  * fix minor typos
+  * convert mmaps to malloc in runzip as they may silently fail if not a
+    multiple of page size, thereby leading to silent corruption on
+    decompression
+  * return the correct length by unzip_literal
+
+- changes from 0.551:
+  * fix stdin failing due to getting sizes all wrong
+  * fix stdin compression values not being shown at end
+  * fix inappropriate failure when lzma doesn't compress block
+
+- changes from 0.550:
+  * move the threading on compression to higher up in the code, allowing the
+    next stream to start using compression threads before the previous stream
+    has finished; this speeds up compression on files that take more than one
+    pass to compress
+  * limit the number of threads decompressing stream 0 to just 1 since it's
+    always followed by stream 1 chunks, and it may lead to failure to
+    decompress due to running out of memory by running too many threads
+  * default compression level and window size on lzma is set to 7 which is the
+    highest it goes; scale the 9 lrzip levels into 7, thus making the default
+    lzma level 5 which uses a lot less memory and is substantially faster at
+    the cost of some compression
+  * rationalise the memory testing now that the default lzma settings use a lot
+    less ram by default, and make all systems use no more than 1/3 ram in one
+    mmap; this allows larger windows to be used by 32 bit at last without
+    memory allocation errors
+  * revert "Make threads spawn at regular intervals along chunk size thus
+    speeding up compression" as it actually slowed it down instead of speeding
+    it up
+  * cope with compression/decompression threads failing by waiting till the
+    previous thread has finished its work, thus serialising the work and using
+    less ram, making success more likely
+  * fix some dodgy callocs which weren't really allocating enough ram
+  * destroy semaphores used in stream_in on closing the stream
+  * minor output improvements
+
+-------------------------------------------------------------------
+Wed Nov 24 17:36:35 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.543:
+  * now copes when there are multiple stream 0 entries per chunk, which would
+    cause a failure on massive file decompression
+  * a mistake in which lzma windows were being set far too small at all times
+    was fixed
+  * the nice level of the main process was decreased compared to back end
+    threads as it tends to be the rate limiting step
+
+-------------------------------------------------------------------
+Sat Nov 20 11:38:35 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.542:
+  * sane defaults are now chosen for memory usage because Linux ludicriously
+    overcommits
+  * a sliding mmap is used for compression windows greater than 2/3 RAM
+  * testing of allocatable RAM was consolidated and simplified
+  * minor tweaks were made to output
+  * the size of the high buffer in sliding mmap was rounded up to one page
+  * a little more was squeezed out of 32-bit compression windows
+  * a problem with sliding mmap from not working from the 2nd pass onwards,
+    causing a slowdown of death, was fixed
+
+-------------------------------------------------------------------
+Thu Nov 18 16:54:52 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.541:
+  * massive multithreading was implemented for decompression, making slower
+    algorithms scale dramatically with number of CPUs, and completing huge
+    scalability improvements on both compression and decompression
+  * the output of zpaq consuming lots of CPU time and trampling on itself in
+    the console was fixed
+  * the control window is now ensured to be set appropriately on 32 bit
+  * numerous minor output improvements were made
+  * the docs and benchmarks were updated
+
+-------------------------------------------------------------------
+Sat Nov 13 23:59:52 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.530:
+  * a massive multithreading implementation allows a huge speed-up on SMP
+    machines during compression
+  * the -p option was added to override the number of processors to use
+  * the -P option was deprecated
+  * the size of all compression windows was increased to minimize the number of
+    headers written
+  * screen output was altered to suit threading
+
+-------------------------------------------------------------------
+Sun Nov  7 11:14:20 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.5.2:
+  * cases of extreme RAM usage on 32-bit failing was fixed by limiting zpaq to
+    600MB windows as well
+  * page size is checked if possible instead of assuming it's always 4k
+  * the progress output was improved
+  * failure to chmod and failure to set nice level were changed to warnings only
+  * a distinction between stderr messages and output was standardized
+
+-------------------------------------------------------------------
+Fri Nov  5 23:33:46 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.5.1:
+  * implements unlimited sized compression windows not constrained by RAM
+    through a "sliding mmap" design
+  * modifies the default compression windows to find the largest possible
+    safely addressable RAM instead of guessing
+  * these changes both have major compression improvements on files larger than
+    RAM
+  * improved screen output
+  * more checks and error messages
+  * numerous fixes, micro-optimisations, and cleanups
+  * updated docs and benchmarks
+
+-------------------------------------------------------------------
+Tue Nov  2 12:25:52 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.5:
+  * variable byte width offsets are now used, and match lengths were shrunk for
+    better compression and speed
+  * a new file format was implemented
+  * memory initialization was rewritten to find the maximum window size
+    possible without failing
+  * up to 44-bit sized offsets can be addressed on 32-bit machines on
+    decompression
+  * compression from stdin without temporary files is now possible
+  * more robust fatal warnings were provided
+  * there were numerous cleanups and tidying of code, and the documentation and
+    comments were updated
+
+-------------------------------------------------------------------
+Sat May 22 10:09:17 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.46:
+  * a lrzuntar wrapper was added for extracting whole tarball
+    directories
+  * minor fixes were made to prevent lrztar from recompressing
+    .tar.lrz files
+  * path name handling was fixed in lrztar
+  * some error handling was fixed
+  * the man pages were updated
+
+-------------------------------------------------------------------
+Wed Mar 31 00:44:46 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.45:
+  * fixes the reported window size
+  * minor code cleanups
+  * addition of lrztar and lrunzip docs
+  * fixes for minor typos
+
+-------------------------------------------------------------------
+Thu Dec 31 09:49:45 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.44:
+  * an lrztar wrapper was added for compressing and decompressing
+    whole directories
+  * an -i option was added to provide information about a
+    compressed file
+  * a "nan" showing as Compression speed on very small files was
+    fixed
+  * the program now avoids overwriting the output file if the input
+    doesn't exist
+  * a signal handler was implemented for deleting temporary files
+
+-------------------------------------------------------------------
+Sat Dec 26 23:34:09 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.43:
+  * added stdin/stdout support
+  * added test function
+  * config files should now accept zpaq options
+  * add a warning when attempting to decompress a file from a newer
+    lrzip version
+
+-------------------------------------------------------------------
+Mon Nov 30 07:19:52 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.42:
+  * fixes the progress update in ZPAQ to not update with each byte,
+    which was wasting heaps of CPU time
+  * progress update has been changed to show which of 2 chunks are
+    being compressed in ZPAQ
+
+-------------------------------------------------------------------
+Sun Nov 29 22:17:14 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.41:
+  * zpaq compression backend was added for extremely good but
+    extremely slow compression (from the PAQ family of the best
+    general compression algorithms around today)
+  * chunk size passed to LZMA is now limited to 4GB to avoid
+    library overflows
+  * minor changes were made to the formatting output
+  * lower limit of the -T threshhold was changed to 0 to allow
+    disabling it
+  * lzo_compresses check was added into zpaq and bzip2 as well
+    since they're slow
+
+-------------------------------------------------------------------
+Thu Nov 26 19:59:02 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.40:
+  * massive code rewrite
+  * compression windows should be limited by available RAM now on
+    64-bit systems
+    + compression advantages on large files on 64-bit machines with
+      large RAM are massive
+    + limit on 32-bit is still 2GB
+  * file format is no longer compatible with earlier versions of
+    lrzip
+  * support for decompressing older formats is present, but all new
+    files will be generated in the new format
+  * minor speedups were done
+  * decompression should no longer stall at 4GB boundaries for
+    extended periods, making decompression much faster for files
+    larger than 4GB
+  * many documentation and benchmark updates were made
+
+-------------------------------------------------------------------
+Mon Nov 23 07:20:54 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 0.31:
+  * updated to be in sync with lzma SDK 9.07beta
+  * massive fixes to the memory management code, fixing many 32-bit
+    overflow errors
+  * window size limit is now 2GB on both 32-bit and 64-bit, which
+    improves compression further
+  * flushing of data to disk between compression windows was
+    implemented to minimize disk thrashing of read vs write
+
+-------------------------------------------------------------------
+Thu Nov 19 00:00:00 CET 2009 - pascal.bleser@opensuse.org
+
+- update to 0.30:
+  * major bugfixes to deal with numerous memory issues on 32-bit systems
+  * improved use of extra memory on 64-bit systems by removing old restrictions
+    on window sizes
+  * compression capabilities were expanded to make the most of LZMA compression
+    modes with more RAM
+  * a failure to compress larger files with large amounts of RAM on 32-bit
+    systems was fixed
+  * add config file option
+  * numerous minor fixes
+  * documentation updates
+  * minor requested features were added
+
+-------------------------------------------------------------------
+Sun Feb 15 00:00:00 CET 2009 - petr.uzel@suse.cz
+
+- fix build on i586 (add nasm to BR)
+
+-------------------------------------------------------------------
+Fri Mar 21 00:00:00 CET 2008 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Mon Dec 10 00:00:00 CET 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Thu May 31 00:00:00 CEST 2007 - guru@unixtech.be
+
+- initial submission into the openSUSE Build Service
+
+-------------------------------------------------------------------
+Mon Nov  6 00:00:00 CET 2006 - guru@unixtech.be
+
+- new upstream version
+

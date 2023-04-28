@@ -1,0 +1,14 @@
+<package name="lrzip" project="openSUSE:Factory">
+  <title>Very High Ratio and Speed Compression Designed for Large Files</title>
+  <description>LRZIP is a compression program that can achieve very high compression
+ratios and speed when used with large files. It uses the combined compression
+algorithms of lzma for maximum compression, lzo for maximum speed, and the long
+range redundancy reduction of rzip. It is designed to scale with increases
+with RAM size, improving compression further. A choice of either size or
+speed optimizations allows for either better compression than even lzma can
+provide, or better speed than gzip, but with bzip2 sized compression levels.
+
+</description>
+  <devel project="Archiving" package="lrzip"/>
+  <url>http://ck.kolivas.org/apps/lrzip/</url>
+</package>
