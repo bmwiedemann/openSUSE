@@ -1,7 +1,7 @@
 #
 # spec file for package python-furl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-furl
 Version:        2.1.3
 Release:        0
