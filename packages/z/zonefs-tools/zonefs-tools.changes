@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 24 12:53:12 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.6.0:
+  * This release removes the build dependency on autoconf-archive and
+    significantly improves the test suite.
+
+-------------------------------------------------------------------
 Fri Dec 10 11:33:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.2

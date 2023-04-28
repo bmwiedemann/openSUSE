@@ -1,8 +1,8 @@
 #
 # spec file for package zonefs-tools
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (C) 2020, Western Digital Corporation or its affiliates.
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020, Western Digital Corporation or its affiliates.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           zonefs-tools
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Utilities for the Zonefs filesystem
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  m4
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(uuid)
@@ -36,7 +37,7 @@ BuildRequires:  pkgconfig(uuid)
 Utilities needed to create and maintain zonefs file systems under Linux.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 sh ./autogen.sh
