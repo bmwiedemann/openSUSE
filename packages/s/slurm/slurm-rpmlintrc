@@ -14,12 +14,15 @@ addFilter(".*obsolete-not-provided slurmdb-direct.*")
 # channel.
 addFilter("libnss_slurm\d_\d{2}_\d{2}.*: E: shlib-policy-name-error.*")
 
-# slurms uses shared libraries for its plugins, so these plugins can have
-# no dependency information
-
-addFilter(".*shared-library-without-dependency-information /usr/lib64/slurm/.*so")
 # Our logrotate file names are derived from the service name.
-addFilter(".* E: incoherent-logrotate-file /etc/logrotate.d/slurm.*\.conf")
+addFilter(".* (W|E): incoherent-logrotate-file /etc/logrotate.d/slurm.*\.conf")
+
+# libpmix2 is opened using dlopen() - no automatic dependency resolution possible
+addFilter("slurm(|_.*)-plugins.x86_64: (W|E): explicit-lib-dependency libpmix2")
+
+# We need to build for more than one product. rpmlint tests differ between products
+# Some may not trigger on all products.
+addFilter("slurm.src: (W|E): unused-rpmlintrc-filter .*")
 
 # ? Why should we package the log dir?
 addFilter(".*: E: logrotate-log-dir-not-packaged /var/log")
@@ -32,19 +35,20 @@ addFilter("slurm(|-node|-slurmdbd)\..*: systemd-service-without-service_del_post
 # The idea is to place the test suite into a package mostly unaltered
 # to place it to a test rig without requiring to install the full Slurm
 # sources.
-# ... and in the same vein
-addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-opt /opt/slurmtest")
 # This is by intention - the test suite requires a test suite specific
 # systemd unit file.
 addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-systemd-userdirs")
-# It is not a devel package but a test suite. The test suite is designed to
-# build test binaries when it is executed.
-addFilter("slurm(|_.*)-testsuite.*: E: devel-file-in-non-devel-package")
 # We want to give root a script to set up the test system
-addFilter("slurm(|_.*)-testsuite.*: E: filelist-forbidden-fhs23 /root")
+addFilter("slurm(|_.*)-testsuite.*: E: (suse-|)filelist-forbidden-fhs23 /root")
 # Testsuite needs this as it builds test binaries.
 addFilter("slurm(|_.*)-testsuite.*: devel-dependency libnuma-devel")
 addFilter("slurm(|_.*)-testsuite.*: E: explicit-lib-dependency libnuma-devel")
 # To reduce the amount of preparation, the test suite supplies all required
 # settings.
 addFilter("slurm(|_.*)-testsuite.*: sudoers-file-unauthorized .*")
+# Testsuite needs to override default slurmd.service
+addFilter("slurm(|_.*)-testsuite.x86_64: W: suse-filelist-forbidden-systemd-userdirs /etc/systemd/system/slurmd.service")
+# dito
+addFilter("slurm(|_.*)-testsuite.x86_64: W: systemd-unit-in-etc /etc/systemd/system/slurmd.service")
+# No lib dependency - test suite needs devel package to compile tests
+addFilter("slurm-testsuite.x86_64: W: explicit-lib-dependency .*")

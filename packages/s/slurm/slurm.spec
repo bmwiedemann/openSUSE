@@ -154,7 +154,7 @@ Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
 Requires:       %{name}-config = %{version}
 %if 0%{?have_boolean_deps}
-Recommends:     (%{name}-munge = %version if munge)
+Requires:       (%{name}-munge = %version if munge)
 %else
 Recommends:     %{name}-munge = %version
 %endif
@@ -436,6 +436,7 @@ Wrapper scripts for aiding migration from Torque/PBS to SLURM.
 Summary:        Wrappers for transitition from OpenLava/LSF to Slurm
 Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
+BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-openlava = %{version}}
 %{?upgrade:Obsoletes: %{pname}-openlava < %{version}}
 %{?upgrade:Conflicts: %{pname}-openlava}
@@ -447,6 +448,7 @@ Wrapper scripts for aiding migration from OpenLava/LSF to Slurm
 Summary:        Mail tool that includes job statistics in user notification email
 Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
+BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-seff = %{version}}
 %{?upgrade:Obsoletes: %{pname}-seff < %{version}}
 %{?upgrade:Conflicts: %{pname}-seff}
@@ -460,6 +462,7 @@ information in the email body.
 Summary:        Perl tool to print SLURM job state information
 Group:          Productivity/Clustering/Computing
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 %{?upgrade:Provides: %{pname}-sjstat = %{version}}
 %{?upgrade:Obsoletes: %{pname}-sjstat < %{version}}
 %{?upgrade:Conflicts: %{pname}-sjstat}
@@ -624,11 +627,11 @@ Requires:       expect
 Requires:       gcc-c++
 Requires:       libnuma-devel
 %ts_depends:     openmpi4-gnu-hpc-devel
+Requires:       pam
 Requires:       pdsh
 Requires:       perl-%{name} = %version
 Requires:       sudo
 Requires:       tar
-Requires:       config(pam)
 BuildRequires:  sudo
 
 %description testsuite
@@ -764,7 +767,13 @@ sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmd.pid@" \
  %{buildroot}/%{_unitdir}/slurmd.service
 sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
        -e 's@After=\(.*\)@After=\1 mariadb.service@' \
- %{buildroot}/%{_unitdir}/slurmdbd.service
+       %{buildroot}/%{_unitdir}/slurmdbd.service
+htmldir=%{buildroot}/%{_datadir}/doc/slurm-%{ver}/html
+sed -e '/name=\"state_save_location\"/s@value=\".*\"@value=\"%{_localstatedir}/lib/slurm\"@' \
+    -e '/name=\"slurmd_pid_file\"/s@value=\".*\"@value=\"%{_localstatedir}/run/slurm/slurmd.pid\"@' \
+    -e '/name=\"slurmctld_pid_file\"/s@value=\".*\"@value=\"%{_localstatedir}/run/slurm/slurmctld.pid\"@' \
+    -e '/name=\"slurmd_spool_dir\"/s@value=\".*\"@value=\"%{_localstatedir}/spool/slurm\"@' \
+    -i ${htmldir}/configurator.html -i ${htmldir}/configurator.easy.html
 %if 0%{?have_sysuser}
 [ -e /usr/bin/bash ] && BASH_BIN=/usr/bin/bash || BASH_BIN=/bin/bash
 echo "u %slurm_u %{slurm_uid} \"%slurmdescr\" %{slurmdir} ${BASH_BIN}" > system-user-%{pname}.conf
@@ -831,8 +840,8 @@ EOF
 done
 mkdir -p %{buildroot}/%{apache_sysconfdir}/conf.d
 cat > %{buildroot}/%{apache_sysconfdir}/conf.d/slurm.conf <<EOF
-Alias /slurm/ "/usr/share/doc/slurm-%{ver}/html/"
-<Directory "/usr/share/doc/slurm-%{ver}/html/">
+Alias /slurm/ "%{_datadir}/doc/slurm-%{ver}/html/"
+<Directory "%{_datadir}/doc/slurm-%{ver}/html/">
         AllowOverride None
         DirectoryIndex slurm.html
         # Controls who can get stuff from this server.
@@ -1036,52 +1045,24 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
    /srv/slurm-testsuite/slurm /srv/slurm-testsuite/shared \
    /srv/slurm-testsuite/config.h
 
-%{!?nil:
-# On update the %%postun code of the old package restarts the
-# service. This breaks in case the ABI between slurm and its
-# plugins has changed as updates are not atomic. Since we cannot
-# fix the old scripts we need these macros as a workaround.
-# They should be removed at some point.
-# Do pretrans in lua: https://fedoraproject.org/wiki/Packaging:Scriptlets
-}
-%define _test_rest() %{?nil:os.remove("/run/%{1}.rst")
- if os.execute() and os.getenv("YAST_IS_RUNNING") ~= "instsys" then
-  local handle = io.popen("systemctl is-active %{1} 2>&1")
-  local str = handle:read("*a"); handle:close()
-  str = string.gsub(str, '^%%s+', '')
-  str = string.gsub(str, '%%s+$', '')
-  str = string.gsub(str, '[\\n\\r]+', ' ')
-  if str == "active" then
-    local file = io.open("/run/%{1}.rst","w"); file:close()
-  end
- end
-}
-
-%define _rest() [ -e /run/%{1}.rst ] && { systemctl status %{1} &>/dev/null || systemctl restart %{1}; }; rm -f /run/%{1}.rst;
-
-%pretrans -p <lua>
-%_test_rest slurmctld
-
-%pretrans node -p <lua>
-%_test_rest slurmd
-
-%pretrans slurmdbd -p <lua>
-%_test_rest slurmdbd
+%if 0%{!?_restart_on_update:1}
+%define _restart_on_update() %{?nil: [ $1 -ge 1 ] && { DISABLE_RESTART_ON_UPDATE=no; \
+				       [ -e /etc/sysconfig/services ] && . /etc/sysconfig/services || : \
+				         case "$DISABLE_RESTART_ON_UPDATE" in \
+				           yes|1) ;; \
+				           *) /usr/bin/systemctl try-restart %{*} || : ;; \
+				         esac; } \
+			      }
+%endif
 
 %posttrans
 %_restart_on_update slurmctld
-%{!?nil: 4 bogus %_restart_on_update on SUSE:SLE-12-SP2:GA:Update}
-%_rest slurmctld
 
 %posttrans node
 %_restart_on_update slurmd
-%{!?nil: 4 bogus %_restart_on_update on SUSE:SLE-12-SP2:GA:Update}
-%_rest slurmd
 
 %posttrans slurmdbd
 %_restart_on_update slurmdbd
-%{!?nil: 4 bogus %_restart_on_update on SUSE:SLE-12-SP2:GA:Update}
-%_rest slurmdbd
 
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
 %define my_license %license

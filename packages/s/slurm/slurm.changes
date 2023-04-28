@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 17 19:16:40 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Web-configurator: changed presets to SUSE defaults.
+- If %_restart_on_update is no longer defined replace by own
+  macro.
+- Marked slurm-openlava, slurm-seff and slurm-sjstat noarch.
+- rpmlint:
+  * dropped some rpmlint filters which are no longer relevant.
+  * added/refreshed filters. For Details, see rpmlintrc.
+- Remove workaround to fix the restart issue in an Slurm package
+  described in bsc#1088693.
+  The Slurm version in this package as 16.05. Any attempt to
+  directly migrate to the current version is bound to fail
+  anyway.
+- Now require slurm-munge if munge authentication is installed.
+
+-------------------------------------------------------------------
 Fri Mar 31 07:37:01 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated to 23.02.1 with the following changes:
