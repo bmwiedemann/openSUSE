@@ -56,4 +56,12 @@
     <comment>update in sync with sip6</comment>
     <requestid>1064077</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7e7ea4f202ee0afd01abf2c9b3e463c</srcmd5>
+    <version>12.12.1</version>
+    <time>1682691727</time>
+    <user>dimstar_suse</user>
+    <comment>submit</comment>
+    <requestid>1083091</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 24 19:47:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 12.12.1
+  * Fixed the new handling of ctors with /Transfer/ annotated
+    arguments.
+
+-------------------------------------------------------------------
 Sun Jan 29 19:42:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to ABI version 12.11.1
