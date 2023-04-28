@@ -1,0 +1,42 @@
+From ca0d1a161dae70b6fc9a8f4802b1f3a998a350c2 Mon Sep 17 00:00:00 2001
+From: Joan Karadimov <joan.karadimov@gmail.com>
+Date: Fri, 15 Nov 2019 12:16:57 +0200
+Subject: [PATCH] Handle missing index/rindex functions in path.c
+
+---
+ configure.ac | 2 +-
+ src/path.c   | 8 ++++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 746342d..add5077 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,7 +35,7 @@ AC_CHECK_SIZEOF(int)
+ 
+ dnl check for library functions
+ AC_REPLACE_FUNCS(strdup getopt_long basename)
+-AC_CHECK_FUNCS(strrchr memmove memset strtoul)
++AC_CHECK_FUNCS(strrchr memmove memset strtoul index rindex)
+ AC_FUNC_VPRINTF
+ AC_FUNC_MALLOC
+ 
+diff --git a/src/path.c b/src/path.c
+index 2f85e19..b090e2f 100644
+--- a/src/path.c
++++ b/src/path.c
+@@ -35,6 +35,14 @@
+ #include "path.h"
+ #include "debug.h"
+ 
++#if !HAVE_RINDEX && HAVE_STRRCHR
++#  define rindex strrchr
++#endif
++
++#if !HAVE_INDEX
++#  define index strchr
++#endif
++
+ /* concatenates fname1 with fname2 to make a pathname, adds '/' as needed */
+ /* strips trailing '/' */
+ 

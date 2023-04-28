@@ -1,7 +1,7 @@
 #
 # spec file for package tnef
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,22 +22,24 @@ Release:        0
 Summary:        Uncompress MS-TNEF Archives
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
-URL:            https://github.com/verdammelt/tnef/
-Source:         https://github.com/verdammelt/tnef/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/verdammelt/tnef
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ca0d1a1.patch -- Handle missing index/rindex functions in path.c
+Patch:          %{url}/commit/ca0d1a1.patch
 BuildRequires:  libtool
 
 %description
 This tool uncompresses MS-TNEF archives as used by some mailers.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 if [ ! -x configure ]; then
 	autoreconf -fi
 fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

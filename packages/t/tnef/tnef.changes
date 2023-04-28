@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 06:19:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patchfix: ca0d1a1.patch: Handle missing index/rindex
+  functions in path.c
+- Use autosetup and make_build macros.
+
+-------------------------------------------------------------------
 Wed Sep 16 06:51:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.4.18:
