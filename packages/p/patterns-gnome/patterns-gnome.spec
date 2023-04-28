@@ -117,6 +117,7 @@ Recommends:     pattern() = x11_yast
 #
 # Official upstream
 #
+# bijiben == gnome-notes
 Recommends:     bijiben
 # no longer need to hard require cheese for g-c-c user panel
 Recommends:     cheese
@@ -193,10 +194,8 @@ Recommends:     file-roller
 Recommends:     gcr-viewer
 Recommends:     gnome-characters
 Recommends:     gnome-contacts
-Recommends:     gnome-dictionary
 Recommends:     gnome-logs
 Recommends:     gnome-maps
-Recommends:     gnome-screenshot
 Recommends:     gnome-system-monitor
 Recommends:     gnome-text-editor
 #
@@ -663,15 +662,14 @@ Requires:       pattern() = gnome_basis
 #
 # Official upstream
 #
-Recommends:     baobab
+# bijiben == gnome-notes
 Recommends:     bijiben
+Recommends:     baobab
 Recommends:     cheese
 Recommends:     file-roller
 Recommends:     gdk-pixbuf-thumbnailer
 Recommends:     gnome-calculator
 Recommends:     gnome-characters
-Recommends:     gnome-dictionary
-Recommends:     gnome-screenshot
 Recommends:     gnome-text-editor
 #
 # Packages that really make sense

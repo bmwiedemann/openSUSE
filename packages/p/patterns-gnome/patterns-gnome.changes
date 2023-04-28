@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 25 10:41:41 UTC 2023 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Delete archived applications (gnome-dictionary)
+- Remove gnome-screenshot recommendation (replaced by the new
+  screenshot tool in gnome-shell >= 42)
+
+-------------------------------------------------------------------
 Tue Apr 18 16:59:23 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pidgin and planner Recommends from openSUSE, only install by
@@ -14,7 +21,7 @@ Fri Apr 14 12:04:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Fri Oct 21 11:59:08 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Require at-spi2-core else risk major performance issues (boo#1204564) 
+- Require at-spi2-core else risk major performance issues (boo#1204564)
 
 -------------------------------------------------------------------
 Sat Oct 15 08:04:10 UTC 2022 - Milachew <milachew@mail.lv>
