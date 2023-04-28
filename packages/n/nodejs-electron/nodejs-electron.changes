@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 26 20:43:42 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.7
+  * Fixed an issue which made defaultFontFamily in webPreferences have no effect
+  * Fixed broken defaults in shell.openExternal() options.
+  * v8: Make Error.captureStackTrace() a no-op for global object (CVE-2023-2033)
+  * Blink: Use ScriptState::Scope instead of setting HandleScope. (CVE-2023-2133)
+  * Blink: Stop supporting { handleEvent }. (CVE-2023-2134)
+  * Dev tools: Retain DevToolsAgentHost after ForceDetachAllSessions() (CVE-2023-2135)
+  * Skia: Enforce program stack limits on function parameters (CVE-2023-2136)
+
+-------------------------------------------------------------------
 Wed Apr 26 16:58:54 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Disable thread_annotations-fix-build-with-system-abseil.patch on Tumbleweed to fix FTBFS with Abseil 20230125.
 
