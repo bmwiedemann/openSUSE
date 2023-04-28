@@ -1051,4 +1051,13 @@
   * drop unneeded -Wno-error=mismatched-new-delete</comment>
     <requestid>1079869</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>38f243b438097c4051c7df7380ae515a</srcmd5>
+    <version>2.8.0+git.20230428.7aaa251</version>
+    <time>1682691830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0+git.20230428.7aaa251:
+  * Bump to 2.8.0.</comment>
+    <requestid>1083436</requestid>
+  </revision>
 </revisionlist>
