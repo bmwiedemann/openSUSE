@@ -9016,7 +9016,6 @@ unsorted:
   - keychain 
   - keyd 
   - keylightctl 
-  - keylime-agent 
   - keyutils-devel 
   - keyutils-devel-32bit 
   - kf5-filesystem 
@@ -10460,6 +10459,7 @@ unsorted:
   - libXfont2-devel-32bit 
   - libXfontcache-devel 
   - libXfontcache-devel-32bit 
+  - libXfontcache1 
   - libXfontcache1-32bit 
   - libXft-devel 
   - libXft-devel-32bit 
@@ -14251,9 +14251,7 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
-  - libqt5-dwaylandplugin 
   - libqt5-dxcbplugin 
-  - libqt5-kwayland-shellplugin 
   - libqt5-linguist 
   - libqt5-linguist-devel 
   - libqt5-qt3d-devel 
@@ -19138,6 +19136,7 @@ unsorted:
   - octave-forge-symbolic 
   - octave-forge-tisean 
   - octave-forge-tsa 
+  - octave-forge-video 
   - octave-forge-vrml 
   - octave-mathgl 
   - octave-nlopt_optimize 
@@ -45978,6 +45977,7 @@ unsorted:
   - xslide 
   - xsm 
   - xsnow 
+  - xsnow-lang 
   - xsom 
   - xsom-javadoc 
   - xsp 

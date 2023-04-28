@@ -1521,7 +1521,6 @@
     <package name="libXfixes3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXfont1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXfont2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libXfontcache1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libXft2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXi6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libXinerama1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
