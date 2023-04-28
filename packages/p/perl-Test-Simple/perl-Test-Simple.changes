@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 21 03:09:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302194
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302194  2023-03-13 20:06:57-07:00 America/Los_Angeles
+
+      - Fix failing test on 5.10
+
+-------------------------------------------------------------------
 Tue Mar  7 03:09:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302193

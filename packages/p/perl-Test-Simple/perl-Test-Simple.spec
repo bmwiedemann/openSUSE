@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Simple
 Name:           perl-Test-Simple
-Version:        1.302193
+Version:        1.302194
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Basic utilities for writing tests
@@ -45,7 +45,7 @@ this one).
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
