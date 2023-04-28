@@ -24,15 +24,18 @@
 %bcond_with faac
 %bcond_with faad
 %bcond_with openh264
+%bcond_with voamrwbenc
 
 %if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
 %bcond_without avtp
 %bcond_without bs2b
 %bcond_without zbar
+%bcond_without voamrwbenc
 %else
 %bcond_with avtp
 %bcond_with bs2b
 %bcond_with zbar
+%bcond_with voamrwbenc
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
@@ -170,7 +173,9 @@ BuildRequires:  pkgconfig(sndfile) >= 1.0.16
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(spandsp) >= 0.0.6
 BuildRequires:  pkgconfig(srt)
+%if %{with voamrwbenc}
 BuildRequires:  pkgconfig(vo-amrwbenc) >= 0.1.0
+%endif
 # FIXME we do not have pkgconfig(storage_client) in openSUSE yet -- remove -Dgs=disabled
 # BuildRequires:  pkgconfig(storage_client)
 BuildRequires:  pkgconfig(vulkan)
@@ -800,6 +805,9 @@ export PYTHON=%{_bindir}/python3
 	-Dsctp=disabled \
 	-Dsvthevcenc=disabled \
 	-Dtinyalsa=disabled \
+%if %{without voamrwbenc}
+	-Dvoamrwbenc=disabled \
+%endif
 	-Dwasapi=disabled \
 	-Dwasapi2=disabled \
 	-Dwayland=enabled \
@@ -870,7 +878,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %dir %{_datadir}/gstreamer-%{gst_branch}/presets/
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstFreeverb.prs
-%{_datadir}/gstreamer-%{gst_branch}/presets/GstVoAmrwbEnc.prs
 %{_datadir}/appdata/gstreamer-plugins-bad.appdata.xml
 %{_libdir}/gstreamer-%{gst_branch}/libgstaccurip.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstadpcmdec.so
@@ -988,7 +995,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideoparsersbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideosignal.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvmnc.so
+%if %{with voamrwbenc}
+%{_datadir}/gstreamer-%{gst_branch}/presets/GstVoAmrwbEnc.prs
 %{_libdir}/gstreamer-%{gst_branch}/libgstvoamrwbenc.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstvulkan.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlv2.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenal.so

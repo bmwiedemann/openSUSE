@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 14:56:52 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Only build build vo-amrwbenc plugin on openSUSE, vo-amrwbenc
+  license is problematic for commercial use.
+
+-------------------------------------------------------------------
 Mon Apr 24 13:19:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing plugin in build_orig part of spec, BuildRequires
