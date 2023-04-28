@@ -4823,4 +4823,13 @@ I cannot test locally unfortunately.
     Bypass of file download extension restrictions</comment>
     <requestid>1078519</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>ea5560387003c1c4dd3bd898e2894783</srcmd5>
+    <version>102.10.1</version>
+    <time>1682691868</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.10.1
+  * https://www.thunderbird.net/en-US/thunderbird/102.10.1/releasenotes</comment>
+    <requestid>1083507</requestid>
+  </revision>
 </revisionlist>
