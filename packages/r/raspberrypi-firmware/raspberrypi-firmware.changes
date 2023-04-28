@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 27 08:15:55 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 543692d23 (2023-04-25):
+  * firmware: arm_loader: Set local-bd-address if 6 zeroes found
+  * firmware: arm_loader: Really check for a zero local-bd-address
+    See: raspberrypi/linux#5437
+  * firmware: arm_dt: Don't overwrite existing i2c aliases
+    See: raspberrypi/linux#5428
+  * firmware: arm_loader: Reduce CMA warning severity
+    See: #1807
+
+-------------------------------------------------------------------
 Wed Apr  5 14:08:02 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to c4122b870 (2023-03-22):

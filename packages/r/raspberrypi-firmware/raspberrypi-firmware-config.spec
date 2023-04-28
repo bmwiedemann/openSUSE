@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-config
-Version:        2023.03.22
+Version:        2023.04.25
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT
