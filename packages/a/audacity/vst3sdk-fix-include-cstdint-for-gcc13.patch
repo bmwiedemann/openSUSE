@@ -1,0 +1,13 @@
+Submodule public.sdk contains modified content
+diff --git a/public.sdk/source/vst/moduleinfo/moduleinfo.h b/public.sdk/source/vst/moduleinfo/moduleinfo.h
+index ecf528b..49f2827 100644
+--- a/public.sdk/source/vst/moduleinfo/moduleinfo.h
++++ b/public.sdk/source/vst/moduleinfo/moduleinfo.h
+@@ -39,6 +39,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ //------------------------------------------------------------------------
+ namespace Steinberg {

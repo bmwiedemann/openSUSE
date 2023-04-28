@@ -1,0 +1,13 @@
+Submodule public.sdk contains modified content
+diff --git a/public.sdk/source/vst/moduleinfo/moduleinfoparser.cpp b/public.sdk/source/vst/moduleinfo/moduleinfoparser.cpp
+index b49b471..c99b7e2 100644
+--- a/public.sdk/source/vst/moduleinfo/moduleinfoparser.cpp
++++ b/public.sdk/source/vst/moduleinfo/moduleinfoparser.cpp
+@@ -39,6 +39,7 @@
+ #include "jsoncxx.h"
+ #include "pluginterfaces/base/ipluginbase.h"
+ #include <stdexcept>
++#include <limits>
+ 
+ //------------------------------------------------------------------------
+ namespace Steinberg::ModuleInfoLib {

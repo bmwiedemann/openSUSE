@@ -2,8 +2,8 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/steinbergmedia/vst3sdk/</param>
-    <param name="revision">v3.7.6_build_18</param>
-    <param name="version">3.7.6_build_18</param>
+    <param name="revision">v3.7.7_build_19</param>
+    <param name="version">3.7.7_build_19</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">vst3sdk</param>
   </service>

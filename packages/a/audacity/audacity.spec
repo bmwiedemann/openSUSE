@@ -24,7 +24,7 @@
 %endif
 
 Name:           audacity
-Version:        3.2.5
+Version:        3.3.0
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -33,19 +33,17 @@ URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
-Source3:        vst3sdk-3.7.6_build_18.tar.xz
+Source3:        vst3sdk-3.7.7_build_19.tar.xz
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch1:         audacity-no_return_in_nonvoid.patch
 Patch2:         mod-script-pipe-disable-rpath.patch
-Patch3:         no-more-strip.patch
+Patch95:        vst3sdk-fix-include-cstdint-for-gcc13.patch
+Patch96:        vst3sdk-fix-limits-include-moduleinfoparser.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
-# Build with gcc12 until upstream catches up with gcc13
-#BuildRequires:  gcc-c++
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
@@ -115,7 +113,9 @@ physical memory size can be edited.
 
 %prep
 %setup -q -n %{name}-Audacity-%{version}
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
 # Make sure we use the system versions.
@@ -126,6 +126,8 @@ touch include/RevisionIdent.h
 
 %if %{with vst}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
+%patch95 -p1 -d vst3sdk
+%patch96 -p1 -d vst3sdk
 %endif
 
 %build
@@ -134,9 +136,6 @@ then
 export PKG_CONFIG_PATH="`echo $PWD`:%{_libdir}/pkgconfig"
 fi
 export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
-export CXXFLAGS="$CFLAGS -std=gnu++17"
-export CC="/usr/bin/gcc-12"
-export CXX="/usr/bin/g++-12"
 
 %cmake  \
        -DAUDACITY_REV_TIME=$(date -u -d "@${SOURCE_DATE_EPOCH}" "+%Y-%m-%dT%H:%M:%SZ") \
@@ -182,7 +181,7 @@ ldconfig %{_libdir}/%{name}
 
 %files
 %defattr(-,root,root)
-%doc README.txt
+%doc README.md
 %license LICENSE.txt LICENSE_NYQUIST.txt
 %{_bindir}/%{name}
 %{_libdir}/%{name}

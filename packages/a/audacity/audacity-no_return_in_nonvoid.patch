@@ -1,5 +1,5 @@
 diff --git a/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c b/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c
-index 8c1c7b5..e05c28d 100644
+index 8c1c7b5a8..e05c28dd9 100644
 --- a/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c
 +++ b/lib-src/libnyquist/nyquist/cmupv/src/cmupv.c
 @@ -600,6 +600,7 @@ double pv_get_effective_pos(Phase_vocoder x)
@@ -11,7 +11,7 @@ index 8c1c7b5..e05c28d 100644
  
  
 diff --git a/lib-src/libnyquist/nyquist/xlisp/xlbfun.c b/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
-index 37ab604..f434a67 100644
+index 37ab60479..f434a674d 100644
 --- a/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
 +++ b/lib-src/libnyquist/nyquist/xlisp/xlbfun.c
 @@ -603,7 +603,10 @@ LVAL xcleanup(void)
@@ -27,7 +27,7 @@ index 37ab604..f434a67 100644
  
  /* xtoplevel - special form 'top-level' */
 diff --git a/lib-src/portsmf/allegro.cpp b/lib-src/portsmf/allegro.cpp
-index a87117e..d471785 100644
+index a87117e38..d4717855a 100644
 --- a/lib-src/portsmf/allegro.cpp
 +++ b/lib-src/portsmf/allegro.cpp
 @@ -2905,6 +2905,9 @@ Alg_event_ptr &Alg_seq::operator[](int i)
@@ -39,16 +39,4 @@ index a87117e..d471785 100644
 +    // Ignores the assert A gcc bug?
  }
  #pragma warning(default: 4715)
- 
-diff --git a/src/widgets/NumericTextCtrl.cpp b/src/widgets/NumericTextCtrl.cpp
-index 9bd57e2..0e46c96 100644
---- a/src/widgets/NumericTextCtrl.cpp
-+++ b/src/widgets/NumericTextCtrl.cpp
-@@ -679,6 +679,7 @@ static const BuiltinFormatString BandwidthConverterFormats_[] = {
-          case NumericConverter::BANDWIDTH:
-             return WXSIZEOF(BandwidthConverterFormats_);
-       }
-+      return WXSIZEOF(BandwidthConverterFormats_);
-    }
- }
  

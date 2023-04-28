@@ -1023,4 +1023,12 @@ Remove spurious text from changes
     <comment>Use gcc12 to build until upstream has caught up with gcc13 and Update to 3.2.5</comment>
     <requestid>1077567</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>219b44fb57d7a44792910b922e28c276</srcmd5>
+    <version>3.3.0</version>
+    <time>1682691795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083301</requestid>
+  </revision>
 </revisionlist>
