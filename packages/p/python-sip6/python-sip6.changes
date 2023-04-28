@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 24 19:40:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.9
+  * The latest version of ABI v13 is v13.5.1.
+  * The latest version of ABI v12 is v12.12.1.
+  * Bug fixes.
+- Release v6.7.8 4th April 2023
+  * The latest version of ABI v13 is v13.5.0.
+  * The latest version of ABI v12 is v12.12.0.
+  * The 'wheel-includes' value of the 'tool.sip.project' section of
+    pyproject.toml now supports the use of absolute file patterns.
+  * Replaced the use of the 'toml' package with the standard library 'tomllib'
+    package for Python v3.11 and later, and the 'tomli' package for earlier
+    versions of Python.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

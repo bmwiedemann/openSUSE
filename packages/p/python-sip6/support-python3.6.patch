@@ -1,7 +1,7 @@
-Index: sip-6.7.5/PKG-INFO
+Index: sip-6.7.9/PKG-INFO
 ===================================================================
---- sip-6.7.5.orig/PKG-INFO
-+++ sip-6.7.5/PKG-INFO
+--- sip-6.7.9.orig/PKG-INFO
++++ sip-6.7.9/PKG-INFO
 @@ -9,7 +9,7 @@ License: SIP
  Platform: X11
  Platform: macOS
@@ -11,33 +11,33 @@ Index: sip-6.7.5/PKG-INFO
  License-File: LICENSE
  License-File: LICENSE-GPL3
  License-File: LICENSE-GPL2
-Index: sip-6.7.5/setup.py
+Index: sip-6.7.9/setup.py
 ===================================================================
---- sip-6.7.5.orig/setup.py
-+++ sip-6.7.5/setup.py
+--- sip-6.7.9.orig/setup.py
++++ sip-6.7.9/setup.py
 @@ -50,7 +50,7 @@ setup(
          name='sip',
          version=version,
          license='SIP',
 -        python_requires='>=3.7',
 +        python_requires='>=3.6',
-         install_requires=['packaging', 'ply', 'setuptools', 'toml'],
+         install_requires=['packaging', 'ply', 'setuptools',
+                 'tomli;python_version<"3.11"'],
          packages=find_packages(),
-         package_data={
-Index: sip-6.7.5/sipbuild/py_versions.py
+Index: sip-6.7.9/sipbuild/py_versions.py
 ===================================================================
---- sip-6.7.5.orig/sipbuild/py_versions.py
-+++ sip-6.7.5/sipbuild/py_versions.py
+--- sip-6.7.9.orig/sipbuild/py_versions.py
++++ sip-6.7.9/sipbuild/py_versions.py
 @@ -22,4 +22,4 @@
  
  
  # The oldest supported minor version of Python v3.
 -OLDEST_SUPPORTED_MINOR = 7
 +OLDEST_SUPPORTED_MINOR = 6
-Index: sip-6.7.5/sipbuild/module/source/12/setup.py.in
+Index: sip-6.7.9/sipbuild/module/source/12/setup.py.in
 ===================================================================
---- sip-6.7.5.orig/sipbuild/module/source/12/setup.py.in
-+++ sip-6.7.5/sipbuild/module/source/12/setup.py.in
+--- sip-6.7.9.orig/sipbuild/module/source/12/setup.py.in
++++ sip-6.7.9/sipbuild/module/source/12/setup.py.in
 @@ -40,6 +40,6 @@ setup(
          name='@SIP_MODULE_PROJECT_NAME@',
          version='@SIP_MODULE_VERSION@',
@@ -46,10 +46,10 @@ Index: sip-6.7.5/sipbuild/module/source/12/setup.py.in
 +        python_requires='>=3.6',
          ext_modules=[module]
       )
-Index: sip-6.7.5/sipbuild/module/source/12/sip.h.in
+Index: sip-6.7.9/sipbuild/module/source/12/sip.h.in
 ===================================================================
---- sip-6.7.5.orig/sipbuild/module/source/12/sip.h.in
-+++ sip-6.7.5/sipbuild/module/source/12/sip.h.in
+--- sip-6.7.9.orig/sipbuild/module/source/12/sip.h.in
++++ sip-6.7.9/sipbuild/module/source/12/sip.h.in
 @@ -24,8 +24,8 @@
  #include <Python.h>
  
@@ -61,10 +61,10 @@ Index: sip-6.7.5/sipbuild/module/source/12/sip.h.in
  #endif
  
  
-Index: sip-6.7.5/sipbuild/module/source/13/setup.py.in
+Index: sip-6.7.9/sipbuild/module/source/13/setup.py.in
 ===================================================================
---- sip-6.7.5.orig/sipbuild/module/source/13/setup.py.in
-+++ sip-6.7.5/sipbuild/module/source/13/setup.py.in
+--- sip-6.7.9.orig/sipbuild/module/source/13/setup.py.in
++++ sip-6.7.9/sipbuild/module/source/13/setup.py.in
 @@ -40,6 +40,6 @@ setup(
          name='@SIP_MODULE_PROJECT_NAME@',
          version='@SIP_MODULE_VERSION@',
@@ -73,10 +73,10 @@ Index: sip-6.7.5/sipbuild/module/source/13/setup.py.in
 +        python_requires='>=3.6',
          ext_modules=[module]
       )
-Index: sip-6.7.5/sipbuild/module/source/13/sip.h.in
+Index: sip-6.7.9/sipbuild/module/source/13/sip.h.in
 ===================================================================
---- sip-6.7.5.orig/sipbuild/module/source/13/sip.h.in
-+++ sip-6.7.5/sipbuild/module/source/13/sip.h.in
+--- sip-6.7.9.orig/sipbuild/module/source/13/sip.h.in
++++ sip-6.7.9/sipbuild/module/source/13/sip.h.in
 @@ -24,8 +24,8 @@
  #include <Python.h>
  

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sip6
-Version:        6.7.7
+Version:        6.7.9
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +55,7 @@ Requires:       python-dataclasses
 Requires:       python-packaging
 Requires:       python-ply
 Requires:       python-setuptools
-Requires:       python-toml
+Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Conflicts:      python-sip-impl
