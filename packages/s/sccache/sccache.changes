@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 27 23:52:52 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.4.2~2:
+  * Add experimental concurrent cache support
+  * nvcc: Correctly handle -ccbin argument given a directory
+  * version 0.4.2
+  * Improve the doc a bit
+  * Add support for -Xclang -fno-pch-timestamp
+  * Update to directories 5.0.0 and opendal 0.30.5 (#1716)
+  * Make `SCCACHE_S3_NO_CREDENTIALS` require a value of `true` (#1724)
+  * Add test for depfile flags for MSVC
+  * Tests for /Fp and /Yc with MSVC
+  * Add parsing for flags: Zm, Yc, sourceDependencies
+  * fix: rust coverage test meets compile error for missing debuginfo (#1740)
+  * Bump msrv to 1.65.0 (#1743)
+  * use authentication in webdav test
+  * Support authentication in WebDAV storage (#1608)
+  * Update `Cargo.lock`
+  * Disable trust-dns-resolver/dns-over-quic due to build failure on freeBSD
+  * Update `Cargo.lock`
+  * Use rustls for tls & trust-dns-resolver for dns resolution
+  * build(deps): bump once_cell from 1.17.0 to 1.17.1
+  * build(deps): bump async-trait from 0.1.66 to 0.1.68
+  * snap: allow classic in snap review
+  * snap: only do amd64
+  * snap: fix description
+  * snap: refer to why some arches are broken
+  * snap: drop the daemon
+  * ci: add snap workflows
+  * snap: refresh snap for `base: core22`
+  * build(deps): bump h2 from 0.3.15 to 0.3.17
+  * Add test for response file with CR instead of CRLF
+  * Fix Sccache Cannot Parse Response File that uses Carriage Returns Only on Windows #1726
+  * When failing on startup, give more debug information Closes: #1717
+
+-------------------------------------------------------------------
 Thu Apr 13 01:22:53 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1210346 - CVE-2023-26964 - hyper,h2: stream stacking when H2 processing HTTP2 RST_STREAM frames
