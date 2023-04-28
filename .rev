@@ -487,4 +487,12 @@
     <comment></comment>
     <requestid>1072377</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>4f732bf96d5557a06a6027a8d91bf92d</srcmd5>
+    <version>4.0.2</version>
+    <time>1682691884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-for-latest-qt-declarative.patch to fix boo#1210932</comment>
+    <requestid>1083503</requestid>
+  </revision>
 </revisionlist>

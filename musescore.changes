@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 28 08:39:34 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-for-latest-qt-declarative.patch to fix boo#1210932
+
+-------------------------------------------------------------------
 Thu Mar 16 10:21:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.2:
