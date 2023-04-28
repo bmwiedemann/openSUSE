@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 25 15:51:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.3.1
+  * Minor change on the help screen
+  * Refactor some loop in the processes function
+  * Replace json by ujson #2201
+  * Improvements on documentation, unit test and CI
+  * bump dependencies and web lib to address security 
+
+-------------------------------------------------------------------
 Mon Nov  7 20:12:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.3.0.4 

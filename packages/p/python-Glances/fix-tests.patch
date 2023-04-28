@@ -1,6 +1,7 @@
-diff -ur glances-3.2.7.orig/unitest-restful.py glances-3.2.7/unitest-restful.py
---- glances-3.2.7.orig/unitest-restful.py	2022-07-28 18:10:35.000000000 +0200
-+++ glances-3.2.7/unitest-restful.py	2022-07-28 20:22:43.516291302 +0200
+Index: glances-3.3.1/unitest-restful.py
+===================================================================
+--- glances-3.3.1.orig/unitest-restful.py
++++ glances-3.3.1/unitest-restful.py
 @@ -12,6 +12,7 @@
  
  import shlex
@@ -9,18 +10,19 @@ diff -ur glances-3.2.7.orig/unitest-restful.py glances-3.2.7/unitest-restful.py
  import time
  import numbers
  import unittest
-@@ -54,7 +55,7 @@
-         global pid
- 
-         print('INFO: [TEST_000] Start the Glances Web Server')
--        cmdline = "python -m glances -B localhost -w -p %s" % SERVER_PORT
-+        cmdline = "%s -m glances -B localhost -w -p %s" % (sys.executable, SERVER_PORT)
+@@ -58,7 +59,7 @@ class TestGlances(unittest.TestCase):
+         if os.path.isfile("./venv/bin/python"):
+             cmdline = "./venv/bin/python"
+         else:
+-            cmdline = "python"
++            cmdline = sys.executable
+         cmdline += " -m glances -B localhost -w -p %s" % SERVER_PORT
          print("Run the Glances Web Server on port %s" % SERVER_PORT)
          args = shlex.split(cmdline)
-         pid = subprocess.Popen(args)
-diff -ur glances-3.2.7.orig/unitest-xmlrpc.py glances-3.2.7/unitest-xmlrpc.py
---- glances-3.2.7.orig/unitest-xmlrpc.py	2022-07-28 18:10:35.000000000 +0200
-+++ glances-3.2.7/unitest-xmlrpc.py	2022-07-28 20:22:49.160260716 +0200
+Index: glances-3.3.1/unitest-xmlrpc.py
+===================================================================
+--- glances-3.3.1.orig/unitest-xmlrpc.py
++++ glances-3.3.1/unitest-xmlrpc.py
 @@ -13,6 +13,7 @@
  import json
  import shlex
@@ -28,13 +30,13 @@ diff -ur glances-3.2.7.orig/unitest-xmlrpc.py glances-3.2.7/unitest-xmlrpc.py
 +import sys
  import time
  import unittest
- 
-@@ -43,7 +44,7 @@
-         global pid
- 
-         print('INFO: [TEST_000] Start the Glances Web Server')
--        cmdline = "python -m glances -B localhost -s -p %s" % SERVER_PORT
-+        cmdline = "%s -m glances -s -p %s" % (sys.executable, SERVER_PORT)
+ import os
+@@ -47,7 +48,7 @@ class TestGlances(unittest.TestCase):
+         if os.path.isfile("./venv/bin/python"):
+             cmdline = "./venv/bin/python"
+         else:
+-            cmdline = "python"
++            cmdline = sys.executable
+         cmdline += " -m glances -B localhost -s -p %s" % SERVER_PORT
          print("Run the Glances Server on port %s" % SERVER_PORT)
          args = shlex.split(cmdline)
-         pid = subprocess.Popen(args)

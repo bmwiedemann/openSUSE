@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glances
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         skip_python2 1
 Name:           python-Glances
-Version:        3.3.0.4
+Version:        3.3.1
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module psutil >= 5.3.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module ujson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bottle
@@ -44,6 +45,7 @@ Requires:       python-defusedxml
 Requires:       python-future
 Requires:       python-psutil >= 5.3.0
 Requires:       python-requests
+Requires:       python-ujson
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-curses
@@ -124,6 +126,9 @@ export LANG=en_US.UTF-8
 %python_alternative %{_mandir}/man1/glances.1%{?ext_man}
 %{python_sitelib}/glances
 %{python_sitelib}/Glances-%{version}*-info
+%exclude %{python_sitelib}/glances/outputs/static/.eslintrc.js
+%exclude %{python_sitelib}/glances/outputs/static/.gitignore
+%exclude %{python_sitelib}/glances/outputs/static/.prettierrc.js
 
 %files -n glances-common
 %dir %{_prefix}/lib/firewalld

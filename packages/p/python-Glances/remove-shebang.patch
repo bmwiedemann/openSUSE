@@ -1,7 +1,7 @@
-diff --git a/glances/__main__.py b/glances/__main__.py
-index 197d5ce..3889719 100644
---- a/glances/__main__.py
-+++ b/glances/__main__.py
+Index: glances-3.3.1/glances/__main__.py
+===================================================================
+--- glances-3.3.1.orig/glances/__main__.py
++++ glances-3.3.1/glances/__main__.py
 @@ -1,4 +1,3 @@
 -#!/usr/bin/env python
  # -*- coding: utf-8 -*-
