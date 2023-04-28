@@ -158,4 +158,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>1076413</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5bfc10a39efb1f68c43590862da6960f</srcmd5>
+    <version>4.39.3</version>
+    <time>1682691772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083300</requestid>
+  </revision>
 </revisionlist>
