@@ -868,4 +868,36 @@
   * chore(deps): bump github.com/docker/docker (#3963)</comment>
     <requestid>1079785</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ef0e16b56ebcee9d5a168b125018e17c</srcmd5>
+    <version>0.41.0</version>
+    <time>1682691834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.41.0:
+  * fix(spdx): add workaround for no src packages (#4118)
+  * test(golang): rename broken go.mod (#4129)
+  * feat(sbom): add supplier field (#4122)
+  * test(misconf): skip downloading of policies for tests #4126
+  * refactor: use debug message for post-analyze errors (#4037)
+  * feat(sbom): add VEX support (#4053)
+  * feat(sbom): add primary package purpose field for SPDX (#4119)
+  * fix(k8s): fix quiet flag (#4120)
+  * fix(python): parse of pip extras (#4103)
+  * feat(java): use full path for nested jars (#3992)
+  * feat(license): add new flag for classifier confidence level (#4073)
+  * feat: config and fs compliance support (#4097)
+  * chore(deps): bump sigstore/cosign-installer from 2.8.1 to 3.0.1 (#3952)
+  * feat(spdx): add support for SPDX 2.3 (#4058)
+  * fix: k8s all-namespaces support (#4096)
+  * perf(misconf): replace with post-analyzers (#4090)
+  * fix(helm): update networking API version detection (#4106)
+  * feat(image): custom docker host option (#3599)
+  * style: debug flag is incorrect and needs extra - (#4087)
+  * docs(vuln): Document inline vulnerability filtering comments (#4024)
+  * feat(fs): customize error callback during fs walk (#4038)
+  * fix(ubuntu): skip copyright files from subfolders (#4076)
+  * docs: restructure scanners (#3977)
+  * fix: fix `file does not exist` error for post-analyzers (#4061)</comment>
+    <requestid>1083465</requestid>
+  </revision>
 </revisionlist>
