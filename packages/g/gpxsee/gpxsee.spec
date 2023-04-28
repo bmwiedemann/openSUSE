@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        12.4
+Version:        13.0
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -112,12 +112,12 @@ install -d 755 %{buildroot}/%{_datadir}/mime/packages
 install -d 755 %{buildroot}/%{_datadir}/metainfo
 install -d 755 %{buildroot}/%{_datadir}/%{name}
 install -d 755 %{buildroot}/%{_datadir}/%{name}/maps
-install -d 755 %{buildroot}/%{_datadir}/%{name}/csv
+install -d 755 %{buildroot}/%{_datadir}/%{name}/CRS
 install -d 755 %{buildroot}/%{_datadir}/%{name}/translations
 install -d 755 %{buildroot}/%{_datadir}/%{name}/symbols
 install -m 755 gpxsee %{buildroot}/%{_bindir}/%{name}
 install -m 644 data/maps/* %{buildroot}/%{_datadir}/%{name}/maps
-install -m 644 data/csv/* %{buildroot}/%{_datadir}/%{name}/csv
+install -m 644 data/CRS/* %{buildroot}/%{_datadir}/%{name}/CRS
 install -m 644 lang/*.qm %{buildroot}/%{_datadir}/%{name}/translations
 install -m 644 icons/symbols/*.png %{buildroot}/%{_datadir}/%{name}/symbols
 cp -r icons/app/hicolor/* %{buildroot}/%{_datadir}/icons/hicolor

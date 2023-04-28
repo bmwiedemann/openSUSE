@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 27 23:56:20 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.0
+  * Reworked coordinate reference systems (CRS) handling.
+  * Improved Mapsforge maps rendering performance.
+  * Minor fixes.
+
+-------------------------------------------------------------------
 Mon Apr 10 18:43:06 CEST 2023 - tumic@cbox.cz
 
 - Update to version 12.4
