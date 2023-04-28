@@ -214,4 +214,12 @@
   * gh#python-lsp/python-lsp-server#346 (forwarded request 1060981 from bnavigator)</comment>
     <requestid>1060982</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>020c231143f24f1a4665652c026c7eb5</srcmd5>
+    <version>1.7.2</version>
+    <time>1682691805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083326</requestid>
+  </revision>
 </revisionlist>

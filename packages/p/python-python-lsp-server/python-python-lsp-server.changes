@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 27 15:15:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.2
+  * Initializes LSP progress token before using it and remove
+    progress for sync plugins.
+  * Adds support for pydocstyle 6.3
+  * Adds support for autopep8 2
+- Drop pylsp-pr340-pydocstyle-6.3.patch
+- Drop pylsp-pr345-autopep8-2.patch
+
+-------------------------------------------------------------------
 Wed Jan 25 16:28:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Allow 1.6.0 <= autopep8 < 2.1
