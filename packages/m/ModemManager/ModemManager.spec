@@ -1,7 +1,7 @@
 #
 # spec file for package ModemManager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,33 +20,35 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.18.12
+Version:        1.20.6
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://cgit.freedesktop.org/ModemManager/ModemManager
-Source0:        https://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://www.freedesktop.org/software/%{name}/%{name}-%{version}.tar.xz.asc
-Source2:        %{name}.keyring
+Source0:        https://gitlab.com/linux-mobile-broadband/ModemManager/-/archive/%{version}/%{name}-%{version}.tar.bz2
+
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgudev-1_0-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
 BuildRequires:  python3-dbus-python
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  vala-devel >= 0.18
+BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libsystemd) >= 209
-BuildRequires:  pkgconfig(mbim-glib) >= 1.24.0
+BuildRequires:  pkgconfig(mbim-glib) >= 1.28.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
-BuildRequires:  pkgconfig(qmi-glib) >= 1.26.0
+BuildRequires:  pkgconfig(qmi-glib) >= 1.32.0
 BuildRequires:  pkgconfig(qrtr-glib)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -104,33 +106,28 @@ This package contain the bash completion command for nmcli tools.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 pppddir=`ls -1d %{_libdir}/pppd/2*`
 test -n "$pppddir" || exit 1
-%configure \
-	--disable-static \
-	--with-polkit \
-	--with-systemd-journal \
-	--with-systemd-suspend-resume=yes \
-	--with-udev-base-dir=%{_udevdir} \
-	--with-dbus-sys-dir=%{_datadir}/dbus-1/system.d \
-	--with-qmi \
-	--with-qrtr \
-	--with-mbim \
+%meson \
+	-Dudevdir='%{_udevdir}' \
+	-Ddbus_policy_dir='%{_datadir}/dbus-1/system.d' \
+	-Dsystemdsystemunitdir='%{_unitdir}' \
+	-Dvapi=true \
+	-Dpolkit=permissive \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 # create suse-specific rcFOO link
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %find_lang ModemManager %{name}.lang
 
 %check
-#%%make_build check
+%meson_test
 
 %pre
 %service_add_pre ModemManager.service
@@ -145,8 +142,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %postun
 %service_del_postun ModemManager.service
 
-%post -n libmm-glib0 -p /sbin/ldconfig
-%postun -n libmm-glib0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmm-glib0
 
 %files
 %license COPYING

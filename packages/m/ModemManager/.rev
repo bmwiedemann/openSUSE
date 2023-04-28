@@ -778,4 +778,247 @@
     <comment></comment>
     <requestid>1009309</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b6dd708a88fff47c6ba5ef46fd0f52c3</srcmd5>
+    <version>1.20.6</version>
+    <time>1682691785</time>
+    <user>dimstar_suse</user>
+    <comment>Please put in staging with libmbim (Staging:E atm)! - Will not build if not.
+
+- Update to version 1.20.6:
+  + build: New build option to allow disabling the installation of
+    examples.
+  + core:
+    - Fix crash when uninhibiting partially removed device.
+    - Fix crash when attempting to load an invalid shared utils
+      library.
+  + mmcli:
+    - Allow JSON and key/value output when creating SMS messages.
+    - Improved JSON output in network scan results.
+  + libmm-glib:
+    - Avoid using g_time_zone_new_offset() unless glib &gt;= 2.58.
+    - Fix flags to string conversion utils to allow multiple flags.
+  + MBIM:
+    - Reset cached SIM info when SIM is unlocked.
+    - Fix synchronizing the state of the SIM hot swap configured
+      flag.
+    - Fix bug cleaning up the LTE attach info unsolicited message
+      handler.
+    - Fallback from QMI UIM service only if unsupported.
+    - Add missing support for 'emergency' APN type.
+  + QMI:
+    - Fix processing and exposing PCOs.
+    - Fix power up on modems that don't support power state change
+      indications.
+  + plugins:
+    - telit:
+      . add additional support for 5G modems.
+      . added port type hints for FN990 0x1070, 0x1071
+        compositions.
+      . increase allowed initial delay in AT ports.
+      . fallback to AT commands if loading revision via MBIM fails.
+    - quectel: add support for EC21-EUX usb modules.
+    - xmm: fix crash parsing XACT? response.
+- Changes from version 1.20.4:
+  + build:
+    - Don't hardcode building shared libraries, so that meson's
+      default_library option can be used properly,
+    - po: Added missing Georgian translation in LINGUAS.
+  + QMI:
+    - Fixed loading NR5G signal info.
+    - Fixed memory leaks when processing signal info.
+    - Correctly scaled the SNR value reported in NR5G.
+    - Fixed invalid use-after-free actions due to improper handling
+      of proxy removal events.
+  + MBIM:
+    - Fixed processing MbimSmsStatusFlag as flags, not as an enum.
+    - Fixed invalid use-after-free actions due to improper handling
+      of proxy removal events.
+    - Chained up device notifications through the MMPortMbim
+      object.
+  + Messaging: Allowed Delete operation during enabling/disabling.
+  + Core: Don't assume port tables always exist so that
+    long-standing operations holding an object reference can finish
+    cleanly even after the initial object disposal has already been
+    run.
+  + plugins:
+    - quectel: added new firehose/sahara support udev tags in new
+      models.
+    - broadmobi: added MM_PLUGIN_REQUIRED_QCDM flag.
+    - cinterion:
+      . added a delay to the ^SWWAN? command.
+      . added retry mechanism to the ^SWWAN? command.
+- Changes from version 1.20.2:
+  + build:
+    - Fixed building without MBIM support.
+    - Fixed building without tests support.
+    - Disabled test interface in base manager if building without
+      tests.
+    - Updated intel plugin dependencies to require XMM shared
+      utils.
+    - Fixed templates to make build reproducible.
+  + FCC unlock: Updated shell scripts to avoid requiring bash.
+  + MBIM:
+    - Ignored SIM related indications during a SIM slot switch
+      operation.
+    - Updated capabilities loading to use Microsoft Extensions if
+      available.
+    - Updated supported modes loading to use the CustomDataClass
+      field contents.
+  + SIM: Fixed length when reading GID1/GID2 using AT commands.
+  + Several other minor improvements and fixes.
+- Changes from version 1.20.0:
+  + API:
+    - New 'Modem.Sar' interface to allow the host to manage the SAR
+      power level.
+    - New 'Modem.GetCellInfo()' method, that allows querying
+      information about the current serving and neighboring cells.
+      Currently including 'cell-type' and 'serving' fields for all
+      cell types, plus additional type-specific fields:
+      . CDMA: 'nid', 'sid', 'base-station-id', 'ref-pn' and
+        'pilot-strength'.
+      . GSM: 'operator-id', 'lac', 'ci', 'timing-advance', 'arfcn',
+        'base-station-id' and 'rx-level'.
+      . UMTS: 'operator-id', 'lac', 'ci', 'frequency-fdd-ul',
+        'frequency-fdd-dl', 'frequency-tdd', 'uarfcn', 'psc',
+        'rscp', 'ecio' and 'path-loss'.
+      . TDSCDMA: 'operator-id', 'lac', 'ci', 'uarfcn',
+        'cell-parameter-id', 'timing-advance', 'rscp' and
+        'path-loss'.
+      . LTE: 'operator-id', 'tac', 'ci', 'physical-ci', 'earfcn',
+        'rsrp', 'rsrq' and 'timing-advance'.
+      . 5GNR: 'operator-id', 'tac', 'ci', 'physical-ci', 'nrarfcn',
+        'rsrp', 'rsrq', 'sinr' and 'timing-advance'.
+    - New 'access-type-preference', 'roaming-allowance',
+      'profile-name', 'profile-enabled' and 'profile-source'
+      fields in the 'Bearer.Properties' property, that can also be
+      used in both 'Modem.Simple.Connect()' and
+      'Modem.CreateBearer()'.
+    - New 'Modem.Modem3gpp.SetPacketServiceState()' method and
+      'Modem.Modem3gpp.PacketServiceState' property, which allow
+      management the explicit attach or detach to packet service on
+      the current registered network.
+    - New 'Modem.Modem3gpp.SetNr5gRegistrationSettings()' method
+      and 'Modem.Modem3gpp.Nr5gRegistrationSettings' property, to
+      allow management of 5G specific settings like 'mico-mode' or
+      'drx-cycle'.
+    - New 'start-date', 'uplink-speed' and 'downlnk-speed' fields
+      in the 'Bearer.Stats' property.
+    - New 'Bearer.ReloadStatsSupported' property to indicate
+      whether reloading ongoing stats is supported or not.
+    - New 'Modem.Modem3gppProfileManager.IndexField' property, to
+      indicate which field is to be used as unique index in the
+      profile management operations.
+    - New 'Sim.SimType', 'Sim.EsimStatus' and 'Sim.Removability'
+      properties to improve the management of eSIM related
+      operations.
+    - New 'Sim.Gid1' and 'Sim.Gid2' properties, which allow
+      identifying SIM cards that should have different settings
+      applied.
+    - New 'Modem.Signal.SetupThresholds() method,
+      'Modem.Signal.RssiThreshold' and
+      'Modem.Signal.ErrorRateThreshold' to allow configuring
+      thresholds so that the modem emits indications whenever the
+      signal quality values change based on those thresholds. For
+      RSSI a delta amount of dBm can be given, and for error rate
+      just a boolean to enable or disable the corresponding event.
+    - New 'error-rate' fields in the 'Modem.Signal.Cdma',
+      'Modem.Signal.Evdo', 'Modem.Signal.Gsm', 'Modem.Signal.Umts',
+      'Modem.Signal.Lte' and 'Modem.Signal.Nr5g' properties.
+  + Core:
+    - Detecting an eSIM without an active profile in the current
+      SIM slot will lead to the modem being in Failed state, in the
+      same way as if the slot was for a physical SIM and no SIM was
+      inserted.
+    - Default amount of AT probing attempts is updated to 6, to
+      cope with modems that are slower to boot.
+    - New '--test-mbimex-profile-management' option in the daemon,
+      to enable support for profile management operations using the
+      Microsoft extensions. This is an optional feature because it
+      requires using the 'apn-type' field as unique index, which
+      not all users of the profile management API may expect.
+    - Implemented some initial support to automatically hide
+      personal details (e.g. phone numbers, SMS contents...) from
+      logs, right now only applicable to QMI and MBIM logs. Updated
+      support for this feature will keep on being integrated in
+      future 1.20.x updates. The new '--log-personal-info' option
+      in the daemon allows to disable this feature completely.
+    - Added new filter match option for subsystem vendor id,
+      required in several PCI based Qualcomm modules.
+    - QCDM port probing will no longer automatically run for all
+      plugins, only in those that explicitly require it.
+    - Implemented support for suspend/resume detection based on
+      ChromeOS' powerd daemon.
+    - Added Cat-M and NB-IoT LPWA access technologies.
+  + Modem interface: On 3GPP+3GPP2 multimode devices, a missing SIM
+    card will now force the modem into Failed state, as if it was a
+    3GPP-only device.
+  + Simple interface: Explicitly wait for PS domain to be attached
+    during a connection attempt.
+  + 3GPP interface: Updated to report domain registration changes
+    altogether whenever possible (e.g. when using the QMI or MBIM
+    protocols).
+  + MBIM:
+    - Implemented support to use the Microsoft-defined MBIM
+      extensions v2 and v3 whenever supported by the device. The
+      ModemManager daemon will negotiate which version to use with
+      the modem, so that the highest version supported is enabled.
+      This negotiation applies to the whole device, so any other
+      user of the MBIM device will automatically start using the
+      newly agreed version.
+    - Implemented current modes switching using MBIMEx v2.0
+      extensions.
+    - Trigger explicit disconnection if a connection attempt fails.
+    - Modem will be flagged as unusable if 10 consecutive MBIM
+      requests timeout.
+    - Enabled multiplex support for devices in the WWAN subsystem.
+  + QMI:
+    - Updated logic to by default prefer 'Signal Info' over the
+      deprecated 'Signal Strength' operations.
+    - Updated logic to by default prefer 'System Info' over the
+      deprecated 'Serving System' operations.
+    - Updated power state transition logic to ensure the new state
+      is reached before returning success to the user.
+    - Implemented support for the 'Modem3gppProfileManager.Updated'
+      signal using PDC refresh notifications.
+    - Modem will be flagged as unusable if 10 consecutive QMI
+      requests timeout.
+    - Implemented DTMF support.
+    - Implemented support for automatic SIM IMSI switch detection
+      under certain roaming scenarios.
+    - Updated the logic to move the PS domain state to 'registered'
+      based on the DSD System Status indications.
+    - Updated endpoint type detection logic to be based on the net
+      driver.
+    - Updated endpoint number selection to be based on the data
+      port.
+    - Updated connection logic to allocate separate WDS clients per
+      endpoint.
+    - Added support for PCO reporting.
+  + plugins:
+    - quectel: Added FCC unlock support for the EM05-G.
+    - telit:
+      . Band management updated to prefer using QMI whenever
+        available, as well as to detect the #BND command format
+        automatically.
+      . Added support for LPWA modems.
+    - fibocom:
+      . Implemented optional support to power down and up the modem
+        during the update of the initial EPS bearer settings.
+      . Implemented initial EPS bearer settings management in the
+        MA510.
+    - intel: New generic plugin for Intel PCI devices with vid
+      0x8086.
+    - xmm: Prefer GNSS control ports explicitly tagged via udev
+      tags.
+    - foxconn: Use the new FOX QMI service to load firmware
+      version.
+    - cinterion: Added support for PCIe based devices.
+- Use ldconfig_scriptlets macro.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Add xsltproc and pkgconfig(bash-completion) BuildRequires: New
+  dependencies.
+</comment>
+    <requestid>1083319</requestid>
+  </revision>
 </revisionlist>
