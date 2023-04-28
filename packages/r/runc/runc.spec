@@ -18,13 +18,13 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 0f48801a0e21e3f0bc4e74643ead2a502df4818d
-%define git_short   0f48801a0e21
+%define git_version 860f061b76bb4fc671f0f9e900f7d80ff93d4eb7
+%define git_short   860f061b76bb
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -33,6 +33,7 @@ URL:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz#/runc-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{version}/runc.tar.xz.asc#/runc-%{version}.tar.xz.asc
 Source2:        runc.keyring
+BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  go
 BuildRequires:  go-go-md2man
@@ -69,6 +70,15 @@ and has grown to become a separate project entirely.
 make BUILDTAGS="seccomp" COMMIT="%{git_describe}" runc
 # build man pages
 man/md2man-all.sh
+
+# make sure that our keyring copy is identical to upstream.
+our_keyring=$(sha256sum <"%{SOURCE2}")
+src_keyring=$(sha256sum <runc.keyring)
+if [ "$our_keyring" != "$src_keyring" ]; then
+	echo "keyring file doesn't match upstream"
+	diff -u "%{SOURCE2}" runc.keyring
+	exit 1
+fi
 
 %install
 # We install to /usr/sbin/runc as per upstream and create a symlink in /usr/bin
