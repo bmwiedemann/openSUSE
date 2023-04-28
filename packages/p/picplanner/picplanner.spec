@@ -1,7 +1,7 @@
 #
 # spec file for package picplanner
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           picplanner
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        A GTK application for photographers using GNU Linux or especially Linux phones
 License:        GPL-3.0-or-later

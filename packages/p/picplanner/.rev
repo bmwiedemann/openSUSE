@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1040518</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d1f71f8cc66c74b3cd26522afb6e4c6</srcmd5>
+    <version>0.4.0</version>
+    <time>1682691862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Touch screen related fixes.
+</comment>
+    <requestid>1083491</requestid>
+  </revision>
 </revisionlist>
