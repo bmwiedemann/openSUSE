@@ -142,4 +142,12 @@
 </comment>
     <requestid>1080076</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b230526b7d4ad5de40f534b75363d015</srcmd5>
+    <version>0.11.7</version>
+    <time>1682691741</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083125</requestid>
+  </revision>
 </revisionlist>

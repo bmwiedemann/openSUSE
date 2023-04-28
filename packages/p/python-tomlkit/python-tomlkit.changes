@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 25 15:22:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Tue Apr 18 06:47:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't add dependency on full poetry, when poetry-core is enough.

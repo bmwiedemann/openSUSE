@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-tomlkit
 Version:        0.11.7
 Release:        0
