@@ -1,7 +1,7 @@
 #
 # spec file for package ffnvcodec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ffnvcodec
-Version:        11.1.5.1
+Version:        11.1.5.2
 Release:        0
 Summary:        FFmpeg version of NVIDIA codec API headers
 License:        MIT
