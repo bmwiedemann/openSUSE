@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 25 08:42:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to 1.7.0:
+  * dtc
+    * Fix -Oasm output on PA-RISC by avoiding ';' separators
+    * Put symbolic label references in -Odts output when possible
+    * Add label relative path references
+    * Don't incorrectly attempt to create fixups for reference to path
+      in overlays
+    * Warning rather than hard error if integer expression results are
+      truncated due to cell size
+  * libfdt
+    * Add fdt_get_property_by_offset_w() function
+  * pylibfdt
+    * Fixed to work with Python 3.10
+    * A number of extra methods
+    * Fix out of tree build
+  * fdtget
+    * Add raw bytes output mode
+  * General
+    * Fixes for mixed-signedness comparison warnings
+    * Assorted other warning fixes
+    * Assorted updates to checks
+    * Assorted bugfixes
+    * Fix scripts to work with dash as well as bash
+    * Allow static builds
+    * Formalize Signed-off-by usage
+- Update dtc.keyring
+- Drop upstream patch:
+  * makefile-bison-rule.patch
+
+-------------------------------------------------------------------
 Mon Sep 26 07:37:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - makefile-bison-rule.patch: Makefile: fix infinite recursion by dropping

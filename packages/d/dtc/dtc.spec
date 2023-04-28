@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
@@ -26,8 +26,8 @@ URL:            https://github.com/dgibson/dtc
 Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.gz
 Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.sign
 Source20:       baselibs.conf
+# From http://gibson.dropbear.id.au/
 Source21:       dtc.keyring
-Patch0:         makefile-bison-rule.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
@@ -60,7 +60,6 @@ This package provides development files for libfdt
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %make_build EXTRA_CFLAGS="%{optflags} -pie" LDFLAGS="%{optflags}"
