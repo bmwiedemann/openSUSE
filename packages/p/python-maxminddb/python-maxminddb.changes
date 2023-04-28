@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:28:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Mon Mar 28 06:27:00 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
