@@ -86,4 +86,12 @@ via the virtual console or network interface.</comment>
     <comment></comment>
     <requestid>1082118</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>39061197506db9ac80cf70f016e82ad8</srcmd5>
+    <version>2.0.7.0</version>
+    <time>1682691831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083435</requestid>
+  </revision>
 </revisionlist>

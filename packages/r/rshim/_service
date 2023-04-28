@@ -6,8 +6,7 @@
                 <param name="scm">git</param>
                 <param name="url">https://github.com/Mellanox/rshim-user-space.git</param>
                 <param name="filename">rshim</param>
-                <param name="versionrewrite-pattern">rshim-(.*)-(.*)</param>
-                <param name="versionrewrite-replacement">\1.\2</param>
+                <param name="versionrewrite-pattern">rshim-(.*)</param>
                 <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
         </service>
         <service mode="disabled" name="set_version" />

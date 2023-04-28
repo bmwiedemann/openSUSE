@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 21 17:49:44 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- Update service to new tag format
+- update to 2.0.7
+  * adjust reset delay
+  * avoid leak the file descriptor for /dev/uio 
+
+-------------------------------------------------------------------
 Thu Mar 16 11:18:48 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 2.0.6.19.2
