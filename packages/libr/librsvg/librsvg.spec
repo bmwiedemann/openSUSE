@@ -16,8 +16,6 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
 # Don't forget to update this in baselibs.conf too!
 %define librsvg_sover 2
 
@@ -25,7 +23,7 @@ Name:           librsvg
 Version:        2.56.0
 Release:        0
 Summary:        A Library for Rendering SVG Data
-License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source:         %{name}-%{version}.tar.xz
@@ -142,7 +140,7 @@ mkdir .cargo
 cp %{SOURCE3} .cargo/config
 
 %build
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-static\
@@ -152,13 +150,14 @@ NOCONFIGURE=1 ./autogen.sh
 %make_build
 
 %install
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # %%doc is used to package such contents
 rm -rf %{buildroot}%{_datadir}/doc/%{name}/CO*.md
 
 %check
+export RUSTFLAGS="%{__rustflags}"
 %ifarch x86_64 %{?x86_64}
 # 2023-01-15: the pdf-related tests are failing (bsc#1207167)
 # 2023-03-17 cairo-1.17.8 filter_morphology svg test is failing

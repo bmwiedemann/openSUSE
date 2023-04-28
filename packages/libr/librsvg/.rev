@@ -1060,4 +1060,12 @@
     <comment> (forwarded request 1072794 from iznogood)</comment>
     <requestid>1073190</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>466d8929e5180148daa24f3bf36554fa</srcmd5>
+    <version>2.56.0</version>
+    <time>1682691762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083287</requestid>
+  </revision>
 </revisionlist>
