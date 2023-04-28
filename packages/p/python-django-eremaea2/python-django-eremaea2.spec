@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-eremaea2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!pythons:%define pythons %{?!skip_python2:python2} %{?!skip_python3:python3}}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-eremaea2
 Version:        2.0.17
@@ -26,6 +24,8 @@ Summary:        A simple Django application to store and show webcam snapshots
 License:        BSD-2-Clause
 URL:            https://github.com/matwey/django-eremaea2
 Source:         https://files.pythonhosted.org/packages/source/d/django-eremaea2/django-eremaea2-%{version}.tar.gz
+# https://github.com/matwey/django-eremaea2/issues/14
+Patch0:         python-django-eremaea2-no-six.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 1.10}
@@ -34,12 +34,13 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module django-dj-inmemorystorage}
 BuildRequires:  %{python_module djangorestframework >= 3.7.0}
 BuildRequires:  %{python_module pytest-django}
+# https://github.com/matwey/django-eremaea2/issues/15
 BuildRequires:  %{python_module python-magic}
 BuildRequires:  %{python_module requests-mock}
+# https://github.com/matwey/django-eremaea2/issues/15
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       eremaea = %{version}
@@ -49,7 +50,6 @@ Requires:       python-djangorestframework >= 3.7.0
 Requires:       python-magic
 Requires:       python-requests
 Requires:       python-requests-toolbelt
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
@@ -68,7 +68,7 @@ Requires:       /usr/bin/eremaeactl
 This package contains the systemd unit files for python-django-eremaea2.
 
 %prep
-%setup -q -n django-eremaea2-%{version}
+%autosetup -p1 -n django-eremaea2-%{version}
 
 %build
 %python_build
@@ -116,7 +116,7 @@ export PYTHONPATH=$(pwd)
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/eremaeactl
-%{python_sitelib}/*
+%{python_sitelib}/*eremaea*
 
 %files -n eremaea
 %defattr(-,root,root,-)

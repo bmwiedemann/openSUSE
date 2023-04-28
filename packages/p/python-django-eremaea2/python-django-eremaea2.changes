@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 28 09:01:06 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/matwey/django-eremaea2/issues/14
+  + python-django-eremaea2-no-six.patch
+
+-------------------------------------------------------------------
 Tue Mar 29 05:18:28 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded Build-Requires on mock.

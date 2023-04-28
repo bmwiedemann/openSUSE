@@ -1,0 +1,74 @@
+Index: django-eremaea2-2.0.17/eremaea/ctl/file.py
+===================================================================
+--- django-eremaea2-2.0.17.orig/eremaea/ctl/file.py
++++ django-eremaea2-2.0.17/eremaea/ctl/file.py
+@@ -1,6 +1,5 @@
+ from collections import namedtuple
+-from six import Iterator
+-from six.moves.urllib.parse import urlparse
++from urllib.parse import urlparse
+ import os.path
+ import mimetypes
+ import requests
+@@ -9,7 +8,7 @@ from requests_toolbelt.auth.guess import
+ 
+ File = namedtuple("File", ("name", "mimetype", "content"))
+ 
+-class Stream(Iterator):
++class Stream:
+ 	def __init__(self, url):
+ 		self._url = url
+ 
+@@ -21,7 +20,7 @@ class Stream(Iterator):
+ 
+ class LocalFileStream(Stream):
+ 	def __init__(self, url):
+-		super(LocalFileStream, self).__init__(url)
++		super().__init__(url)
+ 
+ 	def __next__(self):
+ 		with open(self._url, "rb") as f:
+@@ -31,7 +30,7 @@ class LocalFileStream(Stream):
+ 
+ class HTTPFileStream(Stream):
+ 	def __init__(self, url):
+-		super(HTTPFileStream, self).__init__(url)
++		super().__init__(url)
+ 
+ 		parsed_url = urlparse(url)
+ 
+Index: django-eremaea2-2.0.17/tests/collection.py
+===================================================================
+--- django-eremaea2-2.0.17.orig/tests/collection.py
++++ django-eremaea2-2.0.17/tests/collection.py
+@@ -7,7 +7,7 @@ from rest_framework import status
+ from rest_framework.test import APIClient
+ from eremaea import models
+ from datetime import timedelta
+-from six.moves.urllib.parse import urlparse
++from urllib.parse import urlparse
+ 
+ class CollectionTest(TestCase):
+ 	def setUp(self):
+Index: django-eremaea2-2.0.17/tests/snapshot.py
+===================================================================
+--- django-eremaea2-2.0.17.orig/tests/snapshot.py
++++ django-eremaea2-2.0.17/tests/snapshot.py
+@@ -7,7 +7,7 @@ from mimetypes import guess_all_extensio
+ from os.path import splitext
+ from eremaea import models
+ from datetime import timedelta
+-from six.moves.urllib.parse import urlparse
++from urllib.parse import urlparse
+ 
+ class SnapshotTest(TestCase):
+ 	def setUp(self):
+@@ -132,7 +132,7 @@ class SnapshotTest(TestCase):
+ 		url = reverse('snapshot-detail', args=[snapshot.id])
+ 		response = self.client.get(url)
+ 		link_hdr = response['Link']
+-		self.assertEqual(link_hdr, '{0}; rel=alternate'.format(response.data['file']))
++		self.assertEqual(link_hdr, '{}; rel=alternate'.format(response.data['file']))
+ 	def test_snapshot_head1(self):
+ 		file = ContentFile(b"123")
+ 		file.name = "file.jpg"
