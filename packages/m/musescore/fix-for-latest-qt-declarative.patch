@@ -1,0 +1,29 @@
+From c747bdbcba81109e2749015a575827b2494af971 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Wed, 19 Apr 2023 23:22:14 +0800
+Subject: [PATCH] Set parentItem for pages in DockWindow
+
+After https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/40 a
+QQuickItem without a parentItem is always invisible. While this avoids
+some crashes in plasmashell, it breaks some applications like MuseScore
+where pages don't have a parent item.
+
+This is also important for Qt6 porting.
+
+Fixes #17276
+---
+ src/appshell/view/dockwindow/dockwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/appshell/view/dockwindow/dockwindow.cpp b/src/appshell/view/dockwindow/dockwindow.cpp
+index 1a2aaa428246..f8c79b8fe30a 100644
+--- a/src/appshell/view/dockwindow/dockwindow.cpp
++++ b/src/appshell/view/dockwindow/dockwindow.cpp
+@@ -619,6 +619,7 @@ void DockWindow::initDocks(DockPageView* page)
+     }
+ 
+     if (page) {
++        page->setParentItem(this);
+         page->init();
+     }
+ 

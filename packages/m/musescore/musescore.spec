@@ -67,6 +67,8 @@ Patch0:         use-qtmake-qt5.patch
 Patch1:         0dde64eef84.patch
 # PATCH-FIX-UPSTREAM: make compiler happy by adding returns
 Patch2:         musescore-4.0.2-return.patch
+# PATCH-FIX-UPSTREAM: change in qt-declaratives breaks musescore
+Patch3:         fix-for-latest-qt-declarative.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
