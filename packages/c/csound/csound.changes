@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 19:27:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unused BuildRequire on xorg-x11-devel
+- Modernize specfile constructs
+
+-------------------------------------------------------------------
 Wed Dec 14 01:02:31 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 6.18.1

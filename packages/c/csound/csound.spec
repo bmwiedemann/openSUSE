@@ -1,7 +1,7 @@
 #
 # spec file for package csound
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,10 +75,8 @@ BuildRequires:  python3-devel
 BuildRequires:  fltk-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  xorg-x11-devel
 %endif
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %global luaver %(lua -v | sed -r 's/Lua ([[:digit:]]+\\.[[:digit:]]+).*/\\1/')
 
@@ -151,8 +149,7 @@ Development files for Csound, a sound synthesis program.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 # remove __DATE__ from source files, causes unnecessary rebuilds
 #sed -i 's:__DATE__:"":' Engine/musmon.c include/version.h Top/main.c
 # copy readme
@@ -180,7 +177,7 @@ export CXXFLAGS="%{optflags} -std=c++11"
        -DUSE_LIB64:BOOL=OFF
 %endif
 
-make %{_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -236,6 +233,5 @@ cp -v OOps/README.md README.OOps
 %{_datadir}/cmake/Csound/
 
 %files lang -f %{name}%{maj}.lang
-%defattr(-,root,root)
 
 %changelog
