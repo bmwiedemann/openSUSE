@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:43:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.4:
+  * Minor simplification to the docs structure.
+  * Bump suite from `e744bfc` to `89016c7`
+  * Bump the referencing suite.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Tue Apr 25 04:54:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.3:
+  * Fix whatever typing change causes pyright to think frozen
+    classes aren't frozen.
+  * Also strip empty fragments when using __getiem__ on Registries.
+  * Bump wntrblm/nox from 2022.11.21 to 2023.04.22
+
+-------------------------------------------------------------------
 Fri Apr 14 06:58:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.2:
