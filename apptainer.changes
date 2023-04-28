@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 27 12:59:22 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- Included a fix for CVE-2023-30549 which is a vulnerability in setuid-root
+  installations of Apptainer iwhich was not active in the recent openSUSE
+  packages. Still this is included for completenss. The fix adds allow
+  setuid-mount configuration options encrypted, squashfs, and extfs, and makes
+  the default for extfs be "no". That disables the use of extfs mounts
+  including for overlays or binds while in the setuid-root mode, while leaving
+  it enabled for unprivileged user namespace mode. The default for encrypted
+  and squashfs is "yes".
+- Other bug fixes:
+  * Fix loop device 'no such device or address' spurious errors when using shared
+    loop devices.
+  * Add xino=on mount option for writable kernel overlay mount points to fix
+    inode numbers consistency after kernel cache flush (not applicable to
+    fuse-overlayfs).
+ 
+
+-------------------------------------------------------------------
 Wed Mar 29 08:14:47 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated to 1.1.7 with following changes:
