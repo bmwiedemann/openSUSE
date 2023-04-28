@@ -42,6 +42,7 @@ interested parties to subscribe to events, or "signals".
 Signal receivers can subscribe to specific senders or receive signals
 sent by any sender.
 
+%if 0%{?suse_version} > 1500
 %package -n python-blinker-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
@@ -55,6 +56,7 @@ Signal receivers can subscribe to specific senders or receive signals
 sent by any sender.
 
 This sub-package contains the HTML documentation.
+%endif
 
 %prep
 %setup -q -n blinker-%{version}
@@ -82,7 +84,9 @@ popd
 %{python_sitelib}/blinker-%{version}-py%{python_version}.egg-info
 %{python_sitelib}/blinker
 
+%if 0%{?suse_version} > 1500
 %files -n python-blinker-doc
+%endif
 %doc docs/_build/html
 
 %changelog
