@@ -38,6 +38,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://01.org/linuxmedia
 Source0:        https://github.com/intel/libva/archive/%{version}.tar.gz#/libva-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch0:         propagate-dpy.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  meson
