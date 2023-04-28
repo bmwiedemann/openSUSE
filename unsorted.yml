@@ -6677,6 +6677,8 @@ unsorted:
   - gnome-control-center-devel 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
+  - gnome-dictionary 
+  - gnome-dictionary-lang 
   - gnome-directory-thumbnailer 
   - gnome-directory-thumbnailer-lang 
   - gnome-doc-utils 
@@ -6728,6 +6730,8 @@ unsorted:
   - gnome-recipes-lang 
   - gnome-robots 
   - gnome-robots-lang 
+  - gnome-screenshot 
+  - gnome-screenshot-lang 
   - gnome-search-tool 
   - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
@@ -13154,12 +13158,12 @@ unsorted:
   - libmbd-mvapich2-devel 
   - libmbd-openmpi4 
   - libmbd-openmpi4-devel 
-  - libmbedcrypto7 
-  - libmbedcrypto7-x86-64-v3 
-  - libmbedtls14 
-  - libmbedtls14-x86-64-v3 
-  - libmbedx509-1 
-  - libmbedx509-1-x86-64-v3 
+  - libmbedcrypto14 
+  - libmbedcrypto14-x86-64-v3 
+  - libmbedtls19 
+  - libmbedtls19-x86-64-v3 
+  - libmbedx509-5 
+  - libmbedx509-5-x86-64-v3 
   - libmbim-devel 
   - libmbus 
   - libmbus-devel 
@@ -16343,6 +16347,7 @@ unsorted:
   - lpsolve-devel 
   - lrslib 
   - lrslib-devel 
+  - lrzip 
   - lsb 
   - lscsoft-glue-data 
   - lsd 
@@ -24912,7 +24917,6 @@ unsorted:
   - python310-opt-einsum 
   - python310-orange-canvas-core 
   - python310-orange-widget-base 
-  - python310-orangebox 
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
@@ -26175,7 +26179,6 @@ unsorted:
   - python310-ypy-websocket 
   - python310-yq 
   - python310-yt 
-  - python310-zake 
   - python310-zarr 
   - python310-zc.buildout 
   - python310-zc.customdoctests 
@@ -28280,7 +28283,6 @@ unsorted:
   - python311-opt-einsum 
   - python311-orange-canvas-core 
   - python311-orange-widget-base 
-  - python311-orangebox 
   - python311-ordered-namespace 
   - python311-ordered-set 
   - python311-orderedmultidict 
@@ -29587,7 +29589,6 @@ unsorted:
   - python311-ypy-websocket 
   - python311-yq 
   - python311-yt 
-  - python311-zake 
   - python311-zarr 
   - python311-zc.buildout 
   - python311-zc.customdoctests 
@@ -31729,7 +31730,6 @@ unsorted:
   - python39-opt-einsum 
   - python39-orange-canvas-core 
   - python39-orange-widget-base 
-  - python39-orangebox 
   - python39-ordered-namespace 
   - python39-ordered-set 
   - python39-orderedmultidict 
@@ -33048,7 +33048,6 @@ unsorted:
   - python39-ypy-websocket 
   - python39-yq 
   - python39-yt 
-  - python39-zake 
   - python39-zarr 
   - python39-zc.buildout 
   - python39-zc.customdoctests 
@@ -45953,6 +45952,7 @@ unsorted:
   - xrefresh 
   - xrestop 
   - xroach 
+  - xroachng 
   - xrootd-client 
   - xrootd-client-devel 
   - xrootd-client-libs 

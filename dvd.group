@@ -605,8 +605,6 @@
     <package name="gnome-control-center-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-control-center-user-faces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-desktop-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-dictionary" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-dictionary-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-disk-utility" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gnome-disk-utility-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="gnome-extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -639,8 +637,6 @@
     <package name="gnome-photos-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-remote-desktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-remote-desktop-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-screenshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-screenshot-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-session-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-session-default-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
