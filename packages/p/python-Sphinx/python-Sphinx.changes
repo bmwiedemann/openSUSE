@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 26 16:21:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- For PSP packages don't include documentation at all. The
+  building of Sphinx documentation is so complicated, that it is
+  not possible to include it in the main package.
+
+-------------------------------------------------------------------
+Tue Apr 25 11:17:16 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 6.2.1
+  * #11355: Revert the default type of :confval:`nitpick_ignore` and
+    :confval:`nitpick_ignore_regex` to ``list``.
+
+-------------------------------------------------------------------
 Mon Apr 24 07:40:28 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Bump to version 6.2.0

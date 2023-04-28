@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -191,6 +191,7 @@ sources).
 
 This package contains the LaTeX components for python-Sphinx.
 
+%if 0%{?suse_version} > 1500
 %package -n python-Sphinx-doc
 Summary:        Man files for python-Sphinx
 Group:          Documentation/Other
@@ -235,6 +236,7 @@ projects (or other documents consisting of multiple reStructuredText
 sources).
 
 This package contains the HTML documentation for Sphinx.
+%endif
 
 %prep
 %setup -q -n Sphinx-%{version}
@@ -286,6 +288,7 @@ grep -F %{$python_sitelib} ${langfile} >> %{$python_prefix}-${langfile} \
 %python_find_lang sphinx
 
 %else
+%if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_docdir}/python-Sphinx/
 mv build.doc/html %{buildroot}%{_docdir}/python-Sphinx/
 rm -rf %{buildroot}%{_docdir}/python-Sphinx/html/_images
@@ -295,6 +298,7 @@ mv build.doc/man/sphinx-all.1 %{buildroot}%{_mandir}/man1/sphinx-all.1
 mv build.doc/man/sphinx-apidoc.1 %{buildroot}%{_mandir}/man1/sphinx-apidoc.1
 mv build.doc/man/sphinx-build.1 %{buildroot}%{_mandir}/man1/sphinx-build.1
 mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quickstart.1
+%endif
 %endif
 
 # Always deduplicate
@@ -338,6 +342,7 @@ export LC_ALL="C.utf8"
 %endif
 
 %if %{with test}
+%if 0%{?suse_version} > 1500
 %files -n python-Sphinx-doc-man
 %license LICENSE
 %doc AUTHORS
@@ -351,6 +356,7 @@ export LC_ALL="C.utf8"
 %doc AUTHORS
 %dir %{_docdir}/python-Sphinx/
 %{_docdir}/python-Sphinx/html/
+%endif
 %endif
 
 %changelog

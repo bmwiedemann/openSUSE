@@ -1014,4 +1014,18 @@
     <comment></comment>
     <requestid>1082492</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>877650270e21c72758f68b4094c19440</srcmd5>
+    <version>6.2.1</version>
+    <time>1682691742</time>
+    <user>dimstar_suse</user>
+    <comment>- For PSP packages don't include documentation at all. The
+  building of Sphinx documentation is so complicated, that it is
+  not possible to include it in the main package.
+
+- Update to version 6.2.1
+  * #11355: Revert the default type of :confval:`nitpick_ignore` and
+    :confval:`nitpick_ignore_regex` to ``list``.</comment>
+    <requestid>1083126</requestid>
+  </revision>
 </revisionlist>
