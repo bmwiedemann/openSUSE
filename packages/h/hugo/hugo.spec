@@ -14,13 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
-
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           hugo
-Version:        0.111.2
+Version:        0.111.3
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -50,7 +47,7 @@ https://gohugo.io/
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       bash-completion
-Supplements:    packageand(%{name}:bash)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -61,8 +58,8 @@ The official bash completion script for %{name}, generated during the build.
 
 %build
 # Force using the system version of libsass.
-# Due to https://github.com/golang/go/issues/26366 it's not vendored properly
-# anyway.
+# Due to https://github.com/golang/go/issues/26366
+# libsass would not be vendored properly anyway.
 export CGO_CFLAGS="$(pkg-config --cflags libsass) -DUSE_LIBSASS_SRC $(pkg-config --cflags libwebp) -DLIBWEBP_NO_SRC"
 export CGO_CXXFLAGS="${CGO_CFLAGS}"
 export CGO_LDFLAGS="$(pkg-config --libs libsass) $(pkg-config --libs libwebp)"

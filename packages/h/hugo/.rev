@@ -537,4 +537,34 @@
   * Fix &quot;page&quot; not defined (forwarded request 1069503 from jfkw)</comment>
     <requestid>1069504</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>677d03795ec2f2100fa13025d4340139</srcmd5>
+    <version>0.111.3</version>
+    <time>1682782094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.111.3:
+- Remove NO_BRP_STRIP_DEBUG=true experimentally to test which if
+  any platforms in OBS currently produce invalid Go binaries when
+  calling brp-15-strip-debug from brp-check-suse.
+  Refs boo#1210938
+  * Go packages %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+  * Available in golang-packaging as macro go_nostrip
+  * go_nostrip is one of the only golang-packaging macros still
+    useful after Go modules without a full rewrite or replacement
+  * Also remove spec comment &quot;# nodebug&quot;
+  * GNU strip circa 2016 would incorrectly strip Go intermediate
+    step .a archives and write out an invalid binary instead of
+    erroring.
+  * Error manifested as fmt.a: go archive is missing __.PKGDEF
+    on OBS built Go binaries which had passed their build step
+  * Upstream issue reported in 2016 as
+    https://github.com/golang/go/issues/17890
+  * brp-check-suse PR https://github.com/openSUSE/brp-check-suse/pull/7
+    closed in 2019 due to age, needs follow-up on current versions
+- Remove unnecessary _service set_version param basename=hugo.
+  set_version detection works with the current simple package name.
+- Use _service mode manual as better alias name than disabled
+- Use syntax Supplements: (hugo and bash-completion) as per rpmlint (forwarded request 1083543 from jfkw)</comment>
+    <requestid>1083545</requestid>
+  </revision>
 </revisionlist>

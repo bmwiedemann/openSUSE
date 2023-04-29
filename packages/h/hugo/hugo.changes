@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Apr 18 06:27:01 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove NO_BRP_STRIP_DEBUG=true experimentally to test which if
+  any platforms in OBS currently produce invalid Go binaries when
+  calling brp-15-strip-debug from brp-check-suse.
+  Refs boo#1210938
+  * Go packages %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+  * Available in golang-packaging as macro go_nostrip
+  * go_nostrip is one of the only golang-packaging macros still
+    useful after Go modules without a full rewrite or replacement
+  * Also remove spec comment "# nodebug"
+  * GNU strip circa 2016 would incorrectly strip Go intermediate
+    step .a archives and write out an invalid binary instead of
+    erroring.
+  * Error manifested as fmt.a: go archive is missing __.PKGDEF
+    on OBS built Go binaries which had passed their build step
+  * Upstream issue reported in 2016 as
+    https://github.com/golang/go/issues/17890
+  * brp-check-suse PR https://github.com/openSUSE/brp-check-suse/pull/7
+    closed in 2019 due to age, needs follow-up on current versions
+
+-------------------------------------------------------------------
+Tue Mar 21 20:44:19 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Remove unnecessary _service set_version param basename=hugo.
+  set_version detection works with the current simple package name.
+- Use _service mode manual as better alias name than disabled
+- Use syntax Supplements: (hugo and bash-completion) as per rpmlint
+
+-------------------------------------------------------------------
+Wed Mar 15 12:55:21 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.111.3:
+  * deps: Update go-org to v1.6.6
+  * Fix "unknown shortcode token" when calling shortcode within fenced code block
+  * Run gofmt -s on source files
+  * docs: Improve examples of variadic math functions
+  * tpl/math: Allow multi numbers in add, sub, mul, div, min and max
+  * readme: Update dependency list
+  * Improve error message for unclosed shortcode with inner content
+  * Don't fail when calling Paginate with an empty pages.PagesGroup
+  * server: Replace golang.org/x/net/context with context
+  * tpl: Add hasSuffix alias
+  * watcher: use time.NewTicker to prevent leaks
+  * ensure we default to 10 correctly
+  * switch transfers to workers
+  * customize parallel transfer count
+  * metadecoders: Add support for native org dates in frontmatter
+
+-------------------------------------------------------------------
 Mon Mar 06 02:25:47 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.111.2:
