@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 28 12:05:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.1.1
+  * Changes of 2.1.1
+    + Fix src/bsh/util/AWTConsole.java breakage with newer Java
+      versions
+  * Changes of 2.1.0
+    + This release formalizes the merge of 2.0b6 with suitable
+      backports from the development version of BeanShell. Also
+      included are are some ALv2 contributions to the BeanShell2
+      fork that had not been folded into BeanShell but are still
+      applicable to this version. For backwards compatibility
+      purposes, the 2.x branch of BeanShell still supports a minimum
+      Java version of 1.6.
+- Modified patch:
+  * beanshell-2.0b6-target.patch -> 0000-source-target-1.8.patch
+    + rediff to changed context and clean up
+- Added patches:
+  * beanshell-2.0b6-getpeer.patch
+    + fixed in 2.1.1
+  * bsh2-fix-tests.patch
+    + not needed any more
+
+-------------------------------------------------------------------
 Mon Apr 15 08:26:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace find -exec rm by just -delete.

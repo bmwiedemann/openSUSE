@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/beanshell/beanshell.git</param>
+		<param name="revision">2.1.1</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+        <param name="exclude">**.jar</param>
+        <param name="exclude">engine/javax-src/javax/script/*.java</param>
+        <param name="exclude">engine/javax-src/javax/script/*.html</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

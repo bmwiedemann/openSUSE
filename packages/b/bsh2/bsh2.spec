@@ -1,7 +1,7 @@
 #
 # spec file for package bsh2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +18,18 @@
 
 
 %define orig_name bsh
-%define fversion  2.0b6
 Name:           bsh2
-Version:        2.0.0.b6
+Version:        2.1.1
 Release:        0
 Summary:        Scripting for Java (BeanShell Version 2.x)
-License:        SPL-1.0 OR LGPL-2.0-or-later
+License:        LGPL-2.0-or-later OR SPL-1.0
 Group:          Development/Libraries/Java
 URL:            http://www.beanshell.org/
-Source0:        https://github.com/beanshell/beanshell/archive/%{fversion}.tar.gz
+Source0:        beanshell-%{version}.tar.xz
 #PATCH-FIX-OPENSUSE: use html output and JVM's built-in xmlns:redirect
 Patch3:         bsh-2.0b5-docs.patch
-#PATCH-FIX-OPENSUSE: those two patches fixes a compatibility with a standard javax.script API
-Patch1000:      bsh2-fix-tests.patch
 Patch1001:      reproducible.patch
-Patch1002:      beanshell-2.0b6-target.patch
-Patch1003:      beanshell-2.0b6-getpeer.patch
+Patch1002:      0000-source-target-1.8.patch
 BuildRequires:  ant
 BuildRequires:  bsf
 BuildRequires:  bsf-javadoc
@@ -93,45 +89,25 @@ Requires:       %{name} = %{version}-%{release}
 Scripting for Java (BeanShell Version 2.x) (demo and samples).
 
 %prep
-%setup -q -n beanshell-%{fversion}
+%setup -q -n beanshell-%{version}
 %patch3 -p1
-%patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
-%patch1003 -p1
-for j in $(find . -name "*.jar"); do
-    mv $j $j.no
-done
-# Remove bundled javax.script files under Sun's proprietary license
-find engine/javax-src/javax/script/ -maxdepth 1 -type 'f' | xargs rm
-mv tests/test-scripts/Data/addedCommand.jar.no tests/test-scripts/Data/addedCommand.jar
-mv tests/test-scripts/Data/addclass.jar.no tests/test-scripts/Data/addclass.jar
+
+sed -i 's,org.apache.xalan.xslt.extensions.Redirect,http://xml.apache.org/xalan/redirect,' docs/manual/xsl/*.xsl
 
 %build
 build-jar-repository -s -p lib bsf javacc glassfish-servlet-api
-pushd engine/javax-src/
-javac -cp $(build-classpath glassfish-servlet-api) -source 8 -target 8 $(find . -name "*.java")
-jar cf ../../lib/javaxscript.jar $(find . -name "*.class" -o -name "*.html")
-popd
-# set VERSION
-perl -p -i -e 's|VERSION =.*;|VERSION = "%{version}";|' src/bsh/Interpreter.java
-ant \
-    -Dbsf.javadoc=%{_javadocdir}/bsf \
-    -Djava.javadoc=%{_javadocdir}/java \
-    dist
-(cd docs/faq && ant)
-(cd docs/manual && ant)
-%fdupes -s docs/
+ant dist
 
 %install
 # jars
 mkdir -p %{buildroot}%{_javadir}/%{name}
-rm -f dist/%{orig_name}-%{fversion}-src.jar
-rm -f dist/%{orig_name}-%{fversion}-sources.jar
+rm -f dist/%{orig_name}-%{version}-src.jar
+rm -f dist/%{orig_name}-%{version}-sources.jar
 for jar in dist/*.jar; do
-  install -m 644 ${jar} %{buildroot}%{_javadir}/%{name}/`basename ${jar} -%{fversion}.jar`-%{version}.jar
+  install -m 644 ${jar} %{buildroot}%{_javadir}/%{name}/`basename ${jar} -%{version}.jar`.jar
 done
-(cd %{buildroot}%{_javadir}/%{name} && for jar in *-%{version}*; do ln -s ${jar} ${jar/-%{version}/}; done)
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}
@@ -163,7 +139,7 @@ find %{buildroot}%{_datadir}/%{name} -type f ! -name "*.bsh" \
 # bshservlet
 mkdir -p %{buildroot}%{_datadir}/%{name}/bshservlet
 (cd %{buildroot}%{_datadir}/%{name}/bshservlet
-jar xf $RPM_BUILD_DIR/beanshell-%{fversion}/dist/bshservlet.war
+jar xf $RPM_BUILD_DIR/beanshell-%{version}/dist/bshservlet.war
 )
 # scripts
 mkdir -p %{buildroot}%{_bindir}
@@ -203,12 +179,7 @@ cat scripts/bshdoc.bsh >> %{buildroot}%{_bindir}/%{name}doc
 %fdupes -s %{buildroot}
 %fdupes docs/
 
-%files
-%attr(0755,root,root) %{_bindir}/%{name}
-%attr(0755,root,root) %{_bindir}/%{name}doc
-%license LICENSE
-%dir %{_javadir}/%{name}
-%{_javadir}/%{name}/%{orig_name}-%{version}.jar
+%files -f .mfiles
 %{_javadir}/%{name}/%{orig_name}.jar
 %{_javadir}/%{name}/%{orig_name}-classpath*.jar
 %{_javadir}/%{name}/%{orig_name}-commands*.jar
@@ -216,14 +187,11 @@ cat scripts/bshdoc.bsh >> %{buildroot}%{_bindir}/%{name}doc
 %{_javadir}/%{name}/%{orig_name}-engine*.jar
 %{_javadir}/%{name}/%{orig_name}-reflect*.jar
 %{_javadir}/%{name}/%{orig_name}-util*.jar
+%attr(0755,root,root) %{_bindir}/%{name}
+%attr(0755,root,root) %{_bindir}/%{name}doc
+%license LICENSE
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/bshservlet
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
 %files bsf
 %{_javadir}/%{name}/%{orig_name}-bsf*.jar
