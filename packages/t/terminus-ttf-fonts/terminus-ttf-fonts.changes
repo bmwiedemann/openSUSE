@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 28 19:56:35 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49.3
+  * The scalable outlines now look a lot better than before, and
+    almost fully match the bitmaps.
+  * Anti-aliasing might still make the outlines look not as
+    crisp as the bitmaps, but in my humble opinion, they look a
+    lot better than before!
+  * The OS/2 vendor ID (aka the foundry ID) has been changed to
+    AX86 (which is also a registered vendor ID!).
+  * The Bold Italic variant now includes Bold-Italic in its font
+    names, and its filename; before, those places contained Bold
+    Italic.
+  * A new variant has been added: Variant ll2-td1 combines the
+    existing variants ll2 and td1.
+
+-------------------------------------------------------------------
 Mon May  9 06:41:30 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.49.2
