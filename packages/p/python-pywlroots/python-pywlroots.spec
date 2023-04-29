@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-pywlroots
-Version:        0.16.0
+Version:        0.16.4
 Release:        0
 Summary:        Python binding to the wlroots library using cffi
 License:        NCSA

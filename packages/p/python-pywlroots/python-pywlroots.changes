@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 22 09:43:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.16.4:
+  * add idle_notify_v1 protocol
+  * add helpers for XDG activation v1 protocol
+  * add helpers for presentation time protocol
+  * add helpers for mapping input devices to outputs
+  * enable xwayland feature for wlroots build setup when making a release
+  * minor keyboard handling improvements
+
+-------------------------------------------------------------------
 Tue Feb 21 03:35:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.16.0:
