@@ -1,0 +1,220 @@
+From 71b2fda04dd71c637361e8ead103980ad6f27ed5 Mon Sep 17 00:00:00 2001
+From: Benjamin Berg <bberg@redhat.com>
+Date: Mon, 30 May 2022 16:52:36 +0200
+Subject: [PATCH] gudev: Fix newline stripping by always reading using udev
+
+libudev will strip trailing newline characters ("\r\n") when reading
+sysfs attributes. The uncached reading functions however bypassed the
+udev mechanism unnecessarily and then added their own cache on top.
+
+Setting the value to NULL clears the internal cache in systemd. As such,
+we can simply do this and then fall back to the normal implementation to
+implement the _uncached version of the sysfs attribute getters.
+---
+ gudev/gudevdevice.c | 106 ++++++--------------------------------------
+ 1 file changed, 13 insertions(+), 93 deletions(-)
+
+diff --git a/gudev/gudevdevice.c b/gudev/gudevdevice.c
+index 38473dd..112c89e 100644
+--- a/gudev/gudevdevice.c
++++ b/gudev/gudevdevice.c
+@@ -78,7 +78,6 @@ struct _GUdevDevicePrivate
+   gchar **tags;
+   GHashTable *prop_strvs;
+   GHashTable *sysfs_attr_strvs;
+-  GHashTable *sysfs_attr;
+ };
+ 
+ G_DEFINE_TYPE_WITH_CODE (GUdevDevice, g_udev_device, G_TYPE_OBJECT, G_ADD_PRIVATE(GUdevDevice))
+@@ -102,9 +101,6 @@ g_udev_device_finalize (GObject *object)
+   if (device->priv->sysfs_attr_strvs != NULL)
+     g_hash_table_unref (device->priv->sysfs_attr_strvs);
+ 
+-  if (device->priv->sysfs_attr != NULL)
+-    g_hash_table_unref (device->priv->sysfs_attr);
+-
+   if (G_OBJECT_CLASS (g_udev_device_parent_class)->finalize != NULL)
+     (* G_OBJECT_CLASS (g_udev_device_parent_class)->finalize) (object);
+ }
+@@ -131,10 +127,6 @@ _g_udev_device_new (struct udev_device *udevice)
+ 
+   device =  G_UDEV_DEVICE (g_object_new (G_UDEV_TYPE_DEVICE, NULL));
+   device->priv->udevice = udev_device_ref (udevice);
+-  device->priv->sysfs_attr = g_hash_table_new_full (g_str_hash,
+-                                                    g_str_equal,
+-                                                    g_free,
+-                                                    g_free);
+ 
+   return device;
+ }
+@@ -773,14 +765,8 @@ const gchar *
+ g_udev_device_get_sysfs_attr (GUdevDevice  *device,
+                               const gchar  *name)
+ {
+-  const char *attr;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), NULL);
+   g_return_val_if_fail (name != NULL, NULL);
+-
+-  attr = g_hash_table_lookup (device->priv->sysfs_attr, name);
+-  if (attr)
+-    return attr;
+   return udev_device_get_sysattr_value (device->priv->udevice, name);
+ }
+ 
+@@ -1030,18 +1016,11 @@ const gchar *
+ g_udev_device_get_sysfs_attr_uncached (GUdevDevice  *device,
+                                        const gchar  *name)
+ {
+-  g_autofree char *path = NULL;
+-  char *contents = NULL;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), NULL);
+   g_return_val_if_fail (name != NULL, NULL);
+ 
+-  path = g_build_filename (udev_device_get_syspath (device->priv->udevice), name, NULL);
+-  if (!g_file_get_contents (path, &contents, NULL, NULL))
+-    return NULL;
+-  g_hash_table_insert (device->priv->sysfs_attr, g_strdup (name), contents);
+-
+-  return contents;
++  udev_device_set_sysattr_value (device->priv->udevice, name, NULL);
++  return g_udev_device_get_sysfs_attr (device, name);
+ }
+ 
+ /**
+@@ -1060,20 +1039,11 @@ gint
+ g_udev_device_get_sysfs_attr_as_int_uncached (GUdevDevice  *device,
+                                               const gchar  *name)
+ {
+-  gint result;
+-  const gchar *s;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), 0);
+   g_return_val_if_fail (name != NULL, 0);
+ 
+-  result = 0;
+-  s = g_udev_device_get_sysfs_attr_uncached (device, name);
+-  if (s == NULL)
+-    goto out;
+-
+-  result = strtol (s, NULL, 0);
+-out:
+-  return result;
++  udev_device_set_sysattr_value (device->priv->udevice, name, NULL);
++  return g_udev_device_get_sysfs_attr_as_int (device, name);
+ }
+ 
+ /**
+@@ -1092,20 +1062,11 @@ guint64
+ g_udev_device_get_sysfs_attr_as_uint64_uncached (GUdevDevice  *device,
+                                                  const gchar  *name)
+ {
+-  guint64 result;
+-  const gchar *s;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), 0);
+   g_return_val_if_fail (name != NULL, 0);
+ 
+-  result = 0;
+-  s = g_udev_device_get_sysfs_attr_uncached (device, name);
+-  if (s == NULL)
+-    goto out;
+-
+-  result = g_ascii_strtoull (s, NULL, 0);
+-out:
+-  return result;
++  udev_device_set_sysattr_value (device->priv->udevice, name, NULL);
++  return g_udev_device_get_sysfs_attr_as_uint64 (device, name);
+ }
+ 
+ /**
+@@ -1124,20 +1085,11 @@ gdouble
+ g_udev_device_get_sysfs_attr_as_double_uncached (GUdevDevice  *device,
+                                                  const gchar  *name)
+ {
+-  gdouble result;
+-  const gchar *s;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), 0.0);
+   g_return_val_if_fail (name != NULL, 0.0);
+ 
+-  result = 0.0;
+-  s = g_udev_device_get_sysfs_attr_uncached (device, name);
+-  if (s == NULL)
+-    goto out;
+-
+-  result = g_ascii_strtod (s, NULL);
+-out:
+-  return result;
++  udev_device_set_sysattr_value (device->priv->udevice, name, NULL);
++  return g_udev_device_get_sysfs_attr_as_double (device, name);
+ }
+ 
+ /**
+@@ -1157,29 +1109,11 @@ gboolean
+ g_udev_device_get_sysfs_attr_as_boolean_uncached (GUdevDevice  *device,
+                                                   const gchar  *name)
+ {
+-  gboolean result;
+-  const gchar *raw;
+-  g_autofree char *truncated = NULL;
+-  const char *s;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), FALSE);
+   g_return_val_if_fail (name != NULL, FALSE);
+ 
+-  result = FALSE;
+-  raw = g_udev_device_get_sysfs_attr_uncached (device, name);
+-  if (raw == NULL)
+-    goto out;
+-
+-  truncated = truncate_at_linefeed (raw);
+-  s = truncated ?: raw;
+-  if (strcmp (s, "1") == 0 ||
+-      g_ascii_strcasecmp (s, "true") == 0 ||
+-      g_ascii_strcasecmp (s, "y") == 0) {
+-    result = TRUE;
+-  }
+-
+- out:
+-  return result;
++  udev_device_set_sysattr_value (device->priv->udevice, name, NULL);
++  return g_udev_device_get_sysfs_attr_as_boolean (device, name);
+ }
+ 
+ /**
+@@ -1204,27 +1138,13 @@ const gchar * const *
+ g_udev_device_get_sysfs_attr_as_strv_uncached (GUdevDevice  *device,
+                                                const gchar  *name)
+ {
+-  gchar **result;
+-  const gchar *s;
+-
+   g_return_val_if_fail (G_UDEV_IS_DEVICE (device), NULL);
+   g_return_val_if_fail (name != NULL, NULL);
+ 
+-  result = NULL;
+-  s = g_udev_device_get_sysfs_attr_uncached (device, name);
+-  if (s == NULL)
+-    goto out;
++  g_hash_table_remove (device->priv->sysfs_attr_strvs, name);
+ 
+-  result = split_at_whitespace (s);
+-  if (result == NULL)
+-    goto out;
+-
+-  if (device->priv->sysfs_attr_strvs == NULL)
+-    device->priv->sysfs_attr_strvs = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, (GDestroyNotify) g_strfreev);
+-  g_hash_table_insert (device->priv->sysfs_attr_strvs, g_strdup (name), result);
+-
+-out:
+-  return (const gchar* const *) result;
++  udev_device_set_sysattr_value (device->priv->udevice, name, NULL);
++  return g_udev_device_get_sysfs_attr_as_strv (device, name);
+ }
+ 
+ /**
+-- 
+GitLab
+

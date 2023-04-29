@@ -81,4 +81,12 @@
     <comment>- add explicit glibc-locale buildrequires for passing the testsuite (bsc#1195390)</comment>
     <requestid>950660</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>cf056f8b05e56efd2a57dee17ece9d17</srcmd5>
+    <version>237</version>
+    <time>1682782055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083345</requestid>
+  </revision>
 </revisionlist>

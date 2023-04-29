@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 20 07:28:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 2 upstream bug fix patches:
+  * 71b2fda04dd71c637361e8ead103980ad6f27ed5.patch: gudev: Fix
+    newline stripping by always reading using udev.
+  * 4216ecd4513bd4c8af73543817a51d6f72f166cc.patch: build: let
+    meson handle gir, vala, gtk-doc dependencies
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Fri Jan 28 07:31:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add explicit glibc-locale buildrequires for passing the testsuite (bsc#1195390)

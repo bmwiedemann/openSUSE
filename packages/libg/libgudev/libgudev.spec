@@ -1,7 +1,7 @@
 #
 # spec file for package libgudev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,11 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libgudev
 Source0:        https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 71b2fda04dd71c637361e8ead103980ad6f27ed5.patch -- gudev: Fix newline stripping by always reading using udev
+Patch:          https://gitlab.gnome.org/GNOME/libgudev/-/commit/71b2fda04dd71c637361e8ead103980ad6f27ed5.patch
+# PATCH-FIX-UPSTREAM 4216ecd4513bd4c8af73543817a51d6f72f166cc.patch -- build: let meson handle gir, vala, gtk-doc dependencies
+Patch2:         https://gitlab.gnome.org/GNOME/libgudev/-/commit/4216ecd4513bd4c8af73543817a51d6f72f166cc.patch
+
 # For testsuite, uses fr_FR.UTF-8
 BuildRequires:  glibc-locale
 BuildRequires:  meson
@@ -83,8 +88,7 @@ provides GObject access to udev device information.
 %check
 %meson_test
 
-%post -n libgudev-1_0-0 -p /sbin/ldconfig
-%postun -n libgudev-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgudev-1_0-0
 
 %files -n libgudev-1_0-0
 %license COPYING

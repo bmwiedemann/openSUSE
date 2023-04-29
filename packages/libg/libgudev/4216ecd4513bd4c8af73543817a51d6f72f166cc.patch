@@ -1,0 +1,75 @@
+From 4216ecd4513bd4c8af73543817a51d6f72f166cc Mon Sep 17 00:00:00 2001
+From: Artturi <artturin@artturin.com>
+Date: Mon, 11 Jul 2022 08:35:09 +0000
+Subject: [PATCH] build: let meson handle gir, vala, gtk-doc dependencies
+
+---
+ gudev/meson.build |  2 +-
+ meson.build       | 23 ++++++-----------------
+ 2 files changed, 7 insertions(+), 18 deletions(-)
+
+diff --git a/gudev/meson.build b/gudev/meson.build
+index fd06a11..e904203 100644
+--- a/gudev/meson.build
++++ b/gudev/meson.build
+@@ -97,7 +97,7 @@ pkg.generate(
+   ]
+ )
+ 
+-if introspection_dep.found()
++if gir_dep.found()
+   libgudev_gir = gnome.generate_gir(
+     libgudev,
+     sources: libgudev_sources + libgudev_public_h,
+diff --git a/meson.build b/meson.build
+index eae2c80..f547a6d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -42,9 +42,6 @@ cc = meson.get_compiler('c')
+ 
+ glib_req = '>= 2.38.0'
+ libudev_req = '>= 199'
+-introspection_req = '>= 1.31.1'
+-vapigen_req = '>= 0.38.0'
+-gtk_doc_req = '>= 1.18'
+ 
+ glib_dep = dependency('glib-2.0', version: glib_req)
+ gobject_dep = dependency('gobject-2.0', version: glib_req)
+@@ -58,20 +55,12 @@ umockdev_dep = dependency(
+   required: get_option('tests')
+ )
+ 
+-introspection_dep = dependency(
+-  'gobject-introspection-1.0', version: introspection_req,
+-  required: get_option('introspection')
+-)
+-
+-vapigen_dep = dependency(
+-  'vapigen', version: vapigen_req,
+-  required: get_option('vapi')
+-)
++gir_dep = find_program('g-ir-scanner', required: get_option('introspection'))
++vapigen_dep = find_program('vapigen', required : get_option('vapi'))
+ 
+-gtk_doc_dep = dependency(
+-  'gtk-doc', version: gtk_doc_req,
+-  required: get_option('gtk_doc')
+-)
++if vapigen_dep.found()
++  assert(gir_dep.found(), 'vapi requires introspection')
++endif
+ 
+ # Configurations
+ config_h = configuration_data()
+@@ -95,7 +84,7 @@ if get_option('gtk_doc')
+ endif
+ 
+ summary('Documentation', get_option('gtk_doc'), section: 'Build')
+-summary('Introspection', introspection_dep.found(), section: 'Build')
++summary('Introspection', gir_dep.found(), section: 'Build')
+ summary('Vala API', vapigen_dep.found(), section: 'Build')
+ summary('Tests', umockdev_dep.found(), section: 'Build')
+ 
+-- 
+GitLab
+
