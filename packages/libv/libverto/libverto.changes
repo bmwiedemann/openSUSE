@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 24 10:09:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Sat Sep 24 09:08:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.2:
   * Fix use-after-free in verto_reinitialize
   * Fix use-after-free in verto_free()
-  * Remove broken tevent support 
+  * Remove broken tevent support
 
 -------------------------------------------------------------------
 Thu Aug 27 10:00:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -20,7 +26,7 @@ Thu Aug 27 10:00:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Fix memleak in libverto:vfree
   * Update mutex usage to improve debugging
   * Add verto_cleanup() to free loaded_modules
-  * Make C99 requirement explicit 
+  * Make C99 requirement explicit
 
 -------------------------------------------------------------------
 Thu Feb 22 15:14:25 UTC 2018 - fvogt@suse.com
