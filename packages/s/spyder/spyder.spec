@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -31,6 +31,7 @@ Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#
 Source1:        spyder-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 49.6.0
 BuildRequires:  python3-wheel
@@ -49,7 +50,8 @@ Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-flake8 >= 3.8.0
 Requires:       python3-intervaltree
-Requires:       python3-ipython >= 7.31.1
+Requires:       (python3-ipython >= 7.31.1 with python3-ipython < 9)
+Conflicts:      (python3-ipython >= 8.8 with python3-ipython < 8.10.1)
 Requires:       python3-jedi >= 0.17.2
 Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
@@ -79,11 +81,11 @@ Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
 Requires:       python3-whatthepatch
 Requires:       python3-yapf
-Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
+Requires:       (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.2.0)
 Requires:       (python3-pylint >= 2.5.0 with python3-pylint < 3)
-Requires:       (python3-python-lsp-server >= 1.7.1 with python3-python-lsp-server < 1.8)
-Requires:       (python3-qtconsole >= 5.4.0 with python3-qtconsole < 5.5.0)
-Requires:       (python3-spyder-kernels >= 2.4.2 with python3-spyder-kernels < 2.5)
+Requires:       (python3-python-lsp-server >= 1.7.2 with python3-python-lsp-server < 1.8)
+Requires:       (python3-qtconsole >= 5.4.2 with python3-qtconsole < 5.5.0)
+Requires:       (python3-spyder-kernels >= 2.4.3 with python3-spyder-kernels < 2.5)
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -129,7 +131,6 @@ BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-flake8 >= 3.8.0
 BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
-BuildRequires:  python3-ipython >= 7.31.1
 BuildRequires:  python3-jedi >= 0.17.2
 BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
@@ -174,11 +175,13 @@ BuildRequires:  python3-whatthepatch
 BuildRequires:  python3-yapf
 BuildRequires:  xdpyinfo
 BuildRequires:  xvfb-run
-BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.1.0)
+BuildRequires:  (python3-QDarkStyle >= 3.0.2 with python3-QDarkStyle < 3.2.0)
+BuildRequires:  (python3-ipython >= 7.31.1 with python3-ipython < 9)
+BuildConflicts: (python3-ipython >= 8.8 with python3-ipython < 8.10.1)
 BuildRequires:  (python3-pylint >= 2.5.0 with python3-pylint < 3)
-BuildRequires:  (python3-python-lsp-server >= 1.7.1 with python3-python-lsp-server < 1.8)
-BuildRequires:  (python3-qtconsole >= 5.4 with python3-qtconsole < 5.5)
-BuildRequires:  (python3-spyder-kernels >= 2.4.2 with python3-spyder-kernels < 2.5)
+BuildRequires:  (python3-python-lsp-server >= 1.7.2 with python3-python-lsp-server < 1.8)
+BuildRequires:  (python3-qtconsole >= 5.4.2 with python3-qtconsole < 5.5)
+BuildRequires:  (python3-spyder-kernels >= 2.4.3 with python3-spyder-kernels < 2.5)
 # /SECTION
 
 %description
@@ -222,19 +225,6 @@ IDE for researchers, engineers and data analysts.
 
 This package contains the plugin that allows Spyder to read and write
 HDF5 files.
-
-%package doc
-Summary:        Documentation for the Spyder IDE
-Group:          Development/Languages/Python
-Recommends:     %{name} = %{version}
-Provides:       spyder3-doc = %{version}
-Obsoletes:      spyder3-doc < %{version}
-
-%description doc
-Spyder, the Scientific Python Development Environment, is an
-IDE for researchers, engineers and data analysts.
-
-Documentation and help files for Spyder and its plugins.
 
 %package lang
 # expansion of lang_package because the macro does not handle the rename
@@ -324,10 +314,6 @@ popd
 
 # requires internet connection
 donttest+=" or test_github_backend"
-%if 0%{?suse_version} == 1500
-# fails on Leap
-donttest+=" or (test_objectexplorer_collection_types and params0)"
-%endif
 # different PyQT version?
 donttest+=" or (test_objectexplorer_collection_types and params5)"
 # qtbot timeouts or too slow in OBS

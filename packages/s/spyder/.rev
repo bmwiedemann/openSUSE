@@ -634,4 +634,12 @@ rename the package from spyder3 to spyder.
   * Fix some issues related with Python 3.11 compatibility (forwarded request 1059825 from bnavigator)</comment>
     <requestid>1059826</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e41a6fd2a7c7274e2f4652380215b8a5</srcmd5>
+    <version>5.4.3</version>
+    <time>1682782082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083328</requestid>
+  </revision>
 </revisionlist>

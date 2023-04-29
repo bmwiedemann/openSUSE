@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 27 15:32:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.3
+  ## New features
+  * Add support for QDarkstyle 3.1
+  * Add support for Jupyter-client 8
+  * Add mambaforge and miniforge when searching for conda
+    environments
+  ## Important fixes
+  * Fix IPython Console completions, traceback handling and other
+    issues to better support IPython 8.x
+  * Fix compatibility issues with PyZMQ 25.x
+  * Add warning message before loading spydata files
+  * Fix web based widgets display by adding the --no-sandbox
+    argument for QtApplication
+  * Fix copy and paste shortcuts for the Files and Projects
+    explorer panes
+  * Fix Editor issues related with handling LSP server failed
+    starts
+  * Fix Editor issues related with restoring previous session and
+    file changes outside Spyder
+  * Fix PYTHONPATH manager showing extra paths and other related
+    errors
+  * Fix update available notification with pip based installations
+  * Fix some UX/UI issues for the find replace widget when the
+    Editor has a small width
+  * Removal of Python 2 related code
+
+-------------------------------------------------------------------
 Thu Jan 19 10:04:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.2
