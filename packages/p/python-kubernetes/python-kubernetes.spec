@@ -1,7 +1,7 @@
 #
 # spec file for package python-kubernetes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-kubernetes
-Version:        24.2.0
+Version:        26.1.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
-URL:            https://github.com/kubernetes-incubator/client-python
+URL:            https://github.com/kubernetes-client/python
+# Source tar - https://pypi.org/project/kubernetes/#files
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
 # https://github.com/kubernetes-client/python/issues/1790
-Patch0:         python-kubernetes-no-mock.patch
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 21.0.0}
 BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module urllib3 >= 1.23}
+BuildRequires:  %{python_module urllib3 >= 1.24.2}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

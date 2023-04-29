@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 28 09:44:00 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- removed python-kubernetes-no-mock.patch, patch changes incorporated upstream 
+
+-------------------------------------------------------------------
+Fri Apr 28 09:27:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 26.1.0
+  * too many changes, please refer to the CHANGELOG.md in documentation OR at
+  https://github.com/kubernetes-client/python/blob/v26.1.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Thu Sep 29 14:26:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v24.2.0
