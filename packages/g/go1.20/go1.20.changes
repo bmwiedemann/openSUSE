@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 28 23:47:22 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * go1.x Suggests go1.x-race do not install by default boo#1210963
+  * Use Group: Development/Languages/Go instead of Other
+
+-------------------------------------------------------------------
 Tue Apr  4 20:42:31 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.3 (released 2023-04-04) includes security fixes to the
@@ -25,7 +33,7 @@ Tue Apr  4 20:42:31 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 -------------------------------------------------------------------
 Tue Apr  4 16:59:57 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- Build subpackage go1.20-libstd compiled shared object libstd.so
+- Build subpackage go1.x-libstd compiled shared object libstd.so
   only on Tumbleweed at this time.
   Refs jsc#PED-1962
 

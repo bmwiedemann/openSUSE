@@ -14,15 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
-
-# strip will cause Go's .a archives to become invalid because strip appears to
-# reassemble the archive incorrectly. This is a known issue upstream
-# (https://github.com/golang/go/issues/17890), but we have to deal with it in
-# the meantime.
-%undefine _build_create_debug
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true NO_BRP_AR=true
 
 # Specify Go toolchain version used to bootstrap this package's Go toolchain
 # go_bootstrap_version bootstrap go toolchain with specific existing go1.x package
@@ -163,6 +155,7 @@ BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
+Suggests:       %{name}-race = %{version}
 %if 0%{?suse_version} > 1500
 # openSUSE Tumbleweed
 Suggests:       %{name}-libstd = %{version}

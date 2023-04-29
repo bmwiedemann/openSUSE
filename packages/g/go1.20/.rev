@@ -76,4 +76,15 @@
   Refs jsc#PED-1962 (forwarded request 1077383 from jfkw)</comment>
     <requestid>1077385</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>476dd1775757eb32e15664f91b85c772</srcmd5>
+    <version>1.20.3</version>
+    <time>1682782103</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+* Re-enable binary stripping and debuginfo boo#1210938
+* go1.x Suggests go1.x-race do not install by default boo#1210963
+* Use Group: Development/Languages/Go instead of Other (forwarded request 1083590 from jfkw)</comment>
+    <requestid>1083592</requestid>
+  </revision>
 </revisionlist>
