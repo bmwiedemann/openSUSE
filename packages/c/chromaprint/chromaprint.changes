@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 27 17:14:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 82781d02.patch: FFmpeg 5.x: Some files return error codes
+  when scanning.
+
+-------------------------------------------------------------------
 Fri Nov 11 17:00:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 8ccad69.patch: Upgrade code to FFmpeg 5.x APIs. Following

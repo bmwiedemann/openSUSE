@@ -1,7 +1,7 @@
 #
 # spec file for package chromaprint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@ Source0:        https://github.com/acoustid/chromaprint/releases/download/v%{ver
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM https://github.com/acoustid/chromaprint/commit/8ccad69.patch -- Upgrade code to FFmpeg 5.x APIs
 Patch0:         8ccad69.patch
-
+Patch1:         https://github.com/acoustid/chromaprint/commit/82781d02.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
