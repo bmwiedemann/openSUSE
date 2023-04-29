@@ -84,4 +84,21 @@
      xdpyinfo.)</comment>
     <requestid>967736</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e55f91b7954df23f698a3a44ac816cf</srcmd5>
+    <version>1.3.4</version>
+    <time>1682782063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.4
+  * This release stops compiling support for the XF86-Misc extension by
+    default, and thus stops linking with the deprecated libXxf86misc
+    library by default.  This support can still be enabled for now by
+    passing --with-xf86misc to the configure script, but as the server
+    side of this extension was removed in the xserver-1.6.0 release in 2008
+    there is little reason to do so, and the support may be removed entirely
+    in a future release of xdpyinfo.
+- we have xorg-server &gt;= 1.6 since sle11-sp1, so we are on the safe
+  side with our customers</comment>
+    <requestid>1083414</requestid>
+  </revision>
 </revisionlist>
