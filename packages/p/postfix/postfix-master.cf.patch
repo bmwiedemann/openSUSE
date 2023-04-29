@@ -14,7 +14,7 @@ Index: conf/master.cf
  #smtp      inet  n       -       n       -       1       postscreen
  #smtpd     pass  -       -       n       -       -       smtpd
  #dnsblog   unix  -       -       n       -       0       dnsblog
-@@ -17,38 +22,40 @@ smtp      inet  n       -       n
+@@ -17,40 +22,42 @@ smtp      inet  n       -       n
  # Choose one: enable submission for loopback clients only, or for any client.
  #127.0.0.1:submission inet n -   n       -       -       smtpd
  #submission inet n       -       n       -       -       smtpd
@@ -22,12 +22,14 @@ Index: conf/master.cf
 -#  -o smtpd_tls_security_level=encrypt
 -#  -o smtpd_sasl_auth_enable=yes
 -#  -o smtpd_tls_auth_only=yes
+-#  -o local_header_rewrite_clients=static:all
 -#  -o smtpd_reject_unlisted_recipient=no
 +#   -o syslog_name=postfix/submission
 +#   -o smtpd_tls_security_level=encrypt
 +#   -o content_filter=smtp:[127.0.0.1]:10024
 +#   -o smtpd_sasl_auth_enable=yes
 +#   -o smtpd_tls_auth_only=yes
++#   -o local_header_rewrite_clients=static:all
 +#   -o smtpd_reject_unlisted_recipient=no
  #     Instead of specifying complex smtpd_<xxx>_restrictions here,
  #     specify "smtpd_<xxx>_restrictions=$mua_<xxx>_restrictions"
@@ -51,11 +53,13 @@ Index: conf/master.cf
 -#  -o syslog_name=postfix/submissions
 -#  -o smtpd_tls_wrappermode=yes
 -#  -o smtpd_sasl_auth_enable=yes
+-#  -o local_header_rewrite_clients=static:all
 -#  -o smtpd_reject_unlisted_recipient=no
 +#    -o syslog_name=postfix/submissions
 +#    -o smtpd_tls_wrappermode=yes
 +#    -o content_filter=smtp:[127.0.0.1]:10024
 +#    -o smtpd_sasl_auth_enable=yes
++#    -o local_header_rewrite_clients=static:all
 +#    -o smtpd_reject_unlisted_recipient=no
  #     Instead of specifying complex smtpd_<xxx>_restrictions here,
  #     specify "smtpd_<xxx>_restrictions=$mua_<xxx>_restrictions"
@@ -76,7 +80,7 @@ Index: conf/master.cf
  #628       inet  n       -       n       -       -       qmqpd
  pickup    unix  n       -       n       60      1       pickup
  cleanup   unix  n       -       n       -       0       cleanup
-@@ -77,6 +84,26 @@ lmtp      unix  -       -       n
+@@ -79,6 +86,26 @@ lmtp      unix  -       -       n
  anvil     unix  -       -       n       -       1       anvil
  scache    unix  -       -       n       -       1       scache
  postlog   unix-dgram n  -       n       -       1       postlogd
@@ -103,7 +107,7 @@ Index: conf/master.cf
  #
  # ====================================================================
  # Interfaces to non-Postfix software. Be sure to examine the manual
-@@ -110,7 +137,7 @@ postlog   unix-dgram n  -       n
+@@ -112,7 +139,7 @@ postlog   unix-dgram n  -       n
  # Also specify in main.cf: cyrus_destination_recipient_limit=1
  #
  #cyrus     unix  -       n       n       -       -       pipe
@@ -112,7 +116,7 @@ Index: conf/master.cf
  #
  # ====================================================================
  #
-@@ -143,3 +170,10 @@ postlog   unix-dgram n  -       n
+@@ -145,3 +172,10 @@ postlog   unix-dgram n  -       n
  #mailman   unix  -       n       n       -       -       pipe
  #  flags=FRX user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
  #  ${nexthop} ${user}

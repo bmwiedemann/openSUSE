@@ -29,7 +29,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #else
  #define HAS_DBM
-@@ -763,7 +763,7 @@ extern int initgroups(const char *, int)
+@@ -775,7 +775,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -38,7 +38,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -846,7 +846,7 @@ extern int initgroups(const char *, int)
+@@ -851,7 +851,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "dotlock"	/* verified RedHat 3.03 */
  #define HAS_FSYNC
  #define HAS_DB
@@ -47,7 +47,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -879,7 +879,7 @@ extern int initgroups(const char *, int)
+@@ -884,7 +884,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -56,7 +56,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	DEF_DB_TYPE ":/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -1204,7 +1204,7 @@ extern int opterr;			/* XXX use <getopt.
+@@ -1209,7 +1209,7 @@ extern int opterr;			/* XXX use <getopt.
  #define INTERNAL_LOCK	MYFLOCK_STYLE_FCNTL
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"
  #define HAS_FSYNC
@@ -78,7 +78,7 @@ Index: src/global/mail_params.h
  extern char *var_verify_map;
  
  #define VAR_VERIFY_POS_EXP		"address_verify_positive_expire_time"
-@@ -3728,7 +3728,7 @@ extern char *var_multi_cntrl_cmds;
+@@ -3762,7 +3762,7 @@ extern char *var_multi_cntrl_cmds;
    * postscreen(8)
    */
  #define VAR_PSC_CACHE_MAP	"postscreen_cache_map"

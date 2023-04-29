@@ -1,7 +1,7 @@
 #
 # spec file for package postfix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix
-Version:        3.7.4
+Version:        3.8.0
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -126,6 +126,7 @@ Postfix aims to be an alternative to the widely-used sendmail program.
 Summary:        Development headers for the %{name} package
 Group:          Development/Libraries/C and C++
 Requires(pre):  %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 Postfix aims to be an alternative to the widely-used sendmail program.

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Apr 18 18:14:49 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.0
+  * Support to look up DNS SRV records in the Postfix SMTP/LMTP
+    client, Based on code by Tomas Korbar (Red Hat). For example,
+    with "use_srv_lookup = submission" and "relayhost =
+    example.com:submission", the Postfix SMTP client will look up
+    DNS SRV records for _submission._tcp.example.com, and will relay
+    email through the hosts and ports that are specified with those
+    records.
+  * TLS obsolescence: Postfix now treats the "export" and "low"
+    cipher grade settings as "medium". The "export" and "low" grades
+    are no longer supported in OpenSSL 1.1.1, the minimum version
+    required in Postfix 3.6.0 and later. Also, Postfix default
+    settings now exclude deprecated or unused ciphers (SEED, IDEA,
+    3DES, RC2, RC4, RC5), digest (MD5), key exchange algorithms
+    (DH, ECDH), and public key algorithm (DSS).
+  * Attack resistance: the Postfix SMTP server can now aggregate
+    smtpd_client_*_rate and smtpd_client_*_count statistics by
+    network block instead of by IP address, to raise the bar against
+    a memory exhaustion attack in the anvil(8) server; Postfix TLS
+    support unconditionally disables TLS renegotiation in the middle
+    of an SMTP connection, to avoid a CPU exhaustion attack.
+  * The PostgreSQL client encoding is now configurable with the
+    "encoding" Postfix configuration file attribute. The default
+    is "UTF8". Previously the encoding was hard-coded as "LATIN1",
+    which is not useful in the context of SMTP.
+  * The postconf command now warns for #comment in or after a Postfix
+    parameter value. Postfix programs do not support #comment after
+    other text, and treat that as input.
+- rebase/refresh patches
+  * pointer_to_literals.patch
+  * postfix-linux45.patch
+  * postfix-master.cf.patch
+  * postfix-ssl-release-buffers.patch
+  * set-default-db-type.patch
+
+-------------------------------------------------------------------
 Sat Feb 25 15:15:58 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - update to 3.7.4
