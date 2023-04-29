@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Apr 28 10:43:02 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Re-add back 'arabic' keymap mapping as YaST needs more time than expected to
+  cope with this change.
+
+-------------------------------------------------------------------
+Thu Apr 27 16:15:57 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: don't call %systemd_{pre,post} on units shipped by the main
+  package since they don't have any effect during installation (systemctl is not
+  yet installed when %pre script is executed). This is actually the reason why
+  it's handled by the %%posttrans scripts of systemd-presets-common-SUSE.
+
+-------------------------------------------------------------------
+Thu Apr 27 07:58:58 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- kbd-model-map.legacy: 'arabic' vc keymap has been renamed 'ara' (bsc#1210702)
+
+-------------------------------------------------------------------
+Wed Apr 19 15:14:13 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- add some green to systemd-boot menu
+
+-------------------------------------------------------------------
+Tue Apr 18 09:09:26 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- kbd-model-map.legacy: drop some entries no longer needed
+  by YaST (related to bsc#1194609)
+
+-------------------------------------------------------------------
+Wed Apr 12 08:45:10 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- tmpfiles-suse.conf (jsc#PED-3144):
+  - Remove lastlog entry, replaced by lastlog2
+  - Remove btmp entry, not Y2038 safe
+
+-------------------------------------------------------------------
 Wed Apr  5 08:20:53 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - testsuite: TEST-75-RESOLVED needs knot DNS server

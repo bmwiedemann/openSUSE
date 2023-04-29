@@ -716,6 +716,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dremote=%{when journal_remote} \
         \
         -Dgnu-efi=%{when sd_boot} \
+        -Defi-color-highlight="black,green" \
         -Dkernel-install=%{when sd_boot} \
         \
         -Dsbat-distro="%{?sbat_distro}" \
@@ -963,13 +964,13 @@ tar -cO \
 # Don't drop %%pre section even if it becomes empty: the build process of
 # installation images uses a hardcoded list of packages with a %%pre that needs
 # to be run during the build and complains if it can't find one.
+#
+# Note: presets for units shipped by the main package are applied by %%posttrans
+# scripts of systemd-presets-common-SUSE. Hence we don't need to bother running
+# %%systemd_{pre,post} on them, which is fortunate since the helper script the
+# systemd rpm macros rely on is not yet installed.
 %pre
-# Units listed below can be enabled at installation according to their preset
-# setting.
-%systemd_pre remote-fs.target
-%systemd_pre getty@.service
-%systemd_pre systemd-timesyncd.service
-%systemd_pre systemd-journald-audit.socket
+:
 
 %post
 # Make /etc/machine-id an empty file during package installation. On the first
@@ -1023,13 +1024,6 @@ fi
 
 %journal_catalog_update
 %tmpfiles_create
-
-# Units listed below can be enabled at installation accoding to their preset
-# setting.
-%systemd_post remote-fs.target
-%systemd_post getty@.service
-%systemd_post systemd-timesyncd.service
-%systemd_post systemd-journald-audit.socket
 
 # v228 wrongly set world writable suid root permissions on timestamp files used
 # by permanent timers. Fix the timestamps that might have been created by the

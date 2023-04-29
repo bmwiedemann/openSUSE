@@ -6499,4 +6499,29 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/03cfbe767327d01d5a71131d91bf06fdc0047ca1...66f3a8a47d5bf6aea3f6fb181c01550a1a54406e</comment>
     <requestid>1077457</requestid>
   </revision>
+  <revision rev="388" vrev="2">
+    <srcmd5>97aa6ed162e84bb1ac0a600613a00e44</srcmd5>
+    <version>253.3</version>
+    <time>1682782073</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add back 'arabic' keymap mapping as YaST needs more time than expected to
+  cope with this change.
+
+- systemd.spec: don't call %systemd_{pre,post} on units shipped by the main
+  package since they don't have any effect during installation (systemctl is not
+  yet installed when %pre script is executed). This is actually the reason why
+  it's handled by the %%posttrans scripts of systemd-presets-common-SUSE.
+
+- kbd-model-map.legacy: 'arabic' vc keymap has been renamed 'ara' (bsc#1210702)
+
+- add some green to systemd-boot menu
+
+- kbd-model-map.legacy: drop some entries no longer needed
+  by YaST (related to bsc#1194609)
+
+- tmpfiles-suse.conf (jsc#PED-3144):
+  - Remove lastlog entry, replaced by lastlog2
+  - Remove btmp entry, not Y2038 safe</comment>
+    <requestid>1083513</requestid>
+  </revision>
 </revisionlist>

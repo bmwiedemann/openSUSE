@@ -1,11 +1,13 @@
-# Additional layouts offered by YaST
-Pl02                   pl      pc105           -               terminate:ctrl_alt_bksp
+# Additional layouts offered by YaST arabic and ir (Iran) have never had a
+# console layout, they are symlinks to 'us', but they are needed as YaST uses
+# the console layout as a primary key for picking the X11 layout
+
 arabic                 ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
-cn-latin1              ca      pc105           multix          terminate:ctrl_alt_bksp
-cz-lat2-us             cz,us   pc105           qwerty,basic    terminate:ctrl_alt_bksp,grp:shift_toggle
-es-cp850               es      pc105           -               terminate:ctrl_alt_bksp
+ara                    ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
 ir                     ir      pc105           -               terminate:ctrl_alt_bksp
-korean                 kr      pc105           -               terminate:ctrl_alt_bksp
-lt.std                 lt      pc105           std             terminate:ctrl_alt_bksp
-no-latin1              no      pc105           -               terminate:ctrl_alt_bksp
+
+# FIXME: ruwin_alt-UTF-8 is not needed as the legacy "ru" keymap
+# (/usr/share/kbd/keymaps/i386/qwerty/ru.map.gz) is a dual layout and contains
+# the Latin letters. Keep it until YaST is updated.
+
 ruwin_alt-UTF-8        us,ru   pc105           ,winkeys        terminate:ctrl_alt_bksp,grp:ctrl_shift_toggle,grp_led:scroll
