@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 28 13:56:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix boo#1210849:
+  * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
+
+-------------------------------------------------------------------
 Sat Apr  8 10:42:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

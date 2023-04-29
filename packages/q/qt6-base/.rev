@@ -251,4 +251,13 @@
   * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch</comment>
     <requestid>1077991</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>e9445a23f1117c846e0cd22a4f4c360b</srcmd5>
+    <version>6.5.0</version>
+    <time>1682782089</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix boo#1210849:
+  * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch</comment>
+    <requestid>1083537</requestid>
+  </revision>
 </revisionlist>

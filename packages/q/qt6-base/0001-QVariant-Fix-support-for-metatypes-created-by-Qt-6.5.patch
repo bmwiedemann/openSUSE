@@ -1,0 +1,131 @@
+From 42c87e932c308c6269c4195091adae24bce90af1 Mon Sep 17 00:00:00 2001
+From: Fabian Kosmale <fabian.kosmale@qt.io>
+Date: Thu, 27 Apr 2023 09:40:17 +0200
+Subject: [PATCH] QVariant: Fix support for metatypes created by Qt < 6.5
+
+In Qt >= 6.1, < 6.5, a trivially constructible type would have the
+NeedsDestruction flag set, but it's dtor pointer would have been null.
+
+In Qt 6.5, the meaning of the NeedsDestruction flag was changed to be
+more aligned with what the name suggests, and thus would only be set for
+non-trivially destructible types. For QMetaType this was fine, but
+QVariant has a check for acceptable metatypes which attempts to verify
+whether a QMetaType is usable for QVariant. The check assumes the
+semantics of Qt 6.5, and thus fails for metatypes created by older Qt
+versions.
+
+To fix this issue, we increment the QMetaType revision field, and only
+check the metatype's destruction support if the revision is high enough.
+
+In theory, that allows passing unsuitable metatypes from older Qt
+versions to QVariant; however, such code would have been broken in prior
+Qt releases already (which didn't attempt the check), and no code that
+used to work in any released Qt version will break (as we simply skip a
+check that was passing before).
+
+Fixes: QTBUG-113227
+Pick-to: 6.5
+Change-Id: I12e02bd97d2c410ea1a36efb0ce2389f21d50a30
+Reviewed-by: Ulf Hermann <ulf.hermann@qt.io>
+---
+ src/corelib/kernel/qmetatype.h                | 11 ++++++--
+ src/corelib/kernel/qmetatype_p.h              |  7 ++++-
+ .../corelib/kernel/qvariant/tst_qvariant.cpp  | 28 +++++++++++++++++++
+ 3 files changed, 43 insertions(+), 3 deletions(-)
+
+diff --git a/src/corelib/kernel/qmetatype.h b/src/corelib/kernel/qmetatype.h
+index e70f901..a641313 100644
+--- a/src/corelib/kernel/qmetatype.h
++++ b/src/corelib/kernel/qmetatype.h
+@@ -246,7 +246,14 @@ using NonConstMetaTypeInterface = const QMetaTypeInterface;
+ class QMetaTypeInterface
+ {
+ public:
+-    ushort revision; // 0 in Qt 6.0. Can increase if new field are added
++
++    /* Revision: Can increase if new field are added, or if semantics changes
++       0: Initial Revision
++       1: the meaning of the NeedsDestruction flag changed
++    */
++    static inline constexpr ushort CurrentRevision = 1;
++
++    ushort revision;
+     ushort alignment;
+     uint size;
+     uint flags;
+@@ -2461,7 +2468,7 @@ struct QMetaTypeInterfaceWrapper
+     using InterfaceType = std::conditional_t<IsConstMetaTypeInterface, const QMetaTypeInterface, NonConstMetaTypeInterface>;
+ 
+     static inline InterfaceType metaType = {
+-        /*.revision=*/ 0,
++        /*.revision=*/ QMetaTypeInterface::CurrentRevision,
+         /*.alignment=*/ alignof(T),
+         /*.size=*/ sizeof(T),
+         /*.flags=*/ QMetaTypeForType<T>::Flags,
+diff --git a/src/corelib/kernel/qmetatype_p.h b/src/corelib/kernel/qmetatype_p.h
+index 3defbc7..e649394 100644
+--- a/src/corelib/kernel/qmetatype_p.h
++++ b/src/corelib/kernel/qmetatype_p.h
+@@ -152,7 +152,12 @@ inline bool isMoveConstructible(const QtPrivate::QMetaTypeInterface *iface) noex
+ 
+ inline bool isDestructible(const QtPrivate::QMetaTypeInterface *iface) noexcept
+ {
+-    return checkMetaTypeFlagOrPointer(iface, iface->dtor, QMetaType::NeedsDestruction);
++    /* For metatypes of revision 1, the NeedsDestruction was set even for trivially
++       destructible types, but their dtor pointer would be null.
++       For that reason, we need the additional check here.
++     */
++    return iface->revision < 1 ||
++           checkMetaTypeFlagOrPointer(iface, iface->dtor, QMetaType::NeedsDestruction);
+ }
+ 
+ inline void defaultConstruct(const QtPrivate::QMetaTypeInterface *iface, void *where)
+diff --git a/tests/auto/corelib/kernel/qvariant/tst_qvariant.cpp b/tests/auto/corelib/kernel/qvariant/tst_qvariant.cpp
+index 61a8e76..9dfc143 100644
+--- a/tests/auto/corelib/kernel/qvariant/tst_qvariant.cpp
++++ b/tests/auto/corelib/kernel/qvariant/tst_qvariant.cpp
+@@ -331,6 +331,7 @@ private slots:
+ 
+     void constructFromIncompatibleMetaType_data();
+     void constructFromIncompatibleMetaType();
++    void constructFromQtLT65MetaType();
+     void copyNonDefaultConstructible();
+ 
+ private:
+@@ -5636,6 +5637,33 @@ void tst_QVariant::constructFromIncompatibleMetaType()
+    QVERIFY(!QVariant(regular).convert(type));
+ }
+ 
++void tst_QVariant::constructFromQtLT65MetaType()
++{
++   auto qsizeIface = QtPrivate::qMetaTypeInterfaceForType<QSize>();
++
++   QtPrivate::QMetaTypeInterface qsize64Iface = {
++       /*revision*/0,
++       8,
++       8,
++       QMetaType::NeedsConstruction | QMetaType::NeedsDestruction,
++       0,
++       qsizeIface->metaObjectFn,
++       "FakeQSize",
++       qsizeIface->defaultCtr,
++       qsizeIface->copyCtr,
++       qsizeIface->moveCtr,
++       /*dtor =*/  nullptr,
++       qsizeIface->equals,
++       qsizeIface->lessThan,
++       qsizeIface->debugStream,
++       qsizeIface->dataStreamOut,
++       qsizeIface->dataStreamIn,
++       /*legacyregop =*/ nullptr
++   };
++   QVariant var{ QMetaType(&qsize64Iface) };
++   QVERIFY(var.isValid());
++}
++
+ void tst_QVariant::copyNonDefaultConstructible()
+ {
+     NonDefaultConstructible ndc(42);
+-- 
+2.40.0
+

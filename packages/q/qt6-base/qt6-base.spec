@@ -40,6 +40,7 @@ Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
+Patch1:         0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
