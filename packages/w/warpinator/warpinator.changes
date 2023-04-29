@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Fri Apr 28 14:22:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add BuildRequires: gobject-introspection to autodetect typelib
+  Requires and drop manual Requires for typelib-1_0-Gtk-3_0,
+  typelib-1_0-NM-1_0, and typelib-1_0-XApp-1_0.
+
+-------------------------------------------------------------------
+Thu Apr 27 17:56:28 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.1 [boo#1203463, boo#1207480]:
+  * warpinator-launch.py: Fix bubblewrap launch string.
+  * warpinator-send: Give a better error if warpinator isn't
+    running.
+  * Add /dev back to bubblewrap args.
+- Changes from version 1.6.0:
+  * build: Fix deprecation warning.
+  * notifications: Fix indentation.
+  * Improve some logging.
+  * remote: Improve readability of rpc calls.
+  * Migrate group code and connect ids to gsettings.
+  * Include the python landlock module.
+  * Implement incoming folder isolation.
+  * Improve incoming file path validation.
+  * Forbid some locations from being chosen as the save folder.
+  * Check if recents can be written to before attempting it.
+  * Move some util functions into a new file.
+  * Add warpinator-send utility.
+  * bubblewrap: Fixes for debian/lmde.
+  * transfers.py: Use generic getter for file content type.
+  * build: Fix dh_python3 byte-compilation.
+  * Simplify startup scripts.
+  * Remove some remnants of a previous grpc version.
+  * free space monitor: Improve readability, comments.
+  * free space: Don't run the monitor when only sending files.
+  * Clean up --help information, add a new section to the README
+    to explain landlock, bubblewrap.
+  * Add an infobar for a sandbox warning.
+  * Cleanup bubblewrap arguments, sandbox_mode setting, exit if
+    the user specifies a mode that isn't available, explain file
+    manager launch complexities.
+  * Simpliy NewThreadExecutor a bit.
+- Add hashbangs where they are required but missing.
+- Split out a new nemo-extension-warpinator package that provides
+  context menu items from the nemo file browser.
+
+-------------------------------------------------------------------
+Wed Jan 18 04:53:38 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.3:
+  * Updated translations.
+- Changes from version 1.4.2:
+  * Updated translations.
+- Changes from version 1.4.1:
+  * auth.py: remove leftover self, and get_group_code() always
+    needs to return a code.
+- Changes from version 1.4.0:
+  * Rework group code presentation and enforcement in preferences.
+  * Updated translations.
+- Drop warpinator-safe-destination.patch: incorporated upstream.
+
+-------------------------------------------------------------------
+Sat Oct  8 07:06:36 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.14:
+  * grpc: Use 1.44 instead of 1.46 for now - there is a polling
+    issue in 1.46+ that causes excessive CPU use.
+- Add warpinator-safe-destination.patch: Fix transfer destinations
+  so they cannot overwrite files/dirs outside of upload directory
+  [bsc#1203463, CVE-2022-42725].
+- Pass sysconfdir=%{_distconfdir} to meson for openSUSE >= 1550;
+  this moves the autostart file to the more appropriate location:
+  /usr/etc instead of /etc; there are no conf files that are
+  installed to /etc anyway.
+- Drop polkit privileges file: We do not have ufw in the distro,
+  so this is pretty much useless for us anyway.
+- Drop BuildRequires: python3-grpcio-tools, not required.
+
+-------------------------------------------------------------------
+Thu Sep 15 02:49:38 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Requires: python3-protobuf, needed at runtime as well.
+
+-------------------------------------------------------------------
+Thu Sep  1 14:58:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.13:
+  * Updated translations.
+- Changes from version 1.2.12:
+  * UI: Add links to altinators.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Tue Jun 28 23:07:53 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 1.2.11:
+  * Translation updates.
+- Changes from version 1.2.10:
+  * Remove a comment that no longer applies.
+  * auth.py: Limit the length of the zeroconf service name.
+  * transfers: Don't try to set mtime or mode on symlinks, and fix
+    folder permission setting.
+  * Update readme.
+  * make other platforms a bulleted list.
+  * Add some troubleshooting tips to the readme.
+  * Fix network device name fetching.
+  * Update README.md.
+  * Add keywords to .desktop file.
+
+-------------------------------------------------------------------
+Sat Jan 29 10:30:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.9:
+  * Transfers: Make transfers cancellable by the receiving
+    computer once more.
+  * server.py: Fix regression from 2cd3b660c that was preventing
+    existing ops from being restarted by the sender.
+  * transfers: Improve on 069cf5f57e6 by creating a generator
+    object to wrap the origin response instead of returning two
+    objects.
+- Drop warpinator-libexec-dir.patch: openSUSE uses
+  %_prefix/libexec for %_libexecdir now.
+
+-------------------------------------------------------------------
+Sun Aug  2 12:10:39 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add warpinator-libexec-dir.patch to replace hard-coded
+  '/usr/libexecdir' by '/usr/lib'.
+
+-------------------------------------------------------------------
+Mon Jun 15 06:22:29 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

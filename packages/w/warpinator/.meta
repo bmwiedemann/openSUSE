@@ -1,0 +1,8 @@
+<package name="warpinator" project="openSUSE:Factory">
+  <title>Share files across the LAN</title>
+  <description>Warpinator is a simple app that allows users to share files across the LAN.
+
+</description>
+  <devel project="network" package="warpinator"/>
+  <url>https://github.com/linuxmint/warpinator</url>
+</package>
