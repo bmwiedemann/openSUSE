@@ -42,7 +42,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.10
+Version:        17.31.11
 Release:        0
 License:        GPL-2.0+
 Url:            https://github.com/openSUSE/libzypp
