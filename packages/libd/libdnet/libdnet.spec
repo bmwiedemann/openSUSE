@@ -17,7 +17,7 @@
 
 
 Name:           libdnet
-Version:        1.16.3
+Version:        1.16.4
 Release:        0
 Summary:        Library for Portable Interface to Low-Level Networking Routines
 License:        BSD-3-Clause

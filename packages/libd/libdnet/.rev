@@ -178,4 +178,14 @@
     <comment></comment>
     <requestid>1058131</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>34df7a9966cf0dab8bbc25ef7ebdfe96</srcmd5>
+    <version>1.16.4</version>
+    <time>1682782061</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.16.4:
+  * Various fixes around the build process (esp. cmake support +
+    string.h include fixes)</comment>
+    <requestid>1083358</requestid>
+  </revision>
 </revisionlist>
