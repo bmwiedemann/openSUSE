@@ -2272,7 +2272,7 @@ BuildFlags: onlybuild:libva
 BuildFlags: onlybuild:libva:gl
 BuildFlags: onlybuild:libvdpau
 BuildFlags: onlybuild:libverto
-BuildFlags: onlybuild:libverto-libev
+BuildFlags: onlybuild:libverto:libverto-libev.spec
 BuildFlags: onlybuild:libvisual
 BuildFlags: onlybuild:libvoikko
 BuildFlags: onlybuild:libvorbis
