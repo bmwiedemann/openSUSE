@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 21 12:33:55 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.43
+  * htp: do not log content-encoding: none
+  * htp: do not error on multiple 100 Continue
+  * readme: remove note on libhtp not being stable
+  * uri: fix compile warning strict-prototypes
+  * bstr: fix compile warning strict-prototypes
+  * fuzz_diff: Free the rust test object.
+  * github: add CIFuzz workflow
+
+-------------------------------------------------------------------
 Tue Nov 29 18:49:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 0.5.42
