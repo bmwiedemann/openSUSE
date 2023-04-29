@@ -69,4 +69,22 @@
   * Remove ansi escapes for default icon #122</comment>
     <requestid>1078371</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd7ec46a5c5f701349fc20143e7d069b</srcmd5>
+    <version>2.0.0~0</version>
+    <time>1682782111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Regular expressions #130[1]
+  * Unix permissions #132[2]
+  * Force color #135[3]
+  * Show hardlinks without double counting file size #136[4]
+  * Regular expressions and globbing with file-type #137[5]
+  * Truncate output #138[6]
+  * Inverted tree layout #139[7]
+  * Binary has been renamed from et to erd in order to
+    address the following issue regarding name collisions with
+    other programs: #23[8]</comment>
+    <requestid>1083620</requestid>
+  </revision>
 </revisionlist>

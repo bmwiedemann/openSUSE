@@ -17,7 +17,7 @@
 
 
 Name:           erdtree
-Version:        1.8.1~0
+Version:        2.0.0~0
 Release:        0
 Summary:        A multi-threaded file-tree visualizer and disk usage analyzer
 License:        MIT
@@ -46,6 +46,6 @@ cp %{SOURCE2} .cargo/config
 %{cargo_test}
 
 %files
-%{_bindir}/et
+%{_bindir}/erd
 
 %changelog

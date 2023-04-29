@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 29 08:26:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  * Regular expressions #130[1]
+  * Unix permissions #132[2]
+  * Force color #135[3]
+  * Show hardlinks without double counting file size #136[4]
+  * Regular expressions and globbing with file-type #137[5]
+  * Truncate output #138[6]
+  * Inverted tree layout #139[7]
+  * Binary has been renamed from et to erd in order to
+    address the following issue regarding name collisions with
+    other programs: #23[8]
+
+-------------------------------------------------------------------
 Tue Apr 11 08:19:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.1:
