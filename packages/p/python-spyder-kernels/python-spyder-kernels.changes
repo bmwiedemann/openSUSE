@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 27 15:25:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.3
+  * PR 452 - PR: Fix error when executing empty Python script, by
+    @rear1019
+  * PR 450 - PR: Remove usage of distutils.LooseVersion, by
+    @ccordoba12 (440)
+  * PR 449 - PR: Add support for Jupyter-client 8, by @ccordoba12
+  * PR 448 - PR: Skip IPython versions that give buggy code
+    completions, by @ccordoba12
+  * PR 434 - PR: Use allow_pickle=True when loading Numpy arrays,
+    by @nkleinbaer
+  * PR 430 - PR: Inform GUI about position of exception in post
+    mortem debugging, by @rear1019
+
+-------------------------------------------------------------------
 Sun Mar 19 14:20:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip test file requiring xarray on python38

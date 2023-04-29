@@ -19,7 +19,7 @@
 # flaky for obs, only test locally
 %bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -38,8 +38,9 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 6.16.1 with %python-ipykernel < 7}
+BuildRequires:  %{python_module jupyter_client >= 7.4.9 with %python-jupyter_client < 9}
+BuildConflicts: %{python_module jupyter_client >= 8.8 with %python-jupyter_client < 8.10.1}
 BuildRequires:  %{python_module ipython >= 7.31.1 with %python-ipython < 9}
-BuildRequires:  %{python_module jupyter_client >= 7.4.9 with %python-jupyter_client < 8}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
@@ -57,7 +58,8 @@ Requires:       python-pyzmq >= 22.1
 Requires:       python-wurlitzer >= 1.0.3
 Requires:       (python-ipykernel >= 6.16.1 with python-ipykernel < 7)
 Requires:       (python-ipython >= 7.31.1 with python-ipython < 9)
-Requires:       (python-jupyter_client >= 7.4.9 with python-jupyter_client < 8)
+Conflicts:      (python-ipython >= 8.8.0 with python-ipython < 8.10.1)
+Requires:       (python-jupyter_client >= 7.4.9 with python-jupyter_client < 9)
 BuildArch:      noarch
 
 %python_subpackages
@@ -86,9 +88,7 @@ all inside the IDE.
 %if ! %{with dasktest}
 donttest=("-k" "not test_dask_multiprocessing")
 %endif
-# no xarray for python38
-python38_ignore="--ignore spyder_kernels/utils/tests/test_nsview.py"
-%pytest "${donttest[@]}" ${$python_ignore}
+%pytest "${donttest[@]}"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
