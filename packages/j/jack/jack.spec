@@ -1,7 +1,7 @@
 #
 # spec file for package jack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define wdbus 1
 %define sonum 0
 Name:           jack
-Version:        1.9.21
+Version:        1.9.22
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
@@ -144,7 +144,6 @@ export CXXFLAGS="$CFLAGS"
   --ports=1024 \
   --enable-pkg-config-dbus-service-dir \
   --mandir=%{_mandir}/man1 \
-  --example-tools=no \
   configure
 
 ./waf -v %{?_smp_mflags} build
