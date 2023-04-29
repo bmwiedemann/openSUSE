@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 29 08:15:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  * qcalc spawning behavior change
+  * Add --automatic-save-to-history option
+  * Fix memory leak from #66
+
+-------------------------------------------------------------------
 Tue Nov  1 08:58:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Modify the package dependencies, so that it can work both

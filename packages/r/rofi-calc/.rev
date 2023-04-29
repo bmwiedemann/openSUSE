@@ -135,4 +135,15 @@
     <comment></comment>
     <requestid>1033523</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de0bcfd5675cec21088bfcd665529478</srcmd5>
+    <version>2.2.0</version>
+    <time>1682782109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * qcalc spawning behavior change
+  * Add --automatic-save-to-history option
+  * Fix memory leak from #66</comment>
+    <requestid>1083618</requestid>
+  </revision>
 </revisionlist>
