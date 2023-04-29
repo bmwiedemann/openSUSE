@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 29 08:23:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.17.1:
+  * Improve code coverage of src/info/mod.rs #1011
+  * Improve code coverage of src/ui/mod.rs #1012
+  * Added fish git repository greeter script to wiki #1021
+  * upgrade gitoxide to v0.44 and incorporate #1023 #1024
+
+-------------------------------------------------------------------
 Sun Apr  9 07:52:50 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.17.0:
