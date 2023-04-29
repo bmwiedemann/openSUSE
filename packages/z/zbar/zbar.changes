@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 28 08:21:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add py311.patch to fix build against python 3.11
+
+-------------------------------------------------------------------
 Mon Dec 19 15:04:25 UTC 2022 - pgajdos@suse.com
 
 - ImageMagick instead of GraphicsMagick

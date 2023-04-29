@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ Group:          Productivity/Other
 URL:            https://github.com/mchehab/zbar
 Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
+# PATCH-FIX-UPSTREAM: fix build against python 3.11 - https://github.com/mchehab/zbar/commit/9bb0cc43f7f9e9c676e07b2e511f03bfa1c491cb
+Patch1:         py311.patch
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
