@@ -115,6 +115,8 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_datadir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.conf.d
+install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/systemd
+install -d -m 0755 %{buildroot}/%{_datadir}/containers/systemd
 
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json
 install -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/containers/storage.conf
@@ -148,9 +150,11 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %dir %{_sysconfdir}/containers/oci/hooks.d
 %dir %{_sysconfdir}/containers/registries.d
 %dir %{_sysconfdir}/containers/registries.conf.d
+%dir %{_sysconfdir}/containers/systemd
 %dir %{_datadir}/containers
 %dir %{_datadir}/containers/oci
 %dir %{_datadir}/containers/oci/hooks.d
+%dir %{_datadir}/containers/systemd
 
 %config(noreplace) %{_sysconfdir}/containers/policy.json
 %config(noreplace) %{_sysconfdir}/containers/storage.conf

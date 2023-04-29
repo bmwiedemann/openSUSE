@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 12:43:41 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Own /etc/containers/systemd and /usr/share/containers/systemd,
+  useful for podman quadlet.
+
+-------------------------------------------------------------------
 Wed Mar 15 09:17:51 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Remove container-storage-driver.sh, we want to default to the overlay driver
