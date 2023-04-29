@@ -16,47 +16,31 @@
 #
 
 
-%if 0%{suse_version} > 1550
+%if %{suse_version} > 1550
 %define sbindir %{_sbindir}
 %else
 %define sbindir /sbin
 %endif
 
+%{!?_distconfdir:%global _distconfdir /etc}
+
 Name:           perl-Bootloader
-Version:        0.941
+Version:        1.0
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}
-Recommends:     perl-gettext
-Summary:        Library for Configuring Boot Loaders
+Obsoletes:      perl-Bootloader-YAML < %{version}
+Summary:        Tool for boot loader configuration
 License:        GPL-2.0-or-later
 Group:          System/Boot
+URL:            https://github.com/openSUSE/perl-bootloader
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
-Conflicts:      multipath-tools < 0.4.8-40.25.1
 #!BuildIgnore: mdadm e2fsprogs limal-bootloader
 
 %description
-Perl modules for configuring various boot loaders.
-
-
-
-Authors:
---------
-    Jiri Srain <jsrain@suse.cz>
-    Joachim Plack <jplack@suse.de>
-    Alexander Osthof <aosthof@suse.de>
-    Josef Reidinger <jreidinger@suse.cz>
-
-%package YAML
-Requires:       %{name} = %{version}
-Requires:       perl-YAML-LibYAML
-Summary:        YAML interface for perl-Bootloader
-Group:          System/Boot
-
-%description YAML
-A command line interface to perl-Bootloader using YAML files for input and output.
+Shell script wrapper for configuring various boot loaders.
 
 %prep
 %setup -q
@@ -64,46 +48,9 @@ A command line interface to perl-Bootloader using YAML files for input and outpu
 %build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-%if %{suse_version} > 1550
-mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
-ln -sf ../../sbin/pbl %{buildroot}/usr/lib/bootloader/bootloader_entry
-rm $RPM_BUILD_ROOT/boot/boot.readme
-%endif
-install -d -m 700 $RPM_BUILD_ROOT/var/log/YaST2
-touch $RPM_BUILD_ROOT/var/log/pbl.log
-%perl_process_packlist
-#install only needed files for bootloader for specific architecture
-%ifarch %ix86 x86_64
-rm -f $RPM_BUILD_ROOT/%{perl_vendorlib}/Bootloader/Core/{ZIPL*,PowerLILO*}
-rm -f $RPM_BUILD_ROOT/%{_mandir}/man?/{*ZIPL*,*PowerLILO*}
-%if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
-sed -i '/ZIPL/D;/PowerLILO/D;' $RPM_BUILD_ROOT/%{perl_vendorarch}/auto/Bootloader/.packlist
-%endif
-%endif
-%ifarch ppc ppc64
-rm -f $RPM_BUILD_ROOT/%{perl_vendorlib}/Bootloader/Core/{ZIPL*,LILO*,ELILO*,GRUB.*}
-%if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
-sed -i '/ZIPL/D;/ELILO/D;/\/LILO/D;/GRUB/D;' $RPM_BUILD_ROOT/%{perl_vendorarch}/auto/Bootloader/.packlist
-%endif
-%endif
-%ifarch s390 s390x
-rm -f $RPM_BUILD_ROOT/%{perl_vendorlib}/Bootloader/Core/{*LILO*,GRUB.*,GRUB2EFI.*}
-%if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
-sed -i '/LILO/D;/GRUB/D;' $RPM_BUILD_ROOT/%{perl_vendorarch}/auto/Bootloader/.packlist
-%endif
-%endif
-%ifarch ia32 ia64
-rm -f $RPM_BUILD_ROOT/%{perl_vendorlib}/Bootloader/Core/{LILO*,GRUB*,ZIPL*,PowerLILO*}
-%if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
-sed -i '/ZIPL/D;/PowerLILO/D;/\/LILO/D;/GRUB/D;' $RPM_BUILD_ROOT/%{perl_vendorarch}/auto/Bootloader/.packlist
-%endif
-%endif
-# move logrotate files from /etc/logrotate.d to /usr/etc/logrotate.d
-%if 0%{?suse_version} > 1500
-mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
-mv %{buildroot}/%{_sysconfdir}/logrotate.d/pbl %{buildroot}%{_distconfdir}/logrotate.d
-%endif
+make install DESTDIR=%{buildroot} SBINDIR=%{sbindir} ETCDIR=%{_distconfdir}
+mkdir -p %{buildroot}/var/log
+touch %{buildroot}/var/log/pbl.log
 
 %post
 echo -n >>/var/log/pbl.log
@@ -112,26 +59,16 @@ chmod 600 /var/log/pbl.log
 %files
 %defattr(-, root, root)
 %license COPYING
-%doc %{_mandir}/man?/*
+%doc %{_mandir}/man8/*
 %doc boot.readme
-%{perl_vendorarch}/auto/Bootloader
-%{perl_vendorlib}/Bootloader
-%if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
-/var/adm/perl-modules/perl-Bootloader
-%endif
 %{sbindir}/update-bootloader
 %{sbindir}/pbl
 /usr/lib/bootloader
-%if 0%{?suse_version} > 1500
-%{_distconfdir}/logrotate.d/pbl
+%if "%{_distconfdir}" == "/etc"
+%config(noreplace) %{_distconfdir}/logrotate.d/pbl
 %else
-%config(noreplace) %{_sysconfdir}/logrotate.d/pbl
+%{_distconfdir}/logrotate.d/pbl
 %endif
-%dir %attr(0700,root,root) /var/log/YaST2
 %ghost %attr(0600,root,root) /var/log/pbl.log
-
-%files YAML
-%defattr(-, root, root)
-%{_sbindir}/pbl-yaml
 
 %changelog

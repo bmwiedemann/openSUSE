@@ -1,4 +1,22 @@
 --------------------------------------------------------------------
+Mon Apr 24 17:38:14 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#143
+- adjust Makefile for usrmerge and legacy package split
+- move obs spec file to git repo
+- split off old perl code to perl-Bootloader-legacy package
+- remove legacy part completely
+- 1.0
+
+--------------------------------------------------------------------
+Mon Apr 24 15:07:57 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#142
+- use fw_platform_size to distinguish between 32 bit and 64 bit
+  UEFI platforms (bsc#1208003)
+- 0.942
+
+--------------------------------------------------------------------
 Thu Jan 12 17:30:54 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#141

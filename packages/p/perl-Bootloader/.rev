@@ -1581,4 +1581,23 @@ Fix error in installation to extended partition (bnc#750897)
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1058049</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>6a40cad567bea4d815422d24729306d7</srcmd5>
+    <version>1.0</version>
+    <time>1682782053</time>
+    <user>dimstar_suse</user>
+    <comment>- merge gh#openSUSE/perl-bootloader#143
+- adjust Makefile for usrmerge and legacy package split
+- move obs spec file to git repo
+- split off old perl code to perl-Bootloader-legacy package
+- remove legacy part completely
+- 1.0
+--------------------------------------------------------------------
+- merge gh#openSUSE/perl-bootloader#142
+- use fw_platform_size to distinguish between 32 bit and 64 bit
+  UEFI platforms (bsc#1208003)
+- 0.942
+--------------------------------------------------------------------</comment>
+    <requestid>1082810</requestid>
+  </revision>
 </revisionlist>
