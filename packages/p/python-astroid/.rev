@@ -456,4 +456,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     and add ``TryStar`` to ``astroid.nodes.ALL_NODE_CLASSES``.</comment>
     <requestid>1082830</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>f5758c43c3f3668613653fec24646fd7</srcmd5>
+    <version>2.15.4</version>
+    <time>1682782064</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Requires for typing_extensions.</comment>
+    <requestid>1083439</requestid>
+  </revision>
 </revisionlist>

@@ -42,7 +42,7 @@ BuildArch:      noarch
 %if 0%{?python_version_nodots} < 38
 Requires:       python-typed-ast >= 1.4
 %endif
-%if 0%{?python_version_nodots} < 310
+%if 0%{?python_version_nodots} < 311
 Requires:       python-typing-extensions >= 3.10
 %endif
 %if 0%{?python_version_nodots} < 311
