@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Apr 28 22:38:53 UTC 2023 - Hannes Braun <apple.hannes@gmail.com> - 0.15.1
+
+- Update to upstream version 0.15.1
+  * Fix embedded terminal partial refreshes.
+  * Fix maildir message updates after "mbsync".
+
+-------------------------------------------------------------------
+Thu Apr 27 13:32:12 UTC 2023 - Hannes Braun <apple.hannes@gmail.com> - 0.15.0
+
+- Update to upstream version 0.15.0
+  * New column-based message list format with "index-columns".
+  * Add a "msglist_answered" style for answered messages.
+  * Compose "Format=Flowed" messages with "format-flowed=true" in aerc.conf.
+  * Add a trimSignature function to the templating engine.
+  * Change local domain name for SMTP with "smtp-domain=example.com" in
+    aerc.conf
+  * New column-based status line format with "status-columns".
+  * Inline user-defined styles can be inserted in UI templates via the
+    {{.Style "name" string}} function.
+  * Add the ability to run arbitrary commands over the socket. This can be
+    disabled using the disable-ipc setting.
+  * Allow configuring URL handlers via "x-scheme-handler/<scheme> [openers]" in
+    aerc.conf.
+  * Allow basic shell globbing in [openers] MIME types.
+  * Dynamic "msglist_*" styling based on email header values in stylesets.
+  * Add "mail-received", "aerc-startup", and "aerc-shutdown" hooks.
+  * Search/filter by flags with the "-H" flag.
+  * The built-in colorize filter theme is now configured in styleset files into
+    the [viewer] section.
+  * The standard Usenet signature delimiter "-- " is now prepended to
+    "signature-file" and "signature-cmd" if not already present.
+  * All aerc(1) commands now interpret aerc-templates(7) markup.
+  * running commands (like mailto: or mbox:) no longer prints a success message
+  * The built-in colorize filter now emits OSC 8 to mark URLs and emails. Set
+    "[general].enable-osc8 = true" in aerc.conf to enable it.
+  * [ui].index-format setting has been replaced by index-columns.
+  * [statusline].render-format has been replaced by status-columns.
+  * Removed support for [ui:subject...] contextual sections in aerc.conf.
+  * [triggers] setting has been replaced by [hooks].
+  * smtp-starttls setting in accounts.conf has been removed. All smtp://
+    transports now assume STARTTLS and will fail if the server does not support
+    it. To disable STARTTLS, use smtp+insecure://.
+- Remove "filters-install-location.patch: merged into upstream
+- Remove "fix-english-typos.patch": merged into upstream
+
+-------------------------------------------------------------------
 Sun Mar 26 22:33:13 UTC 2023 - Hannes Braun <apple.hannes@gmail.com> - 0.14.0
 
 - Fix ppc64 build

@@ -17,20 +17,19 @@
 
 
 Name:           aerc
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        An email client for your terminal
 License:        MIT
 Group:          Productivity/Networking/Email/Clients
 URL:            https://aerc-mail.org/
-Source:         %{name}-0.14.0.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Patch0:         fix-script-interpreter.patch
-Patch1:         fix-english-typos.patch
-Patch2:         filters-install-location.patch
-BuildRequires:  scdoc
+BuildRequires:  gcc
 BuildRequires:  go
 BuildRequires:  make
 BuildRequires:  notmuch-devel
+BuildRequires:  scdoc
 
 %description
 aerc is an email client that runs in your terminal. It's highly
@@ -39,24 +38,16 @@ efficient and extensible, perfect for the discerning hacker.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %if "%{_arch}" == "ppc64"
-    %make_build PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}/%{name}
+    %make_build CC=cc GOFLAGS=""
 %else
-    GOFLAGS="-buildmode=pie -tags=notmuch" %make_build PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}/%{name}
+    %make_build CC=cc GOFLAGS="-buildmode=pie -tags=notmuch"
 %endif
-strip %{name}
-strip wrap
 
 %install
-%if "%{_arch}" == "ppc64"
-    %make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}/%{name}
-%else
-    GOFLAGS="-buildmode=pie -tags=notmuch" %make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}/%{name}
-%endif
+%make_install PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}/%{name}
 
 %files
 %license LICENSE
