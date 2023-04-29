@@ -120,4 +120,16 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>1059626</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>603d5a1d4a39ce206aa7c9b79859624a</srcmd5>
+    <version>0.3.11</version>
+    <time>1682782062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.11:
+  * Add limited support for XPath 1.0 'in' (Richard Hughes)
+  * Add support for zstd (Richard Hughes)
+  * Do not assert() when decompressing invalid LZMA (Richard
+    Hughes)</comment>
+    <requestid>1083359</requestid>
+  </revision>
 </revisionlist>

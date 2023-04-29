@@ -19,7 +19,7 @@
 
 %define sover 2
 Name:           libxmlb
-Version:        0.3.10
+Version:        0.3.11
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzstd)
 # Needed for the self tests
 BuildRequires:  pkgconfig(shared-mime-info)
 %{?suse_build_hwcaps_libs}
