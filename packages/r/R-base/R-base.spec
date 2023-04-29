@@ -23,14 +23,14 @@
 %define release 1
 
 Name:           R-base
-Version:        4.2.3
+Version:        4.3.0
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
 Source10:       macros.R
 #Source: http://cran.r-project.org/src/base/R-2/R-%%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix tre when wchar_t is unsigned int
-#Patch0:         tre.patch
+# PATCH-FIX-UPSTREAM build with libcurl >= 8
+# Patch0:         R-4.2.3-curl-v8.patch
 
 URL:            http://www.r-project.org/
 
@@ -320,6 +320,16 @@ This package provides the core of R, i.e. all that is in base.
 %{_libdir}/R/modules/
 %dir %{_libdir}/R/share
 %dir %{_libdir}/R/library
+%dir %{_libdir}/R/library/grDevices/
+%dir %{_libdir}/R/library/grDevices/fonts/
+%dir %{_libdir}/R/library/grDevices/fonts/Montserrat
+%dir %{_libdir}/R/library/grDevices/fonts/Montserrat/static
+%{_libdir}/R/library/grDevices/fonts/Montserrat/static/Montserrat-BoldItalic.ttf
+%{_libdir}/R/library/grDevices/fonts/Montserrat/static/Montserrat-Medium.ttf
+%dir %{_libdir}/R/library/grDevices/fonts/Roboto
+%{_libdir}/R/library/grDevices/fonts/Roboto/Roboto-Medium.ttf
+%{_libdir}/R/library/grDevices/fonts/Roboto/LICENSE.txt
+
 %dir %{_datadir}/R/library/
 %{_libdir}/R/share/encodings/
 %{_libdir}/R/share/java/
@@ -1316,7 +1326,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.20.45
+Version:        0.21.8
 Release:        %release
 Requires:       R-base
 
@@ -1330,6 +1340,7 @@ This packages provides R-lattice, one of the recommended packages.
 %{_libdir}/R/library/lattice/CITATION
 %{_libdir}/R/library/lattice/data/
 %{_libdir}/R/library/lattice/demo/
+%{_libdir}/R/library/lattice/doc/
 %{_libdir}/R/library/lattice/DESCRIPTION
 %{_libdir}/R/library/lattice/help/
 %{_libdir}/R/library/lattice/html/
@@ -1337,7 +1348,7 @@ This packages provides R-lattice, one of the recommended packages.
 %{_libdir}/R/library/lattice/libs/
 %{_libdir}/R/library/lattice/Meta/
 %{_libdir}/R/library/lattice/NAMESPACE
-%{_libdir}/R/library/lattice/NEWS
+%{_libdir}/R/library/lattice/NEWS.md
 %dir %{_libdir}/R/library/lattice/po/
 %lang(de) %{_libdir}/R/library/lattice/po/de/
 %lang(en) %{_libdir}/R/library/lattice/po/en*/
@@ -1382,7 +1393,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.5.3
+Version:        1.5.4
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1588,7 +1599,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.5.3
+Version:        3.5.5
 Release:        %release
 Requires:       R-base
 
