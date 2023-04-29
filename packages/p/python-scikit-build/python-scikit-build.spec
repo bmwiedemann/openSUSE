@@ -26,24 +26,19 @@
 %endif
 
 Name:           python-scikit-build%{psuffix}
-Version:        0.16.7
+Version:        0.17.2
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
-Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit-build-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit_build-%{version}.tar.gz
 Source99:       sample-setup.cfg
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42.0.0}
-BuildRequires:  %{python_module wheel}
-%if !%{with test}
-# https://github.com/scikit-build/scikit-build/issues/689
-BuildRequires:  %{python_module setuptools_scm}
-%if 0%{?suse_version} < 1550
-BuildRequires:  %{python_module toml}
-%endif
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       cmake
@@ -51,13 +46,17 @@ Requires:       python-distro
 Requires:       python-packaging
 Requires:       python-setuptools >= 42.0.0
 Requires:       python-wheel >= 0.32.0
-%if %python_version_nodots < 38
+%if %{python_version_nodots} < 38
 Requires:       python-typing-extensions >= 3.7
+%endif
+%if %{python_version_nodots} < 311
+Requires:       python-tomli
 %endif
 %if %{with test}
 # Note: When tests fail try `osc build ---clean` in order to get rid of remnant numpy typing stubs in $HOME
 BuildRequires:  %{python_module Cython >= 0.25.1}
 BuildRequires:  %{python_module build >= 0.7}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.4}
 BuildRequires:  %{python_module pytest-virtualenv >= 1.2.5}
@@ -76,7 +75,7 @@ BuildArch:      noarch
 Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 %prep
-%autosetup -p1 -n scikit-build-%{version}
+%autosetup -p1 -n scikit_build-%{version}
 %if %{with test}
 # some tests call setup.py develop|install|test, which by default write to /usr
 # This is not allowed in OBS
@@ -88,9 +87,6 @@ cp %{S:99} tests/samples/issue-274-support-default-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-274-support-one-package-without-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup.cfg
 %endif
-# remove toml entries not relevant for us and failing old py3.6 pip in 15.X
-sed -i '/tool.pylint/,/^$/ d' pyproject.toml
-sed -i '/tool.ruff/,/^$/ d' pyproject.toml
 
 %if !%{with test}
 %build
@@ -105,12 +101,14 @@ sed -i '/tool.ruff/,/^$/ d' pyproject.toml
 %check
 # these tests need a wheelhouse with downloaded wheels including platform dependent cmake
 donttestmarker="isolated"
+# setuptools_scm is a dependency of hatch_vcs
+donttestmarker+=" or nosetuptoolsscm"
 %pytest -m "not ($donttestmarker)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
-%doc AUTHORS.rst README.rst CONTRIBUTING.rst HISTORY.rst docs/
+%doc AUTHORS.rst README.rst CONTRIBUTING.rst docs/
 %license LICENSE
 %{python_sitelib}/skbuild
 %{python_sitelib}/scikit_build-%{version}.dist-info
