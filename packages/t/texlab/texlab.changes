@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 22 10:57:23 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.5.0:
+  * Allow optionally passing cursor position to textDocument/build request for use in forward search after building.
+    Previously, the server had to guess the cursor position
+  * Add experimental texlab.experimental.citationCommands setting to allow extending the list of citation commands
+  * Add support for escaping placeholders in build arguments similar to forward search
+  * Allow configuring completion matching algorithm
+  * Fix regression introduced in v5.4.2 involving texlab.cleanArtifacts command.
+
+-------------------------------------------------------------------
 Mon Apr 10 23:49:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 5.4.1:
