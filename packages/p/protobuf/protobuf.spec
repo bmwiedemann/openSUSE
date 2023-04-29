@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define sover 3_21_12
 %define tarname protobuf
@@ -36,6 +37,7 @@ URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.tar.gz#/%{tarname}-%{version}.tar.gz
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
+Source1000:     %{name}-rpmlintrc
 Patch0:         gcc12-disable-__constinit-with-c++-11.patch
 # https://github.com/protocolbuffers/protobuf/pull/10355
 Patch1:         10355.patch
@@ -167,6 +169,9 @@ This package contains the Python bindings for Google Protocol Buffers.
 
 %prep
 %autosetup -p1 -n %{tarname}-%{version}
+
+# The previous blank line is crucial for older system being able
+# to use the autosetup macro
 mkdir gmock
 
 %if %{with python2} || %{with python3}

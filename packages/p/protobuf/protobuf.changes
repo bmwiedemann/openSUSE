@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 28 07:07:50 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Mention the rpmlintrc file in the spec.
+
+-------------------------------------------------------------------
+Thu Apr 27 06:59:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Make possible to build on older systems, like SLE12 that miss
+  some of the used macros.
+
+-------------------------------------------------------------------
 Thu Mar 23 09:01:50 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO (boo#1133277).
