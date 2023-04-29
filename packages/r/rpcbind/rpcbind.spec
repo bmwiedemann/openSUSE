@@ -33,6 +33,7 @@ Source2:        sysconfig.rpcbind
 Source5:        rpc-user.conf
 Patch1:         0001-systemd-unit-files.patch
 Patch2:         0001-change-lockingdir-to-run.patch
+Patch3:         harden_rpcbind.service.patch
 BuildRequires:  libtirpc-devel >= 1.0.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
