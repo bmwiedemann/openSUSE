@@ -191,4 +191,13 @@
     <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
     <requestid>1077324</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>9c5476b4de70b58936d896b4550622e8</srcmd5>
+    <version>6.5.0</version>
+    <time>1682782091</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix boo#1210849:
+  * 0001-QML-metatypes-Adjust-to-QMetaType-revision-increment.patch</comment>
+    <requestid>1083538</requestid>
+  </revision>
 </revisionlist>
