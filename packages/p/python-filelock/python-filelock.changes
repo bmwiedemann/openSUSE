@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr 25 23:29:13 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.12.0
+  * Make the thread local behaviour something the caller can
+    enable/disable via a flag during the lock creation. on by default.
+  * Better error handling on Windows.
+- from v3.11.0
+  * Make the lock thread local.
+- from v3.10.7
+  * Use fchmod instead of chmod to work around bug in PyPy via Anaconda.
+- from v3.10.6
+  * Enhance the robustness of the try/catch block in _soft.py.
+- from v3.10.5
+  * Add explicit error check as certain UNIX filesystems do not support
+    flock.
+- from v3.10.4
+  * Update os.open to preserve mode= for certain edge cases.
+- from v3.10.3
+  * Fix permission issue
+- from v3.10.2
+  * Bug fix for using filelock with threaded programs causing undesired
+    file permissions
+- from v3.10.1
+  * Handle pickle for :class:`filelock.Timeout`
+- from v3.10.0
+  * Add support for explicit file modes for lockfiles
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
