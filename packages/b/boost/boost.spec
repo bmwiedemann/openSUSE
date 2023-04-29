@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.81.0
-%define _ver 1_81_0
-%define package_version 1_81_0
+%define ver 1.82.0
+%define _ver 1_82_0
+%define package_version 1_82_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,9 +235,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.81.0
+Version:        1.82.0
 Release:        0
-%define library_version 1_81_0
+%define library_version 1_82_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++

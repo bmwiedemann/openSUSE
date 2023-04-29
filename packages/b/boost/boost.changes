@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:04:18 CEST 2023 - aschnell@suse.com
+
+- update to 1.82.0
+ * new libraries:
+    + MySQL - MySQL Header-only Library.
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_82_0.html
+
+-------------------------------------------------------------------
 Wed Mar  8 19:11:00 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
