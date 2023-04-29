@@ -1,8 +1,9 @@
-diff -dupr squashfs4.4_orig/squashfs-tools/mksquashfs.c squashfs4.4/squashfs-tools/mksquashfs.c
---- squashfs4.4_orig/squashfs-tools/mksquashfs.c	2019-10-21 15:36:52.002369471 +0200
-+++ squashfs4.4/squashfs-tools/mksquashfs.c	2019-10-21 15:37:13.402549491 +0200
-@@ -4384,6 +4384,15 @@ void initialise_threads(int readq, int f
- 		processors = sysconf(_SC_NPROCESSORS_ONLN);
+Index: squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
+===================================================================
+--- squashfs-tools-4.6.1.orig/squashfs-tools/mksquashfs.c
++++ squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
+@@ -5276,6 +5276,15 @@ static void initialise_threads(int readq
+ 		}
  #endif
  	}
 +	/* Every frag_thrd will:

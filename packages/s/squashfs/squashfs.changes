@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr 15 09:55:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * Race condition which can cause corruption of the "fragment
+    table" fixed.  This is a regression introduced in August 2022,
+    and it has been seen when tailend packing is used (-tailends option).
+  * Fix build failure when the tools are being built without
+    extended attribute (XATTRs) support.
+  * Fix XATTR error message when an unrecognised prefix is
+    found
+  * Fix incorrect free of pointer when an unrecognised XATTR
+    prefix is found.
+  * Major improvements in extended attribute handling,
+    pseudo file handling, and miscellaneous new options and
+    improvements
+  * Extended attribute handling improved in Mksquashfs and
+    Sqfstar
+  * New Pseudo file xattr definition to add extended
+    attributes to files.
+  * New xattrs-add Action to add extended attributes to files
+  * Extended attribute handling improved in Unsquashfs
+  * Other major improvements
+  * Unsquashfs can now output Pseudo files to standard out.
+  * Mksquashfs can now input Pseudo files from standard in.
+  * Squashfs filesystems can now be converted (different
+    block size compression etc) without unpacking to an
+    intermediate filesystem or mounting, by piping the output of
+    Unsquashfs to Mksquashfs.
+  * Pseudo files are now supported by Sqfstar.
+  * "Non-anchored" excludes are now supported by Unsquashfs.
+
+-------------------------------------------------------------------
 Fri Oct 14 12:33:23 UTC 2022 - Torsten Duwe <duwe@suse.com>
 
 - Do not repeat openSUSE / SLE version tests

@@ -1,7 +1,7 @@
 #
 # spec file for package squashfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           squashfs
-Version:        4.5.1
+Version:        4.6.1
 Release:        0
 Summary:        A Read-Only File System with Efficient Compression
 License:        GPL-2.0-or-later
@@ -60,8 +60,10 @@ make -C squashfs-tools install \
 
 %files
 %license COPYING
-%doc README-%{version} ACKNOWLEDGEMENTS CHANGES USAGE
-%{_bindir}/*
+%doc README-%{version} ACKNOWLEDGEMENTS CHANGES USAGE-4.6
+%{_bindir}/sqfs*
+%{_bindir}/mksquashfs
+%{_bindir}/unsquashfs
 %{_mandir}/man1/*
 
 %changelog
