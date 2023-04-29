@@ -123,4 +123,13 @@
     <comment>Update to 6.2.0 (fourth attempt)</comment>
     <requestid>908582</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>505331ac0ca95151850240b59ea55783</srcmd5>
+    <version>6.2.0</version>
+    <time>1682782088</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes boo#1210931 by adding Qt6 support (4th attempt)
+</comment>
+    <requestid>1083627</requestid>
+  </revision>
 </revisionlist>

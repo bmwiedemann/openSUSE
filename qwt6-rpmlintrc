@@ -1,0 +1,3 @@
+# Silence complaint on Leap
+addFilter("shlib-policy-name-error")
+

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 28 11:07:33 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fixes boo#1210931 
+- Add _multibuild to support Qt6
+- Add qwt-6.2.0-qt6-pkgconfig.patch and
+  qwt-6.2.0-qt6-libsuffix.patch (courtesy of Fedora)
+  and qwt6-rpmlintrc
+- Man pages are now installed in the flavored doc dir as per
+  upstream default
+
+-------------------------------------------------------------------
 Tue Jul 27 08:07:52 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Rollback previous changes.
