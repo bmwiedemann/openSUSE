@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 28 09:23:53 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1682595397.5ce6d2f:
+  * Handle OCI style images as well
+  * Makefile: Add missing dependency of broken-derived on proper-base
+  * GitHub workflow: Update action versions
+  * GitHub workflow: Test python 3.6 and 3.10
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:19 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Make the URL point to GitHub

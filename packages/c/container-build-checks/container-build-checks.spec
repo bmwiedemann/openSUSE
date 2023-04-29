@@ -1,7 +1,7 @@
 #
 # spec file for package container-build-checks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           container-build-checks
-Version:        1650464301.a198cf9
+Version:        1682595397.5ce6d2f
 Release:        0
 Summary:        Scripts to validate built container images
 License:        GPL-2.0-or-later

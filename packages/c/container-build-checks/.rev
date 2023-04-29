@@ -65,4 +65,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>995154</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cfbdbebd670e64fc5c7833168be6262e</srcmd5>
+    <version>1682595397.5ce6d2f</version>
+    <time>1682782069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1682595397.5ce6d2f:
+  * Handle OCI style images as well
+  * Makefile: Add missing dependency of broken-derived on proper-base
+  * GitHub workflow: Update action versions
+  * GitHub workflow: Test python 3.6 and 3.10</comment>
+    <requestid>1083502</requestid>
+  </revision>
 </revisionlist>
