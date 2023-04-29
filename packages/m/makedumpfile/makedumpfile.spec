@@ -1,7 +1,7 @@
 #
 # spec file for package makedumpfile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define build_eppic 0
 
 %if 0%{!?have_snappy:1}
 %if 0%{?suse_version} >= 1310
@@ -40,7 +42,7 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -54,7 +56,9 @@ Patch2:         %{name}-PN_XNUM.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
+%if %{build_eppic}
 BuildRequires:  libeppic-devel
+%endif
 BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  xz-devel
@@ -88,16 +92,20 @@ export USEZSTD=on
 export USELZO=on
 export LINKTYPE=dynamic
 make %{?_smp_mflags} LDFLAGS="-Wl,-rpath,%{_libdir}/%{name}-%{version}"
+%if %{build_eppic}
 make %{?_smp_mflags} eppic_makedumpfile.so %{?ncurses_make_opts}
+%endif
 
 %install
 install -D -m 0755 makedumpfile %{buildroot}%{_bindir}/makedumpfile
 install -D -m 0755 makedumpfile-R.pl %{buildroot}%{_bindir}/makedumpfile-R.pl
 install -D -m 0644 makedumpfile.8 %{buildroot}%{_mandir}/man8/makedumpfile.8
 install -D -m 0644 makedumpfile.conf.5 %{buildroot}%{_mandir}/man5/makedumpfile.conf.5
+%if %{build_eppic}
 install -D -m 0755 eppic_makedumpfile.so %{buildroot}%{_libdir}/%{name}-%{version}/eppic_makedumpfile.so
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts
 install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ eppic_scripts/*
+%endif
 
 # Compatibility cruft
 # there is no %%license prior to SLE12
@@ -117,9 +125,11 @@ install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ epp
 %doc README IMPLEMENTATION
 %{_mandir}/man?/*
 %{_bindir}/*
+%if %{build_eppic}
 %dir %{_libdir}/%{name}-%{version}
 %{_libdir}/%{name}-%{version}/eppic_makedumpfile.so
 %dir %{_datadir}/%{name}-%{version}
 %{_datadir}/%{name}-%{version}/eppic_scripts/
+%endif
 
 %changelog

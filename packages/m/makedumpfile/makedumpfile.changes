@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 25 10:42:06 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- update to 1.7.3:
+  * Support kernels up to v6.3 (x86_64)
+  * Support sadump with 5-level paging
+- temporarily disable eppic until v5.0 branch can be supported
+
+-------------------------------------------------------------------
 Sat Dec  3 21:34:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:
