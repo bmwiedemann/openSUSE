@@ -17,10 +17,6 @@
 
 
 %define sover  3_10_6
-%ifarch %{arm}
-# boo#1182440
-%define _lto_cflags %{nil}
-%endif
 %bcond_without docs
 Name:           gnuradio
 Version:        3.10.6.0
@@ -49,7 +45,7 @@ BuildRequires:  gsl-devel
 BuildRequires:  libSDL-devel
 BuildRequires:  libboost_atomic-devel >= 1.69
 BuildRequires:  libboost_filesystem-devel >= 1.69
-BuildRequires:  libboost_system-devel  >= 1.69
+BuildRequires:  libboost_system-devel >= 1.69
 BuildRequires:  libgsm-devel
 BuildRequires:  libiio-devel
 BuildRequires:  libjack-devel
@@ -81,31 +77,31 @@ BuildRequires:  qwt6-qt5-devel
 BuildRequires:  soapy-sdr-devel
 BuildRequires:  spdlog-devel
 BuildRequires:  thrift
-BuildRequires:  uhd-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  volk-devel >= 2.4.1
 BuildRequires:  typelib(Gtk) = 3.0
 BuildRequires:  typelib(PangoCairo) = 1.0
 BuildRequires:  typelib(cairo) = 1.0
+BuildRequires:  uhd-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  volk-devel >= 2.4.1
+# gr_soapy dependencies
+Requires:       python3-SoapySDR
 # gnuradio-companion dependencies
 Requires:       python3-cairo
-Requires:       python3-gobject-Gdk
-Requires:       python3-jsonschema
-Requires:       typelib(Gtk) = 3.0
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
+Requires:       python3-gobject-Gdk
+Requires:       python3-jsonschema
 Requires:       python3-mako >= 1.1.0
 Requires:       python3-numpy >= 1.17.4
 Requires:       python3-pyaml >= 3.11
-Requires:       python3-qt5
-# gr_filter dependencies
-Requires:       python3-scipy
 Requires:       python3-pyqtgraph
 # gr_network dependencies
 Requires:       python3-pyzmq
-# gr_soapy dependencies
-Requires:       python3-SoapySDR
+Requires:       python3-qt5
+# gr_filter dependencies
+Requires:       python3-scipy
+Requires:       typelib(Gtk) = 3.0
 %if %{with docs}
 BuildRequires:  doxygen
 BuildRequires:  mathjax
