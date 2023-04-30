@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 22 15:36:15 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix dependency on tllist to be >=1.1.0 since the code uses a feature
+  not found in older versions.
+
+-------------------------------------------------------------------
 Wed Apr  5 17:45:07 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Add dependency on utempter explicitly since it's not picked up automatically.

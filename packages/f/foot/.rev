@@ -336,4 +336,12 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.14.0 for more details.</comment>
     <requestid>1077579</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7504a809845143b968e776fd6902a82a</srcmd5>
+    <version>1.14.0</version>
+    <time>1682863662</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083658</requestid>
+  </revision>
 </revisionlist>
