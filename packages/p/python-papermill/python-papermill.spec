@@ -42,6 +42,8 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-azure-datalake-store >= 0.0.30
 Recommends:     python-azure-storage-blob
+# https://build.opensuse.org/request/show/1083380#comments
+Requires:       (python-typing_extensions if python-azure-storage-blob)
 Recommends:     python-black
 Recommends:     python-boto3
 Recommends:     python-gcsfs >= 0.2.0
@@ -55,6 +57,8 @@ BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module gcsfs}
+# for python-azure-storage-blob (https://build.opensuse.org/request/show/1083380#comments)
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module ipython >= 5.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module moto}
@@ -62,6 +66,7 @@ BuildRequires:  %{python_module nbclient >= 0.2.0}
 BuildRequires:  %{python_module nbformat >= 5.1.2}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -89,8 +94,6 @@ and analyzing Jupyter Notebooks.
 %check
 # different output type expected
 donttest="TestBrokenNotebook2"
-# no pyarrow
-donttest="$donttest or test_hdfs_listdir"
 %pytest -k "not ($donttest)"
 
 %post
