@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Apr 18 04:17:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.2.0:
+  * fopen: Use “UTF-8” as default encoding for fopen
+    (https://savannah.gnu.org/bugs/?63930).
+  * fopen, unicode2native: Fix converting the encoding of short
+    char arrays with invalid UTF-8
+    (https://savannah.gnu.org/bugs/?63930).
+  * fopen: Try to gather complete UTF-8 surrogates when converting
+    encoding (https://savannah.gnu.org/bugs/?63930).
+  * fopen: Do not convert encoding for file streams with libc++
+    (https://savannah.gnu.org/bugs/?63930).
+  * pr-output.cc: Fix output for format native-bit
+    (https://savannah.gnu.org/bugs/?63940).
+  * Fix evaluation of & and | expressions in conditional contexts
+    (https://savannah.gnu.org/bugs/?63935).
+  * Avoid clang warning about very unlikely buffer overflow.
+  * mpoles.m: Overhaul function and use absolute tolerance for
+    zero poles (https://savannah.gnu.org/bugs/?63937).
+  * perms.m: Change "unique" output order to reverse lexicographic
+    to match non-unique order
+    (https://savannah.gnu.org/bugs/?63962).
+  * Remove trailing '\r' from curl dir list
+    (https://savannah.gnu.org/bugs/?63851).
+  * Fix display of scalar complex variables with mixed Inf/NaN and
+    floating point values (https://savannah.gnu.org/bugs/?63961).
+  * Don’t use encoding facet when writing bytes to stream
+    (https://savannah.gnu.org/bugs/?63931).
+  * GUI: Speedup loading and saving preferences dialog
+    (https://savannah.gnu.org/bugs/?63909).
+  * Build system / Tests:
+    - inpolygon.m: Fix demo code
+      (https://savannah.gnu.org/bugs/?63865).
+    - if.tst: New test for (https://savannah.gnu.org/bugs/?63935).
+    - acinclude.m4: Correct typo in #define PCRE2_CODE_UNIT_WIDTH.
+    - lu: Add self-test with complex valued input.
+    - Disable visibility flags by default
+      (https://savannah.gnu.org/bugs/?61855, bug #63916).
+    - Check whether using STL from LLVM or Apple
+      (https://savannah.gnu.org/bugs/?63930).
+  - Documentation:
+    - Improve documentation for linspace and logspace functions.
+    - Correct and improve documentation for sparse() function.
+
+-------------------------------------------------------------------
+Sun Mar 12 11:38:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.1.0:
+  * Long list of changes, see <https://octave.org/NEWS-8.html>.
+- API version bumped from 57 to 58.
+- Minor re-base of
+  0001-Add-explicit-ctime-include-required-for-clock.patch for
+  update (file-name change only).
+
+-------------------------------------------------------------------
 Wed Jan  4 14:33:48 UTC 2023 - pgajdos@suse.com
 
 - back to GraphicsMagick, octave cannot be built against

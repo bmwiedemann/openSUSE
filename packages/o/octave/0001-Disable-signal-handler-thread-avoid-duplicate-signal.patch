@@ -29,14 +29,14 @@ See also https://bugreports.qt.io/browse/QTBUG-56338
 Not using a dedicated signal handler thread removes a source of
 indeterminism, and also fixes https://savannah.gnu.org/bugs/?54607
 ---
- liboctave/wrappers/signal-wrappers.c | 2 +-
+ liboctave/wrappers/cxx-signal-helpers.cc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: octave-6.1.0/liboctave/wrappers/signal-wrappers.c
+Index: octave-8.1.0/liboctave/wrappers/cxx-signal-helpers.cc
 ===================================================================
---- octave-6.1.0.orig/liboctave/wrappers/signal-wrappers.c
-+++ octave-6.1.0/liboctave/wrappers/signal-wrappers.c
-@@ -709,7 +709,7 @@ signal_watcher (void *arg)
+--- octave-8.1.0.orig/liboctave/wrappers/cxx-signal-helpers.cc
++++ octave-8.1.0/liboctave/wrappers/cxx-signal-helpers.cc
+@@ -192,7 +192,7 @@ signal_watcher (void *arg)
  void
  octave_create_interrupt_watcher_thread (octave_sig_handler *handler)
  {
@@ -44,4 +44,4 @@ Index: octave-6.1.0/liboctave/wrappers/signal-wrappers.c
 +#if 0
    pthread_t sighandler_thread_id;
  
-   if (pthread_create (&sighandler_thread_id, 0, signal_watcher, handler))
+   if (pthread_create (&sighandler_thread_id, 0, signal_watcher,
