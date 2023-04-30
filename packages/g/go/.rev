@@ -968,4 +968,16 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
 - Add define tsan_arch s390x ppc64le new in go1.19 (forwarded request 999136 from jfkw)</comment>
     <requestid>999276</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>7d68aa2f3509dc0e296aab68830656b9</srcmd5>
+    <version>1.20</version>
+    <time>1682863660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current stable go1.20
+  Refs boo#1206346 go1.20 release tracking
+- Packaging improvements:
+  * Re-enable debuginfo boo#1210938 remove spec comment &quot;# nodebug&quot;
+  * Use Group: Development/Languages/Go instead of Other (forwarded request 1083581 from jfkw)</comment>
+    <requestid>1083582</requestid>
+  </revision>
 </revisionlist>

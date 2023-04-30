@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 28 14:22:09 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to current stable go1.20
+  Refs boo#1206346 go1.20 release tracking
+- Packaging improvements:
+  * Re-enable debuginfo boo#1210938 remove spec comment "# nodebug"
+  * Use Group: Development/Languages/Go instead of Other
+
+-------------------------------------------------------------------
 Tue Aug 23 05:22:33 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to current stable go1.19

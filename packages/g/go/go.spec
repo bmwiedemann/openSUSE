@@ -1,7 +1,7 @@
 #
 # spec file for package go
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
 # NOTE: This logic must come from the latest go1.x package specfile.
 # We only build go-race on supported systems.
@@ -27,13 +26,13 @@
 %endif
 
 Name:           go
-Version:        1.19
+Version:        1.20
 # Version must always be a valid golang(API) version
 %define api_version %{version}
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
-Group:          Development/Languages/Other
+Group:          Development/Languages/Go
 Url:            http://golang.org
 Source:         README
 Recommends:     go-doc = %{version}
@@ -73,7 +72,7 @@ Go examples and documentation.
 %package race
 Summary:        Go runtime race detector
 License:        NCSA or MIT
-Group:          Development/Languages/Other
+Group:          Development/Languages/Go
 Url:            https://compiler-rt.llvm.org/
 Requires:       go = %{version}
 Supplements:    go = %{version}
