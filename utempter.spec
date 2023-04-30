@@ -1,7 +1,7 @@
 #
 # spec file for package utempter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define lname	libutempter0
 %define utmpGroup utmp
 Name:           utempter
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A privileged helper for utmp and wtmp updates
 License:        LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://github.com/altlinux/libutempter/
-Source:         ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz.asc
+Source:         http://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz
+Source1:        http://ftp.altlinux.org/pub/people/ldv/utempter/lib%{name}-%{version}.tar.gz.asc
 Source2:        baselibs.conf
 Source3:        %{name}.keyring
 Patch0:         utempter.eal3.diff
