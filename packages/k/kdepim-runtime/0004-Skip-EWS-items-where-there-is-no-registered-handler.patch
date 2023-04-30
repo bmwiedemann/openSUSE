@@ -1,0 +1,38 @@
+From 20f001338153724d899e9e586a290be6c3f66394 Mon Sep 17 00:00:00 2001
+From: Thomas Karpiniec <tk@1.21jiggawatts.net>
+Date: Tue, 25 Apr 2023 21:06:04 +1000
+Subject: [PATCH 4/6] Skip EWS items where there is no registered handler
+
+Prevents nullptr dereference when handling an unexpected item type
+EwsItemTypeItem, such as can be found in "MeContact" on
+outlook.com.
+
+BUG: 440831
+
+
+(cherry picked from commit e6007c7e81d8987fa402f70084675f7ad3e33eac)
+---
+ resources/ews/ewsfetchitemsjob.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/resources/ews/ewsfetchitemsjob.cpp b/resources/ews/ewsfetchitemsjob.cpp
+index 082e9fe8f..e920445cd 100644
+--- a/resources/ews/ewsfetchitemsjob.cpp
++++ b/resources/ews/ewsfetchitemsjob.cpp
+@@ -311,7 +311,12 @@ void EwsFetchItemsJob::compareItemLists()
+             /* Ignore unknown items. */
+             continue;
+         }
+-        QString mimeType = EwsItemHandler::itemHandler(type)->mimeType();
++        auto handler(EwsItemHandler::itemHandler(type));
++        if (!handler) {
++            /* Ignore items where no handler exists. */
++            continue;
++        }
++        QString mimeType = handler->mimeType();
+         if (it == itemHash.end()) {
+             Item item(mimeType);
+             item.setParentCollection(mCollection);
+-- 
+2.40.0
+

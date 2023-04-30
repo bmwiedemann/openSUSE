@@ -844,4 +844,19 @@
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080586</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>3c0b65374f3e07e07f4b9d3c9293d91d</srcmd5>
+    <version>23.04.0</version>
+    <time>1682863654</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fixes:
+  * 0001-Fix-single-file-resources-not-reloading-configuratio.patch
+    (kde#425460)
+  * 0004-Skip-EWS-items-where-there-is-no-registered-handler.patch
+    (kde#440831)
+  * 0006-Ignore-infite-set.patch (related: kde#445746, kde#454322)
+  * 0001-Fix-crash-trying-to-access-password-of-empty-account.patch
+    (kde#435427, boo#1187119)</comment>
+    <requestid>1083624</requestid>
+  </revision>
 </revisionlist>

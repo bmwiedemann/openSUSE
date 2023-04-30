@@ -1,0 +1,34 @@
+From a740e7fafe67336fdb1189760976a8fd5fe306f2 Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl@carlschwan.eu>
+Date: Thu, 27 Apr 2023 23:22:12 +0200
+Subject: [PATCH 6/6] Ignore infite set
+
+Infinite IMAP set are likely causing an out of memory exception.
+
+CCBUG: 445746
+CCBUG: 454322
+
+
+(cherry picked from commit a7dad00a23230236113b0edb646f2e47914a812d)
+---
+ resources/imap/moveitemstask.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/resources/imap/moveitemstask.cpp b/resources/imap/moveitemstask.cpp
+index a11e691cb..3e24866bb 100644
+--- a/resources/imap/moveitemstask.cpp
++++ b/resources/imap/moveitemstask.cpp
+@@ -342,6 +342,10 @@ QVector<qint64> MoveItemsTask::imapSetToList(const KIMAP::ImapSet &set)
+     const KIMAP::ImapInterval::List lstInterval = set.intervals();
+     list.reserve(lstInterval.count());
+     for (const KIMAP::ImapInterval &interval : lstInterval) {
++        if (!interval.hasDefinedEnd()) {
++            qCWarning(IMAPRESOURCE_LOG) << "Trying to convert an infinite imap interval to a finite list";
++            continue;
++        }
+         for (qint64 i = interval.begin(), end = interval.end(); i <= end; ++i) {
+             list << i;
+         }
+-- 
+2.40.0
+

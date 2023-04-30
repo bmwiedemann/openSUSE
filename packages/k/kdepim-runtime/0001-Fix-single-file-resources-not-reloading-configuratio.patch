@@ -1,0 +1,31 @@
+From f0ad4f921341baa50faee2bd4ec53ffcab7e048b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Sat, 22 Apr 2023 12:38:29 +0200
+Subject: [PATCH 1/6] Fix single-file-resources not reloading configuration at
+ runtime
+
+BUG: 425460
+FIXED-IN: 23.04.1
+---
+ resources/shared/singlefileresource/singlefileresource.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/resources/shared/singlefileresource/singlefileresource.h b/resources/shared/singlefileresource/singlefileresource.h
+index eb5e0540a..8dc04c0f7 100644
+--- a/resources/shared/singlefileresource/singlefileresource.h
++++ b/resources/shared/singlefileresource/singlefileresource.h
+@@ -47,6 +47,11 @@ public:
+         delete mSettings;
+     }
+ 
++    void applyConfigurationChanges() override
++    {
++        mSettings->load();
++    }
++
+     /**
+      * Read changes from the backend file.
+      */
+-- 
+2.40.0
+
