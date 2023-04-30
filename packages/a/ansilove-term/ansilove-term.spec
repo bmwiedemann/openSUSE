@@ -1,6 +1,7 @@
 #
 # spec file for package ansilove-term
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +27,7 @@ URL:            https://www.ansilove.org
 #Git-Clone:     https://github.com/ansilove/ansilove-term.git
 Source:         %{name}-%{version}.tar.xz
 Patch0:         ansilove-term-use-gcc.patch
+Patch1:         ansilove-term-gcc13.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -33,8 +35,7 @@ Ansilove-Term is a command line tool to render text-mode art files as
 PNG files, as well as displaying in several different mediums.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -Wno-return-type"

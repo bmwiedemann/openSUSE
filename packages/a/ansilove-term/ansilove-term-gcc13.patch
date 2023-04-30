@@ -1,0 +1,12 @@
+Index: ansilove-term-0.0.0+git.20190908/src/libtextmode/utf8.h
+===================================================================
+--- ansilove-term-0.0.0+git.20190908.orig/src/libtextmode/utf8.h
++++ ansilove-term-0.0.0+git.20190908/src/libtextmode/utf8.h
+@@ -3,6 +3,7 @@
+ 
+ #include <vector>
+ #include <string>
++#include <cstdint>
+ 
+ std::string cp_437_code_to_string(const uint8_t& cp_437);
+ std::string cp_437_to_utf8_string(std::vector<uint8_t>& vector);
