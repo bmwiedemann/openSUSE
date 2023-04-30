@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Apr 30 07:00:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.1:
+  * core: Implicitly call `entrypoint` + `defaultArgs` when needed
+    (#5039)
+  * docs: Clarified Python get started steps (#5029)
+  * docs: Fixed inconsistent Node.js tab labels (#5018)
+  * engine: upgrade buildkit to fix for cache ref leak (#5031)
+  * engine: Ensure that dnsmasq subprocess is killed (#5032)
+  * Ensure engine exits 0 when it receives SIGTERM/SIGINT. (#5024)
+  * dnsmasq: stability improvements + greater debuggability (#5015)
+  * engine/cache: release refs after push (#5022)
+  * strip sourcemap from Dockerfile builds (#5012)
+  * Use strings.Builder for querybuilder build method (#5007)
+  * TUI: support PgUp/PgDn/Home/End in log output (#4998)
+  * docs: Updated CI guide (#4952)
+  * keep 755 perms for cache with changed owner (#5006)
+  * Add some more debug endpoints to the engine process. (#5003)
+  * Use background context to release gateway containers. (#5005)
+  * core: refactor away from fooIDPayload pattern (#4973)
+  * Support configuring ownership (almost) everywhere (#4932)
+  * docs: Updated FAQ (#4959)
+  * fix(tui): added h and l as alt collapse/expand bindings (#4997)
+  * fix out-of-order event delivery (#4996)
+  * avoid using HTML chars in doc string (#4988)
+  * docs: improve Copy Embedded Directories into a Container
+    (#4974)
+  * feat: pass secrets to Container.Build and Directory.Build
+    (#4971)
+  * ci: set proper octal notation file permissions (#4985)
+  * fix flock usage for addnhosts (#4983)
+  * Flush cache mounts on cache manager close. (#4980)
+  * Bump graphql-tools-go for session start performance fix (#4977)
+  * test: fix test for directory.dockerBuild (#4976)
+  * ci: use mounted cache for go modules download (#4975)
+  * Fix goroutine leak in cache import. (#4970)
+  * docs: Added Dagger with PHP and Laravel guide (#4913)
+  * First pass at dagger-in-dagger CI! (#4848)
+  * docs: Added cookbook (#4938)
+  * docs: use withDirectory (#4969)
+  * Print engine name to it's own logs (#4964)
+  * Sort out custom transport logic for CLI sessions to fix
+    goroutine leak (#4960)
+  * Add ability for clients to print which engine they are
+    connected to. (#4909)
+  * Add support for cache service. (#4923)
+  * docs: Added note to secrets guide (#4956)
+  * docs: Added note  in services guides (#4955)
+  * collect `github.com/pr.branch` label (#4933)
+  * docs: Merged CI guides (#4937)
+  * build(deps): bump oss.terrastruct.com/d2 from 0.1.5 to 0.2.4
+    (#4722)
+  * tests: add additional test on chain operations (#4907)
+  * Go: Implementation of (Container|Directory)With (#4898)
+  * build(deps): bump github.com/docker/docker (#4891)
+  * build(deps): bump golang.org/x/term from 0.5.0 to 0.7.0 (#4895)
+  * build(deps): bump google.golang.org/protobuf from 1.29.0 to
+    1.29.1 (#4899)
+  * Improve releases instructions during v0.5.0 (#4908)
+  * ci: bump dagger version in mage targets (#4931)
+  * Container: add withExec(skipEntrypoint: Boolean) (#4919)
+  * Set HTTP source filename to be URL. (#4927)
+  * build(deps): bump sass from 1.59.3 to 1.61.0 in /website
+    (#4917)
+  * docs: Updated service containers guide reg. ports (#4897)
+  * docs: Updated requirements for PHP/Rust (#4869)
+  * docs: Added multi-language snippets to multibuild guide (#4875)
+  * build(deps): bump google.golang.org/grpc from 1.52.3 to 1.54.0
+    (#4815)
+
+-------------------------------------------------------------------
 Thu Apr 13 10:35:45 UTC 2023 - kastl@b1-systems.de
 
 - BuildRequire go1.20
