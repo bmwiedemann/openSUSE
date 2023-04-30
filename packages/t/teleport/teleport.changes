@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Apr 30 07:15:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.2.5:
+  * Release 12.2.5 (#25326)
+  * Integrations: AWS OIDC - ListDatabases action (#24877)
+  * Record and verify WebAuthn RPIDs (#25238) (#25289)
+  * [v12] Fuzz TDP protocol, fix two issues. (#25308)
+  * Add option to override kube context on `tsh kube login`
+    (#25253)
+  * Fix `TestAuthSignKubeconfig` test (#25269)
+  * Update Electron to 22.3.6 (#25184)
+  * Fix cluster alerts timeout (#25300)
+  * Properly handle SAML IdP enable/disable. (#25309)
+  * Addresses #23554 (#25296)
+  * Do not try to verify PROXY signature for non-Teleport TLVs
+    (#25302)
+  * Bump gh-trigger-workflow timeout to 2h30m (#25174)
+  * [v12] Clean up Drone slack notifcations (#25217)
+  * Use the correct emitter in auth.TLSServer (#25272)
+  * Fix `underlying reader not a terminal` issues (#25102) (#25242)
+  * [v12] docs: Login Rule k8s operator docs (#25158)
+  * [v12] Show <1m for remaining tsh status valid time for last
+    minute (#25225)
+  * Move db cert renewal message to debug log (#25222)
+  * docs: add information on viewing status and logs for systemd
+    service (#25199)
+  * * Save ssh_service.public_addr values to Server.PublicAddrs
+    instead of discarding them (#25223)
+  * Add new field to license spec (#23194) (#25197)
+  * fix: avoid inadvertent deletion of active HSM keys (#25208)
+  * [v12] Update headless tsh command descriptions (#25148)
+  * [v12] Update e ref. (#25205)
+  * Connect: Fix logout sequence (#24978) (#25182)
+  * Avoid prompting users for mfa when using `tsh ssh --headless`
+    (#24701) (#25187)
+  * [v12] Simplify Okta assignment statuses. (#25189)
+  * Improve performance of MFA ceremony (#24804)
+  * Headless Login explicit username (#24689) (#25112)
+  * Alphabetize the GUI Client page (#25120)
+  * [v12] Document relative link paths in partials (#25117)
+  * [v12] docs: append cluster name for example ansible hosts list
+    (#25124)
+  * [v12] Order sudoers file lines by role name (#24792)
+  * [web] Add storeUser to console context (#24159) (#24809)
+  * Add login hooks. (#24828) (#25105)
+  * Join Script: fix tarball folder for ent builds (#25076)
+  * fix github url formatting (#25089) (#25098)
+  * Add key attestation to generate user certs to catch non-login
+    flows. (#24867) (#24956)
+  * add comment specifying kubernetes user (#24916)
+  * docs: Add warning about TLS multiplexing to Kubernetes IAM
+    joining (#24820)
+  * OktaAssignment and UserGroup in auth cache. (#25067)
+  * docs: fix spelling and remove misspelled word from spellcheck
+    skip (#25030)
+  * Add in group labels for role conditions. (#25080)
+  * Log informative messages for device authn failures (#24912)
+  * [v12] docs: Change `listen_addr` to `web_listen_addr` in custom
+    Helm deployment guide (#24974)
+  * docs: fix directory instruction for docs contributing (#24994)
+  * docs: Adds common Teleport configure,start and helm charts for
+    non-iam db access guides (#25001)
+  * Pass the auth.Server itself to inventory.NewController (#25007)
+  * [v12] local proxy not required for mysql separate port (#24827)
+  * replace 'machine' with 'host' or 'workstation' (#24986)
+  * clarify tctl command location and secret destination (#24982)
+  * Make tsh check SSH_ user, proxy, and cluster env variables if
+    not already set. (#24470)
+  * [v12] docs: update version (#24957)
+  * [v12] Proxy Client (#24734)
+  * docs: make adopters table markdown for cleaner look (#24951)
+  * Fix example API client imports (#24375)
+  * docs: remove unneeded sudo for removing user data dirs (#24919)
+  * [v12] Makes the `Per Role` per session mfa example accurate
+    (#24927)
+  * [v12] docs: remove duplicate content in oracle guide (#24907)
+  * docs: bump cloud to 12.2.3 (#24769) (#24843)
+  * [v12] docs: provide warning on Amazon Linux 2023 installations
+    (#24853)
+  * Update e ref (#24894)
+  * Use apt.releases to fetch pub key (#24875)
+  * [v12] Update crewjam/saml dependency. (#24898)
+  * [v12] Edit Homebrew installation instructions (#24824)
+  * Remove unnecessary sudo from Connect uninstall docs (#24888)
+  * Update Cloud FAQ doc to remove latency note (#24891)
+  * refactor how 'tsh scp' destinations are parsed (#24861)
+  * [v12] docs: provider faq answer for configurable maintenance
+    times for cloud (#24855)
+
+-------------------------------------------------------------------
 Thu Apr 20 14:35:02 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.2.4:
