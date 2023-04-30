@@ -1,7 +1,7 @@
 #
 # spec file for package libedit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        https://www.thrysoee.dk/editline/libedit-%{pkg_version}.tar.gz
 Source1:        README.SUSE
 Source2:        baselibs.conf
 Patch0:         libedit-20180525-manpage-conflicts.patch
+Patch1:         libedit-hidden-symbols.patch
 # For patch0
 BuildRequires:  automake
 BuildRequires:  libtool

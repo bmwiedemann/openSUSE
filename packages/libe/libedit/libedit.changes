@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  5 15:01:43 UTC 2023 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- libedit-hidden-symbols.patch: hide strlcpy and strlcat 
+  symbols
+  * Both now part of POSIX, will appear in libc shortly.
+  * Function names starting with ‘str’, ‘mem’, or ‘wcs’ followed 
+    by a lowercase letter are reserved.
+
+-------------------------------------------------------------------
 Sun Dec  5 21:43:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20210910:
