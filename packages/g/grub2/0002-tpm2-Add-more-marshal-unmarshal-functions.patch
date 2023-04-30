@@ -1,7 +1,7 @@
-From ac5c47af318652a25df1788c73884e4e9b6e4ac1 Mon Sep 17 00:00:00 2001
+From 1d34522075949581ccb34a08dd73607566517824 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Tue, 7 Feb 2023 18:33:42 +0800
-Subject: [PATCH 05/13] tpm2: add more marshal/unmarshal functions
+Subject: [PATCH 2/4] tpm2: Add more marshal/unmarshal functions
 
 Add a few more marshal/unmarshal functions to support authorized policy.
 
@@ -34,7 +34,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
  2 files changed, 337 insertions(+)
 
 diff --git a/grub-core/tpm2/mu.c b/grub-core/tpm2/mu.c
-index 6d3294c5b..150a8d37d 100644
+index 1617f37cd..3a9a3c1be 100644
 --- a/grub-core/tpm2/mu.c
 +++ b/grub-core/tpm2/mu.c
 @@ -383,6 +383,49 @@ grub_tpm2_mu_TPMS_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
@@ -86,7 +86,7 @@ index 6d3294c5b..150a8d37d 100644
 +
  void
  grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
-                                              const TPM2B_SENSITIVE_CREATE *sensitiveCreate)
+ 					     const TPM2B_SENSITIVE_CREATE *sensitiveCreate)
 @@ -405,6 +448,113 @@ grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buffer,
      grub_tpm2_buffer_pack_u16 (buffer, 0);
  }
@@ -200,7 +200,7 @@ index 6d3294c5b..150a8d37d 100644
 +
  void
  grub_tpm2_mu_TPM2B_Unmarshal (grub_tpm2_buffer_t buffer,
-                               TPM2B* p)
+ 			      TPM2B* p)
 @@ -775,6 +925,24 @@ grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (grub_tpm2_buffer_t buffer,
    grub_tpm2_mu_TPM2B_Unmarshal (buffer, (TPM2B*) &p->digest);
  }
@@ -225,7 +225,7 @@ index 6d3294c5b..150a8d37d 100644
 +
  void
  grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buf,
-                                            TPMS_PCR_SELECTION* pcrSelection)
+ 					   TPMS_PCR_SELECTION* pcrSelection)
 @@ -805,3 +973,97 @@ grub_tpm2_mu_TPML_DIGEST_Unmarshal (grub_tpm2_buffer_t buf,
    for (grub_uint32_t i = 0; i < digest->count; i++)
      grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buf, &digest->digests[i]);
@@ -325,11 +325,11 @@ index 6d3294c5b..150a8d37d 100644
 +  grub_tpm2_mu_TPMU_SIGNATURE_Unmarshal (buffer, p->sigAlg, &p->signature);
 +}
 diff --git a/include/grub/tpm2/mu.h b/include/grub/tpm2/mu.h
-index 1e5065bb4..158dbe188 100644
+index c545976db..afb842ab5 100644
 --- a/include/grub/tpm2/mu.h
 +++ b/include/grub/tpm2/mu.h
 @@ -147,6 +147,47 @@ grub_tpm2_mu_TPM2B_SENSITIVE_CREATE_Marshal (grub_tpm2_buffer_t buf,
-                                              const TPM2B_SENSITIVE_CREATE *sensitiveCreate);
+ 					     const TPM2B_SENSITIVE_CREATE *sensitiveCreate);
  
  void
 +grub_tpm2_mu_TPMU_SENSITIVE_COMPOSITE_Marshal (grub_tpm2_buffer_t buf,
@@ -374,11 +374,11 @@ index 1e5065bb4..158dbe188 100644
 +                                       const TPMT_TK_VERIFIED *p);
 +void
  grub_tpm2_mu_TPM2B_Unmarshal (grub_tpm2_buffer_t buf,
-                               TPM2B* p);
+ 			      TPM2B* p);
  
 @@ -277,6 +318,14 @@ void
  grub_tpm2_mu_TPMT_TK_CREATION_Unmarshal (grub_tpm2_buffer_t buf,
-                                          TPMT_TK_CREATION *p);
+ 					 TPMT_TK_CREATION *p);
  
 +void
 +grub_tpm2_mu_TPMT_TK_HASHCHECK_Unmarshal (grub_tpm2_buffer_t buf,
@@ -390,10 +390,10 @@ index 1e5065bb4..158dbe188 100644
 +
  void
  grub_tpm2_mu_TPMS_PCR_SELECTION_Unmarshal (grub_tpm2_buffer_t buf,
-                                            TPMS_PCR_SELECTION* pcrSelection);
+ 					   TPMS_PCR_SELECTION* pcrSelection);
 @@ -289,4 +338,30 @@ void
  grub_tpm2_mu_TPML_DIGEST_Unmarshal (grub_tpm2_buffer_t buf,
-                                     TPML_DIGEST* digest);
+ 				    TPML_DIGEST* digest);
  
 +void
 +grub_tpm2_mu_TPMS_SIGNATURE_RSA_Unmarshal (grub_tpm2_buffer_t buf,

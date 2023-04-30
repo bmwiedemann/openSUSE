@@ -42,7 +42,7 @@ Index: grub-2.06/grub-core/commands/efi/tpm.c
 +  pcr = &o->pcrSelections[o->count++];
 +  pcr->hash = algo;
 +  pcr->sizeOfSelect = 3;
-+  pcr->pcrSelect[TPM2_PCR_TO_SELECT(pcrIndex)] |= TPM2_PCR_TO_BIT(pcrIndex);
++  TPMS_PCR_SELECTION_SelectPCR (pcr, pcrIndex);
 +}
 +
 +struct grub_tpm_hash_info {

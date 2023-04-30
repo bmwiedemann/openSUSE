@@ -1,0 +1,142 @@
+From d6e2d32d53d9a1aac2383fc6c075f3827111b643 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 6 Apr 2023 16:00:25 +0800
+Subject: [PATCH 4/4] tpm2: Support authorized policy
+
+TPM2_PolicyAuthorize is the key command to support authorized policy
+which allows the users to sign TPM policies with their own keys.
+
+Per TPM 2.0 Key File(*), CommandPolicy for TPM2_PolicyAuthorize
+comprises 'TPM2B_PUBLIC pubkey', 'TPM2B_DIGEST policy_ref', and
+'TPMT_SIGNATURE signature'. This commit unmarshals those data
+structures, fetches the current policy digest, hashes the policy digest
+with the hash algorithm written in 'signature', and then verifies
+'signature' with 'pubkey'. If everything goes well, TPM2_PolicyAuthorize
+is invoked to authorize the signed policy.
+
+(*) https://www.hansenpartnership.com/draft-bottomley-tpm2-keys.html
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/tpm2/module.c | 98 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 98 insertions(+)
+
+diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
+index 5274296b7..e5235c2ac 100644
+--- a/grub-core/tpm2/module.c
++++ b/grub-core/tpm2/module.c
+@@ -454,6 +454,101 @@ grub_tpm2_protector_policypcr (TPMI_SH_AUTH_SESSION session,
+   return GRUB_ERR_NONE;
+ }
+ 
++static grub_err_t
++grub_tpm2_protector_policyauthorize (TPMI_SH_AUTH_SESSION session,
++				     struct grub_tpm2_buffer *cmd_buf)
++{
++  TPM2B_PUBLIC pubkey;
++  TPM2B_DIGEST policy_ref;
++  TPMT_SIGNATURE signature;
++  TPM2B_DIGEST pcr_policy;
++  TPM2B_DIGEST pcr_policy_hash;
++  TPMI_ALG_HASH sig_hash;
++  TPMT_TK_VERIFIED verification_ticket;
++  TPM_HANDLE pubkey_handle = 0;
++  TPM2B_NAME pubname;
++  TPM_RC rc;
++  grub_err_t err;
++
++  grub_tpm2_mu_TPM2B_PUBLIC_Unmarshal (cmd_buf, &pubkey);
++  grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (cmd_buf, &policy_ref);
++  grub_tpm2_mu_TPMT_SIGNATURE_Unmarshal (cmd_buf, &signature);
++  if (cmd_buf->error != 0)
++    {
++      err = GRUB_ERR_BAD_ARGUMENT;
++      return grub_error (err, N_("Failed to unmarshal the buffer for "
++				 "TPM2_PolicyAuthorize"));
++    }
++
++  /* Retrieve Policy Digest */
++  rc = TPM2_PolicyGetDigest (session, NULL, &pcr_policy, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      err = GRUB_ERR_BAD_DEVICE;
++      grub_error (err, N_("Failed to get policy digest (TPM error: 0x%x)."),
++		  rc);
++      return err;
++    }
++
++  /* Calculate the digest of the polcy for VerifySignature */
++  sig_hash = TPMT_SIGNATURE_get_hash_alg (&signature);
++  if (sig_hash == TPM_ALG_NULL)
++    {
++      err = GRUB_ERR_BAD_ARGUMENT;
++      grub_error (err, N_("Failed to get the hash algorithm of the signature"));
++      return err;
++    }
++  rc = TPM2_Hash (NULL, (TPM2B_MAX_BUFFER *)&pcr_policy, sig_hash,
++		  TPM_RH_NULL, &pcr_policy_hash, NULL, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      err = GRUB_ERR_BAD_DEVICE;
++      grub_error (err, N_("Failed to create PCR policy hash (TPM2_Hash failed "
++			  "with TSS/TPM error %u)"), rc);
++      return err;
++    }
++
++  /* Load the public key */
++  rc = TPM2_LoadExternal (NULL, NULL, &pubkey, TPM_RH_OWNER,
++			  &pubkey_handle, &pubname, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      err = GRUB_ERR_BAD_DEVICE;
++      grub_error (err, N_("Failed to load public key (TPM2_LoadExternal failed "
++			  "with TSS/TPM error %u)"), rc);
++      return err;
++    }
++
++  /* Verify the signature against the public key and the policy digest */
++  rc = TPM2_VerifySignature (pubkey_handle, NULL, &pcr_policy_hash, &signature,
++			     &verification_ticket, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      err = GRUB_ERR_BAD_DEVICE;
++      grub_error (err, N_("Failed to verify signature (TPM2_VerifySignature "
++			  "failed with TSS/TPM error %u)"), rc);
++      goto error;
++    }
++
++  /* Authorize the signed policy with the public key and the verification ticket */
++  rc = TPM2_PolicyAuthorize (session, NULL, &pcr_policy, &policy_ref, &pubname,
++			     &verification_ticket, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      err = GRUB_ERR_BAD_DEVICE;
++      grub_error (err, N_("Failed to authorize PCR policy (TPM2_PolicyAuthorize "
++			  "failed with TSS/TPM error: 0x%u).\n"), rc);
++      goto error;
++    }
++
++  err = GRUB_ERR_NONE;
++
++error:
++  TPM2_FlushContext (pubkey_handle);
++
++  return err;
++}
++
+ static grub_err_t
+ grub_tpm2_protector_enforce_policy (tpm2key_policy_t policy, TPMI_SH_AUTH_SESSION session)
+ {
+@@ -473,6 +568,9 @@ grub_tpm2_protector_enforce_policy (tpm2key_policy_t policy, TPMI_SH_AUTH_SESSIO
+     case TPM_CC_PolicyPCR:
+       err = grub_tpm2_protector_policypcr (session, &buf);
+       break;
++    case TPM_CC_PolicyAuthorize:
++      err = grub_tpm2_protector_policyauthorize (session, &buf);
++      break;
+     default:
+       return grub_error (GRUB_ERR_BAD_ARGUMENT,
+ 			 N_("Unknown TPM Command: 0x%x"), policy->cmd_code);
+-- 
+2.35.3
+

@@ -48,6 +48,7 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  gnu-unifont
 %endif
 BuildRequires:  help2man
+BuildRequires:  libtasn1-devel
 BuildRequires:  xz
 %if 0%{?suse_version} >= 1210
 BuildRequires:  makeinfo
@@ -413,13 +414,15 @@ Patch890:       0006-cryptodisk-Add-infrastructure-to-pass-data-from-cryp.patch
 Patch891:       0007-cryptodisk-Refactor-password-input-out-of-crypto-dev.patch
 Patch892:       0008-cryptodisk-Move-global-variables-into-grub_cryptomou.patch
 Patch893:       0009-cryptodisk-Improve-handling-of-partition-name-in-cry.patch
-Patch894:       0010-protectors-Add-key-protectors-framework.patch
-Patch895:       0011-tpm2-Add-TPM-Software-Stack-TSS.patch
-Patch896:       0012-protectors-Add-TPM2-Key-Protector.patch
-Patch897:       0013-cryptodisk-Support-key-protectors.patch
-Patch898:       0014-util-grub-protect-Add-new-tool.patch
-Patch899:       fix-tpm2-build.patch
-Patch900:       0001-crytodisk-fix-cryptodisk-module-looking-up.patch
+
+# TPM 2.0 protector
+Patch894:       0001-protectors-Add-key-protectors-framework.patch
+Patch895:       0002-tpm2-Add-TPM-Software-Stack-TSS.patch
+Patch896:       0003-protectors-Add-TPM2-Key-Protector.patch
+Patch897:       0004-cryptodisk-Support-key-protectors.patch
+Patch898:       0005-util-grub-protect-Add-new-tool.patch
+Patch899:       0001-crytodisk-fix-cryptodisk-module-looking-up.patch
+
 # fde
 Patch901:       0001-devmapper-getroot-Have-devmapper-recognize-LUKS2.patch
 Patch902:       0002-devmapper-getroot-Set-up-cheated-LUKS2-cryptodisk-mo.patch
@@ -434,10 +437,8 @@ Patch910:       0010-templates-import-etc-crypttab-to-grub.cfg.patch
 Patch911:       grub-read-pcr.patch
 Patch912:       efi-set-variable-with-attrs.patch
 Patch913:       tpm-record-pcrs.patch
-Patch914:       tpm-protector-dont-measure-sealed-key.patch
-Patch915:       tpm-protector-export-secret-key.patch
+
 Patch916:       grub-install-record-pcrs.patch
-Patch917:       grub-unseal-debug.patch
 # efi mm
 Patch919:       0001-mm-Allow-dynamically-requesting-additional-memory-re.patch
 Patch920:       0002-kern-efi-mm-Always-request-a-fixed-number-of-pages-o.patch
@@ -480,19 +481,13 @@ Patch953:       grub2-increase-crypttab-path-buffer.patch
 Patch954:       0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
 Patch955:       0001-grub-core-modify-sector-by-sysfs-as-disk-sector.patch
 Patch956:       0001-grub2-Can-t-setup-a-default-boot-device-correctly-on.patch
-Patch957:       0001-tpm2-adjust-the-input-parameters-of-TPM2_EvictContro.patch
-Patch958:       0002-tpm2-declare-the-input-arguments-of-TPM2-functions-a.patch
-Patch959:       0003-tpm2-resend-the-command-on-TPM_RC_RETRY.patch
-Patch960:       0004-tpm2-add-new-TPM2-types-structures-and-command-const.patch
-Patch961:       0005-tpm2-add-more-marshal-unmarshal-functions.patch
-Patch962:       0006-tpm2-check-the-command-parameters-of-TPM2-commands.patch
-Patch963:       0007-tpm2-pack-the-missing-authorization-command-for-TPM2.patch
-Patch964:       0008-tpm2-allow-some-command-parameters-to-be-NULL.patch
-Patch965:       0009-tpm2-remove-the-unnecessary-variables.patch
-Patch966:       0010-tpm2-add-TPM2-commands-to-support-authorized-policy.patch
-Patch967:       0011-tpm2-make-the-file-reading-unmarshal-functions-gener.patch
-Patch968:       0012-tpm2-initialize-the-PCR-selection-list-early.patch
-Patch969:       0013-tpm2-support-unsealing-key-with-authorized-policy.patch
+
+# Support TPM 2.0 Authorized Policy
+Patch957:       0001-tpm2-Add-TPM2-types-structures-and-command-constants.patch
+Patch958:       0002-tpm2-Add-more-marshal-unmarshal-functions.patch
+Patch959:       0003-tpm2-Implement-more-TPM2-commands.patch
+Patch960:       0004-tpm2-Support-authorized-policy.patch
+
 # Set efi variables LoaderDevicePartUUID & LoaderInfo (needed for UKI)
 Patch970:       grub2-add-module-for-boot-loader-interface.patch
 # Fix out of memory error on lpar installation from virtual cdrom (bsc#1208024)
@@ -1056,6 +1051,7 @@ ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/%{
 %define sysefidir %{sysefibasedir}/%{_target_cpu}
 install -d %{buildroot}/%{sysefidir}
 ln -sr %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}%{sysefidir}/grub.efi
+%if 0%{?suse_version} < 1600
 %ifarch x86_64
 # provide compatibility sym-link for previous shim-install and the like
 install -d %{buildroot}/usr/lib64/efi
@@ -1065,6 +1061,7 @@ cat <<-EoM >%{buildroot}/usr/lib64/efi/DEPRECATED
 	Individual symbolic links are provided for a smooth transition and
 	may vanish at any point in time.  Please use the new location!
 EoM
+%endif
 %endif
 
 %ifarch x86_64 aarch64
@@ -1415,7 +1412,9 @@ fi
 %{_bindir}/%{name}-render-label
 %{_bindir}/%{name}-script-check
 %{_bindir}/%{name}-syslinux2cfg
+%ifarch %{efi}
 %{_bindir}/%{name}-protect
+%endif
 %if 0%{?has_systemd:1}
 %{_unitdir}/grub2-once.service
 %endif

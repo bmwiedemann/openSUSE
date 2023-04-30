@@ -1,10 +1,9 @@
-From 69a5cedcb206ca931ac2c2763c283954751d7072 Mon Sep 17 00:00:00 2001
+From 5a417f32f1afe0ffca7f5cbff67145a157b1589b Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Tue, 7 Feb 2023 18:31:12 +0800
-Subject: [PATCH 04/13] tpm2: add new TPM2 types, structures, and command
- constants
+Subject: [PATCH 1/4] tpm2: Add TPM2 types, structures, and command constants
 
-Add new TPM2 types and structures as the preparation to support the
+Add new TPM2 types and structures as the preparation to support
 authorized policy.
 
 * New types:
@@ -18,20 +17,20 @@ authorized policy.
 
 * New command constants:
   TPM_CC_LoadExternal, TPM_CC_HashSequenceStart, TPM_CC_SequenceUpdate,
-  TPM_CC_SequenceComplete, TPM_CC_VerifySignature,
+  TPM_CC_SequenceComplete, TPM_CC_Hash, TPM_CC_VerifySignature,
   TPM_CC_PolicyAuthorize
 
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
- include/grub/tpm2/internal/structs.h | 60 ++++++++++++++++++++++++++++
- include/grub/tpm2/internal/types.h   | 42 ++++++++++++-------
- 2 files changed, 88 insertions(+), 14 deletions(-)
+ include/grub/tpm2/internal/structs.h | 86 ++++++++++++++++++++++++++++
+ include/grub/tpm2/internal/types.h   | 42 +++++++++-----
+ 2 files changed, 114 insertions(+), 14 deletions(-)
 
 diff --git a/include/grub/tpm2/internal/structs.h b/include/grub/tpm2/internal/structs.h
-index 75bf99ec8..50090892c 100644
+index 72d71eb70..db9eb6cf6 100644
 --- a/include/grub/tpm2/internal/structs.h
 +++ b/include/grub/tpm2/internal/structs.h
-@@ -672,4 +672,64 @@ struct TPMT_TK_CREATION
+@@ -672,4 +672,90 @@ struct TPMT_TK_CREATION
  };
  typedef struct TPMT_TK_CREATION TPMT_TK_CREATION;
  
@@ -86,6 +85,32 @@ index 75bf99ec8..50090892c 100644
 +  TPMU_SIGNATURE signature;
 +};
 +typedef struct TPMT_SIGNATURE TPMT_SIGNATURE;
++
++static inline TPMI_ALG_HASH
++TPMT_SIGNATURE_get_hash_alg (TPMT_SIGNATURE *sig)
++{
++  switch (sig->sigAlg)
++    {
++    case TPM_ALG_RSASSA:
++      return sig->signature.rsassa.hash;
++    case TPM_ALG_RSAPSS:
++      return sig->signature.rsapss.hash;
++    case TPM_ALG_ECDSA:
++      return sig->signature.ecdsa.hash;
++    case TPM_ALG_ECDAA:
++      return sig->signature.ecdaa.hash;
++    case TPM_ALG_SM2:
++      return sig->signature.sm2.hash;
++    case TPM_ALG_ECSCHNORR:
++      return sig->signature.ecschnorr.hash;
++    case TPM_ALG_HMAC:
++      return sig->signature.hmac.hashAlg;
++    default:
++      break;
++    }
++
++  return TPM_ALG_NULL;
++}
 +
 +/* TPMT_TK_VERIFIED Structure */
 +struct TPMT_TK_VERIFIED {

@@ -1,7 +1,7 @@
-From 8f73e30667da46a7716df0f688fbaa41e34fe5ea Mon Sep 17 00:00:00 2001
+From a49c4dcbcb04078434f461ed3356c04042be461a Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Wed, 8 Feb 2023 10:30:55 +0800
-Subject: [PATCH 10/13] tpm2: add TPM2 commands to support authorized policy
+Subject: [PATCH 3/4] tpm2: Implement more TPM2 commands
 
 This commit implements a few more TPM2 commands as the preparation for
 the authorized policy support.
@@ -27,7 +27,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
  2 files changed, 481 insertions(+)
 
 diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
-index a56f7a5e5..2032d6823 100644
+index d67699a24..159353b08 100644
 --- a/grub-core/tpm2/tpm2.c
 +++ b/grub-core/tpm2/tpm2.c
 @@ -427,6 +427,73 @@ TPM2_Load (const TPMI_DH_OBJECT parent_handle,
@@ -103,7 +103,7 @@ index a56f7a5e5..2032d6823 100644
 +
  TPM_RC
  TPM2_Unseal (const TPMI_DH_OBJECT itemHandle,
-              const TPMS_AUTH_COMMAND *authCommand,
+ 	     const TPMS_AUTH_COMMAND *authCommand,
 @@ -759,3 +826,360 @@ TPM2_EvictControl (const TPMI_RH_PROVISION auth,
  
    return TPM_RC_SUCCESS;
@@ -466,12 +466,12 @@ index a56f7a5e5..2032d6823 100644
 +  return TPM_RC_SUCCESS;
 +}
 diff --git a/include/grub/tpm2/internal/functions.h b/include/grub/tpm2/internal/functions.h
-index 8fda8ceab..c8253e4c7 100644
+index 9380f26a2..67b78fab8 100644
 --- a/include/grub/tpm2/internal/functions.h
 +++ b/include/grub/tpm2/internal/functions.h
 @@ -70,6 +70,15 @@ TPM2_Load (const TPMI_DH_OBJECT parent_handle,
-            TPM2B_NAME *name,
-            TPMS_AUTH_RESPONSE *authResponse);
+ 	   TPM2B_NAME *name,
+ 	   TPMS_AUTH_RESPONSE *authResponse);
  
 +TPM_RC
 +TPM2_LoadExternal (const TPMS_AUTH_COMMAND *authCommand,
@@ -484,10 +484,10 @@ index 8fda8ceab..c8253e4c7 100644
 +
  TPM_RC
  TPM2_Unseal (const TPMI_DH_OBJECT item_handle,
-              const TPMS_AUTH_COMMAND *authCommand,
+ 	     const TPMS_AUTH_COMMAND *authCommand,
 @@ -114,4 +123,52 @@ TPM2_EvictControl (const TPMI_RH_PROVISION auth,
-                    const TPMI_DH_PERSISTENT persistentHandle,
-                    TPMS_AUTH_RESPONSE *authResponse);
+ 		   const TPMI_DH_PERSISTENT persistentHandle,
+ 		   TPMS_AUTH_RESPONSE *authResponse);
  
 +TPM_RC
 +TPM2_HashSequenceStart (const TPMS_AUTH_COMMAND *authCommand,

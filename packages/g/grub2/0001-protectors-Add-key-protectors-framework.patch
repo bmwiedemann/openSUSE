@@ -1,21 +1,22 @@
-From 2d959549857305d5e4d95a19a0850885f85179d6 Mon Sep 17 00:00:00 2001
+From 5affde982dea827580e36ccc658e439397f51ce8 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:53 -0800
-Subject: [PATCH 10/14] protectors: Add key protectors framework
+Subject: [PATCH 1/5] protectors: Add key protectors framework
 
-A key protector encapsulates functionality to retrieve an unlocking key for a
-fully-encrypted disk from a specific source. A key protector module registers
-itself with the key protectors framework when it is loaded and unregisters when
-unloaded. Additionally, a key protector may accept parameters that describe how
-it should operate.
+A key protector encapsulates functionality to retrieve an unlocking key
+for a fully-encrypted disk from a specific source. A key protector
+module registers itself with the key protectors framework when it is
+loaded and unregisters when unloaded. Additionally, a key protector may
+accept parameters that describe how it should operate.
 
-The key protectors framework, besides offering registration and unregistration
-functions, also offers a one-stop routine for finding and invoking a key
-protector by name. If a key protector with the specified name exists and if an
-unlocking key is successfully retrieved by it, the function returns to the
-caller the retrieved key and its length.
+The key protectors framework, besides offering registration and
+unregistration functions, also offers a one-stop routine for finding and
+invoking a key protector by name. If a key protector with the specified
+name exists and if an unlocking key is successfully retrieved by it, the
+function returns to the caller the retrieved key and its length.
 
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
+Signed-off-by: Gary Lin <glin@suse.com>
 ---
  grub-core/Makefile.am       |  1 +
  grub-core/Makefile.core.def |  1 +
@@ -26,7 +27,7 @@ Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
  create mode 100644 include/grub/protector.h
 
 diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index de241f0d04..dc07ba6f87 100644
+index 80e7a83ed..79d17a3d2 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
 @@ -90,6 +90,7 @@ endif
@@ -38,10 +39,10 @@ index de241f0d04..dc07ba6f87 100644
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/term.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/time.h
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index f3140815b8..b0001a33cf 100644
+index d83c9f7b6..0335d9add 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -138,6 +138,7 @@ kernel = {
+@@ -144,6 +144,7 @@ kernel = {
    common = kern/misc.c;
    common = kern/parser.c;
    common = kern/partition.c;
@@ -51,7 +52,7 @@ index f3140815b8..b0001a33cf 100644
    common = kern/term.c;
 diff --git a/grub-core/kern/protectors.c b/grub-core/kern/protectors.c
 new file mode 100644
-index 0000000000..21954dfa48
+index 000000000..5ee059565
 --- /dev/null
 +++ b/grub-core/kern/protectors.c
 @@ -0,0 +1,75 @@
@@ -83,16 +84,16 @@ index 0000000000..21954dfa48
 +grub_err_t
 +grub_key_protector_register (struct grub_key_protector *protector)
 +{
-+  if (!protector || !protector->name || !grub_strlen(protector->name))
++  if (protector == NULL || protector->name == NULL || grub_strlen(protector->name) == 0)
 +    return GRUB_ERR_BAD_ARGUMENT;
 +
 +  if (grub_key_protectors &&
 +      grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors),
-+                            protector->name))
++			    protector->name))
 +    return GRUB_ERR_BAD_ARGUMENT;
 +
 +  grub_list_push (GRUB_AS_LIST_P (&grub_key_protectors),
-+                  GRUB_AS_LIST (protector));
++		  GRUB_AS_LIST (protector));
 +
 +  return GRUB_ERR_NONE;
 +}
@@ -100,7 +101,7 @@ index 0000000000..21954dfa48
 +grub_err_t
 +grub_key_protector_unregister (struct grub_key_protector *protector)
 +{
-+  if (!protector)
++  if (protector == NULL)
 +    return GRUB_ERR_BAD_ARGUMENT;
 +
 +  grub_list_remove (GRUB_AS_LIST (protector));
@@ -110,29 +111,29 @@ index 0000000000..21954dfa48
 +
 +grub_err_t
 +grub_key_protector_recover_key (const char *protector, grub_uint8_t **key,
-+                                grub_size_t *key_size)
++				grub_size_t *key_size)
 +{
 +  struct grub_key_protector *kp = NULL;
 +
-+  if (!grub_key_protectors)
++  if (grub_key_protectors == NULL)
 +    return GRUB_ERR_OUT_OF_RANGE;
 +
-+  if (!protector || !grub_strlen (protector))
++  if (protector == NULL || grub_strlen (protector) == 0)
 +    return GRUB_ERR_BAD_ARGUMENT;
 +
 +  kp = grub_named_list_find (GRUB_AS_NAMED_LIST (grub_key_protectors),
-+                             protector);
-+  if (!kp)
++			     protector);
++  if (kp == NULL)
 +    return grub_error (GRUB_ERR_OUT_OF_RANGE,
-+                       N_("A key protector with name '%s' could not be found. "
-+                          "Is the name spelled correctly and is the "
-+                          "corresponding module loaded?"), protector);
++		       N_("A key protector with name '%s' could not be found. "
++			  "Is the name spelled correctly and is the "
++			  "corresponding module loaded?"), protector);
 +
 +  return kp->recover_key (key, key_size);
 +}
 diff --git a/include/grub/protector.h b/include/grub/protector.h
 new file mode 100644
-index 0000000000..179020a344
+index 000000000..3d9f69bce
 --- /dev/null
 +++ b/include/grub/protector.h
 @@ -0,0 +1,48 @@
@@ -180,10 +181,10 @@ index 0000000000..179020a344
 +
 +grub_err_t
 +EXPORT_FUNC (grub_key_protector_recover_key) (const char *protector,
-+                                              grub_uint8_t **key,
-+                                              grub_size_t *key_size);
++					      grub_uint8_t **key,
++					      grub_size_t *key_size);
 +
 +#endif /* ! GRUB_PROTECTOR_HEADER */
 -- 
-2.34.1
+2.35.3
 

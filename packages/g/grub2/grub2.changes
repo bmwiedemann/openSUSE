@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Apr 26 07:22:03 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Exclude the deprecated EFI location, /usr/lib64/efi/, from
+  Tumbleweed and ALP
+
+-------------------------------------------------------------------
+Fri Apr 21 07:53:30 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update TPM 2.0 key unsealing patches
+  * Add the new upstreaming patches
+    0001-protectors-Add-key-protectors-framework.patch
+    0002-tpm2-Add-TPM-Software-Stack-TSS.patch
+    0003-protectors-Add-TPM2-Key-Protector.patch
+    0004-cryptodisk-Support-key-protectors.patch
+    0005-util-grub-protect-Add-new-tool.patch
+  * Add the authorized policy patches based on the upstreaming
+    patches
+    0001-tpm2-Add-TPM2-types-structures-and-command-constants.patch
+    0002-tpm2-Add-more-marshal-unmarshal-functions.patch
+    0003-tpm2-Implement-more-TPM2-commands.patch
+    0004-tpm2-Support-authorized-policy.patch
+  * Drop the old patches
+    0010-protectors-Add-key-protectors-framework.patch
+    0011-tpm2-Add-TPM-Software-Stack-TSS.patch
+    0012-protectors-Add-TPM2-Key-Protector.patch
+    0013-cryptodisk-Support-key-protectors.patch
+    0014-util-grub-protect-Add-new-tool.patch
+    fix-tpm2-build.patch
+    tpm-protector-dont-measure-sealed-key.patch
+    tpm-protector-export-secret-key.patch
+    grub-unseal-debug.patch
+    0001-tpm2-adjust-the-input-parameters-of-TPM2_EvictContro.patch
+    0002-tpm2-declare-the-input-arguments-of-TPM2-functions-a.patch
+    0003-tpm2-resend-the-command-on-TPM_RC_RETRY.patch
+    0004-tpm2-add-new-TPM2-types-structures-and-command-const.patch
+    0005-tpm2-add-more-marshal-unmarshal-functions.patch
+    0006-tpm2-check-the-command-parameters-of-TPM2-commands.patch
+    0007-tpm2-pack-the-missing-authorization-command-for-TPM2.patch
+    0008-tpm2-allow-some-command-parameters-to-be-NULL.patch
+    0009-tpm2-remove-the-unnecessary-variables.patch
+    0010-tpm2-add-TPM2-commands-to-support-authorized-policy.patch
+    0011-tpm2-make-the-file-reading-unmarshal-functions-gener.patch
+    0012-tpm2-initialize-the-PCR-selection-list-early.patch
+    0013-tpm2-support-unsealing-key-with-authorized-policy.patch
+  * Refresh grub-read-pcr.patch
+  * Introduce a new build requirement: libtasn1-devel
+- Only package grub2-protect for the architectures with EFI support
+
+-------------------------------------------------------------------
 Fri Apr 21 04:53:54 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix PowerVS deployment fails to boot with 90 cores (bsc#1208581)
