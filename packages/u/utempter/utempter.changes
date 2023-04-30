@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 10 01:26:06 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- version update to 1.2.1
+  * utempter: relaxed host argument validation: it is now allowed
+    to contain spaces except in the first character.
+- switch source from ftp to http 
+
+-------------------------------------------------------------------
 Mon Sep 28 20:25:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix License, libutempter has been LGPL-2.1+ for the last 19 years
