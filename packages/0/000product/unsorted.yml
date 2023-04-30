@@ -4251,6 +4251,7 @@ unsorted:
   - ftwnn 
   - ftxui-devel 
   - fuc 
+  - funcube-udev 
   - fuse-devel 
   - fuse-devel-static 
   - fuse-doc 
@@ -7095,6 +7096,8 @@ unsorted:
   - gpuvis 
   - gpxsee 
   - gq 
+  - gr-funcube 
+  - gr-funcube-doc 
   - gr-iqbal-devel-doc 
   - gr-iqbal-grc 
   - grabpng 
@@ -12185,6 +12188,8 @@ unsorted:
   - libgnt0 
   - libgnuastro17 
   - libgnuradio-3_10_6 
+  - libgnuradio-funcube-devel 
+  - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnutls-dane-devel 
@@ -18215,7 +18220,6 @@ unsorted:
   - nautilus-file-roller 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
-  - nautilus-terminal 
   - nauty 
   - nauty-devel 
   - nbd 
@@ -22725,6 +22729,7 @@ unsorted:
   - python3-gom 
   - python3-gpiod 
   - python3-gpsd 
+  - python3-gr-funcube 
   - python3-gr-iqbal 
   - python3-gv 
   - python3-hawkey 
@@ -25250,6 +25255,7 @@ unsorted:
   - python310-pynamodb 
   - python310-pynetbox 
   - python310-pyngus 
+  - python310-pynput 
   - python310-pynxos 
   - python310-pyo 
   - python310-pyocr 
