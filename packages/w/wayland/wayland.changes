@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  4 16:57:42 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to release 1.22.0
+  * This new release adds explicit events for the preferred buffer scale
+    and transform, adds an event to indicate the pointer's physical scroll
+    direction, adds a few new convenience functions, and includes various
+    spec clarifications and bug fixes.
+
+-------------------------------------------------------------------
 Thu Jun 30 22:07:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.21
