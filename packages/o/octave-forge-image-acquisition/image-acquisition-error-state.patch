@@ -1,0 +1,265 @@
+# HG changeset patch
+# User John Donoghue <john.donoghue@ieee.org>
+# Date 1664479839 14400
+#      Thu Sep 29 15:30:39 2022 -0400
+# Node ID d9d55170b0a643f91b0330ac5c1dec9275e1440a
+# Parent  54ca9d1133df4652058212cd94a8457938703f4b
+* src/__v4l2_handler__.cc, src/cl_v4l2_handler.cc: remove usage of error_state (Bug #63136)
+
+diff -r 54ca9d1133df -r d9d55170b0a6 src/__v4l2_handler__.cc
+--- a/src/__v4l2_handler__.cc	Thu Jul 14 13:01:04 2022 +0200
++++ b/src/__v4l2_handler__.cc	Thu Sep 29 15:30:39 2022 -0400
+@@ -43,13 +43,13 @@
+       v4l2_handler::register_type();
+       type_loaded = true;
+     }
++
+   string device = args(0).string_value ();
+-  if (! error_state)
+-    {
+-      v4l2_handler *h = new v4l2_handler ();
+-      h->open (device.c_str ());
+-      retval.append (octave_value (h));
+-    }
++
++  v4l2_handler *h = new v4l2_handler ();
++  h->open (device.c_str ());
++  retval.append (octave_value (h));
++  
+   return retval;
+ }
+ 
+@@ -149,11 +149,13 @@
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+     {
+-      int num = args(1).int_value ();
+-      if (!error_state)
+-        imgh->s_input (num);
++      if (! args(1).isnumeric())
++        error("N has to be a integer selecting the desired video input, starting from  0.");
+       else
+-        error("N has to be a integer selecting the desired video input, starting from  0.");
++        {
++          int num = args(1).int_value ();
++          imgh->s_input (num);
++        }
+     }
+   return retval;
+ }
+@@ -232,15 +234,16 @@
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+     {
+-      Matrix s = args(1).matrix_value ();
+-      unsigned int width = s(0);
+-      unsigned int height = s(1);
+-      if (error_state)
++      if (!args (1).is_matrix_type())
++        print_usage();
++      else
+         {
+-          print_usage();
++          Matrix s = args(1).matrix_value ();
++          unsigned int width = s(0);
++          unsigned int height = s(1);
++          string pixel_format = args(2).string_value ();
++          retval = octave_value(imgh->enum_frameintervals (pixel_format, width, height));
+         }
+-      string pixel_format = args(2).string_value ();
+-      retval = octave_value(imgh->enum_frameintervals (pixel_format, width, height));
+     }
+   return retval;
+ }
+@@ -336,6 +339,11 @@
+       print_usage ();
+       return retval;
+     }
++  if (!args (1).is_string() || !args (2).is_matrix_type())
++    {
++      print_usage();
++      return retval;
++    }
+ 
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+@@ -344,10 +352,8 @@
+       Matrix s = args(2).matrix_value ();
+       unsigned int xres = s(0);
+       unsigned int yres = s(1);
+-      if (! error_state)
+-        {
+-          imgh->s_fmt (fmt, xres, yres);
+-        }
++
++      imgh->s_fmt (fmt, xres, yres);
+     }
+   return retval;
+ }
+@@ -398,15 +404,17 @@
+       print_usage ();
+       return retval;
+     }
++  if (!args (1).isnumeric())
++    {
++      error("ID has to be an integer value");
++      return retval;
++    }
+ 
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+     {
+       unsigned int id = args(1).int_value ();
+-      if (!error_state)
+-        retval = octave_value(imgh->g_ctrl (id));
+-      else
+-        error("ID has to be an integer value");
++      retval = octave_value(imgh->g_ctrl (id));
+     }
+   return retval;
+ }
+@@ -429,16 +437,17 @@
+       print_usage ();
+       return retval;
+     }
+-
++  if (!args (1).isnumeric() || !args (2).isnumeric())
++    {
++      error("ID and VALUE has to be integer values");
++      return retval;
++    }
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+     {
+       unsigned int id = args(1).int_value ();
+       unsigned int value = args(2).int_value ();
+-      if (!error_state)
+-        imgh->s_ctrl (id, value);
+-      else
+-        error("ID and VALUE has to be integer values");
++      imgh->s_ctrl (id, value);
+     }
+   return retval;
+ }
+@@ -485,15 +494,16 @@
+       print_usage ();
+       return retval;
+     }
++  if (!args (1).isnumeric())
++    {
++      return retval;
++    }
+ 
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+     {
+       unsigned int n_buffers = args(1).int_value ();
+-      if (! error_state)
+-        {
+-          imgh->streamon (n_buffers);
+-        }
++      imgh->streamon (n_buffers);
+     }
+   return retval;
+ }
+@@ -515,6 +525,10 @@
+       print_usage ();
+       return retval;
+     }
++  if (nargin > 1 && !args (1).isnumeric())
++    {
++      return retval;
++    }
+ 
+   v4l2_handler* imgh = get_v4l2_handler_from_ov (args(0));
+   if (imgh)
+@@ -522,10 +536,7 @@
+       int preview = 0;
+       if (nargin==2)
+         preview = args(1).int_value ();
+-      if (!error_state)
+-        {
+-          retval = imgh->capture (nargout, preview);
+-        }
++      retval = imgh->capture (nargout, preview);
+     }
+   return retval;
+ }
+diff -r 54ca9d1133df -r d9d55170b0a6 src/cl_v4l2_handler.cc
+--- a/src/cl_v4l2_handler.cc	Thu Jul 14 13:01:04 2022 +0200
++++ b/src/cl_v4l2_handler.cc	Thu Sep 29 15:30:39 2022 -0400
+@@ -226,17 +226,16 @@
+   xioctl (fd, VIDIOC_QUERYCAP, &cap);
+ 
+   octave_scalar_map st;
+-  if (!error_state)
+-    {
+-      st.assign ("driver",    std::string((const char*)cap.driver));
+-      st.assign ("card",      std::string((const char*)cap.card));
+-      st.assign ("bus_info",  std::string((const char*)cap.bus_info));
++    
++  st.assign ("driver",    std::string((const char*)cap.driver));
++  st.assign ("card",      std::string((const char*)cap.card));
++  st.assign ("bus_info",  std::string((const char*)cap.bus_info));
+ 
+-      char tmp[15];
+-      snprintf (tmp, 15, "%u.%u.%u", (cap.version >> 16) & 0xFF, (cap.version >> 8) & 0xFF, cap.version & 0xFF);
+-      st.assign ("version",   std::string(tmp));
+-      st.assign ("capabilities", (unsigned int)(cap.capabilities));
+-    }
++  char tmp[15];
++  snprintf (tmp, 15, "%u.%u.%u", (cap.version >> 16) & 0xFF, (cap.version >> 8) & 0xFF, cap.version & 0xFF);
++  st.assign ("version",   std::string(tmp));
++  st.assign ("capabilities", (unsigned int)(cap.capabilities));
++    
+   return octave_value (st);
+ }
+ 
+@@ -407,19 +406,16 @@
+   CLEAR(sparam);
+   sparam.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+   xioctl(fd, VIDIOC_G_PARM, &sparam);
+-  if(!error_state)
++  if(sparam.parm.capture.capability & V4L2_CAP_TIMEPERFRAME)
+     {
+-      if(sparam.parm.capture.capability & V4L2_CAP_TIMEPERFRAME)
+-        {
+-          const struct v4l2_fract &tf = sparam.parm.capture.timeperframe;
+-          ret(0) = tf.numerator;
+-          ret(1) = tf.denominator;
+-        }
+-      else
+-        {
+-          warning("v4l2_handler::g_parm: V4L2_CAP_TIMEPERFRAME is not supported");
+-          return Matrix(0,0);
+-        }
++      const struct v4l2_fract &tf = sparam.parm.capture.timeperframe;
++      ret(0) = tf.numerator;
++      ret(1) = tf.denominator;
++    }
++  else
++    {
++      warning("v4l2_handler::g_parm: V4L2_CAP_TIMEPERFRAME is not supported");
++      return Matrix(0,0);
+     }
+   return ret;
+ }
+@@ -979,7 +975,7 @@
+       error("v4l2_handler::capture_to_ppm: Cannot open file '%s'", fn);
+     }
+   fprintf (fout, "P6\n%d %d 255\n",
+-           img.dim2(), img.dim3());
++           (int)img.dim2(), (int)img.dim3());
+   fwrite (p, img.numel(), 1, fout);
+   fclose (fout);
+ }
+@@ -1012,8 +1008,7 @@
+       enum   v4l2_buf_type type;
+       type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+       xioctl(fd, VIDIOC_STREAMON, &type);
+-      if (!error_state)
+-        streaming = 1;
++      streaming = 1;
+     }
+ }
+ 

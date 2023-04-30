@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 19 06:54:34 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add image-acquisition-error-state.patch -- Fix build failure
+  against octave >= 6 by dropping use of error_state
+  [https://savannah.gnu.org/bugs/index.php?63136].
+
+-------------------------------------------------------------------
 Tue Apr 28 20:45:29 UTC 2015 - dmitry_r@opensuse.org
 
 - Update to version 0.2.2

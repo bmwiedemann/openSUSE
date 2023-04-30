@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-image-acquisition
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,12 @@ Name:           octave-forge-%{octpkg}
 Version:        0.2.2
 Release:        0
 Summary:        Image Acquisition functions for Octave
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
+URL:            http://octave.sourceforge.net
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM image-acquisition-error-state.patch badshah400@gmail.com -- Fix build failure against octave >= 6 by dropping use of error_state (https://savannah.gnu.org/bugs/index.php?63136)
+Patch0:         image-acquisition-error-state.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libv4l-devel
@@ -38,6 +40,9 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+pushd %{octpkg}-%{version}
+%autopatch -p1
+popd
 %octave_pkg_src
 
 %build
@@ -56,8 +61,7 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
-%{octpackages_dir}/%{octpkg}-%{version}
-%{octlib_dir}/%{octpkg}-%{version}
+%{octpackages_dir}/%{octpkg}-%{version}/
+%{octlib_dir}/%{octpkg}-%{version}/
 
 %changelog
