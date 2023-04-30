@@ -404,4 +404,16 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>987762</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c21afa8345355d3244fbc7ca1b06fbbb</srcmd5>
+    <version>1.22.0</version>
+    <time>1682863649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.22.0
+  * This new release adds explicit events for the preferred buffer scale
+    and transform, adds an event to indicate the pointer's physical scroll
+    direction, adds a few new convenience functions, and includes various
+    spec clarifications and bug fixes. (forwarded request 1077251 from llyyr)</comment>
+    <requestid>1077436</requestid>
+  </revision>
 </revisionlist>
