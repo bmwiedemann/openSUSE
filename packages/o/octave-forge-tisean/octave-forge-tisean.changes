@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 19 08:51:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add tisean-drop-error_state-use.patch -- Drop the use of
+  error_state to support octave >= 8
+  (https://savannah.gnu.org/bugs/index.php?61583).
+
+-------------------------------------------------------------------
 Mon Aug 24 13:30:56 UTC 2015 - dmitry_r@opensuse.org
 
 - Initial package, version 0.2.3

@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-tisean
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,12 @@ Name:           octave-forge-%{octpkg}
 Version:        0.2.3
 Release:        0
 Summary:        Nonlinear Time Series Analysis
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
+URL:            http://octave.sourceforge.net
 Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tisean-drop-error_state-use.patch badshah400@gmail.com -- Drop the use of error_state to support octave >= 8 (https://savannah.gnu.org/bugs/index.php?61583)
+Patch0:         tisean-drop-error_state-use.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  octave-devel
@@ -37,6 +39,9 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+pushd %{octpkg}-%{version}
+%autopatch -p1
+popd
 %octave_pkg_src
 
 %build
