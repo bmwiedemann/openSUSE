@@ -1,0 +1,61 @@
+From 5d6bf9ab17c89bb42ba6dc579ea564d105c6efcb Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Fri, 28 Apr 2023 16:29:45 +0200
+Subject: [PATCH] Allow running mysql_upgrade when starting Akonadi
+
+Amends d6a1c057327332487adc9ad39252f9481ae28288
+CCBUG: 402680
+
+(cherry picked from commit 620ea58f76e00aed52c1acee9c8d11b6f3279953)
+---
+ apparmor/mariadbd_akonadi      | 3 ++-
+ apparmor/mysqld_akonadi        | 1 +
+ apparmor/usr.bin.akonadiserver | 2 ++
+ 3 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/apparmor/mariadbd_akonadi b/apparmor/mariadbd_akonadi
+index b63465278..7c0497a3d 100644
+--- a/apparmor/mariadbd_akonadi
++++ b/apparmor/mariadbd_akonadi
+@@ -30,9 +30,10 @@ profile mariadbd_akonadi {
+   /{usr/,}bin/mkdir mrix,
+   /{usr/,}bin/sed mrix,
+   /usr/bin/my_print_defaults mrix,
+-  /usr/bin/mariadb-install-db mrix,
+   /usr/bin/mariadb-admin mrix,
+   /usr/bin/mariadb-check mrix,
++  /usr/bin/mariadb-install-db mrix,
++  /usr/bin/mariadb-upgrade mrix,
+   /usr/{,s}bin/mariadbd mrix,
+   /usr/share/mysql/** r,
+   owner @{xdg_data_home}/akonadi/** rwk,
+diff --git a/apparmor/mysqld_akonadi b/apparmor/mysqld_akonadi
+index 72949d025..4940bf4d2 100644
+--- a/apparmor/mysqld_akonadi
++++ b/apparmor/mysqld_akonadi
+@@ -31,6 +31,7 @@ profile mysqld_akonadi {
+   /{usr/,}bin/sed mrix,
+   /usr/bin/my_print_defaults mrix,
+   /usr/bin/mysql_install_db mrix,
++  /usr/bin/mysql_upgrade mrix,
+   /usr/bin/mysqladmin mrix,
+   /usr/bin/mysqlcheck mrix,
+   /usr/{,s}bin/mysqld mrix,
+diff --git a/apparmor/usr.bin.akonadiserver b/apparmor/usr.bin.akonadiserver
+index aa489a3d0..917d5bf78 100644
+--- a/apparmor/usr.bin.akonadiserver
++++ b/apparmor/usr.bin.akonadiserver
+@@ -46,8 +46,10 @@ abi <abi/3.0>,
+   /usr/bin/mariadb-admin Px -> mariadbd_akonadi,
+   /usr/bin/mariadb-check Px -> mariadbd_akonadi,
+   /usr/bin/mariadb-install-db Px -> mariadbd_akonadi,
++  /usr/bin/mariadb-upgrade Px -> mariadbd_akonadi,
+   /usr/{,s}bin/mariadbd Px -> mariadbd_akonadi,
+   /usr/bin/mysql_install_db Px -> mysqld_akonadi,
++  /usr/bin/mysql_upgrade Px -> mysqld_akonadi,
+   /usr/bin/mysqladmin Px -> mysqld_akonadi,
+   /usr/bin/mysqlcheck Px -> mysqld_akonadi,
+   /usr/{,s}bin/mysqld Px -> mysqld_akonadi,
+-- 
+2.40.0
+

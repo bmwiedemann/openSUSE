@@ -887,4 +887,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Release Gear 23.04.0</comment>
     <requestid>1081180</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>28045875a3b5ce70fdbcdfe92037954b</srcmd5>
+    <version>23.04.0</version>
+    <time>1682863650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083570</requestid>
+  </revision>
 </revisionlist>

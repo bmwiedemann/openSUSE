@@ -1,0 +1,30 @@
+From 046a3e20663f00d75899677656b14c0bc3225526 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ji=C5=99=C3=AD=20Pale=C4=8Dek?= <jpalecek@web.de>
+Date: Thu, 20 Apr 2023 16:22:14 +0200
+Subject: [PATCH 3/3] Fix a bug in for clause in EntityTreeModel
+
+ The body of the for loop calls function monitoredCollectionRemoved,
+ which modifies the list which is iterated over. This can lead to
+ undefined behavior, so it's better to just iterate over a copy.
+
+(cherry picked from commit b2b2ac0311b735ec80e9b02addae4e00398cf21e)
+---
+ src/core/models/entitytreemodel_p.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/models/entitytreemodel_p.cpp b/src/core/models/entitytreemodel_p.cpp
+index ab67c482a..531019562 100644
+--- a/src/core/models/entitytreemodel_p.cpp
++++ b/src/core/models/entitytreemodel_p.cpp
+@@ -174,7 +174,7 @@ void EntityTreeModelPrivate::agentInstanceRemoved(const Akonadi::AgentInstance &
+             }
+             return;
+         }
+-        const auto &children = m_childEntities[Collection::root().id()];
++        const auto children = m_childEntities[Collection::root().id()];
+         for (const Node *node : children) {
+             Q_ASSERT(node->type == Node::Collection);
+ 
+-- 
+2.40.0
+

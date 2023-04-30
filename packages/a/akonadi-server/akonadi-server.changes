@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 28 14:05:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add more fixes:
+  * 0001-Avoid-crashing-before-priting-debug-output-when-sett.patch 
+    (kde#468985)
+  * 0001-Remove-dangling-reference.patch
+  * 0001-Allow-running-mysql_upgrade-when-starting-Akonadi.patch
+    (kde#402680)
+
+-------------------------------------------------------------------
+Sat Apr 22 07:32:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Fix-wrong-for-clause-in-Akonadi-Session.patch (kde#458315)
+  * 0002-Remove-dead-code-from-FavoriteCollectionsModel.patch
+  * 0003-Fix-a-bug-in-for-clause-in-EntityTreeModel.patch
+  * 0001-Fix-crash-on-server-shutdown.patch (kde#450217, kde#462692)
+
+-------------------------------------------------------------------
 Sat Apr 15 08:45:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0

@@ -1,0 +1,36 @@
+From 518c99d1313b621312275a5bd6af919a3d889f26 Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl@carlschwan.eu>
+Date: Wed, 26 Apr 2023 19:35:57 +0200
+Subject: [PATCH] Avoid crashing before priting debug output when setting up db
+
+Calling debugLastDbError requires the database to be already setup
+as it is using the akonadi tracer. So using it to debug why the database
+didn't open doesn't work.
+
+CCBUG: 468985
+
+
+(cherry picked from commit 05db7d03baae46513cd6735ec2c3f28733145b0a)
+---
+ src/server/storage/datastore.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/server/storage/datastore.cpp b/src/server/storage/datastore.cpp
+index 8f8a6bc1f..31a29b670 100644
+--- a/src/server/storage/datastore.cpp
++++ b/src/server/storage/datastore.cpp
+@@ -113,7 +113,10 @@ void DataStore::open()
+     m_dbOpened = m_database.open();
+ 
+     if (!m_dbOpened) {
+-        debugLastDbError("Cannot open database.");
++        qCCritical(AKONADISERVER_LOG) << "Database error: Cannot open database.";
++        qCCritical(AKONADISERVER_LOG) << "  Last driver error:" << m_database.lastError().driverText();
++        qCCritical(AKONADISERVER_LOG) << "  Last database error:" << m_database.lastError().databaseText();
++        return;
+     } else {
+         qCDebug(AKONADISERVER_LOG) << "Database" << m_database.databaseName() << "opened using driver" << m_database.driverName();
+     }
+-- 
+2.40.0
+
