@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 24 12:39:15 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 41:
+  * Output the codecov file format.
+  * Fix handling of symlinks.
+  * Add support for RISC-V.
+  * Fix gcc-13 build.
+  * Correct the license for Debian.
+  * Add --cobertura-only output option.
+  * Fix build with binutils >= 2.39.
+  * Clear BFD state between files to avoid breakpoint trashing atomic
+    instructions.
+- Remove kcov-40-binutils-2.39.patch: Fixed upstream.
+- Add -lsframe, -lzstd to build flags: Fix linking.
+
+-------------------------------------------------------------------
 Thu Sep 22 19:04:42 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 40:

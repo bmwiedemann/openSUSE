@@ -1,7 +1,7 @@
 #
 # spec file for package kcov
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kcov
-Version:        40
+Version:        41
 Release:        0
 Summary:        Code coverage tool without special compilation options
 License:        GPL-2.0-only
@@ -25,8 +25,6 @@ Group:          Development/Tools/Other
 URL:            https://github.com/SimonKagstrom/kcov
 Source0:        https://github.com/SimonKagstrom/kcov/archive/v%{version}.tar.gz
 Patch0:         link_order.patch
-# PATCH-FIX-UPSTREAM kcov-40-binutils-2.39.patch -- Fix build with binutils 2.39 (gh#SimonKagstrom#381, gh#SimonKagstrom!383)
-Patch1:         kcov-40-binutils-2.39.patch
 BuildRequires:  binutils-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -50,6 +48,9 @@ long-running applications.
 rm -frv external/
 
 %build
+%if 0%{?suse_version} > 1500
+export CFLAGS="%{optflags} -lsframe -lzstd"
+%endif
 %cmake
 %cmake_build
 
