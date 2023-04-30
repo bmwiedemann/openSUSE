@@ -83,8 +83,10 @@ to have a very simple API.
 %install
 %meson_install
 
-%check
-%meson_test
+# Test is to flaky - disable 28-04-2023
+# https://gitlab.gnome.org/GNOME/gupnp-igd/-/issues/3
+#%%check
+#%%meson_test
 
 %ldconfig_scriptlets -n libgupnp-igd-1_6-0
 

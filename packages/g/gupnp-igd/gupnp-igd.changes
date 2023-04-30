@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 28 07:29:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable meson_test during build, it randomly fails for all arches
+  https://gitlab.gnome.org/GNOME/gupnp-igd/-/issues/3
+
+-------------------------------------------------------------------
 Thu Apr 13 09:29:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.0:
