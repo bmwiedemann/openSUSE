@@ -236,4 +236,12 @@
     <comment>fix license header to correspond to SPDX abbreviation</comment>
     <requestid>949570</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>26566a0e1ee453cfe9a8220122175a8a</srcmd5>
+    <version>0.3.4</version>
+    <time>1682863657</time>
+    <user>dimstar_suse</user>
+    <comment>0.3.4</comment>
+    <requestid>1083649</requestid>
+  </revision>
 </revisionlist>

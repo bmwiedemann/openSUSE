@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 29 12:31:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 0.3.4
+  *  WPG2: Incomplete implementation of handlePenForeColor
+    (bdo#155057)
+  *  Correct a problem concerning HAVE_VISIBILITY not defined when
+     compiling for Windows...
+  *  WPG1: fix vertical position of text line
+  *  WPG1: improve output of aligned text
+  *  WPG1: handle font size
+  *  WPG1: parse more graphic text attrs
+  *  WPG1: make text type 2 handler build again
+  *  Add note for text position
+  *  WPG1: handle text color
+  *  WPG1: parse some bits of text attrs record
+  *  Drop pointless cast
+  *  WPG1: handle line style
+  *  Drop a pointless cast
+  *  WPG1: parse page format record
+  *  WPG1: handle groups
+  *  Fix too small loop variables
+
+-------------------------------------------------------------------
 Fri Jan 28 06:11:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix license header to correspond SPDX abbreviation
