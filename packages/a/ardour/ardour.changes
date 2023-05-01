@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 29 17:47:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.4.0. See https://ardour.org/whatsnew.html
+  New features:
+  * Add a volume control to the clip picker.
+  * Add a preference item for the PPQN value in exported MIDI files
+  * Add an option to use a neutral color for new tracks & busses.
+  * Add support for MIDI subgroup busses.
+  * Add Lua DSP processor to downmix 5.1 to stereo.
+
+-------------------------------------------------------------------
 Thu Feb 16 09:50:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.3.0. https://ardour.org/whatsnew.html
