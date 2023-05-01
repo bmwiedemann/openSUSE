@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest-jupyter
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,10 @@
 %endif
 
 Name:           python-pytest-jupyter%{psuffix}
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        A pytest plugin for testing Jupyter libraries and extensions
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jupyter-server/pytest-jupyter
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_jupyter/pytest_jupyter-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
