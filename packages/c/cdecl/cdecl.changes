@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 30 14:39:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.2
+  * Autocompletion of '='
+  * The -I option (--explicit-int) has been changed to -i.
+  * The -R option (--trailing-return) has been changed to -r.
+  * New --west-pointer and -w command-line options and a new
+    west-pointer set option
+
+-------------------------------------------------------------------
 Sat Apr 15 14:22:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.1.1
