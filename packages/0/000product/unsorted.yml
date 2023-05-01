@@ -320,6 +320,8 @@ unsorted:
   - XSStrike 
   - XyGrib 
   - YODA-devel 
+  - ZArchive 
+  - ZArchive-devel 
   - a2jmidid 
   - a2ps 
   - a2ps-devel 
@@ -14662,7 +14664,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_3_3 
+  - librssguard-4_3_4 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16035,6 +16037,7 @@ unsorted:
   - libz3-4_12 
   - libzapojit-0_0-0 
   - libzapojit-devel 
+  - libzarchive0_1 
   - libzbar-devel 
   - libzbar0-32bit 
   - libzbarqt-devel 
@@ -16068,7 +16071,9 @@ unsorted:
   - libzn_poly-0_9 
   - libzopfli-devel 
   - libzopfli1 
+  - libzopfli1-x86-64-v3 
   - libzopflipng1 
+  - libzopflipng1-x86-64-v3 
   - libzrtpcpp-devel 
   - libzrtpcpp4 
   - libzscanner4 
