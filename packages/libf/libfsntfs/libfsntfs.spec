@@ -18,7 +18,7 @@
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20221023
+Version:        20230427
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -32,22 +32,22 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20220120
-BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20230108
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfcache) >= 20230115
+BuildRequires:  pkgconfig(libfdata) >= 20220113
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfusn) >= 20220119
 BuildRequires:  pkgconfig(libfwnt) >= 20220922
-BuildRequires:  pkgconfig(libhmac) >= 20220425
+BuildRequires:  pkgconfig(libhmac) >= 20230407
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -57,12 +57,12 @@ Library and tools to access the New Technology File System (NTFS).
 
 Note that this project currently only focuses on the analysis of the format.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the New Technology File System (NTFS)
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 libfsntfs is a library to access the New Technology File System (NTFS).
 
 Note that this project currently only focuses on the analysis of the format.
@@ -85,10 +85,10 @@ Requires:       %lname = %version
 Requires:       libbfio-devel
 
 %description devel
-%{name} is a library to access the New Technology File System (NTFS).
+%name is a library to access the New Technology File System (NTFS).
 
 This subpackage contains libraries and header files for developing
-applications that want to make use of %{name}.
+applications that want to make use of %name.
 
 %prep
 %autosetup -p1
@@ -107,28 +107,28 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv "%_builddir/rt"/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libfsntfs.so.*
+%_libdir/libfsntfs.so.*
 
 %files -n %name-tools
-%{_bindir}/fsntfs*
-%{_mandir}/man1/fsntfsinfo.1*
+%_bindir/fsntfs*
+%_mandir/man1/fsntfsinfo.1*
 
 %files -n %name-devel
-%{_includedir}/libfsntfs.h
-%{_includedir}/libfsntfs/
-%{_libdir}/libfsntfs.so
-%{_libdir}/pkgconfig/libfsntfs.pc
-%{_mandir}/man3/libfsntfs.3*
+%_includedir/libfsntfs.h
+%_includedir/libfsntfs/
+%_libdir/libfsntfs.so
+%_libdir/pkgconfig/libfsntfs.pc
+%_mandir/man3/libfsntfs.3*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pyfsntfs.so
+%python_sitearch/pyfsntfs.so
 
 %changelog
