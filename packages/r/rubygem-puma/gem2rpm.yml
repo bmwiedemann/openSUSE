@@ -69,5 +69,8 @@
 #
 :preamble: |-
   BuildRequires:  openssl-devel
+:post_install: |-
+  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ -type f -print0 | xargs -r0 chmod -v a-x
+  find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/bin/ -type f -print0 | xargs -r0 chmod -v a+x
 :sources:
 - rubygem-puma-rpmlintrc

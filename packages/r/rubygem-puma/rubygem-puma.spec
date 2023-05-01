@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-puma
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,10 @@ support CRuby well.
   --doc-files="History.md LICENSE README.md" \
   -f
 %gem_cleanup
+# MANUAL
+find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/ -type f -print0 | xargs -r0 chmod -v a-x
+find %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/bin/ -type f -print0 | xargs -r0 chmod -v a+x
+# /MANUAL
 
 %gem_packages
 
