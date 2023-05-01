@@ -77,4 +77,12 @@
   * Use cmake for building</comment>
     <requestid>755867</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>949ab399321d4a411c320b9ba68bcc01</srcmd5>
+    <version>1.0.3</version>
+    <time>1682959848</time>
+    <user>dimstar_suse</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1083737</requestid>
+  </revision>
 </revisionlist>

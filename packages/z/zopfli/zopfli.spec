@@ -1,7 +1,7 @@
 #
 # spec file for package zopfli
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,11 +29,13 @@ Summary:        GZip compatible compression utlity
 License:        Apache-2.0
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/google/zopfli
-Source:         https://github.com/google/zopfli/archive/zopfli-%{version}.tar.gz
+Source0:        https://github.com/google/zopfli/archive/zopfli-%{version}.tar.gz
+Source1:        baselibs.conf
+BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  make
-BuildRequires:  cmake >= 2.8.11
+%{?suse_build_hwcaps_libs}
 
 %description
 Example program for libzopfli to create gzip compatible files. Files can be
@@ -83,18 +85,16 @@ help2man --help-option="-h" --version-string=%{version} --no-info --no-discard-s
 install -D -pm 0644 build/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 install -D -pm 0644 build/%{pngname}.1 %{buildroot}%{_mandir}/man1/%{pngname}.1
 
-%post -n %{libname} -p /sbin/ldconfig
-%post -n %{libpngname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%postun -n %{libpngname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname} 
+%ldconfig_scriptlets -n %{libpngname}
 
 %files
 %doc README README.zopflipng
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/zopflipng
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/zopflipng.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/zopflipng.1%{?ext_man}
 
 %files -n %{libname}
 %{_libdir}/libzopfli.so.*
