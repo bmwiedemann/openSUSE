@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 01 13:53:04 UTC 2023 - emiliano.langella@suse.com
+
+- Update to version 4.2.6+git0.86d7f4c:
+  * prepare for 4.2.6
+  * fix corner case of instr function (be fully compatible with Oracle) see #221
+  * prepare for 4.2.5
+  * fix copy/paste bug
+  * use MoveFileEx function instead replace function on win32
+
+-------------------------------------------------------------------
 Sun Apr 02 20:30:20 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version 4.2.4+git0.2499240:
