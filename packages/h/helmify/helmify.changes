@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 30 10:52:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.3:
+  * Fixed the rest of the linting that went a little crazy
+  * Fixed indentions that went a little crazy
+  * Added security context processing for initContainers, refactor
+    to reduce code duplication
+  * Fixed incorrect name for the test data initContainer
+  * Updated to not include initContainers:null in templates if none
+    exist in the source manifest
+  * Regenerated chart examples
+  * This change adds support for initContainers
+
+-------------------------------------------------------------------
 Fri Apr 28 08:42:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.2:
