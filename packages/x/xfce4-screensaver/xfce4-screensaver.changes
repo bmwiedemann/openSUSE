@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  1 06:54:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Fix hang up with efifb / nomodeset (bsc#1210562):
+  xfce4-screensaver-manager-efifb-lockup-fix.patch
+
+-------------------------------------------------------------------
 Mon Mar 27 08:05:55 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.1

@@ -25,6 +25,8 @@ License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/apps/xfce4-screensaver/start
 Source:         https://archive.xfce.org/src/apps/xfce4-screensaver/4.18/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM commit 3aa15c2278c1 bsc#1210562
+Patch1:         xfce4-screensaver-manager-efifb-lockup-fix.patch
 BuildRequires:  intltool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -61,7 +63,7 @@ Add xfce4-screensaver-command -l to xflock4 script for it to work properly.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with git}
