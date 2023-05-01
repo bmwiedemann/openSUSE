@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Apr 30 13:59:18 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.9.11.1
+  * Added decimal values in scaling by percentage
+  * Various improvements in the user interface
+  * Various Bugfixes
+- Changes in 0.9.11.0
+  * Now, it’s possible to attempt to process corrupted images
+  * Updated Turkish Translation
+  * Updated Italian translation
+  * Various Bugfixes
+- Changes in 0.9.10.1
+  * Fixed random crash that may happen when images are removed
+    from the list
+  * Updated Russian translation
+  * Various Bugfixes
+- Changes in 0.9.10.0
+  * Added WebP support for quality, compression, etc
+  * Added a feature to remove metadata when images are processed
+  * Fixed a bug that inhibits the overwrite feature when the
+    Rename option is checked
+  * Various Bugfixes
+- Changes in 0.9.9.8
+  * Updated Russian, Turkish and Italian translations
+  * Various Bugfixes
+- Changes in 0.9.9.7
+  * Added hicolor icons on Linux
+  * The program is now adapted to be distributed as AppImage
+  * The program is now adapted to be distributed as Snap Package
+  * Various Bugfixes
+- Changes in 0.9.9.6
+  * Improved quality and compression settings for JPEG and PNG
+    formats
+  * Various Bugfixes
+
+-------------------------------------------------------------------
 Thu May  5 15:53:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.9.9.5
