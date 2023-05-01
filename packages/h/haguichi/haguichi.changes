@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 30 18:47:43 UTC 2023 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.6
+  * Implemented separate thread and mode for configuring.
+  * Improved display of long text input in commands editor.
+  * Now using actual Gtk.SearchBar widget for search bar.
+  * Now using pill style action buttons in message box.
+  * Added support for kgx (GNOME Console).
+  * Dropped support for pantheon-terminal and pantheon-files.
+  * Removed stylesheet for Mint themes.
+  * Removed Control+F1 as accelerator to open keyboard shortcuts window.
+  * Updated Brazilian Portuguese, French, Indonesian, Italian, Japanese, Lithuanian, Polish, Portuguese, Russian, Spanish, Swedish and Ukrainian translations.
+
+-------------------------------------------------------------------
 Wed Dec  8 16:37:45 UTC 2021 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.4.5
