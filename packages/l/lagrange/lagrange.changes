@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 30 11:14:17 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.15.9
+  - Added new UI translation: Basque (euskara).
+  - Improved opening and closing of tabs. New tabs now open to the right of the
+    current tab.
+  - Allow scaling up small images up to 2x size.
+  - Fixed possible crash when closing tabs.
+  - Fixed crashes on Wayland due to use of X11-specific code.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Sat Apr  8 16:01:12 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.15.8
