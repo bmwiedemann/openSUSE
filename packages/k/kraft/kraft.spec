@@ -1,7 +1,7 @@
 #
 # spec file for package kraft
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -55,8 +55,14 @@ Recommends:     python3-Weasyprint
 Patch0:         use_qpdfview.patch
 %endif
 %if %{with akonadi}
+%if 0%{?suse_version} > 1500
+BuildRequires:  cmake(KPim5AkonadiContact)
+%else
 BuildRequires:  cmake(KF5AkonadiContact)
 %endif
+%endif
+# PATCH-FIX-UPSTREAM fixakonadi.patch Use new Akonadi Prefix
+Patch1:         fixakonadi.patch
 
 %description
 Kraft is KDE software to help to create and manage office documents such as
@@ -72,10 +78,15 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 
+%if 0%{?suse_version} > 1500
 %cmake_kf5 -d build
+%else
+%cmake_kf5 -d build -- -DAKONADI_LEGACY_BUILD=ON
+%endif
 %cmake_build
 
 %install
