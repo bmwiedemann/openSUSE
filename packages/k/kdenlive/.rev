@@ -987,4 +987,13 @@ I would be grateful.
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080584</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>af01eb861d9f83fc082dec27c7a4e3ba</srcmd5>
+    <version>23.04.0</version>
+    <time>1682959884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix for kde#468962:
+  * 0001-Fix-project-corruption-on-opening-add-test-to-preven.patch</comment>
+    <requestid>1083836</requestid>
+  </revision>
 </revisionlist>

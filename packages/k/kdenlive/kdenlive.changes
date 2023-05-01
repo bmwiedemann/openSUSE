@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  1 07:31:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix for kde#468962:
+  * 0001-Fix-project-corruption-on-opening-add-test-to-preven.patch
+
+-------------------------------------------------------------------
 Sat Apr 15 08:45:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0

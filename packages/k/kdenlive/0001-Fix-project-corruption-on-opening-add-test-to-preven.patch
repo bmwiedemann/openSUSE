@@ -1,0 +1,100 @@
+From 364e23f6d1ba104e40623297b82a0ee873942925 Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Sat, 29 Apr 2023 07:05:04 +0200
+Subject: [PATCH] Fix project corruption on opening, add test to prevent from
+ happening again CCBUG: 468962
+
+ (test files stripped from patch for the package)
+---
+ src/mltcontroller/clipcontroller.cpp         |    1 -
+ src/project/projectmanager.cpp               |   11 +-
+ src/project/projectmanager.h                 |    2 +-
+ src/timeline2/model/builders/meltBuilder.cpp |    5 +-
+
+diff --git a/src/mltcontroller/clipcontroller.cpp b/src/mltcontroller/clipcontroller.cpp
+index 73fb15ae1..669748573 100644
+--- a/src/mltcontroller/clipcontroller.cpp
++++ b/src/mltcontroller/clipcontroller.cpp
+@@ -731,7 +731,6 @@ bool ClipController::hasAudio() const
+ void ClipController::checkAudioVideo()
+ {
+     QReadLocker lock(&m_producerLock);
+-    qDebug() << "------------\nCHECKING AUDIO/VIDEO FOR CLIP: " << m_clipType << "\n------------------------";
+     if (m_masterProducer->get_int("_placeholder") == 1 || m_masterProducer->get_int("_missingsource") == 1) {
+         // This is a placeholder file, try to guess from its properties
+         QString orig_service = m_masterProducer->get("kdenlive:orig_service");
+diff --git a/src/project/projectmanager.cpp b/src/project/projectmanager.cpp
+index 3ab00f022..791910867 100644
+--- a/src/project/projectmanager.cpp
++++ b/src/project/projectmanager.cpp
+@@ -307,10 +307,19 @@ void ProjectManager::activateDocument(const QUuid &uuid)
+ void ProjectManager::testSetActiveDocument(KdenliveDoc *doc, std::shared_ptr<TimelineItemModel> timeline)
+ {
+     m_project = doc;
++    if (timeline == nullptr) {
++        // New nested document format, build timeline model now
++        const QUuid uuid = m_project->uuid();
++        timeline = TimelineItemModel::construct(uuid, pCore->getProjectProfile(), m_project->commandStack());
++        std::shared_ptr<Mlt::Tractor> tc = pCore->projectItemModel()->getExtraTimeline(uuid.toString());
++        if (!constructTimelineFromTractor(timeline, nullptr, *tc.get(), m_progressDialog, m_project->modifiedDecimalPoint(), QString(), QString())) {
++            qDebug() << "===== LOADING PROJECT INTERNAL ERROR";
++        }
++    }
+     m_project->addTimeline(doc->uuid(), timeline);
+     m_activeTimelineModel = timeline;
+-    m_project->loadSequenceGroupsAndGuides(doc->uuid());
+     m_project->activeUuid = doc->uuid();
++    m_project->loadSequenceGroupsAndGuides(doc->uuid());
+ }
+ 
+ std::shared_ptr<TimelineItemModel> ProjectManager::getTimeline()
+diff --git a/src/project/projectmanager.h b/src/project/projectmanager.h
+index ad8082746..2e6c6d823 100644
+--- a/src/project/projectmanager.h
++++ b/src/project/projectmanager.h
+@@ -95,7 +95,7 @@ public:
+     void addAudioTracks(int tracksCount);
+     /** @brief This method is only there for tests, do not use in real app.
+      */
+-    void testSetActiveDocument(KdenliveDoc *doc, std::shared_ptr<TimelineItemModel> timeline);
++    void testSetActiveDocument(KdenliveDoc *doc, std::shared_ptr<TimelineItemModel> timeline = nullptr);
+     /** @brief This method is only there for tests, do not use in real app.
+      */
+     bool testSaveFileAs(const QString &outputFileName);
+diff --git a/src/timeline2/model/builders/meltBuilder.cpp b/src/timeline2/model/builders/meltBuilder.cpp
+index e08a36fe0..188b9f281 100644
+--- a/src/timeline2/model/builders/meltBuilder.cpp
++++ b/src/timeline2/model/builders/meltBuilder.cpp
+@@ -47,7 +47,6 @@ bool loadProjectBin(const std::shared_ptr<ProjectItemModel> &projectModel, Mlt::
+     int zoomLevel = -1;
+     binIdCorresp.clear();
+     projectModel->loadBinPlaylist(&tractor, binIdCorresp, expandedFolders, zoomLevel, progressDialog);
+-
+     QStringList foldersToExpand;
+     // Find updated ids for expanded folders
+     for (const QString &folderId : expandedFolders) {
+@@ -75,6 +74,7 @@ bool constructTimelineFromTractor(const std::shared_ptr<TimelineItemModel> &time
+ 
+     QStringList expandedFolders;
+     if (projectModel) {
++        // This is an old format project file
+         int zoomLevel = -1;
+         if (timeline->uuid() == pCore->currentTimelineId()) {
+             binIdCorresp.clear();
+@@ -82,7 +82,6 @@ bool constructTimelineFromTractor(const std::shared_ptr<TimelineItemModel> &time
+         } else {
+             projectModel->loadTractorPlaylist(tractor, binIdCorresp);
+         }
+-
+         QStringList foldersToExpand;
+         // Find updated ids for expanded folders
+         for (const QString &folderId : expandedFolders) {
+@@ -95,7 +94,7 @@ bool constructTimelineFromTractor(const std::shared_ptr<TimelineItemModel> &time
+             pCore->bin()->loadBinProperties(foldersToExpand, zoomLevel);
+         }
+     } else {
+-        binIdCorresp.clear();
++        // loading an extra timeline
+     }
+ 
+     QSet<QString> reserved_names{QLatin1String("playlistmain"), QLatin1String("timeline_preview"), QLatin1String("timeline_overlay"),
