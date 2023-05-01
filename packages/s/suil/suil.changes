@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr 29 10:49:31 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Switch to meson
+- Update to 0.10.18
+  * Add project metadata
+  * Adopt REUSE machine-readable licensing standard
+  * Fix MacOS build when Gtk3 and Qt5 are present without X11
+  * Fix opening wrapped UIs multiple times in Gtk
+
+  0.10.16 Changes:
+  * Fix wrapper module installation path
+
+  0.10.14 Changes:
+  * Fix MacOS build
+  * Fix documentation install path
+  * Remove dead Qt4 support code
+  * Switch to meson build system
+
+  0.10.12 Changes:
+  * Fix build issues with newer toolchains
+  * Fix some compiler warnings
+  * Remove Qt4 support
+
+-------------------------------------------------------------------
 Mon May  9 18:37:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.10.10

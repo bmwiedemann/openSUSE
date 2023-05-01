@@ -1,7 +1,7 @@
 #
 # spec file for package suil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,19 +29,19 @@ If Suil supports a particular toolkit, then all hosts that use Suil will\
 support that toolkit.
 
 Name:           suil
-Version:        0.10.10
+Version:        0.10.18
 Release:        0
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://drobilla.net/software/suil.html
-Source:         https://download.drobilla.net/suil-%{version}.tar.bz2
+Source:         https://download.drobilla.net/suil-%{version}.tar.xz
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel >= 3.14.0
 BuildRequires:  lv2-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 
@@ -141,16 +141,13 @@ Module plugin for:
 
 %prep
 %setup -q
-# run waf with python 3
-find waflib -type f -name *.py -exec sed -i 's|/usr/bin/env python$|%{_bindir}/python3|' {} \;
-sed -i 's|/usr/bin/env python$|%{_bindir}/python3|' wscript waf waflib/waf
 
 %build
-./waf configure --prefix=%{_prefix} --libdir=%{_libdir}
-./waf
+%meson -Dcocoa=disabled -Ddocs=disabled
+%meson_build
 
 %install
-./waf install --destdir=%{buildroot}
+%meson_install
 
 %post -n libsuil-0-0 -p /sbin/ldconfig
 %postun -n libsuil-0-0 -p /sbin/ldconfig
