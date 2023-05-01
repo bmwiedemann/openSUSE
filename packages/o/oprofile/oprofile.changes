@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 30 17:19:41 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Fix linking on Tumbleweed:
+  * Add oprofile-binutils.patch.
+  * Add build dependency on libzstd-devel.
+
+-------------------------------------------------------------------
 Sat Jan 16 18:21:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

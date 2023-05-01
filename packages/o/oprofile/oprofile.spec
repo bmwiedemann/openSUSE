@@ -1,7 +1,7 @@
 #
 # spec file for package oprofile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source4:        jvmpi.h
 Source5:        README-BEFORE-ADDING-PATCHES
 Patch1:         %{name}-no-libjvm-version.patch
 Patch2:         %{name}-pfm-ppc.patch
+Patch3:         %{name}-binutils.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -41,6 +42,7 @@ BuildRequires:  java-devel
 BuildRequires:  libICE-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
+BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  zlib-devel
