@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 26 15:19:22 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.15.2
+  * Update golang.org/x/net to address CVE-2022-41723
+  * Sanitize filenames printed by backup during processing
+  * Make dump interpret --host and --path correctly
+  * Correct number of blocks reported in mount point
+  * Minimize risk of spurious filesystem loops with mount
+  * Add release binaries for riscv64 architecture on Linux
+  * Upgrade Minio to version 7.0.49
+
+-------------------------------------------------------------------
 Tue Jan 31 21:33:43 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Update to version 0.15.1
