@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 29 08:33:55 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Made the patch of the cmake files a bit more clean 
+
+-------------------------------------------------------------------
+Fri Apr 28 21:25:50 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fix build requirement on AkondiContacts 
+
+-------------------------------------------------------------------
+Fri Apr 28 21:18:19 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add a patch fixakonadi.patch to adopt to latest KDE akonadi. 
+
+-------------------------------------------------------------------
 Sat Dec 24 12:44:31 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to Kraft version 1.0 
