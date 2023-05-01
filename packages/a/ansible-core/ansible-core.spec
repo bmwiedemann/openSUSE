@@ -43,7 +43,8 @@ BuildArch:      noarch
 Conflicts:      ansible < 3
 Conflicts:      ansible-base
 
-BuildRequires:  %{ansible_python}-base >= 3.8
+# https://github.com/ansible/ansible/blob/devel/setup.cfg#L40
+BuildRequires:  %{ansible_python}-base >= 3.9
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

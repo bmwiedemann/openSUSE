@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  1 08:49:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire python3.9 to follow upstream (does not matter on
+  Tumbleweed which is using 3.10 already...)
+
+-------------------------------------------------------------------
 Mon Apr 24 16:40:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.14.5:
