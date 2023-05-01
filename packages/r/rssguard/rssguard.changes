@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 26 20:17:04 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.3.4
+  + Added:
+    - Persistent article/item viewer. By default it is on. If no article is
+      selected but feed/category is, then miscellaneous information about
+      selected feed list item is displayed. (gh#martinrotter/rssguard#424)
+    - Reworked logic of determining which article states
+      (read/unread/starred/unstarred) have changed when synchronizing states to
+      remote feed servers. This concerns all synchronized plugins like Gmail,
+      Greader, Feedly, etc. and show in theory lead to much better performance
+      when you mark many articles as read or unread.
+    - Couple of extra QoL enhancements for Gmail like proper encoding of
+      attachment filenames, turned off displaying of "enclosures" as these are
+      displayed in other way, etc.
+  + Fixed:
+    - Deadlock when fetching feeds in some corner situations is now resolved.
+      (gh#martinrotter/rssguard#910)
+    - URLs of articles are now sanitized from leading and trailing spaces.
+      (gh#martinrotter/rssguard#914)
+    - ATOM feeds were mistakenly changed to RSS feeds during OPML import.
+      (gh#martinrotter/rssguard#913)
+    - Now compiles with GCC 13. (gh#martinrotter/rssguard#911)
+    - Freezing of GUI when fetching feeds should now be gone even on newer Qt
+      library.
+    - Correct account-wide proxy is used when importing feeds.
+    - Article duplicity checks are now much more useful and actually working in
+      article filters.
+    - Translations synced.
+    - All buttons from article toolbar now correctly follow tool button style.
+- Add rssguard-4.3.4-fix-build.patch
+- Drop rssguard-4.3.3-fix-build.patch
+
+-------------------------------------------------------------------
 Thu Mar 30 20:35:46 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - Update to version 4.3.3

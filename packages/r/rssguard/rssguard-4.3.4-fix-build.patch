@@ -1,0 +1,29 @@
+From 0fe76799f4bed92aea4fe38ac29e52879af63266 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Marqui=CC=81nez=20Ferra=CC=81ndiz?=
+ <jaime.marquinez.ferrandiz@fastmail.net>
+Date: Wed, 26 Apr 2023 21:54:25 +0200
+Subject: [PATCH] Fix build error with the -Werror=return-type flag
+
+---
+ src/librssguard/core/messageobject.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/librssguard/core/messageobject.cpp b/src/librssguard/core/messageobject.cpp
+index fa7ee17f4..3f18926ef 100644
+--- a/src/librssguard/core/messageobject.cpp
++++ b/src/librssguard/core/messageobject.cpp
+@@ -178,9 +178,11 @@ QString MessageObject::createLabelId(const QString& title, const QString& hex_co
+ 
+   if (hex_color.isEmpty()) {
+     // Generate color.
++      return nullptr;
+   }
+ 
+   // TODO: CONTINUE
++  return nullptr;
+ }
+ 
+ void MessageObject::addEnclosure(const QString& url, const QString& mime_type) const {
+-- 
+2.40.0
+
