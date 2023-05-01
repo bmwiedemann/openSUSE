@@ -972,4 +972,17 @@
   (jsc#SLE-18182) ECO: Update fence-agents</comment>
     <requestid>1073128</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>acde1142844a91d21ef366bd8080fd29</srcmd5>
+    <version>4.12.1+git.1682325255.86f77326</version>
+    <time>1682959896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.12.1+git.1682325255.86f77326:
+  * fence_aliyun: support filter for list-action
+  * fence_scsi: Automatically detect devices for shared VGs
+  * Adds earlyexit parameter to power_cycle_instance for fence_gce
+  * fence_aws: fail when power action request fails
+  * fence_aws: fixes to allow running outside of AWS network</comment>
+    <requestid>1083859</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 01 12:23:24 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.1+git.1682325255.86f77326:
+  * fence_aliyun: support filter for list-action
+  * fence_scsi: Automatically detect devices for shared VGs
+  * Adds earlyexit parameter to power_cycle_instance for fence_gce
+  * fence_aws: fail when power action request fails
+  * fence_aws: fixes to allow running outside of AWS network
+
+-------------------------------------------------------------------
 Thu Mar 16 21:59:57 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.1+git.1677142927.bf55c675:
