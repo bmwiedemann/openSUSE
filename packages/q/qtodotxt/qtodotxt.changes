@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 30 13:54:50 UTC 2023 - Bernd Singer <singer@nefkom.net>
+
+- Fix a crash with Python >= 3.10.
+
+-------------------------------------------------------------------
 Sat Jun 24 16:09:06 UTC 2017 - bwiedemann@suse.com
 
 - Use convert -strip to not add timestamps to png files
