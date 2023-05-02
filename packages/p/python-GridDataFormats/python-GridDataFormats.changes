@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue May  2 09:00:52 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.0.1
+  1.0.1
+  -----
+  Changes
+  * Deployment is now automatically done using github actions.
+  Fixes
+  * Version 1.0.0 would allow for installations to be made with python versions
+    < 3.8, resulting in incorrect builds. The setup configuration has now been
+    altered to avoid this (Issue #112)
+
+  1.0.0
+  -----
+  Changes
+  * API-stable release
+  * deprecated and buggy CCP4 module was removed (#107, #50)
+  * gridDataFormats now follows NEP29 (#102)
+  * removed support for Python 2.7 and Python <3.8 (#102)
+
+  0.7.0
+  -----
+  Changes
+  * Python 3.10 is supported (issue #101)
+  Enhancements
+  * use mrcfile library to parse MRC files (including CCP4) using the
+    new mrc.MRC class (issue #83)
+  Fixes
+  * The new mrc module correctly reorients the coordinate system based
+    on mapc, mapr, maps and correctly calculates the origin (issue #76)
+  * documented Grid attributes, including axis convention (issue #69)
+  Deprecations
+  * The CCP4 module (replaced by mrc) will be removed in 1.0.0
+
+  0.6.0
+  -----
+  Changes
+  * macOS and Windows are also tested (min and max supported Python, #97)
+  Enhancements
+  * Allow parsing/writing gzipped DX files (PR #70, #99)
+  * Update doc theme to use sphinx-rtd-theme (#80)
+  * Delta of OpenDX writes 7 significant figures (#88)
+  Fixes
+  * fix initialization of mutable instance variable of Grid class (metadata dict) (#71)
+  * fix multiple __init__ calls (#73)
+  * interpolation behavior outside of the grid changed to default to a
+    constant rather than the nearest value (#84)
+  * corrected resampling behavior to not draw on values outside of the grid (#84)
+
+
+-------------------------------------------------------------------
 Tue Apr 20 02:54:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
