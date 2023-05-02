@@ -1,7 +1,7 @@
 #
 # spec file for package python-notebook-shim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define anypython python3dist
 Name:           python-notebook-shim
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        A shim layer for notebook traits and config
 License:        BSD-3-Clause
@@ -47,8 +48,7 @@ Jupyter Server for their Python Web application backend.
 %package -n jupyter-notebook-shim
 Summary:        The configuration file for python-notebook-shim
 Provides:       juypter-notebook_shim = %{version}-%{release}
-# Any flavor is okay
-Requires: (%(echo "%{python_module notebook-shim = %{version}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       %anypython(notebook-shim) = %{version}
 
 %description -n jupyter-notebook-shim
 This project provides a way for JupyterLab and other frontends to switch to
