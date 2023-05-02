@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  1 17:46:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.6
+  * Add show_banner trait to control the banner display #243
+    (@echarles)
+  * Use the correct icon to display the application #245
+    (@befeleme)
+  * State the correct name of the application in the desktop entry
+    #244 (@befeleme)
+
+-------------------------------------------------------------------
 Sun Apr 23 20:25:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.5
