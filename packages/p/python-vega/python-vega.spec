@@ -1,7 +1,7 @@
 #
 # spec file for package python-vega
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-vega
-Version:        3.6.0
+Version:        4.0.0
 Release:        0
 Summary:        An IPython/Jupyter widget for Vega 3 and Vega-Lite 2
 License:        BSD-3-Clause
 URL:            https://github.com/vega/ipyvega/
 Source:         https://files.pythonhosted.org/packages/source/v/vega/vega-%{version}.tar.gz
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module pandas >= 1.0.0}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry >= 0.12}
+BuildRequires:  %{python_module poetry >= 1.4.2}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
-Requires:       python-altair
-Requires:       python-ipython
-Requires:       python-jupyter-client >= 4.2
+Requires:       python-ipytablewidgets >= 0.3.0
+Requires:       python-jupyter >= 1.0.0
+Requires:       python-pandas >= 1.5.0
 Recommends:     python-ipywidgets
+Recommends:     python-jupyterlab
 Provides:       python-jupyter_vega = %{version}-%{release}
 Obsoletes:      python-jupyter_vega < %{version}-%{release}
 BuildArch:      noarch
@@ -47,7 +44,12 @@ Obsoletes:      jupyter-vega < %{version}-%{release}
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module altair >= 4.0.1}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module ipytablewidgets >= 0.3.0}
+BuildRequires:  %{python_module ipywidgets}
+BuildRequires:  %{python_module jupyterlab}
+BuildRequires:  %{python_module jupyter}
+BuildRequires:  %{python_module pandas >= 1.5.0}
+BuildRequires:  %{python_module pytest >= 7.2}
 # /SECTION
 %python_subpackages
 

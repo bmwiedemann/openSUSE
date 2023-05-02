@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  1 17:57:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.0
+  * Improve serialization of Pandas DataFrames to ipyvega (#346)
+  * Pandas update 1.5 (#463)
+  * galata and ipytablewidgets update, other improvements (#464)
+
+-------------------------------------------------------------------
 Sat Jul 16 15:10:14 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
