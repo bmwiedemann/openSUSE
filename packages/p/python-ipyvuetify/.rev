@@ -25,4 +25,13 @@
   * no upstreeam changelog provided (gh#widgetti/ipyvuetify#247) (forwarded request 1082584 from bnavigator)</comment>
     <requestid>1082585</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c5ee8d3672548d8dd81dc587efab86f4</srcmd5>
+    <version>1.8.10</version>
+    <time>1683037130</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix type on recommends
+</comment>
+    <requestid>1083894</requestid>
+  </revision>
 </revisionlist>

@@ -36,7 +36,7 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       (python-ipyvue >= 1.7 with python-ipyvue < 2)
 Recommends:     jupyter-ipyvuetify-nbextension = %{version}
-Recommends:     jupyter-juypterlab-ipyvuetify = %{version}
+Recommends:     jupyter-jupyterlab-ipyvuetify = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipyvue >= 1.7 with %python-ipyvue < 2}
