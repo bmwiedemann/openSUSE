@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 29 09:03:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.26.4
+    - Improved window management on macOS.
+    - Minor bug fixes and optimizations.
+    - Changed INTERRUPT to not always display an error icon.
+    - Enabled "Access-Control-Allow-Private-Network"
+      header to be set during status requests.
+    - Changed CHANGE_PIN to return a FailureCode.
+    - Fixed a crash with AirPlay in the iOS SDK.
+    - Fixed private icons in the iOS SDK.
+    - Added simulator support for explicit private keys as parameters.
+    - Fixed cancel button in the iOS scan dialog of
+      the SDK not cancelling the workflow.
+
+-------------------------------------------------------------------
 Thu Mar  9 23:31:05 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
