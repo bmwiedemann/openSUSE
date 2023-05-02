@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  2 00:31:15 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Remove "changesgenerate" from _service for vst3sdk
+- Update to 3.3.1
+  
+  This is a hotfix release. It fixes the following bugs:
+
+  * #4600 Fixed cut lines massively inflating project size.
+  * #4612 Fixed custom project sample rates being uneditable.
+  * #4604 Fixed crash reporting being disabled.
+  * #4234 Audacity now shows an error if the upload to audio.com
+          exceeds file size limits.
+  * #4114 Fixed an error in calculating channels when uploading to
+          audio.com.
+
+-------------------------------------------------------------------
 Tue Apr 25 02:44:07 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Use default compiler, upstream has fixed gcc13 build 
