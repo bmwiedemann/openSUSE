@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 27 22:43:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18:
+  * Fixed a bug where the build type didn't default to "Release"
+    when using CMake 3.10 or earlier.
+  * Fixed a bug where some optimized code wasn't used when
+    building with Clang 15 or later (x86), or with Clang 16 
+    or later (aarch64).
+  * Fixed build errors with some architecture and compiler
+    combos:
+    * aarch64 with Clang 16
+    * armv6kz or armv7e-m with gcc
+    * armhf with gcc (on Debian only)
+
+-------------------------------------------------------------------
 Tue Jan 24 07:10:52 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 1.17:

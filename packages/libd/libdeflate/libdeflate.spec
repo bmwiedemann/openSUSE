@@ -19,7 +19,7 @@
 %define major 0
 %define libname %{name}%{major}
 Name:           libdeflate
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
