@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 30 14:22:53 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.4
+  * Fix spurious gcc 13 compiler warnings. Have configure script
+    include the standardized location of the CA certificate bundle,
+    in addition to various legacy compatibility paths.
+
+-------------------------------------------------------------------
 Wed Apr  5 11:27:09 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.3
