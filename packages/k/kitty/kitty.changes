@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Apr 21 09:59:52 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 0.28.1:
+  * Fix a regression in the previous release that broke the remote file kitten (#6186)
+  * Fix a regression in the previous release that broke handling of some keyboard shortcuts in some kittens on some keyboard layouts (#6189)
+  * Fix a regression in the previous release that broke usage of custom themes (#6191)
+
+-------------------------------------------------------------------
+Sat Apr 15 11:10:38 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to 0.28.0:
+  * Text rendering change: Use sRGB correct linear gamma blending
+    for nicer font rendering and better color accuracy with
+    transparent windows. See the option text_composition_strategy for details.
+    The obsolete macos_thicken_font will make the font too thick
+    and needs to be removed manually if it is configured. (#5969)
+  * icat kitten: Support display of images inside tmux >= 3.3 (#5664)
+  * Graphics protocol: Add support for displaying images inside programs
+    that do not support the protocol such as vim and tmux (#5664)
+  * diff kitten: Add support for selecting multi-line text with the mouse
+  * Fix a regression in 0.27.0 that broke kitty @ set-font-size 0 (#5992)
+  * launch: When using --cwd=current for a remote system support
+    running non shell commands as well (#5987)
+  * When changing the cursor color via escape codes or remote control
+    to a fixed color, do not reset cursor_text_color (#5994)
+  * Input Method Extensions: Fix incorrect rendering of IME in-progress
+    and committed text in some situations (#6049, #6087)
+  * Linux: Reduce minimum required OpenGL version from 3.3
+    to 3.1 + extensions (#2790)
+  * Fix a regression that broke drawing of images below cell backgrounds (#6061)
+  * When reloading configuration, also reload custom MIME types
+    from mime.types config file (#6012)
+  * launch: Allow specifying the state (full screen/maximized/minimized)
+    for newly created OS Windows (#6026)
+  * Sessions: Allow specifying the OS window state via
+    the os_window_state directive (#5863)
+  * Linux: A new option linux_bell_theme to control which sound theme
+    is used for the bell sound (#4858)
+  * ssh kitten: Change the syntax of glob patterns slightly to match common
+    usage elsewhere. Now the syntax is the same as “extendedglob” in most shells.
+  * hints kitten: Allow copying matches to named buffers (#6073)
+  * Fix overlay windows not inheriting the per-window padding
+    and margin settings of their parents (#6063)
+  * Wayland KDE: Fix selecting in un-focused OS window not working correctly (#6095)
+  * Linux X11: Fix a crash if the X server requests clipboard data
+    after we have relinquished the clipboard (#5650)
+  * Allow stopping of URL detection at newlines via url_excluded_characters (#6122)
+  * Linux Wayland: Fix animated images not being animated continuously (#6126)
+  * Keyboard input: Fix text not being reported as unicode codepoints
+    for multi-byte characters in the kitty keyboard protocol (#6167)
+
+-------------------------------------------------------------------
 Mon Mar 13 03:47:53 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Adjust optional-disable-docs.patch for new version
