@@ -270,4 +270,12 @@
   * Add coalesce_streams #279 (@davidbrochart) (forwarded request 1082320 from bnavigator)</comment>
     <requestid>1082321</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>585bb0d0af69bb79e2cb5ed087d28155</srcmd5>
+    <version>0.7.4</version>
+    <time>1683037125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083889</requestid>
+  </revision>
 </revisionlist>

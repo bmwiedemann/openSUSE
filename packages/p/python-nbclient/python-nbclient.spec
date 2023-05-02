@@ -31,7 +31,7 @@
 %endif
 
 Name:           python-nbclient%{psuffix}
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
