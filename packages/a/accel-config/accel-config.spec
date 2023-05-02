@@ -1,7 +1,7 @@
 #
 # spec file for package accel-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pkg_libname libaccel-config1
 %define src_name idxd-config-accel-config-v%{version}
 Name:           accel-config
-Version:        3.5.2
+Version:        4.0
 Release:        0
 Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
