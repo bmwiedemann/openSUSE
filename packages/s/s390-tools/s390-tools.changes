@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 11:40:12 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applies a fix, splitting of rd.zdev-parameters, in 
+  * s390-tools-ALP-zdev-live.patch
+
+-------------------------------------------------------------------
 Wed Apr 19 11:59:50 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Tailored the .spec, added a patch 

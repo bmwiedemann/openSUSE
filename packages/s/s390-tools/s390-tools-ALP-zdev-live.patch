@@ -65,17 +65,17 @@
 +#              KEY=VALUE separated by commas.
 +
 +zdev_enable="--persistent --enable"
-+zdev_base_args="--force --yes --no-root-update --no-settle"
++zdev_base_args="--yes --no-root-update --no-settle"
 +
-+for zdev in $(getargs rd.zdev -d 'rd_ZDEV=') ; do
-+    IFS=, read -r z_drv z_chan z_opts <<< "$zdev"
-+    if [ -n "$z_drv" ] && [ "$z_drv" = "no-auto" -o "$z_drv" = "auto" ] ; then
++for zdevs in $(getargs rd.zdev) ; do
++    IFS=',' read -r -a zdev <<< "$zdevs"
++    if [ -n "$zdev" ] && [ "$zdev" = "no-auto" -o "$zdev" = "auto" ] ; then
 +        : # ignore, as it's handled by 95zdev
-+    elif [ -z "$z_drv" ] || [ -z "$z_chan" ] ; then
-+        warn "Unsupported arguments for rd.zdev="
++    elif [ -z "$zdev" ] || [ -z "${zdev[1]}" ] ; then
++        warn "Unsupported usage of rd.zdev=$zdevs"
 +    else
-+	info "+ chzdev $zdev_enable [...] $z_drv $z_chan $z_opts"
-+	chzdev $zdev_enable $zdev_base_args $z_drv $z_chan $z_opts
++        info "+ chzdev $zdev_enable [...] ${zdev[@]}"
++        chzdev $zdev_enable $zdev_base_args "${zdev[@]}"
 +    fi
 +done
 +
