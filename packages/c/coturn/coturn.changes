@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue May  2 05:19:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.6.2
+  * Make sure microhttpd starts using epoll if supported
+  * Add sessioncount to prometheus metrics
+  * Add STUN request/response/error prometheus counters
+  * Cleanup logs on turnserver start
+  * Fix duplicate stdout log output
+  * Log threadId to logs to aid in multi-threaded debugging
+  * Optional build info compiled into turnserver binary
+  * Fix arguments expansion in docker-entrypoint.sh
+  * Santise database connection strings before printing to log
+  * Support Windows MSVC
+  * Add configuration option for TLS 1.3 ciphersuites
+  * Improve openssl3 and FIPS support
+  * Use single SSL_CTX for TLS and DTLS support
+  * Update openssl API use to non-deprecated version
+  * Set string bytes to null to prevent random origin
+  * Fix memory corruption on socket close
+  * Fix packet backlog fifo that processed packets in reverse
+    order in some scenarios
+  * Fix off-by-one when terminating gcm_nonce
+  * Fixes to Redis memleaks and socketleaks
+  * Fix malformed response to mobility refresh request
+  * Fuzzing support
+  * Ignore raw UDP if no_udp is enabled
+  * Better detect availability of SCTP protocol
+- Drop coturn-no-FIPS-140-mode.patch, fixed upstream, see
+  https://github.com/coturn/coturn/issues/1170
+
+-------------------------------------------------------------------
 Mon Mar  6 17:09:44 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add coturn-no-FIPS-140-mode.patch, fixes build against OpenSSL 3.0
