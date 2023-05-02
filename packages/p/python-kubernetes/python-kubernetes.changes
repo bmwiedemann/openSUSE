@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 07:23:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- removed following conditional python_module macro definition, as it is present in recent versions of "python-rpm-macros"
+  * "%{?!python_module:%define python_module() python-%{**} python3-%{**}}" 
+
+-------------------------------------------------------------------
 Fri Apr 28 09:44:00 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - removed python-kubernetes-no-mock.patch, patch changes incorporated upstream 
