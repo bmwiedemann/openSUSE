@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 02 05:32:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.8:
+  * Lazily evaluate the IAM Role (#2507)
+
+-------------------------------------------------------------------
+Tue May 02 05:30:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.7:
+  * Mozilla sops upgrade to v3.7.3 (#2549)
+
+-------------------------------------------------------------------
 Sun Apr 30 07:02:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.6:
