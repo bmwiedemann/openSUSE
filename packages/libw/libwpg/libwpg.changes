@@ -3,7 +3,7 @@ Sat Apr 29 12:31:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 0.3.4
   *  WPG2: Incomplete implementation of handlePenForeColor
-    (bdo#155057)
+    (tdf#155057)
   *  Correct a problem concerning HAVE_VISIBILITY not defined when
      compiling for Windows...
   *  WPG1: fix vertical position of text line
@@ -31,8 +31,10 @@ Sat Aug 15 22:05:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.3.3:
   - Drop obsolete MSVC project files.
-  - Use --disable-werror instead of --enable-werror as configure default.
-  - Fix parsing of 24-bit RGB and 32-bit RGBA bitmaps in WPG2 files. (tdf#78105)
+  - Use --disable-werror instead of --enable-werror as configure
+    default.
+  - Fix parsing of 24-bit RGB and 32-bit RGBA bitmaps in WPG2 files.
+    (tdf#78105)
 
 -------------------------------------------------------------------
 Thu Sep 14 10:42:38 UTC 2017 - tchvatal@suse.com
