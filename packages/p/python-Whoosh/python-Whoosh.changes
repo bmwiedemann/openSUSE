@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 05:48:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Sun Apr 23 22:40:43 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Move documentation into the main package for SLE15
