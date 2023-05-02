@@ -1626,4 +1626,23 @@
   * exportfs: move testdir() to start-action to avoid failing during resource creation (validate-all) and make it create the directory if it doesnt exist</comment>
     <requestid>1072482</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>ec272be4d1bc851aebe5a5df6badfcfb</srcmd5>
+    <version>4.12.0+git30.7fd7c8fa</version>
+    <time>1683037112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.12.0+git30.7fd7c8fa:
+  * Filesystem: fail if AWS efs-utils not installed when fstype=efs
+  * azure-events*: Use -LS instead of -Ls as parameter to get the Transition Summary (#1864)
+  * spec: remove JFLAGS logic and use %{_smp_mflags} like we do in other projects
+  * exportfs: make the &quot;fsid=&quot; parameter optional
+  * nfsserver: prepare the layout for the default /var/lib/nfs
+  * IPv6addr: expect ping/pong delay
+  * azure-events*: fix for no &quot;Transition Summary&quot; for Pacemaker 2.1+
+  * ZFS: add non-blocking check if pool was imported (#1853)
+  * ethmonitor: dont log &quot;Interface does not exist&quot; for monitor-action
+  * mysql: promotable fixes to avoid nodes getting bounced around by setting -v 1/-v 2, and added OCF_CHECK_LEVEL=10 for promotable resources to be able to distinguish between promoted and not
+  * LVM-activate: failover with missing PVs</comment>
+    <requestid>1083864</requestid>
+  </revision>
 </revisionlist>

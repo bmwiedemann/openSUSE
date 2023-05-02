@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 01 12:24:36 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.0+git30.7fd7c8fa:
+  * Filesystem: fail if AWS efs-utils not installed when fstype=efs
+  * azure-events*: Use -LS instead of -Ls as parameter to get the Transition Summary (#1864)
+  * spec: remove JFLAGS logic and use %{_smp_mflags} like we do in other projects
+  * exportfs: make the "fsid=" parameter optional
+  * nfsserver: prepare the layout for the default /var/lib/nfs
+  * IPv6addr: expect ping/pong delay
+  * azure-events*: fix for no "Transition Summary" for Pacemaker 2.1+
+  * ZFS: add non-blocking check if pool was imported (#1853)
+  * ethmonitor: dont log "Interface does not exist" for monitor-action
+  * mysql: promotable fixes to avoid nodes getting bounced around by setting -v 1/-v 2, and added OCF_CHECK_LEVEL=10 for promotable resources to be able to distinguish between promoted and not
+  * LVM-activate: failover with missing PVs
+
+-------------------------------------------------------------------
 Thu Mar 16 14:16:12 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.0+git10.fe1a2f88:
