@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  2 12:43:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Improved support for minimal Linux distributions such as
+    Alpine
+  * Added bzip3 compression support
+  * Increased control over GPG signing via the GPG extra
+    parameters
+
+-------------------------------------------------------------------
 Sat Jul 10 13:09:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.4.5
