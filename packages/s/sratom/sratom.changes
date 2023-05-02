@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 26 13:05:20 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Switch to meson
+- Update to 0.6.14
+  * Add project metadata
+  * Adopt REUSE machine-readable licensing standard
+
+  0.6.12 changes:
+  * Switch to meson build system
+
+-------------------------------------------------------------------
 Sat Jun 18 14:29:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.10:

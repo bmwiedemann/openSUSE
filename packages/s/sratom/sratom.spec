@@ -1,7 +1,7 @@
 #
 # spec file for package sratom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define sover 0
 Name:           sratom
-Version:        0.6.10
+Version:        0.6.14
 Release:        0
 Summary:        A library for serialising LV2 atoms to/from RDF
 License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://drobilla.net/software/sratom.html
-Source0:        https://download.drobilla.net/sratom-%{version}.tar.bz2
+Source0:        https://download.drobilla.net/sratom-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3
 BuildRequires:  pkgconfig(lv2) >= 1.10.0
 BuildRequires:  pkgconfig(serd-0) >= 0.30.0
 BuildRequires:  pkgconfig(sord-0) >= 0.12.0
@@ -58,20 +58,11 @@ Development files for libsratom.
 %autosetup -p1
 
 %build
-export CFLAGS='%{optflags} -std=gnu99'
-export CXXFLAGS='%{optflags}'
-python3 ./waf configure \
-  --prefix=%{_prefix} \
-  --libdir=%{_libdir} \
-  --docdir=%{_defaultdocdir} \
-  --test
-python3 ./waf build -v %{?_smp_mflags}
+%meson -Ddocs=disabled
+%meson_build
 
 %install
-python3 ./waf install --destdir=%{?buildroot}
-
-%check
-python3 ./waf test
+%meson_install
 
 %post -n libsratom-0-%{sover} -p /sbin/ldconfig
 %postun -n libsratom-0-%{sover} -p /sbin/ldconfig
