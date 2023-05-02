@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 27 07:05:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * old-cmake.patch
+    + allow building with older cmake on SLE15
+- Modified patch:
+  * no-cpp17-tests.patch
+    + regenerate to changed context
+
+-------------------------------------------------------------------
 Tue Jan  3 08:43:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v3.2.3:

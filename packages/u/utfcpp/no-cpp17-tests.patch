@@ -1,14 +1,12 @@
-diff -urEbwB utfcpp-3.2.1/tests/CMakeLists.txt utfcpp-3.2.1.new/tests/CMakeLists.txt
---- utfcpp-3.2.1/tests/CMakeLists.txt	2021-06-06 17:09:04.000000000 +0200
-+++ utfcpp-3.2.1.new/tests/CMakeLists.txt	2021-07-27 23:56:21.956315062 +0200
-@@ -1,6 +1,5 @@
+--- utfcpp-3.2.3.orig/tests/CMakeLists.txt	2023-01-26 09:48:11.283201600 +0100
++++ utfcpp-3.2.3/tests/CMakeLists.txt	2023-01-26 09:49:10.139598712 +0100
+@@ -1,13 +1,11 @@
  add_executable(negative ${PROJECT_SOURCE_DIR}/tests/negative.cpp)
  add_executable(cpp11 ${PROJECT_SOURCE_DIR}/tests/test_cpp11.cpp)
 -add_executable(cpp17 ${PROJECT_SOURCE_DIR}/tests/test_cpp17.cpp)
- add_executable(apitests
-     ${PROJECT_SOURCE_DIR}/tests/test_checked_api.cpp
-     ${PROJECT_SOURCE_DIR}/tests/test_unchecked_api.cpp
-@@ -15,7 +14,6 @@
+ add_executable(apitests ${PROJECT_SOURCE_DIR}/tests/apitests.cpp)
+ 
+ add_executable(noexceptionstests ${PROJECT_SOURCE_DIR}/tests/noexceptionstests.cpp)
  
  target_link_libraries(negative PRIVATE utf8::cpp)
  target_link_libraries(cpp11 PRIVATE utf8::cpp)
@@ -16,7 +14,7 @@ diff -urEbwB utfcpp-3.2.1/tests/CMakeLists.txt utfcpp-3.2.1.new/tests/CMakeLists
  target_link_libraries(apitests PRIVATE utf8::cpp)
  target_link_libraries(noexceptionstests PRIVATE utf8::cpp)
  
-@@ -33,15 +31,8 @@
+@@ -29,15 +27,8 @@
                        CXX_STANDARD_REQUIRED YES
                        CXX_EXTENSIONS NO)
  

@@ -24,6 +24,7 @@ License:        BSL-1.0
 URL:            https://github.com/nemtrif/utfcpp
 Source:         %{name}-%{version}.tar.xz
 Patch0:         no-cpp17-tests.patch
+Patch1:         old-cmake.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 
@@ -40,6 +41,9 @@ A C++ library for handling UTF-8 encoded strings.
 %setup -q
 %if 0%{?suse_version} < 1320
 %patch0 -p1
+%endif
+%if 0%{?suse_version} < 1550
+%patch1 -p1
 %endif
 
 %build
