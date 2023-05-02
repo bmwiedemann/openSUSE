@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May  2 12:13:54 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- Add SUSE ALP build config
+
+-------------------------------------------------------------------
+Tue Apr 25 12:01:03 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- BREAKING: Record errors when parsing the project config
+            former behaviour was undefined
+- container: Support compression format configuration option
+- Don't setup ccache with --no-init
+- improved loongarch64 support
+- sbom: SPDX supplier tag added
+- kiwi: support different versions per profile
+- preinstallimage: fail when recompression fails
+- Add support for recommends and supplements dependencies
+- Support the "keepfilerequires" expand flag
+- add '--buildtool-opt=OPTIONS' to pass options to the used build tool
+- distro config updates
+  * ArchLinux
+  * Tumbleweed
+- documentation updates
+
+-------------------------------------------------------------------
+Mon Apr 24 10:22:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- openSUSE Tumbleweed: sync config and move to suse_version 1699.
+
+-------------------------------------------------------------------
 Tue Mar 14 13:33:33 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - universal post-build hook, just place a file in /usr/lib/build/post_build.d/

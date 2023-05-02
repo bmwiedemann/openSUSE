@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20230314
+Version:        20230502
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -195,7 +195,7 @@ ln -s sl${SLE_V:0:2}.${SLE_V:3:1}.conf default.conf
 # this is old openSUSE releases and Factory
 ln -s sl${SUSE_V:0:2}.${SUSE_V:2:1}.conf default.conf
 %endif
-%if !0%{?sle_version} && ( 0%{?suse_version} == 1599 )
+%if !0%{?sle_version} && ( 0%{?suse_version} == 1699 )
 ln -s tumbleweed.conf default.conf
 %endif
 %if 0%{?sle_version} && !0%{?is_opensuse}
@@ -205,6 +205,10 @@ ln -s sle${SLE_V:0:2}.${SLE_V:3:1}.conf default.conf
 %if 0%{?sles_version} == 1110
 # this is SUSE SLE 11
 ln -s sles11sp2.conf default.conf
+%endif
+%if 0%{?suse_version} == 1600
+# this is SUSE ALP
+ln -s alp.conf default.conf
 %endif
 # make sure that we have a config
 test -e default.conf || exit 1

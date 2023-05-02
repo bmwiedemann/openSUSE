@@ -1607,4 +1607,30 @@ Changes:
 - KiwiProduct: add --use-newest-package hint if the option is set</comment>
     <requestid>1071527</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>8b9768b2d56306a31793f06e89622248</srcmd5>
+    <version>20230502</version>
+    <time>1683037092</time>
+    <user>dimstar_suse</user>
+    <comment>- Add SUSE ALP build config
+
+- BREAKING: Record errors when parsing the project config
+            former behaviour was undefined
+- container: Support compression format configuration option
+- Don't setup ccache with --no-init
+- improved loongarch64 support
+- sbom: SPDX supplier tag added
+- kiwi: support different versions per profile
+- preinstallimage: fail when recompression fails
+- Add support for recommends and supplements dependencies
+- Support the &quot;keepfilerequires&quot; expand flag
+- add '--buildtool-opt=OPTIONS' to pass options to the used build tool
+- distro config updates
+  * ArchLinux
+  * Tumbleweed
+- documentation updates
+
+- openSUSE Tumbleweed: sync config and move to suse_version 1699.</comment>
+    <requestid>1084035</requestid>
+  </revision>
 </revisionlist>
