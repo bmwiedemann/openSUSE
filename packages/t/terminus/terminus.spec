@@ -17,7 +17,7 @@
 
 
 Name:           terminus
-Version:        2.1.0
+Version:        2.3.1
 Release:        0
 Summary:        An X terminal written in Vala
 License:        GPL-3.0-only
@@ -82,7 +82,7 @@ rm %{buildroot}%{_datadir}/terminus/CMakeLists.txt
 %{_datadir}/glib-2.0/schemas/org.rastersoft.terminus.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/terminus.??g
 %{_datadir}/terminus/
-%{_sysconfdir}/xdg/autostart/terminus_autorun.desktop
+%config %{_sysconfdir}/xdg/autostart/terminus_autorun.desktop
 
 %files -n gnome-shell-extension-terminus
 %dir %{_datadir}/gnome-shell

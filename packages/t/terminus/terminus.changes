@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 18 10:11:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.3.1:
+  * Added support for gnome shell 44
+  * Allow to reorder tabs
+  * Added support for links
+  * Removed debug prints
+  * Added macros support
+  * Show 30 characters in tabs
+  * Fixed several leaks
+
+-------------------------------------------------------------------
 Mon Feb  6 10:32:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.1.0:
