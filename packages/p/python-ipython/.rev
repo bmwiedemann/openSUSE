@@ -1286,4 +1286,30 @@
   * fix for compatibility with MyPy 1.0. PR #13933</comment>
     <requestid>1077235</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0dded2446e3829f10b9b54c423a82e17</srcmd5>
+    <version>8.13.1</version>
+    <time>1683037098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.13.1
+  * This release is significant in that it not only has a number of
+    bugfixes, but also drop support for Python 3.8 as per NEP 29
+    (PR #14023).
+  * Pretty reprensentation for Counter has been fixed to match the
+    Python one and be in decreasing order. PR #14032
+  * Module completion is better when jedi is disabled PR #14029.
+  * Improvment of %%bash magic that would get stuck PR #14019
+  * PR #14004 Fix a bug introduced in IPython 8.12 that crash when
+    inspecting some docstrings.
+  * PR #14010 Fix fast traceback code that was not working in some
+    case.
+  * PR #14014 Fix %page magic broken in some case.
+  * PR #14026, PR #14027 Tweak default shortcut with respect to
+    autosuggestions.
+  * PR #14033 add back the ability to use .get() on OInfo object
+    for backward compatibility with h5py (this will be
+    re-deprecated later, and h5py will also get a fix).
+</comment>
+    <requestid>1083899</requestid>
+  </revision>
 </revisionlist>

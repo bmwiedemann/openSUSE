@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.12.0
+Version:        8.13.1
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -40,7 +40,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 51.0.0}
 BuildRequires:  %{python_module wheel}
