@@ -71,4 +71,12 @@
     <comment></comment>
     <requestid>1072668</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f7c90f2aa238ef76a6b02130a63eccf7</srcmd5>
+    <version>1.50.1</version>
+    <time>1683037122</time>
+    <user>dimstar_suse</user>
+    <comment>Update to guestfs-tools version 1.50.1 bug fix release.</comment>
+    <requestid>1083877</requestid>
+  </revision>
 </revisionlist>
