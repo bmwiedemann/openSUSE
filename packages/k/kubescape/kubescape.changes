@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue May 02 05:31:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.0:
+  * invoke only if the repository owner is kubescape
+  * Revert install.ps1 change, to update after release
+  * Add kubescape.exe to the release assets
+  * change basic auth username to x-token-auth
+  * rerun workflows
+  * ci: update before install packages
+  * add compliance score to new field in controls for backward
+    compatibility
+  * fix(hostsensorutils): fix indentation of probe attributes
+  * add compliance-threshold, deprecate fail-threshold (#1197)
+  * wip: fixed github actions
+  * wip: update fix command example
+  * fix: remove outdated enpoints
+  * Revert change to install.sh
+  * update opa-utils version for fix in compliance score
+  * Update snap installation
+  * update opa-utils version
+  * add compliance-threshold, deprecate fail-threshold
+  * Move Building to wiki and installation back to docs
+  * Move installation instructions to wiki
+  * nit
+  * Add more error check
+  * Add unit testcase
+  * S1023: redundant break statement (gosimple)
+  * feat(sarif): add fix object in generated reports
+  * Invoke workflow to update github action
+  * Fix: Empty Frameworks Column when listing controls
+  * fix: broken link
+  * fix: broken link
+  * Change wf (#1190)
+  * set default report time
+  * Invoke workflow to update after release
+  * fix(fix): mixed up change list
+  * Add ARM64 binary installation
+  * Resume test core pkg under ubuntu arm64
+  * Disable multi-platform test with commits
+  * merge pr scanner build into binary-build-and-e2e-tests
+  * Fix naming
+  * Disable core pkg test for ubuntu arm64
+  * add cross compilation for ubuntu arm64
+  * add cross compilation for mac m1
+  * adding compliance score updates (#1181)
+  * comment failing test because of many requests
+  * update version k8s-interface for cloud resources
+  * update version k8s-interface for cloud resources
+
+-------------------------------------------------------------------
 Mon Apr 03 12:30:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.2.6:
