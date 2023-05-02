@@ -1,0 +1,28 @@
+From 6127d2e45b635dd073973b5aec81acf4d8df30b3 Mon Sep 17 00:00:00 2001
+From: Tom Schraitle <tom_schr@web.de>
+Date: Wed, 19 Apr 2023 15:01:58 +0200
+Subject: [PATCH 1/1] Assembly: Copy xml:lang on <structure>
+
+This is a first patch to copy the missing xml:lang attribute to the
+result file.
+It's still not yet clear, if this will be fixed upstream and how. Other
+attributes like role, os etc. might be also affected.
+
+For details, see the docbook mailinglist:
+https://lists.oasis-open.org/archives/docbook/202304/msg00012.html
+---
+ assembly/assemble.xsl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff -ur docbook-xsl-1.79.2.bak/assembly/assemble.xsl docbook-xsl-1.79.2/assembly/assemble.xsl
+--- docbook-xsl-1.79.2.bak/assembly/assemble.xsl	2016-12-09 23:39:10.000000000 +0100
++++ docbook-xsl-1.79.2/assembly/assemble.xsl	2023-04-19 14:54:16.562030329 +0200
+@@ -123,7 +123,7 @@
+     <xsl:attribute name="version">
+       <xsl:value-of select="$docbook.version"/>
+     </xsl:attribute>
+-    <xsl:copy-of select="@xml:id"/>
++    <xsl:copy-of select="@xml:id|@xml:lang"/>
+ 
+     <!-- use the merge element if present -->
+     <xsl:call-template name="merge.info">

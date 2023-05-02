@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 19 15:29:00 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 1.79.2.1
+
+* Raise version to 1.79.2.1
+* Patch assembly/assemble.xsl
+  Copy the missing xml:lang attribute to the result file.
+  docbook-xsl-1.79.2-assembly-assemble.xsl.patch
+
+For details, see the docbook mailinglist:
+https://lists.oasis-open.org/archives/docbook/202304/msg00012.html
+
+-------------------------------------------------------------------
 Wed Mar 28 14:52:19 UTC 2018 - thomas.schraitle@suse.com
 
 - Spec file:

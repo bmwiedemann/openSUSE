@@ -44,4 +44,12 @@
     <comment></comment>
     <requestid>593155</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e690602dab98433b97ff1f0f60b0c741</srcmd5>
+    <version>1.79.2.1</version>
+    <time>1683037104</time>
+    <user>dimstar_suse</user>
+    <comment>Correct URL (replace &quot;%2f&quot; -&gt; &quot;/&quot;), use %{realversion} instead of %{version}</comment>
+    <requestid>1082369</requestid>
+  </revision>
 </revisionlist>

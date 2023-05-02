@@ -1,7 +1,7 @@
 #
 # spec file for package docbook-xsl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define realversion            %{version}
+%define realversion            1.79.2
 #
 %define db4rootdir             %{_datadir}/xml/docbook/stylesheet/nwalsh
 %define db4package             docbook-xsl-stylesheets
@@ -29,14 +29,14 @@
 %define etcxmlcatalogd         %{_sysconfdir}/xml/catalog.d
 #
 Name:           docbook-xsl
-Version:        1.79.2
+Version:        1.79.2.1
 Release:        0
 Summary:        XSL Stylesheets for DocBook
-License:        MPL-1.1 AND MIT
+License:        MIT AND MPL-1.1
 Group:          Productivity/Publishing/DocBook
-Url:            https://github.com/docbook/xslt10-stylesheets
-Source0:        https://github.com/docbook/xslt10-stylesheets/releases/download/release%%2F%{version}/docbook-xsl-%{version}.tar.bz2
-Source1:        https://github.com/docbook/xslt10-stylesheets/releases/download/release%%2F%{version}/docbook-xsl-doc-%{version}.tar.bz2
+URL:            https://github.com/docbook/xslt10-stylesheets
+Source0:        https://github.com/docbook/xslt10-stylesheets/releases/download/release/%{realversion}/docbook-xsl-%{realversion}.tar.bz2
+Source1:        https://github.com/docbook/xslt10-stylesheets/releases/download/release/%{realversion}/docbook-xsl-doc-%{realversion}.tar.bz2
 Source2:        %{db4style_catalog}
 Source3:        %{db5style_catalog}
 # Build scripts
@@ -46,6 +46,8 @@ Source11:       xslnons-build
 Patch0:         %{name}-dbtoepub.patch
 ## PATCH-FIX-OPENSUSE docbook-xsl-stylesheets-non-recursive_string_subst.patch Use EXSLT replace function to avoid recursive implementation of string.subst
 Patch1:         %{name}-non-recursive_string_subst.patch
+## PATCH-FIX-OPENSUSE docbook-xsl-1.79.2-assembly-assemble.xsl.patch Copy xml:lang of to result (assemble.xsl)
+Patch2:         %{name}-%{realversion}-assembly-assemble.xsl.patch
 BuildRequires:  fdupes
 BuildRequires:  sgml-skel >= 0.7
 BuildRequires:  unzip
@@ -53,7 +55,7 @@ Requires:       docbook_4
 Requires:       sgml-skel >= 0.7
 Requires:       xmlcharent
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 Requires(pre):  %{_bindir}/xmlcatalog
 BuildArch:      noarch
 #--------------------------------------------------------------------------
@@ -70,7 +72,7 @@ Requires:       docbook_4
 Requires:       sgml-skel >= 0.7
 Requires:       xmlcharent
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 Suggests:       rubygem(dbtoepub)
 
 %description   -n %{db4package}
@@ -92,7 +94,7 @@ Requires:       docbook_5
 Requires:       sgml-skel >= 0.7
 Requires:       xmlcharent
 Requires(post): sgml-skel >= 0.7
-Requires(postun): sgml-skel >= 0.7
+Requires(postun):sgml-skel >= 0.7
 Suggests:       rubygem(dbtoepub)
 
 %description   -n docbook5-xsl-stylesheets
@@ -143,6 +145,7 @@ tar xf %{SOURCE1} -C docbook-xsl-%{realversion}-ns --strip-components 1
 (cd docbook-xsl-%{realversion}-ns
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # Remove some Python and Java extensions
 # Remove dbtoepub Ruby script. This has been moved to devel:languages:ruby:extensions
