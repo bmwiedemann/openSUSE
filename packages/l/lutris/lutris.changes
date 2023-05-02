@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 30 11:50:46 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to autosetup
+
+-------------------------------------------------------------------
+Sun Apr 30 11:48:39 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added fix-float-str-concat.patch:
+  This fixes a code error when an game crashes 
+  https://github.com/lutris/lutris/issues/4289
+
+  This patch can be removed with 0.5.13
+
+-------------------------------------------------------------------
 Wed Jan 11 10:39:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not require python3-magic: lutris has its own, intree version

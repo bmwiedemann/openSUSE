@@ -24,6 +24,7 @@ Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
 URL:            https://lutris.net
 Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
+Patch:          fix-float-str-concat.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
@@ -60,7 +61,7 @@ This includes, for example, Steam or GOG games, Windows games (WINE),
 or emulated console games and browser games.
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 sed -i "s|!%{_bindir}/env python3|!%{_bindir}/python3|" share/lutris/bin/lutris-wrapper
 
 %build
