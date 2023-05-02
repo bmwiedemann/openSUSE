@@ -1,0 +1,11 @@
+--- meson.build.orig	2022-09-10 03:27:03.000000000 +1000
++++ meson.build	2022-12-26 15:51:33.806909081 +1000
+@@ -11,7 +11,7 @@
+           'c_std=c99',
+         ])
+ 
+-lv2_docdir = get_option('datadir') / 'doc' / 'lv2'
++lv2_docdir = get_option('datadir') / 'doc' / 'packages' / 'lv2'
+ lv2_source_root = meson.current_source_dir()
+ lv2_build_root = meson.current_build_dir()
+ 

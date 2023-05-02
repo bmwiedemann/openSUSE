@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Dec 26 06:31:00 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- switch to meson
+- Update to 1.18.10
+  * add 001-lv2-docdir.patch
+  * remove old patches: lv2pkgconfig.patch build-with-python3.patch
+  * set noarch for docs
+
+  1.18.10 changes:
+
+  * Fix includedir in pkg-config file
+  * Fix missing example plugin UI binaries
+  * Only install lv2specgen when required Python modules are found
+  * Replace change history data with a plain text NEWS file
+
+  1.18.8 changes:
+
+  * Fix documentation build with Python 3.7
+  * Fix documentation build with meson 0.56.2
+  * Fix lv2.h missing from installation
+  * eg-midigate: Fix output timing
+  * eg-sampler: Add resampling via libsamplerate
+  * eg-sampler: Fix potentially corrupt notification events
+  * lv2core: Fix inconsistent plugin class labels
+  * lv2specgen: Fix installed data paths
+
+  1.18.6 changes:
+
+  * Add dark mode style for documentation
+  * Clean up and modernize Python support code
+  * Fix or avoid new compiler and tool warnings
+  * Rearrange source tree to be directly usable by dependants
+  * Remove archaic properties from foaf vocabulary
+  * Replace canonical dcs ontology with a minimal version for LV2
+  * Separate API headers from data
+  * Switch to Meson build system
+
+-------------------------------------------------------------------
 Sun Jun  5 00:26:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.4:

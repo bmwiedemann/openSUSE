@@ -1,7 +1,7 @@
 #
 # spec file for package lv2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,35 @@
 
 
 %define asciidocs 1
-%define _waf python3 waf
 
 Name:           lv2
-Version:        1.18.4
+Version:        1.18.10
 Release:        0
 Summary:        Plugin standard for audio systems
 License:        ISC
 Group:          System/Libraries
 URL:            https://lv2plug.in/
-Source0:        https://lv2plug.in/spec/lv2-%{version}.tar.bz2
-Source1:        lv2-rpmlintrc
-# Patch-Fix-Upstream  lv2pkgconfig.patch davejplater@gmail.com -- Add "/" to end of -I directory because otherwise pkg-config outputs nothing.
-Patch0:         lv2pkgconfig.patch
-# Patch Build with python3 everywhere (allows python3 builds on leap)
-Patch1:         build-with-python3.patch
+Source0:        https://lv2plug.in/spec/lv2-%{version}.tar.xz
+# Patch to use default docdir for documentation
+Patch0:         001-lv2-docdir.patch
+BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Markdown
+BuildRequires:  python3-lxml
 BuildRequires:  python3-rdflib
+BuildRequires:  serdi
+BuildRequires:  sord
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile) >= 1.0.0
 
 %if %{asciidocs} == 1
 # Documentation build requirements.
 BuildRequires:  asciidoc
+BuildRequires:  codespell
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  python3-Pygments
@@ -154,6 +159,7 @@ This package contains LV2 example plugins.
 %package        docs
 Summary:        LV2 documentation
 Group:          Documentation/Other
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 
 %description    docs
@@ -167,29 +173,21 @@ This package contains the LV2 API documentation.
 
 %prep
 %setup -q
-%autopatch -p1
+%autopatch -p0
 
 %build
-%if 0%{?suse_version} > 1500
-for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-%endif
-
-export CFLAGS='%{optflags}'
-export CXXFLAGS='%{optflags}'
-%{_waf} configure -v \
-  --prefix=%{_prefix} \
-  --lv2dir=%{_libdir}/%{name} \
-  --libdir=%{_libdir} \
-  --docdir=%{_defaultdocdir} \
+%meson -D old_headers=true \
 %if %{asciidocs} == 1
-  --docs \
+  -D docs=enabled \
 %endif
-  --debug
-
-%{_waf} %{?_smp_mflags} -vvv build
+%meson_build
 
 %install
-%{_waf} install --lv2dir=%{_libdir}/%{name} --destdir=%{buildroot}
+%meson_install
+
+%fdupes -s %{buildroot}%{_includedir}
+
+sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' %{buildroot}%{_bindir}/lv2specgen.py
 
 %files
 %defattr(0644,root,root,0755)
@@ -222,9 +220,9 @@ export CXXFLAGS='%{optflags}'
 %if %{asciidocs} == 1
 %files docs
 %defattr(0644,root,root,0755)
-%doc %{_defaultdocdir}/lv2/aux
-%doc %{_defaultdocdir}/lv2/doc
 %doc %{_defaultdocdir}/lv2/ns
+%doc %{_defaultdocdir}/lv2/c
+%doc %{_defaultdocdir}/lv2/style
 %endif
 
 %changelog
