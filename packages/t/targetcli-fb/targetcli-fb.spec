@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Requires:       python-rtslib-fb
 Requires:       python-six
 Requires:       targetcli-fb-common
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       targetcli    = %{version}-%{release}
 Provides:       targetcli-fb = %{version}-%{release}
@@ -59,6 +59,9 @@ Obsoletes:      targetcli-rbd < %{version}
 # SUSE-specific patches
 Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
+
+# upstream
+Patch3:         Fix-changing-savedir-directory-mode.patch
 
 %python_subpackages
 
@@ -88,6 +91,7 @@ all python-version-dependant packages, such as python3-*-targetcli-fb.
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 %python_build

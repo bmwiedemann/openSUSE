@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 25 17:20:02 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Added one upstream commit for CVE-2020-13867 (bsc#1172743),
+  part 2. This time, only modify permisssions on directory where
+  config is stored if it is /etc/target, adding patch:
+  * Fix-changing-savedir-directory-mode.patch
+
+-------------------------------------------------------------------
 Wed Jun 09 15:47:58 UTC 2021 - lduncan@suse.com
 
 - Update to version 2.1.54:

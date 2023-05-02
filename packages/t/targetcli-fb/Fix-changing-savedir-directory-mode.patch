@@ -1,0 +1,47 @@
+From b8eb1933d4fdcbe806edead8cfa94879d0fc2015 Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Mon, 24 Apr 2023 10:34:39 -0700
+Subject: [PATCH] Fix changing savedir directory mode
+
+Commit 9f5764dac39b ("saveconfig: set right perms on /etc/target/ dir")
+fixed CVE-2020-13867 by ensuring that the mode of the target
+meta-data directory (/etc/target) was always mode 0600. But users
+can specify a different directory, such as "/tmp", and we don't
+want targetcli changing the mode of such directories to 0600. So
+only change the mode of the directory, when saving a config file,
+if the directory is /etc/target.
+---
+ targetcli/ui_root.py | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/targetcli/ui_root.py b/targetcli/ui_root.py
+index 39e5ee99c342..79ee985ba935 100644
+--- a/targetcli/ui_root.py
++++ b/targetcli/ui_root.py
+@@ -34,8 +34,9 @@ from .ui_backstore import complete_path, UIBackstores
+ from .ui_node import UINode
+ from .ui_target import UIFabricModule
+ 
+-default_save_file = "/etc/target/saveconfig.json"
+-universal_prefs_file = "/etc/target/targetcli.conf"
++default_target_dir = "/etc/target"
++default_save_file = os.path.join(default_target_dir, "saveconfig.json")
++universal_prefs_file = os.path.join(default_target_dir, "targetcli.conf")
+ 
+ class UIRoot(UINode):
+     '''
+@@ -112,8 +113,9 @@ class UIRoot(UINode):
+             finally:
+                 os.umask(umask_original)
+         else:
+-            if (os.stat(dirname).st_mode & 0o777) != mode:
+-                os.chmod(dirname, mode)
++            if dirname == default_target_dir:
++                if (os.stat(dirname).st_mode & 0o777) != mode:
++                    os.chmod(dirname, mode)
+ 
+     def _save_backups(self, savefile):
+         '''
+-- 
+2.35.3
+
