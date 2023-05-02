@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20230420
+ExpandFlags: macroserial:20230502
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1707,6 +1707,7 @@ BuildFlags: onlybuild:cmake:mini
 BuildFlags: onlybuild:cmocka
 BuildFlags: onlybuild:cmuclmtk
 BuildFlags: onlybuild:codec2
+BuildFlags: onlybuild:codespell
 BuildFlags: onlybuild:cogl
 BuildFlags: onlybuild:colord
 BuildFlags: onlybuild:colord-gtk
@@ -3671,7 +3672,7 @@ Runscripts: cputype-armv7
 Optflags: * -O2 -Wall -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type %%{?_lto_cflags}
 
 # 15.5 does not exist !
-%define suse_version 1599
+%define suse_version 1699
 %define is_opensuse 1
 %define skelcd_compat 0
 
@@ -3699,7 +3700,7 @@ RepoURL: https://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss
 RegistryURL: https://registry.opensuse.org
 
 Macros:
-%suse_version 1599
+%suse_version 1699
 %is_opensuse 1
 %skelcd_compat 0
 %build_ldflags %{?_lto_cflags}
