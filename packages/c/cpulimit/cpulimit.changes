@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 27 22:28:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9:
+  * When counting CPU cycles (jiffies) we now use
+    a "long" type instead of "int" to avoid running
+    out of space when tracking on-running processes.
+
+-------------------------------------------------------------------
 Thu Dec 29 22:56:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8:
