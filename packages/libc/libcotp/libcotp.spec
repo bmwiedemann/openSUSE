@@ -21,7 +21,7 @@
 %global debug_package %{nil}
 %endif
 Name:           libcotp
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0
@@ -30,14 +30,12 @@ URL:            https://github.com/paolostivanin/%{name}
 Source0:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
 Source1:        https://github.com/paolostivanin/libcotp/releases/download/v%{version}/v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-Source3:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 Obsoletes:      libbaseencode <= 1.0.15
-%{?suse_build_hwcaps_libs}
 
 %description
 %{name} C library for generating TOTP and HOTP according to RFC-6238.
@@ -62,15 +60,14 @@ Requires:       %{libsoname} = %{version}
 Pkg-config and header files for developing applications that use %{name}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# FIXME: you should use %%cmake macros
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %post -n        %{libsoname} -p /sbin/ldconfig
 %postun -n      %{libsoname} -p /sbin/ldconfig

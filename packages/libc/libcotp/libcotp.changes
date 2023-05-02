@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  2 13:41:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.1:
+  * If execution runs fine, set err_code to NO_ERROR in get_totp_at,
+    get_steam_totp_at and otp_to_int.
+- Revert AVX2 change.
+
+-------------------------------------------------------------------
 Wed Mar  8 15:46:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3 
