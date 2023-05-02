@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-mpc-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define panel_version 4.12.0
+%define panel_version 4.13.5
 %define plugin mpc
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        MPD Client Plugin for the Xfce Panel
 License:        ISC
@@ -30,9 +30,11 @@ Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/0.5/%{name}-%
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.60.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libmpd)
-BuildRequires:  pkgconfig(libxfce4panel-2.0)  >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2)  >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -87,7 +89,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS README TODO
+%doc AUTHORS README
 %license COPYING
 %{_libdir}/xfce4/panel/plugins/libmpc.so
 %{_datadir}/xfce4/panel/plugins/xfce4-mpc-plugin.desktop

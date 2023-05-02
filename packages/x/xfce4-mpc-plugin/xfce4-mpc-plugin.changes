@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Apr 29 09:09:23 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.5.3
+  * Fix typos
+  * Translate more strings (Fixes #8)
+  * Fix translated strings (Fixes #5)
+  * Remove deprecated project files
+  * build: Fix compiler warnings
+  * Fix translated string (Fixes #4)
+  * Revert "Remove deprecated project files"
+  * Update copyright year
+  * Remove deprecated project files
+  * Update Makefile.am
+  * Fix strings if song data is not available (#9)
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use "logo-icon-name" instead of "logo" in about dialog
+  * build: Fix intltool lock file problem during make distcheck
+  * stream can be toggled from right-click menu
+  * hide contextual menu 'stream' entry if streaming_appl isnt 
+    configured/set
+  * add a new 'stream' checkbox to contextual menu
+  * add mpc_stream_toggled callback
+  * add mpc_stop_streaming method
+  * use g_spawn_async instead of xfce_spawn_on_screen_with_child_watch
+    to spawn the streaming appl
+  * make sure error isnt NULL before dereferencing it
+  * launch the streaming client when clicking on play
+  * add mpc_launch_streaming() method
+  * Allow to configure a 'streaming command'
+  * use xfce_spawn_command_line() instead of deprecated 
+    xfce_spawn_command_line_on_screen()
+  * Bump copyright year
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Add basic GitLab pipeline
+  * Update URLs from goodies.x.o to docs.x.o
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Fri Aug 16 12:23:49 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed sources in spec file
