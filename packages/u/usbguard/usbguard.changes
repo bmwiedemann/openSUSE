@@ -29,7 +29,7 @@ Wed Mar 16 13:02:20 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 -------------------------------------------------------------------
 Tue Mar  1 16:31:24 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
-- Enable dbus support (bsc#1196621).
+- Enable dbus support (bsc#1196621, jsc#PED-3824).
 
 -------------------------------------------------------------------
 Fri Feb 25 10:43:56 UTC 2022 - Robert Frohl <rfrohl@suse.com>
