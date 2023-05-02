@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 02 05:32:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.3.0:
+  * Release 12.3.0 (#25443)
+  * [v12] Bump e-ref (#25440)
+  * [v12] docs: update YubiHSM2 docs (#25359)
+  * Fix issuing credentials for non SSH protocols (#25430)
+  * docs: remove dynamic database resource in example aws dynamodb
+    (#25340)
+  * webapi cleanup (#24363) (#25368)
+  * [v12] docs: update docker guide to allow for server access and
+    show troubleshooting (#25345)
+  * [v12] Windows user creation (#24780) (#25348)
+  * [branch/v12] Add building Windows Authentication Package to
+    Drone (#23811) (#25311)
+  * terraform: enable ACLs in the certs bucket (#25335)
+  * Define distinct types for all device events (#25320)
+  * docs: update onelogin screenshot (#25331)
+
+-------------------------------------------------------------------
 Sun Apr 30 07:15:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.2.5:
