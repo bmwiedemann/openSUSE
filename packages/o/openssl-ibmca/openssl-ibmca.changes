@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 07:49:24 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file
+  * uses a flag openssl3 (1 or 0) to include or not the openssl3 libraries 
+
+-------------------------------------------------------------------
 Tue Apr 25 12:47:39 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated the .spec file as follow:
@@ -21,7 +27,7 @@ Wed Apr 19 10:52:06 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Thu Apr  6 08:14:25 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgraded openssl-ibmca to version 2.4.0(bsc#1210059) 
+- Upgraded openssl-ibmca to version 2.4.0 (bsc#1210059)
   * openssl-ibmca 2.4.0
     - Provider: Adjustments for OpenSSL versions 3.1 and 3.2 
     - Provider: Support RSA blinding

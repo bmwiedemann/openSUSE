@@ -16,6 +16,8 @@
 #
 
 
+%define openssl3 1
+
 %global enginesdir %(pkg-config --variable=enginesdir libcrypto)
 
 Name:           openssl-ibmca
@@ -36,9 +38,14 @@ BuildRequires:  libica >= 4.0.0
 BuildRequires:  libica-devel >= 4.0.0
 BuildRequires:  libica-tools >= 4.0.0
 BuildRequires:  libtool
-BuildRequires:  openssl-devel
 Requires:       libica >= 4.0.0
+%if %{openssl3}
+BuildRequires:  openssl-devel > 3.0.0
+Requires:       openssl > 3.0.0
+%else
+BuildRequires:  openssl-devel
 Requires:       openssl
+%endif
 ExclusiveArch:  s390x
 
 %description
@@ -85,8 +92,10 @@ grep -v "^#" src/engine/openssl.cnf.sample | \
 SSLENGCNF=%{_sysconfdir}/ssl/engines.d
 SSLENGDEF=%{_sysconfdir}/ssl/engdef.d
 
-mkdir -p ${SSLENGCNF}
-mkdir -p ${SSLENGDEF}
+%if %{openssl3}
+  mkdir -p ${SSLENGCNF}
+  mkdir -p ${SSLENGDEF}
+%endif
 
 cp -p %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt ${SSLENGCNF}/openssl-ibmca.cnf
 cp -p %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf ${SSLENGDEF}/openssl-ibmca.cnf
@@ -109,9 +118,10 @@ fi
 %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
 %{enginesdir}/ibmca.*
-/usr/lib64/engines-3/ibmca-provider.la
-/usr/lib64/engines-3/ibmca-provider.so
 %{_mandir}/man5/ibmca.5%{?ext_man}
-%{_mandir}/man5/ibmca-provider.5.gz
+%if %{openssl3}
+  %{_mandir}/man5/ibmca-provider.5%{?ext_man}
+  %{enginesdir}/ibmca-provider.*
+%endif
 
 %changelog
