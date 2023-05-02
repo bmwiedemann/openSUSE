@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 24 08:26:22 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to c294e5bf89cab01f3c5316474cfc5104af7e6a60
+  o Build on RISC-V64 and 32-bit Arm and IBM POWER.
+- Drop upstreamed patches:
+  o eppic-Fix-eppic_getnxtfct.patch
+  o eppic-crash-INCDIR.patch
+
+-------------------------------------------------------------------
+Thu Apr 13 14:03:26 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Build the crash extension.
+- Package the eppic code.
+- eppic-crash-INCDIR.patch: Use make variable INCDIR to find crash
+  include files.
+
+-------------------------------------------------------------------
+Thu Apr 13 09:59:44 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- eppic-Fix-eppic_getnxtfct.patch: Fix name length condition in
+  eppic_getnxtfct().
+
+-------------------------------------------------------------------
+Thu Apr 13 09:35:52 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Switch upstream branch to v5.0.
+- Update to commit e0a3b03
+  o Assorted bug fixes.
+
+-------------------------------------------------------------------
 Wed Feb  3 13:57:25 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - Update upstream URL.

@@ -2,13 +2,12 @@
   <service mode="localonly" name="tar_scm">
     <param name="scm">git</param>
     <param name="url">https://github.com/lucchouina/eppic.git</param>
-    <param name="subdir">libeppic</param>
-    <param name="filename">libeppic</param>
-    <param name="versionprefix">3.99.git</param>
+    <param name="revision">refs/heads/v5.0</param>
+    <param name="versionprefix">4.99.git</param>
   </service>
   <service mode="localonly" name="recompress">
-    <param name="file">libeppic-*.tar</param>
-    <param name="compression">bz2</param>
+    <param name="file">eppic-*.tar</param>
+    <param name="compression">xz</param>
   </service>
   <service mode="localonly" name="set_version" />
 </services>

@@ -92,4 +92,12 @@
 </comment>
     <requestid>868967</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c2add1da9e1ffadaf36d9f3c280632e</srcmd5>
+    <version>4.99.git.1682279748.c294e5b</version>
+    <time>1683037155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083855</requestid>
+  </revision>
 </revisionlist>
