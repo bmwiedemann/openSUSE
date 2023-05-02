@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 12:01:29 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- TSC frequencies: add 250PPM tolerance (bsc#1210906)
+  0002-TSC-frequencies-add-250PPM-tolerance.patch
+
+-------------------------------------------------------------------
 Thu Mar 16 09:13:41 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Limit operator secrets permission (CVE-2023-26484, bsc#1209359)
