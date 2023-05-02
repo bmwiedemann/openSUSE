@@ -49,7 +49,11 @@ provide, or better speed than gzip, but with bzip2 sized compression levels.
 %autosetup -p1
 
 %build
-%configure
+%configure \
+%ifnarch %{ix86} x86_64
+  --disable-asm \
+%endif
+
 %make_build
 
 %install

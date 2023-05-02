@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 08:31:26 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable asm on non-x86* architectures to fix builds
+
+-------------------------------------------------------------------
 Fri Apr 28 09:36:02 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.641:
