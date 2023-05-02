@@ -18,7 +18,7 @@
 
 
 Name:           openmw
-Version:        0.48.0~rc5
+Version:        0.48.0~rc9
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
@@ -30,7 +30,8 @@ BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
@@ -51,6 +52,8 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libunshield)
 BuildRequires:  pkgconfig(luajit)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openscenegraph) >= 3.2
 BuildRequires:  pkgconfig(openthreads) >= 3.2
@@ -107,6 +110,8 @@ for file in tables.tex main.tex recordtypes.tex filters.tex creating_file.tex fi
 done
 
 %build
+export CC="gcc-12"
+export CXX="g++-12"
 # -DBT_USE_DOUBLE_PRECISION should be discovered by cmake from bullet config, but it's not.
 %cmake \
        -DCMAKE_C_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
@@ -119,7 +124,8 @@ done
        -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden \
        -DCMAKE_VISIBILITY_INLINES_HIDDEN=1 \
-       -DOPENMW_USE_SYSTEM_RECASTNAVIGATION="ON"
+       -DOPENMW_USE_SYSTEM_RECASTNAVIGATION="ON" \
+       -DOPENMW_USE_SYSTEM_ICU="ON"
 
 %make_build
 

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Apr 23 09:03:32 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.48.0~rc9:
+  * Update file luascripts.hpp
+  * Save original paths
+  * Use set to track visited directories instead of removing
+    duplicates
+  * Don't capture temporaries by reference
+  * In 0.46, SetPos was setting position of actors before physics
+    simulation, and from this position movement was simulated. This
+    changed with async physics merging, and at the same time
+    problems started, mostly with abot's scenic travel.
+- Use gcc12 till upstream fixes all missing includes
+
+-------------------------------------------------------------------
+Tue Mar 21 17:13:17 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.48.0~rc8:
+  * Update AppData summary to be more concise
+  * Empty-Commit to trigger pipeline
+  * Ensure shader requirements are pushed at least once for subgraph
+  * Revert "Attach shaders to geometry that lacks a stateset if 
+    necessary (bug #7251)"
+  * SkyStereoStatesetUpdater was incorrectly always using reverseZ
+    matrices.
+  * Change assosiative order of stereo-related matrix
+    multiplications to reduce FP errors.
+- Changes in version 0.48.0~rc6:
+  * Merge branch 'fix_gpu_osg_stats' into 'master'
+  * Restore 0936d716d96cd45b3efc2d1a3697614f7f96952d
+  * Changelog for osga-animation layering
+  * Stop updating navmeshtool progress on first bad message
+  * Remove accidental copy-paste in global.doclua
+- Add BuildRequires pkgconfig(icu-i18n) and pkgconfig(icu-uc), use
+  system provided libicu
+
+-------------------------------------------------------------------
 Sun Jan 22 12:05:56 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Update to 0.48.0~rc5:
