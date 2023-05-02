@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Dec 26 12:54:01 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 0.30.16
+  * Switch to meson
+  * Add html documentation do devel
+
+  0.30.16 changes:
+  * Add SERD_STATIC to pkg-config Cflags for static-only builds
+  * Adopt REUSE machine-readable licensing standard
+  * Allow programs to be used from subproject
+  * Fix spelling mistake in serdi man page
+
+  0.30.14 changes:
+  * Fix memory consumption when reading documents
+  * Switch to Meson build system
+  * Update README and project metadata
+
+- Installation path fix for documents:
+  001-serd-docdir.patch
+
+-------------------------------------------------------------------
 Sat Jun 18 14:27:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.12:

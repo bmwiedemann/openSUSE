@@ -189,4 +189,25 @@
     <comment></comment>
     <requestid>983676</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>312ebd0b52f7c0e914ec06c059323127</srcmd5>
+    <version>0.30.16</version>
+    <time>1683037102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.30.16
+  * Switch to meson
+  * Add html documentation do devel
+  0.30.16 changes:
+  * Add SERD_STATIC to pkg-config Cflags for static-only builds
+  * Adopt REUSE machine-readable licensing standard
+  * Allow programs to be used from subproject
+  * Fix spelling mistake in serdi man page
+  0.30.14 changes:
+  * Fix memory consumption when reading documents
+  * Switch to Meson build system
+  * Update README and project metadata
+- Installation path fix for documents:
+  001-serd-docdir.patch</comment>
+    <requestid>1083946</requestid>
+  </revision>
 </revisionlist>

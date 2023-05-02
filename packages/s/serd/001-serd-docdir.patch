@@ -1,0 +1,11 @@
+--- ./doc/meson.build.orig	2022-12-26 22:48:38.800134462 +1000
++++ doc/meson.build	2022-12-26 22:49:09.232891680 +1000
+@@ -1,7 +1,7 @@
+ # Copyright 2020-2022 David Robillard <d@drobilla.net>
+ # SPDX-License-Identifier: 0BSD OR ISC
+ 
+-docdir = get_option('datadir') / 'doc'
++docdir = get_option('datadir') / 'doc' / 'packages'
+ 
+ doxygen = find_program('doxygen', required: get_option('docs'))
+ dox_to_sphinx = files('../scripts/dox_to_sphinx.py')

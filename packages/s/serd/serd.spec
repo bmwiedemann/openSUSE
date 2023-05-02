@@ -1,7 +1,7 @@
 #
 # spec file for package serd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,19 @@
 
 %define sover 0
 Name:           serd
-Version:        0.30.12
+Version:        0.30.16
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://drobilla.net/software/serd.html
-Source0:        https://download.drobilla.net/serd-%{version}.tar.bz2
+Source0:        https://download.drobilla.net/serd-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         001-serd-docdir.patch
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  graphviz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 
@@ -60,31 +63,18 @@ Development files for libserd.
 
 %prep
 %setup -q
+%autopatch -p0
 #Convert all file headers to python3
 for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
-export CFLAGS='%{optflags} -std=gnu99'
-export CXXFLAGS='%{optflags}'
-./waf configure \
-      --prefix=%{_prefix} \
-      --libdir=%{_libdir} \
-%if 0%{?suse_version} > 1501
-      --test \
-      --docs \
-%endif
-      --docdir=%{_defaultdocdir} \
-
-./waf build -v %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-./waf install --destdir=%{?buildroot}
-rm -rf %{buildroot}%{_docdir}/serd-0/html
+%meson_install
 
-%if 0%{?suse_version} > 1501
-%check
-./waf test
-%endif
+%fdupes -s %{buildroot}%{_docdir}
 
 %post -n libserd-0-%{sover} -p /sbin/ldconfig
 %postun -n libserd-0-%{sover} -p /sbin/ldconfig
@@ -99,9 +89,7 @@ rm -rf %{buildroot}%{_docdir}/serd-0/html
 %{_libdir}/libserd-0.so.%{sover}*
 
 %files devel
-%if 0%{?suse_version} > 1501
 %doc %{_docdir}/serd-0
-%endif
 %{_libdir}/libserd-0.so
 %{_includedir}/serd-0/
 %{_libdir}/pkgconfig/serd-0.pc
