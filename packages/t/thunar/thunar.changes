@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr 30 09:29:14 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.18.6:
+  * Revert ce43203b to prevent high CPU usage in list-view (#1089)
+
+-------------------------------------------------------------------
+Sat Apr 29 07:58:11 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.18.5:
+  * Prevent overflow via g_ascii methods (#1084)
+  * ThunarFile: Use recursive mutex for cache (#1060)
+  * Use new window for history signal handler (#1073)
+  * Prevent using CSD in properties dialog (#1056)
+  * Keep alpha when cutting read-only files (#1060)
+  * Dont reload the current folder on copy/cut (#1060)
+  * Update selected notebook on tab press (#1067)
+  * Make sure that accel_group is set before using it (#1067)
+  * Add job to list of jobs, not a view (#1029)
+  * Undo/Redo: Improve error handling
+  * Make spinner always visible
+  * Optionally show prop-dialog hightlight tab (#1056)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Feb 23 08:26:27 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.18.4:

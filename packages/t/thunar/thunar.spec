@@ -19,7 +19,7 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.18.4
+Version:        4.18.6
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
