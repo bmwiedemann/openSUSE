@@ -2519,6 +2519,7 @@ unsorted:
   - crash 
   - crash-devel 
   - crash-doc 
+  - crash-eppic 
   - crash-gcore 
   - crash-kmp-default 
   - crash-trace 
@@ -4049,6 +4050,8 @@ unsorted:
   - flocq 
   - flocq-devel 
   - flocq-doc 
+  - flom 
+  - flom-devel 
   - florence 
   - florence-devel 
   - florence-lang 
@@ -8735,6 +8738,8 @@ unsorted:
   - jupyter-ipyparallel 
   - jupyter-ipyscales 
   - jupyter-ipysheet 
+  - jupyter-ipytablewidgets 
+  - jupyter-ipytablewidgets-jupyterlab 
   - jupyter-ipyvolume 
   - jupyter-ipyvue-nbextension 
   - jupyter-ipyvuetify-nbextension 
@@ -11341,7 +11346,6 @@ unsorted:
   - libcorrect0_0_0 
   - libcotp-devel 
   - libcotp2 
-  - libcotp2-x86-64-v3 
   - libcourier-unicode7 
   - libcpath-devel 
   - libcpath1 
@@ -11858,6 +11862,7 @@ unsorted:
   - libflickcurl-devel 
   - libflickcurl0 
   - libflint17 
+  - libflom0 
   - libflorence-1_0-1 
   - libfltk1_3-32bit 
   - libfluidsynth3 
@@ -18837,9 +18842,6 @@ unsorted:
   - obconf 
   - obconf-qt 
   - obconf-qt-lang 
-  - obexd 
-  - obexd-client 
-  - obexd-server 
   - obexfs 
   - obexftp 
   - obexftp-devel 
@@ -24443,6 +24445,7 @@ unsorted:
   - python310-ipyparallel 
   - python310-ipyscales 
   - python310-ipysheet 
+  - python310-ipytablewidgets 
   - python310-ipython 
   - python310-ipython_genutils 
   - python310-ipyvolume 
@@ -24788,6 +24791,7 @@ unsorted:
   - python310-mplcursors 
   - python310-mpld3 
   - python310-mpmath 
+  - python310-mrcfile 
   - python310-mrcz 
   - python310-msal 
   - python310-msal-extensions 
@@ -27794,6 +27798,7 @@ unsorted:
   - python311-ipyparallel 
   - python311-ipyscales 
   - python311-ipysheet 
+  - python311-ipytablewidgets 
   - python311-ipython 
   - python311-ipython_genutils 
   - python311-ipyvolume 
@@ -28149,6 +28154,7 @@ unsorted:
   - python311-mplcursors 
   - python311-mpld3 
   - python311-mpmath 
+  - python311-mrcfile 
   - python311-mrcz 
   - python311-msal 
   - python311-msal-extensions 
@@ -31238,6 +31244,7 @@ unsorted:
   - python39-ipyparallel 
   - python39-ipyscales 
   - python39-ipysheet 
+  - python39-ipytablewidgets 
   - python39-ipython 
   - python39-ipython_genutils 
   - python39-ipyvolume 
@@ -31594,6 +31601,7 @@ unsorted:
   - python39-mplcursors 
   - python39-mpld3 
   - python39-mpmath 
+  - python39-mrcfile 
   - python39-mrcz 
   - python39-msal 
   - python39-msal-extensions 
@@ -34902,6 +34910,7 @@ unsorted:
   - ssh-tools 
   - sshguard 
   - sshpass 
+  - sshping 
   - sshuttle 
   - ssl-cert-check 
   - ssldump 
