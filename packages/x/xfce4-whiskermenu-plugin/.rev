@@ -528,4 +528,12 @@
     <comment> (forwarded request 1060153 from tux93)</comment>
     <requestid>1060157</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7bec81a0c5802aa0b58faabd735d07ec</srcmd5>
+    <version>2.7.3</version>
+    <time>1683037120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083876</requestid>
+  </revision>
 </revisionlist>
