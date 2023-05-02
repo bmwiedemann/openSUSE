@@ -83,6 +83,9 @@ sed -i 's/-m 1770//g' tools/Makefile.in
 %configure \
 	--disable-static \
 	--bindir=%{_sbindir}
+%if 0%{?sle_version} < 150000
+  %define make_build %{__make} -O %{?_smp_mflags}
+%endif
 %make_build LDADD="-pie -Wl,-z,defs,-z,relro,-z,now"
 
 %install
