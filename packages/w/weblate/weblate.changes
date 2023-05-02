@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 19 15:17:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use boolean deps for simple 'and' constructs. Having them
+  separated into simple requires each is equivalent.
+
+-------------------------------------------------------------------
 Wed Mar 15 09:23:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add skip-test_ocr.patch (gh#WeblateOrg/weblate#8931).

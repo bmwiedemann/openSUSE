@@ -129,6 +129,8 @@ Requires:       borgbackup >= 1.1.11
 Requires:       cron
 Requires:       git
 Requires:       gpg2
+Requires:       postgresql
+Requires:       postgresql-contrib
 Requires:       python3-Cython >= 0.29.14
 Requires:       python3-Django >= 3.2
 Requires:       python3-GitPython >= 2.1.15
@@ -158,6 +160,7 @@ Requires:       python3-lxml >= 4.9.1
 Requires:       python3-misaka >= 2.1.0
 Requires:       python3-openpyxl >= 2.6.0
 Requires:       python3-packaging >= 20.5
+Requires:       python3-psycopg2 >= 2.7.7
 Requires:       python3-pyahocorasick >= 1.4
 Requires:       python3-pycairo >= 1.15.3
 Requires:       python3-pyicumessageformat >= 1.0.0
@@ -177,7 +180,6 @@ Requires:       python3-weblate-language-data >= 2022.7
 Requires:       python3-weblate-schemas = 2022.1
 Requires:       translate-toolkit >= 3.7.2
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
-Requires:       (postgresql and python3-psycopg2 >= 2.7.7 and postgresql-contrib)
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
 Requires(pre):  user(wwwrun)
