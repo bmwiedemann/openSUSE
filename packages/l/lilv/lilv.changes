@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Dec 26 11:45:08 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 0.24.20
+  * Switch to meson
+
+  0.24.20 changes:
+  * Adopt REUSE machine-readable licensing standard
+  * Update project metadata
+
+  0.24.18 changes:
+  * Allow programs to be used from subproject
+  * Fix default LV2_PATH
+
+  0.24.16 changes:
+  * Fix fallback flock() detection on MacOS
+  * Switch to meson build system
+
+  0.24.14 changes:
+  * Fix build issues with newer toolchains
+  * Fix unused parameter warnings
+  * Update zix tree
+
+-------------------------------------------------------------------
 Sat Apr 23 22:17:23 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.24.12:
