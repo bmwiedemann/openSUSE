@@ -18,8 +18,16 @@
 
 %define project github.com/caddyserver/caddy
 
+# SLE-12 _sharedstatedir was /usr/com, _localstatedir is /var as expected
+# SLE-15+ _sharedstatedir is /var/lib, _localstatedir is /var
+# _sharedstatedir used here as home directory for newly created user caddy
+# If not redefined build fails with empty /usr/com not owned by any package
+%if 0%{?suse_version} < 1500
+%define _sharedstatedir /var/lib
+%endif
+
 Name:           caddy
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
@@ -83,7 +91,7 @@ install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{n
 
 %pre
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
-getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_localstatedir}/lib/%{name} -s /bin/false -c "Caddy web server" %{name}
+getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_sharedstatedir}/%{name} -s /bin/false -c "Caddy web server" %{name}
 %service_add_pre %{name}.service
 
 %post

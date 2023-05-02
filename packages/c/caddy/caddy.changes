@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 30 18:17:39 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix failing build on SLE-12 by defining _sharedstatedir /var/lib
+  on SLE-12 consistent with SLE-15, openSUSE and upstream RPM docs.
+  * SLE-12 _sharedstatedir was /usr/com, _localstatedir is /var as expected
+  * SLE-15+ _sharedstatedir is /var/lib, _localstatedir is /var
+  * _sharedstatedir used here as home directory for newly created user caddy
+  * If not redefined build fails with empty /usr/com not owned by any package
+  * Switch to useradd -d %{_sharedstatedir} from %{_localstatedir}/lib
+    The latter is common in Factory packages possibly for historical reasons,
+    opt for the less common option here for equivalence and clarity.
+
+-------------------------------------------------------------------
+Sat Apr 29 22:23:15 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.6.4:
+  * go.mod: Upgrade acmez and x/net
+  * reverseproxy: Don't buffer chunked requests (fix #5366) (#5367)
+
+-------------------------------------------------------------------
 Thu Feb 09 10:19:47 UTC 2023 - alexandre.vicenzi@suse.com
 
 - Update to version 2.6.3:
