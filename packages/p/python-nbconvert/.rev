@@ -294,4 +294,14 @@
   * Update jupyterlab CSS #1960 (@martinRenou) (forwarded request 1082318 from bnavigator)</comment>
     <requestid>1082319</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ddde2f1a95db536b709c0688ec23a2b9</srcmd5>
+    <version>7.3.1</version>
+    <time>1683037132</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a test broken by ipython 8.13
+  * test_errors_print_traceback: gh#jupyter/nbconvert#1985
+</comment>
+    <requestid>1083898</requestid>
+  </revision>
 </revisionlist>

@@ -149,6 +149,8 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 # requires modules not installed: https://github.com/jupyter/nbconvert/issues/1846
 donttest="test_convert_full_qualified_name or test_post_processor"
+# https://github.com/jupyter/nbconvert/pull/1985
+donttest+=" or test_errors_print_traceback"
 %{python_expand # installed package in :test flavor
 $python -m ipykernel.kernelspec --user
 pytest-%{$python_bin_suffix} -v -m 'not network' -k "not ($donttest)" --pyargs nbconvert
