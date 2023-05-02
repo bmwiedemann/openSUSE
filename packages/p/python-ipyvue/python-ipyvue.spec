@@ -33,7 +33,7 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-ipywidgets >= 7.0.0
 Recommends:     jupyter-ipyvue-nbextension = %{version}
-Recommends:     jupyter-juypterlab-ipyvue = %{version}
+Recommends:     jupyter-jupyterlab-ipyvue = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
