@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 27 22:23:25 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Properly handle /boot on btrfs without subvolumes (boo#1210467).
+  * os-prober-fix-btrfs-boot-without-subvol.patch
+
+-------------------------------------------------------------------
 Thu Dec 22 04:54:11 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - update to 1.81

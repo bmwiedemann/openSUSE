@@ -478,4 +478,12 @@ as it has at least one small patch that depends on new code in grub2. (forwarded
     <comment></comment>
     <requestid>1046401</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>d753a9c1ec2d20c11cc5d1eedf3bec52</srcmd5>
+    <version>1.81</version>
+    <time>1683037099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083914</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package os-prober
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,8 @@ Patch28:        os-prober-use-tmp-over-var-lib-for-transient-files.patch
 Patch29:        os-prober-btrfs-multiple-device.patch
 # PATCH-FIX-OPENSUSE: 40grub2: debug messages (bsc#1101735)
 Patch30:        os-prober-disable-debug.patch
+# PATCH-FIX-OPENSUSE: linux-boot-prober does not handle btrfs /boot without subvolumes well (boo#1210467)
+Patch31:        os-prober-fix-btrfs-boot-without-subvol.patch
 Requires:       /bin/grep
 Requires:       /bin/sed
 Requires:       /sbin/modprobe
