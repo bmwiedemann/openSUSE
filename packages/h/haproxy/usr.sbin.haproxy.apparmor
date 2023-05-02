@@ -26,6 +26,8 @@ profile haproxy /usr/sbin/haproxy {
 
   /usr/sbin/haproxy rmix,
 
+  /dev/shm/haproxy_startup_logs_* rwlk,
+
   /var/lib/haproxy/stats rwl,
   /var/lib/haproxy/stats.*.bak rwl,
   /var/lib/haproxy/stats.*.tmp rwl,

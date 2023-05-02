@@ -1,4 +1,186 @@
 -------------------------------------------------------------------
+Tue May 02 14:06:55 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.7.8+git0.58c657f26:
+  * [RELEASE] Released version 2.7.8
+  * MINOR: listener: remove the now useless LI_F_QUIC_LISTENER flag
+
+-------------------------------------------------------------------
+Tue May  2 10:44:33 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add handling for the new startup logs in /dev/shm in the apparmor
+  profile
+
+-------------------------------------------------------------------
+Tue May 02 09:59:24 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.7.7+git0.feedf1414:
+  * [RELEASE] Released version 2.7.7
+  * BUG/MINOR: tools: check libssl and libcrypto separately
+  * MINOR: pools: report a replaced memory allocator instead of just malloc_trim()
+  * BUG/MINOR: pools: restore detection of built-in allocator
+  * MEDIUM: tools: further relax dlopen() checks too consider grouped symbols
+  * MINOR: tools: relax dlopen() on malloc/free checks
+  * MINOR: pattern: use trim_all_pools() instead of a conditional malloc_trim()
+  * MINOR: pools: export trim_all_pools()
+  * MEDIUM: pools: move the compat code from trim_all_pools() to malloc_trim()
+  * MINOR: pools: intercept malloc_trim() instead of trying to plug holes
+  * MINOR: pools: make sure 'no-memory-trimming' is always used
+  * BUG/MINOR: illegal use of the malloc_trim() function if jemalloc is used
+  * BUG/MINOR: quic: fix race on quic_conns list during affinity rebind
+  * MINOR: quic: finalize affinity change as soon as possible
+  * MINOR: mux-quic: do not allocate Tx buf for empty STREAM frame
+  * MINOR: mux-quic: do not set buffer for empty STREAM frame
+  * BUG/MINOR: quic: prevent buggy memcpy for empty STREAM
+  * BUG/MEDIUM: mux-quic: improve streams fairness to prevent early timeout
+  * BUG/MEDIUM: mux-quic: do not emit RESET_STREAM for unknown length
+  * CLEANUP: quic: Rename several <buf> variables into quic_sock.c
+  * CLEANUP: quic: Rename <buf> variable into qc_parse_hd_form()
+  * CLEANUP: quic: Rename <buf> variable into quic_packet_read_long_header()
+  * CLEANUP: quic: Rename several <buf> variables at low level
+  * CLEANUP: quic: Rename quic_get_dgram_dcid() <buf> variable
+  * CLEANUP: quic: Make qc_build_pkt() be more readable
+  * CLEANUP: quic: Rename <buf> variable for several low level functions
+  * CLEANUP: quic: Rename <buf> variable into quic_rx_pkt_parse()
+  * CLEANUP: quic: Rename <buf> variable into quic_padding_check()
+  * CLEANUP: quic: Rename <buf> variable to <token> in quic_generate_retry_token()
+  * CLEANUP: quic: Remove useless parameters passes to qc_purge_tx_buf()
+  * CLEANUP: quic: rename frame variables
+  * CLEANUP: quic: rename frame types with an explicit prefix
+  * BUG/MINOR: quic: Useless I/O handler task wakeups (draining, killing state)
+  * BUG/MINOR: quic: Useless probing retransmission in draining or killing state
+  * BUG/MINOR: quic: Possible leak during probing retransmissions
+  * BUG/MINOR: quic: Possible memory leak from TX packets
+  * MINOR: quic: Move traces at proto level
+  * BUILD: proto_tcp: export the correct names for proto_tcpv[46]
+  * BUILD: sock_inet: forward-declare struct receiver
+  * BUG/MINOR: config: fix NUMA topology detection on FreeBSD
+  * CI: cirrus-ci: bump FreeBSD image to 13-1
+  * BUG/MINOR: cli: clarify error message about stats bind-process
+  * MINOR: listener: remove unneeded local accept flag
+  * MAJOR: quic: support thread balancing on accept
+  * MINOR: quic: properly finalize thread rebinding
+  * MEDIUM: quic: implement thread affinity rebinding
+  * MINOR: fd: implement fd_migrate_on() to migrate on a non-local thread
+  * MINOR: fd: add a lock bit with the tgid
+  * MINOR: fd: optimize fd_claim_tgid() for use in fd_insert()
+  * MINOR: quic: delay post handshake frames after accept
+  * MINOR: protocol: define new callback set_affinity
+  * MINOR: quic: do not proceed to accept for closing conn
+  * MEDIUM: quic: handle conn bootstrap/handshake on a random thread
+  * MINOR: quic: remove TID encoding in CID
+  * MEDIUM: quic: use a global CID trees list
+  * BUG/MINOR: server: don't use date when restoring last_change from state file
+  * BUG/MINOR: server: don't miss server stats update on server state transitions
+  * BUG/MINOR: server: don't miss proxy stats update on server state transitions
+  * MINOR: server: explicitly commit state change in srv_update_status()
+  * BUG/MINOR: server: incorrect report for tracking servers leaving drain
+  * BUG/MEDIUM: Update read expiration date on synchronous send
+  * BUG/MINOR: quic: consume Rx datagram even on error
+  * BUG/MINOR: quic: prevent crash on qc_new_conn() failure
+  * BUG/MINOR: h3: fix crash on h3s alloc failure
+  * BUG/MINOR: mux-quic: properly handle STREAM frame alloc failure
+  * BUG/MINOR: mux-quic: fix crash with app ops install failure
+  * BUG/MINOR: quic: Wrong Retry token generation timestamp computing
+  * BUG/MINOR: quic: Unchecked buffer length when building the token
+  * MINOR: quic: Do not allocate too much ack ranges
+  * BUG/MINOR: quic: Stop removing ACK ranges when building packets
+  * BUG/MINOR: cfgparse: make sure to include openssl-compat
+  * BUG/MEDIUM: quic: prevent crash on Retry sending
+  * CLEANUP: backend: Remove useless debug message in assign_server()
+  * BUG/MINOR: quic: transform qc_set_timer() as a reentrant function
+  * MINOR: quic: remove TID ref from quic_conn
+  * MINOR: quic: adjust quic CID derive API
+  * MINOR: quic: adjust Rx packet type parsing
+  * MINOR: quic: remove uneeded tasklet_wakeup after accept
+  * CLEANUP: quic: rename quic_connection_id vars
+  * CLEANUP: quic: remove unused qc param on stateless reset token
+  * CLEANUP: quic: remove unused scid_node
+  * CLEANUP: quic: remove unused QUIC_LOCK label
+  * BUG/MINOR: task: allow to use tasklet_wakeup_after with tid -1
+  * BUG/MEDIUM: log: Properly handle client aborts in syslog applet
+  * MINOR: ssl: remove OpenSSL 1.0.2 mention into certificate loading error
+  * BUG/MINOR: quic: Do not use ack delay during the handshakes
+  * REGTESTS: fix the race conditions in log_uri.vtc
+  * BUG/MINOR: stream: Fix test on SE_FL_ERROR on the wrong entity
+  * CI: bump "actions/checkout" to v3 for cross zoo matrix
+  * BUG/MINOR: quic: Wrong Application encryption level selection when probing
+  * MINOR: quic: Remove a useless test about probing in qc_prep_pkts()
+  * MINOR: quic: Display the packet number space flags in traces
+  * BUG/MINOR: quic: SIGFPE in quic_cubic_update()
+  * BUG/MINOR: quic: Possible wrapped values used as ACK tree purging limit.
+  * BUG/MEDIUM: quic: Code sanitization about acknowledgements requirements
+  * MINOR: quic: Add connection flags to traces
+  * BUG/MINOR: quic: Ignored less than 1ms RTTs
+  * MINOR: quic: Add packet loss and maximum cc window to "show quic"
+  * BUG/MEDIUM: fd: don't wait for tmask to stabilize if we're not in it.
+  * BUG/MINOR: stick_table: alert when type len has incorrect characters
+  * MINOR: activity: add a line reporting the average CPU usage to "show activity"
+  * MINOR: quic: Add a trace for packet with an ACK frame
+  * MINOR: quic: Dump more information at proto level when building packets
+  * MINOR: quic: Modify qc_try_rm_hp() traces
+  * BUG/MINOR: quic: Wrong packet number space probing before confirmed handshake
+  * MINOR: quic: Trace fix in quic_pto_pktns() (handshaske status)
+  * BUG/MEDIUM: resolvers: Force the connect timeout for DNS resolutions
+  * BUG/MINOR: resolvers: Wakeup DNS idle task on stopping
+  * BUG/MEDIUM: dns: Kill idle DNS sessions during stopping stage
+  * BUILD: compiler: fix __equals_1() on older compilers
+  * BUG/MINOR: errors: invalid use of memprintf in startup_logs_init()
+  * BUG/MINOR: mworker: unset more internal variables from program section
+  * MINOR: quic: remove address concatenation to ODCID
+  * MINOR: quic: remove ODCID dedicated tree
+  * MINOR: quic: derive first DCID from client ODCID
+  * BUG/MINOR: quic: Possible crashes in qc_idle_timer_task()
+  * BUG/MINOR: http-ana: Don't switch message to DATA when waiting for payload
+  * MINOR: http-ana: Add a HTTP_MSGF flag to state the Expect header was checked
+  * BUG/MEDIUM: hlua: prevent deadlocks with main lua lock
+  * MINOR: hlua: simplify lua locking
+  * BUG/MINOR: hlua: prevent function and table reference leaks on errors
+  * BUG/MINOR: hlua: fix reference leak in hlua_post_init_state()
+  * BUG/MINOR: hlua: fix reference leak in core.register_task()
+  * MINOR: hlua: add simple hlua reference handling API
+  * CLEANUP: hlua: fix conflicting comment in hlua_ctx_destroy()
+  * BUG/MINOR: hlua: enforce proper running context for register_x functions
+  * BUG/MINOR: hlua: hook yield does not behave as expected
+  * BUG/MINOR: log: free log forward proxies on deinit()
+  * BUG/MINOR: sink: free forward_px on deinit()
+  * BUG/MINOR: stats: properly handle server stats dumping resumption
+  * BUG/MINOR: server/del: fix srv->next pointer consistency
+  * MINOR: server: add SRV_F_DELETED flag
+  * BUG/MEDIUM: dns: Properly handle error when a response consumed
+  * BUG/MEDIUM: channel: Improve reports for shut in co_getblk()
+  * BUG/MINOR: quic: Possible wrong PTO computing
+  * BUILD: quic: 32bits compilation issue in cli_io_handler_dump_quic()
+  * BUG/MINOR: quic: Wrong idle timer expiration (during 20s)
+  * BUG/MINOR: quic: Unexpected connection closures upon idle timer task execution
+  * MINOR: quic: Add trace to debug idle timer task issues
+  * DOC: config: strict-sni allows to start without certificate
+  * MINOR: http-act: emit a warning when a header field name contains forbidden chars
+  * BUG/MINOR: quic: Remove useless BUG_ON() in newreno and cubic algo implementation
+  * BUG/MAJOR: quic: Congestion algorithms states shared between the connection
+  * MINOR: quic: Add missing traces in cubic algorithm implementation
+  * BUG/MINOR: quic: Cubic congestion control window may wrap
+  * BUG/MINOR: quic: Remaining useless statements in cubic slow start callback
+  * BUG/MINOR: quic: Wrong rtt variance computing
+  * MEDIUM: quic: Ack delay implementation
+  * MINOR: quic: Traces adjustments at proto level.
+  * MINOR: quic: Adjustments for generic control congestion traces
+  * MINOR: quic: Implement cubic state trace callback
+  * BUG/MINOR: quic: Missing max_idle_timeout initialization for the connection
+  * BUG/MINOR: quic: Wrong use of now_ms timestamps (newreno algo)
+  * MINOR: quic: Add recovery related information to "show quic"
+  * BUG/MINOR: quic: Wrong use of now_ms timestamps (cubic algo)
+  * BUG/MINOR: backend: make be_usable_srv() consistent when stopping
+  * BUG/MEDIUM: proxy/sktable: prevent watchdog trigger on soft-stop
+  * DOC/MINOR: reformat configuration.txt's "quoting and escaping" table
+  * MINOR: proxy/pool: prevent unnecessary calls to pool_gc()
+  * BUG/MINOR: quic: Missing padding in very short probe packets
+  * BUG/MEDIUM: mux-h2: Be able to detect connection error during handshake
+  * BUILD: da: extends CFLAGS to support API v3 from 3.1.7 and onwards.
+  * Revert "BUG/MEDIUM: stconn: Don't rearm the read expiration date if EOI was reached"
+  * BUG/MINOR: ssl: ssl-(min|max)-ver parameter not duplicated for bundles in crt-list
+
+-------------------------------------------------------------------
 Tue Mar 28 10:03:07 UTC 2023 - mrueckert@suse.de
 
 - Update to version 2.7.6+git0.4dadaaafb:

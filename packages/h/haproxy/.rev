@@ -1322,4 +1322,17 @@
     <comment>- Update to version 2.7.6+git0.4dadaaafb:</comment>
     <requestid>1074952</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>8cb4edf86d98e04b21a10df157af204a</srcmd5>
+    <version>2.7.8+git0.58c657f26</version>
+    <time>1683040134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.8+git0.58c657f26:
+  * [RELEASE] Released version 2.7.8
+  * MINOR: listener: remove the now useless LI_F_QUIC_LISTENER flag
+
+- Add handling for the new startup logs in /dev/shm in the apparmor
+  profile</comment>
+    <requestid>1084061</requestid>
+  </revision>
 </revisionlist>
