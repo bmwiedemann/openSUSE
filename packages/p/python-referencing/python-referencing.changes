@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 02 05:29:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.0:
+  * Add a simple-ish example to the doc homepage.
+  * Looks like Hatchling needs a bump before this can actually
+    happen.
+  * Add the new JSON and JSON Schema classifiers, hooray!
+
+-------------------------------------------------------------------
 Wed Apr 26 08:43:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.4:
