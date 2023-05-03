@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package kernel-default-base
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -86,7 +86,10 @@ Group:          %group
 URL:            %url
 # on SLE limit to architectures that actually have a kernel :-)
 %if 0%{?sle_version}
-ExclusiveArch:  aarch64 armv7hl ppc64le s390x x86_64
+ExclusiveArch:  aarch64 armv7hl ppc64le x86_64
+%else
+# does not boot on s390, s390 drivers are not included
+ExcludeArch:    s390 s390x
 %endif
 
 # Internal stuff begins

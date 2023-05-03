@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 24 12:29:26 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not build on s390 (bsc#1210729)
+
+-------------------------------------------------------------------
 Tue Mar 28 15:17:18 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add exfat (boo#1208822)
