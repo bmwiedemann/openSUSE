@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 14:21:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove BuildRequire on xorg-x11-devel, there are no inclusions
+  of X11/ header files.
+
+-------------------------------------------------------------------
 Wed Dec 28 12:41:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.3:

@@ -329,4 +329,13 @@
   * Replace manual URL.</comment>
     <requestid>1073747</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>2b866bc367756f4cacc821d4d565a060</srcmd5>
+    <version>1.10.3</version>
+    <time>1683111460</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequire on xorg-x11-devel, there are no inclusions
+  of X11/ header files. (forwarded request 1083021 from jengelh)</comment>
+    <requestid>1084192</requestid>
+  </revision>
 </revisionlist>
