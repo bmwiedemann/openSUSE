@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed May  3 08:58:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * [feature] Add support for requests timeout
+  * Add projectstatuses method to get project statuses (missing
+    endpoint)
+  * Get the properties when fetching an Issue
+  * Support for the new 'createmeta' API in Jira 8.4+
+  * Make `create_issue_link` work with issue_link-objects
+  * [feature] Add support for requests timeout
+  * Made create_issue and create_issues consistent to handle
+    multiple issue types with same name
+  * KeyError: "X-RateLimit-FillRate" fix
+  * Properly parse errorMessage key in error response
+  * Use proper SPDX identifier
+  * Remove setup.py and tidy build scripts
+  * add required parameter field 'permissions' to my_permissions
+    method
+  * Avoid always passing on an empty body even if not given
+  * Add support for IssueProperty resource
+  * Add project arg to `.issue_type_by_name()`
+  * fix `.add_issues_to_epic()`
+  * Fix using str as issue type with `.create_issue()` when issue
+    type with that name exists in many projects
+  * allow filter updates when no description returned by Jira
+  * Fix bug preventing use of an int for issuetype in
+    `create_issue()`
+  * derive attachment fname from BufferedReader object
+  * [Regression] ensure `None` is handled correctly in
+    `search_issues()`
+  * Raise `JIRAError` when no user found
+  * Add client route for deleting remote links by global (and
+    internal) id
+  * improve explanation of exception when two sprints with the
+    same name are found
+  * extend the examples with a more thorough example for getting
+    attachments from a specific comment
+  * Configurable batch size for `JIRA._fetch_pages()` and
+    dependant methods
+  * tidy ResilientSession implementation
+  * Add notify to comment
+  * As the keyring dependency is only used by jirashell, have it
+    be part of the cli extras requirement.
+  * Handle #925 rate limit error
+  * updated `jira.search_issues` default behaviour to include all
+    fields
+  * use importlib.metadata instead of pkg_resources
+  * Drop py36 py37 add py310
+  * improve explanation of exception when two sprints with the
+    same name are found
+  * Remove GreenHopper Resource and fix Agile tests
+
+-------------------------------------------------------------------
 Sat Jun  4 18:05:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

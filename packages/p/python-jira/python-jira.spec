@@ -1,7 +1,7 @@
 #
 # spec file for package python-jira
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jira
-Version:        3.2.0
+Version:        3.5.0
 Release:        0
 Summary:        Python library for interacting with JIRA via REST APIs
 License:        BSD-3-Clause
@@ -27,10 +27,10 @@ URL:            https://github.com/pycontribs/jira
 Source:         https://files.pythonhosted.org/packages/source/j/jira/jira-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pbr >= 3.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
@@ -54,11 +54,11 @@ This library eases the use of the JIRA REST API from Python.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jirashell
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

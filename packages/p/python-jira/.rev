@@ -134,4 +134,41 @@
   * Avoid printing parsed json response</comment>
     <requestid>980788</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>890fc147c3cc2bc3783854b60205eba5</srcmd5>
+    <version>3.5.0</version>
+    <time>1683111471</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * [feature] Add support for requests timeout
+  * Add projectstatuses method to get project statuses (missing
+    endpoint)
+  * Get the properties when fetching an Issue
+  * Support for the new 'createmeta' API in Jira 8.4+
+  * Make `create_issue_link` work with issue_link-objects
+  * [feature] Add support for requests timeout
+  * Made create_issue and create_issues consistent to handle
+    multiple issue types with same name
+  * KeyError: &quot;X-RateLimit-FillRate&quot; fix
+  * Properly parse errorMessage key in error response
+  * Use proper SPDX identifier
+  * Remove setup.py and tidy build scripts
+  * add required parameter field 'permissions' to my_permissions
+    method
+  * Avoid always passing on an empty body even if not given
+  * Add support for IssueProperty resource
+  * Add project arg to `.issue_type_by_name()`
+  * fix `.add_issues_to_epic()`
+  * Fix using str as issue type with `.create_issue()` when issue
+    type with that name exists in many projects
+  * allow filter updates when no description returned by Jira
+  * Fix bug preventing use of an int for issuetype in
+    `create_issue()`
+  * derive attachment fname from BufferedReader object
+  * [Regression] ensure `None` is handled correctly in
+    `search_issues()`
+  * Raise `JIRAError` when no user found
+  * Add client route for deleting remote links by global (and</comment>
+    <requestid>1084219</requestid>
+  </revision>
 </revisionlist>
