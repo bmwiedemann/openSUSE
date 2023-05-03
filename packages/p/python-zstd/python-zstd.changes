@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May  3 09:23:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.5.1:
+  * Update bindled libzstd to 1.5.5
+  * Fix decompression of multiple concatenated frames in one
+    input string
+  * Generic automated builds are pushed to PyPi.
+  * `x86` and `x64` builded under Ubuntu 16.04. And with sse+sse2
+    optimizations enabled via compiler.
+  * `armhf` and `arm64` builded under Ubuntu 18.04.
+  * `armhf` builded on Raspberry PI 2B and optimized for it.
+  * `arm64` builded on Raspberry PI 4B and optimized for it.
+  * PyPy builds on `arm64` missing `2.7` as it are broken.
+  * MacOsX builds done inside 11.7 hackintosh
+  * Don't fail with exception if defined number of threads to
+    compress is bigger than libzstd can take.
+  * Silently drop it value down to max threads.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
