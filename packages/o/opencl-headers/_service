@@ -1,15 +1,19 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service name="obs_scm" mode="disabled">
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">https://github.com/KhronosGroup/OpenCL-Headers.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">opencl-headers</param>
-    <param name="versionformat">2.2+git.%cd</param>
+    <param name="revision">refs/tags/v2023.04.17</param>
   </service>
-  <service mode="disabled" name="set_version"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
     <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled">
   </service>
 </services>

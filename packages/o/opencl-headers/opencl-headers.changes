@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May  3 10:59:12 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2023.04.17:
+  * add headers for cl_khr_command_buffer_multi_device (#229)
+  * add code generation README (#228)
+  * Code Generation for Extension Headers (#161)
+  * Add enum for command-buffer context query (#226)
+  * CI Fixes (#225)
+  * the pointer argument to clEnqueueWriteHostPipeINTEL should be const (#222)
+  * Add cl_intel_program_scope_host_pipe (#220)
+  * Install pkgconfig file in CMAKE_INSTALL_DATADIR as headers are architecture independent. (#218)
+  * install pkg-config if it is not already installed (#219)
+  * cl_loader_layers update (#211)
+  * Added support for pkg-config. (#213)
+  * Fix CI for MacOS, see https://github.com/KhronosGroup/OpenCL-ICD-Loader/pull/198 . (#215)
+  * Revert "Formatted headers and added style check."
+  * Formatted headers and added style check.
+  * use cinttypes instead of inttypes.h header for C++ tests (#209)
+  * Add definitions for cl_arm_scheduling_controls v0.5.0 (#206)
+  * Disable anon struct warnings (#200)
+  * Definitions for cl_khr_command_buffer_mutable_dispatch (#205)
+  * Update cl_ext.h for cl_intel_queue_no_sync_operations (#204)
+  * CMakeLists.txt: fix install on macOS if GNU coreutils are used (#203)
+  * Update cl_icd.h (#202)
+  * Add cl_ext_image_from_buffer extension definition (#196)
+  * Add cl_ext_image_requirements_info extension definition (#197)
+  * Fix warnings on anonymous structs for MSVC (#198)
+  * option to disable tests when subproject (#195)
+  * Add cl_intel_mem_alloc_buffer_location property (#193)
+  * OpenCL-SDK base changes (#189)
+
+-------------------------------------------------------------------
 Wed Dec 29 10:57:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2+git.20211214:

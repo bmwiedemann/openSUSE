@@ -1,7 +1,7 @@
 #
 # spec file for package opencl-headers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,17 @@
 
 
 Name:           opencl-headers
-Version:        2.2+git.20211214
+Version:        2023.04.17
 Release:        0
 Summary:        OpenCL (Open Computing Language) headers
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/cl/
 Source:         %{name}-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 Conflicts:      opencl-headers-1_2
 BuildArch:      noarch
 
@@ -39,15 +43,22 @@ compile programs that use OpenCL.
 %autosetup
 
 %build
+%cmake
+%cmake_build
 
 %install
-install -d -m 0755 %{buildroot}%{_includedir}/CL
-install -p -m 0644 ./CL/*.h* %{buildroot}%{_includedir}/CL
+%cmake_install
+
+%check
+%ctest
 
 %files
 %doc README.md
 %license LICENSE
 %dir %{_includedir}/CL
+%dir %{_datadir}/cmake/OpenCLHeaders/
+%{_datadir}/cmake/OpenCLHeaders/*
+%{_datadir}/pkgconfig/OpenCL-Headers.pc
 %{_includedir}/CL/*.h*
 
 %changelog
