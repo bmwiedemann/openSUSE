@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 03 04:50:58 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1683023936.135efe1:
+  * Improve coding style in code for manual restarting
+  * Use subtests to make pagination test descriptions more unique
+  * Extract code to cancel other jobs in cluster to function
+  * Avoid jobs not part of parallel cluster ending up `parallel_restarted`
+  * Make serialization of test results portable
+  * Update documentation in accordance with 29bcb6cd
+  * Verify and improve restarting behavior in certain case
+  * Improve helpers of restarting test
+  * Add pagination tests for GET /api/v1/products
+  * Add pagination tests for GET /api/v1/machines
+  * Add pagination for GET /api/v1/test_suites
+  * Improve contrast of Progress bar text
+  * Fix surplus whitespaces in source view
+  * Don't restart scheduled or running chained parents
+
+-------------------------------------------------------------------
 Wed Apr 26 12:21:42 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1682511024.316b8d8:
