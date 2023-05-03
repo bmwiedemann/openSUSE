@@ -29,6 +29,7 @@ Source:         https://github.com/greenbone/%{name}/archive/v%{version}.tar.gz#
 Source98:       https://github.com/greenbone/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source99:       https://www.greenbone.net/GBCommunitySigningKey.asc#/%{name}.keyring
 Patch0:         0001-Fix-heimdal-gssapi-dependencies.patch
+Patch1:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -86,8 +87,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libopenvas_wmiclient.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # Fix libheimdal include path
 find . -name '*.[c\|h]' -print0 | xargs -0 sed -i 's|heimdal\/||g'
 
