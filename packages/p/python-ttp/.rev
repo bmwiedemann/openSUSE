@@ -16,4 +16,23 @@
     <comment></comment>
     <requestid>1041650</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7eddb26cca9898a112476fb7378c9d2a</srcmd5>
+    <version>0.9.4</version>
+    <time>1683111417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.4:
+  * Better fix for issue #103 and fix for issue #95
+- 0.9.3:
+  * Fix issue #103 - introduced login to not run validation check for
+    group function for group tail match results
+  * Fix for issue #97 - improoved path formatters handling when match
+    variable contains *
+  * Fix issue #98 - improoved pat formatters handling when match
+    variable contains \
+  * For debug output excluded 'ttp' dictionary from variables, groups
+    and template objects to not clutter the output
+</comment>
+    <requestid>1084091</requestid>
+  </revision>
 </revisionlist>

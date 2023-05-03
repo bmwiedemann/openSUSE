@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -26,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-ttp%{psuffix}
-Version:        0.9.2
+Version:        0.9.4
 Release:        0
 Summary:        Template Text Parser
 License:        MIT
@@ -95,7 +94,8 @@ popd
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/ttp
-%{python_sitelib}/*
+%{python_sitelib}/ttp
+%{python_sitelib}/ttp-%{version}*-info
 %endif
 
 %changelog
