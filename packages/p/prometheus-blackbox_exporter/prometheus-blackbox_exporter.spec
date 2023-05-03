@@ -35,6 +35,8 @@ URL:            https://prometheus.io/
 Source0:        blackbox_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
+# This patch has been applied before generating vendor tarball
+Patch1:         0001-Update-go-modules.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 %if 0%{?rhel}
@@ -56,7 +58,7 @@ ExcludeArch:    s390
 Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
 
 %prep
-%autosetup -a1 -n blackbox_exporter-%{version}
+%autosetup -a1 -p1 -n blackbox_exporter-%{version}
 
 %build
 %goprep github.com/prometheus/blackbox_exporter

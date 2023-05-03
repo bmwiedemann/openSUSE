@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 27 09:50:45 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix authentication bypass via cache poisoning
+  (CVE-2022-46146, bsc#1208062)
+- Add `min_version` parameter of `tls_config` to allow enabling
+  TLS 1.0 and 1.1 (bsc#1209113)
+- Add:
+  * 0001-Update-go-modules.patch
+
+-------------------------------------------------------------------
 Mon Apr 24 07:09:17 UTC 2023 - Marina Latini <marina.latini@suse.com>
 
 - On SUSE Linux Enterprise build always with Go >= 1.19 (bsc#1203599)
