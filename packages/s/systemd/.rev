@@ -6524,4 +6524,17 @@ handle manual pages that consist only of a .so directive such as
   - Remove btmp entry, not Y2038 safe</comment>
     <requestid>1083513</requestid>
   </revision>
+  <revision rev="389" vrev="3">
+    <srcmd5>b47941edf79173325dab4ae8690f3a74</srcmd5>
+    <version>253.3</version>
+    <time>1683111388</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert changes that dropped calls to %systemd_{pre,post} in the main package
+  Until we switch to filetriggers these calls are needed when a new version of
+  systemd introduced a new config file during an update.
+- We also introduce a new build conditional &quot;%filetriggers&quot; to identify easily
+  which parts of the code will become obsolete when we'll switch to file
+  triggers (WIP). This is important as this is unlikely to happen on SLE.</comment>
+    <requestid>1084033</requestid>
+  </revision>
 </revisionlist>

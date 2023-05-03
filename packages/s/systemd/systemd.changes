@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  2 10:34:43 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Revert changes that dropped calls to %systemd_{pre,post} in the main package
+
+  Until we switch to filetriggers these calls are needed when a new version of
+  systemd introduced a new config file during an update.
+
+- We also introduce a new build conditional "%filetriggers" to identify easily
+  which parts of the code will become obsolete when we'll switch to file
+  triggers (WIP). This is important as this is unlikely to happen on SLE.
+
+-------------------------------------------------------------------
 Fri Apr 28 10:43:02 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Re-add back 'arabic' keymap mapping as YaST needs more time than expected to
