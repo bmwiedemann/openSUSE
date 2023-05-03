@@ -1,7 +1,7 @@
 #
 # spec file for package python-croniter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-croniter
-Version:        1.3.7
+Version:        1.3.14
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
@@ -54,7 +54,7 @@ croniter provides iterators for datetime object with cron-like format.
 %pytest src
 
 %files %{python_files}
-%license docs/LICENSE
+%license LICENSE
 %doc README.rst
 %{python_sitelib}/*
 
