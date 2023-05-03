@@ -76,10 +76,10 @@ BuildRequires:  python3-qscintilla-qt5-sip
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-sip-devel
 BuildRequires:  python3-termcolor
-BuildRequires:  qwt6-devel
 BuildRequires:  sqlite-devel >= 3.12.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+BuildRequires:  (qwt6-devel or qwt6-qt5-devel)
 BuildRequires:  cmake(Qt53DAnimation)
 BuildRequires:  cmake(Qt53DCore)
 BuildRequires:  cmake(Qt53DExtras)

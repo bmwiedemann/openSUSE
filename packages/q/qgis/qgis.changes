@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 11:07:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust BuildRequires for Qwt6 Qt5/Qt6 compatibility rename
+  (boo#1210976).
+
+-------------------------------------------------------------------
 Mon Apr 17 10:59:05 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required, see b15f6fa
