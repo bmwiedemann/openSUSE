@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 24 16:30:48 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.14.1:
+  * Fix internal archive root naming for the sdist target when
+    strict-naming is disabled to match the file name in order to
+    support the expectation of some frontends
+
+-------------------------------------------------------------------
+Fri Apr 21 12:26:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Mon Apr  3 16:22:45 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 1.14.0:
+  * Added: Add trove-classifiers as a dependency
+  * Fixed: Properly normalize metadata descriptions that contain
+    line breaks
+- requires python-trove-classifiers
+
+-------------------------------------------------------------------
 Thu Feb  9 17:13:34 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 1.13.0:
