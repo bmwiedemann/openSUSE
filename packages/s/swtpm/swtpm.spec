@@ -47,14 +47,12 @@ BuildRequires:  libtasn1-devel
 BuildRequires:  libtool
 BuildRequires:  libtpms-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-cryptography
 BuildRequires:  selinux-policy-devel
 BuildRequires:  selinux-policy-targeted
 BuildRequires:  socat
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
-Requires:       python3-cryptography
 Requires:       (%{name}-selinux if selinux-policy-base)
 Requires(pre):  user(tss)
 

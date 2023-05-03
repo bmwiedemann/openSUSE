@@ -196,4 +196,12 @@
     <comment>bsc#1209117 (forwarded request 1073548 from msmeissn)</comment>
     <requestid>1073549</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>9f13542b46923cd786f777c93034e0cf</srcmd5>
+    <version>0.8.0</version>
+    <time>1683111387</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python3 dependency, no longer needed after rewrite (bsc#1211010) (forwarded request 1084023 from msmeissn)</comment>
+    <requestid>1084024</requestid>
+  </revision>
 </revisionlist>

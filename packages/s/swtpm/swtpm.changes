@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 09:55:28 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove python3 dependency, no longer needed after rewrite (bsc#1211010)
+
+-------------------------------------------------------------------
 Tue Mar 21 12:45:54 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - swtpm-fix-build.patch: disable -Wstack-protector, it fails on s390x
