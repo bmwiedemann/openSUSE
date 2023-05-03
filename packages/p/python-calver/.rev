@@ -7,4 +7,14 @@
     <comment>Required by trove-classifiers</comment>
     <requestid>989349</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>573c86080cc404de8695dd45592afa50</srcmd5>
+    <version>2022.6.26</version>
+    <time>1683111374</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+
+- Inject multibuild.</comment>
+    <requestid>1083111</requestid>
+  </revision>
 </revisionlist>

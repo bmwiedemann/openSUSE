@@ -1,7 +1,7 @@
 #
-# spec file for package python-calver
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -%{flavor}
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
 %define ghtag 2022.06.26
-Name:           python-calver
+%{?sle15_python_module_pythons}
+Name:           python-calver%{psuffix}
 Version:        2022.6.26
 Release:        0
 Summary:        Setuptools extension for CalVer package versions
 License:        Apache-2.0
 URL:            https://github.com/di/calver
 Source:         https://github.com/di/calver/archive/refs/tags/%{ghtag}.tar.gz#/calver-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirement
-BuildRequires:  %{python_module pytest}
+%if %{with test}
+BuildRequires:  %{python_module calver}
 BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pytest}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -49,16 +60,22 @@ sed -i 's/calver_version(True)/"%{version}"/' setup.py
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/calver
 %{python_sitelib}/calver-%{version}*-info
+%endif
 
 %changelog
