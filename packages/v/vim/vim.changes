@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  2 09:11:18 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1504, fixes the following problems
+- fixes boo#1210996 - CVE-2023-2426
+  * xchacha20v2 crypt header is platform dependent.
+  * Crypt with libsodium is not tested on CI.
+  * The ModeChanged event may be triggered too often.
+  * Wrong scrolling with ls=0 and :botright split.
+  * Using uninitialized memory when argument is missing.
+  * Popup menu position wrong in window with toolbar.
+  * Crash when recovering from corrupted swap file.
+  * GTK3: hiding the mouse pointer does not work. (Rory O’Kane)
+  * Test restoring register with wrong value.
+  * The ruler percentage can't be localized.
+  * In a terminal window the cursor may jump around. (Kenny Stauffer)
+  * Using uninitialized memory with fuzzy matching.
+  * The falsy operator is not tested properly.
+  * Crash with nested :try and :throw in catch block.
+  * No test for deleting the end of a long wrapped line.
+  * Luau files are not recognized.
+  * No error when calling remote_startserver() with an empty string.
+
+-------------------------------------------------------------------
 Wed Apr 26 09:20:58 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1488, fixes the following problems

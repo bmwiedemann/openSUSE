@@ -7047,4 +7047,30 @@ always built-in because vim has direct perl dependencies anyway.
   * Warnings for function declarations.</comment>
     <requestid>1082937</requestid>
   </revision>
+  <revision rev="348" vrev="1">
+    <srcmd5>1ba2d69c98ca81a3f6d86cd6d05c9905</srcmd5>
+    <version>9.0.1504</version>
+    <time>1683111379</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1504, fixes the following problems
+- fixes boo#1210996 - CVE-2023-2426
+  * xchacha20v2 crypt header is platform dependent.
+  * Crypt with libsodium is not tested on CI.
+  * The ModeChanged event may be triggered too often.
+  * Wrong scrolling with ls=0 and :botright split.
+  * Using uninitialized memory when argument is missing.
+  * Popup menu position wrong in window with toolbar.
+  * Crash when recovering from corrupted swap file.
+  * GTK3: hiding the mouse pointer does not work. (Rory O’Kane)
+  * Test restoring register with wrong value.
+  * The ruler percentage can't be localized.
+  * In a terminal window the cursor may jump around. (Kenny Stauffer)
+  * Using uninitialized memory with fuzzy matching.
+  * The falsy operator is not tested properly.
+  * Crash with nested :try and :throw in catch block.
+  * No test for deleting the end of a long wrapped line.
+  * Luau files are not recognized.
+  * No error when calling remote_startserver() with an empty string.</comment>
+    <requestid>1083978</requestid>
+  </revision>
 </revisionlist>
