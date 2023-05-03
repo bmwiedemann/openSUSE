@@ -160,4 +160,15 @@
     <comment>- Trim Summary to not exceed 79 characters (forwarded request 1068158 from glaubitz)</comment>
     <requestid>1068174</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9cb3abe6d33ff180ad245c906c85385f</srcmd5>
+    <version>1.1.0</version>
+    <time>1683121338</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1084277 from glaubitz)</comment>
+    <requestid>1084287</requestid>
+  </revision>
 </revisionlist>
