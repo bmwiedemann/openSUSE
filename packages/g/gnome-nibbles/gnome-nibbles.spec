@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nibbles
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           gnome-nibbles
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Lightsoff
 Source0:        https://download.gnome.org/sources/gnome-nibbles/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 1b48446068608aff9b5edf1fdbd4b8c0d9f0be94.patch dimstar@opensuse.org -- Fix build with vala 0.51.x.
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-nibbles/-/commit/1b48446068608aff9b5edf1fdbd4b8c0d9f0be94.patch
+
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  meson >= 0.50.1

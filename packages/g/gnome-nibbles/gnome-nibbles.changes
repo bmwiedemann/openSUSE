@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  2 08:06:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.38.3:
+  + Fixes to build with newer valac.
+  + Misc merge requests.
+  + Updated user help.
+  + Updated translations.
+- Drop 1b48446068608aff9b5edf1fdbd4b8c0d9f0be94.patch: Fixed
+  upstream.
+- Add desktop-file-utils BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Thu Feb 18 16:32:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1b48446068608aff9b5edf1fdbd4b8c0d9f0be94.patch: Fix build
