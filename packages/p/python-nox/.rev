@@ -55,4 +55,12 @@
   * Use `stdout.isatty` to finalize color instead of `stdin.isatty`. (#267)</comment>
     <requestid>815362</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5639683e6feb6627ed96a5008a939375</srcmd5>
+    <version>2023.4.22</version>
+    <time>1683115775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083339</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-nox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nox
-Version:        2020.5.24
+Version:        2023.4.22
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0
@@ -27,16 +26,18 @@ Group:          Development/Languages/Python
 URL:            https://nox.thea.codes
 Source:         https://github.com/theacodes/nox/archive/%{version}.tar.gz#/nox-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.5}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-colorlog >= 2.6.1
-Requires:       python-py >= 1.4.0
 Requires:       python-setuptools
 Requires:       python-virtualenv >= 14.0.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-Jinja2
 Suggests:       python-tox
 BuildArch:      noarch
@@ -44,8 +45,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
 BuildRequires:  %{python_module colorlog >= 2.6.1}
-BuildRequires:  %{python_module contexter}
-BuildRequires:  %{python_module py >= 1.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
 BuildRequires:  %{python_module virtualenv >= 14.0.0}
@@ -58,14 +57,12 @@ Flexible test automation.
 
 %prep
 %setup -q -n nox-%{version}
-# Remove upper pins on dependencies
-sed -Ei 's/,? ?<=?[0-9][0-9.]*//' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tox-to-nox
 %python_clone -a %{buildroot}%{_bindir}/nox
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -82,10 +79,10 @@ sed -Ei 's/,? ?<=?[0-9][0-9.]*//' setup.py
 %python_uninstall_alternative nox
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/nox
 %python_alternative %{_bindir}/tox-to-nox
-%{python_sitelib}/*
+%{python_sitelib}/nox*
 
 %changelog

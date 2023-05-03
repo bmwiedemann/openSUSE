@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Apr 25 02:05:35 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2023.4.22
+  * Add support for NOXPYTHON, NOXEXTRAPYTHON and NOXFORCEPYTHON
+  * feat: --json --list-sessions
+  * style: spelling and grammar fixes
+  * Constrain tox to <4.0.0 and minor fixes
+  * chore: long term fix for bugbear opinionated checks
+  * chore: switch to hatchling
+  * Don't run python 2.7 virtualenv tests for newer versions of virtualenv
+  * allow the use of argcomplete 3
+  * fix: enable list_sessions for session completion
+  * chore: remove 3.6 tests, min version is 3.7
+- from v2022.11.21
+  * Include Python 3.11 classifier & testing
+  * Fixed a few typos
+  * Drop dependency on py
+  * nox.session.run now accepts a pathlib.Path for the command
+  * Document nox.session.run's stdout and stderr arguments and
+    add example of capturing output
+  * Docs: fix argument passing in session.posargs example
+  * GitHub Action: move to 3.11 final
+  * Cleanup Python 2 style code
+- from 2022.8.7
+  * Drop support for Python 3.6
+  * Disable running session.install outside a venv
+  * Official Nox GitHub Action
+  * Missing interpreters now error the session on CI by default
+  * Allow configurable child shutdown timeouts
+  * Add session tags
+  * Add short -N alias for --no-reuse-existing-virtualenvs
+  * Export session name in NOX_CURRENT_SESSION environment variable
+  * Add VENV_DIR to dev session in cookbook
+  * Support descriptions in tox-to-nox
+  * Document that silent=True returns the command output
+  * Support argcomplete v2
+  * Fix incorrect FileNotFoundError in load_nox_module
+  * Update the classifiers, documentation, and more to point to the
+    new Winterbloom location
+  * Support PEP 621 (pyproject.toml)
+  * Prefer type checking against Jinja2
+  * Full strictness checking on mypy
+  * Drop 99% coverage threshold flag for 3.10 in noxfile
+- from 2022.1.7
+  * Add mamba backend
+  * Add session.debug to show debug-level messages
+  * Add cookbook page to the documentation
+  * Add support for the FORCE_COLOR environment variable
+  * Allow using session.chdir() as a context manager
+  * Deprecate use of session.install() without a valid backend
+  * Test against Python 3.10
+  * Add support for the channel option when using the conda backend
+  * Show more specific error message when the --keywords expression
+    contains a syntax error
+  * Include reference to session.notify() in tutorial page
+  * Document how session.run() fails and how to handle failures
+  * Allow the list of sessions to be empty
+  * Fix broken temporary directory when using session.chdir()
+  * Set the CONDA_PREFIX environment variable
+  * Fix bin directory for the conda backend on Windows
+  * Replace deprecated load_module with exec_module
+  * Include tests with source distributions
+  * Add missing copyright notices
+  * Use the new ReadTheDocs configurations
+  * Make setuptools use the standard library's distutils to
+    work around virtualenv bug.
+  * Use shlex.join() when logging a command
+  * Use shutil.rmtree() over shelling out to rm -rf in noxfile
+  * Fix missing Python 3.9 CI session
+  * Unpin docs session and add --error-on-missing-interpreter to CI
+  * Only run conda_tests session by default if user has conda installed
+  * Update dependencies in requirements-conda-test.txt
+- from v2021.10.1
+  * Add session.warn to output warnings
+  * Add a shared session cache directory
+  * Add session.invoked_from
+  * Conda logs now respect nox.options.verbose
+  * Add friendlier message if no noxfile.py is found
+  * Show the noxfile.py docstring when using nox -l
+  * Move configs into pyproject.toml or setup.cfg (flake8)
+  * Use PEP 517 build system, remove setup.py, use setup.cfg
+- from v2021.6.12
+  * Fix crash on Python 2 when reusing environments
+  * Hide staleness check behind a feature flag
+  * Group command-line options in --help message by function
+  * Avoid polluting tests with a .nox directory
+- from v2021.6.6
+  * Add option --no-install to skip install commands in
+    reused environments
+  * Add option --force-python as shorthand for --python and
+    --extra-python
+  * Do not reuse environments if the interpreter or the
+    environment type has changed
+  * Allow common variations in session names with parameters,
+    such as double quotes instead of single quotes.
+    Session names are considered equal if they produce the same
+    Python AST.
+  * Preserve the order of parameters in session names
+  * Allow @nox.parametrize to select the session Python
+  * Allow passing posargs when scheduling another session via
+    session.notify
+  * Prevent sessions from modifying each other's posargs
+  * Add nox.needs_version to specify Nox version requirements
+  * Add session.name to get the session name
+  * Gracefully shutdown child processes
+  * Decode command output using the system locale if UTF-8
+    decoding fails
+  * Fix creation of Conda environments when venv_params is used
+  * Various improvements to Nox's type annotations
+  * Allow colorlog <7.0.0.
+- from v2020.12.31
+  * Fix NoxColoredFormatter.format
+  * Use conda remove to clean up existing conda environments
+  * Support users specifying an undeclared parametrization of
+    python via --extra-python
+  * Support double-digit minor version in python keyword
+  * Add py.typed to manifest.in
+  * Update Nox to latest supported python versions
+  * Decouple merging of --python with nox.options from --sessions
+    and --keywords
+  * Do not merge command-line options in place
+- from v2020.8.22
+  * conda_install and install args are now automatically double-quoted
+    when needed
+  * Offline mode is now auto-detected by default by conda_install.
+    This allows users to continue executing Nox sessions on already
+    installed environments
+  * Fix the default paths for Conda on Windows where the python.exe
+    found was not the correct one
+  * Add the --add-timestamp option
+  * Add Session.run_always()
+
+-------------------------------------------------------------------
 Wed Jun 17 06:16:32 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 2020.5.24:
