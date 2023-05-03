@@ -175,4 +175,16 @@
     <comment></comment>
     <requestid>1073491</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9862d2688a891db00b7b5fc5f5eef18d</srcmd5>
+    <version>0.95.1</version>
+    <time>1683111372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.95.1:
+  * Fix using Annotated in routers or path operations decorated multiple
+    times.
+- Add patch remove-classifiers.patch:
+  * Remove unknown classifiers.</comment>
+    <requestid>1079329</requestid>
+  </revision>
 </revisionlist>

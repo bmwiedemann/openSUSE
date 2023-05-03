@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 14 04:20:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.95.1:
+  * Fix using Annotated in routers or path operations decorated multiple
+    times.
+- Add patch remove-classifiers.patch:
+  * Remove unknown classifiers. 
+
+-------------------------------------------------------------------
 Mon Mar 20 11:52:11 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Ignore extra tests to allow building with ringdisabled.

@@ -19,13 +19,14 @@
 # Keep extra test requirements out of Ring1
 %bcond_with ringdisabled
 Name:           python-fastapi
-Version:        0.95.0
+Version:        0.95.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Remove two unknown classifiers
+Patch0:         remove-classifiers.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 1.8.2}
