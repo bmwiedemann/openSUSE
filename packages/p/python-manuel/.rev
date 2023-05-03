@@ -106,4 +106,12 @@
 - Move to PEP517 (forwarded request 1046638 from bnavigator)</comment>
     <requestid>1046639</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ce0837116997f40b67f42acb7798591e</srcmd5>
+    <version>1.12.4</version>
+    <time>1683111361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083999</requestid>
+  </revision>
 </revisionlist>

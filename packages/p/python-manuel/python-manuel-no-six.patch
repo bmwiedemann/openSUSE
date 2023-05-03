@@ -18,3 +18,18 @@ Index: manuel-1.12.4/src/manuel/doctest.py
      pass
  
  
+Index: manuel-1.12.4/setup.py
+===================================================================
+--- manuel-1.12.4.orig/setup.py
++++ manuel-1.12.4/setup.py
+@@ -48,10 +48,6 @@ setup(
+         },
+     tests_require=tests_require,
+     test_suite='manuel.tests.test_suite',
+-    install_requires=[
+-        'setuptools',
+-        'six',
+-        ],
+     include_package_data=True,
+     long_description=long_description,
+     keywords=['testing', 'documentation'],

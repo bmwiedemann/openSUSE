@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 10:14:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Replace unsupported setuptoos sphinx_build hook
+- Remove six and setuptools from requirements metadata
+
+-------------------------------------------------------------------
 Tue Jan  3 18:56:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix doc build: primary python not in buildset for backports

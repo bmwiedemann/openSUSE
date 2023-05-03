@@ -25,8 +25,6 @@ License:        Apache-2.0
 URL:            https://pypi.org/project/manuel/
 # SourceRepository: https://github.com/benji-york/manuel
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
-# add fixed sphinx config <hpj@urpla.net>
-Source1:        conf.py
 # https://github.com/benji-york/manuel/issues/33
 Patch0:         python-manuel-no-six.patch
 BuildRequires:  %{python_module pip}
@@ -38,6 +36,8 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION Documentation requirements:
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-myst-parser
+BuildRequires:  python3-sphinxcontrib-copybutton
 # /SECTION
 # SECTION Testing requirements:
 BuildRequires:  %{python_module zope.testing}
@@ -58,13 +58,10 @@ This package contains documentation files for %{name}.
 
 %prep
 %autosetup -p1 -n manuel-%{version}
-cp %{SOURCE1} .
 
 %build
 %pyproject_wheel
-# build docs only one time
-python3 setup.py build_sphinx
-mv build/sphinx/html docs
+sphinx-build -c sphinx/ -a src/manuel docs/
 rm docs/.buildinfo
 
 %install
