@@ -39,14 +39,12 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 %endif
 %python_subpackages
 
@@ -65,11 +63,11 @@ having a unique set of features:
 %prep
 %setup -q -n iniconfig-%{version} -a1
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
-%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -83,7 +81,8 @@ having a unique set of features:
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/iniconfig
+%{python_sitelib}/iniconfig-%{version}.dist-info
 %endif
 
 %changelog
