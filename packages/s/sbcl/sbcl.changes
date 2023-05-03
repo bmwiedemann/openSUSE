@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  2 19:30:48 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.4
+  * enhancement: attempts to call non-callable objects can now provide
+    USE-VALUE restarts on x86-64 and arm64.
+  * bug fix: ioctl() (both in SBCL's internals and through SB-POSIX) was
+    broken on ARM64/Darwin.  (reported by fiddlerwoaroof)
+  * platform support:
+    ** support for cross-compiling the system to Android has been added;
+       (thanks to Gleefre)
+    ** include likely absolute paths for gmp and mpfr on ARM64/Darwin; (thanks
+       to Elias Lawson-Fox)
+    ** include another absolute path for mpfr on Windows; (thanks to Ari
+       Projansky)
+    ** the PROMISE-COMPILE feature from the SB-CONCURRENCY contrib is now
+       available on all threaded platforms;
+  * optimization: VALUES-LIST performs less redundant work on x86-64 and
+    ARM64.
+
+-------------------------------------------------------------------
 Wed Mar 29 07:50:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.3.3
