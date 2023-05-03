@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Tue May  2 16:14:29 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.33.4:
+  * fix: Fix init --promptBool for promptBoolOnce template function
+  * fix: Respect executable file modes in external_ directories
+  * fix: Fix chezmoi rm with files in exact_ directories
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Wed Apr 26 08:41:08 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
-- Update to version 2.33.3_
+- Update to version 2.33.3:
   * fix: Correct capitalization of .chezmoi.config template variables
 
 -------------------------------------------------------------------
