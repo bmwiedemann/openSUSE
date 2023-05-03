@@ -7101,10 +7101,14 @@ unsorted:
   - gpuvis 
   - gpxsee 
   - gq 
+  - gqrx 
   - gr-funcube 
   - gr-funcube-doc 
   - gr-iqbal-devel-doc 
   - gr-iqbal-grc 
+  - gr-osmosdr 
+  - gr-osmosdr-devel 
+  - gr-osmosdr-doc 
   - grabpng 
   - grafana 
   - grafana-ha-cluster-dashboards 
@@ -9847,7 +9851,6 @@ unsorted:
   - lensfun-doc 
   - lensfun-tools 
   - leocad 
-  - lepton 
   - leptonica-devel 
   - leptonica-tools 
   - level-zero 
@@ -12019,6 +12022,7 @@ unsorted:
   - libgarcon-doc 
   - libgav1-1 
   - libgav1-devel 
+  - libgav1-tools 
   - libgavl-devel 
   - libgbm-devel 
   - libgbm-devel-32bit 
@@ -12199,6 +12203,7 @@ unsorted:
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
+  - libgnuradio-osmosdr0_2_0 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
@@ -13172,8 +13177,14 @@ unsorted:
   - libmbd-openmpi4-devel 
   - libmbedcrypto14 
   - libmbedcrypto14-x86-64-v3 
+  - libmbedcrypto7 
+  - libmbedcrypto7-x86-64-v3 
+  - libmbedtls14 
+  - libmbedtls14-x86-64-v3 
   - libmbedtls19 
   - libmbedtls19-x86-64-v3 
+  - libmbedx509-1 
+  - libmbedx509-1-x86-64-v3 
   - libmbedx509-5 
   - libmbedx509-5-x86-64-v3 
   - libmbim-devel 
@@ -13882,7 +13893,6 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit 
   - libovf-glib-devel 
-  - libovn-21_09-0 
   - libovn-23_03-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
@@ -15251,7 +15261,6 @@ unsorted:
   - libtimidity2 
   - libtins-devel 
   - libtins4_4 
-  - libtinyb0 
   - libtinygettext0 
   - libtinyobjloader2 
   - libtinyxml0 
@@ -17153,6 +17162,7 @@ unsorted:
   - maxima-xmaxima 
   - mayavi 
   - mayavi-jupyter 
+  - mbedtls-2-devel 
   - mbedtls-devel 
   - mbpfan 
   - mbpoll 
@@ -19307,11 +19317,14 @@ unsorted:
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -22486,7 +22499,6 @@ unsorted:
   - python-chewing 
   - python-cinderclient-doc 
   - python-cliff-doc 
-  - python-cloud-sptheme-doc 
   - python-curses 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
@@ -22738,6 +22750,7 @@ unsorted:
   - python3-gpsd 
   - python3-gr-funcube 
   - python3-gr-iqbal 
+  - python3-gr-osmosdr 
   - python3-gv 
   - python3-hawkey 
   - python3-heatclient 
@@ -23412,6 +23425,7 @@ unsorted:
   - python310-azure-media-nspkg 
   - python310-azure-media-videoanalyzer-edge 
   - python310-azure-messaging-nspkg 
+  - python310-azure-messaging-webpubsubclient 
   - python310-azure-messaging-webpubsubservice 
   - python310-azure-mgmt 
   - python310-azure-mgmt-advisor 
@@ -23791,7 +23805,6 @@ unsorted:
   - python310-clikit 
   - python310-clint 
   - python310-cloud-init-seed 
-  - python310-cloud-sptheme 
   - python310-cloudflare 
   - python310-cloudpickle 
   - python310-cloudscraper 
@@ -26724,6 +26737,7 @@ unsorted:
   - python311-azure-media-nspkg 
   - python311-azure-media-videoanalyzer-edge 
   - python311-azure-messaging-nspkg 
+  - python311-azure-messaging-webpubsubclient 
   - python311-azure-messaging-webpubsubservice 
   - python311-azure-mgmt 
   - python311-azure-mgmt-advisor 
@@ -27111,7 +27125,6 @@ unsorted:
   - python311-clikit 
   - python311-clint 
   - python311-cloud-init-seed 
-  - python311-cloud-sptheme 
   - python311-cloudflare 
   - python311-cloudpickle 
   - python311-cloudscraper 
@@ -30166,6 +30179,7 @@ unsorted:
   - python39-azure-media-nspkg 
   - python39-azure-media-videoanalyzer-edge 
   - python39-azure-messaging-nspkg 
+  - python39-azure-messaging-webpubsubclient 
   - python39-azure-messaging-webpubsubservice 
   - python39-azure-mgmt 
   - python39-azure-mgmt-advisor 
@@ -30554,7 +30568,6 @@ unsorted:
   - python39-clikit 
   - python39-clint 
   - python39-cloud-init-seed 
-  - python39-cloud-sptheme 
   - python39-cloudflare 
   - python39-cloudpickle 
   - python39-cloudscraper 
@@ -44302,7 +44315,6 @@ unsorted:
   - tint2-lang 
   - tintii 
   - tiny 
-  - tinyb-devel 
   - tinyfecvpn 
   - tinygettext-devel 
   - tinyobjloader-devel 
@@ -45402,6 +45414,7 @@ unsorted:
   - webkit2gtk4-minibrowser 
   - weblate 
   - weblate-doc 
+  - weblug 
   - webp-pixbuf-loader 
   - websocketpp-devel 
   - weechat 
