@@ -1,7 +1,7 @@
 #
 # spec file for package amtk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,9 @@
 
 
 %define api_ver 5
-%define libamtk libamtk-%{api_ver}-1
+%define libamtk libamtk-%{api_ver}-0
 Name:           amtk
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later

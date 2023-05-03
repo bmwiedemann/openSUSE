@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 14:23:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.6.1:
+  + Revert unintentional soname bump, set 'soversion' back to 0.
+
+-------------------------------------------------------------------
 Fri Nov  4 20:51:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.6.0:
