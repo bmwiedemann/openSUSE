@@ -1120,4 +1120,16 @@ and CVE references,
     <comment></comment>
     <requestid>1079395</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>2ce1b0eeacb8ade58c0d227df6271c13</srcmd5>
+    <version>5.8</version>
+    <time>1683111414</time>
+    <user>dimstar_suse</user>
+    <comment>- partial revert of earlier &quot;fix PIDFile&quot;
+  - move pidfile back to /run/squid.pid and not in the directory
+    owned by squid. The purpose of /run/squid/ is to facilitate
+    SMP worker's IPC and not for the PID file. The PID file can
+    live just fine in /run since it's written by root. (bsc#1210960)</comment>
+    <requestid>1084087</requestid>
+  </revision>
 </revisionlist>

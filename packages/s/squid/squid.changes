@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  2 15:14:15 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- partial revert of earlier "fix PIDFile"
+  - move pidfile back to /run/squid.pid and not in the directory
+    owned by squid. The purpose of /run/squid/ is to facilitate
+    SMP worker's IPC and not for the PID file. The PID file can
+    live just fine in /run since it's written by root. (bsc#1210960)
+
+-------------------------------------------------------------------
 Fri Mar 31 08:43:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8:
