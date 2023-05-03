@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 27 22:13:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Allow fetchers to detect and handle log truncation (#4122).
+  * Fix a reference count issue blocking the consumer from
+    closing (#4187).
+  * Fix a protocol issue with ListGroups API, where an extra
+  * field was appended for API Versions greater than or equal to
+    3 (#4207).
+  * Fix an issue with `max.poll.interval.ms`, where polling any
+    queue would cause the timeout to be reset (#4176).
+  * Fix seek partition timeout, was one thousand times lower than
+    the passed value (#4230).
+  * Fix multiple inconsistent behaviour in batch APIs during
+    **pause** or **resume** operations (#4208).
+  * Update lz4.c from upstream. Fixes CVE-2021-3520
+  * Upgrade OpenSSL to v3.0.8 with various security fixes
+  * Added `rd_kafka_topic_partition_get_leader_epoch()` (and
+    `set..()`).
+  * A reference count issue was blocking the consumer from
+    closing.
+  * Fixed known issues related to Batch Consume APIs mentioned in
+    v2.0.0 release notes.
+  * Fixed `rd_kafka_consume_batch()` and `rd_kafka_consume_batch_queue()`
+    intermittently updating `app_offset` and `store_offset`
+    incorrectly when **pause** or **resume** was being used for a partition.
+  * Fixed `rd_kafka_consume_batch()` and `rd_kafka_consume_batch_queue()`
+    intermittently skipping offsets when **pause** or **resume**
+    was being used for a partition.
+
+-------------------------------------------------------------------
 Sun Jan 29 12:09:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
