@@ -117,4 +117,12 @@
     <comment>Resubmitted (again) with proper changelog references.</comment>
     <requestid>1065934</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d6c9b446d1dfd04ce692a909fe16a1fd</srcmd5>
+    <version>1.3.2+git.1683043996.b95b03e</version>
+    <time>1683111421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084098</requestid>
+  </revision>
 </revisionlist>
