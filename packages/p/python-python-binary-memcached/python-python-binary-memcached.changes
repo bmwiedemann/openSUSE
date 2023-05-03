@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  3 09:07:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.2:
+  * Remove setup's.py dependency on m2r
+- drop drop-m2r-dependency.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Sep 30 12:19:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.1:

@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1007650</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db09d90005584cd4950c8787b9743f72</srcmd5>
+    <version>0.31.2</version>
+    <time>1683111472</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.31.2:
+  * Remove setup's.py dependency on m2r
+- drop drop-m2r-dependency.patch (upstream)</comment>
+    <requestid>1084221</requestid>
+  </revision>
 </revisionlist>
