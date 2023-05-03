@@ -808,4 +808,18 @@ all changed Requires/Buildrequires seem to be available
   - Update master for stable/yoga</comment>
     <requestid>996550</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ebea8ceae23ca96b9e435c54267763bb</srcmd5>
+    <version>9.1.1</version>
+    <time>1683121345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 9.1.1
+  - Fix issues related to tox4
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+  - fix CLI mismatch in unit tests
+  - Disable a config test if ran under the root user
+  - Make tests backward compat with cliff' older versions</comment>
+    <requestid>1084313</requestid>
+  </revision>
 </revisionlist>

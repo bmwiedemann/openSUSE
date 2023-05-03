@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  3 12:22:46 UTC 2023 - cloud-devel@suse.de
+
+- update to version 9.1.1
+  - Fix issues related to tox4
+  - Update master for stable/zed
+  - Add Python3 antelope unit tests
+  - fix CLI mismatch in unit tests
+  - Disable a config test if ran under the root user
+  - Make tests backward compat with cliff' older versions
+
+-------------------------------------------------------------------
 Tue Aug 16 08:43:47 UTC 2022 - cloud-devel@suse.de
 
 - update to version 9.0.0

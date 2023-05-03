@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-oslo.config
-Version:        9.0.0
+Version:        9.1.1
 Release:        0
 Epoch:          0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.config
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-9.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.config/oslo.config-9.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -87,13 +87,13 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the oslo-config library.
 
 %prep
-%autosetup -p1 -n oslo.config-9.0.0
+%autosetup -p1 -n oslo.config-9.1.1
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=9.0.0 PYTHONPATH=. \
+PBR_VERSION=9.1.1 PYTHONPATH=. \
     %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
@@ -104,7 +104,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %check
 # Requires oslo.log which we can't depend on for build cycle reasons
 rm -v oslo_config/tests/test_cfg.py
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-oslo.config
 %license LICENSE
