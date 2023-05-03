@@ -22,7 +22,7 @@
 %define sodname %{dname}%{sonum}
 
 Name:           libtraceevent
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Linux kernel trace event library
 License:        GPL-2.0-only AND LGPL-2.1-only

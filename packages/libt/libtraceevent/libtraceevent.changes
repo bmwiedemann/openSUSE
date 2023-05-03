@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 27 22:15:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Fix some missing commas in big endian blocks
+  * Rename "ok" to "token_has_paren" in process_sizeof()
+  * No need for testing ok in else if (!ok) in process_sizeof()
+  * Fix double free in parsing sizeof() 
+
+-------------------------------------------------------------------
 Sat Feb 11 09:53:05 UTC 2023 - Hans-Peter Jansen <hp@urpla.net>
 
 - Let's build this package in %build, not %prep, as usual
