@@ -22,19 +22,21 @@
 %else
 %bcond_with libalternatives
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-Pygments
-Version:        2.14.0
+Version:        2.15.1
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://pygments.org
 Source:         https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wcag-contrast-ratio}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 # Preferred for plugin loading, see https://pygments.org/docs/plugins/
@@ -69,10 +71,10 @@ source code. Highlights are:
 %autosetup -n Pygments-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 %python_clone -a %{buildroot}%{_bindir}/pygmentize
 %python_clone -a %{buildroot}%{_mandir}/man1/pygmentize.1
