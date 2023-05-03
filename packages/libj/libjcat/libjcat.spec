@@ -1,7 +1,7 @@
 #
 # spec file for package libjcat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libjcat
-Version:        0.1.12
+Version:        0.1.13
 Release:        0
 Summary:        Library for reading and writing gzip-compressed JSON catalog files
 License:        LGPL-2.1-or-later
