@@ -550,4 +550,20 @@
   - Add quorum queue control configurations</comment>
     <requestid>1007583</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f27b86dfb1f58b7c8630fdfc1f668f49</srcmd5>
+    <version>14.2.0</version>
+    <time>1683121344</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 14.2.0
+  - Force creating non durable control exchange when a precondition failed
+  - update hacking pin to support flake8 3.8.3
+  - tox cleanups
+  - Update master for stable/zed
+  - Support overriding class for get_rpc_* helper functions
+  - Warn when we force creating a non durable exchange
+  - Implement get_rpc_client function
+  - Remove logging from ProducerConnection._produce_message</comment>
+    <requestid>1084312</requestid>
+  </revision>
 </revisionlist>

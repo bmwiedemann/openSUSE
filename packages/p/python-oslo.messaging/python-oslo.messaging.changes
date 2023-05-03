@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  3 12:20:24 UTC 2023 - cloud-devel@suse.de
+
+- update to version 14.2.0
+  - Force creating non durable control exchange when a precondition failed
+  - update hacking pin to support flake8 3.8.3
+  - tox cleanups
+  - Update master for stable/zed
+  - Support overriding class for get_rpc_* helper functions
+  - Warn when we force creating a non durable exchange
+  - Implement get_rpc_client function
+  - Remove logging from ProducerConnection._produce_message
+
+-------------------------------------------------------------------
 Sun Oct  2 14:48:00 UTC 2022 - cloud-devel@suse.de
 
 - update to version 14.0.0
