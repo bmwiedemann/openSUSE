@@ -56,4 +56,28 @@
     <comment></comment>
     <requestid>1008710</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6e48b17c6cf1c7b81f397a039ad32c51</srcmd5>
+    <version>2.0.7</version>
+    <time>1683111473</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.7:
+  * Fix inclusion of py.typed in pip packages - @sth
+  * Added pytest support with test file rename. Migrated to
+    assertEqual
+  * Parameter `rename_fields` in merge_record_extra is now
+    optional - @afallou
+  * Allow reserved attrs to be renamed - @henkhogan
+  * Support added for Python 3.11
+  * Now verifying builds in Pypy 3.9 as well
+  * Type annotations are now in the package - @louis-jaris
+  * Fix rename_fields for exc_info - @guilhermeferrari
+  * Cleaned up test file for PEP8 - @lopagela
+  * Cleaned up old Python 2 artifacts - @louis-jaris
+  * Dropped Python 3.5 support - @idomozes
+  * Moved type check via tox into 3.11 run only
+  * Added test run in Python3.6 (will keep for a little while
+    longer, but it's EOL so upgrade)</comment>
+    <requestid>1084222</requestid>
+  </revision>
 </revisionlist>
