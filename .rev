@@ -365,4 +365,41 @@
 </comment>
     <requestid>1004384</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>11b63fd240498cab8d5b8daa57e59898</srcmd5>
+    <version>0.56.0</version>
+    <time>1683115776</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.56.0:
+  * Reduce denial of service protection overhead (#1157)
+  * Improve performance of processing incoming records (#1155)
+  * Avoid waking async_request when record updates are not
+    relevant (#1153) (`a3f970c`)
+  * Addresses incorrect after server name change (#1154)
+  * Improve ServiceBrowser performance by removing OrderedDict
+  * Make parsed_scoped_addresses return addresses in the same
+    order as all other methods (#1150) (`9b6adcf`)
+  * Small cleanups to cache cleanup interval (#1146) (`b434b60`)
+  * Add ip_addresses_by_version to ServiceInfo (#1145)
+  * Speed up processing records in the ServiceBrowser (#1143)
+  * Speed up matching types in the ServiceBrowser (#1144)
+  * Include tests and docs in sdist archives (#1142) (`da10a3b`)
+  * Improve performance of constructing ServiceInfo (#1141)
+  * Small speed up to handler dispatch (#1140) (`5bd1b6e`)
+  * Speed up processing incoming records (#1139) (`7246a34`)
+  * Reduce overhead to send responses (#1135) (`c4077dd`)
+  * Correct duplicate record entries in windows wheels by
+    updating poetry-core (#1134) (`a43055d`)
+  * Hold a strong reference to the query sender start task
+    (#1128) (`808c3b2`)
+  * Missing c extensions with newer poetry (#1129) (`44d7fc6`)
+  * The equality checks for DNSPointer and DNSService should be
+    case insensitive (#1122) (`48ae77f`)
+  * Optimize equality checks for DNS records (#1120) (`3a25ff7`)
+  * Optimize the dns cache (#1119) (`e80fcef`)
+  * Optimize construction of outgoing packets (#1118) (`81e186d`)
+  * Optimize dns objects by adding pxd files (#1113) (`919d4d8`)
+  * Optimize incoming parser by reducing call stack (#1116)</comment>
+    <requestid>1084251</requestid>
+  </revision>
 </revisionlist>
