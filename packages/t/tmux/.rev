@@ -656,4 +656,13 @@
     <comment></comment>
     <requestid>1073544</requestid>
   </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>2974142f383e8cf2a64558c3ac51abbe</srcmd5>
+    <version>3.3a</version>
+    <time>1683111391</time>
+    <user>dimstar_suse</user>
+    <comment>- add ncurses.patch for compactibility with new ncurses 
+  fixes boo#1210552</comment>
+    <requestid>1084086</requestid>
+  </revision>
 </revisionlist>

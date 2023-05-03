@@ -29,16 +29,16 @@ Source1:        bash_completion_tmux.sh
 Patch0:         tmux-socket-path.patch
 # CVE-2022-47016 [bsc#1207393], Null pointer dereference in window.c
 Patch1:         tmux-CVE-2022-47016.patch
+# new ncurses secure interface fix
+Patch2:         ncurses.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libevent) >= 2.0
-%{?systemd_ordering}
-%if 0%{?suse_version} >= 1320
 BuildRequires:  pkgconfig(ncurses)
-%else
-BuildRequires:  ncurses-devel
-%endif
+%{?systemd_ordering}
 
 %description
 tmux is a terminal multiplexer: it enables a number of terminals (or windows),
@@ -53,18 +53,13 @@ moved between sessions and otherwise manipulated. Each session may be attached
 to (display and accept keyboard input from) multiple clients.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+autoreconf
 %configure --disable-utf8proc --with-TERM=screen-256color --enable-systemd
-%if 0%{?suse_version} >= 1320
 %make_build
-%else
-make %{?_smp_mflags}
-%endif
 
 %install
 %make_install
@@ -82,10 +77,6 @@ echo "d /run/tmux 1777 root root -" > %{buildroot}%{_tmpfilesdir}/tmux.conf
 %files
 %license COPYING
 %doc CHANGES
-%if 0%{?suse_version} < 1320
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%endif
 %{_datadir}/bash-completion/completions/tmux
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
