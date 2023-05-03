@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May 03 04:48:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.3.1:
+  * Release 12.3.1 (amended) (#25517)
+  * [v12] darwin: Use notarytool to notarize instead of altool
+    (#25455)
+  * [v12] chore: Bump Go to 1.20.4 (#25506)
+  * Release 12.3.1 (#25502)
+  * Allow unknown fields when unmarshaling types.MFADevice (#25445)
+  * Fix backwards compatability of GenerateUserSingleUseCerts
+    (#25486)
+  * [v12] Update e ref. (#25474)
+  * Return friendly errors when sessions are prevented due to a
+    lock (#25482)
+  * docs: automatic user creation for windows desktops (#25364)
+  * Add missing Connection header for ALPN connection upgrade
+    (#25346) (#25411)
+  * [v12] WebAPI: thumbprint endpoint (#25338)
+
+-------------------------------------------------------------------
 Tue May 02 05:32:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.3.0:
