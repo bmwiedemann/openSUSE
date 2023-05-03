@@ -403,4 +403,20 @@
   - Add Python3 yoga unit tests</comment>
     <requestid>983766</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e04119dc832ed919b8bf67ad069f2725</srcmd5>
+    <version>5.2.0</version>
+    <time>1683121343</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.2.0
+  - Make the eventlet logging fix execution conditional
+  - Fix logging in eventlet native threads
+  - Update TOX_CONSTRAINTS_FILE for stable/2023.1
+  - Revert &quot;Fix logging in eventlet native threads&quot;
+  - Update .gitreview for stable/2023.1
+  - tox - fix allowlist_external issues
+  - Revert &quot;Make the eventlet logging fix execution conditional&quot;
+  - Add 'revert bugfix #1983863' release note</comment>
+    <requestid>1084311</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  3 12:19:00 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Make the eventlet logging fix execution conditional
+  - Fix logging in eventlet native threads
+  - Update TOX_CONSTRAINTS_FILE for stable/2023.1
+  - Revert "Fix logging in eventlet native threads"
+  - Update .gitreview for stable/2023.1
+  - tox - fix allowlist_external issues
+  - Revert "Make the eventlet logging fix execution conditional"
+  - Add 'revert bugfix #1983863' release note
+
+-------------------------------------------------------------------
 Tue May 24 20:46:47 UTC 2022 - cloud-devel@suse.de
 
 - update to version 5.0.0
