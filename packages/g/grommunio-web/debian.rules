@@ -37,11 +37,14 @@ override_dh_auto_install:
 	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d"
 	install -Dpvm 644 build/grommunio-web.conf "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d/"
 	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d"
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/grommunio-web-upstream.conf
 	install -Dpvm 644 build/grommunio-web-upstream.conf "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d/grommunio-web.conf"
 
 	# PHP-FPM
-	mkdir -pv "${INSTDIR}/${phpdir}/fpm/pool.d"
+	mkdir -pv "${INSTDIR}/${phpdir}/fpm/pool.d" "${INSTDIR}/usr/lib/sysusers.d"
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/pool-grommunio-web.conf
 	install -Dpvm 644 build/pool-grommunio-web.conf "${INSTDIR}/${phpdir}/fpm/pool.d/"
+	cp -a build/sysuser.conf "${INSTDIR}/usr/lib/sysusers.d/grommunio-web.conf"
 
 	# web config
 	mv -v $(INSTDIR)$(WABASE)/config.php.dist $(INSTDIR)$(WACONFBASE)/config.php

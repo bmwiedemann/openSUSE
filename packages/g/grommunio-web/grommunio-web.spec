@@ -16,12 +16,12 @@
 #
 
 
-%if 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora_version}
+%if 0%{?rhel} || 0%{?fedora_version}
 %global __brp_mangle_shebangs_exclude_from sabredav|vobject|generate_vcards
 %endif
 
 Name:           grommunio-web
-Version:        3.1.182.52d9180
+Version:        3.2.43.7ebf7d9
 Release:        0
 Summary:        Web client for access to grommunio features from the web
 License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND MIT
@@ -29,49 +29,19 @@ Group:          Productivity/Networking/Email/Clients
 URL:            http://www.grommunio.com/
 Source:         %name-%version.tar.xz
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%define phpdir /etc/php8
-BuildRequires:  php8-gettext
-%else
-# i.e. SUSE15, RHEL, etc.
-%define phpdir /etc/php7
+%if 0%{?suse_version} >= 1590 || 0%{?sle_version} >= 150400
+%define fpmdir /etc/php8/fpm/php-fpm.d
 %endif
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
-BuildRequires:  php7-gettext
-BuildRequires:  php7-json
+%define fpmdir /etc/php7/fpm/php-fpm.d
 %endif
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-BuildRequires:  java >= 1.9.0
-BuildRequires:  java-devel >= 1.9.0
-%else
-BuildRequires:  java-11-openjdk-devel
-BuildRequires:  php-cli
-BuildRequires:  php-json
+%if 0%{?rhel} || 0%{?fedora_version}
+%define fpmdir /etc/php-fpm.d
 %endif
-BuildRequires:  mapi-header-php
-BuildRequires:  php
-BuildRequires:  xz
-%if 0%{?suse_version} >= 1220
-BuildRequires:  libxml2-tools
-%else
-BuildRequires:  libxml2
-%endif
-BuildArch:      noarch
 
-Requires(pre):  user(groweb)
-Requires:       gromox >= 1.27
-Requires:       mapi-header-php
-%if 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora_version}
-Requires:       php-bcmath
-Requires:       php-common
-Requires:       php-ctype
-Requires:       php-curl
-Requires:       php-mbstring
-Requires:       php-sodium
-Requires:       php-sqlite3
-%endif
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildArch:      noarch
+%if 0%{?suse_version} >= 1590 || 0%{?sle_version} >= 150400
+BuildRequires:  php8-gettext
 Requires:       php8-bcmath
 Requires:       php8-ctype
 Requires:       php8-curl
@@ -87,6 +57,8 @@ Requires:       php8-zip
 Requires:       php8-zlib
 %endif
 %if 0%{?sle_version} && 0%{?sle_version} < 150400
+BuildRequires:  php7-gettext
+BuildRequires:  php7-json
 Requires:       php7-bcmath
 Requires:       php7-ctype
 Requires:       php7-curl
@@ -102,6 +74,40 @@ Requires:       php7-sysvshm
 Requires:       php7-zip
 Requires:       php7-zlib
 %endif
+%if 0%{?rhel} || 0%{?fedora_version}
+BuildRequires:  php-gettext
+Requires:       php-bcmath
+Requires:       php-common
+Requires:       php-ctype
+Requires:       php-curl
+Requires:       php-gd
+Requires:       php-mbstring
+Requires:       php-sodium
+Requires:       php-sqlite3
+Requires:       php-xml
+%endif
+
+Requires(pre):  user(groweb)
+Requires:       gromox >= 1.27
+BuildRequires:  mapi-header-php
+Requires:       mapi-header-php
+
+%if 0%{?suse_version}
+BuildRequires:  fdupes
+BuildRequires:  java >= 1.9.0
+BuildRequires:  java-devel >= 1.9.0
+%else
+BuildRequires:  java-11-openjdk-devel
+BuildRequires:  php-cli
+BuildRequires:  php-json
+%endif
+BuildRequires:  php
+BuildRequires:  xz
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libxml2-tools
+%else
+BuildRequires:  libxml2
+%endif
 
 %define langdir %_datadir/%name/server/language
 %define plugindir %_datadir/%name/plugins
@@ -115,7 +121,7 @@ through a web browser.
 %prep
 %autosetup -p1
 find . -type f "(" -name "*.js" -o -name "*.php" ")" \
-	-exec chmod a-x "{}" "+";
+	-exec chmod a-x "{}" "+"
 # Set git revision
 echo "%version-%release" >version
 echo "%version-%release" | sha1sum | cut -b 1-8 >cachebuster
@@ -138,8 +144,8 @@ mkdir -pv "$b/usr/share/grommunio-common/nginx/upstreams.d"
 install -Dpvm 644 build/grommunio-web-upstream.conf "$b/usr/share/grommunio-common/nginx/upstreams.d/grommunio-web.conf"
 
 # PHP-FPM
-mkdir -pv "$b/%phpdir/fpm/php-fpm.d/"
-install -Dpvm 644 build/pool-grommunio-web.conf "$b/%phpdir/fpm/php-fpm.d/pool-grommunio-web.conf"
+mkdir -pv "$b/%fpmdir"
+install -Dpvm 644 build/pool-grommunio-web.conf "$b/%fpmdir/pool-grommunio-web.conf"
 
 # web config
 mkdir -pv "$b/%_sysconfdir/grommunio-web"
@@ -171,13 +177,15 @@ done
 %post
 # clear translation caches
 runuser -u groweb -- ipcrm -M 0x950412DE 2>/dev/null || :
+# reload nginx and restart fpm as this package ships config snippets
+# reloading is not sufficient especially for php-fpm as it does not
+# create the socket with the appropriate permissions
+/usr/bin/systemctl try-restart php-fpm.service 2>/dev/null || :
+/usr/bin/systemctl reload nginx.service 2>/dev/null || :
 
 %files
 %dir %_sysconfdir/grommunio-web
-%dir %phpdir
-%dir %phpdir/fpm
-%dir %phpdir/fpm/php-fpm.d/
-%attr(0640,root,root) %phpdir/fpm/php-fpm.d/pool-grommunio-web.conf
+%_sysconfdir/php*
 %config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-archive.php
 %config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-chat.php
 %config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-desktopnotifications.php
@@ -196,9 +204,9 @@ runuser -u groweb -- ipcrm -M 0x950412DE 2>/dev/null || :
 %dir %_datadir/grommunio-common/nginx/upstreams.d/
 %_datadir/grommunio-common/nginx/upstreams.d/grommunio-web.conf
 %dir %attr(0770,groweb,groweb) /var/lib/grommunio-web
-%dir %attr(0775,groweb,groweb) /var/lib/grommunio-web/tmp
-%dir %attr(0775,groweb,groweb) /var/lib/grommunio-web/sqlite-index
-%dir %attr(0775,groweb,groweb) /var/lib/grommunio-web/session
+%dir %attr(0770,groweb,groweb) /var/lib/grommunio-web/tmp
+%dir %attr(0770,groweb,groweb) /var/lib/grommunio-web/sqlite-index
+%dir %attr(0770,groweb,groweb) /var/lib/grommunio-web/session
 
 %dir %_datadir/%name
 %exclude %_datadir/%name/LICENSE.txt

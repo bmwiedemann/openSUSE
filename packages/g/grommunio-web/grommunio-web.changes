@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 21 08:37:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 3.2.43.7ebf7d9
+  * Fix all-day events spanning over two days
+  * Change default sort order for search results
+  * rules: do not filter shared private stores
+
+-------------------------------------------------------------------
 Wed Jan 25 10:19:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Run %post's ipcrm with user privileges [boo#1207487]

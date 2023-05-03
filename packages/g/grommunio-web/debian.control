@@ -8,11 +8,21 @@ Standards-Version: 3.9.4
 Package: grommunio-web
 Architecture: all
 Section: web
-Depends: system-user-grommunio, ${misc:Depends}, gromox (>= 1.27), php-bcmath,
+Depends: system-user-groweb, ${misc:Depends}, gromox (>= 1.27), php-bcmath,
  php-curl, php-gd, php-iconv, php-json, php-mbstring,
- php-sqlite3, php-sysvshm, php-xml, php-zip, mapi-header-php, ${dist:Depends}
-Provides: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual, grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems, grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications, grommunio-web-plugin-filepreviewer
-Conflicts: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual, grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems, grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications, grommunio-web-plugin-filepreviewer
-Replaces: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual, grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems, grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications, grommunio-web-plugin-filepreviewer
+ php-sqlite3, php-sysvshm, php-xml, php-zip, mapi-header-php, ${dist:Depends},
+ system-user-grommunio (>= 3)
+Provides: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual,
+ grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems,
+ grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications,
+ grommunio-web-plugin-filepreviewer
+Conflicts: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual,
+ grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems,
+ grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications,
+ grommunio-web-plugin-filepreviewer
+Replaces: grommunio-web-plugin-zdeveloper, grommunio-web-plugin-webmanual,
+ grommunio-web-plugin-folderwidgets, grommunio-web-plugin-quickitems,
+ grommunio-web-plugin-titlecounter, grommunio-web-plugin-desktopnotifications,
+ grommunio-web-plugin-filepreviewer
 Description: Web access for grommunio
  Main web application for grommunio

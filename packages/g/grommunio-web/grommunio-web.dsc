@@ -3,7 +3,7 @@ Source: grommunio-web
 Binary: grommunio-web
 Architecture: all
 DEBTRANSFORM-RELEASE: 1
-Version: 3.1.182.52d9180
+Version: 3.2.43.7ebf7d9
 Maintainer: grommunio <dev@grommunio.com>
 Homepage: https://grommunio.com/
 Standards-Version: 3.9.4
