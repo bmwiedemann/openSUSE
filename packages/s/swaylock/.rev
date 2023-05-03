@@ -100,4 +100,12 @@
   * Wait for the locked event</comment>
     <requestid>1061845</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>574fc866be7b580d4341a454b3499473</srcmd5>
+    <version>1.7.2</version>
+    <time>1683111418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084094</requestid>
+  </revision>
 </revisionlist>
