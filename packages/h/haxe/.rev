@@ -323,4 +323,12 @@ We're in the process of easing the installation process across different Linux d
     * Fixed a segmentation fault on Linux systems</comment>
     <requestid>1078735</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0d5f739b25a645671d85e6e5eb672242</srcmd5>
+    <version>4.3.0</version>
+    <time>1683111412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084124</requestid>
+  </revision>
 </revisionlist>

@@ -48,7 +48,7 @@ BuildRequires:  ocamlfind(sha)
 BuildRequires:  ocamlfind(xml-light)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre2-devel
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  cmake
 Requires:       neko >= 2.3.0
 
