@@ -1,7 +1,7 @@
 #
 # spec file for package ncdu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ncdu
-Version:        1.16
+Version:        1.18.1
 Release:        0
 Summary:        NCurses Disk Usage
 License:        MIT
