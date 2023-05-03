@@ -938,6 +938,9 @@ Prefer: -libomp11-devel -libomp12-devel -libomp13-devel -libomp14-devel
 # have choice for pkgconfig(libindi): indi-devel libindi-devel
 Prefer: -indi-devel
 
+# have choice for mbedtls-devel needed by bctoolbox-devel: mbedtls-2-devel mbedtls-devel
+Prefer: -mbedtls-2-devel
+
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit
 Prefer: -FAudio-devel-32bit
@@ -2804,6 +2807,7 @@ BuildFlags: onlybuild:python-botocore
 BuildFlags: onlybuild:python-brotlipy
 BuildFlags: onlybuild:python-build
 BuildFlags: onlybuild:python-cairocffi
+BuildFlags: onlybuild:python-calver
 BuildFlags: onlybuild:python-certifi
 BuildFlags: onlybuild:python-cffi
 BuildFlags: onlybuild:python-chardet
@@ -3092,6 +3096,7 @@ BuildFlags: onlybuild:python-tornado:python3
 BuildFlags: onlybuild:python-tqdm
 BuildFlags: onlybuild:python-traceback2
 BuildFlags: onlybuild:python-trio
+BuildFlags: onlybuild:python-trove-classifiers
 BuildFlags: onlybuild:python-trustme
 BuildFlags: onlybuild:python-twine
 BuildFlags: onlybuild:python-typing-inspect
