@@ -1,7 +1,7 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        %{short_ver}.0
+Version:        %{short_ver}.1
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause

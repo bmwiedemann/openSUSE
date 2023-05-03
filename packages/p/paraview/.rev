@@ -476,4 +476,15 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>1041201</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3c57da5b32a5320cbbe546cf26ae43f8</srcmd5>
+    <version>5.11.1</version>
+    <time>1683111433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.11.1:
+  * Many changes, see
+    &lt;https://www.kitware.com/paraview-5-11-1-release-notes/&gt;.
+</comment>
+    <requestid>1084129</requestid>
+  </revision>
 </revisionlist>
