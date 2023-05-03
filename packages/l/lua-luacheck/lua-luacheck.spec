@@ -20,7 +20,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luacheck
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Command-line tool for linting and static analysis of Lua code
 License:        MIT

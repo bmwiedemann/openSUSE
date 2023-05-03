@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 11:07:50 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to 1.1.0
+  - Add support for compound operators
+  - Add builtin rule set for SILE globals
+  - Fix circular reference detection
+
+-------------------------------------------------------------------
 Mon Nov 21 20:16:55 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to 1.0.0
