@@ -4325,4 +4325,15 @@ StandardGroups in rpmlint package.
   bsc#1209861</comment>
     <requestid>1079279</requestid>
   </revision>
+  <revision rev="374" vrev="1">
+    <srcmd5>bf699b3544886ae89508604ce2c2616a</srcmd5>
+    <version>9.3.0</version>
+    <time>1683111369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 9.3.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-3-0-2023-05-02
+  - boo#1210654</comment>
+    <requestid>1084110</requestid>
+  </revision>
 </revisionlist>
