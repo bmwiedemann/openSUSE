@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">git@codeberg.org:grisu48/weblug.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="version">0.3</param>
+	<param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="go_modules" mode="disabled"/>
+  <service name="set_version" mode="disabled"/>
+</services>
+
