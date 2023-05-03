@@ -285,4 +285,12 @@
   * Remove the deprecated repository modules (#7468).</comment>
     <requestid>1082802</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bb886551d5c55ad2159beaf69ef74510</srcmd5>
+    <version>1.4.2</version>
+    <time>1683111432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084123</requestid>
+  </revision>
 </revisionlist>

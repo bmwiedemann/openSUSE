@@ -95,8 +95,6 @@ Python dependency management and packaging made easy.
 
 %prep
 %autosetup -p1 -n poetry-%{version}
-#rm src/poetry/_vendor/.gitignore
-#rmdir src/poetry/_vendor
 for f in console/commands/source/update.py \
          console/events/console_events.py \
          layouts/standard.py; do
@@ -117,7 +115,7 @@ done
 %if %{with test}
 %check
 # can't install setuptools from PyPI (no network)
-donttest="test_uninstall_git_package_nspkg_pth_cleanup"
+donttest="test_uninstall_git_package_nspkg_pth_cleanup or test_builder_setup_generation_runs_with_pip_editable"
 # does not find the expected packages in venv
 donttest="$donttest or test_executor_should_write_pep610_url_references"
 donttest="$donttest or test_prepare_directory or test_prepare_sdist"

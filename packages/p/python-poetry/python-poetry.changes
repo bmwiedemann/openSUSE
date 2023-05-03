@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 20:45:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip suddenly failing test not finding setuptools (due to
+  virtualenv update to v20.22)
+
+-------------------------------------------------------------------
 Mon Apr 24 19:03:13 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to 1.4.2
