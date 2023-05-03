@@ -6258,4 +6258,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.2.12 &amp; 6.2.11 &amp; other fixes</comment>
     <requestid>1080987</requestid>
   </revision>
+  <revision rev="688" vrev="1">
+    <srcmd5>d5051ba91edec9a2c2a66afdc9ee6b8d</srcmd5>
+    <version>6.3.1</version>
+    <time>1683111395</time>
+    <user>dimstar_suse</user>
+    <comment>6.3.1 &amp; fixed nfs &amp; fixed mmap</comment>
+    <requestid>1084158</requestid>
+  </revision>
 </revisionlist>

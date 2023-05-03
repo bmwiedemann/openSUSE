@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.2
-%define patchversion 6.2.12
+%define srcversion 6.3
+%define patchversion 6.3.1
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -111,9 +111,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.2.12
+Version:        6.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.geb3255d
+Release:        <RELEASE>.g8a31779
 %else
 Release:        0
 %endif
@@ -238,10 +238,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
-Provides:       kernel-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
+Provides:       kernel-%build_flavor-base-srchash-8a31779f5544166bb801a03085764c84a737a62d
+Provides:       kernel-srchash-8a31779f5544166bb801a03085764c84a737a62d
 # END COMMON DEPS
-Provides:       %name-srchash-eb3255dc68cbef0251aa7822ecd784935be8e9d6
+Provides:       %name-srchash-8a31779f5544166bb801a03085764c84a737a62d
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
