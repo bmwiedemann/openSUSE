@@ -1,8 +1,8 @@
-Index: less-608/option.c
+Index: less-632/option.c
 ===================================================================
---- less-608.orig/option.c	2022-07-22 19:26:24.000000000 +0000
-+++ less-608/option.c	2023-02-07 15:08:06.567552684 +0000
-@@ -171,6 +171,10 @@ scan_option(s)
+--- less-632.orig/option.c
++++ less-632/option.c
+@@ -165,6 +165,10 @@ public void scan_option(char *s)
  			s--;
  			optc = 'z';
  			break;

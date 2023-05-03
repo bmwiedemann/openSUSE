@@ -1,8 +1,8 @@
-Index: less-608/filename.c
+Index: less-632/filename.c
 ===================================================================
---- less-608.orig/filename.c	2022-07-22 19:26:24.000000000 +0000
-+++ less-608/filename.c	2023-02-07 15:07:55.521151736 +0000
-@@ -572,7 +572,7 @@ shellcmd(cmd)
+--- less-632.orig/filename.c
++++ less-632/filename.c
+@@ -550,7 +550,7 @@ static FILE * shellcmd(char *cmd)
  #if HAVE_SHELL
  	char *shell;
  
@@ -11,24 +11,24 @@ Index: less-608/filename.c
  	if (!isnullenv(shell))
  	{
  		char *scmd;
-Index: less-608/less.hlp
+Index: less-632/less.hlp
 ===================================================================
---- less-608.orig/less.hlp	2022-07-22 19:26:24.000000000 +0000
-+++ less-608/less.hlp	2023-02-07 15:07:55.522151863 +0000
-@@ -103,7 +103,7 @@
+--- less-632.orig/less.hlp
++++ less-632/less.hlp
+@@ -104,7 +104,7 @@
    ___<_n_a_m_e_>             Display the setting of an option, by name.
    +_c_m_d                 Execute the less cmd each time a new file is examined.
  
 -  !_c_o_m_m_a_n_d             Execute the shell command with $SHELL.
 +  !_c_o_m_m_a_n_d             Execute the shell command with $LESSSHELL.
+   #_c_o_m_m_a_n_d             Execute the shell command, expanded like a prompt.
    |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
    s _f_i_l_e               Save input to a file.
-   v                    Edit the current file with $VISUAL or $EDITOR.
-Index: less-608/less.nro
+Index: less-632/less.nro
 ===================================================================
---- less-608.orig/less.nro	2022-07-22 19:26:24.000000000 +0000
-+++ less-608/less.nro	2023-02-07 15:07:55.522151863 +0000
-@@ -443,7 +443,7 @@ current file.
+--- less-632.orig/less.nro
++++ less-632/less.nro
+@@ -457,7 +457,7 @@ current file.
  A pound sign (#) is replaced by the name of the previously examined file.
  "!!" repeats the last shell command.
  "!" with no shell command simply invokes a shell.
@@ -36,8 +36,8 @@ Index: less-608/less.nro
 +On Unix systems, the shell is taken from the environment variable LESSSHELL,
  or defaults to "sh".
  On MS-DOS and OS/2 systems, the shell is the normal command processor.
- .IP "| <m> shell-command"
-@@ -2044,7 +2044,7 @@ compatible mode.
+ .IP "# shell-command"
+@@ -2274,7 +2274,7 @@ automatically when running in
  .IP PATH
  User's search path (used to find a lesskey file
  on MS-DOS and OS/2 systems).
@@ -46,11 +46,11 @@ Index: less-608/less.nro
  The shell used to execute the !\& command, as well as to expand filenames.
  .IP TERM
  The type of terminal on which
-Index: less-608/lsystem.c
+Index: less-632/lsystem.c
 ===================================================================
---- less-608.orig/lsystem.c	2022-07-22 19:26:24.000000000 +0000
-+++ less-608/lsystem.c	2023-02-07 15:07:55.523151990 +0000
-@@ -124,13 +124,13 @@ lsystem(cmd, donemsg)
+--- less-632.orig/lsystem.c
++++ less-632/lsystem.c
+@@ -121,13 +121,13 @@ public void lsystem(char *cmd, char *don
  
  	/*
  	 * Pass the command to the system to be executed.

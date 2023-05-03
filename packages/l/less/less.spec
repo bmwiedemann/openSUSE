@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        608
+Version:        632
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
@@ -37,7 +37,6 @@ Source5:        https://www.greenwoodsoftware.com/less/less-%{version}.sig
 Source6:        https://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
 Patch0:         less-429-shell.patch
 Patch2:         less-429-more.patch
-Patch3:         https://github.com/gwsw/less/commit/a78e1351113cef564d790a730d657a321624d79c.patch#/cve-2022-46663.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
