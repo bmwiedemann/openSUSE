@@ -1,0 +1,10 @@
+diff -up gr-osmosdr/grc/CMakeLists.txt.dddd gr-osmosdr/grc/CMakeLists.txt
+--- gr-osmosdr/grc/CMakeLists.txt.dddd	2020-02-05 21:50:57.429980637 +0100
++++ gr-osmosdr/grc/CMakeLists.txt	2020-02-05 22:00:32.176123273 +0100
+@@ -40,5 +40,6 @@ add_custom_target(osmosdr_grc_yaml_block
+ 
+ install(FILES
+     ${yaml_blocks}
++    sdrplay_source.block.yml
+     DESTINATION share/gnuradio/grc/blocks
+ )

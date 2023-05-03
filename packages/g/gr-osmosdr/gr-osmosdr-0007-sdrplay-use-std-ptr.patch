@@ -1,0 +1,12 @@
+diff -up gr-osmosdr/lib/sdrplay/sdrplay_source_c.h.bbbb gr-osmosdr/lib/sdrplay/sdrplay_source_c.h
+--- gr-osmosdr/lib/sdrplay/sdrplay_source_c.h.bbbb	2022-02-20 15:19:30.314271000 +0100
++++ gr-osmosdr/lib/sdrplay/sdrplay_source_c.h	2022-02-20 15:19:54.684309081 +0100
+@@ -45,7 +45,7 @@ typedef struct sdrplay_dev sdrplay_dev_t
+  *
+  * As a convention, the _sptr suffix indicates a boost::shared_ptr
+  */
+-typedef boost::shared_ptr<sdrplay_source_c> sdrplay_source_c_sptr;
++typedef std::shared_ptr<sdrplay_source_c> sdrplay_source_c_sptr;
+ 
+ /*!
+  * \brief Return a shared_ptr to a new instance of sdrplay_source_c.
