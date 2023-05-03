@@ -1,7 +1,7 @@
 #
-# spec file for package python-trove-classifiers
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?sle15_python_module_pythons}
-Name:           python-trove-classifiers
+Name:           python-trove-classifiers%{?psuffix}
 Version:        2022.12.1
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
@@ -26,11 +35,13 @@ URL:            https://github.com/pypa/trove-classifiers
 Source:         https://files.pythonhosted.org/packages/source/t/trove-classifiers/trove-classifiers-%{version}.tar.gz
 BuildRequires:  %{python_module calver}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,20 +51,26 @@ Classifiers categorize projects per PEP 301. Use this package to validate classi
 %prep
 %setup -q -n trove-classifiers-%{version}
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/trove_classifiers
 %{python_sitelib}/trove_classifiers-%{version}*-info
+%endif
 
 %changelog
