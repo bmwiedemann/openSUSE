@@ -16,6 +16,6 @@
     <param name="basename">node_exporter</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">node_exporter-1.5.0.tar.gz</param>
+    <param name="archive">node_exporter-1.5.0.obscpio</param>
   </service>
 </services>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 22 10:14:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change go_modules archive in _service to use obscpio file
+
+-------------------------------------------------------------------
 Tue Mar 14 16:37:01 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Remove node_exporter-1.5.0.tar.gz
