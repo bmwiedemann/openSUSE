@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  2 08:18:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to version 2.4.2:
+  * Updated CERT IPFIX elements to include those added in
+    libfixbuf 3.0.  This update does not include the element name
+    changes that were part of that release.
+
+-------------------------------------------------------------------
 Wed Jan  6 17:31:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.1
