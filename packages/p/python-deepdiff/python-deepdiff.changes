@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  2 15:55:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.3.0:
+  - PrefixOrSuffixOperator: This operator will skip strings that are
+    suffix or prefix of each other.
+  - include_obj_callback and include_obj_callback_strict are added
+    by [Håvard Thom](https://github.com/havardthom).
+  - Fixed a corner case where numpy's np.float32 nans are not
+    ignored when using ignore_nan_equality by [Noam
+    Gottlieb](https://github.com/noamgot)
+  - orjson becomes optional again.
+  - Fix for ignore_type_in_groups with numeric values so it does not
+    report number changes when the number types are different.
+
+-------------------------------------------------------------------
+Tue May  2 15:47:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Move python-orjson from Recommends to Requires, it's a requirement
+  right now in the latest release.
+
+-------------------------------------------------------------------
 Tue Feb 21 02:29:55 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v6.2.3

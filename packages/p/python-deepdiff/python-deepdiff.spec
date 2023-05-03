@@ -18,12 +18,12 @@
 
 %define skip_python2 1
 Name:           python-deepdiff
-Version:        6.2.3
+Version:        6.3.0
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
 URL:            https://github.com/seperman/deepdiff
-Source:         https://github.com/seperman/deepdiff/archive/v%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
+Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module jsonpickle}

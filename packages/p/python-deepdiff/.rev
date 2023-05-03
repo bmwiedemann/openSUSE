@@ -71,4 +71,25 @@
     <comment></comment>
     <requestid>1066938</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4692c8e98a1d750d6e64748889459027</srcmd5>
+    <version>6.3.0</version>
+    <time>1683111416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.3.0:
+  - PrefixOrSuffixOperator: This operator will skip strings that are
+    suffix or prefix of each other.
+  - include_obj_callback and include_obj_callback_strict are added
+    by [Håvard Thom](https://github.com/havardthom).
+  - Fixed a corner case where numpy's np.float32 nans are not
+    ignored when using ignore_nan_equality by [Noam
+    Gottlieb](https://github.com/noamgot)
+  - orjson becomes optional again.
+  - Fix for ignore_type_in_groups with numeric values so it does not
+    report number changes when the number types are different.
+- Move python-orjson from Recommends to Requires, it's a requirement
+  right now in the latest release.
+</comment>
+    <requestid>1084088</requestid>
+  </revision>
 </revisionlist>
