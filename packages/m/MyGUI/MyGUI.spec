@@ -1,7 +1,7 @@
 #
 # spec file for package MyGUI
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ Source99:       %{name}-rpmlintrc
 Patch0:         MyGUI-install-libCommon.patch
 # PATCH-FIX-UPSTREAM 0001-Fix-linking-with-Wl-no-undefined.patch -- https://github.com/MyGUI/mygui/pull/232
 Patch1:         0001-Fix-linking-with-Wl-no-undefined.patch
+# PATCH-FIX-UPSTREAM mygui-add-missing-include.patch -- Add missing include
+Patch2:         mygui-add-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  dejavu
 BuildRequires:  dos2unix

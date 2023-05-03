@@ -1,0 +1,12 @@
+Index: mygui-MyGUI3.4.1/MyGUIEngine/include/MyGUI_Types.h
+===================================================================
+--- mygui-MyGUI3.4.1.orig/MyGUIEngine/include/MyGUI_Types.h
++++ mygui-MyGUI3.4.1/MyGUIEngine/include/MyGUI_Types.h
+@@ -12,6 +12,7 @@
+ #include <vector>
+ #include <map>
+ #include <string>
++#include <cstdint>
+ 
+ #include "MyGUI_Align.h"
+ #include "MyGUI_TPoint.h"
