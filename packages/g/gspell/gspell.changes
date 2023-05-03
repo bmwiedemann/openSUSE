@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  1 07:54:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.1:
+  + Build: remove gtk-mac-integration dependency.
+  + Documentation improvements.
+  + Updated translations.
+- Use autosetup and ldconfig_scriptlets macros.
+
+-------------------------------------------------------------------
 Tue Sep 27 17:42:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.0:

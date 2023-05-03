@@ -1,7 +1,7 @@
 #
 # spec file for package gspell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define shlib lib%{name}-1-2
 Name:           gspell
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
@@ -81,7 +81,7 @@ gspell.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -94,8 +94,7 @@ gspell.
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-1 %{?no_lang_C}
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files
 %license COPYING
