@@ -692,4 +692,15 @@
   * Nikon Z9: standard compression formats only (forwarded request 1059316 from dirkmueller)</comment>
     <requestid>1060347</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>ce18668d15e96fc20b150c54f8d2eee7</srcmd5>
+    <version>0.21.1</version>
+    <time>1683111389</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2023-1729 [bsc#1210720], a heap-buffer-overflow in raw2image_ex()
+  + libraw-CVE-2023-1729.patch</comment>
+    <requestid>1084055</requestid>
+  </revision>
 </revisionlist>

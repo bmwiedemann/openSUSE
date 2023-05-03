@@ -32,6 +32,8 @@ URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
 Source1:        baselibs.conf
+# CVE-2023-1729 [bsc#1210720], a heap-buffer-overflow in raw2image_ex()
+Patch0:         libraw-CVE-2023-1729.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -100,7 +102,7 @@ This package contains static libraries that applications can use to build
 against LibRaw. LibRaw does not provide dynamic libraries.
 
 %prep
-%setup -q -n %{tar_name}-%{version}
+%autosetup -p1 -n %{tar_name}-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
