@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 03 08:31:01 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.29:
+  * Do not check for all _multibuild flavors if spec does not
+    conitionalize on BUILD_FLAVOR
+  * Add GitHub Actions
+
+-------------------------------------------------------------------
 Mon Nov 07 09:19:40 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.28:
