@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 17:25:11 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to 9.3.0
+  - Add all new APIs and constants in libvirt 9.3.0
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
