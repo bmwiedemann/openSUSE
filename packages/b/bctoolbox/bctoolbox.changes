@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  3 11:56:25 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Require the mbedtls-devel version to be lower than 3.0.0
+
+-------------------------------------------------------------------
 Fri Apr  7 09:04:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.2.49 (no changelog)

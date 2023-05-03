@@ -34,7 +34,7 @@ BuildRequires:  bcunit-devel >= 3.0.2+git.20191119
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bcunit)
 BuildRequires:  pkgconfig(zlib)
