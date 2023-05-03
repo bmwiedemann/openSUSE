@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  3 09:14:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3:
+  * support for python 3.11
+  * support for python 3.10
+  * drop support of EOL python 3.6
+  * migrate to hatch
+  * fix test_distribution to be deterministic
+    (using randint causes a fai… (#17), by Ben Hockley
+  * ci: add github actions
+
+-------------------------------------------------------------------
 Mon Oct  3 09:22:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:

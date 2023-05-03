@@ -1,7 +1,7 @@
 #
 # spec file for package python-uhashring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uhashring
-Version:        2.1
+Version:        2.3
 Release:        0
 Summary:        Full featured consistent hashing python library compatible with ketama
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ultrabug/uhashring
-Source:         https://files.pythonhosted.org/packages/source/u/uhashring/uhashring-%{version}.tar.gz
+Source:         https://github.com/ultrabug/uhashring/archive/refs/tags/%{version}.tar.gz#/uhashring-%{version}-gh.tar.gz
 BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-memcached}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,14 +43,14 @@ Full featured consistent hashing python library compatible with ketama.
 %setup -q -n uhashring-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
