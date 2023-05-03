@@ -17,7 +17,7 @@
 
 
 Name:           urlwatch
-Version:        2.26
+Version:        2.28
 Release:        0
 Summary:        A tool for monitoring webpages for updates
 License:        BSD-3-Clause

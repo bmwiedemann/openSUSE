@@ -262,4 +262,22 @@
   * Fix --gc-cache to clear unknown keys when using Redis storage (fixes #743)</comment>
     <requestid>1078448</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5f85d9bf9d0b163b9243cb49fd713f02</srcmd5>
+    <version>2.28</version>
+    <time>1683111476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.28:
+  * Browser jobs: Migrate from Pyppeteer to Playwright (#761, #751)
+
+- Update to 2.27:
+  Added:
+  * css and xpath filters now accept a sort subfilter to sort matched elements lexicographically
+  Fixed:
+  * Rework handling of running from a source checkout, fixes issues with example
+    files when urlwatch was run as /usr/sbin/urlwatch, e.g. on Void Linux (fixes #755)
+  * Add support for docutils &gt;= 0.18, which deprecated frontend.OptionParser (fixes #754)
+  * Browser jobs: Fix support for Python 3.11 with @asyncio.coroutine removal (#759)</comment>
+    <requestid>1084225</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  3 09:05:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.28:
+  * Browser jobs: Migrate from Pyppeteer to Playwright (#761, #751)
+
+-------------------------------------------------------------------
+Wed May  3 09:04:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.27:
+  Added:
+  * css and xpath filters now accept a sort subfilter to sort matched elements lexicographically
+  Fixed:
+  * Rework handling of running from a source checkout, fixes issues with example
+    files when urlwatch was run as /usr/sbin/urlwatch, e.g. on Void Linux (fixes #755)
+  * Add support for docutils >= 0.18, which deprecated frontend.OptionParser (fixes #754)
+  * Browser jobs: Fix support for Python 3.11 with @asyncio.coroutine removal (#759)
+
+-------------------------------------------------------------------
 Tue Apr 11 13:22:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.26:
