@@ -1,7 +1,7 @@
 #
 # spec file for package python-zeroconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,25 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-zeroconf
-Version:        0.39.1
+Version:        0.56.0
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/python-zeroconf/python-zeroconf/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module async_timeout >= 4.0.1}
 BuildRequires:  %{python_module ifaddr >= 0.1.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-async_timeout >= 4.0.1
 Requires:       python-ifaddr >= 0.1.7
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -50,10 +52,10 @@ does not force you to use a particular event loop or python-twisted.
 %autosetup -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -f %{buildroot}%{$python_sitelib}/zeroconf/test.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -67,7 +69,7 @@ does not force you to use a particular event loop or python-twisted.
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/zeroconf
-%{python_sitelib}/zeroconf-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/zeroconf
+%{python_sitearch}/zeroconf-%{version}.dist-info
 
 %changelog
