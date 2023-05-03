@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr 25 03:06:17 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v20.22.0
+  * Drop support for creating Python <=3.6 (including 2) interpreters.
+    Removed pip of 20.3.4, 21.3.1; wheel of 0.37.1; setuptools of 59.6.0, 44.1.1, 50.3.2
+- from v20.21.1
+  * Add tox.ini to sdist
+  * Move the use of 'let' in nushell to ensure compatibility with future
+    releases of nushell, where 'let' no longer assumes that its initializer
+    is a full expressions.
+  * The nushell command 'str collect' has been superseded by the
+    'str join' command. The activate.nu script has been updated to
+    reflect this change.
+  * Upgrade embedded wheels:
+    + wheel to 0.40.0 from 0.38.4
+    + setuptools to 67.6.1 from 67.4.0
+    + pip to 23.1 from 23.0.1
+- from v20.21.0
+  * Make closure syntax explicitly starts with {||.
+  * Add print command to nushell print_prompt to ensure compatibility with
+    future release of nushell, where intermediate commands no longer print
+    their result to stdout.
+  * Do not assume the default encoding.
+  * Make ReentrantFileLock thread-safe and, thereby, fix race conditio
+    in virtualenv.cli_run - by :user:`radoering`.
+- from v20.20.0
+  * Change environment variable existence check in Nushell activation
+    script to not use deprecated command.
+  * Discover CPython implementations distributed on Windows by any organization.
+  * Upgrade embedded setuptools to 67.4.0 from 67.1.0 and pip to 23.0.1 from 23.0
+- from v20.19.0
+  * Allow platformdirs version 3
+- from v20.18.0
+  * Drop 3.6 runtime support (can still create 2.7+)
+  * Fix broken prompt in Nushell when activating virtual environment.
+  * Bump embedded pip to 23.0 and setuptools to 67.1.
+- from v20.17.1
+  * A py or python spec means any Python rather than CPython.
+  * Make activate.nu respect VIRTUAL_ENV_DISABLE_PROMPT
+    and not set the prompt if reqeusted.
+- from v20.17.0
+  * Change Nushell activation script to be a module meant to be
+    activated as an overlay.
+  * Update operator used in Nushell activation script to be
+    compatible with future versions.
+  * Do not use deprecated API from importlib.resources on Python 3.10 or later.
+  * Upgrade embedded setuptools to 65.6.3 from 65.5.1.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

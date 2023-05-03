@@ -28,46 +28,43 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.16.7
+Version:        20.22.0
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
-BuildRequires:  %{python_module distlib >= 0.3.1}
-BuildRequires:  %{python_module filelock >= 3.0.0}
-BuildRequires:  %{python_module importlib-metadata >= 0.12 if %python-base < 3.8}
+BuildRequires:  %{python_module distlib >= 0.3.6}
+BuildRequires:  %{python_module filelock >= 3.11}
+BuildRequires:  %{python_module hatchling >= 1.14}
+BuildRequires:  %{python_module hatch-vcs >= 0.3}
+BuildRequires:  %{python_module importlib-metadata >= 6.4.1 if %python-base < 3.8}
 BuildRequires:  %{python_module importlib_resources >= 1.0 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs >= 3.2}
 BuildRequires:  %{python_module setuptools >= 41.0.0}
-BuildRequires:  %{python_module setuptools_scm >= 2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-backports.entry_points_selectable >= 1.0.4
-Requires:       python-distlib >= 0.3.1
-Requires:       python-filelock >= 3.0.0
-Requires:       python-platformdirs >= 2
+Requires:       python-distlib >= 0.3.6
+Requires:       python-filelock >= 3.11
+Requires:       python-platformdirs >= 3.2
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 0.12
+Requires:       python-importlib-metadata >= 6.4.1
 %endif
 %if 0%{python_version_nodots} < 37
 Requires:       python-importlib_resources >= 1.0
-%endif
-%ifpython2
-Requires:       python-contextlib2 >= 0.6.0
-Requires:       python-pathlib2 >= 2.3.3
 %endif
 %if %{with test}
 BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
-BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-env >= 0.6.2}
 BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
@@ -105,9 +102,12 @@ rm -r tests/unit/activation
 %pyproject_wheel
 
 %install
-%if ! %{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%if %{with test}
+rm %{buildroot}%{_bindir}/virtualenv
+%else
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
 %endif
 
@@ -121,6 +121,9 @@ donttest="test_seed_link_via_app_data"
 # gh#pypa/virtualenv!2431
 donttest+=" or test_py_pyc_missing"
 %pytest -k "not ($donttest)"
+
+# Uninstall everything to avoid errors of files not being packaged
+%python_expand rm -r %{buildroot}%{$python_sitelib}
 %endif
 
 %if !%{with test}
@@ -132,7 +135,7 @@ donttest+=" or test_py_pyc_missing"
 
 %files %{python_files}
 %license LICENSE
-%doc README.md docs/changelog.rst
+%doc README.md
 %{python_sitelib}/virtualenv
 %{python_sitelib}/virtualenv-%{version}*-info
 %python_alternative %{_bindir}/virtualenv
