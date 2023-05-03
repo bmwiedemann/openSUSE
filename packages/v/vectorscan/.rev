@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1077845</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>80e4fdceef81fd3e63be597e10076e37</srcmd5>
+    <version>5.4.9</version>
+    <time>1683111451</time>
+    <user>dimstar_suse</user>
+    <comment>- devel package must require libhs%{sover}%{so_suffix}%{sover}
+</comment>
+    <requestid>1084208</requestid>
+  </revision>
 </revisionlist>

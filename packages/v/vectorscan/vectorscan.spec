@@ -83,6 +83,7 @@ Example binaries for the vectorscan library:
 Summary:        Libraries and header files for the vectorscan library
 Group:          Development/Libraries/C and C++
 Conflicts:      hyperscan-devel
+Requires:       libhs%{sover}%{so_suffix}%{sover} = %version
 
 %description devel
 A fork of Intel's Hyperscan, modified to run on more platforms.
