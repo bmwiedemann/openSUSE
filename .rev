@@ -783,4 +783,12 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
     <comment></comment>
     <requestid>1043132</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>46f59089e30e1089ea82078b95b5a564</srcmd5>
+    <version>15.0.4</version>
+    <time>1683111410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084082</requestid>
+  </revision>
 </revisionlist>
