@@ -1,0 +1,595 @@
+-------------------------------------------------------------------
+Sun Apr 30 07:38:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable lto
+- Small spec file cleanups
+
+-------------------------------------------------------------------
+Sat Apr 29 14:24:14 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.16
+  * New: Restore AM & AM-Sync settings between sessions.
+  * New: Set/get audio gain via remote control.
+  * New: Only show bookmarks for active tag groups in the panadapter.
+  * Fixed: Loading of narrow FM tau setting.
+  * Fixed: Crash when adding or removing bookmark tags.
+  * Fixed: Redraw bookmarks immediately after changes.
+  * Fixed: DX cluster spots fail to expire around midnight.
+  * Fixed: AGC sensitivity bug introduced in version 2.15.10.
+  * Improved: Rendering of frequency control and S-meter on some
+    high-DPI screens.
+  * Removed: Support for GNU Radio 3.7.
+
+-------------------------------------------------------------------
+Fri Apr 14 20:37:40 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.15.10
+  * New: Restore FFT zoom level between sessions.
+  * New: Restore peak detect & peak hold between sessions.
+  * New: "Z" keyboard shortcut sets frequency offset to zero.
+  * Fixed: Remove empty frame from bottom of I/Q tool window.
+  * Fixed: Sudden scrolling of file list in I/Q tool window.
+  * Fixed: Reset zoom slider after right click on panadapter / waterfall.
+  * Fixed: Aliasing when input rate is higher than 2 Msps.
+  * Improved: AGC performance.
+  * Improved: WFM stereo & OIRT performance.
+  * Improved: I/Q swap performance.
+  * Improved: Apply amplitude normalization to FFT window functions.
+
+-------------------------------------------------------------------
+Thu Oct 27 19:09:44 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Disable LTO
+  * segfaults with LTO enabled on Tumbleweed (boo#915181)
+
+-------------------------------------------------------------------
+Sat Apr  9 19:40:09 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.15.9
+  * New: Qt 6 support.
+  * Fixed: Slider widgets don't work correctly on MacOS Monterey.
+
+-------------------------------------------------------------------
+Tue Jan 25 22:57:39 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.8
+  * Fixed crash when DSP is restarted after a long pause.
+  * Removed usage of deprecated Qt APIs.
+  * Return correct RDS status in remote control.
+  * Allow ordinary IP addresses to be used in remote control
+    settings.
+
+-------------------------------------------------------------------
+Tue Jan 25 20:03:58 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.7
+  * Fixed errors & warnings in appstream metadata & desktop entry.
+
+-------------------------------------------------------------------
+Sat Jan 22 20:35:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.6
+  * Install icon, desktop entry, and appstream metadata.
+- Update to version 2.15.5
+  * Use correct categories in desktop entry file.
+- Drop gqrx.png
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jan 16 09:45:11 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.4
+  * Fixed audio delay when FFT size is changed.
+- Update to version 2.15.3
+  * Fixed RDS receiver skipping some messages.
+  * Fixed buffer overruns in AFSK1200 decoder.
+  * Fixed crash when opening APSK1200 decoder with demod off.
+  * Improved FFT and S-meter performance.
+  * Reduced FFT memory usage.
+  * Increased S-meter resolution to 0.1 dB.
+  * Improved accuracy of S-meter display.
+
+-------------------------------------------------------------------
+Sat Jan  8 19:47:30 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15.2
+  * Save & restore center frequency when playing I/Q files.
+  * Fixed device selection failure for some SoapySDR devices.
+  * Fixed crash/freeze after stopping audio recorder or AFSK1200
+    decoder.
+  * Improved frequency accuracy of plots at high zoom levels.
+
+-------------------------------------------------------------------
+Sat Dec 18 20:19:01 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.15.1
+  * Fixed DSP stops when device is changed.
+  * Fixed USB error when device settings are changed.
+
+-------------------------------------------------------------------
+Wed Dec 15 20:20:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.15
+  * Start/stop RDS and fetch Program Identification via remote
+    control.
+  * Fixed erratic behaviour of S-meter.
+  * Fixed compilation error due to missing include.
+  * Fixed I/Q playback when filename contains special characters.
+  * Reordered the receiver mode drop-down list.
+  * Receiver mode is now stored as a string in settings files.
+  * Increased automatic squelch margin to 3 dB.
+
+-------------------------------------------------------------------
+Wed Oct  6 18:50:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.6
+  * Bugfix release, no user visible changes
+
+-------------------------------------------------------------------
+Mon Oct  4 06:35:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.5
+  * Added preliminary support for GNU Radio 3.10.
+  * Improved reception of RDS signals.
+- Drop compatibility stuff for old distributions
+
+-------------------------------------------------------------------
+Mon Dec 28 19:21:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.4
+  * Many more keyboard shortcuts.
+  * Display filename when recording audio.
+  * Fixed audio output on MacOS Big Sur.
+  * Fixed DC remove button when Demod Off mode is selected.
+  * Better demodulation of FM stereo signals.
+
+-------------------------------------------------------------------
+Wed Dec  9 15:11:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.3
+  * Better rendering on high-DPI screens.
+
+-------------------------------------------------------------------
+Fri Dec  4 08:01:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.2
+  * Added button to lock audio FFT and waterfall ranges.
+  * Fixed crash when invalid device string is entered.
+  * Fixed receiver starting unexpectedly when "Enable RDS" is
+    checked.
+  * Fixed invert scrolling option not applying to audio FFT.
+
+-------------------------------------------------------------------
+Sat Nov 28 10:28:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.1
+  * Fixed hardware retuning when dragging frequency axis with
+    center button.
+  * Removed non-functional Plot button from I/Q recording dialog.
+  * Start DSP when Play button in I/Q recording dialog is clicked.
+  * Fixed tooltip for Rec button in I/Q recording dialog.
+  * More accurate rendering of FFT fill.
+  * Better rendering of amplitude axis.
+  * Allow debug logging to be enabled at runtime.
+
+-------------------------------------------------------------------
+Sat Nov 21 10:28:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * Start/stop DSP via remote control.
+  * Device scan button in Configure I/O devices dialog.
+  * Added "Recent settings" menu.
+  * Added synchronous AM demodulator.
+  * Added band plan to bottom of FFT.
+  * Added support for DX cluster.
+  * Added "F" shortcut to select the frequency controller.
+  * Fixed PortAudio detection on MacOS.
+  * Fixed crash when closing AFSK1200 decoder.
+  * Make axes take precedence over demod box in plotter.
+
+-------------------------------------------------------------------
+Sat Nov  7 10:13:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.13.5
+  * Set correct buffer size for audio FFT.
+- Update to release 2.13.4
+  * Added man page for use by distributions.
+  * Fixed crash when time span is set and waterfall height is set
+    to 0%.
+  * Fixed filter width incorrectly set when demod is off.
+  * Removed Boost.Format dependency.
+
+-------------------------------------------------------------------
+Sun Nov  1 13:57:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.13.3
+  * Fixed crash when waterfall height is set to 100%.
+
+-------------------------------------------------------------------
+Sat Oct 24 19:06:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.13.2
+  * Preliminary support for GNU Radio 3.9.
+  * Print UDP configuration.
+  * Viridis color map.
+  * Fixed loss of precision in the plotter's frequency axis.
+  * Fixed usability on smaller screen sizes.
+
+-------------------------------------------------------------------
+Sat Oct 17 15:24:46 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.13.1
+  * Fixed crash when invalid sample rate is specified.
+  * Decrease minimum size of FFT Settings panel.
+  * Fixed typos.
+  * More Airspy HF+ sample rates added.
+
+-------------------------------------------------------------------
+Fri Oct 16 20:33:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.13
+  * Stereo option for UDP streaming.
+  * Script to generate AppImage.
+  * Allow scroll wheel direction to be inverted.
+  * Fixed FM de-emphasis causing audio to be 20 dB quieter than
+    it should be.
+  * Fixed FM de-emphasis applied incorrectly in WFM stereo receiver
+  * Update waterfall time resolution when FFT settings are changed.
+  * Update waterfall time resolution when window is resized.
+  * Restore waterfall time span between sessions.
+  * Fixed FFT buffer overlap calculation.
+  * Fixed crash when launching without device connected.
+  * Fixed crash when setting invalid RF gains.
+  * Fixed audio panadapter / waterfall slider direction.
+  * Clear FFT averages when changing FFT size.
+  * Fixed crash when source block doesn't support IQ balancing.
+  * Fixed bookmark labels in FFT draw over each other.
+  * Improved DSP and FFT performance.
+  * Improved panadapter & waterfall performance.
+  * Smooth panadapter & waterfall redrawing.
+  * Better default values for various settings.
+  * Audio waterfall colormap matches I/Q waterfall.
+  * Use all available display space for panadapter & waterfall.
+  * Updated RDS decoder.
+  * More Airspy HF+ sample rates added.
+- Drop not longer needed patches:
+  * 801.patch
+  * 821.patch
+
+-------------------------------------------------------------------
+Mon Sep 21 16:09:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add upstream patches to fix build failures on Tumbleweed:
+  * 801.patch (Fix deprecation warning with QString::null)
+  * 821.patch (Include boost bind headers)
+
+-------------------------------------------------------------------
+Sat Feb  8 15:09:11 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to release 2.12.1
+  * NEW: White Hot, Black Hot and White Hot compressed colormaps.
+- Update to release 2.12
+  * NEW: GNU Radio 3.8 support.
+  * NEW: Mute button in audio panel.
+  * NEW: Google Turbo and Plasma color maps.
+  * NEW: Set/get device gains via remote control.
+  * FIXED: FFT display sometimes disappears.
+  * FIXED: Crash on startup when using HackRF.
+  * FIXED: dB scale disappears when zooming to 1 dB per grid line.
+  * FIXED: Raw I/Q output missing one channel.
+  * FIXED: Trap exceptions and show a message instead of crashing.
+  * IMPROVED: Prevent zooming out too far.
+  * IMPROVED: Make unlit digits slightly visible.
+  * IMPROVED: Only show sample rates supported by both models of BladeRF.
+- patch 0001-Replace-deprecated-qt5_use_modules-macro.patch removed
+  (applied upstream)
+
+------------------------------------------------------------------
+Wed Jun 27 13:07:31 UTC 2018 - mardnh@gmx.de
+
+- Add patch:
+  * 0001-Replace-deprecated-qt5_use_modules-macro.patch
+    (fix build for Tumbleweed)
+
+-------------------------------------------------------------------
+Thu May 17 08:59:08 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.11.5
+  * Fixed crash in remote control 'q' command
+
+-------------------------------------------------------------------
+Mon Apr 16 12:29:47 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.11.4
+  * Reduced size of color selector button in bookmarks tag list
+
+-------------------------------------------------------------------
+Fri Apr 13 12:27:03 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.11.3
+  * Fixed memory leak in remote control interface
+  * Added backspace key to frequency controller
+
+-------------------------------------------------------------------
+Sun Mar 25 10:12:19 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.11.2
+  * Fixed layout on low resolution monitors
+
+-------------------------------------------------------------------
+Sun Mar 18 15:46:09 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.11.1
+  * Removed visible border around frequency and meter widgets
+
+- Update to version 2.11
+  * Added selectable IQ FFT window type
+  * Fixed problems on Mac Pro computers without built-in audio
+  * Fixed black on black tooltips in the main window
+  * Fixed auto-squelch sets 0 dBFS too often
+  * Fixed can not play I/Q files if path contains a space
+  * Restore gains to slider states when hardware AGC is disabled
+  * Filter offset no longer limited to +/- 9.999999 MHz
+  * Changed default FFT window for reduced spectral leakage
+  * Added visual indicator of squelch level in the signal meter
+  * Show configuration file path when listing config files using -l
+  * Microtelecom Perseus integration.
+
+-------------------------------------------------------------------
+Mon Jan 22 19:14:41 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.10
+  * Fixed crash when starting gqrx using hackrf
+  * Fixed some spelling errors
+  * Improved SDRPlay integration
+- Do not use scriplets on Factory where they are not needed anymore
+
+-------------------------------------------------------------------
+Sat Nov 11 15:01:59 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version 2.9
+  New features
+    Airspy HF+ support
+  Bugs fixed
+    Always save TCP and UDP host settings.
+    Application hangs when pulseaudio is not runninng.
+
+-------------------------------------------------------------------
+Sun Sep 17 09:31:24 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.8+git.20170916:
+  * Continue with git vesion
+  * Add device string hint for PlutoSDR
+  * Add LNB_LO command to remote control interface
+  * Update news.txt
+  * Avoid redefinition of VERSION
+  * FindGnuradio-osmosdr.cmake to find include
+  * Fix inactive Start DSP and Config buttons
+  * Update news file
+  * Fix typo
+  * Ensure FreqCtrl digits are drawn after resize
+  * Update news file
+  * Tweak remote frequency handling
+  * Update news.txt
+  * Set default mode to AM instead of none
+  * Update news.txt
+  * Update version to 2.8
+  * Continue with development version string
+
+-------------------------------------------------------------------
+Sat Aug 19 19:13:56 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.7+git.20170819:
+  * Ignore playing of deleted file
+  * Update news.txt
+  * Add dummy QSvgWidget to enforce linking to QtSvg
+  * Add some sample rates for PlutoSDR
+  * Add Airspy HF+ sample rate
+  * IQ rec/play: Fix navigation in large IQ files
+  * Update version string to 2.7
+
+-------------------------------------------------------------------
+Mon Jul 03 19:29:46 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.6.1+git.20170601:
+  * Add additional waterfall time spans
+  * Update news.txt
+  * Change squelch units to dB to free up some layout space
+  * Add squelch reset button
+  * Update tab order in DockRxOpt
+  * Update tab order in I/O config
+  * Update CFreqCtl to support unitless display
+  * Fix incorrect digit separator in CFreqCtrl
+  * Switch to Hamradio style frequency display
+  * Add new logos to be integrated
+
+-------------------------------------------------------------------
+Wed Mar  8 19:46:10 UTC 2017 - mpluskal@suse.com
+
+- Packaging cleanup:
+  * Use spec-cleaner
+  * Use url for source
+  * Install appdata
+
+-------------------------------------------------------------------
+Fri Feb 24 23:39:09 UTC 2017 - wk@ire.pw.edu.pl
+
+- update to version 2.6.1
+  Improved
+    Option for reverting the behavior of the frequency controller.
+    
+-------------------------------------------------------------------
+Thu Oct 13 19:54:29 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.6
+  New features
+    1-2-5 scaling on FFT axis.
+    Audio waterfall.
+    Remember AGC settings between sessions.
+    Right-click on FFT resets frequency zoom.
+    Separate dB ranges for pandapter and waterfall.
+    Raw I/Q mode.
+    Portaudio support.
+    Command line option to set Qt style (fusion, windows, …)
+  Bugs fixed
+    Stuttering audio with Pulseaudio backend.
+    Use system font on FFT plot (too small font on high res displays).
+    Broken FUNcube Dongle Pro+ support on Mac OS X 10.11.4.
+    Correct display of negative offsets between -1 and 0 kHz.
+    Reset frequency digits below the one that is being changed.
+    LNB LO could not be set from I/O configuration dialog.
+    Update squelch level when switching between demodulators.
+    Set correct filter range when loading bookmark.
+    White area on waterfall.
+    RFSpace Cloud-IQ support on Mac OS X, RPI binaries and in PPA.
+  Miscellaneous improvements
+    Input decimator performance.
+    SDRPlay integration through SoapySDR.
+    Only probe for devices when the program is started.
+    Allow user to enter ALSA device name.
+    Set default audio FFT range to -70…0 dB.
+    Restore audio FFT dB scaling between sessions.
+
+-------------------------------------------------------------------
+Mon Feb 15 00:52:19 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.5.3
+  use QT5 for openSUSE 13.2 and later
+  Set and read squelch via remote control socket.
+  Reworked CW reception so that channel is now centered on carrier.
+  Shortcuts to view/hide some of the dock widgets.
+  Respond to \dump_state remote command (needed by some clients).
+  Read remote frequency as double for rigctl compatibility.
+
+-------------------------------------------------------------------
+Fri Jan 22 23:17:14 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.5.2
+  Support for Red Pitaya (RX only).
+  Increased spacing between frequency divisions to prevent overlap.
+  Reduced minimum window size requirement to around 800x600 pixels.
+
+-------------------------------------------------------------------
+Thu Jan  7 11:41:12 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.5
+  New features
+    Read out signal time and frequency on the waterfall (disabled on OS X).
+    Save waterfall to graphics file.
+    Allow user settable waterfall time span (up to 24 hours).
+    Cmake option to build using gr-audio backend (Andrea Merello).
+
+  Bug fixes
+    FM stereo (revert to pre-2.4 behavior).
+    Mode selector not updated when selecting a WFM OIRT bookmark.
+    Show correct filter preset when filter LO/HI corresponds to one.
+    Prevent RDS panel from growing by making it scrollable.
+    Use correct audio backend on OS X (app bundle only).
+
+  Improvements
+    Button layouts (mostly on Mac OS X).
+
+-------------------------------------------------------------------
+Fri Dec 18 16:41:04 UTC 2015 - dl8fcl@t-online.de
+
+- update to version 2.4
+  New features
+    Bookmarks.
+    FM RDS decoder using gr-rds.
+    Frequency tooltips on the FFT area (disabled on Mac).
+    Filter shape selector (soft, normal, sharp).
+    Slider to aid zooming on the frequency and dB axes.
+    RFSpace Cloud-IQ support (still work in progress).
+    OIRT stereo decoder (Daniil Cherednik).
+    Input decimator.
+
+  Bug fixes
+    Prevent crash due to device errors while starting the application.
+    Use hardware frequency in IQ file names.
+    FFT averaging (it can now be disabled).
+    “Could not resolve pattern10600” error messages in the terminal.
+    Antenna selection error with USRP B210 (Ethan Trewhitt).
+    LNB LO value not updated in I/O config dialog.
+    Initial gain of rtlsdr devices is no longer 0 dB.
+    DSP freeze when setting FM de-emphasis time constant to 0.
+    Use correct main category in desktop entry file.
+
+  Improvements
+    Support up to 1M point FFT.
+    Fractional PPM correction.
+    AGC performance.
+    FFT performance.
+    Right click on frequency digit to clear digits.
+    Robustness against malformed remote control commands.
+
+-------------------------------------------------------------------
+Tue Dec 23 12:02:01 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.3.2
+  FIXED: Pandapter and waterfall widths are limited to 4096 pixels.
+  IMPROVED: Add 2.5 Msps preset for Airspy.
+
+-------------------------------------------------------------------
+Fri Sep  5 10:06:16 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.3
+  New features:  
+   Support for setting analog bandwidth.
+   Support for setting gain stages individually.
+   Remember visibility status of main toolbar.
+   Restore the geometry of the main window between sessions.
+   Restore the state and placement of the dock windows.
+   RF Space SDR-IQ, SDR-IP and Netsdr support.
+   Peak detection on the FFT plot.
+   Max hold on the FFT plot.
+   Audio streaming over UDP socket.
+   Remote control through TCP socket.
+   Set squelch level from current signal/noise level.
+   Command line option to list existing configurations.
+   I/Q recording and playback.
+
+-------------------------------------------------------------------
+Fri Aug  9 10:07:39 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.2 
+
+-------------------------------------------------------------------
+Sun Aug  4 08:33:01 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1_git20130803
+  URL corrected. Approaching version 2.2 
+
+-------------------------------------------------------------------
+Sun Jul 28 17:24:15 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1_git20130725
+  version number in main GUI title and help corrected 
+
+-------------------------------------------------------------------
+Tue Jul 16 14:06:42 UTC 2013 - wk@ire.pw.edu.pl
+
+- update to version 2.1_git20130715
+  uses gnuradio 3.7
+
+-------------------------------------------------------------------
+Mon Jul 15 20:50:42 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1_git20130708 
+
+-------------------------------------------------------------------
+Mon May 13 22:05:48 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1_git20130504
+  further enhancements of gui
+
+-------------------------------------------------------------------
+Sun Apr 28 19:12:29 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1_git20130428
+  enhancements of gui and frequency adjustment 
+
+-------------------------------------------------------------------
+Fri Mar 22 22:53:15 UTC 2013 - dl8fcl@darc.de
+
+- import into the hamradio repository 
+
