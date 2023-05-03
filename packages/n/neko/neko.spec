@@ -34,7 +34,7 @@ BuildRequires:  libmysqlclient-devel
 BuildRequires:  pcre-devel-static
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel-static
-BuildRequires:  mbedtls-devel >= 2.2.0
+BuildRequires:  (mbedtls-devel >= 2.2.0 and mbedtls-devel < 3)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libneko2 = %{version}
 Provides:       nekovm = %version

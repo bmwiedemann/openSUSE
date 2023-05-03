@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  1 20:46:23 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Require the mbedtls-devel version to be lower than 3.0.0
+
+-------------------------------------------------------------------
 Thu Aug 11 03:04:37 UTC 2022 - Andy Li <andy@onthewings.net>
 
 - Fix cmake define RELOCATABLE=OFF. 

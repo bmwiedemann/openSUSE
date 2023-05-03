@@ -122,4 +122,12 @@
     <comment>Fix cmake define RELOCATABLE=OFF.</comment>
     <requestid>994415</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dfe17c714bfc1938f356cebc6f88d99c</srcmd5>
+    <version>2.3.0</version>
+    <time>1683111413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084125</requestid>
+  </revision>
 </revisionlist>
