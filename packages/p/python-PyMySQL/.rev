@@ -214,4 +214,15 @@
     <comment>- Skip a test that is failing due to character set fun and games.</comment>
     <requestid>1010356</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9bcc5d982425e1901564fa286ef0c815</srcmd5>
+    <version>1.0.3</version>
+    <time>1683111469</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * Dropped support of end of life MySQL version 5.6
+  * Dropped support of end of life MariaDB versions below 10.3
+  * Dropped support of end of life Python version 3.6</comment>
+    <requestid>1084213</requestid>
+  </revision>
 </revisionlist>

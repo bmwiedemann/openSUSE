@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 08:35:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.3:
+  * Dropped support of end of life MySQL version 5.6
+  * Dropped support of end of life MariaDB versions below 10.3
+  * Dropped support of end of life Python version 3.6
+
+-------------------------------------------------------------------
 Thu Oct 13 06:38:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test that is failing due to character set fun and games. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMySQL
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-PyMySQL
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyMySQL/PyMySQL/
 Source:         https://github.com/PyMySQL/PyMySQL/archive/v%{version}.tar.gz#/PyMySQL-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if %{with tests}
 BuildRequires:  mariadb-rpm-macros
 %endif
@@ -62,10 +64,10 @@ its unit tests as well as running it against the MySQLdb and myconnpy unit tests
 sed -i '1 { /^#!/ d }' pymysql/tests/thirdparty/test_MySQLdb/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}
@@ -105,7 +107,7 @@ exit $exit_code
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %{python_sitelib}/*
 
 %changelog
