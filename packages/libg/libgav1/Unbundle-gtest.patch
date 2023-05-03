@@ -1,0 +1,80 @@
+--- a/tests/libgav1_tests.cmake	2022-06-30 20:41:58.000000000 +0000
++++ b/tests/libgav1_tests.cmake	2023-04-29 13:01:10.517636900 +0000
+@@ -12,28 +12,9 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-if(LIBGAV1_LIBGAV1_TESTS_CMAKE_)
+-  return()
+-endif() # LIBGAV1_LIBGAV1_TESTS_CMAKE_
+-set(LIBGAV1_LIBGAV1_TESTS_CMAKE_ 1)
+-
+-set(libgav1_googletest "${libgav1_root}/third_party/googletest")
+-if(NOT LIBGAV1_ENABLE_TESTS OR NOT EXISTS "${libgav1_googletest}")
+-  macro(libgav1_add_tests_targets)
+-
+-  endmacro()
+-
+-  if(LIBGAV1_ENABLE_TESTS AND NOT EXISTS "${libgav1_googletest}")
+-    message(
+-      "GoogleTest not found, setting LIBGAV1_ENABLE_TESTS to false.\n"
+-      "To enable tests download the GoogleTest repository to"
+-      " third_party/googletest:\n\n  git \\\n    -C ${libgav1_root} \\\n"
+-      "    clone \\\n"
+-      "    https://github.com/google/googletest.git third_party/googletest\n")
+-    set(LIBGAV1_ENABLE_TESTS FALSE CACHE BOOL "Enables tests." FORCE)
+-  endif()
+-  return()
+-endif()
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(gtest REQUIRED gtest)
++pkg_check_modules(gtest_main REQUIRED gtest_main)
+ 
+ # Check GoogleTest compiler requirements.
+ if((CMAKE_CXX_COMPILER_ID
+@@ -195,31 +176,20 @@
+         "This version of libgav1_add_tests_targets() should only be used with"
+         " LIBGAV1_ENABLE_TESTS set to true.")
+   endif()
+-  libgav1_add_library(TEST
+-                      NAME
+-                      libgav1_gtest
+-                      TYPE
+-                      STATIC
+-                      SOURCES
+-                      "${libgav1_googletest}/googletest/src/gtest-all.cc"
+-                      DEFINES
+-                      ${libgav1_defines}
+-                      INCLUDES
+-                      ${libgav1_gtest_include_paths}
+-                      ${libgav1_include_paths})
+-
+-  libgav1_add_library(TEST
+-                      NAME
+-                      libgav1_gtest_main
+-                      TYPE
+-                      STATIC
+-                      SOURCES
+-                      "${libgav1_googletest}/googletest/src/gtest_main.cc"
+-                      DEFINES
+-                      ${libgav1_defines}
+-                      INCLUDES
+-                      ${libgav1_gtest_include_paths}
+-                      ${libgav1_include_paths})
++
++  add_library(libgav1_gtest INTERFACE)
++  target_link_libraries(libgav1_gtest INTERFACE ${gtest_LIBRARIES})
++  target_link_directories(libgav1_gtest INTERFACE ${gtest_LIBRARY_DIRS})
++  target_link_options(libgav1_gtest INTERFACE ${gtest_LDFLAGS_OTHER})
++  target_include_directories(libgav1_gtest INTERFACE ${gtest_INCLUDE_DIRS})
++  target_compile_options(libgav1_gtest INTERFACE ${gtest_CFLAGS_OTHER})
++
++  add_library(libgav1_gtest_main INTERFACE)
++  target_link_libraries(libgav1_gtest_main INTERFACE ${gtest_main_LIBRARIES})
++  target_link_directories(libgav1_gtest_main INTERFACE ${gtest_main_LIBRARY_DIRS})
++  target_link_options(libgav1_gtest_main INTERFACE ${gtest_main_LDFLAGS_OTHER})
++  target_include_directories(libgav1_gtest_main INTERFACE ${gtest_main_INCLUDE_DIRS})
++  target_compile_options(libgav1_gtest_main INTERFACE ${gtest_main_CFLAGS_OTHER})
+ 
+   if(use_absl_threading)
+     list(APPEND libgav1_common_test_absl_deps absl::synchronization)

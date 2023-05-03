@@ -26,9 +26,17 @@ Group:          Development/Libraries/C and C++
 URL:            https://chromium.googlesource.com/codecs/libgav1/
 Source:         %name-%version.tar.xz
 Patch1:         gcc13.diff
+Patch2:         0001-Unbundle-abseil.patch
+Patch3:         Unbundle-gtest.patch
+Patch4:         modern-cxx-standard.patch
+Patch5:         cpu_test-disable-test.patch
 BuildRequires:  cmake >= 3.7.1
+BuildRequires:  cmake(absl)
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(gmock)
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(gtest_main)
 BuildRequires:  xz
 
 %description
@@ -46,7 +54,7 @@ in C++ and also offering a C API.
 %package devel
 Summary:        Development for libgav1, an AV1 video decoder
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %lname%{_isa} = %version
 
 %description devel
 libgav1 is a Main profile (0) & High profile (1) compliant AV1 decoder written
@@ -54,22 +62,39 @@ in C++ and also offering a C API.
 
 This subpackage contains the header files.
 
+%package tools
+Summary:        AV1 video decoder — Command line utility
+Group:          Productivity/Multimedia/Other
+
+%description tools
+libgav1 is a Main profile (0) & High profile (1) compliant AV1 decoder written
+in C++ and also offering a C API.
+
+This package contains the gav1_decode commandline program.
+
 %prep
 %autosetup -p1
-mkdir third_party
-ln -s /usr/src/abseil-cpp third_party/abseil-cpp
 
 %build
 %cmake \
-	-DLIBGAV1_ENABLE_EXAMPLES:BOOL=OFF \
-	-DLIBGAV1_ENABLE_TESTS:BOOL=OFF \
+	-DLIBGAV1_ENABLE_EXAMPLES:BOOL=ON \
+	-DLIBGAV1_ENABLE_TESTS:BOOL=ON \
 	-DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 \
-	-DBUILD_SHARED_LIBS:BOOL=ON
+	-DBUILD_SHARED_LIBS:BOOL=ON \
+%ifarch %arm
+%ifnarch armv7hnl armv8hnl armv8hcnl #Unlike x86/64, the arm code does not do dynamic dispatch based on CPU capabilities and so fails to build if the CPU does not support this.
+    -DLIBGAV1_ENABLE_NEON=0 \
+%endif
+%endif
+
 %cmake_build
 
 %install
 %cmake_install
 rm -fv %buildroot/%_libdir/*.a
+
+%check
+%ctest
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -83,5 +108,8 @@ rm -fv %buildroot/%_libdir/*.a
 %_libdir/pkgconfig/*.pc
 %_libdir/*.so
 %_datadir/cmake/
+
+%files tools
+%_bindir/gav1_decode
 
 %changelog

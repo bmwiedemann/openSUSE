@@ -1,0 +1,14 @@
+The example applications fail to build with such ancient C++ setting. Set the C++ standard instead to GCC's current version (17 as of GCC13)
+
+--- a/CMakeLists.txt
++++ a/CMakeLists.txt
+@@ -15,9 +15,6 @@
+ # libgav1 requires modern CMake.
+ cmake_minimum_required(VERSION 3.7.1 FATAL_ERROR)
+ 
+-# libgav1 requires C++11.
+-set(CMAKE_CXX_STANDARD 11)
+-set(ABSL_CXX_STANDARD 11)
+ # libgav1 requires C99.
+ set(CMAKE_C_STANDARD 99)
+ 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 29 19:30:55 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Run testsuite in %check
+  * 0001-Unbundle-abseil.patch
+  * Unbundle-gtest.patch
+  * cpu_test-disable-test.patch
+- Add libgav1-tools package
+- Compile as C++17 to fix build error in libgav1-tools
+  * modern-cxx-standard.patch
+- Fix FTBFS on ARM
+
+-------------------------------------------------------------------
 Thu Mar 30 22:36:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc13.diff

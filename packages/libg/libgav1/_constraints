@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<constraints>
+	<overwrite>
+		<conditions>
+			<arch>x86_64</arch>
+			<arch>i586</arch>
+		</conditions>
+		<hardware>
+			<cpu>
+			<flag>avx2</flag> <!-- Some tests statically link the assembler subroutines without the dynamic dispatch that the actual library does, which means they do not run on old CPUs. -->
+			</cpu>
+		</hardware>
+	</overwrite>
+</constraints>
