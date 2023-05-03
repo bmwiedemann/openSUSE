@@ -17,15 +17,12 @@
 
 
 Name:           micropython
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://micropython.org/
 Source:         https://micropython.org/resources/source/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM: fix build with gcc 13
-Patch1:         https://github.com/micropython/micropython/commit/32572439984e5640c6af46fbe7c27400c30112ce.patch
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -45,12 +42,13 @@ sed -i -e "s:/usr/lib/micropython:%{_prefix}/lib/micropython:g" "ports/unix/main
 %define make_flags V=1 MICROPY_PY_BTREE=0 MICROPY_PY_USSL=0
 
 %build
+export CFLAGS="$CFLAGS -Wno-dangling-pointer"
 %make_build -C mpy-cross
-%make_build -C ports/unix micropython STRIP=true
+%make_build -C ports/unix STRIP=true
 
 %install
 install -d %{buildroot}%{_bindir}
-install -t %{buildroot}%{_bindir} ports/unix/micropython
+install -t %{buildroot}%{_bindir} ports/unix/build-standard/micropython
 
 %check
 %ifnarch x86_64

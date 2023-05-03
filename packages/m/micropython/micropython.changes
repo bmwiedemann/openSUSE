@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 28 07:09:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.20.0:
+  * https://github.com/micropython/micropython/releases/tag/v1.20.0
+- Remove 32572439984e5640c6af46fbe7c27400c30112ce.patch, included.
+- Disable warning, since it is treated as an error.
+
+-------------------------------------------------------------------
 Tue Mar 28 14:42:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 32572439984e5640c6af46fbe7c27400c30112ce.patch
