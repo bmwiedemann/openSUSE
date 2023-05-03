@@ -57,6 +57,7 @@ Source1:        preamble
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM
 Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0002-SLE15-SP3-compatibility-patch-for-kni.patch
+Patch2:         0001-kni-fix-build-with-Linux-6.3.patch
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes

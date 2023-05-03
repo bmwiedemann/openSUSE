@@ -577,4 +577,15 @@
     <comment></comment>
     <requestid>1077701</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>ba6e55c9910c13f8504feac9dc5da139</srcmd5>
+    <version>22.11.1</version>
+    <time>1683111393</time>
+    <user>dimstar_suse</user>
+    <comment>- raise constraints to 8GB to cover SLE15 builds as well
+
+- add 0001-kni-fix-build-with-Linux-6.3.patch to fix build against
+  kernel 6.3.</comment>
+    <requestid>1083285</requestid>
+  </revision>
 </revisionlist>

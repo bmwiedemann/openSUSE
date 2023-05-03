@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 27 14:50:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- raise constraints to 8GB to cover SLE15 builds as well
+
+-------------------------------------------------------------------
+Wed Apr 26 05:28:15 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-kni-fix-build-with-Linux-6.3.patch to fix build against
+  kernel 6.3.
+
+-------------------------------------------------------------------
 Wed Apr  5 21:10:54 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 -- Update to LTS release version v22.11.1
