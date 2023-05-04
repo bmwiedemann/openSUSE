@@ -20,7 +20,7 @@
 %define modname tzlocal
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        tzinfo object for the local timezone
 License:        MIT

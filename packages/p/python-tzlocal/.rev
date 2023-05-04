@@ -159,4 +159,15 @@
     <comment></comment>
     <requestid>1081994</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d6c5a39dc69a8662c7a86dd1934a3d7c</srcmd5>
+    <version>4.3</version>
+    <time>1683212972</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3:
+  * Improved the error message when the ZoneInfo cannot be found
+  * Don't error out because we find multiple possible timezones
+    for a symlink.</comment>
+    <requestid>1084231</requestid>
+  </revision>
 </revisionlist>

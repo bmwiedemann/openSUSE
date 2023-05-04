@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 09:22:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3:
+  * Improved the error message when the ZoneInfo cannot be found
+  * Don't error out because we find multiple possible timezones
+    for a symlink.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
