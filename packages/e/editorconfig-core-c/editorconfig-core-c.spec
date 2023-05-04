@@ -1,7 +1,7 @@
 #
 # spec file for package editorconfig-core-c
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           editorconfig-core-c
-Version:        0.12.5
+Version:        0.12.6
 Release:        0
 Summary:        EditorConfig core library written in C
 License:        BSD-2-Clause AND BSD-3-Clause

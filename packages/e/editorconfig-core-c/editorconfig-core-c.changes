@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  2 20:28:06 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- editorconfig-core-c 0.12.6:
+  * CVE-2023-0341: A buffer overflow in ec_blob (boo#1211032)
+  * Update property key, value length limits per spec change
+
+-------------------------------------------------------------------
 Sun Jun 27 10:57:57 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
 
 - editorconfig-core-c 0.12.5:
