@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed May  3 10:30:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.9.8
+  * Bug
+    + [MRESOLVER-345] Conflict resolution in verbose mode is
+      sensitive to version ordering
+    + [MRESOLVER-348] SslConfig httpSecurityMode change is not
+      detected
+    + [MRESOLVER-339] Preemptive Auth broken when default ports used
+    + [MRESOLVER-325] [REGRESSION] Suddenly seeing I/O errors under
+      windows aborting the build
+    + [MRESOLVER-330] Static name mapper is unusable with file-lock
+      factory
+    + [MRESOLVER-314] Getting "IllegalArgumentException: Comparison
+      method violates its general contract!"
+    + [MRESOLVER-316] DF collector enters endless loop when
+      collecting org.webjars.npm:musquette:1.1.1
+    + [MRESOLVER-298] javax.inject should be provided or optional
+    + [MRESOLVER-305] Evaluate blocked repositories also when
+      retrieving metadata
+    + [MRESOLVER-309] PrefixesRemoteRepositoryFilterSource aborts
+      the build while it should not
+    + [MRESOLVER-313] Artifact file permissions are 0600 and not
+      implicitly set by umask
+    + [MRESOLVER-296] FileProcessor.write( File, InputStream ) is
+      defunct
+    + [MRESOLVER-292] Documented and used param names mismatch
+    + [MRESOLVER-294] Fix JapiCmp configuration and document it
+    + [MRESOLVER-285] File locking on Windows knows to misbehave
+    + [MRESOLVER-246] m-deploy-p will create hashes for hashes
+    + [MRESOLVER-265] Discrepancy between produced and recognized
+      checksums
+    + [MRESOLVER-241] Resolver checksum calculation should be driven
+      by layout
+    + [MRESOLVER-242] When no remote checksums provided by layout,
+      transfer inevitably fails/warns
+    + [MRESOLVER-250] Usage of descriptors map in DataPool prevents
+      gargabe collection
+  * New Feature
+    + [MRESOLVER-32] Support parallel artifact/metadata uploads
+    + [MRESOLVER-319] Support parallel deploy
+    + [MRESOLVER-297] Chained LRM
+    + [MRESOLVER-167] Support forcing specific repositories for
+      artifacts
+    + [MRESOLVER-268] Apply artifact checksum verification for any
+      resolved artifact
+    + [MRESOLVER-274] Introduce Remote Repository Filter feature
+    + [MRESOLVER-275] Introduce trusted checksums source
+    + [MRESOLVER-276] Resolver post-processor
+    + [MRESOLVER-278] BREAKING: Introduce RepositorySystem shutdown
+      hooks
+    + [MRESOLVER-236] Make it possible to resolve .asc on a 'fail'
+      respository.
+  * Improvement
+    + [MRESOLVER-346] Too eager locking
+    + [MRESOLVER-347] Better connection pool configuration (reuse,
+      max TTL, maxPerRoute)
+    + [MRESOLVER-349] Adapter when locking should "give up and
+      retry"
+    + [MRESOLVER-350] Get rid of commons-lang dependency
+    + [MRESOLVER-327] Make tranport-http obey system properties
+      regarding proxy settings
+    + [MRESOLVER-340] Make WebDAV "dance" disabled by default
+    + [MRESOLVER-341] Add option for preemptive PUT Auth
+    + [MRESOLVER-315] Implement preemptive authentication feature
+      for transport-http
+    + [MRESOLVER-328] The transport-http should be able to ignore
+      cert errors
+    + [MRESOLVER-337] Real cause when artifact not found with
+      repository filtering
+    + [MRESOLVER-287] Get rid of deprecated finalize methods
+    + [MRESOLVER-317] Improvements for BF collector
+    + [MRESOLVER-318] Cleanup redundant code and centralize executor
+      handling
+    + [MRESOLVER-303] Make checksum detection reusable
+    + [MRESOLVER-290] Improve file handling resolver wide
+    + [MRESOLVER-7] Download dependency POMs in parallel in BF
+      collector
+    + [MRESOLVER-266] Simplify adapter creation and align
+      configuration for it
+    + [MRESOLVER-269] Allow more compact storage of provided
+      checksums
+    + [MRESOLVER-273] Create more compact File locking layout/mapper
+    + [MRESOLVER-284] BREAKING: Some Sisu parameters needs to be
+      bound
+    + [MRESOLVER-286] Improve basic connector closed state handling
+    + [MRESOLVER-240] Using breadth-first approach to resolve Maven
+      dependencies
+    + [MRESOLVER-247] Avoid unnecessary dependency resolution by a
+      Skip solution based on BFS
+    + [MRESOLVER-248] Make DF and BF collector implementations
+      coexist
+  * Task
+    + [MRESOLVER-326] Resolver transport-http should retry on
+      failures
+    + [MRESOLVER-331] Make DefaultTrackingFileManager write directly
+      to tracking files
+    + [MRESOLVER-333] Distinguish better resolver errors for
+      artifact availability
+    + [MRESOLVER-320] Investigate slower resolving speeds as
+      reported by users
+    + [MRESOLVER-291] Undo MRESOLVER-284
+    + [MRESOLVER-279] Simplify and improve trusted checksum sources
+    + [MRESOLVER-281] Update configurations page with new elements
+    + [MRESOLVER-282] Drop PartialFile
+    + [MRESOLVER-230] Make supported checksum algorithms extensible
+    + [MRESOLVER-231] Extend “smart checksum” feature
+    + [MRESOLVER-234] Introduce “provided” checksums feature
+    + [MRESOLVER-237] Make all checksum mismatches handled same
+    + [MRESOLVER-239] Update and sanitize dependencies
+    + [MRESOLVER-244] Deprecate FileTransformer API
+    + [MRESOLVER-245] Isolate Hazelcast tests
+  * Dependency upgrade
+    + [MRESOLVER-311] Upgrade Parent to 39
+    + [MRESOLVER-293] Update dependencies, align with Maven
+    + [MRESOLVER-272] Update parent POM to 37, remove plugin version
+      overrides, update bnd
+    + [MRESOLVER-280] Upgrade invoker, install, deploy, require
+      maven 3.8.4+
+    + [MRESOLVER-251] Upgrade Redisson to 3.17.5
+    + [MRESOLVER-249] Update Hazelcast to 5.1.1 in
+      named-locks-hazelcast module
+
+-------------------------------------------------------------------
 Sat May 21 19:48:19 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add an alias for the wagon connector

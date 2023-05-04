@@ -1,7 +1,7 @@
 #
 # spec file for package maven-resolver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define _buildshell /bin/bash
 %bcond_with tests
 Name:           maven-resolver
-Version:        1.7.3
+Version:        1.9.8
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/resolver/
-Source0:        http://archive.apache.org/dist/maven/resolver/%{name}-%{version}-source-release.zip
+Source0:        https://archive.apache.org/dist/maven/resolver/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
@@ -152,11 +152,12 @@ This package provides %{summary}.
 %setup -q -a1
 
 # requires internet connection
-rm maven-resolver-transport-http/src/test/java/org/eclipse/aether/transport/http/HttpTransporterTest.java
+rm maven-resolver-transport-http/src/test/java/org/eclipse/aether/transport/http/{HttpServer,HttpTransporterTest}.java
+%pom_remove_dep org.eclipse.jetty: maven-resolver-transport-http
 
 %pom_remove_plugin -r :bnd-maven-plugin
 %pom_remove_plugin -r org.codehaus.mojo:animal-sniffer-maven-plugin
-%pom_remove_plugin -r org.apache.maven.plugins:maven-enforcer-plugin
+%pom_remove_plugin -r :japicmp-maven-plugin
 
 %pom_disable_module maven-resolver-demos
 %pom_disable_module maven-resolver-named-locks-hazelcast
