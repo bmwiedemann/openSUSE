@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue May  2 17:24:29 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.4 (released 2023-05-02) includes three security fixes to
+  the html/template package, as well as bug fixes to the compiler,
+  the runtime, and the crypto/subtle, crypto/tls, net/http, and
+  syscall packages.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-29400 CVE-2023-24540 CVE-2023-24539
+  * go#59812 go#59720 boo#1211029 security: fix CVE-2023-24539 html/template: improper sanitization of CSS values
+  * go#59814 go#59721 boo#1211030 security: fix CVE-2023-24540 html/template: improper handling of JavaScript whitespace
+  * go#59816 go#59722 boo#1211031 security: fix CVE-2023-29400 html/template: improper handling of empty HTML attributes
+  * go#59064 runtime: automatically bump RLIMIT_NOFILE on Unix
+  * go#59336 crypto/subtle: xor fails when run with race+purego
+  * go#59374 cmd/compile: encoding/binary.PutUint16 sometimes doesn't write
+  * go#59450 cmd/compile: internal compiler error: cannot call SetType(go.shape.int) on v (type int)
+  * go#59468 cmd/compile: miscompilation in star-tex.org/x/cmd/star-tex
+  * go#59469 net/http: FileServer no longer serves content for POST
+  * go#59540 crypto/tls: TLSv1.3 connection fails with invalid PSK binder
+  * go#59580 cmd/compile: incorrect inline function variable
+  * go#59585 cmd/compile: Unified IR exports table is binary unstable in presence of generics
+  * go#59637 go/internal/gcimporter: lookupGorootExport should use the go command from build.Default.GOROOT
+
+-------------------------------------------------------------------
+Tue May  2 17:08:49 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging revert go1.x Suggests go1.x-race boo#1210963
+  * Upstream go binary distributions do include race detector .syso
+  * Default Recommends for subpackages is best suited in this case
+
+-------------------------------------------------------------------
 Fri Apr 28 23:47:22 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
@@ -15,10 +45,10 @@ Tue Apr  4 20:42:31 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
   linker, the runtime, and the time package.
   Refs boo#1206346 go1.20 release tracking
   CVE-2023-24534 CVE-2023-24536 CVE-2023-24537 CVE-2023-24538
-  * go#59268 go#58975 boo#1210127 security: net/http, net/textproto: denial of service from excessive memory allocation ​(CVE-2023-24534)
-  * go#59270 go#59153 boo#1210128 security: net/http, net/textproto, mime/multipart: denial of service from excessive resource consumption (CVE-2023-24536)
-  * go#59274 go#59180 boo#1210129 security: go/parser: infinite loop in parsing (CVE-2023-24537)
-  * go#59272 go#59234 boo#1210130 security: html/template: backticks not treated as string delimiters (CVE-2023-24538)
+  * go#59268 go#58975 boo#1210127 security: fix CVE-2023-24534 net/http, net/textproto: denial of service from excessive memory allocation
+  * go#59270 go#59153 boo#1210128 security: fix CVE-2023-24536 net/http, net/textproto, mime/multipart: denial of service from excessive resource consumption
+  * go#59274 go#59180 boo#1210129 security: fix CVE-2023-24537 go/parser: infinite loop in parsing
+  * go#59272 go#59234 boo#1210130 security: fix CVE-2023-24538 html/template: backticks not treated as string delimiters
   * go#58920 x/text: building as a plugin failure on darwin/arm64
   * go#58938 cmd/go: timeout on darwin-amd64-race builder
   * go#58942 internal/testpty: fails on some Linux machines due to incorrect error handling

@@ -87,4 +87,23 @@
 * Use Group: Development/Languages/Go instead of Other (forwarded request 1083590 from jfkw)</comment>
     <requestid>1083592</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f81bf358c36b235b338673903ecb739d</srcmd5>
+    <version>1.20.4</version>
+    <time>1683212962</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.20.4 (released 2023-05-02) includes three security fixes to
+  the html/template package, as well as bug fixes to the compiler,
+  the runtime, and the crypto/subtle, crypto/tls, net/http, and
+  syscall packages.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-29400 CVE-2023-24540 CVE-2023-24539
+
+- Packaging revert go1.x Suggests go1.x-race boo#1210963
+  * Upstream go binary distributions do include race detector .syso
+  * Default Recommends for subpackages is best suited in this case
+
+- Revise changelog formatting of recent CVEs for readability (forwarded request 1084133 from jfkw)</comment>
+    <requestid>1084135</requestid>
+  </revision>
 </revisionlist>

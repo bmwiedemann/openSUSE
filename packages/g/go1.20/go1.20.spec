@@ -126,7 +126,7 @@
 %endif
 
 Name:           go1.20
-Version:        1.20.3
+Version:        1.20.4
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -155,7 +155,6 @@ BuildRequires:  %{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
-Suggests:       %{name}-race = %{version}
 %if 0%{?suse_version} > 1500
 # openSUSE Tumbleweed
 Suggests:       %{name}-libstd = %{version}
