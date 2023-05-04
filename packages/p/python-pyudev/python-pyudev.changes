@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May  3 09:11:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.1:
+  * Recommended development release: Fedora 37
+  * Add support for PySide6
+  * Add missing 'priority' argument for GLib.to_add_watch()
+  * Tidies and Maintenance fixes
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

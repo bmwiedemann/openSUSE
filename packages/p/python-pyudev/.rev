@@ -267,4 +267,16 @@
     <comment></comment>
     <requestid>1081579</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2a073b80c3c1ef48eb530d0c480cc070</srcmd5>
+    <version>0.24.1</version>
+    <time>1683212970</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.1:
+  * Recommended development release: Fedora 37
+  * Add support for PySide6
+  * Add missing 'priority' argument for GLib.to_add_watch()
+  * Tidies and Maintenance fixes</comment>
+    <requestid>1084226</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pyudev
-Version:        0.24.0
+Version:        0.24.1
 Release:        0
 Summary:        Udev bindings for Python
 License:        LGPL-2.1-or-later
