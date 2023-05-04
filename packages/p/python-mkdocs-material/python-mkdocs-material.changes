@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  2 11:02:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.9:
+  * Added Telulugu, Kannada and Sanskrit translations
+  * Fixed #5428: Fixed margins for light/dark mode images in
+    figures
+  * Fixed #5420: Social plugin crashing for some specific Google
+    Fonts
+  * Fixed #5160: Instant loading makes code annotations jump (9.1.1
+    regression)
+  * Fixed #4920: Social plugin not loading logo from custom icon
+    set
+  * Fixed social plugin crashing when only code font is specified
+
+-------------------------------------------------------------------
 Mon Apr 24 18:31:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.8:
