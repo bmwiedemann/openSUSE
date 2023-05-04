@@ -119,4 +119,12 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1062479</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5cff39b0c2f926f77156aecd9acbf0ed</srcmd5>
+    <version>5.4</version>
+    <time>1683212987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084329</requestid>
+  </revision>
 </revisionlist>
