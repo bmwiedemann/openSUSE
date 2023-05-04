@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:12:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000038
+   see /usr/share/doc/packages/perl-Module-Metadata/Changes
+
+  1.000038  2023-04-28 11:25:40Z
+    - detects "class" syntax
+
+-------------------------------------------------------------------
 Sun Sep  8 19:52:14 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.000037
