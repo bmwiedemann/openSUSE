@@ -4086,4 +4086,41 @@
 - Add ncurses patch 20230408 (boo#1210434)</comment>
     <requestid>1080277</requestid>
   </revision>
+  <revision rev="238" vrev="11">
+    <srcmd5>bbaaaf4d11cfa4a3768432b26e5b1d27</srcmd5>
+    <version>unknown</version>
+    <time>1683212940</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not overwrite PKG_CONFIG_PATH for new tack support
+
+- Add ncurses patch 20230429
+  + revise recent change to _nc_write_entry to isolate it to a Cygwin bug
+    (cf: 20230311)
+  + amend fix for wgetnstr, wgetn_wstr to use cbreak mode unless raw
+    mode was set (cf: 20210522).
+  + fix a few warnings from cppcheck, etc.
+  + correct copy/paste error in nc_access.h (report by Werner Fink).
+- Adopt patch ncurses-6.4-makeuseof_secure_open.dif
+  * Fix yet an other copy/paste typo
+
+- Add patch ncurses-6.4-makeuseof_secure_open.dif
+  * Really make use of _nc_safe_fopen() and _nc_safe_open3()
+
+- Add ncurses patch 20230424
+  + check return value of _nc_save_str(), in special case for tic where
+    extended capabilities are processed but the terminal description was
+    not initialized (report by Ziqiao Kong).
+  + regenerate llib-* files.
+
+- Add ncurses patch 20230423 (boo#1210552)
+  + add tiscan_s() to help applications check formatting capabilities
+    that would be passed to tiparm_s, etc.
+  + add tiparm_s() to provide applications a way to tell ncurses what
+    the expected parameters are for a capability (tmux #3531).
+  + improve check in lib_tparm.c, ensuring that a char* fits into a
+    TPARM_ARG.
+  + add --disable-setuid-environ configure option (request by Sven
+    Joachim).</comment>
+    <requestid>1084217</requestid>
+  </revision>
 </revisionlist>

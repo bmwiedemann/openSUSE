@@ -34,8 +34,10 @@
 %global soname_tinfo tinfow
 %endif
 
-%define patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
-%define basevers 6.4
+%global patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
+%global basevers 6.4
+%global tackvers 1.09
+%global tacklvl  20221229
 
 Name:           ncurses
 #!BuildIgnore: terminfo
@@ -87,17 +89,18 @@ Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        https://www.invisible-island.net/archives/ncurses/current/tack-1.09-20221229.tgz
+Source5:        https://www.invisible-island.net/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
 Source8:        cursescheck
 Source9:        https://www.invisible-island.net/archives/ncurses/ncurses-%{basevers}.tar.gz.asc
-Source10:       https://www.invisible-island.net/archives/ncurses/current/tack-1.09-20221229.tgz.asc
+Source10:       https://www.invisible-island.net/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz.asc
 Source11:       ncurses.keyring
 Patch0:         ncurses-6.4.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 Patch3:         FORTIFY_SOURCE_3-fix.patch
+Patch4:         ncurses-6.4-makeuseof_secure_open.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _miscdir    %{_datadir}/misc
 %global         _incdir     %{_includedir}
@@ -316,11 +319,12 @@ This package contains the static library files for
 the ncurses library in its ABI version 5 form.
 
 %package -n tack
+Version:        %{tackvers}.%{tacklvl}
 Summary:        Terminfo action checker
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Provides:       ncurses-devel:%{_bindir}/tack
-Requires:       ncurses = %{version}-%{release}
+Requires:       ncurses = %{basevers}.%{patchlvl}
 
 %description -n tack
 This package contains the tack utility to help to build a new terminfo
@@ -349,6 +353,7 @@ rm -fr tack
 mv tack-* tack
 %patch1 -p0 -b .327x
 %patch2 -p0 -b .hs
+%patch4 -p0
 %patch0 -p0 -b .p0
 %patch3 -p1
 
@@ -369,6 +374,7 @@ mv tack-* tack
 #
 CFLAGS_SHARED="%{_lto_cflags_shared}"
 export CFLAGS_SHARED
+%global configtack	%configure
 %global _configure	screen -D -m ./configure
     SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
     SCREENRC=${SCREENDIR}/ncurses
@@ -532,6 +538,7 @@ export CFLAGS_SHARED
 	--disable-stripping	\
 	--disable-root-access	\
 	--disable-root-environ	\
+	--disable-setuid-environ\
 	--disable-termcap	\
 	--disable-overwrite	\
 	--disable-rpath		\
@@ -669,8 +676,12 @@ export CFLAGS_SHARED
     rm -vf %{root}%{_libdir}/pkgconfig/tinfo.pc
     mv -vf %{root}%{_libdir}/pkgconfig/*.pc pc/
     sed -ri 's@^(Requires.private:).*@\1@'  pc/*.pc
-    bash %{S:6} --cflags "$(pkg-config --cflags ncursesw)" --libs "$(pkg-config --libs ncursesw)" \
-	%{root}%{_bindir}/ncursesw6-config
+    echo $PKG_CONFIG_PATH
+    what=ncursesw
+    cflags="$(pkg-config --cflags $what)"
+      libs="$(pkg-config --libs   $what)"
+    test -n "$cflags" -a -n "$libs" || exit 1
+    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}6-config
 
     #
     # Some tests
@@ -684,6 +695,17 @@ export CFLAGS_SHARED
     LD_LIBRARY_PATH=$PWD/lib
     export LD_LIBRARY_PATH PATH
     pushd tack/
+	OCFLAGS="$CFLAGS"
+	OLDFLAGS="$LDFLAGS"
+	OPKG_CONFIG_PATH="$PKG_CONFIG_PATH"
+	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/ -fPIE" \
+	LDFLAGS="$LDFLAGS  -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir} -pie" \
+	PKG_CONFIG_PATH=${PWD}/../pc/ \
+	%configtack --with-ncursesw --disable-rpath-hack
+	make %{?_smp_mflags}
+	CFLAGS="$OCFLAGS"
+	LDFLAGS="$OLDFLAGS"
+	PKG_CONFIG_PATH="$OPKG_CONFIG_PATH"
 	ldd ./tack
     popd
     unset LD_LIBRARY_PATH
@@ -706,11 +728,14 @@ export CFLAGS_SHARED
 	make install DESTDIR=${PWD} INSTALL_PROG=install TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
 %endif
 	mv usr usr.back
-cp Makefile Makefile.back
+	cp Makefile Makefile.back
 	make distclean
     popd
 %endif
 %endif
+    pushd tack/
+        make install DESTDIR=%{root} INSTALL_PROG=install
+    popd
     test ! -L tack || rm -f tack
     make clean
     #
@@ -775,8 +800,12 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
 	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
     done
-    bash %{S:6} --cflags "$(pkg-config --cflags ncurses5)" --libs "$(pkg-config --libs ncurses5)" \
-	%{root}%{_bindir}/ncurses5-config
+    echo $PKG_CONFIG_PATH
+    what=ncurses5
+    cflags="$(pkg-config --cflags $what)"
+      libs="$(pkg-config --libs   $what)"
+    test -n "$cflags" -a -n "$libs" || exit 1
+    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}-config
 
     #
     # Now use --disable-widec for narrow character support.
@@ -827,8 +856,13 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     popd
     mv -f %{root}%{_libdir}/pkgconfig/*.pc pc/
     sed -ri 's@^(Requires.private:).*@\1@' pc/*.pc
-    bash %{S:6} --cflags "$(pkg-config --cflags ncurses)" --libs "$(pkg-config --libs ncurses)" \
-	%{root}%{_bindir}/ncurses6-config
+    echo $PKG_CONFIG_PATH
+    what=ncurses
+    cflags="$(pkg-config --cflags $what)"
+      libs="$(pkg-config --libs   $what)"
+    test -n "$cflags" -a -n "$libs" || exit 1
+    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}6-config
+
     #
     # Some tests
     #
@@ -927,8 +961,12 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	sed -ri 's@^(Cflags:.*)(-I.*)@\1-I${includedir5} \2@' pc/${base}5.pc
 	sed -ri 's@^(Requires.private:).*@\1@'             pc/${base}5.pc
     done
-    bash %{S:6} --cflags "$(pkg-config --cflags ncursesw5)" --libs "$(pkg-config --libs ncursesw5)" \
-	%{root}%{_bindir}/ncursesw5-config
+    echo $PKG_CONFIG_PATH
+    what=ncursesw5
+    cflags="$(pkg-config --cflags $what)"
+      libs="$(pkg-config --libs   $what)"
+    test -n "$cflags" -a -n "$libs" || exit 1
+    bash %{S:6} --cflags "${cflags%%%% }" --libs "${libs%%%% }" %{root}%{_bindir}/${what}-config
 
 %install
 %if %{with usepcre2}

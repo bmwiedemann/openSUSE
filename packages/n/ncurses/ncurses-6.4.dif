@@ -18,8 +18,8 @@
  16 files changed, 207 insertions(+), 70 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2023-01-23 13:06:54.872588922 +0000
-@@ -6004,12 +6004,15 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2023-04-24 06:50:39.671979319 +0000
+@@ -5992,12 +5992,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -37,7 +37,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6019,7 +6022,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6007,7 +6010,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -46,7 +46,7 @@
  CF_EOF
  fi
  
-@@ -6059,7 +6062,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6047,7 +6050,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -55,7 +55,7 @@
  CF_EOF
  fi
  
-@@ -6068,23 +6071,23 @@ case "$MANPAGE_FORMAT" in
+@@ -6056,23 +6059,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -85,7 +85,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6093,7 +6096,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6081,7 +6084,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -94,7 +94,7 @@
  							then
  								continue
  							fi
-@@ -6103,18 +6106,18 @@ CF_EOF
+@@ -6091,18 +6094,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -116,7 +116,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -6134,9 +6137,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6122,9 +6125,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -129,7 +129,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6156,6 +6159,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6144,6 +6147,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -138,8 +138,8 @@
  esac
  done
 --- configure
-+++ configure	2023-01-23 13:08:03.243347215 +0000
-@@ -6463,7 +6463,7 @@ echo $ECHO_N "checking for an rpath opti
++++ configure	2023-04-24 06:52:13.042243156 +0000
+@@ -6437,7 +6437,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -148,7 +148,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -6836,8 +6836,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
+@@ -6810,8 +6810,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
  	else
  		cf_cv_shared_soname='`basename $@`'
  	fi
@@ -159,7 +159,7 @@
  		;;
  	(mingw*msvc*)
  		cf_cv_shlib_version=msvcdll
-@@ -8076,7 +8076,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -8050,7 +8050,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -168,7 +168,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15245,12 +15245,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15236,12 +15236,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -186,7 +186,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15260,7 +15263,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15251,7 +15254,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -195,7 +195,7 @@
  CF_EOF
  fi
  
-@@ -15300,7 +15303,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15291,7 +15294,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -204,7 +204,7 @@
  CF_EOF
  fi
  
-@@ -15309,23 +15312,23 @@ case "$MANPAGE_FORMAT" in
+@@ -15300,23 +15303,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -234,7 +234,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15334,7 +15337,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15325,7 +15328,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -243,7 +243,7 @@
  							then
  								continue
  							fi
-@@ -15344,18 +15347,18 @@ CF_EOF
+@@ -15335,18 +15338,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -265,7 +265,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15375,9 +15378,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15366,9 +15369,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -278,7 +278,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15397,6 +15400,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15388,6 +15391,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -336,7 +336,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames.in
-+++ man/man_db.renames.in	2023-01-23 13:00:47.039268881 +0000
++++ man/man_db.renames.in	2023-04-24 06:54:39.255524459 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -350,9 +350,9 @@
  #
  # Other:
 +tack.1				tack.1
- tack.1m				tack.1
- #
  getty.1				getty.8
+ scanf.3				scanf.3
+ ttys.5				ttys.4
 --- man/ncurses.3x
 +++ man/ncurses.3x	2023-01-23 13:00:47.039268881 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
@@ -806,7 +806,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2023-01-23 13:00:47.043268809 +0000
-@@ -1135,12 +1135,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1154,12 +1154,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */
