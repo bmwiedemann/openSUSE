@@ -35,4 +35,12 @@
     <comment>Don't use xmvn-tools as to avoid build cycles</comment>
     <requestid>973254</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a3cd5ae704fb8a8f5e130652fb6c242e</srcmd5>
+    <version>5.1.0</version>
+    <time>1683213014</time>
+    <user>dimstar_suse</user>
+    <comment>5.1.0</comment>
+    <requestid>1084445</requestid>
+  </revision>
 </revisionlist>

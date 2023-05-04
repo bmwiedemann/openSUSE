@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed May  3 11:27:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 5.1.0
+  * Changes of 4.2:
+    + Java 9 and JPMS support
+    + Multibindings are now in the Guice core artifact.
+      The multibindings artifact is empty to prevent confusion
+      during upgrading and will be removed in a later release.
+    + Improve the performance of guice provisioning (by about 20%)
+      by changing the way errors are reported. Guice will no longer
+      report multiple errors during provisioning (Guice still
+      reports multiple errors during injector creation).
+    + Better error messages for a missing binding.
+    + Various optimizations.
+    + AbstractModule.configure() is non-abstract to allow modules
+      with only @Provides/@ProvidesIntoSet/... methods.
+    + Add a CheckedProviders class.
+    + Change the way Singletons work to not rely on ThreadLocals nor
+      WeakReferences.
+    + Add MapBinderBinding.getEntries(Iterable).
+    + Deprecate ProvisionListener.ProvisionInvocation
+      .getDependencyChain().
+    + Ensure that Struts interceptors are populated even if they are
+      created after the injector (Fixes #1081, #1075).
+    + Add support for multibindings with annotations in the Guice
+      DaggerMethodScanner.
+  * Changes of 4.2.1
+    + Java10 support (updated cglib & asm).
+    + Minor updates to the testlib extension.
+  * Changes of 4.2.2
+    + Java11 support (updated cglib & asm)
+  * Changes of 4.2.3
+    + Java14 support (updated asm).
+    + Added Injector.getElements API, to expose all Element SPI
+      types from the Injector.
+    + Added Injector.getAllMembersInjectorInjectionPoints API,
+      to expose injection points created by arbitrary members
+      injection.
+    + Added getAlternateKeys to Multibinder SPI types
+      (MultibinderBinding, MapBinderBinding, OptionalBinderBinding),
+      to explicitly list the other keys these bindings are
+      available as.
+    + Scan for (and bind) @Provides-like methods in a consistent
+      ordering, rather than relying on the non-deterministic
+      Class.getDeclaredMembers ordering.
+    + Update DaggerAdapter to work with newer dagger code.
+    + Fixed a subtle bug with eager singleton evaluation.
+    + Updated @RequestScope's scope annotation to the JSR330 @Scope,
+      so it can be reused by non-Guice DI systems.
+    + Clarified the error message when an injectable constructor is
+      missing.
+    + Add deprecated overloads to various Modules methods, to make
+      it clearer when calling them is unnecessary.
+    + Added factory methods to Modules for common Binder
+      configuration methods, to make it easier to configure them.
+  * Changes of 5.0.1:
+    + Added Java15 support (updated asm and bug fixes).
+    + Removed cglib as a core dependency. (#1359)
+    + Improved error messages.
+    + Improved support for using Guice with Kotlin.
+    + Added a mechanism to restrict who can bind types or
+      annotations, to allow library authors to control their
+      bindings.
+    + Removed no-aop build variant.
+    + Fixed 'illegal reflective access' warnings.
+  * Changes of 5.1.0:
+    + This minor release adds support for Java 17.
+- Removed patches:
+  * google-guice-throwingproviderbinder.patch
+  * guice-4.1-disabledextensions.patch
+  * guice-4.1-fixup-ant.patch
+  * guice-4.1-javadoc.patch
+- Fetch sources using source service, which allows us to clean up
+  the tarball if needed
+- Generate the ant build system using the maven pom files.
+
+-------------------------------------------------------------------
 Wed Apr 27 11:52:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid using xmvn-resolve and xmvn-install in order to avoid
