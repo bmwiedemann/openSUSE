@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Apr 17 06:59:15 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.19.2 with the following bug fixes:
+  * Ignore global variant requirement for packages that do not define it.
+  * Compiler wrapper: improved parsing of linker arguments.
+  * Views: fix support for optional Python extensions.
+  * Views: fix issue where Python executable gets symlinked instead of copied.
+  * Fix a bug where tests were not added when concretizing together.
+  * Increase db timeout from 3s to 60s to improve stability of parallel
+    installs.
+  * Buildcache: improve error handling in downloads.
+  * Module files for packages installed from buildcache have long placeholder
+    paths abbreviated in configure args section.
+  * Ensure file with build environment variables is truncated when writing
+    to it.
+  * spack config update now works on active environments;
+- Add:
+  Add-zypper-to-the-valid-container.os_packages-commands.patch
+  This adds `zypper` to the valid OS package managers that can
+  be specified in a slack.yaml container description like:
+  spack:
+    ...
+    container:
+      ..
+      os_packages:
+        command: zypper
+	..
+- Add: spack_get_libs.sh
+  This scripts obtains library and include paths for spack-build
+  libraries and outputs shell commands which set these as
+  environment variables.
+  Additionally, it generates a command line to prepend these lib
+  directories to LD_LIBRARY_PATH. Thus, the variables can be set
+  in the current shell by running `source $(spack_get_libs.sh foo)`.
+  When using `bash` this script may also be sourced directly.
+  The names of the environment variables are the upper-cased library
+  names with the strings 'LIB_' and 'INC_' prepended. Thus, for a
+  library 'foo', they would be 'INC_FOO' and 'LIB_FOO'.
+  These variables may be used at build time to point the compiler
+  to the include and library files (bsc#1208751).
+- Drop:
+  Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch
+  This patch should not be needed. When building using `podman` use:
+  `podman build --format docker ...` to enable the non-OCI compliant
+  instructions in a Dockerfile.
+- Add info, makeinfo, libcurl-devel, patchelf to the recommended
+  packages to add.
+  Fix: openssl-devel -> libopenssl-devel
+
+-------------------------------------------------------------------
+Thu Apr  6 09:30:50 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add 'zypper' as valid command to container.os_packages. This
+  allows to build SUSE container using non-default registries.
+- Add 'awk', 'git', 'gzip' and 'gunzip' to the requires.
+- Add 'patchelf' to the recommended packages.
+
+-------------------------------------------------------------------
 Thu Mar 30 09:34:39 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Avoid running run-find-external.sh twice during installation/

@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 # These packages are found and can be used by spack, %{_sysconfdir}/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
 # Distinguish between packages we recommend and packages which
-%define spack_trigger_recommended_packages autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex git-lfs make m4 ncurses-devel libtool openssl-devel perl-base pkgconf pkg-config python3-base tar info xz xz-devel
+%define spack_trigger_recommended_packages autoconf bash bison bzip2 libzip-devel cmake-full ccache cpio diffutils findutils flex git-lfs info make makeinfo m4 ncurses-devel libtool libcurl-devel libopenssl-devel perl-base pkgconf pkg-config python3-base tar xz xz-devel patchelf
 
 %define spack_trigger_recommended_compilers  gcc gcc-c++ gcc-fortran
 
@@ -43,7 +43,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -55,6 +55,7 @@ Source3:        run-find-external.sh.in
 Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
 # Source5 is from https://docs.python.org/3/objects.inv, but has permanent changes so using a static version
 Source5:        objects.inv
+Source6:        spack_get_libs.sh
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch
 Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
@@ -62,7 +63,7 @@ Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inc
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
 Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
-Patch100:       Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch
+Patch10:        Add-zypper-to-the-valid-container.os_packages-commands.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod
@@ -71,12 +72,15 @@ BuildRequires:  python3-urllib3
 BuildRequires:  sudo
 BuildRequires:  sysuser-tools
 Requires:       %{name}-recipes = %{version}
+Requires:       awk
 Requires:       bzip2
 Requires:       coreutils
 Requires:       curl
 Requires:       gcc-c++
 Requires:       gcc-fortran
+Requires:       git
 Requires:       gpg2
+Requires:       gzip
 Requires:       libbz2-devel
 Requires:       lua-lmod
 Requires:       make
@@ -85,6 +89,7 @@ Requires:       polkit
 Requires:       python3-clingo
 Requires:       sudo
 Requires:       tar
+Requires:       unzip
 Requires:       xz
 Recommends:     %spack_trigger_recommended_packages %spack_trigger_recommended_compilers
 %else
@@ -304,6 +309,8 @@ cp -r var/spack/* %{buildroot}%{_localstatedir}/lib/spack
 mv %{buildroot}%{_localstatedir}/lib/spack/repos %{buildroot}%{_datarootdir}/spack
 cp -r bin/sbang %{buildroot}/%{_bindir}
 cp -r bin/spack* %{buildroot}%{_bindir}/
+cp %{S:6} %{buildroot}%{_bindir}/
+chmod 0755 %{buildroot}%{_bindir}/%{basename:%{S:6}}
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
 install -m 755 %{S:3} %{buildroot}/%{spack_dir}/run-find-external.sh
 sed -i -e 's#@@_sysconfdir@@#%{_sysconfdir}#' %{buildroot}/%{spack_dir}/run-find-external.sh

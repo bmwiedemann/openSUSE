@@ -1,0 +1,39 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Apr 6 11:29:30 2023 +0200
+Subject: Add 'zypper' to the valid container.os_packages commands
+Patch-mainline: Not yet
+Git-commit: 0614150f86a3554118f60614e9b0cfaf8fb2aa12
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ lib/spack/docs/containers.rst       | 2 +-
+ lib/spack/spack/schema/container.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+diff --git a/lib/spack/docs/containers.rst b/lib/spack/docs/containers.rst
+index 9c6f8a26..1452b6a0 100644
+--- a/lib/spack/docs/containers.rst
++++ b/lib/spack/docs/containers.rst
+@@ -498,7 +498,7 @@ to customize the generation of container recipes:
+      - No
+    * - ``os_packages:command``
+      - Tool used to manage system packages
+-     - ``apt``, ``yum``
++     - ``apt``, ``yum``, ``zypper``
+      - Only with custom base images
+    * - ``os_packages:update``
+      - Whether or not to update the list of available packages
+diff --git a/lib/spack/spack/schema/container.py b/lib/spack/spack/schema/container.py
+index b05199f8..7c98a1db 100644
+--- a/lib/spack/spack/schema/container.py
++++ b/lib/spack/spack/schema/container.py
+@@ -54,7 +54,7 @@
+         "os_packages": {
+             "type": "object",
+             "properties": {
+-                "command": {"type": "string", "enum": ["apt", "yum"]},
++                "command": {"type": "string", "enum": ["apt", "yum", "zypper"]},
+                 "update": {"type": "boolean"},
+                 "build": _list_of_packages,
+                 "final": _list_of_packages,
