@@ -250,4 +250,14 @@
     <comment></comment>
     <requestid>1081901</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>d7cdc0bcc46a623e73cbbf00ebc5ee33</srcmd5>
+    <version>20.1.0</version>
+    <time>1683212944</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084372 from dirkmueller
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1084405</requestid>
+  </revision>
 </revisionlist>

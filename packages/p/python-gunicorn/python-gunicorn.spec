@@ -25,7 +25,6 @@
 %bcond_with test
 %endif
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
 Version:        20.1.0
@@ -62,6 +61,7 @@ Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a pre-fork
 worker model ported from Ruby's Unicorn_ project. The Gunicorn server is broadly
 compatible with various web frameworks.
 
+%if 0%{?suse_version} > 1500
 %package -n python-gunicorn-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
@@ -73,6 +73,7 @@ worker model ported from Ruby's Unicorn_ project. The Gunicorn server is broadly
 compatible with various web frameworks.
 
 This package contains the documentation.
+%endif
 
 %prep
 %setup -q -n gunicorn-%{version}
@@ -109,8 +110,10 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %python_alternative %{_bindir}/gunicorn
 %{python_sitelib}/*
 
+%if 0%{?suse_version} > 1500
 %files -n python-gunicorn-doc
 %license LICENSE
+%endif
 %doc README.rst NOTICE THANKS docs/build/html
 %endif
 
