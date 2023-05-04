@@ -701,4 +701,37 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>1081822</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0c6889dd92398dab6ef418210926597d</srcmd5>
+    <version>5.9.5</version>
+    <time>1683212970</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.9.5:
+  * in case of exception, display a cleaner error
+    traceback by hiding the `KeyError` bit deriving from a
+    missed cache hit.
+  * print the full traceback when a `DeprecationWarning`
+    or `UserWarning` is raised.
+  * there are cases where `Process.cwd()`_ cannot be
+    determined (e.g. directory no longer exists), in which case
+    we returned either ``None`` or an empty string. 
+    This was consolidated and we now return ``&quot;&quot;`` on all
+    platforms.
+  * [UNIX]: if process is a zombie, and we can only
+    determine part of the its truncated `Process.name()`_
+    (15 chars), don't fail with `ZombieProcess`_ when we try
+    to guess the full name from the `Process.cmdline()`_. Just
+    return the truncated name.
+  * on certain kernels, ``&quot;MemAvailable&quot;`` field
+    from ``/proc/meminfo`` returns ``0`` (possibly a kernel bug), in
+    which case we calculate an approximation for ``available``
+    memory which matches &quot;free&quot; CLI utility.
+  * `disk_partitions()`_: do not unnecessarily
+    read /proc/filesystems and raise `AccessDenied`_ unless user
+    specified `all=False` argument.
+  * `users()`_ loses precision for ``started``
+    attribute (off by 1 minute).
+  * if cwd no longer exists. Return an empty string instead.</comment>
+    <requestid>1084220</requestid>
+  </revision>
 </revisionlist>

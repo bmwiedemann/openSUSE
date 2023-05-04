@@ -2,9 +2,11 @@
  psutil/_pslinux.py |   12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
---- a/psutil/_pslinux.py
-+++ b/psutil/_pslinux.py	2022-06-23 09:43:10.973822573 +0000
-@@ -473,12 +473,6 @@ def virtual_memory():
+Index: psutil-5.9.5/psutil/_pslinux.py
+===================================================================
+--- psutil-5.9.5.orig/psutil/_pslinux.py
++++ psutil-5.9.5/psutil/_pslinux.py
+@@ -474,12 +474,6 @@ def virtual_memory():
      except KeyError:
          slab = 0
  
@@ -17,8 +19,8 @@
      # - starting from 4.4.0 we match free's "available" column.
      #   Before 4.4.0 we calculated it as (free + buffers + cached)
      #   which matched htop.
-@@ -503,6 +497,12 @@ def virtual_memory():
-     if avail > total:
+@@ -510,6 +504,12 @@ def virtual_memory():
+         #     24fd2605c51fccc375ab0287cec33aa767f06718/proc/sysinfo.c#L764
          avail = free
  
 +    used = total - avail
