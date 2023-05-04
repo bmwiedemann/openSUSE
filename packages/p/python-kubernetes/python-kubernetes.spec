@@ -29,6 +29,7 @@ Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kube
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
@@ -39,6 +40,7 @@ BuildRequires:  %{python_module setuptools >= 21.0.0}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module urllib3 >= 1.24.2}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.4.1
@@ -61,10 +63,10 @@ Python client for kubernetes http://kubernetes.io/
 %autosetup -p1 -n kubernetes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -77,6 +79,7 @@ rm kubernetes/dynamic/test_discovery.py
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGELOG.md
-%{python_sitelib}/*
+%{python_sitelib}/kubernetes
+%{python_sitelib}/kubernetes-%{version}*-info
 
 %changelog

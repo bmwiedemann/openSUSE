@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  3 09:55:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- added: `%{python_sitelib}/kubernetes` and `%{python_sitelib}/kubernetes-%{version}*-info` under %files
+
+-------------------------------------------------------------------
+Wed May  3 09:53:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- replaced `%python_build` ->  `%pyproject_wheel`  and `%python_install` -> `%pyproject_install` 
+  * added:  BuildRequires:  %{python_module pip}
+  * added:  BuildRequires:  %{python_module wheel}
+
+-------------------------------------------------------------------
 Tue May  2 07:23:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - removed following conditional python_module macro definition, as it is present in recent versions of "python-rpm-macros"
