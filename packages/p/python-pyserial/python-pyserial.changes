@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 23 23:19:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch documentation to be within the main package.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -146,4 +146,14 @@ spec file cleaned from old TODO comments (forwarded request 174583 from HighwayS
     <comment></comment>
     <requestid>1081586</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>0b490081e56a3fe4990cb297bd1ee12b</srcmd5>
+    <version>3.5</version>
+    <time>1683212947</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084391 from dirkmueller
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1084410</requestid>
+  </revision>
 </revisionlist>

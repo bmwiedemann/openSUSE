@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pyserial
 Version:        3.5
@@ -40,6 +39,7 @@ BuildArch:      noarch
 %description
 Python Serial Port Extension for Win32, Linux, BSD, Jython, IronPython
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
@@ -48,6 +48,7 @@ Provides:       python3-pyserial-doc = %{version}
 
 %description -n %{name}-doc
 Documentation, examples, and help files for %{name}.
+%endif
 
 %prep
 %setup -q -n pyserial-%{version}
@@ -104,7 +105,9 @@ rm documentation/_build/doctrees/environment.pickle
 %{python_sitelib}/serial/
 %{python_sitelib}/pyserial-%{version}-py*.egg-info
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc examples/
 %doc documentation/_build/*
 
