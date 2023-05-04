@@ -24,9 +24,6 @@
 %else
 %define with_libnuma 0
 %endif
-%ifarch riscv64
-%global unregisterised_archs riscv64
-%endif
 # Keep in sync with ghc-bootstrap.spec
 %if 0%{?suse_version} > 1550
 %global llvm_major 14
@@ -77,8 +74,8 @@
 %{?with_haddock:%bcond_without manual}
 %endif
 
-%global ghc_llvm_archs s390x
-%global ghc_unregisterized_arches riscv64
+%global ghc_llvm_archs s390x riscv64
+%global ghc_unregisterized_arches noarch
 
 %global base_ver 4.17.1.0
 %global ghc_compact_ver 0.1.0.0
@@ -110,7 +107,6 @@ Patch7:         execstack.patch
 Patch8:         fix_extlinks.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
-Patch120:       libatomic.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-PIE
@@ -125,9 +121,9 @@ BuildRequires:  libelf-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libtool
 %ifarch s390x riscv64
+BuildRequires:  clang%{llvm_major}
 BuildRequires:  llvm%{llvm_major}
 BuildRequires:  llvm%{llvm_major}-devel
-BuildRequires:  clang%{llvm_major}
 %endif
 BuildRequires:  memory-constraints
 BuildRequires:  ncurses-devel
@@ -184,9 +180,9 @@ Haskell home page at <http://www.haskell.org/>.
 %package compiler
 Summary:        GHC compiler and utilities
 License:        BSD-3-Clause
+Requires:       %{name}-filesystem = %{version}-%{release}
 Requires:       gcc
 Requires:       ghc-base-devel = %{base_ver}-%{release}
-Requires:       %{name}-filesystem = %{version}-%{release}
 Provides:       hsc2hs-%{hsc2hs_ver}-%{release}
 %ifarch riscv64 s390x
 Requires:       clang%{llvm_major}
@@ -228,7 +224,6 @@ This package provides some common directories used for
 Haskell libraries documentation.
 %endif
 
-
 %if %{with manual}
 %package manual
 Summary:        GHC manual
@@ -239,7 +234,6 @@ BuildArch:      noarch
 %description manual
 This package provides the User Guide and Haddock manual.
 %endif
-
 
 %global ghc_version_override %{version}
 %global ghc_pkg_c_deps ghc-compiler = %{ghc_version_override}-%{release}
@@ -317,7 +311,6 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %patch3 -p1
 %endif
 %patch35 -p1
-%patch120 -p1
 %ifarch ppc64 ppc64le s390x riscv64
 %patch200 -p1
 %endif
@@ -339,7 +332,6 @@ autoupdate
 
 python3 boot.source --hadrian
 
-
 ./configure --prefix=%{_prefix} --exec-prefix=%{_exec_prefix} \
   --bindir=%{_bindir} --sbindir=%{_sbindir} --sysconfdir=%{_sysconfdir} \
   --datadir=%{_datadir} --includedir=%{_includedir} --libdir=%{_libdir} \
@@ -354,12 +346,10 @@ python3 boot.source --hadrian
 
 %undefine _ghcdynlibdir
 
-
 %ifarch %{ghc_llvm_archs}
 %global hadrian_llvm +llvm
 %endif
 %define hadrian_docs %{!?with_haddock:--docs=no-haddocks} %{!?with_manual:--docs=no-sphinx}%{?with_manual:--docs=no-sphinx-pdfs --docs=no-sphinx-man}
-
 
 %if 0%{?suse_version} >= 1500
 %ifarch %{unregisterised_archs} riscv64
@@ -376,7 +366,6 @@ python3 boot.source --hadrian
 %{hadrian} -j1 --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:perf%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} binary-dist-dir
 %endif
 
-
 %install
 
 (
@@ -390,8 +379,6 @@ echo "%{ghclibplatform}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf
 for i in $(find %{buildroot} -type f -executable -exec sh -c "file {} | grep -q 'dynamically linked'" \; -print); do
   chrpath -d $i
 done
-
-
 
 # containers src moved to a subdir
 cp -p libraries/containers/containers/LICENSE libraries/containers/LICENSE
@@ -543,10 +530,9 @@ rm testghc/*
 
 $GHC --info
 
-
 %post base -p /sbin/ldconfig
 %postun base -p /sbin/ldconfig
- 
+
 %transfiletriggerin compiler -- %{ghcliblib}/package.conf.d
 %ghc_pkg_recache
 %end
@@ -559,7 +545,7 @@ $GHC --info
 %license LICENSE
 %dir %{ghcliblib}
 %dir %{ghclibdir}
-%dir %{ghcliblib}/%{ghcplatform} 
+%dir %{ghcliblib}/%{ghcplatform}
 
 %files compiler
 %license LICENSE

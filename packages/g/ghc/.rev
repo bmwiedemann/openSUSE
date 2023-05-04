@@ -986,4 +986,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
 -&gt; https://downloads.haskell.org/~ghc/9.4.5/docs/users_guide/9.4.5-notes.html</comment>
     <requestid>1081178</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>f33dbee2e81893fd63be13322fed6c6f</srcmd5>
+    <version>9.4.5</version>
+    <time>1683212999</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1084245</requestid>
+  </revision>
 </revisionlist>

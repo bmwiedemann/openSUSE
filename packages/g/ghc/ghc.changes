@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 21 17:57:46 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- libatomic.patch: Remove obsolete patch
+- Don't enable unregisterised on riscv64
+- Adjust constraints
+
+-------------------------------------------------------------------
 Wed Apr 19 08:44:04 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.4.5

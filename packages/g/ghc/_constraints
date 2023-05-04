@@ -23,9 +23,12 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <physicalmemory>
-        <size unit="G">32</size>
-      </physicalmemory>
+      <memory>
+        <size unit="G">26</size>
+      </memory>
+      <disk>
+	<size unit="G">25</size>
+      </disk> 
     </hardware>
   </overwrite>
 </constraints>
