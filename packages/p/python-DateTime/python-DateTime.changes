@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 15:43:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1:
+  * Add missing ``python_requires`` to ``setup.py``.
+
+-------------------------------------------------------------------
 Fri Jan 13 09:40:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0:

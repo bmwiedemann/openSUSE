@@ -53,4 +53,13 @@
   * Drop support for Python 2.7, 3.5, 3.6.</comment>
     <requestid>1058185</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>40efbb7b5c1bb854f94a3d68bde6a4c4</srcmd5>
+    <version>5.1</version>
+    <time>1683213041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1:
+  * Add missing ``python_requires`` to ``setup.py``.</comment>
+    <requestid>1084453</requestid>
+  </revision>
 </revisionlist>
