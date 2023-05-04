@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 30 03:06:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.32
+   see /usr/share/doc/packages/perl-Data-Visitor/Changes
+
+  0.32      2023-04-29 10:07:45Z
+      - removed an unnecessary use of Sub::Name (haarg, PR #1)
+
+-------------------------------------------------------------------
 Mon Aug  3 03:07:46 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.31
