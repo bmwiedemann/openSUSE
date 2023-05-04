@@ -400,4 +400,14 @@
     <comment></comment>
     <requestid>1081787</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>dbb1bcd74beb86f910ea825db375ac73</srcmd5>
+    <version>7.45.2</version>
+    <time>1683212946</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084390 from dirkmueller
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1084409</requestid>
+  </revision>
 </revisionlist>
