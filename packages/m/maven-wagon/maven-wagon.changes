@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed May  3 11:20:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.5.3
+  * Bug
+    + [WAGON-627] Maven deploy fails with 401 Unauthorized when
+      using £ in password
+    + [WAGON-628] Default connect timeout not set when no
+      HttpMethodConfiguration is available
+  * Improvement
+    + [WAGON-629] Properly handle authentication scenarios with
+      MKCOL
+  * Task
+    + [WAGON-619] Remove shading of JSoup
+    + [WAGON-614] Deprecate Wagon FTP Provider
+    + [WAGON-615] Deprecate Wagon HTTP Lightweight Provider
+    + [WAGON-616] Deprecate Wagon SSH Provider
+    + [WAGON-617] Deprecate Wagon WebDAV Provider
+    + [WAGON-618] Remove HTTP file listing with JSoup
+  * Dependency upgrade
+    + [WAGON-620] Upgrade SLF4J to 1.7.32
+    + [WAGON-621] Upgrade JUnit to 4.13.2
+    + [WAGON-622] Upgrade Plexus Interactivity to 1.1
+    + [WAGON-623] Upgrade HttpCore to 4.4.15
+    + [WAGON-631] Upgrade and clean up dependencies
+
+-------------------------------------------------------------------
 Wed Apr 28 12:00:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.4.3

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-wagon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-wagon
-Version:        3.4.3
+Version:        3.5.3
 Release:        0
 Summary:        Tools to manage artifacts and deployment
 License:        Apache-2.0
