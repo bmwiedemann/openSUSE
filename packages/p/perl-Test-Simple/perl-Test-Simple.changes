@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:13:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302195
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302195  2023-04-28 05:55:54-07:00 America/Los_Angeles
+
+      - Fix done_testing(0) producing 2 plans and an incorrect message
+
+-------------------------------------------------------------------
 Fri Apr 21 03:09:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302194
