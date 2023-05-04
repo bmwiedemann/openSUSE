@@ -143,6 +143,8 @@ cp -a %{SOURCE1} .
 rm -vf %{buildroot}%{_libdir}/libica*.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
+rm %{buildroot}/%{_sysconfdir}/libica/openssl3-fips.cnf
+rmdir %{buildroot}/%{_sysconfdir}/libica
 
 %check
 %make_build check FIPSHMAC=fipshmac
@@ -172,7 +174,6 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 %{_libdir}/libica-cex.so.%{major}
 %{_libdir}/.libica-cex.so.%{version}.hmac
 %{_libdir}/.libica-cex.so.%{major}.hmac
-%dir %{_sysconfdir}/libica
 
 %files tools
 %license LICENSE
