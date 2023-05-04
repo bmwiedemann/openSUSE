@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 11:20:42 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use sphinx-build and do not depend on removed build_sphinx
+  in Sphinx 7.0 (boo#1211051).
+
+-------------------------------------------------------------------
 Sun Apr 23 22:40:43 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch documentation to be within the main package for SLE15
