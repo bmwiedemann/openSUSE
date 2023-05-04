@@ -275,4 +275,15 @@
     <comment>- update to version 2.1.2 (bsc#1200126, CVE-2022-31015):</comment>
     <requestid>1004640</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>f2a390fdc658e6e294b9902934306ec5</srcmd5>
+    <version>2.1.2</version>
+    <time>1683212985</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sphinx-build and do not depend on removed build_sphinx
+  in Sphinx 7.0 (boo#1211051).
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1084290</requestid>
+  </revision>
 </revisionlist>

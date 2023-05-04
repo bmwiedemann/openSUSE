@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@
 %else
 %bcond_with libalternatives
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-waitress%{psuffix}
 Version:        2.1.2
 Release:        0
@@ -118,7 +119,7 @@ This package contains documentation files for %{name}.
 cp %{SOURCE1} docs/
 
 %build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo
 
 %files %{python_files}
 %license LICENSE.txt

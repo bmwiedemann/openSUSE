@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  3 11:10:33 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use sphinx-build and do not depend on removed build_sphinx
+  in Sphinx 7.0 (boo#1211051).
+
+-------------------------------------------------------------------
+Fri Apr 21 12:39:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Thu Aug 18 20:45:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove code coverage checking for packaging tests
