@@ -46,6 +46,8 @@ Source99:       gtk4-rpmlintrc
 # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
 # PATCH-FIX-OPENSUSE 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch -- Revert "Meson: Simplify pkgconfig file generator"
 Patch0:         0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+# PATCH-FIX-UPSTREAM gtk4-correctly-refresh-after-delete.patch glgo#GNOME/nautilus#2941 badshah400@gmail.com -- Deleting files causes folders in the directory to disappear and reappear after a refresh
+Patch1:         https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/5873.patch#/gtk4-correctly-refresh-after-delete.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas

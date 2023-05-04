@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 05:58:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add gtk4-correctly-refresh-after-delete.patch -- Fix issue where
+  deleting files causes folders in the directory to disappear and
+  reappear after a refresh (glgo#GNOME/nautilus#2941); patch taken
+  from upstream commit.
+
+-------------------------------------------------------------------
 Thu Apr 27 09:23:57 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Do not build media playback when bootstrapping on Workbench.
