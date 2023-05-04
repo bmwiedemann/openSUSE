@@ -12,7 +12,7 @@
         <profile name="kvm-and-xen" description="Minimal Image for KVM and Xen" arch="aarch64,x86_64"/>
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
-        <profile name="Cloud" description="Minimal Image for Cloud" arch="x86_64"/>
+        <profile name="Cloud" description="Minimal Image for Cloud" arch="aarch64,x86_64"/>
         <profile name="RaspberryPi" description="Minimal Image for the Raspberry Pi" arch="aarch64"/>
     </profiles>
     <preferences profiles="kvm-and-xen" arch="x86_64">
