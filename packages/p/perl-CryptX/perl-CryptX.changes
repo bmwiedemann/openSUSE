@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:06:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.078
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.078   2023-04-28
+          - fix #89 Crypt::Mac::HMAC b64mac and b64umac object methods do not work
+
+-------------------------------------------------------------------
 Mon Aug 22 03:06:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.077
