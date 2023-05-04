@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ This package adds Python 3 support and bug fixes to MySQLdb1.
 %if !%{with test}
 %python_build
 
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+sphinx-build -b html doc build/sphinx/html && rm build/sphinx/html/.buildinfo
 %endif
 
 %check
