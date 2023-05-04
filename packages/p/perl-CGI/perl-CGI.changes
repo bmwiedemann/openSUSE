@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  3 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.57
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.57 2023-05-01
+
+      [ DOCUMENTATION ]
+      - Documentation tweaks around uploadInfo() and hooks (GH #256, thanks to rlauer6)
+
+-------------------------------------------------------------------
 Sat Mar  4 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.56
