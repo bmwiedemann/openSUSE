@@ -52,6 +52,7 @@ to add search functionality to applications and websites. Every part
 of how Whoosh works can be extended or replaced to meet specific
 needs.
 
+%if 0%{?suse_version} > 1500
 %package -n python-Whoosh-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
@@ -64,9 +65,13 @@ of how Whoosh works can be extended or replaced to meet specific
 needs.
 
 This package contains the documentation.
+%endif
 
 %prep
 %autosetup -p1 -n Whoosh-%{version}
+
+# Fix CRLF->LF
+sed -i -e 's/\r$//' docs/source/api/filedb/{filestore,filetables,structfile}.rst
 
 %build
 %python_build

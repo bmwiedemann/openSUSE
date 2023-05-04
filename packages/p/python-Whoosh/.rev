@@ -72,4 +72,12 @@
 </comment>
     <requestid>1083919</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>ff83eb9ef970473b70af786dd3e89554</srcmd5>
+    <version>2.7.4</version>
+    <time>1683212975</time>
+    <user>dimstar_suse</user>
+    <comment>- fix line endings</comment>
+    <requestid>1084256</requestid>
+  </revision>
 </revisionlist>
