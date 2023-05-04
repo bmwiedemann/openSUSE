@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May  1 03:07:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.40 - 30 April 2023
+   - Note usage with dzil (Steve Rogerson) (GH-319)
+   - Fix html_basic report (jkahrman) (GH-318)
+   - Use CPAN::Meta (Slaven Rezić) (GH-314)
+   - Make non-interactive output less noisy (jkahrman) (GH-312)
+   - Avoid infinite recursion in Type::Tiny and other places (Ed J) (GH-307)
+   - Add ignore_covered_err option (Tina Müller) (GH-323)
+   - Handle empty hashes and arrays on condition RHS in 5.37.6 and later
+
+  1.39 - 29 April 2023
+   - Remove dependency on B::Debug (Jim Keenan) (GH-289)
+   - Raise minimum version to 5.12
+   - Correct spelling of Pod::Coverage trustme parameter (Oliver Youle) (GH-302)
+   - Fix annotations in html_basic report (Opera Wang) (GH-310)
+
+-------------------------------------------------------------------
 Mon Jun  6 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.38
