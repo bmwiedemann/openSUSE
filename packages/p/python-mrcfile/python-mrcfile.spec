@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-mrcfile
 Version:        1.4.3
 Release:        0
@@ -22,8 +23,8 @@ Summary:        MRC file I/O library
 License:        BSD-3-Clause
 URL:            https://github.com/ccpem/mrcfile
 Source:         https://github.com/ccpem/mrcfile/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.16.0}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +37,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-MRC file I/O library
+A Python implementation of the MRC2014 file format, which
+is used in structural biology to store image and volume data.
 
 %prep
 %autosetup -p1 -n mrcfile-%{version}
