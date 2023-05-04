@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 04 13:39:53 UTC 2023 - trenn@suse.de
+
+- Update to version 1.2.169+git.a693485:
+  * fix: run isort on remaining files
+  * fix: Remove unsupported cobbler_server from django admin panel
+
+-------------------------------------------------------------------
+Wed May 03 13:49:46 UTC 2023 - laurin.faeller@suse.com
+
+- Update to version 1.2.166+git.1eaf582:
+  * Refactor Domain-CobblerServer relationship to 0:1
+  * Fix circular import (#201)
+  * IPv4 and IPv6 internal machine object attribute needs updating when moving domain
+  * Use get on clean_data dictionary and consistently remove self when using the variable
+  * ci: Add isort linter to github actions
+  * fix: Run isort for more idiomatic imports
+  * Add architecture validation to machine admin panel
+  * Implement naive FQDN Change
+
+-------------------------------------------------------------------
 Tue Mar 21 08:08:08 UTC 2023 - laurin.faeller@suse.com
 
 - Update to version 1.2.154+git.40b86d2:
