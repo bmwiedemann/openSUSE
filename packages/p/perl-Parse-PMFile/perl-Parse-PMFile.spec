@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Parse-PMFile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-Name:           perl-Parse-PMFile
-Version:        0.43
-Release:        0
 %define cpan_name Parse-PMFile
-Summary:        Parses .pm file as PAUSE does
+Name:           perl-Parse-PMFile
+Version:        0.44
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Parses .pm file as PAUSE does
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.08
+BuildRequires:  perl(ExtUtils::MakeMaker::CPANfile) >= 0.09
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(JSON::PP) >= 2.00
 BuildRequires:  perl(Test::More) >= 0.88
@@ -50,11 +48,11 @@ This module doesn't provide features to extract a distribution or parse
 meta files intentionally.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -65,7 +63,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

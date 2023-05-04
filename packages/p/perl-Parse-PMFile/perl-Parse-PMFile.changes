@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 28 03:07:24 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.44
+   see /usr/share/doc/packages/perl-Parse-PMFile/Changes
+
+  0.44 2023/04/27
+    - Allow to parse class|role NAME VERSION
+
+-------------------------------------------------------------------
 Sat Dec 12 03:08:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.43
