@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global subname connector
 %bcond_with tests
 Name:           %{parent}-%{subname}
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        XMvn Connector for Maven Resolver
 License:        Apache-2.0
@@ -28,25 +28,14 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Source1:        %{parent}-build.tar.xz
-Patch1:         0001-Mimic-maven-javadoc-plugin-for-source-and-release.patch
-Patch2:         0002-module-path-not-allowed-with-release-8.patch
-Patch3:         0001-Simple-implementation-of-toolchains-https-github.com.patch
-Patch4:         0001-Restore-possibility-to-build-with-Java-8.patch
-Patch5:         0002-Revert-Update-compiler-source-target-to-JDK-11.patch
-Patch6:         0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
-Patch7:         0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
-Patch8:         0001-Port-to-Maven-3.8.5.patch
 BuildRequires:  %{parent}-api = %{version}
 BuildRequires:  %{parent}-core = %{version}
 BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  guava
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
-BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  xmvn-install
@@ -103,26 +92,14 @@ popd
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
-    commons-cli \
-    guava/guava \
-    guice/google-guice-no_aop \
-    jdom2/jdom2 \
     maven/maven-artifact \
     maven/maven-core \
     maven/maven-model \
     maven/maven-model-builder \
     maven/maven-plugin-api \
     maven-resolver/maven-resolver-api \
-    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus-classworlds \
-    plexus/cli \
-    plexus-containers/plexus-component-annotations \
-    plexus-metadata-generator \
-    plexus/utils \
-    qdox \
-    xbean/xbean-reflect \
     %{parent}/%{parent}-api
 
 pushd %{name}

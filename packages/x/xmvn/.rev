@@ -95,4 +95,12 @@
     <comment>Unnecessary dependency</comment>
     <requestid>984862</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2569d1e95ca7f1b11ff3ee5ba204baf2</srcmd5>
+    <version>4.2.0</version>
+    <time>1683213009</time>
+    <user>dimstar_suse</user>
+    <comment>4.2.0</comment>
+    <requestid>1084306</requestid>
+  </revision>
 </revisionlist>

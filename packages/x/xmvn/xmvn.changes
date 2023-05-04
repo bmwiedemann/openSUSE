@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed May  3 09:26:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.2.0
+  * Changes:
+    + Make XMvn Resolver log to XMvn Logger
+    + Make XMvn Subst log to XMvn Logger
+    + Depend on junit-jupiter-api instead of junit-jupiter
+    + Suppress deprecation warnings in MavenExtensionTest
+    + Remove XMvn Connector dependency on Plexus Utils
+    + Remove XMvn MOJO dependency on Plexus Utils
+    + Port XMvn MOJO from Xpp3Dom to StAX
+    + Update Maven to version 3.9.1
+    + Don't pass duplicate --patch-module to javadoc
+    + Make Javadoc MOJO respect ignoreJPMS configuration flag
+    + Propagate javadoc output througt Logger
+    + Remove dependency on Plexus Classworlds
+    + Remove unneeded managed dependency on maven-invoker
+    + Use ServiceLocator to find Logger
+    + Use parametrized logging feature
+    + Use XMvn Logger instead of Plexus Logger
+    + Get rid of Slf4jLoggerAdapter
+    + Drop support for Gossip logger
+    + Move XMvn Logger to API module
+    + Ignore JPMS when all modules are automatic
+    + Refactor Javadoc MOJO
+    + Make Javadoc not fail when no sources are found
+    + Add an integration test for javadoc generation with
+      module-info.java but no sources
+    + Add an integration test for javadoc generation with
+      Automatic-Module-Name
+    + Make Javadoc MOJO work in case one of JPMS modules has no
+      sources
+    + Prioritize certain XMvn components over Maven components
+    + Port XMvn MOJO to JSR-330
+    + Refactor XMvnMojoExecutionConfigurator
+    + Make builddep MOJO compatible with Maven 4
+    + Port to JSR-330
+    + Get rid of ModelProcessor
+    + Refactor XMvnModelValidator
+    + Refactor XMvnToolchainManager
+    + Convert lambda to method reference
+    + Improve Javadoc MOJO JPMS support
+    + Add a test case for JPMS javadoc generation with remote
+      dependencies
+    + Add a test case for JPMS multimodule javadoc generation
+    + Exclude src/test/resources-filtered/** from RAT
+    + Fix scope of xmvn-mojo dependency on plexus-utils
+    + --module-path not allowed with release=8
+    + Mimic maven-javadoc-plugin for -source and --release
+    + testJavadocJPMS needs a modular java
+    + Let modello generate source 8
+    + Add a jdk9+ profile to assure that we are jdk8 compatible
+    + Revert "Use new Collection methods added in Java 9"
+    + Revert "Update compiler source/target to JDK 11"
+    + Restore possibility to build with Java 8
+    + Simple implementation of toolchains
+      https://github.com/fedora-java/xmvn/issues/142
+    + Port to Modello 2.0.0
+
+-------------------------------------------------------------------
 Tue May 10 12:36:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.0.0

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent xmvn
 %global subname tools
 Name:           %{parent}-%{subname}
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        Local Extensions for Apache Maven
 License:        Apache-2.0
@@ -27,27 +27,17 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/xmvn/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Source1:        %{parent}-build.tar.xz
-Patch1:         0001-Mimic-maven-javadoc-plugin-for-source-and-release.patch
-Patch2:         0002-module-path-not-allowed-with-release-8.patch
-Patch3:         0001-Simple-implementation-of-toolchains-https-github.com.patch
-Patch4:         0001-Restore-possibility-to-build-with-Java-8.patch
-Patch5:         0002-Revert-Update-compiler-source-target-to-JDK-11.patch
-Patch6:         0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
-Patch7:         0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
-Patch8:         0001-Port-to-Maven-3.8.5.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
-BuildRequires:  beust-jcommander
+BuildRequires:  atinject
+BuildRequires:  beust-jcommander >= 1.82
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  maven-invoker >= 3.0
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
-BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-containers-container-default
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
+BuildRequires:  sisu-inject
+BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildArch:      noarch
 
@@ -81,7 +71,7 @@ Summary:        XMvn Resolver
 Group:          Development/Tools/Building
 Requires:       %{parent}-api = %{version}
 Requires:       %{parent}-core = %{version}
-Requires:       beust-jcommander
+Requires:       beust-jcommander >= 1.82
 Requires:       javapackages-tools
 
 %description -n %{parent}-resolve
@@ -165,23 +155,27 @@ rm -f xmvn-core/src/test/java/org/fedoraproject/xmvn/resolver/JavaHomeResolverTe
 for i in api core; do
   %pom_xpath_inject "pom:project" "
      <groupId>org.fedoraproject.xmvn</groupId>
-	 <version>%{version}</version>" %{parent}-${i}
+     <version>%{version}</version>" %{parent}-${i}
   %pom_remove_parent %{parent}-${i}
 done
 for i in install resolve subst; do
   %pom_xpath_inject "pom:project" "
      <groupId>org.fedoraproject.xmvn</groupId>
-	 <version>%{version}</version>" %{parent}-tools/%{parent}-${i}
+     <version>%{version}</version>" %{parent}-tools/%{parent}-${i}
   %pom_remove_parent %{parent}-tools/%{parent}-${i}
 done
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	beust-jcommander commons-compress maven-invoker/maven-invoker \
-	objectweb-asm/asm plexus-containers/plexus-component-annotations \
-	plexus-containers/plexus-container-default plexus/utils slf4j/api \
-	maven-shared-utils/maven-shared-utils
+  atinject \
+  beust-jcommander \
+  commons-compress \
+  objectweb-asm/asm \
+  org.eclipse.sisu.inject \
+  org.eclipse.sisu.plexus \
+  slf4j/api
+
 %{ant} -Dtest.skip=true package javadoc
 
 %install

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,13 @@
 %global parent xmvn
 %global subname parent
 Name:           %{parent}-%{subname}
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        XMvn Parent POM
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
-Patch1:         0001-Mimic-maven-javadoc-plugin-for-source-and-release.patch
-Patch2:         0002-module-path-not-allowed-with-release-8.patch
-Patch3:         0001-Simple-implementation-of-toolchains-https-github.com.patch
-Patch4:         0001-Restore-possibility-to-build-with-Java-8.patch
-Patch5:         0002-Revert-Update-compiler-source-target-to-JDK-11.patch
-Patch6:         0003-Revert-Use-new-Collection-methods-added-in-Java-9.patch
-Patch7:         0004-Add-a-jdk9-profile-to-assure-that-we-are-jdk8-compat.patch
-Patch8:         0001-Port-to-Maven-3.8.5.patch
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
