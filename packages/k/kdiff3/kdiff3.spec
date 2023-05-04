@@ -18,11 +18,10 @@
 
 %bcond_without released
 Name:           kdiff3
-Version:        1.10.0
+Version:        1.10.2
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Version Control
 URL:            https://apps.kde.org/kdiff3
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -30,7 +29,7 @@ Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source2:        kdiff3.keyring
 %endif
 # PATCH-FIX-OPENSUSE
-Patch:          Fix-linking-with-boost-1.75.0.patch
+Patch0:         Fix-linking-with-boost-1.75.0.patch
 %if 0%{?suse_version} <= 1500
 BuildRequires:  libboost_headers1_75_0-devel
 %else

@@ -1,4 +1,4 @@
-From d1f6385c0838602bce35f02087556f978d7c074b Mon Sep 17 00:00:00 2001
+From e446ad2f7fd795d7d2afa654262c77cdbc45ea4a Mon Sep 17 00:00:00 2001
 From: Wolfgang Bauer <wbauer@tmo.at>
 Date: Tue, 17 Jan 2023 11:33:47 +0100
 Subject: [PATCH] Fix linking with boost 1.75.0
@@ -12,14 +12,14 @@ See https://github.com/boostorg/safe_numerics/issues/106 .
 As a (ugly) workaround, override the function that breaks kdiff3's build
 to be inline before including the boost headers (when using 1.75.0).
 ---
- src/TypeUtils.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ src/TypeUtils.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 diff --git a/src/TypeUtils.h b/src/TypeUtils.h
-index de2265f0..459a5777 100644
+index a9c3ba2..ab735ba 100644
 --- a/src/TypeUtils.h
 +++ b/src/TypeUtils.h
-@@ -14,6 +14,16 @@
+@@ -14,6 +14,17 @@
  #include <type_traits>
  #include <limits>
  
@@ -33,9 +33,10 @@ index de2265f0..459a5777 100644
 +	inline const char * literal_string(const safe_numerics_error & e);
 +}
 +#endif
++
+ #include <boost/safe_numerics/automatic.hpp>
  #include <boost/safe_numerics/safe_integer.hpp>
  
- #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 -- 
-2.35.3
+2.40.1
 

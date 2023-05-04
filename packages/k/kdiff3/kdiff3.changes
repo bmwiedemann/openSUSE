@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  3 13:42:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.2
+  * Prevent false error due to faulty check when
+    m_pOptions->m_bDiff3AlignBC = true
+  * fix crash when word wrap enabled (kde#468492)
+  * Rework KDiff3App::completeInit to avoid crash on exit in auto
+    mode
+  * "Escape" shortcut ignored if merge output in focus (kde#467652)
+  * save and restore dock states (kde#466522)
+  * Show UI before comparison start (kde#439148)
+  * Don't crash on broken links (kde#466241)
+  * Fix memory safety issues during reload. (kde#466524)
+  * Fix mishandling line count for files containing '0x0b'
+
+-------------------------------------------------------------------
 Tue Jan 17 10:37:52 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.10.0

@@ -347,4 +347,12 @@
     <comment></comment>
     <requestid>1058975</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3426dae7da0b75f2249285dcc2c5d4b6</srcmd5>
+    <version>1.10.2</version>
+    <time>1683213045</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.10.2</comment>
+    <requestid>1084460</requestid>
+  </revision>
 </revisionlist>
