@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May  3 07:38:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.1:
+  * Small maintenance update that fixes building the gdk-pixbuf
+    loader.
+  * The source package name has also been changed back to the old
+    naming scheme.
+  * Support for HEIFv2 regions (rgan) and user annotations
+    (udes). This enables to annotate regions in the image with
+    several geometric primitives and assign user text
+    descriptions to them. Thank you @bradh for the contributions.
+    Mask support will be added soon.
+  * Previously, chroma was downsampled and upsampled with a
+    simple nearest-neighbor method. We now included the sharp-yuv
+    chroma downsampling algorithm. This gives improved image
+    quality when images are downsampled to 4:2:0 and upsampled
+    with bilinear interpolation. Thank you @maryla-uc for the
+    contributions.
+  * The bilinear chroma upsampling and averaging downsampling
+    algorithms are also new. You can choose what to use.
+  * We added experimental support for decoding uncompressed
+    images according to ISO/IEC 23001-17:2023. This is work in
+    progress and currently decoding only. Thank you @bradh for
+    the contributions.
+  * There are new APIs to query the image transformations. Thus,
+    you may choose to get the original image and apply the
+    transformations yourself.
+  * A longstanding bug writing non-compliant 'ispe' boxes (image
+    size) has been fixed. Files should be standard compliant now.
+  * When building binary packages, you can now make use of a
+    CMake presets to set a default configuration.
+  * The deprecated autotools build files have been removed.
+
+-------------------------------------------------------------------
 Thu Mar 30 18:46:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.15.2
