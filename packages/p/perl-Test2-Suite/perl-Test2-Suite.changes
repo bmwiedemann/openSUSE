@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:14:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000155
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000155  2023-04-28 08:28:42-07:00 America/Los_Angeles
+      - Fix #247
+      - Fix changes file
+  0.000154  2023-04-28 05:57:58-07:00 America/Los_Angeles
+      - Fix 00-report.t
+  0.000153  2023-04-27 15:27:32-07:00 America/Los_Angeles
+      - Fix broken call to plugins
+  0.000152  2023-04-27 02:52:44-07:00 America/Los_Angeles
+      - Inline Importer.pm for core support
+  0.000151  2023-04-27 02:35:37-07:00 America/Los_Angeles
+      - The following are all in hopes of getting Test2:Suite into core.
+      - Make Module::Pluggable optional
+      - Inline Scope::Guard
+      - Inline Sub::Info
+      - Do not recommend Sub::Name
+
+-------------------------------------------------------------------
 Fri Apr 21 03:10:31 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000150
