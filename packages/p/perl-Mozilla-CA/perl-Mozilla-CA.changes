@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Wed Nov 23 17:30:33 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Remove modifying of mk-ca-bundle.pl and update-cacert-file (not present
+  in distribution anymore)
+
+-------------------------------------------------------------------
+Tue Nov 15 03:07:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20221114
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  Revision history for Mozilla-CA
+
+  20221114
+    - Update from Mozilla repository to 2022-11-07
+    - stop installing mk-ca-bundle.pl script
+    - moved repository and issues to https://github.com/libwww-perl/Mozilla-CA
+    - switched tests from Test to Test::More
+    - fix license specification in metadata
+
+-------------------------------------------------------------------
+Sat Oct  2 03:09:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20211001
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20211001
+    - Update mk-ca-bundle.pl and Mozilla data to 2021-10-01 (Aaron Rowe)
+    - Improve metadata for license information (Shoichi Kaji)
+
+  20200520
+    - Update from Mozilla repository to 2020-05-20
+    - Update bundled mk-ca-bundle.pl from upstream.
+
+-------------------------------------------------------------------
+Thu May 21 03:09:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 20200520
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20200520
+    - Update from Mozilla repository to 2020-05-20
+    - Update bundled mk-ca-bundle.pl from upstream.
+
+-------------------------------------------------------------------
+Fri Mar  2 06:42:17 UTC 2018 - coolo@suse.com
+
+- updated to 20180117
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20180301
+    - Update from Mozilla repository to 2018-01-17
+    - Update bundled mk-ca-bundle.pl from upstream.
+  
+  20160104
+    - Update from Mozilla repository
+
+-------------------------------------------------------------------
+Wed Jan  6 10:15:04 UTC 2016 - coolo@suse.com
+
+- updated to 20160104
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+-------------------------------------------------------------------
+Thu Aug 27 08:50:08 UTC 2015 - coolo@suse.com
+
+- updated to 20150826
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20150826
+    - Update from Mozilla repository
+    - Update license to match license of data source (MPL 2)
+  
+  20141217
+    - Update from Mozilla repository
+
+-------------------------------------------------------------------
+Sun Apr 19 06:36:27 UTC 2015 - coolo@suse.com
+
+- updated to 20141217
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+-------------------------------------------------------------------
+Wed Apr  9 22:01:14 UTC 2014 - lars@linux-schulserver.de
+
+- update to 20130114:
+  + New certificate: "T-TeleSec GlobalRoot Class 3"
+  + Fix test (RT#79129, reported by Sinan Unur)
+  + Add mk-ca-bundle.pl from git repository to distribution.
+  + Add new/additional certificates from the following CAs: Verisign,
+    UTN-USER, UTN USERFirst, Sonera, NetLock Qualified, SwissSign
+    Platinum, S-TRUST, ComSign, Actalis, Trustis, StartCom, Buypass.
+  + Download the certdata from mozilla over SSL (John Joseph Bachir)
+  + CA updates:
+    Removes:
+    - Hellenic Academic and Research Institutions RootCA 2011
+- move mk-ca-bundle.pl to bindir
+- fix path names in update-cacert-file
+
+-------------------------------------------------------------------
+Tue Feb 21 11:29:53 UTC 2012 - coolo@suse.com
+
+- initial package 20120118
+    * created by cpanspec 1.78.06
+
