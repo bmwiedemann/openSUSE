@@ -235,4 +235,13 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1069016</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>415d901f05aba7fa79301507888e3d50</srcmd5>
+    <version>1.96.0</version>
+    <time>1683213043</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.96.0
+</comment>
+    <requestid>1084437</requestid>
+  </revision>
 </revisionlist>

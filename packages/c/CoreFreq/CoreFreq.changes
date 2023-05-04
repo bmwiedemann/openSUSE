@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed May  3 15:09:08 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed leap_compile_fix.patch no needed anymore
+- update to 1.96.0
+  * [AMD]  
+    [RPL/X3D] Disabling the turbo boosted P-states change
+    [PHOENIX] Adding Z1, U and HS PRO series.
+    [Genoa] DAC address at UMC BAR + 0x40
+    [Zen4] Adding the PCI entries of Genoa
+    [Zen2] Adding remaining PCI entries
+    [Zen] Query DAC & CFG with the right UMC base address register
+    [Zen4] Dump the CPUID Extended CPU Topology leaves.
+    [Zen][Embedded][Banded Kestrel] R1000 Processor Family
+    [Zen][Embedded] "Great Horned Owl", "River Hawk", "Grey Hawk"
+    Complete the "Raven Ridge" and "Picasso" lists
+    [EPYC] Moved "Snowy Owl" Embedded processors to CPUID 8F_01
+    [Zen4] introducing Phoenix and Dragon Range
+    [RMB] adding the Ryzen Embedded V3000 processors
+    [VMR] adding the "AMD Ryzen 9 PRO 5945"
+  * [Intel]
+    Adding Granite Rapids, Sierra Forest, Grand Ridge entries
+    Adding "Lunar Lake" and "Arrow Lake" entries.
+  * [UI]
+    Optimized decimal to digits converter
+    Allow task tracker to select up to pid_max
+    Can trace the frozen states of Linux tasks.
+    Only print HWP frequencies within bounds.
+    Fix ruler's aggregation.
+  * [CR]
+    Check CPUID[HV_PARTITION_PRIVILEGE_MASK] for HV_X64_MSR_VP_RUNTIME
+    Uninitialized variable fix.
+    [CPPC] Build EPP with KERNEL_VERSION(6) rather than CONFIG_CACHY
+    [KERNEL] Linux 6.3: Employ modifier calls with the vma->vm_flags
+
+-------------------------------------------------------------------
 Thu Feb 23 18:14:41 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - added leap_compile_fix.patch to fix compilation on Leap
