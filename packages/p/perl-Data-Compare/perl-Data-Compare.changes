@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 22 03:06:52 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.29
+   see /usr/share/doc/packages/perl-Data-Compare/CHANGELOG
+
+  1.29    2023-04-21
+
+  - Skip taint-mode tests if perl was built without taint support
+
+-------------------------------------------------------------------
 Wed Mar 15 03:06:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.28
