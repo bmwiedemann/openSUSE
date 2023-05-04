@@ -1,0 +1,8 @@
+<package name="python-yattag" project="openSUSE:Factory">
+  <title>python-yattag</title>
+  <description>Generate HTML or XML in a pythonic way.
+Pure python alternative to web template engines.
+Can fill HTML forms with default values and error messages.</description>
+  <devel project="devel:languages:python" package="python-yattag"/>
+  <url>https://www.yattag.org/</url>
+</package>
