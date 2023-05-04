@@ -1747,6 +1747,8 @@ unsorted:
   - byzanz-lang 
   - bzflag 
   - bzip2-doc 
+  - bzip3 
+  - bzip3-devel 
   - bzrtp-devel 
   - c-ares-devel 
   - c-ares-utils 
@@ -3304,6 +3306,7 @@ unsorted:
   - dtkwidget-devel 
   - dtkwidget-lang 
   - dtkwm-devel 
+  - dtrx 
   - dtv-scan-tables 
   - dtv-scan-tables-v5 
   - dub 
@@ -7456,10 +7459,8 @@ unsorted:
   - guice-grapher 
   - guice-jmx 
   - guice-jndi 
-  - guice-multibindings 
   - guice-parent 
   - guice-servlet 
-  - guice-testlib 
   - guice-throwingproviders 
   - guile-bytestructures 
   - guile-cairo 
@@ -11104,6 +11105,8 @@ unsorted:
   - libbz2-1-x86-64-v3 
   - libbz2-devel 
   - libbz2-devel-32bit 
+  - libbzip3-0 
+  - libbzip3-0-x86-64-v3 
   - libbzrtp0 
   - libc++-devel 
   - libc++1 
@@ -14226,6 +14229,8 @@ unsorted:
   - libpython3_11-1_0 
   - libpython3_11-1_0-32bit 
   - libpython3_11-1_0-x86-64-v3 
+  - libpython3_12-1_0 
+  - libpython3_12-1_0-x86-64-v3 
   - libpython3_8-1_0 
   - libpython3_8-1_0-32bit 
   - libpython3_9-1_0 
@@ -20944,6 +20949,7 @@ unsorted:
   - perl-MouseX-SimpleConfig 
   - perl-MouseX-Types 
   - perl-MouseX-Types-Path-Class 
+  - perl-Mozilla-CA 
   - perl-Mozilla-LDAP 
   - perl-NKF 
   - perl-Nagios-Plugin 
@@ -21857,7 +21863,6 @@ unsorted:
   - plplot-driver-xwin 
   - plplot-java 
   - plplot-lua 
-  - plplot-octave 
   - plplot-python3-qt 
   - plplot-tcltk-devel 
   - plplot-tcltk-libs 
@@ -23547,6 +23552,7 @@ unsorted:
   - python310-azure-mgmt-nspkg 
   - python310-azure-mgmt-oep 
   - python310-azure-mgmt-orbital 
+  - python310-azure-mgmt-paloaltonetworksngfw 
   - python310-azure-mgmt-peering 
   - python310-azure-mgmt-policyinsights 
   - python310-azure-mgmt-portal 
@@ -26203,6 +26209,7 @@ unsorted:
   - python310-yarl 
   - python310-yaspin 
   - python310-yaswfp 
+  - python310-yattag 
   - python310-yg.lockfile 
   - python310-youtube-dl 
   - python310-ypy-websocket 
@@ -26859,6 +26866,7 @@ unsorted:
   - python311-azure-mgmt-nspkg 
   - python311-azure-mgmt-oep 
   - python311-azure-mgmt-orbital 
+  - python311-azure-mgmt-paloaltonetworksngfw 
   - python311-azure-mgmt-peering 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
@@ -29615,6 +29623,7 @@ unsorted:
   - python311-yarl 
   - python311-yaspin 
   - python311-yaswfp 
+  - python311-yattag 
   - python311-yg.lockfile 
   - python311-youtube-dl 
   - python311-ypy-websocket 
@@ -29658,6 +29667,19 @@ unsorted:
   - python311-zstd 
   - python311-zxcvbn 
   - python311-zypp-plugin 
+  - python312 
+  - python312-base 
+  - python312-base-x86-64-v3 
+  - python312-curses 
+  - python312-dbm 
+  - python312-devel 
+  - python312-doc 
+  - python312-doc-devhelp 
+  - python312-idle 
+  - python312-testsuite 
+  - python312-tk 
+  - python312-tools 
+  - python312-x86-64-v3 
   - python38 
   - python38-32bit 
   - python38-base 
@@ -30301,6 +30323,7 @@ unsorted:
   - python39-azure-mgmt-nspkg 
   - python39-azure-mgmt-oep 
   - python39-azure-mgmt-orbital 
+  - python39-azure-mgmt-paloaltonetworksngfw 
   - python39-azure-mgmt-peering 
   - python39-azure-mgmt-policyinsights 
   - python39-azure-mgmt-portal 
@@ -33075,6 +33098,7 @@ unsorted:
   - python39-yarl 
   - python39-yaspin 
   - python39-yaswfp 
+  - python39-yattag 
   - python39-yg.lockfile 
   - python39-youtube-dl 
   - python39-ypy-websocket 
@@ -35201,6 +35225,7 @@ unsorted:
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
   - systemd-experimental 
+  - systemd-generator-cron2timer 
   - systemd-inputmethod-generator 
   - systemd-journal-remote 
   - systemd-mini 
