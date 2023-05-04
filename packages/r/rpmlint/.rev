@@ -4465,4 +4465,12 @@ oddjob-gpupdate isn't blocked)</comment>
 -Rebase disable-flake-and-cov.patch.</comment>
     <requestid>1082395</requestid>
   </revision>
+  <revision rev="448" vrev="1">
+    <srcmd5>54ddf1e303dfc17751b0d791247bc47e</srcmd5>
+    <version>2.4.0+git20230502.1ab1dde</version>
+    <time>1683212994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084090</requestid>
+  </revision>
 </revisionlist>

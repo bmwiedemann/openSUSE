@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 02 16:05:41 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230502.1ab1dde:
+  * sysctl-whitelist: add kubernetes1.27 (bsc#1210951)
+  * Add logo to README.md.
+
+-------------------------------------------------------------------
 Mon Apr 24 08:58:05 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.4.0+git20230424.e2a5b62:
