@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:45:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to real _multibuild package: the spec already handles
+  flavor differences.
+
+-------------------------------------------------------------------
 Sat Oct 24 00:00:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable lpsol and lcdd.

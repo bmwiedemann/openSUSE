@@ -1,7 +1,7 @@
 #
-# spec file for package ppl
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,13 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "testsuite"
+%define nsuffix -testsuite
+%endif
+
 %define sover 14
-Name:           ppl
+Name:           ppl%{?nsuffix}
 Version:        1.2
 Release:        0
 Summary:        The Parma Polyhedra Library
