@@ -18,19 +18,14 @@
 
 Name:           w3m
 URL:            http://w3m.sourceforge.net/
-Version:        0.5.3+git20180125
+Version:        0.5.3+git20230121
 Release:        0
 Summary:        A text-based WWW browser
 License:        ISC
 Group:          Productivity/Networking/Web/Browsers
 
-Source0:        w3m-%{version}.tar.xz
-Patch0:         0001-allow-to-configure-the-accept-option-for-bad-cookies.patch
-Patch1:         0001-implements-simple-session-management.patch
-Patch2:         0001-handle-EXDEV-during-history-file-rename.patch
-Patch3:         0001-w3mman-don-t-show-invalid-characters-bsc-950800.patch
-Patch4:         0001-Fix-warning-for-unused-variable-without-USE_M17N.patch
-Patch5:         0002-Fix-m17n-backspace-handling-causes-out-of-bounds-wri.patch
+Source0:        https://salsa.debian.org/debian/w3m/-/archive/v%{version}/w3m-v%{version}.tar.bz2
+patch0:         0001-Update-German-message-catalogue.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gc-devel
@@ -79,7 +74,7 @@ When this package is installed w3m can display images inline in an X
 terminal (if it runs in a graphical X Window System environment).
 
 %prep
-%setup -q -n w3m-%{version}
+%setup -q -n w3m-v%{version}
 find -name CVS -exec rm -Rf "{}" "+"
 %autopatch -p1
 

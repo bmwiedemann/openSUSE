@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 28 09:05:26 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- update to version 0.5.3+git20230121
+- add 0001-Update-German-message-catalogue.patch 
+- dropped patches: 
+    0001-allow-to-configure-the-accept-option-for-bad-cookies.patch
+    0001-implements-simple-session-management.patch
+    0001-handle-EXDEV-during-history-file-rename.patch
+    0001-w3mman-don-t-show-invalid-characters-bsc-950800.patch
+    0001-Fix-warning-for-unused-variable-without-USE_M17N.patch
+    0002-Fix-m17n-backspace-handling-causes-out-of-bounds-wri.patch
+
+-------------------------------------------------------------------
 Tue Jan 10 08:22:40 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 
 - CVE-2022-38223 Out-of-bounds write in checkType located in etc.c
