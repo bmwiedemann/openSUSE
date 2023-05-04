@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed May  3 08:17:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file for factory submission
+- Build AVX2 enabled hwcaps library for x86_64-v3 
+
+-------------------------------------------------------------------
+Tue May  2 12:47:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (1.3.0)
