@@ -17,7 +17,6 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -63,6 +62,7 @@ Obsoletes:      %{oldpython}-curl < %{version}
 %description
 This module provides bindings for the cURL library.
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Documentation for python-curl
 Provides:       %{python_module pycurl-doc = %{version}}
@@ -72,6 +72,7 @@ BuildArch:      noarch
 This module provides bindings for the cURL library.
 
 This package contains documentation and examples.
+%endif
 
 %prep
 %autosetup -p1 -n pycurl-%{version}
@@ -130,7 +131,9 @@ rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*
 %doc AUTHORS ChangeLog README.rst
 %{python_sitearch}/*
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc examples doc/*.rst
 %endif
 
