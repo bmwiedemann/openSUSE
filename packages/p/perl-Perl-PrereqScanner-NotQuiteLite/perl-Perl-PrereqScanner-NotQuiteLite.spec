@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-PrereqScanner-NotQuiteLite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-PrereqScanner-NotQuiteLite
 Name:           perl-Perl-PrereqScanner-NotQuiteLite
-Version:        0.9916
+Version:        0.9917
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tool to scan your Perl code for its prerequisites

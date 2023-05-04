@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 28 03:08:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9917
+   see /usr/share/doc/packages/perl-Perl-PrereqScanner-NotQuiteLite/Changes
+
+  0.9917 2023/04/27
+    - Update Object::Pad support (:isa/:does)
+
+-------------------------------------------------------------------
 Sat Apr  9 03:08:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9916
