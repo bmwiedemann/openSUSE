@@ -64,4 +64,29 @@
     dunder method), resolving feature request #211 kindly</comment>
     <requestid>1079737</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f48a916765af730cab0b1df17a2f1f47</srcmd5>
+    <version>0.14.0</version>
+    <time>1683213040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.0:
+  * This minor release brings exhilarating support for PEP
+    673 (i.e., `typing.Self`) and PEP 675 (i.e.,
+    `typing.LiteralString`) as well as
+    substantially improved compatibility with PyPy.
+  * This release resolves a significant incompatibility
+    with PyPy, whose implementation of the `id()` builtin appears
+    to occasionally [read: non-deterministically] return object
+    identifiers that are negative integers. Specifically,
+    @beartype now guaranteeably generates valid parameter names
+    passed to type-checking wrapper functions regardless of the
+    sign of the `id()` of the values of those parameters. Doing
+    so resolves issue #232 kindly submitted by @jvesely (Jan
+    Vesely) who purportedly lives in or around an ancient pork
+    by-product that has calcified into stone -- which is quite
+    impressive, really. Stoneham: it's like Stonehenge, only
+    American and yummy in your tummy. Thanks so much for the
+    heads up, @jvesely.</comment>
+    <requestid>1084451</requestid>
+  </revision>
 </revisionlist>
