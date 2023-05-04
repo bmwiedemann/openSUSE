@@ -1,7 +1,7 @@
 #
 # spec file for package maven-install-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,15 @@
 #
 
 
-%global base_ver 3.0.0
-%global milestone M1
 %bcond_with tests
 Name:           maven-install-plugin
-Version:        %{base_ver}~%{milestone}
+Version:        3.1.1
 Release:        0
 Summary:        Maven Install Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-install-plugin
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{base_ver}-%{milestone}/%{name}-%{base_ver}-%{milestone}-source-release.zip
-Patch0:         0001-MINSTALL-143-Remove-a-lot-of-checksum-related-dead-c.patch
-Patch1:         0002-MINSTALL-171-Update-plugin-requires-Maven-3.2.5.patch
-Patch2:         0003-Fix-tests-with-modular-javas.patch
-Patch3:         0004-Fix-tests-with-maven-resolver-1.7.3.patch
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -38,23 +32,15 @@ BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.slf4j:slf4j-api)
-BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
+BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
-BuildRequires:  mvn(org.eclipse.aether:aether-impl) >= 1.7
 BuildRequires:  mvn(org.eclipse.aether:aether-util)
-BuildRequires:  mvn(org.mockito:mockito-core)
-BuildRequires:  mvn(org.slf4j:slf4j-nop)
-%endif
+BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildArch:      noarch
 
 %description
 Copies the project artifacts to the user's local repository.
@@ -67,15 +53,10 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{base_ver}-%{milestone}
-%autopatch -p1
+%setup -q
 
 %build
-%{mvn_build} \
-%if %{without tests}
-    -f \
-%endif
-    -- \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif

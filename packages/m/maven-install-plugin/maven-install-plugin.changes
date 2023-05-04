@@ -1,7 +1,42 @@
 -------------------------------------------------------------------
+Wed May  3 09:46:37 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam version 3.1.1
+  * Changes:
+    + [MINSTALL-186] Use proper repositorySystemSession
+    + [MINSTALL-188] Upgrade Parent to 39
+    + [MINSTALL-189] Add parameter to lax project validation
+    + [MINSTALL-179] installAtEnd when module does not use
+      maven-install-plugin
+    + [MINSTALL-183] Don't use metadata from main artifact to fetch
+      pom.xml
+    + [MINSTALL-185] Install all artifacts in one request
+    + [MINSTALL-181] Require Java 8
+    + [MINSTALL-184] Cleanup IT tests
+    + [MINSTALL-180] Upgrade Parent to 37
+    + [MINSTALL-182] Bump mockito-core from 2.28.2 to 4.8.1
+    + [MINSTALL-160] Generated POM is not installed if original POM
+      exists
+    + [MINSTALL-143] Remove a lot of checksum related dead code and
+      commented out tests
+    + [MINSTALL-164] Create GitHub Actions
+    + [MINSTALL-164] Use shared GH Actions
+    + [MINSTALL-171] Update plugin (requires Maven 3.2.5+)
+    + [MINSTALL-174] Upgrade maven-plugin parent to 36
+    + [MINSTALL-115] Install At End feature (no extension)
+    + [MINSTALL-177] Streamline the plugin by
+- Removed patches:
+  * 0001-MINSTALL-143-Remove-a-lot-of-checksum-related-dead-c.patch
+  * 0002-MINSTALL-171-Update-plugin-requires-Maven-3.2.5.patch
+  * 0003-Fix-tests-with-modular-javas.patch
+  * 0004-Fix-tests-with-maven-resolver-1.7.3.patch
+    + not needed with this version
+- Remove the option --with tests since our mockito is too old
+
+-------------------------------------------------------------------
 Wed May 11 13:49:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to upstream verson 3.0.0 milestone M1
+- Upgrade to upstream version 3.0.0 milestone M1
   * Bugs:
     + MINSTALL-121: The packaging property should not be used for
       the file extension
