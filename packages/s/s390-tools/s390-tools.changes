@@ -1,22 +1,31 @@
 -------------------------------------------------------------------
+Thu May  4 08:32:36 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches for ziomon: fix for SCSI devices of type disk without block dev
+    (bsc#1211008)
+  * s390-tools-sles15sp5-01-ziomon-ziorep_config-fix-missing-SG-major-minor-for-.patch
+  * s390-tools-sles15sp5-02-ziomon-ziorep_config-fix-for-SCSI-devices-of-type-di.patch
+
+-------------------------------------------------------------------
 Tue May  2 11:40:12 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Applies a fix, splitting of rd.zdev-parameters, in 
+- Applies a fix, splitting of rd.zdev-parameters, in
   * s390-tools-ALP-zdev-live.patch
 
 -------------------------------------------------------------------
 Wed Apr 19 11:59:50 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Tailored the .spec, added a patch 
+- Tailored the .spec, added a patch
   * s390-tools-ALP-zdev-live.patch
 
 -------------------------------------------------------------------
 Thu Mar 23 12:45:57 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Allow activation of devices at boot via kernel command line  
+- Allow activation of devices at boot via kernel command line
    for live installation media (jsc#PED-2975)
   * Added a Source dracut-zdev-live-20230321.tar
-  * Updated the .spec file for the new Source 
+  * Updated the .spec file for the new Source
+-  Amended read_value.c
 
 -------------------------------------------------------------------
 Mon Mar 13 15:33:43 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -34,7 +43,7 @@ Wed Mar  8 09:38:46 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Tue Feb 21 13:49:29 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Apllied the following patches (bsc#1208527, bsc#1206173) 
+- Applied the following patches (bsc#1208527, bsc#1206173)
   * s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch
   * s390-tools-sles15sp5-02-zipl-boot-declare-that-no-executable-stack-is-requir.patch
   * s390-tools-sles15sp5-03-zipl-boot-use-no-warn-rwx-segments-linker-flag.patch

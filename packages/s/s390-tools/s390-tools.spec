@@ -104,10 +104,7 @@ Source39:       vmlogrdr.service.suse
 %endif
 Source40:       xpram.service
 Source41:       pkey.conf
-###
-### Source42:       dracut-zdev-live-20230321.tar
 
-###
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
 ### That's been delayed to at least SLES12 SP1, but I'm leaving the comments here.
 Source86:       read_values.c
@@ -171,6 +168,10 @@ Patch926:       s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boo
 Patch927:       s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
 #
 Patch928:       s390-tools-ALP-zdev-live.patch
+# Bug 1211008
+Patch929:       s390-tools-sles15sp5-01-ziomon-ziorep_config-fix-missing-SG-major-minor-for-.patch
+Patch930:       s390-tools-sles15sp5-02-ziomon-ziorep_config-fix-for-SCSI-devices-of-type-di.patch
+
 #
 Patch999:       s390-tools-sles15sp5-fix-chown-commands-syntax.patch
 
@@ -398,11 +399,6 @@ install -D -m644 %{SOURCE41} %{buildroot}%{_prefix}/lib/modules-load.d/pkey.conf
 cp %{SOURCE18} zpxe.rexx
 cp %{SOURCE2} zipl.conf.sample
 cp  %{SOURCE23} README.SUSE
-
-### Adding SUSE scripts
-### install -d -m 755 %{buildroot}%{_prefix}/lib/dracut/modules.d
-### cp -a 96zdev-live %{buildroot}%{_prefix}/lib/dracut/modules.d
-###
 
 cd %{buildroot}
 install -D -m755 %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/scripts/hsnc
