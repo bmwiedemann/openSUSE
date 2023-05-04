@@ -951,4 +951,14 @@ Send to Staging:E.
   - Make calling of %{sle15modernpython} optional.</comment>
     <requestid>1082229</requestid>
   </revision>
+  <revision rev="100" vrev="6">
+    <srcmd5>c21341d43c10041ab1dd60c4a4483107</srcmd5>
+    <version>4.9.2</version>
+    <time>1683212944</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084383 from dirkmueller
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1084406</requestid>
+  </revision>
 </revisionlist>

@@ -55,6 +55,7 @@ provides convenient access to these libraries using the ElementTree
 API. It extends the ElementTree API significantly to offer support for XPath,
 RelaxNG, XML Schema, XSLT and C14N.
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Documentation for python-lxml, an XML processing library
 Group:          Documentation/Other
@@ -67,6 +68,7 @@ API. It extends the ElementTree API significantly to offer support for XPath,
 RelaxNG, XML Schema, XSLT and C14N.
 
 This package contains documentation for lxml (HTML and PDF).
+%endif
 
 %package devel
 Summary:        Development files for python-lxml
@@ -125,14 +127,16 @@ export PYTHON3="$python"
 %exclude %{python_sitearch}/lxml/*.h
 %exclude %{python_sitearch}/lxml/includes/*.h
 
+%if 0%{?suse_version} > 1500
+%files -n %{name}-doc
+%license LICENSES.txt
+%endif
+%doc doc/html
+%doc lxmldoc-*.pdf
+
 %files %{python_files devel}
 %license LICENSES.txt
 %{python_sitearch}/lxml/*.h
 %{python_sitearch}/lxml/includes/*.h
-
-%files -n %{name}-doc
-%license LICENSES.txt
-%doc doc/html
-%doc lxmldoc-*.pdf
 
 %changelog
