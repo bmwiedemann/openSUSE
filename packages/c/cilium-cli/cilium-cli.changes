@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May 04 04:39:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.1:
+  * Prepare for v0.14.1 release
+  * connectivity: report peer name in "no flows recorded" log
+    message
+  * connectivity: Add tests for egress rule with SA
+  * connectivity: Rename existing SA tests
+  * connectivity: add retry to external targets
+  * Dockerfile: Bump library/golang
+  * Replace versioncheck.Version with semver.ParseTolerant
+  * sysdump: replace deprecated methods
+  * connectivity/check: use existing label constants from corev1
+  * go.mod, vendor: update k8s deps to v1.27.1
+  * connectivity: test accessing NodePort from outside with L7
+    policy
+  * helm mode: Make Helm chart repository configurable
+  * Add GHA to install Cilium CLI executable
+  * Add CI workflow for clustermesh via helm
+  * multicluster CI: Use LoadBalancer for GKE etcd
+  * Address wording an style nits of #1550
+  * golangci-lint: fix warnings
+  * golangci-lint: fix unused parameter warnings
+  * build: update golangci-lint to v1.52.2
+  * connectivity: Retry on inconclusive results
+  * sysdump: Fix writing to absolute path
+  * helm mode: Set default clustermesh service type to NodePort
+  * helm: add unit tests for ParseVals
+  * Enable Helm mode matrix for multicluster tests
+  * Add cilium clustermesh {enable,disable} using Helm
+  * Allow the Helm timeout to be set on uninstall
+  * connectivity/tests: omit IPs and vendor names from test names
+  * connectivity: Retry getting the policy revision
+  * fixes versioncheck for l7 proxy disabling with wireguard
+    encryption
+  * connectivity: Add Ingress related tests
+  * connectivity: Add Ingress resource for echo service
+  * Remove "Release Date" column from the release table
+  * Update stable release to v0.14.0
+
+-------------------------------------------------------------------
 Mon Apr 24 18:27:39 UTC 2023 - kastl@b1-systems.de
 
 - BuildRequire go1.20
