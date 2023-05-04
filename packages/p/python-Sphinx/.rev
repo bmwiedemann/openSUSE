@@ -1028,4 +1028,12 @@
     :confval:`nitpick_ignore_regex` to ``list``.</comment>
     <requestid>1083126</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>24c39a4cbb4c32c88d33dc6abf884dd6</srcmd5>
+    <version>7.0.0</version>
+    <time>1683212983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083965</requestid>
+  </revision>
 </revisionlist>
