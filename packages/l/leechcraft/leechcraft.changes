@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:34:05 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Aug 23 08:17:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing libavresample build dependency.

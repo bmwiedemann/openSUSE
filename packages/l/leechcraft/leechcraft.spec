@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -219,7 +219,6 @@ This package contains the main LeechCraft executable, which connects
 all the plugins with each other, routes requests between them, tracks
 dependencies and performs several other housekeeping tasks.
 
-
 %package advancednotifications
 Summary:        LeechCraft Notifications framework Module
 License:        BSL-1.0
@@ -231,7 +230,6 @@ Recommends:     %{name}-soundnotifications = %{version}
 %description advancednotifications
 This package provides an advanced notifications plugin for Leechcraft
 which allows to customize notifications better.
-
 
 %package aggregator
 Summary:        LeechCraft RSS/Atom Aggregator Module
@@ -280,7 +278,6 @@ work, a script provider like Qrosp should be installed. Please refer to the
 guide to writing recipes if you are interested in writing your own.
 %endif
 
-
 %package aggregator-webaccess
 Summary:        LeechCraft Aggregator Web Interface Module
 License:        BSL-1.0
@@ -291,7 +288,6 @@ Requires:       %{name}-aggregator = %{version}
 WebAccess provides a basic web interface for the
 Aggregator feed reader, so one can read news
 articles from a mobile device or another machine.
-
 
 %package anhero
 Summary:        LeechCraft Crash handler Module
@@ -304,7 +300,6 @@ Recommends:     %{name}-dolozhee
 %description anhero
 This package provides a crash handler plugin for LeechCraft
 which shows backtraces and aids in sending bug reports.
-
 
 %package auscrie
 Summary:        LeechCraft Screenshooter Module
@@ -341,7 +336,6 @@ features that are present in all the protocols, Azoth is modelled after the
 XMPP protocol, aiming to provide extensive and full support for XMPP while
 remaining usable for other protocols.
 
-
 %package azoth-abbrev
 Summary:        LeechCraft Azoth Abbreviations Module
 License:        BSL-1.0
@@ -354,7 +348,6 @@ Recommends:     %{name}-xoox
 %description azoth-abbrev
 This package provides abbreviations via commands like /abbrev, /unabbrev
 and /listabbrevs for LeechCraft Azoth.
-
 
 %package azoth-acetamide
 Summary:        LeechCraft Azoth IRC Module
@@ -373,7 +366,6 @@ Features:
  * Automatic password entry.
  * Automatic login.
 
-
 %package azoth-adiumstyles
 Summary:        LeechCraft Azoth Adium Styles Module
 License:        BSL-1.0
@@ -383,7 +375,6 @@ Provides:       %{name}-azoth-chatstyler
 
 %description azoth-adiumstyles
 This package provides an Adium styles support plugin for LeechCraft Azoth.
-
 
 %package azoth-autoidler
 Summary:        LeechCraft Azoth Module for automatic status change
@@ -395,7 +386,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a LeechCraft Azoth plugin which can
 automatically change your status based on an inactivity period.
 
-
 %package azoth-autopaste
 Summary:        LeechCraft Azoth Autopaste Module
 License:        BSL-1.0
@@ -405,7 +395,6 @@ Requires:       %{name}-azoth = %{version}
 %description azoth-autopaste
 This package provides a plugin for LeechCraft Azoth with
 which long messages can automatically be pasted to pastebins.
-
 
 %package azoth-birthdaynotifier
 Summary:        LeechCraft Azoth Birthday Notifier Module
@@ -417,7 +406,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a plugin for LeechCraft Azoth with which you
 will be notified of your contacts' birthdays if they are present in
 vCards.
-
 
 %package azoth-chathistory
 Summary:        LeechCraft Azoth Chat history Module
@@ -432,7 +420,6 @@ It supports storing history from normal one-to-one chats as well as from
 multiuser conferences and private chats in conferences. It also allows to
 search the logs with SQL's LIKE expressions. SQLite is used for storage.
 
-
 %package azoth-depester
 Summary:        LeechCraft Azoth Ignore Module
 License:        BSL-1.0
@@ -443,7 +430,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a plugin for LeechCraft Azoth to ignore
 unwanted participants.
 
-
 %package azoth-embedmedia
 Summary:        LeechCraft Azoth Media Objects Module
 License:        BSL-1.0
@@ -453,7 +439,6 @@ Requires:       %{name}-azoth = %{version}
 %description azoth-embedmedia
 This package provides an plugin for LeechCraft Azoth which
 allows embedding different media objects in chat tabs.
-
 
 %package azoth-herbicide
 Summary:        LeechCraft Azoth Antispam Module
@@ -474,7 +459,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a plugin for LeechCraft Azoth to customize
 conference highlights.
 
-
 %package azoth-isterique
 Summary:        LeechCraft Azoth Module to remove CAPS
 License:        BSL-1.0
@@ -484,7 +468,6 @@ Requires:       %{name}-azoth = %{version}
 %description azoth-isterique
 This package provides a plugin for LeechCraft Azoth which
 can remove excessive CAPS usage from incoming messages.
-
 
 %package azoth-juick
 Summary:        LeechCraft Azoth Juick.com service Module
@@ -496,7 +479,6 @@ Requires:       %{name}-azoth = %{version}
 This package contains a plugin for LeechCraft Azoth which
 provides an enhanced experience with the juick.com microblogging service.
 
-
 %package azoth-keeso
 Summary:        LeechCraft Azoth Text transform Module
 License:        BSL-1.0
@@ -505,7 +487,6 @@ Requires:       %{name}-azoth = %{version}
 
 %description azoth-keeso
 This package provides a text transform plugin for LeechCraft Azoth.
-
 
 %package azoth-lastseen
 Summary:        LeechCraft Azoth module for "Last Seen" functionality
@@ -518,7 +499,6 @@ This package provides a plugin for LeechCraft Azoth which records
 contacts' last online and availability time on the client side. It
 does not depend on a concrete protocol implementation.
 
-
 %package azoth-metacontacts
 Summary:        LeechCraft Azoth Metacontacts Module
 License:        BSL-1.0
@@ -527,7 +507,6 @@ Requires:       %{name}-azoth = %{version}
 
 %description azoth-metacontacts
 This package provides a metacontacts support plugin for LeechCraft Azoth.
-
 
 %package azoth-modnok
 Summary:        LeechCraft Azoth LaTeX support Module
@@ -545,7 +524,6 @@ with corresponding images in outgoing messages as well, so your buddies would
 see nice rendered formulas instead of raw LaTeX code, even if their client
 does not have a LaTeX formatter.
 
-
 %package azoth-mucommands
 Summary:        LeechCraft Azoth module for conference-oriented commands
 License:        BSL-1.0
@@ -559,7 +537,6 @@ Recommends:     %{name}-xoox
 This package provides some common conference-oriented commands like
 /vcard, /time, /last, /subject, /kick, /ban and so on for LeechCraft Azoth.
 
-
 %package azoth-murm
 Summary:        LeechCraft Azoth - VKontakte Module
 License:        BSL-1.0
@@ -570,7 +547,6 @@ Provides:       %{name}-azoth-protocolplugin
 %description azoth-murm
 This package provides a special protocol subplugin for extensive VKontakte
 messaging support for LeechCraft Azoth.
-
 
 %package azoth-nativeemoticons
 Summary:        LeechCraft Azoth Emoticon pack support
@@ -583,7 +559,6 @@ This package provides an emoticons plugin for LeechCraft Azoth which
 permits to use emoticon packs which are stored in Psi+, Kopete
 format or Azoth format.
 
-
 %package azoth-otroid
 Summary:        LeechCraft Azoth Off-the-Record Module
 License:        BSL-1.0
@@ -592,7 +567,6 @@ Requires:       %{name}-azoth = %{version}
 
 %description azoth-otroid
 This package provides support for Off-the-Record messaging for LeechCraft Azoth.
-
 
 %package azoth-rosenthal
 Summary:        LeechCraft Azoth Spell Checker Module
@@ -606,7 +580,6 @@ This package provides a spell checker plugin for LeechCraft Azoth.
 
 It is based on Hunspell or Myspell dictionaries.
 
-
 %package azoth-shx
 Summary:        LeechCraft Azoth Shell command runner Module
 License:        BSL-1.0
@@ -615,7 +588,6 @@ Requires:       %{name}-azoth = %{version}
 
 %description azoth-shx
 This package provides a shell command runner plugin for LeechCraft Azoth.
-
 
 %package azoth-standardstyles
 Summary:        LeechCraft Azoth Standard chat styles Module
@@ -628,7 +600,6 @@ Provides:       %{name}-azoth-chatstyler
 This package provides a standard styles support plugin for LeechCraft Azoth.
 
 Standard styles are the ones in LeechCraft's own format.
-
 
 %package azoth-vader
 Summary:        LeechCraft Azoth MrIM Module
@@ -655,7 +626,6 @@ The following protocol features are supported:
  * Authorization management.
  * Grouping contacts.
 
-
 %package azoth-velvetbird
 Summary:        LeechCraft Azoth libpurple Module
 License:        BSL-1.0
@@ -667,7 +637,6 @@ Provides:       %{name}-azoth-protocolplugin
 This package provides a plugin for LeechCraft Azoth which
 makes the various protocols supported by libpurple available
 in Azoth.
-
 
 %package azoth-xoox
 Summary:        LeechCraft Azoth XMPP Module
@@ -697,7 +666,6 @@ Feature highlights:
  * Support for exchanging roster items.
  * Search for contacts in Jabber.
 
-
 %package azoth-xtazy
 Summary:        LeechCraft Azoth Module for publishing current user tune
 License:        BSL-1.0
@@ -709,7 +677,6 @@ Requires:       %{name}-xtazy = %{version}
 This package provides an Azoth plugin which allows to publish
 the current user tune.
 %endif
-
 
 %package bittorrent
 Summary:        LeechCraft BitTorrent client Module
@@ -748,7 +715,6 @@ Obsoletes:      %{name}-blasq-spegnersi
 This package provides a modular image storage plugin for LeechCraft
 which supports different cloud image stores like Picasa or Flickr.
 
-
 %package blasq-deathnote
 Summary:        LeechCraft Blasq LiveJournal/FotoBilder client Module
 License:        BSL-1.0
@@ -760,7 +726,6 @@ Provides:       %{name}-blasq-subplugin = %{version}
 This package provides a LiveJournal FotoBilder image storage client subplugin
 for LeechCraft Blasq.
 
-
 %package blasq-rappor
 Summary:        LeechCraft Blasq VKontakte client Module
 License:        BSL-1.0
@@ -771,7 +736,6 @@ Provides:       %{name}-blasq-subplugin = %{version}
 %description blasq-rappor
 This package provides a VKontakte image storage client subplugin
 for LeechCraft Blasq.
-
 
 %package blasq-vangog
 Summary:        LeechCraft Blasq Picasa client Module
@@ -798,7 +762,6 @@ Recommends:     %{name}-lhtr
 This package provides a modular blogging client plugin for LeechCraft
 which itself supports different blogging platforms via different submodules.
 
-
 %package blogique-hestia
 Summary:        LeechCraft Blogique "Local blogging" Module
 License:        BSL-1.0
@@ -809,7 +772,6 @@ Provides:       %{name}-blogique-subplugin = %{version}
 
 %description blogique-hestia
 This package provides a local blogging subplugin for LeechCraft Blogique.
-
 
 %package blogique-metida
 Summary:        LeechCraft Blogique LiveJournal Module
@@ -824,7 +786,6 @@ Provides:       %{name}-blogique-subplugin = %{version}
 This package provides a LiveJournal subplugin for LeechCraft Blogique.
 %endif
 
-
 %package certmgr
 Summary:        LeechCraft SSL certificate Module
 License:        BSL-1.0
@@ -833,7 +794,6 @@ Requires:       %{name} = %{version}
 
 %description certmgr
 This package provides an SSL certificate manager plugin.
-
 
 %package cpuload
 Summary:        LeechCraft CPU Usage Monitoring Module
@@ -845,7 +805,6 @@ Requires:       %{name}-sb2 = %{version}
 %description cpuload
 This package provides a quark for monitoring the CPU usage
 for LeechCraft SB2. It currently uses /proc/stat.
-
 
 %package cstp
 Summary:        LeechCraft HTTP Module
@@ -864,7 +823,6 @@ Features:
  * Automatic downloads from other plugins.
  * Support for continuing interrupted downloads.
 
-
 %package dbusmanager
 Summary:        LeechCraft D-Bus Module
 License:        BSL-1.0
@@ -873,7 +831,6 @@ Requires:       %{name} = %{version}
 
 %description dbusmanager
 This package provides a D-Bus implementation plugin for LeechCraft.
-
 
 %package deadlyrics
 Summary:        LeechCraft Lyrics finder Module
@@ -889,7 +846,6 @@ This package provides a lyrics finder plugin for LeechCraft.
 
 It is a simple client for searching song lyrics on various sites.
 The search interface is available via LeechCraft Summary.
-
 
 %package devel
 Summary:        LeechCraft Development Files
@@ -929,7 +885,6 @@ Recommends:     leechcraft-monocle-doc
 This package provides files required for development of
 new LeechCraft modules.
 
-
 %package devmon
 Summary:        LeechCraft Device Monitor Module
 License:        BSL-1.0
@@ -939,7 +894,6 @@ Recommends:     %{name}-secman = %{version}
 
 %description devmon
 This package provides a devices monitor plugin for LeechCraft.
-
 
 %package dolozhee
 Summary:        LeechCraft Issue reporting Module
@@ -952,7 +906,6 @@ Recommends:     %{name}-secman = %{version}
 This package provides a Dolozhee plugin for LeechCraft which
 allows submitting bug reports and feature requests to the
 LeechCraft issue tracker.
-
 
 %package dumbeep
 Summary:        LeechCraft DumBeep Module
@@ -967,7 +920,6 @@ This package provides a dumb sound notifier plugin for LeechCraft.
 
 It uses Phonon as a backend, or something like aplay/mplayer.
 
-
 %package eleeminator
 Summary:        LeechCraft terminal plugin
 License:        BSL-1.0
@@ -976,7 +928,6 @@ Requires:       %{name} = %{version}
 
 %description eleeminator
 This package provides a terminal plugin for Leechcraft.
-
 
 %package fenet
 Summary:        LeechCraft Window Manager Module
@@ -1003,7 +954,6 @@ Requires:       %{name}-fenet-wm = %{version}
 %description fenet
 This package provides a WM control plugin for Leechcraft.
 
-
 %package fenet-awesome
 Summary:        Awesome Window Manager integration for LeechCraft
 License:        BSL-1.0
@@ -1016,7 +966,6 @@ Requires:       awesome
 %description fenet-awesome
 This package allows to start Leechcraft as a Desktop Environment with
 the Awesome Window Manager.
-
 
 %package fenet-kwin
 Summary:        Kwin integration for LeechCraft
@@ -1031,7 +980,6 @@ Requires:       kwin5
 This package allows to start Leechcraft as a Desktop Environment with
 the KDE Window Manager.
 
-
 %package fenet-openbox
 Summary:        OpenBox Window Manager integration for LeechCraft
 License:        BSL-1.0
@@ -1045,17 +993,15 @@ Requires:       openbox
 This package allows to start Leechcraft as a Desktop Environment with
 the Openbox Window Manager.
 
-
 %package gacts
 Summary:        LeechCraft Global actions Module
-License:        BSL-1.0 AND (LGPL-2.1-only OR CPL-1.0)
+License:        BSL-1.0 AND (CPL-1.0 OR LGPL-2.1-only)
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 
 %description gacts
 This package provides a global shortcut manager for LeechCraft
 with which global hotkeys can be set and used.
-
 
 %package glance
 Summary:        LeechCraft Opened tabs overview Module
@@ -1066,7 +1012,6 @@ Requires:       %{name} = %{version}
 %description glance
 This package provides a tabs overview plugin for Leechcraft
 which shows a grid of overview thumbnails.
-
 
 %package gmailnotifier
 Summary:        LeechCraft GMail notifier Module
@@ -1083,7 +1028,6 @@ which allows to show notifications about new mail in your GMail account.
 It has a configurable frequency for updates and the number of last unread
 messages shown.
 
-
 %package historyholder
 Summary:        LeechCraft History Module
 License:        BSL-1.0
@@ -1095,7 +1039,6 @@ This package provides a history keeper plugin for LeechCraft
 which stores information about finished downloads and similar events,
 and allows to search it by text, wildcard, regular expressions or tags.
 
-
 %package hotstreams
 Summary:        LeechCraft Radio streams Module
 License:        BSL-1.0
@@ -1104,7 +1047,6 @@ Requires:       %{name}-lmp = %{version}
 
 %description hotstreams
 This package provides a radio streams provider plugin for LeechCraft.
-
 
 %package htthare
 Summary:        LeechCraft HTTP Server Module
@@ -1116,7 +1058,6 @@ Requires:       %{name} = %{version}
 This package provides content from local filesystem over LANs.
 (Possibly also WANs, but, by default, only LAN interfaces are listened on).
 
-
 %package imgaste
 Summary:        LeechCraft Image Paster Module
 License:        BSL-1.0
@@ -1125,7 +1066,6 @@ Requires:       %{name} = %{version}
 
 %description imgaste
 This module provides a simple image paster plugin from LeechCraft.
-
 
 %package intermutko
 Summary:        LeechCraft HTTP Accept-Language header Module
@@ -1136,7 +1076,6 @@ Requires:       %{name} = %{version}
 %description intermutko
 This module provides a HTTP Accept-Language header configurator.
 
-
 %package kbswitch
 Summary:        LeechCraft keyboard switcher Module
 License:        BSL-1.0
@@ -1146,7 +1085,6 @@ Requires:       setxkbmap
 
 %description kbswitch
 This module allows changing keyboard layouts from LeechCraft.
-
 
 %package kinotify
 Summary:        LeechCraft Kinetic notifications Module
@@ -1164,7 +1102,6 @@ tray-based ones. It supports notifications with HTML markup, notification
 actions (for example, "Open chat" action in a notification about incoming IM
 message) and is fully themable.
 
-
 %package knowhow
 Summary:        LeechCraft "Tip of the day" Module
 License:        BSL-1.0
@@ -1175,7 +1112,6 @@ Requires:       %{name} = %{version}
 This package provides a tips plugin for LeechCraft which
 displays a "tip of the day" window after launching LeechCraft.
 
-
 %package krigstask
 Summary:        LeechCraft Applications Switcher Module
 License:        BSL-1.0
@@ -1185,7 +1121,6 @@ Requires:       %{name}-sb2 = %{version}
 
 %description krigstask
 This package provides an applications switcher quark for LeechCraft SB2.
-
 
 %package lackman
 Summary:        LeechCraft Package manager Module
@@ -1210,7 +1145,6 @@ Features:
  * Supports versioning and automatic updates of packages.
  * Supports dependencies between packages.
  * Operates in user's home directory.
-
 
 %package lastfmscrobble
 Summary:        LeechCraft Last.FM Scrobble Module
@@ -1237,7 +1171,6 @@ Features:
  * Fetching artists biography.
  * Configurable language of the fetched information.
 
-
 %package laughty
 Summary:        LeechCraft Notification Server Module
 License:        BSL-1.0
@@ -1248,7 +1181,6 @@ Conflicts:      %{name}-sysnotify
 %description laughty
 This package provides a desktop notifications server plugin for Leechcraft.
 
-
 %package launchy
 Summary:        LeechCraft Launcher Module
 License:        BSL-1.0
@@ -1258,7 +1190,6 @@ Requires:       %{name}-sb = %{version}
 
 %description launchy
 This package provides a third-party application launcher plugin for Leechcraft.
-
 
 %package lemon
 Summary:        LeechCraft Network Monitor Module
@@ -1284,7 +1215,6 @@ This package provides a HTML WYSIWYG editor plugin for Leechcraft,
 usable with mail and blog modules.
 %endif
 
-
 %package liznoo
 Summary:        LeechCraft Power management module
 License:        BSL-1.0
@@ -1307,14 +1237,13 @@ Features:
  * Notifies the user when device starts discharging or charging.
  * Notifies the user on low capacity.
 
-
 %package lmp
 Summary:        LeechCraft Media player Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
-Recommends:     %{name}-lyricsprovider
 Recommends:     %{name}-gacts = %{version}
+Recommends:     %{name}-lyricsprovider
 Recommends:     %{name}-scrobbler
 Suggests:       %{name}-lastfmscrobble
 Recommends:     %{name}-musiczombie = %{version}
@@ -1337,7 +1266,6 @@ Features:
  * Play queue.
  * Support for automatic podcast playing (with a plugin like Aggregator).
 
-
 %package lmp-brainslugz
 Summary:        LeechCraft Collection Checker Module
 License:        BSL-1.0
@@ -1351,7 +1279,6 @@ Requires:       %{name}-musiczombie = %{version}
 This package provides a collection checker plugin for LeechCraft
 to check the completeness of collections.
 
-
 %package lmp-dumbsync
 Summary:        LeechCraft Media synchronization Module
 License:        BSL-1.0
@@ -1364,7 +1291,6 @@ Recommends:     %{name}-vrooby = %{version}
 This package provides an audio syncing plugin for LeechCraft
 to synchronize with Flash-like media players.
 
-
 %package lmp-fradj
 Summary:        LeechCraft Equalizer Module
 License:        BSL-1.0
@@ -1373,7 +1299,6 @@ Requires:       %{name}-lmp = %{version}
 
 %description lmp-fradj
 This package provides a 10-band equalizer.
-
 
 %package lmp-graffiti
 Summary:        LeechCraft Tag Manipulating Module
@@ -1385,7 +1310,6 @@ Requires:       %{name}-lmp = %{version}
 This package provides a tag editor plugin for LeechCraft
 with with audio file tags can be manipulated.
 
-
 %package lmp-httstream
 Summary:        LeechCraft Music Streamer Module
 License:        BSL-1.0
@@ -1395,7 +1319,6 @@ Requires:       %{name}-lmp = %{version}
 %description lmp-httstream
 This package provides a streamer plugin for LeechCraft player
 to stream music from LMP via HTTP.
-
 
 %package lmp-mp3tunes
 Summary:        LeechCraft mp3tunes.com Module
@@ -1410,7 +1333,6 @@ synchronizing with, and use the mp3tunes.com service.
 Features:
  * Using many accounts.
  * Getting playlists.
-
 
 %package lmp-mtpsync
 Summary:        LeechCraft MtpSync Module
@@ -1443,7 +1365,6 @@ Requires:       %{name}-lmp = %{version}
 %description lmp-ppl
 This package provides Portable Player Logging support for the LeechCraft audio player.
 
-
 %package mellonetray
 Summary:        LeechCraft Tray Area Module
 License:        BSL-1.0
@@ -1454,7 +1375,6 @@ Requires:       %{name}-sb2 = %{version}
 %description mellonetray
 This package provides a tray area quark for third-party apps
 for LeechCraft SB2.
-
 
 %package monocle
 Summary:        LeechCraft Document viewer Module
@@ -1467,7 +1387,6 @@ Requires:       %{name}-monocle-subplugin
 This package provides a modular document viewer plugin for LeechCraft
 which supports different formats via backends.
 
-
 %package monocle-fxb
 Summary:        FictionBook support for LeechCraft Monocle
 License:        BSL-1.0
@@ -1479,7 +1398,6 @@ Provides:       %{name}-monocle-subplugin
 %description monocle-fxb
 This package contains the FictionBook subplugin for LeechCraft Monocle.
 
-
 %package monocle-dik
 Summary:        MOBI support for LeechCraft Monocle
 License:        BSL-1.0
@@ -1490,7 +1408,6 @@ Provides:       %{name}-monocle-subplugin
 
 %description monocle-dik
 This package contains the MOBI subplugin for LeechCraft Monocle.
-
 
 %package monocle-pdf
 Summary:        PDF support for LeechCraft Monocle
@@ -1504,7 +1421,6 @@ Provides:       %{name}-monocle-subplugin
 This package contains the PDF subplugin for LeechCraft Monocle.
 PDF support is provided via the libpoppler backend.
 
-
 %package monocle-postrus
 Summary:        PostScript support for LeechCraft Monocle
 License:        BSL-1.0
@@ -1516,7 +1432,6 @@ Provides:       %{name}-monocle-subplugin
 %description monocle-postrus
 This package contains the PostRus subplugin for LeechCraft Monocle
 which supports PostScript document support via the ghostscript utilities.
-
 
 %package monocle-seen
 Summary:        Djvu support for LeechCraft Monocle
@@ -1540,7 +1455,6 @@ Requires:       %{name}-lmp = %{version}
 %description musiczombie
 This package provides a MusicBrainz.org client plugin for LeechCraft.
 
-
 %package namauth
 Summary:        LeechCraft HTTP authentication Module
 License:        BSL-1.0
@@ -1549,7 +1463,6 @@ Requires:       %{name} = %{version}
 
 %description namauth
 This package provides providing standard HTTP authentication facilities for LeechCraft.
-
 
 %package netstoremanager
 Summary:        LeechCraft Network file storages Module
@@ -1570,7 +1483,6 @@ Features:
  * Delete the uploaded files (if supported by service).
  * Support for prolongating uploaded files (if supported by service).
 
-
 %package netstoremanager-googledrive
 Summary:        LeechCraft Google Drive storage Module
 License:        BSL-1.0
@@ -1580,7 +1492,6 @@ Provides:       %{name}-netstoremanager-subplugin
 
 %description netstoremanager-googledrive
 This package provides a Google Drive subplugin for Leechcraft NetStoreManager.
-
 
 %package networkmonitor
 Summary:        LeechCraft Network Monitor Module
@@ -1593,7 +1504,6 @@ This package provides a network monitor plugin for LeechCraft.
 
 It allows to watch for HTTP requests and allows to inspect them and search
 through the list.
-
 
 %package newlife
 Summary:        LeechCraft Importer Module
@@ -1614,7 +1524,6 @@ update interval and custom storage parameters, Akregator's settings.
  * Firefox: history, bookmarks, RSS feeds (aka Live bookmarks).
  * Liferea: feeds list.
 
-
 %package ooronee
 Summary:        LeechCraft Text and Images Handler Module
 License:        BSL-1.0
@@ -1632,7 +1541,6 @@ dropped on it.
 The dropped data is then sent to a data filter chosen by the user.
 See more at http://leechcraft.org/concepts-data-filters .
 
-
 %package otlozhu
 Summary:        LeechCraft ToDo manager Module
 License:        BSL-1.0
@@ -1641,7 +1549,6 @@ Requires:       %{name} = %{version}
 
 %description otlozhu
 This package provides a GTD-inspired ToDo manager plugin for LeechCraft.
-
 
 %package pintab
 Summary:        LeechCraft Pinned tabs Module
@@ -1652,7 +1559,6 @@ Requires:       %{name} = %{version}
 %description pintab
 This package provides a pinning tab module for LeechCraft with which
 it is possible to pin important tabs so that they occupy less space.
-
 
 %package pogooglue
 Summary:        LeechCraft Poshuku Google Search plugin
@@ -1694,7 +1600,6 @@ Currently it features:
  * tagging bookmarks;
  * support for SQLite or PostgreSQL storage.
 
-
 %package poshuku-autosearch
 Summary:        LeechCraft Poshuku Autosearch Module
 License:        BSL-1.0
@@ -1703,7 +1608,6 @@ Requires:       %{name}-poshuku = %{version}
 
 %description poshuku-autosearch
 This package provides an autosearch plugin for LeechCraft Poshuku.
-
 
 %package poshuku-cleanweb
 Summary:        LeechCraft Poshuku Ad Filter Module
@@ -1735,7 +1639,6 @@ This package provides the DC/AC plugin for LeechCraft Poshuku
 which inverts colors on web pages.
 %endif
 
-
 %package poshuku-fatape
 Summary:        LeechCraft Poshuku Greasemonkey Module
 License:        BSL-1.0
@@ -1754,7 +1657,6 @@ with most userscripts present "in the wild".
 
 FatApe usage is documented on the corresponding user guide page.
 
-
 %package poshuku-filescheme
 Summary:        LeechCraft Poshuku file: scheme module
 License:        BSL-1.0
@@ -1765,7 +1667,6 @@ Requires:       %{name}-poshuku = %{version}
 This package provides file: scheme support for LeechCraft Poshuku,
 allowing to navigate local resources.
 FileScheme also supports "downloading" files from there.
-
 
 %package poshuku-fua
 Summary:        LeechCraft Poshuku module to change the user agent
@@ -1784,7 +1685,6 @@ Features:
  * Support for automatic insertion of current platform, language,
 etc. into the User-Agent string in arbitrary places.
 
-
 %package poshuku-keywords
 Summary:        LeechCraft Poshuku URL Keyword Support Module
 License:        BSL-1.0
@@ -1793,7 +1693,6 @@ Requires:       %{name}-poshuku = %{version}
 
 %description poshuku-keywords
 This package provides an LeechCraft Poshuku module for URL keywords.
-
 
 %package poshuku-onlinebookmarks
 Summary:        LeechCraft Poshuku Online Bookmarks Module
@@ -1807,7 +1706,6 @@ This package provides an online bookmarks plugin for LeechCraft Poshuku
 for synchronization of bookmarks with services like Read It Later
 or Del.icio.us.
 
-
 %package poshuku-onlinebookmarks-delicious
 Summary:        LeechCraft Poshuku Onlinebookmarks Delicious Module
 License:        BSL-1.0
@@ -1818,7 +1716,6 @@ Requires:       %{name}-poshuku-onlinebookmarks = %{version}
 This package contains a plugin for LeechCraft Poshuku Online Bookmarks
 to support the Del.icio.us service.
 
-
 %package poshuku-onlinebookmarks-readitlater
 Summary:        LeechCraft Poshuku Onlinebookmarks ReadItLater Module
 License:        BSL-1.0
@@ -1828,7 +1725,6 @@ Requires:       %{name}-poshuku-onlinebookmarks = %{version}
 %description poshuku-onlinebookmarks-readitlater
 This package contains a plugin for LeechCraft Poshuku Online Bookmarks
 to support the Read it Later service.
-
 
 %package poshuku-qrd
 Summary:        LeechCraft Poshuku QR coDe Module
@@ -1852,7 +1748,6 @@ Requires:       %{name}-poshuku = %{version}
 This package provides the Speed Dial support plugin for LeechCraft Poshuku.
 %endif
 
-
 %package poshuku-webengineview
 Summary:        LeechCraft Poshuku WebEngine-based backend Module
 License:        BSL-1.0
@@ -1864,7 +1759,6 @@ Provides:       %{name}-poshuku-backend = %{version}
 This package provides WebEngine-based backend for LeechCraft Poshuku browser.
 %endif
 
-
 %package rosenthal
 Summary:        LeechCraft Spell Checker Module
 License:        BSL-1.0
@@ -1875,7 +1769,6 @@ Requires:       %{name} = %{version}
 This package provides a spell checker plugin for LeechCraft.
 
 It is based on Hunspell or Myspell dictionaries.
-
 
 %package sb2
 Summary:        LeechCraft SideBar2 Module
@@ -1889,7 +1782,6 @@ Requires:       libqt5-qtquickcontrols >= 5.13
 This package provides another side bar plugin for Leechcraft.
 
 It is a sidebar with quick launch, tabs and tray areas.
-
 
 %package scroblibre
 Summary:        LeechCraft Submissions Protocol Scrobble Module
@@ -1911,7 +1803,6 @@ Scroblibre is a supplement for the LastFMScrobble module, and the
 latter is still the recommended one because of all the social
 features it offers which Scroblibre lacks.
 
-
 %package secman
 Summary:        LeechCraft Security manager Module
 License:        BSL-1.0
@@ -1926,7 +1817,6 @@ This package provides a security manager plugin for LeechCraft.
 It is the base module for secure storage.
 Particular storage backends are implemented by subplugins.
 
-
 %package secman-simplestorage
 Summary:        LeechCraft Simple storage Module
 License:        BSL-1.0
@@ -1935,7 +1825,6 @@ Requires:       %{name}-secman = %{version}
 
 %description secman-simplestorage
 This package provides a simple unencrypted storage backend for LeechCraft SecMan.
-
 
 %package seekthru
 Summary:        LeechCraft OpenSearch Module
@@ -1956,7 +1845,6 @@ Features:
  * Support search results in RSS/Atom format and subscribe to them
 with a suitable plugin like Aggregator.
  * Show results in HTML format with a suitable plugin like Poshuku.
-
 
 %package summary
 Summary:        LeechCraft Summary info Module
@@ -1981,7 +1869,6 @@ and views for selected items.
  * Support for gathering status information from other plugins.
  * Category-based search query support via other plugins.
 
-
 %package sysnotify
 Summary:        LeechCraft System notification Module
 License:        BSL-1.0
@@ -1995,7 +1882,6 @@ This package contains a system notification plugin for LeechCraft.
 Notifications are provided implementations supporting FreeDesktop's
 notification standard, like KDE 4.4 (or higher), Gnome, XFCE and others.
 
-
 %package tabsessionmanager
 Summary:        LeechCraft Tab Session Manager Module
 License:        BSL-1.0
@@ -2007,7 +1893,6 @@ This package provides a Tab Session Manager plugin for Leechcraft
 which allows to automatically restore the last session and allows
 to create named sessions.
 
-
 %package tabslist
 Summary:        LeechCraft TabsList Module
 License:        BSL-1.0
@@ -2018,7 +1903,6 @@ Requires:       %{name} = %{version}
 This package provides a tabs list plugin for Leechcraft
 which can show the list of currently opened tabs
 and allows to navigate between them.
-
 
 %package textogroose
 Summary:        LeechCraft Script-Based Lyrics Module
@@ -2034,7 +1918,6 @@ This package provides a lyrics finder plugin for LeechCraft.
 Textogroose is a kind of supplement to DeadLyrics for sites
 too complex to be described by DeadLyrics rules.
 
-
 %package touchstreams
 Summary:        LeechCraft VK.com Streaming Module
 License:        BSL-1.0
@@ -2046,7 +1929,6 @@ Requires:       %{name}-musiczombie = %{version}
 %description touchstreams
 This package provides a VK.com music streaming plugin for Leechcraft.
 
-
 %package tpi
 Summary:        LeechCraft Task Progress Indicator Module
 License:        BSL-1.0
@@ -2056,7 +1938,6 @@ Requires:       %{name}-sb2 = %{version}
 
 %description tpi
 This package provides a Task Progress Indicator quark plugin for Leechcraft.
-
 
 %package vrooby
 Summary:        LeechCraft Removable storage devices Manager
@@ -2070,7 +1951,6 @@ Recommends:     udisks2
 This package provides a Vrooby plugin for LeechCraft
 which allows to watch removable storage devices via D-Bus and udisks.
 
-
 %package xproxy
 Summary:        LeechCraft Proxy manager Module
 License:        BSL-1.0
@@ -2080,7 +1960,6 @@ Requires:       %{name} = %{version}
 %description xproxy
 This package provides an advanced proxy manager for LeechCraft
 with which you can configure and use proxy servers.
-
 
 %package xtazy
 Summary:        LeechCraft Current user tune Module
@@ -2092,7 +1971,6 @@ Requires:       %{name} = %{version}
 This package provides a tune wrapper plugin for LeechCraft
 with which you can get the current user tune via mpris protocol.
 
-
 %package zalil
 Summary:        LeechCraft File Uploader Module
 License:        BSL-1.0
@@ -2103,7 +1981,6 @@ Requires:       %{name} = %{version}
 This package provides a file uploader plugin for LeechCraft
 with which files can be uploaded to accountless filebin services.
 
-
 %package -n libleechcraft-util-db%{db_postfix}
 Summary:        Database utility library for LeechCraft
 License:        BSL-1.0
@@ -2112,7 +1989,6 @@ Group:          Productivity/Networking/Other
 %description -n libleechcraft-util-db%{db_postfix}
 A library providing some commonly used database-related
 classes and functions.
-
 
 %package -n libleechcraft-util-gui%{gui_postfix}
 Summary:        GUI utility library for LeechCraft
@@ -2123,7 +1999,6 @@ Group:          Productivity/Networking/Other
 A library providing some commonly used GUI-related
 widgets, classes and functions.
 
-
 %package -n libleechcraft-util-models%{models_postfix}
 Summary:        MVC utility library for LeechCraft
 License:        BSL-1.0
@@ -2133,7 +2008,6 @@ Group:          Productivity/Networking/Other
 A library providing some commonly used models (as in MVC),
 as well as model-related classes and functions.
 
-
 %package -n libleechcraft-util-network%{network_postfix}
 Summary:        Network utility library for LeechCraft
 License:        BSL-1.0
@@ -2142,7 +2016,6 @@ Group:          Productivity/Networking/Other
 %description -n libleechcraft-util-network%{network_postfix}
 A library providing some commonly used
 network classes and functions.
-
 
 %package -n libleechcraft-util-qml%{qml_postfix}
 Summary:        QML utility library for LeechCraft
@@ -2154,7 +2027,6 @@ Requires:       libQtQuick5 >= 5.13
 A library providing some commonly used QML items as well as
 QML-related classes and functions.
 
-
 %package -n libleechcraft-util-shortcuts%{shortcuts_postfix}
 Summary:        Shortcut utility library for LeechCraft
 License:        BSL-1.0
@@ -2163,7 +2035,6 @@ Group:          Productivity/Networking/Other
 %description -n libleechcraft-util-shortcuts%{shortcuts_postfix}
 A library easing shortcut usage in LeechCraft, particularly the
 configurable shortcuts subsystem.
-
 
 %package -n libleechcraft-util-sll%{sll_postfix}
 Summary:        Standard LeechCraft Library
@@ -2174,7 +2045,6 @@ Group:          Productivity/Networking/Other
 A library providing some classes and algorithms, not directly
 related to any other library.
 
-
 %package -n libleechcraft-util-svcauth%{svcauth_postfix}
 Summary:        Authenticators library for LeechCraft
 License:        BSL-1.0
@@ -2182,7 +2052,6 @@ Group:          Productivity/Networking/Other
 
 %description -n libleechcraft-util-svcauth%{svcauth_postfix}
 A library providing authenticators for various services like VKontakte.
-
 
 %package -n libleechcraft-util-sys%{sys_postfix}
 Summary:        System utility library for LeechCraft
@@ -2194,7 +2063,6 @@ A library providing some commonly used system-related
 classes and functions, like OS version parser, paths utilities or MIME
 detector.
 
-
 %package -n libleechcraft-util-tags%{tags_postfix}
 Summary:        Tag utility library for LeechCraft
 License:        BSL-1.0
@@ -2203,7 +2071,6 @@ Group:          Productivity/Networking/Other
 %description -n libleechcraft-util-tags%{tags_postfix}
 A library providing some classes and functions commonly used
 with the LeechCraft tags subsystem.
-
 
 %package -n libleechcraft-util-threads%{threads_postfix}
 Summary:        Thread utility library for LeechCraft
@@ -2214,7 +2081,6 @@ Group:          Productivity/Networking/Other
 A library providing some classes and functions commonly used
 with the LeechCraft threads subsystem.
 
-
 %package -n libleechcraft-util-x11%{x11_postfix}
 Summary:        X11 utility library for LeechCraft
 License:        BSL-1.0
@@ -2222,7 +2088,6 @@ Group:          Productivity/Networking/Other
 
 %description -n libleechcraft-util-x11%{x11_postfix}
 A library providing X11 wrappers for LeechCraft.
-
 
 %package -n libleechcraft-util-xdg%{xdg_postfix}
 Summary:        XDG utility library for LeechCraft
@@ -2233,7 +2098,6 @@ Group:          Productivity/Networking/Other
 A library providing XDG parsers and other support methods and classes
 for LeechCraft.
 
-
 %package -n libleechcraft-util-xpc%{xpc_postfix}
 Summary:        Cross-plugin communication utility library for LeechCraft
 License:        BSL-1.0
@@ -2243,7 +2107,6 @@ Group:          Productivity/Networking/Other
 A library providing some commonly used primitives for
 communications between different plugins in LeechCraft.
 
-
 %package -n libleechcraft-util-xsd%{xsd_postfix}
 Summary:        XSD utility library for LeechCraft
 License:        BSL-1.0
@@ -2252,7 +2115,6 @@ Group:          Productivity/Networking/Other
 %description -n libleechcraft-util-xsd%{xsd_postfix}
 A library providing some classes to be used with the
 XmlSettingsDialog LeechCraft subsystem.
-
 
 %prep
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
