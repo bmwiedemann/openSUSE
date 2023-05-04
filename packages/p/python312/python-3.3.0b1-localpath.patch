@@ -1,0 +1,11 @@
+--- a/Lib/site.py
++++ b/Lib/site.py
+@@ -76,7 +76,7 @@ import _sitebuiltins
+ import io
+ 
+ # Prefixes for site-packages; add additional prefixes like /usr/local here
+-PREFIXES = [sys.prefix, sys.exec_prefix]
++PREFIXES = [sys.prefix, sys.exec_prefix, '/usr/local']
+ # Enable per user site-packages directory
+ # set it to False to disable the feature or True to force the feature
+ ENABLE_USER_SITE = None
