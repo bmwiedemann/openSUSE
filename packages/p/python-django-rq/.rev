@@ -30,4 +30,16 @@ already being maintained over a long period by https://build.opensuse.org/users/
   * Various admin interface improvements.</comment>
     <requestid>1064214</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9508baa0782c3a3cebfce0f0a3c1648d</srcmd5>
+    <version>2.8.0</version>
+    <time>1683213042</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.0:
+  * Support for RQ 1.14.
+  * Show scheduler PID information in admin interface.
+  * Added `serializer` argument to `rqworker` command.
+  * Added `USERNAME` and `SENTINEL_KWARGS` support.</comment>
+    <requestid>1084450</requestid>
+  </revision>
 </revisionlist>
