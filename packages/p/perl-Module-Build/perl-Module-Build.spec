@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Build
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Module-Build
 Name:           perl-Module-Build
-Version:        0.423200
+Version:        0.423400
 Release:        0
-%define cpan_version 0.4232
-Provides:       perl(Module::Build) = 0.423200
+%define cpan_version 0.4234
+Provides:       perl(Module::Build) = 0.423400
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Build and install Perl modules
 URL:            https://metacpan.org/release/%{cpan_name}

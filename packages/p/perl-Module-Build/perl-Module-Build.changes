@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:09:26 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.4234
+   see /usr/share/doc/packages/perl-Module-Build/Changes
+
+  0.4234 - Fri 28 Apr 2023 10:46:26 CEST
+    - PodParser now respects =encoding directives
+    - Don't use libraries in t/bundled for Build.PL
+    - make_tarball: workaround for broken tar on Darwin
+    - Respect $Config{man1ext}/$Config{man3ext}
+    - Do not require a compiler if c_source is an empty list
+  0.42_33 - Wed Mar 29 10:38:56 PM CEST 2023
+    - PodParser now respects =encoding directives
+    - Don't use libraries in t/bundled for Build.PL
+    - make_tarball: workaround for broken tar on Darwin
+    - Respect $Config{man1ext}/$Config{man3ext}
+    - Do not require a compiler if c_source is an empty list
+
+-------------------------------------------------------------------
 Fri Dec  9 03:08:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.4232
