@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Apr 30 03:10:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.35
+   see /usr/share/doc/packages/perl-Time-Local/Changes
+
+  1.35     2023-04-29
+  - This is the same as 1.34.
+  - The code now explicitly handles non-integer seconds values. This fixes the
+    confusing things that timelocal() does with non-integer seconds but does not
+    turn the seconds value into an integer. Based on a bug report from Dmitriy
+    Shamatrin. GH #18.
+  1.34     2023-03-25 (TRIAL RELEASE)
+  - Fix for test failures seen on 32-bit systems with older Perl versions.
+  1.33     2023-02-12 (TRIAL RELEASE)
+  - Fix for breakage on (some?) 32-bit platforms. If an integer calculation done
+    internally overflowed all calls to this module's subs could error with "Day
+    too big - 105412 > -2147483648". This fix reduces the range of acceptable
+    epochs but should make the module usable again on such systems.
+  1.32     2023-02-12 (TRIAL RELEASE)
+  - This is an alternative to the changes in the 1.31 release. Instead of
+    restoring "use integer", the code now explicitly handles non-integer seconds
+    values. This fixes the confusing things that timelocal() does with
+    non-integer seconds but does not turn the seconds value into an
+    integer. Based on a bug report from Dmitriy Shamatrin. GH #18.
+  1.31     2021-11-09 (TRIAL RELEASE)
+  - Restored the use of "use integer", which was removed in 2010 as part of the
+    change to support a 64-bit time_t in Perl, regardless of the platform. The
+    timelocal() sub does very confusing things with non-integer seconds because
+    internally it calls the system's localtime() function. And that localtime()
+    function may strip off the non-integer portion of the seconds value. This
+    leads to extremely confusing results because of the math that this module
+    does on the return value of localtime() internally.
+    With "use integer" back in effect the results are much more
+    predictable. Based on a bug report from Dmitriy Shamatrin. GH #18.
+
+-------------------------------------------------------------------
 Mon Jan 27 03:09:01 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.30
