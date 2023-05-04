@@ -1,7 +1,7 @@
 #
 # spec file for package plplot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,8 @@
 #
 # No qhull/octave on arch, ppc
 %ifarch %ix86 x86_64
-%define octave_enabled 1
+# Octave 8+ unsupported
+%define octave_enabled 0
 %else
 %define octave_enabled 0
 %endif

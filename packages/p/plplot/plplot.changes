@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 06:35:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave also for TW (openSUSE >= 1550) since plplot does
+  not support octave >= 8.0.
+
+-------------------------------------------------------------------
 Sat Feb 26 14:58:47 UTC 2022 - Max Lin <mlin@suse.com>
 
 - BuildRequires python3-sip4 for Leap 15.4
