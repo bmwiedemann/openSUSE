@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 08:03:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add disable-Werror.patch: disable Werror, patch lifted from
+  debian. Yes this is a bit of a big hammer, but it works.
+- Following the above, drop
+  0001-Workaround-compilation-warnings-with-gccs-8.0.patch
+- Use autosetup and make_build macros.
+
+-------------------------------------------------------------------
 Tue Aug 27 09:58:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description.

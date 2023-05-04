@@ -1,7 +1,7 @@
 #
 # spec file for package tecnoballz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright Vincent Petry <PVince81@yahoo.fr>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,8 +27,8 @@ URL:            http://linux.tlk.fr/games/TecnoballZ/
 Source:         http://linux.tlk.fr/games/TecnoballZ/download/%{name}-%{version}.tgz
 Source1:        %{name}.desktop
 Source2:        %{name}.png
-# PATCH-FIX-OPENSUSE 0001-Workaround-compilation-warnings-with-gccs-8.0.patch
-Patch0:         0001-Workaround-compilation-warnings-with-gccs-8.0.patch
+# PATCH-FIX-OPENSUSE disable-Werror.patch
+Patch1:         disable-Werror.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -50,12 +50,9 @@ gaining bonuses.  Numerous decors, music and sounds complete this
 game. This game was ported from the Commodore Amiga.
 
 %prep
-%setup -q
-%if 0%{?suse_version} >= 1550
-%patch0 -p1
-%endif
+%autosetup -p1
 
-# Fix games path to %{_bindir} instead of /usr/games
+# Fix games path to %%{_bindir} instead of /usr/games
 find -name Makefile.am -exec sed -i -e "s|^gamesdir =.*$|gamesdir = %{_bindir}|g" \{\} +
 
 sed -i -e "s|^CXXFLAGS=\"\(.*\)\"|CXXFLAGS=\"\1 %{optflags}\"|" configure.ac
@@ -63,7 +60,7 @@ sed -i -e "s|^CXXFLAGS=\"\(.*\)\"|CXXFLAGS=\"\1 %{optflags}\"|" configure.ac
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
