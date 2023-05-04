@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May  2 08:03:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * completely overhauled "Libbpf overview" landing documentation
+    page;
+  * support for BPF link-based `struct_ops` programs:
+      * `SEC(".struct_ops.link")` annotations;
+      * `bpf_map__attach_struct_ops()` attach API;
+      * `bpf_link__update_map()` link update API;
+  * support sleepable `SEC("struct_ops.s")` programs
+  * improved thread-safety of libbpf print callbacks and
+    `libbpf_set_print()`
+  * improve handling and reporting of missing BPF kfuncs
+  * `bpf_{btf,link,map,prog}_get_info_by_fd()` APIs
+  * `bpf_xdp_query_opts()` supports fetching XDP/XSK supported
+     features;
+  * `perf_buffer__new()` allows customizing notification/sampling
+    period now;
+  * BPF verifier logging improvements:
+    * pass-through BPF verifier log level and flags to kernel as
+      is
+     * support `log_true_size` for getting required log buffer size
+       to fit BPF verifier log completely;
+     * allow precise control over kprobe/uprobe attach mode: legacy,
+       perf-based, link-based.
+  * fix legacy kprobe events names sanitization;
+  * fix clobbering errno in some cases;
+  * fix BPF map's `BPF_F_MMAPABLE` flag sanitization;
+  * fix BPF-side USDT support code on s390x architecture;
+  * fix `BPF_PROBE_READ{_STR}_INTO()` on s390x architecture;
+  * fix kernel version setting for Debian kernels;
+  * fix netlink protocol handling in some cases;
+  * improve robustness of attaching to legacy kprobes and
+    uprobes;
+  * fix double-free during static linking empty ELF sections;
+  * a bunch of other small fixes here and there.
+
+-------------------------------------------------------------------
 Thu Jan  5 07:02:19 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Remove requirement of linux-glibc-devel >= 5.16 for devel package
