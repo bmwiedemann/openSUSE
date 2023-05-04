@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define short_name commons-discovery
+%bcond_with tests
 Name:           jakarta-%{short_name}
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Jakarta Commons Discovery
 License:        Apache-2.0
@@ -26,17 +27,19 @@ Group:          Development/Libraries/Java
 URL:            http://jakarta.apache.org/commons/discovery.html
 Source0:        https://archive.apache.org/dist/commons/discovery/source/%{short_name}-%{version}-src.tar.gz
 Source1:        https://repo1.maven.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
+Source100:      commons-discovery-build.xml
 BuildRequires:  ant
-BuildRequires:  commons-logging >= 1.0.4
+BuildRequires:  commons-logging >= 1.1.1
+BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
-BuildRequires:  junit >= 3.7
-Requires:       commons-logging >= 1.0.4
+Requires:       commons-logging >= 1.1.1
 Provides:       %{short_name} = %{version}
 Obsoletes:      %{short_name} < %{version}
-#XXX: temporary fix to make axis auto dependencies work, need to revork package
-Provides:       osgi(org.apache.commons.discovery)
 BuildArch:      noarch
+%if %{with tests}
+BuildRequires:  ant-junit
+%endif
 
 %description
 The Discovery component is about discovering, or finding,
@@ -55,19 +58,21 @@ This package contains the javadoc documentation for %{name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-chmod u+w .
+cp %{SOURCE100} build.xml
+mkdir -p lib
 
 %build
+build-jar-repository -s lib commons-logging
 ant \
-  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
-  -Djunit.jar=%(find-jar junit) \
-  -Dlogger.jar=%(find-jar commons-logging) \
-  test.discovery dist
+%if %{without tests}
+    -Dtest.skip=true \
+%endif
+    package javadoc
 
 %install
 # jar
 install -d -m 0755 %{buildroot}%{_javadir}
-install -m 644 dist/%{short_name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+install -m 644 target/%{short_name}-*.jar %{buildroot}%{_javadir}/%{short_name}.jar
 (cd %{buildroot}%{_javadir} && ln -s %{short_name}.jar %{name}.jar)
 
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
@@ -76,7 +81,8 @@ install -p -m 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{short_name}.pom
 
 # javadoc
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license LICENSE.txt

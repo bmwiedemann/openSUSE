@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  3 14:03:34 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.5:
+  * Breaking changes: The minimum JDK requirement is now JDK 1.5.
+    The provided binaries will not work on lower JDKs. The source
+    has been updated to leverage Generics and other JDK 1.5 features
+    where possible, and requires JDK 1.5 to compile.
+  * Dependencies: Commons Discovery depends on Commons Logging.
+    It is built against version 1.1.1.
+  * New features: Discovery APIs use Java5 Generics.
+  * Known bugs/limitations: resource.classes.DiscoverClasses doesn't
+    work with Oracle embedded JVM in DBMS, see DISCOVERY-13:
+    - https://issues.apache.org/jira/browse/DISCOVERY-13
+  * Deprecations:
+    - Classes in org.apache.commons.discovery.log package
+      have been deprecated, depending on Apache Commons Logging 1.1.1
+      there is no more circular dependency between Apache Commons
+      Discovery and Apache Commons Logging.
+    - setLog(org.apache.commons.logging.Log) methods have been
+      deprecated too, they are not thread-safe.
+
+-------------------------------------------------------------------
 Sun Mar 20 15:04:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
