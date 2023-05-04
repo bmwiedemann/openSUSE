@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Wed May  3 13:12:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.5.2
+  * too many changes to list
+
+-------------------------------------------------------------------
+Thu Nov 16 11:34:09 UTC 2017 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+- Use current python building macros
+
+-------------------------------------------------------------------
+Wed Jul 24 20:33:23 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 7.1:
+  + New features: LZH archives are now supported.
+  + Bug fixes:
+    - dtrx will no longer offer to extract the zero archive files
+      found in a zero-file archive.
+    - Temporary directories will be cleaned up after extracting an
+      empty archive.
+- Changes from version 7.0:
+  + At this point, I consider dtrx to be mature software. It's
+    maybe a little too interactive, but otherwise it does
+    everything I want, and it does it very well.  Expect new
+    releases to be few and far between going forward.
+  + New features: If any of dtrx's command line arguments are URLs,
+    it will automatically download them with `wget -c` in the
+    current directory before extracting them.
+  + Enhancements:
+    - dtrx will try to extract ZIP files with 7z if unzip is not
+      successful.
+    - dtrx will be smarter about removing extensions from filenames
+      when extracting to a new directory or file.
+    - dtrx will not ask you if you want to recurse through an
+      archive if the number of archives inside the original file is
+      small.
+- Changes from version 6.6:
+  + Enhancements: dtrx can now handle `xz compression`_.
+  + Other changes: The tests now use the PyYAML library, instead of
+    the abandoned Syck.
+- Changes from version 6.5:    
+  + Enhancements:
+    - When you list archive contents with -l or -t, dtrx will start
+      printing results much faster than it used to.  There's a
+      small chance that it will print some incorrect listings if it
+      misdetects the archive type of a given file, but it will show
+      you an error message when that happens.
+    - dtrx recognizes more kinds of compressed tar archives by 
+      their extension.
+    - You can now extract newer .deb packages that are compressed
+      with bzip2 or lzma.
+   + Bug fixes:
+     - When extracting an archive that contained a file with a
+       mismatched filename, the prompt would offer you a chance to
+       "rename the directory" instead of "rename the file." This
+       wording has been fixed, along with some other wording
+       adjustments in the prompts generally.
+     - Perform more reliable detection of the terminal size, and
+       improve word wrapping on prompts.
+   + Other changes : The README is now written like a man page, and
+     can be converted to a man page by using rst2man_.
+- Changes from version 6.4:
+  + Enhancements:
+    - Support detection of LZMA archives by magic.
+    - Interactive prompts are wrapped much more cleanly.
+  + Bug fixes: Fix a bug where dtrx would crash when extracting an
+    archive with no files inside it.
+- Add BuildArch: norach for opensuse.
+
+-------------------------------------------------------------------
+
+* Mon Oct 20 2008 Pascal Bleser <guru@unixtech.be> 6.3
+- update to 6.3:
+  * this release adds support for RAR archives
+  * fixes a bug that caused dtrx to crash when extracting certain kinds of
+    archives with the -v option
+  * avoids spurious warnings under Python 2.6
+
+* Mon Jul 28 2008 Pascal Bleser <guru@unixtech.be> 6.2
+- new upstream version:
+  * new --one-entry option
+  * fixes "1234 blocks" warning message
+  * when you try to list the contents of an archive, dtrx will now cope with
+    misnamed files more gracefully, giving more accurate results and showing
+    fewer error messages
+  * dtrx 6.2 will only show you error messages from archive extraction if it
+    is completely unable to extract the file. If one of its extraction methods
+    succeeds, it will no longer show you the error messages from previous
+    extraction attempts
+  * dtrx is now better about cleaning up partially extracted archives when it
+    encounters an error or signal
+  * users will no longer see error messages about broken pipes from dtrx.
+
+* Tue Jul 15 2008 Pascal Bleser <guru@unixtech.be> 6.1
+- new upstream version:
+  * add support for InstallShield archives, using the unshield command
+  * the wording of many of the interactive prompts has been adjusted to be
+    clearer and provide more information to the user immediately
+  * dtrx 6.1 does a better job protecting against race conditions when
+    extracting a single file
+  * if you used the -f option, and extracted an archive that only contained
+    one file or directory, dtrx 6.0 would still prompt you to ask how it
+    should be extracted. dtrx 6.1 fixes this, extracting the contents to the
+    current directory as -f requires
+  * recursive extraction would not work well in dtrx 6.0 when the contents of
+    the original archive were a single file. This has been fixed in dtrx 6.1.
+
+* Sat Mar  8 2008 Pascal Bleser <guru@unixtech.be> 6.0
+- new upstream version
+
+* Tue Nov 27 2007 Pascal Bleser <guru@unixtech.be> 5.0
+- new package
