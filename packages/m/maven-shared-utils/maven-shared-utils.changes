@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  3 11:24:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.3.4
+  * Bug
+    + [MSHARED-951] - Checked exception converted to raw runtime
+      exception
+    + [MSHARED-952] - PrettyPrintXmlWriter output is platform
+      dependent
+    + [MSHARED-954] - Deprecate StringUtils.unifyLineSeparator
+    + [MSHARED-969] - Environment variable with null value
+  * Dependency upgrade
+    + [MSHARED-962] - Upgrade Jansi to 2.0.1
+    + [MSHARED-973] - Upgrade Jansi to 2.2.0
+- Changed patch:
+  * 0001-Restore-compatibility-with-current-maven.patch
+    + rediff to changed context/line-ends
+
+-------------------------------------------------------------------
 Mon Apr 25 15:44:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.3.3

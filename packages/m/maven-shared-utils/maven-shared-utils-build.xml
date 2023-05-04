@@ -10,11 +10,11 @@
 
   <property name="project.groupId" value="org.apache.maven.shared"/>
   <property name="project.artifactId" value="maven-shared-utils"/>
-  <property name="project.version" value="3.3.3"/>
+  <property name="project.version" value="3.3.4"/>
   <property name="project.name" value="Apache Maven Shared Utils"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="3.2"/>
+  <property name="spec.version" value="3.3"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
