@@ -1453,4 +1453,12 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * profiles: whitelist kismet capabilities (bsc#1200954) (#171)</comment>
     <requestid>1066365</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>834ec9aee2fd8a795292e62a4f8a62f3</srcmd5>
+    <version>1699_20230424</version>
+    <time>1683212939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083983</requestid>
+  </revision>
 </revisionlist>

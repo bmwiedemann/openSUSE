@@ -16,7 +16,7 @@
 #
 
 
-%define VERSION_DATE 20230217
+%define VERSION_DATE 20230424
 
 Name:           permissions
 Version:        %{suse_version}_%{VERSION_DATE}

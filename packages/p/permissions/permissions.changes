@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 24 13:06:36 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 20230424:
+  * profiles: remove dead opiepasswd entry
+    (opie was removed via OBS sr#1065964).
+
+-------------------------------------------------------------------
 Fri Feb 17 11:12:44 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 20230217:
