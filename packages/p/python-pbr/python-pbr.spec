@@ -89,7 +89,11 @@ dont_test="test_parse_requirements or test_requirement_parsing or test_pep_517_s
 dont_test+="or test_write_git_changelog or test_build_doc or test_cmd_builder_override "
 dont_test+="or test_cmd_builder_override_multiple_builders or test_extras_parsing "
 dont_test+="or test_project_url_parsing or test_keywords_parsing "
-dont_test+="or test_handling_of_whitespace_in_data_files"
+dont_test+="or test_handling_of_whitespace_in_data_files "
+# the following tests fail due to Sphinx 7.0 and removal of build_sphinx feature
+# https://bugs.launchpad.net/pbr/+bug/2018453
+dont_test+="or test_setup_py_build_sphinx or test_builders_config "
+dont_test+="or test_default_api_build_dir or test_different_api_build_dir"
 %pytest -k "not ($dont_test)"
 %endif
 
