@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 15:36:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.12.7:
+  Removed certs:
+    * CN=Network Solutions Certificate Authority O=Network Solutions L.L.C.
+    * CN=Staat der Nederlanden EV Root CA O=Staat der Nederlanden
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
