@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-beautifulsoup4
 Version:        4.10.0
@@ -64,6 +63,7 @@ Valuable data that was once locked up in poorly-designed websites is now within
 your reach. Projects that would have taken hours take only minutes with
 Beautiful Soup.
 
+%if 0%{?suse_version} > 1500
 %package -n python-beautifulsoup4-doc
 Summary:        Documentation for %{name}
 Recommends:     %{name} = %{version}
@@ -72,6 +72,7 @@ Obsoletes:      python3-beautifulsoup4-doc
 
 %description -n python-beautifulsoup4-doc
 Documentation and help files for %{name}
+%endif
 
 %prep
 %setup -q -n beautifulsoup4-%{version}
@@ -94,7 +95,9 @@ export PYTHONDONTWRITEBYTECODE=1
 %{python_sitelib}/bs4/
 %{python_sitelib}/beautifulsoup4-%{version}-py*.egg-info
 
+%if 0%{?suse_version} > 1500
 %files -n python-beautifulsoup4-doc
+%endif
 %doc NEWS.txt README.md TODO.txt doc/build/html
 
 %changelog

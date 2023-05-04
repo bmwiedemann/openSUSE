@@ -414,4 +414,14 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
     <comment></comment>
     <requestid>1081983</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>a21679aa704efa54ec709128cc449d2d</srcmd5>
+    <version>4.10.0</version>
+    <time>1683212942</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084355 from dirkmueller
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1084402</requestid>
+  </revision>
 </revisionlist>
