@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:11:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.21
+   see /usr/share/doc/packages/perl-Module-Install/Changes
+
+  1.21  2023-04-28
+    - fix tests broken by Module::Install::DSL removal
+
+  1.20  2023-04-27
+    - Module::Install::DSL has been removed, as its use is highly discouraged.
+
+-------------------------------------------------------------------
 Wed Feb  7 16:50:47 UTC 2018 - coolo@suse.com
 
 - updated to 1.19
