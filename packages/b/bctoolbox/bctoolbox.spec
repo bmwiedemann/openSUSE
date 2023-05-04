@@ -49,7 +49,7 @@ Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       lib%{name}-tester%{sover} = %{version}
-Requires:       mbedtls-devel
+Requires:       mbedtls-devel < 3
 
 %description devel
 Utilities library used by Belledonne Communications softwares like
