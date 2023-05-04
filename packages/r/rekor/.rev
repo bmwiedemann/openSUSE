@@ -280,4 +280,21 @@
   - fix flag type for operator in search (#1136) (forwarded request 1077454 from msmeissn)</comment>
     <requestid>1077494</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d5a6610fead864b8f16c8b96368ec5f0</srcmd5>
+    <version>1.1.1</version>
+    <time>1683213023</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.1.1 (jsc#SLE-23476):
+  Functional Enhancements
+  - Refactor Trillian client with exported methods (#1454)
+  - Switch to official redis-go client (#1459)
+  - Remove replace in go.mod (#1444)
+  - Add Rekor OID info. (#1390)
+  Quality Enhancements
+  - remove legacy encrypted cosign key (#1446)
+  - swap cjson dependency (#1441)
+  - Update release readme (#1456) (forwarded request 1084326 from msmeissn)</comment>
+    <requestid>1084327</requestid>
+  </revision>
 </revisionlist>
