@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 26 16:17:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Use multi-file find -exec
+
+-------------------------------------------------------------------
 Wed Apr 19 14:04:00 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - doc: clean up doc files 

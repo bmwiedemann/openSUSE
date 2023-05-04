@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define short_version 1.9.3
 
 Name:           ranger
@@ -29,15 +30,15 @@ Source99:       ranger-rpmlintrc
 # PATCH-FIX-UPSTREAM ranger.desktop.patch -- Add missing GenericName
 Patch0:         ranger.desktop.diff
 BuildRequires:  python3-devel
-BuildRequires:	python3-setuptools
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       file
 Requires:       python3-curses
 Recommends:     atool
 Recommends:     highlight
 Recommends:     mediainfo
-Recommends:     w3m
 Recommends:     python3-Pillow
+Recommends:     w3m
 BuildArch:      noarch
 
 %description
@@ -64,7 +65,7 @@ python3 ./setup.py install \
   --root=%{buildroot}
 
 mv "%{buildroot}%{_datadir}/doc/ranger" _doc
-find _doc -type f -exec chmod -R -x '{}' \;
+find _doc -type f -exec chmod -x '{}' +
 
 %if 0%{?suse_version} < 1500
 %post
