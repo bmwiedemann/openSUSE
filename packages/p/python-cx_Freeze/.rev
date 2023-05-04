@@ -106,4 +106,16 @@
   * Prioritize importlib_metadata in versions lower than 3.10</comment>
     <requestid>1075144</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0fed1a9fb9fe270b98f55b1614e7ea3</srcmd5>
+    <version>6.14.9</version>
+    <time>1683213046</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.14.9:
+  * support unbundled setuptools
+  * hooks: include a qt.conf for pyside2-webengine to work
+  * hooks: add pyimagej and jpype
+  * hooks: add librosa and lazy_loader hooks</comment>
+    <requestid>1084466</requestid>
+  </revision>
 </revisionlist>

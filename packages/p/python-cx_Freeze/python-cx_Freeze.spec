@@ -18,7 +18,7 @@
 
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        6.14.7
+Version:        6.14.9
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
