@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed May  3 23:07:16 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Revert re-enable binary stripping and debuginfo boo#1210938.
+  go1.19 and earlier store pre-compiled packages in $GOROOT/pkg as
+  Go .a files which are not ar archives. These .a are incorrectly
+  passed to strip by brp-15-strip-debug. strip incorrectly modifies
+  Go .a files rendering them invalid. Some Go applications fail to
+  build with "reference to nonexistent package" errors.
+  Refs boo#1210938 boo#1211073
+  * go1.19 and earlier store pre-compiled packages for the standard
+    library as .a files under pkg/GOARCH[_{dynlink,race}].
+  * Go emitted .a files are a Go specific format, not ar archives.
+  * go1.10+ stores recently built packages in build cache GOCACHE.
+    These are separate from the installed packages in $GOROOT/pkg.
+  * Go build cache objects use a different file format than Go .a.
+  * go1.20+ switches to the GOCACHE for both recently built
+    packages and the installed packages in $GOROOT/pkg.
+  * Current versions of readelf detect Go .a files correctly, e.g.:
+    readelf -d /usr/lib64/go/1.19/pkg/linux_amd64/bytes.a
+    File: /usr/lib64/go/1.19/pkg/linux_amd64/bytes.a(__.PKGDEF       )
+    readelf: Error: This is a GO binary file - try using 'go tool objdump' or 'go tool nm'
+  * binutils strip as of 2.40 detects Go .a files correctly, but
+    incorrectly modifies the .a files altering path resulting in
+    "reference to nonexistent package" errors.
+  * brp_check_suse/brp-15-strip-debug passes files to strip based
+    primarily on the file extension including .a.
+
+-------------------------------------------------------------------
+Tue May  2 17:24:29 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.9 (released 2023-05-02) includes three security fixes to
+  the html/template package, as well as bug fixes to the compiler,
+  the runtime, and the crypto/tls and syscall packages.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-29400 CVE-2023-24540 CVE-2023-24539
+  * go#59811 go#59720 boo#1211029 security: fix CVE-2023-24539 html/template: improper sanitization of CSS values
+  * go#59813 go#59721 boo#1211030 security: fix CVE-2023-24540 html/template: improper handling of JavaScript whitespace
+  * go#59815 go#59722 boo#1211031 security: fix CVE-2023-29400 html/template: improper handling of empty HTML attributes
+  * go#59063 runtime: automatically bump RLIMIT_NOFILE on Unix
+  * go#59158 cmd/compile: inlining function that references function literals generates bad code
+  * go#59373 cmd/compile: encoding/binary.PutUint16 sometimes doesn't write
+  * go#59539 crypto/tls: TLSv1.3 connection fails with invalid PSK binder
+  * go#59579 cmd/compile: incorrect inline function variable
+
+-------------------------------------------------------------------
+Tue May  2 17:08:49 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging revert go1.x Suggests go1.x-race boo#1210963
+  * Upstream go binary distributions do include race detector .syso
+  * Default Recommends for subpackages is best suited in this case
+
+-------------------------------------------------------------------
+Fri Apr 28 23:47:22 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * go1.x Suggests go1.x-race do not install by default boo#1210963
+  * Use Group: Development/Languages/Go instead of Other
+
+-------------------------------------------------------------------
 Fri Apr 14 23:41:22 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Build subpackage go1.1x-libstd compiled shared object libstd.so

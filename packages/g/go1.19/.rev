@@ -273,4 +273,35 @@
   * On x86_64 %define go_amd64=v1 as current instruction baseline (forwarded request 1079836 from jfkw)</comment>
     <requestid>1079837</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e886d60233482c510a286c8b18933e73</srcmd5>
+    <version>1.19.9</version>
+    <time>1683212996</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert re-enable binary stripping and debuginfo boo#1210938.
+  go1.19 and earlier store pre-compiled packages in $GOROOT/pkg as
+  Go .a files which are not ar archives. These .a are incorrectly
+  passed to strip by brp-15-strip-debug. strip incorrectly modifies
+  Go .a files rendering them invalid. Some Go applications fail to
+  build with &quot;reference to nonexistent package&quot; errors.
+  Refs boo#1210938 boo#1211073
+  * go1.19 and earlier store pre-compiled packages for the standard
+    library as .a files under pkg/GOARCH[_{dynlink,race}].
+  * Go emitted .a files are a Go specific format, not ar archives.
+  * go1.10+ stores recently built packages in build cache GOCACHE.
+    These are separate from the installed packages in $GOROOT/pkg.
+  * Go build cache objects use a different file format than Go .a.
+  * go1.20+ switches to the GOCACHE for both recently built
+    packages and the installed packages in $GOROOT/pkg.
+  * Current versions of readelf detect Go .a files correctly, e.g.:
+    readelf -d /usr/lib64/go/1.19/pkg/linux_amd64/bytes.a
+    File: /usr/lib64/go/1.19/pkg/linux_amd64/bytes.a(__.PKGDEF       )
+    readelf: Error: This is a GO binary file - try using 'go tool objdump' or 'go tool nm'
+  * binutils strip as of 2.40 detects Go .a files correctly, but
+    incorrectly modifies the .a files altering path resulting in
+    &quot;reference to nonexistent package&quot; errors.
+  * brp_check_suse/brp-15-strip-debug passes files to strip based
+    primarily on the file extension including .a. (forwarded request 1084541 from jfkw)</comment>
+    <requestid>1084542</requestid>
+  </revision>
 </revisionlist>
