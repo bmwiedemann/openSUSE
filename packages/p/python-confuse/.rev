@@ -35,4 +35,13 @@
 </comment>
     <requestid>1006371</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>337c17d0e02ca803948cc8379f415eaa</srcmd5>
+    <version>2.0.1</version>
+    <time>1683213040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Remove a `&lt;4` Python version requirement bound.</comment>
+    <requestid>1084448</requestid>
+  </revision>
 </revisionlist>

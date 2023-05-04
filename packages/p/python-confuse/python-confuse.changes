@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 15:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Remove a `<4` Python version requirement bound.
+
+-------------------------------------------------------------------
 Mon Sep 26 23:32:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.0.0:
