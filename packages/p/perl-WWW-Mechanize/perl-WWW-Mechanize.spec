@@ -18,7 +18,7 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.16
+Version:        2.17
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
@@ -41,14 +41,11 @@ BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Fatal)
-BuildRequires:  perl(Test::Memory::Cycle) >= 1.06
+BuildRequires:  perl(Test::Memory::Cycle)
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::NoWarnings) >= 1.04
 BuildRequires:  perl(Test::Output)
 BuildRequires:  perl(Test::Taint) >= 1.08
-BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
@@ -90,7 +87,7 @@ content and use that as input to a test call.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
