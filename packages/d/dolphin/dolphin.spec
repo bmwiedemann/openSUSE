@@ -109,7 +109,10 @@ ZSH command line completion support for %{name}.
 %package -n %{name}-part-lang
 Summary:        Translations for package %{name}
 Requires:       %{name}-part = %{version}
-Supplements:    (bundle-lang-other and %{name}-part)
+# rpm-config-SUSE does not generate locale provides yet
+%if 0%{?suse_version} < 1550
+Supplements:    %{name}-part
+%endif
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
 Provides:       %{name}-part-lang-all = %{version}
