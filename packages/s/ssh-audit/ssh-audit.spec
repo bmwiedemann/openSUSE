@@ -1,7 +1,7 @@
 #
 # spec file for package ssh-audit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ssh-audit
-Version:        2.5.0
+Version:        2.9.0
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
