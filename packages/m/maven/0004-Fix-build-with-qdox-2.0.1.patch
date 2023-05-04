@@ -1,0 +1,156 @@
+From a46e8cb4641508c71379a07869551c770f18f1b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Tue, 2 May 2023 18:12:26 +0200
+Subject: [PATCH 4/4] Fix build with qdox-2.0.1
+
+---
+ .../org/apache/maven/plugin/DefaultExtensionRealmCache.java   | 2 +-
+ .../org/apache/maven/plugin/DefaultPluginArtifactsCache.java  | 2 +-
+ .../java/org/apache/maven/plugin/DefaultPluginRealmCache.java | 2 +-
+ .../java/org/apache/maven/plugin/ExtensionRealmCache.java     | 4 ++--
+ .../java/org/apache/maven/plugin/PluginArtifactsCache.java    | 4 ++--
+ .../main/java/org/apache/maven/plugin/PluginRealmCache.java   | 4 ++--
+ .../org/apache/maven/project/DefaultProjectRealmCache.java    | 2 +-
+ .../main/java/org/apache/maven/project/ProjectRealmCache.java | 4 ++--
+ .../maven/project/artifact/DefaultProjectArtifactsCache.java  | 2 +-
+ .../apache/maven/project/artifact/ProjectArtifactsCache.java  | 4 ++--
+ 10 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/maven-core/src/main/java/org/apache/maven/plugin/DefaultExtensionRealmCache.java b/maven-core/src/main/java/org/apache/maven/plugin/DefaultExtensionRealmCache.java
+index e2b712305..ce7bcae4e 100644
+--- a/maven-core/src/main/java/org/apache/maven/plugin/DefaultExtensionRealmCache.java
++++ b/maven-core/src/main/java/org/apache/maven/plugin/DefaultExtensionRealmCache.java
+@@ -138,7 +138,7 @@ public void flush() {
+         cache.clear();
+     }
+ 
+-    public void register(MavenProject project, Key key, CacheRecord record) {
++    public void register(MavenProject project, Key key, CacheRecord record_) {
+         // default cache does not track extension usage
+     }
+ 
+diff --git a/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginArtifactsCache.java b/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginArtifactsCache.java
+index f2088b593..e5d7244fd 100644
+--- a/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginArtifactsCache.java
++++ b/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginArtifactsCache.java
+@@ -177,7 +177,7 @@ protected static boolean pluginEquals(Plugin a, Plugin b) {
+         return CacheUtils.pluginEquals(a, b);
+     }
+ 
+-    public void register(MavenProject project, Key cacheKey, CacheRecord record) {
++    public void register(MavenProject project, Key cacheKey, CacheRecord record_) {
+         // default cache does not track record usage
+     }
+ }
+diff --git a/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginRealmCache.java b/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginRealmCache.java
+index 10321374b..c9e1d0e59 100644
+--- a/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginRealmCache.java
++++ b/maven-core/src/main/java/org/apache/maven/plugin/DefaultPluginRealmCache.java
+@@ -204,7 +204,7 @@ protected static boolean pluginEquals(Plugin a, Plugin b) {
+         return CacheUtils.pluginEquals(a, b);
+     }
+ 
+-    public void register(MavenProject project, Key key, CacheRecord record) {
++    public void register(MavenProject project, Key key, CacheRecord record_) {
+         // default cache does not track plugin usage
+     }
+ 
+diff --git a/maven-core/src/main/java/org/apache/maven/plugin/ExtensionRealmCache.java b/maven-core/src/main/java/org/apache/maven/plugin/ExtensionRealmCache.java
+index 022b99320..b5cb6e66a 100644
+--- a/maven-core/src/main/java/org/apache/maven/plugin/ExtensionRealmCache.java
++++ b/maven-core/src/main/java/org/apache/maven/plugin/ExtensionRealmCache.java
+@@ -86,7 +86,7 @@ CacheRecord put(
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register(MavenProject project, Key key, CacheRecord record);
++    void register(MavenProject project, Key key, CacheRecord record_);
+ }
+diff --git a/maven-core/src/main/java/org/apache/maven/plugin/PluginArtifactsCache.java b/maven-core/src/main/java/org/apache/maven/plugin/PluginArtifactsCache.java
+index b0c07ae9a..97f76524c 100644
+--- a/maven-core/src/main/java/org/apache/maven/plugin/PluginArtifactsCache.java
++++ b/maven-core/src/main/java/org/apache/maven/plugin/PluginArtifactsCache.java
+@@ -92,7 +92,7 @@ Key createKey(
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register(MavenProject project, Key cacheKey, CacheRecord record);
++    void register(MavenProject project, Key cacheKey, CacheRecord record_);
+ }
+diff --git a/maven-core/src/main/java/org/apache/maven/plugin/PluginRealmCache.java b/maven-core/src/main/java/org/apache/maven/plugin/PluginRealmCache.java
+index bf655efc3..7b0e25259 100644
+--- a/maven-core/src/main/java/org/apache/maven/plugin/PluginRealmCache.java
++++ b/maven-core/src/main/java/org/apache/maven/plugin/PluginRealmCache.java
+@@ -102,7 +102,7 @@ default CacheRecord get(Key key, PluginRealmSupplier supplier)
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register(MavenProject project, Key key, CacheRecord record);
++    void register(MavenProject project, Key key, CacheRecord record_);
+ }
+diff --git a/maven-core/src/main/java/org/apache/maven/project/DefaultProjectRealmCache.java b/maven-core/src/main/java/org/apache/maven/project/DefaultProjectRealmCache.java
+index 1a1f70638..cb446c759 100644
+--- a/maven-core/src/main/java/org/apache/maven/project/DefaultProjectRealmCache.java
++++ b/maven-core/src/main/java/org/apache/maven/project/DefaultProjectRealmCache.java
+@@ -115,7 +115,7 @@ public void flush() {
+         cache.clear();
+     }
+ 
+-    public void register(MavenProject project, Key key, CacheRecord record) {
++    public void register(MavenProject project, Key key, CacheRecord record_) {
+         // default cache does not track record usage
+     }
+ 
+diff --git a/maven-core/src/main/java/org/apache/maven/project/ProjectRealmCache.java b/maven-core/src/main/java/org/apache/maven/project/ProjectRealmCache.java
+index 241c86095..922ec982c 100644
+--- a/maven-core/src/main/java/org/apache/maven/project/ProjectRealmCache.java
++++ b/maven-core/src/main/java/org/apache/maven/project/ProjectRealmCache.java
+@@ -77,7 +77,7 @@ public DependencyFilter getExtensionArtifactFilter() {
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register(MavenProject project, Key key, CacheRecord record);
++    void register(MavenProject project, Key key, CacheRecord record_);
+ }
+diff --git a/maven-core/src/main/java/org/apache/maven/project/artifact/DefaultProjectArtifactsCache.java b/maven-core/src/main/java/org/apache/maven/project/artifact/DefaultProjectArtifactsCache.java
+index c45128530..a854fd234 100644
+--- a/maven-core/src/main/java/org/apache/maven/project/artifact/DefaultProjectArtifactsCache.java
++++ b/maven-core/src/main/java/org/apache/maven/project/artifact/DefaultProjectArtifactsCache.java
+@@ -227,7 +227,7 @@ public void flush() {
+     }
+ 
+     @Override
+-    public void register(MavenProject project, Key cacheKey, CacheRecord record) {
++    public void register(MavenProject project, Key cacheKey, CacheRecord record_) {
+         // default cache does not track record usage
+     }
+ }
+diff --git a/maven-core/src/main/java/org/apache/maven/project/artifact/ProjectArtifactsCache.java b/maven-core/src/main/java/org/apache/maven/project/artifact/ProjectArtifactsCache.java
+index 025800698..f6ba70b86 100644
+--- a/maven-core/src/main/java/org/apache/maven/project/artifact/ProjectArtifactsCache.java
++++ b/maven-core/src/main/java/org/apache/maven/project/artifact/ProjectArtifactsCache.java
+@@ -93,7 +93,7 @@ Key createKey(
+      * cache.
+      *
+      * @param project The project that employs the plugin realm, must not be {@code null}.
+-     * @param record The cache record being used for the project, must not be {@code null}.
++     * @param record_ The cache record being used for the project, must not be {@code null}.
+      */
+-    void register(MavenProject project, Key cacheKey, CacheRecord record);
++    void register(MavenProject project, Key cacheKey, CacheRecord record_);
+ }
+-- 
+2.40.1
+

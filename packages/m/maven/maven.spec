@@ -1,7 +1,7 @@
 #
 # spec file for package maven
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 Name:           maven
-Version:        3.8.6
+Version:        3.9.1
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -35,19 +35,15 @@ Source10:       apache-%{name}-%{version}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 # Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         0003-Use-non-shaded-HTTP-wagon.patch
-Patch4:         0004-Remove-dependency-on-powermock.patch
-Patch5:         0005-Port-to-maven-resolver-1.7.2.patch
-Patch6:         0006-Restore-DefaultModelValidator-compatibility-with-Mav.patch
-Patch7:         0007-Fix-build-with-qdox-2.0.1.patch
+Patch3:         0003-Remove-dependency-on-powermock.patch
+Patch4:         0004-Fix-build-with-qdox-2.0.1.patch
 BuildRequires:  ant
+BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
-BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  atinject
-BuildRequires:  cdi-api
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
@@ -57,14 +53,15 @@ BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  jansi
 BuildRequires:  javapackages-local
-BuildRequires:  jboss-interceptors-1.2-api
 BuildRequires:  jcl-over-slf4j
 BuildRequires:  jdom2
-BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-api >= 1.8.1
 BuildRequires:  maven-resolver-connector-basic
 BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-named-locks
 BuildRequires:  maven-resolver-spi
+BuildRequires:  maven-resolver-transport-file
+BuildRequires:  maven-resolver-transport-http
 BuildRequires:  maven-resolver-transport-wagon
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
@@ -115,9 +112,9 @@ Summary:        Core part of Maven
 # dependencies which are not generated automatically, but adding
 # everything seems to be easier.
 Group:          Development/Tools/Building
+Requires:       aopalliance
 Requires:       apache-commons-cli
 Requires:       apache-commons-codec
-Requires:       apache-commons-io
 Requires:       apache-commons-lang3
 Requires:       apache-commons-logging
 Requires:       atinject
@@ -128,7 +125,6 @@ Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       jansi
 Requires:       javapackages-tools
-Requires:       jboss-interceptors-1.2-api
 Requires:       jcl-over-slf4j
 Requires:       junit
 Requires:       maven-resolver-api
@@ -136,6 +132,8 @@ Requires:       maven-resolver-connector-basic
 Requires:       maven-resolver-impl
 Requires:       maven-resolver-named-locks
 Requires:       maven-resolver-spi
+Requires:       maven-resolver-transport-file
+Requires:       maven-resolver-transport-http
 Requires:       maven-resolver-transport-wagon
 Requires:       maven-resolver-util
 Requires:       maven-shared-utils
@@ -184,9 +182,6 @@ BuildArch:      noarch
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete
@@ -219,6 +214,8 @@ sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build
 
 %pom_remove_dep -r :logback-classic
 
+%pom_xpath_remove pom:parent/pom:relativePath
+
 %{mvn_alias} :maven-resolver-provider :maven-aether-provider
 
 %build
@@ -227,10 +224,9 @@ build-jar-repository -s lib \
     apache-commons-lang3 \
     atinject \
     commons-cli \
-    commons-io \
+    glassfish-annotation-api \
     guava/guava \
-    guice/google-guice-no_aop \
-    jboss-interceptors-1.2-api \
+    guice/google-guice \
     jdom2/jdom2 \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-impl \
@@ -295,42 +291,40 @@ chmod -x %{buildroot}%{homedir}/bin/*.cmd %{buildroot}%{homedir}/bin/*.conf
 
 # Transitive deps of wagon-http, missing because of unshading
 build-jar-repository -p %{buildroot}%{homedir}/lib \
-    cdi-api/cdi-api \
+    aopalliance \
+    apache-commons-lang3 \
+    atinject \
     commons-cli \
     commons-codec \
-    commons-io \
-    apache-commons-lang3 \
+    glassfish-annotation-api \
     guava/guava \
-    guice/google-guice-no_aop \
+    guice/google-guice \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
     jansi/jansi \
-    jboss-interceptors-1.2-api \
-    jsoup/jsoup \
-    atinject \
-    slf4j/jcl-over-slf4j \
-    glassfish-annotation-api \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \
     maven-resolver/maven-resolver-impl \
     maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-spi \
+    maven-resolver/maven-resolver-transport-file \
+    maven-resolver/maven-resolver-transport-http \
     maven-resolver/maven-resolver-transport-wagon \
     maven-resolver/maven-resolver-util \
     maven-shared-utils/maven-shared-utils \
-    maven-wagon/http-shared \
-    org.eclipse.sisu.inject \
-    org.eclipse.sisu.plexus \
-    plexus/plexus-cipher \
-    plexus-containers/plexus-component-annotations \
-    plexus/interpolation \
-    plexus/plexus-sec-dispatcher \
-    plexus/utils \
-    slf4j/api \
     maven-wagon/file \
     maven-wagon/http \
     maven-wagon/http-shared \
-    maven-wagon/provider-api
+    maven-wagon/provider-api \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus/plexus-cipher \
+    plexus/interpolation \
+    plexus/plexus-sec-dispatcher \
+    plexus/utils \
+    plexus-containers/plexus-component-annotations \
+    slf4j/api \
+    slf4j/jcl-over-slf4j
 
 cp %{buildroot}%{_javadir}/%{name}/*.jar %{buildroot}%{homedir}/lib/
 

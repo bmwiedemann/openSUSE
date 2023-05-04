@@ -1,14 +1,14 @@
-From 6e8f6a1b27c09d0a84fb5f3b7269cf5840db04f8 Mon Sep 17 00:00:00 2001
+From 8d6b4651e2be6156322d27d7c8715601a6b11cd2 Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Wed, 1 Feb 2017 14:54:26 +0100
-Subject: [PATCH 1/7] Adapt mvn script
+Subject: [PATCH 1/4] Adapt mvn script
 
 ---
- apache-maven/src/bin/mvn | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ apache-maven/src/bin/mvn | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
 
 diff --git a/apache-maven/src/bin/mvn b/apache-maven/src/bin/mvn
-index dfa384b8e..8c03825ed 100755
+index a3004f917..052df8f0c 100755
 --- a/apache-maven/src/bin/mvn
 +++ b/apache-maven/src/bin/mvn
 @@ -22,7 +22,7 @@
@@ -17,14 +17,22 @@ index dfa384b8e..8c03825ed 100755
  #
 -#   JAVA_HOME       Must point at your Java Development Kit installation.
 +#   JAVA_HOME       (Optional) Must point at your Java Development Kit installation.
+ #   MAVEN_ARGS      (Optional) Arguments passed to Maven before CLI arguments.
  #   MAVEN_OPTS      (Optional) Java runtime options used when Maven is executed.
  #   MAVEN_SKIP_RC   (Optional) Flag to disable loading of mavenrc files.
- # -----------------------------------------------------------------------------
-@@ -37,12 +37,24 @@ if [ -z "$MAVEN_SKIP_RC" ] ; then
+@@ -30,20 +30,22 @@
+ 
+ if [ -z "$MAVEN_SKIP_RC" ] ; then
+ 
+-  if [ -f /usr/local/etc/mavenrc ] ; then
+-    . /usr/local/etc/mavenrc
+-  fi
+-
+   if [ -f /etc/mavenrc ] ; then
      . /etc/mavenrc
    fi
  
-+  if [ -f /etc/java/maven.conf ] ; then
++  if [ -z "$JAVA_HOME" ] ; then
 +    . /etc/java/maven.conf
 +  fi
 +
@@ -34,18 +42,12 @@ index dfa384b8e..8c03825ed 100755
  
  fi
  
-+if [ -f /usr/share/java-utils/java-functions ] ; then
-+  . /usr/share/java-utils/java-functions
-+  set_jvm
-+  set_javacmd
-+fi
 +export JAVA_HOME
-+export JAVACMD
 +
  # OS specific support. $var _must_ be set to either true or false.
  cygwin=false;
  mingw=false;
-@@ -67,7 +79,8 @@ done
+@@ -68,7 +70,8 @@ done
  
  saveddir=`pwd`
  
@@ -55,7 +57,7 @@ index dfa384b8e..8c03825ed 100755
  
  # make it fully qualified
  MAVEN_HOME=`cd "$MAVEN_HOME" && pwd`
-@@ -105,7 +118,7 @@ if [ ! -x "$JAVACMD" ] ; then
+@@ -106,7 +109,7 @@ if [ ! -x "$JAVACMD" ] ; then
    exit 1
  fi
  
@@ -65,5 +67,5 @@ index dfa384b8e..8c03825ed 100755
  
  # For Cygwin, switch paths to Windows format before running java
 -- 
-2.36.1
+2.40.1
 

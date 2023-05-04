@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed May  3 11:44:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.1
+  * Changes of version 3.8.7:
+    + Regression fixes from Maven 3.8.6
+    + General fixes
+    + Maven Wagon upgrade
+  * Changes of verson 3.8.8
+    + Regression fixes from Maven 3.8.7
+    + General fixes
+    + Non-functional backports and improvements from 3.9.0
+  * Changes of version 3.9.0
+    + Minimum Java version to use with Maven 3.9.0 is raised to
+      Java 8.
+    + With Java 8, upgrade of several key dependencies became
+      possible as well.
+    + Several backports from Maven 4.x line.
+    + Long outstanding issue fixes from Maven 3.x line.
+    + Cutting ties with Maven 2 backward compatibility, preparing
+      grounds for Maven 4.
+    + General fixes and improvements.
+    + The Maven Resolver transport has changed from Wagon to “native
+      HTTP”, see Resolver Transport guide.
+    + Maven 2.x was auto-injecting an ancient version of
+      plexus-utils dependency into the plugin classpath, and Maven
+      3.x continued doing this to preserve backward compatibility.
+      Starting with Maven 3.9, it does not happen anymore. This
+      change may lead to plugin breakage. The fix for affected
+      plugin maintainers is to explicitly declare a dependency on
+      plexus-utils. The workaround for affected plugin users is to
+      add this dependency to plugin dependencies until issue is
+      fixed by the affected plugin maintainer.
+    + Mojos are prevented to boostrap new instance of
+      RepositorySystem (for example by using deprecated
+      ServiceLocator), they should reuse RepositorySystem instance
+      provided by Maven instead. See MNG-7471.
+    + Each line in .mvn/maven.config is now interpreted as a single
+      argument. That is, if the file contains multiple arguments,
+      these must now be placed on separate lines, see MNG-7684.
+  * Changes of version 3.9.1:
+    + Regression fixes from Maven 3.9.0
+    + General performance and other fixes
+- Changed patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+    + rediff to changed context
+  * 0004-Remove-dependency-on-powermock.patch
+    -> 0003-Remove-dependency-on-powermock.patch
+  * 0007-Fix-build-with-qdox-2.0.1.patch
+    ->  0004-Fix-build-with-qdox-2.0.1.patch
+    + rediff and rename to have the sequence of patches right
+- Removed patches:
+  * 0003-Use-non-shaded-HTTP-wagon.patch
+  * 0005-Port-to-maven-resolver-1.7.2.patch
+  * 0006-Restore-DefaultModelValidator-compatibility-with-Mav.patch
+    + not needed with 3.9.1
+
+-------------------------------------------------------------------
 Mon Aug 29 08:50:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move mvn.1 from bin to man directory
