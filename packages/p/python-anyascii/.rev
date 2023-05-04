@@ -7,4 +7,17 @@
     <comment>Dependency of gradience, which I want to submit as well.</comment>
     <requestid>1043002</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e263f70ee29092d96b0f89a72df4bb4c</srcmd5>
+    <version>0.3.2</version>
+    <time>1683213041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.2:
+  * Python - Add type comments
+  * Python - Fix Python 3.11 deprecation warning for
+    importlib.resources.read_binary()
+  * Use PEP 621 metadata instead of PEP 518 [tool.flit.metadata]
+  * Java - Flatten release pom.xml</comment>
+    <requestid>1084452</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  3 15:42:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.2:
+  * Python - Add type comments
+  * Python - Fix Python 3.11 deprecation warning for
+    importlib.resources.read_binary()
+  * Use PEP 621 metadata instead of PEP 518 [tool.flit.metadata]
+  * Java - Flatten release pom.xml
+
+-------------------------------------------------------------------
 Sun Sep 25 17:08:46 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Create initial package.
