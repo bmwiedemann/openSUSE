@@ -1,4 +1,237 @@
 -------------------------------------------------------------------
+Wed May  3 13:31:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u372 (icedtea-3.27.0)
+  * April 2023 CPU
+  * CVEs
+    + CVE-2023-21930, bsc#1210628
+    + CVE-2023-21937, bsc#1210631
+    + CVE-2023-21938, bsc#1210632
+    + CVE-2023-21939, bsc#1210634
+    + CVE-2023-21954, bsc#1210635
+    + CVE-2023-21967, bsc#1210636
+    + CVE-2023-21968, bsc#1210637
+  * Security fixes
+    + JDK-8287404: Improve ping times
+    + JDK-8288436: Improve Xalan supports
+    + JDK-8294474: Better AES support
+    + JDK-8295304: Runtime support improvements
+    + JDK-8296496, JDK-8292652: Overzealous check in sizecalc.h
+      prevents large memory allocation
+    + JDK-8296676, JDK-8296622: Improve String platform support
+    + JDK-8296684: Improve String platform support
+    + JDK-8296692: Improve String platform support
+    + JDK-8296700: Improve String platform support
+    + JDK-8296832: Improve Swing platform support
+    + JDK-8297371: Improve UTF8 representation redux
+    + JDK-8298191: Enhance object reclamation process
+    + JDK-8298310: Enhance TLS session negotiation
+    + JDK-8298667: Improved path handling
+    + JDK-8299129: Enhance NameService lookups
+  * Import of OpenJDK 8 u372 build 07
+    + JDK-6734341: REGTEST fails: SelectionAutoscrollTest.html
+    + JDK-6829250: Reg test: java/awt/Toolkit/ScreenInsetsTest/
+      /ScreenInsetsTest.java fails in Windows
+    + JDK-7001973: java/awt/Graphics2D/CopyAreaOOB.java fails
+    + JDK-7124238: [macosx] Font in BasicHTML document is bigger
+      than it should be
+    + JDK-7124381: DragSourceListener.dragDropEnd() never been
+      called on completion of dnd operation
+    + JDK-8039888: [TEST_BUG] keyboard garbage after
+      javax/swing/plaf/windows/WindowsRootPaneUI/WrongAltProcessing/
+      /WrongAltProcessing.java
+    + JDK-8042098: [TESTBUG] Test
+      sun/java2d/AcceleratedXORModeTest.java fails on Windows
+    + JDK-8065422: Trailing dot in hostname causes TLS handshake to
+      fail with SNI disabled
+    + JDK-8072770: [TESTBUG] Some Introspector tests fail with a
+      Java heap bigger than 4GB
+    + JDK-8075964: Test java/awt/Mouse/TitleBarDoubleClick/
+      /TitleBarDoubleClick.html fails intermittently with timeout
+      error
+    + JDK-8137101: [TEST_BUG] javax/swing/plaf/basic/BasicHTML/
+      /4251579/bug4251579.java failure due to timing
+    + JDK-8142540: [TEST_BUG] Test sun/awt/dnd/8024061/
+      /bug8024061.java fails on ubuntu
+    + JDK-8156579: Two JavaBeans tests failed
+    + JDK-8156581: Cleanup of ProblemList.txt
+    + JDK-8159135: [PIT] javax/swing/JMenuItem/8152981/
+      /MenuItemIconTest.java always fail
+    + JDK-8177560: @headful key can be removed from the tests for
+      JavaSound
+    + JDK-8196196: Headful tests should not be run in headless mode
+    + JDK-8196467: javax/swing/JInternalFrame/Test6325652.java fails
+    + JDK-8197408: Bad pointer comparison and small cleanup in
+      os_linux.cpp
+    + JDK-8203485: [freetype] text rotated on 180 degrees is too
+      narrow
+    + JDK-8205959: Do not restart close if errno is EINTR
+    + JDK-8216366: Add rationale to PER_CPU_SHARES define
+    + JDK-8226236: win32:
+      gc/metaspace/TestCapacityUntilGCWrapAround.java fails
+    + JDK-8228585: jdk/internal/platform/cgroup/
+      /TestCgroupMetrics.java - NumberFormatException because of
+      large long values (memory limit_in_bytes)
+    + JDK-8229182: [TESTBUG] runtime/containers/docker/
+      /TestMemoryAwareness.java test fails on SLES12
+    + JDK-8229202: Docker reporting causes secondary crashes in
+      error handling
+    + JDK-8230305: Cgroups v2: Container awareness
+    + JDK-8231111: Cgroups v2: Rework Metrics in java.base so as to
+      recognize unified hierarchy
+    + JDK-8232207: Linux os::available_memory re-reads cgroup
+      configuration on every invocation
+    + JDK-8233570: [TESTBUG] HTMLEditorKit test bug5043626.java is
+      failing on macos
+    + JDK-8234484: Add ability to configure third port for remote
+      JMX
+    + JDK-8237479: 8230305 causes slowdebug build failure
+    + JDK-8239559: Cgroups: Incorrect detection logic on some
+      systems
+    + JDK-8239785: Cgroups: Incorrect detection logic on old
+      systems in hotspot
+    + JDK-8239827: The test OpenByUNCPathNameTest.java should be
+      changed to be manual
+    + JDK-8240189: [TESTBUG] Some cgroup tests are failing after
+      JDK-8231111
+    + JDK-8241087: Build failure with VS 2019 (16.5.0) due to C2039
+      and C2873
+    + JDK-8242468: VS2019 build missing vcruntime140_1.dll
+    + JDK-8243543: jtreg test security/infra/java/security/cert/
+      /CertPathValidator/certification/BuypassCA.java fails
+    + JDK-8244500: jtreg test error in test/hotspot/jtreg/
+      /containers/docker/TestMemoryAwareness.java
+    + JDK-8245543: Cgroups: Incorrect detection logic on some
+      systems (still reproducible)
+    + JDK-8245654: Add Certigna Root CA
+    + JDK-8247676: vcruntime140_1.dll is not needed on 32-bit
+      Windows
+    + JDK-8248899: security/infra/java/security/cert/
+      /CertPathValidator/certification/QuoVadisCA.java fails,
+      Certificate has been revoked
+    + JDK-8252359: HotSpot Not Identifying it is Running in a
+      Container
+    + JDK-8252957: Wrong comment in CgroupV1Subsystem::cpu_quota
+    + JDK-8253435: Cgroup: 'stomping of _mount_path' crash if
+      manually mounted cpusets exist
+    + JDK-8253714: [cgroups v2] Soft memory limit incorrectly using
+      memory.high
+    + JDK-8253727: [cgroups v2] Memory and swap limits reported
+      incorrectly
+    + JDK-8253797: [cgroups v2] Account for the fact that swap
+      accounting is disabled on some systems
+    + JDK-8253939: [TESTBUG] Increase coverage of the cgroups
+      detection code
+    + JDK-8254001: [Metrics] Enhance parsing of cgroup interface
+      files for version detection
+    + JDK-8254717: isAssignableFrom checks in
+      KeyFactorySpi.engineGetKeySpec appear to be backwards
+    + JDK-8254997: Remove unimplemented
+      OSContainer::read_memory_limit_in_bytes
+    + JDK-8257620: Do not use objc_msgSend_stret to get macOS
+      version
+    + JDK-8262379: Add regression test for JDK-8257746
+    + JDK-8263404: RsaPrivateKeySpec is always recognized as
+      RSAPrivateCrtKeySpec in RSAKeyFactory.engineGetKeySpec
+    + JDK-8266391: Replace use of reflection in
+      jdk.internal.platform.Metrics
+    + JDK-8270317: Large Allocation in CipherSuite
+    + JDK-8275535: Retrying a failed authentication on multiple
+      LDAP servers can lead to users blocked
+    + JDK-8275650: Problemlist java/io/File/createTempFile/
+      /SpecialTempFile.java for Windows 11
+    + JDK-8275713: TestDockerMemoryMetrics test fails on recent runc
+    + JDK-8278951: containers/cgroup/PlainRead.java fails on Ubuntu
+      21.10
+    + JDK-8280048: Missing comma in copyright header
+    + JDK-8282398: EndingDotHostname.java test fails because SSL
+      cert expired
+    + JDK-8282511: Use fixed certificate validation date in
+      SSLExampleCert template
+    + JDK-8282947: JFR: Dump on shutdown live-locks in some
+      conditions
+    + JDK-8283606: Tests may fail with zh locale on MacOS
+    + JDK-8284102: [TESTBUG] [11u] Retroactively add regression
+      test for JDK-8272124
+    + JDK-8284690: [macos] VoiceOver : Getting
+      java.lang.IllegalArgumentException: Invalid location on
+      Editable JComboBox
+    + JDK-8284756: [11u] Remove unused isUseContainerSupport in
+      CgroupV1Subsystem
+    + JDK-8284977: MetricsTesterCgroupV2.getLongValueEntryFromFile
+      fails when named value doesn't exist
+    + JDK-8286624: Regression Test CoordinateTruncationBug.java
+      fails on OL8.3
+    + JDK-8287107: CgroupSubsystemFactory.setCgroupV2Path asserts
+      with freezer controller
+    + JDK-8287109: Distrust.java failed with
+      CertificateExpiredException
+    + JDK-8287463: JFR: Disable TestDevNull.java on Windows
+    + JDK-8287741: Fix of JDK-8287107 (unused cgv1 freezer
+      controller) was incomplete
+    + JDK-8289695: [TESTBUG] TestMemoryAwareness.java fails on
+      cgroups v2 and crun
+    + JDK-8291570: [TESTBUG] Part of JDK-8250984 absent from 11u
+    + JDK-8292083: Detected container memory limit may exceed
+      physical machine memory
+    + JDK-8292541: [Metrics] Reported memory limit may exceed
+      physical machine memory
+    + JDK-8293472: Incorrect container resource limit detection if
+      manual cgroup fs mounts present
+    + JDK-8293540: [Metrics] Incorrectly detected resource limits
+      with additional cgroup fs mounts
+    + JDK-8293767: AWT test TestSinhalaChar.java has old SCCS
+      markings
+    + JDK-8294767: 8u contains two copies of
+      test/../FileUtils.java, one uses JDK9+ features
+    + JDK-8295322: Tests for JDK-8271459 were not backported to 11u
+    + JDK-8295952: Problemlist existing compiler/rtm tests also on
+     x86
+    + JDK-8295982: Failure in sun/security/tools/keytool/
+      /WeakAlg.java - ks: The process cannot access the file because
+      it is being used by another process
+    + JDK-8296480: java/security/cert/pkix/policyChanges/
+      /TestPolicy.java is failing
+    + JDK-8296485: BuildEEBasicConstraints.java test fails with
+      SunCertPathBuilderException
+    + JDK-8296632: Write a test to verify the content change of
+      TextArea sends TextEvent
+    + JDK-8296957: One more cast in SAFE_SIZE_NEW_ARRAY2
+    + JDK-8297329: [8u] hotspot needs to recognise VS2019
+    + JDK-8297739: Bump update version of OpenJDK: 8u372
+    + JDK-8297996: [8u] generated images are broken due to renaming
+      of MSVC runtime DLL's
+    + JDK-8298027: Remove SCCS id's from awt jtreg tests
+    + JDK-8298307: Enable hotspot/tier1 for 32-bit builds in GHA
+      for 8u
+    + JDK-8299445: EndingDotHostname.java fails because of
+      compilation errors
+    + JDK-8299548: Fix hotspot/test/runtime/Metaspace/
+      /MaxMetaspaceSizeTest.java in 8u
+    + JDK-8299804: Fix non-portable code in hotspot shell tests in
+      8u
+    + JDK-8300014: Some backports placed the tests in the wrong
+      location
+    + JDK-8300119: CgroupMetrics.getTotalMemorySize0() can report
+      invalid results on 32 bit systems
+    + JDK-8301122: [8u] Fix unreliable vs2010 download link
+    + JDK-8301143: [TESTBUG] jfr/event/sampling/TestNative was
+      backported to JDK8u without proper native wrapper
+    + JDK-8301246: NPE in FcFontManager.getDefaultPlatformFont() on
+      Linux without installed fontconfig
+    + JDK-8301332: [8u] Fix writing of test files after the cgroups
+      v2 backport
+    + JDK-8301550: [8u] Enable additional linux build testing in
+      GitHub
+    + JDK-8301620: [8u] some shell tests are passed but have
+      unexpected operator errors
+    + JDK-8301760: Fix possible leak in SpNegoContext dispose
+    + JDK-8303408: [AIX] Broken jdk8u build after JDK-8266391
+    + JDK-8303828: [Solaris] Broken jdk8u build after JDK-8266391
+    + JDK-8304053: Revert os specific stubs for SystemMetrics
+    + JDK-8305113: (tz) Update Timezone Data to 2023c
+
+-------------------------------------------------------------------
 Tue Feb  7 17:13:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u362 (icedtea-3.26.0)

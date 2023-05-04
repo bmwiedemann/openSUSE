@@ -738,4 +738,12 @@
     <comment>January 2023 CPU fixes</comment>
     <requestid>1063667</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>b13cb598204da2feed33285f52acb659</srcmd5>
+    <version>1.8.0.372</version>
+    <time>1683212978</time>
+    <user>dimstar_suse</user>
+    <comment>April 2023 CPU</comment>
+    <requestid>1084346</requestid>
+  </revision>
 </revisionlist>
