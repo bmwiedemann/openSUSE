@@ -94,4 +94,12 @@ This should fix the license issue.</comment>
 </comment>
     <requestid>957852</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2590b3b9c8d2396307c9fdbe366fdd32</srcmd5>
+    <version>0.6.0</version>
+    <time>1683212948</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1084412</requestid>
+  </revision>
 </revisionlist>
