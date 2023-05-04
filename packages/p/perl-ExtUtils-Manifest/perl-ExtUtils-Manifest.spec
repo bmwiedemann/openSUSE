@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-Manifest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name ExtUtils-Manifest
 Name:           perl-ExtUtils-Manifest
-Version:        1.73
+Version:        1.75
 Release:        0
-Summary:        Utilities to write and check a MANIFEST file
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Utilities to write and check a MANIFEST file
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

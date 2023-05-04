@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 30 03:07:02 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.75
+   see /usr/share/doc/packages/perl-ExtUtils-Manifest/Changes
+
+  1.75  2023-04-29
+    - #!include_default now memory-only, not changing MANIFEST.SKIP file.
+    - support removed for MacOS Classic
+
+  1.74  2023-04-28
+    - Add some MANIFEST.SKIP patterns for bzr/brz
+
+-------------------------------------------------------------------
 Sun Jan 17 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.73
