@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 07:09:44 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Support Sphinx 7.0 by skipping of some tests that depend
+  on legacy features (boo#1211051).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
