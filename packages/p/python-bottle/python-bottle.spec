@@ -40,6 +40,7 @@ built-in HTTP server, and adapters for many third party WSGI/HTTP
 servers and template engines. This is all in a single file and with
 no dependencies other than the Python Standard Library.
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
 Provides:       %{python_module bottle-doc = %{version}}
@@ -52,6 +53,7 @@ servers and template engines. This is all in a single file and with
 no dependencies other than the Python Standard Library.
 
 This subpackage contains the PDF documentation for %{name}.
+%endif
 
 %prep
 %setup -q -n bottle-%{version}
@@ -83,7 +85,9 @@ cp %{SOURCE1} .
 %pycache_only %{python_sitelib}/__pycache__
 %{python_sitelib}/bottle-%{version}-py%{python_version}.egg-info
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc bottle-docs.pdf
 
 %changelog

@@ -214,4 +214,14 @@
     <comment></comment>
     <requestid>1081975</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>6cadf7cdf750ecf31bb990b0e7e7541d</srcmd5>
+    <version>0.12.25</version>
+    <time>1683212943</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084356 from dirkmueller
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1084403</requestid>
+  </revision>
 </revisionlist>
