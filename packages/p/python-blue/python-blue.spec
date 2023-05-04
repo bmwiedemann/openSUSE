@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-blue
 Version:        0.9.1
@@ -29,6 +28,8 @@ Source:         https://github.com/grantjenks/blue/archive/v%{version}.tar.gz#/b
 Patch1:         unpin-tomli.patch
 # PATCH-FIX-UPSTREAM flake8-v5-compatibility.patch -- gh#grantjenks/blue#78
 Patch2:         flake8-v5-compatibility.patch
+# PATCH-FIX-OPENSUSE black-23.3.patch -- gh#grantjenks/blue#97
+Patch3:         black-23.3.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module black >= 21.7}

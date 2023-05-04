@@ -91,4 +91,14 @@
 - update flake8-v5-compatibility.patch to unpin flake8 again</comment>
     <requestid>1061736</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>766be463d96dd7bb4f15164a3d5bd3ea</srcmd5>
+    <version>0.9.1</version>
+    <time>1683213095</time>
+    <user>dimstar_suse</user>
+    <comment>- Add black-23.3.patch to make it compatible with latest python-black
+  version. gh#grantjenks/blue#97
+</comment>
+    <requestid>1084655</requestid>
+  </revision>
 </revisionlist>
