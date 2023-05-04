@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.47.0
+Version:        2.48.1
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -112,7 +112,7 @@ Requires:       python3-azure-mgmt-msi >= 7.0.0
 Requires:       python3-azure-mgmt-netapp >= 9.0.1
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
-Requires:       python3-azure-mgmt-rdbms >= 10.2.0b6
+Requires:       python3-azure-mgmt-rdbms >= 10.2.0b7
 Requires:       python3-azure-mgmt-recoveryservices >= 2.2.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 5.1.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.2.0
@@ -127,13 +127,13 @@ Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-servicelinker >= 1.2.0~b1
 Requires:       python3-azure-mgmt-signalr >= 1.1.0
-Requires:       python3-azure-mgmt-sql >= 4.0.0b8
+Requires:       python3-azure-mgmt-sql >= 4.0.0b10
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       python3-azure-mgmt-storage >= 21.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       python3-azure-mgmt-web >= 7.0.0
-Requires:       python3-azure-multiapi-storage >= 1.0.0
+Requires:       python3-azure-multiapi-storage >= 1.1.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
 Requires:       python3-azure-synapse-artifacts >= 0.15.0
