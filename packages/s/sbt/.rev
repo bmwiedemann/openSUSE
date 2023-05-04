@@ -111,4 +111,12 @@
     <comment>fix build with maven 3.8.6</comment>
     <requestid>991222</requestid>
   </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>068e8b501dfae30fe56974ad46779b3a</srcmd5>
+    <version>0.13.18</version>
+    <time>1683213010</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with maven 3.9.1</comment>
+    <requestid>1084310</requestid>
+  </revision>
 </revisionlist>

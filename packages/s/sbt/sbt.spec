@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,7 @@ Patch1:         sbt-maven385.patch
 Patch2:         sbt-0.13.17-lines.patch
 Patch3:         sbt-new-ivy.patch
 Patch4:         sbt-0.13.13-sxr.patch
+Patch5:         sbt-maven-resolver.patch
 BuildRequires:  apache-ivy
 #Source650:  https://oss.sonatype.org/service/local/repositories/releases/content/org/scala-sbt/sbt-giter8-resolver/sbt-giter8-resolver_%{scala_short_version}/0.1.0/sbt-giter8-resolver_%{scala_short_version}-0.1.0.jar
 #Source660:  https://oss.sonatype.org/service/local/repositories/releases/content/org/foundweekends/giter8/giter8_%{scala_short_version}/0.7.1/giter8_%{scala_short_version}-0.7.1.jar
@@ -330,6 +331,8 @@ sbt is the simple build tool for Scala and Java projects.
 %patch4 -p1
 %endif
 
+%patch5 -p1
+
 sed -i -e '/% "test"/d' project/Util.scala
 
 cp %{SOURCE15} .
@@ -375,27 +378,27 @@ mkdir %{ivy_local_dir}
 ./climbing-nemesis.py org.codehaus.plexus plexus-classworlds %{ivy_local_dir} --version 2.5.2
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.0.22
 ./climbing-nemesis.py org.eclipse.aether aether-api %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-api %{ivy_local_dir} --version 1.7.3
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-api %{ivy_local_dir} --version 1.9.8
 ./climbing-nemesis.py org.eclipse.aether aether-spi %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-spi %{ivy_local_dir} --version 1.7.3
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-spi %{ivy_local_dir} --version 1.9.8
 ./climbing-nemesis.py org.eclipse.aether aether-util %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.7.3
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.9.8
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.2.3
-./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.8.6
+./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.9.1
 ./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.2.3
-./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.8.6
+./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.9.1
 ./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.2.3
-./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.8.6
-./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.8.6
-./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.8.6
-./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.3.1
+./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.9.1
+./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.9.1
+./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.9.1
+./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.5.1
 ./climbing-nemesis.py org.codehaus.plexus plexus-interpolation %{ivy_local_dir} --version 1.26
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.0.M1 --ignore "cdi-api"
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.3 --ignore "cdi-api"
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.5 --ignore "cdi-api"
 
 ./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.25
-./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.32
+./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.36
 
 ./climbing-nemesis.py javax.annotation javax.annotation-api %{ivy_local_dir} --version 1.3.2
 
@@ -404,9 +407,9 @@ mkdir %{ivy_local_dir}
 ./climbing-nemesis.py javax.inject javax.inject %{ivy_local_dir} --version 1 --override javax.inject:javax.inject
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.plexus %{ivy_local_dir} --version 0.3.0.M1
 ./climbing-nemesis.py org.eclipse.aether aether-impl %{ivy_local_dir} --version 1.0.1.v20141111
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.7.3
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.6.3
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-named-locks %{ivy_local_dir} --version 1.7.3
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.9.8
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.9.7
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-named-locks %{ivy_local_dir} --version 1.9.8
 ./climbing-nemesis.py org.eclipse.aether aether-connector-basic %{ivy_local_dir} --version 1.0.1.v20141111
 ./climbing-nemesis.py org.apache.maven maven-aether-provider %{ivy_local_dir} --version 3.2.3
 

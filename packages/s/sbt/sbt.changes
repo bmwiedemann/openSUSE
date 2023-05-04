@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 11:43:15 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build against maven 3.9.1
+- Added patch:
+  * sbt-maven-resolver.patch
+    + stubs to cater for new interface methods in maven-resolver
+
+-------------------------------------------------------------------
 Mon Jul 25 17:36:32 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build against maven 3.8.6

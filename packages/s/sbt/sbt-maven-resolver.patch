@@ -1,0 +1,32 @@
+--- sbt-0.13.18/sbt-maven-resolver/src/main/scala/sbt/mavenint/SbtRepositoryLayout.scala	2018-11-28 11:34:11.000000000 +0100
++++ sbt-0.13.18/sbt-maven-resolver/src/main/scala/sbt/mavenint/SbtRepositoryLayout.scala	2023-05-02 20:34:15.106447094 +0200
+@@ -6,7 +6,7 @@
+ import org.eclipse.aether.artifact.Artifact
+ import org.eclipse.aether.metadata.Metadata
+ import org.eclipse.aether.repository.RemoteRepository
+-import org.eclipse.aether.spi.connector.layout.RepositoryLayout.Checksum
++import org.eclipse.aether.spi.connector.layout.RepositoryLayout.ChecksumLocation
+ import org.eclipse.aether.spi.connector.layout.{ RepositoryLayout, RepositoryLayoutFactory }
+ import org.eclipse.aether.transfer.NoRepositoryLayoutException
+ 
+@@ -87,11 +87,12 @@
+   }
+ 
+   // TODO - This should be the same as configured from Ivy...
+-  def getChecksums(artifact: Artifact, upload: Boolean, location: URI): java.util.List[Checksum] =
+-    getChecksums(location)
+-  def getChecksums(metadata: Metadata, upload: Boolean, location: URI): java.util.List[Checksum] =
+-    getChecksums(location)
+-
+-  private def getChecksums(location: URI): java.util.List[Checksum] =
+-    java.util.Arrays.asList(Checksum.forLocation(location, "SHA-1"), Checksum.forLocation(location, "MD5"))
++  def getChecksumLocations(artifact: Artifact, upload: Boolean, location: URI): java.util.List[ChecksumLocation] =
++    java.util.Arrays.asList()
++  def getChecksumLocations(metadata: Metadata, upload: Boolean, location: URI): java.util.List[ChecksumLocation] =
++    java.util.Arrays.asList()
++
++  def getChecksumAlgorithmFactories(): java.util.List[org.eclipse.aether.spi.connector.checksum.ChecksumAlgorithmFactory] =
++    java.util.Arrays.asList()
++  def hasChecksums(x$1: org.eclipse.aether.artifact.Artifact): Boolean = false
+ }
+\ No newline at end of file
