@@ -257,4 +257,15 @@
     <comment></comment>
     <requestid>1081968</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e9f02a2f8ce13ef47e536251c5c38afe</srcmd5>
+    <version>2022.12.7</version>
+    <time>1683212959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.12.7:
+  Removed certs:
+    * CN=Network Solutions Certificate Authority O=Network Solutions L.L.C.
+    * CN=Staat der Nederlanden EV Root CA O=Staat der Nederlanden</comment>
+    <requestid>1084449</requestid>
+  </revision>
 </revisionlist>
