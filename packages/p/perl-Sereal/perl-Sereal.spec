@@ -18,7 +18,7 @@
 
 %define cpan_name Sereal
 Name:           perl-Sereal
-Version:        5.003
+Version:        5.004
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl
@@ -28,15 +28,15 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Sereal::Decoder) >= 5.003
-BuildRequires:  perl(Sereal::Encoder) >= 5.003
+BuildRequires:  perl(Sereal::Decoder) >= 5.004
+BuildRequires:  perl(Sereal::Encoder) >= 5.004
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 5.003
-Requires:       perl(Sereal::Encoder) >= 5.003
+Requires:       perl(Sereal::Decoder) >= 5.004
+Requires:       perl(Sereal::Encoder) >= 5.004
 %{perl_requires}
 
 %description

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 20 03:08:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.004
+   see /usr/share/doc/packages/perl-Sereal/Changes
+
+  5.004
+      * Decoder fixes: Fix thaw ordering for frozen objects. Nested THAW
+        operations now happen in the documented LIFO order. Thanks to Marco
+        Fontani for the report.
+
+-------------------------------------------------------------------
 Thu Feb  9 03:12:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.003
