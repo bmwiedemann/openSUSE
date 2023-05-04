@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 25 04:37:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update simple-sendfile to version 0.2.31.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon Apr 17 14:13:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update simple-sendfile to version 0.2.30 revision 1.
