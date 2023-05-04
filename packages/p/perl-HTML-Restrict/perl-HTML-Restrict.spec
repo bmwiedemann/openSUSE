@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Restrict
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name HTML-Restrict
 Name:           perl-HTML-Restrict
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Strip unwanted HTML tags and attributes
@@ -61,7 +61,8 @@ behaviour by supplying your own tag rules.
 
 %prep
 %autosetup  -n %{cpan_name}-v%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
