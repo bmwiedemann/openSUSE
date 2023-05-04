@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 22 10:28:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to use obscpio
+  - run tar and recompresss services at buildtime
+
+-------------------------------------------------------------------
 Tue Jan 10 16:18:52 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.0:
