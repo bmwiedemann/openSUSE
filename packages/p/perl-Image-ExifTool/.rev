@@ -613,4 +613,42 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1080855</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1e33df2898a98f0e29799184dbb74225</srcmd5>
+    <version>12.62</version>
+    <time>1683213064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.62:
+  - Added basic read support for WPG images
+  - Added ImageDataMD5 support for HEIC images
+  - Added support for RAR version 5.0 compressed files (thanks Amir Gooran)
+  - Added a few new XMP-aux tags (thanks John Ellis)
+  - Made Composite tags available for use in -fileNUM argument
+  - Better handling of FlashPix VT_EMPTY value
+  - Fixed &quot;Can't write&quot; error when specifying a .webp file for the -o option
+  - API Changes:
+      - Added NoWarning option
+  - Added ImageDataMD5 support for J2C and JXL images
+  - Added support for PDF 2.0 (specification is finally freely available)
+  - Added ability to extract timed Accelerometer data from Azdome GS63H MP4
+    videos which don't contain GPS
+  - Added some new Sony lenses (thanks Jos Roost)
+  - Decode some new tags for the Sony ZV-E1 (thanks Jos Roost)
+  - Decode more tags for the Nikon Z30 (thanks Xavier)
+  - Enhanced -fileNUM option to allow tags from the main file to be used in the
+    file name string
+  - Validate sample offset and size when calculating ImageDataMD5 for MP4 videos
+    (note: may change ImageDataMD5 value for videos where audio data runs past
+    end of media data)
+  - Return error when attempting to write a fragmented JXL file
+  - Improved robustness for determining image size for corrupted JPEG
+  - Patched to allow Insta360 GPS records of unexpected length and tweaked
+    verification algorithm to determine validity of these records
+  - Fixed bug introduced in 12.57 where -progress:%f gave runtime warnings
+  - Fixed &quot;--&quot; option to ignore subsequent -common_args option
+  - Fixed incorrect ImageDataMD5 for Sony A100 ARW images
+  - Fixed problem reading new XMP-et:OriginalImageMD5 tag
+</comment>
+    <requestid>1084556</requestid>
+  </revision>
 </revisionlist>

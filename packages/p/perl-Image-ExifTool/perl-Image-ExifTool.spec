@@ -18,12 +18,12 @@
 
 %define cpan_name Image-ExifTool
 Name:           perl-Image-ExifTool
-Version:        12.60
+Version:        12.62
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Read and write meta information
-URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXIFTOOL/%{cpan_name}-%{version}.tar.gz
+URL:            https://www.exiftool.org/index.html
+Source0:        https://www.exiftool.org/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
