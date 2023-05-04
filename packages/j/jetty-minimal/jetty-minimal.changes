@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:24:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with java 11 on ix86 in order to avoid random
