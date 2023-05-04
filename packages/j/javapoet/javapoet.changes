@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Apr 20 04:25:06 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 1.13.0
+  * Changes in JavaPoet 1.13.0 (2020-06-18)
+    + New: Add support for explicit receiver parameters.
+    + Fix: Don't copy parameter annotations when creating a
+      ParameterSpec.
+  * Changes in JavaPoet 1.12.1 (2020-01-20)
+    + Fix: Ignore parameter annotations in MethodSpec.overriding().
+  * JavaPoet 1.12.0 (2020-01-09)
+    + New: Add JavaFile.writeToPath() and JavaFile.writeToFile()
+      methods that return paths to the generated file as Path and
+      File respectively.
+    + New: Add TypeSpec.alwaysQualify() API to avoid clashes
+      involving nested type names.
+    + New: Add overloads accepting CodeBlocks to MethodSpec's
+      control flow methods.
+    + New: Make list fields of all Builder types mutable.
+    + New: Add CodeBlock.clear().
+    + New: Allow passing a custom Charset to JavaFile.writeTo().
+    + New: Improved performance of ClassName.simpleNames() by
+      memoizing results.
+    + New: Significant performance improvements for
+      CodeWriter.resolve() as all nested simple names of a TypeSpec
+      get pre-computed.
+    + New: Add TypeName.Builder.setName() to allow overriding names
+      passed in the constructor.
+    + New: Add TypeName.canonicalName().
+    + Fix: Use \\R instead of \n as line separator in
+      CodeWriter.emitAndIndent().
+    + Fix: Copy originating elements in TypeSpec.toBuilder().
+    + Fix: Ensure trailing newlines in Javadocs and method bodies.
+    + Fix: Copy annotations when creating a ParameterSpec from a
+      VariableElement.
+    + Fix: Properly handle classes located in empty packages in
+      ClassName.
+    + Fix: Only allow final modifier on a ParameterSpec.
+    + Fix: Use fully-qualified names for type names that are masked
+      by type variable names.
+  * Changes in JavaPoet 1.11.1 (2018-05-16)
+    + Fix: JavaPoet 1.11 had a regression where TypeName.get()
+      would throw on error types, masking other errors in an
+      annotation processing round. This is fixed with a test to
+      prevent future regressions!
+  * Changes in JavaPoet 1.11.0 (2018-04-29)
+    + New: Support TYPE_USE annotations on each enclosing
+      ClassName.
+    + New: Work around a compiler bug in TypeName.get(TypeElement).
+      There was a problem getting an element's kind when building
+      from source ABIs.
+  * Changes in JavaPoet 1.10.0 (2018-01-27)
+    + JavaPoet now requires Java 8 or newer.
+    + New: $Z as an optional newline (zero-width space) if a line
+      may exceed 100 chars.
+    + New: CodeBlock.join() and CodeBlock.joining() let you join
+      codeblocks by delimiters.
+    + New: Add CodeBlock.Builder.isEmpty().
+    + New: addStatement(CodeBlock) overloads for CodeBlock and
+      MethodSpec.
+    + Fix: Include annotations when emitting type variables.
+    + Fix: Use the right imports for annotated type parameters.
+    + Fix: Don't incorrectly escape classnames that start with $.
+  * Changes in JavaPoet 1.9.0 (2017-05-13)
+    + Fix: Don't emit incorrect code when the declared type's
+      signature references another type with the same simple name.
+    + Fix: Support anonymous inner classes in ClassName.get().
+    + New: MethodSpec.Builder.addNamedCode() and
+      TypeSpec.anonymousClassBuilder(CodeBlock).
+  * Changes in JavaPoet 1.8.0 (2016-11-09)
+    + New: Basic support for line wrapping. Use $W to insert a
+      Wrappable Whitespace character. It'll emit either a single
+      space or a newline with appropriate indentation.
+    + New: Named arguments in CodeBlock. These are intended to make
+      larger code snippets easier to read.
+    + New: addJavadoc(CodeBlock) overloads for TypeSpec,
+      MethodSpec, and FieldSpec.
+    + New: MethodSpec.addComment() makes it easy to add a //
+      single-line comment.
+    + New: ClassName.getReflectionName() returns a string like
+      java.util.Map$Entry.
+    + Fix: Always write UTF-8. Previously JavaPoet would use the
+      system default charset which was potentially inconsistent
+      across environments.
+    + Fix: Permit (constant) fields to be defined in annotation
+      types.
+- Switch to java source level 8
+
+-------------------------------------------------------------------
 Fri May  3 14:55:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of javapoet 1.7.0

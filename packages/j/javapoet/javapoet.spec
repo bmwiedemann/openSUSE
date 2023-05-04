@@ -1,7 +1,7 @@
 #
 # spec file for package javapoet
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           javapoet
-Version:        1.7.0
+Version:        1.13.0
 Release:        0
 Summary:        A Java API for generating .java source files
 License:        Apache-2.0
@@ -43,12 +43,15 @@ This package contains javadoc for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 
 %pom_remove_plugin :maven-checkstyle-plugin
+%pom_remove_dep org.codehaus.plexus:plexus-compiler-javac-errorprone
+%pom_remove_dep com.google.errorprone:error_prone_core
+%pom_xpath_remove pom:compilerId
 
 %{mvn_file} : %{name}
 
 %build
 # skip tests due to missing test dependencies
-%{mvn_build} -f -- -Dsource=7
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
