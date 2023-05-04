@@ -1596,4 +1596,12 @@
     <comment>- Don't use fdupes -s, it hurts. (forwarded request 1069531 from mcepl)</comment>
     <requestid>1069559</requestid>
   </revision>
+  <revision rev="177" vrev="6">
+    <srcmd5>ac6f7e8c1c79175c0dda2fa2b3aa4671</srcmd5>
+    <version>2021.12.17</version>
+    <time>1683213097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084680</requestid>
+  </revision>
 </revisionlist>
