@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  3 11:41:12 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Do not depend on pkg_resources.get_distribution and build_sphinx
+  that is gone in Sphinx 7.0 (boo#1211051).
+- Add sphinx-7-fix.patch patch.
+
+-------------------------------------------------------------------
 Thu Aug 18 15:21:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile, remove coverage

@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebTest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://docs.pylonsproject.org/projects/webtest/
 Source:         https://files.pythonhosted.org/packages/source/W/WebTest/WebTest-%{version}.tar.gz
+Patch0:         sphinx-7-fix.patch
 BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebOb >= 1.2}
@@ -63,10 +64,11 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n WebTest-%{version}
+%patch0 -p1
 
 %build
 %python_build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
