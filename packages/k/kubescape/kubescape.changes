@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 03 10:28:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.1:
+  * add test
+  * if the response is empty, return an empty string
+  * Make powershell Windows installation user path available
+    immediately
+  * Update installation script
+
+-------------------------------------------------------------------
 Tue May 02 05:31:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.0:
