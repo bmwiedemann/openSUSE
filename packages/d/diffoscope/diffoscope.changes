@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  3 19:25:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 241:
+  * Add a missing 'raise' statement
+  * document sending out an email upon release
+  * Drop the use of include_package_data=True in setup.py.
+  * Fix compatibility with pypdf 3.x, and correctly restore test
+    data.
+  * Rework PDF annotations processing into a separate method.
+
+-------------------------------------------------------------------
 Fri Mar  3 08:53:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 238:
