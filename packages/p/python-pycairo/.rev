@@ -97,4 +97,14 @@
     <comment></comment>
     <requestid>1041746</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ada4a490e1d3dc6c8d5b770e2ca0f0b1</srcmd5>
+    <version>1.23.0</version>
+    <time>1683212945</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1084387 from dirkmueller
+
+- Switch to single spec version build for PSP</comment>
+    <requestid>1084408</requestid>
+  </revision>
 </revisionlist>
