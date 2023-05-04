@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 11:26:33 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Use sphinx-build and do not depend on removed build_sphinx
+  in Sphinx 7.0 (boo#1211051).
+
+-------------------------------------------------------------------
 Wed Feb  1 13:11:47 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Explicitly require python3-Sphinx for building the docs. It could

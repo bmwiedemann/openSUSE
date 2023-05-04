@@ -65,7 +65,7 @@ rm -rf zope.i18nmessageid.egg-info
 %build
 %if !%{with test}
 %python_build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
+sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
 %endif
 
 %install
