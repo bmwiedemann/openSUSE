@@ -1,7 +1,7 @@
 #
 # spec file for package fox16
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -138,7 +138,6 @@ Requires:       xorg-x11-libXdmcp-devel
 Requires:       xorg-x11-libXext-devel
 Requires:       xorg-x11-libXfixes-devel
 Requires:       xorg-x11-libXrender-devel
-Requires:       xorg-x11-libs
 %endif
 #
 # Fedora Requires
@@ -261,6 +260,7 @@ install -m 644 %{SOURCE7} %{buildroot}%{_datadir}/applications/
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
+
 %post devel
 test -f %{_bindir}/fox-config || ln -s fox16-config %{_bindir}/fox-config
 test -f %{_bindir}/reswrap || ln -s reswrap16 %{_bindir}/reswrap

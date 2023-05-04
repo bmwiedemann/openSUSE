@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 26 08:57:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop require on xorg-x11-libs, that metapackage itself requires
+  nothing, and does not provide any usable files either.
+
+-------------------------------------------------------------------
 Sun May  5 15:48:14 UTC 2019 - lars@linux-schulserver.de - 1.6.57
 
 - package license files in library package
