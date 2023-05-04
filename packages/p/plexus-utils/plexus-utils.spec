@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-utils
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Plexus Common Utilities
 License:        Apache-1.1 AND Apache-2.0 AND xpp AND BSD-3-Clause AND SUSE-Public-Domain

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  3 11:08:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream vesion 3.5.1
+  * Changes
+    + Reading and writing files using Java NIO (#232)
+    + Partial revert of "Support combine.self='remove'" to fix
+      MNG-7709 (#241)
+    + Fix reading comments with UTF chars (fixes #238) (#240)
+
+-------------------------------------------------------------------
 Tue Oct 25 11:01:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.5.0
