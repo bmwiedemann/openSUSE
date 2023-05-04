@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define short_name commons-daemon
 Name:           apache-%{short_name}
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Commons Daemon - Controlling of Java Daemons
 License:        Apache-2.0
