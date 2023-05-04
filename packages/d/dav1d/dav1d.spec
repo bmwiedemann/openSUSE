@@ -19,7 +19,7 @@
 %define sover   6
 
 Name:           dav1d
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause

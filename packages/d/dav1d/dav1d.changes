@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  3 06:27:24 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.0
+  * Improvements on attachments of props and T.35 entries on
+    output pictures
+  * NEON z1/z3 high bit-depth optimizations and improvements for
+    8bpc
+  * SSSE3 z2/z3 8bpc and SSSE3 z1/z3 high bit-depth optimziations
+  * refmvs.save_tmvs optimizations in SSSE3/AVX2/AVX-512
+  * AVX-512 optimizations for high bit-depth itx (16x64, 32x64,
+    64x16, 64x32, 64x64)
+  * AVX2 optimizations for 12bpc for 16x32, 32x16, 32x32 itx
+
+-------------------------------------------------------------------
 Tue Mar  7 19:40:24 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Revert last change. This is now handled in xxhash.
