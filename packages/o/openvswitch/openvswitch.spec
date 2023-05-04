@@ -410,6 +410,8 @@ Devel libraries and headers for Open Virtual Network.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+# remove python/ovs/dirs.py - this is generated from template to have proper paths
+rm python/ovs/dirs.py
 cd %{ovn_dir}
 %patch20 -p1
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  2 07:48:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove python/ovs/dirs.py prior to building: have this
+  re-generated based on the shipped template (boo#1210479).
+
+-------------------------------------------------------------------
 Wed Apr  5 21:14:59 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Update OVS version to v3.1.0 and OVN version to v23.03.0
