@@ -1,0 +1,19 @@
+diff --git a/src/core/p3m/interpolation.hpp b/src/core/p3m/interpolation.hpp
+index a25b0d8f66..0573648938 100644
+--- a/src/core/p3m/interpolation.hpp
++++ b/src/core/p3m/interpolation.hpp
+@@ -109,10 +109,10 @@ class p3m_interpolation_cache {
+     InterpolationWeights<cao> ret;
+     ret.ind = ca_fmp[i];
+ 
+-    auto const offset = ca_frac.data() + 3 * i * m_cao;
+-    boost::copy(make_const_span(offset + 0 * m_cao, m_cao), ret.w_x.begin());
+-    boost::copy(make_const_span(offset + 1 * m_cao, m_cao), ret.w_y.begin());
+-    boost::copy(make_const_span(offset + 2 * m_cao, m_cao), ret.w_z.begin());
++    auto const offset = ca_frac.data() + 3 * i * cao;
++    boost::copy(make_const_span(offset + 0 * cao, cao), ret.w_x.begin());
++    boost::copy(make_const_span(offset + 1 * cao, cao), ret.w_y.begin());
++    boost::copy(make_const_span(offset + 2 * cao, cao), ret.w_z.begin());
+ 
+     return ret;
+   }

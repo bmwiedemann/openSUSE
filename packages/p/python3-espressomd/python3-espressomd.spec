@@ -44,6 +44,10 @@ URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM setuptools.patch gh#espressomd/espresso#4709
 Patch0:         setuptools.patch
+# PATCH-FIX-UPSTREAM tracers.patch gh#espressomd/espresso#4714
+Patch1:         tracers.patch
+# PATCH-FIX-UPSTREAM array-bounds.patch gh#espressomd/espresso#4715
+Patch2:         array-bounds.patch
 # According to gh#espressomd/espresso#4537 32bit architectures are not supported any more
 ExcludeArch:    %{ix86}
 BuildRequires:  cmake

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 26 18:06:17 UTC 2023 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
+
+- Fix LB inertialess tracers bug, fix compiler warnings
+- Add tracers.patch to fix LB inertialess tracers (gh#espressomd/espresso#4714)
+- Add array-bounds.patch to fix compiler warnings (gh#espressomd/espresso#4715)
+
+-------------------------------------------------------------------
 Tue Apr 18 10:43:03 UTC 2023 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
 
 - Update to 4.2.1:
