@@ -20,14 +20,15 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-webcolors
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Support for color names and value formats defined by the HTML
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ubernostrum/webcolors
 Source:         https://files.pythonhosted.org/packages/source/w/webcolors/webcolors-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # test requirements
@@ -58,10 +59,10 @@ Full documentation is `available online <http://webcolors.readthedocs.org/>`_.
 %setup -q -n webcolors-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

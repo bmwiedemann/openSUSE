@@ -69,4 +69,19 @@
     <comment></comment>
     <requestid>1081727</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f32e426c01a61d134af7227e3cf0d93a</srcmd5>
+    <version>1.13</version>
+    <time>1683212971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13:
+  * Supported Python versions are now 3.7, 3.8, 3.9, 3.10, and
+    3.11.  The codebase was significantly reorganized and modernized.
+    Public API is unchanged. Imports should continue to be directly
+    from the top-level ``webcolors`` module; attempting to import
+    from submodules is not supported.
+  * Now packaging declaratively via ``pyproject.toml`` with `PEP
+    517</comment>
+    <requestid>1084230</requestid>
+  </revision>
 </revisionlist>

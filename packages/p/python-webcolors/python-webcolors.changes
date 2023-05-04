@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  3 09:20:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13:
+  * Supported Python versions are now 3.7, 3.8, 3.9, 3.10, and
+    3.11.  The codebase was significantly reorganized and modernized.
+    Public API is unchanged. Imports should continue to be directly
+    from the top-level ``webcolors`` module; attempting to import
+    from submodules is not supported.
+  * Now packaging declaratively via ``pyproject.toml`` with `PEP
+    517
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
