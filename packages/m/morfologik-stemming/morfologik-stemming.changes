@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  3 09:41:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.1.9
+  * Changes:
+    + PR #114: improve run-on suggestions for camel case words
+    + GH-102: Update vulnerable jcommander dependency
+  * Version upgrade needed to be able to build against
+    beust-jcommander 1.82
+- Removed patch:
+  * 0001-Restore-Java-8-compatibility.patch
+    + Fixes by using the --release option
+
+-------------------------------------------------------------------
 Mon Mar  2 10:59:41 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of morfologic-stemming 2.1.6

@@ -1,7 +1,7 @@
 #
 # spec file for package morfologik-stemming
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           morfologik-stemming
-Version:        2.1.6
+Version:        2.1.9
 Release:        0
 Summary:        Morfologik stemming library
 License:        BSD-3-Clause
 URL:            https://morfologik.blogspot.com/
 Source0:        https://github.com/morfologik/morfologik-stemming/archive/%{version}.tar.gz
-Patch0:         0001-Restore-Java-8-compatibility.patch
-Patch1:         morfologik-stemming-binaryinput.patch
+Patch0:         morfologik-stemming-binaryinput.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.beust:jcommander)
 BuildRequires:  mvn(com.carrotsearch:hppc)
@@ -46,7 +46,6 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 find . -name "*.class" -print -delete
 find . -name "*.jar" -print -delete
 
@@ -72,8 +71,9 @@ done
 # Test skipped for unavailable test deps
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+	-Dmaven.compiler.release=8 \
 %endif
+    -Dsource=8 \
 	-Dproject.build.sourceEncoding=UTF-8
 
 %install
