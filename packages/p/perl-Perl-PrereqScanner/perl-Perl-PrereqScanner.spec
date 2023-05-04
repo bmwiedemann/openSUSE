@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-PrereqScanner
 Name:           perl-Perl-PrereqScanner
-Version:        1.025
+Version:        1.100
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tool to scan your Perl code for its prerequisites
@@ -33,24 +33,26 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Getopt::Long::Descriptive)
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Module::Path)
-BuildRequires:  perl(Moose)
-BuildRequires:  perl(Moose::Role)
+BuildRequires:  perl(Moo) >= 2.000000
+BuildRequires:  perl(Moo::Role)
 BuildRequires:  perl(PPI) >= 1.215
 BuildRequires:  perl(PPI::Document)
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(String::RewritePrefix) >= 0.005
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Try::Tiny)
+BuildRequires:  perl(Types::Standard)
 BuildRequires:  perl(namespace::autoclean)
 Requires:       perl(CPAN::Meta::Requirements) >= 2.124000
 Requires:       perl(Getopt::Long::Descriptive)
 Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Module::Path)
-Requires:       perl(Moose)
-Requires:       perl(Moose::Role)
+Requires:       perl(Moo) >= 2.000000
+Requires:       perl(Moo::Role)
 Requires:       perl(PPI) >= 1.215
 Requires:       perl(Params::Util)
 Requires:       perl(String::RewritePrefix) >= 0.005
+Requires:       perl(Types::Standard)
 Requires:       perl(namespace::autoclean)
 %{perl_requires}
 
