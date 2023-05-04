@@ -13,6 +13,11 @@ Wed Apr 19 09:06:59 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
     and sometimes reordering output (#2407, #2410, #2412)
 
 -------------------------------------------------------------------
+Thu Apr 13 22:43:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
 Mon Apr 10 17:49:07 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 2.15.0:

@@ -22,6 +22,7 @@
 %else
 %bcond_with libalternatives
 %endif
+
 %{?sle15_python_module_pythons}
 Name:           python-Pygments
 Version:        2.15.1
