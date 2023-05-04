@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/krrishnarraj/clpeak.git</param>
-    <param name="revision">1.1.1</param>
+    <param name="revision">1.1.2</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">clpeak</param>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 14:21:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.2:
+  * [cmake] Bump patch version
+  * [snap] fix yaml for latest version of snapcraft
+  * [snap] move to core20
+
+-------------------------------------------------------------------
 Mon Feb 07 09:16:52 UTC 2022 - mardnh@gmx.de
 
 - Update to version 1.1.1:
