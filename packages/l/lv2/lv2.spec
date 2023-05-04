@@ -28,7 +28,6 @@ URL:            https://lv2plug.in/
 Source0:        https://lv2plug.in/spec/lv2-%{version}.tar.xz
 # Patch to use default docdir for documentation
 Patch0:         001-lv2-docdir.patch
-BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson

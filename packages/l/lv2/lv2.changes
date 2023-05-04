@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 11:01:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not buildrequire cmake: the build uses meson.
+
+-------------------------------------------------------------------
 Mon Dec 26 06:31:00 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - switch to meson
