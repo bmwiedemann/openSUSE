@@ -1,0 +1,19 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/cbeust/jcommander.git</param>
+		<param name="revision">1.82</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+        <param name="exclude">**.jar</param>
+        <param name="exclude">**.class</param>
+        <param name="exclude">gradle*</param>
+        <param name="exclude">cobalt*</param>
+        <param name="exclude">lib</param>
+        <param name="exclude">.git</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

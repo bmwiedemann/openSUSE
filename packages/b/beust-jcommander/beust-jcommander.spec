@@ -1,7 +1,7 @@
 #
-# spec file for package beust
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global short_name jcommander
 Name:           beust-%{short_name}
-Version:        1.71
+Version:        1.82
 Release:        0
 Summary:        Java framework for parsing command line parameters
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://jcommander.org/
-Source0:        https://github.com/cbeust/%{short_name}/archive/%{version}.tar.gz
+Source0:        %{short_name}-%{version}.tar.xz
 # Adapted from earlier version that still shipped poms. It uses kobalt for building now
 Source1:        %{name}.pom
 Source2:        %{name}-build.xml
@@ -51,7 +51,6 @@ This package contains the %{summary}.
 
 %prep
 %setup -q -n %{short_name}-%{version}
-rm -rf gradle* kobalt* lib
 %patch0 -p1
 
 chmod -x license.txt

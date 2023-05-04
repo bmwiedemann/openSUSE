@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed May  3 09:07:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.82
+  * Fixes:
+    + #392: fixed bug when parsing arguments is ignoring case
+      sensitivity option
+    + Add a test for Parameter order usage
+    + add a test for Path converter
+    + Add automatic module name to manifest
+    + Add check if Boolean parameter is default null, then do not
+      flip value
+    + Added testing modules
+    + Add format tests for DefaultUsageFormatter,
+      UnixStyleUsageFormatter
+    + add Path converter change #414 to changelog
+    + Add test case for issue 367
+    + Add testing for UnixStyleUsageFormatter
+    + Add unix-style formatter, allow DefaultUsageFormatter to be
+      extended easier
+    + Allow generics of type <? extends X> and <? super Y> in
+      parameters
+    + Allow main parameters to be a single field.
+    + allow System.out to be replaced by something else (f.e.
+      System.err)
+    + Allow UsageFormatter to be set in JCommander Builder
+    + Change UsageFormatter into an interface
+    + Clean up DefaultUsageFormatter
+    + Create MyDelegate.java
+    + Create UsageFormatter (preliminary)
+    + Enable usage() ordering for DynamicParameter
+    + Encapsulate MainParameter.
+    + encode user input to massage error message
+    + Expose more of the UsageFormatter implementations
+    + Fields annotated with @ParametersDelegate are now allowed to
+      be final.
+    + FIX #380 Main parameter doesn't support Converter
+    + Fix error message when failing to convert a Path
+    + Fixing: squid:ModifiersOrderCheck and squid:S2444
+    + Fix locale-related issues in usage formatter tests
+    + Get boolean/Boolean getter with "is" prefix
+    + GH-477 Environment Variable Default Provider
+    + make console configurable by JCommander.Builder
+    + Make UsageFormatter abstract, Create DefaultUsageFormatter
+    + Only one DefaultConverterFactory
+    + Remove String.join usage - resolves #381
+    + Remove the generic in IStringConverterFactory
+    + Restrict access to JCommander.Options again
+    + Support arity for main parameters.
+    + Update DefaultParameterizedParser.java
+    + Update IParameterizedParser.java
+    + Update JCommander.java
+    + usage() hides 'Comments:' header when only hidden commands
+      exist
+    + Use Builder API as constructor is deprecated
+    + Use get<fieldname> default getter approach if is<fieldname>
+      method is not found
+  * Upgrade needed by new code in xmvn 4.2.0
+- Fetch sources using source service and clean the tarball of
+  unnecessary binary files
+
+-------------------------------------------------------------------
 Mon Apr  8 18:11:28 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove reference to pom parent from pom.xml file, since we are

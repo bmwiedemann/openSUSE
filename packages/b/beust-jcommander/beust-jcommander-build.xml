@@ -20,11 +20,11 @@
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
-  <property name="build.srcDir.0" value="src/main/java"/>
-  <property name="build.resourceDir.0" value="src/main/resources"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
   
-  <property name="compiler.source" value="1.7"/>
-  <property name="compiler.target" value="1.7"/>
+  <property name="compiler.source" value="1.8"/>
+  <property name="compiler.target" value="${compiler.source}"/>
   
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
@@ -53,7 +53,7 @@
            fork="false" 
            source="${compiler.source}">
       <src>
-        <pathelement location="${build.srcDir.0}"/>
+        <pathelement location="${build.srcDir}"/>
       </src>
     </javac>
   </target>
@@ -63,7 +63,7 @@
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir.0}" 
+    <javadoc sourcepath="${build.srcDir}" 
              packagenames="*" 
              destdir="${reporting.outputDirectory}/apidocs" 
              access="protected" 
