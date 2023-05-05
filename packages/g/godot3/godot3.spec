@@ -1,7 +1,7 @@
 #
-# spec file for package godot
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -93,7 +93,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  pkgconfig(bullet) >= 2.90
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
