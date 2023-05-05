@@ -1,7 +1,7 @@
-Index: scikit-hep-testdata-0.4.26/src/skhep_testdata/local_files.py
+Index: scikit-hep-testdata-0.4.30/src/skhep_testdata/local_files.py
 ===================================================================
---- scikit-hep-testdata-0.4.26.orig/src/skhep_testdata/local_files.py
-+++ scikit-hep-testdata-0.4.26/src/skhep_testdata/local_files.py
+--- scikit-hep-testdata-0.4.30.orig/src/skhep_testdata/local_files.py
++++ scikit-hep-testdata-0.4.30/src/skhep_testdata/local_files.py
 @@ -1,5 +1,6 @@
  from __future__ import annotations
  
@@ -18,11 +18,11 @@ Index: scikit-hep-testdata-0.4.26/src/skhep_testdata/local_files.py
  
  baseurl = "https://raw.githubusercontent.com/scikit-hep/scikit-hep-testdata/main/src/skhep_testdata/data/"
  zipurl = "https://github.com/scikit-hep/scikit-hep-testdata/zipball/main"
-Index: scikit-hep-testdata-0.4.26/tests/test_local_files.py
+Index: scikit-hep-testdata-0.4.30/tests/test_local_files.py
 ===================================================================
---- scikit-hep-testdata-0.4.26.orig/tests/test_local_files.py
-+++ scikit-hep-testdata-0.4.26/tests/test_local_files.py
-@@ -4,7 +4,7 @@ import pytest
+--- scikit-hep-testdata-0.4.30.orig/tests/test_local_files.py
++++ scikit-hep-testdata-0.4.30/tests/test_local_files.py
+@@ -6,7 +6,7 @@ import pytest
  
  import skhep_testdata as skhtd
  
