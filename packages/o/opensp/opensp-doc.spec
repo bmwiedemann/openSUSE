@@ -1,7 +1,7 @@
 #
 # spec file for package opensp-doc
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           opensp-doc
 %define rname opensp
 %define doc_package 1
-BuildRequires:  gcc-c++ libtool
+BuildRequires:  gcc-c++
+BuildRequires:  libtool
 %if 0%{?doc_package}
 BuildRequires:  xmlto
 %endif
 License:        MIT
 Group:          Productivity/Publishing/SGML
 Version:        1.5.2
-Release:        1
+Release:        0
 Source:         http://sourceforge.net/projects/openjade/files/opensp/%{version}/OpenSP-%{version}.tar.gz
 Patch11:        opensp-nodeids.patch
 Patch12:        opensp-lfs.patch
@@ -36,12 +35,15 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?doc_package}
 BuildArch:      noarch
 %endif
-Url:            http://openjade.sourceforge.net/
+URL:            http://openjade.sourceforge.net/
 %define regcat /usr/bin/sgml-register-catalog
 PreReq:         %{regcat}
 Summary:        The OpenJade Group's SGML and XML Parsing Tools
-Provides:       sp_libs sp OpenSP
-Obsoletes:      sp_libs sp
+Provides:       OpenSP
+Provides:       sp
+Provides:       sp_libs
+Obsoletes:      sp
+Obsoletes:      sp_libs
 
 %description
 The tools in this package provide the ability to manage SGML and XML
@@ -60,8 +62,11 @@ This package is a fork from James Clark's SP suite.
 License:        MIT
 Summary:        SGML parser tools (development package)
 Group:          Productivity/Publishing/SGML
-Requires:       %{name} = %{version} libstdc++-devel glibc-devel
-Provides:       sp-devel OpenSP-devel
+Requires:       %{name} = %{version}
+Requires:       glibc-devel
+Requires:       libstdc++-devel
+Provides:       OpenSP-devel
+Provides:       sp-devel
 Obsoletes:      sp-devel
 
 %description -n opensp-devel
