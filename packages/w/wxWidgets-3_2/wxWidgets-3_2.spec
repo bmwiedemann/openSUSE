@@ -67,8 +67,8 @@ Name:           wxQt-3_2
 # Use default debug level, enabling exceptions
 # Other valid values: yes/no/max
 %define wx_debug %nil
-%define psonum 8_0_0
-%define sonum 8.0.0
+%define psonum 9_0_0
+%define sonum 9.0.0
 Version:        3.2.2.1
 Release:        0
 %define wx_minor 3.2
@@ -94,6 +94,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-devel
 BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  libSM-devel
+BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmspack-devel
@@ -420,6 +421,7 @@ autoconf -f -i
 	%{wx_debug:--enable-debug=%{wx_debug}} \
         --enable-repro-build \
         --disable-glcanvasegl \
+        --enable-webrequest \
 %if "%flavor" == "GTK3-nostl"
 	--disable-stl \
 	--disable-plugins
@@ -456,6 +458,8 @@ ln -sf $(echo %buildroot/%_libdir/wx/config/* | sed "s%%%buildroot%%%%") %buildr
 %if "%{flavor}" != "doc"
 %make_build -C tests all
 pushd tests
+# Disable webrequest tests requiring network access
+export WX_TEST_WEBREQUEST_URL=0
 # Non-gui tests
 ./test -l || true
 # ExecTestCase depends on xclock, and is fragile

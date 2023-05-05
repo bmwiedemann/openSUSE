@@ -191,4 +191,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1083010</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ec4da3503748f0fb3f93797845e94eec</srcmd5>
+    <version>3.2.2.1</version>
+    <time>1683295009</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable wxWebRequest.</comment>
+    <requestid>1084562</requestid>
+  </revision>
 </revisionlist>

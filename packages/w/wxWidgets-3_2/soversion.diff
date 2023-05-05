@@ -10,7 +10,7 @@ did so between 3.0.1 and 3.0.2) without changing the SONAME, we have
 to do it. As we have a vendor suffix, no filename conflicts can occur.
 
 One needs to look at the diff between versions. If in doubt, just
-always bump.
+always bump, specifically(!) the SO major.
 
 Index: wxWidgets-3.2.1/build/aclocal/bakefile.m4
 ===================================================================
@@ -52,7 +52,7 @@ Index: wxWidgets-3.2.1/Makefile.in
  @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@dll___targetsuf3 = -0.$(SO_SUFFIX)
  @COND_USE_SOVERSION_0@dll___targetsuf3 = .$(SO_SUFFIX)
 -@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).0
-+@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).8.0.0
++@COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@dll___targetsuf3 = .$(SO_SUFFIX).9.0.0
  @COND_TOOLKIT_MSW@__RCDEFDIR_p = --include-dir \
  @COND_TOOLKIT_MSW@	$(LIBDIRNAME)/wx/include/$(TOOLCHAIN_FULLNAME)
  @COND_USE_GUI_1_wxUSE_LIBTIFF_builtin@__LIB_TIFF_p \
