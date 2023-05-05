@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 12:29:33 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Require the mbedtls-devel version to be lower than 3
+
+-------------------------------------------------------------------
 Wed Apr 5 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.0.2

@@ -87,7 +87,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  glslang-devel
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  pkgconfig(graphite2)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libwslay)
