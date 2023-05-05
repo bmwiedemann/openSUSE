@@ -1,7 +1,7 @@
 #
 # spec file for package tini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A tiny but valid init for containers
 License:        MIT
 Group:          System/Management
 URL:            https://github.com/krallin/tini
-Source:         https://github.com/krallin/tini/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
@@ -51,31 +51,34 @@ This variant is statically linked to libc so that it will not be
 needed inside the container.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # Subreaper requires kernel >= 3.4
+%set_build_flags
 CFLAGS="${CFLAGS-} -DPR_SET_CHILD_SUBREAPER=36 -DPR_GET_CHILD_SUBREAPER=37"
 export CFLAGS
 
 # Enable DMINIMAL to supress verbosity or any output at all, plus disable
 # argument parsing. You an still set some options via env vars
 # CMAKE_ARGS="-DMINIMAL=ON"
-cmake "$CMAKE_ARGS"
-make tini %{?_smp_mflags} $LDFLAGS
-make tini-static %{?_smp_mflags} $LDFLAGS
+%cmake .
+%make_build tini
+%make_build tini-static
 
 %install
-mkdir -p %{buildroot}/%{_bindir}
-cp tini %{buildroot}/tini
-cp tini-static %{buildroot}/tini-static
+mkdir -p %{buildroot}/%{_sbindir}
+cp build/tini %{buildroot}/%{_sbindir}/tini
+cp build/tini-static %{buildroot}/%{_sbindir}/tini-static
 
 %files
 %license LICENSE
 %doc README.md
-/tini
+%{_sbindir}/tini
 
 %files static
-/tini-static
+%{_sbindir}/tini-static
+%license LICENSE
+%doc README.md
 
 %changelog
