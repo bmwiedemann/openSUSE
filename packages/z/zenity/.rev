@@ -550,4 +550,12 @@
   currently fails the build. (forwarded request 1073114 from iznogood)</comment>
     <requestid>1073238</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6b52e62a9659c09f5d9e7e6dbb4d042a</srcmd5>
+    <version>3.92.0</version>
+    <time>1683295015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084590</requestid>
+  </revision>
 </revisionlist>

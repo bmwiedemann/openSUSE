@@ -17,13 +17,13 @@
 
 
 Name:           zenity
-Version:        3.91.0
+Version:        3.92.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
-Source0:        https://download.gnome.org/sources/zenity/3.91/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/zenity/3.92/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

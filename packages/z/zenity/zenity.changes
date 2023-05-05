@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  4 08:34:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.92.0:
+  + progress: don't update responses that aren't there
+  + Set dialog 'heading', not 'title' for the --title option
+  + tree: fix handling of multi-row stdin input
+  + tree-column-view: don't steal children
+  + Port to webkitgtk 6.0
+  + webkit: Fix leak by removing unnecessary ref sink
+  + option: Add non-fatal deprecation warning for
+    --confirm-overwrite
+  + help: Fix typo in Basque help translation
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar  7 08:50:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.91.0:
