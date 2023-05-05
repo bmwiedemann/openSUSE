@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-source-validator
-Version: 0.29-0
+Version: 0.30-0
 Binary: obs-service-source-validator
 Maintainer: Hib Eris <hib@hiberis.nl>
 Architecture: all

@@ -617,4 +617,13 @@ last submission had wrong tar ball for unknown reason</comment>
   * Add GitHub Actions</comment>
     <requestid>1084212</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>65fb4f5e56371231ce5de28afeddfa60</srcmd5>
+    <version>0.30</version>
+    <time>1683295158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.30:
+  * skip debian.lintian-overrides as well</comment>
+    <requestid>1085032</requestid>
+  </revision>
 </revisionlist>
