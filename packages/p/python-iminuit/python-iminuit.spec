@@ -30,7 +30,7 @@
 
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.21.2
+Version:        2.21.3
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
