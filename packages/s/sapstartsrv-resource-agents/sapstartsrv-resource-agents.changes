@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  5 08:18:17 UTC 2023 - abriel@suse.com
+
+- Version bump to 0.9.2
+  * prevent systemd service race between sapping and sappond during
+    system boot
+    (bsc#1207138)
+  * fix a problem of monitor/probe operation to detect a running
+    sapstartsrv process
+    (bsc#1210790)
+
+- add python3-psutil as package requirement and as build
+  requirement in case of testing
+  needed for bsc#1210790
+
+-------------------------------------------------------------------
 Wed Sep 14 09:37:25 UTC 2022 - abriel@suse.com
 
 - Version bump to 0.9.1
