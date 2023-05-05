@@ -27,4 +27,12 @@
 </comment>
     <requestid>978315</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>50bb9351fcea69b8db91f9cd38160a6f</srcmd5>
+    <version>1.1.0</version>
+    <time>1683295100</time>
+    <user>dimstar_suse</user>
+    <comment>- build for python3 module on SLE15</comment>
+    <requestid>1084889</requestid>
+  </revision>
 </revisionlist>
