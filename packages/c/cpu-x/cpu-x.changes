@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  5 07:24:21 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.3:
+  * Add BAR size for Intel discrete GPU
+  * Add total VRAM size via Vulkan API for checking ResizableBAR
+  * Update databases (Intel Alder Lake, Intel Raptor Lake-S/P/U)
+  * Disable OpenCL support by default
+  * Update brand logos for AMD and Intel
+  * Make yellow brighter for dark themes in GTK GUI
+  * Patch dmidecode to version 3.5.484f893
+  * Update 'Technology' label in CPU tab for new node name (like
+    Intel 7) and change prefix for technology nodes >= 100nm to µm
+- Drop no longer needed cpu-x-update-database.patch
+
+-------------------------------------------------------------------
 Wed Mar 15 19:52:07 UTC 2023 - malcolmlewis@opensuse.org
 
 - Add build requires to enable Vulkan support.

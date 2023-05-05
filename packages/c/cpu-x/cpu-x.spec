@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        4.5.2
+Version:        4.5.3
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ Group:          System/X11/Utilities
 URL:            https://github.com/TheTumultuousUnicornOfDarkness/CPU-X
 Source:         https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v%version.tar.gz
 Patch1:         no-no-pie.patch
-#PATCH-FIX-OPENSUSE cpu-x-update-database.patch malcolmlewis@opensuse.org -- Update database to include cpu information.
-Patch2:         cpu-x-update-database.patch
 BuildRequires:  cmake
 BuildRequires:  gettext-tools
 %ifarch %ix86 x86_64
@@ -44,7 +42,7 @@ BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(vulkan)
 # https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/issues/105
 Provides:       bundled(bandwidth) = 1.5.1
-Provides:       bundled(dmidecode) = 3.4.20220922.f50b925
+Provides:       bundled(dmidecode) = 3.5.484f893
 
 %description
 CPU-X is a software that gathers information about CPU, motherboard
@@ -85,7 +83,8 @@ Shell completion definitions from %name for %name.
 %autosetup -p1 -n %src_name
 
 %build
-%cmake
+%cmake \
+  -DWITH_OPENCL=1
 %cmake_build
 
 %install

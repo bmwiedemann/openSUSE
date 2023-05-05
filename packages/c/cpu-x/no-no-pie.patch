@@ -8,10 +8,10 @@ Why is this flag even here...
  CMakeLists.txt |    1 -
  1 file changed, 1 deletion(-)
 
-Index: CPU-X/CMakeLists.txt
+Index: CPU-X-4.5.3/CMakeLists.txt
 ===================================================================
---- CPU-X.orig/CMakeLists.txt
-+++ CPU-X/CMakeLists.txt
+--- CPU-X-4.5.3.orig/CMakeLists.txt
++++ CPU-X-4.5.3/CMakeLists.txt
 @@ -38,7 +38,6 @@ set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_E
  include(CheckCCompilerFlag)
  check_c_compiler_flag("-no-pie" HAS_NO_PIE)

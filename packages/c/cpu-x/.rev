@@ -74,4 +74,22 @@
   information for Clarkdale (Core i3) and Haswell-EP. (forwarded request 1072186 from malcolmlewis)</comment>
     <requestid>1072480</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf7156a94c6430603b4daa8146e42565</srcmd5>
+    <version>4.5.3</version>
+    <time>1683295156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.3:
+  * Add BAR size for Intel discrete GPU
+  * Add total VRAM size via Vulkan API for checking ResizableBAR
+  * Update databases (Intel Alder Lake, Intel Raptor Lake-S/P/U)
+  * Disable OpenCL support by default
+  * Update brand logos for AMD and Intel
+  * Make yellow brighter for dark themes in GTK GUI
+  * Patch dmidecode to version 3.5.484f893
+  * Update 'Technology' label in CPU tab for new node name (like
+    Intel 7) and change prefix for technology nodes &gt;= 100nm to µm
+- Drop no longer needed cpu-x-update-database.patch (forwarded request 1084971 from pluskalm)</comment>
+    <requestid>1085019</requestid>
+  </revision>
 </revisionlist>
