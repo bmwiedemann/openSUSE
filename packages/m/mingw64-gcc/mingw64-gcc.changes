@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 16:11:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Aug 26 12:33:22 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add package mingw64-libstdc++-gdb-printer which provides pretty
