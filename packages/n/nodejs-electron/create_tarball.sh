@@ -230,7 +230,7 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
     third_party/libavif #leap too old
-    third_party/libgav1 #not in Factory yet, but available in unofficial repos. CONSIDER UNBUNDLING when any distro has it.
+    third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h)
     third_party/libjxl #not in Leap
     third_party/libphonenumber #Depends on protobuf which cannot be unbundled
     third_party/libsrtp #Use of private headers. they were public in libsrtp1
