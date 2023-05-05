@@ -46,4 +46,18 @@
     <comment></comment>
     <requestid>1008242</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ccb405d50a2c03d9995468302e95f1f</srcmd5>
+    <version>0.10.0</version>
+    <time>1683295097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * support for periods in the PCM constructor.
+  * new functions PCM.state(), PCM.drop() and PCM.drain()
+  * improved underrun/overrun handling
+  * documentation improvements/consolidation
+  * more sampling rates
+  * bug fixes</comment>
+    <requestid>1084882</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyalsaaudio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyalsaaudio
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        ALSA bindings for Python
 License:        Python-2.0
