@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu May  4 14:03:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.153.1:
+  What's Changed:
+  * Properly emulated arm64 Docker builds by @lavifb in #826
+
+- Update to version 0.153.0:
+  What's Changed:
+  * build(deps): bump go.uber.org/multierr from 1.10.0 to 1.11.0
+    by @dependabot in #772
+  * feat: add/expose cli flags by @hans-m-song in #771
+  * build(deps): bump github.com/goccy/go-yaml from 1.10.1 to
+    1.11.0 by @dependabot in #778
+  * Bump github.com/helmfile/vals by @jkroepke in #781
+  * build(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+    by @dependabot in #783
+  * build(deps): bump github.com/docker/docker from
+    20.10.21+incompatible to 20.10.24+incompatible by @dependabot
+    in #784
+  * Update USERS.md by @AndreiBrandes in #777
+  * build(deps): bump golang.org/x/term from 0.6.0 to 0.7.0 by
+    @dependabot in #789
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.2.0
+    to 3.2.1 by @dependabot in #796
+  * Documentation updated about kubeVersion field by @Edu-DevOps
+    in #797
+  * build(deps): bump k8s.io/apimachinery from 0.26.3 to 0.27.0
+    by @dependabot in #801
+  * bump helm to v3.11.3 by @yxxhero in #802
+  * fix: ValuesTemplate quote issue by @yxxhero in #787
+  * feat: add duration to affected releases on sync by @AlexAxenti
+    in #773
+  * Add kube version flag by @FeLvi-zzz in #804
+  * bump vals to v0.25.0 by @stoned in #808
+  * build(deps): bump k8s.io/apimachinery from 0.27.0 to 0.27.1 by
+    @dependabot in #810
+  * Add documentation on internal environment variables by @voron
+    in #811
+  * Doc fixes by @stoned in #812
+  * Fix inherit examples following #674 by @stoned in #815
+  * Fix Markdown rendering of indented code blocks by @stoned
+    in #814
+  * Uniformize usage message by @stoned in #813
+  * Build correct arch for container image by @lavifb in #817
+  * Fix depedency binaries for arm64 builds by @lavifb in #820
+  * chore(release): fix condition for latest tag by @rmoreas
+    in #823
+
+-------------------------------------------------------------------
 Thu Mar 30 10:07:21 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.152.0:
