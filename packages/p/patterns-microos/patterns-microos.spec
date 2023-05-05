@@ -499,6 +499,8 @@ Requires:       nautilus-extension-seahorse
 Requires:       seahorse-daemon
 # So Trash and mounting USB sticks work in Nautilus
 Requires:       gvfs-backends
+Requires:       gvfs-backend-afc
+Requires:       gvfs-backend-goa
 Requires:       gvfs-fuse
 # We need the icons to work
 Requires:       adwaita-icon-theme

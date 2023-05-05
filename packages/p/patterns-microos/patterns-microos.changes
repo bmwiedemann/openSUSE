@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 13:31:43 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Add Requires for gvfs-backend-goa and gvfs-backend-afc to better
+  support filesystems configured by gnome-online-accounts and Apple
+  mobile devices
+ 
+-------------------------------------------------------------------
 Thu Apr 20 10:55:36 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Relocate the below change to kernel-firmware-all and sof-firmware
