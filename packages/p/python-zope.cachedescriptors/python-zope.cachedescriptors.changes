@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  5 14:26:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0:
+  * Add support for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+
+-------------------------------------------------------------------
 Thu Oct 13 07:21:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls

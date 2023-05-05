@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.cachedescriptors
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zope.cachedescriptors
-Version:        4.4
+Version:        5.0
 Release:        0
 Summary:        Method and property caching decorators
 License:        ZPL-2.1

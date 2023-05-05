@@ -35,4 +35,14 @@
   * Add support for Python 3.7, 3.8, 3.9, 3.10.</comment>
     <requestid>1010405</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5be6ed56d89b647cf227080f99d2345c</srcmd5>
+    <version>5.0</version>
+    <time>1683300805</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0:
+  * Add support for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.</comment>
+    <requestid>1085133</requestid>
+  </revision>
 </revisionlist>
