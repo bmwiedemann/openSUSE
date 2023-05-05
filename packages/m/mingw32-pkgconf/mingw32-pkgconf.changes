@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 16:10:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Sun Apr 16 09:02:04 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Drop tag BuildRoot: (boo#1207289)
