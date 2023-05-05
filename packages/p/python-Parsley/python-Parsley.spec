@@ -1,7 +1,7 @@
 #
 # spec file for package python-Parsley
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define modname  Parsley
 %define oldpython python
 Name:           python-Parsley
@@ -32,7 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-parsley
 Obsoletes:      %{oldpython}-Parsley-doc
 Obsoletes:      python-Parsley-doc
