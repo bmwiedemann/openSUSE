@@ -23,7 +23,7 @@
 BuildArch:      noarch
 %endif
 Name:           python-%{mod_name}
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Django-taggit is a reusable Django application for simple tagging
 License:        BSD-3-Clause-Clear
