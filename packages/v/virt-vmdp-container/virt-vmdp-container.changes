@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May  5 07:41:11 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 2.5.4.2: https://github.com/SUSE/vmdp/releases/tag/v2.5.4.2
+  * virtio_fs and virtiofs_svc:
+    . New driver and service added to VMDP.
+  * pvcrash_notify:
+    . Added support for the pvpanic-pci device in the pvcrash_notify driver.
+    . To use the PCI device the QEMU option "-device pvpanic-pci" is needed.
+    . Switched from using symbolic link names to GUID access.
+  * pvvxblk:
+    . Updated to properly use multiple queues.
+    . Increased the possible number of physical page brakes.
+    . Properly enable supported features.
+    . Now supports discard and write zeros.
+    . Report the backend serial number if provided.
+    . Support code pages VPD_BLOCK_LIMITS, VPD_BLOCK_DEVICE_CHARACTERISTICS, and VPD_LOGICAL_BLOCK_PROVISIONING.
+    . Fixed race condition that could prevent pvvxblk from shutting down correctly causing the vm to hang on shutdown or restart.
+    . Fixed potential hang on shutdown/reboot where driver was calling KeDelayExecutionThread at DPC level.
+  * pvvxscsi:
+    . Updated to properly use multiple queues.
+    . Increased the possible number of physical page brakes.
+  * pvvxnet:
+    . Fixed crash when doing virsh restore.
+    . Removed NumPath parameter.
+    . Fixed potential crash when uninstalling/reinstalled driver when using RSS.
+    . Stopped writing the number of RSS queses in use back to the registry.
+
+-------------------------------------------------------------------
 Thu Aug  4 07:31:45 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use standard LABEL directive to add mandatory labels
