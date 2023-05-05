@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  5 08:10:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.05.01
+  * Add support for per-write dynamic Cmsgs
+  * Support dwarf5 version of split dwarf
+  * Add Blake3 support
+- Disable static gtest and static zstd to unfail build
+
+-------------------------------------------------------------------
 Tue Feb 28 20:14:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.02.27:

@@ -16,9 +16,10 @@
 #
 
 
-%define lname libfolly-v2023_02_27_00
+%define _lto_cflags %nil
+%define lname libfolly-v2023_05_01_00
 Name:           folly
-Version:        2023.02.27.00
+Version:        2023.05.01.00
 Release:        0
 Summary:        A C++ utility library
 License:        MIT
@@ -30,7 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gflags-devel-static
+BuildRequires:  gflags-devel
 BuildRequires:  glog-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libboost_context-devel
@@ -52,13 +53,14 @@ BuildRequires:  libsodium-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  liburing-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  libzstd-devel-static
 BuildRequires:  lzlib-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel-static
+# BE arches
+ExcludeArch:    %mips ppc64 s390 s390x %sparc
 
 %description
 Folly is a C++ utility library developed at Facebook.
@@ -86,7 +88,7 @@ Development files library for folly, a C++ utility library.
 # Since its introduction for ABI purposes, PACKAGE_VERSION was never
 # again modified *sigh*
 #
-%cmake -DCMAKE_CXX_FLAGS="%optflags -ffat-lto-objects" \
+%cmake -DCMAKE_CXX_FLAGS="%optflags -ffat-lto-objects -fPIC" \
 	-DBUILD_SHARED_LIBS:BOOL=ON -DPACKAGE_VERSION="v%version" \
 	-DCMAKE_LIBRARY_ARCHITECTURE="%_target_cpu"
 %cmake_build

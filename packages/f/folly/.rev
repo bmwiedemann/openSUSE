@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>1068508</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>257d61b3db9ed0e71eb4ad143b2e7f78</srcmd5>
+    <version>2023.05.01.00</version>
+    <time>1683295154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2023.05.01</comment>
+    <requestid>1085016</requestid>
+  </revision>
 </revisionlist>
