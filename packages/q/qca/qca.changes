@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May  3 16:10:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.6. No changelog.
+- Drop patches, merged upstream:
+  * 0001-Remove-test-that-openssl-has-decided-it-s-wrong.patch
+  * 0001-hashunittest-run-sha384longtest-only-for-providers-t.patch
+
+-------------------------------------------------------------------
 Mon Feb 20 13:34:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Disable the pgp test. It fails randomly.

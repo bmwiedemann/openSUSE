@@ -62,4 +62,12 @@
   * Add 0001-Remove-test-that-openssl-has-decided-it-s-wrong.patch</comment>
     <requestid>1066832</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bcfe85c1a0c2fe0d8aed08f87bf2cd07</srcmd5>
+    <version>2.3.6</version>
+    <time>1683295004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084484</requestid>
+  </revision>
 </revisionlist>

@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %define _soversion 2
 %bcond_without pkcs11
 Name:           qca%{pkgname_suffix}
-Version:        2.3.5
+Version:        2.3.6
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
@@ -46,10 +46,6 @@ URL:            https://userbase.kde.org/QCA
 Source0:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz.sig
 Source2:        qca.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-hashunittest-run-sha384longtest-only-for-providers-t.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Remove-test-that-openssl-has-decided-it-s-wrong.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cmake
 BuildRequires:  gpg2
@@ -113,7 +109,6 @@ Obsoletes:      libqca-qt5-devel < %{version}
 %endif
 %if 0%{?qt6}
 Requires:       cmake(Qt6Core) >= %{qt_min_version}
-Requires:       cmake(Qt6Core5Compat) >= %{qt_min_version}
 Requires:       cmake(Qt6Network) >= %{qt_min_version}
 %endif
 
@@ -183,8 +178,7 @@ export QT_PLUGIN_PATH=%{buildroot}%{_qt6_pluginsdir}:%{_qt6_pluginsdir}
 %define _smp_mflags -j1
 %ctest
 
-%post -n libqca-%{flavor}-%{_soversion} -p /sbin/ldconfig
-%postun -n libqca-%{flavor}-%{_soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libqca-%{flavor}-%{_soversion}
 
 %files
 %dir %{_plugindir}/crypto
