@@ -196,4 +196,18 @@
     (1.7.10).</comment>
     <requestid>919284</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>94e5afb4f9d5d0040668ff26441cb93f</srcmd5>
+    <version>1.8.1</version>
+    <time>1683295014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1
+  * Fix spelling/wording issues
+  * gitlab CI: enable commit &amp; merge request checks
+  * gitlab CI: enable gitlab's builtin static analysis
+  * XInput_find_display: Don't dereference NULL dpyinfo
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Initialize a few stack vars to zero</comment>
+    <requestid>1084584</requestid>
+  </revision>
 </revisionlist>

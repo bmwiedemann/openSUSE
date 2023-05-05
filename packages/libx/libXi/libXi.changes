@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  4 09:51:35 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.1
+  * Fix spelling/wording issues
+  * gitlab CI: enable commit & merge request checks
+  * gitlab CI: enable gitlab's builtin static analysis
+  * XInput_find_display: Don't dereference NULL dpyinfo
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * Initialize a few stack vars to zero
+
+-------------------------------------------------------------------
 Wed Sep 15 21:47:48 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.8
