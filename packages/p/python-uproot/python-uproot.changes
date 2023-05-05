@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Thu May  4 15:58:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.7:
+  * Previously, uproot.dask would default to step_size="100 MB" if
+    open_files=True and whole-file-steps (limit on step size) if
+    open_files=False. Now both open_files cases default to
+    steps_per_file=1 (whole-file-steps) for uniformity.
+  * feat: add in capability for blindly splitting files into
+    chunks for dask (gh#scikit-hep/uproot5#876).
+- Drop tests.tar.xz as additional Source as test files are now
+  included with upstream pypi tarball; drop associated _service.
+- Update required version of scikit-hep-testdata to 0.4.30 for
+  tests.
+
+-------------------------------------------------------------------
 Sun Mar 12 10:15:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
-- Disable building against python3.11 until numba -- and dask -- is
-  compatible.
+- Disable building against python3.11 until numba -- and dask --
+  is compatible.
 - Disable 32-bit builds since python-awkward no longer builds for
   those archs.
 

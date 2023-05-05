@@ -22,14 +22,13 @@
 %define skip_python311 1
 %global modname uproot
 Name:           python-uproot
-Version:        5.0.3
+Version:        5.0.7
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scikit-hep/uproot4
 Source0:        https://files.pythonhosted.org/packages/source/u/uproot/uproot-%{version}.tar.gz
-Source1:        tests.tar.xz
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hatchling}
@@ -58,7 +57,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-hep-testdata}
+BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.30}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
@@ -74,7 +73,7 @@ Python. It uses Numpy to cast blocks of data from the ROOT file as Numpy
 arrays.
 
 %prep
-%autosetup -p1 -a1 -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %pyproject_wheel
