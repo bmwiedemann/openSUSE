@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  5 14:31:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0:
+  * Drop support for Python 2.7, 3.4, 3.5, 3.6.
+  * Drop support for deprecated ``python setup.py test``.
+  * Add support for Python 3.8, 3.9, 3.10, 3.11.
+
+-------------------------------------------------------------------
 Wed Feb  1 13:14:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Implement python packaging best practise: Don't cathall platlib

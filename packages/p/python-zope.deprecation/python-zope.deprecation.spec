@@ -18,7 +18,7 @@
 
 
 Name:           python-zope.deprecation
-Version:        4.4.0
+Version:        5.0
 Release:        0
 Summary:        Zope Deprecation Infrastructure
 License:        ZPL-2.1
@@ -53,7 +53,7 @@ rm -rf zope.deprecation.egg-info
 
 %build
 %python_build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
