@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  5 09:20:38 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add -version option
+  * Fix -version handling to not require opening a display first
+  * Stop casting function returns to void
+  * Add -help option
+  * Accept number keys on main keyboard when NumLock is on
+  * Key color highlighting still incorrect
+
+-------------------------------------------------------------------
 Thu Aug 11 08:11:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to %%licensedir

@@ -1,7 +1,7 @@
 #
 # spec file for package xcalc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xcalc
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Scientific calculator for X
 License:        MIT

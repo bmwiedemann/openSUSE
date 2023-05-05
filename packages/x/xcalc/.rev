@@ -93,4 +93,19 @@
     <comment></comment>
     <requestid>998306</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>19ddbe8d122c1fd907d0b864c2ad223c</srcmd5>
+    <version>1.1.2</version>
+    <time>1683295149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Add -version option
+  * Fix -version handling to not require opening a display first
+  * Stop casting function returns to void
+  * Add -help option
+  * Accept number keys on main keyboard when NumLock is on
+  * Key color highlighting still incorrect</comment>
+    <requestid>1085007</requestid>
+  </revision>
 </revisionlist>
