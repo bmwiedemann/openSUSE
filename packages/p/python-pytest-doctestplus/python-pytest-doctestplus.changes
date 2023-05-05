@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 22:39:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Allow floating point comparison in Python dictionary. [#186]
+
+-------------------------------------------------------------------
 Tue Aug 16 16:18:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix test requirement of pytest-remotedata

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,10 +25,9 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
@@ -45,8 +44,8 @@ Requires:       python-pytest >= 4.6
 Requires:       python-setuptools >= 30.3.0
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip >= 19.3.1}
 BuildRequires:  %{python_module pytest-doctestplus = %{version}}
 BuildRequires:  %{python_module pytest-remotedata >= 0.3.2}
