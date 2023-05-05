@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri May  5 07:31:01 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.7.0:
+  * Added fail_when_locked=False support to BoundedSemaphore thanks to
+    @flaviens
+- 2.6.0:
+  * Added fileno() support. Fixes #80 on posix systems
+- 2.5.1:
+  * Added clear warning when locking in non-blocking mode without
+    specifying either EXCLUSIVE or SHARED mode. Fixes #77
+- 2.5.0:
+  * Fixed shared locks on Windows and simplified locking mechanism
+- 2.4.0:
+  * Added warning when trying to use a timeout in blocking mode. And
+    removed deprecated testing code and checks
+- 2.3.2:
+  * Added semver indicator and specified needed Python release thanks
+    to @rayluo v2.3.2
+- 2.3.1:
+  * Removed Python 2 classifier thanks to @rayluo v2.3.1
+- 2.3.0:
+  * enabled PEP 561 compliance v2.3.0
+- 2.2.1:
+  * removed debug statement v2.2.1
+- 2.2.0:
+  * updated travis location
+- 2.1.0:
+  * Added Redis based distributed lock which gracefully handles
+    connection loss and dying applications. Added full type hinting
+    support. Fixed bug where the file handle was not always explicitly
+    closed with errors
+- v2.0.0:
+  * Removed support for old Python versions. Versions 3.5 and above
+    are supported. Added BoundedSemaphore class
+- 1.7.1:
+  * removed tests from wheel file
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

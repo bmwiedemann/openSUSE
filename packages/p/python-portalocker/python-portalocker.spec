@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-portalocker
-Version:        1.7.0
+Version:        2.7.0
 Release:        0
 Summary:        Locking library for Python
 License:        Python-2.0
@@ -30,6 +29,7 @@ BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Suggests:       python-redis
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,11 +54,14 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Do not test redis, the optional dependency is not installed by
+# default
+%pytest --ignore portalocker_tests/test_redis.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/portalocker
+%{python_sitelib}/portalocker-%{version}*-info
 
 %changelog
