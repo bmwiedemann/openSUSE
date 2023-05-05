@@ -1,25 +1,25 @@
-Index: VirtualBox-7.0.6/Config.kmk
+Index: VirtualBox-7.0.8/Config.kmk
 ===================================================================
---- VirtualBox-7.0.6.orig/Config.kmk
-+++ VirtualBox-7.0.6/Config.kmk
-@@ -6770,6 +6770,9 @@ TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwi
+--- VirtualBox-7.0.8.orig/Config.kmk
++++ VirtualBox-7.0.8/Config.kmk
+@@ -6749,6 +6749,9 @@ TEMPLATE_VBoxR3HardenedExe_LDFLAGS.darwi
  ifeq ($(KBUILD_TARGET),linux)
- # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
- # TEMPLATE_VBOXR3HARDENEDEXE_LIBS += cap
+  # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
+  # TEMPLATE_VBoxR3HardenedExe_LIBS += cap
 + TEMPLATE_VBOXR3HARDENEDEXE_CXXFLAGS.linux = $(TEMPLATE_VBOXR3EXE_CXXFLAGS.linux) -fPIE
 + TEMPLATE_VBOXR3HARDENEDEXE_CFLAGS.linux = $(TEMPLATE_VBOXR3EXE_CFLAGS.linux) -fPIE
 + TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.linux = $(TEMPLATE_VBOXR3EXE_LDFLAGS.linux) -pie
  endif
  ifeq ($(KBUILD_TARGET),win) # No CRT!
-  TEMPLATE_VBOXR3HARDENEDEXE_SDKS          = VBOX_NTDLL $(TEMPLATE_VBOXR3EXE_SDKS)
-@@ -6802,8 +6805,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
-  TEMPLATE_VBOXR3HARDENEDEXE_VBOX_IMPORT_CHECKER.win = noimports
+  TEMPLATE_VBoxR3HardenedExe_SDKS          = VBoxNtDll $(TEMPLATE_VBoxR3Exe_SDKS)
+@@ -6781,8 +6784,8 @@ ifeq ($(KBUILD_TARGET),win) # No CRT!
+  TEMPLATE_VBoxR3HardenedExe_VBOX_IMPORT_CHECKER.win = noimports
  else ifn1of ($(KBUILD_TARGET), os2)
   ifneq ($(KBUILD_TYPE),asan) # Keep RPATH in asan builds so we can find libasan.so.X and libubsan.so.Y.
--  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS       = $(filter-out '$(VBOX_GCC_RPATH_OPT)%,$(TEMPLATE_VBOXR3EXE_LDFLAGS))
--  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.linux = $(filter-out $(VBOX_GCC_ORIGIN_OPT),$(TEMPLATE_VBOXR3EXE_LDFLAGS.linux))
-+  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS       = $(filter-out '$(VBOX_GCC_RPATH_OPT)%,$(TEMPLATE_VBOXR3EXE_LDFLAGS)) -pie
-+  TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.linux = $(filter-out $(VBOX_GCC_ORIGIN_OPT),$(TEMPLATE_VBOXR3EXE_LDFLAGS.linux)) -pie
+-  TEMPLATE_VBoxR3HardenedExe_LDFLAGS       = $(filter-out '$(VBOX_GCC_RPATH_OPT)%,$(TEMPLATE_VBoxR3Exe_LDFLAGS))
+-  TEMPLATE_VBoxR3HardenedExe_LDFLAGS.linux = $(filter-out $(VBOX_GCC_ORIGIN_OPT),$(TEMPLATE_VBoxR3Exe_LDFLAGS.linux))
++  TEMPLATE_VBoxR3HardenedExe_LDFLAGS       = $(filter-out '$(VBOX_GCC_RPATH_OPT)%,$(TEMPLATE_VBoxR3Exe_LDFLAGS)) -pie
++  TEMPLATE_VBoxR3HardenedExe_LDFLAGS.linux = $(filter-out $(VBOX_GCC_ORIGIN_OPT),$(TEMPLATE_VBoxR3Exe_LDFLAGS.linux)) -pie
   endif
  endif
  

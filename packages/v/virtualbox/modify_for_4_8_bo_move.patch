@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+Index: VirtualBox-7.0.8/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
 ===================================================================
---- VirtualBox-7.0.6.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
-+++ VirtualBox-7.0.6/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+--- VirtualBox-7.0.8.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
++++ VirtualBox-7.0.8/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
 @@ -45,7 +45,7 @@
  #include <iprt/assert.h>
  #include <iprt/errcore.h>

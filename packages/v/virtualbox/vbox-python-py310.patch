@@ -1,13 +1,15 @@
 # https://www.virtualbox.org/changeset/90537/vbox
 
-Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/Makefile.kmk
+Index: VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
 ===================================================================
---- VirtualBox-7.0.6.orig/src/libs/xpcom18a4/python/Makefile.kmk
-+++ VirtualBox-7.0.6/src/libs/xpcom18a4/python/Makefile.kmk
-@@ -703,6 +703,52 @@ VBoxPython3_10m_x86_LIBS       = $(VBOX_
-  endif
- endif
- 
+--- VirtualBox-7.0.8.orig/src/libs/xpcom18a4/python/Makefile.kmk
++++ VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
+@@ -663,11 +663,57 @@ ifndef VBOX_ONLY_SDK
+      VBoxPython3_10m_x86_LIBS  = $(VBOX_PYTHON310M_LIB_X86)
+     endif
+    endif
++endif
++
 +ifdef VBOX_PYTHON310_INC
 +#
 +# Python 3.10 version
@@ -27,10 +29,13 @@ Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/Makefile.kmk
 +VBoxPython3_10_x86_TEMPLATE   = XPCOM
 +VBoxPython3_10_x86_INCS       = $(VBOX_PYTHON310_INC)
 +VBoxPython3_10_x86_LIBS       = $(VBOX_PYTHON310_LIB_X86)
-+  endif
+   endif
 + endif
 +endif
-+
+ 
+-  ifdef VBOX_PYTHONDEF_INC
+-   #
+-   # Python without versioning
 +ifdef VBOX_PYTHON310M_INC
 +#
 +# Python 3.10 version with pymalloc
@@ -54,6 +59,9 @@ Index: VirtualBox-7.0.6/src/libs/xpcom18a4/python/Makefile.kmk
 + endif
 +endif
 +
- ifdef VBOX_PYTHONDEF_INC
- #
- # Python without versioning
++ifdef VBOX_PYTHONDEF_INC
++#
++# Python without versioning
+    #
+    DLLS += VBoxPython
+    VBoxPython_EXTENDS   = VBoxPythonBase

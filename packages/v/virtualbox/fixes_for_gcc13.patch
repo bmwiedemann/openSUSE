@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
+Index: VirtualBox-7.0.8/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
 ===================================================================
---- VirtualBox-7.0.6.orig/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
-+++ VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
+--- VirtualBox-7.0.8.orig/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
++++ VirtualBox-7.0.8/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
 @@ -13,6 +13,7 @@
  #include <intrin.h>
  #endif
@@ -10,10 +10,10 @@ Index: VirtualBox-7.0.6/src/libs/dxvk-native-1.9.2a/src/util/util_bit.h
  #include "util_likely.h"
  #include "util_math.h"
  
-Index: VirtualBox-7.0.6/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
+Index: VirtualBox-7.0.8/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
 ===================================================================
---- VirtualBox-7.0.6.orig/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
-+++ VirtualBox-7.0.6/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
+--- VirtualBox-7.0.8.orig/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
++++ VirtualBox-7.0.8/src/VBox/Additions/x11/x11include/XFree86-4.3/Xserver/misc.h
 @@ -66,6 +66,9 @@ TORTIOUS ACTION, ARISING OUT OF OR IN CO
  OF THIS SOFTWARE.
  

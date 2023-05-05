@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.6/src/VBox/HostDrivers/linux/Makefile
+Index: VirtualBox-7.0.8/src/VBox/HostDrivers/linux/Makefile
 ===================================================================
---- VirtualBox-7.0.6.orig/src/VBox/HostDrivers/linux/Makefile
-+++ VirtualBox-7.0.6/src/VBox/HostDrivers/linux/Makefile
+--- VirtualBox-7.0.8.orig/src/VBox/HostDrivers/linux/Makefile
++++ VirtualBox-7.0.8/src/VBox/HostDrivers/linux/Makefile
 @@ -43,11 +43,8 @@ obj-m = vboxdrv/
  obj-m += vboxnetflt/
   endif
@@ -140,10 +140,10 @@ Index: VirtualBox-7.0.6/src/VBox/HostDrivers/linux/Makefile
  		if test -f $$module.ko; then \
  			echo "Installing $$module module"; \
  			$(SUDO) /sbin/insmod $$module.ko; \
-Index: VirtualBox-7.0.6/src/VBox/Additions/linux/Makefile
+Index: VirtualBox-7.0.8/src/VBox/Additions/linux/Makefile
 ===================================================================
---- VirtualBox-7.0.6.orig/src/VBox/Additions/linux/Makefile
-+++ VirtualBox-7.0.6/src/VBox/Additions/linux/Makefile
+--- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/Makefile
++++ VirtualBox-7.0.8/src/VBox/Additions/linux/Makefile
 @@ -34,6 +34,7 @@ obj-m = vboxguest/ vboxsf/ vboxvideo/
  else # ! KERNELRELEASE
  
@@ -184,10 +184,10 @@ Index: VirtualBox-7.0.6/src/VBox/Additions/linux/Makefile
  	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxvideo install; \
  	fi
  
-Index: VirtualBox-7.0.6/include/iprt/x86.h
+Index: VirtualBox-7.0.8/include/iprt/x86.h
 ===================================================================
---- VirtualBox-7.0.6.orig/include/iprt/x86.h
-+++ VirtualBox-7.0.6/include/iprt/x86.h
+--- VirtualBox-7.0.8.orig/include/iprt/x86.h
++++ VirtualBox-7.0.8/include/iprt/x86.h
 @@ -894,37 +894,59 @@ typedef const X86CPUIDFEATEDX *PCX86CPUI
   *          reserved flags.
   * @{ */
@@ -793,10 +793,10 @@ Index: VirtualBox-7.0.6/include/iprt/x86.h
  
  /** SMM MSRs. */
  #define MSR_K7_SMBASE                       UINT32_C(0xc0010111)
-Index: VirtualBox-7.0.6/include/VBox/vmm/hm_vmx.h
+Index: VirtualBox-7.0.8/include/VBox/vmm/hm_vmx.h
 ===================================================================
---- VirtualBox-7.0.6.orig/include/VBox/vmm/hm_vmx.h
-+++ VirtualBox-7.0.6/include/VBox/vmm/hm_vmx.h
+--- VirtualBox-7.0.8.orig/include/VBox/vmm/hm_vmx.h
++++ VirtualBox-7.0.8/include/VBox/vmm/hm_vmx.h
 @@ -1633,7 +1633,9 @@ AssertCompileSize(VMXABORT, 4);
  /** VMCS (and related regions) memory type - Uncacheable. */
  #define VMX_BASIC_MEM_TYPE_UC                                   0
@@ -807,10 +807,10 @@ Index: VirtualBox-7.0.6/include/VBox/vmm/hm_vmx.h
  /** Width of physical addresses used for VMCS and associated memory regions
   *  (1=32-bit, 0=processor's physical address width). */
  #define VMX_BASIC_PHYSADDR_WIDTH_32BIT                          RT_BIT_64(48)
-Index: VirtualBox-7.0.6/src/VBox/Additions/linux/drm/vbox_drv.h
+Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.h
 ===================================================================
---- VirtualBox-7.0.6.orig/src/VBox/Additions/linux/drm/vbox_drv.h
-+++ VirtualBox-7.0.6/src/VBox/Additions/linux/drm/vbox_drv.h
+--- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.h
 @@ -87,6 +87,12 @@
  #else
  # define RTLNX_RHEL_MAX(a_iMajor, a_iMinor) (0)

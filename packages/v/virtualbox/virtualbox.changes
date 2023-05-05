@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu May  4 15:24:39 UTC 2023 - Larry Rainey <llrainey15@gmail.com>
+
+- VirtualBox 7.0.8 (released April 18 2023)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+    VMM: Introduced general improvements in nested visualization area
+    GUI: Brought back Restore current snapshot checkbox of Close VM dialog (bugs #21189, #21491)
+    GUI: Fixes and validation for VM settings USB filters editor, filter port value is now properly saved/restored
+    GUI: Fixes for VM name and OS type embedded editors of Details pane
+    GUI: Cloud related wizards should now propose enabled profiles before disabled
+    Oracle VM VirtualBox Extension Pack: Fixed shipping the cryptographic support module for full VM encryption
+    E1000: Fixed possible guru meditation when changing network attachments (bug #21488)
+    virtio-net: Follow up fixes for FreeBSD 12.3 and pfSense 2.6.0 (bug #21201)
+    3D: Fixed various graphics issues with Windows 7 guests (bugs #21129, #21196, #21208, #21521)
+    Main/UefiVariableStore: Added API to add signatures to the MOK list (Machine Owner Key)
+    VBoxManage: Introduced modifynvram enrollmok sub-command to enroll Machine Owner Key into NVRAM, so Linux guest kernel can pick it up in order to verify signature of modules signed with this key
+    Guest Control/Main: Fixed deleting files via built-in toolbox
+    Linux host: Added possibility to bypass kernel modules signature verification once VBOX_BYPASS_MODULES_SIGNATURE_CHECK="1" is specified in /etc/vbox/vbox.cfg, useful in case if Linux distribution does not provide necessary tools to verify kernel module signature
+    Linux Guest Additions and host Installer: Improved detection if system is running systemd as the init process
+    Linux Guest Additions and host drivers: Introduce initial support for kernel 6.3
+    Linux Guest Additions: Added possibility to bypass kernel modules signature verification once VBOX_BYPASS_MODULES_SIGNATURE_CHECK="1" is specified in /etc/virtualbox-guest-additions.conf, useful in case if Linux distribution does not provide necessary tools to verify kernel module signature
+    Linux Guest Additions: Added experimental support for kernel modules and user services reloading in the end of installation process, thus guest system reboot after Guest Additions (7.0.8 and newer) upgrade is no longer required in general case
+    Linux Guest Additions: Fixed vboxvideo build issue with RHEL 8.7, 9.1 and 9.2 kernels (bugs #21446 and #21450) 
+
+   Fixes for (boo#1210616)
+CVE-2023-21990	Oracle VM VirtualBox	Core	None	No	8.2	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-21987	Oracle VM VirtualBox	Core	None	No	7.8	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-22002	Oracle VM VirtualBox	Core	None	No	6.0	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-21989	Oracle VM VirtualBox	Core	None	No	6.0	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-21998	Oracle VM VirtualBox	Core	None	No	4.6	Prior to 6.1.44, Prior to 7.0.8
+CVE-2023-22000	Oracle VM VirtualBox	Core	None	No	4.6	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-22001	Oracle VM VirtualBox	Core	None	No	4.6	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-21988	Oracle VM VirtualBox	Core	None	No	3.8	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-21999	Oracle VM VirtualBox	Core	None	No	3.6	Prior to 6.1.44, Prior to 7.0.8	 
+CVE-2023-21991	Oracle VM VirtualBox	Core	None	No	3.2	Prior to 6.1.44, Prior to 7.0.8	
+
+   Removed file fixes_for_kernel_6.3.patch - removed upstream.
+   Removed file fix_kmp_build.patch.
+
+   Thanks to Javier de San Pedro for the simplfication of the KMP build.
+
+-------------------------------------------------------------------
+Fri Mar 31 21:14:51 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+-  Fix some memory leaks in file "fix_7.0.6_locking_problems.patch"
+   Fix bug in /usr/bin/VirtualBox, aka "virtualbox-wrapper.sh". The wrapper
+     failed whenever the user declined USB passthru. boo#1208941.
+
+-------------------------------------------------------------------
 Tue Mar 21 17:05:39 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - File "fixes_for_kernel_6.3.patch" is updated for more API changes
