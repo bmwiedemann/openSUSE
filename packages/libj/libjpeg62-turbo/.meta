@@ -1,7 +1,0 @@
-<package name="libjpeg62-turbo" project="openSUSE:Factory">
-  <title>A MMX/SSE2 accelerated library for manipulating JPEG image files</title>
-  <description>The libjpeg-turbo package contains a library of functions for manipulating
-JPEG images.</description>
-  <devel project="openSUSE:Factory" package="libjpeg-turbo"/>
-  <bcntsynctag>libjpeg-turbo</bcntsynctag>
-</package>
