@@ -785,4 +785,12 @@ Using build service only atm, any additional work might take a while again... (f
     - Building on Linux/powerpc64le with glibc ≥ 2.35 is now supported.</comment>
     <requestid>1030692</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>38d21bf8c4e5a3a5e5e0cc6a00d60593</srcmd5>
+    <version>0.21.1</version>
+    <time>1683295002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084722</requestid>
+  </revision>
 </revisionlist>

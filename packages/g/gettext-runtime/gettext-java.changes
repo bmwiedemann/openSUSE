@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 13:32:58 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+--------------------------------------------------------------------------
 Fri Apr  8 15:05:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
