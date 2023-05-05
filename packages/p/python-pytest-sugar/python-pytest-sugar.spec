@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-sugar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-sugar
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Pretty printer for pytest progress
 License:        BSD-3-Clause

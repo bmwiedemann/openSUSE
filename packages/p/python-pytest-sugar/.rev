@@ -81,4 +81,14 @@
 </comment>
     <requestid>1039090</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4857a717dae97569e69dc6cf7abde74b</srcmd5>
+    <version>0.9.7</version>
+    <time>1683295101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.7:
+  * For long-running tests, display minutes and not only seconds
+  * Add support for Pytest’s ``--header`` option (thanks @wiresv)</comment>
+    <requestid>1084892</requestid>
+  </revision>
 </revisionlist>
