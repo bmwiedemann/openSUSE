@@ -239,4 +239,12 @@ Ignore the build failure on x86_64 which was because of a worker failure.</comme
     <comment></comment>
     <requestid>955392</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>b7ba67dd21756887185d937874ac8968</srcmd5>
+    <version>3.0.5.1</version>
+    <time>1683295151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085023</requestid>
+  </revision>
 </revisionlist>
