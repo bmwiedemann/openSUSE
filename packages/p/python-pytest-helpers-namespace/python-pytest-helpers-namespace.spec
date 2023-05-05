@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-helpers-namespace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-helpers-namespace
-Version:        2021.3.24
+Version:        2021.12.29
 Release:        0
 Summary:        PyTest Helpers Namespace
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/saltstack/pytest-helpers-namespace
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-helpers-namespace/pytest-helpers-namespace-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools-declarative-requirements}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -54,7 +53,7 @@ sed -i '/setuptools/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -ra --forked 
+%pytest -ra --forked
 
 %files %{python_files}
 %doc README.rst docs/*.rst
