@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1083776</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16fffacd1da41e7d0e6f481e9dd3de12</srcmd5>
+    <version>0.1.2+git20220908.d2c7177</version>
+    <time>1683295147</time>
+    <user>dimstar_suse</user>
+    <comment>- Build also for Leap</comment>
+    <requestid>1085005</requestid>
+  </revision>
 </revisionlist>

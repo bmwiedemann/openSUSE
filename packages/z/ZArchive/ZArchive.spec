@@ -1,7 +1,7 @@
 #
-# spec file for package zarchive
+# spec file for package ZArchive
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,12 @@ License:        MIT-0
 URL:            https://github.com/Exzap/ZArchive
 Source0:        ZArchive-%{version}.tar.xz
 BuildRequires:  cmake >= 3.15
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++ >= 11
+%endif
 BuildRequires:  pkgconfig(libzstd)
-
 
 %description
 Program and library for handling ZArchive .zar files. ZArchive files are zstd-compressed file archives.
@@ -49,14 +52,16 @@ This subpackage contains the devel files for ZArchive
 %autosetup
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=g++-12
+%endif
 %cmake
 %cmake_build
 
 %install
 %cmake_install
 
-%post -n %{libpackage} -p /sbin/ldconfig
-%postun -n %{libpackage} -p /sbin/ldconfig
+%ldconfig_scriptlets -n  %{libpackage}
 
 %files
 %license LICENSE
@@ -78,4 +83,3 @@ This subpackage contains the devel files for ZArchive
 %{_includedir}/zarchive/zarchivewriter.h
 
 %changelog
-
