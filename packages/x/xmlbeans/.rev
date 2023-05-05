@@ -305,4 +305,12 @@
     <comment></comment>
     <requestid>1031253</requestid>
   </revision>
+  <revision rev="34" vrev="13">
+    <srcmd5>c8cce5281c41e3358d6b0b9b22bce1e2</srcmd5>
+    <version>2.6.0</version>
+    <time>1683295117</time>
+    <user>dimstar_suse</user>
+    <comment>multibuild</comment>
+    <requestid>1084984</requestid>
+  </revision>
 </revisionlist>
