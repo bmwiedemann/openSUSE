@@ -32,9 +32,15 @@
         </IfModule>
     </IfVersion>
 
+    # php7
     <IfModule mod_php7.c>
         Include @ap_sysconfdir@/conf.d/@name@.inc
         php_admin_value open_basedir "@ap_docroot@/@name@:@ap_tmpdir@:/var/lib/php7:/tmp:@docdir@/@name@:/etc/@name@:/proc/meminfo:/proc/stat"
+    </IfModule>
+    # php8
+    <IfModule mod_php.c>
+        Include @ap_sysconfdir@/conf.d/@name@.inc
+        php_admin_value open_basedir "@ap_docroot@/@name@:@ap_tmpdir@:/var/lib/php8:/tmp:@docdir@/@name@:/etc/@name@:/proc/meminfo:/proc/stat"
     </IfModule>
 
 </Directory>

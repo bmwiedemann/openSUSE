@@ -17,7 +17,7 @@ Index: config.sample.inc.php
 ===================================================================
 --- config.sample.inc.php.orig
 +++ config.sample.inc.php
-@@ -201,7 +201,6 @@ $cfg['Servers'][$i]['savedsearches']
+@@ -199,7 +199,6 @@ $cfg['Servers'][$i]['savedsearches']
  $cfg['Servers'][$i]['central_columns']          = 'pma__central_columns';
  $cfg['Servers'][$i]['designer_settings']        = 'pma__designer_settings';
  $cfg['Servers'][$i]['export_templates']         = 'pma__export_templates';

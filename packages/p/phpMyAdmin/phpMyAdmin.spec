@@ -42,6 +42,7 @@ Source100:      %{name}-rpmlintrc
 Patch0:         %{name}-config.patch
 # Fix-SUSE: auto config for pma storage
 Patch1:         %{name}-pma.patch
+BuildArch:      noarch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  fdupes
 #
@@ -57,7 +58,6 @@ Requires:       php-openssl
 Requires:       php-session
 Recommends:     php-curl
 Recommends:     php-zip
-BuildArch:      noarch
 
 %description
 phpMyAdmin can manage a whole MySQL server (needs a super-user) as well as a
@@ -105,7 +105,7 @@ Requires(post): %{_sbindir}/a2enmod
 Requires(post): %{_sbindir}/a2enflag
 Requires(post): php
 Requires(postun):%{_sbindir}/a2enflag
-Recommends:     mod_php_any >= 7.4
+Requires:       mod_php_any >= 7.4
 Supplements:    packageand(apache2:%name)
 
 %description apache

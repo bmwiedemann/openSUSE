@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  5 07:46:47 UTC 2023 - <chris@computersalat.de>
+
+- fix deps for subpkg apache
+  * definitly Requires mod_php_any
+- update phpMyAdmin.http
+  * add missing <IfModule mod_php.c> for php8
+
+-------------------------------------------------------------------
 Wed Feb  8 07:23:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.2.1
