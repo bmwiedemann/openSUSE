@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu May  4 13:22:31 UTC 2023 - Deepthi Yadabettu Venkatachala <deepthi.venkatachala@suse.com>
+
+- Update to version 2.29.6
+  * Restore all keyboard shorts (#690, Jendrik Seipp).
+  
+  2.29.5
+  * Fix: Don't try to print WebKit2 version on Windows (#686, Jendrik Seipp).
+  
+  2.29.4
+  * Accept arbitrary WebKit2 version. Use 4.1 if available (#681, Jendrik Seipp).
+
+  2.29.3
+  * Make all menu items translatable (Jendrik Seipp).
+  * Packaging: install translation files under /share/locale again (#666, Jendrik Seipp). 
+
+  2.29
+  * Document alternatives for changing the GTK theme on Windows (Ankur A Sharma, #494).
+  * Fix en_GB translations (Jendrik Seipp, #659).
+
+  2.28.1
+  * Require setuptools for Debian package (Jendrik Seipp).
+
+  2.28
+  * Remove code that uses the deprecated distutils module (Jendrik Seipp, #655, #656).
+  * Fix checking for newer versions (Jendrik Seipp).
+  * Gracefully handle unsupported locale settings (Jendrik Seipp, #613).
+
+  2.27.2
+  * Fix passing command line arguments (Jendrik Seipp).
+  * Update translation files (Jendrik Seipp).
+  
+  2.27
+  * Upgrade to GTK 3.24 on Windows (Jendrik Seipp).
+  * Use external preview on Windows since embedding the preview is 
+    impossible with newer GTK versions (Jendrik Seipp).
+  * Use GtkApplication class and only allow running one RedNotebook instance 
+    at a time (Jendrik Seipp).
+  * Add support for GtkSourceView 4 (Jendrik Seipp).
+  * Raise minimum Python version to 3.6 (Jendrik Seipp).
+  * Add more languages to Windows installer (Jendrik Seipp).
+ 
+  2.26
+  * Fix issue #632 by skipping obsolete Python function (Jendrik Seipp).
+  * Fix: only try to load CEF Python on Windows (Jendrik Seipp).
+  * Update Turkish translation (sabriunal).
+  
+  2.25
+  * Use icon names instead of GTK stock icons to support newer GTK versions (Jendrik Seipp).
+  * Handle several GTK deprecation warnings (Jendrik Seipp).
+  
+  2.24
+  * Revert to plain naming scheme for data files since reverse DNS naming causes 
+    problems (#611, Phil Wyett).
+  
+  2.23
+  * Check that a newly written month file is valid before deleting the old month file.
+  * Rename "autostart" file. Please reenable autostart option in preferences if you 
+    want RedNotebook to run on system startup.
+  * Fix Python crash on program start (#583, Max Krummenacher).
+  * Prevent save failures on network and cloud drives (#593, Robert Little).
+  * Add script for importing entries (#571, Cary Gravel).
+  * Revamp packaging for Debian (#599, #600, Phil Wyett).
+  * Fix continuous integration tests.
+
+-------------------------------------------------------------------
 Wed May 19 10:39:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.22

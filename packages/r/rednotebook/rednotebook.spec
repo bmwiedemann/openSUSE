@@ -1,7 +1,7 @@
 #
 # spec file for package rednotebook
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rednotebook
-Version:        2.22
+Version:        2.29.6
 Release:        0
 Summary:        Graphical diary and journal
 # See note at the end of README: code is using some LGPL-3.0+ module, so the resulting work is GPL-3.0+.
