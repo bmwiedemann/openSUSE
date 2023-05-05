@@ -408,4 +408,12 @@ Disable rpath-install and silent-rules while configure.</comment>
   * Add interface for request/subrequest call depth tracking</comment>
     <requestid>1074014</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>cc1e4f807a159cc9648d8a8d255618b0</srcmd5>
+    <version>0.14.1</version>
+    <time>1683295029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084733</requestid>
+  </revision>
 </revisionlist>
