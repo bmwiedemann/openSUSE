@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  5 07:18:46 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Enable iscsi and nbd
+- Small spec file cleanup
+
+-------------------------------------------------------------------
 Fri Mar 17 16:46:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.34:

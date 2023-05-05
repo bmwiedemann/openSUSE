@@ -35,9 +35,12 @@ License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://git.kernel.dk/?p=fio.git;a=summary
 Source:         https://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
+BuildRequires:  cunit-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  libiscsi-devel
+BuildRequires:  libnbd-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -84,16 +87,14 @@ testers workstation whereas fio would be installed on the server.
 
 %build
 sed -i "s|%{_bindir}/bash|/bin/bash|g" tools/genfio
-sed -i "s|-O3||g" Makefile
+sed -i "s|-O3|%{optflags}|g" Makefile
 # Not autotools configure
 ./configure \
   --enable-gfio \
+  --enable-libiscsi \
+  --enable-libnbd \
   --disable-native
-make \
-  %{?_smp_mflags} \
-  V=1 \
-  OPTFLAGS="%{optflags}" \
-  CC="cc"
+%make_build
 
 %install
 %make_install \
@@ -107,7 +108,7 @@ rm %{buildroot}%{_bindir}/fio-histo-log-pctiles.py
 sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/' %{buildroot}%{_bindir}/fio*
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %files
 %license COPYING MORAL-LICENSE
