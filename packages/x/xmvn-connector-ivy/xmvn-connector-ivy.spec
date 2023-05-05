@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global subname connector-ivy
 %bcond_with tests
 Name:           %{parent}-%{subname}
-Version:        4.0.0~20220302.6a60be3
+Version:        4.0.0~20220623.8da91ea
 Release:        0
 Summary:        XMvn Connector for Apache Ivy
 License:        Apache-2.0

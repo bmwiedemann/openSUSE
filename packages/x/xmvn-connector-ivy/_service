@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/fedora-java/xmvn-connector-ivy.git</param>
-		<param name="revision">6a60be35be44cf67d0832c6758c0cd1ca09f5318</param>
+		<param name="revision">8da91ea478427a4d241949ab5ca240cc983fde0f</param>
 		<param name="versionformat">4.0.0~%cd.%h</param>
 	</service>
 	<service name="recompress" mode="disabled">

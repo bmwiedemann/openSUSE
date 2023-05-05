@@ -15,4 +15,12 @@
     <comment>appease darix</comment>
     <requestid>989089</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d2e8fb99c4426013251251fe668241ea</srcmd5>
+    <version>4.0.0~20220623.8da91ea</version>
+    <time>1683295147</time>
+    <user>dimstar_suse</user>
+    <comment>more recent git snapshot</comment>
+    <requestid>1084990</requestid>
+  </revision>
 </revisionlist>
