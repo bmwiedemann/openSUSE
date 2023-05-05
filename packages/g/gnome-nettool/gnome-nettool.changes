@@ -1,54 +1,54 @@
 -------------------------------------------------------------------
+Thu May  4 22:15:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop no longer used _service and _servicedata files.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
 Mon Apr 11 13:58:18 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
-- Removed second Source from spec file, fixed indention of changes file to conform to GNOME-standards.  
+- Removed second Source from spec file, fixed indention of changes
+  file to conform to GNOME-standards.
 
 -------------------------------------------------------------------
 Fri Apr  8 19:32:49 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
-- Updated to version 42.0 
-- Changes since 3.8.1: 
-- Add AppData file for Software Center (#788358, GermÃ¡n Poo-CaamaÃ±o).
-- Add Galician translations for help pages (Fran Dieguez).
-- Add GenericName into .desktop file (#754205, GermÃ¡n Poo-CaamaÃ±o).
-- Add Language headers to po files (Piotr DrÄ…g).
-- Add translator comments to the .desktop file (Piotr DrÄ…g).
-- Add new network interface type: Infiniband (#768235, Dominique Leuenberger).
-- Add meson build (#783608, Tim-Philipp MÃ¼ller).
-- Added friulian commits (Fabio Tomat).
-- Change Finnish translation team web page to l10n.gnome.org (Timo Jyrinki).
-- Comment invalid <category> in DOAP file to pass git pre-receive hook (Andre Klapper).
-- Doap category deprecated (Olav Vitters).
-- Doap: Add <programming-language> (Piotr DrÄ…g).
-- Doap: Update URLs (Piotr DrÄ…g).
-- Extend comment to clarify what Mailbox Exchange (MX) means (#763957, GermÃ¡n Poo-CaamaÃ±o).
-- Fix .desktop in Nepali translation (Piotr DrÄ…g).
-- Fix GermÃ¡nâ€™s email address in AppData (Piotr DrÄ…g).
-- Fix Icon in Malayalam translation (Piotr DrÄ…g).
-- Fix Keywords in Icelandic translation (Piotr DrÄ…g).
-- Fix bgo709134 - drawing issue in ping graph (Scott Reeves).
-- Fix broken keyword translation (missing semicolon at end) (Piotr DrÄ…g).
-- Fix broken markup in Hungarian user docs translation (Andre Klapper).
-- Fix broken ne translation (Andre Klapper).
-- Fix scalable icon (AsciiWolf).
-- Fix typos in help file (Anders Jonsson).
-- Fix user-after-free variable (#753184, GermÃ¡n Poo-CaamaÃ±o).
-- Fix a copy-paste mistake (Piotr DrÄ…g).
-- Fix gschema file remove (#788309, IÃ±igo MartÃ­nez).
-- Fix missing translations (#788309, IÃ±igo MartÃ­nez).
-- Fixes to Catalan translation (Jordi Mas).
-- Help: Remove useless file (Piotr DrÄ…g).
-- Icon: Provide a symbolic variant of the app icon (#747051, Jakub Steiner).
-- Initial Hungarian translation (BalÃ¡zs Ãšr).
-- Merge tag 'gnome-nettool-3-8-1' (Scott Reeves).
-- Move a comment one line down so gettext picks it up (Piotr DrÄ…g).
-- Replace Bugzilla by Gitlab URL in DOAP file (Andre Klapper).
-- Replace Bugzilla link with link to GitLab (Andre Klapper).
-- Update AppData to modern format (#788358, Piotr DrÄ…g).
-- Migrate from Intltool to Gettext (#788309, IÃ±igo MartÃ­nez).
-- Remove intltool markers from AppData (Piotr DrÄ…g).
-- Use LINGUAS file for help (#794455, Piotr DrÄ…g).
-- Use modern metainfo location (Piotr DrÄ…g).
+- Update to version 42.0:
+  + Add AppData file for Software Center.
+  + Add GenericName into .desktop file.
+  + Add Language headers to po files.
+  + Add translator comments to the .desktop file.
+  + Add new network interface type: Infiniband.
+  + Add meson build.
+  + Comment invalid <category> in DOAP file to pass git pre-receive
+    hook.
+  + Doap category deprecated.
+  + Doap: Add <programming-language>.
+  + Doap: Update URLs.
+  + Extend comment to clarify what Mailbox Exchange (MX) means.
+  + Fix bgo#709134: drawing issue in ping graph.
+  + Fix broken keyword translation (missing semicolon at end).
+  + Fix broken markup in Hungarian user docs translation.
+  + Fix broken ne translation.
+  + Fix scalable icon.
+  + Fix typos in help file.
+  + Fix user-after-free variable.
+  + Fix a copy-paste mistake.
+  + Fix gschema file remove.
+  + Fix missing translations.
+  + Help: Remove useless file.
+  + Icon: Provide a symbolic variant of the app icon.
+  + Merge tag 'gnome-nettool-3-8-1'.
+  + Move a comment one line down so gettext picks it up.
+  + Replace Bugzilla by Gitlab URL in DOAP file.
+  + Replace Bugzilla link with link to GitLab.
+  + Update AppData to modern format.
+  + Migrate from Intltool to Gettext.
+  + Remove intltool markers from AppData.
+  + Use LINGUAS file for help.
+  + Use modern metainfo location.
+  + Updated translations.
+
 -------------------------------------------------------------------
 Mon Sep 20 19:49:07 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 

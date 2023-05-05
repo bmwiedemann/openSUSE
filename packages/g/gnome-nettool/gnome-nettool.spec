@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nettool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,8 +53,7 @@ tools, like ping, netstat, ifconfig, whois, traceroute, and finger.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
@@ -68,7 +67,7 @@ NOCONFIGURE=1 ./autogen.sh
 # Note: I guess X-SuSE-Core-System is not the best thing for the non-GNOME menu, but we need something for the build to work. Oh well...
 %suse_update_desktop_file -r gnome-nettool GNOME GTK System X-SuSE-Core-System
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}/%{_datadir}
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
