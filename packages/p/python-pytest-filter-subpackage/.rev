@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>927091</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64751be00159ab6dc4e051e3f27fab82</srcmd5>
+    <version>0.1.2</version>
+    <time>1683299569</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.2:
+  * Fixed bug that caused ``-P time`` to also match
+    ``package.timeseries``. [#7]
+  * Dropped Python 3.6 support.
+- drop fix-doctestplus-count.patch (upstream)</comment>
+    <requestid>1084905</requestid>
+  </revision>
 </revisionlist>
