@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildArch:      noarch
 Requires:       coreutils
 Requires:       sudo
+Requires:       pciutils
 %{?systemd_ordering}
 
 %description
