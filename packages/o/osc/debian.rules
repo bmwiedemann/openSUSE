@@ -1,17 +1,27 @@
 #!/usr/bin/make -f
 # Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
 
 export PYBUILD_NAME=osc
 
 %:
 	dh $@ --with python3 --buildsystem=pybuild
 
+override_dh_auto_build:
+	dh_auto_build
+	PYTHONPATH=. argparse-manpage \
+    --output=osc.1 \
+    --module=osc.commandline \
+    --function=get_parser \
+    --project-name=osc \
+    --author="Contributors to the osc project. See the project's GIT history for the complete list." \
+    --url="https://github.com/openSUSE/osc/"
+
 override_dh_auto_install:
 	dh_auto_install
-	install -Dm0644 contrib/complete.csh debian/tmp/etc/profile.d/osc.csh
-	install -Dm0644 contrib/complete.sh debian/tmp/etc/bash_completion.d/osc.sh
-	install -Dm0755 contrib/osc.complete debian/tmp/usr/lib/osc/complete
+	install -Dm0644 contrib/complete.csh debian/osc/etc/profile.d/osc.csh
+	install -Dm0644 contrib/complete.sh debian/osc/etc/bash_completion.d/osc.sh
+	install -Dm0755 contrib/osc.complete debian/osc/usr/lib/osc/complete
 
 
 override_dh_auto_test:

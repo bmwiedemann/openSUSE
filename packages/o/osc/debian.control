@@ -1,10 +1,11 @@
 Source: osc
-Priority: extra
+Priority: optional
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Build-Depends:
     debhelper (>= 10),
     dh-python,
     python3-all (>=3.6),
+    python3-argparse-manpage,
     python3-cryptography,
     python3-setuptools,
     python3-urllib3
@@ -30,4 +31,4 @@ Recommends:
     sudo,
     xdg-utils
 Description: Command-line client for the Open Build Service
-    OpenSUSE Commander is a command-line client for the Open Build Service.
+ OpenSUSE Commander is a command-line client for the Open Build Service.

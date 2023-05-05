@@ -1677,4 +1677,28 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1078423</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>31e24df5e84152310c56d929ad143cd3</srcmd5>
+    <version>1.1.2</version>
+    <time>1683295060</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.1.2
+  - Command-line:
+    - Add '--buildtool-opt' option passing options to underlying rpmbuild to the 'build' command
+    - Fix 'diff' command to support diffing selected files only
+    - Identify inherited packages in the 'dependson' command output
+    - Bring the '--debug' option back to the 'buildinfo' command
+    - Fix 'buildhistory' command by setting the type of the '--limit' option to int
+  - Library:
+    - Fix a traceback when failed to unlock a keyring
+    - Don't retry on 400 HTTP status code in core.server_diff()
+    - Clean-up the '.old' folder if an exception happens
+    - Document 'popt' attribute in the _link template
+    - Fix build.get_repo() to return only directory that contains 'repodata/repomd.xml'
+  - Connection:
+    - Retry on receiving the following HTTP status codes: 400, 500, 502, 503, 504
+    - Allow disabling retry on 400 HTTP status code
+    - Fix urlgrab to skip mirrors with invalid scheme</comment>
+    <requestid>1084818</requestid>
+  </revision>
 </revisionlist>
