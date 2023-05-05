@@ -48,4 +48,12 @@
     <comment>Fix build with modello-2.0.0</comment>
     <requestid>977032</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>4323a5d4bc348716d616a789dba4f021</srcmd5>
+    <version>3.6.0</version>
+    <time>1683295118</time>
+    <user>dimstar_suse</user>
+    <comment>multibuild</comment>
+    <requestid>1084985</requestid>
+  </revision>
 </revisionlist>
