@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri May 05 05:10:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.29.0:
+  * feat(ci delete): add dry-run flag to ci delete
+  * fix(ask git): do not show prompt when no commands
+  * feat: add command that generates Git commands from natural
+    language
+  * docs: add OAuth to authentication instructions
+  * feat(auth login): Add support for OAuth2
+  * feat: update go and dependency versions
+  * fix(spinner): Bump spinner library version
+  * refactor: autogenerate config stub from lockfile
+  * feat(incident): add incident reopen command
+  * fix: remove executable flag from non-executables
+  * fix: do not enforce argument for 'ci delete' when using filter
+  * refactor(release): update `release download` cmd to remove
+    `external`
+  * refactor: move issue/close to issuable/close
+  * test: add some test to improve coverage
+  * docs: update godoc for function
+
+-------------------------------------------------------------------
 Mon Apr 24 09:39:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording and duplicate info (present in License field).
