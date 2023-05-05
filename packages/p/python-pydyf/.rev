@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>1032129</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84d7ea85516964fd20782e475a3b6a03</srcmd5>
+    <version>0.6.0</version>
+    <time>1683295080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Add an option to use compressed object streams for PDF 1.5+,
+    with financial support from Code &amp; Co.
+  * Add new text operators
+  * Clean and fix documentation</comment>
+    <requestid>1084857</requestid>
+  </revision>
 </revisionlist>
