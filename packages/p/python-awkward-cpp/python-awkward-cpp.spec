@@ -17,7 +17,7 @@
 
 
 Name:           python-awkward-cpp
-Version:        8
+Version:        15
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
@@ -28,14 +28,15 @@ Source99:       awkward-cpp.rpmlintrc
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
-BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.1.3}
+BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.2}
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.14.5
+Requires:       python-numpy >= 1.17.0
 Provides:       python-awkward_cpp = %{version}-%{release}
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.14.5}
+BuildRequires:  %{python_module numpy >= 1.17.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -54,7 +55,6 @@ It is not useful on its own, only as a dependency for awkward.
 
 %package -n awkward-devel
 Summary:        Header files for using awkward in C/C++ code
-BuildArch:      noarch
 
 %description -n awkward-devel
 Awkward Array is a library for nested, variable-sized data, including
@@ -69,12 +69,13 @@ awkward.
 
 %build
 %pyproject_wheel
+%cmake -S ../header-only
+%cmake_build
 
 %install
 %pyproject_install
+%cmake_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-mkdir -p %{buildroot}%{_includedir}/
-cp -r header-only/awkward %{buildroot}%{_includedir}/
 
 %check
 %pytest_arch
@@ -88,6 +89,9 @@ cp -r header-only/awkward %{buildroot}%{_includedir}/
 %files -n awkward-devel
 %doc README.md
 %license LICENSE
-%{_includedir}/awkward
+%{_includedir}/builder-options
+%{_includedir}/growable-buffer
+%{_includedir}/layout-builder
+%{_libdir}/cmake/awkward-headers
 
 %changelog

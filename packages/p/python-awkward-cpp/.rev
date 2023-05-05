@@ -44,4 +44,19 @@
   * Add parse-by-parts example</comment>
     <requestid>1064235</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a03e28ebd585393c535091cc098e7fc</srcmd5>
+    <version>15</version>
+    <time>1683295096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 15:
+  * Add parse-by-parts example (#556, #562)
+  * Support parse number as string (#564, #589)
+  * Add kFormatSingleLineArray for PrettyWriter (#577)
+  * Added optional support for trailing commas (#584)
+  * Added filterkey and filterkeydom examples (#615)
+  * Added npm docs (#639)
+  * Allow options for writing and parsing NaN/Infinity (#641)</comment>
+    <requestid>1084909</requestid>
+  </revision>
 </revisionlist>

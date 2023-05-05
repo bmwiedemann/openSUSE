@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  3 21:28:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 15:
+  * Add parse-by-parts example (#556, #562)
+  * Support parse number as string (#564, #589)
+  * Add kFormatSingleLineArray for PrettyWriter (#577)
+  * Added optional support for trailing commas (#584)
+  * Added filterkey and filterkeydom examples (#615)
+  * Added npm docs (#639)
+  * Allow options for writing and parsing NaN/Infinity (#641)
+
+-------------------------------------------------------------------
 Fri Feb 10 12:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 8:
