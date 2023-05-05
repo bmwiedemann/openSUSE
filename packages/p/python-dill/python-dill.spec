@@ -17,6 +17,7 @@
 
 
 %global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-dill
 Version:        0.3.6
 Release:        0
@@ -26,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
 Source:         https://github.com/uqfoundation/dill/archive/dill-%{version}.tar.gz#/dill-%{version}.tar.gz
 BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

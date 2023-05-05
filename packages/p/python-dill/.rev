@@ -156,4 +156,12 @@
     <comment>- restore installation of dbm module on SLE15 and older</comment>
     <requestid>1066285</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>efb4f41c53e72c20bda9d6c9ff18cc40</srcmd5>
+    <version>0.3.6</version>
+    <time>1683295051</time>
+    <user>dimstar_suse</user>
+    <comment>- build for python 3.7+ only</comment>
+    <requestid>1084776</requestid>
+  </revision>
 </revisionlist>

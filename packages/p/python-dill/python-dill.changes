@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  4 15:20:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build for python 3.7+ only
+
+-------------------------------------------------------------------
 Thu Feb 16 23:13:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restore installation of dbm module on SLE15 and older
