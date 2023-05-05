@@ -1,7 +1,7 @@
 #
 # spec file for package libfastjson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define somajor 4
 Name:           libfastjson
-Version:        0.99.9
+Version:        1.2304.0
 Release:        0
 Summary:        JSON parsing library, a fork of json-c
 License:        MIT

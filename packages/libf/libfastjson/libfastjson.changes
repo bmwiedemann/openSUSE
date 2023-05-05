@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  3 20:13:04 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 1.2304.0:
+  * CVE-2020-12762: integer overflow and out-of-bounds write via
+    large JSON file (boo#1171479)
+
+-------------------------------------------------------------------
 Mon Jun 14 14:13:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic (no effect with --disable-static).
