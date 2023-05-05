@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:43:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Sat Feb  5 12:36:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use the qt6 macros to build qtkeychain-qt6
