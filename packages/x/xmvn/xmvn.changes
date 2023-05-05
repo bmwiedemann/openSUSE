@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 17:05:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Wed May  3 09:26:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.2.0

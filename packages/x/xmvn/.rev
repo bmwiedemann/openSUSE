@@ -103,4 +103,12 @@
     <comment>4.2.0</comment>
     <requestid>1084306</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>987b5115dd6895179722d377202da08d</srcmd5>
+    <version>4.2.0</version>
+    <time>1683295064</time>
+    <user>dimstar_suse</user>
+    <comment>multibuild</comment>
+    <requestid>1084820</requestid>
+  </revision>
 </revisionlist>
