@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  5 09:30:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Drop python 2 and 3.4 support
+  * Add Python 3.9, 3.10, 3.11
+  * Add mypyc native int types ia64, i32, i16 and u8
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

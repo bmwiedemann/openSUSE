@@ -33,4 +33,15 @@
     <comment></comment>
     <requestid>1081855</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b9e58722223c2d75d8b54bdb6d891ff</srcmd5>
+    <version>1.0.0</version>
+    <time>1683295153</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Drop python 2 and 3.4 support
+  * Add Python 3.9, 3.10, 3.11
+  * Add mypyc native int types ia64, i32, i16 and u8</comment>
+    <requestid>1085015</requestid>
+  </revision>
 </revisionlist>
