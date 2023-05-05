@@ -69,8 +69,8 @@ BuildRequires:  readline-devel
 BuildRequires:  slang-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xz
+BuildRequires:  pkgconfig(x11)
 Requires(pre):  permissions
 Recommends:     %{name}-lang = %{version}
 Enhances:       fish

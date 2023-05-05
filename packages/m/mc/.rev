@@ -812,4 +812,12 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
     + Support of contour terminal emulator</comment>
     <requestid>1073958</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>5f533e50316e04ef0f4e01e41257e0e1</srcmd5>
+    <version>4.8.29</version>
+    <time>1683295013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084576</requestid>
+  </revision>
 </revisionlist>
