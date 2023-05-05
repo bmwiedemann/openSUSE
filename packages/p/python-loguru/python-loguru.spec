@@ -21,18 +21,16 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-loguru
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Python logging component with a simple interface
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM loguru-fix-repr-tests.patch https://github.com/Delgan/loguru/commit/4fe21f6 -- Fix "repr()" tests failing on Python 3.11 and Python 3.10.6
-Patch1:         loguru-fix-repr-tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/Delgan/loguru/commit/5b77724ca75aa8f4b1c8866e0b786c3cbe30ca99
-Patch2:         python311.patch
 BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

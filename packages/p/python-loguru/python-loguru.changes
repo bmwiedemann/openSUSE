@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri May  5 12:35:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Update `InterceptHandler` recipe to make it compatible with
+    Python 3.11 (#654).
+  * Add a new `watch` optional argument to file sinks in order to
+    automatically re-create possibly deleted or changed file
+    (#471).
+  * Make `patch()` calls cumulative instead of overriding the
+    possibly existing patching function (#462).
+  * Make sinks added with `enqueue=True` and `catch=False` still
+    process logged messages in case of internal exception (#833).
+  * Avoid possible deadlocks caused by re-using the logger inside
+    a sink, a signal handler or a `__del__` method. Since the
+    logger is not re-entrant, such misuse will be detected and
+    will now generate a `RuntimeError` (#712, thanks
+    @jacksmith15).
+  * Fix file sink rotation using an aware `datetime.time` for
+    which the timezone was ignored (#697).
+  * Fix logs colorization not automatically enabled for Jupyter
+    Notebook and Google Colab (#494).
+  * Fix logs colorization not automatically enabled for Github
+    Actions and others CI platforms (#604).
+  * Fix `logger.complete()` possibly hanging forever when
+    `enqueue=True` and `catch=False` if internal thread killed
+    due to `Exception` raised by sink (#647).
+  * Fix incompatibility with `freezegun` library used to simulate
+    time (#600).
+  * Raise exception if `logger.catch()` is used to wrap a class
+    instead of a function to avoid unexpected behavior (#623).
+- drop python311.patch, loguru-fix-repr-tests.patch: upstream
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
