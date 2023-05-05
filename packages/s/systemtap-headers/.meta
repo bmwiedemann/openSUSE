@@ -1,8 +1,0 @@
-<package name="systemtap-headers" project="openSUSE:Factory">
-  <title>Instrumentation System</title>
-  <description>SystemTap is an instrumentation system for systems running Linux 2.6.
-Developers can write instrumentation to collect data on the operation
-of the system.</description>
-  <devel project="openSUSE:Factory" package="systemtap"/>
-  <bcntsynctag>systemtap</bcntsynctag>
-</package>
