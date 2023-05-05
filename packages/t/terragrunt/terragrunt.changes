@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 05 10:42:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.9:
+  * Fix parsing output when AWS CSM is enabled (#2554)
+  * Moved issue template files to ISSUE_TEMPLATE directory (#2555)
+  * Add issues templates (#2553)
+
+-------------------------------------------------------------------
 Tue May 02 05:32:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.8:
