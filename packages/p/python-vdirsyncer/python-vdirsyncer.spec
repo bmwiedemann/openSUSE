@@ -1,7 +1,7 @@
 #
 # spec file for package python-vdirsyncer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ Recommends:     python-requests-oauthlib
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module aioresponses}
 BuildRequires:  %{python_module aiostream}
 BuildRequires:  %{python_module click-log >= 0.3}
 BuildRequires:  %{python_module click-threading >= 0.2}
@@ -57,10 +58,10 @@ BuildRequires:  %{python_module hypothesis >= 5.0.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-localserver}
-BuildRequires:  %{python_module pytest-subtesthack}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.4.40}
+BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
 Provides:       vdirsyncer = %{version}
@@ -98,7 +99,8 @@ install -Dpm 0644 %{SOURCE2} %{buildroot}%{_userunitdir}/vdirsyncer-%{$python_bi
 export DETERMINISTIC_TESTS=true
 # test_verbosity - click changed syntax and returns different quotes
 # gh#pimutils/vdirsyncer#654 -- tests temporarily switched off
-%pytest -k 'not test_legacy_status and not test_open_graphical_browser and not test_verbosity' || /bin/true
+# request_ssl - requires network
+%pytest -k 'not test_legacy_status and not test_open_graphical_browser and not test_verbosity and not request_ssl'
 
 %post
 update-alternatives --install %{_bindir}/vdirsyncer vdirsyncer %{_bindir}/vdirsyncer-%{python_bin_suffix} %{python_version_nodots} \

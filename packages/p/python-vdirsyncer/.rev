@@ -205,4 +205,12 @@
 </comment>
     <requestid>1043983</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b542f067283f1dd2be5c49a8949e4b90</srcmd5>
+    <version>0.19.0</version>
+    <time>1683295113</time>
+    <user>dimstar_suse</user>
+    <comment>- fix and reenable tests</comment>
+    <requestid>1084913</requestid>
+  </revision>
 </revisionlist>
