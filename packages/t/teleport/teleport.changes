@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 05 05:09:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.3.2:
+  * Release 12.3.2 (#25647)
+  * Update e-ref (#25636)
+  * docs: correct gcp install headers (#25426)
+  * Define a new DeviceEvent proto with the usual embeds (#25353)
+    (#25555)
+  * Use new device event layout in Web UI (#25355) (#25558)
+  * [v12] Add specific message for network errors on app launch
+    (Web UI) (#25606)
+  * [v12] Add missing user groups entry to getEmptyResource state.
+    (#25612)
+  * Do not change proto user on make grpc (#24847)
+  * Update metrics docs (#25591)
+  * Make ProtoPostgres support PROXY protocol (#25529)
+  * [v12] Support UI methods for user groups, label match user
+    groups in API. (#25578)
+  * [v12] docs: update version (#25577)
+  * [v12] docs: update CloudHSM docs (#25570)
+  * Web:Discover Refactor resource selector screen (#23018)
+    (#25556)
+  * [v12] Team plan CTAs (#25073) (#25572)
+  * [v12] Add integrations access rule to user context (#25516)
+  * Disallow OktaAssignment deletion from tctl. (#25463)
+  * [v12] New Usage Events (#25493)
+  * add billing to navigation (#25192) (#25487)
+  * [v12] banner dependencies (#25194)
+  * [v12] Document HA for Access Request plugins (#25551)
+  * Capitalize Teleport in command/args (#25545)
+  * Remove Origin from cloud converters (#24977) (#25459)
+  * Updates distroless Dockerfile to handle fips realeases (#25451)
+
+-------------------------------------------------------------------
 Wed May 03 04:48:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.3.1:
