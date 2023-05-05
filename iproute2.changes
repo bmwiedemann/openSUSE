@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 07:20:24 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 6.3:
+  * New release of iproute2 corresponding to the 6.3 kernel.
+    No large feature improvements only incremental improvements to
+    the bridge mdb support, mostly just bug fixes.
+- Rebase patches.
+
+-------------------------------------------------------------------
 Mon Mar 20 21:21:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete xfrm-support-displaying-transformations-used-for-Mob.patch
