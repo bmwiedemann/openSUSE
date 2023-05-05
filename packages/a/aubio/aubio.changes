@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:19:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Mar 14 16:44:15 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Replace ffmpeg libs pkgconfig build requires with actual
