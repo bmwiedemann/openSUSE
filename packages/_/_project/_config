@@ -394,6 +394,7 @@ FileProvides: /usr/bin/python2.7 python-base
 FileProvides: /usr/bin/python3 python310-base
 FileProvides: /usr/bin/python3.10 python310-base
 FileProvides: /usr/bin/python3.11 python311-base
+FileProvides: /usr/bin/python3.12 python312-base
 FileProvides: /usr/bin/python3.8 python38-base
 FileProvides: /usr/bin/python3.9 python39-base
 FileProvides: /usr/bin/qemu-img qemu-tools
@@ -1862,7 +1863,7 @@ BuildFlags: onlybuild:geany
 BuildFlags: onlybuild:geoclue2
 BuildFlags: onlybuild:geocode-glib
 BuildFlags: onlybuild:gettext-runtime
-BuildFlags: onlybuild:gettext-runtime-mini
+BuildFlags: onlybuild:gettext-runtime:gettext-runtime-mini
 BuildFlags: onlybuild:ghostscript
 BuildFlags: onlybuild:ghostscript-fonts
 BuildFlags: onlybuild:ghostscript:mini
@@ -2012,7 +2013,7 @@ BuildFlags: onlybuild:kitemviews
 BuildFlags: onlybuild:kmod
 BuildFlags: onlybuild:knotifications
 BuildFlags: onlybuild:krb5
-BuildFlags: onlybuild:krb5-mini
+BuildFlags: onlybuild:krb5:krb5-mini
 BuildFlags: onlybuild:kservice
 BuildFlags: onlybuild:kwallet
 BuildFlags: onlybuild:kwidgetsaddons
@@ -2275,7 +2276,7 @@ BuildFlags: onlybuild:libva
 BuildFlags: onlybuild:libva:gl
 BuildFlags: onlybuild:libvdpau
 BuildFlags: onlybuild:libverto
-BuildFlags: onlybuild:libverto:libverto-libev.spec
+BuildFlags: onlybuild:libverto:libverto-libev
 BuildFlags: onlybuild:libvisual
 BuildFlags: onlybuild:libvoikko
 BuildFlags: onlybuild:libvorbis
@@ -2347,9 +2348,9 @@ BuildFlags: onlybuild:meson
 BuildFlags: onlybuild:metis:serial
 BuildFlags: onlybuild:mingw32-binutils:mingw32-cross-binutils
 BuildFlags: onlybuild:mingw32-cross-cmake
-BuildFlags: onlybuild:mingw32-cross-gcc
-BuildFlags: onlybuild:mingw32-cross-gcc-bootstrap
-BuildFlags: onlybuild:mingw32-cross-pkgconf
+BuildFlags: onlybuild:mingw32-gcc:mingw32-cross-gcc
+BuildFlags: onlybuild:mingw32-gcc:mingw32-cross-gcc-bootstrap
+BuildFlags: onlybuild:mingw32-pkgconf:mingw32-cross-pkgconf
 BuildFlags: onlybuild:mingw32-cross-wine
 BuildFlags: onlybuild:mingw32-filesystem
 BuildFlags: onlybuild:mingw32-headers
@@ -3254,8 +3255,8 @@ BuildFlags: onlybuild:systemd-presets-common-SUSE
 BuildFlags: onlybuild:systemd-rpm-macros
 BuildFlags: onlybuild:systemd:mini
 BuildFlags: onlybuild:systemtap
-BuildFlags: onlybuild:systemtap-dtrace
-BuildFlags: onlybuild:systemtap-headers
+BuildFlags: onlybuild:systemtap:systemtap-dtrace
+BuildFlags: onlybuild:systemtap:systemtap-headers
 BuildFlags: onlybuild:sysuser-tools
 BuildFlags: onlybuild:sysvinit
 BuildFlags: onlybuild:t1utils
