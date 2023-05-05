@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  3 08:59:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions with an outline of performance
+  to support the user comparing similar packages, per
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
 Wed May  3 08:17:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup spec file for factory submission

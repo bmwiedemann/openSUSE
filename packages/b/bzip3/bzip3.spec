@@ -20,7 +20,7 @@
 Name:           bzip3
 Version:        1.3.0
 Release:        0
-Summary:        Spiritual successor to BZip2
+Summary:        Compressor with Burrows–Wheeler transform and PPM context modeling
 License:        LGPL-3.0-or-later AND BSD-2-Clause
 URL:            https://github.com/kspalaiologos/bzip3
 Source0:        https://github.com/kspalaiologos/bzip3/releases/download/%{version}/bzip3-%{version}.tar.gz
@@ -30,17 +30,25 @@ BuildRequires:  gcc
 %{?suse_build_hwcaps_libs}
 
 %description
-A better, faster and stronger spiritual successor to BZip2. Features higher
-compression ratios and better performance thanks to a order-0 context mixing
-entropy coder, a fast Burrows-Wheeler transform code making use of suffix
-arrays and a RLE with Lempel Ziv+Prediction pass based on LZ77-style string
-matching and PPM-style context modeling.
+A compressor featuring improved compression ratios and performance
+over bzip2 thanks to a order-0 context mixing entropy coder, a
+Burrows-Wheeler transform code making use of suffix arrays, a RLE
+with Lempel Ziv+Prediction pass based on LZ77-style string matching
+and PPM-style context modeling.
+
+bzip3 1.3.0 can outperform zstd 1.5.5 on specific data sets, e.g.
+15%% better ratio for same compress time on source code, but has
+time trouble with e.g. object files.
 
 %package -n %{libname}
-Summary:        BZip3 - shared libraries
+Summary:        Compressor with Burrows–Wheeler transform and PPM context modeling
 
 %description -n %{libname}
-Shared library files for BZip3.
+A compressor featuring improved compression ratios and performance
+over bzip2 thanks to a order-0 context mixing entropy coder, a
+Burrows-Wheeler transform code making use of suffix arrays, a RLE
+with Lempel Ziv+Prediction pass based on LZ77-style string matching
+and PPM-style context modeling.
 
 %package devel
 Summary:        Development files for libbzip3
@@ -54,7 +62,6 @@ Development headers and library files for BZip3.
 
 %build
 %configure \
-  --with-pic \
   --with-pthread \
   --disable-arch-native \
   --disable-static \
