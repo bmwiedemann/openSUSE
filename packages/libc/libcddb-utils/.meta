@@ -1,6 +1,0 @@
-<package name="libcddb-utils" project="openSUSE:Factory">
-  <title>CDDB Access Library Utilities</title>
-  <description>The libcddb-utils package
-</description>
-  <devel project="openSUSE:Factory" package="libcddb"/>
-</package>
