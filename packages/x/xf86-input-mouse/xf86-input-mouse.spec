@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-mouse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-input-mouse
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        Mouse input driver for the Xorg X server
 License:        MIT

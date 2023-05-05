@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  5 09:16:20 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.9.5
+  * sun_mouse: include more required system headers
+  * sun_mouse: Add RelToAbs option to convert relative events to absolute
+  * sun_mouse: remove entry from vuidMouseList in DEVICE_CLOSE
+  * Remove "All rights reserved" from Oracle copyright notices
+  * Rearrange includes to fix build on OmniOS. Include unistd.h for ioctl(2).
+
+-------------------------------------------------------------------
 Wed Nov  2 08:07:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.9.4
