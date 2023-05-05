@@ -1,7 +1,7 @@
 #
 # spec file for package gyp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 SUSE LINUX Products GmbH, Nurenberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gyp
-Version:        0+git.20200512
+Version:        0+git.20230301
 Release:        0
 Summary:        Generate Your Projects
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 Requires:       ninja
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       gyp = %{version}
 Obsoletes:      gyp < %{version}
 BuildArch:      noarch

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 05 12:23:53 UTC 2023 - martin.sirringhaus@suse.com
+
+- Update to version 0+git.20230301:
+  * Add SpectreMitigation attribute for msvs
+  * Import OrderedDict from collections, not collections_abc
+  * gyp: default to python3 if available
+  * MSVSVersion.py: add support for VS2019 and VS2022
+  * msvs_emulation.py: avoid string-int/float comparisons
+  * Fix python3 compatibility on windows
+  * msvs_emulation.py: allow skipping path normalization
+  * Use six.moves.collections_abc where appropriate (boo#1211137)
+  * Remove Travis integration, since GYP is now idle.
+
+-------------------------------------------------------------------
 Wed Apr 28 07:16:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Use obs service
