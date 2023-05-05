@@ -63,4 +63,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042975</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a0c5af4b259582b1f2208c76c0e7795</srcmd5>
+    <version>26.4.14</version>
+    <time>1683295026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.4.14:
+  - memory leak in the gcs gcomm backend fixed (tp_ object deleted
+    in GCommConn destructor)
+  - protonet.backend option deprecated since it only supports one
+    option, asio, and the option will be removed in future release.
+    Related, protonet.version is also deprecated
+  - deprecation message for socket.ssl_compression as SSL
+    compression cannot be enabled and the option will be removed in
+    future releases
+  - library could parse incorrect parameters as long as it had a
+    &quot;good&quot; prefix, i.e. evs.*, so fix prevents setting of invalid
+    option values
+  - parsing of ISO8601 durations previously accepted invalid
+    values, now fixed
+  - in addition to ISO8601 format, parsing durations now supports
+    real number representation</comment>
+    <requestid>1084718</requestid>
+  </revision>
 </revisionlist>

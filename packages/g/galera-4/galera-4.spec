@@ -1,7 +1,7 @@
 #
 # spec file for package galera-4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           galera-4
-Version:        26.4.13
+Version:        26.4.14
 Release:        0
 Summary:        Galera: a synchronous multi-master wsrep provider (replication engine)
 License:        GPL-2.0-only

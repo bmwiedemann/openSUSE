@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May  4 13:43:00 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 26.4.14:
+  - memory leak in the gcs gcomm backend fixed (tp_ object deleted
+    in GCommConn destructor)
+  - protonet.backend option deprecated since it only supports one
+    option, asio, and the option will be removed in future release.
+    Related, protonet.version is also deprecated
+  - deprecation message for socket.ssl_compression as SSL
+    compression cannot be enabled and the option will be removed in
+    future releases
+  - library could parse incorrect parameters as long as it had a
+    "good" prefix, i.e. evs.*, so fix prevents setting of invalid
+    option values
+  - parsing of ISO8601 durations previously accepted invalid
+    values, now fixed
+  - in addition to ISO8601 format, parsing durations now supports
+    real number representation
+
+-------------------------------------------------------------------
 Wed Dec  7 17:13:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 26.4.13:
