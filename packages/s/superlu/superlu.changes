@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  1 10:05:57 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix broken magic in HPC module file. This has been broken since:
+   Wed Apr 19 23:20:41 UTC 2023 - Christoph G <foss@grueninger.de>
+
+   - Fix two rpmlint warning.
+- Add rpmlintrc.
+
+-------------------------------------------------------------------
 Wed Apr 19 23:20:41 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Fix two rpmlint warning.

@@ -1,5 +1,5 @@
 #
-# spec file for package superlu
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -94,6 +94,7 @@ Source0:        %{pname}-%{version}.tar.gz
 # Tarball above is generated with the script below
 Source1:        get-tarball.sh
 Source2:        README.SUSE
+Source3:        superlu.rpmlintrc
 # PATCH-FIX-OPENSUSE superlu-remove-mc64ad.patch [bnc#796236]
 # The Harwell Subroutine Library (HSL) routine mc64ad.c have been removed
 # from the original sources for legal reasons. This patch disables the inclusion of
@@ -145,7 +146,7 @@ Requires:       %libname = %version
 Recommends:     %name-doc
 
 %description    devel
-SuperLU headers and libraries files needed for development
+SuperLU headers and libraries files needed for development %{with_hpc:(HPC variant)}
 
 %package        doc
 Summary:        Documentation for %name
@@ -221,7 +222,7 @@ cp FORTRAN/README README.fortran
 
 # TODO: is there any path to add for Matlab files?
 %hpc_write_modules_files
-
+#%Module1.0#####################################################################
 proc ModulesHelp { } {
 
 puts stderr " "
@@ -263,6 +264,7 @@ EOF
 %post -n %libname -p /sbin/ldconfig
 %postun -n %libname -p /sbin/ldconfig
 %else
+
 %post -n %libname
 /sbin/ldconfig -N %hpc_libdir
 
