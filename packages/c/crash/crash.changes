@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu May  4 13:33:22 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Fix build on SLE12:
+  * crash-gdb-gnulib-define-warndecl.patch: Provide a definition of
+    __warndecl() in the gnulib copy of cdefs.h.
+
+-------------------------------------------------------------------
+Thu May  4 12:37:04 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to crash 8.0.3
+  - Remove upstreamed patches:
+    * crash-EPPIC-extension-support-for-crash-8.x-gdb-10.x.patch
+    * crash-Add-RISCV64-framework-code-support.patch
+    * crash-RISCV64-Make-crash-tool-enter-command-line-and-suppo.patch
+    * crash-RISCV64-Add-dis-command-support.patch
+    * crash-RISCV64-Add-irq-command-support.patch
+    * crash-RISCV64-Add-bt-command-support.patch
+    * crash-RISCV64-Add-help-r-command-support.patch
+    * crash-RISCV64-Add-help-m-M-command-support.patch
+    * crash-RISCV64-Add-mach-command-support.patch
+    * crash-RISCV64-Add-the-implementation-of-symbol-verify.patch
+    * crash-define-EM_RISCV-fallback.patch
+    * gdb-10.2-Revert-gnulib-fix-stat-fstat-build-errors.patch
+    * gdb-10.2-gnulib-update-to-776af40e0.patch
+- Stop building the trace extension from the main package. The
+  extension is now built from the crash-trace source package.
+  - Remove crash-trace-2021-02-08.tar.bz2
+
+-------------------------------------------------------------------
 Fri Apr 21 13:07:00 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Fix ppc64le build with glibc 2.32+:

@@ -20,7 +20,6 @@
 %define whitepaper_version 2003
 %define scripts_version  2008-02-08
 %define gcore_version  2011-09-22
-%define trace_version  2021-02-08
 
 %if 0%{!?have_snappy:1}
 %if 0%{?suse_version} >= 1310
@@ -45,9 +44,6 @@
 %define build_gcore 0
 %endif
 
-# Not limited by architecture for now
-%define build_trace 1
-
 %define build_kmp 1
 %if 0%{?suse_version} <= 1500 && 0%{?suse_version} >= 1315
 # kernel is missing on 32bit SLE - cannot build a KMP
@@ -65,7 +61,7 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Source:         https://github.com/crash-utility/crash/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.gz
@@ -76,15 +72,13 @@ Source5:        gcore-%{gcore_version}.tar.bz2
 Source6:        Module.supported
 Source7:        https://ftp.gnu.org/gnu/gdb/gdb-10.2.tar.gz.sig
 Source8:        gnu.keyring
-Source9:        crash-trace-%{trace_version}.tar.bz2
 Source95:       get-kernel-flavors.sh
 Source96:       depmod.sh
 Source97:       mkinitrd.sh
 Source98:       %{name}-kmp-preamble
 Source99:       crash-rpmlintrc
 Source100:      %{name}-gdb-10.2.series
-Source101:      gdb-10.2-Revert-gnulib-fix-stat-fstat-build-errors.patch
-Source102:      gdb-10.2-gnulib-update-to-776af40e0.patch
+Source101:      %{name}-gdb-gnulib-define-warndecl.patch
 Patch1:         %{name}-make-emacs-default.diff
 Patch2:         %{name}-sles9-quirk.patch
 Patch4:         %{name}-sles9-time.patch
@@ -99,17 +93,6 @@ Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 Patch30:        %{name}-enable-zstd-support.patch
 Patch31:        %{name}-extensions-rule-for-defs.patch
-Patch32:        %{name}-EPPIC-extension-support-for-crash-8.x-gdb-10.x.patch
-Patch33:        %{name}-Add-RISCV64-framework-code-support.patch
-Patch34:        %{name}-RISCV64-Make-crash-tool-enter-command-line-and-suppo.patch
-Patch35:        %{name}-RISCV64-Add-dis-command-support.patch
-Patch36:        %{name}-RISCV64-Add-irq-command-support.patch
-Patch37:        %{name}-RISCV64-Add-bt-command-support.patch
-Patch38:        %{name}-RISCV64-Add-help-r-command-support.patch
-Patch39:        %{name}-RISCV64-Add-help-m-M-command-support.patch
-Patch40:        %{name}-RISCV64-Add-mach-command-support.patch
-Patch41:        %{name}-RISCV64-Add-the-implementation-of-symbol-verify.patch
-Patch42:        %{name}-define-EM_RISCV-fallback.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 Patch99:        %{name}-usrmerge.patch
 BuildRequires:  bison
@@ -216,25 +199,6 @@ Authors:
 
 %endif
 
-%if %build_trace
-
-%package trace
-Requires:       %{name} = %{version}
-Summary:        Trace extension for crash
-License:        GPL-2.0-or-later
-Group:          Development/Tools/Debuggers
-
-%description trace
-Crash extension to show or dump tracing information
-
-
-
-Authors:
---------
-    Lai Jiangshan  <laijs@cn.fujitsu.com>
-
-%endif
-
 %package %kmp_pkg
 Summary:        Memory driver for the crash utility
 License:        GPL-2.0-only
@@ -286,23 +250,12 @@ ln -s %{SOURCE1} .
 %patch30 -p1
 %endif
 ## GDB patches
-for f in %{S:100} %{S:101} %{S:102}; do
+for f in %{S:100} %{S:101}; do
     base=`basename "$f"`
     cp "$f" "${base#%{name}-}"
 done
 
 %patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
-%patch41 -p1
-%patch42 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}
@@ -311,8 +264,6 @@ cd -
 cd extensions
 ## gcore extension
 tar xfvj %{S:5}
-## crash-trace extension
-tar xfvj %{S:9}
 cd -
 cp %{S:3} .
 mkdir kbuild
@@ -359,9 +310,6 @@ install -m 0644 extensions/dminfo.so extensions/snap.so \
 %if %build_gcore
 install -m 0644 extensions/gcore.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
 %endif
-%if %build_trace
-install -m 0644 extensions/trace.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
-%endif
 %if 0%{?build_kmp}
 # memory driver module
 export INSTALL_MOD_PATH=$RPM_BUILD_ROOT
@@ -400,13 +348,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/crash/extensions/gcore.so
 %doc extensions/README.gcore
-%endif
-
-%if %build_trace
-
-%files trace
-%defattr(-,root,root)
-%{_libdir}/crash/extensions/trace.so
 %endif
 
 %changelog
