@@ -1,0 +1,6 @@
+<package name="python-onigurumacffi" project="openSUSE:Factory">
+  <title>Python cffi bindings for the oniguruma regex engine</title>
+  <description>python cffi bindings for the oniguruma regex engine</description>
+  <devel project="devel:languages:python" package="python-onigurumacffi"/>
+  <url>https://github.com/asottile/onigurumacffi</url>
+</package>
