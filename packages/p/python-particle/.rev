@@ -115,4 +115,12 @@
 - Disable python3.6 building, no longer supported by upstream.</comment>
     <requestid>1060616</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>49547c6f09e64cc06d43fb78e93cb191</srcmd5>
+    <version>0.22.0</version>
+    <time>1683295085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084805</requestid>
+  </revision>
 </revisionlist>

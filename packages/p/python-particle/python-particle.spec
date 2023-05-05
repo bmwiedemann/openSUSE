@@ -20,14 +20,12 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-particle
-Version:        0.21.1
+Version:        0.22.0
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/particle
 Source0:        https://files.pythonhosted.org/packages/source/p/particle/%{modname}-%{version}.tar.gz
-# Downloaded separately from github using _service file
-Source1:        tests.tar.xz
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -56,7 +54,6 @@ particle data tables and particle identification codes.
 
 %prep
 %setup -q -n %{modname}-%{version}
-%setup -q -D -n %{modname}-%{version} -a 1
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" src/particle/__main__.py
 
 %build
