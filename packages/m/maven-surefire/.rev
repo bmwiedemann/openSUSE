@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>975173</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>29436f2366311762cc1cbc482ea55c83</srcmd5>
+    <version>2.22.0</version>
+    <time>1683295119</time>
+    <user>dimstar_suse</user>
+    <comment>multibuild</comment>
+    <requestid>1084986</requestid>
+  </revision>
 </revisionlist>
