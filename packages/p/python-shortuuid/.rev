@@ -41,4 +41,14 @@
     <comment></comment>
     <requestid>1008862</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cb5858732f577eb3f86cacc326f2540</srcmd5>
+    <version>1.0.11</version>
+    <time>1683295083</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.11:
+  * Add Type hinting
+  * add py.typed (PEP 561)</comment>
+    <requestid>1084874</requestid>
+  </revision>
 </revisionlist>

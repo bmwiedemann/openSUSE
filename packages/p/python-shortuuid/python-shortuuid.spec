@@ -1,7 +1,7 @@
 #
 # spec file for package python-shortuuid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-shortuuid
-Version:        1.0.9
+Version:        1.0.11
 Release:        0
 Summary:        A generator library for concise, unambiguous and URL-safe UUIDs
 License:        BSD-3-Clause
@@ -50,12 +50,10 @@ similar-looking letters and numbers.
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/shortuuid
-%{python_expand rm %{buildroot}%{$python_sitelib}/shortuuid/tests.py
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest shortuuid/tests.py
+%pytest
 
 %post
 %python_install_alternative shortuuid
