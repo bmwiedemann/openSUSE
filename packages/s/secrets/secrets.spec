@@ -17,7 +17,7 @@
 
 
 Name:           secrets
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
