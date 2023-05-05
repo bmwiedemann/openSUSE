@@ -1097,4 +1097,10 @@
   Eliminates the need for source package links in OBS.</comment>
     <requestid>1082738</requestid>
   </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>2c2743615281ca8883a6b66e4ab1e04c</srcmd5>
+    <version>1.9.6</version>
+    <time>1683296337</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
