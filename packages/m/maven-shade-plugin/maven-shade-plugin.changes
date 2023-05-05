@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Fri May  5 08:04:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.4.1
+  * Bug
+    + [MSHADE-148] Shade Plugin gets stuck in infinite loop 
+      building dependency reduced POM
+    + [MSHADE-223] Endless processing when 
+      promoteTransitiveDependencies=true
+    + [MSHADE-252] shadeSourcesContent is broken when combined with 
+      partial relocation
+    + [MSHADE-284] Shaded test JARs are always empty
+    + [MSHADE-291] shadedPattern applied multiples times when 
+      relocating the contents of META-INF/services files
+    + [MSHADE-298] Groovy extension module transformer looking in 
+      incorrect META-INF directory
+    + [MSHADE-309] issue tracker link on the web site of shade 
+      plugin does not work.
+    + [MSHADE-311] Bad exclusions in dependency-reduced-pom.xml
+    + [MSHADE-315] Broken link on Maven Shade Plugin
+    + [MSHADE-318] Specifically included class's dependencies are 
+      missing
+    + [MSHADE-331] Issue Tracker link is not working - Page Not 
+      Found
+    + [MSHADE-337] Relocation cannot process class file version 58 
+      JARs
+    + [MSHADE-339] Shaded test jar has wrong type "jar"
+    + [MSHADE-340] Shaded test jar artifact is not attached
+    + [MSHADE-352] shaded jars are not reproducible when using 
+      transformer
+    + [MSHADE-360] ServicesResourceTransformer.modifyOutputStream 
+      swallows IOExceptions
+    + [MSHADE-363] Breaking change to ResourceTransformer's API
+    + [MSHADE-366] The warning "Access denied" during 'minimizeJar' 
+      is always printed
+    + [MSHADE-378] Shade plugin changes the compression level of 
+      nested jar entries
+    + [MSHADE-396] Improve SourceContent Shading
+    + [MSHADE-413] Maven shade plugin enters endless loop
+    + [MSHADE-417] Fix null bytes appended to small files by 
+      maven-shade-plugin
+    + [MSHADE-425] Maven shade plugin build fails without 'clean' 
+      goal
+  * New Feature
+    + [MSHADE-36] Add option to include dependency reduced POM 
+      instead of original one
+    + [MSHADE-306] Log all duplicates, not only classes
+    + [MSHADE-347] Reproducible Builds: make entries in output jar 
+      files reproducible
+  * Improvement
+    + [MSHADE-285] It should be possible to shade test sources as a 
+      JAR
+    + [MSHADE-313] Minimize jar should respect implementations 
+      under /META-INF/services/
+    + [MSHADE-316] Minijar: <excludeDefaults>true</excludeDefaults>
+    + [MSHADE-319] Group output into included and excluded 
+      artifacts to easily identify them
+    + [MSHADE-321] Always respect 'createDependencyReducedPom' flag
+    + [MSHADE-348] Make build Reproducible
+    + [MSHADE-371] Update Shade 
+      Apache[Notice/LICENSE]ResourceTransformer to use also 
+      [NOTICE/LICENSE].md
+    + [MSHADE-373] Source transformation on source jar can break 
+      OSGi resolution due to duplicated bundle name
+    + [MSHADE-382] Add an option to skip execution
+    + [MSHADE-391] Do not modify class files, if nothing was 
+      relocated
+    + [MSHADE-405] ShowOverlapping Uses http instead of https
+  * Test
+    + [MSHADE-327] improved integration test coverage for 
+      relocation and minification
+  * Task
+    + [MSHADE-322] Provide a transformer for properties files
+    + [MSHADE-330] Java 12 and 13 support
+    + [MSHADE-346] Introduce mock repository manager for testing
+    + [MSHADE-350] Enable ManifestResourceTransformer to rewrite 
+      the manifest with relocations
+    + [MSHADE-364] Don't log as duplicate resource handled by a 
+      transformer
+    + [MSHADE-365] document Properties transformers available since 
+      3.2.2 in separate table
+    + [MSHADE-389] Get rid of old baggage
+    + [MSHADE-390] Implement Sisu index transformer
+    + [MSHADE-393] Upgrade project from Java 7 to 8
+    + [MSHADE-401] Improve ServiceResourceTransformer
+    + [MSHADE-412] SimpleRelocator can fail in NPE, in particular 
+      with manifest transformer
+    + [MSHADE-416] Jenkins URL is wrong.
+    + [MSHADE-422] Remove usage of deprecated Plugin#getGoals()
+    + [MSHADE-423] Get rid of commons-lang3
+    + [MSHADE-430] Remove usage of deprecated ModelBase#getReports()
+    + [MSHADE-431] Use a caching output stream
+    + [MSHADE-432] Duplicate services entries can be generated
+  * Dependency upgrade
+    + [MSHADE-320] Upgrade maven-artifact-transfer to 0.11.0
+    + [MSHADE-338] Upgrade maven-artifact-transfer 0.12.0
+    + [MSHADE-341] Upgrade plexus-utils 3.3.0
+    + [MSHADE-349] Upgrade to org.ow2.asm:asm:7.3.1
+    + [MSHADE-355] Java 15 Compatibility - JDependecny/ASM Upgrade
+    + [MSHADE-357] Upgrade asm to 8.0
+    + [MSHADE-379] Support Java 16 - upgrade ASM to 9.0
+    + [MSHADE-386] Update JDependency to 2.6.0
+    + [MSHADE-407] Update ASM to 9.2 to support Java 17
+    + [MSHADE-415] Upgrade maven-plugin parent to 37
+    + [MSHADE-424] Upgrade jdependency 2.8.0
+
+-------------------------------------------------------------------
 Sun Nov 24 17:34:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.2.1

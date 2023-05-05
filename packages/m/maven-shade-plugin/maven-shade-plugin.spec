@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shade-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           maven-shade-plugin
-Version:        3.2.1
+Version:        3.4.1
 Release:        0
 Summary:        Capability to package the artifact in an uber-jar
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugins/%{name}
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
-BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.inject:javax.inject)
+BuildRequires:  mvn(org.apache.commons:commons-collections4)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
@@ -38,12 +39,12 @@ BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 BuildRequires:  mvn(org.jdom:jdom2)
 BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(org.ow2.asm:asm-commons)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.vafer:jdependency)
 BuildArch:      noarch
 
@@ -62,15 +63,11 @@ Group:          Documentation/HTML
 %prep
 %setup -q
 rm src/test/jars/plexus-utils-1.4.1.jar
-ln -s $(build-classpath plexus/utils) src/test/jars/plexus-utils-1.4.1.jar
-
-%pom_remove_dep 'com.google.guava:guava:'
-%pom_add_dep 'com.google.guava:guava'
 
 %build
 %{mvn_build} -f \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7
+	-- -Dmaven.compiler.release=8
 %endif
 
 %install
