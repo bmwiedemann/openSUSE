@@ -10,9 +10,12 @@ Match the directory layout of openSUSE and SLE.
  tc/q_netem.c   | 2 +-
  3 files changed, 6 insertions(+), 5 deletions(-)
 
---- a/Makefile
-+++ b/Makefile
-@@ -14,7 +14,7 @@ endif
+Index: iproute2-6.3.0/Makefile
+===================================================================
+--- iproute2-6.3.0.orig/Makefile
++++ iproute2-6.3.0/Makefile
+@@ -15,9 +15,9 @@ MAKEFLAGS += --no-print-directory
+ endif
  
  PREFIX?=/usr
 -SBINDIR?=/sbin
@@ -22,7 +25,8 @@ Match the directory layout of openSUSE and SLE.
 +NETNS_RUN_DIR?=/run/netns
  NETNS_ETC_DIR?=/etc/netns
  DATADIR?=$(PREFIX)/share
-@@ -31,7 +31,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
+ HDRDIR?=$(PREFIX)/include/iproute2
+@@ -32,7 +32,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
  
  SHARED_LIBS = y
  
@@ -31,9 +35,11 @@ Match the directory layout of openSUSE and SLE.
  ifneq ($(SHARED_LIBS),y)
  DEFINES+= -DNO_SHARED_LIBS
  endif
---- a/netem/Makefile
-+++ b/netem/Makefile
-@@ -7,6 +7,7 @@ DISTDATA = normal.dist pareto.dist paretonormal.dist experimental.dist
+Index: iproute2-6.3.0/netem/Makefile
+===================================================================
+--- iproute2-6.3.0.orig/netem/Makefile
++++ iproute2-6.3.0/netem/Makefile
+@@ -7,6 +7,7 @@ DISTDATA = normal.dist pareto.dist paret
  HOSTCC ?= $(CC)
  CCOPTS  = $(CBUILD_CFLAGS)
  LDLIBS += -lm
@@ -53,9 +59,11 @@ Match the directory layout of openSUSE and SLE.
  	done
  
  clean:
---- a/tc/q_netem.c
-+++ b/tc/q_netem.c
-@@ -96,7 +96,7 @@ static int get_distribution(const char *type, __s16 *data, int maxdata)
+Index: iproute2-6.3.0/tc/q_netem.c
+===================================================================
+--- iproute2-6.3.0.orig/tc/q_netem.c
++++ iproute2-6.3.0/tc/q_netem.c
+@@ -130,7 +130,7 @@ static int get_distribution(const char *
  	char *line = NULL;
  	char name[128];
  

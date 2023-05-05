@@ -7,11 +7,11 @@ Patch-mainline: No
  lib/utils.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/lib/utils.c b/lib/utils.c
-index e77bd302530b..0919bb201229 100644
---- a/lib/utils.c
-+++ b/lib/utils.c
-@@ -49,6 +49,10 @@ int get_hex(char c)
+Index: iproute2-6.3.0/lib/utils.c
+===================================================================
+--- iproute2-6.3.0.orig/lib/utils.c
++++ iproute2-6.3.0/lib/utils.c
+@@ -108,6 +108,10 @@ int get_hex(char c)
  	return -1;
  }
  
@@ -22,6 +22,3 @@ index e77bd302530b..0919bb201229 100644
  int get_integer(int *val, const char *arg, int base)
  {
  	long res;
--- 
-2.14.1
-
