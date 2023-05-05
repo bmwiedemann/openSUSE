@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 09:53:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Transform into a proper _multibuild package: the spec is already
+  prepared and uses a few variables to distinguish flavors.
+
+-------------------------------------------------------------------
 Mon Jun  7 15:02:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)
