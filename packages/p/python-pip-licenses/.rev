@@ -120,4 +120,17 @@
 </comment>
     <requestid>1078727</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1de2886243ca545ee18659ebcc87b20c</srcmd5>
+    <version>4.3.1</version>
+    <time>1683295057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.1:
+  * Fix to treat package names as normalized as in PEP 503 with
+    --packages and --ignore-packages option
+- 4.3.0:
+  * Implement new option --no-version
+</comment>
+    <requestid>1084817</requestid>
+  </revision>
 </revisionlist>

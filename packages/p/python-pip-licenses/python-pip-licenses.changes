@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 16:56:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.3.1:
+  * Fix to treat package names as normalized as in PEP 503 with
+    --packages and --ignore-packages option
+- 4.3.0:
+  * Implement new option --no-version
+
+-------------------------------------------------------------------
 Wed Apr 12 13:26:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.2.0:
