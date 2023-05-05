@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 14:20:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2023-02-11:
+  * Fix: Some instances behind Cloudflare block requests without a
+    User-Agent header.
+
+-------------------------------------------------------------------
 Sat Apr 15 21:14:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit {python_module pytzdata} BuildRequires and

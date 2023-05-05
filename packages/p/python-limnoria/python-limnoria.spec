@@ -1,7 +1,7 @@
 #
 # spec file for package python-limnoria
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define appname limnoria
 %define srcver 2022-09-27
 Name:           python-limnoria
-Version:        2022.11.10
+Version:        2023.02.11
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-gnupg}
-BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module pytz if %python-base < 3.9}
+BuildRequires:  %{python_module pytzdata}
 # pyxmpp2-scram not available, the code actually covers the non-availability
 #BuildRequires:  %%{python_module pyxmpp2-scram}
 BuildRequires:  %{python_module setuptools}
