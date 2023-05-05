@@ -16,7 +16,7 @@
 #
 
 
-%define awkward_cpp_version 8
+%define awkward_cpp_version 15
 Name:           python-awkward
 Version:        2.1.4
 Release:        0
