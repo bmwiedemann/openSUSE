@@ -720,4 +720,13 @@
   when completed. (forwarded request 1078460 from dimstar)</comment>
     <requestid>1078593</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>323f02a23ece972d5fe92bb28e444355</srcmd5>
+    <version>2.60</version>
+    <time>1683295030</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS. (forwarded request 1084749 from dimstar)</comment>
+    <requestid>1084757</requestid>
+  </revision>
 </revisionlist>

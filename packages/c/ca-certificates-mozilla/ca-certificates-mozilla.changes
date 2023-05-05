@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 14:34:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Dec 22 10:38:47 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.60 state of Mozilla SSL root CAs (bsc#1206622)
