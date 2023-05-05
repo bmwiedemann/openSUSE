@@ -31,7 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.9
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9
