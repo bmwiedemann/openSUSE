@@ -38,23 +38,17 @@ Suggests:       rubygems
 BuildArch:      noarch
 
 %description
-dtrx stands for "Do The Right Extraction." It's a tool for Unix-like systems
-that takes all the hassle out of extracting archives.
-
-dtrx is simple and powerful. Just use the same command for all your archive
-files, and they'll never frustrate you again.
+dtrx stands for "Do The Right Extraction". It is a tool for Unix-like
+systems for extracting different archive formats.
 
 Features:
-* Handles many archive types: You only need to remember one simple command to
-  extract tar, zip, cpio, deb, rpm, gem, 7z, cab, gz, bz2, and lzma files. If
-  they have any extra compression, like tar.bz2, dtrx will take care of that
-  for you, too.
-* Keeps everything organized: dtrx will make sure that archives are extracted
-  into their own dedicated directories.
-* Sane permissions: dtrx makes sure you can read and write all the files you
-  just extracted, while leaving the rest of the permissions intact.
-* Recursive extraction: dtrx can find archives inside the archive and extract
-  those too.
+* Support for many archive types, including tar, zip, cpio, deb, rpm,
+  gem, 7z, cab, gz, bz2, and lzma files. Extra compression like
+  .tar.bz2 is recognized.
+* Archives are extracted into their own dedicated directories.
+* All extracted files can be read and written, while leaving the rest
+  of the permissions intact.
+* dtrx can find archives inside the archive and extract those too.
 
 %prep
 %autosetup
