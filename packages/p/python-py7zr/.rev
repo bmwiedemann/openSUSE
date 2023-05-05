@@ -52,4 +52,20 @@
 </comment>
     <requestid>1044224</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>049a3a838e5392d7519bc3e2c0c40c18</srcmd5>
+    <version>0.20.5</version>
+    <time>1683295079</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.5:
+  * Remove root reference from file names (#513)
+  * fix typo in the readme (#510)
+  * Drop manual GC to improve performance when many files are
+    handled. (#489, #490)
+  * Fix mypy error
+  * Skip deflate64 compression/decompression test on pypy
+  * There is an issue in dependency inflate64 library that causes
+    SIGABORT and SIGSEGV on pypy</comment>
+    <requestid>1084851</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-py7zr%{psuffix}
-Version:        0.20.2
+Version:        0.20.5
 Release:        0
 Summary:        Library and utility to support 7zip
 License:        LGPL-2.1-or-later
@@ -100,7 +100,7 @@ sed -i '1{/#!/d}' py7zr/*.py
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.rst Changelog.rst
+%doc README.rst docs/Changelog.rst
 %{python_sitelib}/py7zr
 %{python_sitelib}/py7zr-%{version}*-info
 %python_alternative %{_bindir}/py7zr
