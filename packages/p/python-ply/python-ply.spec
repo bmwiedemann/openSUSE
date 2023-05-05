@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-ply
 Version:        3.11
@@ -44,6 +43,7 @@ productions, precedence rules, error recovery, and support for ambiguous grammar
 PLY provides extensive error checking.
 It is compatible with both Python 2 and Python 3.
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Python Lex & Yacc
 License:        LGPL-2.1-or-later
@@ -59,6 +59,7 @@ productions, precedence rules, error recovery, and support for ambiguous grammar
 
 PLY provides extensive error checking.
 It is compatible with both Python 2 and Python 3.
+%endif
 
 %prep
 %setup -q -n ply-%{version}
@@ -93,7 +94,9 @@ popd
 %doc ANNOUNCE CHANGES README.md TODO
 %{python_sitelib}/*
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc doc/
 %doc example/
 
