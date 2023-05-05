@@ -3586,4 +3586,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - fixes CVE-2023-1906 [bsc#1210308]</comment>
     <requestid>1079166</requestid>
   </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>95915d564892fb05f60abacf63b108fa</srcmd5>
+    <version>7.1.1.8</version>
+    <time>1683295011</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.1.8
+- https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-8---2023-04-22</comment>
+    <requestid>1084570</requestid>
+  </revision>
 </revisionlist>
