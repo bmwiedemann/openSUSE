@@ -242,4 +242,12 @@
   this only provides the HPC base directories. (forwarded request 979120 from eeich)</comment>
     <requestid>979393</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4a5e6c7355fe0035d04b4a02a1d4483a</srcmd5>
+    <version>0.5.20230501.968c9cb</version>
+    <time>1683295048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084761</requestid>
+  </revision>
 </revisionlist>

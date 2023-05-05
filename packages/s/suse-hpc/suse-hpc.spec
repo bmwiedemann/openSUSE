@@ -1,7 +1,7 @@
 #
 # spec file for package suse-hpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Summary:        SUSE HPC Environment
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 Name:           suse-hpc
-Version:        0.5.20220525.fd76646
+Version:        0.5.20230501.968c9cb
 Release:        0
 Source0:        macros.hpc
 Source1:        dlinfo.c

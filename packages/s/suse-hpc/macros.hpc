@@ -257,8 +257,9 @@ EOF\
 %{?hpc_make_modules_extra} \
 %{?_hpc_build_xx:mkdir -p %{buildroot}%{hpc_module_dep_install}} \
 %hpc_write_modules_version_file \
-echo "Writing %{buildroot}%{hpc_module_dep_base}%{version}" \
-cat << EOF > %{buildroot}%{hpc_module_dep_base}%{version}
+echo "Writing %{buildroot}%{hpc_module_dep_base}%{version}"; \
+sed -e '/#%%Module1.0.*/b 1;1s/\(.*\)/#%%Module1.0\n\1/;:1' << EOF\\\
+  > %{buildroot}%{hpc_module_dep_base}%{version}
 
 %hpc_modulepath %{?_hpc_build_xx:%{hpc_module_dep_install}}%{!?_hpc_build_xx:%{hpc_module_dep_path}}
 
@@ -740,11 +741,9 @@ sys.exit(0)" %{1}
     %define _infodir %{hpc_infodir} \
     %define _libdir %{hpc_libdir} \
     %define _libexecdir %{hpc_libexecdir} \
-    %define _localstatedir %{hpc_localstatedir} \
     %define _mandir %{hpc_mandir} \
     %define _prefix %{hpc_prefix} \
     %define _sbindir %{hpc_sbindir} \
-    %define _sharedstatedir %{hpc_sharedstatedir} \
 #Do NOT define _sysconfig to %%hpc_sysconfig here!
     %cmake \\\
     %undefine __cmake \\\
@@ -754,11 +753,9 @@ sys.exit(0)" %{1}
     %undefine _infodir \\\
     %undefine _libdir \\\
     %undefine _libexecdir \\\
-    %undefine _localstatedir \\\
     %undefine _mandir \\\
     %undefine _prefix \\\
     %undefine _sbindir \\\
-    %undefine _sharedstatedir \\\
  }
 
 # wraps macro from macros.meson - paths replaced by HPC paths.

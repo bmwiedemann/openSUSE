@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  1 07:43:38 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Do not redefine _localstatedir and _sharedstatedir for cmake:
+  hpc_localstatedir and hpc_sharedstatedir are already the
+  same. This may lead to a endless recursive definition loop.
+- Create header magic for module file if none is specified in
+  spec file.
+
+-------------------------------------------------------------------
 Wed May 25 05:56:07 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Add %hpc_base_dirs macro
