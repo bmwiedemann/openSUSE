@@ -1,5 +1,5 @@
 <multibuild>
-  <package>libverto-glib.spec</package>
-  <package>libverto-libev.spec</package>
+  <package>libverto-glib</package>
+  <package>libverto-libev</package>
 </multibuild>
 
