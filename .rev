@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>881275</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>05ef6b052e3deb433669fad672a83789</srcmd5>
+    <version>2021.12.29</version>
+    <time>1683295107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.12.29:
+  * Plugin is now fully typed.</comment>
+    <requestid>1084900</requestid>
+  </revision>
 </revisionlist>
