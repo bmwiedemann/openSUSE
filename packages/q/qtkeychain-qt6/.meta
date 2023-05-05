@@ -1,6 +1,0 @@
-<package name="qtkeychain-qt6" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="qtkeychain-qt5"/>
-  <bcntsynctag>qtkeychain-qt5</bcntsynctag>
-</package>
