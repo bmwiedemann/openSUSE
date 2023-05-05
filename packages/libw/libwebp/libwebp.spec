@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
@@ -96,6 +96,13 @@ container based on RIFF. Webmasters, web developers and browser
 developers can use WebP to compress, archive and distribute digital
 images more efficiently.
 
+%package -n libsharpyuv0
+Summary:        Library for sharpening YUV option in WebP
+Group:          System/Libraries
+
+%description -n libsharpyuv0
+Library that provides the sharpening YUV option for better WebP images.
+
 %package -n libwebpextras0
 Summary:        Library for decoding WebP graphics format
 Group:          System/Libraries
@@ -115,6 +122,7 @@ Requires:       libwebp7 = %version
 Requires:       libwebpdecoder3 = %version
 Requires:       libwebpdemux2 = %version
 Requires:       libwebpmux3 = %version
+Requires:       libsharpyuv0 = %version
 %if %{with extras}
 Requires:       libwebpextras0 = %version
 %endif
@@ -147,6 +155,8 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %postun -n libwebpmux3 -p /sbin/ldconfig
 %post   -n libwebpdecoder3 -p /sbin/ldconfig
 %postun -n libwebpdecoder3 -p /sbin/ldconfig
+%post   -n libsharpyuv0 -p /sbin/ldconfig
+%postun -n libsharpyuv0 -p /sbin/ldconfig
 %post   -n libwebpextras0 -p /sbin/ldconfig
 %postun -n libwebpextras0 -p /sbin/ldconfig
 
@@ -166,6 +176,9 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %files -n libwebpdecoder3
 %_libdir/libwebpdecoder.so.*
 
+%files -n libsharpyuv0
+%_libdir/libsharpyuv.so.*
+
 %if %{with extras}
 %files -n libwebpextras0
 %_libdir/libwebpextras.so.*
@@ -173,7 +186,9 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files devel
 %_libdir/libwebp*.so
+%_libdir/libsharpyuv.so
 %_includedir/webp/
 %_libdir/pkgconfig/libwebp*.pc
+%_libdir/pkgconfig/libsharpyuv.pc
 
 %changelog
