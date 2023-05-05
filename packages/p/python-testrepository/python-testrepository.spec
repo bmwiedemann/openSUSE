@@ -1,7 +1,7 @@
 #
 # spec file for package python-testrepository
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-testrepository
 Version:        0.0.20
 Release:        0
 Summary:        A repository of test results
-License:        BSD-3-Clause OR Apache-2.0
+License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testrepository
 Source:         https://files.pythonhosted.org/packages/source/t/testrepository/testrepository-%{version}.tar.gz
@@ -44,7 +44,7 @@ Requires:       python-python-subunit >= 0.0.10
 Requires:       python-testscenarios
 Requires:       python-testtools >= 0.9.30
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if "%python_flavor" != "python2"
 Requires:       python-dbm

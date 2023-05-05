@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 12:17:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Mon Feb  8 11:17:44 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - %ifpython3 does not work with new multi-build python
