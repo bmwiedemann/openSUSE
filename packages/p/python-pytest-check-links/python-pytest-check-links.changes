@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May  4 23:08:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Update for newer requests-cache
+  * Add docstring enforcement
+  * Add releaser workflows
+  * Include py.typed file
+  * Update for pytest 7
+  * Add flake8 and mypy linting
+  * Apply Auto Formatting
+  * Enforce labels on PRs
+  * Update for Jupyter Releaser
+  * Add changelog entry for 0.6.0
+  * Handle ignore links for `ipynb` files
+  * Drop support for Python 3.6 and add support for Python 3.10
+  * Handle attachments in notebook cells
+  * Fix handling of Nested RST links
+  * Fix check-links-ignore example in Readme
+  * Add Ability to Ignore Link Patterns
+  * Update for recommended usage of CheckLinks
+
+-------------------------------------------------------------------
 Mon May 18 09:21:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.2:

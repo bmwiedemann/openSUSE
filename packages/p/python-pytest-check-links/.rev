@@ -55,4 +55,29 @@
   * Improve retry logic and add python 3 classifier #18</comment>
     <requestid>806849</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f51839e6d76b268eea4c0059c522fb5d</srcmd5>
+    <version>0.8.0</version>
+    <time>1683299570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Update for newer requests-cache
+  * Add docstring enforcement
+  * Add releaser workflows
+  * Include py.typed file
+  * Update for pytest 7
+  * Add flake8 and mypy linting
+  * Apply Auto Formatting
+  * Enforce labels on PRs
+  * Update for Jupyter Releaser
+  * Add changelog entry for 0.6.0
+  * Handle ignore links for `ipynb` files
+  * Drop support for Python 3.6 and add support for Python 3.10
+  * Handle attachments in notebook cells
+  * Fix handling of Nested RST links
+  * Fix check-links-ignore example in Readme
+  * Add Ability to Ignore Link Patterns
+  * Update for recommended usage of CheckLinks</comment>
+    <requestid>1085127</requestid>
+  </revision>
 </revisionlist>

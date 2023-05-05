@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-check-links
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 # Tests natually require internet
 %bcond_with test
+%{?sle15_python_module_pythons}
 Name:           python-pytest-check-links
-Version:        0.4.2
+Version:        0.8.0
 Release:        0
 Summary:        Pytest plugin for checking links in files
 License:        BSD-3-Clause
 URL:            https://github.com/minrk/pytest-check-links
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_check_links/pytest_check_links-%{version}.tar.gz
-BuildRequires:  %{python_module pbr >= 1.9}
-BuildRequires:  %{python_module setuptools >= 17.1}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils
@@ -36,7 +36,7 @@ Requires:       python-html5lib
 Requires:       python-pytest >= 2.8
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-jupyter_nbconvert
 Recommends:     python-jupyter_nbformat
 BuildArch:      noarch
@@ -56,10 +56,10 @@ A pytest plugin that checks URLs for HTML-containing files.
 %setup -q -n pytest_check_links-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pytest-check-links
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -75,9 +75,10 @@ A pytest plugin that checks URLs for HTML-containing files.
 %python_uninstall_alternative pytest-check-links
 
 %files %{python_files}
-%doc AUTHORS ChangeLog README.md
+%doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/pytest-check-links
-%{python_sitelib}/*
+%{python_sitelib}/pytest_check_links
+%{python_sitelib}/pytest_check_links-%{version}.dist-info
 
 %changelog
