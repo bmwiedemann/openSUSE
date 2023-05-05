@@ -68,4 +68,16 @@
     <comment></comment>
     <requestid>817665</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>676245f41380c615845549aa8d3a2e76</srcmd5>
+    <version>0.5.0</version>
+    <time>1683295108</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Use ``pytest.hookimpl`` to configure hooks, avoiding a
+    deprecation warning in pytest 7.2.0.
+  * Dropped support for Python 3.6.
+  * Added support for Python 3.11.</comment>
+    <requestid>1084901</requestid>
+  </revision>
 </revisionlist>

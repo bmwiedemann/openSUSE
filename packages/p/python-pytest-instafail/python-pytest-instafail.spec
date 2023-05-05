@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-instafail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pytest-instafail
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        Pytest Plugin to Show Failures Instantly
 License:        BSD-2-Clause
