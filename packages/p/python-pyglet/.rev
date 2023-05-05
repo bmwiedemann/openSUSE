@@ -212,4 +212,23 @@
 </comment>
     <requestid>1068376</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0d60383b33947070f968f654575b43c</srcmd5>
+    <version>2.0.5</version>
+    <time>1683295081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.5:
+  * windows.key: add support for extended function keys
+  * Windows now uses &quot;Apartment Threaded&quot; mode for better
+    compatibility with other libraries.
+  * image: allow blanking newly created Textures (skipped by
+    default when creating from image).
+  * input.macos: Fix ControllerManager hot-plugging on macOS.
+  * font.windows: Fix 32bit crashes with DirectWrite font
+    backend.
+  * math: Fix incorrect calculation in Mat4.look_at method.
+  * image: Fix blitting from regions, caused by invalid unpacking
+    settings.</comment>
+    <requestid>1084858</requestid>
+  </revision>
 </revisionlist>
