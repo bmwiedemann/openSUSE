@@ -1,7 +1,0 @@
-<package name="mingw64-cross-gcc-bootstrap" project="openSUSE:Factory">
-  <title>MinGW Windows cross-compiler (GCC) for C</title>
-  <description>MinGW Windows cross-compiler (GCC) for C</description>
-  <devel project="openSUSE:Factory" package="mingw64-gcc"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-  <bcntsynctag>mingw64-gcc</bcntsynctag>
-</package>
