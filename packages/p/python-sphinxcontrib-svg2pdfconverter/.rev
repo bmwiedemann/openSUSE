@@ -52,4 +52,13 @@
     <comment></comment>
     <requestid>1032428</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>163d7b227a26b766a5512a1959ca9cb5</srcmd5>
+    <version>1.2.2</version>
+    <time>1683295083</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  * update mail address</comment>
+    <requestid>1084868</requestid>
+  </revision>
 </revisionlist>
