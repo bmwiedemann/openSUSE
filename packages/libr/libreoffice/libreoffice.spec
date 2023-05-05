@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.5.2.2
+Version:        7.5.3.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -241,7 +241,7 @@ BuildRequires:  pkgconfig(nss) >= 3.9.3
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(redland)
 BuildRequires:  pkgconfig(sane-backends)
-BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.28
+BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.35
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zxing)

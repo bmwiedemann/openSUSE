@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 21 13:57:23 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.5.3.1
+  https://wiki.documentfoundation.org/Releases/7.5.3/RC1
+
+-------------------------------------------------------------------
 Thu Apr 20 10:53:47 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Do not use binutils-gold as the package is unmaintained
