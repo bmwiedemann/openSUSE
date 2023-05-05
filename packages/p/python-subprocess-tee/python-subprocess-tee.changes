@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 10:39:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Sun Feb 12 08:03:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire rich, otherwise the %checks fail on SLES15 with
