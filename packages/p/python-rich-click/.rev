@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1042866</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e11ea654c4e3cfa1f3c645a7bbb5148</srcmd5>
+    <version>1.6.1</version>
+    <time>1683295082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.1:
+  * Don't show metavars for feature switch options [#100]</comment>
+    <requestid>1084861</requestid>
+  </revision>
 </revisionlist>
