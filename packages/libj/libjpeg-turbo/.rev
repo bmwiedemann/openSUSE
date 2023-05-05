@@ -1056,4 +1056,13 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1070184 from pluskalm)</comment>
     <requestid>1071086</requestid>
   </revision>
+  <revision rev="68" vrev="75">
+    <srcmd5>cd1fc06c8125235330ad6853d6f548db</srcmd5>
+    <version>unknown</version>
+    <time>1683295022</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS. (forwarded request 1084624 from dimstar)</comment>
+    <requestid>1084656</requestid>
+  </revision>
 </revisionlist>
