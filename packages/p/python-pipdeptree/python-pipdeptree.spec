@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipdeptree
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pipdeptree
-Version:        2.2.1
+Version:        2.7.1
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
 URL:            https://github.com/naiquevin/pipdeptree
 Source:         https://github.com/naiquevin/pipdeptree/archive/%{version}.tar.gz#/pipdeptree-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pip >= 6.0.0
+Requires:       python-pip
 Suggests:       python-graphviz
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module pip >= 6.0.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  graphviz-gnome
@@ -48,10 +49,11 @@ Command line utility to show dependency tree of packages.
 %setup -q -n pipdeptree-%{version}
 
 %build
-%python_build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pipdeptree
 
@@ -65,9 +67,10 @@ Command line utility to show dependency tree of packages.
 %{python_uninstall_alternative pipdeptree}
 
 %files %{python_files}
-%doc CHANGES.md README.rst
+%doc CHANGES.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/pipdeptree
-%{python_sitelib}/*
+%{python_sitelib}/pipdeptree
+%{python_sitelib}/pipdeptree-%{version}*-info
 
 %changelog
