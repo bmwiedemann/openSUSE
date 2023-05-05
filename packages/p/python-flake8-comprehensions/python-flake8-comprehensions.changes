@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  4 23:19:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop unmaintained and unused pytest-flake8dir 
+
+-------------------------------------------------------------------
 Thu Apr 13 12:27:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.0:

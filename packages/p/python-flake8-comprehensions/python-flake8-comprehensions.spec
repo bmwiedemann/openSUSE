@@ -35,8 +35,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pytest-flake8-path}
-BuildRequires:  %{python_module pytest-flake8dir}
 BuildRequires:  %{python_module pytest-randomly}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -55,7 +55,7 @@ A flake8 plugin that helps you write better list/set/dict comprehensions.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest %{?jobs: -n %jobs}
 
 %files %{python_files}
 %license LICENSE

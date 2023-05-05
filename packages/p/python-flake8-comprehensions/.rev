@@ -105,4 +105,12 @@
     to ``any()``/``all()``.</comment>
     <requestid>1079170</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2beb517b15a9a39369fe709593ccfef4</srcmd5>
+    <version>3.12.0</version>
+    <time>1683295112</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unmaintained and unused pytest-flake8dir</comment>
+    <requestid>1084906</requestid>
+  </revision>
 </revisionlist>
