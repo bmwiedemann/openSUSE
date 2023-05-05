@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 10:07:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Apr  6 19:28:53 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
