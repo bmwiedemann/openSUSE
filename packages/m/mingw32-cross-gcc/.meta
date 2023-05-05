@@ -1,7 +1,0 @@
-<package name="mingw32-cross-gcc" project="openSUSE:Factory">
-  <title>MinGW Windows cross-compiler (GCC) for C</title>
-  <description>MinGW Windows cross-compiler (GCC) for C</description>
-  <devel project="openSUSE:Factory" package="mingw32-gcc"/>
-  <url>PUT_UPSTREAM_URL_HERE</url>
-  <bcntsynctag>mingw32-gcc</bcntsynctag>
-</package>
