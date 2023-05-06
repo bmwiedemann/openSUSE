@@ -71,12 +71,14 @@
 %define qemu qemu
 %endif
 # The following line is generated from dependencies.yaml
-%define devel_no_selenium_requires %build_requires %qemu %test_requires curl perl(Devel::Cover) perl(Devel::Cover::Report::Codecovbash) perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
+%define cover_requires perl(Devel::Cover) perl(Devel::Cover::Report::Codecovbash)
+# The following line is generated from dependencies.yaml
+%define devel_no_selenium_requires %build_requires %cover_requires %qemu %test_requires curl perl(Perl::Tidy) postgresql-devel rsync sudo tar xorg-x11-fonts
 # The following line is generated from dependencies.yaml
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1683023936.135efe1
+Version:        4.6.1683294886.8a7e554
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 05 15:10:07 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1683294886.8a7e554:
+  * Fix spec
+  * Improve coding style in `_find_network`
+  * Fix several issues with `allocate_network`
+  * Fix duplication of Devel::Cover requirements specified
+  * Dependency cron 2023-05-05
+  * CI: Fix codecov upload step with token
+  * CI: Use most recent codecov orb 3.2.4
+  * CI: Try to fix codecov upload with circleCI orb
+  * Add `xz` to worker container
+  * Makefile: Fix manual calls of codecov report
+
+-------------------------------------------------------------------
 Wed May 03 04:50:58 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1683023936.135efe1:
