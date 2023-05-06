@@ -1290,4 +1290,14 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment>- bsc#1208004: Make %post script SELinux aware</comment>
     <requestid>1064283</requestid>
   </revision>
+  <revision rev="136" vrev="13">
+    <srcmd5>e896cf3c9d2264e81994dd678500a30b</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1683403781</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210386: out-of-bounds writes in mstolfp()
+  * CVE-2023-26551, CVE-2023-26552, CVE-2023-26553, CVE-2023-26554
+  * Add ntp-CVE-2023-26551.patch</comment>
+    <requestid>1085150</requestid>
+  </revision>
 </revisionlist>

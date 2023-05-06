@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  5 13:55:24 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1210386: out-of-bounds writes in mstolfp()
+  * CVE-2023-26551, CVE-2023-26552, CVE-2023-26553, CVE-2023-26554
+  * Add ntp-CVE-2023-26551.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 15:00:43 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1208004: Make %post script SELinux aware 

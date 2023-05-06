@@ -60,6 +60,7 @@ Patch30:        ntp-move-kod-file.patch
 Patch33:        ntp-sntp-libevent.patch
 Patch34:        testdcf-gude.diff
 Patch35:        ntp-clarify-interface.patch
+Patch36:        ntp-CVE-2023-26551.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -148,6 +149,7 @@ cp %{SOURCE12} .
 %patch33
 %patch34 -p1
 %patch35
+%patch36
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}
