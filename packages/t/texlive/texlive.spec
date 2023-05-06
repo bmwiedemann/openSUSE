@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   202
+%define texlive_noarch   204
 %define texlive_source   texlive-20230311-source
 %define biber_version    2.19
 
@@ -4714,8 +4714,13 @@ popd
 	# new git-latexdiff wrapper script
 	ln -vsf ../share/texmf/scripts/git-latexdiff/git-latexdiff git-latexdiff
 	# ... and add rungs texlua script as dvipdfmx/dvipdfm require this
+%if 0%{texlive_version} >= 2023
+	ln -vsf ../share/texmf/scripts/texlive/rungs.lua rungs
+	rm -vf %{buildroot}%{_texmfdistdir}/scripts/texlive/rungs.lua
+%else
 	ln -vsf ../share/texmf/scripts/texlive/rungs.tlu rungs
 	rm -vf %{buildroot}%{_texmfdistdir}/scripts/texlive/rungs.tlu
+%endif
 %endif
     popd
 

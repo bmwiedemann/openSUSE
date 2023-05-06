@@ -1063,4 +1063,12 @@
 - Do not build nor test bibtex8/bibtexu in parallel</comment>
     <requestid>1079884</requestid>
   </revision>
+  <revision rev="86" vrev="89">
+    <srcmd5>f46a3f993ac7510fc58a587bbd2a5e6a</srcmd5>
+    <version>unknown</version>
+    <time>1683403711</time>
+    <user>dimstar_suse</user>
+    <comment>- Link target of /usr/bin/rungs changed suffix from tlu to lua (boo#1211116)</comment>
+    <requestid>1084982</requestid>
+  </revision>
 </revisionlist>

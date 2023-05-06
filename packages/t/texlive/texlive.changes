@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 07:02:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Link target of /usr/bin/rungs changed suffix from tlu to lua (boo#1211116)
+
+-------------------------------------------------------------------
 Mon Apr 17 09:28:07 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Really update biber to version 2.19 (boo#1210257)
