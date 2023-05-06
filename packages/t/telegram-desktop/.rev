@@ -977,4 +977,45 @@
     <comment>- Replace BuildRequire on xorg-x11-devel by pkgconfig(...) (forwarded request 1083067 from jengelh)</comment>
     <requestid>1083072</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>4cd8af661b4b654816acf843dc66ddea</srcmd5>
+    <version>4.8.1</version>
+    <time>1683403793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.1:
+  * Fix sending an album of ten scheduled messages.
+  * Convert folder back to non-shareable on last link deletion.
+  * Several fixes of focus control in discussions / channel
+    comments.
+  * Drop all formatting on paste in non-message input fields.
+  * Clear search field on archive opening.
+  * Show video upload / download progress over the spoiler.
+  * Better support for text-colored emoji in reactions.
+  * Close archive / topics group when clicking on currently active
+    folder.
+  * Allow replace media by paste in discussions / comments /
+    scheduled messages.
+  * Fix stuck Replace Media button after editing media in some
+    chats.
+  * Quick reply by double click only with the left mouse button.
+  * Fix applying the same custom chat background with different
+    dimming value.
+  * Fix &quot;who reacted&quot; list display for media album parts.
+  * Show full t.me/+ invite link prefix in Recent Actions.
+  * Don't try to suggest userpic photos to bots.
+  * Add &quot;Send when online&quot; to the send button context menu.
+  * Fix crash in empty topics message sending.
+- Update to 4.8.0
+  * Share folders that include dozens of chats with friends or
+    colleagues.
+  * Anyone you invite can add the folder and join all its chats in
+    one tap.
+  * You can create multiple invite links to give different people
+    access to different chats in the folder.
+  * Set a custom wallpaper for any 1-on-1 chat.
+  * Your chat partner can apply the same wallpaper - or choose
+    their own.
+</comment>
+    <requestid>1085240</requestid>
+  </revision>
 </revisionlist>
