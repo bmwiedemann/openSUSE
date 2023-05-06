@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global src_name podman-compose
 Name:           python-%{src_name}
 Version:        1.0.6
