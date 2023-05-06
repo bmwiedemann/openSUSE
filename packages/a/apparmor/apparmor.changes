@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 13:44:56 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Feb 28 19:35:17 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.1.3

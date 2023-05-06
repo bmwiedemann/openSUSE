@@ -2551,4 +2551,14 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   - nscd-systemd-userdb.diff (forwarded request 1068311 from cboltz)</comment>
     <requestid>1068312</requestid>
   </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>74af564ccaf33154f15532a0547517cb</srcmd5>
+    <version>3.1.3</version>
+    <time>1683403735</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS. (forwarded request 1084717 from fcrozat)</comment>
+    <requestid>1085178</requestid>
+  </revision>
 </revisionlist>
