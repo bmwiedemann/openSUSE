@@ -25,8 +25,9 @@ Summary:        An AV1 decoder
 License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://code.videolan.org/videolan/dav1d
-Source:         https://code.videolan.org/videolan/dav1d/-/archive/%{version}/dav1d-%{version}.tar.gz
+Source:         %{url}/-/archive/%{version}/dav1d-%{version}.tar.gz
 Source99:       baselibs.conf
+
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  nasm >= 2.14
 BuildRequires:  pkgconfig
@@ -72,8 +73,7 @@ Group:          System/Libraries
 %install
 %meson_install
 
-%post   -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files
 %{_bindir}/%{name}

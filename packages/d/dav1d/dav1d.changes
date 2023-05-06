@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 10:32:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro, minor spec clean-up.
+
+-------------------------------------------------------------------
 Wed May  3 06:27:24 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.0
