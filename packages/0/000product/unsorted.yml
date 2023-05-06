@@ -2445,6 +2445,8 @@ unsorted:
   - coredns-for-k8s1.25-extras 
   - coredns-for-k8s1.26 
   - coredns-for-k8s1.26-extras 
+  - coredns-for-k8s1.27 
+  - coredns-for-k8s1.27-extras 
   - corepack18 
   - corepack19 
   - coreutils-single 
@@ -3648,6 +3650,7 @@ unsorted:
   - etcd-for-k8s1.24 
   - etcd-for-k8s1.25 
   - etcd-for-k8s1.26 
+  - etcd-for-k8s1.27 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -9519,6 +9522,17 @@ unsorted:
   - kubernetes1.26-kubelet-common 
   - kubernetes1.26-proxy 
   - kubernetes1.26-scheduler 
+  - kubernetes1.27-apiserver 
+  - kubernetes1.27-client 
+  - kubernetes1.27-client-bash-completion 
+  - kubernetes1.27-client-common 
+  - kubernetes1.27-client-fish-completion 
+  - kubernetes1.27-controller-manager 
+  - kubernetes1.27-kubeadm 
+  - kubernetes1.27-kubelet 
+  - kubernetes1.27-kubelet-common 
+  - kubernetes1.27-proxy 
+  - kubernetes1.27-scheduler 
   - kubescape 
   - kubeseal 
   - kubespy 
@@ -22147,7 +22161,6 @@ unsorted:
   - power-profiles-daemon-doc 
   - powercap 
   - powercap-devel 
-  - powerd 
   - powerline 
   - powerline-docs 
   - powerline-fonts 
@@ -22514,8 +22527,6 @@ unsorted:
   - python-designateclient-doc 
   - python-devel 
   - python-djvulibre-doc 
-  - python-doc 
-  - python-doc-pdf 
   - python-efl-doc 
   - python-efl-examples 
   - python-falcon-doc 
@@ -24714,7 +24725,6 @@ unsorted:
   - python310-loguru 
   - python310-logutils 
   - python310-logzero 
-  - python310-looseversion 
   - python310-lscsoft-glue 
   - python310-lupa 
   - python310-lxml-devel 
@@ -25309,6 +25319,7 @@ unsorted:
   - python310-pyprel 
   - python310-pyprimes 
   - python310-pyproj 
+  - python310-pyproject-api 
   - python310-pyproject-hooks 
   - python310-pyproject-metadata 
   - python310-pypsexec 
@@ -28703,6 +28714,7 @@ unsorted:
   - python311-pyprel 
   - python311-pyprimes 
   - python311-pyproj 
+  - python311-pyproject-api 
   - python311-pyproject-hooks 
   - python311-pyproject-metadata 
   - python311-pypsexec 
@@ -32168,6 +32180,7 @@ unsorted:
   - python39-pyprel 
   - python39-pyprimes 
   - python39-pyproj 
+  - python39-pyproject-api 
   - python39-pyproject-hooks 
   - python39-pyproject-metadata 
   - python39-pypsexec 

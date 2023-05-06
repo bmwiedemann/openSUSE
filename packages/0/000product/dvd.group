@@ -3568,6 +3568,7 @@
     <package name="python310-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python310-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="python310-looseversion" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-lxml" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python310-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3576,7 +3577,7 @@
     <package name="python310-notify2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python310-numpy" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-olefile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="python310-packaging" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="python310-packaging" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python310-pip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python310-ply" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
