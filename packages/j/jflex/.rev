@@ -173,4 +173,12 @@
     <comment>sync changes with sle</comment>
     <requestid>978766</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f4c071430bf0ad1cc321bfafc781821b</srcmd5>
+    <version>1.8.2</version>
+    <time>1683403704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084834</requestid>
+  </revision>
 </revisionlist>
