@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May 05 09:02:27 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1683277334.0688448:
+  * Enable VNC endian conversion when worker is big-endian
+  * Add support for serial device of s390x in testapi
+  * dist: Fix unresolved dependency on chattr in OBS
+  * Show initialization errors of `isotovideo` again
+  * Test sending forced VNC update request explicitly
+  * container: Distinguish jq and non-jq variants in BuildTag
+  * Drop setting of TESSDATA_PREFIX in invoke-tests
+  * Replace Perl::Critic::{Freenode,Community}
+  * Add workaround to prevent `t/29-backend-generalhw.t` being unstable
+  * Cover all code of `console.pm`
+  * Fix CMake warning about ordering
+  * ci: Improve marking uncoverable statements
+  * Drop Leap-15.3 from OBS CI
+
+-------------------------------------------------------------------
 Wed Apr 26 08:58:55 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1682499524.994700d:
