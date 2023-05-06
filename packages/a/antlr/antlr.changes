@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 12:54:42 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu May  7 19:43:34 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Build antlr-manual package without examples files [bsc#1120360]
