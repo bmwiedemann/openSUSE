@@ -4080,6 +4080,8 @@ unsorted:
   - fnotifystat-bash-completion 
   - fnott 
   - fnott-zsh-completion 
+  - fntsample 
+  - fntsample-lang 
   - focuswriter 
   - focuswriter-lang 
   - folder-color-common 
@@ -11897,7 +11899,7 @@ unsorted:
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
-  - libfolly-v2023_02_27_00 
+  - libfolly-v2023_05_01_00 
   - libfoma0 
   - libfont-specimen0 
   - libfontconfig1-32bit 
@@ -14834,6 +14836,7 @@ unsorted:
   - libshadowsocks-libev2 
   - libsharp-devel 
   - libsharp0 
+  - libsharpyuv0-32bit 
   - libshibsp-lite11 
   - libshibsp11 
   - libshine-devel 
@@ -15758,83 +15761,83 @@ unsorted:
   - libwx_base-suse-nostl-devel 
   - libwx_baseu-suse-nostl3_0_5 
   - libwx_baseu-suse3_0_5 
-  - libwx_baseu-suse8_0_0 
+  - libwx_baseu-suse9_0_0 
   - libwx_baseu_net-suse-nostl3_0_5 
   - libwx_baseu_net-suse3_0_5 
-  - libwx_baseu_net-suse8_0_0 
+  - libwx_baseu_net-suse9_0_0 
   - libwx_baseu_xml-suse-nostl3_0_5 
   - libwx_baseu_xml-suse3_0_5 
-  - libwx_baseu_xml-suse8_0_0 
+  - libwx_baseu_xml-suse9_0_0 
   - libwx_gtk2u_adv-suse-nostl3_0_5 
   - libwx_gtk2u_adv-suse3_0_5 
-  - libwx_gtk2u_adv-suse8_0_0 
+  - libwx_gtk2u_adv-suse9_0_0 
   - libwx_gtk2u_aui-suse-nostl3_0_5 
   - libwx_gtk2u_aui-suse3_0_5 
-  - libwx_gtk2u_aui-suse8_0_0 
+  - libwx_gtk2u_aui-suse9_0_0 
   - libwx_gtk2u_core-suse-nostl3_0_5 
   - libwx_gtk2u_core-suse3_0_5 
-  - libwx_gtk2u_core-suse8_0_0 
+  - libwx_gtk2u_core-suse9_0_0 
   - libwx_gtk2u_gl-suse-nostl3_0_5 
   - libwx_gtk2u_gl-suse3_0_5 
-  - libwx_gtk2u_gl-suse8_0_0 
+  - libwx_gtk2u_gl-suse9_0_0 
   - libwx_gtk2u_html-suse-nostl3_0_5 
   - libwx_gtk2u_html-suse3_0_5 
-  - libwx_gtk2u_html-suse8_0_0 
+  - libwx_gtk2u_html-suse9_0_0 
   - libwx_gtk2u_media-suse-nostl3_0_5 
   - libwx_gtk2u_media-suse3_0_5 
-  - libwx_gtk2u_media-suse8_0_0 
+  - libwx_gtk2u_media-suse9_0_0 
   - libwx_gtk2u_propgrid-suse-nostl3_0_5 
   - libwx_gtk2u_propgrid-suse3_0_5 
-  - libwx_gtk2u_propgrid-suse8_0_0 
+  - libwx_gtk2u_propgrid-suse9_0_0 
   - libwx_gtk2u_qa-suse-nostl3_0_5 
   - libwx_gtk2u_qa-suse3_0_5 
-  - libwx_gtk2u_qa-suse8_0_0 
+  - libwx_gtk2u_qa-suse9_0_0 
   - libwx_gtk2u_ribbon-suse-nostl3_0_5 
   - libwx_gtk2u_ribbon-suse3_0_5 
-  - libwx_gtk2u_ribbon-suse8_0_0 
+  - libwx_gtk2u_ribbon-suse9_0_0 
   - libwx_gtk2u_richtext-suse-nostl3_0_5 
   - libwx_gtk2u_richtext-suse3_0_5 
-  - libwx_gtk2u_richtext-suse8_0_0 
+  - libwx_gtk2u_richtext-suse9_0_0 
   - libwx_gtk2u_stc-suse-nostl3_0_5 
   - libwx_gtk2u_stc-suse3_0_5 
-  - libwx_gtk2u_stc-suse8_0_0 
+  - libwx_gtk2u_stc-suse9_0_0 
   - libwx_gtk2u_xrc-suse-nostl3_0_5 
   - libwx_gtk2u_xrc-suse3_0_5 
-  - libwx_gtk2u_xrc-suse8_0_0 
-  - libwx_gtk3u_adv-suse-nostl8_0_0 
-  - libwx_gtk3u_adv-suse8_0_0 
-  - libwx_gtk3u_aui-suse-nostl8_0_0 
-  - libwx_gtk3u_aui-suse8_0_0 
-  - libwx_gtk3u_core-suse8_0_0 
-  - libwx_gtk3u_gl-suse-nostl8_0_0 
-  - libwx_gtk3u_gl-suse8_0_0 
-  - libwx_gtk3u_html-suse8_0_0 
-  - libwx_gtk3u_media-suse-nostl8_0_0 
-  - libwx_gtk3u_media-suse8_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl8_0_0 
-  - libwx_gtk3u_propgrid-suse8_0_0 
-  - libwx_gtk3u_qa-suse8_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl8_0_0 
-  - libwx_gtk3u_ribbon-suse8_0_0 
-  - libwx_gtk3u_richtext-suse-nostl8_0_0 
-  - libwx_gtk3u_richtext-suse8_0_0 
-  - libwx_gtk3u_stc-suse-nostl8_0_0 
-  - libwx_gtk3u_stc-suse8_0_0 
-  - libwx_gtk3u_webview-suse8_0_0 
-  - libwx_gtk3u_xrc-suse-nostl8_0_0 
-  - libwx_gtk3u_xrc-suse8_0_0 
-  - libwx_qtu_adv-suse8_0_0 
-  - libwx_qtu_aui-suse8_0_0 
-  - libwx_qtu_core-suse8_0_0 
-  - libwx_qtu_gl-suse8_0_0 
-  - libwx_qtu_html-suse8_0_0 
-  - libwx_qtu_media-suse8_0_0 
-  - libwx_qtu_propgrid-suse8_0_0 
-  - libwx_qtu_qa-suse8_0_0 
-  - libwx_qtu_ribbon-suse8_0_0 
-  - libwx_qtu_richtext-suse8_0_0 
-  - libwx_qtu_stc-suse8_0_0 
-  - libwx_qtu_xrc-suse8_0_0 
+  - libwx_gtk2u_xrc-suse9_0_0 
+  - libwx_gtk3u_adv-suse-nostl9_0_0 
+  - libwx_gtk3u_adv-suse9_0_0 
+  - libwx_gtk3u_aui-suse-nostl9_0_0 
+  - libwx_gtk3u_aui-suse9_0_0 
+  - libwx_gtk3u_core-suse9_0_0 
+  - libwx_gtk3u_gl-suse-nostl9_0_0 
+  - libwx_gtk3u_gl-suse9_0_0 
+  - libwx_gtk3u_html-suse9_0_0 
+  - libwx_gtk3u_media-suse-nostl9_0_0 
+  - libwx_gtk3u_media-suse9_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl9_0_0 
+  - libwx_gtk3u_propgrid-suse9_0_0 
+  - libwx_gtk3u_qa-suse9_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl9_0_0 
+  - libwx_gtk3u_ribbon-suse9_0_0 
+  - libwx_gtk3u_richtext-suse-nostl9_0_0 
+  - libwx_gtk3u_richtext-suse9_0_0 
+  - libwx_gtk3u_stc-suse-nostl9_0_0 
+  - libwx_gtk3u_stc-suse9_0_0 
+  - libwx_gtk3u_webview-suse9_0_0 
+  - libwx_gtk3u_xrc-suse-nostl9_0_0 
+  - libwx_gtk3u_xrc-suse9_0_0 
+  - libwx_qtu_adv-suse9_0_0 
+  - libwx_qtu_aui-suse9_0_0 
+  - libwx_qtu_core-suse9_0_0 
+  - libwx_qtu_gl-suse9_0_0 
+  - libwx_qtu_html-suse9_0_0 
+  - libwx_qtu_media-suse9_0_0 
+  - libwx_qtu_propgrid-suse9_0_0 
+  - libwx_qtu_qa-suse9_0_0 
+  - libwx_qtu_ribbon-suse9_0_0 
+  - libwx_qtu_richtext-suse9_0_0 
+  - libwx_qtu_stc-suse9_0_0 
+  - libwx_qtu_xrc-suse9_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -24496,6 +24499,7 @@ unsorted:
   - python310-jaraco.packaging 
   - python310-jaraco.path 
   - python310-jaraco.stream 
+  - python310-jaraco.test 
   - python310-jaraco.text 
   - python310-jaraco.tidelift 
   - python310-javapackages 
@@ -24926,6 +24930,7 @@ unsorted:
   - python310-oktaloginwrapper 
   - python310-oletools 
   - python310-olm 
+  - python310-onigurumacffi 
   - python310-onnx 
   - python310-onnxconverter-common 
   - python310-opcodes 
@@ -25415,7 +25420,6 @@ unsorted:
   - python310-pytest-relaxed 
   - python310-pytest-remotedata 
   - python310-pytest-reorder 
-  - python310-pytest-repeat 
   - python310-pytest-rerunfailures 
   - python310-pytest-responsemock 
   - python310-pytest-server-fixtures 
@@ -27851,6 +27855,7 @@ unsorted:
   - python311-jaraco.packaging 
   - python311-jaraco.path 
   - python311-jaraco.stream 
+  - python311-jaraco.test 
   - python311-jaraco.text 
   - python311-jaraco.tidelift 
   - python311-javapackages 
@@ -28297,6 +28302,7 @@ unsorted:
   - python311-olefile 
   - python311-oletools 
   - python311-olm 
+  - python311-onigurumacffi 
   - python311-onnx 
   - python311-onnxconverter-common 
   - python311-opcodes 
@@ -28810,7 +28816,6 @@ unsorted:
   - python311-pytest-relaxed 
   - python311-pytest-remotedata 
   - python311-pytest-reorder 
-  - python311-pytest-repeat 
   - python311-pytest-rerunfailures 
   - python311-pytest-responsemock 
   - python311-pytest-server-fixtures 
@@ -31312,6 +31317,7 @@ unsorted:
   - python39-jaraco.packaging 
   - python39-jaraco.path 
   - python39-jaraco.stream 
+  - python39-jaraco.test 
   - python39-jaraco.text 
   - python39-jaraco.tidelift 
   - python39-javapackages 
@@ -31760,6 +31766,7 @@ unsorted:
   - python39-olefile 
   - python39-oletools 
   - python39-olm 
+  - python39-onigurumacffi 
   - python39-onnx 
   - python39-onnxconverter-common 
   - python39-opcodes 
@@ -32275,7 +32282,6 @@ unsorted:
   - python39-pytest-relaxed 
   - python39-pytest-remotedata 
   - python39-pytest-reorder 
-  - python39-pytest-repeat 
   - python39-pytest-rerunfailures 
   - python39-pytest-responsemock 
   - python39-pytest-server-fixtures 
@@ -33846,7 +33852,6 @@ unsorted:
   - raspberrypi-firmware-config 
   - raspberrypi-firmware-config-camera 
   - raspberrypi-firmware-dt 
-  - raspberrypi-firmware-eeprom 
   - raspberrypi-firmware-extra 
   - raspberrypi-firmware-extra-pi4 
   - raspberrypi-rpiboot 
@@ -34648,6 +34653,8 @@ unsorted:
   - sispmctl-devel 
   - sisu-inject 
   - sisu-javadoc 
+  - sisu-mojos 
+  - sisu-mojos-javadoc 
   - sisu-plexus 
   - sitar 
   - skaffold 
