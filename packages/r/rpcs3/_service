@@ -6,9 +6,14 @@
     <param name="versionformat">@PARENT_TAG@~git%cd</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
+    <param name="exclude">3rdparty/curl/curl</param>
     <param name="exclude">3rdparty/ffmpeg</param>
+    <param name="exclude">3rdparty/libpng/libpng</param>
+    <param name="exclude">3rdparty/libsdl-org</param>
+    <param name="exclude">3rdparty/libusb</param>
     <param name="exclude">3rdparty/llvm</param>
     <param name="exclude">3rdparty/XAudio2Redist</param>
+    <param name="exclude">3rdparty/zlib/zlib</param>
     <param name="exclude">*.bat</param>
     <param name="exclude">*.cmd</param>
     <param name="exclude">*.dll</param>
@@ -35,4 +40,3 @@
   </service>
   <service name="download_files" mode="localonly"/>
 </services>
-

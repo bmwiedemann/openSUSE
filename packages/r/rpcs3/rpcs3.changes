@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Fri Apr 28 12:08:36 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230427:
+  * Qt: only do a hard refresh when new games may have been added
+  * Qt: keep game list data when toggling between list and grid layouts
+  * Qt: fix futurewatcher cancel
+  * Qt: Fix data race and undefined behaviour in games_config
+  * Decrease some include madness
+  * screenshot manager: use flow layout
+  * Qt: async game list parsing
+  * Qt: move experimental build warning to gui_application
+  * rsx: Fix up the framebuffer width if the pitch fits scissor but not the clip width
+  * Qt: fix adding vsh to gamelist
+  * Qt: lazy load save data icons
+
+-------------------------------------------------------------------
+Mon Apr 24 12:08:06 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230423:
+  * Qt: fix savedata dialog exception
+  * Qt: lazy load trophy icons
+  * SPU LLVM: disable AVX2 shift intrinsics
+  * Qt: fix table item delegate usage
+  * VS: fix filters
+  * Game List: Make Ctrl+f Focus On The Search Bar
+  * UI: Ignore trademark as a fallback when searching games
+  * UI: Focus to game searchbar on load
+  * Qt: Set icon size function properly
+  * Update FAudio to v 23.04
+  * Update SDL to v 2.26.5
+  * Update miniupnp to v 2.3.3
+  * Qt: properly invalidate item pointer in grid mode
+  * Qt: Lazy load game grid icons and optimize paint method for invisible items
+  * Qt: Remove unused list layout handling of repaint watcher
+  * Qt: don't calculate sizes in grid mode
+  * Qt: lazy load game list icons and dir size
+  * Qt: multithreaded file testing during refresh
+  * Qt: Minor optimization during list refresh
+  * SPU LLVM: fixup custom LICM pass
+  * Emu: Cache games.yml and only save when necessary
+  * unself: rename SCEVersionInfo to version_header
+  * unself: rename SectionInfo to segment_ext_header
+  * unself: some more documentation
+  * unself: rename AppInfo to program_identification_header
+  * unself: rename SelfHeader to ext_hdr
+  * SPU LLVM: sink stores deeper in custom LICM pass
+  * fix warnings
+  * Remove add_only from main_window::Boot args
+  * Optimize AddGamesFromDir a bit
+  * Reduce IO With Game Library Loading
+  * Path to LLVM library fixed in Debug
+  * SPU LLVM: upgrade custom DSE pass
+  * formatting
+  * gl: Refactor attachment clear logic
+  * Keep preceding 0 in firmware strings
+  * Keep second 0 in firmware strings
+  * Qt: add option to reset time played
+  * Qt: add grid filters
+  * Qt: add checkbox to restart dialog
+  * BufferUtils: fix SSE2 path for byteswaps
+  * rsx: Add Ultra shader precision setting for costly accuracy settings
+  * vk: Promote barycentric interpolation to 64-bit
+  * SPU LLVM: make savestates unsavable inside the code
+  * SPU LLVM: optimize register stores
+  * Implement sceNpManagerGetCachedInfo
+
+-------------------------------------------------------------------
+Mon Apr 17 14:19:08 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
+
+- Use system SDL2
+
+-------------------------------------------------------------------
+Mon Apr 17 13:20:09 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
+
+- Use system libusb
+
+-------------------------------------------------------------------
+Mon Apr 17 13:07:12 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230416:
+  * Invert the DJ Hero Turntable crossfader axis bind. On Xbox 360 turntables, Crossfade Left is Y Down, Crossfade Right is Y Up. Also simplify turntable/left stick input.
+  * Round squircled axis values to nearest whole number
+
+-------------------------------------------------------------------
+Sat Apr 15 10:40:18 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230415:
+  * SPU LLVM: use volatile stores for PC update
+  * jit: Fix vec_cmp_eq<u32>
+
+-------------------------------------------------------------------
+Sat Apr 15 08:58:07 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230414:
+  * Fix tmp path in updater
+
+-------------------------------------------------------------------
+Fri Apr 14 16:21:29 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230414:
+  * SPU LLVM: use atomic loads in read channel count
+  * SPU LLVM: fix savestate safety guards
+  * PPU LLVM: disable DSE pass and use volatile store/loads
+  * Add savestate buttons to home menu
+  * cellMic: fix mic type regression
+  * cellMic: fallback to proper sampling rate if necessary
+  * cellMic: change some log levels
+  * cellMic: fallback to 4,2,1 channels by default
+  * cellMic: add some error checks
+  * cellMic: minor format changes for readability
+  * Debugger: Fix step over (#13649)
+  * Try even lower
+  * vk: GTX970 workaround
+  * Forces deterministic FP operations when online
+  * Loader: Make executable analyzation not halt UI when launching games
+  * Fix deref in cellSaveData log
+  * Update build-mac.sh
+  * Skylander Portal: Trap Team Audio Transfers
+
+-------------------------------------------------------------------
+Tue Apr 11 15:56:48 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
+
+- Added fix-toolbar-color.patch
+
+-------------------------------------------------------------------
 Tue Apr 11 12:50:42 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.27~git20230411:

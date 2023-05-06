@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.27~git20230411
+Version:        0.0.27~git20230427
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -25,6 +25,7 @@ URL:            https://rpcs3.net
 Source0:        %{name}-%{version}.tar.xz
 Source1:        intel-ittapi.tar.xz
 Patch1:         fix-test-files.patch
+Patch2:         fix-toolbar-color.patch
 BuildRequires:  gcc-c++
 BuildRequires:  llvm16-devel
 BuildRequires:  cmake(x86-64) >= 3.14.1
@@ -33,6 +34,7 @@ BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(yaml-cpp)
 BuildRequires:  pkgconfig(zlib)
@@ -42,6 +44,7 @@ BuildRequires:  pkgconfig(zlib)
 ##opengl:
 BuildRequires:  pkgconfig(glew) >= 1.13.0
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(sdl2)
 
 ##vulkan:
 BuildRequires:  pkgconfig(vulkan) >= 1.1.126
@@ -94,6 +97,7 @@ An open-source PlayStation 3 emulator/debugger written in C++.
 %prep
 %setup -q -a 1
 %patch1 -p 1
+%patch2 -p 1
 
 #Generate Version Strings
 GIT_VERSION=$(echo %{version} | sed 's|.*git|git~|g')
@@ -127,13 +131,15 @@ cd ../%{name}_build
         -DITTAPI_SOURCE_DIR="${ITTAPI_DIR}" \
         -DUSE_PCH=OFF \
         -DENABLE_PCH=OFF \
-        -DSKIP_PRECOMPILE_HEADERS="ON" \
-        -DUSE_PRECOMPILED_HEADERS="OFF" \
-        -DUSE_SYSTEM_CURL="ON" \
-        -DUSE_SYSTEM_FFMPEG="ON" \
-        -DUSE_SYSTEM_LIBPNG="ON" \
-        -DUSE_SYSTEM_ZLIB="ON" \
-        -DUSE_NATIVE_INSTRUCTIONS="OFF" \
+        -DSKIP_PRECOMPILE_HEADERS=ON \
+        -DUSE_PRECOMPILED_HEADERS=OFF \
+        -DUSE_SYSTEM_CURL=ON \
+        -DUSE_SYSTEM_FFMPEG=ON \
+        -DUSE_SYSTEM_LIBPNG=ON \
+        -DUSE_SYSTEM_LIBUSB=ON \
+        -DUSE_SYSTEM_SDL=ON \
+        -DUSE_SYSTEM_ZLIB=ON \
+        -DUSE_NATIVE_INSTRUCTIONS=OFF \
         -DCMAKE_INSTALL_PREFIX="%{_prefix}" \
         -DCMAKE_INSTALL_LIBEXEC="%{_libexecdir}" \
         -DCMAKE_BUILD_TYPE="Release" \
