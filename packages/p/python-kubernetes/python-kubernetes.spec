@@ -25,7 +25,6 @@ License:        Apache-2.0
 URL:            https://github.com/kubernetes-client/python
 # Source tar - https://pypi.org/project/kubernetes/#files
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
-# https://github.com/kubernetes-client/python/issues/1790
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}

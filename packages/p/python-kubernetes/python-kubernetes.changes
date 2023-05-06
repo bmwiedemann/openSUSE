@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  5 07:16:45 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- included missing changelog entries from "Tue Oct  8 15:24:14 UTC 2019 - Can Bayburt <cbbayburt@suse.com>"
+  to even the diversion with the existing `SUSE:SLE-15-SP4:Update` package
+- removed patch: base64-padding-fix.patch
+  * changes introduced by patch are included in upstream
+
+-------------------------------------------------------------------
 Wed May  3 09:55:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - added: `%{python_sitelib}/kubernetes` and `%{python_sitelib}/kubernetes-%{version}*-info` under %files
@@ -321,6 +329,16 @@ Mon Mar 16 10:37:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Thu Jan  2 12:52:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update dependencies to match up what is in requirements.txt
+
+-------------------------------------------------------------------
+Tue Oct  8 15:24:14 UTC 2019 - Can Bayburt <cbbayburt@suse.com>
+
+- python-ipaddress is only required for building on Python2
+  (on Python3 is part of the standard library)
+- Backport fix for base64 padding in kubeconfig (bsc#1151481)
+  https://github.com/kubernetes-client/python-base/issues/65
+- Added:
+  * base64-padding-fix.patch
 
 -------------------------------------------------------------------
 Tue Aug 13 06:35:14 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
