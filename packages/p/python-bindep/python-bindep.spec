@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-bindep
 Version:        2.11.0
 Release:        0

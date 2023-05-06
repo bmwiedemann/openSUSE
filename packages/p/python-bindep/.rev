@@ -77,4 +77,12 @@
 - add python-rpm-macros dependency</comment>
     <requestid>1074564</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1a80a5e77103a5226136ebd31b4635c9</srcmd5>
+    <version>2.11.0</version>
+    <time>1683403756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085091</requestid>
+  </revision>
 </revisionlist>
