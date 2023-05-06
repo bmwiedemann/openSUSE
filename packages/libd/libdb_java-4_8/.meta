@@ -1,9 +1,0 @@
-<package name="libdb_java-4_8" project="openSUSE:Factory">
-  <title>Berkeley DB Database Library Version 4.8</title>
-  <description>The Berkeley DB Database is a programmatic toolkit that provides
-database support for applications.
-
-This package contains the necessary runtime libraries.</description>
-  <devel project="openSUSE:Factory" package="libdb-4_8"/>
-  <bcntsynctag>libdb-4_8</bcntsynctag>
-</package>
