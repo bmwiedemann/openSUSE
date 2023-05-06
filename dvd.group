@@ -2584,6 +2584,7 @@
     <package name="libsgutils2-1_48-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsharpyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libshumate-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libshumate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2807,12 +2808,12 @@
     <package name="libwpg-0_3-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwps-0_4-4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwrap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libwx_baseu-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_baseu_net-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_baseu_xml-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_gtk3u_core-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_gtk3u_html-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libwx_gtk3u_qa-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_baseu-suse-nostl9_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_baseu_net-suse-nostl9_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_baseu_xml-suse-nostl9_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_gtk3u_core-suse-nostl9_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_gtk3u_html-suse-nostl9_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libwx_gtk3u_qa-suse-nostl9_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libx86emu3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libxapian30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxatracker2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
