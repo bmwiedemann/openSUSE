@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 30 18:18:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Why in the world we download from HTTP?
+
+-------------------------------------------------------------------
 Wed Mar  8 21:17:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Enable --with-system-ffi for non-standard architectures.

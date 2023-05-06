@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  5 11:29:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Sun Apr 30 18:18:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Why in the world we download from HTTP?
+
+-------------------------------------------------------------------
 Wed Mar  8 21:17:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Enable --with-system-ffi for non-standard architectures.

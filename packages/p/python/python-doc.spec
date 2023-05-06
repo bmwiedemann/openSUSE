@@ -22,13 +22,13 @@ Release:        0
 Summary:        Additional Package Documentation for Python
 License:        Python-2.0
 Group:          Development/Languages/Python
-URL:            http://www.python.org/
+URL:            https://www.python.org/
 %define         tarname Python-%{version}
 Source0:        %{tarname}.tar.xz
 # docs for current version are regenerated every day
 # this messes with autobuild "file changed" checks
-#Source2:        http://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-a4.tar.bz2
-#Source3:        http://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-letter.tar.bz2
+#Source2:        https://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-a4.tar.bz2
+#Source3:        https://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-letter.tar.bz2
 Source2:        python-%{version}-docs-pdf-a4.tar.bz2
 Source3:        python-%{version}-docs-pdf-letter.tar.bz2
 # For Patch 66

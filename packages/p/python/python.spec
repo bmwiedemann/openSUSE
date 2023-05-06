@@ -22,10 +22,10 @@ Release:        0
 Summary:        Python Interpreter
 License:        Python-2.0
 Group:          Development/Languages/Python
-URL:            http://www.python.org/
+URL:            https://www.python.org/
 %define         tarversion %{version}
 %define         tarname Python-%{tarversion}
-Source0:        http://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz
+Source0:        https://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz
 Source1:        README.SUSE
 Source8:        sle_tls_checks_policy.py
 #Source11:       testfiles.tar.bz2

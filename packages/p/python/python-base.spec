@@ -24,11 +24,11 @@ Release:        0
 Summary:        Python Interpreter base package
 License:        Python-2.0
 Group:          Development/Languages/Python
-URL:            http://www.python.org/
+URL:            https://www.python.org/
 %define         tarversion %{version}
 %define         tarname Python-%{tarversion}
-Source0:        http://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz
-Source4:        http://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz.asc
+Source0:        https://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz
+Source4:        https://www.python.org/ftp/python/%{version}/%{tarname}.tar.xz.asc
 Source6:        python.keyring
 Source1:        macros.python2
 Source2:        baselibs.conf
