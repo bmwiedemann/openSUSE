@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 14:15:38 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Jan 10 13:28:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Enable tests for python-magic (not python-python-magic) 

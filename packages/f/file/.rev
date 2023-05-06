@@ -1617,4 +1617,12 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
 - Update to 5.44</comment>
     <requestid>1057786</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>b3b7267b5e4cd97ea56b6d3f81417426</srcmd5>
+    <version>5.44</version>
+    <time>1683403698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084807</requestid>
+  </revision>
 </revisionlist>
