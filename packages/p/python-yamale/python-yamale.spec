@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-yamale
 Version:        4.0.4
 Release:        0
