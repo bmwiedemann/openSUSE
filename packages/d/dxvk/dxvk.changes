@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Fri May  5 12:55:46 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Fix empty -32bit package, don't include winedxvk in it.
+- Generate package sources using _service so that submodule sources are included too.
+  DXVK uses vendored Vulkan headed contained in a submodule.
+  Fixes build.
+
+-------------------------------------------------------------------
+Mon Mar  6 15:44:36 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.0
+  - Driver compatibility
+    A Vulkan 1.3 capable driver and wine version are required to run
+    this version of DXVK. See the driver support page for details.
+
+    Many features in this release, especially the shader compilation
+    changes detailed below, require the use of modern Vulkan features,
+    such as Dynamic Rendering, Extended Dynamic State, and Null
+    Descriptors. Due to the significant changes required to make use
+    of them, it was no longer practical to maintain and test code paths
+    for older drivers which do not support these features.
+
+    In practice, any system capable of running D3D11 and D3D12 games
+    using Proton Experimental right now will be able to run DXVK 2.0.
+
+    Note: Third-party Vulkan layers that were not updated for Vulkan 1.3 will no longer work.
+
+    D3D9 changes
+
+    - Memory management improvements
+
+    In order to reduce the likelihood of running out of address space in
+    32-bit D3D9 games, DXVK will now use memory-mapped files to store
+    shadow copies of textures. This allows us to unmap memory that is
+    not being used by the game, thus freeing up significant amounts of
+    address space, up to several hundred Megabytes. See PR #2663 for
+    implementation details.
+
+    Note: This change does not affect 64-bit games since address space
+    is not a concern there. It also does not affect D3D10 or D3D11 since
+    resource uploads work differently in those APIs and are much more
+    memory efficient.
+
+    Render target feedback loops
+
+    On drivers which support VK_EXT_attachment_feedback_loop_layout,
+    reading from an active render target in D3D9 games is now properly
+    supported, which previously caused rendering artifacts on newer AMD
+    hardware and required driver-level workarounds. This affects a number
+    of games, including GTA IV.
+
+    Alpha test improvements
+
+    The D3D9 alpha test implementation was changed to more closely match
+    the behaviour of Nvidia's implementation, which fixes inaccuracies
+    in various games. The d3d9.alphaTestWiggleRoom option was removed,
+    and games that previously required this option should now work
+    correctly by default.
+
+    D3D10 changes
+
+    DXVK previously shipped incomplete implementations of d3d10.dll and
+    d3d10_1.dll, but has not installed them by default since Version 1.6
+    since wine's implementation provides more features that are needed
+    for D3D10 games to run, including the D3D10 Effects framework.
+
+    Since our implementation is incomplete and has not been used by Proton
+    or Lutris for a very long time, DXVK will no longer ship these DLLs
+    starting with this release. The D3D10 API itself is still supported
+    via d3d10core.dll.
+
+    D3D11 changes
+
+    Feature support
+
+    DXVK now exposes D3D11 Feature Level 12_1 with the following newly added features:
+
+    Tiled Resources up to Tier 3, provided that the corresponding Vulkan sparse binding and sparse residency features are supported
+    Conservative Rasterization up to Tier 3, provided that the corresponding Vulkan conservative rasterization features are supported.
+    Rasterizer Ordered Views, provided that the corresponding Vulkan fragment shader interlock features are supported.
+
+    While no games are known to use these features directly in D3D11, some
+    games and game launchers rely on feature support being consistent
+    between D3D11 and D3D12 in order to allow users to enable D3D12
+    in the game options. While our implementation of these feature is
+    generally functional, there may be bugs or performance issues in
+    case a game does use them.
+
+    Furthermore, DXVK now supports the D3D11_FEATURE_SHADER_CACHE and
+    D3D11_FEATURE_D3D11_OPTIONS5 feature queries.
+
+    Note: AMD Vulkan drivers do currently not support fragment shader
+    interlock and are limited to feature level 12_0.
+
+    Note: Intel's ANV driver currently does not support the corresponding
+    Vulkan features and is therefore limited to feature level 11_1. This
+    applies to both DXVK and vkd3d-proton.
+
+    Device contexts
+
+    The implementations of ID3D11DeviceContext were refactored so
+    that immediate contexts and deferred contexts no longer use common
+    entry points. This is closer to Windows behaviour and may improve
+    compatibility to third-party libraries and mods that hook into the
+    D3D11 immediate context specifically, and reduces CPU overhead since
+    some frequently used code paths are now more specialized for each
+    context type.
+
+    State clear and restore methods were optimized to further reduce CPU
+    overhead in games that heavily use deferred contexts, e.g. Assassin's
+    Creed: Origins, or explicitly call ClearState frequently, e.g. God
+    of War.
+
+    Shader compilation changes
+
+    On drivers which support VK_EXT_graphics_pipeline_library, including
+    the IndependentInterpolationDecoration feature, Vulkan shaders will
+    now be compiled at the time the game loads its D3D shaders, rather
+    than at draw time. This reduces or eliminates shader compile stutter
+    in many games.
+
+    In games that load their shaders during loading screens or in the
+    menu, this can lead to prolonged periods of very high CPU utilization,
+    especially on weaker CPUs. For affected games it is recommended to
+    wait for shader compilation to finish before starting the game to
+    avoid stutter and low performance. Shader compiler activity can be
+    monitored with DXVK_HUD=compiler.
+
+    Note: The relevant Vulkan features are currently only supported
+    by Nvidia drivers (version 520.56.06 or later). Driver support is
+    expected to improve in the future.
+
+    State cache interactions
+
+    This feature largely replaces the state cache. If the given Vulkan
+    features are supported, only pipelines that cannot use the pipeline
+    library feature (e.g. pipelines using tessellation shaders) will
+    be written to and read from the state cache, so newly created state
+    cache files will typically only contain a few dozen to a few hundred
+    pipelines, as opposed to thousands or tens of thousands. If the
+    graphics pipeline library feature is not supported, the state cache
+    will be used the same way as it was in older DXVK versions.
+
+    Note: State cache files created with DXVK versions prior to 1.4.3 can no longer be used.
+
+    Note: Despite our efforts, due to the significant changes under
+    the hood, there may be issues when using an older state cache file
+    under some circumstances. If you experience crashes, please test
+    if the game runs with a clean cache file (DXVK_STATE_CACHE=reset)
+    before reporting a bug.
+
+    Caveats
+
+    Games which only load their D3D shaders at draw time (e.g. Witcher 3,
+    most Unreal Engine games) will still exhibit some stutter, although
+    it should still be less severe than without this feature.
+
+    For 32-bit games, the implementation tries to aggressively free
+    Vulkan pipelines in order to save memory. This may cause stutter if
+    the driver's on-disk shader cache is not working properly.
+
+    On Nvidia drivers, the on-disk shader cache will be significantly
+    larger than with previous versions of DXVK. It may be necessary
+    to bypass the size limit by setting the environment variable
+    __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1, or setting a new limit manually
+    via __GL_SHADER_DISK_CACHE_SIZE (in bytes).
+
+    Linux build support
+
+    Work from dxvk-native has been upstreamed in order to facilitate
+    native Linux builds of DXVK, which can be used as a drop-in
+    replacement to port D3D applications without having to change
+    rendering code.
+
+    Note: When porting a D3D11 application, please refer to the Feature
+    support and Developer Guidelines pages on the Wiki to avoid hitting
+    unsupported or slow code paths in DXVK.
+
+-------------------------------------------------------------------
 Wed Jul 13 15:18:04 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.10.2

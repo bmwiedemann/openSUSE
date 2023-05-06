@@ -1,7 +1,7 @@
 #
 # spec file for package dxvk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dxvk
-Version:        1.10.2
+Version:        2.0
 Release:        0
 Summary:        Vulkan-based D3D11 implementation for Linux / Wine
 License:        zlib-acknowledgement
 Group:          System/Emulators/PC
 URL:            https://github.com/doitsujin/dxvk
-Source0:        https://github.com/doitsujin/dxvk/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 
 BuildRequires:  gcc

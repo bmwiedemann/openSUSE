@@ -114,4 +114,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>990433</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00c5147a400d504cfffc7e29b399a1c2</srcmd5>
+    <version>2.0</version>
+    <time>1683403792</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix empty -32bit package, don't include winedxvk in it.
+- Generate package sources using _service so that submodule sources are included too.
+  DXVK uses vendored Vulkan headed contained in a submodule.
+  Fixes build. (forwarded request 1085180 from Thaodan)</comment>
+    <requestid>1085227</requestid>
+  </revision>
 </revisionlist>
