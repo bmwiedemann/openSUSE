@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
 Version:        9.1.9
 Release:        0
