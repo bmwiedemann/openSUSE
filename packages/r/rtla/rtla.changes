@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 12:22:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add hwnoise tool which got added with Linux 6.3
+
+-------------------------------------------------------------------
 Tue Jan 10 10:41:54 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Add missing libtraceevent linker argument (workaround until

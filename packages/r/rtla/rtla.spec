@@ -63,8 +63,10 @@ make install DESTDIR=%{buildroot} STRIP=true
 # Fixup symlinks as they are pointing to DESTDIR instead prefix
 rm %{buildroot}%{_bindir}/osnoise
 rm %{buildroot}%{_bindir}/timerlat
+rm -f %{buildroot}%{_bindir}/hwnoise
 ln -sf %{_bindir}/rtla %{buildroot}%{_bindir}/osnoise
 ln -sf %{_bindir}/rtla %{buildroot}%{_bindir}/timerlat
+ln -sf %{_bindir}/rtla %{buildroot}%{_bindir}/hwnoise
 
 %files
 %license COPYING
@@ -73,6 +75,7 @@ ln -sf %{_bindir}/rtla %{buildroot}%{_bindir}/timerlat
 %{_bindir}/rtla
 %{_bindir}/osnoise
 %{_bindir}/timerlat
+%{_bindir}/hwnoise
 
 %files rebuild
 %license COPYING
