@@ -182,4 +182,13 @@
 </comment>
     <requestid>1068186</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ab070458bc493b19ca714dc553c9c8c0</srcmd5>
+    <version>1.1.7</version>
+    <time>1683403717</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing cmake config files for 32bit packages
+</comment>
+    <requestid>1085014</requestid>
+  </revision>
 </revisionlist>
