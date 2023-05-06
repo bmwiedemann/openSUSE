@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 12:48:37 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Jan 26 06:54:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Package and distribute the new ant-jakartamail
