@@ -7,4 +7,12 @@
     <comment>Required by ansible update.</comment>
     <requestid>949873</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d3eb334d7430d54e8e0411cfca6b1f5</srcmd5>
+    <version>1.2.7</version>
+    <time>1683403745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085073</requestid>
+  </revision>
 </revisionlist>

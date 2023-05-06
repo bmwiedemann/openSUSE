@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 11:56:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Jan 28 16:31:22 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add remove_setuptools_scm.patch to get rid of setuptools-scm and fix the version

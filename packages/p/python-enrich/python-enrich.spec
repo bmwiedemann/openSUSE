@@ -1,7 +1,7 @@
 #
 # spec file for package python-enrich
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
+%{?sle15_python_module_pythons}
 %{?python_enable_dependency_generator}
 Name:           python-enrich
 Version:        1.2.7
@@ -26,10 +26,10 @@ License:        MIT
 URL:            https://github.com/pycontribs/enrich
 Source:         https://files.pythonhosted.org/packages/source/e/enrich/enrich-%{version}.tar.gz
 Patch0:         remove_setuptools_scm.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
