@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May 05 19:51:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.80.0:
+  * Update the CPE generation for spring-security-core (#1789)
+  * chore: do not HTML escape PackageURLs (#1782)
+  * chore: do not include kernel module cataloger by default
+    (#1784)
+  * chore(docs): Update lists of catalogers (#1780)
+  * chore: add more detail on SPDX file IDs (#1769)
+  * Search /usr/share for rpmdb to fix scan on ostree-managed
+    images (#1756)
+  * chore(deps): bump github.com/docker/docker (#1767)
+  * rename sbom.PackageCatalog to sbom.Packages (#1773)
+  * chore(deps): bump modernc.org/sqlite from 1.22.0 to 1.22.1
+    (#1768)
+  * Create python requirements metadata (#1759)
+  * chore: update test redactor ordering (#1765)
+  * rename pkg.Catalog to pkg.Collection (#1764)
+  * chore(deps): bump modernc.org/sqlite from 1.21.2 to 1.22.0
+    (#1758)
+  * chore: go-rpmdb update (#1757)
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from
+    0.7.1-0.20221222100750-41a1ac565cce to 0.7.1 (#1706)
+  * fix: Improve pnpm support (#1752)
+
+-------------------------------------------------------------------
 Sat Apr 22 14:33:37 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.79.0:
