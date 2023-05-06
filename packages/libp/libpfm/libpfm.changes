@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  4 23:42:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13:
+  * update Intel SKL/SKX/CLX event table
+  * add ARM Neoverse V2 core PMU support
+  * move ARM Neoverse N2 to ARMv9 support
+  * add ARM v9 support basic infrastructure
+  * add Arm Neoverse V1 core PMU support
+  * Update Intel SapphireRapid event table
+  * update Intel Icelake event table
+  * update AMD Zen4 event table
+  * add AMD Zen4 core PMU support
+  * correctly detect all AMD Zen3 processors
+  * fix CPU_CLK_UNHALTED.REF_DISTRIBUTED on Intel Icelake 
+
+-------------------------------------------------------------------
 Thu Dec  8 20:52:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12:

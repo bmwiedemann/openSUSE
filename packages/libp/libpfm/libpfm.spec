@@ -1,7 +1,7 @@
 #
 # spec file for package libpfm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define vname   libpfm4
 %bcond_without python2
 Name:           libpfm
-Version:        4.12.0
+Version:        4.13.0
 Release:        0
 Summary:        Library to encode performance events
 License:        MIT
