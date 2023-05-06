@@ -1,7 +1,7 @@
 #
 # spec file for package python-mitmproxy-wireguard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define modname mitmproxy_wireguard
 Name:           python-mitmproxy-wireguard
-Version:        0.1.19
+Version:        0.1.23
 Release:        0
 Summary:        WireGuard interface for mitmproxy
 License:        MIT

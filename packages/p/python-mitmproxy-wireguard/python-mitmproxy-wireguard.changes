@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  5 08:00:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.1.23
+  * Fix memory leak in TcpStream.read, which caused any bytes object returned by this method never to be garbage collected.
+  * Run cleanup of TCP connection handler tasks eagerly instead of only at task shutdown.
+  * Update to pyo3 v0.18.2, which includes a fix for a rare race condition.
+  * Pin x25519-dalek dependency to =2.0.0-pre.1 to fix build issues with recent releases that contain breaking changes.
+
+-------------------------------------------------------------------
 Tue Dec 13 14:59:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort of mitmproxy-wireguard version 0.1.19.
