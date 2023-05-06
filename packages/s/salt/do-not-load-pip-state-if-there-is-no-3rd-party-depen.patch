@@ -1,4 +1,4 @@
-From d97cbae7eb3cb0030d355a4ae3fb35745fed5da0 Mon Sep 17 00:00:00 2001
+From 4060d4cd24ac0fbcf83c1521553921d76c070a57 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Fri, 21 Sep 2018 17:31:39 +0200
 Subject: [PATCH] Do not load pip state if there is no 3rd party
@@ -10,7 +10,7 @@ Safe import 3rd party dependency
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/salt/modules/pip.py b/salt/modules/pip.py
-index 7135a9145f..da26416662 100644
+index c4de0c2984..a60bdca0bb 100644
 --- a/salt/modules/pip.py
 +++ b/salt/modules/pip.py
 @@ -96,6 +96,12 @@ import salt.utils.url
@@ -41,6 +41,6 @@ index 7135a9145f..da26416662 100644
  
  def _pip_bin_env(cwd, bin_env):
 -- 
-2.37.3
+2.39.2
 
 

@@ -1,4 +1,4 @@
-From 3ccce128163f6cd9a9360d3b28729702a5d260c1 Mon Sep 17 00:00:00 2001
+From 7b47e6f19b38d773a6ec744209753f3d29b094ea Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 16:40:45 +0100
 Subject: [PATCH] early feature: support-config
@@ -537,7 +537,7 @@ Check last function by full name
  salt/utils/parsers.py                     | 114 +++++
  scripts/salt-support                      |  11 +
  setup.py                                  |   2 +
- tests/unit/cli/test_support.py            | 553 +++++++++++++++++++++
+ tests/pytests/unit/cli/test_support.py    | 553 +++++++++++++++++++++
  tests/unit/modules/test_saltsupport.py    | 496 +++++++++++++++++++
  28 files changed, 2958 insertions(+), 7 deletions(-)
  create mode 100644 salt/cli/support/__init__.py
@@ -557,11 +557,11 @@ Check last function by full name
  create mode 100644 salt/modules/saltsupport.py
  create mode 100644 salt/states/saltsupport.py
  create mode 100755 scripts/salt-support
- create mode 100644 tests/unit/cli/test_support.py
+ create mode 100644 tests/pytests/unit/cli/test_support.py
  create mode 100644 tests/unit/modules/test_saltsupport.py
 
 diff --git a/doc/ref/modules/all/index.rst b/doc/ref/modules/all/index.rst
-index fef851215a..a36ab6b2e9 100644
+index cbd8b0cdc5..abd40e0bc7 100644
 --- a/doc/ref/modules/all/index.rst
 +++ b/doc/ref/modules/all/index.rst
 @@ -416,6 +416,7 @@ execution modules
@@ -573,10 +573,10 @@ index fef851215a..a36ab6b2e9 100644
      schedule
      scp_mod
 diff --git a/doc/ref/states/all/index.rst b/doc/ref/states/all/index.rst
-index da7be43039..c968315970 100644
+index 13ff645b59..7a062c227b 100644
 --- a/doc/ref/states/all/index.rst
 +++ b/doc/ref/states/all/index.rst
-@@ -282,6 +282,7 @@ state modules
+@@ -283,6 +283,7 @@ state modules
      rvm
      salt_proxy
      saltmod
@@ -1740,10 +1740,10 @@ index 0000000000..391acdb606
 +      info: List of all available groups
 +      output: table
 diff --git a/salt/loader/lazy.py b/salt/loader/lazy.py
-index 8a5d0dd267..e7d692859c 100644
+index d319fe54b4..5de995d446 100644
 --- a/salt/loader/lazy.py
 +++ b/salt/loader/lazy.py
-@@ -968,8 +968,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
+@@ -972,8 +972,10 @@ class LazyLoader(salt.utils.lazy.LazyDict):
          mod_names = [module_name] + list(virtual_aliases)
  
          for attr in funcs_to_load:
@@ -2168,13 +2168,13 @@ index 0000000000..e800e3bf1f
 +
 +    return __virtualname__
 diff --git a/salt/scripts.py b/salt/scripts.py
-index 7f6d80de59..1276d2c8b2 100644
+index 07393373c9..16b032af2e 100644
 --- a/salt/scripts.py
 +++ b/salt/scripts.py
-@@ -583,3 +583,18 @@ def salt_unity():
-         sys.argv.pop(1)
-         s_fun = getattr(sys.modules[__name__], "salt_{}".format(cmd))
-     s_fun()
+@@ -622,3 +622,18 @@ def salt_pip():
+     ] + _pip_args(sys.argv[1:], extras)
+     ret = subprocess.run(command, shell=False, check=False, env=env)
+     sys.exit(ret.returncode)
 +
 +
 +def salt_support():
@@ -2191,10 +2191,10 @@ index 7f6d80de59..1276d2c8b2 100644
 +    _install_signal_handlers(client)
 +    client.run()
 diff --git a/salt/state.py b/salt/state.py
-index d6d2c90168..3196f3c635 100644
+index 868be2749e..8352a8defc 100644
 --- a/salt/state.py
 +++ b/salt/state.py
-@@ -1592,7 +1592,9 @@ class State:
+@@ -1671,7 +1671,9 @@ class State:
                  names = []
                  if state.startswith("__"):
                      continue
@@ -2205,27 +2205,27 @@ index d6d2c90168..3196f3c635 100644
                  if orchestration_jid is not None:
                      chunk["__orchestration_jid__"] = orchestration_jid
                  if "__sls__" in body:
-@@ -2273,9 +2275,16 @@ class State:
-                         ret = self.call_parallel(cdata, low)
+@@ -2382,9 +2384,16 @@ class State:
                      else:
                          self.format_slots(cdata)
--                        ret = self.states[cdata["full"]](
--                            *cdata["args"], **cdata["kwargs"]
--                        )
-+                        if cdata["full"].split(".")[-1] == "__call__":
-+                            # __call__ requires OrderedDict to preserve state order
-+                            # kwargs are also invalid overall
-+                            ret = self.states[cdata["full"]](
-+                                cdata["args"], module=None, state=cdata["kwargs"]
-+                            )
-+                        else:
-+                            ret = self.states[cdata["full"]](
-+                                *cdata["args"], **cdata["kwargs"]
-+                            )
+                         with salt.utils.files.set_umask(low.get("__umask__")):
+-                            ret = self.states[cdata["full"]](
+-                                *cdata["args"], **cdata["kwargs"]
+-                            )
++                            if cdata["full"].split(".")[-1] == "__call__":
++                                # __call__ requires OrderedDict to preserve state order
++                                # kwargs are also invalid overall
++                                ret = self.states[cdata["full"]](
++                                    cdata["args"], module=None, state=cdata["kwargs"]
++                                )
++                            else:
++                                ret = self.states[cdata["full"]](
++                                    *cdata["args"], **cdata["kwargs"]
++                                )
                  self.states.inject_globals = {}
-             if (
-                 "check_cmd" in low
-@@ -3362,10 +3371,31 @@ class State:
+             if "check_cmd" in low:
+                 state_check_cmd = "{0[state]}.mod_run_check_cmd".format(low)
+@@ -3489,10 +3498,31 @@ class State:
          running.update(errors)
          return running
  
@@ -2698,30 +2698,30 @@ index 0000000000..4e0e79f3ea
 +if __name__ == "__main__":
 +    salt_support()
 diff --git a/setup.py b/setup.py
-index bd11ff95f7..d633af35ec 100755
+index 931ed40a51..e60f1b7085 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -1165,6 +1165,7 @@ class SaltDistribution(distutils.dist.Distribution):
-                 "scripts/salt-master",
+@@ -1061,6 +1061,7 @@ class SaltDistribution(distutils.dist.Distribution):
                  "scripts/salt-minion",
                  "scripts/salt-proxy",
+                 "scripts/salt-run",
 +                "scripts/salt-support",
                  "scripts/salt-ssh",
                  "scripts/salt-syndic",
                  "scripts/spm",
-@@ -1216,6 +1217,7 @@ class SaltDistribution(distutils.dist.Distribution):
-                 "salt-key = salt.scripts:salt_key",
+@@ -1109,6 +1110,7 @@ class SaltDistribution(distutils.dist.Distribution):
                  "salt-master = salt.scripts:salt_master",
                  "salt-minion = salt.scripts:salt_minion",
+                 "salt-run = salt.scripts:salt_run",
 +                "salt-support = salt.scripts:salt_support",
                  "salt-ssh = salt.scripts:salt_ssh",
                  "salt-syndic = salt.scripts:salt_syndic",
                  "spm = salt.scripts:salt_spm",
-diff --git a/tests/unit/cli/test_support.py b/tests/unit/cli/test_support.py
+diff --git a/tests/pytests/unit/cli/test_support.py b/tests/pytests/unit/cli/test_support.py
 new file mode 100644
 index 0000000000..dc0e99bb3d
 --- /dev/null
-+++ b/tests/unit/cli/test_support.py
++++ b/tests/pytests/unit/cli/test_support.py
 @@ -0,0 +1,553 @@
 +"""
 +    :codeauthor: Bo Maryniuk <bo@suse.de>
@@ -3779,6 +3779,6 @@ index 0000000000..f9ce7be29a
 +                "00:00:00.000 - The real TTYs became " "pseudo TTYs and vice versa"
 +            ]
 -- 
-2.37.3
+2.39.2
 
 

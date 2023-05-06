@@ -1,4 +1,4 @@
-From 875fb95ae468042005cd0db463f13a9315c1e756 Mon Sep 17 00:00:00 2001
+From 94e702e83c05814296ea8987a722b71e99117360 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 22 May 2019 13:00:46 +0100
@@ -21,6 +21,6 @@ index 0000000000..94d05fb2ee
 +    - /usr/share/salt-formulas/states
 +    - /srv/salt
 -- 
-2.37.3
+2.39.2
 
 

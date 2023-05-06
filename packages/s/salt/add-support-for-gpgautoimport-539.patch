@@ -1,4 +1,4 @@
-From f92891c007ee55d9ccc2d7b3da53e4e0a6fc94c3 Mon Sep 17 00:00:00 2001
+From 2e103365c50fe42a72de3e9d57c3fdbee47454aa Mon Sep 17 00:00:00 2001
 From: Michael Calmer <mc@suse.de>
 Date: Fri, 8 Jul 2022 10:15:37 +0200
 Subject: [PATCH] add support for gpgautoimport (#539)
@@ -18,10 +18,10 @@ Subject: [PATCH] add support for gpgautoimport (#539)
  2 files changed, 140 insertions(+), 31 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index cbfbc4b78d..2c36e2968a 100644
+index 318c871b37..051f8f72c7 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -589,7 +589,7 @@ def list_upgrades(refresh=True, root=None, **kwargs):
+@@ -623,7 +623,7 @@ def list_upgrades(refresh=True, root=None, **kwargs):
          salt '*' pkg.list_upgrades
      """
      if refresh:
@@ -30,7 +30,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      ret = dict()
      cmd = ["list-updates"]
-@@ -703,7 +703,7 @@ def info_available(*names, **kwargs):
+@@ -737,7 +737,7 @@ def info_available(*names, **kwargs):
  
      # Refresh db before extracting the latest package
      if kwargs.get("refresh", True):
@@ -39,15 +39,15 @@ index cbfbc4b78d..2c36e2968a 100644
  
      pkg_info = []
      batch = names[:]
-@@ -1393,7 +1393,6 @@ def mod_repo(repo, **kwargs):
-         cmd_opt.append("--name='{}'".format(kwargs.get("humanname")))
+@@ -1439,7 +1439,6 @@ def mod_repo(repo, **kwargs):
+         cmd_opt.append(kwargs.get("name"))
  
      if kwargs.get("gpgautoimport") is True:
 -        global_cmd_opt.append("--gpg-auto-import-keys")
          call_refresh = True
  
      if cmd_opt:
-@@ -1405,8 +1404,8 @@ def mod_repo(repo, **kwargs):
+@@ -1451,8 +1450,8 @@ def mod_repo(repo, **kwargs):
          # when used with "zypper ar --refresh" or "zypper mr --refresh"
          # --gpg-auto-import-keys is not doing anything
          # so we need to specifically refresh here with --gpg-auto-import-keys
@@ -58,7 +58,7 @@ index cbfbc4b78d..2c36e2968a 100644
      elif not added and not cmd_opt:
          comment = "Specified arguments did not result in modification of repo"
  
-@@ -1417,7 +1416,7 @@ def mod_repo(repo, **kwargs):
+@@ -1463,7 +1462,7 @@ def mod_repo(repo, **kwargs):
      return repo
  
  
@@ -67,7 +67,7 @@ index cbfbc4b78d..2c36e2968a 100644
      """
      Trigger a repository refresh by calling ``zypper refresh``. Refresh will run
      with ``--force`` if the "force=True" flag is passed on the CLI or
-@@ -1428,6 +1427,17 @@ def refresh_db(force=None, root=None):
+@@ -1474,6 +1473,17 @@ def refresh_db(force=None, root=None):
  
          {'<database name>': Bool}
  
@@ -85,7 +85,7 @@ index cbfbc4b78d..2c36e2968a 100644
      root
          operate on a different root directory.
  
-@@ -1448,11 +1458,22 @@ def refresh_db(force=None, root=None):
+@@ -1494,11 +1504,22 @@ def refresh_db(force=None, root=None):
      salt.utils.pkg.clear_rtag(__opts__)
      ret = {}
      refresh_opts = ["refresh"]
@@ -109,7 +109,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      for line in out.splitlines():
          if not line:
-@@ -1637,7 +1658,7 @@ def install(
+@@ -1683,7 +1704,7 @@ def install(
                  'arch': '<new-arch>'}}}
      """
      if refresh:
@@ -118,7 +118,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      try:
          pkg_params, pkg_type = __salt__["pkg_resource.parse_targets"](
-@@ -1932,7 +1953,7 @@ def upgrade(
+@@ -1980,7 +2001,7 @@ def upgrade(
          cmd_update.insert(0, "--no-gpg-checks")
  
      if refresh:
@@ -127,7 +127,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      if dryrun:
          cmd_update.append("--dry-run")
-@@ -2759,7 +2780,7 @@ def search(criteria, refresh=False, **kwargs):
+@@ -2808,7 +2829,7 @@ def search(criteria, refresh=False, **kwargs):
      root = kwargs.get("root", None)
  
      if refresh:
@@ -136,7 +136,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      cmd = ["search"]
      if kwargs.get("match") == "exact":
-@@ -2910,7 +2931,7 @@ def download(*packages, **kwargs):
+@@ -2959,7 +2980,7 @@ def download(*packages, **kwargs):
  
      refresh = kwargs.get("refresh", False)
      if refresh:
@@ -145,7 +145,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      pkg_ret = {}
      for dld_result in (
-@@ -3062,7 +3083,7 @@ def list_patches(refresh=False, root=None, **kwargs):
+@@ -3111,7 +3132,7 @@ def list_patches(refresh=False, root=None, **kwargs):
          salt '*' pkg.list_patches
      """
      if refresh:
@@ -154,7 +154,7 @@ index cbfbc4b78d..2c36e2968a 100644
  
      return _get_patches(root=root)
  
-@@ -3156,7 +3177,7 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
+@@ -3205,7 +3226,7 @@ def resolve_capabilities(pkgs, refresh=False, root=None, **kwargs):
          salt '*' pkg.resolve_capabilities resolve_capabilities=True w3m_ssl
      """
      if refresh:
@@ -164,10 +164,10 @@ index cbfbc4b78d..2c36e2968a 100644
      ret = list()
      for pkg in pkgs:
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index fea6eeb004..3f1560a385 100644
+index e85c93da3b..f5b6d74b6f 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -358,7 +358,12 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -377,7 +377,12 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          run_out = {"stderr": "", "stdout": "\n".join(ref_out), "retcode": 0}
  
          zypper_mock = MagicMock(return_value=run_out)
@@ -181,7 +181,7 @@ index fea6eeb004..3f1560a385 100644
          with patch.dict(zypper.__salt__, {"cmd.run_all": zypper_mock}):
              with patch.object(salt.utils.pkg, "clear_rtag", Mock()):
                  result = zypper.refresh_db()
-@@ -376,6 +381,73 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -395,6 +400,73 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
                  zypper_mock.assert_called_with(
                      ["zypper", "--non-interactive", "refresh", "--force"], **call_kwargs
                  )
@@ -255,7 +255,7 @@ index fea6eeb004..3f1560a385 100644
  
      def test_info_installed(self):
          """
-@@ -1555,18 +1627,23 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2082,18 +2154,23 @@ Repository 'DUMMY' not found by its alias, number, or URI.
  
          url = self.new_repo_config["url"]
          name = self.new_repo_config["name"]
@@ -281,7 +281,7 @@ index fea6eeb004..3f1560a385 100644
  
      def test_repo_noadd_nomod_ref(self):
          """
-@@ -1585,15 +1662,17 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2112,15 +2189,17 @@ Repository 'DUMMY' not found by its alias, number, or URI.
              "salt.modules.zypperpkg", **self.zypper_patcher_config
          )
  
@@ -304,7 +304,7 @@ index fea6eeb004..3f1560a385 100644
  
      def test_repo_add_mod_ref(self):
          """
-@@ -1606,10 +1685,10 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2133,10 +2212,10 @@ Repository 'DUMMY' not found by its alias, number, or URI.
          zypper_patcher = patch.multiple(
              "salt.modules.zypperpkg", **self.zypper_patcher_config
          )
@@ -317,7 +317,7 @@ index fea6eeb004..3f1560a385 100644
              zypper.mod_repo(
                  name, **{"url": url, "refresh": True, "gpgautoimport": True}
              )
-@@ -1617,11 +1696,17 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2144,11 +2223,17 @@ Repository 'DUMMY' not found by its alias, number, or URI.
                  zypper.__zypper__(root=None).xml.call.call_args_list,
                  [
                      call("ar", url, name),
@@ -337,7 +337,7 @@ index fea6eeb004..3f1560a385 100644
              )
  
      def test_repo_noadd_mod_ref(self):
-@@ -1641,16 +1726,19 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+@@ -2168,16 +2253,19 @@ Repository 'DUMMY' not found by its alias, number, or URI.
              "salt.modules.zypperpkg", **self.zypper_patcher_config
          )
  
@@ -364,6 +364,6 @@ index fea6eeb004..3f1560a385 100644
  
      def test_wildcard_to_query_match_all(self):
 -- 
-2.37.3
+2.39.2
 
 

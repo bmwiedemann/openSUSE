@@ -1,4 +1,4 @@
-From d4c70bdcb8d871bf3a7e15299b69b9687b7d0d94 Mon Sep 17 00:00:00 2001
+From e7ef0b5a46cc69a9237033d8dc4dbc60c0802a20 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Mon, 31 Jan 2022 10:24:26 +0100
 Subject: [PATCH] Drop serial from event.unpack in cli.batch_async
@@ -29,6 +29,6 @@ index 09aa85258b..1012ce37cc 100644
                  if mtag.startswith(pattern[:-1]):
                      minion = data["id"]
 -- 
-2.37.3
+2.39.2
 
 

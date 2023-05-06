@@ -1,4 +1,4 @@
-From 97753443c2d782b61fd51457d13309405e8f12d8 Mon Sep 17 00:00:00 2001
+From c5236dadcffc24c00181c10ac4cf56020371c538 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 18:40:40 +0100
 Subject: [PATCH] Add "migrated" state and GPG key management functions
@@ -28,13 +28,13 @@ Convert test to pytests
  tests/pytests/unit/modules/test_yumpkg.py    |  44 +-
  tests/pytests/unit/modules/test_zypperpkg.py |  45 +-
  tests/pytests/unit/states/test_pkgrepo.py    | 448 +++++++++++++++++++
- 8 files changed, 1071 insertions(+), 4 deletions(-)
+ 8 files changed, 1070 insertions(+), 5 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 544143d286..21ccc2a73c 100644
+index 3289f6604d..9885e9fb60 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -2211,7 +2211,7 @@ def _parse_repo_keys_output(cmd_ret):
+@@ -2197,7 +2197,7 @@ def _parse_repo_keys_output(cmd_ret):
      return ret
  
  
@@ -43,7 +43,7 @@ index 544143d286..21ccc2a73c 100644
      """
      .. versionadded:: 2017.7.0
  
-@@ -2319,6 +2319,7 @@ def add_repo_key(
+@@ -2305,6 +2305,7 @@ def add_repo_key(
      aptkey=True,
      keydir=None,
      keyfile=None,
@@ -51,7 +51,7 @@ index 544143d286..21ccc2a73c 100644
  ):
      """
      .. versionadded:: 2017.7.0
-@@ -2372,7 +2373,6 @@ def add_repo_key(
+@@ -2358,7 +2359,6 @@ def add_repo_key(
      if not salt.utils.path.which("apt-key"):
          aptkey = False
      cmd = ["apt-key"]
@@ -60,10 +60,10 @@ index 544143d286..21ccc2a73c 100644
      # If the keyid is provided or determined, check it against the existing
      # repo key ids to determine whether it needs to be imported.
 diff --git a/salt/modules/rpm_lowpkg.py b/salt/modules/rpm_lowpkg.py
-index d65a46a703..c8e984c021 100644
+index 4cd137c258..b360ec8df3 100644
 --- a/salt/modules/rpm_lowpkg.py
 +++ b/salt/modules/rpm_lowpkg.py
-@@ -859,3 +859,154 @@ def checksum(*paths, **kwargs):
+@@ -865,3 +865,154 @@ def checksum(*paths, **kwargs):
          )
  
      return ret
@@ -219,10 +219,10 @@ index d65a46a703..c8e984c021 100644
 +    cmd.extend(["-e", key])
 +    return __salt__["cmd.retcode"](cmd) == 0
 diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
-index 08dccafceb..46f0b1f613 100644
+index b362d30bf4..b2be251a40 100644
 --- a/salt/modules/yumpkg.py
 +++ b/salt/modules/yumpkg.py
-@@ -3494,3 +3494,91 @@ def services_need_restart(**kwargs):
+@@ -3535,3 +3535,91 @@ def services_need_restart(**kwargs):
                  services.add(service)
  
      return list(services)
@@ -315,10 +315,10 @@ index 08dccafceb..46f0b1f613 100644
 +    """
 +    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index c2452d6dec..4e3006a8cd 100644
+index 2da470bea3..318c871b37 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -3142,3 +3142,91 @@ def services_need_restart(root=None, **kwargs):
+@@ -3261,3 +3261,91 @@ def services_need_restart(root=None, **kwargs):
      services = zypper_output.split()
  
      return services
@@ -411,7 +411,7 @@ index c2452d6dec..4e3006a8cd 100644
 +    """
 +    return __salt__["lowpkg.remove_gpg_key"](keyid, root)
 diff --git a/salt/states/pkgrepo.py b/salt/states/pkgrepo.py
-index 358c927695..a777fe4a96 100644
+index 67a50c3ca0..c2d23f95bb 100644
 --- a/salt/states/pkgrepo.py
 +++ b/salt/states/pkgrepo.py
 @@ -118,6 +118,7 @@ Using ``aptkey: False`` with ``keyserver`` and ``keyid``:
@@ -422,7 +422,7 @@ index 358c927695..a777fe4a96 100644
  import sys
  
  import salt.utils.data
-@@ -714,3 +715,209 @@ def absent(name, **kwargs):
+@@ -745,3 +746,209 @@ def absent(name, **kwargs):
          ret["comment"] = "Failed to remove repo {}".format(name)
  
      return ret
@@ -633,19 +633,19 @@ index 358c927695..a777fe4a96 100644
 +
 +    return ret
 diff --git a/tests/pytests/unit/modules/test_yumpkg.py b/tests/pytests/unit/modules/test_yumpkg.py
-index 99ec05b990..a495569c5d 100644
+index 1354ee5d2d..45c62d793d 100644
 --- a/tests/pytests/unit/modules/test_yumpkg.py
 +++ b/tests/pytests/unit/modules/test_yumpkg.py
-@@ -7,7 +7,7 @@ import salt.modules.rpm_lowpkg as rpm
+@@ -9,7 +9,7 @@ import salt.modules.rpm_lowpkg as rpm
  import salt.modules.yumpkg as yumpkg
  import salt.utils.platform
  from salt.exceptions import CommandExecutionError, SaltInvocationError
 -from tests.support.mock import MagicMock, Mock, call, patch
 +from tests.support.mock import MagicMock, Mock, call, mock_open, patch
  
- try:
-     import pytest
-@@ -1911,6 +1911,48 @@ def test_get_repo_with_non_existent_repo(list_repos_var):
+ log = logging.getLogger(__name__)
+ 
+@@ -1908,6 +1908,48 @@ def test_get_repo_with_non_existent_repo(list_repos_var):
      assert ret == expected, ret
  
  
@@ -695,24 +695,24 @@ index 99ec05b990..a495569c5d 100644
      """
      Tests that the proper CLI options are added when obsoletes=False
 diff --git a/tests/pytests/unit/modules/test_zypperpkg.py b/tests/pytests/unit/modules/test_zypperpkg.py
-index 70bd837c5f..351a173b81 100644
+index 1e2d6ea443..91132b7277 100644
 --- a/tests/pytests/unit/modules/test_zypperpkg.py
 +++ b/tests/pytests/unit/modules/test_zypperpkg.py
-@@ -8,7 +8,8 @@ import os
- import pytest
+@@ -10,8 +10,8 @@ import pytest
+ 
  import salt.modules.pkg_resource as pkg_resource
  import salt.modules.zypperpkg as zypper
+-from salt.exceptions import CommandExecutionError
 -from tests.support.mock import MagicMock, patch
-+from salt.exceptions import SaltInvocationError
++from salt.exceptions import CommandExecutionError, SaltInvocationError
 +from tests.support.mock import MagicMock, mock_open, patch
  
  
  @pytest.fixture
-@@ -211,3 +212,45 @@ def test_pkg_list_holds():
-         ret = zypper.list_holds()
-         assert len(ret) == 1
-         assert "bar-2:2.3.4-2.1.*" in ret
-+
+@@ -354,3 +354,44 @@ def test_dist_upgrade_failure():
+ 
+             assert exc.exception.info["changes"] == {}
+             assert exc.exception.info["result"]["stdout"] == zypper_output
 +
 +def test_get_repo_keys():
 +    salt_mock = {"lowpkg.list_gpg_keys": MagicMock(return_value=True)}
@@ -755,13 +755,13 @@ index 70bd837c5f..351a173b81 100644
 +        assert zypper.del_repo_key(keyid="keyid", root="/mnt")
 +        salt_mock["lowpkg.remove_gpg_key"].assert_called_once_with("keyid", "/mnt")
 diff --git a/tests/pytests/unit/states/test_pkgrepo.py b/tests/pytests/unit/states/test_pkgrepo.py
-index daa913bcc2..cbb12cfb9b 100644
+index c572583d19..5f540bd245 100644
 --- a/tests/pytests/unit/states/test_pkgrepo.py
 +++ b/tests/pytests/unit/states/test_pkgrepo.py
-@@ -51,3 +51,451 @@ def test_update_key_url():
-         assert ret["changes"] == {
-             "key_url": {"old": kwargs["key_url"], "new": changed_kwargs["key_url"]}
-         }
+@@ -72,3 +72,451 @@ def test_managed_insecure_key():
+             ret["comment"]
+             == "Cannot have 'key_url' using http with 'allow_insecure_key' set to True"
+         )
 +
 +
 +def test__normalize_repo_suse():
@@ -1211,6 +1211,6 @@ index daa913bcc2..cbb12cfb9b 100644
 +            "comment": "There are keys or repositories to migrate or drop",
 +        }
 -- 
-2.37.3
+2.39.2
 
 

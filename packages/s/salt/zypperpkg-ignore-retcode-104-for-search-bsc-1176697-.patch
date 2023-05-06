@@ -1,4 +1,4 @@
-From 41e53ad0b03511d65c5d7e6a12e7c460d83b6737 Mon Sep 17 00:00:00 2001
+From deaee93b2f83f1524ec136afc1a5198b33d293d2 Mon Sep 17 00:00:00 2001
 From: Alberto Planas <aplanas@suse.com>
 Date: Mon, 5 Oct 2020 16:24:16 +0200
 Subject: [PATCH] zypperpkg: ignore retcode 104 for search()
@@ -6,14 +6,14 @@ Subject: [PATCH] zypperpkg: ignore retcode 104 for search()
 
 ---
  salt/modules/zypperpkg.py            | 28 ++++++---
- tests/unit/modules/test_zypperpkg.py | 89 +++++++++++++++++++++-------
- 2 files changed, 90 insertions(+), 27 deletions(-)
+ tests/unit/modules/test_zypperpkg.py | 87 ++++++++++++++++++++++------
+ 2 files changed, 89 insertions(+), 26 deletions(-)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index 32e22ce9a8..6b19c65db3 100644
+index d8220a1fdd..4bb10f445a 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -99,6 +99,8 @@ class _Zypper:
+@@ -103,6 +103,8 @@ class _Zypper:
      }
  
      LOCK_EXIT_CODE = 7
@@ -22,7 +22,7 @@ index 32e22ce9a8..6b19c65db3 100644
      XML_DIRECTIVES = ["-x", "--xmlout"]
      # ZYPPER_LOCK is not affected by --root
      ZYPPER_LOCK = "/var/run/zypp.pid"
-@@ -129,6 +131,7 @@ class _Zypper:
+@@ -134,6 +136,7 @@ class _Zypper:
          self.__no_raise = False
          self.__refresh = False
          self.__ignore_repo_failure = False
@@ -30,7 +30,7 @@ index 32e22ce9a8..6b19c65db3 100644
          self.__systemd_scope = False
          self.__root = None
  
-@@ -148,6 +151,9 @@ class _Zypper:
+@@ -153,6 +156,9 @@ class _Zypper:
          # Ignore exit code for 106 (repo is not available)
          if "no_repo_failure" in kwargs:
              self.__ignore_repo_failure = kwargs["no_repo_failure"]
@@ -40,7 +40,7 @@ index 32e22ce9a8..6b19c65db3 100644
          if "systemd_scope" in kwargs:
              self.__systemd_scope = kwargs["systemd_scope"]
          if "root" in kwargs:
-@@ -306,6 +312,10 @@ class _Zypper:
+@@ -333,6 +339,10 @@ class _Zypper:
          if self.__root:
              self.__cmd.extend(["--root", self.__root])
  
@@ -51,7 +51,7 @@ index 32e22ce9a8..6b19c65db3 100644
          self.__cmd.extend(args)
          kwargs["output_loglevel"] = "trace"
          kwargs["python_shell"] = False
-@@ -445,9 +455,11 @@ class Wildcard:
+@@ -479,9 +489,11 @@ class Wildcard:
          Get available versions of the package.
          :return:
          """
@@ -66,7 +66,7 @@ index 32e22ce9a8..6b19c65db3 100644
          if not solvables:
              raise CommandExecutionError(
                  "No packages found matching '{}'".format(self.name)
-@@ -1052,7 +1064,7 @@ def list_repo_pkgs(*args, **kwargs):
+@@ -1086,7 +1098,7 @@ def list_repo_pkgs(*args, **kwargs):
  
      root = kwargs.get("root") or None
      for node in (
@@ -75,7 +75,7 @@ index 32e22ce9a8..6b19c65db3 100644
          .xml.call("se", "-s", *targets)
          .getElementsByTagName("solvable")
      ):
-@@ -2439,7 +2451,9 @@ def owner(*paths, **kwargs):
+@@ -2556,7 +2568,9 @@ def owner(*paths, **kwargs):
  def _get_visible_patterns(root=None):
      """Get all available patterns in the repo that are visible."""
      patterns = {}
@@ -86,7 +86,7 @@ index 32e22ce9a8..6b19c65db3 100644
      for element in search_patterns.getElementsByTagName("solvable"):
          installed = element.getAttribute("status") == "installed"
          patterns[element.getAttribute("name")] = {
-@@ -2636,7 +2650,7 @@ def search(criteria, refresh=False, **kwargs):
+@@ -2753,7 +2767,7 @@ def search(criteria, refresh=False, **kwargs):
  
      cmd.append(criteria)
      solvables = (
@@ -95,7 +95,7 @@ index 32e22ce9a8..6b19c65db3 100644
          .nolock.noraise.xml.call(*cmd)
          .getElementsByTagName("solvable")
      )
-@@ -2888,7 +2902,7 @@ def _get_patches(installed_only=False, root=None):
+@@ -3005,7 +3019,7 @@ def _get_patches(installed_only=False, root=None):
      """
      patches = {}
      for element in (
@@ -105,19 +105,10 @@ index 32e22ce9a8..6b19c65db3 100644
          .getElementsByTagName("solvable")
      ):
 diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
-index 47fca906a7..671adc2779 100644
+index 22137a2544..5e4c967520 100644
 --- a/tests/unit/modules/test_zypperpkg.py
 +++ b/tests/unit/modules/test_zypperpkg.py
-@@ -14,7 +14,7 @@ import salt.utils.files
- import salt.utils.pkg
- from salt.exceptions import CommandExecutionError
- from tests.support.mixins import LoaderModuleMockMixin
--from tests.support.mock import MagicMock, Mock, call, patch
-+from tests.support.mock import MagicMock, Mock, call, mock_open, patch
- from tests.support.unit import TestCase
- 
- 
-@@ -27,7 +27,10 @@ class ZyppCallMock:
+@@ -28,7 +28,10 @@ class ZyppCallMock:
  
      def __call__(self, *args, **kwargs):
          # If the call is for a configuration modifier, we return self
@@ -129,7 +120,7 @@ index 47fca906a7..671adc2779 100644
              return self
          return MagicMock(return_value=self.__return_value)()
  
-@@ -1801,8 +1804,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1662,8 +1665,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          <solvable status="installed" name="libzypp" kind="package" edition="16.2.4-19.5" arch="x86_64" repository="(System Packages)"/>
          </solvable-list></search-result></stream>
                  """
@@ -141,7 +132,7 @@ index 47fca906a7..671adc2779 100644
          wcard = zypper.Wildcard(_zpr)
          wcard.name, wcard.version = "libzypp", "*"
          assert wcard._get_scope_versions(wcard._get_available_versions()) == [
-@@ -1824,8 +1828,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1685,8 +1689,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          </solvable-list></search-result></stream>
          """
  
@@ -153,7 +144,7 @@ index 47fca906a7..671adc2779 100644
          wcard = zypper.Wildcard(_zpr)
          wcard.name, wcard.version = "libzypp", "16.2.*-2*"
          assert wcard._get_scope_versions(wcard._get_available_versions()) == [
-@@ -1846,8 +1851,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1707,8 +1712,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          </solvable-list></search-result></stream>
          """
  
@@ -165,7 +156,7 @@ index 47fca906a7..671adc2779 100644
          wcard = zypper.Wildcard(_zpr)
          wcard.name, wcard.version = "libzypp", "16.2.5*"
          assert wcard._get_scope_versions(wcard._get_available_versions()) == [
-@@ -1867,8 +1873,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1728,8 +1734,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          </solvable-list></search-result></stream>
          """
  
@@ -177,7 +168,7 @@ index 47fca906a7..671adc2779 100644
          wcard = zypper.Wildcard(_zpr)
          wcard.name, wcard.version = "libzypp", "*.1"
          assert wcard._get_scope_versions(wcard._get_available_versions()) == [
-@@ -1889,8 +1896,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1750,8 +1757,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          <solvable status="other-version" name="libzypp" kind="package" edition="17.2.6-27.9.1" arch="x86_64" repository="foo"/>
          </solvable-list></search-result></stream>
          """
@@ -189,7 +180,7 @@ index 47fca906a7..671adc2779 100644
          assert zypper.Wildcard(_zpr)("libzypp", "16.2.4*") == "16.2.4-19.5"
          assert zypper.Wildcard(_zpr)("libzypp", "16.2*") == "16.2.5-25.1"
          assert zypper.Wildcard(_zpr)("libzypp", "*6-*") == "17.2.6-27.9.1"
-@@ -1909,8 +1917,10 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1770,8 +1778,10 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          <solvable status="other-version" name="libzypp" kind="package" edition="17.2.6-27.9.1" arch="x86_64" repository="foo"/>
          </solvable-list></search-result></stream>
          """
@@ -202,7 +193,7 @@ index 47fca906a7..671adc2779 100644
          assert zypper.Wildcard(_zpr)("libzypp", None) is None
  
      def test_wildcard_to_query_typecheck(self):
-@@ -1926,8 +1936,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1787,8 +1797,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          <solvable status="other-version" name="libzypp" kind="package" edition="17.2.6-27.9.1" arch="x86_64" repository="foo"/>
          </solvable-list></search-result></stream>
          """
@@ -214,7 +205,7 @@ index 47fca906a7..671adc2779 100644
          assert isinstance(zypper.Wildcard(_zpr)("libzypp", "*.1"), str)
  
      def test_wildcard_to_query_condition_preservation(self):
-@@ -1943,8 +1954,9 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1804,8 +1815,9 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          <solvable status="other-version" name="libzypp" kind="package" edition="17.2.6-27.9.1" arch="x86_64" repository="foo"/>
          </solvable-list></search-result></stream>
          """
@@ -226,7 +217,7 @@ index 47fca906a7..671adc2779 100644
  
          for op in zypper.Wildcard.Z_OP:
              assert zypper.Wildcard(_zpr)(
-@@ -1970,8 +1982,10 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+@@ -1831,8 +1843,10 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
          <solvable status="other-version" name="libzypp" kind="package" edition="17.2.6-27.9.1" arch="x86_64" repository="foo"/>
          </solvable-list></search-result></stream>
          """
@@ -239,10 +230,10 @@ index 47fca906a7..671adc2779 100644
          with self.assertRaises(CommandExecutionError):
              for op in [">>", "==", "<<", "+"]:
                  zypper.Wildcard(_zpr)("libzypp", "{}*.1".format(op))
-@@ -2063,3 +2077,38 @@ pattern() = package-c"""
-         with patch("salt.modules.zypperpkg.__zypper__", zypper_mock):
-             assert zypper.services_need_restart() == expected
-             zypper_mock(root=None).nolock.call.assert_called_with("ps", "-sss")
+@@ -1958,3 +1972,38 @@ pattern() = package-c"""
+                 self.assertFalse(zypper.__zypper__._is_rpm_lock())
+                 self.assertEqual(lockf_mock.call_count, 2)
+             zypper.__zypper__._reset()
 +
 +    def test_search(self):
 +        """Test zypperpkg.search()"""
@@ -279,6 +270,6 @@ index 47fca906a7..671adc2779 100644
 +                env={"ZYPP_READONLY_HACK": "1"},
 +            )
 -- 
-2.37.3
+2.39.2
 
 

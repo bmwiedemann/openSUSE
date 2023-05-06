@@ -1,4 +1,4 @@
-From 58329533d8b3239d978c15ecb76934987880897f Mon Sep 17 00:00:00 2001
+From 2ca37fe7d2a03ad86ed738f2636fe240b9f4467e Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Tue, 6 Oct 2020 12:36:41 +0300
 Subject: [PATCH] bsc#1176024: Fix file/directory user and group
@@ -12,15 +12,15 @@ Subject: [PATCH] bsc#1176024: Fix file/directory user and group
 
 Co-authored-by: Victor Zhestkov <vzhestkov@vz-thinkpad.vzhestkov.net>
 ---
- salt/modules/file.py | 26 +++++++++++++++++---------
+ salt/modules/file.py | 20 ++++++++++----------
  salt/states/file.py  | 12 ++++++++++--
- 2 files changed, 27 insertions(+), 11 deletions(-)
+ 2 files changed, 20 insertions(+), 12 deletions(-)
 
 diff --git a/salt/modules/file.py b/salt/modules/file.py
-index 95bd69a588..d475e3c2e3 100644
+index 69d7992f5a..4612d65511 100644
 --- a/salt/modules/file.py
 +++ b/salt/modules/file.py
-@@ -247,7 +247,7 @@ def group_to_gid(group):
+@@ -245,7 +245,7 @@ def group_to_gid(group):
      try:
          if isinstance(group, int):
              return group
@@ -29,7 +29,7 @@ index 95bd69a588..d475e3c2e3 100644
      except KeyError:
          return ""
  
-@@ -338,7 +338,7 @@ def user_to_uid(user):
+@@ -336,7 +336,7 @@ def user_to_uid(user):
      try:
          if isinstance(user, int):
              return user
@@ -38,69 +38,55 @@ index 95bd69a588..d475e3c2e3 100644
      except KeyError:
          return ""
  
-@@ -5043,7 +5043,10 @@ def check_perms(
-         if (
-             salt.utils.platform.is_windows()
-             and user_to_uid(user) != user_to_uid(perms["luser"])
--        ) or (not salt.utils.platform.is_windows() and user != perms["luser"]):
-+        ) or (
-+            not salt.utils.platform.is_windows()
-+            and salt.utils.stringutils.to_str(user) != perms["luser"]
-+        ):
+@@ -5133,8 +5133,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not user_to_uid(user) == cur["uid"]
+         ) or (
+             not salt.utils.platform.is_windows()
+-            and not user == cur["user"]
+-            and not user == cur["uid"]
++            and not salt.utils.stringutils.to_str(user) == cur["user"]
++            and not salt.utils.stringutils.to_str(user) == cur["uid"]
+         ):
              perms["cuser"] = user
  
-     if group:
-@@ -5052,7 +5055,10 @@ def check_perms(
-         if (
-             salt.utils.platform.is_windows()
-             and group_to_gid(group) != group_to_gid(perms["lgroup"])
--        ) or (not salt.utils.platform.is_windows() and group != perms["lgroup"]):
-+        ) or (
-+            not salt.utils.platform.is_windows()
-+            and salt.utils.stringutils.to_str(group) != perms["lgroup"]
-+        ):
+@@ -5143,8 +5143,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not group_to_gid(group) == cur["gid"]
+         ) or (
+             not salt.utils.platform.is_windows()
+-            and not group == cur["group"]
+-            and not group == cur["gid"]
++            and not salt.utils.stringutils.to_str(group) == cur["group"]
++            and not salt.utils.stringutils.to_str(group) == cur["gid"]
+         ):
              perms["cgroup"] = group
  
-     if "cuser" in perms or "cgroup" in perms:
-@@ -5083,7 +5089,8 @@ def check_perms(
-             and user != ""
+@@ -5188,8 +5188,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not user_to_uid(user) == post["uid"]
          ) or (
              not salt.utils.platform.is_windows()
--            and user != get_user(name, follow_symlinks=follow_symlinks)
-+            and salt.utils.stringutils.to_str(user)
-+            != get_user(name, follow_symlinks=follow_symlinks)
-             and user != ""
+-            and not user == post["user"]
+-            and not user == post["uid"]
++            and not salt.utils.stringutils.to_str(user) == post["user"]
++            and not salt.utils.stringutils.to_str(user) == post["uid"]
          ):
              if __opts__["test"] is True:
-@@ -5101,18 +5108,19 @@ def check_perms(
-             salt.utils.platform.is_windows()
-             and group_to_gid(group)
-             != group_to_gid(get_group(name, follow_symlinks=follow_symlinks))
--            and user != ""
-+            and group != ""
+                 ret["changes"]["user"] = user
+@@ -5204,8 +5204,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not group_to_gid(group) == post["gid"]
          ) or (
              not salt.utils.platform.is_windows()
--            and group != get_group(name, follow_symlinks=follow_symlinks)
--            and user != ""
-+            and salt.utils.stringutils.to_str(group)
-+            != get_group(name, follow_symlinks=follow_symlinks)
-+            and group != ""
+-            and not group == post["group"]
+-            and not group == post["gid"]
++            and not salt.utils.stringutils.to_str(group) == post["group"]
++            and not salt.utils.stringutils.to_str(group) == post["gid"]
          ):
              if __opts__["test"] is True:
                  ret["changes"]["group"] = group
-             else:
-                 ret["result"] = False
-                 ret["comment"].append("Failed to change group to {}".format(group))
--        elif "cgroup" in perms and user != "":
-+        elif "cgroup" in perms and group != "":
-             ret["changes"]["group"] = group
- 
-     # Mode changes if needed
 diff --git a/salt/states/file.py b/salt/states/file.py
-index 9f33a8de23..50ceef1158 100644
+index 9f32151b8b..024e5e34ce 100644
 --- a/salt/states/file.py
 +++ b/salt/states/file.py
-@@ -863,9 +863,17 @@ def _check_dir_meta(name, user, group, mode, follow_symlinks=False):
+@@ -864,9 +864,17 @@ def _check_dir_meta(name, user, group, mode, follow_symlinks=False):
      if not stats:
          changes["directory"] = "new"
          return changes
@@ -121,6 +107,6 @@ index 9f33a8de23..50ceef1158 100644
      # Normalize the dir mode
      smode = salt.utils.files.normalize_mode(stats["mode"])
 -- 
-2.37.3
+2.39.2
 
 

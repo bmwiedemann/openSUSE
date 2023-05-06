@@ -1,4 +1,4 @@
-From 6d122245f15a206dbfa92703b954d535c5c34dd4 Mon Sep 17 00:00:00 2001
+From c61da0bef8d4d8394592db2f9995cdf4820c02af Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Mon, 27 Feb 2023 11:35:41 +0100
 Subject: [PATCH] Skip package names without colon (bsc#1208691) (#578)
@@ -9,10 +9,10 @@ Fixes a problem in `_find_ptf_packages()` when passing multiple packages to `zyp
  1 file changed, 2 insertions(+)
 
 diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
-index cd057ec637..64373e59fb 100644
+index 44f2cdbd3a..cdec397d69 100644
 --- a/salt/modules/zypperpkg.py
 +++ b/salt/modules/zypperpkg.py
-@@ -2758,6 +2758,8 @@ def _find_ptf_packages(pkgs, root=None):
+@@ -2688,6 +2688,8 @@ def _find_ptf_packages(pkgs, root=None):
      for line in output.splitlines():
          if not line.strip():
              continue
@@ -23,4 +23,5 @@ index cd057ec637..64373e59fb 100644
              ptfs.append(pkg)
 -- 
 2.39.2
+
 

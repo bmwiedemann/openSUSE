@@ -1,4 +1,4 @@
-From f16fb8885eeddad179be9e2290d1523cb8f82641 Mon Sep 17 00:00:00 2001
+From 76e69d9ef729365db1b0f1798f5f8a038d2065fc Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Fri, 16 Nov 2018 17:05:29 +0100
 Subject: [PATCH] Async batch implementation
@@ -71,21 +71,21 @@ Async batch implementation fix (#320)
 
 Remove deprecated usage of NO_MOCK and NO_MOCK_REASON
 ---
- salt/auth/__init__.py                 |   2 +
- salt/cli/batch.py                     | 109 ++++++--
- salt/cli/batch_async.py               | 315 +++++++++++++++++++++
- salt/cli/support/profiles/__init__.py |   5 +-
- salt/client/__init__.py               |  51 +---
- salt/master.py                        |  20 ++
- salt/transport/ipc.py                 |   9 +-
- salt/utils/event.py                   |   8 +-
- tests/unit/cli/test_batch_async.py    | 386 ++++++++++++++++++++++++++
- 9 files changed, 841 insertions(+), 64 deletions(-)
+ salt/auth/__init__.py                      |   2 +
+ salt/cli/batch.py                          | 109 ++++--
+ salt/cli/batch_async.py                    | 315 +++++++++++++++++
+ salt/cli/support/profiles/__init__.py      |   5 +-
+ salt/client/__init__.py                    |  45 +--
+ salt/master.py                             |  20 ++
+ salt/transport/ipc.py                      |   9 +-
+ salt/utils/event.py                        |   8 +-
+ tests/pytests/unit/cli/test_batch_async.py | 386 +++++++++++++++++++++
+ 9 files changed, 841 insertions(+), 58 deletions(-)
  create mode 100644 salt/cli/batch_async.py
- create mode 100644 tests/unit/cli/test_batch_async.py
+ create mode 100644 tests/pytests/unit/cli/test_batch_async.py
 
 diff --git a/salt/auth/__init__.py b/salt/auth/__init__.py
-index 0c64755235..8dc096d9c5 100644
+index 331baab211..b0f0c0ac6c 100644
 --- a/salt/auth/__init__.py
 +++ b/salt/auth/__init__.py
 @@ -49,6 +49,8 @@ AUTH_INTERNAL_KEYWORDS = frozenset(
@@ -581,21 +581,12 @@ index b86aef30b8..4ae6d07b13 100644
 -'''
 +"""
 diff --git a/salt/client/__init__.py b/salt/client/__init__.py
-index eaf156e060..2427516ca1 100644
+index 7ce8963b8f..bcda56c9b4 100644
 --- a/salt/client/__init__.py
 +++ b/salt/client/__init__.py
-@@ -586,47 +586,23 @@ class LocalClient:
-             {'dave': {...}}
-             {'stewart': {...}}
-         """
--        # We need to re-import salt.utils.args here
--        # even though it has already been imported.
--        # when cmd_batch is called via the NetAPI
--        # the module is unavailable.
--        import salt.utils.args
--
-         # Late import - not used anywhere else in this file
+@@ -594,38 +594,20 @@ class LocalClient:
          import salt.cli.batch
+         import salt.utils.args
  
 -        arg = salt.utils.args.condition_input(arg, kwarg)
 -        opts = {
@@ -645,7 +636,7 @@ index eaf156e060..2427516ca1 100644
          batch = salt.cli.batch.Batch(opts, eauth=eauth, quiet=True)
          for ret, _ in batch.run():
              yield ret
-@@ -1819,6 +1795,7 @@ class LocalClient:
+@@ -1826,6 +1808,7 @@ class LocalClient:
              "key": self.key,
              "tgt_type": tgt_type,
              "ret": ret,
@@ -654,7 +645,7 @@ index eaf156e060..2427516ca1 100644
          }
  
 diff --git a/salt/master.py b/salt/master.py
-index 9c06a52c1c..705a1bc2fb 100644
+index 9d2239bffb..2a526b4f21 100644
 --- a/salt/master.py
 +++ b/salt/master.py
 @@ -19,6 +19,7 @@ import time
@@ -665,7 +656,7 @@ index 9c06a52c1c..705a1bc2fb 100644
  import salt.client
  import salt.client.ssh.client
  import salt.crypt
-@@ -2145,6 +2146,22 @@ class ClearFuncs(TransportMethods):
+@@ -2153,6 +2154,22 @@ class ClearFuncs(TransportMethods):
              return False
          return self.loadauth.get_tok(clear_load["token"])
  
@@ -688,7 +679,7 @@ index 9c06a52c1c..705a1bc2fb 100644
      def publish(self, clear_load):
          """
          This method sends out publications to the minions, it can only be used
-@@ -2264,6 +2281,9 @@ class ClearFuncs(TransportMethods):
+@@ -2297,6 +2314,9 @@ class ClearFuncs(TransportMethods):
                          ),
                      },
                  }
@@ -734,10 +725,10 @@ index ca13a498e3..3a3f0c7a5f 100644
      def close(self):
          """
 diff --git a/salt/utils/event.py b/salt/utils/event.py
-index d14b9ada40..e8d1aaa5f5 100644
+index a07ad513b1..869e12a140 100644
 --- a/salt/utils/event.py
 +++ b/salt/utils/event.py
-@@ -944,6 +944,10 @@ class SaltEvent:
+@@ -946,6 +946,10 @@ class SaltEvent:
                      # Minion fired a bad retcode, fire an event
                      self._fire_ret_load_specific_fun(load)
  
@@ -748,7 +739,7 @@ index d14b9ada40..e8d1aaa5f5 100644
      def set_event_handler(self, event_handler):
          """
          Invoke the event_handler callback each time an event arrives.
-@@ -952,8 +956,10 @@ class SaltEvent:
+@@ -954,8 +958,10 @@ class SaltEvent:
  
          if not self.cpub:
              self.connect_pub()
@@ -760,11 +751,11 @@ index d14b9ada40..e8d1aaa5f5 100644
  
      # pylint: disable=W1701
      def __del__(self):
-diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
+diff --git a/tests/pytests/unit/cli/test_batch_async.py b/tests/pytests/unit/cli/test_batch_async.py
 new file mode 100644
 index 0000000000..c0b708de76
 --- /dev/null
-+++ b/tests/unit/cli/test_batch_async.py
++++ b/tests/pytests/unit/cli/test_batch_async.py
 @@ -0,0 +1,386 @@
 +import salt.ext.tornado
 +from salt.cli.batch_async import BatchAsync
@@ -1153,6 +1144,6 @@ index 0000000000..c0b708de76
 +        self.batch.schedule_next()
 +        self.assertEqual(len(self.batch.event.io_loop.spawn_callback.mock_calls), 0)
 -- 
-2.37.3
+2.39.2
 
 

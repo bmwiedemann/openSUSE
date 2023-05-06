@@ -1,4 +1,4 @@
-From d5fae6bd4a4f243115ee220393e05440f0d48b5a Mon Sep 17 00:00:00 2001
+From 4996f423f14369fad14a9e6d2d3b8bd750c77fc7 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Tue, 5 Apr 2022 12:04:46 +0300
 Subject: [PATCH] Fixes for Python 3.10 (#502)
@@ -9,7 +9,7 @@ Subject: [PATCH] Fixes for Python 3.10 (#502)
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/salt/state.py b/salt/state.py
-index f5579fbb69..61519d5042 100644
+index ab84cb8b4d..489424a083 100644
 --- a/salt/state.py
 +++ b/salt/state.py
 @@ -12,7 +12,6 @@ The data sent to the state calls is as follows:
@@ -20,7 +20,7 @@ index f5579fbb69..61519d5042 100644
  import copy
  import datetime
  import fnmatch
-@@ -26,6 +25,8 @@ import sys
+@@ -27,6 +26,8 @@ import sys
  import time
  import traceback
  
@@ -29,7 +29,7 @@ index f5579fbb69..61519d5042 100644
  import salt.channel.client
  import salt.fileclient
  import salt.loader
-@@ -3405,7 +3406,7 @@ class State:
+@@ -3513,7 +3514,7 @@ class State:
          """
          for chunk in high:
              state = high[chunk]
@@ -39,6 +39,6 @@ index f5579fbb69..61519d5042 100644
              for state_ref in state:
                  needs_default = True
 -- 
-2.37.3
+2.39.2
 
 

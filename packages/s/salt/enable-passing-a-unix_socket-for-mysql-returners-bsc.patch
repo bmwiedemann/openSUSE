@@ -1,4 +1,4 @@
-From 465ea094039e771ea2b4ccda012d0dc12f7aa022 Mon Sep 17 00:00:00 2001
+From e9d52cb97d619a76355c5aa1d03b733c125c0f22 Mon Sep 17 00:00:00 2001
 From: Maximilian Meister <mmeister@suse.de>
 Date: Thu, 3 May 2018 15:52:23 +0200
 Subject: [PATCH] enable passing a unix_socket for mysql returners
@@ -19,7 +19,7 @@ Signed-off-by: Maximilian Meister <mmeister@suse.de>
  1 file changed, 5 insertions(+)
 
 diff --git a/salt/returners/mysql.py b/salt/returners/mysql.py
-index 6fd4fdef2c..7a7e9a3284 100644
+index 67b44004ac..a220f11465 100644
 --- a/salt/returners/mysql.py
 +++ b/salt/returners/mysql.py
 @@ -17,6 +17,7 @@ config. These are the defaults:
@@ -37,8 +37,8 @@ index 6fd4fdef2c..7a7e9a3284 100644
 +    alternative.mysql.unix_socket: '/tmp/mysql.sock'
  
  Should you wish the returner data to be cleaned out every so often, set
- `keep_jobs` to the number of hours for the jobs to live in the tables.
-@@ -196,6 +198,7 @@ def _get_options(ret=None):
+ `keep_jobs_seconds` to the number of hours for the jobs to live in the
+@@ -197,6 +199,7 @@ def _get_options(ret=None):
          "ssl_ca": None,
          "ssl_cert": None,
          "ssl_key": None,
@@ -46,7 +46,7 @@ index 6fd4fdef2c..7a7e9a3284 100644
      }
  
      attrs = {
-@@ -207,6 +210,7 @@ def _get_options(ret=None):
+@@ -208,6 +211,7 @@ def _get_options(ret=None):
          "ssl_ca": "ssl_ca",
          "ssl_cert": "ssl_cert",
          "ssl_key": "ssl_key",
@@ -54,7 +54,7 @@ index 6fd4fdef2c..7a7e9a3284 100644
      }
  
      _options = salt.returners.get_returner_options(
-@@ -265,6 +269,7 @@ def _get_serv(ret=None, commit=False):
+@@ -266,6 +270,7 @@ def _get_serv(ret=None, commit=False):
                  db=_options.get("db"),
                  port=_options.get("port"),
                  ssl=ssl_options,
@@ -63,6 +63,6 @@ index 6fd4fdef2c..7a7e9a3284 100644
  
              try:
 -- 
-2.37.3
+2.39.2
 
 

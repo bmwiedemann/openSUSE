@@ -2209,4 +2209,19 @@ let build start it or we will get libvirt errors.
   * 3005.1-implement-zypper-removeptf-573.patch</comment>
     <requestid>1072612</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>2a2af6c44b343b429578032b17635c4a</srcmd5>
+    <version>3006.0</version>
+    <time>1683403717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Salt release version 3006.0 (jsc#PED-3139)
+  * See release notes: https://docs.saltproject.io/en/latest/topics/releases/3006.0.html
+
+- Add python3-looseversion as new dependency for salt
+- Add python3-packaging as new dependency for salt
+- Drop conflictive patch dicarded from upstream
+- Fix SLS rendering error when Jinja macros are used
+- Fix version detection and avoid building and testing failures</comment>
+    <requestid>1085020</requestid>
+  </revision>
 </revisionlist>

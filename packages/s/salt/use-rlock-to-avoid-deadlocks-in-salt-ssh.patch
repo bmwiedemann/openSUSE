@@ -1,4 +1,4 @@
-From c6be36eeea49ee0d0641da272087305f79c32c99 Mon Sep 17 00:00:00 2001
+From 578932e56be4b4151aa33bd25997c916b0e00a04 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 4 Jan 2023 13:11:50 +0000
@@ -22,6 +22,6 @@ index bbe4269839..b41cc64b8e 100644
  
  def LazyLoader(*args, **kwargs):
 -- 
-2.37.3
+2.39.2
 
 

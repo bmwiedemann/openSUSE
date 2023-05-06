@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Fri May  5 08:29:26 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
+
+- Update to Salt release version 3006.0 (jsc#PED-3139)
+  * See release notes: https://docs.saltproject.io/en/latest/topics/releases/3006.0.html
+
+- Add python3-looseversion as new dependency for salt
+- Add python3-packaging as new dependency for salt
+- Drop conflictive patch dicarded from upstream
+- Fix SLS rendering error when Jinja macros are used
+- Fix version detection and avoid building and testing failures
+
+- Added:
+  * fix-version-detection-and-avoid-building-and-testing.patch
+  * make-sure-the-file-client-is-destroyed-upon-used.patch
+
+- Modified:
+  * 3005.1-implement-zypper-removeptf-573.patch
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+  * add-sleep-on-exception-handling-on-minion-connection.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * add-support-for-gpgautoimport-539.patch
+  * allow-vendor-change-option-with-zypper.patch
+  * async-batch-implementation.patch
+  * avoid-excessive-syslogging-by-watchdog-cronjob-58.patch
+  * bsc-1176024-fix-file-directory-user-and-group-owners.patch
+  * change-the-delimeters-to-prevent-possible-tracebacks.patch
+  * control-the-collection-of-lvm-grains-via-config.patch
+  * debian-info_installed-compatibility-50453.patch
+  * dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * don-t-use-shell-sbin-nologin-in-requisites.patch
+  * drop-serial-from-event.unpack-in-cli.batch_async.patch
+  * early-feature-support-config.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * enhance-openscap-module-add-xccdf_eval-call-386.patch
+  * fix-bsc-1065792.patch
+  * fix-for-suse-expanded-support-detection.patch
+  * fix-issue-2068-test.patch
+  * fix-missing-minion-returns-in-batch-mode-360.patch
+  * fix-ownership-of-salt-thin-directory-when-using-the-.patch
+  * fix-regression-with-depending-client.ssh-on-psutil-b.patch
+  * fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
+  * fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
+  * fix-the-regression-for-yumnotify-plugin-456.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * fixes-for-python-3.10-502.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * info_installed-works-without-status-attr-now.patch
+  * let-salt-ssh-use-platform-python-binary-in-rhel8-191.patch
+  * make-aptpkg.list_repos-compatible-on-enabled-disable.patch
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * pass-the-context-to-pillar-ext-modules.patch
+  * prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+  * prevent-shell-injection-via-pre_flight_script_args-4.patch
+  * read-repo-info-without-using-interpolation-bsc-11356.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+  * return-the-expected-powerpc-os-arch-bsc-1117995.patch
+  * revert-fixing-a-use-case-when-multiple-inotify-beaco.patch
+  * run-salt-api-as-user-salt-bsc-1064520.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * save-log-to-logfile-with-docker.build.patch
+  * skip-package-names-without-colon-bsc-1208691-578.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * temporary-fix-extend-the-whitelist-of-allowed-comman.patch
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+  * use-salt-bundle-in-dockermod.patch
+  * x509-fixes-111.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+
+- Removed:
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+  * align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+  * allow-entrypoint-compatibility-for-importlib-metadat.patch
+  * clarify-pkg.installed-pkg_verify-documentation.patch
+  * detect-module.run-syntax.patch
+  * fix-salt.states.file.managed-for-follow_symlinks-tru.patch
+  * fix-state.apply-in-test-mode-with-file-state-module-.patch
+  * fix-test_ipc-unit-tests.patch
+  * fixes-pkg.version_cmp-on-openeuler-systems-and-a-few.patch
+  * fopen-workaround-bad-buffering-for-binary-mode-563.patch
+  * ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
+  * ignore-extend-declarations-from-excluded-sls-files.patch
+  * ignore-non-utf8-characters-while-reading-files-with-.patch
+  * include-stdout-in-error-message-for-zypperpkg-559.patch
+  * make-pass-renderer-configurable-other-fixes-532.patch
+  * make-sure-saltcacheloader-use-correct-fileclient-519.patch
+  * normalize-package-names-once-with-pkg.installed-remo.patch
+  * retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+  * set-default-target-for-pip-from-venv_pip_target-envi.patch
+  * state.apply-don-t-check-for-cached-pillar-errors.patch
+  * state.orchestrate_single-does-not-pass-pillar-none-4.patch
+
+-------------------------------------------------------------------
 Fri Mar 17 12:05:55 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
 
 - Require python3-jmespath runtime dependency (bsc#1209233)

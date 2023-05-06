@@ -1,4 +1,4 @@
-From 51bcdcfdec73368d1517150eafda21e4af51dd7a Mon Sep 17 00:00:00 2001
+From 7be26299bc7b6ec2065ab13857f088dc500ee882 Mon Sep 17 00:00:00 2001
 From: Jochen Breuer <jbreuer@suse.de>
 Date: Thu, 6 Sep 2018 17:15:18 +0200
 Subject: [PATCH] Fix for SUSE Expanded Support detection
@@ -14,26 +14,26 @@ This change also adds a check for redhat-release and then marks the
  1 file changed, 9 insertions(+)
 
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index debbeb257d..b55ab4e472 100644
+index 710c57f28f..1199ad274f 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -2058,6 +2058,15 @@ def os_data():
-                     log.trace("Parsing distrib info from /etc/centos-release")
-                     # CentOS Linux
-                     grains["lsb_distrib_id"] = "CentOS"
-+                    # Maybe CentOS Linux; could also be SUSE Expanded Support.
-+                    # SUSE ES has both, centos-release and redhat-release.
-+                    if os.path.isfile("/etc/redhat-release"):
-+                        with salt.utils.files.fopen("/etc/redhat-release") as ifile:
-+                            for line in ifile:
-+                                if "red hat enterprise linux server" in line.lower():
-+                                    # This is a SUSE Expanded Support Rhel installation
-+                                    grains["lsb_distrib_id"] = "RedHat"
-+                                    break
-                     with salt.utils.files.fopen("/etc/centos-release") as ifile:
-                         for line in ifile:
-                             # Need to pull out the version and codename
+@@ -2279,6 +2279,15 @@ def _legacy_linux_distribution_data(grains, os_release, lsb_has_error):
+                 log.trace("Parsing distrib info from /etc/centos-release")
+                 # CentOS Linux
+                 grains["lsb_distrib_id"] = "CentOS"
++                # Maybe CentOS Linux; could also be SUSE Expanded Support.
++                # SUSE ES has both, centos-release and redhat-release.
++                if os.path.isfile("/etc/redhat-release"):
++                    with salt.utils.files.fopen("/etc/redhat-release") as ifile:
++                        for line in ifile:
++                            if "red hat enterprise linux server" in line.lower():
++                                # This is a SUSE Expanded Support Rhel installation
++                                grains["lsb_distrib_id"] = "RedHat"
++                                break
+                 with salt.utils.files.fopen("/etc/centos-release") as ifile:
+                     for line in ifile:
+                         # Need to pull out the version and codename
 -- 
-2.37.3
+2.39.2
 
 

@@ -1,19 +1,21 @@
-From f348f291093ea3f7c841b03a975ae81b40963842 Mon Sep 17 00:00:00 2001
+From b4b2c59bfd479d59faeaf0e4d26d672828a519c8 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Wed, 25 Nov 2020 15:09:41 +0300
 Subject: [PATCH] Fix salt.utils.stringutils.to_str calls to make it
  working with numeric uid/gid
 
+Fix upstream tests to work with 3006.
 ---
- salt/modules/file.py | 16 ++++++++++------
- salt/states/file.py  | 11 +++++++++--
- 2 files changed, 19 insertions(+), 8 deletions(-)
+ salt/modules/file.py                          | 22 ++++++++++++-------
+ salt/states/file.py                           | 11 ++++++++--
+ .../unit/modules/file/test_file_check.py      | 10 ++++-----
+ 3 files changed, 28 insertions(+), 15 deletions(-)
 
 diff --git a/salt/modules/file.py b/salt/modules/file.py
-index d475e3c2e3..d3de4da467 100644
+index 4612d65511..55b236fe41 100644
 --- a/salt/modules/file.py
 +++ b/salt/modules/file.py
-@@ -5036,6 +5036,12 @@ def check_perms(
+@@ -5127,14 +5127,20 @@ def check_perms(
      is_dir = os.path.isdir(name)
      is_link = os.path.islink(name)
  
@@ -23,52 +25,57 @@ index d475e3c2e3..d3de4da467 100644
 +        except:
 +            return salt.utils.stringutils.to_str(str(s))
 +
-     # user/group changes if needed, then check if it worked
+     # Check and make user/group/mode changes, then verify they were successful
      if user:
-         if isinstance(user, int):
-@@ -5045,7 +5051,7 @@ def check_perms(
-             and user_to_uid(user) != user_to_uid(perms["luser"])
+         if (
+             salt.utils.platform.is_windows() and not user_to_uid(user) == cur["uid"]
          ) or (
              not salt.utils.platform.is_windows()
--            and salt.utils.stringutils.to_str(user) != perms["luser"]
-+            and __safe_to_str(user) != perms["luser"]
+-            and not salt.utils.stringutils.to_str(user) == cur["user"]
+-            and not salt.utils.stringutils.to_str(user) == cur["uid"]
++            and not __safe_to_str(user) == cur["user"]
++            and not user == cur["uid"]
          ):
              perms["cuser"] = user
  
-@@ -5057,7 +5063,7 @@ def check_perms(
-             and group_to_gid(group) != group_to_gid(perms["lgroup"])
+@@ -5143,8 +5149,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not group_to_gid(group) == cur["gid"]
          ) or (
              not salt.utils.platform.is_windows()
--            and salt.utils.stringutils.to_str(group) != perms["lgroup"]
-+            and __safe_to_str(group) != perms["lgroup"]
+-            and not salt.utils.stringutils.to_str(group) == cur["group"]
+-            and not salt.utils.stringutils.to_str(group) == cur["gid"]
++            and not __safe_to_str(group) == cur["group"]
++            and not group == cur["gid"]
          ):
              perms["cgroup"] = group
  
-@@ -5089,8 +5095,7 @@ def check_perms(
-             and user != ""
+@@ -5188,8 +5194,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not user_to_uid(user) == post["uid"]
          ) or (
              not salt.utils.platform.is_windows()
--            and salt.utils.stringutils.to_str(user)
--            != get_user(name, follow_symlinks=follow_symlinks)
-+            and __safe_to_str(user) != get_user(name, follow_symlinks=follow_symlinks)
-             and user != ""
+-            and not salt.utils.stringutils.to_str(user) == post["user"]
+-            and not salt.utils.stringutils.to_str(user) == post["uid"]
++            and not __safe_to_str(user) == post["user"]
++            and not user == post["uid"]
          ):
              if __opts__["test"] is True:
-@@ -5111,8 +5116,7 @@ def check_perms(
-             and group != ""
+                 ret["changes"]["user"] = user
+@@ -5204,8 +5210,8 @@ def check_perms(
+             salt.utils.platform.is_windows() and not group_to_gid(group) == post["gid"]
          ) or (
              not salt.utils.platform.is_windows()
--            and salt.utils.stringutils.to_str(group)
--            != get_group(name, follow_symlinks=follow_symlinks)
-+            and __safe_to_str(group) != get_group(name, follow_symlinks=follow_symlinks)
-             and group != ""
+-            and not salt.utils.stringutils.to_str(group) == post["group"]
+-            and not salt.utils.stringutils.to_str(group) == post["gid"]
++            and not __safe_to_str(group) == post["group"]
++            and not group == post["gid"]
          ):
              if __opts__["test"] is True:
+                 ret["changes"]["group"] = group
 diff --git a/salt/states/file.py b/salt/states/file.py
-index 50ceef1158..1083bb46d6 100644
+index 024e5e34ce..9630ff7096 100644
 --- a/salt/states/file.py
 +++ b/salt/states/file.py
-@@ -863,15 +863,22 @@ def _check_dir_meta(name, user, group, mode, follow_symlinks=False):
+@@ -864,15 +864,22 @@ def _check_dir_meta(name, user, group, mode, follow_symlinks=False):
      if not stats:
          changes["directory"] = "new"
          return changes
@@ -93,7 +100,42 @@ index 50ceef1158..1083bb46d6 100644
          and group != stats.get("gid")
      ):
          changes["group"] = group
+diff --git a/tests/pytests/unit/modules/file/test_file_check.py b/tests/pytests/unit/modules/file/test_file_check.py
+index ce86acd7fc..2294e6760b 100644
+--- a/tests/pytests/unit/modules/file/test_file_check.py
++++ b/tests/pytests/unit/modules/file/test_file_check.py
+@@ -17,7 +17,7 @@ def configure_loader_modules():
+     return {
+         filemod: {
+             "__context__": {},
+-            "__opts__": {"test": False},
++            "__opts__": {"test": True},
+         }
+     }
+ 
+@@ -172,7 +172,7 @@ def test_check_managed_changes_follow_symlinks(a_link, tfile):
+         ),
+         # no user/group changes needed by id
+         (
+-            {"user": 3001, "group": 4001},
++            {"user": 2001, "group": 1001},
+             {},
+         ),
+     ],
+@@ -184,9 +184,9 @@ def test_check_perms_user_group_name_and_id(input, expected):
+         stat_out = {
+             "user": "luser",
+             "group": "lgroup",
+-            "uid": 3001,
+-            "gid": 4001,
+-            "mode": "123",
++            "uid": 2001,
++            "gid": 1001,
++            "mode": "0123",
+         }
+ 
+         patch_stats = patch(
 -- 
-2.37.3
+2.39.2
 
 

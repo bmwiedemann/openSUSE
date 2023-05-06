@@ -36,12 +36,12 @@
 %bcond_with    builddocs
 
 Name:           salt
-Version:        3005.1
+Version:        3006.0
 Release:        0
 Summary:        A parallel remote execution system
 License:        Apache-2.0
 Group:          System/Management
-Url:            http://saltstack.org/
+Url:            https://saltproject.io/
 Source:         v%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        salt-tmpfiles.d
@@ -219,97 +219,54 @@ Patch41:        prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
 Patch42:        dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
 # PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/456 (missing upstream PR)
 Patch43:        fix-the-regression-for-yumnotify-plugin-456.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61189
-Patch44:        state.apply-don-t-check-for-cached-pillar-errors.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/482
-Patch45:        drop-serial-from-event.unpack-in-cli.batch_async.patch
-# PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61093
-Patch46:        state.orchestrate_single-does-not-pass-pillar-none-4.patch
+Patch44:        drop-serial-from-event.unpack-in-cli.batch_async.patch
 
 ### SALT-SSH WITH SALT BUNDLE ###
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61715 (ssh_pre_flight_args)
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/493
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/497
-Patch47:        add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
-Patch48:        prevent-shell-injection-via-pre_flight_script_args-4.patch
+Patch45:        add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+Patch46:        prevent-shell-injection-via-pre_flight_script_args-4.patch
 ###############
 
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/501
-Patch49:        fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
+Patch47:        fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
 
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/505
-Patch50:        prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
+Patch48:        prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
 
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/506
-Patch51:        fix-regression-with-depending-client.ssh-on-psutil-b.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61895
-Patch52:        make-sure-saltcacheloader-use-correct-fileclient-519.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61827
-Patch53:        ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
+Patch49:        fix-regression-with-depending-client.ssh-on-psutil-b.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62109
-Patch54:        use-salt-bundle-in-dockermod.patch
+Patch50:        use-salt-bundle-in-dockermod.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61984
-Patch55:        save-log-to-logfile-with-docker.build.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62029
-Patch56:        normalize-package-names-once-with-pkg.installed-remo.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62089
-Patch57:        set-default-target-for-pip-from-venv_pip_target-envi.patch
+Patch51:        save-log-to-logfile-with-docker.build.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/534
-Patch58:        fix-ownership-of-salt-thin-directory-when-using-the-.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62033
-Patch59:        add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62067
-Patch60:        fix-salt.states.file.managed-for-follow_symlinks-tru.patch
+Patch52:        fix-ownership-of-salt-thin-directory-when-using-the-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62209
-Patch61:        add-support-for-gpgautoimport-539.patch
-# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/2b486d0484c51509e9972e581d97655f4f87852e
-Patch62:        fix-test_ipc-unit-tests.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62204
-Patch63:        retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+Patch53:        add-support-for-gpgautoimport-539.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62519
-Patch64:        change-the-delimeters-to-prevent-possible-tracebacks.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61847
-Patch65:        fix-state.apply-in-test-mode-with-file-state-module-.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62539
-Patch66:        add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62633
-Patch67:       ignore-non-utf8-characters-while-reading-files-with-.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62817
-Patch68:       fopen-workaround-bad-buffering-for-binary-mode-563.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62120
-Patch69:       make-pass-renderer-configurable-other-fixes-532.patch
-### ENHANCE ZYPPERPKG ERROR MESSAGES ###
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62750
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62346
-Patch70:       include-stdout-in-error-message-for-zypperpkg-559.patch
-###############
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/57426
-Patch71:       clarify-pkg.installed-pkg_verify-documentation.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62862
-Patch72:       ignore-extend-declarations-from-excluded-sls-files.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61772
-Patch73:       detect-module.run-syntax.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62539
-Patch74:       align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+Patch54:        change-the-delimeters-to-prevent-possible-tracebacks.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62898
-Patch75:       pass-the-context-to-pillar-ext-modules.patch
+Patch55:       pass-the-context-to-pillar-ext-modules.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/c6be36eeea49ee0d0641da272087305f79c32c99 (not yet upstream)
 # Fix problem caused by: https://github.com/openSUSE/salt/pull/493 (Patch47) affecting only 3005.1.
-Patch76:       use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+Patch56:       use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61064
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/5e3ff4d662321c237ddd5b2c5c83f35a84af594c (not PR to master yet)
-Patch77:       fixes-for-python-3.10-502.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62854
-Patch78:       allow-entrypoint-compatibility-for-importlib-metadat.patch
+Patch57:       fixes-for-python-3.10-502.patch
 # PATCH-FIX-OPENSUSE: https://github.com/openSUSE/salt/pull/571
-Patch79:       control-the-collection-of-lvm-grains-via-config.patch
+Patch58:       control-the-collection-of-lvm-grains-via-config.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/63460
-Patch80:       3005.1-implement-zypper-removeptf-573.patch
-# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62249
-Patch81:       fixes-pkg.version_cmp-on-openeuler-systems-and-a-few.patch
+Patch59:       3005.1-implement-zypper-removeptf-573.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/63460
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/578
-Patch82:       skip-package-names-without-colon-bsc-1208691-578.patch
+Patch60:       skip-package-names-without-colon-bsc-1208691-578.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/c0fae09e5a4f6997a60007d970c7c6a5614d9102
+Patch61:       fix-version-detection-and-avoid-building-and-testing.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64113
+Patch62:       make-sure-the-file-client-is-destroyed-upon-used.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -422,6 +379,8 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-psutil
 BuildRequires:  python3-requests >= 1.0.0
 BuildRequires:  python3-distro
+BuildRequires:  python3-looseversion
+BuildRequires:  python3-packaging
 
 # requirements/zeromq.txt
 %if %{with test}
@@ -472,6 +431,8 @@ Requires:       python3-PyYAML
 Requires:       python3-psutil
 Requires:       python3-requests >= 1.0.0
 Requires:       python3-distro
+Requires:       python3-looseversion
+Requires:       python3-packaging
 Requires:       python3-contextvars
 %if 0%{?suse_version}
 # required for zypper.py
@@ -750,7 +711,6 @@ cp %{S:6} .
 export PATH=/usr/bin:$PATH
 %endif
 python3 setup.py --with-salt-version=%{version} --salt-transport=both build
-cp ./build/lib/salt/_version.py ./salt
 mv build _build.python3
 
 %if %{with docs} && %{without builddocs}
@@ -849,15 +809,15 @@ install -Dd %{buildroot}%{_sysconfdir}/yum/pluginconf.d
 
 ## install init and systemd scripts
 %if %{with systemd}
-install -Dpm 0644 pkg/suse/salt-master.service %{buildroot}%{_unitdir}/salt-master.service
+install -Dpm 0644 pkg/old/suse/salt-master.service %{buildroot}%{_unitdir}/salt-master.service
 %if 0%{?suse_version}
-install -Dpm 0644 pkg/suse/salt-minion.service %{buildroot}%{_unitdir}/salt-minion.service
+install -Dpm 0644 pkg/old/suse/salt-minion.service %{buildroot}%{_unitdir}/salt-minion.service
 %else
-install -Dpm 0644 pkg/suse/salt-minion.service.rhel7 %{buildroot}%{_unitdir}/salt-minion.service
+install -Dpm 0644 pkg/old/suse/salt-minion.service.rhel7 %{buildroot}%{_unitdir}/salt-minion.service
 %endif
-install -Dpm 0644 pkg/salt-syndic.service %{buildroot}%{_unitdir}/salt-syndic.service
-install -Dpm 0644 pkg/suse/salt-api.service    %{buildroot}%{_unitdir}/salt-api.service
-install -Dpm 0644 pkg/salt-proxy@.service %{buildroot}%{_unitdir}/salt-proxy@.service
+install -Dpm 0644 pkg/common/salt-syndic.service %{buildroot}%{_unitdir}/salt-syndic.service
+install -Dpm 0644 pkg/old/suse/salt-api.service    %{buildroot}%{_unitdir}/salt-api.service
+install -Dpm 0644 pkg/common/salt-proxy@.service %{buildroot}%{_unitdir}/salt-proxy@.service
 ln -s service %{buildroot}%{_sbindir}/rcsalt-master
 ln -s service %{buildroot}%{_sbindir}/rcsalt-syndic
 ln -s service %{buildroot}%{_sbindir}/rcsalt-minion
@@ -866,10 +826,10 @@ install -Dpm 644 %{S:2}                   %{buildroot}/usr/lib/tmpfiles.d/salt.c
 %else
 mkdir -p %{buildroot}%{_initddir}
 ## install init scripts
-install -Dpm 0755 pkg/suse/salt-master %{buildroot}%{_initddir}/salt-master
-install -Dpm 0755 pkg/suse/salt-syndic %{buildroot}%{_initddir}/salt-syndic
-install -Dpm 0755 pkg/suse/salt-minion %{buildroot}%{_initddir}/salt-minion
-install -Dpm 0755 pkg/suse/salt-api %{buildroot}%{_initddir}/salt-api
+install -Dpm 0755 pkg/old/suse/salt-master %{buildroot}%{_initddir}/salt-master
+install -Dpm 0755 pkg/old/suse/salt-syndic %{buildroot}%{_initddir}/salt-syndic
+install -Dpm 0755 pkg/old/suse/salt-minion %{buildroot}%{_initddir}/salt-minion
+install -Dpm 0755 pkg/old/suse/salt-api %{buildroot}%{_initddir}/salt-api
 ln -sf %{_initddir}/salt-master %{buildroot}%{_sbindir}/rcsalt-master
 ln -sf %{_initddir}/salt-syndic %{buildroot}%{_sbindir}/rcsalt-syndic
 ln -sf %{_initddir}/salt-minion %{buildroot}%{_sbindir}/rcsalt-minion
@@ -894,27 +854,27 @@ install -Dpm 0640 transactional_update.conf %{buildroot}%{_sysconfdir}/salt/mini
 #
 ## install logrotate file (for RHEL6 we use without sudo)
 %if 0%{?rhel} > 6 || 0%{?suse_version}
-install -Dpm 0644  pkg/suse/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
+install -Dpm 0644  pkg/old/suse/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
 %else
-install -Dpm 0644  pkg/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
+install -Dpm 0644  pkg/common/salt-common.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/salt
 %endif
 #
 %if 0%{?suse_version} <= 1500
 ## install SuSEfirewall2 rules
-install -Dpm 0644  pkg/suse/salt.SuSEfirewall2 %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/salt
+install -Dpm 0644  pkg/old/suse/salt.SuSEfirewall2 %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/salt
 %endif
 #
 ## install completion scripts
 %if %{with bash_completion}
-install -Dpm 0644 pkg/salt.bash %{buildroot}%{_sysconfdir}/bash_completion.d/salt
+install -Dpm 0644 pkg/common/salt.bash %{buildroot}%{_sysconfdir}/bash_completion.d/salt
 %endif
 %if %{with zsh_completion}
-install -Dpm 0644 pkg/salt.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/salt
+install -Dpm 0644 pkg/common/salt.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/salt
 %endif
 
 %if %{with fish_completion}
 mkdir -p %{buildroot}%{fish_completions_dir}
-install -Dpm 0644 pkg/fish-completions/* %{buildroot}%{fish_completions_dir}
+install -Dpm 0644 pkg/common/fish-completions/* %{buildroot}%{fish_completions_dir}
 %endif
 
 # Standalone Salt formulas configuration

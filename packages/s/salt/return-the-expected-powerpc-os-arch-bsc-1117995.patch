@@ -1,4 +1,4 @@
-From 3ce70f43376dbf62edf2ca2aa8c9f28aa733b3d8 Mon Sep 17 00:00:00 2001
+From ceaf42a67d21cb6fa723339559c85be969e67308 Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Thu, 13 Dec 2018 12:17:35 +0100
 Subject: [PATCH] Return the expected powerpc os arch (bsc#1117995)
@@ -8,10 +8,10 @@ Subject: [PATCH] Return the expected powerpc os arch (bsc#1117995)
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/salt/utils/pkg/rpm.py b/salt/utils/pkg/rpm.py
-index e80a01f92f..8203d2f989 100644
+index f9975f8dff..147447ba75 100644
 --- a/salt/utils/pkg/rpm.py
 +++ b/salt/utils/pkg/rpm.py
-@@ -59,9 +59,10 @@ def get_osarch():
+@@ -69,9 +69,10 @@ def get_osarch():
              stderr=subprocess.PIPE,
          ).communicate()[0]
      else:
@@ -26,6 +26,6 @@ index e80a01f92f..8203d2f989 100644
  
  def check_32(arch, osarch=None):
 -- 
-2.37.3
+2.39.2
 
 

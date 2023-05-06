@@ -1,4 +1,4 @@
-From dc849a15ea214170d4de9f54615caa8b3136dc10 Mon Sep 17 00:00:00 2001
+From 76f2b98a3a9b9a49903a4d3b47dca0f2311bd7af Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 19:07:34 +0100
 Subject: [PATCH] Revert "Fixing a use case when multiple inotify beacons
@@ -17,8 +17,8 @@ This reverts commit 66c58dedf8c364eaeb35c5adce8bcc8fe5c1219a.
  salt/beacons/napalm_beacon.py              |  6 ++----
  salt/beacons/status.py                     |  4 ----
  tests/pytests/unit/beacons/test_inotify.py |  5 +----
- tests/pytests/unit/test_beacons.py         | 16 ---------------
- 7 files changed, 11 insertions(+), 48 deletions(-)
+ tests/pytests/unit/test_beacons.py         | 17 ---------------
+ 7 files changed, 11 insertions(+), 49 deletions(-)
 
 diff --git a/salt/beacons/__init__.py b/salt/beacons/__init__.py
 index b346c2a648..90918cba5b 100644
@@ -162,10 +162,10 @@ index aa5aa13b47..e2c3177ea8 100644
          config = [
              {
 diff --git a/tests/pytests/unit/beacons/test_inotify.py b/tests/pytests/unit/beacons/test_inotify.py
-index f5befb2756..dfaf1d499a 100644
+index 30a9a91db4..678a528529 100644
 --- a/tests/pytests/unit/beacons/test_inotify.py
 +++ b/tests/pytests/unit/beacons/test_inotify.py
-@@ -273,7 +273,6 @@ def test_multi_files_exclude(tmp_path):
+@@ -263,7 +263,6 @@ def test_multi_files_exclude(tmp_path):
  
  
  # Check __get_notifier and ensure that the right bits are in __context__
@@ -173,7 +173,7 @@ index f5befb2756..dfaf1d499a 100644
  def test__get_notifier():
      config = {
          "files": {
-@@ -303,10 +302,8 @@ def test__get_notifier():
+@@ -293,10 +292,8 @@ def test__get_notifier():
              },
          },
          "coalesce": True,
@@ -186,13 +186,14 @@ index f5befb2756..dfaf1d499a 100644
 -    assert "httpd.inotify.notifier" in inotify.__context__
 +    assert "inotify.notifier" in inotify.__context__
 diff --git a/tests/pytests/unit/test_beacons.py b/tests/pytests/unit/test_beacons.py
-index 2ca0b30ea2..841a3b8140 100644
+index 217cd5c6a4..855e271d7d 100644
 --- a/tests/pytests/unit/test_beacons.py
 +++ b/tests/pytests/unit/test_beacons.py
-@@ -108,19 +108,3 @@ def test_beacon_module():
+@@ -104,20 +104,3 @@ def test_beacon_module(minion_opts):
+         }
      ]
      assert ret == _expected
- 
+-
 -    # Ensure that "beacon_name" is available in the call to the beacon function
 -    name = "ps.beacon"
 -    mocked = {name: MagicMock(return_value=_expected)}
@@ -207,9 +208,9 @@ index 2ca0b30ea2..841a3b8140 100644
 -        )
 -    ]
 -    with patch.object(beacon, "beacons", mocked) as patched:
--        beacon.process(mock_opts["beacons"], mock_opts["grains"])
+-        beacon.process(minion_opts["beacons"], minion_opts["grains"])
 -        patched[name].assert_has_calls(calls)
 -- 
-2.37.3
+2.39.2
 
 

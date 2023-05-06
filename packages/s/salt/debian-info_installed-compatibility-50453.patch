@@ -1,4 +1,4 @@
-From 8cd50907edeb4a1128681c30e52b2b30cf7f937d Mon Sep 17 00:00:00 2001
+From 2fbc5b580661b094cf79cc5da0860745b72088e4 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 25 Jan 2022 17:08:57 +0100
 Subject: [PATCH] Debian info_installed compatibility (#50453)
@@ -56,15 +56,15 @@ that got partially reverted by this commit:
 https://github.com/openSUSE/salt/commit/d0ef24d113bdaaa29f180031b5da384cffe08c64#diff-820e6ce667fe3afddbc1b9cf1682fdef
 ---
  salt/modules/aptpkg.py                    |  24 ++++-
- salt/modules/dpkg_lowpkg.py               | 108 ++++++++++++++++++----
- tests/pytests/unit/modules/test_aptpkg.py |  52 +++++++++++
- 3 files changed, 166 insertions(+), 18 deletions(-)
+ salt/modules/dpkg_lowpkg.py               | 110 ++++++++++++++++++----
+ tests/pytests/unit/modules/test_aptpkg.py |  52 ++++++++++
+ 3 files changed, 167 insertions(+), 19 deletions(-)
 
 diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
-index 0cbd611b71..4a2281c47f 100644
+index 8e89744b5e..938e37cc9e 100644
 --- a/salt/modules/aptpkg.py
 +++ b/salt/modules/aptpkg.py
-@@ -3458,6 +3458,15 @@ def info_installed(*names, **kwargs):
+@@ -3440,6 +3440,15 @@ def info_installed(*names, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -80,7 +80,7 @@ index 0cbd611b71..4a2281c47f 100644
      CLI Example:
  
      .. code-block:: bash
-@@ -3468,11 +3477,19 @@ def info_installed(*names, **kwargs):
+@@ -3450,11 +3459,19 @@ def info_installed(*names, **kwargs):
      """
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
      failhard = kwargs.pop("failhard", True)
@@ -101,7 +101,7 @@ index 0cbd611b71..4a2281c47f 100644
          t_nfo = dict()
          if pkg_nfo.get("status", "ii")[1] != "i":
              continue  # return only packages that are really installed
-@@ -3493,7 +3510,10 @@ def info_installed(*names, **kwargs):
+@@ -3475,7 +3492,10 @@ def info_installed(*names, **kwargs):
              else:
                  t_nfo[key] = value
  
@@ -114,7 +114,7 @@ index 0cbd611b71..4a2281c47f 100644
      return ret
  
 diff --git a/salt/modules/dpkg_lowpkg.py b/salt/modules/dpkg_lowpkg.py
-index 6a88573a8f..afbd619490 100644
+index eefd852c51..4d716c8772 100644
 --- a/salt/modules/dpkg_lowpkg.py
 +++ b/salt/modules/dpkg_lowpkg.py
 @@ -234,6 +234,44 @@ def file_dict(*packages, **kwargs):
@@ -171,13 +171,14 @@ index 6a88573a8f..afbd619490 100644
          "maintainer:${Maintainer}\\n"
          "summary:${Summary}\\n"
          "source:${source:Package}\\n"
-@@ -296,9 +334,16 @@ def _get_pkg_info(*packages, **kwargs):
+@@ -299,10 +337,17 @@ def _get_pkg_info(*packages, **kwargs):
              key, value = pkg_info_line.split(":", 1)
              if value:
                  pkg_data[key] = value
 -            install_date = _get_pkg_install_time(pkg_data.get("package"))
 -            if install_date:
 -                pkg_data["install_date"] = install_date
+-        pkg_data["description"] = pkg_descr
 +        install_date, install_date_t = _get_pkg_install_time(
 +            pkg_data.get("package"), pkg_data.get("arch")
 +        )
@@ -188,10 +189,11 @@ index 6a88573a8f..afbd619490 100644
 +        if build_date:
 +            pkg_data["build_date"] = build_date
 +            pkg_data["build_date_time_t"] = build_date_t
-         pkg_data["description"] = pkg_descr.split(":", 1)[-1]
++        pkg_data["description"] = pkg_descr.split(":", 1)[-1]
          ret.append(pkg_data)
  
-@@ -324,24 +369,34 @@ def _get_pkg_license(pkg):
+     return ret
+@@ -327,24 +372,34 @@ def _get_pkg_license(pkg):
      return ", ".join(sorted(licenses))
  
  
@@ -237,7 +239,7 @@ index 6a88573a8f..afbd619490 100644
  
  
  def _get_pkg_ds_avail():
-@@ -391,6 +446,15 @@ def info(*packages, **kwargs):
+@@ -394,6 +449,15 @@ def info(*packages, **kwargs):
  
          .. versionadded:: 2016.11.3
  
@@ -253,7 +255,7 @@ index 6a88573a8f..afbd619490 100644
      CLI Example:
  
      .. code-block:: bash
-@@ -405,6 +469,10 @@ def info(*packages, **kwargs):
+@@ -408,6 +472,10 @@ def info(*packages, **kwargs):
  
      kwargs = salt.utils.args.clean_kwargs(**kwargs)
      failhard = kwargs.pop("failhard", True)
@@ -264,7 +266,7 @@ index 6a88573a8f..afbd619490 100644
      if kwargs:
          salt.utils.args.invalid_kwargs(kwargs)
  
-@@ -432,6 +500,14 @@ def info(*packages, **kwargs):
+@@ -435,6 +503,14 @@ def info(*packages, **kwargs):
          lic = _get_pkg_license(pkg["package"])
          if lic:
              pkg["license"] = lic
@@ -281,10 +283,10 @@ index 6a88573a8f..afbd619490 100644
  
      return ret
 diff --git a/tests/pytests/unit/modules/test_aptpkg.py b/tests/pytests/unit/modules/test_aptpkg.py
-index 6ef27e2d29..8e404a673c 100644
+index b69402578a..4226957eeb 100644
 --- a/tests/pytests/unit/modules/test_aptpkg.py
 +++ b/tests/pytests/unit/modules/test_aptpkg.py
-@@ -359,6 +359,58 @@ def test_info_installed(lowpkg_info_var):
+@@ -360,6 +360,58 @@ def test_info_installed(lowpkg_info_var):
          assert len(aptpkg.info_installed()) == 1
  
  
@@ -344,6 +346,6 @@ index 6ef27e2d29..8e404a673c 100644
      """
      Test - Return the name of the package that owns the file.
 -- 
-2.37.3
+2.39.2
 
 

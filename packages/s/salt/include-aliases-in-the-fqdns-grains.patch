@@ -1,4 +1,4 @@
-From 797b256548cbcda0f3828c6d182c44a3815dd313 Mon Sep 17 00:00:00 2001
+From 4f459d670886a8f4a410fdbd1ec595477d45e4e2 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 17:10:37 +0100
 Subject: [PATCH] Include aliases in the fqdns grains
@@ -31,10 +31,10 @@ Co-authored-by: Eric Siebigteroth <eric.siebigteroth@suse.de>
  4 files changed, 54 insertions(+), 3 deletions(-)
 
 diff --git a/salt/modules/network.py b/salt/modules/network.py
-index 1149c96097..8c2d188903 100644
+index 524b1b74fa..f959dbf97b 100644
 --- a/salt/modules/network.py
 +++ b/salt/modules/network.py
-@@ -2100,7 +2100,10 @@ def fqdns():
+@@ -2096,7 +2096,10 @@ def fqdns():
          #   https://sourceware.org/bugzilla/show_bug.cgi?id=19329
          time.sleep(random.randint(5, 25) / 1000)
          try:
@@ -47,13 +47,13 @@ index 1149c96097..8c2d188903 100644
              if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
                  # No FQDN for this IP address, so we don't need to know this all the time.
 diff --git a/salt/utils/network.py b/salt/utils/network.py
-index d042cd177d..bccda01556 100644
+index 2bea2cf129..6ec993a678 100644
 --- a/salt/utils/network.py
 +++ b/salt/utils/network.py
-@@ -2332,3 +2332,19 @@ def filter_by_networks(values, networks):
-             raise ValueError("Do not know how to filter a {}".format(type(values)))
-     else:
-         return values
+@@ -2372,3 +2372,19 @@ def ip_bracket(addr, strip=False):
+     addr = addr.rstrip("]")
+     addr = ipaddress.ip_address(addr)
+     return ("[{}]" if addr.version == 6 and not strip else "{}").format(addr)
 +
 +
 +def is_fqdn(hostname):
@@ -71,10 +71,10 @@ index d042cd177d..bccda01556 100644
 +        and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
 +    )
 diff --git a/tests/pytests/unit/modules/test_network.py b/tests/pytests/unit/modules/test_network.py
-index 15fd5545a0..b948e578bb 100644
+index 81035434b6..3f31391f44 100644
 --- a/tests/pytests/unit/modules/test_network.py
 +++ b/tests/pytests/unit/modules/test_network.py
-@@ -28,7 +28,7 @@ def fake_fqdn():
+@@ -29,7 +29,7 @@ def fake_fqdn():
      with patch("socket.getfqdn", autospec=True, return_value=fqdn), patch(
          "socket.gethostbyaddr",
          autospec=True,
@@ -83,7 +83,7 @@ index 15fd5545a0..b948e578bb 100644
      ):
          yield fqdn
  
-@@ -88,7 +88,7 @@ def test_fqdns_should_return_sorted_unique_domains(fake_ips):
+@@ -89,7 +89,7 @@ def test_fqdns_should_return_sorted_unique_domains(fake_ips):
      with patch("socket.getfqdn", autospec=True, side_effect=fake_domains), patch(
          "socket.gethostbyaddr",
          autospec=True,
@@ -93,13 +93,13 @@ index 15fd5545a0..b948e578bb 100644
          actual_fqdns = networkmod.fqdns()
          assert actual_fqdns == {
 diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
-index 422f85d68c..3060aba0aa 100644
+index f7d3972930..cdb1ca19ca 100644
 --- a/tests/unit/utils/test_network.py
 +++ b/tests/unit/utils/test_network.py
-@@ -1269,3 +1269,35 @@ class NetworkTestCase(TestCase):
-             ),
-         ):
-             self.assertEqual(network.get_fqhostname(), host)
+@@ -1311,3 +1311,35 @@ class NetworkTestCase(TestCase):
+ 
+         ip_addr_obj = ipaddress.ip_address(test_ipv4)
+         self.assertEqual(test_ipv4, network.ip_bracket(ip_addr_obj))
 +
 +    def test_is_fqdn(self):
 +        """
@@ -133,6 +133,6 @@ index 422f85d68c..3060aba0aa 100644
 +        ]:
 +            assert not network.is_fqdn(fqdn)
 -- 
-2.37.3
+2.39.2
 
 

@@ -1,4 +1,4 @@
-From e011015f0eaa8e6453b57c208ab2a43a15824e36 Mon Sep 17 00:00:00 2001
+From b7a554e2dec3351c91c237497fe37cbc30d664bd Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <Victor.Zhestkov@suse.com>
 Date: Thu, 1 Sep 2022 14:42:24 +0300
 Subject: [PATCH] Change the delimeters to prevent possible tracebacks on
@@ -8,42 +8,14 @@ Subject: [PATCH] Change the delimeters to prevent possible tracebacks on
 
 * Fix the test test_dpkg_lowpkg::test_info
 ---
- salt/modules/dpkg_lowpkg.py            | 13 ++++++++-----
- tests/unit/modules/test_dpkg_lowpkg.py |  4 ++--
- 2 files changed, 10 insertions(+), 7 deletions(-)
+ salt/modules/dpkg_lowpkg.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/salt/modules/dpkg_lowpkg.py b/salt/modules/dpkg_lowpkg.py
-index 2c25b1fb2a..fc93d99549 100644
+index 4d716c8772..78990492cf 100644
 --- a/salt/modules/dpkg_lowpkg.py
 +++ b/salt/modules/dpkg_lowpkg.py
-@@ -309,9 +309,8 @@ def _get_pkg_info(*packages, **kwargs):
-         "origin:${Origin}\\n"
-         "homepage:${Homepage}\\n"
-         "status:${db:Status-Abbrev}\\n"
--        "======\\n"
-         "description:${Description}\\n"
--        "------\\n'"
-+        "\\n*/~^\\\\*\\n'"
-     )
-     cmd += " {}".format(" ".join(packages))
-     cmd = cmd.strip()
-@@ -325,9 +324,13 @@ def _get_pkg_info(*packages, **kwargs):
-         else:
-             return ret
- 
--    for pkg_info in [elm for elm in re.split(r"------", call["stdout"]) if elm.strip()]:
-+    for pkg_info in [
-+        elm
-+        for elm in re.split(r"\r?\n\*/~\^\\\*(\r?\n|)", call["stdout"])
-+        if elm.strip()
-+    ]:
-         pkg_data = {}
--        pkg_info, pkg_descr = re.split(r"======", pkg_info)
-+        pkg_info, pkg_descr = pkg_info.split("\ndescription:", 1)
-         for pkg_info_line in [
-             el.strip() for el in pkg_info.split(os.linesep) if el.strip()
-         ]:
-@@ -344,7 +347,7 @@ def _get_pkg_info(*packages, **kwargs):
+@@ -347,7 +347,7 @@ def _get_pkg_info(*packages, **kwargs):
          if build_date:
              pkg_data["build_date"] = build_date
              pkg_data["build_date_time_t"] = build_date_t
@@ -52,29 +24,7 @@ index 2c25b1fb2a..fc93d99549 100644
          ret.append(pkg_data)
  
      return ret
-diff --git a/tests/unit/modules/test_dpkg_lowpkg.py b/tests/unit/modules/test_dpkg_lowpkg.py
-index d00fc46c66..a97519f489 100644
---- a/tests/unit/modules/test_dpkg_lowpkg.py
-+++ b/tests/unit/modules/test_dpkg_lowpkg.py
-@@ -290,7 +290,6 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-                         "origin:",
-                         "homepage:http://tiswww.case.edu/php/chet/bash/bashtop.html",
-                         "status:ii ",
--                        "======",
-                         "description:GNU Bourne Again SHell",
-                         " Bash is an sh-compatible command language interpreter that"
-                         " executes",
-@@ -307,7 +306,8 @@ class DpkgTestCase(TestCase, LoaderModuleMockMixin):
-                         " The Programmable Completion Code, by Ian Macdonald, is now"
-                         " found in",
-                         " the bash-completion package.",
--                        "------",
-+                        "",
-+                        "*/~^\\*",  # pylint: disable=W1401
-                     ]
-                 ),
-             }
 -- 
-2.37.3
+2.39.2
 
 

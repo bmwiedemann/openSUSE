@@ -1,4 +1,4 @@
-From a2f8b54cd56eb83552eccf87afd9b67f6a4a6f4c Mon Sep 17 00:00:00 2001
+From ef6da7d43fcf51a7d705422624c1e7a94b1297f2 Mon Sep 17 00:00:00 2001
 From: Alexander Graul <agraul@suse.com>
 Date: Tue, 18 Jan 2022 16:36:57 +0100
 Subject: [PATCH] Use Adler32 algorithm to compute string checksums
@@ -24,21 +24,21 @@ Remove deprecated warning that breaks miniion execution when "server_id_use_crc"
  2 files changed, 48 insertions(+), 4 deletions(-)
 
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index a37f7eebcc..7cdee12c4d 100644
+index 1632663474..43182f3f92 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -964,6 +964,9 @@ VALID_OPTS = immutabletypes.freeze(
-         # The port to be used when checking if a master is connected to a
-         # minion
-         "remote_minions_port": int,
+@@ -991,6 +991,9 @@ VALID_OPTS = immutabletypes.freeze(
+         "maintenance_interval": int,
+         # Fileserver process restart interval
+         "fileserver_interval": int,
 +        # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
 +        # Possible values are: False, adler32, crc32
 +        "server_id_use_crc": (bool, str),
      }
  )
  
-@@ -1267,6 +1270,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
-         "disabled_requisites": [],
+@@ -1296,6 +1299,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
+         "global_state_conditions": None,
          "reactor_niceness": None,
          "fips_mode": False,
 +        "server_id_use_crc": False,
@@ -46,7 +46,7 @@ index a37f7eebcc..7cdee12c4d 100644
  )
  
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index b55ab4e472..23d8b8ea42 100644
+index 1199ad274f..5c12556346 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
 @@ -21,6 +21,7 @@ import subprocess
@@ -56,8 +56,8 @@ index b55ab4e472..23d8b8ea42 100644
 +import zlib
  from errno import EACCES, EPERM
  
- import distro
-@@ -3015,6 +3016,36 @@ def _hw_data(osdata):
+ import salt.exceptions
+@@ -3382,6 +3383,36 @@ def _hw_data(osdata):
      return grains
  
  
@@ -94,14 +94,14 @@ index b55ab4e472..23d8b8ea42 100644
  def get_server_id():
      """
      Provides an integer based on the FQDN of a machine.
-@@ -3025,10 +3056,19 @@ def get_server_id():
+@@ -3392,10 +3423,19 @@ def get_server_id():
      #   server_id
  
      if salt.utils.platform.is_proxy():
 -        return {}
 -    id_ = __opts__.get("id", "")
 -    hash_ = int(hashlib.sha256(id_.encode()).hexdigest(), 16)
--    return {"server_id": abs(hash_ % (2 ** 31))}
+-    return {"server_id": abs(hash_ % (2**31))}
 +        server_id = {}
 +    else:
 +        use_crc = __opts__.get("server_id_use_crc")
@@ -119,6 +119,6 @@ index b55ab4e472..23d8b8ea42 100644
  
  def get_master():
 -- 
-2.37.3
+2.39.2
 
 

@@ -1,4 +1,4 @@
-From c683ceaf9321a646d32e3b2b5fca705563fe8e73 Mon Sep 17 00:00:00 2001
+From 3fd6c0c6793632c819fb5f8fb3b3538463eaaccc Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <vzhestkov@suse.com>
 Date: Thu, 24 Feb 2022 16:52:24 +0300
 Subject: [PATCH] Add salt-ssh support with venv-salt-minion - 3004
@@ -146,7 +146,7 @@ index cc18f49a9e..e050f43caf 100644
      def makeRecord(
          self,
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index ad2796bc87..6db2dfcbb0 100644
+index 19089ce8ad..e6837df4e5 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
 @@ -6,11 +6,13 @@ import base64
@@ -732,7 +732,7 @@ index 72a5e54401..32f8a7702c 100644
      ):
          err = (
 diff --git a/salt/netapi/__init__.py b/salt/netapi/__init__.py
-index 7127dc2b3c..4a80697648 100644
+index a89c1a19af..8a28c48460 100644
 --- a/salt/netapi/__init__.py
 +++ b/salt/netapi/__init__.py
 @@ -79,6 +79,7 @@ class NetapiClient:
@@ -743,7 +743,7 @@ index 7127dc2b3c..4a80697648 100644
  
      def _is_master_running(self):
          """
-@@ -238,7 +239,7 @@ class NetapiClient:
+@@ -245,7 +246,7 @@ class NetapiClient:
          with salt.client.ssh.client.SSHClient(
              mopts=self.opts, disable_custom_roster=True
          ) as client:
@@ -777,10 +777,10 @@ index fc7339d785..ea23d550d7 100644
      def _gen_back(self):
          """
 diff --git a/tests/unit/test_loader.py b/tests/unit/test_loader.py
-index 66ba3d4e05..412d412398 100644
+index cf33903320..1b616375b3 100644
 --- a/tests/unit/test_loader.py
 +++ b/tests/unit/test_loader.py
-@@ -1696,7 +1696,7 @@ class LazyLoaderRefreshFileMappingTest(TestCase):
+@@ -1697,7 +1697,7 @@ class LazyLoaderRefreshFileMappingTest(TestCase):
          cls.funcs = salt.loader.minion_mods(cls.opts, utils=cls.utils, proxy=cls.proxy)
  
      def setUp(self):
@@ -790,6 +790,6 @@ index 66ba3d4e05..412d412398 100644
  
          self.LOADER_CLASS = LazyLoaderMock
 -- 
-2.37.3
+2.39.2
 
 
