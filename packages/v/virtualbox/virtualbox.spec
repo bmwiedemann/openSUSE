@@ -23,7 +23,6 @@
 %define name_suffix kmp
 %define dash -
 %define package_summary Kernel modules for VirtualBox
-%define package_group System/Kernel
 %if %{undefined kernel_module_directory}
 %define kernel_module_directory /lib/modules
 %endif
@@ -32,7 +31,6 @@
 %define main_package 1
 %define kmp_package 0
 %define package_summary VirtualBox is an Emulator
-%define package_group System/Emulators/PC
 %define qt5ver %(rpm -q --queryformat %%{version} libQt5Core5|perl -ne '/(\\d+)\\.(\\d+)\\.(\\d+)?/&&printf "%%d%%02d%%02d\\n",$1,$2,$3')
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -54,11 +52,12 @@ Name:           virtualbox%{?dash}%{?name_suffix}
 Version:        7.0.8
 Release:        0
 Summary:        %{package_summary}
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          %{package_group}
+%if %{kmp_package}
+Group:          System/Kernel
+%else
+Group:          System/Emulators/PC
+%endif
 URL:            https://www.virtualbox.org/
 #
 # so you don't need to repack virtualbox by hand, just add new release of VirtualBox-x.x.x.tar.bz2 and line below with
@@ -161,6 +160,8 @@ Patch35:        fixes_for_leap15.5.patch
 Patch36:        fixes_for_gcc13.patch
 # Fix locking problem in 7.0.6
 Patch37:        fix_7.0.6_locking_problems.patch
+# Support python 3.11
+Patch38:        python311.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -293,18 +294,6 @@ and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
-
-
-
-
-
-
-
-
-
-
-
-#-#########################################
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -321,18 +310,6 @@ Obsoletes:      %{name}-ose-qt < %{version}
 %description qt
 This package contains the code for the GUI used to control VMs.
 
-
-
-
-
-
-
-
-
-
-
-
-#-########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -342,18 +319,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
-
-
-
-
-
-
-#-##########################################
 
 %package guest-tools
 Summary:        VirtualBox guest tools
@@ -375,18 +340,6 @@ Requires(pre):  net-tools-deprecated
 %description guest-tools
 VirtualBox guest addition tools.
 
-
-
-
-
-
-
-
-
-
-
-
-#-##########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -404,18 +357,6 @@ Obsoletes:      python3-%{name}-ose < %{version}
 %description -n python3-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
-
-
-
-
-
-
-
-
-
-
-
-#-##########################################
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -428,18 +369,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 %description devel
 Development file for %{name}
 
-
-
-
-
-
-
-
-
-
-
-
-#-##########################################
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -469,18 +398,6 @@ Source files for %{name} guest kernel modules
 These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
-
-
-
-
-
-
-
-
-
-
-
-#-##########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -491,18 +408,6 @@ BuildArch:      noarch
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
 
-
-
-
-
-
-
-
-
-
-
-
-#-##########################################
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
@@ -570,6 +475,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch36 -p1
 %endif
 %patch37 -p1
+%patch38 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

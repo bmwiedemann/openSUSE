@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 16:46:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311.patch to make it detect Python 3.11 as well
+- spec file cleanups
+
+-------------------------------------------------------------------
 Thu May  4 15:24:39 UTC 2023 - Larry Rainey <llrainey15@gmail.com>
 
 - VirtualBox 7.0.8 (released April 18 2023)
