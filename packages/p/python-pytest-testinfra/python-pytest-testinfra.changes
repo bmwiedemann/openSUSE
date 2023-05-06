@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 19:55:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue Apr 27 11:12:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Rename package to the upstream name: python-pytest-testinfra.

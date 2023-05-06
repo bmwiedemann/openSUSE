@@ -1,7 +1,7 @@
 #
-# spec file for package python-testinfra
+# spec file for package python-pytest-testinfra
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-testinfra
 Version:        6.3.0
 Release:        0
@@ -39,7 +38,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-salt
 Requires:       python-pytest
-Requires:       python-six >= 1.4
 Provides:       python-testinfra = %{version}-%{release}
 Obsoletes:      python-testinfra < %{version}-%{release}
 BuildArch:      noarch
@@ -80,6 +78,7 @@ fi
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/testinfra
+%{python_sitelib}/pytest_testinfra-%{version}*-info
 
 %changelog
