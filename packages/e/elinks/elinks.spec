@@ -1,7 +1,7 @@
 #
 # spec file for package elinks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,43 @@
 #
 
 
-%define tar_version 0.13
-%define snapshot 20190723
-
+%if 0%{?suse_version} > 1500
+%bcond_without js
+%else
 %bcond_with js
+%endif
 
 Name:           elinks
-Version:        %{tar_version}~0.%{snapshot}
+Version:        0.16.1.1
 Release:        0
 Summary:        An advanced and well-established feature-rich text mode web browser
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            http://elinks.or.cz/
-# Volatile download URL http://elinks.or.cz/download/%{name}-current-%{tar_version}.tar.bz2
-Source0:        %{name}-current-%{tar_version}.tar.bz2
-Patch0:         build-with-new-ruby.patch
-%if 0%{?suse_version} > 1140
-BuildRequires:  gc-devel
-%endif
+Source0:        https://github.com/rkd77/elinks/releases/download/v%{version}/elinks-%{version}.tar.xz
+Patch0:         0006-elinks-0.16.0-libidn2.patch
+BuildRequires:  gcc-c++
 BuildRequires:  gpm-devel
 %if %{with js}
-BuildRequires:  gcc-c++
-BuildRequires:  mozjs24-devel
-%endif
-BuildRequires:  krb5-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libidn-devel
-%if 0%{?suse_version} > 1210
-BuildRequires:  lua51-devel
-%else
-BuildRequires:  lua-devel
+BuildRequires:  pkgconfig(libcss)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libxml++-5.0)
+BuildRequires:  pkgconfig(mujs)
+BuildRequires:  pkgconfig(sqlite3)
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  krb5-devel
+BuildRequires:  libbz2-devel
+BuildRequires:  libexpat-devel
+BuildRequires:  libidn2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  ruby-devel
 BuildRequires:  tre-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(luajit)
 Provides:       web_browser
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %perl_requires
@@ -69,7 +66,7 @@ and runs on a variety of platforms. Check the about page for a more complete
 description.
 
 %prep
-%setup -q -n %{name}-%{tar_version}-%{snapshot}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
@@ -97,22 +94,17 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --enable-html-highlight \
     --enable-fastmem \
     --with-xterm \
-%if 0%{?suse_version} > 1140
-    --with-gc \
-%else
-    --without-gc \
-%endif
 %if %{without js}
-    --without-spidermonkey \
+    --without-mujs \
 %else
-    --with-spidermonkey=%{_includedir}/mozjs-24 \
+    --with-mujs \
 %endif
     --without-lzma \
     --with-gssapi \
     --without-guile \
     --with-perl \
     --without-python \
-    --with-lua \
+    --with-luapkg=luajit \
     --with-ruby \
     --without-gnutls \
     --without-x
@@ -130,7 +122,7 @@ rm -f %{buildroot}%{_datadir}/locale/locale.alias
 # Install documentation
 %define _pkgdocdir %{buildroot}%{_docdir}/%{name}
 install -Dd -m 0755 %{_pkgdocdir}
-install -pm 0644 AUTHORS BUGS COPYING ChangeLog NEWS README SITES THANKS TODO features.conf %{_pkgdocdir}
+install -pm 0644 AUTHORS BUGS COPYING ChangeLog NEWS SITES THANKS TODO features.conf %{_pkgdocdir}
 cp -a doc/ %{_pkgdocdir}
 rm -rf %{_pkgdocdir}/doc/{.deps/,.gitignore,Doxyfile.in,Makefile,man/,tools/}
 install -Dd -m 0755 %{_pkgdocdir}/contrib/

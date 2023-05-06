@@ -47,4 +47,30 @@
     <comment></comment>
     <requestid>999124</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>55c68935a65c9bbb025aeb98b9e35162</srcmd5>
+    <version>0.16.1.1</version>
+    <time>1683403706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.1.1:
+  * updated POTFILES
+
+- Update to version 0.16.1
+  * handle SECTION html element #207
+  * allocate more memory for BLOCKQUOTE #214
+  * encode A href to terminal codepage and encode bytes with 
+    highest bit set as %HEX #221
+  * Serbian translation update
+  * install doc by default in meson #224
+  * tests fixes
+
+- Update to rkd77 git version 0.16.0
+- Enable javascript with mujs on Tumbleweed (missing libxml++-5.0 on leap)
+- Use LuaJIT for lua compiler until someone fix it with standart Lua
+- Removed unneeded patches:
+  * build-with-new-ruby.patch
+- Added the following patches:
+  * 0006-elinks-0.16.0-libidn2.patch</comment>
+    <requestid>1084819</requestid>
+  </revision>
 </revisionlist>
