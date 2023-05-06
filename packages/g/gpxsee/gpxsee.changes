@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  5 19:24:12 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.1
+  * Fixed wrong date info on tracks with segments.
+  * Fixed display issues of Mapsforge and KMZ maps in HiDPI mode.
+
+-------------------------------------------------------------------
 Thu Apr 27 23:56:20 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.0

@@ -1,3 +1,10 @@
+gpxsee (13.1) stable; urgency=low
+
+  * Fixed wrong date info on tracks with segments.
+  * Fixed display issues of Mapsforge and KMZ maps in HiDPI mode.
+
+ -- Martin Tuma <tumic@cbox.cz>  Fri, 05 May 2023 19:28:35 +0200
+
 gpxsee (13.0) stable; urgency=low
 
   * Reworked coordinate reference systems (CRS) handling.
