@@ -1,17 +1,17 @@
-Index: php-8.1.18/php.ini-production
+Index: php-8.2.4/php.ini-production
 ===================================================================
---- php-8.1.18.orig/php.ini-production
-+++ php-8.1.18/php.ini-production
+--- php-8.2.4.orig/php.ini-production
++++ php-8.2.4/php.ini-production
 @@ -742,7 +742,7 @@ default_charset = "UTF-8"
  ;;;;;;;;;;;;;;;;;;;;;;;;;
  
  ; UNIX: "/path1:/path2"
 -;include_path = ".:/php/includes"
-+include_path = ".:/usr/share/php8:/usr/share/php:/usr/share/php/PEAR
++include_path = ".:/usr/share/php8:/usr/share/php/PEAR"
  ;
  ; Windows: "\path1;\path2"
  ;include_path = ".;c:\php\includes"
-@@ -975,7 +975,7 @@ cli_server.color = On
+@@ -976,7 +976,7 @@ cli_server.color = On
  [Date]
  ; Defines the default timezone used by the date functions
  ; https://php.net/date.timezone
@@ -20,7 +20,7 @@ Index: php-8.1.18/php.ini-production
  
  ; https://php.net/date.default-latitude
  ;date.default_latitude = 31.7667
-@@ -1164,7 +1164,7 @@ mysqli.max_persistent = -1
+@@ -1169,7 +1169,7 @@ mysqli.max_persistent = -1
  
  ; Allow or prevent persistent links.
  ; https://php.net/mysqli.allow-persistent

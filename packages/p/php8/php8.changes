@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May  4 08:16:37 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.2.5
+  * Readonly classes
+  * Disjunctive Normal Form (DNF) Types
+  * Allow null, false, and true as stand-alone types
+  * New "Random" extension
+  * Constants in traits
+  * Deprecate dynamic properties
+  * for details, see
+    https://www.php.net/releases/8.2/en.php
+    https://www.php.net/manual/en/migration82.php
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-ini.patch (refreshed)
+- deleted patches
+  - php-crypt-tests.patch (not needed)
+- modified sources
+  % php8.keyring
+
+-------------------------------------------------------------------
 Thu Apr 20 21:19:59 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - The %_restart_on_update macro was removed from systemd-rpm-macros.

@@ -40,8 +40,8 @@
 %define psuffix %{nil}
 %endif
 
-%global apiver            20210902
-%global zendver           20210902
+%global apiver            20220829
+%global zendver           20220829
 %define extension_dir     %{_libdir}/%{php_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{php_name}
 
@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.1.18
+Version:        8.2.5
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -90,12 +90,6 @@ Patch5:         php-systemd-unit.patch
 # PATCH-FEATURE-OPENSUSE use ordered input files for reproducible /usr/bin/phar.phar
 Patch6:         php-sort-filelist-phar.patch
 ## Bugfix patches
-# following patch is to fix configure tests for crypt; the aim is to have php
-# built against glibc's crypt; problem is, that our glibc doesn't support extended
-# DES, so as soon as upstream fixes this, don't forgot to remove extended DES
-# from their checking as I indicated in crypt-tests.patch yet, or php will
-# silently use his own implementation again
-Patch20:        php-crypt-tests.patch
 # should be upstreamed, will do later
 Patch22:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
@@ -987,6 +981,12 @@ if test "x${vzend}" != "x%{zendver}"; then
 fi
 
 %build
+%if 150000 <= 0%{?sle_version} && 0%{?sle_version} <= 150200
+# former libcrypt does not support extended DES, so the build would fail
+# with --with-external-libcrypt
+sed -i 's:|| test "$ac_cv_crypt_ext_des" = "no"::' ext/standard/config.m4
+%endif
+
 # regenerate configure etc.
 ./buildconf --force
 
@@ -1041,6 +1041,7 @@ Build()
         --with-gnu-ld \
         --enable-re2c-cgoto \
         --with-system-tzdata=%{_datadir}/zoneinfo \
+        --with-external-libcrypt \
         --with-mhash \
         --disable-phpdbg \
 %if %{with argon2}

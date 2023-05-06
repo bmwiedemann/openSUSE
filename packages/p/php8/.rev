@@ -443,4 +443,29 @@
   [boo#1210576] (forwarded request 1080973 from adkorte)</comment>
     <requestid>1081222</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>617c813932e02fbb9352b79e83132cf2</srcmd5>
+    <version>8.2.5</version>
+    <time>1683403707</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.2.5
+  * Readonly classes
+  * Disjunctive Normal Form (DNF) Types
+  * Allow null, false, and true as stand-alone types
+  * New &quot;Random&quot; extension
+  * Constants in traits
+  * Deprecate dynamic properties
+  * for details, see
+    https://www.php.net/releases/8.2/en.php
+    https://www.php.net/manual/en/migration82.php
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-ini.patch (refreshed)
+- deleted patches
+  - php-crypt-tests.patch (not needed)
+- modified sources
+  % php8.keyring</comment>
+    <requestid>1084825</requestid>
+  </revision>
 </revisionlist>

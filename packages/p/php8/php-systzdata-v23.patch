@@ -34,10 +34,10 @@ r3: fix a crash if /usr/share/zoneinfo doesn't exist (Raphael Geissert)
 r2: add filesystem trawl to set up name alias index
 r1: initial revision
 
-diff --git a/ext/date/config0.m4 b/ext/date/config0.m4
-index 18b8106bd2..3d1f63c758 100644
---- a/ext/date/config0.m4
-+++ b/ext/date/config0.m4
+Index: php-8.2.5/ext/date/config0.m4
+===================================================================
+--- php-8.2.5.orig/ext/date/config0.m4
++++ php-8.2.5/ext/date/config0.m4
 @@ -4,6 +4,19 @@ AC_CHECK_HEADERS([io.h])
  dnl Check for strtoll, atoll
  AC_CHECK_FUNCS(strtoll atoll)
@@ -58,10 +58,10 @@ index 18b8106bd2..3d1f63c758 100644
  PHP_DATE_CFLAGS="-Wno-implicit-fallthrough -I@ext_builddir@/lib -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DHAVE_TIMELIB_CONFIG_H=1"
  timelib_sources="lib/astro.c lib/dow.c lib/parse_date.c lib/parse_tz.c lib/parse_posix.c
                   lib/timelib.c lib/tm2unixtime.c lib/unixtime2tm.c lib/parse_iso_intervals.c lib/interval.c"
-diff --git a/ext/date/lib/parse_tz.c b/ext/date/lib/parse_tz.c
-index e41315efdb..4b6547c0a3 100644
---- a/ext/date/lib/parse_tz.c
-+++ b/ext/date/lib/parse_tz.c
+Index: php-8.2.5/ext/date/lib/parse_tz.c
+===================================================================
+--- php-8.2.5.orig/ext/date/lib/parse_tz.c
++++ php-8.2.5/ext/date/lib/parse_tz.c
 @@ -26,9 +26,22 @@
  #include "timelib.h"
  #include "timelib_private.h"
@@ -85,7 +85,7 @@ index e41315efdb..4b6547c0a3 100644
  
  #if (defined(__APPLE__) || defined(__APPLE_CC__)) && (defined(__BIG_ENDIAN__) || defined(__LITTLE_ENDIAN__))
  # if defined(__LITTLE_ENDIAN__)
-@@ -95,6 +108,11 @@ static int read_php_preamble(const unsigned char **tzf, timelib_tzinfo *tz)
+@@ -95,6 +108,11 @@ static int read_php_preamble(const unsig
  {
  	uint32_t version;
  
@@ -97,7 +97,7 @@ index e41315efdb..4b6547c0a3 100644
  	/* read ID */
  	version = (*tzf)[3] - '0';
  	*tzf += 4;
-@@ -577,7 +595,467 @@ void timelib_dump_tzinfo(timelib_tzinfo *tz)
+@@ -577,7 +595,467 @@ void timelib_dump_tzinfo(timelib_tzinfo
  	}
  }
  
@@ -165,7 +165,7 @@ index e41315efdb..4b6547c0a3 100644
 +
 +    /* Annoying encoding used by zone.tab has no decimal point, so use
 +     * the length to determine the format:
-+     * 
++     *
 +     * 4 = DDMM
 +     * 5 = DDDMM
 +     * 6 = DDMMSS
@@ -232,10 +232,10 @@ index e41315efdb..4b6547c0a3 100644
 +
 +        if (*p == '#' || *p == '\0' || *p == '\n')
 +            continue;
-+        
++
 +        if (!isalpha(p[0]) || !isalpha(p[1]) || p[2] != '\t')
 +            continue;
-+        
++
 +        /* code => AA */
 +        code = p;
 +        p[2] = 0;
@@ -269,7 +269,7 @@ index e41315efdb..4b6547c0a3 100644
 +
 +        if (*p == '\n' || *p == '\t')
 +            *p = '\0';
-+        
++
 +        hash = tz_hash(name);
 +        i = malloc(sizeof *i);
 +        memcpy(i->code, code, 2);
@@ -289,7 +289,7 @@ index e41315efdb..4b6547c0a3 100644
 +
 +/* Return location info from hash table, using given timezone name.
 + * Returns NULL if the name could not be found. */
-+const struct location_info *find_zone_info(struct location_info **li, 
++const struct location_info *find_zone_info(struct location_info **li,
 +                                           const char *name)
 +{
 +    uint32_t hash = tz_hash(name);
@@ -305,7 +305,7 @@ index e41315efdb..4b6547c0a3 100644
 +    }
 +
 +    return NULL;
-+}    
++}
 +
 +/* Filter out some non-tzdata files and the posix/right databases, if
 + * present. */
@@ -380,7 +380,7 @@ index e41315efdb..4b6547c0a3 100644
 +	dirstack = malloc(dirstack_size * sizeof *dirstack);
 +	dirstack_top = 1;
 +	dirstack[0] = strdup("");
-+	
++
 +	/* Index array. */
 +	index_size = 64;
 +	db_index = malloc(index_size * sizeof *db_index);
@@ -401,22 +401,22 @@ index e41315efdb..4b6547c0a3 100644
 +			struct stat st;
 +			const char *leaf = ents[count - 1]->d_name;
 +
-+			snprintf(name, sizeof name, ZONEINFO_PREFIX "/%s/%s", 
++			snprintf(name, sizeof name, ZONEINFO_PREFIX "/%s/%s",
 +				 top, leaf);
-+			
++
 +			if (strlen(name) && stat(name, &st) == 0) {
 +				/* Name, relative to the zoneinfo prefix. */
 +				const char *root = top;
 +
 +				if (root[0] == '/') root++;
 +
-+				snprintf(name, sizeof name, "%s%s%s", root, 
++				snprintf(name, sizeof name, "%s%s%s", root,
 +					 *root ? "/": "", leaf);
 +
 +				if (S_ISDIR(st.st_mode)) {
 +					if (dirstack_top == dirstack_size) {
 +						dirstack_size *= 2;
-+						dirstack = realloc(dirstack, 
++						dirstack = realloc(dirstack,
 +								   dirstack_size * sizeof *dirstack);
 +					}
 +					dirstack[dirstack_top++] = strdup(name);
@@ -434,7 +434,7 @@ index e41315efdb..4b6547c0a3 100644
 +
 +			free(ents[--count]);
 +		}
-+		
++
 +		if (count != -1) free(ents);
 +		free(top);
 +	} while (dirstack_top);
@@ -456,7 +456,7 @@ index e41315efdb..4b6547c0a3 100644
 +{
 +        size_t n;
 +        char *data, *p;
-+        
++
 +        data = malloc(3 * sysdb->index_size + sizeof(FAKE_HEADER) - 1);
 +
 +        p = mempcpy(data, FAKE_HEADER, sizeof(FAKE_HEADER) - 1);
@@ -489,7 +489,7 @@ index e41315efdb..4b6547c0a3 100644
 +                        ent->pos = 0;
 +                }
 +        }
-+        
++
 +        sysdb->data = (unsigned char *)data;
 +}
 +
@@ -538,7 +538,7 @@ index e41315efdb..4b6547c0a3 100644
 +	struct stat st;
 +	char *p;
 +	int fd;
-+	
++
 +	if (timezone[0] == '\0' || strstr(timezone, "..") != NULL) {
 +		return NULL;
 +	}
@@ -556,7 +556,7 @@ index e41315efdb..4b6547c0a3 100644
 +	*length = st.st_size;
 +	p = mmap(NULL, st.st_size, PROT_READ, MAP_SHARED, fd, 0);
 +	close(fd);
-+	
++
 +	return p != MAP_FAILED ? p : NULL;
 +}
 +
@@ -566,7 +566,7 @@ index e41315efdb..4b6547c0a3 100644
  {
  	int left = 0, right = tzdb->index_size - 1;
  
-@@ -603,9 +1081,49 @@ static int seek_to_tz_position(const unsigned char **tzf, const char *timezone,
+@@ -603,9 +1081,49 @@ static int seek_to_tz_position(const uns
  	return 0;
  }
  
@@ -616,7 +616,7 @@ index e41315efdb..4b6547c0a3 100644
  }
  
  const timelib_tzdb_index_entry *timelib_timezone_identifiers_list(const timelib_tzdb *tzdb, int *count)
-@@ -617,7 +1135,30 @@ const timelib_tzdb_index_entry *timelib_timezone_identifiers_list(const timelib_
+@@ -617,7 +1135,30 @@ const timelib_tzdb_index_entry *timelib_
  int timelib_timezone_id_is_valid(const char *timezone, const timelib_tzdb *tzdb)
  {
  	const unsigned char *tzf;
@@ -648,7 +648,7 @@ index e41315efdb..4b6547c0a3 100644
  }
  
  static int skip_64bit_preamble(const unsigned char **tzf, timelib_tzinfo *tz)
-@@ -662,6 +1203,8 @@ static timelib_tzinfo* timelib_tzinfo_ctor(const char *name)
+@@ -662,6 +1203,8 @@ static timelib_tzinfo* timelib_tzinfo_ct
  timelib_tzinfo *timelib_parse_tzfile(const char *timezone, const timelib_tzdb *tzdb, int *error_code)
  {
  	const unsigned char *tzf;
@@ -657,7 +657,7 @@ index e41315efdb..4b6547c0a3 100644
  	timelib_tzinfo *tmp;
  	int version;
  	int transitions_result, types_result;
-@@ -669,7 +1212,7 @@ timelib_tzinfo *timelib_parse_tzfile(const char *timezone, const timelib_tzdb *t
+@@ -669,7 +1212,7 @@ timelib_tzinfo *timelib_parse_tzfile(con
  
  	*error_code = TIMELIB_ERROR_NO_ERROR;
  
@@ -666,7 +666,7 @@ index e41315efdb..4b6547c0a3 100644
  		tmp = timelib_tzinfo_ctor(timezone);
  
  		version = read_preamble(&tzf, tmp, &type);
-@@ -712,11 +1255,36 @@ timelib_tzinfo *timelib_parse_tzfile(const char *timezone, const timelib_tzdb *t
+@@ -712,11 +1255,36 @@ timelib_tzinfo *timelib_parse_tzfile(con
  			return NULL;
  		}
  
@@ -703,11 +703,11 @@ index e41315efdb..4b6547c0a3 100644
  	} else {
  		*error_code = TIMELIB_ERROR_NO_SUCH_TIMEZONE;
  		tmp = NULL;
-diff --git a/ext/date/php_date.c b/ext/date/php_date.c
-index cf4a11b8a2..cd49abc78d 100644
---- a/ext/date/php_date.c
-+++ b/ext/date/php_date.c
-@@ -457,7 +457,11 @@ PHP_MINFO_FUNCTION(date)
+Index: php-8.2.5/ext/date/php_date.c
+===================================================================
+--- php-8.2.5.orig/ext/date/php_date.c
++++ php-8.2.5/ext/date/php_date.c
+@@ -472,7 +472,11 @@ PHP_MINFO_FUNCTION(date)
  	php_info_print_table_row(2, "date/time support", "enabled");
  	php_info_print_table_row(2, "timelib version", TIMELIB_ASCII_VERSION);
  	php_info_print_table_row(2, "\"Olson\" Timezone Database Version", tzdb->version);
@@ -719,4 +719,3 @@ index cf4a11b8a2..cd49abc78d 100644
  	php_info_print_table_row(2, "Default timezone", guess_timezone(tzdb));
  	php_info_print_table_end();
  
-
