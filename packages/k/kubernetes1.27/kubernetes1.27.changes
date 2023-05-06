@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Apr 28 05:03:52 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update `Requires` in the "kubernetes1.27-client" pkg to:
+  * Requires: kubernetes%{baseversion}-client-common 
+- Remove following `Obsoletes` from the "kubernetes1.27-client-common" pkg:
+  * Obsoletes: kubernetes%{baseversionminus1}-client-common
+
+-------------------------------------------------------------------
+Fri Apr 28 04:58:58 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.27.1:
+  * Release commit for Kubernetes v1.27.1
+  * fix: add the bug as a known issue o on the v1.26 release note
+  * Revert "Optimization on running prePreEnqueuePlugins before adding pods into activeQ"
+  * Revert "Merge pull request #113151 from ncdc/refactor-crd-conversion"
+  * Revert "CR conversion: protect from converter input edits"
+  * kubelet: Do not mutate pods in the pod manager
+  * Update CHANGELOG/CHANGELOG-1.27.md for v1.27.0
+
+-------------------------------------------------------------------
+Wed Apr 12 10:01:00 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- update patches:
+* kubeadm-opensuse-registry.patch
+* revert-coredns-image-renaming.patch 
+
+-------------------------------------------------------------------
+Wed Apr 12 09:42:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package for Kubernetes v1.27.0 
