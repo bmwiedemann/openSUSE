@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  5 15:15:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Mar 30 19:03:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - remove explicit jupyter-client dep in order ot avoid resolver
