@@ -15,4 +15,12 @@
     <comment>update to 8.4.1; change build to hatchling (forwarded request 1037084 from ojkastl_buildservice)</comment>
     <requestid>1037086</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>08b82008f3acf7987c4103eb5bae76d5</srcmd5>
+    <version>8.4.1</version>
+    <time>1683403755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085090</requestid>
+  </revision>
 </revisionlist>
