@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 17:26:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.0.7:
+  * Explicitly flush the file for following read operation
+  * Fixed Unused mode warning
+  * Code style cleanups
+  * Update description inside README.md
+
+-------------------------------------------------------------------
 Tue Jun 30 17:35:53 UTC 2020 - alarrosa@suse.com
 
 - Update to version 1.0.6:
