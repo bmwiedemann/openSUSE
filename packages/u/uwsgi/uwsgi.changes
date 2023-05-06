@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  5 10:49:27 UTC 2023 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/unbit/uwsgi/commit/509a0fdd12870d0bf5b4c1ef7d1f7f
+  + uwsgi-php82-php_module_startup-signature.patch
+
+-------------------------------------------------------------------
 Fri Jan  6 20:36:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.21:
