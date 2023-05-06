@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 11:13:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Mar 24 18:32:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package virtue, needed for tests in python-jsonschema
