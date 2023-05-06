@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 16:57:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- split package from powerd. powerd patches that were never
+  part of sysvinit but need to be mentioned to pass the bot checks:
+  * powerd-2.0.2-getaddrinfo.patch 
+  * powerd-2.0.2.dif
+
+-------------------------------------------------------------------
 Wed Jan  4 11:13:37 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
