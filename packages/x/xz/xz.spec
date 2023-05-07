@@ -19,7 +19,7 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
@@ -28,8 +28,7 @@ URL:            https://tukaani.org/xz/
 Source0:        https://tukaani.org/xz/%{name}-%{version}.tar.gz
 Source1:        https://tukaani.org/xz/%{name}-%{version}.tar.gz.sig
 Source2:        baselibs.conf
-# from http://tukaani.org/misc/lasse_collin_pubkey.txt#/xz.keyring
-Source3:        xz.keyring
+Source3:        https://tukaani.org/misc/jia_tan_pubkey.txt#/%{name}.keyring
 Source4:        xznew
 Source5:        xznew.1
 BuildRequires:  pkgconfig
