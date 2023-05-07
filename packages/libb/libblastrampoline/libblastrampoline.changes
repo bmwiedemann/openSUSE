@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  6 01:14:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * Avoid running `init_config()` more than once per process
+
+-------------------------------------------------------------------
+Mon May  1 07:59:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.7.0
+  * Prevent setting infinite loopback forwards
+  * Add support for ILP64 Accelerate
+  * Add fallback for when LBT_DEFAULT_LIBS is not set
+  * Eliminate exit(1) calls in LBT
+  * [windows] Fix self-path lookup on Windows
+  * Cygwin build fix
+  * Fix windows compile issue
+
+-------------------------------------------------------------------
 Fri Mar 17 09:54:37 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Enable x86-64-v3 optimizations.
