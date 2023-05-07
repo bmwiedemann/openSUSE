@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  6 17:38:11 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
+
+- Update to version 3.2.2:
+    * Fixed bug: Old thumbnail-pictures are not automatically deleted
+
+-------------------------------------------------------------------
 Sun Mar 12 09:36:48 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
 
 - Update to version 3.2.1:

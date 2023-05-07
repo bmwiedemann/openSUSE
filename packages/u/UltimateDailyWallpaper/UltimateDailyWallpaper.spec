@@ -16,7 +16,7 @@
 #
 
 Name:           UltimateDailyWallpaper
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        A wallpaper changer and downloader
 License:        GPL-3.0+
@@ -50,9 +50,10 @@ It allows a simple integration of external plugins, which
 allows downloading a daily wallpaper from any one provider.
 
 %prep
-rm -rf debian
+rm -rf SlackBuild
 rm -rf screenshots
 rm -rf src/macOS
+rm -rf rpmbuild
 %setup -q -n ultimatedailywallpaper-%{version} -a 0
 
 %build
