@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source0:        https://github.com/Ultimaker/CuraEngine/archive/%{sversion}.tar.
 Source1:        CuraEngine.1
 # X-OPENSUSE-PATCH fix-build.patch follow openSUSE policies
 Patch1:         fix-build.patch
+# PATCH-FIX-UPSTREAM add-missing-include.patch -- Add missing include <cstdint>
+Patch2:         add-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmock
@@ -48,7 +50,7 @@ It is part of the larger project called "Cura".
 
 %prep
 %setup -q -n CuraEngine-%sversion
-%patch1 -p1
+%autopatch -p1
 # the test is hardcoding the version number
 sed -i -e 's,"master","%{version}",' tests/GCodeExportTest.cpp
 

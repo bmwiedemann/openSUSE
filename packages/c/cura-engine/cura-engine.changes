@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 08:45:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add add-missing-include.patch: Add missing include <cstdint>
+
+-------------------------------------------------------------------
 Sun Feb  6 21:52:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.13.1

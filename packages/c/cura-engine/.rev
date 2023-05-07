@@ -110,4 +110,12 @@ for :adi:116
     <comment></comment>
     <requestid>952910</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>8ddc685bd9dc33711b855c7618c5f4db</srcmd5>
+    <version>4.13.1</version>
+    <time>1683478473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085249</requestid>
+  </revision>
 </revisionlist>
