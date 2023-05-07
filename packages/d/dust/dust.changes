@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun May 07 07:13:00 UTC 2023 - mvetter@suse.com
+
+- Update to version 0.8.6:
+  * Increment version
+  * cargo update: update dependencies
+  * Add support for cargo-binstall to Cargo.toml
+  * cargo update: update dependencies
+  * Increment version
+  * Fix: some panics are occuring when creating rayon
+  * remove depth from config.toml and fix style issues
+  * feat: default option for depth from config file
+  * refactor: DisplayData
+  * refactor: simplify filter.rs
+  * Update README.md
+
+-------------------------------------------------------------------
+Mon Jan 30 07:17:47 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.8.4:
+  * Increment version
+  * fix: Stop progress indicator crashing into stderr
+  * Feature: Add flag for screen readers
+  * fix: Fix bug in progress bar
+  * fix: only-dir flag conflicts with types
+  * feature: --files-only -F
+  * Update LICENSE
+  * use create_dir_all instead of create_dir as that doesn't fail if the directory already exists, and make sure to propagate the error out
+  * generate a man page as part of the build
+  * clippy: Fix new clippy rules
+  * upgrade dependencies
+  * refactor: progress bar
+  * refactor: progress bar
+  * refactor: progress bar
+  * Comment: Remove comment
+  * Comment: update comment
+  * Refactor: rename var
+  * Refactor: PAtomicInfo class
+  * Refactor: progress bar & file permissions
+  * Refactor: progress bar: rename vars
+  * Refactor: Progress bar: Remove atomic classes
+  * Refactor: Progress bar: Remove PConfig
+  * Refactor: progress bar: simplify
+  * Refactor: progress bar: rm unused field
+  * Refactor: Simplify progress indicator
+  * refactor: update Progress bar: progress.rs
+  * Refactor: Update main for progress bar
+  * Refactor: Reduce complexity of progress bar code
+  * Implemented a progress indicator (#275)
+  * Fix: naming of parameter
+  * [documentation] Note about running single-threaded
+  * refactor dir_walker
+  * feature: Support for dereference links -L follow
+  * refactor create AggregateData for filter.rs
+  * refactor filter.rs
+  * refactor filter.rs
+  * Fix: depth=0 bug for multiple arguments
+  * fix: bug where hard links could be double counted
+  * clippy: Fix new clippy
+  * fix: update use of sysinfo.system
+  * Update sysinfo version to 0.26.7
+  * added deb-get as installation source
+  * FEATURE: support only directories will be displayed. Flag -D
+  * Read `inputs` from stdin when applicable
+  * Add a direct dependency on the `atty` crate
+
+-------------------------------------------------------------------
 Fri Sep 02 15:10:54 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 0.8.3:
@@ -20,7 +86,7 @@ Thu Jul 14 18:20:27 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
   * Improve help text
 
 -------------------------------------------------------------------
-Wed May 25 08:00:32 UTC 2022 - socvirnyl.estela@gmail.com
+Wed May 25 08:00:32 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version v0.8.0:
   * Increment version

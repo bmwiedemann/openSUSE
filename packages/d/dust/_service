@@ -3,7 +3,7 @@
     <param name="url">https://github.com/bootandy/dust</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.8.3</param>
+    <param name="revision">v0.8.6</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">ci/*</param>
