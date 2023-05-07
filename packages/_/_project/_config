@@ -2067,7 +2067,7 @@ BuildFlags: onlybuild:libaio
 BuildFlags: onlybuild:libalternatives
 BuildFlags: onlybuild:libao
 BuildFlags: onlybuild:libaom
-BuildFlags: onlybuild:libapparmor
+BuildFlags: onlybuild:apparmor:libapparmor
 BuildFlags: onlybuild:libarchive
 BuildFlags: onlybuild:libass
 BuildFlags: onlybuild:libassuan
@@ -2796,7 +2796,7 @@ BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-backports.entry_points_selectable
 BuildFlags: onlybuild:python-backports.zoneinfo
-BuildFlags: onlybuild:python-base
+BuildFlags: onlybuild:python:python-base
 BuildFlags: onlybuild:python-bcrypt
 BuildFlags: onlybuild:python-beniget
 BuildFlags: onlybuild:python-betamax
