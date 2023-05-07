@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        8.0.1
+Version:        8.2
 Release:        0
 Summary:        PHP Memcache client Extension
 License:        PHP-3.0
@@ -41,8 +41,6 @@ Source0:        https://github.com/websupport-sk/pecl-memcache/archive/refs/tags
 Source10:       php-memcache-rpmlintrc
 # PATCH-FIX-OPENSUSE: fix unit tests that don't work on OBS
 Patch1:         fixup-unit-tests.patch
-# PATCH-FIX-UPSTREAM: https://github.com/websupport-sk/pecl-memcache/pull/104
-Patch4:         trivial-minimal-fix-for-PHP-8.2.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{php_name}-cli
 %endif

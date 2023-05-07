@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  7 13:05:25 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 8.2
+  * Added support for PHP 8.2.x
+- Remove upstreamed / obsolete patches
+  - trivial-minimal-fix-for-PHP-8.2.patch
+
+-------------------------------------------------------------------
 Tue Apr 11 10:21:54 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 8.0.1
