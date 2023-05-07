@@ -24,4 +24,15 @@
   * Fixed regression related to crashing when disabling displays.</comment>
     <requestid>1034451</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f94bba4aa72e5fc1a7b885e9184da3f</srcmd5>
+    <version>2.1.0</version>
+    <time>1683478474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Lock/Unlock commands
+  * Should build on FreeBSD
+  * Bunch of small fixes and improvements</comment>
+    <requestid>1085278</requestid>
+  </revision>
 </revisionlist>

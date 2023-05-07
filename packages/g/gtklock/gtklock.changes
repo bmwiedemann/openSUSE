@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  7 07:11:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * Lock/Unlock commands
+  * Should build on FreeBSD
+  * Bunch of small fixes and improvements
+
+-------------------------------------------------------------------
 Tue Nov  8 07:38:43 UTC 2022 - Josh <jsmithfpv@gmail.com>
 
 - Update to 2.0.1:

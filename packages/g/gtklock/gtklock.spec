@@ -1,7 +1,7 @@
 #
 # spec file for package gtklock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gtklock
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        GTK-based lockscreen for Wayland
 License:        GPL-3.0-only
