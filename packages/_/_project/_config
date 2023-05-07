@@ -2242,7 +2242,7 @@ BuildFlags: onlybuild:libsass
 BuildFlags: onlybuild:libseccomp
 BuildFlags: onlybuild:libsecret
 BuildFlags: onlybuild:libselinux
-BuildFlags: onlybuild:libselinux-bindings
+BuildFlags: onlybuild:libselinux:libselinux-bindings
 BuildFlags: onlybuild:libsemanage
 BuildFlags: onlybuild:libsepol
 BuildFlags: onlybuild:libserf
