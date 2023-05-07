@@ -416,4 +416,22 @@
     <comment>- Sadly, six is still required for tests, re-add to BuildRequires.</comment>
     <requestid>1078346</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9b1dbfcfe84444969e750cb8292925ca</srcmd5>
+    <version>1.1.1</version>
+    <time>1683478470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  - Support for dataclass_transform (as defined in PEP-681).
+  - Dedicated Error Code for Method Assignments
+  - Stubgen improvements
+  - Stubtest improvements
+  - Typeshed updates
+  - Plenty of fixes
+- Removed upstreamed patch testI64Cast-fix.patch
+  
+
+- Don't skip the test, add testI64Cast-fix.patch to make it</comment>
+    <requestid>1085248</requestid>
+  </revision>
 </revisionlist>

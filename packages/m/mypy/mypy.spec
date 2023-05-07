@@ -22,7 +22,7 @@
 %define types_psutil_version 5.9.5.6
 %define types_setuptools_version 65.6.0.3
 Name:           mypy
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -35,9 +35,6 @@ Source2:        https://files.pythonhosted.org/packages/source/t/types-psutil/ty
 # License Source3: Apache-2.0. Only for the test suite, not packaged here.
 Source3:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM testI64Cast-fix.patch gh#python/mypy#14633 mcepl@suse.com
-# Add test data for 32bit
-Patch0:         testI64Cast-fix.patch
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}

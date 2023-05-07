@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 12 12:37:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.1:
+  - Support for dataclass_transform (as defined in PEP-681).
+  - Dedicated Error Code for Method Assignments
+  - Stubgen improvements
+  - Stubtest improvements
+  - Typeshed updates
+  - Plenty of fixes
+- Removed upstreamed patch testI64Cast-fix.patch
+  
+-------------------------------------------------------------------
 Tue Apr 11 07:15:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Sadly, six is still required for tests, re-add to BuildRequires. 
@@ -6,7 +18,7 @@ Tue Apr 11 07:15:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Tue Feb 14 06:02:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
-- Don't skipp the test, add testI64Cast-fix.patch to make it
+- Don't skip the test, add testI64Cast-fix.patch to make it
   working (gh#python/mypy#14691).
 
 -------------------------------------------------------------------
