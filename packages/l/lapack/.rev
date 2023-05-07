@@ -492,4 +492,12 @@ An alternative would be to use the older manpages or to pre-generate them.
   with future compilers regardless.</comment>
     <requestid>1067609</requestid>
   </revision>
+  <revision rev="56" vrev="9">
+    <srcmd5>e411786594fd711815538b51c4ac3b71</srcmd5>
+    <version>3.9.0</version>
+    <time>1683478468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085186</requestid>
+  </revision>
 </revisionlist>

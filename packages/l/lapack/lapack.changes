@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:11:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Thu Feb 23 16:58:25 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Set -mfpmath=sse for the entire build for ix86 platforms
@@ -17,6 +23,7 @@ Wed Feb 15 08:51:06 UTC 2023 - Egbert Eich <eich@suse.com>
 - As a configurable option add tmglib code to the LAPACK librarly
   and enable TMG in LAPACKE as the header files provide its API
   (boo#1207989 & bsc#1087426).
+- Fix update-alternatives for lapacke (bsc#1207358).
 - Restore generic link for update-alternatives. This is usually
   set by the update-alternatives and it is '%ghost'ed but rpmlint
   complains.
