@@ -53,6 +53,9 @@ Patch15:        zlib-1.2.12-adler32-vector-optimizations-for-power.patch
 Patch16:        zlib-1.2.12-fix-invalid-memory-access-on-ppc-and-ppc64.patch
 Patch17:        zlib-1.2.12-add-optimized-slide_hash-for-power.patch
 Patch18:        zlib-1.2.12-add-vectorized-longest_match-for-power.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1210593 bsc#1211005
+# Fix deflateBound() before deflateInit()
+Patch19:        bsc1210593.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -155,6 +158,7 @@ It should exit 0
 %patch16 -p1
 %patch17 -p1
 %patch18 -p1
+%patch19 -p1
 cp %{SOURCE4} .
 
 %build

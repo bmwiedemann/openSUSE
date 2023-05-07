@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  5 09:56:31 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix deflateBound() before deflateInit(), bsc#1210593, bsc#1211005
+  bsc1210593.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 17:50:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - avoid buildcycle with krb5 (in sle15+ - jsc#PED-3641)

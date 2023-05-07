@@ -1,0 +1,13 @@
+Index: zlib-1.2.11/contrib/s390/dfltcc_deflate.h
+===================================================================
+--- zlib-1.2.11.orig/contrib/s390/dfltcc_deflate.h
++++ zlib-1.2.11/contrib/s390/dfltcc_deflate.h
+@@ -45,7 +45,7 @@ int ZLIB_INTERNAL dfltcc_deflate_get_dic
+ #define DEFLATE_DONE dfltcc_deflate_done
+ #define DEFLATE_BOUND_ADJUST_COMPLEN(strm, complen, source_len) \
+     do { \
+-        if (dfltcc_can_deflate((strm))) \
++        if (deflateStateCheck((strm)) || dfltcc_can_deflate((strm))) \
+             (complen) = DEFLATE_BOUND_COMPLEN(source_len); \
+     } while (0)
+ #define DEFLATE_NEED_CONSERVATIVE_BOUND(strm) (dfltcc_can_deflate((strm)))
