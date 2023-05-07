@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May  5 12:35:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-wheel build dependency to build correctly with latest
+  python-pip version.
+
+-------------------------------------------------------------------
+Thu May  4 14:04:04 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+
+-------------------------------------------------------------------
+Thu Mar 23 15:39:15 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO as it works fine now.
+
+-------------------------------------------------------------------
 Fri Feb 24 07:42:25 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.5:

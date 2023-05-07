@@ -38,6 +38,7 @@ Patch5:         python3.8-compat.patch
 Patch6:         swig4_moduleimport.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
@@ -85,7 +86,6 @@ language.
 %autopatch -p1
 
 %build
-%define _lto_cflags %{nil}
 make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" swigify V=1 USE_PCRE2=y
 make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" pywrap V=1 USE_PCRE2=y
 make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" rubywrap V=1 USE_PCRE2=y

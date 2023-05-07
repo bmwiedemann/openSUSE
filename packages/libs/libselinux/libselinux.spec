@@ -103,8 +103,7 @@ necessary to develop your own software using libselinux.
 %patch5 -p1
 
 %build
-%define _lto_cflags %{nil}
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags} -fno-semantic-interposition" USE_PCRE2=y
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" USE_PCRE2=y
 
 %install
 mkdir -p %{buildroot}/%{_lib}

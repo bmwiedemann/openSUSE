@@ -620,4 +620,12 @@
     <comment>SELinux 3.5 toolchain</comment>
     <requestid>1068396</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>778812dc095ffc2ad359efc7023e2550</srcmd5>
+    <version>3.5</version>
+    <time>1683478466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085125</requestid>
+  </revision>
 </revisionlist>
