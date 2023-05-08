@@ -59,4 +59,12 @@
   - Fix pytest ``--durations`` flag when flexmock is installed.</comment>
     <requestid>915211</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>433a836f39e9ee2716ec447cda2894bb</srcmd5>
+    <version>0.10.8</version>
+    <time>1683559483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085448</requestid>
+  </revision>
 </revisionlist>
