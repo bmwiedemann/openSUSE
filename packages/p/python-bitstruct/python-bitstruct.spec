@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitstruct
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-bitstruct
-Version:        8.15.1
+Version:        8.17.0
 Release:        0
 Summary:        Interpret strings as packed binary data
 License:        MIT

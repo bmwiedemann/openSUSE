@@ -34,4 +34,15 @@
     <comment></comment>
     <requestid>1002724</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e778d6d675384ab37c449d0d26e472d5</srcmd5>
+    <version>8.17.0</version>
+    <time>1683559446</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.17.0:
+  * Text encoding and error action to unpack operations
+  * Fix memory leak
+  * Fix Text encoding and Errors to compile</comment>
+    <requestid>1085336</requestid>
+  </revision>
 </revisionlist>
