@@ -1626,7 +1626,7 @@ BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-plugins
 BuildFlags: onlybuild:alsa-utils
 BuildFlags: onlybuild:ant
-BuildFlags: onlybuild:antlr-bootstrap
+BuildFlags: onlybuild:antlr:antlr-bootstrap
 BuildFlags: onlybuild:apache-rpm-macros
 BuildFlags: onlybuild:apache-rpm-macros-control
 BuildFlags: onlybuild:apache2
@@ -1983,7 +1983,7 @@ BuildFlags: onlybuild:iso_ent
 BuildFlags: onlybuild:itstool
 BuildFlags: onlybuild:jack
 BuildFlags: onlybuild:java-17-openjdk
-BuildFlags: onlybuild:java-cup-bootstrap
+BuildFlags: onlybuild:java-cup:java-cup-bootstrap
 BuildFlags: onlybuild:javapackages-tools
 BuildFlags: onlybuild:javapackages-tools:extras
 BuildFlags: onlybuild:jbigkit
