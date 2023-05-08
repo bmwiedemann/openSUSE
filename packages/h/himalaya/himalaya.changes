@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon May  1 08:10:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.3:
+  * Fixed Windows releases (due to typo in the github action script).
+  * Fixed unit tests.
+
+-------------------------------------------------------------------
+Mon May  1 08:09:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.2:
+  Added:
+  * Added create and delete folder commands [sourcehut#54].
+  * Added generated completions and man pages to releases
+    [sourcehut#43].
+  * Added new account config option sync-folders-strategy which allows
+    to choose a folders synchronization strategy [sourcehut#59]:
+    + sync-folders-strategy = "all": synchronize all existing folders
+      for the current account
+    + sync-folders-strategy.include = ["folder1", "folder2", …]:
+      synchronize only the given folders for the current account
+    + sync-folders-strategy.exclude = ["folder1", "folder2", …]:
+      synchronizes all folders except the given ones for the current
+      account
+  * Also added new account sync arguments that override the account
+    config option:
+    + -A|--all-folders: include all folders to the synchronization.
+    + -F|--include-folder: include given folders to the
+      synchronization. They can be repeated -F folder1 folder2 or -F folder1 -F folder2.
+    + -x|--exclude-folder: exclude given folders from the
+      synchronization. They can be repeated -x folder1 folder2 or -x folder1 -F folder2.
+  * Added cargo features native-tls (default), rustls-tls and
+    rustls-native-certs.
+  Changed:
+  * Made global options truly global, which means they can be used
+    everywhere (not only before commands but also after) [sourcehut#60].
+  * Replaced reply all -a argument with -A because it conflicted
+    with the global option -a|--account.
+  * Replaced himalaya-lib by pimalaya-email.
+  * Renamed feature vendored to native-tls-vendored.
+  * Removed the develop branch, all the development is now done on the
+    master branch.
+  Fixed:
+  * Fixed config deserialization issue with email-hooks and email-reading-format.
+  * Fixed flags case sensitivity.
+
+-------------------------------------------------------------------
 Tue Feb 14 20:07:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.1:
