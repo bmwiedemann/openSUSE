@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May  4 14:27:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 8.6:
+	* tests/select34.sh: Use "tr" instead of "xarg" to replace \0 by
+	\n. (The xargs command on BSD ignores empty input lines, the GNU
+	version does not.) Also use "printf" instead of "echo" to write to
+	the log file, because it seems to be more consistent between
+	different shells.
+
+	* hxselect.c: Fixed a bug in parsing octal escapes in the
+	separator string (option -s). Patch provided by Jorrit Fahlke.
+
+	* errexit.c: Removed. Consistently use err() and errx()
+	everywhere.
+
+	* hxwls.c, printlinks.c, hxcopy.c: Allow white space before and
+	after URLs in attributes. (Allowed by HTML5.)
+
+-------------------------------------------------------------------
 Fri Apr  1 18:43:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 8.4:
