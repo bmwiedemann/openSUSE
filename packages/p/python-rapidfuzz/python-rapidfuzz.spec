@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-rapidfuzz
 Version:        2.13.7
 Release:        0
