@@ -60,61 +60,38 @@ environment and that gets resolved by this commit:
 [  123s] E            +  where '' = CompletedProcess(args=['coverage', 'run', '/home/abuild/rpmbuild/BUILD/typer-0.4.1/docs_src/subcommands/tutorial003/main.py', '--help'], returncode=1, stdout='', stderr='Traceback (most recent call last):\n  File "/home/abuild/rpmbuild/BUILD/typer-0.4.1/docs_src/subcommands/tutorial003/main.py", line 3, in <module>\n    import items\nModuleNotFoundError: No module named \'items\'\n').stdout
 [  123s]
 [  123s] tests/test_tutorial/test_subcommands/test_tutorial003.py:146: AssertionError
+
 ---
- tests/test_tutorial/test_subcommands/test_tutorial001.py | 5 +++++
- tests/test_tutorial/test_subcommands/test_tutorial003.py | 5 +++++
- 2 files changed, 10 insertions(+)
+ tests/test_tutorial/test_subcommands/test_tutorial001.py | 2 +-
+ tests/test_tutorial/test_subcommands/test_tutorial003.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial001.py b/tests/test_tutorial/test_subcommands/test_tutorial001.py
-index c4fca5b..1280e22 100644
+index 1280e22..6f86826 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial001.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial001.py
-@@ -1,3 +1,4 @@
-+import os
- import subprocess
- import sys
- 
-@@ -85,11 +86,15 @@ def test_users_delete(app):
- def test_scripts(mod):
+@@ -87,7 +87,7 @@ def test_scripts(mod):
      from docs_src.subcommands.tutorial001 import items, users
  
-+    env = os.environ.copy()
+     env = os.environ.copy()
+-    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__))
 +    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
-+
+ 
      for module in [mod, items, users]:
          result = subprocess.run(
-             [sys.executable, "-m", "coverage", "run", module.__file__, "--help"],
-             stdout=subprocess.PIPE,
-             stderr=subprocess.PIPE,
-             encoding="utf-8",
-+            env=env,
-         )
-         assert "Usage" in result.stdout
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial003.py b/tests/test_tutorial/test_subcommands/test_tutorial003.py
-index 4db168b..eaf4539 100644
+index 2d6149c..0a05ae0 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial003.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial003.py
-@@ -1,3 +1,4 @@
-+import os
- import subprocess
- import sys
- 
-@@ -137,11 +138,15 @@ def test_lands_towns_burn(app):
- def test_scripts(mod):
+@@ -160,7 +160,7 @@ def test_scripts(mod):
      from docs_src.subcommands.tutorial003 import items, lands, reigns, towns, users
  
-+    env = os.environ.copy()
+     env = os.environ.copy()
+-    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__))
 +    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__) + [env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
-+
+ 
      for module in [mod, items, lands, reigns, towns, users]:
          result = subprocess.run(
-             [sys.executable, "-m", "coverage", "run", module.__file__, "--help"],
-             stdout=subprocess.PIPE,
-             stderr=subprocess.PIPE,
-             encoding="utf-8",
-+            env=env,
-         )
-         assert "Usage" in result.stdout
 -- 
 2.35.3
 

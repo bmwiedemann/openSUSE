@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  7 14:47:17 UTC 2023 - Matthias Bach <marix@marix.org> - 0.9.0
+
+- Update to upstream version 0.9.0
+  * Add support for PEP-593 Annotated for specifying options and
+    arguments.
+  * Add support for custom types and parsers.
+- Drop patch run-subprocesses-with-correct-python.patch that got
+  included upstream.
+
+-------------------------------------------------------------------
 Thu Jan  5 15:07:01 UTC 2023 - Matthias Bach <marix@marix.org> - 0.7.0
 
 - Adapt set-proper-pythonpath-for-tutorial-script-tests.patch to
