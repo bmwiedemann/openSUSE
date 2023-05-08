@@ -78,4 +78,18 @@
 - supersedes U_Remove-mibstore.h.patch</comment>
     <requestid>656852</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>074f7f5898a6899fa93b929b02da2138</srcmd5>
+    <version>1.4.1</version>
+    <time>1683559473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Handle -Wunused-const-variable warnings
+  * Handle -Wdiscarded-qualifiers warnings
+  * Handle -Wempty-body warnings</comment>
+    <requestid>1085460</requestid>
+  </revision>
 </revisionlist>
