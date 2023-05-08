@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 12:19:02 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Add patch "gupnp-av-libxml2.11-support.patch": Use xmlReadMemory
+  instead of xmlRecoverMemory, as it's been deprecated in libxml2
+  2.11.0.
+- Use autosetup and ldconfig_scriptlets macros.
+
+-------------------------------------------------------------------
 Mon Jun 13 11:29:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.14.1:

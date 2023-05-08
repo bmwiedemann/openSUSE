@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-av
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
 Source:         https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gupnp-av-libxml2.11-support.patch david.anes@suse.com -- use xmlReadMemory instead of xmlRecoverMemory
+Patch0:         gupnp-av-libxml2.11-support.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
@@ -67,7 +69,7 @@ GUPnP A/V is a small utility library that aims to ease the handling and
 implementation of UPnP A/V profiles.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
@@ -79,8 +81,7 @@ implementation of UPnP A/V profiles.
 %check
 %meson_test
 
-%post -n libgupnp-av-1_0-3 -p /sbin/ldconfig
-%postun -n libgupnp-av-1_0-3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgupnp-av-1_0-3
 
 %files
 %{_datadir}/gupnp-av/

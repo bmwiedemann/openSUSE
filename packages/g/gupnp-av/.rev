@@ -344,4 +344,16 @@
     DIDL expects. (forwarded request 983298 from iznogood)</comment>
     <requestid>983443</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>ed2f8ec4eba105a34a510dfdcedf344d</srcmd5>
+    <version>0.14.1</version>
+    <time>1683559429</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch &quot;gupnp-av-libxml2.11-support.patch&quot;: Use xmlReadMemory
+  instead of xmlRecoverMemory, as it's been deprecated in libxml2
+  2.11.0.
+- Use autosetup and ldconfig_scriptlets macros.
+</comment>
+    <requestid>1085303</requestid>
+  </revision>
 </revisionlist>
