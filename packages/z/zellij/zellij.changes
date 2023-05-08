@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May  1 08:08:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.36.0:
+  * add my tweaked theme
+  * fix(screen): focus pane on screen edge when moving pane focus offtab
+  * Correct summary
+  * Updated layout examples to .kdl from .yaml
+  * fix(panes): adding panes to lone stack
+  * fix(panes): closing a stacked pane should relayout
+  * Fixed issue #1948
+  * feat(plugins): async plugin loading
+  * docs(readme): update roadmap image
+  * Add action to clear all buffers for a specific pane
+  * Added launch in xonsh
+  * Add option to hide session name in tab-bar (deriving from #2172)
+  * fix(layouts): don't default to default swap layouts on new-tab action
+  * fix(layouts): nested attribute truncating
+  * fix(scrollback-editor): properly invoke editor when command includes spaces
+  * fix(layouts): focus tab race
+  * feat(panes): allow defining an expanded stacked pane
+  * fix(layout): pane focus in stack
+  * fix(plugins): prevent Strider from opening double-panes when editing files
+  * fix: set sticky bit on socket
+  * chore(assets): adjust logo
+  * fix: do not hold on to router thread handle until server exit
+
+-------------------------------------------------------------------
 Sun Mar 26 23:04:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.35.2:
