@@ -57,4 +57,14 @@
   * Minimum Python version is now 3.8</comment>
     <requestid>1082317</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3c1149a4b5d426a6f1e87ee6632c873</srcmd5>
+    <version>0.5.2</version>
+    <time>1683559452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.2:
+  * Add/fix more type hints.
+  * Fix type hints</comment>
+    <requestid>1085339</requestid>
+  </revision>
 </revisionlist>

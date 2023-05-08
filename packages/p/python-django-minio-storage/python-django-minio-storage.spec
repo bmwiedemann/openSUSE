@@ -20,7 +20,7 @@
 %bcond_with test
 %define skip_python2 1
 Name:           python-django-minio-storage
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        Django file storage using minio
 License:        Apache-2.0 OR MIT
