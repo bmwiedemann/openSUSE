@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-dummy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xf86-video-dummy
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Virtual/offscreen frame buffer video driver for the Xorg X server
 License:        MIT
@@ -55,7 +55,8 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%doc ChangeLog README.md
+%license COPYING
 %dir %{_libdir}/xorg/modules/drivers
 %{_libdir}/xorg/modules/drivers/dummy_drv.so
 

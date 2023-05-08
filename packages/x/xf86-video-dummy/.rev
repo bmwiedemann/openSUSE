@@ -105,4 +105,15 @@
   * fix a memory leak in probe</comment>
     <requestid>967130</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8f2ae574bdca11c8f1d1642b5f3c4c20</srcmd5>
+    <version>0.4.1</version>
+    <time>1683559471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1
+  * Avoid leaking pixel memory if DUMMYScreenInit fails
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * List argument types in dummyRec-&gt;CreateWindow() function declaration</comment>
+    <requestid>1085459</requestid>
+  </revision>
 </revisionlist>

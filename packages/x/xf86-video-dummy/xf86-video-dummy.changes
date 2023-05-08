@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  8 08:38:14 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.4.1
+  * Avoid leaking pixel memory if DUMMYScreenInit fails
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * List argument types in dummyRec->CreateWindow() function declaration
+
+-------------------------------------------------------------------
 Tue Apr  5 17:32:44 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to verison 0.4.0
