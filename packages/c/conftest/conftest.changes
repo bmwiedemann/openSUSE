@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon May 08 04:32:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.42.1:
+  * build: Bump hashicorp/go-getter to v1.7.1 (#825)
+  * build: Bump Go to 1.20.4 (#824)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.51.0
+    to 0.52.0 (#821)
+  * fix: plugins install command (#822)
+  * feat: added quiet command to standard test output (#785)
+  * docs: mention test-example in the readme (#819)
+  * feat: Add exceptions to GitHub output (#818)
+  * fix: Fixes a broken emoji in the NOTES section under
+    Testing/Verifying Policies (#816)
+  * build(deps): bump golang from 1.20.2-alpine to 1.20.3-alpine
+    (#810)
+  * fix: handle builtin errors returned from the rego evaluation
+    (#812)
+
+-------------------------------------------------------------------
+Mon May 08 04:30:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.42.1:
+  * build: Bump hashicorp/go-getter to v1.7.1 (#825)
+
+-------------------------------------------------------------------
+Mon May 08 04:28:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.42.0:
+  * build: Bump Go to 1.20.4 (#824)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.51.0
+    to 0.52.0 (#821)
+  * fix: plugins install command (#822)
+  * feat: added quiet command to standard test output (#785)
+  * docs: mention test-example in the readme (#819)
+  * feat: Add exceptions to GitHub output (#818)
+  * fix: Fixes a broken emoji in the NOTES section under
+    Testing/Verifying Policies (#816)
+  * build(deps): bump golang from 1.20.2-alpine to 1.20.3-alpine
+    (#810)
+  * fix: handle builtin errors returned from the rego evaluation
+    (#812)
+  * build(deps): bump alpine from 3.17.2 to 3.17.3 (#809)
+
+-------------------------------------------------------------------
 Mon Apr 03 12:19:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.41.0:
