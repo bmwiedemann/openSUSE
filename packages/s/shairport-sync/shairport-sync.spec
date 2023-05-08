@@ -73,6 +73,7 @@ cp %{SOURCE2} .
 autoreconf -i -f
 %configure --with-systemd \
            --with-ssl=openssl \
+           --with-alsa \
            --with-pa \
            --with-pipe \
            --with-avahi \
