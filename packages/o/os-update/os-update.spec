@@ -25,13 +25,15 @@ Version:        1.11
 Release:        0
 Summary:        Updates the system regularly to stay current and safe
 License:        GPL-2.0-or-later
-URL:            https://github.com/thkukuk/os-update
-Source:         https://github.com/thkukuk/os-update/releases/download/v%{version}/os-update-%{version}.tar.xz
+URL:            https://github.com/openSUSE/os-update
+Source:         https://github.com/openSUSE/os-update/releases/download/v%{version}/os-update-%{version}.tar.xz
 Source99:       os-update-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Requires:       lsof
+%if 0%{?suse_version} >= 1500
 Requires:       zypper-needs-restarting
+%endif
 Recommends:     rebootmgr
 Recommends:     systemd-status-mail
 BuildArch:      noarch
@@ -43,8 +45,12 @@ requires a reboot.
 
 %package -n systemd-status-mail
 Summary:        Send a mail if a systemd.timer fails and/or succeeds
+%if 0%{?suse_version} >= 1500
 Requires:       (/usr/sbin/sendmail or mailx)
 Suggests:       mailx
+%else
+Requires:       mailx
+%endif
 
 %description -n systemd-status-mail
 systemd-mail-status is called by systemd-status-mail@.service if the
@@ -58,6 +64,9 @@ of the service, the hostname and the output of
 
 %build
 %configure --enable-vendordir=%{_distconfdir}
+%if 0%{?suse_version} < 1500
+  %define make_build %{__make} -O %{?_smp_mflags}
+%endif
 %make_build
 
 %install

@@ -134,4 +134,19 @@
   - Fix reboottrigger for SLES12</comment>
     <requestid>1083272</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>94744a5a8937d1adb09ef08f0c77fdc9</srcmd5>
+    <version>1.11</version>
+    <time>1683559489</time>
+    <user>dimstar_suse</user>
+    <comment>- Use suse_version instead of sle_version
+
+- Adjust URL to openSUSE github repo
+
+- Fix things not available in SLE12:
+  - Do not require zypper-needs-restarting
+  - Require mailx since conditional requires are not available in SLE12
+  - define make_build macro</comment>
+    <requestid>1085461</requestid>
+  </revision>
 </revisionlist>

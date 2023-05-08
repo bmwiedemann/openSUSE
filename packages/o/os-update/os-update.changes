@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  8 08:49:37 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use suse_version instead of sle_version
+
+-------------------------------------------------------------------
+Fri Apr 28 14:34:27 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust URL to openSUSE github repo
+
+-------------------------------------------------------------------
+Fri Apr 28 09:16:01 UTC 2023 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Fix things not available in SLE12:
+  - Do not require zypper-needs-restarting
+  - Require mailx since conditional requires are not available in SLE12
+  - define make_build macro
+
+-------------------------------------------------------------------
 Thu Apr 27 13:36:31 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.11
