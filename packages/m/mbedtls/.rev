@@ -391,4 +391,12 @@
 - Switch to scm service</comment>
     <requestid>1083494</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>e4c6eb32540bc1864e7dde873653d6d9</srcmd5>
+    <version>3.4.0</version>
+    <time>1683559470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085425</requestid>
+  </revision>
 </revisionlist>
