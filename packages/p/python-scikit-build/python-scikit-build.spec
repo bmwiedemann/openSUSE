@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-scikit-build%{psuffix}
 Version:        0.17.2
 Release:        0
