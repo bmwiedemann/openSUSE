@@ -49,6 +49,8 @@ Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/Fr
 Source1:        freerdp-rpmlintrc
 # PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
 Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
+# PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/commit/c5d91f8ef584174310970d0f7e31d6ffad7c5246.patch
+Patch1:         Update_h264_to_use_new_FFMPEG_API.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel

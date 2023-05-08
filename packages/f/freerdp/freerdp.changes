@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 24 17:53:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Update_h264_to_use_new_FFMPEG_API.patch: Update h264 to use
+  new FFMPEG API.
+
+-------------------------------------------------------------------
 Thu Feb 16 15:05:54 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Ugraded to freerdp 2.10.0
