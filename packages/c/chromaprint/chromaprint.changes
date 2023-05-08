@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  3 09:39:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop 8ccad69.patch and 82781d02.patch, and add back
+  pkgconfig(libavresample) BuildRequires. Also limit package to
+  build against ffmpeg-4 and older.
+
+-------------------------------------------------------------------
 Thu Apr 27 17:14:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 82781d02.patch: FFmpeg 5.x: Some files return error codes
