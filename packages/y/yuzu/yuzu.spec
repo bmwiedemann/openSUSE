@@ -19,7 +19,7 @@
 
 %define __builder ninja
 Name:           yuzu
-Version:        0.1404
+Version:        0.1423
 Release:        0
 Summary:        Nintendo Switch emulator/debugger
 License:        GPL-3.0-or-later

@@ -459,4 +459,97 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1082290</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8c4ac209eccb776371f032c31d823572</srcmd5>
+    <version>0.1423</version>
+    <time>1683559441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1423:
+  * input_common: Revert debugging changes
+  * Fix read access violation
+  * input_common: Add experimental motion to button
+  * input_common: Add property to invert an axis button
+  * input_common: Add property to invert an axis button
+  * yuzu: Add motion preview to controller input
+  * externals: Update dynarmic to 6.4.7
+  * yuzu-sdl,audio_core: Remove antiquated warning ignore
+  * qt_common: Remove yuzu prefix
+  * configure_graphics: No there isn't a hyphen in VSync
+  * configure_input_player: Add missing include
+  * configure_graphics: Clean up includes [IWYU]
+  * bootmanager: Clean up includes [IWYU]
+  * configure_graphics: Actively find present modes
+  * vk_swapchain: Use certain modes for unlocked
+  * bootmanager: Remove inaccurate switch
+  * qt_common: Move window info function out of bootmanager
+  * vulkan_surface: Pass only window info for surface creation
+  * settings: Enable FIFO relaxed
+  * configure_graphics: Fix another typo
+  * telemetry_session: Make translate function static
+  * bootmanager: Return value in impossible case
+  * configure_graphics: Fix typo
+  * default_ini: Update V-Sync description
+  * configuration: Expose separate swap present modes
+- Update to version 0.1422:
+  * core: hid: Fix state of capture and home buttons
+  * Remove LGTM config
+  * settings: remove pessimistic flushing
+  * Memory manager: Fix possible softlock
+  * GPU: implement missing ASTC
+  * vk_present_manager: Fix softlocks when disabling async present
+  * catch2: update to 3.3.1
+  * Fix code resize to use word size rather than byte size
+  * vulkan: disable turbo when debugging tool is attached
+  * video_core: fix build on Apple Clang
+  * CMake: Enable type limits on Clang
+  * CMakeLists: Enable checks on Clang
+  * vk_present_manager: Add toggle for async presentation
+  * vk_blit_screen: Recreate FSR when frame is recreated
+  * renderer_vulkan: Fix crashing when updating descriptors
+  * renderer_vulkan: Async presentation
+  * Update translations (2023-05-01) (#10129)
+  * BufferCache: Fixes and address feedback
+  * qt: warn on inoperable keys
+  * Wait for the terminate event before destroying a system instance
+  * settings: rename extended memory layout to unsafe, move from general to system
+  * Define SampleMask as an array
+  * kernel: remove general boost lists
+  * kernel: match calls to Register and Unregister
+  * common: add intrusive list type
+  * Texture Cache: Release stagging buffers on tick frame
+  * Buffer Cache: Release stagging buffers on tick frame
+  * Tests: Add memory tracker tests.
+  * Clang: format and ficx compile errors.
+  * Implement Async downloads in normal and fix a few issues.
+  * Buffer Cache rework: Setup async downloads.
+  * Buffer Cache: Fully rework the buffer cache.
+  * Address Feedback &amp; Clang Format
+  * Maxwell3D: only update parameters on High
+  * Accelerate DMA: Use texture cache async downloads to perform the copies to host.
+  * TextureCache: refactor DMA downloads to allow multiple buffers.
+  * vk_pipeline_cache: Skip compute pipelines on Intel proprietary drivers
+  * QueryCache: Fix write invalidation.
+  * MemoryManager: Fix race conditions.
+  * Clang format and ddress feedback
+  * QueryCache: rework async downloads.
+  * Accuracy Normal: reduce accuracy further for perf improvements in Project Lime
+  * Fence Manager: implement async fence management in a sepparate thread.
+- Update to version 0.1414:
+  * &quot;Merge Tagged PR 10082&quot;
+  * maxwell_3d: fix out of bounds array access in size estimation
+  * core: am: Demote TryPopFromFriendInvitationStorageChannel Log level
+  * Account for a pre-added offset when using Corner sample mode for 2D blits
+  * Run clang-format to fix all.
+  * Fix formatting.
+  * Allow passing `bind_address` to dedicated room.
+  * core: audio: return result when audio_out initialize failed
+  * core: hid: Remove deadzone of virtual controller
+  * vulkan: use plain fences when timeline semaphores are not available
+  * service: nfp: Implement debug Interface
+  * service: nfp: Implement system interface
+  * service: nfp: Use an unique interface
+  * vulkan: pick alpha composite flags based on available values
+</comment>
+    <requestid>1085338</requestid>
+  </revision>
 </revisionlist>
