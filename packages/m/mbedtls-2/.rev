@@ -7,4 +7,12 @@
     <comment>Provide a package for version 2 of the library, since some packages aren't compatible with version 3. For example: godot, haxe or neko.</comment>
     <requestid>1084073</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d34c049aa883cd1801ce95d1f151de1d</srcmd5>
+    <version>2.28.3</version>
+    <time>1683559508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085509</requestid>
+  </revision>
 </revisionlist>

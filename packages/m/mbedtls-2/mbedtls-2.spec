@@ -1,7 +1,7 @@
 #
-# spec file for package mbedtls
+# spec file for package mbedtls-2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,7 +82,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lib_crypto} = %{version}
 Requires:       %{lib_tls} = %{version}
 Requires:       %{lib_x509} = %{version}
-Provides:       mbedtls-devel = %{version}-release
+Provides:       mbedtls-devel = %{version}-%{release}
 Conflicts:      mbedtls-devel >= 3
 
 %description devel
