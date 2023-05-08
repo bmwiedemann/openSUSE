@@ -1,0 +1,67 @@
+--- powerd.c
++++ powerd.c	2010-05-12 16:12:45.167591612 +0200
+@@ -625,7 +625,8 @@ void openconfig(int *delay) {
+     int line=0;
+     char *host, *port;
+     int iport;
+-    struct hostent *hname;
++    struct addrinfo *hname;
++    struct addrinfo *hiter;
+     struct in_addr addr;
+ 
+ //    printf("Opening config\n");
+@@ -664,6 +665,8 @@ void openconfig(int *delay) {
+ 	    device = strdup(parameter);
+ //	    printf("Monitoring %s\n", device);
+ 	} else if (!strcasecmp(command, "notify")) {
++	    int ret;
++
+ 	    if (strlen(password) < 5) {
+ 		fprintf(stderr, "Password is too short/invalid. Line %d\n", line);
+ 		exit(-1);
+@@ -674,27 +677,32 @@ void openconfig(int *delay) {
+ 		else
+ 		    iport = PORT;
+ 
+-		if ((hname = gethostbyname(host))) {
+-		    while(*hname->h_addr_list != 0) {
++		if (!(ret = getaddrinfo(host, NULL, NULL, &hname))) {
++		    for(hiter = hname; hiter != NULL; hiter = hiter->ai_next) {
+ 			memset(&addr.s_addr, 0, sizeof(addr.s_addr));
+-			memcpy(&addr.s_addr, *hname->h_addr_list, hname->h_length);
++			memcpy(&addr.s_addr, hiter->ai_addr, hiter->ai_addrlen);
+ 			addclient(inet_ntoa(addr), password, iport);
+-			hname->h_addr_list++;
+ 		    }
++		    freeaddrinfo(hname);
+ 		}
+-	    }
++		else
++		  fprintf(stderr, "getaddrinfo : %s\n", gai_strerror(ret));
++ 	    }
+ 	} else if (!strcasecmp(command, "listen")) {
++	    int ret;
+ 	    if (strlen(password) < 5) {
+ 		fprintf(stderr, "Password is too short/invalid. Line %d\n", line);
+ 		exit(-1);
+-	    } else if ((hname = gethostbyname(parameter))) {
+-		while(*hname->h_addr_list != 0) {
+-		    memset(&addr.s_addr, 0, sizeof(addr.s_addr));
+-		    memcpy(&addr.s_addr, *hname->h_addr_list, hname->h_length);
+-		    addlisten(inet_ntoa(addr), password);
+-		    hname->h_addr_list++;
+-		}
+-	    }
++	    } else if (! (ret = getaddrinfo(parameter, NULL, NULL, &hname))) {
++ 		   for(hiter = hname; hiter != NULL; hiter = hiter->ai_next) {
++                        memset(&addr.s_addr, 0, sizeof(addr.s_addr));
++                        memcpy(&addr.s_addr, hiter->ai_addr, hiter->ai_addrlen);
++                        addlisten(inet_ntoa(addr), password);
++                   }
++                   freeaddrinfo(hname);
++            }
++              else
++                fprintf(stderr, "getaddrinfo : %s\n", gai_strerror(ret));
+ 	} else if (!strcasecmp(command, "listenport")) {
+ 	    if ((listenport = atoi(parameter)) < 1) {
+ 		fprintf(stderr, "Listen port is invalid. Line %d\n", line);
