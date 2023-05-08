@@ -1,6 +1,0 @@
-<package name="maven-surefire-provider-junit5" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="maven-surefire"/>
-  <bcntsynctag>maven-surefire</bcntsynctag>
-</package>
