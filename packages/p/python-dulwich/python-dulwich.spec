@@ -22,11 +22,10 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-dulwich
-Version:        0.21.3
+Version:        0.21.5
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
