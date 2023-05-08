@@ -57,4 +57,31 @@
 </comment>
     <requestid>1082179</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f937aa03df7a74ae792d00d1d680703</srcmd5>
+    <version>14.0.1</version>
+    <time>1683559460</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix installation step in specfile.
+- Update to version 14.0.1 patch release:
+  * Fix deleting history that doesn't exist yet
+  * Updated client config docs
+  * Handle empty lines when importing from Bash
+  * update str substring usage to use range parameter
+  * Fix --delete description
+  * Use XDG data directory for fish import
+  * Add some emacs movement keys
+  * Atuin stats with day, month, week and year filter
+  * Add --reverse to atuin search
+  * Add additional detail to search documentation
+  * Switch to uuidv7
+  * Workspace reorder
+  * Improve error message for issue #850.
+  * Avoid accidentally deleting all history, but allow it if intended
+  * Add footer
+  * Make the homepage prettier
+  * Release v14.0.1
+</comment>
+    <requestid>1085355</requestid>
+  </revision>
 </revisionlist>

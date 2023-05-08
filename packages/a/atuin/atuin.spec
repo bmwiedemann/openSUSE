@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        14.0.0
+Version:        14.0.1
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -31,6 +31,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo >= 1.59
+BuildRequires:  zstd
 
 %description
 Atuin replaces your existing shell history with a SQLite database, and records additional context for your commands.
@@ -77,14 +78,14 @@ do
 done
 
 %install
-%{cargo_install}
+install -D -m 0755 "%{_builddir}/%{name}-%{version}/target/release/atuin" "%{buildroot}%{_bindir}/atuin"
 install -D -m 0644 "target/%{name}.bash" "%{buildroot}/%{_datadir}/bash-completion/completions/%{name}"
 install -D -m 0644 "target/%{name}.fish" "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
 install -D -m 0644 "target/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-functions/_%{name}"
 
 %files
 %license LICENSE
-%doc README.md CHANGELOG.md src/shell
+%doc README.md CHANGELOG.md atuin/src/shell
 %{_bindir}/atuin
 
 %files bash-completion
