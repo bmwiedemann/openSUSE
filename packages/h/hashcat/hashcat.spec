@@ -1,7 +1,7 @@
 #
 # spec file for package hashcat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
+%define lname	libhashcat6_2_6
 Name:           hashcat
-%define lname	libhashcat6_2_5
-Version:        6.2.5
+Version:        6.2.6
 Release:        0
 Summary:        CPU-based password recovery utility
 License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Security
 URL:            https://hashcat.net/
-
-Source:         https://github.com/hashcat/hashcat/archive/refs/tags/v%version.tar.gz
+Source:         https://hashcat.net/files/%name-%version.tar.gz
+Source2:        https://hashcat.net/files/%name-%version.tar.gz.asc
+#  Key ID: 2048R/8A16544F. Fingerprint: A708 3322 9D04 0B41 99CC 0052 3C17 DA8B 8A16 544F
+Source3:        %name.keyring
 Source9:        %name-rpmlintrc
 Patch1:         system-libs.patch
 BuildRequires:  fdupes

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  7 20:42:32 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to 6.2.6:
+  * many new hash-modes and bug fixes
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Wed Feb 23 19:01:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.2.5
