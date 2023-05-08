@@ -77,4 +77,13 @@
 - Update version to 5.10.11. Nothing changes in tool package</comment>
     <requestid>1000261</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2ad54f98a8b1bc12f9162f518b6dea6d</srcmd5>
+    <version>5.10.11</version>
+    <time>1683559469</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS. (forwarded request 1084618 from dimstar)</comment>
+    <requestid>1084693</requestid>
+  </revision>
 </revisionlist>
