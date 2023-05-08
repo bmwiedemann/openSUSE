@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdc496fca89c18d9212187d03eee5285</srcmd5>
+    <version>0.5</version>
+    <time>1683566649</time>
+    <user>dimstar_suse</user>
+    <comment>Daemon that responds to brightness keys by changing the backlight level</comment>
+    <requestid>1085531</requestid>
+  </revision>
+</revisionlist>
