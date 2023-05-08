@@ -19,9 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.22.g66f3a8a47d
+%define archive_version +suse.28.g25aec15788
 
-%define _testsuitedir /usr/lib/systemd/tests
+%define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
 
 # Similar to %%with but returns true/false. The 'true' value can be redefined
@@ -73,7 +73,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.3
+Version:        253.4
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -176,9 +176,8 @@ Source6:        baselibs.conf
 Source11:       after-local.service
 Source14:       kbd-model-map.legacy
 
-Source100:      scripts-systemd-fix-machines-btrfs-subvol.sh
-Source101:      scripts-systemd-upgrade-from-pre-210.sh
-Source102:      scripts-systemd-migrate-sysconfig-i18n.sh
+Source100:      fixlet-container-post.sh
+Source101:      fixlet-systemd-post.sh
 
 Source200:      files.systemd
 Source201:      files.udev
@@ -748,7 +747,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 
 %if %{with sd_boot}
 %ifarch x86_64
-export BRP_PESIGN_FILES="/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
+export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootx64.efi"
 %endif
 %endif
 
@@ -766,14 +765,12 @@ install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-inst
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
 
-# Package the scripts used to fix all packaging issues. Also drop the
-# "scripts-{systemd/udev}" prefix which is used because osc doesn't allow
-# directories in the workspace...
+# Install the fixlets
+mkdir -p %{buildroot}%{_systemd_util_dir}/rpm
 %if %{with machined}
-install -m0755 -D %{SOURCE100} %{buildroot}%{_systemd_util_dir}/scripts/fix-machines-btrfs-subvol.sh
+install -m0755 %{SOURCE100} %{buildroot}%{_systemd_util_dir}/rpm/
 %endif
-install -m0755 -D %{SOURCE101} %{buildroot}%{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
-install -m0755 -D %{SOURCE102} %{buildroot}%{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
+install -m0755 %{SOURCE101} %{buildroot}%{_systemd_util_dir}/rpm/
 
 %if %{with split_usr}
 mkdir -p %{buildroot}/{bin,sbin}
@@ -844,13 +841,14 @@ mkdir -p %{buildroot}%{_sysconfdir}/X11/xorg.conf.d
 # Make sure directories in /var exist.
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/coredump
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/catalog
+mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/rpm
 
 # Make sure the NTP units dir exists.
 mkdir -p %{buildroot}%{_ntpunitsdir}
 
 # Make sure the shutdown/sleep drop-in dirs exist.
-mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-shutdown/
-mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-sleep/
+mkdir -p %{buildroot}%{_systemd_util_dir}/system-shutdown/
+mkdir -p %{buildroot}%{_systemd_util_dir}/system-sleep/
 
 # Make sure these directories are properly owned.
 mkdir -p %{buildroot}%{_unitdir}/basic.target.wants
@@ -888,7 +886,6 @@ touch %{buildroot}%{_sysconfdir}/vconsole.conf
 touch %{buildroot}%{_sysconfdir}/locale.conf
 touch %{buildroot}%{_sysconfdir}/machine-info
 touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
-touch %{buildroot}%{_localstatedir}/lib/systemd/i18n-migrated
 
 %fdupes -s %{buildroot}%{_mandir}
 
@@ -925,15 +922,13 @@ install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/suse.conf
 # consume those configs (like glibc or pam), see bsc#1170146.
 rm -fr %{buildroot}%{_datadir}/factory/*
 
-# Add entries for xkeyboard-config converted keymaps; mappings, which
-# already exist in original systemd mapping table are being ignored
-# though, i.e. not overwritten; needed as long as YaST uses console
-# keymaps internally and calls localectl to convert from vconsole to
-# X11 keymaps. Ideally YaST should switch to X11 layout names (the
-# mapping table wouldn't be needed since each X11 keymap has a
-# generated xkbd keymap) and let localectl initialize
-# /etc/vconsole.conf and /etc/X11/xorg.conf.d/00-keyboard.conf
-# (FATE#319454).
+# Add entries for xkeyboard-config converted keymaps; mappings, which already
+# exist in original systemd mapping table are being ignored though, i.e. not
+# overwritten; needed as long as YaST uses console keymaps internally and calls
+# localectl to convert from vconsole to X11 keymaps. Ideally YaST should switch
+# to X11 layout names (the mapping table wouldn't be needed since each X11
+# keymap has a generated xkbd keymap) and let localectl initialize
+# /etc/vconsole.conf and /etc/X11/xorg.conf.d/00-keyboard.conf (FATE#319454).
 if [ -f /usr/share/systemd/kbd-model-map.xkb-generated ]; then
         cat /usr/share/systemd/kbd-model-map.xkb-generated \
                 >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
@@ -1062,19 +1057,9 @@ if [ -L %{_localstatedir}/lib/systemd/timesync ]; then
         mv %{_localstatedir}/lib/private/systemd/timesync %{_localstatedir}/lib/systemd/timesync
 fi
 
-# This includes all hacks needed when upgrading from SysV.
-%{_prefix}/lib/systemd/scripts/upgrade-from-pre-210.sh || :
-
-# Migrate old i18n settings previously configured in /etc/sysconfig to the new
-# locations used by systemd (/etc/locale.conf, /etc/vconsole.conf, ...). Recent
-# versions of systemd parse the new locations only.
-#
-# This is needed both at package updates and package installations because we
-# might be upgrading from a system which was running SysV init (systemd package
-# is being installed).
-#
-# It's run only once.
-%{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh || :
+# Run the hacks/fixups to clean up old garbages left by (very) old versions of
+# systemd.
+%{_systemd_util_dir}/rpm/fixlet-systemd-post.sh $1 || :
 
 %postun
 # daemon-reload is implied by systemd_postun_with_restart
@@ -1148,30 +1133,9 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %postun -n libudev%{?mini}1 -p %ldconfig
 %postun -n libsystemd0%{?mini} -p %ldconfig
 
+%if %{with machined}
 %pre container
 %systemd_pre machines.target
-
-%post container
-%systemd_post machines.target
-%tmpfiles_create systemd-nspawn.conf
-%if %{with machined}
-%ldconfig
-if [ $1 -gt 1 ]; then
-        # Convert /var/lib/machines subvolume to make it suitable for rollbacks,
-        # if needed. See bsc#992573. The installer has been fixed to create it
-        # at installation time.
-        #
-        # The convertion might only be problematic for openSUSE distros
-        # (TW/Factory) where previous versions had already created the subvolume
-        # at the wrong place (via tmpfiles for example) and user started to
-        # populate and use it. In this case we'll let the user fix it manually.
-        #
-        # For SLE12 this subvolume was only introduced during the upgrade from
-        # v210 to v228 when we added this workaround. Note that the subvolume is
-        # still created at the wrong place due to the call to tmpfiles_create
-        # macro previously however it's empty so there shouldn't be any issues.
-        %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh || :
-fi
 
 %preun container
 %systemd_preun machines.target
@@ -1180,6 +1144,14 @@ fi
 %systemd_postun machines.target
 %ldconfig
 %endif
+
+%post container
+%tmpfiles_create systemd-nspawn.conf
+%if %{with machined}
+%systemd_post machines.target
+%ldconfig
+%endif
+%{_systemd_util_dir}/rpm/fixlet-container-post.sh $1 || :
 
 %if %{with coredump}
 %post coredump
@@ -1355,9 +1327,9 @@ fi
 %{_unitdir}/systemd-journal-gatewayd.*
 %{_unitdir}/systemd-journal-remote.*
 %{_unitdir}/systemd-journal-upload.*
-%{_prefix}/lib/systemd/systemd-journal-gatewayd
-%{_prefix}/lib/systemd/systemd-journal-remote
-%{_prefix}/lib/systemd/systemd-journal-upload
+%{_systemd_util_dir}/systemd-journal-gatewayd
+%{_systemd_util_dir}/systemd-journal-remote
+%{_systemd_util_dir}/systemd-journal-upload
 %{_sysusersdir}/systemd-remote.conf
 %{_mandir}/man5/journal-remote.conf*
 %{_mandir}/man5/journal-upload.conf*
@@ -1372,8 +1344,8 @@ fi
 %files portable
 %defattr(-,root,root)
 %{_bindir}/portablectl
-%{_prefix}/lib/systemd/systemd-portabled
-%{_prefix}/lib/systemd/portable
+%{_systemd_util_dir}/systemd-portabled
+%{_systemd_util_dir}/portable
 %{_unitdir}/systemd-portabled.service
 %{_unitdir}/dbus-org.freedesktop.portable1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.portable1.conf

@@ -1,4 +1,8 @@
 #! /bin/bash
+#
+# This script contains all the fixups run when systemd package is installed or
+# updated.
+#
 
 # /etc/sysconfig/console   | /etc/vconsole.conf
 # -------------------------+---------------------
@@ -76,13 +80,12 @@ migrate_keyboard () {
 
 # According to
 # https://www.suse.com/documentation/sles-12/book_sle_admin/data/sec_suse_l10n.html,
-# variables in /etc/sysconfig/language are supposed to be passed to
-# the users' shell *only*. However it seems that there has been some
-# confusion and they ended up configuring the system-wide locale as
-# well.  The logic followed by systemd was implemented in commit
-# 01c4b6f4f0d951d17f6873f68156ecd7763429c6, which was reverted. The
-# code below follows the same logic to migrate content of
-# /etc/sysconfig/language into locale.conf.
+# variables in /etc/sysconfig/language are supposed to be passed to the users'
+# shell *only*. However it seems that there has been some confusion and they
+# ended up configuring the system-wide locale as well.  The logic followed by
+# systemd was implemented in commit 01c4b6f4f0d951d17f6873f68156ecd7763429c6,
+# which was reverted. The code below follows the same logic to migrate content
+# of /etc/sysconfig/language into locale.conf.
 migrate_language () {
 	local lang=
 	local migrated=false
@@ -128,18 +131,89 @@ migrate_language () {
 	fi
 }
 
+# Migrate old i18n settings previously configured in /etc/sysconfig to the new
+# locations used by systemd (/etc/locale.conf, /etc/vconsole.conf, ...). Recent
+# versions of systemd parse the new locations only.
+#
+# This is needed both at package updates and package installations because we
+# might be upgrading from a system which was running SysV init (systemd package
+# is being installed).
+#
+# It's run only once.
+migrate_sysconfig_i18n() {
+	local tagfile=/var/lib/systemd/rpm/systemd-i18n_migrated
+	local -i rv=0
 
-# The marker could have been incorrectly put in /usr/lib. In this case
-# move it to its new place.
-mv /usr/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done \
-   /var/lib/systemd/i18n-migrated &>/dev/null
+	if [ -e $tagfile ]; then
+		return 0
+	fi
 
-if ! test -e /var/lib/systemd/i18n-migrated; then
-	declare -i rv=0
+	# The marker could have been incorrectly put in /usr/lib.
+	mv /usr/lib/systemd/scripts/.migrate-sysconfig-i18n.sh~done $tagfile &>/dev/null
+	# The tag files have been moved to /var/lib/systemd/rpm later.
+	mv /var/lib/systemd/i18n-migrated $tagfile &>/dev/null
+
+	if [ -e $tagfile ]; then
+		return 0
+	fi
+	touch $tagfile
 
 	migrate_locale;   rv+=$?
 	migrate_keyboard; rv+=$?
 	migrate_language; rv+=$?
 
-	test $rv -eq 0 && touch /var/lib/systemd/i18n-migrated
-fi
+	return $rv
+}
+
+#
+# This function is supposed to be called from the %post section of the main
+# package. It contains all the fixups needed when the system was running a
+# version of systemd older than v210.
+#
+# All hacks can potentially break the admin settings since they work in /etc.
+#
+fix_pre_210() {
+	local tagfile=/var/lib/systemd/rpm/systemd-pre_210_fixed
+
+	if [ -e $tagfile ]; then
+		return 0
+	fi
+	touch $tagfile
+
+	#
+	# During migration from sysvinit to systemd, we used to set the systemd
+	# default target to one of the 'runlevel*.target' after reading the
+	# default runlevel from /etc/inittab. We don't do that anymore because
+	# in most cases using the graphical.target target, which is the default,
+	# will do the right thing. Moreover the runlevel targets are considered
+	# as deprecated, so we convert them into "true" systemd targets instead
+	# here.
+	#
+	if target=$(readlink /etc/systemd/system/default.target); then
+		target=$(basename $target)
+		case "$target" in
+		runlevel?.target)
+			echo "Default target is '$target' but use of runlevels is deprecated, converting"
+			systemctl --no-reload set-default $target
+		esac
+	fi
+
+	#
+	# Migrate any symlink which may refer to the old path (ie /lib/systemd).
+	#
+	for f in $(find /etc/systemd/system -type l -xtype l); do
+		new_target="/usr$(readlink $f)"
+		[ -f "$new_target" ] && ln -s -f "$new_target" "$f"
+	done
+}
+
+r=0
+fix_pre_210 || {
+	r=1
+}
+migrate_sysconfig_i18n || {
+	echo >&2 "Failed to migrate i18n settings from /etc/sysconfig, continuing..."
+	r=1
+}
+
+exit $r

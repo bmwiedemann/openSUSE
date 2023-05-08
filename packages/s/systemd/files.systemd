@@ -30,6 +30,7 @@
 %dir %{_libdir}/systemd
 %dir %{_localstatedir}/lib/systemd
 %dir %{_localstatedir}/lib/systemd/catalog
+%dir %{_localstatedir}/lib/systemd/rpm
 %dir %{_modprobedir}
 %dir %{_sysconfdir}/X11/xorg.conf.d
 %dir %{_sysconfdir}/binfmt.d
@@ -44,7 +45,7 @@
 %dir %{_systemd_user_env_generator_dir}
 %dir %{_systemd_util_dir}
 %dir %{_systemd_util_dir}/ntp-units.d
-%dir %{_systemd_util_dir}/scripts
+%dir %{_systemd_util_dir}/rpm
 %dir %{_systemd_util_dir}/system-preset
 %dir %{_systemd_util_dir}/system-shutdown
 %dir %{_systemd_util_dir}/system-sleep
@@ -91,7 +92,6 @@
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal
 %ghost %{_localstatedir}/lib/systemd/catalog/database
-%ghost %{_localstatedir}/lib/systemd/i18n-migrated
 %license LICENSE.GPL2
 %license LICENSE.LGPL2.1
 %{_bindir}/busctl
@@ -440,8 +440,7 @@
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
-%{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
-%{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
+%{_systemd_util_dir}/rpm/fixlet-systemd-post.sh
 %{_systemd_util_dir}/system-preset/99-default.preset
 %{_systemd_util_dir}/systemd
 %{_systemd_util_dir}/systemd-binfmt

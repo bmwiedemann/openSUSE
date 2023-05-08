@@ -5,9 +5,3 @@
 arabic                 ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
 ara                    ara,us  pc105           -               terminate:ctrl_alt_bksp,grp:shift_toggle
 ir                     ir      pc105           -               terminate:ctrl_alt_bksp
-
-# FIXME: ruwin_alt-UTF-8 is not needed as the legacy "ru" keymap
-# (/usr/share/kbd/keymaps/i386/qwerty/ru.map.gz) is a dual layout and contains
-# the Latin letters. Keep it until YaST is updated.
-
-ruwin_alt-UTF-8        us,ru   pc105           ,winkeys        terminate:ctrl_alt_bksp,grp:ctrl_shift_toggle,grp_led:scroll

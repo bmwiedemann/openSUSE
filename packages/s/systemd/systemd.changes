@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May  4 15:20:49 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Rather than having one script per fix, use a single script (or "fixlet") per
+  (sub) package that contains all the fixups relative to a (sub) package. This
+  has the advantage to limit the number of scripts but more importantly it will
+  ease the sharing of the spec file between TW and SLE. We should also be able
+  to compare the fixlets of two distros even if the spec files have diverged.
+
+  Note that all the fixups are run just once now.
+
+-------------------------------------------------------------------
+Thu May  4 09:32:44 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Make use of %_systemd_util_dir in the spec file.
+
+- Rename the SUSE specific scripts used to fix up the system where systemd is
+  installed on. Also rename the directory where these scripts are stored.
+
+-------------------------------------------------------------------
+Thu May  4 08:40:15 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- kbd-model-map.legacy: drop entry for 'ruwin_alt-UTF-8' as yast doesn't rely on
+  it anymore, see https://github.com/yast/yast-country/pull/307
+
+-------------------------------------------------------------------
+Wed May  3 06:34:54 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 25aec157888f7aa9a36726962fcbbf2c74ead440 (merge of v253.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/3ce9610975b5239a21c0c886cb893bb172966de7...25aec157888f7aa9a36726962fcbbf2c74ead440
+
+-------------------------------------------------------------------
+Wed May  3 06:20:28 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 3ce9610975b5239a21c0c886cb893bb172966de7
+
+  3ce9610975 test: dont use anchor char '$' to match a part of a string
+  03ede3eaa2 locale: when no xvariant match select the entry with an empty xvariant
+  f08017efd5 locale: convert generated vconsole keymap to x11 layout automatically
+  e8cf56459b localed-util: make use of strdupcspn()
+  821c684440 test: use kbd-mode-map we ship in TEST-73-LOCALE
+
+-------------------------------------------------------------------
 Tue May  2 10:34:43 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Revert changes that dropped calls to %systemd_{pre,post} in the main package

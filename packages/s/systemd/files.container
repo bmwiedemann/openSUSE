@@ -30,7 +30,7 @@
 %{_mandir}/man5/org.freedesktop.machine1.5.gz
 %{_mandir}/man8/systemd-machined.8.gz
 %{_mandir}/man8/systemd-machined.service.8.gz
-%{_systemd_util_dir}/scripts/fix-machines-btrfs-subvol.sh
+%{_systemd_util_dir}/rpm/fixlet-container-post.sh
 %{_systemd_util_dir}/systemd-machined
 %{_tmpfilesdir}/systemd-nspawn.conf
 %{_unitdir}/dbus-org.freedesktop.machine1.service
