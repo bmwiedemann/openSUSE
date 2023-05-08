@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 25 16:01:45 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 4.3.13
+  * removed python version 3.6 from build
+  * Fix google Video search
+  * Fix parsing of Results
+  * Fix html class of result nodes (#393, fixes #392)
+  * Do not sabotage stdin of url_handler (#386)
+  
+- changed upstream repository
+
+-------------------------------------------------------------------
 Fri Jun 24 12:03:50 UTC 2022 - openqa container_bot <ggkioulis@suse.com>
 
 - Update to the latest version and solve bsc1200312

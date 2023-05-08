@@ -1,7 +1,7 @@
 #
 # spec file for package googler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           googler
-Version:        4.3.2
+Version:        4.3.13
 Release:        0
 Summary:        Google Search, Google Site Search, Google News from the terminal
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-URL:            https://github.com/jarun/googler
-Source:         https://github.com/jarun/googler/archive/v%{version}.tar.gz
-BuildRequires:  python3-devel >= 3.4
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/oksiquatzel/googler
+Source:         https://github.com/oksiquatzel/googler/archive/v%{version}.tar.gz
+BuildRequires:  python3-devel >= 3.7
 BuildArch:      noarch
 
 %description
@@ -36,16 +35,16 @@ Results are fetched in pages (with page navigation). Supports
 sequential searches in a single googler instance.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make disable-self-upgrade
+%make_build disable-self-upgrade
 
 %install
 make PREFIX=%{buildroot}%{_prefix} install
 # Fix the googler.noarch: E: env-script-interpreter (Badness: 9) error by
 # rpmlint.
-sed -i 's|/usr/bin/env\ python|/usr/bin/python|1' %{buildroot}/%{_bindir}/%{name}
+sed -i 's|%{_bindir}/env\ python|%{_bindir}/python|1' %{buildroot}/%{_bindir}/%{name}
 
 # wrong location
 rm -rf %{buildroot}%{_datadir}/doc/googler
@@ -55,7 +54,6 @@ install -Dm644 auto-completion/bash/googler-completion.bash %{buildroot}%{_datad
 install -Dm644 auto-completion/zsh/_googler %{buildroot}%{_datadir}/zsh/site-functions/_googler
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc CHANGELOG README.md
 %{_bindir}/googler
