@@ -384,4 +384,14 @@
 - Initial version 1.4 (forwarded request 1042855 from illuusio)</comment>
     <requestid>1043433</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>51355397c295c423fa816e19f900f55b</srcmd5>
+    <version>2.0.11</version>
+    <time>1683559513</time>
+    <user>dimstar_suse</user>
+    <comment>- Make syntax higlightning work by running runtime YAML
+  file update with 'make generate'. Update patch to make
+  sure that compiling is as bare bones as needed. (forwarded request 1085505 from illuusio)</comment>
+    <requestid>1085521</requestid>
+  </revision>
 </revisionlist>

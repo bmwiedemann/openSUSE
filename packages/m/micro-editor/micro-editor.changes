@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 11:18:05 UTC 2023 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Make syntax higlightning work by running runtime YAML
+  file update with 'make generate'. Update patch to make
+  sure that compiling is as bare bones as needed.
+
+-------------------------------------------------------------------
 Tue Oct 11 11:13:25 UTC 2022 - tuukka.pasanen@ilmi.fi
 
 - Update to version 2.0.11:

@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index fc9601a..e151d65 100644
+index fc9601a..831585e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,9 +1,9 @@
@@ -24,3 +24,12 @@ index fc9601a..e151d65 100644
  
  build-dbg:
  	go build -trimpath -ldflags "-s -w $(ADDITIONAL_GO_LINKER_FLAGS) $(DEBUGVAR)" ./cmd/micro
+@@ -35,7 +35,7 @@ fetch-tags:
+ 	git fetch --tags
+ 
+ generate:
+-	GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) go generate ./runtime
++	go generate ./runtime
+ 
+ testgen:
+ 	mkdir -p tools/vscode-tests

@@ -1,7 +1,7 @@
 #
 # spec file for package micro-editor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ export DATE="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%s)} --iso-8601)"
 export HASH="%shortcommit"
 export VERSION="%version"
 
+make generate
 make build-quick
 
 %install
