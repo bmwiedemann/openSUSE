@@ -1,7 +1,7 @@
 #
 # spec file for package python-confluent-kafka
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-confluent-kafka
-Version:        1.9.2
+Version:        2.1.1
 Release:        0
 Summary:        Confluent's Apache Kafka client for Python
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/c/confluent-kafka
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  librdkafka-devel
+BuildRequires:  librdkafka-devel >= 2.1.0
 BuildRequires:  python-rpm-macros
 %ifpython2
 Requires:       python2-avro

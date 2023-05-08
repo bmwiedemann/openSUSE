@@ -91,4 +91,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1007771</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73ae305064c171d2ac9dfce596461f94</srcmd5>
+    <version>2.1.1</version>
+    <time>1683559448</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * Added a new ConsumerGroupState UNKNOWN. The typo state UNKOWN
+    is deprecated and will be removed in the next major version.
+  * Fix some Admin API documentation stating -1 for infinite
+    timeout incorrectly.
+  * Request timeout can't be infinite.
+  * Added `set_sasl_credentials`. This new method (on the
+    Producer, Consumer, and AdminClient) allows modifying the
+    stored SASL PLAIN/SCRAM credentials that will be used for
+    subsequent (new) connections to a broker
+  * Added support for Default num_partitions in CreateTopics
+    Admin API.
+  * Added support for password protected private key in
+    CachedSchemaRegistryClient.
+  * Add reference support in Schema Registry client.
+  * Added support for schema references.
+  * KIP-320: add offset leader epoch methods to the
+    TopicPartition and Message classes
+  * KIP-222 Add Consumer Group operations to Admin API.
+  * KIP-518 Allow listing consumer groups per state.
+  * KIP-396 Partially implemented: support for
+    AlterConsumerGroupOffsets.
+  * Added metadata to `TopicPartition` type and `commit()`
+  * Added `consumer.memberid()` for getting member id assigned to
+  * the consumer in a consumer group
+  * Implemented `nb_bool` method for the Producer, so that the
+    default (which uses len) will not be used. 
+    This avoids situations where producers with
+    no enqueued items would evaluate to False
+  * Deprecated `AvroProducer` and `AvroConsumer`. Use</comment>
+    <requestid>1085344</requestid>
+  </revision>
 </revisionlist>
