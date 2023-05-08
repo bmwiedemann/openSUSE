@@ -224,4 +224,14 @@
     django-compressor offline compression).</comment>
     <requestid>1079738</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8171d9c890f771bfc92365401524c8ef</srcmd5>
+    <version>3.0.6</version>
+    <time>1683559451</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.6:
+  * Fixed incorrect label of option returned by RelatedLookup
+    view.</comment>
+    <requestid>1085332</requestid>
+  </revision>
 </revisionlist>

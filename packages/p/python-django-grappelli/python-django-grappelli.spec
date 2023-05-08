@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-grappelli
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        A skin for the Django Admin-Interface
 License:        BSD-2-Clause AND LGPL-2.1-or-later
