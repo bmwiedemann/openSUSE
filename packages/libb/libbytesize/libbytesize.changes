@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May  6 21:46:55 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop lang sub-package recommendation. It's not needed anymore now
+  that lang packages provide package supplementation instead.
+- Make bscalc sub-package 'noarch', since it doesn't contain any
+  binaries, only a Python script and its manpage.
+
+-------------------------------------------------------------------
+Thu May  4 23:44:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8:
+  * Added translation using Weblate
+  * configure.ac: Remove invalid email address for bug reports
+  * spec: Bump release to 21 for Packit daily builds
+  * spec: Fix source archive URL
+  * Make use of error optional
+  * Replace C++ style comments with C style
+  * Various docstring fixes
+  * docs: Remove information about Python 2 support
+  * Remove unused test dependencies variables from Makefile
+  * Do not hardcode pylint executable name in Makefile
+
+-------------------------------------------------------------------
 Thu Jul 14 16:57:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7:

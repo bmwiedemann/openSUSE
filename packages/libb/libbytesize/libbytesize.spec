@@ -1,7 +1,7 @@
 #
 # spec file for package libbytesize
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define somajor 1
 %define libname %{name}%{somajor}
 Name:           libbytesize
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        A library for working with sizes in bytes
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/storaged-project/libbytesize
 Source:         https://github.com/storaged-project/libbytesize/releases/download/%{version}/%{name}-%{version}.tar.gz
+
 BuildRequires:  gcc
 BuildRequires:  gmp-devel
 BuildRequires:  gtk-doc
@@ -33,7 +34,6 @@ BuildRequires:  mpfr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(libpcre2-8)
-Recommends:     %{name}-lang
 
 %description
 The LibBytesize is a C library that facilitates work with sizes in
@@ -53,9 +53,10 @@ representation of a size in bytes. This library takes localization into
 account. It also provides support for sizes bigger than MAXUINT64.
 
 %package -n bscalc
-Summary:        A utility for workign with sizes in bytes
+Summary:        A utility for working with sizes in bytes
 Group:          System/Libraries
 Requires:       %{libname} = %{version}
+BuildArch:      noarch
 
 %description -n bscalc
 The LibBytesize is a C library that facilitates work with sizes in
@@ -90,8 +91,8 @@ the library from Python 3 easier and more convenient.
 %build
 %configure \
     --disable-static \
-        --with-python3 \
-        --with-gtk-doc
+    --with-python3 \
+    --with-gtk-doc
 %make_build
 
 %install
