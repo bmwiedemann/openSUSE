@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 11:26:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Feb  7 09:06:15 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Drop git as a requires and switch buildrequires from git to git-core
