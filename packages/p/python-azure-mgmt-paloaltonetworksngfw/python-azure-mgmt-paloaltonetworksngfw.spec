@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
+
+%define realversion 1.0.0b2
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-paloaltonetworksngfw
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Paloaltonetworksngfw Management Client Library for Python
 License:        MIT
@@ -42,8 +43,8 @@ Requires:       python-azure-mgmt-core < 2.0.0
 Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-isodate >= 0.6.1
 Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
