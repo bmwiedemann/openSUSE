@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
 Version:        1.3.1
 Release:        0
