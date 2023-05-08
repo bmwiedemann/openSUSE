@@ -33,4 +33,14 @@ pgcsw</comment>
 </comment>
     <requestid>1085251</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34a64573008f55a2a63a3654784457d3</srcmd5>
+    <version>3.2.3</version>
+    <time>1683559453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.3:
+    * Fixed bug: Application crashes while exiting
+</comment>
+    <requestid>1085342</requestid>
+  </revision>
 </revisionlist>
