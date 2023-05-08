@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 08 04:37:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230504T181016Z:
+  * mirror: Fix removal of FS target without a trailing slash
+    (#4560)
+  * Remove tags for object versions (#4563)
+  * mirror: Honor --fake for target bucket removal (#4561)
+  * Ensure perf results file has an extension (#4551)
+  * info: Show nodes in initializing state (#4556)
+  * allow aliases to be `/` at the end and handle such cases
+    (#4554)
+  * Consistent subcommand naming for list and remove with shortname
+    (#4548)
+  * Fix dry run message crash (#4546)
+  * doc: Update mc admin doc (#4529)
+  * build: support loong64 (#4549)
+
+-------------------------------------------------------------------
 Thu Apr 13 07:55:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230412T022151Z:
