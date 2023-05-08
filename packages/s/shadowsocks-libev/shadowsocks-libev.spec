@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-libev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Source10:       %{name}-tunnel@.service
 Source11:       %{name}-nat@.service
 Source12:       %{name}-redir@.service
 BuildRequires:  libtool
-BuildRequires:  mbedtls-devel
+BuildRequires:  mbedtls-devel < 3
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre)
@@ -104,7 +104,7 @@ This package provides development headers for it.
 %build
 export CFLAGS="%{optflags} -fcommon"
 %configure \
-           --enable-shared 
+           --enable-shared
 
 %make_build
 
@@ -144,13 +144,13 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel@
 %pre
 %service_add_pre %{name}-server.service
 %service_add_pre %{name}-client.service
-%service_add_pre %{name}-manager.service 
-%service_add_pre %{name}-nat.service 
+%service_add_pre %{name}-manager.service
+%service_add_pre %{name}-nat.service
 %service_add_pre %{name}-redir.service
 %service_add_pre %{name}-tunnel.service
 %service_add_pre %{name}-server@.service
 %service_add_pre %{name}-client@.service
-%service_add_pre %{name}-nat@.service 
+%service_add_pre %{name}-nat@.service
 %service_add_pre %{name}-redir@.service
 %service_add_pre %{name}-tunnel@.service
 
@@ -181,15 +181,15 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcshadowsocks-libev-tunnel@
 %service_del_preun %{name}-tunnel@.service
 
 %postun
-%service_del_postun %{name}-server.service 
+%service_del_postun %{name}-server.service
 %service_del_postun %{name}-client.service
-%service_del_postun %{name}-manager.service 
-%service_del_postun %{name}-nat.service 
+%service_del_postun %{name}-manager.service
+%service_del_postun %{name}-nat.service
 %service_del_postun %{name}-redir.service
 %service_del_postun %{name}-tunnel.service
-%service_del_postun %{name}-server@.service 
+%service_del_postun %{name}-server@.service
 %service_del_postun %{name}-client@.service
-%service_del_postun %{name}-nat@.service 
+%service_del_postun %{name}-nat@.service
 %service_del_postun %{name}-redir@.service
 %service_del_postun %{name}-tunnel@.service
 
