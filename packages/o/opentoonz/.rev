@@ -204,4 +204,12 @@
   * 0001-Clarify-size_t-origin-for-tgc-hash-BucketNode.patch</comment>
     <requestid>1073516</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>39c506f267b2edcba297f238c1814573</srcmd5>
+    <version>1.6.0</version>
+    <time>1683567758</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the factory build</comment>
+    <requestid>1085546</requestid>
+  </revision>
 </revisionlist>

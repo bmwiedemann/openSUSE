@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  8 14:15:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Disable the WITH_TRANSLATION option to avoid QTBUG-113152
+
+-------------------------------------------------------------------
 Tue Mar 21 10:13:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:
