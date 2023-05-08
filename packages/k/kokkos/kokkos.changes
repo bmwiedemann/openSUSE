@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May  3 12:00:01 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 4.0.01
+
+- Update to new upstream release 4.0.01:
+  see https://github.com/kokkos/kokkos/blob/62d2b6c879b74b6ae7bd06eb3e5e80139c4708e6/CHANGELOG.md
+- Use Ninja for building the project.
+
+-------------------------------------------------------------------
+Tue Apr  4 19:39:56 UTC 2023 - Cezary Skrzyński <czars1988@gmail.com> - 4.0.00
+
+- Update to new upstream release 4.0.00:
+  see https://github.com/kokkos/kokkos/blob/master/CHANGELOG.md#400-2023-02-21
+- Increase memory limits for build to avoid OpenMP tests running
+  out of memory
+- Add kokkos-do-not-use-env-as-interpreter.patch to fix rpmlint
+  complaint about `env` being used as interpreter
+
+-------------------------------------------------------------------
 Tue Apr 26 10:40:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libkokkos3.x86_64: E:
