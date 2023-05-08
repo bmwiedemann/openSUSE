@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 14:48:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 966a2350.patch: css: Don't transition to currentColor.
+  Transition to the color that is in use instead. Fixes crashes
+  because currentColor is not an RGBA color and therefor could not
+  be queried later (glgo#GNOME/gtk#5798).
+
+-------------------------------------------------------------------
 Wed May  3 05:58:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add gtk4-correctly-refresh-after-delete.patch -- Fix issue where
