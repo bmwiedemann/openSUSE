@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon May 08 04:38:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.4:
+  * Rel v0.27.4 (#2075)
+  * feat: allow customization of log indicator toggles closes #2024
+    (#2041)
+  * Create narsingh.yml (#2067)
+  * fix: (views) use saved context view when switching (#2045)
+  * Unify all go version to 1.20 (#2069)
+  * Bump github.com/rs/zerolog from 1.29.0 to 1.29.1 (#2060)
+  * Bump helm.sh/helm/v3 from 3.11.1 to 3.11.3 (#2059)
+  * Fix for missing Job annotations created from CronJob (#2073)
+  * Roles are rendered using same colorer function from skin
+    (#2027)
+  * Bump github.com/fatih/color from 1.14.1 to 1.15.0 (#2023)
+  * Updated monokai skin with help styles, and more monokai
+    appropriate colors (#2030)
+  * Bump alpine from 3.17.2 to 3.17.3 (#2040)
+  * Bump github.com/docker/docker (#2044)
+  * Bump actions/checkout from 3.3.0 to 3.5.2 (#2058)
+  * Bump golang from 1.20.2-alpine3.16 to 1.20.3-alpine3.16 (#2049)
+  * Update setup-go action, with caching (#2054)
+  * Convert command to lowercase in the command palette (#1432)
+  * Allowing a few hard coded colors to be configurable (#1405)
+  * fix: multiple matches in a single line. (#1876)
+  * generated binary zip for windows (#1972)
+  * feat: add support for renaming contexts. (#2006)
+  * Fix accessing nil map (#1996)
+  * Sort by view default only if sort not currently set (#1962)
+  * fix: fix outdated stern links (#1990)
+  * Update k8s matrix (#1979)
+  * Bump github.com/containerd/containerd from 1.6.15 to 1.6.18
+    (#1981)
+  * Bump github.com/derailed/popeye from 0.11.0 to 0.11.1 (#1986)
+  * adding instruction to install in FreeBSD via pkg (#1991)
+  * Bump k8s.io/metrics from 0.26.1 to 0.26.2 (#1998)
+  * added full logs viewing (#2002)
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (#1993)
+  * Bump k8s.io/client-go from 0.26.1 to 0.26.2 (#1999)
+  * Bump golang.org/x/net from 0.5.0 to 0.7.0 (#2000)
+  * Bump golang from 1.20.0-alpine3.16 to 1.20.2-alpine3.16 (#2008)
+  * Fix #2007: Remove debug command (#2011)
+  * Bump alpine from 3.17.1 to 3.17.2 (#1974)
+  * Bump golang.org/x/text from 0.6.0 to 0.7.0 (#1976)
+  * Bump github.com/derailed/popeye from 0.10.1 to 0.11.0 (#1975)
+  * Add missing help menu to one_dark skin (#1973)
+
+-------------------------------------------------------------------
 Sun Feb 12 15:37:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.3 (bsc#1208087, CVE-2023-25165):
