@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  7 18:43:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Added support for Python 3.11
+  * Drop support for Python 3.6, Django 2.2
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4
