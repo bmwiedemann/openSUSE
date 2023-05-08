@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May  6 01:05:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.5:
+  * Fix CVE-2023-1667: a NULL dereference during rekeying with
+    algorithm guessing
+  * Fix CVE-2023-2283: a possible authorization bypass in
+    pki_verify_data_signature under low-memory conditions.
+  * Fix several memory leaks in GSSAPI handling code
+  * Escape braces in ProxyCommand created from ProxyJump options
+    for zsh compatibility.
+  * Fix pkg-config path relocation for MinGW
+  * Improve doxygen documentation
+  * Fix build with cygwin due to the glob support
+  * Do not enqueue outgoing packets after sending
+    SSH2_MSG_NEWKEYS
+  * Add support for SSH_SUPPRESS_DEPRECATED
+  * Avoid functions declarations without prototype to build with
+    clang 15
+  * Fix spelling issues
+  * Avoid expanding KnownHosts, ProxyCommands and IdentityFiles
+    repetitively
+  * Add support sk-* keys through configuration
+  * Improve checking for Argp library
+  * Log information about received extensions
+  * Correctly handle rekey with delayed compression
+  * Move the EC keys handling to OpenSSL 3.0 API
+  * Record peer disconnect message
+  * Avoid deadlock when write buffering occurs and we call poll
+    recursively to flush the output buffer
+  * Disable preauthentication compression by default
+  * Add accidentally removed default compile flags
+  * Solve incorrect parsing of ProxyCommand option
+
+-------------------------------------------------------------------
 Wed Sep  7 13:32:34 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.10.4

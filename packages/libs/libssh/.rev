@@ -708,4 +708,41 @@ ProxyCommand parsing in ssh configuration files:
 </comment>
     <requestid>1001774</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>47604491ba2ecbe2f27ef0c52e89e914</srcmd5>
+    <version>0.10.5</version>
+    <time>1683559424</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.5:
+  * Fix CVE-2023-1667: a NULL dereference during rekeying with
+    algorithm guessing
+  * Fix CVE-2023-2283: a possible authorization bypass in
+    pki_verify_data_signature under low-memory conditions.
+  * Fix several memory leaks in GSSAPI handling code
+  * Escape braces in ProxyCommand created from ProxyJump options
+    for zsh compatibility.
+  * Fix pkg-config path relocation for MinGW
+  * Improve doxygen documentation
+  * Fix build with cygwin due to the glob support
+  * Do not enqueue outgoing packets after sending
+    SSH2_MSG_NEWKEYS
+  * Add support for SSH_SUPPRESS_DEPRECATED
+  * Avoid functions declarations without prototype to build with
+    clang 15
+  * Fix spelling issues
+  * Avoid expanding KnownHosts, ProxyCommands and IdentityFiles
+    repetitively
+  * Add support sk-* keys through configuration
+  * Improve checking for Argp library
+  * Log information about received extensions
+  * Correctly handle rekey with delayed compression
+  * Move the EC keys handling to OpenSSL 3.0 API
+  * Record peer disconnect message
+  * Avoid deadlock when write buffering occurs and we call poll
+    recursively to flush the output buffer
+  * Disable preauthentication compression by default
+  * Add accidentally removed default compile flags
+  * Solve incorrect parsing of ProxyCommand option</comment>
+    <requestid>1085234</requestid>
+  </revision>
 </revisionlist>

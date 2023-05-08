@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,14 +30,14 @@
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.10.4
+Version:        0.10.5
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.libssh.org
-Source0:        https://www.libssh.org/files/0.9/libssh-%{version}.tar.xz
-Source1:        https://www.libssh.org/files/0.9/libssh-%{version}.tar.xz.asc
+Source0:        https://www.libssh.org/files/0.10/libssh-%{version}.tar.xz
+Source1:        https://www.libssh.org/files/0.10/libssh-%{version}.tar.xz.asc
 Source2:        https://cryptomilk.org/gpgkey-8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D.gpg#/libssh.keyring
 Source3:        libssh_client.config
 Source4:        libssh_server.config
