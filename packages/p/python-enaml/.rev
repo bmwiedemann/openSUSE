@@ -106,4 +106,15 @@
 - Add pegen to BuildRequires.</comment>
     <requestid>1070067</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>19ab8493f9fb85bd1a99392b25eec2bc</srcmd5>
+    <version>0.16.1</version>
+    <time>1683559444</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.1:
+  * fix typo causing a crash in dock area
+  * fix a multi-inheritance issue with pyside6 which affected the
+    dock area</comment>
+    <requestid>1085334</requestid>
+  </revision>
 </revisionlist>

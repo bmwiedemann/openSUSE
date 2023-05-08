@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-enaml
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
