@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  8 08:29:13 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Relax version constraints for python-portalocker in BuildRequires and Requires
+
+-------------------------------------------------------------------
 Tue Apr 26 10:44:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.0.0

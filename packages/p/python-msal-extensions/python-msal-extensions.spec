@@ -1,7 +1,7 @@
 #
 # spec file for package python-msal-extensions
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,16 +34,17 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msal < 2.0.0
 Requires:       python-msal >= 0.4.1
-Requires:       python-portalocker < 2.0
+Requires:       python-portalocker < 3.0
 Requires:       python-portalocker >= 1.0
 %ifpython2
 Requires:       python-pathlib2
+Requires:       python-portalocker < 2.0
 %endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module msal < 2.0.0}
 BuildRequires:  %{python_module msal >= 0.4.1}
-BuildRequires:  %{python_module portalocker < 2.0}
+BuildRequires:  %{python_module portalocker < 3.0}
 BuildRequires:  %{python_module portalocker >= 1.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION

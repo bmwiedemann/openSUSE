@@ -61,4 +61,12 @@
     running in Unix-like systems. (#107) (forwarded request 972839 from glaubitz)</comment>
     <requestid>972847</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ece16eb4189b987b86af631670e85680</srcmd5>
+    <version>1.0.0</version>
+    <time>1683559495</time>
+    <user>dimstar_suse</user>
+    <comment>- Relax version constraints for python-portalocker in BuildRequires and Requires (forwarded request 1085455 from glaubitz)</comment>
+    <requestid>1085478</requestid>
+  </revision>
 </revisionlist>
