@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May  7 00:35:06 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup irp code
+  - unify error handling using the exit_with_error function
+  - ensure we add generated files
+  - checkin the newly created package
+
+-------------------------------------------------------------------
+Tue Mar 21 22:42:33 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- move new tools into a subpackage ruby-packaging-helpers to avoid
+  dependency to /usr/bin/ruby
+
+-------------------------------------------------------------------
+Tue Mar 21 18:35:40 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add 2 new utilities
+  - irp aka initialize ruby package
+    does exactly what the name says. does all the work to
+    initialize a new ruby package
+  - bundler-dumpdeps: script to generate BR/Requires based on a
+    Gemfile.
+
+-------------------------------------------------------------------
 Thu Feb  9 16:50:32 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - do not rely on file dependencies for getopt

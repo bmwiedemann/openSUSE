@@ -231,4 +231,25 @@ For staging:n</comment>
   deps</comment>
     <requestid>1064060</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>abf2cecf1384b889b2223dcad4a909a7</srcmd5>
+    <version>3.2</version>
+    <time>1683559426</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup irp code
+  - unify error handling using the exit_with_error function
+  - ensure we add generated files
+  - checkin the newly created package
+
+- move new tools into a subpackage ruby-packaging-helpers to avoid
+  dependency to /usr/bin/ruby
+
+- Add 2 new utilities
+  - irp aka initialize ruby package
+    does exactly what the name says. does all the work to
+    initialize a new ruby package
+  - bundler-dumpdeps: script to generate BR/Requires based on a
+    Gemfile.</comment>
+    <requestid>1085263</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ruby-common
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Source14:       gemfile.rb
 Source15:       rails.macros
 Source16:       g2r
 Source17:       rubygems_bundled.attr
+Source18:       irp.rb
+Source19:       bundler-dumpdeps
 Summary:        Collection of scripts and macros for ruby packaging
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -82,6 +84,18 @@ automatic rpm provides and requires and macros that gem2rpm uses.
 
 Rails packaging support files.
 
+%package  -n ruby-packaging-helpers
+Requires:       %{name} = %{version}-%{release}
+
+Summary:        Ruby packaging helpers
+Group:          Development/Languages/Ruby
+
+%description  -n ruby-packaging-helpers
+This package is needed for (generated) ruby gems. It provides hooks for
+automatic rpm provides and requires and macros that gem2rpm uses.
+
+Some helper tools for packaging rubygems and rails apps.
+
 %prep
 
 %build
@@ -105,6 +119,8 @@ install -D -m 0644 %{S:13} %{buildroot}/usr/lib/rpm/fileattrs/gemfile.attr
 install -D -m 0755 %{S:14} %{buildroot}/usr/lib/rpm/gemfile.rb
 install -D -m 0644 %{S:15} %{buildroot}%{_rpmmacrodir}/macros.rails
 install -D -m 0755 %{S:16} %{buildroot}%{_bindir}/g2r
+install -D -m 0755 %{S:18} %{buildroot}%{_bindir}/irp
+install -D -m 0755 %{S:19} %{buildroot}%{_bindir}/bundler-dumpdeps
 install -D -m 0644 %{S:17} %{buildroot}/usr/lib/rpm/fileattrs/rubygems_bundled.attr
 
 %files
@@ -123,6 +139,11 @@ install -D -m 0644 %{S:17} %{buildroot}/usr/lib/rpm/fileattrs/rubygems_bundled.a
 /usr/lib/rpm/gem_packages.*
 %{_bindir}/ruby-find-versioned
 %{_bindir}/g2r
+
+%files -n ruby-packaging-helpers
+%defattr(-,root,root)
+%{_bindir}/irp
+%{_bindir}/bundler-dumpdeps
 
 %files rails
 %defattr(-,root,root)
