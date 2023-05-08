@@ -1,7 +1,7 @@
 #
 # spec file for package python-css-parser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-css-parser
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        CSS related utilities (parsing, serialization, etc) for python
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ebook-utils/css-parser
 Source:         https://github.com/ebook-utils/css-parser/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module setuptools}
 Requires:       python-chardet

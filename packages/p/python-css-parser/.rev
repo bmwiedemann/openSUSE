@@ -55,4 +55,14 @@
 - drop relax_error_msg_check.patch (upstream)</comment>
     <requestid>1007715</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc9d2421e65bf0f0e1a6e9371fb3042c</srcmd5>
+    <version>1.0.9</version>
+    <time>1683559445</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.9:
+  * replace deprecated use of cgi.parse_header 
+  * drop python 3.6 support</comment>
+    <requestid>1085335</requestid>
+  </revision>
 </revisionlist>
