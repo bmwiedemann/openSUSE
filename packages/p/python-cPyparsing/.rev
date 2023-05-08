@@ -57,4 +57,13 @@
     <comment></comment>
     <requestid>1032056</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1a45001795cad3eb577439a75dc23b53</srcmd5>
+    <version>2.4.7.1.2.1</version>
+    <time>1683559447</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.7.1.2.1
+  * Fix deprecation warning</comment>
+    <requestid>1085340</requestid>
+  </revision>
 </revisionlist>
