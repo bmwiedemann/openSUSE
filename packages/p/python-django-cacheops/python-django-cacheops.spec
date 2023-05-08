@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-cacheops
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-cacheops
-Version:        6.1
+Version:        7.0
 Release:        0
 Summary:        Django ORM cache with automatic granular event-driven invalidation
 License:        BSD-3-Clause
@@ -36,6 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module before-after}
+BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module django >= 1.8}
 BuildRequires:  %{python_module funcy >= 1.8}
 BuildRequires:  %{python_module pytest-django}
@@ -53,6 +54,7 @@ filesystem for simple time-invalidated one.
 
 %prep
 %setup -q -n django-cacheops-%{version}
+sed -i -e 's,import mock,from unittest import mock,' tests/tests.py
 
 %build
 %python_build

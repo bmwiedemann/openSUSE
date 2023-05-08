@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  7 19:08:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0:
+  * support Django 4.2b and 5.0a
+  * added a new insideout mode made join invalidation more granular
+  * dropped Python 3.5, 3.6 and Django 2.1, 2.2, 3.0 and 3.1
+    support
+  * removed CACHEOPS_LRU
+  * support Python 3.11 and Django 4.1
+  * added command to clear stale cacheops keys (Bruno Alla)
+  * fixed `invalidate_m2o` for polymorphic models
+  * updated README: TOC, link to the post, some explanations
+
+-------------------------------------------------------------------
 Tue Nov 22 12:14:53 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six dependency 
