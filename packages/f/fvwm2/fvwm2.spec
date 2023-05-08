@@ -33,6 +33,7 @@ Patch1:         fvwm-2.5.26-sv_SE.patch
 Patch2:         fvwm-no-date-time.patch
 Patch3:         enable-more-mouse-buttons.patch
 Patch4:         fvwm-FvwmAuto-overflow.patch
+Patch5:         threadlocking.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel

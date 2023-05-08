@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 07:30:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch threadlocking.patch
+  * Fix for lock recusion in handle_all_expose() to handle if
+    libX11 1.8.1 and above enables X display locks unconditionnaly
+
+-------------------------------------------------------------------
 Tue Jan 31 14:22:50 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Fix a buffer overflow in the FvwmAuto module.
