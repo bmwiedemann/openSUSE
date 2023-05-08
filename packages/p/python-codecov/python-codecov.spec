@@ -1,7 +1,7 @@
 #
 # spec file for package python-codecov
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-codecov
-Version:        2.1.12
+Version:        2.1.13
 Release:        0
 Summary:        Hosted coverage reports
 License:        Apache-2.0

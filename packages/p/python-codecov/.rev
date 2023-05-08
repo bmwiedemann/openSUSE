@@ -93,4 +93,14 @@
   - Bump coverage from 5.2.1 to 5.3</comment>
     <requestid>914826</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>495e727c3fe3c7f89c7279d724e3f2b0</srcmd5>
+    <version>2.1.13</version>
+    <time>1683559443</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.13:
+  * Add deprecation notice
+  * Add migration guide link</comment>
+    <requestid>1085333</requestid>
+  </revision>
 </revisionlist>
