@@ -1,0 +1,103 @@
+From 80e68995b745a5900eaaa1d0c424d3a9d354e42d Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Thu, 4 May 2023 19:14:29 +0200
+Subject: [PATCH] all: Drop xmlRecoverMemory
+
+use xmlReadMemory, also use NONET flat
+---
+ libgupnp/gupnp-control-point.c        | 6 +++++-
+ libgupnp/gupnp-service-info.c         | 6 +++++-
+ libgupnp/gupnp-service-proxy-action.c | 7 ++++++-
+ libgupnp/gupnp-service-proxy.c        | 6 +++++-
+ libgupnp/gupnp-service.c              | 6 +++++-
+ 5 files changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/libgupnp/gupnp-control-point.c b/libgupnp/gupnp-control-point.c
+index 4bce2fe..d4b4472 100644
+--- a/libgupnp/gupnp-control-point.c
++++ b/libgupnp/gupnp-control-point.c
+@@ -630,7 +630,11 @@ got_description_url (GObject *source,
+                 body_data = g_bytes_get_data (body, &length);
+ 
+                 /* Parse response */
+-                xml_doc = xmlRecoverMemory (body_data, length);
++                xml_doc = xmlReadMemory (body_data,
++                                         length,
++                                         NULL,
++                                         NULL,
++                                         XML_PARSE_NONET | XML_PARSE_RECOVER);
+                 if (xml_doc) {
+                         doc = gupnp_xml_doc_new (xml_doc);
+ 
+diff --git a/libgupnp/gupnp-service-info.c b/libgupnp/gupnp-service-info.c
+index bee6c9c..5fb499d 100644
+--- a/libgupnp/gupnp-service-info.c
++++ b/libgupnp/gupnp-service-info.c
+@@ -564,7 +564,11 @@ get_scpd_document_finished (GObject *source,
+ 
+         gsize length;
+         gconstpointer data = g_bytes_get_data (bytes, &length);
+-        scpd = xmlRecoverMemory (data, length);
++        scpd = xmlReadMemory (data,
++                              length,
++                              NULL,
++                              NULL,
++                              XML_PARSE_NONET | XML_PARSE_RECOVER);
+         if (scpd == NULL) {
+                 g_task_return_new_error (task,
+                                          GUPNP_SERVER_ERROR,
+diff --git a/libgupnp/gupnp-service-proxy-action.c b/libgupnp/gupnp-service-proxy-action.c
+index 0e238de..aa61ad6 100644
+--- a/libgupnp/gupnp-service-proxy-action.c
++++ b/libgupnp/gupnp-service-proxy-action.c
+@@ -391,7 +391,12 @@ gupnp_service_proxy_action_check_response (GUPnPServiceProxyAction *action)
+         gconstpointer data;
+         gsize length;
+         data = g_bytes_get_data (action->response, &length);
+-        response = xmlRecoverMemory (data, length);
++        response = xmlReadMemory (data,
++                                  length,
++                                  NULL,
++                                  NULL,
++                                  XML_PARSE_NONET | XML_PARSE_RECOVER);
++
+         g_clear_pointer (&action->response, g_bytes_unref);
+ 
+         if (!response) {
+diff --git a/libgupnp/gupnp-service-proxy.c b/libgupnp/gupnp-service-proxy.c
+index 24d2bdd..9313500 100644
+--- a/libgupnp/gupnp-service-proxy.c
++++ b/libgupnp/gupnp-service-proxy.c
+@@ -1048,7 +1048,11 @@ server_handler (G_GNUC_UNUSED SoupServer *soup_server,
+                 soup_server_message_get_request_body (msg);
+ 
+         /* Parse the actual XML message content */
+-        doc = xmlRecoverMemory (request_body->data, request_body->length);
++        doc = xmlReadMemory (request_body->data,
++                             request_body->length,
++                             NULL,
++                             NULL,
++                             XML_PARSE_NONET | XML_PARSE_RECOVER);
+         if (doc == NULL) {
+                 /* Failed */
+                 g_warning ("Failed to parse NOTIFY message body");
+diff --git a/libgupnp/gupnp-service.c b/libgupnp/gupnp-service.c
+index 4c491ee..c12866c 100644
+--- a/libgupnp/gupnp-service.c
++++ b/libgupnp/gupnp-service.c
+@@ -417,7 +417,11 @@ control_server_handler (SoupServer *server,
+                 *end = '\0';
+ 
+         /* Parse action_node */
+-        doc = xmlRecoverMemory (request_body->data, request_body->length);
++        doc = xmlReadMemory (request_body->data,
++                             request_body->length,
++                             NULL,
++                             NULL,
++                             XML_PARSE_NONET | XML_PARSE_RECOVER);
+         if (doc == NULL) {
+                 soup_server_message_set_status (msg,
+                                                 SOUP_STATUS_BAD_REQUEST,
+-- 
+GitLab
+

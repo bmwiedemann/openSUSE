@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  6 19:20:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patch: 80e68995.patch: all: Drop xmlRecoverMemory.
+  Use xmlReadMemory, also use NONET flat.
+
+-------------------------------------------------------------------
 Fri Apr 21 14:46:02 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Update license tag to LGPL-2.1-or-later.
