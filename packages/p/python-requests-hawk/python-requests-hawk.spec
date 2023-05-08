@@ -1,8 +1,7 @@
 #
 # spec file for package python-requests-hawk
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017 The openSUSE Project.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-hawk
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        Hawk authentication strategy for the requests python library
 License:        Apache-2.0
@@ -59,6 +57,7 @@ across mozilla services projects.
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/requests_hawk
+%{python_sitelib}/requests_hawk-%{version}*-info
 
 %changelog

@@ -54,4 +54,15 @@
   * Allow for app mohawk sender parameter configuration.</comment>
     <requestid>897756</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>459834b85ce6b7b34c34302e73f09325</srcmd5>
+    <version>1.2.1</version>
+    <time>1683559514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1: Add support for ext external data string
+  (gh#mozilla-services/requests-hawk#34)
+- Fix rpmlint warnings.
+</comment>
+    <requestid>1085519</requestid>
+  </revision>
 </revisionlist>

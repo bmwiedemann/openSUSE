@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 12:13:51 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.2.1: Add support for ext external data string
+  (gh#mozilla-services/requests-hawk#34)
+- Fix rpmlint warnings.
+
+-------------------------------------------------------------------
 Sat Jun  5 20:37:41 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.1.1:
