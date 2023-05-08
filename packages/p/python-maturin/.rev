@@ -799,4 +799,41 @@
 - Drop vendor-update-ahash-dependency.patch</comment>
     <requestid>1078139</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6d092a127de4d56de0195732c6703507</srcmd5>
+    <version>0.15.1</version>
+    <time>1683559485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.15.1:
+  * Use shlex to split MATURIN_SETUP_ARGS
+    gh#PyO3/maturin#1595
+  * Fix finding interpreters from bundled sysconfigs
+    gh#PyO3/maturin#1598
+- Changes in v0.15.0:
+  * Feature gate zig and xwin based cross compiling
+    gh#PyO3/maturin#1324
+  * Feature gate maturin new and maturin init commands
+    gh#PyO3/maturin#1330
+  * Build with --no-default-features
+    gh#PyO3/maturin#1333
+  * Support SOURCE_DATE_EPOCH environment variable in wheel
+    building
+    gh#PyO3/maturin#1334
+  * Remove deprecated config options
+    gh#PyO3/maturin#1335
+  * cargo deny multiple crate versions
+    gh#PyO3/maturin#1336
+  * Replace rpassword with dialoguer
+    gh#PyO3/maturin#1338
+  * Fix sdist when all Cargo workspace members are excluded
+    gh#PyO3/maturin#1343
+  * Update normpath to 1.0.0
+    gh#PyO3/maturin#1348
+  * Update bundled Linux sysconfig
+    gh#PyO3/maturin#1349
+  * Allow Rust crate to be placed outside of the directory
+    containing pyproject.toml
+    gh#PyO3/maturin#1347</comment>
+    <requestid>1085456</requestid>
+  </revision>
 </revisionlist>
