@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May  4 20:43:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.0:
+  * When the C extension for wrapt was being used, and a property
+    was used on an object proxy wrapping another object to intercept
+    access to an attribute of the same name on the wrapped object,
+    if the function implementing the property
+    raised an exception, then the exception was ignored and not
+    propagated back to the caller.
+  * Address issue where the post import hook mechanism of wrapt
+    wasn't transparent and left the __loader__ and __spec__.loader
+    attributes of a module as the wrapt import hook loader and
+    not the original loader.
+  * Address issues where a thread deadlock could occur within the
+    wrapt module import handler, when code executed from a post
+    import hook created a new thread and code executed in the
+    context of the new thread itself tried to register a post
+    import hook, or imported a new module.
+  * When using ``CallableObjectProxy`` as a wrapper for a type or
+    function and calling the wrapped object, it was not possible
+    to pass a keyword argument named ``self``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
