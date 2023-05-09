@@ -1581,4 +1581,13 @@
     <comment></comment>
     <requestid>1081253</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>5df8eda1ad70eb124f7b3c8d9c22b634</srcmd5>
+    <version>6.4.3</version>
+    <time>1683630484</time>
+    <user>dimstar_suse</user>
+    <comment>update to 6.4.3
+</comment>
+    <requestid>1085529</requestid>
+  </revision>
 </revisionlist>

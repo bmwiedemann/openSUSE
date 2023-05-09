@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  8 13:08:42 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- update to 6.4.3
+  * chg: declare environ (issue6812)
+  * chg: set CHGHG before connecting to command server
+  * delta-find: never do anything fancy when general delta is off
+  * delta-find: add a simple safeguard to prevent bad non-general-delta
+  * debug-delta: add minimal documentation for `devel.bundle-delta` option
+  * fix: highlight the required configuration and behavior of the fixer tools
+  * rhg: don't print copy source when --no-status is passed
+  * rhg: correctly relativize copy source path
+  * repo-upgrade: write new requirement before upgrading the dirstate
+  * backup: fix issue when the backup end up in a different directory
+
+-------------------------------------------------------------------
 Fri Apr 21 08:42:28 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 6.4.2:
