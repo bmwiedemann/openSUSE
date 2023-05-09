@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 15:40:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.11:
+  * Support Sphinx 7 and Python 3.11
+  * Allow Sphinx v6
+  * install versioneer
+  * remove OrderedDict
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

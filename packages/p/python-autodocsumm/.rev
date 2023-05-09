@@ -78,4 +78,16 @@
     <comment></comment>
     <requestid>1081989</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3b1f44b1518ef9a1075eb6552768508</srcmd5>
+    <version>0.2.10</version>
+    <time>1683630348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.11:
+  * Support Sphinx 7 and Python 3.11
+  * Allow Sphinx v6
+  * install versioneer
+  * remove OrderedDict</comment>
+    <requestid>1084782</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-autodocsumm
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ URL:            https://github.com/Chilipp/autodocsumm
 Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz#/autodocsumm-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioneer}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 2.2
