@@ -787,10 +787,10 @@ Prefer: -Catch2-2-devel
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python39
 Prefer: -python39-hotdoc
-Prefer: -python38-txt2tags -python39-txt2tags -python311-txt2tags
+Prefer: -python39-txt2tags -python311-txt2tags
 
 # have choice for python3-magic: python38-magic python38-python-magic
-Prefer: -python38-magic -python39-magic -python310-magic
+Prefer: -python39-magic -python310-magic
 
 # have choice for gcr-ssh-agent needed by libgcr-3-1: gcr-ssh-agent gcr3-ssh-agent
 Prefer: -gcr3-ssh-agent -gcr3-viewer
@@ -803,8 +803,11 @@ Prefer: chrony
 
 Prefer: -procps4
 
+# have choice for python39-sqlalchemy >= 1.4: python39-SQLAlchemy python39-SQLAlchemy1
+Prefer: -python39-SQLAlchemy1 -python310-SQLAlchemy1 -python311-SQLAlchemy1
+
 # have choice for (python36-qt5 or python36-PyQt6) needed by python36-pytest-qt
-Prefer: -python310-PyQt6 -python39-PyQt6 -python38-PyQt6 -python3-pyside2
+Prefer: -python310-PyQt6 -python39-PyQt6 -python3-pyside2
 Prefer: -python311-PyQt6
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
@@ -829,7 +832,6 @@ Prefer: -python38-html2text -python39-html2text -python310-html2text -python311-
 Prefer: -budgie-desktop
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: python38-tornado
 Prefer: python39-tornado
 Prefer: python310-tornado
 Prefer: python311-tornado
@@ -841,11 +843,8 @@ Prefer: -gnome-bluetooth-1
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
 
-# have choice for pkgconfig(libftdi): libftdi-devel libftdi0-devel
-Prefer: libftdi-devel
-
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: python38-sip-devel python39-sip-devel python310-sip-devel
+Prefer: python39-sip-devel python310-sip-devel
 Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
 Prefer: -python310-sip4 -python310-sip4-devel
@@ -857,10 +856,6 @@ Prefer: -pipewire-libjack-0_3-devel libjack0
 
 # have choice for python3-zeep >= 3.2.0: python310-softlayer-zeep python310-zeep
 Prefer: -python310-softlayer-zeep
-
-# There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: -python39-prompt_toolkit1 -python38-prompt_toolkit1 -python310-prompt_toolkit1
-Prefer: -python311-prompt_toolkit1
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
@@ -887,8 +882,7 @@ Prefer: -libomp15-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python311-jupyterlab -python38-jupyterlab -python39-jupyterlab
-Prefer: -python310-jupyter-client7 -python311-jupyter-client7 -python39-jupyter-client7 -python38-jupyter-client7
-Prefer: -jupyter-jupyter-client7
+Prefer: -python310-jupyter-client7 -python311-jupyter-client7 -python39-jupyter-client7
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
@@ -927,7 +921,7 @@ Prefer: -nunit3-devel
 
 # have choice for libz.so.1()(64bit) needed by gcc11: libz-ng-compat1 libz1
 # Pick the regular libz.so.1
-Prefer: -libz-ng-compat1 -zlib-ng-compat-devel -libz-ng-compat1-32bit
+Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
 
 # have choice for (distrobox if patterns-microos-desktop-common else toolbox) needed by patterns-containers-container_runtime: patterns-microos-desktop-common toolbox
 Prefer: -patterns-microos-desktop-common
@@ -1086,7 +1080,6 @@ Prefer: -libcelt-devel-32bit
 Prefer: -libcmocka-devel-32bit
 Prefer: -libcollection-devel-32bit
 Prefer: -libcom_err-devel-32bit
-Prefer: -libcrystalhd-devel-32bit
 Prefer: -libcurl-devel-32bit
 Prefer: -libdb-4_8-devel-32bit
 Prefer: -libdbi-devel-32bit
@@ -1252,18 +1245,14 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
-Prefer: ruby3.1-rubygem-fast_gettext
 Prefer: ruby3.2-rubygem-fast_gettext
-Prefer: -ruby3.1-rubygem-public_suffix-3.1
 Prefer: -ruby3.2-rubygem-public_suffix-3.1
-
-Prefer: -ruby3.1-rubygem-kramdown
 
 # We have opencv and opencv3 - as usual, the unversioned one should win
 Prefer: opencv-devel
 
 # python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python38-pytest python39-pytest python310-pytest
+Prefer: python39-pytest python310-pytest
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
@@ -2424,7 +2413,6 @@ BuildFlags: onlybuild:openssl-1_0_0
 BuildFlags: onlybuild:openssl-1_1
 BuildFlags: onlybuild:openssl-3
 BuildFlags: onlybuild:openvswitch
-BuildFlags: onlybuild:opie
 BuildFlags: onlybuild:opus
 BuildFlags: onlybuild:orc
 BuildFlags: onlybuild:oxygen-gtk2
@@ -2795,7 +2783,6 @@ BuildFlags: onlybuild:python-async_timeout
 BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-backports.entry_points_selectable
-BuildFlags: onlybuild:python-backports.zoneinfo
 BuildFlags: onlybuild:python:python-base
 BuildFlags: onlybuild:python-bcrypt
 BuildFlags: onlybuild:python-beniget
@@ -2820,6 +2807,7 @@ BuildFlags: onlybuild:python-constantly
 BuildFlags: onlybuild:python-construct
 BuildFlags: onlybuild:python-contextvars
 BuildFlags: onlybuild:python-contourpy
+BuildFlags: onlybuild:python-cookies
 BuildFlags: onlybuild:python-coverage
 BuildFlags: onlybuild:python-cppy
 BuildFlags: onlybuild:python-cryptography
@@ -2847,6 +2835,7 @@ BuildFlags: onlybuild:python-filelock
 BuildFlags: onlybuild:python-fixtures
 BuildFlags: onlybuild:python-flake8
 BuildFlags: onlybuild:python-flaky
+BuildFlags: onlybuild:python-flit
 BuildFlags: onlybuild:python-flit-core
 BuildFlags: onlybuild:python-flit-core:primary
 BuildFlags: onlybuild:python-flit-scm
@@ -2914,12 +2903,14 @@ BuildFlags: onlybuild:python-lexicon
 BuildFlags: onlybuild:python-libcst
 BuildFlags: onlybuild:python-libevdev
 BuildFlags: onlybuild:python-linecache2
+BuildFlags: onlybuild:python-linkify-it-py
 BuildFlags: onlybuild:python-lupa
 BuildFlags: onlybuild:python-lxml
-BuildFlags: onlybuild:python-magic
+BuildFlags: onlybuild:python-markdown-it-py
 BuildFlags: onlybuild:python-matplotlib
 BuildFlags: onlybuild:python-maxminddb
 BuildFlags: onlybuild:python-mccabe
+BuildFlags: onlybuild:python-mdurl
 BuildFlags: onlybuild:python-meson-python
 BuildFlags: onlybuild:python-mocket
 BuildFlags: onlybuild:python-more-itertools
@@ -2998,12 +2989,15 @@ BuildFlags: onlybuild:python-pytest
 BuildFlags: onlybuild:python-pytest-asyncio
 BuildFlags: onlybuild:python-pytest-benchmark
 BuildFlags: onlybuild:python-pytest-cov
+BuildFlags: onlybuild:python-pytest-datadir
 BuildFlags: onlybuild:python-pytest-django
 BuildFlags: onlybuild:python-pytest-expect
 BuildFlags: onlybuild:python-pytest-forked
 BuildFlags: onlybuild:python-pytest-freezegun
 BuildFlags: onlybuild:python-pytest-httpserver
+BuildFlags: onlybuild:python-pytest-localserver
 BuildFlags: onlybuild:python-pytest-mock
+BuildFlags: onlybuild:python-pytest-regressions
 BuildFlags: onlybuild:python-pytest-relaxed
 BuildFlags: onlybuild:python-pytest-rerunfailures
 BuildFlags: onlybuild:python-pytest-subtests
@@ -3029,6 +3023,7 @@ BuildFlags: onlybuild:python-readme_renderer
 BuildFlags: onlybuild:python-redis
 BuildFlags: onlybuild:python-regex
 BuildFlags: onlybuild:python-releases
+BuildFlags: onlybuild:python-responses
 BuildFlags: onlybuild:python-requests
 BuildFlags: onlybuild:python-requests-futures
 BuildFlags: onlybuild:python-requests-gssapi
@@ -3038,6 +3033,7 @@ BuildFlags: onlybuild:python-rfc3339-validator
 BuildFlags: onlybuild:python-rfc3986
 BuildFlags: onlybuild:python-rfc3986-validator
 BuildFlags: onlybuild:python-rfc3987
+BuildFlags: onlybuild:python-rich
 BuildFlags: onlybuild:python-rpm
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
@@ -3105,6 +3101,7 @@ BuildFlags: onlybuild:python-typing_extensions
 BuildFlags: onlybuild:python-typogrify
 BuildFlags: onlybuild:python-tzlocal
 BuildFlags: onlybuild:python-u-msgpack-python
+BuildFlags: onlybuild:python-uc-micro-py
 BuildFlags: onlybuild:python-uri-template
 BuildFlags: onlybuild:python-urllib3
 BuildFlags: onlybuild:python-uvloop
@@ -3169,7 +3166,6 @@ BuildFlags: onlybuild:rtkit
 BuildFlags: onlybuild:ruby
 BuildFlags: onlybuild:ruby-bundled-gems-rpmhelper
 BuildFlags: onlybuild:ruby-common
-BuildFlags: onlybuild:ruby3.1
 BuildFlags: onlybuild:ruby3.2
 BuildFlags: onlybuild:rubygem-asciidoctor
 BuildFlags: onlybuild:rubygem-gem2rpm
@@ -3436,7 +3432,6 @@ BuildFlags: onlybuild:yaml-cpp
 BuildFlags: onlybuild:yasm
 BuildFlags: onlybuild:yelp-tools
 BuildFlags: onlybuild:yelp-xsl
-BuildFlags: onlybuild:yodl
 BuildFlags: onlybuild:zbar
 BuildFlags: onlybuild:zchunk
 BuildFlags: onlybuild:zenity
@@ -3540,7 +3535,6 @@ Prefer: %{rb_default_ruby_suffix}-rubygem-inifile
 Prefer: %{rb_default_ruby_suffix}-rubygem-mini_portile2
 Prefer: %{rb_default_ruby_suffix}-rubygem-ronn
 Prefer: %{rb_default_ruby_suffix}-rubygem-rspec
-Prefer: -ruby3.1-rubygem-rspec-3_5
 Prefer: %{rb_default_ruby_suffix}-rubygem-ruby-dbus
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass
 Prefer: %{rb_default_ruby_suffix}-rubygem-sass-rails
