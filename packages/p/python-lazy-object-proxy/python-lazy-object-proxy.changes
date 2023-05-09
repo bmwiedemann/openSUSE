@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  5 13:42:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Added support for matrix multiplication operator (``@``).
+  * Should have all the wheels now (including the manylinux
+    ones).
+  * Bumped minimum version requirements for setuptools and
+    setuptools-scm.
+  * Switched the default pure python fallback implementation to
+    the "simple" one (when you ``from lazy_object_proxy import
+    Proxy`` and the C extension is not available).
+    Previously the "slots" implementation was used but as it
+    turns out it is slower on Python 3.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

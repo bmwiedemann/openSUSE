@@ -28,7 +28,7 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
@@ -36,8 +36,8 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/ionelmc/python-lazy-object-proxy
 Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy-object-proxy-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools_scm >= 3.3.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 45}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      python-lazy_object_proxy < %{version}-%{release}

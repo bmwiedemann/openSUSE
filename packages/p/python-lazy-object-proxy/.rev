@@ -142,4 +142,22 @@
     <comment></comment>
     <requestid>1082051</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fb405eb0f197aa34e81f24c6a4e57c12</srcmd5>
+    <version>1.9.0</version>
+    <time>1683630412</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.0:
+  * Added support for matrix multiplication operator (``@``).
+  * Should have all the wheels now (including the manylinux
+    ones).
+  * Bumped minimum version requirements for setuptools and
+    setuptools-scm.
+  * Switched the default pure python fallback implementation to
+    the &quot;simple&quot; one (when you ``from lazy_object_proxy import
+    Proxy`` and the C extension is not available).
+    Previously the &quot;slots&quot; implementation was used but as it
+    turns out it is slower on Python 3.</comment>
+    <requestid>1085123</requestid>
+  </revision>
 </revisionlist>
