@@ -185,4 +185,23 @@
     <comment></comment>
     <requestid>1081758</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ae28e674c0008afa1e6f97420fd21317</srcmd5>
+    <version>2.4.1</version>
+    <time>1683630364</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Attribute syntax for case insensitive flag
+    optionally allows a space, it does not require one.
+  * Update to support changes related to `:lang()` in
+    the official CSS spec. `:lang(&quot;&quot;)` should match unspecified
+  * languages, e.g. `lang=&quot;&quot;`, but not `lang=und`.
+  * Only `:is()` and `:where()` should allow forgiving
+    selector lists according to latest CSS (as far as Soup
+  * Sieve supports &quot;forgiving&quot; which is limited to empty
+    selectors).
+  * Formally drop Python 3.6.
+  * Formally declare support for Python 3.11.</comment>
+    <requestid>1084864</requestid>
+  </revision>
 </revisionlist>

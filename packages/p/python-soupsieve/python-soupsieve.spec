@@ -28,7 +28,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-soupsieve%{psuffix}
-Version:        2.3.2.post1
+Version:        2.4.1
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT
@@ -71,7 +71,8 @@ A modern CSS selector implementation for BeautifulSoup
 %files %{python_files}
 %license LICENSE.md
 %doc README.md
-%{python_sitelib}/soupsieve*
+%{python_sitelib}/soupsieve
+%{python_sitelib}/soupsieve-%{version}.dist-info
 %endif
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May  4 20:07:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Attribute syntax for case insensitive flag
+    optionally allows a space, it does not require one.
+  * Update to support changes related to `:lang()` in
+    the official CSS spec. `:lang("")` should match unspecified
+  * languages, e.g. `lang=""`, but not `lang=und`.
+  * Only `:is()` and `:where()` should allow forgiving
+    selector lists according to latest CSS (as far as Soup
+  * Sieve supports "forgiving" which is limited to empty
+    selectors).
+  * Formally drop Python 3.6.
+  * Formally declare support for Python 3.11.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
