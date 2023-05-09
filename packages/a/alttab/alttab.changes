@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  2 05:59:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * Show username in bottom line: -b 2.
+  * Option -ns to ignore _NET_WM_STATE_SKIP_TASKBAR.
+  * Better man page.
+  * Fix an "empty window name" check,
+  * Fix typographical errors.
+
+-------------------------------------------------------------------
 Thu Mar  9 06:49:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.0:

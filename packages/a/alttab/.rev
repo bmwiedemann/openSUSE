@@ -79,4 +79,12 @@
   * Prevent segfault on zero size tile or icon.</comment>
     <requestid>1070336</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>074ec8805c79c3679afe57b16d106391</srcmd5>
+    <version>1.7.1</version>
+    <time>1683630522</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1085623</requestid>
+  </revision>
 </revisionlist>
