@@ -17,9 +17,7 @@
 
 
 %define oldpython python
-# Remove Python 2 support from the msgpack/_cmsgpack
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-msgpack
 Version:        1.0.5
 Release:        0
