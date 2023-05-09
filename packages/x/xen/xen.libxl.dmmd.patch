@@ -110,7 +110,7 @@ Index: xen-4.17.0-testing/tools/libs/light/libxl_internal.h
 ===================================================================
 --- xen-4.17.0-testing.orig/tools/libs/light/libxl_internal.h
 +++ xen-4.17.0-testing/tools/libs/light/libxl_internal.h
-@@ -2071,6 +2071,10 @@ _hidden char *libxl__object_to_json(libx
+@@ -2072,6 +2072,10 @@ _hidden char *libxl__object_to_json(libx
  _hidden int libxl__cpuid_legacy(libxl_ctx *ctx, uint32_t domid, bool retore,
                                  libxl_domain_build_info *info);
  

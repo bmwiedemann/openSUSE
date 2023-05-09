@@ -230,7 +230,7 @@ Index: xen-4.17.0-testing/tools/libs/light/libxl_internal.h
 ===================================================================
 --- xen-4.17.0-testing.orig/tools/libs/light/libxl_internal.h
 +++ xen-4.17.0-testing/tools/libs/light/libxl_internal.h
-@@ -4012,6 +4012,7 @@ extern const libxl__device_type libxl__v
+@@ -4013,6 +4013,7 @@ extern const libxl__device_type libxl__v
  extern const libxl__device_type libxl__disk_devtype;
  extern const libxl__device_type libxl__nic_devtype;
  extern const libxl__device_type libxl__vtpm_devtype;

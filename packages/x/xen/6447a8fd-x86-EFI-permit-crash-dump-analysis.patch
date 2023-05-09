@@ -1,0 +1,64 @@
+Subject: x86: add support for crash dump analysis with xen.efi
+From: Juergen Gross jgross@suse.com Tue Apr 25 12:18:37 2023 +0200
+Date: Tue Apr 25 12:18:37 2023 +0200:
+Git: f514bab30ef8d4ade77a27c926e283c9bbbf9ffd
+
+Today it is not possible to analyse crash dumps of a system in
+hypervisor mode when it had been booted via EFI, as the crash utility
+doesn't understand the file format of xen.efi.
+
+This can easily be solved by creating an ELF file from xen.efi via
+objcopy. Using that file as name list for crash enables the user to
+analyse the dump in hypervisor mode. Note that crash isn't happy with
+a file containing no text and data, so using --only-keep-debug is not
+an option.
+
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/Makefile
++++ b/xen/Makefile
+@@ -502,9 +502,11 @@ _install: $(TARGET)$(CONFIG_XEN_INSTALL_
+ 	if [ -r $(TARGET).efi -a -n '$(EFI_DIR)' ]; then \
+ 		[ -d $(D)$(EFI_DIR) ] || $(INSTALL_DIR) $(D)$(EFI_DIR); \
+ 		$(INSTALL_DATA) $(TARGET).efi $(D)$(EFI_DIR)/$(T)-$(XEN_FULLVERSION).efi; \
+-		if [ -e $(TARGET).efi.map ]; then \
+-			$(INSTALL_DATA) $(TARGET).efi.map $(D)$(DEBUG_DIR)/$(T)-$(XEN_FULLVERSION).efi.map; \
+-		fi; \
++		for x in map elf; do \
++			if [ -e $(TARGET).efi.$$x ]; then \
++				$(INSTALL_DATA) $(TARGET).efi.$$x $(D)$(DEBUG_DIR)/$(T)-$(XEN_FULLVERSION).efi.$$x; \
++			fi; \
++		done; \
+ 		ln -sf $(T)-$(XEN_FULLVERSION).efi $(D)$(EFI_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION).efi; \
+ 		ln -sf $(T)-$(XEN_FULLVERSION).efi $(D)$(EFI_DIR)/$(T)-$(XEN_VERSION).efi; \
+ 		ln -sf $(T)-$(XEN_FULLVERSION).efi $(D)$(EFI_DIR)/$(T).efi; \
+@@ -539,6 +541,7 @@ _uninstall:
+ 	rm -f $(D)$(DEBUG_DIR)/$(T)-syms-$(XEN_FULLVERSION).map
+ 	rm -f $(D)$(EFI_DIR)/$(T)-$(XEN_FULLVERSION).efi
+ 	rm -f $(D)$(EFI_DIR)/$(T)-$(XEN_VERSION).$(XEN_SUBVERSION).efi
++	rm -f $(D)$(DEBUG_DIR)/$(T)-$(XEN_FULLVERSION).efi.elf
+ 	rm -f $(D)$(DEBUG_DIR)/$(T)-$(XEN_FULLVERSION).efi.map
+ 	rm -f $(D)$(EFI_DIR)/$(T)-$(XEN_VERSION).efi
+ 	rm -f $(D)$(EFI_DIR)/$(T).efi
+@@ -569,7 +572,7 @@ _clean:
+ 		-o -name '*.lex.c' -o -name '*.tab.[ch]' -o -name '*.c.cppcheck' \
+ 		-o -name "*.gcno" -o -name ".*.cmd" -o -name "lib.a" \) -exec rm -f {} \;
+ 	rm -f include/asm $(TARGET) $(TARGET).gz $(TARGET)-syms $(TARGET)-syms.map
+-	rm -f $(TARGET).efi $(TARGET).efi.map $(TARGET).efi.stripped
++	rm -f $(TARGET).efi $(TARGET).efi.map $(TARGET).efi.elf $(TARGET).efi.stripped
+ 	rm -f asm-offsets.s arch/*/include/asm/asm-offsets.h
+ 	rm -f .banner .allconfig.tmp include/xen/compile.h
+ 	rm -f cppcheck-misra.* xen-cppcheck.xml
+--- a/xen/arch/x86/Makefile
++++ b/xen/arch/x86/Makefile
+@@ -224,6 +224,9 @@ endif
+ 	      $(@D)/.$(@F).1r.o $(@D)/.$(@F).1s.o $(orphan-handling-y) $(note_file_option) -o $@
+ 	$(NM) -pa --format=sysv $(@D)/$(@F) \
+ 		| $(objtree)/tools/symbols --all-symbols --xensyms --sysv --sort >$(@D)/$(@F).map
++ifeq ($(CONFIG_DEBUG_INFO),y)
++	$(if $(filter --strip-debug,$(EFI_LDFLAGS)),:$(space))$(OBJCOPY) -O elf64-x86-64 $@ $@.elf
++endif
+ 	rm -f $(@D)/.$(@F).[0-9]* $(@D)/..$(@F).[0-9]*
+ ifeq ($(CONFIG_XEN_IBT),y)
+ 	$(SHELL) $(srctree)/tools/check-endbr.sh $@

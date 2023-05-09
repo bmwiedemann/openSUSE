@@ -1,0 +1,53 @@
+Subject: tools/libs/guest: assist gcc13's realloc analyzer
+From: Olaf Hering olaf@aepfle.de Wed May 3 15:06:41 2023 +0200
+Date: Wed May 3 15:06:41 2023 +0200:
+Git: 99a9c3d7141063ae3f357892c6181cfa3be8a280
+
+gcc13 fails to track the allocated memory in backup_ptes:
+
+xg_offline_page.c: In function 'backup_ptes':
+xg_offline_page.c:191:13: error: pointer 'orig' may be used after 'realloc' [-Werror=use-after-free]
+  191 |             free(orig);
+
+Assist the analyzer by slightly rearranging the code:
+In case realloc succeeds, the previous allocation is either extended
+or released internally. In case realloc fails, the previous allocation
+is left unchanged. Return an error in this case, the caller will
+release the currently allocated memory in its error path.
+
+http://bugzilla.suse.com/show_bug.cgi?id=1210570
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+Reviewed-by: Juergen Gross <jgross@suse.com>
+Compile-tested-by: Jason Andryuk <jandryuk@gmail.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+diff --git a/tools/libs/guest/xg_offline_page.c b/tools/libs/guest/xg_offline_page.c
+index ccd0299f0f..8f0a252417 100644
+--- a/tools/libs/guest/xg_offline_page.c
++++ b/tools/libs/guest/xg_offline_page.c
+@@ -181,18 +181,14 @@ static int backup_ptes(xen_pfn_t table_mfn, int offset,
+ 
+     if (backup->max == backup->cur)
+     {
+-        void *orig = backup->entries;
++        void *entries = realloc(backup->entries, backup->max * 2 *
++                                sizeof(struct pte_backup_entry));
+ 
+-        backup->entries = realloc(
+-            orig, backup->max * 2 * sizeof(struct pte_backup_entry));
+-
+-        if (backup->entries == NULL)
+-        {
+-            free(orig);
++        if (entries == NULL)
+             return -1;
+-        }
+-        else
+-            backup->max *= 2;
++
++        backup->entries = entries;
++        backup->max *= 2;
+     }
+ 
+     backup->entries[backup->cur].table_mfn = table_mfn;

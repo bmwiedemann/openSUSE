@@ -1,0 +1,58 @@
+Subject: xen: move CONFIG_DEBUG_INFO out of EXPERT section
+From: Juergen Gross jgross@suse.com Tue Apr 18 08:26:24 2023 +0200
+Date: Tue Apr 18 08:26:24 2023 +0200:
+Git: 14a9f07d99f314a86fc4e94d5e5577fbf3f8a3ef
+
+In order to support hypervisor analysis of crash dumps, xen-syms needs
+to contain debug_info. It should be allowed to configure the hypervisor
+to be built with CONFIG_DEBUG_INFO in non-debug builds without having
+to enable EXPERT.
+
+Using a rather oldish gcc (7.5) it was verified that code generation
+doesn't really differ between CONFIG_DEBUG_INFO on or off without
+CONFIG_DEBUG being set (only observed differences were slightly
+different symbol addresses, verified via "objdump -d", resulting from
+the different config.gz in the binary). The old gcc version selection
+was based on the assumption, that newer gcc won't regress in this
+regard.
+
+So move CONFIG_DEBUG_INFO out of the section guarded by EXPERT.
+
+It should be mentioned that there have been reports that the linking
+of the xen.efi might take considerably longer with CONFIG_DEBUG_INFO
+selected when using newer binutils.
+
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Tested-by: Dietmar Hahn <dietmar.hahn@fujitsu.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+diff --git a/xen/Kconfig.debug b/xen/Kconfig.debug
+index fad3050d4f..279dbe8274 100644
+--- a/xen/Kconfig.debug
++++ b/xen/Kconfig.debug
+@@ -28,13 +28,6 @@ config GDBSX
+ 	  If you want to enable support for debugging guests from dom0 via
+ 	  gdbsx then say Y.
+ 
+-config DEBUG_INFO
+-	bool "Compile Xen with debug info"
+-	default y
+-	---help---
+-	  If you say Y here the resulting Xen will include debugging info
+-	  resulting in a larger binary image.
+-
+ config FRAME_POINTER
+ 	bool "Compile Xen with frame pointers"
+ 	default DEBUG
+@@ -132,4 +125,11 @@ source "arch/$(SRCARCH)/Kconfig.debug"
+ 
+ endif # DEBUG || EXPERT
+ 
++config DEBUG_INFO
++	bool "Compile Xen with debug info"
++	default DEBUG
++	help
++	  If you say Y here the resulting Xen will include debugging info
++	  resulting in a larger binary image.
++
+ endmenu

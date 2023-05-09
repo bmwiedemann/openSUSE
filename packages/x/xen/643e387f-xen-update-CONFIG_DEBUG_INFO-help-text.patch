@@ -1,0 +1,33 @@
+Subject: xen: update CONFIG_DEBUG_INFO help text
+From: Juergen Gross jgross@suse.com Tue Apr 18 08:28:15 2023 +0200
+Date: Tue Apr 18 08:28:15 2023 +0200:
+Git: cbe828581b4a1717a4331b754c25a27a41d1bc58
+
+Update the help text of the CONFIG_DEBUG_INFO option to be a little
+bit more specific.
+
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+diff --git a/xen/Kconfig.debug b/xen/Kconfig.debug
+index 279dbe8274..94e818ee09 100644
+--- a/xen/Kconfig.debug
++++ b/xen/Kconfig.debug
+@@ -129,7 +129,15 @@ config DEBUG_INFO
+ 	bool "Compile Xen with debug info"
+ 	default DEBUG
+ 	help
+-	  If you say Y here the resulting Xen will include debugging info
+-	  resulting in a larger binary image.
++	  Say Y here if you want to build Xen with debug information. This
++	  information is needed e.g. for doing crash dump analysis of the
++	  hypervisor via the "crash" tool.
++	  Saying Y will increase the size of the xen-syms and xen.efi
++	  binaries. In case the space on the EFI boot partition is rather
++	  limited, you may want to install a stripped variant of xen.efi in
++	  the EFI boot partition (look for "INSTALL_EFI_STRIP" in
++	  docs/misc/efi.pandoc for more information - when not using
++	  "make install-xen" for installing xen.efi, stripping needs to be
++	  done outside the Xen build environment).
+ 
+ endmenu

@@ -28,7 +28,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.17.0-testing
+%define xen_build_dir xen-4.17.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -119,12 +119,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.17.0_06
+Version:        4.17.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.17.0-testing-src.tar.bz2
+Source0:        xen-4.17.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source3:        xen-utils-0.1.tar.bz2
@@ -155,27 +155,11 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         63a03b73-VMX-VMExit-based-BusLock-detection.patch
-Patch2:         63a03ba6-VMX-INTR_SHADOW_NMI-helper.patch
-Patch3:         63a03bce-VMX-Notify-VMExit.patch
-Patch4:         63a03e28-x86-high-freq-TSC-overflow.patch
-Patch5:         63c05478-VMX-calculate-model-specific-LBRs-once.patch
-Patch6:         63c05478-VMX-support-CPUs-without-model-specific-LBR.patch
-Patch7:         63d24e91-tools-xenstore-revert-simplify-loop-handling.patch
-Patch8:         63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
-Patch9:         63e53ac9-x86-CPUID-leaves-7-1-ecx-edx.patch
-Patch10:        63e53ac9-x86-disable-CET-SS-when-fractured-updates.patch
-Patch11:        63ebca9c-x86-spec-ctrl-Mitigate-Cross-Thread-Return-Address-Predictions.patch
-Patch12:        63f4d045-x86-ucode-AMD-apply-early-on-all-threads.patch
-Patch13:        63fe06e0-x86-ucode-AMD-apply-late-on-all-threads.patch
-Patch14:        640f3035-x86-altp2m-help-gcc13.patch
-Patch15:        641041e8-VT-d-constrain-IGD-check.patch
-Patch16:        64104238-bunzip-gcc13.patch
-Patch17:        6419697d-AMD-IOMMU-no-XT-x2APIC-phys.patch
-Patch18:        64199e0c-x86-shadow-account-for-log-dirty-mode.patch
-Patch19:        64199e0d-x86-HVM-bound-number-of-pca-regions.patch
-Patch20:        64199e0e-x86-HVM-serialize-pca-list-manipulation.patch
-Patch21:        64199e0f-x86-spec-ctrl-defer-CR4_PV32_RESTORE-for-CSTAR.patch
+Patch1:         63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdom.patch
+Patch2:         643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
+Patch3:         643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
+Patch4:         6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
+Patch5:         64525c61-tools-libs-guest-assist-gcc13s-realloc-analyzer.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
@@ -217,8 +201,7 @@ Patch404:       xl-conf-disable-autoballoon.patch
 Patch405:       xen-arch-kconfig-nr_cpus.patch
 Patch406:       suse-xendomains-service.patch
 Patch407:       replace-obsolete-network-configuration-commands-in-s.patch
-Patch408:       disable-building-pv-shim.patch
-Patch409:       ignore-ip-command-script-errors.patch
+Patch408:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch421:       vif-route.patch
@@ -231,7 +214,6 @@ Patch454:       xl-save-pc.patch
 Patch455:       pygrub-boot-legacy-sles.patch
 Patch456:       pygrub-handle-one-line-menu-entries.patch
 Patch457:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
-Patch460:       libxl.fix-guest-kexec-skip-cpuid-policy.patch
 Patch461:       libxl.max_event_channels.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
 Patch464:       libxl.pvscsi.patch
@@ -929,7 +911,6 @@ find %{buildroot} \( \
 	-name qemu-img-xen -o \
 	-name qemu-nbd-xen -o \
 	-name palcode-clipper -o \
-	-name xen-shim-syms -o \
 	-name "*.dtb" -o \
 	-name "openbios-*" -o \
 	-name "petalogix*" -o \

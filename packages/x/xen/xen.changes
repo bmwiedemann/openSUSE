@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu May  4 11:22:27 MDT 2023 - carnold@suse.com
+
+- bsc#1210570 - gcc-13 realloc use-after-free analysis error
+  64525c61-tools-libs-guest-assist-gcc13s-realloc-analyzer.patch
+
+-------------------------------------------------------------------
+Fri Apr 28 14:53:15 MDT 2023 - carnold@suse.com
+
+- bsc#1209237 - xen-syms doesn't contain debug-info
+  643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
+  643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
+  6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
+
+-------------------------------------------------------------------
+Thu Apr 27 11:40:25 MDT 2023 - carnold@suse.com
+
+- Update to Xen 4.17.1 bug fix release (bsc#1027519)
+  xen-4.17.1-testing-src.tar.bz2
+  * No upstream changelog found in sources or webpage
+- Dropped patches contained in new tarball
+  63a03b73-VMX-VMExit-based-BusLock-detection.patch
+  63a03ba6-VMX-INTR_SHADOW_NMI-helper.patch
+  63a03bce-VMX-Notify-VMExit.patch
+  63a03e28-x86-high-freq-TSC-overflow.patch
+  63c05478-VMX-calculate-model-specific-LBRs-once.patch
+  63c05478-VMX-support-CPUs-without-model-specific-LBR.patch
+  63d24e91-tools-xenstore-revert-simplify-loop-handling.patch
+  63e53ac9-x86-CPUID-leaves-7-1-ecx-edx.patch
+  63e53ac9-x86-disable-CET-SS-when-fractured-updates.patch
+  63ebca9c-x86-spec-ctrl-Mitigate-Cross-Thread-Return-Address-Predictions.patch
+  63f4d045-x86-ucode-AMD-apply-early-on-all-threads.patch
+  63fe06e0-x86-ucode-AMD-apply-late-on-all-threads.patch
+  640f3035-x86-altp2m-help-gcc13.patch
+  641041e8-VT-d-constrain-IGD-check.patch
+  64104238-bunzip-gcc13.patch
+  6419697d-AMD-IOMMU-no-XT-x2APIC-phys.patch
+  64199e0c-x86-shadow-account-for-log-dirty-mode.patch
+  64199e0d-x86-HVM-bound-number-of-pca-regions.patch
+  64199e0e-x86-HVM-serialize-pca-list-manipulation.patch
+  64199e0f-x86-spec-ctrl-defer-CR4_PV32_RESTORE-for-CSTAR.patch
+  libxl.fix-guest-kexec-skip-cpuid-policy.patch
+  xsa430.patch
+
+-------------------------------------------------------------------
+Tue Apr 11 09:36:33 MDT 2023 - carnold@suse.com
+
+- bsc#1210315 - VUL-0: CVE-2022-42335: xen: x86 shadow paging
+  arbitrary pointer dereference (XSA-430)
+  xsa430.patch
+
+-------------------------------------------------------------------
+Fri Mar 31 11:02:49 MDT 2023 - carnold@suse.com
+
+- Not building the shim is correctly handled by --disable-pvshim
+  Drop disable-building-pv-shim.patch
+
+-------------------------------------------------------------------
 Thu Mar 23 08:10:00 CET 2023 - jbeulich@suse.com
 
 - Upstream bug fixes (bsc#1027519)

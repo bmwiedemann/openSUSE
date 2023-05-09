@@ -2822,4 +2822,12 @@
     <comment>Security and Maintenance Update for Xen</comment>
     <requestid>1075603</requestid>
   </revision>
+  <revision rev="331" vrev="1">
+    <srcmd5>4bd8f4015680114c3b1a8220cc2921dd</srcmd5>
+    <version>4.17.1_02</version>
+    <time>1683630488</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.17.1 bug fix release. Additional fixes including fix for security bug bsc#1210315 CVE-2022-42335</comment>
+    <requestid>1085553</requestid>
+  </revision>
 </revisionlist>
