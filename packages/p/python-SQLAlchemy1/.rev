@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1085134</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bd70c91d2ebbf9c25fea8ee6f1a2f04d</srcmd5>
+    <version>1.4.46</version>
+    <time>1683630428</time>
+    <user>dimstar_suse</user>
+    <comment>- remove parallel testing, too unstable
+- readd provides which is needed to select between 1.x and 2.x</comment>
+    <requestid>1085288</requestid>
+  </revision>
 </revisionlist>

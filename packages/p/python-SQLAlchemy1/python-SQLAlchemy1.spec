@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-greenlet
+Provides:       python-sqlalchemy = %{version}
 Conflicts:      python-SQLAlchemy
 %if %{python_version_nodots} < 38
 Requires:       python-importlib-metadata
@@ -43,7 +44,6 @@ Requires:       python-importlib-metadata
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pytest >= 4.4.0}
-BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
 %python_subpackages
 
@@ -82,7 +82,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %check
 # One test fails on Python 3.6
 # packaging.version.InvalidVersion: Invalid version: 'SQLAlchemy'
-%pytest_arch %{?jobs:-n %jobs} -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
+%pytest_arch -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
 
 %files %{python_files}
 %license LICENSE

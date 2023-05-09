@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  6 15:46:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove parallel testing, too unstable
+- readd provides which is needed to select between 1.x and 2.x 
+
+-------------------------------------------------------------------
 Thu May  4 14:47:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - rename to SQLAlchemy1
