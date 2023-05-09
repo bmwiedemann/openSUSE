@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sh
-Version:        1.14.3
+Version:        2.0.3
 Release:        0
 Summary:        Python subprocess interface
 License:        MIT
 URL:            https://github.com/amoffat/sh
 Source:         https://files.pythonhosted.org/packages/source/s/sh/sh-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,13 +45,13 @@ function:
 sh is not a collection of system commands implemented in Python.
 
 %prep
-%setup -q -n sh-%{version}
+%autosetup -p1 -n sh-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,8 +60,8 @@ sh is not a collection of system commands implemented in Python.
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.md README.rst
-%{python_sitelib}/sh.py*
-%pycache_only %{python_sitelib}/__pycache__/sh.*py*
-%{python_sitelib}/sh-%{version}-*.egg-info
+%{python_sitelib}/sh.py
+%pycache_only %{python_sitelib}/__pycache__/sh.*pyc
+%{python_sitelib}/sh-%{version}*-info
 
 %changelog

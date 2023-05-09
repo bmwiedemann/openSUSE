@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  6 20:58:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 2.0.3:
+  List of changes is too long to enlist here, CHANGELOG.md is
+  packaged.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
