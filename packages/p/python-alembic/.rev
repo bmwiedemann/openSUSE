@@ -1538,4 +1538,41 @@
     fail to render, if using SQLAlchemy 2.0's version of variants.</comment>
     <requestid>1064239</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8a1a5342c6c3b2da1628c3a7df1b0089</srcmd5>
+    <version>1.10.4</version>
+    <time>1683630422</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.4:
+  * Added support for autogenerate comparison of indexes on
+    PostgreSQL which include SQL sort option, such as 
+    ``ASC`` or ``NULLS FIRST``.
+  * Fixed various typing issues observed with pyright, including
+    issues involving the combination of :class:`.Function` and
+    :meth:`.MigrationContext.begin_transaction`.
+  * Fixed error raised by alembic when running autogenerate after
+    removing a function based index.
+  * Fixed regression where Alembic would not run with older
+    SQLAlchemy 1.3 versions prior to 1.3.24 due to a 
+    missing symbol. Workarounds have been applied for older
+    1.3 versions.
+  * Fixed issue regarding PostgreSQL :class:`.ExcludeConstraint`,
+    where constraint elements which made use of :func:`.literal_column`
+    could not be rendered for autogenerate. Additionally, using SQLAlchemy
+    2.0.5 or greater, :func:`.text()` constructs are also supported within
+    PostgreSQL :class:`.ExcludeConstraint` objects for autogenerate render.
+  * Fixed issue in index detection where autogenerate change
+    detection would consider indexes with the same columns but with
+    different order as equal, while in general they are not equivalent
+    in how a database will use them.
+  * Recursive traversal of revision files in a particular
+    revision directory is now supported, by indicating 
+    ``recursive_version_locations = true`` in alembic.ini.
+  * Fixed issue where indexes on SQLite which include SQL
+    expressions would not compare correctly, generating false
+    positives under autogenerate. These indexes are now skipped,
+    generating a warning, in the same way that
+    expression-based indexes on PostgreSQL are skipped and</comment>
+    <requestid>1085181</requestid>
+  </revision>
 </revisionlist>
