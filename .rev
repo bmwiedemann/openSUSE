@@ -268,4 +268,14 @@
     * CN=Staat der Nederlanden EV Root CA O=Staat der Nederlanden</comment>
     <requestid>1084449</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1aa784ba35f77a1e9203ce2e4a77d744</srcmd5>
+    <version>2023.5.7</version>
+    <time>1683630434</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.5.7:
+  Added certs:
+  * CN=BJCA Global Root CA1 O=BEIJING CERTIFICATE AUTHORITY</comment>
+    <requestid>1085557</requestid>
+  </revision>
 </revisionlist>
