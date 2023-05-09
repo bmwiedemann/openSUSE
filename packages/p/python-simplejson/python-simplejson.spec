@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-simplejson
-Version:        3.18.1
+Version:        3.19.1
 Release:        0
 Summary:        Extensible JSON encoder/decoder for Python
 License:        AFL-2.1 OR MIT
