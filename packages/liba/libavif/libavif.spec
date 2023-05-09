@@ -1,7 +1,7 @@
 #
 # spec file for package libavif
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,8 +47,8 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(rav1e) >= 0.5.0
-
 %if %{with aom}
 BuildRequires:  pkgconfig(aom) >= 2.0.0
 %endif
