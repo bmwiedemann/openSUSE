@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           alsa-utils
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
