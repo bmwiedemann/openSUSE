@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 09 11:02:33 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.22.5
+- Remove `xml:lang="en"` from the screenshots in appdata.xml
+  (See: https://github.com/ximion/appstream/issues/494)
+- Improve regexp for parsing description out of of .mim files
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/440)
+- Setup tool: scale input method icons correctly
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/441)
+- Update emoji annotations from CLDR
+- Get version information of m17n-db
+  (Needed for test cases depending on the version of m17n-db)
+- Skip m17n_translit test cases when m17n-db is too old
+
+-------------------------------------------------------------------
 Mon Apr 24 14:04:41 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.22.4
