@@ -35,7 +35,11 @@ BuildRequires:  ant >= 1.6
 BuildRequires:  ant-apache-resolver
 BuildRequires:  antlr
 BuildRequires:  apache-commons-codec
+%if 0%{?rhel}
+BuildRequires:  docbook-style-xsl
+%else
 BuildRequires:  docbook-xsl-stylesheets
+%endif
 BuildRequires:  glassfish-jaxb-api
 BuildRequires:  hsqldb
 BuildRequires:  java-devel >= 1.8
@@ -129,7 +133,11 @@ ant  Docs.all \
     -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
     -Dbuild.sysclasspath=first \
     -Ddocbook.home=%{_datadir}/xml/docbook \
+%if 0%{?rhel}
+    -Ddocbookxsl.home=%{_datadir}/sgml/docbook/xsl-stylesheets
+%else
     -Ddocbookxsl.home=%{_datadir}/xml/docbook/stylesheet/nwalsh/current
+%endif    
 
 %install
 install -dm 755 %{buildroot}%{_javadir}/%{base_name}
