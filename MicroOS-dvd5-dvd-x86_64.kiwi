@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230507" schemaversion="4.1">
+<image name="OBS__MicroOS___20230508" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230507</productvar>
+      <productvar name="VERSION">20230508</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230507,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230508,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230507/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230508/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -868,12 +868,12 @@
       <repopackage name="libavahi-common3"/>
       <repopackage name="libavahi-core7"/>
       <repopackage name="libavahi-glib1"/>
-      <repopackage name="libavcodec59"/>
-      <repopackage name="libavfilter8"/>
-      <repopackage name="libavformat59"/>
+      <repopackage name="libavcodec60"/>
+      <repopackage name="libavfilter9"/>
+      <repopackage name="libavformat60"/>
       <repopackage name="libavif15"/>
       <repopackage name="libavtp0"/>
-      <repopackage name="libavutil57"/>
+      <repopackage name="libavutil58"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libbd_btrfs2"/>
@@ -985,6 +985,7 @@
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
+      <repopackage name="libdovi3"/>
       <repopackage name="libdrm2"/>
       <repopackage name="libdrm_amdgpu1"/>
       <repopackage name="libdrm_intel1"/>
@@ -1531,6 +1532,7 @@
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
+      <repopackage name="libplacebo264"/>
       <repopackage name="libplist-2_0-3"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
@@ -1548,7 +1550,7 @@
       <repopackage name="libportal-gtk3-1"/>
       <repopackage name="libportal-gtk4-1"/>
       <repopackage name="libportaudio2"/>
-      <repopackage name="libpostproc56"/>
+      <repopackage name="libpostproc57"/>
       <repopackage name="libpresage1"/>
       <repopackage name="libproc2-0"/>
       <repopackage name="libprocps8"/>
@@ -1753,8 +1755,8 @@
       <repopackage name="libsubid4"/>
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libSvtAv1Enc1"/>
-      <repopackage name="libswresample4_ff5"/>
-      <repopackage name="libswscale6"/>
+      <repopackage name="libswresample4"/>
+      <repopackage name="libswscale7"/>
       <repopackage name="libsynctex2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag1"/>

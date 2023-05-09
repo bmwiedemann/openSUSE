@@ -1595,19 +1595,15 @@
     <package name="libavahi-ui-gtk3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libavcodec58_134" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libavcodec59" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavcodec60" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavcodec60" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavdevice60" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libavfilter8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libavfilter9" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavfilter9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavformat58_76" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libavformat59" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavformat60" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavformat60" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavif15" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56_70" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libavutil57" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libavutil58" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libavutil58" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libb64-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1771,7 +1767,7 @@
     <package name="libdolphinvcs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdotconf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libdovi3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libdovi3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdrm2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_amdgpu1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_intel1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2396,7 +2392,7 @@
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libplacebo264" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="libplacebo264" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libplist-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libply-splash-core5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply-splash-graphics5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2418,8 +2414,7 @@
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportmidi2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpostproc55_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libpostproc56" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpostproc57" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libpostproc57" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2651,11 +2646,9 @@
     <package name="libsvn_auth_kwallet-1-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libswresample4_ff5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libswresample4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libswscale5_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
-    <package name="libswscale6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libswscale7" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libswscale7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
