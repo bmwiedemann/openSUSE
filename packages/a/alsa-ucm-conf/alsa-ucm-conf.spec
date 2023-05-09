@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-ucm-conf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause

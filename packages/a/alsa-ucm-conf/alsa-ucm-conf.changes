@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  8 08:49:05 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.9:
+  various profile updates for USB-audio, SOF and others.
+  For details, see:
+  https://www.alsa-project.org/wiki/Changes_v1.2.8_v1.2.9#alsa-ucm-conf
+
+-------------------------------------------------------------------
 Tue Oct 25 07:33:09 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.8:
