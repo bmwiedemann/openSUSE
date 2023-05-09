@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-markdown-it-py
 Version:        2.2.0
 Release:        0
