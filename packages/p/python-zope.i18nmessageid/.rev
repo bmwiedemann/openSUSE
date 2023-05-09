@@ -118,4 +118,15 @@ New dependecy of python-Pyramid</comment>
     <comment></comment>
     <requestid>1084330</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>407e65ac56d7adcb3b441f19af338b4b</srcmd5>
+    <version>6.0.1</version>
+    <time>1683630416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.1:
+  * Drop dependency on ``six``.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add preliminary support for Python 3.12a5.</comment>
+    <requestid>1085137</requestid>
+  </revision>
 </revisionlist>

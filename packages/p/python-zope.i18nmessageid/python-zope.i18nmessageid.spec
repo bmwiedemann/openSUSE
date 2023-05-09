@@ -25,8 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-zope.i18nmessageid%{psuffix}
-Version:        5.1.1
+Version:        6.0.1
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
@@ -39,7 +40,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
 BuildRequires:  python3-Sphinx
-Requires:       python-six
 # /SECTION
 # SECTION testing requirements
 %if %{with test}
