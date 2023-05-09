@@ -25,7 +25,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/waynerv/flask-mailman
 Source:         https://github.com/waynerv/flask-mailman/archive/refs/tags/v%{version}.tar.gz#/Flask-Mailman-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
