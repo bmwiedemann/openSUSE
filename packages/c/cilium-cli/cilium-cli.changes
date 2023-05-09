@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 09 05:17:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.2:
+  * Prepare for v0.14.2 release
+  * Revert "suite: disable KNP tests when endpoint routes and IPv6
+    are enabled"
+  * connectivity: Fix IPv6 skipping when EP routes are on
+  * connectivity: enable outside to nodeport via IPv6 when IPsec is
+    enabled
+  * Remove AKS Azure IPAM test coverage
+  * suite: disable KNP tests when endpoint routes and IPv6 are
+    enabled
+  * features: add RequireFeatureDisabled helper
+  * workflows: kind: run IPSec connectivity test in test-namespace
+  * connectivity: derive egress gateway node name instead of
+    hardcoding it
+  * connectivity: add basic egress gateway test
+  * connectivity: add support for CiliumEgressGatewayPolicy
+    resources
+  * connectivity: add echo-external deployment
+  * features: add support for probing the egress gateway feature
+  * go.mod, vendor: bump google.golang.org/grpc from 1.54.0 to
+    1.55.0
+  * Handle OCI repositories
+  * README.md: Add upgrade command samples
+  * Update stable release to v0.14.1
+
+-------------------------------------------------------------------
 Thu May 04 04:39:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.1:
