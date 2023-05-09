@@ -39,6 +39,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?sle15_python_module_pythons}
 Name:           python-pandas%{psuffix}
 Version:        1.5.3
 Release:        0
