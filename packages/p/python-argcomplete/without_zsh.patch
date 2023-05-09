@@ -1,0 +1,27 @@
+Index: argcomplete-3.0.8/test/test.py
+===================================================================
+--- argcomplete-3.0.8.orig/test/test.py
++++ argcomplete-3.0.8/test/test.py
+@@ -1299,22 +1299,6 @@ class TestBash(TestBashZshBase, unittest
+         self.test_simple_completion()
+ 
+ 
+-class TestZsh(TestBashZshBase, unittest.TestCase):
+-    expected_failures = [
+-        "test_parse_special_characters_dollar",
+-        "test_comp_point",  # FIXME
+-        "test_completion_environment",  # FIXME
+-        "test_continuation",  # FIXME
+-        "test_wordbreak_chars",  # FIXME
+-    ]
+-
+-    def test_parse_special_characters(self):
+-        pass  # FIXME: test crashes in teardown
+-
+-    def repl_provider(self):
+-        return zsh_repl()
+-
+-
+ @unittest.skipIf(BASH_MAJOR_VERSION < 4, "complete -D not supported")
+ class TestBashGlobal(TestBash):
+     install_cmd = 'eval "$(activate-global-python-argcomplete --dest=-)"'

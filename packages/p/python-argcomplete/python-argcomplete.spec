@@ -20,21 +20,22 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        2.0.0
+Version:        3.0.8
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
-Patch0:         skip_tcsh_tests.patch
 Patch1:         trim-test-deps.patch
-# PATCH-FIX-UPSTREAM without_fish.patch gh#kislyuk/argcomplete!410 mcepl@suse.com
-# Don't fail the test suite when fish is not available
-Patch2:         without_fish.patch
+# Don't fail the test suite when zsh is not available
+Patch2:         without_zsh.patch
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -68,8 +69,6 @@ resources over the network).
 %python_clone -a %{buildroot}%{_bindir}/python-argcomplete-check-easy-install-script
 rm -rf %{buildroot}%{python_sitelib}/test
 rm %{buildroot}%{_bindir}/activate-global-python-argcomplete
-# tcsh support is broken
-rm %{buildroot}%{_bindir}/python-argcomplete-tcsh
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -80,7 +79,7 @@ export LANG=en_US.UTF-8
   # https://github.com/kislyuk/argcomplete/issues/299
   sed -i -e "1s|#!.*python.*|#!%{_bindir}/$python|" test/prog scripts/*
   sed -i -e "s|python3 |$python |g" test/test.py
-  PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
+  PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m coverage run --source=argcomplete --omit=argcomplete/packages/_shlex.py ./test/test.py -v
 }
 
 %post

@@ -1,13 +1,13 @@
-Index: argcomplete-1.12.3/setup.py
+Index: argcomplete-3.0.8/setup.py
 ===================================================================
---- argcomplete-1.12.3.orig/setup.py
-+++ argcomplete-1.12.3/setup.py
-@@ -4,7 +4,7 @@ import glob
- from setuptools import setup, find_packages
+--- argcomplete-3.0.8.orig/setup.py
++++ argcomplete-3.0.8/setup.py
+@@ -5,7 +5,7 @@ import glob
+ from setuptools import find_packages, setup
  
  install_requires = []
--tests_require = ["coverage", "flake8", "pexpect", "wheel"]
+-tests_require = ["coverage", "pexpect", "wheel", "ruff", "mypy"]
 +tests_require = ["pexpect"]
- importlib_backport_requires = ["importlib-metadata >= 0.23, < 5"]
+ importlib_backport_requires = ["importlib-metadata >= 0.23, < 7"]
  
  setup(

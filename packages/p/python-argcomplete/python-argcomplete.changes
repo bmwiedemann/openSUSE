@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri May  5 11:23:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add without_zsh.patch
+- Delete skip_tcsh_tests.patch
+- Delete without_fish.patch
+- Update to 3.0.8:
+  * Test suite shell wrapper: Accept OSError on exit
+- 3.0.7:
+  * Test suite: Use general regex to cut zsh reset ANSI sequences (#425)
+- 3.0.6:
+  * Allow importlib-metadata 6.x; skip test failures on Python 3.7 (#420, #424)
+    * Note completers can return iterables of strings, not just lists (#422)
+    * Documentation and test improvements
+- 3.0.5:
+  * Call _default as fallback in zsh global completion hook
+    * Begin support for mapping-emitting completers
+- 3.0.4:
+  * activate-global-python-argcomplete: do not overwrite existing dotfile in user directory
+  * Add NOTICE file
+  * Establish long term name for split_line as argcomplete.lexers.split_line
+- 3.0.3:
+  * Re-add split_line to API (#419)
+- 3.0.2:
+  * Fix zsh default completion issues
+- 3.0.1:
+  * Fix zsh autoload issues
+- 3.0.0:
+  * Fully support zsh. Argcomplete now supports completion
+    descriptions and global completion in zsh.
+  * Clean up top level namespace.
+  * Documentation and test improvements.
+- 2.1.2:
+  * Test infrastructure improvements
+  * Indicate that there is no support commitment for fish and tcsh shells
+- 2.1.1:
+  * Documentation and test improvements
+- 2.1.0:
+  * Remove scripts for contrib-supported shells from global namespace
+- 2.0.6:
+  * setup.py: exclude test.* subpackages from find_packages (#406)
+  * Support PowerShell (#405)
+  * CI updates
+- 2.0.5:
+  * Revert "Support powershell (#392)"
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
