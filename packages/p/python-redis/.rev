@@ -324,4 +324,12 @@
     + Check for none, prior to raising exception (#2569)</comment>
     <requestid>1080032</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e3ffd4f2e796a7b3db377dd705b1cdb7</srcmd5>
+    <version>4.5.4</version>
+    <time>1683630463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085447</requestid>
+  </revision>
 </revisionlist>

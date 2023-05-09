@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-redis
 Version:        4.5.4
 Release:        0
