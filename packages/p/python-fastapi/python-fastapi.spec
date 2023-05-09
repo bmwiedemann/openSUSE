@@ -40,10 +40,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Flask >= 1.1.2}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
-BuildRequires:  %{python_module SQLAlchemy >= 1.3.18}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module python-multipart >= 0.0.5}
+BuildRequires:  %{python_module sqlalchemy >= 1.3.18 with %python-sqlalchemy < 2.0}
 BuildRequires:  %{python_module trio}
 %if !%{with ringdisabled}
 BuildRequires:  %{python_module aiosqlite}

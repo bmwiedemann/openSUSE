@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  6 15:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- test against sqlalchemy 1.x 
+
+-------------------------------------------------------------------
 Fri Apr 14 04:20:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.95.1:

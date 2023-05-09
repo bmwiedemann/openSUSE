@@ -187,4 +187,12 @@
   * Remove unknown classifiers.</comment>
     <requestid>1079329</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8f1b4e0e001c0f3760eea1ee01c258e5</srcmd5>
+    <version>0.95.1</version>
+    <time>1683630425</time>
+    <user>dimstar_suse</user>
+    <comment>- test against sqlalchemy 1.x</comment>
+    <requestid>1085243</requestid>
+  </revision>
 </revisionlist>
