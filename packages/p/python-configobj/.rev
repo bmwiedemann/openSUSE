@@ -155,4 +155,16 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
     <comment></comment>
     <requestid>1081963</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0a3672d3feced1e61f12db6ac1714244</srcmd5>
+    <version>5.0.8</version>
+    <time>1683630351</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.8:
+  * 5.0.7 originally did this work, but 5.0.8 fixes a regression
+  * update testing to validate against python version 2.7 and
+    3.5-3.11
+  * update broken links / non-existent services and references</comment>
+    <requestid>1084843</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-configobj
-Version:        5.0.6
+Version:        5.0.8
 Release:        0
 Summary:        Config file reading, writing and validation
 License:        BSD-3-Clause
@@ -70,12 +70,8 @@ It has lots of other features though:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/configobj.py*
-%{python_sitelib}/validate.py*
-%{python_sitelib}/_version.py*
-%pycache_only %{python_sitelib}/__pycache__/configobj.*.py*
-%pycache_only %{python_sitelib}/__pycache__/validate.*.py*
-%pycache_only %{python_sitelib}/__pycache__/_version.*.py*
+%{python_sitelib}/configobj
+%{python_sitelib}/validate
 %{python_sitelib}/configobj-%{version}-py*.egg-info
 
 %changelog

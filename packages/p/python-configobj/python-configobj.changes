@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 18:56:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.8:
+  * 5.0.7 originally did this work, but 5.0.8 fixes a regression
+  * update testing to validate against python version 2.7 and
+    3.5-3.11
+  * update broken links / non-existent services and references
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
