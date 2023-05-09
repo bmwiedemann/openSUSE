@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 18 03:10:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.02
+   see /usr/share/doc/packages/perl-User-Identity/ChangeLog
+
+  version 1.02: Mon 17 Apr 10:40:50 CEST 2023
+
+  	Changes:
+  	- Collections use ordered hash to generate reproducable
+  	  results.  Github issue 15 on Mail::Message [Geoffrey D. Bennett]
+
+-------------------------------------------------------------------
 Sat Feb 12 03:08:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.01

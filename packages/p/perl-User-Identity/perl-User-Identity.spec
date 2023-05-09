@@ -1,7 +1,7 @@
 #
 # spec file for package perl-User-Identity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,18 @@
 
 %define cpan_name User-Identity
 Name:           perl-User-Identity
-Version:        1.01
+Version:        1.02
 Release:        0
-Summary:        Maintain info about a physical person
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Collect information about a user
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Hash::Ordered) >= 0.014
+Requires:       perl(Hash::Ordered) >= 0.014
 %{perl_requires}
 
 %description
