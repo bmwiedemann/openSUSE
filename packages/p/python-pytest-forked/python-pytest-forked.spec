@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-forked
 Version:        1.6.0
 Release:        0
