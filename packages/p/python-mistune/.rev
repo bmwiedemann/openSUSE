@@ -147,4 +147,14 @@
     <comment></comment>
     <requestid>1081861</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3bbc16d8b068bb0aa28f4e2412030e37</srcmd5>
+    <version>2.0.5</version>
+    <time>1683630356</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.5:
+  * Improve on parsing list. Make it possible to customize list
+    regex</comment>
+    <requestid>1084850</requestid>
+  </revision>
 </revisionlist>

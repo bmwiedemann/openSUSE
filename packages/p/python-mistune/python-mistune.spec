@@ -21,7 +21,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause
@@ -30,7 +30,6 @@ URL:            https://github.com/lepture/mistune
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
