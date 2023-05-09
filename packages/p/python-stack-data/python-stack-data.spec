@@ -18,15 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stack-data
-Version:        0.2.0
+Version:        0.6.2
 Release:        0
 Summary:        Extract data from python stack frames and tracebacks
 License:        MIT
 URL:            https://github.com/alexmojaki/stack_data
 Source:         https://files.pythonhosted.org/packages/source/s/stack_data/stack_data-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 29-Pygments-2-12.patch gh#alexmojaki/stack_data#29 mcepl@suse.com
-# Make the package compatible with Pygments 2.12.
-Patch0:         29-Pygments-2-12.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
