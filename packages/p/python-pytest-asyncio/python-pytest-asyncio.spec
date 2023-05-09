@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-asyncio%{psuffix}
-Version:        0.20.3
+Version:        0.21.0
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
@@ -39,7 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 6.1.0
+Requires:       python-pytest >= 7.0.0
 %if 0%{?python_version_nodots} < 38
 Requires:       python-typing-extensions >= 3.7.2
 %endif
@@ -48,7 +48,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module async_generator >= 1.3}
 BuildRequires:  %{python_module flaky >= 3.5.0}
 BuildRequires:  %{python_module hypothesis >= 5.7.1}
-BuildRequires:  %{python_module pytest >= 6.1.0}
+BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module pytest-asyncio = %{version}}
 BuildRequires:  %{python_module pytest-trio >= 0.7}
 %endif

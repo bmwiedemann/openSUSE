@@ -147,4 +147,16 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>1082442</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>857a5324b70f5af02417aa8280ac8277</srcmd5>
+    <version>0.21.0</version>
+    <time>1683630387</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.0:
+  * Drop compatibility with pytest 6.1. Pytest-asyncio now
+    depends on pytest 7.0 or newer.
+  * pytest-asyncio cleans up any stale event loops when setting
+    up and tearing down the event_loop fixture.</comment>
+    <requestid>1084898</requestid>
+  </revision>
 </revisionlist>

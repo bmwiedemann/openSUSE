@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 22:36:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.0:
+  * Drop compatibility with pytest 6.1. Pytest-asyncio now
+    depends on pytest 7.0 or newer.
+  * pytest-asyncio cleans up any stale event loops when setting
+    up and tearing down the event_loop fixture.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
