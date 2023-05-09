@@ -82,4 +82,16 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>905641</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3f5cfaaa21097e3d36a8391db915f80d</srcmd5>
+    <version>6.0</version>
+    <time>1683630420</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Fix crash when the environment variable `PYTHONOPTIMIZED` is
+    set to `2` and docstrings are set to `None` by the interpreter.
+  * Add support for Python 3.10 and 3.11.</comment>
+    <requestid>1085176</requestid>
+  </revision>
 </revisionlist>

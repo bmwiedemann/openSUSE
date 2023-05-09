@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,13 +27,12 @@
 %bcond_with test
 %endif
 Name:           python-zope.component%{psuffix}
-Version:        5.0.1
+Version:        6.0
 Release:        0
-
 Summary:        Zope Component Architecture
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-URL:            http://www.python.org/pypi/zope.component
+URL:            https://github.com/zopefoundation/zope.component
 Source:         https://files.pythonhosted.org/packages/source/z/zope.component/zope.component-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

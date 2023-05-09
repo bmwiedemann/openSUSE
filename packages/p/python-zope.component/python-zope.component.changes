@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  5 14:22:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0:
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Fix crash when the environment variable `PYTHONOPTIMIZED` is
+    set to `2` and docstrings are set to `None` by the interpreter.
+  * Add support for Python 3.10 and 3.11.
+
+-------------------------------------------------------------------
 Sat Jul 10 00:31:03 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 5.0.1
