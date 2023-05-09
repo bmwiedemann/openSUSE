@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun May  7 05:41:11 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.17.16:
+  Translations
+  * Updated translations: British English, French, Italian
+  WML Engine
+  * Fixed a crash when encountering a scenario with missing sides
+- Changes in 1.17.15
+  Multiplayer
+  * The game no longer crashes when using "Back To Turn" after
+    the game has ended in multiplayer
+  Translations
+  * Updated translations: British English, Bulgarian, Czech,
+   French, Spanish, Turkish
+  User interface
+  * The "Back To Turn" menu now replays the turn in singelplayer
+    too. However, the Continue button can be used to resume the
+    game from any given position.
+  WML Engine
+  * Added support for [effect] apply_to=level
+  Miscellaneous and Bug Fixes
+  * The replay viewer now also replays victory/defeat events
+    properly
+  * Fixes undo stack getting corrupted by reloading
+  * Removed unused --color switch from wesnoth_addon_manager
+
+-------------------------------------------------------------------
 Tue Mar 21 21:32:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.14:
