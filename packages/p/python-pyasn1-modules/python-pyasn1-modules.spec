@@ -19,16 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pyasn1-modules
-Version:        0.2.8
+Version:        0.3.0
 Release:        0
 Summary:        Collection of protocols modules written in ASN.1 language
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/etingof/pyasn1-modules
-Source:         https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1-modules-%{version}.tar.gz
+URL:            https://github.com/pyasn1/pyasn1-modules
+Source:         https://files.pythonhosted.org/packages/source/p/pyasn1-modules/pyasn1_modules-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyasn1 >= 0.4.7}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyasn1 >= 0.4.7
@@ -42,13 +43,13 @@ then generalized to be suitable for a wide range of protocols based on ASN.1
 specification.
 
 %prep
-%setup -q -n pyasn1-modules-%{version}
+%setup -q -n pyasn1_modules-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,6 @@ specification.
 %license LICENSE.txt
 %doc CHANGES.txt README.md
 %{python_sitelib}/pyasn1_modules
-%{python_sitelib}/pyasn1_modules-%{version}-py*.egg-info
+%{python_sitelib}/pyasn1_modules-%{version}.dist-info
 
 %changelog

@@ -241,4 +241,41 @@
     <comment></comment>
     <requestid>1081815</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>826ca3ef37dc9e8a7e93795602901833</srcmd5>
+    <version>0.3.0</version>
+    <time>1683630357</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * Added support for Python 3.8, 3.9, 3.10, 3.11
+  * Removed support for EOL Pythons 2.4, 2.5, 2.6, 3.2, 3.3, 3.4,
+    3.5
+  * Added support for PyPy 3.7, 3.8, 3.9
+  * Modernized packaging and testing. pyasn1-modules now uses
+    ``setup.cfg``, ``pyproject.toml``,
+  * PyPI package ownership for `pyasn1` and `pyasn1-module` has
+    been transfered to *Christian Heimes* and *Simon Pichugin* in
+  * The upstream repositories for `pyasn1` and `pyasn1-modules`
+    are now in the GitHub organization https://github.com/pyasn1/.
+  * Added tox runner with a handful of basic jobs
+  * Add RFC3125 providing Electronic Signature Policies
+  * Add RFC5126 providing CMS Advanced Electronic Signatures
+  * Improve test routines for RFC5126
+  * Add RFC4387 providing Certificate Store Access via HTTP
+  * Changed assertion in unit tests from Python built-in to
+    `unittest` provided
+  * Add RFC8692 providing Algorithm Identifiers for RSASSA-PSS
+    and ECDSA Using SHAKEs
+  * Add RFC5753 providing CMS Elliptic Curve Cryptography
+    Algorithms
+  * Add RFC3820 providing Proxy Certificates
+  * Add RFC3370 providing Cryptographic Message Syntax (CMS)
+    Algorithms
+  * Add RFC3537 providing HMAC Key Wrapping
+  * Add RFC3739 providing Qualified Certificates
+  * Add RFC2876 providing KEA and SKIPJACK for CMS
+  * Add RFC3058 providing IDEA Encryption Algorithm for CMS
+  * Add RFC3657 providing Camellia Encryption Algorithm for CMS</comment>
+    <requestid>1084854</requestid>
+  </revision>
 </revisionlist>
