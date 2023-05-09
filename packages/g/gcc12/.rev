@@ -146,4 +146,13 @@ to release my review on the gcc package now.
     <comment>- Speed up builds with --enable-link-serialization. (forwarded request 1075289 from marxin)</comment>
     <requestid>1076406</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>75ea8cd2373456f7bb628e74fb3e711d</srcmd5>
+    <version>12.3.0+git1204</version>
+    <time>1683630504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 12.3 release, 0c61aa720e62f1baf0bfd178e283, git1204
+  * includes regression bug fixes</comment>
+    <requestid>1085554</requestid>
+  </revision>
 </revisionlist>

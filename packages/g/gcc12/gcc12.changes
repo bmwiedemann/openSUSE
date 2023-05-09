@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  8 12:58:20 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 12.3 release, 0c61aa720e62f1baf0bfd178e283, git1204
+  * includes regression bug fixes
+
+-------------------------------------------------------------------
 Wed Mar 29 14:27:43 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Speed up builds with --enable-link-serialization.
