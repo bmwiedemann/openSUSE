@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May  8 05:51:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 9.10:
+  * Fix external browser authentication with KDE plasma-nm < 5.26.
+  * Always redirect stdout to stderr when spawning external browser.
+  * Increase default queue length to 32 packets.
+  * Fix receiving multiple packets in one TLS frame, and single packets split across multiple TLS frames, for Array.
+  * Handle idiosyncratic variation in search domain separators for all protocols
+  * Support region selection field for Pulse authentication 
+  * Support modified configuration packet from Pulse 9.1R16 servers 
+  * Allow hidden form fields to be populated or converted to text fields on the command line
+  * Support yet another strange way of encoding challenge-based 2FA for GlobalProtect
+  * Add --sni option (and corresponding C and Java API functions) to allow domain-fronting connections in censored/filtered network environments
+  * Parrot a GlobalProtect server's software version, if present, as the client version (!333)
+  * Fix NULL pointer dereference that has left Android builds broken since v8.20 (!389).
+  * Fix Fortinet authentication bug where repeated SVPNCOOKIE causes segfaults (#514, !418).
+  * Support F5 VPNs which encode authentication forms only in JSON, not in HTML.
+  * Support simultaneous IPv6 and Legacy IP ("dual-stack") for Fortinet .
+  * Support "FTM-push" token mode for Fortinet VPNs .
+  * Send IPv6-compatible version string in Pulse IF/T session establishment
+  * Add --no-external-auth option to not advertise external-browser authentication
+  * Many small improvements in server response parsing, and better logging messages and documentation.
+
+
+-------------------------------------------------------------------
 Thu Dec 15 11:30:15 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 9.01:
@@ -7,7 +32,7 @@ Thu Dec 15 11:30:15 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
   * Bugfix RSA SecurID token decryption and PIN entry forms, broken in v8.20
   * Support Cisco's multiple-certificate authentication
   * Revert GlobalProtect default route handling change from v8.20
-  * Support split-exclude routes for Fortinet
+  * Suppo split-exclude routes for Fortinet
   * Add webview callback and SAML/SSO support for AnyConnect, GlobalProtect
 
 -------------------------------------------------------------------
