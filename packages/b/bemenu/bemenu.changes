@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  9 06:26:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.15:
+  * Add rounded corners/Border radius #319
+  * Add Match/Page Counter #204
+  * docs: add missing options #331
+  * Add fixed height option #270
+  * Fix Makefile to support submodule setups #329
+  * Fix: invisible right border #333
+  * Fix: select last entry if pointer/touch above last index #332
+  * ESC have no effect under Wayland while enabled Vim binding #334
+  * Small fixes #340
+
+-------------------------------------------------------------------
 Fri Dec 16 10:12:42 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.14:

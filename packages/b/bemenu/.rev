@@ -274,4 +274,21 @@
   * Fix --filter #322</comment>
     <requestid>1043312</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>77335b82936fc0de7952ce2a8288ca73</srcmd5>
+    <version>0.6.15</version>
+    <time>1683630532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.15:
+  * Add rounded corners/Border radius #319
+  * Add Match/Page Counter #204
+  * docs: add missing options #331
+  * Add fixed height option #270
+  * Fix Makefile to support submodule setups #329
+  * Fix: invisible right border #333
+  * Fix: select last entry if pointer/touch above last index #332
+  * ESC have no effect under Wayland while enabled Vim binding #334
+  * Small fixes #340</comment>
+    <requestid>1085625</requestid>
+  </revision>
 </revisionlist>
