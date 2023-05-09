@@ -24,23 +24,30 @@ License:        MIT
 URL:            https://github.com/python-attrs/cattrs
 Source:         https://github.com/python-attrs/cattrs/archive/refs/tags/v%{version}.tar.gz#/cattrs-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1.1}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 20}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module immutables}
+BuildRequires:  %{python_module msgpack >= 1.0.2}
 BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tomlkit}
 BuildRequires:  %{python_module ujson}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-attrs >= 20
-Suggests:       python-exceptiongroup
-Suggests:       python-typing_extensions
+Suggests:       python-ujson
+Suggests:       python-orjson
+Suggests:       python-msgpack
+Suggests:       python-PyYAML
+Suggests:       python-tomlkit
+Suggests:       python-cbor2
+Suggests:       python-pymongo
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,6 +72,6 @@ Composable complex class support for attrs and dataclasses.
 %license LICENSE
 %{python_sitelib}/cattr
 %{python_sitelib}/cattrs
-%{python_sitelib}/cattrs*info/
+%{python_sitelib}/cattrs-%{version}.dist-info
 
 %changelog

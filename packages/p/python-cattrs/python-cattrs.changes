@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  8 21:15:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Slim down build requirement to poetry-core
+- Explicitily require a bunch of test dependencies instead
+
+-------------------------------------------------------------------
 Mon Jan 23 04:22:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 22.2.0. 
