@@ -447,4 +447,15 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
     <comment></comment>
     <requestid>1081736</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>55f38c07e7c32a0cf12f7ebe4b317175</srcmd5>
+    <version>4.65.0</version>
+    <time>1683630396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.65.0:
+  * add Python 3.11 and drop Python 3.6 support
+  * misc code &amp; docs tidy
+  * fix &amp; update CI workflows &amp; tests</comment>
+    <requestid>1085002</requestid>
+  </revision>
 </revisionlist>

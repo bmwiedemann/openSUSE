@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         allpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -29,12 +28,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.64.1
+Version:        4.65.0
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
