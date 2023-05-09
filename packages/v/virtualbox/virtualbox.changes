@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  8 18:26:38 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Update fix_7.0.6_locking_problems.patch for Vagrent/virtualbox startup problems boo#1209727
+
+-------------------------------------------------------------------
 Thu May  4 16:46:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python311.patch to make it detect Python 3.11 as well

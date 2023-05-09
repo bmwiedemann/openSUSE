@@ -2,10 +2,12 @@ Index: VirtualBox-7.0.8/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
 ===================================================================
 --- VirtualBox-7.0.8.orig/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
 +++ VirtualBox-7.0.8/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
-@@ -4537,9 +4537,9 @@ static int supdrvTscDeltaThreadWait(PSUP
+@@ -4537,9 +4537,11 @@ static int supdrvTscDeltaThreadWait(PSUP
   */
  static void supdrvTscDeltaThreadStartMeasurement(PSUPDRVDEVEXT pDevExt, bool fForceAll)
  {
++    if (!pDevExt || ! pDevExt->hTscDeltaSpinlock)
++	return;
 +    RTSpinlockAcquire(pDevExt->hTscDeltaSpinlock);
      if (pDevExt->hTscDeltaThread != NIL_RTTHREAD)
      {
@@ -13,7 +15,7 @@ Index: VirtualBox-7.0.8/src/VBox/HostDrivers/Support/SUPDrvGip.cpp
          if (   pDevExt->enmTscDeltaThreadState == kTscDeltaThreadState_Listening
              || pDevExt->enmTscDeltaThreadState == kTscDeltaThreadState_Measuring)
          {
-@@ -4550,9 +4550,9 @@ static void supdrvTscDeltaThreadStartMea
+@@ -4550,9 +4552,9 @@ static void supdrvTscDeltaThreadStartMea
          else if (   pDevExt->enmTscDeltaThreadState == kTscDeltaThreadState_WaitAndMeasure
                   && fForceAll)
              pDevExt->fTscThreadRecomputeAllDeltas = true;
