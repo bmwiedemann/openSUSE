@@ -253,4 +253,12 @@
   * Optional speedup provided by mypy/c 1.0.1</comment>
     <requestid>1074517</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e0bce859baa12d4407a40e1dc7f09ab0</srcmd5>
+    <version>3.1.0</version>
+    <time>1683630392</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1084939</requestid>
+  </revision>
 </revisionlist>
