@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-aiosignal
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        a list of registered asynchronous callbacks
 License:        Apache-2.0
@@ -34,6 +33,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module frozenlist >= 1.1.0}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
