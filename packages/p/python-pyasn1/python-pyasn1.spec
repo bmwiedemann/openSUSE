@@ -20,15 +20,16 @@
 %define         oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-pyasn1
-Version:        0.4.8
+Version:        0.5.0
 Release:        0
 Summary:        ASN.1 types and codecs
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/etingof/pyasn1
+URL:            https://github.com/pyasn1/pyasn1
 Source:         https://files.pythonhosted.org/packages/source/p/pyasn1/pyasn1-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,10 +49,10 @@ specification.
 %setup -q -n pyasn1-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,7 @@ specification.
 %files %{python_files}
 %doc CHANGES.rst README.md TODO.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/pyasn1
+%{python_sitelib}/pyasn1-%{version}.dist-info
 
 %changelog

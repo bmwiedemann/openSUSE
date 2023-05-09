@@ -369,4 +369,27 @@
     <comment></comment>
     <requestid>1081813</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fd0bbf66f40abc20f99ff59776bd88e6</srcmd5>
+    <version>0.5.0</version>
+    <time>1683630358</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Change `RealEncoder.supportIndefLenMode` type to a boolean
+  * Fix CI for py39 test environment
+  * Replace all snmplabs.com links
+  * Use correct SPDX identifier for the license
+  * Re-add ``tagMap`` and ``typeMap`` module level attributes to all
+    encoder and decoder modules. They are aliases for ``TAG_MAP`` and
+    ``TYPE_MAP``
+  * Restore API for passing for ``tagMap`` and ``typeMap`` arguments
+    to ``Encoder`` and ``Decoder`` classes by name and position,
+  * Re-add ``tagMap`` and ``typeMap`` module level attributes to all
+    encoder and decoder modules. They are aliases for ``TAG_MAP`` and
+   ``TYPE_MAP``
+  * Restore API for passing for ``tagMap`` and ``typeMap`` arguments
+    to ``Encoder`` and ``Decoder`` classes by name and position,
+  * Make BER/CER/DER decoders streaming and suspendible</comment>
+    <requestid>1084856</requestid>
+  </revision>
 </revisionlist>
