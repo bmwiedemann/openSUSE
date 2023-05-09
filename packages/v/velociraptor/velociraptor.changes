@@ -1,5 +1,71 @@
 -------------------------------------------------------------------
-Thu Jan 26 20:06:09 UTC 2023 - jeffm@suse.com
+Tue May  9 01:25:01 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Provide sysuser template for velociraptor user and group.
+
+-------------------------------------------------------------------
+Mon May 08 20:21:03 UTC 2023 - jeffm@suse.com
+
+- Update to version 0.6.7.5~git78.2bef6fc:
+  * bpf: fix path to vmlinux.h
+
+-------------------------------------------------------------------
+Mon May 08 19:42:58 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.5~git77.997aa73:
+  * file_store/test_utils/server_config.go: update test certificate
+  * Update bluemonday dependency.
+  * vql/functions/hash: cache results on Linux
+  * libbpfgo: update to velociraptor-branch-v0.4.8-libbpf-1.2.0
+  * logscale/backport: don't use networking.GetHttpTransport
+  * vql/tools/logscale: add plugin to post events to LogScale ingestion endpoint
+  * file_store/directory: add ability to report pending size
+- Change clang dependency to clang16
+- Fix velociraptor-golang-mage-vendoring.diff to account for newer
+  'go mod vendor' honoring build flags.
+- Fix update-vendoring.sh script to actually run the %setup part of
+  the spec.
+- Merge client package into server spec and use _multibuild to create
+  client package from same spec file.
+- Adjust changelog to retain changes for client package.
+- Fix building in static mode on earlier releases.
+  - Added patch: velociraptor-libbpfgo-only-build-libbpf.patch
+- Removed patch: velociraptor-skip-git-submodule-import-for-OBS-build.patch
+
+-------------------------------------------------------------------
+Fri Mar 10 18:54:37 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Tightening the security of the services a bit:
+  - tmp files are now moved to /var/lib/velociraptor{,-client}/tmp
+    from /tmp
+  - run velociraptor server as user velociraptor instead of root
+    we do not really need root permissions here
+  - introduce /var/lib/velociraptor/filestore to make it easier to
+    split out large file upload
+  - change permissions for the data directory and subdirectories to
+    /var/lib/velociraptor/      u=rwX,go= velociraptor:velociraptor
+    /var/lib/velociraptor-client/ u=rwX,go= root:root
+  - change permissions of config directory to:
+    /etc/velociraptor/ u=rwX,g=rX,o= root:velociraptor
+    /etc/velociraptor/server.config u=rw,g=r,o= root:velociraptor
+    /etc/velociraptor/client.config u=rw,go=    root:root
+
+-------------------------------------------------------------------
+Fri Mar 10 15:36:18 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Update to version 0.6.7.5~git6.73efb2a:
+  * libbpfgo: update submodule to require libzstd for newer libelf
+  * utils/time.js: fix handling of nanosecond-resolution timestamps
+  * libbpfgo: switch to using regular static builds
+  * Create a new 0.6.7-5 release (#2385)
+    - Verify FILESYSTEM_WRITE permission on copy() function (#2384) (bsc#1207936, CVE-2023-0242)
+    - Also ensure client id is considered unsafe (bsc#1207937, CVE-2023-0290)
+  * github/workflows/linux: do apt-get update to refresh package lists
+- Remove unnecessary dependency on libtsan0.
+- Allow velociraptor and velociraptor-client packages to coexist.
+
+-------------------------------------------------------------------
+Thu Jan 26 20:06:09 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 
 - Update to version 0.6.7.4~git63.4a1ed09d:
   * utils/time.js: fix handling of nanosecond-resolution timestamps
@@ -12,7 +78,7 @@ Tue Jan 24 20:57:08 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 - Use obsinfo mtime to produce stable build timestamp (bsc#1207369).
 
 -------------------------------------------------------------------
-Tue Jan 24 15:07:09 UTC 2023 - jeffm@suse.com
+Tue Jan 24 15:07:09 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 
 - Update to version 0.6.7.4~git60.8abed37a:
   * http_comms: create ring buffer temporary file in the same directory
@@ -49,6 +115,11 @@ Fri Jan 20 20:18:49 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
   - sdjournal-build-fix-for-SLE12.patch
 
 -------------------------------------------------------------------
+Fri Jan 20 16:37:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- client: add memory limit to systemd unit
+
+-------------------------------------------------------------------
 Thu Jan 19 15:17:22 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 
 - Restore requirement to build with clang13.  Newer versions
@@ -76,6 +147,11 @@ Thu Jan 19 01:01:09 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
     so increase go version dependecy
   - Define ExclusiveArch for x86_64, ppc64le, aarch64, and s390x
     Neither the client or server builds on ix86.
+
+-------------------------------------------------------------------
+Mon Jan  9 16:01:44 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
+
+- Added Restart=on-failure to restart the client automatically.
 
 -------------------------------------------------------------------
 Mon Dec 12 20:03:23 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
@@ -1030,7 +1106,12 @@ Thu Jan 27 17:27:42 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
   * Propagate column types from artifact to flow notebook. (#1346)
 
 -------------------------------------------------------------------
-Thu Jan 06 20:14:39 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+Thu Jan  6 21:50:43 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
+
+- client: Remove dependencies on nodejs since we don't use it in client mode.
+
+-------------------------------------------------------------------
+Thu Jan  6 20:14:39 UTC 2022 - Jeff Mahoney <jeffm@suse.com>
 
 - Update to version 0.6.2~git73.dc02b45e:
   * Update PrivateKeys.yaml (#1459)
@@ -1056,6 +1137,8 @@ Thu Dec 16 14:12:05 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
 - Switch to using master branch via service files.
   - Added update-vendoring.sh to update the nodejs and go dependencies
     after version update.
+  - Now building the client with linux_bare target that disables
+    the GUI for endpoint usage.
   - Patch the version string to reflect the package version instead
     of an indistinguishable <next-tag>-dev.
 

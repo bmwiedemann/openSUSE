@@ -5,8 +5,8 @@
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="revision">sensor-base-0.6.7</param>
     <param name="scm">git</param>
-    <param name="parent-tag">v0.6.7-4</param>
-    <param name="versionrewrite-pattern">v([0-9\.]*)-(.*)</param>
+    <param name="parent-tag">v0.6.7-5</param>
+    <param name="versionrewrite-pattern">v([0-9\.\-]*)-(.*)</param>
     <param name="versionrewrite-replacement">\1.\2</param>
     <param name="changesgenerate">enable</param>
     <param name="submodules">enable</param>

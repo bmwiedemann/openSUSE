@@ -1,14 +1,15 @@
 [Unit]
-Description=Velociraptor Server Service
+Description=Velociraptor Kafka-Humio Gateway Service
 
 [Service]
 Type=simple
+User=velociraptor-kafka
+Group=velociraptor-kafka
 UMask=0027
 User=velociraptor
 Group=velociraptor
-EnvironmentFile=-/etc/sysconfig/velociraptor
-Environment=TMPDIR=/var/lib/velociraptor/tmp
-ExecStart=/usr/bin/velociraptor frontend --verbose --config /etc/velociraptor/server.config $VELOCIRAPTOR_OPTS
+EnvironmentFile=-/etc/sysconfig/velociraptor-kafka-humio-gateway
+ExecStart=/usr/bin/velociraptor-kafka-humio-gateway $KAFKA_HUMIO_GATEWAY_OPTS --config $KAFKA_HUMIO_GATEWAY_CONFIG
 
 PrivateTmp=true
 PrivateDevices=true

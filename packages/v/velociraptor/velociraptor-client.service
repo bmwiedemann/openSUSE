@@ -9,7 +9,8 @@ UMask=0027
 MemoryHigh=4G
 MemoryMax=8G
 EnvironmentFile=-/etc/sysconfig/velociraptor-client
-ExecStart=/usr/bin/velociraptor client --config /etc/velociraptor/client.config $VELOCIRAPTOR_CLIENT_OPTS
+Environment=TMPDIR=/var/lib/velociraptor-client/tmp
+ExecStart=/usr/bin/velociraptor-client client --config /etc/velociraptor/client.config $VELOCIRAPTOR_CLIENT_OPTS
 
 PrivateTmp=true
 PrivateDevices=true

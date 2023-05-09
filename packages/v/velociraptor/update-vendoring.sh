@@ -21,20 +21,23 @@ version=$(rpmspec -q --queryformat="%{VERSION}\n" velociraptor.spec|head -1)
 dir="$(realpath "$(mktemp -d vendoring.XXXXXX)")"
 topdir="$(realpath "$(dirname "$0")")"
 
-rpmspec -P velociraptor.spec --define "_sourcedir $PWD" | \
+# Pull the %prep section out of the spec file and replace the tarball with the obscpio
+awk '
+BEGIN { go=1; };
+/^%build/ { go=0; };
+{ if (go) print };' < velociraptor.spec > ${dir}/velociraptor.spec
+
+rpmspec -P ${dir}/velociraptor.spec --define "_sourcedir $PWD" --define "_builddir ${dir}"| \
 awk '
 BEGIN { go=0; };
 /^%build/ { go=0; };
 { if (go) print };
-/^%setup/ { go=1 }' > ${dir}/setup.sh
-
-echo "Expanding archive..."
-cpio -D "${dir}" -id < velociraptor-${version}.obscpio
+/^%prep/ { go=1 }' | sed -e "/rpmuncompress.*velociraptor-.*.tar.xz/s#.*#cpio -D . -id < $PWD/velociraptor-${version}.obscpio#" > ${dir}/setup.sh
 
 echo "Running %prep"
+cd ${dir}
+sh -e ${dir}/setup.sh
 cd "${dir}/velociraptor-${version}"
-tar Jxf ${topdir}/vmlinux.h-5.14.21150400.22-150400-default.tar.xz
-sh ${dir}/setup.sh
 
 echo "Re-vendoring Go code..."
 gopathdir="$(mktemp -d /tmp/gopath.XXXXXXX)"
