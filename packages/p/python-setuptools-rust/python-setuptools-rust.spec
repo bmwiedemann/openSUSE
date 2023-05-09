@@ -19,7 +19,7 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-rust
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause

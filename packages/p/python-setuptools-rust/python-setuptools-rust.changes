@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  4 19:54:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Prefer passing `--crate-type` option to cargo if "toolchain
+    >= 1.64".
+  * Fix a bug where rebuilding the library would cause any
+    running processes using it to segfault. #295
+  * Fix `setup.cfg` format for compatibility with
+    "poetry==1.4.0". #319
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

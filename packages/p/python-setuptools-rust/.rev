@@ -86,4 +86,18 @@
     <comment></comment>
     <requestid>1081867</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7b9760887aa760e806b4a1faa85be518</srcmd5>
+    <version>1.6.0</version>
+    <time>1683630361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Prefer passing `--crate-type` option to cargo if &quot;toolchain
+    &gt;= 1.64&quot;.
+  * Fix a bug where rebuilding the library would cause any
+    running processes using it to segfault. #295
+  * Fix `setup.cfg` format for compatibility with
+    &quot;poetry==1.4.0&quot;. #319</comment>
+    <requestid>1084862</requestid>
+  </revision>
 </revisionlist>
