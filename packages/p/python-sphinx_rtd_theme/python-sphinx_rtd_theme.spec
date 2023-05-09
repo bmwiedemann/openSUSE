@@ -27,18 +27,19 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        Apache-2.0 AND MIT AND OFL-1.1
-Group:          Development/Languages/Python
 URL:            https://github.com/snide/sphinx_rtd_theme/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_rtd_theme/sphinx_rtd_theme-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 1.6
+Requires:       python-docutils
+Requires:       python-sphinxcontrib-jquery >= 2.0.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}

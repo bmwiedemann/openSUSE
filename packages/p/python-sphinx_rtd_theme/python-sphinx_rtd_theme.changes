@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  5 14:19:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- move jquery to runtime requires
+
+-------------------------------------------------------------------
+Fri May  5 06:15:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on sphinxcontrib-jquery. 
+
+-------------------------------------------------------------------
+Thu May  4 20:34:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * python 3.11 support
+  * translation updates 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
