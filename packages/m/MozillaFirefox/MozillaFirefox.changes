@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  7 19:47:00 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix i586 build by reducing debug info to -g1. (boo#1210168)
+
+-------------------------------------------------------------------
 Tue Apr 25 16:01:07 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 112.0.2

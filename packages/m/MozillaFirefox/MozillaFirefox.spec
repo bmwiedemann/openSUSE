@@ -252,7 +252,7 @@ Obsoletes:      tracker-miner-firefox < 0.15
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
-ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le %ix86
+ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -400,6 +400,10 @@ export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
 %if 0%{?clang_build} == 0
 export CFLAGS="\$CFLAGS -mminimal-toc"
 %endif
+%endif
+%ifarch %ix86
+# Not enough memory on 32-bit systems, reduce debug info.
+export CFLAGS="\$CFLAGS -g1"
 %endif
 export CXXFLAGS="\$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
