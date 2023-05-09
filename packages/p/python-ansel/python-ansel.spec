@@ -26,8 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/haney/python-ansel
 Source:         https://github.com/haney/python-ansel/archive/refs/tags/v1.0.0.tar.gz#/ansel-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
