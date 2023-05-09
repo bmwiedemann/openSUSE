@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May  4 23:26:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.1:
+  * Python 3.12 support
+- update to 7.3.0:
+  *  --log-disable CLI option added to disable individual loggers.
+  * Added tmp_path_retention_count and tmp_path_retention_policy
+    configuration options to control how directories created by
+    the tmp_path fixture are kept.
+  * For list of omprovements and bugfixes, please read
+    https://docs.pytest.org/en/stable/changelog.html#pytest-7-3-0-2023-04-08
+
+-------------------------------------------------------------------
+Thu May  4 23:01:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.2:
+  * Fixed :func:`pytest.approx`
+    handling of dictionaries containing one or more values of
+    `0.0`.
+  * Fixed crash if `--cache-show` and `--help` are passed at the
+    same time.
+  * Fixed bug where a fixture method named ``teardown`` would
+    be called as part of ``nose`` teardown stage.
+  * Fixed crash if ``--fixtures`` and ``--help`` are passed
+    at the same time.
+  * Fixed :py:func:`pytest.raises` to
+    return a 'ContextManager' so that type-checkers could narrow
+    :code:`pytest.raises(...) if ... else nullcontext()` down to
+    'ContextManager' rather than 'object'.
+  * Fix 'importlib.abc.TraversableResources' deprecation warning in
+    Python 3.12.
+  * If a test is skipped from inside a fixture, the test summary
+    now shows the test location instead of the fixture location.
+  * Fix a race condition when creating junitxml reports,
+    which could occur when multiple instances of pytest execute
+    in parallel.
+  * Fix a race condition when
+    creating or updating the stepwise plugin's cache, which could
+    occur when multiple xdist worker nodes try to simultaneously
+    update the stepwise plugin's cache.
+- drop fix-test-raising-repr.patch, fix-tests-pygments-2.14.0.patch: 
+  merged upstream
+ 
+-------------------------------------------------------------------
 Fri Apr 21 12:31:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

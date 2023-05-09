@@ -1145,4 +1145,41 @@
     <comment></comment>
     <requestid>1082443</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8a9cf797375beba7c27c2e976080a606</srcmd5>
+    <version>7.3.1</version>
+    <time>1683630393</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.3.1:
+  * Python 3.12 support
+- update to 7.3.0:
+  *  --log-disable CLI option added to disable individual loggers.
+  * Added tmp_path_retention_count and tmp_path_retention_policy
+    configuration options to control how directories created by
+    the tmp_path fixture are kept.
+  * For list of omprovements and bugfixes, please read
+    https://docs.pytest.org/en/stable/changelog.html#pytest-7-3-0-2023-04-08
+
+- update to 7.2.2:
+  * Fixed :func:`pytest.approx`
+    handling of dictionaries containing one or more values of
+    `0.0`.
+  * Fixed crash if `--cache-show` and `--help` are passed at the
+    same time.
+  * Fixed bug where a fixture method named ``teardown`` would
+    be called as part of ``nose`` teardown stage.
+  * Fixed crash if ``--fixtures`` and ``--help`` are passed
+    at the same time.
+  * Fixed :py:func:`pytest.raises` to
+    return a 'ContextManager' so that type-checkers could narrow
+    :code:`pytest.raises(...) if ... else nullcontext()` down to
+    'ContextManager' rather than 'object'.
+  * Fix 'importlib.abc.TraversableResources' deprecation warning in
+    Python 3.12.
+  * If a test is skipped from inside a fixture, the test summary
+    now shows the test location instead of the fixture location.
+  * Fix a race condition when creating junitxml reports,
+    which could occur when multiple instances of pytest execute</comment>
+    <requestid>1084940</requestid>
+  </revision>
 </revisionlist>

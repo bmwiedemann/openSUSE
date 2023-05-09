@@ -31,19 +31,14 @@
 %bcond_with test
 %endif
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        7.2.0
+Version:        7.3.1
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-test-raising-repr.patch gh#pytest-dev/pytest#10473
-Patch:          fix-test-raising-repr.patch
-# PATCH-FIX-UPSTREAM fix-tests-pygments-2.14.0.patch gh#pytest-dev/pytest#10632
-Patch1:         fix-tests-pygments-2.14.0.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}
@@ -70,6 +65,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
 # nose is really not REQUIRED, the test suite skips over particular
