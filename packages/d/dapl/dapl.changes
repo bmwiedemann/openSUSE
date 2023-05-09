@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 13:18:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to proper multibuild package: the spec is already all
+  done to distinguish flavors.
+
+-------------------------------------------------------------------
 Sat Jul 14 20:21:56 UTC 2018 - bwiedemann@suse.com
 
 - Add reproducible.patch to fix build time (boo#1047218)

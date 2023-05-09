@@ -1,7 +1,7 @@
 #
-# spec file for package dapl
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" != ""
+%define nsuffix -%{flavor}
+%endif
+
 %define git_version %nil
-Name:           dapl
+Name:           dapl%{?nsuffix}
 Summary:        A Library for userspace access to RDMA devices using OS Agnostic DAT APIs
 License:        BSD-3-Clause OR GPL-2.0-or-later OR CPL-1.0
 Group:          Productivity/Networking/System
@@ -35,7 +40,7 @@ Patch13:        dapl-add-arm-platform-support.patch
 Patch14:        ucm-mcm-fix-backlog-parameter-for-socket.patch
 # PATCH-FIX-UPSTREAM http://git.openfabrics.org/?p=~ardavis/dapl.git;a=commitdiff;h=f1e05b7adcee629ee7c1d4d86ea55344d9309232
 Patch15:        reproducible.patch
-Url:            http://www.openfabrics.org
+URL:            http://www.openfabrics.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -54,10 +59,10 @@ Conflicts:      dapl
 Obsoletes:      dapl-64bit
 %endif
 #
-Requires(post):   /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
-Requires(post):   sed
-Requires(post):   coreutils
+Requires(post): /sbin/ldconfig
+Requires(postun):/sbin/ldconfig
+Requires(post): sed
+Requires(post): coreutils
 
 # libdapl*.so work like plugins, hence they do not get a separate subpackage.
 
@@ -144,7 +149,7 @@ autoreconf -fi
 %if "%name" == "dapl"
 %configure --disable-static --with-pic
 %else
-%configure --disable-static --with-pic --enable-debug 
+%configure --disable-static --with-pic --enable-debug
 %endif
 
 make %{?_smp_mflags} V=1
@@ -159,7 +164,7 @@ make DESTDIR=%{buildroot} install
 
 rm -f %{buildroot}%_libdir/*.la
 %if "%{name}" == "dapl-debug"
-rm -rf %{buildroot}%{_mandir}/man{1,5}/* 
+rm -rf %{buildroot}%{_mandir}/man{1,5}/*
 %endif
 mkdir -p %{buildroot}%_sysconfdir
 touch %{buildroot}%_sysconfdir/dat.conf
@@ -268,7 +273,7 @@ fi
 %if "%{name}" != "dapl-debug"
 %_mandir/man5/dat.conf.5*
 %endif
-%doc 
+%doc
 
 %files -n %lname
 %defattr(-,root,root)
