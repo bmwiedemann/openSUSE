@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-datadir
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pytest-datadir
-Version:        1.3.1
+Version:        1.4.1
 Release:        0
 Summary:        Plugin for test data directories and files
 License:        MIT
@@ -48,7 +48,6 @@ pytest plugin for test data directories and files.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-rm %{buildroot}%{_prefix}/LICENSE
 
 %check
 %pytest
@@ -56,6 +55,7 @@ rm %{buildroot}%{_prefix}/LICENSE
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_datadir
+%{python_sitelib}/pytest_datadir*.egg-info
 
 %changelog

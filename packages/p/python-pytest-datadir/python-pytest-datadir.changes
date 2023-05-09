@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  4 23:11:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Replace usage of ``tmpdir`` by ``tmp_path``
+  * Fix package so the ``LICENSE`` file is no longer in the root
+    of the package.
+  * Python 3.9 and 3.10 are now officially supported.
+  * Python 2.7, 3.4 and 3.5 are no longer supported.
+
+-------------------------------------------------------------------
 Wed Dec  8 07:39:47 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed

@@ -26,4 +26,17 @@
     <comment></comment>
     <requestid>936440</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c0dcb2920dd3d0d189d378da6c12498</srcmd5>
+    <version>1.4.1</version>
+    <time>1683630388</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Replace usage of ``tmpdir`` by ``tmp_path``
+  * Fix package so the ``LICENSE`` file is no longer in the root
+    of the package.
+  * Python 3.9 and 3.10 are now officially supported.
+  * Python 2.7, 3.4 and 3.5 are no longer supported.</comment>
+    <requestid>1084904</requestid>
+  </revision>
 </revisionlist>
