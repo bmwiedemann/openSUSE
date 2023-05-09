@@ -23,16 +23,17 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Babel
-Version:        2.11.0
+Version:        2.12.1
 Release:        0
 Summary:        Internationalization utilities
 License:        BSD-3-Clause
 URL:            http://babel.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/B/Babel/Babel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: fix-tests.patch, gh#python-babel/babel#998
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module py >= 1.4.14}
 BuildRequires:  %{python_module pytest >= 2.3.5}
@@ -63,7 +64,7 @@ Obsoletes:      python3-babel < %{version}
 A collection of tools for internationalizing Python applications.
 
 %prep
-%setup -q -n Babel-%{version}
+%autosetup -p1 -n Babel-%{version}
 
 %build
 %python_build

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon May  8 10:00:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests.patch to make tests work with EST/EDT swap,
+  gh#python-babel/babel#988
+- Update to 2.12.1:
+  * Include py.typed file in wheels by @AlexWaygood in #975
+  * Become 2.12.1 by @akx in #976
+- 2.12.0:
+  * docs(changes): Fix broken issue links by @DenverCoder1 in #922
+  * Update docs build configuration by @akx in #924
+  * feat: Adds Format.compact_decimal utility by @DenverCoder1 in #921
+  * Remove vestigial Python 2 long check by @akx in #925
+  * feat: Support for short compact currency formats by @DenverCoder1 in #926
+  * Drop support for EOL Python 3.6 by @akx in #919
+  * Cast number to Decimal in _get_compact_format by @DenverCoder1 in #930
+  * Replace %/.format/concatenation with f-strings where feasible by @akx in #927
+  * ci: Fix testing dependencies by @DenverCoder1 in #936
+  * javascript extract improvements by @johanneswilm in #939
+  * Fix compact singular formats and patterns with no numbers by @DenverCoder1 in #932
+  * fix typo by @uniontech-lilinjie in #941
+  * Enable pre-commit by @akx in #943
+  * Added inline type annotations to Babel by @DenverCoder1 in #934
+  * Implement zoneinfo support and make pytz optional by @ds-cbo in #940
+  * Unify datetime imports by @akx in #945
+  * Minor cleanups by @akx in #948
+  * Renovate formatting in test_checkers and test_frontend by @akx in #950
+  * Add ruff for linting by @akx in #949
+  * Upgrade to CLDR 42 by @akx in #951
+  * Update test dependencies (tox v4) by @DenverCoder1 in #953
+  * Remove redundant tests for babel.support by @akx in #954
+  * Support for formatting NaN, Infinity by @DenverCoder1 in #955
+  * Clean up babel.localtime by @akx in #952
+  * Use standard library UTC by @akx in #957
+  * Fix unbound exc in babel.dates by @akx in #959
+  * Finally remove get_next_timezone_transition by @akx in #958
+  * More fixes and modernization by @akx in #960
+  * Keep @modifiers when parsing locales by @madduck in #947
+  * Add two new options in cmdline.rst docs by @m-aciek in #963
+  * Numbers and core type fixes by @DenverCoder1 in #966
+  * Use lru_cache where suitable by @akx in #967
+  * Fix two issues with fuzzy matching by @jeanas in #970
+  * Renovate CI tools a bit by @akx in #972
+  * Tox: also test with pytz installed by @akx in #974
+  * Become 2.12.0 by @akx in #973
+
+-------------------------------------------------------------------
 Thu Apr 13 22:40:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Make calling of %{sle15modernpython} optional.
