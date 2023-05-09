@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  8 08:42:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.9:
+  * Versioned symbol updates
+  * Various fixes for building on *BSD and Android
+  * Fixes and enhancements of auto silencing and playback drain
+  * Add SND_CTL_EINTR open mode at PCM
+  * Avoid endless loop in snd_pcm_sw_params_default()
+  * Fixes in PCM rate, route/softvol plugins
+  * Fixes in topology API parser, cleanups
+  * Enhancements in latency test program
+  * Minor code cleanup and memory leak fixes in UCM API
+  * emu10k1 config cleanup
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.8_v1.2.9#alsa-lib
+
+-------------------------------------------------------------------
 Tue Oct 25 07:19:06 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.8:
