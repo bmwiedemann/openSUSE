@@ -33,6 +33,9 @@ Patch0:         close_file_before_test.patch
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.10.4+
 # https://bugs.launchpad.net/lxml/+bug/2016939
 Patch1:         skip-test-under-libxml2-2.10.4.patch
+# PATCH-FIX-OPENSUSE Skip a test under libxml2 2.11.1+
+# https://bugs.launchpad.net/lxml/+bug/2018522
+Patch2:         skip-test-under-libxml2-2.11.1.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}

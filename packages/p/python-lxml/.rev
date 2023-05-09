@@ -961,4 +961,12 @@ Send to Staging:E.
 - Switch documentation to be within the main package.</comment>
     <requestid>1084406</requestid>
   </revision>
+  <revision rev="101" vrev="7">
+    <srcmd5>f9bd19aaef95ae1cb038ff590b01856a</srcmd5>
+    <version>4.9.2</version>
+    <time>1683630349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084802</requestid>
+  </revision>
 </revisionlist>

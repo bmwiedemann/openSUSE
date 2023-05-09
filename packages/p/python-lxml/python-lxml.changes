@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  4 14:52:53 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Add patch skip-test-under-libxml2-2.11.1.patch:
+  * Skip a test if using libxml2 >= 2.11.1
+
+-------------------------------------------------------------------
 Sun Apr 23 23:11:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch documentation to be within the main package.
