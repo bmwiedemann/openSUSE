@@ -25,10 +25,10 @@
 %define qt6 1
 %define pkg_suffix -qt6
 %endif
-%define soversion 1_6
+%define soversion 1_7
 %define rname kddockwidgets
 Name:           kddockwidgets%{pkg_suffix}
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Qt dock widget library, suitable for replacing QDockWidget
 License:        GPL-2.0-only OR GPL-3.0-only

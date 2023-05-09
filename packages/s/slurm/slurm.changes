@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  9 09:28:23 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to 23.02.02 which includes a number of fixes to Slurm stability
+  * Includes a fix for a regression in 23.02 that caused openmpi mpirun to fail
+    to launch tasks. 
+  * It also includes two functional changes: Don't update the cron job tasks if
+    the whole crontab file is left untouched after opening it with scrontab -e
+  * Sort dynamic nodes and include them in topology after scontrol reconfigure
+    or a slurmctld restart. 
+
+-------------------------------------------------------------------
 Mon Apr 17 19:16:40 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Web-configurator: changed presets to SUSE defaults.

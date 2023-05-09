@@ -30,10 +30,12 @@ Source2:        subtitlecomposer.keyring
 Patch0:         subtitlecomposer-ARM_GLES.patch
 # PATCH-FIX-UPSTREAM subtitlecomposer-fix_empty_lines_crash.patch
 Patch1:         subtitlecomposer-fix_empty_lines_crash.patch
-# PATCH-FIX-UPSTREAM 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch - Fix build with ffmpeg 5
-Patch2:         https://invent.kde.org/multimedia/subtitlecomposer/-/commit/4f4f560e40ba0b760cf688eb024be3cc734ca347.patch
-# PATCH-FIX-UPSTREAM d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch - Fix video player
-Patch3:         https://invent.kde.org/multimedia/subtitlecomposer/-/commit/d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch
+# PATCH-FIX-UPSTREAM Fix build with ffmpeg 5
+Patch2:         0001-Fix-compilation-with-ffmpeg5-63.patch
+# PATCH-FIX-UPSTREAM Fix video player
+Patch3:         0001-VideoPlayer-Fix-usage-of-deprecated-removed-AVCodec-.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Use-non-deprecated-ffmpeg-api.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel

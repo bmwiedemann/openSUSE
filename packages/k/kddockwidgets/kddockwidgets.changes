@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  9 06:42:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.0
+  * Introduce DockWidget::setFloatingWindowFlags(flags).
+    Allows for different FloatingWindows to have different window
+    flags. For example, some having Qt::Tool while others having
+    Qt::Window
+  * Fixed fixed-sized windows being able to be resized on Windows
+  * Allow restoring layouts without touching floating dock widgets
+  * Fix setDropIndicatorsInhibited(false) not showing
+    drop indicators
+  * Fix relayouting when dock widget is deleted directly
+  * Minor performance improvement: Cache TitleBar icons
+  * Save side bar overlay geometry when frame is resized
+  * Fixed case of corrupt layout when using
+    setDockWidgetFactoryFunc()
+  * Fix layout scaling factor when main window is native
+  * Fix moving floating windows to negative positions
+  * Fixed using normal geometry of platform window if
+    fractional scaling is enabled
+  * Allow to specify Qt::Tool or Qt::Window per floating window
+
+-------------------------------------------------------------------
 Wed Mar  1 08:53:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Init kddockwidgets, needed by newer hotspot versions

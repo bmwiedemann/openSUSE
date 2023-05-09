@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  9 05:22:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.11:
+  * Fixed #5487: Social plugin crashes without options
+    (9.1.10 regression)
+
+-------------------------------------------------------------------
+Tue May  9 05:20:57 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.10:
+  * Added `cards_layout_options` setting for social cards
+	* Deprecated `cards_color` and `cards_font` setting for social
+    cards
+
+-------------------------------------------------------------------
 Fri May  5 11:11:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

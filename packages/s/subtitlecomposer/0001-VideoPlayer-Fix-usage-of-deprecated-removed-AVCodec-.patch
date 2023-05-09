@@ -1,4 +1,4 @@
-From d8f9797d9c0d45fa9f4402f79c539544b74d2cc7 Mon Sep 17 00:00:00 2001
+From 47376250728b8334ef2476c6f2a5fc956ee70e68 Mon Sep 17 00:00:00 2001
 From: Mladen Milinkovic <maxrd2@smoothware.net>
 Date: Fri, 1 Apr 2022 08:35:17 +0200
 Subject: [PATCH] VideoPlayer: Fix usage of deprecated/removed AVCodec option
@@ -15,7 +15,7 @@ https://github.com/FFmpeg/FFmpeg/commit/b1cf151c4dfdbd049cd41863b4e0cde927585e17
  1 file changed, 2 deletions(-)
 
 diff --git a/src/videoplayer/backend/streamdemuxer.cpp b/src/videoplayer/backend/streamdemuxer.cpp
-index e8320ea0..7173306f 100644
+index e8320ea..7173306 100644
 --- a/src/videoplayer/backend/streamdemuxer.cpp
 +++ b/src/videoplayer/backend/streamdemuxer.cpp
 @@ -286,8 +286,6 @@ StreamDemuxer::componentOpen(int streamIndex)
@@ -28,5 +28,5 @@ index e8320ea0..7173306f 100644
  		goto fail;
  	}
 -- 
-GitLab
+2.40.1
 

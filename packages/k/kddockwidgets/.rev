@@ -7,4 +7,12 @@
     <comment>Add kddockwidgets to Factory. Needed by the next hotspot update</comment>
     <requestid>1069699</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84b1d092a912d56fd32b0b01eaabb4a6</srcmd5>
+    <version>1.7.0</version>
+    <time>1683630553</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.0</comment>
+    <requestid>1085640</requestid>
+  </revision>
 </revisionlist>

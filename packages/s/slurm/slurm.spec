@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 39
-%define ver 23.02.1
+%define ver 23.02.2
 %define _ver _23_02
 #%%define rc_v 0rc1
 %define dl_ver %{ver}

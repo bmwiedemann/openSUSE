@@ -564,4 +564,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     @jtoledo1974 (forwarded request 1083098 from bnavigator)</comment>
     <requestid>1083099</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e1040df333fec17e16c0222ad73ad7b3</srcmd5>
+    <version>5.12.0</version>
+    <time>1683630548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085634</requestid>
+  </revision>
 </revisionlist>

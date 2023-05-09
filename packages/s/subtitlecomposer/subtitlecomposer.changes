@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  9 08:28:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Use-non-deprecated-ffmpeg-api.patch
+- Rename 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch to
+  0001-Fix-compilation-with-ffmpeg5-63.patch
+- Rename d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch to
+  0001-VideoPlayer-Fix-usage-of-deprecated-removed-AVCodec-.patch
+
+-------------------------------------------------------------------
 Sun Apr 16 09:14:38 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Add d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch: Fix video

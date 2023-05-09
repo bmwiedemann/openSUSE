@@ -1151,4 +1151,12 @@
 - Now require slurm-munge if munge authentication is installed.</comment>
     <requestid>1083466</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>7eb4f0b3b436a50e0576ff31531175a8</srcmd5>
+    <version>23.02.2</version>
+    <time>1683630556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085677</requestid>
+  </revision>
 </revisionlist>

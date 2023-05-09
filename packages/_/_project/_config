@@ -3069,6 +3069,7 @@ BuildFlags: onlybuild:python-sphinxcontrib-apidoc
 BuildFlags: onlybuild:python-sphinxcontrib-applehelp
 BuildFlags: onlybuild:python-sphinxcontrib-devhelp
 BuildFlags: onlybuild:python-sphinxcontrib-htmlhelp
+BuildFlags: onlybuild:python-sphinxcontrib-jquery
 BuildFlags: onlybuild:python-sphinxcontrib-jsmath
 BuildFlags: onlybuild:python-sphinxcontrib-qthelp
 BuildFlags: onlybuild:python-sphinxcontrib-serializinghtml

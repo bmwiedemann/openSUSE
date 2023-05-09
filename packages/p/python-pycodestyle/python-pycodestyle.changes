@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  9 05:08:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Jan 13 13:46:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - cleanup spec, trim %files section and fix %python_clone command

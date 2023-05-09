@@ -106,4 +106,17 @@
   player with newer version of ffmpeg</comment>
     <requestid>1080108</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>2516d8e04d264201589d3ee68091894a</srcmd5>
+    <version>0.7.1</version>
+    <time>1683630554</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch:
+  * 0001-Use-non-deprecated-ffmpeg-api.patch
+- Rename 4f4f560e40ba0b760cf688eb024be3cc734ca347.patch to
+  0001-Fix-compilation-with-ffmpeg5-63.patch
+- Rename d8f9797d9c0d45fa9f4402f79c539544b74d2cc7.patch to
+  0001-VideoPlayer-Fix-usage-of-deprecated-removed-AVCodec-.patch</comment>
+    <requestid>1085657</requestid>
+  </revision>
 </revisionlist>

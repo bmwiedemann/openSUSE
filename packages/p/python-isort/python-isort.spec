@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-isort%{psuffix}
 Version:        5.12.0
 Release:        0
