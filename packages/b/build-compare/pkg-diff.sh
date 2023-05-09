@@ -83,8 +83,39 @@ filter_dvi() {
 }
 
 filter_png() {
-   convert "$f" +set date:create +set date:modify "${f}.$PPID.$$"
-   mv -f "${f}.$PPID.$$" "${f}"
+  perl -e '
+  use strict;
+  use warnings;
+  my $a, my $b, my $c, my $d, my $f;
+  open ($f, "+<", shift);
+  $d = read($f, $c, 8);
+  ($a,$b) = unpack("N2", $c);
+  unless($a == 0x89504e47 && $b == 0x0d0a1a0a) {
+    die("bogus png file.");
+  }
+  sub fn {
+    my ($fd, $l) = @_;
+    my $d = sprintf("%d", $l + 4);
+    $d = pack("a$d", "");
+    print($fd $d);
+  }
+  for ($d = read($f, $c, 8); $d > 0; $d = read($f, $c, 8)) {
+    ($a,$b) = unpack("N a4", $c);
+    if ($b eq "tIME") {
+      fn($f, $a);
+    } elsif ($b eq "tEXt") {
+      $d = read($f, $c, $a);
+      $b = unpack("Z$a", $c);
+      if ($b eq "date:create" || $b eq "date:modify") {
+        $d = seek($f, -$a, 1);
+        fn($f, $a);
+      }
+    } else {
+      $d = seek($f, $a + 4, 1);
+    }
+  }
+  close($f);
+  ' "$f"
 }
 
 filter_emacs_lisp() {
@@ -422,10 +453,7 @@ normalize_file()
       filter_generic dvi
       ;;
     *.png)
-      # Try to remove timestamps, only if convert from ImageMagick is installed
-      if [[ $(type -p convert) ]]; then
-        filter_generic png
-      fi
+      filter_generic png
       ;;
     /usr/share/locale/*/LC_MESSAGES/*.mo|\
     /usr/share/locale-bundle/*/LC_MESSAGES/*.mo|\
@@ -931,6 +959,8 @@ check_single_file()
             /\.build-id/d
             /\.gnu_debuglink/d
             /\.gnu_debugdata/d
+            /\.note\.package/d
+            /\.note\.go\.buildid/d
             p
           }
         '))

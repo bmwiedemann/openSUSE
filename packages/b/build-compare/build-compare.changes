@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 28 21:21:21 UTC 2023 - olaf@aepfle.de
+
+- remove timestamps from png files
+
+-------------------------------------------------------------------
+Sat Apr  8 23:58:34 UTC 2023 - Oleg Girko <ol@infoserver.lv>
+
+- Ignore more sections when comparing ELF executable files
+
+-------------------------------------------------------------------
 Fri Nov 25 23:51:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Trim "PROVIDES" from source rpms (#59, bsc#1205998)
