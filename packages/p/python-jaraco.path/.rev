@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1081870</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32c984cc4879ed124491c79039422388</srcmd5>
+    <version>3.5.0</version>
+    <time>1683630379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * Introduced ``Recording`` object and ``TreeMaker`` protocol,
+    with ``build()`` now explicitly accepting any ``TreeMaker``.
+  * Fixed EncodingWarnings and ResourceWarnings.</comment>
+    <requestid>1084888</requestid>
+  </revision>
 </revisionlist>
