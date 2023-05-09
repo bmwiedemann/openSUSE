@@ -119,4 +119,14 @@
 </comment>
     <requestid>1043084</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>48a4721111b90d4ef907dccca0a8c97f</srcmd5>
+    <version>1.1.1</version>
+    <time>1683630506</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Bugfix: Don't set length for largeBlob when offset is 0.
+  * Bugfix: Remove print statement in webauthn parsing.</comment>
+    <requestid>1085558</requestid>
+  </revision>
 </revisionlist>
