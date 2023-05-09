@@ -7,4 +7,12 @@
     <comment>Now required for python-pydata-sphinx-theme and python-sphinx-book-theme</comment>
     <requestid>909681</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f3c167d25e1f3d251fe2b2a9edfbfc86</srcmd5>
+    <version>2.2.0</version>
+    <time>1683630424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085219</requestid>
+  </revision>
 </revisionlist>
