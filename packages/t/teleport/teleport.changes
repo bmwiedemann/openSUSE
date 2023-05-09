@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue May 09 05:23:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 12.3.3:
+  * Release 12.3.3 (#25835)
+  * Fix access to leaf resources (#25694) (#25862)
+  * fix auditlog error (#25843)
+  * [v12] Include teleport-windows-auth in OSS releases (#25846)
+  * make some chatty dynamodb logs trace (#25821)
+  * Update e ref (#25831)
+  * Correct SAML IdP session read permission. (#25798)
+  * Fix Web UI error message when host is offline (#25661)
+  * [v12] Update e ref. (#25812)
+  * [v12] Add `SetFeatures` method to modules (#25653)
+  * add agent config scaling section (#25796)
+  * Update change log to include desktop access fix in 12.3.2
+    (#25793)
+  * [v12] docs: document "and" logic for labels (#25750)
+  * [v12] Log troubleshooting information when InvalidInstanceID
+    errors are found during EC2 discovery (#25641)
+  * [v12] docs: provide instructions on getting enterprise file
+    from new license Teleport Account (#25753)
+  * [v12] WebDiscover: Enroll RDS Databases and Hookup RDS flow
+    (#25604)
+  * Try to fix TestAgentPoolConnectionCount (#24616) (#25695)
+  * Support additional expected instance roles. (#25742)
+  * [v12] Use the GHA base container for Lint (Docs) (#25716)
+  * update eref (#25733)
+  * [v12] Add client compatibility to installation guide (#25685)
+  * [v12] Improve API client connection failure feedback (#25563)
+  * [v12] Refresh the HA guide (#25670)
+  * [v12] docs: fix claims to roles description in access controls
+    reference (#25633)
+  * Ensure useDocumentGateway creates the gateway only on mount
+    (#25626)
+  * [v12] docs: update cloud proxy service architecture language
+    (#25724)
+  * [v12] docs: move docs links from absolute to relative (#25736)
+  * [v12] use "google.golang.org/protobuf" to clone protobuf
+    messages (#25714)
+  * refactor theme in v12 (#25650)
+  * Add UserGroups to RequestableResourceKinds. (#25708)
+  * Don't report usage for KubeServiceV2 keepalives (#25656)
+  * docs: mention Machine ID where tctl auth sign is used (#25610)
+  * [v12] Update e-ref and icomoon library (#25665)
+  * backport missing deps (#25662)
+  * Update role-templates.mdx (#25628)
+  * Reuse auth connection for Okta client (#25622) (#25646)
+  * [v12] WebDiscover: Enroll aws integrations (#25594)
+
+-------------------------------------------------------------------
 Fri May 05 05:09:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.3.2:
