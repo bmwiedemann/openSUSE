@@ -1,0 +1,37 @@
+From 6e05e1fa1c2804410f9916b27edc07076e3b156d Mon Sep 17 00:00:00 2001
+From: Sagi Buchbinder-Shadur <saroad2@gmail.com>
+Date: Wed, 3 May 2023 11:16:59 -0400
+Subject: [PATCH] Update dependencies using pip-compile-multi (#2508)
+
+---
+ requirements/build.txt  | 14 +++++++-------
+ requirements/dev.txt    | 38 ++++++++++++++++++--------------------
+ requirements/docs.txt   | 38 +++++++++++++++++++-------------------
+ requirements/tests.txt  | 12 ++++++------
+ tests/test_arguments.py |  6 +++++-
+ 5 files changed, 55 insertions(+), 53 deletions(-)
+
+diff --git a/tests/test_arguments.py b/tests/test_arguments.py
+index 735df4b53..3395c552b 100644
+--- a/tests/test_arguments.py
++++ b/tests/test_arguments.py
+@@ -1,4 +1,5 @@
+ import sys
++from unittest import mock
+ 
+ import pytest
+ 
+@@ -86,9 +87,12 @@ def from_bytes(arg):
+         ), "UTF-8 encoded argument should be implicitly converted to Unicode"
+ 
+     # Simulate empty locale environment variables
+-    monkeypatch.setattr(sys.stdin, "encoding", "utf-8")
+     monkeypatch.setattr(sys, "getfilesystemencoding", lambda: "utf-8")
+     monkeypatch.setattr(sys, "getdefaultencoding", lambda: "utf-8")
++    # sys.stdin.encoding is readonly, needs some extra effort to patch.
++    stdin = mock.Mock(wraps=sys.stdin)
++    stdin.encoding = "utf-8"
++    monkeypatch.setattr(sys, "stdin", stdin)
+ 
+     runner.invoke(
+         from_bytes,

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 13:41:09 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- add fix-tests.patch to fix tests with new versions of python packages
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -27,6 +27,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/click
 Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pallets/click/commit/6e05e1fa1c2804410f9916b27edc07076e3b156d Update dependencies using pip-compile-multi (#2508)
+# our tests were failing in a staging because of some new version and upstream came across the issue while updating dependencies, hence the weird commit message
+Patch:          fix-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +48,7 @@ Line Interface Creation Kit". It is configurable, and comes with
 defaults out of the box.
 
 %prep
-%setup -q -n click-%{version}
+%autosetup -p1 -n click-%{version}
 
 %build
 %python_build
