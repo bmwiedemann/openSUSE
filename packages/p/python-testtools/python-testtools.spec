@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testtools%{psuffix}
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
@@ -38,18 +38,16 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-extras >= 1.0.0
 Requires:       python-pbr >= 0.11
 Requires:       python-python-mimeparse
 Requires:       python-traceback2
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module extras >= 1.0.0}
 BuildRequires:  %{python_module python-mimeparse}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module traceback2}
 %endif
-Recommends:     python-fixtures >= 1.3.0
+Recommends:     python-fixtures >= 2.0
 %python_subpackages
 
 %description

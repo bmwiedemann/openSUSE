@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  4 21:18:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * Add support for Python 3.10 and 3.11.
+  * Drop support for Python 3.5 (EOL).
+  * Use ``CompoundFixture`` from ``fixtures>=2.0`` rather than
+    rolling our own.
+  * Make ``TestCase`` hashable.
+  * Prevent ``AttributeError`` in ``TestCase.__eq__`` for objects
+    lacking a ``__dict__`` attribute.
+  * Replace deprecated ``cgi`` module usage with ``email``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -356,4 +356,20 @@
     <comment>SR for python stack proposal</comment>
     <requestid>1082306</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ef960f6405dadbe1f4d6c6c478078243</srcmd5>
+    <version>2.6.0</version>
+    <time>1683630372</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Add support for Python 3.10 and 3.11.
+  * Drop support for Python 3.5 (EOL).
+  * Use ``CompoundFixture`` from ``fixtures&gt;=2.0`` rather than
+    rolling our own.
+  * Make ``TestCase`` hashable.
+  * Prevent ``AttributeError`` in ``TestCase.__eq__`` for objects
+    lacking a ``__dict__`` attribute.
+  * Replace deprecated ``cgi`` module usage with ``email``.</comment>
+    <requestid>1084879</requestid>
+  </revision>
 </revisionlist>
