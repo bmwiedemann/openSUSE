@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycryptodome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%define min_version %{lua:rpm.expand("%{version}"):gsub("^(%d+%.%d+).*", "%1")}
 Name:           python-pycryptodome
-Version:        3.16.0
+Version:        3.17.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://www.pycryptodome.org
 Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz#/pycryptodome-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Provides:       python-pycrypto = %{version}
+Obsoletes:      python-pycrypto < %{version}
 %if !0%{?_no_weakdeps}
 # PyCryptodome uses gmp via cffi as runtime optimization
 # would be better, if libgmp* would provide gmp
 Suggests:       libgmp10
 Suggests:       python-cffi
 %endif
-Provides:       python-pycrypto = %{version}
-Obsoletes:      python-pycrypto < %{version}
 %ifpython2
 Provides:       %{oldpython}-pycrypto = %{version}
 Obsoletes:      %{oldpython}-pycrypto < %{version}
@@ -80,7 +79,7 @@ Python. Only the pieces that are extremely critical to performance
 (e.g. block ciphers) are implemented as C extensions.
 
 %prep
-%setup -q -n pycryptodome-%{version}
+%autosetup -p1 -n pycryptodome-%{version}
 
 %build
 export LC_ALL=en_US.UTF-8
@@ -102,6 +101,6 @@ popd}
 %license LICENSE.rst
 %doc AUTHORS.rst Changelog.rst README.rst
 %{python_sitearch}/Crypto/
-%{python_sitearch}/pycryptodome-%{version}-py*.egg-info
+%{python_sitearch}/pycryptodome-%{min_version}*-info
 
 %changelog
