@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  8 04:51:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  4 15:21:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.12.0:
+  * importlib_resources (backport) now gives
+    precedence to built-in readers (file system, zip,
+    namespace packages), providing forward-compatibility
+    of behaviors like ``MultiplexedPath``.
+  * #280: Fixed one more ``EncodingWarning`` in test suite.
+  * #265: ``MultiplexedPath`` now honors multiple subdirectories
+    in ``iterdir`` and ``joinpath``.
+  * Packaging refresh, including fixing EncodingWarnings
+    and some tests cleanup.
+
+-------------------------------------------------------------------
 Thu Feb  2 18:51:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Remove obsolete cache compilation for tests
