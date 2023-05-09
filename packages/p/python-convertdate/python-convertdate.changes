@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 18:59:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Drop official support for Python version 3.5 and 3.6, which
+    have reached end-of-life.
+  * Remove pytz dependency (#49)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
