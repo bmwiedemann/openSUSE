@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fake-useragent
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Useragent faker package for Python
 License:        Apache-2.0
@@ -34,8 +34,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib-resources
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module importlib-resources >= 5.12.0}
+BuildRequires:  %{python_module pytest >= 7.2.2}
 # /SECTION
 %python_subpackages
 
