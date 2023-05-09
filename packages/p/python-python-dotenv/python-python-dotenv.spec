@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-python-dotenv
-Version:        0.20.0
+Version:        1.0.0
 Release:        0
 Summary:        Python library for .env support
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source:         https://github.com/theskumar/python-dotenv/archive/v%{version}.t
 BuildRequires:  %{python_module click >= 5.0}
 BuildRequires:  %{python_module pytest >= 3.0.5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sh >= 1.09}
+BuildRequires:  %{python_module sh >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 5.0
@@ -46,7 +46,6 @@ Add .env support to your Django/Flask apps in development and deployments.
 
 %prep
 %setup -q -n python-dotenv-%{version}
-sed -i 's/import mock/import unittest.mock as mock/' tests/test_ipython.py tests/test_main.py
 
 %build
 export LANG=C.UTF-8

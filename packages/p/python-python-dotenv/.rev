@@ -102,4 +102,33 @@
     <comment></comment>
     <requestid>1083121</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4a180ce8f384523d92df716c539899a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1683630429</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Drop support for python 3.7, add python 3.12-dev
+  * Handle situations where the cwd does not exist.
+  * Use Python 3.11 non-beta in CI
+  * Modernize variables code
+  * Modernize main.py and parser.py code
+  * Improve conciseness of cli.py and __init__.py
+  * Improve error message for `get` and `list` commands when env
+    file can't be opened
+  * Updated License to align with BSD OSI template
+  * Fix Out-of-scope error when &quot;dest&quot; variable is undefined
+  * Fix IPython test warning about deprecated `magic`
+  * Fix type hint for dotenv_path var, add StrPath alias
+  * CLI: add support for invocations via 'python -m'.
+  * `load_dotenv` function now returns `False`.
+  * CLI: add --format= option to list command.
+  * Drop Python 3.5 and 3.6 and upgrade GA
+  * Use `open` instead of `io.open`.
+  * Improve documentation for variables without a value
+  * Add `parse_it` to Related Projects
+  * Update README.md
+  * Improve documentation with direct use of MkDocs</comment>
+    <requestid>1085289</requestid>
+  </revision>
 </revisionlist>

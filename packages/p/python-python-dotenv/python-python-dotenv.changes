@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May  7 09:14:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Drop support for python 3.7, add python 3.12-dev
+  * Handle situations where the cwd does not exist.
+  * Use Python 3.11 non-beta in CI
+  * Modernize variables code
+  * Modernize main.py and parser.py code
+  * Improve conciseness of cli.py and __init__.py
+  * Improve error message for `get` and `list` commands when env
+    file can't be opened
+  * Updated License to align with BSD OSI template
+  * Fix Out-of-scope error when "dest" variable is undefined
+  * Fix IPython test warning about deprecated `magic`
+  * Fix type hint for dotenv_path var, add StrPath alias
+  * CLI: add support for invocations via 'python -m'.
+  * `load_dotenv` function now returns `False`.
+  * CLI: add --format= option to list command.
+  * Drop Python 3.5 and 3.6 and upgrade GA
+  * Use `open` instead of `io.open`.
+  * Improve documentation for variables without a value
+  * Add `parse_it` to Related Projects
+  * Update README.md
+  * Improve documentation with direct use of MkDocs
+
+-------------------------------------------------------------------
 Wed Apr 26 01:56:00 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove duplicate sle15_python_module_pythons
