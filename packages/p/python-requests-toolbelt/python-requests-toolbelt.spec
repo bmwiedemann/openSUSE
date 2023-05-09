@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-requests-toolbelt
-Version:        0.9.1
+Version:        1.0.0
 Release:        0
 Summary:        A utility belt for advanced users of python3-requests
 License:        Apache-2.0
@@ -27,15 +26,12 @@ URL:            https://github.com/requests/toolbelt
 Source:         https://files.pythonhosted.org/packages/source/r/requests-toolbelt/requests-toolbelt-%{version}.tar.gz
 # Replace expired test certificate
 Source1:        test_cert.p12
-Patch0:         fix-tests.patch
-# PATCH-FIX-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
-# remove dependency on the external mock package
-Patch1:         remove_mock.patch
-# PATCH-FIX-UPSTREAM requests-toolbelt-pr246-collections.abc.patch -- fix python310 deprecation. gh#requests/toolbelt#246
-Patch2:         https://github.com/requests/toolbelt/pull/246.patch#/requests-toolbelt-pr246-collections.abc.patch
 # PATCH-FIX-OPENSUSE Stop using PyOpenSSLCompat, it generates widespread
 # DeprecationWarnings
-Patch3:         stop-using-pyopenssl-compat.patch
+Patch0:         stop-using-pyopenssl-compat.patch
+# PATCH-FIX-UPSTREAM 356-add-missing-casette-files.patch gh#requests/toolbelt!356 mcepl@suse.com
+# add missing casette files
+Patch1:         356-add-missing-casette-files.patch
 BuildRequires:  %{python_module requests >= 2.12.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +43,8 @@ BuildRequires:  %{python_module betamax >= 0.5.0}
 # gh#pyca/cryptography#5606
 BuildRequires:  %{python_module pyOpenSSL >= 19.1.0}
 BuildRequires:  %{python_module pytest}
-%if 0%{suse_version} <= 1500
+BuildRequires:  %{python_module trustme}
+%if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
 %endif
 # /SECTION
@@ -78,11 +75,13 @@ export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 export OPENSSL_CONF=''
 
 # Requires network access
-%pytest -k 'not (TestFileFromURLWrapper or test_reads_file_from_url_wrapper)'
+%pytest
+# -k 'not network'
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/requests_toolbelt
+%{python_sitelib}/requests_toolbelt-%{version}*-info
 
 %changelog

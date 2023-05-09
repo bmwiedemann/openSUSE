@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  4 18:10:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 1.0.0:
+  - Breaking Changes
+    - Removed Google App Engine support to allow using urllib3 2.0
+  - New Features
+    - Add support for preparing requests in BaseUrlSession
+  - Fixed Bugs
+    - Ensured the test suite no longer reaches the Internet
+    - Fix urllib3 warning to only emit on X509Adapter usage
+    - Fixing missing newline in dump utility
+  - Miscellaneous
+    - Added explicit support for Python 3.11
+- Remove upstreamed patches:
+  - fix-tests.patch
+  - remove_mock.patch
+  - requests-toolbelt-pr246-collections.abc.patch
+- Add 356-add-missing-casette-files.patch which adds missing
+  casette test files (gh#requests/toolbelt!356).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

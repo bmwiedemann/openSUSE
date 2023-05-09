@@ -1,7 +1,9 @@
-Index: requests-toolbelt-0.9.1/requests_toolbelt/adapters/x509.py
-===================================================================
---- requests-toolbelt-0.9.1.orig/requests_toolbelt/adapters/x509.py
-+++ requests-toolbelt-0.9.1/requests_toolbelt/adapters/x509.py
+---
+ requests_toolbelt/adapters/x509.py |   27 ++++-----------------------
+ 1 file changed, 4 insertions(+), 23 deletions(-)
+
+--- a/requests_toolbelt/adapters/x509.py
++++ b/requests_toolbelt/adapters/x509.py
 @@ -8,6 +8,7 @@ X.509 certificate without needing to con
  """
  
@@ -10,11 +12,8 @@ Index: requests-toolbelt-0.9.1/requests_toolbelt/adapters/x509.py
  from cryptography import x509
  from cryptography.hazmat.primitives.serialization import (load_pem_private_key,
                                                            load_der_private_key)
-@@ -18,19 +19,8 @@ from datetime import datetime
- from requests.adapters import HTTPAdapter
- import requests
+@@ -20,16 +21,6 @@ import requests
  
--from .._compat import PyOpenSSLContext
  from .. import exceptions as exc
  
 -"""
@@ -28,25 +27,25 @@ Index: requests-toolbelt-0.9.1/requests_toolbelt/adapters/x509.py
 -    from _ssl import PROTOCOL_SSLv23 as PROTOCOL
 -
  
- class X509Adapter(HTTPAdapter):
-     r"""Adapter for use with X.509 certificates.
-@@ -81,7 +71,6 @@ class X509Adapter(HTTPAdapter):
-     """
+ PyOpenSSLContext = None
+ 
+@@ -84,7 +75,6 @@ class X509Adapter(HTTPAdapter):
  
      def __init__(self, *args, **kwargs):
+         self._import_pyopensslcontext()
 -        self._check_version()
          cert_bytes = kwargs.pop('cert_bytes', None)
          pk_bytes = kwargs.pop('pk_bytes', None)
          password = kwargs.pop('password', None)
-@@ -118,15 +107,6 @@ class X509Adapter(HTTPAdapter):
-             kwargs['ssl_context'] = self.ssl_context
-         return super(X509Adapter, self).proxy_manager_for(*args, **kwargs)
+@@ -136,15 +126,6 @@ class X509Adapter(HTTPAdapter):
+                 except ImportError:
+                     PyOpenSSLContext = None
  
 -    def _check_version(self):
 -        if PyOpenSSLContext is None:
 -            raise exc.VersionMismatchError(
 -                "The X509Adapter requires at least Requests 2.12.0 to be "
--                "installed. Version {0} was found instead.".format(
+-                "installed. Version {} was found instead.".format(
 -                    requests.__version__
 -                )
 -            )
@@ -54,7 +53,7 @@ Index: requests-toolbelt-0.9.1/requests_toolbelt/adapters/x509.py
  
  def check_cert_dates(cert):
      """Verify that the supplied client cert is not invalid."""
-@@ -172,7 +152,7 @@ def create_ssl_context(cert_byes, pk_byt
+@@ -190,7 +171,7 @@ def create_ssl_context(cert_byes, pk_byt
          raise ValueError('Cert and key could not be parsed from '
                           'provided data')
      check_cert_dates(cert)
@@ -65,26 +64,3 @@ Index: requests-toolbelt-0.9.1/requests_toolbelt/adapters/x509.py
 +    ssl_context.use_certificate(X509.from_cryptography(cert))
 +    ssl_context.use_privatekey(PKey.from_cryptography_key(key))
      return ssl_context
-Index: requests-toolbelt-0.9.1/requests_toolbelt/_compat.py
-===================================================================
---- requests-toolbelt-0.9.1.orig/requests_toolbelt/_compat.py
-+++ requests-toolbelt-0.9.1/requests_toolbelt/_compat.py
-@@ -49,17 +49,7 @@ else:
-     except ImportError:
-         from urllib3.contrib import appengine as gaecontrib
- 
--if requests.__build__ < 0x021200:
--    PyOpenSSLContext = None
--else:
--    try:
--        from requests.packages.urllib3.contrib.pyopenssl \
--                import PyOpenSSLContext
--    except ImportError:
--        try:
--            from urllib3.contrib.pyopenssl import PyOpenSSLContext
--        except ImportError:
--            PyOpenSSLContext = None
-+PyOpenSSLContext = None
- 
- PY3 = sys.version_info > (3, 0)
- 
