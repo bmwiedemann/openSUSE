@@ -1,35 +1,35 @@
-Index: proxy.py-2.3.1/README.md
+Index: proxy.py-2.4.3/README.md
 ===================================================================
---- proxy.py-2.3.1.orig/README.md
-+++ proxy.py-2.3.1/README.md
-@@ -231,14 +231,14 @@ or from GitHub `master` branch
+--- proxy.py-2.4.3.orig/README.md
++++ proxy.py-2.4.3/README.md
+@@ -370,14 +370,14 @@ Updated formulae for `HomeBrew` are main
  ## From command line when installed using PIP
  
  When `proxy.py` is installed using `pip`,
 -an executable named `proxy` is placed under your `$PATH`.
 +an executable named `proxy-py` is placed under your `$PATH`.
  
- #### Run it
+ ### Run it
  
--Simply type `proxy` on command line to start it with default configuration.
-+Simply type `proxy-py` on command line to start it with default configuration.
+-Simply type `proxy` on command line to start with default configuration.
++Simply type `proxy-py` on command line to start with default configuration.
  
- ```bash
+ ```console
 -❯ proxy
 +❯ proxy-py
- ...[redacted]... - Loaded plugin proxy.http_proxy.HttpProxyPlugin
- ...[redacted]... - Starting 8 workers
- ...[redacted]... - Started server on ::1:8899
-@@ -268,7 +268,7 @@ All the logs above are `INFO` level logs
+ ...[redacted]... - Loaded plugin proxy.http.proxy.HttpProxyPlugin
+ ...[redacted]... - Started 8 threadless workers
+ ...[redacted]... - Started 8 acceptors
+@@ -417,7 +417,7 @@ All the logs above are `INFO` level logs
  Lets start `proxy.py` with `DEBUG` level logging:
  
- ```bash
+ ```console
 -❯ proxy --log-level d
 +❯ proxy-py --log-level d
  ...[redacted]... - Open file descriptor soft limit set to 1024
  ...[redacted]... - Loaded plugin proxy.http_proxy.HttpProxyPlugin
  ...[redacted]... - Started 8 workers
-@@ -286,7 +286,7 @@ See [flags](#flags) for full list of ava
+@@ -442,7 +442,7 @@ See [flags](#flags) for full list of ava
  ## From command line using repo source
  
  If you are trying to run `proxy.py` from source code,
@@ -38,106 +38,218 @@ Index: proxy.py-2.3.1/README.md
  
  To start `proxy.py` from source code follow these instructions:
  
-@@ -362,7 +362,7 @@ Add support for short links in your favo
+@@ -526,7 +526,7 @@ Add support for short links in your favo
  Start `proxy.py` as:
  
- ```bash
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --plugins proxy.plugin.ShortLinkPlugin
  ```
  
-@@ -391,7 +391,7 @@ Modifies POST request body before sendin
+@@ -555,7 +555,7 @@ Modifies POST request body before sendin
  Start `proxy.py` as:
  
- ```bash
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --plugins proxy.plugin.ModifyPostDataPlugin
  ```
  
-@@ -445,7 +445,7 @@ without need of an actual upstream REST
+@@ -609,7 +609,7 @@ without need of an actual upstream REST
  Start `proxy.py` as:
  
- ```bash
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --plugins proxy.plugin.ProposedRestApiPlugin
  ```
  
-@@ -476,7 +476,7 @@ also running on `8899` port.
+@@ -640,7 +640,7 @@ also running on `8899` port.
  Start `proxy.py` and enable inbuilt web server:
  
- ```bash
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --enable-web-server \
      --plugins proxy.plugin.RedirectToCustomServerPlugin
  ```
-@@ -510,7 +510,7 @@ By default, plugin drops traffic for `go
+@@ -674,7 +674,7 @@ By default, plugin drops traffic for `fa
  Start `proxy.py` as:
  
- ```bash
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --plugins proxy.plugin.FilterByUpstreamHostPlugin
  ```
  
-@@ -619,7 +619,7 @@ Modifies upstream server responses.
+@@ -707,7 +707,7 @@ Caches Upstream Server Responses.
  Start `proxy.py` as:
  
- ```bash
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.CacheResponsesPlugin
+ ```
+ 
+@@ -785,7 +785,7 @@ Modifies upstream server responses.
+ Start `proxy.py` as:
+ 
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --plugins proxy.plugin.ManInTheMiddlePlugin
  ```
  
-@@ -804,7 +804,7 @@ make https-certificates
+@@ -810,18 +810,18 @@ Let's start 2 upstream proxies first.  T
+ start `proxy.py` on port `9000` and `9001`
+ 
+ ```console
+-❯ proxy --port 9000
++❯ proxy-py --port 9000
+ ```
+ 
+ ```console
+-❯ proxy --port 9001
++❯ proxy-py --port 9001
+ ```
+ 
+ Now, start `proxy.py` with `ProxyPoolPlugin` (on default `8899` port),
+ pointing to our upstream proxies at `9000` and `9001` port.
+ 
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ProxyPoolPlugin \
+     --proxy-pool localhost:9000 \
+     --proxy-pool localhost:9001
+@@ -846,7 +846,7 @@ plugin blocks traffic from `127.0.0.1` a
  Start `proxy.py` as:
  
- ```bash
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.FilterByClientIpPlugin
+ ```
+ 
+@@ -871,7 +871,7 @@ This plugin demonstrate how to modify ch
+ Start `proxy.py` as:
+ 
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ModifyChunkResponsePlugin
+ ```
+ 
+@@ -903,7 +903,7 @@ does not provide that yet, so we use a d
+ Now start `proxy.py` as:
+ 
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.CloudflareDnsResolverPlugin
+ ```
+ 
+@@ -919,7 +919,7 @@ to your taste.  Example, query your cust
+ Start `proxy.py` as:
+ 
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.CustomDnsResolverPlugin
+ ```
+ 
+@@ -941,7 +941,7 @@ If identified, client IP in the access l
+ Start `proxy.py` as:
+ 
+ ```console
+-❯ proxy \
++❯ proxy-py \
+     --plugins proxy.plugin.ProgramNamePlugin
+ ```
+ 
+@@ -970,7 +970,7 @@ Demonstrates inbuilt web server routing
+ Start `proxy.py` as:
+ 
+ ```console
+-❯ proxy --enable-web-server \
++❯ proxy-py --enable-web-server \
+     --plugins proxy.plugin.WebServerPlugin
+ ```
+ 
+@@ -989,7 +989,7 @@ Extends in-built Web Server to add Rever
+ Start `proxy.py` as:
+ 
+ ```console
+-❯ proxy --enable-reverse-proxy \
++❯ proxy-py --enable-reverse-proxy \
+     --plugins proxy.plugin.ReverseProxyPlugin
+ ```
+ 
+@@ -1046,7 +1046,7 @@ make https-certificates
+ Start `proxy.py` as:
+ 
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --cert-file https-cert.pem \
      --key-file https-key.pem
  ```
-@@ -853,7 +853,7 @@ Lets also enable `CacheResponsePlugin` s
+@@ -1095,7 +1095,7 @@ Lets also enable `CacheResponsePlugin` s
  response from the server. Start `proxy.py` as:
  
- ```bash
+ ```console
 -❯ proxy \
 +❯ proxy-py \
      --plugins proxy.plugin.CacheResponsesPlugin \
      --ca-key-file ca-key.pem \
      --ca-cert-file ca-cert.pem \
-@@ -1052,7 +1052,7 @@ Start `proxy.py` as:
+@@ -1297,7 +1297,7 @@ Start `proxy.py` as:
  
- ```bash
+ ```console
  ❯ # On localhost
 -❯ proxy --enable-tunnel \
 +❯ proxy-py --enable-tunnel \
      --tunnel-username username \
      --tunnel-hostname ip.address.or.domain.name \
      --tunnel-port 22 \
-@@ -1669,7 +1669,7 @@ few obvious ones include:
+@@ -1757,7 +1757,7 @@ Also build the embedded `Chrome DevTools
+ Now start `proxy.py` with dashboard plugin and by overriding root directory for static server:
+ 
+ ```console
+-❯ proxy --enable-dashboard --static-server-dir dashboard/public
++❯ proxy-py --enable-dashboard --static-server-dir dashboard/public
+ ...[redacted]... - Loaded plugin proxy.http.server.HttpWebServerPlugin
+ ...[redacted]... - Loaded plugin proxy.dashboard.dashboard.ProxyDashboard
+ ...[redacted]... - Loaded plugin proxy.dashboard.inspect_traffic.InspectTrafficPlugin
+@@ -1794,7 +1794,7 @@ For scenarios where you want direct acce
+ start `proxy.py` as:
+ 
+ ```console
+-❯ proxy --enable-devtools --enable-events
++❯ proxy-py --enable-devtools --enable-events
+ ```
+ 
+ Now point your CDT instance to `ws://localhost:8899/devtools`.
+@@ -2278,7 +2278,7 @@ To run standalone benchmark for `proxy.p
  # Flags
  
- ```bash
+ ```console
 -❯ proxy -h
 +❯ proxy-py -h
- usage: proxy [-h] [--threadless] [--backlog BACKLOG] [--enable-events]
-           [--hostname HOSTNAME] [--port PORT] [--num-workers NUM_WORKERS]
-           [--client-recvbuf-size CLIENT_RECVBUF_SIZE] [--key-file KEY_FILE]
-Index: proxy.py-2.3.1/setup.py
+ usage: -m [-h] [--tunnel-hostname TUNNEL_HOSTNAME] [--tunnel-port TUNNEL_PORT]
+           [--tunnel-username TUNNEL_USERNAME]
+           [--tunnel-ssh-key TUNNEL_SSH_KEY]
+Index: proxy.py-2.4.3/setup.cfg
 ===================================================================
---- proxy.py-2.3.1.orig/setup.py
-+++ proxy.py-2.3.1/setup.py
-@@ -40,7 +40,7 @@ if __name__ == '__main__':
-         install_requires=open('requirements.txt', 'r').read().strip().split(),
-         entry_points={
-             'console_scripts': [
--                'proxy = proxy:entry_point'
-+                'proxy-py = proxy:entry_point'
-             ]
-         },
-         classifiers=[
+--- proxy.py-2.4.3.orig/setup.cfg
++++ proxy.py-2.4.3/setup.cfg
+@@ -109,7 +109,7 @@ install_requires =
+ 
+ [options.entry_points]
+ console_scripts =
+-  proxy = proxy:entry_point
++  proxy-py = proxy:entry_point
+ 
+ [options.package_data]
+ proxy =

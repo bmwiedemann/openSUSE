@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proxy.py
-Version:        2.3.1
+Version:        2.4.3
 Release:        0
 Summary:        TLS interception capable proxy server
 License:        BSD-3-Clause
@@ -29,16 +28,20 @@ URL:            https://github.com/abhinavsingh/proxy.py
 Source:         https://github.com/abhinavsingh/proxy.py/archive/refs/tags/v%{version}.tar.gz#/proxy.py-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE proxy.py-command.patch -- deconflict with libproxy, code@bnavigator.de
 Patch0:         proxy.py-command.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing-extensions >= 3.7.4.3
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions >= 3.7.4.3}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  openssl
 # /SECTION
 %python_subpackages
@@ -53,15 +56,15 @@ Note: On SUSE distributions, the command is installed as proxy-py not as proxy.
 %autosetup -p1 -n proxy.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/proxy-py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest --ignore tests/http/proxy/test_http2.py --ignore tests/integration/test_integration.py
 
 %post
 %python_install_alternative proxy-py

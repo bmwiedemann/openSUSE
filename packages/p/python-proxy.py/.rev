@@ -15,4 +15,171 @@
     <comment></comment>
     <requestid>1081823</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36eb53e4129abe213cd8a746f068eb48</srcmd5>
+    <version>2.4.3</version>
+    <time>1683630401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.3:
+  * v2.4.2 by @abhinavsingh in #1158
+  * pip prod(deps): bump blacksheep from 1.2.2 to 1.2.7 by @dependabot in #1161
+  * Bump fregante/setup-git-user from 1.0.1 to 1.1.0 by @dependabot in #1160
+  * npm: bump ts-node from 10.7.0 to 10.8.0 in /dashboard by @dependabot in #1159
+  * npm: bump ws from 8.5.0 to 8.6.0 in /dashboard by @dependabot in #1165
+  * pip prod(deps): bump pytest from 6.2.5 to 7.0.1 by @dependabot in #1164
+  * pip prod(deps): bump rope from 0.22.0 to 1.1.1 by @dependabot in #1167
+  * pip prod(deps): bump starlette from 0.17.1 to 0.19.1 by @dependabot in #1168
+  * pip prod(deps): bump mypy from 0.940 to 0.960 by @dependabot in #1170
+  * Bump actions/cache from 3.0.2 to 3.0.4 by @dependabot in #1185
+  * Bump actions/setup-python from 3 to 4 by @dependabot in #1186
+  * pip prod(deps): bump py-spy from 0.3.11 to 0.3.12 by @dependabot in #1174
+  * pip prod(deps): bump mypy from 0.960 to 0.961 by @dependabot in #1187
+  * Add support for dynamic reverse proxy routing by @abhinavsingh in #1180
+  * [v2.4.3] Support for dynamic reverse proxy routes by @abhinavsingh in #1188
+- 2.4.2:
+  * Bump actions/setup-python from 2 to 3 by @dependabot in #1110
+  * npm: bump chrome-devtools-frontend from 1.0.956881 to 1.0.980332 in /dashboard by @dependabot in #1109
+  * pip prod(deps): bump mypy from 0.931 to 0.940 by @dependabot in #1111
+  * pip prod(deps): bump furo from 2022.1.2 to 2022.3.4 by @dependabot in #1113
+  * Fix Towncrier link by @abhinavsingh in #1119
+  * Bump actions/cache from 2.1.7 to 3.0.1 by @dependabot in #1118
+  * pip prod(deps): bump paramiko from 2.9.2 to 2.10.3 by @dependabot in #1116
+  * npm: bump @types/jquery from 3.5.13 to 3.5.14 in /dashboard by @dependabot in #1115
+  * Bump ncipollo/release-action from 1.9.0 to 1.10.0 by @dependabot in #1120
+  * Bump actions/upload-artifact from 2 to 3 by @dependabot in #1124
+  * npm: bump async from 2.6.3 to 2.6.4 in /dashboard by @dependabot in #1125
+  * Fix myst_parser config by @abhinavsingh in #1128
+  * [FilterByClientIpPlugin] Implement the whitelist logic by @LetMeR00t in #1127
+  * Bump actions/cache from 3.0.1 to 3.0.2 by @dependabot in #1126
+  * npm: bump jasmine from 4.0.0 to 4.0.2 in /dashboard by @dependabot in #1122
+  * Bump actions/download-artifact from 2 to 3 by @dependabot in #1133
+  * pip prod(deps): bump pylint from 2.12.2 to 2.13.7 by @dependabot in #1129
+  * npm: bump ws from 8.4.2 to 8.5.0 in /dashboard by @dependabot in #1134
+  * Bump codecov/codecov-action from 2 to 3 by @dependabot in #1137
+  * npm: bump ts-node from 7.0.1 to 10.7.0 in /dashboard by @dependabot in #1136
+  * npm: bump @types/js-cookie from 3.0.1 to 3.0.2 in /dashboard by @dependabot in #1138
+  * Bump github/codeql-action from 1 to 2 by @dependabot in #1140
+  * npm: bump eslint-plugin-import from 2.25.4 to 2.26.0 in /dashboard by @dependabot in #1139
+  * Upgrade paramiko to avoid blowfish ciphers by @abhinavsingh in #1149
+  * Bump docker/login-action from 1 to 2 by @dependabot in #1144
+  * Bump docker/setup-buildx-action from 1 to 2 by @dependabot in #1151
+  * npm: bump jasmine and @types/jasmine in /dashboard by @dependabot in #1150
+  * pip prod(deps): bump furo from 2022.3.4 to 2022.4.7 by @dependabot in #1143
+  * npm: bump http-server from 14.0.0 to 14.1.0 in /dashboard by @dependabot in #1153
+  * pip prod(deps): bump tox from 3.24.5 to 3.25.0 by @dependabot in #1152
+  * pip prod(deps): bump httpx from 0.21.3 to 0.22.0 by @dependabot in #1157
+  * v2.4.2 (#1158) by @abhinavsingh in #1162
+- 2.4.1:
+  * Register for signals only when running in main thread by @abhinavsingh in #1087
+  * npm: bump follow-redirects from 1.11.0 to 1.14.8 in /dashboard by @dependabot in #1090
+  * v2.4.1 by @abhinavsingh in #1092
+  * Pin myst-parser to avoid CI break by @abhinavsingh in #1104
+  * Bump actions/setup-node from 2 to 3 by @dependabot in #1097
+  * Bump actions/checkout from 2 to 3 by @dependabot in #1106
+  * pip prod(deps): bump types-setuptools from 57.4.7 to 57.4.10 by @dependabot in #1105
+  * Upgrade wemake-python-styleguide by @abhinavsingh in #1107
+- 2.4.0:
+  * Add proxy auth test coverage by @abhinavsingh in #496
+  * Update tox to 3.21.4 by @pyup-bot in #497
+  * Update autopep8 to 1.5.5 by @pyup-bot in #499
+  * Update pylint to 2.6.2 by @pyup-bot in #501
+  * Fix mypy errors by @abhinavsingh in #504
+  * Update tox to 3.22.0 by @pyup-bot in #502
+  * Update mypy to 0.812 by @pyup-bot in #503
+  * Update pylint to 2.7.1 by @pyup-bot in #506
+  * Update coverage to 5.5 by @pyup-bot in #508
+  * Update pylint to 2.7.2 by @pyup-bot in #509
+  * Update tox to 3.23.0 by @pyup-bot in #510
+  * Update twine to 3.4.1 by @pyup-bot in #517
+  * Update flake8 to 3.9.0 by @pyup-bot in #514
+  * Update autopep8 to 1.5.6 by @pyup-bot in #516
+  * Update py-spy to 0.3.5 by @pyup-bot in #522
+  * chore: Refactor code quality issues by @akshgpt7 in #523
+  * Update pylint to 2.7.3 by @pyup-bot in #524
+  * Bump y18n from 3.2.1 to 3.2.2 in /dashboard by @dependabot in #526
+  * Update pylint to 2.7.4 by @pyup-bot in #527
+  * Move wheel package to testing by @abhinavsingh in #531
+  * Update pytest to 6.2.3 by @pyup-bot in #532
+  * Update flake8 to 3.9.1 by @pyup-bot in #538
+  * Update rope to 0.19.0 by @pyup-bot in #539
+  * Update pylint to 2.8.0 by @pyup-bot in #540
+  * Update pylint to 2.8.1 by @pyup-bot in #541
+  * Update pylint to 2.8.2 by @pyup-bot in #542
+  * Update autopep8 to 1.5.7 by @pyup-bot in #543
+  * Update typing-extensions to 3.10.0.0 by @pyup-bot in #544
+  * Update pytest to 6.2.4 by @pyup-bot in #545
+  * Update tox to 3.23.1 by @pyup-bot in #546
+  * Update py-spy to 0.3.6 by @pyup-bot in #547
+  * Update flake8 to 3.9.2 by @pyup-bot in #549
+  * Bump hosted-git-info from 2.8.5 to 2.8.9 in /dashboard by @dependabot in #548
+  * Bump lodash from 4.17.19 to 4.17.21 in /dashboard by @dependabot in #550
+  * Update pytest-cov to 2.12.0 by @pyup-bot in #552
+  * Update py-spy to 0.3.7 by @pyup-bot in #555
+  * Bump ws from 7.4.0 to 7.4.6 in /dashboard by @dependabot in #556
+  * Update pylint to 2.8.3 by @pyup-bot in #558
+  * Update pytest-cov to 2.12.1 by @pyup-bot in #561
+  * Bump glob-parent from 5.1.1 to 5.1.2 in /dashboard by @dependabot in #564
+  * Update pylint to 2.9.3 by @pyup-bot in #573
+  * Update tox to 3.24.0 by @pyup-bot in #575
+  * Update twine to 3.4.2 by @pyup-bot in #576
+  * Update pylint to 2.9.5 by @pyup-bot in #577
+  * Update wheel to 0.37.0 by @pyup-bot in #585
+  * Update codecov to 2.1.12 by @pyup-bot in #582
+  * Update typing-extensions to 3.10.0.2 by @pyup-bot in #599
+  * Update pytest to 6.2.5 by @pyup-bot in #598
+  * Update tox to 3.24.3 by @pyup-bot in #592
+  * Update pylint to 2.10.2 by @pyup-bot in #591
+  * Bump path-parse from 1.0.6 to 1.0.7 in /dashboard by @dependabot in #586
+  * Update py-spy to 0.3.9 by @pyup-bot in #604
+  * Update rope to 0.20.1 by @pyup-bot in #611
+  * Update pylint to 2.11.1 by @pyup-bot in #609
+  * Update tox to 3.24.4 by @pyup-bot in #607
+  * add paramiko types for mypy compliance by @abhinavsingh in #613
+  * Update py-spy to 0.3.10 by @pyup-bot in #616
+  * Update coverage to 6.0 by @pyup-bot in #618
+  * Update pytest-cov to 3.0.0 by @pyup-bot in #619
+  * Update types-paramiko to 2.7.1 by @pyup-bot in #620
+  * Update coverage to 6.0.1 by @pyup-bot in #623
+  * Update paramiko to 2.8.0 by @pyup-bot in #624
+  * Update coverage to 6.0.2 by @pyup-bot in #628
+  * Update types-paramiko to 2.7.2 by @pyup-bot in #629
+  * Update types-paramiko to 2.7.3 by @pyup-bot in #630
+  * Update rope to 0.21.0 by @pyup-bot in #631
+  * Update flake8 to 4.0.1 by @pyup-bot in #627
+  * Add support for 3.10 by @abhinavsingh in #637
+  * v3.4.0 by @abhinavsingh in #638
+  * Update autopep8 to 1.6.0 by @pyup-bot in #632
+  * Fix the typing_extensions runtime dependency version by @webknjaz in #641
+  * Update coverage to 6.1 by @pyup-bot in #640
+  * Fix path to dashboard.png by @abhinavsingh in #643
+  * [ImgBot] Optimize images by @imgbot in #644
+  * Update coverage to 6.1.1 by @pyup-bot in #646
+  * Async proxy pool, Event manager, Custom access log, Expose loop to plugins by @abhinavsingh in #645
+  * Add tox envs for building dists via PEP 517 by @webknjaz in #647
+  * Revert &quot;Upgrade master to develop in setup.py&quot; by @webknjaz in #650
+  * Add a no-op check job to GHA for branch protection by @webknjaz in #652
+  * Add a config for YAMLLint by @webknjaz in #653
+  * Add a config for flake8 by @webknjaz in #654
+  * Correct spelling mistakes caught by codespell by @webknjaz in #656
+  * Add a config for pylint by @webknjaz in #655
+  * Organize the linting setup around tox+pre-commit by @webknjaz in #657
+  * Make the YAML files follow consistent style by @webknjaz in #658
+  * Add autocancellation of the stale PR GHA jobs by @webknjaz in #663
+  * Update twine to 3.5.0 by @pyup-bot in #665
+  * Enable the add-trailing-comma pre-commit fixer by @webknjaz in #661
+  * Migrate the pytest invocation to tox by @webknjaz in #662
+  * Pre-install mypy deps in pre-commit.ci by @webknjaz in #666
+  * Fix the YTT201 flake8 violation by @webknjaz in #667
+  * Make names in the GHA lib workflow short by @webknjaz in #669
+  * Update outdated sections of the codebase by @abhinavsingh in #670
+  * Make pytest emit XML coverage by @webknjaz in #673
+  * CustomDnsResolver plugin, CloudflareDnsResolver plugin, Allow plugins to configure network interface by @abhinavsingh in #671
+  * Add tests for missing core modules by @abhinavsingh in #674
+  * Use core loop for reverse proxy async IO operations by @abhinavsingh in #675
+  * Collect coverage for tests/ by @webknjaz in #677
+  * Allow pylint to utilize all available CPU cores by @webknjaz in #676
+  * Add a config for Coverage.py by @webknjaz i...
+</comment>
+    <requestid>1085022</requestid>
+  </revision>
 </revisionlist>
