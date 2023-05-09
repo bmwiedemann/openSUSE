@@ -33,9 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django > 3.2
-%if 0%{?python_version_nodots} < 38
 Requires:       python-typing_extensions >= 3.10
-%endif
 BuildArch:      noarch
 %python_subpackages
 
