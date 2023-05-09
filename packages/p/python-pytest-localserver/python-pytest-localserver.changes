@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 22:19:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Update SMTP server code to work with aiosmtpd >=1.4.3
+  * Add support for Python 3.11 (or at least, list it explicitly
+    in the classifiers)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

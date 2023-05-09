@@ -22,7 +22,7 @@
 %bcond_with extras
 %{?sle15_python_module_pythons}
 Name:           python-pytest-localserver
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Plugin for py.test to test server connections locally
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module aiosmtpd}
 %endif
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.0.0}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -72,7 +73,7 @@ sed -i "1d" pytest_localserver/{plugin,smtp}.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest %{?jobs: -n %jobs}
 
 %files %{python_files}
 %doc README.rst

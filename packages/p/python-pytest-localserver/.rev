@@ -52,4 +52,15 @@
     <comment></comment>
     <requestid>1082433</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b706fce7fcbed8a639787c0544cd704a</srcmd5>
+    <version>0.7.1</version>
+    <time>1683630382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.1:
+  * Update SMTP server code to work with aiosmtpd &gt;=1.4.3
+  * Add support for Python 3.11 (or at least, list it explicitly
+    in the classifiers)</comment>
+    <requestid>1084891</requestid>
+  </revision>
 </revisionlist>
