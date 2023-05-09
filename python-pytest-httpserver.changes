@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  4 22:25:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Add a new way of running tests with the blocking mode. In
+    this mode, the http server is synchronized to the main thread
+    and the client code is run in a separate thread.
+  * Python version classifier updated in pyproject.toml (which
+    updates pypi also)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
