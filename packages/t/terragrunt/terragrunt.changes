@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 09 05:41:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.10:
+  * fix: avoid double-rendering `terraform init` output (#2558)
+
+-------------------------------------------------------------------
 Fri May 05 10:42:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.9:
