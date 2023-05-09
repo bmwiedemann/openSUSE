@@ -26,6 +26,8 @@ ExclusiveArch:  x86_64 aarch64
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
 Version:        3.6.3
 Release:        0
