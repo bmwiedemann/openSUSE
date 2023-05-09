@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  7 10:48:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.1:
+  + Clean-up python support
+  + Drop python2 support
+  + Add option for building tests
+  + Only run python tests when python is enabled
+  + Fix get_gps_info() return data with unset altitude
+  + Fix generate_xmp_packet() ignoring its parameters
+  + Fix gexiv2-tool to call initialize()
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Wed Dec  1 20:38:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Set pythons python3 define, only build for python 3, following

@@ -1,7 +1,7 @@
 #
 # spec file for package libgexiv2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pythons python3
 
 Name:           libgexiv2
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later
@@ -29,14 +29,14 @@ URL:            https://wiki.gnome.org/Projects/gexiv2
 Source0:        https://download.gnome.org/sources/gexiv2/0.14/%{tarname}-%{version}.tar.xz
 Source99:       baselibs.conf
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-gobject-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject-devel
 BuildRequires:  pkgconfig(exiv2) >= 0.26
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
@@ -98,8 +98,7 @@ This package provides the Python 3 bindings for the libgexiv2 library.
 %install
 %meson_install
 
-%post -n libgexiv2-2 -p /sbin/ldconfig
-%postun -n libgexiv2-2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgexiv2-2
 
 %files -n libgexiv2-2
 %license COPYING
@@ -120,6 +119,6 @@ This package provides the Python 3 bindings for the libgexiv2 library.
 %{_datadir}/vala/vapi/gexiv2.deps
 
 %files -n python3-gexiv2
-%{python3_sitearch}/*
+%{python3_sitelib}/*
 
 %changelog
