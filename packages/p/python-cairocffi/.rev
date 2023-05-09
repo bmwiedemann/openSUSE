@@ -192,4 +192,22 @@
     <comment></comment>
     <requestid>1081969</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>766e879e5de40c67d6f509507d1e09a7</srcmd5>
+    <version>1.5.1</version>
+    <time>1683630400</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * move to pyproject.toml
+  * Try to support and test more Python versions
+  * Catch more errors when creating PNG files
+  * Include utils and docs in the source package
+  * Include all Setuptool’s building functions in custom 
+    building script
+  * Build generated files manually when building wheels
+  * Install xcffib if possible during the wheel generation
+- add skip-pikepdf.patch to skip pikepdf from tests
+- use LICENSE from package</comment>
+    <requestid>1085021</requestid>
+  </revision>
 </revisionlist>

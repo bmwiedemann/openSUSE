@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  5 09:45:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * move to pyproject.toml
+  * Try to support and test more Python versions
+  * Catch more errors when creating PNG files
+  * Include utils and docs in the source package
+  * Include all Setuptool’s building functions in custom 
+    building script
+  * Build generated files manually when building wheels
+  * Install xcffib if possible during the wheel generation
+- add skip-pikepdf.patch to skip pikepdf from tests
+- use LICENSE from package
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
