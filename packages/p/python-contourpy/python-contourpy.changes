@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  8 06:31:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue Dec 27 23:10:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - explicitly require ourselves in :test flavor
