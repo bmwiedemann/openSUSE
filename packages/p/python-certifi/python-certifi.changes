@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 18:01:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.7:
+  Added certs:
+  * CN=BJCA Global Root CA1 O=BEIJING CERTIFICATE AUTHORITY
+
+-------------------------------------------------------------------
 Wed May  3 15:36:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.12.7:
