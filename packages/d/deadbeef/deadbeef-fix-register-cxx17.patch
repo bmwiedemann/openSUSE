@@ -1,0 +1,22 @@
+From 6afd56831825e67f1eff97e5e291a60947b187a3 Mon Sep 17 00:00:00 2001
+From: Oleksiy Yakovenko <wakeroid@gmail.com>
+Date: Thu, 13 Apr 2023 23:41:17 +0200
+Subject: [PATCH] adplug: windows compile fix (c++17 error)
+
+---
+ plugins/adplug/libbinio/binio.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/adplug/libbinio/binio.cpp b/plugins/adplug/libbinio/binio.cpp
+index 02598f5508..5aadafe1bf 100644
+--- a/plugins/adplug/libbinio/binio.cpp
++++ b/plugins/adplug/libbinio/binio.cpp
+@@ -495,7 +495,7 @@ void binostream::writeFloat(Float f, FType ft)
+ void binostream::float2ieee_single(Float num, Byte *bytes)
+ {
+   long		sign;
+-  register long	bits;
++  long		bits;
+ 
+   if (num < 0) {	/* Can't distinguish a negative zero */
+     sign = 0x80000000;

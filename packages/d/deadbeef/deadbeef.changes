@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  8 19:25:05 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add deadbeef-fix-register-cxx17.patch
+- Add deadbeef-adplug-use-cxx11.patch
+
+-------------------------------------------------------------------
 Fri Feb 24 13:50:58 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed fix-warning.patch, not needed anymore

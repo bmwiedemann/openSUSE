@@ -36,6 +36,10 @@ Patch1:         %{name}-drop-documents-installation.patch
 Patch2:         %{name}-fix-includes.patch
 Patch3:         %{name}-fix-desktop-file.patch
 Patch4:         %{name}-fix-libretro-compilation.patch
+# PATCH-FIX-UPSTREAM https://github.com/DeaDBeeF-Player/deadbeef/commit/6afd56831825e67f1eff97e5e291a60947b187a3
+Patch5:         %{name}-fix-register-cxx17.patch
+# PATCH-FIX-UPSTREAM https://github.com/DeaDBeeF-Player/deadbeef/commit/ec70bec029c379ea17442c95b2ad346a0a68d9d0
+Patch6:         %{name}-adplug-use-cxx11.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
