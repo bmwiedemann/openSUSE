@@ -19,7 +19,7 @@
 %define _name   rst.linker
 %{?sle15_python_module_pythons}
 Name:           python-rst.linker
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Changelog link and timestamp adding Sphinx plugin
 License:        MIT
