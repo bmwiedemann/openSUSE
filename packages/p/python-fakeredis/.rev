@@ -173,4 +173,12 @@
   * Support for redis-py 4.5.0 #125</comment>
     <requestid>1080252</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>3ea374a6372e648377a06d6900af2267</srcmd5>
+    <version>2.10.3</version>
+    <time>1683630462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085446</requestid>
+  </revision>
 </revisionlist>

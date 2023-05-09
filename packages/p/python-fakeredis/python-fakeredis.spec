@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-fakeredis
 Version:        2.10.3
 Release:        0
