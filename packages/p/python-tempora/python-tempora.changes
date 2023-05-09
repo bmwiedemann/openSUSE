@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 21:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.2:
+  * Fixed bug in tests that would fail when a leap year
+    was about a year away.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

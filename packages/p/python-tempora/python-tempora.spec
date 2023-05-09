@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tempora
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT

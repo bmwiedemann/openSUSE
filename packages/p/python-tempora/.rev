@@ -162,4 +162,14 @@
     <comment></comment>
     <requestid>1081744</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>89064b81c6df765eacef35974f9a1fa5</srcmd5>
+    <version>5.2.2</version>
+    <time>1683630369</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.2:
+  * Fixed bug in tests that would fail when a leap year
+    was about a year away.</comment>
+    <requestid>1084877</requestid>
+  </revision>
 </revisionlist>
