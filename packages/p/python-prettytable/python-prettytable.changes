@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  5 07:47:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.7.0:
+  * Add horizontal lines to create sections within a table (#185) @myheroyuki
+  * Declare support for Python 3.12 (#231) @hugovk
+  * Rename licence file for detection by GitHub (#229) @hugovk
+  * Rename master to main (#228) @hugovk
+- 3.6.0:
+  * Updated pre-commit with mypy (#218) @phershbe
+  * Test Python 3.12 pre-releases (#221) @hugovk
+  * Fix to min_table_width parameter (#219) @kzwolenik95
+  * Widen tables with long titles (#216) @etjones
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

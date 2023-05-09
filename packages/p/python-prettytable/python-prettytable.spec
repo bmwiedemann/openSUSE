@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-prettytable
-Version:        3.5.0
+Version:        3.7.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
@@ -69,7 +69,7 @@ export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
-%license COPYING
+%license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitelib}/prettytable
 %{python_sitelib}/prettytable-%{version}*-info

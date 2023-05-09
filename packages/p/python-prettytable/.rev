@@ -60,4 +60,22 @@
     <comment></comment>
     <requestid>1081827</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5b1ff172a1f75243ce6451211d5d2871</srcmd5>
+    <version>3.7.0</version>
+    <time>1683630395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.0:
+  * Add horizontal lines to create sections within a table (#185) @myheroyuki
+  * Declare support for Python 3.12 (#231) @hugovk
+  * Rename licence file for detection by GitHub (#229) @hugovk
+  * Rename master to main (#228) @hugovk
+- 3.6.0:
+  * Updated pre-commit with mypy (#218) @phershbe
+  * Test Python 3.12 pre-releases (#221) @hugovk
+  * Fix to min_table_width parameter (#219) @kzwolenik95
+  * Widen tables with long titles (#216) @etjones
+</comment>
+    <requestid>1084996</requestid>
+  </revision>
 </revisionlist>
