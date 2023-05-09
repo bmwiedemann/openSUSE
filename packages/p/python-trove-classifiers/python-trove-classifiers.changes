@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  4 20:22:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.2:
+  * fix: incorrect specification of mypy section in pyproject.toml 
+  * Add Pydantic :: 2 classifier.
+  * Add JSON and JSON Schema classifiers
+  * Add classifier for Wagtail 5 
+  * Add `Environment :: WebAssembly` classifiers (#129)
+  * Add Django :: 4.2 classifier.
+  * Add Pycsou Framework trove-classifier  
+
+-------------------------------------------------------------------
 Mon May  1 18:58:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Test in multibuild: pytest requires python-iniconfig which

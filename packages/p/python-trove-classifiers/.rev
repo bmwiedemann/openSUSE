@@ -47,4 +47,19 @@
     <comment></comment>
     <requestid>1083970</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a5079b43c2eb47840f20da404f570d95</srcmd5>
+    <version>2023.5.2</version>
+    <time>1683630366</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.5.2:
+  * fix: incorrect specification of mypy section in pyproject.toml 
+  * Add Pydantic :: 2 classifier.
+  * Add JSON and JSON Schema classifiers
+  * Add classifier for Wagtail 5 
+  * Add `Environment :: WebAssembly` classifiers (#129)
+  * Add Django :: 4.2 classifier.
+  * Add Pycsou Framework trove-classifier</comment>
+    <requestid>1084869</requestid>
+  </revision>
 </revisionlist>
