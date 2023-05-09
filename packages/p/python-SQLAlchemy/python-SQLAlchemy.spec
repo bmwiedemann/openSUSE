@@ -20,7 +20,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        1.4.46
+Version:        2.0.12
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -28,6 +28,7 @@ URL:            https://www.sqlalchemy.org
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
+BuildRequires:  %{python_module Cython3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
@@ -37,13 +38,17 @@ Requires:       python
 Requires:       python-greenlet
 Provides:       python-sqlalchemy = %{version}
 Obsoletes:      python-sqlalchemy < %{version}
+Conflicts:      python-SQLAlchemy1
 %if %{python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module greenlet}
+BuildRequires:  %{python_module greenlet > 0.4.17}
 BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest >= 4.4.0}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module typing_extensions >= 4.2.0}
 # /SECTION
 %python_subpackages
 
@@ -80,13 +85,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# One test fails on Python 3.6
-# packaging.version.InvalidVersion: Invalid version: 'SQLAlchemy'
-%pytest_arch -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
+%pytest_arch -n2 -q --nomemory --notimingintensive --nomypy -k 'not (test_parseconnect and CreateEngineTest and test_bad_args)'
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES README.rst README.dialects.rst README.unittests.rst
+%doc CHANGES.rst README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
 %{python_sitearch}/SQLAlchemy-%{version}-py*.egg-info
 
