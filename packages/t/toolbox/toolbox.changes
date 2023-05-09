@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  8 11:01:45 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update EOL *-micro images to supported versions. (bsc#1211018)
+
+-------------------------------------------------------------------
 Tue Jun 28 08:11:34 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Prefer podman as container runtime

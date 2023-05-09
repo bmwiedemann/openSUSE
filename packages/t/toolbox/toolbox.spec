@@ -1,7 +1,7 @@
 #
 # spec file for package toolbox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,9 +41,9 @@ such a system. The root filesystem can be found at /media/root.
 %if 0%{?sle_version}
 %if !0%{?is_opensuse}
 sed -i -e 's,registry.opensuse.org,registry.suse.com,' toolbox
-sed -i -e 's,opensuse/toolbox,suse/sle-micro/5.2/toolbox,' toolbox
+sed -i -e 's,opensuse/toolbox,suse/sle-micro/5.4/toolbox,' toolbox
 %else
-sed -i -e 's,opensuse/toolbox,opensuse/leap-micro/5.2/toolbox,' toolbox
+sed -i -e 's,opensuse/toolbox,opensuse/leap-micro/5.4/toolbox,' toolbox
 %endif
 %endif
 
