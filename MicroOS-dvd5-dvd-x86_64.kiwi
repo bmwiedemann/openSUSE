@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230508" schemaversion="4.1">
+<image name="OBS__MicroOS___20230509" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230508</productvar>
+      <productvar name="VERSION">20230509</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230508,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230509,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230508/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230509/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1190,6 +1190,8 @@
       <repopackage name="libharfbuzz-subset0"/>
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libhd22"/>
+      <repopackage name="libheif-rav1e"/>
+      <repopackage name="libheif-svtenc"/>
       <repopackage name="libheif1"/>
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhiredis1_1_0"/>
@@ -2370,7 +2372,6 @@
       <repopackage name="python310-charset-normalizer"/>
       <repopackage name="python310-click"/>
       <repopackage name="python310-cmdln"/>
-      <repopackage name="python310-CommonMark"/>
       <repopackage name="python310-configobj"/>
       <repopackage name="python310-constantly"/>
       <repopackage name="python310-cryptography"/>
@@ -2406,7 +2407,9 @@
       <repopackage name="python310-linux-procfs"/>
       <repopackage name="python310-M2Crypto"/>
       <repopackage name="python310-Mako"/>
+      <repopackage name="python310-markdown-it-py"/>
       <repopackage name="python310-MarkupSafe"/>
+      <repopackage name="python310-mdurl"/>
       <repopackage name="python310-netifaces"/>
       <repopackage name="python310-notify2"/>
       <repopackage name="python310-numpy"/>
@@ -2444,7 +2447,6 @@
       <repopackage name="python310-requests"/>
       <repopackage name="python310-requests-toolbelt"/>
       <repopackage name="python310-responses"/>
-      <repopackage name="python310-rfc3986"/>
       <repopackage name="python310-rich"/>
       <repopackage name="python310-rpm"/>
       <repopackage name="python310-semanage"/>

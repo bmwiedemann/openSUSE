@@ -12297,9 +12297,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_51 
-  - libgrpc29 
-  - libgrpc_plugin_support1_51 
+  - libgrpc++1_54 
+  - libgrpc1_54 
+  - libgrpc31 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12855,8 +12855,8 @@ unsorted:
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
-  - libkddockwidgets-qt6-1_6 
-  - libkddockwidgets1_6 
+  - libkddockwidgets-qt6-1_7 
+  - libkddockwidgets1_7 
   - libkdecoration2-devel 
   - libkdegames-devel 
   - libkdepim-devel 
@@ -15467,7 +15467,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb29 
+  - libupb31 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -20716,6 +20716,7 @@ unsorted:
   - perl-Hash-Merge-Simple 
   - perl-Hash-MoreUtils 
   - perl-Hash-MultiValue 
+  - perl-Hash-Ordered 
   - perl-Hash-Util-FieldHash-Compat 
   - perl-Heap 
   - perl-Hook-LexWrap 
@@ -22493,6 +22494,7 @@ unsorted:
   - python-M2Crypto-doc 
   - python-PyQRCode-doc 
   - python-SQLAlchemy-doc 
+  - python-SQLAlchemy1-doc 
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
@@ -22995,6 +22997,7 @@ unsorted:
   - python310-Chameleon 
   - python310-Cheetah3 
   - python310-CherryPy 
+  - python310-CommonMark 
   - python310-ConfigArgParse 
   - python310-ConfigUpdater 
   - python310-Cycler 
@@ -23163,6 +23166,7 @@ unsorted:
   - python310-Rtree 
   - python310-SPARQLWrapper 
   - python310-SQLAlchemy-Utils 
+  - python310-SQLAlchemy1 
   - python310-Scrapy 
   - python310-SecretStorage 
   - python310-Send2Trash 
@@ -24753,7 +24757,6 @@ unsorted:
   - python310-manuel 
   - python310-manuel-doc 
   - python310-marathon 
-  - python310-markdown-it-py 
   - python310-markdown-math 
   - python310-markdown2 
   - python310-marshmallow 
@@ -24784,7 +24787,6 @@ unsorted:
   - python310-md2workflow-plugins-jira 
   - python310-md2workflow-plugins-redmine 
   - python310-mdit-py-plugins 
-  - python310-mdurl 
   - python310-mechanize 
   - python310-mediafile 
   - python310-meld3 
@@ -25682,6 +25684,7 @@ unsorted:
   - python310-retrying 
   - python310-retryrequests 
   - python310-rfc3339-validator 
+  - python310-rfc3986 
   - python310-rfc3986-validator 
   - python310-rfc3987 
   - python310-rfc6555 
@@ -25868,6 +25871,7 @@ unsorted:
   - python310-sphinxcontrib-htmlhelp 
   - python310-sphinxcontrib-httpdomain 
   - python310-sphinxcontrib-issuetracker 
+  - python310-sphinxcontrib-jquery 
   - python310-sphinxcontrib-jsmath 
   - python310-sphinxcontrib-newsfeed 
   - python310-sphinxcontrib-nwdiag 
@@ -26467,6 +26471,7 @@ unsorted:
   - python311-SPARQLWrapper 
   - python311-SQLAlchemy 
   - python311-SQLAlchemy-Utils 
+  - python311-SQLAlchemy1 
   - python311-Scrapy 
   - python311-SecretStorage 
   - python311-Send2Trash 
@@ -29277,6 +29282,7 @@ unsorted:
   - python311-sphinxcontrib-htmlhelp 
   - python311-sphinxcontrib-httpdomain 
   - python311-sphinxcontrib-issuetracker 
+  - python311-sphinxcontrib-jquery 
   - python311-sphinxcontrib-jsmath 
   - python311-sphinxcontrib-newsfeed 
   - python311-sphinxcontrib-nwdiag 
@@ -29921,6 +29927,7 @@ unsorted:
   - python39-SPARQLWrapper 
   - python39-SQLAlchemy 
   - python39-SQLAlchemy-Utils 
+  - python39-SQLAlchemy1 
   - python39-Scrapy 
   - python39-SecretStorage 
   - python39-Send2Trash 
@@ -32750,6 +32757,7 @@ unsorted:
   - python39-sphinxcontrib-htmlhelp 
   - python39-sphinxcontrib-httpdomain 
   - python39-sphinxcontrib-issuetracker 
+  - python39-sphinxcontrib-jquery 
   - python39-sphinxcontrib-jsmath 
   - python39-sphinxcontrib-newsfeed 
   - python39-sphinxcontrib-nwdiag 
@@ -35242,6 +35250,7 @@ unsorted:
   - system-user-osc-collab 
   - system-user-prometheus 
   - system-user-uuidd 
+  - system-user-velociraptor 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
