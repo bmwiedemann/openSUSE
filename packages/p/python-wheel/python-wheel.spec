@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
-Version:        0.38.4
+Version:        0.40.0
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
@@ -40,10 +40,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools >= 45.2.0}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-setuptools >= 45.2.0
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -71,16 +71,14 @@ preserves enough information to "Spread" (copy data and scripts to their
 final locations) at any later time.
 
 %prep
-%setup -q -n wheel-%{version}
-# Remove addopts as it requires pytest-cov
-sed -i '/addopts = /d' setup.cfg
+%autosetup -p1 -n wheel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif

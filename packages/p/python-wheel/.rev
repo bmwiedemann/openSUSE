@@ -313,4 +313,25 @@
     <comment></comment>
     <requestid>1081723</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3274b32e86c87136eba2aa44d55e3f09</srcmd5>
+    <version>0.40.0</version>
+    <time>1683630375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.40.0:
+  - Added a wheel tags command to modify tags on an existing
+    wheel
+  - Updated vendored packaging to 23.0
+  - wheel unpack now preserves the executable attribute of
+    extracted files
+  - Fixed spaces in platform names not being converted to
+    underscores
+  - Fixed RECORD files in generated wheels missing the regular
+    file attribute
+  - Fixed DeprecationWarning about the use of the deprecated
+    pkg_resources API
+  - Wheel now uses flit-core as a build backend
+</comment>
+    <requestid>1084881</requestid>
+  </revision>
 </revisionlist>

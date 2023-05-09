@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May  4 21:13:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.40.0:
+  - Added a wheel tags command to modify tags on an existing
+    wheel
+  - Updated vendored packaging to 23.0
+  - wheel unpack now preserves the executable attribute of
+    extracted files
+  - Fixed spaces in platform names not being converted to
+    underscores
+  - Fixed RECORD files in generated wheels missing the regular
+    file attribute
+  - Fixed DeprecationWarning about the use of the deprecated
+    pkg_resources API
+  - Wheel now uses flit-core as a build backend
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
