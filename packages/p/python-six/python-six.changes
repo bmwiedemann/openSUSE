@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 23 23:24:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch documentation to be within the main package.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:34:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Thu Jun 17 16:58:25 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - provide python3*dist(six): work around boo#1186870

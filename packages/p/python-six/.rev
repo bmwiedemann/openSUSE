@@ -420,4 +420,14 @@
     <comment></comment>
     <requestid>900811</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>5c9eb638318c32afcb09be68f6619f9e</srcmd5>
+    <version>1.16.0</version>
+    <time>1683630378</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch documentation to be within the main package.
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1084885</requestid>
+  </revision>
 </revisionlist>
