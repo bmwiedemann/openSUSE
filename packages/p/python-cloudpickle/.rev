@@ -246,4 +246,16 @@
   versions exist there again</comment>
     <requestid>1066282</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ecab2ebfdcc8c9e41a7d31a2f253ae0</srcmd5>
+    <version>2.2.1</version>
+    <time>1683630435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.1:
+  * Back to dev mode
+  * Move builtin classmethod_descriptor to a different test
+  * Fix Python 3.9+ NamedTuple issues
+- drop Move-builtin-classmethod_descriptor-to-a-different-t.patch (upstream)</comment>
+    <requestid>1085559</requestid>
+  </revision>
 </revisionlist>

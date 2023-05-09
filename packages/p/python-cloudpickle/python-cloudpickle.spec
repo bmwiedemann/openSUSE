@@ -18,14 +18,12 @@
 
 %define skip_python2 1
 Name:           python-cloudpickle
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Move-builtin-classmethod_descriptor-to-a-different-t.patch gh#cloudpipe/cloudpickle#486
-Patch0:         Move-builtin-classmethod_descriptor-to-a-different-t.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
