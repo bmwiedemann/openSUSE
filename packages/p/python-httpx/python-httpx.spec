@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx%{psuffix}
-Version:        0.23.3
+Version:        0.24.0
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
@@ -43,7 +43,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-certifi
 Requires:       python-httpcore >= 0.15.0
 Requires:       python-idna >= 2.0
-Requires:       python-rfc3986 >= 1.3
 Requires:       python-sniffio
 Recommends:     python-Brotli
 Recommends:     python-Pygments >= 2
