@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-beautifulsoup4
-Version:        4.10.0
+Version:        4.12.2
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT
 URL:            https://www.crummy.com/software/BeautifulSoup/
 Source:         https://files.pythonhosted.org/packages/source/b/beautifulsoup4/beautifulsoup4-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module soupsieve >= 1.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -78,11 +80,11 @@ Documentation and help files for %{name}
 %setup -q -n beautifulsoup4-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 pushd doc && make html && rm build/html/.buildinfo build/html/objects.inv &&  popd
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -91,13 +93,13 @@ export PYTHONDONTWRITEBYTECODE=1
 %pytest
 
 %files %{python_files}
-%license COPYING.txt
+%license LICENSE
 %{python_sitelib}/bs4/
-%{python_sitelib}/beautifulsoup4-%{version}-py*.egg-info
+%{python_sitelib}/beautifulsoup4-%{version}*-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-beautifulsoup4-doc
 %endif
-%doc NEWS.txt README.md TODO.txt doc/build/html
+%doc CHANGELOG README.md doc/build/html
 
 %changelog

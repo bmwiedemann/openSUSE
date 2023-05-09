@@ -424,4 +424,139 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
 - Switch documentation to be within the main package.</comment>
     <requestid>1084402</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2892d7ca502420ff5140d183a4b52534</srcmd5>
+    <version>4.12.2</version>
+    <time>1683630482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.2:
+  * Fixed an unhandled exception in BeautifulSoup.decode_contents
+    and methods that call it. [bug=2015545]
+- 4.12.1:
+  * This version of Beautiful Soup replaces setup.py and setup.cfg
+    with pyproject.toml. Beautiful Soup now uses tox as its test backend
+    and hatch to do builds.
+  * The main functional improvement in this version is a nonrecursive technique
+    for regenerating a tree. This technique is used to avoid situations where,
+    in previous versions, doing something to a very deeply nested tree
+    would overflow the Python interpreter stack:
+    1. Outputting a tree as a string, e.g. with
+       BeautifulSoup.encode() [bug=1471755]
+    2. Making copies of trees (copy.copy() and
+       copy.deepcopy() from the Python standard library). [bug=1709837]
+    3. Pickling a BeautifulSoup object. (Note that pickling a Tag
+       object can still cause an overflow.)
+  * Making a copy of a BeautifulSoup object no longer parses the
+    document again, which should improve performance significantly.
+  * When a BeautifulSoup object is unpickled, Beautiful Soup now
+    tries to associate an appropriate TreeBuilder object with it.
+  * Tag.prettify() will now consistently end prettified markup with
+    a newline.
+  * Added unit tests for fuzz test cases created by third
+    parties. Some of these tests are skipped since they point
+    to problems outside of Beautiful Soup, but this change
+    puts them all in one convenient place.
+  * PageElement now implements the known_xml attribute. (This was technically
+    a bug, but it shouldn't be an issue in normal use.) [bug=2007895]
+  * The demonstrate_parser_differences.py script was still written in
+    Python 2. I've converted it to Python 3, but since no one has
+    mentioned this over the years, it's a sign that no one uses this
+    script and it's not serving its purpose.
+- 4.12.0:
+  * Introduced the .css property, which centralizes all access to
+    the Soup Sieve API. This allows Beautiful Soup to give direct
+    access to as much of Soup Sieve that makes sense, without cluttering
+    the BeautifulSoup and Tag classes with a lot of new methods.
+    This does mean one addition to the BeautifulSoup and Tag classes
+    (the .css property itself), so this might be a breaking change if you
+    happen to use Beautiful Soup to parse XML that includes a tag called
+    &lt;css&gt;. In particular, code like this will stop working in 4.12.0:
+      soup.css['id']
+    Code like this will work just as before:
+      soup.find_one('css')['id']
+    The Soup Sieve methods supported through the .css property are
+    select(), select_one(), iselect(), closest(), match(), filter(),
+    escape(), and compile(). The BeautifulSoup and Tag classes still
+    support the select() and select_one() methods; they have not been
+    deprecated, but they have been demoted to convenience methods.
+    [bug=2003677]
+  * When the html.parser parser decides it can't parse a document, Beautiful
+    Soup now consistently propagates this fact by raising a
+    ParserRejectedMarkup error. [bug=2007343]
+  * Removed some error checking code from diagnose(), which is redundant with
+    similar (but more Pythonic) code in the BeautifulSoup constructor.
+    [bug=2007344]
+  * Added intersphinx references to the documentation so that other
+    projects have a target to point to when they reference Beautiful
+    Soup classes. [bug=1453370]
+- 4.11.2:
+  * Fixed test failures caused by nondeterministic behavior of
+    UnicodeDammit's character detection, depending on the platform setup.
+    [bug=1973072]
+  * Fixed another crash when overriding multi_valued_attributes and using the
+    html5lib parser. [bug=1948488]
+  * The HTMLFormatter and XMLFormatter constructors no longer return a
+    value. [bug=1992693]
+  * Tag.interesting_string_types is now propagated when a tag is
+    copied. [bug=1990400]
+  * Warnings now do their best to provide an appropriate stacklevel,
+    improving the usefulness of the message. [bug=1978744]
+  * Passing a Tag's .contents into PageElement.extend() now works the
+    same way as passing the Tag itself.
+  * Soup Sieve tests will be skipped if the library is not installed.
+- 4.11.1:
+  This release was done to ensure that the unit tests are packaged along
+  with the released source. There are no functionality changes in this
+  release, but there are a few other packaging changes:
+  * The Japanese and Korean translations of the documentation are included.
+  * The changelog is now packaged as CHANGELOG, and the license file is
+    packaged as LICENSE. NEWS.txt and COPYING.txt are still present,
+    but may be removed in the future.
+  * TODO.txt is no longer packaged, since a TODO is not relevant for released
+    code.
+- 4.11.0:
+  * Ported unit tests to use pytest.
+  * Added special string classes, RubyParenthesisString and RubyTextString,
+    to make it possible to treat ruby text specially in get_text() calls.
+    [bug=1941980]
+  * It's now possible to customize the way output is indented by
+    providing a value for the 'indent' argument to the Formatter
+    constructor. The 'indent' argument works very similarly to the
+    argument of the same name in the Python standard library's
+    json.dump() function. [bug=1955497]
+  * If the charset-normalizer Python module
+    (https://pypi.org/project/charset-normalizer/) is installed, Beautiful
+    Soup will use it to detect the character sets of incoming documents.
+    This is also the module used by newer versions of the Requests library.
+    For the sake of backwards compatibility, chardet and cchardet both take
+    precedence if installed. [bug=1955346]
+  * Added a workaround for an lxml bug
+    (https://bugs.launchpad.net/lxml/+bug/1948551) that causes
+    problems when parsing a Unicode string beginning with BYTE ORDER MARK.
+    [bug=1947768]
+  * Issue a warning when an HTML parser is used to parse a document that
+    looks like XML but not XHTML. [bug=1939121]
+  * Do a better job of keeping track of namespaces as an XML document is
+    parsed, so that CSS selectors that use namespaces will do the right
+    thing more often. [bug=1946243]
+  * Some time ago, the misleadingly named &quot;text&quot; argument to find-type
+    methods was renamed to the more accurate &quot;string.&quot; But this supposed
+    &quot;renaming&quot; didn't make it into important places like the method
+    signatures or the docstrings. That's corrected in this
+    version. &quot;text&quot; still works, but will give a DeprecationWarning.
+    [bug=1947038]
+  * Fixed a crash when pickling a BeautifulSoup object that has no
+    tree builder. [bug=1934003]
+  * Fixed a crash when overriding multi_valued_attributes and using the
+    html5lib parser. [bug=1948488]
+  * Standardized the wording of the MarkupResemblesLocatorWarning
+    warnings to omit untrusted input and make the warnings less
+    judgmental about what you ought to be doing. [bug=1955450]
+  * Removed support for the iconv_codec library, which doesn't seem
+    to exist anymore and was never put up on PyPI. (The closest
+    replacement on PyPI, iconv_codecs, is GPL-licensed, so we can't use
+    it--it's also quite old.)
+</comment>
+    <requestid>1085512</requestid>
+  </revision>
 </revisionlist>
