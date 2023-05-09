@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 09:07:07 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix summary crash when there is no interface available
+  (bsc#1209589, bsc#1211161).
+- 4.6.2
+
+-------------------------------------------------------------------
 Thu May  4 11:21:13 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
 
 - Display information about firmware configured interfaces and
