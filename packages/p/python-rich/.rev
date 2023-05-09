@@ -226,4 +226,41 @@
     <comment></comment>
     <requestid>1081772</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>da4361fc8981991253969d910135853d</srcmd5>
+    <version>13.3.5</version>
+    <time>1683630371</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.3.5:
+  * Fixed italic indent guides in SVG output
+  * Fixed for `is_terminal` ignoring FORCE_COLOR
+    https://github.com/Textualize/rich/pull/2923
+  * Added Style.clear_meta_and_links
+  * Reversed `pre` and `code` tags in base HTML format
+  * Fix syntax error when building with nuitka
+  * Fixed pretty printing of empty dataclass
+  * Use `Console(stderr=True)` in `rich.traceback.install` to
+    support io redirection.
+  * Fixes superfluous spaces in html output
+  * Fixed duplicate output in Jupyter
+  * Filter ANSI character-encoding-change codes in
+    `Text.from_ansi` parser
+  * Fixes traceback failing when a frame filename is unreadable
+  * Fix for live update rendering console markup
+  * `rich.progress.track()` will now show the elapsed time after
+    finishing the task
+  * Fixed truecolor to eight bit color conversion
+  * Fixed failing tests due to Pygments dependency
+  * Relaxed ipywidgets
+  * v13.2.0 replaces the unmaintained `commonmark` library with
+    `markdown-it-py`. This new parser has a lot more capabilities
+    and will allow us to implement a number of additional
+    Markdown features in the future.
+  * Switch Markdown parsing from commonmark to markdown-it-py
+  * Fixed wrong filenames in Jupyter tracebacks
+  * Added locals_hide_dunder and locals_hide_sunder to
+    Tracebacks, to hide double underscore and single underscore
+  * Tracebacks will now hide double underscore names from locals</comment>
+    <requestid>1084878</requestid>
+  </revision>
 </revisionlist>

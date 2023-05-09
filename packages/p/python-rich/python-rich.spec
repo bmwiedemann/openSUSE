@@ -20,26 +20,26 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-rich
-Version:        12.6.0
+Version:        13.3.5
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Textualize/rich
 Source:         https://files.pythonhosted.org/packages/source/r/rich/rich-%{version}.tar.gz
-BuildRequires:  %{python_module commonmark >= 0.9.0}
 BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
+BuildRequires:  %{python_module markdown-it-py >= 2.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pygments >= 2.6.0}
+BuildRequires:  %{python_module pygments >= 2.13.0}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.9}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-commonmark >= 0.9.0
-Requires:       python-pygments >= 2.6.0
+Requires:       python-markdown-it-py >= 2.2.0
+Requires:       python-pygments >= 2.13.0
 Suggests:       python-ipywidgets >= 7.5.1
 %if 0%{?python_version_nodots} < 39
 Requires:       python-typing_extensions >= 4.0.0

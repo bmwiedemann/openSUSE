@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu May  4 21:06:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.3.5:
+  * Fixed italic indent guides in SVG output
+  * Fixed for `is_terminal` ignoring FORCE_COLOR
+    https://github.com/Textualize/rich/pull/2923
+  * Added Style.clear_meta_and_links
+  * Reversed `pre` and `code` tags in base HTML format
+  * Fix syntax error when building with nuitka
+  * Fixed pretty printing of empty dataclass
+  * Use `Console(stderr=True)` in `rich.traceback.install` to
+    support io redirection.
+  * Fixes superfluous spaces in html output
+  * Fixed duplicate output in Jupyter
+  * Filter ANSI character-encoding-change codes in
+    `Text.from_ansi` parser
+  * Fixes traceback failing when a frame filename is unreadable
+  * Fix for live update rendering console markup
+  * `rich.progress.track()` will now show the elapsed time after
+    finishing the task
+  * Fixed truecolor to eight bit color conversion
+  * Fixed failing tests due to Pygments dependency
+  * Relaxed ipywidgets
+  * v13.2.0 replaces the unmaintained `commonmark` library with
+    `markdown-it-py`. This new parser has a lot more capabilities
+    and will allow us to implement a number of additional
+    Markdown features in the future.
+  * Switch Markdown parsing from commonmark to markdown-it-py
+  * Fixed wrong filenames in Jupyter tracebacks
+  * Added locals_hide_dunder and locals_hide_sunder to
+    Tracebacks, to hide double underscore and single underscore
+  * Tracebacks will now hide double underscore names from locals
+    by default. Set `locals_hide_dunder=False` to restore
+    previous behaviour.
+  * Fixed issue with Segment.split_cells for mixed single and
+    double cell widths
+  * Some relatively minor fixes and improvements. The most
+    significant update (and the reason for the major version
+    bump) is that Rich has dropped Python3.6 support.
+  * Reversed `pre` and `code` tags in base HTML format
+  * Improved detection of `attrs` library, that isn't confused by
+    the presence of the `attr` library.
+  * Fixed issue with `locals_max_length` parameter not being
+    respected in Traceback
+  * Handling of broken `fileno` made more robust. Fixes
+  * Fixed missing `fileno` on FileProxy
+  * Bumped minimum Python version to 3.7
+  * Pretty-printing of "tagged" `__repr__` results is now greedy
+    when matching tags
+  * `progress.track` now supports deriving total from
+    `__length_hint__`
+  * Add type annotation for key_separator of pretty.Node
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
