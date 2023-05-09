@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpserver
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        A HTTP server for pytest
 License:        MIT
@@ -29,6 +27,7 @@ URL:            https://www.github.com/csernazs/pytest-httpserver
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_httpserver/pytest_httpserver-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module toml >= 0.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Werkzeug >= 2

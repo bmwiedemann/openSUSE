@@ -78,4 +78,17 @@ Required by python-scikit-image</comment>
     <comment></comment>
     <requestid>1082435</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83c83ae86d8ffe9311b872ecd29a212f</srcmd5>
+    <version>1.0.6</version>
+    <time>1683630384</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.6:
+  * Add a new way of running tests with the blocking mode. In
+    this mode, the http server is synchronized to the main thread
+    and the client code is run in a separate thread.
+  * Python version classifier updated in pyproject.toml (which
+    updates pypi also)</comment>
+    <requestid>1084893</requestid>
+  </revision>
 </revisionlist>
