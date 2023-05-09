@@ -7,4 +7,12 @@
     <comment>Add python-uc-micro-py needed by python-linkify-it-py (which in turn needed by python-markdown-it-py)</comment>
     <requestid>1001471</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26910a6079d5da2f7e90b40a6220c98b</srcmd5>
+    <version>1.0.1</version>
+    <time>1683630410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085109</requestid>
+  </revision>
 </revisionlist>

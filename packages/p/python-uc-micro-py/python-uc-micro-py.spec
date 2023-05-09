@@ -1,7 +1,7 @@
 #
 # spec file for package python-uc-micro-py
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-uc-micro-py
 Version:        1.0.1
 Release:        0
@@ -24,8 +24,8 @@ Summary:        Micro subset of unicode data files for linkify-it-py projects
 License:        MIT
 URL:            https://github.com/tsutsu3/uc.micro-py
 Source:         https://github.com/tsutsu3/uc.micro-py/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
