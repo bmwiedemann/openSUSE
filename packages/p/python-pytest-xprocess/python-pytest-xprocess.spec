@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xprocess
-Version:        0.21.0
+Version:        0.22.2
 Release:        0
 Summary:        A pytest plugin for managing processes across test runs
 License:        MIT

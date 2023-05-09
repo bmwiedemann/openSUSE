@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  4 22:29:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.2:
+  * Python 3.10 is now officially supported
+  * `surrogateescape` will now be used as error handling strategy
+    for encode/decode operations.
+  * Make log files persistency, added in `0.21.0`, optional,
+    defaulting to True. The previous logging behavior (prior to
+    `0.21.0`) can be enabled by setting `persist_logs` flag to
+    `False` when calling `XProcess.ensure`.
+  * Fix resource warnings due to leaked internal file handles
+  * Ignore zombie processes which are erroneously considered
+    alive with python 3.11
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

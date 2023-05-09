@@ -53,4 +53,22 @@ python-Werkzeug 2.0.1 (currently in Staging:F)</comment>
     <comment></comment>
     <requestid>1082424</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ebf9c7f4f9d4235e1c5be45b33befb08</srcmd5>
+    <version>0.22.2</version>
+    <time>1683630385</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.2:
+  * Python 3.10 is now officially supported
+  * `surrogateescape` will now be used as error handling strategy
+    for encode/decode operations.
+  * Make log files persistency, added in `0.21.0`, optional,
+    defaulting to True. The previous logging behavior (prior to
+    `0.21.0`) can be enabled by setting `persist_logs` flag to
+    `False` when calling `XProcess.ensure`.
+  * Fix resource warnings due to leaked internal file handles
+  * Ignore zombie processes which are erroneously considered
+    alive with python 3.11</comment>
+    <requestid>1084894</requestid>
+  </revision>
 </revisionlist>
