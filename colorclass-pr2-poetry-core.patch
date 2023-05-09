@@ -1,0 +1,26 @@
+From c3f8ad8419e7ec0886a48708da705fe1fb3693a7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 26 Jan 2022 22:14:08 +0100
+Subject: [PATCH] switch to poetry-core build backend
+
+Switch the build backend from poetry to poetry-core.  This is a lighter
+version that's more suitable for PEP 517 builds.  The resulting
+artifacts are the same but poetry-core has less dependencies (as it does
+not pull the whole package manager in) and therefore wheel builds
+are much faster.
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 65eaec9..65a8767 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -62,5 +62,5 @@ python = ">=2.6 || >=3.0"
+ pytest = "==6.0.1"
+ 
+ [build-system]
+-requires = ["poetry>=0.12"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core>=0.12"]
++build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorclass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colorclass
 Version:        2.2.2
 Release:        0
@@ -25,8 +24,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/matthewdeanmartin/colorclass/
 Source:         https://github.com/matthewdeanmartin/colorclass/archive/refs/tags/v%{version}.tar.gz#/colorclass-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM colorclass-pr2-poetry-core.patch gh#matthewdeanmartin/colorclass#2
+Patch0:         colorclass-pr2-poetry-core.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +43,7 @@ In Python 2.x, this library subclasses `unicode`, while on
 Python 3.x, it subclasses `str`.
 
 %prep
-%setup -q -n colorclass-%{version}
+%autosetup -p1 -n colorclass-%{version}
 
 %build
 %pyproject_wheel
