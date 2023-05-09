@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define lver 29
-%define lverp 1_51
+%define lver 31
+%define lverp 1_54
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.51.1
+Version:        1.54.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -55,29 +55,23 @@ The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
 
+%package -n libgrpc%lverp
+Summary:        HTTP/2-based Remote Procedure Call implementation
+Group:          System/Libraries
+
+%description -n libgrpc%lverp
+The reference implementation of the gRPC protocol, done on top of
+HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
+Protocol Buffers as the Interface Definition Language by default.
+
 %package -n libgrpc++%lverp
 Summary:        HTTP/2-based Remote Procedure Call implementation
 Group:          System/Libraries
-%if "%lverp" == "1"
-# prior error in packaging
-Conflicts:      libgrpc6
-%endif
 
 %description -n libgrpc++%lverp
 The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
-
-%package -n libgrpc_plugin_support%lverp
-Summary:        HTTP/2-based Remote Procedure Call implementation - plugin support
-Group:          System/Libraries
-
-%description -n libgrpc_plugin_support%lverp
-The reference implementation of the gRPC protocol, done on top of
-HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
-Protocol Buffers as the Interface Definition Language by default.
-
-This package provides the shared library to support plugins for grpc.
 
 %package -n libupb%lver
 Summary:        A small protobuf implementation in C
@@ -94,8 +88,8 @@ in an arena (note: the arena can live in stack or static memory if desired).
 Summary:        Development files for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Tools/Building
 Requires:       libgrpc%lver = %version
+Requires:       libgrpc%lverp = %version
 Requires:       libgrpc++%lverp = %version
-Requires:       libgrpc_plugin_support%lverp = %version
 Requires:       libupb%lver = %version
 Requires:       pkgconfig(libcares)
 Requires:       pkgconfig(re2)
@@ -179,10 +173,10 @@ cp -r * "%buildroot/%src_install_dir"
 
 %post   -n libgrpc%lver -p /sbin/ldconfig
 %postun -n libgrpc%lver -p /sbin/ldconfig
+%post   -n libgrpc%lverp -p /sbin/ldconfig
+%postun -n libgrpc%lverp -p /sbin/ldconfig
 %post   -n libgrpc++%lverp -p /sbin/ldconfig
 %postun -n libgrpc++%lverp -p /sbin/ldconfig
-%post   -n libgrpc_plugin_support%lverp -p /sbin/ldconfig
-%postun -n libgrpc_plugin_support%lverp -p /sbin/ldconfig
 %post   -n libupb%lver -p /sbin/ldconfig
 %postun -n libupb%lver -p /sbin/ldconfig
 
@@ -191,12 +185,13 @@ cp -r * "%buildroot/%src_install_dir"
 %_libdir/libgpr*.so.%{lver}*
 %_libdir/libgrpc*.so.%{lver}*
 
+%files -n libgrpc%lverp
+%_libdir/libgrpc_authorization_provider.so.1.*
+%_libdir/libgrpc_plugin_support.so.1.*
+
 %files -n libgrpc++%lverp
 %_libdir/libgrpc++*.so.*
 %_libdir/libgrpcpp_channelz.so.*
-
-%files -n libgrpc_plugin_support%lverp
-%_libdir/libgrpc_plugin_support.so.1.*
 
 %files -n libupb%lver
 %_libdir/libupb*.so.%{lver}*

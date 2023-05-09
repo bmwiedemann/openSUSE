@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  2 10:15:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.54.1
+  * Bring declarations and definitions to be in sync
+
+-------------------------------------------------------------------
+Fri Apr 14 11:07:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.54
+  * XDS: enable XDS federation by default
+  * TlsCreds: Support revocation of intermediate in chain
+
+-------------------------------------------------------------------
 Fri Dec  2 00:11:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.51.1
