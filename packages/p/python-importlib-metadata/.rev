@@ -241,4 +241,22 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>1081884</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e815e7fe0400ab955d01b3dc72f53763</srcmd5>
+    <version>6.6.0</version>
+    <time>1683630390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.6.0:
+  * Expanded type annotations.
+  * python/cpython#103661: Removed excess error suppression in
+    ``_read_files_egginfo_installed`` and fixed path handling
+    on Windows.
+  * #422: Removed ABC metaclass from ``Distribution`` and instead
+    deprecated construction of ``Distribution`` objects without
+    concrete methods.
+  * Updated docs with tweaks from upstream CPython.
+  * Consolidated some behaviors in tests around ``_path``.
+  * Added type annotation for ``Distribution.read_text``.</comment>
+    <requestid>1084915</requestid>
+  </revision>
 </revisionlist>

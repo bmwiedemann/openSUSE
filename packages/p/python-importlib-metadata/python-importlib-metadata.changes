@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May  4 21:32:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.0:
+  * Expanded type annotations.
+  * python/cpython#103661: Removed excess error suppression in
+    ``_read_files_egginfo_installed`` and fixed path handling
+    on Windows.
+  * #422: Removed ABC metaclass from ``Distribution`` and instead
+    deprecated construction of ``Distribution`` objects without
+    concrete methods.
+  * Updated docs with tweaks from upstream CPython.
+  * Consolidated some behaviors in tests around ``_path``.
+  * Added type annotation for ``Distribution.read_text``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

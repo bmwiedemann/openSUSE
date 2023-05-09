@@ -28,7 +28,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-importlib-metadata%{psuffix}
-Version:        6.3.0
+Version:        6.6.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
