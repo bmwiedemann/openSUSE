@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 11:07:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.2.0:
+  * Refreshed packaging.
+  * Require Python 3.7 or later.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
