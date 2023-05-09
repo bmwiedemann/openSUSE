@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  8 05:53:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire PyYAML, see https://github.com/pypa/flit/issues/643
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

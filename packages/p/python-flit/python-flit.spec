@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit/flit-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module flit-core >= 3.8.0}
