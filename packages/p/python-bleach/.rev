@@ -177,4 +177,38 @@
     <comment></comment>
     <requestid>1081979</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4798421898f12aeee37a35d7e2ba7766</srcmd5>
+    <version>6.0.0</version>
+    <time>1683630483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0:
+  * bleach.clean, bleach.sanitizer.Cleaner,
+    bleach.html5lib_shim.BleachHTMLParser: the tags and protocols
+    arguments were changed from lists to sets.
+  * bleach.linkify, bleach.linkifier.Linker: the skip_tags and
+    recognized_tags arguments were changed from lists to sets.
+  * bleach.sanitizer.BleachSanitizerFilter: strip_allowed_elements is
+    now strip_allowed_tags. We now use “tags” everywhere rather than a
+    mishmash of “tags” in some places and “elements” in others.
+  # Bug fixes
+  * Add support for Python 3.11. (#675)
+  * Fix API weirness in BleachSanitizerFilter. (#649)
+  * We’re using “tags” instead of “elements” everywhere–no more weird
+    overloading of “elements” anymore.
+  * Also, it no longer calls the superclass constructor.
+  * Add warning when css_sanitizer isn’t set, but the style attribute
+    is allowed. (#676)
+  * Fix linkify handling of character entities. (#501)
+  * Rework dev dependencies to use requirements-dev.txt and
+    requirements-flake8.txt instead of extras.
+  * Fix project infrastructure to be tox-based so it’s easier to have
+    CI run the same things we’re running in development and with
+    flake8 in an isolated environment.
+  * Update action versions in CI.
+  * Switch to f-strings where possible. Make tests parametrized to be
+    easier to read/maintain.
+</comment>
+    <requestid>1085516</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bleach
-Version:        5.0.1
+Version:        6.0.0
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0

@@ -1,6 +1,8 @@
---- a/bleach/html5lib_shim.py.orig
-+++ b/bleach/html5lib_shim.py
-@@ -14,46 +14,46 @@ warnings.filterwarnings(
+Index: bleach-6.0.0/bleach/html5lib_shim.py
+===================================================================
+--- bleach-6.0.0.orig/bleach/html5lib_shim.py
++++ bleach-6.0.0/bleach/html5lib_shim.py
+@@ -14,27 +14,27 @@ warnings.filterwarnings(
      "ignore",
      message="html5lib's sanitizer is deprecated",
      category=DeprecationWarning,
@@ -35,6 +37,9 @@
      allowed_protocols,
      allowed_css_properties,
      allowed_svg_properties,
+@@ -42,21 +42,21 @@ from bleach._vendor.html5lib.filters.san
+     svg_attr_val_allows_ref,
+     svg_allow_local_href,
  )  # noqa: E402 module level import not at top of file
 -from bleach._vendor.html5lib.filters.sanitizer import (
 +from html5lib.filters.sanitizer import (
@@ -59,30 +64,23 @@
      Trie,
  )  # noqa: E402 module level import not at top of file
  
---- a/tests/test_clean.py.orig
-+++ b/tests/test_clean.py
+Index: bleach-6.0.0/tests/test_clean.py
+===================================================================
+--- bleach-6.0.0.orig/tests/test_clean.py
++++ bleach-6.0.0/tests/test_clean.py
 @@ -5,7 +5,7 @@ import pytest
  from bleach import clean
  from bleach.html5lib_shim import Filter
- from bleach.sanitizer import ALLOWED_PROTOCOLS, Cleaner
+ from bleach.sanitizer import ALLOWED_PROTOCOLS, Cleaner, NoCssSanitizerWarning
 -from bleach._vendor.html5lib.constants import rcdataElements
 +from html5lib.constants import rcdataElements
  
  
  @pytest.mark.parametrize(
---- a/bleach/sanitizer.py.orig
-+++ b/bleach/sanitizer.py
-@@ -277,7 +277,7 @@ class BleachSanitizerFilter(html5lib_shi
-             "ignore",
-             message="html5lib's sanitizer is deprecated",
-             category=DeprecationWarning,
--            module="bleach._vendor.html5lib",
-+            module="html5lib",
-         )
-         return super().__init__(
-             source,
---- a/bleach/parse_shim.py.orig
-+++ b/bleach/parse_shim.py
+Index: bleach-6.0.0/bleach/parse_shim.py
+===================================================================
+--- bleach-6.0.0.orig/bleach/parse_shim.py
++++ bleach-6.0.0/bleach/parse_shim.py
 @@ -1 +1 @@
 -from bleach._vendor.parse import urlparse  # noqa
 +from urllib.parse import urlparse  # noqa
