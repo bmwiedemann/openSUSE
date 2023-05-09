@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  5 06:47:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.43.1
+  * [BUGFIX] Labels: Set() after Del() would be ignored, which
+    broke some relabeling rules. #12322
+
+-------------------------------------------------------------------
 Thu Apr 13 13:23:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Remove npm_licenses.tar.bz2 during "make clean"
