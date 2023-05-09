@@ -190,4 +190,12 @@
   * Enabled GitHub Dependabot to keep GitHub Actions up to date [#335]</comment>
     <requestid>1046109</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c68fecc420e150cdd2ef0f257d65a69f</srcmd5>
+    <version>1.8.0</version>
+    <time>1683630409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085107</requestid>
+  </revision>
 </revisionlist>

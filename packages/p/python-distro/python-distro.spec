@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %{!?license: %global license %doc}
 %bcond_without test
 Name:           python-distro
