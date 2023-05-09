@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 19:12:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.6.0:
+  * Add a separate `basic_phone_number` for `en_US`. Thanks
+    @dlwrnc.
+
+-------------------------------------------------------------------
 Wed Apr 26 06:22:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.5.1:

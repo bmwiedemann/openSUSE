@@ -461,4 +461,14 @@
 - add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1083104</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>461d518ac536da490ecb253007b0b425</srcmd5>
+    <version>18.6.0</version>
+    <time>1683630354</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.6.0:
+  * Add a separate `basic_phone_number` for `en_US`. Thanks
+    @dlwrnc.</comment>
+    <requestid>1084848</requestid>
+  </revision>
 </revisionlist>
