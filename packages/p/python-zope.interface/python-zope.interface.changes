@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  5 08:44:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0:
+  * Build Linux binary wheels for Python 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Fix test deprecation warning on Python 3.11.
+  * Add preliminary support for Python 3.12 as of 3.12a5.
+  * Drop:
+  * + `zope.interface.implements`
+  * + `zope.interface.implementsOnly`
+  * + `zope.interface.classProvides`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

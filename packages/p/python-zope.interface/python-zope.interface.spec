@@ -28,14 +28,14 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-zope.interface%{psuffix}
-Version:        5.5.2
+Version:        6.0
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.interface
 Source:         https://files.pythonhosted.org/packages/source/z/zope.interface/%{modname}-%{version}.tar.gz
 # needed for tests that try to compile things
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 %if %{with test}
