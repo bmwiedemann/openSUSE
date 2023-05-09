@@ -1,0 +1,22 @@
+From 8357c12dcec3f6af0c41778a4e6d9e2804b1f5b5 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Mon, 8 May 2023 22:12:03 +0200
+Subject: [PATCH 1/2] raise requests-toolbelt upper bound
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: poetry-1.4.2/pyproject.toml
+===================================================================
+--- poetry-1.4.2.orig/pyproject.toml
++++ poetry-1.4.2/pyproject.toml
+@@ -69,7 +69,7 @@ pkginfo = "^1.9.4"
+ platformdirs = "^2.5.2"
+ pyproject-hooks = "^1.0.0"
+ requests = "^2.18"
+-requests-toolbelt = ">=0.9.1,<0.11.0"
++requests-toolbelt = ">=0.9.1,<2"
+ shellingham = "^1.5"
+ tomli = { version = "^2.0.1", python = "<3.11" }
+ # exclude 0.11.2 and 0.11.3 due to https://github.com/sdispater/tomlkit/issues/225

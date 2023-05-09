@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  8 20:28:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Sync requests-toolbelt clamps with python metadata
+  * Add poetry-pr7893-unpin-requests-toolbelt.patch
+  * gh#python-poetry/poetry#7893
+
+-------------------------------------------------------------------
+Mon May  8 09:07:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-requests-toolbelt upper version limit to make it work
+  with latest request (1.0.0)
+
+-------------------------------------------------------------------
+Mon May  8 04:57:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue May  2 20:45:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip suddenly failing test not finding setuptools (due to

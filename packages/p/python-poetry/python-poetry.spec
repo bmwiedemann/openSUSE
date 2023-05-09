@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
 Version:        1.4.2
 Release:        0
@@ -34,6 +35,8 @@ Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
 # PyPI sdist doesnt contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM poetry-pr7893-unpin-requests-toolbelt.patch gh#python-poetry/poetry#7893
+Patch0:         poetry-pr7893-unpin-requests-toolbelt.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core = 1.5.2}
@@ -63,7 +66,7 @@ Requires:       python-platformdirs >= 2.5.2
 Requires:       python-pyproject-hooks >= 1.0.0
 Requires:       python-requests >= 2.18
 Requires:       python-shellingham >= 1.5
-Requires:       (python-requests-toolbelt >= 0.9.1 with python-requests-toolbelt < 0.11.0)
+Requires:       (python-requests-toolbelt >= 0.9.1 with python-requests-toolbelt < 2)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.1
 %endif

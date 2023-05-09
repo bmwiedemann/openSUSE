@@ -293,4 +293,18 @@
     <comment></comment>
     <requestid>1084123</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>c14d6f9dcc74edc8f20b96eb51ca7e13</srcmd5>
+    <version>1.4.2</version>
+    <time>1683630508</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync requests-toolbelt clamps with python metadata
+  * Add poetry-pr7893-unpin-requests-toolbelt.patch
+  * gh#python-poetry/poetry#7893
+- Remove python-requests-toolbelt upper version limit to make it work
+  with latest request (1.0.0)
+- add sle15_python_module_pythons
+</comment>
+    <requestid>1085570</requestid>
+  </revision>
 </revisionlist>
