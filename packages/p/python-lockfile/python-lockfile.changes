@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 11:57:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Sun Aug 16 15:16:13 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add convert-to-unittest.patch to switch from nose to pytest
