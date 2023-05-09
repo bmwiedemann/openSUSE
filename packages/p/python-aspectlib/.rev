@@ -67,4 +67,17 @@
     <comment></comment>
     <requestid>1082004</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef3dba6e9e2f79ac3f969bab6a3992e7</srcmd5>
+    <version>2.0.0</version>
+    <time>1683630474</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete fix_two_tests_py310.patch
+- Update to 2.0.0:
+  * Drop support for legacy Pythons (2.7, 3.6 or older).
+  * Remove Travis/Appveyor CI and switch to GitHub Actions.
+  * Added support for Tornado 6 (in the test suite).
+</comment>
+    <requestid>1085477</requestid>
+  </revision>
 </revisionlist>

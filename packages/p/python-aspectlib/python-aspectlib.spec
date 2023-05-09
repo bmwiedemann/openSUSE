@@ -16,19 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-aspectlib
-Version:        1.5.2
+Version:        2.0.0
 Release:        0
 Summary:        Aspect-oriented programming
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-aspectlib
 Source:         https://files.pythonhosted.org/packages/source/a/aspectlib/aspectlib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_two_tests_py310.patch gh#ionelmc/python-aspectlib#22 mcepl@suse.com
-Patch0:         fix_two_tests_py310.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-fields
@@ -57,13 +56,13 @@ framework.
 
 # both tests not working (the first skipped by design, the second needed old tornado)
 # don't pull in tornado when not needed
-rm tests/test_integrations_py3.py
+rm tests/test_integrations.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

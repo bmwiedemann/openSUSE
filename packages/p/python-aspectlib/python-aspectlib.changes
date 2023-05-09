@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  8 09:22:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete fix_two_tests_py310.patch
+- Update to 2.0.0:
+  * Drop support for legacy Pythons (2.7, 3.6 or older).
+  * Remove Travis/Appveyor CI and switch to GitHub Actions.
+  * Added support for Tornado 6 (in the test suite).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
