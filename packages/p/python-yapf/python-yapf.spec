@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-yapf
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        A formatter for Python code
 License:        Apache-2.0
