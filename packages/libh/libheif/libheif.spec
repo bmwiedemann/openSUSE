@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libwebp)
 %if %{with rav1e}
 BuildRequires:  pkgconfig(rav1e)
 %endif
@@ -79,6 +80,30 @@ coding, respectively, for the best compression ratios currently possible.
 
 For AVIF libaom, dav1d, or rav1e are used as codecs. HEIF support is not
 provided.
+
+%if %{with plugins}
+%if %{with rav1e}
+%package rav1e
+Summary:        Plugin rav1e encoder for AVIF
+Group:          System/Libraries
+Supplements:    libheif1
+
+%description rav1e
+This plugin provides the rav1e encoder for AVIF to libheif. Packaged separately
+so that the libraries it requires are not pulled in by default by libheif.
+%endif
+
+%if %{with svtenc}
+%package svtenc
+Summary:        Plugin SVT-AV1 encoder for AVIF
+Group:          System/Libraries
+Supplements:    libheif1
+
+%description svtenc
+This plugin provides the SVT-AV1 encoder for AVIF to libheif. Packaged separately
+so that the libraries it requires are not pulled in by default by libheif.
+%endif
+%endif
 
 %package devel
 Summary:        Devel Package for %{name}
@@ -182,7 +207,17 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %license COPYING
 %{_libdir}/libheif.so.*
 %if %{with plugins}
-%{_libexecdir}/libheif
+%dir %{_libexecdir}/libheif
+
+%if %{with rav1e}
+%files rav1e
+%{_libexecdir}/libheif/libheif-rav1e.so
+%endif
+
+%if %{with svtenc}
+%files svtenc
+%{_libexecdir}/libheif/libheif-svtenc.so
+%endif
 %endif
 
 %files devel
