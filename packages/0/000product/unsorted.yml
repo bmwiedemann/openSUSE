@@ -7984,6 +7984,7 @@ unsorted:
   - ikona 
   - ikvm 
   - ilbc-devel 
+  - illum 
   - ima-evm-utils-devel 
   - ima-inspect 
   - imageburner 
@@ -10794,6 +10795,7 @@ unsorted:
   - libavc1394-tools 
   - libavcall1 
   - libavcodec58_134-32bit 
+  - libavcodec59 
   - libavcodec59-32bit 
   - libavcodec60-32bit 
   - libavdevice58_13 
@@ -10803,9 +10805,11 @@ unsorted:
   - libavdevice60-32bit 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
+  - libavfilter8 
   - libavfilter8-32bit 
   - libavfilter9-32bit 
   - libavformat58_76-32bit 
+  - libavformat59 
   - libavformat59-32bit 
   - libavformat60-32bit 
   - libavfs0 
@@ -10817,6 +10821,7 @@ unsorted:
   - libavtp-devel 
   - libavtp0-32bit 
   - libavutil56_70-32bit 
+  - libavutil57 
   - libavutil57-32bit 
   - libavutil58-32bit 
   - libax25-0 
@@ -12451,7 +12456,7 @@ unsorted:
   - libharfbuzz0-32bit 
   - libharminv3 
   - libharu-devel 
-  - libhashcat6_2_5 
+  - libhashcat6_2_6 
   - libhcrypto4 
   - libhdb9 
   - libhdf5-200 
@@ -12923,7 +12928,7 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libknot13 
-  - libkokkos3_3_0 
+  - libkokkos-4_0 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
@@ -14135,6 +14140,7 @@ unsorted:
   - libportaudio2-32bit 
   - libportaudiocpp0 
   - libpostproc55_9-32bit 
+  - libpostproc56 
   - libpostproc56-32bit 
   - libpostproc57-32bit 
   - libpowerman0 
@@ -15166,8 +15172,10 @@ unsorted:
   - libsword-1_8_1 
   - libswresample3_9-32bit 
   - libswresample4-32bit 
+  - libswresample4_ff5 
   - libswresample4_ff5-32bit 
   - libswscale5_9-32bit 
+  - libswscale6 
   - libswscale6-32bit 
   - libswscale7-32bit 
   - libsybdb5 
@@ -22161,6 +22169,7 @@ unsorted:
   - power-profiles-daemon-doc 
   - powercap 
   - powercap-devel 
+  - powerd 
   - powerline 
   - powerline-docs 
   - powerline-fonts 
@@ -25391,7 +25400,6 @@ unsorted:
   - python310-pytest-filter-subpackage 
   - python310-pytest-fixture-config 
   - python310-pytest-flake8-path 
-  - python310-pytest-flake8dir 
   - python310-pytest-flakes 
   - python310-pytest-flask 
   - python310-pytest-forked 
@@ -25425,7 +25433,6 @@ unsorted:
   - python310-pytest-pycodestyle 
   - python310-pytest-pyramid-server 
   - python310-pytest-qt 
-  - python310-pytest-random-order 
   - python310-pytest-randomly 
   - python310-pytest-regressions 
   - python310-pytest-relaxed 
@@ -25440,7 +25447,6 @@ unsorted:
   - python310-pytest-spec 
   - python310-pytest-sphinx 
   - python310-pytest-subprocess 
-  - python310-pytest-subtesthack 
   - python310-pytest-subtests 
   - python310-pytest-sugar 
   - python310-pytest-super-check 
@@ -28788,7 +28794,6 @@ unsorted:
   - python311-pytest-filter-subpackage 
   - python311-pytest-fixture-config 
   - python311-pytest-flake8-path 
-  - python311-pytest-flake8dir 
   - python311-pytest-flakes 
   - python311-pytest-flask 
   - python311-pytest-forked 
@@ -28822,7 +28827,6 @@ unsorted:
   - python311-pytest-pycodestyle 
   - python311-pytest-pyramid-server 
   - python311-pytest-qt 
-  - python311-pytest-random-order 
   - python311-pytest-randomly 
   - python311-pytest-regressions 
   - python311-pytest-relaxed 
@@ -28837,7 +28841,6 @@ unsorted:
   - python311-pytest-spec 
   - python311-pytest-sphinx 
   - python311-pytest-subprocess 
-  - python311-pytest-subtesthack 
   - python311-pytest-subtests 
   - python311-pytest-sugar 
   - python311-pytest-super-check 
@@ -32255,7 +32258,6 @@ unsorted:
   - python39-pytest-filter-subpackage 
   - python39-pytest-fixture-config 
   - python39-pytest-flake8-path 
-  - python39-pytest-flake8dir 
   - python39-pytest-flakes 
   - python39-pytest-flask 
   - python39-pytest-forked 
@@ -32289,7 +32291,6 @@ unsorted:
   - python39-pytest-pycodestyle 
   - python39-pytest-pyramid-server 
   - python39-pytest-qt 
-  - python39-pytest-random-order 
   - python39-pytest-randomly 
   - python39-pytest-regressions 
   - python39-pytest-relaxed 
@@ -32304,7 +32305,6 @@ unsorted:
   - python39-pytest-spec 
   - python39-pytest-sphinx 
   - python39-pytest-subprocess 
-  - python39-pytest-subtesthack 
   - python39-pytest-subtests 
   - python39-pytest-sugar 
   - python39-pytest-super-check 
@@ -34217,6 +34217,7 @@ unsorted:
   - ruby-libprelude 
   - ruby-marisa 
   - ruby-obexftp 
+  - ruby-packaging-helpers 
   - ruby-rrdtool 
   - ruby-selinux 
   - ruby-xapian 
