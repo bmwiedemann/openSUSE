@@ -7,4 +7,16 @@
     <comment>Used by various Sphinx documentation projects.</comment>
     <requestid>992181</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ab6cdfa9e4ecf4b729e6eb7d5fdde4e</srcmd5>
+    <version>0.3.2a0</version>
+    <time>1683630502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.2a0:
+  * no upstream changelog available, see
+  https://github.com/sphinx-contrib/sphinxcontrib-towncrier/compare/v0.2.1a0...v0.3.2a0
+  for details
+  * python 3.10 and 3.11 enablement</comment>
+    <requestid>1085576</requestid>
+  </revision>
 </revisionlist>

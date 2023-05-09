@@ -1,7 +1,7 @@
 #
-# spec file for package python-sphinxcontrib-towncrier
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -23,25 +24,23 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-towncrier%{psuffix}
-Version:        0.2.1a0
+Version:        0.3.2a0
 Release:        0
 Summary:        An RST directive for injecting a Towncrier-generated changelog draft
 License:        BSD-3-Clause
 URL:            https://github.com/sphinx-contrib/sphinxcontrib-towncrier
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-towncrier/sphinxcontrib-towncrier-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sphinxcontrib-towncrier = %{version}}
 BuildRequires:  %{python_module towncrier >= 19.2}
-BuildRequires:  %{python_module sphinxcontrib-towncrier}
 %endif
 # /SECTION
 BuildRequires:  fdupes
@@ -55,6 +54,7 @@ An RST directive for injecting a Towncrier-generated changelog draft containing 
 
 %prep
 %setup -q -n sphinxcontrib-towncrier-%{version}
+rm -v pytest.ini
 
 %build
 %python_build
