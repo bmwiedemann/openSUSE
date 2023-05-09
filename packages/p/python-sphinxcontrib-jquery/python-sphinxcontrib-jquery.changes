@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon May  8 11:07:48 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Switch to mulitbuild to avoid build loop dependency
+
+-------------------------------------------------------------------
+Fri May  5 06:14:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release of 4.1 
