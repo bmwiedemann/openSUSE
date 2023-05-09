@@ -122,4 +122,41 @@
     <comment></comment>
     <requestid>1081911</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2cf69a1ecae00922e1d4085f4200bce0</srcmd5>
+    <version>4.0.2</version>
+    <time>1683630423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  - Remove deprecated function to fix twine check with pkginfo
+    1.9.0.
+  - Improve logging when keyring fails.
+  - Reconfgure root logger to show all log messages.
+  - Drop support for Python 3.6.
+  - Use Rich instead of tqdm for upload progress bar.
+  - Remove Twine’s dependencies from the User-Agent header when
+    uploading.
+  - Improve detection of disabled BLAKE2 hashing due to FIPS
+    mode.
+  - Restore warning for missing long_description.
+  - Add --verbose logging for querying keyring credentials.
+  - Log all upload responses with --verbose.
+  - Show more helpful error message for invalid metadata.
+  - Require a recent version of urllib3.
+  - Add support for core metadata version 2.2, defined in PEP
+    643.
+  - Add support for Python 3.10.
+  - Show more helpful messages for invalid passwords.
+  - Allow the --skip-existing option to work with GCP Artifact
+    Registry.
+  - Add a helpful error message when an upload fails due to
+    missing a trailing slash in the URL.
+  - Generalize --verbose suggestion when an upload fails.
+  - Improve error messages
+  - Do not include md5_digest or blake2_256_digest if FIPS mode
+    is enabled on the host. This removes those fields from the
+    metadata before sending the metadata to the repository.
+- Add license_files.patch to make pip happy.</comment>
+    <requestid>1085218</requestid>
+  </revision>
 </revisionlist>

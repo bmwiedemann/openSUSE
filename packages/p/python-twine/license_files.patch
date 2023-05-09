@@ -1,0 +1,13 @@
+---
+ setup.cfg |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,5 +1,5 @@
+ [metadata]
+-license_file = LICENSE
++license_files = LICENSE
+ name = twine
+ author = Donald Stufft and individual contributors
+ author_email = donald@stufft.io

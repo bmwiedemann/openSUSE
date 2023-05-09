@@ -16,22 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-twine
-Version:        3.4.1
+Version:        4.0.2
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
 URL:            https://github.com/pypa/twine
 Source:         https://files.pythonhosted.org/packages/source/t/twine/twine-%{version}.tar.gz
-Patch1:         0001-remove-disable-socket-pytest-opt.patch
-BuildRequires:  %{python_module colorama >= 0.4.3}
+Patch0:         0001-remove-disable-socket-pytest-opt.patch
+# PATCH-FIX-UPSTREAM license_files.patch gh#pypa/twine!992 mcepl@suse.com
+# license_file -> license_files
+Patch1:         license_files.patch
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jaraco.envs}
 BuildRequires:  %{python_module keyring >= 15.1}
 BuildRequires:  %{python_module munch}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkginfo >= 1.4.2}
 BuildRequires:  %{python_module portend}
 BuildRequires:  %{python_module pretend}
@@ -40,12 +42,12 @@ BuildRequires:  %{python_module readme_renderer >= 21.0}
 BuildRequires:  %{python_module requests >= 2.20}
 BuildRequires:  %{python_module requests-toolbelt >= 0.8.0}
 BuildRequires:  %{python_module rfc3986 >= 1.4.0}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module setuptools >= 0.7.0}
 BuildRequires:  %{python_module setuptools_scm >= 1.15}
-BuildRequires:  %{python_module tqdm >= 4.14}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-colorama >= 0.4.3
 Requires:       python-importlib-metadata
 Requires:       python-keyring >= 15.1
 Requires:       python-pkginfo >= 1.4.2
@@ -53,10 +55,10 @@ Requires:       python-readme_renderer >= 21.0
 Requires:       python-requests >= 2.20
 Requires:       python-requests-toolbelt >= 0.8.0
 Requires:       python-rfc3986 >= 1.4.0
-Requires:       python-setuptools >= 0.7.0
-Requires:       python-tqdm >= 4.14
+Requires:       python-rich
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -66,17 +68,15 @@ Currently it supports registering projects, uploading distributions, and
 checking, if descriptions will render correctly.
 
 %prep
-%setup -q -n twine-%{version}
-%patch1 -p1
+%autosetup -p1 -n twine-%{version}
 
 sed -i '1s/^#!.*//' twine/__main__.py
-sed -i 's/--cov.*$//' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/twine
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -95,10 +95,8 @@ rm tests/test_integration.py
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%dir %{python_sitelib}/twine
-%dir %{python_sitelib}/twine-%{version}-py*.egg-info
-%{python_sitelib}/twine/*
-%{python_sitelib}/twine-%{version}-py*.egg-info/*
 %python_alternative %{_bindir}/twine
+%{python_sitelib}/twine
+%{python_sitelib}/twine-%{version}*-info
 
 %changelog

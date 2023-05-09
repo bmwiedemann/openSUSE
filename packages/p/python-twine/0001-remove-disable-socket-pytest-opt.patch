@@ -1,13 +1,13 @@
 Only in twine-3.4.1: .coverage
 Only in twine-3.4.1: .pytest_cache
-diff -ur twine-3.4.1.orig/pytest.ini twine-3.4.1/pytest.ini
---- twine-3.4.1.orig/pytest.ini	2021-03-17 01:42:01.000000000 +0100
-+++ twine-3.4.1/pytest.ini	2021-07-11 19:52:39.020680128 +0200
-@@ -7,4 +7,3 @@
+---
+ pytest.ini |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -6,4 +6,3 @@ filterwarnings=
+ 	ignore:the imp module is deprecated::setuptools
  
  addopts =
- 	--cov=twine --cov-context=test --cov-report=
 -	--disable-socket
-Only in twine-3.4.1/tests: __pycache__
-Only in twine-3.4.1/twine/commands: __pycache__
-Only in twine-3.4.1/twine: __pycache__
