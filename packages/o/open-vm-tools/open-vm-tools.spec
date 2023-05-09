@@ -53,7 +53,6 @@ Source6:        open-vm-tools-modprobe.conf
 Source7:        tools.conf
 Source8:        vgauthd.service
 Source9:        vmblock-fuse.service
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 # don't use pkgconfig(gtk+-2.0) so we can build on SLE
 BuildRequires:  autoconf
@@ -154,6 +153,8 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
+Patch2:         0001-build-put-l-specifiers-into-LIBADD-not-LDFLAGS.patch
+Patch3:         0002-build-use-grpc-pkgconfig-to-retrieve-flags-libraries.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -256,10 +257,13 @@ This package interfaces with the container runtime to retrieve a list of contain
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
+%patch2 -p2
+%patch3 -p2
 
 #SUSE specific patches
 %patch0 -p2
 %patch1 -p2
+autoreconf -fi
 
 %build
 %if %{with_X}
@@ -386,9 +390,7 @@ done
 
 %post
 /sbin/ldconfig
-%service_add_post vmtoolsd.service
-%service_add_post vgauthd.service
-%service_add_post vmblock-fuse.service
+%service_add_post vmtoolsd.service vgauthd.service vmblock-fuse.service
 
 %if %{with_X}
 
@@ -460,7 +462,6 @@ systemctl try-restart vmtoolsd.service || :
 %endif
 
 %files
-%defattr(-, root, root)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
@@ -537,7 +538,6 @@ systemctl try-restart vmtoolsd.service || :
 %if %{with_X}
 
 %files desktop
-%defattr(-, root, root)
 %config %{_sysconfdir}/xdg/autostart/vmware-user-autostart.desktop
 %verify(not mode) %attr(0755, root, root) %{_bindir}/vmware-user-suid-wrapper
 %{_libdir}/%{name}/plugins/vmusr/
@@ -569,7 +569,6 @@ systemctl try-restart vmtoolsd.service || :
 %{_libdir}/%{name}/serviceDiscovery/scripts/get-versions.sh
 
 %files -n libvmtools0
-%defattr(-, root, root)
 %{_libdir}/libvmtools.so.*
 %{_libdir}/libguestlib.so.*
 %{_libdir}/libhgfs.so.*
@@ -580,7 +579,6 @@ systemctl try-restart vmtoolsd.service || :
 %endif
 
 %files -n libvmtools-devel
-%defattr(-,root,root)
 %doc docs/api/build/*
 %{_includedir}/vmGuestLib
 %{_libdir}/*.so

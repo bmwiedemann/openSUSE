@@ -1,0 +1,49 @@
+From 7f97b8ac1df51da902c2db05e488e52bb3068149 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 3 May 2023 00:48:56 +0200
+Subject: [PATCH 2/2] build: use grpc++ pkgconfig to retrieve flags/libraries
+References: https://github.com/vmware/open-vm-tools/pull/664
+
+When a .pc file exists, it should be used. Fixes obvious linking problems like
+
+ld: .libs/libcontainerInfo_la-containers.grpc.pb.o: in function `grpc::ByteBuffer::~ByteBuffer()':
+/usr/include/grpcpp/support/byte_buffer.h:99: undefined reference to `grpc_byte_buffer_destroy'
+collect2: error: ld returned 1 exit status
+make[4]: *** [Makefile:649: libcontainerInfo.la] Error 1
+---
+ open-vm-tools/configure.ac                               | 2 ++
+ open-vm-tools/services/plugins/containerInfo/Makefile.am | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/open-vm-tools/configure.ac b/open-vm-tools/configure.ac
+index 5f9a1937..fd8c2db0 100644
+--- a/open-vm-tools/configure.ac
++++ b/open-vm-tools/configure.ac
+@@ -723,6 +723,8 @@ AC_DEFUN([AC_VMW_CONTAINERINFO_MSG],[
+                       [],
+                       [AC_VMW_CONTAINERINFO_MSG(["grpc++ >= 1.3.2"])])
+ 
++PKG_CHECK_MODULES([grpcxx], [grpc++ >= 1.3.2])
++
+ #
+ # proto files needed by containerd grpc client.
+ #
+diff --git a/open-vm-tools/services/plugins/containerInfo/Makefile.am b/open-vm-tools/services/plugins/containerInfo/Makefile.am
+index 10b4dfae..74d9c8f0 100644
+--- a/open-vm-tools/services/plugins/containerInfo/Makefile.am
++++ b/open-vm-tools/services/plugins/containerInfo/Makefile.am
+@@ -60,9 +60,9 @@ libcontainerInfo_la_SOURCES += containers.grpc.pb.h
+ libcontainerInfo_la_SOURCES += containers.grpc.pb.cc
+ libcontainerInfo_la_SOURCES += containerInfo_grpc.cc
+ 
+-libcontainerInfo_la_CPPFLAGS += @GRPC_CPPFLAGS@
++libcontainerInfo_la_CPPFLAGS += ${grpcxx_CFLAGS}
+ libcontainerInfo_la_LIBADD += -lprotobuf
+-libcontainerInfo_la_LIBADD += -lgrpc++
++libcontainerInfo_la_LIBADD += ${grpcxx_LIBS}
+ 
+ tasks.grpc.pb.cc containers.grpc.pb.cc: %.grpc.pb.cc : %.proto %.pb.cc
+ 	$(PROTOC) -I. -I$(GOGO_PROTOPATH) \
+-- 
+2.40.1
+

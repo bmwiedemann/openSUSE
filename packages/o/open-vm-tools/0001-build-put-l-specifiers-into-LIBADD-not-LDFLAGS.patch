@@ -1,0 +1,162 @@
+From 50d7dc0102751808823640321ec1da5d34811978 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 3 May 2023 00:48:14 +0200
+Subject: [PATCH 1/2] build: put -l specifiers into LIBADD, not LDFLAGS
+References: https://github.com/vmware/open-vm-tools/pull/664
+
+Linking order matters.
+LDFLAGS is the *totally* *wrong* place for -l.
+Replace by LDLIBS / xxx_LDADD / xxx_LIBADD.
+---
+ open-vm-tools/libDeployPkg/Makefile.am                   | 3 +--
+ open-vm-tools/libappmonitor/Makefile.am                  | 6 ++----
+ open-vm-tools/libguestStoreClient/Makefile.am            | 2 +-
+ open-vm-tools/libguestlib/Makefile.am                    | 6 ++----
+ open-vm-tools/libhgfs/Makefile.am                        | 2 +-
+ open-vm-tools/libvmtools/Makefile.am                     | 2 +-
+ open-vm-tools/services/plugins/containerInfo/Makefile.am | 6 +++---
+ open-vm-tools/tests/testVmblock/Makefile.am              | 4 ++--
+ open-vm-tools/vgauth/lib/Makefile.am                     | 2 +-
+ 9 files changed, 14 insertions(+), 19 deletions(-)
+
+diff --git a/open-vm-tools/libDeployPkg/Makefile.am b/open-vm-tools/libDeployPkg/Makefile.am
+index 15728126..5f080744 100644
+--- a/open-vm-tools/libDeployPkg/Makefile.am
++++ b/open-vm-tools/libDeployPkg/Makefile.am
+@@ -36,10 +36,9 @@ libDeployPkg_la_SOURCES += processPosix.c
+ libDeployPkg_la_SOURCES += linuxDeploymentUtilities.c
+ libDeployPkg_la_SOURCES += linuxDeploymentUtilities.h
+ 
+-libDeployPkg_la_LDFLAGS =
+ # We require GCC, so we're fine passing compiler-specific flags.
+ # Needed for OS's that don't link shared libraries against libc by default, e.g. FreeBSD
+-libDeployPkg_la_LDFLAGS += -Wl,-lc
++libDeployPkg_la_LIBADD += -lc
+ 
+ libDeployPkg_includedir = $(includedir)/libDeployPkg
+ 
+diff --git a/open-vm-tools/libappmonitor/Makefile.am b/open-vm-tools/libappmonitor/Makefile.am
+index 2681eb79..be6b6a30 100644
+--- a/open-vm-tools/libappmonitor/Makefile.am
++++ b/open-vm-tools/libappmonitor/Makefile.am
+@@ -48,12 +48,10 @@ libappmonitor_la_SOURCES += $(libappmonitor_rpcchanneldir)/vsockChannel.c
+ libappmonitor_la_SOURCES += $(libappmonitor_rpcchanneldir)/simpleSocket.c
+ endif
+ 
+-libappmonitor_la_LDFLAGS =
+-libappmonitor_la_LDFLAGS += -Wl,-ldl
+-libappmonitor_la_LDFLAGS += -Wl,-lrt
++libappmonitor_la_LIBADD += -ldl -lrt
+ # We require GCC, so we're fine passing compiler-specific flags.
+ # Needed for OS's that don't link shared libraries against libc by default, e.g. FreeBSD
+-libappmonitor_la_LDFLAGS += -Wl,-lc
++libappmonitor_la_LIBADD += -lc
+ 
+ libappmonitor_includedir = $(includedir)/libappmonitor
+ 
+diff --git a/open-vm-tools/libguestStoreClient/Makefile.am b/open-vm-tools/libguestStoreClient/Makefile.am
+index adf69309..2dee8e7b 100644
+--- a/open-vm-tools/libguestStoreClient/Makefile.am
++++ b/open-vm-tools/libguestStoreClient/Makefile.am
+@@ -33,4 +33,4 @@ libguestStoreClient_la_LDFLAGS =
+ libguestStoreClient_la_LDFLAGS += -Wl,-z,defs
+ # Needed for OS's that don't link shared libraries against libc by
+ #default, e.g. FreeBSD
+-libguestStoreClient_la_LDFLAGS += -Wl,-lc
++libguestStoreClient_la_LIBADD += -lc
+diff --git a/open-vm-tools/libguestlib/Makefile.am b/open-vm-tools/libguestlib/Makefile.am
+index d2cfb80a..5175b442 100644
+--- a/open-vm-tools/libguestlib/Makefile.am
++++ b/open-vm-tools/libguestlib/Makefile.am
+@@ -50,12 +50,10 @@ libguestlib_la_SOURCES += $(libguestlib_rpcchanneldir)/vsockChannel.c
+ libguestlib_la_SOURCES += $(libguestlib_rpcchanneldir)/simpleSocket.c
+ endif
+ 
+-libguestlib_la_LDFLAGS =
+-libguestlib_la_LDFLAGS += -Wl,-ldl
+-libguestlib_la_LDFLAGS += -Wl,-lrt
++libguestlib_la_LIBADD += -ldl -lrt
+ # We require GCC, so we're fine passing compiler-specific flags.
+ # Needed for OS's that don't link shared libraries against libc by default, e.g. FreeBSD
+-libguestlib_la_LDFLAGS += -Wl,-lc
++libguestlib_la_LIBADD += -lc
+ 
+ libguestlib_includedir = $(includedir)/vmGuestLib
+ 
+diff --git a/open-vm-tools/libhgfs/Makefile.am b/open-vm-tools/libhgfs/Makefile.am
+index 76091452..c388da75 100644
+--- a/open-vm-tools/libhgfs/Makefile.am
++++ b/open-vm-tools/libhgfs/Makefile.am
+@@ -41,5 +41,5 @@ libhgfs_la_LDFLAGS =
+ libhgfs_la_LDFLAGS += -Wl,-z,defs
+ # Needed for OS's that don't link shared libraries against libc by
+ #default, e.g. FreeBSD
+-libhgfs_la_LDFLAGS += -Wl,-lc
++libhgfs_la_LIBADD += -lc
+ 
+diff --git a/open-vm-tools/libvmtools/Makefile.am b/open-vm-tools/libvmtools/Makefile.am
+index 6da97362..a2f9a241 100644
+--- a/open-vm-tools/libvmtools/Makefile.am
++++ b/open-vm-tools/libvmtools/Makefile.am
+@@ -89,5 +89,5 @@ libvmtools_la_LDFLAGS =
+ libvmtools_la_LDFLAGS += -Wl,-z,defs
+ # Needed for OS's that don't link shared libraries against libc by
+ #default, e.g. FreeBSD
+-libvmtools_la_LDFLAGS += -Wl,-lc
++libvmtools_la_LIBADD += -lc
+ 
+diff --git a/open-vm-tools/services/plugins/containerInfo/Makefile.am b/open-vm-tools/services/plugins/containerInfo/Makefile.am
+index 488e35aa..10b4dfae 100644
+--- a/open-vm-tools/services/plugins/containerInfo/Makefile.am
++++ b/open-vm-tools/services/plugins/containerInfo/Makefile.am
+@@ -36,7 +36,7 @@ libcontainerInfo_la_SOURCES += containerInfoInt.h
+ libcontainerInfo_la_SOURCES += containerInfo.c
+ 
+ libcontainerInfo_la_SOURCES += containerInfo_docker.c
+-libcontainerInfo_la_LDFLAGS += -lcurl
++libcontainerInfo_la_LIBADD += -lcurl
+ libcontainerInfo_la_CPPFLAGS += @CURL_CPPFLAGS@
+ libcontainerInfo_la_LIBADD += ../../../lib/jsmn/libJsmn.la
+ 
+@@ -61,8 +61,8 @@ libcontainerInfo_la_SOURCES += containers.grpc.pb.cc
+ libcontainerInfo_la_SOURCES += containerInfo_grpc.cc
+ 
+ libcontainerInfo_la_CPPFLAGS += @GRPC_CPPFLAGS@
+-libcontainerInfo_la_LDFLAGS += -lprotobuf
+-libcontainerInfo_la_LDFLAGS += -lgrpc++
++libcontainerInfo_la_LIBADD += -lprotobuf
++libcontainerInfo_la_LIBADD += -lgrpc++
+ 
+ tasks.grpc.pb.cc containers.grpc.pb.cc: %.grpc.pb.cc : %.proto %.pb.cc
+ 	$(PROTOC) -I. -I$(GOGO_PROTOPATH) \
+diff --git a/open-vm-tools/tests/testVmblock/Makefile.am b/open-vm-tools/tests/testVmblock/Makefile.am
+index 1fd469d5..ae6c79fe 100644
+--- a/open-vm-tools/tests/testVmblock/Makefile.am
++++ b/open-vm-tools/tests/testVmblock/Makefile.am
+@@ -29,8 +29,8 @@ AM_CFLAGS =
+ AM_CFLAGS += -DVMX86_DEVEL
+ AM_CFLAGS += -DVMX86_DEBUG
+ 
+-AM_LDFLAGS =
+-AM_LDFLAGS += -lpthread
++LDLIBS =
++LDLIBS += -lpthread
+ 
+ vmware_testvmblock_fuse_CFLAGS = $(AM_CFLAGS) -Dvmblock_fuse
+ vmware_testvmblock_fuse_SOURCES = vmblocktest.c
+diff --git a/open-vm-tools/vgauth/lib/Makefile.am b/open-vm-tools/vgauth/lib/Makefile.am
+index bce97aac..88944f19 100644
+--- a/open-vm-tools/vgauth/lib/Makefile.am
++++ b/open-vm-tools/vgauth/lib/Makefile.am
+@@ -59,7 +59,7 @@ libvgauth_la_LDFLAGS =
+ libvgauth_la_LDFLAGS += -Wl,-z,defs
+ # Needed for OS's that don't link shared libraries against libc by
+ #default, e.g. FreeBSD
+-libvgauth_la_LDFLAGS += -Wl,-lc
++libvgauth_la_LIBADD += -lc
+ 
+ # Message catalogs.
+ install-data-hook:
+-- 
+2.40.1
+
