@@ -1422,4 +1422,29 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.2. (forwarded request 1067932 from Andreas_Schwab)</comment>
     <requestid>1067933</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>a02c52017986924948099e4f17b84706</srcmd5>
+    <version>6.3</version>
+    <time>1683637329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 6.3
+  * Implemented --trace-fds=set option for filtering only the syscalls
+    that operate on the specified set of file descriptors.
+  * Implemented --decode-fds=signalfd option for decoding of signal masks
+    associated with signalfd file descriptors.
+  * Implemented --syscall-limit option to automatically detach tracees
+    after capturing the specified number of syscalls.
+  * Implemented --argv0 option to set argv[0] of the command being executed.
+  * Implemented decoding of PR_GET_MDWE and PR_SET_MDWE operations of prctl
+    syscall.
+  * Implemented decoding of IP_LOCAL_PORT_RANGE socket option.
+  * Implemented decoding of IFLA_BRPORT_MCAST_N_GROUPS,
+    IFLA_BRPORT_MCAST_MAX_GROUPS, IFLA_GSO_IPV4_MAX_SIZE,
+    IFLA_GRO_IPV4_MAX_SIZE, and TCA_EXT_WARN_MSG netlink attributes.
+  * Updated lists of F_SEAL_*, IFLA_*, IORING_*, MFD_*, NFT_*, TCA_*,
+    and V4L2_PIX_FMT_* constants.
+  * Updated lists of ioctl commands from Linux 6.3.
+  * Fixed --status filtering when -c option is in use. (forwarded request 1085586 from AndreasSchwab)</comment>
+    <requestid>1085587</requestid>
+  </revision>
 </revisionlist>
