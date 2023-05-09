@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  7 20:19:26 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to version 7.2.0:
+  + Improve Tifinagh glyph positioning
+  + Fix 4.2.0 regression in applying across syllables in syllabic
+    scripts.
+  + Add flag to avoid glyph substitution closure during subsetting,
+    and the corresponding “--no-layout-closure” option to
+    “hb-subset” command line tool.
+  + Support instancing COLRv1 table
+  + Optimize handling of “gvar” table
+  + Various subsetter bug fixes and improvements, documentation
+
+-------------------------------------------------------------------
 Fri Mar  3 17:01:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.1.0:
