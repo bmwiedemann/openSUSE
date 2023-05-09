@@ -412,4 +412,12 @@
   * Ensure results are sorted when discovered from files (See also #1670, #1726).</comment>
     <requestid>1043219</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>b952266ad20c746facb7372715c96066</srcmd5>
+    <version>6.0.0</version>
+    <time>1683630543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085627</requestid>
+  </revision>
 </revisionlist>
