@@ -4473,4 +4473,13 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1084090</requestid>
   </revision>
+  <revision rev="449" vrev="1">
+    <srcmd5>d11f30a10ab7c1bb108f17ed3c1711f6</srcmd5>
+    <version>2.4.0+git20230509.6f11a918</version>
+    <time>1683728176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230509.6f11a918:
+  * sudoers-whitelist: adjust monitoring-plugins-smart (bsc#1211003)</comment>
+    <requestid>1085720</requestid>
+  </revision>
 </revisionlist>

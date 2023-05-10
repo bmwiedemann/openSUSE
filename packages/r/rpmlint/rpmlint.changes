@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 09 13:07:19 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 2.4.0+git20230509.6f11a918:
+  * sudoers-whitelist: adjust monitoring-plugins-smart (bsc#1211003)
+
+-------------------------------------------------------------------
 Tue May 02 16:05:41 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230502.1ab1dde:
