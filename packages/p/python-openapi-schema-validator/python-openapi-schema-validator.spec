@@ -16,30 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openapi-schema-validator
-Version:        0.3.4
+Version:        0.4.4
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/p1c2u/openapi-schema-validator
-Source:         https://github.com/p1c2u/openapi-schema-validator/archive/%{version}.tar.gz
+Source:         https://github.com/p1c2u/openapi-schema-validator/archive/%{version}.tar.gz#/openapi-schema-validator-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-isodate
-Requires:       python-jsonschema
-Requires:       python-setuptools
-Requires:       python-strict-rfc3339
+Provides:       python-openapi_schema_validator = %{version}-%{release}
+Requires:       python-rfc3339-validator
+Requires:       (python-jsonschema >= 4 with python-jsonschema < 4.18)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module isodate}
-BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module jsonschema >= 4 with %python-jsonschema < 4.18}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module strict-rfc3339}
+BuildRequires:  %{python_module rfc3339-validator}
 # /SECTION
 %python_subpackages
 
@@ -51,6 +48,7 @@ Wright Draft 00.
 
 %prep
 %setup -q -n openapi-schema-validator-%{version}
+sed -i 's:tool.pytest.ini_options:hide:' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -60,13 +58,12 @@ Wright Draft 00.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i 's:tool.pytest.ini_options:hide:' pyproject.toml
-# no rfc3339-validator installed
-%pytest -k 'not test_string_format_datetime_rfc3339_validator'
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*openapi_schema_validator*/
+%{python_sitelib}/openapi_schema_validator-%{version}.dist-info
+%{python_sitelib}/openapi_schema_validator
 
 %changelog

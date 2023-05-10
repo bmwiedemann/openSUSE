@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  9 19:01:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.4
+  * Include tests in sdist archives #71
+  * jsonschema 4.17 dependency limit #73
+  * add python 3.11 support #74
+- Release 0.4.3
+  * test required formats only #62
+- Release 0.4.2
+  * Rely on jsonschema date date-time and uuid format checkers.
+    Format checkers assigned to validators #60
+  * Backward incompatibility: Missing format checker for format no
+    longer raise FormatError
+- Release 0.4.1
+  * OAS30 read write validators #59
+- Release 0.4.0
+  * Drop no longer used runtime dependency on attrs #54
+  * Re-implemented nullable based on OAS 3.0.3 definition. #57
+
+-------------------------------------------------------------------
 Tue Mar 28 07:52:05 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
