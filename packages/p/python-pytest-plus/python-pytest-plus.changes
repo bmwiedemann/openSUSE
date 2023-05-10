@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 10 07:53:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.4.0:
+  * Minor Changes
+    - Requires py39 or newer
+    - Updated metadata links
+    - Bump minimal requirements
+  * Bugfixes
+    - Refactor GHA pipelines
+    - Adopt PEP-621 packaging
+- no release 0.3.0 available
+
+-------------------------------------------------------------------
+Wed May 10 07:34:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Sun Apr  5 08:43:55 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.2
