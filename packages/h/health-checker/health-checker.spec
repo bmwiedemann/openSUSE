@@ -1,7 +1,7 @@
 #
 # spec file for package health-checker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _dracutmoduledir %(pkg-config --variable=dracutmodulesdir dracut)
 
 Name:           health-checker
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Service for verifying that important services are running
 License:        GPL-2.0-only

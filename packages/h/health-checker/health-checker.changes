@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  8 22:12:48 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 1.8
+  * Don't rely on t-u's good states in GRUB
+    With the introduction of the "apply" command in
+    transactional-update the snapshots don't require a reboot any
+    more to be registered as a "good" snapshot. Due to
+    [boo#1048088] the GRUB part of health-checker was using the t-u
+    file as a workaround which cannot be done any more now, so
+    store the last good snapshot path from a health-checker
+    perspective independently now.
+
+-------------------------------------------------------------------
 Tue Sep  6 09:39:18 UTC 2022 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 1.7
