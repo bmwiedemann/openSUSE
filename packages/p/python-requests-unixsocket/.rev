@@ -44,4 +44,14 @@
   * Allow UnixAdapter to accept max\_retries parameter</comment>
     <requestid>945426</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c7a52f53d29e9b2e801fd0901dedebac</srcmd5>
+    <version>0.3.0</version>
+    <time>1683728199</time>
+    <user>dimstar_suse</user>
+    <comment>- Add urllib3-2.patch to make it compatible with urllib3 &gt;= 2.0.0
+  gh#msabramo/requests-unixsocket#69
+</comment>
+    <requestid>1085688</requestid>
+  </revision>
 </revisionlist>
