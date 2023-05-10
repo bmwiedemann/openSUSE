@@ -28,10 +28,14 @@ BuildRequires:  make >= 4
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-devel
 %else
+%if 0%{?sle_version} > 150400
+BuildRequires:  python311-devel
+%else
 %if 0%{?sle_version} > 150300
 BuildRequires:  python310-devel
 %else
 BuildRequires:  python39-devel
+%endif
 %endif
 %endif
 BuildRequires:  zip
@@ -46,10 +50,14 @@ Suggests:       python3-mutagen
 Suggests:       python3-pycryptodomex
 Suggests:       python3-websockets
 %else
+%if 0%{?sle_version} > 150400
+Requires:       python311
+%else
 %if 0%{?sle_version} > 150300
 Requires:       python310
 %else
 Requires:       python39
+%endif
 %endif
 %endif
 
@@ -92,10 +100,14 @@ rm -f youtube-dl yt-dlp
 %if 0%{?suse_version} > 1500
 PYTHON="%_bindir/python3" \
 %else
+%if 0%{?sle_version} > 150400
+PYTHON="%_bindir/python3.11" \
+%else
 %if 0%{?sle_version} > 150300
 PYTHON="%_bindir/python3.10" \
 %else
 PYTHON="%_bindir/python3.9" \
+%endif
 %endif
 %endif
  %make_build yt-dlp

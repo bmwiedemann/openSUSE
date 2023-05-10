@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  9 09:18:49 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Use python3.11 on Leap 15.5
+  * python3.11 is the only python3 > 3.6 version would be shipped
+    in Leap 15.5
+
+-------------------------------------------------------------------
 Sun Mar  5 00:19:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.03.04
