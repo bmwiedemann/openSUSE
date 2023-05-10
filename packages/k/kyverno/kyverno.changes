@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 10 04:36:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.9.3:
+  * feat: release 1.9.3 (#7137)
+  * fix conflicts (#7109)
+  * fix: do not pass dynamicConfig to
+    matchesResourceDescriptionMatchHelper (#6231) (#6242) (#6331)
+  * cherry-pick #6787 (#7108)
+  * chore: update argocd lab (#6698) (#6702)
+
+-------------------------------------------------------------------
 Wed Mar 22 05:56:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.9.2:
