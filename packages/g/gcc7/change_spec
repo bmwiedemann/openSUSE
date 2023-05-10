@@ -55,10 +55,9 @@ p
 	    gcc.spec.in \
 	| sed -e 's%@base_ver@%'$base_ver'%g' \
 >> gcc$base_ver-testresults.spec
-  test -f gcc$base_ver.changes \
-    && ( ln -f gcc$base_ver.changes gcc$base_ver-testresults.changes; )
 
-
+echo '<multibuild>' > _multibuild
+echo '<flavor>'gcc$base_ver-testresults'</flavor>' >> _multibuild
 
 add_cross() {
   local pkgname="$1"; shift
@@ -77,7 +76,8 @@ add_cross() {
     sed -e "s#@base_ver@#$base_ver#" \
 	-e "s/^\(ExclusiveArch.*\) $rpmtarget[^ \r]*/\1 /" \
       >> $pkgname.spec
-  test -f gcc$base_ver.changes && ln -f gcc$base_ver.changes $pkgname.changes
+
+  echo '<flavor>'$pkgname'</flavor>' >> _multibuild
 }
 
 add_newlib_cross() {
@@ -120,6 +120,6 @@ for f in *.spec; do
   sed -i -e '/^# .*-\(BEGIN\|END\)$/d' $f
 done
 
-osc service localrun format_spec_file
+echo '</multibuild>' >> _multibuild
 
-#exit 0
+osc service localrun format_spec_file

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -147,6 +147,8 @@ Patch36:        gcc7-ada-Target_Name.patch
 Patch37:        gcc7-pr78263.patch
 Patch38:        gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
 Patch39:        gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
+Patch40:        gcc7-pr72764.patch
+Patch41:        gcc7-pr89124.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -339,6 +341,8 @@ ln -s nvptx-newlib/newlib .
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
+%patch40 -p1
+%patch41 -p1
 %patch51
 %patch60
 %patch61

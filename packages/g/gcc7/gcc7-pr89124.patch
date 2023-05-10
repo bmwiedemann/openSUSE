@@ -1,0 +1,68 @@
+From 9d983fd1b9611631fdd5efd26b3b7bdc1ab6dc24 Mon Sep 17 00:00:00 2001
+From: Martin Jambor <mjambor@suse.cz>
+Date: Mon, 7 Nov 2022 17:42:01 +0100
+Subject: [PATCH] Backport of fix to PR sanitizer/89124
+
+gcc/ChangeLog:
+
+2019-01-31  Jakub Jelinek  <jakub@redhat.com>
+
+       PR sanitizer/89124
+       * ipa-inline.c (sanitize_attrs_match_for_inline_p): Allow inlining
+       always_inline callees into no_sanitize_address callers.
+
+gcc/testsuite/ChangeLog:
+
+2019-01-31  Jakub Jelinek  <jakub@redhat.com>
+
+       PR sanitizer/89124
+       * c-c++-common/asan/pr89124.c: New test.
+
+From-SVN: r268415
+Git commit 6206a883fe7a741dbb9e09d88255a170a75950f5
+---
+ gcc/ipa-inline.c                          |  6 ++++++
+ gcc/testsuite/c-c++-common/asan/pr89124.c | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+)
+ create mode 100644 gcc/testsuite/c-c++-common/asan/pr89124.c
+
+diff --git a/gcc/ipa-inline.c b/gcc/ipa-inline.c
+index b520c6393f4..64542238fdd 100644
+--- a/gcc/ipa-inline.c
++++ b/gcc/ipa-inline.c
+@@ -263,6 +263,12 @@ sanitize_attrs_match_for_inline_p (const_tree caller, const_tree callee)
+   if (!caller || !callee)
+     return true;
+ 
++  /* Allow inlining always_inline functions into no_sanitize_address
++     functions.  */
++  if (lookup_attribute ("no_sanitize_address", DECL_ATTRIBUTES (caller))
++      && lookup_attribute ("always_inline", DECL_ATTRIBUTES (callee)))
++    return true;
++
+   return !!lookup_attribute ("no_sanitize_address",
+       DECL_ATTRIBUTES (caller)) == 
+       !!lookup_attribute ("no_sanitize_address",
+diff --git a/gcc/testsuite/c-c++-common/asan/pr89124.c b/gcc/testsuite/c-c++-common/asan/pr89124.c
+new file mode 100644
+index 00000000000..c9c870b76c6
+--- /dev/null
++++ b/gcc/testsuite/c-c++-common/asan/pr89124.c
+@@ -0,0 +1,14 @@
++/* PR sanitizer/89124 */
++/* { dg-do compile } */
++
++static int inline __attribute__ ((always_inline))
++foo (int x)
++{
++  return x + 1;
++}
++
++__attribute__ ((no_sanitize_address)) int
++bar (int x)
++{
++  return foo (x);
++}
+-- 
+2.38.0
+

@@ -1,0 +1,109 @@
+From cffc4a68d759fdca588cdf9ece998862b76141e6 Mon Sep 17 00:00:00 2001
+From: Jason Merrill <jason@redhat.com>
+Date: Wed, 28 Jun 2017 17:06:35 -0400
+Subject: [PATCH] PR c++/72764 - ICE with invalid template typename.
+To: gcc-patches@gcc.gnu.org
+
+	* decl.c (build_typename_type): No longer static.
+	* tree.c (strip_typedefs): Use it instead of make_typename_type.
+
+From-SVN: r249760
+---
+ gcc/cp/cp-tree.h                           |  1 +
+ gcc/cp/decl.c                              |  2 +-
+ gcc/cp/tree.c                              | 17 ++++++++++-------
+ gcc/testsuite/g++.dg/cpp0x/alias-decl-60.C | 16 ++++++++++++++++
+ 5 files changed, 32 insertions(+), 8 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/cpp0x/alias-decl-60.C
+
+diff --git a/gcc/cp/cp-tree.h b/gcc/cp/cp-tree.h
+index f82b1b6ae10..946a9167992 100644
+--- a/gcc/cp/cp-tree.h
++++ b/gcc/cp/cp-tree.h
+@@ -6087,6 +6087,7 @@ extern tree define_label			(location_t, tree);
+ extern void check_goto				(tree);
+ extern bool check_omp_return			(void);
+ extern tree make_typename_type			(tree, tree, enum tag_types, tsubst_flags_t);
++extern tree build_typename_type			(tree, tree, tree, tag_types);
+ extern tree make_unbound_class_template		(tree, tree, tree, tsubst_flags_t);
+ extern tree build_library_fn_ptr		(const char *, tree, int);
+ extern tree build_cp_library_fn_ptr		(const char *, tree, int);
+diff --git a/gcc/cp/decl.c b/gcc/cp/decl.c
+index 93e24fc8984..3d96a3ea0fd 100644
+--- a/gcc/cp/decl.c
++++ b/gcc/cp/decl.c
+@@ -3594,7 +3594,7 @@ struct typename_hasher : ggc_ptr_hash<tree_node>
+ 
+ static GTY (()) hash_table<typename_hasher> *typename_htab;
+ 
+-static tree
++tree
+ build_typename_type (tree context, tree name, tree fullname,
+ 		     enum tag_types tag_type)
+ {
+diff --git a/gcc/cp/tree.c b/gcc/cp/tree.c
+index bb17278c611..4535af64dc6 100644
+--- a/gcc/cp/tree.c
++++ b/gcc/cp/tree.c
+@@ -1503,13 +1503,13 @@ strip_typedefs (tree t, bool *remove_attributes)
+       break;
+     case TYPENAME_TYPE:
+       {
++	bool changed = false;
+ 	tree fullname = TYPENAME_TYPE_FULLNAME (t);
+ 	if (TREE_CODE (fullname) == TEMPLATE_ID_EXPR
+ 	    && TREE_OPERAND (fullname, 1))
+ 	  {
+ 	    tree args = TREE_OPERAND (fullname, 1);
+ 	    tree new_args = copy_node (args);
+-	    bool changed = false;
+ 	    for (int i = 0; i < TREE_VEC_LENGTH (args); ++i)
+ 	      {
+ 		tree arg = TREE_VEC_ELT (args, i);
+@@ -1533,12 +1533,15 @@ strip_typedefs (tree t, bool *remove_attributes)
+ 	    else
+ 	      ggc_free (new_args);
+ 	  }
+-	result = make_typename_type (strip_typedefs (TYPE_CONTEXT (t),
+-						     remove_attributes),
+-				     fullname, typename_type, tf_none);
+-	/* Handle 'typedef typename A::N N;'  */
+-	if (typedef_variant_p (result))
+-	  result = TYPE_MAIN_VARIANT (DECL_ORIGINAL_TYPE (TYPE_NAME (result)));
++	tree ctx = strip_typedefs (TYPE_CONTEXT (t), remove_attributes);
++	if (!changed && ctx == TYPE_CONTEXT (t) && !typedef_variant_p (t))
++	  return t;
++	tree name = fullname;
++	if (TREE_CODE (fullname) == TEMPLATE_ID_EXPR)
++	  name = TREE_OPERAND (fullname, 0);
++	/* Use build_typename_type rather than make_typename_type because we
++	   don't want to resolve it here, just strip typedefs.  */
++	result = build_typename_type (ctx, name, fullname, typename_type);
+       }
+       break;
+     case DECLTYPE_TYPE:
+diff --git a/gcc/testsuite/g++.dg/cpp0x/alias-decl-60.C b/gcc/testsuite/g++.dg/cpp0x/alias-decl-60.C
+new file mode 100644
+index 00000000000..6bf9b7b1666
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/cpp0x/alias-decl-60.C
+@@ -0,0 +1,16 @@
++// PR c++/72764
++// { dg-do compile { target c++11 } }
++
++template < typename > struct A;
++template < typename > struct B {};
++
++template < typename T >
++using C = typename A < T >::template D < T >;
++
++template < typename T > struct A
++{ 
++  // should be: template < typename > struct D : B < C < T > > {};
++  struct D : B < C < T > > {};	// { dg-error "not a class template" }
++};
++
++A < int >::D a;			// { dg-message "required" }
+-- 
+2.35.3
+

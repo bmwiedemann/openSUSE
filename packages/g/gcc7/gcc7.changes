@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  9 13:12:55 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Backport _multibuild auto-generation.  Remove redundant
+  .changes files.
+
+-------------------------------------------------------------------
+Fri May  5 15:02:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Tue Nov  8 09:09:26 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr89124.patch to fix KASAN kernel compile.  [bsc#1205145]
+
+-------------------------------------------------------------------
+Thu Oct 20 09:38:24 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr72764.patch to fix ICE with C++17 code as reported
+  in [bsc#1204505]
+
+-------------------------------------------------------------------
 Thu Sep  1 10:15:12 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch

@@ -591,4 +591,21 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   and gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch</comment>
     <requestid>1000697</requestid>
   </revision>
+  <revision rev="38" vrev="13">
+    <srcmd5>9313c60626bfe95854732653eb55b910</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1683728258</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport _multibuild auto-generation.  Remove redundant
+  .changes files.
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+- Add gcc7-pr89124.patch to fix KASAN kernel compile.  [bsc#1205145]
+
+- Add gcc7-pr72764.patch to fix ICE with C++17 code as reported
+  in [bsc#1204505]</comment>
+    <requestid>1085726</requestid>
+  </revision>
 </revisionlist>
