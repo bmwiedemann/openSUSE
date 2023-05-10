@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv3
-Version:        3.4.18
+Version:        3.4.19
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -65,6 +65,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(zlib)
 Conflicts:      opencv
 Provides:       opencv-qt5 = %{version}
@@ -190,6 +191,8 @@ rm -f doc/packaging.txt
       -DINSTALL_C_EXAMPLES=ON \
       -DINSTALL_PYTHON_EXAMPLES=ON \
       -DENABLE_OMIT_FRAME_POINTER=OFF \
+      -DBUILD_ZLIB=OFF \
+      -DBUILD_WEBP=OFF \
       -DWITH_QT=ON \
       -DWITH_OPENGL=ON \
       -DWITH_UNICAP=ON \
