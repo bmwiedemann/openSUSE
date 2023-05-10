@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  9 15:53:15 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.11.2.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.11.2-1
+  - Fixed crash on loading organ with general of divisional buttons https://github.com/GrandOrgue/grandorgue/issues/1512
+
+-------------------------------------------------------------------
 Thu May  4 10:51:18 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.11.1.
