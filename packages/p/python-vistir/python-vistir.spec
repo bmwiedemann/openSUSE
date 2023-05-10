@@ -1,7 +1,7 @@
 #
 # spec file for package python-vistir
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-vistir
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Utilities for filesystems, paths, projects, subprocesses, and more
 License:        ISC
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama >= 0.3.4
 Recommends:     python-requests
-Recommends:     python-yaspin
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.3.4}
@@ -39,7 +38,6 @@ BuildRequires:  %{python_module hypothesis-fspaths}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module yaspin}
 # /SECTION
 %python_subpackages
 
