@@ -1,0 +1,103 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Dec 20 09:18:49 UTC 2017
+Summary: Fix CI unit tests framework for OBS building
+
+Index: node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
+===================================================================
+--- node-v18.9.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
+@@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
+ 
+ addLibraryPath(process.env);
+ 
++common.skip('hardcoded global paths');
++return;
++
+ if (process.argv[2] === 'child') {
+   console.log(require(pkgName).string);
+ } else {
+Index: node-v18.9.0/test/parallel/test-tls-passphrase.js
+===================================================================
+--- node-v18.9.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v18.9.0/test/parallel/test-tls-passphrase.js
+@@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
+   }, onSecureConnect());
+ })).unref();
+ 
+-const errMessageDecrypt = /bad decrypt/;
++const errMessageDecrypt = /bad (decrypt|password read)/;
+ 
+ // Missing passphrase
+ assert.throws(function() {
+Index: node-v18.9.0/test/parallel/test-repl-envvars.js
+===================================================================
+--- node-v18.9.0.orig/test/parallel/test-repl-envvars.js
++++ node-v18.9.0/test/parallel/test-repl-envvars.js
+@@ -2,7 +2,9 @@
+ 
+ // Flags: --expose-internals
+ 
+-require('../common');
++const common = require('../common');
++common.skip('Not running test in OBS');
++
+ const stream = require('stream');
+ const REPL = require('internal/repl');
+ const assert = require('assert');
+Index: node-v18.9.0/test/common/index.mjs
+===================================================================
+--- node-v18.9.0.orig/test/common/index.mjs
++++ node-v18.9.0/test/common/index.mjs
+@@ -45,6 +45,7 @@ const {
+   expectsError,
+   skipIfInspectorDisabled,
+   skipIf32Bits,
++  skipIfWorker,
+   getArrayBufferViews,
+   getBufferSources,
+   getTTYfd,
+@@ -94,6 +95,7 @@ export {
+   expectsError,
+   skipIfInspectorDisabled,
+   skipIf32Bits,
++  skipIfWorker,
+   getArrayBufferViews,
+   getBufferSources,
+   getTTYfd,
+Index: node-v18.9.0/Makefile
+===================================================================
+--- node-v18.9.0.orig/Makefile
++++ node-v18.9.0/Makefile
+@@ -524,7 +524,8 @@ test-ci-js: | clear-stalled
+ .PHONY: test-ci
+ # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
+ test-ci: LOGLEVEL := info
+-test-ci: | clear-stalled bench-addons-build build-addons build-js-native-api-tests build-node-api-tests doc-only
++test-ci: | clear-stalled bench-addons-build build-addons build-js-native-api-tests build-node-api-tests
++	strip $(NODE_EXE)
+ 	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
+ 	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
+ 		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
+@@ -717,7 +718,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+ apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
+ 
+ tools/doc/node_modules: tools/doc/package.json
+-	@if [ "$(shell $(node_use_openssl))" != "true" ]; then \
++	echo "Skipping tools/doc/node_modules"
++#	@if [ "$(shell $(node_use_openssl))" != "true" ]; then \
+ 		echo "Skipping tools/doc/node_modules (no crypto)"; \
+ 	else \
+ 		cd tools/doc && $(call available-node,$(run-npm-ci)) \
+Index: node-v18.9.0/test/parallel/test-crypto-dh.js
+===================================================================
+--- node-v18.9.0.orig/test/parallel/test-crypto-dh.js
++++ node-v18.9.0/test/parallel/test-crypto-dh.js
+@@ -167,7 +167,7 @@ assert.throws(() => {
+   dh3.computeSecret('');
+ }, { message: common.hasOpenSSL3 ?
+   'error:02800080:Diffie-Hellman routines::invalid secret' :
+-  'Supplied key is too small' });
++  /Supplied key is too small|error:05066066:Diffie-Hellman routines:compute_key:invalid public key/ });
+ 
+ // Invalid test: curve argument is undefined
+ assert.throws(

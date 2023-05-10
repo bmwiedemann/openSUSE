@@ -1,0 +1,54 @@
+Index: node-v18.9.0/tools/install.py
+===================================================================
+--- node-v18.9.0.orig/tools/install.py
++++ node-v18.9.0/tools/install.py
+@@ -7,6 +7,7 @@ import errno
+ import os
+ import shutil
+ import sys
++from distutils import sysconfig
+ import re
+ 
+ # set at init time
+@@ -66,6 +67,10 @@ def try_copy(path, dst):
+   try_unlink(target_path) # prevent ETXTBSY errors
+   return shutil.copy2(source_path, target_path)
+ 
++def libdir():
++  libdir_fq = sysconfig.get_config_var("LIBDIR")
++  return re.sub("^" + re.escape(node_prefix + "/"), "", libdir_fq)
++
+ def try_remove(path, dst):
+   source_path, target_path = mkpaths(path, dst)
+   print('removing %s' % target_path)
+@@ -81,7 +86,7 @@ def uninstall(paths, dst):
+     try_remove(path, dst)
+ 
+ def package_files(action, name, bins):
+-  target_path = 'lib/node_modules/' + name + '/'
++  target_path = libdir() + '/node_modules/' + name + '/'
+ 
+   # don't install npm if the target path is a symlink, it probably means
+   # that a dev version of npm is installed there
+@@ -101,7 +106,7 @@ def package_files(action, name, bins):
+     if action == uninstall:
+       action([link_path], 'bin/' + bin_name)
+     elif action == install:
+-      try_symlink('../lib/node_modules/' + name + '/' + bin_target, link_path)
++      try_symlink('../' + libdir() + '/node_modules/' + name + '/' + bin_target, link_path)
+     else:
+       assert 0  # unhandled action type
+ 
+Index: node-v18.9.0/lib/internal/modules/cjs/loader.js
+===================================================================
+--- node-v18.9.0.orig/lib/internal/modules/cjs/loader.js
++++ node-v18.9.0/lib/internal/modules/cjs/loader.js
+@@ -1254,7 +1254,7 @@ Module._initPaths = function() {
+     path.resolve(process.execPath, '..') :
+     path.resolve(process.execPath, '..', '..');
+ 
+-  const paths = [path.resolve(prefixDir, 'lib', 'node')];
++  const paths = ['/usr/lib/node'];
+ 
+   if (homeDir) {
+     ArrayPrototypeUnshift(paths, path.resolve(homeDir, '.node_libraries'));

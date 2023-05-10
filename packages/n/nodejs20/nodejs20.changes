@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu May  4 13:26:26 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.1.0
+
+- Update to version 20.1.0
+    assert: deprecate CallTracker
+    dns: expose getDefaultResultOrder
+    doc: add KhafraDev to collaborators
+    fs: add recursive option to readdir and opendir
+    fs: add support for mode flag to specify the copy behavior
+        of the cp methods
+    http: add highWaterMark option http.createServer
+    stream: preserve object mode in compose
+    test_runner: add testNamePatterns to run API
+    test_runner: execute before hook on test
+    test_runner: support combining coverage reports
+    wasi: make returnOnExit true by default
+
+-------------------------------------------------------------------
+Wed Apr 19 13:16:54 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.0.0
+
+- Package new version 20.0.0
+  For overview of changes and details since 19.x and earlier see
+  https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.0.0
+
+- imported the following patches from prior patches:
+  + cares_public_headers.patch
+  + fix_ci_tests.patch
+  + flaky_test_rerun.patch
+  + legacy_python.patch
+  + linker_lto_jobs.patch
+  + manual_configure.patch
+  + node-gyp-addon-gypi.patch
+  + node-gyp-config.patch
+  + nodejs-libpath.patch
+  + npm_search_paths.patch
+  + openssl_binary_detection.patch
+  + qemu_timeouts_arches.patch
+  + skip_no_console.patch
+  + sle12_python3_compat.patch
+  + test-skip-y2038-on-32bit-time_t.patch
+  + versioned.patch
+
