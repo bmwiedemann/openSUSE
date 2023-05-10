@@ -15,6 +15,12 @@ Wed May  3 12:23:27 UTC 2023 - Marcus Meissner <meissner@suse.com>
   - swap cjson dependency (#1441)
   - Update release readme (#1456)
 
+  Security fixes:
+
+  - CVE-2023-30551: Fixed a potential denial of service (out of memory)
+    when processing JAR META-INF files or .SIGN/.PKINFO files in APK files.
+    (bsc#1211210 https://github.com/advisories/GHSA-2h5h-59f5-c5x9)
+
 -------------------------------------------------------------------
 Wed Apr  5 08:27:23 UTC 2023 - Marcus Meissner <meissner@suse.com>
 

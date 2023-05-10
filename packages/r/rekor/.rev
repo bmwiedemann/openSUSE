@@ -297,4 +297,15 @@
   - Update release readme (#1456) (forwarded request 1084326 from msmeissn)</comment>
     <requestid>1084327</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>20647a3083db9e041029da400210e248</srcmd5>
+    <version>1.1.1</version>
+    <time>1683728235</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes:
+  - CVE-2023-30551: Fixed a potential denial of service (out of memory)
+    when processing JAR META-INF files or .SIGN/.PKINFO files in APK files.
+    (bsc#1211210 https://github.com/advisories/GHSA-2h5h-59f5-c5x9) (forwarded request 1085762 from msmeissn)</comment>
+    <requestid>1085763</requestid>
+  </revision>
 </revisionlist>
