@@ -22,12 +22,11 @@ Release:        0
 Summary:        Object-oriented paths
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/pathable
-Source:         /https://github.com/p1c2u/pathable/archive/refs/tags/%{version}.tar.gz#/pathable-%{version}.tar.gz
+Source:         https://github.com/p1c2u/pathable/archive/refs/tags/%{version}.tar.gz#/pathable-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # I know self obsoletion, but se want following, right?
@@ -58,6 +57,7 @@ sed -i '/--cov/d' pyproject.toml
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pathable*/
+%{python_sitelib}/pathable
+%{python_sitelib}/pathable-%{version}.dist-info
 
 %changelog
