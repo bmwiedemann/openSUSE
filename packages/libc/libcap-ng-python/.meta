@@ -1,5 +1,0 @@
-<package name="libcap-ng-python" project="openSUSE:Factory">
-  <title>An alternate POSIX capabilities library</title>
-  <description>Libcap-ng is a library that makes using posix capabilities easier</description>
-  <devel project="openSUSE:Factory" package="libcap-ng"/>
-</package>
