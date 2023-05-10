@@ -2921,4 +2921,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1083164</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>5cac545b9c2521155a3b3b1437ea08ac</srcmd5>
+    <version>4.5.0+20230510.847a251b</version>
+    <time>1683733160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086098</requestid>
+  </revision>
 </revisionlist>

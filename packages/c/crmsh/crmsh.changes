@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 10 09:50:09 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230510.847a251b:
+  * Fix: bootstrap: `init --qnetd-hostname` fails when username is not specified (bsc#1211200)
+
+-------------------------------------------------------------------
+Wed May 10 08:44:23 UTC 2023 - nicholas.yang@suse.com
+
+- Update to version 4.5.0+20230510.3343cc42:
+  * Dev: behave: Use 'su - <user>' instead of 'su <user>'
+  * Dev: Dockerfile: use opensuse/leap:15.5 for current CI
+
+-------------------------------------------------------------------
 Thu Apr 27 06:35:41 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230427.11d11104:
