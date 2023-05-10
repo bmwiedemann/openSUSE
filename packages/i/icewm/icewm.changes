@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May  4 07:17:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.4:
+  * Fix compile error for yximage.cc.
+  * Deprecate XRRDisable.
+  * Fix corrupted text if built without i18n for issue ice-wm/icewm#131.
+  * When internationalization is disabled, unset LIBICONV.
+  * Improve the quality of drawing gradients for the Imlib2 renderer.
+  * Improve arrow navigation in the system dialog.
+  * Let icesh also pick icewm internal and override redirect windows.
+  * Improve the quality of drawing gradients for the GdkPixbuf renderer.
+  * Cache workspace button backgrounds for faster redrawing.
+  * Guard against workspace button gradient being undefined.
+  * Cache toolbar button gradients to speedup drawing.  Eliminate half of the
+    button drawings on startup.
+  * Let icesh report up to 1024 bytes of a property in "prop".
+  * Support icesh "focusmodel" for client windows without a WM_HINTS property.
+  * When managing a new client, postpone sending a Configure event until the
+    final position is known, for issue #720.
+
+-------------------------------------------------------------------
 Tue Mar 14 08:16:23 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3.2:
