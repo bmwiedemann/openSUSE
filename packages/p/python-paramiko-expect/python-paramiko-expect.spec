@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko-expect
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-paramiko-expect
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        An expect-like extension for the Paramiko SSH library
 License:        MIT
 URL:            https://github.com/fgimian/paramiko-expect
 Source:         https://files.pythonhosted.org/packages/source/p/paramiko-expect/paramiko-expect-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/fgimian/paramiko-expect/master/LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +46,6 @@ extended to support a transport in future for more flexibility).
 
 %prep
 %setup -q -n paramiko-expect-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build

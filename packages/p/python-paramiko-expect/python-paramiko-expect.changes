@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 10 06:17:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.5:
+  * use license from tarball
+  * add term option to SSHClientInteraction and use to call invoke_shell 
+
+-------------------------------------------------------------------
 Wed Oct 12 13:51:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.3.4 

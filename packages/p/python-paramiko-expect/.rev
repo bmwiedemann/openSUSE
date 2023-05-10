@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1010373</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>966fbe871cdc7e3891b5f672b07e630d</srcmd5>
+    <version>0.3.5</version>
+    <time>1683728380</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.5:
+  * use license from tarball
+  * add term option to SSHClientInteraction and use to call invoke_shell</comment>
+    <requestid>1085966</requestid>
+  </revision>
 </revisionlist>
