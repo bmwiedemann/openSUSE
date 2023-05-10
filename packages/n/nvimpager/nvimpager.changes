@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 10 06:43:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  * Use upstream support for $NVIM_APPNAME
+  * Conceal \e[K escape sequences in pager mode
+  * Fix man page detection for empty lines
+  * makefile: Split install rule, supporting installation without man
+  * Move unit tests to extra file
+  * Handle all test excludes via busted tags
+  * Use native neovim function to get parsed listchar
+  * Filter out broken tests in CI
+  * Run tests in CI with neovim from the official appimages
+  * Set LUA_PATH for the tests in the makefile
+  * Split code into modules
+  * Add helper function to better detect man pages
+
+-------------------------------------------------------------------
 Tue Oct 18 11:56:47 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.0:

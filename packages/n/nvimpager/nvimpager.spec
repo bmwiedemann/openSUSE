@@ -1,7 +1,7 @@
 #
 # spec file for package nvimpager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nvimpager
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Use nvim as a pager
 License:        BSD-2-Clause
@@ -26,7 +26,7 @@ URL:            https://github.com/lucc/nvimpager
 Source:         https://github.com/lucc/nvimpager/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  scdoc
 Requires:       lua54
-Requires:       neovim >= 0.7.2
+Requires:       neovim >= 0.9
 BuildArch:      noarch
 
 %description
@@ -60,7 +60,13 @@ sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" nvimpager
 %dir %{_datadir}/nvimpager
 %dir %{_datadir}/nvimpager/runtime
 %dir %{_datadir}/nvimpager/runtime/lua
-%{_datadir}/nvimpager/runtime/lua/nvimpager.lua
+%dir %{_datadir}/nvimpager/runtime/lua/nvimpager
+%{_datadir}/nvimpager/runtime/lua/nvimpager/ansi2highlight.lua
+%{_datadir}/nvimpager/runtime/lua/nvimpager/cat.lua
+%{_datadir}/nvimpager/runtime/lua/nvimpager/init.lua
+%{_datadir}/nvimpager/runtime/lua/nvimpager/options.lua
+%{_datadir}/nvimpager/runtime/lua/nvimpager/pager.lua
+%{_datadir}/nvimpager/runtime/lua/nvimpager/util.lua
 
 %files zsh-completion
 %license LICENSE
