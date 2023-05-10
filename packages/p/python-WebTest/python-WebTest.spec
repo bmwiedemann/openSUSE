@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-WebTest
 Version:        3.0.0
 Release:        0
