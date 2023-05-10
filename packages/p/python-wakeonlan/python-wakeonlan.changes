@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  9 19:24:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  * Remove support for Python 3.6 by @remcohaszing
+  * Allowed to use mac address in xxxx.xxxx.xxxx format. by
+    @vladislavru in #24
+  * Conform to PEP 561 by @DavidPratt512 in #28
+- Fix license: It's MIT!
+
+-------------------------------------------------------------------
 Thu Apr 14 10:24:16 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.1.0
