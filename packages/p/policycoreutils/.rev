@@ -537,4 +537,12 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment>SELinux 3.5 toolchain</comment>
     <requestid>1068400</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>d72b063828b8c202802a590aec978448</srcmd5>
+    <version>3.5</version>
+    <time>1683728194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085673</requestid>
+  </revision>
 </revisionlist>

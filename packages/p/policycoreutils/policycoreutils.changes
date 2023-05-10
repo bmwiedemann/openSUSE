@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 09:08:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-wheel build dependency to build correctly with latest
+  python-pip version.
+
+-------------------------------------------------------------------
 Fri Feb 24 07:54:02 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.5

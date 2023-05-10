@@ -64,6 +64,7 @@ BuildRequires:  polkit
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  update-desktop-files
