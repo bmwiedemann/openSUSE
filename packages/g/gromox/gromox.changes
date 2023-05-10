@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 10 09:07:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9
+  * emsmdb: support forwarding meeting requests from organizers
+    that are not local to the installation
+  * imap: broadcast changes to mailbox from EXPUNGE commands
+  * oxcical: add TZID for allday events
+  * imap: add and populate a per-context seqid list
+  * midb: unbreak search matching based on dates and sizes
+  * emsmdb: avoid hitting an assertion when sort-reloading a
+    table of a deleted folder
+- Delete 0001-dbop_mysql-remove-extraneous-DEFAULT-keyword-in-clas.patch
+
+-------------------------------------------------------------------
 Sat Apr 15 10:07:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8
