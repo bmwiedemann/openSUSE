@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May  5 10:50:07 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Allow to pass commit callbacks to inst_prepdisk client.
+- Needed for Agama (gh#openSUSE/agama/558).
+- 4.6.8
+
+-------------------------------------------------------------------
+Wed May  3 11:51:09 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- GuidedProposal adapted to support assigning volumes to specific
+  devices when volumes_allocate_mode is :auto (useful for Agama).
+
+-------------------------------------------------------------------
+Mon Apr 24 14:47:33 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Guided Setup: display a hint for disks with sensible data
+  transports like FCoE or NVMe/oF (bsc#1209588).
+- 4.6.7
+
+-------------------------------------------------------------------
+Tue Apr 18 08:23:44 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: correctly import legacy values for parity_algorithm.
+- Partitioner: when creating an MD RAID, do not ask for the chunk
+  side when it makes no sense. Eg. RAID1 (bsc#1205172).
+- 4.6.6
+
+-------------------------------------------------------------------
 Tue Apr 11 13:38:25 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Adjusted detection of Dell BOSS devices (bsc#1200975).
