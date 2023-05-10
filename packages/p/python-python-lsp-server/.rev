@@ -222,4 +222,14 @@
     <comment></comment>
     <requestid>1083326</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>5d3805dc7ae90425119bb6d742321cc0</srcmd5>
+    <version>1.7.2</version>
+    <time>1683728291</time>
+    <user>dimstar_suse</user>
+    <comment>- Unpin yapf
+  * Add python-lsp-server-pr377-unpin-yapf.patch
+  * gh#python-lsp/python-lsp-server#377</comment>
+    <requestid>1085800</requestid>
+  </revision>
 </revisionlist>

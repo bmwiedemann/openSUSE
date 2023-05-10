@@ -23,6 +23,8 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-lsp-server-pr377-unpin-yapf.patch gh#python-lsp/python-lsp-server#377
+Patch0:         python-lsp-server-pr377-unpin-yapf.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -45,11 +47,9 @@ BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 1.2.0}
-# gh#python-lsp/python-lsp-server#346
-BuildRequires:  %{python_module toml if %python-yapf <= 0.32.0 else %python-tomli}
 BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module whatthepatch >= 1.0.2 with %python-whatthepatch < 2}
-BuildRequires:  %{python_module yapf < 0.32.1}
+BuildRequires:  %{python_module yapf >= 0.33}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-docstring-to-markdown
@@ -65,9 +65,7 @@ Conflicts:      python-pydocstyle >= 6.4.0
 Suggests:       python-pylint >= 2.5.0
 Conflicts:      python-pylint >= 3
 Suggests:       python-rope >= 1.2.0
-Suggests:       python-yapf
-Conflicts:      python-yapf >= 0.32.1
-Suggests:       python-toml
+Suggests:       python-yapf >= 0.33
 Suggests:       python-whatthepatch >= 1.0.2
 Conflicts:      python-whatthepatch >= 2
 # SECTION flake8 pins

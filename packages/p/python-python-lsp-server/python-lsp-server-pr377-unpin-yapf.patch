@@ -1,0 +1,32 @@
+From b2df1b92559a07defed27f26a364acc5a6837fce Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Tue, 9 May 2023 22:02:43 +0200
+Subject: [PATCH] Update yapf requirement
+
+---
+ pyproject.toml | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 1dc01fa..7e62d24 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -35,8 +35,7 @@ all = [
+     "pyflakes>=2.5.0,<3.1.0",
+     "pylint>=2.5.0,<3",
+     "rope>1.2.0",
+-    "yapf<=0.32.0",
+-    "toml",
++    "yapf>=0.33.0",
+     "whatthepatch>=1.0.2,<2.0.0"
+ ]
+ autopep8 = ["autopep8>=1.6.0,<2.1.0"]
+@@ -47,7 +46,7 @@ pydocstyle = ["pydocstyle>=6.3.0,<6.4.0"]
+ pyflakes = ["pyflakes>=2.5.0,<3.1.0"]
+ pylint = ["pylint>=2.5.0,<3"]
+ rope = ["rope>1.2.0"]
+-yapf = ["yapf<=0.32.0", "whatthepatch>=1.0.2,<2.0.0", "toml"]
++yapf = ["yapf>=0.33.0", "whatthepatch>=1.0.2,<2.0.0"]
+ websockets = ["websockets>=10.3"]
+ test = [
+     "pylint>=2.5.0,<3",

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  9 20:07:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Unpin yapf
+  * Add python-lsp-server-pr377-unpin-yapf.patch
+  * gh#python-lsp/python-lsp-server#377
+
+-------------------------------------------------------------------
 Thu Apr 27 15:15:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.2
