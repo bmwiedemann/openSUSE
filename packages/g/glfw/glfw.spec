@@ -1,7 +1,7 @@
 #
-# spec file for package glfw
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,15 @@
 %bcond_with wayland
 %endif
 %define sover  3
-Name:           glfw
+Name:           glfw%{flavor}
 Version:        3.3.8
 Release:        0
 Summary:        Framework for OpenGL application development
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://www.glfw.org/
-Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       %{name}-rpmlintrc
+Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/glfw-%{version}.tar.gz
+Source99:       glfw-rpmlintrc
 BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -89,7 +89,7 @@ reading keyboard, time, mouse and joystick input.
 %endif
 
 %prep
-%setup -q
+%setup -q -n glfw-%{version}
 find . -type f | xargs sed -i 's/\r//'
 
 # temp geany config directory for allow geany to generate tags
