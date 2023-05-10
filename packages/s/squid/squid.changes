@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  9 14:32:34 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- update to 5.9:
+  * Improve reply_body_max_size matching accuracy
+  * fix gcc13 warning 
+
+-------------------------------------------------------------------
 Tue May  2 15:14:15 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - partial revert of earlier "fix PIDFile"

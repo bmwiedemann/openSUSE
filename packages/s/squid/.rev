@@ -1132,4 +1132,14 @@ and CVE references,
     live just fine in /run since it's written by root. (bsc#1210960)</comment>
     <requestid>1084087</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>437fe6dd67fb7633832325ab79269550</srcmd5>
+    <version>5.9</version>
+    <time>1683728279</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.9:
+  * Improve reply_body_max_size matching accuracy
+  * fix gcc13 warning</comment>
+    <requestid>1085760</requestid>
+  </revision>
 </revisionlist>
