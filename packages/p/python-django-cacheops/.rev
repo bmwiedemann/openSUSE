@@ -86,4 +86,15 @@
   * updated README: TOC, link to the post, some explanations</comment>
     <requestid>1085346</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6d81b3d998d3b0d3e7eec074b49d4ea2</srcmd5>
+    <version>7.0.1</version>
+    <time>1683728290</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.1:
+  * made it work with Redis 6.x and older again
+  * handle abstract models better
+  * some docs improvements</comment>
+    <requestid>1085792</requestid>
+  </revision>
 </revisionlist>

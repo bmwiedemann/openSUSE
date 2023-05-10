@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  9 19:26:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * made it work with Redis 6.x and older again
+  * handle abstract models better
+  * some docs improvements
+
+-------------------------------------------------------------------
 Sun May  7 19:08:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0:

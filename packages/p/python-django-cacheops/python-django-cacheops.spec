@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-cacheops
-Version:        7.0
+Version:        7.0.1
 Release:        0
 Summary:        Django ORM cache with automatic granular event-driven invalidation
 License:        BSD-3-Clause
