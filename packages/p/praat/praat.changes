@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  4 14:03:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.10:
+  * Repaired a bug in the VowelEditor by which it would crash when
+    starting up after fewer than 4 numbers were set in the “Extra
+    formant–bandwidth pairs” field.
+  * FormantPathEditor improvements.
+  * Undocumented alpha support for Praat notebooks.
+  * Scripting: vector literals can be indexed.
+  * Better interactions between editor scripts and pause windows.
+
+-------------------------------------------------------------------
 Tue Mar 14 10:17:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.3.09:
