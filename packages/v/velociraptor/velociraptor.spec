@@ -60,7 +60,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.6.7.5~git78.2bef6fc
+Version:        0.6.7.5~git81.01be570
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -98,8 +98,8 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.18
 BuildRequires:  pkgconfig(libsystemd)
 %if %{build_server}
-BuildRequires:  nodejs >= 16
-BuildRequires:  npm >= 16
+BuildRequires:  nodejs >= 18
+BuildRequires:  npm >= 18
 %endif
 %if %{with bpf}
 # clang15 causes libbpfgo to crash immediately
@@ -146,7 +146,7 @@ This package provides a shared system user for all velociraptor components
 %if %{build_kafka_humio_gateway}
 %package kafka-humio-gateway
 Summary:        Gateway between Kafka and Humio for Velociraptor Artifacts
-Version:        0.6.7.5~git78.2bef6fc
+Version:        0.6.7.5~git81.01be570
 Requires:       group(velociraptor-kafka)
 Requires:       user(velociraptor-kafka)
 

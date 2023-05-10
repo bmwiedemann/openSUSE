@@ -58,4 +58,17 @@ causing crashes in libbpfgo.</comment>
     <comment>- Provide sysuser template for velociraptor user and group. (forwarded request 1085596 from jeff_mahoney)</comment>
     <requestid>1085597</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>54f5c0690424556a339c0d054724905d</srcmd5>
+    <version>unknown</version>
+    <time>1683728357</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.7.5~git81.01be570:
+  * libbpfgo: pull fix for double-free
+  * logscale: add documentation for plugin
+
+- bump minimum nodejs to 18:
+  building against 16 causes errors</comment>
+    <requestid>1085933</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 10 00:49:09 UTC 2023 - jeffm@suse.com
+
+- Update to version 0.6.7.5~git81.01be570:
+  * libbpfgo: pull fix for double-free
+  * logscale: add documentation for plugin
+
+-------------------------------------------------------------------
+Tue May  9 14:10:31 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump minimum nodejs to 18:
+  building against 16 causes errors
+
+-------------------------------------------------------------------
 Tue May  9 01:25:01 UTC 2023 - Jeff Mahoney <jeffm@suse.com>
 
 - Provide sysuser template for velociraptor user and group.
