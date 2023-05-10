@@ -16,4 +16,12 @@
 - readd provides which is needed to select between 1.x and 2.x</comment>
     <requestid>1085288</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f35763c47f1b4c3ce117ae8aa1a60944</srcmd5>
+    <version>1.4.46</version>
+    <time>1683728237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085868</requestid>
+  </revision>
 </revisionlist>

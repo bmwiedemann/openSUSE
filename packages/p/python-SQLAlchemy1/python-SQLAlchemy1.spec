@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-greenlet
+Provides:       python-SQLAlchemy = %{version}
 Provides:       python-sqlalchemy = %{version}
 Conflicts:      python-SQLAlchemy
 %if %{python_version_nodots} < 38

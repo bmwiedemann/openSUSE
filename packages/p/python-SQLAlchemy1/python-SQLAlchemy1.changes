@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  9 13:30:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly advertise this package also as python-SQLAlchemy.
+
+-------------------------------------------------------------------
 Sat May  6 15:46:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove parallel testing, too unstable
