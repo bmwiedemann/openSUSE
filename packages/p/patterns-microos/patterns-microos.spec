@@ -109,6 +109,7 @@ Requires:       microos-tools
 Requires:       openssh
 Requires:       snapper
 Requires:       vim-small
+Requires:       wtmpdb
 # people are addicted to sudo
 Requires:       sudo
 Requires:       systemd-presets-branding-MicroOS

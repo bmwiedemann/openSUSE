@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  9 07:05:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use wtmpdb as Y2038 safe wtmp replacement
+
+-------------------------------------------------------------------
 Thu May  4 13:31:43 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Add Requires for gvfs-backend-goa and gvfs-backend-afc to better
