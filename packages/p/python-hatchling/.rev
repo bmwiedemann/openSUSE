@@ -137,4 +137,12 @@
 - requires python-trove-classifiers</comment>
     <requestid>1083114</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9d3c63edfb88921be9bd67f63ef0625c</srcmd5>
+    <version>1.15.0</version>
+    <time>1683728236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085808</requestid>
+  </revision>
 </revisionlist>
