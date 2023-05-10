@@ -1,7 +1,7 @@
 #
 # spec file for package linux_logo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           linux_logo
-Version:        6.0
+Version:        6.01
 Release:        0
 Summary:        Prints the linux logo on the text console
 License:        GPL-2.0-only
 URL:            http://deater.net/weave/vmwprod/linux_logo/
 Source:         http://deater.net/weave/vmwprod/linux_logo/%{name}-%{version}.tar.gz
-Patch0:         reproducible.patch
 
 %description
 The Linux logo on the text console, with colors and system information.

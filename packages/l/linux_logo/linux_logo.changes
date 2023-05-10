@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  6 01:09:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.01:
+  * libsysinfo: add support for AMD Zen2/Zen3
+  * intel: add new chip models
+  * fix strncpy warnins
+  * add support for hygon processors
+  * update to newest intel releases
+- drop reproducible.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Feb  9 11:55:33 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort the file list (boo#1041090)
