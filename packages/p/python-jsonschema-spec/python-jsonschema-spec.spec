@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonschema-spec
 Version:        0.1.4
 Release:        0
@@ -25,12 +24,10 @@ License:        Apache-2.0
 URL:            https://github.com/p1c2u/jsonschema-spec
 Source:         https://github.com/p1c2u/jsonschema-spec/archive/refs/tags/%{version}.tar.gz#/jsonschema-spec-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module jsonschema >= 4.0.0}
+BuildRequires:  %{python_module jsonschema >= 4.0.0 with %python-jsonschema < 4.18}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module pathable >= 0.4.1}
 BuildRequires:  %{python_module pytest}
@@ -38,9 +35,10 @@ BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PyYAML >= 5.1
-Requires:       python-jsonschema >= 4.0.0
 Requires:       python-pathable >= 0.4.1
 Requires:       python-typing_extensions
+Requires:       (python-jsonschema >= 4.0.0 with python-jsonschema < 4.18)
+Provides:       python-jsonschema_spec = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,6 +65,7 @@ sed -i '/--cov/d' pyproject.toml
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/jsonschema_spec*/
+%{python_sitelib}/jsonschema_spec
+%{python_sitelib}/jsonschema_spec-%{version}.dist-info
 
 %changelog
