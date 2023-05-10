@@ -114,4 +114,13 @@
     * Added strip-prefix script.</comment>
     <requestid>1040724</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc6cc1346b03fb5e4f4f2263a85dc06b</srcmd5>
+    <version>3.11.1</version>
+    <time>1683728245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.1:
+  * Fixed ``EncodingWarnings`` when reading/writing text.</comment>
+    <requestid>1085844</requestid>
+  </revision>
 </revisionlist>
