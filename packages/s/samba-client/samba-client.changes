@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed May 10 11:31:31 UTC 2023 - dmulder@suse.com
+
+- Update to version 1682917639.ed539a8:
+  * client: update fedora base version to 37
+  * ad-server: update fedora base version to 37
+  * server: update fedora base version to 37
+  * server: install some vfs packages
+  * ad-server: default to installing sambacc from COPR
+  * server: on centos default to installing sambacc COPR
+  * server: default to installing sambacc from COPR
+  * common: add option to install sambacc from a repo file
+  * common: tweak copr install repo for centos
+  * common: if distdir is empty install sambacc from copr
+  * common: categorize dist files by name
+  * common: rename wheeldir to distdir
+  * github: add ciworkflows for building centos based images
+  * ad-server: update install-sambacc.sh to reuse install-sambacc-common.sh
+  * ad-server: copy in script install-sambacc-common.sh
+  * server: update install-sambacc.sh to reuse install-sambacc-common.sh
+  * server: copy in script install-sambacc-common.sh
+  * gitignore: ignore '.common' dirs
+  * makefile: copy common files into context directory
+  * common: add images/common directory and install-sambacc-common.sh script
+  * images/toolbox: Add CentOS variant of Containerfile
+  * workflows: now we can install directly via make/install-tools.sh use it
+  * makefile: add support for install-tools.sh fetching tools
+  * hack: add a install-tools.sh script for locally installing certain tools
+  * workflows: add a check-commits job
+  * makefile: add check-gitlint rule for checking commits
+  * client: fix missing quote in Containerfile.centos
+  * server: fix missing quote in Containerfile.centos
+  * ad-server: add tdb-tools to installed packages
+  * images: consistently use url labels pointing to the github repository.
+  * Makefile: add  explicit centos and fedora based flavors of the  builds server and client container images can now be built based on centos stream 9  by setting OS_NAME=centos
+  * Makefile: add a debug-vars make target
+  * Makefile: generalize build mechanisms - prepare for adding more operating systems as base image
+  * toolbox: add tdb-tools to opensuse toolbox image
+  * toolbox: include tdb-tools package in toolbox
+  * ad-server: add tdb-tools to installed packages
+  * ad-server: remove jsonschema dependency
+  * server: remove jsonschema dependency
+  * github: sync mergify rules that handle aged PRs
+  * Makefile: improve buildfile handling, including cleanup
+  * tests: fix shellcheck errors
+  * Makefile: fix error in check-shell-scripts target.
+  * makefile: update opensuse makefile to match local names to global names
+  * makefile: make local names match public names
+  * makefile: organizational cleanups
+  * makefile: attempt to make the build rules more regular
+
+-------------------------------------------------------------------
 Fri Feb 10 17:22:27 UTC 2023 - dmulder@suse.com
 
 - Update to version 1675868083.94e3130:
