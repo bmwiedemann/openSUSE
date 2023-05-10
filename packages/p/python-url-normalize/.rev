@@ -7,4 +7,12 @@
     <comment>new runtime dep of requests-cache</comment>
     <requestid>884330</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f338bb16d4bf16756cfc9c863e36254</srcmd5>
+    <version>1.4.3</version>
+    <time>1683728310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085809</requestid>
+  </revision>
 </revisionlist>

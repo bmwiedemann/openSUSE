@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 19:33:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add url-normalize-pr28-poetry-core.patch
+  * poetry-core is much more lightweight than poetry
+s
+-------------------------------------------------------------------
 Sat Apr 10 04:11:29 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite using GitHub tarball
