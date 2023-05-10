@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 29 07:24:43 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.7 release
+  - DXBC shader parsing delegated to vkd3d.
+  - More spool file improvements in the PostScript driver.
+  - Various bug fixes.
+- update staging to 8.7 release
+
+-------------------------------------------------------------------
 Sat Apr 15 18:15:25 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.6 release

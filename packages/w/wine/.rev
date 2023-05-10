@@ -4762,4 +4762,12 @@
 - update staging to 8.6 release</comment>
     <requestid>1079870</requestid>
   </revision>
+  <revision rev="406" vrev="1">
+    <srcmd5>17dc4f2dfbd8d9bf4f7ad53f26fbda58</srcmd5>
+    <version>8.7</version>
+    <time>1683728250</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1085718</requestid>
+  </revision>
 </revisionlist>
