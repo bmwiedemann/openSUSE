@@ -985,4 +985,13 @@
   * fence_aws: fixes to allow running outside of AWS network</comment>
     <requestid>1083859</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>f1aad70dbe5e2d9acea55ccdb05b091b</srcmd5>
+    <version>4.12.1+git.1682325255.86f77326</version>
+    <time>1683728276</time>
+    <user>dimstar_suse</user>
+    <comment>- Include IBM Cloud VPC fence agent (jsc#PED-3626)
+  Adapt agent_list in spec file</comment>
+    <requestid>1085754</requestid>
+  </revision>
 </revisionlist>

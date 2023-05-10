@@ -19,7 +19,7 @@
 %define python_version python3
 
 %global plugin_dir %{_libdir}/stonith/plugins/rhcs
-%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
+%define agent_list aliyun alom amt amt_ws apc apc_snmp azure_arm bladecenter brocade cisco_mds cisco_ucs compute docker drac5 dummy eaton_snmp emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump ldom lpar mpath netio openstack powerman pve raritan rcd_serial redfish rhevm rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti xenapi zvm
 
 Name:           fence-agents
 Summary:        Fence Agents for High Availability

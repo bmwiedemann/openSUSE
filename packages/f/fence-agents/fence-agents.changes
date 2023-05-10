@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 14:37:59 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Include IBM Cloud VPC fence agent (jsc#PED-3626)
+  Adapt agent_list in spec file
+
+-------------------------------------------------------------------
 Mon May 01 12:23:24 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.1+git.1682325255.86f77326:
