@@ -24,6 +24,7 @@ Summary:        Captures the output of subprocesses in real-time
 License:        MIT
 URL:            https://github.com/pycontribs/subprocess-tee
 Source:         https://files.pythonhosted.org/packages/source/s/subprocess-tee/subprocess-tee-%{version}.tar.gz
+Patch1:         0001-test-test_unit.py-do-not-use-python3-rather-use-sys..patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
@@ -50,6 +51,7 @@ to provide instant feedback (progress) related to what is happening.
 
 %prep
 %setup -q -n subprocess-tee-%{version}
+%patch1 -p1
 
 %build
 %pyproject_wheel

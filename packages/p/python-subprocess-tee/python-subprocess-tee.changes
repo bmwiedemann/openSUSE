@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  5 18:13:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch
+  0001-test-test_unit.py-do-not-use-python3-rather-use-sys..patch
+  to replace hardcoded python3 executable name
+  (see https://github.com/pycontribs/subprocess-tee/pull/107)
+
+-------------------------------------------------------------------
 Fri May  5 10:39:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

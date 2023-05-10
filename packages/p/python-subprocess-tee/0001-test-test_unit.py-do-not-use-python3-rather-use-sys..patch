@@ -1,0 +1,43 @@
+From 8dcde7134573acb506c7f34746573cbaeccf9b4d Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Fri, 5 May 2023 20:11:37 +0200
+Subject: [PATCH] test/test_unit.py: do not use python3, rather use
+ sys.executable to use the same python version this test is running with
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ test/test_unit.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_unit.py b/test/test_unit.py
+index 1dd4d2f..652fce9 100644
+--- a/test/test_unit.py
++++ b/test/test_unit.py
+@@ -1,5 +1,6 @@
+ """Unittests."""
+ import subprocess
++import sys
+ from typing import Dict
+ 
+ import pytest
+@@ -30,7 +31,7 @@ def test_run_list() -> None:
+     # NOTICE: subprocess.run() does fail to capture any output when cmd is
+     # a list and you specific shell=True. Still, when not mentioning shell,
+     # it does work.
+-    cmd = ["python3", "--version"]
++    cmd = [sys.executable, "--version"]
+     old_result = subprocess.run(
+         cmd,
+         # shell=True,
+@@ -47,7 +48,7 @@ def test_run_list() -> None:
+ 
+ def test_run_echo(capsys: CaptureFixture[str]) -> None:
+     """Validate run call with echo dumps command."""
+-    cmd = ["python3", "--version"]
++    cmd = [sys.executable, "--version"]
+     old_result = subprocess.run(
+         cmd,
+         # shell=True,
+-- 
+2.40.1
+
