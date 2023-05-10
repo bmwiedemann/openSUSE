@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  7 13:26:09 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.4:
+  * Add ssh2_shell_resize function
+  * Add ssh2_auth_pubkey to allow public and private keys as strings
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)
