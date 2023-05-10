@@ -153,4 +153,29 @@
     <comment>- move documentation into the main package for SLE15</comment>
     <requestid>1083131</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bfcc595da0b3bf39c0b25306f6738e48</srcmd5>
+    <version>1.6.2</version>
+    <time>1683728179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Type annotations are not evaluated at runtime. typing-extensions
+    is not a runtime dependency. :pr:`94`
+- 1.6.1:
+  * Ensure that py.typed is present in the distributions (to enable
+    other projects to use blinker's typing).
+  * Require typing-extensions &gt; 4.2 to ensure it includes ParamSpec.
+    :issue:`90`
+- 1.6:
+  * Add a muted context manager to temporarily turn off a signal.
+    :pr:`84`
+  * Allow int senders (alongside existing string senders). :pr:`83`
+  * Add a send_async method to the Signal to allow signals to send to
+    coroutine receivers. :pr:`76`
+  * Update and modernise the project structure to match that used by
+    the pallets projects. :pr:`77`
+  * Add an intial set of type hints for the project.
+</comment>
+    <requestid>1085626</requestid>
+  </revision>
 </revisionlist>

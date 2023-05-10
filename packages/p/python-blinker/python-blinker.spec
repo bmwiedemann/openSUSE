@@ -16,20 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-blinker
-Version:        1.5
+Version:        1.6.2
 Release:        0
 Summary:        Object-to-object and broadcast signaling in Python
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://pythonhosted.org/blinker/
+URL:            https://github.com/pallets-eco/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
 BuildRequires:  %{python_module Pallets-Sphinx-Themes}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx-issues}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -59,13 +62,13 @@ This sub-package contains the HTML documentation.
 %endif
 
 %prep
-%setup -q -n blinker-%{version}
+%autosetup -p1 -n blinker-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %{python_expand pushd docs
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
@@ -81,7 +84,7 @@ popd
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%{python_sitelib}/blinker-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/blinker-%{version}*-info
 %{python_sitelib}/blinker
 
 %if 0%{?suse_version} > 1500

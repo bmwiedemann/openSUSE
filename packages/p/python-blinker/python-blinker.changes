@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  9 06:25:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.6.2:
+  * Type annotations are not evaluated at runtime. typing-extensions
+    is not a runtime dependency. :pr:`94`
+- 1.6.1:
+  * Ensure that py.typed is present in the distributions (to enable
+    other projects to use blinker's typing).
+  * Require typing-extensions > 4.2 to ensure it includes ParamSpec.
+    :issue:`90`
+- 1.6:
+  * Add a muted context manager to temporarily turn off a signal.
+    :pr:`84`
+  * Allow int senders (alongside existing string senders). :pr:`83`
+  * Add a send_async method to the Signal to allow signals to send to
+    coroutine receivers. :pr:`76`
+  * Update and modernise the project structure to match that used by
+    the pallets projects. :pr:`77`
+  * Add an intial set of type hints for the project.
+
+-------------------------------------------------------------------
 Sun Apr 23 23:03:43 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - move documentation into the main package for SLE15
