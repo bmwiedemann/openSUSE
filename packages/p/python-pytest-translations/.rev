@@ -38,4 +38,14 @@
 </comment>
     <requestid>879094</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab8357a7bf87049a109f6a9cffa1ce2a</srcmd5>
+    <version>4.0.1</version>
+    <time>1683728338</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.1:
+  * Fix aspell installation docs in README
+- drop pr_48.patch (upstream)</comment>
+    <requestid>1085842</requestid>
+  </revision>
 </revisionlist>
