@@ -16,4 +16,36 @@
 </comment>
     <requestid>1085224</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eae32ac073ea5cde2e1b7ab9bc06af56</srcmd5>
+    <version>7.0.0</version>
+    <time>1683728337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * Improved ssh config support in Paramiko backend
+  * Add chroot backend
+  * Add support for Manjaro-Linux
+  * Add support for Cloudlinux
+  * [BREAKING] Drop support for python 3.6 which is EOL
+  * Handle ansible_connection type community.docker.docker
+  * add ssh_extra_args option
+  * Allow to test for user password expiration
+  * Handle ANSIBLE_SSH_COMMON_ARGS and
+    ANSIBLE_SSH_EXTRA_ARGS environment variables for ansible
+    connections
+  * Fix encoding issue in salt connections
+  * Fix AttributeError when &quot;command&quot; is not available and
+    fallback to &quot;which&quot;
+  * Fallback to which when &quot;command -v&quot; fails
+  * Use realpath by default to resolve symlinks instead of
+    &quot;readlink -f&quot;
+  * ansible: Support environment variables
+  * Force package module to resolve to RpmPackage on Fedora
+  * Fix new versions of supervisor may exit with status != 0
+  * Eventually decode ansible output when it's not ascii
+  * Either use python3 or python to get remote encoding
+  * Implement Interface names and default (#615)
+  * Implement Service.systemd_properties (#612)</comment>
+    <requestid>1085841</requestid>
+  </revision>
 </revisionlist>

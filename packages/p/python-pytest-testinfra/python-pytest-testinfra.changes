@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May  9 21:23:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Improved ssh config support in Paramiko backend
+  * Add chroot backend
+  * Add support for Manjaro-Linux
+  * Add support for Cloudlinux
+  * [BREAKING] Drop support for python 3.6 which is EOL
+  * Handle ansible_connection type community.docker.docker
+  * add ssh_extra_args option
+  * Allow to test for user password expiration
+  * Handle ANSIBLE_SSH_COMMON_ARGS and
+    ANSIBLE_SSH_EXTRA_ARGS environment variables for ansible
+    connections
+  * Fix encoding issue in salt connections
+  * Fix AttributeError when "command" is not available and
+    fallback to "which"
+  * Fallback to which when "command -v" fails
+  * Use realpath by default to resolve symlinks instead of
+    "readlink -f"
+  * ansible: Support environment variables
+  * Force package module to resolve to RpmPackage on Fedora
+  * Fix new versions of supervisor may exit with status != 0
+  * Eventually decode ansible output when it's not ascii
+  * Either use python3 or python to get remote encoding
+  * Implement Interface names and default (#615)
+  * Implement Service.systemd_properties (#612)
+
+-------------------------------------------------------------------
 Fri May  5 19:55:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
