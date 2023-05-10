@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-socket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-socket
-Version:        0.3.5
+Version:        0.6.0
 Release:        0
 Summary:        Pytest Plugin to disable socket
 License:        MIT
 URL:            https://github.com/miketheman/pytest-socket
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-socket/pytest-socket-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-socket/pytest_socket-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +38,7 @@ BuildRequires:  %{python_module pytest >= 3.6.3}
 A Pytest Plugin to disable socket calls during tests.
 
 %prep
-%setup -q -n pytest-socket-%{version}
+%setup -q -n pytest_socket-%{version}
 
 %build
 %python_build
@@ -53,7 +52,7 @@ A Pytest Plugin to disable socket calls during tests.
 #%%pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/*
 

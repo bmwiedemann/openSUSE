@@ -32,4 +32,41 @@
 - Update to 0.3.4:</comment>
     <requestid>812807</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ef26f2b7610f98016aacb6b59829b8b6</srcmd5>
+    <version>0.6.0</version>
+    <time>1683728336</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Add Change Log project URL
+  * test: update httpbin commit hash
+  * Upgrade CodeSee workflow to version 2
+  * fix: don't break on doctests
+  * docs: Fix syntax for setup.cfg
+  * Fix pytest-socket raises IndexError with httpx
+  * test: move the reenable fixture to conftest
+  * Switch to poetry-core
+  * Handle `family` passed as keyword argument
+  * refactor: consolidate global options to config
+  * test: replace pytest-flake8 with pre-commit
+  * refactor/fix: move logic into setup phase and correct order
+  * test: add test module for combinations
+  * fix: test allow_hosts for unix sockets
+  * test: move unix decorator to conftest
+  * test: randomize test order
+  * test: replace coverage command
+  * refactor: replace .format with f-strings
+  * lint: apply black
+  * Enable Unix sockets selectively with --allow-unix-socket
+  * Test refactor, add CodeQL scanning
+  * Correctly subclass socket.socket
+  * Add testing against Python 3.9, Dropped testing against
+    Python 3.5
+  * Doc updates
+  * Avoid changing the type of `socket.socket` to function.
+  * Sourcery Starbot ⭐ refactored miketheman/pytest-socket
+  * Don't block unix sockets
+  * docs: add details on fixture scope</comment>
+    <requestid>1085839</requestid>
+  </revision>
 </revisionlist>
