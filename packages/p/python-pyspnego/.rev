@@ -126,4 +126,41 @@
     <comment></comment>
     <requestid>1035237</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8a017c7ade352843fd100e622e256039</srcmd5>
+    <version>0.9.0</version>
+    <time>1683728318</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Added the `spnego.ContextReq.dce_style` flag to enable DCE
+    authentication mode
+  * The value for `spnego.iov.BufferType.sign_only` on SSPI has
+    changed from representing `SECBUFFER_MECHLIST` to
+    `SECBUFFER_READONLY_WITH_CHECKSUM`
+  * Added the IOV buffer type
+    `spnego.iov.BufferType.data_readonly`
+  * Added limited support for `wrap_iov` and `unwrap_iov` in the
+    Python NTLM context provider.
+  * Added the `query_message_sizes()` function on a context to
+    retrieve the important message sizes
+    Currently this only contains the size of the message
+    `header`, also known as the signature or security trailer
+  * Added the `spnego.ContextReq.no_integrity` flag to disable
+    integrity/confidentiality on Kerberos/Negotiate contexts
+  * Added optional kwargs to `step()` on a security context
+    `channel_bindings`
+  * Added support for decoding the following TLS payloads with
+    `python -m spnego --token ...`
+          * Client Hello
+          * Server Hello
+          * Certificate
+          * Server Key Exchange
+          * Client Key Exchange
+          * Certificate Request
+  * Added the `new_context()` method on the context proxies to
+    provide an easy and efficient way to re-use the context
+    credentials and options for a new context
+  * Removed use of `gssntlmssp` to simplify codebase and ensure a</comment>
+    <requestid>1085986</requestid>
+  </revision>
 </revisionlist>
