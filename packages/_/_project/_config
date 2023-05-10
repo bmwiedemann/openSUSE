@@ -3740,6 +3740,7 @@ Macros:
 # The following shlibs have the latest version built from GCC 7 sources
 %product_libs_gcc_ver_libgfortran4 7
 %product_libs_gcc_ver_libasan4 7
+%product_libs_gcc_ver_libtsan0 7
 %product_libs_gcc_ver_libubsan0 7
 %product_libs_gcc_ver_libcilkrts5 7
 %product_libs_gcc_ver_libgo11 7
@@ -3756,7 +3757,6 @@ Macros:
 %product_libs_gcc_ver_libgo16 10
 # The following shlibs have the latest version built from GCC 11 sources
 %product_libs_gcc_ver_libasan6 11
-%product_libs_gcc_ver_libtsan0 11
 %product_libs_gcc_ver_libgo19 11
 %product_libs_gcc_ver_libgphobos2 11
 %product_libs_gcc_ver_libgdruntime2 11
