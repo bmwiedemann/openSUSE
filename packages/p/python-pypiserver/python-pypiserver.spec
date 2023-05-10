@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypiserver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%{?sle15_python_module_pythons}
 %bcond_without python2
 Name:           python-pypiserver
 Version:        1.5.1
