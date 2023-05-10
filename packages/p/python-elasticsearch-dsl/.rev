@@ -72,4 +72,16 @@
 </comment>
     <requestid>1038677</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bf1aef088a2a272aebb20548500194a2</srcmd5>
+    <version>7.4.1</version>
+    <time>1683728395</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete drop-python2-support.patch
+- Update to 7.4.1:
+  * Fixed DeprecationWarnings that would be emitted from deprecated
+    usages of the body parameter in the Python Elasticsearch client.
+</comment>
+    <requestid>1086025</requestid>
+  </revision>
 </revisionlist>

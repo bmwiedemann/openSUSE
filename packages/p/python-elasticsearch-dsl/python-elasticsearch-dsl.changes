@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 10 08:40:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete drop-python2-support.patch
+- Update to 7.4.1:
+  * Fixed DeprecationWarnings that would be emitted from deprecated
+    usages of the body parameter in the Python Elasticsearch client.
+
+-------------------------------------------------------------------
 Mon Nov 28 13:04:53 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add drop-python2-support.patch from upstream

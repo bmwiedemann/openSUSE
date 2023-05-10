@@ -1,7 +1,7 @@
 #
 # spec file for package python-elasticsearch-dsl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-elasticsearch-dsl
-Version:        7.4.0
+Version:        7.4.1
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
@@ -28,8 +28,6 @@ Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/refs/tag
 # PATCH-FEATURE-UPSTREAM python-elasticsearch-dsl-no-mock.patch gh#elastic/elasticsearch-dsl-py#1596 mcepl@suse.com
 # Use unittest.mock instead of the external package (merged to master, not yet released)
 Patch0:         python-elasticsearch-dsl-no-mock.patch
-# PATCH-FEATURE-UPSTREAM drop-python2-support.patch gh#elastic/elasticsearch-dsl-py@f7f85a5db8f2
-Patch1:         drop-python2-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
