@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  9 21:15:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.1:
+  + Fix version display in about dialog when not building from git.
+  + Fix settings schema migration when source is using obsolete
+    keys.
+  + Fix setting slideshow duration settings.
+  + Make facedetect helper somewhat more robust if opencv calls
+    fail.
+  + Explicitly handle BigTIFF.
+- Add desktop-file-utils BuildRequires: New dependency.
+- Add check section: Run meson_test and manual validate of desktop
+  files and appdata.
+
+-------------------------------------------------------------------
 Sat Apr 22 21:13:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.0:
