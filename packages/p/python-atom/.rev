@@ -106,4 +106,27 @@
     stored item PR #197</comment>
     <requestid>1079774</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>13f6337d02ef3e025e5aeebb5b4f36d3</srcmd5>
+    <version>0.10.0</version>
+    <time>1683728288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * AtomMeta: create the class only once all members have been
+    customized
+    This allows to use ``__init_subclass__`` since previously the
+    ``__atom_members__`` was not set when ``__init_subclass__``
+    was called 
+  * illustrate the use of ``__init_subclass__`` to customize
+    pickling
+  * refactor the metaclass to make it easier to reason about
+  * add a ``DefaultDict`` member which enforce the value to be a
+    dictionary and use a factory for missing keys. The factory
+    is set at the member level and a normal dict can be provided
+    as value. When possible the factory is deduced from the member
+    used for validation.
+  * infer the use of ``DefaultDict`` from a
+    ``collections.defaultdict`` annotation</comment>
+    <requestid>1085794</requestid>
+  </revision>
 </revisionlist>
