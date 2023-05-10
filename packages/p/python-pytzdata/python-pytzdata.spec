@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytzdata
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
+%{?sle15_python_module_pythons}
 %define modname pytzdata
 Name:           python-%{modname}
 Version:        2020.1
 Release:        0
-Summary:        The pytzdata module for Python-pendulum 
+Summary:        The pytzdata module for Python-pendulum
 License:        MIT
 URL:            https://github.com/sdispater/pytzdata
 Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
