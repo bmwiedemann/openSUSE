@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 11:18:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Fri Mar  3 16:52:50 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.189:
