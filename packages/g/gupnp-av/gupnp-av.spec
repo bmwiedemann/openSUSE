@@ -26,6 +26,9 @@ URL:            http://www.gupnp.org/
 Source:         https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gupnp-av-libxml2.11-support.patch david.anes@suse.com -- use xmlReadMemory instead of xmlRecoverMemory
 Patch0:         gupnp-av-libxml2.11-support.patch
+# PATCH-FIX-UPSTREAM 767388bc.patch -- build: Fix Requires: line of pkg-config file
+Patch1:         https://gitlab.gnome.org/GNOME/gupnp-av/-/commit/767388bc.patch
+
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
