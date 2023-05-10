@@ -7,4 +7,12 @@
     <comment>distributed lock manager</comment>
     <requestid>1083973</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b348f39655519edb22a0e21e44d6a401</srcmd5>
+    <version>1.6.0</version>
+    <time>1683728247</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1085681</requestid>
+  </revision>
 </revisionlist>

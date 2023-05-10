@@ -32,21 +32,18 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(python)
 
 %description
-FLoM is a free open source distributed lock manager that can be used to
+FLoM is a distributed lock manager that can be used to
 synchronize shell commands, scripts and custom developed software. When used
 in a shell environment, FLoM manages process synchronization in the same way
-that "nice" manages process prioritization. Supports networking, abstract
+that "nice" manages process prioritization. It supports networking, abstract
 resources, offers a library, encryption and peer authentication.
 
 %package -n libflom0
 Summary:        Distributed lock manager library
 
 %description -n libflom0
-FLoM is a free open source distributed lock manager that can be used to
-synchronize shell commands, scripts and custom developed software. When used
-in a shell environment, FLoM manages process synchronization in the same way
-that "nice" manages process prioritization. Supports networking, abstract
-resources, offers a library, encryption and peer authentication.
+FLoM is a distributed lock manager that can be used to
+synchronize shell commands, scripts and custom developed software.
 
 This package contains the shared library.
 
@@ -55,11 +52,8 @@ Summary:        Distributed lock manager library
 Requires:       libflom0 = %{version}
 
 %description devel
-FLoM is a free open source distributed lock manager that can be used to
-synchronize shell commands, scripts and custom developed software. When used
-in a shell environment, FLoM manages process synchronization in the same way
-that "nice" manages process prioritization. Supports networking, abstract
-resources, offers a library, encryption and peer authentication.
+FLoM is a distributed lock manager that can be used to
+synchronize shell commands, scripts and custom developed software.
 
 This package contains the files required to build programs with FLoM.
 
