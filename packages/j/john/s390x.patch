@@ -1,5 +1,5 @@
---- src/opencl_7z_fmt_plug_copy.c	2021-10-17 18:24:14.112418452 +0200
-+++ src/opencl_7z_fmt_plug.c	2021-10-17 18:25:35.984598919 +0200
+--- a/src/opencl_7z_fmt_plug_copy.c	2021-10-17 18:24:14.112418452 +0200
++++ b/src/opencl_7z_fmt_plug.c	2021-10-17 18:25:35.984598919 +0200
 @@ -40,6 +40,8 @@
  #include "config.h"
  #include "lzma/LzmaDec.h"

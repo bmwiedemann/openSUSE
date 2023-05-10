@@ -39,6 +39,8 @@ Patch1:         john-1.9.0-jumbo-gcc10.patch
 Patch2:         john-1.9.0-jumbo-gcc11.patch
 Patch3:         s390x-upstream.patch
 Patch4:         s390x.patch
+# PATCH-FIX-UPSTREAM https://github.com/openwall/john/pull/5309
+Patch5:         john-1.9-python3.patch
 BuildRequires:  dos2unix
 BuildRequires:  gmp-devel
 BuildRequires:  libpcap-devel
@@ -59,11 +61,7 @@ number of other hash types are supported to that end.
 cd %{jumboversion} && cp -a ./* ..
 cd ..
 rm -r %{jumboversion}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p0
+%autopatch -p1
 
 # adapt the configs
 perl -pi -e "s#Wordlist = (.*)#Wordlist = %{johndir}/password.lst#g" $RPM_BUILD_DIR/%{name}-%{version}/run/john.conf

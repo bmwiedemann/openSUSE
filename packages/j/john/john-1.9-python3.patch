@@ -1,0 +1,799 @@
+commit 447ad3cd14798aab3e8de14396fea189f6f0da6e
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Mon May 8 12:10:05 2023 +0200
+
+    Switch to python3
+    
+    because python2 is long EOL
+    and gets dropped from distributions
+
+diff --git a/run/1password2john.py b/run/1password2john.py
+index f27b0c0ad..f888d445e 100755
+--- a/run/1password2john.py
++++ b/run/1password2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ # Written by Dhiru Kholia <dhiru at openwall.com> in July 2012 for JtR project.
+ # Copyright (c) 2012-2013, Dhiru Kholia.
+diff --git a/run/DPAPImk2john.py b/run/DPAPImk2john.py
+index a32864d59..b9b506bd7 100755
+--- a/run/DPAPImk2john.py
++++ b/run/DPAPImk2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ # Modified (for JtR) by Dhiru Kholia in December, 2014.
+diff --git a/run/aem2john.py b/run/aem2john.py
+index 955af1460..e57461d28 100755
+--- a/run/aem2john.py
++++ b/run/aem2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # JtR utility to convert native Adobe AEM (Adobe Experience Manager) hashes to
+ # an existing JtR hash format.
+diff --git a/run/aix2john.py b/run/aix2john.py
+index 58dbc5bf4..d83bafc9f 100755
+--- a/run/aix2john.py
++++ b/run/aix2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import binascii
+ import sys
+diff --git a/run/andotp2john.py b/run/andotp2john.py
+index 10c8c57c7..b06018a7f 100755
+--- a/run/andotp2john.py
++++ b/run/andotp2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2018, Dhiru Kholia <kholia at kth.se> and it
+ # is hereby released to the general public under the following terms:
+diff --git a/run/androidbackup2john.py b/run/androidbackup2john.py
+index f79ccd52e..ebb50441f 100755
+--- a/run/androidbackup2john.py
++++ b/run/androidbackup2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2018, Dhiru Kholia <kholia at kth.se> and it
+ # is hereby released to the general public under the following terms:
+diff --git a/run/androidfde2john.py b/run/androidfde2john.py
+index 712b2bbee..2407ebdc8 100755
+--- a/run/androidfde2john.py
++++ b/run/androidfde2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ """
+ androidfde2john.py, program to "convert" Android FDE images / disks into JtR
+diff --git a/run/ansible2john.py b/run/ansible2john.py
+index 6a3d8f1d7..49e5447eb 100755
+--- a/run/ansible2john.py
++++ b/run/ansible2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2018, Dhiru Kholia <kholia at kth.se> and it
+ # is hereby released to the general public under the following terms:
+diff --git a/run/apex2john.py b/run/apex2john.py
+index c20cf9c28..b1babbad0 100755
+--- a/run/apex2john.py
++++ b/run/apex2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ 
+diff --git a/run/applenotes2john.py b/run/applenotes2john.py
+index 1aec2d81a..765927d41 100755
+--- a/run/applenotes2john.py
++++ b/run/applenotes2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Script to extract "hashes" from password protected Apple Notes databases.
+ #
+diff --git a/run/aruba2john.py b/run/aruba2john.py
+index b2aa0fd06..1ffc14bc2 100755
+--- a/run/aruba2john.py
++++ b/run/aruba2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru at openwall.com> and
+ # it is hereby released to the general public under the following terms:
+diff --git a/run/axcrypt2john.py b/run/axcrypt2john.py
+index 34a20bc4e..34c61ed8a 100755
+--- a/run/axcrypt2john.py
++++ b/run/axcrypt2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ # AxCrypt 1.x and 2.x encrypted file parser for JtR.
+ #
+diff --git a/run/bestcrypt2john.py b/run/bestcrypt2john.py
+index a44eaabec..5ed2c4e00 100755
+--- a/run/bestcrypt2john.py
++++ b/run/bestcrypt2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/bitcoin2john.py b/run/bitcoin2john.py
+index cf7f924be..eac63bf23 100755
+--- a/run/bitcoin2john.py
++++ b/run/bitcoin2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2012, Dhiru Kholia <dhiru at openwall.com> and
+ # it is hereby placed in the public domain.
+diff --git a/run/bitshares2john.py b/run/bitshares2john.py
+index 885622b88..19f9f98c0 100755
+--- a/run/bitshares2john.py
++++ b/run/bitshares2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Script to extract "hashes" from BitShares databases.
+ #
+diff --git a/run/bitwarden2john.py b/run/bitwarden2john.py
+index a4db68610..9bbcdb5b4 100755
+--- a/run/bitwarden2john.py
++++ b/run/bitwarden2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ """Utility to extract Bitwarden "hashes" from Google Chrome / Firefox / Android local data"""
+ 
+diff --git a/run/bks2john.py b/run/bks2john.py
+index a41268b47..b988bb9c0 100755
+--- a/run/bks2john.py
++++ b/run/bks2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """
+ 
+diff --git a/run/blockchain2john.py b/run/blockchain2john.py
+index 5c34bac96..db02b27f9 100755
+--- a/run/blockchain2john.py
++++ b/run/blockchain2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ import base64
+diff --git a/run/ccache2john.py b/run/ccache2john.py
+index 68da5526a..19392d579 100755
+--- a/run/ccache2john.py
++++ b/run/ccache2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ """
+ This script extracts crackable hashes from krb5's credential cache files (e.g.
+diff --git a/run/cracf2john.py b/run/cracf2john.py
+index 392ca9beb..774077eb2 100755
+--- a/run/cracf2john.py
++++ b/run/cracf2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # The cracf2john.py utility processes CRACF.TXT files (generated by CRACF
+ # program) into a format suitable for use with JtR.
+diff --git a/run/dashlane2john.py b/run/dashlane2john.py
+index 8f7b8cd29..ebcbb83df 100755
+--- a/run/dashlane2john.py
++++ b/run/dashlane2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Extracts "hashes" from Dashlane's .aes and .dash files.
+ #
+diff --git a/run/diskcryptor2john.py b/run/diskcryptor2john.py
+index a2dc99dff..850d8fc5a 100644
+--- a/run/diskcryptor2john.py
++++ b/run/diskcryptor2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2018, Ivan Freed <ivan.freed at protonmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/dmg2john.py b/run/dmg2john.py
+index fe9882e93..45c704c43 100755
+--- a/run/dmg2john.py
++++ b/run/dmg2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Written by Dhiru Kholia <dhiru at openwall.com> in March, 2013
+ # My code is under "Simplified BSD License"
+diff --git a/run/ecryptfs2john.py b/run/ecryptfs2john.py
+index e14c479da..86ceeddad 100755
+--- a/run/ecryptfs2john.py
++++ b/run/ecryptfs2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Helper script for cracking eCryptfs.
+ #
+diff --git a/run/ejabberd2john.py b/run/ejabberd2john.py
+index 2430ef410..cecb76ccf 100755
+--- a/run/ejabberd2john.py
++++ b/run/ejabberd2john.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ 
+ # Extracts hashes from "ejabberdctl dump output.txt" file(s).
+ #
+diff --git a/run/electrum2john.py b/run/electrum2john.py
+index b98d8e608..b3b249c24 100755
+--- a/run/electrum2john.py
++++ b/run/electrum2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released under GPL v2 license.
+diff --git a/run/encfs2john.py b/run/encfs2john.py
+index e0fb40faf..5fdb2cb3a 100755
+--- a/run/encfs2john.py
++++ b/run/encfs2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # The encfs2john.py utility processes EncFS files into a format suitable for
+ # use with JtR.
+diff --git a/run/enpass2john.py b/run/enpass2john.py
+index 22a350826..cd9f6f5c6 100755
+--- a/run/enpass2john.py
++++ b/run/enpass2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """enpass2john.py extracts hashes from Enpass Password Manager databases"""
+ 
+diff --git a/run/ethereum2john.py b/run/ethereum2john.py
+index 6133214b1..e7a981779 100755
+--- a/run/ethereum2john.py
++++ b/run/ethereum2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/filezilla2john.py b/run/filezilla2john.py
+index 1cabcb7a5..0e7950a88 100755
+--- a/run/filezilla2john.py
++++ b/run/filezilla2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """filezilla2john.py extracts password hashes from "FileZilla Server.xml" files."""
+ 
+diff --git a/run/geli2john.py b/run/geli2john.py
+index 8365c059b..dfb33b3c7 100755
+--- a/run/geli2john.py
++++ b/run/geli2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+diff --git a/run/hccapx2john.py b/run/hccapx2john.py
+index 3feb65a2e..fa747b509 100755
+--- a/run/hccapx2john.py
++++ b/run/hccapx2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ '''
+ Process hccapx file into a format suitable for use with JtR.
+ Implements AP nonce correction as user supplied argument or
+diff --git a/run/htdigest2john.py b/run/htdigest2john.py
+index 03d1b1963..355c2f57b 100755
+--- a/run/htdigest2john.py
++++ b/run/htdigest2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # The htdigest2john.py utility processes htdigest files into a format suitable
+ # for use with JtR.
+diff --git a/run/ibmiscanner2john.py b/run/ibmiscanner2john.py
+index 0d40ce7fd..806c13c93 100755
+--- a/run/ibmiscanner2john.py
++++ b/run/ibmiscanner2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ # ibmiscanner2john.py (by Rob Schoemaker (@5up3rUs3r))
+diff --git a/run/ikescan2john.py b/run/ikescan2john.py
+index d2bdec82d..f92d385b9 100755
+--- a/run/ikescan2john.py
++++ b/run/ikescan2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """ikescan2john.py processes ike-scan output files into a format suitable
+ for use with JtR."""
+diff --git a/run/iwork2john.py b/run/iwork2john.py
+index 3a1ce04ad..36f753a39 100755
+--- a/run/iwork2john.py
++++ b/run/iwork2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2015, Dhiru Kholia <kholia at kth.se> and
+ # Maxime Hulliger <hulliger at kth.se> and it is hereby released to the general
+diff --git a/run/kdcdump2john.py b/run/kdcdump2john.py
+index ee0e928a3..4d195bc16 100755
+--- a/run/kdcdump2john.py
++++ b/run/kdcdump2john.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ #
+ # Kdcdump patch output translation for JtR
+ # August of 2012 by Mougey Camille
+diff --git a/run/keychain2john.py b/run/keychain2john.py
+index 452a3e254..9ba3cadd9 100755
+--- a/run/keychain2john.py
++++ b/run/keychain2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # keychain2john processes input Mac OS X keychain files into a format suitable
+ # for use with JtR.
+diff --git a/run/keyring2john.py b/run/keyring2john.py
+index fdd13e039..92c657bb1 100755
+--- a/run/keyring2john.py
++++ b/run/keyring2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ """
+ keyring2john.py -> convert Gnome Keyring files to john format.
+diff --git a/run/keystore2john.py b/run/keystore2john.py
+index 5f6ad4874..eb4715160 100755
+--- a/run/keystore2john.py
++++ b/run/keystore2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2014, Sanju Kholia <sanju.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/kirbi2john.py b/run/kirbi2john.py
+index aa7755e16..addb6e1e7 100755
+--- a/run/kirbi2john.py
++++ b/run/kirbi2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Based on the Kerberoast script from Tim Medin to extract the Kerberos tickets
+ # from a kirbi file (https://github.com/nidem/kerberoast).
+diff --git a/run/known_hosts2john.py b/run/known_hosts2john.py
+index bf72e9c4c..a6d7aeee1 100755
+--- a/run/known_hosts2john.py
++++ b/run/known_hosts2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # known_hosts2john processes input "known_hosts" files into a format suitable
+ # for use with JtR.
+diff --git a/run/krb2john.py b/run/krb2john.py
+index 4bfb5b679..469978196 100755
+--- a/run/krb2john.py
++++ b/run/krb2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ # This file was named krbpa2john.py previously.
+ #
+diff --git a/run/kwallet2john.py b/run/kwallet2john.py
+index ce8a09b48..186b128df 100755
+--- a/run/kwallet2john.py
++++ b/run/kwallet2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2014, Sanju Kholia <sanju.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/lastpass2john.py b/run/lastpass2john.py
+index 7562305e3..165793e05 100755
+--- a/run/lastpass2john.py
++++ b/run/lastpass2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This scripts converts input LastPass data into a format suitable for use with
+ # JtR.
+diff --git a/run/libreoffice2john.py b/run/libreoffice2john.py
+index 51e95606a..d91519ab5 100755
+--- a/run/libreoffice2john.py
++++ b/run/libreoffice2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # The libreoffice2john.py utility processes OpenOffice / LibreOffice files into
+ # a format suitable for use with JtR.
+diff --git a/run/lotus2john.py b/run/lotus2john.py
+index 25dd5675e..211e2b81a 100755
+--- a/run/lotus2john.py
++++ b/run/lotus2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ # This software is Copyright (c) 2013 Dhiru Kholia <dhiru at openwall.com>, and
+diff --git a/run/luks2john.py b/run/luks2john.py
+index c03bf0e9f..48b2f426c 100755
+--- a/run/luks2john.py
++++ b/run/luks2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2016, Sanju Kholia <sanju.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/mac2john.py b/run/mac2john.py
+index 2fad1dda5..e7ffb13d5 100755
+--- a/run/mac2john.py
++++ b/run/mac2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # NOTE: This script is only tested with Python 3.6, Python 2.7, and Python
+ # 2.6.9. It cannot work with Python 2.5.x.
+diff --git a/run/mcafee_epo2john.py b/run/mcafee_epo2john.py
+index bde47ab07..bc72dcec6 100755
+--- a/run/mcafee_epo2john.py
++++ b/run/mcafee_epo2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Convert McAfee ePO passwords to John format.
+ #                   -- nicolas.collignon@synacktiv.com
+diff --git a/run/monero2john.py b/run/monero2john.py
+index adab4276c..812aee94c 100755
+--- a/run/monero2john.py
++++ b/run/monero2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Script to extract "hashes" from Monero databases.
+ #
+diff --git a/run/money2john.py b/run/money2john.py
+index 7920a3c22..d3e2456a5 100755
+--- a/run/money2john.py
++++ b/run/money2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the Apache License
+diff --git a/run/mozilla2john.py b/run/mozilla2john.py
+index 9f0c25365..e4406ef24 100755
+--- a/run/mozilla2john.py
++++ b/run/mozilla2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Helper for cracking Mozilla's password database (key3.db master password).
+ #
+diff --git a/run/multibit2john.py b/run/multibit2john.py
+index 583db4167..8e15c1bda 100755
+--- a/run/multibit2john.py
++++ b/run/multibit2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released under GPL v2 license.
+diff --git a/run/neo2john.py b/run/neo2john.py
+index 135d196ab..c28bcde1b 100755
+--- a/run/neo2john.py
++++ b/run/neo2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <kholia at kth.se> and it is
+ # hereby released to the general public under the following terms:
+diff --git a/run/netscreen.py b/run/netscreen.py
+index 0459afe0e..3f71a041f 100755
+--- a/run/netscreen.py
++++ b/run/netscreen.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ ##################################################################
+ #  Filename: netscreen.py
+diff --git a/run/office2john.py b/run/office2john.py
+index 015fd1d54..64d0c3a0d 100755
+--- a/run/office2john.py
++++ b/run/office2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # olefile (formerly OleFileIO_PL) version 0.42 2015-01-25
+ #
+diff --git a/run/openbsd_softraid2john.py b/run/openbsd_softraid2john.py
+index 81a77f58c..ccdefca57 100755
+--- a/run/openbsd_softraid2john.py
++++ b/run/openbsd_softraid2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ #
+ #  Copyright (c) 2014 Thiébaud Weksteen <thiebaud at weksteen dot fr>
+diff --git a/run/openssl2john.py b/run/openssl2john.py
+index d87759029..0b4e8059f 100755
+--- a/run/openssl2john.py
++++ b/run/openssl2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This utility helps in cracking files encrypted using "openssl enc" command.
+ #
+diff --git a/run/padlock2john.py b/run/padlock2john.py
+index 047cce246..a5cd0d476 100755
+--- a/run/padlock2john.py
++++ b/run/padlock2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/pcap2john.py b/run/pcap2john.py
+index b7fc6f77c..ab02fd634 100755
+--- a/run/pcap2john.py
++++ b/run/pcap2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ # Combine of all of Dhiru Kholia pcap convert utilities
+diff --git a/run/pem2john.py b/run/pem2john.py
+index 67c31be28..1cf370ad8 100755
+--- a/run/pem2john.py
++++ b/run/pem2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # coding: utf-8
+ 
+ # This software is Copyright (c) 2015, Dhiru Kholia <dhiru.kholia at gmail.com>
+diff --git a/run/pfx2john.py b/run/pfx2john.py
+index d41eb63df..df045b8c3 100755
+--- a/run/pfx2john.py
++++ b/run/pfx2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # coding: utf-8
+ 
+ """
+diff --git a/run/pgpdisk2john.py b/run/pgpdisk2john.py
+index 19e78a088..fe44d0e91 100755
+--- a/run/pgpdisk2john.py
++++ b/run/pgpdisk2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/pgpsda2john.py b/run/pgpsda2john.py
+index 0c5a29b35..d13a9cef9 100755
+--- a/run/pgpsda2john.py
++++ b/run/pgpsda2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/pgpwde2john.py b/run/pgpwde2john.py
+index 58cb48d4f..6beb5f70f 100755
+--- a/run/pgpwde2john.py
++++ b/run/pgpwde2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/prosody2john.py b/run/prosody2john.py
+index 67c1a3d12..2b5e4e624 100755
+--- a/run/prosody2john.py
++++ b/run/prosody2john.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ #
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/ps_token2john.py b/run/ps_token2john.py
+index f52459f8f..9a1d00364 100755
+--- a/run/ps_token2john.py
++++ b/run/ps_token2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import base64
+ import hashlib
+diff --git a/run/pse2john.py b/run/pse2john.py
+index 9a8cd805c..b7de76dfa 100755
+--- a/run/pse2john.py
++++ b/run/pse2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """pysap - Python library for crafting SAP's network protocols packets"""
+ 
+diff --git a/run/pwsafe2john.py b/run/pwsafe2john.py
+index 071e5b869..f1cb8351c 100755
+--- a/run/pwsafe2john.py
++++ b/run/pwsafe2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # pwsafe2john processes input Password Safe files into a format suitable
+ # for use with JtR.
+diff --git a/run/radius2john.py b/run/radius2john.py
+index 12c52e231..5928aae23 100755
+--- a/run/radius2john.py
++++ b/run/radius2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2019 Maxime GOYETTE <maxgoyette0-at-gmail.com>,
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/signal2john.py b/run/signal2john.py
+index 1dc96bd4b..c572e987e 100755
+--- a/run/signal2john.py
++++ b/run/signal2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2018, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/sipdump2john.py b/run/sipdump2john.py
+index ee99ae470..35d0ed6f5 100755
+--- a/run/sipdump2john.py
++++ b/run/sipdump2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """sipdump2john.py processes sipdump output files (dump files)
+ into a format suitable for use with JtR."""
+diff --git a/run/ssh2john.py b/run/ssh2john.py
+index fdb976930..42a0abc35 100755
+--- a/run/ssh2john.py
++++ b/run/ssh2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # Copyright (C) 2012, Dhiru Kholia <dhiru@openwall.com>
+ # Copyright (C) 2015, Dhiru Kholia <dhiru@openwall.com>
+diff --git a/run/sspr2john.py b/run/sspr2john.py
+index 1423b6ea5..ff7f08334 100755
+--- a/run/sspr2john.py
++++ b/run/sspr2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2017, Dhiru Kholia <dhiru.kholia at gmail.com>
+ # and it is hereby released to the general public under the following terms:
+diff --git a/run/staroffice2john.py b/run/staroffice2john.py
+index 39fed2c7b..8b137c3f1 100755
+--- a/run/staroffice2john.py
++++ b/run/staroffice2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # The staroffice2john.py utility processes StarOffice files into a format
+ # suitable for use with JtR.
+diff --git a/run/strip2john.py b/run/strip2john.py
+index 5ff67b576..15147c22f 100755
+--- a/run/strip2john.py
++++ b/run/strip2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ """strip2john.py processes STRIP files into a format suitable
+ for use with JtR.
+diff --git a/run/truecrypt2john.py b/run/truecrypt2john.py
+index 60c0e618d..e180e97dc 100755
+--- a/run/truecrypt2john.py
++++ b/run/truecrypt2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # TrueCrypt volume importion to a format usable by John The Ripper
+ #
+diff --git a/run/vmx2john.py b/run/vmx2john.py
+index 16d7bc475..5db43531e 100755
+--- a/run/vmx2john.py
++++ b/run/vmx2john.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # This software is Copyright (c) 2019 - Dhiru Kholia, Copyright (c) 2018 -
+ # axcheron, and it is hereby released under the MIT License.

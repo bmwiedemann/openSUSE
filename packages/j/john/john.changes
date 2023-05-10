@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  8 10:28:21 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add john-1.9-python3.patch to not require python2 anymore (boo#1210583)
+- Use %autopatch
+
+-------------------------------------------------------------------
 Thu Sep 15 17:41:00 UTC 2022 - lars@linux-schulserver.de - 1.9.0
 
 - disable enforcement of AVX support in the CPU: let john handle this 
