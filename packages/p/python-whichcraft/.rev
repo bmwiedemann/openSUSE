@@ -51,4 +51,12 @@
   * fix versioning issue</comment>
     <requestid>729508</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>851205727e9d3ef1b83ec4627785020a</srcmd5>
+    <version>0.6.1</version>
+    <time>1683728393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086023</requestid>
+  </revision>
 </revisionlist>
