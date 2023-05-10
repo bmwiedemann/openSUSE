@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 09 13:34:20 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1683639249.98b3171:
+  * Improve non-matching log output in investigation tab
+  * Increase heartbeat timeout to 15 minutes
+  * Output host of missing api credentials
+  * Refactor ISOs-API controller to make it reusable
+  * Improve contrast between failed and incomplete color
+
+-------------------------------------------------------------------
 Fri May 05 15:10:07 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1683294886.8a7e554:
