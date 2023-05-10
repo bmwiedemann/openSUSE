@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-requests_ntlm
 Version:        1.2.0
 Release:        0
