@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  9 21:34:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+   * Added new construct api.CantDeserializeException which can be
+    raised by user-defined deserializer functions which would be
+    passed to CacheRegion.deserializer, to indicate a cache value
+    that can't be deserialized and therefore should be regenerated.
+
+-------------------------------------------------------------------
 Tue Jul 19 12:05:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.8:

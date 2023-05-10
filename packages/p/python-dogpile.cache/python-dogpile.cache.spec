@@ -1,7 +1,7 @@
 #
 # spec file for package python-dogpile.cache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %global pythons python3
 Name:           python-dogpile.cache
-Version:        1.1.8
+Version:        1.2.0
 Release:        0
 %define modname dogpile.cache
-%define modver  1_1_8
+%define modver  1_2_0
 Summary:        A caching front-end based on the Dogpile lock
 License:        BSD-3-Clause
 URL:            https://github.com/sqlalchemy/dogpile.cache

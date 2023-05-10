@@ -357,4 +357,16 @@
     RedisSentinelBackend already</comment>
     <requestid>990239</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0a2479e78fc45db120bf394af2f53348</srcmd5>
+    <version>1.2.0</version>
+    <time>1683728340</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+   * Added new construct api.CantDeserializeException which can be
+    raised by user-defined deserializer functions which would be
+    passed to CacheRegion.deserializer, to indicate a cache value
+    that can't be deserialized and therefore should be regenerated.</comment>
+    <requestid>1085846</requestid>
+  </revision>
 </revisionlist>
