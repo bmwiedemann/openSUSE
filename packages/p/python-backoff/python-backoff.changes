@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 20:47:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean build and test dependencies
+  * No coverage check needed, no pytest-cov
+  * Poetry-core is enough to build, less footprint
+
+-------------------------------------------------------------------
 Thu Oct 13 06:36:05 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 2.2.1

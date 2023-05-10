@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-backoff
 Version:        2.2.1
 Release:        0
@@ -26,16 +25,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/litl/backoff
 Source0:        https://files.pythonhosted.org/packages/source/b/backoff/backoff-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}
 # /SECTION
@@ -69,6 +65,7 @@ for asynchronous code.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/backoff
+%{python_sitelib}/backoff-%{version}.dist-info
 
 %changelog
