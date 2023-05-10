@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Paste
 Version:        3.5.2
 Release:        0
