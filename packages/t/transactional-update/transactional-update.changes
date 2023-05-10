@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May  8 17:38:24 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.2.1
+  - Implement "apply" command to switch into new snapshot directly
+    [jsc#PED-3912]
+  - Use new snapper functionality to set default snapshot - this
+    makes it possible to execute hooks as requested in
+    [poo#127160], [gh#openSUSE/transactional-update#85] and
+    [gh#openSUSE/transactional-update#105].
+  - Don't hardcode GRUB2 [gh#openSUSE/transactional-update#100] /
+    [poo#127154]
+  - Fix cleanup handler
+  - Fix unmounting temporary mounts
+  - Prevent loosing track of snapshots in certain rollback
+    scenarios - these would not be marked for deletion otherwise
+  - Document "notify" reboot method
+- Minimal required snapper version is 0.8.10 now, for the new
+  snapper functionality there is a backwards compatibility layer.
+- Conflict with health-checker < 1.8 - the "good" snapshot
+  detection of GRUB cannot rely on transactional-update any more
+  due to the new apply command
+- Depend on usrmerge for apply command
+
+-------------------------------------------------------------------
 Thu Mar 23 11:52:21 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.1.5

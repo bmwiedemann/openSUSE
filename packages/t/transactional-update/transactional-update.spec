@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.1.5
+Version:        4.2.1
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -64,6 +64,8 @@ BuildRequires:  libxml2-tools
 BuildRequires:  python3-lxml
 BuildRequires:  w3m
 BuildRequires:  xsltproc
+# XXX libsolv never sees the rpmlib provides fulfilled
+Requires:       (compat-usrmerge-tools or rpmlib(X-CheckUnifiedSystemdir))
 Requires:       /usr/bin/bc
 Requires:       dracut-transactional-update = %{version}-%{release}
 Requires:       logrotate
@@ -76,6 +78,7 @@ Requires:       zypper
 Recommends:     inotify-tools
 Recommends:     rebootmgr
 Suggests:       tukitd = %{version}-%{release}
+Conflicts:      health-checker < 1.8
 
 %description
 transactional-update is a tool to update a system in an atomic
@@ -111,7 +114,7 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       btrfsprogs
 Requires:       rsync
-Requires:       snapper
+Requires:       snapper >= 0.8.10
 
 %description -n %{libname}
 This package contains the libraries required for programs to do
