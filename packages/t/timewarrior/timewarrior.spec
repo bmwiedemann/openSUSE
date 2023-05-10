@@ -1,7 +1,7 @@
 #
 # spec file for package timewarrior
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           timewarrior
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Command line time tracker
 License:        MIT
@@ -25,8 +25,11 @@ Group:          Productivity/Office/Organizers
 URL:            http://taskwarrior.org/docs/timewarrior/
 Source:         https://github.com/GothenburgBitFactory/timewarrior/releases/download/v%{version}/timew-%{version}.tar.gz
 Patch0:         timewarrior-build-compare.patch
+# Submitted upstream in https://github.com/GothenburgBitFactory/timewarrior/pull/538
+Patch1:         timewarrior-out-of-source-man-pages.patch
+BuildRequires:  %{rubygem asciidoctor}
 BuildRequires:  cmake >= 2.8
-BuildRequires:  gcc-c++ >= 4.7
+BuildRequires:  gcc-c++ >= 6.1
 
 %description
 Timewarrior is a command line time tracking application, which allows you to
@@ -35,6 +38,7 @@ record time spent on activities.
 %prep
 %setup -q -n timew-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake \
@@ -45,8 +49,9 @@ record time spent on activities.
 %install
 %cmake_install
 pushd %{buildroot}%{_datadir}/%{name}
-rm -fv AUTHORS ChangeLog COPYING INSTALL LICENSE NEWS README.md
-chmod -v a+x ext/*
+rm -fv AUTHORS ChangeLog COPYING DCO INSTALL LICENSE README.md docker-compose.yml
+chmod -v a+x ext/* doc/holidays/refresh
+sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|' ext/* doc/holidays/refresh
 popd
 
 %files

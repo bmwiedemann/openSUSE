@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed May  3 18:51:57 UTC 2023 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 1.5.0
+  * #361    Improve documentation
+  * #389    Extend summary configuration
+  * #489    First execution creates database regardless of confirmation response
+  * #403    Remove incorrect output stating that an empty interval was recorded
+  * #406    Clarify minimal value for 'epoch' as date value
+  * #408    Update documentation of hint `:all`
+  * #437    Minor AtomicFile cleanup
+  * #439    Show error message if command track is called with an id
+  * #441    Return report return code
+  * #444    Improve documentation on annotations
+  * #450    Report 'totals.py' does not display data when no time range specified
+  * #458    Add man documentation for configuring tag colors.
+  * #463    Add colors to summary
+  * #466    Ignore empty exclusion ranges
+  * #468    Refactor interval filtering
+  * #469    Do not leak IntervalFilters in IntervalFilterAndGroup
+  * #470    Do not leak filter in IntervalFilterFirstOf
+  * #474    Make display of ids and annotations in summary report configurable
+  * #477    Add configurable default range for reports
+  * #478    Add support for XDG Base Directory specification on Unixes
+  * #491    Tracking an interval in the future while actively tracking time results in a database inconsistency
+  * #505    Report 'totals.py' does not truncate intervals to report range
+  * #510    Export intervals by IDs
+  * #512    help.t fails on alpine with mandoc package
+  *         Add option '--details' to 'test/problems' script
+- Added timewarrior-out-of-source-man-pages.patch
+- Update to 1.4.3
+  * #159    Tags enclosed in escaped double-quotes are not handled correctly
+  * #379    CmdSummary: Fix calculation of display start in summary table
+  * #387    Fixed URL for tarball download
+  * #390    dom.tracked.X.tag.Y always returns dom.tracked.1.tag.Y
+  * #393    Update dark_blue.theme
+  * #398    test: Thread.isAlive() -> Thread.is_alive()
+  * #410    Replace roff man pages with asciidoctor
+  * #411    Transfer platform testing from Travis CI to GitHub Actions
+  * #416    Internal error. Failed encode / decode check when doing undo
+  * #419    Links not preserved over linebreaks in man page
+  * #422    Internal error. Failed encode / decode check.
+  *         Width determination of Unicode characters now works for up to
+            Unicode 11 (from Unicode 5). Emojis are correctly displayed.
+  *         Fix test `summary.t` for single-digit weeks
+
+-------------------------------------------------------------------
 Thu Dec 17 03:14:12 UTC 2020 - Michael Bryant <shadow53@shadow53.com> - 1.4.2
 
 - Removed missing doc files from specfile
