@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  9 07:49:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.11.0:
+  + Various security fixes.
+  + CVE-2023-32205: Browser prompts could have been obscured by
+    popups
+  + CVE-2023-32206: Crash in RLBox Expat driver
+  + CVE-2023-32207: Potential permissions request bypass via
+    clickjacking
+  + CVE-2023-32211: Content process crash due to invalid wasm code
+  + CVE-2023-32212: Potential spoof due to obscured address bar
+  + CVE-2023-32213: Potential memory corruption in
+    FileReader::DoReadData()
+  + CVE-2023-32214: Potential DoS via exposed protocol handlers
+  + CVE-2023-32215: Memory safety bugs fixed in Firefox 113 and
+    Firefox ESR 102.11
+
+-------------------------------------------------------------------
 Wed Apr 26 01:51:01 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Add missing copyright in the spec to claim:
