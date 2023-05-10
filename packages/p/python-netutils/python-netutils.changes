@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue May  9 18:55:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.1
+  ## Changed
+  * #171 Allow protocol mapper to be auto-generated.
+  * #197 Prepend OUI Flatbot step to delete existing branch.
+  * #200 Allow bandwith to be represented without "ps" in
+    bandwidth.
+  ## Fixed
+  * #206 Fix Passwords docs that show ASN details.
+  * #209 Fixed interface_range_expansion with trailing constant.
+  * #210 Install black into flat environment, change flat action
+    name.
+- Release 1.4.0
+  ## Added
+  * #163 Added IP is_classfull utility function.
+  * #172 Added Aruba AOS-CX Parser.
+  * #177 Added IOS-XR Parser.
+  * #182 Added Mrv Optiswitch Parser.
+  * #182 Added Extreme Netiron Parser.
+  ## Changed
+  * #178 Update OUI flatbot CI process.
+  ## Fixed
+  * #173 Fixes classfull address naming.
+  * #183 Updates parser folder info, fix aruba tests.
+  * #181 Fixes incorrect behavior when calling tcp_ping with
+    timeout >= 3.
+  ## Removed
+  * #184 Removed redundant __init__ methods on Parser classes.
+- Release 1.3.0
+  * Added IOS Config parsing for get_path and
+    get_path_with_children methods.
+  * Added OUI mappings and built a flat ci process to manage
+    freshness of data.
+  * Added first getter feature with Napalm Getter feature.
+  * Converted to mkdocs docs.
+  * Added Citrix NetScaler Parser.
+
+-------------------------------------------------------------------
 Thu Sep 29 17:31:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - v1.2.0 - 2022-08

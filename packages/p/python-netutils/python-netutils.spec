@@ -1,7 +1,7 @@
 #
 # spec file for package python-netutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-netutils
-Version:        1.2.0
+Version:        1.4.1
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
 URL:            https://netutils.readthedocs.io
 Source:         https://github.com/networktocode/netutils/archive/refs/tags/v%{version}.tar.gz#/netutils-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Recommends:     python-napalm
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,8 +57,8 @@ rm -f %{buildroot}%{$python_sitelib}/{CHANGELOG.md,LICENSE,README.md}
 
 %files %{python_files}
 %license LICENSE
-%doc README.md CHANGELOG.md
+%doc README.md
 %{python_sitelib}/netutils
-%{python_sitelib}/netutils-%{version}*-info
+%{python_sitelib}/netutils-%{version}.dist-info
 
 %changelog
