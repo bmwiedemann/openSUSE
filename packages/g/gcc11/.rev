@@ -296,4 +296,16 @@ The compiler is NOT used by default.</comment>
     <comment>- Don't rely on %usrmerged, set it based on standard %suse_version</comment>
     <requestid>1056992</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>130f8da4fb35b66619de7f12d5c8a78a</srcmd5>
+    <version>11.3.1+git2076</version>
+    <time>1683728262</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport _multibuild auto-generation.  Remove redundant
+  .changes files.
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.</comment>
+    <requestid>1085727</requestid>
+  </revision>
 </revisionlist>

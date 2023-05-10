@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 13:24:23 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Backport _multibuild auto-generation.  Remove redundant
+  .changes files.
+
+-------------------------------------------------------------------
+Fri May  5 15:04:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Dec 27 10:41:18 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Don't rely on %usrmerged, set it based on standard %suse_version
