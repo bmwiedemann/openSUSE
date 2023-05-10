@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1000124</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>29d2001527ba4bb1eeb81d60c0aca5e1</srcmd5>
+    <version>1.5.1</version>
+    <time>1683728339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Fixed EncodingWarning in ReferralBanner.</comment>
+    <requestid>1085843</requestid>
+  </revision>
 </revisionlist>

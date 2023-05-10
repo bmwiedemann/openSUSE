@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 21:29:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Fixed EncodingWarning in ReferralBanner.
+
+-------------------------------------------------------------------
 Mon Aug 29 13:47:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Re-add BuildRequires. What is a runtime requirement must also
