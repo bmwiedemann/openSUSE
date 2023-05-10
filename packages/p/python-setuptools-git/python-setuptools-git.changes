@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  9 13:37:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed Sep  8 09:08:54 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
