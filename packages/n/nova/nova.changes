@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 10 04:35:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.6.3:
+  * Use new ArtifactHub cached API (#217)
+  * remove experimental features in CI (#211)
+
+-------------------------------------------------------------------
 Wed Apr 05 04:39:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.6.2:
