@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 10 04:37:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.2:
+  * Bump kube libs
+  * Bump Docker
+  * [release-1.11] Bump go and base images to latest
+  * Adds kube 1.27 kind image
+  * [release-1.11] add gcb configuration file for building
+    cert-manager when tag pushed
+  * add go workspace files to gitignore
+
+-------------------------------------------------------------------
 Thu Apr 13 07:32:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.11.1:
