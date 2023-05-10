@@ -1,5 +1,0 @@
-<package name="python-pytest-super-check" project="openSUSE:Factory">
-  <title></title>
-  <description>Pytest plugin to check your TestCase classes call super in setUp, tearDown, etc</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-super-check"/>
-</package>
