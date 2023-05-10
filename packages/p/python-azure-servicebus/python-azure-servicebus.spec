@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-servicebus
-Version:        7.9.0
+Version:        7.10.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
@@ -38,9 +38,7 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate >= 0.6.0
-Requires:       python-uamqp < 2.0.0
-Requires:       python-uamqp >= 1.6.3
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
+Requires:       python-typing_extensions >= 4.0.1
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
