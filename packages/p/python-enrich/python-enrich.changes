@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 10 02:46:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually run the testsuite.
+- Add a missing Requires on python-rich 
+
+-------------------------------------------------------------------
 Fri May  5 11:56:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

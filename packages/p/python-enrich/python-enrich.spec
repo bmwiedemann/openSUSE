@@ -27,9 +27,13 @@ URL:            https://github.com/pycontribs/enrich
 Source:         https://files.pythonhosted.org/packages/source/e/enrich/enrich-%{version}.tar.gz
 Patch0:         remove_setuptools_scm.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-rich
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,8 +42,7 @@ Extends the python-rich library functionality
 with a set of changes that were not accepted to rich itself.
 
 %prep
-%setup -q -n enrich-%{version}
-%patch0 -p1
+%autosetup -p1 -n enrich-%{version}
 sed -i 's/__VERSION__/%version/' setup.py
 sed -i '/_scm/ d' setup.cfg
 
@@ -50,7 +53,12 @@ sed -i '/_scm/ d' setup.cfg
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# gh#pycontribs/enrich#40
+%pytest -k 'not test_rich_console_ex'
+
 %files %{python_files}
-%{python_sitelib}/enrich*
+%{python_sitelib}/enrich
+%{python_sitelib}/enrich-%{version}*info
 
 %changelog
