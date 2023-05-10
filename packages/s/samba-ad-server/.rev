@@ -26,4 +26,41 @@
 </comment>
     <requestid>1064316</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>37ecdc99ef0a83b8548cbc492b463c74</srcmd5>
+    <version>unknown</version>
+    <time>1683728411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1682917639.ed539a8:
+  * client: update fedora base version to 37
+  * ad-server: update fedora base version to 37
+  * server: update fedora base version to 37
+  * server: install some vfs packages
+  * ad-server: default to installing sambacc from COPR
+  * server: on centos default to installing sambacc COPR
+  * server: default to installing sambacc from COPR
+  * common: add option to install sambacc from a repo file
+  * common: tweak copr install repo for centos
+  * common: if distdir is empty install sambacc from copr
+  * common: categorize dist files by name
+  * common: rename wheeldir to distdir
+  * github: add ciworkflows for building centos based images
+  * ad-server: update install-sambacc.sh to reuse install-sambacc-common.sh
+  * ad-server: copy in script install-sambacc-common.sh
+  * server: update install-sambacc.sh to reuse install-sambacc-common.sh
+  * server: copy in script install-sambacc-common.sh
+  * gitignore: ignore '.common' dirs
+  * makefile: copy common files into context directory
+  * common: add images/common directory and install-sambacc-common.sh script
+  * images/toolbox: Add CentOS variant of Containerfile
+  * workflows: now we can install directly via make/install-tools.sh use it
+  * makefile: add support for install-tools.sh fetching tools
+  * hack: add a install-tools.sh script for locally installing certain tools
+  * workflows: add a check-commits job
+  * makefile: add check-gitlint rule for checking commits
+  * client: fix missing quote in Containerfile.centos
+  * server: fix missing quote in Containerfile.centos
+  * ad-server: add tdb-tools to installed packages</comment>
+    <requestid>1086074</requestid>
+  </revision>
 </revisionlist>
