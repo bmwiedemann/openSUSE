@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue May  9 16:09:17 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Removed patch 0009-Make-generate-id-deterministic.patch as it's
+  already fixed upstream.
+
+- Update to version 1.1.38:
+  * Major changes:
+    - About 40 memory errors in code paths handling malloc failures
+      have been fixed.
+    - While these issues shouldn't impact security, this improves
+      robustness under memory pressure.
+    - The result of generate-id() is now deterministic across 
+      multiple transformations fixing many issues with reproducible
+      builds.
+    - Most of the test suite has been ported to C.
+  
+  * Bug fixes:
+    - Fix memory errors in code handling malloc failures
+    - imports: Fix import/include cycle check
+    - xsltlocale: Fix xsltNewLocale on macOS
+    - Make xsl:sort thread-safe
+    - Make generate-id() deterministic
+  
+  * Improvements
+    - Stop using xmlStringCurrentChar
+    - attributes.h needs to include xsltInternals.h (David Kilzer)
+    - transform: Avoid null deref on documents without root node
+    - numbers: Fix floating point overflows
+    - date: Fix integer overflow in exsltDateFormatDuration
+    - numbers: Fix harmless integer sign change
+    - date: Add more overflow checks to formatting code (David Kilzer)
+    - date: Fix rounding to make Windows tests pass
+    - date: Rewrite duration and seconds formatting
+    - xsltlocale: Make API platform-independent
+    - Also accept application/xslt+xml media type in stylesheet PIs
+    - warnings: Fix strict prototypes warning
+    - xsltEvalUserParams() and xsltQuoteUserParams() are susceptible to integer
+      overflow when iterating through const char** array (David Kilzer)
+    - xslt: Return NULL stylesheet on attribute set errors
+    - xsltproc: Fix unused variable warning
+    - xslt: Remove declaration for old libxml2
+    - Fix various compiler warnings
+    - Fix compiler warnings in xsltGenerateIdFunction
+    - Disable Python bindings for debugger
+    - Don't declare disabled functions
+    - Migrate from PyEval_ to PyObject_
+
+-------------------------------------------------------------------
 Tue Aug 30 14:42:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.37:

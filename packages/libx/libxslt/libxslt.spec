@@ -1,7 +1,7 @@
 #
 # spec file for package libxslt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libexver    0
 
 Name:           libxslt
-Version:        1.1.37
+Version:        1.1.38
 Release:        0
 Summary:        XSL Transformation Library
 License:        GPL-2.0-or-later AND MIT
@@ -40,12 +40,6 @@ Patch0:         libxslt-1.1.24-no-net-autobuild.patch
 #   Initialize the random seed to ensure libxslt's math.random() function
 #   produces unpredictable outputs.
 Patch1:         libxslt-random-seed.patch
-# PATCH-FIX-UPSTREAM -- 0009-Make-generate-id-deterministic.patch
-#   https://bugzilla.gnome.org/show_bug.cgi?id=751621
-#   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=902051
-#   Make generate-id() return identifiers in a deterministic way. It used to
-#   return identifiers based on the memory address of the node object.
-Patch2:         0009-Make-generate-id-deterministic.patch
 #
 ### SUSE patches starts on 1000
 # PATCH-FIX-SUSE
@@ -162,7 +156,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files tools
 %license COPYING* Copyright
-%doc AUTHORS NEWS README TODO FEATURES
+%doc AUTHORS NEWS TODO FEATURES
 %{_bindir}/xsltproc
 %{_mandir}/man1/xsltproc.1%{?ext_man}
 
