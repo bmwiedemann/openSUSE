@@ -1,7 +1,7 @@
 #
 # spec file for package poedit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.2.2
+Version:        3.3
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT

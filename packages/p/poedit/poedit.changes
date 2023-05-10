@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  9 19:28:47 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.3:
+  * Added support for JSON translation files.
+  * Added support for Flutter ARB translation files.
+  * Added support for XLIFF 2.1.
+  * Added ability to replace source text with another translation.
+
+-------------------------------------------------------------------
 Thu Dec  1 19:03:45 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.2.2: Fixed overzealous placeholders correctness check.
