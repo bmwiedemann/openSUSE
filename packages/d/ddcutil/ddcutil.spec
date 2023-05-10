@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     ddcutil-i2c-udev-rules
 
 %description
 ddcutil communicates with monitors implementing MCCS (Monitor Control Command
@@ -55,6 +56,7 @@ Summary:        Shared library to query and update monitor settings
 Group:          System/Libraries
 # libddcutil.so.4 was wrongly packaged as libddcutil3 after the 1.x upgrade
 Conflicts:      libddcutil3 >= 1.0
+Suggests:       ddcutil-i2c-udev-rules
 
 %description -n libddcutil4
 Shared library version of ddcutil, exposing a C API.
@@ -70,6 +72,21 @@ Requires:       libddcutil4 = %{version}
 
 %description -n libddcutil-devel
 Header files and pkgconfig control file for libddcutil.
+
+%package -n ddcutil-i2c-udev-rules
+Summary:        Udev rules to grant logged in users DDC/CI access
+Group:          Hardware/Other
+Requires:       libddcutil4 = %{version}
+Provides:       ddcutil:%{_udevrulesdir}/60-ddcutil.rules
+BuildArch:      noarch
+
+%description -n ddcutil-i2c-udev-rules
+ddcutil allows to control monitor settings like brightness or
+color settings.
+
+This sub-package contains udev rules granting access to the
+DDC/CI bus of connected displays for regular (non-root) users
+who are currently logged in.
 
 %prep
 %setup -q
@@ -95,10 +112,12 @@ make %{?_smp_mflags} check
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/data
 %{_datadir}/%{name}/data/*rules
-%{_udevrulesdir}/60-ddcutil.rules
 %{_datadir}/%{name}/data/90-nvidia-i2c.conf
 %{_mandir}/man1/ddcutil.1*
 %{_bindir}/ddcutil
+
+%files -n ddcutil-i2c-udev-rules
+%{_udevrulesdir}/60-ddcutil.rules
 
 %files -n libddcutil4
 %license COPYING

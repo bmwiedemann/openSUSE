@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 23 17:14:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split udev rules from command line tools (main) package. Allows
+  distribution wide usage of libddcutil without affecting device
+  permissions and security.
+
+-------------------------------------------------------------------
 Sat Jan 28 19:44:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:
