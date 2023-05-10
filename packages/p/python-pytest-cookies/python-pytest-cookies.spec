@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cookies
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # cookiecutter is only available for python3
 %define pythons python3
 Name:           python-pytest-cookies
-Version:        0.5.1
+Version:        0.7.0
 Release:        0
 Summary:        Cookiecutter template pytest plugin
 License:        MIT
@@ -30,12 +30,12 @@ Source:         https://github.com/hackebrot/pytest-cookies/archive/%{version}.t
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       cookiecutter >= 1.4.0
-Requires:       python-pytest >= 3.3.0
+Requires:       cookiecutter >= 2.1.0
+Requires:       python-pytest >= 3.9.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.3.0}
-BuildRequires:  cookiecutter >= 1.4.0
+BuildRequires:  %{python_module pytest >= 3.9.0}
+BuildRequires:  cookiecutter >= 2.1.0
 # /SECTION
 %python_subpackages
 
