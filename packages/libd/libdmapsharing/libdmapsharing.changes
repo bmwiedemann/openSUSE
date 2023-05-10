@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May  9 12:19:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9.12:
+  + Initialize a value that might not be initialized by
+    g_object_get
+  + libdmapsharing/Makefile.am:
+    - rename check target to check-local
+    - remove dmap-enums.h from maintained_headers
+    - avoid cyclic dependencies when building enums
+    - simplify use of glib-mkenums after experimenting with FreeBSD
+    - drop use of patsubst, which is not POSIX
+  + Update GTK-Doc markup to include summaries
+  + dmap-structure.c: replace g_memdup, which glib2 replaced with
+    g_memdup2
+  + Replace deprecated portions of autotools files
+
+-------------------------------------------------------------------
 Mon Mar 13 10:59:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.9.11:

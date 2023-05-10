@@ -22,7 +22,7 @@
 %define sover 3
 
 Name:           libdmapsharing
-Version:        3.9.11
+Version:        3.9.12
 Release:        0
 Summary:        Library implementing the Digital Media Access Protocol family
 License:        LGPL-2.1-or-later
