@@ -1769,7 +1769,7 @@ BuildFlags: onlybuild:efivar
 BuildFlags: onlybuild:eglexternalplatform
 BuildFlags: onlybuild:eigen3
 BuildFlags: onlybuild:elfutils
-BuildFlags: onlybuild:elfutils-debuginfod
+BuildFlags: onlybuild:elfutils:elfutils-debuginfod
 BuildFlags: onlybuild:ell
 BuildFlags: onlybuild:enca
 BuildFlags: onlybuild:enchant
