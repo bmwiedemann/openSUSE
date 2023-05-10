@@ -175,6 +175,7 @@ cp %{SOURCE1} .
 # reason.
 install -v -m 0644 daemon/transmission-daemon.service \
     -D -t %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{_localstatedir}/lib/transmission
 
 # create targets for transmission below /etc/alternatives/
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -272,6 +273,7 @@ fi
 %{_bindir}/%{name}-daemon
 %{_mandir}/man1/%{name}-daemon.1%{?ext_man}
 %{_unitdir}/%{name}-daemon.service
+%attr(-,transmission,transmission)%{_localstatedir}/lib/transmission/
 
 %files gtk
 %doc docs/* news/* AUTHORS README.md README.openSUSE
