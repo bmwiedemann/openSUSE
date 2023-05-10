@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyclipper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyclipper/pycli
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
