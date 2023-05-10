@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  5 15:50:35 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- Fixed an issue where yast2-vpn module breaks when strongswan is
+  updated to version >= 5.8.0 (boo#1176735)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
