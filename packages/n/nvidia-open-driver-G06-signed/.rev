@@ -90,4 +90,12 @@
     <comment>-  Update to version 525.116.03</comment>
     <requestid>1082832</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b865a073b31daca164eb845233210e98</srcmd5>
+    <version>525.116.04</version>
+    <time>1683728307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 525.116.04</comment>
+    <requestid>1085805</requestid>
+  </revision>
 </revisionlist>
