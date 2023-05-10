@@ -1,7 +1,7 @@
 #
 # spec file for package python-proglog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-proglog
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Log and progress bar manager for Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/Edinburgh-Genome-Foundry/Proglog
+URL:            https://github.com/Edinburgh-Genome-Foundry/Proglog
 Source:         https://files.pythonhosted.org/packages/source/p/proglog/proglog-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -43,8 +43,7 @@ logs, callbacks and progress bars.
 
 %prep
 %setup -q -n proglog-%{version}
-mv LICENCE.txt LICENSE.txt
-chmod a-x LICENSE.txt README.rst
+chmod a-x LICENSE README.rst
 
 %build
 %python_build
@@ -55,7 +54,8 @@ chmod a-x LICENSE.txt README.rst
 
 %files %{python_files}
 %doc README.rst
-%license LICENSE.txt
-%{python_sitelib}/*
+%license LICENSE
+%{python_sitelib}/proglog
+%{python_sitelib}/proglog-%{version}-py3*.egg-info
 
 %changelog
