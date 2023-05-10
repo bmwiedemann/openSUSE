@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  8 16:11:37 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 0.18.0
+  * Add options to print, clear and set executable stack state
+  * Modernizations and strictness improvements
+  * Add feature to rename dynamic symbols
+  * Adjust roundUp for 0 as input
+  * Avoid overlapping program header table with section header
+    table
+  * Other switches might set changed as true. Use extraStrings size
+  * Use the largest segment alignment for libraries requiring non-
+    standard alignments
+  * Add one extra page to avoid overlapping with next page if its
+    rounded…
+  * Add zsh completion
+  * Do not let modifyRPath taint shared strings in strtab
+  * Resize segment mapping rewritten sections if needed
+
+-------------------------------------------------------------------
 Sat Jan 21 09:49:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.2:
