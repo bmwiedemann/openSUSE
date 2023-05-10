@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 10 14:27:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Further modernise specfile
+
+-------------------------------------------------------------------
+Wed May 10 10:10:10 UTC 2023 - olaf@aepfle.de
+
+- Remove unused ffmpeg from BuildRequires
+- Remove conditionals for amrnb/amrwb
+- Use newer specfile constructs
+
+-------------------------------------------------------------------
 Wed Feb 14 14:38:36 UTC 2018 - kbabioch@suse.com
 
 - Added patches:

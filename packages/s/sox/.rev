@@ -355,4 +355,16 @@
     <comment></comment>
     <requestid>576967</requestid>
   </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>0941c91f26d1f6b3ec1802a709403c25</srcmd5>
+    <version>14.4.2</version>
+    <time>1683733159</time>
+    <user>dimstar_suse</user>
+    <comment>- Further modernise specfile
+
+- Remove unused ffmpeg from BuildRequires
+- Remove conditionals for amrnb/amrwb
+- Use newer specfile constructs</comment>
+    <requestid>1086097</requestid>
+  </revision>
 </revisionlist>
