@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 14:56:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch Tumbleweed back to using the default compiler (gcc13)
+- Add yubioath-desktop-gcc13.patch: fix build using gcc 13.
+
+-------------------------------------------------------------------
 Thu Mar 30 13:26:55 UTC 2023 - Torsten Gruner <t.gruner@katodev.de>
 
 - Use gcc11 to build the package for Tumbleweed

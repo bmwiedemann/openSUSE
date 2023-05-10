@@ -26,7 +26,9 @@ Group:          Productivity/Security
 URL:            https://developers.yubico.com/yubioath-desktop/
 Source0:        https://developers.yubico.com/yubioath-desktop/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/yubioath-desktop/Releases/%{name}-%{version}.tar.gz.sig
+Patch0:         yubioath-desktop-gcc13.patch
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  libQt5QuickControls2-devel
 BuildRequires:  libqt5-qtbase-devel => 5.12
 BuildRequires:  pkgconfig
@@ -35,13 +37,6 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(python3)
-%if 0%{?suse_version} > 1540
-BuildRequires:  gcc11-c++ >= 8
-%define cxx g++-11
-%else
-BuildRequires:  gcc-c++
-%define cxx g++
-%endif
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Requires:       pyotherside
@@ -54,13 +49,13 @@ one-time password codes, with the help of a Yubikey NEO that protects
 the shared secrets.
 
 %prep
-%setup -q -n %{name}
+%autosetup -n %{name} -p1
 sed -i 's|yubikey-manager==|yubikey-manager>=|' requirements.txt
 # workaround for the binary-file installation path
 sed -i 's|target.path = $$PREFIX/lib|target.path = $$PREFIX/bin|' QZXing/QZXing-components.pri
 
 %build
-%qmake5 QMAKE_CXX=%{cxx} QMAKE_LINK=%{cxx} QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags} -fPIE" QMAKE_LFLAGS+="-pie" QMAKE_STRIP="/bin/true"
+%qmake5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags} -fPIE" QMAKE_LFLAGS+="-pie" QMAKE_STRIP="/bin/true"
 %make_build
 
 %install
