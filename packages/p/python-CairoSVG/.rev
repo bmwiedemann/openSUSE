@@ -111,4 +111,18 @@
     <comment></comment>
     <requestid>1082048</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea14ed14036fa9c846ff802a32c0a396</srcmd5>
+    <version>2.7.0</version>
+    <time>1683728182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.0:
+  WARNING: this is a security update.
+  When processing SVG files, CairoSVG could access other files online,
+  possibly leading to very long renderings or other security problems.
+  This feature is now disabled by default. External resources can still be
+  accessed using the &quot;unsafe&quot; or the &quot;url_fetcher&quot; parameter.
+</comment>
+    <requestid>1085642</requestid>
+  </revision>
 </revisionlist>

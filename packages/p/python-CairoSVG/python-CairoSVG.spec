@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-CairoSVG
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        A Python SVG converter based on Cairo
 License:        LGPL-3.0-or-later
