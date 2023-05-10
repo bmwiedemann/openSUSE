@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 27 08:23:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.0
+  * Make QCoro::Generator properly move-constructible
+  * iOS support: handle QProcess being not available
+  * Fix QCoro::connect with QFutures
+  * Fix debug build against MSVC2022
+  * Fix CheckAtomic failing on Windows with Clang
+  * Make how Qt packages are found more convenient
+  * Fix clang 16 builds
+  * Fix crash in QCoroSignal when signal is received after
+  * destruction
+  * Fix connecting to member function pointers
+  * QML: Add declarative API for awaiting a task
+  * Implement QCoroTest
+
+-------------------------------------------------------------------
 Thu Feb  9 08:26:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.8.0

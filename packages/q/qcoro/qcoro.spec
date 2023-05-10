@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 #
 Name:           qcoro%{?_pkg_name_suffix}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Coroutines for Qt
 License:        MIT
@@ -63,6 +63,7 @@ BuildRequires:  cmake(Qt%{_qt_suffix}Widgets) >= %{qt_min_version}
 # C++-20 support is needed. Qt6 already requires gcc10
 %if 0%{?qt5} && 0%{?suse_version} == 1500
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 
 %description
@@ -166,18 +167,12 @@ applications.
 # 20220713: tests still randomly fail, mostly on arm
 #%%ctest
 
-%post -n libQCoro%{_qt_suffix}Core%{sonum}  -p /sbin/ldconfig
-%post -n libQCoro%{_qt_suffix}DBus%{sonum}  -p /sbin/ldconfig
-%post -n libQCoro%{_qt_suffix}Network%{sonum}  -p /sbin/ldconfig
-%post -n libQCoro%{_qt_suffix}Qml%{sonum}  -p /sbin/ldconfig
-%post -n libQCoro%{_qt_suffix}Quick%{sonum}  -p /sbin/ldconfig
-%post -n libQCoro%{_qt_suffix}WebSockets%{sonum}  -p /sbin/ldconfig
-%postun -n libQCoro%{_qt_suffix}Core%{sonum}  -p /sbin/ldconfig
-%postun -n libQCoro%{_qt_suffix}DBus%{sonum}  -p /sbin/ldconfig
-%postun -n libQCoro%{_qt_suffix}Network%{sonum}  -p /sbin/ldconfig
-%postun -n libQCoro%{_qt_suffix}Qml%{sonum}  -p /sbin/ldconfig
-%postun -n libQCoro%{_qt_suffix}Quick%{sonum}  -p /sbin/ldconfig
-%postun -n libQCoro%{_qt_suffix}WebSockets%{sonum}  -p /sbin/ldconfig
+%ldconfig_scriptlets -n libQCoro%{_qt_suffix}Core%{sonum}
+%ldconfig_scriptlets -n libQCoro%{_qt_suffix}DBus%{sonum}
+%ldconfig_scriptlets -n libQCoro%{_qt_suffix}Network%{sonum}
+%ldconfig_scriptlets -n libQCoro%{_qt_suffix}Qml%{sonum}
+%ldconfig_scriptlets -n libQCoro%{_qt_suffix}Quick%{sonum}
+%ldconfig_scriptlets -n libQCoro%{_qt_suffix}WebSockets%{sonum}
 
 %files -n libQCoro%{_qt_suffix}Core%{sonum}
 %license LICENSES/*
@@ -214,6 +209,7 @@ applications.
 %{_libdir}/cmake/QCoro%{_qt_suffix}Network/
 %{_libdir}/cmake/QCoro%{_qt_suffix}Qml/
 %{_libdir}/cmake/QCoro%{_qt_suffix}Quick/
+%{_libdir}/cmake/QCoro%{_qt_suffix}Test/
 %{_libdir}/cmake/QCoro%{_qt_suffix}WebSockets/
 %{_libdir}/libQCoro%{_qt_suffix}Core.so
 %{_libdir}/libQCoro%{_qt_suffix}DBus.so
