@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  9 08:10:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230502.00
+  * Improve the URL in 2fa prompt (#104)
+- from version 20230406.02
+  * Check open files (#101)
+- from version 20230406.01
+  * Initialize variables (#100)
+  * Fix formatting (#102)
+- from version 20230406.00
+  * PAM cleanup: remove duplicates (#97)
+- from version 20230405.00
+  * NSS cleanup (#98)
+- from version 20230403.01
+  * Cleanup Makefiles (#95)
+- from version 20230403.00
+  * Add anandadalton to the owners list (#96)
+
+-------------------------------------------------------------------
 Tue Feb 28 11:36:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230217.00

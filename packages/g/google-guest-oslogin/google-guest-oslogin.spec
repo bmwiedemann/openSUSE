@@ -19,7 +19,7 @@
 %{!?_pam_moduledir: %define _pam_moduledir %{_pamdir}}
 
 Name:           google-guest-oslogin
-Version:        20230217.00
+Version:        20230502.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0

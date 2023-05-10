@@ -159,4 +159,26 @@
     <comment></comment>
     <requestid>1068169</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>45f0adc938283ca93734545252e9b82d</srcmd5>
+    <version>20230502.00</version>
+    <time>1683728281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230502.00
+  * Improve the URL in 2fa prompt (#104)
+- from version 20230406.02
+  * Check open files (#101)
+- from version 20230406.01
+  * Initialize variables (#100)
+  * Fix formatting (#102)
+- from version 20230406.00
+  * PAM cleanup: remove duplicates (#97)
+- from version 20230405.00
+  * NSS cleanup (#98)
+- from version 20230403.01
+  * Cleanup Makefiles (#95)
+- from version 20230403.00
+  * Add anandadalton to the owners list (#96) (forwarded request 1085655 from glaubitz)</comment>
+    <requestid>1085769</requestid>
+  </revision>
 </revisionlist>
