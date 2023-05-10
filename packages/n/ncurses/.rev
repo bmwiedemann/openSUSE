@@ -4123,4 +4123,19 @@
     Joachim).</comment>
     <requestid>1084217</requestid>
   </revision>
+  <revision rev="239" vrev="12">
+    <srcmd5>385136cf6dc57b3e0d6b07708bf6da16</srcmd5>
+    <version>unknown</version>
+    <time>1683728171</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20230506
+  &gt; build-fixes related to configure-options and/or platform:
+    + fix for --enable-fvisibility
+    + fix for unusual values of --with-rel-version
+    + fix for unusual values of --with-abi-version
+    + fix for --disable-tcap-names
+    + fix for termcap in nc_access.h (report by Werner Fink).
+- Delete patch ncurses-6.4-makeuseof_secure_open.dif as now upstream</comment>
+    <requestid>1085480</requestid>
+  </revision>
 </revisionlist>

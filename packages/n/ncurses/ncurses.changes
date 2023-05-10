@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  8 08:51:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230506
+  > build-fixes related to configure-options and/or platform:
+    + fix for --enable-fvisibility
+    + fix for unusual values of --with-rel-version
+    + fix for unusual values of --with-abi-version
+    + fix for --disable-tcap-names
+    + fix for termcap in nc_access.h (report by Werner Fink).
+- Delete patch ncurses-6.4-makeuseof_secure_open.dif as now upstream
+
+-------------------------------------------------------------------
 Wed May  3 08:47:27 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Do not overwrite PKG_CONFIG_PATH for new tack support
