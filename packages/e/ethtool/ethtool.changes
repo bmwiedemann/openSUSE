@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  8 21:05:45 UTC 2023 - Michal Kubeček <mkubecek@suse.cz>
+
+- update to upstream release 6.3
+  * Feature: PLCA support (--[gs]et-plca-cfg, --get-plca-status)
+  * Feature: MAC Merge layer support (--show-mm, --set-mm)
+  * Feature: pass source of statistics for port stats
+  * Feature: get/set rx push in ringparams (-g and -G)
+  * Feature: coalesce tx aggregation parameters (-c and -C)
+  * Feature: PSE and PD devices (--show-pse, --set-pse)
+  * Fix: minor fixes of help text (--help)
+  * Fix: fix build on systems with older system headers
+  * Fix: fix netlink support when PLCA is not present (no option)
+  * Fix: fixes for issues found with gcc13 -fanalyzer
+  * Fix: fix return code in rxclass_rule_ins (-N)
+  * Fix: more robust argc/argv handling
+
+-------------------------------------------------------------------
 Fri Mar  3 13:08:27 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Split bash-completion to separate sub-package
