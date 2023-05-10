@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 10 08:45:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Oct  4 15:25:51 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Switch off broken tests due to something wrong with arrow.
