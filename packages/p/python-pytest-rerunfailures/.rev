@@ -75,4 +75,30 @@
     <comment></comment>
     <requestid>1082429</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>484aad5cc0b0ccae536030bbebe7744e</srcmd5>
+    <version>11.1.2</version>
+    <time>1683728244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.1.2:
+  * Execute teardown when test was skipped in setup phase of a
+    fixture.
+  * Fix crash during teardown when runtest protocol hook is
+    overwritten by another plugin.
+  * Fix crash during teardown when TestCase class is used as base
+    class.
+  * Run teardown of session, class, ... scoped fixtures only once
+    after rerunning tests
+  * Expose `reruns` and `reruns_delay` through `pytest.ini` file.
+  * Drop support for Python 3.6.
+  * Drop support for pytest &lt; 6.
+  * Fix crash when pytest-xdist is installed but disabled.
+  * Fix crash when xfail(strict=True) mark is used with --rerun-
+    only flag.
+  * Added option `--rerun-except` to rerun failed tests those are
+    other than the mentioned Error.
+  * Add support for Python 3.11.
+  * Add support for pytest 7.0, 7.1, 7.2.</comment>
+    <requestid>1085836</requestid>
+  </revision>
 </revisionlist>

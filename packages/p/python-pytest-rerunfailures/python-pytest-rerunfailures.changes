@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  9 21:10:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.1.2:
+  * Execute teardown when test was skipped in setup phase of a
+    fixture.
+  * Fix crash during teardown when runtest protocol hook is
+    overwritten by another plugin.
+  * Fix crash during teardown when TestCase class is used as base
+    class.
+  * Run teardown of session, class, ... scoped fixtures only once
+    after rerunning tests
+  * Expose `reruns` and `reruns_delay` through `pytest.ini` file.
+  * Drop support for Python 3.6.
+  * Drop support for pytest < 6.
+  * Fix crash when pytest-xdist is installed but disabled.
+  * Fix crash when xfail(strict=True) mark is used with --rerun-
+    only flag.
+  * Added option `--rerun-except` to rerun failed tests those are
+    other than the mentioned Error.
+  * Add support for Python 3.11.
+  * Add support for pytest 7.0, 7.1, 7.2.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
