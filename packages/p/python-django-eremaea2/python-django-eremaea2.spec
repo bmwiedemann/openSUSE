@@ -18,14 +18,12 @@
 
 %define skip_python2 1
 Name:           python-django-eremaea2
-Version:        2.0.17
+Version:        2.0.18
 Release:        0
 Summary:        A simple Django application to store and show webcam snapshots
 License:        BSD-2-Clause
 URL:            https://github.com/matwey/django-eremaea2
 Source:         https://files.pythonhosted.org/packages/source/d/django-eremaea2/django-eremaea2-%{version}.tar.gz
-# https://github.com/matwey/django-eremaea2/issues/14
-Patch0:         python-django-eremaea2-no-six.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  %{python_module Django >= 1.10}
