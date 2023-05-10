@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 10 11:24:39 UTC 2023 - dmulder@suse.com
+
+- Update to version v0.2+git.108.e7850e0:
+  * docs: document the availability of yaml and toml formatted confs
+  * extras: have rpm spec recommend extras on fedora 37 & later
+  * extras: add our toml and yaml extras to the rpm spec
+  * tox: get all test envs that install via pip working with extras
+  * setup: add extras for toml and yaml
+  * tests: support testing toml with tomli or tomllib
+  * sambacc: support tomli for reading toml on older versions
+  * tests: add test cases for yaml formatted configuration
+  * sambacc: add support for reading YAML formatted configs
+  * tests: add test cases for toml formatted configuration
+  * sambacc: add support for reading TOML formatted configs
+  * copr: add .copr/Makefile for building in COPR system
+  * container: default to dnf in build script
+  * container: more granular controls of build script behavior
+  * container: generate a more robust rpm spec file
+  * container: make build script a tad more consistent
+  * extras: fix a typo in the rpm spec
+  * extras: add additional build deps to the rpm spec file
+  * extras: add validation extra as an rpm sub package
+  * sambacc: make config module robust to unexpected jsonschema versions
+
+-------------------------------------------------------------------
 Tue Apr 18 20:05:45 UTC 2023 - dmulder@suse.com
 
 - Update to version v0.2+git.88.c81c65a:
