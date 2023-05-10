@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  9 08:53:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 24547fb3.patch: widget: Don't consume right clicks on gtk4.
+
+-------------------------------------------------------------------
 Sun Apr 16 13:30:24 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.72.1:
