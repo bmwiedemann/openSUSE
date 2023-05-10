@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  9 10:43:40 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230503:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for Hong Kong (HK)
+  * wireless-regdb: update regulatory rules for India (IN)
+  * wireless-regdb: Update regulatory rules for Russia (RU). Remove DFS requirement.
+  * Update regulatory info for Russia (RU) on 6GHz
+
+-------------------------------------------------------------------
 Tue Mar  7 07:57:49 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230213:
