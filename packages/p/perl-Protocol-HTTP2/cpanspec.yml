@@ -7,8 +7,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  openssl3_1-adapt_tests.patch: -p1 PATCH-FIX-OPENSUSE https://github.com/vlet/p5-Protocol-HTTP2/pull/14
 #  bar.patch:
 #preamble: |-
 # BuildRequires:  gcc-c++
