@@ -17,17 +17,15 @@
 
 
 Name:           pcsc-tools
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Smart card tools
-License:        GPL-2.0-or-later AND GPL-3.0-or-later
+License:        GPL-2.0-or-later
 Group:          System/Management
-URL:            http://ludovic.rousseau.free.fr/softwares/pcsc-tools/
-Source0:        http://ludovic.rousseau.free.fr/softwares/%{name}/%{name}-%{version}.tar.bz2
-Source1:        http://ludovic.rousseau.free.fr/softwares/%{name}/%{name}-%{version}.tar.bz2.asc
+URL:            https://pcsc-tools.apdu.fr/
+Source0:        https://pcsc-tools.apdu.fr/%{name}-%{version}.tar.bz2
+Source1:        https://pcsc-tools.apdu.fr/%{name}-%{version}.tar.bz2.asc
 Source2:        pcsc-tools.keyring
-Source3:        https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
-Source4:        https://www.gnu.org/licenses/gpl-3.0.txt
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
 Requires:       perl-pcsc
@@ -41,7 +39,6 @@ or send commands in a friendly environment
 
 %prep
 %setup -q
-cp -v %{SOURCE3} %{SOURCE4} .
 sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis gscriptor scriptor
 
 %build
@@ -52,7 +49,7 @@ sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis gscriptor scriptor
 %make_install
 
 %files
-%license gpl*.txt
+%license LICENCE
 %doc Changelog README
 %{_bindir}/ATR_analysis
 %{_bindir}/gscriptor
