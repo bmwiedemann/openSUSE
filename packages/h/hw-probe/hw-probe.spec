@@ -1,6 +1,7 @@
 #
 # spec file for package hw-probe
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Andrey Ponomarenko <andrewponomarenko@yandex.ru>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,36 +13,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:       hw-probe
-Version:    1.5
-Release:    1
-Summary:    Check operability of computer hardware and find drivers
-License:    LGPL-2.0+
-Group:      Hardware/Other
-BuildArch:  noarch
-URL:        https://github.com/linuxhw/hw-probe
-Source0:    %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Requires:   perl-libwww-perl
-Requires:   curl
-Requires:   hwinfo
-Requires:   dmidecode
-Requires:   pciutils
-Requires:   usbutils
-Requires:   smartmontools
-Requires:   hdparm
-Requires:   sysstat
-Requires:   util-linux
-Requires:   sensors
-Requires:   lsb-release
-Requires:   acpica
-Recommends: Mesa-demo-x
-Recommends: mcelog
-BuildRequires: perl
-BuildRequires: perl(Getopt::Long)
+Name:           hw-probe
+Version:        1.6
+Release:        0
+Summary:        Check operability of computer hardware and find drivers
+License:        LGPL-2.0-or-later
+Group:          Hardware/Other
+BuildArch:      noarch
+URL:            https://github.com/linuxhw/hw-probe
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Requires:       acpica
+Requires:       curl
+Requires:       dmidecode
+Requires:       hdparm
+Requires:       hwinfo
+Requires:       lsb-release
+Requires:       pciutils
+Requires:       perl-libwww-perl
+Requires:       sensors
+Requires:       smartmontools
+Requires:       sysstat
+Requires:       usbutils
+Requires:       util-linux
+Recommends:     Mesa-demo-x
+Recommends:     mcelog
+BuildRequires:  perl
+BuildRequires:  perl(Getopt::Long)
 
 %description
 A tool to check operability of computer hardware and upload result
@@ -63,6 +64,7 @@ Reliability Test study: https://github.com/linuxhw/SMART
 
 %prep
 %setup -q
+sed -i "s|\#\!\/usr\/bin\/env perl|\#\!\/usr\/bin\/perl|g" hw-probe.pl
 
 %build
 # Nothing to build yet
@@ -73,5 +75,7 @@ make install prefix=%{_prefix} DESTDIR=%{buildroot}
 
 %files
 %doc README.md
-%license LICENSE
+%license LICENSE.md
 %{_bindir}/%{name}
+
+%changelog
