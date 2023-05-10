@@ -217,4 +217,12 @@
   * added implementatio for sig2str/str2sig</comment>
     <requestid>1072055</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f4f25e040607f480c5ffc6516ade5b34</srcmd5>
+    <version>4.3.0.20230120</version>
+    <time>1683733494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086091</requestid>
+  </revision>
 </revisionlist>
