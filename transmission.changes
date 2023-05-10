@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 09:29:21 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Fix transmission-daemon missing /var/lib/transmission 
+
+-------------------------------------------------------------------
 Sat Apr 15 04:55:58 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 4.0.3:
