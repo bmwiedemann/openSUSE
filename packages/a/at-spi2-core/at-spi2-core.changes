@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 19:37:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add or dbus-broker to existing dbus-1 Requires: we already pass
+  dbus_broker=/usr/bin/dbus-broker-launch and
+  default_bus=dbus-broker to meson during build.
+
+-------------------------------------------------------------------
 Sun Mar 19 16:12:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.0:

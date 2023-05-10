@@ -2601,4 +2601,12 @@
     <comment>New stable release (forwarded request 1072945 from iznogood)</comment>
     <requestid>1073204</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>8d21928350ebe8c29c1cc1632d74189f</srcmd5>
+    <version>2.48.0</version>
+    <time>1683728220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085781</requestid>
+  </revision>
 </revisionlist>

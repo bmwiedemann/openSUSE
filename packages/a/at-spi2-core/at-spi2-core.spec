@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xtst)
 # dbus-daemon is needed to have this work fine
-Requires:       dbus-1
+Requires:       (dbus-1 or dbus-broker)
 Provides:       at-spi2-atk-gtk2 = %{version}
 Obsoletes:      at-spi2-atk-gtk2 < %{version}
 # xprop is needed when using XWayland
