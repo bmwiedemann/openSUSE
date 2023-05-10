@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu May  4 13:02:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.4.1:
+  * More config dialogue tweaks.
+  * Recent file list: Don't try to re-use no-more-used wxWidgets
+    IDs.
+  * Make sure that the help sidebar is shown when opening a help
+    topic.
+  * If maxima wants us to open a help browser and wxMaxima was
+    compiled without one it now opens an external help browser.
+  * The load() command now again works with symbols as package
+    names..
+- Changes from version 23.4.0:
+  * Made the GUI more responsive for functions with much output.
+  * Handle errors in the XML from maxima more gracefully.
+  * Rewrote parts of the lisp part of wxMaxima.
+  * Resolved a few lisp warnings.
+  * Resolved a few XML errors caused by not escaping special
+    chars.
+  * Automatic XML generation tests.
+  * Correct display of operators.
+  * A better style sample for the config dialogue.
+  * Resolved several asserts.
+  * Resolved a few small bugs in the autosave logic.
+
+-------------------------------------------------------------------
 Tue Mar 14 04:27:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.3.0:
