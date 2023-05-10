@@ -7,4 +7,12 @@
     <comment>new dep of existing package pytest-helpers-namespace</comment>
     <requestid>881587</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>226aa684515e65009f59b11c728bcc83</srcmd5>
+    <version>1.2.0</version>
+    <time>1683728346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085855</requestid>
+  </revision>
 </revisionlist>

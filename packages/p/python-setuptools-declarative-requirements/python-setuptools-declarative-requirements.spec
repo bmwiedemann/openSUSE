@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-declarative-requirements
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-setuptools-declarative-requirements
 Version:        1.2.0
 Release:        0
@@ -25,9 +24,9 @@ Summary:        File support for setuptools declarative setup.cfg
 License:        Apache-2.0
 URL:            https://github.com/s0undt3ch/setuptools-declarative-requirements
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-declarative-requirements/setuptools-declarative-requirements-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pypiserver}
