@@ -162,4 +162,16 @@
   * Rebuild binary wheels using zlib 1.2.13. Source build unchanged.</comment>
     <requestid>1046279</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3d9a7ab59b914bc154f0e55bef31e6dc</srcmd5>
+    <version>6.2.8.post1</version>
+    <time>1683728381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.8.post1:
+  * Drop PyPy3.7 from wheel builds, since dependencies (lxml, Pillow)
+    no longer provide it.
+  * Fixed some tests that randomly failed on Windows due to newline
+    handling issues.</comment>
+    <requestid>1085975</requestid>
+  </revision>
 </revisionlist>

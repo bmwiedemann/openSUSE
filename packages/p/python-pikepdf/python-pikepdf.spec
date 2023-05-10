@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pikepdf
-Version:        6.2.7
+Version:        6.2.8.post1
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -49,7 +49,6 @@ BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 #BuildRequires:  %%{python_module python-xmp-toolkit >= 2.0.1}
 BuildRequires:  %{python_module setuptools >= 50}
 BuildRequires:  %{python_module setuptools_scm >= 4.1}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 #BuildRequires:  %%{python_module wheel >= 0.35}
 ## /SECTION
 BuildRequires:  fdupes
