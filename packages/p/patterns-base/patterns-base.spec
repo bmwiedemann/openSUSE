@@ -150,6 +150,7 @@ Recommends:     terminfo
 Recommends:     terminfo-iterm
 Recommends:     terminfo-screen
 Recommends:     timezone
+Recommends:     wtmpdb
 Recommends:     service(network)
 # We don't necessarily want zypper in specific minimal environments
 # e.g. buildroots and locked down appliance environments

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  9 07:02:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- base: Add wtmpdb as Y2038 safe wtmp replacement
+
+-------------------------------------------------------------------
 Thu Apr  6 09:35:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - base: Add lastlog2 as Y2038 safe lastlog replacement
