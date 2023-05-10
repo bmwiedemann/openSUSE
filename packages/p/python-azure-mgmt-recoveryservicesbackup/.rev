@@ -227,4 +227,16 @@
 - Remove temporary version override (forwarded request 1073105 from glaubitz)</comment>
     <requestid>1073124</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d65732513e527649cc246ab327b4e552</srcmd5>
+    <version>6.0.0</version>
+    <time>1683728283</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1085649 from glaubitz)</comment>
+    <requestid>1085770</requestid>
+  </revision>
 </revisionlist>
