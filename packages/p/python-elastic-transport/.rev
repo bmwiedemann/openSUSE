@@ -33,4 +33,14 @@
     <comment></comment>
     <requestid>1081938</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>66bb0e522ef91d398f8c751378fa090d</srcmd5>
+    <version>8.4.0</version>
+    <time>1683728200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update python-urllib3 minimum requirement to build with latest
+  python-urllib3
+</comment>
+    <requestid>1085695</requestid>
+  </revision>
 </revisionlist>

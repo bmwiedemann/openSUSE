@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 12:00:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update python-urllib3 minimum requirement to build with latest
+  python-urllib3
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

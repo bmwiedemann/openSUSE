@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-elastic-transport
@@ -30,7 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
-Requires:       (python-urllib3 >= 1.26.2 with python-urllib3 < 2)
+# Removed upper limit to work with urllib3 >= 2.0.0 -- gh#elastic/elastic-transport-python#102
+Requires:       (python-urllib3 >= 1.26.2)
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 37
 Requires:       python-dataclasses
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module urllib3 >= 1.26.2 with %python-urllib3 < 2}
+BuildRequires:  %{python_module urllib3 >= 1.26.2}
 # /SECTION
 %python_subpackages
 
