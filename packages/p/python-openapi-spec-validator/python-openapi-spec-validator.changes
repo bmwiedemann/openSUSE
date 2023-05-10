@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  9 19:10:07 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.6
+  * Fix typo in server variables schema for OpenAPI 3.1.0 #198
+  * Include tests in sdist archives #199
+  * jsonschema 4.17 dependency limit #203
+  * add python 3.11 support #204
+- Release 0.5.5
+  * update openapi-schema-validator dependecy #194
+- Release 0.5.4
+  * schema properties validation recursion fix #193
+- Release 0.5.3
+  * fix custom format checker not found test #190
+  * fix property missing reference validation #191
+- Release 0.5.2
+  * Use stdlib importlib.resources on python >= 3.9 #174
+  * mypy typing module version fix #181
+  * Drop no longer used runtime dependency on PyYAML #180
+  * allow openapi-schema-validator 0.4 #187
+
+-------------------------------------------------------------------
 Tue Oct 25 20:05:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove conditional definition of python_module.
