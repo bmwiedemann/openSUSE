@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  7 10:39:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Wed Apr 26 08:57:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop require on xorg-x11-libs, that metapackage itself requires

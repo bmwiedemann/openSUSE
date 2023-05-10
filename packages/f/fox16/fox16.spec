@@ -53,10 +53,11 @@ BuildRequires:  pkgconfig(glu)
 %if 0%{?suse_version}
 BuildRequires:  cups-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-Mesa-devel
-BuildRequires:  xorg-x11-devel
-BuildRequires:  xorg-x11-libXext-devel
-BuildRequires:  xorg-x11-libXfixes-devel
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xi)
 %endif
 #
 # Mandriva Requires
@@ -80,7 +81,6 @@ BuildRequires:  libXft-devel
 BuildRequires:  libXi-devel
 BuildRequires:  xorg-x11-devel
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 FOX is a C++-based library for graphical user interface development.
@@ -267,17 +267,14 @@ test -f %{_bindir}/reswrap || ln -s reswrap16 %{_bindir}/reswrap
 test -f %{_mandir}/man1/reswrap.1.gz || ln -s reswrap16.1.gz %{_mandir}/man1/reswrap.1.gz
 
 %files doc
-%defattr(-,root,root)
 %doc %{_defaultdocdir}/%{name}
 
 %files -n %{lname}
-%defattr(-,root,root)
 %license LICENSE*
 %{_libdir}/libFOX-*.so.*
 %{_libdir}/libCHART-*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/reswrap
 %{_bindir}/fox-config
 %{_mandir}/man1/reswrap.1%{?ext_man}
@@ -289,12 +286,10 @@ test -f %{_mandir}/man1/reswrap.1.gz || ln -s reswrap16.1.gz %{_mandir}/man1/res
 %{_libdir}/libCHART-*.so
 
 %files devel-static
-%defattr(-,root,root)
 %{_libdir}/libFOX-*.a
 %{_libdir}/libCHART-*.a
 
 %files example-apps
-%defattr(-,root,root)
 %{_bindir}/Adie.stx
 %{_bindir}/adie
 %{_bindir}/PathFinder
