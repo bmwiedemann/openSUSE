@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansi2html
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-ansi2html
 Version:        1.8.0
 Release:        0
@@ -25,6 +25,10 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ralphbean/ansi2html/
 Source:         https://github.com/ralphbean/ansi2html/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+# 0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
+# gh#pycontribs/ansi2html#210 kastl@b1-systems.de
+Patch0:         0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -42,6 +46,7 @@ A module to convert text with ANSI color codes to HTML or to LaTeX.
 
 %prep
 %setup -q -n ansi2html-%{version}
+%patch0 -p1
 
 %build
 %pyproject_wheel

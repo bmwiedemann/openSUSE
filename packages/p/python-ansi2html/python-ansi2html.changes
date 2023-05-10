@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  9 12:02:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch
+  0001-tests-test_ansi2html.py-use-sys.executable-instead-o.patch
+  to replace a hardcoded 'python3' in a test (which leads to errors
+  on SLES15 with python3.11)
+  https://github.com/pycontribs/ansi2html/issues/210
+
+-------------------------------------------------------------------
+Tue May  9 11:20:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Aug  4 08:46:29 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.8.0:

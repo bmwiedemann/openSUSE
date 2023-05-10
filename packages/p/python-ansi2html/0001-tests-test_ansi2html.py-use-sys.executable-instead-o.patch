@@ -1,0 +1,33 @@
+From 01aa299300788591e91dd7290c455240056607a0 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Tue, 9 May 2023 14:00:51 +0200
+Subject: [PATCH] tests/test_ansi2html.py: use sys.executable instead of
+ hardcoded python3
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ tests/test_ansi2html.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_ansi2html.py b/tests/test_ansi2html.py
+index 04b5d22..2e88a8f 100644
+--- a/tests/test_ansi2html.py
++++ b/tests/test_ansi2html.py
+@@ -22,6 +22,7 @@
+ #  <http://www.gnu.org/licenses/>.
+ 
+ import textwrap
++import sys
+ from io import StringIO
+ from os.path import abspath, dirname, join
+ from subprocess import PIPE, Popen, run
+@@ -499,5 +500,5 @@ class TestAnsi2HTML:
+         assert process.returncode == 0
+ 
+     def test_command_module(self) -> None:
+-        result = run(["python3", "-m", "ansi2html", "--version"], check=True)
++        result = run([sys.executable, "-m", "ansi2html", "--version"], check=True)
+         assert result.returncode == 0
+-- 
+2.40.1
+
