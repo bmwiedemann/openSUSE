@@ -24,7 +24,7 @@ Release:        0
 Summary:        SQL read/write support for agate
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://agate-sql.readthedocs.org/
+URL:            https://agate-sql.readthedocs.org/
 Source:         https://github.com/wireservice/agate-sql/archive/%{version}.tar.gz
 # we do not have crate dialect
 Patch0:         python-agate-sql-no-crate.patch
@@ -33,10 +33,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-agate >= 1.5.0
-Requires:       (python-SQLAlchemy >= 1.0.8 with python-SQLAlchemy < 2)
+Requires:       (python-sqlalchemy >= 1.0.8 with python-sqlalchemy < 2)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module SQLAlchemy >= 1.0.8 with %python-SQLAlchemy < 2}
+BuildRequires:  %{python_module sqlalchemy >= 1.0.8 with %python-sqlalchemy < 2}
 BuildRequires:  %{python_module agate >= 1.5.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
