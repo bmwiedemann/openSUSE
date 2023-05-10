@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Feb  9 16:18:32 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 1.6
+  * In this release we have properly tested and fixed support for almost all *BSD systems, 
+    expanded support for more Linux systems, implemented probing of HP Smart Array 
+    and improved decorating of possibly significant data in collected logs. 
+  * all changes are described on https://github.com/linuxhw/hw-probe/blob/master/NEWS.md#hw-probe-16
+
+-------------------------------------------------------------------
 Wed Jan 27 16:56:45 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Drop old tarball hw-probe-1.4.tar.gz (fixes previous update)
