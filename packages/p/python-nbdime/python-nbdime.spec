@@ -22,11 +22,12 @@
 %bcond_with libalternatives
 %endif
 
-%define pyver 3.2.0
+%define pyver 3.2.1
 %define labver 2.2.0
 %define jupver  6.2.0
 %define anypythondist python3dist
-%define pyverdist 3.2
+# always cut trailing .0
+%define pyverdist 3.2.1
 %define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
 %define gitbins  git-nbdifftool git-nbmergetool git-nbdiffdriver git-nbmergedriver
 %define hgbins   hg-nbdiff hg-nbdiffweb hg-nbmerge hg-nbmergeweb

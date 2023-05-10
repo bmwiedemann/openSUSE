@@ -108,4 +108,14 @@
 </comment>
     <requestid>1082590</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>81350ad0557e7e7e44d91969f611cf32</srcmd5>
+    <version>unknown</version>
+    <time>1683728314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to python v3.2.1
+  * Fixed incorrect exit code submission when succesfully closing
+    web tools.</comment>
+    <requestid>1085802</requestid>
+  </revision>
 </revisionlist>
