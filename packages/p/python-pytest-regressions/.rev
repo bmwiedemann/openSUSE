@@ -15,4 +15,29 @@
     <comment></comment>
     <requestid>1085219</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e074e1cd8e203289565099259c6bdb43</srcmd5>
+    <version>2.4.2</version>
+    <time>1683728243</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.2:
+  * Properly handle missing index ``0``.
+  * Compatibility fix for pytest 6.2.
+  * New ``--regen-all`` flag, which regenerates all files without
+    failing the tests. Useful to regenerate all files in
+    the test suite with a single run.
+  * The public API is now fully type annotated.
+  * ``pytest&gt;=6.2`` is now required.
+  * Properly handle empty and NaN values on
+    num_regression and dataframe_regression.
+  * New ``--with-test-class-names`` command-line flag to consider
+    test class names when composing the expected and obtained
+    data filenames. Needed when the same module contains
+    different classes with the same method names.
+  * New ``ndarrays_regression``, for comparing NumPy arrays with
+    arbitrary shape.
+  * Fix ``empty string bug`` on dataframe regression.
+- drop np_num-deprecated.patch (upstream)</comment>
+    <requestid>1085835</requestid>
+  </revision>
 </revisionlist>

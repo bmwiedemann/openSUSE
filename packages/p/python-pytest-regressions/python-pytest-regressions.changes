@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May  9 21:07:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * Properly handle missing index ``0``.
+  * Compatibility fix for pytest 6.2.
+  * New ``--regen-all`` flag, which regenerates all files without
+    failing the tests. Useful to regenerate all files in
+    the test suite with a single run.
+  * The public API is now fully type annotated.
+  * ``pytest>=6.2`` is now required.
+  * Properly handle empty and NaN values on
+    num_regression and dataframe_regression.
+  * New ``--with-test-class-names`` command-line flag to consider
+    test class names when composing the expected and obtained
+    data filenames. Needed when the same module contains
+    different classes with the same method names.
+  * New ``ndarrays_regression``, for comparing NumPy arrays with
+    arbitrary shape.
+  * Fix ``empty string bug`` on dataframe regression.
+- drop np_num-deprecated.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May  5 19:54:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

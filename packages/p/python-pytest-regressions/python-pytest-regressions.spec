@@ -18,21 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-regressions
-Version:        2.2.0
+Version:        2.4.2
 Release:        0
 License:        MIT
 Summary:        Python fixtures to write regression tests
 URL:            https://github.com/ESSS/pytest-regressions
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-regressions/pytest-regressions-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM np_num-deprecated.patch gh#ESSS/pytest-regressions#63 mcepl@suse.com
-# don't use deprecated np.* types
-Patch0:         np_num-deprecated.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.5.0}
+BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module matplotlib}
@@ -42,7 +39,7 @@ BuildRequires:  %{python_module pytest-datadir >= 1.2.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PyYAML
-Requires:       python-pytest >= 3.5.0
+Requires:       python-pytest >= 6.2.0
 Requires:       python-pytest-datadir >= 1.2.0
 Suggests:       python-matplotlib
 Suggests:       python-numpy
