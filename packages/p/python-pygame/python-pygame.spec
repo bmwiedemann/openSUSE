@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  xorg-x11
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  xorg-x11-fonts-100dpi
 BuildRequires:  xorg-x11-fonts-75dpi
@@ -54,6 +53,7 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11)
 Requires:       fontconfig
 Requires:       python-numpy

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  7 10:54:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Thu Feb 23 12:26:47 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.1.3:
