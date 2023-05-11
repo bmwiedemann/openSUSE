@@ -6266,4 +6266,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.3.1 &amp; fixed nfs &amp; fixed mmap</comment>
     <requestid>1084158</requestid>
   </revision>
+  <revision rev="689" vrev="2">
+    <srcmd5>51cfa57189d3415c25e7dc878e52c07d</srcmd5>
+    <version>6.3.1</version>
+    <time>1683801161</time>
+    <user>dimstar_suse</user>
+    <comment>disable more of lockdown &amp; small fixes</comment>
+    <requestid>1085678</requestid>
+  </revision>
 </revisionlist>

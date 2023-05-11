@@ -113,7 +113,7 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 Version:        6.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8a31779
+Release:        <RELEASE>.g78ee477
 %else
 Release:        0
 %endif
@@ -238,10 +238,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-8a31779f5544166bb801a03085764c84a737a62d
-Provides:       kernel-srchash-8a31779f5544166bb801a03085764c84a737a62d
+Provides:       kernel-%build_flavor-base-srchash-78ee4774aa1081a539cf0d8188072e4783bcf3b3
+Provides:       kernel-srchash-78ee4774aa1081a539cf0d8188072e4783bcf3b3
 # END COMMON DEPS
-Provides:       %name-srchash-8a31779f5544166bb801a03085764c84a737a62d
+Provides:       %name-srchash-78ee4774aa1081a539cf0d8188072e4783bcf3b3
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -377,7 +377,6 @@ NoSource:       113
 NoSource:       120
 NoSource:       121
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  aarch64
 %define kmp_target_cpu %_target_cpu
 %ifarch %ix86
@@ -866,6 +865,10 @@ if [ %CONFIG_MODULES = y ]; then
 	find %buildroot -name "*.ko" > kofiles.list
 	dwarfextract %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor -C kofiles.list || echo "dwarfextract failed ($?)"
     fi
+    expoline=arch/s390/lib/expoline/expoline.o
+    if test -f arch/s390/lib/expoline/expoline.o ; then
+	install -m 644 -D -t %rpm_install_dir/%cpu_arch_flavor/$(dirname $expoline) $expoline
+    fi
 %endif
 
     # Also put the resulting file in %rpm_install_dir/%cpu_arch/%build_flavor
@@ -1237,7 +1240,6 @@ fi
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 %endif
 %files -f kernel-main.files
-%defattr(-, root, root)
 
 %package extra
 Summary:        Kernel with 64kb PAGE_SIZE - Unsupported kernel modules
@@ -1303,7 +1305,6 @@ This package contains additional modules not supported by SUSE.
 %if %split_extra
 
 %files extra -f kernel-extra.files
-%defattr(-, root, root)
 %endif
 
 %if %split_extra && %split_optional
@@ -1367,7 +1368,6 @@ This package contains optional modules only for openSUSE Leap.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files optional -f kernel-optional.files
-%defattr(-, root, root)
 %endif
 
 %if "%CONFIG_KMSG_IDS" == "y"
@@ -1383,7 +1383,6 @@ kmsg message documentation comments.
 
 %source_timestamp
 %files man
-%defattr(-,root,root)
 /usr/share/man/man9/*
 %endif
 
@@ -1400,7 +1399,6 @@ from this package.
 
 %source_timestamp
 %files vdso
-%defattr(-,root,root)
 /%{?usrmerged:usr/}lib/modules/%kernelrelease-%build_flavor/vdso/
 %endif
 
@@ -1449,7 +1447,6 @@ fi
 relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/linux-obj/"%cpu_arch_flavor"
 
 %files devel -f kernel-devel.files
-%defattr(-,root,root)
 %dir /usr/src/linux-obj
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
@@ -1486,7 +1483,6 @@ static, unlike the %{patch_package}-<kernel-version>-flavor package names.
 
 %files %{livepatch}
 # rpmlint complains about empty packages, so lets own something
-%defattr(-, root, root)
 %dir %modules_dir
 %endif
 
@@ -1555,7 +1551,6 @@ nodes in the cluster can access the MD devices simultaneously.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files -n cluster-md-kmp-%build_flavor -f cluster-md-kmp.files
-%defattr(-, root, root)
 
 %package -n dlm-kmp-%build_flavor
 Summary:        DLM kernel modules
@@ -1604,7 +1599,6 @@ shared resources over the cluster.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files -n dlm-kmp-%build_flavor -f dlm-kmp.files
-%defattr(-, root, root)
 
 %package -n gfs2-kmp-%build_flavor
 Summary:        GFS2 kernel modules
@@ -1653,7 +1647,6 @@ GFS2 is Global Filesystem, a shared device filesystem.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files -n gfs2-kmp-%build_flavor -f gfs2-kmp.files
-%defattr(-, root, root)
 
 %package -n kselftests-kmp-%build_flavor
 Summary:        Kernel sefltests
@@ -1717,7 +1710,6 @@ environments, they are not intended to be run on production systems.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files -n kselftests-kmp-%build_flavor -f kselftests-kmp.files
-%defattr(-, root, root)
 
 %package -n ocfs2-kmp-%build_flavor
 Summary:        OCFS2 kernel modules
@@ -1767,7 +1759,6 @@ accessible simultaneously from multiple nodes of a cluster.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
-%defattr(-, root, root)
 
 %package -n reiserfs-kmp-%build_flavor
 Summary:        Reiserfs kernel module
@@ -1816,7 +1807,6 @@ provides the reiserfs module for the installation system.
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 
 %files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
-%defattr(-, root, root)
 
 %endif # %CONFIG_SUSE_KERNEL_SUPPORTED
 %endif # %CONFIG_MODULES

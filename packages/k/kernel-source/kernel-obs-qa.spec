@@ -29,16 +29,12 @@ BuildRequires:  kernel-default
 BuildRequires:  kernel-obs-build
 BuildRequires:  modutils
 ExclusiveArch:  aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
-%if 0%{?suse_version} < 1200
-# for SLE 11
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
 Version:        6.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8a31779
+Release:        <RELEASE>.g78ee477
 %else
 Release:        0
 %endif
@@ -71,7 +67,6 @@ mkdir -p %{buildroot}/usr/share/%name
 touch %{buildroot}/usr/share/%name/logfile
 
 %files
-%defattr(-,root,root)
 /usr/share/%name
 
 %changelog

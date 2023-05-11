@@ -33,7 +33,7 @@ License:        GPL-2.0-only
 Group:          Documentation/Man
 Version:        6.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8a31779
+Release:        <RELEASE>.g78ee477
 %else
 Release:        0
 %endif
@@ -67,9 +67,8 @@ BuildRequires:  texlive-zapfding
 %endif
 URL:            https://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-8a31779f5544166bb801a03085764c84a737a62d
+Provides:       %name-srchash-78ee4774aa1081a539cf0d8188072e4783bcf3b3
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
@@ -264,7 +263,6 @@ done
 %endif
 
 %files
-%defattr(-,root,root)
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 %doc COPYING
 %else
@@ -274,7 +272,6 @@ done
 
 %if %build_pdf
 %files pdf
-%defattr(-,root,root)
 %dir %{_datadir}/doc/kernel
 %docdir %{_datadir}/doc/kernel/pdf
 %{_datadir}/doc/kernel/pdf
@@ -282,7 +279,6 @@ done
 
 %if %build_html
 %files html
-%defattr(-,root,root)
 %dir %{_datadir}/doc/kernel
 %docdir %{_datadir}/doc/kernel/html
 %{_datadir}/doc/kernel/html

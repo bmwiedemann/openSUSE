@@ -27,7 +27,7 @@ Group:          Development/Sources
 Version:        6.3.1
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8a31779
+Release:        <RELEASE>.g78ee477
 %else
 Release:        0
 %endif
@@ -52,11 +52,10 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-8a31779f5544166bb801a03085764c84a737a62d
+Provides:       %name-srchash-78ee4774aa1081a539cf0d8188072e4783bcf3b3
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
 Prefix:         /usr/src
 
@@ -81,7 +80,6 @@ package dependencies.
 install -m 644 -D %{SOURCE0} %buildroot/%_docdir/%name/README.SUSE
 
 %files
-%defattr(-, root, root)
 %dir %_docdir/%name
 %_docdir/%name/README.SUSE
 

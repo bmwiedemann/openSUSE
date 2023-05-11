@@ -32,7 +32,7 @@
 Name:           kernel-source
 Version:        6.3.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8a31779
+Release:        <RELEASE>.g78ee477
 %else
 Release:        0
 %endif
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-8a31779f5544166bb801a03085764c84a737a62d
+Provides:       %name-srchash-78ee4774aa1081a539cf0d8188072e4783bcf3b3
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -303,16 +303,13 @@ relink linux-%kernelrelease%variant /usr/src/linux%variant
 relink linux-%kernelrelease%variant /usr/src/linux%variant
 
 %files -f nondevel.files
-%defattr(-, root, root)
 
 %files -n kernel-devel%variant -f devel.files
-%defattr(-,root,root)
 %ghost /usr/src/linux%variant
 %doc /usr/share/doc/packages/*
 
 %if "%variant" == ""
 %files -n kernel-macros
-%defattr(-,root,root)
 %{_rpmmacrodir}/macros.kernel-source
 /usr/lib/rpm/kernel-*-subpackage
 %dir /usr/lib/rpm/kernel
@@ -323,7 +320,6 @@ relink linux-%kernelrelease%variant /usr/src/linux%variant
 %if %do_vanilla
 
 %files vanilla
-%defattr(-, root, root)
 /usr/src/linux-%kernelrelease-vanilla
 %endif
 
