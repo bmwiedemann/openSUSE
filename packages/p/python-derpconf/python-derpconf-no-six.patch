@@ -1,0 +1,98 @@
+Index: derpconf-0.8.3/debian/control
+===================================================================
+--- derpconf-0.8.3.orig/debian/control
++++ derpconf-0.8.3/debian/control
+@@ -13,7 +13,6 @@ Build-Depends: debhelper (>= 9),
+                python-coverage,
+                python-colorama,
+                python-tox,
+-               python-six
+ X-Python-Version: >= 2.6
+ Homepage: https://github.com/globocom/derpconf
+ Vcs-Git: git://github.com/globocom/derpconf.git
+@@ -21,7 +20,7 @@ Vcs-Browser: https://github.com/globocom
+ 
+ Package: python-derpconf
+ Architecture: all
+-Depends: ${misc:Depends}, ${python:Depends}, python-six
++Depends: ${misc:Depends}, ${python:Depends}
+ Provides: ${python:Provides}
+ Description: Python module to abstract loading configuration files for your app
+  Abstracts loading configuration files for your app.
+Index: derpconf-0.8.3/derpconf/config.py
+===================================================================
+--- derpconf-0.8.3.orig/derpconf/config.py
++++ derpconf-0.8.3/derpconf/config.py
+@@ -15,7 +15,6 @@ from collections import defaultdict
+ from os.path import join, exists, abspath, dirname, isdir
+ import imp
+ 
+-import six
+ from textwrap import fill
+ 
+ 
+@@ -96,7 +95,7 @@ class Config(object):
+             code = config_file.read()
+             module = imp.new_module(name)
+ 
+-            six.exec_(code, module.__dict__)
++            exec(code, module.__dict__)
+ 
+             conf.config_file = path
+ 
+@@ -120,7 +119,7 @@ class Config(object):
+             code = config_file.read()
+             module = imp.new_module(name)
+ 
+-            six.exec_(code, module.__dict__)
++            exec(code, module.__dict__)
+ 
+             conf = cls(defaults=[])
+ 
+@@ -310,7 +309,7 @@ def format_tuple(value, tabs=0):
+ 
+ 
+ def format_value(value):
+-    if isinstance(value, six.string_types):
++    if isinstance(value, str):
+         return "'%s'" % value
+ 
+     if isinstance(value, (tuple, list, set)):
+Index: derpconf-0.8.3/requirements.txt
+===================================================================
+--- derpconf-0.8.3.orig/requirements.txt
++++ derpconf-0.8.3/requirements.txt
+@@ -3,4 +3,3 @@ pyVows
+ coverage
+ colorama
+ tox
+-six
+Index: derpconf-0.8.3/setup.py
+===================================================================
+--- derpconf-0.8.3.orig/setup.py
++++ derpconf-0.8.3/setup.py
+@@ -18,7 +18,6 @@ tests_require = [
+     'coverage',
+     'colorama',
+     'tox',
+-    'six',
+ ]
+ 
+ 
+@@ -47,7 +46,6 @@ def run_setup(extension_modules=[]):
+         packages=['derpconf'],
+         package_dir={"derpconf": "derpconf"},
+         install_requires=[
+-            'six',
+         ],
+ 
+         extras_require={
+Index: derpconf-0.8.3/tox.ini
+===================================================================
+--- derpconf-0.8.3.orig/tox.ini
++++ derpconf-0.8.3/tox.ini
+@@ -13,4 +13,3 @@ deps =
+     pyVows
+     coverage
+     colorama
+-    six

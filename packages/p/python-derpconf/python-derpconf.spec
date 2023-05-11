@@ -1,7 +1,7 @@
 #
 # spec file for package python-derpconf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-derpconf
 Version:        0.8.3
 Release:        0
@@ -25,12 +24,12 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/globocom/derpconf
 Source:         https://github.com/globocom/derpconf/archive/v%{version}.tar.gz#/derpconf-%{version}.tar.gz
+# https://github.com/globocom/derpconf/issues/26
+Patch0:         python-derpconf-no-six.patch
 BuildRequires:  %{python_module pyVows}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,9 +37,10 @@ BuildArch:      noarch
 derpconf abstracts loading configuration files for your app.
 
 %prep
-%setup -q -n derpconf-%{version}
+%autosetup -p1 -n derpconf-%{version}
 
 %build
+sed -i '1{/^#!/ d}' derpconf/*.py
 %python_build
 
 %install
@@ -53,6 +53,6 @@ derpconf abstracts loading configuration files for your app.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/derpconf*
 
 %changelog
