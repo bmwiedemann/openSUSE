@@ -1353,7 +1353,7 @@ Prefer: libqca-qt5-2 qca-qt5-plugins
 Prefer: -xaw3dd -amanda
 Prefer: libgcc_s1 libgcc_s1-32bit libgcc_s1-64bit
 Prefer: libffi-devel
-Prefer: libatomic1 libitm1 liblsan0 libtsan0 libubsan0
+Prefer: libatomic1 libitm1 liblsan0 libtsan0 libubsan0 -libtsan0-gcc11
 Prefer: libatomic1-32bit libcilkrts5-32bit libitm1-32bit libubsan0-32bit
 Prefer: libgomp1 libgomp1-32bit libgomp1-64bit
 Prefer: libobjc4 libquadmath0
