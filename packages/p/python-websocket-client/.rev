@@ -206,4 +206,19 @@
     <comment></comment>
     <requestid>1082398</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dc9454bfb615365275e87e74238b8796</srcmd5>
+    <version>1.5.1</version>
+    <time>1683801095</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Fix logic bug that can cause disconnects
+  * Refactor and improve ping/pong logic to resolve several
+    issues, including an infinite loop issue during reconnect
+  * Fix issue where `skip_utf8_validation = True` is ignored
+  * Fix issue where sslopt `is_ssl` is ignored
+  * Downgrade &quot;websocket connected&quot; message from logging.warning
+    to logging.info</comment>
+    <requestid>1085984</requestid>
+  </revision>
 </revisionlist>
