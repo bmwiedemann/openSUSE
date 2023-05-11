@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May  9 19:14:20 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Chromium 113.0.5672.92 (boo#1211211)
+- Multiple security fixes (boo#1211036):
+  * CVE-2023-2459: Inappropriate implementation in Prompts
+  * CVE-2023-2460: Insufficient validation of untrusted input in Extensions
+  * CVE-2023-2461: Use after free in OS Inputs
+  * CVE-2023-2462: Inappropriate implementation in Prompts
+  * CVE-2023-2463: Inappropriate implementation in Full Screen Mode
+  * CVE-2023-2464: Inappropriate implementation in PictureInPicture
+  * CVE-2023-2465: Inappropriate implementation in CORS
+  * CVE-2023-2466: Inappropriate implementation in Prompts
+  * CVE-2023-2467: Inappropriate implementation in Prompts
+  * CVE-2023-2468: Inappropriate implementation in PictureInPicture
+- drop chromium-94-sql-no-assert.patch
+- drop no-location-leap151.patch
+- add chromium-113-webview-namespace.patch
+- add chromium-113-webauth-include-variant.patch
+- add chromium-113-typename.patch
+- add chromium-113-workaround_clang_bug-structured_binding.patch
+
+-------------------------------------------------------------------
 Wed Apr 19 19:55:51 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Chromium 112.0.5615.165 (boo#1210618):

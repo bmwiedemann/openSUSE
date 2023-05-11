@@ -79,7 +79,7 @@
 %define ffmpeg_version 58
 %endif
 Name:           chromium
-Version:        112.0.5615.165
+Version:        113.0.5672.92
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -107,8 +107,6 @@ Patch5:         chromium-system-libusb.patch
 Patch6:         gcc-enable-lto.patch
 # Do not use unrar code, it is non-free
 Patch7:         chromium-norar.patch
-# revert location on old GCC on 15.1, 15.2 gets it right tho
-Patch8:         no-location-leap151.patch
 Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
@@ -118,7 +116,6 @@ Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch63:        chromium-ffmpeg-lp152.patch
-Patch65:        chromium-94-sql-no-assert.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
@@ -134,6 +131,10 @@ Patch208:       chromium-icu72-2.patch
 Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
 Patch213:       chromium-112-default-comparison-operators.patch
+Patch214:       chromium-113-webview-namespace.patch
+Patch215:       chromium-113-webauth-include-variant.patch
+Patch216:       chromium-113-typename.patch
+Patch217:       chromium-113-workaround_clang_bug-structured_binding.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -613,7 +614,7 @@ keeplibs=(
     third_party/x11proto
     third_party/xcbproto
     third_party/xnnpack
-    third_party/zlib/google
+    third_party/zlib
     third_party/zxcvbn-cpp
     url/third_party/mozilla
     v8/src/third_party/siphash
@@ -746,7 +747,7 @@ gn_system_libraries=(
     opus
     re2
     snappy
-    zlib
+#    zlib (broken since 113.0.5672.63)
 )
 %if %{with system_harfbuzz}
 gn_system_libraries+=(

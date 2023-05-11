@@ -1,0 +1,38 @@
+diff -up chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.cc.me chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.cc
+--- chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.cc.me	2023-05-03 17:46:37.194000834 +0200
++++ chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.cc	2023-05-03 17:48:05.170317575 +0200
+@@ -87,7 +87,7 @@ ItemSortKey GetSortKey(const Item& item)
+ // Helper to get an iterator to the last element in the cache. The cache
+ // must not be empty.
+ template <typename Item>
+-SortedItems<Item>::iterator GetLastIter(SortedItems<Item>& cache) {
++typename SortedItems<Item>::iterator GetLastIter(SortedItems<Item>& cache) {
+   CHECK(!cache.empty());
+   auto it = cache.end();
+   return std::prev(it);
+@@ -789,9 +789,9 @@ bool DownloadBubbleUpdateService::Remove
+ }
+ 
+ template <typename Id, typename Item>
+-SortedItems<Item>::iterator
++typename SortedItems<Item>::iterator
+ DownloadBubbleUpdateService::RemoveItemFromCacheByIter(
+-    SortedItems<Item>::iterator iter,
++    typename SortedItems<Item>::iterator iter,
+     SortedItems<Item>& cache,
+     IterMap<Id, Item>& iter_map) {
+   CHECK(iter != cache.end());
+diff -up chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.h.me chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.h
+--- chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.h.me	2023-05-03 17:48:14.079551820 +0200
++++ chromium-113.0.5672.63/chrome/browser/download/bubble/download_bubble_update_service.h	2023-05-03 17:49:24.702387180 +0200
+@@ -208,8 +208,8 @@ class DownloadBubbleUpdateService
+ 
+   // Removes item if we already have the iterator to it. Returns next iterator.
+   template <typename Id, typename Item>
+-  SortedItems<Item>::iterator RemoveItemFromCacheByIter(
+-      SortedItems<Item>::iterator iter,
++  typename SortedItems<Item>::iterator RemoveItemFromCacheByIter(
++      typename SortedItems<Item>::iterator iter,
+       SortedItems<Item>& cache,
+       IterMap<Id, Item>& iter_map);
+ 
