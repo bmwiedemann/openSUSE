@@ -1,7 +1,7 @@
 #
 # spec file for package python-cracklib
 #
-# Copyright (c) 2017 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,24 +11,23 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 Name:           python-cracklib
-Version:        2.9.3
+Version:        2.9.6
 Release:        0
-Url:            http://cracklib.sourceforge.net/
 Summary:        A CPython extension module wrapping the libcrack library
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
+URL:            https://github.com/cracklib/cracklib
 Source:         https://files.pythonhosted.org/packages/source/c/cracklib/cracklib-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:	python-rpm-macros
 BuildRequires:  cracklib-devel
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
@@ -41,13 +40,12 @@ convenience functions.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build 
+%python_build
 
 %install
 %python_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %{python_sitearch}/*
 
 %changelog
