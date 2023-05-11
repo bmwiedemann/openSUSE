@@ -246,4 +246,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1069742</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dbbd5bae658958fd3e230b91835932d6</srcmd5>
+    <version>20230510.00</version>
+    <time>1683808922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230510.00
+  * Fix dependencies after updating go ver to 1.17 (#211)
+  * Update Go version (#210)
+- from version 20230426.00
+  * Fix compilation directives (#207)
+- from version 20230403.00
+  * Mod update (#205)
+  * Update mod: update golang.org/x/net to
+    0.8.0 and its dependencies (#204) (forwarded request 1086180 from glaubitz)</comment>
+    <requestid>1086497</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 11 07:04:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230510.00
+  * Fix dependencies after updating go ver to 1.17 (#211)
+  * Update Go version (#210)
+- from version 20230426.00
+  * Fix compilation directives (#207)
+- from version 20230403.00
+  * Mod update (#205)
+  * Update mod: update golang.org/x/net to
+    0.8.0 and its dependencies (#204)
+
+-------------------------------------------------------------------
 Mon Feb 27 20:03:53 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Bump go API version to 1.18 (bsc#1208723)
