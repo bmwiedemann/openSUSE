@@ -25,10 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pyfakefs%{psuffix}
-Version:        5.0.0
+Version:        5.2.2
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0

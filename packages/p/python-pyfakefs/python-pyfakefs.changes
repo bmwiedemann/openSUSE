@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed May 10 07:06:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.2:
+  * Made the user and group IDs accessible via dedicated
+    ``get_uid`` and ``get_gid`` functions
+    (for symmetry to ``set_uid`` / ``set_gid``)
+  * The test fixture is now included in the source distribution
+    and installed with the package.
+  * Some public constants in `fake_filesystem` that had been
+    moved to `helpers` are made accessible from there again
+  * Add missing fake implementations for `os.getuid` and
+    `os.getgid` (Posix only)
+  * Make sure a `/tmp` path exists under linux (`TMPDIR` may
+    point elsewhere)
+  * Support for latest Python 3.12 version.
+  * Properties defining the capabilities of some `os` functions
+    like `os.supports_follow_symlinks` are now properly faked to
+    contain the fake functions if the real functions are faked
+  * Supports current Python 3.12 version (alpha 6). We plan to
+    make patch releases in case of breaking changes in alpha
+    or beta versions.
+  * Fake module classes previously defined in `fake_filesystem`
+    have now moved to their own modules: `fake_os.FakeOsModule`,
+    `fake_path.FakePathModule`, `fake_io.FakeIoModule` and 
+    `fake_open.FakeFileOpen`.
+  * Patching of parsers for pandas >= 1.2 is removed since pandas
+    now uses Python fs functions internally even when the engine
+    selected is "c".
+  * added possibility to set a path inaccessible under Windows by
+    using `chown()` with the `force_unix_mode` flag (see #720)
+  * added class level setup method `setUpClassPyfakefs` for
+    unittest and class-scoped
+  * fixture `fs_class` for pytest (see #752)
+  * added experimental support for Python 3.12: added fake APIs
+    for Windows junction support. These are not implemented and
+    always return `False`.
+  * added Python 3.12 to the test suite.
+  * migrated to setuptools declarative syntax.
+  * fixed docker tests when running on branches containing
+    forward slashes
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
