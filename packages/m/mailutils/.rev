@@ -281,4 +281,16 @@
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055710 from lnussel)</comment>
     <requestid>1057031</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f038d18e74c47813bcb8939e1f3b6fe7</srcmd5>
+    <version>3.16</version>
+    <time>1683801090</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.16:
+  * Support for Berkeley DB version 2 withdrawn
+  * rdcache streams: fix stream size computation
+  * tlsfdstr streams: fix error handling
+  * wordwrap streams: fix handling of overflowing lines (forwarded request 1085238 from dirkmueller)</comment>
+    <requestid>1085972</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  6 01:21:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.16:
+  * Support for Berkeley DB version 2 withdrawn
+  * rdcache streams: fix stream size computation
+  * tlsfdstr streams: fix error handling
+  * wordwrap streams: fix handling of overflowing lines
+
+-------------------------------------------------------------------
 Tue Dec 27 13:09:17 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

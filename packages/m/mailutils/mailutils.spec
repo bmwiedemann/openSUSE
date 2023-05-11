@@ -1,7 +1,7 @@
 #
 # spec file for package mailutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with     set_user_identity
 %bcond_with     guile_22
 Name:           mailutils
-Version:        3.15
+Version:        3.16
 Release:        0
 Summary:        GNU Mailutils
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
