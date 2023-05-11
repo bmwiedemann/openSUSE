@@ -1,4 +1,4 @@
-From c0677d7b69ad304727df96351c557d82e43bd69c Mon Sep 17 00:00:00 2001
+From 2c828bf5d4a0332ecece29e4513ae4b0a4a78d08 Mon Sep 17 00:00:00 2001
 From: q66 <daniel@octaforge.org>
 Date: Mon, 3 Apr 2023 14:36:51 +0200
 Subject: [PATCH] Fix scrolling on big endian platforms
@@ -10,17 +10,19 @@ Qt 6 switched to the array of 4*CARD8 representation, but that change is rather
 complex for a backport but fortunately also not needed because 5.x only uses
 32 bits. Use a little-endian CARD32 to have the same effect as 4*CARD8.
 
-The diff is from https://github.com/void-linux/void-packages/pull/13901,
-which is assumed to be the original source. Patch header and description
-are from Fabian Vogt <fvogt@suse.de>.
+The initial diff is from https://github.com/void-linux/void-packages/pull/13901,
+which is assumed to be the original source.
+
+Fabian Vogt <fvogt@suse.de> added a patch header, description and also fixed
+QXcbConnection::xi2SetMouseGrabEnabled.
 
 Fixes: https://bugreports.qt.io/browse/QTBUG-105157
 ---
- src/plugins/platforms/xcb/qxcbconnection_xi2.cpp | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ src/plugins/platforms/xcb/qxcbconnection_xi2.cpp | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
-index 27a2526df..a21e38a69 100644
+index 27a2526df..cda10b39a 100644
 --- a/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
 +++ b/src/plugins/platforms/xcb/qxcbconnection_xi2.cpp
 @@ -43,6 +43,7 @@
@@ -75,6 +77,15 @@ index 27a2526df..a21e38a69 100644
              i++;
          }
          xcb_input_xi_select_events(xcb_connection(), window, i, &(xiEventMask.data()->header));
+@@ -826,6 +828,8 @@ bool QXcbConnection::xi2SetMouseGrabEnabled(xcb_window_t w, bool grab)
+                 | XCB_INPUT_XI_EVENT_MASK_TOUCH_UPDATE
+                 | XCB_INPUT_XI_EVENT_MASK_TOUCH_END;
+ 
++        mask = qToLittleEndian(mask);
++
+         for (int id : qAsConst(m_xiMasterPointerIds)) {
+             xcb_generic_error_t *error = nullptr;
+             auto cookie = xcb_input_xi_grab_device(xcb_connection(), w, XCB_CURRENT_TIME, XCB_CURSOR_NONE, id,
 -- 
-2.40.0
+2.40.1
 
