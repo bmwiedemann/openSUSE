@@ -37,6 +37,7 @@ Source7:        pathfinder.desktop
 Patch1:         fox16-remove_date_from_reswrap.patch
 # PATCH-FIX-UPSTREAM add closing html tag
 Patch2:         fox-1.6.26-missing_html_tag.patch
+BuildRequires:  cups-devel
 BuildRequires:  doxygen
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
@@ -45,42 +46,14 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glu)
-#
-# SUSE requires
-#
-%if 0%{?suse_version}
-BuildRequires:  cups-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi)
-%endif
-#
-# Mandriva Requires
-#
-%if 0%{?mandriva_version}
-BuildRequires:  cups
-BuildRequires:  cups-common
-BuildRequires:  libmesaglu-devel
-BuildRequires:  libxext-devel
-BuildRequires:  libxft-devel
-BuildRequires:  xorg-x11
-%endif
-#
-# Fedora Requires
-#
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
-BuildRequires:  cups-devel
-BuildRequires:  libGLU-devel
-BuildRequires:  libXext-devel
-BuildRequires:  libXft-devel
-BuildRequires:  libXi-devel
-BuildRequires:  xorg-x11-devel
-%endif
 
 %description
 FOX is a C++-based library for graphical user interface development.
@@ -103,10 +76,6 @@ Obsoletes:      libfox1_6 < %{version}
 This package contains the shared libraries needed
 by applications compiled with the FOX GUI Toolkit.
 
-%if 0%{?centos_version} >= 800
-%global debug_package %{nil}
-%endif
-
 %package devel
 Summary:        Development Files and Documentation for the FOX GUI Toolkit 1.6
 Group:          Development/Languages/C and C++
@@ -114,43 +83,29 @@ Requires:       %{lname} = %{version}
 Requires:       bzip2
 Requires:       cups-devel
 Requires:       cups-libs
-Requires:       fontconfig-devel
-Requires:       freetype2-devel
 Requires:       glibc-devel
+Provides:       fox-devel = %{version}-%{release}
+
+Requires:       expat
+# lots of -l hardcoded in fox.pc without pkgconfig-level Requires tags
+Requires:       libbz2-devel
+Requires:       libexpat-devel
 Requires:       libjpeg-devel
 Requires:       libpng-devel
 Requires:       libtiff-devel
-Requires:       xorg-x11-devel
 Requires:       zlib-devel
-Provides:       fox-devel = %{version}-%{release}
+Requires:       pkgconfig(fontconfig)
+Requires:       pkgconfig(freetype2)
+Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
-#
-# SUSE requires
-#
-%if 0%{?suse_version}
-Requires:       expat
-Requires:       libbz2-devel
-Requires:       libexpat-devel
-Requires:       xorg-x11-Mesa-devel
-Requires:       xorg-x11-libX11-devel
-Requires:       xorg-x11-libXau-devel
-Requires:       xorg-x11-libXdmcp-devel
-Requires:       xorg-x11-libXext-devel
-Requires:       xorg-x11-libXfixes-devel
-Requires:       xorg-x11-libXrender-devel
-%endif
-#
-# Fedora Requires
-#
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?scientificlinux_version}
-Requires:       bzip2-devel
-Requires:       cups-devel
-Requires:       libGLU-devel
-Requires:       libXext-devel
-Requires:       libXft-devel
-Requires:       libXi-devel
-Requires:       xorg-x11-devel
-%endif
+Requires:       pkgconfig(x11)
+Requires:       pkgconfig(xcursor)
+Requires:       pkgconfig(xext)
+Requires:       pkgconfig(xft)
+Requires:       pkgconfig(xi)
+Requires:       pkgconfig(xproto)
+Requires:       pkgconfig(xrandr)
+Requires:       pkgconfig(xrender)
 
 %description devel
 FOX is a C++-based library for graphical user interface development.
@@ -201,17 +156,10 @@ applications, including:
 * PathFinder : File Browser
 
 %prep
-%setup -q -n fox-%{version}
-%patch1
-%patch2
+%autosetup -p0 -n fox-%{version}
 
 %build
 autoreconf -fi
-%if 0%{?centos_version} >= 800
-export CFLAGS="%optflags -fPIC"
-export CXXFLAGS="%optflags -fPIC"
-export LDFLAGS="-fPIC"
-%endif
 %configure  \
     --enable-threadsafe \
     --enable-release \
@@ -224,9 +172,6 @@ export LDFLAGS="-fPIC"
     --with-opengl \
     --with-shape \
     --with-xshm \
-%if 0%{?mandriva_version}
-    --with-opengl="no" \
-%endif
     --without-profiling
 make %{?_smp_mflags}
 
@@ -245,7 +190,6 @@ if [ -d %{buildroot}%{_datadir}/doc/fox-1.6 ]; then
 fi
 install -m644 ADDITIONS AUTHORS LICENSE* README TRACING index.html %{buildroot}%{_defaultdocdir}/%{name}/
 # install desktop files for example applications
-%if 0%{?suse_version}
 mkdir -p %{buildroot}%{_datadir}/{applications,pixmaps}
 install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/
 install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/
@@ -256,7 +200,6 @@ install -m 644 %{SOURCE7} %{buildroot}%{_datadir}/applications/
 %suse_update_desktop_file calculator
 %suse_update_desktop_file pathfinder
 %suse_update_desktop_file adie
-%endif
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -295,10 +238,8 @@ test -f %{_mandir}/man1/reswrap.1.gz || ln -s reswrap16.1.gz %{_mandir}/man1/res
 %{_bindir}/PathFinder
 %{_bindir}/calculator
 %{_bindir}/shutterbug
-%if 0%{?suse_version}
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
-%endif
 %{_mandir}/man1/adie*
 %{_mandir}/man1/calculator*
 %{_mandir}/man1/PathFinder*

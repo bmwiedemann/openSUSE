@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 10 20:10:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove non-SUSE fragments, there is no build enabled for
+  those targets anyway. Replace more -devel by pkgconfig(...).
+
+-------------------------------------------------------------------
 Sun May  7 10:39:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace xorg-x11-devel by pkgconfig(...)
