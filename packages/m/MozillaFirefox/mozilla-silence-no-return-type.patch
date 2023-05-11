@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  6bace0b1d6e9c82e8d3f557cac1a4bcc10ec9c13
+# Parent  2f49ea20acb4b0e890ae49f4833ac9d69b7e800c
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2370,18 +2370,16 @@ name = "glsl-to-cxx"
+@@ -2254,18 +2254,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,24 +26,24 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -161,16 +161,17 @@ chardetng_c = { git = "https://github.co
+@@ -157,16 +157,17 @@ chardetng = { git = "https://github.com/
+ chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
  firefox-on-glean = { path = "toolkit/components/glean/api" }
  libudev-sys = { path = "dom/webauthn/libudev-sys" }
  packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/packed_simd", rev="412f9a0aa556611de021bde89dee8fefe6e0fbbd" }
  midir = { git = "https://github.com/mozilla/midir.git", rev = "519e651241e867af3391db08f9ae6400bc023e18" }
- minidump-writer = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "7d76616d27b9dc87fe3a94639b8b4f947d52a6aa" }
  # warp 0.3.3 + https://github.com/seanmonstar/warp/pull/1007
  warp = { git = "https://github.com/glandium/warp", rev = "4af45fae95bc98b0eba1ef0db17e1dac471bb23d" }
 +glslopt = { path = "third_party/rust/glslopt/" }
  
- cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "b196a164dcbb317016d4aa6c58c13147e6045ebb" }
+ cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "45bc47e2bcb846f1efb5aea156be5fe7d18624bf" }
  
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
- sync15 = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
- tabs = { git = "https://github.com/mozilla/application-services", rev = "fe2867dbe82a2aaa85a856648107be94b1534683" }
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
+ sync15 = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
+ tabs = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -2204,7 +2204,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -1982,16 +1983,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1989,16 +1990,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:

@@ -6173,4 +6173,41 @@
     <comment></comment>
     <requestid>1085402</requestid>
   </revision>
+  <revision rev="397" vrev="1">
+    <srcmd5>4e1287dda98457a8930db0a8d75587df</srcmd5>
+    <version>113.0</version>
+    <time>1683801097</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 113.0
+  * https://www.mozilla.org/en-US/firefox/113.0/releasenotes
+  MFSA 2023-16 (bsc#1211175)
+  * CVE-2023-32205 (bmo#1753339, bmo#1753341)
+    Browser prompts could have been obscured by popups
+  * CVE-2023-32206 (bmo#1824892)
+    Crash in RLBox Expat driver
+  * CVE-2023-32207 (bmo#1826116)
+    Potential permissions request bypass via clickjacking
+  * CVE-2023-32208 (bmo#1646034)
+    Leak of script base URL in service workers via import()
+  * CVE-2023-32209 (bmo#1767194)
+    Persistent DoS via favicon image
+  * CVE-2023-32210 (bmo#1776755)
+    Incorrect principal object ordering
+  * CVE-2023-32211 (bmo#1823379)
+    Content process crash due to invalid wasm code
+  * CVE-2023-32212 (bmo#1826622)
+    Potential spoof due to obscured address bar
+  * CVE-2023-32213 (bmo#1826666)
+    Potential memory corruption in FileReader::DoReadData()
+  * MFSA-TMP-2023-0002 (bmo#1814560, bmo#1814790, bmo#1819796)
+    Race condition in dav1d decoding
+  * CVE-2023-32214 (bmo#1828716)
+    Potential DoS via exposed protocol handlers
+  * CVE-2023-32215 (bmo#1540883, bmo#1751943, bmo#1814856, bmo#1820210,
+    bmo#1821480, bmo#1827019, bmo#1827024, bmo#1827144, bmo#1827359,
+    bmo#1830186)
+    Memory safety bugs fixed in Firefox 113 and Firefox ESR 102.11
+  * CVE-2023-32216 (bmo#1746479, bmo#1806852, bmo#1815987,</comment>
+    <requestid>1085989</requestid>
+  </revision>
 </revisionlist>

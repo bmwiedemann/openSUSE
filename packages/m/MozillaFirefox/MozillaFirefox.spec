@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          112
-%define mainver        %major.0.2
-%define orig_version   112.0.2
+%define major          113
+%define mainver        %major.0
+%define orig_version   113.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -220,20 +220,19 @@ Patch6:         mozilla-s390-context.patch
 Patch7:         mozilla-pgo.patch
 Patch8:         mozilla-reduce-rust-debuginfo.patch
 Patch9:         mozilla-bmo1005535.patch
-Patch10:        mozilla-bmo1568145.patch
-Patch11:        mozilla-bmo1504834-part1.patch
-Patch13:        mozilla-bmo1504834-part3.patch
-Patch14:        mozilla-bmo1512162.patch
-Patch15:        mozilla-fix-top-level-asm.patch
-Patch17:        mozilla-bmo849632.patch
-Patch18:        mozilla-bmo998749.patch
-Patch20:        mozilla-s390x-skia-gradient.patch
-Patch21:        mozilla-libavcodec58_91.patch
-Patch22:        mozilla-silence-no-return-type.patch
-Patch23:        mozilla-bmo531915.patch
-Patch25:        one_swizzle_to_rule_them_all.patch
-Patch26:        svg-rendering.patch
-Patch27:        mozilla-buildfixes.patch
+Patch10:        mozilla-bmo1504834-part1.patch
+Patch11:        mozilla-bmo1504834-part3.patch
+Patch12:        mozilla-bmo1512162.patch
+Patch13:        mozilla-fix-top-level-asm.patch
+Patch14:        mozilla-bmo849632.patch
+Patch15:        mozilla-bmo998749.patch
+Patch16:        mozilla-s390x-skia-gradient.patch
+Patch17:        mozilla-libavcodec58_91.patch
+Patch18:        mozilla-silence-no-return-type.patch
+Patch19:        mozilla-bmo531915.patch
+Patch20:        one_swizzle_to_rule_them_all.patch
+Patch21:        svg-rendering.patch
+Patch22:        mozilla-buildfixes.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch

@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  b6b4d42b51c6a815116505bf7e9b34a5e2f0c65b
+# Parent  4f8492f0f4bfa17f5b4523a1cdda15a45e3d74d3
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,7 +13,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -90,16 +90,17 @@
+@@ -91,16 +91,17 @@
  #include "plstr.h"
  #include "prdtoa.h"
  #include "prlink.h"
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4908,16 +4909,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4907,16 +4908,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4982,17 +4994,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4981,17 +4993,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -105,7 +105,7 @@ diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/chrome/flags.py
 --- a/python/mozbuild/mozpack/chrome/flags.py
 +++ b/python/mozbuild/mozpack/chrome/flags.py
-@@ -228,16 +228,17 @@ class Flags(OrderedDict):
+@@ -229,16 +229,17 @@ class Flags(OrderedDict):
          "os": StringFlag,
          "osversion": VersionFlag,
          "abi": StringFlag,
@@ -126,7 +126,7 @@ diff --git a/python/mozbuild/mozpack/chrome/flags.py b/python/mozbuild/mozpack/c
 diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpack/chrome/manifest.py
 --- a/python/mozbuild/mozpack/chrome/manifest.py
 +++ b/python/mozbuild/mozpack/chrome/manifest.py
-@@ -37,16 +37,17 @@ class ManifestEntry(object):
+@@ -38,16 +38,17 @@ class ManifestEntry(object):
          "os",
          "osversion",
          "abi",
@@ -749,14 +749,14 @@ new file mode 100644
 diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandler/HandlerServiceParent.cpp
 --- a/uriloader/exthandler/HandlerServiceParent.cpp
 +++ b/uriloader/exthandler/HandlerServiceParent.cpp
-@@ -7,17 +7,17 @@
- #include "mozilla/ipc/ProtocolUtils.h"
- #include "mozilla/Logging.h"
- #include "HandlerServiceParent.h"
- #include "nsIHandlerService.h"
- #include "nsIMIMEInfo.h"
+@@ -13,17 +13,17 @@
  #include "ContentHandlerService.h"
+ #include "nsIExternalProtocolService.h"
  #include "nsStringEnumerator.h"
+ #include "nsIMutableArray.h"
+ #include "nsCExternalHandlerService.h"
+ #include "nsComponentManagerUtils.h"
+ #include "nsServiceManagerUtils.h"
  #ifdef MOZ_WIDGET_GTK
 -#  include "unix/nsGNOMERegistry.h"
 +#  include "unix/nsCommonRegistry.h"
@@ -768,7 +768,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  using mozilla::dom::RemoteHandlerApp;
  
  namespace {
-@@ -300,17 +300,17 @@ mozilla::ipc::IPCResult HandlerServicePa
+@@ -306,17 +306,17 @@ mozilla::ipc::IPCResult HandlerServicePa
      const nsACString& aProtocolScheme, bool* aHandlerExists) {
    if (aProtocolScheme.Length() > MAX_SCHEME_LENGTH) {
      *aHandlerExists = false;
