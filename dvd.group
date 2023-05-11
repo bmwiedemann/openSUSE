@@ -242,6 +242,7 @@
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="busybox-misc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -809,7 +810,7 @@
     <package name="gtkspell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gucharmap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gucharmap-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="guestfs-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="guile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="guile-modules-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gupnp-av" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1007,7 +1008,7 @@
     <package name="kdialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdoctools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
     <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -1042,7 +1043,7 @@
     <package name="kernel-firmware-ti" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-ueagle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="kernel-firmware-usb-network" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="kexec-tools" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
     <package name="keyutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="kf5-kcm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf5-kcm-fcitx-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2030,7 +2031,7 @@
     <package name="libgudev-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libguestfs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libguestfs-xfs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libguestfs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="libguestfs0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libguile-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgupnp-1_6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-av-1_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2279,7 +2280,7 @@
     <package name="libmysofa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmythes-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnautilus-extension4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libnbd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="libnbd0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libndctl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libndp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2938,7 +2939,7 @@
     <package name="mailx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="make" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="make-lang" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
-    <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
     <package name="malcontent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="malcontent-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="malcontent-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3045,15 +3046,15 @@
     <package name="nautilus-sendto-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nautilus-share" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="nautilus-share-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="nbdkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-basic-filters" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-basic-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-curl-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-nbd-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-python-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-ssh-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="nbdkit-vddk-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="nbdkit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-basic-filters" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-basic-plugins" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-curl-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-nbd-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-python-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-server" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-ssh-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="nbdkit-vddk-plugin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ncompress" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="net-snmp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3570,7 +3571,6 @@
     <package name="python310-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python310-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="python310-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="python310-notify2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python310-numpy" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python310-olefile" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4457,8 +4457,8 @@
     <package name="virt-install" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="virt-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="virt-manager-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="virt-v2v" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="virt-v2v-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
+    <package name="virt-v2v" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="virt-v2v-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="virt-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="virt-what" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="virtualbox-guest-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -4471,7 +4471,6 @@
     <package name="vlc-qt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="vlc-vdpau" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="vlgothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="vm-install" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="vorbis-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vorbis-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vpnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

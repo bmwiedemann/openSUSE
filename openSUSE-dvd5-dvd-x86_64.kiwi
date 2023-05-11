@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230510" schemaversion="4.1">
+<image name="OBS__openSUSE___20230511" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230510</productvar>
+      <productvar name="VERSION">20230511</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230510,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230511,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230510/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230511/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -237,6 +237,7 @@
       <repopackage name="busybox-gawk"/>
       <repopackage name="busybox-grep"/>
       <repopackage name="busybox-gzip"/>
+      <repopackage name="busybox-misc"/>
       <repopackage name="busybox-psmisc"/>
       <repopackage name="busybox-sed"/>
       <repopackage name="busybox-sendmail"/>
@@ -3612,7 +3613,6 @@
       <repopackage name="python310-msgpack"/>
       <repopackage name="python310-mysqlclient"/>
       <repopackage name="python310-netaddr"/>
-      <repopackage name="python310-netifaces"/>
       <repopackage name="python310-notify2"/>
       <repopackage name="python310-numpy"/>
       <repopackage name="python310-olefile"/>
@@ -4521,7 +4521,6 @@
       <repopackage name="vlc-qt"/>
       <repopackage name="vlc-vdpau"/>
       <repopackage name="vlgothic-fonts"/>
-      <repopackage name="vm-install"/>
       <repopackage name="vorbis-tools"/>
       <repopackage name="vorbis-tools-lang"/>
       <repopackage name="vpnc"/>
