@@ -468,4 +468,13 @@
   % php8.keyring</comment>
     <requestid>1084825</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>de3356e8c8222a76c3143b6b538994cd</srcmd5>
+    <version>8.1.18</version>
+    <time>1683801114</time>
+    <user>dimstar_suse</user>
+    <comment>- downgrade back to 8.1.18
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/4ADCEV2FII7J5FZEWREFETTEVX7CDUSR/</comment>
+    <requestid>1086013</requestid>
+  </revision>
 </revisionlist>
