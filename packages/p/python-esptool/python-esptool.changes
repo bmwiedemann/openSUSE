@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Apr 20 10:23:16 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 4.5.1
+  * Bug Fixes
+    - ESP32-S3: Temporarily disabled increasing CPU frequency in the stub flasher (#832, #848, #842).
+    - Fixed error messages when esptool is used with an unknown chip.
+    - esp_rfc2217_server: Updated reset sequences.
+    - esp_rfc2217_server: Registered as a script (#846).
+    - pyinstaller: Fixed glibc dependency on gnu/linux (#843).
+  * Miscellaneous Changes
+    - Added target tests for ESP32-H2.
+    - Reduced size of test images.
+    - Added a custom host_test marker for the test suite to allow running tests without real hardware (#838).
+ 
+- version 4.5
+  * New Features
+    - Configuration file: Added the option to configure internal variables
+     (such as timeouts and delays) and to implement a custom reset sequence (see the related documentation).
+    - Bootloader reset: Added a new reset strategy to make resetting into the
+      download mode more reliable on MacOS and Linux systems (#712).
+    - ESP32-S3: Added support for >32MB octal flash chips (#795, #745).
+    - ESP32-H2: Added full esptool and flasher stub support.
+    - ESP32-C6: Added full flasher stub support.
+    - flash_id: Print the flash memory chip type (quad vs. octal) if available (#730).
+    - elf2image: Added --pad-to-size <size> option to specify a size to which
+      the generated binary image must be aligned.
+    - write_flash: Added a security check to prevent bricking the device
+      when flash encryption is active.
+    - Optimized to reduce the number of steps when a chip is being interrogated.
+  * espsecure.py
+    - Added an external HSM signing interface.
+    - Added support for pre-calculated signatures.
+    - Added PKCS#8 identifier support (#819).
+  * Bug Fixes
+    - USB-Serial/JTAG: Fixed randomly failing transfers when writing/reading large binaries.
+    - ESP32-S3: Fixed crashing stub flasher when using in USB-Serial/JTAG mode (#808)
+    - ESP32: Recalculate the crystal clock to compensate for the chips baud rate setting
+      as a workaround to avoid ESP32 CK_8M frequency drift.
+    - ESP32-S3: Fixed v0.0 chip being detected as vX.8.
+    - StopIteration: Fixed several possible errors when stub flasher is being uploaded
+      and added better error messages for other cases (#824).
+    - Fixed chip autodetection and operations in the secure download mode on ESP32-S2 and S3 (#813).
+    - write_flash: Fixed the --erase-all option corrupting flash (#805).
+    - write_flash: Fixed security checks when min_rev and max_rev_full are specified in the image.
+    - Fixed compatibility with bitstring>=4 package.
+    - Fixed compatibility with reedsolo when using Python 3.10 and Cython (#711).
+  * espefuse.py
+    - The serial port now gets closed when espefuse fails (#803).
+  * Miscellaneous Changes
+    - Refactored to make adding new targets easier, reduce code repetition,
+      and comply with the Black 23.1 style.
+    - Added target tests for all of the newly supported chips.
+    - Updated the toolchains for stub flasher builds.
+ 
+-version 4.4
+ * New Features
+   - flasher_stub: Increased read/write speeds over USB-JTAG/Serial or USB-OTG modes, making some operations nearly twice as fast.
+   - Added detection for guru meditation errors induced by the flasher stub or ROM bootloader.
+   - Added a readable error message for serial-related failures, giving more information about possible HW issues.
+   - espsecure.py: Improved AES-XTS encryption speed. (#783)
+ * Bug Fixes
+   - ESP32-S3 v0.0: Fixed chip revision detection.
+   - bitstring: Added a workaround for breaking changes of bitstring==4
+   - get_default_connected_device: Fixed to close unused serial ports.
+   - flash_freq: Fall back to a chip-specific default flash frequency when no flash_freq arg is specified.
+   - ESP32-C6: Fixed chip type detection and SPI flash communication.
+
+-------------------------------------------------------------------
 Sun Nov  6 11:27:28 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to 3.3.2

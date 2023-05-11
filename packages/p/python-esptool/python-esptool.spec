@@ -1,7 +1,7 @@
 #
 # spec file for package python-esptool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-esptool
-Version:        3.3.2
+Version:        4.5.1
 Release:        0
 Summary:        A serial utility to communicate & flash code to Espressif ESP8266 & ESP32 chips
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/espressif/esptool
 Source:         https://github.com/espressif/esptool/archive/v%{version}.tar.gz#/esptool-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module bitstring >= 3.1.6}
-BuildRequires:  %{python_module ecdsa}
+BuildRequires:  %{python_module ecdsa >= 0.16.0}
 BuildRequires:  %{python_module pyaes}
 BuildRequires:  %{python_module pyelftools}
 BuildRequires:  %{python_module pyserial >= 3.0}
@@ -40,7 +39,7 @@ BuildRequires:  %{python_module cryptography}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
-Requires:       python-ecdsa
+Requires:       python-ecdsa >= 0.16.0
 Requires:       python-pyaes
 Requires:       python-pyserial >= 3.0
 Requires(post): update-alternatives
@@ -56,9 +55,6 @@ Allows flashing firmware, reading back firmware, querying chip parameters, etc.
 %prep
 %setup -q -n esptool-%{version}
 sed -i '/^#!/d' flasher_stub/*.py
-sed -i '/^#!/d' espressif/*.py
-sed -i '/^#!/d' espressif/*/*.py
-sed -i '/^#!/d' espressif/*/*/*.py
 
 %build
 %python_build
@@ -68,34 +64,36 @@ sed -i '/^#!/d' espressif/*/*/*.py
 %python_clone -a %{buildroot}%{_bindir}/espefuse.py
 %python_clone -a %{buildroot}%{_bindir}/espsecure.py
 %python_clone -a %{buildroot}%{_bindir}/esptool.py
-%python_expand sed -i '/^#!/d' %{buildroot}%{$python_sitelib}/*.py
+%python_clone -a %{buildroot}%{_bindir}/esp_rfc2217_server.py
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/__pycache__/*.pyc
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # there are more tests but upstream runs only those in .travis.yml
 %pytest test/test_imagegen.py
-# pytest test/test_espsecure.py
+%pytest test/test_espsecure.py
 
 %post
 %python_install_alternative espefuse.py
 %python_install_alternative espsecure.py
 %python_install_alternative esptool.py
+%python_install_alternative esp_rfc2217_server.py
 
 %postun
 %python_uninstall_alternative espefuse.py
 %python_uninstall_alternative espsecure.py
 %python_uninstall_alternative esptool.py
+%python_uninstall_alternative esp_rfc2217_server.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{_bindir}/esptool.py-%{python_bin_suffix}
-%{_bindir}/espsecure.py-%{python_bin_suffix}
-%{_bindir}/espefuse.py-%{python_bin_suffix}
 %python_alternative %{_bindir}/esptool.py
 %python_alternative %{_bindir}/espsecure.py
 %python_alternative %{_bindir}/espefuse.py
-%{python_sitelib}/*
+%python_alternative %{_bindir}/esp_rfc2217_server.py
+%{python_sitelib}/esptool-%{version}-*egg-info
+%{python_sitelib}/esptool
+%{python_sitelib}/espsecure
+%{python_sitelib}/espefuse
 
 %changelog
