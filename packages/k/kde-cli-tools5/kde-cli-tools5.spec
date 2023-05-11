@@ -19,7 +19,7 @@
 %define kf5_version 5.98.0
 %bcond_without released
 Name:           kde-cli-tools5
-Version:        5.27.4
+Version:        5.27.5
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
@@ -30,8 +30,10 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-
 Source1:        https://download.kde.org/stable/plasma/%{version}/kde-cli-tools-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-kinfo-Use-kcmshell5-with-Plasma-5.patch
 # PATCH-FIX-OPENSUSE kdesu-add-some-i18n-love.patch -- boo#852256
-Patch0:         kdesu-add-some-i18n-love.patch
+Patch100:       kdesu-add-some-i18n-love.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
@@ -97,6 +99,7 @@ fi
 %{_kf5_bindir}/kdemv{5,}
 %{_kf5_bindir}/kde-open{5,}
 %{_kf5_bindir}/keditfiletype{5,}
+%{_kf5_bindir}/kinfo
 %{_kf5_bindir}/kioclient{5,}
 %{_kf5_bindir}/kmimetypefinder{5,}
 %{_kf5_bindir}/ksvgtopng{5,}

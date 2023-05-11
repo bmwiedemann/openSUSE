@@ -1258,4 +1258,19 @@
     <comment>Plasma 5.27.4(.1) (forwarded request 1077257 from Vogtinator)</comment>
     <requestid>1077267</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>f7c74775e6887fecbd0aca2932929a9a</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * add kinfo (kde#403077)
+- Add patch to fix kinfo (sigh):
+  * 0001-kinfo-Use-kcmshell5-with-Plasma-5.patch</comment>
+    <requestid>1085978</requestid>
+  </revision>
 </revisionlist>
