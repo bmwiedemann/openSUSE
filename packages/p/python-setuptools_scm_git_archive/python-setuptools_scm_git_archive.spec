@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm_git_archive
-Version:        1.1
+Version:        1.4
 Release:        0
 Summary:        Git archive plugin setuptools_scm
 License:        MIT

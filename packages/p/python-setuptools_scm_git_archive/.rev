@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1081803</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6bd095865f5e6353405e0d6dbca4fcd0</srcmd5>
+    <version>1.4</version>
+    <time>1683801089</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4:
+  * mark project as obsolete. should be replaced by setuptools_scm</comment>
+    <requestid>1085970</requestid>
+  </revision>
 </revisionlist>
