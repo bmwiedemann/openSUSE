@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 11 08:39:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1211298, CVE-2023-32573):
+  * CVE-2023-32573-qtsvg-6.5.diff
+
+-------------------------------------------------------------------
 Mon Apr  3 10:02:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.0

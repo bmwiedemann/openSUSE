@@ -167,4 +167,13 @@
     <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
     <requestid>1077346</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f5d491173eda6d671dac7002ff979281</srcmd5>
+    <version>6.5.0</version>
+    <time>1683801263</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change (boo#1211298, CVE-2023-32573):
+  * CVE-2023-32573-qtsvg-6.5.diff (forwarded request 1086201 from krop)</comment>
+    <requestid>1086202</requestid>
+  </revision>
 </revisionlist>
