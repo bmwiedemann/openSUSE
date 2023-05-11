@@ -492,4 +492,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     support Python 3.11.</comment>
     <requestid>1061730</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>63eead0d5cffb75bfec277093f185c42</srcmd5>
+    <version>3.7.0</version>
+    <time>1683801084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085867</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,6 @@
 
 # No longer build for python2
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
 Version:        3.7.0
 Release:        0
@@ -80,10 +79,36 @@ find %{buildroot} -name '*.pem' -size 0 -delete
 
 %check
 # Skip OvhTests::test_list_nodes_invalid_region which tries to reach OVH servers
-# Skip ShellOutSSHClientTests tests which attempt to ssh to localhost
+donttest="test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character"
+donttest+=" or test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character"
+donttest+=" or test_consume_stdout_chunk_contains_non_utf8_character"
+donttest+=" or test_consume_stderr_chunk_contains_non_utf8_character"
 # Skip test_key_file_non_pem_format_error since OpenSSH support is backported for SLE python-paramiko < 2.7.0
+donttest+=" or test_key_file_non_pem_format_error"
+# Skip ShellOutSSHClientTests tests which attempt to ssh to localhost
+donttest+=" or ShellOutSSHClientTests"
 # Note these four extra py3 failures are undesirable and should be fixed: fail in s390 and ppc64
-%pytest -k '(not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_non_utf8_character and not test_consume_stderr_chunk_contains_non_utf8_character and not test_key_file_non_pem_format_error and not ShellOutSSHClientTests and not ElasticContainerDriverTestCase and not test_list_nodes_invalid_region and not test_connection_timeout_raised and not test_retry_on_all_default_retry_exception_classes)'
+donttest+=" or ElasticContainerDriverTestCase"
+donttest+=" or test_list_nodes_invalid_region"
+donttest+=" or test_connection_timeout_raised"
+donttest+=" or test_retry_on_all_default_retry_exception_classes"
+
+# Skip tests broken because requests-mock incompatibility with urllib3 >= 2.0.0
+# gh#jamielennox/requests-mock#228
+donttest+=" or test_openstack.py"
+donttest+=" or test_rackspace.py"
+donttest+=" or test_scaleway.py"
+donttest+=" or test_vcloud.py"
+donttest+=" or test_vultr_v2.py"
+donttest+=" or test_aurora.py"
+donttest+=" or test_azure_blobs.py"
+donttest+=" or test_cloudfiles.py"
+donttest+=" or test_google_storage.py"
+donttest+=" or test_oss.py"
+donttest+=" or test_ovh.py"
+donttest+=" or test_s3.py"
+
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
