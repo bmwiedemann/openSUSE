@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-coverage
-Version:        7.2.2
+Version:        7.2.5
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests.patch -- gh#nedbat/coveragepy@3fdda7d017ff
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

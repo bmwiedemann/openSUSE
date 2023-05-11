@@ -591,4 +591,42 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
     <comment></comment>
     <requestid>1081957</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>b9864cc1191acc348147375aaf534d6b</srcmd5>
+    <version>7.2.5</version>
+    <time>1683801112</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests.patch gh#nedbat/coveragepy@3fdda7d017ff
+- Update to 7.2.5:
+  * Fix: html_report() could fail with an AttributeError on isatty if
+    run in an unusual environment where sys.stdout had been replaced.
+    This is now fixed.
+- 7.2.4:
+  * Fix: with relative_files = true, specifying a specific file to
+    include or omit wouldn't work correctly (issue 1604). This is now
+    fixed, with testing help by Marc Gibbons.
+  * Fix: the XML report would have an incorrect &lt;source&gt; element when
+    using relative files and the source option ended with a slash
+    (issue 1541). This is now fixed, thanks to Kevin Brown-Silva.
+  * When the HTML report location is printed to the terminal, it's now
+    a terminal-compatible URL, so that you can click the location to
+    open the HTML file in your browser. Finishes issue 1523 thanks to
+    Ricardo Newbery.
+  * Docs: a new :ref:`Migrating page &lt;migrating&gt;` with details about
+    how to migrate between major versions of coverage.py. It currently
+    covers the wildcard changes in 7.x. Thanks, Brian Grohe.
+- 7.2.3:
+  * Fix: the :ref:`config_run_sigterm` setting was meant to capture
+    data if a process was terminated with a SIGTERM signal, but it
+    didn't always. This was fixed thanks to Lewis Gaul, closing issue
+    1599.
+  * Performance: HTML reports with context information are now much
+    more compact. File sizes are typically as small as one-third the
+    previous size, but can be dramatically smaller. This closes issue
+    1584 thanks to Oleh Krehel.
+  * Development dependencies no longer use hashed pins, closing issue
+    1592.
+</comment>
+    <requestid>1086006</requestid>
+  </revision>
 </revisionlist>
