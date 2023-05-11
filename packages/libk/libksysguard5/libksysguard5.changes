@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * Formatter: Don't try to prefix units that we don't have a prefixed version of
+  * Formatter: Format UnitWattHour in formatValue
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
