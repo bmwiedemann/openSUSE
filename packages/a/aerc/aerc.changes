@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 09:19:32 UTC 2023 - Hannes Braun <apple.hannes@gmail.com> - 0.15.2
+
+- Update to upstream version 0.15.2
+  * Extra messages disappearing when deleting on maildir.
+  * "colorize" and "wrap" filters option parsing on ARM.
+
+-------------------------------------------------------------------
 Fri Apr 28 22:38:53 UTC 2023 - Hannes Braun <apple.hannes@gmail.com> - 0.15.1
 
 - Update to upstream version 0.15.1

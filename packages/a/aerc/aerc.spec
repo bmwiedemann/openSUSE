@@ -17,7 +17,7 @@
 
 
 Name:           aerc
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        An email client for your terminal
 License:        MIT
