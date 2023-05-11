@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 10 06:21:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.0:
+  * Implementation of bright colors
+  * documentation, CI, test fixes 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
