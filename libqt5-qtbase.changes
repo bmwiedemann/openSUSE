@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue May  9 12:08:17 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Amend patch to fix mouse grabbing as well (bsc#1211024):
+  * big-endian-scroll.patch
+
+-------------------------------------------------------------------
 Fri Apr 21 09:53:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
-- Update to version 5.15.8+kde329, rebased upstream:
+- Update to version 5.15.9+kde151, rebased upstream:
   * QCborValue: fix incorrect to{Array,Map} when the value is empty
   * QMargins: fix a missing "full stop" in the docs
   * QLibrary: restore translated string
