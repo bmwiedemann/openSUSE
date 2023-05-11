@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:08 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * Item: hide the cursor when we start getting null positions
+  * Item: Make sure we have a texture at all times
+  * Do not process corrupt frames
+  * Record: Do not crash when closing while recording (kde#467593)
+  * Expose the stream size in PipewireSourceItem
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:35 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
