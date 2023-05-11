@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 11 08:17:28 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add gcc and gcc-c++ to BuildRequires. gcc is needed but not
+  listed. c++ is not installed by default and is needed since 6.4.
+
+-------------------------------------------------------------------
 Wed Jan 11 08:03:38 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - fix build for 6.2

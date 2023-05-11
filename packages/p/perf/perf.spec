@@ -43,6 +43,8 @@ BuildRequires:  bison
 BuildRequires:  clang
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libcap-devel
