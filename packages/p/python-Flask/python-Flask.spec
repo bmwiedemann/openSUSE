@@ -27,7 +27,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        2.2.2
+Version:        2.2.5
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause

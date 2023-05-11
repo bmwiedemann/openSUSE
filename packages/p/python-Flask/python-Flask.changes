@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 10 09:15:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.5 (bsc#1211246, CVE-2023-30861):
+  * Set ``Vary: Cookie`` header when the session is accessed,
+    modified, or refreshed.
+  * Update for compatibility with Werkzeug 2.3.
+  * Autoescape is enabled by default for ``.svg`` template
+    files. :issue:`4831`
+  * Fix the type of ``template_folder`` to accept
+    ``pathlib.Path``. :issue:`4892`
+  * Add ``--debug`` option to the ``flask run`` command.
+    :issue:`4777`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -382,4 +382,21 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1083105</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6903a308b165adcff2f1bd36a871ffe2</srcmd5>
+    <version>2.2.5</version>
+    <time>1683801115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.5 (bsc#1211246, CVE-2023-30861):
+  * Set ``Vary: Cookie`` header when the session is accessed,
+    modified, or refreshed.
+  * Update for compatibility with Werkzeug 2.3.
+  * Autoescape is enabled by default for ``.svg`` template
+    files. :issue:`4831`
+  * Fix the type of ``template_folder`` to accept
+    ``pathlib.Path``. :issue:`4892`
+  * Add ``--debug`` option to the ``flask run`` command.
+    :issue:`4777`</comment>
+    <requestid>1086038</requestid>
+  </revision>
 </revisionlist>
