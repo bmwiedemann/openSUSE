@@ -1707,7 +1707,6 @@ unsorted:
   - busybox-less 
   - busybox-links 
   - busybox-man 
-  - busybox-misc 
   - busybox-ncurses-utils 
   - busybox-net-tools 
   - busybox-netcat 
@@ -4313,6 +4312,7 @@ unsorted:
   - galera-4 
   - galera-4-wsrep-provider 
   - gama 
+  - gamemode 
   - gamemoded 
   - gamin-devel 
   - gamin-server 
@@ -4436,6 +4436,7 @@ unsorted:
   - gcc7-obj-c++-32bit 
   - gcc7-objc 
   - gcc7-objc-32bit 
+  - gcc7-testresults 
   - gccmakedep 
   - gcdemu 
   - gcdemu-lang 
@@ -15358,8 +15359,8 @@ unsorted:
   - libtrilinos_14_0_0-gnu-openmpi4-hpc 
   - libtrng4-24 
   - libts0-32bit 
+  - libtsan0 
   - libtsan0-gcc11 
-  - libtsan0-gcc7 
   - libtsan2-gcc12 
   - libtsk19 
   - libtsm-devel 
@@ -23974,6 +23975,7 @@ unsorted:
   - python310-devel 
   - python310-devpi-client 
   - python310-devpi-common 
+  - python310-devpi-process 
   - python310-devpi-server 
   - python310-dfVFS 
   - python310-dfdatetime 
@@ -27305,6 +27307,7 @@ unsorted:
   - python311-devel 
   - python311-devpi-client 
   - python311-devpi-common 
+  - python311-devpi-process 
   - python311-devpi-server 
   - python311-dfVFS 
   - python311-dfdatetime 
@@ -30764,6 +30767,7 @@ unsorted:
   - python39-devel 
   - python39-devpi-client 
   - python39-devpi-common 
+  - python39-devpi-process 
   - python39-devpi-server 
   - python39-dfVFS 
   - python39-dfdatetime 
@@ -45312,6 +45316,7 @@ unsorted:
   - vlc-jack 
   - vlc-opencv 
   - vm-dump-metrics 
+  - vm-install 
   - vmaf-devel 
   - vms-empire 
   - vmtouch 
