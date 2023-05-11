@@ -1208,4 +1208,12 @@
     <comment>Plasma 5.27.4(.1) (forwarded request 1077257 from Vogtinator)</comment>
     <requestid>1077268</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>8f1096d82dfc455ada3fe007f7fcf550</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801130</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
+    <requestid>1085880</requestid>
+  </revision>
 </revisionlist>
