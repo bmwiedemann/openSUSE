@@ -1216,4 +1216,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.27.4(.1) (forwarded request 1077257 from Vogtinator)</comment>
     <requestid>1077287</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>76fbcc811dd8508d0a2b8da3f58f35c2</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801148</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
+    <requestid>1085904</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * applets/colorpicker: disable pick button when compositing is disabled (kde#466230)
+  * ProfilesModel: Adjust to kate using different folder for storing sessions than konsole (kde#466824)
+  * runners/datetime: fix test failure
+  * applets/colorpicker: Use native relative positioning Menu API
+  * applets/colorpicker: Open context menu on Menu key press
+  * applets/colorpicker: Fix copying color via keyboard
+  * applets/colorpicker: Factor out logic from signal handler
+  * applets/colorpicker: Only reset global current index from a real current item
+  * applets/colorpicker: Fix QML/JS code style, add explicit signal arguments
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
