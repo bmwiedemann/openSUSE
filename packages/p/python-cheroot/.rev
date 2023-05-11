@@ -199,4 +199,12 @@
     <comment></comment>
     <requestid>1073643</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f76331fa57fc5702b23521e5b5f7eb05</srcmd5>
+    <version>9.0.0</version>
+    <time>1683801091</time>
+    <user>dimstar_suse</user>
+    <comment>- remove obsolete requirement on setuptools_scm_git_archive</comment>
+    <requestid>1085973</requestid>
+  </revision>
 </revisionlist>

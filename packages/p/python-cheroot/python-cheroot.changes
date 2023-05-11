@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 10 06:32:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove obsolete requirement on setuptools_scm_git_archive
+
+-------------------------------------------------------------------
 Tue Mar 21 10:34:26 UTC 2023 - pgajdos@suse.com
 
 - do not require python-six

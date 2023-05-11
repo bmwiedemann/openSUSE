@@ -46,7 +46,6 @@ BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 34.4}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
-BuildRequires:  %{python_module setuptools_scm_git_archive >= 1.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
