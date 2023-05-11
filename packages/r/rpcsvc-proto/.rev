@@ -57,4 +57,13 @@
     <comment></comment>
     <requestid>984045</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84b02da737432b2e36df8925309f1ade</srcmd5>
+    <version>1.4.4</version>
+    <time>1683801113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.4
+  - Use AC_SYS_LARGEFILE macro to control largefile support</comment>
+    <requestid>1086007</requestid>
+  </revision>
 </revisionlist>
