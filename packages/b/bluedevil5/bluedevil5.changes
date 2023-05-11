@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:04 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * applet: introduce a brief animation for section height estimates (kde#438610)
+  * applet: Fix Toolbar padding in RTL mode
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
