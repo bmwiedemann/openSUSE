@@ -731,4 +731,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **webrisk:** Update the api</comment>
     <requestid>1074501</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>987661db9642425ffecfcf22c1a50e98</srcmd5>
+    <version>2.86.0</version>
+    <time>1683807236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.86.0
+  * **analyticsadmin:** Update the api
+  * **apigee:** Update the api
+  * **assuredworkloads:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **certificatemanager:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudfunctions:** Update the api
+  * **cloudkms:** Update the api
+  * **cloudresourcemanager:** Update the api
+  * **compute:** Update the api
+  * **container:** Update the api
+  * **contentwarehouse:** Update the api
+  * **dataform:** Update the api
+  * **datamigration:** Update the api
+  * **discoveryengine:** Update the api
+  * **file:** Update the api
+  * **firestore:** Update the api
+  * **gkehub:** Update the api
+  * **identitytoolkit:** Update the api
+  * **integrations:** Update the api
+  * **managedidentities:** Update the api
+  * **networksecurity:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **sqladmin:** Update the api
+  * **tpu:** Update the api
+  * **vault:** Update the api (forwarded request 1086480 from glaubitz)</comment>
+    <requestid>1086488</requestid>
+  </revision>
 </revisionlist>
