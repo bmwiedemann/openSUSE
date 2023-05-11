@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-invocations
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        Reusable Invoke tasks
 License:        BSD-2-Clause

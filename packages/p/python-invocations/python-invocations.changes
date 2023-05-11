@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  4 19:15:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * backported` Unpin ``tabulate`` in our install
+    requirements, it's had many more releases since we instituted
+    a defensive pin vs some bugs in its later 0.7 line!
+  * We neglected to remove references to ``six`` in a
+    few spots including some that utilized Invoke's old vendor of same;
+    this causes issues when trying to use development and
+    upcoming versions of Invoke. Six is now truly gone!
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

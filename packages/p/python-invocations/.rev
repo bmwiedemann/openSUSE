@@ -127,4 +127,19 @@
     <comment></comment>
     <requestid>1081881</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>05c76612efe52d39fde696f1d230471b</srcmd5>
+    <version>3.0.2</version>
+    <time>1683801087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.2:
+  * backported` Unpin ``tabulate`` in our install
+    requirements, it's had many more releases since we instituted
+    a defensive pin vs some bugs in its later 0.7 line!
+  * We neglected to remove references to ``six`` in a
+    few spots including some that utilized Invoke's old vendor of same;
+    this causes issues when trying to use development and
+    upcoming versions of Invoke. Six is now truly gone!</comment>
+    <requestid>1085963</requestid>
+  </revision>
 </revisionlist>

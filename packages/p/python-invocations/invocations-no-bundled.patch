@@ -1,7 +1,7 @@
-Index: invocations-3.0.0/tests/packaging/release.py
+Index: invocations-3.0.2/tests/packaging/release.py
 ===================================================================
---- invocations-3.0.0.orig/tests/packaging/release.py
-+++ invocations-3.0.0/tests/packaging/release.py
+--- invocations-3.0.2.orig/tests/packaging/release.py
++++ invocations-3.0.2/tests/packaging/release.py
 @@ -3,7 +3,10 @@ from os import path
  import re
  import sys
@@ -14,61 +14,10 @@ Index: invocations-3.0.0/tests/packaging/release.py
  from invoke import MockContext, Result, Config, Exit
  from docutils.utils import Reporter
  from unittest.mock import Mock, patch, call
-Index: invocations-3.0.0/invocations/console.py
+Index: invocations-3.0.2/invocations/packaging/release.py
 ===================================================================
---- invocations-3.0.0.orig/invocations/console.py
-+++ invocations-3.0.0/invocations/console.py
-@@ -4,7 +4,10 @@ Text console UI helpers and patterns, e.
- 
- import sys
- 
--from invoke.vendor.six.moves import input
-+try:
-+    from invoke.vendor.six.moves import input
-+except ImportError:
-+    from six.moves import input
- 
- 
- # NOTE: originally cribbed from fab 1's contrib.console.confirm
-Index: invocations-3.0.0/invocations/packaging/semantic_version_monkey.py
-===================================================================
---- invocations-3.0.0.orig/invocations/packaging/semantic_version_monkey.py
-+++ invocations-3.0.0/invocations/packaging/semantic_version_monkey.py
-@@ -5,7 +5,10 @@ We never like monkey-patching, but for n
- or distributing our own fork.
- """
- 
--from invoke.vendor.six import text_type
-+try:
-+    from invoke.vendor.six import text_type
-+except ImportError:
-+    from six import text_type
- 
- from semantic_version import Version
- 
-Index: invocations-3.0.0/invocations/testing.py
-===================================================================
---- invocations-3.0.0.orig/invocations/testing.py
-+++ invocations-3.0.0/invocations/testing.py
-@@ -1,8 +1,12 @@
- import sys
- import time
- from collections import defaultdict
--from invoke.vendor.six import iteritems
--from invoke.vendor.six.moves import range
-+try:
-+    from invoke.vendor.six import iteritems
-+    from invoke.vendor.six.moves import range
-+except ImportError:
-+    from six import iteritems
-+    from six.moves import range
- 
- from invoke import task
- from tqdm import tqdm
-Index: invocations-3.0.0/invocations/packaging/release.py
-===================================================================
---- invocations-3.0.0.orig/invocations/packaging/release.py
-+++ invocations-3.0.0/invocations/packaging/release.py
+--- invocations-3.0.2.orig/invocations/packaging/release.py
++++ invocations-3.0.2/invocations/packaging/release.py
 @@ -20,7 +20,10 @@ from glob import glob
  from io import StringIO
  from shutil import rmtree
