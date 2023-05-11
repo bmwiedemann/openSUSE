@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * [notifications] Set proper value for x-kde-xdgTokenAppId
+  * screenshot: fix flameshot #3164 by using native resolution
+  * screencast: Don't try to screencast nullptr
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
