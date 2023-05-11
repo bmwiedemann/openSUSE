@@ -523,4 +523,12 @@ See changelog in:
     <comment>- drop fix-plugin-32bit.patch (upstream)</comment>
     <requestid>1080005</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>304d755058d165db2dd2851dab7637dc</srcmd5>
+    <version>3.12.0</version>
+    <time>1683801251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086179</requestid>
+  </revision>
 </revisionlist>

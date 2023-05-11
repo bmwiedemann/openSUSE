@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu May 11 04:45:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.12.0:
+  * bump version to v3.12.0
+  * Attach annotations to OCI artifacts
+  * chore: bump k8s.io dependencies to v0.27.1
+  * Bump k8s.io deps from v0.26.0 to v0.27.0
+  * Only run tests once
+  * chore(deps): bump golang.org/x/text from 0.7.0 to 0.9.0
+  * Fix goroutine leak in action install
+  * fix quiet lint does not fail on non-linting errors
+  * create failing test for quietly linting a chart that doesn't
+    exist
+  * chore(deps): bump github.com/docker/docker
+  * Fixes Readiness Check for statefulsets using partitioned
+    rolling update. (#11774)
+  * fix: failed testcase on windows
+  * Fix 32bit-x86 typo in testsuite
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15
+    to 1.7.0
+  * Handle failed DNS case for Go 1.20+
+  * Updating the Go version in go.mod
+  * Bump the Go version
+  * Fix goroutine leak in perform
+  * Properly invalidate client after CRD install
+  * Provide a helper to set the registryClient in cmd
+  * Reimplemented change in httpgetter for insecure TLS option
+  * Removed conditional
+  * Added insecure option to login subcommand
+  * Added support for insecure OCI registries
+  * Enable custom certificates option for OCI
+  * Add testing to default and release branches
+  * Added back CircleCI config.yaml
+  * Updates based on feedback
+  * Removed remaining CircleCI artifacts
+  * Remove job dependency. Should have done when I moved job to new
+    file
+  * Remove check to run only in helm org
+  * Add why comments
+  * Convert remaining CircleCI config to GitHub Actions
+  * Changed how the setup-go action sets go version
+  * CircleCI Migration
+  * chore:Use http constants as http.request parameters
+  * update k8s registry domain
+  * don't mark issues as stale where a PR is in progress
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.2.0 to
+    1.3.1
+  * Update to func handling
+  * Add option to support cascade deletion options
+  * the linter varcheck and deadcode are deprecated (since v1.49.0)
+  * Check status code before retrying request
+  * Fix improper use of Table request/response to k8s API
+  * bump version to v3.11.0
+  * fix template --output-dir issue
+  * Add protection for stack-overflows for nested keys
+  * Fixing indentation
+  * feature(helm): add --set-literal flag for literal string
+    interpretation
+
+-------------------------------------------------------------------
 Thu Apr 13 07:54:49 UTC 2023 - dmueller@suse.com
 
 - Update to version 3.11.3:
