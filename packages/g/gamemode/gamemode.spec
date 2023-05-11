@@ -1,7 +1,7 @@
 #
 # spec file for package gamemode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ Source1:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.xz.as
 Source2:        gamemode-rpmlintrc
 Source3:        README.openSUSE
 Source4:        baselibs.conf
+Source5:        feral.keyring
 Patch0:         only-build-shared-library.patch
 BuildRequires:  cmake
 BuildRequires:  libinih-devel
@@ -40,6 +41,11 @@ BuildRequires:  pkgconfig(dbus-1)
 # Yes, it needs both
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+# We need to explicitly define the dependency as this is used via
+# LD_PRELOAD from a shell script and thus cannot be inferred.
+Requires:       libgamemodeauto0
+Provides:       gamemoded:%{_bindir}/gamemoderun
+Provides:       gamemoded:%{_bindir}/gamemodelist
 
 %description
 GameMode is a daemon/lib combo for Linux that allows games to request
@@ -51,10 +57,20 @@ now able to launch custom user defined plugins, and is intended to be
 expanded further, as there are a wealth of automation tasks one might
 want to apply.
 
+For applications that don't implement the GameMode activation themselves,
+you can toggle the GameMode by running them via the gamemoderun command.
+
+    gamemoderun ./game
+
+For Steam games this can be done by editing the launch options:
+
+    gamemoderun %%command%%
+
 %package -n gamemoded
 Summary:        The GameMode daemon required by GameMode enabled games
 Group:          Amusements/Games/Other
 Recommends:     libgamemode
+Suggests:       gamemode
 Suggests:       libgamemodeauto
 
 %description -n gamemoded
@@ -95,6 +111,9 @@ For Steam games this can be done by editing the launch options:
 
     LD_PRELOAD=$LD_PRELOAD:%{_libdir}/libgamemodeauto.so.0 %%command%%
 
+Nowadays this however can be easier done by using the gamemoderun command
+from the gamemode package.
+
 %package -n libgamemode-devel
 Summary:        Headers for compiling games using GameMode
 Group:          Development/Libraries/C and C++
@@ -134,17 +153,22 @@ rm %{buildroot}/%{_sysusersdir}/gamemode.conf
 %post -n libgamemodeauto0 -p /sbin/ldconfig
 %postun -n libgamemodeauto0 -p /sbin/ldconfig
 
-%files -n gamemoded
-%{_bindir}/gamemoded
+%files
 %{_bindir}/gamemodelist
 %{_bindir}/gamemoderun
+%{_mandir}/*/gamemodelist*
+%{_mandir}/*/gamemoderun*
+%license LICENSE.txt
+
+%files -n gamemoded
+%{_bindir}/gamemoded
 %{_libexecdir}/cpugovctl
 %{_libexecdir}/gpuclockctl
 %{_userunitdir}/gamemoded.service
 %{_datadir}/polkit-1/actions/com.feralinteractive.GameMode.policy
 %{_datadir}/dbus-1/services/com.feralinteractive.GameMode.service
 %{_datadir}/metainfo/io.github.feralinteractive.gamemode.metainfo.xml
-%{_mandir}/*/*
+%{_mandir}/*/gamemoded*
 %doc example/gamemode.ini README.openSUSE
 %license LICENSE.txt
 

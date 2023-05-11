@@ -1,3 +1,13 @@
+# In a perfect world this would be a noarch package. But we cannot make the main package
+# noarch as the sub-packages are architecture dependent.
+addFilter('gamemode.* no-binary')
+
+# gamemoderun loads the dependency via dlopen, so it cannot be picked up automatically.
+addFilter('gamemode.* explicit-lib-dependency libgamemodeauto')
+
+# Gamemode actually has a % in its description.
+addFilter('gamemode.* unexpanded-macro %description -l C %command')
+
 # Libgamemodeauto loads the dependency via dlopen, so it cannot be picked up automatically.
 addFilter('libgamemodeauto.* explicit-lib-dependency libgamemode')
 

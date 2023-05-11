@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 10 20:35:53 UTC 2023 - Matthias Bach <marix@marix.org> - 1.7
+
+- Add a new gamemode binary package
+  * This provides gamemoderun and gamemodelist commands previously
+    provided via the gamemoded package. However, these actually
+    require libgamemodeauto0 which was missed.
+  * You can now install the gamemode package to get the full set
+    of GameMode functionality. Not being able to do this admittedly
+    was confusing as was reported in bsc#1211086.
+- Add feral.keyring to enable verifying the source signature.
+
+-------------------------------------------------------------------
 Sat Sep  3 11:47:40 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7
 
 - Add a workaround for building on Tumbleweed where detection of

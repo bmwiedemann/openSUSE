@@ -94,4 +94,19 @@
   the pidfd_open function does not work properly.</comment>
     <requestid>1001031</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a4d32f4b0a983a6900e2f8eb2cbe227c</srcmd5>
+    <version>1.7</version>
+    <time>1683807232</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a new gamemode binary package
+  * This provides gamemoderun and gamemodelist commands previously
+    provided via the gamemoded package. However, these actually
+    require libgamemodeauto0 which was missed.
+  * You can now install the gamemode package to get the full set
+    of GameMode functionality. Not being able to do this admittedly
+    was confusing as was reported in bsc#1211086.
+- Add feral.keyring to enable verifying the source signature.</comment>
+    <requestid>1086316</requestid>
+  </revision>
 </revisionlist>
