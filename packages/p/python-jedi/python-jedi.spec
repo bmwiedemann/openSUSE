@@ -84,6 +84,8 @@ skiptests+=" or (test_completion and conftest and 27)"
 skiptests+=" or (test_completion and pytest and 142)"
 # This fails on 15.4_py39 server-side but not locally (!?)
 skiptests+=" or test_get_default_environment_when_embedded"
+# https://github.com/davidhalter/jedi/issues/1929
+skiptests+=" or test_attrs_signature"
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}

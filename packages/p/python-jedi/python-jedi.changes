@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 10 12:13:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip a test failing with attrs 23.1
+  * gh#davidhalter/jedi#1929
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
