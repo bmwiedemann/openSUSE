@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * Cuttlefish: Set window decoration icon (kde#409956)
+  * IconGrid: Fix JavaScript/QML code style, use strict equality operator
+  * IconGrid: Redo highlight style similar to Plasma Breeze
+  * IconGrid: Fix sizing issues
+  * Add icontheme when creating new global theme (kde#465817)
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
