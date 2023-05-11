@@ -1,7 +1,7 @@
 #
 # spec file for package grilo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           grilo
-Version:        0.3.15
+Version:        0.3.16
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58

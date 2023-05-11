@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  9 21:14:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.16:
+  + Fix usage of depcreated GSimpleAsyncResult.
+  + Build updates. Meson requirement is now 0.62.
+  + Fix build on Darwin.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 23 15:21:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to soup3 again: Drop pkgconfig(libsoup-2.4) and enable
