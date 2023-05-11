@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 10:52:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.0
+  Features
+  * Add support to retry known connection errors (#375)
+
+-------------------------------------------------------------------
 Tue Mar  7 10:30:15 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4.1

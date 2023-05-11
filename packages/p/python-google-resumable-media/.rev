@@ -208,4 +208,14 @@
   * python-google-resumable-media-no-mock.patch (forwarded request 1069897 from glaubitz)</comment>
     <requestid>1069913</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e63facf9c1018d0097017220e845ca9b</srcmd5>
+    <version>2.5.0</version>
+    <time>1683807237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0
+  Features
+  * Add support to retry known connection errors (#375) (forwarded request 1086484 from glaubitz)</comment>
+    <requestid>1086489</requestid>
+  </revision>
 </revisionlist>

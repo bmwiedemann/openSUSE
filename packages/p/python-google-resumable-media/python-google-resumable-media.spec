@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-google-resumable-media
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
