@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed May 10 16:07:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-sdist-target.patch to fix tests: gh#pypa/hatch@1b10663e645e
+
+-------------------------------------------------------------------
+Fri May  5 10:45:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * The `src-layout` project template option is now enabled by
+    default
+  * Non-critical output now goes to stderr
+  * Add `tool.hatch.env.requires` configuration to automatically
+    install dependencies for environment and environment
+    collector plugins
+  * Add `custom` environment collector
+  * Improve syncing of dependencies provided through Git direct
+    references
+  * Add `isolated_data_directory` attribute to the environment
+    interface
+  * Increase the timeout for and add retries to the `index`
+    publisher
+  * Expand home and environment variables in configured cache and
+    data directories
+  * Improve readability of exceptions
+  * Update project templates
+  * Bump the minimum supported version of Hatchling to 1.14.0
+  * Fix displaying the version with the `version` command when
+    the version is static and build dependencies are unmet
+  * Fix build environments for the `virtual` environment type
+    when storing within a relative path
+  * Allow setuptools metadata migration for projects without
+    `setup.py` if `setup.cfg` is present
+  * Handle additional edge cases for setuptools metadata
+    migration
+  * Support boolean values for the `config set` command
+- drop hatch-pr659-utf8.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Jan  6 16:17:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.6.3

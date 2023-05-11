@@ -26,17 +26,17 @@
 %endif
 
 Name:           python-hatch%{psuffix}
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
 URL:            https://hatch.pypa.io/latest/
 # SourceRepository: https://github.com/pypa/hatch
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM hatch-pr659-utf8.patch gh#pypa/hatch#659 required due to newer hatchling
-Patch1:         hatch-pr659-utf8.patch
+# PATCH-FIX-UPSTREAM fix-sdist-target.patch -- gh#pypa/hatch@1b10663e645e
+Patch0:         fix-sdist-target.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 1.11.0}
+BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
