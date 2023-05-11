@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * Fix margins around distro upgrade message (kde#469163)
+  * rpm-ostree: Do not offer resources when the search doesn't pertain (kde#468162)
+  * Updates page: fix missing clip causing items to paint over logging scrollview
+  * updates ui: Simplify bottom toolbar logic (kde#468459)
+  * flatpak: Do not crash if for any reason we lack a ref's source (kde#467827)
+  * PackageKitNotifier: Do not refresh database if update is in progress
+  * fwupd: Set user agent, and allow following redirects
+  * Allow building against libmarkdown3
+  * Always clear offline updates file after a repair operation (kde#451753,kde#450973)
+  * ApplicationPage: Fix layout for content rating dialog (kde#466815)
+  * flatpak: Report latest available version (kde#465864,kde#448521)
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
