@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 11 08:52:03 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 9.5.2:
+  * Bug fixes
+    - Explore: Update table min height
+    - DataLinks: Encoded URL fixed.
+
+-------------------------------------------------------------------
 Wed Apr 26 10:57:01 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 9.5.0 (CVE-2023-1387, bsc#1210907)
