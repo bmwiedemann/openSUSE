@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 10 06:42:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.4:
+  * Internal cleanup.
+  * A/an support now more correctly honors leading
+  * capitalized words and abbreviations.
+  * Improve support for ordinals for floats.
+  * Require pydantic 1.9.1 to avoid ``ValueError``.
+  * Minor tweaks and packaging refresh.
+  * ``compare`` methods now validate their inputs
+    and will raise a more meaningful exception if an
+    empty string or None is passed. This expectation is now
+    documented.
+  * Many public methods now perform validation on arguments.
+  * An empty string is no longer allowed for words or text.
+  * #15: Fixes to plural edge case handling.
+  * Packaging refresh and docs update.
+  * #153: Internal refactor to simplify and unify
+    ``_plnoun`` and ``_sinoun``.
+  * Fixed badges.
+  * Rewrite to satisfy type checkers.
+  * #147: Enhanced type annotations.
+  * Add a ``py.typed`` file so mypy recognizes type
+    annotations.
+  * Misc fixes in #128, #134, #135, #137, #138, #139, #140, #142,
+  * #143, #144.
+  * Require Python 3.7 or later.
+  * Add support for pluralizing open compound nouns.
+  * Modernized the codebase. Added a lot of type
+    annotations.
+  * Add support for uncountable nouns.
+  * Refreshed package metadata.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -47,4 +47,41 @@
     <comment></comment>
     <requestid>1081883</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ea793b8d4f9c4203d371de8b3d1a7c2</srcmd5>
+    <version>6.0.4</version>
+    <time>1683801092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.4:
+  * Internal cleanup.
+  * A/an support now more correctly honors leading
+  * capitalized words and abbreviations.
+  * Improve support for ordinals for floats.
+  * Require pydantic 1.9.1 to avoid ``ValueError``.
+  * Minor tweaks and packaging refresh.
+  * ``compare`` methods now validate their inputs
+    and will raise a more meaningful exception if an
+    empty string or None is passed. This expectation is now
+    documented.
+  * Many public methods now perform validation on arguments.
+  * An empty string is no longer allowed for words or text.
+  * #15: Fixes to plural edge case handling.
+  * Packaging refresh and docs update.
+  * #153: Internal refactor to simplify and unify
+    ``_plnoun`` and ``_sinoun``.
+  * Fixed badges.
+  * Rewrite to satisfy type checkers.
+  * #147: Enhanced type annotations.
+  * Add a ``py.typed`` file so mypy recognizes type
+    annotations.
+  * Misc fixes in #128, #134, #135, #137, #138, #139, #140, #142,
+  * #143, #144.
+  * Require Python 3.7 or later.
+  * Add support for pluralizing open compound nouns.
+  * Modernized the codebase. Added a lot of type
+    annotations.
+  * Add support for uncountable nouns.
+  * Refreshed package metadata.</comment>
+    <requestid>1085979</requestid>
+  </revision>
 </revisionlist>
