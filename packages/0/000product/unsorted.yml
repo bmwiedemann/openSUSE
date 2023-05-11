@@ -2449,6 +2449,7 @@ unsorted:
   - coredns-for-k8s1.27-extras 
   - corepack18 
   - corepack19 
+  - corepack20 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -2931,6 +2932,7 @@ unsorted:
   - ddccontrol-lang 
   - ddclient 
   - ddcutil 
+  - ddcutil-i2c-udev-rules 
   - ddgr 
   - ddnet 
   - ddnet-data 
@@ -4434,7 +4436,6 @@ unsorted:
   - gcc7-obj-c++-32bit 
   - gcc7-objc 
   - gcc7-objc-32bit 
-  - gcc7-testresults 
   - gccmakedep 
   - gcdemu 
   - gcdemu-lang 
@@ -15357,7 +15358,7 @@ unsorted:
   - libtrilinos_14_0_0-gnu-openmpi4-hpc 
   - libtrng4-24 
   - libts0-32bit 
-  - libtsan0 
+  - libtsan0-gcc11 
   - libtsan0-gcc7 
   - libtsan2-gcc12 
   - libtsk19 
@@ -15776,7 +15777,6 @@ unsorted:
   - libwtdbo4_8_1 
   - libwtdbomysql4_8_1 
   - libwtdbopostgres4_8_1 
-  - libwtmpdb0 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_base-suse-devel 
@@ -18543,8 +18543,11 @@ unsorted:
   - nodejs18 
   - nodejs18-devel 
   - nodejs18-docs 
+  - nodejs19 
   - nodejs19-devel 
   - nodejs19-docs 
+  - nodejs20-devel 
+  - nodejs20-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -18807,6 +18810,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm18 
+  - npm19 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -25451,7 +25455,6 @@ unsorted:
   - python310-pytest-subprocess 
   - python310-pytest-subtests 
   - python310-pytest-sugar 
-  - python310-pytest-super-check 
   - python310-pytest-svn 
   - python310-pytest-testconfig 
   - python310-pytest-testinfra 
@@ -28848,7 +28851,6 @@ unsorted:
   - python311-pytest-subprocess 
   - python311-pytest-subtests 
   - python311-pytest-sugar 
-  - python311-pytest-super-check 
   - python311-pytest-svn 
   - python311-pytest-testconfig 
   - python311-pytest-testinfra 
@@ -32314,7 +32316,6 @@ unsorted:
   - python39-pytest-subprocess 
   - python39-pytest-subtests 
   - python39-pytest-sugar 
-  - python39-pytest-super-check 
   - python39-pytest-svn 
   - python39-pytest-testconfig 
   - python39-pytest-testinfra 
@@ -45600,7 +45601,6 @@ unsorted:
   - wsmancli 
   - wt 
   - wt-devel 
-  - wtmpdb 
   - wtmpdb-devel 
   - wtype 
   - wumpus 

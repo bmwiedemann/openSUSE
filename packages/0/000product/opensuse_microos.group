@@ -152,7 +152,6 @@
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-apparmor -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -1873,6 +1872,7 @@
     <package name="libwpg-0_3-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libwps-0_4-4" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libwrap0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libwtmpdb0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libx86emu3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="libxapian30" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libxcb-composite0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
@@ -2717,6 +2717,7 @@
     <package name="wpa_supplicant" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="wqy-zenhei-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="wsdd" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="wtmpdb" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="x11-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="xano-mincho-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="xauth" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
