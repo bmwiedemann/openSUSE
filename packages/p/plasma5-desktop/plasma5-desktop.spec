@@ -27,7 +27,7 @@
 
 %bcond_without released
 Name:           plasma5-desktop
-Version:        5.27.4
+Version:        5.27.5
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -42,8 +42,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-KCM-mouse-enable-compatibility-with-x11-libinput-1.3.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Apply-branding-to-default-favorites.patch
 Patch101:       0002-No-usr-bin-env-in-shebangs.patch
