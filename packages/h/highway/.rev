@@ -71,4 +71,12 @@
     <comment>- Update to release 1.0.4</comment>
     <requestid>1072726</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>953dde49ad0761e447616cb189b3121d</srcmd5>
+    <version>1.0.4</version>
+    <time>1683801117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-forced-inline.diff [boo#1211093]</comment>
+    <requestid>1086050</requestid>
+  </revision>
 </revisionlist>

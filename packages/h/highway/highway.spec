@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz
 Source1:        baselibs.conf
+Patch1:         no-forced-inline.diff
 # https://github.com/google/highway/issues/776
 %if 0%{?suse_version} > 1550
 BuildRequires:  c++_compiler

@@ -1,0 +1,29 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-05-10 12:35:31.076671893 +0200
+References: https://bugzilla.suse.com/1211093
+
+gcc on ppc64le says:
+
+[  265s] /home/abuild/rpmbuild/BUILD/highway-1.0.4/hwy/base.h:1029:14: error: inlining failed in call to 'always_inline' 'hwy::PreventElision<int&>(int&)void': target specific option mismatch
+[  265s]  1029 | HWY_API void PreventElision(T&& output) {
+
+Given always_inline is not mandatory but conditional on __OPTIMIZE__, stop making it
+mandatory for the __OPTIMIZE__ case too.
+
+---
+ hwy/base.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: highway-1.0.4/hwy/base.h
+===================================================================
+--- highway-1.0.4.orig/hwy/base.h
++++ highway-1.0.4/hwy/base.h
+@@ -65,7 +65,7 @@
+ // force inlining without optimization enabled creates very inefficient code
+ // that can cause compiler timeout
+ #ifdef __OPTIMIZE__
+-#define HWY_INLINE inline __attribute__((always_inline))
++#define HWY_INLINE inline
+ #else
+ #define HWY_INLINE inline
+ #endif
