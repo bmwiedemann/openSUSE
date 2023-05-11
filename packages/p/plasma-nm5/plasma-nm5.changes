@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * Use nm_conn_wireguard_import to import WireGuard files (kde#420066,kde#468365,kde#452952,kde#423973,kde#427222)
+  * Persist imported VPN connections on disk (kde#468666)
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
