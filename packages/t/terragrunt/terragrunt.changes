@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 04:51:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.11:
+  * fix: disable sending a second interrupt signal to `terraform`
+    (#2559)
+
+-------------------------------------------------------------------
 Tue May 09 05:41:30 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.10:
