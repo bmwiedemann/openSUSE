@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 10 07:29:32 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not write the EAP auth attribute when writing a wireless
+  wicked configuration using the EAP mode as TLS (bsc#1211026)
+- 4.6.3
+
+-------------------------------------------------------------------
 Mon May  8 09:07:07 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix summary crash when there is no interface available
