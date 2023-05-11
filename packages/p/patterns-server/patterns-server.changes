@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 20:57:18 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- kvm and xen patterns:
+  - Remove Requires/Recommends on obsolete vm-install
+  - Change virt-install from Recommends to Requires in _tools
+  - Remove Requires on obsolete kernel-xen
+
+-------------------------------------------------------------------
 Mon Feb 13 09:31:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop recommends on yast2-{dns,dhcp,http}-server: yast modules are

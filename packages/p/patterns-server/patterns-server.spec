@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ not make sense.
 This particular package contains all the server related patterns
 
 ################################################################################
+
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -193,7 +194,6 @@ Requires:       pattern() = basesystem
 Recommends:     libvirt-daemon-qemu
 Recommends:     tigervnc
 Recommends:     virt-install
-Recommends:     vm-install
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-kvm_server = %{version}
 Obsoletes:      patterns-openSUSE-kvm_server < %{version}
@@ -243,11 +243,10 @@ Requires:       pattern() = basesystem
 Requires:       pattern() = kvm_server
 # bnc#868542
 Requires:       virt-manager
-Requires:       vm-install
+Requires:       virt-install
 Recommends:     openssh
 # BSC#1078908
 Recommends:     vim
-Recommends:     virt-install
 Recommends:     virt-v2v
 Recommends:     virt-viewer
 Recommends:     xorg-x11-xauth
@@ -393,7 +392,6 @@ Provides:       pattern() = xen_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3080
 Provides:       pattern-visible()
-Requires:       kernel-xen
 Requires:       tftp
 Requires:       xen
 Requires:       xen-libs
@@ -403,7 +401,6 @@ Recommends:     libvirt-daemon-xen
 Recommends:     tigervnc
 # #382423
 Recommends:     virt-install
-Recommends:     vm-install
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-xen_server = %{version}
 Obsoletes:      patterns-openSUSE-xen_server < %{version}
@@ -439,11 +436,10 @@ Requires:       pattern() = basesystem
 Requires:       pattern() = xen_server
 # bnc#868542
 Requires:       virt-manager
-Requires:       vm-install
+Requires:       virt-install
 Recommends:     openssh
 # BSC#1078908
 Recommends:     vim
-Recommends:     virt-install
 Recommends:     virt-viewer
 #Recommends:     sles-xen_en-pdf
 Recommends:     xen-doc-html
