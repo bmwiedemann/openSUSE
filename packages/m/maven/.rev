@@ -119,4 +119,12 @@
     <comment>3.9.1</comment>
     <requestid>1084536</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4ab5d7358f7479349a1a7fdacede4980</srcmd5>
+    <version>3.9.1</version>
+    <time>1683801262</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1211198</comment>
+    <requestid>1086221</requestid>
+  </revision>
 </revisionlist>

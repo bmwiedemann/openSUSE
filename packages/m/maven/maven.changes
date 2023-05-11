@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 08:39:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0001-Adapt-mvn-script.patch
+    + revert to older version which worked well (bsc#1211198)
+
+-------------------------------------------------------------------
 Wed May  3 11:44:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.1
