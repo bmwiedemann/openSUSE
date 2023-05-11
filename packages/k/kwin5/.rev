@@ -1556,4 +1556,13 @@
     <comment></comment>
     <requestid>1078477</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>150a5588cd0566b269def9e8c5be2fc4</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801160</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix a rounding error with scaling (kde#459373):
+  * 0001-xcbutils-fix-nativeFloor.patch (forwarded request 1086125 from Vogtinator)</comment>
+    <requestid>1086126</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed May 10 18:58:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix a rounding error with scaling (kde#459373):
+  * 0001-xcbutils-fix-nativeFloor.patch
+
+-------------------------------------------------------------------
+Tue May  9 13:44:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * wayland: Avoid pointer warp if constraint region is invalid (kde#457021)
+  * cmake: Correct gbm version check
+  * kwineffects: Initialize m_reason
+  * screencast: Disable screencasting when a window closes (kde#469055)
+  * screencast: Do not push frames when not in a streaming state
+  * Use non-rotated physical size of an output when required
+  * ci: Pass --repeat until-pass to ctest
+  * platformsupport/scenes/opengl: filter out external formats properly
+  * effects/screenshot: Fix potentially leaking screenshot fds to child processes
+  * backends/drm: fix buffer orientation check for direct scanout
+  * plugins/screencast: Provide absolute timestamps
+  * Don't create Plasma activation feedback if StartupNotify is false
+  * effects/screenshot: Provide screenshot scale information
+  * effects/screenshot: Provide information about captured window or screen
+  * effects/screenshot: Introduce CaptureWorkspace
+  * screencast: Base the frame skippin on max_framerate
+  * screencast: Ensure we respect the negotiated framerate
+  * screencast: Offer the real framerate range we have available
+  * Blacklist Spectacle for all window open/close effects (kde#467890,kde#463105)
+  * backends/drm: set the scaling mode to none (kde#468235)
+  * screencast: Still set the size to 0 for cursor-only frames
+  * screencast: Improve how we communicate that a frame has just cursor info
+  * kcms/rules: fix invalid tooltip visible condition in rule items
+- Drop patches, now upstream:
+  * 0001-backends-drm-set-the-scaling-mode-to-none.patch
+
+-------------------------------------------------------------------
 Tue Apr 11 12:03:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix monitor settings issue on amdgpu (kde#468235):
