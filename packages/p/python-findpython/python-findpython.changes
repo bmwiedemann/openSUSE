@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 10 19:32:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.5:
+  * UTF-8 encoding of shell command output on Windows
+  * Findpython failed if PATH env contains folder
+    with restricted access
+
+-------------------------------------------------------------------
 Tue Jan 31 15:18:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.4:

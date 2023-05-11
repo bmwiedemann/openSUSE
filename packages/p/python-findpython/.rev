@@ -41,4 +41,15 @@
   * Check path access before is_dir to prevent PermissionError exceptions</comment>
     <requestid>1062290</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>388f4b20772b9d86e9c09d89d310ae23</srcmd5>
+    <version>0.2.5</version>
+    <time>1683801225</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.5:
+  * UTF-8 encoding of shell command output on Windows
+  * Findpython failed if PATH env contains folder
+    with restricted access</comment>
+    <requestid>1086128</requestid>
+  </revision>
 </revisionlist>

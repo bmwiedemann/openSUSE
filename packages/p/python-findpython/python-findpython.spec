@@ -17,7 +17,7 @@
 
 
 Name:           python-findpython
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT
