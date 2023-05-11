@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * xrandr: always try to update primary
+  * Cleanup dpms object in destructor
+  * Update edid when plugging a monitor
+
+-------------------------------------------------------------------
 Tue Apr  4 15:05:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.4
