@@ -1347,10 +1347,6 @@ python3 bin/llvm-lit -sv test/
 
 # On s390x, this test complains that a required pass couldn't be found and then crashes. (FIXME)
 sed -i '/XFAIL/i// XFAIL: s390x' ../tools/clang/test/CodeGen/sanitize-coverage-old-pm.c
-%if 0%{?suse_version} > 1500
-# We're not getting the exact crash dump that was expected. Not sure why, input is cut off.
-sed -i '1i// XFAIL: s390x' ../tools/clang/test/Driver/{crash-{diagnostics-dir.c,report-header.h,report-spaces.c},rewrite-map-in-diagnostics.c}
-%endif
 # On ppc, this test fails with "fatal error: error in backend: Relocation type not implemented yet!"
 sed -i '/UNSUPPORTED/i// XFAIL: powerpc-' ../tools/clang/test/Interpreter/execute.cpp
 # Tests hang on armv6l.

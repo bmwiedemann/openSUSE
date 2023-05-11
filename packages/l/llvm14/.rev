@@ -185,4 +185,13 @@ disable the corresponding tests.
 </comment>
     <requestid>1079674</requestid>
   </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>335354eae0fefa5459be0e136e5eb998</srcmd5>
+    <version>14.0.6</version>
+    <time>1683801216</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer expect test failures on s390x that have disappeared.
+</comment>
+    <requestid>1086114</requestid>
+  </revision>
 </revisionlist>

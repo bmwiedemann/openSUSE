@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  5 21:48:49 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- No longer expect test failures on s390x that have disappeared.
+
+-------------------------------------------------------------------
 Sat Apr 15 18:49:13 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Ignore test failures on Leap 15.x ppc64le.
