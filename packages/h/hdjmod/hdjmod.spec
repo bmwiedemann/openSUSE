@@ -1,7 +1,7 @@
 #
 # spec file for package hdjmod
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           hdjmod
-Version:        1.33
+Version:        1.34
 Release:        0
 Summary:        Support for Hercules DJ Devices
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          System/Kernel
 URL:            https://codeberg.org/Marix/hdjmod
 Source0:        https://codeberg.org/Marix/hdjmod/archive/%{version}.tar.gz#/hdjmod-%{version}.tar.gz
 Source1:        preamble
-# PATCH-FIX-UPSTREAM hdjmod_fix_hotplug.patch [bnc#746358] marix@marix.org -- Don't load on hotplug of devices from other vendors
-Patch1:         hdjmod_fix_hotplug.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  libelf-devel
 %suse_kernel_module_package -p%{_sourcedir}/preamble
@@ -39,7 +37,6 @@ This is the Hercules DJ Series Kernel Module, which supports Hercules DJ Devices
 echo %{flavors_to_build}
 
 %setup -q -n %{name}
-%patch1 -p1
 
 set -- *
 mkdir source
