@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * Fix for screen backlight not working on Planet Computers Astro Slide PDA
+  * Fix and consolidate discharge rate and remaining time calculation
+  * Remove unused "BatteryState" from backend interface
+  * Fix possible race between DeviceAdded signal and device enumeration
+  * Remove support for UPower < 0.99.0
+
+-------------------------------------------------------------------
 Wed Apr 19 16:55:14 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Cleanup build dependencies:
