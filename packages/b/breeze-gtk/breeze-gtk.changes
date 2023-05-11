@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  9 13:44:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * 🍒gtk3/titlebutton: reduce right margin of {max/minimize} button
+  * gtk4/windowcontrols: use updated SVG assets
+  * assets: resize viewports of titlebutton SVGs
+  * gtk3: restore old icon size for titlebutton (kde#468203)
+  * gtk3: remove invalid icon size property
+- Drop patches, now upstream:
+  * 0001-gtk3-restore-old-icon-size-for-titlebutton.patch
+
+-------------------------------------------------------------------
 Sat Apr  8 09:30:51 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to fix oversized titlebuttons in GTK3 apps (kde#468203)
