@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 11 08:39:25 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+-  Upgraded to version 1.0.1 (jsc#PED-3331)
+  - add: pull_request_template.md
+    This commit adds a pullrequest template to the repository to make the PR's more uniform.
+  - add: issue templates
+    Templates to unify issues and descriptions with focus on traceability.
+  - add: CODEOWNERS file
+    Provide a fast trigger for pullrequests and assign the code owners to it.
+  - fix: remove non ASCII characters
+    remove non ASCII characters with focus on disclaimer and comments and licenses
+    call: find . -type f -exec sed -i 's/\xC2\xA0/ /g' {} \;
+    call: find . -type f -exec sed -i 's/[ \t]\+$//g' {} \;
+  - add help target to main Makefile
+    set default target .DEFAULT_GOAL for all
+  - fix error for missing config.make to GNU make syntax
+
+-------------------------------------------------------------------
 Mon Dec 13 20:08:16 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 0.4.0 (bsc#1191582)

@@ -1,7 +1,7 @@
 #
 # spec file for package libzdnn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libzdnn
-Version:        0.4.0
+Version:        1.0.1
 Release:        0
 Summary:        IBM Z Deep Learning Library
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            https://github.com/IBM/zDNN
-Source:         zDNN-0.4.0.tar.gz
+Source:         zDNN-1.0.1.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390x
