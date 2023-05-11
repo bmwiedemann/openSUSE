@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 10 06:54:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * remove leftover six import
+  * module: expose additional xcb errors
+  * Fix List.to_string()
+- drop python-xcffib-six-leftover.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

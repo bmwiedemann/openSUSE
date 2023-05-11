@@ -27,15 +27,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xcffib%{?psuffix}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A drop in replacement for xpyb, an XCB python binding
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/tych0/xcffib
 Source:         https://files.pythonhosted.org/packages/source/x/xcffib/xcffib-%{version}.tar.gz
-# https://github.com/tych0/xcffib/commit/8a488867d30464913706376ca3a9f4c98ca6c5cf
-Patch0:         python-xcffib-six-leftover.patch
 # fix ffi import [bsc#1209570c4]
 Patch1:         python-xcffib-ffi-import.patch
 BuildRequires:  %{python_module cffi >= 1.1.0}
