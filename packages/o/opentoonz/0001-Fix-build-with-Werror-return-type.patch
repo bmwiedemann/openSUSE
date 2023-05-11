@@ -1,0 +1,25 @@
+From 8cdd80a7d3e1b15006d59f09297fc769de3e2ef4 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 11 May 2023 00:48:18 +0200
+Subject: [PATCH] Fix build with -Werror=return-type
+
+---
+ toonz/sources/stdfx/igs_rotate_blur.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/toonz/sources/stdfx/igs_rotate_blur.cpp b/toonz/sources/stdfx/igs_rotate_blur.cpp
+index ff9c6fc..4ab516d 100644
+--- a/toonz/sources/stdfx/igs_rotate_blur.cpp
++++ b/toonz/sources/stdfx/igs_rotate_blur.cpp
+@@ -230,7 +230,7 @@ private:
+   // disable
+   Rotator();
+   Rotator(const Rotator&);
+-  Rotator& operator=(const Rotator&) {}
++  Rotator& operator=(const Rotator&) { return *this; }
+ };
+ //------------------------------------------------------------------
+ 
+-- 
+2.40.1
+

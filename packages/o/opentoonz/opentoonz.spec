@@ -1,7 +1,7 @@
 #
 # spec file for package opentoonz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opentoonz
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        2D animation software
 License:        BSD-2-Clause
@@ -27,10 +27,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-linker-errors-on-Linux.patch
-# PATCH-FIX-OPENSUSE -- Use the system mypaint brushes
-Patch1:         0001-Use-the-system-mypaint-brushes.patch
 # PATCH-FIX-UPSTREAM
-Patch2:         0001-Clarify-size_t-origin-for-tgc-hash-BucketNode.patch
+Patch1:         0001-Fix-build-with-Werror-return-type.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
@@ -55,6 +53,7 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5SerialPort)
 BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(freetype2)

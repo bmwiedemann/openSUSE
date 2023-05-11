@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed May 10 21:50:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.7.1
+    New Features:
+  * Enabled pasting external clipboard images
+  * Preproduction Board panel
+  * Custom Panels
+  * Main Window See Through Mod
+  * Added Haiku support
+  * Export Camera Track
+  * Export Open Cel Animation (OCA) format
+  * Export Scene
+  * Convert TZP to TLV in folder
+  * New Fx: Floor Bump Fx Iwa
+  * New Fxs: Flow Fx series
+    Audio:
+  * Added additional support for audio formats
+  * Audio in Fast Render to MP4 Extremely Boosted
+    Tools:
+  * Added Straight line mode on Brush tool
+  * Added OpenToonz vector logo brush
+  * Added Gimp (Mypaint) Brushes
+  * Added Flip and rotate toolbar options to Animate tool
+  * Added Pick + Freehand mode to Fill tool
+  * Added Triangle Brush Cursors
+  * Enabled to use MyPaint styles with Geometric tool
+    Checks:
+  * Improve Transparency Check suitable for Japanese animation
+    industry
+  * Function Editor/Curve Editor
+  * Enabled to stretch function curve keys with Alt+drag
+  * Bigger Handles & Improved Contrast
+    Histogram:
+  * Enhanced histogram popup
+    Image formats/ffmpeg:
+  * Added support for MOV, APNG and other formats
+    Rendering:
+  * Supported floating point & Linear color space rendering
+  * Enhanced viewer preview
+    Schematic:
+  * Enabled to snap schematic node
+    Xsheet/Timeline:
+  * Timeline/Xsheet navigation tags
+  * Customizable column color filters
+  * Thicken Xsheet marker lines
+  * Paste cells command behavior option
+  * Delete cells command behavior
+  * Selection aware command name
+  * Modified the "Reframe with Empty Inbetweens" command
+    behavior
+    Cache:
+  * Extended the coverage of the "Default TLV Caching Behavior"
+    option to all raster levels on any loading
+- Drop patches:
+  * 0001-Clarify-size_t-origin-for-tgc-hash-BucketNode.patch
+  * 0001-Use-the-system-mypaint-brushes.patch
+- Add patch:
+  * 0001-Fix-build-with-Werror-return-type.patch
+
+-------------------------------------------------------------------
 Mon May  8 14:15:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Disable the WITH_TRANSLATION option to avoid QTBUG-113152

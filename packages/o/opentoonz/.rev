@@ -212,4 +212,12 @@
     <comment>Fix the factory build</comment>
     <requestid>1085546</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3649125ba0bd1ddb48a96b63966d16d7</srcmd5>
+    <version>1.7.1</version>
+    <time>1683801256</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.1</comment>
+    <requestid>1086189</requestid>
+  </revision>
 </revisionlist>
