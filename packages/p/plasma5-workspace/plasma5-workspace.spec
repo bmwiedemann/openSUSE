@@ -186,6 +186,8 @@ Requires:       kuserfeedback-imports
 Requires:       xembedsniproxy >= %{_plasma5_version}
 # startkde and startplasma call these
 Requires:       awk
+# krdb uses xrdb with cpp preprocessing
+Requires:       cpp
 Requires:       xrdb
 Requires:       xsetroot
 # Used by Source3: xprop-kde-full-session.desktop

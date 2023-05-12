@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 11 13:06:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require cpp explicitly, xrdb doesn't do it anymore
+
+-------------------------------------------------------------------
 Tue May  9 13:44:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.5
