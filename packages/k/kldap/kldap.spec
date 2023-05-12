@@ -20,7 +20,7 @@
 %bcond_without released
 %define libname libKPim5Ldap5
 Name:           kldap
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        KDE PIM Libraries
 License:        LGPL-2.1-or-later
