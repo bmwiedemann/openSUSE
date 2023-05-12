@@ -1,7 +1,7 @@
 #
 # spec file for package python-geomet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geomet
-Version:        0.2.1
+Version:        1.0.0
 Release:        0
 Summary:        GeoJSON <-> WKT/WKB conversion utilities
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/geomet/geomet
 Source:         https://github.com/geomet/geomet/archive/%{version}.tar.gz
+# https://github.com/geomet/geomet/issues/90
+Patch0:         python-geomet-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
-Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -44,27 +43,19 @@ BuildRequires:  %{python_module six}
 GeoJSON <-> WKT/WKB conversion utilities
 
 %prep
-%setup -q -n geomet-%{version}
+%autosetup -p1 -n geomet-%{version}
 
 %build
+sed -i '1{/^#!/ d}' geomet/*.py
 %python_build
 
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/geomet
-rm %{buildroot}%{_prefix}/LICENSE
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PATH=$PATH:%{buildroot}%{_bindir}
-export PYTHONDONTWRITEBYTECODE=1
-cp geomet/tests/test_cli.py geomet/tests/test_cli.py.orig
-%{python_expand \
-cp geomet/tests/test_cli.py.orig geomet/tests/test_cli.py 
-sed -i 's:geomet:geomet-%{$python_version}:' geomet/tests/test_cli.py
-export PYTHONPATH=:%{buildroot}%{$python_sitelib}
-$python -m pytest
-}
+%pytest
 
 %post
 %python_install_alternative geomet

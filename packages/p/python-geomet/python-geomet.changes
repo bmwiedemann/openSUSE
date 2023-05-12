@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 11 10:38:08 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * Fix bug in _round_and_pad with exponential coordinate values (#73)
+  * Use assertNotEqual instead of assertNotEquals in tests, for Python 3.11 compatibility (#77)
+  * Add support for Python 3.8, 3.9, and 3.10 (#79, #84)
+  * Drop support for end-of-life Python versions 2.7, 3.4, 3.5, and 3.6 (#84)
+  * Fix structure of coordinate values in GeoJSON to EsriJSON conversion (#82)
+  * Update README with to add History and Limitations sections, and to expand on functionality (#86)
+- added patches
+  fix https://github.com/geomet/geomet/issues/90
+  + python-geomet-no-six.patch
+
+-------------------------------------------------------------------
 Wed Nov  4 16:23:36 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
 
 - Fix executable name substitution for Python 3 tests

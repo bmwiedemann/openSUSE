@@ -1,0 +1,61 @@
+Index: geomet-1.0.0/geomet/util.py
+===================================================================
+--- geomet-1.0.0.orig/geomet/util.py
++++ geomet-1.0.0/geomet/util.py
+@@ -12,7 +12,6 @@
+ #  See the License for the specific language governing permissions and
+ #  limitations under the License.
+ import itertools
+-import six
+ import collections.abc as collections
+ 
+ 
+@@ -115,7 +114,7 @@ def flatten_multi_dim(sequence):
+     """
+     for x in sequence:
+         if (isinstance(x, collections.Iterable)
+-                and not isinstance(x, six.string_types)):
++                and not isinstance(x, str)):
+             for y in flatten_multi_dim(x):
+                 yield y
+         else:
+Index: geomet-1.0.0/geomet/wkt.py
+===================================================================
+--- geomet-1.0.0.orig/geomet/wkt.py
++++ geomet-1.0.0/geomet/wkt.py
+@@ -13,7 +13,6 @@
+ #  limitations under the License.
+ import geomet
+ import itertools
+-import six
+ import tokenize
+ 
+ try:
+@@ -134,7 +133,7 @@ def loads(string):
+     if importer is None:
+         _unsupported_geom_type(geom_type)
+ 
+-    peek = six.advance_iterator(tokens)
++    peek = next(tokens)
+     if peek == 'EMPTY':
+         if geom_type == 'GEOMETRYCOLLECTION':
+             return dict(type='GeometryCollection', geometries=[])
+Index: geomet-1.0.0/requirements.txt
+===================================================================
+--- geomet-1.0.0.orig/requirements.txt
++++ geomet-1.0.0/requirements.txt
+@@ -1,2 +1 @@
+ click
+-six
+Index: geomet-1.0.0/setup.py
+===================================================================
+--- geomet-1.0.0.orig/setup.py
++++ geomet-1.0.0/setup.py
+@@ -65,6 +65,6 @@ setup(
+         'Topic :: Scientific/Engineering :: GIS',
+     ],
+     zip_safe=False,
+-    install_requires=['click', 'six'],
++    install_requires=['click'],
+     python_requires=">=3.7, <4",
+ )
