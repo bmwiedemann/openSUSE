@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May  4 14:47:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.5.0:
+  * Significant speed ups to the fqzcomp codec via code restructuring
+    and use of memory prefetch instructions. Encode is 30-40% faster
+    and decode 5-8% faster.
+  * Remove unused ax_with_libdeflate.m4 file from build system
+
+- removed patch fix_ix86_build.patch already merged in upstream
+
+- Update to 1.4.0:
+  * This is almost entirely minor bug fixing with a few small updates.
+  * Optimise compression / speed of the name tokeniser
+  * Improvements for Intel -m32 builds, including better AVX2 validation
+  * Detect Neon capability at runtime via operating system APIs.
+  * Update hts_pack to operate in line with CRAMcodecs spec, where the number of symbols > 16.
+  * Fixed too-stringent buffer overflow checking in O1 rans decoder.
+
+
+-------------------------------------------------------------------
 Thu Sep  8 21:52:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.3.0:
