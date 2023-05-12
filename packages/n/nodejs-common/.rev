@@ -156,4 +156,12 @@
     <comment>- Use NodeJS 19 as default for TW</comment>
     <requestid>1030688</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b1ab4bd73104848e1aae0b2e0e4c0b56</srcmd5>
+    <version>5.1</version>
+    <time>1683916335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1084077</requestid>
+  </revision>
 </revisionlist>

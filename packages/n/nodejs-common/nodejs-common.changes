@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 25 02:11:10 UTC 2023 - jsrain@suse.com
+
+- Use NodeJS 18 as default for ALP
+
+-------------------------------------------------------------------
+Wed Apr 19 13:38:14 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Use NodeJS 20 as default for TW
+
+-------------------------------------------------------------------
 Fri Oct 21 10:09:34 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Use NodeJS 19 as default for TW
