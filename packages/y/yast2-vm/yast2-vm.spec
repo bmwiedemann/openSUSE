@@ -17,7 +17,7 @@
 
 
 Name:           yast2-vm
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        Configure Hypervisor and Tools for Xen and KVM
 License:        GPL-2.0-only

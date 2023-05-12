@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 20 15:22:54 MDT 2023 - carnold@suse.com
+
+- The libvirtd daemon is deprecated and is going away.
+  The replacements are virtqemud for KVM/qemu and virtxend for Xen.
+  (bsc#1210572)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
