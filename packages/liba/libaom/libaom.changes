@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 10 21:07:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.1:
+  * aomedia:2871: Guard the support of the 7.x and 8.x levels for
+    AV1 under the CONFIG_CWG_C013 config flag, and only output the
+    7.x and 8.x levels when explicitly requested.
+  * aomedia:3382: Choose sb_size by ppi instead of svc.
+  * aomedia:3384: Fix fullpel search limits.
+  * aomedia:3388: Replace left shift of xq_active by
+    multiplication.
+  * aomedia:3389: Fix MV clamping in av1_mv_pred.
+  * aomedia:3390: set_ld_layer_depth: cap max_layer_depth to
+    MAX_ARF_LAYERS.
+  * aomedia:3418: Fix MV clamping in av1_int_pro_motion_estimation.
+  * aomedia:3429: Move lpf thread data init to
+    lpf_pipeline_mt_init().
+  * b:266719111: Fix undefined behavior in Arm Neon code.
+  * b:269840681: nonrd_opt: align scan tables.
+  * rtc: Fix is_key_frame setting in variance partition.
+  * Build: Fix build with clang-cl and Visual Studio.
+
+-------------------------------------------------------------------
 Tue May  2 13:29:18 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Revert to BSD-2-Clause licence tag to only use SPDX valid

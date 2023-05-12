@@ -20,7 +20,7 @@
 %define __builder ninja
 %define __builddir _build
 Name:           libaom
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        AV1 codec library
 License:        BSD-2-Clause
