@@ -899,4 +899,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080523</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>60fce805ce0455f3506a33d6ac5621a1</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916473</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086237</requestid>
+  </revision>
 </revisionlist>
