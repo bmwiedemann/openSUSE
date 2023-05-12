@@ -51,10 +51,16 @@
 %bcond_without pipewire_jack_devel
 %endif
 
+%if 0%{?ffmpeg_pref:1}
+%bcond_without ffmpeg
+%else
+%bcond_with ffmpeg
+%endif
+
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.69
+Version:        0.3.70
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,10 +70,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-Revert-alsa-mixer-allow-to-re-attach-the-mixer-control.patch
-Patch1:         0001-Revert-alsa-mixer-allow-to-re-attach-the-mixer-control.patch
-# PATCH-FIX-UPSTREAM 0002-alsa-fix-area-pointers.patch
-Patch2:         0002-alsa-fix-area-pointers.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -104,10 +106,10 @@ BuildRequires:  pkgconfig(jack) >= 1.9.10
 BuildRequires:  pkgconfig(ldacBT-abr)
 BuildRequires:  pkgconfig(ldacBT-enc)
 %endif
-# ffmpeg disabled on purpose, only used for pw-play and pw-record (break circular dependency with ffmpeg).
-#BuildRequires:  pkgconfig(libavcodec)
-#BuildRequires:  pkgconfig(libavfilter)
-#BuildRequires:  pkgconfig(libavformat)
+%if %{with ffmpeg}
+# Break circular dependency with ffmpeg
+BuildRequires:  %{ffmpeg_pref}-mini-devel
+%endif
 BuildRequires:  pkgconfig(lc3)
 %if %{with libcamera}
 BuildRequires:  libcamera-devel >= 0.0.1
@@ -328,6 +330,8 @@ Summary:        PipeWire media server ALSA support
 Group:          Development/Libraries/C and C++
 Requires:       %{libpipewire} >= %{version}-%{release}
 Recommends:     %{name} >= %{version}-%{release}
+# Both providing /etc/alsa/conf.d/99-*-default.conf can cause issues
+Conflicts:      alsa-plugins-pulse
 
 %description alsa
 This package contains an ALSA plugin for the PipeWire media server.
@@ -369,7 +373,11 @@ export CXX=g++-9
     -Ddocs=enabled \
     -Dman=enabled \
     -Dgstreamer=enabled \
+%if %{with ffmpeg}
+    -Dffmpeg=enabled \
+%else
     -Dffmpeg=disabled \
+%endif
     -Dsystemd=enabled \
     -Dsystemd-user-unit-dir=%{_userunitdir} \
     -Droc=disabled \
@@ -603,7 +611,9 @@ fi
 %{_libdir}/spa-%{spa_ver}/avb/
 %{_libdir}/spa-%{spa_ver}/bluez5/
 %{_libdir}/spa-%{spa_ver}/control/
-#%%{_libdir}/spa-%%{spa_ver}/ffmpeg/
+%if %{with ffmpeg}
+%{_libdir}/spa-%{spa_ver}/ffmpeg/
+%endif
 %{_libdir}/spa-%{spa_ver}/jack/
 %if %{with libcamera}
 %{_libdir}/spa-%{spa_ver}/libcamera/
@@ -651,6 +661,7 @@ fi
 %files tools
 %{_bindir}/pw-cat
 %{_bindir}/pw-cli
+%{_bindir}/pw-config
 %{_bindir}/pw-dot
 %{_bindir}/pw-dsdplay
 %{_bindir}/pw-dump
@@ -670,6 +681,7 @@ fi
 %{_bindir}/pw-v4l2
 %{_mandir}/man1/pw-cat.1%{?ext_man}
 %{_mandir}/man1/pw-cli.1%{?ext_man}
+%{_mandir}/man1/pw-config.1%{?ext_man}
 %{_mandir}/man1/pw-dot.1%{?ext_man}
 %{_mandir}/man1/pw-link.1%{?ext_man}
 %{_mandir}/man1/pw-metadata.1%{?ext_man}

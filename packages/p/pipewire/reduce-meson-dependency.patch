@@ -4,7 +4,7 @@ Index: pipewire-0.3.69/meson.build
 +++ pipewire-0.3.69/meson.build
 @@ -1,7 +1,7 @@
  project('pipewire', ['c' ],
-   version : '0.3.69',
+   version : '0.3.70',
    license : [ 'MIT', 'LGPL-2.1-or-later', 'GPL-2.0-only' ],
 -  meson_version : '>= 0.61.1',
 +  meson_version : '>= 0.59.4',
