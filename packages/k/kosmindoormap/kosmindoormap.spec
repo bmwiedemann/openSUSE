@@ -19,7 +19,7 @@
 %define soversion 1
 %bcond_without released
 Name:           kosmindoormap
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        OSM indoor map QML component
 License:        LGPL-2.0-or-later AND CC0-1.0

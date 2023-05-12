@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Consider local names as alternative when no element name is available
+  * Enable info boxes for trees
+  * Fix hit detection for icons using a physical size
+  * Implement MapCSS text-position declarations properly
+  * Render kerb lines much less prominently
+  * Support setting negative numeric tag values in MapCSS
+  * Better distinguish rendering of different barrier types
+  * Render shrubs
+  * Fix display of service roads in light style
+  * Add User-Agent header for downloading map tiles
+
+-------------------------------------------------------------------
 Sat Apr 15 08:46:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
