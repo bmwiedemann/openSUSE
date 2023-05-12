@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu May 11 19:20:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.2:
+  * Cache results for Container.Import and Container.Build (#5014)
+  * raise an error for WithWorkdir + existing session (#5126)
+  * fix Version handling (#5125)
+  * docs: Made sidebar menu collapsible (#5120)
+  * Implement chunked reader for File.Contents (#5123)
+  * Introduce Progrock and inline progress UI (#5078)
+  * docs: Removed CUE references (#5097)
+  * Upgrade to buildkit commit with fix for cache ref leak. (#5122)
+  * docs: quickstart, fix Go publish snippet (#5121)
+  * test: add initial test for RegistryAuthProvider in auth package
+    (#5119)
+  * Grab bag of minor logging+performance improvements in cache
+    (#5116)
+  * Minor test coverage improvement for marshalling functions
+    (#5115)
+  * telemetry: update auth flow (#4987)
+  * docs: Add new recipes to cookbook (#5040)
+  * build(deps): bump golang.org/x/net (#5113)
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.2.0 (#5111)
+  * Revert "Use strings.Builder for querybuilder marshal method
+    (#5008)" (#5114)
+  * build(deps): bump golang.org/x/term from 0.7.0 to 0.8.0 (#5108)
+  * build(deps): bump github.com/google/go-github/v50 from 50.1.0
+    to 50.2.0 (#5104)
+  * build(deps): bump golang.org/x/sync in /internal/mage (#5100)
+  * tooling: Reduce frequency of Dependabot PRs (#5099)
+  * docs: Used stderr in get started guide snippets (#5094)
+  * docs: Added multi-lang snippets for host fs guide (#4999)
+  * docs: Fix quickstart Node.js tabs (#5089)
+  * python: Broaden `Path` type in `Config` (#5090)
+  * docs: Updated Node.js get started guide (#5030)
+  * Use strings.Builder for querybuilder marshal method (#5008)
+  * docs: Fixed error in quickstart caching embed (py) (#5085)
+  * docs: Added guide on Docker alternatives (#5053)
+  * docs: Added troubleshooting guide (#5046)
+  * fix: Correct help output examples for dagger run (#5009)
+  * telemetry: make run_id optional (#5066)
+  * docs: Added lang snippets for multi-stage guide (#5028)
+  * Truncate stdout/stderr from shim rather than session. (#5072)
+  * docs: Updated embeds to use correct repo (#5059)
+  * cache: Support extra headers for pre-signed URLs (#5068)
+  * cache: Use URLs to sync layers and mounts. (#5050)
+  * Add support for pushing engine logs to cloud (#5051)
+  * add --pprof flag for serving net/http/pprof handlers (#5011)
+  * Improve releasing during v0.5.1 (#5056)
+
+-------------------------------------------------------------------
 Sun Apr 30 07:00:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.1:
