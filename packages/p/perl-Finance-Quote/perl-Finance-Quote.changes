@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 11 15:29:29 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update cpanspec.yml and regenerate spec file
+
+-------------------------------------------------------------------
+Thu May  4 18:40:13 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- updated to 1.54
+  * See /usr/share/doc/packages/perl-Finance-Quote/Changes
+- Add upstream Fix-FTFunds-regex.patch
+
+-------------------------------------------------------------------
 Wed Aug 25 16:46:10 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 1.51

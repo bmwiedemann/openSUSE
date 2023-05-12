@@ -484,4 +484,16 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
     <comment></comment>
     <requestid>918697</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8973eeb4c779ebed3befcbbb687fc01d</srcmd5>
+    <version>1.54</version>
+    <time>1683916653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update cpanspec.yml and regenerate spec file
+- updated to 1.54
+  * See /usr/share/doc/packages/perl-Finance-Quote/Changes
+- Add upstream Fix-FTFunds-regex.patch
+</comment>
+    <requestid>1086576</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Finance-Quote
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.51
+Version:        1.54
 Release:        0
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
@@ -26,8 +26,10 @@ Summary:        Get stock and mutual fund quotes from various exchanges
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPSCHUCK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM https://github.com/finance-quote/finance-quote/commit/504fcc1ae35fd9c1e59949281e2939bda6a971a5
+Patch0:         https://github.com/finance-quote/finance-quote/commit/504fcc1ae35f.patch#/Fix-FTFunds-regex.patch
 # PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=66235
-Patch0:         perl-Finance-Quote-66235-Cdnfundlibrary-row.patch
+Patch1:         perl-Finance-Quote-66235-Cdnfundlibrary-row.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -38,6 +40,7 @@ BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::Duration)
 BuildRequires:  perl(DateTime::Format::ISO8601)
 BuildRequires:  perl(DateTime::Format::Strptime)
+BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::TableExtract)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(HTML::TokeParser::Simple)
@@ -50,9 +53,12 @@ BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Status)
 BuildRequires:  perl(IO::Uncompress::Unzip)
 BuildRequires:  perl(JSON)
+BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(LWP::Simple)
-BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  perl(LWP::UserAgent) >= 6.48
 BuildRequires:  perl(Module::Load)
+BuildRequires:  perl(Mozilla::CA)
+BuildRequires:  perl(Readonly)
 BuildRequires:  perl(Spreadsheet::XLSX)
 BuildRequires:  perl(String::Util)
 BuildRequires:  perl(Test::Kwalitee)
@@ -68,6 +74,7 @@ BuildRequires:  perl(XML::LibXML)
 BuildRequires:  perl(feature)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::Format::Strptime)
+Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::TableExtract)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(HTML::TokeParser::Simple)
@@ -80,9 +87,12 @@ Requires:       perl(HTTP::Request::Common)
 Requires:       perl(HTTP::Status)
 Requires:       perl(IO::Uncompress::Unzip)
 Requires:       perl(JSON)
+Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::Simple)
-Requires:       perl(LWP::UserAgent)
+Requires:       perl(LWP::UserAgent) >= 6.48
 Requires:       perl(Module::Load)
+Requires:       perl(Mozilla::CA)
+Requires:       perl(Readonly)
 Requires:       perl(Spreadsheet::XLSX)
 Requires:       perl(String::Util)
 Requires:       perl(Text::Template)
@@ -109,6 +119,7 @@ second part (in this case, "price") is referred to as the label.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p1
+
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -124,7 +135,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README README.md
 %license LICENSE
 
 %changelog
