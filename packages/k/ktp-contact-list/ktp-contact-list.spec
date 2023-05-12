@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-contact-list
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Telepathy contact list
 License:        LGPL-2.1-or-later
