@@ -1,0 +1,9 @@
+Granting users access for mouse configuration
+=============================================
+
+Piper utilises the ratbagd daemon to access the mice for configuration.
+Access to that daemon is restricted to users in the group "games".
+Thus, any user that should be able to utilise Piper needs to be added
+to that group. Otherwise Piper will show the following error message on
+start: "Cannot connect to ratbagd. Please make sure ratbagd is running
+and your user is in the required group."

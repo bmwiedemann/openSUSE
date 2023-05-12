@@ -146,4 +146,15 @@ changes incompatibly.</comment>
     <comment></comment>
     <requestid>985122</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>12ce85368675f2e13ad0ab2f6da62111</srcmd5>
+    <version>0.7</version>
+    <time>1683916631</time>
+    <user>dimstar_suse</user>
+    <comment>- Document the need for users of Piper to be a member of the
+  group games (bsc#1210669)
+  * In the package description
+  * In the new README.SUSE file</comment>
+    <requestid>1086540</requestid>
+  </revision>
 </revisionlist>

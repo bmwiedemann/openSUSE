@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 11 13:14:05 UTC 2023 - Matthias Bach <marix@marix.org> - 0.7
+
+- Document the need for users of Piper to be a member of the
+  group games (bsc#1210669)
+  * In the package description
+  * In the new README.SUSE file
+
+-------------------------------------------------------------------
 Sun Jun 26 08:23:26 UTC 2022 - marix@marix.org - 0.7
 
 - Update to version 0.7:

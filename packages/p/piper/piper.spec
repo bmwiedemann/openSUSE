@@ -1,7 +1,7 @@
 #
 # spec file for package piper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,8 @@ Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/libratbag/piper
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        README.SUSE
 Patch1:         shebang-env.patch
 BuildRequires:  AppStream
 BuildRequires:  fdupes
@@ -49,10 +50,11 @@ BuildArch:      noarch
 %description
 Piper is a GTK+ application to configure gaming mice. It is a graphical frontent
 to the ratbagd DBUS daemon which provides the actual configuration support for the
-devices.
+devices to any user in the group "games".
 
 %prep
 %autosetup -p1
+cp %{SOURCE1} .
 
 %build
 PATH="${PATH}:%{_sbindir}" %meson
@@ -77,5 +79,6 @@ PATH="${PATH}:%{_sbindir}" %meson
 %{_datadir}/piper
 %{python3_sitelib}/*
 %{_mandir}/man1/piper.1%{?ext_man}
+%doc README.SUSE
 
 %changelog
