@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 12 13:31:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop optional mypy testing dependency
+
+-------------------------------------------------------------------
 Fri May  5 12:35:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:

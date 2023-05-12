@@ -115,4 +115,12 @@
 - drop python311.patch, loguru-fix-repr-tests.patch: upstream</comment>
     <requestid>1085121</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>044f584c8e5014d75554c4f806579015</srcmd5>
+    <version>0.7.0</version>
+    <time>1683916739</time>
+    <user>dimstar_suse</user>
+    <comment>- drop optional mypy testing dependency</comment>
+    <requestid>1086767</requestid>
+  </revision>
 </revisionlist>

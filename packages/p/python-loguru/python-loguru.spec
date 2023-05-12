@@ -30,7 +30,6 @@ URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -55,6 +54,7 @@ which dispatches log messages to configured handlers.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm -v tests/test_type_hinting.py
 export LANG=en_US.UTF-8
 if [ $(getconf LONG_BIT) = 32 ]; then
   # Threads have different references on 32-bit
