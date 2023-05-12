@@ -21,7 +21,7 @@
 %define libname libKPim5AkonadiMime5
 %bcond_without released
 Name:           akonadi-mime
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
