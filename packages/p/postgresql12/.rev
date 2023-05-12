@@ -325,4 +325,18 @@ Upgrade to version 12.6:
   name and OBS internal dependency tracking.</comment>
     <requestid>1081148</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>68f5cb70f4779dd150083eabd4be52cb</srcmd5>
+    <version>12.15</version>
+    <time>1683916636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.15:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/12/release-12-15.html</comment>
+    <requestid>1086557</requestid>
+  </revision>
 </revisionlist>

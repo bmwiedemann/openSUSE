@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 10 13:05:58 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 12.15:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/12/release-12-15.html
+
+-------------------------------------------------------------------
 Tue Apr 18 09:05:09 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1210303: Stop using the obsolete internal %_restart_on_update
