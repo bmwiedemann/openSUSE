@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           minuet
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        A KDE Software for Music Education
 License:        GPL-2.0-or-later
