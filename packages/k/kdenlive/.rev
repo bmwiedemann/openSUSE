@@ -996,4 +996,12 @@ I would be grateful.
   * 0001-Fix-project-corruption-on-opening-add-test-to-preven.patch</comment>
     <requestid>1083836</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>7394106a1c91976d6e3f98b76e5df8d3</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916511</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086301</requestid>
+  </revision>
 </revisionlist>

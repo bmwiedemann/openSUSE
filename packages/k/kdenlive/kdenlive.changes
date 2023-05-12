@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  9 10:46:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Too many changes since 23.04.0, only listing bugfixes:
+  * Fix Defish range for recently introduced parameters (kde#469390)
+  * Fix animated color parameter alpha broken (kde#469155)
+  * Don't attempt to move external proxy clips (kde#468998)
+  * Fix crash on unconfigured speech engine (kde#469201)
+  * Fix VOSK model hidden from auto subtitle dialog. (kde#469230)
+- Drop patch, merged upstream:
+  * 0001-Fix-project-corruption-on-opening-add-test-to-preven.patch
+
+-------------------------------------------------------------------
 Mon May  1 07:31:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix for kde#468962:
