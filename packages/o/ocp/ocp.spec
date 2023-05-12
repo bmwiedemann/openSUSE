@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ocp
-Version:        0.2.103
+Version:        0.2.104
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
-License:        GPL-2.0-or-later AND CC-BY-3.0
+License:        CC-BY-3.0 AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://stian.cubic.org/coding-ocp.php
 Source0:        https://stian.cubic.org/ocp/%{name}-%{version}.tar.bz2
