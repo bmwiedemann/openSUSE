@@ -21,6 +21,8 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_pp_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
