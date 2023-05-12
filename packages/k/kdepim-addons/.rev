@@ -723,4 +723,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080585</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ea7b6b5b56eede7340581275ab053a80</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916395</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086302</requestid>
+  </revision>
 </revisionlist>
