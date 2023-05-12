@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 10:46:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Cache directory results in FileScanner::searchForCoverFile
+  * Set more sensible default styles, and respect environment overrides (kde#469154)
+  * Don't open album artist page when opening an album from a different artist's page
+
+-------------------------------------------------------------------
 Sat Apr 15 08:45:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
