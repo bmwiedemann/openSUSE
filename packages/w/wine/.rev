@@ -4770,4 +4770,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1085718</requestid>
   </revision>
+  <revision rev="407" vrev="2">
+    <srcmd5>8b2ef73e856fc85869211939c7d4ead4</srcmd5>
+    <version>8.7</version>
+    <time>1683916646</time>
+    <user>dimstar_suse</user>
+    <comment>- add a _constraints</comment>
+    <requestid>1086572</requestid>
+  </revision>
 </revisionlist>
