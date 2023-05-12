@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5166e72a8e6a4d67cf4bdc5b81de988</srcmd5>
+    <version>0.12.12</version>
+    <time>1683916711</time>
+    <user>dimstar_suse</user>
+    <comment>Add package for gojq, a pure Go implementation of jq.</comment>
+    <requestid>1086681</requestid>
+  </revision>
+</revisionlist>
