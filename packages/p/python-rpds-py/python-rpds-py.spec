@@ -17,7 +17,7 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
+%{?sle15_python_module_pythons}
 Name:           python-rpds-py
 Version:        0.7.1
 Release:        0
@@ -27,14 +27,14 @@ URL:            https://github.com/Julian/rpds.py
 Source:         rpds.py-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
-BuildRequires:  zstd
-BuildRequires:  cargo
-BuildRequires:  cargo-packaging
-BuildRequires:  rust
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  python-rpm-macros
+BuildRequires:  rust
+BuildRequires:  zstd
 # Tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
