@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyrings.alt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,27 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-keyrings.alt
-Version:        4.0.2
+Version:        4.2.0
 Release:        0
 Summary:        Alternate keyring implementations
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyrings.alt
 Source:         https://files.pythonhosted.org/packages/source/k/keyrings.alt/keyrings.alt-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-jaraco.classes
+Requires:       python-pycryptodomex
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module fs >= 0.5}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module keyring >= 20}
+BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  typelib(GnomeKeyring)
@@ -52,10 +56,10 @@ keyring package.
 sed -i -e 's/--flake8//' -e 's/--black//' -e 's/--cov//' pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

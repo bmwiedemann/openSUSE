@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  4 21:50:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * #46: EncryptedFileKeyring now supports both pycryptodome and
+  * pycryptodomex (preferring the latter).
+  * Updated to work with keyring 23.9+ (no longer depending on
+    properties module).
+  * Refresh package metadata.
+  * Enrolled with Tidelift.
+  * #44: Bump upper bound on pyfs.
+  * Refresh package metadata.
+
+-------------------------------------------------------------------
 Thu Dec 17 22:46:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 4.0.2
