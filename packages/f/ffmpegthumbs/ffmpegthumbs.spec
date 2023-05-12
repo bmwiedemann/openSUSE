@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ffmpegthumbs
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
