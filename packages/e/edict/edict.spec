@@ -17,7 +17,7 @@
 
 
 Name:           edict
-Version:        20230411
+Version:        20230511
 Release:        0
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT format)
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
@@ -46,7 +46,7 @@ It contains Japanese–English translations for over 180000 entries,
 representing more than 205000 unique headword–reading combinations.
 
 The dictionary is made available in different formats. This package
-contains the "edict" variant, a flat text file format, of:
+contains the "edict"/UTF8 variant, a flat text file format, of:
 
 * the JMdict project's word dictionary ("edict" file)
 * the KANJIDIC project's JIS X 0208-1990 Kanji dictionary (6355 Kanji)
@@ -56,6 +56,19 @@ contains the "edict" variant, a flat text file format, of:
 * ENAMDICT, a dictionary for proper names
 
 Other formats are in the edict2 and jmdict packages.
+
+%package eucjp
+Summary:        The Japanese Dictionary from the EDRDG project (EDICT-EUCJP format)
+Group:          System/I18n/Japanese
+Provides:       locale(ja)
+
+%description eucjp
+JMdict/EDICT is a machine-readable multilingual Japanese dictionary.
+It contains Japanese–English translations for over 180000 entries,
+representing more than 205000 unique headword–reading combinations.
+
+The dictionary is made available in different formats. This package
+contains the "edict"/EUC-JP variant.
 
 %package -n edict2
 Summary:        The Japanese Dictionary from the EDRDG project (edict2 format)
@@ -106,7 +119,8 @@ for i in JMdict.gz edict2u.gz kanjd213u.gz kanjidic2.xml.gz; do
 done
 # transcode some files
 for i in edict.gz enamdict.gz kanjd212.gz kanjidic.gz kradfile.gz radkfile.gz; do
-	gzip -cd "$i" | iconv -f euc-jp -t utf-8 >"$d/${i%.gz}"
+	gzip -cd "$i" >"$d/${i%.gz}.eucjp"
+	iconv -f euc-jp -t utf-8 <"$d/${i%.gz}.eucjp" >"$d/${i%.gz}"
 done
 popd
 
@@ -120,6 +134,16 @@ popd
 %_datadir/edict/kanjidic
 %_datadir/edict/kradfile
 %_datadir/edict/radkfile
+
+%files eucjp
+%license licence.html skip_permission.htm
+%dir %_datadir/edict/
+%_datadir/edict/edict.eucjp
+%exclude %_datadir/edict/enamdict.eucjp
+%exclude %_datadir/edict/kanjd212.eucjp
+%_datadir/edict/kanjidic.eucjp
+%exclude %_datadir/edict/kradfile.eucjp
+%_datadir/edict/radkfile.eucjp
 
 %files -n jmdict
 %license licence.html
