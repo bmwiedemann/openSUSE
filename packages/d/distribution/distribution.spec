@@ -18,7 +18,7 @@
 
 %define goipath github.com/docker/distribution
 Name:           distribution
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        The toolset to pack, ship, store, and deliver content
 License:        Apache-2.0
@@ -29,12 +29,11 @@ Source1:        registry-configuration.yml
 Source2:        registry.service
 Source4:        README-registry.SUSE
 Source10:       system-user-registry.conf
-Patch1:         aws-sdk-1.42.27-update.patch
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.19
 Provides:       docker-distribution = %{version}
 Obsoletes:      docker-distribution < %{version}
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
@@ -66,7 +65,6 @@ Registry server for Docker (hosting/delivering of repositories and images).
 
 %prep
 %setup -q -n distribution-%{version}
-%patch1 -p2
 cp %{SOURCE4} .
 
 %build
@@ -78,7 +76,7 @@ export CGO_ENABLED=1 GO111MODULE=auto
 %define ldflags "-s -w -X %{goipath}/version.Version=v%{version} -X %{goipath}/version.Package=%{goipath}"
 
 for cmd in registry digest registry-api-descriptor-template; do
-    %{gobuild} -ldflags %{ldflags} -tags %{buildtags} cmd/$cmd
+    %{gobuild} -trimpath -ldflags %{ldflags} -tags %{buildtags} cmd/$cmd
 done
 
 %install

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 12 16:05:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2 (bsc#1207705, CVE-2023-2253, bsc#1210428):
+  * Revert registry/client: set `Accept: identity` header when
+    getting layers
+  * Parse `http` forbidden as denied
+  * Fix CVE-2023-2253 runaway allocation on /v2/_catalog
+  * Fix panic in inmemory driver
+  * update to go1.19.9
+  * Add code to handle pagination of parts. Fixes max layer size
+    of 10GB bug
+  * Dockerfile: fix filenames of artifacts
+- drop aws-sdk-1.42.27-update.patch (no longer wanted)
+- drop 0001-Fix-runaway-allocation-on-v2-_catalog.patch (upstream)
+
+-------------------------------------------------------------------
+Wed Apr 26 19:32:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- refresh 0001-Fix-runaway-allocation-on-v2-_catalog.patch to
+  be more compatible with invalid pagination requests (CVE-2023-2253, bsc#1207705)␣
+
+-------------------------------------------------------------------
+Fri Feb 17 09:08:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Fix-runaway-allocation-on-v2-_catalog.patch (CVE-2023-2253, bsc#1207705)
+
+-------------------------------------------------------------------
 Fri Jan 13 11:06:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add aws-sdk-1.42.27-update.patch to include AWS_ROLE_ARN

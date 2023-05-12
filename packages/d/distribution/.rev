@@ -32,4 +32,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1059954</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1db701aae6906988c4e29e2cdc914dcd</srcmd5>
+    <version>2.8.2</version>
+    <time>1683916749</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.2 (bsc#1207705, CVE-2023-2253, bsc#1210428):
+  * Revert registry/client: set `Accept: identity` header when
+    getting layers
+  * Parse `http` forbidden as denied
+  * Fix CVE-2023-2253 runaway allocation on /v2/_catalog
+  * Fix panic in inmemory driver
+  * update to go1.19.9
+  * Add code to handle pagination of parts. Fixes max layer size
+    of 10GB bug
+  * Dockerfile: fix filenames of artifacts
+- drop aws-sdk-1.42.27-update.patch (no longer wanted)
+- drop 0001-Fix-runaway-allocation-on-v2-_catalog.patch (upstream)
+
+- refresh 0001-Fix-runaway-allocation-on-v2-_catalog.patch to
+  be more compatible with invalid pagination requests (CVE-2023-2253, bsc#1207705)␣
+
+- add 0001-Fix-runaway-allocation-on-v2-_catalog.patch (CVE-2023-2253, bsc#1207705)</comment>
+    <requestid>1086800</requestid>
+  </revision>
 </revisionlist>
