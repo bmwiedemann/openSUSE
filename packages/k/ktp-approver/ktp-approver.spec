@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-approver
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Channel Approver for KDE Telepathy implementation
 License:        LGPL-2.1-or-later
