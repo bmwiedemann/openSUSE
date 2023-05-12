@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May 11 23:40:25 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.26.0:
+  * test: add case for dics in `StylesPath`
+  * refactor: support templates in `StylesPath`
+  * fix: allow `-` in `code::` blocks
+  * chore: fix `make compare`
+  * chore: clean up Makefile
+  * refactor: deprecate dedicated inline scopes
+  * refactor: deprecate dedicated inline scopes
+  * refactor: fallback to CLI if local server fails
+  * docs: Add DigitalOcean
+
+-------------------------------------------------------------------
 Thu Apr 27 22:00:31 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.25.2:

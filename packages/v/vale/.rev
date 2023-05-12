@@ -253,4 +253,21 @@
 - Add Refs boo#1210938 to recent changelog entry (forwarded request 1083373 from jfkw)</comment>
     <requestid>1083374</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>53c554b66286d19ac068735cc4d11286</srcmd5>
+    <version>2.26.0</version>
+    <time>1683916708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.26.0:
+  * test: add case for dics in `StylesPath`
+  * refactor: support templates in `StylesPath`
+  * fix: allow `-` in `code::` blocks
+  * chore: fix `make compare`
+  * chore: clean up Makefile
+  * refactor: deprecate dedicated inline scopes
+  * refactor: deprecate dedicated inline scopes
+  * refactor: fallback to CLI if local server fails
+  * docs: Add DigitalOcean (forwarded request 1086653 from jfkw)</comment>
+    <requestid>1086654</requestid>
+  </revision>
 </revisionlist>
