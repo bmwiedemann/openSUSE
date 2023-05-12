@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 12 05:05:45 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Make the WORKDIR aligned with the upstream
+  The cloner pod is configured to run as a different non-root user and
+  an attempt to access /home/cdi-cloner fails with EACCES.
+
+-------------------------------------------------------------------
 Thu Oct 13 16:38:42 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Create an unprivileged user to run as non-root

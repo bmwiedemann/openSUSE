@@ -31,6 +31,6 @@ RUN zypper -n install \
     zypper clean -a && \
     useradd -u 1001 --create-home -s /bin/bash cdi-cloner
 
-WORKDIR /home/cdi-cloner
+WORKDIR /usr/bin
 USER 1001
 ENTRYPOINT [ "/usr/bin/cloner_startup.sh" ]
