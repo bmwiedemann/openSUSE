@@ -1,0 +1,6 @@
+<package name="perl-Test-Future-IO-Impl" project="openSUSE:Factory">
+  <title>Acceptance tests for Future::IO implementations</title>
+  <description>This module contains a collection of acceptance tests for implementations of Future::IO.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Future-IO-Impl"/>
+  <url>https://metacpan.org/release/Test-Future-IO-Impl</url>
+</package>
