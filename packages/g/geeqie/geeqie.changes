@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 17:05:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop conditional set for pkgconfig(libraw) BuildRequires, fixes
+  build for Leap 15.5.
+
+-------------------------------------------------------------------
 Tue Nov  8 14:19:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.1:

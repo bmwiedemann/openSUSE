@@ -54,10 +54,7 @@ BuildRequires:  pkgconfig(libffmpegthumbnailer) >= 2.1.0
 BuildRequires:  pkgconfig(libheif) >= 1.3.2
 BuildRequires:  pkgconfig(libjxl) >= 0.3.7
 BuildRequires:  pkgconfig(libopenjp2) >= 2.3.0
-%if 0%{?suse_version} >= 1540
-# Too old version in 15.3:
 BuildRequires:  pkgconfig(libraw) >= 0.20
-%endif
 BuildRequires:  pkgconfig(libwebp) >= 0.6.1
 BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(poppler-glib) >= 0.62
