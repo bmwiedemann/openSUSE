@@ -44,6 +44,7 @@ Tue May  2 08:25:11 UTC 2023 - Kristyna Streitova <kstreitova@suse.com>
   * Don't call realpath on fake filenames like "-" (github #289).
   * Implement lesstest test suite.
   * Convert function parameter definitions from K&R to C89 (github #316).
+- Drop patch cve-2022-46663.patch (merged).
 
 -------------------------------------------------------------------
 Tue Feb  7 15:02:12 UTC 2023 - Peter Simons <psimons@suse.com>
