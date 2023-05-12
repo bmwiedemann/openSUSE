@@ -1,7 +1,7 @@
 #
 # spec file for package python-tldextract
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define oldpython python
 Name:           python-tldextract
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
@@ -38,6 +36,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 ### /SECTION test requirements
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +45,6 @@ Requires:       python-filelock >= 3.0.8
 Requires:       python-idna >= 2.1.0
 Requires:       python-requests >= 2.1.0
 Requires:       python-requests-file >= 1.4
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Obsoletes:      %{oldpython}-tldextract <= 2.0.1
@@ -84,7 +83,7 @@ sed -i 's:--pylint::' pytest.ini
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/tldextract*
 %python_alternative %{_bindir}/tldextract
 
 %changelog

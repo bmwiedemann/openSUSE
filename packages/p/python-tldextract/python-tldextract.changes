@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  4 13:11:06 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.4.1
+Bugfixes
+  * Fix Pyright not finding tldextract public interface
+    #gh/john-kurkowski/tldextract#279
+  * Fix various Pyright checks
+  * Use SPDX license identifier
+    #gh/john-kurkowski/tldextract#280
+  * Support Python 3.11
+Docs
+  * Add FAQ about private domains
+
+-------------------------------------------------------------------
 Thu Nov 10 09:04:18 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.4.0
