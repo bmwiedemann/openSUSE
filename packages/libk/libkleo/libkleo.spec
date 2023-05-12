@@ -19,7 +19,7 @@
 %define libname libKPim5libkleo5
 %bcond_without released
 Name:           libkleo
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
