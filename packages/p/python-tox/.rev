@@ -566,4 +566,20 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>1081737</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2acfdc8f8fc5b150c0fae427e9f60bbf</srcmd5>
+    <version>4.5.1</version>
+    <time>1683916741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.1:
+  The amount of changes is so huge, that user is kindly referred
+  to the packaged changelog.
+- Add mark-network-tests.patch to skip test which require network
+  access
+- Add optional_devpi_process.patch to make the package not depend
+  on devpi_process (which is rather expensive to build).
+- Add _constraints.
+</comment>
+    <requestid>1086768</requestid>
+  </revision>
 </revisionlist>

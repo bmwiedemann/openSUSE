@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  5 14:30:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.5.1:
+  The amount of changes is so huge, that user is kindly referred
+  to the packaged changelog.
+- Add mark-network-tests.patch to skip test which require network
+  access
+- Add optional_devpi_process.patch to make the package not depend
+  on devpi_process (which is rather expensive to build).
+- Add _constraints.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

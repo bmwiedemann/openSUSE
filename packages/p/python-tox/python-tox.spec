@@ -15,35 +15,62 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
+%if %{defined sle15_python_module_pythons}
+%bcond_without devpi_process
+%else
+%bcond_with devpi_process
+%endif
 Name:           python-tox
-Version:        3.26.0
+Version:        4.5.1
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
 URL:            https://github.com/tox-dev/tox
+# Source:         https://github.com/tox-dev/tox/archive/refs/tags/%%{version}.tar.gz#/tox-%%{version}.tar.gz
 Source:         https://files.pythonhosted.org/packages/source/t/tox/tox-%{version}.tar.gz
-BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
-BuildRequires:  %{python_module filelock >= 3.0.0}
-BuildRequires:  %{python_module packaging >= 14}
+# PATCH-FIX-OPENSUSE optional_devpi_process.patch bsc#[0-9]+ mcepl@suse.com
+# Make use devpi_process optional
+Patch0:         optional_devpi_process.patch
+# PATCH-FEATURE-UPSTREAM mark-network-tests.patch bsc#[0-9]+ mcepl@suse.com
+# to skip test which require network access
+Patch1:         mark-network-tests.patch
+BuildRequires:  %{python_module build >= 0.10.0}
+BuildRequires:  %{python_module cachetools >= 5.3}
+BuildRequires:  %{python_module chardet >= 5.1}
+BuildRequires:  %{python_module colorama >= 0.4.6}
+BuildRequires:  %{python_module filelock >= 3.11.0}
+BuildRequires:  %{python_module hatch >= 0.3}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling >= 1.14}
+BuildRequires:  %{python_module packaging >= 23.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pluggy >= 0.12.0}
+BuildRequires:  %{python_module platformdirs >= 3.2}
+BuildRequires:  %{python_module pluggy >= 1.0.0}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module py >= 1.4.17}
+BuildRequires:  %{python_module pyproject-api >= 1.5.1}
 BuildRequires:  %{python_module pytoml >= 0.1}
+BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
 BuildRequires:  %{python_module six >= 1.14.0}
+BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module toml >= 0.9.4}
 BuildRequires:  %{python_module tomli >= 2.0.1}
-BuildRequires:  %{python_module virtualenv >= 20.0.8}
+BuildRequires:  %{python_module virtualenv >= 20.21.0}
 BuildRequires:  %{python_module wheel >= 0.29.0}
+%if %{with devpi_process}
+BuildRequires:  %{python_module devpi-process}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  (python3-importlib-metadata >= 0.12 if python3-base < 3.8)
 BuildRequires:  (python36-importlib-metadata >= 0.12 if python36-base)
 Requires:       python-backports.entry_points_selectable >= 1.0.4
+Requires:       python-build >= 0.10.0
 Requires:       python-filelock >= 3.0.0
 Requires:       python-packaging >= 14
 Requires:       python-pip
@@ -90,6 +117,10 @@ use for:
 
 %prep
 %setup -q -n tox-%{version}
+%if %{without devpi_process}
+%patch0 -p1
+%endif
+%autopatch -p1 -m 1
 
 %build
 export LANG=en_US.UTF8
@@ -99,7 +130,6 @@ export LANG=en_US.UTF8
 export LANG=en_US.UTF8
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tox
-%python_clone -a %{buildroot}%{_bindir}/tox-quickstart
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -115,6 +145,10 @@ donttest+=" or test_different_config_cwd"
 donttest+=" or test_toxuone_env"
 donttest+=" or test_isolated_build_backend_missing_hook"
 donttest+=" or test_parallel_live or (test_parallel and not test_parallel_)"
+# gh#tox-dev/tox#3011
+donttest+=" or test_replace_env_var_circular_flip_flop"
+#
+donttest+=" or test_call_as_exe or test_skip_pkg_install"
 
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
@@ -125,16 +159,15 @@ deactivate
 }
 
 %post
-%python_install_alternative tox tox-quickstart
+%python_install_alternative tox
 
 %postun
 %python_uninstall_alternative tox
 
 %files %{python_files}
 %license LICENSE
-%doc README.md docs/changelog.rst CONTRIBUTORS CONTRIBUTING.rst
+%doc README.md
 %python_alternative %{_bindir}/tox
-%python_alternative %{_bindir}/tox-quickstart
 %{python_sitelib}/tox-%{version}*-info
 %{python_sitelib}/tox
 

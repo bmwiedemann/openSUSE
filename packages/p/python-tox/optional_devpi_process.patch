@@ -1,0 +1,42 @@
+---
+ src/tox/pytest.py       |    6 +++++-
+ tests/test_provision.py |    6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+--- a/src/tox/pytest.py
++++ b/src/tox/pytest.py
+@@ -26,7 +26,10 @@ from _pytest.logging import LogCaptureFi
+ from _pytest.monkeypatch import MonkeyPatch
+ from _pytest.python import Function
+ from _pytest.tmpdir import TempPathFactory
+-from devpi_process import IndexServer
++try:
++    from devpi_process import IndexServer
++except ImportError:
++    IndexServer = None
+ from pytest_mock import MockerFixture
+ from virtualenv.info import fs_supports_symlink
+ 
+@@ -473,6 +476,7 @@ def enable_pypi_server(monkeypatch: Monk
+ 
+ 
+ @pytest.fixture(scope="session")
++@pytest.mark.skipif(IndexServer is None, reason="requires devpi_process")
+ def pypi_server(tmp_path_factory: TempPathFactory) -> Iterator[IndexServer]:
+     # takes around 2.5s
+     path = tmp_path_factory.mktemp("pypi")
+--- a/tests/test_provision.py
++++ b/tests/test_provision.py
+@@ -12,7 +12,11 @@ from unittest import mock
+ from zipfile import ZipFile
+ 
+ import pytest
+-from devpi_process import Index, IndexServer
++try:
++    from devpi_process import Index, IndexServer
++except ImportError:
++    Index = None
++    IndexServer = None
+ from filelock import FileLock
+ from packaging.requirements import Requirement
+ 

@@ -1,0 +1,27 @@
+---
+ pyproject.toml                                                       |    3 +++
+ tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py |    1 +
+ 2 files changed, 4 insertions(+)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -162,6 +162,9 @@ ignore = [
+ [tool.pytest.ini_options]
+ testpaths = ["tests"]
+ addopts = "--tb=auto -ra --showlocals --no-success-flaky-report"
++markers = [
++    "network: tests requiring network connection",
++]
+ 
+ [tool.towncrier]
+ name = "tox"
+--- a/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
++++ b/tests/tox_env/python/virtual_env/package/test_package_cmd_builder.py
+@@ -74,6 +74,7 @@ def test_install_pkg_via(tox_project: To
+ 
+ 
+ @pytest.mark.usefixtures("enable_pip_pypi_access")
++@pytest.mark.network
+ def test_build_wheel_external(tox_project: ToxProjectCreator, demo_pkg_inline: Path) -> None:
+     ini = """
+     [testenv]
