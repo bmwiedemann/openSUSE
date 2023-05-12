@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 1504
+%define patchlevel 1538
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
@@ -205,6 +205,7 @@ interpreters built in
 
 %package -n xxd
 Summary:        A hex dump utility
+Conflicts:      vim <= 9.0.1418
 
 %description -n xxd
 xxd creates a hex dump of a given file or standard input.  It can also convert

@@ -7073,4 +7073,41 @@ always built-in because vim has direct perl dependencies anyway.
   * No error when calling remote_startserver() with an empty string.</comment>
     <requestid>1083978</requestid>
   </revision>
+  <revision rev="349" vrev="1">
+    <srcmd5>6e7b842855ffe3b631a4fda88464a780</srcmd5>
+    <version>9.0.1538</version>
+    <time>1683916463</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1538, fixes the following problems
+- fixes boo#1211256 CVE-2023-2609
+  * No error when calling remote_startserver() with an empty string.
+  * Error when heredoc content looks like heredoc.
+  * Line number not displayed when using 'smoothscroll'.
+  * Assert message is confusing with boolean result.  assert_inrange()
+  replaces message instead of adding it.
+  * Catch does not work when lines are joined with a newline.
+  * Error message lacks mentioning the erroneous argument.
+  * Misleading variable name for error message.
+  * Crash when using wrong arg types to assert_match().
+  * Inserting lines when scrolling with 'smoothscroll' set.
+  * Text scrolls unnecessarily when splitting and 'splitkeep' is not &quot;cursor&quot;.
+  * Test waits unnecessarily long before checking screendump.
+  * reverse() does not work for a String.
+  * Cannot use special keys in &lt;Cmd&gt; mapping.
+  * Search stats not always visible when searching backwards.
+  * Global 'filetype' is set when it is detected from the file content.
+  * Completion for option name includes all bool options.
+  * Failing redo of command with control characters.
+  * Some functions give two error messages.
+  * Some error messages are not marked for translation.
+  * Passing -1 for bool is not always rejected.
+  * 'smoothscroll' does not always work properly.
+  * Condition is always true.
+  * Crash when using negative value for term_cols.
+  * Libsodium encryption is only used with &quot;huge&quot; features, even when manually
+  enabled through configure. (Tony Mechelynck)
+  * Code style test doesn't check for space after &quot;if&quot;.
+  * Cursor moves to wrong line when 'foldmethod' is &quot;diff&quot;. (Rick Howe)</comment>
+    <requestid>1086117</requestid>
+  </revision>
 </revisionlist>
