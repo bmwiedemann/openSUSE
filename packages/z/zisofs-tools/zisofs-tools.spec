@@ -1,7 +1,7 @@
 #
 # spec file for package zisofs-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Release:        0
 Summary:        User tools for zisofs
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            https://www.kernel.org/pub/linux/utils/fs/zisofs/
-#DL-URL:	http://mirror.linux.org.au/linux/utils/fs/zisofs/
-Source:         http://ftp.be.debian.org/pub/linux/utils/fs/zisofs/%{name}-%{version}.tar.bz2
+URL:            https://git.kernel.org/pub/scm/fs/zisofs/zisofs-tools.git/
+Source:         https://git.kernel.org/pub/scm/fs/zisofs/zisofs-tools.git/snapshot/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
 BuildRequires:  zlib-devel
 Requires:       mkisofs
 
@@ -40,6 +40,8 @@ support.
 %setup -q
 
 %build
+autoconf
+autoheader
 %configure
 %make_build
 

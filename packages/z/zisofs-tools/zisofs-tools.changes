@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 11 15:01:25 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix url and download to up to date location.
+- Add autoconf as BuildRequires.
+
+-------------------------------------------------------------------
 Fri Mar 12 22:04:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - refresh spec file (update licensedir) 
