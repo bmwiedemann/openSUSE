@@ -1564,4 +1564,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080751</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>362c3e13d7f6205c20f66689b1915a8e</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916621</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086476</requestid>
+  </revision>
 </revisionlist>
