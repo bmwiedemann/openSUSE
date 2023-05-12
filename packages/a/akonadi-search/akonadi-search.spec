@@ -21,7 +21,7 @@
 %define libname libKPim5AkonadiSearch5
 %bcond_without released
 Name:           akonadi-search
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
