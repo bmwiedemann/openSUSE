@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 11 08:55:00 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Downgrade cpp requires to recommends (bsc#1211267)
+
+-------------------------------------------------------------------
 Wed Sep 29 11:37:53 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Remove fallback to /lib/cpp, it's the same package as /usr/bin/cpp
