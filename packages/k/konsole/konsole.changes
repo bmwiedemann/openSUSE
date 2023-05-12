@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Invalidate selection reference points on resize (kde#464040)
+  * Fix kglobalaccel integration
+  * Draw selected background for right half of double width char if selected (kde#468465)
+
+-------------------------------------------------------------------
 Sat Apr 15 08:46:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0

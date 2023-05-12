@@ -18,7 +18,7 @@
 %global libsover 21
 %bcond_without released
 Name:           konsole
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -147,6 +147,7 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf5_iconsdir}/hicolor/128x128/apps
 %dir %{_kf5_sharedir}/kconf_update
 %dir %{_kf5_libdir}/kconf_update_bin
 %dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kglobalaccel
 %dir %{_kf5_sharedir}/kio/servicemenus
 %doc %lang(en) %{_kf5_htmldir}/en/konsole/
 %{_kf5_applicationsdir}/konsolesu.desktop
@@ -161,6 +162,7 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf5_iconsdir}/hicolor/128x128/apps
 %{_kf5_plugindir}/konsoleplugins/konsole_sshmanagerplugin.so
 %{_kf5_libdir}/libkonsoleapp.so.*
 %{_kf5_sharedir}/kio/servicemenus/konsolerun.desktop
+%{_kf5_sharedir}/kglobalaccel/org.kde.konsole.desktop
 %{_kf5_libdir}/kconf_update_bin/konsole_globalaccel
 %{_kf5_libdir}/kconf_update_bin/konsole_show_menubar
 %{_kf5_sharedir}/kconf_update/konsole.upd
