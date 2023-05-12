@@ -1139,4 +1139,12 @@
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080749</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>b5bc789a597081a8497d4c92628df66d</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916618</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086473</requestid>
+  </revision>
 </revisionlist>
