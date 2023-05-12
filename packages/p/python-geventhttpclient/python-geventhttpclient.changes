@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  4 20:36:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.9:
+  * Add square brackets for Host header when using IPv6 address
+  * Enable ppc64le wheels
+
+-------------------------------------------------------------------
 Fri Nov  4 10:52:22 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.0.8
