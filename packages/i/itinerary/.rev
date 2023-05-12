@@ -248,4 +248,12 @@
   icon theme.</comment>
     <requestid>1082553</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2f5ff1155cadc8df5130fe34bfa21045</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916485</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086261</requestid>
+  </revision>
 </revisionlist>

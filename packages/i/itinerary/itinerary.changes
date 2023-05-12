@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  9 10:46:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Consider transfers when determining the full trip group extend
+  * Add 23.04.1 release notes
+  * Validate imported passes and tickets
+  * Fix imported PDFs losing their file name on Android
+  * Improve Apple Wallet boarding pass layout for overflowing primary labels
+  * Don't show the current element progress on canceled elements
+  * Don't poll cancelled reservations for live updates
+  * Ignore canceled reservations for transfers
+  * Don't trigger connection warnings for canceled reservations
+  * Make links in event descriptions clickable
+
+-------------------------------------------------------------------
 Mon Apr 24 15:15:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add a breeze5-icons requirements. Itinerary requires this
