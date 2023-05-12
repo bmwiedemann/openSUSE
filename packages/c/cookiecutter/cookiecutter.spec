@@ -1,7 +1,7 @@
 #
 # spec file for package cookiecutter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           cookiecutter
 Version:        2.1.1
 Release:        0
@@ -64,12 +64,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.18.0}
 # /SECTION
 # SECTION Documentation requirements
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinx-click
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module sphinx-click}
 %if 0%{?sle_version} == 150300
-BuildRequires:  python3-commonmark
+BuildRequires:  %{python_module commonmark}
 %endif
-BuildRequires:  python3-recommonmark
+BuildRequires:  %{python_module recommonmark}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       cookiecutter = %{version}-%{release}
