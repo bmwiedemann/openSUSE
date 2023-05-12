@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Increase default stroke size for rectanlge and ellipse annotations
+  * Undo making it possible to uncheck font
+  * Multiply annotation shadow opacity by stroke or fill opacity (kde#464170)
+  * Use transparent default fill color for rectangle and ellipse annotations
+  * Allow making annotation colors fully transparent via checkboxes (kde#468077)
+  * return early if action is null in Utils::shapeShadow()
+  * Hide redundant header on Wayland (kde#468818)
+  * Add pragma once to ScreenShotEffect.h
+  * Add pragma once to PlasmaVersion.h
+  * PlasmaVersion: clean up header file
+  * Warn when screenshot effect isn't available on wayland, exit if no GUI
+  * Fix segfaults from xcb function calls not getting replies fast enough
+  * Fix warning about plasmashell service without plasmashell
+  * Enable autoRepeat for Undo/Redo buttons
+  * Only add 200ms delay if Plasma version is less than 5.27.4
+  * Fix quitting Spectacle with Escape affecting windows below it (kde#428478)
+
+-------------------------------------------------------------------
 Sat Apr 15 08:46:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
