@@ -17,7 +17,7 @@
 
 
 Name:           at-spi2-core
-Version:        2.48.0
+Version:        2.48.2
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
