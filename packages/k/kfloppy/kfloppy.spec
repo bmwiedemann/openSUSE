@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kfloppy
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Floppy Formatter
 License:        GPL-2.0-only
