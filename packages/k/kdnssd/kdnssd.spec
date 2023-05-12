@@ -19,7 +19,7 @@
 %define rname kio-zeroconf
 %bcond_without released
 Name:           kdnssd
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Zeroconf Support for KIO applications
 License:        GPL-2.0-or-later
