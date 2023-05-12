@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+
+-------------------------------------------------------------------
 Sat Apr 15 08:45:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
