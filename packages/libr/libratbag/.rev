@@ -217,4 +217,16 @@ Matthias</comment>
     <comment></comment>
     <requestid>1034951</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7fe62229047660ed1548584fb9d4a830</srcmd5>
+    <version>0.17</version>
+    <time>1683916629</time>
+    <user>dimstar_suse</user>
+    <comment>- Document the need for users of ratbagd to be a member of the
+  group games (bsc#1210669)
+  * In description of ratbagd package
+  * In the new README.SUSE file of the ratbagd package.
+- Switch package to using %autosetup</comment>
+    <requestid>1086539</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 11 12:13:19 UTC 2023 - Matthias Bach <marix@marix.org> - 0.17
+
+- Document the need for users of ratbagd to be a member of the
+  group games (bsc#1210669)
+  * In description of ratbagd package
+  * In the new README.SUSE file of the ratbagd package.
+- Switch package to using %autosetup
+
+-------------------------------------------------------------------
 Wed Nov 09 19:24:01 UTC 2022 - marix@marix.org - 0.17
 
 - Update to version 0.17:

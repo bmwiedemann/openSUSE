@@ -1,7 +1,8 @@
 From: Matthias Bach <marix@marix.org>
 Date: 2018-07-27 22:59:22 +0200
 Subject: Install ratbagd into sbindir
-Upstream: to be done
+Upstream: merged
+References: https://github.com/libratbag/libratbag/pull/1443
 
 Ratbagd requires to be run by root. It should thus live in the system binary
 directory.

@@ -1,7 +1,7 @@
 #
 # spec file for package libratbag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,8 @@ Summary:        Configuration library for gaming mice
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libratbag/libratbag
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        README.SUSE
 Patch1:         shebang-env.diff
 Patch2:         install-daemon-into-sbindir.patch
 Patch3:         harden_ratbagd.service.patch
@@ -71,6 +72,8 @@ generic way to access the various features exposed by these mice and
 abstracts away hardware-specific and kernel-specific quirks.
 
 This subpackage contains the daemon managing access to the hardware.
+It enables any user that is a member of the group "games" to configure
+supported mice via ratbagctl or Piper.
 
 %package devel
 Summary:        Development files for the libratbag game mouse config library
@@ -100,9 +103,8 @@ This subpackage contains the ratbag utilities allowing to inspect and configure
 mice.
 
 %prep
-%setup -q
-%patch -P 1 -P 2 -p1
-%patch3 -p1
+%autosetup -p1
+cp %{SOURCE1} .
 
 %build
 %meson -Ddocumentation=false -Ddbus-group=games \
@@ -148,6 +150,7 @@ chmod -x "%{buildroot}/%{_datadir}/%{name}/logitech-g402.device"  # Fix this fil
 %{_datadir}/dbus-1/
 %{_datadir}/%{name}/
 %{_mandir}/man8/*
+%doc README.SUSE
 
 %files tools
 %{_bindir}/lur-command
