@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkcddb
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
