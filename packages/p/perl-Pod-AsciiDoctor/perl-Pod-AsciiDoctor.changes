@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May  4 12:24:23 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.101002
+   see /usr/share/doc/packages/perl-Pod-AsciiDoctor/Changes
+
+
+  0.101002    2023-02-08
+      Further Fix for https://github.com/shlomif/Pod-AsciiDoctor/issues/1 .
+          - remove leftover Makefile.PL
+          - Thanks to @eserte
+  0.101001    2023-02-06
+      Fix for https://github.com/shlomif/Pod-AsciiDoctor/issues/1 .
+          - missing Pod::Parser
+          - Thanks to @eserte
+  0.101000    2023-02-02
+      Convert to dzil / @SHLOMIF + other cleanups
+
+-------------------------------------------------------------------
 Sat Nov 28 12:41:27 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build, regenerate spec-file

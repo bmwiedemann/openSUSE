@@ -7,4 +7,12 @@
     <comment>This package is required to generate openQA's documentation and is therefore required for openQA development. The version from dlp worked fine for years but it would make sense to have the package in Factory.</comment>
     <requestid>921832</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>354902a842408efdadefe115d6df150c</srcmd5>
+    <version>0.101002</version>
+    <time>1683916467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085698</requestid>
+  </revision>
 </revisionlist>

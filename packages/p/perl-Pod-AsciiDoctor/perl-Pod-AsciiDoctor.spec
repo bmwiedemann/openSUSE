@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-AsciiDoctor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,24 @@
 #
 
 
-Name:           perl-Pod-AsciiDoctor
-Version:        0.1
-Release:        0
-#Upstream:  This program is free software; you can redistribute it and/or modify it under the terms of the the Apache License (2.0). You can get a copy of the license at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 %define cpan_name Pod-AsciiDoctor
-Summary:        Convert from POD to AsciiDoc
+Name:           perl-Pod-AsciiDoctor
+Version:        0.101002
+Release:        0
 License:        Apache-2.0
-Group:          Development/Libraries/Perl
+Summary:        Convert from POD to AsciiDoc
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/B/BA/BALA/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Pod::Parser) >= 1.65
+BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(parent)
+Requires:       perl(Pod::Parser) >= 1.65
+Requires:       perl(parent)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl(Pod::Parser)
@@ -41,8 +43,7 @@ BuildRequires:  perl(Pod::Parser)
 Convert from POD to AsciiDoc
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -56,8 +57,7 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README README.adoc
-%license LICENSE.md
+%license LICENSE LICENSE.md
 
 %changelog

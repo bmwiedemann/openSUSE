@@ -26,7 +26,7 @@ license: Apache-2.0
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
-#skip_doc: regexp_to_skip_for_doc.*
+skip_doc: .*\.old
 #add_doc: files to add to docs
 #misc: |-
 #anything else to be added to spec file
