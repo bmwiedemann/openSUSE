@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 10:46:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix build without KF5Activities
+  * Fix activating the Selection Mode with a keyboard shortcut (kde#465489)
+  * Restrict attaching instances to those on the same activity or same virtual desktop
+
+-------------------------------------------------------------------
 Wed May  3 13:42:07 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Have dolphin-part-lang supplement dolphin-part on pre-TW
