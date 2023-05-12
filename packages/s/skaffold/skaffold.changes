@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 19:20:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.4.1:
+  * fix: discard standout from helm dep command to not have
+    corrupted data in output yaml file (#8756) (#8761)
+
+-------------------------------------------------------------------
 Thu May 04 04:39:31 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.4.0:
