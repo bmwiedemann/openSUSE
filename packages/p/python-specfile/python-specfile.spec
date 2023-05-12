@@ -18,7 +18,7 @@
 
 %define skip_python38 1
 Name:           python-specfile
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
@@ -31,14 +31,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module rpm}
+BuildRequires:  git
 BuildRequires:  %{python_module flexmock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module rpm}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-rpm
-Requires:       python-typing-extensions
 
 BuildArch:      noarch
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 11 12:19:01 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.17.0: 
+  * Added a new guess_packager() function that uses similar
+    heuristics as rpmdev-packager, meaning that the 
+    Specfile.add_changelog_entry() method no longer requires
+    rpmdev-packager to guess the changelog entry author. (#220)
+  * The Specfile.add_changelog_entry() method now uses dates based
+    on UTC instead of the local timezone. (#223)
+
+-------------------------------------------------------------------
 Tue Apr 25 07:18:46 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.16.0:
