@@ -1,0 +1,90 @@
+From 540a17bcd30abc3f14d1e1b0ef81a23fde0ca18d Mon Sep 17 00:00:00 2001
+From: Milad Fa <mfarazma@redhat.com>
+Date: Wed, 10 May 2023 19:40:36 +0000
+Subject: [PATCH] Fix usage of MulHighS64 on <= z13
+
+Change-Id: If7ac06eef57cc3db059c2640b77c80de3b16fced
+https://chromium-review.googlesource.com/c/v8/v8/+/4521297
+
+---
+
+Index: node-v20.1.0/deps/v8/src/compiler/backend/s390/code-generator-s390.cc
+===================================================================
+--- node-v20.1.0.orig/deps/v8/src/compiler/backend/s390/code-generator-s390.cc
++++ node-v20.1.0/deps/v8/src/compiler/backend/s390/code-generator-s390.cc
+@@ -1699,15 +1699,18 @@ CodeGenerator::CodeGenResult CodeGenerat
+     case kS390_Mul64WithOverflow: {
+       Register dst = i.OutputRegister(), src1 = i.InputRegister(0),
+                src2 = i.InputRegister(1);
+-      DCHECK(!AreAliased(dst, src1, src2));
++      CHECK(!AreAliased(dst, src1, src2));
+       if (CpuFeatures::IsSupported(MISC_INSTR_EXT2)) {
+         __ msgrkc(dst, src1, src2);
+       } else {
+-        __ mgrk(r0, src1, src2);  // r0 = high 64-bits, r1 = low 64-bits.
+-        __ lgr(dst, r1);
+-        __ ShiftRightS64(r1, r1, Operand(63));
++        // Mul high.
++        __ MulHighS64(r1, src1, src2);
++        // Mul low.
++        __ mov(dst, src1);
++        __ MulS64(dst, src2);
+         // Test whether {high} is a sign-extension of {result}.
+-        __ CmpU64(r0, r1);
++        __ ShiftRightS64(r0, dst, Operand(63));
++        __ CmpU64(r1, r0);
+       }
+       break;
+     }
+@@ -1725,20 +1728,7 @@ CodeGenerator::CodeGenResult CodeGenerat
+       ASSEMBLE_BIN_OP(RRRInstr(MulHighU64), nullInstr, nullInstr);
+       break;
+     case kS390_MulHighS64:
+-      if (CpuFeatures::IsSupported(MISC_INSTR_EXT2)) {
+-        ASSEMBLE_BIN_OP(RRRInstr(MulHighS64), nullInstr, nullInstr);
+-      } else {
+-        __ Push(r2, r3, i.InputRegister(0), i.InputRegister(1));
+-        __ Pop(r2, r3);
+-        {
+-          FrameScope scope(masm(), StackFrame::INTERNAL);
+-          __ PrepareCallCFunction(2, 0, kScratchReg);
+-          __ CallCFunction(ExternalReference::int64_mul_high_function(), 2, 0);
+-        }
+-        __ mov(kScratchReg, r2);
+-        __ Pop(r2, r3);
+-        __ mov(i.OutputRegister(), kScratchReg);
+-      }
++      ASSEMBLE_BIN_OP(RRRInstr(MulHighS64), nullInstr, nullInstr);
+       break;
+     case kS390_MulFloat:
+       ASSEMBLE_BIN_OP(DDInstr(meebr), DMTInstr(MulFloat32), nullInstr);
+Index: node-v20.1.0/deps/v8/src/codegen/s390/macro-assembler-s390.cc
+===================================================================
+--- node-v20.1.0.orig/deps/v8/src/codegen/s390/macro-assembler-s390.cc
++++ node-v20.1.0/deps/v8/src/codegen/s390/macro-assembler-s390.cc
+@@ -2906,8 +2906,23 @@ void MacroAssembler::MulS64(Register dst
+ }
+ 
+ void MacroAssembler::MulHighS64(Register dst, Register src1, Register src2) {
+-  mgrk(r0, src1, src2);
+-  lgr(dst, r0);
++  if (CpuFeatures::IsSupported(MISC_INSTR_EXT2)) {
++    mgrk(r0, src1, src2);
++    lgr(dst, r0);
++  } else {
++    SaveFPRegsMode fp_mode = SaveFPRegsMode::kSave;
++    PushCallerSaved(fp_mode, ip);
++    Push(src1, src2);
++    Pop(r2, r3);
++    {
++      FrameScope scope(this, StackFrame::INTERNAL);
++      PrepareCallCFunction(2, 0, r0);
++      CallCFunction(ExternalReference::int64_mul_high_function(), 2, 0);
++    }
++    mov(r0, r2);
++    PopCallerSaved(fp_mode, ip);
++    mov(dst, r0);
++  }
+ }
+ 
+ void MacroAssembler::MulHighS64(Register dst, Register src1,

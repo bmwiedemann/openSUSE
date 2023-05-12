@@ -1,0 +1,104 @@
+commit 33ee7a0221b1fad07639c3c8948ad322238a52ab
+Author: Otto Hollmann <otto.hollmann@suse.com>
+Date:   Wed May 10 11:07:36 2023 +0200
+
+    test: Adapt tests for OpenSSL 3.1
+
+diff --git a/test/common/index.js b/test/common/index.js
+index f3caa9d1d4..a3e317d24b 100644
+--- a/test/common/index.js
++++ b/test/common/index.js
+@@ -57,7 +57,10 @@ const hasCrypto = Boolean(process.versions.openssl) &&
+                   !process.env.NODE_SKIP_CRYPTO;
+ 
+ const hasOpenSSL3 = hasCrypto &&
+-    require('crypto').constants.OPENSSL_VERSION_NUMBER >= 805306368;
++    require('crypto').constants.OPENSSL_VERSION_NUMBER >= 0x30000000;
++
++const hasOpenSSL31 = hasCrypto &&
++    require('crypto').constants.OPENSSL_VERSION_NUMBER >= 0x30100000;
+ 
+ const hasQuic = hasCrypto && !!process.config.variables.openssl_quic;
+ 
+@@ -913,6 +916,7 @@ const common = {
+   hasIntl,
+   hasCrypto,
+   hasOpenSSL3,
++  hasOpenSSL31,
+   hasQuic,
+   hasMultiLocalhost,
+   invalidArgTypeHelper,
+diff --git a/test/parallel/test-https-agent-session-eviction.js b/test/parallel/test-https-agent-session-eviction.js
+index 20cdb870a0..da56007105 100644
+--- a/test/parallel/test-https-agent-session-eviction.js
++++ b/test/parallel/test-https-agent-session-eviction.js
+@@ -56,6 +56,7 @@ function faultyServer(port) {
+ function second(server, session) {
+   const req = https.request({
+     port: server.address().port,
++    ciphers: (common.hasOpenSSL31 ? 'DEFAULT:@SECLEVEL=0' : 'DEFAULT'),
+     rejectUnauthorized: false
+   }, function(res) {
+     res.resume();
+diff --git a/test/parallel/test-tls-alert.js b/test/parallel/test-tls-alert.js
+index 31b07104c2..9e92ccca49 100644
+--- a/test/parallel/test-tls-alert.js
++++ b/test/parallel/test-tls-alert.js
+@@ -41,7 +41,7 @@ const server = tls.Server({
+   key: loadPEM('agent2-key'),
+   cert: loadPEM('agent2-cert')
+ }, null).listen(0, common.mustCall(() => {
+-  const args = ['s_client', '-quiet', '-tls1_1',
++  const args = ['s_client', '-quiet', '-tls1_1', '-cipher', (common.hasOpenSSL31 ? 'DEFAULT:@SECLEVEL=0' : 'DEFAULT'),
+                 '-connect', `127.0.0.1:${server.address().port}`];
+ 
+   execFile(common.opensslCli, args, common.mustCall((err, _, stderr) => {
+diff --git a/test/parallel/test-tls-getprotocol.js b/test/parallel/test-tls-getprotocol.js
+index d45287d671..ee33200916 100644
+--- a/test/parallel/test-tls-getprotocol.js
++++ b/test/parallel/test-tls-getprotocol.js
+@@ -11,8 +11,8 @@ const tls = require('tls');
+ const fixtures = require('../common/fixtures');
+ 
+ const clientConfigs = [
+-  { secureProtocol: 'TLSv1_method', version: 'TLSv1' },
+-  { secureProtocol: 'TLSv1_1_method', version: 'TLSv1.1' },
++  { secureProtocol: 'TLSv1_method', version: 'TLSv1', ciphers: (common.hasOpenSSL31 ? 'DEFAULT:@SECLEVEL=0' : 'DEFAULT') },
++  { secureProtocol: 'TLSv1_1_method', version: 'TLSv1.1', ciphers: (common.hasOpenSSL31 ? 'DEFAULT:@SECLEVEL=0' : 'DEFAULT') },
+   { secureProtocol: 'TLSv1_2_method', version: 'TLSv1.2' },
+ ];
+ 
+@@ -30,6 +30,7 @@ const server = tls.createServer(serverConfig, common.mustCall(clientConfigs.leng
+     tls.connect({
+       host: common.localhostIPv4,
+       port: server.address().port,
++      ciphers: v.ciphers,
+       rejectUnauthorized: false,
+       secureProtocol: v.secureProtocol
+     }, common.mustCall(function() {
+diff --git a/test/parallel/test-tls-min-max-version.js b/test/parallel/test-tls-min-max-version.js
+index 5cea41ca7e..ab351558a4 100644
+--- a/test/parallel/test-tls-min-max-version.js
++++ b/test/parallel/test-tls-min-max-version.js
+@@ -22,6 +22,9 @@ function test(cmin, cmax, cprot, smin, smax, sprot, proto, cerr, serr) {
+     if (serr !== 'ERR_SSL_UNSUPPORTED_PROTOCOL')
+       ciphers = 'ALL@SECLEVEL=0';
+   }
++  if (common.hasOpenSSL31 && cerr === 'ERR_SSL_TLSV1_ALERT_PROTOCOL_VERSION') {
++    ciphers = 'DEFAULT@SECLEVEL=0';
++  }
+   // Report where test was called from. Strip leading garbage from
+   //     at Object.<anonymous> (file:line)
+   // from the stack location, we only want the file:line part.
+diff --git a/test/parallel/test-tls-session-cache.js b/test/parallel/test-tls-session-cache.js
+index c4bebff2e3..e4ecb53282 100644
+--- a/test/parallel/test-tls-session-cache.js
++++ b/test/parallel/test-tls-session-cache.js
+@@ -100,6 +100,7 @@ function doTest(testOptions, callback) {
+     const args = [
+       's_client',
+       '-tls1',
++      '-cipher', (common.hasOpenSSL31 ? 'DEFAULT:@SECLEVEL=0' : 'DEFAULT'),
+       '-connect', `localhost:${this.address().port}`,
+       '-servername', 'ohgod',
+       '-key', fixtures.path('keys/rsa_private.pem'),

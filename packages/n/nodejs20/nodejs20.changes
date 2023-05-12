@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 12 07:52:30 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- z13.patch: fixes illegal instruction error on z13 and older s390
+
+-------------------------------------------------------------------
+Thu May 10 13:09:58 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Adapt tests for OpenSSL 3.1 [bsc#1209430]
+  * Add openssl3_1-adapt_tests.patch
+
+-------------------------------------------------------------------
 Thu May  4 13:26:26 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.1.0
 
 - Update to version 20.1.0

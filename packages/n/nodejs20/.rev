@@ -7,4 +7,15 @@
     <comment>nodejs 20.0.0 for Factory</comment>
     <requestid>1085759</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ecc934c59abd2f8532767d79c7460513</srcmd5>
+    <version>20.1.0</version>
+    <time>1683916723</time>
+    <user>dimstar_suse</user>
+    <comment>- z13.patch: fixes illegal instruction error on z13 and older s390
+
+- Adapt tests for OpenSSL 3.1 [bsc#1209430]
+  * Add openssl3_1-adapt_tests.patch</comment>
+    <requestid>1086728</requestid>
+  </revision>
 </revisionlist>
