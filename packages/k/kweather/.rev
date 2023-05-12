@@ -7,4 +7,12 @@
     <comment>New applications released with KDE gear</comment>
     <requestid>1081103</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6831fd56f3f3d4a7af168226d79570f7</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916588</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086426</requestid>
+  </revision>
 </revisionlist>
