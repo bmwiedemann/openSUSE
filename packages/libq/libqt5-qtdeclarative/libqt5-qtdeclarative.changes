@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 11 08:28:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.9+kde25:
+  * Accessibility: respect value in attached Accessible in controls
+  * Revert "QQuickItem: Fix effective visibility for items without parent"
+    (boo#1210980)
+
+-------------------------------------------------------------------
 Fri Apr 21 09:57:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde67, rebased upstream:
