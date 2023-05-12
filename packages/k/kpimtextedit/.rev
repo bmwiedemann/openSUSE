@@ -751,4 +751,12 @@
     <comment>KDE Release Gear 23.04.0</comment>
     <requestid>1081208</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7cd58b5b470453471d433fac058b2994</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916424</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086384</requestid>
+  </revision>
 </revisionlist>
