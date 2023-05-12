@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May  9 10:46:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Allow running mysql_upgrade when starting Akonadi
+  * Remove dangling reference
+  * Avoid crashing before priting debug output when setting up db
+  * Fix crash on server shutdown (kde#462692)
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+  * Fix a bug in for clause in EntityTreeModel
+  * Remove dead code from FavoriteCollectionsModel
+  * Fix wrong for clause in Akonadi::Session (kde#468343)
+  * Add a test for faulty iteration in Akonadi::Session
+- Drop patches, merged upstream:
+  * 0001-Fix-wrong-for-clause-in-Akonadi-Session.patch
+  * 0002-Remove-dead-code-from-FavoriteCollectionsModel.patch
+  * 0003-Fix-a-bug-in-for-clause-in-EntityTreeModel.patch
+  * 0001-Fix-crash-on-server-shutdown.patch
+  * 0001-Avoid-crashing-before-priting-debug-output-when-sett.patch
+  * 0001-Remove-dangling-reference.patch
+  * 0001-Allow-running-mysql_upgrade-when-starting-Akonadi.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 14:05:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add more fixes:

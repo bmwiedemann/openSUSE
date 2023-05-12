@@ -20,7 +20,7 @@
 %define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadi-server
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -31,20 +31,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source99:       akonadi-server-rpmlintrc
-# PATCH-FIX-UPSTREAM -- kde#458315 and duplicates
-Patch0:         0001-Fix-wrong-for-clause-in-Akonadi-Session.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0002-Remove-dead-code-from-FavoriteCollectionsModel.patch
-# PATCH-FIX-UPSTREAM -- potential undefined behaviour
-Patch2:         0003-Fix-a-bug-in-for-clause-in-EntityTreeModel.patch
-# PATCH-FIX-UPSTREAM -- Another crash fix
-Patch3:         0001-Fix-crash-on-server-shutdown.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Avoid-crashing-before-priting-debug-output-when-sett.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-Remove-dangling-reference.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         0001-Allow-running-mysql_upgrade-when-starting-Akonadi.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  extra-cmake-modules >= %{kf5_version}

@@ -895,4 +895,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment></comment>
     <requestid>1083570</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>e5d4c94c3c1485ddb89e373868e55830</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916371</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086231</requestid>
+  </revision>
 </revisionlist>
