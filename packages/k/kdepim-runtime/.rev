@@ -859,4 +859,12 @@
     (kde#435427, boo#1187119)</comment>
     <requestid>1083624</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>b36e26b502c5c42549d0871189feebd0</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916396</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086303</requestid>
+  </revision>
 </revisionlist>

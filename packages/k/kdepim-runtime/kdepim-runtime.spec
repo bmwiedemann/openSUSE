@@ -19,7 +19,7 @@
 %define kf5_version 5.103.0
 %bcond_without released
 Name:           kdepim-runtime
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -29,11 +29,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-single-file-resources-not-reloading-configuratio.patch
-Patch1:         0004-Skip-EWS-items-where-there-is-no-registered-handler.patch
-Patch2:         0006-Ignore-infite-set.patch
-Patch3:         0001-Fix-crash-trying-to-access-password-of-empty-account.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme

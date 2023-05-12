@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  9 10:46:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix crash trying to access password of empty account (kde#435427)
+  * Ignore infinite set
+  * Skip EWS items where there is no registered handler (kde#440831)
+  * Fix single-file-resources not reloading configuration at runtime (kde#425460)
+- Drop patches, merged upstream:
+  * 0001-Fix-single-file-resources-not-reloading-configuratio.patch
+  * 0004-Skip-EWS-items-where-there-is-no-registered-handler.patch
+  * 0006-Ignore-infite-set.patch
+  * 0001-Fix-crash-trying-to-access-password-of-empty-account.patch
+
+-------------------------------------------------------------------
 Sat Apr 29 08:52:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fixes:
