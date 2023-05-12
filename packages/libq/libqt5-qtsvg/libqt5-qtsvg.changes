@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 08:30:56 UTC 2023 - fvogt@suse.com
+
+- Update to version 5.15.9+kde8:
+  * QSvgFont: Initialize used member, remove unused
+    (boo#1211298, CVE-2023-32573)
+
+-------------------------------------------------------------------
 Fri Apr 21 10:01:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde10, rebased upstream:
