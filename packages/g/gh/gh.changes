@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 11 13:30:50 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.29.0:
+  * Fix label assets
+  * Fix release guard for deployment workflow
+  * Print message after codespace deletion (#7353)
+  * Include auto-merge information in gh pr view (#7385)
+  * Include auto-merge information in gh pr status (#7386)
+  * Make: Fix target name for Windows platform (#7370)
+  * New deployment workflow
+  * Add progress labels for `gh release download` (#7380)
+  * Add PR auto-merge status info to PR queries (#7384)
+  * fix empty default description for local repository (#7383)
+  * Add `alias import` command (#7118)
+  * Fix shellcheck bugs in generate.sh (#7392)
+  * Add capability to filter codespaces by repo owner (#7347)
+  * Fix Makefile compatibility with macOS
+
+-------------------------------------------------------------------
 Tue Apr 25 17:46:19 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.28.0:

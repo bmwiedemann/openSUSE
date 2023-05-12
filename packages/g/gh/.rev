@@ -319,4 +319,12 @@ Switched to tar_scm to pass auto review.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1084101</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>faa3f77761059fd05c2824b0b1371480</srcmd5>
+    <version>2.29.0</version>
+    <time>1683916712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086687</requestid>
+  </revision>
 </revisionlist>
