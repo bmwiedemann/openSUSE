@@ -1292,4 +1292,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
     <requestid>1080733</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>6d8cf596ab377c38ee0b20e8b9f3d12b</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916449</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086455</requestid>
+  </revision>
 </revisionlist>
