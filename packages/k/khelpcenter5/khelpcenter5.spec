@@ -19,7 +19,7 @@
 %define rname khelpcenter
 %bcond_without released
 Name:           khelpcenter5
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
