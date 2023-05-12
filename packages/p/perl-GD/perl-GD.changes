@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 11 15:37:41 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update cpanspec.yml and recreate spec file
+
+-------------------------------------------------------------------
+Sun May  7 10:43:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused BuildRequires. Only gd is "#include"d.
+
+-------------------------------------------------------------------
 Wed Feb  2 03:06:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.76

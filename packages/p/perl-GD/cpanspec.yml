@@ -7,12 +7,7 @@ description_paragraphs: 1
 patches:
   GD-cflags.patch: -p1
 preamble: |-
- BuildRequires:  freetype2-devel
  BuildRequires:  gd-devel >= 2.0.28
- BuildRequires:  libjpeg-devel
- BuildRequires:  libpng-devel
- BuildRequires:  libtiff-devel
- BuildRequires:  xorg-x11-devel
  Requires: gd
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
