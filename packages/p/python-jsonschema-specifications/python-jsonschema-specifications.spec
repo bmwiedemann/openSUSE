@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jsonschema-specifications
 Version:        2023.3.6
 Release:        0
@@ -23,11 +24,11 @@ Summary:        The JSON Schema meta-schemas and vocabularies, exposed as a Regi
 License:        MIT
 URL:            https://github.com/python-jsonschema/jsonschema-specifications
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema-specifications/jsonschema_specifications-2023.3.6.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module pytest}
