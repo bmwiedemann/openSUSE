@@ -18,7 +18,7 @@
 
 %bcond_without  released
 Name:           calindori
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Kirigami-based calendar application
 License:        GPL-3.0-or-later
