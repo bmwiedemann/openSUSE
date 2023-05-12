@@ -1,7 +1,7 @@
 #
 # spec file for package python-recommonmark
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-# Package is not able to build with Python 2 on Leap 15.3 because of "nothing provides python2-charset-normalizer >= 2.0.0 needed by python2-requests"
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-recommonmark
 Version:        0.7.1
 Release:        0

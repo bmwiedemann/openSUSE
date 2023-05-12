@@ -92,4 +92,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>933512</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>2b45223ba15c7c5bc029d8c57fa846a9</srcmd5>
+    <version>0.7.1</version>
+    <time>1683916344</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1086191 from ojkastl_buildservice
+
+add sle15_python_module_pythons</comment>
+    <requestid>1086534</requestid>
+  </revision>
 </revisionlist>

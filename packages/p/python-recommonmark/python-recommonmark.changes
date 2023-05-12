@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 11 08:15:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed Nov 17 16:43:36 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Disable Python 2 because Package is not able to build with Python 2 on Leap 15.3 because of "nothing provides python2-charset-normalizer >= 2.0.0 needed by python2-requests"
