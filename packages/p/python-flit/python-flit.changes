@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 10 06:11:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Remove BuildRequire for PyYAML again. This was needed by the
+  response package, which in the meantime got it.
+
+-------------------------------------------------------------------
 Mon May  8 05:53:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire PyYAML, see https://github.com/pypa/flit/issues/643
