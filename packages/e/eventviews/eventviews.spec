@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5EventViews5
 Name:           eventviews
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
