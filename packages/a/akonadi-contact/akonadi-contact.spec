@@ -21,7 +21,7 @@
 %define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadi-contact
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
