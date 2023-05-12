@@ -19,7 +19,7 @@
 %define kf5_version 5.103.0
 %bcond_without released
 Name:           kcalutils
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
