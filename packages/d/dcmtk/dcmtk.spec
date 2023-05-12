@@ -27,6 +27,8 @@ URL:            https://dicom.offis.de/dcmtk.php.en
 Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
+# PATCH-FIX-UPSTREAM -- CVE-2022-43272
+Patch1:         dcmtk-CVE-2022-43272.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

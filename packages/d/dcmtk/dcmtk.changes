@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Thu May 11 14:31:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1206070, CVE-2022-43272):
+  * dcmtk-CVE-2022-43272.patch
+
+-------------------------------------------------------------------
 Sat Jul 23 07:08:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
-- Update to 3.6.7. See DOCS/CHANGES.367 for the full list of changes
+- Update to 3.6.7 (boo#1208639, boo#1208638, boo#1208637,
+  CVE-2022-2121, CVE-2022-2120, CVE-2022-2119)
+  See DOCS/CHANGES.367 for the full list of changes
   * Updated code definitions for DICOM 2022b
   * Fixed possible NULL pointer dereference
 - Rebase dcmtk-fix-DCMTKTargets.cmake.patch
