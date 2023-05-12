@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-autodocsumm
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        GPL-2.0-only

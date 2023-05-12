@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 10 19:39:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.11:
+  * Support Sphinx 7 and Python 3.11
+  * pin build of docs to sphinx<=7.0
+
+-------------------------------------------------------------------
 Thu May  4 15:40:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.11:
