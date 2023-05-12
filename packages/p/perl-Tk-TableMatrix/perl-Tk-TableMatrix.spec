@@ -35,7 +35,8 @@ Requires:       perl(Tk) >= 800.022
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl-Tk-devel
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xproto)
 # MANUAL END
 
 %description

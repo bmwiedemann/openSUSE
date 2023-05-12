@@ -14,7 +14,8 @@ summary: Table/Matrix Widget Extension to perl/tk
 #  bar.patch:
 preamble: |-
  BuildRequires:  perl-Tk-devel
- BuildRequires:  xorg-x11-devel
+ BuildRequires:  pkgconfig(x11)
+ BuildRequires:  pkgconfig(xproto)
 post_prep: |-
  if test "%{_lib}" = "lib64" ; then
    sed -i -e "s,/lib>,/lib64>," -e "s,/lib\",/lib64\"," myConfig
