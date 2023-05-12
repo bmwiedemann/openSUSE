@@ -32,4 +32,13 @@
   * Fix variable name resolving with references</comment>
     <requestid>1069753</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d0a4b3414818aecef3fb2551a5fa2af</srcmd5>
+    <version>2.16.3</version>
+    <time>1683916726</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+</comment>
+    <requestid>1086723</requestid>
+  </revision>
 </revisionlist>
