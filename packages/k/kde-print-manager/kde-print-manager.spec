@@ -20,7 +20,7 @@
 %define rname print-manager
 %bcond_without released
 Name:           kde-print-manager
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
