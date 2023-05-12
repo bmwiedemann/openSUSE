@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,27 +20,28 @@
 Name:           perl-Tk
 Version:        804.036
 Release:        0
-Summary:        Graphical user interface toolkit for Perl
+#Upstream: SUSE-Public-Domain
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Zlib
+Summary:        Tk - a Graphical User Interface Toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SREZIC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-# MANUAL BEGIN
 Patch0:         Tk-804.029-event.diff
 Patch1:         Tk-804.029-macro.diff
 Patch2:         Tk-804.029-null.diff
 Patch3:         Tk-804.029-refcnt.diff
-# MANUAL END
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  libX11-devel
-BuildRequires:  libXft-devel
 BuildRequires:  liberation-fonts
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  xkeyboard-config
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xt)
 %if 0%{?suse_version} >= 01550
 BuildRequires:  xvfb-run
 BuildRequires:  perl(Devel::Leak)
@@ -50,7 +51,6 @@ BuildRequires:  perl(Test::Pod)
 BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-Xnest
 BuildRequires:  xorg-x11-Xvfb
-BuildRequires:  xorg-x11-devel
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  xorg-x11-fonts-100dpi
 BuildRequires:  xorg-x11-fonts-scalable
@@ -71,20 +71,14 @@ The perl code corresponding to Tix's Tcl code is not fully implemented.
 Perl API is essentially the same as Tk800 series Tk800.025 but has not
 been verified as compliant. There ARE differences see pod/804delta.pod.
 
-%package devel
-Summary:        Development files for perl-Tk
-Group:          Development/Libraries/Perl
-Requires:       %{name} = %{version}
-
-%description devel
-Development files for Tk - a graphical user interface toolkit for Perl
-
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p0
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+# MANUAL BEGIN
 find . -type f -name "Tcl-pTk" -print0 | xargs -0 chmod +x
 find . -type f -name "mkVFunc" -print0 | xargs -0 chmod +x
+# MANUAL END
 
 %build
 find -name "*.orig" -exec rm {} \;
@@ -100,7 +94,6 @@ for file in `find -type f` ; do
   grep -q "%{_prefix}/local/bin/new/perl" $file && \
       sed -i -e "s@%{_prefix}/local/bin/new/perl@%{_bindir}/perl@g" "$file"
 done
-
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" XFT=1
 make %{?_smp_mflags} CFLAGS="%{optflags} -Wall -fpic"
 
@@ -117,28 +110,22 @@ DISPLAY=:95 make test %{?_smp_mflags}
 %install
 %perl_make_install
 %perl_process_packlist
-rm -f %{buildroot}/%{perl_vendorarch}/fix_4_os2.pl
-find %{buildroot} -type f -name '*.bs' -size 0 -delete
+%perl_gen_filelist
 
-%files
-%defattr(-,root,root,755)
-%license COPYING pTk/*license*
-%doc Changes Change.log Funcs.doc PPM-HowTo README README.linux ToDo demos/widget VERSIONS
-%doc blib/man1/widget.1
-%{_mandir}/man?/*
-%{_bindir}/p*
-%{_bindir}/tkjpeg
-%{_bindir}/gedi
-%{_bindir}/widget
-%{perl_vendorarch}/Tie
-%{perl_vendorarch}/Tk
-%{perl_vendorarch}/Tk.*
-%{perl_vendorarch}/auto/Tk
+%files -f %{name}.files
+%doc Change.log Changes examples Funcs.doc PPM-HowTo README README.linux ToDo VERSIONS
+%license COPYING
 %exclude %{perl_vendorarch}/Tk/pTk
 %exclude %{perl_vendorarch}/Tk/*.h
 
+%package devel
+Summary:        Development files for perl-Tk
+Requires:       %{name} = %{version}
+
+%description devel
+Development files for Tk - a graphical user interface toolkit for Perl
+
 %files devel
-%defattr(-,root,root)
 %{perl_vendorarch}/Tk/pTk
 %{perl_vendorarch}/Tk/*.h
 

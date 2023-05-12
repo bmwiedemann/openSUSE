@@ -1,7 +1,13 @@
 ---
 #description_paragraphs: 3
-#description: |-
-#  override description from CPAN
+description: |-
+ This a re-port of a perl interface to Tk8.4.
+ C code is derived from Tcl/Tk8.4.5.
+ It also includes all the C code parts of Tix8.1.4 from SourceForge.
+ The perl code corresponding to Tix's Tcl code is not fully implemented.
+ 
+ Perl API is essentially the same as Tk800 series Tk800.025 but has not
+ been verified as compliant. There ARE differences see pod/804delta.pod.
 #summary: override summary from CPAN
 #no_testing: broken upstream
 #sources:
@@ -13,11 +19,13 @@ patches:
   Tk-804.029-null.diff: -p0
   Tk-804.029-refcnt.diff: -p0
 preamble: |-
-  BuildRequires:  libX11-devel
-  BuildRequires:  libXft-devel
   BuildRequires:  liberation-fonts
   BuildRequires:  libjpeg-devel
   BuildRequires:  libpng-devel
+  BuildRequires:  pkgconfig(x11)
+  BuildRequires:  pkgconfig(xft)
+  BuildRequires:  pkgconfig(xproto)
+  BuildRequires:  pkgconfig(xt)
   BuildRequires:  xkeyboard-config
   %if 0%{?suse_version} >= 01550
   BuildRequires:  xvfb-run
@@ -28,7 +36,6 @@ preamble: |-
   BuildRequires:  xorg-x11
   BuildRequires:  xorg-x11-Xnest
   BuildRequires:  xorg-x11-Xvfb
-  BuildRequires:  xorg-x11-devel
   BuildRequires:  xorg-x11-fonts
   BuildRequires:  xorg-x11-fonts-100dpi
   BuildRequires:  xorg-x11-fonts-scalable
@@ -38,9 +45,9 @@ preamble: |-
   %ifnarch s390 s390x
   BuildRequires:  xorg-x11-server
   %endif
-#post_prep: |-
-# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
-# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+post_prep: |-
+  find . -type f -name "Tcl-pTk" -print0 | xargs -0 chmod +x
+  find . -type f -name "mkVFunc" -print0 | xargs -0 chmod +x
 #post_build: |-
 # rm unused.files
 #post_install: |-
@@ -74,3 +81,18 @@ custom_test: |-
   %endif
 #startserver && make test
 #ignore_requires: Bizarre::Module
+misc: |-
+ %exclude %{perl_vendorarch}/Tk/pTk
+ %exclude %{perl_vendorarch}/Tk/*.h
+
+ %package devel
+ Summary:        Development files for perl-Tk
+ Requires:       %{name} = %{version}
+ 
+ %description devel
+ Development files for Tk - a graphical user interface toolkit for Perl
+
+ %files devel
+ %{perl_vendorarch}/Tk/pTk
+ %{perl_vendorarch}/Tk/*.h
+skip_doc: add_version build_ptk checklen check_source check_syms cleanup copydate db57 debug debug.bat dupsyms exetype fixfunc gdb.plx gedi generate hackMM keyWords menubug mkExt mkppm.bat myConfig needed perlfiles ptked ptksh r README-ActiveState.txt README.AIX README.cygwin README.darwin README.HPUX README.IRIX README.OpenBSD README.os2 README.OSF README.SCO README.Solaris README-Strawberry.txt README.SVR4 README.ultrix rebuild sm stripblib submethods symbols tcl2perl tkGlue.def tkGlue.exc tkGlue.m tkGlue.t TkXSUB.def uninstall vg vtab.def wal
