@@ -20,7 +20,7 @@
 %define libname libKPim5IMAP5
 %bcond_without released
 Name:           kimap
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        KDE PIM Libraries: IMAP library
 License:        LGPL-2.1-or-later
