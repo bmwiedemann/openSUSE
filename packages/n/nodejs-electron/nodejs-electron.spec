@@ -208,7 +208,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        22.3.8
+Version:        22.3.9
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -266,6 +266,7 @@ Patch75:        gcc-asmflags.patch
 # https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
 Patch76:        disable-devtools-tests.patch
 Patch77:        angle_link_glx.patch
+Patch78:        rdynamic.patch
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch

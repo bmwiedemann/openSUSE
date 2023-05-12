@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 10 18:27:09 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.9
+  * Fixed drag-and-drop crash on Wayland
+- Correct bogus export of private symbols from chrome_crashpad_handler executable
+  * add another section and note to chromium-102-compiler.patch
+  * add rdynamic.patch
+
+-------------------------------------------------------------------
 Wed May  3 20:28:49 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.8
   * Fixed crash when executing eval in the utility process.

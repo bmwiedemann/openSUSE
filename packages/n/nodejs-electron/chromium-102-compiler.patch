@@ -8,6 +8,7 @@ SUSE: Disable the following:
   * per-target debuginfo level is left in as it is still useful (-g2 everywhere does not work)
 * Emitting code for the PIC model. It is needed in case of shared libraries, but results in a larger executable (and Electron is already enormous)
   It should be enabled individually on code that gets into separate libraries (and we know when to do it — otherwise we're getting linker error)
+* -rdynamic. The rationale given is bogus (the allocator gets exported regardless). The main executable needs to be linked with -rdynamic anyway, but eg. chrome_crashpad_handler doesn't.
 
 
 From 307a0f63dd9b118f4b8470ed3d7567e81fdb7a6d Mon Sep 17 00:00:00 2001
@@ -193,6 +194,14 @@ index d40843b..b92f03b 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
+@@ -1841,7 +1841,6 @@
+ config("export_dynamic") {
+   # TODO(crbug.com/1052397): Revisit after target_os flip is completed.
+   if (is_linux || is_chromeos_lacros || export_libcxxabi_from_executables) {
+-    ldflags = [ "-rdynamic" ]
+   }
+ }
+ 
 @@ -1887,7 +1811,8 @@
  # gcc 4.9 and earlier had no way of suppressing this warning without
  # suppressing the rest of them.  Here we centralize the identification of
