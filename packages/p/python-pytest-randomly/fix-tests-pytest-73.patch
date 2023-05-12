@@ -1,0 +1,91 @@
+From d663e203db254f7e310e4de0e4622e5596860698 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Wed, 12 Apr 2023 09:21:26 +0200
+Subject: [PATCH] Make the tests work with pytest 7.3.0 (#540)
+
+Co-authored-by: Adam Johnson <me@adamj.eu>
+---
+ requirements/py310.txt        | 10 +++-------
+ requirements/py311.txt        | 10 +++-------
+ requirements/py37.txt         | 10 +++-------
+ requirements/py38.txt         | 10 +++-------
+ requirements/py39.txt         | 10 +++-------
+ tests/test_pytest_randomly.py | 16 ++++++++--------
+ 6 files changed, 23 insertions(+), 43 deletions(-)
+
+Index: pytest-randomly-3.12.0/tests/test_pytest_randomly.py
+===================================================================
+--- pytest-randomly-3.12.0.orig/tests/test_pytest_randomly.py
++++ pytest-randomly-3.12.0/tests/test_pytest_randomly.py
+@@ -253,7 +253,7 @@ def test_files_reordered(ourtestdir):
+     out = ourtestdir.runpytest(*args)
+ 
+     out.assert_outcomes(passed=4, failed=0)
+-    assert out.outlines[8:12] == [
++    assert out.outlines[9:13] == [
+         "test_b.py::test_it PASSED",
+         "test_a.py::test_it PASSED",
+         "test_d.py::test_it PASSED",
+@@ -273,7 +273,7 @@ def test_files_reordered_when_seed_not_r
+     out = ourtestdir.runpytest(*args)
+ 
+     out.assert_outcomes(passed=4, failed=0)
+-    assert out.outlines[8:12] == [
++    assert out.outlines[9:13] == [
+         "test_b.py::test_it PASSED",
+         "test_a.py::test_it PASSED",
+         "test_d.py::test_it PASSED",
+@@ -312,7 +312,7 @@ def test_classes_reordered(ourtestdir):
+     out = ourtestdir.runpytest(*args)
+ 
+     out.assert_outcomes(passed=4, failed=0)
+-    assert out.outlines[8:12] == [
++    assert out.outlines[9:13] == [
+         "test_one.py::D::test_d PASSED",
+         "test_one.py::B::test_b PASSED",
+         "test_one.py::C::test_c PASSED",
+@@ -344,7 +344,7 @@ def test_class_test_methods_reordered(ou
+     out = ourtestdir.runpytest(*args)
+ 
+     out.assert_outcomes(passed=4, failed=0)
+-    assert out.outlines[8:12] == [
++    assert out.outlines[9:13] == [
+         "test_one.py::T::test_c PASSED",
+         "test_one.py::T::test_b PASSED",
+         "test_one.py::T::test_a PASSED",
+@@ -373,7 +373,7 @@ def test_test_functions_reordered(ourtes
+     out = ourtestdir.runpytest(*args)
+ 
+     out.assert_outcomes(passed=4, failed=0)
+-    assert out.outlines[8:12] == [
++    assert out.outlines[9:13] == [
+         "test_one.py::test_c PASSED",
+         "test_one.py::test_a PASSED",
+         "test_one.py::test_b PASSED",
+@@ -407,7 +407,7 @@ def test_test_functions_reordered_when_r
+     out = ourtestdir.runpytest(*args)
+ 
+     out.assert_outcomes(passed=4, failed=0)
+-    assert out.outlines[8:12] == [
++    assert out.outlines[9:13] == [
+         "test_one.py::test_c PASSED",
+         "test_one.py::test_a PASSED",
+         "test_one.py::test_b PASSED",
+@@ -437,7 +437,7 @@ def test_doctests_reordered(ourtestdir):
+ 
+     out = ourtestdir.runpytest(*args)
+     out.assert_outcomes(passed=2)
+-    assert out.outlines[8:10] == [
++    assert out.outlines[9:11] == [
+         "test_one.py::test_one.bar PASSED",
+         "test_one.py::test_one.foo PASSED",
+     ]
+@@ -518,7 +518,7 @@ def test_doctests_in_txt_files_reordered
+ 
+     out = ourtestdir.runpytest(*args)
+     out.assert_outcomes(passed=2)
+-    assert out.outlines[8:10] == [
++    assert out.outlines[9:11] == [
+         "test2.txt::test2.txt PASSED",
+         "test.txt::test.txt PASSED",
+     ]

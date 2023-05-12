@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May  4 22:57:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * Support Python 3.11.
+  * Drop Python 3.6 support.
+  * Work on FIPS Python 3.9+, by declaring use of
+    ``hashlib.md5()`` as not used for security.
+  * Fix crash when pytest’s cacheprovider is disabled.
+  * Improve group name in ``pytest --help``.
+  * Fix new shuffling to work when one or more test in a class or
+    module have the same test id.
+  * Rework shuffling algorithm to use hashing. This means that
+    running a subset of tests with the same seed will now produce
+    the same ordering as running the full set of tests.
+    This allows narrowing down ordering-related failures.
+  * Add type hints.
+  * Support Python 3.10.
+- add fix-tests-pytest-73.patch to support pytest 7.3.x
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
