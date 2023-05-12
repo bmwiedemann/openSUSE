@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 11 20:13:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Replace build_sphinx setuptools hook with direct sphinx-build
+  call -- fixes boo#1211051
+
+-------------------------------------------------------------------
 Mon May  4 12:21:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove nose and use unittest instead 
