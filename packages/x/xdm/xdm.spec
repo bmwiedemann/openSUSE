@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %fillup_prereq
 Requires:       /sbin/startproc
+Requires:       cpp
 Requires:       logrotate
 Requires:       sessreg
 Requires:       xconsole

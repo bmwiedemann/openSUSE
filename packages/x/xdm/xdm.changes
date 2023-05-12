@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 11 12:17:55 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- since xrdb no longer requires cpp, it needs to be reqired here now 
+
+-------------------------------------------------------------------
 Mon Apr  3 11:24:08 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Create two set of pam configuration files:

@@ -1043,4 +1043,12 @@
     openSUSE's PAM config policy</comment>
     <requestid>1076914</requestid>
   </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>f6dcadc643f05506e1b57120ea0987f7</srcmd5>
+    <version>1.1.14</version>
+    <time>1683916343</time>
+    <user>dimstar_suse</user>
+    <comment>- since xrdb no longer requires cpp, it needs to be reqired here now</comment>
+    <requestid>1086505</requestid>
+  </revision>
 </revisionlist>
