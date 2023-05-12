@@ -20,7 +20,7 @@
 %define kf5_version 5.99.0
 %bcond_without released
 Name:           calendarsupport
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
