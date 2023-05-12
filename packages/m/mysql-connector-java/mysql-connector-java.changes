@@ -1,6 +1,10 @@
 -------------------------------------------------------------------
 Tue Apr 25 07:33:23 UTC 2023 - David Anes <david.anes@suse.com>
 
+- Security fix:
+  - [CVE-2023-21971, bsc#1211247] Fix for unauthorized ability to 
+    cause a hang or frequently repeatable crash (complete DOS)
+
 - Update to 8.0.33:
   - Fix for Bug#34558945, PS using setCharacterStream() fails with 
     "Incorrect string value" if the Java program encoding is not 
