@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-csexp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,8 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_csexp_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
@@ -29,7 +31,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-csexp
 Name:           %pkg%nsuffix
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Parsing and printing of S-expressions in Canonical form
@@ -39,8 +41,8 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/csexp
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-dune >= 3.4
+BuildRequires:  ocaml-rpm-macros >= 20230101
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(csexp)
