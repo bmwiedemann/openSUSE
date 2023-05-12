@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="filename">sapstartsrv-resource-agents</param>
     <param name="versionformat">0.9.2+git.%ct.%h</param>
-    <param name="revision">846fe156d95f7fbb1f8a1c02ee65b720f1404b98</param>
+    <param name="revision">bf616cce2b4f1c64164aed5a492d3799d4166d7b</param>
   </service>
 
   <service name="recompress" mode="disabled">

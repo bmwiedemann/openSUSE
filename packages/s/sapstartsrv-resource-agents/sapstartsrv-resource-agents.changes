@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
-Fri May  5 08:18:17 UTC 2023 - abriel@suse.com
+Fri May 12 09:41:56 UTC 2023 - abriel@suse.com
 
 - Version bump to 0.9.2
-  * prevent systemd service race between sapping and sappond during
+  * prevent systemd service race between sapping and sappong during
     system boot
     (bsc#1207138)
   * fix a problem of monitor/probe operation to detect a running
@@ -12,6 +12,7 @@ Fri May  5 08:18:17 UTC 2023 - abriel@suse.com
 - add python3-psutil as package requirement and as build
   requirement in case of testing
   needed for bsc#1210790
+  (jsc#PED-4418)
 
 -------------------------------------------------------------------
 Wed Sep 14 09:37:25 UTC 2022 - abriel@suse.com
