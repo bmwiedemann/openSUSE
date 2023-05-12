@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kleopatra
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
