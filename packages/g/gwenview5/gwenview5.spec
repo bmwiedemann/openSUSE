@@ -20,7 +20,7 @@
 %define kf5_version 5.100.0
 %bcond_without released
 Name:           gwenview5
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
