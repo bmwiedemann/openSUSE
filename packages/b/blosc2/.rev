@@ -38,4 +38,23 @@
     <comment></comment>
     <requestid>1076449</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07a66f419fb77b6d22ca833f75375356</srcmd5>
+    <version>2.9.1</version>
+    <time>1683916640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.1
+  * Allow the use of BTUNE by detecting the ``BTUNE_BALANCE``
+    environment variable.
+- Release 2.9.0
+  * Dynamic plugins as Python wheels are supported now! This new
+    feature allows for creating plugins in C, distribute them as
+    wheels, and load them dynamically in runtime. Small example at
+    https://github.com/Blosc/blosc2_plugin_example
+  * BloscLZ can achieve more speed in clevel 1 now.
+  * Internal Zstd sources updated to latest 1.5.5 version.
+  * Copyright notice updated.  Thanks to @DimitriPapadopoulos.
+- Skip failing test_contexts gh#Blosc/c-blosc2#464 (forwarded request 1086565 from bnavigator)</comment>
+    <requestid>1086567</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 11 14:20:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.9.1
+  * Allow the use of BTUNE by detecting the ``BTUNE_BALANCE``
+    environment variable.
+- Release 2.9.0
+  * Dynamic plugins as Python wheels are supported now! This new
+    feature allows for creating plugins in C, distribute them as
+    wheels, and load them dynamically in runtime. Small example at
+    https://github.com/Blosc/blosc2_plugin_example
+  * BloscLZ can achieve more speed in clevel 1 now.
+  * Internal Zstd sources updated to latest 1.5.5 version.
+  * Copyright notice updated.  Thanks to @DimitriPapadopoulos.
+- Skip failing test_contexts gh#Blosc/c-blosc2#464
+
+-------------------------------------------------------------------
 Fri Mar 31 09:26:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add _constraints
