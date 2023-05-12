@@ -1,7 +1,7 @@
 #
 # spec file for package wlroots10
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://gitlab.freedesktop.org/wlroots/wlroots
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/3456.patch
 BuildRequires:  glslang-devel
 BuildRequires:  meson >= 0.58.1
 BuildRequires:  pkgconfig
@@ -93,7 +92,6 @@ Pluggable, composable modules for building a Wayland compositor.
 
 %prep
 %setup -n wlroots-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
@@ -103,6 +101,7 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
     %{?with_libinput_backend:'libinput',}
     %{?with_x11_backend:'x11',}
   ]" \
+  -Dexamples=false \
   %{?with_xwayland:-Dxwayland=enabled} \
   %{?with_xcb_errors:-Dxcb-errors=enabled}
 %meson_build

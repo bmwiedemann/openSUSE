@@ -7,4 +7,12 @@
     <comment>Compatibility package for packages that haven't been updated for new wlroots yet</comment>
     <requestid>1039434</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3f531e6b52a142ee038b8fb406323103</srcmd5>
+    <version>0.15.1</version>
+    <time>1683916733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086752</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 12 12:40:10 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Remove 3456.patch: Don't build example applications anymore. Fixes build with
+  ffmpeg-6.
+
+-------------------------------------------------------------------
 Tue Jul 12 20:21:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3456.patch: Fix build with ffmpeg 5. Patch from upstream git.
