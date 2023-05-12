@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 12 11:54:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Allow to use timeout in function kwargs even when initial
+    seconds is None
+  * drop support for 2.6, 3.4, 3.5 and add support for 3.7, 3.8, 3.9
+
+-------------------------------------------------------------------
 Wed Feb 19 02:09:49 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.4.1

@@ -7,4 +7,15 @@
     <comment>dependency of aiomisc, which is a dep of many aio* packages</comment>
     <requestid>874607</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8e88e506ab43abdb17c8da20dbf0a43</srcmd5>
+    <version>0.5.0</version>
+    <time>1683916732</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Allow to use timeout in function kwargs even when initial
+    seconds is None
+  * drop support for 2.6, 3.4, 3.5 and add support for 3.7, 3.8, 3.9</comment>
+    <requestid>1086742</requestid>
+  </revision>
 </revisionlist>
