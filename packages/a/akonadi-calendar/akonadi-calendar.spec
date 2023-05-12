@@ -20,7 +20,7 @@
 %define libname libKPim5AkonadiCalendar5
 %bcond_without released
 Name:           akonadi-calendar
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
