@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kaddressbook
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
