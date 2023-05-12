@@ -19,7 +19,7 @@
 %define rname   kwalletmanager
 %bcond_without released
 Name:           kwalletmanager5
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later

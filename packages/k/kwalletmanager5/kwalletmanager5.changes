@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix import menu actions status Disable import/export
+     menu items when starting kwalletmanager and wallet
+     is closed (kde#373753)
+
+-------------------------------------------------------------------
 Sat Apr 15 08:46:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
