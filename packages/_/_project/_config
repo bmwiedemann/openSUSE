@@ -365,6 +365,7 @@ FileProvides: /usr/bin/nm binutils
 FileProvides: /usr/bin/node nodejs-common
 FileProvides: /usr/bin/node18 nodejs18
 FileProvides: /usr/bin/node19 nodejs19
+FileProvides: /usr/bin/node20 nodejs20
 FileProvides: /usr/bin/nohup busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/nslookup bind-utils busybox-bind-utils
 FileProvides: /usr/bin/ocamlrun ocaml-runtime
