@@ -23,6 +23,12 @@ sub sh_test($) {
   my ( $exp ) = @_;
 
   dPrint( "?? '$exp' ");
+
+  # Don't test grub command return status from linux shell, this often results
+  # in command not found error.  In such case the expression often has no
+  # opening bracket and just returning false here to signify -ENOCMD error.
+  return 0 if ( $exp =~ m{^\s*[^\[]});
+
   $exp .= " ]" if ( $exp =~ m{^\[.*[^\]]\s*$} ); # gnaaa
   #my $t = qx{set -x; $exp};
   my $t = qx{$exp};

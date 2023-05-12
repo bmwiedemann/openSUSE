@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  4 06:58:12 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- grub2-once: Fix 'sh: terminal_output: command not found' error (bsc#1204563) 
+
+-------------------------------------------------------------------
 Wed Apr 26 07:22:03 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Exclude the deprecated EFI location, /usr/lib64/efi/, from
