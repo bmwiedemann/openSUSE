@@ -16,29 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-api
-Version:        1.5.0
+Version:        1.17.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python/tree/master/opentelemetry-api
-Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-api/opentelemetry-api-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-api/opentelemetry_api-%{version}.tar.gz
+BuildRequires:  %{python_module Deprecated}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Note: If python3-aiocontextvars is not available, the error message will
 # be confusing: https://github.com/openSUSE/obs-build/issues/685
 BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
 BuildArch:      noarch
+Requires:       python-Deprecated
+Requires:       python-importlib-metadata
 Requires:       python-setuptools
 %if %{python_version_nodots} < 37
 Requires:       python-aiocontextvars
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -47,17 +52,19 @@ BuildRequires:  %{python_module pytest}
 OpenTelemetry Python API
 
 %prep
-%setup -q -n opentelemetry-api-%{version}
+%setup -q -n opentelemetry_api-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# ignore some tests because we don't have opentelemetry.test module
+# gh#open-telemetry/opentelemetry-python#2263
+%pytest --ignore tests/util/test_once.py --ignore tests/logs/test_logger_provider.py --ignore tests/metrics/test_meter_provider.py --ignore tests/trace/test_globals.py --ignore tests/trace/test_proxy.py
 
 %files %{python_files}
 %doc README.rst

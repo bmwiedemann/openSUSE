@@ -92,4 +92,24 @@
     <comment></comment>
     <requestid>1081849</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>92d840210d70f9aa672c1345aeb059ed</srcmd5>
+    <version>1.17.0</version>
+    <time>1683916658</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore some tests because there's no opentelemetry-test-util module
+  gh#open-telemetry/opentelemetry-python#2263
+- Update to 1.17.0:
+  * Implement LowMemory temporality (#3223)
+  * PeriodicExportingMetricReader will continue if collection times out (#3100)
+  * Fix formatting of ConsoleMetricExporter. (#3197)
+  * Fix use of built-in samplers in SDK configuration (#3176)
+  * Implement shutdown procedure forOTLP grpc exporters (#3138)
+  * Add exponential histogram (#2964)
+  * Add OpenCensus trace bridge/shim (#3210)
+  * A lot more changes in previous releases can be found at
+  https://github.com/open-telemetry/opentelemetry-python/blob/main/CHANGELOG.md#version-1170038b0-2023-03-22
+</comment>
+    <requestid>1086592</requestid>
+  </revision>
 </revisionlist>
