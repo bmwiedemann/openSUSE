@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kalarm
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
