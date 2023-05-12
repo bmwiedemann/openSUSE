@@ -19,7 +19,7 @@
 %define soname 5
 %bcond_without released
 Name:           libkomparediff2
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        A library to compare files and strings
 License:        (GPL-2.0-or-later AND LGPL-2.0-or-later) AND BSD-2-Clause
