@@ -53,4 +53,12 @@
     <comment>- Remove nose and use unittest instead</comment>
     <requestid>800057</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7953bfb64a04cfb6adf9138cf8bf14f2</srcmd5>
+    <version>0.6</version>
+    <time>1683916693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086629</requestid>
+  </revision>
 </revisionlist>

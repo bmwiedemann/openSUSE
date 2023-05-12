@@ -1,7 +1,7 @@
 #
 # spec file for package python-peppercorn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-peppercorn
 Version:        0.6
 Release:        0
 Summary:        Pyramid exceptions logger
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://docs.pylonsproject.org/projects/peppercorn/en/latest/
+# SourceRepostory: https://github.com/Pylons/peppercorn
 Source:         https://files.pythonhosted.org/packages/source/p/peppercorn/peppercorn-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pylons-sphinx-themes}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation requirement
@@ -49,20 +51,22 @@ This package contains documentation for %{name}.
 %setup -q -n peppercorn-%{version}
 
 %build
-%python_build
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+%pyproject_wheel
+PYTHONPATH=":x" sphinx-build -b html docs/ build/sphinx/html/
+rm -r build/sphinx/html/{.buildinfo,.doctrees}
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -v
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst CONTRIBUTORS.txt COPYRIGHT.txt README.rst contributing.md
-%{python_sitelib}/*
+%{python_sitelib}/peppercorn-%{version}.dist-info
+%{python_sitelib}/peppercorn
 
 %files -n %{name}-doc
 %doc build/sphinx/html
