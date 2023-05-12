@@ -46,7 +46,7 @@ name of the container.
 %setup -qa1
 
 %build
-export CGO_ENABLED=0
+export CGO_ENABLED=1
 go build -o trivy -mod=vendor -buildmode=pie -trimpath -ldflags "-s -w -X=main.version=%{version}" cmd/trivy/main.go
 
 %install

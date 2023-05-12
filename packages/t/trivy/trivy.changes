@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 11 17:05:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- actually create a PIE binary
+
+-------------------------------------------------------------------
 Fri Apr 28 07:31:35 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.41.0:

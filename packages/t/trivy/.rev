@@ -900,4 +900,12 @@
   * fix: fix `file does not exist` error for post-analyzers (#4061)</comment>
     <requestid>1083465</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f3878894261187610d5b8c00d58150bf</srcmd5>
+    <version>0.41.0</version>
+    <time>1683916664</time>
+    <user>dimstar_suse</user>
+    <comment>- actually create a PIE binary</comment>
+    <requestid>1086593</requestid>
+  </revision>
 </revisionlist>
