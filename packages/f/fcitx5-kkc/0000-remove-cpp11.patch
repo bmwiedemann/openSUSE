@@ -1,0 +1,22 @@
+From 85b56d6289550174b15f108e355f39d7083f8c5c Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Thu, 30 Mar 2023 07:03:53 -0700
+Subject: [PATCH] Remove the unintended C++11 flag
+
+---
+ gui/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gui/CMakeLists.txt b/gui/CMakeLists.txt
+index 38b50d4..2327132 100644
+--- a/gui/CMakeLists.txt
++++ b/gui/CMakeLists.txt
+@@ -17,7 +17,7 @@ qt5_wrap_ui(KKC_CONFIG_SRCS dictwidget.ui adddictdialog.ui shortcutwidget.ui add
+ add_library(fcitx5-kkc-config
+   MODULE ${KKC_CONFIG_SRCS})
+ 
+-add_definitions(-DQT_NO_KEYWORDS -std=c++11)
++add_definitions(-DQT_NO_KEYWORDS)
+ 
+ target_include_directories(fcitx5-kkc-config PRIVATE ${PROJECT_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+ 

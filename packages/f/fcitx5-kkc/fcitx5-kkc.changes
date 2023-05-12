@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 11 23:10:11 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Use the .tar.xz source downloaded from fcitx-im.org
+
+-------------------------------------------------------------------
+Wed May 10 02:00:03 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Update to 5.0.12
+  * Update translation
+- Add 0000-remove-cpp11.patch
+  * Remove the unintended C++11 flag
+
+-------------------------------------------------------------------
 Sun Nov 20 10:24:17 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.11
