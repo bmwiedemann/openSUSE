@@ -19,7 +19,7 @@
 %define kf5_version 5.91.0
 %bcond_without released
 Name:           konversation
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
