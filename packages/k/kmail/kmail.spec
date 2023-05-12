@@ -19,7 +19,7 @@
 %define kf5_version 5.103.0
 %bcond_without released
 Name:           kmail
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -93,10 +93,11 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Requires:       %{name}-application-icons
+Requires:       grantleetheme
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Requires:       kmail-account-wizard
+Requires:       kmail-application-icons
 Recommends:     akonadi-import-wizard
 Recommends:     akonadi-search
 Recommends:     kleopatra

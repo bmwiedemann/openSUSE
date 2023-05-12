@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix disable limit spinbox + fix layout
+  * Adapt to new ktextaddons lib
+  * Fix compilation with older ktextaddons versions
+- Add the missing grantleetheme dependency (boo#1211157)
+
+-------------------------------------------------------------------
 Sat Apr 15 08:45:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
