@@ -139,8 +139,6 @@ Source10:       systemtap-tapset.tar.xz
 Source11:       jconsole.desktop.in
 # nss configuration file
 Source12:       nss.cfg.in
-# nss fips configuration file
-Source13:       nss.fips.cfg.in
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
@@ -178,6 +176,7 @@ Patch300:       JDK-8282944.patch
 Patch301:       JDK-8303509.patch
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
+Patch304:       unsigned-sni-server-name.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -418,6 +417,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch301 -p1
 %patch302 -p1
 %patch303 -p1
+%patch304 -p1
 
 # Extract systemtap tapsets
 
@@ -451,10 +451,6 @@ done
 
 # Setup nss.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
-
-# Setup nss.fips.cfg
-sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
-sed -i -e "s:@NSS_SECMOD@:sql\:/etc/pki/nssdb:g" nss.fips.cfg
 
 %build
 
@@ -516,9 +512,6 @@ export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
 
 # Install nss.cfg right away as we will be using the JRE above
 install -m 644 nss.cfg $JAVA_HOME/conf/security/
-
-# Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
-install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
@@ -952,8 +945,8 @@ fi
 %endif
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
-%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
-%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
+%{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
+%{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 11 12:52:16 UTC 2023 - jsilva@suse.com
+
+- Fix for SG#65673, bsc#1210392:
+   * unsigned-sni-server-name.patch: In SSLSessionImpl, interpret
+     length of SNIServerName as an unsigned byte so that it can
+     have length up to 255 rather than 127.
+
+-------------------------------------------------------------------
+Thu May 11 07:26:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not install a separate nss.fips.cfg file, since there is
+  now one in the tree and the install happens automatically
+- Modified patch:
+  * fips.patch
+    + enable system property file by default, without which the
+      FIPS mode would never get enabled (bsc#1211259)
+
+-------------------------------------------------------------------
 Wed Apr 26 11:29:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstrem tag jdk-17.0.7+7 (April 2023 CPU)
