@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 12 15:12:30 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1683890027.16a2697:
+  * Add test for datetime based build
+  * Allow colon in tag's build
+  * Fix sporadic failures of comments test
+  * Add route to schedule a product via a webhook and report status
+  * Explicitly match maintenance repo settings variables
+
+-------------------------------------------------------------------
 Tue May 09 13:34:20 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1683639249.98b3171:
