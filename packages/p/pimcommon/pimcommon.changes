@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  9 10:47:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix typo
+  * install config-pimcommon.h
+  * Adapt to new autocorrection lib (split core/widgets)
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+
+-------------------------------------------------------------------
 Sat Apr 15 08:46:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.0
