@@ -20,7 +20,7 @@
 %define lname   libKF5KExiv2
 %bcond_without released
 Name:           libkexiv2
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
