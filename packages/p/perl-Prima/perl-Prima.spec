@@ -36,7 +36,15 @@ BuildRequires:  libtiff-devel
 BuildRequires:  xkeyboard-config
 BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-Xvfb
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xrender)
 %define         X_display         ":98"
 Requires:       xorg-x11
 # MANUAL END

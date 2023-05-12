@@ -365,4 +365,14 @@
     <comment></comment>
     <requestid>1065569</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>a415c9d918557002bd1196e0b4e15e6e</srcmd5>
+    <version>1.67001</version>
+    <time>1683916655</time>
+    <user>dimstar_suse</user>
+    <comment>- update cpanspec.yml and recreate spec file
+- Replace xorg-x11-devel by pkgconfig(...)
+</comment>
+    <requestid>1086579</requestid>
+  </revision>
 </revisionlist>

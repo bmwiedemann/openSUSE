@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 11 15:42:10 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update cpanspec.yml and recreate spec file
+
+-------------------------------------------------------------------
+Sun May  7 10:46:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace xorg-x11-devel by pkgconfig(...)
+
+-------------------------------------------------------------------
 Mon Feb 13 03:08:56 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.67001
