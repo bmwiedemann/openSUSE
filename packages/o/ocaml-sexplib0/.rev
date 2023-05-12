@@ -50,4 +50,12 @@
   Handle OCaml 5.0</comment>
     <requestid>1056081</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>718a4631b64268c4ee47c2be2abb0043</srcmd5>
+    <version>0.16.0</version>
+    <time>1683916717</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086722</requestid>
+  </revision>
 </revisionlist>
