@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdegraphics-thumbnailers
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Graphics file thumbnail generators
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
