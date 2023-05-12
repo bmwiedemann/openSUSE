@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 11 04:24:01 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.13-66-g54799ee0666:
+  + (bsc#1199880) mgr: don't dump global config holding gil
+  + (bsc#1209621) cephadm: fix NFS haproxy failover if active node disappears
+  + (bsc#1210153) mgr/cephadm: fix handling of mgr upgrades with 3 or more mgrs
+  + (bsc#1210243, bsc#1210314) ceph-volume: fix regression in activate 
+  + (bsc#1210719) cephadm: mount host /etc/hosts for daemon containers in podman deployments
+  + (bsc#1210784) mgr/dashboard: Fix SSO error: 'str' object has no attribute 'decode'
+  + (bsc#1210944) cmake: patch boost source to support python 3.11
+  + (bsc#1211090) fix FTBFS on s390x
+
+-------------------------------------------------------------------
+Thu May  4 13:02:24 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
 Tue Mar 28 06:26:33 UTC 2023 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.11-65-g8b7e6fc0182:

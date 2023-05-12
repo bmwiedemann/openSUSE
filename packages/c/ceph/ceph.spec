@@ -136,7 +136,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.11.65+g8b7e6fc0182
+Version:	16.2.13.66+g54799ee0666
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -152,7 +152,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.11-65-g8b7e6fc0182.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.13-66-g54799ee0666.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x
@@ -280,7 +280,6 @@ BuildRequires:  yaml-cpp-devel
 %if 0%{?fedora}
 BuildRequires:  libubsan
 BuildRequires:  libasan
-BuildRequires:  libatomic
 %endif
 %if 0%{?rhel}
 BuildRequires:  gcc-toolset-9-annobin
@@ -321,6 +320,7 @@ Requires:	systemd
 BuildRequires:  boost-random
 BuildRequires:	nss-devel
 BuildRequires:	keyutils-libs-devel
+BuildRequires:  libatomic
 BuildRequires:	libibverbs-devel
 BuildRequires:  librdmacm-devel
 BuildRequires:  openldap-devel
@@ -1210,7 +1210,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.11-65-g8b7e6fc0182
+%autosetup -p1 -n ceph-16.2.13-66-g54799ee0666
 
 %build
 # Disable lto on systems that do not support symver attribute
