@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 26 03:06:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+
+  0.14    2023-04-25
+          [CHANGES]
+           * Moved `Test::Future::IO::Impl` into its own distribution, so that
+             downstream packages don't have to runtime-depend on `Test2`
+
+-------------------------------------------------------------------
 Mon Feb 20 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13

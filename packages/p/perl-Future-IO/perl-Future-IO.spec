@@ -18,7 +18,7 @@
 
 %define cpan_name Future-IO
 Name:           perl-Future-IO
-Version:        0.13
+Version:        0.14
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Future-returning IO methods
@@ -32,6 +32,7 @@ BuildRequires:  perl(Future)
 BuildRequires:  perl(Module::Build) >= 0.400400
 BuildRequires:  perl(Struct::Dumb)
 BuildRequires:  perl(Test2::V0)
+BuildRequires:  perl(Test::Future::IO::Impl)
 Requires:       perl(Future)
 Requires:       perl(Struct::Dumb)
 %{perl_requires}
