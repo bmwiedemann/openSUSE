@@ -2230,4 +2230,17 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1082182</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>0da1447a7dba11e938f82cb2cc9e01ce</srcmd5>
+    <version>16.0.3</version>
+    <time>1683916463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.3.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Drop ExcludeArch: we shouldn't need this, package will simply
+  stay unresolvable if the actual package isn't being built.
+</comment>
+    <requestid>1086116</requestid>
+  </revision>
 </revisionlist>

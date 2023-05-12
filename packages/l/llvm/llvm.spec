@@ -39,7 +39,7 @@ Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        16.0.2
+Version:        16.0.3
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -49,8 +49,6 @@ URL:            https://www.llvm.org/
 Source0:        README.packaging
 Requires:       llvm%{_sonum} = %{version}
 Suggests:       %{name}-doc
-# Mirrors ExcludeArch in llvm%{_sonum}
-ExcludeArch:    s390
 
 %description
 LLVM is a compiler infrastructure designed for compile-time,
