@@ -1,0 +1,10 @@
+--- a/modules/javafx.graphics/src/main/native-prism-es2/x11/X11GLFactory.c	Wed Jan 15 16:07:02 2020 +0100
++++ b/modules/javafx.graphics/src/main/native-prism-es2/x11/X11GLFactory.c	Wed Jan 22 17:42:45 2020 +0100
+@@ -140,6 +140,7 @@
+ static int x11errorDetector (Display *dpy, XErrorEvent *error)
+ {
+     x11errorhit = JNI_TRUE;
++    return 0;
+ }
+ 
+ /*

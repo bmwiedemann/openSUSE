@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>javafx.web</name>
+	<packaging>jar</packaging>
+	<artifactId>javafx.web</artifactId>
+	<parent>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx</artifactId>
+		<version>@RELEASE_VERSION@</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>javafx.base</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>javafx.graphics</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>javafx.media</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>javafx.controls</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<release>11</release>
+					<compilerArgs>
+						<arg>-g:source,lines,vars</arg>
+						<arg>-proc:none</arg>
+						<arg>-XDuseUnsharedTable=true</arg>
+						<arg>-nowarn</arg>
+						<arg>-h</arg>
+						<arg>modules/javafx.web/build/gensrc/headers/javafx.web/</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<finalName>javafx.web</finalName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dom3</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy todir="src/main/java">
+									<fileset dir="src/main/native/Source/WebCore/bindings/java/dom3/java"/>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>build-jfxwebkit</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy todir="src/main/native/Source/WebCore/bridge/jni/jsc">
+									<fileset dir="build/gensrc/headers/javafx.web"/>
+								</copy>
+								<copy todir="src/main/native/WebKitBuild/Release/DerivedSources/ForwardingHeaders/wtf/unicode/java">
+									<fileset dir="build/gensrc/headers/javafx.web"/>
+								</copy>
+								<copy todir="src/main/native/Source/WebCore/platform/graphics/java">
+									<fileset dir="build/gensrc/headers/javafx.web"/>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

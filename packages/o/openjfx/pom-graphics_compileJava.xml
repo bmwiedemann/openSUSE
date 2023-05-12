@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>javafx.graphics-compileJava</name>
+	<packaging>pom</packaging>
+	<artifactId>javafx.graphics-compileJava</artifactId>
+	<groupId>org.openjfx</groupId>
+	<version>@RELEASE_VERSION@</version>
+	<modules>
+		<module>mvn-prism</module>
+		<module>mvn-decora</module>
+		<module>mvn-java</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>javafx.base</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<finalName>javafx.graphics</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			
+		</dependencies>
+	</dependencyManagement>
+
+</project>
