@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 16.0.2
+%define _relver 16.0.3
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  16.0
 %define _sonum  16
 %define _itsme16 1
 # Integer version used by update-alternatives
-%define _uaver  1602
+%define _uaver  1603
 %define _soclang 13
 %define _socxx  1
 
