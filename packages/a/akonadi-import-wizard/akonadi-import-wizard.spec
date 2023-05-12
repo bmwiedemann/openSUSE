@@ -20,7 +20,7 @@
 %define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadi-import-wizard
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
