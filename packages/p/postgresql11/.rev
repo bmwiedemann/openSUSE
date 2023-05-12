@@ -357,4 +357,18 @@ Upgrade to version 11.11:
   macro and drop support for sysv init to simplify the scriptlets.</comment>
     <requestid>1081149</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>060bf5b2988b39a60b05c3d9dc668fa6</srcmd5>
+    <version>11.20</version>
+    <time>1683916638</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.20:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/11/release-11-20.html</comment>
+    <requestid>1086558</requestid>
+  </revision>
 </revisionlist>
