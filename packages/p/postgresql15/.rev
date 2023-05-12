@@ -68,4 +68,18 @@
   macro and drop support for sysv init to simplify the scriptlets.</comment>
     <requestid>1081145</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69e4b9ca81eb8790ceace129b43fe495</srcmd5>
+    <version>15.3</version>
+    <time>1683916349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.3:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/15/release-15-3.html</comment>
+    <requestid>1086554</requestid>
+  </revision>
 </revisionlist>
