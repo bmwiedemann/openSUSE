@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed May 10 08:47:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  Bug Fixes:
+  * #1021: Fix selected text background colour being wrong if only
+    the foreground colour was set.
+  * #1037: Fix is_list_ignored accepting all results if set to false
+  * #1064: Disk name/mount filter now doesn't always show all
+    entries if one filter wasn't set.
+  * #1064: macOS disk I/O is potentially working now.
+  * #597: Resolve RUSTSEC-2021-0119 by removing heim.
+  Features:
+  * #1016: Add support for displaying process usernames on Windows
+  * #1022: Support three-character hex colour strings for styling.
+  * #1024: Support FreeBSD temperature sensors based on hw.temperature.
+  * #1063: Add buffer and cache memory tracking.
+  * #1106: Add current battery charging state.
+  * #1115: Add customizable process columns to config file.
+  * #801: Add optional process time column and querying.
+  Changes:
+  * #1025: Officially support M1 macOS.
+  * #1035: Migrate away from heim for CPU information.
+  * #1036: Migrate away from heim for memory information; bottom
+    will now try to use MemAvailable on Linux to determine used memory.
+  * #1041: Migrate away from heim for network information.
+  * #1064: Migrate away from heim for storage information.
+  * #812: Fully remove heim from bottom.
+  * #1075: Update how drives are named in Windows.
+  * #1106: Rename battery consumption field to rate.
+  Other:
+  * #1008: Fix clap 3 deprecation warnings.
+  * #1044: Re-enable ZFS feature.
+  * #1100: Speed up first draw and first data collection.
+  * #1107: Update to clap v4.
+  * #1111: Update to regex 1.8.0, supporting more escapable characters
+    and named captures.
+
+-------------------------------------------------------------------
 Mon Jan 23 12:38:50 UTC 2023 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.8.0:
