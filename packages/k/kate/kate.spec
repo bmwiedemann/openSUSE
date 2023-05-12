@@ -19,7 +19,7 @@
 %define _appstreamkpackage 0%(cat %{_kf5_cmakedir}/KF5Package/KF5PackageMacros.cmake | grep -q 'appstream-metainfo' && echo 1)
 %bcond_without released
 Name:           kate
-Version:        23.04.0
+Version:        23.04.1
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
