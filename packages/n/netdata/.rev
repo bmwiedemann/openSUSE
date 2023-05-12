@@ -4268,4 +4268,28 @@ Other Notable Changes
     <comment></comment>
     <requestid>1082341</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d4791fcb140801cde0301b2b7a142c29</srcmd5>
+    <version>1.39.0</version>
+    <time>1683916660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.39.0 (go.d.plugin 0.52.2)
+  Changes:
+  https://github.com/netdata/netdata/releases/tag/v1.39.0
+  https://github.com/netdata/go.d.plugin/releases/tag/v0.52.0
+  https://github.com/netdata/go.d.plugin/releases/tag/v0.52.1
+  https://github.com/netdata/go.d.plugin/releases/tag/v0.52.2
+  Note: Future package versions will be split, with each collector
+  plugin getting its own package.
+  See also https://blog.netdata.cloud/split-plugin-packages/
+  On openSUSE, when using ZYpp-based package management, dependency
+  resolution should cause these split-off packages to be installed
+  automatically when upgrading from older versions, such that
+  existing configurations should not be negatively affected by this
+  change. For new installs, they will be soft dependencies, and
+  only selected automatically when installation of recommended
+  packages is requested.
+- Refresh netdata-logrotate-su.patch</comment>
+    <requestid>1086588</requestid>
+  </revision>
 </revisionlist>

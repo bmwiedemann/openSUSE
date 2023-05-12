@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 11 14:37:49 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.39.0 (go.d.plugin 0.52.2)
+  Changes:
+  https://github.com/netdata/netdata/releases/tag/v1.39.0
+  https://github.com/netdata/go.d.plugin/releases/tag/v0.52.0
+  https://github.com/netdata/go.d.plugin/releases/tag/v0.52.1
+  https://github.com/netdata/go.d.plugin/releases/tag/v0.52.2
+
+  Note: Future package versions will be split, with each collector
+  plugin getting its own package.
+  See also https://blog.netdata.cloud/split-plugin-packages/
+
+  On openSUSE, when using ZYpp-based package management, dependency
+  resolution should cause these split-off packages to be installed
+  automatically when upgrading from older versions, such that
+  existing configurations should not be negatively affected by this
+  change. For new installs, they will be soft dependencies, and
+  only selected automatically when installation of recommended
+  packages is requested.
+- Refresh netdata-logrotate-su.patch
+
+-------------------------------------------------------------------
 Sun Apr  2 15:02:11 UTC 2023 - Duarte Pousa <pousaduarte@gmail.com>
 
 - Update go.d.plugin to 0.51.4

@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.51.4
+%define godplugin_version 0.52.2
 Name:           netdata
-Version:        1.38.1
+Version:        1.39.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -37,6 +37,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  judy-devel
+BuildRequires:  m4
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  pkgconfig(grpc)
@@ -54,6 +55,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(yajl)
+BuildRequires:  pkgconfig(yaml-0.1)
 BuildRequires:  pkgconfig(zlib)
 Requires(pre):  shadow
 Recommends:     PyYAML
@@ -66,7 +68,7 @@ Suggests:       logrotate
 Suggests:       nodejs
 # suse_version is set to 1500 even for 15.2
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
-BuildRequires:  go >= 1.19
+BuildRequires:  go >= 1.20
 BuildRequires:  python3
 %else
 BuildRequires:  python2
@@ -94,8 +96,7 @@ runs on (including applications such as web and database servers),
 using interactive web dashboards.
 
 %prep
-%setup -q -n %{name}-v%{version}
-%patch0
+%autosetup -n %{name}-v%{version} -p1
 sed -i 's,%{_bindir}/env bash,/bin/bash,' claim/%{name}-claim.sh.in
 
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
@@ -135,8 +136,8 @@ go build -ldflags='-s -w' \
 %install
 %make_install
 find %{buildroot} -name .keep -delete
-install -D -m 0644 system/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
-install -D -m 0644 system/%{name}.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+install -D -m 0644 system/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0644 system/logrotate/%{name} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -D -m 0644 system/%{name}.conf %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
 
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -166,6 +167,9 @@ popd
 install -m 755 -d %{buildroot}%{_localstatedir}/cache/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/log/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/lib/%{name}/registry
+
+rm %{buildroot}%{_libexecdir}/%{name}/install-service.sh
+rm -r %{buildroot}%{_libdir}/%{name}/system
 
 %fdupes %{buildroot}%{_libdir} %{buildroot}%{_libexecdir} %{buildroot}%{_datadir}
 
