@@ -138,4 +138,18 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   name and OBS internal dependency tracking.</comment>
     <requestid>1081146</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fefff8ebda52e84dc0b35f55d94e55e3</srcmd5>
+    <version>14.8</version>
+    <time>1683916633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14.8:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/14/release-14-8.html</comment>
+    <requestid>1086555</requestid>
+  </revision>
 </revisionlist>
