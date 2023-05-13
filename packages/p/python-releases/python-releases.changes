@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri May 12 08:15:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete migrate-to-pytest.patch
+- Delete remove-mock.patch
+- Add remove-icecream.patch
+- Update to 2.1.1:
+  * [Bug]: Fix up an internal utility which monkeypatches a
+    Sphinx/docutils internal, so that it accepts arbitrary args/kwargs
+    instead of exploding on newer Sphinxes.
+- 2.0.1:
+  * [Bug]: Fix up an internal utility which monkeypatches a
+    Sphinx/docutils internal, so that it accepts arbitrary args/kwargs
+    instead of exploding on newer Sphinxes.
+- 2.1.0:
+  * [Feature]: Allow controlling the name of your development branch
+    for source code links (eg “Next 1.x feature release” section
+    headers) via the new releases_development_branch config option.
+  * [Feature]: Add a new configuration setting,
+    releases_supported_versions, allowing you to limit how many “Next
+    1.x feature release” (or bugfix, etc) sections appear at the top
+    of your changelog.
+- 2.0.0:
+  * [Bug]: Don’t make tmpdirs in releases.util.make_app when being
+    given explicit directory args.
+  * [Bug]: Changelog transformation sometimes failed to occur when
+    running under a ‘single HTML file’ Sphinx builder (eg singlehtml),
+    which resulted in ‘unknown node’ errors. This has been fixed.
+  * [Support]: Migrated the test suite to use pytest-relaxed (and thus
+    pytest) instead of spec.
+  * [Support]: Dropped support for Sphinx <4. We tried to support
+    1.8+, but too many transitive dependencies have clearly “moved on”
+    and cause various cells in the test matrix to fail hard.
+  * [Support]: Dropped support for Python 2.7, Python 3.4, and Python
+    3.5, to align slightly better with upstream (and ecosystem) EOLs.
+  * [Support]: The releases_release_uri/releases_issue_uri settings
+    now allow modern (.format/f-strings) string formatting, in
+    addition to the old %s-based interpolation.
+  * [Support]: Administrivia overhaul: enhanced README, packaging
+    metadata cleaned up/expanded, CI moved to Circle-CI, renamed dev
+    branch to main, and more besides.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

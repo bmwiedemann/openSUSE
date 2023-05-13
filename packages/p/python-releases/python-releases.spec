@@ -17,7 +17,6 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
 %bcond_without test
@@ -27,29 +26,28 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-releases%{psuffix}
-Version:        1.6.3
+Version:        2.1.1
 Release:        0
 Summary:        A Sphinx extension for changelog manipulation
 License:        BSD-2-Clause
 URL:            https://github.com/bitprophet/releases
 Source:         https://files.pythonhosted.org/packages/source/r/releases/releases-%{version}.tar.gz
 Patch0:         semanticversioning.patch
-Patch1:         migrate-to-pytest.patch
-Patch2:         remove-mock.patch
+# PATCH-FIX-OPENSUSE remove-icecream.patch to remove icecream dependency
+Patch1:         remove-icecream.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.3
+Requires:       python-Sphinx >= 4
 Requires:       python-semantic_version
-Requires:       python-six >= 1.4.1
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx >= 1.3}
+BuildRequires:  %{python_module Sphinx >= 3}
 BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke}
+BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module semantic_version}
-BuildRequires:  %{python_module six >= 1.4.1}
 %endif
 %python_subpackages
 
@@ -84,14 +82,15 @@ Specifically:
 
 %if %{with test}
 %check
-%pytest
+%pytest tests
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/releases
+%{python_sitelib}/releases-%{version}*-info
 %endif
 
 %changelog
