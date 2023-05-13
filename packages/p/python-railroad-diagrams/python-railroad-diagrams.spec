@@ -19,13 +19,15 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-railroad-diagrams
-Version:        1.1.1
+Version:        3.0.1
 Release:        0
 Summary:        Railroad-Diagram Generator
 License:        CC0-1.0
 URL:            https://github.com/tabatkins/railroad-diagrams
-Source0:        https://files.pythonhosted.org/packages/source/r/railroad-diagrams/railroad-diagrams-1.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/r/railroad-diagrams/railroad-diagrams-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -47,10 +49,14 @@ generators out there, but none of them had the visual appeal I wanted, so I wrot
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
+%license LICENSE
 # For noarch packages: sitelib
-%{python_sitelib}/*
+%{python_sitelib}/railroad.py
+%{python_sitelib}/railroad_diagrams-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

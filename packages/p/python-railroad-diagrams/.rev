@@ -17,4 +17,37 @@
 - add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1082231</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6d147a680bdd1800ac16ea9d35b41550</srcmd5>
+    <version>3.0.1</version>
+    <time>1683991024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Spell the method right.
+- 3.0.0:
+  * Copy the 'standalone' distinction from the JS version. Also sync
+    the CSS insertion with it, changing the Diagram constructor
+    signature a bit.
+- 2.0.4:
+  * Add a 3.7 requirement
+  * Make style optional
+- 2.0.3:
+  * Style isn't a DiagramItem, like Path isn't
+- 2.0.2:
+  * Whoops, broke constructor.
+- 2.0.1:
+  * lint
+  * Upstream fix for escaping
+- 2.0.0:
+  * Fix casing of license classifier
+  * Bump min python version to 3.7. Add mypy annotations.
+  * Add all the useful global options to the dingus. Fixes #92.
+  * Add LICENSE, and reference it in both py and js install files.
+  * Remove the random css-parsing project
+  * Remove the no-module version of the dingus, too.
+  * Rename css file to be consistent.
+  * Use proper formatting on AlternatingSequence error
+</comment>
+    <requestid>1086685</requestid>
+  </revision>
 </revisionlist>
