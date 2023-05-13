@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 12 09:59:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.12.2:
+  * setuptools plugin:
+    * Fix problem with license-files patterns, by removing default value.
+- 0.12.1:
+  * setuptools plugin:
+    * Allow PEP 561 stub names in tool.setuptools.package-dir, #87
+- 0.12.0:
+  * setuptools plugin:
+    * Allow PEP 561 stub names in tool.setuptools.packages, #86
+- 0.11.0:
+  * Improve error message for invalid replacements in the pre_compile CLI, #71
+  * Allow package to be build from git archive, #53
+  * Improve error message for invalid replacements in the pre_compile CLI, #71
+  * Error-out when extra keys are added to project.authors/maintainers, #82
+  * De-vendor fastjsonschema, #83
+- 0.10.1:
+  * Ensure LICENSE.txt is added to wheel.
+- 0.10.0:
+  * Add NOTICE.txt to license_files, #58
+  * Use default SSL context when downloading classifiers from PyPI, #57
+  * Remove setup.py, #52
+  * Explicitly limit oldest supported Python version
+  * Replace usage of cgi.parse_header with email.message.Message
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

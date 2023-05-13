@@ -1,7 +1,7 @@
 #
 # spec file for package python-validate-pyproject
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,34 +18,36 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-validate-pyproject
-Version:        0.9
+Version:        0.12.2
 Release:        0
 Summary:        Validation library and CLI tool for checking on 'pyprojecttoml'
-License:        MPL-2.0 and MIT and BSD-3-Clause
+License:        BSD-3-Clause AND MIT AND MPL-2.0
 URL:            https://github.com/abravalheri/validate-pyproject/
-Source:         https://files.pythonhosted.org/packages/source/v/validate-pyproject/validate-pyproject-0.9.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/v/validate-pyproject/validate-pyproject-%{version}.tar.gz
+BuildRequires:  %{python_module fastjsonschema}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
 %if 0%{python_version_nodots} < 37
 Requires:       python-importlib-resources
 %endif
+Requires:       python-fastjsonschema
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-validate_pyproject = %{version}-%{release}
 # SECTION test
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli >= 1.2.1 if %python-base < 3.11}
-BuildRequires:  %{python_module packaging >= 20.4}
-BuildRequires:  %{python_module trove-classifiers >= 2021.10.20}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module importlib-resources if %python-base < 3.7}
+BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module tomli >= 1.2.1 if %python-base < 3.11}
+BuildRequires:  %{python_module trove-classifiers >= 2021.10.20}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
@@ -67,14 +69,15 @@ sed -i '/--cov/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k "not downloaded"
+# Ignore test_pre_compile that fails because how fastjsonschema and
+# validate-pyproject packages are installed
+%pytest --ignore tests/test_pre_compile.py --ignore tests/test_vendoring.py -k "not downloaded"
 
 %post
 %python_install_alternative validate-pyproject
 
 %postun
 %python_uninstall_alternative validate-pyproject
-
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst
