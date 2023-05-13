@@ -17,7 +17,7 @@
 
 
 Name:           python-blosc2
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc2)
+BuildRequires:  pkgconfig(blosc2) >= 2.9.1
 Requires:       python-msgpack
 Requires:       python-ndindex >= 1.4
 Requires:       python-numpy >= 1.20.3

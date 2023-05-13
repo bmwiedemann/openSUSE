@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 12 13:21:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Bump BuildRequires: Does not build with older c-blosc2
+
+-------------------------------------------------------------------
+Thu May 11 14:23:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.2
+  * Changes relevant for wheels bundling c-blosc2 but not for linux
+    packages using the library from system
+- Update to 2.2.2
+  * Updated to latest C-Blosc2 2.9.1.
+
+-------------------------------------------------------------------
 Tue Apr 25 21:45:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
