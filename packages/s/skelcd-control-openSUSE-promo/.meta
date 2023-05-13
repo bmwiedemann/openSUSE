@@ -1,6 +1,0 @@
-<package name="skelcd-control-openSUSE-promo" project="openSUSE:Factory">
-  <title>SuSE Linux Professional Control file</title>
-  <description>Control file for installation</description>
-  <devel project="openSUSE:Factory" package="skelcd-control-openSUSE"/>
-  <bcntsynctag>skelcd-control-openSUSE</bcntsynctag>
-</package>
