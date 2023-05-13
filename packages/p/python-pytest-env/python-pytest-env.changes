@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  4 22:50:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Use hatchling and wheel
+  * Add R: prefix implementation and unit tests
+  * ADd mention of pyproject.toml in README.md
+- use packaged LICENSE
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
