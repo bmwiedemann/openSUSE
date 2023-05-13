@@ -7,4 +7,12 @@
     <comment>used by uvicorn in lieue of watchgod</comment>
     <requestid>990107</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68b18aa2ffb7d6da08baec1097c402f5</srcmd5>
+    <version>0.19.0</version>
+    <time>1683991050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086636</requestid>
+  </revision>
 </revisionlist>

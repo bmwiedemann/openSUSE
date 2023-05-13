@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu May 11 18:43:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.19.0
+  * Better error on OS watcher limit by @samuelcolvin in #208
+  * Switch flake8->ruff by @TheoBabilon in #212
+  * Simplify Change.raw_str() by @davidbrochart in #211
+  * Upgrade maturin to 0.14 by @messense in #214
+  * Fix bug in RustNotify causing RuntimeError: Already borrowed on
+    exit/signal by @vrslev in #221
+  * Update pyo3 to 0.18.2 by @messense in #222
+- Release v0.18.1
+  * uprev pyo3, relax anyio constraint by @samuelcolvin in #203
+  * switch pytest-sugar -> pytest-pretty by @samuelcolvin in #204
+- Release v0.18.0
+  * Force polling on WSL #194
+  * increase default polling delay to 300ms #196
+- Release v0.17.0
+  * uprev notify to 5.0.0-pre.16, #182
+  * Add option to disable recursion by @bvanelli in #183
+  * upgrade to notify 5.0.0, #184
+  * Lock all requirements, #185
+- Release v0.16.0
+  * make RustNotify a context manager and kill the thread on exit
+    #164
+  * Support WATCHFILES_FORCE_POLLING env var #170
+  * fallback to poll watcher on OS Error 38 #172
+  * --verbose argument and improve bug template #174
+- Switch from PyPI sdist to github archive: docs missing, required
+  for tests
+
+-------------------------------------------------------------------
 Mon Jul 18 21:14:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile fo v0.15.0

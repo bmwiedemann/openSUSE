@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srctar">watchfiles-0.15.0.tar.gz</param>
+    <param name="srctar">watchfiles-0.19.0-gh.tar.gz</param>
     <param name="compression">xz</param>
     <param name="update">true</param>
   </service>

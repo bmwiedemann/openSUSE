@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchfiles
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,30 @@
 
 
 Name:           python-watchfiles
-Version:        0.15.0
+Version:        0.19.0
 Release:        0
 Summary:        File watching and code reload in python
 License:        MIT
 URL:            https://github.com/samuelcolvin/watchfiles
-Source0:        https://files.pythonhosted.org/packages/source/w/watchfiles/watchfiles-%{version}.tar.gz
+Source0:        https://github.com/samuelcolvin/watchfiles/archive/refs/tags/v%{version}.tar.gz#/watchfiles-%{version}-gh.tar.gz
 Source1:        vendor.tar.xz
 # PATCH-FEATURE-OPENSUSE cargo_config.patch code@bnavigator.de -- replace cargo config
 Patch0:         cargo_config.patch
-BuildRequires:  %{python_module anyio >= 3.0.0 with %python-anyio < 4}
+BuildRequires:  %{python_module anyio >= 3.0.0}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-maturin >= 0.13
-Requires:       (python-anyio >= 3.0.0 with python-anyio < 4)
+BuildRequires:  python3-maturin >= 0.14.16
+Requires:       python-anyio >= 3.0.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # SECTION test
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-sugar}
+BuildRequires:  %{python_module pytest-pretty}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -53,8 +53,8 @@ This package was previously named "watchgod".
 
 %prep
 %autosetup -p1 -n watchfiles-%{version} -a1
-rm docs/requirements.txt docs/CNAME
-dos2unix README.md docs/* docs/api/*
+# Need to replace version because we build from github archive
+sed -i 's/version = "0.0.0"/version = "%{version}"/' Cargo.toml
 
 %build
 # one universal abi3 wheel for all flavors
