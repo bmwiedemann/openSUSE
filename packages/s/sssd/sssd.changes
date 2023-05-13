@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  5 10:47:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9
+  * The sss_simpleifp library is deprecated (and for openSUSE,
+    already removed)
+  * The "Files provider" (i.e. id_provider = files) is deprecated
+    (and for openSUSE, already removed)
+  * SSSD will no longer warn about changed defaults when using
+    ldap_schema = rfc2307 and default autofs mapping.
+  * New passkey functionality, which will allow the use of FIDO2
+    compliant devices to authenticate a centrally managed user
+    locally.
+  * Add support for ldapi:// URLs to allow connections to local
+    LDAP servers.
+  * NSS IDMAP has two new methods: getsidbyusername and
+    getsidbygroupname.
+
+-------------------------------------------------------------------
 Thu Jan 26 15:23:54 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move dbus-1 system.d file to /usr (bsc#1207586)

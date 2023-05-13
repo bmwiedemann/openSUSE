@@ -1116,4 +1116,12 @@ goes in line with 946250</comment>
     <comment>- Move dbus-1 system.d file to /usr (bsc#1207586) (forwarded request 1061240 from gmbr3)</comment>
     <requestid>1061301</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>d676278f055998eecf66cfeee9c495f4</srcmd5>
+    <version>2.9.0</version>
+    <time>1683991039</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086756</requestid>
+  </revision>
 </revisionlist>

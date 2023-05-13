@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.8.2
+Version:        2.9.0
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -296,26 +296,6 @@ Requires:       libsss_nss_idmap0 = %version
 %description -n libsss_nss_idmap-devel
 A utility library for FreeIPA to map Windows SIDs to Unix user/group IDs.
 
-%package -n libsss_simpleifp0
-Summary:        The SSSD D-Bus responder helper library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libsss_simpleifp0
-This subpackage provides a library that simplifies the D-Bus API for
-the SSSD InfoPipe responder.
-
-%package -n libsss_simpleifp-devel
-Summary:        Development files for the SSSD D-Bus responder helper library
-License:        GPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libsss_simpleifp0 = %version
-
-%description -n libsss_simpleifp-devel
-This subpackage provides the development files for sssd's simpleifp,
-a library that simplifies the D-Bus API for the SSSD InfoPipe
-responder.
-
 %package -n libsss_sudo
 Summary:        A library to allow communication between sudo and SSSD
 License:        LGPL-3.0-or-later
@@ -469,8 +449,6 @@ fi
 %postun -n libsss_idmap0 -p /sbin/ldconfig
 %post   -n libsss_nss_idmap0 -p /sbin/ldconfig
 %postun -n libsss_nss_idmap0 -p /sbin/ldconfig
-%post   -n libsss_simpleifp0 -p /sbin/ldconfig
-%postun -n libsss_simpleifp0 -p /sbin/ldconfig
 
 %triggerun -- %{name} < %{version}-%{release}
 # sssd takes care of upgrading the database but it doesn't handle downgrades.
@@ -542,7 +520,6 @@ done
 %_mandir/??/man1/sss_ssh_*
 %_mandir/??/man5/sss-certmap.5*
 %_mandir/??/man5/sssd-ad.5*
-%_mandir/??/man5/sssd-files.5*
 %_mandir/??/man5/sssd-ldap-attributes.5*
 %_mandir/??/man5/sssd-session-recording.5*
 %_mandir/??/man5/sssd-simple.5*
@@ -553,7 +530,6 @@ done
 %_mandir/??/man8/sssd.8*
 %_mandir/man1/sss_ssh_*
 %_mandir/man5/sss-certmap.5*
-%_mandir/man5/sssd-files.5*
 %_mandir/man5/sssd-ldap-attributes.5*
 %_mandir/man5/sssd-session-recording.5*
 %_mandir/man5/sssd-simple.5*
@@ -567,7 +543,6 @@ done
 %_libdir/%name/libsss_cert*
 %_libdir/%name/libsss_crypt*
 %_libdir/%name/libsss_debug*
-%_libdir/%name/libsss_files*
 %_libdir/%name/libsss_iface*
 %_libdir/%name/libsss_semanage*
 %_libdir/%name/libsss_sbus*
@@ -614,7 +589,7 @@ done
 %_datadir/%name/sssd.api.conf
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-simple.conf
-%_datadir/%name/sssd.api.d/sssd-files.conf
+%exclude /usr/share/man/*/*/sssd-files.5.gz
 #
 # sssd-client
 #
@@ -779,14 +754,6 @@ done
 %_includedir/sss_nss_idmap.h
 %_libdir/libsss_nss_idmap.so
 %_libdir/pkgconfig/sss_nss_idmap.pc
-
-%files -n libsss_simpleifp0
-%_libdir/libsss_simpleifp.so.0*
-
-%files -n libsss_simpleifp-devel
-%_includedir/sss_sifp*.h
-%_libdir/libsss_simpleifp.so
-%_libdir/pkgconfig/sss_simpleifp.pc
 
 %files -n python3-ipa_hbac
 %dir %python3_sitearch
