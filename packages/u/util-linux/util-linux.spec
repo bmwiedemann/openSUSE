@@ -114,6 +114,8 @@ Patch4:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         util-linux-fix-tests-when-at-symbol-in-path.patch
 # https://github.com/util-linux/util-linux/commit/0c0fb46dcef6c63c74094486e499e376fdb33a04.diff
 Patch6:         util-linux-honor-noclear-when-reprint-issue.patch
+# Patch-FIX_UPSTREAM: fix-lib-internal-cache-size.patch bsc#1210164 -- gh#util-linux/util-linux@2fa4168c8bc9
+Patch7:         fix-lib-internal-cache-size.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -663,7 +665,7 @@ rm -r %{buildroot}{%{_bindir},%{_mandir},%{_datadir},%{_includedir},%{_libdir}/{
 
 # fdupes for all multibuild flavors
 # Link duplicate manpages or python bindings.
-%fdupes -s %{buildroot}%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
 ##############
 # Base check #
@@ -752,7 +754,7 @@ done
 # Perform one-time config replace.
 # Applies for: Update from SLE11, online update for SLE15 SP1, Leap15.1.
 # Not needed for /etc/default/runuser. It was first packaged after the change.
-if ! grep -q "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; then
+if ! grep -qs "^# /etc/default/su is an override" %{_sysconfdir}/default/su ; then
 	if test -f %{_sysconfdir}/default/su.rpmnew ; then
 		if ! test -f %{_sysconfdir}/default/su.rpmorig ; then
 			cp -a %{_sysconfdir}/default/su %{_sysconfdir}/default/su.rpmorig

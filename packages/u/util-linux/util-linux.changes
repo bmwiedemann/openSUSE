@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  9 19:46:41 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Suppress error messages for grep command where the input file 
+  might not exist (boo#1169835)
+
+-------------------------------------------------------------------
+Tue May  9 16:31:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Call fdupes without -s to avoid broken symlinks, pointing to
+  different subpackage. boo#1209990
+
+-------------------------------------------------------------------
+Fri Apr 28 09:42:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-lib-internal-cache-size.patch
+  bsc#1210164, gh#util-linux/util-linux@2fa4168c8bc9
+
+-------------------------------------------------------------------
 Fri Mar 31 13:02:13 UTC 2023 - Michal Koutný <mkoutny@suse.com>
 
 - su.pamd: Fixup common-session-nonlogin usage
