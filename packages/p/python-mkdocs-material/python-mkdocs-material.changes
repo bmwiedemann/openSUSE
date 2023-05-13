@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 12 13:42:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.12:
+  * Updated Bengali (Bengal) translations
+  * Fixed #5503: Docker image publish errors on uppercase
+    characters
+  * Fixed #5407: Auto-pause media when in hidden content tabs
+
+-------------------------------------------------------------------
 Tue May  9 05:22:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.11:
