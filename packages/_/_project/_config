@@ -2383,6 +2383,7 @@ BuildFlags: onlybuild:ninja
 BuildFlags: onlybuild:nlohmann_json
 BuildFlags: onlybuild:nodejs-common
 BuildFlags: onlybuild:nodejs19
+BuildFlags: onlybuild:nodejs20
 BuildFlags: onlybuild:npth
 BuildFlags: onlybuild:nss-mdns
 BuildFlags: onlybuild:nss-shared-helper
