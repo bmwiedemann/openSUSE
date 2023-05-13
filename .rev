@@ -97,4 +97,14 @@ The initial package submission request was: https://build.opensuse.org/request/s
     <comment>Update to primecount-7.6</comment>
     <requestid>1041326</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6941a3cf827f1ce96a6dca71a13d28c4</srcmd5>
+    <version>7.7</version>
+    <time>1683991086</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primecount-7.7.
+
+This should fix my previously declined package submission: https://build.opensuse.org/request/show/1074966?notification_id=39187688</comment>
+    <requestid>1086890</requestid>
+  </revision>
 </revisionlist>
