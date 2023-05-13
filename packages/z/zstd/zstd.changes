@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 10 01:42:06 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add cmake files manually because we do not want to add
+  cmake to the bootstrap ring0
+
+-------------------------------------------------------------------
 Thu Apr 13 11:15:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.5:
