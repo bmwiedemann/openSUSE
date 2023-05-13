@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylama
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,12 @@ URL:            https://github.com/klen/pylama
 Source:         https://github.com/klen/pylama/archive/refs/tags/%{version}.tar.gz#/pylama-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module mccabe      >= 0.7.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.9.1}
 BuildRequires:  %{python_module pydocstyle  >= 6.1.1}
 BuildRequires:  %{python_module pyflakes    >= 2.5.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  mypy
@@ -76,11 +78,11 @@ Code audit tool for Python. Pylama wraps these tools:
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pylama
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -88,6 +90,8 @@ export LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 # pylama-quotes is on PyPI but has no active Website or repository for code maintenance
 donttest="test_quotes"
+# gh#klen/pylama#238
+donttest+=" or test_pylint"
 %pytest -k "not ($donttest)"
 
 %post

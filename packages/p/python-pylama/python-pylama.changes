@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 11 20:00:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip failing pylint test: pylint has advanced, but pylama is not
+  maintained at the moment -- gh#klen/pylama#238
+
+-------------------------------------------------------------------
 Thu Aug 25 09:18:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.4.1
