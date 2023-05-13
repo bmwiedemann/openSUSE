@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu May 11 19:12:53 UTC 2023 - Chris Bradbury <obs@chrbrd.com>
+
+- Add `fix-for-backported-dma-buf-ns.patch`.
+
+  The dma-buf symbols used by this driver were moved into their own
+ `DMA_BUF` module namespace in kernel 5.16. Consequently, the
+  upstream source conditionally imports the `DMA_BUF` module
+  namespace if the kernel version is >= 5.16. 
+  
+  However, the `DMA_BUF` module namespace changes have been
+  backported to the 5.14 kernel used in Leap 15.5, causing
+  unpatched source builds to fail.
+  
+  This change incorporates a patch that removes the conditional
+  check in the upstream source, importing the `DMA_BUF` module
+  namespace regardless of kernel version, and applies that patch
+  when `sle_version` is equal to "150500" (ie. is Leap 15.5 or
+  greater).
+  
+  The patch is taken from the PR at:
+  https://github.com/google/gasket-driver/pull/10 
+
+-------------------------------------------------------------------
+Thu May 11 11:51:32 UTC 2023 - Chris Bradbury <obs@chrbrd.com>
+
+- Initialise package.

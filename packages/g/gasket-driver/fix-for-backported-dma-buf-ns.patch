@@ -1,0 +1,23 @@
+From a87c105c14e826dafd4b25c36fa7c7c657a7ad03 Mon Sep 17 00:00:00 2001
+From: hibby50 <hibby50@gmail.com>
+Date: Thu, 20 Apr 2023 14:16:06 -0400
+Subject: [PATCH] import DMA_BUF regardless of kernel version
+
+---
+ src/gasket_page_table.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/gasket_page_table.c b/src/gasket_page_table.c
+index e81ab2b..0e768e0 100644
+--- a/src/gasket_page_table.c
++++ b/src/gasket_page_table.c
+@@ -53,9 +53,7 @@
+ #include <linux/version.h>
+ #include <linux/vmalloc.h>
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,16,0)
+ MODULE_IMPORT_NS(DMA_BUF);
+-#endif
+ 
+ #include "gasket_constants.h"
+ #include "gasket_core.h"

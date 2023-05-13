@@ -1,0 +1,17 @@
+# The stated solution to this error is to use `noarch`, but as this
+# package is for building kernel modules `noarch` causes a cryptic error
+# there's _very_ little information about online:
+# ```
+# warning: Macro %flavors_to_build needs whitespace before body
+# warning: Macro %_suse_kernel_module_subpackage defined but not used within scope
+# error: line 43: Unknown tag: %internal_kmp_error
+# ```
+# My guess is that when `noarch` is specified then `%flavors_to_build` isn't
+# populated properly, and issues cascade from there. Something like that anyway...
+# In the meantime this is an acceptable alternative. 
+addFilter("E: no-binary")
+
+# This error is introduced by the KMP sub-package build.
+addFilter("gasket-driver-kmp-.* E: suse-zypp-packageand")
+# This warning is introduced by the "pesign-repackage" Secure Boot cert package build.
+addFilter("gasket-driver-ueficert.* W: non-conffile-in-etc")

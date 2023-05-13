@@ -1,0 +1,26 @@
+<!--
+For documentation on the contents of this file see:
+https://github.com/openSUSE/obs-service-tar_scm#user-documentation
+https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html
+https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.best-practices.scm_integration.html
+https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService
+-->
+<services>
+  <!-- Download the module source from GitHub. -->
+  <service name="obs_scm" mode="localonly">
+    <param name="url">https://github.com/google/gasket-driver</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">97aeba5</param>
+    <param name="version">1.0.18</param>
+  </service>
+  <!-- Compress source files into a tarball. -->
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <!-- Download all source and patch files that are specified in the spec file via url. -->
+  <service name="download_files" mode="localonly"/>
+</services>
+
