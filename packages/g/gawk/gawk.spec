@@ -17,7 +17,7 @@
 
 
 Name:           gawk
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -27,9 +27,9 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
-Provides:       awk
 BuildRequires:  mpfr-devel
 BuildRequires:  readline-devel
+Provides:       awk
 
 %description
 AWK is a domain-specific language designed for text processing and
@@ -51,7 +51,7 @@ almost completely POSIX 1003.2 compliant.
 %if 0%{?qemu_user_space_build}
   NEED_PMA= \
 %endif
-  %nil
+  %{nil}
 
 %install
 %make_install
@@ -88,6 +88,7 @@ ln -sfv %{_mandir}/man1/gawk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ex
 %{_datadir}/awk
 %{_includedir}/gawkapi.h
 %{_infodir}/*.info%{?ext_info}
+%{_infodir}/gawk_*
 %{_mandir}/man1/gawk.1%{?ext_man}
 %{_mandir}/man1/gawkbug.1%{?ext_man}
 %{_mandir}/man1/pm-gawk.1%{?ext_man}

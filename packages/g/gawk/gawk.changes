@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  9 20:38:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to gawk 5.2.2
+  * will now diagnose if a heap file was created with a different
+    setting of -M/--bignum than in the current invocation and exit
+    with a fatal message if so.
+  * no longer "leaks" its free list of NODEs in the heap file,
+    resulting in much more efficient usage of persistent storage
+  * PROCINFO["pma"] exists if the PMA allocator is compiled into
+    gawk. Its value is the PMA version.
+  * The time extension is no longer deprecated. The strptime()
+    function from gawkextlib's timex extension has been added to
+    it.
+  * Better information is passed to input parsers for when they
+    want to decide whether or not to take control of a file.
+  * The various PNG files are now installed for Info and HTML
+  * Bug fixes and developer visible fixes
+  
+-------------------------------------------------------------------
 Tue Dec 27 10:37:54 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
