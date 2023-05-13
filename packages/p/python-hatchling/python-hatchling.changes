@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May 13 08:25:01 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.17.0:
+  * The app build target now embeds the project version in the name
+    of binaries
+
+-------------------------------------------------------------------
+Thu May 11 18:48:27 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.16.1:
+  * Fix determining the built executable path for the app build
+    target option when using a local copy of PyApp when there is
+    an explicit target triple set
+- additional changes from version 1.16.0:
+  * Add app build target option to build using a local copy of
+    the PyApp repository
+
+-------------------------------------------------------------------
 Tue May  9 19:19:08 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.15.0:
