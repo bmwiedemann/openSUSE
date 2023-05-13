@@ -1792,4 +1792,18 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * libmpathpersist: fix command keyword ordering (bsc#1207546, bsc#1209345) (forwarded request 1073839 from mwilck)</comment>
     <requestid>1073840</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>d2fc0b0f0b3487062f0d2a2ccdc0d63d</srcmd5>
+    <version>0.9.5+68+suse.d1b6a1c</version>
+    <time>1683991044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.5+68+suse.d1b6a1c:
+  Upstream bugfixes:
+  * libmultipath: use directio checker for LIO targets
+    (gh#opensvc/multipath-tools#54)
+  * multipathd.service: remove &quot;Also=multipathd.socket&quot;
+    (gh#opensvc/multipath-tools#65)
+  * libmultipathd: Avoid parsing errors due to unsupported designators (forwarded request 1086780 from mwilck)</comment>
+    <requestid>1086784</requestid>
+  </revision>
 </revisionlist>
