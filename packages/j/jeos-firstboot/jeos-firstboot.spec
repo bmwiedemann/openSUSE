@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%bcond_with rpiwifi
+%else
+%bcond_without rpiwifi
+%endif
+
 Name:           jeos-firstboot
-Version:        1.2.0.5
+Version:        1.2.0.6
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
@@ -29,6 +35,7 @@ Requires:       dialog
 Requires:       iproute2
 Requires:       live-langset-data
 Requires:       timezone
+Requires:       (/usr/bin/nmtui if NetworkManager)
 BuildArch:      noarch
 %{?systemd_requires}
 
@@ -55,6 +62,9 @@ his RaspberryPi system to a wireless network.
 
 %install
 cp -a files/* %{buildroot}
+%if %{without rpiwifi}
+rm %{buildroot}%{_datadir}/jeos-firstboot/modules/raspberrywifi
+%endif
 
 %preun
 %service_del_preun jeos-firstboot.service
@@ -88,7 +98,9 @@ cp -a files/* %{buildroot}
 %{_datadir}/jeos-firstboot/jeos-firstboot-functions
 %{_datadir}/jeos-firstboot/welcome-screen
 
+%if %{with rpiwifi}
 %files rpiwifi
 %{_datadir}/jeos-firstboot/modules/raspberrywifi
+%endif
 
 %changelog
