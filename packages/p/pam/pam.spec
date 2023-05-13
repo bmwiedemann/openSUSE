@@ -71,14 +71,14 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.5.2.90
+Version:        1.5.3
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/linux-pam/linux-pam
 Source:         Linux-PAM-%{version}.tar.xz
-# XXX Source1:        Linux-PAM-%{version}.tar.xz.asc
+Source1:        Linux-PAM-%{version}.tar.xz.asc
 Source2:        macros.pam
 Source3:        other.pamd
 Source4:        common-auth.pamd
@@ -224,6 +224,7 @@ CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 	--enable-isadir=../..%{_pam_moduledir} \
 	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_prefix}/etc \
+	--enable-logind \
 	--disable-nis \
 %if %{with debug}
 	--enable-debug
