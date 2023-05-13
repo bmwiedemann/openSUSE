@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyQRCode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define modname PyQRCode
 Name:           python-PyQRCode
 Version:        1.3.6
@@ -30,7 +28,6 @@ URL:            https://github.com/pyqrcode/pyqrcodeNG
 Source:         https://github.com/pyqrcode/pyqrcodeNG/archive/refs/tags/%{version}.tar.gz#/pyqrcodeNG-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pyqrcode/pyqrcodeNG/pull/18
 Patch0:         reproducible.patch
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pypng}
 BuildRequires:  %{python_module pytest}
@@ -38,13 +35,18 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Sphinx
+Provides:       python-PyQRCodeNG = %{version}-%{release}
+Provides:       python-pyqrcodeng = %{version}-%{release}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
-The PyQRCode module is a QR code generator that is simple to use and written in pure python. The module can automates most of the building process for creating QR codes. Most codes can be created using only two lines of code!
+The PyQRCode module is a QR code generator that is simple to use and written in pure python.
+The module can automates most of the building process for creating QR codes.
+Most codes can be created using only two lines of code.
 
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
@@ -59,8 +61,8 @@ sed -i -e '1{\@^#!%{_bindir}/env python@d}' pyqrcodeng/{cli,qrspecial}.py
 
 %build
 %pyproject_wheel
-python3 setup.py build_sphinx -v
-rm -rvf build/sphinx/html/.buildinfo
+sphinx-build -b html docs/ build/sphinx/html/
+rm -rvf build/sphinx/html/{.buildinfo,.doctrees}
 
 %install
 %pyproject_install
@@ -79,7 +81,6 @@ rm -rvf build/sphinx/html/.buildinfo
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGES.rst
-%{_bindir}/pyqr-%{python_bin_suffix}
 %python_alternative %{_bindir}/pyqr
 %{python_sitelib}/PyQRCodeNG-%{version}*-info
 %{python_sitelib}/pyqrcodeng

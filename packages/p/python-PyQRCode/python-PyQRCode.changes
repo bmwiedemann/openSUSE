@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 11 19:53:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Replace build_sphinx setuptools hook with direct sphinx-build
+  call -- fixes boo#1211051
+
+-------------------------------------------------------------------
 Wed Apr 20 06:19:11 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up of the SPEC file.
