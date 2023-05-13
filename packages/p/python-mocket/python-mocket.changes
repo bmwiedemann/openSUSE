@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 12 10:42:12 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.11.1
+  * Fix for `urllib2>=2`
+  * Bump version for publishing a new release
+  * Adding local container for partially replacing httpbin.org usage
+  * Replacing httpbin.org with mockbin.org from Kong for what needs HTTPS
+
+-------------------------------------------------------------------
 Sun Feb 19 21:05:20 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 3.11:

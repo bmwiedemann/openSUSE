@@ -27,7 +27,7 @@
 
 %define skip_python2 1
 Name:           python-mocket%{psuffix}
-Version:        3.11.0
+Version:        3.11.1
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
-Requires:       python-http-parser >= 0.9.0
 Requires:       python-httptools
 Requires:       python-python-magic >= 0.4.5
 Requires:       python-urllib3 >= 1.25.3
