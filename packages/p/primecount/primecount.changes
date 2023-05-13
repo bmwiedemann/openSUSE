@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 13 08:30:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.7 (API & ABI are backwards compatible).
+- Fix pi(-1) crash.
+- test/api.cpp: Add pi(-1) test.
+- test/api_c.c: Add primecount_pi(-1) test.
+- test/nthprime.cpp: Add new test.
+- primecount.h: Fix -Wstrict-prototypes warning.
+
+-------------------------------------------------------------------
 Wed Dec  7 16:35:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.6 (API & ABI are backwards compatible).
