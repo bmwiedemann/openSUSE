@@ -17,10 +17,10 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.13.0
+Version:        6.14.0
 Release:        0
 Summary:        Check SMART status of a given disk
-License:        SUSE-Public-Domain
+License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://www.claudiokuenzler.com/nagios-plugins/check_smart.php
 Source0:        check_smart-%{version}.tar.xz
@@ -69,12 +69,13 @@ install -D -m644 %{SOURCE1}  %{buildroot}/%{_sysconfdir}/apparmor.d/usr.lib.nagi
 mkdir -p %{buildroot}/%{_sysconfdir}/sudoers.d
 cat >> %{buildroot}/%{_sysconfdir}/sudoers.d/%{name} << EOF
 # the next line is needed for %{name} to allow the correct use of smartctl
-nagios        ALL=(root) NOPASSWD: %{nagios_plugindir}/check_smart
+nagios,icinga ALL=(root) NOPASSWD: %{nagios_plugindir}/check_smart
 EOF
 %endif
 
 %files
-%doc README.SUSE README.md
+%doc README.SUSE README.md SSD-TBW-Warranty.md
+%license COPYING.md
 %dir %{nagios_libdir}
 %dir %{_sysconfdir}/apparmor.d
 %dir %{nagios_plugindir}

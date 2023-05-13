@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 30 13:44:12 UTC 2023 - lars@linux-schulserver.de - 6.14.0
+
+- Update to 6.14.0
+  + Show drive(s) causing the UNKNOWN status when checking multiple 
+    drives using -g / --global parameter #89
+  + Add possibility to hide the drive's serial number in the plugin output
+    using --hide-sn #90
+  + Check (by default) for high Load Cycle Count of hard drive. Can 
+    be ignored using --skip-load-cycles parameter #91
+- package SSD-TBW-Warranty.md as documentation
+- add user icinga to the sudo profile for check_smart - allowing 
+  icinga to execute the script as well
+- follow upstream license change: GPL-3.0-or-later
+- package COPYING.md as license file
+
+-------------------------------------------------------------------
 Fri Apr 29 10:37:51 UTC 2022 - lars@linux-schulserver.de - 6.13.0
 
 - Update to 6.13.0
