@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 12 20:47:05 CEST 2023 - tumic@cbox.cz
+- Update to version 13.2
+  * Fixed crash on empty routes (introduced in 12.4)
+  * Minor fixes.
+
+-------------------------------------------------------------------
 Fri May  5 19:24:12 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.1

@@ -1,3 +1,10 @@
+gpxsee (13.2) stable; urgency=medium
+
+  * Fixed crash on empty routes (introduced in 12.4).
+  * Minor fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Fri, 12 May 2023 20:50:11 +0200
+
 gpxsee (13.1) stable; urgency=low
 
   * Fixed wrong date info on tracks with segments.
