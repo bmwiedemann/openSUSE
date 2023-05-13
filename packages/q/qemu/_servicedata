@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/opensuse/qemu.git</param>
+              <param name="changesrevision">1f81f98d05ac60508404fe8d12a094381c2249cd</param></service></servicedata>

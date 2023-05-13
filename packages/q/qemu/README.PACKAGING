@@ -1,92 +1,202 @@
-The qemu package includes a special maintenance workflow in order to support git
-based patching, including of submodules. Please use it in order to have changes
-you make be acceptable to the package maintainers. A bash script (update_git.sh)
-implements this workflow.
+# PACKAGING WORKFLOW(S)
 
-A local clone of the upstream repo(s) is required for the packaging workflow.
-If none is found, the qemu superproject will be cloned as a shallow repo for the
-workflow script's use. If you intend to do more than superficial work in the
-qemu package, unshallow it. The submodule local repos aren't needed unless you
-intend to do patch work there. See config.sh for the local repo paths.
+The qemu package follows a special maintenance workflow in order to support
+git based patching, including of submodules. Please use it in order to have
+changes you make be acceptable to the package maintainers.
 
-The qemu.spec file is generated from a template file (qemu.spec.in), so to make
-spec file changes outside of the patch file references (handled by the script),
-you need to edit the template file, and NOT the qemu.spec file. The spec file's
-version and patch references are added when update_git.sh is passed certain
-commands, as described below.
+All the development happens at https://github.com/openSUSE/qemu. The relevant
+branch is `factory`.
 
-If you are not modifying any patches or their order, but just need to update the
-spec file from a changed template, run 'bash ./update_git.sh refresh'.
+Any change to the package should be submitted in the form of a Pull Request
+against such repository and branch.
 
-If the set of patches is being modified, including their order, you will want to
-first run 'bash ./update_git.sh pkg2git', which makes the current package patch
-set available in a local git branch named 'frombundle' (see config.sh for the
-locations). This incarnation of the package patches comes from a "bundle of git
-bundles", included as a package source file named bundles.tar.xz, which the
-script extracts to the corresponding local frombundle branch. To add, remove or
-modify the package patches, you will then do that work in a local branch whose
-name corresponds to that qemu package's release version as follows:
-The qemu major and minor release numbers are part of the name, prefixed by
-'opensuse-', so, for example, for the v5.2.0 based SLE-15-SP3 qemu, the branch
-would be named 'opensuse-5.2'. You want to start your work based on the current
-patchqueue as contained in 'frombundle', so one approach is to do (depending on
-your local repo's current state), 'git checkout -f --recurse-submodules -B
- opensuse-5.2 frombundle', and then cherry-pick upstream patches into it, or
-interactive rebase it to modify or delete patches, etc. Be careful to keep the
-branch based on the upstream tag which represents the package tarball however!
+The reminder of this document provides more details, explanations and examples
+for both contributors and maintainers.
 
-Once you have the patch queue ready to go, simply run 'bash ./update_git.sh
-git2pkg' (in your local obs branch directory) to refresh the bundles.tar.xz
-file, as well as the package spec and patch files. The package qemu.changes file
-is modified to list added or removed patches as a starting point for documenting
-the change.
 
-When you are ready to check in the package, using 'bash update_git.sh ci' is
-provided as a convenience (and to help preserve correct spec file formatting,
-since a 'normal osc check-in' messes up the spec file a bit).
+# FOR CONTRIBUTORS
 
-Additional Notes:
+## BACKPORTING AN UPSTREAM PATCH
 
-The maintainer and automation use another workflow mode dealing with packaging
-the latest upstream qemu. See 'LATEST' references in the scripts for details,
-as this is an 'expert mode' and isn't documented here.
+For submitting a backport of an upstream patch, proceed as follows (a local
+copy of the repository is of course necessary).
 
-Patches which are from an upstream git repo should have the commit id recorded
-just below the Subject line (after a blank line) as follows:
+Identify the hash of the commit that needs backporting and do:
 
-Git-commit: <40-char-sha-id>
+  git cherry-pick -esx <commit_hash>
 
-If a patch is anticipated to be shortly included in upstream repo, mark that
-fact by doing the above with 40 0's, which will flag it as needing to be updated
-in the near future.
+This way, the changelog will already contain the reference to the upstream
+commit itself, and the appropriate "Signed-off-by:" tag.
 
-We try to maintain, if possible, patch ordering as follows: (tarball as base),
-patches which come from upstream commits in commit order, patches which will
-soon be upstream (as mentioned above), followed by our private patches.
+If the backport is related to Bugzilla (or Jira, and/or CVEs, etc) entry, add a
+reference to that, such as:
 
-Bug or feature tracking identifiers should also be added to the patch similarly,
-using the abbreviations identified here:
-http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Current_set_of_abbreviations
-using the "Reference:" tag, with multiple entries comma separated.
+  Resolves: bsc#123456
 
-The ability to provide a conditional inclusion of a patch (eg based on
-architecture, is provided by this workflow by using the "Include-If:" tag, as
-shown here:
+Or:
 
-Include-If: %ifarch aarch64
+  References: jsc#PED-1234
 
-This will cause the patch application in the spec file to be done as follows:
-%ifarch aarch64
-%patch0013 -p1
-%endif
+Or:
 
-A trick worth noting is, if a given git tracked patch is to be applied in a way
-that can't be done in the normal patching section of the spec file, you can
-still include the patch, and use it by name with the patch program elsewhere in
-the spec file by doing something such as:
-Include-If: %if 0%{?patch-possibly-applied-elsewhere}
-(this variable will remain undefined in the spec file) And then elsewhere in the
-spec file, the actual patch (eg specially-handled-change.patch) is referenced as
-eg:
+  Resolves: bsc#7891011 (CVE-1234-5678)
 
-patch -p1 < %_sourcedir/specially-handled-change.patch
+Add it between the "(cherry picked from commit ...)" line and the "Signed-off-by:"
+line that follows it.
+
+An example of the end result, where Dario Faggioli (<dfaggioli@suse.com>) is
+backporting upstream commit abe2c4bdb65e8dd in order to fix bug 1209546 from
+bugzilla.opensuse.org is:
+
+    test-vmstate: fix bad GTree usage, use-after-free
+    
+    According to g_tree_foreach() documentation:
+    "The tree may not be modified while iterating over it (you can't
+    add/remove items)."
+    
+    [...]
+    
+    Get rid of the node removal within the tree traversal. Also
+    check the trees have the same number of nodes before the actual
+    diff.
+    
+    Fixes: 9a85e4b8f6 ("migration: Support gtree migration")
+    Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1518
+    Signed-off-by: Marc-Andr303251 Lureau <marcandre.lureau@redhat.com>
+    Signed-off-by: Eric Auger <eric.auger@redhat.com>
+    Reported-by: Richard W.M. Jones <rjones@redhat.com>
+    Tested-by: Richard W.M. Jones <rjones@redhat.com>
+    Reviewed-by: Richard W.M. Jones <rjones@redhat.com>
+    Reviewed-by: Daniel P. Berrang303251 <berrange@redhat.com>
+    Reviewed-by: Juan Quintela <quintela@redhat.com>
+    Signed-off-by: Juan Quintela <quintela@redhat.com>
+    (cherry picked from commit abe2c4bdb65e8dd9cb2f01c355baa394bf49a8af)
+    Resolves: bsc#1209546
+    Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+
+Of course, all conflicts and issues should be resolved, before committing the
+result/completing the cherry-picking.
+
+At this point, the PR should be opened. As soon as that happens, some checks
+will be run automatically and the maintainers of the QEMU package will review
+and, eventually, merge or reject it.
+
+PRs containing multiple commits are allowed. They are actually encouraged, if
+the patches being backported are related and/or dependant among each others. It
+must, however, always be the case that each upstream commit is cherry-picked
+individually.
+
+Note that there is no need to change any 'qemu.changes' file. That will, in
+fact be handled by the package maintainers (and such RPM changelog entries will
+be automatically generated out of the git commit messages).
+
+## ADDING A PATCH NOT COMING FROM UPSTREAM
+
+Downstream patches, i.e., patches that are not backports of upstream commits,
+should be avoided as much as possible. The (largely!) recommended approach is
+to submit the patch upstream and then, once it is accepted and committed,
+backport it.
+
+If that is not possible (for whatever reason), a pull request with a downstream
+only patch can be opened. The procedure is almost identical to the one described
+above for upstream backports. The main differences are:
+
+1) Downstream only patch cannot be cherry-picked from upstream commits, of
+   course. Therefore, the PR will consist of the commit(s) that introduces the
+   patch.
+ 
+2) There will be no "(cherry picked from commit ...") line in the changelog
+   of a downstream only patch. On the other hand, the "Resolves:" or
+   "Reference:" tag, that link the patch to the issue it's trying to solve,
+   must be there, and the same is true for the "Signed-off-by:" tag
+   indicating who is proposing adding it.
+
+3) It is required that the subject of the commit starts with the [openSUSE] tag.
+
+An example of a downstream only commit is:
+
+    [openSUSE] pc: q35: Bump max_cpus to 1024
+    
+    And use the new limit for machine version 7.1 too.
+    Keep the old limit of 288 for machine versions 7.0 and earlier.
+    
+    Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+    References: bsc#1202282, jsc#PED-2592
+    Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+
+## CHANGING THE PACKAGING FILES
+
+Files that are necessary for building the RPM (like the spec file) or that
+are part of the RPM and will be copied in the appropriate places in the
+filesystem when it is installed are also part of the git repository. In fact,
+they can be found in the `rpm/` directory.
+
+Any addition, removal or change of and on any of those file should just be done
+as a regular commit, and a pull request including such commit(s) should be
+opened.
+
+Commits to packaging files should be prefixed with both the [openSUSE] tag and
+an [RPM] tag. An example can be this one:
+
+    [openSUSE][RPM] Add downstream packaging files
+    
+    Stash the "packaging files" in the QEMU repository, in the rpm/
+    directory. During package build, they will be pulled out from there
+    and used as appropriate.
+    
+    Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+
+## ADDING A PATCH IN A SUBMODULE
+
+For including a backport, or in general adding a patch, to a submodule, the
+downstream git repository for the submodule must be checkedout at the location
+where the submodule resides, in the main QEMU git repository.
+
+For example, for including a downstream patch in the ipxe submodule, a local
+copy of the repository https://github.com/openSUSE/qemu-ipxe.git is necessary.
+After checking out the `factory` branch, add the patch there (cherry-picking
+it from upstream, if it is a backport, and respecting all the tagging rules
+explained in the previous sections).
+
+At this point:
+- the branch must be pushed;
+- in the main (qemu) repository, a commit must be added and pushed, for making
+  sure that the new patch is picked up.
+
+Basically, the commit in the main repository is how the information that a
+submodule as a new head is recorded.
+
+The changelog of such commit shall include a reference to the subjects of all
+the new commits in the various submodules. Unfortinately, there is not yet a
+good way of achieving this automatically.
+
+As last step, a pull request should be opened, as usual.
+
+## REMOVING PATCHES
+
+If a patch, or, in general, a commit, that is already part of the repository
+must be removed, this must be done without rewriting the git history, i.e., with
+a revert (and then a pull request with the revert should be opened).
+
+
+# FOR MAINTAINERS
+
+## REVIEWING AND ACCEPTING PRs
+
+TODO
+
+## COMMITTING CHANGES INTO FACTORY
+
+TODO
+
+## UPDATING THE BASE QEMU VERSION
+
+TODO
+
+
+# MANUAL AND AUTOMATED CHECKS
+
+TODO
+
+
+

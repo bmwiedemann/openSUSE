@@ -3,7 +3,7 @@
   <overwrite>
     <conditions>
       <package>qemu</package>
-      <package>qemu:linux-user</package>
+      <package>qemu:qemu-linux-user</package>
       <package>qemu:testsuite</package>
     </conditions>
     <hardware>
@@ -16,7 +16,7 @@
   <overwrite>
     <conditions>
       <arch>armv7l</arch>
-      <package>qemu:linux-user</package>
+      <package>qemu:qemu-linux-user</package>
     </conditions>
     <hardware>
       <memory>

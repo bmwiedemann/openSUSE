@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Wed May 10 12:19:52 UTC 2023 - dfaggioli@suse.com
+
+- (Radical!) Change of packaging workflow. Now pretty much everything
+  happens via git, and interacting with https://github.com/openSUSE/qemu.git.
+  See README.PACKAGING for details
+* Patches added:
+  linux-user: Add pidfd_open(), pidfd_send_signal() and pidfd_getfd() syscalls
+  linux-user: fill out task state in /proc/self/stat
+  linux-user: Emulate CLONE_PIDFD flag in clone()
+* Patches transformed in git commits:
+  Disable-some-tests-that-have-problems-in.patch
+  Make-char-muxer-more-robust-wrt-small-FI.patch
+  Make-installed-scripts-explicitly-python.patch
+  Makefile-fix-build-with-binutils-2.38.patch
+  PPC-KVM-Disable-mmu-notifier-check.patch
+  Raise-soft-address-space-limit-to-hard-l.patch
+  Revert-linux-user-fix-compat-with-glibc-.patch
+  Revert-roms-efirom-tests-uefi-test-tools.patch
+  Revert-tests-qtest-enable-more-vhost-use.patch
+  Update-linux-headers-to-v6.0-rc4.patch
+  accel-abort-if-we-fail-to-load-the-accel.patch
+  acpi-cpuhp-fix-guest-visible-maximum-acc.patch
+  ath5k-Add-missing-AR5K_EEPROM_READ-in-at.patch
+  bios-tables-test-add-test-for-number-of-.patch
+  bios-tables-test-teach-test-to-use-smbio.patch
+  block-Handle-curl-7.55.0-7.85.0-version-.patch
+  block-io_uring-revert-Use-io_uring_regis.patch
+  configure-Add-Wno-gnu-variable-sized-typ.patch
+  dmg-warn-when-opening-dmg-images-contain.patch
+  dump-Add-architecture-section-and-sectio.patch
+  dump-Refactor-dump_iterate-and-introduce.patch
+  dump-Reintroduce-memory_offset-and-secti.patch
+  dump-Rename-write_elf-_phdr_note-to-prep.patch
+  dump-Rename-write_elf_loads-to-write_elf.patch
+  dump-Reorder-struct-DumpState.patch
+  dump-Replace-opaque-DumpState-pointer-wi.patch
+  dump-Rework-dump_calculate_size-function.patch
+  dump-Rework-filter-area-variables.patch
+  dump-Rework-get_start_block.patch
+  dump-Split-elf-header-functions-into-pre.patch
+  dump-Use-a-buffer-for-ELF-section-data-a.patch
+  dump-Write-ELF-section-headers-right-aft.patch
+  hw-acpi-erst.c-Fix-memory-handling-issue.patch
+  hw-display-qxl-Avoid-buffer-overrun-in-q.patch
+  hw-display-qxl-Document-qxl_phys2virt.patch
+  hw-display-qxl-Have-qxl_log_command-Retu.patch
+  hw-display-qxl-Pass-requested-buffer-siz.patch
+  hw-pvrdma-Protect-against-buggy-or-malic.patch
+  hw-scsi-megasas-check-for-NULL-frame-in-.patch
+  hw-smbios-add-core_count2-to-smbios-tabl.patch
+  hw-smbios-handle-both-file-formats-regar.patch
+  hw-smbios-support-for-type-8-port-connec.patch
+  include-elf.h-add-s390x-note-types.patch
+  increase-x86_64-physical-bits-to-42.patch
+  linux-user-Fake-proc-cpuinfo.patch
+  linux-user-lseek-explicitly-cast-non-set.patch
+  linux-user-remove-conditionals-for-many-.patch
+  linux-user-use-max-as-default-CPU-model-.patch
+  linux-user-use-target_ulong.patch
+  meson-install-ivshmem-client-and-ivshmem.patch
+  meson-remove-pkgversion-from-CONFIG_STAM.patch
+  module-add-Error-arguments-to-module_loa.patch
+  module-removed-unused-function-argument-.patch
+  module-rename-module_load_one-to-module_.patch
+  net-tulip-Restrict-DMA-engine-to-memorie.patch
+  openSUSE-Basetools-Ignore-spurious-GCC-1.patch
+  openSUSE-Makefile-Fix-csum8-to-be-built-.patch
+  openSUSE-Makefile-define-endianess-for-c.patch
+  openSUSE-Makefile-fix-issues-of-build-re.patch
+  openSUSE-add-cross.ini-file-to-handle-aa.patch
+  openSUSE-build-Makefile-fix-issues-of-bu.patch
+  openSUSE-build-Silence-GCC-12-spurious-w.patch
+  openSUSE-build-be-explicit-about-mx86-us.patch
+  openSUSE-build-enable-cross-compilation-.patch
+  openSUSE-pc-q35-Bump-max_cpus-to-1024.patch
+  openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
+  openSUSE-switch-to-python3-as-needed.patch
+  openSUSE-test-help-compiler-out-by-initi.patch
+  qemu-binfmt-conf-Modify-default-path.patch
+  qemu-bridge-helper-reduce-security-profi.patch
+  qemu-osdep-Switch-position-of-extern-and.patch
+  roms-Makefile-add-cross-file-to-qboot-me.patch
+  roms-Makefile-pass-a-packaging-timestamp.patch
+  roms-change-cross-compiler-naming-to-be-.patch
+  s390x-Add-KVM-PV-dump-interface.patch
+  s390x-Add-protected-dump-cap.patch
+  s390x-Introduce-PV-query-interface.patch
+  s390x-pci-add-routine-to-get-host-functi.patch
+  s390x-pci-don-t-fence-interpreted-device.patch
+  s390x-pci-enable-adapter-event-notificat.patch
+  s390x-pci-enable-for-load-store-interpre.patch
+  s390x-pci-let-intercept-devices-have-sep.patch
+  s390x-pci-reflect-proper-maxstbl-for-gro.patch
+  s390x-pci-reset-ISM-passthrough-devices-.patch
+  s390x-pci-shrink-DMA-aperture-to-be-boun.patch
+  s390x-pv-Add-dump-support.patch
+  s390x-tod-kvm-don-t-save-restore-the-TOD.patch
+  scsi-generic-check-for-additional-SG_IO-.patch
+  scsi-generic-replace-logical-block-count.patch
+  test-vmstate-fix-bad-GTree-usage-use-aft.patch
+  tests-acpi-allow-changes-for-core_count2.patch
+  tests-acpi-update-tables-for-new-core-co.patch
+  tests-change-error-message-in-test-162.patch
+  tests-qemu-iotests-Triple-timeout-of-i-o.patch
+  ui-vnc-clipboard-fix-integer-underflow-i.patch
+  xen-add-block-resize-support-for-xen-dis.patch
+  xen-ignore-live-parameter-from-xen-save-.patch
+  xen_disk-Add-suse-specific-flush-disable.patch
+
+-------------------------------------------------------------------
 Sat Mar 25 13:53:58 UTC 2023 - Martin Li_ka <mliska@suse.cz>
 
 - Enable again LTO for x86_64 target (boo#1133281). 

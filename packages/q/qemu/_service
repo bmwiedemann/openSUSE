@@ -1,0 +1,20 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/opensuse/qemu.git</param>
+    <param name="revision">factory</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^-+a-z]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="extract_file" mode="manual">
+    <param name="archive">*.tar</param>
+    <param name="files">*/rpm/common.inc */rpm/qemu.spec */rpm/qemu-linux-user.spec */rpm/README.PACKAGING */rpm/qemu-rpmlintrc</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
