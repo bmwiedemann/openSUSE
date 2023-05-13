@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.20.0
+Version:        0.22.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-websocket-tests.patch -- gh#encode/uvicorn#1929
+Patch0:         fix-websocket-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -42,6 +44,7 @@ Recommends:     python-websockets >= 8.0
 Suggests:       python-uvloop >= 0.14.0
 Suggests:       python-watchfiles >= 0.13
 Suggests:       python-wsproto >= 1.2.0
+Suggests:       python-websockets
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -94,7 +97,8 @@ rm setup.cfg
 %check
 # Required for reporting bugs
 %python_exec -m uvicorn --version
-%pytest
+# No module python-a2wsgi
+%pytest --ignore tests/middleware/test_wsgi.py
 
 %files %{python_files}
 %doc README.md

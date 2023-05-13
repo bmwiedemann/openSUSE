@@ -105,4 +105,75 @@
     <comment></comment>
     <requestid>1081993</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4172f0c02204b51944dfac5a7d707251</srcmd5>
+    <version>0.22.0</version>
+    <time>1683991027</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-websocket-tests.patch gh#encode/uvicorn#1929
+- Update to version 0.22.0:
+  * Version 0.22.0 (#1957)
+  * Remove unused events (#1956)
+  * remove a few mypy excludes (#1954)
+  * Add `--timeout-graceful-shutdown` parameter (#1950)
+  * Fix typo in setup.cfg (#1953)
+  * Update `scripts/check` (#1952)
+  * Add `WatchFilesReload` pause method (#1930)
+  * Create PULL_REQUEST_TEMPLATE.md (#1946)
+  * Handle `SIGBREAK` for Windows (#1909)
+  * Fix shutdown event on Windows in reloader (#1584)
+  * Handle missing trustme/cryptography gracefully in the test suite (#1940)
+  * Add type hints to test_auto_detection.py (#1937)
+  * Fix watchgod deprecation warning (#1938)
+  * Upgrade and fix Black (#1926)
+  * Use ruff instead of flake8, autoflake and isort (#1925)
+  * Upgrade MyPy and fix issues (#1931)
+  * Pin websockets to &lt;11.0 (#1928)
+  * Bump coverage from 7.1.0 to 7.2.2 (#1920)
+  * Fix instructions so they work in zsh as well as Bash (#1915)
+  * [`Docs`] : Hypercorn supports HTTP/3 (#1913)
+  * Version 0.21.1 (#1904)
+  * Reset lifespan state on each request (#1903)
+  * Version 0.21.0 (#1892)
+  * Improve discoverability when `--port=0` is used (#1890)
+  * Fix mypy on test_websockets (#1889)
+  * Add type annotation on `test_websockets.py` (#1880)
+  * Introduce lifespan state (#1818)
+  * Bump build from 0.9.0 to 0.10.0 (#1882)
+  * Bump pytest from 7.2.0 to 7.2.1 (#1883)
+  * Bump a2wsgi from 1.6.0 to 1.7.0 (#1886)
+  * Add type annotation on `test_logging.py` (#1881)
+  * fix: typo (#1871)
+  * Bump cryptography from 38.0.3 to 39.0.1 (#1865)
+  * Improve import time (#1846)
+  * Bump coverage from 6.5.0 to 7.1.0 (#1856)
+  * Bump twine from 4.0.1 to 4.0.2 (#1857)
+  * Bump types-pyyaml from 6.0.12.2 to 6.0.12.3 (#1858)
+  * Move a2wsgi to the explicit optionals section in the requirements (#1849)
+  * Replace current WSGIMiddleware implementation by a2wsgi one (#1825)
+  * Send code 1012 on shutdown for websockets (#1816)
+  * Change default `--app-dir` from from &quot;.&quot; (dot) to &quot;&quot; (empty string). (#1835)
+  * Bump types-pyyaml from 6.0.12.1 to 6.0.12.2 (#1827)
+  * Bump pytest from 7.1.3 to 7.2.0 (#1830)
+  * Fix cli_usage tool on systems without an activated virtualenv (#1823)
+  * Fix ASGI application on the documentation (#1821)
+  * Delete setup.py (#1822)
+  * tests: test to start server with invalid host (#1813)
+  * Use unused TCP ports on the test suite (#1804)
+  * Use `surrogateescape` to encode headers on `websockets` implementation (#1005)
+  * Update hypercorn link on the README (#1800)
+  * Fix one example in REAME (#1794)
+  * Replace `files` by `exclude` on mypy configuration (#1793)
+  * Bump mypy from 0.982 to 0.991 (#1789)
+  * Bump mkdocs from 1.4.0 to 1.4.2 (#1787)
+  * Bump build from 0.8.0 to 0.9.0 (#1791)
+  * Fix warning on reload failure (#1784)
+  * Allow headers to be sent as iterables (#1782)
+  * Add test to make sure we send connection close when client sends it (#1776)
+  * Replace `AF_UNIX` by `AF_INET` on subprocess test (#1775)
+  * Replace uvicorn files by uvicorn folder on mypy settings (#1771)
+  * Add type annotation to `wsproto_impl.py` (#1754)
+</comment>
+    <requestid>1086703</requestid>
+  </revision>
 </revisionlist>
