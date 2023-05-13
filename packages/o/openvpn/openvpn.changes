@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 12 12:16:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.4:
+  * DCO: support kernel-triggered key rotation (avoid IV reuse after 
+    2^32 packets). This is the userland side, accepting a message
+    from kernel, and initiating a TLS renegotiation. As of release,
+  * fix pkcs#11 usage with OpenSSL 3.x and PSS signing (Github #323)
+  * fix compile error on TARGET_ANDROID
+  * fix typo in help text
+  * manpage updates (--topology)
+  * encoding of non-ASCII windows error messages in log + management fixed
+- Update openvpn.keyring
+
+-------------------------------------------------------------------
 Tue Apr 25 14:02:08 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.6.3:

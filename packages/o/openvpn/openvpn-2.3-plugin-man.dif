@@ -1,6 +1,8 @@
+Index: doc/openvpn.8
+===================================================================
 --- doc/openvpn.8.orig
 +++ doc/openvpn.8
-@@ -6059,9 +6059,9 @@ For more information and examples on how
+@@ -6690,9 +6690,9 @@ For more information and examples on how
  modules, see the README file in the \fBplugin\fP folder of the OpenVPN
  source distribution.
  .sp
