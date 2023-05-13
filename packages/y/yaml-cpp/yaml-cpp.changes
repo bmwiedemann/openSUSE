@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 15:57:44 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop patches fix-cmake-export.patch  untabify-cmakelists.patch
+  replacing them with pull-request 1077.patch which was
+  merged (bsc#1191137).
+
+-------------------------------------------------------------------
 Tue Jan  4 17:56:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add fix-cmake-export.patch  untabify-cmakelists.patch (bsc#1191137)

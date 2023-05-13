@@ -1,7 +1,7 @@
 #
 # spec file for package yaml-cpp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jbeder/yaml-cpp/
 Source:         https://github.com/jbeder/yaml-cpp/archive/%{name}-%{version}.tar.gz
-Patch1:         https://github.com/felix2010/yaml-cpp/commit/a339bea6bb7bd461a41e874f78b46a5af98277ff.patch#/untabify-cmakelists.patch
-Patch2:         https://github.com/felix2010/yaml-cpp/commit/c1f987850a6282435f499bee76b12e32d7472f12.patch#/fix-cmake-export.patch
+Patch1:         https://github.com/jbeder/yaml-cpp/pull/1077.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  sed
