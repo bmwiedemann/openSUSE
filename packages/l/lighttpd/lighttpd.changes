@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 12 17:30:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.70:
+  * speed up CGI spawning
+  * support HTTP/2 downstream proxy serving multiple clients on
+    single connection (mod_extforward, mod_maxminddb)
+  * no longer building separate modules for built-in modules
+    lighttpd omits building separate (unused) modules for:
+    mod_access mod_alias mod_evhost mod_expire mod_fastcgi
+    mod_indexfile mod_redirect mod_rewrite mod_scgi mod_setenv
+    mod_simple_vhost mod_staticfile
+
+-------------------------------------------------------------------
 Sat Feb 11 18:04:04 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.69:

@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.69
+Version:        1.4.70
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -335,28 +335,17 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 # modules
 %license COPYING
 %dir %{_libdir}/%{name}
-%{_libdir}/%{name}/mod_access.so
 %{_libdir}/%{name}/mod_accesslog.so
-%{_libdir}/%{name}/mod_alias.so
 %{_libdir}/%{name}/mod_auth.so
 %{_libdir}/%{name}/mod_authn_file.so
 %{_libdir}/%{name}/mod_cgi.so
 %{_libdir}/%{name}/mod_deflate.so
 %{_libdir}/%{name}/mod_dirlisting.so
-%{_libdir}/%{name}/mod_evhost.so
-%{_libdir}/%{name}/mod_expire.so
 %{_libdir}/%{name}/mod_extforward.so
-%{_libdir}/%{name}/mod_fastcgi.so
-%{_libdir}/%{name}/mod_indexfile.so
+%{_libdir}/%{name}/mod_h2.so
 %{_libdir}/%{name}/mod_openssl.so
 %{_libdir}/%{name}/mod_proxy.so
-%{_libdir}/%{name}/mod_redirect.so
-%{_libdir}/%{name}/mod_rewrite.so
-%{_libdir}/%{name}/mod_scgi.so
-%{_libdir}/%{name}/mod_setenv.so
-%{_libdir}/%{name}/mod_simple_vhost.so
 %{_libdir}/%{name}/mod_ssi.so
-%{_libdir}/%{name}/mod_staticfile.so
 %{_libdir}/%{name}/mod_sockproxy.so
 %{_libdir}/%{name}/mod_status.so
 %{_libdir}/%{name}/mod_userdir.so
@@ -369,24 +358,15 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 #doc doc/*.dot
 %doc doc/scripts/spawn-php.sh
 %doc doc/outdated/accesslog.txt
-%doc doc/outdated/access.txt
-%doc doc/outdated/alias.txt
 %doc doc/outdated/authentication.txt
 %doc doc/outdated/cgi.txt
 %doc doc/outdated/configuration.txt
-%doc doc/outdated/expire.txt
 %doc doc/outdated/fastcgi-state.txt
-%doc doc/outdated/fastcgi.txt
 %doc doc/outdated/features.txt
 %doc doc/outdated/performance.txt
 %doc doc/outdated/plugins.txt
 %doc doc/outdated/proxy.txt
-%doc doc/outdated/redirect.txt
-%doc doc/outdated/rewrite.txt
-%doc doc/outdated/scgi.txt
 %doc doc/outdated/security.txt
-%doc doc/outdated/setenv.txt
-%doc doc/outdated/simple-vhost.txt
 %doc doc/outdated/skeleton.txt
 %doc doc/outdated/ssi.txt
 %doc doc/outdated/ssl.txt
