@@ -4328,6 +4328,9 @@ unsorted:
   - ganglia-web 
   - garlic 
   - garlic-doc 
+  - gasket-driver 
+  - gasket-driver-kmp-default 
+  - gasket-driver-ueficert 
   - gaupol 
   - gavl 
   - gbdfed 
@@ -8514,7 +8517,6 @@ unsorted:
   - jemmy-javadoc 
   - jenkins-json-lib 
   - jeos-firstboot 
-  - jeos-firstboot-rpiwifi 
   - jeromq 
   - jeromq-javadoc 
   - jersey 
@@ -15033,8 +15035,6 @@ unsorted:
   - libsss_certmap-devel 
   - libsss_idmap-devel 
   - libsss_nss_idmap-devel 
-  - libsss_simpleifp-devel 
-  - libsss_simpleifp0 
   - libstaroffice-devel 
   - libstaroffice-devel-doc 
   - libstaroffice-tools 
@@ -23263,6 +23263,8 @@ unsorted:
   - python310-aiohttp-theme 
   - python310-aiohttp_cors 
   - python310-aioitertools 
+  - python310-aiomisc 
+  - python310-aiomisc-pytest 
   - python310-aioquic 
   - python310-aioresponses 
   - python310-aiorpcX 
@@ -23310,6 +23312,7 @@ unsorted:
   - python310-argh 
   - python310-argon2-cffi 
   - python310-argon2-cffi-bindings 
+  - python310-argparse_addons 
   - python310-args 
   - python310-arrow 
   - python310-arviz 
@@ -23840,6 +23843,7 @@ unsorted:
   - python310-click-help-colors 
   - python310-click-log 
   - python310-click-man 
+  - python310-click-option-group 
   - python310-click-plugins 
   - python310-click-repl 
   - python310-click-spinner 
@@ -24745,6 +24749,7 @@ unsorted:
   - python310-localzone 
   - python310-locket 
   - python310-lockfile 
+  - python310-logging-journald 
   - python310-logilab-common 
   - python310-loguru 
   - python310-logutils 
@@ -26572,6 +26577,8 @@ unsorted:
   - python311-aiohttp-theme 
   - python311-aiohttp_cors 
   - python311-aioitertools 
+  - python311-aiomisc 
+  - python311-aiomisc-pytest 
   - python311-aioquic 
   - python311-aioresponses 
   - python311-aiorpcX 
@@ -26624,6 +26631,7 @@ unsorted:
   - python311-argon2-cffi 
   - python311-argon2-cffi-bindings 
   - python311-argparse-manpage 
+  - python311-argparse_addons 
   - python311-args 
   - python311-arrow 
   - python311-asciimatics 
@@ -27163,6 +27171,7 @@ unsorted:
   - python311-click-help-colors 
   - python311-click-log 
   - python311-click-man 
+  - python311-click-option-group 
   - python311-click-plugins 
   - python311-click-repl 
   - python311-click-spinner 
@@ -28110,6 +28119,7 @@ unsorted:
   - python311-localzone 
   - python311-locket 
   - python311-lockfile 
+  - python311-logging-journald 
   - python311-logilab-common 
   - python311-loguru 
   - python311-logutils 
@@ -30030,6 +30040,8 @@ unsorted:
   - python39-aiohttp-theme 
   - python39-aiohttp_cors 
   - python39-aioitertools 
+  - python39-aiomisc 
+  - python39-aiomisc-pytest 
   - python39-aioquic 
   - python39-aioresponses 
   - python39-aiorpcX 
@@ -30082,6 +30094,7 @@ unsorted:
   - python39-argon2-cffi 
   - python39-argon2-cffi-bindings 
   - python39-argparse-manpage 
+  - python39-argparse_addons 
   - python39-args 
   - python39-arrow 
   - python39-arviz 
@@ -30624,6 +30637,7 @@ unsorted:
   - python39-click-help-colors 
   - python39-click-log 
   - python39-click-man 
+  - python39-click-option-group 
   - python39-click-plugins 
   - python39-click-repl 
   - python39-click-spinner 
@@ -31575,6 +31589,7 @@ unsorted:
   - python39-localzone 
   - python39-locket 
   - python39-lockfile 
+  - python39-logging-journald 
   - python39-logilab-common 
   - python39-loguru 
   - python39-logutils 
@@ -34702,7 +34717,6 @@ unsorted:
   - skanpage-lang 
   - skelcd-control-MicroOS 
   - skelcd-control-openSUSE 
-  - skelcd-control-openSUSE-promo 
   - skelcd-fallbackrepo-openSUSE 
   - skelcd-installer-MicroOS 
   - skelcd-installer-net-MicroOS 
