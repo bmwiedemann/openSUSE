@@ -88,6 +88,8 @@ Patch0:         numpy-buildfix.patch
 Patch1:         numpy-1.9.0-remove-__declspec.patch
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarnings when importing pkg_resources
 Patch2:         ignore-pkg_resources-deprecation.patch
+# PATCH-FIX-OPENSUSE Do not call a deprecated hypothesis health check function
+Patch3:         remove-deprecated-hypothesis-funcs.patch
 BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}

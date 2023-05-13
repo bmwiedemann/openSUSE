@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 12 04:22:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-deprecated-hypothesis-funcs.patch:
+  * Change to a non-deprecated function from hypothesis. 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:28:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
