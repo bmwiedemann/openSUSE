@@ -6909,6 +6909,7 @@ unsorted:
   - godot3-server 
   - goffice-devel 
   - goffice-lang 
+  - gojq 
   - gojsontoyaml 
   - gokart 
   - golang-github-QubitProducts-exporter_exporter 
@@ -7145,9 +7146,7 @@ unsorted:
   - grantlee-editor 
   - grantlee-editor-lang 
   - grantlee5-devel 
-  - grantleetheme 
   - grantleetheme-devel 
-  - grantleetheme-lang 
   - graphite2 
   - graphite2-devel 
   - graphviz 
@@ -9043,6 +9042,8 @@ unsorted:
   - keychain 
   - keyd 
   - keylightctl 
+  - keysmith 
+  - keysmith-lang 
   - keyutils-devel 
   - keyutils-devel-32bit 
   - kf5-filesystem 
@@ -19420,6 +19421,8 @@ unsorted:
   - openhpi-devel 
   - openjade 
   - openjade-devel 
+  - openjfx 
+  - openjfx-devel 
   - openjfx8 
   - openjfx8-devel 
   - openjfx8-javadoc 
@@ -21304,6 +21307,7 @@ unsorted:
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
+  - perl-Test-Future-IO-Impl 
   - perl-Test-HTTP-MockServer 
   - perl-Test-HasVersion 
   - perl-Test-Identity 
@@ -23253,6 +23257,7 @@ unsorted:
   - python310-aiofiles 
   - python310-aioftp 
   - python310-aiohttp 
+  - python310-aiohttp-asgi 
   - python310-aiohttp-jinja2 
   - python310-aiohttp-socks 
   - python310-aiohttp-theme 
@@ -25437,6 +25442,7 @@ unsorted:
   - python310-pytest-order 
   - python310-pytest-percent 
   - python310-pytest-plus 
+  - python310-pytest-pretty 
   - python310-pytest-profiling 
   - python310-pytest-pycodestyle 
   - python310-pytest-pyramid-server 
@@ -26560,6 +26566,7 @@ unsorted:
   - python311-aiofiles 
   - python311-aioftp 
   - python311-aiohttp 
+  - python311-aiohttp-asgi 
   - python311-aiohttp-jinja2 
   - python311-aiohttp-socks 
   - python311-aiohttp-theme 
@@ -28834,6 +28841,7 @@ unsorted:
   - python311-pytest-order 
   - python311-pytest-percent 
   - python311-pytest-plus 
+  - python311-pytest-pretty 
   - python311-pytest-profiling 
   - python311-pytest-pycodestyle 
   - python311-pytest-pyramid-server 
@@ -30016,6 +30024,7 @@ unsorted:
   - python39-aiofiles 
   - python39-aioftp 
   - python39-aiohttp 
+  - python39-aiohttp-asgi 
   - python39-aiohttp-jinja2 
   - python39-aiohttp-socks 
   - python39-aiohttp-theme 
@@ -32300,6 +32309,7 @@ unsorted:
   - python39-pytest-order 
   - python39-pytest-percent 
   - python39-pytest-plus 
+  - python39-pytest-pretty 
   - python39-pytest-profiling 
   - python39-pytest-pycodestyle 
   - python39-pytest-pyramid-server 

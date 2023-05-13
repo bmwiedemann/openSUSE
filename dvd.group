@@ -389,6 +389,7 @@
     <package name="e2fsprogs-scrub" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ebtables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="edict-eucjp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="edict2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="efont-unicode-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
@@ -707,6 +708,8 @@
     <package name="gpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gptfdisk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grantlee5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="grantleetheme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="grantleetheme-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="grep-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="grilo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
