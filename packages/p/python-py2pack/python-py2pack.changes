@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 11 18:32:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Replace build_sphinx setuptools hook with direct sphinx-build
+  call -- fixes boo#1211051
+- Move to PEP517 macros for buildin py2pack
+- Remove shebang from __init__.py
+
+-------------------------------------------------------------------
 Tue Mar  7 07:22:01 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required

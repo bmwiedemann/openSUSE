@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py2pack
 Version:        0.8.7
 Release:        0
@@ -28,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/p/py2pack/py2pack
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module metaextract}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pypi-search}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # SECTION doc requirements
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-programoutput
@@ -63,15 +64,29 @@ Documentation and help files for %{name}.
 
 %prep
 %setup -q -n py2pack-%{version}
+# remove shebang
+sed -i '1{/#!/d}' py2pack/__init__.py
 
 %build
-%python_build
-python3 setup.py build_sphinx
+%pyproject_wheel
+
+# build docs, cli.rst needs py2pack as executable
+mkdir -p build/directbin/
+cat <<EOF > build/directbin/py2pack
+#!%{__python3}
+import sys
+import py2pack
+sys.exit(py2pack.main())
+EOF
+chmod +x build/directbin/py2pack
+export PATH="$PWD/build/directbin/:$PATH"
+export PYTHONPATH=$PWD
+sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/py2pack
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -83,7 +98,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %files %{python_files}
 %python_alternative %{_bindir}/py2pack
-%{python_sitelib}/py2pack-%{version}-py*.egg-info
+%{python_sitelib}/py2pack-%{version}.dist-info
 %{python_sitelib}/py2pack/
 
 %files -n %{name}-doc
