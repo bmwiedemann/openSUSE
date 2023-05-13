@@ -1064,4 +1064,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
   https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.1</comment>
     <requestid>1085454</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>d82eace9e63b4aa1a0c33ee38eadf0e6</srcmd5>
+    <version>2.0.12</version>
+    <time>1683991041</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unnecessary mypy dependency</comment>
+    <requestid>1086773</requestid>
+  </revision>
 </revisionlist>

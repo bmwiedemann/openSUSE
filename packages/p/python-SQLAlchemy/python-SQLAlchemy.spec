@@ -45,7 +45,6 @@ Requires:       python-importlib-metadata
 # SECTION test requirements
 BuildRequires:  %{python_module greenlet > 0.4.17}
 BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest >= 4.4.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module typing_extensions >= 4.2.0}

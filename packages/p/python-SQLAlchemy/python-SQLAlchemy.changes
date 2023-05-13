@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 12 13:50:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop unnecessary mypy dependency
+
+-------------------------------------------------------------------
 Thu May  4 15:48:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to SQLalchemy 2.0.x:
