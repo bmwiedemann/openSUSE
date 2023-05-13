@@ -1,10 +1,15 @@
-Index: GitPython-3.1.30.1672298042.141cd65/test/test_base.py
-===================================================================
---- GitPython-3.1.30.1672298042.141cd65.orig/test/test_base.py
-+++ GitPython-3.1.30.1672298042.141cd65/test/test_base.py
-@@ -104,7 +104,8 @@ class TestBase(_TestBase):
-         assert not rw_repo.config_reader("repository").getboolean("core", "bare")
+---
+ test/test_base.py      |    3 ++-
+ test/test_remote.py    |    5 ++++-
+ test/test_repo.py      |    1 +
+ test/test_submodule.py |   19 +++++++++++--------
+ 4 files changed, 18 insertions(+), 10 deletions(-)
+
+--- a/test/test_base.py
++++ b/test/test_base.py
+@@ -109,7 +109,8 @@ class TestBase(_TestBase):
          assert osp.isdir(osp.join(rw_repo.working_tree_dir, "lib"))
+         assert osp.isdir(rw_repo.working_dir)
  
 -    @skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!  sometimes...")
 +    #@skipIf(HIDE_WINDOWS_FREEZE_ERRORS, "FIXME: Freezes!  sometimes...")
@@ -12,10 +17,8 @@ Index: GitPython-3.1.30.1672298042.141cd65/test/test_base.py
      @with_rw_and_rw_remote_repo("0.1.6")
      def test_with_rw_remote_and_rw_repo(self, rw_repo, rw_remote_repo):
          assert not rw_repo.config_reader("repository").getboolean("core", "bare")
-Index: GitPython-3.1.30.1672298042.141cd65/test/test_remote.py
-===================================================================
---- GitPython-3.1.30.1672298042.141cd65.orig/test/test_remote.py
-+++ GitPython-3.1.30.1672298042.141cd65/test/test_remote.py
+--- a/test/test_remote.py
++++ b/test/test_remote.py
 @@ -4,6 +4,7 @@
  # This module is part of GitPython and is released under
  # the BSD License: http://www.opensource.org/licenses/bsd-license.php
@@ -42,10 +45,18 @@ Index: GitPython-3.1.30.1672298042.141cd65/test/test_remote.py
      def test_fetch_error(self):
          rem = self.rorepo.remote("origin")
          with self.assertRaisesRegex(GitCommandError, "[Cc]ouldn't find remote ref __BAD_REF__"):
-Index: GitPython-3.1.30.1672298042.141cd65/test/test_submodule.py
-===================================================================
---- GitPython-3.1.30.1672298042.141cd65.orig/test/test_submodule.py
-+++ GitPython-3.1.30.1672298042.141cd65/test/test_submodule.py
+--- a/test/test_repo.py
++++ b/test/test_repo.py
+@@ -250,6 +250,7 @@ class TestRepo(TestBase):
+             except UnicodeEncodeError:
+                 self.fail("Raised UnicodeEncodeError")
+ 
++    @skipIf(os.environ.get('SKIP_GITHUB', 'false') == 'true', 'Gitlab connection error')
+     @with_rw_directory
+     def test_leaking_password_in_clone_logs(self, rw_dir):
+         password = "fakepassword1234"
+--- a/test/test_submodule.py
++++ b/test/test_submodule.py
 @@ -453,14 +453,15 @@ class TestSubmodule(TestBase):
          reason="Cygwin GitPython can't find submodule SHA",
          raises=ValueError
@@ -86,15 +97,3 @@ Index: GitPython-3.1.30.1672298042.141cd65/test/test_submodule.py
      def test_remove_norefs(self, rwdir):
          parent = git.Repo.init(osp.join(rwdir, "parent"))
          sm_name = "mymodules/myname"
-Index: GitPython-3.1.30.1672298042.141cd65/test/test_repo.py
-===================================================================
---- GitPython-3.1.30.1672298042.141cd65.orig/test/test_repo.py
-+++ GitPython-3.1.30.1672298042.141cd65/test/test_repo.py
-@@ -250,6 +250,7 @@ class TestRepo(TestBase):
-             except UnicodeEncodeError:
-                 self.fail("Raised UnicodeEncodeError")
- 
-+    @skipIf(os.environ.get('SKIP_GITHUB', 'false') == 'true', 'Gitlab connection error')
-     @with_rw_directory
-     def test_leaking_password_in_clone_logs(self, rw_dir):
-         password = "fakepassword1234"

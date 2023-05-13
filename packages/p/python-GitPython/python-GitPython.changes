@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu May 11 13:59:44 UTC 2023 - mcepl@suse.com
+
+- Update to version 3.1.31.1676565040.f253335:
+  * prepare next release
+  * Add test asserting that get_values works by itself
+  * Update cmd.py
+  * Fix RecursionError when iterating streams
+  * Update docs
+  * Add additional assertions to test_base.py
+  * Updated diff test to use different similarity thresholds
+  * Add check to test bare repo
+  * Added diff test to disable rename detection
+  * fixed lint error
+  * Enable user to override default diff -M arg
+  * Remove optional from two member variables
+  * Fix timezone parsing functions for non-hour timezones
+  * Raise exception if return code from check-ignore is not 1
+  * Add test to verify GitCommandError is raised when check-ignore is run against a file behind a symlink
+  * Add test_ignored_items_reported
+  * Lint with Flake8 via pre-commit
+  * Upgrade Python syntax with pyupgrade --py37-plus
+  * Fix typo
+  * Declare support for Python 3.11
+  * fix files list on file rename
+  * get_values eagerly loads sections before return
+  * Fix some resource leaks by open file handles
+  * fix clone_from_unsafe_protocol tests
+  * replace tempfile.mkdtemp w/ tempfile.TemporaryDirectory
+  * fix/add allow_unsafe_* params in docstrings + fix typo
+  * tests: Use `command -v` instead of third-party `which` program
+  * Fix Sphinx rendering errors
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -219,6 +252,7 @@ Mon Mar 30 10:40:09 UTC 2020 - tchvatal@suse.com
   * Remove unnecessary check for logging.NullHandler for Python 2.6
   * Remove check for Python 2.7
 - Rebase patch test-skips.patch and test_blocking_lock_file-extra-time.patch
+- Give up on tests for now, gh#gitpython-developers/GitPython#914
 
 -------------------------------------------------------------------
 Sat Nov 16 16:40:59 UTC 2019 - Arun Persaud <arun@gmx.de>

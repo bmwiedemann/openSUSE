@@ -1,8 +1,10 @@
-Index: GitPython-3.1.7.1594621338.176838a3/test/test_util.py
-===================================================================
---- GitPython-3.1.7.1594621338.176838a3.orig/test/test_util.py
-+++ GitPython-3.1.7.1594621338.176838a3/test/test_util.py
-@@ -165,9 +165,7 @@ class TestUtils(TestBase):
+---
+ test/test_util.py |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- a/test/test_util.py
++++ b/test/test_util.py
+@@ -173,9 +173,7 @@ class TestUtils(TestBase):
          self.assertRaises(IOError, wait_lock._obtain_lock)
          elapsed = time.time() - start
          extra_time = 0.02
