@@ -118,4 +118,24 @@
     <comment></comment>
     <requestid>1081845</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90ceef2216a0c01be9a1a80e0dcf4525</srcmd5>
+    <version>0.9.0</version>
+    <time>1683991043</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  - Drop support for Python 2.X, 3.5, and 3.6;
+    Add support for Python 3.10, 3.11
+  - Modernize from setup.py -&gt; pyproject.toml
+  - Add ``namespace`` argument to ``@parameterize.expand``
+  - Add support for ``IsolatedAsyncioTestCase``
+  - Work around for bug bpo-40126 in older versions of ``mock``
+  - Allow str, bytes, and any non-iterable input to be passed to
+    ``@parameterized`` without wrapping in a tuple
+  - Fix class-level ``mock.patch.multiple``
+- Add skip_failing_teardown.patch (gh#wolever/parameterized#167)
+  to overcome failing tearDownModule().
+- Remove upstreamed parameterized-pr116-pytest4.patch</comment>
+    <requestid>1086781</requestid>
+  </revision>
 </revisionlist>

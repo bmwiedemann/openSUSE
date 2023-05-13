@@ -24,22 +24,23 @@
 %bcond_without nose2
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-parameterized
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Parameterized testing
 License:        BSD-2-Clause
 URL:            https://github.com/wolever/parameterized
 Source:         https://files.pythonhosted.org/packages/source/p/parameterized/parameterized-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM parameterized-pr116-pytest4.patch -- gh#wolever/parameterized#116, fix pytest >= 4 execution
-Patch0:         parameterized-pr116-pytest4.patch
 # PATCH-FIX-OPENSUSE remove_nose.patch mcepl@suse.com
 # Remove nose dependency (patch is not very good, DO NOT SEND UPSTREAM!)
 Patch1:         remove_nose.patch
+# PATCH-FIX-UPSTREAM skip_failing_teardown.patch gh#wolever/parameterized#167 mcepl@suse.com
+# skip failing assert in tearDownModule [sic]
+Patch2:         skip_failing_teardown.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if %{with nose2}
 BuildRequires:  %{python_module nose2}
 %endif
@@ -52,14 +53,13 @@ BuildArch:      noarch
 Parameterized testing with any Python test framework.
 
 %prep
-%setup -q -n parameterized-%{version}
-%autopatch -p1
+%autosetup -p1 -n parameterized-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,11 +70,14 @@ export LANG=en_US.UTF8
 %{python_expand nose2-%$python_version -v -B --pretty-assert}
 %endif
 %python_exec -m unittest parameterized.test
-# https://github.com/wolever/parameterized/issues/122
-%pytest parameterized/test.py -k 'not (test_with_docstring_1_v_l_ or test_with_docstring_0_value1)'
+# gh#wolever/parameterized#122
+skip_tests="test_with_docstring_1_v_l_ or test_with_docstring_0_value1"
+%pytest parameterized/test.py -k "not ($skip_tests)"
 
 %files %{python_files}
-%doc CHANGELOG.txt README.rst
+%doc README.rst
+# gh#wolever/parameterized#168
+# %%doc CHANGELOG.txt
 %license LICENSE.txt
 %{python_sitelib}/parameterized
 %{python_sitelib}/parameterized-%{version}*-info
