@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed May 10 06:00:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9:
+  * ISystemtap: the new interactive systemtap jupyter kernel.
+    This provides a simple GUI for writing/running Systemtap
+    scripts in an easy, incremental way within Jupyterlab.
+    Added 2 news scripts, stap-jupyter-install
+    and stap-jupyter-container. See stap-jupyter(1).
+  * The new "language-server" mode, specified by "stap
+    --language-server", starts a LSP server which will
+    communicate with the client via stdio.
+  * This server currently supports code completion suggestions.
+  * See language-server/README.md for more details and usage
+    instructions.
+  * Safety/liveness checking for $context variable assignments in
+    probes of retpoline-compiled kernels is temporarily disabled.
+  * DWARF-related probes (.function, .statement) now merge DWARF
+    and non-DWARF symbol-table based matches, rather than being
+    either-or.
+  * The python3 tapset was extended to support python3 3.9, 3.10,
+    and 3.11. See stapprobes(3stap) for further details on probing
+    python functions.
+  * A template cve band-aid script is now included, which
+    demonstrates how to use a new 'livepatch.stp' tapset to
+    standardize activation, interactive control,
+    and monitoring of systemtap cve band-aids.
+  * The kernel runtime now uses much less memory when the number
+    of "possible CPUs" are way more than the online ones. For
+    example, VMWare guests usually have 128 "possible CPUs" while fewer
+    CPUs are actually present or online in the guest system.
+  * The memory allocation size is now irrelevant to the value of
+    NR_CPUS of the current kernel. It is only subject to the
+    number of "possible CPUs" or "online CPUs".
+  * CPU hotplug is supported to the extent that there won't be
+    any kernel panics or memory corruptions.
+  * The bpf backend's embedded-code assembler has been improved
+    to support more conventional assembly syntax with named
+    opcodes. The opcode names are based on the iovisor bpf-docs
+    documentation at
+    https://github.com/iovisor/bpf-docs/blob/master/eBPF.md
+ 
+-------------------------------------------------------------------
 Thu May  4 11:27:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

@@ -17,20 +17,21 @@
 
 
 Name:           systemtap-docs
-Version:        4.7
+Version:        4.9
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
-Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.sig
+Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Source2:        systemtap.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
 Patch1:         systemtap-docdir-fix.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  pkgconfig(json-c)
 # for documents
 BuildRequires:  fop
 BuildRequires:  gcc-c++

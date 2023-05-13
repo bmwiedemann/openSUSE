@@ -20,14 +20,14 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        4.7
+Version:        4.9
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
-Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.sig
+Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
@@ -46,6 +46,7 @@ BuildRequires:  mozilla-nss-tools
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  sqlite-devel
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-dtrace = %{version}
 Requires:       %{name}-runtime = %{version}-%{release}
@@ -130,19 +131,20 @@ install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 %tmpfiles_create %{_tmpfilesdir}/stap-server.conf
 
 %files
-%defattr(-,root,root)
 %{_bindir}/stap
 %{_bindir}/stap-profile-annotate
+%{_bindir}/stap-jupyter-container
+%{_bindir}/stap-jupyter-install
 %{_mandir}/man[17]/*
 %{_mandir}/cs/man[17]/*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/runtime
+%{_datadir}/%{name}/interactive-notebook
 %{_datadir}/%{name}/tapset
 #packaged by systemtap-initscript in upstream
 %dir %{_localstatedir}/cache/systemtap
 
 %files runtime -f systemtap.lang
-%defattr(-,root,root)
 %doc %{_docdir}/systemtap
 %{_bindir}/staprun
 %{_bindir}/stapsh
@@ -161,7 +163,6 @@ install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 %{_mandir}/man8/stapbpf.8*
 
 %files server
-%defattr(-,root,root)
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/stap-server.conf
 %{_bindir}/stap-server
@@ -176,7 +177,6 @@ install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 %ghost %dir %{_rundir}/stap-server
 
 %files sdt-devel
-%defattr(-,root,root)
 %{_includedir}/sys/*.h
 
 %changelog

@@ -24,14 +24,14 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap-headers
-Version:        4.7
+Version:        4.9
 Release:        0
 Summary:        SystemTap headers
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://sourceware.org/systemtap/
 Source0:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz
-Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.sig
+Source1:        https://sourceware.org/systemtap/ftp/releases/systemtap-%{version}.tar.gz.asc
 Source2:        systemtap.keyring
 Source3:        README-BEFORE-ADDING-PATCHES
 Source4:        README-KEYRING
