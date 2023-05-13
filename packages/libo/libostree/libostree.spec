@@ -18,6 +18,7 @@
 
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 %bcond_without ed25519
+%bcond_with tests
 Name:           libostree
 Version:        2023.2
 Release:        0
@@ -29,7 +30,9 @@ Source:         https://github.com/ostreedev/ostree/releases/download/v%{version
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
 BuildRequires:  bison
+%if %{with tests}
 BuildRequires:  gjs
+%endif
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel >= 1.34.0
 BuildRequires:  libattr-devel
@@ -128,6 +131,11 @@ of both.
 	--with-dracut \
 %if %{with ed25519}
 	--with-ed25519-libsodium \
+%endif
+%if %{with tests}
+	--with-gjs=yes \
+%else
+	--with-gjs=no \
 %endif
 	--with-curl=yes \
 	--with-soup=no \

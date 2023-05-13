@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 12 07:07:37 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Make gjs BuildRequires conditional if tests are built and used.
+
+-------------------------------------------------------------------
 Sun Mar 26 16:47:47 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2023.2:
