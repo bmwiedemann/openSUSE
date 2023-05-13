@@ -17,7 +17,7 @@
 
 
 Name:           primesieve
-Version:        11.0
+Version:        11.1
 Release:        0
 Summary:        A prime number generator
 License:        BSD-2-Clause

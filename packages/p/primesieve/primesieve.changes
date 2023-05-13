@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 13 08:05:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-11.1
+- Vectorized pre-sieving algorithm using x64 SSE2 and ARM NEON
+- Added POPCNT algorithm for x64 & AArch64
+- Fix -Wstrict-prototypes warnings
+
+-------------------------------------------------------------------
 Wed Dec 07 10:40:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-11.0
