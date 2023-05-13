@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Fri May 12 23:23:07 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (German) (bsc#1149754)
+- 4.5.103
+
+--------------------------------------------------------------------
+Fri May 12 11:38:36 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#929
+- check for aliases when looking up blk devices
+- check for aliases when looking up udev info
+- remove now unneeded mockups
+- speed up probing
+- 4.5.102
+
+--------------------------------------------------------------------
 Tue May 2 09:53:49 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#928
