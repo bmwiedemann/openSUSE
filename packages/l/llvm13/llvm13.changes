@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 21:37:34 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't use gold for linking anymore: on s390x we use ld.bfd with
+  LLVMgold.so, on ppc64 we disable ThinLTO for now. (boo#1210688)
+- Using ld.bfd on s390x exposed an issue with the existing
+  llvm_build_tablegen_component_as_shared_library.patch: linking
+  llvm-tblgen with libLLVM.so means we also have to link libraries
+  used for that (like LLVMTableGenGlobalISel) with libLLVM.so.
+- Rewrite summary and description for llvm-gold to point out that
+  it can also be used with ld.bfd, recommend with binutils.
+
+-------------------------------------------------------------------
 Fri Mar 24 21:31:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add llvm-gcc13-issue55711.patch

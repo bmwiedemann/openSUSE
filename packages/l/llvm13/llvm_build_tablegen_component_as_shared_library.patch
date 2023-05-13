@@ -55,3 +55,16 @@ Index: llvm-8.0.0rc3.src/lib/TableGen/CMakeLists.txt
    ADDITIONAL_HEADER_DIRS
    ${LLVM_MAIN_INCLUDE_DIR}/llvm/TableGen
  
+Index: llvm-13.0.1.src/utils/TableGen/GlobalISel/CMakeLists.txt
+===================================================================
+--- llvm-13.0.1.src.orig/utils/TableGen/GlobalISel/CMakeLists.txt
++++ llvm-13.0.1.src/utils/TableGen/GlobalISel/CMakeLists.txt
+@@ -3,7 +3,7 @@ set(LLVM_LINK_COMPONENTS
+   TableGen
+   )
+ 
+-add_llvm_library(LLVMTableGenGlobalISel STATIC DISABLE_LLVM_LINK_LLVM_DYLIB
++add_llvm_library(LLVMTableGenGlobalISel STATIC
+                  CodeExpander.cpp
+                  GIMatchDag.cpp
+                  GIMatchDagEdge.cpp

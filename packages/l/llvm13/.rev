@@ -180,4 +180,20 @@
 </comment>
     <requestid>1074338</requestid>
   </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>fcd0029b84753564d72f8891ef45a1ad</srcmd5>
+    <version>13.0.1</version>
+    <time>1683991057</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use gold for linking anymore: on s390x we use ld.bfd with
+  LLVMgold.so, on ppc64 we disable ThinLTO for now. (boo#1210688)
+- Using ld.bfd on s390x exposed an issue with the existing
+  llvm_build_tablegen_component_as_shared_library.patch: linking
+  llvm-tblgen with libLLVM.so means we also have to link libraries
+  used for that (like LLVMTableGenGlobalISel) with libLLVM.so.
+- Rewrite summary and description for llvm-gold to point out that
+  it can also be used with ld.bfd, recommend with binutils.
+</comment>
+    <requestid>1086803</requestid>
+  </revision>
 </revisionlist>
