@@ -35,6 +35,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  cmake
+BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(gtest)
 
@@ -80,6 +81,7 @@ export CXXFLAGS="$CFLAGS"
 %if 0%{?suse_version} < 1550
 export CXX=g++-10
 %endif
+%limit_build -m 900
 
 %cmake \
 %ifarch %arm

@@ -79,4 +79,12 @@
     <comment>- Add no-forced-inline.diff [boo#1211093]</comment>
     <requestid>1086050</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b975f28bcc6f2e48230d01a33cb03caf</srcmd5>
+    <version>1.0.4</version>
+    <time>1684074690</time>
+    <user>dimstar_suse</user>
+    <comment>- Add memory-constraints to build</comment>
+    <requestid>1086811</requestid>
+  </revision>
 </revisionlist>

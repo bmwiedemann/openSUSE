@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 12 19:37:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add memory-constraints to build
+
+-------------------------------------------------------------------
 Wed May 10 10:35:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add no-forced-inline.diff [boo#1211093]
