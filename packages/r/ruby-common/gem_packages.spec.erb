@@ -61,7 +61,21 @@
     custom_pkgs
   end
 
-  rb_pkg_abi         = "#{RUBY_ENGINE}:#{RUBY_ENGINE_VERSION}:#{spec.name}"
+  def self.fix_up_rubygem_requires_with_rb_api(rb_api, preamble_text)
+    STDERR.puts(preamble_text)
+    preamble_text.lines.map do |line|
+      if mo = /^(?<pre_text>\s*\S+\s*:\s+rubygem\()(?<pkg_info>[^\)]+)(?<post_text>\).*)?$/.match(line)
+        if not(mo[:pkg_info] =~ /^ruby:\d\.\d\.\d/)
+          line = "#{mo[:pre_text]}#{rb_api}:#{mo[:pkg_info]}#{mo[:post_text]}"
+        end
+      end
+      line
+    end.join("\n")
+  end
+
+  rb_api             = "#{RUBY_ENGINE}:#{RbConfig::CONFIG['ruby_version']}"
+
+  rb_pkg_abi         = "#{rb_api}:#{spec.name}"
 
   rb_suffix          = RbConfig::CONFIG['ruby_install_name'].gsub(/^ruby/, '')
   rb_pkgname         = RbConfig::CONFIG['ruby_install_name'].gsub(/^ruby\./, '')
@@ -104,7 +118,7 @@
 %package -n <%= pkg_basename %><%= config[:version_suffix] %>
 # MANUAL
 <% if config[:main] && config[:main][:preamble] -%>
-<%= config[:main][:preamble] %>
+<%= fix_up_rubygem_requires_with_rb_api(rb_api, config[:main][:preamble]) %>
 <% end -%>
 # /MANUAL
 Summary:        <%= config[:summary] or spec.summary %>

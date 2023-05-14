@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 12 21:28:54 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump the version so we can require the new version to make it
+  easier to depend on the new functionality
+
+-------------------------------------------------------------------
+Fri May 12 14:21:14 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Support runtime dependencies for the generated subpackages:
+  syntax:
+
+  Requires: rubygem(gemname)
+  Recommends: rubygem(gemname:x) >= x.y
+
+  This will be transformed into
+
+  Requires: rubygem(ruby:<rubyabi>:gemname)
+  Recommends: rubygem(ruby:<rubyabi>:gemname:x) >= x.y
+
+  That way we ensure that every package only requires rubygems for
+  the current ruby version.
+
+-------------------------------------------------------------------
 Sun May  7 00:35:06 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - cleanup irp code

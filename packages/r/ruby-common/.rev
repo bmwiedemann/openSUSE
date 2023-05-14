@@ -252,4 +252,23 @@ For staging:n</comment>
     Gemfile.</comment>
     <requestid>1085263</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b51c580bf55ac6421bbb8ad070097a7f</srcmd5>
+    <version>3.2.1</version>
+    <time>1684074692</time>
+    <user>dimstar_suse</user>
+    <comment>- bump the version so we can require the new version to make it
+  easier to depend on the new functionality
+
+- Support runtime dependencies for the generated subpackages:
+  syntax:
+  Requires: rubygem(gemname)
+  Recommends: rubygem(gemname:x) &gt;= x.y
+  This will be transformed into
+  Requires: rubygem(ruby:&lt;rubyabi&gt;:gemname)
+  Recommends: rubygem(ruby:&lt;rubyabi&gt;:gemname:x) &gt;= x.y
+  That way we ensure that every package only requires rubygems for
+  the current ruby version.</comment>
+    <requestid>1086831</requestid>
+  </revision>
 </revisionlist>

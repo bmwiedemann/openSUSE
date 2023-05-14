@@ -22,7 +22,7 @@
 %endif
 
 Name:           ruby-common
-Version:        3.2
+Version:        3.2.1
 Release:        0
 # ruby-macros and ruby-common version
 %define rpm_macros_version 5
