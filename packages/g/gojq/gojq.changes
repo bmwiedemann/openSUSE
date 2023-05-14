@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 13 20:12:11 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Restrict minumum golang version to the one listed in go.mod
+
+-------------------------------------------------------------------
+Sat May 13 20:00:43 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Disable -buildmode=pie on ppc64, and add some verbosity flags.
+
+-------------------------------------------------------------------
 Fri May 12 03:53:38 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Initial package of 0.12.12 for OpenSUSE.

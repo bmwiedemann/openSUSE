@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://github.com/itchyny/gojq
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  go >= 1.18
 BuildRequires:  golang-packaging
 
 %description
@@ -33,7 +34,12 @@ Pure Go implementation of jq.
 %autosetup -p1 -a1
 
 %build
-go build -mod=vendor -buildmode=pie ./cmd/gojq
+%ifarch ppc64
+BUILDMODE=''
+%else
+BUILDMODE='-buildmode=pie'
+%endif
+go build -a -v -x -mod=vendor $BUILDMODE ./cmd/gojq
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
