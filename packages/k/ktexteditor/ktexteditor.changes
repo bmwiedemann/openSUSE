@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Fix Save Copy As.. not working anymore (kde#468672)
+  * Fix indenting removes characters if line has tabs at start (kde#468495)
+  * Printer: AlignVCenter line numbers
+  * Dont ignore folding when printing code (kde#417138)
+  * Use m_fontAscent instead of fm.ascent()
+  * Draw caret ourselves (kde#172630)
+  * Fix selection highlight for RTL text with custom line height (kde#464087)
+  * Include range.js when initializing the engine (kde#456701)
+  * Fix RTL text with format incorrectly shaped (kde#438755)
+  * xml-indent: Optimize getCode
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
