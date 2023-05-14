@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 13 19:20:49 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.105
+  * Avoid crash if attempting to access graphical viewer modes
+    when running in curses (text only).
+
+-------------------------------------------------------------------
 Fri May 12 06:57:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.104
