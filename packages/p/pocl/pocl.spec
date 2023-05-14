@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,13 +30,17 @@ URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
 Patch0:         link_against_libclang-cpp_so.patch
+# PATCH-FIX-UPSTREAM - pocl-llvm16.patch - enables support for LLVM 16
+# https://github.com/pocl/pocl/commit/20d1bfa9bfd301964f7b2fc6d7f4589dd04e1b5c
+# https://github.com/pocl/pocl/commit/bf50f0052e4248cd1acfaaa8da95c5e4ca52f815
+Patch1:         pocl-llvm16.patch
+BuildRequires:  (clang-devel >= 6.0.0 with clang-devel < 17)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
+BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-BuildRequires:  (clang-devel >= 6.0.0 with clang-devel < 16)
-BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream
 # s390(x) is also not supported, so use ExclusiveArch
@@ -84,6 +88,7 @@ This subpackage provides the development files needed for pocl.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %define __builder ninja

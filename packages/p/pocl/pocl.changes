@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 13 05:43:35 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add pocl-llvm16.patch, enables support for LLVM 16
+- Use BuildRequires ocl-icd-devel instead pkgconfig(OpenCL), fix 
+  have choice for pkgconfig(OpenCL) for SLE
+
+-------------------------------------------------------------------
 Sat Dec 24 12:27:06 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Use generic-rv64 cpu on riscv64
