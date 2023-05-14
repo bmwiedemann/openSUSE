@@ -902,4 +902,12 @@
     <comment>KDE Frameworks 5.105.0 (forwarded request 1077737 from krop)</comment>
     <requestid>1078064</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>40c7ba2fc4e90b9dd2c745e170c962bf</srcmd5>
+    <version>5.106.0</version>
+    <time>1684074644</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.106.0 (forwarded request 1086550 from krop)</comment>
+    <requestid>1086934</requestid>
+  </revision>
 </revisionlist>
