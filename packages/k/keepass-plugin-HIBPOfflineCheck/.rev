@@ -53,4 +53,13 @@
   * Fixed some incorrect results for online mode.</comment>
     <requestid>1045816</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5904e1995055d9ef1021dbadf71173c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1684074727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.10
+  * Minor fixes and updated documentation.</comment>
+    <requestid>1087098</requestid>
+  </revision>
 </revisionlist>
