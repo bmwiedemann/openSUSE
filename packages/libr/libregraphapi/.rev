@@ -7,4 +7,12 @@
     <comment>Add libregraphapi to openSUSE:Factory, needed by owncloud-client</comment>
     <requestid>1067728</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d0d0a2a60f3a3bcd85ccab174f363f2</srcmd5>
+    <version>1.0.4</version>
+    <time>1684074722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087088</requestid>
+  </revision>
 </revisionlist>

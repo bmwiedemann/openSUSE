@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 12 07:56:33 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 1.0.4
+  Removed patch 0001-cmake_fixes.patch - changes went upstream 
+
+-------------------------------------------------------------------
 Thu Feb 23 09:58:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Rename package

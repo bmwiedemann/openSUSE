@@ -18,18 +18,17 @@
 
 %define sover 1
 Name:           libregraphapi
-Version:        1.0.1
+Version:        1.0.4
 Release:        0
 Summary:        A client library for the LibreGraphAPI library
 License:        Apache-2.0
 URL:            https://github.com/owncloud/libre-graph-api-cpp-qt-client
 Source:         https://github.com/owncloud/libre-graph-api-cpp-qt-client/archive/v%{version}.tar.gz#/libre-graph-api-cpp-qt-client-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-cmake_fixes.patch
 BuildRequires:  cmake
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Libregraphapi is a MS Graph API influenced API for cloud collaboration.
