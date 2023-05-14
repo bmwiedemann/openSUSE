@@ -7,4 +7,28 @@
     <comment>replacement of unmaintained pytest-ordering</comment>
     <requestid>881814</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e6f0a2f33e76a32d878e85f159bd5b02</srcmd5>
+    <version>1.1.0</version>
+    <time>1684074718</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Adds support for executing tests more than once using order
+    marks.
+  * added support for multiple test order markers
+  * removed official support for Python 3.6
+  * added pytest 7.x to CI tests
+  * added Python 3.11 to and removed Python 3.6 from CI tests
+  * moved documentation to Read the Docs
+  * removed support for Python 2.7 and 3.5
+  * removed official support for pytest &lt; 5.0.0 (older versions
+    may still work, but they are not tested)
+  * re-added Python 3.10 to CI tests (for pytest &gt;= 6.2.4)
+  * added type hints
+  * Adds support for multiple relative markers for the same test.
+  * added support for more than one relative marker for the same
+    test
+  * added Python 3.10 to CI tests</comment>
+    <requestid>1087080</requestid>
+  </revision>
 </revisionlist>

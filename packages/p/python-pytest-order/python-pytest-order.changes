@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 14 09:42:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Adds support for executing tests more than once using order
+    marks.
+  * added support for multiple test order markers
+  * removed official support for Python 3.6
+  * added pytest 7.x to CI tests
+  * added Python 3.11 to and removed Python 3.6 from CI tests
+  * moved documentation to Read the Docs
+  * removed support for Python 2.7 and 3.5
+  * removed official support for pytest < 5.0.0 (older versions
+    may still work, but they are not tested)
+  * re-added Python 3.10 to CI tests (for pytest >= 6.2.4)
+  * added type hints
+  * Adds support for multiple relative markers for the same test.
+  * added support for more than one relative marker for the same
+    test
+  * added Python 3.10 to CI tests
+
+-------------------------------------------------------------------
 Sat Mar 27 15:13:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 0.10.0
