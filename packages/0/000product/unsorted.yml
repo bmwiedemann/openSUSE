@@ -19202,7 +19202,6 @@ unsorted:
   - octave-forge-tsa 
   - octave-forge-video 
   - octave-forge-vrml 
-  - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
   - oddjob 
@@ -34516,6 +34515,7 @@ unsorted:
   - scotch_6_1_0-gnu-hpc 
   - scotch_6_1_0-gnu-hpc-devel 
   - scotch_6_1_0-gnu-hpc-devel-static 
+  - scream 
   - screen-message 
   - screencast 
   - screencast-lang 
