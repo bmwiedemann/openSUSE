@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-websupport%{psuffix}
 Version:        1.2.4
 Release:        0
