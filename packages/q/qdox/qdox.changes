@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 12 20:33:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.3:
+  * Changes:
+    + Update documentation #41
+    + interface should be ignored as modifier #115
+    + add byaccj 1.15 binaries for Mac OS on aarch64 (#109)
+    + Correctly resolve types with SourceFolderLibrary (#105)
+    + #99 Seems QDox 2.0.1 has issue parsing parameters names named
+      "recordList" and "record"
+
+-------------------------------------------------------------------
 Sat Mar 12 06:06:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add Automatic-Module-Name to the manifest

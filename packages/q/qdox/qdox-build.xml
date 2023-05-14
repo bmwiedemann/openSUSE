@@ -9,7 +9,7 @@
   <property file="build.properties"/>
 
   <property name="project.artifactId" value="qdox"/>
-  <property name="project.version" value="2.0.1"/>
+  <property name="project.version" value="2.0.3"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
