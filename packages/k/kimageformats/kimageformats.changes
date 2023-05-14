@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Fix wrong alpha conversion (kde#468288)
+
+-------------------------------------------------------------------
 Wed Apr 12 10:34:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add support for RAW image formats

@@ -974,4 +974,12 @@
     <comment>- Add support for RAW image formats</comment>
     <requestid>1078624</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>5b13c2d18739d18edb7102e37361a96d</srcmd5>
+    <version>5.106.0</version>
+    <time>1684074643</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.106.0 (forwarded request 1086550 from krop)</comment>
+    <requestid>1086933</requestid>
+  </revision>
 </revisionlist>
