@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           attica-qt5
-Version:        5.105.0
+Version:        5.106.0
 Release:        0
 Summary:        Open Collaboration Service client library
 License:        LGPL-2.1-or-later
