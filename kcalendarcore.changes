@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * resolve two warnings
+  * Deprecate Calendar relations API
+  * Deprecate the notebook support
+  * Deprecated the non-functional and unused save/reload API
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
