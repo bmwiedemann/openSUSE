@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  8 19:40:38 UTC 2023 - Software System <opensuse@wolke7.net>
+
+- add BuildRequires: ruby-common >= 3.2 
+  This version is required to rebuild the package. The older
+  ruby-common is no longer sufficient.
+
+-------------------------------------------------------------------
 Fri Feb  3 16:04:04 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - replace the old options to disable docs with the modern -N

@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gem2rpm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ BuildRequires:  ruby-macros >= 5
 %else
 BuildRequires:  %{rubygem gem2rpm}
 %endif
+BuildRequires:  ruby-common >= 3.2
 BuildRequires:  update-alternatives
 URL:            https://github.com/lutter/gem2rpm/
 Source:         http://rubygems.org/gems/%{mod_full_name}.gem
