@@ -37,11 +37,8 @@
 
 # oct_version must be x.y.z
 %define oct_version %{version}
-%if 0%{?suse_version} >= 1550
-%bcond_without octave
-%else
+# Octave is too recent for oS >= 1699, and swig is too old for Leap 15.x
 %bcond_with    octave
-%endif
 
 %if 0%{?fedora_version}
 %define _defaultdocdir %{_docdir}

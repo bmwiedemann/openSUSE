@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  9 13:31:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Also disable octave bindings for openSUSE >= 1699 (TW), as
+  octave 8.x is not yet supported by mathgl.
+
+-------------------------------------------------------------------
 Tue Mar  7 23:11:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Disable octave bindings on Leap/SLE 15 due to missing SWIG 4.x.
