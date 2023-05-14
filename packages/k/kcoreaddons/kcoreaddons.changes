@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * exportUrlsToPortal: let it work in a non-KDE session (kde#458643)
+  * exportUrlsToPortal: don't export when there are non-sendable non-local files
+  * KDirWatch: Don't append fileName to fileName in Delete event (kde#467095)
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
