@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-semver
-Version:        3.0.0~dev.4
+Version:        3.0.0
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause

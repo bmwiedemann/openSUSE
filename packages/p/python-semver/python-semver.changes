@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat May  6 15:59:50 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 3.0.0:
+ - Bugfixes
+  - :gh:`291`: Disallow negative numbers in VersionInfo arguments
+    for ``major``, ``minor``, and ``patch``.
+  * :gh:`310`: Rework API documentation.
+    Follow a more "semi-manual" attempt and add auto directives
+    into :file:`docs/api.rst`.
+  * :gh:`344`: Allow empty string, a string with a prefix, or ``None``
+    as token in
+    :meth:`~semver.version.Version.bump_build` and
+    :meth:`~semver.version.Version.bump_prerelease`.
+  * :pr:`384`: General cleanup, reformat files:
+    * Reformat source code with black again as some config options
+      did accidentely exclude the semver source code.
+      Mostly remove some includes/excludes in the black config.
+    * Integrate concurrency in GH Action
+    * Ignore Python files on project dirs in .gitignore
+    * Remove unused patterns in MANIFEST.in
+    * Use ``extend-exclude`` for flake in :file:`setup.cfg`` and adapt list.
+    * Use ``skip_install=True`` in :file:`tox.ini` for black
+  * :pr:`393`: Fix command :command:`python -m semver` to avoid the error "invalid choice"
+  * :pr:`396`: Calling :meth:`~semver.version.Version.parse` on a derived class will show correct type of derived class.
+ - Deprecations
+  * :gh:`169`: Deprecate CLI functions not imported from ``semver.cli``.
+  * :gh:`234`: In :file:`setup.py` simplified file and remove
+    ``Tox`` and ``Clean`` classes
+  * :gh:`284`: Deprecate the use of :meth:`~Version.isvalid`.
+    Rename :meth:`~semver.version.Version.isvalid`
+    to :meth:`~semver.version.Version.is_valid`
+    for consistency reasons with :meth:`~semver.version.Version.is_compatible`.
+  * :pr:`402`: Keep :func:`semver.compare <semver._deprecated.compare>`.
+     Although it breaks consistency with module level functions, it seems it's
+     a much needed/used function. It's still unclear if we should deprecate
+     this function or not (that's why we use :py:exc:`PendingDeprecationWarning`).
+     As we don't have a uniform initializer yet, this function stays in the
+     :file:`_deprecated.py` file for the time being until we find a better solution. See :gh:`258` for details.
+ - Features
+  * Remove :file:`semver.py`
+  * Create :file:`src/semver/__init__.py`
+  * Create :file:`src/semver/cli.py` for all CLI methods
+  * Create :file:`src/semver/_deprecated.py` for the ``deprecated`` decorator and other deprecated functions
+  * Create :file:`src/semver/__main__.py` to allow calling the CLI using :command:`python -m semver`
+  * Create :file:`src/semver/_types.py` to hold type aliases
+  * Create :file:`src/semver/version.py` to hold the :class:`Version` class (old name :class:`VersionInfo`) and its utility functions
+  * Create :file:`src/semver/__about__.py` for all the metadata variables
+  * :gh:`213`: Add typing information
+  * :gh:`284`: Implement :meth:`~semver.version.Version.is_compatible` to make "is self compatible with X".
+  * :gh:`305`: Rename :class:`~semver.version.VersionInfo` to :class:`~semver.version.Version` but keep an alias for compatibility
+
+-------------------------------------------------------------------
 Sat Mar 11 09:57:18 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - add setup-remove-asterisk.patch to fix build error
