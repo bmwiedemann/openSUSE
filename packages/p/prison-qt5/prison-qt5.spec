@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           prison-qt5
-Version:        5.105.0
+Version:        5.106.0
 Release:        0
 Summary:        Barcode abstraction layer library
 License:        MIT
