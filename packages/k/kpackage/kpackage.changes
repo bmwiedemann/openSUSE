@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Deprecate KPackage::Package::name, add default for parameters
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
