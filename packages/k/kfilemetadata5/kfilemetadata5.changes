@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Test HEIF in Exiv2Extractor
+  * Test JXL in Exiv2Extractor, extend JPEG coverage
+  * Move static private helper out of Exiv2ExtractorTest class
+  * Clean up Exiv2/C++14 warning message
+  * Remove usage of deprecated MP4::ItemListMap in taglib extractor
+  * Disable external extractor/writer test on Windows
+  * Modernize and extend CMake check for Python3
+  * Extend dignostics for taglib autotests
+  * Make fb2 extractor compilation dependent on KF5Archive
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0

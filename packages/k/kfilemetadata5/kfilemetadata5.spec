@@ -24,7 +24,7 @@
 %bcond_without ffmpeg
 %bcond_without released
 Name:           kfilemetadata5
-Version:        5.105.0
+Version:        5.106.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
