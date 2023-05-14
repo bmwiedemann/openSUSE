@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * ApplicationLauncherJob: find mimetype before showing open with dialog
+  * KPropertiesDialog: Don't quote the path unnecessarily (kde#467369)
+  * KEncodingFileDialog: Sort the list of encodings by name
+  * WidgetsAskUserActionHandler: make sure all dialogs are created in the main thread (kde#458709)
+  * WidgetsAskUserActionHandler: create message dialog in the main thread (kde#465454)
+  * file: make sure to cancel reading if the worker was aborted (kde#358231)
+  * autotests: Fix Qt 6.5 compatibility
+  * KFileItemActions: don't add service submenus that don't have active actions
+  * Improve grammar, wording, add a test check
+  * KCoreDirLister: AutoUpdate wasn't incremented when a new lister opened an already listed dir
+  * SlaveInterface: Set button icon for "Continue Loading"
+  * Set ExitType when running applications as transient systemd services
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
