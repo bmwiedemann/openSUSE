@@ -16,17 +16,18 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %bcond_without test
 %define skip_python2 1
-%define typed_ast_version 1.5.8.3
-%define types_psutil_version 5.9.5.6
-%define types_setuptools_version 65.6.0.3
+%define typed_ast_version 1.5.8.6
+%define types_psutil_version 5.9.5.12
+%define types_setuptools_version 67.7.0.1
 Name:           mypy
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
-URL:            http://www.mypy-lang.org/
+URL:            https://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
@@ -102,6 +103,9 @@ mv types-typed-ast-%{typed_ast_version}/typed_ast-stubs* mystubs/
 mv types-setuptools-%{types_setuptools_version}/setuptools-stubs* mystubs/
 mv types-psutil-%{types_psutil_version}/psutil-stubs* mystubs/
 
+# "E: wrong-script-end-of-line-encoding" and "E: spurious-executable-perm", file is not needed anyways
+rm docs/make.bat
+
 %build
 %python_build
 # building docs fails due to missing theme 'furo'
@@ -117,6 +121,8 @@ mv types-psutil-%{types_psutil_version}/psutil-stubs* mystubs/
 %python_clone -a  %{buildroot}%{_bindir}/mypyc
 %python_clone -a  %{buildroot}%{_bindir}/stubgen
 %python_clone -a  %{buildroot}%{_bindir}/stubtest
+# solve "W: python-doc-in-package" in 3.9, 3.10 and 3.11, but not in 3.8 (thus -f to ignore the error)
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/mypyc/doc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -138,6 +144,8 @@ fi
 # the fake test_module is not in the modulepath without pytest-xdist
 # or with pytest-xdist >= 2.3 -- https://github.com/python/mypy/issues/11019
 donttest+=" or teststubtest"
+# gh#python/mypy#15221
+donttest+=" or testMathOps or testFloatOps"
 %pytest -n auto -k "not (testallexcept ${donttest} ${$python_donttest})"
 %endif
 
