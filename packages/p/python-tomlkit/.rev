@@ -150,4 +150,19 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1083125</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f4b4a374517a9b887025b45fa271e967</srcmd5>
+    <version>0.11.8</version>
+    <time>1684074717</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.8:
+  * Remove the extra indentations added when parsing nested sub-
+    tables.
+  * Ignore the CRLF immediately following a multiple basic string
+    opening.
+  * Stringifying subtables and nested tables in arrays of tables.
+  * Messed table structure when building a table with dotted
+    keys.</comment>
+    <requestid>1087083</requestid>
+  </revision>
 </revisionlist>

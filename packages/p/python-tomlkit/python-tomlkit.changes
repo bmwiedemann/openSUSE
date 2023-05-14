@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 14 09:47:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.8:
+  * Remove the extra indentations added when parsing nested sub-
+    tables.
+  * Ignore the CRLF immediately following a multiple basic string
+    opening.
+  * Stringifying subtables and nested tables in arrays of tables.
+  * Messed table structure when building a table with dotted
+    keys.
+
+-------------------------------------------------------------------
 Tue Apr 25 15:22:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
