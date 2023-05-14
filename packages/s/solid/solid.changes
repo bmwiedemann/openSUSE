@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Implement solid-hardware monitor mode for property changes
+  * Connect UPowerDevice propertyChanged signal to frontend
+  * Avoid cache bypass of `UPowerDevice::allProperties`
+  * Use values from PropertiesChanged instead of invalidating whole cache
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
