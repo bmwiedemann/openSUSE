@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           bluez-qt
-Version:        5.105.0
+Version:        5.106.0
 Release:        0
 Summary:        Async Bluez wrapper library
 License:        LGPL-2.1-or-later
