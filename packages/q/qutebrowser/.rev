@@ -1884,4 +1884,14 @@ Fixed
   * Minor documentation fixes</comment>
     <requestid>1066958</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>fa0b1511cd9652c27d16be995dfcbd32</srcmd5>
+    <version>2.5.4</version>
+    <time>1684074720</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.4:
+  * Support SQLite with DQS (double quoted string) compile time
+    option turned off.</comment>
+    <requestid>1087076</requestid>
+  </revision>
 </revisionlist>
