@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Fix spacing issue in OverlaySheet
+  * GlobalToolBar: Fix enabled state of the BackButton in RTL mode
+  * CardsGridView: improve columns property codeblock
+  * SelectableLabel: Prevent it from participating in Tab chain
+  * Tutorials: docs/use with docs/getting-started
+  * Update Mainpage.dox KF5
+  * Fix disabled text color in Material style with dark color scheme
+  * ActionButton: Fix reference to a tooltip attached property
+  * BreadcrumbControl: Fix wrong heading offset in RTL layout direction
+  * Documentation refresh/fixups
+  * Port actionsMenu manual test away from manual header management
+  * ContextDrawer: Remove top padding as well
+  * BreadcrumbControl: Fix errors from wrong indexing
+  * Fix accessibility of back and forward button
+  * toolbarlayout: addAction(): return early if action is empty
+  * Don't use id in background item
+  * private/ActionsMenu: Remove empty unused component
+  * fix dragging from toolbar (kde#467857)
+  * SwipeListItem: Fix for QT_QUICK_CONTROLS_MOBILE (kde#467884)
+  * OverlayDrawer: Fix z value being too high for OverlaySheets (kde#466219)
+  * Added keyboard search icon to SearchField
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
