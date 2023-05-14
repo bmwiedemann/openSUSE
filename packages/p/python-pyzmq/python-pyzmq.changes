@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 12 11:09:45 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 25.0.2
+  * Bundled subset of tornado's IOLoop (deprecated since pyzmq 17) is removed,
+    so ZMQStream cannot be used without an actual install of tornado.
+  * Remove support for tornado 4.
+  * Added `socket_class` argument to zmq.Context.socket
+  * Support shadowing sockets with socket objects.
+  * In zmq.auth and zmq.eventloop.zmqstream callbacks may now be async.
+  * License files have been renamed to more standard LICENSE.BSD, LICENSE.LESSER 
+    to appease some license auto-detect tools.
+
+-------------------------------------------------------------------
 Wed Feb  1 13:12:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip numy tests for the testsuite on SLE15

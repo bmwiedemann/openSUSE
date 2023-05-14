@@ -25,7 +25,7 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        24.0.1
+Version:        25.0.2
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
@@ -51,6 +51,7 @@ Suggests:       python-paramiko
 BuildRequires:  %{python_module numpy}
 %endif
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -130,7 +131,7 @@ popd
 %endif
 
 %files %{python_files}
-%license COPYING.BSD COPYING.LESSER
+%license LICENSE.BSD LICENSE.LESSER
 %doc AUTHORS.md README.md examples
 %{python_sitearch}/zmq
 %{python_sitearch}/pyzmq-%{version}-py*.egg-info

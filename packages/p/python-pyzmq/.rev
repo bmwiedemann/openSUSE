@@ -471,4 +471,22 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
     <comment>- skip numy tests for the testsuite on SLE15</comment>
     <requestid>1062451</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>64c5d59e3746ec3be371e3454bcb061e</srcmd5>
+    <version>25.0.2</version>
+    <time>1684074698</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1086739 from mcalabkova
+
+- Update to version 25.0.2
+    * Bundled subset of tornado's IOLoop (deprecated since pyzmq 17) is removed,
+      so ZMQStream cannot be used without an actual install of tornado.
+    * Remove support for tornado 4.
+    * Added `socket_class` argument to zmq.Context.socket
+    * Support shadowing sockets with socket objects.
+    * In zmq.auth and zmq.eventloop.zmqstream callbacks may now be async.
+    * License files have been renamed to more standard LICENSE.BSD, LICENSE.LESSER 
+      to appease some license auto-detect tools.</comment>
+    <requestid>1086978</requestid>
+  </revision>
 </revisionlist>
