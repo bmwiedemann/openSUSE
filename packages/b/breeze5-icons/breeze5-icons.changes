@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May  6 14:01:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Make monochrome MS-DOS executable icons respect the color scheme
+  * Increase moon size for redshift-status-on icon
+  * Add mimetype icons for alembic files
+  * Add new Partition Manager app icon
+  * Make media-flash icon actually look like a typical flash memory card (kde#468006)
+  * Add new icons for the pixelate and blur tools in Spectacle
+
+-------------------------------------------------------------------
 Sat Apr  1 17:00:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.105.0
