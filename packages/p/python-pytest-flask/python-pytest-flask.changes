@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 14 09:45:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Remove deprecated ``:meth:live_server.url``
+  * fixture ``request_ctx is now deprecated``
+    and will be removed in the future
+  * ``JSONReponse.json`` removed in favour of
+    ``Werkzeug.wrappers.Response.json``
+  * Speedup live server start time. Use `socket` instead of
+    server pulling to  check server availability and add new
+    ``--live-server-wait`` option to set the live server wait
+    timeout.
+
+-------------------------------------------------------------------
 Mon Mar 16 08:31:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.0.0:

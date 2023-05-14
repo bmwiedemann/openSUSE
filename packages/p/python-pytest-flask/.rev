@@ -27,4 +27,21 @@
   * Python 2.7 and 3.4 are no longer supported.</comment>
     <requestid>785476</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12b1de15bfbc6ee2879b80a88089e0a2</srcmd5>
+    <version>1.2.0</version>
+    <time>1684074719</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Remove deprecated ``:meth:live_server.url``
+  * fixture ``request_ctx is now deprecated``
+    and will be removed in the future
+  * ``JSONReponse.json`` removed in favour of
+    ``Werkzeug.wrappers.Response.json``
+  * Speedup live server start time. Use `socket` instead of
+    server pulling to  check server availability and add new
+    ``--live-server-wait`` option to set the live server wait
+    timeout.</comment>
+    <requestid>1087082</requestid>
+  </revision>
 </revisionlist>
