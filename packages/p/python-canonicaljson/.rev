@@ -130,4 +130,12 @@
     <comment></comment>
     <requestid>1068353</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b2880f5c84f85471cc8024571da7288a</srcmd5>
+    <version>1.6.5</version>
+    <time>1684162456</time>
+    <user>dimstar_suse</user>
+    <comment>- remove redundant _service file</comment>
+    <requestid>1087239</requestid>
+  </revision>
 </revisionlist>
