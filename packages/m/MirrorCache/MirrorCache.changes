@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 08 13:47:15 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.059:
+  * Consider links when redirecting to the root (#374)
+  * Add backend for mirror-counries relation (#375)
+  * Use optinally default conf file in subtree service (#379)
+  * rework salt test to use formula (#378)
+  * ci: Switch systemd tests to github actions (#379)
+  * Switch to podman from docker in systemd tests (#379)
+
+-------------------------------------------------------------------
 Thu Apr 13 10:36:14 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.058:
