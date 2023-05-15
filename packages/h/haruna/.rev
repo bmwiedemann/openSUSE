@@ -173,4 +173,12 @@
   * playlistmodel: getSiblingItems: use percent-encoded path with QUrl</comment>
     <requestid>1061906</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>498a40dcb73ab19b4d362fb9da88f190</srcmd5>
+    <version>0.11.0</version>
+    <time>1684162476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087174</requestid>
+  </revision>
 </revisionlist>

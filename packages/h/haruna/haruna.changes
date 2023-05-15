@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon May 15 06:23:38 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.11.0
+  * PlayList: close context menu when playlist hides
+  * flatpak: update manifest
+  * mpvitem: initialize m_playlistModel before
+    m_playlistProxyModel
+  * hide mpv logging setting
+  * mpvabstractitem: delete mpv controller when thread finishes
+    and destroy mpv last
+  * mpvitem: if property is not in cache get it and cache it
+  * GIT_SILENT Sync po/docbooks with svn
+  * PlayListItem(Compact/WithThumbnail): re add isLocal property
+  * FileMenu: close menu after clicking an item in the recent
+    files submenu
+  * VideoSettings: fix screenshot format not working and add
+    support for JPEG XL
+  * PlaybackSettings: reorganize settings related to resuming
+    playback
+  * DebugSettings: set text only if files exists
+  * application: add methods to check if a path or url exist
+  * global: don't check if file exists, they don't on first run
+  * mpvabstractitem: add expandText method
+  * MpvVideo: activate the osd before a potential early return
+  * footer: fix not showing in fullscreen and add a property to
+    hold the mpv item
+  * mpvabstractitem: stop listening to mpv events and call
+    m_workerThread->wait()
+  * mpvitem: remove parent from models
+  * mpvitem: set m_formattedDuration when duration changes
+  * use QStringLiteral everywhere
+  * mpvcontroller: use QString::fromStdString
+  * mpvcontroller: include clocale
+  * playlistmodel: openM3uFile(): stop search for last played
+    file after 1st match
+  * CustomCommandsSettings: improve looks and functionality of
+    disabled commands
+  * VolumeSlider: change mpv volume only on when clicking
+  * mpvitem: make connection queued and get more properties from
+    the cache
+  * application: move window geometry saving to the worker class
+  * Osd: check if text is null or undefined
+  * PlayListItem, PlayListItemCompact: remove unnecessary
+    properties
+  * PlayListItemWithThumbnail: remove unnecessary properties and
+    change fill mode
+  * Actions: remove unused property
+  * MpvVideo: remove unused properties
+  * MpvVideo: loading indicator: make color solid and lower
+    opacity
+  * mpv: move position saving timer to c++
+  * Actions: get volume from cache
+  * mpv: use a single signal for all properties
+  * mpvabstractitem: use queued connections to talk to the
+    controller
+  * mpvitem: add new properties
+  * PlayList: increase animation duration
+  * mpvabstractitem: m_workerThread don't call wait in destructor
+  * mpris2: remove a connection
+  * mpvitem: refactor position, duration and remaining properties
+  * mpv: setup connections between MpvController and MpvItem
+  * mpv: split MpvController and MpvAbstractItem in separate
+    files and clean up code
+  * refactor mpv
+  * KAboutData: don't set data in constructor
+  * SVN_SILENT made messages (.desktop file) - always resolve
+    ours
+  * playlistmodel: openFile: set url scheme to "file" when
+    dealing with local files
+  * MpvVideo: onReady: use proxy model to get the items
+  * MpvVideo: onReady: convert url to string in if statement
+  * MpvVideo: use proxy model to get the next item to play on EOF
+  * mpvitem: don't emit `..Changed` signals when setting certain
+    properties
+  * Fix minor typo
+  * actionsmodel: make text capitalization consistent
+  * playlistmodel: fix not being able to open .rm files
+  * mpris2: add support for `Raise` method
+  * mpvitem: make none track text translatable
+  * Settings: ensure text field settings are properly saved
+  * SubtitlesSettings: fix accessing allowOnBlackBorders
+  * mpv: only resume playback after unminimizing if playback was
+    active before
+  * main.qml: move some components
+  * menubar: remove id and background properties
+  * disable global menu on Windows
+  * use QUrl::fromUserInput to construct QUrl
+  * playlistmodel: fix file opening
+  * Revert "change Application::mimeType to take a QString"
+  * Revert "add File class for consistent local path handling"
+  * add File class for consistent local path handling
+  * change Application::mimeType to take a QString
+  * Revert "playlistmodel: PlayListModel::openFile: pass percent
+    encoded path to QUrl"
+  * playlistmodel: PlayListModel::openFile: pass percent encoded
+    path to QUrl
+  * DebugSettings: use Kirigami.ActionTextField
+  * InputPopup: mention yt-dlp in message for missing yt-dlp or
+    youtube-dl support
+  * DebugSettings: disable buttons and explaing what it means
+    when fields are empty
+  * DebugSettings: change icon of buttons opening a file
+  * rename InformationSettings to DebugSettings
+  * add informationsettings.kcfg and informationsettings.kcfgc
+  * Application::configFolderPath get the config folder path
+  * InformationSettings: add setting to enable mpv logging
+  * Settings: add Information page
+  * application: refactor methods returning config folder/files
+  * global: return empty QString if config folder/files don't
+    exist
+  * don't use width, height, Layout and anchors properties
+    inside the component
+  * main.qml: removve unused SystemPalette
+  * PlayList: set width, height, x and y properties outside the
+    component
+  * HProgressBar: resize chapters popup width according to the
+    longest chapter
+  * Application::mimeType: set url scheme to `file` if empty
+  * flatpak: update versions
+  * bugs_and_feature_requests: remove a paragraph
+
+-------------------------------------------------------------------
 Sun Jan 29 18:39:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.3:
