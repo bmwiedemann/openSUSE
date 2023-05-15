@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-sphinx-inline-tabs
-Version:        2022.1.2b11
+Version:        2023.4.21
 Release:        0
 Summary:        Add inline tabbed content to your Sphinx documentation
 License:        MIT

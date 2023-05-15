@@ -20,4 +20,13 @@
   * Improve design enabling more customization</comment>
     <requestid>1056829</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c258373ed0b5235340476e3ca7567ec7</srcmd5>
+    <version>2023.4.21</version>
+    <time>1684162466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.4.21:
+  * feat: allow tabs to be selected via URL</comment>
+    <requestid>1087123</requestid>
+  </revision>
 </revisionlist>
