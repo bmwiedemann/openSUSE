@@ -188,4 +188,16 @@
     <comment></comment>
     <requestid>1081781</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4a7c4f8dd1fad9e3f8a26859fd4b642d</srcmd5>
+    <version>2023.5.5</version>
+    <time>1684162441</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.5.5:
+  * Removed semicolon after 'else' in 'munge_name'.
+  * Fixed pyproject.toml and setup.py.
+  * pyproject.toml was missing.
+  * Added pyproject.toml.</comment>
+    <requestid>1087113</requestid>
+  </revision>
 </revisionlist>

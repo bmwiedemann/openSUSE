@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 14 16:27:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.5:
+  * Removed semicolon after 'else' in 'munge_name'.
+  * Fixed pyproject.toml and setup.py.
+  * pyproject.toml was missing.
+  * Added pyproject.toml.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
