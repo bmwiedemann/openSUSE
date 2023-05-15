@@ -1,7 +1,7 @@
 #
 # spec file for package lhasa
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lhasa
 %define lname	liblhasa0
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Program to unpack LHARC archives
 License:        ISC
 Group:          Productivity/Archiving/Compression
-Url:            http://fragglet.github.com/lhasa/
+URL:            http://fragglet.github.com/lhasa/
 
 #Git-Clone:	git://github.com/fragglet/lhasa
 Source:         http://www.soulsphere.org/projects/lhasa/lhasa-%version.tar.gz
 Source2:        http://www.soulsphere.org/projects/lhasa/lhasa-%version.tar.gz.asc
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkg-config
 BuildRequires:  xz
 
@@ -54,35 +53,31 @@ Requires:       %lname = %version
 liblhasa is the backend to the Lhasa tool, offering decompressing for
 ".lzh" (LHA/LHarc) and ".lzs" (LArc) archives.
 
-This package contains the development headers for the library found 
+This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
-make %{?_smp_mflags};
+%make_build
 
 %install
-b="%buildroot";
 %make_install
-rm -f "$b/%_libdir"/*.la
+rm -f "%buildroot/%_libdir"/*.la
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_bindir/lha
 %_mandir/man1/lha.1*
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/liblhasa.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/liblhasa-1.0
 %_libdir/liblhasa.so
 %_libdir/pkgconfig/liblhasa.pc
