@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  2 14:49:45 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.0.2:
+  + Fix a variety of build issues resulting from the switch to
+    meson.
+  + lxc-attach: Fix missing return codes.
+  + core: Setup peer group for container's root.
+  + checkconfig: Make output more useful on modern kernels.
+  + lxc-user-nic: Fix issue resulting in leaking file existence to
+    unprivileged users (CVE-2022-47952, boo#1206779).
+- Drop upstream fixed patches:
+  + OPENSUSE-0001-meson.build-allow-explicit-distrosysconfdir.patch
+  + OPENSUSE-0002-build-detect-where-struct-mount_attr-is-declared.patch
+  + OPENSUSE-0003-build-detect-sys-pidfd.h-availability.patch
+  + OPENSUSE-0004-cgroups-fix-Waddress-warning.patch
+  + OPENSUSE-0005-build-fix-handling-of-dependancies-to-fix-build-on-o.patch
+  + OPENSUSE-0006-build-only-build-init.lxc.static-if-libcap-is-static.patch
+  + OPENSUSE-0007-build-drop-build-time-systemd-dependency.patch
+  + UPSTREAM-4187.patch
+
+-------------------------------------------------------------------
 Mon Nov  7 09:43:54 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on Arm:

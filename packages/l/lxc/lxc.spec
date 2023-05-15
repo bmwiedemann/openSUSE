@@ -23,7 +23,7 @@
 
 %define         shlib_version 1
 Name:           lxc
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
@@ -34,16 +34,6 @@ Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}
 Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
-# PATCH-FIX-UPSTREAM - https://github.com/lxc/lxc/pull/4187
-Patch1:         UPSTREAM-4187.patch
-# Backport of <https://github.com/lxc/lxc/pull/4215>.
-Patch10:        OPENSUSE-0001-meson.build-allow-explicit-distrosysconfdir.patch
-Patch11:        OPENSUSE-0002-build-detect-where-struct-mount_attr-is-declared.patch
-Patch12:        OPENSUSE-0003-build-detect-sys-pidfd.h-availability.patch
-Patch13:        OPENSUSE-0004-cgroups-fix-Waddress-warning.patch
-Patch14:        OPENSUSE-0005-build-fix-handling-of-dependancies-to-fix-build-on-o.patch
-Patch15:        OPENSUSE-0006-build-only-build-init.lxc.static-if-libcap-is-static.patch
-Patch16:        OPENSUSE-0007-build-drop-build-time-systemd-dependency.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  docbook2x
