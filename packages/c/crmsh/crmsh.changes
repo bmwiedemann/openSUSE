@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon May 15 08:08:25 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230515.64893bc7:
+  * Dev: behave: Add '<user>@' for -N/--node option for non-root case
+  * Dev: behave: Add -q option for run-functional-tests to create qnetd-node
+  * Dev: behave: Adjust functional test cases based on previous changes
+  * Dev: behave: Create normal user that does not belong to the haclient group
+  * Dev: behave: Use 'su - <user>' instead of 'su <user>'
+  * Dev: behave: Simulate Azure instance ssh environment
+  * Dev: Dockerfile: Remove python3-parallax from dockerfile
+  * Dev: spec: Remove python3-parallax from spec file
+  * Dev: behave: Add more functional test cases
+  * Dev: rsctest: Replace sys.stderr.write with logging
+
+-------------------------------------------------------------------
+Mon May 15 02:46:07 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230515.d279a671:
+  * Dev: parallax: unused code removal, and refine docstrings
+  * Fix: utils: fix `cluster diff --checksum`
+  * Dev: ui_cluster: refine messages for `cluster run` and `cluster coy`
+  * Dev: geo: implement non-root support for geo_fetch_config()
+  * Fix: bootstrap: failed to join when the cluster is initialized with skip_csync2
+  * Dev: prun: minor refactor and add comments
+  * Dev: unittest: adjust unit tests for previous changes
+  * Dev: prun: implement timeout
+  * Dev: prun: add an concurrency limiter
+  * Dev: remove python dependency parallax
+  * Dev: scripts: implement non-root support with crmsh.prun
+  * Dev: unused code removal
+  * Dev: implement non-root support for crm_pssh with crmsh.prun
+  * Dev: remove some direct calls to parallax module
+  * Dev: prun: add special handling for localhost
+  * Dev: refine non-root sudoer support for crmsh.parallax.parallax_slurp
+  * Dev: refine non-root sudoer support for crmsh.parallax.parallax_copy
+  * Dev: upgradeutil: adapt to new parallax interface
+  * Dev: refine non-root sudoer support for crmsh.parallax.parallax_call (bsc#1210709)
+
+-------------------------------------------------------------------
+Mon May 15 01:22:32 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230515.db0cbb05:
+  * Dev: unittest: adjust unit tests for previous changes
+  * Fix: bootstrap: failed to save username for localhost when initializing a cluster with a qnet server
+
+-------------------------------------------------------------------
 Wed May 10 09:50:09 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230510.847a251b:
