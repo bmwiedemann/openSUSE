@@ -1,7 +1,7 @@
 #
 # spec file for package exaile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __requires_exclude typelib\\((GtkosxApplication)\\)
 %define _name   Exaile
 Name:           exaile
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        GTK Amarok-like music player
 License:        GPL-3.0-or-later
@@ -50,6 +50,7 @@ Requires:       python3-mutagen >= 1.10
 Recommends:     %{name}-lang
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-ugly
+# Will be python3-discid in Exaile 4.1.3
 Recommends:     python3-CDDB
 Recommends:     python3-Pillow
 Recommends:     python3-gpod
@@ -77,7 +78,6 @@ fretplay.com, and submitting played tracks on your iPod to last.fm.
 
 %prep
 %autosetup -p1
-chmod a-x COPYING README.md
 
 %build
 %make_build
@@ -108,13 +108,13 @@ done
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+%{_datadir}/metainfo/*%{name}.appdata.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %dir %{_datadir}/dbus-1/
 %dir %{_datadir}/dbus-1/services/
 %{_datadir}/dbus-1/services/org.%{name}.%{_name}.service
 %dir %{_sysconfdir}/xdg/%{name}/
 %config %{_sysconfdir}/xdg/%{name}/settings.ini
-%{_datadir}/appdata/%{name}.appdata.xml
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/completions/%{name}

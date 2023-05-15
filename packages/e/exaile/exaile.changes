@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat May  6 13:25:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.1.2:
+  * Fix sorting on Rating column when there are unrated tracks.
+  * Fix a bug causing the tracklist to scroll to the top when
+    adding or reordering tracks.
+  * Fix a bug causing the window title to not update on track
+    change if the current track has been paused.
+  * The status bar can now be hidden.
+  * The stop button does not move around anymore when hovered for
+    the first time.
+  * Fix error if files are removed during scan.
+  * Playlist columns are added next to the currently selected
+    column.
+  * The status bar now does not ignore zero track counts; they are
+    displayed as normal.
+  * Log files now created only when/if we write something to it.
+  * New callback while installing plugins.
+  * Fix test warnings.
+  * Work around potential hang when running tests.
+  * Tests do not depend on mox3 anymore.
+  * When running tests with make test, PYTHONPATH is now only
+    prepended to, instead of being replaced.
+  * Update translations.
+  * Plugins:
+    + inhibitsuspend: Add support for Sway.
+    + notify: Fix wrong text: "by {album}" should be
+      "from {album}".
+    + previewdevice: Will be shown after disabling and enabling
+      again.
+    + quickbuttons: This is a new plugin providing quick shortcuts
+      to some settings.
+
+-------------------------------------------------------------------
 Fri May  6 11:44:08 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.1.1
