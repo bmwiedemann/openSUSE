@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun May 07 20:36:24 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.7.3:
+  * Log error instead of returning
+  * Send status update to systemd when daemon has initialized
+  * split outputs with ,
+  * bump dependencies
+  * start animation right after finishing transition
+  * better spread of different bytes
+  * create benchmarks for compression functions
+  * update dependencies
+  * stop-gag zip_eq panic on slices of unequal size
+  * check if cache dir is actually a dir
+  * use std::thread::scope for gif frames
+  * wait until all gif's frames are ready
+  * `--transition-step` with `simple` saner default
+  * fix: Missing `/` when using `$HOME/.cache/swww`
+
+-------------------------------------------------------------------
+Sun May  7 16:32:52 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Build and package man pages
+- Add cargo version requirement
+
+-------------------------------------------------------------------
 Sat Mar 18 01:33:30 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix specfile.

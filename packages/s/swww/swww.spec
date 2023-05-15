@@ -26,7 +26,7 @@
 
 
 Name:           swww
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
@@ -35,7 +35,8 @@ Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-BuildRequires:  rust+cargo
+BuildRequires:  rust+cargo >= 1.64.0
+BuildRequires:  scdoc
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -81,12 +82,14 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
+./doc/gen.sh
 %{cargo_build}
 
 %install
 install -Dm644 -T completions/swww.bash  %{buildroot}%{_datadir}/bash-completion/completions/swww
 install -Dm644 -T completions/swww.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/swww.fish
 install -Dm644 -T completions/_swww %{buildroot}%{_datadir}/zsh/site-functions/_swww
+install -Dm644 -t %{buildroot}%{_mandir}/man1 doc/generated/swww*1
 %{cargo_install}
 
 # For the daemon
@@ -104,6 +107,7 @@ if [[ -z $RUSTC_WRAPPER ]]; then CARGO_AUDITABLE="auditable" ; fi && \
 %{_bindir}/swww-daemon
 %license LICENSE
 %doc CHANGELOG.md README.md
+%_mandir/man1/%{name}*.1%{?ext_man}
 
 %files bash-completion
 %dir %{_datadir}/bash-completion

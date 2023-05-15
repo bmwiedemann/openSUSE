@@ -3,7 +3,7 @@
     <param name="url">https://github.com/Horus645/swww</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">9df72ca3c680e88c5314000f70f8c3198363647d</param>
+    <param name="revision">1112c2d</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
