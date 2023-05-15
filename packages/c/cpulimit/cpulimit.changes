@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 14 17:50:51 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 3.0:
+  * Fix an important bug in LimitCPU when the program is
+    monitoring both a program and its child processes via the "-m"
+    flag. In the past, it was possible LimitCPU would fail to spawn
+    new instances to monitor child processes if LimitCPU was not in
+    the user's default path. In other words, if we were launched
+    from /usr/local/bin and this directory was not in the default
+    path, then child processes might not be monitored. And the
+    failure would happen silently.
+  * Now LimitCPU will try to do a better job of launching new
+    monitors for child processes and it will print a warning
+    about any errors when run in verbose mode.
+
+-------------------------------------------------------------------
 Thu Apr 27 22:28:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9:

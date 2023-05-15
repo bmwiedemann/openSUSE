@@ -18,12 +18,12 @@
 
 
 Name:           cpulimit
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        Limit the CPU Usage of a Process
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://limitcpu.sourceforge.net/
+URL:            https://limitcpu.sourceforge.net
 Source0:        https://downloads.sourceforge.net/limitcpu/%{name}-%{version}.tar.gz
 Patch0:         %{name}-2.2-do_not_forget_version.patch
 BuildRequires:  gcc

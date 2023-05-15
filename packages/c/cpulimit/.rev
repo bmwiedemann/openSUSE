@@ -47,4 +47,24 @@
     <comment></comment>
     <requestid>1083988</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0dac5e0c70f0ba20690ccb1b945054a6</srcmd5>
+    <version>3.0</version>
+    <time>1684162465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0:
+  * Fix an important bug in LimitCPU when the program is
+    monitoring both a program and its child processes via the &quot;-m&quot;
+    flag. In the past, it was possible LimitCPU would fail to spawn
+    new instances to monitor child processes if LimitCPU was not in
+    the user's default path. In other words, if we were launched
+    from /usr/local/bin and this directory was not in the default
+    path, then child processes might not be monitored. And the
+    failure would happen silently.
+  * Now LimitCPU will try to do a better job of launching new
+    monitors for child processes and it will print a warning
+    about any errors when run in verbose mode.
+</comment>
+    <requestid>1087118</requestid>
+  </revision>
 </revisionlist>
