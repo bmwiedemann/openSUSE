@@ -16,19 +16,19 @@
 #
 
 
-%define libagssonumber 4
+%define libagssonumber 5
 %define libgsequencersonumber 0
 # The condition is run functional tests; defaulted off and needs to be
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        4.5.5
+Version:        5.1.4
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/4.5.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/5.1.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
 BuildRequires:  gcc-c++
@@ -155,11 +155,11 @@ Group:          System/Libraries
 Advanced Gtk+ Sequencer is an audio sequencer application.
 This subpackage contains part of its library set.
 
-%package -n typelib-1_0-Libags-4_0
+%package -n typelib-1_0-Libags-5_0
 Summary:        GSequencer core libraries -- Introspection bindings
 Group:          System/Libraries
 
-%description -n typelib-1_0-Libags-4_0
+%description -n typelib-1_0-Libags-5_0
 Advanced Gtk+ Sequencer is an audio sequencer application.
 This package provides the GObject Introspection bindings for Libags.
 
@@ -217,11 +217,11 @@ Advanced Gtk+ Sequencer library development documentation.
 #%{_libdir}/libags_vst.so.%{libagssonumber}*
 %{_libdir}/libags_audio.so.%{libagssonumber}*
 
-%files -n typelib-1_0-Libags-4_0
+%files -n typelib-1_0-Libags-5_0
 %defattr(-,root,root)
-%{_libdir}/girepository-1.0/Ags-4.0.typelib
-%{_libdir}/girepository-1.0/AgsGui-4.0.typelib
-%{_libdir}/girepository-1.0/AgsAudio-4.0.typelib
+%{_libdir}/girepository-1.0/Ags-5.0.typelib
+%{_libdir}/girepository-1.0/AgsGui-5.0.typelib
+%{_libdir}/girepository-1.0/AgsAudio-5.0.typelib
 
 %files -n libgsequencer%{libgsequencersonumber}
 %defattr(-,root,root)

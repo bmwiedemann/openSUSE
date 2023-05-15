@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 14 16:44:11 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v5.1.4 improved conditional build
+- implemented tempo editor
+
+-------------------------------------------------------------------
 Sun Apr 16 17:54:37 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v4.5.5 introduced api-pdf automake target
