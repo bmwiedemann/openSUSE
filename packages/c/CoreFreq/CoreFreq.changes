@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 14 16:04:25 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.96.1
+  * [Driver]
+    - Postpone Clock Source registration during startup until the Base Clock is computed.
+    - Change class_create() according to Linux Kernel 6.4
+    - Clear interrupt flag (cli) after Halt in the Idle method
+  * [AMD]
+    - [PHOENIX] Adding Ryzen 7940H, 7840H, 7640H
+    - [VERMEER] Adding Ryzen PRO and Embedded processors
+    - Ryzen Z1 CPUID' brand fix
+    - Adding EPYC Embedded 9004 Series as Genoa
+    - Adding EPYC Embedded 7003 Series as Milan
+    - Adding EPYC Embedded 7002 Series as Rome
+    - Adding EPYC Embedded 7001 Series as Naples
+
+-------------------------------------------------------------------
 Wed May  3 15:09:08 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed leap_compile_fix.patch no needed anymore
