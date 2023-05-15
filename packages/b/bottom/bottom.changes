@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 14 09:13:50 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * #1148: Fix Gruvbox colour string being invalid when cache usage
+    is enabled.
+
+-------------------------------------------------------------------
 Wed May 10 08:47:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.0:
