@@ -1,6 +1,7 @@
 #
 # spec file for package aerc
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Hannes Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 Name:           aerc
 Version:        0.15.2
 Release:        0
-Summary:        An email client for your terminal
+Summary:        An email client for terminals
 License:        MIT
 Group:          Productivity/Networking/Email/Clients
 URL:            https://aerc-mail.org/
@@ -32,12 +33,10 @@ BuildRequires:  notmuch-devel
 BuildRequires:  scdoc
 
 %description
-aerc is an email client that runs in your terminal. It's highly
-efficient and extensible, perfect for the discerning hacker.
+aerc is an email client that runs in terminals.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %if "%{_arch}" == "ppc64"
