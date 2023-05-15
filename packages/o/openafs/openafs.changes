@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 06:48:21 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- apply upstream-patches for kernel 6.3:
+  * f6fbb85.diff
+  * 7a3ad3bc.diff
+
+-------------------------------------------------------------------
 Thu Mar  2 14:01:53 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - apply patch from upstream for kernel 6.2:

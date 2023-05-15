@@ -105,6 +105,9 @@ Source99:       openafs.changes
 
 # PATCH-FIX-UPSTREAM fix build with kernel 6.2
 Patch1:         b885159.diff
+# PATCH-FIX-UPSTREAM fix build with kernel 6.3
+Patch2:         f6fbb85.diff
+Patch3:         7a3ad3bc.diff
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         4cf7a9a.diff
 
@@ -318,6 +321,8 @@ done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch4 -p1
 
 ./regen.sh
