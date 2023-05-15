@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 15 10:05:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore summary noun phrase.
+
+-------------------------------------------------------------------
+Mon May 15 08:39:44 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Version 2.1.0
+	New features and enhancements
+
+    - Feature: theming support for list of subcommand aliases by @janluke in #152
+    - Use the same (Deprecated) label as in Click by @kdeldycke in #153
+    - Standardize formats of further error messages by @alexreg in #143
+
+	Other Changes
+
+    - Fix type of auto_envvar_prefix param to Context.settings method by @alexreg in #147
+    - Miscellaneous fixes/improvements to docs by @alexreg in #144
+
+-------------------------------------------------------------------
 Mon Jan 30 00:12:13 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Version 2.0.0 
