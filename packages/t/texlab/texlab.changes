@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  8 03:55:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.5.1:
+  * Fix spurious completion results when completing environments
+  * Fix regression when guessing cursor position after formatting
+  * Fix parsing `\verb` command
+  * Add `flalign` and `flalign*` to default list of math environments
+
+-------------------------------------------------------------------
 Sat Apr 22 10:57:23 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 5.5.0:
