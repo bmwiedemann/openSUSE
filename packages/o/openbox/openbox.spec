@@ -31,6 +31,7 @@ Source3:        %name-pipemenu
 Source4:        menu.xml
 Source5:        xcompmgr-autostart
 Patch1:         %name-3.6.1-return.patch
+Patch2:         %name-3.6.1-glib-2.76.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 # only for ownership of datadir/share/gnome-sessions/
@@ -121,6 +122,7 @@ Development Includes and static libraries for openbox.
 %setup -q
 cp %{S:1} ./README.SUSE
 %patch1 -p1
+%patch2 -p1
 mv po/no.po po/nb.po
 mv po/no.gmo po/nb.gmo
 %__perl -p -i -e 's/^no$/nb/' po/LINGUAS

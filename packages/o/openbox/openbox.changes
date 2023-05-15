@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 12 01:01:48 UTC 2023 - spartanj@gmail.com
+
+- Add openbox-3.6.1-glib-2.76.patch. Fixes random crashes with glib >= 2.76.
+  See https://bugs.gentoo.org/901777.
+
+-------------------------------------------------------------------
 Wed Oct 14 13:47:48 UTC 2015 - dimstar@opensuse.org
 
 - Add xsltproc Requires: /usr/bin/openbox-pipemenu launches
