@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rails-7.0
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Release:        0
 %define mod_full_name %{mod_name}-%{version}
 %define mod_version_suffix -7.0
 # MANUAL
+BuildRequires:  ruby-common >= 3.2.1
+
 #!BuildIgnore: ruby3.1-rubygem-sprockets-3.7
 BuildRequires:  %{rubygem activejob >= 7.0}
 BuildRequires:  %{rubygem activemodel:7.0}

@@ -71,6 +71,8 @@
 #       /bin/echo foo
 :version_suffix: '-7.0'
 :preamble: |-
+    BuildRequires: ruby-common >= 3.2.1
+
     #!BuildIgnore: ruby3.1-rubygem-sprockets-3.7
     BuildRequires: %{rubygem railties:7.0}
     BuildRequires: %{rubygem activemodel:7.0}
@@ -97,15 +99,13 @@
     Recommends: nodejs
     Recommends: yarn
     # keep in sync with above
-    Requires: %{rubygem puma:5}
-    Requires: %{rubygem sprockets-rails}
-    Requires: %{rubygem sqlite3:1 >= 1.4}
-    Requires: %{rubygem importmap-rails}
-    Requires: %{rubygem bootsnap}
-    Requires: %{rubygem turbo-rails}
-    Requires: %{rubygem stimulus-rails}
-    Requires: %{rubygem jbuilder}
-    Requires: %{rubygem web-console }
-    Requires: %{rubygem sprockets > 3.8}
-    Requires: %{rubygem activejob >= 7.0}
-
+    Requires: rubygem(puma:5)
+    Requires: rubygem(sprockets-rails)
+    Requires: rubygem(sqlite3:1) >= 1.4
+    Requires: rubygem(importmap-rails)
+    Requires: rubygem(bootsnap)
+    Requires: rubygem(turbo-rails)
+    Requires: rubygem(stimulus-rails)
+    Requires: rubygem(jbuilder)
+    Requires: rubygem(web-console)
+    Requires: rubygem(sprockets) > 3.8

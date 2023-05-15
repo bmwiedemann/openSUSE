@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 12 21:27:44 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix the additional Requires for the rubyX.Y-rails-7.0:
+  this requires the new ruby-common (boo#1208872)
+
+-------------------------------------------------------------------
 Fri Apr 21 11:21:25 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 7.0.4.3:

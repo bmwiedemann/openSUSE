@@ -59,4 +59,13 @@ updated to version 7.0.3.1
     <comment>7.0.4.3</comment>
     <requestid>1081242</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>54cc06948ca26cc0b2db500d86e94d95</srcmd5>
+    <version>7.0.4.3</version>
+    <time>1684162457</time>
+    <user>dimstar_suse</user>
+    <comment>- fix the additional Requires for the rubyX.Y-rails-7.0:
+  this requires the new ruby-common (boo#1208872)</comment>
+    <requestid>1086836</requestid>
+  </revision>
 </revisionlist>
