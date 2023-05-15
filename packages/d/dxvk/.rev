@@ -125,4 +125,12 @@
   Fixes build. (forwarded request 1085180 from Thaodan)</comment>
     <requestid>1085227</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39f31bc445543133e84ce93f09b5ba28</srcmd5>
+    <version>2.1</version>
+    <time>1684162484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087211</requestid>
+  </revision>
 </revisionlist>

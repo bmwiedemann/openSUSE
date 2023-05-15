@@ -17,7 +17,7 @@
 
 
 Name:           dxvk
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Vulkan-based D3D11 implementation for Linux / Wine
 License:        zlib-acknowledgement
@@ -25,6 +25,7 @@ Group:          System/Emulators/PC
 URL:            https://github.com/doitsujin/dxvk
 Source0:        %{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Source2:        setup_dxvk.sh
 
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -82,7 +83,7 @@ mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_libexecdir}/%{name}/bin
 sed \
     -e 's|basedir=.*|basedir="%{_libexecdir}/%{name}"|g' \
     -e 's|x32|lib|g' -e 's|x64|lib64|g' \
-    setup_dxvk.sh > %{buildroot}%{_libexecdir}/%{name}/bin/setup_dxvk.sh
+    %{SOURCE2}> %{buildroot}%{_libexecdir}/%{name}/bin/setup_dxvk.sh
 ln -s %{_libexecdir}/%{name}/bin/setup_dxvk.sh %{buildroot}%{_bindir}/wine%{name}
 
 #install dxvk proper

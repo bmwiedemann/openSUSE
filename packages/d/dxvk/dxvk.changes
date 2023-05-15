@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri May  5 22:16:37 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Keep setup_dxvk.sh script that was deleted by upstream.
+  For more context see:
+  https://github.com/doitsujin/dxvk/commit/64cb1ad208f80b11400eef779e99fec223754098
+- Update to 2.1
+  * HDR support
+    On systems supporting HDR10 color spaces, HDR can now be
+    enabled by setting the environment variable DXVK_HDR=1,
+    or by setting the option dxgi.enableHDR = True in the configuration
+    file. When using vkd3d-proton 2.8 or newer, this will allow D3D12
+    games to detect and use the HDR10 color space if they support it.
+
+    No major Linux desktop environment currently supports HDR. In order
+    to use this on Linux, a Gamescope session with --hdr-enabled is required.
+    This is currently only supported under AMDGPU and requires kernel patches
+    from the josh-hdr-colorimetry branch.
+
+  * Shader compilation improvements
+    Use of pipeline libraries was extended to pipelines with tessellation or
+    geometry shaders in order to further reduce stutter. Additionally, more features
+    of the VK_EXT_extended_dynamic_state3 extension are leveraged to reduce stutter
+    in some situations when MSAA is used, provided that the Vulkan driver supports them.
+
+  * Sample rate shading
+    For older games that support MSAA, the d3d9.forceSampleRateShading and
+    d3d11.forceSampleRateShading options were added to let users enable
+    sample rate shading for all shaders. This will have a very high
+    impact on GPU-bound performance, but may increase overall image quality
+    in certain games that suffer from specular aliasing or shimmering alpha-tested geometry.
+  * Improved D3D11 command submission logic in order to make overall performance more consistent,
+    and to bring DXVK's behaviour more in line with native D3D11 drivers.
+  * Fixed D3D11 reference counting issues around 2D textures. (#3169)
+  * Fixed Vulkan validation errors when creating DXGI_FORMAT_A8_UNORM UAVs.
+    Note that UAVs of this format may not work as expected.
+  * Fixed Vulkan validation errors that would occur when allocating dedicated image memory
+    on Nvidia GPUs in some situations.
+  * Fixed Vulkan validation errors caused by broken timeline semaphores on 32-bit Proton.
+  * Worked around an issue with the Uplay overlay being stuck on screen. (#3146)
+  * Worked around a bug in AMD's Windows driver as well as AMDVLK that would
+    cause numerous games to crash since DXVK 2.0. (#3172)
+  * Fewer threads will be used to perform background optimization of graphics pipeines.
+    This may result in a smoother gameplay experience on some systems.
+  * Ashes of the Singularity: Fixed performance regression caused by suboptimal descriptor set allocation.
+  * Battlefield: Bad Company 2: Fixed flickering (#3078, PR #3079)
+  * Cardfight!! Vanguard: Fixed rendering (PR #3068).
+  * Gujian 3: Fixed rendering issues on some GPUs. (#1784)
+  * Resident Evil 4 HD: Fixed invalid Vulkan usage causing a GPU hang on RADV. (PR #3089)
+  * Saints Row: The Third: Fixed a severe performance issue with rain when using the D3D9 renderer.
+    (#2473, PR #3158)
+  * Sekiro: Shadows Die Twice: Fixed stuttering issues on Nvidia GPUs. (#3179)
+  * Sonic Frontiers: Worked around a game bug that would cause shadows to flicker when GPU-bound.
+  * Supreme Commander: Forged Alliance: Fixed a crash after loading (#3058, PR #3060)
+  * Note: Due to changes to our DXGI implementation, older versions of vkd3d-proton (prior to 2.8)
+    will no longer work with this version of DXVK.
+
+-------------------------------------------------------------------
 Fri May  5 12:55:46 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Fix empty -32bit package, don't include winedxvk in it.
