@@ -1,7 +1,7 @@
 #
 # spec file for package mate-utils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _version 1.26
 
 Name:           mate-utils
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop utilities
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -88,8 +88,8 @@ Summary:        MATE Search Tool
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 Requires:       mate-desktop-gschemas >= %{_version}
-Recommends:     mate-search-tool-lang
 Recommends:     %{name}-doc
+Recommends:     mate-search-tool-lang
 
 %description -n mate-search-tool
 This is the MATE Seach Tool as shipped with the MATE utilities. It uses
@@ -99,8 +99,8 @@ command-line tools such as find and locate to get results.
 Summary:        MATE disk image mounter
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Recommends:     mate-disk-image-mounter-lang
 Recommends:     %{name}-doc
+Recommends:     mate-disk-image-mounter-lang
 
 %description -n mate-disk-image-mounter
 This is the MATE Disk Image Mounter as shipped with the MATE
@@ -111,8 +111,8 @@ to be conviniently mounted.
 Summary:        MATE disk usage analyser
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Recommends:     mate-disk-usage-analyzer-lang
 Recommends:     %{name}-doc
+Recommends:     mate-disk-usage-analyzer-lang
 
 %description -n mate-disk-usage-analyzer
 This is the MATE Disk Usage Analyzer as shipped with the MATE utilities.
@@ -126,8 +126,9 @@ directory as far as any mounted/unmounted device.
 Summary:        MATE dictionary
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Recommends:     mate-dictionary-lang
+Requires:       mate-desktop-gschemas >= %{_version}
 Recommends:     %{name}-doc
+Recommends:     mate-dictionary-lang
 
 %description -n mate-dictionary
 This is the MATE dictionary as shipped with the MATE utilities.
@@ -139,8 +140,8 @@ Summary:        MATE system log viewer
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/X11/Utilities
 Requires:       mate-desktop-gschemas >= %{_version}
-Recommends:     mate-system-log-lang
 Recommends:     %{name}-doc
+Recommends:     mate-system-log-lang
 
 %description -n mate-system-log
 This is the MATE system log viewer as shipped with the MATE utilities.
@@ -151,8 +152,8 @@ operating system.
 Summary:        MATE screenshot maker
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Recommends:     mate-screenshot-lang
 Recommends:     %{name}-doc
+Recommends:     mate-screenshot-lang
 
 %description -n mate-screenshot
 This is the MATE screenshot maker as shipped with the MATE utilities.

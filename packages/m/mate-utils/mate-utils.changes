@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 14 13:12:33 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.1
+  * Fix memory leak
+- Add mate-desktop-gschemas as Requires for mate-dictionary (boo#1211327) 
+
+-------------------------------------------------------------------
 Thu Aug 26 03:54:00 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Split doc package
