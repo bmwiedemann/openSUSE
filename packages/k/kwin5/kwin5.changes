@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 14 06:52:38 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add patch to fix pointer constraint region handling (kde#469555):
+  * revert-avoid-pointer-warp.patch
+
+-------------------------------------------------------------------
 Wed May 10 18:58:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix a rounding error with scaling (kde#459373):

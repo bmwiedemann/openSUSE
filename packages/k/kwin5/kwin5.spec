@@ -41,6 +41,7 @@ Source2:        plasma.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-xcbutils-fix-nativeFloor.patch
+Patch2:         revert-avoid-pointer-warp.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
