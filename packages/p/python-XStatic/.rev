@@ -15,4 +15,13 @@
     <comment>- Run through spec-cleaner</comment>
     <requestid>746350</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8841719c430aaedd73ba4ca8b528544a</srcmd5>
+    <version>1.0.3</version>
+    <time>1684162468</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3
+  * packaging refresh</comment>
+    <requestid>1087128</requestid>
+  </revision>
 </revisionlist>

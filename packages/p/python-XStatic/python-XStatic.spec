@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-XStatic
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        XStatic base package with minimal support code
 License:        MIT
@@ -44,6 +44,7 @@ static files as a Python package.
 
 %files %{python_files}
 %doc README.txt
+%license LICENSE.txt
 %{python_sitelib}/*
 
 %changelog
