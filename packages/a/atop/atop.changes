@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat May 13 11:19:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.0:
+  * Avoid compiler warning by limiting PSI average
+  * Install cleanup function to avoid termination of parent process
+  * add man for PAG steal
+  * Oomkills event should not remain orange after boot values
+  * Clarified atop man page
+  * Closing bracket missing in synopsis
+  * Add highlight concerning bar graph mode
+  * Introduce bar graph mode Besides all detailed information that
+    is supplied by atop on system and process level, a (character-based)
+    bar graph can be shown about the utilization of the most critical system resources
+  * Freeing ethlink should depend of ifdef
+  * Added reset to indicate shadow file to be closed
+  * fix atopacctd.c: failed to start atopacct.service
+  * acctatop: reacquire acctfd to collect nprocexit for some bad cases
+  * Calibrate nprocexit to avoid atop coredumps unexpectedly
+  * json.c: fix avque counters output
+  * Resolve compiler warnings from latest versions of GCC
+  * Added versdate.h to make clean target
+  * Revert "Added versdate.h to make clean target"
+  * Added versdate.h to make clean target
+  * fix calculation for scan and steal
+  * only call str.decode if nvml returned bytes
+  * Add exit epoch to parseable output PRG (solves issue #242)
+  * Minor correction in man page for NVCSW/NIVCSW
+  * Context switches (voluntary and involuntary) on process level incorrect
+  * Various modifications releated to (non)voluntary context switches
+  * Add nvcsw and nivcsw for each process
+  * ifprop.c: Fix possible memory leak
+  * Code cleanup and prototype additions
+  * Consistency check on number of threads (solves issue #232)
+  * atop-rotate.service: use restart instead of try-restart
+  * Add link to atophttpd
+- Update patches:
+  * atop-makefile.patch
+  * harden_atop-rotate.service.patch
+
+-------------------------------------------------------------------
 Sat Jan  7 16:56:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.8.1:

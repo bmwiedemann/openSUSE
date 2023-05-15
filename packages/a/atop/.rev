@@ -188,4 +188,12 @@
   * Solve compiler warnings about format-truncation</comment>
     <requestid>1056803</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>933f45f824a53f1a4d8a06ef3567c50e</srcmd5>
+    <version>2.9.0</version>
+    <time>1684162477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087166</requestid>
+  </revision>
 </revisionlist>

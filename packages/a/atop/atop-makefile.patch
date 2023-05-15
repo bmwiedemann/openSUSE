@@ -1,11 +1,12 @@
-diff -urEbw atop-2.7.0/Makefile atop-2.7.0.new/Makefile
---- atop-2.7.0/Makefile	2021-12-18 12:04:24.000000000 +0100
-+++ atop-2.7.0.new/Makefile	2022-01-07 15:24:44.084445219 +0100
-@@ -20,7 +20,7 @@
+Index: atop-2.9.0/Makefile
+===================================================================
+--- atop-2.9.0.orig/Makefile
++++ atop-2.9.0/Makefile
+@@ -20,7 +20,7 @@ PMPATH1  = /usr/lib/pm-utils/sleep.d
  PMPATH2  = /usr/lib64/pm-utils/sleep.d
  PMPATHD  = /usr/lib/systemd/system-sleep
  
--CFLAGS  += -O2 -I. -Wall -Wno-stringop-truncation # -DNOPERFEVENT   # -DHTTPSTATS
+-CFLAGS  += -O2 -I. -Wall -Wno-stringop-truncation -Wmissing-prototypes -Wmissing-declarations # -DNOPERFEVENT   # -DHTTPSTATS
 +CFLAGS  += $(OPTFLAGS) -I. -Wall -Wno-stringop-truncation # -DNOPERFEVENT   # -DHTTPSTATS
  OBJMOD0  = version.o
  OBJMOD1  = various.o  deviate.o   procdbase.o

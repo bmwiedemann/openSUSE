@@ -1,7 +1,7 @@
-Index: atop-2.8.0/atop-rotate.service
+Index: atop-2.9.0/atop-rotate.service
 ===================================================================
---- atop-2.8.0.orig/atop-rotate.service
-+++ atop-2.8.0/atop-rotate.service
+--- atop-2.9.0.orig/atop-rotate.service
++++ atop-2.9.0/atop-rotate.service
 @@ -3,5 +3,18 @@ Description=Restart atop daemon to rotat
  Documentation=man:atop(1)
  
@@ -20,4 +20,4 @@ Index: atop-2.8.0/atop-rotate.service
 +RestrictRealtime=true
 +# end of automatic additions 
  Type=oneshot
- ExecStart=/usr/bin/systemctl try-restart atop.service
+ ExecStart=/usr/bin/systemctl restart atop.service
