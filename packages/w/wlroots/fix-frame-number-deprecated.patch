@@ -1,0 +1,38 @@
+From 8db0d8289087d9e63438e01f810ef01d82170eb1 Mon Sep 17 00:00:00 2001
+From: Simon Ser <contact@emersion.fr>
+Date: Tue, 28 Feb 2023 11:57:07 +0100
+Subject: [PATCH] examples/dmabuf-capture: fix frame_number deprecated in
+ FFmpeg 6.0
+
+Fixes the following error:
+
+    ../examples/dmabuf-capture.c:524:33: error: 'frame_number' is deprecated [-Werror=deprecated-declarations]
+      524 |                                 ctx->avctx->frame_number, get_fifo_size(&ctx->vid_frames));
+          |                                 ^~~
+---
+ examples/dmabuf-capture.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/examples/dmabuf-capture.c b/examples/dmabuf-capture.c
+index 58bf641958..5a7debd23f 100644
+--- a/examples/dmabuf-capture.c
++++ b/examples/dmabuf-capture.c
+@@ -520,8 +520,14 @@ static void *vid_encode_thread(void *arg) {
+ 			}
+ 		};
+ 
+-		av_log(ctx, AV_LOG_INFO, "Encoded frame %i (%i in queue)\n",
+-				ctx->avctx->frame_number, get_fifo_size(&ctx->vid_frames));
++		int64_t frame_num;
++#if LIBAVUTIL_VERSION_MAJOR >= 58
++		frame_num = ctx->avctx->frame_num;
++#else
++		frame_num = ctx->avctx->frame_number;
++#endif
++		av_log(ctx, AV_LOG_INFO, "Encoded frame %"PRIi64" (%i in queue)\n",
++				frame_num, get_fifo_size(&ctx->vid_frames));
+ 
+ 	} while (!ctx->err);
+ 
+-- 
+GitLab

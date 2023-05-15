@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 13 00:06:13 UTC 2023 - Chris Bradbury <opensuse@chrbrd.com>
+
+- Add fix-frame-number-deprecated.patch
+
+  Builds broke for 0.16.2 due to the use of a deprecated FFmpeg
+  attribute in one of the examples, which is fixed by the added
+  patch.
+
+-------------------------------------------------------------------
 Sat Feb 11 11:20:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.2:

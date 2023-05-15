@@ -74,6 +74,9 @@ BuildRequires:  pkgconfig(xcb-errors)
 %endif
 %endif
 
+# PATCH-FIX-UPSTREAM fix-frame-number-deprecated.patch glfo#wlroots/wlroots!4036
+Patch0:         fix-frame-number-deprecated.patch
+
 %description
 Pluggable, composable modules for building a Wayland compositor.
 
