@@ -140,4 +140,15 @@
 - Update Requires from setup.py (forwarded request 1058187 from glaubitz)</comment>
     <requestid>1058233</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>93331d85d36567447f8b810d916c14f8</srcmd5>
+    <version>0.16.0</version>
+    <time>1684162487</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.16.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1087207 from glaubitz)</comment>
+    <requestid>1087224</requestid>
+  </revision>
 </revisionlist>
