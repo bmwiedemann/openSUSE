@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.collections
-Version:        3.8.0
+Version:        4.1.0
 Release:        0
 Summary:        Tools to work with collections
 License:        MIT
@@ -55,16 +55,7 @@ Models and classes to supplement the stdlib ‘collections’ module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
-# prepare test environment: provide jaraco modules locally
-touch jaraco/__init__.py
-%{python_expand cp -vr %{$python_sitelib}/jaraco/* jaraco/
-# workaround for gh#jaraco/jaraco.text#10 without pathlib2
-if [ %{$python_version_nodots} -lt 310 ]; then
-  $python_donttest="or read_newlines or report_newlines"
-fi
-}
-%pytest --doctest-modules -k "not (dummyprefix ${$python_donttest})"
+%pytest --doctest-modules -k "not (dummyprefix or read_newlines or report_newlines)"
 
 %files %{python_files}
 %license LICENSE

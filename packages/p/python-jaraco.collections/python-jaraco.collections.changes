@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 14 18:30:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * ``Projection`` now accepts an iterable or callable or pattern
+    for matching keys.  ``Projection`` now retains order of keys
+    from the underlying mapping.
+  * ``DictFilter`` is now deprecated in favor of ``Projection``.
+  * ``DictFilter`` no longer accepts ``include_keys`` and
+    requires ``include_pattern`` as a keyword argument.
+  * In ``DictFilter``, deprecated ``include_keys`` parameter and
+    usage without ``include_pattern``. Future versions will honor
+    ``include_pattern`` as a required keyword argument. All other
+    uses are deprecated. For uses that currently rely on
+    ``include_keys``, use ``Projection`` instead/in addition.
+  * ``DictFilter.__len__`` no longer relies on the iterable.
+    Improves efficiency and fixes ``RecursionError`` on PyPy (#12).
+
+-------------------------------------------------------------------
 Sun Mar  5 18:56:10 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - prepare test environment: correctly provide jaraco modules locally
