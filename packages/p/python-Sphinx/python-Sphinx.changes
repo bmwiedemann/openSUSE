@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 14 15:27:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * Support `Docutils 0.20`_.
+  * #11418: Clean up remaining references to
+    ``sphinx.setup_command``
+    following the removal of support for setuptools.
+
+-------------------------------------------------------------------
 Sun Apr 30 07:40:26 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Update to version 7.0.0
