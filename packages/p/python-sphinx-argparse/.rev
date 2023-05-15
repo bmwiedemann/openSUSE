@@ -50,4 +50,17 @@
 - Remove patch python-sphinx-argparse-python310.patch, included upstream.</comment>
     <requestid>1029662</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41bea23d33771118db2413ed7147c60d</srcmd5>
+    <version>0.4.0</version>
+    <time>1684162465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+  * Minimum python version is now 3.7
+  * Update linters
+  * Modern readthedocs config
+  * feat: find executable filename to address #16
+  * Test against python 3.11 too</comment>
+    <requestid>1087122</requestid>
+  </revision>
 </revisionlist>

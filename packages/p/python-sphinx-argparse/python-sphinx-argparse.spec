@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-argparse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define skip_python2 1
 Name:           python-sphinx-argparse
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Sphinx extension to document argparse commands and options
 License:        MIT
 URL:            https://github.com/ashb/sphinx-argparse
-Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx-argparse-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx_argparse-%{version}.tar.gz
 BuildRequires:  %{python_module CommonMark}
 BuildRequires:  %{python_module Sphinx >= 1.2.0}
 BuildRequires:  %{python_module pytest}
@@ -37,7 +37,7 @@ BuildArch:      noarch
 Sphinx extension that automatically documents argparse commands and options.
 
 %prep
-%autosetup -p1 -n sphinx-argparse-%{version}
+%autosetup -p1 -n sphinx_argparse-%{version}
 
 %build
 %python_build
