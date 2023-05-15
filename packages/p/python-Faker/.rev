@@ -471,4 +471,16 @@
     @dlwrnc.</comment>
     <requestid>1084848</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>809fa19a74a5d2a572c02b2d18cc3b98</srcmd5>
+    <version>18.7.0</version>
+    <time>1684162439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.7.0:
+  * Add `license_plate` for `zh_CN` and `zh_TW`.
+  *  Improve accuracy of departments in `fr_FR` provider
+    `postcode`.
+  * Fix `ssn` provider for `zh_TW`.</comment>
+    <requestid>1087106</requestid>
+  </revision>
 </revisionlist>

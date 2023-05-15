@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 14 15:22:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.7.0:
+  * Add `license_plate` for `zh_CN` and `zh_TW`.
+  *  Improve accuracy of departments in `fr_FR` provider
+    `postcode`.
+  * Fix `ssn` provider for `zh_TW`.
+
+-------------------------------------------------------------------
 Thu May  4 19:12:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.6.0:
