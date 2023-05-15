@@ -6210,4 +6210,12 @@
   * CVE-2023-32216 (bmo#1746479, bmo#1806852, bmo#1815987,</comment>
     <requestid>1085989</requestid>
   </revision>
+  <revision rev="398" vrev="1">
+    <srcmd5>b19893dc24062dabfc277d95a350b162</srcmd5>
+    <version>113.0.1</version>
+    <time>1684162443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087124</requestid>
+  </revision>
 </revisionlist>
