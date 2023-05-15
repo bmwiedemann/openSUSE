@@ -120,4 +120,13 @@
     <comment></comment>
     <requestid>1077834</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d679bd8df01f0a0bfe349b49f7bb30dd</srcmd5>
+    <version>3.2.2</version>
+    <time>1684162467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.2:
+  *  Allow XML documents to be streamed with –xml-item-depth</comment>
+    <requestid>1087126</requestid>
+  </revision>
 </revisionlist>

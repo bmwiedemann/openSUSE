@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-yq
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
