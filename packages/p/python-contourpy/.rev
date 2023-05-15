@@ -23,4 +23,36 @@
     <comment></comment>
     <requestid>1085437</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0e6a8469fa2a504e3fb99d34cd5891a</srcmd5>
+    <version>1.0.7</version>
+    <time>1684162438</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * This release adds type annotations and moves project metadata
+    to pyproject.toml
+  * Documentation now uses the Sphinx Furo theme, supporting dark
+    and light modes. There are no functional changes.
+  * Type annotations:
+  * Add type annotations
+  * Complete mypy configuration
+  * Documentation improvements:
+  * Support dark mode
+  * Use sphinx copy button
+  * Add conda monthly download badges to README
+  * Furo sphinx theme
+  * Code improvements:
+  * Improved if statement
+  * Test nonfinite z and decreasing zlevel for filled
+  * Add abstract base class Renderer
+  * Replace mpl scatter call with plot instead
+  * Use absolute imports
+  * Minor improvement to get_boundary_start_point
+  * Build system and CI improvements:
+  * Switch from setup.cfg to pyproject.toml
+  * Add git pre-commit
+  * Test improvements
+  * CI improvements</comment>
+    <requestid>1087096</requestid>
+  </revision>
 </revisionlist>

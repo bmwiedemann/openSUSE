@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-contourpy%{psuffix}
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Python library for calculating contours of 2D quadrilateral grids
 License:        BSD-3-Clause
