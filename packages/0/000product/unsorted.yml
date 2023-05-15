@@ -10621,7 +10621,7 @@ unsorted:
   - libagdb-devel 
   - libagdb-tools 
   - libagdb1 
-  - libags4 
+  - libags5 
   - libaio-devel 
   - libaio-devel-32bit 
   - libaio1-32bit 
@@ -19352,14 +19352,11 @@ unsorted:
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -44850,7 +44847,7 @@ unsorted:
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Lfb-0_0 
-  - typelib-1_0-Libags-4_0 
+  - typelib-1_0-Libags-5_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
