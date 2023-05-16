@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon May 15 07:18:40 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Updated to 4.0:
+  * SPDX-License-Identifier: tags added to most source files
+  * rp-pppoe.so plugin: Modified to compile against both pppd >= 2.5.0 and
+    pppd < 2.5.0.
+  * pppoe-server: If -L or -R option is specified as 0.0.0.0, then IP allocation
+    is delegated to pppd.
+  * pppoe-server: New -g option specifies the path of the rp-pppoe.so plugin to
+    use with pppd in kernel-mode PPPoE.
+
+  * pppoe-server: New -U option specifies a UNIX-domain control socket.  This
+    lets you send control commands to the server while it is running; see the
+    pppoe-server man page for details.
+
+  * All source code: Many cleanups and use of standard types like uint16_t rather
+    than ones we define.
+
+  * All source code: Support for OSes other than Linux has been dropped.
+
+  * Documentation: Updated from modern Linux systems.
+
+  * Cleanup: The following old and obsolete files have been removed:
+    - Old connection scripts scripts/pppoe-connect.in, scripts/pppoe-start.in,
+    scripts/pppoe-init-suse.in, scripts/pppoe-setup.in, scripts/pppoe-status,
+    scripts/pppoe-init.in, and scripts/pppoe-stop.in
+    * Obsolete firewall scripts configs/firewall-standalone and
+      configs/firewall-masq
+    - Obsolete configuration files configs/pppoe.conf and configs/pap-secrets
+    - The Tcl/Tk gui script gui/tkpppoe.in and supporting files
+    - The RPM spec file rp-pppoe.spec
+- Drop rp-pppoe-3.14-nonrfc-modems.patch, rp-pppoe-3.14-resolve-conf.patch,
+  rp-pppoe-3.14-config.patch, rp-pppoe-3.14-init.patch, 
+  patched scripts no longer exists.
+- Drop rp-pppoe-3.14-release-buildsystem.patch, rp-pppoe-3.14-pie.patch
+  rp-pppoe-3.14-strip.patch, no longer needed.
+
+-------------------------------------------------------------------
 Sun Sep  4 17:53:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Converted usage of egrep to "grep -E" (boo#1203092).
