@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 16 09:19:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Use autosetup and POSIX tar options.
+
+-------------------------------------------------------------------
+Sat May 13 16:51:17 UTC 2023 - Olav Reinert <seroton10@gmail.com>
+
+- Upgrade to version 2.0.1:
+  * Improvements to testing (@oreinert)
+  * Test up to and including bash v5.2.9
+  * Improvements to cd and check subcommands (@me-and)
+  * Improvement to cd subcommand in fish (@languitar)
+- Remove patch git-config-for-tests.patch:
+  * Included by upstream
+- Add patch test-helper.patch:
+  * Allows tests to run on OBS; does not alter package contents
+
+-------------------------------------------------------------------
 Wed Nov 16 21:17:12 UTC 2022 - Olav Reinert <seroton10@gmail.com>
 
 - Improve fix for build issue against Factory:
