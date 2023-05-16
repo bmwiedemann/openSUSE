@@ -464,4 +464,13 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment>- Correct Requires for typing_extensions.</comment>
     <requestid>1083439</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>90486e2aaea9bf76e76d8c5d5c9e7868</srcmd5>
+    <version>2.15.5</version>
+    <time>1684239364</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.5:
+  * Handle ``objects.Super`` in ``helpers.object_type()``.</comment>
+    <requestid>1087263</requestid>
+  </revision>
 </revisionlist>
