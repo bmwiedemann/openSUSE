@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 15 13:03:04 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Fix syntax error in update script
+
+-------------------------------------------------------------------
 Wed Apr  5 08:24:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Support mkiv as well as lmtx ConTeXt formats 

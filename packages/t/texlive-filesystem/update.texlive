@@ -513,7 +513,7 @@ make_context_fmts()
     /usr/bin/mtxrun  --script fonts --reload  < /dev/null 1>&4 2>&4
     let status+=$?
 
-    return status
+    return $status
 }
 
 #
