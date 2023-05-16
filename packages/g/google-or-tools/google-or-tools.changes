@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu May 11 00:30:26 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.6:
+  * Dependencies
+    + SCIP v801 -> v803 (note: now uses an OSI compatible license)
+    + abseil 20220623.1 -> 20230105.0
+    + Protobuf v21.5 -> v21.12
+    + SWIG 4.1.1
+  * PDLP
+    + Add python wrapper.
+  * CP-SAT
+    + Performance improvements.
+  * GLOP
+    + Tweak presolve.
+  * ModelBuilder
+    + Python: Improve numpy support.
+  * Bazel
+    + Add pybind11 support.
+    + Add java wrapper support.
+  * Routing
+    + Few improvements (local search)
+  * Known Issues:
+    + CP-SAT: Ignoring pseudo_costs subsolver returns Invalid
+      parameters. (#3706)
+- Update to version 9.5:
+  * CP-SAT
+    + Presolve improvements: max(array), Boolean constraints,
+      linear constraints.
+    + Interleaved search should be deterministic in parallel.
+    + Linear cuts: cleanup square and int_prod cuts; rewrite
+      cut pipeline.
+    + Fingerprint input model and solution (visible in the log).
+    + Scheduling improvements
+    + The usual bunch of bugfixes (crash during presolve, crash in
+      cuts, infeasible solutions, model infeasible in LNS).
+  * GLOP
+    + Speedup by rewriting the linear algebra, as well as the
+      pivot selection rule
+  * Linear Solver
+    + add knapsack_interface.cc.
+    + Move model_builder API under the linear_solver directory
+      (headers and samples).
+    + Add support for Gurobi 10.
+  * Routing
+    + Liberate few parser for various routing challenge.
+- Drop obsolete patches:
+  * do_not_call_pdlp_solve_test.patch
+  * 0003-Reuse-common-add_cxx_example-function-for-Sat-Runner.patch
+- Update patches:
+  * 0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
+  * 0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
+  * 0003-Only-add-relevant-directories-to-sat_solver-RUNPATHs.patch
+- Use PIP_NO_INDEX instead of
+  0001-Do-not-try-to-download-ortools-wheel.patch
+
+-------------------------------------------------------------------
 Fri Nov 25 12:12:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with SWIG 4.1

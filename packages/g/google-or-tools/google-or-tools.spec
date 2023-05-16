@@ -1,7 +1,7 @@
 #
 # spec file for package google-or-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,22 +20,18 @@
 %bcond_without tests
 
 Name:           google-or-tools
-Version:        9.4
+Version:        9.6
 Release:        0
 License:        Apache-2.0
 Summary:        Suite for solving combinatorial optimization problems
 URL:            https://developers.google.com/optimization/
 Group:          Development/Languages/C++
 Source:         https://github.com/google/or-tools/archive/refs/tags/v%{version}.tar.gz#/google-or-tools-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE
-Patch2:         0001-Do-not-try-to-download-ortools-wheel.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/google/or-tools/issues/3429
-Patch3:         https://github.com/google/or-tools/commit/7072ae92ec204afcbfce17d5360a5884c136ce90.patch#/do_not_call_pdlp_solve_test.patch
 # PATCH-FIX-UPSTREAM - remove bad entries from RUNPATHs
 Patch5:         0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
 Patch6:         0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
-Patch7:         0003-Reuse-common-add_cxx_example-function-for-Sat-Runner.patch
-BuildRequires:  abseil-cpp-devel
+Patch7:         0003-Only-add-relevant-directories-to-sat_solver-RUNPATHs.patch
+BuildRequires:  abseil-cpp-devel >= 20230105.0
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
@@ -46,12 +42,14 @@ BuildRequires:  python3-mypy-protobuf
 BuildRequires:  python3-numpy >= 1.13.1
 BuildRequires:  python3-pandas
 BuildRequires:  python3-pybind11-devel
+BuildRequires:  python3-pytest
+BuildRequires:  python3-scipy >= 1.10.0
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-virtualenv
 BuildRequires:  python3-wheel
-BuildRequires:  swig
+BuildRequires:  swig >= 4.1.1
 BuildRequires:  pkgconfig(eigen3)
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf) >= 3.21.12
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
 
@@ -63,6 +61,8 @@ integer and linear programming, and constraint programming.
 %package -n python3-ortools
 Summary:        Suite for solving combinatorial optimization problems
 Group:          Development/Languages/Python
+Requires:       python3-absl-py
+Requires:       python3-numpy
 
 %description -n python3-ortools
 Python3 bindings for the OR-Tools suite, for solving combinatorial
@@ -101,14 +101,15 @@ Development files (C/C++) for the OR-Tools suite.
 
 %prep
 %autosetup -p1 -n or-tools-%{version}
-# Fix incompatibility with SWIG 4.1, https://github.com/google/or-tools/issues/3519
-find -iname \*CMakeLists.txt -exec sed -i -e '/COMPILE_DEFINITIONS/ s@ABSL_MUST_USE_RESULT@@g' '{}' \;
-sed -i -e '/FLAGS/ s@ABSL_MUST_USE_RESULT@ABSL_MUST_USE_RESULT="[[nodiscard]]" @g' cmake/python.cmake
+# Allow doc install
+sed -i -e '/CMAKE_DEPENDENT_OPTION(INSTALL_DOC/ s/BUILD_CXX AND BUILD_DOC/BUILD_CXX/' CMakeLists.txt
 
 %build
+export PIP_NO_INDEX=1
 %global optflags %{optflags} -Wno-error=return-type
 %cmake \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name}/ \
+  -DINSTALL_DOC:BOOL=ON \
   -DBUILD_DEPS:BOOL=OFF \
   -DBUILD_pybind11:BOOL=OFF \
   -DBUILD_PYTHON:BOOL=ON \
@@ -133,12 +134,17 @@ rmdir %{buildroot}/%{python3_sitearch}/ortools/.libs
 %check
 # https://github.com/google/or-tools/issues/3461
 sed -i -e 's/max_time_in_seconds = 15.0/max_time_in_seconds = 30.0/' examples/python/prize_collecting_vrp_sat.py
-# Test using e.g. SCIP are not skipped, exclude
 %if %{with tests}
-%define known_fail 'python.*mip|python_contrib.*|python_linear_solver_integer_programming_example|python_python_appointments|python_python_steel_mill_slab_sat|cxx_tests_issue173|python_tests_dual_loading|python_tests_pywraplp_test'
+# Tests using e.g. SCIP are not skipped, exclude
+# https://github.com/google/or-tools/issues/3261
+%define known_fail 'python.*mip|python_contrib.*|python_linear_solver_integer_programming_example|python_python_appointments|python_python_steel_mill_slab_sat|cxx_tests_issue173|python_tests_dual_loading|python_tests_pywraplp_test|python_linear_solver_model_builder_test'
 %if %{__isa_bits} == 32
 %ctest --exclude-regex %{known_fail} || true
 %else
+echo "Run tests known to fail"
+%ctest --include-regex %{known_fail} || true
+echo "Run good tests"
+# More tests depending on SCIP
 %ctest --exclude-regex %{known_fail}
 %endif
 %endif

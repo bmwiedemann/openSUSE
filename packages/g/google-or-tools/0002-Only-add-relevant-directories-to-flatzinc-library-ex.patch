@@ -1,4 +1,4 @@
-From 98a0b0b08ff4ade9c819918db77d6092738b82cf Mon Sep 17 00:00:00 2001
+From 283756dfec1c4ea8ac4d83403edf6b504eb8d43d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Fri, 15 Jul 2022 17:02:31 +0200
 Subject: [PATCH 2/3] Only add relevant directories to flatzinc
@@ -59,5 +59,5 @@ index 27cef073f7..c6ee1f879b 100644
  
  # Parser-main Binary
 -- 
-2.37.1
+2.40.1
 
