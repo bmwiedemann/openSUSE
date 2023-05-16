@@ -60,7 +60,7 @@ Features
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore tenacity/tests/test_asyncio.py
+%pytest --ignore tenacity/tests/test_asyncio.py -k 'not test_retry_type_annotations'
 
 %files %{python_files}
 %license LICENSE

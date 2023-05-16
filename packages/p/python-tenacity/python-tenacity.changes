@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 13:57:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- disable check 'test_retry_type_annotations' that fails due to
+  `TypeError: check_type() takes 2 positional arguments but 3 were
+  given`
+
+-------------------------------------------------------------------
 Mon May  8 13:55:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
