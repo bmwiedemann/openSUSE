@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Tue May 16 10:42:25 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.2:
+  * Fix keyboard arg parsing
+  * Correct brace and bracket output
+  * Add output zsh completions
+  * Add output management protocol
+  * Add support for modifiers
+  * keyboard: unbreak build without memfd_create
+  * Support foreign toplevel v3
+  * zsh complete multiple toplevel addrs
+
+-------------------------------------------------------------------
+Tue Nov  8 08:41:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update _service file
+  * Get tag not git revision
+- Use proper version 0.2.1
+
+-------------------------------------------------------------------
+Mon Aug 10 06:57:58 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.1:
+  * fix typo that completely broke the mainloop
+
+-------------------------------------------------------------------
+Thu Aug  6 06:04:52 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * implement toplevel wait action
+  * implement positive toplevel state matching
+  * implement toplevel waitfor action
+  * implement negative toplevel state matching
+  * improve keymap compatibility
+  * cleanups
+
+-------------------------------------------------------------------
+Thu Jul 30 09:31:51 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Package manpage
+
+-------------------------------------------------------------------
+Thu Jul 30 07:07:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of wlrctl 0.1.1 for openSUSE
