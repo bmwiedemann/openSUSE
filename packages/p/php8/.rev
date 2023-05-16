@@ -477,4 +477,19 @@
   https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/4ADCEV2FII7J5FZEWREFETTEVX7CDUSR/</comment>
     <requestid>1086013</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a0cc868510d57177f99d14920fb554eb</srcmd5>
+    <version>8.1.19</version>
+    <time>1684239346</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.19
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.1.19
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-ini.patch (refreshed)
+  % php-systzdata-v23.patch (refreshed)</comment>
+    <requestid>1087146</requestid>
+  </revision>
 </revisionlist>

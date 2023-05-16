@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 12 10:28:10 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.1.19
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.1.19
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-ini.patch (refreshed)
+  % php-systzdata-v23.patch (refreshed)
+
+-------------------------------------------------------------------
 Wed May 10 06:40:59 UTC 2023 - pgajdos@suse.com
 
 - downgrade back to 8.1.18
