@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 11 16:44:38 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use a larger font for xterm during installation via X resources
+  (bsc#1211267)
+  Details: https://github.com/yast/yast-installation/pull/1085
+  4.6.3
+
+-------------------------------------------------------------------
 Mon Apr  3 12:04:23 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - yupdate - improved Live ISO detection, added "--force" option
