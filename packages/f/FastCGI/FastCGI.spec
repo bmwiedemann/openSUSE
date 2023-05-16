@@ -1,7 +1,7 @@
 #
 # spec file for package FastCGI
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,8 +23,8 @@ Release:        0
 Summary:        A Scalable, Open Extension to CGI
 License:        OML
 Group:          Development/Languages/C and C++
-Url:            http://www.fastcgi.com
-Source:         http://www.fastcgi.com/dist/fcgi.tar.bz2
+URL:            https://fastcgi-archives.github.io/
+Source:         https://github.com/FastCGI-Archives/fcgi2/archive/%{version}.tar.gz
 Source1:        README.supervise
 Patch0:         FastCGI-makefile.am_cppflags.patch
 Patch1:         FastCGI-clientdata_pointer.patch
@@ -34,6 +34,7 @@ Patch4:         FastCGI-gcc44.patch
 Patch5:         FastCGI-perl514.patch
 Patch6:         FastCGI-fix_deprecated_api.patch
 Patch7:         FastCGI-perl526.patch
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl
@@ -70,7 +71,7 @@ APIs.
 Summary:        A scalable, open extension to CGI
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} < 1120 
+%if 0%{?suse_version} < 1120
 Requires:       perl >= 5.8.0
 %else
 %{perl_requires}
@@ -82,7 +83,7 @@ provides high performance without the limitations of server specific
 APIs.
 
 %prep
-%setup -n fcgi-%{version}
+%setup -n fcgi2-%{version}
 %patch0
 %patch1
 %patch2
@@ -93,12 +94,20 @@ APIs.
 %patch7 -p1
 touch NEWS AUTHORS ChangeLog COPYING
 find doc/{fastcgi-prog-guide,fastcgi-whitepaper} -type f -print0 | xargs -r0 chmod 0644
+cp include/fcgi_config.h.in .
+cp include/fcgi_config.h.in perl
 
 %build
-autoreconf -fi
+libtoolize --force
+aclocal
+automake --add-missing
+autoconf
 %configure --disable-static --includedir=%{_includedir}/fastcgi
 make all
 pushd perl
+    libtoolize --force
+    aclocal -I..
+    autoconf
     %configure --disable-static --includedir=%{_includedir}/fastcgi
     %{__perl} Makefile.PL
     make %{?_smp_mflags} all

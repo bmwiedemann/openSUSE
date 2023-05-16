@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 11 15:44:16 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix url for website and source, upstream is dead for a while.
+
+-------------------------------------------------------------------
 Sun Sep 24 08:10:16 UTC 2017 - coolo@suse.com
 
 - add FastCGI-perl526.patch as perl 5.26 no longer has . in @INC
