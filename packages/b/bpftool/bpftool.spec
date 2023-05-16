@@ -16,18 +16,31 @@
 #
 
 
-%define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 Name:           bpftool
-Version:        %{version}
+Version:        7.2.0
 Release:        0
-Patch0:         binutils-2.40.patch
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://www.kernel.org/
+Source0:        https://github.com/libbpf/bpftool/releases/download/v%{version}/bpftool-libbpf-v%{version}-sources.tar.gz
+Patch0:         binutils-2.40.patch
+Patch1:         0001-bpftool-use-a-local-copy-of-perf_event-to-fix-access.patch
+Patch2:         0002-bpftool-define-a-local-bpf_perf_link-to-fix-accessin.patch
+Patch3:         0003-bpftool-use-a-local-bpf_perf_event_value-to-fix-acce.patch
+Patch4:         0004-bpftool-Use-a-local-copy-of-BPF_LINK_TYPE_PERF_EVENT.patch
 BuildRequires:  binutils-devel
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%if 0%{?sle_version} < 150400
+BuildRequires:  clang12-devel
+%else
+BuildRequires:  clang13-devel
+%endif
+%else
+BuildRequires:  clang-devel
+%endif
 BuildRequires:  docutils
-BuildRequires:  kernel-source
+BuildRequires:  libcap-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
 
@@ -45,48 +58,33 @@ Supplements:    (%{name} and bash-completion)
 %description bash-completion
 bash command line completion support for bpftool.
 
-%package rebuild
-Summary:        Empty package to ensure rebuilding bpftool in OBS
-Group:          System/Monitoring
-%requires_eq    kernel-source
-
-%description rebuild
-This is empty package that ensures bpftool is rebuilt every time
-kernel-default is rebuilt in OBS.
-
-There is no reason to install this package.
-
 %prep
-(cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} kernel/bpf lib) | tar -xf -
-cp %{_prefix}/src/linux/LICENSES/preferred/GPL-2.0 .
-sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' Makefile
-%patch0 -p1
+%autosetup -p1 -n %{name}
+sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' src/Makefile
 
 %build
-cd tools/bpf/bpftool
-%make_build \
+%make_build -C src V=1 \
     feature-reallocarray=1 \
     feature-libbfd-liberty=1 \
 %if %(if gcc -lsframe -shared 2>/dev/null ; then echo 1 ; else echo 0; fi; )
     feature-libbfd-liberty-sframe=1 \
 %endif
     feature-disassembler-four-args=1 \
-    all \
-    doc
+    all
+%make_build -C docs V=1 \
+    man
 
 %install
-cd tools/bpf/bpftool
-make install doc-install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir}
+make -C src  V=1 install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir}
+make -C docs V=1 install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir}
 
 %files
-%license GPL-2.0
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.GPL-2.0
+%doc README.md CHECKPOINT-COMMIT BPF-CHECKPOINT-COMMIT
 %{_sbindir}/bpftool
 %{_mandir}/man?/*.gz
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/bpftool
-
-%files rebuild
-%license GPL-2.0
 
 %changelog

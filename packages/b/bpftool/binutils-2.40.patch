@@ -1,7 +1,7 @@
 diff --git a/tools/bpf/bpftool/Makefile b/tools/bpf/bpftool/Makefile
 index f610e184ce02..21cd7505e871 100644
---- a/tools/bpf/bpftool/Makefile
-+++ b/tools/bpf/bpftool/Makefile
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -154,6 +154,8 @@ else
    # Fall back on libbfd
    ifeq ($(feature-libbfd),1)

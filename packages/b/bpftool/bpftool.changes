@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 29 17:35:09 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to out-of-tree version 7.2.0
+- Use release tarball that includes the specific copy of libbpf that is needed
+  to build bpftool
+- Fix build on Linux 5.14
+  + 0001-bpftool-use-a-local-copy-of-perf_event-to-fix-access.patch
+  + 0002-bpftool-define-a-local-bpf_perf_link-to-fix-accessin.patch
+  + 0003-bpftool-use-a-local-bpf_perf_event_value-to-fix-acce.patch
+  + 0004-bpftool-Use-a-local-copy-of-BPF_LINK_TYPE_PERF_EVENT.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 08:15:33 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add -lzstd as libbfd is linked against the compression library.
