@@ -1,7 +1,7 @@
 <services>
   <service name="download_files" mode="disabled" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">xplr-0.20.2.tar.gz</param>
+     <param name="srctar">xplr-0.21.1.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

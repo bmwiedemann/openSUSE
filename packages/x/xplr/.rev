@@ -39,4 +39,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067871</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>474a37416e53a268705cc23289a4d24d</srcmd5>
+    <version>0.21.1</version>
+    <time>1684239390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.1:
+  * SelectAll and ToggleSelectAll (i.e. ctrl-a) in a new directory 
+    will extend, instead of replace, the existing selected paths.
+  * Fixed a UI bug causing random characters to turn bold.
+</comment>
+    <requestid>1087297</requestid>
+  </revision>
 </revisionlist>
