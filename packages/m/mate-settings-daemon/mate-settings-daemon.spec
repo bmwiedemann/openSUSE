@@ -1,7 +1,7 @@
 #
 # spec file for package mate-settings-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 %define _version 1.26
-
 Name:           mate-settings-daemon
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE session settings daemon
-Group:          System/GUI/Other
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme

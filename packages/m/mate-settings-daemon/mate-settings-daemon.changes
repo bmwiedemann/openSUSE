@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * Relax High DPI limits.
+  * mate-settings-manager: Fix memory leak.
+  * datetime: Fix memory leak.
+  * xrandr: Fix typo.
+  * Update translations.
+
+-------------------------------------------------------------------
 Tue Aug 10 07:08:51 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
