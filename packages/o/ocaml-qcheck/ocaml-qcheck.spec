@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-qcheck
 Name:           %pkg%nsuffix
-Version:        0.20
+Version:        0.21
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
@@ -38,7 +38,7 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/qcheck
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
-BuildRequires:  ocaml-dune >= 2.2
+BuildRequires:  ocaml-dune >= 2.8
 BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(ounit2)
