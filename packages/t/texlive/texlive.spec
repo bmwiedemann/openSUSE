@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   204
+%define texlive_noarch   208
 %define texlive_source   texlive-20230311-source
 %define biber_version    2.19
 
@@ -272,6 +272,8 @@ Patch45:        biblatex-ms-missing.dif
 Patch47:        biber-perl-5.18.2.dif
 #
 Patch50:        luametatex.dif
+# PATCH-SECURITY: VUL-0: CVE-2023-32700: texlive: Arbitrary code execution in LuaTeX
+Patch51:        source-luatex.dif
 # PATCH-FIX-SUSE Let it build even without ls-R files around
 Patch62:        source-psutils-kpathsea.dif
 # Missed luajit fix for ppc/ppc64/ppc64le and riscv64
@@ -4116,6 +4118,7 @@ pushd ../luametatex*
 %patch50 -p0 -b .unicode
 popd
 %endif
+%patch51
 %if %{with buildbiber}
 pushd ../biber-*/
 /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .

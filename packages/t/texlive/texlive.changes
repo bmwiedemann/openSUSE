@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 15 12:31:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-luatex.dif
+  * Update to luatex 1.17.0 with the fixes for CVE-2023-32668 and
+    CVE-2023-32700 (bsc#1211389) VUL-0: TeXLive: Arbitrary code
+    execution in LuaTeX
+
+-------------------------------------------------------------------
 Fri May  5 07:02:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Link target of /usr/bin/rungs changed suffix from tlu to lua (boo#1211116)

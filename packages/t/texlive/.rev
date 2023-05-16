@@ -1071,4 +1071,15 @@
     <comment>- Link target of /usr/bin/rungs changed suffix from tlu to lua (boo#1211116)</comment>
     <requestid>1084982</requestid>
   </revision>
+  <revision rev="87" vrev="90">
+    <srcmd5>726119f07efe4f0afb89ca133825f3c9</srcmd5>
+    <version>unknown</version>
+    <time>1684239358</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch source-luatex.dif
+  * Update to luatex 1.17.0 with the fixes for CVE-2023-32668 and
+    CVE-2023-32700 (bsc#1211389) VUL-0: TeXLive: Arbitrary code
+    execution in LuaTeX</comment>
+    <requestid>1087241</requestid>
+  </revision>
 </revisionlist>
