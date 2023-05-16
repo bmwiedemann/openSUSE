@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 12:50:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file and correct incorrect Requires (fix
+  bsc#1210547).
+- Make tests working.
+
+-------------------------------------------------------------------
 Fri Feb 19 06:49:45 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to python singlespec

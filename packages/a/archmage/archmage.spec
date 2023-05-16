@@ -1,7 +1,7 @@
 #
 # spec file for package archmage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,22 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/dottedmag/archmage
 Source:         https://github.com/dottedmag/archmage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python3-beautifulsoup4
-Requires:       python3-pychm
-Requires:       python3-setuptools
-Requires:       python3-sgmllib3k
+Requires:       python-beautifulsoup4
+Requires:       python-pychm
+Requires:       python-sgmllib3k
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module pychm}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sgmllib3k}
+# /SECTION
 %ifpython38
 Provides:       archmage = %{version}
 Obsoletes:      archmage < %{version}
@@ -49,15 +55,18 @@ the format used by Microsoft HTML Help, and is also known as Compiled HTML.
 
 %build
 echo %{version} > RELEASE-VERSION
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 install -Dpm 0644 %{name}.1 \
   %{buildroot}%{_mandir}/man1/%{name}.1
 %python_clone -a %{buildroot}%{_bindir}/archmage
 %python_clone -a %{buildroot}%{_mandir}/man1/archmage.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %post
 %python_install_alternative archmage
@@ -70,6 +79,7 @@ install -Dpm 0644 %{name}.1 \
 %doc AUTHORS NEWS README.md
 %python_alternative %{_bindir}/archmage
 %python_alternative %{_mandir}/man1/archmage.1%{?ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/archmage
+%{python_sitelib}/archmage-%{version}*-info
 
 %changelog
