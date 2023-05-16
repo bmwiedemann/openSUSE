@@ -1,7 +1,7 @@
 #
 # spec file for package pluma
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,14 @@
 
 %define typelib typelib-1_0-Pluma-1_0
 %define _version 1.26
-
 Name:           pluma
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Text editor for the MATE desktop
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-Source99:       https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz.sha256sum
-# PATCH-FIX-UPSTREAM pluma-1.26.0-fix-segfault.patch boo#1200853 -- Fix out-of-bounds write (commit 413f9e46).
-Patch0:         pluma-1.26.0-fix-segfault.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  mate-common >= %{_version}
@@ -88,7 +84,7 @@ documents in one window.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
 sed -i '1s/python$/python3/' plugins/externaltools/data/switch-c.tool.in
 
 %build

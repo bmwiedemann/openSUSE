@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * Fix out-of-bounds write.
+  * Fix double activation of extensions.
+  * pluma-plugins-engine: Fix memory leak.
+  * Update translations.
+- Remove pluma-1.26.0-fix-segfault.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Aug 18 15:33:12 UTC 2022 - Dura-Kovács <balping314@gmail.com>
 
 - Add pluma-1.26.0-fix-segfault.patch: Fix out of bounds write bug
