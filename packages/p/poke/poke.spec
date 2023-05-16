@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           poke
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 14 11:51:52 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Update to 3.2:
+  * Fix value returned by the libpoke function pk_load
+  * Fix a very annoying regression that resulted in a segfault when
+    doing l-value maps of struct values having anonymous fields
+
+-------------------------------------------------------------------
 Mon Apr 17 16:53:57 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.1:
