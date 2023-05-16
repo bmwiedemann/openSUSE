@@ -103,9 +103,11 @@ sed -i "s|hx|helix|g" contrib/Helix.desktop
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 target/release/hx %{buildroot}%{_bindir}/%{name}
-
 install -d -m 0755 %{buildroot}%{_helix_runtimedir}
+
+install -m 0755 target/release/hx %{buildroot}%{_libdir}/%{name}/hx
+ln -sfv --relative "%{_libdir}/%{name}/hx" "%{buildroot}%{_bindir}/helix"
+
 cp -av "runtime/queries" %{buildroot}%{_helix_runtimedir}
 cp -av "runtime/themes" %{buildroot}%{_helix_runtimedir}
 find "%{_builddir}/%{name}-%{version}/runtime/grammars" -type f -name '*.so' -exec \
@@ -141,6 +143,9 @@ install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{bu
 # Tutor
 %dir %{_helix_runtimedir}
 %{_helix_runtimedir}/tutor
+
+# Executable
+%{_libdir}/%{name}/hx
 
 %files runtime
 # Runtimes and runtime files
