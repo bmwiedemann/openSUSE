@@ -1,7 +1,7 @@
 #
 # spec file for package atril
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,19 @@
 %define typelib2 typelib-1_0-AtrilView-1_5_0
 %define sover   3
 %define _version 1.26
-
 Name:           atril
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
-URL:            https://mate-desktop.org/
 Group:          Productivity/Office/Other
+URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE atril-synctex-1.18.patch -- Restore SyncTeX 1.18 support.
-Patch0:         %{name}-synctex-1.18.patch
-# PATCH-FEATURE-OPENSUSE atril-glib-2.54.patch -- Restore GLib 2.54 support.
-Patch1:         %{name}-glib-2.54.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
+BuildRequires:  python3-libxml2
 BuildRequires:  texlive-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -66,11 +62,6 @@ Provides:       mate-document-viewer = %{version}
 Obsoletes:      mate-document-viewer < %{version}
 Obsoletes:      mate-document-viewer-lang < %{version}
 %glib2_gsettings_schema_requires
-%if 0%{?suse_version} >= 1550
-BuildRequires:  python3-libxml2
-%else
-BuildRequires:  python3-libxml2-python
-%endif
 
 %description
 Atril is a document viewer capable of displaying multiple and single
@@ -168,16 +159,16 @@ page document formats like PDF and Postscript.
 This package contains the Atril extension for the Caja file manager.
 
 %package doc
+Summary:        Documentation how to Use Atril
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
-Summary:        Documentation how to Use Atril
 BuildArch:      noarch
 
 %description doc
 This package contains the documentation for atril
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 NOCONFIGURE=1 mate-autogen

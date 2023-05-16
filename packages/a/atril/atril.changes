@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * epub: Add fallback for malformed epub files in check_mime_type.
+  * epub: Fix index loading for certain documents.
+  * Accessibility: Add button description.
+  * Preserve compatibility with older GLib versions.
+  * Update translations.
+- Drop atril-glib-2.54.patch, atril-synctex-1.18.patch.
+
+-------------------------------------------------------------------
 Sun Aug 22 10:44:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Make documentation noarch. Remove --with-pic because it has no
