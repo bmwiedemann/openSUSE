@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon May  8 15:31:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.4:
+  * Fix a false positive for ``bad-dunder-name`` when there is a
+    user-defined ``__index__`` method.
+  * ``pyreverse``: added escaping of vertical bar character in
+    annotation labels
+  * produced by DOT printer to ensure it is not treated as field
+    separator of record-based nodes.
+  * Fixed a crash when generating a configuration file:
+  * ``tomlkit.exceptions.TOMLKitError: Can't add a table to a
+    dotted key`` caused by tomlkit ``v0.11.8``.
+
+-------------------------------------------------------------------
+Mon May  8 13:57:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  4 19:37:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.3:
+  * Fix `unused-argument` false positive when `__new__` does not
+    use all the arguments of `__init__`.
+  * Fix ``unused-import`` false positive for usage of
+    ``six.with_metaclass``.
+  * `logging-not-lazy` is not longer emitted for explicitly
+    concatenated string arguments.
+  * Fix false positive for isinstance-second-argument-not-valid-
+    type when union types contains None.
+  * Fixed `unused-import` so that it observes the `dummy-
+    variables-rgx` option.
+  * `Union` typed variables without assignment are no longer
+    treated as `TypeAlias`.
+  * Fix false positive for ``positional-only-arguments-expected``
+    when a function contains both a positional-only parameter
+    that has a default value, and ``**kwargs``.
+  * Fix false positive for ``keyword-arg-before-vararg`` when a
+    positional-only parameter with a default value precedes ``*args``.
+  * Improve output of ``consider-using-generator`` message for
+    ``min()` calls with ``default`` keyword.
+
+-------------------------------------------------------------------
 Mon Apr 17 19:33:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.2:

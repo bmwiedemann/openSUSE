@@ -516,4 +516,12 @@
   * --clear-cache-post-run now also clears LRU caches for</comment>
     <requestid>1080001</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>56967a4e28b49eb70b57704a2edc2931</srcmd5>
+    <version>2.17.4</version>
+    <time>1684239377</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1087260</requestid>
+  </revision>
 </revisionlist>
