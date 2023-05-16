@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 15 09:57:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable GNULIB's year2038 also for 32-bit arm - boo#1211394
+
+-------------------------------------------------------------------
 Mon Apr 10 14:48:41 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Temporarily disable GNULIB's year2038 support for 64bit time_t

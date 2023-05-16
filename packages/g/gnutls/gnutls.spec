@@ -237,7 +237,7 @@ autoreconf -fiv
 %if %{with srp}
         --enable-srp-authentication \
 %endif
-%ifarch %{ix86}
+%ifarch %{ix86} %{arm}
         --disable-year2038 \
 %endif
         --enable-shared \
