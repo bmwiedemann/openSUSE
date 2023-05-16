@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 16 07:33:30 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.33.6:
+  * fix: Only create empty files if they have the empty_ attribute
+  * chore: Refactor internal handling of remove_ directories
+  * chore(editorconfig): Remove quotes from editorconfig file
+  * fix: Set CHEZMOI_SOURCE_DIR env var in init when using .chezmoiroot
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Fri May 12 10:39:19 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.33.5:
