@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>913159</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>030e9901d5ec3e9edaec84ce955b6c39</srcmd5>
+    <version>1.26.1</version>
+    <time>1684239396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1.</comment>
+    <requestid>1087316</requestid>
+  </revision>
 </revisionlist>
