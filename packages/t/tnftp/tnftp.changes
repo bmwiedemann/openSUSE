@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat May 13 18:52:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20230507
+  * Add timeout for SSL connection setup, defaulting to 60
+    seconds.
+  * Consistently use poll(2) instead of select(2).
+  * Check EAGAIN as well as EINTR.
+  * Simplify includes.
+- Update to version 20230409
+  * Add option sslnoverify to control validation of SSL
+    certificates.
+  * Add netrc processing to fetch-mode (URL on command line)
+    to enable options and autologin via netrc.
+  * Fix SSL cleanup in some error paths.
+  * Support SSL certificate validation by default.
+    FTPSSLNOVERIFY=1 in the environment to disable validation.
+  * Handle relative URLs.
+  * Improve ftp(1) markup.
+  * Fix -? in a more portable manner.
+
+-------------------------------------------------------------------
 Fri May 20 12:30:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20210827
