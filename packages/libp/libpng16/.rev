@@ -726,4 +726,12 @@
     <comment>- Fix license tag to libpng-2.0. (forwarded request 1080481 from fcrozat)</comment>
     <requestid>1080488</requestid>
   </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>4c20d17641d335aa15775b3f529819da</srcmd5>
+    <version>1.6.39</version>
+    <time>1684239347</time>
+    <user>dimstar_suse</user>
+    <comment>- do not use NEON instructions [bsc#1211176]</comment>
+    <requestid>1087176</requestid>
+  </revision>
 </revisionlist>

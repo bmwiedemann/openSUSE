@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 15 07:30:04 UTC 2023 - pgajdos@suse.com
+
+- do not use NEON instructions [bsc#1211176]
+
+-------------------------------------------------------------------
 Thu Apr 20 07:09:39 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Fix license tag to libpng-2.0.

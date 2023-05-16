@@ -106,7 +106,11 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 export CFLAGS="$CFLAGS -Og"
 %endif
 %configure \
-              --disable-static --enable-hardware-optimizations=yes
+              --enable-hardware-optimizations=yes \
+%ifarch armv6l armv6hl
+              --enable-arm-neon=no
+%endif
+              --disable-static
 %if %{asan_build}
 sed -i -e 's/^\(CFLAGS.*\)$/\1 -fsanitize=address/' \
        -e 's/\(^LIBS =.*\)/\1 -lasan/' Makefile
