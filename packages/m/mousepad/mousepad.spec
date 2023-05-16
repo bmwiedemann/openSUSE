@@ -18,21 +18,21 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://docs.xfce.org/apps/mousepad/start
-Source:         https://archive.xfce.org/src/apps/mousepad/0.5/mousepad-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/mousepad/0.6/mousepad-%{version}.tar.bz2
 BuildRequires:  appstream-glib
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.2
 BuildRequires:  pkgconfig(gmodule-2.0)  >= 2.56.2
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(libxfconf-0)
 
 %description
@@ -85,7 +85,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/applications/org.xfce.mousepad-settings.desktop
 %{_datadir}/glib-2.0/schemas/org.xfce.mousepad.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.xfce.mousepad.plugins.gspell.gschema.xml
-%{_datadir}/polkit-1/
 %{_datadir}/metainfo/org.xfce.%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/org.xfce.mousepad.*
 %dir %{_libdir}/%{name}

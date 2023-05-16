@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 13 18:49:35 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.6.1
+  * I18n: Update po/LINGUAS list
+  * build: Optionally require polkit
+  * build: Use m4_defined min versions and cleanup
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * menubar: Improve some strings
+  * search: Use consistent naming
+  * history: Properly restore multi-window session
+  * Restore opening mode only when it was overridden from the command
+    line
+  * Add "X of Y matches" to search bar and replace dialog (Closes #174)
+  * Add application/x-zerosize to supported mime types (Fixes #194)
+  * Apply opening mode also to the open dialog (Fixes #181)
+  * Properly reconnect signal handler when auto-reload is enabled
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Feb  9 18:10:40 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.6.0
