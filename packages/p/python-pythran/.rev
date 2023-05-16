@@ -68,4 +68,29 @@ now with fixed empty debuginfo extraction</comment>
   * Support axis parameter in numpy.argsort</comment>
     <requestid>1060837</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b862a7c44a8d254574b272c82bbf987a</srcmd5>
+    <version>0.13.1</version>
+    <time>1684239365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.1:
+  * Bump xsimd dependency to 11.0.0, with a backported patch.
+  * Improve performance of functions revieving scalar arguments.
+    This changes the internal function call API.
+  * Improve performance of fix-stride slicing, using a new slice
+    representation.
+  * Improve numpy.copyto performance, and detect copyto pattern usage.
+  * Force internal linkage of generated functions, which gives more
+    optimization room to the C++ compiler.
+  * Provide entry points pythran.import_pythrancode and
+    pythran.import_pythranfile, as a poor man JIT option.
+  * Optimize numpy.argmax(cst * val) into numpy.argmax(val) when cst is
+    positive.
+  * Avoid copies upon numpy.array_split
+  * Get rid of unused functions C++ warnings
+  * Avoid generating a loop footer when the loop index is not used
+    outside of the loop.
+- fix the test-flavor splitting for python311</comment>
+    <requestid>1087264</requestid>
+  </revision>
 </revisionlist>

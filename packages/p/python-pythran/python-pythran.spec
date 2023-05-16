@@ -17,35 +17,35 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test-py38"
-%define psuffix -test-py38
-%define skip_python39 1
-%define skip_python310 1
-%bcond_without test
-ExclusiveArch:  x86_64
-%endif
 %if "%{flavor}" == "test-py39"
 %define psuffix -test-py39
 %define skip_python38 1
 %define skip_python310 1
-%bcond_without test
-ExclusiveArch:  x86_64
+%define skip_python311 1
 %endif
 %if "%{flavor}" == "test-py310"
 %define psuffix -test-py310
 %define skip_python38 1
 %define skip_python39 1
-%bcond_without test
-ExclusiveArch:  x86_64
+%define skip_python311 1
+%endif
+%if "%{flavor}" == "test-py311"
+%define psuffix -test-py311
+%define skip_python38 1
+%define skip_python39 1
+%define skip_python310 1
 %endif
 %if "%{flavor}" == ""
 %define psuffix %{nil}
 %bcond_with test
+%else
+%bcond_without test
+ExclusiveArch:  x86_64
 %endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pythran%{psuffix}
-Version:        0.12.1
+Version:        0.13.1
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -129,7 +129,7 @@ export CFLAGS="%{optflags}"
 donttest="test_operator_intersection"
 # gh#serge-sans-paille/pythran#2044 NOT FIXED by gh#serge-sans-paille/pythran#2046
 donttest="$donttest or test_toolchain or test_cli"
-%pytest -n auto -k "not ($donttest)" -m "not module"
+%pytest %{?jobs:-n %jobs} -k "not ($donttest)" -m "not module"
 %endif
 
 %if !%{with test}

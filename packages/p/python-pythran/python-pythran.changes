@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May 15 15:19:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * Bump xsimd dependency to 11.0.0, with a backported patch.
+  * Improve performance of functions revieving scalar arguments.
+    This changes the internal function call API.
+  * Improve performance of fix-stride slicing, using a new slice
+    representation.
+  * Improve numpy.copyto performance, and detect copyto pattern usage.
+  * Force internal linkage of generated functions, which gives more
+    optimization room to the C++ compiler.
+  * Provide entry points pythran.import_pythrancode and
+    pythran.import_pythranfile, as a poor man JIT option.
+  * Optimize numpy.argmax(cst * val) into numpy.argmax(val) when cst is
+    positive.
+  * Avoid copies upon numpy.array_split
+  * Get rid of unused functions C++ warnings
+  * Avoid generating a loop footer when the loop index is not used
+    outside of the loop.
+- fix the test-flavor splitting for python311
+
+-------------------------------------------------------------------
 Wed Jan 25 10:22:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.1:
