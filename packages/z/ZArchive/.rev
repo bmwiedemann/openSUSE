@@ -15,4 +15,12 @@
     <comment>- Build also for Leap</comment>
     <requestid>1085005</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f7007fdba2f639b37cfdd950a2e332f1</srcmd5>
+    <version>0.1.2+git20220908.d2c7177</version>
+    <time>1684239404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087323</requestid>
+  </revision>
 </revisionlist>

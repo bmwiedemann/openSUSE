@@ -24,6 +24,8 @@ Summary:        Library and program for creating and reading .zar files
 License:        MIT-0
 URL:            https://github.com/Exzap/ZArchive
 Source0:        ZArchive-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE
+Patch1:         use_pkgconfig_for_zstd.patch
 BuildRequires:  cmake >= 3.15
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc12-c++
@@ -49,7 +51,7 @@ Requires:       %{libpackage} = %{version}
 This subpackage contains the devel files for ZArchive
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} < 1550
