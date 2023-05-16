@@ -18,7 +18,7 @@
 
 
 Name:           memtest86+
-Version:        6.10
+Version:        6.20
 Release:        0
 Summary:        Memory Testing Image for x86 Architecture
 License:        BSD-3-Clause

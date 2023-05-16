@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 13 10:30:43 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Revert change from Mon Mar 13, as this prevents the use of memtest
+  and memtest is no longer displayed in the boot menu.
+
+-------------------------------------------------------------------
+Sat May 13 10:08:09 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.20
+  - Add support for Alder Lake-N CPUs
+  - Add support for VIA VT8233(A)/VT8237
+  - Add support for nVidia nForce 3
+  - Add support for ALi M1533/1543(C)/1535
+  - Add temperature reporting on AMD K8 CPUs
+  - Add some JEDEC Manufacturers
+  - Better handling of SPD reading on Mobile CPUs
+  - Fix APIC Timer fail on some mobile platforms
+  - Fix older CPU (P5/P6-class) detection
+
+-------------------------------------------------------------------
+Mon Mar 13 11:29:33 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- don't install files in /boot. The OS needs to stay in /usr
+
+-------------------------------------------------------------------
 Wed Feb  8 09:50:09 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - add pesign magic

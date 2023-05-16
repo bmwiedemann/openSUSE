@@ -325,4 +325,12 @@ The main modification of the package is:
   memtest86+-5.31b-discard-note_gnu_property.patch</comment>
     <requestid>1063852</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1f17dc032faee1a858229715b975f2e3</srcmd5>
+    <version>6.20</version>
+    <time>1684239362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087247</requestid>
+  </revision>
 </revisionlist>
