@@ -154,4 +154,14 @@
   * Switch to tools.deps 0.18.1335</comment>
     <requestid>1077100</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8d579ca9cc9bf69adbd40c5643af83f3</srcmd5>
+    <version>1.11.1.1290</version>
+    <time>1684239405</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1.1290:
+  * add release and promote actions
+  * set aws region in workflows</comment>
+    <requestid>1087337</requestid>
+  </revision>
 </revisionlist>

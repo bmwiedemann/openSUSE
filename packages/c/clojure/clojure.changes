@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 16 06:40:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1.1290:
+  * add release and promote actions
+  * set aws region in workflows
+
+-------------------------------------------------------------------
 Mon Apr  3 21:55:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.1.1273:
