@@ -1513,7 +1513,6 @@ unsorted:
   - bpfmon 
   - bpftool 
   - bpftool-bash-completion 
-  - bpftool-rebuild 
   - bpftrace 
   - bpftrace-tools 
   - bpm-tools 
@@ -45582,6 +45581,7 @@ unsorted:
   - wlopm 
   - wlr-randr 
   - wlr-sunclock 
+  - wlrctl 
   - wlroots-devel 
   - wlroots10-devel 
   - wlsunset 
@@ -46207,7 +46207,6 @@ unsorted:
   - yast2-iscsi-lio-server 
   - yast2-isns 
   - yast2-online-update-configuration 
-  - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration 
