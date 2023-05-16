@@ -1,8 +1,30 @@
 -------------------------------------------------------------------
+Mon May 15 17:47:34 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Lock vendored dependencies
+
+-------------------------------------------------------------------
+Thu May 11 20:55:38 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Lock cargo installation
+
+-------------------------------------------------------------------
+Sun May  7 15:56:35 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.13.2
+  Maintenance
+  * Use notify-rust with zbus instead of dbus and add
+    ncurses_backend feature flag
+  * Fix: gracefully handle invalid/not available DBus setups
+    causing crashes
+  * Update Nerdfont glyphs
+  * Dependency updates
+
+-------------------------------------------------------------------
 Sat Apr 15 15:04:26 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.13.1
-Maintenance
+  Maintenance
   * Disable ncspot default features for xtask to simplify build
   * Statusbar: Update nerdfont glyphs
   * Split up README

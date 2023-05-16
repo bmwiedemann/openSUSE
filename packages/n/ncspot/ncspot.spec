@@ -18,7 +18,7 @@
 
 
 Name:           ncspot
-Version:        0.13.1
+Version:        0.13.2
 Release:        0
 Summary:        Ncurses Spotify client
 License:        BSD-2-Clause
@@ -52,7 +52,7 @@ export NCURSES_RS_RUSTC_FLAGS="-L /usr/lib64/ncurses5"
 cargo build --release --locked %{?_smp_mflags}
 
 %install
-cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+cargo install --locked --no-track --root=%{buildroot}%{_prefix} --path .
 install -Dm 0644 misc/ncspot.desktop %{buildroot}/%{_datadir}/applications/ncspot.desktop
 %suse_update_desktop_file ncspot
 
