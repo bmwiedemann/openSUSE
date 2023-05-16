@@ -217,4 +217,12 @@
     <comment>added mention of patches added to package</comment>
     <requestid>1061649</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>973e997d586d776a15ae1185c0d75bcd</srcmd5>
+    <version>6.0.17</version>
+    <time>1684239393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087301</requestid>
+  </revision>
 </revisionlist>

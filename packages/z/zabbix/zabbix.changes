@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Mon May 15 16:46:46 UTC 2023 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest upstream release 6.0.17
+- New Features and Improvements
+  + ZBXNEXT-8334 Added Event-Driven Ansible media
+  + ZBXNEXT-8312 Increased TimescaleDB maximum supported version to 2.10
+  + ZBXNEXT-8317 Increased MariaDB maximum supported version to 10.11
+  + ZBXNEXT-7759 Added array and Buffer support to JavaScript btoa function and HttpRequest post/put methods
+  + ZBXNEXT-8071 Added sysdba, sysasm and sysoper login options to Zabbix agent 2
+    Oracle plugin and updated Oracle by Zabbix agent 2 template documentation
+  + ZBXNEXT-8241 Added support of signing data using rs256 to JavaScript engine
+  + ZBXNEXT-8208 Added storage accounts in azure template
+  + ZBXNEXT-8012 Implemented API token authentication in user.checkAuthentication method
+  + ZBXNEXT-8204 Added support of PHP 8.2
+  + ZBXNEXT-8170 Added AWS cloud templates
+  + ZBXNEXT-7923 Added templates for BMC Control-M integration
+  + ZBXNEXT-7775 Added Veeam backup and replication templates
+  + ZBXNEXT-8054 Updated MariaDB maximum supported version to 10.10
+  + ZBXNEXT-7951 Implemented configuration import improvements
+  + ZBXNEXT-8112 Added Line media type
+  + ZBXNEXT-8197 Added TimescaleDB v2.9.x support
+  + ZBXNEXT-7962 Fixed interfaces discovery rules in OPNsense, PFSense and TrueNAS templates
+  + ZBXNEXT-7615 Added hmac function for JavaScript
+  + ZBXNEXT-7977 Added Azure Microsoft SQL templates
+  + ZBXNEXT-8076 Added prof_enable and prof_disable commands for profiling
+  + ZBXNEXT-7963 Added a hint box to the "Enable HTTP authentication" field; added confirmation dialog box for enabling HTTP authentication
+  + ZBXNEXT-7886 Added Cisco Nexus 9000 Series Switches template
+  + ZBXNEXT-6119 Added the option to retrieve all JSON data from docker.container_info key in Zabbix agent 2 Docker plugin
+  + ZBXNEXT-7834 Added templates for Microsoft Azure and Azure virtual machines
+  + ZBXNEXT-8058 Reduced locking between history syncers, trappers and proxy pollers
+- Bug Fixes
+  + ZBX-22718 Fixed memory leak in json objects and identical keys
+  + ZBX-22719 Fixed replace() function in expressions
+  + ZBX-22720 Dropped support for custom geomap HTML attribution text
+  + ZBX-22589 Added new limits for JS objects
+  + ZBX-22521 Added debug logging for process selection in proc.mem[] on AIX
+  + ZBX-22373 Updated go.mod/sum to allow mixing session and key parameter for Zabbix agent 2 items
+  + ZBX-22241 Fixed minimum severity filter usage for map element link triggers
+  + ZBX-22194 Fixed inability to import a template with trigger dependency on a host trigger
+  + ZBX-22538 Fixed popup menus disappearing on right-clicking links in them
+  + ZBX-21583 Optimised preprocessing steps and added two graphs and dashboard in the Hadoop by HTTP template
+  + ZBX-19375 Prevented the ability to set a duplicate value for the uuid parameter when updating any of template
+    entities; added possibility to update the uuid parameter for the Service API; fixed duplicate UUIDs 
+    in Proxmox VE by HTTP template
+  + ZBX-21603 Optimised preprocessing steps in the Zookeeper by HTTP template
+  + ZBX-21589 Optimised SQL queries and preprocessing steps
+  + ZBX-22492 Removed limitation for size of logged messages in JS
+  + ZBX-22641 Updated deprecated ports in Kubernetes templates, updated target tags,
+    added notes about binding address options for Scheduler and Cluster Manager components
+  + ZBX-22306 Fixed the crash in Zabbix agent 2 when running out of available file descriptors
+  + ZBX-21013 Hid the option "Create new groups" for unprivileged users in the Import form
+  + ZBX-22219 Added validation to the "Server" IP/DNS option in the Zabbix agent 2 configuration
+  + ZBX-22627 Fixed loss of preprocessing result when step with delta is used
+  + ZBX-22304 Fixed duplication in web scenario error messages when curl cannot resolve host
+  + ZBX-21577 Added an extra master item prototype to the Elasticsearch Cluster by HTTP template
+    to reduce preprocessing worker utilization
+  + ZBX-20084 Fixed VMware parameters display
+  + ZBX-20699 Fixed the inability to import host prototypes containing SNMPv3 interface;
+    allowed to supply conditional parameters with default values to hostprototype.create and hostprototype.update API methods
+    when the parameters have no effect; added audit logging of changes to host prototypes when unlinking a template;
+    fixed the inability to remove group links or group prototypes from a host prototype of a linked template
+  + ZBX-22432 Fixed different severity paddings in trigger popups and maps triggers
+  + ZBX-22210 Fixed selected count when using filter and filtered parameter is changed in a popup
+  + ZBX-22533 Fixed debug section overlapping with 'Add new widget' placeholder in the dashboard
+  + ZBX-22331 Fixed messages when updating graph prototype discovery
+  + ZBX-22455 Added a check for numeric value in value mapping
+  + ZBX-22206 Fixed incorrect padding in multiselect popup contrast dark and light stylesheets
+  + ZBX-18527 Fixed the markup for Type of calculation expression field
+  + ZBX-22363 Added support for item and item_preproc table fields to be either nvarchar or nclob
+  + ZBX-22622 Fixed alert script path validation
+  + ZBX-22588 Fixed unauthorised file system access when using cURL
+  + ZBX-22097 Fixed exiting process when connection to the database is lost
+  + ZBX-21576 Optimized preprocessing in ClickHouse by HTTP template and added lld rule
+  + ZBX-21669 Added the possibility to filter System user in the audit log
+  + ZBX-22261 Added value mapping in the template PostgreSQL by Zabbix agent 2 for item Checksum failures
+  + ZBX-22413 Fixed autofocus for inherited web scenario edit
+  + ZBX-22507 Fixed positioning of the debug information on dashboards in the editing mode
+  + ZBX-22506 Fixed horizontal scrollbar occasionally appearing on Graph widgets
+  + ZBX-22512 Fixed occasional jumping of hint-boxes of Graph widgets, when made static
+  + ZBX-22403 Added license information to the Readme for Veeam Backup templates
+  + ZBX-21596 Optimized preprocessing steps in the Redis by Zabbix agent 2 template
+  + ZBX-22520 Fixed the versions of integrations
+  + ZBX-19466 Changed global script name validation to include a menu path into its scope of uniqueness check
+  + ZBX-22073 Fixed subfilters of the Latest data and Graphs occasionally hiding the selected options
+  + ZBX-22490 Fixed HttpRequest limit in JavaScript being reached even if all objects are destroyed
+  + ZBX-21578 Optimized HAProxy http/agent templates to spread the load across the workers
+  + ZBX-21906 Fixed recovery of dependent items when throttling is used
+  + ZBX-21723 Removed syslog LogType from config file for Zabbix agent 2 on Windows
+  + ZBX-22407 Fixed a crash when testing an item with the aggregated function count containing invalid argument
+  + ZBX-22056 Fixed the "No data found" message style in Monitoring->Problems
+  + ZBX-22026 Fixed SNMP agent item going to unsupported state on NULL result
+  + ZBX-22411 Fixed incorrect time in the dashboard Graph widget hintbox
+  + ZBX-21902 Emphasized the HTML type in the attribution field in the Administration->Geographical Maps
+  + ZBX-18288 Fixed undefined offset runtime error in the Graph prototype preview
+  + ZBX-21963 Fixed $ZBX_SERVER value being ignored unless $ZBX_SERVER_PORT is also defined
+  + ZBX-21802 Fixed Enabled button in the discovered calculated items
+  + ZBX-21642 Fixed a filter not clearing when clicking on a specific host in the Monitoring
+  + ZBX-22186 Fixed wrong color update after item order change in graphs
+  + ZBX-19339 Fixed import and export of dependent LLD rules if master item is a web item
+  + ZBX-21813 Fixed User role update page when an empty user role name has been submitted
+  + ZBX-22188 Changed parameters of the wmi.get and wmi.getall keys to mandatory
+  + ZBX-21238 Fixed the inability to update status and other fields of a templated item, item prototype
+    and discovery rule of script type
+  + ZBX-21834 Fixed the map navigation tree breaking if there is a disabled trigger used as a link indicator
+    between two elements in a map
+  + ZBX-22259 Fixed quoted parameter escaping in the trigger expression functions
+  + ZBX-22241 Fixed map link color and drawing style selection when multiple triggers are in the problem state
+  + ZBX-22203 Fixed the tabfilter item click event being executed at the end of the tabfilter sorting event in Firefox
+  + ZBX-22434 Fixed race condition when starting Zabbix agent 2 with loadable plugins
+  + ZBX-22229 Updated Zabbix web service dependencies
+  + ZBX-20801 Updated the Readme in Docker template
+  + ZBX-22298 Fixed metrics preprocessing in PVC discovery in Kubernetes cluster state by HTTP template,
+    removed non-existing PVC statuses, combined state phases into single phase metrics, added PV discovery
+  + ZBX-22079 Fixed "make clean" command when used from tar archive
+  + ZBX-22222 Fixed applying item value maps on already converted values
+  + ZBX-22402 Fixed data sending to Zabbix server from Zabbix agent2 persistent buffer
+  + ZBX-22240 Fixed selects of history and trends being able to block housekeeping
+  + ZBX-22240 Fixed selects of history and trends blocking drop_chunks
+  + ZBX-22078 Fixed the crash in calculated items when using tag filter on 32-bit systems
+  + ZBX-21591 Optimized JSONPaths in the Nginx Plus template
+  + ZBX-21739 Fixed discover status not being updated for templated graph prototype
+  + ZBX-21748 Fixed the background of the Close button in the message box for dark theme
+  + ZBX-19202 Fixed template dashboard availability to users without permissions to the templates
+  + ZBX-22189 Fixed Zabbix server crash appearing when only item tags change between LLD runs
+  + ZBX-21591 Optimized Nginx Plus by HTTP template to spread the load across worker processes
+  + ZBX-22032 Added the cookie engine to HTTP checks
+  + ZBX-21597 Optimized Remote Zabbix server health template to spread the load across worker processes, updated descriptions
+  + ZBX-21602 Optimized Zabbix server health template to spread the load across worker processes, updated descriptions
+  + ZBX-22149 Fixed wrong escaping in trigger expression during upgrade and escaping as a workaround for calculated items
+  + ZBX-22061 Fixed custom query parameter read on an empty parameter for Oracle plugin in Zabbix agent 2
+  + ZBX-21227 Improved error logging during agent start as a Windows service
+  + ZBX-22178 Fixed action operations being executed on the current host only if a host group is selected
+  + ZBX-22189 Fixed LLD Zabbix server crash
+  + ZBX-21538 Fixed history.get API method blocking drop_chunks requests during housekeeping
+  + ZBX-21956 Fixed severity sign overlapping trigger name in the map element configuration
+  + ZBX-22215 Fixed incorrectly quoted function parameter parsing
+  + ZBX-22043 Fixed the crash when array index in JSONPath is negative or large
+  + ZBX-22118 Fixed remote command execution sequence in Zabbix agent 2
+  + ZBX-21556 Updated Etcd by HTTP template to comply with Etcd v3.5
+  + ZBX-22133 Fixed closed pipe detection for communication with plugins in Windows
+  + ZBX-21936 Fixed actions not being displayed in the Action log widget
+  + ZBX-22164 Fixed quote and unquote methods for trigger functions
+  + ZBX-21254 Removed kernel.maxproc from the processes graph in Linux by Zabbix agent templates
+  + ZBX-21754 Improved value cache warmup when retrieving two last values with 1 day update interval
+  + ZBX-22077 Fixed Sign out link not working consistently in Mozilla Firefox
+  + ZBX-21862 Updated tablespaces query for Oracle plugin in Zabbix agent 2
+  + ZBX-21665 Fixed SMART plugin infinite loop for Zabbix agent 2
+  + ZBX-19138 Fixed Redis plugin configuration in Zabbix agent 2 configuration files
+  + ZBX-21592 Moved some static items under LLD rules to optimize Oracle by ODBC template
+  + ZBX-21069 Fixed SNMP max_vars not backing off when generr is received
+  + ZBX-21889 Fixed warnings being displayed even after enabling overrides for trends or history tables with compressed chunks
+  + ZBX-21563 Changed the order in which escalation steps and recovery operations are executed
+  + ZBX-22017 Fixed map navigation tree widget inability to save the order when the depth levels get changed
+  + ZBX-21961 Removed the unnecessary "Command:" label for message actions on the Event details page
+  + ZBX-21783 Fixed Zabbix JS timeout validation
+  + ZBX-21720 Fixed trends function cache size estimation and overallocation handling
+  + ZBX-21713 Fixed retrieval of the numeric column width when Oracle DB is used
+  + ZBX-22126 Fixed trends being deleted from cache and retrieved from the database when data older than 1 hour is received
+  + ZBX-22075 Fixed crash when Elasticsearch is used
+  + ZBX-21890 Fixed config.dbversion_status containing second empty object on PostgreSQL without TSDB
+  + ZBX-22138 Fixed inability to delete a group from the host prototype
+  + ZBX-21950 Updated script item to not require host interface during template linkage
+  + ZBX-21540 Moved some static items under LLD rules to improve performance in Oracle by Zabbix agent 2 template
+  + ZBX-21073 Added support of Int8Array(), Buffer() and also duktape plain buffers in md5, sha256 and hmac function parameters
+  + ZBX-22071 Extended description for OPSGenie media type
+  + ZBX-20845 Fixed SNMP interface availability in case of wrong credentials
+  + ZBX-21587 Added metrics for optimizing dependent items preprocessing in Jenkins template
+  + ZBX-21441 Added an override to skip metadata collection on zfs and btrfs for Nix templates
+  + ZBX-22016 Fixed host.get API method not returning any results for hosts with no interfaces when filtering by "hostid"
+  + ZBX-21927 Fixed a crash on Oracle database when connection is lost
+  + ZBX-21300 Fixed high CPU usage when using net.tcp.socket.count key on Windows
+  + ZBX-21793 Fixed error message for "diaginfo" runtime command
+  + ZBX-22042 Fixed inability to get the existing group prototypes by hostprototype.get API method when using Oracle database
+  + ZBX-21221 Increased character limit of task_result.info
+  + ZBX-21696 Fixed Windows agent 2 Unicode path support for log* items
+  + ZBX-21903 Fixed agent 2 timeout behavior for net.tcp.port item
+  + ZBX-21039 Fixed Readme in PostgreSQL by Zabbix agent 2 template
+  + ZBX-21922 Fixed expression macros to use corresponding item keys
+  + ZBX-21806 Fixed fatal PHP error in case incorrect variable type for controller action is given
+  + ZBX-21753 Fixed graphs not loading in kiosk mode
+  + ZBX-20413 Fixed the behavior of paging when a filter or a sub-filter is applied
+  + ZBX-21206 Updated plugin support dependency for Zabbix agent 2
+  + ZBX-20356 Updated Zabbix agent 2 to remove and re-add performance counters on failed collection and to keep a query always open
+  + ZBX-21296 Updated Oracle plugin, Oracle ODBC and agent 2 template documentation grant select variables and added a new grant
+  + ZBX-21595 Optimized RabbitMQ node templates
+  + ZBX-21884 Changed system.sw.packages[<package>,<manager>,<format>] to system.sw.packages[<regexp>,<manager>,<format>]
+  + ZBX-21594 Optimized RabbitMQ cluster templates
+  + ZBX-20050 Fixed broken macro value and type input when changing to/from inherited macros
+  + ZBX-21864 Fixed the fatal error in system warning page
+  + ZBX-20110 Added single field search option to the archive.info, ts.stats, pdb.info,
+    cdb.info and diskgroups.stats keys in Zabbix agent 2 Oracle plugin
+  + ZBX-21373 Fixed the agent sometimes crashing when enumerating system processes on OpenBSD
+
+-------------------------------------------------------------------
 Fri Jan 27 21:44:50 UTC 2023 - Boris Manojlovic <boris@steki.net>
 
 - mention of patches added required...
