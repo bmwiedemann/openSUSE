@@ -898,4 +898,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
   default maximum EDNS.0 UDP packet size should be 1232</comment>
     <requestid>1082695</requestid>
   </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>0237bfabcdc9255c5a8966576d9c63f0</srcmd5>
+    <version>2.89</version>
+    <time>1684239354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087210</requestid>
+  </revision>
 </revisionlist>

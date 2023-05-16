@@ -93,10 +93,11 @@ sed -i -e 's|lua5.2|lua%{lua_version}|' Makefile
 sed -i -e 's|The default is "dip",|The default is "dnsmasq",|' \
 	man/dnsmasq.8
 
-# SED-FIX-UPSTREAM -- Fix cachesize, group and user
+# SED-FIX-UPSTREAM -- Fix cachesize, group , user and pid location
 sed -i -e 's|CACHESIZ 150|CACHESIZ 2000|;
 	   s|CHUSER "nobody"|CHUSER "dnsmasq"|;
-	   s|CHGRP "dip"|CHGRP "dnsmasq"|' \
+	   s|CHGRP "dip"|CHGRP "dnsmasq"|;
+	   s|RUNFILE "/var/run/dnsmasq.pid"|RUNFILE "%{_rundir}/dnsmasq.pid"|' \
 	src/config.h
 
 # Tweaks to the default configuration:

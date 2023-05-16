@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 13 16:48:15 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Correct rundir from /var/run to /run for pid file
+
+-------------------------------------------------------------------
 Tue Apr 25 08:32:41 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1209358, CVE-2023-28450, dnsmasq-CVE-2023-28450.patch:
