@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           ristretto
-Version:        0.13.0
+Version:        0.13.1
 Release:        0lib
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ Patch0:         ristretto-add-mime-types.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-BuildRequires:  intltool
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools

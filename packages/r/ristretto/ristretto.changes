@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 13 18:55:08 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.13.1
+  * I18n: Update po/LINGUAS list
+  * Force g_file_query_info if magic_file returns
+    "application/octet-stream"
+  * build: Use m4_defined min versions and cleanup
+  * Replace XDT_CHECK_LIBX11 and guard x11 code paths
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Switch from intltool to gettext
+  * viewer: Paint background icon at window scale
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Feb  9 18:17:02 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.13.0
