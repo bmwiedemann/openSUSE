@@ -1954,6 +1954,7 @@ BuildFlags: onlybuild:hwloc
 BuildFlags: onlybuild:hyphen
 BuildFlags: onlybuild:ibmswtpm2
 BuildFlags: onlybuild:ibmtss
+BuildFlags: onlybuild:libtpms
 BuildFlags: onlybuild:ibus
 BuildFlags: onlybuild:iceauth
 BuildFlags: onlybuild:icmake
@@ -3243,6 +3244,7 @@ BuildFlags: onlybuild:suitesparse
 BuildFlags: onlybuild:superlu:serial
 BuildFlags: onlybuild:suse-module-tools
 BuildFlags: onlybuild:swig
+BuildFlags: onlybuild:swtpm
 BuildFlags: onlybuild:sysprof
 BuildFlags: onlybuild:sysstat
 BuildFlags: onlybuild:system-user-mktex
