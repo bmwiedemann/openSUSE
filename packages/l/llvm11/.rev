@@ -164,4 +164,25 @@
 </comment>
     <requestid>1076731</requestid>
   </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>5c8d30ae427cd3b2cfd245ea1bad62c6</srcmd5>
+    <version>11.0.1</version>
+    <time>1684239373</time>
+    <user>dimstar_suse</user>
+    <comment>- Always use ld.bfd for stage 1, and on Tumbleweed use lld for
+  stage 2 where we use ThinLTO and where it's supported, otherwise
+  ld.bfd (on s390x with LLVMgold.so), on ppc64 we disable ThinLTO
+  for now. On Leap/SLE we continue using gold for ThinLTO because
+  lld and ld.bfd don't quite work there yet. (Combining fixes for
+  boo#1181621 and boo#1210688.)
+- Using ld.bfd on s390x exposed an issue with the existing
+  llvm_build_tablegen_component_as_shared_library.patch: linking
+  llvm-tblgen with libLLVM.so means we also have to link libraries
+  used for that (like LLVMTableGenGlobalISel) with libLLVM.so.
+- Rewrite summary and description for llvm-gold to point out that
+  it can also be used with ld.bfd, recommend with binutils.
+- Ignore some test failures on s390x.
+</comment>
+    <requestid>1087215</requestid>
+  </revision>
 </revisionlist>

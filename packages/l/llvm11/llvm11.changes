@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May 13 14:49:58 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Always use ld.bfd for stage 1, and on Tumbleweed use lld for
+  stage 2 where we use ThinLTO and where it's supported, otherwise
+  ld.bfd (on s390x with LLVMgold.so), on ppc64 we disable ThinLTO
+  for now. On Leap/SLE we continue using gold for ThinLTO because
+  lld and ld.bfd don't quite work there yet. (Combining fixes for
+  boo#1181621 and boo#1210688.)
+- Using ld.bfd on s390x exposed an issue with the existing
+  llvm_build_tablegen_component_as_shared_library.patch: linking
+  llvm-tblgen with libLLVM.so means we also have to link libraries
+  used for that (like LLVMTableGenGlobalISel) with libLLVM.so.
+- Rewrite summary and description for llvm-gold to point out that
+  it can also be used with ld.bfd, recommend with binutils.
+- Ignore some test failures on s390x.
+
+-------------------------------------------------------------------
 Sat Apr  1 16:22:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add compiler-rt-D88922-nostdlib.patch
