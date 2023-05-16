@@ -17,11 +17,11 @@ Signed-off-by: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
  g10/import.c | 49 +++++++++++--------------------------------------
  1 file changed, 11 insertions(+), 38 deletions(-)
 
-Index: gnupg-2.3.0/g10/import.c
+Index: gnupg-2.4.0/g10/import.c
 ===================================================================
---- gnupg-2.3.0.orig/g10/import.c
-+++ gnupg-2.3.0/g10/import.c
-@@ -1876,7 +1876,6 @@ import_one_real (ctrl_t ctrl,
+--- gnupg-2.4.0.orig/g10/import.c
++++ gnupg-2.4.0/g10/import.c
+@@ -1954,7 +1954,6 @@ import_one_real (ctrl_t ctrl,
    size_t an;
    char pkstrbuf[PUBKEY_STRING_SIZE];
    int merge_keys_done = 0;
@@ -29,7 +29,7 @@ Index: gnupg-2.3.0/g10/import.c
    KEYDB_HANDLE hd = NULL;
  
    if (r_valid)
-@@ -1913,14 +1912,6 @@ import_one_real (ctrl_t ctrl,
+@@ -1991,14 +1990,6 @@ import_one_real (ctrl_t ctrl,
        log_printf ("\n");
      }
  
@@ -44,13 +44,12 @@ Index: gnupg-2.3.0/g10/import.c
    if (screener && screener (keyblock, screener_arg))
      {
        log_error (_("key %s: %s\n"), keystr_from_pk (pk),
-@@ -1999,19 +1990,10 @@ import_one_real (ctrl_t ctrl,
-             xfree(user);
+@@ -2078,18 +2069,10 @@ import_one_real (ctrl_t ctrl,
  	  }
      }
--
+ 
 -  /* Delete invalid parts and bail out if there are no user ids left.  */
--  if (!delete_inv_parts (ctrl, keyblock, keyid, options))
+-  if (!delete_inv_parts (ctrl, keyblock, keyid, options, otherrevsigs))
 -    {
 -      if (!silent)
 -        {
@@ -64,11 +63,11 @@ Index: gnupg-2.3.0/g10/import.c
 +  /* Delete invalid parts, and note if we have any valid ones left.
 +   * We will later abort import if this key is new but contains
 +   * no valid uids.  */
-+  delete_inv_parts (ctrl, keyblock, keyid, options);
++  delete_inv_parts (ctrl, keyblock, keyid, options, otherrevsigs);
  
    /* Get rid of deleted nodes.  */
    commit_kbnode (&keyblock);
-@@ -2021,24 +2003,11 @@ import_one_real (ctrl_t ctrl,
+@@ -2099,24 +2082,11 @@ import_one_real (ctrl_t ctrl,
      {
        apply_keep_uid_filter (ctrl, keyblock, import_filter.keep_uid);
        commit_kbnode (&keyblock);
@@ -93,7 +92,7 @@ Index: gnupg-2.3.0/g10/import.c
      }
  
    /* The keyblock is valid and ready for real import.  */
-@@ -2096,6 +2065,13 @@ import_one_real (ctrl_t ctrl,
+@@ -2174,6 +2144,13 @@ import_one_real (ctrl_t ctrl,
        err = 0;
        stats->skipped_new_keys++;
      }

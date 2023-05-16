@@ -1333,4 +1333,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>1029595</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>295857dd9204a4a3ec7952937cda148a</srcmd5>
+    <version>2.4.1</version>
+    <time>1684239356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087238</requestid>
+  </revision>
 </revisionlist>

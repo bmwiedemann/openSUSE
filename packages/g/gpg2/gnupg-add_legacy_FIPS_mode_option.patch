@@ -3,11 +3,11 @@
  g10/gpg.c    |    9 +++++++++
  2 files changed, 27 insertions(+)
 
-Index: gnupg-2.3.5/doc/gpg.texi
+Index: gnupg-2.4.1/doc/gpg.texi
 ===================================================================
---- gnupg-2.3.5.orig/doc/gpg.texi
-+++ gnupg-2.3.5/doc/gpg.texi
-@@ -2197,6 +2197,24 @@ implies, this option is for experts only
+--- gnupg-2.4.1.orig/doc/gpg.texi
++++ gnupg-2.4.1/doc/gpg.texi
+@@ -2285,6 +2285,24 @@ implies, this option is for experts only
  understand the implications of what it allows you to do, leave this
  off. @option{--no-expert} disables this option.
  
@@ -32,38 +32,37 @@ Index: gnupg-2.3.5/doc/gpg.texi
  @end table
  
  
-Index: gnupg-2.3.5/g10/gpg.c
+Index: gnupg-2.4.1/g10/gpg.c
 ===================================================================
---- gnupg-2.3.5.orig/g10/gpg.c
-+++ gnupg-2.3.5/g10/gpg.c
-@@ -443,6 +443,7 @@ enum cmd_and_opt_values
+--- gnupg-2.4.1.orig/g10/gpg.c
++++ gnupg-2.4.1/g10/gpg.c
+@@ -444,6 +444,7 @@ enum cmd_and_opt_values
      oForceSignKey,
      oForbidGenKey,
      oRequireCompliance,
 +    oSetLegacyFips,
- 
-     oNoop
-   };
-@@ -878,6 +879,7 @@ static gpgrt_opt_t opts[] = {
-   ARGPARSE_s_s (oDigestAlgo, "digest-algo", "@"),
-   ARGPARSE_s_s (oCertDigestAlgo, "cert-digest-algo", "@"),
-   ARGPARSE_s_n (oOverrideComplianceCheck, "override-compliance-check", "@"),
+     oCompatibilityFlags,
+     oAddDesigRevoker,
+     oAssertSigner,
+@@ -978,6 +979,7 @@ static gpgrt_opt_t opts[] = {
+   ARGPARSE_s_s (oNoop, "personal-aead-preferences","@"),
+   ARGPARSE_s_n (oNoop, "rfc4880bis", "@"),
+   ARGPARSE_s_n (oNoop, "override-compliance-check", "@"),
 +  ARGPARSE_s_n (oSetLegacyFips, "set-legacy-fips", "@"),
  
  
-   ARGPARSE_header (NULL, N_("Options for unattended use")),
-@@ -3737,6 +3739,14 @@ main (int argc, char **argv)
-             opt.flags.require_compliance = 1;
-             break;
+   ARGPARSE_group (302, N_(
+@@ -3743,6 +3745,13 @@ main (int argc, char **argv)
+             add_to_strlist (&opt.assert_signer_list, pargs.r.ret_str);
+ 	    break;
  
-+         case oSetLegacyFips:
-+           if(gcry_fips_mode_active())
-+             gcry_control (GCRYCTL_INACTIVATE_FIPS_FLAG,
-+                           "Enable legacy support in FIPS 140-2 mode");
-+           else
-+             log_info ("Command set-legacy-fips ignored as libgcrypt is not in FIPS mode\n");
-+           break;
-+
++    case oSetLegacyFips:
++      if(gcry_fips_mode_active())
++        gcry_control (GCRYCTL_INACTIVATE_FIPS_FLAG,
++                      "Enable legacy support in FIPS 140-2 mode");
++      else
++        log_info ("Command set-legacy-fips ignored as libgcrypt is not in FIPS mode\n");
++      break;
+ 
  	  case oNoop: break;
  
- 	  default:
