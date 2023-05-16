@@ -1,8 +1,8 @@
 #
 # spec file for package inxi
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2011-2022 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2011-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define _version 3.3.23-1
+%define _version 3.3.27-1
 Name:           inxi
-Version:        3.3.23
+Version:        3.3.27
 Release:        0
 Summary:        A system information script
 License:        GPL-3.0-or-later
