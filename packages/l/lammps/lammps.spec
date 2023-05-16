@@ -44,10 +44,12 @@ BuildRequires:  opencl-headers
 BuildRequires:  python3-devel
 BuildRequires:  voro++-devel
 BuildRequires:  zlib-devel
-%ifnarch ppc64 %ix86 %{arm}
-%global         with_kokkos 1
-BuildRequires:  kokkos-devel >= 3.2
-%endif
+# disable kokkos support until
+# kokkos-4 is supported
+# ifnarch ppc64 %ix86 %{arm}
+# global         with_kokkos 1
+# BuildRequires:  kokkos-devel >= 3.2
+# endif
 Requires:       %{name}-data
 
 %description

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 15 01:02:12 UTC 2023 - Christoph Junghans <junghans@votca.org>
+
+- Disable kokkos support until the next release will support
+  kokkos-4
+
+-------------------------------------------------------------------
 Wed Dec  7 18:33:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add Conflicts and Provides to allow upgrade of python package
