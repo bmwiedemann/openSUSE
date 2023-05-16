@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 14:10:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.24
+  * xt_geoip: bump number of territories per rule
+  * geoip: use stdout for output and stderr for errors/diag
+
+-------------------------------------------------------------------
 Thu Jan 12 22:33:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.23

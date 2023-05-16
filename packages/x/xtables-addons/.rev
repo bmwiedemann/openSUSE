@@ -660,4 +660,12 @@
     <comment>- Update to release 3.23</comment>
     <requestid>1058083</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b0326b2a8418e3cf354c476d82f0a460</srcmd5>
+    <version>3.24</version>
+    <time>1684239378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.24</comment>
+    <requestid>1087257</requestid>
+  </revision>
 </revisionlist>
