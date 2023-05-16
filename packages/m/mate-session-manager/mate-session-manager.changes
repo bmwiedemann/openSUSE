@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * Fix memory leaks.
+  * Update translations.
+
+-------------------------------------------------------------------
 Thu Jun 30 14:53:34 UTC 2022 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Provide xinitrc.d script 55mate-session_materc.sh, adopted from
