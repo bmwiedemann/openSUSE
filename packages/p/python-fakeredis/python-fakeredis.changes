@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  8 18:09:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * Implement `XREAD` #147
+  * Unique FakeServer when no connection params are provided
+  * Minor fixes supporting multiple connections
+  * Update documentation
+  * connection parameters awareness:
+  * Creating multiple clients with the same connection parameters
+    will result in the same server data structure.
+  * Fix creating fakeredis.aioredis using url with user/password
+
+-------------------------------------------------------------------
 Mon May  8 07:09:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
