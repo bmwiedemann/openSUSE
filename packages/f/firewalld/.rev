@@ -1259,4 +1259,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>1082734</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>5223a66712f944d74f485bbe5ca4cb3d</srcmd5>
+    <version>1.3.2</version>
+    <time>1684313568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087468</requestid>
+  </revision>
 </revisionlist>

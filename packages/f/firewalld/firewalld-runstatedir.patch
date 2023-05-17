@@ -1,0 +1,13 @@
+diff --git a/__init__.py.in b/__init__.py.in.new
+index d982384..6452e6d 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -95,7 +95,7 @@ FIREWALLD_LOGFILE = '/var/log/firewalld'
+ 
+ FIREWALLD_LOGTARGET = '@DEFAULT_LOG_TARGET@'
+ 
+-FIREWALLD_PIDFILE = "/var/run/firewalld.pid"
++FIREWALLD_PIDFILE = "/run/firewalld.pid"
+ 
+ FIREWALLD_TEMPDIR = '/run/firewalld'
+ 

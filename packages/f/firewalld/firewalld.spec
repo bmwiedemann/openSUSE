@@ -36,6 +36,7 @@ URL:            https://www.firewalld.org
 Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.bz2
 Source1:        docker-zone.xml
 Patch0:         0002-Disable-FlushAllOnReload-option.patch
+Patch1:         firewalld-runstatedir.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
