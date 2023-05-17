@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="filename">nginx-module-njs</param>
+		<param name="scm">hg</param>
+		<param name="url">https://hg.nginx.org/njs</param>
+		<param name="revision">0.7.12</param>
+        <param name="version"></param>
+	</service>
+    <service name="recompress" mode="manual">
+        <param name="compression">gz</param>
+        <param name="file">nginx-module-njs.tar</param>
+    </service>
+</services>
