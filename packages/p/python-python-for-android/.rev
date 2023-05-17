@@ -39,4 +39,39 @@
     <comment></comment>
     <requestid>1043008</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18a6349db3ea046ac5723c0fa71dad3f</srcmd5>
+    <version>2023.2.10</version>
+    <time>1684313589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2023.02.10:
+  * pydantic recipe has been updated.
+  * scypt recipe has been updated.
+  * --orientation option controls the allowed orientations (portrait,
+    landscape, portrait-reverse, landscape-reverse).
+  * --manifest-orientation option has been added to keep the
+    android:screenOrientation personalisation functionality.
+  * If --manifest-orientation is not set, and only (one of multiple)
+    --orientation options are passed, the value for
+    android:screenOrientationis guessed and synthesized from the
+    --orientation option.
+  * Introduced support for permission properties (maxSdkVersion and
+    usesPermissionFlags)
+  * Minimal and recommended Android NDK version is now 25b
+  * MIN_TARGET_API has been updated to 30 and RECOMMENDED_TARGET_API in
+    order to comply with Google Play Store requirements.
+  * android.activity now offers Application.ActivityLifecycleCallbacks helpers.
+  * secp256k1 Update &quot;--host=&quot; #2714 (RobertFlatt)
+  * recipe.download_file: implement shallow git cloning #2682 (SomberNight)
+  * Resize webview when keyboard is shown #2674 (dbnicholson)
+  * Fixes libvpx build #2672 (misl6)
+  * toml may not be available on systemwide python #2670 (misl6)
+  * android/activity: Add Application.ActivityLifecycleCallbacks
+    helpers #2669 (dbnicholson)
+  * Bump minimal and recommended Android NDK version to 25b #2668 (misl6)
+  * Include HOME in build environment #2582 (dbnicholson) 
+- Add patch switch-to-build-from-pep517.patch:
+  * Do not use pep517 methods, switch to build.</comment>
+    <requestid>1087411</requestid>
+  </revision>
 </revisionlist>

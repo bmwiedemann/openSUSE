@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-for-android
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,25 @@
 #
 
 
-%define version_with_zeros 2022.09.04
+%define version_with_zeros 2023.02.10
 Name:           python-python-for-android
-Version:        2022.9.4
+Version:        2023.2.10
 Release:        0
 Summary:        Android APK packager for Python scripts and apps
 License:        MIT
 URL:            https://github.com/kivy/python-for-android
-Source:         https://github.com/kivy/python-for-android/archive/v%{version_with_zeros}.tar.gz#/python-for-android-%{version}.tar.gz
+Source:         https://github.com/kivy/python-for-android/archive/refs/tags/v%{version_with_zeros}.tar.gz#/python-for-android-%{version}.tar.gz
 Source1:        python-python-for-android-rpmlintrc
+# PATCH-FIX-UPSTREAM Switch to using build rather than pep517
+# Based on gh#kivy/python-for-android#2784, we do not need or want isolation
+Patch0:         switch-to-build-from-pep517.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-appdirs
+Requires:       python-build
 Requires:       python-colorama >= 0.3.3
-Requires:       python-pep517
 Requires:       python-toml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -44,8 +47,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module colorama >= 0.3.3}
-BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sh >= 1.10}
