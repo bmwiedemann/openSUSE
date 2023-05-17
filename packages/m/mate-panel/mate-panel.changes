@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.3:
+  * windows-list.ui: Lower gtk3 required version.
+  * panel-applet: Fix leak in no-background code path.
+  * clock: Fix memory leak.
+  * wncklet: Fix crash thumbnailing dying or otherwise
+    inaccessible windows.
+  * notification_area: Reduce lifetime of the settings local
+    variable.
+  * Register SNI host only if SNI is enabled.
+  * wncklet: do not exceed workspace number when setting n_rows.
+  * Update translations.
+
+-------------------------------------------------------------------
 Tue Sep  6 16:00:52 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Install gschema override with distribution default priority of

@@ -365,4 +365,12 @@
     <comment></comment>
     <requestid>1001497</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6ec1d4afa4a32d754a9eb4dbe20210aa</srcmd5>
+    <version>1.26.3</version>
+    <time>1684313582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.3.</comment>
+    <requestid>1087412</requestid>
+  </revision>
 </revisionlist>

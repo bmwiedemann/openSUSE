@@ -1,7 +1,7 @@
 #
 # spec file for package mate-panel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %define sover   1
 %define typelib typelib-1_0-MatePanelApplet-4_0
 %define _version 1.26
-
 Name:           mate-panel
-Version:        1.26.2
+Version:        1.26.3
 Release:        0
 Summary:        MATE Desktop Panel
 License:        GPL-2.0-or-later
