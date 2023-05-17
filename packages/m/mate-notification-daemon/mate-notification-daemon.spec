@@ -1,7 +1,7 @@
 #
 # spec file for package mate-notification-daemon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define _version 1.26
-
 Name:           mate-notification-daemon
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Notification daemon for MATE
 License:        GPL-2.0-or-later
