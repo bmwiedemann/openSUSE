@@ -26,6 +26,8 @@ Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://www.blosc.org/c-blosc2/c-blosc2.html
 Source:         https://github.com/Blosc/c-blosc2/archive/refs/tags/v%{version}.tar.gz#/c-blosc2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM c-blosc2-pr483-BLOSC_STUNE.patch gh#Blosc/c-blosc2#483
+Patch0:         https://github.com/Blosc/c-blosc2/pull/483.patch#/c-blosc2-pr483-BLOSC_STUNE.patch
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
