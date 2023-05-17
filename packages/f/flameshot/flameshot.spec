@@ -1,7 +1,7 @@
 #
 # spec file for package flameshot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/flameshot-org/flameshot#flameshot
 Source0:        https://github.com/flameshot-org/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE flameshot-remove-update-check.patch -- Remove update check
+Patch0:         flameshot-remove-update-check.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
