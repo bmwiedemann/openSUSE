@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 17 04:40:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 7.4.2:
+  * move to latest alpine (#944)
+  * Update checks documentation (#936)
+  * Managed by Terraform
+
+-------------------------------------------------------------------
 Mon Apr 03 12:05:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 7.4.1:
