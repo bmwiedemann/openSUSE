@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 22 10:08:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to use obscpio
+  - run tar and recompress services at buildtime
+
+-------------------------------------------------------------------
 Wed Feb 15 12:39:10 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.25.0:
