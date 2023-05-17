@@ -251,4 +251,12 @@
 - Update Requires from setup.py (forwarded request 1084267 from glaubitz)</comment>
     <requestid>1084271</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0d11f8f351b2d4d3fc786e083eb35afc</srcmd5>
+    <version>10.2.0b8</version>
+    <time>1684313610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087475</requestid>
+  </revision>
 </revisionlist>
