@@ -243,4 +243,12 @@ Submit HEAD</comment>
     <comment></comment>
     <requestid>913144</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d73091fe33f4a0e5b2d417072cd4be12</srcmd5>
+    <version>1.26.1</version>
+    <time>1684313583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1.</comment>
+    <requestid>1087414</requestid>
+  </revision>
 </revisionlist>
