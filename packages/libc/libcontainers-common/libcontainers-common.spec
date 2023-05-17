@@ -54,6 +54,8 @@ Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{short
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/grep
 Requires(post): %{_bindir}/sed
+# add SLE-specific mounts for only SLES systems
+Requires:       (libcontainers-sles-mounts if sles-release)
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}
 Obsoletes:      libcontainers-image < %{version}
@@ -63,6 +65,12 @@ BuildArch:      noarch
 %description
 Configuration files and manpages shared by tools that are based on the
 github.com/containers libraries, such as Buildah, CRI-O, Podman and Skopeo.
+
+%package -n libcontainers-sles-mounts
+Summary:        Default mounts for SLE distributions
+
+%description -n libcontainers-sles-mounts
+Updates /etc/containers/mounts.conf with default mounts for SLE distributions
 
 %prep
 %setup -q -Tcq -b0 -b1 -b8
@@ -95,14 +103,12 @@ cd common-%{commonver}
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
 cd ..
 
-%if 0%{?is_opensuse}
-# no default mounts
-%else
+# These would only be used on SLE-systems
+# via libcontainers-sles-mounts subpackage
 cat >>%{SOURCE5} <<EOL
 %{_sysconfdir}/SUSEConnect:%{_sysconfdir}/SUSEConnect
 %{_sysconfdir}/zypp/credentials.d/SCCcredentials:%{_sysconfdir}/zypp/credentials.d/SCCcredentials
 EOL
-%endif
 
 cd common-%{commonver}
 %make_build docs
@@ -158,8 +164,6 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 
 %config(noreplace) %{_sysconfdir}/containers/policy.json
 %config(noreplace) %{_sysconfdir}/containers/storage.conf
-%config(noreplace) %{_sysconfdir}/containers/mounts.conf
-%{_datadir}/containers/mounts.conf
 %config(noreplace) %{_sysconfdir}/containers/registries.conf
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json
 %config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
@@ -170,5 +174,9 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
 %license LICENSE
+
+%files -n libcontainers-sles-mounts
+%config(noreplace) %{_sysconfdir}/containers/mounts.conf
+%{_datadir}/containers/mounts.conf
 
 %changelog

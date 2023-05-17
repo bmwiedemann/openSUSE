@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 16 12:51:34 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Introduce new subpackage that adds SLE-specific mounts only
+  on SLE systems (if sles-release) hence avoiding superfluous
+  warnings on non-SLE systems while running podman commands.
+  (bsc#1211124)
+
+-------------------------------------------------------------------
 Wed Apr 26 12:43:41 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Own /etc/containers/systemd and /usr/share/containers/systemd,
