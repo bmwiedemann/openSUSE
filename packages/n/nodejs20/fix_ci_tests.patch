@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v20.1.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v18.9.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v20.1.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v20.1.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v18.9.0/test/parallel/test-tls-passphrase.js
+Index: node-v20.1.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v18.9.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v18.9.0/test/parallel/test-tls-passphrase.js
+--- node-v20.1.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v20.1.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -29,10 +29,10 @@ Index: node-v18.9.0/test/parallel/test-tls-passphrase.js
  
  // Missing passphrase
  assert.throws(function() {
-Index: node-v18.9.0/test/parallel/test-repl-envvars.js
+Index: node-v20.1.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v18.9.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v18.9.0/test/parallel/test-repl-envvars.js
+--- node-v20.1.0.orig/test/parallel/test-repl-envvars.js
++++ node-v20.1.0/test/parallel/test-repl-envvars.js
 @@ -2,7 +2,9 @@
  
  // Flags: --expose-internals
@@ -44,31 +44,11 @@ Index: node-v18.9.0/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const REPL = require('internal/repl');
  const assert = require('assert');
-Index: node-v18.9.0/test/common/index.mjs
+Index: node-v20.1.0/Makefile
 ===================================================================
---- node-v18.9.0.orig/test/common/index.mjs
-+++ node-v18.9.0/test/common/index.mjs
-@@ -45,6 +45,7 @@ const {
-   expectsError,
-   skipIfInspectorDisabled,
-   skipIf32Bits,
-+  skipIfWorker,
-   getArrayBufferViews,
-   getBufferSources,
-   getTTYfd,
-@@ -94,6 +95,7 @@ export {
-   expectsError,
-   skipIfInspectorDisabled,
-   skipIf32Bits,
-+  skipIfWorker,
-   getArrayBufferViews,
-   getBufferSources,
-   getTTYfd,
-Index: node-v18.9.0/Makefile
-===================================================================
---- node-v18.9.0.orig/Makefile
-+++ node-v18.9.0/Makefile
-@@ -524,7 +524,8 @@ test-ci-js: | clear-stalled
+--- node-v20.1.0.orig/Makefile
++++ node-v20.1.0/Makefile
+@@ -545,7 +545,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
  test-ci: LOGLEVEL := info
@@ -78,7 +58,7 @@ Index: node-v18.9.0/Makefile
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -717,7 +718,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -726,7 +727,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -88,10 +68,10 @@ Index: node-v18.9.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v18.9.0/test/parallel/test-crypto-dh.js
+Index: node-v20.1.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v18.9.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v18.9.0/test/parallel/test-crypto-dh.js
+--- node-v20.1.0.orig/test/parallel/test-crypto-dh.js
++++ node-v20.1.0/test/parallel/test-crypto-dh.js
 @@ -167,7 +167,7 @@ assert.throws(() => {
    dh3.computeSecret('');
  }, { message: common.hasOpenSSL3 ?
@@ -101,3 +81,16 @@ Index: node-v18.9.0/test/parallel/test-crypto-dh.js
  
  // Invalid test: curve argument is undefined
  assert.throws(
+Index: node-v20.1.0/tools/test.py
+===================================================================
+--- node-v20.1.0.orig/tools/test.py
++++ node-v20.1.0/tools/test.py
+@@ -1355,7 +1355,7 @@ def BuildOptions():
+   result.add_option("-s", "--suite", help="A test suite",
+       default=[], action="append")
+   result.add_option("-t", "--timeout", help="Timeout in seconds",
+-      default=120, type="int")
++      default=1200, type="int")
+   result.add_option("--arch", help='The architecture to run tests for',
+       default='none')
+   result.add_option("--snapshot", help="Run the tests with snapshot turned on",

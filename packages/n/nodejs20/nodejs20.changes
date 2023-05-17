@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 14:03:24 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: increase default timeout on unit tests
+  to 20min from 2min. This seems to have lead to build failures
+  on some platforms, like s390x in Factory. (bsc#1211407)
+
+-------------------------------------------------------------------
 Fri May 12 07:52:30 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - z13.patch: fixes illegal instruction error on z13 and older s390
