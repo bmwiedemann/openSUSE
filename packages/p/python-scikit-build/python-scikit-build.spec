@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build%{psuffix}
-Version:        0.17.4
+Version:        0.17.5
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT

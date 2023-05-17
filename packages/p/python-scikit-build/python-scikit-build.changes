@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 16 19:21:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.5
+  * Generator args were missing for actual compile in #975
+  * Add support for netbsd & pyodide (future) in #977
+
+-------------------------------------------------------------------
 Thu May 11 14:26:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.17.4

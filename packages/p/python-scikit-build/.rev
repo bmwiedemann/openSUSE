@@ -210,4 +210,14 @@
   * FindNumPy should not call FindPythonLibs in #958. (forwarded request 1086568 from bnavigator)</comment>
     <requestid>1086569</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8bdd90ff8854f1d2d78129d1d69c7050</srcmd5>
+    <version>0.17.5</version>
+    <time>1684313605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.5
+  * Generator args were missing for actual compile in #975
+  * Add support for netbsd &amp; pyodide (future) in #977 (forwarded request 1087462 from bnavigator)</comment>
+    <requestid>1087463</requestid>
+  </revision>
 </revisionlist>
