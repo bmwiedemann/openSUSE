@@ -17,7 +17,7 @@
 
 
 Name:           console-setup
-Version:        1.215
+Version:        1.220
 Release:        0
 Summary:        Tools for configuring the console using X Window System key maps
 License:        GPL-2.0-or-later AND MIT AND SUSE-Public-Domain
@@ -55,7 +55,7 @@ glyph position in the console font is not wasted but used for
 another symbol.
 
 %prep
-%autosetup -n %{name} -p1
+%autosetup -p1
 
 cp -a debian/changelog ChangeLog
 cp -a debian/copyright COPYING

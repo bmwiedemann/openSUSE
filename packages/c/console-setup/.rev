@@ -77,4 +77,12 @@ layouts from xkeyboard-config to console keymaps (FATE#318426)</comment>
 - Fix the RPM Group.</comment>
     <requestid>1045985</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e088721691cf6c8e4ef616dfb8af0b3a</srcmd5>
+    <version>1.220</version>
+    <time>1684313564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087428</requestid>
+  </revision>
 </revisionlist>
