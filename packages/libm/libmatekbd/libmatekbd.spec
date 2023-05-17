@@ -1,7 +1,7 @@
 #
 # spec file for package libmatekbd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 %define typelib  typelib-1_0-Matekbd-1_0
 %define _version 1.26
 %define sover    4
-
 Name:           libmatekbd
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop keyboard configuration libraries
 License:        LGPL-2.1-or-later
+Group:          Development/Libraries/X11
 URL:            https://mate-desktop.org/
-Group:          Develpoment/Libraries/X11
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  mate-common >= %{_version}
@@ -101,6 +100,7 @@ NOCONFIGURE=1 mate-autogen
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
+
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}

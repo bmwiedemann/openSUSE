@@ -171,4 +171,12 @@
     <comment>adjust groups (forwarded request 913369 from jengelh)</comment>
     <requestid>913374</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aa03fbd20c02532d5a436d7029c0f83d</srcmd5>
+    <version>1.26.1</version>
+    <time>1684313587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1.</comment>
+    <requestid>1087417</requestid>
+  </revision>
 </revisionlist>
