@@ -22,7 +22,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           budgie-desktop
-Version:        10.7.1+20
+Version:        10.7.2+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,6 +35,7 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
+BuildRequires:  zenity
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -89,6 +90,7 @@ Requires:       gnome-bluetooth = 3.34.5
 Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
+Requires:       zenity
 Requires:       NetworkManager-applet
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
