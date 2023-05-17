@@ -1,0 +1,18 @@
+--- aopalliance/build.xml	2023-05-16 22:26:45.498861470 +0200
++++ aopalliance/build.xml	2023-05-16 22:29:50.811283305 +0200
+@@ -27,6 +27,15 @@
+ 		<jar jarfile="build/aopalliance.jar">
+ 			<fileset dir="build/classes">
+ 			</fileset>
++            <manifest>
++                <attribute name="Bundle-ManifestVersion" value="2"/>
++                <attribute name="Bundle-Name" value="AOP Alliance"/>
++                <attribute name="Bundle-SymbolicName" value="aopalliance"/>
++                <attribute name="Bundle-Vendor" value="AOP Alliance"/>
++                <attribute name="Bundle-Version" value="1.0"/>
++                <attribute name="Eclipse-BuddyPolicy" value="registered"/>
++                <attribute name="Export-Package" value="org.aopalliance.aop,org.aopalliance.instrument,org.aopalliance.intercept,org.aopalliance.reflect"/>
++            </manifest>
+ 		</jar>
+ 	</target>
+ 

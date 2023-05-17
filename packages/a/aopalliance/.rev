@@ -15,4 +15,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963051</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7de4f396ee06c6333abd9c34651e8d30</srcmd5>
+    <version>1.0</version>
+    <time>1684313606</time>
+    <user>dimstar_suse</user>
+    <comment>Cleanup</comment>
+    <requestid>1087482</requestid>
+  </revision>
 </revisionlist>

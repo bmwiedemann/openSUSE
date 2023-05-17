@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 16 20:33:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Register artifact by coordinates, since an artifact without
+  dependencies does not need a pom
+- Added patch:
+  * aopalliance-manifest.patch
+    + add OSGi manifest during the jar packaging
+
+-------------------------------------------------------------------
+Mon May 15 12:26:14 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update url to use https
+
+-------------------------------------------------------------------
 Sat Mar 19 13:03:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8

@@ -1,7 +1,7 @@
 #
 # spec file for package aopalliance
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Release:        0
 Summary:        Java/J2EE AOP standards
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://aopalliance.sourceforge.net/
+URL:            https://aopalliance.sourceforge.net/
 # cvs -d:pserver:anonymous@aopalliance.cvs.sourceforge.net:/cvsroot/aopalliance login
 # password empty
 # cvs -z3 -d:pserver:anonymous@aopalliance.cvs.sourceforge.net:/cvsroot/aopalliance export -r HEAD aopalliance
 Source0:        aopalliance-src.tar.gz
-Source1:        http://repo1.maven.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.pom
-Source2:        %{name}-MANIFEST.MF
+Patch0:         aopalliance-manifest.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -52,25 +51,25 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}
+# Inject OSGi manifest required by Eclipse.
+%patch0 -p1
 
 %build
 export CLASSPATH=
 export OPT_JAR_LIST=:
 %{ant} \
-  -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 \
-  -Dbuild.sysclasspath=only jar javadoc
-
-# Inject OSGi manifest required by Eclipse.
-jar umf %{SOURCE2} build/%{name}.jar
+  -Dant.build.javac.source=1.8 \
+  -Dant.build.javac.target=1.8 \
+  jar javadoc
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 build/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
-# pom
-install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+
+# maven metadata
+%add_maven_depmap aopalliance:aopalliance:%{version} %{name}.jar
+
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/javadoc/* %{buildroot}%{_javadocdir}/%{name}/
