@@ -1,7 +1,7 @@
 #
 # spec file for package engrampa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %define _version 1.26
-
 Name:           engrampa
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop archive manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM engrampa-1.26.1-add-7zip-support.patch -- Add new 7-zip (7zz and 7zzs) project support (commit 6f49d2c7).
+Patch0:         engrampa-1.26.1-add-7zip-support.patch
 BuildRequires:  caja >= %{_version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
@@ -41,7 +42,6 @@ Recommends:     %{name}-lang
 Recommends:     bzip2
 Recommends:     cpio
 Recommends:     gzip
-Recommends:     p7zip
 Recommends:     rpm
 Recommends:     unar
 Recommends:     unzip
@@ -67,6 +67,11 @@ Provides:       mate-file-archiver = %{version}
 Obsoletes:      mate-file-archiver < %{version}
 Obsoletes:      mate-file-archiver-lang < %{version}
 %glib2_gsettings_schema_requires
+%if 0%{?suse_version} > 1500
+Recommends:     7zip
+%else
+Recommends:     p7zip
+%endif
 
 %description
 Engrampa is an archive manager for the MATE Desktop Environment.
@@ -90,7 +95,7 @@ content of an archive; view and modify a file contained in the
 archive; extract files from the archive.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * fr-process: Fix memory leak.
+  * Fix archive file save as function.
+  * file-data: Fix memory leak.
+  * fr-window: Fix memory leak.
+  * dlg-package-installer: Fix memory leak.
+  * Update translations.
+- Add engrampa-1.26.1-add-7zip-support.patch: Add new 7-zip
+  (7zz and 7zzs) project support (commit 6f49d2c7).
+
+-------------------------------------------------------------------
 Wed Aug 11 03:03:27 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
