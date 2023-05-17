@@ -134,4 +134,12 @@
     <comment>- Update summaries. (forwarded request 913356 from jengelh)</comment>
     <requestid>913366</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>af52a31ef0bbba86954ea13ba2185c6d</srcmd5>
+    <version>1.26.1</version>
+    <time>1684313583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1.</comment>
+    <requestid>1087413</requestid>
+  </revision>
 </revisionlist>

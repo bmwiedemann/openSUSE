@@ -1,7 +1,7 @@
 #
 # spec file for package mate-menus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %define sover    2
 %define typelib  typelib-1_0-MateMenu-2_0
 %define _version 1.26
-
 Name:           mate-menus
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop Menu
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -74,8 +73,8 @@ This package provides the upstream definitions for menus.
 
 %package -n %{soname}%{sover}
 Summary:        MATE Desktop Menu
-Group:          System/Libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 The libmate-menu library implements the "Desktop Menu Specification"
@@ -83,8 +82,8 @@ from freedesktop.org.
 
 %package -n %{typelib}
 Summary:        Introspection bindings for the MATE Desktop Menu
-Group:          System/Libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Libraries
 
 %description -n %{typelib}
 The libmate-menu library implements the "Desktop Menu Specification"
@@ -114,7 +113,8 @@ from freedesktop.org.
 %build
 NOCONFIGURE=1 mate-autogen
 %configure \
-  --disable-static
+  --disable-static \
+  --disable-collection
 %make_build
 
 %install
