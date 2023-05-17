@@ -4266,6 +4266,7 @@
     <package name="systemsettings5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="sysvinit-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="sysvinit-tools-doc" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="tango-icon-theme" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
