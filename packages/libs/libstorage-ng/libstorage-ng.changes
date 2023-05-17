@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Tue May 16 09:21:53 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#931
+- added test programs for nvme list and list-subsys
+- 4.5.105
+
+--------------------------------------------------------------------
+Tue May 16 07:22:35 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#930
+- avoid to handle some fstab entries twice
+- 4.5.104
+
+--------------------------------------------------------------------
 Fri May 12 23:23:07 UTC 2023 - aschnell@suse.com
 
 - Translated using Weblate (German) (bsc#1149754)
