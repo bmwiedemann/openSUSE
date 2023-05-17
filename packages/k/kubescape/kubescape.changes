@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 16 10:57:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.3:
+  * Revert "Deprecate kubescape-windows-latest"
+  * start with a new context, extracting span from request
+  * updating readme file to support compliance
+  * Deprecate kubescape-windows-latest
+
+-------------------------------------------------------------------
+Mon May 15 18:27:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.2:
+  * Control parallelism of opa rule processing by env var (#1230)
+  * update go version 1.19->1.20
+  * add compliance score system test
+  * Add ref to workflow dispatch
+
+-------------------------------------------------------------------
 Wed May 03 10:28:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.1:
