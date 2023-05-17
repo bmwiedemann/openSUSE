@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue May 16 09:18:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Wed May 10 07:23:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 5.0.1:
+  * Bugfixes
+    - Avoid using incompatible ansible-compat version (#3906)
+      @ssbarnea
+    - Fix tree example in use case document (#3894) @akira6592
+    - Use api to get driver schema file (#3898) @apatard
+    - Add subprocess-run-check (#3896) @Ruchip16
+    - Add unidiomatic-typecheck check (#3893) @Ruchip16
+    - Add unnecessary-lambda check (#3892) @Ruchip16
+    - Address ruff S, EXE skips (#3889) @ssbarnea
+    - More ruff fixes (#3887) @ssbarnea
+    - Fix colors when displaying plugin versions (#3886) @ssbarnea
+    - Add raise-missing-from rule (#3885) @Ruchip16
+    - Add no-else-return, no-else-raise & logging-not-lazy check
+      (#3884) @Ruchip16
+    - Add implicit-str-concat & inconsistent-return-statements
+      check (#3882) @Ruchip16
+
+-------------------------------------------------------------------
+Wed May 10 06:49:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 5.0.0:
+  * Major Changes
+    - Remove lint command (#3802) @ssbarnea
+  * Minor Changes
+    - Add tags document (#3866) @zhan9san
+    - Replace sphinx documentation with mkdocs (#3811) @ssbarnea
+    - Require ansible-core>=2.12.10 (#3799) @ssbarnea
+    - Remove support for python3.8 (#3770) @ssbarnea
+    - Adopt PEP-621 for packaging (#3767) @ssbarnea
+  * Bugfixes
+    - Refactor dependency locks (#3879) @ssbarnea
+    - Add consider-using-in check (#3880) @Ruchip16
+    - Extend schema validation (#3765) @zhan9san
+    - fix link to monorepo under faq (#3863) @ahmedwonolo
+    - Fix documentation (#3833) @ziegenberg
+    - Documentation: Improve group names (#3812) @ltog
+    - Better indentation in verify template (#3816) @muellerbe
+    - Replace sphinx documentation with mkdocs (#3811) @ssbarnea
+    - Remove embedded dockerfile (#3824) @ssbarnea
+    - Upgrade linters (#3813)
+    - Add support for custom driver name (#3795) @gciavarrini
+    - Document molecule-plugins package (#3805) @ssbarnea
+    - Update test dependencies (#3800) @ssbarnea
+    - Fix rpm building (#3798) @ssbarnea
+    - Reorder heading and reformat badges (#3778) @mamercad
+    - Fixed typo in docs/ci.rst (#3796) @mitchellroe
+    - Bump test dependencies (#3797) @ssbarnea
+  * Deprecations
+    - Remove lint command (#3802) @ssbarnea
+- drop patch skip-broken-test.patch
+
+-------------------------------------------------------------------
+Mon May  8 13:47:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add macro definitions to allow building for SLES15 with
+  python3.11 instead of python3
+
+-------------------------------------------------------------------
 Sun Jan 29 15:48:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Disable deprecation warnings and tests requiring internet connection.
