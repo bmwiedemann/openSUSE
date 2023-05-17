@@ -1341,4 +1341,13 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>1087238</requestid>
   </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>f327a666a139e95fbd0465d56ab2f3a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1684313568</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1211456
+https://bugzilla.opensuse.org/show_bug.cgi?id=1211444</comment>
+    <requestid>1087520</requestid>
+  </revision>
 </revisionlist>
