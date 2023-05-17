@@ -26,7 +26,7 @@
 
 Name:           sysvinit
 %define KPVER  2.23
-%define SIVER  3.00
+%define SIVER  3.07
 %define START  0.65
 Version:        %{SIVER}
 Release:        0
@@ -37,10 +37,13 @@ BuildRequires:  blog-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  sysvinit-tools
 URL:            https://savannah.nongnu.org/projects/sysvinit/
-Source:         https://download.savannah.nongnu.org/releases/sysvinit/sysvinit-%{SIVER}.tar.xz
+Source0:        https://github.com/slicer69/sysvinit/releases/download/%{SIVER}/sysvinit-%{SIVER}.tar.xz
 Source1:        https://github.com/bitstreamout/killproc/archive/v%{KPVER}.tar.gz#/killproc-%{KPVER}.tar.gz
 Source2:        https://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz
-Patch:          %{name}-2.90.dif
+Source3:        https://github.com/slicer69/sysvinit/releases/download/%{SIVER}/sysvinit-%{SIVER}.tar.xz.sig
+Source4:        https://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz.sig
+Source5:        %{name}.keyring
+Patch0:         %{name}-2.90.dif
 Patch2:         %{name}-2.88dsf-suse.patch
 Patch9:         %{name}-2.90-no-kill.patch
 Patch50:        startpar-0.58.dif
@@ -58,12 +61,23 @@ more information.
 %package tools
 Summary:        Tools for basic booting
 Group:          System/Base
+Suggests:       %{name}-tools-doc
 Requires:       blog
 
 %description tools
 Helper tools from sysvinit that support booting, including but not exclusive
 to startpar and killproc. System V init specific programs are in the
 sysvinit package.
+
+%package tools-doc
+Summary:        Documentation of tools for basic booting
+Group:          Documentation/Other
+Requires:       %{name}-tools
+BuildArch:      noarch
+
+%description tools-doc
+Documentation of helper tools from sysvinit that support booting, including but not exclusive
+to startpar and killproc.
 
 %prep
 ls -l
@@ -73,7 +87,7 @@ ln -sf startpar startpar-%{START}
 %setup -n %{name}-%{SIVER} -q -b 1 -b 2
 %patch2  -p0 -b .suse
 %patch9  -p0 -b .no-kill
-%patch
+%patch0
 pushd doc
   mkdir killproc
 popd
@@ -140,23 +154,15 @@ mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
 %{sbindir}/mkill
 %{sbindir}/start_daemon
 %{_bindir}/startpar
-%doc %{_mandir}/man1/usleep.1%{?ext_man}
-%doc %{_mandir}/man1/fsync.1%{?ext_man}
-%doc %{_mandir}/man1/startpar.1%{?ext_man}
-%doc %{_mandir}/man8/fstab-decode.8%{?ext_man}
-%doc %{_mandir}/man8/checkproc.8%{?ext_man}
-%doc %{_mandir}/man8/pidofproc.8%{?ext_man}
-%doc %{_mandir}/man8/killall5.8%{?ext_man}
-%doc %{_mandir}/man8/killproc.8%{?ext_man}
-%doc %{_mandir}/man8/startproc.8%{?ext_man}
-%doc %{_mandir}/man8/start_daemon.8%{?ext_man}
-%doc %{_mandir}/man8/rvmtab.8%{?ext_man}
-%doc %{_mandir}/man8/vhangup.8%{?ext_man}
-%doc %{_mandir}/man8/mkill.8%{?ext_man}
 %if 0%{?suse_version} && %suse_version <= 1500
 %{bindir}/pidof
 %{sbindir}/pidof
 %doc %{_mandir}/man8/pidof.8%{?ext_man}
 %endif
+
+%files tools-doc
+%doc %{_mandir}/man1/*.1%{?ext_man}
+%doc %{_mandir}/man8/*.8%{?ext_man}
+%doc %{_mandir}/*/man8/*.8%{?ext_man}
 
 %changelog

@@ -1481,4 +1481,41 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
   * powerd-2.0.2.dif</comment>
     <requestid>1084963</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>4be3ce78ddd7bf7a13d3d8498f4bd06f</srcmd5>
+    <version>3.07</version>
+    <time>1684313557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to sysvinit 3.07
+  * Fixed killall5 so that processes in the omit list are
+    not sent any signals, including SIGSTOP.
+  * Fixed usage message for killall5 to be more accurate.
+  * pidof was not returning PIDs of programs which were launched
+    using a symbolic link. (ie /tmp/sleep when /tmp/sleep links to /usr/bin/sleep).
+    This is now fixed as we check both the realpath and symbolic path for processes.
+    In other words, &quot;pidof /tmp/sleep&quot; and &quot;pidof /usr/bin/sleep&quot; will return
+    the same PIDs when /tmp/sleep is a symbolic link to /usr/bin/sleep.
+  * Fixed memory initialization error in pidof. Fix provided by Markus Fischer.
+  * Accepted patch from Mark Hindley  which avoids clearing realpath information
+    in pidof when trying to find matching executables.
+  * Mark Hindley fixed typo in es.po
+  * Mark Hindley cleaned up translation code in src/Makefile. 
+  * Drop sulogin from Debian build. Removed libcrypt-dev dependency.
+  * Fixed pt translation pages which were failing due to mis-matched
+    open/close tags.
+  * Makefile now respects ROOT prefix when setting up pidof-to-killall5
+    symbolic link.
+  * Removed redundant translation files from man directory.
+  * Makefile now respects DESTDIR. User can specify either ROOT= or DESTDIR=
+    to set install prefix.
+  * Helge Kreutzmann provided updated Makefile for
+    translation of manual pages. This has been added
+    to the man directory.
+  * Added sys/sysmacros.h include in mountpoint.c to fix
+    compiler errors on systems where major/minor macros were not defined.
+  * Applied patches from Mark Hindley to clean up man page
+    Makefile, translations and installs of new man pages.
+  * Remove reliance on linux/fs.h as it conflicts with glibc 2.36.</comment>
+    <requestid>1087334</requestid>
+  </revision>
 </revisionlist>
