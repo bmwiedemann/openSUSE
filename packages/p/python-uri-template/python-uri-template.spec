@@ -37,7 +37,7 @@ BuildArch:      noarch
 RFC 6570 URI Template Processor
 
 %prep
-%setup -q -n uri_template-%{version}
+%setup -q -n uri-template-%{version}
 sed -i "s/version='0.0.0',.*edit/version='%{version}',/" setup.py
 
 %build
