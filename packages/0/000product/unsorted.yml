@@ -11371,6 +11371,7 @@ unsorted:
   - libconfuse-devel 
   - libconfuse-lang 
   - libconfuse2 
+  - libcontainers-sles-mounts 
   - libcorosync-devel 
   - libcorosync_common4-32bit 
   - libcorrect-devel 
@@ -18496,6 +18497,7 @@ unsorted:
   - nginx 
   - nginx-macros 
   - nginx-module-brotli 
+  - nginx-module-njs 
   - nginx-module-vts 
   - nginx-module-zstd 
   - nginx-source 
