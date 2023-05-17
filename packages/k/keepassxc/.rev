@@ -413,4 +413,12 @@
     - SSH Agent: Fix paegent support on Windows [#8619]</comment>
     <requestid>1032580</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3abbe56bb85a2fb317b51b63b880ea11</srcmd5>
+    <version>2.7.5</version>
+    <time>1684313599</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.5:</comment>
+    <requestid>1087442</requestid>
+  </revision>
 </revisionlist>
