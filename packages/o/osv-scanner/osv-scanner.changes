@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 17 05:07:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.3.3:
+  * Add new line and fix test to avoid having to change version
+    twice (#387)
+  * 1.3.3 Release (#385)
+  * Use upload draft assets option (#384)
+  * chore(deps): update golang:alpine docker digest to ee2f23f
+    (#380)
+  * chore(deps): update slsa-framework/slsa-github-generator action
+    to v1.6.0 (#383)
+  * fix(deps): update osv-scanner minor (#381)
+  * Remove --hash from version in requirements.txt (#379)
+  * Small formatting changes (#377)
+  * chore(deps): bump github.com/cloudflare/circl from 1.1.0 to
+    1.3.3 (#378)
+  * add unit tests for results.go (#368)
+  * Improve exit docs and add No vulns found to output (#373)
+  * Update exit docs (#375)
+  * chore(deps): update github/codeql-action action to v2.3.3
+    (#372)
+  * chore(deps): update golang:alpine docker digest to 913de96
+    (#305)
+  * fix: handle cyclical `-r`s in `requirements.txt` (#366)
+  * fix: don't panic on empty  files (#367)
+  * fix(deps): update osv-scanner minor (#327)
+  * Update spdx to 0.5.0 (#365)
+  * Update pkg/osv to allow overriding the http client / transport.
+    (#357)
+  * chore(deps): update github/codeql-action action to v2.3.2
+    (#363)
+  * Enable osvVulnerabilityAlerts (#362)
+
+-------------------------------------------------------------------
 Wed Apr 26 08:43:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.3.2:
