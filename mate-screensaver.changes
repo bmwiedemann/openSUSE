@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.2:
+  * mate-screensaver-preferences: Fix memory leak.
+  * Update translations.
+
+-------------------------------------------------------------------
 Fri Jan 13 17:29:22 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 
