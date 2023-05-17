@@ -257,4 +257,12 @@
 - Add pkgconfig(xres) BuildRequires: new dependency. (forwarded request 1037096 from dimstar)</comment>
     <requestid>1037099</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>402c75d30114b696c61478370e5f8244</srcmd5>
+    <version>1.26.2</version>
+    <time>1684313584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.2.</comment>
+    <requestid>1087415</requestid>
+  </revision>
 </revisionlist>

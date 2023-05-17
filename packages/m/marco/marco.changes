@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.2:
+  * Show correct window title when owned by superuser.
+  * Test if XResQueryClientIds() is available before using it.
+    Needed for X2Go as it does not have XRES 1.2 extension.
+  * Test Xres 1.2 is present.
+  * Test return value from XResQueryClientIds().
+  * Update translations.
+- Drop marco-glib-2.54.patch.
+
+-------------------------------------------------------------------
 Mon Nov 21 12:47:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.26.1:
