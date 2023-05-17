@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 15 19:20:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9
+  * rewrite of the C and plain x86_64 assembly implementations of
+    GHASH to use precomputed tables in a different way, with tables
+    always accessed in the same sequential manner. This should make
+    Nettle's GHASH implementation side-channel silent on all
+    platforms, but considerably slower on platforms without carry-
+    less mul instructions. E.g., benchmarks of the C implementation
+    on x86_64 showed a slowdown of 3 times.
+  * Fix bug in ecdsa and gostdsa signature verify operation, for
+    the unlikely corner case that point addition really is point
+    duplication.
+  * Fix for chacha on Power7, nettle's assembly used an instruction
+    only available on later processors
+  * Add support for the SM4 block cipher
+  * Add support for the Balloon password hash
+  * Add support for SIV-GCM authenticated encryption mode
+  * Add support for OCB authenticated encryption mode.
+  * New exported functions md5_compress, sha1_compress,
+    sha256_compress, sha512_compress
+  * multiple performance optimizations
+  * Delete all arcfour assembly code. Affects 32-bit x86, 32-bit
+    and 64-bit sparc
+
+-------------------------------------------------------------------
 Wed Mar  8 10:32:20 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

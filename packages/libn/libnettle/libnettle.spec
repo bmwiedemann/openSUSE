@@ -19,7 +19,7 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.8.1
+Version:        3.9
 Release:        0
 Summary:        Cryptographic Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
