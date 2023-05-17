@@ -1,7 +1,7 @@
 #
 # spec file for package eom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 %define typelib typelib-1_0-Eom-1_0
 %define _version 1.26
-
 Name:           eom
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -84,15 +83,15 @@ which uses the gdk-pixbuf library. It can deal with large images,
 and zoom and scroll with constant memory usage.
 
 %package doc
-Group:          Documentation/HTML
 Summary:        Documentation how to Use eom
+Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
 This package contains the documentation for eom
 
 %prep
-%autosetup
+%setup -q
 
 %build
 NOCONFIGURE=1 mate-autogen

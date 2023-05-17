@@ -239,4 +239,12 @@
   Update RPM groups. (forwarded request 913554 from jengelh)</comment>
     <requestid>913576</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e011e0b926fd2cb0b237ae351116e3d9</srcmd5>
+    <version>1.26.1</version>
+    <time>1684313577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1.</comment>
+    <requestid>1087303</requestid>
+  </revision>
 </revisionlist>

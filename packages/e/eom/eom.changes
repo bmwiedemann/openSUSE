@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * Fix building with ImageMagick 7.
+  * eom-window: Fix the incompatible-pointer-types warning.
+  * Accessibility: Add proper mnemonic relations and labelling.
+  * Add support for libexif 0.6.14+.
+  * user-guide: Fix wrong information.
+  * Update translations.
+
+-------------------------------------------------------------------
 Sun Aug 22 10:50:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from description. Make doc package noarch.
