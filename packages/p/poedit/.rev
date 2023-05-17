@@ -620,4 +620,14 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
   * Added ability to replace source text with another translation.</comment>
     <requestid>1086039</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>2d4ed6eb2c9469580305e8f6ea9e58e9</srcmd5>
+    <version>3.3.1</version>
+    <time>1684313600</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 3.3.1: Fixed catalog losing source language information on update
+  or similar manipulation.
+</comment>
+    <requestid>1087447</requestid>
+  </revision>
 </revisionlist>
