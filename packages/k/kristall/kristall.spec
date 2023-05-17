@@ -1,7 +1,7 @@
 #
 # spec file for package kristall
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kristall
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Graphical small-internet client
 License:        GPL-3.0-or-later
@@ -25,9 +25,9 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            https://kristall.random-projects.net/
 Source:         https://github.com/MasterQ32/kristall/archive/V%{version}.tar.gz
 # Use qmake-qt5 instad of qmake
-Patch0:         kristall-qmake5.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libopenssl-devel
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtmultimedia-devel
 BuildRequires:  libqt5-qtsvg-devel
@@ -37,20 +37,12 @@ Graphical small-internet client supporting gemini, http, https, gopher, finger.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%make_build PREFIX=%{_prefix}
+%make_build PREFIX=%{_prefix} QMAKE_COMMAND=qmake-qt5
 
 %install
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
-mkdir -p %{buildroot}%{_datadir}/applications/
-mkdir -p %{buildroot}%{_bindir}/
-%make_install PREFIX=%{_prefix}
+%make_install PREFIX=%{_prefix} QMAKE_COMMAND=qmake-qt5
 
 %files
 %{_bindir}/kristall
@@ -58,5 +50,7 @@ mkdir -p %{buildroot}%{_bindir}/
 %{_datadir}/icons/hicolor/??x??/apps/net.random-projects.kristall.png
 %{_datadir}/icons/hicolor/128x128/apps/net.random-projects.kristall.png
 %{_datadir}/icons/hicolor/scalable/apps/net.random-projects.kristall.svg
+%{_mandir}/man1/kristall.1.gz
+%{_datadir}/mime/packages/kristall.xml
 
 %changelog

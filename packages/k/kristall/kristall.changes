@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May 12 19:30:13 UTC 2023 - "Joshua Smith" <jsmithfpv@gmail.com>
+
+- Update to kristall 0.4
+  * Basic Emoji rendering support using OpenMoji
+  * Changed: Improved favourites: Adds grouping and custom names
+  * Adds support for text/kristall-theme mime to preview/install
+    kristall themes via the browser surface
+  * Adds Ctrl-F search function
+  * Adds Mouse middle now opens links in new tabs
+  * Adds Ctrl + mouse left opens links in new tabs
+  * Adds Mouse middle now closes tabs when clicking them
+  * Adds improved settings system with folder-based approach
+  * Adds colored icons to dark/light theme so it has improved
+    contrast
+  * Adds new action: “View/Show document source” will display the
+    raw data of the document in a small separate window
+  * Change: Document styles are now saved as files which are
+    exchangeable
+  * Change: Makes TLS editor columns sortable
+  * Adds single-session mode so opening links will open them in the
+    currently focused window instead of a new instance every time.
+  * Adds the option to open multiple kristall windows in one
+    session.
+  * Adds --new-window command line option to open urls into a new
+    kristall window instead of opening them as a new tab
+  * Adds --isolated command line option to start a separated
+    instance of kristall
+  * Adds possibility to open favourites with enter key in addition
+    to double clicking.
+  * Adds possibility to open history entries with enter key in
+    addition to double clicking.
+  * Fix: Gophermap icons map now respect the background color
+- Drop kristall-qmake5.patch
+
+-------------------------------------------------------------------
 Mon Jul  6 09:33:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of kristall 0.3 for openSUSE
