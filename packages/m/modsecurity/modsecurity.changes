@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May  9 11:30:26 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.0.9:
+  * Add some member variable inits in Transaction class (possible segfault)
+  * Fix: possible segfault on reload if duplicate ip+CIDR in ip match list
+  * Resolve memory leak on reload (bison-generated variable)
+  * Support equals sign in XPath expressions
+  * Encode two special chars in error.log output
+  * Add JIT support for PCRE2
+  * Support comments in ipMatchFromFile file via '#' token
+  * Use name package name libmaxminddb with pkg-config
+  * Fix: FILES_TMP_CONTENT collection key should use part name
+  * Use AS_HELP_STRING instead of obsolete AC_HELP_STRING macro
+  * During configure, do not check for pcre if pcre2 specified
+  * Use pkg-config to find libxml2 first
+  * Fix two rule-reload memory leak issues
+  * Correct whitespace handling for Include directive
+- Fix CVE-2023-28882, a segfault and a resultant crash of a worker process
+  in some configurations with certain inputs, bsc#1210993
+
+-------------------------------------------------------------------
 Fri Dec 16 14:21:07 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 3.0.8
