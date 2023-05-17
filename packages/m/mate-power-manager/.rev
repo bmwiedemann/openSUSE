@@ -245,4 +245,12 @@
     <comment>- Make doc package noarch (forwarded request 913556 from jengelh)</comment>
     <requestid>913578</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>252b1eac7c3c53b47c31c04dcc0ccb3c</srcmd5>
+    <version>1.26.1</version>
+    <time>1684313580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1.</comment>
+    <requestid>1087312</requestid>
+  </revision>
 </revisionlist>

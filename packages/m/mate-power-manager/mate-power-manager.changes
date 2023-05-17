@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * gpm-prefs: Fix memory leak.
+  * gpm-statistics: Fix memory leak.
+  * Update translations.
+- Drop mate-power-manager-upower-0.99.7.patch.
+
+-------------------------------------------------------------------
 Sun Aug 22 10:56:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Make doc package noarch
