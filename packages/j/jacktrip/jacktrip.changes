@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 15 13:11:47 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.9.0
+  * Fix openssl v3 compatibility failures with Linux static build by @mikedickey in #1005
+  * Show error message when single studio limit is reached by @nwang92 in #1008
+  * Fixing Play Test Tone button on Linux by @mikedickey in #1010
+  * Remove yes/no at first open by @mattahorton in #1009
+  * Moving faust-generated code out of header files by @mikedickey in #1011
+  * Enable Local Monitoring of Inputs by @dhing1024 in #1014
+  * Output Volume Meters Include Monitor by @dhing1024 in #1017
+  * Changing "All Devices" for non-ASIO category to be "High Latency" by @mikedickey in #1020
+  * GHA: add an option to wait for static Qt build by @dyfer in #1023
+  * Feature/adding icons to connected view by @nwang92 in #1022
+  * Updating some tooltips, sliders and positioning for connected interface by @mikedickey in #1024
+  * Hide classic mode link after first launch by @mattahorton in #1025
+  * Monitor Controls from API by @dhing1024 in #1026
+  * Refresh devices when opening the popup by @nwang92 in #1012
+
+-------------------------------------------------------------------
 Thu Apr  6 06:58:20 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.8.1
