@@ -58,9 +58,9 @@ BuildRequires:  %{python_module accessible-pygments}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  nodejs-default
+BuildRequires:  nodejs-devel
 BuildRequires:  nodejs-packaging
-BuildRequires:  nodejs19
-BuildRequires:  nodejs19-devel
 BuildRequires:  yarn
 
 # /SECTION
@@ -75,7 +75,7 @@ sed -i 's,^\(node-version = \)".*",\1"%{nodejs_version}",' pyproject.toml
 
 # Create a node header tarball so we don't try to download it
 mkdir -p node-v%{nodejs_version}/include
-cp -a %{_includedir}/node19 node-v%{nodejs_version}/include/node
+cp -a %{_includedir}/node* node-v%{nodejs_version}/include/node
 tar czf node-v%{nodejs_version}-headers.tar.gz node-v%{nodejs_version}
 echo "tarball=\"$PWD/node-v%{nodejs_version}-headers.tar.gz\"" > .npmrc
 

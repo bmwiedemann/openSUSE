@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 18 13:54:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to nodejs-default
+
+-------------------------------------------------------------------
 Thu Mar  9 10:10:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Vendor all required nodejs modules to be able to build without
