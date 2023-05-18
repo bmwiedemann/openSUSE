@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 17 07:54:03 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-filters-1.28.15-0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
+  cups-filters-1.28.15-0002-beh-backend-Extra-checks-against-odd-forged-input-CVE-2023-24805.patch
+  cups-filters-1.28.15-0003-beh-backend-Further-improvements-CVE-2023-24805.patch
+  are the upstream
+  0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
+  0002-beh-backend-Extra-checks-against-odd-forged-input-CVE-2023-24805.patch
+  0003-beh-backend-Further-improvements-CVE-2023-24805.patch
+  backported to cups-filters-1.28.15
+  to fix CVE-2023-24805: RCE in cups-filters, beh CUPS backend
+  (bsc#1211340) and
+  https://github.com/OpenPrinting/cups-filters/commit/8f274035756c04efeb77eb654e9d4c4447287d65
+
+-------------------------------------------------------------------
 Wed Mar  1 12:41:16 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - require_cxx17.patch: qpdf dependency is using std::string_view

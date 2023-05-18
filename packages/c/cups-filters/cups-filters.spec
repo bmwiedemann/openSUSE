@@ -58,6 +58,21 @@ Patch0:         harden_cups-browsed.service.patch
 #   zypper vcmp '4.0.17.257' '4.0.17.256.1' -> 4.0.17.257 is newer than 4.0.17.256.1
 %define foomatic_rip_version 4.0.17.256.1
 Patch1:         require_cxx17.patch
+# Patch2 cups-filters-1.28.15-0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
+# is the upstream 0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
+# backported to cups-filters-1.28.15
+# Patch3 cups-filters-1.28.15-0002-beh-backend-Extra-checks-against-odd-forged-input-CVE-2023-24805.patch
+# is the upstream 0002-beh-backend-Extra-checks-against-odd-forged-input-CVE-2023-24805.patch
+# backported to cups-filters-1.28.15
+# Patch4 cups-filters-1.28.15-0003-beh-backend-Further-improvements-CVE-2023-24805.patch
+# is the upstream 0003-beh-backend-Further-improvements-CVE-2023-24805.patch
+# backported to cups-filters-1.28.15
+# Patch2 Patch3 Patch4 fix CVE-2023-24805: RCE in cups-filters, beh CUPS backend
+# https://bugzilla.suse.com/show_bug.cgi?id=1211340
+# https://github.com/OpenPrinting/cups-filters/commit/8f274035756c04efeb77eb654e9d4c4447287d65
+Patch2:         cups-filters-1.28.15-0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
+Patch3:         cups-filters-1.28.15-0002-beh-backend-Extra-checks-against-odd-forged-input-CVE-2023-24805.patch
+Patch4:         cups-filters-1.28.15-0003-beh-backend-Further-improvements-CVE-2023-24805.patch
 # Support for cups154 in the SLE12 legacy module is abandoned (by default SLE12 has CUPS 1.7.5)
 # because newer cups-filters versions use stuff that is provided since CUPS > 1.5.4 so that it does
 # no longer build with CUPS 1.5.4 so that cups-filters does not work with CUPS 1.5.4:

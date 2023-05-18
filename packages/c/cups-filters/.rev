@@ -446,4 +446,12 @@
     <comment></comment>
     <requestid>1068608</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>19d2f96061872892a25df4c1fa9a2ea2</srcmd5>
+    <version>1.28.15</version>
+    <time>1684415897</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for CVE-2023-24805 RCE in cups-filters beh CUPS backend bsc#1211340 (forwarded request 1087537 from jsmeix)</comment>
+    <requestid>1087538</requestid>
+  </revision>
 </revisionlist>
