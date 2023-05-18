@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 18 07:49:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.2:
+  * Pin the pyright version until I understand what's changed.
+  * Re-add the packaging classifiers.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Fri May  5 10:46:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
