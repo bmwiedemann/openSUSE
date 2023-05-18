@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 17 07:38:30 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.95.2:
+  * Upgrade Starlette version to >=0.27.0 for a security release.
+
+- Translations
+  * Add Portuguese translation for docs/pt/docs/advanced/events.md
+  * Add Russian translation for docs/ru/docs/deployment/manually.md
+  * Add setup for translations to Lao
+  * Add Russian translation for docs/ru/docs/tutorial/testing.md
+  * Add Russian translation for docs/ru/docs/deployment/https.md
+  * Fix command to install requirements in Windows. 
+  * Add French translation for docs/fr/docs/advanced/response-directly.m*.
+  * Initiate Czech translation setup. 
+  * Fix typo in Portuguese docs for docs/pt/docs/index.md
+  * Add Russian translation for docs/ru/docs/tutorial/response-status-co*.md
+ 
+-------------------------------------------------------------------
 Sat May  6 15:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - test against sqlalchemy 1.x 

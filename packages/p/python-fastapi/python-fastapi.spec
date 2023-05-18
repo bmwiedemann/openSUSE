@@ -19,7 +19,7 @@
 # Keep extra test requirements out of Ring1
 %bcond_with ringdisabled
 Name:           python-fastapi
-Version:        0.95.1
+Version:        0.95.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -30,11 +30,11 @@ Patch0:         remove-classifiers.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 1.8.2}
-BuildRequires:  %{python_module starlette >= 0.22.0}
+BuildRequires:  %{python_module starlette >= 0.27.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.8.2
-Requires:       python-starlette >= 0.24.0
+Requires:       python-starlette >= 0.27.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
