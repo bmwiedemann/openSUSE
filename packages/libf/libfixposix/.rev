@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b304e0c6e88b4bcf2764680991f604c</srcmd5>
+    <version>0.5.1</version>
+    <time>1684415907</time>
+    <user>dimstar_suse</user>
+    <comment>Hi,
+
+I'm submitting this small library because it is a dependency of a larger package that I want to submit to Factory:
+
+That package is Nyxt, an innovative web browser written in Common Lisp, whose stable version 3.0.0 was just released, after 2 years of work:
+https://github.com/atlas-engineer/nyxt
+
+I already maintain a  nyxt package in a subproject of my home repo since a while:
+https://build.opensuse.org/project/show/home:bobbie424242:nyxt
+  
+I'd like to get nyxt into the &quot;network&quot; devel project (and then Factory) but it depends on libfixposix, hence this request so nyxt can eventually build in the &quot;network&quot; devel project (if accepted).
+</comment>
+    <requestid>1087471</requestid>
+  </revision>
+</revisionlist>
