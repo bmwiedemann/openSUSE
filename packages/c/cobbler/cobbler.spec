@@ -1,6 +1,7 @@
 #
 # spec file for package cobbler
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2006 Michael DeHaan <mdehaan@redhat.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,6 +22,7 @@
 # - Ubuntu: 18.04
 #
 # If it doesn't build on the Open Build Service (OBS) it's a bug.
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 # Force bash instead of Debian dash
@@ -67,7 +69,7 @@
 %define apache_group www
 
 %define apache_dir /srv/www
-%define apache_webconfigdir /etc/apache2/vhosts.d
+%define apache_webconfigdir /etc/apache2/conf.d
 %define apache_mod_wsgi apache2-mod_wsgi-python%{python3_pkgversion}
 %define tftpboot_dir /srv/tftpboot
 
@@ -151,7 +153,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.3.3.0+git.5c498dbf
+Version:        3.3.3
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -168,11 +170,6 @@ Group:          Development/System
 
 License:        GPL-2.0-or-later
 Source:         %{name}-%{version}.tar.gz
-####################
-# Already merged upstream
-Patch0:         backport_complex_xmlrpc_objects_and_logger_spam.patch
-# Already merged upstream
-Patch1:         backport_kernel_regex_error_message.patch
 BuildArch:      noarch
 
 BuildRequires:  git-core
@@ -227,6 +224,7 @@ Requires:       %{createrepo_pkg}
 Requires:       fence-agents
 Requires:       rsync
 Requires:       xorriso
+Requires:       dosfstools
 %{?python_enable_dependency_generator}
 %if ! (%{defined python_enable_dependency_generator} || %{defined python_disable_dependency_generator})
 Requires:       %{py3_module_cheetah}
@@ -283,10 +281,16 @@ Requires:       cobbler = %{version}-%{release}
 %description tests
 Unit test files from the Cobbler project
 
+%package tests-containers
+Summary:        Dockerfiles and scripts to setup testing containers
+Requires:       cobbler = %{version}-%{release}
+
+%description tests-containers
+Dockerfiles and scripts to setup testing containers
+
 
 %prep
 %setup
-%autopatch -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions
@@ -310,6 +314,7 @@ sed -e "s|/var/lib/tftpboot|%{tftpboot_dir}|g" -i config/cobbler/settings.yaml
 [ "${TFTPROOT}" != %{tftpboot_dir} ] && echo "ERROR: TFTPROOT: ${TFTPROOT} does not match %{tftpboot_dir}"
 
 %py3_build
+make man
 
 %install
 . distro_build_configs.sh
@@ -419,6 +424,8 @@ chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.yaml
 %config(noreplace) %{_sysconfdir}/cobbler/import_rsync_whitelist
 %dir %{_sysconfdir}/cobbler/iso
 %config(noreplace) %{_sysconfdir}/cobbler/iso/buildiso.template
+%config(noreplace) %{_sysconfdir}/cobbler/iso/isolinux_menuentry.template
+%config(noreplace) %{_sysconfdir}/cobbler/iso/grub_menuentry.template
 %config(noreplace) %{_sysconfdir}/cobbler/logging_config.conf
 %attr(640, root, root) %config(noreplace) %{_sysconfdir}/cobbler/modules.conf
 %attr(600, root, root) %config(noreplace) %{_sysconfdir}/cobbler/mongodb.conf
@@ -485,6 +492,10 @@ chgrp %{apache_group} %{_sysconfdir}/cobbler/settings.yaml
 %files tests
 %dir %{_datadir}/cobbler/tests
 %{_datadir}/cobbler/tests/*
+
+%files tests-containers
+%dir %{_datadir}/cobbler/docker
+%{_datadir}/cobbler/docker/*
 
 %changelog
 * Thu Dec 19 2019 Neal Gompa <ngompa13@gmail.com>

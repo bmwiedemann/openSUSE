@@ -1,9 +1,10 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/cobbler/cobbler.git</param>
+    <param name="url">https://github.com/openSUSE/cobbler.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">3.3.3.@TAG_OFFSET@+git.%h</param>
-    <param name="revision">v3.3.3</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">openSUSE/factory</param>
     <param name="extract">cobbler.spec</param>
   </service>
   <service name="set_version" mode="disabled"/>

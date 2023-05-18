@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed May 17 15:40:31 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix package building with Sphinx >= 7.0.0
+- Switch packaging from patch based to Git tree based development
+- All patches that are being removed in this revision are contained in
+  the new Git tree.
+- Do generate boot menus even if no profiles or systems - only local boot
+- Avoid crashing running buildiso in certain conditions.
+- Fix settings migration schema to work while upgrading on existing running
+  Uyuni and SUSE Manager servers running with old Cobbler settings (bsc#1203478)
+- Consider case of "next_server" being a hostname during migration
+  of Cobbler collections.
+- Fix problem with "proxy_url_ext" setting being None type.
+- Update v2 to v3 migration script to allow migration of collections
+  that contains settings from Cobbler 2. (bsc#1203478)
+- Fix problem for the migration of "autoinstall" collection attribute.
+- Fix failing Cobbler tests after upgrading to 3.3.3.
+- Fix regression: allow empty string as interface_type value (bsc#1203478) 
+- Avoid possible override of existing values during migration
+  of collections to 3.0.0 (bsc#1206160)
+- Add new "cobbler-tests-containers" subpackage which contains setup and
+  configuration files to run Cobbler tests in containers.
+- Add missing code for previous patch file around boot_loaders migration.
+- Improve Cobbler performance with item cache and threadpool (bsc#1205489)
+- Skip collections that are inconsistent instead of crashing (bsc#1205749)
+- Items: Fix creation of "default" NetworkInterface (bsc#1206520)
+- S390X systems require their kernel options to have a linebreak at
+  79 characters (bsc#1207595)
+- settings-migration-v1-to-v2.sh will now handle paths with whitespace
+  correct
+- Fix renaming Cobbler items (bsc#1204900, bsc#1209149)
+- Fix cobbler buildiso so that the artifact can be booted by EFI firmware.
+  (bsc#1206060)
+- Add input_string_*, input_boolean, input_int functiont to public API
+
+- Removed:
+  * backport_complex_xmlrpc_objects_and_logger_spam.patch
+  * backport_kernel_regex_error_message.patch 
+
+-------------------------------------------------------------------
 Thu Jul 21 08:52:17 UTC 2022 - Enno Gotthold <egotthold@suse.com>
 
 - Fix issue that a custom kernel with the extension ".kernel" is not
