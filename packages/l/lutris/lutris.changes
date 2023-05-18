@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed May 17 06:51:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.13:
+  * Add support for Proton
+  * Add drag and drop on the main window. Dropped files will be matched
+    No-Intro, Redump and TOSEC checksums.
+  * Add support for ModDB links in installers (moddb python module required)
+  * Added "Missing" sidebar option for games whose directory is missing
+  * Re-style the configuration, preferences, installer and add-games windows
+  * Group configuration options into sections
+  * Added checkbox to stop asking for the launch config for a game
+  * Added checkbox to sort installed games first
+  * Support for launch-configs in shortcuts and the command line
+  * Show platform badges on banners and cover-art
+  * Installing games from setup files can now use different presets (Win98, 3DFX, ...)
+  * Add filter field to runner list
+  * Show game count in search bar
+  * Workaround Humble Bundle authentication issues by allowing importing
+    cookies from Firefox
+  * Add Itch.io integration
+  * Add Battle.net integration (protobuf dependency required)
+  * Improve detection of DOSBox games on GOG
+  * Added "Unspecified" Vulkan ICD option
+  * Removed ResidualVM (now merged into ScummVM)
+  * Detect obsolete Vulkan drivers and default to DXVK 1.x for them
+  * Improved High-DPI support for custom media
+  * Performance improvements
+- Drop fix-float-str-concat.patch
+
+-------------------------------------------------------------------
 Sun Apr 30 11:50:46 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - switch to autosetup

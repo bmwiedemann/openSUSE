@@ -18,13 +18,12 @@
 
 %global appid net.lutris.Lutris
 Name:           lutris
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
 URL:            https://lutris.net
 Source0:        https://lutris.net/releases/lutris_%{version}.tar.xz
-Patch:          fix-float-str-concat.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme

@@ -387,4 +387,37 @@
     <comment></comment>
     <requestid>1083918</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7fb2b43787557439cf48e60403f8d1d9</srcmd5>
+    <version>0.5.13</version>
+    <time>1684415940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.13:
+  * Add support for Proton
+  * Add drag and drop on the main window. Dropped files will be matched
+    No-Intro, Redump and TOSEC checksums.
+  * Add support for ModDB links in installers (moddb python module required)
+  * Added &quot;Missing&quot; sidebar option for games whose directory is missing
+  * Re-style the configuration, preferences, installer and add-games windows
+  * Group configuration options into sections
+  * Added checkbox to stop asking for the launch config for a game
+  * Added checkbox to sort installed games first
+  * Support for launch-configs in shortcuts and the command line
+  * Show platform badges on banners and cover-art
+  * Installing games from setup files can now use different presets (Win98, 3DFX, ...)
+  * Add filter field to runner list
+  * Show game count in search bar
+  * Workaround Humble Bundle authentication issues by allowing importing
+    cookies from Firefox
+  * Add Itch.io integration
+  * Add Battle.net integration (protobuf dependency required)
+  * Improve detection of DOSBox games on GOG
+  * Added &quot;Unspecified&quot; Vulkan ICD option
+  * Removed ResidualVM (now merged into ScummVM)
+  * Detect obsolete Vulkan drivers and default to DXVK 1.x for them
+  * Improved High-DPI support for custom media
+  * Performance improvements
+- Drop fix-float-str-concat.patch</comment>
+    <requestid>1087508</requestid>
+  </revision>
 </revisionlist>
