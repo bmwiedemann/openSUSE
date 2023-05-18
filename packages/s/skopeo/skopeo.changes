@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Apr 20 13:07:17 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.12.0:
+  * Release 1.12.0
+  * Update module github.com/containers/common to v0.52.0
+  * Update module github.com/containers/storage to v1.46.1
+  * Add (make tools) to install (for now only) golangci-lint, use it in Cirrus
+  * Use golangci-lint instead of golint
+  * Finally, eliminate hack/make.sh
+  * Actually fail if (go vet) fails
+  * Speed up validate-git-marks by about a factor of three
+  * Don't use hack/make.sh for validate-git-marks
+  * Test all files by validate-git-marks
+  * Simplify the package list of (go vet)
+  * Don't use hack/make.sh for validate-gofmt
+  * Run gofmt on all files, not just the changed ones
+  * Don't use hack/make.sh for validate-lint
+  * Lint many more files in validate-lint
+  * Don't use hack/make.sh for validate-vet
+  * Remove no-longer-necessary module options
+  * Fix Makefile dependencies
+  * Remove some outright unused code from hack/make*
+  * Cross-link the top-level and subcommand option lists
+  * Fix error handling of signature.NewEphemeralGPGSigningMechanism
+  * chore(deps): update dependency containers/automation_images to v20230405
+  * Avoid use of a deprecated capability.NewPid
+  * fix(deps): update module github.com/spf13/cobra to v1.7.0
+  * fix(deps): update module github.com/containers/image/v5 to v5.25.0
+  * fix(deps): update module golang.org/x/term to v0.7.0
+  * Use multiple fingerprint function Allow comma separated fingerprint list
+  * Review comments (to be squashed later
+  * Rename argument. Only use any with public key file. Double check fingerprint is in public key file.
+  * Verify signatures from a trust store
+  * Update c/image from the main branch
+  * Update module github.com/containers/common to v0.51.2
+  * Update dependency containers/automation_images to v20230330
+  * systemtests: Fix 040-local-registry-auth about XDG_RUNTIME_DIR
+  * [CI:BUILD] Packit: trigger builds on commit to main branch
+  * [skip-ci] Update actions/stale action to v8
+  * Make the installation instructions more prominent in README.md
+  * Update dependency containers/automation_images to v20230320
+  * Update module github.com/containers/common to v0.51.1
+  * Cirrus: Update CI VM images
+  * bump golang.org/x/net to v0.8.0
+  * Update module golang.org/x/term to v0.6.0
+  * Simplify inspectOptions.writeOutput a bit more
+  * Factor out the output of data in (skopeo inspect)
+  * Use io.WriteString
+  * Update module github.com/stretchr/testify to v1.8.2
+  * Update module github.com/containers/storage to v1.45.4
+  * Update golang.org/x/exp digest to 5e25df0
+  * Fix formatting of inspect examples
+  * Use common library reporter
+  * Fix some warnings
+  * Fix tabelating output in (skopeo inspect --format)
+  * Corrected typo in skopeo-sync and updated description
+  * Replace gopkg.in/check.v1 by github.com/stretchr/testify/suite/
+  * Update c/image after https://github.com/containers/image/pull/1842
+  * [CI:BUILD] Packit: initial enablement
+  * Renovate: c/common rule moved to defaults
+  * Update c/image after https://github.com/containers/image/pull/1816
+  * Run codespell on codebase
+  * [CI:DOCS] Disable dependabot
+  * Update module golang.org/x/term to v0.5.0
+  * Update golang.org/x/exp digest to 46f607a
+  * Remove unnecessary blank lines
+  * Pre-allocate an array
+  * Simplify a condition
+  * Rename a variable to avoid an underscore
+  * Add missing comment punctuation
+  * Fix, or remove, comments using lint syntax
+  * Simplify an increment
+  * Reformat import statements
+  * Use %w when wrapping errors
+  * Remove a duplicate word
+  * Use net/netip.Addr instead of net.IP
+  * s/interface{}/any/g
+  * Use golang.org/x/exp
+  * Use strings.Cut
+  * go mod tidy -go=1.18
+  * [CI:BUILD] enable debuginfo for el8 copr builds
+  * [CI:BUILD] copr: fix el8 build and enable debuginfo
+  * Cirrus: Use human-readable CI VM Images
+  * Update module gopkg.in/yaml.v2 to v3
+  * Add unit tests for tlsVerifyConfig's yaml.Unmarshaler
+  * [CI:DOCS] Fix up language in README
+
+-------------------------------------------------------------------
+Tue Apr 04 05:31:41 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.11.2:
+  * Release 1.11.2
+  * bump golang.org/x/net to v0.7.0
+  * [release-1.11] Bump to v1.11.2-dev
+
+-------------------------------------------------------------------
 Fri Feb 17 04:51:04 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.11.1:
