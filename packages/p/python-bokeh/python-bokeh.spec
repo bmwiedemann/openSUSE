@@ -94,7 +94,7 @@ BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module scikit-learn}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  npm19
+BuildRequires:  npm
 %endif
 # /SECTION
 %python_subpackages
