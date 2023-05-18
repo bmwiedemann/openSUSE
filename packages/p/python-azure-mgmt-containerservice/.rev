@@ -394,4 +394,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1081138 from glaubitz)</comment>
     <requestid>1081159</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a2c76804ea77a45cf1ffe5b65ed28327</srcmd5>
+    <version>23.0.0</version>
+    <time>1684415983</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 23.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1087513 from glaubitz)</comment>
+    <requestid>1087727</requestid>
+  </revision>
 </revisionlist>
