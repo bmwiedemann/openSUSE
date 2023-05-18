@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 16 20:19:37 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change ctrl_interface from /var/run to %_rundir (/run)
+
+-------------------------------------------------------------------
 Thu Sep  1 13:52:19 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files

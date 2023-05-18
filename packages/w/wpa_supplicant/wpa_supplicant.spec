@@ -87,6 +87,7 @@ install -d %{buildroot}%{_datadir}/dbus-1/system.d
 install -m 0644 wpa_supplicant/dbus/dbus-wpa_supplicant.conf %{buildroot}%{_datadir}/dbus-1/system.d/wpa_supplicant.conf
 install -d %{buildroot}/%{_sysconfdir}/%{name}
 install -m 0600 %{SOURCE2} %{buildroot}/%{_sysconfdir}/%{name}
+sed 's-@RUNSTATEDIR@-%{_rundir}-g' -i %{buildroot}/%{_sysconfdir}/%{name}/%{name}.conf
 install -d %{buildroot}/%{_datadir}/dbus-1/system-services
 install -m 0644 %{SOURCE3} %{buildroot}/%{_datadir}/dbus-1/system-services
 install -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/dbus-1/system-services
