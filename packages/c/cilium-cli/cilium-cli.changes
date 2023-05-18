@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu May 18 07:47:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.3:
+  * Prepare for v0.14.3 release
+  * chore(deps): update helm/kind-action action to v1.7.0
+  * build(deps): bump github.com/docker/distribution
+  * chore(deps): update actions/setup-go action to v4.0.1
+  * Remove last-applied-configuration from etcd-secret in sysdump
+  * fix(deps): pin dependencies
+  * helm mode: Clarify upgrade command
+  * fix(deps): pin dependencies
+  * fix(deps): pin dependencies
+  * chore(deps): update google/mirror-branch-action digest to
+    30c52ee
+  * renovate: schedule Go module updates once a week
+  * uninstall: allow ciliumVersion to start with "v"
+  * install: fix TestK8sInstaller_getHelmValuesKind after update to
+    yaml.v3
+  * fix(deps): update module gopkg.in/yaml.v2 to v3
+  * connectivity: Improve the logic to wait for Hubble Relay
+  * Add helm mode test coverage for AKS BYOCNI
+  * unit test: Restore the original env variable using defer
+  * fix(deps): pin dependencies
+  * fix(deps): update all go dependencies main
+  * chore(deps): update google/mirror-branch-action digest to
+    884625c
+  * .github/workflows: add missing GH action version annotations
+  * chore(deps): update google-github-actions/setup-gcloud action
+    to v1.1.1
+  * chore(deps): update dependency go to v1.20.4
+  * chore(deps): update all github action dependencies
+  * Add a function to check if the CLI is in Helm mode
+  * Farewell dependabot 👋
+  * connectivity test: add junit output
+  * Remove az-binary check
+  * Don't enable nodeinit on EKS when not needed
+  * Update stable release to v0.14.2
+  * .github/workflows: add GH action version annotations
+  * renovate: exclude Cilium forks and k8s from automatic updates
+  * renovate: fix invalid whitespace characters
+  * renovate: fix invalid JSON syntax
+  * .github/workflows: bump AKS BYOCNI workflow timeout
+  * Add renovate configuration
+  * helm mode: add recursive deprecated secret logic
+
+-------------------------------------------------------------------
 Tue May 09 05:17:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.2:
