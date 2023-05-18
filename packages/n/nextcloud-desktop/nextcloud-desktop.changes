@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 17 09:40:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.8.2
+  - desktop#5619 [stable-3.8] Edit locally. Elide loading dialog filename label middle.
+  - desktop#5620 [stable-3.8] Fix crash on entering new log file after file size of 512kb reached
+  - desktop#5623 [stable-3.8] Properly handle all fatal errors during edit locally setup procedure
+  - desktop#5624 [stable-3.8] Fix MacOS UTF-8 normalization issue
+  - desktop#5625 [stable-3.8] Parse sharees 'lookup' key to include federated sharees.
+  - desktop#5631 [stable-3.8] Implement missing share settings
+  - desktop#5632 [stable-3.8] no longer override the pixman default version
+  - desktop#5647 [stable-3.8] Edit locally. Fix crash on _chekTokenJob pointer deref.
+  - desktop#5651 [stable-3.8] Remove some SQL debug logs to unclutter the output.
+  - desktop#5657 [stable-3.8] E2EE. Fix freeze on metadata checksum validation.
+  - desktop#5660 [stable-3.8] Fix folder progress bar positioning in account settings on macOS
+  - desktop#5671 [stable-3.8] Use addLayout to insert the VFS option when setting account.
+  - desktop#5658 [stable-3.8] Fix update request channel being set to wrong localised string
+  - desktop#5661 [stable-3.8] Fix setting [undefined] to QFont in 'Sync now' button
+  - desktop#5664 [stable-3.8] Fix account migration from legacy desktop clients (again)
+  - desktop#5663 [stable-3.8] Attempt sign in when an account state is added in AccountManager
+  - desktop#5673 [stable-3.8] Update CHANGELOG.
+  - desktop#5694 [stable-3.8] Fix unrecoverable freezing when PutMultiFileJob is used with upload rate limits enabled
+
+-------------------------------------------------------------------
 Wed Apr 19 15:03:44 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.8.1
