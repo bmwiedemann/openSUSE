@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 17 07:42:13 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.27.0:
+  * Added
+    - Minify JSON websocket data via send_json #2128
+
+  * Fixed
+    - Replace commonprefix by commonpath on StaticFiles 1797de4.
+    - Convert ImportErrors into ModuleNotFoundError #2135.
+    - Correct the RuntimeError message content in websockets #2141.
+
+-------------------------------------------------------------------
 Tue Mar 14 09:11:16 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 0.26.1:
