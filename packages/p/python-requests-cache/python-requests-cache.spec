@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-cache
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-cache
-Version:        0.6.3
+Version:        1.0.1
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/reclosedev/requests-cache
-Source:         https://files.pythonhosted.org/packages/source/r/requests-cache/requests-cache-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com/requests-cache/requests-cache
+Source:         https://github.com/requests-cache/requests-cache/archive/refs/tags/v%{version}.tar.gz#/requests-cache-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
+BuildRequires:  psmisc
 BuildRequires:  python-rpm-macros
 Requires:       python-itsdangerous
 Requires:       python-requests >= 2.0.0
@@ -36,15 +37,21 @@ Suggests:       python-boto3
 Suggests:       python-mongodb
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module cattrs}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module itsdangerous}
+BuildRequires:  %{python_module platformdirs}
+BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module url-normalize >= 1.4}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module tenacity}
 BuildRequires:  %{python_module timeout-decorator}
+BuildRequires:  %{python_module url-normalize >= 1.4}
 BuildRequires:  redis
 # /SECTION
 %python_subpackages
@@ -66,10 +73,10 @@ take a look at `CacheControl <https://github.com/ionrock/cachecontrol>`_.
 %setup -q -n requests-cache-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -77,10 +84,12 @@ gunicorn -b 127.0.0.1:8080 httpbin:app -k gevent &
 %{_sbindir}/redis-server &
 export HTTPBIN_URL=http://localhost:8080/
 %pytest -k 'not (dynamodb or gridfs or mongodb)'
+killall -w redis-server
 
 %files %{python_files}
 %license LICENSE
 %doc README.md HISTORY.md docs/*.rst
-%{python_sitelib}/*
+%{python_sitelib}/requests_cache
+%{python_sitelib}/requests_cache-%{version}*-info
 
 %changelog

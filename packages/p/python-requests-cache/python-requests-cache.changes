@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May  4 20:20:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- WORK IN PROGRESS, TESTS DON’T PASS!
+- Update to 1.0.1: (CONGRATULATIONS!)
+  - Ignore Cache-Control: must-revalidate and no-cache when
+    `cache_control=False`
+  - Lots of miscellaneous performance improvements
+  - Fast automatic cache cleanup with TTL integration for
+    MongoDB, DynamoDB and Redis
+  - Improved NoSQL/document database support: human-readable and
+    indexable response data in MongoDB and DynamoDB
+  - Complete support for Cache-Control headers (including its
+    extensions)
+  - Complete type hinting and more details from cached responses
+  - Redact common authentication headers and parameters from the
+    cache by default
+  - Improved session settings interface, and more settings for
+    refreshing, revalidation, and offline cache usage
+- Remaining list of changes all the way to 0.6.3 is too long,
+  HISTORY.md is packaged.
+
+-------------------------------------------------------------------
 Sat Apr 24 11:30:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.6.3
