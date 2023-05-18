@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 17 08:47:27 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
+
+-Update to 0.9.0:
+    * Add the python- prefix to default spec filename as well.
+    * Remove python_module definition macro
+    * Update python version in tox.yml
+    * The releases field has been removed from the API endpoint and should not
+      be used.
+    * openSUSE template: add package name to sitelib path
+
+-------------------------------------------------------------------
 Thu May 11 18:32:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Replace build_sphinx setuptools hook with direct sphinx-build
@@ -308,19 +319,19 @@ Wed Aug 12 15:55:29 UTC 2015 - toddrme2178@gmail.com
   + Remove unused 'requires' from opensuse template
   + Quote %doc filenames if they contain shell metacharacters
   + Add support for "entry_points" and "console_scripts" parameters
-  + Support syntactic variations as per the setuptools spec 
+  + Support syntactic variations as per the setuptools spec
   + Make "parse" and "run" two separate modes
   + Support same set of setup() parameters in parse and run modes
   + Use setuptools instead of distutils in _run_setup_py() …
   + Run setup.py (instead of just parsing it) to gather more data
   + Adjust Travis CI build
-  + Remove commented code and make pep8 happy 
+  + Remove commented code and make pep8 happy
   + Remove package create function
-  + Fix license detection when license is None 
+  + Fix license detection when license is None
   + Don't include comma in _parse_setup_py regexp
-  + fix indentation in README 
+  + fix indentation in README
   + Fix KeyError for license and summary
-- Add update-alternatives support for compatibility with 
+- Add update-alternatives support for compatibility with
   python 3 version of the package.
 
 -------------------------------------------------------------------
@@ -490,7 +501,7 @@ Wed Jan 12 10:46:44 UTC 2011 - saschpe@suse.de
 Mon Dec 20 11:48:08 UTC 2010 - saschpe@suse.de
 
 - Update to version 0.3.3
-  * Moved 'export CFLAGS...' from %prep to %build section in 
+  * Moved 'export CFLAGS...' from %prep to %build section in
     templates
 
 -------------------------------------------------------------------
@@ -547,4 +558,3 @@ Sat Dec 11 17:31:29 UTC 2010 - saschpe@gmx.de
 Sat Dec 11 17:12:10 UTC 2010 - saschpe@gmx.de
 
 - Initial version
-

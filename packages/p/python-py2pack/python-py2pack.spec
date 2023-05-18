@@ -17,7 +17,7 @@
 
 
 Name:           python-py2pack
-Version:        0.8.7
+Version:        0.9.0
 Release:        0
 Summary:        Script for generating distribution packages from Python packages on PyPI
 License:        Apache-2.0
@@ -68,6 +68,8 @@ Documentation and help files for %{name}.
 sed -i '1{/#!/d}' py2pack/__init__.py
 
 %build
+export PBR_VERSION=0.9.0
+
 %pyproject_wheel
 
 # build docs, cli.rst needs py2pack as executable
@@ -103,7 +105,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %files -n %{name}-doc
 %license LICENSE
-%doc AUTHORS
+# %doc AUTHORS
 %doc doc/build/html/
 
 %changelog
