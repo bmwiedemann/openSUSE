@@ -79,7 +79,7 @@
 %define ffmpeg_version 58
 %endif
 Name:           chromium
-Version:        113.0.5672.92
+Version:        113.0.5672.126
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later

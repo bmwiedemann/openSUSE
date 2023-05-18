@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 16 21:16:23 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Chromium 113.0.5672.126 (boo#1211442):
+  * CVE-2023-2721: Use after free in Navigation
+  * CVE-2023-2722: Use after free in Autofill UI
+  * CVE-2023-2723: Use after free in DevTools
+  * CVE-2023-2724: Type Confusion in V8
+  * CVE-2023-2725: Use after free in Guest View
+  * CVE-2023-2726: Inappropriate implementation in WebApp Installs
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Tue May  9 19:14:20 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Chromium 113.0.5672.92 (boo#1211211)
