@@ -67,4 +67,13 @@
   * Fix type hints</comment>
     <requestid>1085339</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1a88cb7bb622f9f35279e5522bd3bfc</srcmd5>
+    <version>0.5.3</version>
+    <time>1684415995</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.3:
+  * This is an package metadata only update.</comment>
+    <requestid>1087755</requestid>
+  </revision>
 </revisionlist>
