@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 18 03:03:30 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 5.13. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-13-has-been-released/16949
+  boo#1211477
+
+  LXD 5.13:
+  + Fast live migration for virtual machines
+  + AMD SEV support for virtual machines
+  + OpenID Connect authentication
+  + VDPA for network acceleration on OVN
+  + Layer 3 only support on OVN
+  + Nested NIC support on OVN networks
+  + Per user bridge in multi-user setups
+  + Support for growing existing storage pools
+
+  LXD 5.12:
+  + Device wipe when creating storage pools
+  + VM generation id
+  + VM block cache mode
+
+-------------------------------------------------------------------
 Sat Feb 18 11:23:42 UTC 2023 - Jacob Hansen <me@jacobbaungard.com>
 
 - Update to LXD 5.11. The full upstream changelog is available from:
