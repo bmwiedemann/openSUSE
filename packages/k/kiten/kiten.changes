@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 11 15:36:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Reuse system edict dictionaries and shave off 13 MB worth of
+  data. The system edict is also (much) newer and more
+  comprehensive.
+
+-------------------------------------------------------------------
 Tue May  9 10:47:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1

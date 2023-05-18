@@ -46,6 +46,10 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
+%if 0%{?suse_version} >= 1599
+BuildRequires:  edict-eucjp >= 20230511
+Requires:       edict-eucjp >= 20230511
+%endif
 Requires:       fonts-KanjiStrokeOrders
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
@@ -95,6 +99,11 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %install
 %kf5_makeinstall -C build
+%if 0%{?suse_version} >= 1599
+for i in edict kanjidic radkfile; do
+	ln -fsv "%_datadir/edict/$i.eucjp" "%buildroot/%_datadir/kiten/$i"
+done
+%endif
 
 %find_lang %{name} --with-man --all-name
 %{kf5_find_htmldocs}
