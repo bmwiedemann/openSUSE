@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 16 18:19:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.13:
+  * Fixed #5517: Social plugin crashes for some fonts (e.g. Open
+    Sans)
+
+-------------------------------------------------------------------
 Fri May 12 13:42:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.12:
