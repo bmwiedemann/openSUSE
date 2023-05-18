@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 17 15:40:22 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Update to 0.4.6:
+  * Removes stale worktrees after using the push command
+
+-------------------------------------------------------------------
 Sun Dec  4 21:19:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.5:
