@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 18 03:50:57 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Update to version 0.97:
+
+  Enhancements
+
+    ledctl: add support to empty slots blinking
+    ledmon license change to LGPLv2
+    ledctl: Add SES get/set/list slot support
+    Update NPEM wait command
+    Remove exclusionary language
+    ledmon: Define ONESHOT_NORMAL for VMD
+
+  Bug fixes
+
+    ipmi: avoid error messages on non-dell platforms
+    vmdssd: define normal pattern
+    ledctl: clear unsupported params from config
+    block.c: get_block_device_from_sysfs_path modification
+    fix ibpi_value lists getter
+    amd_ipmi: Allow to _enable_smbus_control
+    ledmon.c: allocate memory for ignore
+    sysfs: add only vmd devices to slots_list
+    Rename --controller parameter
+    Slots list implementations and fixes
+
+- Drop no longer needed patches:
+  * 0001-Ledctl-slots-management-94.patch
+  * 0002-add-Dell-15G-servers.patch
+  * 0003-ipmi-avoid-error-messages-on-non-dell-platforms-112.patch
+
+-------------------------------------------------------------------
 Wed Apr 26 11:27:18 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Don't use ProtectKernelTunables, can break some use cases

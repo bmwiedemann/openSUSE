@@ -17,17 +17,14 @@
 
 
 Name:           ledmon
-Version:        0.96
+Version:        0.97
 Release:        0
 Summary:        Enclosure LED Utilities
-License:        GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Hardware/Other
 URL:            https://github.com/intel/ledmon/
-Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/intel/ledmon/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_ledmon.service.patch
-Patch1:         0001-Ledctl-slots-management-94.patch
-Patch2:         0002-add-Dell-15G-servers.patch
-Patch3:         0003-ipmi-avoid-error-messages-on-non-dell-platforms-112.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libsgutils-devel
@@ -74,7 +71,7 @@ rm %{buildroot}%{_datarootdir}/doc/ledmon/README.md
 %service_del_postun %{name}.service
 
 %files
-%license COPYING
+%license COPYING COPYING.LIB
 %doc README.md
 %{_sbindir}/ledmon
 %{_sbindir}/ledctl
