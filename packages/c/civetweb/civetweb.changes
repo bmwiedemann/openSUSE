@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 17 12:02:09 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.16:
+  * Enable IPv6 as default when using CMake
+  * Define error codes for mg_start2, mg_start_domain2, mg_connect_client2
+  * Fixes for OpenSSL 3.0 support
+  * Add support for Mbed TLS v3.0.0
+  * WebDAV should understand Windows File Explorer (experimental)
+  * Accept HTTP basic authentication
+  * Make pattern matching function availible in the public interface
+  * Make base64 encoding and decoding functions available
+  * Various fixes for HTTP/2 support
+  * Additional examples
+  * Fixes and updates to existing examples
+  * Fix spelling errors in code and documentation
+  * Remove Conan support
+
+  * Known Issues:
+    The WebDAV support when using the Windows Explorer as client has various limitations when renaming or moving files and folders. 
+    In particular file names in non-latin characters may break when running the server on Linux and connecting with the Windows Explorer.
+
+-------------------------------------------------------------------
 Thu May  5 13:24:07 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - do not load libcrypto/libssl dynamically, just link against them (bsc#1199047)

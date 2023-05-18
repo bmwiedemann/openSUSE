@@ -1,7 +1,7 @@
 #
 # spec file for package civetweb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define         soname  1_15_0
 %define         _libname libcivetweb
-
 Name:           civetweb
+Version:        1.16
+Release:        0
 Summary:        A C/C++ web server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
-Version:        1.15
-Release:        0
 URL:            https://github.com/civetweb/civetweb
 Source0:        https://github.com/civetweb/civetweb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        civetweb.conf
@@ -49,7 +48,7 @@ Group:          Productivity/Networking/Web/Servers
 
 %description -n %{_libname}-cpp%{soname}
 This package contains the shared library required by applications that
-are using %{name}'s embeddable API to provide web services. 
+are using %{name}'s embeddable API to provide web services.
 
 %package devel
 Summary:        Header files and development libraries for %{name}
@@ -86,7 +85,6 @@ rm -rf build
 
 %post -n %{_libname}%{soname} -p /sbin/ldconfig
 %postun -n %{_libname}%{soname} -p /sbin/ldconfig
-
 %post -n %{_libname}-cpp%{soname} -p /sbin/ldconfig
 %postun -n %{_libname}-cpp%{soname} -p /sbin/ldconfig
 
@@ -106,6 +104,8 @@ rm -rf build
 %{_includedir}/CivetServer.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/lib%{name}-cpp.so
+%{_datadir}/pkgconfig/%{name}.pc
+%{_datadir}/pkgconfig/%{name}-cpp.pc
 
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*cmake
