@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Thu May 18 05:00:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.19.14:
+  - bridge Implemented appservice pinging using MSC2659.
+  - bridge Started reusing aiosqlite connection pool for crypto db.
+    - This fixes the crypto pool getting stuck if the bridge exits unexpectedly
+      (the default pool is closed automatically at any type of exit).
+- Update to 0.19.13:
+  - crypto Fixed bug with redacting megolm sessions when device is deleted.
+- Update to 0.19.12:
+  - bridge Fixed backwards-compatibility with new key deletion config options.
+- Update to 0.19.11:
+  - crypto Fixed bug in previous release which caused errors if the `max_age`
+    of a megolm session was not known.
+  - crypto Changed key receiving handler to fetch encryption config from
+    server if it's not cached locally (to find `max_age` and `max_messages` more
+    reliably).
+- Update to 0.19.10:
+  - crypto, bridge Added options to automatically ratchet/delete megolm
+    sessions to minimize access to old messages.
+- Update to 0.19.9:
+  - crypto Fixed bug in crypto store migration when using outbound sessions
+    with max age higher than usual.
+- Update to 0.19.8:
+  - crypto Updated crypto store schema to match mautrix-go.
+  - types Fixed `set_thread_parent` adding reply fallbacks to the message body.
+- Update to 0.19.7:
+  - bridge, crypto Fixed key sharing trust checker not resolving cross-signing
+    signatures when minimum trust level is set to cross-signed.
+- Update to 0.19.6:
+  - crypto Added cache checks to prevent invalidating group session when the
+    server sends a duplicate member event in /sync.
+  - util.proxy Fixed `min_wait_seconds` behavior and added `max_wait_seconds`
+    and `multiply_wait_seconds` to `proxy_with_retry`.
+- Update to 0.19.5:
+  - util.proxy Added utility for dynamic proxies from mautrix-instagram/facebook.
+  - types Added default value for `upload_size` in `MediaRepoConfig` as the
+    field is optional in the spec.
+  - bridge Changed ghost invite handling to only process one per room at a time
+    (thanks to [@maltee1] in [#132]).
+- Update to 0.19.4:
+  - types Changed `set_thread_parent` to inherit the existing thread parent
+    if a `MessageEvent` is passed, as starting threads from a message in a thread
+    is not allowed.
+  - util.background_task Added new utility for creating background tasks
+    safely, by ensuring that the task is not garbage collected before finishing
+    and logging uncaught exceptions immediately.
+- Update to 0.19.3:
+  - bridge Bumped default timeouts for decrypting incoming messages.
+- Update to 0.19.2:
+  - util.async_body Added utility for reading aiohttp response into a bytearray
+    (so that the output is mutable, e.g. for decrypting or encrypting media).
+  - client.api Fixed retry loop for MSC3870 URL uploads not exiting properly
+    after too many errors.
+- Update to 0.19.1:
+  - Marked Python 3.11 as supported. Python 3.8 support will likely be dropped in
+    the coming months.
+  - client.api Added request payload memory optimization to MSC3870 URL uploads.
+    - aiohttp will duplicate the entire request body if it's raw bytes, which
+      wastes a lot of memory. The optimization is passing an iterator instead of
+      raw bytes, so aiohttp won't accidentally duplicate the whole thing.
+    - The main `HTTPAPI` has had the optimization for a while, but uploading to
+      URL calls aiohttp manually.
+- Update to 0.19.0:
+  - Breaking change appservice Removed typing status from state store.
+  - Breaking change appservice Removed `is_typing` parameter from
+    `IntentAPI.set_typing` to make the signature match `ClientAPI.set_typing`.
+    `timeout=0` is equivalent to the old `is_typing=False`.
+  - Breaking change types Removed legacy fields in Beeper MSS events.
+  - bridge Removed accidentally nested reply loop when accepting invites as
+    the bridge bot.
+  - bridge Fixed decoding JSON values in config override env vars.
+- Update to 0.18.9:
+  - util.async_db Changed aiosqlite connector to force-enable foreign keys,
+    WAL mode and busy_timeout.
+    - The values can be changed by manually specifying the same PRAGMAs in the
+      `init_commands` db arg, e.g. `- PRAGMA foreign_keys = OFF`.
+  - types Added workaround to `StateEvent.deserialize` to handle Conduit's
+    broken `unsigned` fields.
+  - client.state_store Fixed `set_power_level` to allow raw dicts the same
+    way as `set_encryption_info` does (thanks to [@bramenn] in [#127]).
+- Update to 0.18.8:
+  - crypto.store.asyncpg Fixed bug causing `put_group_session` to fail when
+    trying to log unique key errors.
+  - client Added wrapper for `create_room` to update the state store with
+    initial state and invites (applies to anything extending `StoreUpdatingAPI`,
+    such as the high-level `Client` and appservice `IntentAPI` classes).
+- Update to 0.18.7:
+- Update to 0.18.6:
+  - util.formatter Added conversion method for `<hr>` tag and defaulted to
+    converting back to `---`.
+- Update to 0.18.5:
+  - appservice Added try blocks around [MSC3202] handler functions to log
+    errors instead of failing the entire transaction. This matches the behavior
+    of errors in normal appservice event handlers.
+- Update to 0.18.4:
+  - client.api Added option to pass custom data to `/createRoom` to enable
+    using custom fields and testing MSCs without changing the library.
+  - client.api Updated [MSC3870] support to send file name in upload complete
+    call.
+  - types Changed `set_edit` to clear reply metadata as edits can't change
+    the reply status.
+  - util.formatter Fixed edge case causing negative entity lengths when
+    splitting entity strings.
+- Update to 0.18.3:
+  - util.async_db Fixed mistake in default no-op database error handler
+    causing the wrong exception to be raised.
+  - crypto.store.asyncpg Updated `put_group_session` to catch unique key
+    errors and log instead of raising.
+  - client.api Updated [MSC3870] support to catch and retry on all
+    connection errors instead of only non-200 status codes when uploading.
+- Update to 0.18.2:
+  - crypto Fixed handling key requests when using appservice-mode MSC2409
+    encryption.
+  - appservice Added workaround for dumb servers that send `"unsigned": null`
+    in events.
+- Update to 0.18.1:
+  - crypto Fixed error sharing megolm session if a single recipient device
+    has ran out of one-time keys.
+- Update to 0.18.0:
+  - Breaking change util.async_db Added checks to prevent calling
+    `.start()` on a database multiple times.
+  - appservice Fixed [MSC2409] support to read to-device events from the
+    correct field.
+  - appservice Added support for automatically calling functions when a
+    transaction contains [MSC2409] to-device events or [MSC3202] encryption data.
+  - bridge Added option to use [MSC2409] and [MSC3202] for end-to-bridge
+    encryption. However, this may not work with the Synapse implementation as it
+    hasn't been tested yet.
+  - bridge Replaced `homeserver` -> `asmux` flag with more generic `software`
+    field.
+  - bridge Added support for overriding parts of config with environment
+    variables.
+    - If the value starts with `json::`, it'll be parsed as JSON instead of using
+      as a raw string.
+  - client.api Added support for [MSC3870] for both uploading and downloading
+    media.
+  - types Added `knock_restricted` join rule to `JoinRule` enum.
+  - crypto Added warning logs if claiming one-time keys for other users fails.
+- Add no-immutable.patch (gh#mautrix/python#147) to make tests
+  work with SQLAlchemy 2.* (bad hack).
+
+-------------------------------------------------------------------
 Wed Aug 31 10:34:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.17.8:

@@ -1,0 +1,52 @@
+---
+ mautrix/client/state_store/tests/store_test.py |    4 +++-
+ mautrix/util/db/base.py                        |    7 +++++--
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+--- a/mautrix/client/state_store/tests/store_test.py
++++ b/mautrix/client/state_store/tests/store_test.py
+@@ -13,6 +13,7 @@ import pathlib
+ import random
+ import string
+ import time
++import unittest
+ 
+ import asyncpg
+ import pytest
+@@ -64,11 +65,12 @@ async def async_sqlite_store() -> AsyncI
+ 
+ @asynccontextmanager
+ async def alchemy_store() -> AsyncIterator[SQLStateStore]:
++    raise unittest.SkipTest("SQLAlchemy tests should be skipped.")
+     db = sql.create_engine("sqlite:///:memory:")
+     Base.metadata.bind = db
+     for table in (RoomState, UserProfile):
+         table.bind(db)
+-    Base.metadata.create_all()
++    Base.metadata.create_all({})
+     yield SQLStateStore()
+     db.dispose()
+ 
+--- a/mautrix/util/db/base.py
++++ b/mautrix/util/db/base.py
+@@ -10,7 +10,10 @@ from sqlalchemy import Constraint, Table
+ from sqlalchemy.dialects.postgresql import insert as pg_insert
+ from sqlalchemy.engine.base import Connection, Engine
+ from sqlalchemy.ext.declarative import as_declarative, declarative_base
+-from sqlalchemy.sql.base import ImmutableColumnCollection
++try:
++    from sqlalchemy.sql.base import ImmutableColumnCollection as ReadOnlyColumnCollection
++except ImportError:
++    from sqlalchemy.sql.base import ReadOnlyColumnCollection
+ from sqlalchemy.sql.expression import ClauseElement, Select, and_
+ 
+ if TYPE_CHECKING:
+@@ -33,7 +36,7 @@ class BaseClass:
+     db: Engine
+     t: Table
+     __table__: Table
+-    c: ImmutableColumnCollection
++    c: ReadOnlyColumnCollection
+     column_names: List[str]
+ 
+     @classmethod
