@@ -179,4 +179,17 @@
     <comment>- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
     <requestid>1070162</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>695826eac50efe58ffd45dbdd9a9039a</srcmd5>
+    <version>4.5.4</version>
+    <time>1684415985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.4:
+  * Updates baseline to upstream SQLite 3.41.2
+  * Updates minimum Apple SDK versions in podspec for new Xcode compatibility
+  * Return runtime OpenSSL version from PRAGMA cipher_provider_version (instead of hardcoded value)
+  * Adds guard against zero block size and crash if cryptographic provider initialization fails
+  * When an ATTACH occurs creating a new encrypted database as the first operation after keying the main database, the new database will have the same salt value.</comment>
+    <requestid>1087742</requestid>
+  </revision>
 </revisionlist>

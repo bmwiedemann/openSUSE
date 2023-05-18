@@ -16,10 +16,10 @@
 #
 
 
-%define         lib_version 3.39.4
-%define         lib_name libsqlcipher-3_39_4-0
+%define         lib_version 3.41.2
+%define         lib_name libsqlcipher-3_41_2-0
 Name:           sqlcipher
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
@@ -107,8 +107,7 @@ export LDFLAGS="-lcrypto"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_name}
 
 %files
 %license LICENSE

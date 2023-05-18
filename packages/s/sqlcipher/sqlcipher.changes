@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May 18 06:14:17 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.4:
+  * Updates baseline to upstream SQLite 3.41.2
+  * Updates minimum Apple SDK versions in podspec for new Xcode compatibility
+  * Return runtime OpenSSL version from PRAGMA cipher_provider_version (instead of hardcoded value)
+  * Adds guard against zero block size and crash if cryptographic provider initialization fails
+  * When an ATTACH occurs creating a new encrypted database as the first operation after keying the main database, the new database will have the same salt value.
+
+-------------------------------------------------------------------
 Wed Mar  8 10:27:23 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
