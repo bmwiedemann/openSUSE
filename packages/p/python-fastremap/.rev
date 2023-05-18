@@ -96,4 +96,13 @@
   * fix: handle all LP64 platforms generically</comment>
     <requestid>1066271</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>922143055b1cc02eb115488a1d19f092</srcmd5>
+    <version>1.13.5</version>
+    <time>1684415988</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.5:
+  * release(1.13.5): updated build for py311</comment>
+    <requestid>1087746</requestid>
+  </revision>
 </revisionlist>
