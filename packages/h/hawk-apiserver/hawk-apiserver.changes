@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Fri Nov  6 17:28:01 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+
+-  Version 0.0.4:
+  * various enhancement security https related (fix bsc#1178228)
+  * update to go modules
+  * add -version flag to show build version
+
+-------------------------------------------------------------------
+Fri Mar 09 12:37:13 UTC 2018 - kgronlund@suse.com
+
+- Update to version 0.0.2+git8.af5b3f9 (bsc#1080006):
+  * Move to go 1.9.
+  * bump vendor/golang.org/x/sys
+  * bump vendor/golang.org/x/net
+
+-------------------------------------------------------------------
+Thu Mar 08 22:34:25 UTC 2018 - kgronlund@suse.com
+
+- Update to version 0.0.2+git5.9164c0d (bsc#1080006):
+  * bump vendor/golang.org/x/crypto
+  * bump github.com/krig/go-pacemaker
+
+-------------------------------------------------------------------
+Tue Mar 06 07:40:00 UTC 2018 - kgronlund@suse.com
+
+- Update to version 0.0.2+git3.7b57e31:
+  * Add manpage to repository
+- Remove hawk-apiserver.8.gz
+
+-------------------------------------------------------------------
+Thu Feb  1 16:51:44 CET 2018 - ro@suse.de
+
+- do not build on s390, only on s390x (no go on s390) 
+
+-------------------------------------------------------------------
+Tue Nov 21 13:11:11 UTC 2017 - kgronlund@suse.com
+
+- Update to version 0.0.2+git2.9d745dc:
+  * Log with configurable log levels (bsc#1067408)
+
+-------------------------------------------------------------------
+Fri Nov 17 11:21:17 UTC 2017 - kgronlund@suse.com
+
+- Update to version 0.0.1+git1510917627.a05c8b6:
+  * Avoid error on short reads (bsc#1068675)
+
+-------------------------------------------------------------------
+Sun Sep 10 12:37:58 UTC 2017 - kgronlund@suse.com
+
+- Update to version 0.0.1+git1505046827.f7eadc5:
+  * Use configured port/cert correctly
+  * Protect proxy map with Mutex
+
+-------------------------------------------------------------------
+Fri Sep  1 13:07:55 UTC 2017 - kgronlund@suse.com
+
+- Remove txt2man dependency. 
+
+-------------------------------------------------------------------
+Fri Sep 01 08:29:46 UTC 2017 - kgronlund@suse.com
+
+- Update to version 0.0.1+git1504254570.54f3c7e:
+  * Initial package.

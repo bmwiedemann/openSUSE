@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/ClusterLabs/hawk-apiserver</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">0.0.4+git.%ct.%h</param>
+    <param name="revision">master</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">hawk-apiserver-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">hawk-apiserver</param>
+  </service>
+  <service name="go_modules" mode="disabled" />
+</services>
