@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiounittest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiounittest
 Version:        1.4.2
@@ -30,6 +29,7 @@ Source:         https://github.com/kwarunek/aiounittest/archive/%{version}.tar.g
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wrapt}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wrapt
 BuildArch:      noarch
@@ -51,6 +51,7 @@ test of the asynchronous code (asyncio). You can test:
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
@@ -59,6 +60,6 @@ test of the asynchronous code (asyncio). You can test:
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/aiounittest-%{version}-*.egg-info/
-%{python_sitelib}/aiounittest/
+%{python_sitelib}/aiounittest
 
 %changelog
