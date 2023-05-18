@@ -18,13 +18,12 @@
 
 %global libinput_overrides %{_sysconfdir}/libinput/local-overrides.quirks
 Name:           keyd
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        A key remapping daemon for linux
 License:        MIT
 URL:            https://github.com/rvaiya/keyd
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
-Patch:          fix-udev-tablet.patch
 BuildRequires:  gcc
 Requires:       python3-xlib
 Requires(postun):sed
@@ -41,7 +40,7 @@ keyd attempts to solve this problem by providing a flexible system wide daemon
 which remaps keys using kernel level input primitives (evdev, uinput).
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %make_build
@@ -49,14 +48,14 @@ which remaps keys using kernel level input primitives (evdev, uinput).
 %install
 install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_datadir}/%{name}/layouts %{buildroot}%{_mandir}/man1 %{buildroot}%{_unitdir}
 install -m755 bin/* %{buildroot}%{_bindir}
-install -m644 data/keyd.compose keyd.quirks %{buildroot}%{_datadir}/%{name}
+install -m644 data/keyd.compose %{buildroot}%{_datadir}/%{name}
 install -m644 layouts/* %{buildroot}%{_datadir}/%{name}/layouts
 install -m644 data/*.1.gz %{buildroot}%{_mandir}/man1/
 install -m644 %{name}.service %{buildroot}%{_unitdir}
 
 %files
 %license LICENSE
-%doc README.md docs/*.md
+%doc README.md docs/*.md examples
 %{_bindir}/*
 %{_mandir}/man1/*
 %dir %{_datadir}/%{name}
@@ -65,17 +64,21 @@ install -m644 %{name}.service %{buildroot}%{_unitdir}
 
 %pre
 getent group keyd >/dev/null 2>&1 || groupadd keyd
+if [ $1 -eq 2 ]; then
+    # performed only on upgrade
+    # remove eventual libinput overrides installed in v2.4.2 not used anymore since v2.4.3
+    sed -i -e '/# added by %{name} package: START/,/# added by %{name} package: END/d' %{libinput_overrides} 2> /dev/null || :
+    # remove file if it exists and is empty and remove libinput dir if empty
+    if [ -f %{libinput_overrides} -a ! -s %{libinput_overrides} ]; then
+	rm %{libinput_overrides}
+	rm -d %{_sysconfdir}/libinput 2> /dev/null || :
+    fi
+fi
+
 %service_add_pre %{name}.service
 
 %post
 %service_add_post %{name}.service
-if [ $1 -eq 1 -a -d %{_datadir}/libinput* ]; then
-    # performed only on install
-    mkdir -p %{_sysconfdir}/libinput
-    echo "# added by %{name} package: START" >> %{libinput_overrides}
-    cat %{_datadir}/%{name}/keyd.quirks >> %{libinput_overrides}
-    echo "# added by %{name} package: END" >> %{libinput_overrides}
-fi
 
 %preun
 %service_del_preun %{name}.service
@@ -85,12 +88,6 @@ fi
 if [ $1 -eq 0 ]; then
     # performed only on uninstall
     getent group keyd >/dev/null 2>&1 && groupdel keyd
-    sed -i -e '/# added by %{name} package: START/,/# added by %{name} package: END/d' %{libinput_overrides} 2> /dev/null || :
-    # remove file if it exists and is empty and remove libinput dir if empty
-    if [ -f %{libinput_overrides} -a ! -s %{libinput_overrides} ]; then
-	rm %{libinput_overrides}
-	rm -d %{_sysconfdir}/libinput 2> /dev/null || :
-    fi
 fi
 
 %changelog

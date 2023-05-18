@@ -17,4 +17,12 @@ pointer being treated as a tablet, resulting in mouse pointer not working
 </comment>
     <requestid>1073736</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6aea596090fa2a475c8e0753ee46cd43</srcmd5>
+    <version>2.4.3</version>
+    <time>1684415969</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.4.3</comment>
+    <requestid>1087655</requestid>
+  </revision>
 </revisionlist>

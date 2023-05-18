@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 17 10:51:44 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed upstreamed fix-udev-tablet.patch
+- keyd.quirks (libinput override) is not used anymore
+- Update to v2.4.3:
+  * Summary 
+    - Introduces a new layout type
+    - Improves application based remapping suport for wayland/X
+    - Adds swap support for toggled layers
+    - Adds support for chording
+    - Numerous bugfixes and stability improvements
+  * New actions: togglem, clear, overloadt, overloat2
+  * New Commands: listen, reload, do, input
+  * New timeout and modifier knobs: disable_modifier_guard,
+    oneshot_timeout option, overload_tap_timeout, macro_sequence_timeout
+
+-------------------------------------------------------------------
 Wed Mar 22 09:47:20 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - added upstream patch fix-udev-tablet.patch to address the virtual
