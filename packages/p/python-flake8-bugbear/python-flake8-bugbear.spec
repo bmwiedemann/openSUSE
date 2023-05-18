@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-bugbear
-Version:        23.3.23
+Version:        23.5.9
 Release:        0
 Summary:        A plugin for flake8 finding likely bugs and design problems in your program
 License:        MIT
