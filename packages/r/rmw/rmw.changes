@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Wed Feb  15 23:00:00 UTC 2023 - Andy Alt <arch_stanton5995@proton.me>
+Wed May 17 08:00:00 UTC 2023 - Andy Alt <arch_stanton5995@proton.me>
+
+- rmw 0.9.1:
+  * bugfix: In some cases, trashinfo file doesn't get removed
+
+-------------------------------------------------------------------
+Wed Feb 15 23:00:00 UTC 2023 - Andy Alt <arch_stanton5995@proton.me>
 
 - rmw 0.9.0:
 
@@ -28,7 +34,7 @@ Sat Feb  5 10:45:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 - disable tests on 32 bit
 
 -------------------------------------------------------------------
-Wed Jan  26 23:00:00 UTC 2022 - Andy Alt <andy400-dev@yahoo.com>
+Wed Jan 26 23:00:00 UTC 2022 - Andy Alt <andy400-dev@yahoo.com>
 
 - rmw 0.8.1:
   * the curses menu library is now much more likely to be found on *BSD
@@ -40,7 +46,7 @@ Wed Jan  26 23:00:00 UTC 2022 - Andy Alt <andy400-dev@yahoo.com>
   - removed '-e' command line option ('--empty' option not affected)
 
 -------------------------------------------------------------------
-Sun Jun  28 01:00:00 UTC 2021 - Andy Alt <andy400-dev@yahoo.com>
+Sun Jun 28 01:00:00 UTC 2021 - Andy Alt <andy400-dev@yahoo.com>
 
 - rmw 0.8.0:
   * The config option 'purge_after' has been deprecated and replaced
