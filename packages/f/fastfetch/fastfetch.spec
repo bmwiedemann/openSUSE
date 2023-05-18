@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        1.10.3
+Version:        1.11.0
 Release:        0
 Summary:        Neofetch-like tool written in C
 License:        MIT
@@ -75,10 +75,22 @@ sed -i "s|\#\!\/usr\/bin\/env bash||g" completions/bash
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md
+
 %{_bindir}/flashfetch
 %{_bindir}/%{name}
+
+%if 0%{?suse_version} > 1500
+
+%dir %_distconfdir/%{name}
+%_distconfdir/%{name}/config.conf
+
+%else
+
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/config.conf
+
+%endif
+
 %{_datadir}/%{name}/
 %{_datadir}/bash-completion/
 

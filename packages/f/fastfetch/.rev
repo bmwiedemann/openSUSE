@@ -36,4 +36,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1070799</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b2bd78bcaa3ed59353f6d656f6dc42f</srcmd5>
+    <version>1.11.0</version>
+    <time>1684415974</time>
+    <user>dimstar_suse</user>
+    <comment>- Move configuration files based on openSUSE distribution.
+- Update to version 1.11.0:
+  * Support linuxbrew
+  * Support foot terminal
+  * Support cursor size detection on Windows
+  * Support cursor detection on macOS
+  * Support display name, display type and decimal refresh rate detection
+  * Support --display-compact-type to display multiple resolutions in one line
+  * Support flatpak-user
+  * Support --gpu-force-vulkan to force using vulkan to detect GPUs, which support video memory usage detection with --allow-slow-operations
+  * Fix date time format
+  * Fix compiling with musl
+  * Don't exit if libpci is failed to init
+  * Names of most well-known gamepads are correctly printed instead of Wireless Controller on Windows
+  * Small update for nobara logo
+</comment>
+    <requestid>1087684</requestid>
+  </revision>
 </revisionlist>

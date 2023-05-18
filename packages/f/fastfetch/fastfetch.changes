@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 17 14:34:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Move configuration files based on openSUSE distribution.
+
+-------------------------------------------------------------------
+Wed May 17 14:13:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.11.0:
+  * Support linuxbrew
+  * Support foot terminal
+  * Support cursor size detection on Windows
+  * Support cursor detection on macOS
+  * Support display name, display type and decimal refresh rate detection
+  * Support --display-compact-type to display multiple resolutions in one line
+  * Support flatpak-user
+  * Support --gpu-force-vulkan to force using vulkan to detect GPUs, which support video memory usage detection with --allow-slow-operations
+  * Fix date time format
+  * Fix compiling with musl
+  * Don't exit if libpci is failed to init
+  * Names of most well-known gamepads are correctly printed instead of Wireless Controller on Windows
+  * Small update for nobara logo
+
+-------------------------------------------------------------------
 Sat Mar  4 01:55:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.10.3:
