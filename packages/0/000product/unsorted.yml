@@ -2232,6 +2232,7 @@ unsorted:
   - cntlm 
   - cobbler 
   - cobbler-tests 
+  - cobbler-tests-containers 
   - coccigrep 
   - coccinelle 
   - cockpit 
@@ -3179,6 +3180,7 @@ unsorted:
   - dnsdist 
   - dnsmasq-utils 
   - dnsmeter 
+  - dnsproxy 
   - dnstracer 
   - docbook-css-stylesheets 
   - docbook-dsssl-stylesheets 
@@ -6941,6 +6943,9 @@ unsorted:
   - golangci-lint 
   - goldendict 
   - goldendict-lang 
+  - golly 
+  - golly-assets 
+  - golly-devel 
   - gom-devel 
   - gomuks 
   - gontributions 
@@ -7555,6 +7560,7 @@ unsorted:
   - hashlink-devel 
   - hashlink-hdlls 
   - haveged-devel 
+  - hawk-apiserver 
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
@@ -11697,7 +11703,7 @@ unsorted:
   - libeditorconfig-devel 
   - libefa1-32bit 
   - libei-devel 
-  - libei-suse4 
+  - libei1 
   - libeiskaltdcpp2_4 
   - libelf-devel 
   - libelf-devel-32bit 
@@ -11883,6 +11889,8 @@ unsorted:
   - libfixbuf-devel 
   - libfixbuf-tools 
   - libfixbuf9 
+  - libfixposix-devel 
+  - libfixposix4 
   - libfko-devel 
   - libfko3 
   - libfl-devel 
@@ -15011,8 +15019,8 @@ unsorted:
   - libspooles2_2-openmpi2 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_39_4-0 
-  - libsqlcipher-3_39_4-0-x86-64-v3 
+  - libsqlcipher-3_41_2-0 
+  - libsqlcipher-3_41_2-0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlite3-0-x86-64-v3 
   - libsqlparser1 
@@ -25064,7 +25072,6 @@ unsorted:
   - python310-pem 
   - python310-pendulum 
   - python310-pep440 
-  - python310-pep517 
   - python310-pep8-naming 
   - python310-peppercorn 
   - python310-percy 
@@ -28445,7 +28452,6 @@ unsorted:
   - python311-pem 
   - python311-pendulum 
   - python311-pep440 
-  - python311-pep517 
   - python311-pep8-naming 
   - python311-peppercorn 
   - python311-percy 
@@ -31916,7 +31922,6 @@ unsorted:
   - python39-pem 
   - python39-pendulum 
   - python39-pep440 
-  - python39-pep517 
   - python39-pep8-naming 
   - python39-peppercorn 
   - python39-percy 
