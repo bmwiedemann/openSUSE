@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Fri May 12 09:41:56 UTC 2023 - abriel@suse.com
+Wed May 17 14:27:51 UTC 2023 - abriel@suse.com
 
 - Version bump to 0.9.2
   * prevent systemd service race between sapping and sappong during
