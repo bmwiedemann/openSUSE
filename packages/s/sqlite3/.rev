@@ -1523,4 +1523,41 @@ CVE-2020-13871 boo#1172646</comment>
   * Fix various obscure bugs reported by the user community</comment>
     <requestid>1073837</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>f8e463f5fbddd775a76fe695927bc269</srcmd5>
+    <version>3.42.0</version>
+    <time>1684415899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.42.0:
+  * Add the FTS5 secure-delete command. This option causes all
+    forensic traces to be removed from the FTS5 inverted index when
+    content is deleted.
+  * Enhance the JSON SQL functions to support JSON5 extensions.
+  * The SQLITE_CONFIG_LOG and SQLITE_CONFIG_PCACHE_HDRSZ calls to
+    sqlite3_config() are now allowed to occur after
+    sqlite3_initialize().
+  * New sqlite3_db_config() options:
+    SQLITE_DBCONFIG_STMT_SCANSTATUS and
+    SQLITE_DBCONFIG_REVERSE_SCANORDER.
+  * Query planner improvements.
+  * Add the --unsafe-testing command-line option.
+  * Allow commands &quot;.log on&quot; and &quot;.log off&quot;, even in --safe mode.
+  * &quot;--&quot; as a command-line argument means all subsequent arguments
+    that start with &quot;-&quot; are interpreted as normal non-option
+    argument.
+  * Magic parameters &quot;:inf&quot; and &quot;:nan&quot; bind to floating point
+    literals Infinity and NaN, respectively.
+  * Add the ability for application-defined SQL functions to have
+    the same name as join keywords: CROSS, FULL, INNER, LEFT,
+    NATURAL, OUTER, or RIGHT.
+  * Enhancements to PRAGMA integrity_check
+  * Allow the session extension to be configured to capture changes
+    from tables that lack an explicit ROWID.
+  * Added the subsecond modifier to the date and time functions.
+  * Negative values passed into sqlite3_sleep() are henceforth
+    interpreted as 0.
+  * The maximum recursion depth for JSON arrays and objects is
+    lowered from 2000 to 1000.</comment>
+    <requestid>1087547</requestid>
+  </revision>
 </revisionlist>
