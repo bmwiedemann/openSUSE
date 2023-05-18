@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="filename">crmsh</param>
     <param name="versionformat">4.5.0+%cd.%h</param>
-    <param name="revision">master</param>
+    <param name="revision">crmsh-4.5</param>
     <param name="changesgenerate">enable</param>
   </service>
 
