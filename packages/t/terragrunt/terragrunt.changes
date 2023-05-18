@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 17 17:42:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.13:
+  * feat: add `timecmp` config function (#2571)
+
+-------------------------------------------------------------------
+Wed May 17 17:38:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.12:
+  * Handle provider lock file when fetching dependency outputs
+    (#2568)
+  * Update aws-auth.md (#2563)
+  * Add missing IAM Permissions s3:PutBucketOwnershipControls to
+    docs this is required now with TG versions starting from
+    v0.45.4 (#2562)
+
+-------------------------------------------------------------------
 Thu May 11 04:51:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.11:
