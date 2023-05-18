@@ -24,10 +24,10 @@ Summary:        Option groups missing in Click
 License:        BSD-3-Clause
 URL:            https://github.com/click-contrib/click-option-group
 Source:         https://files.pythonhosted.org/packages/source/c/click-option-group/click-option-group-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module click >= 7.0}
@@ -39,9 +39,6 @@ Suggests:       python-Sphinx >= 3.0
 Suggests:       python-Pallets-Sphinx-Themes
 Suggests:       python-m2r2
 Suggests:       python-pytest
-Suggests:       python-pytest-cov
-Suggests:       python-coverage < 6
-Suggests:       python-coveralls
 BuildArch:      noarch
 %python_subpackages
 

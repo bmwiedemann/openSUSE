@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 14 06:14:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove Suggests for coverage packages
+
+-------------------------------------------------------------------
 Fri May 12 12:42:24 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package python-click-option-group, required by pynitrokey
