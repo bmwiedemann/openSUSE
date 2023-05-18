@@ -1,48 +1,11 @@
 -------------------------------------------------------------------
-Tue Jan 21 21:45:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+Fri Nov  6 17:28:01 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 
-- Change explicit go1.9 BuildRequires to greater or 1.9 following
-  upstreams recommendations.
+-  Version 0.0.4:
+  * various enhancement security https related (fix bsc#1178228)
+  * update to go modules
+  * add -version flag to show build version
 
--------------------------------------------------------------------
-Wed Apr 17 15:01:37 UTC 2019 - dakechi@suse.com
-
-- Update to version 0.0.2+git113.7d43fb3:
-  * Fix lints in api_common.go
-  * Format main_test.go
-  * Add spec file to project
-  * Add tests for AsyncCib
-  * Delete unused html/ subdirectory
-  * Move asynchronous CIB handling to cib/
-  * Restructure into subfolders
-  * Add Go Report Card badge to README
-  * Add doc.go for package documentation
-  * Add test case for handleMetrics
-  * Don't pass unused parameter to handleMetrics
-  * Total -> Configured, and hide resource stopped (incorrect)
-  * More test data
-  * Sort pernode metric keys
-  * Can iterate keys and values at once
-  * Record number of unique resource Ids, and add some test data
-  * More metrics and test data / scripts
-  * go fmt on main_test.go, redirect.go
-  * Expose minimal metrics
-  * Respect the CIB_file environment variable
-  * Fix docstrings and clean up some lints
-  * Add godoc badge to README
-  * Update dependencies
-  * Fix bugs in #12
-  * Update go-pacemaker
-  * Run go fmt
-  * Update api_structs to include Podman structures
-  * Switch to https for gitmodules
-  * Avoid output the duplicate warning or error.
-  * Only pip install if cibToGoStruct is not available and run go fmt after generating the file
-  * Move configuration to /api/v1/configuration, cib XML to /api/v1/configuration/cib.xml
-  * Run go fmt on the code
-  * Update README with information about cibToGoStruct
-  * Check in generated api_structs.go
-  
 -------------------------------------------------------------------
 Fri Mar 09 12:37:13 UTC 2018 - kgronlund@suse.com
 
