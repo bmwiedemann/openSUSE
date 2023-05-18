@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Wed May  3 21:07:55 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.25.0:
+  + Small update brought to you by Yours Truly™ :)
+  + New features:
+    * Add activeworkspace hyprctl command (#2202)
+    * Add ability to split master when only 1 additional window
+      (#2025)
+    * Add follow mouse mode to avoid refocusing under cursor (#2135)
+    * Add plugin configuration to home manager module
+    * Add subdir for cmake as well (#2163)
+    * Add warning about setting hyprland config with home manager
+    * Add windowrule fakeFullScreen (#2043)
+    * Added moveCursor dispatcher (#2100)
+    * Added some workspace-specific rules (#1986)
+    * Format: use %lx for all addresses
+    * IHyprLayout: add missing static modifiers to config vars
+    * Meson: add subdirs to pkg-config file
+    * Render: add cursor_zoom
+    * Renderer: add init animation
+    * config: add missing header for libc++ after 3a631e4 (#2208)
+    * events: add render event for plugins
+    * internal: add tag to version, send hash in release ci
+    * layouts: add missing static modifiers to config vars
+    * pluginAPI: add note about API expansion
+    * plugins: Add "tick" event (#2029)
+    * renderer: add support for rendering workspaces
+    * rules: add noinitialfocus
+    * swallow: Add swallow_exception_regex (#2026)
+  + Fixes:
+    * Fix apps requesting fullscreen (#2099)
+    * Fix dragging cursor being forced on fullscreen windows (#2115)
+    * Fix possible usage of clamp with lo > hi in Vector2D (#2049)
+    * Fixed a crash when waking up monitors in power-saving mode
+      (#2139)
+    * Plugin header overhaul 2: fixes (Electric boogaloo) (#2201)
+    * blur: fixup optimization bool
+    * crashReporter: fix invalid format string
+    * damage: fix damage on moves / workspace changes
+    * dispatchers: fix missing log param
+    * dispatchers: fix movetoworkspace with bound ws-es
+    * dispatchers: fix named ws-es on changeworkspace
+    * formats: fix endian ifdef
+    * input: fix kb focus on top layers without interactive flag
+    * input: fix ls focus in non-input area
+    * internal: fix -Wsign-compare and -Wunused-variable warnings
+    * keybinds: fix move to named
+    * misc: fix a warning
+    * renderer: fix fadingout render on fs
+    * renderer: fix incorrect delta calc
+    * renderer: fix incorrect shouldRenderWindow calcs
+    * renderer: fix misused size -> transformed size
+    * rules: fix monitor rule with names
+    * swallow: fix invalid regexes with empty vals
+    * workspaces: fixup workspaces not activating on workspace
+      switch
+    * xwayland: crude fix for qt dnds
+  + Other:
+    * Allow movefocus for empty workspaces (#2011)
+    * Declarative plugin management (#2180)
+    * Disable systemctl when built without systemd support (#2066)
+    * Honor debug:enable_stdout_logs on startup (#2197)
+    * Implement window move (#2018)
+    * Keep fullscreen mode in moveWindowToWorkspaceSafe (#2191)
+    * Plugin header overhaul (#2087)
+    * Prefer bundled wlroots headers to system ones (#2204)
+    * Remove wlr_output_damage.h (#2121)
+    * Screencopy: unify frame and client between impls + event
+    * Window resizing for pseudotiled windows (#2140)
+    * args: print help on invalid arg
+    * compositor: ignore contraints on warp in moveWorkspaceToMonitor
+    * config: ignore invalid paths in configPaths
+    * crashReporter: avoid segfault in deref plugin system
+    * crashReporter: log on crash
+    * fractional-scale: notify all surfaces on window move
+    * hyprctl: allow spaces in cursor themes
+    * hyprctl: don't assume output validity in hyprctl workspaces
+    * input: don't refocus on dragging
+    * input: improve mouse release conditions
+    * input: make overlay layers precede constraints
+    * input: release mouse buttons before refocuses
+    * input: send null keycodes on focusSurface
+    * internal: avoid buffer overflows with socket paths
+    * internal: don't change ws on active swap
+    * internal: don't iterate special workspaces in move
+    * internal: don't sanity check workspaces on internal ws calls
+    * internal: guarantee activeWindow event type
+    * internal: improve fullscreen fade
+    * internal: include headers from protocols/
+    * internal: move workspace special check higher in changeWorkspace
+    * internal: moveToWorkspace before setting ws
+    * internal: prevent premature destroy in moveworkspace
+    * internal: unhardcode sun_path size after a6cfe70 (#2137)
+    * internal: update fullscreen fade on workspace move
+    * internal: use setSpecialWorkspace on destroy in sanityCheck
+    * internal: warp workspace on change only if old mon is last
+    * internal: workspace manip handling rework
+    * keybinds: avoid sending release on suppressed press
+    * keybinds: minor adjustments to workspace
+    * keybinds: more intelligent fallback on silent move
+    * keybinds: only warp on different monitor ws
+    * keybinds: refocus properly on silent move
+    * keybinds: remove old comment
+    * keybinds: send pass with a null keymap
+    * keybinds: simulate workspace switch on focusWindow to another
+      ws
+    * listeners: more safety around change
+    * make ext_workspace_unstable impl more atomic (#2023)
+    * makefile: use -f in copies to avoid errors on running hl
+    * misc: scan ppids in exec rules
+    * monitor: recalc layout on switched ws
+    * monitor: update fullscreen fade on workspace change
+    * monitors: set special monitor ID on open
+    * only ignore no_gaps_when_only when the workspace rule
+      specifies a border (#2217)
+    * opengl: don't use new optim with xray off on special tiled
+    * opengl: keep current rendered workspace in renderData
+    * pluginAPI: make symbols static
+    * pluginenv: configure cmake to build protocols
+    * popups: send scale info
+    * renderer: improvements to layer render detection
+    * renderer: more checks for background LS optimizations
+    * renderer: reset renderModif on fullscreen render
+    * renderer: skip rendering bottom layers on fullscreen opaque
+    * renderer: workspace rendering improvements
+    * screencopy: clamp damage to framebuffer
+    * screencopy: implement dmabuf
+    * screencopy: improve consistency of share indicator
+    * tick: don't tick on invalid session
+    * windows: check for fullscreen after rules
+    * workspace: don't check LS-es in startAnim
+    * workspace: don't lose monitor with refocus on no warps
+    * workspaces: deactivate all on monitor switch
+    * workspaces: restore monitor on re-plug
+    * xwayland: allow initial focus to dialogs
+
+-------------------------------------------------------------------
 Tue Apr 11 12:19:45 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 
 - Updated _service to allow hyprland to be submitted to factory.
