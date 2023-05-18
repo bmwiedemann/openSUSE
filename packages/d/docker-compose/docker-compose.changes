@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed May 17 17:38:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.1:
+  * only check the platform of cached image if image found
+
+-------------------------------------------------------------------
+Tue May 16 18:18:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.0:
+  * introduce --no-path-resolution to skip relative path to be
+    resolved
+  * report external network not found when swarm is disabled
+  * `parallel` flag belong do top-level "compose" cobra command,
+    not the current one
+  * detect terminal is not a `console.File` to avoid a panic
+  * Update dry-run documentation
+  * move dry-run support from alpha to main command
+  * introduce COMPOSE_ANSI to define --ansi default value
+  * rm: remove debugging output (#10554)
+  * detect active endpoint trying to remove network and skip with a
+    warning (#10555)
+  * cli: option to write status messages on stdout (#10549)
+  * fix local image removal when `compose down` is ran with
+    `--project-name` (#10558)
+  * restore long description to be included in `docker compose
+    help` (#10504)
+  * check local image matches the required platform
+  * fix race condition running `compose up` with --parallel <
+    number of services
+  * fix container being recreated while config has not changed
+    (#10540)
+  * tests: inline dockerfile
+  * build(deps): bump github.com/moby/term from
+    0.0.0-20221205130635-1aeaba878587 to 0.5.0 (#10523)
+  * deps: update related modules
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump go.opentelemetry.io/otel from 1.15.0 to
+    1.15.1
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.2.0
+    (#10534)
+  * fix builkit progressui integration (#10535)
+  * add dry-run support to up command
+  * let user declare build secret target (id)
+  * update go to go1.20.4
+  * stop containers after termination
+  * cli: dry run support for `build` (#10502)
+  * progress: make title configurable (#10507)
+  * Revert "build(deps): bump github.com/opencontainers/image-spec"
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump go.opentelemetry.io/otel from 1.14.0 to
+    1.15.0
+  * build(deps): bump github.com/moby/buildkit from 0.11.5 to
+    0.11.6
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump github.com/docker/cli
+  * TailMsgf must format with args
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/moby/buildkit from 0.11.5 to
+    0.11.6 (#10489)
+  * restore support for `--memory`
+  * don't block events loop collecting logs
+  * test: fix E2E tests under Engine v23 / DD 4.19
+  * Fixed issue when project name contains dashes (`-`)
+  * Added tests to `viz` subcommand
+  * Added docs
+  * Replaced calls to WriteRune with WriteByte and reformatted
+    imports
+  * Started working on `viz` subcommand
+
+-------------------------------------------------------------------
 Thu Apr 20 14:26:37 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.17.3:
