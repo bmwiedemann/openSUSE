@@ -1,0 +1,18 @@
+diff --git a/cli/tools/run.rs.1 b/cli/tools/run.rs
+index 99312d5..e733306 100644
+--- a/cli/tools/run.rs.1
++++ b/cli/tools/run.rs
+@@ -38,13 +38,6 @@ To grant permissions, set them before the script argument. For example:
+   let http_client = factory.http_client();
+   let cli_options = factory.cli_options();
+ 
+-  // Run a background task that checks for available upgrades. If an earlier
+-  // run of this background task found a new version of Deno.
+-  super::upgrade::check_for_upgrades(
+-    http_client.clone(),
+-    deno_dir.upgrade_check_file_path(),
+-  );
+-
+   let main_module = cli_options.resolve_main_module()?;
+ 
+   let permissions = PermissionsContainer::new(Permissions::from_options(

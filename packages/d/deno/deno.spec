@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source99:       revendor_source.sh
+Patch0:         deno-disable-update-check.patch
 # PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
 %ifarch %{arm} aarch64
 Patch1:         deno-disable-lto.patch

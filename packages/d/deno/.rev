@@ -834,4 +834,17 @@
 </comment>
     <requestid>1086808</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c085c824ef3ce157b9dc92bc19f20031</srcmd5>
+    <version>1.33.3</version>
+    <time>1684415977</time>
+    <user>dimstar_suse</user>
+    <comment>Privacy and integration fix: disable update check.
+
+- add deno-disable-update-check.patch
+  * this stops deno from automatically checking for an update
+    whenever a script is run
+</comment>
+    <requestid>1087713</requestid>
+  </revision>
 </revisionlist>

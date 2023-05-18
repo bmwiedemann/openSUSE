@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 17 19:57:07 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- add deno-disable-update-check.patch
+  * this stops deno from automatically checking for an update
+    whenever a script is run
+
+-------------------------------------------------------------------
 Fri May 12 17:08:12 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 1.33.3:
