@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 18 10:03:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 5.13.6+git20230511.765d4e4
+  * TP-Link - T4UHP_US VID/PID problem
+  * Update supported-device-IDs
+  * Update usb_intf.c
+  * Add support for 2357:0122 (TP-LINK Archer T4UHP)
+  * fix this driver collide with 88x2bu due ID 7392:b822. That
+    card has a 8822B chip not 8821.
+  * kernel 6.3 support
+  * major updates to various components 
+  * makefile Secure Boot support
+  * remove some dated docs
+  * upgrade installation and removal scripts
+  * support kernel 6.1
+- Drop patch already included in this version:
+  * fix_api_changes_kernel_6.1.patch 
+
+-------------------------------------------------------------------
 Mon Jan 23 02:25:03 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Add patch to build with Tumbleweed kernels 6.1.x:
