@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Thu Apr 27 20:59:46 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 4.2:
+  * Fixed a bug in script commands like g.setpos that accept
+    integers as strings.
+  * Fixed a number of bugs that could result in an "illegal
+    operation while calculating" warning.
+  * Performance improvements to Larger than Life NL (Triangular)
+    and NB (Checkerboard) rules.
+  * Updated Lua to version 5.4.4.
+  * Added support for https links when downloading files from
+    online archives.
+  * New patterns, mostly in OCA (non-Conway's Life) rules, plus
+    updates to Life stamp collections.
+  * Moved/renamed whiteboard-17c2415-spaceship.rle,
+    sierpinski-builder.rle, wolfram22.mc.
+  * Reorganized patterns in HashLife folder into subfolders
+    "Construction", "Eventful", and "Metacell".
+  * Links and dates in many pattern comments updated to standard
+    format.
+- Changes of versions 4.1, 4.0, 3.4, 3.3, 3.2, 3.1, 3.0, 2.8, 2.7:
+  See https://golly.sourceforge.net/Help/changes.html.
+- Drop Perl dependencies: Perl scripting has been replaced by Lua
+  scripting. golly is built against a patched version of Lua
+  included in sources.
+- Modify desktop file to run with GDK_BACKEND=x11: Allow to run the
+  application built against wxWidgets without EGL support.
+- Refreshed spec file.
+
+-------------------------------------------------------------------
+Wed Mar 19 08:37:00 UTC 2014 - avvissu@yandex.ru
+
+- Create sub-package golly-devel-static to provide the static
+  library needed for shared builds and to fix compilation on
+  Fedora.
+
+-------------------------------------------------------------------
+Wed Mar 19 05:55:57 UTC 2014 - avvissu@yandex.ru
+
+- Add and package desktop file
+- Delete golly-zlib.patch
+  + Set ZLIB_LDFLAGS in %{build} instead
+- Fix rpmlint error: devel-file-in-non-devel-package
+  + Create package golly-devel to package all devel files 
+
+-------------------------------------------------------------------
+Tue Mar 18 00:09:43 UTC 2014 - avvissu@yandex.ru
+
+- Update to 2.6 for openSUSE and Fedora:
+  * Fixed a nasty bug that could cause Golly to crash when doing a
+    paste. 
+  * Fixed a bug that could cause the paste image to disappear after
+    a flip/rotate. 
+  * Tool bar buttons are no longer disabled when the main window is
+    inactive. 
+  * The save settings in Preferences > Layer are now obeyed by
+    scripts. For example, let's assume you've ticked the option to
+    be asked to save changes on creating a new pattern. If the
+    current layer has changes and you run a script that calls
+    new() then you'll get the standard dialog asking if you want
+    to save those changes. If you cancel the dialog then the script
+    is aborted. 
+  * To avoid potential data loss, you now get a warning if you save
+    a non-starting generation and earlier changes exist. The
+    warning can be disabled in Preferences > Layer. 
+  * Created an online archive for very large patterns.
+
+-------------------------------------------------------------------
+Thu Jun  9 13:07:19 UTC 2011 - prusnak@opensuse.org
+
+- use shared zlib (zlib.patch)
+
+-------------------------------------------------------------------
+Thu Jun  2 15:55:58 UTC 2011 - prusnak@opensuse.org
+
+- updated to 2.2
+
+-------------------------------------------------------------------
+Tue Feb 23 21:43:32 UTC 2010 - prusnak@suse.cz
+
+- created package
+
