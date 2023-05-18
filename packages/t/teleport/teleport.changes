@@ -1,8 +1,197 @@
 -------------------------------------------------------------------
+Thu May 18 07:51:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.0.2:
+  * Release 13.0.2 (#26469)
+  * [v13] docs: include DynamoDB streams as required in storage
+    backend (#26381)
+  * changelog spellfixes (#26431)
+  * [v13] Web: Provide accurate actionable steps with duplicate db
+    name error (#26399)
+  * fix tsh db connect to active cassandra db (#26378)
+  * [v13] Add in plugin bearer token credentials. (#26436)
+  * [v13] docs: fix curl usage (#26411)
+  * athena audit logs - run on single auth (#26443)
+  * [v13] athena audit logs - delete from sqs (#26424)
+  * athena audit logs - parquet writer (#26240)
+
+-------------------------------------------------------------------
+Wed May 17 04:58:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.0.1:
+  * Release 13.0.1 (#26418)
+  * bump eref (#26406)
+  * [v13] Change TestDeleteMFADeviceSync to do per-delete
+    assertions (#26390)
+  * Update version in tsh.app Info.plist (#26314)
+  * Remove the Adopters page (#26362)
+  * remove opened var when set to false (#26367)
+  * Update e ref (#26389)
+  * check for empty name part in role arn (#26376)
+  * Refresh the teleport-cluster Helm guide (#26172)
+  * update video banner (#26384)
+  * [v13] Web: Integrations touchups (#26152)
+  * Add params to CTA redirect URL (#26086) (#26340)
+  * [v13] fix azure db user auth check (#26317)
+  * [v13] Proto and Go module changes for Windows TPM support
+    (#26325) (#26348)
+  * Update config.json (#26258)
+  * bump e-ref (#26355)
+  * [v13] docs: add mongo port in high availability and k8s
+    operator doc (#26357)
+  * [v13] docs: enroll auto updates fixes (#26352)
+  * Remove our replacement for Logrus (#26241) (#26304)
+  * [v13] Update `electron` and `electron-builder` (#26327)
+  * [v13] Replace GetConnectCommandNoAbsPath with os.exec.Cmd.Args
+    (#26328)
+  * [v13] Disable "Open new terminal" if there's no active
+    workspace (#26333)
+  * athena audit logs - query rate limiter (#26221)
+  * Fix twoClustersTunnel flakiness (#26254)
+  * [v13] TLS Routing behind ALB: `tsh kube join` (#26283)
+  * Update e ref (#26306)
+  * Decrease test timeout (#26267)
+  * Allow aws svg icon to take on the themes main color (#26039)
+  * Revert usage of grpc error interceptors in `lib/client`
+    (#26271)
+  * [v13] docs: Make Amazon Linux name usage consistent (#26192)
+  * Make PAM user creation script copy/pasteable (#26275)
+  * [v13] docs: expand admonition for additional DB types (#26260)
+  * [v13] docs: add tip on Kubernetes resources (#26278)
+  * [v13] - Backport docker distribution update #26108 and #26109
+    (#26249)
+  * [docs] Include File Transfers in moderated sessions docs
+    (#26032) (#26265)
+  * Restore Kubernetes Integration tests (#26186)
+  * [v13] Populate the time locked status value when local user
+    locked (#26255)
+  * [v13] Add GCP Join Method (#26165)
+  * athena audit logs - support athena engine v2 (#26222)
+  * [v13] docs: reword dynamic guides language to more active
+    (#26227)
+  * athena audit logs - sqs receive (#26220)
+  * Get rid of update on unmounted component in ResultList (#26230)
+  * [v13] Remove privileged APIs from window after app
+    initialization (#26213)
+  * [v13] only show windows domain in audit log ui if applicable
+    (#26078)
+  * athena audit logs - query (#24740)
+  * [v13] Add pprof diagnostics endpoints to `tbot` (#26117)
+  * docs: Fix link to standalone Windows auth service (#26179)
+  * Fix Helm chart Join token secret creation (#26055) (#26175)
+  * [v13] Fix panic when using proxy peering (#26174)
+  * [v13] Clarify Auth Service backend permissions (#26076)
+  * Update e ref (#26163)
+  * docs: fix invalid characters in kubernetes service example in
+    discovery troubleshooting (#26157)
+  * Modify error messages for customer portal to Teleport account
+    (#26139)
+  * TLS Routing behind ALB: access request Kube Pod search (#26128)
+  * Set Cloud version to 12.3.3 (#26036)
+  * [v13] Search bar: Take cluster filter into account when listing
+    offline clusters (#26127)
+  * Backport Assist UI (#26145)
+  * Move the favicon so Teleport serves the static file (#26144)
+  * [v13] Fix GoRoutine leak in `authclient.Connect` (#26125)
+  * [v13] docs: update plugin and docker version (#26113)
+  * [v13] provides info on Oracle Wallet location when using Oracle
+    Orapki generation (#26133)
+  * [v13] Fixes a SharedDirectoryAnnounce incompatibility (#26090)
+  * Return a better message on "lacks registered credentials"
+    errors (#26103)
+  * docs: add note about curl on Windows (#26088)
+  * [v13] Moderation Session docs update (#26082)
+  * [v13] Use os.UserHomeDir where possible (#25999)
+  * bump e-ref (#26101)
+  * [v13] [docs] TLS routing behind l7 load balancer preview
+    (#26077)
+  * [v13] usagereporter: split the `ssh_port` session start into
+    `ssh_port_v2`, `k8s_port` (#26062)
+  * push the feature check to ctx.init (#26007) (#26071)
+  * Use the correct value for DeviceAuthenticateEvent (#26068)
+  * [v13] Show resource search errors in search bar when fetching a
+    preview (#26073)
+  * create e-imports package (#25992) (#26044)
+  * [v13] docs: clarify host labeling for Windows desktops (#25524)
+  * Clean up staticConfig mocks (#26059)
+  * [v13] Document how to open a local terminal in Teleport Connect
+    (#26061)
+  * docs: AWS OpenSearch (#26051)
+  * Improve AWS OIDC Integration extensibility (#26050)
+  * [v13] tctl: improve alert ack flows (#26040)
+  * docs: Update MySQL Server Version (#26052)
+  * [v13] Add in Okta audit events. (#26000)
+  * Add docker cli to buildbox (#25975)
+  * gh-trigger-workflow: Retry transient server errors (#25972)
+  * [v13] Change Helm reference `--set` formatting (#25509)
+  * [v13] Okta assignment targets/statuses are human readable in
+    the CLI. (#26023)
+  * [v13] fix: truncate YubiHSM2 key IDs (#25816)
+  * [v13] Note that the SAML IdP now supports HSM. (#26005)
+  * [v13] fix: use errors.Is for all EOF comparisons (#26017)
+  * Install Scripts: add updater package (#25971)
+  * Provide client address information in transport request
+    (#25993)
+  * Add events to cta clicks (#25325) (#25986)
+  * [v13] TLS Routing behind ALB Connect support for SSH and
+    Database access. (#25899)
+  * [v13] Allow adding 'locked' features to menu items and routes
+    (#25952)
+  * [v13] Upgrade TypeScript to 5.0.4 (#25983)
+  * [v13] Introduce inventory service counts. (#25944)
+  * Remove test case which uses local profile. (#25969)
+  * [v13] add redirect to windows user creation instructions to
+    host user creation doc (#25965)
+  * build: Scope RUST_VERSION var to single target (#25962)
+  * [v13] warn about v13 repos not containing v14 Teleport (#25954)
+  * [v13] don't delete unit schedule file (#25943)
+  * Bump Buf to 1.18.0 (#25888)
+  * Update the supported versions table (#25902)
+  * helm: warn about teleportVersionOverride and scratch risks
+    (#25601) (#25914)
+  * [v13] docs: instruct users to use `apt`/`yum`/`dnf` instead of
+    `dpkg`/`rpm` (#25937)
+  * [v13] backport team plan CSP and RBAC (#25928)
+  * [v13] Okta documentation. (#25940)
+  * [v13] Team plan CTAs (#25073) (#25701)
+  * Add t_source to be standard (#25720)
+  * [v13] Add the debug command `tsh fido2 attobj` (#25923)
+  * Makefile: cache `go env` values (#25894)
+  * docs: document the updater (#24628) (#25913)
+  * [v13] check for correct kube and ssh listen address in starting
+    message (#25907)
+  * provide starting message for tar ball install (#25904)
+  * Add IsUsageBased to features and send it to web UI (#25465)
+    (#25860)
+  * [v13] Remove code related to the command bar from Connect
+    (#25898)
+  * Simplify the Getting Started experience (#25519)
+  * [v13] Make TS a dev dep of root package.json, fix design dev
+    deps (#25875)
+  * [v13] Fix flaky resolveNetworkAddress test (#25874)
+  * [v13] enable acl in single aws terraform s3 (#25854)
+  * Add ability to enable trace logging level (#25833)
+  * Remove `not a valid Unix login` logging (#25838)
+  * Fix application resource headers rewrite spec (#25863)
+  * Add ability to enable trace logging level (#25833)
+  * Remove `not a valid Unix login` logging (#25838)
+  * Fix application resource headers rewrite spec (#25863)
+  * Update docs version vars for v13 (#25352)
+
+-------------------------------------------------------------------
+Thu May 11 12:52:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.0.0:
+  changelog to big, please find it here:
+  https://github.com/gravitational/teleport/releases/tag/v13.0.0
+- BuildRequire go1.20
+  (github.com/gravitational/teleport/lib/events/athena
+
+-------------------------------------------------------------------
 Tue May 09 05:23:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 12.3.3:
-  * Release 12.3.3 (#25835)
+  * Release 12.3.3 (#25835))
   * Fix access to leaf resources (#25694) (#25862)
   * fix auditlog error (#25843)
   * [v12] Include teleport-windows-auth in OSS releases (#25846)

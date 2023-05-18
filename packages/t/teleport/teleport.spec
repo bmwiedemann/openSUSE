@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           teleport
-Version:        12.3.3
+Version:        13.0.2
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source3:        teleport.service
 Source4:        teleport.yaml
 Source5:        tbot.yaml
 BuildRequires:  git-core
-BuildRequires:  go >= 1.19
+BuildRequires:  go >= 1.20
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       teleport-tctl
