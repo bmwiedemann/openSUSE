@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 17 08:13:32 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 8.1.0:
+  * Security fixes:
+    - UAF in SSH sha256 fingerprint [bsc#1211230, CVE-2023-28319]
+    - siglongjmp race condition [bsc#1211231, CVE-2023-28320]
+    - IDN wildcard match [bsc#1211232, CVE-2023-28321]
+    - POST-after-PUT confusion [bsc#1211233, CVE-2023-28322]
+    - See also: https://curl.se/docs/security.html
+  * Changes:
+    - curl: add --proxy-http2
+    - CURLPROXY_HTTPS2: for HTTPS proxy that may speak HTTP/2
+    - hostip: refuse to resolve the .onion TLD
+    - tool_writeout: add URL component variables  
+  * Bugfixes:
+    - See full changelog here: https://curl.se/changes.html#8_1_0
+
+-------------------------------------------------------------------
 Tue Mar 21 08:44:52 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.0.1:
