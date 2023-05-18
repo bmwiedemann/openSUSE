@@ -87,4 +87,20 @@
   - Miscellaneous bug fixes. (forwarded request 1076657 from tobijk)</comment>
     <requestid>1076661</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f934f825e865531779917fbdabb41aef</srcmd5>
+    <version>1.7.1</version>
+    <time>1684415996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1:
+  - Release 1.7 has a bug that causes an internal mutex in its command queue
+    implementation to be unlocked too early under certain usage patterns. This
+    is known to further cause internal inconsistencies that manifest as program
+    deadlocks for some programs. In release 1.7.1 the mutex is correctly kept
+    locked until required.
+  - Symbol D3D12CreateDevice is mistakenly not exported in release 1.7,
+    breaking library clients that need it. The symbol is exported again in
+    release 1.7.1.</comment>
+    <requestid>1087761</requestid>
+  </revision>
 </revisionlist>
