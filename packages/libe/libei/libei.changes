@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 17 09:20:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.99.1
+  * The protocol no longer has a fixed capability enum, the
+    bitmask is based on the available interfaces. See the
+    ei_seat.capability event in the protocol documentation.
+  * New interfaces for button and scroll - these were split out
+    from the previously merged pointer/pointer_absolute
+    interfaces. Clients need to bind to those in addition to
+    binding to pointer and/or pointer_absolute. EIS
+    implementations need to provide those separately in addition
+    to pointer/pointer_absolute.
+  * A number of APIs have been renamed to adjust for this, e.g.
+    ei_event_pointer_get_scroll_x() is now
+    ei_event_scroll_get_dx()
+  * ei_seat_bind_capability() was removed, use
+    ei_seat_bind_capabilities() instead
+  * The pkgconfig files are now libei-1.0.pc, libeis-1.0.pc,
+    liboeffis-1.0.pc
+- Delete ver.diff (obsolete), system-munit.diff (deactivate for now)
+
+-------------------------------------------------------------------
 Thu Apr  6 13:12:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.5
