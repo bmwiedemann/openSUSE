@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 17 11:34:35 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add missing jsonschema dependecy
+
+-------------------------------------------------------------------
 Wed Apr 26 08:08:04 UTC 2023 - aplanas@suse.com
 
 - Remove the agent subpackage
