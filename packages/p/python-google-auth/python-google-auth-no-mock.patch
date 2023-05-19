@@ -33,8 +33,10 @@
  tests/transport/test_urllib3.py                |    2 +-
  32 files changed, 32 insertions(+), 32 deletions(-)
 
---- a/tests/compute_engine/test__metadata.py
-+++ b/tests/compute_engine/test__metadata.py
+Index: google-auth-2.17.3/tests/compute_engine/test__metadata.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/compute_engine/test__metadata.py
++++ google-auth-2.17.3/tests/compute_engine/test__metadata.py
 @@ -16,7 +16,7 @@ import datetime
  import json
  import os
@@ -44,8 +46,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import reload_module
---- a/tests/compute_engine/test_credentials.py
-+++ b/tests/compute_engine/test_credentials.py
+Index: google-auth-2.17.3/tests/compute_engine/test_credentials.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/compute_engine/test_credentials.py
++++ google-auth-2.17.3/tests/compute_engine/test_credentials.py
 @@ -14,7 +14,7 @@
  import base64
  import datetime
@@ -55,8 +59,10 @@
  import pytest  # type: ignore
  import responses  # type: ignore
  
---- a/tests/conftest.py
-+++ b/tests/conftest.py
+Index: google-auth-2.17.3/tests/conftest.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/conftest.py
++++ google-auth-2.17.3/tests/conftest.py
 @@ -15,7 +15,7 @@
  import os
  import sys
@@ -66,8 +72,10 @@
  import pytest  # type: ignore
  
  
---- a/tests/crypt/test__python_rsa.py
-+++ b/tests/crypt/test__python_rsa.py
+Index: google-auth-2.17.3/tests/crypt/test__python_rsa.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/crypt/test__python_rsa.py
++++ google-auth-2.17.3/tests/crypt/test__python_rsa.py
 @@ -15,7 +15,7 @@
  import json
  import os
@@ -77,8 +85,10 @@
  from pyasn1_modules import pem  # type: ignore
  import pytest  # type: ignore
  import rsa  # type: ignore
---- a/tests/oauth2/test__client.py
-+++ b/tests/oauth2/test__client.py
+Index: google-auth-2.17.3/tests/oauth2/test__client.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test__client.py
++++ google-auth-2.17.3/tests/oauth2/test__client.py
 @@ -16,7 +16,7 @@ import datetime
  import json
  import os
@@ -88,8 +98,10 @@
  import pytest  # type: ignore
  import six
  from six.moves import http_client
---- a/tests/oauth2/test_challenges.py
-+++ b/tests/oauth2/test_challenges.py
+Index: google-auth-2.17.3/tests/oauth2/test_challenges.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_challenges.py
++++ google-auth-2.17.3/tests/oauth2/test_challenges.py
 @@ -17,7 +17,7 @@
  import base64
  import sys
@@ -99,8 +111,10 @@
  import pytest  # type: ignore
  import pyu2f  # type: ignore
  
---- a/tests/oauth2/test_credentials.py
-+++ b/tests/oauth2/test_credentials.py
+Index: google-auth-2.17.3/tests/oauth2/test_credentials.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_credentials.py
++++ google-auth-2.17.3/tests/oauth2/test_credentials.py
 @@ -18,7 +18,7 @@ import os
  import pickle
  import sys
@@ -110,8 +124,10 @@
  import pytest  # type: ignore
  
  from google.auth import _helpers
---- a/tests/oauth2/test_gdch_credentials.py
-+++ b/tests/oauth2/test_gdch_credentials.py
+Index: google-auth-2.17.3/tests/oauth2/test_gdch_credentials.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_gdch_credentials.py
++++ google-auth-2.17.3/tests/oauth2/test_gdch_credentials.py
 @@ -17,7 +17,7 @@ import datetime
  import json
  import os
@@ -121,8 +137,10 @@
  import pytest  # type: ignore
  import requests
  import six
---- a/tests/oauth2/test_id_token.py
-+++ b/tests/oauth2/test_id_token.py
+Index: google-auth-2.17.3/tests/oauth2/test_id_token.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_id_token.py
++++ google-auth-2.17.3/tests/oauth2/test_id_token.py
 @@ -15,7 +15,7 @@
  import json
  import os
@@ -132,8 +150,10 @@
  import pytest  # type: ignore
  
  from google.auth import environment_vars
---- a/tests/oauth2/test_reauth.py
-+++ b/tests/oauth2/test_reauth.py
+Index: google-auth-2.17.3/tests/oauth2/test_reauth.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_reauth.py
++++ google-auth-2.17.3/tests/oauth2/test_reauth.py
 @@ -14,7 +14,7 @@
  
  import copy
@@ -143,8 +163,10 @@
  import pytest  # type: ignore
  
  from google.auth import exceptions
---- a/tests/oauth2/test_service_account.py
-+++ b/tests/oauth2/test_service_account.py
+Index: google-auth-2.17.3/tests/oauth2/test_service_account.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_service_account.py
++++ google-auth-2.17.3/tests/oauth2/test_service_account.py
 @@ -16,7 +16,7 @@ import datetime
  import json
  import os
@@ -154,8 +176,10 @@
  
  from google.auth import _helpers
  from google.auth import crypt
---- a/tests/oauth2/test_sts.py
-+++ b/tests/oauth2/test_sts.py
+Index: google-auth-2.17.3/tests/oauth2/test_sts.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/oauth2/test_sts.py
++++ google-auth-2.17.3/tests/oauth2/test_sts.py
 @@ -14,7 +14,7 @@
  
  import json
@@ -165,19 +189,23 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test__cloud_sdk.py
-+++ b/tests/test__cloud_sdk.py
-@@ -17,7 +17,7 @@ import json
- import os
+Index: google-auth-2.17.3/tests/test__cloud_sdk.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test__cloud_sdk.py
++++ google-auth-2.17.3/tests/test__cloud_sdk.py
+@@ -18,7 +18,7 @@ import os
  import subprocess
+ import sys
  
 -import mock
 +from unittest import mock
  import pytest  # type: ignore
  
  from google.auth import _cloud_sdk
---- a/tests/test__default.py
-+++ b/tests/test__default.py
+Index: google-auth-2.17.3/tests/test__default.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test__default.py
++++ google-auth-2.17.3/tests/test__default.py
 @@ -15,7 +15,7 @@
  import json
  import os
@@ -187,8 +215,10 @@
  import pytest  # type: ignore
  
  from google.auth import _default
---- a/tests/test__exponential_backoff.py
-+++ b/tests/test__exponential_backoff.py
+Index: google-auth-2.17.3/tests/test__exponential_backoff.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test__exponential_backoff.py
++++ google-auth-2.17.3/tests/test__exponential_backoff.py
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -198,8 +228,10 @@
  
  from google.auth import _exponential_backoff
  
---- a/tests/test__oauth2client.py
-+++ b/tests/test__oauth2client.py
+Index: google-auth-2.17.3/tests/test__oauth2client.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test__oauth2client.py
++++ google-auth-2.17.3/tests/test__oauth2client.py
 @@ -16,7 +16,7 @@ import datetime
  import os
  import sys
@@ -209,8 +241,10 @@
  import pytest  # type: ignore
  from six.moves import reload_module
  
---- a/tests/test_app_engine.py
-+++ b/tests/test_app_engine.py
+Index: google-auth-2.17.3/tests/test_app_engine.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_app_engine.py
++++ google-auth-2.17.3/tests/test_app_engine.py
 @@ -14,7 +14,7 @@
  
  import datetime
@@ -220,8 +254,10 @@
  import pytest  # type: ignore
  
  from google.auth import app_engine
---- a/tests/test_aws.py
-+++ b/tests/test_aws.py
+Index: google-auth-2.17.3/tests/test_aws.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_aws.py
++++ google-auth-2.17.3/tests/test_aws.py
 @@ -16,7 +16,7 @@ import datetime
  import json
  import os
@@ -231,8 +267,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test_downscoped.py
-+++ b/tests/test_downscoped.py
+Index: google-auth-2.17.3/tests/test_downscoped.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_downscoped.py
++++ google-auth-2.17.3/tests/test_downscoped.py
 @@ -15,7 +15,7 @@
  import datetime
  import json
@@ -242,8 +280,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test_external_account.py
-+++ b/tests/test_external_account.py
+Index: google-auth-2.17.3/tests/test_external_account.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_external_account.py
++++ google-auth-2.17.3/tests/test_external_account.py
 @@ -15,7 +15,7 @@
  import datetime
  import json
@@ -253,8 +293,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test_external_account_authorized_user.py
-+++ b/tests/test_external_account_authorized_user.py
+Index: google-auth-2.17.3/tests/test_external_account_authorized_user.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_external_account_authorized_user.py
++++ google-auth-2.17.3/tests/test_external_account_authorized_user.py
 @@ -15,7 +15,7 @@
  import datetime
  import json
@@ -264,8 +306,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  
---- a/tests/test_iam.py
-+++ b/tests/test_iam.py
+Index: google-auth-2.17.3/tests/test_iam.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_iam.py
++++ google-auth-2.17.3/tests/test_iam.py
 @@ -16,7 +16,7 @@ import base64
  import datetime
  import json
@@ -275,8 +319,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  
---- a/tests/test_identity_pool.py
-+++ b/tests/test_identity_pool.py
+Index: google-auth-2.17.3/tests/test_identity_pool.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_identity_pool.py
++++ google-auth-2.17.3/tests/test_identity_pool.py
 @@ -16,7 +16,7 @@ import datetime
  import json
  import os
@@ -286,8 +332,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  from six.moves import urllib
---- a/tests/test_impersonated_credentials.py
-+++ b/tests/test_impersonated_credentials.py
+Index: google-auth-2.17.3/tests/test_impersonated_credentials.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_impersonated_credentials.py
++++ google-auth-2.17.3/tests/test_impersonated_credentials.py
 @@ -19,7 +19,7 @@ import os
  # Because Python 2.7
  # from typing import List
@@ -297,8 +345,10 @@
  import pytest  # type: ignore
  from six.moves import http_client
  
---- a/tests/test_jwt.py
-+++ b/tests/test_jwt.py
+Index: google-auth-2.17.3/tests/test_jwt.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_jwt.py
++++ google-auth-2.17.3/tests/test_jwt.py
 @@ -17,7 +17,7 @@ import datetime
  import json
  import os
@@ -308,8 +358,10 @@
  import pytest  # type: ignore
  
  from google.auth import _helpers
---- a/tests/test_pluggable.py
-+++ b/tests/test_pluggable.py
+Index: google-auth-2.17.3/tests/test_pluggable.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/test_pluggable.py
++++ google-auth-2.17.3/tests/test_pluggable.py
 @@ -17,7 +17,7 @@ import json
  import os
  import subprocess
@@ -319,8 +371,10 @@
  import pytest  # type: ignore
  
  # from six.moves import http_client
---- a/tests/transport/test__custom_tls_signer.py
-+++ b/tests/transport/test__custom_tls_signer.py
+Index: google-auth-2.17.3/tests/transport/test__custom_tls_signer.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/transport/test__custom_tls_signer.py
++++ google-auth-2.17.3/tests/transport/test__custom_tls_signer.py
 @@ -16,7 +16,7 @@ import base64
  import ctypes
  import os
@@ -330,8 +384,10 @@
  import pytest  # type: ignore
  from requests.packages.urllib3.util.ssl_ import create_urllib3_context  # type: ignore
  import urllib3.contrib.pyopenssl  # type: ignore
---- a/tests/transport/test__mtls_helper.py
-+++ b/tests/transport/test__mtls_helper.py
+Index: google-auth-2.17.3/tests/transport/test__mtls_helper.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/transport/test__mtls_helper.py
++++ google-auth-2.17.3/tests/transport/test__mtls_helper.py
 @@ -15,7 +15,7 @@
  import os
  import re
@@ -341,8 +397,10 @@
  from OpenSSL import crypto
  import pytest  # type: ignore
  
---- a/tests/transport/test_grpc.py
-+++ b/tests/transport/test_grpc.py
+Index: google-auth-2.17.3/tests/transport/test_grpc.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/transport/test_grpc.py
++++ google-auth-2.17.3/tests/transport/test_grpc.py
 @@ -16,7 +16,7 @@ import datetime
  import os
  import time
@@ -352,8 +410,10 @@
  import pytest  # type: ignore
  
  from google.auth import _helpers
---- a/tests/transport/test_mtls.py
-+++ b/tests/transport/test_mtls.py
+Index: google-auth-2.17.3/tests/transport/test_mtls.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/transport/test_mtls.py
++++ google-auth-2.17.3/tests/transport/test_mtls.py
 @@ -12,7 +12,7 @@
  # See the License for the specific language governing permissions and
  # limitations under the License.
@@ -363,8 +423,10 @@
  import pytest  # type: ignore
  
  from google.auth import exceptions
---- a/tests/transport/test_requests.py
-+++ b/tests/transport/test_requests.py
+Index: google-auth-2.17.3/tests/transport/test_requests.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/transport/test_requests.py
++++ google-auth-2.17.3/tests/transport/test_requests.py
 @@ -18,7 +18,7 @@ import os
  import sys
  
@@ -374,8 +436,10 @@
  import OpenSSL
  import pytest  # type: ignore
  import requests
---- a/tests/transport/test_urllib3.py
-+++ b/tests/transport/test_urllib3.py
+Index: google-auth-2.17.3/tests/transport/test_urllib3.py
+===================================================================
+--- google-auth-2.17.3.orig/tests/transport/test_urllib3.py
++++ google-auth-2.17.3/tests/transport/test_urllib3.py
 @@ -15,7 +15,7 @@
  import os
  import sys

@@ -317,4 +317,36 @@
     <comment></comment>
     <requestid>1081905</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>43693facca3d52b89fdd116f63218863</srcmd5>
+    <version>2.17.3</version>
+    <time>1684490110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add urllib3-2.patch to support newer urllib3 -- gh#googleapis/google-auth-library-python#1290
+- Remove no-python3.patch
+- Update to 2.17.3:
+  * Add useEmailAzp claim for id token iam flow (#1270) (7a9c6f2)
+- 2.17.2:
+  * Do not create new JWT credentials if they make the same claims as
+    the existing. (#1267) (eebb7b6)
+- 2.17.1:
+  * Print out reauth plugin error and raise if challenge output is
+    None (#1265) (08d22fe)
+- 2.17.0:
+  * Experimental service account iam endpoint flow for id token
+    (#1258) (8ff0de5)
+  * Python: Remove aws url validation (#1254) (20a966b)
+- 2.16.3:
+  * Read both applicationId and relyingPartyId. (#1246) (e125dfe)
+- 2.16.2:
+  * Call gcloud config get project to get project for user cred
+    (#1243) (c078a13)
+  * Do not use hardcoded string 'python', when you mean
+    sys.executable. (#1233) (91ac8e6)
+  * Don't retry if error or error_description is not string (#1241)
+    (e2d263a)
+  * Improve ADC related errors and warnings (#1237) (2dfa213)
+</comment>
+    <requestid>1085995</requestid>
+  </revision>
 </revisionlist>
