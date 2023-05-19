@@ -667,4 +667,41 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1081890</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>22d434e5e02df43498ebb40165ac78ad</srcmd5>
+    <version>6.75.3</version>
+    <time>1684490116</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.75.3:
+  * This patch fixes ~hypothesis.strategies.complex_numbers accidentally
+    invalidating itself when passed magnitude arguments for 32
+    and 64-bit widths, i.e. 16- and 32-bit floats, due to not
+    internally down-casting numbers
+
+- Update to 6.75.2:
+  * Improved the documentation regarding how to use
+    GitHubArtifactDatabase and fixed a bug that occurred in
+    repositories with no existing artifacts.
+- 6.75.1
+  * hypothesis.errors will now raise AttributeError when attempting to
+    access an undefined attribute, rather than returning None.
+- 6.75.0
+  * Sick of adding @example()s by hand? Our Pytest plugin now writes
+    .patch files to insert them for you, making this workflow easier
+    than ever before.
+  * Note that you’ll need LibCST (via hypothesis[codemods]), and that
+    @example().via() requires PEP 614 (Python 3.9 or later).
+- 6.74.1
+  * This patch provides better error messages for datetime- and
+    timedelta-related invalid dtypes in our Pandas extra (issue
+    #3518).
+- 6.74.0
+  * This release adds support for nullable pandas dtypes in pandas()
+    (issue #3604).
+- 6.73.1
+  * This patch updates our minimum Numpy version to 1.16, and restores
+    compatibility with versions before 1.20, which were broken by a
+    mistake in Hypothesis 6.72.4 (issue #3625).</comment>
+    <requestid>1087109</requestid>
+  </revision>
 </revisionlist>

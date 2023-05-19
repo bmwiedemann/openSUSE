@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Sun May 14 15:30:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.75.3:
+  * This patch fixes ~hypothesis.strategies.complex_numbers accidentally
+    invalidating itself when passed magnitude arguments for 32
+    and 64-bit widths, i.e. 16- and 32-bit floats, due to not
+    internally down-casting numbers
+
+-------------------------------------------------------------------
+Wed May 10 16:11:33 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 6.75.2:
+  * Improved the documentation regarding how to use
+    GitHubArtifactDatabase and fixed a bug that occurred in
+    repositories with no existing artifacts.
+- 6.75.1
+  * hypothesis.errors will now raise AttributeError when attempting to
+    access an undefined attribute, rather than returning None.
+- 6.75.0
+  * Sick of adding @example()s by hand? Our Pytest plugin now writes
+    .patch files to insert them for you, making this workflow easier
+    than ever before.
+
+  * Note that you’ll need LibCST (via hypothesis[codemods]), and that
+    @example().via() requires PEP 614 (Python 3.9 or later).
+- 6.74.1
+  * This patch provides better error messages for datetime- and
+    timedelta-related invalid dtypes in our Pandas extra (issue
+    #3518).
+- 6.74.0
+  * This release adds support for nullable pandas dtypes in pandas()
+    (issue #3604).
+- 6.73.1
+  * This patch updates our minimum Numpy version to 1.16, and restores
+    compatibility with versions before 1.20, which were broken by a
+    mistake in Hypothesis 6.72.4 (issue #3625).
+- 6.73.0
+  * This release upgrades the explain phase (issue #3411).
+- 6.72.4
+  * This patch fixes type annotations for the arrays() strategy.
+- 6.72.3
+  * This patch fixes a bug with from_type() with dict[tuple[int, int], str] (issue #3527).
+- 6.72.2
+  * This patch refactors our internals to facilitate an upcoming feature.
+- 6.72.1
+  * This patch fixes some documentation and prepares for future features.
+- 6.72.0
+  * This release deprecates Healthcheck.all(), and adds a codemod to
+    automatically replace it with list(Healthcheck) (issue #3596).
+- 6.71.0
+  * This release adds GitHubArtifactDatabase, a new database backend
+    that allows developers to access the examples found by a Github
+    Actions CI job. This is particularly useful for workflows that
+    involve continuous fuzzing, like HypoFuzz.
+- 6.70.2
+  * This patch clarifies the reporting of time spent generating data.
+    A simple arithmetic mean of the percentage of time spent can be
+    misleading; reporting the actual time spent avoids
+    misunderstandings.
+- 6.70.1
+  * This patch updates our vendored list of top-level domains, which
+    is used by the provisional domains() strategy.
+- 6.70.0
+  * This release adds an optional domains= parameter to the emails()
+    strategy, and excludes the special-use .arpa domain from the
+    default strategy (issue #3567).
+- 6.69.0
+  * This release turns HealthCheck.return_value and
+    HealthCheck.not_a_test_method into unconditional errors. Passing
+    them to suppress_health_check= is therefore a deprecated no-op.
+    (issue #3568).
+  * Separately, GraalPy can now run and pass most of the hypothesis
+    test suite (issue #3587).
+- 6.68.3
+  * This patch updates our vendored list of top-level domains, which
+    is used by the provisional domains() strategy.
+- 6.68.2
+  * This patch fixes missing imports of the re module, when
+    ghostwriting tests which include compiled patterns or regex flags.
+    Thanks to Jens Heinrich for reporting and promptly fixing this
+    bug!
+- 6.68.1
+  * This patch adds some private hooks for use in research on
+    Schemathesis (see our preprint here).
+- 6.68.0
+  * This release adds support for the Array API’s 2022.12 release via
+    the api_version argument in make_strategies_namespace().
+    Concretely this involves complex support in its existing
+    strategies, plus an introduced xps.complex_dtypes() strategy.
+  * Additionally this release now treats hypothesis.extra.array_api as
+    stable, meaning breaking changes should only happen with major
+    releases of Hypothesis.
+- 6.67.1
+  * This patch updates our autoformatting tools, improving our code
+    style without any API changes.
+- 6.67.0
+  * This release allows for more precise generation of complex numbers
+    using from_dtype(), by supporting the width, min_magnitude, and
+    min_magnitude arguments (issue #3468).
+- 6.66.2
+  * This patch fixes a rare RecursionError when pretty-printing a
+    multi-line object without type-specific printer, which was passed
+    to a function which returned the same object by .map() or
+    builds() and thus recursed due to the new pretty reprs in
+    Hypothesis 6.65.0 - 2023-01-24 (issue #3560). Apologies to all
+    those affected.
+- 6.66.1
+  * This makes from_dtype() pass through the parameter allow_subnormal
+    for complex dtypes.
+- 6.66.0
+  * This release adds a width parameter to complex_numbers(),
+    analogously to floats().
+- 6.65.2
+  * This patch fixes invalid annotations detected for the tests
+    generated by Ghostwritter. It will now correctly generate Optional
+    types with just one type argument and handle union expressions
+    inside of type arguments correctly. Additionally, it now supports
+    code with the from __future__ import annotations marker for Python
+    3.10 and newer.
+- 6.65.1
+  * This release improves the pretty-printing of enums in falsifying
+    examples, so that they print as their full identifier rather than
+    their repr.
+- 6.65.0
+  * Hypothesis now reports some failing inputs by showing the call
+    which constructed an object, rather than the repr of the object.
+    This can be helpful when the default repr does not include all
+    relevant details, and will unlock further improvements in a future
+    version.
+  * For now, we capture calls made via builds(), and via
+    SearchStrategy.map().
+- 6.64.0
+  * The Ghostwritter will now include type annotations on tests for
+    type-annotated code. If you want to force this to happen (or not
+    happen), pass a boolean to the new annotate= argument to the
+    Python functions, or the --[no-]annotate CLI flag.
+- 6.63.0
+  * range_indexes() now accepts a name= argument, to generate named
+    pandas.RangeIndex objects.
+- 6.62.1
+  * This patch tweaks xps.arrays() internals to improve PyTorch
+    compatibility. Specifically, torch.full() does not accept integers
+    as the shape argument (n.b. technically “size” in torch), but such
+    behaviour is expected in internal code, so we copy the torch
+    module and patch in a working full() function.
+- 6.62.0
+  * A classic error when testing is to write a test function that can
+    never fail, even on inputs that aren’t allowed or manually
+    provided.
+- 6.61.3
+  * This patch teaches our enhanced get_type_hints() function to ‘see
+    through’ partial application, allowing inference from type hints
+    to work in a few more cases which aren’t (yet!) supported by the
+    standard-library version.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

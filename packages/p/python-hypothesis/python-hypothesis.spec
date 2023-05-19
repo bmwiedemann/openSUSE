@@ -37,7 +37,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.61.2
+Version:        6.75.3
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -66,8 +66,8 @@ Recommends:     python-click >= 7.0
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark >= 0.10.1
 Recommends:     python-libcst >= 0.3.16
-Recommends:     python-numpy >= 1.9.0
-Recommends:     python-pandas >= 1.0
+Recommends:     python-numpy >= 1.16.0
+Recommends:     python-pandas >= 1.1
 Recommends:     python-pytest >= 4.6
 Recommends:     python-python-dateutil >= 1.4
 Recommends:     python-pytz >= 2014.1
@@ -82,7 +82,7 @@ BuildRequires:  %{python_module hypothesis = %{version}}
 %if %{with complete_tests}
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module fakeredis}
-BuildRequires:  %{python_module pandas >= 1.0}
+BuildRequires:  %{python_module pandas >= 1.1}
 %endif
 BuildRequires:  %{python_module backports.zoneinfo >= 0.2.1 if %python-base < 3.9}
 BuildRequires:  %{python_module black >= 19.10}
@@ -91,7 +91,7 @@ BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module lark >= 0.10.1}
 BuildRequires:  %{python_module libcst >= 0.3.16}
-BuildRequires:  %{python_module numpy >= 1.9.0}
+BuildRequires:  %{python_module numpy >= 1.16.0}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
@@ -147,6 +147,8 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 # https://github.com/HypothesisWorks/hypothesis/issues/2546
 donttest="test_updating_the_file_include_new_shrinkers"
 donttest+=" or test_can_learn_to_normalize_the_unnormalized"
+# Fail because typing comparison
+donttest+=" or test_ghostwriter_on_hypothesis"
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=
