@@ -17,7 +17,7 @@
 
 
 Name:           ART
-Version:        1.19.3
+Version:        1.20
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
@@ -81,6 +81,9 @@ A free, open-source, cross-platform raw image processing program. ART is a deriv
 # Upstream recommended '-O3' optimisation, do not change
 export CFLAGS="%(echo %{optflags} | sed 's/-O2/-O3/' | sed 's/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=3/')"
 export CXXFLAGS="$CFLAGS"
+
+export CC=gcc
+export CXX=gcc
 
 %cmake \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \

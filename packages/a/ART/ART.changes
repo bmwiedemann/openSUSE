@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 18 19:35:28 UTC 2023 - "Joshua Smith" <jsmithfpv@gmail.com>
+
+- Update to 1.20
+  * updated camera matrices
+  * updated WB presets with latest additions from darktable
+  * neutral tone curve: disable the now-unnecessary output
+    hue blending
+  * neutral tone curve: one more typo in the application of
+    the whitepoint 2
+    one more typo in the application of the whitepoint
+  * neutral tone curve: fixed bug in computing the conversion
+    matrices for gamut mapping
+  * tonecurve: fixed bug in setting the whitepoint for the LUT
+  * prevent segfault when switching images while editing the crop
+  * updated German and Hungarian translations.
+  * procparams: fixed corruption of stroke lists due to rounding
+    errors in HalfFloats with large integers
+  * changed default values for some GUI preferences including
+    histogram position
+  * rawimage: do not handle images with more than 3 colors
+
+-------------------------------------------------------------------
 Mon Mar 27 16:04:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.19.3:
