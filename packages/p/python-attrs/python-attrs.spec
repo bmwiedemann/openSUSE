@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -28,17 +27,25 @@
 %global skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-attrs%{psuffix}
-Version:        22.2.0
+Version:        23.1.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hynek/attrs/
 Source:         https://files.pythonhosted.org/packages/source/a/attrs/attrs-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if 0%{python_version_nodots} < 38
+Requires:       python-importlib_metadata
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Pympler}
 BuildRequires:  %{python_module hypothesis}
@@ -68,14 +75,14 @@ life!
 python-attrs is the successor to python-characterstic
 
 %prep
-%setup -q -n attrs-%{version}
+%autosetup -p1 -n attrs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -89,7 +96,7 @@ python-attrs is the successor to python-characterstic
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitelib}/attr*
-%{python_sitelib}/attrs-%{version}-py*.egg-info
+%{python_sitelib}/attrs-%{version}*-info
 %endif
 
 %changelog
