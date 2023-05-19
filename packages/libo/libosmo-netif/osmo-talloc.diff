@@ -4,11 +4,11 @@
  src/Makefile.am      |    2 +-
  3 files changed, 17 insertions(+), 16 deletions(-)
 
-Index: libosmo-netif-1.2.0/configure.ac
+Index: libosmo-netif-1.3.0/configure.ac
 ===================================================================
---- libosmo-netif-1.2.0.orig/configure.ac
-+++ libosmo-netif-1.2.0/configure.ac
-@@ -124,6 +124,7 @@ AS_IF([test "x$ENABLE_LIBSCTP" = "xyes"]
+--- libosmo-netif-1.3.0.orig/configure.ac
++++ libosmo-netif-1.3.0/configure.ac
+@@ -125,6 +125,7 @@ AS_IF([test "x$ENABLE_LIBSCTP" = "xyes"]
  	LIBS=$old_LIBS
  ])
  
@@ -16,10 +16,10 @@ Index: libosmo-netif-1.2.0/configure.ac
  found_pcap=yes
  AC_CHECK_HEADERS(pcap.h,,found_pcap=no)
  AM_CONDITIONAL(HAVE_PCAP, test "$found_pcap" = yes)
-Index: libosmo-netif-1.2.0/examples/Makefile.am
+Index: libosmo-netif-1.3.0/examples/Makefile.am
 ===================================================================
---- libosmo-netif-1.2.0.orig/examples/Makefile.am
-+++ libosmo-netif-1.2.0/examples/Makefile.am
+--- libosmo-netif-1.3.0.orig/examples/Makefile.am
++++ libosmo-netif-1.3.0/examples/Makefile.am
 @@ -1,5 +1,5 @@
  AM_CPPFLAGS = -I$(top_srcdir)/include
 -AM_CFLAGS=-Wall -g $(LIBOSMOCORE_CFLAGS) $(LIBOSMOGSM_CFLAGS) $(LIBOSMOABIS_CFLAGS) $(COVERAGE_CFLAGS)
@@ -99,12 +99,12 @@ Index: libosmo-netif-1.2.0/examples/Makefile.am
  osmux_test_output_LDADD = $(top_builddir)/src/libosmonetif.la \
 -			  $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS)
 +			  $(LIBOSMOCORE_LIBS) $(LIBOSMOGSM_LIBS) $(TALLOC_LIBS)
-Index: libosmo-netif-1.2.0/src/Makefile.am
+Index: libosmo-netif-1.3.0/src/Makefile.am
 ===================================================================
---- libosmo-netif-1.2.0.orig/src/Makefile.am
-+++ libosmo-netif-1.2.0/src/Makefile.am
+--- libosmo-netif-1.3.0.orig/src/Makefile.am
++++ libosmo-netif-1.3.0/src/Makefile.am
 @@ -3,7 +3,7 @@
- LIBVERSION=10:0:2
+ LIBVERSION=11:0:0
  
  AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)
 -AM_CFLAGS= -fPIC -Wall $(LIBOSMOCORE_CFLAGS) $(LIBOSMOGSM_CFLAGS) $(LIBOSMOABIS_CFLAGS) $(COVERAGE_CFLAGS) $(LIBSCTP_CFLAGS)

@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-netif
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,39 @@
 
 
 Name:           libosmo-netif
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Osmocom library for muxed audio
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/libosmo-netif
-
 Source:         https://github.com/osmocom/libosmo-netif/archive/%version.tar.gz
 Patch1:         osmo-talloc.diff
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
-BuildRequires:  pkgconfig(libosmocore) >= 1.7.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.7.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
 BuildRequires:  pkgconfig(talloc)
 
 %description
 Network interface demuxer library for OsmoCom projects.
 
-%package -n libosmonetif8
+%package -n libosmonetif11
 Summary:        Osmocom library for muxed audio
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmonetif8
+%description -n libosmonetif11
 Network interface demuxer library for OsmoCom projects.
 
 %package -n libosmonetif-devel
 Summary:        Development files for the Osmocom muxed audio library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmonetif8 = %version
+Requires:       libosmonetif11 = %version
 
 %description -n libosmonetif-devel
 Network interface demuxer library for OsmoCom projects.
@@ -80,10 +80,10 @@ if ! %make_build check; then
 	# timing issue
 fi
 
-%post   -n libosmonetif8 -p /sbin/ldconfig
-%postun -n libosmonetif8 -p /sbin/ldconfig
+%post   -n libosmonetif11 -p /sbin/ldconfig
+%postun -n libosmonetif11 -p /sbin/ldconfig
 
-%files -n libosmonetif8
+%files -n libosmonetif11
 %_libdir/libosmonetif.so.*
 
 %files -n libosmonetif-devel
