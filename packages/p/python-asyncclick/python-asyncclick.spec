@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncclick
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%define oldpython python
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-asyncclick
 Version:        8.1.3.4
 Release:        0
@@ -32,6 +30,7 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module wheel}
@@ -67,6 +66,6 @@ export LANG=en_US.UTF-8
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/asyncclick
-%{python_sitelib}/asyncclick-*.dist-info/
+%{python_sitelib}/asyncclick-%{version}.dist-info/
 
 %changelog

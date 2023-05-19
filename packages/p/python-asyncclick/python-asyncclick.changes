@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 19 07:22:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with setuptools_scm
+- build for PSP on sle15
+
+-------------------------------------------------------------------
 Thu Oct 27 21:44:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 8.1.3.4 
