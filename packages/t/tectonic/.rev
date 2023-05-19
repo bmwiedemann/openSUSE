@@ -47,4 +47,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1082030</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c7024d874c44e8f938ccc24f1da63fa8</srcmd5>
+    <version>0.13.0</version>
+    <time>1684490146</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0
+  * Add new V2 command `tectonic -X init`. This initializes a new document in
+    the current directory much like `cargo init`.
+  * Setting the `shell-escape-cwd` unstable option.
+  * Update many developer dependencies to newer versions
+</comment>
+    <requestid>1087861</requestid>
+  </revision>
 </revisionlist>

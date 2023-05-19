@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">tectonic-0.12.0.tar.gz</param>
+     <param name="srctar">tectonic-0.13.0.tar.gz</param>
      <param name="compression">gz</param>
      <param name="update">true</param>
   </service>

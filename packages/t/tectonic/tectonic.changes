@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 19 00:46:11 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.13.0
+  * Add new V2 command `tectonic -X init`. This initializes a new document in
+    the current directory much like `cargo init`.
+  * Setting the `shell-escape-cwd` unstable option.
+  * Update many developer dependencies to newer versions
+
+-------------------------------------------------------------------
 Fri Apr 14 14:12:12 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update of vendored dependencies
