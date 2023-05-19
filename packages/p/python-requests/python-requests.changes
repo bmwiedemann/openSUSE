@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  5 12:03:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  4 01:49:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.30.0:
+  * Added support for urllib3 2.0. ￼
+  * Defer chunked requests to the urllib3 implementation to improve
+    standardization.
+  * Relax header component requirements to support bytes/str subclasses.
+
+-------------------------------------------------------------------
 Thu Feb 16 17:03:23 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Don't upper limit version of charset_normalized at runtime, too.

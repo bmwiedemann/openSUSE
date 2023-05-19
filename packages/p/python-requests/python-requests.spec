@@ -24,13 +24,12 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.28.2
+Version:        2.30.0
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: Allow charset normalizer >=2 and <4, and don't strict require httpbin===1.0.0
