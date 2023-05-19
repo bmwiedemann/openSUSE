@@ -20,10 +20,10 @@
 # lto breaks crc32 detection in configure script
 # See https://github.com/edenhill/librdkafka/issues/2426
 %ifnarch x86_64
-%define _lto_cflags %{nil}
+%global _lto_cflags %{nil}
 %endif
 Name:           librdkafka
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause
