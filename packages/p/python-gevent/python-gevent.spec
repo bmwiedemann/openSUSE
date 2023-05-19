@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        22.10.1
+Version:        22.10.2
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -39,11 +39,12 @@ Source100:      %{name}-rpmlintrc
 # let's selectively disable the warning around the offending code
 Patch0:         fix-no-return-in-nonvoid-function.patch
 Patch1:         skip-tests-in-leap.patch
+Patch2:         handle-python-ssl-changes.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module greenlet >= 1.1.0}
+BuildRequires:  %{python_module greenlet >= 2.0.0}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module requests}
@@ -60,7 +61,7 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libuv)
 Requires:       python-cffi
 Requires:       python-dnspython
-Requires:       python-greenlet
+Requires:       python-greenlet >= 2.0.0
 Requires:       python-requests
 Requires:       python-zope.event
 Requires:       python-zope.interface
@@ -91,6 +92,7 @@ gevent is inspired by eventlet but features more consistent API, simpler
 implementation and better performance. Read why others use gevent and check
 out the list of the open source projects based on gevent.
 
+%if 0%{?suse_version} > 1500
 %package -n python-gevent-doc
 Summary:        Documentation for %{name}
 Group:          Documentation/Other
@@ -99,6 +101,7 @@ BuildArch:      noarch
 
 %description -n python-gevent-doc
 Documentation and examples for %{name}.
+%endif
 
 %prep
 %setup -q -n gevent-%{version}
@@ -108,6 +111,9 @@ Documentation and examples for %{name}.
 
 %if 0%{?sle_version} <= 150300
 %patch1 -p1
+%endif
+%if 0%{?is_opensuse}
+%patch2 -p1
 %endif
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
 sed -i -e '1{/bin.*python/d}' src/gevent/tests/*.py
@@ -145,6 +151,7 @@ test__example_portforwarder.py
 test__getaddrinfo_import.py
 test__resolver_dnspython.py
 test__socket_dns.py
+test__issue1686.py
 EOF
 if [ %{$python_version_nodots} -lt 37 ]; then
  echo "test__threading_2.py" >> skip_tests.txt
@@ -172,8 +179,10 @@ fi
 %{python_sitearch}/gevent-%{version}*-info
 %{python_sitearch}/gevent
 
+%if 0%{?suse_version} > 1500
 %files -n python-gevent-doc
 %license LICENSE*
+%endif
 %doc examples/
 
 %changelog

@@ -620,4 +620,25 @@
     <comment></comment>
     <requestid>1081906</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b0f104c6d31f7368f6f3e7e6b98e9604</srcmd5>
+    <version>22.10.2</version>
+    <time>1684490121</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch handle-python-ssl-changes.patch:
+  * Handle Python 3.10 changes where ssl.shared_ciphers() changes
+    behaviour. 
+
+- skip one more test from testsuite 
+
+- update to 22.10.2:
+  * Update to greenlet 2.0. This fixes a deallocation issue that
+    required a change in greenlet's ABI. The design of greenlet 2.0 is
+    intended to prevent future fixes and enhancements from
+    requiring an ABI change, making it easier to update gevent
+    and greenlet independently.
+
+- Switch documentation to be within the main package.</comment>
+    <requestid>1087248</requestid>
+  </revision>
 </revisionlist>

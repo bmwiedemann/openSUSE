@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May 15 14:18:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch handle-python-ssl-changes.patch:
+  * Handle Python 3.10 changes where ssl.shared_ciphers() changes
+    behaviour. 
+
+-------------------------------------------------------------------
+Mon May 15 13:44:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip one more test from testsuite 
+
+-------------------------------------------------------------------
+Thu May  4 20:28:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.10.2:
+  * Update to greenlet 2.0. This fixes a deallocation issue that
+    required a change in greenlet's ABI. The design of greenlet 2.0 is
+    intended to prevent future fixes and enhancements from
+    requiring an ABI change, making it easier to update gevent
+    and greenlet independently.
+
+-------------------------------------------------------------------
+Sun Apr 23 23:15:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch documentation to be within the main package.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
