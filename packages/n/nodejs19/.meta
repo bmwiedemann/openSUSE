@@ -1,6 +1,0 @@
-<package name="nodejs19" project="openSUSE:Factory">
-  <title>NodeJS 19.x</title>
-  <description>CURRENT version of NodeJS</description>
-  <devel project="devel:languages:nodejs" package="nodejs19"/>
-  <url>https://nodejs.org/</url>
-</package>
