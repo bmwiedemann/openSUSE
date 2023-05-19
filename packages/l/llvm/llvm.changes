@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 17 21:27:46 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.4.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+
+-------------------------------------------------------------------
 Sun May  7 18:34:15 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.3.
