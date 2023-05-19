@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 10 23:05:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Reinstate tomli requirement for Python < 3.11
+
+-------------------------------------------------------------------
+Wed May 10 06:24:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * use tomllib from stdlib
+  * handle non-ascii in setup.cfg
+  * implement fallback file finders for archives
+  * removed coding header in python template
+  * declared Python 3.11 support
+  * update .git_archival.txt templates match
+  * git-describe invocation
+  * fix handling of .git-archival.txt from tagged
+    commit
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
-Version:        7.0.5
+Version:        7.1.0
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
@@ -43,17 +43,19 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
-Requires:       python-tomli >= 1.0.0
 Requires:       python-typing-extensions
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
+%endif
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli >= 1
 %endif
 BuildArch:      noarch
 %if %{with test}
 # Testing requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
-BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module virtualenv > 20}
 BuildRequires:  git-core
 BuildRequires:  mercurial
 %endif
