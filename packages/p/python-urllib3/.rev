@@ -649,4 +649,41 @@
     <comment></comment>
     <requestid>1081796</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>4d3ff2a1060ad51f642ea7e25156d0b3</srcmd5>
+    <version>2.0.2</version>
+    <time>1684490122</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Fixed ``HTTPResponse.stream()`` to continue yielding bytes if
+    buffered decompressed data was still available to be read
+    even if the underlying socket is closed. This prevents
+    a compressed response from being truncated.
+
+- Update to 2.0.1:
+  * Fixed a socket leak when fingerprint or hostname verifications fail.
+  * Fixed an error when HTTPResponse.read(0) was the first read call or when
+    the internal response body buffer was otherwise empty.
+  * Removed support for Python 2.7, 3.5, and 3.6.
+  * Removed fallback on certificate commonName in match_hostname() function.
+  * Removed support for Python with an ssl module compiled with LibreSSL,
+   CiscoSSL, wolfSSL, and all other OpenSSL alternatives.
+  * Removed support for OpenSSL versions earlier than 1.1.1.
+  * Removed urllib3.contrib.appengine.AppEngineManager and support for Google
+    App Engine Standard Environment.
+  * Changed ssl_version to instead set the corresponding
+    SSLContext.minimum_version and SSLContext.maximum_version values.
+  * Changed default SSLContext.minimum_version to be TLSVersion.TLSv1_2
+    in line with Python 3.10.
+  * Changed urllib3.util.create_urllib3_context to not override the system
+    cipher suites with a default value.
+  * Changed multipart/form-data header parameter formatting matches the
+    WHATWG HTML Standard as of 2021-06-10.
+  * Changed HTTPConnection.request() to always use lowercase chunk boundaries
+    when sending requests with Transfer-Encoding: chunked.
+  * Changed enforce_content_length default to True, preventing silent data
+    loss when reading streamed responses.
+  * Changed all parameters in the HTTPConnection and HTTPSConnection</comment>
+    <requestid>1087259</requestid>
+  </revision>
 </revisionlist>

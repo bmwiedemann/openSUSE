@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun May 14 12:37:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Fixed ``HTTPResponse.stream()`` to continue yielding bytes if
+    buffered decompressed data was still available to be read
+    even if the underlying socket is closed. This prevents
+    a compressed response from being truncated.
+
+-------------------------------------------------------------------
+Wed May 10 07:26:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * Fixed a socket leak when fingerprint or hostname verifications fail.
+  * Fixed an error when HTTPResponse.read(0) was the first read call or when
+    the internal response body buffer was otherwise empty.
+  * Removed support for Python 2.7, 3.5, and 3.6.
+  * Removed fallback on certificate commonName in match_hostname() function.
+  * Removed support for Python with an ssl module compiled with LibreSSL,
+   CiscoSSL, wolfSSL, and all other OpenSSL alternatives.
+  * Removed support for OpenSSL versions earlier than 1.1.1.
+  * Removed urllib3.contrib.appengine.AppEngineManager and support for Google
+    App Engine Standard Environment.
+  * Changed ssl_version to instead set the corresponding
+    SSLContext.minimum_version and SSLContext.maximum_version values.
+  * Changed default SSLContext.minimum_version to be TLSVersion.TLSv1_2
+    in line with Python 3.10.
+  * Changed urllib3.util.create_urllib3_context to not override the system
+    cipher suites with a default value.
+  * Changed multipart/form-data header parameter formatting matches the
+    WHATWG HTML Standard as of 2021-06-10.
+  * Changed HTTPConnection.request() to always use lowercase chunk boundaries
+    when sending requests with Transfer-Encoding: chunked.
+  * Changed enforce_content_length default to True, preventing silent data
+    loss when reading streamed responses.
+  * Changed all parameters in the HTTPConnection and HTTPSConnection
+    constructors to be keyword-only except host and port.
+  * Changed HTTPConnection.getresponse() to set the socket timeout from
+    HTTPConnection.timeout value before reading data from the socket.
+  * Changed name of Retry.BACK0FF_MAX to be Retry.DEFAULT_BACKOFF_MAX.
+  * Changed TLS handshakes to use SSLContext.check_hostname when possible.
+  * Changed the default blocksize to 16KB to match OpenSSL's default read
+    amounts.
+  * Changed HTTPResponse.read() to raise an error when calling with
+    decode_content=False after using decode_content=True to prevent data loss.
+  * Fixed thread-safety issue where accessing a PoolManager with many
+    distinct origins would cause connection pools to be closed while
+    requests are in progress.
+  * Fixed the default value of HTTPSConnection.socket_options to match
+    HTTPConnection.
+  * Fixed a socket leak if HTTPConnection.connect() fails.
+- Drop patch remove_mock.patch, included upstream.
+- Fiddle with {Build,}Requires as appropiate, six finally dropped.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
