@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue May 16 14:16:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- break python-invocations, invoke cycle on tests 
+
+-------------------------------------------------------------------
+Sun May 14 12:38:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * The `importlib` upgrade in 2.1 had a corner case
+    bug (regarding ``from . import <submodule>`` functionality
+    within package-like task trees  which in turn exposed a
+    false-pass in our test suite. Both have now been fixed.
+
+-------------------------------------------------------------------
+Thu May 11 06:22:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.1.0:
+  - [Bug] #910: Add more rigor around subprocess/runner shutdown
+    to avoid spurious exceptions & also fix downstream issues in
+    libraries like Fabric. Reported by Orlando Rodríguez.
+  - [Bug] #934: The importlib upgrade in 2.1 had a corner case
+    bug (regarding from . import <submodule> functionality within
+    package-like task trees) which in turn exposed a false-pass
+    in our test suite. Both have now been fixed. Thanks to Greg
+    Meyer and Robert J. Berger for the bug reports.
+  - [Bug] #910: Add more rigor around subprocess/runner shutdown
+    to avoid spurious exceptions & also fix downstream issues in
+    libraries like Fabric. Reported by Orlando Rodríguez.
+  - [Support] #901: (via #903) Tweak test suite setup methods to
+    be named setup_method so pytest stops whining about it. Patch
+    via Jesse P. Johnson.
+  - [Bug] #376: Resolve equality comparison bug for
+    non-collections. Patch via Jesse P. Johnson
+  - [Support] #901: (via #903) Tweak test suite setup methods to
+    be named setup_method so pytest stops whining about it. Patch
+    via Jesse P. Johnson.
+  - [Support] #906: Implement type hints and type checking
+    tests with mypy to reduce errors and impove code
+    documentation. Patches by Jesse P. Johnson and review by Sam
+    Bull.
+  - [Support] #675: Implement importlib and deprecate imp
+    module. Patches provided by Jesse P. Johnson
+  - [Support]: Task.argspec has changed its return value; it now
+    returns an inspect.Signature derived from that of the task’s
+    body callable.
+  - Warning
+    This change is backwards incompatible if you were using this
+    method directly.
+    [Support]: Remove support for, and imports related to,
+    all Python versions less than 3.6 - including Python
+    2. This also includes updates to vendored packages, such
+    as removing six and upgrading lexicon to the latest
+    version; and also treatment of things like Mock use within
+    invoke.context.MockContext (which now expects stdlib’s
+    unittest.mock instead of hunting for the old standalone mock
+    library).
+    This change is backwards incompatible in the following scenarios:
+    - You use Python <3.6. Shouldn’t be an issue as we now
+      specify python_requires in packaging metadata.
+    - You call invoke.util.encode_output manually for some
+      reason. (This became a noop under Python 3, so just…remove
+      it!)
+    - You use invoke.context.MockContext; its repeat init kwarg
+      changed its default value from False to True. This probably
+      won’t bite you, but we mention it just in case you somehow
+      relied upon the legacy behavior.
+    - You subclass invoke.runners.Runner and/or have had to
+      interact with its stop or stop_timer methods. The latter
+      has been merged into the former, and if you are overriding
+      stop, you’ll want to make sure you now call super()
+      somewhere if you were not already.
+- Remove upstreamed patches:
+  - 0001-Make-test-fallback-to-system-modules-when-vendorized.patch
+  - pytest4.patch
+- Add remove-icecream.patch to remove unnecessary dependence on
+  icecream module.
+- Skip temporarily failing tests (gh#pyinvoke/invoke#705).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -153,4 +153,41 @@
     <comment></comment>
     <requestid>1081880</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9290f256d1e07aed95e21125e3bbaa61</srcmd5>
+    <version>2.1.1</version>
+    <time>1684490125</time>
+    <user>dimstar_suse</user>
+    <comment>- break python-invocations, invoke cycle on tests 
+
+- update to 2.1.1:
+  * The `importlib` upgrade in 2.1 had a corner case
+    bug (regarding ``from . import &lt;submodule&gt;`` functionality
+    within package-like task trees  which in turn exposed a
+    false-pass in our test suite. Both have now been fixed.
+
+- Update to 2.1.0:
+  - [Bug] #910: Add more rigor around subprocess/runner shutdown
+    to avoid spurious exceptions &amp; also fix downstream issues in
+    libraries like Fabric. Reported by Orlando Rodríguez.
+  - [Bug] #934: The importlib upgrade in 2.1 had a corner case
+    bug (regarding from . import &lt;submodule&gt; functionality within
+    package-like task trees) which in turn exposed a false-pass
+    in our test suite. Both have now been fixed. Thanks to Greg
+    Meyer and Robert J. Berger for the bug reports.
+  - [Bug] #910: Add more rigor around subprocess/runner shutdown
+    to avoid spurious exceptions &amp; also fix downstream issues in
+    libraries like Fabric. Reported by Orlando Rodríguez.
+  - [Support] #901: (via #903) Tweak test suite setup methods to
+    be named setup_method so pytest stops whining about it. Patch
+    via Jesse P. Johnson.
+  - [Bug] #376: Resolve equality comparison bug for
+    non-collections. Patch via Jesse P. Johnson
+  - [Support] #901: (via #903) Tweak test suite setup methods to
+    be named setup_method so pytest stops whining about it. Patch
+    via Jesse P. Johnson.
+  - [Support] #906: Implement type hints and type checking
+    tests with mypy to reduce errors and impove code</comment>
+    <requestid>1087437</requestid>
+  </revision>
 </revisionlist>
