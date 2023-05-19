@@ -84,4 +84,18 @@
 </comment>
     <requestid>1086115</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6cb3200e144d9da28b78a352394d0858</srcmd5>
+    <version>16.0.4</version>
+    <time>1684490093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.4.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Rebase patches:
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-remove-clang-only-flags.patch
+</comment>
+    <requestid>1087800</requestid>
+  </revision>
 </revisionlist>

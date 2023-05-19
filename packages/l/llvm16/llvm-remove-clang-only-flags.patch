@@ -1,8 +1,8 @@
-Index: llvm-8.0.0rc3.src/cmake/modules/HandleLLVMOptions.cmake
+Index: llvm-16.0.4.src/cmake/modules/HandleLLVMOptions.cmake
 ===================================================================
---- llvm-8.0.0rc3.src.orig/cmake/modules/HandleLLVMOptions.cmake
-+++ llvm-8.0.0rc3.src/cmake/modules/HandleLLVMOptions.cmake
-@@ -413,8 +413,6 @@ if( MSVC )
+--- llvm-16.0.4.src.orig/cmake/modules/HandleLLVMOptions.cmake
++++ llvm-16.0.4.src/cmake/modules/HandleLLVMOptions.cmake
+@@ -577,8 +577,6 @@ if( MSVC )
  
  # Specific default warnings-as-errors for compilers accepting GCC-compatible warning flags:
  if ( LLVM_COMPILER_IS_GCC_COMPATIBLE OR CMAKE_CXX_COMPILER_ID MATCHES "XL" )
@@ -10,8 +10,8 @@ Index: llvm-8.0.0rc3.src/cmake/modules/HandleLLVMOptions.cmake
 -  add_flag_if_supported("-Werror=unguarded-availability-new" WERROR_UNGUARDED_AVAILABILITY_NEW)
  endif( LLVM_COMPILER_IS_GCC_COMPATIBLE OR CMAKE_CXX_COMPILER_ID MATCHES "XL" )
  
- # Modules enablement for GCC-compatible compilers:
-@@ -586,7 +584,6 @@ if (LLVM_ENABLE_WARNINGS AND (LLVM_COMPI
+ if ( LLVM_COMPILER_IS_GCC_COMPATIBLE )
+@@ -741,7 +739,6 @@ if (LLVM_ENABLE_WARNINGS AND (LLVM_COMPI
    endif()
  
    add_flag_if_supported("-Wimplicit-fallthrough" IMPLICIT_FALLTHROUGH_FLAG)
