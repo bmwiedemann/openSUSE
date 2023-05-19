@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 19 04:59:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230518T165900Z:
+  * Deprecate older idp commands (#4572)
+  * Add name and description for service accounts (#4569)
+  * bug: panic on nil pointer dereference for "mc admin heal" when
+    disk i… (#4571)
+  * Load Subnet proxy and API key from the env if found (#4557)
+  * randomly generate AK and SK on mc client (#4565)
+  * info: Correctly show pool config with offline node(s) (#4567)
+  * Support setting subnet url via env var in dev mode (#4564)
+- BuildRequire go1.19
+
+-------------------------------------------------------------------
 Mon May 08 04:37:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230504T181016Z:
