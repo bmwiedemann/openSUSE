@@ -1,0 +1,36 @@
+From 4f5362fccc908820574fdbac2f6b6871c0f371c5 Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <henryschreineriii@gmail.com>
+Date: Wed, 15 Mar 2023 09:33:53 -0400
+Subject: [PATCH] tests: strip formatting from stderr (pip 23)
+
+Signed-off-by: Henry Schreiner <henryschreineriii@gmail.com>
+---
+ tests/test_main.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_main.py b/tests/test_main.py
+index e924d8bd..456ff749 100644
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -20,6 +20,8 @@
+ cwd = os.getcwd()
+ out = os.path.join(cwd, 'dist')
+ 
++ANSI_STRIP = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
++
+ 
+ @pytest.mark.parametrize(
+     ('cli_args', 'build_args', 'hook'),
+@@ -368,8 +370,10 @@ def test_output_env_subprocess_error(
+     assert stdout[:4] == stdout_body
+     assert stdout[-1].startswith(stdout_error)
+ 
+-    assert len(stderr) == 1
+-    assert stderr[0].startswith('ERROR: Invalid requirement: ')
++    # Newer versions of pip also color stderr - strip them if present
++    cleaned_stderr = ANSI_STRIP.sub('', '\n'.join(stderr)).strip()
++    assert len(cleaned_stderr.splitlines()) == 1
++    assert cleaned_stderr.startswith('ERROR: Invalid requirement: ')
+ 
+ 
+ @pytest.mark.parametrize(

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat May  6 16:59:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Renamed patches support-pip-23.patch and
+  support-tarfile-data-filter.patch to 589-colorized-pip23.patch
+  and 609-filter-out-malicious.patch, respectively.
+
+-------------------------------------------------------------------
+Tue May  2 10:52:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove support-tarfile-data-filter.patch: better documentation
+  required, preferable supported through upstream
+  * gh#pypa/build#609
+  * ignore the DeprecationWarning instead
+
+-------------------------------------------------------------------
+Tue May  2 08:04:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pip-23.patch:
+  * pip 23 also colorizes output, confusing the test.
+- Add patch support-tarfile-data-filter.patch:
+  * Set tarfile.data_filter if available.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

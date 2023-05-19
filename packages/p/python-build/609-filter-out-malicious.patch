@@ -1,0 +1,68 @@
+From 083fde33e7593d8ff9add04bd4d237a3ddcbfe44 Mon Sep 17 00:00:00 2001
+From: layday <layday@protonmail.com>
+Date: Fri, 28 Apr 2023 15:22:53 +0300
+Subject: [PATCH] main: filter out malicious files when extracting tar archives
+
+See https://peps.python.org/pep-0706/.
+---
+ src/build/__main__.py |    5 +++--
+ src/build/util.py     |   14 +++++++++++++-
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+--- a/src/build/__main__.py
++++ b/src/build/__main__.py
+@@ -9,7 +9,6 @@ import platform
+ import shutil
+ import subprocess
+ import sys
+-import tarfile
+ import tempfile
+ import textwrap
+ import traceback
+@@ -228,6 +227,8 @@ def build_package_via_sdist(
+     :param isolation: Isolate the build in a separate environment
+     :param skip_dependency_check: Do not perform the dependency check
+     """
++    from .util import TarFile
++
+     if 'sdist' in distributions:
+         raise ValueError('Only binary distributions are allowed but sdist was specified')
+ 
+@@ -238,7 +239,7 @@ def build_package_via_sdist(
+     sdist_out = tempfile.mkdtemp(prefix='build-via-sdist-')
+     built: list[str] = []
+     # extract sdist
+-    with tarfile.open(sdist) as t:
++    with TarFile.open(sdist) as t:
+         t.extractall(sdist_out)
+         try:
+             builder = _ProjectBuilder(os.path.join(sdist_out, sdist_name[: -len('.tar.gz')]))
+--- a/src/build/util.py
++++ b/src/build/util.py
+@@ -5,6 +5,7 @@ from __future__ import annotations
+ import os
+ import pathlib
+ import sys
++import tarfile
+ import tempfile
+ 
+ import pyproject_hooks
+@@ -56,6 +57,17 @@ def project_wheel_metadata(
+         return _project_wheel_metadata(builder)
+ 
+ 
++# Per https://peps.python.org/pep-0706/, the "data" filter will become
++# the default in Python 3.14.
++if sys.version_info >= (3, 12) and sys.version_info < (3, 14):
++
++    class TarFile(tarfile.TarFile):
++        extraction_filter = tarfile.data_filter
++
++else:
++    TarFile = tarfile.TarFile
++
++
+ __all__ = [
+-    'project_wheel_metadata',
++    'project_wheel_metadata', 'TarFile',
+ ]
