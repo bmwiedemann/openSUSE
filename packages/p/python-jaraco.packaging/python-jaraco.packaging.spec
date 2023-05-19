@@ -18,27 +18,32 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.packaging
-Version:        9.1.2
+Version:        9.2.0
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-%{version}.tar.gz
+Source10:       https://files.pythonhosted.org/packages/py3/s/sampleproject/sampleproject-3.0.0-py3-none-any.whl
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
+BuildRequires:  %{python_module jaraco.context}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module virtualenv >= 20}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test and docs
+# SECTION test
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module rst.linker >= 1.9}
+BuildRequires:  ca-certificates
 # /SECTION
 Requires:       python-build
+Requires:       python-jaraco.context
+# From build[virtualenv]
+Requires:       python-virtualenv >= 20
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
@@ -49,7 +54,7 @@ BuildArch:      noarch
 Tools to supplement packaging Python releases.
 
 %prep
-%setup -q -n jaraco.packaging-%{version}
+%autosetup -p1 -n jaraco.packaging-%{version}
 rm -rf jaraco.packaging.egg-info
 
 %build
@@ -59,8 +64,9 @@ rm -rf jaraco.packaging.egg-info
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-#%%check
-# Upstream removed their test suite from the repository, only checking for correct typing and lint
+%check
+export PIP_FIND_LINKS=$(dirname %{SOURCE10})
+%pytest
 
 %files %{python_files}
 %license LICENSE
