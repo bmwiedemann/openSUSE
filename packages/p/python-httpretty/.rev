@@ -198,4 +198,12 @@
   * Relax timeout for test_callback_response (bsc#1209571)</comment>
     <requestid>1075359</requestid>
   </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>ff19183e69aa27784e1c910da3a68e8a</srcmd5>
+    <version>1.1.4</version>
+    <time>1684490124</time>
+    <user>dimstar_suse</user>
+    <comment>- skip failing testsuite tests after requests update</comment>
+    <requestid>1087345</requestid>
+  </revision>
 </revisionlist>

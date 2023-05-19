@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 16 07:35:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip failing testsuite tests after requests update
+
+-------------------------------------------------------------------
 Thu Mar 30 04:21:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch relax-test-callback-response.patch:

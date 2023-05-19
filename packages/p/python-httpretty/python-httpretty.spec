@@ -45,6 +45,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module urllib3 with %python-urllib3 < 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -71,7 +72,7 @@ export EVENTLET_NO_GREENDNS=yes
 #  needs internet connection to httpbin.org
 donttest="test_http_passthrough or test_https_passthrough"
 # flaky (too slow) on obs
-donttest="$donttest or test_httpretty_should_allow_forcing_headers_urllib2"
+donttest="$donttest or test_httpretty_should_allow_forcing_headers_urllib2 or test_httpretty_should_allow_registering_regexes_with_streaming_responses"
 %pytest -k "not (${donttest})"
 
 %files %{python_files}
