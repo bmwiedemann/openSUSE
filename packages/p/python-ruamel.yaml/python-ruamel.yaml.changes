@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed May 17 09:07:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adapt patch 0000-fix-big-endian-issues.patch
+- update to 0.17.26:
+  - Fix for error on edge cage for issue 459
+- update to 0.17.25:
+  - fix for regression while dumping wrapped strings with too many
+    backslashes removed (issue 459, reported by `Lele Gaifax
+    <https://sourceforge.net/u/lele/profile/>`__)
+- update to 0.17.24:
+  - rewrite of ``CommentedMap.insert()``. If you have a merge key
+    in the YAML document for the mapping you insert to, the
+    position value should be the one as you look at the YAML input.
+    This fixes issue 453 where other keys of a merged in mapping
+    would show up after an insert (reported by `Alex Miller
+    <https://sourceforge.net/u/millerdevel/profile/>`__). It also
+    fixes a call to `.insert()` resulting into the merge key to
+    move to be the first key if it wasn't already and it is also
+    now possible to insert a key before a merge key (even if the
+    fist key in the mapping).
+  - fix (in the pure Python implementation including default) for
+    issue 447.  (reported by `Jack Cherng
+    <https://sourceforge.net/u/jfcherng/profile/>`__, also brought
+    up by brent on `StackOverflow
+    <https://stackoverflow.com/q/40072485/1307905>`__)
+- update to 0.17.23:
+  - fix 458, error on plain scalars starting with word longer than
+    width.  (reported by `Kyle Larose
+    <https://sourceforge.net/u/klarose/profile/>`__)
+  - fix for ``.update()`` no longer correctly handling keyword
+    arguments (reported by John Lin on <StackOverflow
+    `<https://stackoverflow.com/q/76089100/1307905>`__)
+  - fix issue 454: high Unicode (emojis) in quoted strings always
+    escaped (reported by `Michal Čihař
+    <https://sourceforge.net/u/nijel/profile/>`__ based on a
+    question on StackOverflow).
+  - fix issue with emitter conservatively inserting extra
+    backslashes in wrapped quoted strings (reported by thebenman on
+    `StackOverflow
+    <https://stackoverflow.com/q/75631454/1307905>`__)
+- update to 0.17.22:
+  - fix issue 449 where the second exclamation marks got URL
+    encoded (reported and fixing PR provided by `John Stark
+    <https://sourceforge.net/u/jods/profile/>`__)
+  - fix issue with indent != 2 and literal scalars with empty first
+    line (reported by wrdis on `StackOverflow
+    <https://stackoverflow.com/q/75584262/1307905>`__)
+  - updated __repr__ of CommentedMap, now that Python's dict is
+    ordered -> no more ordereddict(list-of-tuples)
+  - merge MR 4, handling OctalInt in YAML 1.1 (provided by `Jacob
+    Floyd <https://sourceforge.net/u/cognifloyd/profile/>`_)
+  - fix loading of `!!float 42` (reported by Eric on `Stack
+    overflow <https://stackoverflow.com/a/71555107/1307905>`_)
+  - line numbers are now set on `CommentedKeySeq` and
+    `CommentedKeyMap` (which are created if you have a sequence
+    resp. mapping as the key in a mapping)
+  - plain scalars: put single words longer than width on a line of
+    their own, instead of after the previous line (issue 427,
+    reported by `Antoine Cotten
+    <https://sourceforge.net/u/antoineco/profile/>`_). Caveat: this
+    currently results in a space ending the previous line.
+  - fix for folded scalar part of 421: comments after ">" on first
+    line of folded scalars are now preserved (as were those in the
+    same position on literal scalars).  Issue reported by Jacob
+    Floyd.
+  - added stacklevel to warnings
+  - typing changed from Py2 compatible comments to Py3, removed
+    various Py2-isms
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

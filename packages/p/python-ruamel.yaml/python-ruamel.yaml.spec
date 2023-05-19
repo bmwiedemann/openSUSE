@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-ruamel.yaml
-Version:        0.17.21
+Version:        0.17.26
 Release:        0
 Summary:        Python YAML parser
 License:        MIT
@@ -39,8 +38,7 @@ ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation
 of comments, seq/map flow style, and map key order.
 
 %prep
-%setup -q -n ruamel.yaml-%{version}
-%patch0 -p1
+%autosetup -p1 -n ruamel.yaml-%{version}
 rm -rf *egg-info
 
 %build
@@ -54,7 +52,6 @@ rm -rf *egg-info
 %license LICENSE
 %doc CHANGES README.rst
 %{python_sitelib}/ruamel
-%{python_sitelib}/ruamel.yaml-%{version}-py%{python_version}-nspkg.pth
-%{python_sitelib}/ruamel.yaml-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/ruamel.yaml-%{version}*-info
 
 %changelog
