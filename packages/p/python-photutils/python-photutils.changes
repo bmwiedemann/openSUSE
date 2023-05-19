@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu May 18 18:27:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.0
+  ## New Features
+  ### photutils.profiles
+  * The RadialProfile and CurveOfGrowth radial bins can now be
+    directly input, which also allows for non-uniform radial
+    spacing. [#1540]
+  ## Bug Fixes
+  ### photutils.psf
+  * Fixed an issue with the local model cache in GriddedPSFModel,
+    significantly improving performance. [#1536]
+  ## API Changes
+  * Removed the deprecated axes keyword in favor of ax for
+    consistency with other packages. [#1523]
+  ## photutils.aperture
+  * Removed the ApertureStats unpack_nddata method. [#1537]
+  ## photutils.profiles
+  * The API for defining the radial bins for the RadialProfile and
+    CurveOfGrowth classes was changed. While the new API allows for
+    more flexibility, unfortunately, it is not
+    backwards-compatible. [#1540]
+  ## photutils.segmentation
+  * Removed the deprecated kernel keyword from detect_sources and
+    deblend_sources. [#1524]
+  * Deprecated the kernel keyword in SourceCatalog. [#1525]
+  * Removed the deprecated outline_segments method from
+    SegmentationImage. [#1526]
+  * The SourceCatalog kron_params attribute is no longer returned
+    as a ndarray. It is returned as a tuple. [#1531]
+
+-------------------------------------------------------------------
 Wed Apr 26 10:01:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.0

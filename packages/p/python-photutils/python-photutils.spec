@@ -17,7 +17,7 @@
 
 
 Name:           python-photutils
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -27,34 +27,33 @@ Source:         https://files.pythonhosted.org/packages/source/p/photutils/photu
 BuildRequires:  %{python_module Cython >= 0.29.30}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.20}
+BuildRequires:  %{python_module numpy-devel >= 1.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.7
 Requires:       python-astropy >= 5.0
-Requires:       python-numpy >= 1.20
+Requires:       python-numpy >= 1.21
 Recommends:     python-Bottleneck
 Recommends:     python-Shapely
-Recommends:     python-gwcs >= 0.16
-Recommends:     python-matplotlib >= 3.3
+Recommends:     python-gwcs >= 0.18
+Recommends:     python-matplotlib >= 3.5
 Recommends:     python-rasterio
-Recommends:     python-scikit-image >= 0.18.0
+Recommends:     python-scikit-image >= 0.19.0
 Recommends:     python-scikit-learn >= 1.0
-Recommends:     python-scipy >= 1.6.0
+Recommends:     python-scipy >= 1.7.0
 Recommends:     python-tqdm
 # SECTION test requirements
 BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module astropy >= 5.0}
-BuildRequires:  %{python_module gwcs >= 0.16}
-BuildRequires:  %{python_module matplotlib >= 3.3}
-BuildRequires:  %{python_module pytest-astropy}
-BuildRequires:  %{python_module scikit-image >= 0.18.0}
+BuildRequires:  %{python_module gwcs >= 0.18}
+BuildRequires:  %{python_module matplotlib >= 3.5}
+BuildRequires:  %{python_module pytest-astropy >= 0.10}
+BuildRequires:  %{python_module scikit-image >= 0.19.0}
 BuildRequires:  %{python_module scikit-learn >= 1.0}
-BuildRequires:  %{python_module scipy >= 1.6.0}
+BuildRequires:  %{python_module scipy >= 1.7.0}
 # /SECTION
 %python_subpackages
 
@@ -78,6 +77,7 @@ export CFLAGS="%{optflags}"
 cd ..
 # Use astropy test suite logic. Calling pytest directly would require
 # duplicate in-place building of extensions.
+export PYTHONDONTWRITEBYTECODE=1
 %{python_expand export PYTHONPATH="%{buildroot}%{$python_sitearch}"
 $python -B -c "import photutils, sys; sys.exit(photutils.test(args=\"-v -rsfEx\"))"
 }
