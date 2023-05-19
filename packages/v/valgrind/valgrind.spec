@@ -29,7 +29,7 @@
 %endif
 %bcond_without docs
 Name:           valgrind%{?psuffix}
-Version:        3.20.0
+Version:        3.21.0
 Release:        0
 Summary:        Memory Management Debugger
 License:        GFDL-1.2-only AND GPL-2.0-or-later
@@ -172,7 +172,9 @@ autoreconf -fi
 
 export GDB=%{_bindir}/gdb
 %configure \
+%ifnarch ppc64
     --enable-lto=yes \
+%endif
 %ifarch aarch64
     --enable-only64bit \
 %endif
@@ -270,6 +272,8 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %{_datadir}/valgrind/dh_view*
 %{_libexecdir}/valgrind/*-linux.so
 %{_libexecdir}/valgrind/*.supp
+%{_libexecdir}/valgrind/valgrind-monitor-def.py
+%{_libexecdir}//valgrind/valgrind-monitor.py
 %{_libexecdir}/valgrind/64bit-core.xml
 %{_libexecdir}/valgrind/64bit-linux.xml
 %{_libexecdir}/valgrind/64bit-sse.xml

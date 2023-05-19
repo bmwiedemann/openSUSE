@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Thu May 18 12:19:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21.0:
+  * When GDB is used to debug a program running under valgrind
+    using the valgrind gdbserver, GDB will automatically load some
+    python code provided in valgrind defining GDB front end
+    commands corresponding to the valgrind monitor commands.
+  * These GDB front end commands accept the same format as
+    the monitor commands directly sent to the Valgrind
+    gdbserver.
+    These GDB front end commands provide a better integration
+    in the GDB command line interface, so as to use for example
+    GDB auto-completion, command specific help, searching for
+    a command or command help matching a regexp, ...
+    For relevant monitor commands, GDB will evaluate arguments
+    to make the use of monitor commands easier.
+    For example, instead of having to print the address of a
+    variable to pass it to a subsequent monitor command, the
+    GDB front end command will evaluate the address argument.
+  * The vgdb utility now supports extended-remote protocol when
+    invoked with --multi. In this mode the GDB run command is
+    supported. Which means you don't need to run gdb and
+    valgrind from different terminals.
+  * The behaviour of realloc with a size of zero can now
+    be changed for tools that intercept malloc. Those
+    tools are memcheck, helgrind, drd, massif and dhat.
+    Realloc implementations generally do one of two things
+       - free the memory like free() and return NULL
+         (GNU libc and ptmalloc).
+       - either free the memory and then allocate a
+         minimum sized block or just return the
+         original pointer. Return NULL if the
+         allocation of the minimum sized block fails
+         (jemalloc, musl, snmalloc, Solaris, macOS).
+  * When Valgrind is configured and built it will
+    try to match the OS and libc behaviour. However
+    if you are using a non-default library to replace
+    malloc and family (e.g., musl on a glibc Linux or
+    tcmalloc on FreeBSD) then you can use a command line
+    option to change the behaviour of Valgrind:
+     --realloc-zero-bytes-frees=yes|no [yes on Linux glibc, no
+    otherwise]
+  * ==================== FIXED BUGS ====================
+  * 241072  List tools in --help output
+  * 327548  false positive while destroying mutex
+  * 382034  Testcases build fixes for musl
+  * 351857  confusing error message about valid command line
+    option
+  * 374596  inconsistent RDTSCP support on x86_64
+  * 392331  Spurious lock not held error from inside
+    pthread_cond_timedwait
+  * 397083  Likely false positive "uninitialised value(s)" for
+    __wmemchr_avx2 and __wmemcmp_avx2_movbe
+  * 400793  pthread_rwlock_timedwrlock false positive
+  * 419054  Unhandled syscall getcpu on arm32
+  * 433873  openat2 syscall unimplemented on Linux
+  * 434057  Add stdio mode to valgrind's gdbserver
+  * 435441  valgrind fails to interpose malloc on musl 1.2.2 due
+    to weak symbol name and no libc soname
+  * 436413  Warn about realloc of size zero
+  * 439685  compiler warning in callgrind/main.c
+  * 444110  priv/guest_ppc_toIR.c:36198:31: warning: duplicated
+    'if' condition.
+  * 444487  hginfo test detects an extra lock inside data symbol
+    "_rtld_local"
+  * 444488  Use glibc.pthread.stack_cache_size tunable
+  * 444568  drd/tests/pth_barrier_thr_cr fails on Fedora 38
+  * 445743  "The impossible happened: mutex is locked
+    simultaneously by two threads"
+  *         while using mutexes with priority inheritance and
+    signals
+  * 449309  Missing loopback device ioctl(s)
+  * 459476  vgdb: allow address reuse to avoid "address already
+    in use" errorsuse" errors
+  * 460356  s390: Sqrt32Fx4 -- cannot reduce tree
+  * 462830  WARNING: unhandled amd64-freebsd syscall: 474
+  * 463027  broken check for MPX instruction support in assembler
+  * 464103  Enhancement: add a client request to DHAT to mark
+    memory to be histogrammed
+  * 464476  Firefox fails to start under Valgrind
+  * 464609  Valgrind memcheck should support Linux pidfd_open
+  * 464680  Show issues caused by memory policies like selinux
+    deny_execmem
+  * 464859  Build failures with GCC-13 (drd tsan_unittest)
+  * 464969  D language demangling
+  * 465435  m_libcfile.c:66 (vgPlain_safe_fd): Assertion 'newfd
+    >= VG_(fd_hard_limit)' failed.
+  * 466104  aligned_alloc problems, part 1
+  * 467036  Add time cost statistics for Regtest
+  * 467482  Build failure on aarch64 Alpine
+  * 467714  fdleak_* and rlimit tests fail when parent process
+    has more than
+  *         64 descriptors opened
+  * 467839  Gdbserver: Improve compatibility of library directory
+    name
+  * 468401  [PATCH] Add a style file for clang-format
+  * 468556  Build failure for vgdb
+  * 468606  build: remove "Valgrind relies on GCC" check/output
+  * 469097  ppc64(be) doesn't support SCV syscall instruction
+  * n-i-bz  FreeBSD rfork syscall fail with EINVAL or ENOSYS
+    rather than VG_(unimplemented)
+- disable LTO on ppc64 (bsc#1205923)
+
+-------------------------------------------------------------------
 Wed Mar 29 08:17:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Build without -z now (bsc#1208407)
