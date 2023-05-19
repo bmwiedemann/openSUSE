@@ -18,10 +18,10 @@
  tests/lib/Makefile.am |    4 ++--
  7 files changed, 22 insertions(+), 18 deletions(-)
 
-Index: osmo-ggsn-1.7.1/ggsn/Makefile.am
+Index: osmo-ggsn-1.10.1/ggsn/Makefile.am
 ===================================================================
---- osmo-ggsn-1.7.1.orig/ggsn/Makefile.am
-+++ osmo-ggsn-1.7.1/ggsn/Makefile.am
+--- osmo-ggsn-1.10.1.orig/ggsn/Makefile.am
++++ osmo-ggsn-1.10.1/ggsn/Makefile.am
 @@ -1,15 +1,15 @@
 -bin_PROGRAMS = osmo-ggsn
 +sbin_PROGRAMS = osmo-ggsn
@@ -43,24 +43,24 @@ Index: osmo-ggsn-1.7.1/ggsn/Makefile.am
  
 -osmo_ggsn_DEPENDENCIES = ../gtp/libgtp.la ../lib/libmisc.a
  osmo_ggsn_SOURCES = ggsn_main.c ggsn_vty.c ggsn.c ggsn.h sgsn.c sgsn.h pco.c pco.h
-Index: osmo-ggsn-1.7.1/gtp/Makefile.am
+Index: osmo-ggsn-1.10.1/gtp/Makefile.am
 ===================================================================
---- osmo-ggsn-1.7.1.orig/gtp/Makefile.am
-+++ osmo-ggsn-1.7.1/gtp/Makefile.am
+--- osmo-ggsn-1.10.1.orig/gtp/Makefile.am
++++ osmo-ggsn-1.10.1/gtp/Makefile.am
 @@ -8,7 +8,8 @@ lib_LTLIBRARIES = libgtp.la
  
- include_HEADERS = gtp.h pdp.h gtpie.h
+ include_HEADERS = gtp.h gsn.h pdp.h gtpie.h
  
 -AM_CFLAGS = -O2 -fno-builtin -Wall -DSBINDIR='"$(sbindir)"' -ggdb $(LIBOSMOCORE_CFLAGS)
 +AM_CPPFLAGS = -DSBINDIR='"$(sbindir)"' $(LIBOSMOCORE_CFLAGS)
 +AM_CFLAGS = -O2 -fno-builtin -Wall -ggdb
  
- libgtp_la_SOURCES = gtp.c gtp.h gtpie.c gtpie.h pdp.c pdp.h lookupa.c lookupa.h queue.c queue.h
+ libgtp_la_SOURCES = gtp.c gtp.h gsn.c gsn.h gtpie.c gtpie.h pdp.c pdp.h lookupa.c lookupa.h queue.c queue.h
  libgtp_la_LDFLAGS = -version-info $(LIBVERSION) -no-undefined
-Index: osmo-ggsn-1.7.1/lib/Makefile.am
+Index: osmo-ggsn-1.10.1/lib/Makefile.am
 ===================================================================
---- osmo-ggsn-1.7.1.orig/lib/Makefile.am
-+++ osmo-ggsn-1.7.1/lib/Makefile.am
+--- osmo-ggsn-1.10.1.orig/lib/Makefile.am
++++ osmo-ggsn-1.10.1/lib/Makefile.am
 @@ -1,12 +1,14 @@
 -noinst_LIBRARIES = libmisc.a
 +noinst_LTLIBRARIES = libmisc.la
@@ -80,10 +80,10 @@ Index: osmo-ggsn-1.7.1/lib/Makefile.am
 -libmisc_a_SOURCES += gtp-kernel.c
 +libmisc_la_SOURCES += gtp-kernel.c
  endif
-Index: osmo-ggsn-1.7.1/lib/gtp-kernel.c
+Index: osmo-ggsn-1.10.1/lib/gtp-kernel.c
 ===================================================================
---- osmo-ggsn-1.7.1.orig/lib/gtp-kernel.c
-+++ osmo-ggsn-1.7.1/lib/gtp-kernel.c
+--- osmo-ggsn-1.10.1.orig/lib/gtp-kernel.c
++++ osmo-ggsn-1.10.1/lib/gtp-kernel.c
 @@ -53,6 +53,7 @@ static void pdp_debug(const char *prefix
  		buf4, buf6, inet_ntoa(ia));
  }
@@ -92,10 +92,10 @@ Index: osmo-ggsn-1.7.1/lib/gtp-kernel.c
  static struct {
  	int			genl_id;
  	struct mnl_socket	*nl;
-Index: osmo-ggsn-1.7.1/sgsnemu/Makefile.am
+Index: osmo-ggsn-1.10.1/sgsnemu/Makefile.am
 ===================================================================
---- osmo-ggsn-1.7.1.orig/sgsnemu/Makefile.am
-+++ osmo-ggsn-1.7.1/sgsnemu/Makefile.am
+--- osmo-ggsn-1.10.1.orig/sgsnemu/Makefile.am
++++ osmo-ggsn-1.10.1/sgsnemu/Makefile.am
 @@ -1,15 +1,15 @@
 -bin_PROGRAMS = sgsnemu
 +sbin_PROGRAMS = sgsnemu
@@ -117,10 +117,10 @@ Index: osmo-ggsn-1.7.1/sgsnemu/Makefile.am
  
 -sgsnemu_DEPENDENCIES = ../gtp/libgtp.la ../lib/libmisc.a
  sgsnemu_SOURCES = sgsnemu.c cmdline.c cmdline.h
-Index: osmo-ggsn-1.7.1/tests/gtp/Makefile.am
+Index: osmo-ggsn-1.10.1/tests/gtp/Makefile.am
 ===================================================================
---- osmo-ggsn-1.7.1.orig/tests/gtp/Makefile.am
-+++ osmo-ggsn-1.7.1/tests/gtp/Makefile.am
+--- osmo-ggsn-1.10.1.orig/tests/gtp/Makefile.am
++++ osmo-ggsn-1.10.1/tests/gtp/Makefile.am
 @@ -19,7 +19,7 @@ queue_test_SOURCES = \
  	$(NULL)
  
@@ -130,10 +130,10 @@ Index: osmo-ggsn-1.7.1/tests/gtp/Makefile.am
  	$(top_builddir)/gtp/libgtp.la \
  	$(LIBOSMOCORE_LIBS) \
  	$(NULL)
-Index: osmo-ggsn-1.7.1/tests/lib/Makefile.am
+Index: osmo-ggsn-1.10.1/tests/lib/Makefile.am
 ===================================================================
---- osmo-ggsn-1.7.1.orig/tests/lib/Makefile.am
-+++ osmo-ggsn-1.7.1/tests/lib/Makefile.am
+--- osmo-ggsn-1.10.1.orig/tests/lib/Makefile.am
++++ osmo-ggsn-1.10.1/tests/lib/Makefile.am
 @@ -14,7 +14,7 @@ ippool_test_SOURCES = \
  	$(NULL)
  

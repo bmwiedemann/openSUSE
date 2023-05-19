@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 18 11:45:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10.1
+  * Use rate_ctr for gsn_t available_counters
+  * ggsn: Introduce tdef and make it configurable over VTY
+  * gtp: Introduce VTY configurable GTP timer X3
+- Add ppc64.diff
+
+-------------------------------------------------------------------
 Wed Aug  3 18:29:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.0
