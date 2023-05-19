@@ -1,7 +1,7 @@
 #
 # spec file for package libosmo-abis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,23 @@
 
 
 Name:           libosmo-abis
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/libosmo-abis/wiki/Libosmo-abis
-
 Source:         https://github.com/osmocom/libosmo-abis/archive/%version.tar.gz
 Patch1:         osmo-talloc.diff
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmo-e1d) >= 0.2.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.7.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.7.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.7.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.7.0
+BuildRequires:  pkgconfig(libosmo-e1d) >= 0.5.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
 BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 

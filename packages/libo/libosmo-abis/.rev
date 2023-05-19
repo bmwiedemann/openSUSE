@@ -128,4 +128,12 @@ fix build with ortp 0.27</comment>
     <comment>- Update to release 1.3.0</comment>
     <requestid>992622</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fda7e83f746cafe07a47252f319cc874</srcmd5>
+    <version>1.4.1</version>
+    <time>1684490134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.4.1</comment>
+    <requestid>1087821</requestid>
+  </revision>
 </revisionlist>

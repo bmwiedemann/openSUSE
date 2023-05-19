@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 18 10:15:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.1
+  * trau_sync: Add the V.110 sync pattern
+  * trau_sync: add Ericsson RBS GPRS TRAU synchronization pattern
+    (16 & 64kbps)
+  * Add missing functions to send HDLC/RAW data
+
+-------------------------------------------------------------------
 Wed Aug  3 14:54:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.0
