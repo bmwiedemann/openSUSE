@@ -107,47 +107,30 @@ Index: reproc-14.2.4/reproc++/src/reproc.cpp
    return { source.events, ec };
  }
  
---- reproc-14.2.4/reproc++/include/reproc++/reproc.hpp	2023-04-04 23:14:25.549923395 +0200
-+++ reproc-14.2.4/reproc++/include/reproc++/reproc.hpp	2023-04-04 23:13:00.824489755 +0200
-@@ -65,7 +65,7 @@
- using handle = int;
- #endif
- 
--struct redirect {
-+struct redirect_t {
-   enum type {
-     default_, // Unfortunately, both `default` and `auto` are keywords.
-     pipe,
-@@ -88,7 +88,7 @@
+
+From 9f399675b821e175f85ac3ee6e3fd2e6056573eb Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Fri, 21 Apr 2023 19:36:45 +0200
+Subject: [PATCH] Fix gcc 13 build
+
+---
+ reproc++/include/reproc++/reproc.hpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/reproc++/include/reproc++/reproc.hpp b/reproc++/include/reproc++/reproc.hpp
+index b52f495e..7b614a94 100644
+--- a/reproc++/include/reproc++/reproc.hpp
++++ b/reproc++/include/reproc++/reproc.hpp
+@@ -88,10 +88,10 @@ struct redirect {
  
  struct options {
    struct {
 -    enum env::type behavior;
-+    enum redirect_t::type behavior;
++    reproc::env::type behavior;
      /*! Implicitly converts from any STL container of string pairs to the
      environment format expected by `reproc_start`. */
-     class env extra;
-@@ -97,9 +97,9 @@
+-    class env extra;
++    reproc::env extra;
+   } env = {};
+ 
    const char *working_directory = nullptr;
- 
-   struct {
--    struct redirect in;
--    struct redirect out;
--    struct redirect err;
-+    struct redirect_t in;
-+    struct redirect_t out;
-+    struct redirect_t err;
-     bool parent;
-     bool discard;
-     FILE *file;
---- reproc-14.2.4/reproc++/src/reproc.cpp	2023-04-04 23:14:25.549923395 +0200
-+++ reproc-14.2.4/reproc++/src/reproc.cpp	2023-04-04 23:13:41.693181299 +0200
-@@ -39,7 +39,7 @@
-   };
- }
- 
--static reproc_redirect reproc_redirect_from(redirect redirect)
-+static reproc_redirect reproc_redirect_from(redirect_t redirect)
- {
-   return { static_cast<REPROC_REDIRECT>(redirect.type), redirect.handle,
-            redirect.file, redirect.path };

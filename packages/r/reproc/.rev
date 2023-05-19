@@ -15,4 +15,12 @@
     <comment>- add gcc13.patch to fix build</comment>
     <requestid>1077368</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bae1408f92dc233aa09781025cec3816</srcmd5>
+    <version>14.2.4</version>
+    <time>1684490157</time>
+    <user>dimstar_suse</user>
+    <comment>- gcc13.patch: refresh with the patch that landed upstream</comment>
+    <requestid>1087902</requestid>
+  </revision>
 </revisionlist>
