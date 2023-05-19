@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 18 08:21:08 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 7.5.0:
+  * New option -e, --add-eol to add a line break to the last line
+    if the isn't one
+  * New option -O, --to-stdout to write to standard output
+
+-------------------------------------------------------------------
 Sun Feb 12 10:02:30 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.4.4:
