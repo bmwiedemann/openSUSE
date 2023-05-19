@@ -791,6 +791,8 @@ Prefer: -python39
 Prefer: -python39-hotdoc
 Prefer: -python39-txt2tags -python311-txt2tags
 
+
+Prefer: -python39-urllib3_1 -python310-urllib3_1 -python311-urllib3_1
 # have choice for python3-magic: python38-magic python38-python-magic
 Prefer: -python39-magic -python310-magic
 
@@ -2892,6 +2894,7 @@ BuildFlags: onlybuild:python-isoduration
 BuildFlags: onlybuild:python-itsdangerous
 BuildFlags: onlybuild:python-jaraco.classes
 BuildFlags: onlybuild:python-jaraco.envs
+BuildFlags: onlybuild:python-jaraco.context
 BuildFlags: onlybuild:python-jaraco.functools
 BuildFlags: onlybuild:python-jaraco.packaging
 BuildFlags: onlybuild:python-jeepney
@@ -3108,6 +3111,7 @@ BuildFlags: onlybuild:python-u-msgpack-python
 BuildFlags: onlybuild:python-uc-micro-py
 BuildFlags: onlybuild:python-uri-template
 BuildFlags: onlybuild:python-urllib3
+BuildFlags: onlybuild:python-urllib3_1
 BuildFlags: onlybuild:python-uvloop
 BuildFlags: onlybuild:python-virtualenv
 BuildFlags: onlybuild:python-wcag-contrast-ratio
