@@ -20,13 +20,13 @@
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
 
-%define sonum   1100
+%define sonum   1200
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit ecab1162cbec872e17d949ecc86181670aee045c
+%define arrow_testing_commit 47f7b56b25683202c1fd957668e13f2abafc0f12
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit 5b82793ef7196f7b3583e85669ced211cd8b5ff2
+%define parquet_testing_commit b2e7cc755159196e3a068c8594f7acbaecfdaaac
 Name:           apache-arrow
-Version:        11.0.0
+Version:        12.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -43,6 +43,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel >= 1.64.0
+BuildRequires:  libzstd-devel-static
 BuildRequires:  llvm-devel >= 7
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -96,6 +97,20 @@ communication.
 
 This package provides the shared library for Apache Arrow.
 
+%package     -n libarrow_acero%{sonum}
+Summary:        Development platform for in-memory data - shared library
+Group:          System/Libraries
+
+%description -n libarrow_acero%{sonum}
+Apache Arrow is a cross-language development platform for in-memory
+data. It specifies a standardized language-independent columnar memory
+format for flat and hierarchical data, organized for efficient
+analytic operations on modern hardware. It also provides computational
+libraries and zero-copy streaming messaging and interprocess
+communication.
+
+This package provides the shared library for the Acero streaming execution engine
+
 %package     -n libarrow_dataset%{sonum}
 Summary:        Development platform for in-memory data - shared library
 Group:          System/Libraries
@@ -124,25 +139,11 @@ communication.
 
 This package provides the shared library for the Parquet format.
 
-%package     -n libplasma%{sonum}
-Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
-
-%description -n libplasma%{sonum}
-Apache Arrow is a cross-language development platform for in-memory
-data. It specifies a standardized language-independent columnar memory
-format for flat and hierarchical data, organized for efficient
-analytic operations on modern hardware. It also provides computational
-libraries and zero-copy streaming messaging and interprocess
-communication.
-
-This package provides the shared library for the
-Plasma Shared Memory Object Store.
-
 %package        devel
 Summary:        Development platform for in-memory data - development files
 Group:          Development/Libraries/C and C++
 Requires:       libarrow%{sonum} = %{version}
+Requires:       libarrow_acero%{sonum} = %{version}
 Requires:       libarrow_dataset%{sonum} = %{version}
 
 %description    devel
@@ -155,6 +156,51 @@ communication.
 
 This package provides the development libraries and headers for
 Apache Arrow.
+
+%package        devel-static
+Summary:        Development platform for in-memory data - development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+
+%description    devel-static
+Apache Arrow is a cross-language development platform for in-memory
+data. It specifies a standardized language-independent columnar memory
+format for flat and hierarchical data, organized for efficient
+analytic operations on modern hardware. It also provides computational
+libraries and zero-copy streaming messaging and interprocess
+communication.
+
+This package provides the static library
+
+%package        acero-devel-static
+Summary:        Development platform for in-memory data - development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+
+%description    acero-devel-static
+Apache Arrow is a cross-language development platform for in-memory
+data. It specifies a standardized language-independent columnar memory
+format for flat and hierarchical data, organized for efficient
+analytic operations on modern hardware. It also provides computational
+libraries and zero-copy streaming messaging and interprocess
+communication.
+
+This package provides the static library for the Acero streaming execution engine
+
+%package        dataset-devel-static
+Summary:        Development platform for in-memory data - development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+
+%description    dataset-devel-static
+Apache Arrow is a cross-language development platform for in-memory
+data. It specifies a standardized language-independent columnar memory
+format for flat and hierarchical data, organized for efficient
+analytic operations on modern hardware. It also provides computational
+libraries and zero-copy streaming messaging and interprocess
+communication.
+
+This package provides the static library for Dataset API support
 
 %package     -n apache-parquet-devel
 Summary:        Development platform for in-memory data - development files
@@ -172,52 +218,6 @@ communication.
 This package provides the development libraries and headers for
 the Parquet format.
 
-%package     -n apache-plasma-devel
-Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
-Requires:       libplasma%{sonum} = %{version}
-
-%description -n apache-plasma-devel
-Apache Arrow is a cross-language development platform for in-memory
-data. It specifies a standardized language-independent columnar memory
-format for flat and hierarchical data, organized for efficient
-analytic operations on modern hardware. It also provides computational
-libraries and zero-copy streaming messaging and interprocess
-communication.
-
-This package provides the development libraries and headers for
-the Plasma component.
-
-%package        devel-static
-Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-devel = %{version}
-
-%description    devel-static
-Apache Arrow is a cross-language development platform for in-memory
-data. It specifies a standardized language-independent columnar memory
-format for flat and hierarchical data, organized for efficient
-analytic operations on modern hardware. It also provides computational
-libraries and zero-copy streaming messaging and interprocess
-communication.
-
-This package provides the static library
-
-%package        dataset-devel-static
-Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-devel = %{version}
-
-%description    dataset-devel-static
-Apache Arrow is a cross-language development platform for in-memory
-data. It specifies a standardized language-independent columnar memory
-format for flat and hierarchical data, organized for efficient
-analytic operations on modern hardware. It also provides computational
-libraries and zero-copy streaming messaging and interprocess
-communication.
-
-This package provides the static library for Dataset API support
-
 %package     -n apache-parquet-devel-static
 Summary:        Development platform for in-memory data - development files
 Group:          Development/Libraries/C and C++
@@ -233,40 +233,11 @@ communication.
 
 This package provides the static library for the Parquet format.
 
-%package     -n apache-plasma-devel-static
-Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
-Requires:       apache-plasma-devel = %{version}
-
-%description -n apache-plasma-devel-static
-Apache Arrow is a cross-language development platform for in-memory
-data. It specifies a standardized language-independent columnar memory
-format for flat and hierarchical data, organized for efficient
-analytic operations on modern hardware. It also provides computational
-libraries and zero-copy streaming messaging and interprocess
-communication.
-
-This package provides the static plasma library
-
 %package     -n apache-parquet-utils
 Summary:        Development platform for in-memory data - development files
 Group:          Productivity/Scientific/Math
 
 %description -n apache-parquet-utils
-Apache Arrow is a cross-language development platform for in-memory
-data. It specifies a standardized language-independent columnar memory
-format for flat and hierarchical data, organized for efficient
-analytic operations on modern hardware. It also provides computational
-libraries and zero-copy streaming messaging and interprocess
-communication.
-
-This package provides utilities for working with the Parquet format.
-
-%package     -n apache-plasma-server
-Summary:        Development platform for in-memory data - development files
-Group:          Productivity/Scientific/Math
-
-%description -n apache-plasma-server
 Apache Arrow is a cross-language development platform for in-memory
 data. It specifies a standardized language-independent columnar memory
 format for flat and hierarchical data, organized for efficient
@@ -312,7 +283,6 @@ pushd cpp
    -DARROW_JSON:BOOL=ON \
    -DARROW_ORC:BOOL=OFF \
    -DARROW_PARQUET:BOOL=ON \
-   -DARROW_PLASMA:BOOL=ON \
    -DARROW_USE_GLOG:BOOL=ON \
    -DARROW_USE_OPENSSL:BOOL=ON \
    -DARROW_WITH_BACKTRACE:BOOL=ON \
@@ -327,7 +297,6 @@ pushd cpp
    -DPARQUET_REQUIRE_ENCRYPTION:BOOL=ON \
    -DARROW_VERBOSE_THIRDPARTY_BUILD:BOOL=ON \
    -DARROW_CUDA:BOOL=OFF \
-   -DARROW_PLASMA_JAVA_CLIENT:BOOL=OFF \
    -DARROW_GANDIVA_JAVA:BOOL=OFF
 
 %cmake_build
@@ -370,12 +339,12 @@ popd
 
 %post   -n libarrow%{sonum}   -p /sbin/ldconfig
 %postun -n libarrow%{sonum}   -p /sbin/ldconfig
+%post   -n libarrow_acero%{sonum}  -p /sbin/ldconfig
+%postun -n libarrow_acero%{sonum}  -p /sbin/ldconfig
 %post   -n libarrow_dataset%{sonum}   -p /sbin/ldconfig
 %postun -n libarrow_dataset%{sonum}   -p /sbin/ldconfig
 %post   -n libparquet%{sonum} -p /sbin/ldconfig
 %postun -n libparquet%{sonum} -p /sbin/ldconfig
-%post   -n libplasma%{sonum}  -p /sbin/ldconfig
-%postun -n libplasma%{sonum}  -p /sbin/ldconfig
 
 %files
 %license LICENSE.txt NOTICE.txt header
@@ -386,6 +355,10 @@ popd
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow.so.*
 
+%files -n libarrow_acero%{sonum}
+%license LICENSE.txt NOTICE.txt header
+%{_libdir}/libarrow_acero.so.*
+
 %files -n libarrow_dataset%{sonum}
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libarrow_dataset.so.*
@@ -394,16 +367,13 @@ popd
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libparquet.so.*
 
-%files -n libplasma%{sonum}
-%license LICENSE.txt NOTICE.txt header
-%{_libdir}/libplasma.so.*
-
 %files devel
 %doc README.md
 %license LICENSE.txt NOTICE.txt header
 %{_includedir}/arrow/
 %{_libdir}/cmake/Arrow*
 %{_libdir}/libarrow.so
+%{_libdir}/libarrow_acero.so
 %{_libdir}/libarrow_dataset.so
 %{_libdir}/pkgconfig/arrow*.pc
 %dir %{_datadir}/arrow
@@ -414,6 +384,18 @@ popd
 %dir %{_datadir}/gdb/auto-load/%{_libdir}
 %{_datadir}/gdb/auto-load/%{_libdir}/libarrow.so.*.py
 
+%files devel-static
+%license LICENSE.txt NOTICE.txt header
+%{_libdir}/libarrow.a
+
+%files acero-devel-static
+%license LICENSE.txt NOTICE.txt header
+%{_libdir}/libarrow_acero.a
+
+%files dataset-devel-static
+%license LICENSE.txt NOTICE.txt header
+%{_libdir}/libarrow_dataset.a
+
 %files -n apache-parquet-devel
 %doc README.md
 %license LICENSE.txt NOTICE.txt header
@@ -422,38 +404,13 @@ popd
 %{_libdir}/libparquet.so
 %{_libdir}/pkgconfig/parquet.pc
 
-%files -n apache-plasma-devel
-%doc README.md
-%license LICENSE.txt NOTICE.txt header
-%{_includedir}/plasma/
-%{_libdir}/libplasma.so
-%{_libdir}/pkgconfig/plasma.pc
-%{_libdir}/cmake/Plasma
-
-%files devel-static
-%license LICENSE.txt NOTICE.txt header
-%{_libdir}/libarrow.a
-
-%files dataset-devel-static
-%license LICENSE.txt NOTICE.txt header
-%{_libdir}/libarrow_dataset.a
-
 %files -n apache-parquet-devel-static
 %license LICENSE.txt NOTICE.txt header
 %{_libdir}/libparquet.a
-
-%files -n apache-plasma-devel-static
-%license LICENSE.txt NOTICE.txt header
-%{_libdir}/libplasma.a
 
 %files -n apache-parquet-utils
 %doc README.md
 %license LICENSE.txt NOTICE.txt header
 %{_bindir}/parquet-*
-
-%files -n apache-plasma-server
-%doc README.md
-%license LICENSE.txt NOTICE.txt header
-%{_bindir}/plasma-store-server
 
 %changelog

@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu May 18 07:00:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 12.0.0
+  * Run-End Encoded Arrays have been implemented and are accessible
+    (GH-32104)
+  * The FixedShapeTensor Logical value type has been implemented
+    using ExtensionType (GH-15483, GH-34796)
+  ## Compute
+  * New kernel to convert timestamp with timezone to wall time
+    (GH-33143)
+  * Cast kernels are now built into libarrow by default (GH-34388)
+  ## Acero
+  * Acero has been moved out of libarrow into it’s own shared
+    library, allowing for smaller builds of the core libarrow
+    (GH-15280)
+  * Exec nodes now can have a concept of “ordering” and will reject
+    non-sensible plans (GH-34136)
+  * New exec nodes: “pivot_longer” (GH-34266), “order_by”
+    (GH-34248) and “fetch” (GH-34059)
+  * Breaking Change: Reorder output fields of “group_by” node so
+    that keys/segment keys come before aggregates (GH-33616)
+  ## Substrait
+  * Add support for the round function GH-33588
+  * Add support for the cast expression element GH-31910
+  * Added API reference documentation GH-34011
+  * Added an extension relation to support segmented aggregation
+    GH-34626
+  * The output of the aggregate relation now conforms to the spec
+    GH-34786
+  ## Parquet
+  * Added support for DeltaLengthByteArray encoding to the Parquet
+    writer (GH-33024)
+  * NaNs are correctly handled now for Parquet predicate push-downs
+    (GH-18481)
+  * Added support for reading Parquet page indexes (GH-33596) and
+    writing page indexes (GH-34053)
+  * Parquet writer can write columns in parallel now (GH-33655)
+  * Fixed incorrect number of rows in Parquet V2 page headers
+    (GH-34086)
+  * Fixed incorrect Parquet page null_count when stats are disabled
+    (GH-34326)
+  * Added support for reading BloomFilters to the Parquet Reader
+    (GH-34665)
+  * Parquet File-writer can now add additional key-value metadata
+    after it has been opened (GH-34888)
+  * Breaking Change: The default row group size for the Arrow
+    writer changed from 64Mi rows to 1Mi rows. GH-34280
+  ## ORC
+  * Added support for the union type in ORC writer (GH-34262)
+  * Fixed ORC CHAR type mapping with Arrow (GH-34823)
+  * Fixed timestamp type mapping between ORC and arrow (GH-34590)
+  ## Datasets
+  * Added support for reading JSON datasets (GH-33209)
+  * Dataset writer now supports specifying a function callback to
+    construct the file name in addition to the existing file name
+    template (GH-34565)
+  ## Filesystems
+  * GcsFileSystem::OpenInputFile avoids unnecessary downloads
+    (GH-34051)
+  ## Other changes
+  * Convenience Append(std::optional...) methods have been added to
+    array builders
+    ([GH-14863](https://github.com/apache/arrow/issues/14863))
+  * A deprecated OpenTelemetry header was removed from the Flight
+    library (GH-34417)
+  * Fixed crash in “take” kernels on ExtensionArrays with an
+    underlying dictionary type (GH-34619)
+  * Fixed bug where the C-Data bridge did not preserve nullability
+    of map values on import (GH-34983)
+  * Added support for EqualOptions to RecordBatch::Equals
+    (GH-34968)
+  * zstd dependency upgraded to v1.5.5 (GH-34899)
+  * Improved handling of “logical” nulls such as with union and
+    RunEndEncoded arrays (GH-34361)
+  * Fixed incorrect handling of uncompressed body buffers in IPC
+    reader, added IpcWriteOptions::min_space_savings for optional
+    compression optimizations (GH-15102)
+
+-------------------------------------------------------------------
 Mon Apr  3 11:09:06 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - cflags.patch: fix option order to compile with optimisation

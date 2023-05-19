@@ -17,4 +17,41 @@ apache-arrow is being used more and more by python numeric packages like pandas 
     <comment></comment>
     <requestid>1076956</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7aa8dded15cac06bfa88a6465b2e22ea</srcmd5>
+    <version>12.0.0</version>
+    <time>1684490141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.0.0
+  * Run-End Encoded Arrays have been implemented and are accessible
+    (GH-32104)
+  * The FixedShapeTensor Logical value type has been implemented
+    using ExtensionType (GH-15483, GH-34796)
+  ## Compute
+  * New kernel to convert timestamp with timezone to wall time
+    (GH-33143)
+  * Cast kernels are now built into libarrow by default (GH-34388)
+  ## Acero
+  * Acero has been moved out of libarrow into it’s own shared
+    library, allowing for smaller builds of the core libarrow
+    (GH-15280)
+  * Exec nodes now can have a concept of “ordering” and will reject
+    non-sensible plans (GH-34136)
+  * New exec nodes: “pivot_longer” (GH-34266), “order_by”
+    (GH-34248) and “fetch” (GH-34059)
+  * Breaking Change: Reorder output fields of “group_by” node so
+    that keys/segment keys come before aggregates (GH-33616)
+  ## Substrait
+  * Add support for the round function GH-33588
+  * Add support for the cast expression element GH-31910
+  * Added API reference documentation GH-34011
+  * Added an extension relation to support segmented aggregation
+    GH-34626
+  * The output of the aggregate relation now conforms to the spec
+    GH-34786
+  ## Parquet
+  * Added support for DeltaLengthByteArray encoding to the Parquet
+    writer (GH-33024) (forwarded request 1087839 from bnavigator)</comment>
+    <requestid>1087840</requestid>
+  </revision>
 </revisionlist>
