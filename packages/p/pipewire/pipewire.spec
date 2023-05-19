@@ -52,15 +52,15 @@
 %endif
 
 %if 0%{?ffmpeg_pref:1}
-%bcond_without ffmpeg
+%bcond_without use_ffmpeg
 %else
-%bcond_with ffmpeg
+%bcond_with use_ffmpeg
 %endif
 
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.70
+Version:        0.3.71
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -106,7 +106,7 @@ BuildRequires:  pkgconfig(jack) >= 1.9.10
 BuildRequires:  pkgconfig(ldacBT-abr)
 BuildRequires:  pkgconfig(ldacBT-enc)
 %endif
-%if %{with ffmpeg}
+%if %{with use_ffmpeg}
 # Break circular dependency with ffmpeg
 BuildRequires:  %{ffmpeg_pref}-mini-devel
 %endif
@@ -373,7 +373,7 @@ export CXX=g++-9
     -Ddocs=enabled \
     -Dman=enabled \
     -Dgstreamer=enabled \
-%if %{with ffmpeg}
+%if %{with use_ffmpeg}
     -Dffmpeg=enabled \
 %else
     -Dffmpeg=disabled \
@@ -611,7 +611,7 @@ fi
 %{_libdir}/spa-%{spa_ver}/avb/
 %{_libdir}/spa-%{spa_ver}/bluez5/
 %{_libdir}/spa-%{spa_ver}/control/
-%if %{with ffmpeg}
+%if %{with use_ffmpeg}
 %{_libdir}/spa-%{spa_ver}/ffmpeg/
 %endif
 %{_libdir}/spa-%{spa_ver}/jack/
