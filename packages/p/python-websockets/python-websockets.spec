@@ -16,12 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-websockets
-Version:        10.4
+Version:        11.0.3
 Release:        0
 Summary:        An implementation of the WebSocket Protocol (RFC 6455)
 License:        BSD-3-Clause

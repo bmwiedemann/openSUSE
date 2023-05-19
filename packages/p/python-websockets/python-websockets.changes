@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun May 14 18:45:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.0.3:
+  * Fixed the :mod:`threading` implementation of servers on
+    Windows.
+
+-------------------------------------------------------------------
+Wed May 10 06:57:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.0.2:
+  * Fixed a deadlock in the :mod:`threading` implementation when
+    closing a connection without reading all messages.
+  * Restored the C extension in the source distribution.
+  * Backwards-incompatible changes
+  * The Sans-I/O implementation was moved.
+  * The ``connection`` module was renamed to ``protocol``.
+  * The ``connection.Connection``, ``server.ServerConnection``,
+    and ``client.ClientConnection`` classes were renamed to
+    ``protocol.Protocol``, ``server.ServerProtocol``, and 
+    ``client.ClientProtocol``.
+  * If you instantiate :class:`~server.ServerProtocol` or
+    :class:`~client.ClientProtocol` directly, make sure you are
+    using keyword arguments.
+  * Closing a connection without an empty close frame is OK.
+  * .. admonition:: websockets 10.0 introduces a implementation
+    on top of :mod:`threading`.
+  * It may be more convenient if you don't need to manage many
+    connections and you're more comfortable with :mod:`threading`
+    than :mod:`asyncio`.
+  * It is particularly suited to client applications that
+    establish only one connection. It may be used for servers
+    handling few connections.
+  * See :func:`~sync.client.connect` and
+    :func:`~sync.server.serve` for details.
+  * Added ``open_timeout`` to :func:`~server.serve`.
+  * Made it possible to close a server without closing existing
+    connections.
+  * Added :attr:`~server.ServerProtocol.select_subprotocol` to
+    customize negotiation of subprotocols in the Sans-I/O layer.
+  * Added platform-independent wheels.
+  * Improved error handling in :func:`~websockets.broadcast`.
+  * Set ``server_hostname`` automatically on TLS connections when
+    providing a ``sock`` argument to :func:`~sync.client.connect`.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

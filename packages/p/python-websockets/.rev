@@ -382,4 +382,41 @@
     <comment></comment>
     <requestid>1081725</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9ac63dadc2b9690354cbf3fa04925fd2</srcmd5>
+    <version>11.0.3</version>
+    <time>1684490118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.0.3:
+  * Fixed the :mod:`threading` implementation of servers on
+    Windows.
+
+- update to 11.0.2:
+  * Fixed a deadlock in the :mod:`threading` implementation when
+    closing a connection without reading all messages.
+  * Restored the C extension in the source distribution.
+  * Backwards-incompatible changes
+  * The Sans-I/O implementation was moved.
+  * The ``connection`` module was renamed to ``protocol``.
+  * The ``connection.Connection``, ``server.ServerConnection``,
+    and ``client.ClientConnection`` classes were renamed to
+    ``protocol.Protocol``, ``server.ServerProtocol``, and 
+    ``client.ClientProtocol``.
+  * If you instantiate :class:`~server.ServerProtocol` or
+    :class:`~client.ClientProtocol` directly, make sure you are
+    using keyword arguments.
+  * Closing a connection without an empty close frame is OK.
+  * .. admonition:: websockets 10.0 introduces a implementation
+    on top of :mod:`threading`.
+  * It may be more convenient if you don't need to manage many
+    connections and you're more comfortable with :mod:`threading`
+    than :mod:`asyncio`.
+  * It is particularly suited to client applications that
+    establish only one connection. It may be used for servers
+    handling few connections.
+  * See :func:`~sync.client.connect` and
+    :func:`~sync.server.serve` for details.
+  * Added ``open_timeout`` to :func:`~server.serve`.</comment>
+    <requestid>1087125</requestid>
+  </revision>
 </revisionlist>
