@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-paramiko
-Version:        2.12.0
+Version:        3.1.0
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
@@ -27,33 +27,32 @@ Group:          Documentation/Other
 URL:            https://www.paramiko.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
 Patch0:         paramiko-test_extend_timeout.patch
-# PATCH-FIX-UPSTREAM paramiko-pr1665-remove-pytest-relaxed.patch gh#paramiko/paramiko#1665 -- pytest-relaxed is broken
-Patch1:         paramiko-pr1665-remove-pytest-relaxed.patch
+# PATCH-FIX-OPENSUSE remove-icecream-dep.patch to do not depend on python-icecream
+Patch1:         remove-icecream-dep.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-Sphinx
 %else
 BuildRequires:  %{python_module Sphinx}
 %endif
-BuildRequires:  %{python_module bcrypt >= 3.1.3}
-BuildRequires:  %{python_module cryptography >= 2.5}
+BuildRequires:  %{python_module bcrypt >= 3.2}
+BuildRequires:  %{python_module cryptography >= 3.3}
 BuildRequires:  %{python_module gssapi}
 BuildRequires:  %{python_module invocations}
-BuildRequires:  %{python_module invoke >= 1.3}
+BuildRequires:  %{python_module invoke >= 2.0}
 BuildRequires:  %{python_module pyasn1 >= 0.1.7}
+BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-gssapi
 Recommends:     python-invoke
-Requires:       python-PyNaCl >= 1.0.1
-Requires:       python-bcrypt >= 3.1.3
-Requires:       python-cryptography >= 2.5
+Requires:       python-PyNaCl >= 1.5
+Requires:       python-bcrypt >= 3.2
+Requires:       python-cryptography >= 3.3
 Requires:       python-pyasn1 >= 0.1.7
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -91,10 +90,10 @@ find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \; -exec chmod -x
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/paramiko/paramiko/issues/2027 -- despite being "completed" upstream, this is not fixed yet.
-sed -i 's:from mock:from unittest.mock:' tests/test_*.py
 export LANG=en_US.UTF-8
-%pytest
+# Do not test k5shell to avoid dependency
+donttest="k5shell"
+%pytest tests/test_*.py  -k "not $donttest"
 
 %files %{python_files}
 %license LICENSE
