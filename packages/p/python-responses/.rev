@@ -305,4 +305,57 @@
     <comment></comment>
     <requestid>1081806</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d1d35a36e7b4c2395c7475993d37da7a</srcmd5>
+    <version>0.23.1</version>
+    <time>1684490109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 636-urllib3-2-compat.patch (from
+  gh#getsentry/responses!636).
+- Fix missing runtime requirements
+- Remove runtime requirement of typing stubs
+- Update to 0.23.1:
+  - Remove `tomli` import. See #630
+  - Add Python 3.11 support
+  - Fix type annotations of `CallList`. See #593
+  - `request` object is attached to any custom exception provided
+    as `Response` `body` argument. See #588
+  - Fixed mocked responses leaking between tests when
+    `assert_all_requests_are_fired` and a request was not fired.
+  - [BETA] Default recorder format was changed to YAML.
+    Added `responses.RequestsMock._parse_response_file` and
+    `responses._recorder.Recorder.dump_to_file` methods that
+    allow users to override default parser to eg toml, json
+  - Update `requests` dependency to the version of 2.22.0 or
+    higher. See #584.
+  - [BETA] Added possibility to record responses to TOML files
+    via `@_recorder.record(file_path=&quot;out.toml&quot;)` decorator.
+  - [BETA] Added possibility to replay responses
+    (populate registry) from TOML files via
+    `responses._add_from_file(file_path=&quot;out.toml&quot;)` method.
+  - Fix type for the `mock`'s patcher object. See #556
+  - Fix type annotation for `CallList`
+  - Add `passthrough` argument to `BaseResponse` object. See #557
+  - Fix `registries` leak. See #563
+  - `OriginalResponseShim` is removed. See #585
+  - Add support for the `loose` version of `json_params_matcher`
+    via named argument `strict_match`. See #551
+  - Add lists support as JSON objects in
+    `json_params_matcher`. See #559
+  - Added project links to pypi listing.
+  - `delete`, `get`, `head`, `options`, `patch`,
+    `post`, `put` shortcuts are now implemented using
+    `functools.partialmethod`.
+  - Fix `MaxRetryError` exception. Replace exception by
+    `RetryError` according to `requests` implementation. See
+    #572.
+  - Adjust error message when `Retry` is exhausted. See #580.
+- Remove py_old_re_Pattern.patch, because we don’t care about
+  compatibility with pre-SLE15-SP4 any more.
+- Add compat-urllib3-2.patch and unbundle-urllib3.patch to make
+  the package compatible with urllib3 &gt;= 2.0 (still not enough
+  gh#getsentry/responses#635).
+</comment>
+    <requestid>1085860</requestid>
+  </revision>
 </revisionlist>

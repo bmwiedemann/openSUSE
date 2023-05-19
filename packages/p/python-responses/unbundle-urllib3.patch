@@ -1,0 +1,75 @@
+---
+ responses/__init__.py             |    8 ++++----
+ responses/matchers.py             |    2 +-
+ responses/tests/test_responses.py |    5 +++--
+ 3 files changed, 8 insertions(+), 7 deletions(-)
+
+--- a/responses/__init__.py
++++ b/responses/__init__.py
+@@ -42,16 +42,16 @@ except ImportError:  # pragma: no cover
+     from typing import Literal  # type: ignore  # pragma: no cover
+ 
+ try:
+-    from requests.packages.urllib3.response import HTTPResponse
++    from urllib3.response import HTTPResponse
+ except ImportError:  # pragma: no cover
+     from urllib3.response import HTTPResponse  # pragma: no cover
+ 
+ try:
+-    from requests.packages.urllib3.connection import HTTPHeaderDict
++    from urllib3.connection import HTTPHeaderDict
+ except ImportError:  # pragma: no cover
+     from urllib3.response import HTTPHeaderDict  # type: ignore[attr-defined]
+ try:
+-    from requests.packages.urllib3.util.url import parse_url
++    from urllib3.util.url import parse_url
+ except ImportError:  # pragma: no cover
+     from urllib3.util.url import parse_url  # pragma: no cover
+ 
+@@ -1065,7 +1065,7 @@ class RequestsMock(object):
+ 
+         retries = retries or adapter.max_retries
+         # first validate that current request is eligible to be retried.
+-        # See ``requests.packages.urllib3.util.retry.Retry`` documentation.
++        # See ``urllib3.util.retry.Retry`` documentation.
+         if retries.is_retry(
+             method=response.request.method, status_code=response.status_code  # type: ignore[misc]
+         ):
+--- a/responses/matchers.py
++++ b/responses/matchers.py
+@@ -11,7 +11,7 @@ from urllib.parse import parse_qsl
+ from urllib.parse import urlparse
+ 
+ from requests import PreparedRequest
+-from requests.packages.urllib3.util.url import parse_url
++from urllib3.util.url import parse_url
+ 
+ 
+ def _create_key_val_str(input_dict: Union[Dict[Any, Any], Any]) -> str:
+--- a/responses/tests/test_responses.py
++++ b/responses/tests/test_responses.py
+@@ -13,6 +13,7 @@ from unittest.mock import patch
+ 
+ import pytest
+ import requests
++import urllib3
+ from requests.exceptions import ChunkedEncodingError
+ from requests.exceptions import ConnectionError
+ from requests.exceptions import HTTPError
+@@ -1324,14 +1325,14 @@ def test_content_length_error(monkeypatc
+     # Type errors here and on 1250 are ignored because the stubs for requests
+     # are off https://github.com/python/typeshed/blob/f8501d33c737482a829c6db557a0be26895c5941
+     #   /stubs/requests/requests/packages/__init__.pyi#L1
+-    original_init = getattr(requests.packages.urllib3.HTTPResponse, "__init__")  # type: ignore
++    original_init = getattr(urllib3.HTTPResponse, "__init__")  # type: ignore
+ 
+     def patched_init(self, *args, **kwargs):
+         kwargs["enforce_content_length"] = True
+         original_init(self, *args, **kwargs)
+ 
+     monkeypatch.setattr(
+-        requests.packages.urllib3.HTTPResponse, "__init__", patched_init  # type: ignore
++        urllib3.HTTPResponse, "__init__", patched_init  # type: ignore
+     )
+ 
+     run()
