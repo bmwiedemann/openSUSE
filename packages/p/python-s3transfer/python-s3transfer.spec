@@ -30,13 +30,13 @@ Patch1:         no-bundled-packages.patch
 BuildRequires:  %{python_module botocore >= 1.12.36}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module urllib3 with %python-urllib3 < 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore <= 2.0.0
 Requires:       python-botocore >= 1.12.36
 Requires:       python-requests
-Requires:       python-urllib3
+Requires:       python-urllib3 < 2
 BuildArch:      noarch
 
 %python_subpackages

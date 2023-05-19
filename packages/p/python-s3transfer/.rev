@@ -212,4 +212,12 @@
     <comment></comment>
     <requestid>980631</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>96aa8bd305c34f497afac6327290e6db</srcmd5>
+    <version>0.6.0</version>
+    <time>1684490127</time>
+    <user>dimstar_suse</user>
+    <comment>- pin to urllib3 1.x</comment>
+    <requestid>1087487</requestid>
+  </revision>
 </revisionlist>
