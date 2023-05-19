@@ -1,0 +1,38 @@
+Index: stack_data-0.6.2/tests/__init__.py
+===================================================================
+--- stack_data-0.6.2.orig/tests/__init__.py
++++ stack_data-0.6.2/tests/__init__.py
+@@ -1,7 +1,7 @@
+ import os
+ 
+ import pyximport
+-from typeguard.importhook import install_import_hook
++from typeguard import install_import_hook
+ 
+ pyximport.install(language_level=3)
+ 
+Index: stack_data-0.6.2/stack_data/utils.py
+===================================================================
+--- stack_data-0.6.2.orig/stack_data/utils.py
++++ stack_data-0.6.2/stack_data/utils.py
+@@ -8,6 +8,11 @@ from typing import (
+     TypeVar, Mapping,
+ )
+ 
++try:
++    from types import NoneType
++except ImportError:
++    NoneType = type(None)
++
+ from asttokens import ASTText
+ 
+ T = TypeVar('T')
+@@ -91,7 +96,7 @@ def is_frame(frame_or_tb: Union[FrameTyp
+     return isinstance(frame_or_tb, (types.FrameType,))
+ 
+ 
+-def iter_stack(frame_or_tb: Union[FrameType, TracebackType]) -> Iterator[Union[FrameType, TracebackType]]:
++def iter_stack(frame_or_tb: Union[FrameType, TracebackType, NoneType]) -> Iterator[Union[FrameType, TracebackType]]:
+     while frame_or_tb:
+         yield frame_or_tb
+         if is_frame(frame_or_tb):

@@ -52,4 +52,13 @@
 - drop 29-Pygments-2-12.patch  (upstream)</comment>
     <requestid>1084880</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3581a8196759490828844fde128fbda4</srcmd5>
+    <version>0.6.2</version>
+    <time>1684490119</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-typeguard-4.patch:
+  * Support typeguard 4+.</comment>
+    <requestid>1087190</requestid>
+  </revision>
 </revisionlist>
