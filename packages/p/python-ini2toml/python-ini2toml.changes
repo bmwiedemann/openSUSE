@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  5 00:13:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12:
+  * Fix logging in case of early errors while loading plugins,
+  * Log warning if ``flake8`` and ``devpi`` sections are
+    translation, prompting the user to review the output
+  * Fix parsing of ``filterwarnings``
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -48,8 +49,9 @@
 %bcond_with experimental
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-ini2toml%{psuffix}
-Version:        0.11.3
+Version:        0.12
 Release:        0
 Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
@@ -62,6 +64,7 @@ Requires:       python-packaging >= 20.7
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if %{with test}
+BuildRequires:  %{python_module ConfigUpdater}
 BuildRequires:  %{python_module packaging >= 20.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module validate-pyproject >= 0.6 with %python-validate-pyproject < 2}
