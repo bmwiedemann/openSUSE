@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        1.1.3
+Version:        2.0.2
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
@@ -27,10 +27,11 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
 Source9:        python-greenlet-rpmlintrc
-# PATCH-FIX-OPENSUSE sphinx-6.0.0.patch
-Patch0:         sphinx-6.0.0.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,13 +58,13 @@ This package contains header files required for C modules development.
 
 %build
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 export PYTHONPATH=$PWD/src
 cd docs && make html && rm _build/html/.buildinfo
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

@@ -408,4 +408,41 @@
     <comment></comment>
     <requestid>1081482</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>96b3bbac496ec34e69e27d40241c6579</srcmd5>
+    <version>2.0.2</version>
+    <time>1684490105</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Fix calling ``greenlet.settrace()`` with the same tracer
+    object that was currently active.
+  * Various compilation and standards conformance fixes.
+   * Python 3.11: Fix a memory leak. See issue 328 and gevent issue 1924.
+- 2.0.0.post0 (2022-11-03)
+   * Add Programming Language :: Python :: 3.11 to the PyPI classifier
+     metadata.
+- 2.0.0rc5 (2022-10-31)
+   * Linux: Fix another group of rare crashes that could occur when shutting
+     down an interpeter running multiple threads. See issue 325.
+- 2.0.0rc4 (2022-10-30)
+   * Linux: Fix a rare crash that could occur when shutting down an interpreter
+     running multiple threads, when some of those threads are in greenlets
+     making calls to functions that release the GIL.
+- 2.0.0rc1 (2022-10-27)
+   * Deal gracefully with greenlet switches that occur while deferred
+     deallocation of objects is happening using CPython's &quot;trash can&quot;
+     mechanism. Previously, if a large nested container held items that
+     switched greenlets during delayed deallocation, and that second greenlet
+     also invoked the trash can, CPython's internal state could become corrupt.
+     This was visible as an assertion error in debug builds. Now, the relevant
+     internal state is saved and restored during greenlet switches. See also
+     gevent issue 1909.
+   * Rename the C API function PyGreenlet_GET_PARENT to PyGreenlet_GetParent
+     for consistency. The old name remains available as a deprecated alias.
+- 2.0.0a1 (2022-01-20)
+   * Drop support for very old versions of GCC and MSVC.
+     Compilation now requires a compiler that either supports C++11 or has some
+     other intrinsic way to create thread local variables; for older GCC, clang</comment>
+    <requestid>1084762</requestid>
+  </revision>
 </revisionlist>
