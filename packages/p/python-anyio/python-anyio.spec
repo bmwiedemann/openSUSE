@@ -26,6 +26,8 @@ URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Support trio >= 0.22 just enough for asyncclick
 Patch0:         support-trio-0.22.patch
+# PATCH-FIX-UPSTREAM Based on gh#agronholm/anyio#553
+Patch1:         fix-failing-tls-tests.patch
 BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}
@@ -81,6 +83,8 @@ donttest+=" or (TestUDPSocket and (ipv4 or ipv6))"
 # wrong localhost address
 donttest+=" or (TestTCPStream and test_happy_eyeballs)"
 donttest+=" or (TestTCPStream and test_connection_refused)"
+# does not raise an exception
+donttest+=" or (TestTLSStream and test_ragged_eofs)"
 %if 0%{?suse_version} < 1550
 donttest+=" or (test_send_eof_not_implemented)"
 %endif

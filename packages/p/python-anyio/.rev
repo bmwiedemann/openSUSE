@@ -166,4 +166,13 @@
 SR for python stack proposal</comment>
     <requestid>1082169</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>671e85f6516f3936989238d78a08883d</srcmd5>
+    <version>3.6.2</version>
+    <time>1684490105</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fix-failing-tls-tests.patch:
+  * Fix test failures with Python TLS changes.</comment>
+    <requestid>1084544</requestid>
+  </revision>
 </revisionlist>
