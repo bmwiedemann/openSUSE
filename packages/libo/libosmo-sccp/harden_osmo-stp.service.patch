@@ -1,7 +1,11 @@
-Index: libosmo-sccp-1.4.0/contrib/systemd/osmo-stp.service
+---
+ contrib/systemd/osmo-stp.service |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+Index: libosmo-sccp-1.7.0/contrib/systemd/osmo-stp.service
 ===================================================================
---- libosmo-sccp-1.4.0.orig/contrib/systemd/osmo-stp.service
-+++ libosmo-sccp-1.4.0/contrib/systemd/osmo-stp.service
+--- libosmo-sccp-1.7.0.orig/contrib/systemd/osmo-stp.service
++++ libosmo-sccp-1.7.0/contrib/systemd/osmo-stp.service
 @@ -3,6 +3,19 @@ Description=Osmocom STP (Signal Transfer
  Documentation=https://osmocom.org/projects/osmo-stp/wiki
  
@@ -21,4 +25,4 @@ Index: libosmo-sccp-1.4.0/contrib/systemd/osmo-stp.service
 +# end of automatic additions 
  Type=simple
  Restart=always
- ExecStart=/usr/bin/osmo-stp -c /etc/osmocom/osmo-stp.cfg
+ StateDirectory=osmocom

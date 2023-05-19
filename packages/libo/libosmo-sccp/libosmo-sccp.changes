@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 18 11:31:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * SIGTRAN: cache Optional Data for SCCP CR/CC/RLSD
+
+-------------------------------------------------------------------
 Wed Aug  3 16:35:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.0
