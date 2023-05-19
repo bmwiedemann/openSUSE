@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 14 09:36:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Improved progress output when collecting nodes to be less
+     verbose.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xdist
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Distributed testing and loop-on-failing for py.test
 License:        MIT

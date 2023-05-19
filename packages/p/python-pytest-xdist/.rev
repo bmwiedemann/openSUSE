@@ -252,4 +252,14 @@
     <comment></comment>
     <requestid>1082425</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>feb09cf97edc8303c941c0b1b815f7ec</srcmd5>
+    <version>3.3.0</version>
+    <time>1684490115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * Improved progress output when collecting nodes to be less
+     verbose.</comment>
+    <requestid>1087079</requestid>
+  </revision>
 </revisionlist>
